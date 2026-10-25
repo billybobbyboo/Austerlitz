@@ -1,9 +1,80 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8C: the map layer in motion (decisions 240 (a), 254 (a)), after the audit's findings A-C
+
+**Status: built on `claude/focused-faraday-76jwny` (draft PR #68, into `main`), for review; not merged.** The integration PR #67, which brought 8B
+into `main` (8B's #66 had been merged into 8A's branch), was merged by the owner on 24 October (`0ca1414`; `main`'s tree then `95fa28a`'s); #68,
+opened with that branch as its base, now targets `main`, its diff unchanged. No data changed: `check:data` passes (all 131 declarations byte-identical to its reference). The build
+changed: `austerlitz-command-map.html` **2,357,922 bytes, md5 `04547a28419b2d86aec824931c735e0f`** (8B's build 2,317,927, `9b20dc4c...`); `check:baseline` moved to it. The record
+is `docs/STAGE8_SPEC.md` §15; the evidence `docs/stage8-evidence/8c/`.
+
+- **The audit's findings, first and in a commit of their own (`6fd80ea`).** *A:* after a lost WebGL context was restored, the ground's depth for the
+  overlays and the environment map were drawn again only when their keys changed, so with the eye still the overlays were tested against an empty
+  target and the scene was lit without its environment until the camera moved (on 8B's build the frame after the restore differed from the frame
+  before the loss in 238,863 pixels); `glRestored` clears both, and `check:contrast` has a seventh start-up case, `context-depth`, that holds it (21-27
+  pixels on the fixed builds, 27 on CI; at most 100). The `context-loss` case then waited too little for its clock step's first frame (on 8B the restored empty
+  environment had made that frame quick): it now waits for the frame; its judgement is unchanged (193 warnings, at most 248). *B:* under a reading
+  that does not know a formation, its dossier's march row still said "Marching ... over the frozen mere" (found by real clicks under Napoleon's
+  headquarters at 16:00, Kienmayer's division and the Left Wing Command); the row is now "Plotted leg" with the reading's note, the known formations'
+  rows unchanged, held by `runtime-test.js` (fails on 8B's sources). *C:* the five unobstructed shortfalls CI reports since step 1 are Chromium 141's
+  rendering of baselines measured on Chromium 153 (on Chromium 141 the tools' box is 7-11 px and the view switch 4 px wider), the same on every build since step 1 (step 3 for
+  `narrow-1024`), not a regression of 8A or 8B; no baseline lowered; `remeasure.js` measures only on CI's browser; the re-measure put to the owner
+  (question 256).
+- **Decision 254 (a)** (the owner, with 8C's brief): the landscape's confidence-share limit stays 7%; its meaning since 8B (the ground cues as each
+  case shows them, no longer the filled marks) recorded in `tools/visual/thresholds.js`; the paper map's 16% unchanged.
+- **Decision 240 (a): the map layer in motion** (`MLS` and the layout's three strategies in `app.js`). While the view moves each counter and name keeps
+  its place against its own anchor, else takes a place hugging it, else fades out; what has no room is looked for every 333 ms and comes back after two
+  passes with room; the never-dropped items and the keyboard's focus placed by the full search every frame, as before; no overlap in any frame. The
+  level-of-detail switches read a distance held inside an 8% band while the view moves. Fades of 180 ms of wall-clock time, a leaving item fading where
+  it was, under the live items, taking no pointer; none under reduced motion (the hold and the band kept); a counter's content changes at once. At rest
+  the band is released and every place that still fits is kept first, then the others placed in the room left (no reshuffle: Part A's prototype took
+  them in priority order, 57 jumps at rest over the 16 motions against 5). Motion is read from the app's own state (a tween or glide, Play, the input
+  hold, a panel's move); every discontinuity (ground, presentation, reading, eye level, factor, resize, restored context, a move made at once, a jump of
+  the clock or the eye) lays the next view out afresh, exactly as before 8C.
+- **The far step (section 7.2).** In the perspective presentations a place's or terrain-study name beyond 1.5 times the eye's distance to its target
+  is drawn at 10.5 px (`t-micro`) instead of 11.5 (`t-small`), inside the box its own size gives it, so no placement or drop changes; battle information
+  keeps 12.5 px (decision 16 holds it at 12 px at least; question 255). In Part A's low views it reaches the places only: none of the 23 far items in `horizon-east` (16 formation names), 2 of 25 in `ice-low`, 5 of 19 in `stream-low`.
+- **Measured** (Chromium 141, the app's own input on a driver's clock, `docs/stage8-evidence/8c/`): over the 16 motions of `label-motion.js`, 8B against
+  8C, jumps 3,439 and 245 (the target at most 300), pops 636 and 985 (at most 1,300), level-of-detail switches 130 and 130, flickers 172 and 10 (at most 200), overlap frames 0 and 0; the four real-input motions as their twins
+  (identical counts); the formations followed drawn in 75% of their in-view frames against 92% (hidden by the layout 417 times against 131 and back 0.4-0.7 s after it has room; their boxes moved against their anchors 97 times against 2,197 and swapped order with a neighbour 270 times against 2,642), the selected division in every frame on both; at rest after the 16 motions as many items placed as the same views reached directly (448 and 448; fewer after four motions, more after six). The layer's pass, timed in three interleaved rounds of the 16 motions with the WebGL draw skipped (CPU time on this
+  container's machine): 1.0 ms at the median and 2.1 ms at the 95th percentile against 8B's 1.1 and 2.2, the worst motion's excess +0.2 and +0.4 ms
+  (`low-pan`; the budget +0.5 and +2), in 6% more passes (4,116 against 3,891: the re-placement passes and fades after the view stops). Every `check:visual` case applied by its spec laid out identically on both
+  builds (20 cases, item by item, box by box).
+- **Checks (each new one made to fail, `docs/STAGE8_SPEC.md` §15.4):** the self-test's manifest from 261 to 270 (nine added, none removed or
+  renamed): the motion invariants, the remnants and the rest, a fresh view as before, the band, reduced motion, a reading changed mid-pan, the focus
+  never held, input that moves nothing, the far step; all 270 pass here and on CI. `css-test.js` holds the decided values and rules; `runtime-test.js`
+  dry-runs the stabiliser and holds finding B. A motion block in `check:visual` and `check:selftest` (the 16 motions, the four real input can drive by
+  real input (two on CI's self-test page), two with a selection, three under a reading, a finger's pan at 390 px), judged against the owner's starting
+  targets (jumps 300, pops 1,300, flickers 200), the level-of-detail switches not above 8B's 130, and per run no overlap, no never-dropped item hidden,
+  no remnant out of rule, nothing the reading does not know drawn. On copies with one rule broken (`tools/stage8/mutate-8c.js`): the self-test fails on each (the stabiliser off: three checks, and the motion block with 3,439 jumps; no band: the band check, the motion block passing, since the band defers the switches and removes none; a reshuffle at rest: the rest check and the motion block, 384 jumps; a returning item drawn at once: 378 jumps, 3,167 pops, 1,201 flickers; the never-dropped items held: hidden in six runs; the focus held; a remnant picked by the pointer; fades under reduced motion; a remnant kept past its fade; the far step on battle information), `css-test.js` on each of seven mutated sources. Two self-test checks found passing on their first mutations (the focus held; a remnant's CSS, which the layer's own `pointer-events:none` makes neutral) were made able to fail (`339143c`).
+- **The motion driver, found in the final validation** (`tools/visual/motion.js`; test code, the build unchanged): on one build the motion block's
+  totals differed by a few counts from run to run (CI's `check:selftest` 244 jumps, 997 pops, 17 flickers; CI's `check:visual` 242, 1,014, 18; here
+  237, 1,021, 19), within the limits but not repeatable: the block sets its views up without a drawn frame, and the driver restarted its clock at
+  the page's real time, behind the last run's end, so the last run's input hold and the frames left asked for reached into the next run's start
+  and moved the phase of its re-placement passes (a 1.5 s pause before each run moved the totals to 248, 1,005, 22). Each run now starts 2 s past
+  every timer the set-up left, the page's clock never running back, on a view marked as reached afresh (the app's own `mlReset`) with no frame
+  pending: four runs here, with and without the pause, give 245, 985, 130 and 10 motion by motion, exactly `label-motion.js`'s, whose set-up
+  draws frames and so already started clean (its evidence re-made with the fixed driver: every published count the same but 8C's held frames, 17,970 to 17,953, and two
+  tracking cells from the two glides, 21,984 drawn formation-frames to 21,987, 7,307 hidden to 7,304; 75% either way). CI's `check:selftest` on
+  the fix gives the same counts in all 24 of the block's runs, the two by real input now exactly their twins'.
+- **Verified:** here, on Chromium 141.0.7390.37 (the headless shell Playwright 1.56 pins and CI runs): `npm run build` writes the committed file
+  byte for byte (md5 `04547a28...`); `npm test` (all nine suites and the height guard), `check:data` (131 of 131 identical), `check:chronology` (0
+  errors) and `check:baseline` pass; `check:selftest` 270 of 270 with its live blocks and the motion block, before and after the driver's fix
+  (`check-report.js` judging each report again: no failure). On CI, on `339143c` (run 40162602191): the checks job, `check:contrast` (45 states
+  at AA in the embedded faces, no console message; the seven start-up cases, `context-loss` 193 warnings, at most 248, `context-depth` within 27
+  pixels) and `check:selftest` (270 of 270) pass; `check:visual` fails only the five inherited unobstructed shares, no other check (no limit
+  moved). On `88da6f0` (the driver's fix; runs 40176779106, 40176781836 and 40176782747): the checks job, `check:contrast` and `check:selftest`
+  pass in each, the self-test's motion block's 24 runs giving exactly the counts measured here; `check:visual` fails only the same five inherited
+  shares, its motion block's 26 runs also giving those counts (each real-input run exactly its twin's). Not run: a device of the owner's (device acceptance pending), Safari, a GPU's frame time.
+- **Uncertain or open:** questions 255 (the far step and battle information), 256 (the five inherited baselines re-measured on CI's browser), 257 (the
+  motion block's limits: the starting targets or 8C's measure) and 258 (the formations' visibility while the view moves); the overlay ribbons at the eye
+  level (seen edge-on from below near the eye), unchanged, recorded apart; device acceptance pending (no owner hardware here; the layer's cost measured on
+  this CPU only); a GPU's frame time and Safari not measured.
+
 ## 2026-10 · Stage 8, implementation PR 8B: the ground under the troops, the arrows and the event glyphs calmed (decisions 239 (b), 241 (a))
 
-**Status: built on `claude/blissful-clarke-9axnzp-8b` (draft PR #66), stacked on implementation PR 8A's branch (its base), for review; not
-merged.** No data changed: `check:data` passes (all 131 declarations byte-identical to its reference). The build changed:
+**Status: merged on 24 October 2026 into 8A's branch (#66, `95fa28a`), its base, and with it into `main` by the integration PR #67 (`0ca1414`).**
+Built on `claude/blissful-clarke-9axnzp-8b`, stacked on implementation PR 8A's branch. No data changed: `check:data` passes (all 131 declarations byte-identical to its reference). The build changed:
 `austerlitz-command-map.html` **2,317,927 bytes, md5 `9b20dc4ca251e17ddb2468f98f920f38`** (8A's build 2,247,866, `870caf24...`); `check:baseline`
 moved to it. The record is `docs/STAGE8_SPEC.md` §14.
 
@@ -77,7 +148,7 @@ moved to it. The record is `docs/STAGE8_SPEC.md` §14.
 
 ## 2026-10 · Stage 8, implementation PR 8A: the carried fixes and the roads' and streams' ribbons (decisions 251 (a), 253 (b))
 
-**Status: built on `claude/blissful-clarke-9axnzp` (draft PR #65), for review; not merged.** Begun from `main` at `d86835e` (Stage 8 Part A,
+**Status: merged into `main` on 24 October 2026 (#65, `3010fc7`).** Built on `claude/blissful-clarke-9axnzp`. Begun from `main` at `d86835e` (Stage 8 Part A,
 PR #64, merged; nothing merged since). "Implementation PR 8A" is the first of the eight pull requests of `docs/STAGE8_SPEC.md` §10's plan; it
 is not "Stage 8 Part A", the specification (§0.4). No data changed: `check:data` passes (all 131 declarations byte-identical to its reference). The build changed:
 `austerlitz-command-map.html` **2,247,866 bytes, md5 `870caf24e7465206d1a0a994e38265eb`** (was 2,220,714, `c4793156...`); `check:baseline` moved to it.

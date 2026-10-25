@@ -1,0 +1,15 @@
+{
+ "build": "c8-final2.html",
+ "results": [
+  {
+   "name": "context-loss",
+   "ok": true,
+   "line": "context-loss: the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn; 193 “does not belong to this context” warnings (at most 248)"
+  },
+  {
+   "name": "context-depth",
+   "ok": true,
+   "line": "context-depth: the eye still across a loss and a restore: the ground's depth drawn again (2 -> 3 passes), its 49 texels as before, the frame within 21 pixels of the frame before the loss (the figures hidden; with them 1650), the view's ground hiding 3741 pixels of the overlays"
+  }
+ ]
+}

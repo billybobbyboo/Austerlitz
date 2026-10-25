@@ -1,0 +1,297 @@
+{
+ "ref": "base-8b-9b20dc4c.html",
+ "cand": "c8-v7.html",
+ "chromium": "141.0.7390.37",
+ "cases": {
+  "overview-field": {
+   "items": 48,
+   "placed": 43,
+   "dropped": 5,
+   "ids": [
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:telnitz",
+    "t:vinohrady",
+    "t:zuran"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "overview-plan": {
+   "items": 27,
+   "placed": 22,
+   "dropped": 5,
+   "ids": [
+    "t:pratzeberg",
+    "t:santon",
+    "t:telnitz",
+    "t:vinohrady",
+    "t:zuran"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "close-sokolnitz": {
+   "items": 21,
+   "placed": 19,
+   "dropped": 2,
+   "ids": [
+    "t:kobelnitz",
+    "t:sokolnitz"
+   ],
+   "far": 5,
+   "differences": []
+  },
+  "staff-paper": {
+   "items": 29,
+   "placed": 24,
+   "dropped": 5,
+   "ids": [
+    "t:augezd",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:telnitz",
+    "t:vinohrady"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "pratzen-low": {
+   "items": 28,
+   "placed": 24,
+   "dropped": 4,
+   "ids": [
+    "t:krzenowitz",
+    "t:litava",
+    "t:pratzeberg",
+    "t:vinohrady"
+   ],
+   "far": 1,
+   "differences": []
+  },
+  "selected-formation": {
+   "items": 28,
+   "placed": 24,
+   "dropped": 4,
+   "ids": [
+    "t:augezd",
+    "t:kobelnitz",
+    "t:pratzeberg",
+    "t:vinohrady"
+   ],
+   "far": 1,
+   "differences": []
+  },
+  "watch-selected": {
+   "items": 28,
+   "placed": 24,
+   "dropped": 4,
+   "ids": [
+    "t:kobelnitz",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:vinohrady"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "hybrid-dimmed": {
+   "items": 40,
+   "placed": 30,
+   "dropped": 10,
+   "ids": [
+    "c:kellermann",
+    "c:rg_inf",
+    "o:Bagration",
+    "t:blasowitz",
+    "t:girzikowitz",
+    "t:kobelnitz",
+    "t:krzenowitz",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:vinohrady"
+   ],
+   "far": 2,
+   "differences": []
+  },
+  "pratzen-low-1x": {
+   "items": 29,
+   "placed": 25,
+   "dropped": 4,
+   "ids": [
+    "t:krzenowitz",
+    "t:pratzeberg",
+    "t:pratzenv",
+    "t:vinohrady"
+   ],
+   "far": 2,
+   "differences": []
+  },
+  "pratzen-low-10x": {
+   "items": 24,
+   "placed": 21,
+   "dropped": 3,
+   "ids": [
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:vinohrady"
+   ],
+   "far": 3,
+   "differences": []
+  },
+  "paper-north-up": {
+   "items": 36,
+   "placed": 25,
+   "dropped": 11,
+   "ids": [
+    "t:augezd",
+    "t:austerlitz",
+    "t:goldbach",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:santon",
+    "t:satschan",
+    "t:sokolnitz",
+    "t:telnitz",
+    "t:vinohrady",
+    "t:zuran"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "paper-close": {
+   "items": 6,
+   "placed": 5,
+   "dropped": 1,
+   "ids": [
+    "t:sokolnitz"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "paper-drawer": {
+   "items": 17,
+   "placed": 16,
+   "dropped": 1,
+   "ids": [
+    "t:pratzeberg"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "paper-laptop": {
+   "items": 36,
+   "placed": 24,
+   "dropped": 12,
+   "ids": [
+    "t:augezd",
+    "t:austerlitz",
+    "t:goldbach",
+    "t:litava",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:santon",
+    "t:satschan",
+    "t:sokolnitz",
+    "t:telnitz",
+    "t:vinohrady",
+    "t:zuran"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "narrow-1024": {
+   "items": 40,
+   "placed": 32,
+   "dropped": 8,
+   "ids": [
+    "n:bourcier",
+    "t:austerlitz",
+    "t:goldbach",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:sokolnitz",
+    "t:telnitz",
+    "t:vinohrady"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "ph8-overview-study": {
+   "items": 25,
+   "placed": 21,
+   "dropped": 4,
+   "ids": [
+    "t:augezd",
+    "t:austerlitz",
+    "t:pratzeberg",
+    "t:satschan"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "ph8-overview-watch": {
+   "items": 25,
+   "placed": 22,
+   "dropped": 3,
+   "ids": [
+    "t:augezd",
+    "t:satschan",
+    "t:telnitz"
+   ],
+   "far": 0,
+   "differences": []
+  },
+  "eye-zuran": {
+   "items": 22,
+   "placed": 16,
+   "dropped": 5,
+   "ids": [
+    "t:goldbach",
+    "t:kobelnitz",
+    "t:satschan",
+    "t:sokolnitz",
+    "t:telnitz"
+   ],
+   "far": 1,
+   "differences": []
+  },
+  "eye-zuran-1x": {
+   "items": 22,
+   "placed": 17,
+   "dropped": 5,
+   "ids": [
+    "t:goldbach",
+    "t:kobelnitz",
+    "t:satschan",
+    "t:sokolnitz",
+    "t:telnitz"
+   ],
+   "far": 1,
+   "differences": []
+  },
+  "plans-overview": {
+   "items": 57,
+   "placed": 45,
+   "dropped": 12,
+   "ids": [
+    "n:ahq",
+    "pl:The concealed centre",
+    "t:augezd",
+    "t:goldbach",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:santon",
+    "t:satschan",
+    "t:sokolnitz",
+    "t:telnitz",
+    "t:vinohrady",
+    "t:zuran"
+   ],
+   "far": 0,
+   "differences": []
+  }
+ },
+ "identical": 20,
+ "different": 0
+}

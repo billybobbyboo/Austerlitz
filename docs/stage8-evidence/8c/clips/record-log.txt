@@ -1,0 +1,21 @@
+hybrid-orbit 8B frames 31 in 933 s -> docs/stage8-evidence/8c/clips/hybrid-orbit-8B.mp4 {"frames":60,"clock":"09:30","rm":false,"passes":null}
+hybrid-orbit 8C frames 31 in 883 s -> docs/stage8-evidence/8c/clips/hybrid-orbit-8C.mp4 {"frames":60,"clock":"09:30","rm":false,"passes":94}
+hybrid-orbit 8C reduced motion frames 31 in 537 s -> docs/stage8-evidence/8c/clips/hybrid-orbit-8C_reduced_motion.mp4 {"frames":60,"clock":"09:30","rm":true,"passes":89}
+stacked docs/stage8-evidence/8c/clips/hybrid-orbit.mp4 (top to bottom: 8B, 8C, 8C reduced motion)
+hybrid-orbit exit 0
+hybrid-zoom 8B frames 31 in 535 s -> docs/stage8-evidence/8c/clips/hybrid-zoom-8B.mp4 {"frames":60,"clock":"09:30","rm":false,"passes":null}
+hybrid-zoom 8C frames 31 in 748 s -> docs/stage8-evidence/8c/clips/hybrid-zoom-8C.mp4 {"frames":60,"clock":"09:30","rm":false,"passes":89}
+hybrid-zoom 8C reduced motion frames 31 in 863 s -> docs/stage8-evidence/8c/clips/hybrid-zoom-8C_reduced_motion.mp4 {"frames":60,"clock":"09:30","rm":true,"passes":85}
+stacked docs/stage8-evidence/8c/clips/hybrid-zoom.mp4 (top to bottom: 8B, 8C, 8C reduced motion)
+hybrid-zoom exit 0
+paper-zoom 8B frames 31 in 420 s -> docs/stage8-evidence/8c/clips/paper-zoom-8B.mp4 {"frames":60,"clock":"09:30","rm":false,"passes":null}
+paper-zoom 8C frames 31 in 433 s -> docs/stage8-evidence/8c/clips/paper-zoom-8C.mp4 {"frames":60,"clock":"09:30","rm":false,"passes":90}
+paper-zoom 8C reduced motion frames 31 in 448 s -> docs/stage8-evidence/8c/clips/paper-zoom-8C_reduced_motion.mp4 {"frames":60,"clock":"09:30","rm":true,"passes":85}
+stacked docs/stage8-evidence/8c/clips/paper-zoom.mp4 (top to bottom: 8B, 8C, 8C reduced motion)
+paper-zoom exit 0
+paper-play 8B frames 71 in 599 s -> docs/stage8-evidence/8c/clips/paper-play-8B.mp4 {"frames":181,"clock":"09:20","rm":false,"passes":null}
+paper-play 8C frames 71 in 271 s -> docs/stage8-evidence/8c/clips/paper-play-8C.mp4 {"frames":181,"clock":"09:20","rm":false,"passes":233}
+paper-play 8C reduced motion frames 71 in 263 s -> docs/stage8-evidence/8c/clips/paper-play-8C_reduced_motion.mp4 {"frames":181,"clock":"09:20","rm":true,"passes":232}
+stacked docs/stage8-evidence/8c/clips/paper-play.mp4 (top to bottom: 8B, 8C, 8C reduced motion)
+paper-play exit 0
+ALLDONE

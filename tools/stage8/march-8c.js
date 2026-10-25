@@ -14,20 +14,7 @@ const OUT=opt("--json");
 (async()=>{
   const html=path.resolve(process.env.AUSTERLITZ_HTML||path.join(L.ROOT,"austerlitz-command-map.html"));
   const browser=await L.launch(), page=await L.open(browser,[1366,768]), res={build:path.basename(html), chromium:browser.version()};
-  res.enumeration=await page.evaluate(()=>{
-    const out={}, by={};
-    for(const cv of ["fr","al"]){ setCommandView(cv);
-      for(let t=T_MIN;t<=T_MAX;t+=1){ setClock(t,{instant:true,camera:false});
-        Object.keys(units).forEach(id=>{ if(sideOfNation(FORMATIONS[id].nation)===cv||!posNow(id)||!readHidden(id)) return;
-          const mr=marchRate(id,clock); if(!mr) return;
-          const row=marchRow(id), name=(row.match(/<dt>([^<]*)<\/dt>/)||[,"?"])[1], ice=row.indexOf("frozen mere")>=0;
-          const k=cv+"|"+id+"|"+name+(ice?"|ice":"");
-          if(!out[k]) out[k]={reading:cv, id:id, row:name, saysIce:ice, legOverIce:!!mr.ice, first:fmtClock(t), last:fmtClock(t), minutes:0};
-          out[k].last=fmtClock(t); out[k].minutes++;
-          const s=cv+" "+name+(ice?" (over the frozen mere)":""); by[s]=(by[s]||0)+1; }); } }
-    setCommandView("none");
-    return {byRow:by, rows:Object.values(out)}; });
-  /* by real clicks */
+  /* by real clicks, on the page as it opened (the first-run card closed by its own button) */
   await page.click("#fr-close"); await page.waitForTimeout(300);
   await page.click("#tab-command"); await page.waitForTimeout(200);
   await page.click('.cmd-btn[data-cv="fr"]'); await page.waitForTimeout(300);
@@ -46,6 +33,19 @@ const OUT=opt("--json");
       res.live.push(Object.assign({t,id},r));
       console.log(r.clock,id,r.hidden?"(not known)":"(known)",JSON.stringify(r.rows));
       await page.keyboard.press("Escape"); await page.waitForTimeout(200); } }
+  res.enumeration=await page.evaluate(()=>{
+    const out={}, by={};
+    for(const cv of ["fr","al"]){ setCommandView(cv);
+      for(let t=T_MIN;t<=T_MAX;t+=1){ setClock(t,{instant:true,camera:false});
+        Object.keys(units).forEach(id=>{ if(sideOfNation(FORMATIONS[id].nation)===cv||!posNow(id)||!readHidden(id)) return;
+          const mr=marchRate(id,clock); if(!mr) return;
+          const row=marchRow(id), name=(row.match(/<dt>([^<]*)<\/dt>/)||[,"?"])[1], ice=row.indexOf("frozen mere")>=0;
+          const k=cv+"|"+id+"|"+name+(ice?"|ice":"");
+          if(!out[k]) out[k]={reading:cv, id:id, row:name, saysIce:ice, legOverIce:!!mr.ice, first:fmtClock(t), last:fmtClock(t), minutes:0};
+          out[k].last=fmtClock(t); out[k].minutes++;
+          const s=cv+" "+name+(ice?" (over the frozen mere)":""); by[s]=(by[s]||0)+1; }); } }
+    setCommandView("none");
+    return {byRow:by, rows:Object.values(out)}; });
   console.log(JSON.stringify(res.enumeration.byRow));
   if(OUT){ fs.mkdirSync(path.dirname(path.resolve(OUT)),{recursive:true}); fs.writeFileSync(OUT,JSON.stringify(res,null,1)); }
   await page.close(); await browser.close();

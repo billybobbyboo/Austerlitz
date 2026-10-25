@@ -3,7 +3,7 @@
 **Status: Part A, the specification, is complete and merged (PR #64, `main` at `d86835e`). The owner decided its questions 239-253 on
 24 October 2026 (section 0.3, the decisions with their qualifications, and the points they settle in this text); the implementation follows
 the plan of section 10 in eight implementation PRs, 8A to 8H, of which 8A (section 13) and 8B (section 14, added by its own PR, stacked on
-8A's) are built in the session that recorded the decisions. Names (section 0.4): "Stage 8 Part A" is this specification only;
+8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15) in its own session, after the owner decided question 254. Names (section 0.4): "Stage 8 Part A" is this specification only;
 "implementation PR 8A" is the first of the implementation PRs. Nothing below section 12 was written in Part A, and the decisions for 8C-8H
 set their direction and constraints only: none of them is implemented or verified until its own PR says so.**
 
@@ -163,8 +163,8 @@ those is implemented or verified by 8A or 8B.**
   proposed smaller step for distant labels. Preserve the specified priority, focus, keyboard access, never-dropped items and reduced-motion
   behaviour. I accept the measured trade-off of fewer jumps and more temporary disappearances as the starting design. Acceptance must also
   include whether a visitor can follow a formation through camera movement and playback. Report jumps, appearances/disappearances, flicker and
-  visibility separately. A lower jump count alone does not establish a better result. Do not implement 8C during this session." *8C; not
-  implemented.*
+  visibility separately. A lower jump count alone does not establish a better result. Do not implement 8C during this session." *Applied in
+  8C (section 15).*
 - **241, arrows and event glyphs: option (a).** "Cap movement-arrow casing width at 16 screen pixels in the perspective presentations, reduce
   the fill to 0.62 of its existing opacity, and cap event glyphs at 64 pixels. Test arrows against the drawn terrain alone, preserving their
   annotation role over buildings and vegetation. Keep lines of battle, boundaries and halt bars at their existing widths and opacity, with the
@@ -278,6 +278,11 @@ those is implemented or verified by 8A or 8B.**
     formation through camera movement and playback, and reports jumps, appearances and disappearances, flicker and visibility separately.
 14. **252, the PRs of this session.** 8A is a draft PR on `main`; 8B is a draft PR stacked on 8A's branch until 8A is merged; neither is
     merged by the session that builds it.
+
+**Decision 254 (25 October 2026, with the brief for 8C):** "My answer to question 254 is option (a): retain CONF_SHARE.land at 7%. Record that
+decision and the metric's changed meaning. Keep the paper-map limit unchanged." *Recorded in `tools/visual/thresholds.js` (section 15.1).* The
+same brief asked 8C to treat section 3.5's limits as "the specified starting targets, not permission to change limits automatically" (section
+15.4; question 257).
 
 ### 0.4 The names: Stage 8 Part A, and the implementation PRs
 
@@ -1650,7 +1655,7 @@ section 5.3's flow and section 9.6's boxes matched. It reported 7 findings (1 bl
 
 ## 13. Implementation PR 8A as built (24 October 2026)
 
-**Status.** Built on `claude/blissful-clarke-9axnzp` (draft PR #65), from `main` at `d86835e` (PR #64, Stage 8 Part A, merged; nothing
+**Status.** Merged into `main` on 24 October 2026 (PR #65, `3010fc7`). Built on `claude/blissful-clarke-9axnzp` (PR #65), from `main` at `d86835e` (PR #64, Stage 8 Part A, merged; nothing
 merged since, checked). It applies decisions 251 (a) and 253 (b) as section 0.3 records them, with the points 0.3.1 settles; nothing of 8B-8H.
 No data file, no geography, no simulation and no renderer changed (`check:data`: all 131 declarations byte-identical to its reference; `check:chronology`: 0 errors). The build:
 2,247,866 bytes, md5 `870caf24e7465206d1a0a994e38265eb` (`check:baseline` moved to it).
@@ -1821,8 +1826,9 @@ committed), and failed:
 
 ## 14. Implementation PR 8B as built (24 October 2026)
 
-**Status.** Built on `claude/blissful-clarke-9axnzp-8b` (draft PR #66), **stacked on implementation PR 8A's branch**: its base is
-`claude/blissful-clarke-9axnzp`, so its diff is 8B's alone, and it is to be merged after 8A (or retargeted to `main` once 8A is merged). It
+**Status.** Merged on 24 October 2026 into its base, 8A's branch (PR #66, `95fa28a`), fifteen seconds after 8A was merged into `main`, so not
+into `main`; the integration PR #67 brought it there (`0ca1414`, the same day; `main`'s tree then `95fa28a`'s). Built on
+`claude/blissful-clarke-9axnzp-8b`, **stacked on implementation PR 8A's branch**: its base was `claude/blissful-clarke-9axnzp`, so its diff was 8B's alone. It
 applies decisions 239 (b) and 241 (a) as section 0.3 records them, with the points 0.3.1 settles (items 1-6); nothing of 8C-8H. No data file,
 geography, simulation or renderer changed (`check:data`: all 131 declarations byte-identical to its reference). The build: 2,317,927 bytes, md5 `9b20dc4ca251e17ddb2468f98f920f38`.
 
@@ -2061,3 +2067,421 @@ On the final build (md5 `9b20dc4c...`), here (Chromium 153 through `AUSTERLITZ_C
   raised or loosened; the landscape's confidence share lowered (question 254).
 - The comparison (`compare-8.js`) run again on this build: the calls, triangles, widths, sizes and cues of its three earlier runs (section 14.2).
 - Each new check made to fail (section 14.4).
+
+## 15. Implementation PR 8C as built (25 October 2026)
+
+**Status.** Built on `claude/focused-faraday-76jwny` (draft PR #68, base `main`), for review; not merged. **Where it starts:** implementation PR 8A is in
+`main` (PR #65, `3010fc7`); implementation PR 8B (PR #66) was merged into 8A's branch, `claude/blissful-clarke-9axnzp`, at `95fa28a`, not into
+`main`. The integration PR #67 (head `claude/blissful-clarke-9axnzp`, base `main`, no commit of its own) brought 8B into `main` with nothing lost
+or duplicated: the owner merged it on 24 October 2026 (`0ca1414`), without conflict, and `main`'s tree after it is `95fa28a`'s. 8C is built from
+`95fa28a`; its PR was opened with the integration branch as its base and, #67 found merged, now targets `main`, whose tree is that base's, so its
+diff is 8C's alone. It applies decision 240 (a) as
+section 0.3 records it and decision 254 (a) (the owner's answer with 8C's brief, section 0.3); before them, three corrections the audit of 8A
+and 8B found (A, B, C), in a commit of their own. Nothing of 8D-8H. No data file, geography, simulation or renderer changed (`check:data`: all
+131 declarations byte-identical to its reference); `lowTier` untouched. The build: 2,357,922 bytes, md5 `04547a28419b2d86aec824931c735e0f`.
+
+### 15.1 The audit's findings A, B and C (the prerequisite commit, `6fd80ea`)
+
+**A. The overlays after a restored context.** Reproduced with a real loss and restore (`WEBGL_lose_context`) on 8B's build, the eye and the
+window still, in a view where the drawn ground hides part of the overlays (10.33x at 11:30, low south of Telnitz; 3,741 pixels of overlay hidden
+there): after the restore the ground's depth for the overlays (`GDEPTH`, 8B) was not drawn again, because it is redrawn only when its key (the
+eye, the size, the ground) changes; its 49 sampled texels read zero, and the overlays were tested against an empty target until the camera moved.
+A second cache had the same fault: the environment map (`refreshEnvironment`, a PMREM pass) is made again only when the sky's colours move, so
+the restored scene was lit without it. The frame after the restore against the frame before the loss (the figures hidden: after a restore three
+r128 compiles its programs again in a new order, so coplanar parts of the figures trade places in the opaque sort, about 1,600-1,800 pixels,
+reported and not judged): 238,863 pixels differ on 8B; with the depth's key cleared but the environment not made again, 237,923-237,935 (three
+variants: the depth's key alone, with the environment's key, with the light's); with the depth drawn again and the environment made again, 21-24 (27 in CI's run of the case below).
+**Fixed** by `glRestored` (the restore handler): the depth's key cleared; the environment's key and the light's cleared together, so that the next
+frame's light makes the environment again (either alone does not: the light's key alone reaches `refreshEnvironment`, which finds its own key
+unchanged; the environment's alone is not reached until the light changes); the old environment target dropped, not disposed
+(its dispose would delete objects of the lost context). **Held** by a seventh start-up case in `check:contrast`,
+`context-depth` (`tools/visual/boot-check.js`): the view must hide at least 1,000 pixels of overlay (so the case holds the occlusion, not only the
+overlays' presence), the eye's matrix and the drawing buffer unchanged across the loss, the depth drawn again by the app's own frames
+(`GDEPTH.n` advancing), its texels equal to those before the loss, the frame within 100 pixels of the frame before. It fails on 8B (all three)
+and passes on CI and here on the fixed builds.
+
+*Found on the way, in the test, not the app:* the existing `context-loss` case (decision 212 (b)) failed on CI after fix A (run 40155177371):
+after the restore its clock step drew no frame before its settle ended. A step that changes the environment map recompiles the programs that read
+it, and under software WebGL its first frame comes 2-4 s after the step (2.2-2.4 s before any loss, on both builds); on 8B's build, whose restored
+environment was empty, it came within a second, so the settle (begun 0.3 s after the step, reading `DEV.state`, which only a frame sets) saw it.
+The case now waits for the step's first frame before reading the page as idle; its judgement is unchanged (frames drawn after the step, at least
+one "does not belong to this context" warning, at most `CTX_DELETES`): 193 warnings on the fixed builds, 195 on 8B's.
+
+**B. A march row under a reading.** The audit's report came from a synthetic probe; it was checked here on the real data, under both readings,
+at every minute of the day (`tools/stage8/march-8c.js`, `docs/stage8-evidence/8c/march-8b.json`), and in the live page by real clicks (the order of
+battle's row, its card, its full dossier). Under Napoleon's headquarters at 16:00 the full dossiers of Kienmayer's division and of the Left Wing
+Command said "Position at 16:00: Not known to Napoleon's headquarters at 16:00" and below it "Marching: 2.1 km in 120 min · 1.1 km/h over the
+frozen mere" (2.0 km in 150 min for the Left Wing Command): the row named where the formation is now, and that it moves now, which the reading
+does not know. Over the day, under Napoleon's headquarters, formations it does not know have a march row in 4,852 formation-minutes (4,259 "Marching", 593 "Next move"), "over the
+frozen mere" in 193 of them (Kienmayer from 15:47, the Left Wing Command from 15:49, Dokhturov's column from 16:11); under the Allied
+headquarters in 8,894 (5,725 "Marching", 3,169 "Next move"), none over the ice. The distinction kept: what the dossier says of the formation's day as history (its statements, cited
+and tagged, and the leg's length, time and rate, which 8A's review kept as the plotted leg's figures without a place) is a historical reference;
+"Marching"/"Next move" (whether it moves at this minute) and "over the frozen mere" (where it is at this minute) are derived from its current
+place, which the reading withholds. **Fixed** narrowly in `marchRow`: under a reading that does not know the formation the row is "Plotted leg"
+with the same figures and the reading's note ("whether it moves now, and where, is not shown: not known to %r at %c (a model reading)"); a known
+formation's row unchanged. **Held** by `runtime-test.js` (decision 251's block): for every hidden formation at the clocks it reads, no
+"Marching", "Next move" or "frozen mere" and the neutral row with its note (440 rows, 5 of them over the ice); for every known one the row as
+before (its ice phrase said where its leg crosses the meres). It fails on 8B's build. After the fix the same enumeration finds no hidden
+formation's row naming a movement or a place (`march-8c.json`), and the live page shows "Plotted leg" for both dossiers.
+
+**C. The five unobstructed failures CI reports** (`first-run` at 1600 x 900 and at 1280 x 720, `first-run-laptop` at 1280 x 720, `narrow-1024`,
+`phone-844x390-explore`). Reproduced here on Chromium 141.0.7390.37, the headless shell Playwright 1.56 pins and CI runs (`first-run` 0.6256
+against its baseline 0.626 and 0.506 against 0.507; `first-run-laptop` 0.506 against 0.507; `narrow-1024` 0.5321 against 0.533;
+`phone-844x390-explore` 0.6879 against 0.690), and on 8B's build exactly as on `main`'s. **Not caused by 8A or 8B:** followed back through
+every merged build from roadmap step 1 (PR #49) through Part A (PR #64), 8A (`3010fc7`) and 8B (`95fa28a`) to 8C's on Chromium 141
+(`tools/stage8/panels-8c.js`, `docs/stage8-evidence/8c/unobstructed/`), `first-run` is 0.6256 and `first-run-laptop` 0.5461 on all fourteen, and
+`narrow-1024` 0.5354 on the first two and 0.5321 from step 3 on (PR #51, whose Panels button widened the tools' box by 41 px there). The baselines
+were measured on another Chromium (153, a container's; decisions 141, 164 and 232's re-measures): on it the same 8C build gives 0.6263, 0.5469 and
+0.5334, all at or above their baselines, because there the same embedded fonts set the tools' box 7-11 px narrower (its left edge at 1267.2 px
+against 1260 at 1600 px wide, 662.2 against 651 at 1024) and the view switch 4 px narrower; the viewport, the fonts (embedded, decision 141) and the
+panels' layout are otherwise the same. (`phone-844x390-explore` is measured by the harness on a phone page reached by taps, 0.6879 on Chromium 141
+on 8B's and 8C's builds; the panels script reads that case on a desktop page, where its share is not the harness's, and its rows there are not used.) **Not fixed by lowering a baseline:** `remeasure.js` now stops
+unless its two runs are on Playwright's pinned headless shell (`--any-browser` lifts it for a study, never for a limit), and the re-measure on CI's
+browser is put to the owner (question 256, section 15.10). Until the owner decides, `check:visual` on CI reports these five as before.
+
+**Decision 254 (a)** is recorded in `tools/visual/thresholds.js`: `CONF_SHARE.land` stays 7%; since 8B the measure is the ground cues as each case
+shows them (the outlines, a reported formation's C zone, the eye level's own side), no longer the filled marks, and a return of the filled washes
+fails it; the paper map's limit (16%) unchanged.
+
+### 15.2 The map layer in motion (decision 240 (a))
+
+As section 3.4 describes it, in `app.js` (`MLS`, `mlStabBegin`, `mlHoldTry`, `mlLayout`), with the values decided there (held by `css-test.js`):
+
+- **Motion is read from the app's own state** (`mlMotionSource`): a tween or glide in flight (a vantage, the paper map's eased move, Follow), Play,
+  the input hold (`INPUT_HOLD_MS`, 450 ms after a pointer, wheel or key event), a panel's move. A pass is *moving* from the first pass whose view
+  (the camera's matrices, the window, the clock) changed under a motion source until the source ends: between a wheel's steps or a key's repeats
+  the view stands still for a frame or two and the gesture goes on. No harness switch: the checks drive the app through its own input.
+- **While the view moves** each counter and name first keeps the place it held against its own anchor (a counter its frame's foot where it stood;
+  a size change keeps the side toward the anchor), else takes one of the places hugging its anchor (`mlCands`: a label's eight, a place name's
+  eight beside its marker, a counter's one), else it is hidden and fades out. What is hidden or new is looked for again only in a re-placement pass,
+  every 333 ms of the app's clock, by the full search, and drawn after **two** successive passes with room. Collisions are tested in every frame
+  against the drawn boxes, the panels, the arrow heads and the event glyphs: no overlap among live items in any frame.
+- **What is never dropped** (decision 39: the selection, the hovered, the highlighted family, the live events) and the item with the keyboard's
+  focus are placed by the full search in every frame, as before 8C (section 3.4's invariant), never held or hidden; the focused item is drawn
+  over the others when it has no room (step 3's A-2), as before.
+- **The band:** while the view moves, the level-of-detail switches read a distance held until the true one has moved 8% from it (the corps and
+  division counters at 250 units and the brigades at 165, the names' ranges 170/220/300, the places at 210, the counters' full form at 70, the
+  names near the eye at 34, the plan links at 190, the far step's ratio); at rest the true distance. A view's level of detail never depends on
+  how it was reached.
+- **Fades** of 180 ms of wall-clock time while the view moves or after it has moved: an item appearing fades in; an item leaving while still in
+  the layer (hidden by the hold, or dropped) fades out where it was last drawn, as the same element (no second name, no second focus stop),
+  under the live items (`z-index -1`) and taking no pointer (`.ml-fading`); an item no longer in the layer (a level-of-detail switch, a reading
+  that no longer knows it, a layer turned off) leaves at once. A counter's content (strength, status, reading) changes at once, never faded.
+  **Under reduced motion no fade**; the hold and the band are kept (they reduce motion).
+- **At rest after motion** (the band released, the final pass at the true distance): every place that still fits is kept first, in priority
+  order, then the others are placed by the full search in the room left; nothing drawn moves to make room for another (no reshuffle), and the
+  page returns to idle (one pass more after the last moving one).
+- **A view reached without motion** is laid out exactly as before 8C: the first pass after a discontinuity, and every pass at rest until the view
+  next moves, has no memory, no hold, no band and no fade. A discontinuity clears the memory: a change of ground (map type), presentation,
+  reading, the eye level entered or left, the display factor, a resize, a restored context, a tween ended at once, a move made at once (under
+  reduced motion a glide or Follow's step is a jump), and any jump a pass finds (the clock more than 5 minutes from the last pass's, the eye or
+  target moved more than 0.6 of the eye's distance or the view turned more than 40 degrees, the paper map's plan moved or zoomed as far).
+
+**What is not as Part A prototyped it, and why.** (1) Part A's prototype placed the never-dropped items by "its last place, else the full
+search"; section 3.4 and decision 240 keep them "placed by the full search every frame as today", and 8C does so: their 39 jumps over the 16
+motions are the build's own 39 (counted in the totals below; the prototype's 249 did not have them). (2) Part A's rest pass took each item in
+priority order, its last place else the full search, so a returning item of higher priority could take a held item's place and move it; 8C keeps
+every valid place first, as the owner's brief for 8C asks ("retain valid placements else full search, avoid reshuffling"): jumps at rest after the
+16 motions 57 with the prototype's order (297 in all), 5 with 8C's (245). (3) A first 8C build also took the full search's layout at rest whenever it
+placed more items than the kept places allowed; that reshuffled the layer at the moment of rest (79 jumps at rest, 319 in all, over the 16
+motions) and was removed for the same reason. (The three builds measured with the same driver, Chromium 141.) What a view reached through motion keeps (`tools/stage8/rest-8c.js`, `docs/stage8-evidence/8c/rest-8c.json`): at rest
+after each of the 16 motions it places as many items as the same view reached directly in all (448 and 448), one or two fewer after four of them
+(the pan, the orbit and the glide of Landscape with counters, the low view's orbit), one more after six, as many after six; its dropped ids differ
+from the direct view's after twelve (other items kept, others dropped) until the view next moves or is reached afresh. The items it does not draw
+are reachable by hover and keyboard as every dropped item is (decision 39).
+
+### 15.3 The far step (section 7.2; decision 240 (a))
+
+In the two perspective presentations an item whose anchor stands farther from the eye than 1.5 times the eye's distance to its orbit target is
+drawn a type step smaller, where decision 16 allows one: a place's or a terrain-study name, `t-small` (11.5 px) to `t-micro` (10.5 px, the floor
+decision 16 gives tertiary information; the harness holds it there). The item keeps the box its own size gives it for the layout (its place, its
+room, its hover target), so no placement, drop or dropped id changes; the smaller words stand inside that box on the side toward its anchor. The
+distance is guarded (an eye nearer than one unit to its target, or a ratio that is not finite: no step) and held inside the band while the view
+moves (no flicker at the boundary). None on the paper map. **Battle information is not stepped:** formation names and counters, events, the
+plateau's reading, the arrows' and the objectives' labels are at `t-ui` (12.5 px), and decision 16 holds battle information at 12 px at least;
+the type scale has no step between. In Part A's low views beyond 1.5 times the eye's distance to its target
+stand 23 of the 30 items drawn in `horizon-east` (16 formation names, 3 events, 2 arrows' labels, the plateau's reading, an objective), none of
+them a place or terrain-study name, so none is stepped; in `ice-low` 25 of 35 (21 formation names), 2 stepped (places); in `stream-low` 19 of 23
+(9 formation names, 5 places), the 5 places stepped; close on Sokolnitz 9 of 19, its 5 places stepped (`label-far.js` on this build,
+`docs/stage8-evidence/8c/label-far-8c.json`). So in the low views, where Part A found the
+"wall" of far names (16 of the 23 far items in `horizon-east` formation names), the step touches only the places and terrain-study names; this
+is put to the owner as question 255 (section 15.10). In the `check:visual` cases it draws 1-5 names smaller (close on Sokolnitz 5, the low
+Pratzen views 1-3, Landscape with counters dimmed 2, the eye level 1); their boxes, drops and dropped ids are 8B's (section 15.5).
+
+### 15.4 The checks, and each made to fail
+
+- **The self-test** (its manifest 261 to 270: nine added, none removed or renamed; all 270 pass here and on CI): the motion invariants (a pan
+  and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play, driven through the app's own frame on a clock of the
+  test's and its own pointer and wheel handlers: no overlap, what is never dropped drawn, an item drawn in two frames keeps its place against its
+  anchor or takes a place hugging it, never a ring or a row, one appears only in a re-placement pass and never back within 333 ms); the
+  remnants and the rest (a leaving item fades out as itself, under the live items, never picked by the pointer, gone within 180 ms; at rest nothing drawn moved
+  to make room for another, the band released, the layer's items those of the view reached without motion, nothing fading, no frame asked
+  for); a view reached without motion laid out as before the view moved; the band (with a key held, the eye drawn back 0.5% a frame across the
+  corps switch: the divisions kept while within 8%, the corps at rest); reduced motion (no remnant, every drawn item at full opacity, the hold
+  kept); a reading changed while the view moves (nothing drawn or fading that it does not know); the item with the keyboard's focus (the most
+  crowded drawn formation) placed by the full search in every frame of an orbit, drawn and never held;
+  a key that moves nothing leaves the layer at rest; the far step (close on Sokolnitz, 4 of 5 place names at 10.5 px inside their own boxes, the
+  layout identical without the step, none on the paper map, no battle information stepped).
+- **`css-test.js`** holds the decided values (`MLS`: 333 ms, 2 passes, 8%, 180 ms, 1.5), the motion read from the app's state alone, no fade
+  under reduced motion or in a fresh view, the band on every switch and released at rest, the never-dropped items and the focus by the full
+  search, each discontinuity a fresh view, the remnant's rule and the far step's (t-micro, on `.mlt-small` only).
+- **`runtime-test.js`** dry-runs the stabiliser on the app's own state (a reset gives a fresh view; the eye moved under the input hold reads as
+  moving with every item counted once, fades on unless reduced motion asks; the hold over, at rest; the band's arithmetic), and holds finding B.
+- **The motion block** of `check:visual` and `check:selftest` (`tools/visual/harness.js`, judged in `thresholds.js` `MOTION`), on a page of its
+  own: the 16 motions of `label-motion.js` driven through the app's own input and frame (`tools/visual/motion.js`: 30 frames a second on a clock
+  of the driver's, the WebGL draw skipped, nothing set that the app does not set), each from a view reached without motion and followed by 30
+  frames at rest; the four that real input can drive (the left drag, the right drag, the wheel on Landscape with counters and on the paper map)
+  by real input, Playwright's mouse through the browser's own input pipeline (on `check:selftest`'s page two of them, the right drag and the
+  paper map's wheel: each real-input frame costs a round trip; the whole block first took 12.5 minutes of the job's 45, and with the views settled
+  without a drawn frame the job takes 15-34 minutes on CI's runners, by runner, on this build: at most 11 minutes short of its limit); two with Saint-Hilaire's division
+  selected; three under a headquarters' reading; a finger's pan on the phone layout (390 px). Judged against the owner's starting targets over
+  the 16 (jumps 300, pops 1,300, flickers 200, the level-of-detail switches not above 8B's 130 in the same motions), and in every run: no
+  overlap, no never-dropped item hidden in view, no remnant out of rule, nothing drawn that the reading does not know, frames read as moving,
+  idle at rest after the motion (Play aside), each real-input motion within 6 (or 25%) of its twin driven in the page.
+  *Found in the final validation, in the driver, not the app:* on one build the block's totals differed by a few counts from run to run (CI's
+  `check:selftest` 244 jumps, 997 pops, 17 flickers; CI's `check:visual` 242, 1,014, 18; here 237, 1,021, 19; the level-of-detail switches 130 in
+  all), each within the limits but not repeatable. The block sets each view up without a drawn frame, so a run followed the last one within
+  a second or two, and the driver restarted its clock at the page's real time, behind the last run's end: the last run's input hold could
+  still be running, and the frames left asked for (render on demand) decided how many frames before the motion laid the layer out, so the
+  phase of its re-placement passes (traced frame by frame: the runs part at the first motion frame where one is a re-placement pass and
+  the other not). Repeated here with a 1.5 s pause between the set-up and the run, the totals moved (248, 1,005, 22). The driver now starts
+  each run 2 s past every timer the set-up left, with the page's clock never running back, on a view marked as reached afresh (the app's own
+  `mlReset`, as placing the camera does) and with no frame pending, as an idle page stands: four runs here, with and without the pause, give
+  the same counts motion by motion, 245, 985, 130 and 10, exactly `label-motion.js`'s (whose set-up draws frames and so already started
+  clean). On CI (`check:selftest` on `88da6f0`, run 40176782747) every one of the block's 24 runs gives the same counts as here: the 16 at
+  245, 985, 130 and 10, the two by real input exactly their twins' (before the fix within a few jumps of them: 5 and 7 against 7 and 5 in CI's
+  `check:visual` on `339143c`), the
+  selections', the readings' and the phone's as `label-motion.js` measured them. CI's `check:visual` on the same commit
+  gives them again in its 26 runs, each of its four by real input exactly its twin's.
+- **Made to fail** (`tools/stage8/mutate-8c.js`: one string replaced in a copy of the built page; the self-test's 8C block run on it, read
+  from the page's own source, and with `--motion` the 16 motions judged as the block judges them): on the build all nine of the block's checks pass. *The stabiliser off* (every pass laid out afresh, as 8B): three fail
+  (the motion invariants, the rest, reduced motion's hold) and the motion block fails (3,439 jumps). *No band*: the band's check fails; the motion
+  block passes (130 level-of-detail switches either way: the band moves the switches to the moment the view stops and removes none, so the totals
+  cannot tell it; the band is held by the self-test and `css-test.js`). *A reshuffle at rest* (the full search for every item after motion): the
+  rest's check fails, and the motion block (384 jumps). *A returning item drawn at once* (no re-placement pass, no second pass): the motion
+  invariants fail, and the motion block (378 jumps, 3,167 pops, 1,201 flickers). *The never-dropped items held like the rest*: the motion
+  invariants fail, and the motion block (never-dropped items hidden in view in six runs: the zooms and Plays of Landscape with
+  counters, the paper map and the landscape). *The keyboard's focus held*: the focus check fails
+  (Saint-Hilaire's counter held at frames 8-11 of the orbit). *A remnant picked by the pointer* (the app's picking, `mlHit`, taking items not
+  drawn): the remnants' check fails. *Fades under reduced motion*: the reduced-motion check fails. *A remnant kept past its fade*: three fail.
+  *The far step on battle information*: the far step's check fails. Two checks were found passing on their first mutations and were made able
+  to fail (`339143c`): the focus held (A-2's fallback still drew it, so "drawn in every frame" held: the check now focuses the most crowded
+  drawn formation, orbits the view and requires it never held) and a remnant's CSS without `pointer-events:none` (the whole map layer takes no
+  pointer events, so the rule is belt and braces: the check now asks the app's own picking at the remnant's centre). `css-test.js`'s block fails on
+  each of seven mutated sources (fades under reduced motion, the pass at 100 ms, the reading's reset removed, a remnant taking the pointer, a
+  harness switch in the motion source, the band kept at rest, the far step on battle information). The `context-depth` case fails on 8B's build;
+  `runtime-test.js`'s finding-B checks fail on 8B's build.
+
+### 15.5 A view reached without motion: unchanged
+
+Every `check:visual` case the harness applies by its spec (20: all but the fresh pages, the phone and device cases, the interactions and the
+opening's), applied and settled on 8B's build and on 8C's (`tools/stage8/fresh-8c.js`, `docs/stage8-evidence/8c/fresh-8c.json`): every item of the
+map layer in the same state with the same box to the pixel and the same leader, the same drops and dropped ids, in all 20. The far step draws
+names smaller in seven of them inside those same boxes (section 15.3).
+
+### 15.6 Before and after: the measures in motion and the formations followed
+
+`tools/stage8/label-motion.js --app` on 8B's build and on 8C's, the same driver (Chromium 141; `docs/stage8-evidence/8c/label-motion-8b.json`,
+`label-motion-8c.json`): Part A's measures (section 3.2) over each motion and 30 frames at rest after it, and the tracking of formations a
+visitor follows. **The driver differs from Part A's probe**, so its numbers are not Part A's: Part A set a `MOVING` flag and moved the camera by
+the app's functions; here the app reads its own state and the motion comes through its input handlers (a drag of 8 px a frame, a right drag of
+6 px, the wheel's own step every third frame, ten in and ten out, a vantage's glide, Play at ½x with Follow from 09:00). Under this driver 8B's
+own counts are the "before".
+
+**Per motion** (8B / 8C; a motion's counts include its 30 frames at rest; "formations drawn while in view" is the share of the frames in which a
+followed formation stood in view, on the screen, not under a panel, in front of the ground and in the layer at its level of detail, that it was
+drawn; "longest hidden by the layout" the longest such run of frames it was not drawn; "back after room" the most frames, in ms of the app's clock,
+it stayed hidden once the full search would have placed it in every frame since):
+
+| motion | jumps | pops | level-of-detail switches | flickers | formations drawn while in view | longest hidden by the layout | back after room (most) |
+|---|---|---|---|---|---|---|---|
+| `hybrid-pan` | 131 / 5 | 39 / 55 | 23 / 23 | 8 / 0 | 78% / 67% | 2,033 / 2,467 ms | 0 / 667 ms |
+| `hybrid-zoom` | 334 / 27 | 95 / 116 | 24 / 24 | 23 / 4 | 85% / 61% | 1,533 / 1,533 ms | 0 / 633 ms |
+| `hybrid-orbit` | 508 / 7 | 117 / 145 | 0 / 0 | 31 / 0 | 85% / 58% | 1,300 / 2,200 ms | 0 / 667 ms |
+| `hybrid-glide` | 359 / 16 | 122 / 79 | 12 / 12 | 40 / 1 | 86% / 68% | 2,533 / 2,533 ms | 0 / 633 ms |
+| `hybrid-play` | 237 / 10 | 76 / 109 | 2 / 2 | 16 / 2 | 76% / 62% | 4,033 / 3,100 ms | 0 / 667 ms |
+| `paper-pan` | 12 / 0 | 2 / 5 | 0 / 0 | 0 / 0 | 100% / 97% | 0 / 667 ms | 0 / 667 ms |
+| `paper-zoom` | 314 / 8 | 20 / 92 | 0 / 0 | 14 / 2 | 100% / 69% | 0 / 667 ms | 0 / 667 ms |
+| `paper-glide` | 288 / 5 | 21 / 43 | 27 / 27 | 9 / 0 | 100% / 69% | 0 / 633 ms | 0 / 633 ms |
+| `paper-play` | 113 / 5 | 6 / 30 | 2 / 2 | 1 / 0 | 100% / 93% | 0 / 667 ms | 0 / 667 ms |
+| `land-pan` | 113 / 12 | 6 / 34 | 2 / 2 | 1 / 0 | 100% / 91% | 0 / 1,133 ms | 0 / 567 ms |
+| `land-zoom` | 233 / 32 | 27 / 63 | 30 / 30 | 8 / 1 | 100% / 77% | 0 / 667 ms | 0 / 667 ms |
+| `land-orbit` | 408 / 40 | 49 / 78 | 0 / 0 | 12 / 0 | 100% / 83% | 0 / 667 ms | 0 / 667 ms |
+| `land-play` | 208 / 22 | 21 / 74 | 2 / 2 | 3 / 0 | 100% / 83% | 0 / 667 ms | 0 / 667 ms |
+| `low-pan` | 18 / 6 | 3 / 10 | 0 / 0 | 0 / 0 | 100% / 93% | 0 / 533 ms | 0 / 533 ms |
+| `low-orbit` | 74 / 16 | 13 / 29 | 0 / 0 | 2 / 0 | 100% / 78% | 0 / 633 ms | 0 / 633 ms |
+| `low-zoom` | 89 / 34 | 19 / 23 | 6 / 6 | 4 / 0 | 100% / 80% | 0 / 633 ms | 0 / 633 ms |
+| **the 16** | **3,439 / 245** | **636 / 985** | **130 / 130** | **172 / 10** | | | |
+
+Over the 16 motions 8C makes **jumps 245** (8B 3,439; the target at most 300), **flickers 10** (172; at most 200), **the level-of-detail switches
+130** (130: the band defers them to the moment the view stops, as Part A found, and removes none), **pops 985** (636; at most 1,300), no overlap
+in any frame of either. Of the 245 jumps 39 are the never-dropped items', placed by the full search every frame as before (8B's 39), 3 are boxes
+whose size changed (a counter's full form, new words), and 5 are at rest after the motion. The four motions driven by real input give exactly
+their twins' counts on both builds (the browser's own events read as the page's synthetic ones are: the motion source is the app's own input hold).
+
+**The other runs** (8B / 8C): the four by real input, three under a headquarters' reading, a finger's pan on the phone layout (390 x 844), and four
+with Saint-Hilaire's division selected:
+
+| run (8B / 8C) | jumps | pops | level-of-detail switches | flickers | formations drawn while in view | never-dropped hidden | drawn though not known |
+|---|---|---|---|---|---|---|---|
+| `hybrid-pan+real` | 131 / 5 | 39 / 55 | 23 / 23 | 8 / 0 | 78% / 67% | 0 / 0 | 0 / 0 |
+| `hybrid-orbit+real` | 508 / 7 | 117 / 145 | 0 / 0 | 31 / 0 | 85% / 58% | 0 / 0 | 0 / 0 |
+| `hybrid-zoom+real` | 334 / 27 | 95 / 116 | 24 / 24 | 23 / 4 | 85% / 61% | 0 / 0 | 0 / 0 |
+| `paper-zoom+real` | 314 / 8 | 20 / 92 | 0 / 0 | 14 / 2 | 100% / 69% | 0 / 0 | 0 / 0 |
+| `hybrid-pan+fr` | 78 / 6 | 33 / 48 | 23 / 23 | 5 / 0 | 78% / 68% | 0 / 0 | 0 / 0 |
+| `hybrid-pan+al` | 98 / 5 | 34 / 48 | 14 / 14 | 7 / 0 | 88% / 73% | 0 / 0 | 0 / 0 |
+| `paper-play+al` | 86 / 5 | 5 / 33 | 2 / 2 | 0 / 0 | 100% / 89% | 0 / 0 | 0 / 0 |
+| `phone-pan+touch` | 164 / 1 | 66 / 49 | 0 / 0 | 22 / 0 | 75% / 40% | 0 / 0 | 0 / 0 |
+| `hybrid-zoom+sel` | 347 / 31 | 115 / 111 | 24 / 24 | 34 / 4 | 85% / 59% | 0 / 0 | 0 / 0 |
+| `hybrid-orbit+sel` | 538 / 10 | 130 / 141 | 0 / 0 | 34 / 4 | 84% / 59% | 0 / 0 | 0 / 0 |
+| `paper-zoom+sel` | 307 / 13 | 21 / 106 | 0 / 0 | 12 / 2 | 100% / 67% | 0 / 0 | 0 / 0 |
+| `paper-play+sel` | 137 / 8 | 5 / 40 | 2 / 2 | 0 / 2 | 100% / 87% | 0 / 0 | 0 / 0 |
+
+**Following a formation** (decision 240's qualification: whether a visitor can follow a formation through camera movement and playback). Over
+the 16 motions, for every formation whose counter or name the layer collects:
+
+| over the 16 motions (8B / 8C) | |
+|---|---|
+| formation-frames in view (drawn, behind the ground, or hidden by the layout) | 29,202 / 29,291 |
+| of them drawn | 26,989 (92%) / 21,987 (75%) |
+| hidden by the layout (no room, or held by 8C until a re-placement pass) | 2,213 / 7,304 |
+| behind the ground | 0 / 0 |
+| off the screen or under a panel (not counted against visibility) | 8,271 / 8,330 |
+| out of the layer by its level of detail | 3,481 / 3,333 |
+| times a formation was hidden by the layout | 131 / 417 |
+| longest such disappearance | 4,033 / 3,100 ms |
+| back after the layout had room for it again: mean, most | 0, 0 / 494, 667 ms |
+| a drawn formation's box moving against its anchor (jumps) | 2,197 / 97 |
+| its box changing side of its anchor | 1,568 / 91 |
+| two neighbouring formations' boxes swapping order (identity) | 2,642 / 270 |
+
+And for each of the eleven formations followed by name (over the 16 motions):
+
+| formation (8B / 8C, over the 16) | drawn while in view | longest hidden by the layout | jumps | swaps |
+|---|---|---|---|---|
+| sthilaire | 93% / 65% | 2,067 / 1,600 ms | 91 / 3 | 68 / 9 |
+| vandamme | 100% / 78% | 33 / 1,233 ms | 86 / 3 | 98 / 9 |
+| legrand | 100% / 71% | 0 / 1,233 ms | 108 / 10 | 40 / 5 |
+| dok | 100% / 83% | 0 / 633 ms | 21 / 3 | 30 / 5 |
+| lang | 100% / 77% | 0 / 633 ms | 59 / 5 | 33 / 4 |
+| prz | 100% / 77% | 0 / 667 ms | 77 / 5 | 37 / 2 |
+| kollo | 99% / 93% | 267 / 567 ms | 59 / 4 | 72 / 16 |
+| lich | 98% / 82% | 1,000 / 1,367 ms | 90 / 4 | 165 / 11 |
+| bag | 100% / 95% | 0 / 533 ms | 28 / 0 | 75 / 15 |
+| c_iv | 100% / 77% | 0 / 667 ms | 23 / 0 | 30 / 3 |
+| c_iii | 100% / 90% | 0 / 400 ms | 19 / 0 | 1 / 0 |
+
+**What this means, candidly.** 8C does what decision 240 (a) asked of it: a formation a visitor follows no longer darts across the screen or trades
+places with its neighbours while the view moves (its box moved against its anchor 97 times against 2,197; changed side of it 91 times against
+1,568; swapped order with a neighbour 270 times against 2,642), and the layer stops reshuffling at rest. The price is the one the owner accepted, and
+it is larger than "a fifth fewer items" in some motions: over the 16 motions the formations in view are drawn in 75% of their frames against 92%
+(the paper map's zoom and glide 69% against 100%, the orbit of Landscape with counters 58% against 85%, the phone layout's pan 40% against 75%);
+a formation hidden by the layout is hidden 417 times against 131, and comes back 0.4-0.7 s after the layout has room for it (8B at once, by
+moving it or another); its longest disappearance is 3.1 s against 4.0 s. The counters are hidden more than the names: a counter has one place
+beside its anchor, so when that is taken it has nowhere else to go until a re-placement pass (question 258). The never-dropped items are never
+hidden: the selected division is drawn in every frame of the zoom and the orbit on both builds (its 9 and 1 jumps the same on both, its swaps 5
+and 7 on 8B, 0 and 2 on 8C). Under either headquarters' reading nothing it does not know is drawn or fades in any frame.
+
+### 15.7 The layer's cost
+
+`tools/stage8/layer-cost.js` (section 3.5's budget: at most 0.5 ms more at the median of a pass and 2 ms more at its 95th percentile): the 16
+motions, each pass of `mlLayout` timed by the real clock, the WebGL draw skipped, the two builds (8B's `9b20dc4c` and this one) in turn, three
+rounds with the order alternated, on Chromium 141 in this container (4 CPUs, Intel Xeon at 2.10 GHz, no other job running; the load average of
+about 4 is the run's own). CPU time in a page on this machine; a device's frame time is for the device runs (section 8), not run here.
+
+| motion | 8B: median / 95th percentile (ms) | 8C | 8C's excess |
+|---|---|---|---|
+| `hybrid-pan` | 1.4 / 2.5 | 1.3 / 2.5 | −0.1 / 0 |
+| `hybrid-zoom` | 1.4 / 4.1 | 1.1 / 3.2 | −0.3 / −0.9 |
+| `hybrid-orbit` | 1.4 / 2.2 | 1.2 / 2.2 | −0.2 / 0 |
+| `hybrid-glide` | 1.5 / 2.7 | 1.4 / 2.7 | −0.1 / 0 |
+| `hybrid-play` | 1.3 / 2.0 | 1.2 / 2.1 | −0.1 / +0.1 |
+| `paper-pan` | 1.3 / 2.7 | 1.1 / 2.1 | −0.2 / −0.6 |
+| `paper-zoom` | 1.0 / 2.2 | 0.9 / 1.8 | −0.1 / −0.4 |
+| `paper-glide` | 1.2 / 2.8 | 1.1 / 2.3 | −0.1 / −0.5 |
+| `paper-play` | 1.0 / 1.6 | 0.9 / 1.5 | −0.1 / −0.1 |
+| `land-pan` | 1.1 / 1.9 | 1.1 / 2.0 | 0 / +0.1 |
+| `land-zoom` | 0.8 / 2.3 | 0.9 / 2.1 | +0.1 / −0.2 |
+| `land-orbit` | 0.9 / 1.8 | 0.9 / 1.4 | 0 / −0.4 |
+| `land-play` | 1.0 / 1.5 | 0.9 / 1.6 | −0.1 / +0.1 |
+| `low-pan` | 0.7 / 1.2 | 0.9 / 1.6 | +0.2 / +0.4 |
+| `low-orbit` | 0.8 / 1.4 | 1.0 / 1.6 | +0.2 / +0.2 |
+| `low-zoom` | 0.6 / 1.2 | 0.8 / 1.4 | +0.2 / +0.2 |
+| **all passes** | **1.1 / 2.2** (3,891 passes) | **1.0 / 2.1** (4,116) | **−0.1 / −0.1** |
+
+Within the budget in every motion: the worst excess is +0.2 ms at the median and +0.4 ms at the 95th percentile, both in the low perspective
+views, where the far step's test and the band's arithmetic run for every item. A pass in motion is cheaper than 8B's, as the hold tries one place
+where 8B searched them all; 8C lays the layer out in 6% more frames (4,116 passes against 3,891), the re-placement passes and the fades after
+the view stops, which 8B did not run. `docs/stage8-evidence/8c/layer-cost.json`.
+
+### 15.8 The recordings
+
+`tools/stage8/record.js --app` (`record-app.js`): the same driver with the WebGL draw kept, every third frame of 30 a second captured, so each
+clip shows 10 frames of the visitor's second, as Part A's do; stacked top to bottom: 8B, 8C, 8C under reduced motion
+(`docs/stage8-evidence/8c/clips/`), each made with the driver as committed (its runs starting as an idle page stands, section 15.4):
+- `hybrid-orbit.mp4`: Landscape with counters from the Field vantage at 09:30, orbited by a right-button drag of 6 px a frame for 2 s, then
+  1 s at rest (31 frames shown, 3.1 s);
+- `hybrid-zoom.mp4`: the same view, the wheel's ten notches in and ten out over 2 s, then 1 s at rest;
+- `paper-zoom.mp4`: the paper map as entered at 09:30, the same wheel;
+- `paper-play.mp4`: the paper map as entered while Play runs at ½x from 09:00 until the clock reaches 09:20, then 1 s at rest (71 frames
+  shown, 7.1 s): the app's own Play, so the clock is held 1.5 s in the dwell at the 09:00 event's start and eases 0.5 s out of it (with
+  120 frames, as the measured motion has it, the clock reached 09:15; the clip plays on to 09:20).
+What they show agrees with section 15.6. While the view moves, 8B's counters and names take new places from frame to frame, and 8C's keep
+theirs against their anchors; 8C draws visibly fewer of them in the zooms and the orbit (mid-zoom on the paper map two counters where 8B
+draws five or six), the others fading out and coming back a moment later; at rest 8C moves nothing, and under reduced motion it keeps the
+same places with no fade (the same layout at rest as 8C's). The clips are frame-stepped under software WebGL at 10 frames of the visitor's
+second, not filmed in real time; `record-log.txt` gives each build's frames and clock at the end.
+
+### 15.9 What was run
+
+On the final build (md5 `04547a28...`, 2,357,922 bytes; the commits after `339143c` change the motion driver, the recorder and the records,
+not the build), here on Chromium 141.0.7390.37, the headless shell Playwright 1.56 pins and CI runs, software WebGL, and on CI:
+- `npm run build` writes the committed file byte for byte; `npm test`: all nine suites and the height guard pass; `check:data`: all 131
+  declarations byte-identical to its reference; `check:chronology`: 0 errors; `check:baseline`: passes.
+- `check:selftest` here (the driver before its fix): 270 of 270 by name, the slider, Play and the 3E keys by real key presses, the live
+  blocks and the motion block passing; `check-report.js` judges its report again with no failure, and the manifest was written from it
+  (the same 270 names; its build's md5). Again with the fixed driver (`88da6f0`), on a machine loaded with three other browser jobs:
+  270 of 270, the motion block's 24 runs giving CI's counts run for run, `check-report.js` again with no failure.
+- CI on `339143c` (run 40162602191): the checks job (`npm test`, `check:data`, `check:chronology`); `check:contrast`: 45 states reached
+  (10 as a phone), every text at AA in the embedded faces, no console message, the seven start-up cases (`context-loss` 193 warnings, at most
+  248; `context-depth` the frame within 27 pixels of the frame before the loss, the view hiding 3,741 pixels of the overlays); `check:selftest`:
+  270 of 270 and the motion block; all pass. `check:visual`: its 39 cases, sweeps and live blocks, with five failures, exactly the five
+  inherited unobstructed shares (section 15.1, C: `first-run` 62.6% and at 1280 x 720 50.7%, `first-run-laptop` 50.7%, `narrow-1024` 53.2%,
+  `phone-844x390-explore` 68.8%, against their baselines 62.6%, 50.7%, 50.7%, 53.3% and 69.0%: each short by 0.0004 to 0.0021, which the log's one
+  decimal hides in three); no other failure: every case's drops and dropped items, every text at AA, the self-test's 270 checks, the motion block
+  (242 jumps, 1,014 pops, 130 switches, 18 flickers before the driver's fix) and the live blocks pass. No limit was moved.
+- CI on `88da6f0` (the driver's fix; the push and pull-request runs 40176779106 and 40176781836, and with `check:visual` 40176782747):
+  the checks job, `check:contrast` and `check:selftest` (270 of 270; 15-34 minutes by runner) pass in all three runs; `check:visual` (69
+  minutes on its runner) fails the same five unobstructed shares with the same values and nothing else, and its motion block's 26 runs
+  give exactly the counts measured here (section 15.4).
+- The evidence of sections 15.1-15.8, each file naming its build (`docs/stage8-evidence/README.md`).
+- Not run: a device of the owner's (none in this session: device acceptance is pending), Safari, a GPU's frame time.
+
+### 15.10 What remains, and the owner's questions 255-258
+
+- **Question 255: the far step and battle information** (section 15.3). (a) **As built:** the step on place and terrain-study names only;
+  battle information keeps `t-ui` (decision 16). (b) A step to 12 px for far battle information (a new token, `t-ui` less 0.5 px: within decision
+  16, barely visible). (c) Far battle information at `t-small` (11.5 px): it would amend decision 16's 12 px floor. (d) A hierarchy for battle
+  information by another means than size (a lighter plate or ink for far names, still at AA), to be prototyped and measured first. **Recommended:
+  (a)**, with (d) as a prototype for a later PR if the low views' wall of names still reads as one weight.
+- **Question 256: the five inherited unobstructed baselines** (section 15.1, C). (a) **Re-measure them on CI's browser**, by `remeasure.js` over
+  two full runs on Playwright's pinned headless shell, as decision 141 set its re-measure: from today's measures `first-run` [0.625, 0.506],
+  `first-run-laptop` [0.546, 0.506], `narrow-1024` [0.532, 0.628], `phone-844x390-explore` [0.687, —], each recorded with what was, what is and why;
+  (b) keep them, CI reporting the five; (c) pin the container's Chromium on CI instead. **Recommended: (a)**: the shortfalls are a browser's
+  rendering of the same page, not a change of the layout.
+- **Question 257: the motion block's limits** (section 15.4). Section 3.5 set them "at the 8C build's measure and put to the owner then"; the
+  owner's brief for 8C called section 3.5's values "the specified starting targets, not permission to change limits automatically". (a) **Keep
+  the starting targets** (jumps 300, pops 1,300, flickers 200, the level-of-detail switches not above 8B's 130), as built; (b) set them at 8C's
+  measure (jumps 245, pops 985, flickers 10, the level-of-detail switches 130), so a regression shows sooner, with the per-run invariants as now. **Recommended: (b)**, the block's
+  counts being repeatable since the driver's fix (section 15.4: the same counts in every run here, with and without a pause before each run). CI's `check:selftest` gives the same counts (section 15.4).
+- **Question 258: the formations' visibility while the view moves** (section 15.6). The owner accepted "fewer jumps and more temporary
+  disappearances" as the starting design; measured, the formations in view are drawn in 75% of their frames over the 16 motions against 8B's 92% (69% against 100% in the paper map's zoom, 40% against 75% in the phone layout's pan), and a hidden one comes back 0.4-0.7 s after the layout has room for it (section 15.6). (a) **Accept it as built**; (b) prototype more places beside a counter's anchor (today
+  one: a counter hidden by the hold has nowhere else to go, so counters disappear more than names) in a later PR, measured as here; (c) shorten the
+  wait for a returning item (one pass with room instead of two): sooner back, more flicker. **Recommended: (a) now, (b) as a measured follow-up.**
+- **The ribbons at the eye level** (recorded apart, section 14.6): the overlay ribbons stand 1.6-2.4 units over the ground at 4x, above an eye
+  3 m (scaled) over it, so near the eye a ribbon is seen from below, edge-on, as a thread. 8C does not change it: a lift tied to the eye's height
+  is a rendering change of the overlays, not of the map layer, and belongs with the low views' ground (8F) or a PR of its own.
+- **Device acceptance: pending.** No owner hardware was available to this session. The layer's cost was measured on this machine's CPU (section
+  15.7); its cost on the owner's laptop and iPhone is for the device runs section 8 plans (8D before, 8H after), with the route of step 6.
+- **Not measured:** a GPU's frame time (software WebGL here); Safari (no WebKit here); a visitor's judgement of the fades and of following a
+  formation (the recordings are for the owner).

@@ -1,0 +1,99 @@
+{
+ "note": "tools/stage8/mutate-8c.js: one string replaced in a copy of the built page, the self-test 8C block run on it (read from the page source). Run 1 on 8C build 0d987a7f (before its last commit): the keyboard focus held and a remnant taking the pointer (CSS) passed it; the last commit strengthened those two checks (the focus check orbits the most crowded formation and requires it never held; the remnant check asks the app picking, mlHit) and replaced the CSS mutation, behaviour-neutral (the layer takes no pointer events), by one of mlHit. Run 2 on the final build 04547a28.",
+ "runs": [
+  {
+   "build": "c8-final.html",
+   "mutations": [
+    {
+     "id": "none",
+     "what": "nothing (the build as it is)",
+     "selfTest": {
+      "checks": 9,
+      "failed": []
+     }
+    },
+    {
+     "id": "rmfade",
+     "what": "fades under reduced motion",
+     "selfTest": {
+      "checks": 9,
+      "failed": [
+       "under reduced motion no fade (no remnant, every drawn item at full opacity), the hold kept | 567 item-frames held in the paper map's zoom; WRONG: a remnant c:lich, a remnant o:French hold the crest, a remnant o:Jurczek's Austrians, a remnant o:Caffarell"
+      ]
+     }
+    },
+    {
+     "id": "focusheld",
+     "what": "the keyboard's focus held like the rest",
+     "selfTest": {
+      "checks": 9,
+      "failed": []
+     }
+    },
+    {
+     "id": "rempointer",
+     "what": "a remnant taking the pointer",
+     "selfTest": {
+      "checks": 9,
+      "failed": []
+     }
+    },
+    {
+     "id": "farall",
+     "what": "the far step on battle information too",
+     "selfTest": {
+      "checks": 9,
+      "failed": [
+       "in the low views the place and terrain-study names beyond 1.5 times the eye's distance to  | 11 of 5 place names drawn close on Sokolnitz at the step; WRONG: n:sthilaire: battle information stepped (decision 16); n:sthilaire at 12.5 px; n:vandamme: batt"
+      ]
+     }
+    },
+    {
+     "id": "remnantlong",
+     "what": "a remnant kept past its fade",
+     "selfTest": {
+      "checks": 9,
+      "failed": [
+       "a leaving item fades out as itself, under the live items and taking no pointer, gone withi | 3535 remnant-frames; TOO LONG pan p:plateau, pan t:santon, pan t:austerlitz; 67 items kept their places into the rest; at rest after each, idle, the level of de",
+       "under reduced motion no fade (no remnant, every drawn item at full opacity), the hold kept | 567 item-frames held in the paper map's zoom; WRONG: a remnant t:pratzen, a remnant t:santon, a remnant t:goldbach, a remnant t:litava",
+       "a reading changed while the view moves leaves no label and no remnant of a formation it do | a remnant p:plateau; a remnant t:pratzen; a remnant t:santon; a remnant t:goldbach; a remnant t:sokolnitz"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "build": "c8-final2.html",
+   "mutations": [
+    {
+     "id": "none",
+     "what": "nothing (the build as it is)",
+     "selfTest": {
+      "checks": 9,
+      "failed": []
+     }
+    },
+    {
+     "id": "focusheld",
+     "what": "the keyboard's focus held like the rest",
+     "selfTest": {
+      "checks": 9,
+      "failed": [
+       "the item with the keyboard focus is drawn in every frame while the view moves (A-2), never | c:sthilaire (11 drawn items within 120 px) focused through an orbit of 30 frames: NOT PLACED BY THE FULL SEARCH at 8: held, 9: held, 10: held, 11: held"
+      ]
+     }
+    },
+    {
+     "id": "rempicked",
+     "what": "a remnant (an item not drawn) picked by the pointer",
+     "selfTest": {
+      "checks": 9,
+      "failed": [
+       "a leaving item fades out as itself, under the live items and taking no pointer, gone withi | 525 remnant-frames; OUT OF RULE pan o:Jurczek's Austrians picked by the pointer, pan c:kienmayer picked by the pointer, pan o:Jurczek's Austrians picked by the "
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

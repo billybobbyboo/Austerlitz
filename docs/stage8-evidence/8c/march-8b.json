@@ -1,0 +1,677 @@
+{
+ "build": "base-8b-9b20dc4c.html",
+ "chromium": "141.0.7390.37",
+ "live": [
+  {
+   "t": 960,
+   "id": "kienmayer",
+   "reading": "fr",
+   "clock": "16:00",
+   "hidden": true,
+   "drawn": "unknown",
+   "rows": [
+    [
+     "Position at 16:00",
+     "Not known to Napoleon's headquarters at 16:00"
+    ],
+    [
+     "Marching",
+     "2.1 km in 120 min · 1.1 km/h over the frozen mere derived (the plotted leg’s length over its time window)"
+    ]
+   ]
+  },
+  {
+   "t": 960,
+   "id": "buxhowden",
+   "reading": "fr",
+   "clock": "16:00",
+   "hidden": true,
+   "drawn": "unknown",
+   "rows": [
+    [
+     "Position at 16:00",
+     "Not known to Napoleon's headquarters at 16:00"
+    ],
+    [
+     "Marching",
+     "2.0 km in 150 min · 0.8 km/h over the frozen mere derived (the plotted leg’s length over its time window)"
+    ]
+   ]
+  },
+  {
+   "t": 960,
+   "id": "dok",
+   "reading": "fr",
+   "clock": "16:00",
+   "hidden": false,
+   "drawn": "seen",
+   "rows": [
+    [
+     "Position at 16:00",
+     "0.7 km south-west of Augezd"
+    ],
+    [
+     "Marching",
+     "2.6 km in 120 min · 1.3 km/h over the frozen mere derived (the plotted leg’s length over its time window)"
+    ]
+   ]
+  },
+  {
+   "t": 600,
+   "id": "kollo",
+   "reading": "fr",
+   "clock": "10:00",
+   "hidden": false,
+   "drawn": "seen",
+   "rows": [
+    [
+     "Position at 10:00",
+     "0.6 km south of Pratzen Heights"
+    ],
+    [
+     "Marching",
+     "1.6 km in 90 min · 1.0 km/h derived (the plotted leg’s length over its time window)"
+    ]
+   ]
+  },
+  {
+   "t": 600,
+   "id": "lang",
+   "reading": "fr",
+   "clock": "10:00",
+   "hidden": true,
+   "drawn": "unknown",
+   "rows": [
+    [
+     "Position at 10:00",
+     "Not known to Napoleon's headquarters at 10:00"
+    ],
+    [
+     "Marching",
+     "0.6 km in 150 min · 0.2 km/h derived (the plotted leg’s length over its time window)"
+    ]
+   ]
+  }
+ ],
+ "enumeration": {
+  "byRow": {
+   "fr Marching": 4066,
+   "fr Next move": 593,
+   "fr Marching (over the frozen mere)": 193,
+   "al Next move": 3169,
+   "al Marching": 5725
+  },
+  "rows": [
+   {
+    "reading": "fr",
+    "id": "ahq",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "16:59",
+    "minutes": 611
+   },
+   {
+    "reading": "fr",
+    "id": "buxhowden",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "13:33",
+    "minutes": 571
+   },
+   {
+    "reading": "fr",
+    "id": "kienmayer",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "14:37",
+    "minutes": 485
+   },
+   {
+    "reading": "fr",
+    "id": "dok",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "14:30",
+    "minutes": 287
+   },
+   {
+    "reading": "fr",
+    "id": "lang",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "12:45",
+    "minutes": 184
+   },
+   {
+    "reading": "fr",
+    "id": "kollo",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "16:59",
+    "minutes": 600
+   },
+   {
+    "reading": "fr",
+    "id": "kienmayer",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "07:00",
+    "last": "14:30",
+    "minutes": 107
+   },
+   {
+    "reading": "fr",
+    "id": "dok",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "07:01",
+    "last": "14:49",
+    "minutes": 337
+   },
+   {
+    "reading": "fr",
+    "id": "lang",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "07:01",
+    "last": "13:51",
+    "minutes": 407
+   },
+   {
+    "reading": "fr",
+    "id": "lich",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "07:56",
+    "last": "16:59",
+    "minutes": 346
+   },
+   {
+    "reading": "fr",
+    "id": "buxhowden",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "08:00",
+    "last": "12:45",
+    "minutes": 2
+   },
+   {
+    "reading": "fr",
+    "id": "lich",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "08:00",
+    "last": "14:30",
+    "minutes": 4
+   },
+   {
+    "reading": "fr",
+    "id": "kamensky",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "08:01",
+    "last": "09:29",
+    "minutes": 88
+   },
+   {
+    "reading": "fr",
+    "id": "milo",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "08:41",
+    "last": "16:59",
+    "minutes": 356
+   },
+   {
+    "reading": "fr",
+    "id": "kamensky",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "08:45",
+    "last": "08:45",
+    "minutes": 1
+   },
+   {
+    "reading": "fr",
+    "id": "milo",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "08:45",
+    "last": "11:15",
+    "minutes": 2
+   },
+   {
+    "reading": "fr",
+    "id": "ahq",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "11:15",
+    "last": "14:30",
+    "minutes": 2
+   },
+   {
+    "reading": "fr",
+    "id": "kollo",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "11:15",
+    "last": "14:30",
+    "minutes": 2
+   },
+   {
+    "reading": "fr",
+    "id": "bag",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "12:17",
+    "last": "16:59",
+    "minutes": 265
+   },
+   {
+    "reading": "fr",
+    "id": "bag",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "12:45",
+    "last": "14:30",
+    "minutes": 2
+   },
+   {
+    "reading": "fr",
+    "id": "kienmayer",
+    "row": "Marching",
+    "saysIce": true,
+    "legOverIce": true,
+    "first": "15:47",
+    "last": "16:59",
+    "minutes": 73
+   },
+   {
+    "reading": "fr",
+    "id": "buxhowden",
+    "row": "Marching",
+    "saysIce": true,
+    "legOverIce": true,
+    "first": "15:49",
+    "last": "16:59",
+    "minutes": 71
+   },
+   {
+    "reading": "fr",
+    "id": "dok",
+    "row": "Marching",
+    "saysIce": true,
+    "legOverIce": true,
+    "first": "16:11",
+    "last": "16:59",
+    "minutes": 49
+   },
+   {
+    "reading": "al",
+    "id": "gqg",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "12:45",
+    "minutes": 326
+   },
+   {
+    "reading": "al",
+    "id": "sthilaire",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "07:59",
+    "minutes": 239
+   },
+   {
+    "reading": "al",
+    "id": "vandamme",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "07:59",
+    "minutes": 239
+   },
+   {
+    "reading": "al",
+    "id": "legrand",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "16:59",
+    "minutes": 564
+   },
+   {
+    "reading": "al",
+    "id": "friant",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "05:00",
+    "minutes": 60
+   },
+   {
+    "reading": "al",
+    "id": "bourcier",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "05:00",
+    "minutes": 60
+   },
+   {
+    "reading": "al",
+    "id": "caffarelli",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "14:30",
+    "minutes": 333
+   },
+   {
+    "reading": "al",
+    "id": "suchet",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "14:30",
+    "minutes": 227
+   },
+   {
+    "reading": "al",
+    "id": "kellermann",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "16:59",
+    "minutes": 776
+   },
+   {
+    "reading": "al",
+    "id": "nansouty",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "16:59",
+    "minutes": 776
+   },
+   {
+    "reading": "al",
+    "id": "dhautpoul",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "16:59",
+    "minutes": 755
+   },
+   {
+    "reading": "al",
+    "id": "walther",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "16:59",
+    "minutes": 737
+   },
+   {
+    "reading": "al",
+    "id": "rivaud",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "08:44",
+    "minutes": 284
+   },
+   {
+    "reading": "al",
+    "id": "drouet",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "08:44",
+    "minutes": 284
+   },
+   {
+    "reading": "al",
+    "id": "guard_inf",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "10:15",
+    "minutes": 375
+   },
+   {
+    "reading": "al",
+    "id": "guard_cav",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "10:30",
+    "minutes": 390
+   },
+   {
+    "reading": "al",
+    "id": "c_gren",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "04:01",
+    "last": "12:44",
+    "minutes": 455
+   },
+   {
+    "reading": "al",
+    "id": "friant",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "05:01",
+    "last": "08:44",
+    "minutes": 224
+   },
+   {
+    "reading": "al",
+    "id": "bourcier",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "05:01",
+    "last": "08:44",
+    "minutes": 224
+   },
+   {
+    "reading": "al",
+    "id": "legrand",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "07:00",
+    "last": "15:00",
+    "minutes": 215
+   },
+   {
+    "reading": "al",
+    "id": "sthilaire",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "08:00",
+    "last": "08:44",
+    "minutes": 45
+   },
+   {
+    "reading": "al",
+    "id": "vandamme",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "08:00",
+    "last": "08:44",
+    "minutes": 45
+   },
+   {
+    "reading": "al",
+    "id": "caffarelli",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "09:31",
+    "last": "16:59",
+    "minutes": 407
+   },
+   {
+    "reading": "al",
+    "id": "suchet",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "09:48",
+    "last": "16:59",
+    "minutes": 428
+   },
+   {
+    "reading": "al",
+    "id": "c_gren",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "10:06",
+    "last": "11:14",
+    "minutes": 69
+   },
+   {
+    "reading": "al",
+    "id": "guard_inf",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "10:16",
+    "last": "11:14",
+    "minutes": 59
+   },
+   {
+    "reading": "al",
+    "id": "kellermann",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "10:30",
+    "last": "12:45",
+    "minutes": 3
+   },
+   {
+    "reading": "al",
+    "id": "nansouty",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "10:30",
+    "last": "12:45",
+    "minutes": 3
+   },
+   {
+    "reading": "al",
+    "id": "dhautpoul",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "10:30",
+    "last": "12:45",
+    "minutes": 2
+   },
+   {
+    "reading": "al",
+    "id": "walther",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "10:30",
+    "last": "12:45",
+    "minutes": 2
+   },
+   {
+    "reading": "al",
+    "id": "guard_cav",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "10:31",
+    "last": "11:14",
+    "minutes": 44
+   },
+   {
+    "reading": "al",
+    "id": "gqg",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "12:01",
+    "last": "14:29",
+    "minutes": 140
+   },
+   {
+    "reading": "al",
+    "id": "heightguns",
+    "row": "Next move",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "12:46",
+    "last": "13:45",
+    "minutes": 60
+   },
+   {
+    "reading": "al",
+    "id": "heightguns",
+    "row": "Marching",
+    "saysIce": false,
+    "legOverIce": false,
+    "first": "13:46",
+    "last": "14:29",
+    "minutes": 44
+   }
+  ]
+ }
+}
