@@ -22,7 +22,7 @@ const MUT=[
   ["atonce","a returning item drawn at once (no re-placement pass, no second pass)",[['if(!MLS.pass){ it.held=true; return false; }',''],['if(it.room2>=MLS.PASSES)','if(it.room2>=1)']]],
   ["keepheld","the never-dropped items held and hidden like the rest",[['while(nk<order.length&&order[nk].keep) nk++;','']]],
   ["focusheld","the keyboard's focus held like the rest",[['if(s==="build"||it.el===foc) return mlPlaceItem(it,VW,VH,panels,obst);','if(s==="build") return mlPlaceItem(it,VW,VH,panels,obst);']]],
-  ["rempointer","a remnant taking the pointer",[['.ml-item.ml-fading{z-index:-1;pointer-events:none}','.ml-item.ml-fading{z-index:-1}']]],
+  ["rempicked","a remnant (an item not drawn) picked by the pointer",[['if(it.on&&it.rect&&cx>=it.rect[0]','if(it.rect&&cx>=it.rect[0]']]],
   ["farall","the far step on battle information too",[['if(!it.small||camera.isOrthographicCamera','if(camera.isOrthographicCamera']]],
   ["remnantlong","a remnant kept past its fade",[['it.rem=!on&&it.fa>0&&it.lastOn?it.lastOn:null;','it.rem=!on&&it.lastOn?it.lastOn:null;']]]
 ];

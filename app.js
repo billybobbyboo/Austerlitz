@@ -11650,7 +11650,9 @@ var AUSTERLITZ_DEBUG=(function(){
           Object.keys(S.o).forEach(function(k){ var s=S.o[k], p=P.o[k];
             if(s.keep&&s.st!=="on") R.keepHidden.push(label+" "+k);
             if(s.st==="dropped"&&s.it.held) R.held++;
-            if(s.rem){ R.rem++; var e=s.it.el, cs=getComputedStyle(e); if(cs.pointerEvents!=="none"||!(+cs.zIndex<0)||e.classList.contains("on")) R.remBad.push(label+" "+k);
+            if(s.rem){ R.rem++; var e=s.it.el, cs=getComputedStyle(e), rb=e.getBoundingClientRect();
+              if(cs.pointerEvents!=="none"||!(+cs.zIndex<0)||e.classList.contains("on")) R.remBad.push(label+" "+k);
+              if(mlHit((rb.left+rb.right)/2,(rb.top+rb.bottom)/2)===s.it) R.remBad.push(label+" "+k+" picked by the pointer");   /* the app's own picking: a remnant is never hit */
               if(remT[k]===undefined) remT[k]=Tm; else if(Tm-remT[k]>MLS.FADE_MS+FMS+1) R.remLong.push(label+" "+k); } else delete remT[k];
             if(!S.moving||!p) return;
             if(s.st==="on"&&p.st==="on"&&!s.keep&&!s.forced&&!p.forced&&s.it.el!==document.activeElement&&s.w===p.w&&s.h===p.h){   /* a size change (a full form, new words) moves the box by mlKeep */
@@ -11732,13 +11734,18 @@ var AUSTERLITZ_DEBUG=(function(){
         for(var dk in ML.items){ var dt=ML.items[dk]; if(!dt.disp) continue; if(dt.rem||dt.el.classList.contains("ml-fading")) rdBad.push("a remnant "+dk); if(dt.fid&&readHidden(dt.fid)&&dt.el.style.display!=="none") rdBad.push("drawn, not known: "+dk); }
         window.dispatchEvent(pev("pointerup",c0[0]+96,c0[1],0,0)); setCommandView("none"); F(20);
         ck("map layer (decision 240): a reading changed while the view moves leaves no label and no remnant of a formation it does not know", !rdBad.length, rdBad.length?rdBad.slice(0,5).join("; "):"the Allied headquarters' reading taken mid-pan: every item shown known to it, none fading");
-        /* the item with the keyboard focus is drawn in every frame of a motion, never held */
-        var fBad=[], fk=null; hyb(); F(2);
-        for(var qk in ML.items){ var qt=ML.items[qk]; if(qt.eFrame===ML.frame&&qt.state==="on"&&!qt.keep&&qt.focusable&&qt.fid){ fk=qk; break; } }
-        if(fk){ ML.items[fk].el.focus({preventScroll:true}); V.dispatchEvent(pev("pointerdown",c0[0],c0[1],1,0));
-          for(var fi=1;fi<=30;fi++){ V.dispatchEvent(pev("pointermove",c0[0]+10*fi,c0[1],1,0)); F(1); var ft=ML.items[fk]; if(ft.eFrame===ML.frame&&ft.state!=="on") fBad.push(fi+": "+ft.state); }
-          window.dispatchEvent(pev("pointerup",c0[0]+300,c0[1],0,0)); ML.items[fk].el.blur(); F(20); }
-        ck("map layer (decision 240): the item with the keyboard focus is drawn in every frame while the view moves (A-2), never held", !!fk&&!fBad.length, fk?fk+" focused through a pan of 30 frames"+(fBad.length?": NOT DRAWN at "+fBad.slice(0,4).join(", "):""):"no item to focus");
+        /* the item with the keyboard focus is placed by the full search in every frame of a motion: drawn, and never held by the stabiliser. The
+           most crowded drawn formation is focused and the view orbited (which moves the items against one another), so that the place it held
+           is taken now and then: a focus the stabiliser held would be hidden there and drawn only by A-2's fallback */
+        var fBad=[], fk=null, fN=-1; hyb(); F(2);
+        for(var qk in ML.items){ var qt=ML.items[qk]; if(qt.eFrame!==ML.frame||qt.state!=="on"||qt.keep||!qt.focusable||!qt.fid) continue;
+          var nb=0; for(var nk2 in ML.items){ var o2=ML.items[nk2]; if(o2!==qt&&o2.eFrame===ML.frame&&o2.state==="on"&&Math.hypot(o2.sx-qt.sx,o2.sy-qt.sy)<120) nb++; }
+          if(nb>fN){ fN=nb; fk=qk; } }
+        if(fk){ ML.items[fk].el.focus({preventScroll:true}); V.dispatchEvent(pev("pointerdown",c0[0],c0[1],2,2));
+          for(var fi=1;fi<=30;fi++){ V.dispatchEvent(pev("pointermove",c0[0]+8*fi,c0[1],2,2)); F(1); var ft=ML.items[fk];
+            if(ft.eFrame===ML.frame&&(ft.state!=="on"||ft.held)) fBad.push(fi+": "+(ft.held?"held":ft.state)); }
+          window.dispatchEvent(pev("pointerup",c0[0]+240,c0[1],0,2)); ML.items[fk].el.blur(); F(20); }
+        ck("map layer (decision 240): the item with the keyboard focus is drawn in every frame while the view moves (A-2), never held", !!fk&&!fBad.length, fk?fk+" ("+fN+" drawn items within 120 px) focused through an orbit of 30 frames"+(fBad.length?": NOT PLACED BY THE FULL SEARCH at "+fBad.slice(0,4).join(", "):""):"no item to focus");
         /* a key that moves nothing: the layer stays at rest */
         hyb(); F(2); var mv0=MLS.stats.moving; vk(); F(4); vk(); F(4);
         ck("map layer (decision 240): input that moves nothing leaves the layer at rest (motion is a motion source and a view that changed)", MLS.stats.moving===mv0&&!MLS.moving, (MLS.stats.moving-mv0)+" moving passes after two key presses");
