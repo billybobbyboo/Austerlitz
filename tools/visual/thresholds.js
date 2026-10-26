@@ -128,6 +128,19 @@ DROP_LIMIT["phone-390-layers"]=0; DROP_LIMIT["phone-360-explore"]=3; DROP_LIMIT[
    the owner's word (22 October 2026) */
 UNOBSTRUCTED["phone-402x714-explore"]=[0.585,null]; UNOBSTRUCTED["phone-390-paper"]=[0.652,null];
 DROP_LIMIT["phone-402x714-explore"]=2; DROP_LIMIT["phone-390-paper"]=17;
+/* Decision 256 (a) (the owner, 26 October 2026, with Stage 8 implementation PR 8D's brief: "Remeasure the affected inherited unobstructed-map
+   baselines on Playwright's pinned CI browser using the required two full runs ... Change only the justified affected baselines"): the five
+   shares CI's runner had measured under their baselines since roadmap step 1 (docs/STAGE8_SPEC.md sections 13.3 and 15.1, C: the baselines were
+   measured in the container's Chromium, CI's browser draws the same layout a few hundredths of a point narrower), re-measured once on CI's
+   browser (linux, Chromium 141.0.7390.37, Playwright 1.56.0's headless shell) over two full check:visual runs of the 87578ebce0e414a4c8b308d88f7abc03
+   build, runs 40256841580 (3c9e2eb) and 40262942179 (067bb83), by tools/visual/remeasure.js --bounds keep --accept-loosening 256: decision 62's
+   method, a bound kept where both runs meet it and lowered to the measure rounded down to 0.1 point only where CI's browser measures it below,
+   and any change to another case or limit stops it (none was proposed). Both runs then pass every check. Each value: was, is and why, in
+   CHANGELOG.md and docs/stage8-evidence/8d/remeasure-256.txt */
+UNOBSTRUCTED["first-run"]=[0.625,0.506];   /* was [0.626,0.507]; loosened (decision 256); measured 0.6256 / 0.5069 in both runs */
+UNOBSTRUCTED["phone-844x390-explore"]=[0.687,null];   /* was [0.69,null]; loosened (decision 256); measured 0.6879 in both runs */
+UNOBSTRUCTED["first-run-laptop"]=[0.546,0.506];   /* was [0.546,0.507]; loosened (decision 256); measured 0.5461 / 0.5069 in both runs */
+UNOBSTRUCTED["narrow-1024"]=[0.532,0.628];   /* was [0.533,0.628]; loosened (decision 256); measured 0.5321 / 0.6291 in both runs */
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees

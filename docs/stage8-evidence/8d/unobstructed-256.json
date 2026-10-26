@@ -1,0 +1,811 @@
+{
+ "note": "decision 256 (a): each case's unobstructed share of the map (at the case's viewport, and at 1280 x 720) in two full check:visual runs on CI's browser, the baseline before and after the re-measure",
+ "runs": [
+  {
+   "run": "vis-40256841580",
+   "md5": "87578ebce0e414a4c8b308d88f7abc03",
+   "env": {
+    "platform": "linux",
+    "arch": "x64",
+    "chromium": "141.0.7390.37",
+    "playwright": "1.56.0",
+    "executable": "playwright"
+   },
+   "when": "2026-10-26T01:59:55.081Z"
+  },
+  {
+   "run": "vis-40262942179",
+   "md5": "87578ebce0e414a4c8b308d88f7abc03",
+   "env": {
+    "platform": "linux",
+    "arch": "x64",
+    "chromium": "141.0.7390.37",
+    "playwright": "1.56.0",
+    "executable": "playwright"
+   },
+   "when": "2026-10-26T03:13:27.879Z"
+  }
+ ],
+ "cases": {
+  "first-run": {
+   "before": [
+    0.626,
+    0.507
+   ],
+   "run1": [
+    0.6256,
+    0.5069
+   ],
+   "run2": [
+    0.6256,
+    0.5069
+   ],
+   "after": [
+    0.625,
+    0.506
+   ],
+   "changed": true,
+   "belowBefore": true
+  },
+  "opening-1": {
+   "before": [
+    0.632,
+    0.516
+   ],
+   "run1": [
+    0.6322,
+    0.5173
+   ],
+   "run2": [
+    0.6322,
+    0.5173
+   ],
+   "after": [
+    0.632,
+    0.516
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "opening-2": {
+   "before": [
+    0.639,
+    0.529
+   ],
+   "run1": [
+    0.64,
+    0.5294
+   ],
+   "run2": [
+    0.64,
+    0.5294
+   ],
+   "after": [
+    0.639,
+    0.529
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "opening-3": {
+   "before": [
+    0.639,
+    0.529
+   ],
+   "run1": [
+    0.64,
+    0.5294
+   ],
+   "run2": [
+    0.64,
+    0.5294
+   ],
+   "after": [
+    0.639,
+    0.529
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "opening-4": {
+   "before": [
+    0.639,
+    0.529
+   ],
+   "run1": [
+    0.64,
+    0.5294
+   ],
+   "run2": [
+    0.64,
+    0.5294
+   ],
+   "after": [
+    0.639,
+    0.529
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "opening-end": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "overview-field": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "overview-plan": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "close-sokolnitz": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "staff-paper": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "pratzen-low": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "pratzen-orbit-min": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "selected-formation": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "watch-selected": {
+   "before": [
+    0.879,
+    0.833
+   ],
+   "run1": [
+    0.88,
+    0.8333
+   ],
+   "run2": [
+    0.88,
+    0.8333
+   ],
+   "after": [
+    0.879,
+    0.833
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "hybrid-dimmed": {
+   "before": [
+    0.881,
+    0.847
+   ],
+   "run1": [
+    0.882,
+    0.8476
+   ],
+   "run2": [
+    0.882,
+    0.8476
+   ],
+   "after": [
+    0.881,
+    0.847
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "pratzen-low-1x": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "pratzen-low-10x": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "paper-north-up": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "paper-close": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "paper-drawer": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "paper-laptop": {
+   "before": [
+    0.628,
+    0.628
+   ],
+   "run1": [
+    0.6291,
+    0.6291
+   ],
+   "run2": [
+    0.6291,
+    0.6291
+   ],
+   "after": [
+    0.628,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "narrow-1024": {
+   "before": [
+    0.533,
+    0.628
+   ],
+   "run1": [
+    0.5321,
+    0.6291
+   ],
+   "run2": [
+    0.5321,
+    0.6291
+   ],
+   "after": [
+    0.532,
+    0.628
+   ],
+   "changed": true,
+   "belowBefore": true
+  },
+  "ph8-overview-study": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "ph8-overview-watch": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "eye-zuran": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "eye-zuran-1x": {
+   "before": [
+    0.897,
+    0.872
+   ],
+   "run1": [
+    0.8978,
+    0.8722
+   ],
+   "run2": [
+    0.8978,
+    0.8722
+   ],
+   "after": [
+    0.897,
+    0.872
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "plans-overview": {
+   "before": [
+    0.703,
+    0.628
+   ],
+   "run1": [
+    0.7038,
+    0.6291
+   ],
+   "run2": [
+    0.7038,
+    0.6291
+   ],
+   "after": [
+    0.703,
+    0.628
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "opening-1-laptop": {
+   "before": [
+    0.516,
+    0.516
+   ],
+   "run1": [
+    0.5173,
+    0.5173
+   ],
+   "run2": [
+    0.5173,
+    0.5173
+   ],
+   "after": [
+    0.516,
+    0.516
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-390-first": {
+   "before": [
+    0.591,
+    null
+   ],
+   "run1": [
+    0.5919,
+    null
+   ],
+   "run2": [
+    0.5919,
+    null
+   ],
+   "after": [
+    0.591,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-390-explore": {
+   "before": [
+    0.652,
+    null
+   ],
+   "run1": [
+    0.6529,
+    null
+   ],
+   "run2": [
+    0.6529,
+    null
+   ],
+   "after": [
+    0.652,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-390-dossier": {
+   "before": [
+    0.315,
+    null
+   ],
+   "run1": [
+    0.3151,
+    null
+   ],
+   "run2": [
+    0.3151,
+    null
+   ],
+   "after": [
+    0.315,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-390-watch": {
+   "before": [
+    0.817,
+    null
+   ],
+   "run1": [
+    0.8171,
+    null
+   ],
+   "run2": [
+    0.8171,
+    null
+   ],
+   "after": [
+    0.817,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-390-layers": {
+   "before": [
+    0.31,
+    null
+   ],
+   "run1": [
+    0.3106,
+    null
+   ],
+   "run2": [
+    0.3106,
+    null
+   ],
+   "after": [
+    0.31,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-360-explore": {
+   "before": [
+    0.625,
+    null
+   ],
+   "run1": [
+    0.625,
+    null
+   ],
+   "run2": [
+    0.625,
+    null
+   ],
+   "after": [
+    0.625,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-430-explore": {
+   "before": [
+    0.685,
+    null
+   ],
+   "run1": [
+    0.6853,
+    null
+   ],
+   "run2": [
+    0.6853,
+    null
+   ],
+   "after": [
+    0.685,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-844x390-explore": {
+   "before": [
+    0.69,
+    null
+   ],
+   "run1": [
+    0.6879,
+    null
+   ],
+   "run2": [
+    0.6879,
+    null
+   ],
+   "after": [
+    0.687,
+    null
+   ],
+   "changed": true,
+   "belowBefore": true
+  },
+  "phone-402x714-explore": {
+   "before": [
+    0.585,
+    null
+   ],
+   "run1": [
+    0.5852,
+    null
+   ],
+   "run2": [
+    0.5852,
+    null
+   ],
+   "after": [
+    0.585,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "phone-390-paper": {
+   "before": [
+    0.652,
+    null
+   ],
+   "run1": [
+    0.6529,
+    null
+   ],
+   "run2": [
+    0.6529,
+    null
+   ],
+   "after": [
+    0.652,
+    null
+   ],
+   "changed": false,
+   "belowBefore": false
+  },
+  "first-run-laptop": {
+   "before": [
+    0.546,
+    0.507
+   ],
+   "run1": [
+    0.5461,
+    0.5069
+   ],
+   "run2": [
+    0.5461,
+    0.5069
+   ],
+   "after": [
+    0.546,
+    0.506
+   ],
+   "changed": true,
+   "belowBefore": true
+  }
+ }
+}
