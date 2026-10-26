@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 /* Stage 8, implementation PR 8D (decisions 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 8.3 and 16): culling's own cost on the CPU, measured
    rather than inferred from the triangles it saves. On a page opened as the harness opens it (?harness=1, software WebGL, 1600 x 900):
-   - per frame, as the app draws it: the frustum tests, the meshes culled, the bounds refreshed and their instances, and the milliseconds spent in
-     the tests and refreshes (CULL.frame), in four situations: the view still (frames drawn again with nothing changed), Play at 4x under Follow
-     (the blocks move, so their bounds are refreshed), a pan (the eye moves, the blocks do not) and a change of display factor (every block
-     re-seated, every bound refreshed once);
+   - per frame, as the app's loop draws one (the blocks posed and seated, then the frame): the frustum tests, the meshes culled, the bounds
+     refreshed and their instances, and the milliseconds spent refreshing (CULL.frame), in four situations: the view still (nothing changed),
+     the clock stepped as Play at 4x steps it (the blocks move and are re-seated, so their bounds are refreshed), a pan (the eye moves, the
+     blocks do not) and a change of display factor (every block re-seated, every bound refreshed once);
+   - the tests' own cost, apart: every block mesh tested against the eye's frustum 200 times over with its bounds current;
    - the time a whole frame takes to return (renderFrame: three's traversal, the culling tests, the draw calls' submission; under software
      WebGL the submission can wait on the GPU process, so some of the drawing is in it too), culled and not, in blocks of frames interleaved
      A B A B so that drift cannot pass for a difference;
-   - the JavaScript heap (Chrome's own count, CDP Performance.getMetrics, after a forced collection) before and after 60 frames culled, and the
+   - the JavaScript heap (Chrome's own count, CDP Performance.getMetrics, after a forced collection) before and after 30 frames culled, and the
      same not culled: what the per-frame work keeps;
    - what the hooks add, once: the kit's geometries and their vertices (aPart's bytes: one float a vertex), the kit's depth materials, the
      programs three holds after a frame of each view (renderer.info.programs) and the hook's compiles (ANIM.built, ANIM.depth).
@@ -36,36 +37,45 @@ const VIEWS=["pratzen-low","close-sokolnitz","overview-field"];
     const c=L.byName(v); await page.evaluate(s=>window.__aus.apply(s),c); await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(60)); await page.waitForTimeout(300); await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(4));
     /* the per-frame counts: a still view, a pan, Play at 4x, a factor change */
     const r=await page.evaluate(()=>{
-      function frames(n,step){ var F=[]; for(var i=0;i<n;i++){ if(step) step(i); renderFrame(); var f=CULL.frame; F.push({tests:f.tests, culled:f.culled, refresh:f.refresh, inst:f.inst, ms:f.ms}); } return F; }
+      /* a frame as the app's loop draws one: the blocks posed and seated for the clock and the eye (updateVisibility, where layoutFigs sets the
+         instance matrices' version), then the frame, whose culling tests refresh the bounds whose matrices changed */
+      function frames(n,step){ var F=[]; for(var i=0;i<n;i++){ if(step) step(i); settling=false; updateVisibility(); renderFrame(); var f=CULL.frame; F.push({tests:f.tests, culled:f.culled, refresh:f.refresh, inst:f.inst, ms:f.ms}); } return F; }
       var out={meshes:CULL.meshes.length};
-      out.still=frames(10);
+      out.still=frames(6);
       var p0=landCam.position.clone(), t0=orbitTarget.clone(), right=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0);
-      out.pan=frames(20,function(i){ landCam.position.copy(p0).addScaledVector(right,0.9*i); orbitTarget.copy(t0).addScaledVector(right,0.9*i); landCam.lookAt(orbitTarget); syncViewOffset(true); });
-      landCam.position.copy(p0); orbitTarget.copy(t0); landCam.lookAt(orbitTarget); syncViewOffset(true);
+      out.pan=frames(12,function(i){ landCam.position.copy(p0).addScaledVector(right,1.5*i); orbitTarget.copy(t0).addScaledVector(right,1.5*i); landCam.lookAt(orbitTarget); syncViewOffset(true); });
+      landCam.position.copy(p0); orbitTarget.copy(t0); landCam.lookAt(orbitTarget); syncViewOffset(true); settling=false; updateVisibility();
       var k0=clock; setSpeed(4); stopPlay();
-      out.play=frames(30,function(){ setClock(clock+0.5,{instant:true,force:true,camera:false}); });   /* 30 s of the clock a frame: Play at 4x, 15 frames a second's worth */
-      setClock(k0,{instant:true,force:true,camera:false});
-      var f0=DISPLAY.factor; out.factor=frames(1,function(){ setDisplayFactor(f0===4?"model":4); }); setDisplayFactor(f0); renderFrame();
+      out.play=frames(24,function(){ setClock(clock+0.5,{instant:true,force:true,camera:false}); });   /* 30 s of the clock a frame: Play at 4x, 15 frames a second's worth */
+      setClock(k0,{instant:true,force:true,camera:false}); settling=false; updateVisibility();
+      /* 4x to 10.33x (or back): every block drawn as figures re-seated on the ground drawn again (at 1x none is drawn as figures) */
+      var f0=DISPLAY.factor, f1=f0===DISPLAY.settings[2]?DISPLAY.settings[1]:DISPLAY.settings[2]; out.factor=frames(1,function(){ setDisplayFactor(f1); }); out.factorTo=f1;
+      setDisplayFactor(f0); settling=false; updateVisibility(); renderFrame();
       return out; });
+    /* the tests alone: every block mesh through three's frustum test (the app's, bounds current) 200 times over */
+    const testCost=await page.evaluate(()=>{ camera.updateMatrixWorld(); var F=new THREE.Frustum().setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse));
+      CULL.meshes.forEach(function(m){ F.intersectsObject(m); }); var r0=CULL.total.refresh, t=performance.now(), n=0;
+      for(var k=0;k<200;k++) CULL.meshes.forEach(function(m){ F.intersectsObject(m); n++; });
+      var ms=performance.now()-t; return {tests:n, ms:+ms.toFixed(2), usPerTest:+(ms*1000/n).toFixed(3), refreshed:CULL.total.refresh-r0}; });
     const sum=F=>({frames:F.length, tests:stat(F.map(x=>x.tests)).median, culled:stat(F.map(x=>x.culled)).median, refreshPerFrame:stat(F.map(x=>x.refresh)), instPerFrame:stat(F.map(x=>x.inst)).median, ms:stat(F.map(x=>x.ms))});
-    const V={meshes:r.meshes, still:sum(r.still), pan:sum(r.pan), play:sum(r.play), factor:sum(r.factor)};
-    /* the time renderFrame takes to return, culled and not, interleaved in blocks of 5 frames, 6 blocks each (under software WebGL the submission
+    const V={meshes:r.meshes, still:sum(r.still), pan:sum(r.pan), play:sum(r.play), factor:sum(r.factor), factorTo:r.factorTo, testCost:testCost};
+    /* the time renderFrame takes to return, culled and not, interleaved in blocks of 5 frames, 4 blocks each (under software WebGL the submission
        can wait on the GPU process, so this holds some of the drawing as well as the JavaScript) */
     V.frameJs=await page.evaluate(()=>{ var A=[], B=[];
       function block(on,into){ CULL.on=on; CULL.meshes.forEach(function(m){ m.frustumCulled=on; }); renderFrame(); for(var i=0;i<5;i++){ var t=performance.now(); renderFrame(); into.push(performance.now()-t); } }
-      for(var k=0;k<6;k++){ block(true,A); block(false,B); }
+      for(var k=0;k<4;k++){ block(true,A); block(false,B); }
       CULL.on=true; CULL.meshes.forEach(function(m){ m.frustumCulled=true; });
       function st(a){ var s=a.slice().sort(function(x,y){ return x-y; }); return {n:s.length, median:+s[Math.floor(s.length/2)].toFixed(2), p95:+s[Math.floor(s.length*0.95)].toFixed(2)}; }
       return {culled:st(A), notCulled:st(B)}; });
-    /* the heap: 60 frames culled, then 60 not, each after a forced collection (what the frames keep, not what they allocate and free) */
-    const h0=await heap(); await page.evaluate(()=>{ for(var i=0;i<60;i++) renderFrame(); }); const h1=await heap();
-    await page.evaluate(()=>{ CULL.on=false; CULL.meshes.forEach(function(m){ m.frustumCulled=false; }); for(var i=0;i<60;i++) renderFrame(); CULL.on=true; CULL.meshes.forEach(function(m){ m.frustumCulled=true; }); });
+    /* the heap: 30 frames culled, then 30 not, each after a forced collection (what the frames keep, not what they allocate and free) */
+    const h0=await heap(); await page.evaluate(()=>{ for(var i=0;i<30;i++) renderFrame(); }); const h1=await heap();
+    await page.evaluate(()=>{ CULL.on=false; CULL.meshes.forEach(function(m){ m.frustumCulled=false; }); for(var i=0;i<30;i++) renderFrame(); CULL.on=true; CULL.meshes.forEach(function(m){ m.frustumCulled=true; }); });
     const h2=await heap();
-    V.heap={frames:60, before:h0, afterCulled:h1, afterNotCulled:h2, deltaCulled:h1-h0, deltaNotCulled:h2-h1};
+    V.heap={frames:30, before:h0, afterCulled:h1, afterNotCulled:h2, deltaCulled:h1-h0, deltaNotCulled:h2-h1};
     res.views[v]=V;
     console.log(v.padEnd(18)+" meshes "+V.meshes+"; still: "+V.still.tests+" tests, "+V.still.culled+" culled, refreshes "+V.still.refreshPerFrame.max+" max, "+V.still.ms.median.toFixed(3)+" ms median"+
       "; pan: "+V.pan.ms.median.toFixed(3)+" ms, refreshes "+V.pan.refreshPerFrame.max+"; play at 4x: refreshes "+V.play.refreshPerFrame.median+" median ("+V.play.instPerFrame+" instances), "+V.play.ms.median.toFixed(3)+" / "+V.play.ms.p95.toFixed(3)+" / "+V.play.ms.max.toFixed(3)+" ms (median / p95 / max)"+
-      "; a factor change: "+V.factor.refreshPerFrame.max+" refreshes, "+V.factor.ms.max.toFixed(2)+" ms; renderFrame culled "+V.frameJs.culled.median+" ms, not "+V.frameJs.notCulled.median+" ms (medians); heap "+Math.round(V.heap.deltaCulled/1024)+" KB culled, "+Math.round(V.heap.deltaNotCulled/1024)+" KB not, over 60 frames");
+      "; a factor change: "+V.factor.refreshPerFrame.max+" refreshes, "+V.factor.ms.max.toFixed(2)+" ms; a test "+V.testCost.usPerTest+" us ("+V.testCost.tests+" timed); renderFrame culled "+V.frameJs.culled.median+" ms, not "+V.frameJs.notCulled.median+" ms (medians); heap "+Math.round(V.heap.deltaCulled/1024)+" KB culled, "+Math.round(V.heap.deltaNotCulled/1024)+" KB not, over 30 frames");
   }
   res.hooks=await page.evaluate(()=>{ var G=kitGeos(), v=0; G.forEach(function(g){ v+=g.attributes.position.count; });
     return {geometries:G.length, vertices:v, aPartBytes:v*4, kitMeshes:CULL.meshes.filter(function(m){ return !!m.userData.anim; }).length,
