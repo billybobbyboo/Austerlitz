@@ -2070,7 +2070,7 @@ On the final build (md5 `9b20dc4c...`), here (Chromium 153 through `AUSTERLITZ_C
 
 ## 15. Implementation PR 8C as built (25 October 2026)
 
-**Status.** Built on `claude/focused-faraday-76jwny` (draft PR #68, base `main`), for review; not merged. **Where it starts:** implementation PR 8A is in
+**Status.** Built on `claude/focused-faraday-76jwny`; merged into `main` by the owner (PR #68, `8eb3ef4`). **Where it starts:** implementation PR 8A is in
 `main` (PR #65, `3010fc7`); implementation PR 8B (PR #66) was merged into 8A's branch, `claude/blissful-clarke-9axnzp`, at `95fa28a`, not into
 `main`. The integration PR #67 (head `claude/blissful-clarke-9axnzp`, base `main`, no commit of its own) brought 8B into `main` with nothing lost
 or duplicated: the owner merged it on 24 October 2026 (`0ca1414`), without conflict, and `main`'s tree after it is `95fa28a`'s. 8C is built from

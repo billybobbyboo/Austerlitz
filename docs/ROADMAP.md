@@ -417,7 +417,7 @@ markers are at most 64 px; on the paper map nothing changes. Checks able to fail
 now measures the ground cues as each case shows them, its landscape limit lowered to their measured baseline (§14.5), put to the owner as
 question 254, decided (a) with 8C's brief (the limit stays 7%).
 
-**Implementation PR 8C** (25 October 2026; `docs/STAGE8_SPEC.md` §15; draft PR #68 into `main`, for review): first, in a
+**Implementation PR 8C** (25 October 2026; `docs/STAGE8_SPEC.md` §15; merged into `main`, PR #68, `8eb3ef4`): first, in a
 commit of their own, the three findings of the audit of 8A and 8B: a restored WebGL context now draws the ground's depth for the overlays and the
 environment map again (a seventh start-up case in `check:contrast`, `context-depth`); under a reading a formation it does not know has no march
 row saying it moves now or where ("Plotted leg" with the reading's note); the five unobstructed shortfalls CI reports since step 1 are Chromium

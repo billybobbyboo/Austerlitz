@@ -2,7 +2,7 @@
 
 ## 2026-10 · Stage 8, implementation PR 8C: the map layer in motion (decisions 240 (a), 254 (a)), after the audit's findings A-C
 
-**Status: built on `claude/focused-faraday-76jwny` (draft PR #68, into `main`), for review; not merged.** The integration PR #67, which brought 8B
+**Status: built on `claude/focused-faraday-76jwny`; merged into `main` by the owner (PR #68, `8eb3ef4`).** The integration PR #67, which brought 8B
 into `main` (8B's #66 had been merged into 8A's branch), was merged by the owner on 24 October (`0ca1414`; `main`'s tree then `95fa28a`'s); #68,
 opened with that branch as its base, now targets `main`, its diff unchanged. No data changed: `check:data` passes (all 131 declarations byte-identical to its reference). The build
 changed: `austerlitz-command-map.html` **2,357,922 bytes, md5 `04547a28419b2d86aec824931c735e0f`** (8B's build 2,317,927, `9b20dc4c...`); `check:baseline` moved to it. The record
