@@ -212,6 +212,20 @@ try{
         if(MLS.moving||!MLS.fromMotion||MLS.fresh) throw new Error("the stabiliser: not at rest after the motion once the hold is over"); }
       RM=false;
       if(moving<18||!fades) throw new Error("the stabiliser: "+moving+" of 20 passes read as moving, "+fades+" with fades");
+      /* Stage 8, 8D prerequisite (the audit of 8C): an item held hidden or still fading in while the view moves, given a priority the stabiliser
+         never holds (the selection; the keyboard's focus, document.activeElement), takes its state at once: drawn, its alpha 1 in that pass */
+      { let prot=0; const idle=()=>{ for(const k in ML.items){ const it=ML.items[k]; if(it.eFrame===ML.frame&&it.fid&&FORMATIONS[it.fid]&&!it.keep&&(it.held||(it.state==="on"&&it.fa<1))) return it; } return null; };
+        for(const how of ["selection","focus"]){
+          let it=null; for(let f=1;f<=12&&!it;f++){ T+=33; lastInput=T; landCam.position.x+=0.4; orbitTarget.x+=0.4; landCam.updateMatrixWorld(); pass(); if(MLS.fadeOn) it=idle(); }
+          if(!it) throw new Error("the stabiliser: no item held or fading in while moving, for the "+how+" check");
+          const fa0=+it.fa.toFixed(2);
+          if(how==="selection") select("f",it.fid); else document.activeElement=it.el;
+          T+=33; lastInput=T; landCam.position.x+=0.4; orbitTarget.x+=0.4; landCam.updateMatrixWorld(); pass();
+          if(!MLS.fadeOn) throw new Error("the stabiliser: fades off in the "+how+" check's pass");
+          if(it.eFrame===ML.frame&&it.state==="on"){ prot++; if(it.fa!==1||it.el.style.opacity!=="") throw new Error("the stabiliser: "+it.key+" given the "+how+" is drawn at alpha "+it.fa+" (from "+fa0+"), not at once"); }
+          select(null,null); delete document.activeElement; }
+        if(!prot) throw new Error("the stabiliser: no item given a priority was drawn in its pass, so its opacity was not checked");
+        T+=1000; pass(); }
       lastInput=T; const b=[mlBand(200),mlBand(214),mlBand(217)]; lastInput=-1e9; b.push(mlBand(214));
       if(b.join(",")!=="200,200,217,214") throw new Error("the band: "+b.join(",")+" (want 200,200,217,214)");
       mlReset("test"); pass(); if(!MLS.fresh) throw new Error("the stabiliser: a reset does not give a fresh view");

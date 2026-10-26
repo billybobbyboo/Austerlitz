@@ -4970,14 +4970,18 @@ function mlLayout(){
   }
   /* Stage 8, 8C: what each item held, for the next pass (a place the layout gave it, against its anchor; not the focus's forced place), and
      its fade: from its alpha toward 1 if drawn, 0 if not, by the wall-clock time since its last pass over FADE_MS; at once where fades are off
-     (a fresh view, reduced motion) or the item is new to the layer. A leaving item with alpha left is a remnant at its last drawn place */
+     (a fresh view, reduced motion) or the item is new to the layer. A leaving item with alpha left is a remnant at its last drawn place.
+     Stage 8, 8D prerequisite (the audit of 8C): the fade is the stabiliser's, and what the stabiliser never holds takes its state at once: the
+     never-dropped items (decision 39: the selection, the hovered, the highlighted family, live events), the item with the keyboard's focus and
+     its forced place (A-2). Until 8D such an item, hidden or fading when it gained that priority, was placed at once but drawn at the fade's
+     alpha (0.09 a frame after its focus, in the audit's probe). Its presentation opacity (it.op) applies as before */
   var fading=0;
   elig.forEach(function(it){ var on=it.state==="on", laid=on&&!it.forced&&!!it.rect;
     it.mem=laid?{dx:it.rect[0]-it.sx, dy:it.rect[1]-it.sy, w:it.w, h:it.h, lead:it.lead, mode:it.mode, oy:it.oy}:null; it.wasOn=laid;
     if(it.faFrame!==ML.frame-1){ it.fa=0; it.fat=now; it.rem=null; }
     it.faFrame=ML.frame;
-    var tg=on?1:0;
-    if(!MLS.fadeOn) it.fa=tg; else if(tg!==it.fa){ var df=Math.max(0,now-it.fat)/MLS.FADE_MS; it.fa=tg>it.fa?Math.min(1,it.fa+df):Math.max(0,it.fa-df); }
+    var tg=on?1:0, prot=it.keep||it.forced||it.el===foc;
+    if(!MLS.fadeOn||prot) it.fa=tg; else if(tg!==it.fa){ var df=Math.max(0,now-it.fat)/MLS.FADE_MS; it.fa=tg>it.fa?Math.min(1,it.fa+df):Math.max(0,it.fa-df); }
     it.fat=now;
     it.rem=!on&&it.fa>0&&it.lastOn?it.lastOn:null;
     if(it.fa>0&&it.fa<1) fading++;
@@ -11746,6 +11750,40 @@ var AUSTERLITZ_DEBUG=(function(){
             if(ft.eFrame===ML.frame&&(ft.state!=="on"||ft.held)) fBad.push(fi+": "+(ft.held?"held":ft.state)); }
           window.dispatchEvent(pev("pointerup",c0[0]+240,c0[1],0,2)); ML.items[fk].el.blur(); F(20); }
         ck("map layer (decision 240): the item with the keyboard focus is drawn in every frame while the view moves (A-2), never held", !!fk&&!fBad.length, fk?fk+" ("+fN+" drawn items within 120 px) focused through an orbit of 30 frames"+(fBad.length?": NOT PLACED BY THE FULL SEARCH at "+fBad.slice(0,4).join(", "):""):"no item to focus");
+        /* Stage 8, 8D prerequisite (the audit of 8C): an item the stabiliser holds hidden, or one fading out where it was drawn, given a priority the
+           stabiliser never holds (the keyboard's focus, the selection, the hover: decision 39 and A-2) is drawn at full opacity in the first frame
+           it has it, not faded in. Each found while Landscape with counters orbits (a formation's counter held by the hold, or a remnant), given
+           that priority by the app's own paths (the element's focus; select(); a pointer's move to its anchor, which the canvas's handler reads),
+           one frame drawn: on, its alpha 1, no inline opacity, its computed opacity 1 (until 8D it was placed at once and drawn at the fade's
+           alpha, 0.18 at 30 frames a second) */
+        var pBad=[], pDone=[], pTried=0;
+        /* the items before the priority is given: their state and alpha, each a formation's counter or name the keyboard reaches */
+        function pBefore(){ var o={}; for(var pk2 in ML.items){ var t=ML.items[pk2]; if(t.eFrame!==ML.frame||!t.fid||!FORMATIONS[t.fid]||t.keep||!t.focusable||t.el.style.display==="none") continue;
+            o[pk2]={held:!!t.held&&t.state!=="on"&&!(t.fa>0), rem:!!t.rem&&t.fa>0&&t.fa<1, fa:t.fa, t:t}; } return o; }
+        function pFind(B,rem){ for(var pk3 in B){ if(rem?B[pk3].rem:B[pk3].held) return B[pk3].t; } return null; }
+        ["focus","selection","hover","focus on a remnant"].forEach(function(how){
+          var done=false;
+          for(var at=0;at<3&&!done;at++){
+            hyb(); F(2); V.dispatchEvent(pev("pointerdown",c0[0],c0[1],2,2)); var B=null, t=null, pi=0;
+            while(!t&&pi<60){ pi++; V.dispatchEvent(pev("pointermove",c0[0]+8*pi+40*at,c0[1],2,2)); F(1); B=pBefore(); t=pFind(B,how==="focus on a remnant"); }
+            window.dispatchEvent(pev("pointerup",c0[0]+8*pi+40*at,c0[1],0,2));
+            if(!t) continue;
+            if(how==="selection") select("f",t.fid);
+            else if(how==="hover"){ V.dispatchEvent(pev("pointermove",Math.round(t.sx),Math.round(t.sy),0,0));   /* the canvas's own hover: the formation it reaches */
+              var hv=ML.hover, hk2=hv&&(B["c:"+hv]?"c:"+hv:B["n:"+hv]?"n:"+hv:null); t=hk2&&B[hk2].held?B[hk2].t:null; }
+            else t.el.focus({preventScroll:true});
+            if(!t){ ML.hover=null; ML.hoverDrop=null; continue; }
+            var b0=B[t.key]; F(1); pTried++;
+            if(t.eFrame!==ML.frame||t.state==="panel"||t.state==="offscreen"||t.state==="occluded"){ select(null,null); ML.hover=null; ML.hoverDrop=null; F(20); continue; }   /* out of view after it: another */
+            var cs=parseFloat(getComputedStyle(t.el).opacity);
+            pDone.push(how+": "+t.key+" ("+(b0.rem?"fading out":"held")+", alpha "+(+b0.fa).toFixed(2)+") to "+t.state+", alpha "+(+t.fa).toFixed(2)+", opacity "+cs.toFixed(2)+(t.forced?", forced":""));
+            if(t.state!=="on"||t.fa!==1||t.el.style.opacity!==""||!(cs>=0.999)||!MLS.fadeOn) pBad.push(pDone[pDone.length-1]+(MLS.fadeOn?"":" (fades not on: the test proves nothing)"));
+            done=true;
+            if(document.activeElement&&document.activeElement.parentNode===ML.root) document.activeElement.blur();
+            select(null,null); ML.hover=null; ML.hoverDrop=null; F(20); }
+          if(!done) pBad.push(how+": no item held or fading out found and kept in view in three orbits"); });
+        ck("map layer (decision 240; the audit of 8C): an item held hidden or fading out when it gains the keyboard's focus, the selection or the hover is drawn at full opacity in that frame (the stabiliser's fade is for what it holds)",
+          pDone.length===4&&!pBad.length, (pBad.length?"WRONG: "+pBad.join("; ")+(pDone.length?" | "+pDone.join("; "):""):pDone.join("; "))+" ("+pTried+" tried)");
         /* a key that moves nothing: the layer stays at rest */
         hyb(); F(2); var mv0=MLS.stats.moving; vk(); F(4); vk(); F(4);
         ck("map layer (decision 240): input that moves nothing leaves the layer at rest (motion is a motion source and a view that changed)", MLS.stats.moving===mv0&&!MLS.moving, (MLS.stats.moving-mv0)+" moving passes after two key presses");

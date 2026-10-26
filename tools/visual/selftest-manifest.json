@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 04547a28419b2d86aec824931c735e0f (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "04547a28419b2d86aec824931c735e0f",
- "count": 270,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 87578ebce0e414a4c8b308d88f7abc03 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "87578ebce0e414a4c8b308d88f7abc03",
+ "count": 271,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -270,6 +270,7 @@
   "map layer (decision 240): under reduced motion no fade (no remnant, every drawn item at full opacity), the hold kept",
   "map layer (decision 240): a reading changed while the view moves leaves no label and no remnant of a formation it does not know",
   "map layer (decision 240): the item with the keyboard focus is drawn in every frame while the view moves (A-2), never held",
+  "map layer (decision 240; the audit of 8C): an item held hidden or fading out when it gains the keyboard's focus, the selection or the hover is drawn at full opacity in that frame (the stabiliser's fade is for what it holds)",
   "map layer (decision 240): input that moves nothing leaves the layer at rest (motion is a motion source and a view that changed)",
   "map layer (section 7.2, decision 240): in the low views the place and terrain-study names beyond 1.5 times the eye's distance to its target a type step smaller (10.5 px), in the box their own size gives them, so no item is placed otherwise; battle information never (decision 16); none on the paper map",
   "render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate"
