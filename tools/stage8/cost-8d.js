@@ -5,10 +5,11 @@
      the tests and refreshes (CULL.frame), in four situations: the view still (frames drawn again with nothing changed), Play at 4x under Follow
      (the blocks move, so their bounds are refreshed), a pan (the eye moves, the blocks do not) and a change of display factor (every block
      re-seated, every bound refreshed once);
-   - the JavaScript side of a whole frame (renderFrame: three's traversal, the culling tests, the draw calls' submission; not the GPU's work,
-     which software WebGL does elsewhere), culled and not, in blocks of frames interleaved A B A B so that drift cannot pass for a difference;
-   - the JavaScript heap (Chrome's own count, CDP Performance.getMetrics, after a forced collection) before and after 300 frames culled, and the
-     same not culled: what the per-frame work allocates and keeps;
+   - the time a whole frame takes to return (renderFrame: three's traversal, the culling tests, the draw calls' submission; under software
+     WebGL the submission can wait on the GPU process, so some of the drawing is in it too), culled and not, in blocks of frames interleaved
+     A B A B so that drift cannot pass for a difference;
+   - the JavaScript heap (Chrome's own count, CDP Performance.getMetrics, after a forced collection) before and after 60 frames culled, and the
+     same not culled: what the per-frame work keeps;
    - what the hooks add, once: the kit's geometries and their vertices (aPart's bytes: one float a vertex), the kit's depth materials, the
      programs three holds after a frame of each view (renderer.info.programs) and the hook's compiles (ANIM.built, ANIM.depth).
    Each figure is this machine's (a container's CPU); the device's own cost is for the device route (tools/step6/perf-route.js, ?route=cull).
@@ -37,33 +38,34 @@ const VIEWS=["pratzen-low","close-sokolnitz","overview-field"];
     const r=await page.evaluate(()=>{
       function frames(n,step){ var F=[]; for(var i=0;i<n;i++){ if(step) step(i); renderFrame(); var f=CULL.frame; F.push({tests:f.tests, culled:f.culled, refresh:f.refresh, inst:f.inst, ms:f.ms}); } return F; }
       var out={meshes:CULL.meshes.length};
-      out.still=frames(30);
+      out.still=frames(10);
       var p0=landCam.position.clone(), t0=orbitTarget.clone(), right=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0);
-      out.pan=frames(30,function(i){ landCam.position.copy(p0).addScaledVector(right,0.6*i); orbitTarget.copy(t0).addScaledVector(right,0.6*i); landCam.lookAt(orbitTarget); syncViewOffset(true); });
+      out.pan=frames(20,function(i){ landCam.position.copy(p0).addScaledVector(right,0.9*i); orbitTarget.copy(t0).addScaledVector(right,0.9*i); landCam.lookAt(orbitTarget); syncViewOffset(true); });
       landCam.position.copy(p0); orbitTarget.copy(t0); landCam.lookAt(orbitTarget); syncViewOffset(true);
       var k0=clock; setSpeed(4); stopPlay();
-      out.play=frames(60,function(){ setClock(clock+0.5,{instant:true,force:true,camera:false}); });   /* 30 s of the clock a frame: Play at 4x, 15 frames a second's worth */
+      out.play=frames(30,function(){ setClock(clock+0.5,{instant:true,force:true,camera:false}); });   /* 30 s of the clock a frame: Play at 4x, 15 frames a second's worth */
       setClock(k0,{instant:true,force:true,camera:false});
       var f0=DISPLAY.factor; out.factor=frames(1,function(){ setDisplayFactor(f0===4?"model":4); }); setDisplayFactor(f0); renderFrame();
       return out; });
     const sum=F=>({frames:F.length, tests:stat(F.map(x=>x.tests)).median, culled:stat(F.map(x=>x.culled)).median, refreshPerFrame:stat(F.map(x=>x.refresh)), instPerFrame:stat(F.map(x=>x.inst)).median, ms:stat(F.map(x=>x.ms))});
     const V={meshes:r.meshes, still:sum(r.still), pan:sum(r.pan), play:sum(r.play), factor:sum(r.factor)};
-    /* the frame's JavaScript side, culled and not, interleaved in blocks of 10 frames, 8 blocks each */
+    /* the time renderFrame takes to return, culled and not, interleaved in blocks of 5 frames, 6 blocks each (under software WebGL the submission
+       can wait on the GPU process, so this holds some of the drawing as well as the JavaScript) */
     V.frameJs=await page.evaluate(()=>{ var A=[], B=[];
-      function block(on,into){ CULL.on=on; CULL.meshes.forEach(function(m){ m.frustumCulled=on; }); renderFrame(); for(var i=0;i<10;i++){ var t=performance.now(); renderFrame(); into.push(performance.now()-t); } }
-      for(var k=0;k<8;k++){ block(true,A); block(false,B); }
+      function block(on,into){ CULL.on=on; CULL.meshes.forEach(function(m){ m.frustumCulled=on; }); renderFrame(); for(var i=0;i<5;i++){ var t=performance.now(); renderFrame(); into.push(performance.now()-t); } }
+      for(var k=0;k<6;k++){ block(true,A); block(false,B); }
       CULL.on=true; CULL.meshes.forEach(function(m){ m.frustumCulled=true; });
       function st(a){ var s=a.slice().sort(function(x,y){ return x-y; }); return {n:s.length, median:+s[Math.floor(s.length/2)].toFixed(2), p95:+s[Math.floor(s.length*0.95)].toFixed(2)}; }
       return {culled:st(A), notCulled:st(B)}; });
-    /* the heap: 300 frames culled, then 300 not, each after a forced collection */
-    const h0=await heap(); await page.evaluate(()=>{ for(var i=0;i<300;i++) renderFrame(); }); const h1=await heap();
-    await page.evaluate(()=>{ CULL.on=false; CULL.meshes.forEach(function(m){ m.frustumCulled=false; }); for(var i=0;i<300;i++) renderFrame(); CULL.on=true; CULL.meshes.forEach(function(m){ m.frustumCulled=true; }); });
+    /* the heap: 60 frames culled, then 60 not, each after a forced collection (what the frames keep, not what they allocate and free) */
+    const h0=await heap(); await page.evaluate(()=>{ for(var i=0;i<60;i++) renderFrame(); }); const h1=await heap();
+    await page.evaluate(()=>{ CULL.on=false; CULL.meshes.forEach(function(m){ m.frustumCulled=false; }); for(var i=0;i<60;i++) renderFrame(); CULL.on=true; CULL.meshes.forEach(function(m){ m.frustumCulled=true; }); });
     const h2=await heap();
-    V.heap={before:h0, after300Culled:h1, after300NotCulled:h2, deltaCulled:h1-h0, deltaNotCulled:h2-h1};
+    V.heap={frames:60, before:h0, afterCulled:h1, afterNotCulled:h2, deltaCulled:h1-h0, deltaNotCulled:h2-h1};
     res.views[v]=V;
     console.log(v.padEnd(18)+" meshes "+V.meshes+"; still: "+V.still.tests+" tests, "+V.still.culled+" culled, refreshes "+V.still.refreshPerFrame.max+" max, "+V.still.ms.median.toFixed(3)+" ms median"+
       "; pan: "+V.pan.ms.median.toFixed(3)+" ms, refreshes "+V.pan.refreshPerFrame.max+"; play at 4x: refreshes "+V.play.refreshPerFrame.median+" median ("+V.play.instPerFrame+" instances), "+V.play.ms.median.toFixed(3)+" / "+V.play.ms.p95.toFixed(3)+" / "+V.play.ms.max.toFixed(3)+" ms (median / p95 / max)"+
-      "; a factor change: "+V.factor.refreshPerFrame.max+" refreshes, "+V.factor.ms.max.toFixed(2)+" ms; the frame's JavaScript culled "+V.frameJs.culled.median+" ms, not "+V.frameJs.notCulled.median+" ms; heap +"+Math.round(V.heap.deltaCulled/1024)+" KB culled, +"+Math.round(V.heap.deltaNotCulled/1024)+" KB not, over 300 frames");
+      "; a factor change: "+V.factor.refreshPerFrame.max+" refreshes, "+V.factor.ms.max.toFixed(2)+" ms; renderFrame culled "+V.frameJs.culled.median+" ms, not "+V.frameJs.notCulled.median+" ms (medians); heap "+Math.round(V.heap.deltaCulled/1024)+" KB culled, "+Math.round(V.heap.deltaNotCulled/1024)+" KB not, over 60 frames");
   }
   res.hooks=await page.evaluate(()=>{ var G=kitGeos(), v=0; G.forEach(function(g){ v+=g.attributes.position.count; });
     return {geometries:G.length, vertices:v, aPartBytes:v*4, kitMeshes:CULL.meshes.filter(function(m){ return !!m.userData.anim; }).length,
