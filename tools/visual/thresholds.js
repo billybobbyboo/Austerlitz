@@ -222,8 +222,48 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    never-dropped item hidden in view, no remnant out of rule (under the live items, no pointer, not drawn), nothing drawn or fading that the
    reading does not know, frames read as moving, the view idle at rest after the motion (Play aside); each of the four by real input within
    REAL_TOL of its twin driven in the page (abs, or rel of the twin's count, whichever is larger): the motion read from the browser's own
-   events too */
-const MOTION={JUMPS:300, POPS:1300, FLICKER:200, LOD_8B:130, REAL_TOL:{abs:6, rel:0.25}}; module.exports.MOTION=MOTION;   /* LOD_8B: implementation PR 8B's build (md5 9b20dc4c...), the 16 motions, Chromium 141 */
+   events too.
+   Decision 257 (b) (the owner, 26 October 2026; applied before implementation PR 8D, docs/STAGE8_SPEC.md section 16.1): the totals' ceilings
+   are the deterministic benchmark's own counts, 245 jumps, 985 pops, 130 level-of-detail switches and 10 flickers over the 16 (were 300,
+   1,300, 200 and 8B's 130), confirmed repeatable on the pinned browser (Chromium 141, Playwright's headless shell 1194: the same counts motion
+   by motion in every run of the block, here and on CI since 8C's driver fix, and on the prerequisite's build); they are ceilings of this
+   benchmark, not a guarantee of what a device shows. A total under them is no improvement when it is bought by hiding formations: since the
+   same decision every driven run is also held to its formations' visibility as the prerequisite's build measures it (VIS: per run, the
+   formation-frames in view, the denominator, which must be exactly the baseline's, a change in it being a different motion or a formation
+   made absent; the drawn, at least the baseline's; the longest a formation stays hidden by the layout, at most the baseline's, in ms at the
+   driver's 30 frames a second). A run by real input is held to its twin's visibility within one frame of it (VIS_REAL_FRAMES: its denominator
+   and its drawn within one frame's formations in view, its longest within one frame's time). The baselines move only with a recorded owner
+   decision, as the totals do */
+const MOTION={JUMPS:245, POPS:985, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:1, FRAME_MS:1000/30,
+  /* VIS[run key] = [drawn, in view, longest hidden ms]: the prerequisite's build (the 8C build with the protected items' fade fixed, section
+     16.1), Chromium 141, check:selftest's block; a key is the motion's id, "+sel" with Saint-Hilaire's division selected, "+fr"/"+al" under a
+     headquarters' reading, "+touch" for the finger's pan at 390 px (tools/visual/motion.js runKey) */
+  VIS:{"hybrid-pan":[1378,2049,2467], "hybrid-zoom":[1375,2254,1533], "hybrid-orbit":[1489,2548,2200], "hybrid-glide":[1218,1805,2533],
+    "hybrid-play":[2115,3388,3100], "paper-pan":[1240,1274,667], "paper-zoom":[850,1229,667], "paper-glide":[566,821,633], "paper-play":[1570,1694,667],
+    "land-pan":[1869,2051,1133], "land-zoom":[1730,2261,667], "land-orbit":[1955,2366,667], "land-play":[2613,3146,667], "low-pan":[820,885,533],
+    "low-orbit":[691,887,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1494,2548,2000], "paper-zoom+sel":[823,1229,667],
+    "hybrid-pan+fr":[1308,1935,2467], "hybrid-pan+al":[979,1346,2467], "paper-play+al":[1180,1331,667], "phone-pan+touch":[296,732,1367]}};
+module.exports.MOTION=MOTION;
+/* decision 257 (b)'s visibility rule for one run (r: a run of live.motion with its track; base: VIS's entry, or for a run by real input its twin's
+   measures as [drawn, in view, longest]); the words of each failure, empty when it holds */
+function motionVis(r,base,twin){
+  const T=r.track, b=[];
+  if(!T||typeof T.on!=="number"||typeof T.inView!=="number"||typeof T.longestMs!=="number") return ["its formations' visibility not measured (decision 257 (b))"];
+  if(!base) return ["no visibility baseline for it in thresholds.js MOTION.VIS: its visibility unchecked (decision 257 (b))"];
+  const [on,iv,lm]=base;
+  if(!twin){
+    if(T.inView!==iv) b.push("formation-frames in view "+T.inView+", the baseline's "+iv+" (the denominator must not change)");
+    if(T.on<on) b.push("formations drawn in "+T.on+" of "+T.inView+" formation-frames, the baseline "+on+" of "+iv+" (fewer drawn)");
+    if(T.longestMs>lm) b.push("a formation hidden by the layout for "+T.longestMs+" ms, the baseline's longest "+lm+" ms");
+  } else {
+    const fr=r.frames||1, per=Math.ceil(iv/Math.max(1,twin.frames||fr))*MOTION.VIS_REAL_FRAMES, ms=MOTION.FRAME_MS*MOTION.VIS_REAL_FRAMES+0.5;
+    if(Math.abs(T.inView-iv)>per) b.push("formation-frames in view "+T.inView+", its twin's "+iv+" (tolerance "+per+")");
+    if(T.on<on-per) b.push("formations drawn in "+T.on+", its twin's "+on+" (tolerance "+per+")");
+    if(T.longestMs>lm+ms) b.push("a formation hidden for "+T.longestMs+" ms, its twin's longest "+lm+" ms");
+  }
+  return b;
+}
+module.exports.motionVis=motionVis;
 /* Stage 4E (docs/STAGE4_SPEC.md section F.2): the horizon in the low views [case, factor]; where the apron's far edge stands below
    the true horizon, the gap is drawn in the haze's colour: its mean colour per column within HORIZON_DE (0-255, the largest
    channel) of the sky's just above the horizon */
@@ -646,7 +686,14 @@ function checkLive(live,opts){
     if(!(T.jumps<=MOTION.JUMPS)) b.push("jumps "+T.jumps+" over the 16 motions (limit "+MOTION.JUMPS+")");
     if(!(T.pops<=MOTION.POPS)) b.push("pops "+T.pops+" (limit "+MOTION.POPS+")");
     if(!(T.flicker<=MOTION.FLICKER)) b.push("flickers "+T.flicker+" (limit "+MOTION.FLICKER+")");
-    if(!(T.lod<=MOTION.LOD_8B)) b.push("level-of-detail switches "+T.lod+" (the build before 8C: "+MOTION.LOD_8B+")");
+    if(!(T.lod<=MOTION.LOD)) b.push("level-of-detail switches "+T.lod+" (limit "+MOTION.LOD+")");
+    /* decision 257 (b): every driven run's formations' visibility at least the baseline's; a run by real input within a frame of its twin's */
+    const keyOf=r=>r.key||(r.id+(r.real?"+real":"")+(r.select?"+sel":"")+(r.reading?"+"+r.reading:"")+(r.touch?"+touch":""));
+    const driven=R.filter(r=>!r.real), seen=new Set(driven.map(keyOf));
+    Object.keys(MOTION.VIS).forEach(k=>{ if(!seen.has(k)) b.push("the visibility baseline "+k+" names no run of the block"); });
+    R.forEach(r=>{ const k=keyOf(r), tw=r.real?base.find(x=>x.id===r.id):null;
+      const vb=r.real?(tw&&tw.track?[tw.track.on,tw.track.inView,tw.track.longestMs]:null):MOTION.VIS[k];
+      motionVis(r,vb,r.real?(tw||{}):null).forEach(x=>b.push(k+": "+x)); });
     R.forEach(r=>{ const nm=r.id+(r.real?" by real input":"")+(r.select?" with "+r.select+" selected":"")+(r.reading?" under the "+r.reading+" reading":"")+(r.touch?" by a finger":"");
       if(r.unknownDrawn) b.push(nm+": "+r.unknownDrawn+" item-frames drawn whose formation the reading does not know");
       if(r.overlapFrames) b.push(nm+": "+r.overlapFrames+" frames with drawn items overlapping");

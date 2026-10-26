@@ -410,34 +410,12 @@ async function interact(page,it,vp){
        thresholds.js checkLive (MOTION) */
     AT="motion";
     if(await has(first,"MLS","the map layer in motion: the 16 motions and the four by real input")){
-      const MO=require("./motion.js"), MV={runs:[]}, mp=await openPage(browser,[1600,900],"1600x900 motion");
       /* the self-test's page (check:selftest, CI): two of the four by real input, the right-button drag and the wheel on the paper map (each
-         real-input motion costs a round trip a frame); check:visual drives all four */
-      const REAL=SELFTEST_ONLY?["hybrid-orbit","paper-zoom"]:MO.REAL;
-      const runs=MO.MOTIONS.map(m=>({m:m})).concat(REAL.map(id=>({m:MO.MOTIONS.find(x=>x[0]===id),real:true})),
-        [["hybrid-orbit","sthilaire"],["paper-zoom","sthilaire"]].map(s=>({m:MO.MOTIONS.find(x=>x[0]===s[0]),sel:s[1]})), MO.EXTRA.map(m=>({m:m,extra:m[5]})));
-      let vp=null;
-      try{
-        await settle(mp); await mp.evaluate(()=>closeFirst(null));
-        for(const R of runs){ const [id,view,kind,n,amt]=R.m, X=R.extra||{}, t0=Date.now(), V=MO.VIEWS[view];
-          if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]}); await settle(mp); }   /* the phone layout below 720 px */
-          await mp.evaluate(()=>{ select(null,null); stopPlay(); });
-          /* the view settled without a drawn frame: the motion's frames draw nothing either (the layout reads nothing drawn), and under software
-             WebGL a drawn frame here cost seconds a run */
-          await mp.evaluate(s=>window.__aus.apply(s),V); await mp.evaluate(()=>AUSTERLITZ_DEBUG.settle(90,true));
-          await mp.evaluate(MO.inPage);
-          const A={kind:kind,n:n,amt:amt,gl:false,room:false,select:R.sel||null,rest:30,pre:8,reading:X.reading||null,touch:!!X.touch};
-          const r=R.real?await MO.runReal(mp,A):await mp.evaluate(new Function("a","return ("+MO.RUN.toString()+")(a);"),A);
-          const M=MO.measure(r.F,{restFrom:r.restFrom});
-          const ms=r.ms.slice().sort((a,b)=>a-b), q=p=>ms.length?+ms[Math.min(ms.length-1,Math.floor(ms.length*p))].toFixed(2):null;
-          MV.runs.push({id:id, view:view, kind:kind, real:!!R.real, select:R.sel||null, reading:X.reading||null, touch:!!X.touch, frames:M.frames, moving:M.moving, jumps:M.jumps, pops:M.pops, lod:M.lod, flicker:M.flicker,
-            overlapFrames:M.overlapFrames, keepHidden:M.keepHidden, keepHiddenKeys:M.keepHiddenKeys, remnantBad:M.remnantBad, unknownDrawn:M.unknownDrawn, heldFrames:M.heldFrames, restJumps:M.restJumps, restPops:M.restPops,
-            end:M.idle, msMed:q(0.5), msP95:q(0.95), secs:+((Date.now()-t0)/1000).toFixed(1)});
-          const L=MV.runs[MV.runs.length-1];
-          console.log("motion "+(id+(R.real?" (real input)":"")+(R.sel?" ("+R.sel+" selected)":"")+(X.reading?" (the "+X.reading+" reading)":"")+(X.touch?" (a finger, 390 px)":"")).padEnd(40)+" jumps "+L.jumps+" pops "+L.pops+" lod "+L.lod+" flicker "+L.flicker+
-            " overlap "+L.overlapFrames+" keep hidden "+L.keepHidden+" remnants out of rule "+L.remnantBad+" moving "+L.moving+" of "+L.frames+" frames, ends "+L.end+", layer "+L.msMed+"/"+L.msP95+" ms ("+L.secs+" s)"); }
-      } finally { await mp.close(); }
-      LIVE.motion=MV; }
+         real-input motion costs a round trip a frame); check:visual drives all four. The block itself is motion.js's (runBlock; since 8D also
+         run by tools/stage8/motion-8d.js), with each run's formations' visibility (decision 257 (b)) */
+      const MO=require("./motion.js"), mp=await openPage(browser,[1600,900],"1600x900 motion");
+      try{ LIVE.motion=await MO.runBlock(mp,settle,{selftestOnly:SELFTEST_ONLY, log:s=>console.log(s)}); }
+      finally { await mp.close(); } }
     /* Stage 4D (docs/STAGE4_SPEC.md section D.4; decisions 74, 75): Play by a real key press runs at half speed, its button
        pressed; and the Watch view of the low Pratzen case held in a dwell at the phase-3 event start 09:00 keeps every threshold
        of its view (the darkness limit, map text at AA as rendered, drops within its limit), its event lit and named */

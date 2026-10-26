@@ -47,7 +47,7 @@ async function motions(browser,html){
   if(page) await page.close();
   const S=k=>runs.reduce((s,r)=>s+r[k],0), T={jumps:S("jumps"),pops:S("pops"),lod:S("lod"),flicker:S("flicker")}, bad=[], X=TH.MOTION;
   if(T.jumps>X.JUMPS) bad.push("jumps "+T.jumps); if(T.pops>X.POPS) bad.push("pops "+T.pops); if(T.flicker>X.FLICKER) bad.push("flickers "+T.flicker);
-  if(X.LOD_8B!=null&&T.lod>X.LOD_8B) bad.push("level-of-detail switches "+T.lod);
+  if(T.lod>X.LOD) bad.push("level-of-detail switches "+T.lod);
   runs.forEach(r=>{ if(r.overlapFrames) bad.push(r.id+" overlap"); if(r.keepHidden) bad.push(r.id+" never-dropped hidden "+r.keepHidden); if(r.remnantBad) bad.push(r.id+" remnants out of rule "+r.remnantBad);
     if(!(r.moving>0)) bad.push(r.id+" no frame moving"); if(r.kind!=="play"&&r.end!=="idle") bad.push(r.id+" not idle at rest"); });
   return {totals:T, fails:bad};
