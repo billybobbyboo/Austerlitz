@@ -1,0 +1,49 @@
+{
+ "runs": [
+  {
+   "label": "a low sun: orbit at 08:20 close on Sokolnitz (long shadows)",
+   "frame": 40,
+   "judged": 40,
+   "compared": 20,
+   "px": 2136,
+   "culled": 7322,
+   "shadowOnly": 0,
+   "toggles": 182,
+   "inView": 0,
+   "bad": [
+    "a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 1: 13 pixels differ without culling",
+    "a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 2: 57 pixels differ without culling",
+    "a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 4: 227 pixels differ without culling",
+    "a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 6: 323 pixels differ without culling",
+    "a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 8: 494 pixels differ without culling",
+    "a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 10: 575 pixels differ without culling"
+   ],
+   "secs": 751,
+   "viewport": [
+    1280,
+    720
+   ],
+   "device": null,
+   "ctx": false,
+   "fx": true,
+   "rm": false,
+   "lowTier": false,
+   "shadow": true
+  }
+ ],
+ "build": "build-8d-final.html",
+ "md5": "ae7f16b8cd2960c8813ff4155263830f",
+ "mutate": "camonly",
+ "chromium": "141.0.7390.37",
+ "console": [],
+ "secs": 809,
+ "judged": [
+  "culling in motion (decision 249 (a)): 1 of the 14 sequences and 0 of the 1 on the phone run; a low sun: orbit at 08:20 close on Sokolnitz (long shadows): 2136 pixels differ from the frames drawn without culling (a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 1: 13 pixels differ without culling; a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 2: 57 pixels differ without culling); a formation taken out of the view by each edge: a sequence with no mesh changing between culled and drawn (); the low sun's sequence draws no mesh out of view in the shadow pass (0); no frame drawn after the context's restore"
+ ],
+ "seq": [
+  "a low sun"
+ ],
+ "judgedRun": [
+  "a low sun: orbit at 08:20 close on Sokolnitz (long shadows): 2136 pixels differ from the frames drawn without culling (a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 1: 13 pixels differ without culling; a low sun: orbit at 08:20 close on Sokolnitz (long shadows) frame 2: 57 pixels differ without culling); the low sun's sequence draws no mesh out of view in the shadow pass (0)"
+ ]
+}

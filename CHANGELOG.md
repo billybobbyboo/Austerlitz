@@ -1,5 +1,117 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8D: rendering preparation (decisions 249 (a), 250 (b)), with the owner's decisions 255-258
+
+**Status: built on `claude/kind-darwin-ewmlwu` (draft PR #69, into `main` at `8eb3ef4`), for review; not merged.** No data changed: `check:data`
+passes (all 131 declarations byte-identical to its reference); no geography, simulation, visual convention, text size or `lowTier` setting
+changed. The build changed: `austerlitz-command-map.html` **2,403,007 bytes, md5 `ae7f16b8cd2960c8813ff4155263830f`** (8C's build 2,357,922, `04547a28...`; the
+prerequisite's 2,362,317, `87578ebc...`); `check:baseline` moved to it. The record is `docs/STAGE8_SPEC.md` §16; the evidence
+`docs/stage8-evidence/8d/`. What a visitor notices: nothing on screen (the frame with culling is the frame without it, pixel for pixel, in every comparison drawn from
+one state; against 8C's build on fresh pages nothing differs beyond what differs between fresh pages of one build); the frame draws fewer
+triangles and calls wherever part of the battle is out of the view (the low and close views); a focused or selected counter that the layout had
+held hidden while the view moved is drawn at once at full strength instead of fading in over 180 ms.
+
+- **The owner's decisions 255-258** (26 October 2026, with 8D's brief; `docs/STAGE8_SPEC.md` §16.1): 255 (a), the far step on place and
+  terrain-study names only, battle information keeping its floor, option (d) a prototype task of its own, the low views' wall of formation names
+  not resolved; 256 (a), the inherited unobstructed baselines re-measured on CI's browser; 257 (b), the motion block's ceilings at its own counts,
+  with the formations' visibility held; 258 (a) provisionally, with (b) commissioned as a measured follow-up and the two-pass rule kept.
+- **Prerequisite 1, a commit of its own (`314bb2f`): a protected map item drawn at full opacity at once.** The audit of 8C found `mlLayout`
+  placing an item given the keyboard's focus, the selection or the hover at once but drawing it at the fade's alpha. Reproduced by real input
+  in a fresh browser on `main`'s build (`tools/stage8/protect-8d.js`, `docs/stage8-evidence/8d/protect.json`: Landscape with counters orbited by the
+  right button until Nansouty's counter was held, then a real Tab to it or a real click on its order-of-battle row): drawn, not held, at
+  alpha 0.185 (opacity 0.19) in the first frame, then 0.37, 0.56, 0.74 at 30 frames a second (0.09 to 0.37 at 60). Now the fade's alpha is set
+  at once for the never-dropped items, the forced focus and the item with the focus; the item's own presentation opacity still multiplies it.
+  On the fixed build alpha 1 and opacity 1 in every frame, at 30 and 60, by focus and by selection. Held by a new self-test check (an item held or
+  fading out, given the focus, the selection or the hover by the app's own paths: on at alpha 1, computed opacity 1, in that frame; the
+  manifest 270 to 271), the runtime-test dry run (fails without the fix) and `css-test.js` (the rule, and the opacity formula kept). Reduced
+  motion (no fades already), the readings (nothing drawn that a reading does not know: the motion block's `unknownDrawn`, 0 in every run) and
+  the keyboard's path unchanged. Build 2,362,317 bytes, md5 `87578ebc...`.
+- **Prerequisite 2 (`3c9e2eb`): decision 257 (b).** `thresholds.js` `MOTION`: jumps 245, pops 985, level-of-detail switches 130, flickers 10 over
+  the 16 motions (were 300, 1,300, 200 and 130), the benchmark's own counts on the pinned browser (Chromium 141); and `MOTION.VIS`, every driven
+  run's formations' visibility (22 runs: the formation-frames in view exactly, the drawn at least, the longest disappearance at most the fix
+  build's), a real-input run within a frame of its twin's. `tools/stage8/vis-257.js`: 12 deliberately worsened reports, each failing with the
+  rule's words, among them five fewer jumps bought by hiding 40 formation-frames (or making them absent), which passes the totals and fails the
+  visibility; and the block run on a copy of the app whose hold hides a formation instead of placing it close: its jumps 245 to 42, under
+  the ceiling, failing by its formations' visibility in 12 runs (and by its pops, 1,195, and flickers, 17). The harness's motion block moved into `tools/visual/motion.js` (`runBlock`, also run by
+  `tools/stage8/motion-8d.js`), unchanged in what it drives, now with each run's tracking.
+- **Prerequisite 3 (`067bb83`): the motion block waits for the app's resize before the phone run.** Found on CI: the finger's pan at 390 px
+  measured 1,490 of 2,133 formation-frames in view and 26 level-of-detail switches on one runner (run 40256828983's `check:selftest`), 296 of
+  732 and none here and on every other runner. It is the only run after a resize, which the app takes at a rendering step (the phone layout,
+  the eye's aspect, the portrait framing); the driver's fixed wait could end before it. `runBlock` now waits until the app has taken the
+  resize. No app change; the counts here unchanged.
+- **Prerequisite 4 (`e008825`): decision 256 (a), the inherited unobstructed baselines re-measured on CI's browser.** Two full `check:visual`
+  runs on CI (Chromium 141.0.7390.37, Playwright 1.56.0's headless shell) of the prerequisite's build `87578ebc...`: 40256841580 (`3c9e2eb`) and
+  40262942179 (`067bb83`); a third, 40256833873, ended at 66 minutes without its report and is not used. Both fail exactly the five shares CI
+  has reported since roadmap step 1 and measure every share identically. `remeasure.js --bounds keep --accept-loosening 256` (new: it accepts
+  only these four cases' unobstructed baselines and stops on any other change; shown stopping on another case's lowered share) lowers, to the
+  measure rounded down to 0.1 point: `first-run` [0.626, 0.507] to [0.625, 0.506] (measured 0.6256 / 0.5069), `first-run-laptop` [0.546, 0.507]
+  to [0.546, 0.506] (0.5461 / 0.5069), `narrow-1024` [0.533, 0.628] to [0.532, 0.628] (0.5321 / 0.6291), `phone-844x390-explore` 0.690 to
+  0.687 (0.6879); both runs then pass every check. Why: the baselines were measured in this container's Chromium; CI's browser draws the same
+  layout a little narrower, not a regression. `remeasure.js` also wrote a phone case's null 1280 x 720 baseline as `[0.687,]` and failed: it
+  writes JSON now. No other limit changed. Evidence: `docs/stage8-evidence/8d/remeasure-256.txt`, `unobstructed-256.json`.
+- **Decision 249 (a): every figure block culled by its own bounds.** three r128 never culls an instanced mesh (`InstancedMesh` sets
+  `frustumCulled` false: its frustum test would read one instance's sphere at the mesh's origin). Since 8D every instanced mesh of every block
+  (338: men, horses and riders, guns, crews, teams and limbers, skirmishers, the standards' poles, cloths and finials) carries a sphere over its
+  own drawn instances, each instance's geometry's sphere carried through its matrix and widened by the animation's envelope, and three's
+  frustum test reads it for those meshes only (r128's own for every other object). Both passes cull, each with its own frustum: the world pass
+  the eye's, the shadow pass the sun's, so a block out of view still casts its shadow into it; `visible` is never touched. The bounds are
+  refreshed at the test when three's version of the instance matrices moves (the matrices' upload signal, set whenever a block moves, turns,
+  re-seats, reshapes, shows another number of battalions or limbers), when the count changes or the geometry: an unchanged mesh costs one
+  comparison. The shared kit geometries' own bounds are never written. Culling reads and changes nothing of the selection, the map layer, the
+  dossiers, the readings, the history or the simulation, and the figure, standards and seating checks read every block, drawn or not.
+  `CULL.on` false (`setCull`, a measurement switch the app never sets) draws as before 8D.
+- **Decision 250 (b)'s hooks for 8E: the kit's part attribute and one vertex hook, inert.** Every vertex of the figure kit's geometries carries
+  its part (`aPart`: a man's legs and left arm, a horse's four legs, the rest); one hook after three's `begin_vertex`, on each kit mesh's
+  material and on its own depth material (so the shadow casts the pose drawn), driven by two uniforms of the mesh (`uAnimPhase`, `uAnimAmp`)
+  that nothing in the app writes: at amplitude 0 its branch is not taken and the vertex is three's own. `animEnv` gives the largest
+  displacement of each geometry over any phase and amplitude in [0, 1], which the culling bounds include. Two programs more (the kit's
+  material and its depth material: 30 to 32 in the low Pratzen view). No gait drawn, no model detail added.
+- **The census, a harness measure (decision 250 (b)).** `measure.js` `census`: every draw call of one whole frame where three issues it, by pass
+  (shadow, the ground's depth for the overlays, world, labels, post) and by what is drawn, reconciled with `renderer.info`; culled and not, the
+  depth pass reused and drawn again, so that its cache is never taken for a saving; `cullEquiv`: the frame with and without culling from one
+  state, read from the drawing buffer at once. `check:visual` takes both in every case and judges them (`thresholds.js` `CENSUS`): reconciled,
+  0 pixels, section 8.3's desktop budget (2.8 million triangles, 900 calls; the phone's 1.62 million reported for the device run, as section
+  8.3 provides), and the low Pratzen view's triangles at least 10% under the frame without culling (the whole frame, every pass, the depth
+  drawn). A live block, `cull` (`tools/visual/cullmotion.js`, `check:visual` only): fourteen sequences of the app's own frames and a phone's,
+  each frame's culling judged against its instances and every second frame compared with the same state drawn without culling.
+- **CI:** the browser jobs' time limit 45 to 60 minutes (`.github/workflows/checks.yml`): the self-test's 8D block adds about two minutes to the
+  in-app self-test on CI's runners (682-1,183 s in the six runs before it, 779-1,189 s in the three with it); the `check:selftest` step has taken
+  16-31 minutes there (21-30 on 8D's commit), and one stalled install try takes ten minutes of the limit. No check changed.
+- **Measured (here, Chromium 141, software WebGL; `docs/STAGE8_SPEC.md` §16.8-§16.11, `docs/stage8-evidence/8d/`).** The census, the prerequisite's
+  build against 8D's, the frame whose eye moved: in the low Pratzen view 760 calls and 2,628,383 triangles to 543 and 2,211,039, **15.9%** fewer over
+  the whole frame (the world pass 23.1%, the shadow pass 7.9%); close on Sokolnitz 7.7% (11.0% at 10.33x); the eye level 17.6%; the phone's low
+  Pratzen view 26.6% (1,605,135 to 1,178,497); the Overview views, the 1x and the paper-map views unchanged (nothing wholly off the view). 8D's frame
+  without culling is the prerequisite's exactly in every view. Step 6's estimate (the world pass's figure meshes wholly off the view) re-read: in the
+  low Pratzen view culling takes 99% of it (336,398 of 339,022), close on Sokolnitz 70% (204,280 of 292,986: one sphere over a long line reaches
+  into a narrow view). Section 8.3's desktop budget holds in every view (the largest 2,698,179 triangles and 859 calls, both Overview views culling
+  does not change); the phone's two Overview views are 1.3% and 0.7% over its 1.62 million with the depth drawn, as before 8D, which leaves section
+  8.3's alternative, a phone run, pending. The culling block in motion, on the committed build (fourteen sequences at 1280 x 720 with the shadow
+  pass and a phone's pan): 485 frames judged and 243 compared with the same state drawn without culling, 0 pixels differing; none culled with
+  an instance in view; 35,825 mesh-frames drawn in the shadow pass only, casting into the view from outside it. The self-test's 8D block: 13
+  of 13 (the bounds at each factor, 338 meshes and 239,091 vertices; the sweep, about 380 views a factor, no mesh culled with an instance in
+  view; the passes and the picture, 0 pixels; a shadow from out of view, 0 pixels against 108 when the block is hidden; the hooks inert, 0
+  pixels with the draw order held; a controlled deformation moving the figures and their shadow alike). Each check made to fail: the self-test's
+  block on eight copies with one rule broken, `css-test.js`'s on eight, the culling block on two. Two builds on fresh pages (8C's and 8D's, five
+  pages each, six views): nothing differs beyond what differs between fresh pages of one build (47 pixels close on Sokolnitz in one session,
+  1-6 levels, did not reproduce on six pages a build in a session of their own). 8C's motions and the formations followed on 8D's build: every
+  count 8C's (the two glides a few frames apart, as from run to run). Culling's own CPU here: 551-579 tests a frame at 0.10-0.14 us; no bounds
+  refreshed when still or panning, about 0.5 ms a frame while the clock plays (every block re-seated at each step, as before 8D), 0.5-1.2 ms once
+  at a factor change; no heap growth kept. The hooks: two programs more (32), one float a kit vertex (54,804 bytes), 255 depth materials, no
+  draw call or triangle.
+- **Verified:** here (Chromium 141.0.7390.37, software WebGL), on the committed build: `npm run build` byte for byte; `npm test` (all nine
+  suites and the height guard); `check:data` (131 of 131 identical); `check:chronology` (0 errors); `check:baseline`; the self-test 284 of 284
+  with no console message on a page opened as the harness opens it (the harness's own `check:selftest` here stopped in the tips block under the
+  container's load, after the self-test passed). On CI, on 8D's commit (`4cb72b1`): the checks job, `check:contrast` and `check:selftest` in the
+  push, pull-request and dispatched runs (40276598532, 40276603864, 40276605486: the self-test 284 of 284, the motion block's 24 runs the
+  baseline's exactly in all three), and the dispatched run's full `check:visual`: every check passes (136 minutes; its report judged again here
+  by `check-report.js`, passing). `check:visual` and `check:contrast` were not run in full here.
+- **Uncertain or open:** device acceptance pending: no owner hardware was available, and fewer triangles and calls do not prove faster frames
+  (the route and both builds prepared, §16.12); a GPU's frame time, Safari and memory on a device not measured; the phone's Overview views over
+  section 8.3's triangle budget with the depth drawn (before and after 8D alike) until a phone run decides it; the desktop budget 96% used in the
+  Overview, where culling saves nothing and 8E's richer kit costs most; one sphere per mesh culls 70-100% of what a per-instance test would;
+  decisions 258 (b) and 255 (d) commissioned, not built; the low views' wall of formation names open (decision 255); the visibility loss in motion
+  not final UX acceptance (decision 258).
+
 ## 2026-10 · Stage 8, implementation PR 8C: the map layer in motion (decisions 240 (a), 254 (a)), after the audit's findings A-C
 
 **Status: built on `claude/focused-faraday-76jwny`; merged into `main` by the owner (PR #68, `8eb3ef4`).** The integration PR #67, which brought 8B

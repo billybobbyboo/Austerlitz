@@ -1,0 +1,80 @@
+{
+ "runs": [
+  {
+   "label": "pan from the Field vantage, Landscape",
+   "frame": 40,
+   "judged": 40,
+   "compared": 20,
+   "px": 866,
+   "culled": 831,
+   "shadowOnly": 771,
+   "toggles": 57,
+   "inView": 75,
+   "bad": [
+    "pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 7 in view",
+    "pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 4 in view",
+    "pan from the Field vantage, Landscape frame 20: 1 pixels differ without culling",
+    "pan from the Field vantage, Landscape frame 22: dok culled with instance 0 in view",
+    "pan from the Field vantage, Landscape frame 22: dok culled with instance 0 in view",
+    "pan from the Field vantage, Landscape frame 23: bourcier culled with instance 1 in view"
+   ],
+   "secs": 758.8,
+   "viewport": [
+    1280,
+    720
+   ],
+   "device": null,
+   "ctx": false,
+   "fx": true,
+   "rm": false,
+   "lowTier": false,
+   "shadow": true
+  },
+  {
+   "label": "Saint-Hilaire's division leaving the view by each edge",
+   "frame": 36,
+   "judged": 36,
+   "compared": 18,
+   "px": 10606,
+   "culled": 8167,
+   "shadowOnly": 6382,
+   "toggles": 479,
+   "inView": 144,
+   "bad": [
+    "Saint-Hilaire's division leaving the view by each edge frame 1: nansouty culled with instance 0 in view",
+    "Saint-Hilaire's division leaving the view by each edge frame 1: rivaud culled with instance 0 in view",
+    "Saint-Hilaire's division leaving the view by each edge frame 5: kamensky culled with instance 0 in view",
+    "Saint-Hilaire's division leaving the view by each edge frame 6: sthilaire culled with instance 0 in view",
+    "Saint-Hilaire's division leaving the view by each edge frame 6: vandamme culled with instance 110 in view",
+    "Saint-Hilaire's division leaving the view by each edge frame 6: kamensky culled with instance 0 in view"
+   ],
+   "secs": 631.7,
+   "viewport": [
+    1280,
+    720
+   ],
+   "device": null,
+   "ctx": false,
+   "fx": true,
+   "rm": false,
+   "lowTier": false,
+   "shadow": true
+  }
+ ],
+ "build": "build-8d-final.html",
+ "md5": "ae7f16b8cd2960c8813ff4155263830f",
+ "mutate": "half",
+ "chromium": "141.0.7390.37",
+ "console": [],
+ "secs": 1449,
+ "judged": [
+  "culling in motion (decision 249 (a)): 2 of the 14 sequences and 0 of the 1 on the phone run; pan from the Field vantage, Landscape: 75 frames with a culled mesh whose instance is in view (pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 7 in view; pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 4 in view); pan from the Field vantage, Landscape: 866 pixels differ from the frames drawn without culling (pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 7 in view; pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 4 in view); Saint-Hilaire's division leaving the view by each edge: 144 frames with a culled mesh whose instance is in view (Saint-Hilaire's division leaving the view by each edge frame 1: nansouty culled with instance 0 in view; Saint-Hilaire's division leaving the view by each edge frame 1: rivaud culled with instance 0 in view); Saint-Hilaire's division leaving the view by each edge: 10606 pixels differ from the frames drawn without culling (Saint-Hilaire's division leaving the view by each edge frame 1: nansouty culled with instance 0 in view; Saint-Hilaire's division leaving the view by each edge frame 1: rivaud culled with instance 0 in view); the low sun's sequence draws no mesh out of view in the shadow pass (not run); no frame drawn after the context's restore"
+ ],
+ "seq": [
+  "Saint-Hilaire",
+  "pan from the Field"
+ ],
+ "judgedRun": [
+  "pan from the Field vantage, Landscape: 75 frames with a culled mesh whose instance is in view (pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 7 in view; pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 4 in view); pan from the Field vantage, Landscape: 866 pixels differ from the frames drawn without culling (pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 7 in view; pan from the Field vantage, Landscape frame 20: kienmayer culled with instance 4 in view); Saint-Hilaire's division leaving the view by each edge: 144 frames with a culled mesh whose instance is in view (Saint-Hilaire's division leaving the view by each edge frame 1: nansouty culled with instance 0 in view; Saint-Hilaire's division leaving the view by each edge frame 1: rivaud culled with instance 0 in view); Saint-Hilaire's division leaving the view by each edge: 10606 pixels differ from the frames drawn without culling (Saint-Hilaire's division leaving the view by each edge frame 1: nansouty culled with instance 0 in view; Saint-Hilaire's division leaving the view by each edge frame 1: rivaud culled with instance 0 in view)"
+ ]
+}

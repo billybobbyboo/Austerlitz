@@ -1,0 +1,1300 @@
+{
+ "note": "the census of the nine check:visual cases census-8d.js does not open (fresh pages reached by real clicks), taken by the harness itself (tools/visual/harness.js --only, without --test) on the committed build: each case`s four frames (culled and not, the depth for the overlays reused and drawn) and the frame with and without culling compared",
+ "md5": "ae7f16b8cd2960c8813ff4155263830f",
+ "env": {
+  "platform": "linux",
+  "arch": "x64",
+  "chromium": "141.0.7390.37",
+  "playwright": "1.56.0",
+  "executable": "playwright"
+ },
+ "cases": {
+  "first-run": {
+   "onCold": {
+    "calls": 745,
+    "tris": 2617371,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1455938
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 745,
+    "tris": 2617371,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1455938
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 743,
+    "tris": 2470283,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1455938
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 743,
+    "tris": 2470283,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1455938
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1600,
+    "h": 900,
+    "culled": 0,
+    "tests": 532
+   }
+  },
+  "opening-1": {
+   "onCold": {
+    "calls": 713,
+    "tris": 2607721,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 252,
+      "tris": 992010
+     },
+     "world": {
+      "calls": 449,
+      "tris": 1468610
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 29,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 742,
+    "tris": 2652155,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 464,
+      "tris": 1490724
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 711,
+    "tris": 2460633,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 252,
+      "tris": 992010
+     },
+     "world": {
+      "calls": 449,
+      "tris": 1468610
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 29,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 740,
+    "tris": 2505067,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 464,
+      "tris": 1490724
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1600,
+    "h": 900,
+    "culled": 29,
+    "tests": 532
+   }
+  },
+  "opening-2": {
+   "onCold": {
+    "calls": 611,
+    "tris": 2446805,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 238,
+      "tris": 941134
+     },
+     "world": {
+      "calls": 361,
+      "tris": 1358570
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 567,
+     "culled": 111,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 722,
+    "tris": 2644797,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 283,
+      "tris": 1032378
+     },
+     "world": {
+      "calls": 427,
+      "tris": 1465318
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 609,
+    "tris": 2299717,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 238,
+      "tris": 941134
+     },
+     "world": {
+      "calls": 361,
+      "tris": 1358570
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 567,
+     "culled": 111,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 720,
+    "tris": 2497709,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 283,
+      "tris": 1032378
+     },
+     "world": {
+      "calls": 427,
+      "tris": 1465318
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1600,
+    "h": 900,
+    "culled": 111,
+    "tests": 567
+   }
+  },
+  "opening-3": {
+   "onCold": {
+    "calls": 479,
+    "tris": 2176947,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 239,
+      "tris": 940470
+     },
+     "world": {
+      "calls": 229,
+      "tris": 1089378
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 567,
+     "culled": 222,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 701,
+    "tris": 2631069,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 283,
+      "tris": 1032890
+     },
+     "world": {
+      "calls": 407,
+      "tris": 1451080
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 477,
+    "tris": 2029859,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 239,
+      "tris": 940470
+     },
+     "world": {
+      "calls": 229,
+      "tris": 1089378
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 567,
+     "culled": 222,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 699,
+    "tris": 2483981,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 283,
+      "tris": 1032890
+     },
+     "world": {
+      "calls": 407,
+      "tris": 1451080
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1600,
+    "h": 900,
+    "culled": 222,
+    "tests": 567
+   }
+  },
+  "opening-4": {
+   "onCold": {
+    "calls": 537,
+    "tris": 2297753,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 191,
+      "tris": 860938
+     },
+     "world": {
+      "calls": 335,
+      "tris": 1289716
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 585,
+     "culled": 215,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 752,
+    "tris": 2668247,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 291,
+      "tris": 1044806
+     },
+     "world": {
+      "calls": 450,
+      "tris": 1476342
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 535,
+    "tris": 2150665,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 191,
+      "tris": 860938
+     },
+     "world": {
+      "calls": 335,
+      "tris": 1289716
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 585,
+     "culled": 215,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 750,
+    "tris": 2521159,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 291,
+      "tris": 1044806
+     },
+     "world": {
+      "calls": 450,
+      "tris": 1476342
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1600,
+    "h": 900,
+    "culled": 215,
+    "tests": 585
+   }
+  },
+  "opening-end": {
+   "onCold": {
+    "calls": 745,
+    "tris": 2618463,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1457030
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 745,
+    "tris": 2618463,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1457030
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 743,
+    "tris": 2471375,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1457030
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 743,
+    "tris": 2471375,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1457030
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1600,
+    "h": 900,
+    "culled": 0,
+    "tests": 532
+   }
+  },
+  "pratzen-orbit-min": {
+   "onCold": {
+    "calls": 615,
+    "tris": 2354397,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 249,
+      "tris": 991726
+     },
+     "world": {
+      "calls": 355,
+      "tris": 1215572
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 559,
+     "culled": 138,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 753,
+    "tris": 2624371,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 279,
+      "tris": 1025978
+     },
+     "world": {
+      "calls": 463,
+      "tris": 1451294
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 613,
+    "tris": 2207309,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 249,
+      "tris": 991726
+     },
+     "world": {
+      "calls": 355,
+      "tris": 1215572
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 559,
+     "culled": 138,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 751,
+    "tris": 2477283,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 279,
+      "tris": 1025978
+     },
+     "world": {
+      "calls": 463,
+      "tris": 1451294
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 2,
+      "tris": 4
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1600,
+    "h": 900,
+    "culled": 138,
+    "tests": 559
+   }
+  },
+  "opening-1-laptop": {
+   "onCold": {
+    "calls": 717,
+    "tris": 2624777,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 252,
+      "tris": 992010
+     },
+     "world": {
+      "calls": 453,
+      "tris": 1485666
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 27,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 744,
+    "tris": 2668851,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1507420
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 715,
+    "tris": 2477689,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 252,
+      "tris": 992010
+     },
+     "world": {
+      "calls": 453,
+      "tris": 1485666
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 27,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 742,
+    "tris": 2521763,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1507420
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 3,
+      "tris": 6
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1280,
+    "h": 720,
+    "culled": 27,
+    "tests": 532
+   }
+  },
+  "first-run-laptop": {
+   "onCold": {
+    "calls": 745,
+    "tris": 2619985,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1458552
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offCold": {
+    "calls": 745,
+    "tris": 2619985,
+    "empty": 0,
+    "byPass": {
+     "depth": {
+      "calls": 2,
+      "tris": 147088
+     },
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1458552
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "onWarm": {
+    "calls": 743,
+    "tris": 2472897,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1458552
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 532,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "offWarm": {
+    "calls": 743,
+    "tris": 2472897,
+    "empty": 0,
+    "byPass": {
+     "shadow": {
+      "calls": 266,
+      "tris": 1014330
+     },
+     "world": {
+      "calls": 466,
+      "tris": 1458552
+     },
+     "post": {
+      "calls": 7,
+      "tris": 7
+     },
+     "labels": {
+      "calls": 4,
+      "tris": 8
+     }
+    },
+    "reconciled": true,
+    "cull": {
+     "tests": 0,
+     "culled": 0,
+     "refresh": 0,
+     "inst": 0,
+     "ms": 0
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "w": 1366,
+    "h": 768,
+    "culled": 0,
+    "tests": 532
+   }
+  }
+ }
+}

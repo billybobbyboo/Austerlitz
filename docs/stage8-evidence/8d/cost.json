@@ -1,0 +1,352 @@
+{
+ "build": "build-8d-final.html",
+ "md5": "ae7f16b8cd2960c8813ff4155263830f",
+ "chromium": "141.0.7390.37",
+ "views": {
+  "pratzen-low": {
+   "meshes": 338,
+   "still": {
+    "frames": 6,
+    "tests": 559,
+    "culled": 217,
+    "refreshPerFrame": {
+     "n": 6,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    },
+    "instPerFrame": 0,
+    "ms": {
+     "n": 6,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    }
+   },
+   "pan": {
+    "frames": 12,
+    "tests": 559,
+    "culled": 242,
+    "refreshPerFrame": {
+     "n": 12,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    },
+    "instPerFrame": 0,
+    "ms": {
+     "n": 12,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    }
+   },
+   "play": {
+    "frames": 24,
+    "tests": 559,
+    "culled": 215,
+    "refreshPerFrame": {
+     "n": 24,
+     "median": 293,
+     "p95": 293,
+     "max": 293,
+     "sum": 7011
+    },
+    "instPerFrame": 6317,
+    "ms": {
+     "n": 24,
+     "median": 0.4999999962747097,
+     "p95": 1.0000000074505806,
+     "max": 4.800000004470348,
+     "sum": 15.300000004470348
+    }
+   },
+   "factor": {
+    "frames": 1,
+    "tests": 559,
+    "culled": 181,
+    "refreshPerFrame": {
+     "n": 1,
+     "median": 293,
+     "p95": 293,
+     "max": 293,
+     "sum": 293
+    },
+    "instPerFrame": 6317,
+    "ms": {
+     "n": 1,
+     "median": 0.5,
+     "p95": 0.5,
+     "max": 0.5,
+     "sum": 0.5
+    }
+   },
+   "factorTo": 10.32642489706367,
+   "testCost": {
+    "tests": 67600,
+    "ms": 9.2,
+    "usPerTest": 0.136,
+    "refreshed": 0
+   },
+   "frameJs": {
+    "culled": {
+     "n": 20,
+     "median": 4761.4,
+     "p95": 36645.5
+    },
+    "notCulled": {
+     "n": 20,
+     "median": 8469.1,
+     "p95": 10103.6
+    }
+   },
+   "heap": {
+    "frames": 30,
+    "before": 13918140,
+    "afterCulled": 13989424,
+    "afterNotCulled": 14021772,
+    "deltaCulled": 71284,
+    "deltaNotCulled": 32348
+   }
+  },
+  "close-sokolnitz": {
+   "meshes": 338,
+   "still": {
+    "frames": 6,
+    "tests": 551,
+    "culled": 106,
+    "refreshPerFrame": {
+     "n": 6,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    },
+    "instPerFrame": 0,
+    "ms": {
+     "n": 6,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    }
+   },
+   "pan": {
+    "frames": 12,
+    "tests": 551,
+    "culled": 127,
+    "refreshPerFrame": {
+     "n": 12,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    },
+    "instPerFrame": 0,
+    "ms": {
+     "n": 12,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    }
+   },
+   "play": {
+    "frames": 24,
+    "tests": 551,
+    "culled": 107,
+    "refreshPerFrame": {
+     "n": 24,
+     "median": 250,
+     "p95": 260,
+     "max": 260,
+     "sum": 6072
+    },
+    "instPerFrame": 5287,
+    "ms": {
+     "n": 24,
+     "median": 0.4000000059604645,
+     "p95": 0.8999999985098839,
+     "max": 4.400000002235174,
+     "sum": 14.599999986588955
+    }
+   },
+   "factor": {
+    "frames": 1,
+    "tests": 551,
+    "culled": 168,
+    "refreshPerFrame": {
+     "n": 1,
+     "median": 289,
+     "p95": 289,
+     "max": 289,
+     "sum": 289
+    },
+    "instPerFrame": 6253,
+    "ms": {
+     "n": 1,
+     "median": 0.8000000007450581,
+     "p95": 0.8000000007450581,
+     "max": 0.8000000007450581,
+     "sum": 0.8000000007450581
+    }
+   },
+   "factorTo": 10.32642489706367,
+   "testCost": {
+    "tests": 67600,
+    "ms": 7.1,
+    "usPerTest": 0.105,
+    "refreshed": 0
+   },
+   "frameJs": {
+    "culled": {
+     "n": 20,
+     "median": 5159.5,
+     "p95": 10743.9
+    },
+    "notCulled": {
+     "n": 20,
+     "median": 5053.8,
+     "p95": 10396
+    }
+   },
+   "heap": {
+    "frames": 30,
+    "before": 14284800,
+    "afterCulled": 14317352,
+    "afterNotCulled": 14330488,
+    "deltaCulled": 32552,
+    "deltaNotCulled": 13136
+   }
+  },
+  "overview-field": {
+   "meshes": 338,
+   "still": {
+    "frames": 6,
+    "tests": 579,
+    "culled": 0,
+    "refreshPerFrame": {
+     "n": 6,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    },
+    "instPerFrame": 0,
+    "ms": {
+     "n": 6,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    }
+   },
+   "pan": {
+    "frames": 12,
+    "tests": 579,
+    "culled": 0,
+    "refreshPerFrame": {
+     "n": 12,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    },
+    "instPerFrame": 0,
+    "ms": {
+     "n": 12,
+     "median": 0,
+     "p95": 0,
+     "max": 0,
+     "sum": 0
+    }
+   },
+   "play": {
+    "frames": 24,
+    "tests": 559,
+    "culled": 0,
+    "refreshPerFrame": {
+     "n": 24,
+     "median": 293,
+     "p95": 293,
+     "max": 293,
+     "sum": 7011
+    },
+    "instPerFrame": 6317,
+    "ms": {
+     "n": 24,
+     "median": 0.5000000037252903,
+     "p95": 0.7000000067055225,
+     "max": 1.1999999955296516,
+     "sum": 12.899999979883432
+    }
+   },
+   "factor": {
+    "frames": 1,
+    "tests": 579,
+    "culled": 0,
+    "refreshPerFrame": {
+     "n": 1,
+     "median": 303,
+     "p95": 303,
+     "max": 303,
+     "sum": 303
+    },
+    "instPerFrame": 6477,
+    "ms": {
+     "n": 1,
+     "median": 1.1999999918043613,
+     "p95": 1.1999999918043613,
+     "max": 1.1999999918043613,
+     "sum": 1.1999999918043613
+    }
+   },
+   "factorTo": 10.32642489706367,
+   "testCost": {
+    "tests": 67600,
+    "ms": 6.9,
+    "usPerTest": 0.102,
+    "refreshed": 0
+   },
+   "frameJs": {
+    "culled": {
+     "n": 20,
+     "median": 4677.9,
+     "p95": 13534.9
+    },
+    "notCulled": {
+     "n": 20,
+     "median": 4511.1,
+     "p95": 4813.6
+    }
+   },
+   "heap": {
+    "frames": 30,
+    "before": 15665452,
+    "afterCulled": 14658300,
+    "afterNotCulled": 14684964,
+    "deltaCulled": -1007152,
+    "deltaNotCulled": 26664
+   }
+  }
+ },
+ "hooks": {
+  "geometries": 30,
+  "vertices": 13701,
+  "aPartBytes": 54804,
+  "kitMeshes": 255,
+  "depthMaterials": 255,
+  "programs": 32,
+  "built": 226,
+  "depth": 226,
+  "cullMeshes": 338,
+  "totalRefresh": 26847,
+  "totalInst": 580806,
+  "totalMs": 70.7
+ },
+ "console": []
+}

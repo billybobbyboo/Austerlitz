@@ -432,6 +432,31 @@ owner accepted: items fade out and back instead of jumping); the formations foll
 question 258). A motion block in `check:visual` and `check:selftest`, the self-test 261 to 270 checks, each new check made to fail. Device
 acceptance pending (no owner hardware in the session). Owner questions 255-258.
 
+**The owner's decisions 255-258** (26 October 2026, with 8D's brief; `docs/STAGE8_SPEC.md` §16.1): 255 (a), the far step as built (place and
+terrain-study names only; battle information keeps its floor), with (d), a hierarchy for far battle information by another means than size, a
+prototype task of its own, and the low views' wall of formation names left open; 256 (a), the inherited unobstructed baselines re-measured on
+CI's browser; 257 (b), the motion block's ceilings at the benchmark's own counts, with each run's formations' visibility held; 258 (a)
+provisionally, its visibility loss not final acceptance, with (b) commissioned and the two-pass return rule kept.
+
+**Implementation PR 8D** (26 October 2026; `docs/STAGE8_SPEC.md` §16; draft PR #69 into `main`, for review): first, in commits of their own,
+the prerequisites: a protected map item (the keyboard's focus, the selection, the hover) is drawn at full opacity in the frame it gains that
+priority (found by the audit of 8C, reproduced by real input: 0.19 a frame after a real Tab at 30 frames a second); decision 257 (b); decision
+256 (a). Then decisions 249 (a) and 250 (b): every instanced mesh of every figure block culled by bounds of its own instances (three r128 never
+culls an instanced mesh), in the world pass by the eye's frustum and in the shadow pass by the sun's, so a block out of view still casts its
+shadow into it; the bounds refreshed when three's version of the instance matrices moves, the shared geometries' own bounds untouched, nothing
+hidden; the kit's part attribute and one vertex hook on its material and on its own depth material, inert at amplitude 0, ready for 8E's gait;
+the census by view and pass a harness measure, reconciled with `renderer.info`, the depth pass's refresh and its cache told apart, section 8.3's
+budgets and the 10% target held by `check:visual`. Measured here: the low Pratzen view's frame 15.9% fewer triangles (2,628,383 to 2,211,039) and 217 fewer draw calls over every pass, close on Sokolnitz 7.7%, the eye level 17.6%, the phone's low Pratzen view 26.6%; the Overview unchanged (nothing wholly off the view), its frame at 96% of section 8.3's desktop triangle budget, which is where 8E's richer kit will need the level of detail section 8.4 describes. The frame with culling the frame without it, pixel for pixel, in every comparison (static cases,
+fourteen motion sequences and a phone's, shadows from out of view), and against 8C's build on fresh pages nothing beyond what differs
+between fresh pages of one build; each new check made to fail. Device acceptance pending: the before and after
+builds and the device route (with a culling route in the corrected bracket) are ready for the owner's desktop and iPhone; no integrated-GPU
+laptop was available.
+
+**Follow-ups commissioned with 8D, not built:** (1) decision 258 (b), more placements close to a counter's anchor while the view moves, measured
+against the visibility baselines of decision 257 (b) as §15.6 measured 8C, with the two-pass rule kept until a measured comparison justifies a
+change; (2) decision 255 (d), a hierarchy for far battle information by another means than size (a lighter plate or ink for far names, still at
+AA), prototyped and measured first, with the low views' wall of formation names its test.
+
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**
 - *What it is (fact):* the position-confidence marks (Stage 5B; `CONF`, `confPlace` in `app.js`): every formation's position grade drawn on the
