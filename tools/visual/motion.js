@@ -256,7 +256,13 @@ async function runBlock(mp,settle,o){
   let vp=null;
   await settle(mp); await mp.evaluate(()=>closeFirst(null));
   for(const R of blockRuns(o.selftestOnly)){ const [id,view,kind,n,amt]=R.m, X=R.extra||{}, t0=Date.now(), V=VIEWS[view];
-    if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]}); await settle(mp); }   /* the phone layout below 720 px */
+    if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]});   /* the phone layout below 720 px */
+      /* the app's own resize handler run before the view is set up (it sets the phone layout, PHONE, the eye's aspect and the view offset):
+         the resize event comes at a rendering step, and on a slow runner after the settle's wait, so a view set up before it was framed the
+         desktop's way (the eye at the Field vantage's 243 units, not drawn back by the portrait framing: CI's check:selftest on 3c9e2eb, run
+         40256828983, 2,133 formation-frames in view and 26 level-of-detail switches against 732 and 0 here and in every earlier run) */
+      await mp.waitForFunction(([w,h])=>window.innerWidth===w&&window.innerHeight===h&&Math.abs(landCam.aspect-w/h)<1e-9&&(typeof PHONE==="undefined"||PHONE===window.matchMedia(PHONE_Q).matches),[vp[0],vp[1]],{timeout:60000,polling:50});
+      await settle(mp); }
     await mp.evaluate(()=>{ select(null,null); stopPlay(); });
     /* the view settled without a drawn frame: the motion's frames draw nothing either (the layout reads nothing drawn), and under software
        WebGL a drawn frame here cost seconds a run */
