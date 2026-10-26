@@ -48,6 +48,28 @@
      the figures hidden, last), the warm-up and each block's seconds (design values), and the rounds */
   var PHONE_VERSION="step6-phone-route 1";
   var PHONE={order:["figShadow","shadowPass","density1","density1Pass","figures"], warm:45, secs:6, rounds:2};
+  /* Stage 8, implementation PR 8D (decisions 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 8.5 and 16): the bracketed routes, one switch of a
+     build compared with itself: ?route=cull in perf-run.html (or run(w,{cull:true})): culling on and off; ?route=fx (run(w,{fx:true})): the visual
+     effects on and off, decision 250 (b)'s diagnostic. In one view (the low Pratzen view, orbiting; for culling on a desktop also at 10.33x),
+     after a warm-up, blocks A (the build as it is: culling on, or the effects on) and B (culling off, every block drawn in both passes as before
+     8D; or the effects off, the F key) in the order A B A B A B A, twice, then after a rest B A B A B A B, twice: the protocol decision 250 asks
+     for, as corrected (docs/STAGE8_SPEC.md section 0.3.1, item 10). The rule, stated before any run: in A B A B A B A each of the three Bs is
+     compared with the two As beside it, in B A B A B A B each of the three As with the two Bs beside it; A is the faster when every one of those
+     comparisons, in both rounds of both orders, says so (each B's median frame interval above both neighbouring As', each A's below both
+     neighbouring Bs': "culling faster", "effects off slower"), the slower when every one says the opposite ("culling slower", "effects off
+     faster"), else not shown. A build without the switch (before 8D, for culling) runs A alone and says so. The warm-up, the blocks' seconds and
+     the rest are design values (a phone's as the phone route's: a 45 s warm-up, a 3-minute rest) */
+  var CULL_VERSION="stage8-cull-route 1", FX_VERSION="stage8-fx-route 1";
+  var CULLR={views:{desk:["pratzen-low-4x","pratzen-low-10x"], phone:["pratzen-low-4x"]}, warm:{desk:10, phone:45}, rest:{desk:30, phone:180}, secs:6, rounds:2, orders:["ABABABA","BABABAB"]};
+  var BRACKETS={
+    cull:{version:CULL_VERSION, word:"cull", title:"CULLING", views:CULLR.views,
+      has:function(w,G){ return typeof w.setCull==="function"&&!!G("typeof CULL!=='undefined'&&CULL"); }, set:function(w,k){ w.setCull(k==="A"); }, reset:function(w){ w.setCull(true); },
+      on:function(G){ return !!G("CULL.on"); }, A:"culling on", B:"culling off (every block drawn)", faster:"culling faster", slower:"culling slower",
+      none:"this build has no culling (before Stage 8's 8D): block A only, nothing compared"},
+    fx:{version:FX_VERSION, word:"fx", title:"EFFECTS", views:{desk:["pratzen-low-4x"], phone:["pratzen-low-4x"]},
+      has:function(w){ return typeof w.setFXEnabled==="function"; }, set:function(w,k){ w.setFXEnabled(k==="A"); }, reset:function(w){ w.setFXEnabled(true); },
+      on:function(G){ return !!G("FX.on"); }, A:"the visual effects on", B:"the visual effects off (the F key)", faster:"effects off slower", slower:"effects off faster",
+      none:"this build has no effects switch: block A only, nothing compared"}};
 
   function pct(a,p){ if(!a.length) return null; var s=a.slice().sort(function(x,y){ return x-y; }); return s[Math.min(s.length-1,Math.floor(p*(s.length-1)+0.5))]; }
   function r1(v){ return v==null?null:Math.round(v*10)/10; }
@@ -180,8 +202,9 @@
           .catch(function(){ return null; });
       }catch(e){ return Promise.resolve(null); }
     }
-    var out={version:o.phone?PHONE_VERSION:VERSION, started:new Date().toISOString(), device:null, build:null, refreshMs:null, segments:[], notes:[]};
-    if(o.phone) out.route="phone";
+    var BR=o.cull?BRACKETS.cull:o.fx?BRACKETS.fx:null;
+    var out={version:BR?BR.version:o.phone?PHONE_VERSION:VERSION, started:new Date().toISOString(), device:null, build:null, refreshMs:null, segments:[], notes:[]};
+    if(o.phone) out.route="phone"; if(BR) out.route=BR.word;
     function want(id){ return !only||only.indexOf(id)>=0; }
     var seq=Promise.resolve();
     function then(f){ seq=seq.then(f); }
@@ -199,7 +222,7 @@
         out.segments.push(summarise("idle","idle",rows,{note:"the app's loop paused by this script: the display's own refresh"}));
         out.device=device(); });
     });
-    if(o.phone) phoneRoute(); else VIEWS.forEach(function(v){
+    if(BR) bracketRoute(BR); else if(o.phone) phoneRoute(); else VIEWS.forEach(function(v){
       if(!want(v.id)) return;
       then(function(){ log(v.id); apply(v.spec); return wait(w,600).then(function(){ return sample(SECS.held*scale,null,true); })
         .then(function(rows){ out.segments.push(summarise(v.id,"held",rows,{note:v.note})); }); });
@@ -214,7 +237,7 @@
           .then(function(rows){ w.setFXEnabled(was); out.segments.push(summarise(v.id,v.move+" -effects",rows,{note:"Visual effects off (the F key)"})); }); });
       }
     });
-    if(!o.phone) PLAYED.forEach(function(p){
+    if(!o.phone&&!BR) PLAYED.forEach(function(p){
       if(!want(p.id)) return;
       then(function(){ log(p.id); apply({t:p.t, presentation:"watch", mode:"terrain", cam:FIELD}); w.setFollow(true); D.settle(30);
         w.setSpeed(p.speed); var c0=G("clock"); w.togglePlay();
@@ -260,12 +283,47 @@
                 out.segments.push(summarise(K.id,cc+" "+r,rows,{cand:cc, round:r, note:CAND[cc].note, set:st})); }); }); }); });
       });
     }
+    /* ---- Stage 8, 8D: the bracketed routes (BRACKETS above) ---- */
+    function bracketRoute(B){
+      var has=B.has(w,G), phone=!!G("lowTier"), dev=phone?"phone":"desk", fxWas=!!G("FX.on");
+      if(!has) out.notes.push(B.none);
+      out.bracket={kind:B.word, has:has, tier:dev, warm:CULLR.warm[dev], rest:CULLR.rest[dev], secs:CULLR.secs, rounds:CULLR.rounds, orders:CULLR.orders.slice()};
+      if(B===BRACKETS.cull) out.cull=out.bracket;
+      B.views[dev].forEach(function(id){ var v=VIEWS.filter(function(x){ return x.id===id; })[0]; if(!v||!want(id)) return;
+        then(function(){ log(id+" warm-up"); apply(v.spec); if(has) B.set(w,"A"); return sample(CULLR.warm[dev]*scale,MOVE.orbit(),true).then(function(rows){
+          out.segments.push(summarise(id,"warm-up",rows,{cand:"A",note:B.A+", until the device settles (not compared)"})); }); });
+        (has?CULLR.orders:["A"]).forEach(function(ord,oi){
+          if(oi>0) then(function(){ log(id+" rest"); return wait(w,CULLR.rest[dev]*1000*scale); });
+          for(var round=1;round<=(has?CULLR.rounds:1);round++) ord.split("").forEach(function(k,bi){ var r=round;
+            then(function(){ log(id+" "+k+" "+ord+" ("+r+")"); apply(v.spec); if(has) B.set(w,k);
+              return wait(w,300).then(function(){ return sample(CULLR.secs*scale,MOVE.orbit(),true); }).then(function(rows){
+                var on=has?B.on(G):true; if(has) B.reset(w);
+                out.segments.push(summarise(id,B.word+" "+k+" "+ord.slice(0,2)+" "+r+"."+bi,rows,{cand:k, order:ord, round:r, block:bi, setOn:on, note:k==="A"?B.A:B.B})); }); }); }); });
+      });
+      then(function(){ if(G("FX.on")!==fxWas) w.setFXEnabled(fxWas); out.bracketVerdict=has?bracketVerdict(out.segments,B):null; if(B===BRACKETS.cull) out.cullVerdict=out.bracketVerdict; });
+    }
     return seq.then(function(){ pendQ.forEach(function(P){ gl.deleteQuery(P.q); }); pendQ=[]; w.document.removeEventListener("visibilitychange",onVis); w.loop=origLoop; w.renderFrame=origRF; out.finished=new Date().toISOString(); out.text=format(out); return out; },
       function(e){ app.paused=false; w.loop=origLoop; w.renderFrame=origRF; S.on=false; w.document.removeEventListener("visibilitychange",onVis);
         try{ figuresHidden(false); }catch(x){} try{ if(!G("FX.on")) w.setFXEnabled(true); }catch(x){}
         try{ renderer.shadowMap.autoUpdate=true; renderer.shadowMap.needsUpdate=true; kitMeshes().forEach(function(m){ if(m._cs!==undefined){ m.castShadow=m._cs; delete m._cs; } });
           if(renderer.getPixelRatio()!==w.pxRatio()){ renderer.setPixelRatio(w.pxRatio()); renderer.setSize(w.innerWidth,w.innerHeight); w.sizeFX(); } }catch(x){} try{ if(G("playing")) w.stopPlay(); w.setSpeed(0.5); }catch(x){}
         throw e; });
+  }
+  /* the bracketed routes' rule (BRACKETS): per view, every comparison of an inner block with its two neighbours, in both rounds of both orders */
+  function cullVerdict(segs){ return bracketVerdict(segs,BRACKETS.cull); }
+  function bracketVerdict(segs,BK){
+    var by={}, V={};
+    segs.forEach(function(s){ if(!s.order) return; var k=s.id+"|"+s.order+"|"+s.round; (by[k]=by[k]||[])[s.block]=s; });
+    Object.keys(by).forEach(function(k){ var id=k.split("|")[0], ord=k.split("|")[1], B=by[k], X=V[id]||(V[id]={faster:0, slower:0, neither:0, missing:0, comparisons:[]});
+      [1,3,5].forEach(function(i){ var a=B[i-1], b=B[i], c=B[i+1];
+        if(!a||!b||!c||a.p50==null||b.p50==null||c.p50==null||a.hidden||b.hidden||c.hidden){ X.missing++; return; }
+        var inner=ord[i], hi=b.p50>a.p50&&b.p50>c.p50, lo=b.p50<a.p50&&b.p50<c.p50;
+        /* an inner B slower than both As, or an inner A faster than both Bs: A the faster (culling faster; effects off slower) */
+        var res=inner==="B"?(hi?"faster":lo?"slower":"neither"):(lo?"faster":hi?"slower":"neither");
+        X[res]++; X.comparisons.push(ord+" round "+k.split("|")[2]+" block "+i+": "+[a.p50,b.p50,c.p50].join(" / ")+" ms: "+res); }); });
+    Object.keys(V).forEach(function(id){ var X=V[id], n=X.faster+X.slower+X.neither;
+      X.verdict=X.missing?"not shown (a block missing or hidden: run again)":n&&X.faster===n?BK.faster:n&&X.slower===n?BK.slower:"not shown"; });
+    return V;
   }
   function pad(s,n){ s=String(s==null?"-":s); while(s.length<n) s=" "+s; return s; }
   function format(r){
@@ -282,10 +340,11 @@
     L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",6)+pad("p50",8)+pad("p95",8)+pad("p99",8)+pad("max",8)+pad("long%",7)+pad("warm",8)+pad("js50",8)+pad("js95",8)+pad("gpu50",8)+pad("gpu95",8)+pad("calls",6)+pad("tris",9));
     r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)+
       (s.set?"  density "+s.set.density+", shadow pass "+(s.set.shadowPass?"on":"off")+", figures casting "+s.set.figCast+"/"+s.set.fig+", shown "+s.set.figShown+"/"+s.set.fig:"")); });
+    if(r.bracketVerdict) Object.keys(r.bracketVerdict).forEach(function(id){ var X=r.bracketVerdict[id]; L.push((r.route==="fx"?"EFFECTS ":"CULLING ")+id+": "+X.verdict+" ("+X.faster+" comparisons with A the faster, "+X.slower+" with A the slower, "+X.neither+" neither, "+X.missing+" missing)"); });
     L.push("AUS_PERF_JSON "+JSON.stringify(r,function(k,v){ return k==="text"?undefined:v; }));
     return L.join("\n");
   }
-  var API={run:run, format:format, VERSION:VERSION, PHONE_VERSION:PHONE_VERSION, PHONE:PHONE, VIEWS:VIEWS, DIAG:DIAG, PLAYED:PLAYED, SECS:SECS, last:null};
+  var API={run:run, format:format, VERSION:VERSION, PHONE_VERSION:PHONE_VERSION, PHONE:PHONE, CULL_VERSION:CULL_VERSION, FX_VERSION:FX_VERSION, CULLR:CULLR, BRACKETS:BRACKETS, cullVerdict:cullVerdict, bracketVerdict:bracketVerdict, VIEWS:VIEWS, DIAG:DIAG, PLAYED:PLAYED, SECS:SECS, last:null};
   root.AUS_PERF=API;
   /* pasted into the console of the build's own page: run there at once */
   if(root.AUSTERLITZ_DEBUG&&root.AUSTERLITZ_DEBUG.applyCase&&!root.AUS_PERF_NO_AUTORUN){

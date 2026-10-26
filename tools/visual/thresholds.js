@@ -277,6 +277,48 @@ function motionVis(r,base,twin){
   return b;
 }
 module.exports.motionVis=motionVis;
+/* Stage 8, implementation PR 8D (decisions 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 8.3, 8.4 and 16): the census and culling's picture,
+   in every case (harness.js: measure.js census and cullEquiv on the case's own frame):
+   - each of the case's four census frames (culled and not, the ground's depth for the overlays reused and drawn again) reconciled with
+     renderer.info for the same frame, draw calls and triangles exactly;
+   - the frame with culling the frame without it, both drawn from the same state and read from the drawing buffer at once: at most EQUIV_PX
+     pixels differing beyond the case's own two renders' difference (0: under software WebGL two renders of one state are equal, so no
+     tolerance is needed, and a case whose two renders were not equal is judged against its own repeat count);
+   - section 8.3's budgets, on the frame as the app draws it when the eye moves (culled, every pass, the depth drawn): a desktop's case at
+     most DESK's triangles and draw calls (a budget with no alternative: failed); a phone case (lowTier: density 1.0, no shadow) over PHONE's
+     triangles is not failed but reported (censusNotes), because section 8.3 gives that budget its own alternative, "else a phone run of the
+     route ... holding the heavy segments' long frames at or under 5% in two runs": a device run decides it (its calls, "at most 10% above
+     today's", are measured by tools/stage8/census-8d.js --phone beside today's build);
+   - in the low Pratzen view (LOW.name, at 4x) that frame's triangles at least LOW.cut under the same frame drawn without culling: the whole
+     frame, every pass (section 16: step 6 measured the world pass's figures off the screen there at 13.7% of the frame, and the shadow pass,
+     culled by the sun's box, saves less) */
+const CENSUS={EQUIV_PX:0, DESK:{tris:2.8e6, calls:900}, PHONE:{tris:1.62e6}, LOW:{name:"pratzen-low", cut:0.10}};
+module.exports.CENSUS=CENSUS;
+function censusCheck(name,m,spec){
+  const f=[], C=m.census, E=m.cullEquiv; if(!C) return f;
+  [["culled, the depth reused",C.onWarm],["not culled, the depth reused",C.offWarm],["not culled, the depth drawn",C.offCold],["culled, the depth drawn",C.onCold]].forEach(([k,x])=>{
+    if(!x||!x.reconciled) f.push("the census ("+k+"): "+(x?x.calls+" calls and "+x.tris+" triangles counted, renderer.info "+x.infoCalls+" and "+x.infoTris:"not measured")+" (Stage 8, 8D)"); });
+  if(!E) f.push("culling's picture not measured (Stage 8, 8D)");
+  else if(!(E.px<=CENSUS.EQUIV_PX+E.repeatPx)) f.push("the frame with culling differs from the frame without it in "+E.px+" pixels (largest channel "+E.max+"; two renders of it "+E.repeatPx+")");
+  const D=C.onCold;
+  if(D&&!(spec&&spec.device)){ if(!(D.tris<=CENSUS.DESK.tris)) f.push("the frame draws "+D.tris+" triangles, over the desktop's budget of "+CENSUS.DESK.tris+" (section 8.3)");
+    if(!(D.calls<=CENSUS.DESK.calls)) f.push("the frame makes "+D.calls+" draw calls, over the desktop's budget of "+CENSUS.DESK.calls+" (section 8.3)"); }
+  if(name===CENSUS.LOW.name&&D&&C.offCold){ const cut=1-D.tris/C.offCold.tris;
+    if(!(cut>=CENSUS.LOW.cut)) f.push("culling removes "+(100*cut).toFixed(1)+"% of the low Pratzen frame's triangles ("+D.tris+" of "+C.offCold.tris+"), under the "+(100*CENSUS.LOW.cut)+"% target (section 16)"); }
+  return f;
+}
+module.exports.censusCheck=censusCheck;
+/* what section 8.3 asks a device run to decide: a phone case whose frame is over the phone's budget (reported, not failed; see above) */
+function censusNotes(name,m,spec){ const D=m.census&&m.census.onCold;
+  return D&&spec&&spec.device&&!(D.tris<=CENSUS.PHONE.tris)?[name+": the phone's frame draws "+D.tris+" triangles with the depth drawn, over section 8.3's "+CENSUS.PHONE.tris+": the phone run of the device route decides it"]:[]; }
+module.exports.censusNotes=censusNotes;
+/* the culling in motion (harness.js's live block "cull", tools/visual/cullmotion.js; check:visual only): every sequence's frames judged and
+   compared, none with a culled mesh whose instance is in the eye's frustum, every compared frame identical without culling (0 pixels: the
+   frames are drawn from one state, read at once); the boundaries exercised: a mesh changing between culled and drawn in each edge sequence and
+   the block, a mesh out of view drawn in the shadow pass (casting into it) in the low sun's sequence, frames drawn after the context's restore,
+   the phone's sequence on lowTier without a shadow pass, every other on the desktop's tier with its shadow pass */
+const CULLMOTION={SEQS:14, PHONE:1};
+module.exports.CULLMOTION=CULLMOTION;
 /* Stage 4E (docs/STAGE4_SPEC.md section F.2): the horizon in the low views [case, factor]; where the apron's far edge stands below
    the true horizon, the gap is drawn in the haze's colour: its mean colour per column within HORIZON_DE (0-255, the largest
    channel) of the sky's just above the horizon */
@@ -435,6 +477,8 @@ module.exports.check=function(name,m,spec,opts){
     const tm=PL.timeline[name]; if(tm!==undefined&&m.timeline&&m.timeline.height>tm) f.push("the timeline is "+m.timeline.height+" px tall (the phone's ceiling here "+tm+")");
     /* Stage 8, implementation PR 8A (decision 251): a dossier open on a phone has its sources one press from where it opens (phone-measure.js srcHead) */
     if(strict&&spec.phone==="dossier"){ const S=P.srcHead; if(!(S&&S.open&&S.found&&S.inView)) f.push("the dossier's head \u201cHow this is sourced\u201d not inside its visible part as it opens: "+JSON.stringify(S)); } }
+  /* Stage 8, implementation PR 8D: the census, culling's picture and section 8.3's budgets (CENSUS above) */
+  censusCheck(name,m,spec).forEach(x=>f.push(x));
   if(strict){ requirements(name,m,spec,LIM).forEach(x=>f.push(x)); expectState(name,m,spec).forEach(x=>f.push(x)); }
   return f;
 };
@@ -484,7 +528,9 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   ATMO:"Stage 4C: the atmosphere", SMOKE:"Stage 4E: smoke in puffs", settle:"Stage 0: AUSTERLITZ_DEBUG.settle",
   applyCase:"Stage 0: AUSTERLITZ_DEBUG.applyCase", selfTest:"Stage 0: AUSTERLITZ_DEBUG.selfTest", SHORTCUTS:"roadmap step 3: the single-key shortcuts switch (decision 134)",
   TIPS:"Stage 8, implementation PR 8A: the timeline's tips dismissed on activation, never shown by a touch (decision 251)",
-  MLS:"Stage 8, implementation PR 8C: the map layer in motion (decision 240 (a))"};
+  MLS:"Stage 8, implementation PR 8C: the map layer in motion (decision 240 (a))",
+  CULL:"Stage 8, implementation PR 8D: the blocks culled by their own bounds, the census (decision 249 (a))",
+  ANIM:"Stage 8, implementation PR 8D: the kit's animation hooks (decisions 244 (a), 250 (b))"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -531,6 +577,8 @@ function requirements(name,m,spec,LIM){
   if(name==="first-run") need(!!m.wheel,"the real wheel over the map with the first card open (roadmap step 3, SW-8)");   /* (requirements apply to strict, non-legacy runs only) */
   if(name==="opening-2") need(!!m.openingKeys,"the opening by real key presses (Stage 7C, 7D)");
   if(spec.interact) need(!!m.intended,"the interaction's intended move (Stage 0)");
+  need(!!(m.census&&m.census.onCold&&m.census.offCold&&m.census.onWarm&&m.census.offWarm),"the census of the case's frame by pass, culled and not (Stage 8, 8D)");
+  need(!!m.cullEquiv,"the frame with and without culling compared (Stage 8, 8D)");
   /* (the vertex layout is part of the case's state; a report without a state fails in expectState) */
   if(!(typeof m.groundSelfCheck==="number"&&m.groundSelfCheck<=GROUND_SELF_TOL&&(!m.state||m.state.groundLayout===true)))
     f.push("the harness's own ground reader disagrees with the drawn ground by "+m.groundSelfCheck+" units (limit "+GROUND_SELF_TOL+"; the vertex layout rg reads: "+
@@ -719,6 +767,21 @@ function checkLive(live,opts){
         if(Math.abs(r[k]-t[k])>tol) b.push(r.id+" by real input: "+k+" "+r[k]+", driven in the page "+t[k]+" (tolerance "+tol+")"); }); });
     if(b.length) f.push("the map layer in motion (decision 240 (a)): "+b.join("; ")+" "+JSON.stringify(T)); }
   if(so) return f;
+  /* Stage 8, implementation PR 8D (CULLMOTION above) */
+  if(req("cull","culling in motion: the sequences compared with and without it (Stage 8, implementation PR 8D, decision 249 (a))")){
+    const R=live.cull.runs||[], land=R.filter(r=>!r.device), ph=R.filter(r=>r.device), b=[];
+    if(land.length!==CULLMOTION.SEQS||ph.length!==CULLMOTION.PHONE) b.push(land.length+" of the "+CULLMOTION.SEQS+" sequences and "+ph.length+" of the "+CULLMOTION.PHONE+" on the phone run");
+    R.forEach(r=>{ const nm=r.label;
+      if(!(r.judged>0)||!(r.compared>0)) b.push(nm+": "+r.judged+" frames judged, "+r.compared+" compared (none drawn)");
+      if(r.inView) b.push(nm+": "+r.inView+" frames with a culled mesh whose instance is in view ("+(r.bad||[]).slice(0,2).join("; ")+")");
+      if(r.px) b.push(nm+": "+r.px+" pixels differ from the frames drawn without culling ("+(r.bad||[]).slice(0,2).join("; ")+")"); });
+    const edges=R.filter(r=>/leaving the view by each edge/.test(r.label)), sun=R.find(r=>/a low sun/.test(r.label)), ctx=R.find(r=>r.ctx);
+    if(!edges.length||edges.some(r=>!(r.toggles>0))) b.push("a formation taken out of the view by each edge: a sequence with no mesh changing between culled and drawn ("+edges.map(r=>r.toggles).join(", ")+")");
+    if(!sun||!(sun.shadowOnly>0)) b.push("the low sun's sequence draws no mesh out of view in the shadow pass ("+(sun?sun.shadowOnly:"not run")+")");
+    if(!ctx||!(ctx.judged>0)) b.push("no frame drawn after the context's restore");
+    ph.forEach(r=>{ if(!r.lowTier||r.shadow) b.push(r.label+": lowTier "+r.lowTier+", shadow "+r.shadow+" (want lowTier without a shadow pass)"); });
+    land.forEach(r=>{ if(r.lowTier||!r.shadow) b.push(r.label+": lowTier "+r.lowTier+", shadow "+r.shadow+" (want the desktop's tier with its shadow pass: the shadow boundary is the block's)"); });
+    if(b.length) f.push("culling in motion (decision 249 (a)): "+b.join("; ")); }
   if(req("dwell","the Watch view held in a dwell (Stage 4D)")){ const D=live.dwell, lim=LIM.DROP_LIMIT["pratzen-low"];
     if(D.E!==540||!(D.solid<=SOLID_BLACK)||(D.belowAA||[]).length||!(D.dropped<=lim)||!D.cap||!(D.lit>=1))
       f.push("the Watch view in a dwell: at "+(D.E!=null?hm(D.E):"-")+" ("+(D.ev||[]).join(", ")+"): solid "+(100*D.solid).toFixed(3)+"%, below AA "+(D.belowAA||[]).length+", drops "+D.dropped+" (limit "+lim+"), caption "+JSON.stringify(D.cap)+", "+D.lit+" marker lit"); }

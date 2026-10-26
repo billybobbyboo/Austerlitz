@@ -271,6 +271,14 @@ async function interact(page,it,vp){
       if(["overview-field","overview-plan"].includes(c.name)) m.phaseLabels720=await page.evaluate(()=>window.__aus.phaseLabels?window.__aus.phaseLabels():null);
       await page.setViewportSize(vp0); await frame();
     }
+    /* Stage 8, implementation PR 8D (decisions 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 8.3 and 16): the census of the case's frame by pass
+       and by what is drawn, with culling and without it, the ground's depth for the overlays reused from the last frame (a still eye) and drawn
+       again (a frame whose eye moved), so that like is compared with like, each frame reconciled with renderer.info; and the frame with and
+       without culling, drawn from the same state and read from the drawing buffer at once, compared pixel for pixel (judged in thresholds.js:
+       CENSUS) */
+    if(await has(page,"CULL","the census and culling's equivalence")){
+      m.census=await page.evaluate(()=>{ var A=window.__aus; return {onWarm:A.census({cull:true}), offWarm:A.census({cull:false}), offCold:A.census({cull:false,cold:true}), onCold:A.census({cull:true,cold:true})}; });
+      m.cullEquiv=await page.evaluate(()=>window.__aus.cullEquiv()); }
     /* roadmap step 1 (T-6): the page given back after the case's own measures (the layers at their defaults, the case's viewport) */
     m.stateAfter=await stateOf(page,c);
     /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, after every measure above, real key
@@ -331,6 +339,11 @@ async function interact(page,it,vp){
       " mist",m.mist.visible?m.mist.maxAlphaAtCrossing:"-", m.selection?(" sel "+m.selection+" drawer "+m.drawerVisible+" chip "+m.chipVisible):"",
       m.layer?(" | layer placed "+m.layer.placed+" dropped "+m.layer.dropped+" leaders "+m.layer.leaders+" occluded "+m.layer.occluded+" "+m.layer.ms+" ms "+m.layer.nodes+" nodes"+
         " min "+m.layer.minPx+" px, contrast min "+(m.textContrast&&m.textContrast.min)+" | free "+m.unobstructed+" / "+m.unobstructed720):"");
+    if(m.census){ const C=m.census, P=x=>Object.entries(x.byPass).map(([k,v])=>k+" "+v.calls+"/"+v.tris).join(" "), E=m.cullEquiv;   /* Stage 8, 8D */
+      console.log("   census (calls/triangles): culled "+C.onCold.calls+"/"+C.onCold.tris+" ["+P(C.onCold)+"], not culled "+C.offCold.calls+"/"+C.offCold.tris+
+        " (the depth drawn); still eye "+C.onWarm.tris+" / "+C.offWarm.tris+"; reconciled "+[C.onWarm,C.offWarm,C.offCold,C.onCold].every(x=>x.reconciled)+
+        (E?"; the frame with and without culling: "+E.px+" pixels differ ("+E.repeatPx+" between two renders of it), "+E.culled+" of "+E.tests+" mesh tests culled":""));
+      T.censusNotes(c.name,m,c).forEach(x=>console.log("   NOTE: "+x)); }
   }
   /* --selftest-only: one fresh page at 1366 x 768, settled as a fresh case's is (the full run's self-test runs on first-run-laptop's page) */
   if(SELFTEST_ONLY){ AT="self-test page"; pages.last=current=await openPage(browser,[1366,768],"1366x768 self-test"); await settle(current); }
@@ -416,6 +429,16 @@ async function interact(page,it,vp){
       const MO=require("./motion.js"), mp=await openPage(browser,[1600,900],"1600x900 motion");
       try{ LIVE.motion=await MO.runBlock(mp,settle,{selftestOnly:SELFTEST_ONLY, log:s=>console.log(s)}); }
       finally { await mp.close(); } }
+    /* Stage 8, implementation PR 8D (decision 249 (a); docs/STAGE8_SPEC.md section 16): culling in motion (tools/visual/cullmotion.js), on pages of
+       its own (1280 x 720, the desktop's tier with its shadow pass, and a phone's 390 x 844): fourteen sequences of the app's own frames (a pan, an orbit, the wheel, Play under Follow, a
+       glide, two formations taken out of the view by each edge, the eye level turned, 1x and 10.33x, the visual effects off, reduced motion, a
+       low sun's long shadows, a lost and restored context) and a finger's pan on the phone, each frame's culling judged against its instances
+       and every second frame compared pixel for pixel with the same state drawn without culling. Judged in thresholds.js checkLive (CULLMOTION);
+       check:visual only (a few minutes of drawn frames under software WebGL) */
+    AT="cull";
+    if(!SELFTEST_ONLY&&await has(first,"CULL","culling in motion: the sequences compared with and without it")){
+      const CM=require("./cullmotion.js");
+      LIVE.cull=await CM.runBlock((vp,dev)=>openPage(browser,vp,vp.join("x")+" cull"+(dev?" ("+dev+")":""),dev),settle,{log:s=>console.log(s)}); }
     /* Stage 4D (docs/STAGE4_SPEC.md section D.4; decisions 74, 75): Play by a real key press runs at half speed, its button
        pressed; and the Watch view of the low Pratzen case held in a dwell at the phase-3 event start 09:00 keeps every threshold
        of its view (the darkness limit, map text at AA as rendered, drops within its limit), its event lit and named */
