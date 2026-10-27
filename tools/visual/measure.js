@@ -625,14 +625,25 @@
     return out;
   }
   /* the frame with and without culling, drawn from the same state and read from the drawing buffer at once (the frame the canvas shows); twice
-     with it, so that a view whose two renders differ is told apart from a culling that changes the picture. Pixels differing in any channel */
+     with it, so that a view whose two renders differ is told apart from a culling that changes the picture. Pixels differing in any channel.
+     Since 8E's prerequisite (the audit of 8D: a count of differing pixels was excused by an equal count of repeat differences anywhere else) the
+     differences are located, not only counted: px the pixels where the culled frame differs from the unculled, repeatPx those where two renders
+     of the culled frame differ; outside the pixels of px where the two culled renders agree (a difference the repeat cannot explain), shared the
+     pixels in both, worse those of shared where the culled-unculled difference exceeds the repeat's own at that pixel; and the first pixels of
+     each set by coordinates (x, y from the top) and their channels, for whoever must investigate */
   function cullEquiv(){
     if(typeof CULL==="undefined"||typeof setCull!=="function") return null;
     var gl=renderer.getContext(), keep=CULL.on, w=gl.drawingBufferWidth, h=gl.drawingBufferHeight;
     function grab(){ renderFrame(); var b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
-    function dif(a,b){ var n=0,m=0; for(var i=0;i<a.length;i+=4){ var e=Math.max(Math.abs(a[i]-b[i]),Math.abs(a[i+1]-b[i+1]),Math.abs(a[i+2]-b[i+2])); if(e){ n++; if(e>m) m=e; } } return {px:n,max:m}; }
+    function at(i){ return [(i>>2)%w, h-1-Math.floor((i>>2)/w)]; }
+    function locate(A,B,A2){ var px=0, max=0, rep=0, out=0, sh=0, worse=0, so=[], sr=[];
+      for(var i=0;i<A.length;i+=4){ var e=Math.max(Math.abs(A[i]-B[i]),Math.abs(A[i+1]-B[i+1]),Math.abs(A[i+2]-B[i+2])), r=Math.max(Math.abs(A[i]-A2[i]),Math.abs(A[i+1]-A2[i+1]),Math.abs(A[i+2]-A2[i+2]));
+        if(r){ rep++; if(sr.length<8) sr.push(at(i).concat([A[i],A[i+1],A[i+2],A2[i],A2[i+1],A2[i+2]])); }
+        if(!e) continue; px++; if(e>max) max=e;
+        if(r){ sh++; if(e>r) worse++; } else { out++; if(so.length<8) so.push(at(i).concat([A[i],A[i+1],A[i+2],B[i],B[i+1],B[i+2]])); } }
+      return {px:px, max:max, repeatPx:rep, outside:out, shared:sh, worse:worse, firstOutside:so, firstRepeat:sr}; }
     try{ setCull(true); var A=grab(), A2=grab(), cu=CULL.frame.culled, te=CULL.frame.tests; setCull(false); var B=grab(); setCull(true);
-      var d=dif(A,B), r=dif(A,A2); return {px:d.px, max:d.max, repeatPx:r.px, w:w, h:h, culled:cu, tests:te}; }
+      var L=locate(A,B,A2); L.w=w; L.h=h; L.culled=cu; L.tests=te; return L; }
     finally{ setCull(keep); }
   }
 

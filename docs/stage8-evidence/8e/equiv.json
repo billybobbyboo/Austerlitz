@@ -1,0 +1,348 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "84b5f80c849511c330c31a497c04700e",
+ "records": [
+  {
+   "record": "no pixel differs, two renders identical",
+   "oldRule": "pass",
+   "newRule": "pass",
+   "why": []
+  },
+  {
+   "record": "120 pixels differ at one place; two renders differ in 120 others (an unrelated change excused by an equal count elsewhere)",
+   "oldRule": "pass",
+   "newRule": "fail",
+   "why": [
+    "inconclusive: two renders of one state differ in 120 pixels (first at (10, 10)): a deterministic comparison must repeat exactly; investigate before judging culling (8E's prerequisite)",
+    "the frame with culling differs from the frame without it in 120 pixels (largest channel 64; 120 where two renders of it agree, first at (700, 400), two renders of it 120)"
+   ]
+  },
+  {
+   "record": "no culling difference; two renders differ in 50 pixels (repeat noise alone)",
+   "oldRule": "pass",
+   "newRule": "fail",
+   "why": [
+    "inconclusive: two renders of one state differ in 50 pixels (first at (10, 10)): a deterministic comparison must repeat exactly; investigate before judging culling (8E's prerequisite)"
+   ]
+  },
+  {
+   "record": "120 pixels differ, two renders identical",
+   "oldRule": "fail",
+   "newRule": "fail",
+   "why": [
+    "the frame with culling differs from the frame without it in 120 pixels (largest channel 64; 120 where two renders of it agree, first at (700, 400), two renders of it 0)"
+   ]
+  }
+ ],
+ "page": {
+  "asBuilt": {
+   "E": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "outside": 0,
+    "shared": 0,
+    "worse": 0,
+    "firstOutside": [],
+    "firstRepeat": [],
+    "w": 1600,
+    "h": 900,
+    "culled": 217,
+    "tests": 559
+   },
+   "oldRule": "pass",
+   "newRule": "pass",
+   "why": []
+  },
+  "mutated": {
+   "mesh": "prz (officers horse)",
+   "withoutNoise": {
+    "E": {
+     "px": 1700,
+     "max": 121,
+     "repeatPx": 0,
+     "outside": 1700,
+     "shared": 0,
+     "worse": 0,
+     "firstOutside": [
+      [
+       1020,
+       701,
+       65,
+       51,
+       26,
+       65,
+       51,
+       27
+      ],
+      [
+       1021,
+       701,
+       61,
+       46,
+       20,
+       61,
+       46,
+       21
+      ],
+      [
+       1022,
+       701,
+       63,
+       50,
+       28,
+       63,
+       49,
+       26
+      ],
+      [
+       1023,
+       701,
+       62,
+       48,
+       25,
+       61,
+       48,
+       24
+      ],
+      [
+       1027,
+       701,
+       62,
+       52,
+       29,
+       62,
+       52,
+       30
+      ],
+      [
+       1020,
+       700,
+       65,
+       50,
+       28,
+       64,
+       49,
+       27
+      ],
+      [
+       1021,
+       700,
+       64,
+       48,
+       26,
+       63,
+       47,
+       26
+      ],
+      [
+       1022,
+       700,
+       65,
+       50,
+       30,
+       62,
+       48,
+       27
+      ]
+     ],
+     "firstRepeat": [],
+     "w": 1600,
+     "h": 900,
+     "culled": 217,
+     "tests": 557
+    },
+    "oldRule": "fail",
+    "newRule": "fail",
+    "why": [
+     "the frame with culling differs from the frame without it in 1700 pixels (largest channel 121; 1700 where two renders of it agree, first at (1020, 701) (1021, 701) (1022, 701), two renders of it 0)"
+    ]
+   },
+   "withNoise": {
+    "E": {
+     "px": 1700,
+     "max": 121,
+     "repeatPx": 1700,
+     "outside": 1700,
+     "shared": 0,
+     "worse": 0,
+     "firstOutside": [
+      [
+       1020,
+       701,
+       65,
+       51,
+       26,
+       65,
+       51,
+       27
+      ],
+      [
+       1021,
+       701,
+       61,
+       46,
+       20,
+       61,
+       46,
+       21
+      ],
+      [
+       1022,
+       701,
+       63,
+       50,
+       28,
+       63,
+       49,
+       26
+      ],
+      [
+       1023,
+       701,
+       62,
+       48,
+       25,
+       61,
+       48,
+       24
+      ],
+      [
+       1027,
+       701,
+       62,
+       52,
+       29,
+       62,
+       52,
+       30
+      ],
+      [
+       1020,
+       700,
+       65,
+       50,
+       28,
+       64,
+       49,
+       27
+      ],
+      [
+       1021,
+       700,
+       64,
+       48,
+       26,
+       63,
+       47,
+       26
+      ],
+      [
+       1022,
+       700,
+       65,
+       50,
+       30,
+       62,
+       48,
+       27
+      ]
+     ],
+     "firstRepeat": [
+      [
+       1500,
+       1,
+       154,
+       161,
+       166,
+       155,
+       161,
+       166
+      ],
+      [
+       1501,
+       1,
+       154,
+       161,
+       166,
+       155,
+       161,
+       166
+      ],
+      [
+       1502,
+       1,
+       154,
+       161,
+       165,
+       155,
+       161,
+       165
+      ],
+      [
+       1503,
+       1,
+       154,
+       162,
+       166,
+       155,
+       162,
+       166
+      ],
+      [
+       1504,
+       1,
+       154,
+       161,
+       165,
+       155,
+       161,
+       165
+      ],
+      [
+       1505,
+       1,
+       153,
+       161,
+       165,
+       154,
+       161,
+       165
+      ],
+      [
+       1506,
+       1,
+       153,
+       160,
+       165,
+       154,
+       160,
+       165
+      ],
+      [
+       1507,
+       1,
+       155,
+       162,
+       166,
+       156,
+       162,
+       166
+      ]
+     ],
+     "w": 1600,
+     "h": 900,
+     "culled": 217,
+     "tests": 557
+    },
+    "oldRule": "pass",
+    "newRule": "fail",
+    "why": [
+     "inconclusive: two renders of one state differ in 1700 pixels (first at (1500, 1) (1501, 1) (1502, 1)): a deterministic comparison must repeat exactly; investigate before judging culling (8E's prerequisite)",
+     "the frame with culling differs from the frame without it in 1700 pixels (largest channel 121; 1700 where two renders of it agree, first at (1020, 701) (1021, 701) (1022, 701), two renders of it 1700)"
+    ]
+   }
+  }
+ },
+ "chromium": "141.0.7390.37"
+}
