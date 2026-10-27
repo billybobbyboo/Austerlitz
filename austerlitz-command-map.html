@@ -7988,7 +7988,7 @@ function makeBlock(f,id){
     var wantSl=!!(force||(ud.gait&&(ud.gait.amp>0||ud.gait.want>0)&&!GAIT.noSlopes)), S=ud.slSig||(ud.slSig=new Float64Array(9)), gp=g.position, gq=g.quaternion, gk=g.scale.x||1;
     var fresh=wantSl&&(!!force||!ud.slopeSeat||clockRate()===0||Math.hypot(gp.x-S[0],gp.z-S[1])>=GAIT.SLOPE_STEP*gk||
       Math.abs(gq.x-S[2])+Math.abs(gq.y-S[3])+Math.abs(gq.z-S[4])+Math.abs(gq.w-S[5])>GAIT.SLOPE_TURN||S[6]!==sw||S[7]!==sd||S[8]!==gk);
-    ud.slopeSeat=wantSl; ud.slopeStale=wantSl&&!fresh; if(fresh) SEAT_STATS.slopes++;
+    ud.slopeSeat=wantSl; ud.slopeStale=wantSl&&!fresh; if(fresh) SEAT_STATS.slopes++; if(wantSl) SEAT_STATS.want++;
     if(fresh){ S[0]=gp.x; S[1]=gp.z; S[2]=gq.x; S[3]=gq.y; S[4]=gq.z; S[5]=gq.w; S[6]=sw; S[7]=sd; S[8]=gk;
       _fw.set(0,0,1).applyQuaternion(_qw.copy(_qt0).multiply(g.quaternion)); var yn=Math.hypot(_fw.x,_fw.z)||1; _yS=_fw.x/yn; _yC=_fw.z/yn; }
     ud.figs.forEach(function(fg){
@@ -12394,7 +12394,7 @@ var _up=new THREE.Vector3(0,1,0), _nrm=new THREE.Vector3(), _qt=new THREE.Quater
    men are re-seated whenever anything that moves them in the world has changed - position, tilt,
    yaw, block scale (highlight dimming, hybrid mode) or deployment - and never otherwise, so an
    idle block costs nothing. */
-var SEAT_STATS={blocks:0, slopes:0};   /* Stage 8, 8E: slopes, the seatings that took the slopes (tools/stage8/cost-8e.js) */
+var SEAT_STATS={blocks:0, slopes:0, want:0};   /* Stage 8, 8E: slopes, the seatings that took the slopes; want, those of a formation the gait animates (tools/stage8/cost-8e.js, the self-test) */
 function settleBlock(rec){
   var b=rec.block, p=b.position, u=b.userData;
   var e=1.6;
@@ -19354,11 +19354,13 @@ var AUSTERLITZ_DEBUG=(function(){
           eT.push(fmtClock(t)+": "+Object.keys(P[0]).length+" kit meshes, "+nMarch+" formations marching"); });
         eT.push("the slopes ahead at most "+sMax.toFixed(4)+" apart between paths (within "+STOL+")");
         /* while the clock plays the slopes are taken again by a block's movement (GAIT.SLOPE_STEP), not at every seating; once it stops, the pose
-           is the clock's alone: Play at half speed for 24 steps of a 60th of a second, then paused, one frame: every animated block's slopes
-           exactly a fresh seating's at that clock (layoutFigs, asked) */
-        setClock(545,{instant:true,force:true,camera:false}); settleAll(); var sk0=SEAT_STATS.slopes, sb0=SEAT_STATS.blocks, fk2=FK;
-        playing=true; speed=0.5; FK=1; DWELL.st=null; for(var pi=0;pi<24;pi++){ setClock(dwellAdvance(1/60,MIN_PER_SEC*speed)); updateVisibility(); } FK=fk2;
-        var sTook=SEAT_STATS.slopes-sk0, sSeat=SEAT_STATS.blocks-sb0, stale=shown().filter(function(id){ return units[id].block.userData.slopeStale; }).length;
+           is the clock's alone: Play at half speed for 24 steps of a 60th of a second, then four of a 1000th, as Play's clock slows into a dwell's
+           hold (the blocks move a hundredth of a unit a step, are seated again and keep their slopes, so some are left behind as the clock stops:
+           without them the pause would test nothing), then paused, one frame: every animated block's slopes exactly a fresh seating's at that
+           clock (layoutFigs, asked) */
+        setClock(545,{instant:true,force:true,camera:false}); settleAll(); var sk0=SEAT_STATS.slopes, sb0=SEAT_STATS.blocks, sw0=SEAT_STATS.want, fk2=FK;
+        playing=true; speed=0.5; FK=1; DWELL.st=null; for(var pi=0;pi<28;pi++){ setClock(dwellAdvance(pi<24?1/60:1/1000,MIN_PER_SEC*speed)); updateVisibility(); } FK=fk2;
+        var sTook=SEAT_STATS.slopes-sk0, sSeat=SEAT_STATS.blocks-sb0, sWant=SEAT_STATS.want-sw0, stale=shown().filter(function(id){ return units[id].block.userData.slopeStale; }).length;
         playing=false; updateVisibility(); var pBad=0, pN=0, pP=new THREE.Vector3(), pQ=new THREE.Quaternion();
         /* each animated block's slopes against a fresh seating at the pose they were taken at (the block's turn and place, slSig: the seating
            itself, as before 8E, re-seats a block only once it has moved past its thresholds), then the block put back as it was */
@@ -19368,8 +19370,9 @@ var AUSTERLITZ_DEBUG=(function(){
           G.meshes.forEach(function(m,j){ var SA=m.geometry.attributes.aSl; if(!SA||!got[j]) return; pN++;
             for(var q=0;q<got[j].length;q++) if(Math.abs(SA.array[q]-got[j][q])>1e-6){ pBad++; eBad.push("paused after Play: "+id+"'s slopes not the clock's (instance "+(q>>1)+": "+got[j][q]+" against "+SA.array[q]+")"); return; } });
           b.position.copy(pP); b.quaternion.copy(pQ); bu.layout(bu.sw,bu.sd); });
-        eT.push("Play at half speed for 24 steps: "+sSeat+" seatings, "+sTook+" of them taking the slopes ("+stale+" blocks left behind at the last step); paused: "+pN+" meshes' slopes exactly the clock's");
-        if(!(sTook<sSeat)) eBad.push("while the clock played every seating took the slopes ("+sTook+" of "+sSeat+")");
+        eT.push("Play at half speed for 24 steps and four slow ones: "+sSeat+" seatings, "+sWant+" of animated formations, "+sTook+" of them taking the slopes ("+stale+" blocks left behind at the last step); paused: "+pN+" meshes' slopes exactly the clock's");
+        if(!(sTook<sWant)) eBad.push("while the clock played every animated formation's seating took the slopes ("+sTook+" of "+sWant+": no step rule)");
+        if(!stale) eBad.push("no block's slopes left behind as the clock stopped: the pause's taking them again not exercised");
         if(pBad&&!eBad.length) eBad.push("paused after Play: "+pBad+" blocks' slopes left behind");
         ck("the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh's uniforms the same when the clock was reached from three other clocks, unchanged with the frame while the clock stands, the phase the track's distance over its stride (the test's own arithmetic), the wheels turned by the teams' distance within one spoke's interval; while Play runs the slopes taken again by a block's movement, and once it stops exactly the clock's",
           !eBad.length, eT.join("; ")+(eBad.length?"; WRONG: "+eBad.slice(0,5).join("; "):""));
