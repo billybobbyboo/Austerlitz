@@ -3,7 +3,8 @@
 # (tools/run-all.sh exits non-zero if any suite fails), the data-invariance proof and the chronology regression.
 # Since roadmap step 1 (owner decision 132, docs/FINAL_AUDIT.md section 6.0): check:contrast and the one-page in-app self-test
 # (npm run check:selftest) run in a browser job on every push, in parallel with the checks job (each about 8-15 minutes of software
-# rendering on the runner); the full visual harness (npm run check:visual, 30 views, about 100 minutes) runs only on demand: Actions,
+# rendering on the runner); the full visual harness (npm run check:visual, 39 views and its live blocks, about three to four hours since
+# Stage 8's implementation PR 8E) runs only on demand: Actions,
 # "checks", "Run workflow", with "visual" ticked. The type is embedded in the file (decision 141), so the runner's fonts do not matter.
 name: checks
 on:
@@ -12,7 +13,7 @@ on:
   workflow_dispatch:
     inputs:
       visual:
-        description: "Also run the full visual harness (npm run check:visual, about 100 minutes)"
+        description: "Also run the full visual harness (npm run check:visual, about three to four hours)"
         type: boolean
         default: false
 permissions:
@@ -39,7 +40,8 @@ jobs:
       - run: npm run check:chronology
   # decision 132: the two browser checks a push can afford, in parallel (headless Chromium from Playwright, software WebGL); 60 minutes since
   # Stage 8's implementation PR 8D: its culling checks add about two minutes to the in-app self-test on the runner (682-1,183 s before them,
-  # 779-1,189 s with them), whose step has taken 16-31 minutes, and one stalled install try takes ten minutes of the limit
+  # 779-1,189 s with them), whose step has taken 16-31 minutes, and one stalled install try takes ten minutes of the limit; since 8E (the
+  # richer kit and the gait) the step has taken 19-38 minutes in eleven runs, the job at most 44
   browser:
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -67,11 +69,13 @@ jobs:
           name: selftest-report
           path: tools/visual/out-selftest/report.json
           if-no-files-found: ignore
-  # the full harness, on demand only (decision 132)
+  # the full harness, on demand only (decision 132); 350 minutes since Stage 8's implementation PR 8E (240 before): on 8E's build its step
+  # took 198 and 169 minutes on two runners, and on a third, every case 1.13-1.45 times as long as on the first, it reached the limit with
+  # about twelve minutes left (136 minutes on 8D's build); GitHub ends any job at 360
   visual:
     if: github.event_name == 'workflow_dispatch' && inputs.visual
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

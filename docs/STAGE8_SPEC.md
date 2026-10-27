@@ -3024,7 +3024,7 @@ million triangles and 900 calls, so its integrated-GPU condition is not met; the
 and 1.1%, as before 8D (1.3% and 0.7%): the phone route's run required before merging, pending; the gait no draw call and no triangle (29
 views of 29), its CPU 0.112 to 0.185 ms a frame (the budget 0.2), the level of detail 0.040 to 0.056 ms more; nothing allocated under 8E's
 functions while the eye moves; the planted feet within 0.020 units of their rest contact in 99 poses of 100 at 4x (0.047 at 10.33x); the
-self-test 295 of 295; every rule its checks hold made to fail by a mutation (the self-test's 8D and 8E blocks on 26 copies, `css-test.js`'s blocks on 25), three of them after the checks they first passed were strengthened; `check:visual` on CI passing on the build before the last two fixes (`62f5cd2`'s run; on `a99eb7b` and `27a3d2f` every other job passes, their `check:visual` runs below).
+self-test 295 of 295; every rule its checks hold made to fail by a mutation (the self-test's 8D and 8E blocks on 26 copies, `css-test.js`'s blocks on 25), three of them after the checks they first passed were strengthened; `check:visual` on CI passing on `62f5cd2` and `a99eb7b` (198 and 169 minutes, against 8D's 136), and every other job on every 8E commit; on the final build `27a3d2f`, on a slower runner, `check:visual` reached its job's limit of 240 minutes with its 39 cases passing and about twelve minutes of its work left, so the limit is now 350 minutes and the run is made again (section 17.15).
 
 ### 17.1 Prerequisite 1: culling's animation allowance follows the geometry drawn and the animation's definition (the audit of 8D; commit `2af8ed9`)
 
@@ -3554,13 +3554,23 @@ Here (Chromium 141.0.7390.37, Playwright 1.56's headless shell, software WebGL; 
   runs (485 frames judged, 243 compared, 0 pixels differing, 46,840 meshes culled, 34,828 mesh-frames drawn in the shadow pass only), the
   self-test 295 of 295 and no console message; `check-report.js` judges its report again here and passes it. It took 198 minutes against
   8D's 136 (the job's limit is 240): under software WebGL the richer kit's vertices and the hook's arithmetic run on the runner's CPU.
-  On `a99eb7b`: the push run 40524845225 and the pull request's 40524853920 pass every job, and the dispatched 40524850177's
-  checks job, `check:contrast` and `check:selftest` pass; its `check:visual` was running when this was written. On `6e24083` and `839bdbe`
+  On `a99eb7b`: the push run 40524845225, the pull request's 40524853920 and the dispatched 40524850177 pass every job; the dispatched
+  run's `check:visual` passes in 169 minutes with the same counts (its 39 cases, the motion block's 245, 985, 130 and 10, the culling
+  block's 485 frames judged, 243 compared and 0 pixels differing, the self-test 295 of 295, no console message), and `check-report.js`
+  judges its report again here and passes it. On `6e24083` and `839bdbe`
   (evidence only): the push runs 40534591093 and 40539654788 and the pull request's 40534602845 pass every job; the pull request's
   40539665517 on `839bdbe` lost its `check:contrast` job while installing the browser (an apt mirror's time-out, before any check ran;
-  the push run's same job on the same commit passed). On `27a3d2f` (the final build): the pull request's run 40545859944 passes every
-  job (the self-test 295 of 295); the push run 40545852952 and the dispatched 40545866479, with `check:visual`, were running when this was
-  written.
+  the push run's same job on the same commit passed). On `27a3d2f` (the final build): the pull request's run 40545859944 and the push run
+  40545852952 pass every job (the self-test 295 of 295 in each), and so do the dispatched 40545866479's checks job, `check:contrast` and
+  `check:selftest`; its `check:visual` reached the job's limit of 240 minutes and was cancelled, a slower runner's time, not a failure:
+  every case took 1.13 to 1.45 times as long as on `62f5cd2`'s runner (the culling block 68 minutes against 47 on `a99eb7b`'s), and it had
+  measured all 39 cases (`check-report.js` passes each of them again here), run the self-test (295 of 295 in its log) and every live block
+  (the motion block's counts 245, 985, 130 and 10 over its 16 motions, as before; the culling block's 485 frames judged, 243 compared, 0
+  pixels differing), with the day's light, the valley fog and the horizon left, about twelve minutes on that runner. The visual job's limit
+  is now 350 minutes (`.github/workflows/checks.yml`; GitHub ends any job at 360), and the run is made again on the head that carries it.
+  On `43d3f3e` (the records, pushed with `47e376e`; the build unchanged): the push run 40552654044 and the pull request's 40552659959 pass
+  every job. The `check:selftest` step took 19 to 38 minutes in eleven runs on 8E's builds (16 to 31 on 8D's), its job at most 44 of
+  the 60 allowed.
 
 ### 17.16 What remains, for the owner's attention
 

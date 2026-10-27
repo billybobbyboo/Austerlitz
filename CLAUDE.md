@@ -191,7 +191,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   250 since Stage 8 implementation PR 8A: the ribbons rendered at each factor and on the paper map, the tips, the dossiers' sources; 242 since roadmap step 4's K2, the interpolated position's pill; 241 after step 3; 221 after step 2), with the slider, Play and the 3E keys by real key
   presses, since step 3 the live blocks below, since Stage 8 implementation PR 8C the motion block (with two of its four real-input motions), and
   every console message judged; about 15 minutes until 8C, about 30 on CI since (21-30 minutes on 8D's commit, its 8D block about two of them;
-  the browser jobs' limit 60 minutes since 8D). `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
+  19-38 on 8E's; the browser jobs' limit 60 minutes since 8D). `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
   check:remeasure` is decision 141's one re-measure tool (`tools/visual/remeasure.js`).
 - `npm run check:visual`: 39 fixed views (since roadmap step 6 item 1, decisions 237 (a) and 238 (a), two more phone cases: `phone-402x714-explore`,
   the owner's iPhone at the viewport its report gave, and `phone-390-paper`, the paper map entered by its taps, the whole field in the free
@@ -638,5 +638,5 @@ taking them again), each shown by a mutation and closed (`a99eb7b`, `27a3d2f`), 
 figure the rich kit at most 1.21 times 8D's; the frame's triangles at most +8.0% (close on Sokolnitz), every desktop view within section
 8.3's budget (its integrated-GPU condition not met); the gait no draw call or triangle, its CPU 0.112 to 0.185 ms a frame; nothing allocated
 while the eye moves; the self-test 295 of 295; every mutation of the self-test's 8D and 8E blocks and of `css-test.js`'s failing them;
-`check:visual` on CI passing on `62f5cd2` (198 minutes). Device acceptance is pending (the routes, with a gait bracket, and both builds
+`check:visual` on CI passing on `62f5cd2` and `a99eb7b` (198 and 169 minutes; on a slower runner the final build's run reached the job's limit of 240 minutes with its 39 cases passing, so the visual job's limit is now 350). Device acceptance is pending (the routes, with a gait bracket, and both builds
 prepared for the owner; the phone route's run required before merging, its two Overview views over the phone's triangle budget as before 8D).

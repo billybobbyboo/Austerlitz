@@ -469,7 +469,8 @@ holding the pose), described as a visual convention for symbols under compressed
 drawn ground's slopes; S-5's facing a function of the clock; the standards' still drape. Measured here: per figure the rich kit at most 1.21 times 8D's (section 8.2's limit 1.3); the frame's triangles at most +8.0% (close on
 Sokolnitz at 4x), every desktop view within section 8.3's budget; the gait no draw call and no triangle, its CPU 0.112 to 0.185 ms a frame
 (the budget 0.2); nothing allocated under 8E's functions while the eye moves; the self-test 295 of 295; every rule its checks hold made to fail by a mutation (the self-test's 8D and 8E blocks on 26 copies, `css-test.js`'s blocks on 25), three of them after the checks they first passed were strengthened; `check:visual` on CI
-passing (198 minutes, against 8D's 136). Device acceptance pending: the
+passing on `62f5cd2` and `a99eb7b` (198 and 169 minutes, against 8D's 136; on a slower runner the final build's run reached the job's limit of
+240 minutes with its 39 cases passing, so the visual job's limit is now 350). Device acceptance pending: the
 builds and the device route (with a gait bracket, `?route=gait`) are ready for the owner's desktop and iPhone; section 8.3's
 integrated-GPU condition is not met (no view's frame rises by more than 10%: the most +8.0%, close on Sokolnitz), and the phone's two
 Overview views stay over its triangle budget as they were before 8D (8E adds 0.1% and 0.4%), so the phone route's run is required before

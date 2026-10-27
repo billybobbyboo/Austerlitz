@@ -114,7 +114,11 @@ its clock was reached.
   and 900 calls, so its integrated-GPU condition is not met; the phone's two Overview views over its 1.62 million as before 8D (8E adds
   0.1% and 0.4%), so the phone route's run is required before merging; the gait no draw call and no triangle (29 views of 29); its CPU
   0.112 to 0.185 ms a frame (the budget 0.2), the level of detail 0.040 to 0.056 ms more; nothing allocated under 8E's functions while the
-  eye moves; `check:visual` on CI 198 minutes against 8D's 136 (its job's limit 240).
+  eye moves; `check:visual` on CI passing in 198 and 169 minutes (8D's 136) on `62f5cd2` and `a99eb7b`; on the final build `27a3d2f`, on a
+  slower runner (every case 1.13 to 1.45 times as long), it reached its job's limit of 240 minutes with its 39 cases passing and about twelve
+  minutes of its work left, so the visual job's limit is now 350 minutes (`.github/workflows/checks.yml`; GitHub ends any job at 360) and
+  the run is made again on the head that carries it; `check:selftest`'s step 19 to 38 minutes on CI (16 to 31 on 8D's), its job's limit 60
+  kept.
 - **What remains uncertain (historical):** which calibres stood where, the limbers' turn, whether IV Corps' reduced drivers held on 2 December
   and reached the corps' guns on the heights, the gunners beside moving pieces (Gassendi has them; not drawn), the Santon's limbers and teams (not
   in the data), the saddle-cloths' colours (no colour class). **Implementation choices (design values):** the strides, the swing, the fade's
