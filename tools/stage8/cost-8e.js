@@ -3,7 +3,9 @@
    cost the CPU in a played stretch, measured on this machine (a container's CPU, software WebGL: the device's own cost is for the device route).
    On a page opened as the harness opens it (?harness=1, 1600 x 900), in four of the harness's views (tools/visual/cases.js: their eye and
    presentation, the clock set to T0), the stretch Play draws: the clock stepped as Play steps it at each speed, 60 steps a second, for N steps,
-   each step's blocks posed, seated, given their level of detail and their gait (updateVisibility), no frame drawn. Per step:
+   each step's blocks posed, seated, given their level of detail and their gait (updateVisibility), no frame drawn. The dwell is off for the
+   stretch, so every step is at the speed's nominal rate (a first version left it on: from 08:45, an event's start, the stretch sat in the
+   dwell's hold, where nothing moves, for part of its steps, which understated a moving frame's cost). Per step:
    - the time in updateVisibility, in the seating (each block's layoutFigs), in kitLod and in gaitStep (the app's functions, wrapped);
    - the slopes' share (the drawn ground's slopes under each animated figure, layoutFigs), two ways: (a) timed, the same stretch played with the
      slopes and without them (GAIT.noSlopes, a measurement switch the app never sets), alternately, the seating's difference; (b) counted, the
@@ -30,7 +32,7 @@ const inPage=function(a){
   var T={seat:0,lod:0,gait:0,upd:0}, cnt=0, rec=null, inL=0, took=null;
   Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.layout||u.layout.__w) return; var f=u.layout;
     u.layout=function(p,q,r){ var t=performance.now(); inL++; try{ return f.call(this,p,q,r); } finally{ inL--; T.seat+=performance.now()-t; if(took&&u.slopeSeat&&!u.slopeStale) took[id]=(took[id]||0)+1; } }; u.layout.__w=f; });
-  var kl=kitLod, gs=gaitStep, gy=groundY;
+  var kl=kitLod, gs=gaitStep, gy=groundY, don=DWELL.on;
   kitLod=function(r){ var t=performance.now(); try{ return kl(r); } finally{ T.lod+=performance.now()-t; } };
   gaitStep=function(r,i){ var t=performance.now(); try{ return gs(r,i); } finally{ T.gait+=performance.now()-t; } };
   var slMeshes=[]; Object.keys(units).forEach(function(id){ var b=units[id].block; if(b) b.traverse(function(o){ if(o.isInstancedMesh&&o.geometry.attributes.aSl) slMeshes.push(o); }); });
@@ -39,12 +41,12 @@ const inPage=function(a){
     T.seat=T.lod=T.gait=T.upd=0; cnt=0; rec=keep?[]:null;
     if(counting) groundY=function(x,z){ if(inL){ cnt++; if(rec&&rec.length<400000) rec.push(x,z); } return gy(x,z); };   /* the seating's lookups only */
     var up=0, upB=0, sb0=SEAT_STATS.blocks, ss0=SEAT_STATS.slopes||0;
-    playing=true; speed=a.x; FK=1; DWELL.st=null;
+    playing=true; speed=a.x; FK=1; DWELL.on=false; DWELL.st=null;   /* the dwell off: every step at the speed's nominal rate (a stretch from an event's start sat in its hold) */
     for(var i=0;i<a.n;i++){ var nt=dwellAdvance(1/60,MIN_PER_SEC*speed); setClock(nt);
       var v0=slMeshes.map(function(m){ return m.geometry.attributes.aSl.version; });
       var t=performance.now(); updateVisibility(); T.upd+=performance.now()-t;
       slMeshes.forEach(function(m,j){ var A=m.geometry.attributes.aSl; if(A.version!==v0[j]){ up++; upB+=A.array.byteLength; } }); }
-    playing=false; if(counting) groundY=gy;
+    playing=false; DWELL.on=don; DWELL.st=null; if(counting) groundY=gy;
     return {upd:T.upd/a.n, seat:T.seat/a.n, lod:T.lod/a.n, gait:T.gait/a.n, calls:cnt/a.n, uploads:up/a.n, uploadKB:upB/a.n/1024,
       seatings:(SEAT_STATS.blocks-sb0)/a.n, slopeSeatings:((SEAT_STATS.slopes||0)-ss0)/a.n}; }
   var A=[], B=[], CA=null, CB=null, pts=null;
@@ -52,7 +54,7 @@ const inPage=function(a){
     run(false,false,false); run(true,false,false);   /* a warm-up of each, so that neither counted run is the page's first */
     took={}; CA=run(false,true,true); pts=rec; rec=null; var tookA=took; took=null; CB=run(true,true,false);
     for(var k=0;k<a.reps;k++){ A.push(run(false,false,false)); B.push(run(true,false,false)); }
-  } finally { GAIT.noSlopes=false; kitLod=kl; gaitStep=gs; groundY=gy; playing=false;
+  } finally { GAIT.noSlopes=false; kitLod=kl; gaitStep=gs; groundY=gy; playing=false; DWELL.on=don; DWELL.st=null;
     Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(u&&u.layout&&u.layout.__w) u.layout=u.layout.__w; }); }
   /* (c) benched: each block that took the slopes in the counted stretch, seated with the slopes and without them in tight loops (50 seatings
      each, alternately, five rounds, the best of each), the difference a seating, times the seatings that took the slopes a frame */

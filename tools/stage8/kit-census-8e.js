@@ -25,8 +25,9 @@ const PAGE=function(){
     if(u.deployed&&u.limbered&&!bat) bat={id:id, u:u}; });
   if(bat){ var guns=bat.u.art?bat.u.art.guns:null;
     [["deployed",bat.u.deployed],["limbered",bat.u.limbered]].forEach(function(p){ var g=p[1], out=art[p[0]];
-      g.traverse(function(o){ if(!o.isInstancedMesh) return; var k=o.userData.kit||{}, what=k.role==="crew"?"gunners (figures)":k.role==="gear"?"the vehicles":k.role==="team"?"the team":k.role==="driver"?"the drivers":"other ("+(k.role||o.geometry.type)+")";
+      g.traverse(function(o){ if(!o.isInstancedMesh) return; var k=o.userData.kit||{}, what=k.role==="crew"?"gunners (figures)":k.role==="gear"||!k.role?"the vehicles":k.role==="team"?"the team":k.role==="driver"?"the drivers":"other ("+k.role+")";   /* 8D's vehicles (barrel, wheels, trail, limber) carry no kit role */
         var x=out[what]||(out[what]={old:0, simple:0, rich:0}); x.old+=tri(o.geometry)*o.count; x.simple+=lv(o,"s")*o.count; x.rich+=lv(o,"r")*o.count; }); });
+    if(!guns){ bat.u.deployed.traverse(function(o){ if(o.isInstancedMesh&&typeof GEO!=="undefined"&&o.geometry===GEO.barrel) guns=o.count; }); }   /* 8D: a gun a barrel */
     art.battery=bat.id; art.guns=guns||null; }
   return {fig:fig, art:art, hasLod:typeof KLOD!=="undefined"};
 };

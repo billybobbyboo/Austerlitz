@@ -19291,14 +19291,23 @@ var AUSTERLITZ_DEBUG=(function(){
         aim([285,289],[-1.0,0.13,0.18],70); settle(6,true); lodOk("the low Pratzen view");
         aim([210,362],[-0.62,0.46,0.64],58); settle(6,true); lodOk("close on Sokolnitz");
         /* a dolly: the eye toward a formation and back, each step a settled frame: the switches counted, none while the view holds */
-        var did=shown().filter(function(id){ return units[id].block.userData.dress.some(function(r){ return !r.mounted; }); })[0], sw=[], last=null, holdFlip=0;
+        var did=shown().filter(function(id){ return units[id].block.userData.dress.some(function(r){ return !r.mounted; }); })[0], sw=[], last=null, holdFlip=0, byR={};
         if(did){ var p0=units[did].block.position.clone(), dir=new THREE.Vector3(-0.55,0.42,0.72).normalize();
           [400,300,220,170,140,120,105,92,82,74,66,58,50,42,34,26,34,42,50,58,66,74,82,92,105,120,140,170,220,300,400].forEach(function(r,i){
             look(p0.clone().addScaledVector(dir,r),p0); settle(3,true); var u=units[did].block.userData, lv=u.lodRich, px=manPx(did);
             if(last!==null&&lv!==last) sw.push((lv?"rich":"simple")+" at "+r+" units (the block's nearest point "+u.lodPx.toFixed(1)+" px, its largest man "+px.toFixed(1)+" px)");
+            (byR[r]=byR[r]||[])[i<15?0:1]={lv:lv, px:u.lodPx};   /* the level coming in (0) and going out (1) */
             last=lv; for(var h=0;h<4;h++){ settle(1,true); if(units[did].block.userData.lodRich!==lv) holdFlip++; } });
           cT.push(did+" along a dolly: "+sw.join(", "));
-          if(sw.length!==2) cBad.push("the dolly switched "+sw.length+" times (want once each way)"); if(holdFlip) cBad.push(holdFlip+" switches while the view held"); }
+          if(sw.length!==2) cBad.push("the dolly switched "+sw.length+" times (want once each way)"); if(holdFlip) cBad.push(holdFlip+" switches while the view held");
+          /* the hysteresis: between 14.5 and 17.6 px the level is the way the eye came, simple coming in and rich going out; elsewhere the same both ways */
+          var band=[];
+          Object.keys(byR).forEach(function(r){ var q=byR[r]; if(!q[0]||!q[1]) return; var px=q[0].px;
+            if(q[0].lv!==q[1].lv){ if(q[0].lv||!q[1].lv||!(px>=KLOD.OUT&&px<KLOD.IN)) cBad.push("at "+r+" units ("+px.toFixed(1)+" px) "+(q[0].lv?"rich":"simple")+" coming in and "+(q[1].lv?"rich":"simple")+" going out");
+              else band.push(r+" units ("+px.toFixed(1)+" px): simple coming in, rich going out"); }
+            else if(px>=KLOD.OUT&&px<KLOD.IN) cBad.push("at "+r+" units ("+px.toFixed(1)+" px, in the band) "+(q[0].lv?"rich":"simple")+" both ways (no hysteresis)"); });
+          if(!band.length) cBad.push("no distance of the dolly in the band between "+KLOD.OUT+" and "+KLOD.IN+" px where the level is the way the eye came (no hysteresis seen)");
+          else cT.push("the band kept by the way the eye came at "+band.join("; ")); }
         else cBad.push("no formation on foot shown for the dolly");
         /* the bounds follow a switch */
         var bm=null; shown().some(function(id){ var u=units[id].block.userData; return u.lod.some(function(m){ if(m.count>0&&m.userData.cull){ bm=m; return true; } return false; }); });
@@ -19306,7 +19315,7 @@ var AUSTERLITZ_DEBUG=(function(){
           [!r0,r0].forEach(function(rv){ kitLodSet(bu,rv); camera.updateMatrixWorld(); F0.setFromProjectionMatrix(M4.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse)); F0.intersectsObject(bm);
             var cl=bm.userData.cull; if(cl.g!==bm.geometry) cBad.push("a switch did not refresh the bounds"); }); }
         cT.push(KLOD.n+" switches over the checks");
-        ck("the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye's view (the test's own projection of his feet and hat through the camera) draws the rich kit, none with every man in view under 8.7 px; a dolly toward a formation and back switches it once each way and never while the view holds; a block's meshes on one level, each on its own pair, the knee with it; the culling bounds follow a switch",
+        ck("the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye's view (the test's own projection of his feet and hat through the camera) draws the rich kit, none with every man in view under 8.7 px; a dolly toward a formation and back switches it once each way and never while the view holds, between 14.5 and 17.6 px at its nearest point the level the way the eye came (simple coming in, rich going out) and the same both ways elsewhere; a block's meshes on one level, each on its own pair, the knee with it; the culling bounds follow a switch",
           !cBad.length, cT.join("; ")+(cBad.length?"; WRONG: "+cBad.slice(0,6).join("; "):""));
 
         /* (d) the shared geometries: every kit mesh draws a geometry of its own (kitWrap), over its class's shared attributes, and no formation's

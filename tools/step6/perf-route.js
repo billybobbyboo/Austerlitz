@@ -301,7 +301,7 @@
       if(!has) out.notes.push(B.none);
       out.bracket={kind:B.word, has:has, tier:dev, warm:CULLR.warm[dev], rest:CULLR.rest[dev], secs:CULLR.secs, rounds:CULLR.rounds, orders:CULLR.orders.slice()};
       if(B===BRACKETS.cull) out.cull=out.bracket;
-      B.views[dev].forEach(function(id){ var v=VIEWS.filter(function(x){ return x.id===id; })[0]; if(!v||!want(id)) return;
+      B.views[dev].forEach(function(id){ var v=VIEWS.concat(PLAYED).filter(function(x){ return x.id===id; })[0]; if(!v||!want(id)) return;   /* the gait's view is a played one (8E) */
         /* a played bracket (the gait's): each block plays the clock as the played segment play-half does, from its start; else the view orbits */
         var start=B.played?function(){ apply({t:510, presentation:"watch", mode:"terrain", cam:FIELD}); w.setFollow(true); D.settle(30); w.setSpeed(0.5); w.togglePlay(); }:function(){ apply(v.spec); },
             stop=B.played?function(){ if(G("playing")) w.stopPlay(); w.setSpeed(0.5); }:function(){}, move=function(){ return B.played?null:MOVE.orbit(); };

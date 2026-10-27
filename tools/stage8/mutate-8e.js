@@ -40,7 +40,7 @@ const MUT=[
   ["gaitdrift","no 1 km/h floor: a drift between anchors stepped","8e",[["if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=","if(lg&&!RM&&lg.kmh>=0){ c="]]],
   ["gaitrm","reduced motion ignored by the gait","8e",[["if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=","if(lg&&lg.kmh>=GAIT.KMH){ c="]]],
   ["gaitnoease","the amplitude set at once, not eased","8e",[["if(G.amp!==want){ G.amp+=(want-G.amp)*e;","if(G.amp!==want){ G.amp=want;"]]],
-  ["slopestale","the slopes left where Play stopped (not taken again on the pause)","8e",[["(!u.slopeSeat||(u.slopeStale&&clockRate()===0))) u.layout(u.sw,u.sd);","(!u.slopeSeat)) u.layout(u.sw,u.sd);"]]],
+  ["slopestale","the slopes left where Play stopped (not taken again on the pause)","8e",[["(!u.slopeSeat||(u.slopeStale&&rate===0))) u.layout(u.sw,u.sd);","(!u.slopeSeat)) u.layout(u.sw,u.sd);"]]],
   ["slopeevery","the slopes taken at every seating while the clock plays (no step)","8e",[["!ud.slopeSeat||clockRate()===0||Math.hypot(","!ud.slopeSeat||true||Math.hypot("]]],
   ["s5","8D's facing: cached per phase at the first clock visited","8e",[["var tc=faceClock(id,clock), key=tc+\"|\"+id;","var tc=clock, key=curPhase+\"|\"+id;"]]],
   ["contact","the drawn ground's slopes not counted in the rise or dip that plants the feet (the hook and its mirror alike)","8e",[["sl=Math.max(-S,Math.min(S,s2[0])), sh=Math.max(-S,Math.min(S,s2[1]))","sl=0, sh=0"],["\"  vec2 anSl=clamp(aSl,vec2(-\"+f(ANIM.SLOPE)+\"),vec2(\"+f(ANIM.SLOPE)+\"));\"","\"  vec2 anSl=vec2(0.0);\""]]],

@@ -5,13 +5,14 @@
    - a still: the clock set, paused (a marching formation's pose at the clock: the gait full at a paused clock, decision 244 (a)'s rule), the eye
      aimed at a formation (its map position at the clock, a direction and a distance), settled, drawn and captured; on both builds where the 8D
      build draws the same thing;
-   - a clip: Play's own stepping at a speed (dwellAdvance, 30 steps a second of the clip, FK 2: the gait's ease as at 30 frames a second), each
+   - a clip: Play's own stepping at a speed (dwellAdvance with the dwell off, so the clock runs at the speed's nominal rate; 30 steps a second
+     of the clip, FK 2: the gait's ease as at 30 frames a second), each
      step's blocks posed and seated (updateVisibility), every third step drawn and captured (10 frames a second of the clip, as 8C's clips), the
      eye following the formation (its map position each captured frame, the same direction and distance); a pause is a stretch of steps with the
      clock still (not playing); a speed change a stretch at another speed. Encoded with ffmpeg (H.264, 10 frames a second); where both builds
      are drawn, the two stacked one above the other (8D above, 8E below).
    The views are DESIGN (chosen to show the drawing); the formations and clocks are the data's (gaitLeg: sthilaire marching up the Pratzen at
-   5.0 km/h at 09:00; guard_cav at 4.9 km/h at 10:45; heightguns limbered and moving at 3.2 km/h at 14:00, deployed at 10:00).
+   5.0 km/h at 09:00; guard_cav at 4.9 km/h at 10:45; heightguns limbered and moving at 3.2 km/h at 14:00, deployed at 13:00: it reaches the field in phase 7, at 12:45).
    node tools/stage8/clips-8e.js --before 8d.html --after 8e.html [--out dir] [--only id,id] [--vp WxH]
    Writes <out>/stills/<id>.png (and <id>-8D.png, <id>-8E.png where both), <out>/clips/<id>.mp4 and a log; measurement code only. */
 "use strict";
@@ -26,7 +27,7 @@ const DIR=[-0.55,0.42,0.72], SIDE=[0.95,0.22,0.22], LOW=[-0.70,0.16,0.70];
 const STILLS=[
   ["infantry", "Saint-Hilaire's division marching up the Pratzen at 09:00, paused (its pose at the clock), 26 units off: the rich kit (8E) against 6C's kit (8D)", {t:540, aim:{id:"sthilaire", dir:DIR, r:26}}, true],
   ["cavalry", "the Guard's cavalry marching at 10:45, paused, 30 units off: riders and horses, rich (8E) against 6C's (8D)", {t:645, aim:{id:"guard_cav", dir:SIDE, r:30}}, true],
-  ["artillery-deployed", "the guns on the heights (IV Corps' foot artillery) in action at 10:00, 22 units off: the pieces, the coffret on the limber, the limber, its team and its driver behind each gun (8E) against the guns and crews 8D drew", {t:600, aim:{id:"heightguns", dir:DIR, r:22}}, true],
+  ["artillery-deployed", "the guns on the heights (IV Corps' foot artillery) in action at 13:00, 22 units off: the pieces, the coffret on the limber, the limber, its team and its driver behind each gun (8E) against the guns and crews 8D drew", {t:780, aim:{id:"heightguns", dir:DIR, r:22}}, true],
   ["artillery-limbered", "the same battery limbered and moving at 14:00, paused, 22 units off: team, driver, limber, the piece on its pintle with the coffret between its cheeks (8E) against 8D's", {t:845, aim:{id:"heightguns", dir:SIDE, r:22}}, true],
   ["lod-26", "the level of detail by distance: Saint-Hilaire's division at 09:00, 26 units off (rich)", {t:540, aim:{id:"sthilaire", dir:DIR, r:26}}, false],
   ["lod-110", "110 units off (a man about 21 px: rich)", {t:540, aim:{id:"sthilaire", dir:DIR, r:110}}, false],
@@ -59,10 +60,10 @@ const SETUP=function(s){
 };
 /* in the page: n steps of Play at speed x (0: the clock still), the last one drawn */
 const STEP=function(a){
-  var x=a.x, fk=FK; FK=2;
-  for(var i=0;i<a.n;i++){ if(x>0){ playing=true; speed=x; DWELL.st=null; setClock(dwellAdvance(1/30,MIN_PER_SEC*speed)); } else playing=false;
+  var x=a.x, fk=FK, don=DWELL.on; FK=2; DWELL.on=false; DWELL.st=null;   /* the dwell off for the stretch: Play at its nominal rate (a clip begun at an event's start would otherwise sit in its hold) */
+  for(var i=0;i<a.n;i++){ if(x>0){ playing=true; speed=x; setClock(dwellAdvance(1/30,MIN_PER_SEC*speed)); } else playing=false;
     window.__aimAt(); updateVisibility(); }
-  playing=false; FK=fk; renderFrame();
+  playing=false; FK=fk; DWELL.on=don; DWELL.st=null; renderFrame();
   var u=units[window.__aimS.id]&&units[window.__aimS.id].block.userData;
   return {clock:fmtClock(clock), amp:u&&u.gait?+u.gait.amp.toFixed(3):null, rich:u?u.lodRich:null};
 };

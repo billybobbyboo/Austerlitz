@@ -11,6 +11,7 @@ const ROOT=path.resolve(__dirname,"..",".."), argv=process.argv.slice(2), opt=f=
 const MUT=[
   ["none","nothing (the source as it is)",null,null],
   ["klod","no margin: the kit simple again only under 17.6 px","var KLOD={IN:17.6, OUT:14.5,","var KLOD={IN:17.6, OUT:17.6,"],
+  ["lodhyst","kitLod's switch without its hysteresis: one threshold each way","rich=u.inView&&(u.lodRich?px>=KLOD.OUT:px>=KLOD.IN); }","rich=u.inView&&px>=KLOD.IN; }"],
   ["lodalloc","kitLod allocating for every block every frame","function kitLod(rec){\n  var u=rec.block.userData;","function kitLod(rec){\n  var tmp=new THREE.Vector3(); var u=rec.block.userData;"],
   ["colour","a vehicle part drawn in a colour of its own, not KIT.gear's","[x,r,0],null,[0,0,Math.PI/2],KIT.gear.wheel,k); }","[x,r,0],null,[0,0,Math.PI/2],0x808000,k); }"],
   ["armycolour","a carriage coloured by its army","function kitDisc(x,r,n,k){ return kitPart(","function kitDisc(x,r,n,k){ var nation=null; return kitPart("],
