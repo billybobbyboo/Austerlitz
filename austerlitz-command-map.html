@@ -2780,6 +2780,10 @@ var APPEARANCE_SOURCES = {
   villerme1829: {au:"L.-R. Villermé", ti:"Mémoire sur la taille de l'homme en France, Annales d'hygiène publique et de médecine légale, 1re série, t. 1", pub:"Paris, Gabon", d:1829, kind:"specialist", url:"https://archive.org/details/BIUSante_90141x1829x01", ia:"BIUSante_90141x1829x01"},
   crociani2004: {au:"P. Crociani, V. Ilari, C. Paoletti", ti:"Storia militare del Regno Italico (1802-1814), vol. I, tomo 2", pub:"Rome, Stato Maggiore dell'Esercito, Ufficio Storico", d:2004, kind:"specialist", url:"https://archive.org/details/storia-militare-del-regno-italico-1802-1814-vol.-1-tomo-1"},
   gassendi1809: {au:"J.-J.-B. Gassendi", ti:"Aide-mémoire à l'usage des officiers d'artillerie de France, attachés au service de terre, 4e éd., t. I", pub:"Paris, Magimel", d:1809, kind:"specialist", url:"https://archive.org/details/india.history.resource.106008", ia:"india.history.resource.106008"},
+  /* Stage 8, implementation PR 8E (decision 243 (a)): the works its artillery claims add (ORDNANCE; docs/stage8-evidence/8e/artillery-readings.md) */
+  gassendi2_1809: {au:"J.-J.-B. Gassendi", ti:"Aide-mémoire à l'usage des officiers d'artillerie de France, attachés au service de terre, 4e éd., t. II", pub:"Paris, Magimel", d:1809, kind:"specialist", url:"https://archive.org/details/india.history.resource.105837", ia:"india.history.resource.105837"},
+  alombert1_1902: {au:"P.-C. Alombert and J. Colin (Section historique de l'État-major de l'armée)", ti:"La campagne de 1805 en Allemagne, t. I", pub:"Paris, Chapelot", d:1902, kind:"specialist", url:"https://archive.org/details/la-campagne-de-1805-en-allemagne-vol.-1", ia:"la-campagne-de-1805-en-allemagne-vol.-1"},
+  nilus1904: {au:"А. А. Нилус", ti:"История материальной части артиллерии, т. 2", pub:"Санкт-Петербург", d:1904, kind:"specialist", url:"https://archive.org/details/nilusaaistorijamaterialnojchastiartil76", ia:"nilusaaistorijamaterialnojchastiartil76"},
   martinien1899: {au:"A. Martinien", ti:"Tableaux, par corps et par batailles, des officiers tués et blessés pendant les guerres de l'Empire (1805-1815)", pub:"Paris, Charles-Lavauzelle", d:1899, kind:"specialist", url:"https://gallica.bnf.fr/ark:/12148/bpt6k503971d"},
   /* participants and the allied accounts */
   thiebault3_1894: {au:"P. Thiébault (ed. F. Calmettes)", ti:"Mémoires du général baron Thiébault, t. III (1799-1806)", pub:"Paris, Plon, Nourrit", d:1894, kind:"primary-text", url:"https://archive.org/details/mmoires03thieuoft", ia:"mmoires03thieuoft"},
@@ -3493,6 +3497,79 @@ var STANDARD_MEASURES = {
   at: {staff:{v:"Die Fahnenstangen waren circa 285 cm lang", en:"about 2.85 m; the finial's size not read", m:2.85, src:"dolleczek1896", at:"p. 159", gr:"B", lab:"fact", q:"Die Fahnenstangen waren circa 285 cm lang"},
     stature:{v:"Die Infanterie-Recruten mussten mindestens 165 Centimeter [...] gross sein", en:"the infantry recruits' minimum, 1.65 m (the 1790s)", m:1.65, src:"teuber1895", at:"p. 247 (c250)", gr:"B", lab:"fact", q:"mindestens 165 Centimeter",
       note:"a minimum, not a mean; not shown for 1805"}}
+};
+
+/* Stage 8, implementation PR 8E (decision 243 (a), with its source boundaries: "Register and grade each historical claim before using it. Do
+   not generalise IV Corps' October authorisation for driver numbers into a demonstrated rule for the Guard, Austrian or Russian artillery.
+   Specify where each source applies"; docs/STAGE8_SPEC.md sections 4.4 and 17): the claims the drawn field artillery rests on, each read on
+   its page image for 8E (docs/stage8-evidence/8e/artillery-readings.md, the items named in each note). Each claim carries scope, the troops
+   and the time its source speaks for; a value is drawn only for a battery inside that scope, and an explicitly identified convention
+   elsewhere (KIT.art in app.js; never a claim). The values: wheels in metres (m, derived from the pieds du roi printed, 0.3248 m), their
+   felloes as printed; the team a count of horses; the drivers a count a vehicle (n, and n6 for a six-horse vehicle) for the corps the
+   source speaks for (corps: the formation id of that corps). Only French batteries are drawn as figures in this map (the Allied guns are
+   listed with the formations they served, decision 100), so the Guard's, the Austrian and the Russian entries mark where the French
+   readings stop: nothing is drawn from them. The carriage's colour stays one colour (decisions 109, 243 (a)); none is read here. */
+var ORDNANCE = {
+  fr: {
+    system:{v:"L'artillerie de la Grande Armée comprend des canons de 12, de 8 et de 4, et des obusiers de 6 pouces, du modèle de Gribeauval",
+      en:"Gribeauval 12-, 8- and 4-pounders and 6-inch howitzers; the an XI pieces meant to replace them were little made", src:"alombert1_1902", at:"Introduction, p. 228 (leaf n239)", gr:"B", lab:"fact",
+      q:"du modèle de Gribeauval", scope:"the Grande Armée's field artillery at the opening of the 1805 campaign; which calibres stood on the heights or at the Santon on 2 December is not read, so a generic Gribeauval field piece is drawn, no calibre or model claimed",
+      note:"item 1; a division's twelve pieces 2 of 12, 6 of 8, 2 of 4 and 2 howitzers (p. 230, item 2): ten of them on the wheels below"},
+    wheels:{v:"Hauteur des Roues [...] de campagne de 12 [...] 4 6 [...] de 8 [...] Idem [...] d'obusiers de 8 pouces et de 6 pouces [...] 4 6 [...] d'affût de campagne de 12 et de 8, de caisson et de chariot à munitions [...] 3 6",
+      en:"the field carriage's wheels of the 12, the 8 and the howitzers 4 pieds 6 pouces, their limber's 3 pieds 6 pouces (the 4-pounder's 4 pieds 2 pouces and 3 pieds 2 pouces)",
+      gun_m:1.462, limber_m:1.137, felloes:{gun:6, limber:5}, src:"gassendi1809", at:"t. I, p. 110, the table 'Hauteur des Roues', nos. 3, 4, 10, 19 (leaf n191)", gr:"B", lab:"fact", q:"Hauteur des Roues",
+      scope:"the Gribeauval field carriages and their limbers in Gassendi's tables (the field carriage of 1805 kept, t. I, p. 11); the 4-pounder's smaller wheels (within 7%) not drawn",
+      note:"item 4; metres derived (4.5 and 3.5 pieds of 0.3248 m); the spokes are not printed: twelve and ten, two to a felloe, an inference"},
+    coffret:{v:"Canonnier de droite, Canonnier de gauche, placent le coffret sur l'avant-train [...] placent le coffret entre les flasques",
+      en:"unlimbered, the piece's chest is set on the limber; limbered, it travels between the trail's cheeks", src:"gassendi2_1809", at:"t. II, pp. 869-870, 'Otez l'Avant-train' and 'Amenez l'Avant-train' (leaves n336-n337)", gr:"B", lab:"fact",
+      q:"placent le coffret entre les flasques", scope:"the Gribeauval field piece's 'coffret d'affût de campagne', for the 12, the 8, the 4 and the 6-inch howitzer (t. I, p. 174), in Gassendi's drill (1809)",
+      note:"items 3 and 5; every piece carried its own ('les coffrets de pièce', alombert1_1902, p. 229)"},
+    limberAt:{v:"3e. Servant de droite mène l'Avant-train à 20 pas en arrière, en obliquant un peu à droite, et tourne à gauche",
+      en:"unlimbered, the limber is led 20 paces to the rear and turned", src:"gassendi2_1809", at:"t. II, p. 870 (leaf n337)", gr:"B", lab:"fact", q:"mène l'Avant-train à 20 pas en arrière",
+      scope:"the drill Gassendi gives (1809); the limber's place 'est prescrite par le réglement' (p. 873), the regulation not read",
+      note:"item 6; about 13 m (derived); drawn at the figures' scale, the distance a design value; 'tourne à gauche' by how much is not read, so the team drawn facing the rear is a design value"},
+    limbered:{v:"L'Artillerie à pied conserve ses Pièces sur l'Avant-train dans tous ses mouvemens",
+      en:"foot artillery keeps its pieces limbered in all its movements", src:"gassendi2_1809", at:"t. II, p. 872 (leaf n339)", gr:"B", lab:"fact", q:"conserve ses Pièces sur l'Avant-train",
+      scope:"French foot artillery's manoeuvres, which the same page says 'ne sont point déterminées par un réglement': what some regiments practise",
+      note:"item 7; the same section has the gunners march beside their piece (p. 873, item 8): the crew is drawn with the deployed battery only, as before 8E"},
+    team:{v:"de Campagne de 12, chargé de sa Pièce [...] 6 [...] de 8, idem [...] 4 [...] de 4, idem [...] 4 [...] d'Obusier de 6 pouces, idem [...] 4",
+      en:"the horses ordinarily put to a field carriage with its piece: the 12, six; the 8, the 4 and the 6-inch howitzer, four", n:4, src:"gassendi1809", at:"t. I, p. 440, the table of the columns' lengths, column B (leaf n523)", gr:"B", lab:"fact",
+      q:"d'Obusier de 6 pouces, idem", scope:"French ordinary practice in Gassendi's tables (1809)",
+      note:"item 9; in the copy read a reader's pen strokes cross the 12's, the 8's and the 4's rows, the howitzer's four is clear; a drawn gun stands for two pieces, so its four horses are a symbol"},
+    harness:{v:"Premier Harnais de derrière ou de Porteur [...] 1 Selle à la dragonne avec ses étriers [...] Second Harnais de derrière ou de Sous-verge [...] 1 Couverture en forte toile grise",
+      en:"each pair's porteur saddled, its sous-verge under a blanket: two saddles to a team of four", src:"gassendi2_1809", at:"t. II, p. 829 (leaf n296)", gr:"B", lab:"fact", q:"Selle à la dragonne avec ses étriers",
+      scope:"the French artillery harness 'à l'Allemande'",
+      note:"item 10; that the porteur was the near (left) horse is usual French usage, not said here: an inference"},
+    drivers:[{v:"M. le Maréchal a autorisé le général Lariboisière à réduire vos attelages d'artillerie à un soldat du train par voiture ou au plus à deux pour les voitures à 6 chevaux",
+      en:"IV Corps' divisions authorised to reduce their artillery teams to one train soldier a vehicle, two at most for a six-horse vehicle", n:1, n6:2, corps:"c_iv",
+      src:"alombert4_1908", at:"pp. 183-184: Salligny, chief of staff of IV Corps, to the generals commanding its three infantry divisions and its cavalry division, Inning, 3 brumaire an XIV (leaves n192-n193)",
+      dated:"1805-10-25", gr:"A", lab:"inference", q:"à un soldat du train par voiture",
+      scope:"IV Corps' divisions' artillery teams, from 25 October 1805; it says nothing of the Guard's, the other corps', the Austrian or the Russian artillery",
+      note:"item 11; p. 184 calls it 'la réduction ordonnée'; that it still held on 2 December is not shown (hence an inference), nor which horse he rode; drawn for heightguns, IV Corps' artillery on the heights, whose figures are IV Corps' foot artillery (COMPOSITION.heightguns): that its teams were among the divisions' teams the letter addresses is not read, a further inference; the Guard's 24 pieces listed with it are outside the letter and are not drawn as figures"}],
+    limbering:{gen:true, why:"no source read gives the time limbering or unlimbering took (Gassendi's drill, t. II, pp. 869-870, lists the movements, not their duration): the deployed and the limbered battery switch at once"}
+  },
+  fr_guard: {
+    team:{v:"chaque division sera composée de 4 pièces de 8, 2 pièces de 4 et 2 obusiers, attelés par 44 chevaux",
+      en:"each of the Guard artillery's three divisions of four 8-pounders, two 4-pounders and two howitzers drawn by 44 horses", src:"alombert1_1902", at:"p. 399, Napoleon to Mortier, Boulogne, 11 fructidor an XIII (leaf n410)",
+      dated:"1805-08-29", gr:"A", lab:"fact", q:"attelés par 44 chevaux",
+      scope:"the Guard's artillery as ordered in August 1805; what it brought to the field on 2 December is not read",
+      note:"item 13; the split by piece is an inference; nothing is drawn from it (no Guard battery is drawn as figures)"},
+    drivers:{gen:true, why:"not read: the Guard's order of 29 August 1805 gives its teams' horses, not their drivers, and IV Corps' letter of 25 October does not reach it"}
+  },
+  at: {
+    limber:{v:"von da ab wurde ein grösserer Kasten auf der Protze angebracht, der zugleich als Sitz für 3 Mann ausreichte",
+      en:"from 1774 a larger box on the limber, which also seated three men", src:"teuber1895", at:"p. 185 (image)", gr:"B", lab:"fact", q:"ein grösserer Kasten auf der Protze",
+      scope:"the Austrian Liechtenstein matériel, in use 'mit geringer Aenderung bis zum Jahre 1809'",
+      note:"item 14; nothing is drawn from it (no Austrian battery is drawn as figures)"},
+    drivers:{gen:true, why:"not re-read for 8E (Teuber, pp. 320 and 444: the Fuhrwesen's drivers, from the saddle; Part A's leads); nothing is drawn from it"}
+  },
+  ru: {
+    limber:{v:"Передки съ коробомъ и дышломъ имѣлись двухъ образцовъ, батарейный и легкій—съ коробами на оси",
+      en:"limbers of two patterns, battery and light, each with a box over the axle and a pole", src:"nilus1904", at:"p. 21 (leaf n24)", gr:"B", lab:"fact", q:"съ коробами на оси",
+      scope:"the Russian matériel of the Arakcheev period",
+      note:"item 15; nothing is drawn from it (no Russian battery is drawn as figures)"},
+    drivers:{gen:true, why:"not re-read for 8E (viskovatov12_1900, the rules of 1806 and 1809: the company's own men; Part A's leads); nothing is drawn from it"}
+  }
 };
 
 /* the table's resolution (decision 100): a leaf formation's dress classes with their shares of its drawn battalions or

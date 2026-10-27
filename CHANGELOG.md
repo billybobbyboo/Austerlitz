@@ -1,5 +1,39 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8E: the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)), with the audit of 8D's two findings
+
+**Status: in progress on `claude/optimistic-thompson-4e5hsn` (draft PR #70, into `main` at `2f41819`, PR #69's merge); not merged.** The two
+prerequisite corrections the audit of 8D found are commits of their own (`2af8ed9`, `1c6b54e`); this entry records the data task, a commit of
+its own, before the drawing that rests on it.
+
+- **The data task: the artillery's claims registered and graded before anything is drawn from them (decision 243 (a)).** The leads of Stage 8
+  Part A (`docs/stage8-evidence/leads.md`, topic 1) re-read on the printed page images (archive.org's page images and the UIBK scan, each
+  read on the image; the register `docs/stage8-evidence/8e/artillery-readings.md`, 15 items with each passage as printed, its grade on the
+  appearance table's scale, its scope and what the drawing takes from it). Recorded in `appearance.js`, declaration by declaration:
+  - `APPEARANCE_SOURCES` **changed**: three works added, `gassendi2_1809` (Gassendi, *Aide-mémoire*, 4e éd., t. II, 1809),
+    `alombert1_1902` (Alombert and Colin, *La campagne de 1805 en Allemagne*, t. I, 1902) and `nilus1904` (Nilus, *История материальной
+    части артиллерии*, т. 2, 1904); every other entry byte-identical.
+  - `ORDNANCE` **added** (guarded by `check:data` since this commit, `tools/visual/data-invariance.js`'s historical datasets): per army, each
+    claim with its source, locator, grade, label, quotation and **scope** (the troops and the time its source speaks for). France: the system
+    (Gribeauval, B; which calibres stood where on 2 December not read, so no calibre or model is claimed), the wheels (Gassendi's 4 pieds
+    6 pouces and 3 pieds 6 pouces, 1.462 and 1.137 m derived, their felloes; B), the coffret's two places (B), the limber 20 paces to the
+    rear (B; how far it turned not read: the facing drawn is a design value), foot artillery limbered on the move (B, with Gassendi's own
+    caveat that it is not regulated), the team of four for the 8, the 4 and the howitzer (B), the harness's two saddles (B; that the porteur
+    is the near horse an inference), and **the drivers: IV Corps' letter of 25 October 1805 (Salligny to its divisions' generals), one train
+    soldier a vehicle, two at most for six horses, grade A as a document, label inference** (that it still held on 2 December is not shown),
+    its scope IV Corps' divisions' teams only; limbering's duration generic (no source read gives it). The Guard: its teams of August 1805
+    (A, nothing drawn from it) and its drivers generic (not read; IV Corps' letter does not reach it). Austria (the Liechtenstein limber's box,
+    B) and Russia (the Arakcheev limbers' boxes, B): boundaries, nothing drawn from them, their drivers generic (not re-read). Their
+    carriages' colour stays one colour for every army (decisions 109, 243 (a)).
+  - `test.js` holds `ORDNANCE`: every value a claim with its scope (or generic with its reason), the wheels in metres with the limber's the
+    smaller, the team a count, each drivers claim a count for a corps of the data, the Guard's, the Austrian and the Russian drivers generic,
+    limbering generic; every source a note names registered.
+- **`check:data`'s reference moved** from `archive/step5c-45f8f662.html` to `archive/stage8e-f3c3f3af.html`, this commit's build (the 8D
+  build with the new `appearance.js` alone): against the old reference 130 of 132 data declarations byte-identical, `APPEARANCE_SOURCES`
+  changed and `ORDNANCE` added as listed above; against the new, all 132 identical. Nothing is drawn from `ORDNANCE` in this commit.
+- **Build**: `austerlitz-command-map.html` 2,430,742 bytes, md5 `f3c3f3af1200cad9c6685e3633414acf`; `check:baseline` moved to it. All nine
+  suites and the height guard pass on it.
+
 ## 2026-10 · Stage 8, implementation PR 8D: rendering preparation (decisions 249 (a), 250 (b)), with the owner's decisions 255-258
 
 **Status: built on `claude/kind-darwin-ewmlwu` (draft PR #69, into `main` at `8eb3ef4`), for review; not merged.** No data changed: `check:data`
