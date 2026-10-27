@@ -1,0 +1,1182 @@
+{
+ "chromium": "141.0.7390.37",
+ "builds": {
+  "ae7f16b8cd2960c8813ff4155263830f": {
+   "fig": {
+    "a rider and his horse | fr_staff": {
+     "kind": "a rider and his horse",
+     "dress": "fr_staff",
+     "old": 284,
+     "simple": 284,
+     "rich": 284,
+     "example": "gqg"
+    },
+    "a gunner | fr_foot_art": {
+     "kind": "a gunner",
+     "dress": "fr_foot_art",
+     "old": 168,
+     "simple": 168,
+     "rich": 168,
+     "example": "heightguns"
+    },
+    "a man on foot | fr_light": {
+     "kind": "a man on foot",
+     "dress": "fr_light",
+     "old": 216,
+     "simple": 216,
+     "rich": 216,
+     "example": "sthilaire"
+    },
+    "a man on foot | fr_line": {
+     "kind": "a man on foot",
+     "dress": "fr_line",
+     "old": 200,
+     "simple": 200,
+     "rich": 200,
+     "example": "sthilaire"
+    },
+    "a rider and his horse | generic": {
+     "kind": "a rider and his horse",
+     "dress": null,
+     "old": 288,
+     "simple": 288,
+     "rich": 288,
+     "example": "sthilaire"
+    },
+    "a rider and his horse | fr_dragoon": {
+     "kind": "a rider and his horse",
+     "dress": "fr_dragoon",
+     "old": 340,
+     "simple": 340,
+     "rich": 340,
+     "example": "bourcier"
+    },
+    "a rider and his horse | fr_hussar2": {
+     "kind": "a rider and his horse",
+     "dress": "fr_hussar2",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kellermann"
+    },
+    "a rider and his horse | fr_hussar4": {
+     "kind": "a rider and his horse",
+     "dress": "fr_hussar4",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kellermann"
+    },
+    "a rider and his horse | fr_hussar5": {
+     "kind": "a rider and his horse",
+     "dress": "fr_hussar5",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kellermann"
+    },
+    "a rider and his horse | fr_carabinier": {
+     "kind": "a rider and his horse",
+     "dress": "fr_carabinier",
+     "old": 288,
+     "simple": 288,
+     "rich": 288,
+     "example": "nansouty"
+    },
+    "a rider and his horse | fr_cuirassier": {
+     "kind": "a rider and his horse",
+     "dress": "fr_cuirassier",
+     "old": 352,
+     "simple": 352,
+     "rich": 352,
+     "example": "nansouty"
+    },
+    "a man on foot | fr_guard_gren": {
+     "kind": "a man on foot",
+     "dress": "fr_guard_gren",
+     "old": 208,
+     "simple": 208,
+     "rich": 208,
+     "example": "guard_inf"
+    },
+    "a man on foot | fr_guard_chass": {
+     "kind": "a man on foot",
+     "dress": "fr_guard_chass",
+     "old": 208,
+     "simple": 208,
+     "rich": 208,
+     "example": "guard_inf"
+    },
+    "a man on foot | it_guard": {
+     "kind": "a man on foot",
+     "dress": "it_guard",
+     "old": 204,
+     "simple": 204,
+     "rich": 204,
+     "example": "guard_inf"
+    },
+    "a rider and his horse | fr_guard_grencav": {
+     "kind": "a rider and his horse",
+     "dress": "fr_guard_grencav",
+     "old": 292,
+     "simple": 292,
+     "rich": 292,
+     "example": "guard_cav"
+    },
+    "a rider and his horse | fr_guard_chasscav": {
+     "kind": "a rider and his horse",
+     "dress": "fr_guard_chasscav",
+     "old": 288,
+     "simple": 288,
+     "rich": 288,
+     "example": "guard_cav"
+    },
+    "a rider and his horse | fr_mameluke": {
+     "kind": "a rider and his horse",
+     "dress": "fr_mameluke",
+     "old": 327,
+     "simple": 327,
+     "rich": 327,
+     "example": "guard_cav"
+    },
+    "a man on foot | fr_gren_line": {
+     "kind": "a man on foot",
+     "dress": "fr_gren_line",
+     "old": 204,
+     "simple": 204,
+     "rich": 204,
+     "example": "c_gren"
+    },
+    "a man on foot | fr_gren_light": {
+     "kind": "a man on foot",
+     "dress": "fr_gren_light",
+     "old": 204,
+     "simple": 204,
+     "rich": 204,
+     "example": "c_gren"
+    },
+    "a rider and his horse | ru_staff": {
+     "kind": "a rider and his horse",
+     "dress": "ru_staff",
+     "old": 284,
+     "simple": 284,
+     "rich": 284,
+     "example": "ahq"
+    },
+    "a man on foot | at_jager": {
+     "kind": "a man on foot",
+     "dress": "at_jager",
+     "old": 204,
+     "simple": 204,
+     "rich": 204,
+     "example": "kienmayer"
+    },
+    "a man on foot | at_grenz": {
+     "kind": "a man on foot",
+     "dress": "at_grenz",
+     "old": 204,
+     "simple": 204,
+     "rich": 204,
+     "example": "kienmayer"
+    },
+    "a rider and his horse | at_chevauleger": {
+     "kind": "a rider and his horse",
+     "dress": "at_chevauleger",
+     "old": 328,
+     "simple": 328,
+     "rich": 328,
+     "example": "kienmayer"
+    },
+    "a rider and his horse | at_hussar_hh": {
+     "kind": "a rider and his horse",
+     "dress": "at_hussar_hh",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kienmayer"
+    },
+    "a rider and his horse | at_hussar_szekler": {
+     "kind": "a rider and his horse",
+     "dress": "at_hussar_szekler",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kienmayer"
+    },
+    "a rider and his horse | ru_cossack": {
+     "kind": "a rider and his horse",
+     "dress": "ru_cossack",
+     "old": 292,
+     "simple": 292,
+     "rich": 292,
+     "example": "kienmayer"
+    },
+    "a man on foot | ru_jager": {
+     "kind": "a man on foot",
+     "dress": "ru_jager",
+     "old": 204,
+     "simple": 204,
+     "rich": 204,
+     "example": "dok"
+    },
+    "a man on foot | ru_musk": {
+     "kind": "a man on foot",
+     "dress": "ru_musk",
+     "old": 216,
+     "simple": 216,
+     "rich": 216,
+     "example": "dok"
+    },
+    "a man on foot | ru_gren": {
+     "kind": "a man on foot",
+     "dress": "ru_gren",
+     "old": 204,
+     "simple": 204,
+     "rich": 204,
+     "example": "dok"
+    },
+    "a man on foot | at_line": {
+     "kind": "a man on foot",
+     "dress": "at_line",
+     "old": 204,
+     "simple": 204,
+     "rich": 204,
+     "example": "kollo"
+    },
+    "a rider and his horse | at_cuirassier": {
+     "kind": "a rider and his horse",
+     "dress": "at_cuirassier",
+     "old": 340,
+     "simple": 340,
+     "rich": 340,
+     "example": "lich"
+    },
+    "a rider and his horse | ru_uhlan": {
+     "kind": "a rider and his horse",
+     "dress": "ru_uhlan",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "lich"
+    },
+    "a rider and his horse | ru_dragoon": {
+     "kind": "a rider and his horse",
+     "dress": "ru_dragoon",
+     "old": 328,
+     "simple": 328,
+     "rich": 328,
+     "example": "lich"
+    },
+    "a rider and his horse | ru_hussar_elisavetgrad": {
+     "kind": "a rider and his horse",
+     "dress": "ru_hussar_elisavetgrad",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "lich"
+    },
+    "a man on foot | ru_guard_inf": {
+     "kind": "a man on foot",
+     "dress": "ru_guard_inf",
+     "old": 216,
+     "simple": 216,
+     "rich": 216,
+     "example": "rg_inf"
+    },
+    "a man on foot | ru_guard_jager": {
+     "kind": "a man on foot",
+     "dress": "ru_guard_jager",
+     "old": 216,
+     "simple": 216,
+     "rich": 216,
+     "example": "rg_inf"
+    },
+    "a rider and his horse | ru_chevalier": {
+     "kind": "a rider and his horse",
+     "dress": "ru_chevalier",
+     "old": 328,
+     "simple": 328,
+     "rich": 328,
+     "example": "rg_cav"
+    },
+    "a rider and his horse | ru_guard_horse": {
+     "kind": "a rider and his horse",
+     "dress": "ru_guard_horse",
+     "old": 328,
+     "simple": 328,
+     "rich": 328,
+     "example": "rg_cav"
+    },
+    "a rider and his horse | ru_guard_hussar": {
+     "kind": "a rider and his horse",
+     "dress": "ru_guard_hussar",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "rg_cav"
+    }
+   },
+   "art": {
+    "deployed": {
+     "the vehicles": {
+      "old": 936,
+      "simple": 936,
+      "rich": 936
+     },
+     "gunners (figures)": {
+      "old": 5040,
+      "simple": 5040,
+      "rich": 5040
+     }
+    },
+    "limbered": {
+     "the vehicles": {
+      "old": 1608,
+      "simple": 1608,
+      "rich": 1608
+     },
+     "the team": {
+      "old": 2592,
+      "simple": 2592,
+      "rich": 2592
+     }
+    },
+    "battery": "heightguns",
+    "guns": 6
+   },
+   "hasLod": false,
+   "md5": "ae7f16b8cd2960c8813ff4155263830f"
+  },
+  "e80577e2e2ac815205bf8b1572e767bd": {
+   "fig": {
+    "a rider and his horse | fr_staff": {
+     "kind": "a rider and his horse",
+     "dress": "fr_staff",
+     "old": 284,
+     "simple": 284,
+     "rich": 284,
+     "example": "gqg"
+    },
+    "a gunner | fr_foot_art": {
+     "kind": "a gunner",
+     "dress": "fr_foot_art",
+     "old": 168,
+     "simple": 168,
+     "rich": 204,
+     "example": "heightguns"
+    },
+    "a man on foot | fr_light": {
+     "kind": "a man on foot",
+     "dress": "fr_light",
+     "old": 216,
+     "simple": 216,
+     "rich": 252,
+     "example": "sthilaire"
+    },
+    "a man on foot | fr_line": {
+     "kind": "a man on foot",
+     "dress": "fr_line",
+     "old": 200,
+     "simple": 200,
+     "rich": 236,
+     "example": "sthilaire"
+    },
+    "a rider and his horse | generic": {
+     "kind": "a rider and his horse",
+     "dress": null,
+     "old": 288,
+     "simple": 288,
+     "rich": 288,
+     "example": "sthilaire"
+    },
+    "a rider and his horse | fr_dragoon": {
+     "kind": "a rider and his horse",
+     "dress": "fr_dragoon",
+     "old": 340,
+     "simple": 340,
+     "rich": 340,
+     "example": "bourcier"
+    },
+    "a rider and his horse | fr_hussar2": {
+     "kind": "a rider and his horse",
+     "dress": "fr_hussar2",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kellermann"
+    },
+    "a rider and his horse | fr_hussar4": {
+     "kind": "a rider and his horse",
+     "dress": "fr_hussar4",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kellermann"
+    },
+    "a rider and his horse | fr_hussar5": {
+     "kind": "a rider and his horse",
+     "dress": "fr_hussar5",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kellermann"
+    },
+    "a rider and his horse | fr_carabinier": {
+     "kind": "a rider and his horse",
+     "dress": "fr_carabinier",
+     "old": 288,
+     "simple": 288,
+     "rich": 288,
+     "example": "nansouty"
+    },
+    "a rider and his horse | fr_cuirassier": {
+     "kind": "a rider and his horse",
+     "dress": "fr_cuirassier",
+     "old": 352,
+     "simple": 352,
+     "rich": 352,
+     "example": "nansouty"
+    },
+    "a man on foot | fr_guard_gren": {
+     "kind": "a man on foot",
+     "dress": "fr_guard_gren",
+     "old": 208,
+     "simple": 208,
+     "rich": 244,
+     "example": "guard_inf"
+    },
+    "a man on foot | fr_guard_chass": {
+     "kind": "a man on foot",
+     "dress": "fr_guard_chass",
+     "old": 208,
+     "simple": 208,
+     "rich": 244,
+     "example": "guard_inf"
+    },
+    "a man on foot | it_guard": {
+     "kind": "a man on foot",
+     "dress": "it_guard",
+     "old": 204,
+     "simple": 204,
+     "rich": 240,
+     "example": "guard_inf"
+    },
+    "a rider and his horse | fr_guard_grencav": {
+     "kind": "a rider and his horse",
+     "dress": "fr_guard_grencav",
+     "old": 292,
+     "simple": 292,
+     "rich": 292,
+     "example": "guard_cav"
+    },
+    "a rider and his horse | fr_guard_chasscav": {
+     "kind": "a rider and his horse",
+     "dress": "fr_guard_chasscav",
+     "old": 288,
+     "simple": 288,
+     "rich": 288,
+     "example": "guard_cav"
+    },
+    "a rider and his horse | fr_mameluke": {
+     "kind": "a rider and his horse",
+     "dress": "fr_mameluke",
+     "old": 327,
+     "simple": 327,
+     "rich": 327,
+     "example": "guard_cav"
+    },
+    "a man on foot | fr_gren_line": {
+     "kind": "a man on foot",
+     "dress": "fr_gren_line",
+     "old": 204,
+     "simple": 204,
+     "rich": 240,
+     "example": "c_gren"
+    },
+    "a man on foot | fr_gren_light": {
+     "kind": "a man on foot",
+     "dress": "fr_gren_light",
+     "old": 204,
+     "simple": 204,
+     "rich": 240,
+     "example": "c_gren"
+    },
+    "a rider and his horse | ru_staff": {
+     "kind": "a rider and his horse",
+     "dress": "ru_staff",
+     "old": 284,
+     "simple": 284,
+     "rich": 284,
+     "example": "ahq"
+    },
+    "a man on foot | at_jager": {
+     "kind": "a man on foot",
+     "dress": "at_jager",
+     "old": 204,
+     "simple": 204,
+     "rich": 240,
+     "example": "kienmayer"
+    },
+    "a man on foot | at_grenz": {
+     "kind": "a man on foot",
+     "dress": "at_grenz",
+     "old": 204,
+     "simple": 204,
+     "rich": 240,
+     "example": "kienmayer"
+    },
+    "a rider and his horse | at_chevauleger": {
+     "kind": "a rider and his horse",
+     "dress": "at_chevauleger",
+     "old": 328,
+     "simple": 328,
+     "rich": 328,
+     "example": "kienmayer"
+    },
+    "a rider and his horse | at_hussar_hh": {
+     "kind": "a rider and his horse",
+     "dress": "at_hussar_hh",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kienmayer"
+    },
+    "a rider and his horse | at_hussar_szekler": {
+     "kind": "a rider and his horse",
+     "dress": "at_hussar_szekler",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "kienmayer"
+    },
+    "a rider and his horse | ru_cossack": {
+     "kind": "a rider and his horse",
+     "dress": "ru_cossack",
+     "old": 292,
+     "simple": 292,
+     "rich": 292,
+     "example": "kienmayer"
+    },
+    "a man on foot | ru_jager": {
+     "kind": "a man on foot",
+     "dress": "ru_jager",
+     "old": 204,
+     "simple": 204,
+     "rich": 240,
+     "example": "dok"
+    },
+    "a man on foot | ru_musk": {
+     "kind": "a man on foot",
+     "dress": "ru_musk",
+     "old": 216,
+     "simple": 216,
+     "rich": 252,
+     "example": "dok"
+    },
+    "a man on foot | ru_gren": {
+     "kind": "a man on foot",
+     "dress": "ru_gren",
+     "old": 204,
+     "simple": 204,
+     "rich": 240,
+     "example": "dok"
+    },
+    "a man on foot | at_line": {
+     "kind": "a man on foot",
+     "dress": "at_line",
+     "old": 204,
+     "simple": 204,
+     "rich": 240,
+     "example": "kollo"
+    },
+    "a rider and his horse | at_cuirassier": {
+     "kind": "a rider and his horse",
+     "dress": "at_cuirassier",
+     "old": 340,
+     "simple": 340,
+     "rich": 340,
+     "example": "lich"
+    },
+    "a rider and his horse | ru_uhlan": {
+     "kind": "a rider and his horse",
+     "dress": "ru_uhlan",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "lich"
+    },
+    "a rider and his horse | ru_dragoon": {
+     "kind": "a rider and his horse",
+     "dress": "ru_dragoon",
+     "old": 328,
+     "simple": 328,
+     "rich": 328,
+     "example": "lich"
+    },
+    "a rider and his horse | ru_hussar_elisavetgrad": {
+     "kind": "a rider and his horse",
+     "dress": "ru_hussar_elisavetgrad",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "lich"
+    },
+    "a man on foot | ru_guard_inf": {
+     "kind": "a man on foot",
+     "dress": "ru_guard_inf",
+     "old": 216,
+     "simple": 216,
+     "rich": 252,
+     "example": "rg_inf"
+    },
+    "a man on foot | ru_guard_jager": {
+     "kind": "a man on foot",
+     "dress": "ru_guard_jager",
+     "old": 216,
+     "simple": 216,
+     "rich": 252,
+     "example": "rg_inf"
+    },
+    "a rider and his horse | ru_chevalier": {
+     "kind": "a rider and his horse",
+     "dress": "ru_chevalier",
+     "old": 328,
+     "simple": 328,
+     "rich": 328,
+     "example": "rg_cav"
+    },
+    "a rider and his horse | ru_guard_horse": {
+     "kind": "a rider and his horse",
+     "dress": "ru_guard_horse",
+     "old": 328,
+     "simple": 328,
+     "rich": 328,
+     "example": "rg_cav"
+    },
+    "a rider and his horse | ru_guard_hussar": {
+     "kind": "a rider and his horse",
+     "dress": "ru_guard_hussar",
+     "old": 300,
+     "simple": 300,
+     "rich": 300,
+     "example": "rg_cav"
+    }
+   },
+   "art": {
+    "deployed": {
+     "the vehicles": {
+      "old": 1536,
+      "simple": 1536,
+      "rich": 5640
+     },
+     "the team": {
+      "old": 2592,
+      "simple": 2592,
+      "rich": 2880
+     },
+     "the drivers": {
+      "old": 1008,
+      "simple": 1008,
+      "rich": 936
+     },
+     "gunners (figures)": {
+      "old": 5040,
+      "simple": 5040,
+      "rich": 6120
+     }
+    },
+    "limbered": {
+     "the vehicles": {
+      "old": 1536,
+      "simple": 1536,
+      "rich": 5640
+     },
+     "the team": {
+      "old": 2592,
+      "simple": 2592,
+      "rich": 2880
+     },
+     "the drivers": {
+      "old": 1008,
+      "simple": 1008,
+      "rich": 936
+     }
+    },
+    "battery": "heightguns",
+    "guns": 6
+   },
+   "hasLod": true,
+   "md5": "e80577e2e2ac815205bf8b1572e767bd"
+  }
+ },
+ "figures": [
+  {
+   "key": "a gunner | fr_foot_art",
+   "kind": "a gunner",
+   "dress": "fr_foot_art",
+   "before": 168,
+   "simple": 168,
+   "rich": 204,
+   "ratio": 1.214,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | at_grenz",
+   "kind": "a man on foot",
+   "dress": "at_grenz",
+   "before": 204,
+   "simple": 204,
+   "rich": 240,
+   "ratio": 1.176,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | at_jager",
+   "kind": "a man on foot",
+   "dress": "at_jager",
+   "before": 204,
+   "simple": 204,
+   "rich": 240,
+   "ratio": 1.176,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | at_line",
+   "kind": "a man on foot",
+   "dress": "at_line",
+   "before": 204,
+   "simple": 204,
+   "rich": 240,
+   "ratio": 1.176,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | fr_gren_light",
+   "kind": "a man on foot",
+   "dress": "fr_gren_light",
+   "before": 204,
+   "simple": 204,
+   "rich": 240,
+   "ratio": 1.176,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | fr_gren_line",
+   "kind": "a man on foot",
+   "dress": "fr_gren_line",
+   "before": 204,
+   "simple": 204,
+   "rich": 240,
+   "ratio": 1.176,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | fr_guard_chass",
+   "kind": "a man on foot",
+   "dress": "fr_guard_chass",
+   "before": 208,
+   "simple": 208,
+   "rich": 244,
+   "ratio": 1.173,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | fr_guard_gren",
+   "kind": "a man on foot",
+   "dress": "fr_guard_gren",
+   "before": 208,
+   "simple": 208,
+   "rich": 244,
+   "ratio": 1.173,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | fr_light",
+   "kind": "a man on foot",
+   "dress": "fr_light",
+   "before": 216,
+   "simple": 216,
+   "rich": 252,
+   "ratio": 1.167,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | fr_line",
+   "kind": "a man on foot",
+   "dress": "fr_line",
+   "before": 200,
+   "simple": 200,
+   "rich": 236,
+   "ratio": 1.18,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | it_guard",
+   "kind": "a man on foot",
+   "dress": "it_guard",
+   "before": 204,
+   "simple": 204,
+   "rich": 240,
+   "ratio": 1.176,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | ru_gren",
+   "kind": "a man on foot",
+   "dress": "ru_gren",
+   "before": 204,
+   "simple": 204,
+   "rich": 240,
+   "ratio": 1.176,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | ru_guard_inf",
+   "kind": "a man on foot",
+   "dress": "ru_guard_inf",
+   "before": 216,
+   "simple": 216,
+   "rich": 252,
+   "ratio": 1.167,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | ru_guard_jager",
+   "kind": "a man on foot",
+   "dress": "ru_guard_jager",
+   "before": 216,
+   "simple": 216,
+   "rich": 252,
+   "ratio": 1.167,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | ru_jager",
+   "kind": "a man on foot",
+   "dress": "ru_jager",
+   "before": 204,
+   "simple": 204,
+   "rich": 240,
+   "ratio": 1.176,
+   "simpleSame": true
+  },
+  {
+   "key": "a man on foot | ru_musk",
+   "kind": "a man on foot",
+   "dress": "ru_musk",
+   "before": 216,
+   "simple": 216,
+   "rich": 252,
+   "ratio": 1.167,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | at_chevauleger",
+   "kind": "a rider and his horse",
+   "dress": "at_chevauleger",
+   "before": 328,
+   "simple": 328,
+   "rich": 328,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | at_cuirassier",
+   "kind": "a rider and his horse",
+   "dress": "at_cuirassier",
+   "before": 340,
+   "simple": 340,
+   "rich": 340,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | at_hussar_hh",
+   "kind": "a rider and his horse",
+   "dress": "at_hussar_hh",
+   "before": 300,
+   "simple": 300,
+   "rich": 300,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | at_hussar_szekler",
+   "kind": "a rider and his horse",
+   "dress": "at_hussar_szekler",
+   "before": 300,
+   "simple": 300,
+   "rich": 300,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_carabinier",
+   "kind": "a rider and his horse",
+   "dress": "fr_carabinier",
+   "before": 288,
+   "simple": 288,
+   "rich": 288,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_cuirassier",
+   "kind": "a rider and his horse",
+   "dress": "fr_cuirassier",
+   "before": 352,
+   "simple": 352,
+   "rich": 352,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_dragoon",
+   "kind": "a rider and his horse",
+   "dress": "fr_dragoon",
+   "before": 340,
+   "simple": 340,
+   "rich": 340,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_guard_chasscav",
+   "kind": "a rider and his horse",
+   "dress": "fr_guard_chasscav",
+   "before": 288,
+   "simple": 288,
+   "rich": 288,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_guard_grencav",
+   "kind": "a rider and his horse",
+   "dress": "fr_guard_grencav",
+   "before": 292,
+   "simple": 292,
+   "rich": 292,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_hussar2",
+   "kind": "a rider and his horse",
+   "dress": "fr_hussar2",
+   "before": 300,
+   "simple": 300,
+   "rich": 300,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_hussar4",
+   "kind": "a rider and his horse",
+   "dress": "fr_hussar4",
+   "before": 300,
+   "simple": 300,
+   "rich": 300,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_hussar5",
+   "kind": "a rider and his horse",
+   "dress": "fr_hussar5",
+   "before": 300,
+   "simple": 300,
+   "rich": 300,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_mameluke",
+   "kind": "a rider and his horse",
+   "dress": "fr_mameluke",
+   "before": 327,
+   "simple": 327,
+   "rich": 327,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | fr_staff",
+   "kind": "a rider and his horse",
+   "dress": "fr_staff",
+   "before": 284,
+   "simple": 284,
+   "rich": 284,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | generic",
+   "kind": "a rider and his horse",
+   "dress": null,
+   "before": 288,
+   "simple": 288,
+   "rich": 288,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | ru_chevalier",
+   "kind": "a rider and his horse",
+   "dress": "ru_chevalier",
+   "before": 328,
+   "simple": 328,
+   "rich": 328,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | ru_cossack",
+   "kind": "a rider and his horse",
+   "dress": "ru_cossack",
+   "before": 292,
+   "simple": 292,
+   "rich": 292,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | ru_dragoon",
+   "kind": "a rider and his horse",
+   "dress": "ru_dragoon",
+   "before": 328,
+   "simple": 328,
+   "rich": 328,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | ru_guard_horse",
+   "kind": "a rider and his horse",
+   "dress": "ru_guard_horse",
+   "before": 328,
+   "simple": 328,
+   "rich": 328,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | ru_guard_hussar",
+   "kind": "a rider and his horse",
+   "dress": "ru_guard_hussar",
+   "before": 300,
+   "simple": 300,
+   "rich": 300,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | ru_hussar_elisavetgrad",
+   "kind": "a rider and his horse",
+   "dress": "ru_hussar_elisavetgrad",
+   "before": 300,
+   "simple": 300,
+   "rich": 300,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | ru_staff",
+   "kind": "a rider and his horse",
+   "dress": "ru_staff",
+   "before": 284,
+   "simple": 284,
+   "rich": 284,
+   "ratio": 1,
+   "simpleSame": true
+  },
+  {
+   "key": "a rider and his horse | ru_uhlan",
+   "kind": "a rider and his horse",
+   "dress": "ru_uhlan",
+   "before": 300,
+   "simple": 300,
+   "rich": 300,
+   "ratio": 1,
+   "simpleSame": true
+  }
+ ],
+ "worstByKind": {
+  "a gunner": {
+   "key": "a gunner | fr_foot_art",
+   "kind": "a gunner",
+   "dress": "fr_foot_art",
+   "before": 168,
+   "simple": 168,
+   "rich": 204,
+   "ratio": 1.214,
+   "simpleSame": true
+  },
+  "a man on foot": {
+   "key": "a man on foot | fr_line",
+   "kind": "a man on foot",
+   "dress": "fr_line",
+   "before": 200,
+   "simple": 200,
+   "rich": 236,
+   "ratio": 1.18,
+   "simpleSame": true
+  },
+  "a rider and his horse": {
+   "key": "a rider and his horse | at_chevauleger",
+   "kind": "a rider and his horse",
+   "dress": "at_chevauleger",
+   "before": 328,
+   "simple": 328,
+   "rich": 328,
+   "ratio": 1,
+   "simpleSame": true
+  }
+ },
+ "artillery": {
+  "battery": "heightguns",
+  "guns": {
+   "before": 6,
+   "after": 6
+  },
+  "deployed": {
+   "the vehicles": {
+    "before": 156,
+    "simple": 256,
+    "rich": 940
+   },
+   "gunners (figures)": {
+    "before": 840,
+    "simple": 840,
+    "rich": 1020
+   },
+   "the team": {
+    "before": 0,
+    "simple": 432,
+    "rich": 480
+   },
+   "the drivers": {
+    "before": 0,
+    "simple": 168,
+    "rich": 156
+   }
+  },
+  "limbered": {
+   "the vehicles": {
+    "before": 268,
+    "simple": 256,
+    "rich": 940
+   },
+   "the team": {
+    "before": 432,
+    "simple": 432,
+    "rich": 480
+   },
+   "the drivers": {
+    "before": 0,
+    "simple": 168,
+    "rich": 156
+   }
+  }
+ }
+}

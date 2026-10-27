@@ -1,0 +1,33 @@
+chromium 141.0.7390.37; builds 8D ae7f16b8cd2960c8813ff4155263830f, 8E ff3149adcee37a8846c7b4565caa7b2c
+still infantry 8D: {"clock":"09:00","rich":null,"lodPx":null,"amp":null} -> docs/stage8-evidence/8e/stills/infantry-8D.png
+still infantry 8E: {"clock":"09:00","rich":true,"lodPx":180.7,"amp":1} -> docs/stage8-evidence/8e/stills/infantry-8E.png
+  stacked (8D above, 8E below) -> docs/stage8-evidence/8e/stills/infantry.png
+still cavalry 8D: {"clock":"10:45","rich":null,"lodPx":null,"amp":null} -> docs/stage8-evidence/8e/stills/cavalry-8D.png
+still cavalry 8E: {"clock":"10:45","rich":true,"lodPx":93.8,"amp":1} -> docs/stage8-evidence/8e/stills/cavalry-8E.png
+  stacked (8D above, 8E below) -> docs/stage8-evidence/8e/stills/cavalry.png
+still artillery-deployed 8D: {"clock":"13:00","rich":null,"lodPx":null,"amp":null} -> docs/stage8-evidence/8e/stills/artillery-deployed-8D.png
+still artillery-deployed 8E: {"clock":"13:00","rich":true,"lodPx":168,"amp":0} -> docs/stage8-evidence/8e/stills/artillery-deployed-8E.png
+  stacked (8D above, 8E below) -> docs/stage8-evidence/8e/stills/artillery-deployed.png
+still artillery-limbered 8D: {"clock":"14:05","rich":null,"lodPx":null,"amp":null} -> docs/stage8-evidence/8e/stills/artillery-limbered-8D.png
+still artillery-limbered 8E: {"clock":"14:05","rich":true,"lodPx":214.8,"amp":1} -> docs/stage8-evidence/8e/stills/artillery-limbered-8E.png
+  stacked (8D above, 8E below) -> docs/stage8-evidence/8e/stills/artillery-limbered.png
+still lod-26 8E: {"clock":"09:00","rich":true,"lodPx":180.7,"amp":1} -> docs/stage8-evidence/8e/stills/lod-26.png
+still lod-110 8E: {"clock":"09:00","rich":true,"lodPx":22.9,"amp":1} -> docs/stage8-evidence/8e/stills/lod-110.png
+still lod-180 8E: {"clock":"09:00","rich":false,"lodPx":13.2,"amp":1} -> docs/stage8-evidence/8e/stills/lod-180.png
+still slope-10x 8E: {"clock":"09:00","rich":true,"lodPx":460,"amp":1} -> docs/stage8-evidence/8e/stills/slope-10x.png
+still phone 8E: {"clock":"09:00","rich":true,"lodPx":98.5,"amp":1} -> docs/stage8-evidence/8e/stills/phone.png
+clip infantry-half 8D: 31 frames in 115 s, from {"clock":"09:00","rich":null,"lodPx":null,"amp":null} to {"clock":"09:14","amp":null}; the amplitude along it      
+clip infantry-half 8E: 31 frames in 90 s, from {"clock":"09:00","rich":true,"lodPx":135.5,"amp":1} to {"clock":"09:14","amp":1,"rich":true}; the amplitude along it 1 1 1 1 1 1
+  -> docs/stage8-evidence/8e/clips/infantry-half.mp4 (8D above, 8E below): Saint-Hilaire's division marching up the Pratzen from 09:00 at Play's half speed, 3 s (the eye following it, 26 units off): the gait (8E) against the formation sliding (8D)
+clip cavalry-half 8E: 31 frames in 85 s, from {"clock":"10:45","rich":true,"lodPx":70.3,"amp":1} to {"clock":"10:59","amp":1,"rich":true}; the amplitude along it 1 1 1 1 1 1
+  -> docs/stage8-evidence/8e/clips/cavalry-half.mp4: the Guard's cavalry from 10:45 at half speed, 3 s, 30 units off
+clip artillery-half 8E: 31 frames in 85 s, from {"clock":"14:00","rich":true,"lodPx":161.1,"amp":1} to {"clock":"14:14","amp":1,"rich":true}; the amplitude along it 1 1 1 1 1 1
+  -> docs/stage8-evidence/8e/clips/artillery-half.mp4: the guns on the heights limbered and moving from 14:00 at half speed, 3 s, 22 units off: the teams' gait and the wheels turning with them
+clip speeds 8E: 61 frames in 171 s, from {"clock":"09:00","rich":true,"lodPx":63,"amp":1} to {"clock":"10:52","amp":0,"rich":true}; the amplitude along it 1 1 1 0.628 0.52 0.998 0.593 0.015 0 0 0 0
+  -> docs/stage8-evidence/8e/clips/speeds.mp4: the gait's fade with the speed: Saint-Hilaire's division from 09:00, 40 units off, 1.5 s each at half speed, 1x, 2x and 4x (its men's cycles a second on screen: full to 3.2, none from 4.8, eased between)
+clip pause 8E: 46 frames in 129 s, from {"clock":"09:00","rich":true,"lodPx":102,"amp":1} to {"clock":"09:14","amp":1,"rich":true}; the amplitude along it 1 1 1 1 1 1 1 1 1
+  -> docs/stage8-evidence/8e/clips/pause.mp4: Play at half speed, paused for 1.5 s (the pose held, no stepping), resumed: Saint-Hilaire's division from 09:00, 30 units off
+clip slope-10x 8E: 31 frames in 101 s, from {"clock":"09:00","rich":true,"lodPx":345,"amp":1} to {"clock":"09:14","amp":1,"rich":true}; the amplitude along it 1 1 1 1 1 1
+  -> docs/stage8-evidence/8e/clips/slope-10x.mp4: at 10.33x on the slope, from the side and low: Saint-Hilaire's division from 09:00 at half speed, 3 s
+clip phone-half 8E: 31 frames in 57 s, from {"clock":"09:00","rich":true,"lodPx":98.5,"amp":1} to {"clock":"09:14","amp":1,"rich":true}; the amplitude along it 1 1 1 1 1 1
+  -> docs/stage8-evidence/8e/clips/phone-half.mp4: a phone's page (390 x 844 at density 1): Saint-Hilaire's division from 09:00 at half speed, 3 s, 40 units off

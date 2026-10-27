@@ -1,0 +1,93 @@
+{
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the source as it is)",
+   "blockFails": false,
+   "ok": true,
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "nocullblock",
+   "what": "a block's meshes left without bounds (no cullBlock in buildFormations)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "buildFormations does not cull each block by its own bounds (cullBlock)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "hides",
+   "what": "culling by visible: a mesh with nothing to draw hidden",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "a mesh with no instance to draw is not culled",
+    "cullTest hides or shows an object (culling must leave visible alone: a shadow cast from outside the view)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "noversion",
+   "what": "the bounds not refreshed when the instance matrices change",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "cullStale does not compare the instances' version and count, the geometry, its position and part attributes (objects and versions) and the animation's definition (8E's prerequisite)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "sharedbounds",
+   "what": "a shared geometry's own bounds written",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "cullGeo writes or reads a geometry's own bounds (shared by every block of its class)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "appoff",
+   "what": "the app switching culling off (on a low tier)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "setCull called outside the self-test: function cullFrameStart(){ if(lowTier) setCull(false); var F=CULL.frame; F.test"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "nodepthhook",
+   "what": "the kit's depth material without the hook",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the hook is not on the kit's material and on its own depth material (the shadow casting the pose drawn)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "gaitset",
+   "what": "the app moving the gait (a uniform written outside the self-test)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the gait's uniforms written outside gaitStep (the knee outside kitLodSet) and the self-test: function cullFrameStart(){ CULL.meshes.forEach(function(m){ if(m.userData.anim) m.userData"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "lowtier",
+   "what": "lowTier's shadow setting changed",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "lowTier's density (1.0) or its shadow setting (none) changed (decision 236)"
+   ],
+   "exit": 1
+  }
+ ]
+}

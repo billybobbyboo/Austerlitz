@@ -1,0 +1,4666 @@
+{
+ "note": "one whole frame per view after the eye moved (culled, every pass, the depth drawn), software WebGL; the counts are what each build asks the GPU to draw, the same on any GPU at the same viewport",
+ "chromium": "141.0.7390.37",
+ "budgets": {
+  "desktop": {
+   "tris": 2800000,
+   "calls": 900
+  },
+  "phone": {
+   "tris": 1620000
+  }
+ },
+ "builds": {
+  "ae7f16b8cd2960c8813ff4155263830f": {
+   "file": "build-8d-ae7f16b8.html",
+   "md5": "ae7f16b8cd2960c8813ff4155263830f",
+   "bytes": 2403007,
+   "views": {
+    "overview-field": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 834,
+      "tris": 2691635,
+      "infoCalls": 834,
+      "infoTris": 2691635,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        289,
+        1042554
+       ],
+       "world": [
+        531,
+        1501976
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       585,
+       1266694
+      ],
+      "figByPass": {
+       "shadow": [
+        279,
+        633210
+       ],
+       "world": [
+        306,
+        633484
+       ]
+      }
+     }
+    },
+    "overview-field-1x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 197,
+      "tris": 385089,
+      "infoCalls": 197,
+      "infoTris": 385089,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        183,
+        237984
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "overview-field-10x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 834,
+      "tris": 2694943,
+      "infoCalls": 834,
+      "infoTris": 2694943,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        289,
+        1042554
+       ],
+       "world": [
+        531,
+        1505284
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       585,
+       1266694
+      ],
+      "figByPass": {
+       "shadow": [
+        279,
+        633210
+       ],
+       "world": [
+        306,
+        633484
+       ]
+      }
+     }
+    },
+    "overview-plan": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 834,
+      "tris": 2670755,
+      "infoCalls": 834,
+      "infoTris": 2670755,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        289,
+        1042554
+       ],
+       "world": [
+        531,
+        1481096
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       585,
+       1266694
+      ],
+      "figByPass": {
+       "shadow": [
+        279,
+        633210
+       ],
+       "world": [
+        306,
+        633484
+       ]
+      }
+     }
+    },
+    "close-sokolnitz": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 675,
+      "tris": 2433595,
+      "infoCalls": 675,
+      "infoTris": 2433595,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        275,
+        1019578
+       ],
+       "world": [
+        387,
+        1266914
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        4,
+        8
+       ]
+      },
+      "fig": [
+       450,
+       1016450
+      ],
+      "figByPass": {
+       "shadow": [
+        265,
+        610234
+       ],
+       "world": [
+        185,
+        406216
+       ]
+      }
+     }
+    },
+    "close-sokolnitz-1x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 181,
+      "tris": 385667,
+      "infoCalls": 181,
+      "infoTris": 385667,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        167,
+        238562
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "close-sokolnitz-10x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 603,
+      "tris": 2344939,
+      "infoCalls": 603,
+      "infoTris": 2344939,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        274,
+        1019482
+       ],
+       "world": [
+        317,
+        1178356
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       387,
+       930762
+      ],
+      "figByPass": {
+       "shadow": [
+        264,
+        610138
+       ],
+       "world": [
+        123,
+        320624
+       ]
+      }
+     }
+    },
+    "staff-paper": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 148,
+      "tris": 238701,
+      "infoCalls": 148,
+      "infoTris": 238701,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        136,
+        238684
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "pratzen-low": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 543,
+      "tris": 2211039,
+      "infoCalls": 543,
+      "infoTris": 2211039,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        239,
+        945020
+       ],
+       "world": [
+        293,
+        1118920
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       346,
+       816174
+      ],
+      "figByPass": {
+       "shadow": [
+        229,
+        535676
+       ],
+       "world": [
+        117,
+        280498
+       ]
+      }
+     }
+    },
+    "selected-formation": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 691,
+      "tris": 2490123,
+      "infoCalls": 691,
+      "infoTris": 2490123,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        289,
+        1042554
+       ],
+       "world": [
+        390,
+        1300468
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       509,
+       1093610
+      ],
+      "figByPass": {
+       "shadow": [
+        279,
+        633210
+       ],
+       "world": [
+        230,
+        460400
+       ]
+      }
+     }
+    },
+    "watch-selected": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 625,
+      "tris": 2407873,
+      "infoCalls": 625,
+      "infoTris": 2407873,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        279,
+        1025978
+       ],
+       "world": [
+        335,
+        1234796
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       447,
+       1013048
+      ],
+      "figByPass": {
+       "shadow": [
+        269,
+        616634
+       ],
+       "world": [
+        178,
+        396414
+       ]
+      }
+     }
+    },
+    "hybrid-dimmed": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 635,
+      "tris": 2449137,
+      "infoCalls": 635,
+      "infoTris": 2449137,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        274,
+        1019114
+       ],
+       "world": [
+        350,
+        1282924
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       457,
+       1050364
+      ],
+      "figByPass": {
+       "shadow": [
+        264,
+        609770
+       ],
+       "world": [
+        193,
+        440594
+       ]
+      }
+     }
+    },
+    "pratzen-low-1x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 162,
+      "tris": 374875,
+      "infoCalls": 162,
+      "infoTris": 374875,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        151,
+        227776
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "pratzen-low-10x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 580,
+      "tris": 2287993,
+      "infoCalls": 580,
+      "infoTris": 2287993,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        277,
+        1025942
+       ],
+       "world": [
+        292,
+        1114952
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       382,
+       892744
+      ],
+      "figByPass": {
+       "shadow": [
+        267,
+        616598
+       ],
+       "world": [
+        115,
+        276146
+       ]
+      }
+     }
+    },
+    "paper-north-up": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 156,
+      "tris": 240915,
+      "infoCalls": 156,
+      "infoTris": 240915,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        144,
+        240898
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "paper-close": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 103,
+      "tris": 203455,
+      "infoCalls": 103,
+      "infoTris": 203455,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        94,
+        203444
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "paper-drawer": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 110,
+      "tris": 226499,
+      "infoCalls": 110,
+      "infoTris": 226499,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        100,
+        226486
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "ph8-overview-study": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 811,
+      "tris": 2652781,
+      "infoCalls": 811,
+      "infoTris": 2652781,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1031954
+       ],
+       "world": [
+        516,
+        1473728
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1245494
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        622610
+       ],
+       "world": [
+        301,
+        622884
+       ]
+      }
+     }
+    },
+    "ph8-overview-watch": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 811,
+      "tris": 2650323,
+      "infoCalls": 811,
+      "infoTris": 2650323,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1031954
+       ],
+       "world": [
+        516,
+        1471270
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1245494
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        622610
+       ],
+       "world": [
+        301,
+        622884
+       ]
+      }
+     }
+    },
+    "ph8-overview-watch-1x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 183,
+      "tris": 383845,
+      "infoCalls": 183,
+      "infoTris": 383845,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        172,
+        236746
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "ph8-overview-watch-10x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 811,
+      "tris": 2652641,
+      "infoCalls": 811,
+      "infoTris": 2652641,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1031954
+       ],
+       "world": [
+        516,
+        1473588
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1245494
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        622610
+       ],
+       "world": [
+        301,
+        622884
+       ]
+      }
+     }
+    },
+    "eye-zuran": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 177,
+      "tris": 529595,
+      "infoCalls": 177,
+      "infoTris": 529595,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        27,
+        97048
+       ],
+       "world": [
+        139,
+        285448
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       45,
+       153308
+      ],
+      "figByPass": {
+       "shadow": [
+        27,
+        97048
+       ],
+       "world": [
+        18,
+        56260
+       ]
+      }
+     }
+    },
+    "eye-zuran-1x": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 129,
+      "tris": 374217,
+      "infoCalls": 129,
+      "infoTris": 374217,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        118,
+        227118
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "plans-overview": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 859,
+      "tris": 2676761,
+      "infoCalls": 859,
+      "infoTris": 2676761,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        289,
+        1042554
+       ],
+       "world": [
+        548,
+        1487086
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        13,
+        26
+       ]
+      },
+      "fig": [
+       585,
+       1266694
+      ],
+      "figByPass": {
+       "shadow": [
+        279,
+        633210
+       ],
+       "world": [
+        306,
+        633484
+       ]
+      }
+     }
+    },
+    "paper-laptop": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 156,
+      "tris": 240915,
+      "infoCalls": 156,
+      "infoTris": 240915,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        144,
+        240898
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     }
+    },
+    "narrow-1024": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 834,
+      "tris": 2698179,
+      "infoCalls": 834,
+      "infoTris": 2698179,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        289,
+        1042554
+       ],
+       "world": [
+        531,
+        1508520
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       585,
+       1266694
+      ],
+      "figByPass": {
+       "shadow": [
+        279,
+        633210
+       ],
+       "world": [
+        306,
+        633484
+       ]
+      }
+     }
+    },
+    "phone:overview-plan": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 545,
+      "tris": 1640415,
+      "infoCalls": 545,
+      "infoTris": 1640415,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        531,
+        1493310
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       306,
+       633484
+      ],
+      "figByPass": {
+       "world": [
+        306,
+        633484
+       ]
+      }
+     }
+    },
+    "phone:pratzen-low": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 223,
+      "tris": 1178497,
+      "infoCalls": 223,
+      "infoTris": 1178497,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        212,
+        1031398
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       66,
+       190246
+      ],
+      "figByPass": {
+       "world": [
+        66,
+        190246
+       ]
+      }
+     }
+    },
+    "phone:ph8-overview-watch": {
+     "hasCull": true,
+     "hasGait": false,
+     "drawn": {
+      "calls": 527,
+      "tris": 1631301,
+      "infoCalls": 527,
+      "infoTris": 1631301,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        516,
+        1484202
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       301,
+       622884
+      ],
+      "figByPass": {
+       "world": [
+        301,
+        622884
+       ]
+      }
+     }
+    }
+   }
+  },
+  "ff3149adcee37a8846c7b4565caa7b2c": {
+   "file": "austerlitz-command-map.html",
+   "md5": "ff3149adcee37a8846c7b4565caa7b2c",
+   "bytes": 2535729,
+   "views": {
+    "overview-field": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 830,
+      "tris": 2693909,
+      "infoCalls": 830,
+      "infoTris": 2693909,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        529,
+        1504346
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "animated": 16,
+     "still": {
+      "calls": 830,
+      "tris": 2693909,
+      "infoCalls": 830,
+      "infoTris": 2693909,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        529,
+        1504346
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "rich": 1,
+     "simple": 30
+    },
+    "overview-field-1x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 197,
+      "tris": 385089,
+      "infoCalls": 197,
+      "infoTris": 385089,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        183,
+        237984
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 16,
+     "still": {
+      "calls": 197,
+      "tris": 385089,
+      "infoCalls": 197,
+      "infoTris": 385089,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        183,
+        237984
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "overview-field-10x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 830,
+      "tris": 2697217,
+      "infoCalls": 830,
+      "infoTris": 2697217,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        529,
+        1507654
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "animated": 16,
+     "still": {
+      "calls": 830,
+      "tris": 2697217,
+      "infoCalls": 830,
+      "infoTris": 2697217,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        529,
+        1507654
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "rich": 1,
+     "simple": 30
+    },
+    "overview-plan": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 830,
+      "tris": 2673029,
+      "infoCalls": 830,
+      "infoTris": 2673029,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        529,
+        1483466
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "animated": 16,
+     "still": {
+      "calls": 830,
+      "tris": 2673029,
+      "infoCalls": 830,
+      "infoTris": 2673029,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        529,
+        1483466
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "rich": 0,
+     "simple": 31
+    },
+    "close-sokolnitz": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 692,
+      "tris": 2627505,
+      "infoCalls": 692,
+      "infoTris": 2627505,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        273,
+        1096378
+       ],
+       "world": [
+        406,
+        1384024
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        4,
+        8
+       ]
+      },
+      "fig": [
+       467,
+       1210352
+      ],
+      "figByPass": {
+       "shadow": [
+        263,
+        687034
+       ],
+       "world": [
+        204,
+        523318
+       ]
+      }
+     },
+     "animated": 12,
+     "still": {
+      "calls": 692,
+      "tris": 2627505,
+      "infoCalls": 692,
+      "infoTris": 2627505,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        273,
+        1096378
+       ],
+       "world": [
+        406,
+        1384024
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        4,
+        8
+       ]
+      },
+      "fig": [
+       467,
+       1210352
+      ],
+      "figByPass": {
+       "shadow": [
+        263,
+        687034
+       ],
+       "world": [
+        204,
+        523318
+       ]
+      }
+     },
+     "rich": 25,
+     "simple": 6
+    },
+    "close-sokolnitz-1x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 181,
+      "tris": 385667,
+      "infoCalls": 181,
+      "infoTris": 385667,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        167,
+        238562
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 12,
+     "still": {
+      "calls": 181,
+      "tris": 385667,
+      "infoCalls": 181,
+      "infoTris": 385667,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        167,
+        238562
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "close-sokolnitz-10x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 615,
+      "tris": 2524747,
+      "infoCalls": 615,
+      "infoTris": 2524747,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        272,
+        1096282
+       ],
+       "world": [
+        331,
+        1281364
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       399,
+       1110566
+      ],
+      "figByPass": {
+       "shadow": [
+        262,
+        686938
+       ],
+       "world": [
+        137,
+        423628
+       ]
+      }
+     },
+     "animated": 12,
+     "still": {
+      "calls": 615,
+      "tris": 2524747,
+      "infoCalls": 615,
+      "infoTris": 2524747,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        272,
+        1096282
+       ],
+       "world": [
+        331,
+        1281364
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       399,
+       1110566
+      ],
+      "figByPass": {
+       "shadow": [
+        262,
+        686938
+       ],
+       "world": [
+        137,
+        423628
+       ]
+      }
+     },
+     "rich": 19,
+     "simple": 12
+    },
+    "staff-paper": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 148,
+      "tris": 238701,
+      "infoCalls": 148,
+      "infoTris": 238701,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        136,
+        238684
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 12,
+     "still": {
+      "calls": 148,
+      "tris": 238701,
+      "infoCalls": 148,
+      "infoTris": 238701,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        136,
+        238684
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "pratzen-low": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 550,
+      "tris": 2315089,
+      "infoCalls": 550,
+      "infoTris": 2315089,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        243,
+        995204
+       ],
+       "world": [
+        296,
+        1172786
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       353,
+       920232
+      ],
+      "figByPass": {
+       "shadow": [
+        233,
+        585860
+       ],
+       "world": [
+        120,
+        334372
+       ]
+      }
+     },
+     "animated": 46,
+     "still": {
+      "calls": 550,
+      "tris": 2315089,
+      "infoCalls": 550,
+      "infoTris": 2315089,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        243,
+        995204
+       ],
+       "world": [
+        296,
+        1172786
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       353,
+       920232
+      ],
+      "figByPass": {
+       "shadow": [
+        233,
+        585860
+       ],
+       "world": [
+        120,
+        334372
+       ]
+      }
+     },
+     "rich": 14,
+     "simple": 17
+    },
+    "selected-formation": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 687,
+      "tris": 2624805,
+      "infoCalls": 687,
+      "infoTris": 2624805,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1112442
+       ],
+       "world": [
+        388,
+        1365262
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       505,
+       1228292
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        703098
+       ],
+       "world": [
+        228,
+        525194
+       ]
+      }
+     },
+     "animated": 16,
+     "still": {
+      "calls": 687,
+      "tris": 2624805,
+      "infoCalls": 687,
+      "infoTris": 2624805,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1112442
+       ],
+       "world": [
+        388,
+        1365262
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       505,
+       1228292
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        703098
+       ],
+       "world": [
+        228,
+        525194
+       ]
+      }
+     },
+     "rich": 22,
+     "simple": 9
+    },
+    "watch-selected": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 626,
+      "tris": 2535285,
+      "infoCalls": 626,
+      "infoTris": 2535285,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        277,
+        1086650
+       ],
+       "world": [
+        338,
+        1301536
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       448,
+       1140374
+      ],
+      "figByPass": {
+       "shadow": [
+        267,
+        677306
+       ],
+       "world": [
+        181,
+        463068
+       ]
+      }
+     },
+     "animated": 46,
+     "still": {
+      "calls": 626,
+      "tris": 2535285,
+      "infoCalls": 626,
+      "infoTris": 2535285,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        277,
+        1086650
+       ],
+       "world": [
+        338,
+        1301536
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       448,
+       1140374
+      ],
+      "figByPass": {
+       "shadow": [
+        267,
+        677306
+       ],
+       "world": [
+        181,
+        463068
+       ]
+      }
+     },
+     "rich": 21,
+     "simple": 10
+    },
+    "hybrid-dimmed": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 635,
+      "tris": 2565349,
+      "infoCalls": 635,
+      "infoTris": 2565349,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        274,
+        1085002
+       ],
+       "world": [
+        350,
+        1333248
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       457,
+       1166742
+      ],
+      "figByPass": {
+       "shadow": [
+        264,
+        675658
+       ],
+       "world": [
+        193,
+        491084
+       ]
+      }
+     },
+     "animated": 46,
+     "still": {
+      "calls": 635,
+      "tris": 2565349,
+      "infoCalls": 635,
+      "infoTris": 2565349,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        274,
+        1085002
+       ],
+       "world": [
+        350,
+        1333248
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       457,
+       1166742
+      ],
+      "figByPass": {
+       "shadow": [
+        264,
+        675658
+       ],
+       "world": [
+        193,
+        491084
+       ]
+      }
+     },
+     "rich": 16,
+     "simple": 15
+    },
+    "pratzen-low-1x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 162,
+      "tris": 374921,
+      "infoCalls": 162,
+      "infoTris": 374921,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        151,
+        227822
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 46,
+     "still": {
+      "calls": 162,
+      "tris": 374921,
+      "infoCalls": 162,
+      "infoTris": 374921,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        151,
+        227822
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "pratzen-low-10x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 581,
+      "tris": 2383473,
+      "infoCalls": 581,
+      "infoTris": 2383473,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        275,
+        1073078
+       ],
+       "world": [
+        295,
+        1163296
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       383,
+       988098
+      ],
+      "figByPass": {
+       "shadow": [
+        265,
+        663734
+       ],
+       "world": [
+        118,
+        324364
+       ]
+      }
+     },
+     "animated": 46,
+     "still": {
+      "calls": 581,
+      "tris": 2383473,
+      "infoCalls": 581,
+      "infoTris": 2383473,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        275,
+        1073078
+       ],
+       "world": [
+        295,
+        1163296
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       383,
+       988098
+      ],
+      "figByPass": {
+       "shadow": [
+        265,
+        663734
+       ],
+       "world": [
+        118,
+        324364
+       ]
+      }
+     },
+     "rich": 14,
+     "simple": 17
+    },
+    "paper-north-up": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 156,
+      "tris": 240915,
+      "infoCalls": 156,
+      "infoTris": 240915,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        144,
+        240898
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 46,
+     "still": {
+      "calls": 156,
+      "tris": 240915,
+      "infoCalls": 156,
+      "infoTris": 240915,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        144,
+        240898
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "paper-close": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 103,
+      "tris": 203431,
+      "infoCalls": 103,
+      "infoTris": 203431,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        94,
+        203420
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 46,
+     "still": {
+      "calls": 103,
+      "tris": 203431,
+      "infoCalls": 103,
+      "infoTris": 203431,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        94,
+        203420
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "paper-drawer": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 110,
+      "tris": 226499,
+      "infoCalls": 110,
+      "infoTris": 226499,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        100,
+        226486
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 46,
+     "still": {
+      "calls": 110,
+      "tris": 226499,
+      "infoCalls": 110,
+      "infoTris": 226499,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        100,
+        226486
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        3,
+        6
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "ph8-overview-study": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 811,
+      "tris": 2663411,
+      "infoCalls": 811,
+      "infoTris": 2663411,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1036058
+       ],
+       "world": [
+        516,
+        1480254
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1256168
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        626714
+       ],
+       "world": [
+        301,
+        629454
+       ]
+      }
+     },
+     "animated": 32,
+     "still": {
+      "calls": 811,
+      "tris": 2663411,
+      "infoCalls": 811,
+      "infoTris": 2663411,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1036058
+       ],
+       "world": [
+        516,
+        1480254
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1256168
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        626714
+       ],
+       "world": [
+        301,
+        629454
+       ]
+      }
+     },
+     "rich": 0,
+     "simple": 32
+    },
+    "ph8-overview-watch": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 811,
+      "tris": 2661025,
+      "infoCalls": 811,
+      "infoTris": 2661025,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1036058
+       ],
+       "world": [
+        516,
+        1477868
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1256168
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        626714
+       ],
+       "world": [
+        301,
+        629454
+       ]
+      }
+     },
+     "animated": 32,
+     "still": {
+      "calls": 811,
+      "tris": 2661025,
+      "infoCalls": 811,
+      "infoTris": 2661025,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1036058
+       ],
+       "world": [
+        516,
+        1477868
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1256168
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        626714
+       ],
+       "world": [
+        301,
+        629454
+       ]
+      }
+     },
+     "rich": 0,
+     "simple": 32
+    },
+    "ph8-overview-watch-1x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 183,
+      "tris": 383829,
+      "infoCalls": 183,
+      "infoTris": 383829,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        172,
+        236730
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 32,
+     "still": {
+      "calls": 183,
+      "tris": 383829,
+      "infoCalls": 183,
+      "infoTris": 383829,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        172,
+        236730
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "ph8-overview-watch-10x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 811,
+      "tris": 2663367,
+      "infoCalls": 811,
+      "infoTris": 2663367,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1036058
+       ],
+       "world": [
+        516,
+        1480210
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1256168
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        626714
+       ],
+       "world": [
+        301,
+        629454
+       ]
+      }
+     },
+     "animated": 32,
+     "still": {
+      "calls": 811,
+      "tris": 2663367,
+      "infoCalls": 811,
+      "infoTris": 2663367,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        284,
+        1036058
+       ],
+       "world": [
+        516,
+        1480210
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       575,
+       1256168
+      ],
+      "figByPass": {
+       "shadow": [
+        274,
+        626714
+       ],
+       "world": [
+        301,
+        629454
+       ]
+      }
+     },
+     "rich": 0,
+     "simple": 32
+    },
+    "eye-zuran": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 182,
+      "tris": 560783,
+      "infoCalls": 182,
+      "infoTris": 560783,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        27,
+        112600
+       ],
+       "world": [
+        144,
+        301084
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       50,
+       184544
+      ],
+      "figByPass": {
+       "shadow": [
+        27,
+        112600
+       ],
+       "world": [
+        23,
+        71944
+       ]
+      }
+     },
+     "animated": 32,
+     "still": {
+      "calls": 182,
+      "tris": 560783,
+      "infoCalls": 182,
+      "infoTris": 560783,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        27,
+        112600
+       ],
+       "world": [
+        144,
+        301084
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       50,
+       184544
+      ],
+      "figByPass": {
+       "shadow": [
+        27,
+        112600
+       ],
+       "world": [
+        23,
+        71944
+       ]
+      }
+     },
+     "rich": 4,
+     "simple": 1
+    },
+    "eye-zuran-1x": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 129,
+      "tris": 374193,
+      "infoCalls": 129,
+      "infoTris": 374193,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        118,
+        227094
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 32,
+     "still": {
+      "calls": 129,
+      "tris": 374193,
+      "infoCalls": 129,
+      "infoTris": 374193,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        118,
+        227094
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "plans-overview": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 855,
+      "tris": 2679035,
+      "infoCalls": 855,
+      "infoTris": 2679035,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        546,
+        1489456
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        13,
+        26
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "animated": 16,
+     "still": {
+      "calls": 855,
+      "tris": 2679035,
+      "infoCalls": 855,
+      "infoTris": 2679035,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        546,
+        1489456
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        13,
+        26
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "rich": 0,
+     "simple": 31
+    },
+    "paper-laptop": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 156,
+      "tris": 240915,
+      "infoCalls": 156,
+      "infoTris": 240915,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        144,
+        240898
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "animated": 0,
+     "still": {
+      "calls": 156,
+      "tris": 240915,
+      "infoCalls": 156,
+      "infoTris": 240915,
+      "reconciled": true,
+      "byPass": {
+       "world": [
+        144,
+        240898
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       0,
+       0
+      ],
+      "figByPass": {}
+     },
+     "rich": 0,
+     "simple": 0
+    },
+    "narrow-1024": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 830,
+      "tris": 2700453,
+      "infoCalls": 830,
+      "infoTris": 2700453,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        529,
+        1510890
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "animated": 16,
+     "still": {
+      "calls": 830,
+      "tris": 2700453,
+      "infoCalls": 830,
+      "infoTris": 2700453,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "shadow": [
+        287,
+        1042458
+       ],
+       "world": [
+        529,
+        1510890
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       581,
+       1268968
+      ],
+      "figByPass": {
+       "shadow": [
+        277,
+        633114
+       ],
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "rich": 0,
+     "simple": 31
+    },
+    "phone:overview-plan": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 543,
+      "tris": 1642785,
+      "infoCalls": 543,
+      "infoTris": 1642785,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        529,
+        1495680
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       304,
+       635854
+      ],
+      "figByPass": {
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "animated": 16,
+     "still": {
+      "calls": 543,
+      "tris": 1642785,
+      "infoCalls": 543,
+      "infoTris": 1642785,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        529,
+        1495680
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        5,
+        10
+       ]
+      },
+      "fig": [
+       304,
+       635854
+      ],
+      "figByPass": {
+       "world": [
+        304,
+        635854
+       ]
+      }
+     },
+     "rich": 0,
+     "simple": 31
+    },
+    "phone:pratzen-low": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 224,
+      "tris": 1214927,
+      "infoCalls": 224,
+      "infoTris": 1214927,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        213,
+        1067828
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       67,
+       226660
+      ],
+      "figByPass": {
+       "world": [
+        67,
+        226660
+       ]
+      }
+     },
+     "animated": 46,
+     "still": {
+      "calls": 224,
+      "tris": 1214927,
+      "infoCalls": 224,
+      "infoTris": 1214927,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        213,
+        1067828
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       67,
+       226660
+      ],
+      "figByPass": {
+       "world": [
+        67,
+        226660
+       ]
+      }
+     },
+     "rich": 8,
+     "simple": 23
+    },
+    "phone:ph8-overview-watch": {
+     "hasCull": true,
+     "hasGait": true,
+     "drawn": {
+      "calls": 527,
+      "tris": 1637881,
+      "infoCalls": 527,
+      "infoTris": 1637881,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        516,
+        1490782
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       301,
+       629454
+      ],
+      "figByPass": {
+       "world": [
+        301,
+        629454
+       ]
+      }
+     },
+     "animated": 32,
+     "still": {
+      "calls": 527,
+      "tris": 1637881,
+      "infoCalls": 527,
+      "infoTris": 1637881,
+      "reconciled": true,
+      "byPass": {
+       "depth": [
+        2,
+        147088
+       ],
+       "world": [
+        516,
+        1490782
+       ],
+       "post": [
+        7,
+        7
+       ],
+       "labels": [
+        2,
+        4
+       ]
+      },
+      "fig": [
+       301,
+       629454
+      ],
+      "figByPass": {
+       "world": [
+        301,
+        629454
+       ]
+      }
+     },
+     "rich": 0,
+     "simple": 32
+    }
+   }
+  }
+ },
+ "findings": [
+  "ae7f16b8 phone:overview-plan: over section 8.3's budget (545 calls, 1640415 triangles)",
+  "ae7f16b8 phone:ph8-overview-watch: over section 8.3's budget (527 calls, 1631301 triangles)",
+  "ff3149ad phone:overview-plan: over section 8.3's budget (543 calls, 1642785 triangles)",
+  "ff3149ad phone:ph8-overview-watch: over section 8.3's budget (527 calls, 1637881 triangles)"
+ ],
+ "compare": {
+  "base": "ae7f16b8cd2960c8813ff4155263830f",
+  "rows": [
+   {
+    "view": "overview-field",
+    "base": [
+     834,
+     2691635
+    ],
+    "build": [
+     830,
+     2693909
+    ],
+    "dCalls": -4,
+    "dTris": 2274,
+    "ratio": 1.0008,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      -96
+     ],
+     "world": [
+      -2,
+      2370
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     -4,
+     2274
+    ]
+   },
+   {
+    "view": "overview-field-1x",
+    "base": [
+     197,
+     385089
+    ],
+    "build": [
+     197,
+     385089
+    ],
+    "dCalls": 0,
+    "dTris": 0,
+    "ratio": 1,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "world": [
+      0,
+      0
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "overview-field-10x",
+    "base": [
+     834,
+     2694943
+    ],
+    "build": [
+     830,
+     2697217
+    ],
+    "dCalls": -4,
+    "dTris": 2274,
+    "ratio": 1.0008,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      -96
+     ],
+     "world": [
+      -2,
+      2370
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     -4,
+     2274
+    ]
+   },
+   {
+    "view": "overview-plan",
+    "base": [
+     834,
+     2670755
+    ],
+    "build": [
+     830,
+     2673029
+    ],
+    "dCalls": -4,
+    "dTris": 2274,
+    "ratio": 1.0009,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      -96
+     ],
+     "world": [
+      -2,
+      2370
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     -4,
+     2274
+    ]
+   },
+   {
+    "view": "close-sokolnitz",
+    "base": [
+     675,
+     2433595
+    ],
+    "build": [
+     692,
+     2627505
+    ],
+    "dCalls": 17,
+    "dTris": 193910,
+    "ratio": 1.0797,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      76800
+     ],
+     "world": [
+      19,
+      117110
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     17,
+     193902
+    ]
+   },
+   {
+    "view": "close-sokolnitz-1x",
+    "base": [
+     181,
+     385667
+    ],
+    "build": [
+     181,
+     385667
+    ],
+    "dCalls": 0,
+    "dTris": 0,
+    "ratio": 1,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "world": [
+      0,
+      0
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "close-sokolnitz-10x",
+    "base": [
+     603,
+     2344939
+    ],
+    "build": [
+     615,
+     2524747
+    ],
+    "dCalls": 12,
+    "dTris": 179808,
+    "ratio": 1.0767,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      76800
+     ],
+     "world": [
+      14,
+      103008
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     12,
+     179804
+    ]
+   },
+   {
+    "view": "staff-paper",
+    "base": [
+     148,
+     238701
+    ],
+    "build": [
+     148,
+     238701
+    ],
+    "dCalls": 0,
+    "dTris": 0,
+    "ratio": 1,
+    "passes": {
+     "world": [
+      0,
+      0
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "pratzen-low",
+    "base": [
+     543,
+     2211039
+    ],
+    "build": [
+     550,
+     2315089
+    ],
+    "dCalls": 7,
+    "dTris": 104050,
+    "ratio": 1.0471,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      4,
+      50184
+     ],
+     "world": [
+      3,
+      53866
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     7,
+     104058
+    ]
+   },
+   {
+    "view": "selected-formation",
+    "base": [
+     691,
+     2490123
+    ],
+    "build": [
+     687,
+     2624805
+    ],
+    "dCalls": -4,
+    "dTris": 134682,
+    "ratio": 1.0541,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      69888
+     ],
+     "world": [
+      -2,
+      64794
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     -4,
+     134682
+    ]
+   },
+   {
+    "view": "watch-selected",
+    "base": [
+     625,
+     2407873
+    ],
+    "build": [
+     626,
+     2535285
+    ],
+    "dCalls": 1,
+    "dTris": 127412,
+    "ratio": 1.0529,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      60672
+     ],
+     "world": [
+      3,
+      66740
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     1,
+     127326
+    ]
+   },
+   {
+    "view": "hybrid-dimmed",
+    "base": [
+     635,
+     2449137
+    ],
+    "build": [
+     635,
+     2565349
+    ],
+    "dCalls": 0,
+    "dTris": 116212,
+    "ratio": 1.0475,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      0,
+      65888
+     ],
+     "world": [
+      0,
+      50324
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     116378
+    ]
+   },
+   {
+    "view": "pratzen-low-1x",
+    "base": [
+     162,
+     374875
+    ],
+    "build": [
+     162,
+     374921
+    ],
+    "dCalls": 0,
+    "dTris": 46,
+    "ratio": 1.0001,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "world": [
+      0,
+      46
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "pratzen-low-10x",
+    "base": [
+     580,
+     2287993
+    ],
+    "build": [
+     581,
+     2383473
+    ],
+    "dCalls": 1,
+    "dTris": 95480,
+    "ratio": 1.0417,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      47136
+     ],
+     "world": [
+      3,
+      48344
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     1,
+     95354
+    ]
+   },
+   {
+    "view": "paper-north-up",
+    "base": [
+     156,
+     240915
+    ],
+    "build": [
+     156,
+     240915
+    ],
+    "dCalls": 0,
+    "dTris": 0,
+    "ratio": 1,
+    "passes": {
+     "world": [
+      0,
+      0
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "paper-close",
+    "base": [
+     103,
+     203455
+    ],
+    "build": [
+     103,
+     203431
+    ],
+    "dCalls": 0,
+    "dTris": -24,
+    "ratio": 0.9999,
+    "passes": {
+     "world": [
+      0,
+      -24
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "paper-drawer",
+    "base": [
+     110,
+     226499
+    ],
+    "build": [
+     110,
+     226499
+    ],
+    "dCalls": 0,
+    "dTris": 0,
+    "ratio": 1,
+    "passes": {
+     "world": [
+      0,
+      0
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "ph8-overview-study",
+    "base": [
+     811,
+     2652781
+    ],
+    "build": [
+     811,
+     2663411
+    ],
+    "dCalls": 0,
+    "dTris": 10630,
+    "ratio": 1.004,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      0,
+      4104
+     ],
+     "world": [
+      0,
+      6526
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     10674
+    ]
+   },
+   {
+    "view": "ph8-overview-watch",
+    "base": [
+     811,
+     2650323
+    ],
+    "build": [
+     811,
+     2661025
+    ],
+    "dCalls": 0,
+    "dTris": 10702,
+    "ratio": 1.004,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      0,
+      4104
+     ],
+     "world": [
+      0,
+      6598
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     10674
+    ]
+   },
+   {
+    "view": "ph8-overview-watch-1x",
+    "base": [
+     183,
+     383845
+    ],
+    "build": [
+     183,
+     383829
+    ],
+    "dCalls": 0,
+    "dTris": -16,
+    "ratio": 1,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "world": [
+      0,
+      -16
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "ph8-overview-watch-10x",
+    "base": [
+     811,
+     2652641
+    ],
+    "build": [
+     811,
+     2663367
+    ],
+    "dCalls": 0,
+    "dTris": 10726,
+    "ratio": 1.004,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      0,
+      4104
+     ],
+     "world": [
+      0,
+      6622
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     10674
+    ]
+   },
+   {
+    "view": "eye-zuran",
+    "base": [
+     177,
+     529595
+    ],
+    "build": [
+     182,
+     560783
+    ],
+    "dCalls": 5,
+    "dTris": 31188,
+    "ratio": 1.0589,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      0,
+      15552
+     ],
+     "world": [
+      5,
+      15636
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     5,
+     31236
+    ]
+   },
+   {
+    "view": "eye-zuran-1x",
+    "base": [
+     129,
+     374217
+    ],
+    "build": [
+     129,
+     374193
+    ],
+    "dCalls": 0,
+    "dTris": -24,
+    "ratio": 0.9999,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "world": [
+      0,
+      -24
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "plans-overview",
+    "base": [
+     859,
+     2676761
+    ],
+    "build": [
+     855,
+     2679035
+    ],
+    "dCalls": -4,
+    "dTris": 2274,
+    "ratio": 1.0008,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      -96
+     ],
+     "world": [
+      -2,
+      2370
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     -4,
+     2274
+    ]
+   },
+   {
+    "view": "paper-laptop",
+    "base": [
+     156,
+     240915
+    ],
+    "build": [
+     156,
+     240915
+    ],
+    "dCalls": 0,
+    "dTris": 0,
+    "ratio": 1,
+    "passes": {
+     "world": [
+      0,
+      0
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     0
+    ]
+   },
+   {
+    "view": "narrow-1024",
+    "base": [
+     834,
+     2698179
+    ],
+    "build": [
+     830,
+     2700453
+    ],
+    "dCalls": -4,
+    "dTris": 2274,
+    "ratio": 1.0008,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "shadow": [
+      -2,
+      -96
+     ],
+     "world": [
+      -2,
+      2370
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     -4,
+     2274
+    ]
+   },
+   {
+    "view": "phone:overview-plan",
+    "base": [
+     545,
+     1640415
+    ],
+    "build": [
+     543,
+     1642785
+    ],
+    "dCalls": -2,
+    "dTris": 2370,
+    "ratio": 1.0014,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "world": [
+      -2,
+      2370
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     -2,
+     2370
+    ]
+   },
+   {
+    "view": "phone:pratzen-low",
+    "base": [
+     223,
+     1178497
+    ],
+    "build": [
+     224,
+     1214927
+    ],
+    "dCalls": 1,
+    "dTris": 36430,
+    "ratio": 1.0309,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "world": [
+      1,
+      36430
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     1,
+     36414
+    ]
+   },
+   {
+    "view": "phone:ph8-overview-watch",
+    "base": [
+     527,
+     1631301
+    ],
+    "build": [
+     527,
+     1637881
+    ],
+    "dCalls": 0,
+    "dTris": 6580,
+    "ratio": 1.004,
+    "passes": {
+     "depth": [
+      0,
+      0
+     ],
+     "world": [
+      0,
+      6580
+     ],
+     "post": [
+      0,
+      0
+     ],
+     "labels": [
+      0,
+      0
+     ]
+    },
+    "figures": [
+     0,
+     6570
+    ]
+   }
+  ]
+ }
+}
