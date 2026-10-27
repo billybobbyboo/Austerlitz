@@ -1250,6 +1250,28 @@ try{
       if(CULL.total.refresh!==r0+1||Math.abs(tm.userData.cull.s.radius-260)>1e-9) bad.push("a moved instance did not refresh the bounds ("+JSON.stringify(tm.userData.cull.s)+")");
       tm.count=1; fr(cam).intersectsObject(tm); if(CULL.total.refresh!==r0+2||tm.userData.cull.s.radius!==0) bad.push("a count change did not refresh the bounds");
       tm.count=0; if(fr(cam).intersectsObject(tm)) bad.push("a mesh with no instance to draw not culled"); }
+    /* Stage 8, 8E's prerequisite (the audit of 8D): the bounds follow the geometry drawn and the animation's definition. The kit's leg (a box of
+       real three r128), every vertex part 10 (G1: the bob alone) or part 1 (G2: the swing about the hip); the oracle is the test's own, every
+       vertex animated at amp 1 over 64 phases by animAt, through the instance's matrix: after the geometry is swapped, swapped back, and the
+       definition changed by animDefine, each must lie inside the bounds the app's frustum test reads, and the envelope must be the geometry's */
+    { const leg=part=>{ const P=Array.from(new REAL.BoxGeometry(0.13,0.62,0.18).translate(-0.09,0.31,0).toNonIndexed().attributes.position.array);
+        const g=new REAL.BufferGeometry(); g.setAttribute("position",new REAL.Float32BufferAttribute(P,3)); g.setAttribute("aPart",new REAL.Float32BufferAttribute(new Array(P.length/3).fill(part),1)); return g; };
+      const G1=leg(10), G2=leg(1), tm=new THREE.InstancedMesh(G1,new THREE.MeshStandardMaterial({}),1), grp=new THREE.Group(), A=new THREE.Matrix4(), o=[0,0,0], V=new THREE.Vector3();
+      A.makeScale(4,4,4); tm.setMatrixAt(0,A); tm.instanceMatrix.needsUpdate=true; grp.add(tm); cullBlock(grp,"envelope test"); const ci=CULL.meshes.indexOf(tm); if(ci>=0) CULL.meshes.splice(ci,1);
+      grp.position.set(100,5,100); grp.updateMatrixWorld(true);
+      const cam=new REAL.PerspectiveCamera(50,16/9,0.5,5000); cam.position.set(100,35,40); cam.lookAt(100,5,100); cam.updateMatrixWorld(true);
+      const F2=new THREE.Frustum().setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,cam.matrixWorldInverse));
+      const beyond=()=>{ F2.intersectsObject(tm); const cl=tm.userData.cull, S2=new THREE.Sphere().copy(cl.s).applyMatrix4(tm.matrixWorld), P=tm.geometry.attributes.position.array, K=tm.geometry.attributes.aPart.array; let w=-1e9;
+        Mi.fromArray(tm.instanceMatrix.array,0);
+        for(let v=0;v<K.length;v++) for(let k=0;k<64;k++){ animAt(Math.round(K[v]),P[v*3],P[v*3+1],P[v*3+2],k/64*Math.PI*2,1,o); V.set(o[0],o[1],o[2]).applyMatrix4(Mi).applyMatrix4(tm.matrixWorld); w=Math.max(w,V.distanceTo(S2.center)-S2.radius); }
+        return w; };
+      const steps=[["drawn with G1",()=>{}],["given G2",()=>{ tm.geometry=G2; }],["back to G1",()=>{ tm.geometry=G1; }],
+        ["the definition changed",()=>{ const P5=JSON.parse(JSON.stringify(ANIM.PART)); P5[10].bob*=5; tm.userData.p0=ANIM.PART; animDefine(P5); }]];
+      steps.forEach(([k,f])=>{ f(); const w=beyond(); if(w>1e-6) bad.push("envelope, "+k+": an animated vertex "+w.toFixed(4)+" outside the bounds");
+        if(Math.abs(tm.userData.cull.env-animEnv(tm.geometry))>1e-12) bad.push("envelope, "+k+": the bounds' envelope "+tm.userData.cull.env+" is not its geometry's "+animEnv(tm.geometry)); });
+      if(tm.userData.p0) animDefine(tm.userData.p0);
+      const r0=CULL.total.refresh; F2.intersectsObject(tm); F2.intersectsObject(tm); if(CULL.total.refresh!==r0+1) bad.push("envelope: after the definition's restore the bounds refreshed "+(CULL.total.refresh-r0)+" times at two tests (want once)");
+      const r1=CULL.total.refresh; G1.attributes.aPart.needsUpdate=true; F2.intersectsObject(tm); if(CULL.total.refresh!==r1+1) bad.push("envelope: a part attribute's version moved and the bounds were not refreshed"); }
     /* another object: r128's own test (the geometry's sphere through its world matrix) */
     { const g=new THREE.Mesh({boundingSphere:new THREE.Sphere(new THREE.Vector3(0,0,0),1)},{}); g.updateMatrixWorld(); if(typeof F.intersectsObject(g)!=="boolean") bad.push("r128's own test not kept for another object"); }
     /* the hook's text */
@@ -1258,7 +1280,7 @@ try{
       if(vs.indexOf("#include <begin_vertex>\n"+ANIM.body)<0||vs.indexOf("#include <common>\n"+ANIM.decl)<0||vs.indexOf("#include <project_vertex>")<vs.indexOf(ANIM.body)) bad.push("the hook is not after begin_vertex and before the projection");
       if(sh.uniforms.uAnimAmp!==mt.userData.anim.uAnimAmp||!Object.keys(ATMO.u).every(k=>sh.uniforms[k]===ATMO.u[k])) bad.push("the hook does not give the mesh's uniforms and the atmosphere's"); }
     if(!nm||!nk||bad.length) throw new Error("culling and the hooks: "+(bad.length?bad.slice(0,5).join("; "):nm+" meshes, "+nk+" kit"));
-    console.log("culling and the hooks: "+nm+" instanced meshes on the blocks bounded and culled by their own bounds ("+held+" with instances, each held), "+nk+" kit meshes hooked on both materials at 0; a test mesh behind the eye culled and still visible, before it drawn, its bounds refreshed by a moved instance and a count, not otherwise, culled with none to draw; the hook after begin_vertex OK"); }
+    console.log("culling and the hooks: "+nm+" instanced meshes on the blocks bounded and culled by their own bounds ("+held+" with instances, each held), "+nk+" kit meshes hooked on both materials at 0; a test mesh behind the eye culled and still visible, before it drawn, its bounds refreshed by a moved instance and a count, not otherwise, culled with none to draw; since 8E's prerequisite the bounds following a geometry swapped (the leg's envelope 0.022 to 0.283 and back), a changed definition and a part attribute's version, every animated vertex (animAt, 64 phases) inside; the hook after begin_vertex OK"); }
 
   /* twelve atlas cells, the three photographs present, fields routed by crop */
   if(_atlasCanvas.height!==1536) throw new Error("atlas is not three rows of cells: "+_atlasCanvas.height);

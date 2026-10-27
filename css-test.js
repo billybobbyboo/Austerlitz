@@ -465,20 +465,29 @@ if(cerrs) process.exitCode=1;
   const a0=src.indexOf("  function selfTest(){"), st0=a0, st1=a0<0?-1:src.indexOf("\n  }\n",src.indexOf("/* 11. render on demand */",a0));
   const outsideST=re=>{ const out=[]; let m; const g=new RegExp(re.source,"g"); while((m=g.exec(src))) if(!(m.index>st0&&m.index<st1)) out.push(src.slice(Math.max(0,src.lastIndexOf("\n",m.index)+1),m.index+40).trim().slice(0,90)); return out; };
   if(st0<0||st1<0) cerr.push("the self-test's source not found (its bounds: \"  function selfTest(){\" to the end of its render-on-demand block)");
-  if(!/^var CULL=\{on:true, meshes:\[\], geo:\{\}/m.test(src)) cerr.push("CULL is not on by default");
+  if(!/^var CULL=\{on:true, meshes:\[\], geo:new WeakMap\(\)/m.test(src)) cerr.push("CULL is not on by default");
   const cb=fn("cullBlock")||"", ct=fn("cullTest")||"", cr=fn("cullRefresh")||"", cg=fn("cullGeo")||"", sc=fn("setCull")||"", am=fn("animMesh")||"", ah=fn("animHook")||"";
-  if(!/animMesh\(o\);\s*o\.userData\.cull=\{s:new THREE\.Sphere\(\), ver:-1, n:-1, g:null, env:animEnv\(o\.geometry\), id:id\};\s*o\.frustumCulled=CULL\.on; CULL\.meshes\.push\(o\);/.test(cb))
-    cerr.push("cullBlock does not give every instanced mesh its bounds (with the animation's envelope), its hook and frustumCulled from CULL.on");
+  if(!/animMesh\(o\);\s*o\.userData\.cull=\{s:new THREE\.Sphere\(\), ver:-1, n:-1, g:null, P:null, pv:-1, K:null, kv:-1, av:-1, env:0, id:id\};\s*o\.frustumCulled=CULL\.on; CULL\.meshes\.push\(o\);/.test(cb))
+    cerr.push("cullBlock does not give every instanced mesh its bounds (stale until first made), its hook and frustumCulled from CULL.on");
   if(!/cullBlock\(g,id\);/.test(fn("buildFormations")||"")) cerr.push("buildFormations does not cull each block by its own bounds (cullBlock)");
   if(!/F\.intersectsObject=function\(o\)\{ var cl=o\.userData&&o\.userData\.cull; return cl\?cullTest\(this,o,cl\):r128\.call\(this,o\); \};/.test(src))
     cerr.push("three's frustum test is not r128's own for every object without bounds of its own");
-  if(!/if\(cl\.ver!==o\.instanceMatrix\.version\|\|cl\.n!==o\.count\|\|cl\.g!==o\.geometry\) cullRefresh\(o,cl\);/.test(ct)) cerr.push("the bounds are not refreshed by the instance matrices' version, the count and the geometry");
-  if(!/cl\.ver=m\.instanceMatrix\.version; cl\.n=m\.count; cl\.g=m\.geometry;/.test(cr)) cerr.push("cullRefresh does not record what it was computed from");
+  if(!/if\(cullStale\(o,cl\)\) cullRefresh\(o,cl\);/.test(ct)) cerr.push("the bounds are not refreshed when stale (cullStale) at the test");
+  /* 8E's prerequisite (the audit of 8D): stale also when the geometry's position or part attribute (object, version) or the animation's
+     definition (ANIM.ver) differ from the ones the bounds were made from; the envelope read again at each refresh, keyed by what it is made from */
+  const cs=fn("cullStale")||"", ae=fn("animEnv")||"", ad=fn("animDefine")||"", ak=fn("animKey")||"";
+  if(!/if\(cl\.ver!==o\.instanceMatrix\.version\|\|cl\.n!==o\.count\|\|cl\.g!==o\.geometry\|\|cl\.av!==ANIM\.ver\) return true;/.test(cs)||!/return cl\.P!==Pa\|\|cl\.pv!==Pa\.version\|\|cl\.K!==K\|\|cl\.kv!==\(K\?K\.version:-1\);/.test(cs))
+    cerr.push("cullStale does not compare the instances' version and count, the geometry, its position and part attributes (objects and versions) and the animation's definition (8E's prerequisite)");
+  if(!/cl\.env=animEnv\(g\);/.test(cr)) cerr.push("cullRefresh does not read the envelope of the geometry drawn at each refresh (8E's prerequisite: cullBlock read it once)");
+  if(!/cl\.ver=m\.instanceMatrix\.version; cl\.n=m\.count; cl\.g=g;\s*cl\.P=Pa; cl\.pv=Pa\.version; cl\.K=K; cl\.kv=K\?K\.version:-1; cl\.av=ANIM\.ver;/.test(cr)) cerr.push("cullRefresh does not record what it was computed from");
+  if(!/if\(c&&c\.av===ANIM\.ver&&c\.P===Pa&&c\.pv===Pa\.version&&c\.kv===K\.version\) return c\.e;/.test(ae)) cerr.push("animEnv's cache is not keyed by its attributes' objects and versions and the animation's definition (8E's prerequisite)");
+  if(!/ANIM\.PART=part; ANIM\.ver\+\+; ANIM\.body=animGLSL\(\);/.test(ad)) cerr.push("animDefine does not move the animation's definition's version with its table");
+  if(!/return "ANIM "\+ANIM\.ver;/.test(ak)||!/m\.material\.customProgramCacheKey=animKey;/.test(am)||!/d\.customProgramCacheKey=animKey;/.test(am)) cerr.push("the kit's programs are not keyed by the animation's definition (a changed table would draw with the old program)");
   if(!/if\(cl\.n<=0\)\{ CULL\.frame\.culled\+\+; return false; \}/.test(ct)) cerr.push("a mesh with no instance to draw is not culled");
-  [["cullBlock",cb],["cullTest",ct],["cullRefresh",cr],["cullGeo",cg],["setCull",sc]].forEach(([n,t])=>{ if(!t) cerr.push(n+" missing");
+  [["cullBlock",cb],["cullTest",ct],["cullRefresh",cr],["cullGeo",cg],["cullStale",fn("cullStale")||""],["setCull",sc]].forEach(([n,t])=>{ if(!t) cerr.push(n+" missing");
     if(/boundingSphere|computeBounding|boundingBox/.test(t)) cerr.push(n+" writes or reads a geometry's own bounds (shared by every block of its class)");
     if(/\.visible\s*=/.test(t)) cerr.push(n+" hides or shows an object (culling must leave visible alone: a shadow cast from outside the view)"); });
-  if(!/var s=CULL\.geo\[g\.uuid\]; if\(s\) return s;/.test(cg)) cerr.push("a geometry's sphere is not read once into CULL.geo");
+  if(!/var Pa=g\.attributes\.position, s=CULL\.geo\.get\(Pa\); if\(s&&s\.pv===Pa\.version\) return s;/.test(cg)) cerr.push("a geometry's sphere is not read once into CULL.geo for its position attribute (again when its version moves)");
   const sw=outsideST(/setCull\(/).filter(x=>!/^function setCull\(on\)/.test(x)); if(sw.length) cerr.push("setCull called outside the self-test: "+sw.join(" | "));
   const co=outsideST(/CULL\.on\s*=[^=]/).filter(x=>!/^function setCull\(on\)/.test(x)); if(co.length) cerr.push("CULL.on written outside setCull and the self-test: "+co.join(" | "));
   const uw=outsideST(/uAnim(Amp|Phase)\.value\s*=[^=]/); if(uw.length) cerr.push("the gait's uniforms written outside the self-test (nothing moves in 8D): "+uw.join(" | "));
@@ -491,7 +500,7 @@ if(cerrs) process.exitCode=1;
   if(!/renderer\.info\.reset\(\); cullFrameStart\(\);/.test(fn("renderFrameNow")||"")) cerr.push("the frame's culling counts are not reset with renderer.info");
   if(!/return Math\.min\(window\.devicePixelRatio\|\|1, lowTier\?1:2\);/.test(src)||!/sun\.castShadow=!lowTier;/.test(src)) cerr.push("lowTier's density (1.0) or its shadow setting (none) changed (decision 236)");
   cerr.forEach(e=>console.log("  ! "+e));
-  console.log("culling and the hooks (decisions 249 (a), 244 (a), 250 (b)): "+(cerr.length?cerr.length+" wrong":"every block's instanced meshes culled by their own bounds, refreshed by version, count and geometry, the shared geometries' bounds untouched, nothing hidden, r128's test for the rest; culling and the gait's uniforms switched only by the self-test; the hook after begin_vertex on the kit's material and its depth material, inert at amplitude 0; lowTier as decision 236"));
+  console.log("culling and the hooks (decisions 249 (a), 244 (a), 250 (b)): "+(cerr.length?cerr.length+" wrong":"every block's instanced meshes culled by their own bounds, refreshed by version, count, geometry, its attributes and the animation's definition (the envelope read again at each refresh), the shared geometries' bounds untouched, nothing hidden, r128's test for the rest; culling and the gait's uniforms switched only by the self-test; the hook after begin_vertex on the kit's material and its depth material, inert at amplitude 0; lowTier as decision 236"));
   if(cerr.length) process.exitCode=1;
 }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by

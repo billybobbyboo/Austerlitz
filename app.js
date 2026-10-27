@@ -928,28 +928,43 @@ function kitPart(geo,p,s,rot,col,part){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot
    holds the musket, which is drawn with his body), 10 the rest of a man; 5-8 a horse's legs (left fore, right fore, left hind, right hind: the
    walk's four beats), 11 the rest of a horse; 12 a rider (he rises with his horse; his legs are along it). animEnv(g) (kept in ANIM.env): the largest
    displacement any vertex of geometry g can take for any phase and any amp in [0, 1] (the chord of its largest swing about its joint, plus its
-   bob): the envelope the culling bounds are widened by (CULL), so that 8E's gait never needs them changed */
+   bob): the envelope the culling bounds are widened by (CULL).
+   Since 8E's prerequisite (the audit of 8D: cullBlock read the envelope once, so a mesh given another geometry kept the first one's, and an
+   animated vertex could leave its bounds): the envelope is cached per geometry and keyed by what it is computed from, the geometry's position
+   and part attributes (the objects and their versions) and the animation's definition (ANIM.ver, which animDefine moves whenever the table
+   changes); the culling bounds are refreshed whenever any of these differ from the ones they were computed from (cullTest) */
 var ANIM={PART:{
   1:{A:0.42, off:0,    py:0.62, pz:0,     bob:0.022},   2:{A:0.42, off:0.5,  py:0.62, pz:0,     bob:0.022},
   3:{A:0.30, off:0.5,  py:1.10, pz:0.02,  bob:0.022},  10:{A:0,    off:0,    py:0,    pz:0,     bob:0.022},
   5:{A:0.38, off:0.25, py:0.62, pz:0.40,  bob:0.025},   6:{A:0.38, off:0.75, py:0.62, pz:0.40,  bob:0.025},
   7:{A:0.38, off:0,    py:0.62, pz:-0.40, bob:0.025},   8:{A:0.38, off:0.5,  py:0.62, pz:-0.40, bob:0.025},
  11:{A:0,    off:0,    py:0,    pz:0,     bob:0.025},  12:{A:0,    off:0,    py:0,    pz:0,     bob:0.025}},
-  env:{}, built:0, depth:0};
+  env:new WeakMap(), ver:0, built:0, depth:0};
 /* where a vertex of part k stands at a phase and amp (the hook's arithmetic in JavaScript: the self-test's controlled check reads it) */
 function animAt(k,x,y,z,ph,amp,out){
   out=out||[0,0,0]; var p=ANIM.PART[k]; if(!p||!(amp>0)){ out[0]=x; out[1]=y; out[2]=z; return out; }
   amp=Math.min(1,amp); var a=amp*p.A*Math.sin(ph+6.2831853*p.off), c=Math.cos(a), s=Math.sin(a), yy=y-p.py, zz=z-p.pz;
   out[0]=x; out[1]=p.py+yy*c-zz*s+amp*p.bob*Math.abs(Math.sin(ph)); out[2]=p.pz+yy*s+zz*c; return out;
 }
-/* the envelope of a geometry (kit units; 0 without parts), once per geometry */
+/* the envelope of a geometry (kit units; 0 without parts): computed once for what it is computed from (its position and part attributes, as
+   objects and versions, and the animation's definition, ANIM.ver), again whenever one of them changes. Keyed by the part attribute itself, so
+   geometries that share their attributes share it */
 function animEnv(g){
-  if(!g||!g.attributes||!g.attributes.aPart) return 0;
-  if(ANIM.env[g.uuid]!==undefined) return ANIM.env[g.uuid];
-  var P=g.attributes.position.array, K=g.attributes.aPart.array, e=0;
-  for(var i=0;i<K.length;i++){ var p=ANIM.PART[Math.round(K[i])]; if(!p) continue;
+  var K=g&&g.attributes&&g.attributes.aPart; if(!K) return 0;
+  var Pa=g.attributes.position, c=ANIM.env.get(K);
+  if(c&&c.av===ANIM.ver&&c.P===Pa&&c.pv===Pa.version&&c.kv===K.version) return c.e;
+  var P=Pa.array, KA=K.array, e=0;
+  for(var i=0;i<KA.length;i++){ var p=ANIM.PART[Math.round(KA[i])]; if(!p) continue;
     var r=Math.hypot(P[i*3+1]-p.py,P[i*3+2]-p.pz); e=Math.max(e,2*r*Math.sin(p.A/2)+p.bob); }
-  return (ANIM.env[g.uuid]=e);
+  ANIM.env.set(K,{e:e, av:ANIM.ver, P:Pa, pv:Pa.version, kv:K.version});
+  return e;
+}
+/* the animation's definition changed (its table: a joint, an angle, an offset, a bob): the envelopes and every bound computed from them are
+   out of date (ANIM.ver), and the kit's programs are built again from the new table (their cache key carries ANIM.ver) */
+function animDefine(part){
+  ANIM.PART=part; ANIM.ver++; ANIM.body=animGLSL();
+  CULL.meshes.forEach(function(m){ if(!m.userData.anim) return; m.material.needsUpdate=true; if(m.customDepthMaterial) m.customDepthMaterial.needsUpdate=true; });
+  requestRender(2);
 }
 /* merges parts into one geometry with vertex colours; colour undefined = white (takes the instance colour). Since 8D each vertex also carries
    its part (aPart: the part's own, else def) */
@@ -1540,12 +1555,15 @@ function animHook(sh){
   sh.vertexShader=v.replace("#include <common>","#include <common>\n"+ANIM.decl).replace("#include <begin_vertex>","#include <begin_vertex>\n"+ANIM.body);
   if(this.isMeshDepthMaterial) ANIM.depth++; else ANIM.built++;
 }
+/* the kit's programs' cache key: one program for every kit material and one for every kit depth material, as one hook gives them, built again
+   when the animation's definition changes (animDefine) */
+function animKey(){ return "ANIM "+ANIM.ver; }
 /* a kit mesh (its geometry has parts): the hook on its material and on its own depth material, sharing the mesh's uniforms */
 function animMesh(m){
   if(!m.geometry||!m.geometry.attributes||!m.geometry.attributes.aPart||!m.material) return false;
   var U={uAnimPhase:{value:0}, uAnimAmp:{value:0}};
-  m.userData.anim=U; m.material.userData.anim=U; m.material.onBeforeCompile=animHook;
-  var d=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}); d.userData.anim=U; d.onBeforeCompile=animHook;
+  m.userData.anim=U; m.material.userData.anim=U; m.material.onBeforeCompile=animHook; m.material.customProgramCacheKey=animKey;
+  var d=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}); d.userData.anim=U; d.onBeforeCompile=animHook; d.customProgramCacheKey=animKey;
   m.customDepthMaterial=d; return true;
 }
 /* ---- Stage 8, implementation PR 8D (decision 249 (a); docs/STAGE8_SPEC.md sections 8.4, 10 and 16): the figure blocks culled by their own
@@ -1565,26 +1583,31 @@ function animMesh(m){
      limbers), when its count changes (showBattalions, stdCount) or its geometry; so whoever renders, whenever, the test reads current bounds,
      and an idle block costs one compare (CULL.frame counts the tests, the culled, the refreshes, their instances and time);
    - the shared geometries' own bounds are never written (the kit's and the gear's geometries are shared by every block of their class): each
-     geometry's sphere is read once into CULL.geo;
+     geometry's sphere is read once into CULL.geo (since 8E's prerequisite keyed by its position attribute, again if that attribute's version
+     moves), and its animation's envelope from animEnv;
+   - since 8E's prerequisite (the audit of 8D) the bounds are also refreshed when the mesh's geometry, that geometry's position or part
+     attribute (object or version) or the animation's definition (ANIM.ver) differ from the ones they were computed from, and the envelope is
+     read again at each refresh: before, cullBlock read it once, so a mesh given a geometry with a larger envelope kept the smaller one;
    - a mesh with no instance to draw (a count of 0: a cloth whose standards are not shown) is culled: before 8D three issued no draw call for
      it (none for no instances) but set its program and buffers up in every pass;
    - nothing else reads it: visible, the selection, the map layer, the dossiers, the history and the simulation are untouched, and the checks
      that read the blocks (the figures' seating, 6C, 6D) read every block, drawn or not.
    CULL.on false (setCull; a measurement switch, as CONF.none: the app never sets it) draws every block in both passes, as before 8D */
-var CULL={on:true, meshes:[], geo:{}, tmp:new Float32Array(1024), frame:{tests:0, culled:0, refresh:0, inst:0, ms:0}, total:{refresh:0, inst:0, ms:0}};
+var CULL={on:true, meshes:[], geo:new WeakMap(), tmp:new Float32Array(1024), frame:{tests:0, culled:0, refresh:0, inst:0, ms:0}, total:{refresh:0, inst:0, ms:0}};
 var _cullS=THREE.Sphere?new THREE.Sphere():null;
-/* a geometry's own sphere (its box's centre, its farthest vertex), read once */
+/* a geometry's own sphere (its box's centre, its farthest vertex), read once for its position attribute (again if that attribute's version moves) */
 function cullGeo(g){
-  var s=CULL.geo[g.uuid]; if(s) return s;
-  var A=g.attributes.position.array, n=A.length/3, lo=[1e30,1e30,1e30], hi=[-1e30,-1e30,-1e30], i, k;
+  var Pa=g.attributes.position, s=CULL.geo.get(Pa); if(s&&s.pv===Pa.version) return s;
+  var A=Pa.array, n=A.length/3, lo=[1e30,1e30,1e30], hi=[-1e30,-1e30,-1e30], i, k;
   for(i=0;i<n;i++) for(k=0;k<3;k++){ var v=A[i*3+k]; if(v<lo[k]) lo[k]=v; if(v>hi[k]) hi[k]=v; }
   var c=[(lo[0]+hi[0])/2,(lo[1]+hi[1])/2,(lo[2]+hi[2])/2], r2=0;
   for(i=0;i<n;i++){ var dx=A[i*3]-c[0], dy=A[i*3+1]-c[1], dz=A[i*3+2]-c[2]; r2=Math.max(r2,dx*dx+dy*dy+dz*dz); }
-  return (CULL.geo[g.uuid]={c:c, r:Math.sqrt(r2)});
+  s={c:c, r:Math.sqrt(r2), pv:Pa.version}; CULL.geo.set(Pa,s); return s;
 }
-/* the mesh's sphere over its first count instances, in the mesh's frame */
+/* the mesh's sphere over its first count instances, in the mesh's frame, widened by its geometry's envelope as it is now (animEnv) */
 function cullRefresh(m,cl){
-  var t0=performance.now(), G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), gx=G.c[0], gy=G.c[1], gz=G.c[2], rr=G.r+cl.env;
+  var t0=performance.now(), g=m.geometry, Pa=g.attributes.position, K=g.attributes.aPart||null; cl.env=animEnv(g);
+  var G=cullGeo(g), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), gx=G.c[0], gy=G.c[1], gz=G.c[2], rr=G.r+cl.env;
   if(CULL.tmp.length<n*4) CULL.tmp=new Float32Array(n*8);
   var X=CULL.tmp, lx=1e30, ly=1e30, lz=1e30, hx=-1e30, hy=-1e30, hz=-1e30, i;
   for(i=0;i<n;i++){ var o=i*16, e0=A[o], e1=A[o+1], e2=A[o+2], e4=A[o+4], e5=A[o+5], e6=A[o+6], e8=A[o+8], e9=A[o+9], e10=A[o+10];
@@ -1595,12 +1618,20 @@ function cullRefresh(m,cl){
   var cx=(lx+hx)/2, cy=(ly+hy)/2, cz=(lz+hz)/2, R=0;
   for(i=0;i<n;i++){ var d=Math.sqrt((X[i*4]-cx)*(X[i*4]-cx)+(X[i*4+1]-cy)*(X[i*4+1]-cy)+(X[i*4+2]-cz)*(X[i*4+2]-cz))+X[i*4+3]; if(d>R) R=d; }
   if(n>0) cl.s.center.set(cx,cy,cz); else cl.s.center.set(0,0,0);
-  cl.s.radius=n>0?R:-1; cl.ver=m.instanceMatrix.version; cl.n=m.count; cl.g=m.geometry;
+  cl.s.radius=n>0?R:-1; cl.ver=m.instanceMatrix.version; cl.n=m.count; cl.g=g;
+  cl.P=Pa; cl.pv=Pa.version; cl.K=K; cl.kv=K?K.version:-1; cl.av=ANIM.ver;
   var dt=performance.now()-t0; CULL.frame.refresh++; CULL.frame.inst+=n; CULL.frame.ms+=dt; CULL.total.refresh++; CULL.total.inst+=n; CULL.total.ms+=dt;
 }
-/* three's frustum test for a mesh with its own bounds: refreshed if its instances changed, then its sphere through its world matrix */
+/* the bounds out of date: the instances (their matrices' version, their count) or what the sphere and the envelope are computed from (the
+   geometry, its position and part attributes as objects and versions, the animation's definition) differ from the ones they were made from */
+function cullStale(o,cl){
+  if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count||cl.g!==o.geometry||cl.av!==ANIM.ver) return true;
+  var at=o.geometry.attributes, Pa=at.position, K=at.aPart||null;
+  return cl.P!==Pa||cl.pv!==Pa.version||cl.K!==K||cl.kv!==(K?K.version:-1);
+}
+/* three's frustum test for a mesh with its own bounds: refreshed if stale, then its sphere through its world matrix */
 function cullTest(fr,o,cl){
-  if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count||cl.g!==o.geometry) cullRefresh(o,cl);
+  if(cullStale(o,cl)) cullRefresh(o,cl);
   CULL.frame.tests++;
   if(cl.n<=0){ CULL.frame.culled++; return false; }
   _cullS.copy(cl.s).applyMatrix4(o.matrixWorld);
@@ -1614,7 +1645,7 @@ function cullTest(fr,o,cl){
 function cullBlock(g,id){
   if(!_cullS) return;
   g.traverse(function(o){ if(!o.isInstancedMesh) return; animMesh(o);
-    o.userData.cull={s:new THREE.Sphere(), ver:-1, n:-1, g:null, env:animEnv(o.geometry), id:id};
+    o.userData.cull={s:new THREE.Sphere(), ver:-1, n:-1, g:null, P:null, pv:-1, K:null, kv:-1, av:-1, env:0, id:id};
     o.frustumCulled=CULL.on; CULL.meshes.push(o); });
 }
 function setCull(on){ CULL.on=!!on; CULL.meshes.forEach(function(m){ m.frustumCulled=CULL.on; }); requestRender(2); }
@@ -11792,8 +11823,15 @@ var AUSTERLITZ_DEBUG=(function(){
       function grab(){ renderFrame(); var w=gl.drawingBufferWidth, h=gl.drawingBufferHeight, b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
       function diff(a,b){ if(!a||!b||a.length!==b.length) return -1; var n=0; for(var i=0;i<a.length;i+=4) if(a[i]!==b[i]||a[i+1]!==b[i+1]||a[i+2]!==b[i+2]) n++; return n; }
       function frEye(){ camera.updateMatrixWorld(); return eyeF.setFromProjectionMatrix(M4.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse)); }
-      /* each instance's own sphere in the world (its geometry's, through its matrix and the mesh's, widened by the envelope) */
-      function eachInst(m,cb){ var G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), env=m.userData.cull.env, ms=m.matrixWorld.getMaxScaleOnAxis();
+      /* the test's own envelope of a geometry (since 8E's prerequisite, the audit of 8D: not the one the bounds were made with): the largest
+         displacement of any vertex animated at amp 1 over 64 phases by animAt, the hook's arithmetic */
+      var envT=new Map(), eo8=[0,0,0];
+      function envO(g){ var K=g.attributes.aPart; if(!K) return 0; var key=g.uuid+"|"+ANIM.ver+"|"+g.attributes.position.version+"|"+K.version; if(envT.has(key)) return envT.get(key);
+        var P=g.attributes.position.array, KA=K.array, e=0; for(var v=0;v<KA.length;v++) for(var k=0;k<64;k++){ animAt(Math.round(KA[v]),P[v*3],P[v*3+1],P[v*3+2],k/64*Math.PI*2,1,eo8);
+          var d=Math.hypot(eo8[0]-P[v*3],eo8[1]-P[v*3+1],eo8[2]-P[v*3+2]); if(d>e) e=d; }
+        envT.set(key,e); return e; }
+      /* each instance's own sphere in the world (its geometry's, through its matrix and the mesh's, widened by the envelope: the test's own) */
+      function eachInst(m,cb){ var G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), env=envO(m.geometry), ms=m.matrixWorld.getMaxScaleOnAxis();
         for(var i=0;i<n;i++){ Mi.fromArray(A,i*16); S1.center.set(G.c[0],G.c[1],G.c[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); S1.radius=(G.r+env)*Mi.getMaxScaleOnAxis()*ms; if(cb(i,S1)) return true; } return false; }
       function worldS(m){ var cl=m.userData.cull; return S0.copy(cl.s).applyMatrix4(m.matrixWorld); }
       /* the app's own answer for the eye (through three's frustum test, which refreshes stale bounds) */
@@ -11816,16 +11854,19 @@ var AUSTERLITZ_DEBUG=(function(){
           var tag=" (at "+fmtFactor(fct)+"×)";
           setDisplayFactor(fct); at(570,"terrain","watch"); settle(24,true);
           /* (a) the bounds hold every instance, and the vertices of its first, middle and last instance in the world */
-          var aBad=[], aN=0, aV=0, F0=frEye();
+          var aBad=[], aN=0, aV=0, aA=0, F0=frEye();
           CULL.meshes.forEach(function(m){ drawsFor(F0,m); var cl=m.userData.cull; if(cl.n<=0) return; aN++;
             if(cl.ver!==m.instanceMatrix.version||cl.n!==m.count) aBad.push(cl.id+": its bounds not refreshed");
             var S=worldS(m), R=S.radius*(1+1e-6)+1e-5;
             eachInst(m,function(i,s){ if(S.center.distanceTo(s.center)+s.radius>R){ aBad.push(cl.id+" instance "+i+" outside by "+(S.center.distanceTo(s.center)+s.radius-S.radius).toExponential(2)); return true; } return false; });
-            var P=m.geometry.attributes.position, n=Math.min(m.count,m.instanceMatrix.array.length/16);
+            var P=m.geometry.attributes.position, K=m.geometry.attributes.aPart, n=Math.min(m.count,m.instanceMatrix.array.length/16), ao=[0,0,0];
             [0,Math.floor(n/2),n-1].forEach(function(i){ Mi.fromArray(m.instanceMatrix.array,i*16);
-              for(var v=0;v<P.count;v++){ V0.fromBufferAttribute(P,v).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); aV++; if(V0.distanceTo(S.center)>R){ aBad.push(cl.id+" a vertex of instance "+i+" outside"); break; } } }); });
-          ck("culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geometry's, through its matrix, widened by the animation's envelope) and every vertex of its first, middle and last instance inside the mesh's bounds"+tag,
-            aN>0&&!aBad.length, aN+" meshes with instances of "+CULL.meshes.length+" ("+CULL.meshes.filter(function(m){ return !!m.userData.anim; }).length+" with the kit's parts), "+aV+" vertices in the world"+(aBad.length?"; WRONG: "+aBad.slice(0,4).join("; "):""));
+              for(var v=0;v<P.count;v++){ V0.fromBufferAttribute(P,v).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); aV++; if(V0.distanceTo(S.center)>R){ aBad.push(cl.id+" a vertex of instance "+i+" outside"); break; } }
+              /* since 8E's prerequisite: the same vertices animated (animAt at amp 1, eight phases: the test's own oracle, not the cached envelope) */
+              if(K) for(var v2=0;v2<P.count;v2++){ for(var ph=0;ph<8;ph++){ animAt(Math.round(K.array[v2]),P.array[v2*3],P.array[v2*3+1],P.array[v2*3+2],ph/8*Math.PI*2,1,ao);
+                V0.set(ao[0],ao[1],ao[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); aA++; if(V0.distanceTo(S.center)>R){ aBad.push(cl.id+" an animated vertex of instance "+i+" outside"); v2=P.count; break; } } } }); });
+          ck("culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geometry's, through its matrix, widened by the animation's envelope) and every vertex of its first, middle and last instance inside the mesh's bounds, at rest and animated (since 8E's prerequisite)"+tag,
+            aN>0&&!aBad.length, aN+" meshes with instances of "+CULL.meshes.length+" ("+CULL.meshes.filter(function(m){ return !!m.userData.anim; }).length+" with the kit's parts), "+aV+" vertices in the world, "+aA+" animated positions"+(aBad.length?"; WRONG: "+aBad.slice(0,4).join("; "):""));
           /* (b) the sweep: a mesh culled only when none of its instances is in the eye's frustum; a block whose centre is out of view with figures in it drawn */
           var bBad=[], views=0, culled=0, tested=0, offC=0, ids=sweepAims();
           function judge(label){ var F=frEye(); views++;
@@ -11978,6 +12019,84 @@ var AUSTERLITZ_DEBUG=(function(){
         if(envBad) fBad.push(envBad+" vertex positions outside their geometry's envelope");
         ck("animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the depth material's hook the shadow stays the rest pose's), and no vertex of the kit leaves its geometry's envelope, which the culling bounds hold",
           !fBad.length, fT+"; "+envN+" vertex positions over a cycle at amp 1 within the envelope"+(fBad.length?"; WRONG: "+fBad.join("; "):""));
+        /* (h) Stage 8, 8E's prerequisite (the audit of 8D: cullBlock read the envelope once, so a mesh given a geometry with a larger envelope kept
+           the smaller one, and an animated vertex left its bounds): the bounds follow the geometry drawn and the animation's definition. A mesh of
+           the test's own, the kit's leg (kitFootFixed's box, scaled up so that it covers pixels), bounded and hooked as cullBlock does a block's,
+           is drawn with G1 (every vertex part 10: the bob alone, envelope 0.022) and then G2 (every vertex part 1, the leg's swing: 0.283), then G1
+           again, then under a changed definition (animDefine: part 10's bob five times), then G3 (every vertex part 3, the arm's swing about the
+           shoulder, whose joint stands above the leg's box: 0.352), then G1 with its part attribute rewritten in place to part 3 and back. The oracle is the test's own, not the envelope: every vertex,
+           animated at amp 1 over 64 phases by animAt (the hook's arithmetic in JavaScript), through the mesh's matrices; after each change it must lie
+           inside the bounds three's test reads. And at the boundaries: the mesh is placed, by a search along the eye's frustum's right axis, where G1's
+           bounds lie outside the eye's frustum but G3's swing reaches into it (and likewise along the sun's box; the leg's own swing, G2, stays inside
+           the slack of its box's sphere at any tangent placement, so it cannot make a boundary); there the app must draw it in that
+           pass, the frame (the mesh alone drawn, the rest of the scene hidden) and the sun's depth map must be what culling off draws, and the mesh
+           must cover pixels (texels) there, so that a culled mesh would show */
+        var hBad=[], hT=[], hHid=[], hMesh=null, hGrp=null, hP0=ANIM.PART, hKeepAmp=null;
+        function hLeg(part){ var P=Array.prototype.slice.call(new THREE.BoxGeometry(0.13,0.62,0.18).translate(-0.09,0.31,0).toNonIndexed().attributes.position.array), g=new THREE.BufferGeometry();
+          g.setAttribute("position",new THREE.Float32BufferAttribute(P,3)); g.setAttribute("aPart",new THREE.Float32BufferAttribute(P.filter(function(_,i){ return i%3===0; }).map(function(){ return part; }),1));
+          g.computeVertexNormals(); return g; }
+        /* the animated vertices of the test's mesh in the world, at amp 1 over 64 phases (the oracle); cb(point) true stops */
+        function hEach(m,cb){ var P=m.geometry.attributes.position.array, K=m.geometry.attributes.aPart.array, o=[0,0,0], V=new THREE.Vector3(); Mi.fromArray(m.instanceMatrix.array,0);
+          for(var v=0;v<K.length;v++) for(var k=0;k<64;k++){ animAt(Math.round(K[v]),P[v*3],P[v*3+1],P[v*3+2],k/64*Math.PI*2,1,o); V.set(o[0],o[1],o[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); if(cb(V)) return true; } return false; }
+        function hHolds(m,label){ var F=frEye(); F.intersectsObject(m); var S=worldS(m), worst=-1e9; hEach(m,function(V){ worst=Math.max(worst,V.distanceTo(S.center)-S.radius); return false; });
+          hT.push(label+": envelope "+m.userData.cull.env.toFixed(3)+", the farthest animated vertex "+(worst>0?worst.toFixed(4)+" beyond":(-worst).toFixed(4)+" inside")+" the bounds"); if(worst>1e-5) hBad.push(label+": an animated vertex "+worst.toFixed(4)+" outside the bounds"); }
+        try{
+          at(LOW.t,"terrain","watch"); settle(24,true); aim(LOW.map,LOW.dir,LOW.r); settle(4,true);
+          var G1=hLeg(10), G2=hLeg(1), G3=hLeg(3), sc=6;
+          hMesh=new THREE.InstancedMesh(G1,matte({color:0xFFFFFF,vertexColors:false,flatShading:true}),1); hMesh.castShadow=true; hGrp=new THREE.Group(); hGrp.add(hMesh); scene.add(hGrp);
+          cullBlock(hGrp,"test (h)"); var hi=CULL.meshes.indexOf(hMesh); if(hi>=0) CULL.meshes.splice(hi,1);   /* bounded and hooked as a block's mesh; not one of the app's */
+          hMesh.userData.anim.uAnimAmp.value=1; hMesh.userData.anim.uAnimPhase.value=0;
+          /* the leg turned so that its swing (about its own x axis) carries it along the axis searched */
+          function hPlace(P,axis){ var q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),axis.clone().setY(0).normalize()); Mi.compose(new THREE.Vector3(0,0,0),q,new THREE.Vector3(sc,sc,sc));
+            hMesh.setMatrixAt(0,Mi); hMesh.instanceMatrix.needsUpdate=true; hGrp.position.copy(P); hGrp.updateMatrixWorld(true); }
+          /* 1-4: the geometry swapped and back, and the definition changed, each held by the oracle */
+          var c0=orbitTarget.clone(); c0.y=groundY(c0.x,c0.z); var rt=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0);
+          hPlace(c0,rt); hHolds(hMesh,"drawn with G1"); hMesh.geometry=G2; hHolds(hMesh,"given G2");
+          if(Math.abs(hMesh.userData.cull.env-animEnv(G2))>1e-9) hBad.push("given G2, the bounds' envelope "+hMesh.userData.cull.env+" is not G2's "+animEnv(G2));
+          hMesh.geometry=G1; hHolds(hMesh,"back to G1"); if(Math.abs(hMesh.userData.cull.env-animEnv(G1))>1e-9) hBad.push("back to G1, the envelope stays "+hMesh.userData.cull.env);
+          var P5=JSON.parse(JSON.stringify(hP0)); P5[10].bob=hP0[10].bob*5; animDefine(P5); hHolds(hMesh,"the definition changed (part 10's bob x5)"); animDefine(hP0);
+          hMesh.material.needsUpdate=true; hMesh.customDepthMaterial.needsUpdate=true;   /* not one of CULL.meshes: built again from the table restored */
+          hMesh.geometry=G3; hHolds(hMesh,"given G3"); if(Math.abs(hMesh.userData.cull.env-animEnv(G3))>1e-9) hBad.push("given G3, the bounds' envelope "+hMesh.userData.cull.env+" is not G3's "+animEnv(G3));
+          /* the same geometry object, its part attribute rewritten in place (G1's every vertex given part 3: its version moves, as a rewritten attribute's must) */
+          hMesh.geometry=G1; hHolds(hMesh,"G1 again"); var K1=G1.attributes.aPart; for(var kq=0;kq<K1.count;kq++) K1.array[kq]=3; K1.needsUpdate=true;
+          hHolds(hMesh,"G1's parts rewritten in place"); if(Math.abs(hMesh.userData.cull.env-animEnv(G3))>1e-9) hBad.push("G1's parts rewritten in place, the bounds' envelope "+hMesh.userData.cull.env+" is not its parts' "+animEnv(G3));
+          for(kq=0;kq<K1.count;kq++) K1.array[kq]=10; K1.needsUpdate=true; hHolds(hMesh,"G1's parts restored");
+          /* 5-6: the boundaries. For a frustum F and its right axis: the offset at which G1's bounds have just left F while G3's swing (at a quarter or
+             three quarters of its cycle, whichever reaches in) still has a vertex inside it, by bisection between the target (inside) and far outside */
+          function hBoundary(F,axis,origin,label){ var lo=0, hi2=400, inside=function(x){ hPlace(origin.clone().addScaledVector(axis,x),axis); hMesh.geometry=G1; F.intersectsObject(hMesh); return F.intersectsSphere(worldS(hMesh)); };
+            while(inside(hi2)&&hi2<20000) hi2*=2;
+            if(!inside(lo)||inside(hi2)){ hT.push(label+": the search's ends "+(inside(lo)?"":"its start out of the frustum ")+(inside(hi2)?"still inside at "+hi2+" units":"")); return null; }
+            for(var k=0;k<40;k++){ var mid=(lo+hi2)/2; if(inside(mid)) lo=mid; else hi2=mid; }
+            var x=hi2+0.05; hPlace(origin.clone().addScaledVector(axis,x),axis); hMesh.geometry=G1; F.intersectsObject(hMesh); if(F.intersectsSphere(worldS(hMesh))) return null;
+            hMesh.geometry=G3; var best=null;
+            [Math.PI/2,3*Math.PI/2].forEach(function(ph){ if(best) return; hMesh.userData.anim.uAnimPhase.value=ph; var Pt=hMesh.geometry.attributes.position.array, K=hMesh.geometry.attributes.aPart.array, o=[0,0,0], V=new THREE.Vector3(), n=0;
+              Mi.fromArray(hMesh.instanceMatrix.array,0); for(var v=0;v<K.length;v++){ animAt(Math.round(K[v]),Pt[v*3],Pt[v*3+1],Pt[v*3+2],ph,1,o); V.set(o[0],o[1],o[2]).applyMatrix4(Mi).applyMatrix4(hMesh.matrixWorld); if(F.containsPoint(V)) n++; }
+              if(n) best={ph:ph,n:n}; });
+            hT.push(label+": G1's bounds "+x.toFixed(2)+" units out along the axis, "+(best?best.n+" of G3's vertices inside at phase "+best.ph.toFixed(2):"no vertex of G3 inside: no boundary")); return best; }
+          function hAlone(fn){ scene.children.forEach(function(o){ if(o!==hGrp&&o.visible&&!o.isLight){ o.visible=false; hHid.push(o); } }); try{ return fn(); } finally{ hHid.forEach(function(o){ o.visible=true; }); hHid=[]; } }
+          var Fe=frEye(), be=hBoundary(Fe,rt,c0,"the eye's frustum");
+          if(!be) hBad.push("no boundary placement found for the eye's frustum");
+          else hAlone(function(){ var P0p=passes(); if(!P0p.W.has(hMesh)) hBad.push("at the eye's boundary G3's swing reaches into the view and the mesh is not drawn in the world pass");
+            var A=grab(); setCull(false); hMesh.frustumCulled=false; var B=grab(); setCull(true); hMesh.frustumCulled=true; var A2=grab(); var dAB=diff(A,B), dAA=diff(A,A2);
+            hMesh.visible=false; var E=grab(); hMesh.visible=true; var dAE=diff(A,E);
+            hT.push("at the eye's boundary: the mesh alone, culled against not "+dAB+" pixels, drawn again "+dAA+", the mesh covers "+dAE+" pixels");
+            if(dAB!==0||dAA!==0) hBad.push("at the eye's boundary the frame differs from the frame without culling ("+dAB+" pixels)"); if(!(dAE>0)) hBad.push("at the eye's boundary the mesh covers no pixel: the placement proves nothing"); });
+          if(sun.castShadow&&renderer.shadowMap.enabled){
+            /* from the view's target (the sun's box is fitted to the ground the view shows, placeLights), along the light's own right axis */
+            renderFrame(); var Fs=sun.shadow.getFrustum(), srt=new THREE.Vector3().setFromMatrixColumn(sun.shadow.camera.matrixWorld,0);
+            var bs=hBoundary(Fs,srt,c0,"the sun's box");
+            if(!bs) hBad.push("no boundary placement found for the sun's box");
+            else hAlone(function(){ var map=sun.shadow.map, w=map.width, h=map.height; function sread(){ renderFrame(); var b=new Uint8Array(w*h*4); renderer.readRenderTargetPixels(map,0,0,w,h,b); return b; }
+              var P0s=passes(); if(!P0s.S.has(hMesh)) hBad.push("at the sun's boundary G3's swing reaches into the sun's box and the mesh is not drawn in the shadow pass");
+              var A=sread(); setCull(false); hMesh.frustumCulled=false; var B=sread(); setCull(true); hMesh.frustumCulled=true; var A2=sread(); var dAB=diff(A,B), dAA=diff(A,A2);
+              hMesh.visible=false; var E=sread(); hMesh.visible=true; var dAE=diff(A,E);
+              hT.push("at the sun's boundary: the depth map culled against not "+dAB+" texels, drawn again "+dAA+", the mesh casts "+dAE+" texels");
+              if(dAB!==0||dAA!==0) hBad.push("at the sun's boundary the depth map differs from the one without culling ("+dAB+" texels)"); if(!(dAE>0)) hBad.push("at the sun's boundary the mesh casts no texel: the placement proves nothing"); }); }
+          else hT.push("no shadow map on this tier (decision 236): the sun's boundary not exercised");
+        } catch(err){ hBad.push("threw: "+err.message);
+        } finally { if(ANIM.PART!==hP0) animDefine(hP0); hHid.forEach(function(o){ o.visible=true; }); if(hGrp){ scene.remove(hGrp); hMesh.material.dispose(); hMesh.customDepthMaterial.dispose(); G1.dispose(); G2.dispose(); G3.dispose(); } setCull(true); }
+        ck("culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definition: a mesh given a geometry with another envelope, given its first back, and drawn under a changed definition holds every animated vertex (the test's own oracle: animAt over 64 phases), and at the eye's frustum and the sun's box, where only the swing reaches in, it is drawn in that pass and the frame and the depth map are culling off's",
+          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.join("; "):""));
       } catch(err){ ck("culling and the hooks (decision 249): the checks ran", false, "threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
       } finally {
         setCull(keep8.on); hid8.forEach(function(o){ o.visible=true; }); CULL.meshes.forEach(function(m){ var U=m.userData.anim; if(U){ U.uAnimAmp.value=0; U.uAnimPhase.value=0; } });
