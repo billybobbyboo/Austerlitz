@@ -1,0 +1,87 @@
+build austerlitz-command-map.html md5 87578ebce0e414a4c8b308d88f7abc03; two runs (2026-10-26T01:59:55.081Z, 2026-10-26T03:13:27.879Z), {"platform":"linux","arch":"x64","chromium":"141.0.7390.37","playwright":"1.56.0","executable":"playwright"}; --bounds keep
+case                drop limit  measured  proposed   unobstructed baseline  measured            proposed
+first-run                   12         5        12   0.626/0.507            0.6256/0.5069       0.625/0.506
+opening-1                    8         8         8   0.632/0.516            0.6322/0.5173       0.632/0.516
+opening-2                    7         7         7   0.639/0.529            0.64/0.5294         0.639/0.529
+opening-3                    3         2         3   0.639/0.529            0.64/0.5294         0.639/0.529
+opening-4                    4         3         4   0.639/0.529            0.64/0.5294         0.639/0.529
+opening-end                  7         7         7   0.703/0.628            0.7038/0.6291       0.703/0.628
+opening-1-laptop            10        10        10   0.516/0.516            0.5173/0.5173       0.516/0.516
+phone-390-first              9         9         9   0.591/                 0.5919/             0.591/
+phone-390-explore            2         2         2   0.652/                 0.6529/             0.652/
+phone-390-dossier            1         1         1   0.315/                 0.3151/             0.315/
+phone-390-watch              2         2         2   0.817/                 0.8171/             0.817/
+phone-390-layers             0         0         0   0.31/                  0.3106/             0.31/
+phone-360-explore            3         3         3   0.625/                 0.625/              0.625/
+phone-430-explore            2         2         2   0.685/                 0.6853/             0.685/
+phone-844x390-explore         3         3         3   0.69/                  0.6879/             0.687/
+phone-402x714-explore         2         2         2   0.585/                 0.5852/             0.585/
+phone-390-paper             17        17        17   0.652/                 0.6529/             0.652/
+first-run-laptop            16         5        16   0.546/0.507            0.5461/0.5069       0.546/0.506
+overview-field              11         9        11   0.703/0.628            0.7038/0.6291       0.703/0.628
+overview-plan               12         5        12   0.897/0.872            0.8978/0.8722       0.897/0.872
+close-sokolnitz             18         2        18   0.897/0.872            0.8978/0.8722       0.897/0.872
+staff-paper                 13         5        13   0.703/0.628            0.7038/0.6291       0.703/0.628
+pratzen-low                 13         4        13   0.897/0.872            0.8978/0.8722       0.897/0.872
+pratzen-orbit-min           27         1        27   0.897/0.872            0.8978/0.8722       0.897/0.872
+selected-formation           4         4         4   0.703/0.628            0.7038/0.6291       0.703/0.628
+watch-selected               8         4         8   0.879/0.833            0.88/0.8333         0.879/0.833
+hybrid-dimmed               13        10        13   0.881/0.847            0.882/0.8476        0.881/0.847
+pratzen-low-1x              12         4        12   0.897/0.872            0.8978/0.8722       0.897/0.872
+pratzen-low-10x              8         3         8   0.897/0.872            0.8978/0.8722       0.897/0.872
+paper-north-up              20        11        20   0.703/0.628            0.7038/0.6291       0.703/0.628
+paper-close                  2         1         2   0.703/0.628            0.7038/0.6291       0.703/0.628
+paper-drawer                 5         1         5   0.703/0.628            0.7038/0.6291       0.703/0.628
+paper-laptop                21        12        21   0.628/0.628            0.6291/0.6291       0.628/0.628
+narrow-1024                  8         8         8   0.533/0.628            0.5321/0.6291       0.532/0.628
+ph8-overview-study           7         4         7   0.703/0.628            0.7038/0.6291       0.703/0.628
+ph8-overview-watch           7         3         7   0.897/0.872            0.8978/0.8722       0.897/0.872
+eye-zuran                    6         5         6   0.897/0.872            0.8978/0.8722       0.897/0.872
+eye-zuran-1x                 6         5         6   0.897/0.872            0.8978/0.8722       0.897/0.872
+plans-overview              12        12        12   0.703/0.628            0.7038/0.6291       0.703/0.628
+  note: opening-1: the 3B/3C convention would raise the 1280 x 720 baseline 0.516 to 0.517 (not under --bounds keep; decision 121: never raised)
+  note: opening-2: the 3B/3C convention would raise the case viewport baseline 0.639 to 0.64 (not under --bounds keep; decision 121: never raised)
+  note: opening-3: the 3B/3C convention would raise the case viewport baseline 0.639 to 0.64 (not under --bounds keep; decision 121: never raised)
+  note: opening-4: the 3B/3C convention would raise the case viewport baseline 0.639 to 0.64 (not under --bounds keep; decision 121: never raised)
+  note: opening-end: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep; decision 121: never raised)
+  note: opening-1-laptop: the 3B/3C convention would raise the case viewport baseline 0.516 to 0.517 (not under --bounds keep; decision 121: never raised)
+  note: opening-1-laptop: the 3B/3C convention would raise the 1280 x 720 baseline 0.516 to 0.517 (not under --bounds keep; decision 121: never raised)
+  note: overview-field: the case drops 5, the live views held to its limit 9: the measure is 9
+  note: overview-field: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: staff-paper: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: pratzen-low: the case drops 4, the live views held to its limit 3, 3: the measure is 4
+  note: selected-formation: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: watch-selected: the 3B/3C convention would raise the case viewport baseline 0.879 to 0.88 (not under --bounds keep)
+  note: hybrid-dimmed: the 3B/3C convention would raise the case viewport baseline 0.881 to 0.882 (not under --bounds keep)
+  note: paper-north-up: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: paper-close: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: paper-drawer: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: paper-laptop: the 3B/3C convention would raise the case viewport baseline 0.628 to 0.629 (not under --bounds keep)
+  note: paper-laptop: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: narrow-1024: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: ph8-overview-study: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+  note: plans-overview: the 3B/3C convention would raise the 1280 x 720 baseline 0.628 to 0.629 (not under --bounds keep)
+TIMELINE_MAX 92 (Stage 3C spec; not re-measured): the tallest held view 92 px; recorded, not held:  (decision 122)
+CONF_SHARE land 0.07, paper 0.16 (5B, never raised; the landscape's lowered by 8B to the outlines' measure, question 254): the largest measured land 0.0642, paper 0.1368
+SMOKE_SHARE 0.25: the largest measured 0.24; LAYER_MS 8: the slowest pass 1.6 ms
+
+4 proposed changes; 4 loosen:
+  LOOSENS UNOBSTRUCTED["first-run"]: [0.626,0.507] -> [0.625,0.506]   (the 7B build's (3B/3C convention); measured 0.6256 / 0.5069, rounded down to 0.1 point (3B/3C/7B); the 2C floor 0.5442 / 0.4391)
+  LOOSENS UNOBSTRUCTED["phone-844x390-explore"]: [0.69,null] -> [0.687,null]   (the 3B/3C build's (3B/3C convention); measured 0.6879 / , rounded down to 0.1 point (3B/3C/7B))
+  LOOSENS UNOBSTRUCTED["first-run-laptop"]: [0.546,0.507] -> [0.546,0.506]   (the 7B build's (3B/3C convention); measured 0.5461 / 0.5069, rounded down to 0.1 point (3B/3C/7B); the 2C floor 0.4831 / 0.4391)
+  LOOSENS UNOBSTRUCTED["narrow-1024"]: [0.533,0.628] -> [0.532,0.628]   (the 3B/3C build's (3B/3C convention); measured 0.5321 / 0.6291, rounded down to 0.1 point (3B/3C/7B); the 2C floor 0.4845 / 0.4389)
+both runs pass with the proposed values (thresholds.js judgeReport)
+
+/* Decision 256 (a) (the owner, 26 October 2026; Stage 8, before implementation PR 8D): the inherited unobstructed baselines re-measured once on CI's browser, on the 87578ebce0e414a4c8b308d88f7abc03 build, two identical runs (linux, Chromium 141.0.7390.37, Playwright 1.56.0), by tools/visual/remeasure.js --bounds keep (decision 62's method; a bound kept where the build still meets it, changed only where CI's browser measures it below). Each value: was, is and why, in
+   CHANGELOG.md; loosened under decision 256: UNOBSTRUCTED["first-run"], UNOBSTRUCTED["phone-844x390-explore"], UNOBSTRUCTED["first-run-laptop"], UNOBSTRUCTED["narrow-1024"] */
+UNOBSTRUCTED["first-run"]=[0.625,0.506];   /* was [0.626,0.507]; loosened (decision 256) */
+UNOBSTRUCTED["phone-844x390-explore"]=[0.687,null];   /* was [0.69,null]; loosened (decision 256) */
+UNOBSTRUCTED["first-run-laptop"]=[0.546,0.506];   /* was [0.546,0.507]; loosened (decision 256) */
+UNOBSTRUCTED["narrow-1024"]=[0.532,0.628];   /* was [0.533,0.628]; loosened (decision 256) */
+
+| constant | was | is | why |
+|---|---|---|---|
+| `UNOBSTRUCTED["first-run"]` | [0.626,0.507] | [0.625,0.506] | **loosened (decision 256)**; the 7B build's (3B/3C convention); measured 0.6256 / 0.5069, rounded down to 0.1 point (3B/3C/7B); the 2C floor 0.5442 / 0.4391 |
+| `UNOBSTRUCTED["phone-844x390-explore"]` | [0.69,null] | [0.687,null] | **loosened (decision 256)**; the 3B/3C build's (3B/3C convention); measured 0.6879 / , rounded down to 0.1 point (3B/3C/7B) |
+| `UNOBSTRUCTED["first-run-laptop"]` | [0.546,0.507] | [0.546,0.506] | **loosened (decision 256)**; the 7B build's (3B/3C convention); measured 0.5461 / 0.5069, rounded down to 0.1 point (3B/3C/7B); the 2C floor 0.4831 / 0.4391 |
+| `UNOBSTRUCTED["narrow-1024"]` | [0.533,0.628] | [0.532,0.628] | **loosened (decision 256)**; the 3B/3C build's (3B/3C convention); measured 0.5321 / 0.6291, rounded down to 0.1 point (3B/3C/7B); the 2C floor 0.4845 / 0.4389 |

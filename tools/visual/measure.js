@@ -111,7 +111,7 @@
       timelineRow:!!document.getElementById("tb-vm"), nowTab:!!document.getElementById("tab-now"), DWELL:typeof DWELL!=="undefined",
       KEYS:typeof KEYS!=="undefined", SUN_DAY:typeof SUN_DAY!=="undefined", ATMO:typeof ATMO!=="undefined", SMOKE:typeof SMOKE!=="undefined",
       settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest, SHORTCUTS:typeof SHORTCUTS!=="undefined", TIPS:typeof tipSync==="function",
-      MLS:typeof MLS!=="undefined"&&typeof mlStabBegin==="function"};
+      MLS:typeof MLS!=="undefined"&&typeof mlStabBegin==="function", CULL:typeof CULL!=="undefined"&&typeof setCull==="function", ANIM:typeof ANIM!=="undefined"&&typeof animHook==="function"};
   }
 
   /* ---- roadmap step 1 (T-1): an app canvas's pixels are read through a canvas the harness owns ----
@@ -570,7 +570,73 @@
     });
   }
 
-  window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
+  /* ---- Stage 8, implementation PR 8D (decisions 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 8.3 and 16): the census of one whole frame,
+     a harness measure (roadmap step 6's tools/step6/census.js, adapted to the pipeline since 8B) ----
+     Every draw call of one frame where three r128 issues it (renderer.renderBufferDirect, wrapped for the frame and restored), by pass: "shadow"
+     (the sun's map: a call with no scene, inside the world's render), "depth" (8B's ground depth for the overlays, GDEPTH's own scene, drawn
+     only when its key changed), "world" (the app's scene through the world layer; with the effects off the one pass, the label layer in it),
+     "labels" (the map symbols over the graded frame, the label layer), "post" (the effects' quad passes); and by what is drawn, as step 6
+     labelled it (a block's figures: men and horses by the kit's geometries, guns and gear, standards; the ground, the trees, the rest by
+     name). Triangles as three counts them (the geometry's index or position count within its draw range and group, times the instances of an
+     instanced mesh; sprites as info counts them). The sums are reconciled with renderer.info for the same frame (the app resets it as the
+     frame begins). o.cold: the depth pass's key cleared first, so the frame draws it (as a frame whose eye moved); else the cache as the view
+     left it (a still eye reuses it), so that like is compared with like. o.cull: CULL.on for the frame (false: every block drawn in both passes,
+     as before 8D); a build without CULL draws as it does */
+  function census(o){
+    o=o||{}; var hasCull=typeof CULL!=="undefined"&&typeof setCull==="function", keepCull=hasCull?CULL.on:null;
+    if(hasCull&&o.cull!==undefined&&o.cull!==CULL.on) setCull(o.cull);
+    if(o.cold&&typeof GDEPTH!=="undefined") GDEPTH.key=null;
+    var label=new Map(), blockOf=new Map(), geos=typeof kitGeos==="function"?kitGeos():[];
+    function tag(root,l,blk){ if(!root) return; root.traverse(function(x){ if(!label.has(x)){ label.set(x,l); if(blk) blockOf.set(x,blk); } }); }
+    Object.keys(units).forEach(function(id){ var r=units[id], b=r.block, ud=b&&b.userData;
+      if(ud){ if(ud.std) tag(ud.std,"figures: standards",b);
+        if(ud.body) ud.body.traverse(function(x){ if(!x.isMesh) return; label.set(x,geos.indexOf(x.geometry)>=0?"figures: men and horses":"figures: guns and gear"); blockOf.set(x,b); }); tag(b,"figures: block other",b); }
+      tag(r.smoke,"smoke"); tag(r.pad,"formation pads"); tag(r.dust,"dust"); tag(r.trail,"trails"); tag(r.conf,"ground cues: filled marks"); tag(r.foot,"ground cues: footprints (1x)"); tag(r.line,"ground cues: outlines"); });
+    [["groundMesh","ground"],["apronMesh","ground"],["treeMesh","trees"],["coniferMesh","trees"],["scrubMesh","scrub"],["houseMesh","houses"],["roofMesh","roofs"],["chimMesh","chimneys"],
+     ["spireMesh","spires"],["domeMesh","sky"],["sunDisc","sky"],["contourGroup","contours"],["marshGroup","marsh"],["paperGroup","paper map"],["mistGroup","mist"],
+     ["analysisGroup","analysis overlay"],["eventGroup","event glyphs"],["overlayRoot","overlays (arrows)"],["planGroup","plans"],["selRing","selection ring"]].forEach(function(p){
+      var x; try{ x=eval(p[0]); }catch(e){ x=null; } if(x&&x.traverse) tag(x,p[1]); });
+    try{ (DRAPED||[]).forEach(function(m){ tag(m,"draped: "+((m.userData.drape&&m.userData.drape.kind)||"line")); }); }catch(e){}
+    try{ (waterMeshes||[]).forEach(function(m){ tag(m,"water and ice"); }); (iceRims||[]).forEach(function(m){ tag(m,"water and ice"); }); }catch(e){}
+    try{ if(SKEL.grp) tag(SKEL.grp,"evidence skeleton"); }catch(e){}
+    try{ if(ROUTES.grp) tag(ROUTES.grp,"ordered routes"); }catch(e){}
+    var DS=(typeof GDEPTH!=="undefined"&&GDEPTH.scene)||null, QS=(typeof FX!=="undefined"&&FX.quadScene)||null, LL=1<<(typeof LAYER_LABEL!=="undefined"?LAYER_LABEL:1);
+    var rows=[], empty=0, orig=renderer.renderBufferDirect, n0=typeof GDEPTH!=="undefined"?GDEPTH.n:0;
+    renderer.renderBufferDirect=function(c,sc,g,mat,obj,grp){
+      var n=g.index?g.index.count:(g.attributes.position?g.attributes.position.count:0);
+      var s=Math.max(0,g.drawRange.start), e=Math.min(n,g.drawRange.start+g.drawRange.count); if(grp){ s=Math.max(s,grp.start); e=Math.min(e,grp.start+grp.count); }
+      var cnt=Math.max(0,e-s), inst=obj.isInstancedMesh?obj.count:1, tri=((obj.isMesh||obj.isSprite)&&!mat.wireframe)?Math.floor(cnt/3)*inst:0;
+      var pass=sc===null?"shadow":sc===DS?"depth":sc===QS?"post":sc===scene?((c.layers.mask===LL)?"labels":"world"):"other";
+      /* an instanced mesh with no instance reaches three's draw but issues no call (r128's renderInstances returns at a count of 0, and
+         renderer.info counts nothing): counted apart, as what an unculled frame still sets up */
+      if(obj.isInstancedMesh&&inst===0){ empty++; return orig.apply(this,arguments); }
+      rows.push({pass:pass, what:label.get(obj)||("other: "+(obj.name||obj.type)), tri:tri, inst:inst, fig:blockOf.has(obj), cull:!!(obj.userData&&obj.userData.cull)});
+      return orig.apply(this,arguments); };
+    var cf=null;
+    try{ renderFrame(); cf=hasCull?{tests:CULL.frame.tests, culled:CULL.frame.culled, refresh:CULL.frame.refresh, inst:CULL.frame.inst, ms:+CULL.frame.ms.toFixed(3)}:null; }
+    finally{ renderer.renderBufferDirect=orig; if(hasCull&&CULL.on!==keepCull) setCull(keepCull); }
+    var info=renderer.info.render, out={calls:rows.length, empty:empty, tris:0, infoCalls:info.calls, infoTris:info.triangles, byPass:{}, byWhat:{}, figures:{calls:0,tris:0}, figByPass:{},
+      depthDrawn:typeof GDEPTH!=="undefined"?GDEPTH.n>n0:false, cull:cf, cullOn:hasCull?(o.cull!==undefined?!!o.cull:keepCull):null, cold:!!o.cold,
+      fx:typeof FX!=="undefined"?!!FX.on:null, lowTier:typeof lowTier!=="undefined"?!!lowTier:null, shadow:!!(typeof sun!=="undefined"&&sun.castShadow&&renderer.shadowMap.enabled),
+      factor:typeof DISPLAY!=="undefined"?DISPLAY.factor:null, mode:typeof mode!=="undefined"?mode:null, buffer:[renderer.getContext().drawingBufferWidth,renderer.getContext().drawingBufferHeight]};
+    function add(t,k,r){ var x=t[k]||(t[k]={calls:0,tris:0}); x.calls++; x.tris+=r.tri; }
+    rows.forEach(function(r){ out.tris+=r.tri; add(out.byPass,r.pass,r); add(out.byWhat,r.pass+" | "+r.what,r); if(r.fig){ out.figures.calls++; out.figures.tris+=r.tri; add(out.figByPass,r.pass,r); } });
+    out.reconciled=out.calls===out.infoCalls&&out.tris===out.infoTris;
+    return out;
+  }
+  /* the frame with and without culling, drawn from the same state and read from the drawing buffer at once (the frame the canvas shows); twice
+     with it, so that a view whose two renders differ is told apart from a culling that changes the picture. Pixels differing in any channel */
+  function cullEquiv(){
+    if(typeof CULL==="undefined"||typeof setCull!=="function") return null;
+    var gl=renderer.getContext(), keep=CULL.on, w=gl.drawingBufferWidth, h=gl.drawingBufferHeight;
+    function grab(){ renderFrame(); var b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
+    function dif(a,b){ var n=0,m=0; for(var i=0;i<a.length;i+=4){ var e=Math.max(Math.abs(a[i]-b[i]),Math.abs(a[i+1]-b[i+1]),Math.abs(a[i+2]-b[i+2])); if(e){ n++; if(e>m) m=e; } } return {px:n,max:m}; }
+    try{ setCull(true); var A=grab(), A2=grab(), cu=CULL.frame.culled, te=CULL.frame.tests; setCull(false); var B=grab(); setCull(true);
+      var d=dif(A,B), r=dif(A,A2); return {px:d.px, max:d.max, repeatPx:r.px, w:w, h:h, culled:cu, tests:te}; }
+    finally{ setCull(keep); }
+  }
+
+  window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures, census:census, cullEquiv:cullEquiv,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
                 legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare,
                 state:state, features:features, camState:camState, readCanvas:readCanvas};

@@ -1,0 +1,1014 @@
+{
+ "note": "a held map-layer item given the keyboard's focus (a real Tab) or the selection (a real click on its order-of-battle row) while the view moves: its state and opacity in the frames after",
+ "chromium": "141.0.7390.37",
+ "builds": {
+  "build-8c.html": {
+   "md5": "04547a28419b2d86aec824931c735e0f",
+   "cases": [
+    {
+     "how": "focus",
+     "fps": 30,
+     "found": {
+      "key": "c:nansouty",
+      "fid": "nansouty",
+      "frame": 2,
+      "state": "dropped",
+      "fa": 0,
+      "prev": true,
+      "moving": true,
+      "fadeOn": true,
+      "t": 33746.33333333336
+     },
+     "given": {
+      "active": true,
+      "activeKey": "c:nansouty"
+     },
+     "frames": [
+      {
+       "frame": 1,
+       "state": "on",
+       "held": false,
+       "fa": 0.185,
+       "inline": "0.19",
+       "computed": 0.19,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 2,
+       "state": "on",
+       "held": false,
+       "fa": 0.37,
+       "inline": "0.37",
+       "computed": 0.37,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 3,
+       "state": "on",
+       "held": false,
+       "fa": 0.556,
+       "inline": "0.56",
+       "computed": 0.56,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 4,
+       "state": "on",
+       "held": false,
+       "fa": 0.741,
+       "inline": "0.74",
+       "computed": 0.74,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 5,
+       "state": "on",
+       "held": false,
+       "fa": 0.926,
+       "inline": "0.93",
+       "computed": 0.93,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 6,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 7,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 8,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      }
+     ]
+    },
+    {
+     "how": "selection",
+     "fps": 30,
+     "found": {
+      "key": "c:nansouty",
+      "fid": "nansouty",
+      "frame": 2,
+      "state": "dropped",
+      "fa": 0,
+      "prev": true,
+      "moving": true,
+      "fadeOn": true,
+      "t": 50738.3333333334
+     },
+     "given": {
+      "selected": true
+     },
+     "frames": [
+      {
+       "frame": 1,
+       "state": "on",
+       "held": false,
+       "fa": 0.185,
+       "inline": "0.19",
+       "computed": 0.19,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 2,
+       "state": "on",
+       "held": false,
+       "fa": 0.37,
+       "inline": "0.37",
+       "computed": 0.37,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 3,
+       "state": "on",
+       "held": false,
+       "fa": 0.556,
+       "inline": "0.56",
+       "computed": 0.56,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 4,
+       "state": "on",
+       "held": false,
+       "fa": 0.741,
+       "inline": "0.74",
+       "computed": 0.74,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 5,
+       "state": "on",
+       "held": false,
+       "fa": 0.926,
+       "inline": "0.93",
+       "computed": 0.93,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 6,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 7,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 8,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      }
+     ]
+    },
+    {
+     "how": "focus",
+     "fps": 60,
+     "found": {
+      "key": "c:nansouty",
+      "fid": "nansouty",
+      "frame": 2,
+      "state": "dropped",
+      "fa": 0,
+      "prev": true,
+      "moving": true,
+      "fadeOn": true,
+      "t": 55416.36666666668
+     },
+     "given": {
+      "active": true,
+      "activeKey": "c:nansouty"
+     },
+     "frames": [
+      {
+       "frame": 1,
+       "state": "on",
+       "held": false,
+       "fa": 0.093,
+       "inline": "0.09",
+       "computed": 0.09,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 2,
+       "state": "on",
+       "held": false,
+       "fa": 0.185,
+       "inline": "0.19",
+       "computed": 0.19,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 3,
+       "state": "on",
+       "held": false,
+       "fa": 0.278,
+       "inline": "0.28",
+       "computed": 0.28,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 4,
+       "state": "on",
+       "held": false,
+       "fa": 0.37,
+       "inline": "0.37",
+       "computed": 0.37,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 5,
+       "state": "on",
+       "held": false,
+       "fa": 0.463,
+       "inline": "0.46",
+       "computed": 0.46,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 6,
+       "state": "on",
+       "held": false,
+       "fa": 0.556,
+       "inline": "0.56",
+       "computed": 0.56,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 7,
+       "state": "on",
+       "held": false,
+       "fa": 0.648,
+       "inline": "0.65",
+       "computed": 0.65,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 8,
+       "state": "on",
+       "held": false,
+       "fa": 0.741,
+       "inline": "0.74",
+       "computed": 0.74,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      }
+     ]
+    },
+    {
+     "how": "selection",
+     "fps": 60,
+     "found": {
+      "key": "c:nansouty",
+      "fid": "nansouty",
+      "frame": 2,
+      "state": "dropped",
+      "fa": 0,
+      "prev": true,
+      "moving": true,
+      "fadeOn": true,
+      "t": 74974.46666666657
+     },
+     "given": {
+      "selected": true
+     },
+     "frames": [
+      {
+       "frame": 1,
+       "state": "on",
+       "held": false,
+       "fa": 0.093,
+       "inline": "0.09",
+       "computed": 0.09,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 2,
+       "state": "on",
+       "held": false,
+       "fa": 0.185,
+       "inline": "0.19",
+       "computed": 0.19,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 3,
+       "state": "on",
+       "held": false,
+       "fa": 0.278,
+       "inline": "0.28",
+       "computed": 0.28,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 4,
+       "state": "on",
+       "held": false,
+       "fa": 0.37,
+       "inline": "0.37",
+       "computed": 0.37,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 5,
+       "state": "on",
+       "held": false,
+       "fa": 0.463,
+       "inline": "0.46",
+       "computed": 0.46,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 6,
+       "state": "on",
+       "held": false,
+       "fa": 0.556,
+       "inline": "0.56",
+       "computed": 0.56,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 7,
+       "state": "on",
+       "held": false,
+       "fa": 0.648,
+       "inline": "0.65",
+       "computed": 0.65,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 8,
+       "state": "on",
+       "held": false,
+       "fa": 0.741,
+       "inline": "0.74",
+       "computed": 0.74,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      }
+     ]
+    }
+   ],
+   "errors": []
+  },
+  "build-fix.html": {
+   "md5": "87578ebce0e414a4c8b308d88f7abc03",
+   "cases": [
+    {
+     "how": "focus",
+     "fps": 30,
+     "found": {
+      "key": "c:nansouty",
+      "fid": "nansouty",
+      "frame": 2,
+      "state": "dropped",
+      "fa": 0,
+      "prev": true,
+      "moving": true,
+      "fadeOn": true,
+      "t": 32809.43333333342
+     },
+     "given": {
+      "active": true,
+      "activeKey": "c:nansouty"
+     },
+     "frames": [
+      {
+       "frame": 1,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 2,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 3,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 4,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 5,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 6,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 7,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 8,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      }
+     ]
+    },
+    {
+     "how": "selection",
+     "fps": 30,
+     "found": {
+      "key": "c:nansouty",
+      "fid": "nansouty",
+      "frame": 2,
+      "state": "dropped",
+      "fa": 0,
+      "prev": true,
+      "moving": true,
+      "fadeOn": true,
+      "t": 48222.933333333465
+     },
+     "given": {
+      "selected": true
+     },
+     "frames": [
+      {
+       "frame": 1,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 2,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 3,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 4,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 5,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 6,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 7,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 8,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      }
+     ]
+    },
+    {
+     "how": "focus",
+     "fps": 60,
+     "found": {
+      "key": "c:nansouty",
+      "fid": "nansouty",
+      "frame": 2,
+      "state": "dropped",
+      "fa": 0,
+      "prev": true,
+      "moving": true,
+      "fadeOn": true,
+      "t": 53022.56666666684
+     },
+     "given": {
+      "active": true,
+      "activeKey": "c:nansouty"
+     },
+     "frames": [
+      {
+       "frame": 1,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 2,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 3,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 4,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 5,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 6,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 7,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 8,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": false,
+       "focus": true,
+       "moving": true,
+       "fadeOn": true
+      }
+     ]
+    },
+    {
+     "how": "selection",
+     "fps": 60,
+     "found": {
+      "key": "c:nansouty",
+      "fid": "nansouty",
+      "frame": 2,
+      "state": "dropped",
+      "fa": 0,
+      "prev": true,
+      "moving": true,
+      "fadeOn": true,
+      "t": 70391.26666666682
+     },
+     "given": {
+      "selected": true
+     },
+     "frames": [
+      {
+       "frame": 1,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 2,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 3,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 4,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 5,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 6,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 7,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      },
+      {
+       "frame": 8,
+       "state": "on",
+       "held": false,
+       "fa": 1,
+       "inline": "",
+       "computed": 1,
+       "on": true,
+       "keep": true,
+       "focus": false,
+       "moving": true,
+       "fadeOn": true
+      }
+     ]
+    }
+   ],
+   "errors": []
+  }
+ }
+}

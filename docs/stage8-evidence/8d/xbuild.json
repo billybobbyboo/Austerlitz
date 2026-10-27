@@ -1,0 +1,624 @@
+{
+ "note": "the WebGL frame, fresh pages, pixels differing in any channel",
+ "chromium": "141.0.7390.37",
+ "pages": 5,
+ "builds": [
+  {
+   "file": "build-8c.html",
+   "md5": "04547a28419b2d86aec824931c735e0f"
+  },
+  {
+   "file": "build-8d-final.html",
+   "md5": "ae7f16b8cd2960c8813ff4155263830f"
+  }
+ ],
+ "views": {
+  "pratzen-low": {
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 1926,
+   "unstableAfter": 873,
+   "unstableEither": 2375,
+   "differingBetweenBuilds": 2375,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     30,
+     30,
+     30,
+     30,
+     30
+    ],
+    [
+     32,
+     32,
+     32,
+     32,
+     32
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  "close-sokolnitz": {
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 1234,
+   "unstableAfter": 669,
+   "unstableEither": 1415,
+   "differingBetweenBuilds": 1462,
+   "outsideUnstable": 47,
+   "consistentChange": 47,
+   "where": [
+    {
+     "x": 1559,
+     "y": 356,
+     "before": [
+      155,
+      159,
+      161
+     ],
+     "after": [
+      154,
+      159,
+      160
+     ]
+    },
+    {
+     "x": 1559,
+     "y": 357,
+     "before": [
+      155,
+      159,
+      161
+     ],
+     "after": [
+      155,
+      160,
+      161
+     ]
+    },
+    {
+     "x": 1496,
+     "y": 367,
+     "before": [
+      158,
+      161,
+      161
+     ],
+     "after": [
+      158,
+      160,
+      161
+     ]
+    },
+    {
+     "x": 1495,
+     "y": 368,
+     "before": [
+      162,
+      164,
+      164
+     ],
+     "after": [
+      168,
+      170,
+      169
+     ]
+    },
+    {
+     "x": 1496,
+     "y": 368,
+     "before": [
+      155,
+      158,
+      158
+     ],
+     "after": [
+      156,
+      159,
+      158
+     ]
+    },
+    {
+     "x": 1494,
+     "y": 369,
+     "before": [
+      156,
+      159,
+      156
+     ],
+     "after": [
+      156,
+      158,
+      156
+     ]
+    },
+    {
+     "x": 1495,
+     "y": 369,
+     "before": [
+      155,
+      158,
+      156
+     ],
+     "after": [
+      157,
+      160,
+      157
+     ]
+    },
+    {
+     "x": 1483,
+     "y": 377,
+     "before": [
+      155,
+      157,
+      154
+     ],
+     "after": [
+      155,
+      158,
+      154
+     ]
+    },
+    {
+     "x": 1528,
+     "y": 391,
+     "before": [
+      153,
+      158,
+      155
+     ],
+     "after": [
+      153,
+      158,
+      154
+     ]
+    },
+    {
+     "x": 1558,
+     "y": 396,
+     "before": [
+      151,
+      152,
+      151
+     ],
+     "after": [
+      151,
+      153,
+      151
+     ]
+    },
+    {
+     "x": 1563,
+     "y": 408,
+     "before": [
+      149,
+      150,
+      149
+     ],
+     "after": [
+      150,
+      152,
+      151
+     ]
+    },
+    {
+     "x": 972,
+     "y": 409,
+     "before": [
+      154,
+      163,
+      157
+     ],
+     "after": [
+      154,
+      162,
+      157
+     ]
+    },
+    {
+     "x": 1562,
+     "y": 409,
+     "before": [
+      158,
+      161,
+      161
+     ],
+     "after": [
+      158,
+      160,
+      161
+     ]
+    },
+    {
+     "x": 1563,
+     "y": 409,
+     "before": [
+      150,
+      152,
+      151
+     ],
+     "after": [
+      155,
+      157,
+      157
+     ]
+    },
+    {
+     "x": 1564,
+     "y": 409,
+     "before": [
+      150,
+      151,
+      151
+     ],
+     "after": [
+      149,
+      151,
+      150
+     ]
+    },
+    {
+     "x": 971,
+     "y": 410,
+     "before": [
+      147,
+      157,
+      151
+     ],
+     "after": [
+      147,
+      157,
+      150
+     ]
+    },
+    {
+     "x": 1562,
+     "y": 410,
+     "before": [
+      160,
+      163,
+      164
+     ],
+     "after": [
+      159,
+      162,
+      163
+     ]
+    },
+    {
+     "x": 1563,
+     "y": 410,
+     "before": [
+      156,
+      159,
+      159
+     ],
+     "after": [
+      157,
+      160,
+      160
+     ]
+    },
+    {
+     "x": 1564,
+     "y": 410,
+     "before": [
+      150,
+      151,
+      150
+     ],
+     "after": [
+      149,
+      150,
+      149
+     ]
+    },
+    {
+     "x": 958,
+     "y": 412,
+     "before": [
+      140,
+      155,
+      145
+     ],
+     "after": [
+      141,
+      155,
+      145
+     ]
+    },
+    {
+     "x": 969,
+     "y": 417,
+     "before": [
+      135,
+      151,
+      138
+     ],
+     "after": [
+      135,
+      151,
+      137
+     ]
+    },
+    {
+     "x": 1445,
+     "y": 437,
+     "before": [
+      171,
+      173,
+      171
+     ],
+     "after": [
+      170,
+      172,
+      170
+     ]
+    },
+    {
+     "x": 1446,
+     "y": 437,
+     "before": [
+      173,
+      175,
+      173
+     ],
+     "after": [
+      172,
+      173,
+      171
+     ]
+    },
+    {
+     "x": 1447,
+     "y": 437,
+     "before": [
+      172,
+      173,
+      171
+     ],
+     "after": [
+      172,
+      174,
+      171
+     ]
+    }
+   ],
+   "programs": [
+    [
+     30,
+     30,
+     30,
+     30,
+     30
+    ],
+    [
+     32,
+     32,
+     32,
+     32,
+     32
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  "selected-formation": {
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 2354,
+   "unstableAfter": 4277,
+   "unstableEither": 4692,
+   "differingBetweenBuilds": 4692,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     30,
+     30,
+     30,
+     30,
+     30
+    ],
+    [
+     32,
+     32,
+     32,
+     32,
+     32
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  "overview-field": {
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 1522,
+   "unstableAfter": 1571,
+   "unstableEither": 2482,
+   "differingBetweenBuilds": 2482,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     30,
+     30,
+     30,
+     30,
+     30
+    ],
+    [
+     32,
+     32,
+     32,
+     32,
+     32
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  "eye-zuran": {
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 196,
+   "unstableAfter": 183,
+   "unstableEither": 261,
+   "differingBetweenBuilds": 261,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     31,
+     31,
+     31,
+     31,
+     31
+    ],
+    [
+     33,
+     33,
+     33,
+     33,
+     33
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  "ph8-overview-watch": {
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 288,
+   "unstableAfter": 267,
+   "unstableEither": 399,
+   "differingBetweenBuilds": 399,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     29,
+     29,
+     29,
+     29,
+     29
+    ],
+    [
+     31,
+     31,
+     31,
+     31,
+     31
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  }
+ }
+}

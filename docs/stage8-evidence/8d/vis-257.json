@@ -1,0 +1,287 @@
+{
+ "report": "report.json",
+ "build": null,
+ "cases": [
+  {
+   "name": "as recorded",
+   "fails": 0,
+   "ok": true,
+   "words": ""
+  },
+  {
+   "name": "a run's drawn one fewer (land-orbit)",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): land-orbit: formations drawn in 1954 of 2366 formation-frames, the baseline 1955 of 2366 (fewer drawn) {\"jumps\":245,\"pops\":985,\"flicker\":10,\"lod\":130}"
+  },
+  {
+   "name": "a run's longest disappearance one frame longer (hybrid-zoom)",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): hybrid-zoom: a formation hidden by the layout for 1566 ms, the baseline's longest 1533 ms {\"jumps\":245,\"pops\":985,\"flicker\":10,\"lod\":130}"
+  },
+  {
+   "name": "a run's denominator one smaller (paper-pan)",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): paper-pan: formation-frames in view 1273, the baseline's 1274 (the denominator must not change); paper-pan: formations drawn in 1239 of 1273 formation-frames, the baseline 1240 of 1274 (fewer drawn) {\"jumps\":245,\"pops\":985,\"flicker\":10,\"lod\":130}"
+  },
+  {
+   "name": "fewer jumps bought by hiding (land-orbit: 5 fewer jumps, 40 formation-frames hidden by the layout)",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): land-orbit: formations drawn in 1915 of 2366 formation-frames, the baseline 1955 of 2366 (fewer drawn) {\"jumps\":240,\"pops\":985,\"flicker\":10,\"lod\":130}"
+  },
+  {
+   "name": "fewer jumps bought by making formations absent (land-orbit: 5 fewer jumps, 40 formation-frames out of the layer)",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): land-orbit: formation-frames in view 2326, the baseline's 2366 (the denominator must not change); land-orbit: formations drawn in 1915 of 2326 formation-frames, the baseline 1955 of 2366 (fewer drawn) {\"jumps\":240,\"pops\":985,\"flicker\":10,\"lod\":130}"
+  },
+  {
+   "name": "a run by real input a frame worse than its twin (hybrid-orbit+real: 40 fewer drawn)",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): hybrid-orbit+real: formations drawn in 1449, its twin's 1489 (tolerance 28) {\"jumps\":245,\"pops\":985,\"flicker\":10,\"lod\":130}"
+  },
+  {
+   "name": "the jumps one over the ceiling",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): jumps 246 over the 16 motions (limit 245) {\"jumps\":246,\"pops\":985,\"flicker\":10,\"lod\":130}"
+  },
+  {
+   "name": "the pops one over the ceiling",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): pops 986 (limit 985) {\"jumps\":245,\"pops\":986,\"flicker\":10,\"lod\":130}"
+  },
+  {
+   "name": "the level-of-detail switches one over the ceiling",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): level-of-detail switches 131 (limit 130) {\"jumps\":245,\"pops\":985,\"flicker\":10,\"lod\":131}"
+  },
+  {
+   "name": "the flickers one over the ceiling",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): flickers 11 (limit 10) {\"jumps\":245,\"pops\":985,\"flicker\":11,\"lod\":130}"
+  },
+  {
+   "name": "a driven run's visibility not measured",
+   "fails": 1,
+   "ok": true,
+   "words": "the map layer in motion (decision 240 (a)): low-pan: its formations' visibility not measured (decision 257 (b)) {\"jumps\":245,\"pops\":985,\"flicker\":10,\"lod\":130}"
+  }
+ ],
+ "app": {
+  "mutation": "the hold hides a formation whose held place is taken (no near search while moving)",
+  "totals": {
+   "jumps": 42,
+   "pops": 1195,
+   "lod": 130,
+   "flicker": 17
+  },
+  "fails": [
+   "the map layer in motion (decision 240 (a)): pops 1195 (limit 985); flickers 17 (limit 10); hybrid-zoom: formations drawn in 1366 of 2254 formation-frames, the baseline 1375 of 2254 (fewer drawn); hybrid-play: formations drawn in 2104 of 3388 formation-frames, the baseline 2115 of 3388 (fewer drawn); paper-zoom: formations drawn in 827 of 1229 formation-frames, the baseline 850 of 1229 (fewer drawn); paper-glide: formations drawn in 564 of 821 formation-frames, the baseline 566 of 821 (fewer drawn); land-zoom: formations drawn in 1605 of 2261 formation-frames, the baseline 1730 of 2261 (fewer drawn); land-orbit: formations drawn in 1711 of 2366 formation-frames, the baseline 1955 of 2366 (fewer drawn); land-play: formations drawn in 2466 of 3146 formation-frames, the baseline 2613 of 3146 (fewer drawn); low-pan: formations drawn in 803 of 885 formation-frames, the baseline 820 of 885 (fewer drawn); low-orbit: formations drawn in 614 of 887 formation-frames, the baseline 691 of 887 (fewer drawn); low-zoom: formations drawn in 459 of 633 formation-frames, the baseline 505 of 633 (fewer drawn); hybrid-orbit+sel: formations drawn in 1487 of 2548 formation-frames, the baseline 1494 of 2548 (fewer drawn); paper-zoom+sel: formations drawn in 814 of 1229 formation-frames, the baseline 823 of 1229 (fewer drawn) {\"jumps\":42,\"pops\":1195,\"flicker\":17,\"lod\":130}"
+  ],
+  "visibilityFailures": 12,
+  "console": [],
+  "runs": [
+   {
+    "key": "hybrid-pan",
+    "jumps": 1,
+    "pops": 59,
+    "on": 1378,
+    "inView": 2049,
+    "longestMs": 2467
+   },
+   {
+    "key": "hybrid-zoom",
+    "jumps": 3,
+    "pops": 138,
+    "on": 1366,
+    "inView": 2254,
+    "longestMs": 1233
+   },
+   {
+    "key": "hybrid-orbit",
+    "jumps": 0,
+    "pops": 153,
+    "on": 1489,
+    "inView": 2548,
+    "longestMs": 2200
+   },
+   {
+    "key": "hybrid-glide",
+    "jumps": 2,
+    "pops": 96,
+    "on": 1245,
+    "inView": 1805,
+    "longestMs": 1467
+   },
+   {
+    "key": "hybrid-play",
+    "jumps": 3,
+    "pops": 119,
+    "on": 2104,
+    "inView": 3388,
+    "longestMs": 3100
+   },
+   {
+    "key": "paper-pan",
+    "jumps": 0,
+    "pops": 5,
+    "on": 1240,
+    "inView": 1274,
+    "longestMs": 667
+   },
+   {
+    "key": "paper-zoom",
+    "jumps": 0,
+    "pops": 100,
+    "on": 827,
+    "inView": 1229,
+    "longestMs": 667
+   },
+   {
+    "key": "paper-glide",
+    "jumps": 0,
+    "pops": 46,
+    "on": 564,
+    "inView": 821,
+    "longestMs": 633
+   },
+   {
+    "key": "paper-play",
+    "jumps": 3,
+    "pops": 32,
+    "on": 1570,
+    "inView": 1694,
+    "longestMs": 667
+   },
+   {
+    "key": "land-pan",
+    "jumps": 1,
+    "pops": 49,
+    "on": 1878,
+    "inView": 2051,
+    "longestMs": 600
+   },
+   {
+    "key": "land-zoom",
+    "jumps": 3,
+    "pops": 91,
+    "on": 1605,
+    "inView": 2261,
+    "longestMs": 667
+   },
+   {
+    "key": "land-orbit",
+    "jumps": 0,
+    "pops": 120,
+    "on": 1711,
+    "inView": 2366,
+    "longestMs": 667
+   },
+   {
+    "key": "land-play",
+    "jumps": 5,
+    "pops": 92,
+    "on": 2466,
+    "inView": 3146,
+    "longestMs": 667
+   },
+   {
+    "key": "low-pan",
+    "jumps": 1,
+    "pops": 17,
+    "on": 803,
+    "inView": 885,
+    "longestMs": 533
+   },
+   {
+    "key": "low-orbit",
+    "jumps": 0,
+    "pops": 44,
+    "on": 614,
+    "inView": 887,
+    "longestMs": 633
+   },
+   {
+    "key": "low-zoom",
+    "jumps": 20,
+    "pops": 34,
+    "on": 459,
+    "inView": 633,
+    "longestMs": 633
+   },
+   {
+    "key": "hybrid-orbit+real",
+    "jumps": 0,
+    "pops": 153,
+    "on": 1489,
+    "inView": 2548,
+    "longestMs": 2200
+   },
+   {
+    "key": "paper-zoom+real",
+    "jumps": 0,
+    "pops": 100,
+    "on": 827,
+    "inView": 1229,
+    "longestMs": 667
+   },
+   {
+    "key": "hybrid-orbit+sel",
+    "jumps": 1,
+    "pops": 142,
+    "on": 1487,
+    "inView": 2548,
+    "longestMs": 2000
+   },
+   {
+    "key": "paper-zoom+sel",
+    "jumps": 6,
+    "pops": 114,
+    "on": 814,
+    "inView": 1229,
+    "longestMs": 667
+   },
+   {
+    "key": "hybrid-pan+fr",
+    "jumps": 1,
+    "pops": 52,
+    "on": 1308,
+    "inView": 1935,
+    "longestMs": 2467
+   },
+   {
+    "key": "hybrid-pan+al",
+    "jumps": 1,
+    "pops": 52,
+    "on": 979,
+    "inView": 1346,
+    "longestMs": 2467
+   },
+   {
+    "key": "paper-play+al",
+    "jumps": 3,
+    "pops": 35,
+    "on": 1180,
+    "inView": 1331,
+    "longestMs": 667
+   },
+   {
+    "key": "phone-pan+touch",
+    "jumps": 0,
+    "pops": 51,
+    "on": 296,
+    "inView": 732,
+    "longestMs": 1367
+   }
+  ],
+  "ok": true
+ }
+}

@@ -37,10 +37,12 @@ jobs:
       # the chronology regression: every live timed statement cited or allowed by name, the named conflicts, the arrival rules, the
       # movement audit (roadmap step 1, D-1)
       - run: npm run check:chronology
-  # decision 132: the two browser checks a push can afford, in parallel (headless Chromium from Playwright, software WebGL)
+  # decision 132: the two browser checks a push can afford, in parallel (headless Chromium from Playwright, software WebGL); 60 minutes since
+  # Stage 8's implementation PR 8D: its culling checks add about two minutes to the in-app self-test on the runner (682-1,183 s before them,
+  # 779-1,189 s with them), whose step has taken 16-31 minutes, and one stalled install try takes ten minutes of the limit
   browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:

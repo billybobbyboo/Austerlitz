@@ -1,0 +1,330 @@
+{
+ "note": "the self-test's 8D block (and for the prerequisite's copy the 8C block) run by tools/stage8/mutate-8d.js on the build as it is and on eight copies with one rule broken, each on a fresh page at 1366 x 768; every copy must fail a check, the build none. none, nodepthhook and novishook were run on the committed build (ae7f16b8cd2960c8813ff4155263830f) after check (f) was strengthened (the figures' movement read with the shadow at rest); the others on f79f56ab99965526ec4b6d94d74e3cd8, which differs from it in comments and in check (f) alone",
+ "committed": "ae7f16b8cd2960c8813ff4155263830f",
+ "earlier": "f79f56ab99965526ec4b6d94d74e3cd8",
+ "chromium": "141.0.7390.37",
+ "mutations": [
+  {
+   "build": "ae7f16b8cd2960c8813ff4155263830f",
+   "id": "none",
+   "what": "nothing (the build as it is)",
+   "block": "8d",
+   "selfTest": {
+    "checks": 13,
+    "failed": [],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88188 culled, 4679 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 492 (185 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88340 culled, 5147 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 231 meshes, shadow pass 526 (314 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order set",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 126637 pixels of the frame and 9329 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 117220 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 219216 ve"
+    ],
+    "ms": 827360
+   },
+   "pageErrors": []
+  },
+  {
+   "build": "f79f56ab99965526ec4b6d94d74e3cd8",
+   "id": "r128",
+   "what": "r128's own frustum test for the blocks' meshes: the geometry's sphere at the mesh's origin (one instance's), not the mesh's own bounds",
+   "block": "8d",
+   "selfTest": {
+    "checks": 13,
+    "failed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 0 meshes with instances of 338 (255 with the kit's parts), 0 vertices in the world",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 0 meshes with instances of 338 (255 with the kit's parts), 0 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 97666 culled, 0 drawn with their centre out of view; WRONG: vantage zuran: dhautpoul culled with an instance in view; vantage zuran: dhautpoul culled with an instance in view; vantage zuran: dhautpoul culled with an instance in vi",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 267 meshes, shadow pass 472 (232 of them out of the eye's view, casting); pixels differing the low Pratzen view 1302 (two renders of it 0), close on Sokolnitz 1228 (two renders of it 0); WRONG: the low Pratzen view: guard_cav has an instance in the ",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 0 meshes with instances of 338 (255 with the kit's parts), 0 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 97323 culled, 0 drawn with their centre out of view; WRONG: vantage zuran: dhautpoul culled with an instance in view; vantage zuran: dhautpoul culled with an instance in view; vantage zuran: dhautpoul culled with an instance in vi",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 177 meshes, shadow pass 506 (344 of them out of the eye's view, casting); pixels differing the low Pratzen view 19225 (two renders of it 0), close on Sokolnitz 67 (two renders of it 0); WRONG: the low Pratzen view: gqg has an instance in the sun's b",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00); WRONG: as drawn: sthilaire's bounds not refreshed; as drawn: sthilaire an instance outside its bounds; as drawn: sthilaire's bounds not refreshed; as drawn: sthilaire an instance outside its bounds"
+    ],
+    "passed": [
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 7301 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order set",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 74 kit meshes in view at amp 1: 126137 pixels of the frame and 12123 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 within the envelope"
+    ],
+    "ms": 229166
+   },
+   "pageErrors": []
+  },
+  {
+   "build": "f79f56ab99965526ec4b6d94d74e3cd8",
+   "id": "half",
+   "what": "the bounds undersized: their radius halved",
+   "block": "8d",
+   "selfTest": {
+    "checks": 13,
+    "failed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 49470 vertices in the world; WRONG: gqg instance 0 outside by 2.46e+0; gqg a vertex of instance 0 outside; gqg a vertex of instance 2 outside; gqg a vertex of instance 3 outside",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 50243 vertices in the world; WRONG: gqg instance 0 outside by 2.47e+0; gqg a vertex of instance 0 outside; gqg a vertex of instance 2 outside; gqg a vertex of instance 3 outside",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 94046 culled, 3543 drawn with their centre out of view; WRONG: close on Sokolnitz: guard_cav culled with an instance in view; close on Sokolnitz: guard_cav culled with an instance in view; close on Sokolnitz: guard_cav culled with",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 300 meshes, shadow pass 484 (208 of them out of the eye's view, casting); pixels differing the low Pratzen view 168 (two renders of it 0), close on Sokolnitz 52 (two renders of it 0); WRONG: the low Pratzen view: guard_cav has an instance in the sun",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 47974 vertices in the world; WRONG: gqg instance 0 outside by 2.48e+0; gqg a vertex of instance 0 outside; gqg a vertex of instance 2 outside; gqg a vertex of instance 3 outside",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 93466 culled, 3948 drawn with their centre out of view; WRONG: vantage zuran: drouet culled with an instance in view; vantage zuran: drouet culled with an instance in view; the low Pratzen view: legrand culled with an instance in ",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 206 meshes, shadow pass 518 (330 of them out of the eye's view, casting); pixels differing the low Pratzen view 717 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0); WRONG: the low Pratzen view: gqg has an instance in the sun's box ",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00); WRONG: as drawn: sthilaire an instance outside its bounds; as drawn: sthilaire an instance outside its bounds; as drawn: sthilaire an instance outside its bounds; as drawn: sthilaire an instance outside its"
+    ],
+    "passed": [
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 7301 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order set",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 82 kit meshes in view at amp 1: 126571 pixels of the frame and 10260 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 within the envelope"
+    ],
+    "ms": 374578
+   },
+   "pageErrors": []
+  },
+  {
+   "build": "f79f56ab99965526ec4b6d94d74e3cd8",
+   "id": "noenv",
+   "what": "the bounds without the animation's envelope",
+   "block": "8d",
+   "selfTest": {
+    "checks": 13,
+    "failed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world; WRONG: gqg instance 1 outside by 3.25e-1; gqg instance 1 outside by 3.12e-2; gqg instance 1 outside by 3.13e-2; heightguns instance 0 outside by 1.72e-1",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world; WRONG: gqg instance 1 outside by 3.25e-1; gqg instance 1 outside by 3.13e-2; gqg instance 1 outside by 3.12e-2; heightguns instance 0 outside by 1.72e-1",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88428 culled, 4675 drawn with their centre out of view; WRONG: vandamme by the top edge at 1: sthilaire culled with an instance in view; vandamme by the top edge at 1.25: sthilaire culled with an instance in view; suchet by the to",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world; WRONG: gqg instance 1 outside by 3.25e-1; gqg instance 1 outside by 3.12e-2; gqg instance 5 outside by 3.13e-2; heightguns instance 0 outside by 1.72e-1",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88574 culled, 5142 drawn with their centre out of view; WRONG: bourcier by the right edge at 1.25: kienmayer culled with an instance in view; santon by the top edge at 0.75: guard_cav culled with an instance in view; kellermann by",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00); WRONG: as drawn: sthilaire an instance outside its bounds; as drawn: sthilaire an instance outside its bounds; as drawn: sthilaire an instance outside its bounds; as drawn: sthilaire an instance outside its"
+    ],
+    "passed": [
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 333 meshes, shadow pass 492 (186 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 230 meshes, shadow pass 526 (315 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order set",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 126637 pixels of the frame and 9329 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 within the envelope"
+    ],
+    "ms": 482741
+   },
+   "pageErrors": []
+  },
+  {
+   "build": "f79f56ab99965526ec4b6d94d74e3cd8",
+   "id": "stale",
+   "what": "the bounds never refreshed after their first computation (no invalidation)",
+   "block": "8d",
+   "selfTest": {
+    "checks": 13,
+    "failed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 223292 vertices in the world; WRONG: gqg: its bounds not refreshed; gqg instance 2 outside by 6.84e-3; gqg: its bounds not refreshed; gqg: its bounds not refreshed",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 181941 vertices in the world; WRONG: gqg: its bounds not refreshed; gqg instance 2 outside by 1.85e-2; gqg: its bounds not refreshed; gqg: its bounds not refreshed",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88304 culled, 4511 drawn with their centre out of view; WRONG: gqg by the bottom edge at 1.25: guard_cav culled with an instance in view; gqg by the bottom edge at 1.25: guard_cav culled with an instance in view; sthilaire by the ",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 496 (190 of them out of the eye's view, casting); pixels differing the low Pratzen view 200 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0); WRONG: the low Pratzen view: the frame differs from the frame with",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 182016 vertices in the world; WRONG: gqg: its bounds not refreshed; gqg instance 0 outside by 3.36e-1; gqg a vertex of instance 0 outside; gqg a vertex of instance 2 outside",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88555 culled, 4888 drawn with their centre out of view; WRONG: close on Sokolnitz: sthilaire culled with an instance in view; close on Sokolnitz: sthilaire culled with an instance in view; close on Sokolnitz: sthilaire culled with",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00); WRONG: as drawn: sthilaire's bounds not refreshed; as drawn: sthilaire an instance outside its bounds; as drawn: sthilaire's bounds not refreshed; as drawn: sthilaire an instance outside its bounds"
+    ],
+    "passed": [
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 242 meshes, shadow pass 526 (303 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 7301 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order set",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 126635 pixels of the frame and 8727 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 within the envelope"
+    ],
+    "ms": 490251
+   },
+   "pageErrors": []
+  },
+  {
+   "build": "f79f56ab99965526ec4b6d94d74e3cd8",
+   "id": "camonly",
+   "what": "camera-only culling: the shadow pass tested against the eye's frustum, so a block out of view casts no shadow",
+   "block": "8d",
+   "selfTest": {
+    "checks": 13,
+    "failed": [
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 307 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 17 (two renders of it 0); WRONG: the low Pratzen view: friant not drawn in the shadow pass thou",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 231 meshes, shadow pass 212 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0); WRONG: the low Pratzen view: gqg not drawn in the shadow pass though i",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | no view found; WRONG: no block found whose shadow falls in a view it is out of"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88188 culled, 4679 drawn with their centre out of view",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88340 culled, 5147 drawn with their centre out of view",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00)",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order set",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 126637 pixels of the frame and 9329 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 within the envelope"
+    ],
+    "ms": 892313
+   },
+   "pageErrors": []
+  },
+  {
+   "build": "ae7f16b8cd2960c8813ff4155263830f",
+   "id": "nodepthhook",
+   "what": "the kit's depth material without the hook (the shadow cast at rest whatever the pose)",
+   "block": "8d",
+   "selfTest": {
+    "checks": 13,
+    "failed": [
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 0 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order settl",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 117220 pixels of the frame and 0 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 117220 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 219216 verte"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88188 culled, 4679 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 492 (185 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88340 culled, 5147 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 231 meshes, shadow pass 526 (314 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0"
+    ],
+    "ms": 655999
+   },
+   "pageErrors": []
+  },
+  {
+   "build": "ae7f16b8cd2960c8813ff4155263830f",
+   "id": "novishook",
+   "what": "the kit's own material without the hook (the figures drawn at rest whatever the pose)",
+   "block": "8d",
+   "selfTest": {
+    "checks": 13,
+    "failed": [
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 0 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order settl",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 12314 pixels of the frame and 9329 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 0 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 219216 vertex p"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88188 culled, 4679 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 492 (185 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88340 culled, 5147 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 231 meshes, shadow pass 526 (314 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0"
+    ],
+    "ms": 682193
+   },
+   "pageErrors": []
+  },
+  {
+   "build": "f79f56ab99965526ec4b6d94d74e3cd8",
+   "id": "noprot",
+   "what": "the prerequisite undone: a protected item (focus, selection, hover) faded in like the rest",
+   "block": "8c",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "map layer (decision 240; the audit of 8C): an item held hidden or fading out when it gains the keyboard's focu | WRONG: focus: c:bourcier (held, alpha 0.00) to on, alpha 0.19, opacity 0.19; selection: c:bourcier (held, alpha 0.00) to on, alpha 0.19, opacity 0.19; hover: c:bourcier (held, alpha 0.00) to on, alpha 0.19, opacity 0.19 | focus: c:bourcier (held, alpha 0.00) t"
+    ],
+    "passed": [
+     "map layer in motion (decision 240): while the view moves no two drawn boxes overlap, what is never dropped is  | 291 frames in four motions (a pan and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play), 228 of them moving, 4596 item-frames held",
+     "map layer in motion (decision 240): a leaving item fades out as itself, under the live items and taking no poi | 525 remnant-frames; 67 items kept their places into the rest; at rest after each, idle, the level of detail the true distance's: pan 22 placed (21 reached directly), orbit 34 placed (31 reached directly), paper zoom 24 placed (24 reached directly), paper play ",
+     "map layer (decision 240): a view reached without motion is laid out exactly as before the view moved (the stab | 50 items at the Field vantage in Landscape with counters, laid out before a pan and again after the pan and a jump back: the same states and boxes",
+     "map layer (decision 240): the level-of-detail switches read a distance held inside the 8% band while the view  | from 243.7 units (div) out to 258.7 under a key's hold: div; at rest corps",
+     "map layer (decision 240): under reduced motion no fade (no remnant, every drawn item at full opacity), the hol | 567 item-frames held in the paper map's zoom",
+     "map layer (decision 240): a reading changed while the view moves leaves no label and no remnant of a formation | the Allied headquarters' reading taken mid-pan: every item shown known to it, none fading",
+     "map layer (decision 240): the item with the keyboard focus is drawn in every frame while the view moves (A-2), | c:sthilaire (11 drawn items within 120 px) focused through an orbit of 30 frames",
+     "map layer (decision 240): input that moves nothing leaves the layer at rest (motion is a motion source and a v | 0 moving passes after two key presses",
+     "map layer (section 7.2, decision 240): in the low views the place and terrain-study names beyond 1.5 times the | 4 of 5 place names drawn close on Sokolnitz at the step; the layout identical without it; the paper map none"
+    ],
+    "ms": 5598
+   },
+   "pageErrors": []
+  }
+ ],
+ "summary": [
+  {
+   "id": "none",
+   "build": "ae7f16b8",
+   "block": "8d",
+   "checks": 13,
+   "failed": 0,
+   "as": "passes, as it should"
+  },
+  {
+   "id": "r128",
+   "build": "f79f56ab",
+   "block": "8d",
+   "checks": 13,
+   "failed": 8,
+   "as": "fails, as it should"
+  },
+  {
+   "id": "half",
+   "build": "f79f56ab",
+   "block": "8d",
+   "checks": 13,
+   "failed": 8,
+   "as": "fails, as it should"
+  },
+  {
+   "id": "noenv",
+   "build": "f79f56ab",
+   "block": "8d",
+   "checks": 13,
+   "failed": 6,
+   "as": "fails, as it should"
+  },
+  {
+   "id": "stale",
+   "build": "f79f56ab",
+   "block": "8d",
+   "checks": 13,
+   "failed": 7,
+   "as": "fails, as it should"
+  },
+  {
+   "id": "camonly",
+   "build": "f79f56ab",
+   "block": "8d",
+   "checks": 13,
+   "failed": 3,
+   "as": "fails, as it should"
+  },
+  {
+   "id": "nodepthhook",
+   "build": "ae7f16b8",
+   "block": "8d",
+   "checks": 13,
+   "failed": 2,
+   "as": "fails, as it should"
+  },
+  {
+   "id": "novishook",
+   "build": "ae7f16b8",
+   "block": "8d",
+   "checks": 13,
+   "failed": 2,
+   "as": "fails, as it should"
+  },
+  {
+   "id": "noprot",
+   "build": "f79f56ab",
+   "block": "8c",
+   "checks": 10,
+   "failed": 1,
+   "as": "fails, as it should"
+  }
+ ]
+}

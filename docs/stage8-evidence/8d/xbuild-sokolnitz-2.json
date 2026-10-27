@@ -1,0 +1,66 @@
+{
+ "note": "the WebGL frame, fresh pages, pixels differing in any channel",
+ "chromium": "141.0.7390.37",
+ "pages": 6,
+ "builds": [
+  {
+   "file": "build-8c.html",
+   "md5": "04547a28419b2d86aec824931c735e0f"
+  },
+  {
+   "file": "build-8d-final.html",
+   "md5": "ae7f16b8cd2960c8813ff4155263830f"
+  }
+ ],
+ "views": {
+  "close-sokolnitz": {
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 1157,
+   "unstableAfter": 988,
+   "unstableEither": 1343,
+   "differingBetweenBuilds": 1343,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     30,
+     30,
+     30,
+     30,
+     30,
+     30
+    ],
+    [
+     32,
+     32,
+     32,
+     32,
+     32,
+     32
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  }
+ }
+}

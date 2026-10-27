@@ -421,7 +421,12 @@ if(cerrs) process.exitCode=1;
   if(/AUSTERLITZ_DEBUG|window\.__|MOVING/.test(ms||"")) merr.push("mlMotionSource reads a switch outside the app's state");
   if(!/MLS\.fadeOn=!RM&&!MLS\.fresh&&MLS\.fromMotion;/.test(src)) merr.push("the fades are not off under reduced motion and in a fresh view (MLS.fadeOn)");
   const lay=fn("mlLayout")||"";
-  if(!/if\(!MLS\.fadeOn\) it\.fa=tg;/.test(lay)) merr.push("mlLayout does not draw an item at once where the fades are off");
+  /* Stage 8, 8D's prerequisite (the audit of 8C): what the stabiliser never holds (the never-dropped, the forced focus, the item with the focus)
+     takes its state at once, as an item does where the fades are off */
+  if(!/var tg=on\?1:0, prot=it\.keep\|\|it\.forced\|\|it\.el===foc;/.test(lay)||!/if\(!MLS\.fadeOn\|\|prot\) it\.fa=tg;/.test(lay))
+    merr.push("mlLayout does not draw an item at once where the fades are off, or a protected item (never dropped, the focus) at its fade's alpha");
+  /* ... and its own presentation opacity (o.op: an overlay's fade-in) still multiplies its fade's alpha */
+  if(!/var op=on\?\(it\.op<1\?Math\.max\(0,it\.op\):1\)\*it\.fa:\(rm\?it\.fa:1\)/.test(lay)) merr.push("a drawn item's opacity is no longer its presentation opacity times its fade's alpha");
   if(!/for\(var ik=0;ik<nk;ik\+\+\)\{ var kt=order\[ik\]; kt\.held=false; if\(!\(mlPlaceItem\(kt,VW,VH,panels,obst\)\|\|mlWrapPlace\(kt,VW,VH,panels,obst\)\)\) kt\.state="dropped"; \}/.test(lay))
     merr.push("what is never dropped is not placed first by the full search (decision 39)");
   if(!/if\(s==="build"\|\|it\.el===foc\) return mlPlaceItem\(it,VW,VH,panels,obst\);/.test(lay)) merr.push("the keyboard's focus is not placed by the full search in motion");
@@ -443,8 +448,51 @@ if(cerrs) process.exitCode=1;
   if(farRules.length!==1) merr.push("ml-far in "+farRules.length+" rules, not the one");
   if(!/--t-micro:10\.5px/.test(css)) merr.push("t-micro is not 10.5 px (decision 16's tertiary floor)");
   merr.forEach(e=>console.log("  ! "+e));
-  console.log("map layer in motion (decision 240 (a)): "+(merr.length?merr.length+" wrong":"the pass every 333 ms, two passes with room, the band 8% on every switch and released at rest, fades 180 ms off under reduced motion and in a fresh view, the motion from the app's state, the never-dropped and the focus by the full search, every discontinuity a fresh view, the remnants under the live items without the pointer; the far step at 1.5 on the small names only, t-micro"));
+  console.log("map layer in motion (decision 240 (a)): "+(merr.length?merr.length+" wrong":"the pass every 333 ms, two passes with room, the band 8% on every switch and released at rest, fades 180 ms off under reduced motion and in a fresh view, the motion from the app's state, the never-dropped and the focus by the full search and at full opacity at once, every discontinuity a fresh view, the remnants under the live items without the pointer; the far step at 1.5 on the small names only, t-micro"));
   if(merr.length) process.exitCode=1;
+}
+/* Stage 8, implementation PR 8D (decisions 249 (a), 244 (a), 250 (b); docs/STAGE8_SPEC.md section 16): culling and the hooks as decided. Every
+   block's instanced meshes carry their own bounds and are culled by them (cullBlock in buildFormations, frustumCulled from CULL.on, on by
+   default); three r128's frustum test kept for every other object; the bounds refreshed at the test by the instance matrices' version, the count
+   and the geometry; the shared geometries' bounds never written (no boundingSphere and no computeBoundingSphere in the culling code); culling
+   never hides (no visible written there); the app never turns it off and never moves the gait (setCull, CULL.on and the uniforms written only
+   by the self-test); the hook after three's begin_vertex, the atmosphere's uniforms first, on the kit's material and on its own depth
+   material with the mesh's two uniforms, its branch taken only above amplitude 0 and the amplitude clamped to 1 (the envelope's bound); the
+   frame's culling counts reset with renderer.info; lowTier as decision 236 left it (density 1.0, no shadow map) */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), cerr=[];
+  const fn=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):null; };
+  const a0=src.indexOf("  function selfTest(){"), st0=a0, st1=a0<0?-1:src.indexOf("\n  }\n",src.indexOf("/* 11. render on demand */",a0));
+  const outsideST=re=>{ const out=[]; let m; const g=new RegExp(re.source,"g"); while((m=g.exec(src))) if(!(m.index>st0&&m.index<st1)) out.push(src.slice(Math.max(0,src.lastIndexOf("\n",m.index)+1),m.index+40).trim().slice(0,90)); return out; };
+  if(st0<0||st1<0) cerr.push("the self-test's source not found (its bounds: \"  function selfTest(){\" to the end of its render-on-demand block)");
+  if(!/^var CULL=\{on:true, meshes:\[\], geo:\{\}/m.test(src)) cerr.push("CULL is not on by default");
+  const cb=fn("cullBlock")||"", ct=fn("cullTest")||"", cr=fn("cullRefresh")||"", cg=fn("cullGeo")||"", sc=fn("setCull")||"", am=fn("animMesh")||"", ah=fn("animHook")||"";
+  if(!/animMesh\(o\);\s*o\.userData\.cull=\{s:new THREE\.Sphere\(\), ver:-1, n:-1, g:null, env:animEnv\(o\.geometry\), id:id\};\s*o\.frustumCulled=CULL\.on; CULL\.meshes\.push\(o\);/.test(cb))
+    cerr.push("cullBlock does not give every instanced mesh its bounds (with the animation's envelope), its hook and frustumCulled from CULL.on");
+  if(!/cullBlock\(g,id\);/.test(fn("buildFormations")||"")) cerr.push("buildFormations does not cull each block by its own bounds (cullBlock)");
+  if(!/F\.intersectsObject=function\(o\)\{ var cl=o\.userData&&o\.userData\.cull; return cl\?cullTest\(this,o,cl\):r128\.call\(this,o\); \};/.test(src))
+    cerr.push("three's frustum test is not r128's own for every object without bounds of its own");
+  if(!/if\(cl\.ver!==o\.instanceMatrix\.version\|\|cl\.n!==o\.count\|\|cl\.g!==o\.geometry\) cullRefresh\(o,cl\);/.test(ct)) cerr.push("the bounds are not refreshed by the instance matrices' version, the count and the geometry");
+  if(!/cl\.ver=m\.instanceMatrix\.version; cl\.n=m\.count; cl\.g=m\.geometry;/.test(cr)) cerr.push("cullRefresh does not record what it was computed from");
+  if(!/if\(cl\.n<=0\)\{ CULL\.frame\.culled\+\+; return false; \}/.test(ct)) cerr.push("a mesh with no instance to draw is not culled");
+  [["cullBlock",cb],["cullTest",ct],["cullRefresh",cr],["cullGeo",cg],["setCull",sc]].forEach(([n,t])=>{ if(!t) cerr.push(n+" missing");
+    if(/boundingSphere|computeBounding|boundingBox/.test(t)) cerr.push(n+" writes or reads a geometry's own bounds (shared by every block of its class)");
+    if(/\.visible\s*=/.test(t)) cerr.push(n+" hides or shows an object (culling must leave visible alone: a shadow cast from outside the view)"); });
+  if(!/var s=CULL\.geo\[g\.uuid\]; if\(s\) return s;/.test(cg)) cerr.push("a geometry's sphere is not read once into CULL.geo");
+  const sw=outsideST(/setCull\(/).filter(x=>!/^function setCull\(on\)/.test(x)); if(sw.length) cerr.push("setCull called outside the self-test: "+sw.join(" | "));
+  const co=outsideST(/CULL\.on\s*=[^=]/).filter(x=>!/^function setCull\(on\)/.test(x)); if(co.length) cerr.push("CULL.on written outside setCull and the self-test: "+co.join(" | "));
+  const uw=outsideST(/uAnim(Amp|Phase)\.value\s*=[^=]/); if(uw.length) cerr.push("the gait's uniforms written outside the self-test (nothing moves in 8D): "+uw.join(" | "));
+  if(!/^function animHook\(sh\)\{\n  atmoUniforms\(sh\);/.test(ah)) cerr.push("the kit's hook drops the atmosphere's uniforms");
+  if(!/\.replace\("#include <begin_vertex>","#include <begin_vertex>\\n"\+ANIM\.body\)/.test(ah)) cerr.push("the hook is not right after three's begin_vertex");
+  if(!/m\.material\.onBeforeCompile=animHook;/.test(am)||!/new THREE\.MeshDepthMaterial\(\{depthPacking:THREE\.RGBADepthPacking\}\); d\.userData\.anim=U; d\.onBeforeCompile=animHook;/.test(am)||!/m\.customDepthMaterial=d;/.test(am))
+    cerr.push("the hook is not on the kit's material and on its own depth material (the shadow casting the pose drawn)");
+  if(!/m\.userData\.anim=U; m\.material\.userData\.anim=U;/.test(am)) cerr.push("the kit's material and its depth material do not share the mesh's uniforms");
+  if(!/"if\(uAnimAmp>0\.0&&aPart>0\.5\)\{"/.test(src)||!/anM=clamp\(uAnimAmp,0\.0,1\.0\)/.test(src)) cerr.push("the hook's branch is not off at amplitude 0, or the amplitude is not clamped to the envelope's 1");
+  if(!/renderer\.info\.reset\(\); cullFrameStart\(\);/.test(fn("renderFrameNow")||"")) cerr.push("the frame's culling counts are not reset with renderer.info");
+  if(!/return Math\.min\(window\.devicePixelRatio\|\|1, lowTier\?1:2\);/.test(src)||!/sun\.castShadow=!lowTier;/.test(src)) cerr.push("lowTier's density (1.0) or its shadow setting (none) changed (decision 236)");
+  cerr.forEach(e=>console.log("  ! "+e));
+  console.log("culling and the hooks (decisions 249 (a), 244 (a), 250 (b)): "+(cerr.length?cerr.length+" wrong":"every block's instanced meshes culled by their own bounds, refreshed by version, count and geometry, the shared geometries' bounds untouched, nothing hidden, r128's test for the rest; culling and the gait's uniforms switched only by the self-test; the hook after begin_vertex on the kit's material and its depth material, inert at amplitude 0; lowTier as decision 236"));
+  if(cerr.length) process.exitCode=1;
 }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */

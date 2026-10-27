@@ -26,14 +26,15 @@ class Obj extends REAL.Object3D{}
 function attr(n,item){const a={count:n,array:new Float32Array(n*item),needsUpdate:false,
   getX:i=>a.array[i*item],getY:i=>a.array[i*item+1],getZ:i=>a.array[i*item+2],
   setY(i,v){a.array[i*item+1]=v},setXYZ(i,x,y,z){a.array[i*item]=x;a.array[i*item+1]=y;a.array[i*item+2]=z},set(x){a.array.set(x)}};return a;}
-class Geo{constructor(n=12){this.attributes={position:attr(n,3),normal:attr(n,3),color:attr(n,3)};this.index={};}
+let GEON=0;   /* Stage 8, 8D: a geometry's uuid, as three's (CULL.geo and ANIM.env are keyed by it) */
+class Geo{constructor(n=12){this.attributes={position:attr(n,3),normal:attr(n,3),color:attr(n,3)};this.index={};this.uuid="geo-"+(++GEON);}
  rotateX(){return this}
  toNonIndexed(){ if(!this.index) console.warn("THREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed."); this.index=null; return this }
  computeVertexNormals(){}
  setAttribute(k,v){this.attributes[k]=v;return this} setIndex(i){this.index=Array.isArray(i)?{array:i,count:i.length}:i;return this}   /* as three's: it keeps the index (Stage 8, 8B: groundPatch rewrites its own) */
  setFromPoints(){return this} setDrawRange(){return this} dispose(){}}
 const stub={
- Vector3:REAL.Vector3, Color:Col, Object3D:Obj, Group:Obj,
+ Vector3:REAL.Vector3, Color:Col, Object3D:Obj, Group:Obj, Sphere:REAL.Sphere, Frustum:REAL.Frustum,   /* Sphere, Frustum: Stage 8, 8D's culling, r128's own */
  Spherical:REAL.Spherical,
  Scene:class extends Obj{},
  PerspectiveCamera:REAL.PerspectiveCamera,
@@ -73,8 +74,11 @@ const stub={
  Sprite:class extends Obj{constructor(m){super();this.material=m;this.renderOrder=0}},
  InstancedMesh:class extends Obj{constructor(g,m,c){super();this.geometry=g;this.material=m;this.count=c;
      this.instanceColor={needsUpdate:false};
-     /* as r128: count x 16 floats, zero until set; get/setMatrixAt read and write them */
-     this.instanceMatrix={array:new Float32Array(c*16),itemSize:16,count:c,needsUpdate:false}}
+     /* as r128: count x 16 floats, zero until set; get/setMatrixAt read and write them; needsUpdate=true moves its version, as a BufferAttribute's
+        does (Stage 8, 8D: the culling bounds are refreshed by it) */
+     this.isInstancedMesh=true;
+     const im={array:new Float32Array(c*16),itemSize:16,count:c,version:0}; Object.defineProperty(im,"needsUpdate",{set(v){ if(v===true) im.version++; }});
+     this.instanceMatrix=im;}
    setMatrixAt(i,m){m.toArray(this.instanceMatrix.array,i*16)} getMatrixAt(i,m){m.fromArray(this.instanceMatrix.array,i*16)}
    setColorAt(){}},
  DirectionalLight:class extends Obj{constructor(c,i){super();this.color=new Col(c);this.intensity=i;
@@ -212,6 +216,20 @@ try{
         if(MLS.moving||!MLS.fromMotion||MLS.fresh) throw new Error("the stabiliser: not at rest after the motion once the hold is over"); }
       RM=false;
       if(moving<18||!fades) throw new Error("the stabiliser: "+moving+" of 20 passes read as moving, "+fades+" with fades");
+      /* Stage 8, 8D prerequisite (the audit of 8C): an item held hidden or still fading in while the view moves, given a priority the stabiliser
+         never holds (the selection; the keyboard's focus, document.activeElement), takes its state at once: drawn, its alpha 1 in that pass */
+      { let prot=0; const idle=()=>{ for(const k in ML.items){ const it=ML.items[k]; if(it.eFrame===ML.frame&&it.fid&&FORMATIONS[it.fid]&&!it.keep&&(it.held||(it.state==="on"&&it.fa<1))) return it; } return null; };
+        for(const how of ["selection","focus"]){
+          let it=null; for(let f=1;f<=12&&!it;f++){ T+=33; lastInput=T; landCam.position.x+=0.4; orbitTarget.x+=0.4; landCam.updateMatrixWorld(); pass(); if(MLS.fadeOn) it=idle(); }
+          if(!it) throw new Error("the stabiliser: no item held or fading in while moving, for the "+how+" check");
+          const fa0=+it.fa.toFixed(2);
+          if(how==="selection") select("f",it.fid); else document.activeElement=it.el;
+          T+=33; lastInput=T; landCam.position.x+=0.4; orbitTarget.x+=0.4; landCam.updateMatrixWorld(); pass();
+          if(!MLS.fadeOn) throw new Error("the stabiliser: fades off in the "+how+" check's pass");
+          if(it.eFrame===ML.frame&&it.state==="on"){ prot++; if(it.fa!==1||it.el.style.opacity!=="") throw new Error("the stabiliser: "+it.key+" given the "+how+" is drawn at alpha "+it.fa+" (from "+fa0+"), not at once"); }
+          select(null,null); delete document.activeElement; }
+        if(!prot) throw new Error("the stabiliser: no item given a priority was drawn in its pass, so its opacity was not checked");
+        T+=1000; pass(); }
       lastInput=T; const b=[mlBand(200),mlBand(214),mlBand(217)]; lastInput=-1e9; b.push(mlBand(214));
       if(b.join(",")!=="200,200,217,214") throw new Error("the band: "+b.join(",")+" (want 200,200,217,214)");
       mlReset("test"); pass(); if(!MLS.fresh) throw new Error("the stabiliser: a reset does not give a fresh view");
@@ -1197,6 +1215,50 @@ try{
         if(shown!==want) bad.push(id+": "+shown+" standards with one battalion shown, "+want+" belong to it"); } });
     if(!n||bad.length) throw new Error("standards: "+bad.slice(0,4).join("; "));
     console.log("standards: "+n+" on the blocks as their colours entries rule, none on headquarters or batteries, a detachment's taken with its battalions OK"); }
+  /* Stage 8, implementation PR 8D (decisions 249 (a), 244 (a); docs/STAGE8_SPEC.md section 16): a dry run of culling and the hooks with three
+     r128's own Sphere, Frustum and Matrix4: every block's instanced meshes carry their own bounds and are culled by them, the kit's hooked on
+     its material and its own depth material with the mesh's uniforms at 0; three's frustum test reads those bounds (r128's own for any other
+     object); the bounds hold every instance, are refreshed when three's version of the instance matrices moves (a moved instance then held)
+     and not otherwise; a mesh behind the eye is culled and stays visible; the hook's text after begin_vertex with the atmosphere's uniforms */
+  { const bad=[]; let nm=0, nk=0, held=0; const F=new THREE.Frustum(), M=new THREE.Matrix4(), Mi=new THREE.Matrix4(), S=new THREE.Sphere(), V=new THREE.Vector3();
+    camera.updateMatrixWorld(); F.setFromProjectionMatrix(M.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse));
+    const inside=(o)=>{ const cl=o.userData.cull, G=cullGeo(o.geometry), A=o.instanceMatrix.array, n=Math.min(o.count,A.length/16);
+      for(let i=0;i<n;i++){ Mi.fromArray(A,i*16); V.set(G.c[0],G.c[1],G.c[2]).applyMatrix4(Mi); const r=(G.r+cl.env)*Mi.getMaxScaleOnAxis();
+        if(V.distanceTo(cl.s.center)+r>cl.s.radius*(1+1e-6)+1e-6) return false; } return true; };
+    Object.keys(units).forEach(id=>{ const b=units[id].block; if(!b) return; b.updateMatrixWorld(true); b.traverse(o=>{ if(!o.isInstancedMesh) return; nm++;
+      const cl=o.userData.cull; if(!cl){ bad.push(id+": an instanced mesh without bounds"); return; }
+      if(o.frustumCulled!==true||CULL.meshes.indexOf(o)<0) bad.push(id+": an instanced mesh not culled by its bounds");
+      if(o.geometry.attributes.aPart){ nk++; const U=o.userData.anim;
+        if(!U||o.material.onBeforeCompile!==animHook||o.material.userData.anim!==U||!o.customDepthMaterial||o.customDepthMaterial.onBeforeCompile!==animHook||o.customDepthMaterial.userData.anim!==U||o.customDepthMaterial.depthPacking!==THREE.RGBADepthPacking)
+          bad.push(id+": a kit mesh not hooked on its material and its own depth material");
+        else if(U.uAnimAmp.value!==0||U.uAnimPhase.value!==0) bad.push(id+": its uniforms not 0"); }
+      const v0=o.visible; F.intersectsObject(o);
+      if(o.count>0){ if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count) bad.push(id+": its bounds not made at the test"); else if(!inside(o)) bad.push(id+": an instance outside its bounds"); else held++; }
+      if(o.visible!==v0) bad.push(id+": the test changed visible"); }); });
+    /* invalidation and the eye, on a mesh of the test's own (the stub's ground has no heights, so the blocks' world matrices here are not
+       finite): two instances 40 units apart, given bounds as cullBlock gives them, through the app's own test */
+    { const g=new THREE.BoxGeometry(1,1,1), tm=new THREE.InstancedMesh(g,new THREE.MeshStandardMaterial({}),2), A=new THREE.Matrix4();
+      A.makeTranslation(-20,0,0); tm.setMatrixAt(0,A); A.makeTranslation(20,0,0); tm.setMatrixAt(1,A); tm.instanceMatrix.needsUpdate=true;
+      tm.userData.cull={s:new THREE.Sphere(), ver:-1, n:-1, g:null, env:0, id:"test"}; tm.frustumCulled=true; tm.position.set(100,5,100); tm.updateMatrixWorld(true);
+      const cam=new REAL.PerspectiveCamera(50,16/9,0.5,5000), fr=c=>{ c.updateMatrixWorld(true); return new THREE.Frustum().setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(c.projectionMatrix,c.matrixWorldInverse)); };
+      cam.position.set(100,35,-800); cam.lookAt(100,35,-1700); const away=fr(cam).intersectsObject(tm);
+      cam.lookAt(100,5,100); const r0=CULL.total.refresh, toward=fr(cam).intersectsObject(tm), again=fr(cam).intersectsObject(tm);
+      if(away||!toward||!tm.visible) bad.push("the test's mesh behind the eye "+(away?"drawn":"culled")+", before it "+(toward?"drawn":"culled")+", visible "+tm.visible);
+      if(CULL.total.refresh!==r0) bad.push("an unchanged mesh's bounds refreshed again");
+      if(Math.abs(tm.userData.cull.s.radius-20)>1e-9||tm.userData.cull.s.center.length()>1e-9) bad.push("the test's bounds not its two instances' ("+JSON.stringify(tm.userData.cull.s)+")");
+      A.makeTranslation(500,0,0); tm.setMatrixAt(1,A); tm.instanceMatrix.needsUpdate=true; fr(cam).intersectsObject(tm);
+      if(CULL.total.refresh!==r0+1||Math.abs(tm.userData.cull.s.radius-260)>1e-9) bad.push("a moved instance did not refresh the bounds ("+JSON.stringify(tm.userData.cull.s)+")");
+      tm.count=1; fr(cam).intersectsObject(tm); if(CULL.total.refresh!==r0+2||tm.userData.cull.s.radius!==0) bad.push("a count change did not refresh the bounds");
+      tm.count=0; if(fr(cam).intersectsObject(tm)) bad.push("a mesh with no instance to draw not culled"); }
+    /* another object: r128's own test (the geometry's sphere through its world matrix) */
+    { const g=new THREE.Mesh({boundingSphere:new THREE.Sphere(new THREE.Vector3(0,0,0),1)},{}); g.updateMatrixWorld(); if(typeof F.intersectsObject(g)!=="boolean") bad.push("r128's own test not kept for another object"); }
+    /* the hook's text */
+    { const sh={uniforms:{},vertexShader:"#include <common>\nvoid main(){\n#include <begin_vertex>\n#include <project_vertex>\n}"}, mt={userData:{anim:{uAnimPhase:{value:0},uAnimAmp:{value:0}}},isMeshDepthMaterial:false};
+      animHook.call(mt,sh); const vs=sh.vertexShader;
+      if(vs.indexOf("#include <begin_vertex>\n"+ANIM.body)<0||vs.indexOf("#include <common>\n"+ANIM.decl)<0||vs.indexOf("#include <project_vertex>")<vs.indexOf(ANIM.body)) bad.push("the hook is not after begin_vertex and before the projection");
+      if(sh.uniforms.uAnimAmp!==mt.userData.anim.uAnimAmp||!Object.keys(ATMO.u).every(k=>sh.uniforms[k]===ATMO.u[k])) bad.push("the hook does not give the mesh's uniforms and the atmosphere's"); }
+    if(!nm||!nk||bad.length) throw new Error("culling and the hooks: "+(bad.length?bad.slice(0,5).join("; "):nm+" meshes, "+nk+" kit"));
+    console.log("culling and the hooks: "+nm+" instanced meshes on the blocks bounded and culled by their own bounds ("+held+" with instances, each held), "+nk+" kit meshes hooked on both materials at 0; a test mesh behind the eye culled and still visible, before it drawn, its bounds refreshed by a moved instance and a count, not otherwise, culled with none to draw; the hook after begin_vertex OK"); }
 
   /* twelve atlas cells, the three photographs present, fields routed by crop */
   if(_atlasCanvas.height!==1536) throw new Error("atlas is not three rows of cells: "+_atlasCanvas.height);

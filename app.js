@@ -914,10 +914,47 @@ function kitLead(parts){ var b=null; (parts||[]).forEach(function(p){ if(!b||p.s
    the rest). FIG holds the generic kit, which is also the standard's reference height (figureTop, decision 26 until 6D). */
 var FIG=null, KIT_GEO={}, _kitShapes=null;
 function kitBox(w,h,d){ return new THREE.BoxGeometry(w,h,d); }
-function kitPart(geo,p,s,rot,col){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot||[0,0,0],col:col}; }
-/* merges parts into one geometry with vertex colours; colour undefined = white (takes the instance colour) */
-function kitMerge(parts){
-  var P=[],N=[],C=[], m=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(), v=new THREE.Vector3(), nrm=new THREE.Vector3();
+function kitPart(geo,p,s,rot,col,part){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot||[0,0,0],col:col,part:part}; }
+/* ---- Stage 8, implementation PR 8D (decisions 244 (a), 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 4.3, 8.4 and 16): the kit's parts, for
+   8E's gait ----
+   Every vertex of the figure kit's geometries (the coats, a man's fixed parts, a rider's, a horse) carries the part it belongs to, aPart (one
+   float a vertex, in the geometry: the figure's own frame, feet at y 0, facing +z, in kit units, before the instance's matrix). A part swings
+   about its joint, the line along the figure's x through (y, z) = (py, pz), by an angle A x amp x sin(phase + 2 pi off), and the whole figure
+   rises by bob x amp x |sin(phase)|, where phase and amp are the mesh's two uniforms (ANIM's hook, below). ANIM.PART is the table, each value a
+   DESIGN value carried from Part A's prototype (f-gait, docs/STAGE8_SPEC.md section 4.3) with its joints set on this kit's own boxes; 8E sets
+   the rule that drives phase and amp, and may retune the table. In 8D amp is 0 on every mesh: nothing moves (the hook draws the rest pose
+   exactly), and no code path but the self-test's controlled check and its mutations sets it. Part 0: nothing moves (none of the kit's vertices
+   is part 0 since 8D; the gear and the standards have no aPart). The parts: 1 and 2 a man's left and right legs, 3 his left arm (the right
+   holds the musket, which is drawn with his body), 10 the rest of a man; 5-8 a horse's legs (left fore, right fore, left hind, right hind: the
+   walk's four beats), 11 the rest of a horse; 12 a rider (he rises with his horse; his legs are along it). animEnv(g) (kept in ANIM.env): the largest
+   displacement any vertex of geometry g can take for any phase and any amp in [0, 1] (the chord of its largest swing about its joint, plus its
+   bob): the envelope the culling bounds are widened by (CULL), so that 8E's gait never needs them changed */
+var ANIM={PART:{
+  1:{A:0.42, off:0,    py:0.62, pz:0,     bob:0.022},   2:{A:0.42, off:0.5,  py:0.62, pz:0,     bob:0.022},
+  3:{A:0.30, off:0.5,  py:1.10, pz:0.02,  bob:0.022},  10:{A:0,    off:0,    py:0,    pz:0,     bob:0.022},
+  5:{A:0.38, off:0.25, py:0.62, pz:0.40,  bob:0.025},   6:{A:0.38, off:0.75, py:0.62, pz:0.40,  bob:0.025},
+  7:{A:0.38, off:0,    py:0.62, pz:-0.40, bob:0.025},   8:{A:0.38, off:0.5,  py:0.62, pz:-0.40, bob:0.025},
+ 11:{A:0,    off:0,    py:0,    pz:0,     bob:0.025},  12:{A:0,    off:0,    py:0,    pz:0,     bob:0.025}},
+  env:{}, built:0, depth:0};
+/* where a vertex of part k stands at a phase and amp (the hook's arithmetic in JavaScript: the self-test's controlled check reads it) */
+function animAt(k,x,y,z,ph,amp,out){
+  out=out||[0,0,0]; var p=ANIM.PART[k]; if(!p||!(amp>0)){ out[0]=x; out[1]=y; out[2]=z; return out; }
+  amp=Math.min(1,amp); var a=amp*p.A*Math.sin(ph+6.2831853*p.off), c=Math.cos(a), s=Math.sin(a), yy=y-p.py, zz=z-p.pz;
+  out[0]=x; out[1]=p.py+yy*c-zz*s+amp*p.bob*Math.abs(Math.sin(ph)); out[2]=p.pz+yy*s+zz*c; return out;
+}
+/* the envelope of a geometry (kit units; 0 without parts), once per geometry */
+function animEnv(g){
+  if(!g||!g.attributes||!g.attributes.aPart) return 0;
+  if(ANIM.env[g.uuid]!==undefined) return ANIM.env[g.uuid];
+  var P=g.attributes.position.array, K=g.attributes.aPart.array, e=0;
+  for(var i=0;i<K.length;i++){ var p=ANIM.PART[Math.round(K[i])]; if(!p) continue;
+    var r=Math.hypot(P[i*3+1]-p.py,P[i*3+2]-p.pz); e=Math.max(e,2*r*Math.sin(p.A/2)+p.bob); }
+  return (ANIM.env[g.uuid]=e);
+}
+/* merges parts into one geometry with vertex colours; colour undefined = white (takes the instance colour). Since 8D each vertex also carries
+   its part (aPart: the part's own, else def) */
+function kitMerge(parts,def){
+  var P=[],N=[],C=[],K=[], m=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(), v=new THREE.Vector3(), nrm=new THREE.Vector3();
   var white=new THREE.Color(1,1,1);
   parts.forEach(function(pt){
     var g=pt.geo.index?pt.geo.toNonIndexed():pt.geo;
@@ -926,17 +963,18 @@ function kitMerge(parts){
     m.compose(new THREE.Vector3(pt.p[0],pt.p[1],pt.p[2]), q, new THREE.Vector3(pt.s[0],pt.s[1],pt.s[2]));
     var nm=new THREE.Matrix3().getNormalMatrix(m);
     var pa=g.attributes.position.array, na=g.attributes.normal.array;
-    var col=pt.col?lin(pt.col):white;
+    var col=pt.col?lin(pt.col):white, pk=pt.part!==undefined?pt.part:(def||0);
     for(var k=0;k<pa.length;k+=3){
       v.set(pa[k],pa[k+1],pa[k+2]).applyMatrix4(m); P.push(v.x,v.y,v.z);
       nrm.set(na[k],na[k+1],na[k+2]).applyMatrix3(nm).normalize(); N.push(nrm.x,nrm.y,nrm.z);
-      C.push(col.r,col.g,col.b);
+      C.push(col.r,col.g,col.b); K.push(pk);
     }
   });
   var out=new THREE.BufferGeometry();
   out.setAttribute("position",new THREE.Float32BufferAttribute(P,3));
   out.setAttribute("normal",new THREE.Float32BufferAttribute(N,3));
   out.setAttribute("color",new THREE.Float32BufferAttribute(C,3));
+  out.setAttribute("aPart",new THREE.Float32BufferAttribute(K,1));
   return out;
 }
 function kitShapes(){
@@ -972,12 +1010,12 @@ function kitHat(h,y){
    figure, docs/STAGE6_SPEC.md section 6.2) */
 function kitFootFixed(leg,head,gunner){
   var G=kitShapes(), M=KIT.mat, P=kitPart, B=kitBox;
-  var parts=[P(B(0.13,0.62,0.18),[-0.09,0.31,0],null,null,leg), P(B(0.13,0.62,0.18),[0.09,0.31,0],null,null,leg),
+  var parts=[P(B(0.13,0.62,0.18),[-0.09,0.31,0],null,null,leg,1), P(B(0.13,0.62,0.18),[0.09,0.31,0],null,null,leg,2),   /* the legs: parts 1 and 2 (8D) */
     P(G.head,[0,1.30,0],null,null,M.skin)].concat(kitHat(head,1.365));
   if(!gunner) parts.push(P(B(0.28,0.30,0.14),[0,0.96,-0.20],null,null,M.leather),            /* pack */
     P(B(0.045,1.25,0.045),[0.27,1.12,0.12],null,[0.18,0,0.10],M.wood),                         /* musket */
     P(B(0.03,0.32,0.03),[0.33,1.82,0.06],null,[0.18,0,0.10],M.metal));                         /* bayonet */
-  return kitMerge(parts);
+  return kitMerge(parts,10);
 }
 /* a rider without his coat: head, headgear, legs in the legwear, sabre; the cuirass over the coat where drawn */
 function kitRiderFixed(leg,head,cuir){
@@ -986,7 +1024,7 @@ function kitRiderFixed(leg,head,cuir){
     P(B(0.11,0.34,0.14),[-0.14,0.98,0.05],null,[0.5,0,0],leg), P(B(0.11,0.34,0.14),[0.14,0.98,0.05],null,[0.5,0,0],leg),
     P(B(0.03,0.95,0.03),[0.28,1.55,0.10],null,[-0.55,0,0.15],M.metal)]);                      /* sabre */
   if(cuir) parts.push(P(B(0.36,0.30,0.25),[0,1.38,0],null,null,M[cuir]));                    /* breast and back over the coat */
-  return kitMerge(parts);
+  return kitMerge(parts,12);
 }
 function kitHorse(col){
   var M=KIT.mat, P=kitPart, B=kitBox;
@@ -994,11 +1032,11 @@ function kitHorse(col){
     P(B(0.38,0.42,1.05),[0,0.78,0],null,null,col),
     P(B(0.22,0.44,0.24),[0,1.10,0.56],null,[0.5,0,0],col),                                     /* neck */
     P(B(0.18,0.20,0.36),[0,1.32,0.78],null,null,col),                                          /* head */
-    P(B(0.10,0.62,0.10),[-0.13,0.31,0.40],null,null,col), P(B(0.10,0.62,0.10),[0.13,0.31,0.40],null,null,col),
-    P(B(0.10,0.62,0.10),[-0.13,0.31,-0.40],null,null,col), P(B(0.10,0.62,0.10),[0.13,0.31,-0.40],null,null,col),
+    P(B(0.10,0.62,0.10),[-0.13,0.31,0.40],null,null,col,5), P(B(0.10,0.62,0.10),[0.13,0.31,0.40],null,null,col,6),     /* the legs: parts 5-8 (8D) */
+    P(B(0.10,0.62,0.10),[-0.13,0.31,-0.40],null,null,col,7), P(B(0.10,0.62,0.10),[0.13,0.31,-0.40],null,null,col,8),
     P(B(0.06,0.34,0.08),[0,0.80,-0.56],null,[0.6,0,0],M.black),                                /* tail */
     P(B(0.30,0.08,0.44),[0,1.01,0],null,null,M.leather)                                        /* saddle */
-  ]);
+  ],11);
 }
 /* one cached geometry per kind and class of drawing: "foot" {leg, head, gunner}, "rider" {leg, head, cuirass}, "horse" {col} */
 function kitGeo(kind,o){
@@ -1015,13 +1053,13 @@ function figKit(){
     /* the coats: they take the instance colour */
     infCoat: kitMerge([
       P(B(0.36,0.56,0.24),[0,0.90,0]),                                    /* torso */
-      P(B(0.10,0.48,0.12),[-0.24,0.86,0.02]),                             /* left arm */
+      P(B(0.10,0.48,0.12),[-0.24,0.86,0.02],null,null,undefined,3),       /* left arm: part 3 (8D) */
       P(B(0.10,0.48,0.12),[ 0.24,0.88,0.06],[1,1,1],[-0.35,0,0])          /* right arm, holding the musket */
-    ]),
+    ],10),
     rider: kitMerge([
       P(B(0.32,0.50,0.22),[0,1.30,0]),                                    /* coat */
       P(B(0.10,0.40,0.12),[-0.22,1.26,0]), P(B(0.10,0.40,0.12),[0.22,1.28,0.04],null,[-0.4,0,0])
-    ]),
+    ],12),
     /* the generic kit: the legwear's neutral, the plain cap, a brown horse */
     infFixed: kitGeo("foot",{leg:KIT.mat.legwear,head:"generic"}),
     horse: kitGeo("horse",{col:KIT.horse.brown}),
@@ -1467,6 +1505,120 @@ function placeStandards(g,sw,tilt){
   if(ud.finials) ud.finials.instanceMatrix.needsUpdate=true;
   stdCount(ud);
 }
+/* ---- Stage 8, implementation PR 8D: ANIM's hook on the kit's materials and on their shadow (decisions 244 (a), 250 (b);
+   docs/STAGE8_SPEC.md sections 4.3, 8.4 and 16) ----
+   One vertex hook, the same text in a kit mesh's own material and in its depth material (the shadow pass's), so that whatever pose 8E's gait
+   draws, the shadow casts that pose. It moves the vertex in the geometry's frame, right after three's begin_vertex (before the instance's
+   matrix, the projection and the depth's packing), by aPart and the mesh's two uniforms, uAnimPhase (radians) and uAnimAmp (clamped to [0, 1],
+   so that no vertex leaves the envelope animEnv gives the culling bounds). With uAnimAmp 0 the branch is not taken and the vertex is exactly
+   three's own: the pose, the light, the fog and the shadow as before 8D (the self-test holds the frame to the frame without the hook). The
+   uniforms belong to the mesh (m.userData.anim), shared by its two materials: 8E's rule will write them; in 8D nothing writes them but the
+   self-test's controlled check (and tools/stage8/mutate-8d.js). The atmosphere's uniforms are given first, as every material's own hook gives
+   them (atmoUniforms); the hook is one function, so every kit material shares one program and every kit depth material another (two programs
+   more than before 8D; ANIM.built and ANIM.depth count their compiles, again after a restored context) */
+function animGLSL(){
+  var f=function(v){ return (+v).toFixed(4); }, s=[];
+  Object.keys(ANIM.PART).forEach(function(k){ var p=ANIM.PART[k];
+    s.push((s.length?"else ":"")+"if(anK=="+k+".0){ anA="+f(p.A)+"; anO="+f(p.off)+"; anY="+f(p.py)+"; anZ="+f(p.pz)+"; anB="+f(p.bob)+"; }"); });
+  return ["if(uAnimAmp>0.0&&aPart>0.5){",
+    "  float anK=floor(aPart+0.5), anA=0.0, anO=0.0, anY=0.0, anZ=0.0, anB=0.0;",
+    "  "+s.join("\n  "),
+    "  float anM=clamp(uAnimAmp,0.0,1.0), anG=anM*anA*sin(uAnimPhase+6.2831853*anO), anC=cos(anG), anS=sin(anG);",
+    "  float anTy=transformed.y-anY, anTz=transformed.z-anZ;",
+    "  transformed.y=anY+anTy*anC-anTz*anS+anM*anB*abs(sin(uAnimPhase));",
+    "  transformed.z=anZ+anTy*anS+anTz*anC;",
+    "}"].join("\n");
+}
+ANIM.decl="attribute float aPart;\nuniform float uAnimPhase;\nuniform float uAnimAmp;";
+ANIM.body=animGLSL();
+function animHook(sh){
+  atmoUniforms(sh);
+  var U=this.userData&&this.userData.anim; if(!U) return;
+  sh.uniforms.uAnimPhase=U.uAnimPhase; sh.uniforms.uAnimAmp=U.uAnimAmp;
+  var v=sh.vertexShader;
+  if(v.indexOf("#include <common>")<0||v.indexOf("#include <begin_vertex>")<0) throw new Error("ANIM: a kit material's vertex shader has no common or begin_vertex chunk");
+  sh.vertexShader=v.replace("#include <common>","#include <common>\n"+ANIM.decl).replace("#include <begin_vertex>","#include <begin_vertex>\n"+ANIM.body);
+  if(this.isMeshDepthMaterial) ANIM.depth++; else ANIM.built++;
+}
+/* a kit mesh (its geometry has parts): the hook on its material and on its own depth material, sharing the mesh's uniforms */
+function animMesh(m){
+  if(!m.geometry||!m.geometry.attributes||!m.geometry.attributes.aPart||!m.material) return false;
+  var U={uAnimPhase:{value:0}, uAnimAmp:{value:0}};
+  m.userData.anim=U; m.material.userData.anim=U; m.material.onBeforeCompile=animHook;
+  var d=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}); d.userData.anim=U; d.onBeforeCompile=animHook;
+  m.customDepthMaterial=d; return true;
+}
+/* ---- Stage 8, implementation PR 8D (decision 249 (a); docs/STAGE8_SPEC.md sections 8.4, 10 and 16): the figure blocks culled by their own
+   bounds ----
+   three r128 never culls an InstancedMesh: its constructor sets frustumCulled false, because Frustum.intersectsObject tests the geometry's
+   bounding sphere through the mesh's world matrix, which for an instanced mesh is one instance's sphere at the mesh's origin (r151 later gave
+   InstancedMesh a sphere of its own; r128 has none). So every man, horse, gun and standard was drawn in both passes wherever the eye looked
+   (docs/STEP6_SPEC.md section 3.1). Since 8D every instanced mesh of a block carries the bounds of its own instances (userData.cull: a sphere
+   in the mesh's frame over every instance it draws, each instance's geometry's sphere through that instance's matrix, its radius widened by
+   the animation's envelope, animEnv), its frustumCulled is on, and three's frustum test reads that sphere, through the mesh's world matrix, for
+   such meshes only (the one change to r128's behaviour, below; every other object is tested as r128 tests it):
+   - in both of three's passes, each with its own frustum: the world pass the eye's, the shadow pass the sun's (WebGLShadowMap's, the box
+     placeLights fits to the view). A block outside the view but inside the sun's box still casts its shadow into the view; one outside the
+     sun's box can cast none (its depth would fall outside the map). Camera culling never hides a block (visible is not touched);
+   - the bounds are those of what the GPU draws: refreshed, at the test, when the mesh's instance matrices change (instanceMatrix.version, the
+     signal that uploads them; layoutFigs and placeStandards set it whenever a block moves, turns, re-seats, changes its shape or its battery
+     limbers), when its count changes (showBattalions, stdCount) or its geometry; so whoever renders, whenever, the test reads current bounds,
+     and an idle block costs one compare (CULL.frame counts the tests, the culled, the refreshes, their instances and time);
+   - the shared geometries' own bounds are never written (the kit's and the gear's geometries are shared by every block of their class): each
+     geometry's sphere is read once into CULL.geo;
+   - a mesh with no instance to draw (a count of 0: a cloth whose standards are not shown) is culled: before 8D three issued no draw call for
+     it (none for no instances) but set its program and buffers up in every pass;
+   - nothing else reads it: visible, the selection, the map layer, the dossiers, the history and the simulation are untouched, and the checks
+     that read the blocks (the figures' seating, 6C, 6D) read every block, drawn or not.
+   CULL.on false (setCull; a measurement switch, as CONF.none: the app never sets it) draws every block in both passes, as before 8D */
+var CULL={on:true, meshes:[], geo:{}, tmp:new Float32Array(1024), frame:{tests:0, culled:0, refresh:0, inst:0, ms:0}, total:{refresh:0, inst:0, ms:0}};
+var _cullS=THREE.Sphere?new THREE.Sphere():null;
+/* a geometry's own sphere (its box's centre, its farthest vertex), read once */
+function cullGeo(g){
+  var s=CULL.geo[g.uuid]; if(s) return s;
+  var A=g.attributes.position.array, n=A.length/3, lo=[1e30,1e30,1e30], hi=[-1e30,-1e30,-1e30], i, k;
+  for(i=0;i<n;i++) for(k=0;k<3;k++){ var v=A[i*3+k]; if(v<lo[k]) lo[k]=v; if(v>hi[k]) hi[k]=v; }
+  var c=[(lo[0]+hi[0])/2,(lo[1]+hi[1])/2,(lo[2]+hi[2])/2], r2=0;
+  for(i=0;i<n;i++){ var dx=A[i*3]-c[0], dy=A[i*3+1]-c[1], dz=A[i*3+2]-c[2]; r2=Math.max(r2,dx*dx+dy*dy+dz*dz); }
+  return (CULL.geo[g.uuid]={c:c, r:Math.sqrt(r2)});
+}
+/* the mesh's sphere over its first count instances, in the mesh's frame */
+function cullRefresh(m,cl){
+  var t0=performance.now(), G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), gx=G.c[0], gy=G.c[1], gz=G.c[2], rr=G.r+cl.env;
+  if(CULL.tmp.length<n*4) CULL.tmp=new Float32Array(n*8);
+  var X=CULL.tmp, lx=1e30, ly=1e30, lz=1e30, hx=-1e30, hy=-1e30, hz=-1e30, i;
+  for(i=0;i<n;i++){ var o=i*16, e0=A[o], e1=A[o+1], e2=A[o+2], e4=A[o+4], e5=A[o+5], e6=A[o+6], e8=A[o+8], e9=A[o+9], e10=A[o+10];
+    var x=e0*gx+e4*gy+e8*gz+A[o+12], y=e1*gx+e5*gy+e9*gz+A[o+13], z=e2*gx+e6*gy+e10*gz+A[o+14];
+    var r=rr*Math.sqrt(Math.max(e0*e0+e1*e1+e2*e2, e4*e4+e5*e5+e6*e6, e8*e8+e9*e9+e10*e10));
+    X[i*4]=x; X[i*4+1]=y; X[i*4+2]=z; X[i*4+3]=r;
+    if(x-r<lx) lx=x-r; if(y-r<ly) ly=y-r; if(z-r<lz) lz=z-r; if(x+r>hx) hx=x+r; if(y+r>hy) hy=y+r; if(z+r>hz) hz=z+r; }
+  var cx=(lx+hx)/2, cy=(ly+hy)/2, cz=(lz+hz)/2, R=0;
+  for(i=0;i<n;i++){ var d=Math.sqrt((X[i*4]-cx)*(X[i*4]-cx)+(X[i*4+1]-cy)*(X[i*4+1]-cy)+(X[i*4+2]-cz)*(X[i*4+2]-cz))+X[i*4+3]; if(d>R) R=d; }
+  if(n>0) cl.s.center.set(cx,cy,cz); else cl.s.center.set(0,0,0);
+  cl.s.radius=n>0?R:-1; cl.ver=m.instanceMatrix.version; cl.n=m.count; cl.g=m.geometry;
+  var dt=performance.now()-t0; CULL.frame.refresh++; CULL.frame.inst+=n; CULL.frame.ms+=dt; CULL.total.refresh++; CULL.total.inst+=n; CULL.total.ms+=dt;
+}
+/* three's frustum test for a mesh with its own bounds: refreshed if its instances changed, then its sphere through its world matrix */
+function cullTest(fr,o,cl){
+  if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count||cl.g!==o.geometry) cullRefresh(o,cl);
+  CULL.frame.tests++;
+  if(cl.n<=0){ CULL.frame.culled++; return false; }
+  _cullS.copy(cl.s).applyMatrix4(o.matrixWorld);
+  var r=fr.intersectsSphere(_cullS); if(!r) CULL.frame.culled++;
+  return r;
+}
+(function(){ var F=THREE.Frustum&&THREE.Frustum.prototype; if(!F||F._ausR128) return; var r128=F.intersectsObject;
+  F.intersectsObject=function(o){ var cl=o.userData&&o.userData.cull; return cl?cullTest(this,o,cl):r128.call(this,o); };
+  F._ausR128=r128; })();
+/* a block's instanced meshes: the hook where they have parts, and their own bounds */
+function cullBlock(g,id){
+  if(!_cullS) return;
+  g.traverse(function(o){ if(!o.isInstancedMesh) return; animMesh(o);
+    o.userData.cull={s:new THREE.Sphere(), ver:-1, n:-1, g:null, env:animEnv(o.geometry), id:id};
+    o.frustumCulled=CULL.on; CULL.meshes.push(o); });
+}
+function setCull(on){ CULL.on=!!on; CULL.meshes.forEach(function(m){ m.frustumCulled=CULL.on; }); requestRender(2); }
+function cullFrameStart(){ var F=CULL.frame; F.tests=0; F.culled=0; F.refresh=0; F.inst=0; F.ms=0; }
 /* multiply a canvas's alpha by a round window that is zero at every edge, so whatever overlaps
    inside it the sprite can never show a straight side */
 function softWindow(x,n){
@@ -2130,6 +2282,7 @@ function buildFormations(){
       var g=makeBlock(f,id);
       g.visible=false; scene.add(g);
       rec.block=g;
+      cullBlock(g,id);   /* Stage 8, 8D (decision 249 (a)): each instanced mesh's own bounds, and the kit's hook (CULL, ANIM) */
 
       /* powder smoke where a formation is fighting: since Stage 4E a few puffs along its front (SMOKE) */
       var sm=new THREE.Group(); sm.visible=false;
@@ -3277,7 +3430,7 @@ function renderFrame(){
   renderFrameNow();
 }
 function renderFrameNow(){
-  renderer.info.reset();
+  renderer.info.reset(); cullFrameStart();   /* Stage 8, 8D: the frame's culling counts (CULL.frame) */
   /* the guard: anything that placed the eye without clampCamera() is counted and corrected (the landscape's eye: the paper
      map's plan camera stands far above the flat sheet) */
   if(landCam.position.y<camFloor(landCam.position.x,landCam.position.z)-1e-6){
@@ -3315,6 +3468,7 @@ function paintDevStats(now){
     "post+labels  "+(T.calls-W.calls)+" calls (labels "+(T.calls-DEV.post.calls)+")",
     "seating  "+se.toFixed(1)+" blocks/s ("+SEAT_STATS.blocks+" since load)",
     "map layer   "+ML.stats.placed+" placed   "+ML.stats.dropped+" dropped   "+ML.stats.leaders+" leaders   "+ML.stats.occluded+" behind the ground   "+ML.stats.nodes+" nodes",
+    "culling   "+(CULL.on?"on":"off")+"   "+CULL.frame.culled+" of "+CULL.frame.tests+" mesh tests culled (both passes)   bounds refreshed "+CULL.frame.refresh+" ("+CULL.frame.inst+" instances, "+CULL.frame.ms.toFixed(2)+" ms)",   /* Stage 8, 8D */
     "camera   "+(c.y-camGround(c.x,c.z)).toFixed(2)+" above ground   clamps "+CAM.clamps+"   bypassed "+CAM.violations,
     "memory   "+mi.geometries+" geometries   "+mi.textures+" textures   "+(renderer.info.programs?renderer.info.programs.length:0)+" programs"
   ].join("\n");
@@ -4970,14 +5124,18 @@ function mlLayout(){
   }
   /* Stage 8, 8C: what each item held, for the next pass (a place the layout gave it, against its anchor; not the focus's forced place), and
      its fade: from its alpha toward 1 if drawn, 0 if not, by the wall-clock time since its last pass over FADE_MS; at once where fades are off
-     (a fresh view, reduced motion) or the item is new to the layer. A leaving item with alpha left is a remnant at its last drawn place */
+     (a fresh view, reduced motion) or the item is new to the layer. A leaving item with alpha left is a remnant at its last drawn place.
+     Stage 8, 8D prerequisite (the audit of 8C): the fade is the stabiliser's, and what the stabiliser never holds takes its state at once: the
+     never-dropped items (decision 39: the selection, the hovered, the highlighted family, live events), the item with the keyboard's focus and
+     its forced place (A-2). Until 8D such an item, hidden or fading when it gained that priority, was placed at once but drawn at the fade's
+     alpha (0.09 a frame after its focus, in the audit's probe). Its presentation opacity (it.op) applies as before */
   var fading=0;
   elig.forEach(function(it){ var on=it.state==="on", laid=on&&!it.forced&&!!it.rect;
     it.mem=laid?{dx:it.rect[0]-it.sx, dy:it.rect[1]-it.sy, w:it.w, h:it.h, lead:it.lead, mode:it.mode, oy:it.oy}:null; it.wasOn=laid;
     if(it.faFrame!==ML.frame-1){ it.fa=0; it.fat=now; it.rem=null; }
     it.faFrame=ML.frame;
-    var tg=on?1:0;
-    if(!MLS.fadeOn) it.fa=tg; else if(tg!==it.fa){ var df=Math.max(0,now-it.fat)/MLS.FADE_MS; it.fa=tg>it.fa?Math.min(1,it.fa+df):Math.max(0,it.fa-df); }
+    var tg=on?1:0, prot=it.keep||it.forced||it.el===foc;
+    if(!MLS.fadeOn||prot) it.fa=tg; else if(tg!==it.fa){ var df=Math.max(0,now-it.fat)/MLS.FADE_MS; it.fa=tg>it.fa?Math.min(1,it.fa+df):Math.max(0,it.fa-df); }
     it.fat=now;
     it.rem=!on&&it.fa>0&&it.lastOn?it.lastOn:null;
     if(it.fa>0&&it.fa<1) fading++;
@@ -11617,6 +11775,219 @@ var AUSTERLITZ_DEBUG=(function(){
         bad.length?bad.join("; "):"three off-on cycles: built "+b0+" time(s) before and after, "+n0+" render targets made before and after, none disposed ("+tx0+" textures), the same scene target, composite material and quad");
     })();
 
+    /* Stage 8, implementation PR 8D (decisions 249 (a), 244 (a), 250 (b); docs/STAGE8_SPEC.md section 16): the blocks culled by their own bounds,
+       and the kit's hooks for 8E's gait. Self-contained (tools/stage8/mutate-8d.js runs it on copies with one rule broken: from this comment to
+       the 8C block's). At each display factor: every instanced mesh's bounds hold each of its instances; over a sweep of views at 09:30 (the vantages, the
+       low Pratzen view and the close view of Sokolnitz, every formation drawn as figures taken out of the view by each of its four edges, and at
+       4x the eye level) a mesh is culled only when none of its instances is in the eye's frustum, and one whose block's centre is out of view with figures in it is
+       drawn (r128's own test, the geometry's sphere at the mesh's origin, would cull it); in an instrumented frame of the low Pratzen view and of
+       the close view of Sokolnitz the world pass draws exactly the meshes the eye's frustum holds and the shadow pass exactly those the sun's
+       holds (every mesh with an instance in the sun's box), and the frame is the frame without culling, pixel for pixel (both drawn from the same
+       state, read from the drawing buffer at once: 0 pixels differ on this machine, two renders of one state being equal). Apart, at 4x: the
+       bounds follow a block through its changes; a block out of view whose shadow falls in it; the hooks inert, and a controlled deformation */
+    (function(){
+      var keep8={t:clock, mode:mode, pres:presentation, f:DISPLAY.factor, pos:landCam.position.clone(), tgt:orbitTarget.clone(), fc:freeCam, cv:commandView, on:CULL.on};
+      var gl=renderer.getContext(), eyeF=new THREE.Frustum(), M4=new THREE.Matrix4(), S0=new THREE.Sphere(), S1=new THREE.Sphere(), V0=new THREE.Vector3(), Mi=new THREE.Matrix4();
+      function vis(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
+      function grab(){ renderFrame(); var w=gl.drawingBufferWidth, h=gl.drawingBufferHeight, b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
+      function diff(a,b){ if(!a||!b||a.length!==b.length) return -1; var n=0; for(var i=0;i<a.length;i+=4) if(a[i]!==b[i]||a[i+1]!==b[i+1]||a[i+2]!==b[i+2]) n++; return n; }
+      function frEye(){ camera.updateMatrixWorld(); return eyeF.setFromProjectionMatrix(M4.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse)); }
+      /* each instance's own sphere in the world (its geometry's, through its matrix and the mesh's, widened by the envelope) */
+      function eachInst(m,cb){ var G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), env=m.userData.cull.env, ms=m.matrixWorld.getMaxScaleOnAxis();
+        for(var i=0;i<n;i++){ Mi.fromArray(A,i*16); S1.center.set(G.c[0],G.c[1],G.c[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); S1.radius=(G.r+env)*Mi.getMaxScaleOnAxis()*ms; if(cb(i,S1)) return true; } return false; }
+      function worldS(m){ var cl=m.userData.cull; return S0.copy(cl.s).applyMatrix4(m.matrixWorld); }
+      /* the app's own answer for the eye (through three's frustum test, which refreshes stale bounds) */
+      function drawsFor(F,m){ return F.intersectsObject(m); }
+      function sweepAims(){ var L=[]; Object.keys(units).forEach(function(id){ var r=units[id]; if(r.block&&r.block.visible) L.push(id); }); return L; }
+      function aim(mp,dir,r){ var w=W(mp[0],mp[1]), y=displayHeight(w[0],w[1]), d=new THREE.Vector3(dir[0],dir[1],dir[2]).normalize().multiplyScalar(r);
+        placeCamera([w[0]+d.x,y+d.y,w[1]+d.z,w[0],y,w[1]]); syncViewOffset(true); }
+      function at(t,md,pres){ if(mode!==md) setMode(md); setPresentation(pres||"watch"); setClock(t,{instant:true,force:true,camera:false}); finishTween(); }
+      /* one frame drawn with the draws of the figure meshes recorded by pass */
+      function passes(){ var orig=renderer.renderBufferDirect, Wd=new Set(), Sd=new Set();
+        renderer.renderBufferDirect=function(c,sc,g,mt,ob){ if(ob&&ob.userData&&ob.userData.cull){ if(sc===null) Sd.add(ob); else if(sc===scene) Wd.add(ob); } return orig.apply(this,arguments); };
+        try{ renderFrame(); } finally{ renderer.renderBufferDirect=orig; }
+        return {W:Wd, S:Sd}; }
+      var LOW={map:[285,289], dir:[-1.0,0.13,0.18], r:70, t:590}, SOK={map:[210,362], dir:[-0.62,0.46,0.64], r:58, t:500}, hid8=[];
+      /* the eye at e looking at c, as a drag leaves it (no preset's re-framing), above its floor */
+      function look(e,c){ mlReset("placed"); tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.copy(e); orbitTarget.copy(c); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true); }
+      try{
+        setCommandView("none"); setCull(true);
+        DISPLAY.settings.forEach(function(fct){
+          var tag=" (at "+fmtFactor(fct)+"×)";
+          setDisplayFactor(fct); at(570,"terrain","watch"); settle(24,true);
+          /* (a) the bounds hold every instance, and the vertices of its first, middle and last instance in the world */
+          var aBad=[], aN=0, aV=0, F0=frEye();
+          CULL.meshes.forEach(function(m){ drawsFor(F0,m); var cl=m.userData.cull; if(cl.n<=0) return; aN++;
+            if(cl.ver!==m.instanceMatrix.version||cl.n!==m.count) aBad.push(cl.id+": its bounds not refreshed");
+            var S=worldS(m), R=S.radius*(1+1e-6)+1e-5;
+            eachInst(m,function(i,s){ if(S.center.distanceTo(s.center)+s.radius>R){ aBad.push(cl.id+" instance "+i+" outside by "+(S.center.distanceTo(s.center)+s.radius-S.radius).toExponential(2)); return true; } return false; });
+            var P=m.geometry.attributes.position, n=Math.min(m.count,m.instanceMatrix.array.length/16);
+            [0,Math.floor(n/2),n-1].forEach(function(i){ Mi.fromArray(m.instanceMatrix.array,i*16);
+              for(var v=0;v<P.count;v++){ V0.fromBufferAttribute(P,v).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); aV++; if(V0.distanceTo(S.center)>R){ aBad.push(cl.id+" a vertex of instance "+i+" outside"); break; } } }); });
+          ck("culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geometry's, through its matrix, widened by the animation's envelope) and every vertex of its first, middle and last instance inside the mesh's bounds"+tag,
+            aN>0&&!aBad.length, aN+" meshes with instances of "+CULL.meshes.length+" ("+CULL.meshes.filter(function(m){ return !!m.userData.anim; }).length+" with the kit's parts), "+aV+" vertices in the world"+(aBad.length?"; WRONG: "+aBad.slice(0,4).join("; "):""));
+          /* (b) the sweep: a mesh culled only when none of its instances is in the eye's frustum; a block whose centre is out of view with figures in it drawn */
+          var bBad=[], views=0, culled=0, tested=0, offC=0, ids=sweepAims();
+          function judge(label){ var F=frEye(); views++;
+            CULL.meshes.forEach(function(m){ if(!vis(m)||m.count<=0) return; tested++;
+              var dr=drawsFor(F,m), inV=eachInst(m,function(i,s){ return F.intersectsSphere(s); });
+              if(!dr){ culled++; if(inV) bBad.push(label+": "+m.userData.cull.id+" culled with an instance in view"); }
+              else if(inV){ var G=cullGeo(m.geometry); S1.center.set(G.c[0],G.c[1],G.c[2]).applyMatrix4(m.matrixWorld); S1.radius=G.r*m.matrixWorld.getMaxScaleOnAxis();
+                if(!F.intersectsSphere(S1)) offC++; } }); }   /* r128's own test (the geometry's sphere at the mesh's origin) would cull it */
+          Object.keys(VANTAGE).forEach(function(k){ placeCamera(VANTAGE[k]); syncViewOffset(true); judge("vantage "+k); });
+          aim(LOW.map,LOW.dir,LOW.r); judge("the low Pratzen view"); aim(SOK.map,SOK.dir,SOK.r); judge("close on Sokolnitz");
+          ids.forEach(function(id){ var p=posNow(id); if(!p) return;
+            [[-1,0],[1,0],[0,-1],[0,1]].forEach(function(e){ [0.75,1.0,1.25].forEach(function(k){
+              var w=W(p[0],p[1]), y=displayHeight(w[0],w[1]), d=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(42);
+              placeCamera([w[0]+d.x,y+d.y,w[1]+d.z,w[0],y,w[1]]); syncViewOffset(true); camera.updateMatrixWorld();
+              /* the target moved so that the formation stands at k of the view's half-width (or half-height) beyond the centre, by an edge */
+              var dist=landCam.position.distanceTo(orbitTarget), hh=Math.tan(camera.fov*Math.PI/360)*dist, hw=hh*camera.aspect;
+              var right=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0), up=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,1);
+              var sh=right.multiplyScalar(-e[0]*k*hw).add(up.multiplyScalar(-e[1]*k*hh));
+              landCam.position.add(sh); orbitTarget.add(sh); landCam.lookAt(orbitTarget); judge(id+" by the "+(e[0]<0?"left":e[0]>0?"right":e[1]<0?"bottom":"top")+" edge at "+k); }); }); });
+          if(fct===DISPLAY.defaultFactor){ setCommandView("fr"); eyeEnter(); judge("the eye level at Napoleon's headquarters"); eyeLeave(); setCommandView("none"); }
+          var bOk=isTrueScale()?!bBad.length:(culled>0&&offC>0&&!bBad.length);
+          ck("culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's frustum, and a block whose centre is out of view with figures in it is drawn (r128's own test would cull it)"+tag,
+            bOk, views+" views, "+tested+" mesh tests, "+culled+" culled, "+offC+" drawn with their centre out of view"+(isTrueScale()?" (at 1× the blocks are not drawn: decision 34)":"")+(bBad.length?"; WRONG: "+bBad.slice(0,4).join("; "):""));
+          /* (c) an instrumented frame in two views: each pass draws exactly what its frustum holds; the frame is the frame without culling */
+          var cBad=[], cN={w:0,s:0,sOnly:0}, px=[];
+          [["the low Pratzen view",LOW],["close on Sokolnitz",SOK]].forEach(function(V){
+            at(V[1].t,"terrain","watch"); settle(24,true); aim(V[1].map,V[1].dir,V[1].r); settle(4,true);
+            setCull(true); var P=passes(), Fe=frEye(), Fs=sun.shadow.getFrustum(), shadows=renderer.shadowMap.enabled&&sun.castShadow;
+            CULL.meshes.forEach(function(m){ if(!vis(m)||m.count<=0) return;
+              var inE=Fe.intersectsSphere(worldS(m)), inS=shadows&&m.castShadow&&Fs.intersectsSphere(worldS(m)), anyS=shadows&&m.castShadow&&eachInst(m,function(i,s){ return Fs.intersectsSphere(s); });
+              if(P.W.has(m)!==inE) cBad.push(V[0]+": "+m.userData.cull.id+(inE?" not drawn in the world pass though in view":" drawn in the world pass though out of view"));
+              if(shadows&&P.S.has(m)!==inS) cBad.push(V[0]+": "+m.userData.cull.id+(inS?" not drawn in the shadow pass though in the sun's box":" drawn in the shadow pass though out of it"));
+              if(anyS&&!P.S.has(m)) cBad.push(V[0]+": "+m.userData.cull.id+" has an instance in the sun's box and casts nothing");
+              if(P.W.has(m)) cN.w++; if(P.S.has(m)) cN.s++; if(P.S.has(m)&&!P.W.has(m)) cN.sOnly++; });
+            if(isTrueScale()&&(P.W.size||P.S.size)) cBad.push(V[0]+": a figure mesh drawn at 1×");
+            var A=grab(); setCull(false); var B=grab(); setCull(true); var A2=grab(); px.push(V[0]+" "+diff(A,B)+" (two renders of it "+diff(A,A2)+")");
+            if(diff(A,B)!==0||diff(A,A2)!==0) cBad.push(V[0]+": the frame differs from the frame without culling in "+diff(A,B)+" pixels"); });
+          ck("culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass draws exactly the meshes the eye's frustum holds and the shadow pass exactly those the sun's box holds (every mesh with an instance in it), and the frame is the frame without culling, pixel for pixel"+tag,
+            !cBad.length&&(isTrueScale()||(cN.w>0&&(cN.s>0||!sun.castShadow))), "world pass "+cN.w+" meshes, shadow pass "+cN.s+" ("+cN.sOnly+" of them out of the eye's view, casting); pixels differing "+px.join(", ")+(cBad.length?"; WRONG: "+cBad.slice(0,4).join("; "):""));
+        });
+        setDisplayFactor(DISPLAY.defaultFactor);
+        /* (d) the bounds follow the block: a change of shape, of the battalions shown, a battery's limbering, the factor, a move */
+        var dBad=[], dN=0;
+        function holds(id,label){ var r=units[id], F=frEye(); r.block.updateMatrixWorld(true);
+          r.block.traverse(function(o){ var cl=o.userData&&o.userData.cull; if(!cl) return; drawsFor(F,o); if(o.count<=0) return; dN++;
+            if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count) dBad.push(label+": "+id+"'s bounds not refreshed");
+            var S=worldS(o), R=S.radius*(1+1e-6)+1e-5; if(eachInst(o,function(i,s){ return S.center.distanceTo(s.center)+s.radius>R; })) dBad.push(label+": "+id+" an instance outside its bounds"); }); }
+        at(570,"terrain","watch"); settle(24,true); placeCamera(VANTAGE.field); syncViewOffset(true);
+        var inf=Object.keys(units).filter(function(id){ var u=units[id].block&&units[id].block.userData; return u&&u.showBattalions&&u.nBat>2&&units[id].block.visible; })[0];
+        if(inf){ var u=units[inf].block.userData, sw0=u.sw, sd0=u.sd, kb=u.shownBat;
+          holds(inf,"as drawn"); u.layout(sw0*1.6,sd0*0.5); holds(inf,"its shape changed"); u.layout(sw0,sd0);
+          u.showBattalions(Math.max(1,(kb||u.nBat)-1)); holds(inf,"a battalion fewer shown"); u.showBattalions(kb||u.nBat); holds(inf,"its battalions back"); }
+        else dBad.push("no infantry block to change");
+        /* the battery: the first clock (every half hour from 10:00) at which a block with a deployed and a limbered group is drawn */
+        var bat=null, tBat=null;
+        for(var tb=600;tb<=T_MAX&&!bat;tb+=30){ at(tb,"terrain","watch"); settle(8,true);
+          bat=Object.keys(units).filter(function(id){ var u=units[id].block&&units[id].block.userData; return u&&u.deployed&&units[id].block.visible; })[0]||null; if(bat) tBat=tb; }
+        if(bat){ var ub=units[bat].block.userData, dv=ub.deployed.visible;
+          ub.deployed.visible=false; ub.limbered.visible=true; holds(bat,"limbered at "+fmtClock(tBat)); ub.deployed.visible=true; ub.limbered.visible=false; holds(bat,"deployed at "+fmtClock(tBat));
+          ub.deployed.visible=dv; ub.limbered.visible=!dv; }
+        else dBad.push("no battery drawn at any half hour from 10:00");
+        at(570,"terrain","watch"); settle(24,true);
+        setDisplayFactor("model"); settle(8,true); if(inf) holds(inf,"at 10.33×"); setDisplayFactor(DISPLAY.defaultFactor); settle(8,true);
+        at(640,"terrain","watch"); settle(24,true); if(inf&&units[inf].block.visible) holds(inf,"moved by the clock");
+        ck("culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a battery limbering, the display factor and a move, each mesh's bounds are refreshed at its next test and hold its instances",
+          !dBad.length&&dN>0, dN+" mesh tests on "+(inf||"-")+" and "+(bat?bat+" (at "+fmtClock(tBat)+")":"-")+(dBad.length?"; WRONG: "+dBad.slice(0,4).join("; "):""));
+        /* (g) a block out of view whose shadow falls in it: found with the sun low (08:20), from the sun's side of the block, drawn in the shadow pass
+           only; hidden, the frame differs where its shadow lay (what culling by hiding would do); as culled, the frame is the frame without culling */
+        var gBad=[], gTxt="no view found";
+        at(500,"terrain","watch"); settle(24,true);
+        if(sun.castShadow&&renderer.shadowMap.enabled){
+          /* the sun's direction, and the ground direction the shadows fall in; from just past the block on that side the eye looks along it, so the
+             block stands behind the eye and its shadow before it */
+          var sd=new THREE.Vector3().subVectors(sun.position,sun.target.position).normalize(), shH=new THREE.Vector3(-sd.x,0,-sd.z).normalize(), found=null, gP=null;
+          Object.keys(units).some(function(id){ var r=units[id]; if(!r.block||!r.block.visible) return false; var u=r.block.userData; if(!u||!u.W0||u.W0<10) return false;
+            var p=r.block.position, ext=Math.max(u.W0*u.sw,u.D0*u.sd)*r.block.scale.x/2, len=Math.min(40,2.4/Math.max(0.03,sd.y)), mine=[];
+            r.block.traverse(function(o){ if(o.userData&&o.userData.cull&&vis(o)&&o.count>0) mine.push(o); });
+            for(var k=0;k<4&&!found;k++){ var e=p.clone().addScaledVector(shH,ext+2+2*k), c=p.clone().addScaledVector(shH,ext+2+2*k+len*0.6);
+              e.y=groundY(e.x,e.z)+4+1.5*k; c.y=groundY(c.x,c.z); look(e,c);
+              var F=frEye(); if(mine.some(function(o){ return F.intersectsSphere(worldS(o)); })) continue;
+              var P0=passes(); if(mine.some(function(o){ return P0.S.has(o); })){ found={id:id,k:k,mine:mine}; gP=P0; } }
+            return !!found; });
+          if(found){ var P=gP, mine=found.mine, sOnly=0;
+            mine.forEach(function(o){ if(P.W.has(o)) gBad.push(found.id+" drawn in the world pass though out of view"); if(P.S.has(o)) sOnly++; });
+            var A=grab(); setCull(false); var B=grab(); setCull(true);
+            mine.forEach(function(o){ o.visible=false; hid8.push(o); }); var H=grab(); mine.forEach(function(o){ o.visible=true; }); hid8=[]; var A2=grab();
+            var dAB=diff(A,B), dAH=diff(A,H), dAA=diff(A,A2);
+            gTxt=found.id+" ("+mine.length+" meshes, "+sOnly+" drawn in the shadow pass, none in the world pass): the frame against the frame without culling "+dAB+" pixels; with the block hidden "+dAH+" pixels differ (its shadow in view); drawn again "+dAA;
+            if(!sOnly) gBad.push("its meshes cast nothing"); if(dAB!==0||dAA!==0) gBad.push("the frame differs from the frame without culling"); if(!(dAH>0)) gBad.push("hiding it changes nothing: no shadow of it in view, the view proves nothing"); }
+          else gBad.push("no block found whose shadow falls in a view it is out of");
+        } else gTxt="no shadow map on this tier (decision 236)";
+        ck("culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass only; hiding it (culling by hiding) changes the frame where its shadow lies; as culled, the frame is the frame without culling",
+          !gBad.length, gTxt+(gBad.length?"; WRONG: "+gBad.join("; "):""));
+        /* (e) the hooks inert: every kit vertex in ANIM's table, every kit mesh hooked with its own depth material, its uniforms 0; the frame with the
+           hooks the frame without them (the kit's materials swapped for clones without the hook, its depth materials removed so that three's own
+           draw its shadow), pixel for pixel, with the draw order held. three r128 sorts opaque meshes by their material's id (its render list reads
+           a material's program from a field r128 no longer sets, so every item sorts as the default program), and a clone is the newest material,
+           drawn after every other: a few coplanar faces (a standard's staff and cloth against its bearer) are settled by that order. So both frames
+           are drawn with renderer.sortObjects off, each after a frame that compiles what it draws; the two as three sorts them are reported beside.
+           (8D's own depth materials are never in the world pass, so the build's order there is 8C's: tools/stage8/xbuild-8d.js) */
+        var eBad=[], eN=0, eG=0, seenG={};
+        CULL.meshes.forEach(function(m){ var g=m.geometry, k=g.attributes&&g.attributes.aPart;
+          if(k&&!seenG[g.uuid]){ seenG[g.uuid]=1; eG++; for(var i=0;i<k.count;i++){ if(!ANIM.PART[Math.round(k.array[i])]){ eBad.push("a vertex of part "+k.array[i]+" in "+((g.userData&&g.userData.kit)||"a geometry")); break; } } }
+          if(!k) return; eN++;
+          var U=m.userData.anim; if(!U||m.material.userData.anim!==U||!m.customDepthMaterial||m.customDepthMaterial.userData.anim!==U) eBad.push(m.userData.cull.id+": not hooked");
+          else if(U.uAnimAmp.value!==0||U.uAnimPhase.value!==0) eBad.push(m.userData.cull.id+": its uniforms not 0"); });
+        var K0=figKit(); [K0.infCoat,K0.rider,K0.infFixed,K0.horse,K0.riderFixed].forEach(function(g){ if(!g.attributes.aPart) eBad.push("a kit geometry without parts"); });
+        at(LOW.t,"terrain","watch"); settle(24,true); aim(LOW.map,LOW.dir,LOW.r); settle(4,true);
+        var swp=[], so0=renderer.sortObjects, dh=-1, dh2=-1, dS=-1;
+        function swapKit(){ CULL.meshes.forEach(function(m){ if(!m.userData.anim) return; var c=m.material.clone(); c.onBeforeCompile=THREE.Material.prototype.onBeforeCompile; c.userData={};
+          swp.push([m,m.material,m.customDepthMaterial]); m.material=c; m.customDepthMaterial=undefined; }); }
+        function backKit(){ swp.forEach(function(q){ q[0].material.dispose(); q[0].material=q[1]; q[0].customDepthMaterial=q[2]; }); swp=[]; }
+        try{
+          renderer.sortObjects=false; grab(); var Ah=grab(); swapKit(); grab(); var Bh=grab(); backKit(); grab(); var Ah2=grab(); dh=diff(Ah,Bh); dh2=diff(Ah,Ah2);
+          renderer.sortObjects=true; grab(); var As=grab(); swapKit(); grab(); var Bs=grab(); backKit(); dS=diff(As,Bs);
+        } finally { if(swp.length) backKit(); renderer.sortObjects=so0; }
+        if(dh!==0||dh2!==0) eBad.push("the frame with the hooks differs from the frame without them in "+dh+" pixels, the draw order held ("+dh2+" drawn again)");
+        if(!(ANIM.built>0&&ANIM.depth>0)) eBad.push("the hook never compiled ("+ANIM.built+" materials, "+ANIM.depth+" depth materials)");
+        ck("animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's table, every kit mesh has the hook on its material and on its own depth material with its two uniforms at 0 (nothing moves in 8D), and the frame with the hooks is the frame without them, pixel for pixel, the draw order held",
+          !eBad.length&&eN>0, eN+" kit meshes, "+eG+" kit geometries, the hook compiled for "+ANIM.built+" materials and "+ANIM.depth+" depth materials; the low Pratzen view with and without it "+dh+" pixels differing, the draw order held ("+
+          dS+" as three sorts them, the clones drawn last: the coplanar faces that order settles)"+(eBad.length?"; WRONG: "+eBad.slice(0,4).join("; "):""));
+        /* (f) a controlled deformation: amp 1 at a quarter cycle on the kit meshes of the blocks in view: the figures drawn move (the frame read with
+           the depth materials' hook removed, so that the shadow stays at rest and only the figures can change it), and their shadow (the sun's depth
+           map read where the blocks cast it); without the depth materials' hook the shadow stays the rest pose's; every vertex of every kit
+           geometry, over a cycle, within its envelope */
+        var fBad=[], fT="";
+        var near=[]; CULL.meshes.forEach(function(m){ if(m.userData.anim&&vis(m)&&m.count>0&&frEye().intersectsSphere(worldS(m))) near.push(m); });
+        if(sun.castShadow&&renderer.shadowMap.enabled&&near.length){
+          var map=null, rx=0, ry=0, rw=0, rh=0;
+          function shadowRead(){ map=sun.shadow.map; if(!map) return null;
+            if(!rw){ var Fs=sun.shadow.camera, c=new THREE.Vector3(); near.forEach(function(m){ c.add(worldS(m).center); }); c.multiplyScalar(1/near.length).project(Fs);
+              rw=Math.min(256,map.width); rh=Math.min(256,map.height); rx=Math.max(0,Math.min(map.width-rw,Math.round((c.x*0.5+0.5)*map.width-rw/2))); ry=Math.max(0,Math.min(map.height-rh,Math.round((c.y*0.5+0.5)*map.height-rh/2))); }
+            var b=new Uint8Array(rw*rh*4); renderer.readRenderTargetPixels(map,rx,ry,rw,rh,b); return b; }
+          var F0p=grab(), S0p=shadowRead();
+          near.forEach(function(m){ m.userData.anim.uAnimAmp.value=1; m.userData.anim.uAnimPhase.value=Math.PI/2; });
+          var F1p=grab(), S1p=shadowRead(), dmp=[];
+          near.forEach(function(m){ dmp.push([m,m.customDepthMaterial]); m.customDepthMaterial=undefined; });
+          var F2p=grab(), S2p=shadowRead();
+          dmp.forEach(function(q){ q[0].customDepthMaterial=q[1]; }); near.forEach(function(m){ m.userData.anim.uAnimAmp.value=0; m.userData.anim.uAnimPhase.value=0; });
+          var F3p=grab(), S3p=shadowRead();
+          var dF=diff(F0p,F1p), dF2=diff(F0p,F2p), dS=diff(S0p,S1p), dS2=diff(S0p,S2p), dF3=diff(F0p,F3p), dS3=diff(S0p,S3p);
+          fT=near.length+" kit meshes in view at amp 1: "+dF+" pixels of the frame and "+dS+" texels of the sun's depth map ("+rw+" x "+rh+" read) move; with the depth materials' hook removed, the shadow at rest, "+dF2+" pixels (the figures alone) and "+dS2+" texels; back at rest "+dF3+" and "+dS3;
+          if(!(dF2>0)) fBad.push("the figures did not move"); if(!(dS>0)) fBad.push("the shadow did not move"); if(dS2!==0) fBad.push("the shadow moved without the depth material's hook");
+          if(dF3!==0||dS3!==0) fBad.push("not back at rest");
+        } else fBad.push(near.length?"no shadow map":"no kit mesh in view");
+        var envBad=0, envN=0, out3=[0,0,0];
+        kitGeos().forEach(function(g){ var P=g.attributes.position, K=g.attributes.aPart; if(!K) return; var e=animEnv(g);
+          for(var ph=0;ph<16;ph++) for(var i=0;i<P.count;i++){ envN++; animAt(Math.round(K.array[i]),P.array[i*3],P.array[i*3+1],P.array[i*3+2],ph/16*Math.PI*2,1,out3);
+            if(Math.hypot(out3[0]-P.array[i*3],out3[1]-P.array[i*3+1],out3[2]-P.array[i*3+2])>e+1e-6) envBad++; } });
+        if(envBad) fBad.push(envBad+" vertex positions outside their geometry's envelope");
+        ck("animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the depth material's hook the shadow stays the rest pose's), and no vertex of the kit leaves its geometry's envelope, which the culling bounds hold",
+          !fBad.length, fT+"; "+envN+" vertex positions over a cycle at amp 1 within the envelope"+(fBad.length?"; WRONG: "+fBad.join("; "):""));
+      } catch(err){ ck("culling and the hooks (decision 249): the checks ran", false, "threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+      } finally {
+        setCull(keep8.on); hid8.forEach(function(o){ o.visible=true; }); CULL.meshes.forEach(function(m){ var U=m.userData.anim; if(U){ U.uAnimAmp.value=0; U.uAnimPhase.value=0; } });
+        if(EYE.on) eyeLeave(); setCommandView(keep8.cv);
+        if(DISPLAY.factor!==keep8.f) setDisplayFactor(keep8.f);
+        if(mode!==keep8.mode) setMode(keep8.mode); setPresentation(keep8.pres); setClock(keep8.t,{instant:true,force:true,camera:false}); finishTween();
+        landCam.position.copy(keep8.pos); orbitTarget.copy(keep8.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=keep8.fc; settle(4,true);
+      }
+    })();
+
     /* Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.4, 7.2 and 15): the map layer in motion, as MLS lays it
        out. The app's own frame (loop) runs one frame at a time on a clock of the test's (performance.now answers it, 30 frames a second, as
        tools/visual/motion.js drives it; the WebGL draw skipped, the layout reading nothing it draws), and the motion reaches the app as a
@@ -11746,6 +12117,40 @@ var AUSTERLITZ_DEBUG=(function(){
             if(ft.eFrame===ML.frame&&(ft.state!=="on"||ft.held)) fBad.push(fi+": "+(ft.held?"held":ft.state)); }
           window.dispatchEvent(pev("pointerup",c0[0]+240,c0[1],0,2)); ML.items[fk].el.blur(); F(20); }
         ck("map layer (decision 240): the item with the keyboard focus is drawn in every frame while the view moves (A-2), never held", !!fk&&!fBad.length, fk?fk+" ("+fN+" drawn items within 120 px) focused through an orbit of 30 frames"+(fBad.length?": NOT PLACED BY THE FULL SEARCH at "+fBad.slice(0,4).join(", "):""):"no item to focus");
+        /* Stage 8, 8D prerequisite (the audit of 8C): an item the stabiliser holds hidden, or one fading out where it was drawn, given a priority the
+           stabiliser never holds (the keyboard's focus, the selection, the hover: decision 39 and A-2) is drawn at full opacity in the first frame
+           it has it, not faded in. Each found while Landscape with counters orbits (a formation's counter held by the hold, or a remnant), given
+           that priority by the app's own paths (the element's focus; select(); a pointer's move to its anchor, which the canvas's handler reads),
+           one frame drawn: on, its alpha 1, no inline opacity, its computed opacity 1 (until 8D it was placed at once and drawn at the fade's
+           alpha, 0.18 at 30 frames a second) */
+        var pBad=[], pDone=[], pTried=0;
+        /* the items before the priority is given: their state and alpha, each a formation's counter or name the keyboard reaches */
+        function pBefore(){ var o={}; for(var pk2 in ML.items){ var t=ML.items[pk2]; if(t.eFrame!==ML.frame||!t.fid||!FORMATIONS[t.fid]||t.keep||!t.focusable||t.el.style.display==="none") continue;
+            o[pk2]={held:!!t.held&&t.state!=="on"&&!(t.fa>0), rem:!!t.rem&&t.fa>0&&t.fa<1, fa:t.fa, t:t}; } return o; }
+        function pFind(B,rem){ for(var pk3 in B){ if(rem?B[pk3].rem:B[pk3].held) return B[pk3].t; } return null; }
+        ["focus","selection","hover","focus on a remnant"].forEach(function(how){
+          var done=false;
+          for(var at=0;at<3&&!done;at++){
+            hyb(); F(2); V.dispatchEvent(pev("pointerdown",c0[0],c0[1],2,2)); var B=null, t=null, pi=0;
+            while(!t&&pi<60){ pi++; V.dispatchEvent(pev("pointermove",c0[0]+8*pi+40*at,c0[1],2,2)); F(1); B=pBefore(); t=pFind(B,how==="focus on a remnant"); }
+            window.dispatchEvent(pev("pointerup",c0[0]+8*pi+40*at,c0[1],0,2));
+            if(!t) continue;
+            if(how==="selection") select("f",t.fid);
+            else if(how==="hover"){ V.dispatchEvent(pev("pointermove",Math.round(t.sx),Math.round(t.sy),0,0));   /* the canvas's own hover: the formation it reaches */
+              var hv=ML.hover, hk2=hv&&(B["c:"+hv]?"c:"+hv:B["n:"+hv]?"n:"+hv:null); t=hk2&&B[hk2].held?B[hk2].t:null; }
+            else t.el.focus({preventScroll:true});
+            if(!t){ ML.hover=null; ML.hoverDrop=null; continue; }
+            var b0=B[t.key]; F(1); pTried++;
+            if(t.eFrame!==ML.frame||t.state==="panel"||t.state==="offscreen"||t.state==="occluded"){ select(null,null); ML.hover=null; ML.hoverDrop=null; F(20); continue; }   /* out of view after it: another */
+            var cs=parseFloat(getComputedStyle(t.el).opacity);
+            pDone.push(how+": "+t.key+" ("+(b0.rem?"fading out":"held")+", alpha "+(+b0.fa).toFixed(2)+") to "+t.state+", alpha "+(+t.fa).toFixed(2)+", opacity "+cs.toFixed(2)+(t.forced?", forced":""));
+            if(t.state!=="on"||t.fa!==1||t.el.style.opacity!==""||!(cs>=0.999)||!MLS.fadeOn) pBad.push(pDone[pDone.length-1]+(MLS.fadeOn?"":" (fades not on: the test proves nothing)"));
+            done=true;
+            if(document.activeElement&&document.activeElement.parentNode===ML.root) document.activeElement.blur();
+            select(null,null); ML.hover=null; ML.hoverDrop=null; F(20); }
+          if(!done) pBad.push(how+": no item held or fading out found and kept in view in three orbits"); });
+        ck("map layer (decision 240; the audit of 8C): an item held hidden or fading out when it gains the keyboard's focus, the selection or the hover is drawn at full opacity in that frame (the stabiliser's fade is for what it holds)",
+          pDone.length===4&&!pBad.length, (pBad.length?"WRONG: "+pBad.join("; ")+(pDone.length?" | "+pDone.join("; "):""):pDone.join("; "))+" ("+pTried+" tried)");
         /* a key that moves nothing: the layer stays at rest */
         hyb(); F(2); var mv0=MLS.stats.moving; vk(); F(4); vk(); F(4);
         ck("map layer (decision 240): input that moves nothing leaves the layer at rest (motion is a motion source and a view that changed)", MLS.stats.moving===mv0&&!MLS.moving, (MLS.stats.moving-mv0)+" moving passes after two key presses");

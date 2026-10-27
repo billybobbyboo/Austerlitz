@@ -236,4 +236,51 @@ async function runReal(page,a){
   return page.evaluate(()=>{ var D=window.__md, F=window.__mdF; window.__mdF=null; var lm=D.layerMs(); D.stop();
     return {F:F, ms:lm, mls:typeof MLS!=="undefined"?JSON.parse(JSON.stringify(MLS.stats)):null}; }).then(r=>Object.assign(r,{restFrom:restFrom}));
 }
-module.exports={inPage, measure, tracking, VIEWS, MOTIONS, EXTRA, RUN, REAL, runReal};
+/* the harness's motion block (tools/visual/harness.js, check:visual and check:selftest; Stage 8, 8C, moved here in 8D so that
+   tools/stage8/motion-8d.js runs the same block): its runs in order (the 16; the four real input can drive by real input, two of them on the
+   self-test's page, check:selftest, where each real-input frame costs a round trip; two with Saint-Hilaire's division selected; the three under a
+   headquarters' reading and the finger's pan at 390 px), each run's key (the name thresholds.js holds its formations' visibility under,
+   MOTION.VIS) and the block on a page of its own. Each run: the view set up without a drawn frame, the motion through the app's own input on
+   the driver's clock, then 30 frames at rest; its measures, and since 8D (decision 257 (b)) the formations' visibility over it: the
+   formation-frames in view (drawn, behind the ground, or hidden by the layout: its denominator), those drawn, the longest disappearance by the
+   layout (tracking above) */
+const SELFTEST_REAL=["hybrid-orbit","paper-zoom"];
+function blockRuns(selftestOnly){
+  const RR=selftestOnly?SELFTEST_REAL:REAL;
+  return MOTIONS.map(m=>({m:m})).concat(RR.map(id=>({m:MOTIONS.find(x=>x[0]===id),real:true})),
+    [["hybrid-orbit","sthilaire"],["paper-zoom","sthilaire"]].map(s=>({m:MOTIONS.find(x=>x[0]===s[0]),sel:s[1]})), EXTRA.map(m=>({m:m,extra:m[5]})));
+}
+function runKey(r){ return r.id+(r.real?"+real":"")+(r.select?"+sel":"")+(r.reading?"+"+r.reading:"")+(r.touch?"+touch":""); }
+async function runBlock(mp,settle,o){
+  o=o||{}; const MV={runs:[]}, log=o.log||function(){};
+  let vp=null;
+  await settle(mp); await mp.evaluate(()=>closeFirst(null));
+  for(const R of blockRuns(o.selftestOnly)){ const [id,view,kind,n,amt]=R.m, X=R.extra||{}, t0=Date.now(), V=VIEWS[view];
+    if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]});   /* the phone layout below 720 px */
+      /* the app's own resize handler run before the view is set up (it sets the phone layout, PHONE, the eye's aspect and the view offset):
+         the resize event comes at a rendering step, and on a slow runner after the settle's wait, so a view set up before it was framed the
+         desktop's way (the eye at the Field vantage's 243 units, not drawn back by the portrait framing: CI's check:selftest on 3c9e2eb, run
+         40256828983, 2,133 formation-frames in view and 26 level-of-detail switches against 732 and 0 here and in every earlier run) */
+      await mp.waitForFunction(([w,h])=>window.innerWidth===w&&window.innerHeight===h&&Math.abs(landCam.aspect-w/h)<1e-9&&(typeof PHONE==="undefined"||PHONE===window.matchMedia(PHONE_Q).matches),[vp[0],vp[1]],{timeout:60000,polling:50});
+      await settle(mp); }
+    await mp.evaluate(()=>{ select(null,null); stopPlay(); });
+    /* the view settled without a drawn frame: the motion's frames draw nothing either (the layout reads nothing drawn), and under software
+       WebGL a drawn frame here cost seconds a run */
+    await mp.evaluate(s=>window.__aus.apply(s),V); await mp.evaluate(()=>AUSTERLITZ_DEBUG.settle(90,true));
+    await mp.evaluate(inPage);
+    const A={kind:kind,n:n,amt:amt,gl:false,room:false,select:R.sel||null,rest:30,pre:8,reading:X.reading||null,touch:!!X.touch};
+    const r=R.real?await runReal(mp,A):await mp.evaluate(new Function("a","return ("+RUN.toString()+")(a);"),A);
+    const M=measure(r.F,{restFrom:r.restFrom});
+    const ms=r.ms.slice().sort((a,b)=>a-b), q=p=>ms.length?+ms[Math.min(ms.length-1,Math.floor(ms.length*p))].toFixed(2):null;
+    const TA=M.track.all;
+    const L={id:id, view:view, kind:kind, real:!!R.real, select:R.sel||null, reading:X.reading||null, touch:!!X.touch, frames:M.frames, moving:M.moving, jumps:M.jumps, pops:M.pops, lod:M.lod, flicker:M.flicker,
+      overlapFrames:M.overlapFrames, keepHidden:M.keepHidden, keepHiddenKeys:M.keepHiddenKeys, remnantBad:M.remnantBad, unknownDrawn:M.unknownDrawn, heldFrames:M.heldFrames, restJumps:M.restJumps, restPops:M.restPops,
+      track:{on:TA.on, inView:TA.on+TA.terrain+TA.placement, terrain:TA.terrain, placement:TA.placement, episodes:TA.episodes, longestMs:TA.longestMs, formations:TA.formations},
+      end:M.idle, msMed:q(0.5), msP95:q(0.95), secs:+((Date.now()-t0)/1000).toFixed(1)};
+    L.key=runKey(L); MV.runs.push(L);
+    log("motion "+(id+(R.real?" (real input)":"")+(R.sel?" ("+R.sel+" selected)":"")+(X.reading?" (the "+X.reading+" reading)":"")+(X.touch?" (a finger, 390 px)":"")).padEnd(40)+" jumps "+L.jumps+" pops "+L.pops+" lod "+L.lod+" flicker "+L.flicker+
+      " overlap "+L.overlapFrames+" keep hidden "+L.keepHidden+" remnants out of rule "+L.remnantBad+" moving "+L.moving+" of "+L.frames+" frames, ends "+L.end+
+      ", formations drawn "+L.track.on+" of "+L.track.inView+" in view, longest hidden "+L.track.longestMs+" ms, layer "+L.msMed+"/"+L.msP95+" ms ("+L.secs+" s)"); }
+  return MV;
+}
+module.exports={inPage, measure, tracking, VIEWS, MOTIONS, EXTRA, RUN, REAL, SELFTEST_REAL, runReal, blockRuns, runKey, runBlock};

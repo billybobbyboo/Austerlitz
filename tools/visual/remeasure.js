@@ -29,15 +29,21 @@
    - Reported, not re-measured (spec values): TIMELINE_MAX (narrow-390's height is recorded, decision 122), CONF_SHARE ("never raised"),
      SMOKE_SHARE, SOLID_BLACK, HORIZON_DE, FOCUS_PX, LAYER_MS and PAPER. The in-app self-test's own limits are app.js constants.
    At the end both runs are judged again with the proposed values: each must then pass (check-report.js on the second run passes once the
-   block is pasted, with no re-rendering). */
+   block is pasted, with no re-rendering).
+   Decision 256 (a) (the owner, 26 October 2026; Stage 8, before implementation PR 8D): the inherited unobstructed baselines re-measured once on
+   Playwright's pinned headless shell, CI's browser, over two full runs as above: --accept-loosening 256 accepts only the lowering of the
+   baselines of the cases decision 256 names (DEC256: first-run, first-run-laptop, narrow-1024, phone-844x390-explore; the five shortfalls CI
+   reports, docs/STAGE8_SPEC.md section 15.1, C), and stops on any other change it would propose (a drop limit, a px-per-km floor, another
+   case's baseline): "change only the justified affected baselines; do not weaken unrelated checks". --emit then writes decision 256's block. */
 const fs=require("fs"), path=require("path"), crypto=require("crypto");
 const T=require("./thresholds.js"), CASES=require("./cases.js");
 const argv=process.argv.slice(2), flag=f=>argv.includes(f), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; };
 const VAL=["--bounds","--accept-loosening","--html"];
 const files=argv.filter((a,i)=>!a.startsWith("--")&&!VAL.includes(argv[i-1]));
-const BOUNDS=opt("--bounds")||"keep", EMIT=flag("--emit"), ACCEPT=opt("--accept-loosening")==="141";
+const BOUNDS=opt("--bounds")||"keep", EMIT=flag("--emit"), ACC=opt("--accept-loosening"), ACCEPT=ACC==="141"||ACC==="256", DEC=ACC==="256"?"256":"141";
+const DEC256=["first-run","first-run-laptop","narrow-1024","phone-844x390-explore"];
 const htmlPath=path.resolve(opt("--html")||"austerlitz-command-map.html");
-if(files.length!==2||!["keep","tight"].includes(BOUNDS)){ console.error("usage: remeasure.js <run1> <run2> [--bounds keep|tight] [--emit] [--accept-loosening 141] [--html file]"); process.exit(2); }
+if(files.length!==2||!["keep","tight"].includes(BOUNDS)){ console.error("usage: remeasure.js <run1> <run2> [--bounds keep|tight] [--emit] [--accept-loosening 141|256] [--html file]"); process.exit(2); }
 const load=f=>{ const p=fs.existsSync(f)&&fs.statSync(f).isDirectory()?path.join(f,"report.json"):f; return JSON.parse(fs.readFileSync(p,"utf8")); };
 const R=files.map(load);
 let MAN=null; try{ MAN=JSON.parse(fs.readFileSync(path.join(__dirname,"selftest-manifest.json"),"utf8")); }catch(e){}
@@ -104,7 +110,8 @@ for(const c of CASES){ const n=c.name, m=R[0].cases[n];
   else U1=U0.map((u,i)=>meas[i]<u?conv[i]:u);
   if(U0&&BOUNDS==="keep") conv.forEach((v,i)=>{ if(v>U0[i]) notes.push(n+": the 3B/3C convention would raise the "+(i?"1280 x 720":"case viewport")+" baseline "+U0[i]+" to "+v+" (not under --bounds keep"+(DEC121.includes(n)?"; decision 121: never raised":"")+")"); });
   const F=FLOOR_2C[n]; if(F) U1.forEach((v,i)=>{ if(v<F[i]) stop.push(n+": the baseline "+v+" would fall below its Stage 2C value "+F[i]+" (Stage 3B's rule)"); });
-  if(!U0||U1[0]!==U0[0]||U1[1]!==U0[1]) change('UNOBSTRUCTED["'+n+'"]',U0?"["+U0.join(",")+"]":"none","["+U1.join(",")+"]",!!U0&&(U1[0]<U0[0]||U1[1]<U0[1]),
+  /* JSON, so that a phone case's baseline, which has none at 1280 x 720 (null, since roadmap step 6), stays [x,null] */
+  if(!U0||U1[0]!==U0[0]||U1[1]!==U0[1]) change('UNOBSTRUCTED["'+n+'"]',U0?JSON.stringify(U0):"none",JSON.stringify(U1),!!U0&&(U1[0]<U0[0]||U1[1]<U0[1]),
     unobOrigin(n)+"; measured "+meas.join(" / ")+", rounded down to 0.1 point (3B/3C/7B)"+(F?"; the 2C floor "+F.join(" / "):""),n);
   rows.push([n,now===undefined?"-":now,d,prop,U0?U0.join("/"):"-",meas.join("/"),U1.join("/")]); }
 for(const [n,lim] of Object.entries(L.PAPER_MIN_PXKM)){ const v=R[0].cases[n].paper.pxPerKm.pratzeberg, conv=Math.floor(v), p=BOUNDS==="tight"||v<lim?conv:lim;
@@ -129,19 +136,23 @@ const prop={DROP_LIMIT:{},UNOBSTRUCTED:{},PAPER_MIN_PXKM:{}};
 changes.forEach(c=>{ const m=/^(\w+)\["(.+)"\]$/.exec(c.k); prop[m[1]][m[2]]=m[1]==="UNOBSTRUCTED"?JSON.parse(c.is):c.is; });
 if(!stop.length) R.forEach((r,i)=>{ const f=T.judgeReport(r,{cases:CASES,allCases:CASES,manifest:MAN,limits:prop}); f.forEach(x=>stop.push("run "+(i+1)+" still fails with the proposed values: "+x)); });
 
+/* decision 256: only the named cases' unobstructed baselines, and only lowered (--bounds keep) */
+if(DEC==="256"){ if(BOUNDS!=="keep") stop.push("decision 256's re-measure is --bounds keep");
+  changes.forEach(c=>{ const m=/^UNOBSTRUCTED\["(.+)"\]$/.exec(c.k); if(!m||!DEC256.includes(m[1])) stop.push("decision 256 re-measures only the unobstructed baselines of "+DEC256.join(", ")+": "+c.k+" would change ("+c.was+" -> "+c.is+")"); }); }
 const loose=changes.filter(c=>c.loosens||c.dec121);
 console.log("\n"+changes.length+" proposed changes; "+changes.filter(c=>c.loosens).length+" loosen"+(changes.some(c=>c.dec121)?", "+changes.filter(c=>c.dec121).length+" against decision 121":"")+":");
 changes.forEach(c=>console.log("  "+(c.loosens?"LOOSENS ":c.dec121?"DEC 121 ":"        ")+c.k+": "+c.was+" -> "+c.is+"   ("+c.why+")"));
 if(stop.length){ stop.forEach(s=>console.log("STOP: "+s)); process.exit(2); }
 console.log("both runs pass with the proposed values (thresholds.js judgeReport)");
 if(EMIT&&changes.length){
-  console.log("\n/* Decision 141 (the embedded fonts, roadmap step 1): every case re-measured once on the "+R[0].md5+" build, two identical runs ("+
+  console.log("\n/* "+(DEC==="256"?"Decision 256 (a) (the owner, 26 October 2026; Stage 8, before implementation PR 8D): the inherited unobstructed baselines re-measured once on CI's browser, on the "+R[0].md5+" build":
+    "Decision 141 (the embedded fonts, roadmap step 1): every case re-measured once on the "+R[0].md5+" build")+", two identical runs ("+
     R[0].env.platform+", Chromium "+R[0].env.chromium+", Playwright "+R[0].env.playwright+"), by tools/visual/remeasure.js --bounds "+BOUNDS+" (decision 62's method"+
-    (BOUNDS==="keep"?"; a bound kept where the build still meets it, changed only where the fonts moved the measure past it":"")+"). Each value: was, is and why, in\n   CHANGELOG.md"+
-    (loose.length?"; loosened under decision 141: "+loose.map(c=>c.k).join(", "):"")+" */");
-  changes.forEach(c=>console.log(c.k+"="+c.is+";   /* was "+c.was+(c.loosens?"; loosened (decision 141)":"")+(c.dec121?"; decision 121's value changed (decision 141)":"")+" */"));
+    (BOUNDS==="keep"?"; a bound kept where the build still meets it, changed only where "+(DEC==="256"?"CI's browser measures it below":"the fonts moved the measure past it"):"")+"). Each value: was, is and why, in\n   CHANGELOG.md"+
+    (loose.length?"; loosened under decision "+DEC+": "+loose.map(c=>c.k).join(", "):"")+" */");
+  changes.forEach(c=>console.log(c.k+"="+c.is+";   /* was "+c.was+(c.loosens?"; loosened (decision "+DEC+")":"")+(c.dec121?"; decision 121's value changed (decision "+DEC+")":"")+" */"));
   console.log("\n| constant | was | is | why |\n|---|---|---|---|");
-  changes.forEach(c=>console.log("| `"+c.k+"` | "+c.was+" | "+c.is+" | "+(c.loosens?"**loosened (decision 141)**; ":"")+(c.dec121?"**decision 121's value changed (decision 141)**; ":"")+c.why+" |"));
+  changes.forEach(c=>console.log("| `"+c.k+"` | "+c.was+" | "+c.is+" | "+(c.loosens?"**loosened (decision "+DEC+")**; ":"")+(c.dec121?"**decision 121's value changed (decision "+DEC+")**; ":"")+c.why+" |"));
 }
-if(loose.length&&!ACCEPT){ console.log("\n"+loose.length+" change(s) loosen a limit or change decision 121's: run again with --accept-loosening 141 to accept them under decision 141, and list each in CHANGELOG.md"); process.exit(1); }
+if(loose.length&&!ACCEPT){ console.log("\n"+loose.length+" change(s) loosen a limit or change decision 121's: run again with --accept-loosening 141 (decision 141) or 256 (decision 256, the inherited unobstructed baselines only) to accept them, and list each in CHANGELOG.md"); process.exit(1); }
 process.exit(0);
