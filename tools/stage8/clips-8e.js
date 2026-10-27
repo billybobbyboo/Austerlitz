@@ -22,28 +22,29 @@ const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?
 const BEFORE=opt("--before"), AFTER=opt("--after")||process.env.AUSTERLITZ_HTML||path.join(L.ROOT,"austerlitz-command-map.html");
 const OUT=path.resolve(opt("--out")||path.join(L.EVID8,"8e")), ONLY=opt("--only")?opt("--only").split(","):null;
 const VP=(opt("--vp")||"960x540").split("x").map(Number), SVP=[1280,720];
-const DIR=[-0.55,0.42,0.72], SIDE=[0.95,0.22,0.22], LOW=[-0.70,0.16,0.70];
+const DIR=[-0.55,0.42,0.72], SIDE=[0.95,0.22,0.22], EAST=[0.7,0.35,0.2], SLOPE=[0.3,0.15,-0.95];   /* EAST: the division from ahead of its march, clear of the wood
+   beside it (DIR looks at it through the wood); SLOPE: low and from the side at 10.33x, the line's feet on the slope (views chosen by looking) */
 /* stills: [id, note, spec, both builds?] (spec: t, factor, presentation, the aim {id, dir, r}, phone) */
 const STILLS=[
-  ["infantry", "Saint-Hilaire's division marching up the Pratzen at 09:00, paused (its pose at the clock), 26 units off: the rich kit (8E) against 6C's kit (8D)", {t:540, aim:{id:"sthilaire", dir:DIR, r:26}}, true],
+  ["infantry", "Saint-Hilaire's division marching up the Pratzen at 09:00, paused (its pose at the clock), 26 units off: the rich kit (8E) against 6C's kit (8D)", {t:540, aim:{id:"sthilaire", dir:EAST, r:26}}, true],
   ["cavalry", "the Guard's cavalry marching at 10:45, paused, 30 units off: riders and horses, rich (8E) against 6C's (8D)", {t:645, aim:{id:"guard_cav", dir:SIDE, r:30}}, true],
   ["artillery-deployed", "the guns on the heights (IV Corps' foot artillery) in action at 13:00, 22 units off: the pieces, the coffret on the limber, the limber, its team and its driver behind each gun (8E) against the guns and crews 8D drew", {t:780, aim:{id:"heightguns", dir:DIR, r:22}}, true],
   ["artillery-limbered", "the same battery limbered and moving at 14:00, paused, 22 units off: team, driver, limber, the piece on its pintle with the coffret between its cheeks (8E) against 8D's", {t:845, aim:{id:"heightguns", dir:SIDE, r:22}}, true],
-  ["lod-26", "the level of detail by distance: Saint-Hilaire's division at 09:00, 26 units off (rich)", {t:540, aim:{id:"sthilaire", dir:DIR, r:26}}, false],
-  ["lod-110", "110 units off (a man about 21 px: rich)", {t:540, aim:{id:"sthilaire", dir:DIR, r:110}}, false],
-  ["lod-180", "180 units off (a man about 13 px: simple)", {t:540, aim:{id:"sthilaire", dir:DIR, r:180}}, false],
-  ["slope-10x", "on the slope at 10.33x: Saint-Hilaire's men climbing at 09:00, paused mid-stride, seen low from the side: the planted feet on the drawn ground", {t:540, factor:"model", aim:{id:"sthilaire", dir:LOW, r:18}}, false],
-  ["phone", "a phone's page (390 x 844 at density 1, touch, an iPhone's user agent): Saint-Hilaire's division at 09:00, 40 units off", {t:540, phone:true, aim:{id:"sthilaire", dir:DIR, r:40}}, false]
+  ["lod-26", "the level of detail by distance: Saint-Hilaire's division at 09:00, 26 units off (rich)", {t:540, aim:{id:"sthilaire", dir:EAST, r:26}}, false],
+  ["lod-110", "110 units off (a man about 21 px: rich)", {t:540, aim:{id:"sthilaire", dir:EAST, r:110}}, false],
+  ["lod-180", "180 units off (a man about 13 px: simple)", {t:540, aim:{id:"sthilaire", dir:EAST, r:180}}, false],
+  ["slope-10x", "on the slope at 10.33x: Saint-Hilaire's men climbing at 09:00, paused mid-stride, seen low from the side: the planted feet on the drawn ground", {t:540, factor:"model", aim:{id:"sthilaire", dir:SLOPE, r:16}}, false],
+  ["phone", "a phone's page (390 x 844 at density 1, touch, an iPhone's user agent): Saint-Hilaire's division at 09:00, 40 units off", {t:540, phone:true, aim:{id:"sthilaire", dir:EAST, r:40}}, false]
 ];
 /* clips: [id, note, spec, stretches [[speed (0 paused), seconds], ...], both builds?] */
 const CLIPS=[
-  ["infantry-half", "Saint-Hilaire's division marching up the Pratzen from 09:00 at Play's half speed, 3 s (the eye following it, 26 units off): the gait (8E) against the formation sliding (8D)", {t:540, aim:{id:"sthilaire", dir:DIR, r:26}}, [[0.5,3]], true],
+  ["infantry-half", "Saint-Hilaire's division marching up the Pratzen from 09:00 at Play's half speed, 3 s (the eye following it, 26 units off): the gait (8E) against the formation sliding (8D)", {t:540, aim:{id:"sthilaire", dir:EAST, r:26}}, [[0.5,3]], true],
   ["cavalry-half", "the Guard's cavalry from 10:45 at half speed, 3 s, 30 units off", {t:645, aim:{id:"guard_cav", dir:SIDE, r:30}}, [[0.5,3]], false],
   ["artillery-half", "the guns on the heights limbered and moving from 14:00 at half speed, 3 s, 22 units off: the teams' gait and the wheels turning with them", {t:840, aim:{id:"heightguns", dir:SIDE, r:22}}, [[0.5,3]], false],
-  ["speeds", "the gait's fade with the speed: Saint-Hilaire's division from 09:00, 40 units off, 1.5 s each at half speed, 1x, 2x and 4x (its men's cycles a second on screen: full to 3.2, none from 4.8, eased between)", {t:540, aim:{id:"sthilaire", dir:DIR, r:40}}, [[0.5,1.5],[1,1.5],[2,1.5],[4,1.5]], false],
-  ["pause", "Play at half speed, paused for 1.5 s (the pose held, no stepping), resumed: Saint-Hilaire's division from 09:00, 30 units off", {t:540, aim:{id:"sthilaire", dir:DIR, r:30}}, [[0.5,1.5],[0,1.5],[0.5,1.5]], false],
-  ["slope-10x", "at 10.33x on the slope, from the side and low: Saint-Hilaire's division from 09:00 at half speed, 3 s", {t:540, factor:"model", aim:{id:"sthilaire", dir:LOW, r:18}}, [[0.5,3]], false],
-  ["phone-half", "a phone's page (390 x 844 at density 1): Saint-Hilaire's division from 09:00 at half speed, 3 s, 40 units off", {t:540, phone:true, aim:{id:"sthilaire", dir:DIR, r:40}}, [[0.5,3]], false]
+  ["speeds", "the gait's fade with the speed: Saint-Hilaire's division from 09:00, 40 units off, 1.5 s each at half speed, 1x, 2x and 4x (its men's cycles a second on screen: full to 3.2, none from 4.8, eased between)", {t:540, aim:{id:"sthilaire", dir:EAST, r:40}}, [[0.5,1.5],[1,1.5],[2,1.5],[4,1.5]], false],
+  ["pause", "Play at half speed, paused for 1.5 s (the pose held, no stepping), resumed: Saint-Hilaire's division from 09:00, 30 units off", {t:540, aim:{id:"sthilaire", dir:EAST, r:30}}, [[0.5,1.5],[0,1.5],[0.5,1.5]], false],
+  ["slope-10x", "at 10.33x on the slope, from the side and low: Saint-Hilaire's division from 09:00 at half speed, 3 s", {t:540, factor:"model", aim:{id:"sthilaire", dir:SLOPE, r:16}}, [[0.5,3]], false],
+  ["phone-half", "a phone's page (390 x 844 at density 1): Saint-Hilaire's division from 09:00 at half speed, 3 s, 40 units off", {t:540, phone:true, aim:{id:"sthilaire", dir:EAST, r:40}}, [[0.5,3]], false]
 ];
 const IOS="Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1";
 /* in the page: hold the app's loop, set the state, aim */
