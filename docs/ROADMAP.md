@@ -438,7 +438,7 @@ prototype task of its own, and the low views' wall of formation names left open;
 CI's browser; 257 (b), the motion block's ceilings at the benchmark's own counts, with each run's formations' visibility held; 258 (a)
 provisionally, its visibility loss not final acceptance, with (b) commissioned and the two-pass return rule kept.
 
-**Implementation PR 8D** (26 October 2026; `docs/STAGE8_SPEC.md` §16; draft PR #69 into `main`, for review): first, in commits of their own,
+**Implementation PR 8D** (26 October 2026; `docs/STAGE8_SPEC.md` §16; PR #69, merged into `main` by the owner, `2f41819`): first, in commits of their own,
 the prerequisites: a protected map item (the keyboard's focus, the selection, the hover) is drawn at full opacity in the frame it gains that
 priority (found by the audit of 8C, reproduced by real input: 0.19 a frame after a real Tab at 30 frames a second); decision 257 (b); decision
 256 (a). Then decisions 249 (a) and 250 (b): every instanced mesh of every figure block culled by bounds of its own instances (three r128 never
@@ -456,6 +456,26 @@ laptop was available.
 against the visibility baselines of decision 257 (b) as §15.6 measured 8C, with the two-pass rule kept until a measured comparison justifies a
 change; (2) decision 255 (d), a hierarchy for far battle information by another means than size (a lighter plate or ink for far names, still at
 AA), prototyped and measured first, with the low views' wall of formation names its test.
+
+**Implementation PR 8E** (27 October 2026; `docs/STAGE8_SPEC.md` §17; draft PR #70 into `main`, for review): first, in commits of their own,
+the audit of 8D's two findings (culling's animation allowance follows the geometry drawn and the animation's definition; culling's static
+comparison requires zero differences, located) and the data task (the artillery's claims registered, graded and scoped in `appearance.js`
+`ORDNANCE` before anything is drawn from them; `check:data`'s reference moved). Then decisions 242 (a), 243 (a), 244 (a) and 245 (a): the kit at
+two levels of detail (6C's kit and a richer one from Part A's direction and the existing claims, no facings), switched per block by a man's size on
+screen through the camera (17.6 px in, 14.5 out); the field artillery as the readings allow (a generic Gribeauval piece with Gassendi's wheels, the
+coffret's two places, the limber, the team of four and, for the guns on the heights alone, IV Corps' drivers as an inference); the gait, the
+clock's (the track's distance over a stride, the fade with the playback speed, none halted, under 1 km/h or under reduced motion, a paused clock
+holding the pose), described as a visual convention for symbols under compressed time in the legend and the sources sheet; the feet on the
+drawn ground's slopes; S-5's facing a function of the clock; the standards' still drape. Measured here: per figure the rich kit at most 1.21 times 8D's (section 8.2's limit 1.3); the frame's triangles at most +8.0% (close on
+Sokolnitz at 4x), every desktop view within section 8.3's budget; the gait no draw call and no triangle, its CPU 0.112 to 0.185 ms a frame
+(the budget 0.2); nothing allocated under 8E's functions while the eye moves; the self-test 295 of 295; every rule its checks hold made to fail by a mutation (the self-test's 8D and 8E blocks on 26 copies, `css-test.js`'s blocks on 25), three of them after the checks they first passed were strengthened; `check:visual` on CI
+passing (198 minutes, against 8D's 136). Device acceptance pending: the
+builds and the device route (with a gait bracket, `?route=gait`) are ready for the owner's desktop and iPhone; section 8.3's
+integrated-GPU condition is not met (no view's frame rises by more than 10%: the most +8.0%, close on Sokolnitz), and the phone's two
+Overview views stay over its triangle budget as they were before 8D (8E adds 0.1% and 0.4%), so the phone route's run is required before
+merging, as for 8D. **For the owner** (§17.16): the drivers' boundary on
+the guns on the heights (drawn as an inference, or none anywhere); the gunners beside moving pieces (Gassendi has them; not drawn); facings,
+to be reconsidered now that the troops can be judged (decision 245 (a)).
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**

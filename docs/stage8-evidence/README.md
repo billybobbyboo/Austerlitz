@@ -124,3 +124,30 @@ by their ids. Each JSON names its build (`build`, `md5`). The scripts are in `to
 | `8d/fresh-8d.json` | `fresh-8c.js --ref <prerequisite> --cand <8D>` | section 16.10: every `check:visual` case applied by its spec, each map-layer item's state, box and leader on both builds |
 | `8d/label-motion-8d.json` | `label-motion.js --app` (AUSTERLITZ_HTML 8D's build) | section 16.10: 8C's motions through the app's own input, the formations followed, beside `8c/label-motion-8c.json` |
 | `8d/route-cull-local.json`, `8d/route-fx-local.json` | `tools/step6/perf-local.js --cull --quick`, `--fx --quick` | section 16.12: the device route's two bracketed routes run end to end here (software WebGL: their times decide nothing; they show the routes run and report) |
+
+## Implementation PR 8E (27 October 2026; `docs/STAGE8_SPEC.md` section 17)
+
+Made from implementation PR 8E's build against 8D's as merged (`ae7f16b8cd2960c8813ff4155263830f`, 2,403,007 bytes,
+`git show 2f41819:austerlitz-command-map.html`), in Chromium 141.0.7390.37, the headless shell Playwright 1.56 pins and CI runs, software WebGL,
+1600 x 900 unless named. 8E's build is `27a3d2f`'s (`d73d01154b8f6e2552fe04bfb24d05e5`, 2,537,677 bytes). The census was made on the troops'
+commit `62f5cd2` (`ff3149adcee37a8846c7b4565caa7b2c`, 2,535,729 bytes); the kit census, the allocation, the costs, the route, the stills
+and the clips on `a99eb7b` (`e80577e2e2ac815205bf8b1572e767bd`, 2,537,038 bytes); the mutations on `27a3d2f`. The three draw the same:
+they differ in the self-test's checks (c) and (e) and a counter it reads (section 17.12). The prerequisites' evidence was made on their own commits' builds (`2af8ed9`,
+`1c6b54e`), named in each file. Each JSON names its build (`build`, `md5`). The scripts are in `tools/stage8/`, `tools/step6/` and
+`tools/visual/` (not bundled).
+
+| path | made by | what |
+|---|---|---|
+| `8e/envelope.json` | `envelope-8e.js --rev 2f41819` (on the prerequisite's working tree; reproduced since by `--revs 2f41819,2af8ed9`) | section 17.1: the audit's case, a mesh's envelope across a geometry swapped and back and a changed definition, on 8D as merged and as corrected |
+| `8e/mutate-pre1.json` | `mutate-8e.js --only none,envonce,stale8d,envcache8d` (on the prerequisite's build) | section 17.1: the self-test's 8D block with each of 8D's three rules put back |
+| `8e/equiv.json` | `equiv-8e.js` (on the prerequisite's build) | section 17.2: the old and the new static rule on records and on the build, with a mesh wrongly culled and noise elsewhere |
+| `8e/artillery-readings.md` | read on the page images (the data task, `d95bfe0`) | section 17.3: the artillery's 15 readings, each passage as printed, its grade, its scope, what is drawn |
+| `8e/kit-census.json` | `kit-census-8e.js <8D> <8E>` | section 17.4: triangles per figure by class, 8D's kit and 8E's two levels, and per drawn gun the vehicles, the team and the drivers |
+| `8e/census.json`, `8e/census.md` | `census-8e.js <8D> <8E> --phone` | section 17.13: one whole frame per view after the eye moved, by pass, reconciled with `renderer.info`, 8D's against 8E's; on 8E the frame with every amplitude 0 beside it |
+| `8e/cost-0845.json`, `8e/cost-0845-fast.json`, `8e/cost-1040.json` | `cost-8e.js <8E> --t0 525` (½x and 1x), `--t0 525 --speeds 2,4` and `--t0 640 --speeds 0.5` | section 17.13: the gait's and the level of detail's CPU per step of a played stretch (the dwell off) in four views, the slopes counted, benched and timed, the slope attributes uploaded |
+| `8e/alloc.json` | `alloc-8e.js <8D> <8E> --steps 600 --warm 600` | section 17.13: the bytes allocated under 8E's per-frame functions while only the eye moves, after a warm-up (Chrome's sampling heap profiler) |
+| `8e/mutate-8e.json` | `mutate-8e.js` (on 8E's build) | section 17.12: the self-test's 8D and 8E blocks on the build and on copies with one rule broken |
+| `8e/mutate-css-8e.json`, `8e/mutate-css-8d.json` | `mutate-css-8e.js`, `mutate-css-8d.js` (on 8E's source) | section 17.12: `css-test.js`'s 8E and 8D blocks on the source and on copies of `app.js` with one rule broken |
+| `8e/route-gait-local.json` | `tools/step6/perf-local.js --gait --quick` | section 17.13: the device route's gait bracket run end to end here, every block in its order (software WebGL draws 0 to 2 frames in a block's seconds, as in 8D's local runs: its times and verdict decide nothing) |
+| `8e/stills/<id>.jpg` | `clips-8e.js --before <8D> --after <8E>` (its PNGs converted to JPEG, `ffmpeg -q:v 3`, to keep the folder small, as Part A's captures) | section 17.14: the troops at a paused clock, 8D above 8E where both draw the view; the level of detail by distance; the slope at 10.33x; a phone's page |
+| `8e/clips/<id>.mp4`, `8e/clips/record-log.txt` | `clips-8e.js` | section 17.14: Play's own stepping at 10 frames a second of the clip: infantry (8D above 8E), cavalry, the limbered guns, the fade with the speed, a pause, the slope at 10.33x, a phone |

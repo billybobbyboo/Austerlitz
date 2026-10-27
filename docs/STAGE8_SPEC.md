@@ -3,7 +3,7 @@
 **Status: Part A, the specification, is complete and merged (PR #64, `main` at `d86835e`). The owner decided its questions 239-253 on
 24 October 2026 (section 0.3, the decisions with their qualifications, and the points they settle in this text); the implementation follows
 the plan of section 10 in eight implementation PRs, 8A to 8H, of which 8A (section 13) and 8B (section 14, added by its own PR, stacked on
-8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15; merged into `main`, #68) in its own session, after the owner decided question 254, and 8D (section 16; draft PR #69) in its own, after the owner decided questions 255-258. Names (section 0.4): "Stage 8 Part A" is this specification only;
+8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15; merged into `main`, #68) in its own session, after the owner decided question 254, and 8D (section 16; merged into `main`, #69) in its own, after the owner decided questions 255-258, and 8E (section 17; draft PR #70) in its own. Names (section 0.4): "Stage 8 Part A" is this specification only;
 "implementation PR 8A" is the first of the implementation PRs. Nothing below section 12 was written in Part A, and the decisions for 8C-8H
 set their direction and constraints only: none of them is implemented or verified until its own PR says so.**
 
@@ -174,20 +174,20 @@ those is implemented or verified by 8A or 8B.**
 - **242, troop models: option (a), subject to the specified budgets.** "For 8E, improve infantry, horses and riders using the prototype
   direction and existing appearance claims. Preserve miniature scale and sourced colours, headgear and equipment. Complete rendering
   preparation first. Optimise the models and use richer detail only where it is visible. Do not apply the expensive prototype unchanged across
-  the entire battlefield." *8E, after 8D; not implemented.*
+  the entire battlefield." *Applied in 8E (section 17), for review.*
 - **243, artillery: option (a), with explicit source boundaries.** "Use the generic field-piece improvements: spoked wheels, a recognisable
   trail and carriage, improved limbers, appropriate ammunition boxes, and teams behind deployed guns. Retain the single carriage colour and
   current instantaneous deployed/limbered switch. Register and grade each historical claim before using it. Do not generalise IV Corps'
   October authorisation for driver numbers into a demonstrated rule for the Guard, Austrian or Russian artillery. Specify where each source
-  applies. Elsewhere use an explicitly identified generic or inferred convention pending stronger evidence." *8E with its data task; not
-  implemented.*
+  applies. Elsewhere use an explicitly identified generic or inferred convention pending stronger evidence." *Applied in 8E with its data
+  task (section 17), for review.*
 - **244, gait: option (a).** "Use a gait whose phase follows the modelled track and clock, with amplitude controlled by the specified
   playback-speed thresholds. No swing when halted, below the proposed 1 km/h cutoff, or under reduced motion. A paused clock must hold the
   pose still. Fade a formation's parts together and ease speed-related amplitude changes. Verify reproducibility when scrubbing, terrain
   contact, moving bounds and shadow behaviour. Describe the animation honestly as a visual convention for symbolic figures under compressed
-  time; do not claim physically matched footsteps." *8D (hooks) and 8E; not implemented.*
+  time; do not claim physically matched footsteps." *The hooks in 8D (section 16); applied in 8E (section 17), for review.*
 - **245, uniform facings: option (a).** "Keep decision 104. Do not add facings in this implementation. Reconsider them after the main
-  troop-model work can be judged." *Nothing to build; reconsidered after 8E.*
+  troop-model work can be judged." *Nothing built in 8E (section 17.4); to be reconsidered now that the troops can be judged (section 17.16).*
 - **246, water: option (a).** "For 8F, improve the meres' ice through material, lighting and restrained tonal variation, with softer shore
   transitions. Keep streams still, darker and less blue. No added stream ice, animated flow, cracks, holes, snow or figures on the ice.
   Preserve geographic outlines and levels. Tune the bright ice margins so they integrate with the surrounding terrain." *8F; not implemented
@@ -202,7 +202,7 @@ those is implemented or verified by 8A or 8B.**
   a convincing visual result. Any proposed geographic correction must be identified and reviewed as such." *8G; not implemented.*
 - **249, culling: option (a).** "For 8D, cull figure blocks using correct per-block bounds before adding richer models. Account for changing
   formation shape, terrain seating, animation and shadow visibility. Verify that visible figures and their shadows do not disappear
-  incorrectly." *8D; not implemented.*
+  incorrectly." *Applied in 8D (section 16).*
 - **250, performance budgets and device runs: option (b).** "Adopt §8.3's budgets and the bracketed effects-on/effects-off diagnostic.
   Preserve decision 236's lowTier density and shadow settings. Treat geometry counts as budgets, not proof of frame-rate performance. Retain
   the integrated-GPU measurement condition before a qualifying increase. Use repeated, comparable device runs and identify the exact build
@@ -2490,7 +2490,8 @@ not the build), here on Chromium 141.0.7390.37, the headless shell Playwright 1.
 
 ## 16. Implementation PR 8D as built (26 October 2026)
 
-**Status.** Built on `claude/kind-darwin-ewmlwu` (draft PR #69, base `main` at `8eb3ef4`, PR #68's merge), for review; not merged. It applies
+**Status.** Built on `claude/kind-darwin-ewmlwu` (PR #69, base `main` at `8eb3ef4`, PR #68's merge); merged into `main` by the owner on 26 October
+2026 (`2f41819`; the audit of it found two faults in culling's checks, corrected first in 8E, sections 17.1 and 17.2). It applies
 the owner's decisions 255-258 (section 16.1, given with 8D's brief) and, as Part A's decisions set them, 249 (a) and 250 (b) (sections 8.3-8.5
 and 10). In order, each in commits of its own: the prerequisite correction the audit of 8C found (section 16.2), decision 257 (b) (16.3),
 decision 256 (a) (16.4), then 8D (16.5-16.11) and the records. Nothing of 8E: no richer kit, no gait drawn, no model detail added. No data file,
@@ -3004,3 +3005,588 @@ self-test 284 of 284 and no console message; `check-report.js` judges its report
 for decision 256's second run on `067bb83` (the runners differ more than the census and the culling block cost; the block's 15 runs took 38
 minutes of it); the job's limit is 240. On `51acc3c` and `62c141e` (the workflow's comment and `cost-8d.js`, the build unchanged): the push
 runs 40284841784 and 40290083254 and the pull request's 40284845988 and 40290087975 pass every job.
+
+## 17. Implementation PR 8E as built (27 October 2026)
+
+**Status.** Built on `claude/optimistic-thompson-4e5hsn` (draft PR #70, base `main` at `2f41819`, PR #69's merge: implementation PR 8D, merged
+by the owner on 26 October 2026), for review; not merged. It applies decisions 242 (a), 243 (a), 244 (a) and 245 (a) as the owner settled them
+(section 0.3, with the points of section 0.3.1, items 7 and 8), after the two findings of the audit of 8D, each corrected in a commit of its own
+(sections 17.1 and 17.2), and the artillery's data task in a commit of its own before anything is drawn from it (section 17.3). In order:
+`2af8ed9`, `1c6b54e`, `d95bfe0` (the data task), `62f5cd2` (the troops and their checks), `a99eb7b` (what the evidence runs found in
+the checks and the measuring tools, section 17.12), then the records. Nothing of decision 258 (b)'s
+counter-placement work or of decision 255 (d)'s far-label prototype is in it (both commissioned separately, section 16.12). **Device acceptance
+is pending**: no owner hardware was available to this session (section 17.13).
+
+**In numbers** (sections 17.4 to 17.15): per figure the rich kit at most 1.21 times 8D's (a gunner; a man on foot 1.17 to 1.18; a rider and
+his horse the same count, reshaped), the simple level 8D's kit in all 39 classes; the frame's triangles at most +8.0% (close on Sokolnitz at
+4x; the low Pratzen view +4.7%, the Overviews +0.1% to +0.4%, 1x and the paper map as 8D's), every desktop view within section 8.3's 2.8
+million triangles and 900 calls, so its integrated-GPU condition is not met; the phone's two Overview views over its 1.62 million by 1.4%
+and 1.1%, as before 8D (1.3% and 0.7%): the phone route's run required before merging, pending; the gait no draw call and no triangle (29
+views of 29), its CPU 0.112 to 0.185 ms a frame (the budget 0.2), the level of detail 0.040 to 0.056 ms more; nothing allocated under 8E's
+functions while the eye moves; the planted feet within 0.020 units of their rest contact in 99 poses of 100 at 4x (0.047 at 10.33x); the
+self-test 295 of 295; every rule its checks hold made to fail by a mutation (the self-test's 8D and 8E blocks on 26 copies, `css-test.js`'s blocks on 25), three of them after the checks they first passed were strengthened; `check:visual` on CI passing on the build before the last two fixes (`62f5cd2`'s run; on `a99eb7b` and `27a3d2f` every other job passes, their `check:visual` runs below).
+
+### 17.1 Prerequisite 1: culling's animation allowance follows the geometry drawn and the animation's definition (the audit of 8D; commit `2af8ed9`)
+
+- **Found** by the audit of 8D: `cullBlock` read a mesh's animation envelope once, when it first made the mesh's bounds, so a mesh given another
+  geometry (or a geometry whose positions or parts changed, or a changed animation table) kept its first envelope: an animated vertex could
+  leave the bounds (the audit's leg box: envelope 0.022 cached against 0.283 needed; a vertex 0.043 outside). Reproduced by
+  `tools/stage8/envelope-8e.js` on 8D as merged (`--revs 2f41819,2af8ed9`, `docs/stage8-evidence/8e/envelope.json`).
+- **The correction.** `animEnv` caches per part attribute, keyed by the position and part attributes (objects and versions) and `ANIM.ver`;
+  `animDefine` moves `ANIM.ver` and the kit programs' cache key (`animKey`); `cullGeo` is keyed by the position attribute and its version; each
+  mesh's bounds record what they were made from, and `cullStale` refreshes them whenever any of it differs (one comparison per field on an
+  unchanged frame). Shared geometries share their envelope and bounds, never a mesh's state.
+- **Held** by the self-test's culling check (a), at rest and animated (every animated vertex of the first, middle and last instance inside the
+  bounds by the test's own envelope over 64 phases), a new check (h) (meshes switched between geometries with different envelopes and back, an
+  in-place part rewrite, a changed definition, placements at the eye's frustum and the sun's box where only the swing reaches in: drawn in that
+  pass, the frame and the depth map identical to culling off), `runtime-test.js`'s dry run on real three r128 geometries and `cullmotion.js`'s
+  own envelope; each made to fail by `mutate-8e.js` on copies with 8D's rule put back (`docs/stage8-evidence/8e/mutate-pre1.json`). The
+  manifest 284 to 285. Since 8E itself the envelope is computed over every pose the hook allows (`animPoses`: the slopes, the trot, the knee
+  and the wheels at their extremes, section 17.11).
+
+### 17.2 Prerequisite 2: culling's static comparison requires zero differences, located (the audit of 8D; commit `1c6b54e`)
+
+- **Found** by the audit of 8D: `thresholds.js` passed a case when the culled frame differed from the unculled in no more pixels than two renders
+  of the culled frame differed, wherever those lay: an unrelated change could be excused by an equal count of repeat noise elsewhere.
+- **The correction.** `censusCheck` fails any pixel where the culled frame differs from the unculled (`EQUIV_PX` 0), and fails as inconclusive any
+  difference between two renders of one state (a deterministic same-state comparison on the pinned browser must repeat exactly); nothing is
+  subtracted. `measure.js`'s `cullEquiv` locates both sets: where culling differs and the two renders agree (`outside`), where both differ
+  (`shared`, and where culling's difference exceeds the repeat's, `worse`), and the first pixels of each by coordinates and channels.
+- **Shown** by `tools/stage8/equiv-8e.js` (`docs/stage8-evidence/8e/equiv.json`): on records, an unrelated difference with an equal repeat count
+  elsewhere passes the old rule and fails the new; on the build in the low Pratzen case, as built 0 pixels and 0 between renders (both rules
+  pass); with one kit mesh in view wrongly culled (1,700 pixels) and the second render given 1,700 changed pixels elsewhere, the old rule passes
+  and the new fails. Harness and measurement code only: the build unchanged.
+
+### 17.3 The data task: the artillery's claims, registered, graded and scoped (decision 243 (a); commit `d95bfe0`)
+
+The leads of Part A (`leads.md`, topic 1, read by a machine reader on 23 October) were read again on the printed page images (archive.org's
+page images and the UIBK scan, each opened and read on the image; the register `docs/stage8-evidence/8e/artillery-readings.md`: 15 items, each
+passage as printed, its grade on the appearance table's scale, its scope, and what the drawing takes from it) and recorded in `appearance.js`
+before anything was drawn from them: `APPEARANCE_SOURCES` changed (three works added: Gassendi's *Aide-mémoire* t. II, 1809; Alombert and
+Colin's *La campagne de 1805 en Allemagne* t. I, 1902; Nilus' *История материальной части артиллерии* т. 2, 1904) and `ORDNANCE` added, every
+claim with its source, locator, grade, label, quotation and scope. `check:data`'s reference moved to that commit's build
+(`archive/stage8e-f3c3f3af.html`): 130 of 132 data declarations identical to the old reference, those two changed or added; nothing else of
+the data changed in 8E.
+
+Where each source applies (decision 243 (a): "Specify where each source applies"):
+
+| claim | source (grade) | scope | drawn |
+|---|---|---|---|
+| the matériel | Alombert and Colin t. I, p. 228 (B) | the Grande Armée's field artillery at the campaign's opening; which calibres stood where on 2 December not read | a generic Gribeauval field piece, no calibre or model claimed |
+| the wheels | Gassendi t. I, p. 110 (B) | the Gribeauval field carriages and limbers in his tables; the 1805 carriage kept (t. I, p. 11) | the gun's and the limber's at 1.462 and 1.137 m, at the figures' scale; 12 and 10 spokes (two to a felloe: an inference) |
+| the coffret | Gassendi t. II, pp. 869-870; t. I, p. 174 (B) | the field piece in his drill (1809) | between the trail's cheeks on the move, on the limber in action |
+| the limber behind the piece | Gassendi t. II, pp. 870, 873 (B) | his drill; the regulation itself not read | each deployed piece's limber, team and driver behind it; how far it turned not read: the facing a design value; the distance compressed |
+| limbered on the move | Gassendi t. II, p. 872 (B), with his caveat that it is not regulated | French foot artillery | the battery on the move limbered, as before |
+| the team | Gassendi t. I, p. 440 (B) | French ordinary practice (1809) | four horses a drawn gun (a symbol: a drawn gun stands for two pieces) |
+| the harness | Gassendi t. II, p. 829 (B) | the French artillery harness | the driver on the near horse (that the porteur was the near horse: an inference) |
+| the drivers | Salligny's letter of 25 October 1805, Alombert and Colin t. IV, pp. 183-184 (A as a document; label inference) | **IV Corps' divisions' artillery teams, from 25 October** | one driver a team of `heightguns` alone (below) |
+| limbering's duration | none read (generic) | none | the switch at once, as before |
+| the Guard's teams | Napoleon to Mortier, 29 August 1805 (A) | the Guard's artillery as ordered in August | nothing (no Guard battery drawn as figures); its drivers generic |
+| Austria's limber box | Teuber, p. 185 (B) | the Liechtenstein matériel to 1809 | nothing (no Austrian battery drawn as figures); drivers generic |
+| Russia's limbers | Nilus, p. 21 (B) | the Arakcheev matériel | nothing (no Russian battery drawn as figures); drivers generic |
+
+**The drivers' boundary, stated** (decision 243 (a): "Do not generalise IV Corps' October authorisation for driver numbers into a
+demonstrated rule for the Guard, Austrian or Russian artillery"). One battery is drawn with drivers: `heightguns`, "French guns on the
+heights", whose data names it IV Corps' and the Guard's artillery ("Corps and Guard artillery") and whose figures are drawn as IV Corps' foot
+artillery (`COMPOSITION.heightguns`, its dominant class; the Guard's 24 pieces Thiébault names are listed with it, their share of the drawn guns
+not sourced, and are not drawn as figures). Salligny's letter addresses IV Corps' divisions' generals about their artillery teams; that the
+battery's teams were among them is not read, nor that the reduction still held on 2 December: the drawing is an inference on both counts, so
+labelled in `ORDNANCE` and in the sources sheet ("Guns of the Guard listed with them are outside the order and are not drawn as figures"). No
+other battery is drawn with drivers (`artDrivers`: a claim whose corps is the battery's ancestor; none reaches the Santon's guns, which are drawn
+as pieces alone as before). The independent review of 8E's code (section 17.12) asked for this boundary to be stated; **it is put to the owner**
+(section 17.16): drawing no driver anywhere is the alternative if the inference is not wanted.
+
+### 17.4 The kit (decision 242 (a); `app.js` `kitGeo`, `kitFootFixedR`, `kitFootCoatR`, `kitRiderFixedR`, `kitRiderCoatR`, `kitHorseR`, `kitWrap`)
+
+- **Two levels for every class.** The simple level is 6C's kit, unchanged; the rich level is the prototype's direction (Part A's `f-kit`,
+  section 4.2) built from each class's existing claims: the man's torso wider at the shoulders with the coat's skirts behind, tapered arms with
+  hands, the legs in two segments (thigh and shin, so the knee bends in the gait) with feet in the legwear's colour (section 4.2's rule), a
+  rounder head, the class's headgear as 6C draws it, the pack, musket and bayonet as before; the rider seated with thighs along the horse and
+  shins down, the coat and skirts over the saddle, the arms toward the reins; the horse a barrel body, the neck raised, the head angled down,
+  each leg one taper. Every colour is the class's own as 6C resolves it (the coat by instance, the legwear, the headgear, the cuirass, the
+  horse), the same in both levels; the figure's height to its hat's top is the simple kit's, so decision 106's ratio is unchanged.
+- **Decision 245 (a): no facings** (decision 104 kept). The saddle-cloths' claims carry no colour class (section 4.6), so the saddle stays the
+  kit's leather in both levels: recorded for the owner, not drawn.
+- **Each mesh's own geometry.** Every kit mesh draws a geometry of its own at each level (`kitWrap`: its class's shared position, normal,
+  colour and part attributes, and its instances' own phase offsets `aPh` and slopes `aSl`), so no formation's state is ever written into a
+  shared geometry (the self-test's check (d): 265 kit meshes, 530 geometries of their own over 70 shared ones; the shared ones unchanged
+  through the day).
+- **The cost, per figure, by class** (`tools/stage8/kit-census-8e.js`, `docs/stage8-evidence/8e/kit-census.json`; section 8.2's limit 1.3
+  times the 8D kit per man):
+
+| class | 8D kit | 8E simple | 8E rich | rich / 8D |
+|---|---|---|---|---|
+| a gunner, `fr_foot_art` | 168 | 168 | 204 | 1.214 |
+| a man on foot, `at_grenz` | 204 | 204 | 240 | 1.176 |
+| a man on foot, `at_jager` | 204 | 204 | 240 | 1.176 |
+| a man on foot, `at_line` | 204 | 204 | 240 | 1.176 |
+| a man on foot, `fr_gren_light` | 204 | 204 | 240 | 1.176 |
+| a man on foot, `fr_gren_line` | 204 | 204 | 240 | 1.176 |
+| a man on foot, `fr_guard_chass` | 208 | 208 | 244 | 1.173 |
+| a man on foot, `fr_guard_gren` | 208 | 208 | 244 | 1.173 |
+| a man on foot, `fr_light` | 216 | 216 | 252 | 1.167 |
+| a man on foot, `fr_line` | 200 | 200 | 236 | 1.18 |
+| a man on foot, `it_guard` | 204 | 204 | 240 | 1.176 |
+| a man on foot, `ru_gren` | 204 | 204 | 240 | 1.176 |
+| a man on foot, `ru_guard_inf` | 216 | 216 | 252 | 1.167 |
+| a man on foot, `ru_guard_jager` | 216 | 216 | 252 | 1.167 |
+| a man on foot, `ru_jager` | 204 | 204 | 240 | 1.176 |
+| a man on foot, `ru_musk` | 216 | 216 | 252 | 1.167 |
+| a rider and his horse, `at_chevauleger` | 328 | 328 | 328 | 1 |
+| a rider and his horse, `at_cuirassier` | 340 | 340 | 340 | 1 |
+| a rider and his horse, `at_hussar_hh` | 300 | 300 | 300 | 1 |
+| a rider and his horse, `at_hussar_szekler` | 300 | 300 | 300 | 1 |
+| a rider and his horse, `fr_carabinier` | 288 | 288 | 288 | 1 |
+| a rider and his horse, `fr_cuirassier` | 352 | 352 | 352 | 1 |
+| a rider and his horse, `fr_dragoon` | 340 | 340 | 340 | 1 |
+| a rider and his horse, `fr_guard_chasscav` | 288 | 288 | 288 | 1 |
+| a rider and his horse, `fr_guard_grencav` | 292 | 292 | 292 | 1 |
+| a rider and his horse, `fr_hussar2` | 300 | 300 | 300 | 1 |
+| a rider and his horse, `fr_hussar4` | 300 | 300 | 300 | 1 |
+| a rider and his horse, `fr_hussar5` | 300 | 300 | 300 | 1 |
+| a rider and his horse, `fr_mameluke` | 327 | 327 | 327 | 1 |
+| a rider and his horse, `fr_staff` | 284 | 284 | 284 | 1 |
+| a rider and his horse, generic (no class) | 288 | 288 | 288 | 1 |
+| a rider and his horse, `ru_chevalier` | 328 | 328 | 328 | 1 |
+| a rider and his horse, `ru_cossack` | 292 | 292 | 292 | 1 |
+| a rider and his horse, `ru_dragoon` | 328 | 328 | 328 | 1 |
+| a rider and his horse, `ru_guard_horse` | 328 | 328 | 328 | 1 |
+| a rider and his horse, `ru_guard_hussar` | 300 | 300 | 300 | 1 |
+| a rider and his horse, `ru_hussar_elisavetgrad` | 300 | 300 | 300 | 1 |
+| a rider and his horse, `ru_staff` | 284 | 284 | 284 | 1 |
+| a rider and his horse, `ru_uhlan` | 300 | 300 | 300 | 1 |
+
+Every class within 1.3 times: the most, a gunner, 1.21 (168 to 204 triangles); a man on foot 1.17 to 1.18 (36 triangles more, the rich man
+of the first item above). A rider and his horse keep the same count at both levels in every class:
+the rich horse is 120 triangles against the simple's 108 (a team's horse in the self-test's check (a)) and the rich rider 12 fewer than the
+simple one, so their triangles move rather than grow. The simple level is 8D's kit in every one of the
+39 classes.
+
+### 17.5 The level of detail through the camera (decision 242 (a), section 8.4; `KLOD`, `kitLodFrame`, `kitLod`, `kitLodSet`)
+
+- **The rule.** A block draws the rich kit while it stands in the eye's view and a man of it stands at least 17.6 CSS px high at the block's
+  nearest point (16 px and a tenth), and the simple kit once he is under 14.5 px (16 px less a tenth) or the block leaves the view: a view at
+  rest or moving slowly near the threshold never toggles. Measured through the camera and the viewport, per frame: the box of the block's
+  seated men (their x and z extent and the heights they stand at, kept by `layoutFigs`, widened by 0.6 units and a man's height) through the
+  block's position, tilt, turn and scale, tested against the camera's frustum; its nearest corner's depth along the view for a man's height on
+  screen (the camera's own projection, the view offset counted), or where larger a man's height projected exactly at a corner of its base (the
+  perspective stretches him toward the view's edges). A block out of view keeps the simple kit, so the shadow pass, which draws what the sun's
+  box holds wherever the eye looks, does not pay for detail nobody sees.
+- **Stable.** All of a block's kit meshes switch together, each to the other geometry of its own pair, the knee's uniform with them (the simple
+  kit has no knee); the culling bounds follow the geometry (`cullStale`, section 17.1); nothing is allocated (`css-test.js` in the source; none sampled while
+  the eye moves, section 17.13). Along a dolly of
+  31 settled steps toward Saint-Hilaire's division and back (the self-test's check (c)): rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px),
+  simple at 170 units (the nearest point 14.2 px, the largest man 12.7 px), one switch each way and none while the eye held for four frames at each step, and between 14.5 and 17.6 px the level the way
+  the eye came (at 140 units, the nearest point 17.3 px: simple coming in, rich going out); every block with a man of
+  17.6 px or more in view rich and none with every man under 8.7 px, at the vantages, the low Pratzen view and close on Sokolnitz.
+
+### 17.6 The artillery drawn (decision 243 (a); `kitArtR`, `kitWheel`, `kitDisc`, `kitGunParts`, `kitLimberParts`, `artGeo`, `ART_AT`, `artDrivers`)
+
+- **The piece**: a generic Gribeauval field piece on a bracket trail of two cheeks (`ORDNANCE.fr.system`: no calibre or model), its wheels and
+  its limber's at Gassendi's heights at the figures' scale (`KIT.art`: the drawn man's head top standing for a stature of 1.60 m, a design value
+  inside the statures read; 0.8844 units a metre: the wheels 1.293 and 1.006 units, the self-test's check (b)), the gun's of twelve spokes and the
+  limber's of ten, every part of a wheel symmetric under a turn of one spoke's interval; the coffret between the cheeks on the move and on the
+  limber in action; the limbered piece turned onto its limber and pitched about its axle so that its trail's end lies on the pintle wherever
+  they stand (`ud.afterSeat`, after every seating, the wheels kept on the ground). One carriage colour for every army (`KIT.gear`, decisions
+  109, 243 (a)); the switch between the deployed and the limbered battery at once (`ORDNANCE.fr.limbering`: no duration read).
+- **The battery** (`heightguns`, IV Corps' and the Guard's guns on the heights, six drawn guns): deployed, each piece facing the front with its
+  five gunners at posts about it (two by the muzzle, two by the wheels, one by the trail: the prototype's, a design value, where 6C sampled them
+  behind the piece; no drill manual's posts read), and behind it its limber with the coffret on it, its team of four facing the rear and its
+  driver (section 17.3's boundary); limbered, the team ahead, the limber, the piece behind with the coffret between its cheeks, the driver on the
+  near wheel horse. Each horse keeps one index in both groups, so its beat, and its driver's, survive the switch. The gunners are drawn with the
+  deployed battery only, as before 8E: Gassendi has them march beside their piece (register item 8), which would change the crew's
+  representation the brief keeps: **recorded for the owner** (section 17.16).
+- **The Santon's battery** (attached to the 17e Légère): its pieces alone, deployed, as before 8E (the richer piece at the two levels; no limber,
+  team or driver: none was drawn there before, and its data names guns only).
+- **Extra equipment** reported apart from a man's kit (section 8.2): per drawn gun (triangles, `kit-census.json`): deployed, the vehicles 156 on 8D's build (barrel, two wheels, trail) against 256 simple and 940 rich
+  (the piece on its bracket trail with its spoked wheels, the limber with its wheels and the coffret on it), the team behind the piece 432 and 480
+  (none before), its driver 168 and 156 (none before), the gunners 840 as before and 1,020 rich; limbered, the vehicles 268 before against 256
+  and 940, the team 432 before against 432 and 480, the driver 168 and 156 (none before). Six drawn guns on both builds.
+
+### 17.7 The gait (decision 244 (a); `GAIT`, `clockRate`, `gaitDist`, `gaitLeg`, `gaitRoll`, `gaitStep`, `gaitFastest`, `ANIM`, `animGLSL`, `animAt`)
+
+**What it is.** A visual convention for symbols under compressed time: the march is seen as a march; the figures (45-70 times life size) still
+slide over the ground by the ratio of their scale to the clock's, and no footstep is matched to it. So the legend says, wherever figures are
+drawn ("marching figures step: a visual convention for symbols under compressed time, not their footsteps"), and the sources sheet's "How the
+troops move". Every number below is a design value.
+
+- **The phase**: the distance the formation's modelled track has covered at the clock (every leg reached in full, the current one to the
+  clock's fraction, in map units) over a stride: 6.6 map units a cycle of two steps for men, 16 for the cavalry's and the officers' horses, 12
+  for the teams (section 4.3's). A paused clock holds the pose; a halted formation does not step; a minute shows one pose however it was reached
+  (the self-test's check (e) at four clocks, each reached from three others: every uniform identical; `runtime-test.js` the same in its dry
+  run). A formed body steps together; each horse on its own beat (`aPh`, fixed per horse from its index), a rider and a driver on his horse's.
+- **The amplitude**: none under reduced motion (at once: S-6, "what moves stops"), on a halted formation, or on a leg under 1 km/h (a drift
+  between anchors, not a march: 450 of the self-test's 780 judgments); else full while the formation's fastest-cycling part drawn now (its men,
+  else its horses; a limbered battery's teams, its gunners being drawn with the deployed guns: `gaitFastest`) makes at most 3.2 cycles a second
+  on screen at the clock's present rate (Play's, slowed in a dwell's ease; none paused or in the dwell's hold), none from 4.8, in proportion
+  between: a formation's parts fade together. Eased by 0.22 of the way a 60th of a second (nine tenths in 0.15 s, within 10⁻³ in about half a
+  second), then idle. A paused clock: the amplitude full, the pose held still (decision 244: "A paused clock must hold the pose still"). Above 8
+  km/h of modelled speed the horses trot, eased the same way.
+- **The wheels**: turned by the teams' distance, two spoke intervals of the gun's wheel a team's cycle, the limber's by the two wheels' sourced
+  heights (they roll together, much slower than rolling without slip, as the feet slide), drawn within one spoke's interval; at most 4.8 cycles a
+  second a wheel turns 9.6 intervals a second, under a third of an interval a frame at 30 frames a second, so the turn does not alias. They turn
+  at their distance's angle while the amplitude is above 0 and stand at rest, angle 0 (their symmetry makes it the nearest spoke's), once it is
+  0: one turn of at most half an interval as the fade ends. (A first build scaled the angle with the fade, which stepped back by a fraction of
+  an interval at every interval: the review's finding 3, section 17.12.)
+- **The hook** (8D's, extended): the parts are a man's thighs (1, 2), shins (13, 14), swinging arm (3) and the rest (10); a horse's legs (5-8)
+  and the rest (11), its rider or driver (12); the gun's wheels (20) and the limber's (21); every other vertex rigid (0). Uniforms per mesh: the
+  phase, the amplitude, the trot, the two wheels' angles and the knee (the rich kit's, written by `kitLodSet`); attributes per instance: the
+  phase offset and the slopes. With the amplitude 0 the branch is not taken and the vertex is three's own (the frame with the hooks the frame
+  without them, 0 pixels: the 8D block's check (e)). `gaitStep` is the one writer of the gait's uniforms (`css-test.js`), and does nothing (no
+  computation, no allocation) for a block whose clock, rate, reduced motion and drawn parts are unchanged and whose gait has arrived.
+- **What it does not do**: no casualty animation, firing, kneeling, falling or wind (`css-test.js`: the hook's parts are the legs, the arm, the
+  root and the wheels; the standards' cloth reads no clock).
+
+### 17.8 The feet on the ground (decision 244 (a): "Verify ... terrain contact")
+
+- **The rule.** The hook keeps the lowest of each man's heels and toes (each horse's hoof edges) at its rest contact with the drawn ground: the
+  figure rises or dips by the most any edge's posed position would cut the ground, read as the drawn ground's slopes under that instance along
+  the way it faces (`aSl`: two chords of the drawn ground from where it stands, a man's ahead and behind over his soles' travel, a horse's to its
+  fore and hind hooves' far edges; `layoutFigs`, two lookups a figure), clamped at 3.0 (the drawn ground's steepest under a figure is 0.96 at 4x
+  and 2.5 at 10.33x). At rest nothing changes: the upright figure stands as 6C seated it (the rest pose's seating check, 0.02 units at each
+  figure's origin, unchanged).
+- **On the way.** A first build planted the formations whose men stood under 10 px on screen against their block's own tilt (no lookup); on the
+  Allied and French headquarters' wide, curved blocks it left a planted edge up to 2.87 px off at 4x and 8.02 px at 10.33x, so every animated
+  formation now takes its own chords, in view or not. Their cost is held (section 17.13) by taking them again, while the clock plays, only once
+  a block has moved a tenth of a unit (a third of the reach) or turned about a degree since; with the clock still (paused, in the dwell's hold,
+  scrubbed, a jump) always, and where the clock stopped with them behind, at once (the self-test: Play at half speed for 24 steps and four slow ones, 546 seatings, 189 of them of animated formations and 157 of
+  those taking the slopes, 2 blocks left behind at the last step and taken again at the pause, the 59 animated meshes' slopes then exactly a
+  fresh seating's at the clock).
+- **Measured** (the self-test's check (h), at 4x and 10.33x, at three clocks, up to 40 instances of every animated man's and horse's mesh at four
+  phases at full swing with their knee and trot, each edge posed by `animAt`, the hook's arithmetic, against the drawn ground; at 1x no figure,
+  decision 34):
+  - *at 4x*, 23,292 poses: the planted edge within 0.0001 units of its rest contact in half of them and within 0.020 in 99 of 100 (the
+    check's tolerance 0.03 units, about 2% of a man's height and a third of a pixel at the rich kit's threshold; 102 poses beyond it, the worst
+    0.087, the grenadier division's fixed parts at 09:05); 9,710 poses floating (at most 0.087) and 10,268 sinking (at most 0.070); the raised
+    edge lifted over the planted one by 0.131 units at the median and 0.611 at most;
+  - *at 10.33x*, 23,292 poses: half within 0.0002, 99 in 100 within 0.047 (the tolerance 0.077, the same in proportion to the relief; 75
+    beyond it, the worst 0.213, the same mesh); 9,046 floating (at most 0.213) and 10,078 sinking (at most 0.185); the raised edge's lift
+    0.140 at the median, 1.381 at most;
+  - *at rest* the edges stand up to 0.543 units off the ground at 4x and 1.406 at 10.33x: the upright figure on a slope, as 6C seats it (the
+    rest pose's seating check unchanged). The gait plants the lowest edge where the rest pose stood; it does not tilt the figure to the slope.
+
+### 17.9 S-5: the facing, a function of the clock (`faceClock`, `enemyFacing`)
+
+A formation that is not marching faces the nearest enemy as placed at one clock of its own: the start of the phase or of its halt (its arrival
+at the anchor it stands on), whichever is later. Until 8E the facing was cached per phase at the first clock visited in it, so it depended on the
+path to the clock (ten formations by more than 30 degrees; Bagration in "The wheel" by 178); now it is a function of the clock alone, and is the
+facing the day showed when played through. The block still wheels to it at its arm's rate, as before. The self-test (check (g)) and the dry run:
+960 facings at three clocks of each phase, each the same reached from the phase's start, its end and directly. Each formation's facing is kept for
+the clock it was asked at, so nothing is computed or allocated while the clock stands.
+
+### 17.10 The standards' still drape (section 4.5; `flagGeo`, `KIT.std.fold`)
+
+The cloth folded in its own depth only, two and a half folds, at most 0.07 units deep (in the cloth's 2.4 by 1.4 plane before scaling), none at
+the staff, still (no clock, no wind). Its width and height are as before, so every carrier, count, painting, measure and decision 106's ratio is
+the 6D checks' (all pass); the cloths are drawn on both faces, as before, and culled by their own bounds, folds included: nothing hides a standard
+near the eye.
+
+### 17.11 Shadows, culling and a lost context with the new meshes
+
+- **Shadows**: every new mesh (the rich kit, the pieces, limbers, teams and drivers) casts, through its own depth material with the same hook,
+  so the shadow casts the pose drawn (the 8D block's check (f): 87 kit meshes in view at full swing move 106,222 pixels of the frame and 8,366 texels of the sun's
+  depth map; with the depth materials' hook removed, 101,737 pixels, the figures alone, and no texel; back at rest none; 5,876,136 vertex
+  positions over every pose the hook allows inside the envelope).
+- **Culling**: every new mesh is in a block, bounded by its own instances and the envelope of every pose the hook allows (`animPoses`: the slopes
+  at their clamp either way, the trot, the knee and the wheels' angles at their extremes); refreshed by the geometry's switch; a block out of view
+  still casts into it (the 8D block's checks, all passing on 8E's build: in the low Pratzen view and close on Sokolnitz the world passes 352 meshes and the shadow
+  passes 495, 170 of them out of the eye's view and casting, each frame with culling its frame without it, 0 pixels, two renders 0 apart; over a sweep of 379 views
+  114,079 mesh tests, 85,583 culled, each with none of its instances in the eye's frustum; Saint-Hilaire's division out of the view casting into
+  it: 0 pixels against culling off, 108 with the block hidden). The independent review ran 400,000 random poses through `animAt`
+  against the envelope: none outside (the largest excess −6 × 10⁻⁶). The root's bound under the clamp is wide (1.70 units for a man, 1.07 for a
+  horse: the rise or dip a slope of 3.0 allows), which costs culling some yield and nothing else.
+- **A lost context**: a new case of `boot-check.js` (`check:contrast` runs it), `context-gait`: Saint-Hilaire's division mid-stride at 09:00 at
+  4x, close, the context lost and restored: the kit's programs compiled again with the hook (210 to 291 materials, 219 to 438 depth
+  materials, as three r128 recompiles them), the block still rich at full swing; the frame 112 pixels from the pose before the loss (the rest
+  pose 37,615 from it) and the sun's depth map 364 texels (the rest pose 12,316): the pose drawn and cast again after the restore.
+
+### 17.12 The checks, and each made to fail
+
+- **The self-test** (295 checks, every one passing: 285 before 8E, ten added and two renamed, the level-of-detail check renamed
+  again in `a99eb7b`): an 8E block of ten checks, self-contained (`tools/stage8/mutate-8e.js` runs it alone on copies of the build):
+  (a) the kit by class at its two levels (the same class, colours and height, the triangles per figure within 1.3 times); (b) the artillery as
+  `ORDNANCE` draws it (the wheels at Gassendi's heights at the figures' scale, every wheel symmetric under a spoke's turn, the coffret's two
+  places, the piece on its limber's pintle, four horses a gun, drivers only where the claim's scope reaches, one carriage colour, the switch at
+  once); (c) the level of detail through the camera, with its hysteresis; (d) the shared geometries untouched by any formation's state; (e) the gait a function
+  of the clock (four clocks, each reached from three others), still while the clock stands (the frame too), its slopes after Play exactly a
+  fresh seating's; (f) the amplitude by the rule at a paused clock and at ½x, 1x, 2x and 4x, reduced motion at once, the ease then idle; (g)
+  S-5; (h) the feet on the ground; (j) the step described; (i) the drape. The 8D block's checks adapted to a gait that writes its uniforms (the
+  hooks inert with every amplitude 0, the controlled deformation from the rest pose, the envelope over every pose the hook allows, the gait's own
+  uniforms again after the test's).
+- **`css-test.js`**: an 8E block (the values and rules of decisions 242-245 in the source, listed in `CLAUDE.md`); the 8D block's rules moved to
+  8E's (the one writer of the gait's uniforms, `animDefine`'s form, the amplitude clamped). `tools/stage8/mutate-css-8e.js`: each of 17
+  mutations of `app.js` fails the block, and the source passes it; `mutate-css-8d.js`, brought to the code as 8E's prerequisite left it, likewise
+  for 8D's block (`docs/stage8-evidence/8e/mutate-css-8e.json`, `mutate-css-8d.json`).
+- **`runtime-test.js`**: dry runs of the gait on the app's own state (four clocks from four paths each: every mesh's uniforms identical; the
+  phase the track's distance by the test's arithmetic; the wheels within half a spoke's interval), the amplitude at every speed (none under
+  reduced motion), S-5 (960 facings, three paths each), the sources sheet's notes (the table's values as read) and `kitLod`'s decision along a
+  dolly on a block of the test's (one switch each way, none while the eye holds, simple with the eye turned away).
+- **The height guard** classifies the slopes' reads of the drawn ground (`makeBlock > slopes`, presentation).
+- **`boot-check.js`**: the case `context-gait` (section 17.11). The case `context-loss` failed once here while two other browser runs shared the
+  container: its clock step needs 22 drawn frames to settle on 8D's build and on 8E's alike (traced by hand: the headquarters' and
+  Saint-Hilaire's wheel to their facings, the same in both), and under that load fewer than 22 came within its 120 s; alone, and with one run beside it, it passes (eight cases of eight,
+  section 17.15).
+- **The self-test's blocks on copies with one rule broken** (`tools/stage8/mutate-8e.js`, `docs/stage8-evidence/8e/mutate-8e.json`, on 8E's
+  build):
+
+| mutation | what it breaks | block | checks failing |
+|---|---|---|---|
+| `none` | nothing (the build as it is) | 8d | none of 14 (the build as it is) |
+| `envonce` | 8D's behaviour: the envelope read once, when the mesh's bounds are first made, and kept whatever geometry it is given | 8d | culling (8E's prerequisite, the audit of 8D) |
+| `stale8d` | 8D's staleness test: the instances' version and count and the geometry's identity only (no attribute or definition compared) | 8d | culling (8E's prerequisite, the audit of 8D) |
+| `envcache8d` | 8D's envelope cache: one value per part attribute, whatever its version or the animation's definition | 8d | culling (8E's prerequisite, the audit of 8D) |
+| `none8e` | nothing (the build as it is) | 8e | none of 10 (the build as it is) |
+| `kitratio` | the rich kit's head four times as fine (its triangles past section 8.2's 1.3 times) | 8e | the kit (decision 242 (a)) |
+| `kitcolour` | the rich man's feet in the leather's colour, not the legwear's | 8e | the kit (decision 242 (a)) |
+| `artwheels` | the limber's wheels the gun's size (Gassendi's two heights not kept) | 8e | the artillery (decision 243 (a), ORDNANCE) |
+| `artcoffret` | no coffret on the deployed limber (ORDNANCE.fr.coffret not drawn) | 8e | the artillery (decision 243 (a), ORDNANCE) |
+| `artdrivers` | IV Corps' authorisation generalised: a driver on every French team | 8e | the artillery (decision 243 (a), ORDNANCE) |
+| `lodcentre` | a man's size on screen measured at the block's centre, not at its nearest point | 8e | the kit's level of detail (decisions 242 (a), 249) |
+| `lodnohyst` | no hysteresis: one threshold each way | 8e | the kit's level of detail (decisions 242 (a), 249) |
+| `lodsplit` | a block's first mesh left on the simple kit when the block turns rich | 8e | the kit's level of detail (decisions 242 (a), 249) |
+| `shared` | the phases written into the shared geometry | 8e | the kit's shared geometries (8E) |
+| `gaitwall` | the phase accumulated frame by frame (wall-clock), not the clock's | 8e | the gait (decision 244 (a)) |
+| `wheelwrap` | the wheels' angle not taken within one spoke's interval | 8e | the gait (decision 244 (a)) |
+| `gaitnofade` | the amplitude never faded by the speed | 8e | the gait's amplitude (decision 244 (a)) |
+| `gaitcrew` | a battery's cadence its hidden crew's (every part's, not the parts drawn) | 8e | the gait's amplitude (decision 244 (a)) |
+| `gaitrmease` | reduced motion eased, not at once | 8e | the gait's amplitude (decision 244 (a)) |
+| `gaitparts` | a formation's horses faded apart from its men | 8e | the gait's amplitude (decision 244 (a)) |
+| `gaitdrift` | no 1 km/h floor: a drift between anchors stepped | 8e | the gait's amplitude (decision 244 (a)) |
+| `gaitrm` | reduced motion ignored by the gait | 8e | the gait's amplitude (decision 244 (a)) |
+| `gaitnoease` | the amplitude set at once, not eased | 8e | the gait's amplitude (decision 244 (a)) |
+| `slopestale` | the slopes left where Play stopped (not taken again on the pause) | 8e | the gait (decision 244 (a)) |
+| `slopeevery` | the slopes taken at every seating while the clock plays (no step) | 8e | the gait (decision 244 (a)) |
+| `s5` | 8D's facing: cached per phase at the first clock visited | 8e | the facing (S-5; 8E); the gait (decision 244 (a)) |
+| `contact` | the drawn ground's slopes not counted in the rise or dip that plants the feet (the hook and its mirror alike) | 8e | the gait on the ground (decision 244 (a)) |
+| `drape` | the cloth narrowed by its folds | 8e | the standards' drape (section 4.5; 8E) |
+
+On the final build both blocks pass (8D's 14 checks, 8E's 10), and every copy fails the check that holds its rule; `s5` fails two (the
+facing, and the gait's check: with the clock standing the frame still changes, 22 pixels at 13:50, as blocks wheel toward a facing the
+path to the clock chose). `lodnohyst`, `slopestale` and `slopeevery` passed the block as it stood in
+`62f5cd2` and `a99eb7b` and fail since its checks (c) and (e) were strengthened (above).
+
+- **The independent review.** An agent given the diff, not the author's account, read `app.js`'s 8E code for correctness: the hook and its
+  mirror agree branch by branch; 400,000 random poses (amplitude below 1, fractional trot and knee, slopes beyond the clamp, every wheel angle)
+  inside the envelope (the largest excess −6 × 10⁻⁶); no NaN or crash path; nothing of a formation written into a shared geometry; the knee
+  following the level; nothing to re-create after a lost context. Four defects, each fixed before the evidence was made: (1) the drivers'
+  boundary (section 17.3), now stated in `ORDNANCE`, the register and the sources sheet, and put to the owner; (2) a battery's step faded by its
+  gunners' cadence, though they are hidden while it marches (at 2x the teams would have glided unstepped): now the parts drawn
+  (`gaitFastest`), a mutation of it failing (f); (3) the wheels stepping back by a fraction of an interval at every interval while the
+  amplitude faded: now whole until it ends; (4) reduced motion easing the gait out over half a second: now at once (S-6), a mutation of it
+  failing (f). Its robustness remarks were applied: the hook's man branch names its parts (any other vertex rigid, as `animAt` has it); the
+  level of detail's box has the men's heights; nothing computed or allocated in the gait or the facing while the clock stands; the sources
+  sheet's wording. Its remark on the root's wide bound stands as recorded (section 17.11).
+- **What the evidence runs found in the checks and the tools, fixed in a commit of their own** (`a99eb7b`): (1) the self-test's 8E block
+  passed a copy of the build whose level of detail had no hysteresis (`mutate-8e.js`'s `lodnohyst`): its dolly counted the switches and
+  their places, not the band in which the level is the way the eye came. Check (c) now records each distance's level coming in and going
+  out and requires, between 14.5 and 17.6 px at the block's nearest point, simple coming in and rich going out (the same both ways
+  elsewhere): on the build the band is seen at 140 units (17.3 px); on the copy the check fails there, simple both ways. `css-test.js` held
+  the rule in the source (now also as `mutate-css-8e.js`'s `lodhyst`) and `runtime-test.js`'s dry run by its switch points; now the page
+  does too. (2) The device route's gait bracket ran no segment: it looked for its view among the held views, not the played ones; fixed,
+  and run end to end here. (3) `clips-8e.js` and `cost-8e.js` played the clock with the dwell on, so a stretch begun at an event's start
+  sat in the dwell's hold: the clips' clocks stood still, and part of the costs' stretch from 08:45 drew nothing moving; both now play with
+  the dwell off, and the costs below are the corrected runs'. (4) Smaller: the deployed battery's still aimed before the guns reach the field;
+  the kit census read no gun count from 8D's battery; one mutation named a condition as it read before a refactor. The build changed in the
+  self-test's check (c) alone.
+- **Then two more, in a commit of their own** (`27a3d2f`): the full table on `a99eb7b`'s build found two mutations of the slopes passing the
+  8E block, `slopestale` (the slopes left where Play stopped) and `slopeevery` (the slopes taken at every seating, no step rule). Check
+  (e)'s Play at half speed moved every marching block past the step at each 60th of a second, so no block was ever left behind for the
+  pause to take again, and its count of seatings included those of formations the gait leaves at rest. It now plays four slow steps
+  after the 24, as Play's clock slows into a dwell's hold, requires that some block is left behind (else the pause tests nothing), that
+  the pause takes its slopes again, and that the seatings of animated formations skipped some (a counter of those, `SEAT_STATS.want`):
+  on the build 546 seatings, 189 of them of animated formations and 157 of
+  those taking the slopes, 2 blocks left behind at the last step and taken again at the pause, the 59 animated meshes' slopes then exactly a
+  fresh seating's at the clock; both mutations now fail. The check's name already said so; the build changed in check (e) and the counter.
+
+### 17.13 Performance: the census against 8D, the CPU, the devices pending
+
+**The census, per view and pass** (`tools/stage8/census-8e.js`, `docs/stage8-evidence/8e/census.json` and `census.md`): one whole frame per view
+after the eye moved (culled, every pass, the ground's depth drawn), reconciled with `renderer.info` in every frame; 8D's build against 8E's,
+calls / triangles:
+
+| view | world pass | shadow pass | whole frame (calls / triangles) | triangles | figures (calls / triangles) | rich / simple blocks |
+|---|---|---|---|---|---|---|
+| `overview-field` | 531 / 1.502 M → 529 / 1.504 M | 289 / 1.043 M → 287 / 1.042 M | 834 / 2.692 M → 830 / 2.694 M | **+0.1%** | 585 / 1.267 M → 581 / 1.269 M | 1 / 30 |
+| `overview-field-1x` | 183 / 238.0 k → 183 / 238.0 k | 0 / 0 → 0 / 0 | 197 / 385.1 k → 197 / 385.1 k | **+0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `overview-field-10x` | 531 / 1.505 M → 529 / 1.508 M | 289 / 1.043 M → 287 / 1.042 M | 834 / 2.695 M → 830 / 2.697 M | **+0.1%** | 585 / 1.267 M → 581 / 1.269 M | 1 / 30 |
+| `overview-plan` | 531 / 1.481 M → 529 / 1.483 M | 289 / 1.043 M → 287 / 1.042 M | 834 / 2.671 M → 830 / 2.673 M | **+0.1%** | 585 / 1.267 M → 581 / 1.269 M | 0 / 31 |
+| `close-sokolnitz` | 387 / 1.267 M → 406 / 1.384 M | 275 / 1.020 M → 273 / 1.096 M | 675 / 2.434 M → 692 / 2.628 M | **+8.0%** | 450 / 1.016 M → 467 / 1.210 M | 25 / 6 |
+| `close-sokolnitz-1x` | 167 / 238.6 k → 167 / 238.6 k | 0 / 0 → 0 / 0 | 181 / 385.7 k → 181 / 385.7 k | **+0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `close-sokolnitz-10x` | 317 / 1.178 M → 331 / 1.281 M | 274 / 1.019 M → 272 / 1.096 M | 603 / 2.345 M → 615 / 2.525 M | **+7.7%** | 387 / 930.8 k → 399 / 1.111 M | 19 / 12 |
+| `staff-paper` | 136 / 238.7 k → 136 / 238.7 k | 0 / 0 → 0 / 0 | 148 / 238.7 k → 148 / 238.7 k | **+0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `pratzen-low` | 293 / 1.119 M → 296 / 1.173 M | 239 / 945.0 k → 243 / 995.2 k | 543 / 2.211 M → 550 / 2.315 M | **+4.7%** | 346 / 816.2 k → 353 / 920.2 k | 14 / 17 |
+| `selected-formation` | 390 / 1.300 M → 388 / 1.365 M | 289 / 1.043 M → 287 / 1.112 M | 691 / 2.490 M → 687 / 2.625 M | **+5.4%** | 509 / 1.094 M → 505 / 1.228 M | 22 / 9 |
+| `watch-selected` | 335 / 1.235 M → 338 / 1.302 M | 279 / 1.026 M → 277 / 1.087 M | 625 / 2.408 M → 626 / 2.535 M | **+5.3%** | 447 / 1.013 M → 448 / 1.140 M | 21 / 10 |
+| `hybrid-dimmed` | 350 / 1.283 M → 350 / 1.333 M | 274 / 1.019 M → 274 / 1.085 M | 635 / 2.449 M → 635 / 2.565 M | **+4.7%** | 457 / 1.050 M → 457 / 1.167 M | 16 / 15 |
+| `pratzen-low-1x` | 151 / 227.8 k → 151 / 227.8 k | 0 / 0 → 0 / 0 | 162 / 374.9 k → 162 / 374.9 k | **+0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `pratzen-low-10x` | 292 / 1.115 M → 295 / 1.163 M | 277 / 1.026 M → 275 / 1.073 M | 580 / 2.288 M → 581 / 2.383 M | **+4.2%** | 382 / 892.7 k → 383 / 988.1 k | 14 / 17 |
+| `paper-north-up` | 144 / 240.9 k → 144 / 240.9 k | 0 / 0 → 0 / 0 | 156 / 240.9 k → 156 / 240.9 k | **+0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `paper-close` | 94 / 203.4 k → 94 / 203.4 k | 0 / 0 → 0 / 0 | 103 / 203.5 k → 103 / 203.4 k | **-0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `paper-drawer` | 100 / 226.5 k → 100 / 226.5 k | 0 / 0 → 0 / 0 | 110 / 226.5 k → 110 / 226.5 k | **+0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `ph8-overview-study` | 516 / 1.474 M → 516 / 1.480 M | 284 / 1.032 M → 284 / 1.036 M | 811 / 2.653 M → 811 / 2.663 M | **+0.4%** | 575 / 1.245 M → 575 / 1.256 M | 0 / 32 |
+| `ph8-overview-watch` | 516 / 1.471 M → 516 / 1.478 M | 284 / 1.032 M → 284 / 1.036 M | 811 / 2.650 M → 811 / 2.661 M | **+0.4%** | 575 / 1.245 M → 575 / 1.256 M | 0 / 32 |
+| `ph8-overview-watch-1x` | 172 / 236.7 k → 172 / 236.7 k | 0 / 0 → 0 / 0 | 183 / 383.8 k → 183 / 383.8 k | **-0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `ph8-overview-watch-10x` | 516 / 1.474 M → 516 / 1.480 M | 284 / 1.032 M → 284 / 1.036 M | 811 / 2.653 M → 811 / 2.663 M | **+0.4%** | 575 / 1.245 M → 575 / 1.256 M | 0 / 32 |
+| `eye-zuran` | 139 / 285.4 k → 144 / 301.1 k | 27 / 97.0 k → 27 / 112.6 k | 177 / 529.6 k → 182 / 560.8 k | **+5.9%** | 45 / 153.3 k → 50 / 184.5 k | 4 / 1 |
+| `eye-zuran-1x` | 118 / 227.1 k → 118 / 227.1 k | 0 / 0 → 0 / 0 | 129 / 374.2 k → 129 / 374.2 k | **-0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `plans-overview` | 548 / 1.487 M → 546 / 1.489 M | 289 / 1.043 M → 287 / 1.042 M | 859 / 2.677 M → 855 / 2.679 M | **+0.1%** | 585 / 1.267 M → 581 / 1.269 M | 0 / 31 |
+| `paper-laptop` | 144 / 240.9 k → 144 / 240.9 k | 0 / 0 → 0 / 0 | 156 / 240.9 k → 156 / 240.9 k | **+0.0%** | 0 / 0 → 0 / 0 | 0 / 0 |
+| `narrow-1024` | 531 / 1.509 M → 529 / 1.511 M | 289 / 1.043 M → 287 / 1.042 M | 834 / 2.698 M → 830 / 2.700 M | **+0.1%** | 585 / 1.267 M → 581 / 1.269 M | 0 / 31 |
+| `phone:overview-plan` | 531 / 1.493 M → 529 / 1.496 M | 0 / 0 → 0 / 0 | 545 / 1.640 M → 543 / 1.643 M | **+0.1%** | 306 / 633.5 k → 304 / 635.9 k | 0 / 31 |
+| `phone:pratzen-low` | 212 / 1.031 M → 213 / 1.068 M | 0 / 0 → 0 / 0 | 223 / 1.178 M → 224 / 1.215 M | **+3.1%** | 66 / 190.2 k → 67 / 226.7 k | 8 / 23 |
+| `phone:ph8-overview-watch` | 516 / 1.484 M → 516 / 1.491 M | 0 / 0 → 0 / 0 | 527 / 1.631 M → 527 / 1.638 M | **+0.4%** | 301 / 622.9 k → 301 / 629.5 k | 0 / 32 |
+
+Every frame of both builds is reconciled with `renderer.info`. **No view's triangles or calls rise by more than 10%**: the most, close on
+Sokolnitz at 4x, +8.0% (2,433,595 to 2,627,505 triangles; 675 to 692 calls, +2.5%), at 10.33x +7.7%; the eye level +5.9% (calls +2.8%, the
+most of any view); the low Pratzen view and the views with a formation selected +4.2% to +5.4%; the Overviews +0.1% to +0.4%, where every
+block is simple (one, near the eye in the Field vantage's Overview, rich); every view at 1x and on the paper map, where no figure is drawn,
+within 46 triangles of 8D's (the position-confidence patches, `conf`: two fresh pages of 8D's own build differ
+by as much, 84 and 96 triangles in two of these views, so the variation is not 8E's; traced by a probe listing each drawn mesh's triangles). The rich kit is what costs: in the close view 25 of the 31 blocks in it draw it. **Section 8.3's
+budgets**: every desktop view within 2.8 million triangles and 900 calls (the most 2,700,453 triangles, `narrow-1024`, and 855 calls,
+`plans-overview`, Overviews that 8E changes by 0.1%), so the **integrated-GPU condition is not met**: no 4x frame rises by more than 10% in
+triangles or calls. The phone (`lowTier`): its low Pratzen view 1,178,497 to 1,214,927 triangles (+3.1%), within 1.62 million; its two
+Overview views 1,642,785 and 1,637,881 against 8D's 1,640,415 and 1,631,301, over the budget by 1.4% and 1.1% as they were before 8D
+(section 16.11; 8E adds 0.1% and 0.4%), so section 8.3's alternative, the phone route's run, is required before merging, as it was for 8D,
+and is pending. No phone view's calls rise by more than one.
+
+**The gait draws nothing more**: on 8E's build each view's frame with every kit mesh's amplitude 0 (the same culling: the bounds hold the
+envelope whatever the amplitude) has the same calls and triangles in every pass as the frame drawn (all 29 views, 28 of them with 12 to 46 kit meshes animated). The level of detail is
+the geometry's cost; the gait's is the CPU's and the vertex shader's.
+
+**The CPU** (`tools/stage8/cost-8e.js`, `docs/stage8-evidence/8e/cost-0845.json`, `cost-0845-fast.json`, `cost-1040.json`; this machine's, a container's shared CPU;
+per step of a played stretch, 240 steps of Play at 60 a second with the dwell off, so that every step is at the speed's nominal rate,
+medians over five repetitions):
+
+| view, speed | `gaitStep` | the slopes: counted (lookups) / benched / timed | the animation | `kitLod` | seatings a frame (taking the slopes) | slope attributes uploaded a frame |
+|---|---|---|---|---|---|---|
+| `pratzen-low` at 08:45, 0.5x | 0.0708 ms | 0.027 ms (1060) / 0.0472 ms / 0.1366 ms | **0.118 ms** | 0.0558 ms | 21.88 (3.19) | 26.96 (7.5 KB) |
+| `pratzen-low` at 08:45, 1x | 0.0942 ms | 0.0464 ms (1750) / 0.0681 ms / 0.0458 ms | **0.1623 ms** | 0.055 ms | 23.02 (5.28) | 44.64 (12.4 KB) |
+| `close-sokolnitz` at 08:45, 0.5x | 0.0804 ms | 0.0297 ms (1060) / 0.0374 ms / 0.12 ms | **0.1178 ms** | 0.0504 ms | 21.88 (3.19) | 26.96 (7.5 KB) |
+| `close-sokolnitz` at 08:45, 1x | 0.0871 ms | 0.0621 ms (1750) / 0.0976 ms / 0.0463 ms | **0.1847 ms** | 0.0504 ms | 23.02 (5.28) | 44.64 (12.4 KB) |
+| `overview-plan` at 08:45, 0.5x | 0.0771 ms | 0.0281 ms (1060) / 0.0409 ms / -0.0075 ms | **0.118 ms** | 0.0458 ms | 21.88 (3.19) | 26.96 (7.5 KB) |
+| `overview-plan` at 08:45, 1x | 0.0708 ms | 0.0578 ms (1750) / 0.0736 ms / 0.0488 ms | **0.1444 ms** | 0.0504 ms | 23.02 (5.28) | 44.64 (12.4 KB) |
+| `overview-field` at 08:45, 0.5x | 0.0754 ms | 0.0398 ms (1060) / 0.0478 ms / -0.1266 ms | **0.1232 ms** | 0.04 ms | 21.88 (3.19) | 26.96 (7.5 KB) |
+| `overview-field` at 08:45, 1x | 0.0721 ms | 0.0665 ms (1750) / 0.0965 ms / 0.0584 ms | **0.1686 ms** | 0.0458 ms | 23.02 (5.28) | 44.64 (12.4 KB) |
+| `pratzen-low` at 08:45, 2x | 0.0633 ms | 0.0429 ms (1682) / 0.0568 ms / 0.0034 ms | **0.1201 ms** | 0.0429 ms | 27.32 (5.5) | 43.76 (11.96 KB) |
+| `pratzen-low` at 08:45, 4x | 0.0621 ms | 0.0345 ms (1232) / 0.0499 ms / -0.0384 ms | **0.112 ms** | 0.0446 ms | 29.57 (5.32) | 42.42 (9.14 KB) |
+| `close-sokolnitz` at 08:45, 2x | 0.0737 ms | 0.0454 ms (1682) / 0.0622 ms / 0.1059 ms | **0.1359 ms** | 0.0429 ms | 27.32 (5.5) | 43.76 (11.96 KB) |
+| `close-sokolnitz` at 08:45, 4x | 0.0721 ms | 0.029 ms (1232) / 0.0414 ms / 0.1016 ms | **0.1135 ms** | 0.0467 ms | 29.57 (5.32) | 42.42 (9.14 KB) |
+| `overview-plan` at 08:45, 2x | 0.0704 ms | 0.0757 ms (1682) / 0.0835 ms / 0.0891 ms | **0.1539 ms** | 0.0471 ms | 27.32 (5.5) | 43.76 (11.96 KB) |
+| `overview-plan` at 08:45, 4x | 0.0721 ms | 0.0339 ms (1232) / 0.0471 ms / 0.1304 ms | **0.1192 ms** | 0.0471 ms | 29.57 (5.32) | 42.42 (9.14 KB) |
+| `overview-field` at 08:45, 2x | 0.0704 ms | 0.0479 ms (1682) / 0.062 ms / 0.33 ms | **0.1324 ms** | 0.0471 ms | 27.32 (5.5) | 43.76 (11.96 KB) |
+| `overview-field` at 08:45, 4x | 0.0696 ms | 0.0345 ms (1232) / 0.0448 ms / 0.0183 ms | **0.1144 ms** | 0.0429 ms | 29.57 (5.32) | 42.42 (9.14 KB) |
+| `pratzen-low` at 10:40, 0.5x | 0.0883 ms | 0.0232 ms (844) / 0.0345 ms / 0.315 ms | **0.1228 ms** | 0.05 ms | 25.52 (4.08) | 36.27 (6.37 KB) |
+| `close-sokolnitz` at 10:40, 0.5x | 0.0825 ms | 0.0236 ms (844) / 0.035 ms / 0.0004 ms | **0.1175 ms** | 0.0483 ms | 25.52 (4.08) | 36.27 (6.37 KB) |
+| `overview-plan` at 10:40, 0.5x | 0.0704 ms | 0.0224 ms (844) / 0.0474 ms / 0.0162 ms | **0.1178 ms** | 0.0446 ms | 25.52 (4.08) | 36.27 (6.37 KB) |
+| `overview-field` at 10:40, 0.5x | 0.0792 ms | 0.0236 ms (844) / 0.0365 ms / 0.1254 ms | **0.1157 ms** | 0.0421 ms | 25.52 (4.08) | 36.27 (6.37 KB) |
+
+The animation (section 8.3's row: at most 0.2 ms a frame) is `gaitStep`'s time plus the slopes' (the larger of the counted and the
+benched): **0.112 to 0.185 ms a frame** in every view at every speed measured, the most close on Sokolnitz at 1x from 08:45 (seven formations
+marching, 5.3 seatings a frame taking the slopes); within the budget. The level of detail (`kitLod`, every block's decision every frame: the
+kit's cost, not the gait's) is 0.040 to 0.056 ms more, so the troops' per-frame work in all is at most 0.235 ms here. The timed difference
+(the same stretch with the slopes and without, alternately) is bound by this shared machine's noise, its pairs from -0.32 to +0.62 ms, and
+decides nothing: hence the slopes counted (the ground lookups the seating makes, times one lookup's own cost here) and benched (each block
+seated with them and without in tight loops). The slopes' attributes uploaded: 27 to 45 a frame, 6 to 12 KB. A first run of these measures
+left the dwell on: from 08:45, an event's start, its stretch sat for part of its steps in the dwell's hold, where nothing moves, and
+understated a moving frame (the animation 0.105 to 0.168 ms); the runs above play with the dwell off (section 17.12).
+
+**No allocation while only the eye moves** (`tools/stage8/alloc-8e.js`, `docs/stage8-evidence/8e/alloc.json`; Chrome's sampling heap profiler,
+a sample every 16 bytes on average): at a still clock (09:05) in the low Pratzen view, seven formations marching (their pose held) and 13
+blocks rich, the eye orbited about its target in 600 steps after 600 unsampled ones (each step's blocks posed, seated, given their level of
+detail and their gait): **nothing sampled under any of 8E's per-frame functions** (`kitLodFrame`, `kitLod`, `kitLodSet`, `gaitStep`,
+`gaitFastest`, `gaitLegOf`, `gaitDistOf`, `gaitRoll`, `clockRate`, `enemyFacing`, `faceClock`, `layoutFigs` and the slopes), and
+`updateVisibility` in all 142.8 bytes a step on 8E's build against 142.6 on 8D's (what it allocated before 8E). Sampled from the first step
+instead, `kitLod` showed about 13 KB in all whether 300 or 1,200 steps followed (43.6 and 11.2 bytes a step): V8 compiling it, once, not a
+frame's allocation, which would grow with the steps; the warm-up separates the two.
+
+**The devices: pending.** No owner hardware was available, so no frame time was measured on a device; geometry counts are budgets, not
+proof of frame rates (decision 250 (b)). By the counts above, the desktop's budget is met in every view, the integrated-GPU condition by
+none, and the phone's two Overview views exceed its budget as before 8D, so the phone route's run is required before merging (section
+17.16). The route's new gait bracket (`perf-run.html?route=gait`) was run end to end here (`route-gait-local.json`): every block in its
+order, A B A B A B A twice and, after a rest, B A B A B A B twice; under software WebGL a block's few seconds draw 0 to 2 frames, as in 8D's
+local runs of its brackets, so it gives no verdict here.
+
+### 17.14 The captures and the clips
+
+Made by `tools/stage8/clips-8e.js` on 8E's build (section 17.15) and 8D's, each on a page opened as the harness opens it with the app's own
+loop held, the state set through the app's own functions; `clips/record-log.txt` gives each one's states. The views are design choices,
+made by looking: Saint-Hilaire's division from ahead of its march (from behind, the wood beside it hides the column), its line low from
+the side at 10.33x.
+
+- **Stills** (`docs/stage8-evidence/8e/stills/`, 1280 x 720, JPEG, at a paused clock: a marching formation's pose at that clock), 8D's above 8E's
+  where both draw the view: `infantry` (Saint-Hilaire's division marching up the Pratzen at 09:00, 26 units off: 8D's men upright, 8E's rich kit in stride),
+  `cavalry` (the Guard's cavalry at 10:45, 30 units off), `artillery-deployed` (the guns on the heights in action at 13:00, 22 units off: the
+  pieces, the coffret on the limber, the limber, its team and its driver behind each gun, against the guns and crews 8D drew),
+  `artillery-limbered` (the same battery limbered and moving at 14:05: team, driver, limber, the piece on its pintle with the coffret between
+  its cheeks); 8E's alone: `lod-26`, `lod-110` and `lod-180` (the level of detail by distance: rich at 26 and 110 units, the block's nearest
+  point 224.6 and 23.4 px; simple at 180 units, 13.4 px), `slope-10x` (the division's line on the slope at 10.33x, low from the side: its men
+  in stride, the planted feet on the drawn ground) and `phone` (a phone's page, 390 x 844 at density 1, an iPhone's user agent).
+- **Clips** (`clips/`, H.264 at 10 frames a second, 960 x 540: each frame three steps of Play's own stepping at 30 a second with the dwell off,
+  the eye following the formation): `infantry-half` (09:00 to 09:14 at half speed, 8D's slide above 8E's step), `cavalry-half` (10:45 to
+  10:59), `artillery-half` (the guns limbered and moving from 14:00: the teams' step and the wheels turning with them), `speeds` (from 09:00
+  at ½x, 1x, 2x and 4x, 1.5 s each; the amplitude sampled along it 1, 1, 1 at ½x, 0.63, 0.52, 1.00 at 1x, 0.59, 0.02, 0 at 2x and 0, 0, 0
+  at 4x, each by the division's leg at that clock), `pause` (half speed, then the clock still for 1.5 s with the pose held, then half speed
+  again), `slope-10x` and `phone-half`.
+
+### 17.15 What was run
+
+Here (Chromium 141.0.7390.37, Playwright 1.56's headless shell, software WebGL; the container's CPU shared with the runs beside it) and on CI
+(GitHub's `ubuntu-latest` runners, the same browser), on the commits named:
+
+- **The prerequisites**, each on its own commit's build: `npm test` (all nine suites and the height guard), the self-test 285 of 285 (`2af8ed9`),
+  the measures of sections 17.1 and 17.2; on CI, on `1c6b54e`: the push run 40453901130 and the pull request's 40453930102, the checks job,
+  `check:contrast` and `check:selftest` passing in each.
+- **The data task** (`d95bfe0`), on its own build (`f3c3f3af...`): `npm test` (all nine suites and the height guard); `check:data` against the
+  old reference (130 of 132 identical, the two changes as listed) and the new (132 of 132).
+- **8E's build** (md5 `d73d01154b8f6e2552fe04bfb24d05e5`, 2,537,677 bytes, `27a3d2f`), and the two before it that draw the same (the
+  troops' commit `62f5cd2`, `ff3149adcee37a8846c7b4565caa7b2c`, 2,535,729 bytes; `a99eb7b`, `e80577e2e2ac815205bf8b1572e767bd`, 2,537,038
+  bytes; they differ in the self-test's checks (c) and (e) and the counter `SEAT_STATS.want` alone): `npm run build` writes each byte for
+  byte; `npm test` (all nine suites and the height guard), `check:data` (132 of 132 declarations identical to the new reference),
+  `check:chronology` (no error; its open items as before 8E) and `check:baseline` on each; the self-test 295 of 295 with no console message
+  on each, alone (1,152 s, 1,112 s and 1,049 s); `boot-check.js`'s eight cases (on `62f5cd2`'s build); the static mutations; and the
+  evidence of sections 17.4 to 17.14, each file naming its build: the census on `62f5cd2`'s; the kit census, the allocation, the costs, the
+  route's gait bracket, the stills and the clips on `a99eb7b`'s; the self-test's mutations on `27a3d2f`'s.
+- **On CI**: on `d95bfe0` (the data task), the push run 40488755731 and the pull request's 40488763165: every job passes. On `62f5cd2`
+  (the troops), the push run 40490778062, the pull request's 40490784810 and the dispatched 40490808164: the checks job, `check:contrast`
+  (its eight start-up cases, `context-gait` among them) and `check:selftest` (295 of 295) pass in each, and the dispatched run's
+  `check:visual` passes: its 39 cases, every census reconciled and every case's frame with culling its frame without it (0 pixels), the
+  motion block's counts over its 16 motions 245, 985, 130 and 10 (8D's, exactly: the map layer in motion unchanged), the culling block's 15
+  runs (485 frames judged, 243 compared, 0 pixels differing, 46,840 meshes culled, 34,828 mesh-frames drawn in the shadow pass only), the
+  self-test 295 of 295 and no console message; `check-report.js` judges its report again here and passes it. It took 198 minutes against
+  8D's 136 (the job's limit is 240): under software WebGL the richer kit's vertices and the hook's arithmetic run on the runner's CPU.
+  On `a99eb7b`: the push run 40524845225 and the pull request's 40524853920 pass every job, and the dispatched 40524850177's
+  checks job, `check:contrast` and `check:selftest` pass; its `check:visual` was running when this was written. On `6e24083` and `839bdbe`
+  (evidence only): the push runs 40534591093 and 40539654788 and the pull request's 40534602845 pass every job; the pull request's
+  40539665517 on `839bdbe` lost its `check:contrast` job while installing the browser (an apt mirror's time-out, before any check ran;
+  the push run's same job on the same commit passed). On `27a3d2f` (the final build): the pull request's run 40545859944 passes every
+  job (the self-test 295 of 295); the push run 40545852952 and the dispatched 40545866479, with `check:visual`, were running when this was
+  written.
+
+### 17.16 What remains, for the owner's attention
+
+- **Device acceptance: pending.** No owner hardware was available, and software WebGL's timings decide nothing. Prepared for the owner: 8D's
+  build (`git show 2f41819:austerlitz-command-map.html`, md5 `ae7f16b8...`) and 8E's (this PR's), and the device route of
+  `docs/STEP6_SPEC.md` §2 (`tools/step6/perf-run.html`, `?src=` naming the build): the desktop route and the phone route (`?route=phone`) on
+  both builds give the before and after; the new gait bracket (`?route=gait`: Play at half speed under Follow from 08:30 at the Field vantage,
+  the gait as built against the gait at rest, the culling route's orders, rounds and rule) separates the gait's cost from the kit's in one
+  build. Section 8.3's integrated-GPU condition is not met (no view's frame rises by more than 10% in triangles or calls: the most +8.0%
+  triangles, close on Sokolnitz at 4x), so it does not hold 8E back; none was available, and a run on one would still be the best test of
+  the richer kit's vertex cost. The phone's two Overview views remain over its triangle budget (by 1.4% and 1.1%; on 8D's build 1.3% and
+  0.7%), so section 8.3's alternative, a phone run of the route holding the heavy segments' long frames at or under 5% in two runs, is
+  required before merging, as it was for 8D.
+- **For the owner's decision or attention** (none of them blocks the build; each is drawn as recorded above):
+  1. *The drivers on the guns on the heights* (section 17.3): drawn as an inference from IV Corps' letter to its divisions, the battery being
+     IV Corps' and the Guard's artillery drawn as IV Corps' foot artillery. The alternative, drawing no driver anywhere until a reading reaches a
+     battery, is one line of `artDrivers`.
+  2. *Gunners beside moving pieces*: Gassendi has the gunners of foot artillery march beside their piece (register item 8); the crew is drawn
+     with the deployed battery only, as before 8E, because drawing it with the limbered battery changes the crew's representation, which the
+     brief keeps.
+  3. *The Santon's battery*: its pieces alone, as before (no limbers, teams or drivers: none in the data).
+  4. *The limber's facing in action*: « tourne à gauche » does not say by how much; the team drawn facing the rear is a design value.
+  5. *The saddle-cloths*: their claims carry no colour class, so the saddle stays the kit's leather in both levels.
+  6. *Facings* (decision 245 (a)): to be reconsidered now that the troops can be judged.
+  7. *The drifts under 1 km/h*: in 450 of the self-test's 780 amplitude judgments (a formation at a clock and a speed) the formation moves
+     under 1 km/h between anchors (the modelled legs' slow drifts): none steps, as decided; a visitor sees them glide.
+- **Kept outside this PR**, as the brief asks: decision 258 (b)'s counter placement and decision 255 (d)'s far-label prototype (both
+  commissioned with 8D, section 16.12, not begun). Nothing of the map layer changed.
+- **Not measured**: a GPU's frame time (software WebGL here); Safari (no WebKit here); memory on a device.
