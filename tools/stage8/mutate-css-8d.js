@@ -12,8 +12,9 @@ const MUT=[
   ["none","nothing (the source as it is)",null,null],
   ["nocullblock","a block's meshes left without bounds (no cullBlock in buildFormations)","      cullBlock(g,id);   /* Stage 8, 8D","      /* Stage 8, 8D"],
   ["hides","culling by visible: a mesh with nothing to draw hidden","  if(cl.n<=0){ CULL.frame.culled++; return false; }","  if(cl.n<=0){ CULL.frame.culled++; o.visible=false; return false; }"],
-  ["noversion","the bounds not refreshed when the instance matrices change","if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count||cl.g!==o.geometry) cullRefresh(o,cl);","if(cl.n!==o.count||cl.g!==o.geometry) cullRefresh(o,cl);"],
-  ["sharedbounds","a shared geometry's own bounds written","  var s=CULL.geo[g.uuid]; if(s) return s;","  var s=CULL.geo[g.uuid]; if(s) return s; g.computeBoundingSphere();"],
+  /* since 8E's prerequisite (cullStale, CULL.geo by the position attribute) the same two mutations on the code as it now reads */
+  ["noversion","the bounds not refreshed when the instance matrices change","if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count||cl.g!==o.geometry||cl.av!==ANIM.ver) return true;","if(cl.n!==o.count||cl.g!==o.geometry||cl.av!==ANIM.ver) return true;"],
+  ["sharedbounds","a shared geometry's own bounds written","  var Pa=g.attributes.position, s=CULL.geo.get(Pa); if(s&&s.pv===Pa.version) return s;","  var Pa=g.attributes.position, s=CULL.geo.get(Pa); if(s&&s.pv===Pa.version) return s; g.computeBoundingSphere();"],
   ["appoff","the app switching culling off (on a low tier)","function cullFrameStart(){ var F=CULL.frame;","function cullFrameStart(){ if(lowTier) setCull(false); var F=CULL.frame;"],
   ["nodepthhook","the kit's depth material without the hook","d.userData.anim=U; d.onBeforeCompile=animHook;","d.userData.anim=U;"],
   ["gaitset","the app moving the gait (a uniform written outside the self-test)","function cullFrameStart(){ var F=CULL.frame;","function cullFrameStart(){ CULL.meshes.forEach(function(m){ if(m.userData.anim) m.userData.anim.uAnimAmp.value=0.5; }); var F=CULL.frame;"],

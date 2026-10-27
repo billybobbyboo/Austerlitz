@@ -113,7 +113,10 @@ const CLASS={
      both (its eye at Puntowitz on the drawn ground, a strip's breadth on screen at its lift, the outlines' bands projected at their lift) */
   "app.js:outlineReach":"presentation","app.js:capFactors > len":"presentation","app.js:ribbonRelayout":"presentation",
   "app.js:arrowChecks":"test","app.js:arrowChecks > lowView":"test","app.js:arrowChecks > clear":"test","app.js:arrowChecks > behindView":"test","app.js:arrowChecks > sp2":"test",
-  "app.js:kitDayChecks > hiddenFrom":"test","app.js:kitDayChecks > sp":"test"
+  "app.js:kitDayChecks > hiddenFrom":"test","app.js:kitDayChecks > sp":"test",
+  /* Stage 8, implementation PR 8E (decision 244 (a)): the slopes of the drawn ground under each animated man's or horse's feet (chords ahead
+     and behind, fore and hind), which the gait's hook plants the feet on */
+  "app.js:makeBlock > slopes":"presentation"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

@@ -11,7 +11,7 @@
    3. the definition changed (part 10's bob raised fivefold, by animDefine where the source has it, else by writing ANIM.PART as 8D's source
       would have to): does the next test give an envelope and a bound that hold the animated vertices?
    4. an unchanged mesh: no refresh at the next test (the unchanged frame's cost is the comparisons only).
-   node tools/stage8/envelope-8e.js [--src app.js] [--rev <git revision>] [--json out.json]
+   node tools/stage8/envelope-8e.js [--src app.js] [--rev <git revision>] [--revs <rev>,<rev>] [--json out.json]
    Measurement code only: nothing is written to a source file. */
 "use strict";
 const fs=require("fs"), path=require("path"), cp=require("child_process"), acorn=require("acorn");
@@ -25,7 +25,7 @@ function load(label,src){
     if(k&&want.indexOf(k)>=0) pick.push(src.slice(n.start,n.end));
     if(n.type==="ExpressionStatement"&&src.slice(n.start,n.end).indexOf("F.intersectsObject=function(o)")>=0) patch=src.slice(n.start,n.end); });
   /* ANIM.decl and ANIM.body are assignments after ANIM's declaration */
-  const extra=(src.match(/^ANIM\.(decl|body)=.*$/mg)||[]).join("\n");
+  const extra=ast.body.filter(n=>n.type==="ExpressionStatement"&&/^ANIM\.(decl|body)=/.test(src.slice(n.start,n.end))).map(n=>src.slice(n.start,n.end)).join("\n");
   const body=pick.join("\n")+"\n"+extra+"\n"+(patch||"")+"\nreturn {ANIM:ANIM, animAt:animAt, animEnv:animEnv, animDefine:typeof animDefine==='function'?animDefine:null, CULL:CULL, cullTest:cullTest, cullBlock:cullBlock};";
   /* the probe's own Frustum, so that the app's patch of three's prototype in one load does not reach another */
   const T=Object.assign({},THREE); T.Frustum=class extends THREE.Frustum{};
@@ -67,9 +67,14 @@ function run(api){
   return R;
 }
 const cases=[];
-const src=opt("--src"), rev=opt("--rev");
-if(rev) cases.push(load("git "+rev+":app.js",cp.execSync("git show "+rev+":app.js",{cwd:ROOT,maxBuffer:64<<20}).toString()));
-cases.push(load(src||"app.js (working tree)",fs.readFileSync(path.resolve(ROOT,src||"app.js"),"utf8")));
+const src=opt("--src"), rev=opt("--rev"), revs=opt("--revs");
+/* --revs A,B: those revisions only. Since implementation PR 8E itself the working tree's definition is 8E's (part 10 the man's root, no bob;
+   ANIM.WHEEL read from ORDNANCE through the kit), so the probe's scenario, which is the prerequisite's, is run on the revisions it was written
+   for: --revs 2f41819,2af8ed9 (8D as merged, and 8E's prerequisite); 8E's own definition is held by runtime-test.js and the self-test */
+if(revs) revs.split(",").forEach(r=>cases.push(load("git "+r+":app.js",cp.execSync("git show "+r+":app.js",{cwd:ROOT,maxBuffer:64<<20}).toString())));
+else {
+  if(rev) cases.push(load("git "+rev+":app.js",cp.execSync("git show "+rev+":app.js",{cwd:ROOT,maxBuffer:64<<20}).toString()));
+  cases.push(load(src||"app.js (working tree)",fs.readFileSync(path.resolve(ROOT,src||"app.js"),"utf8"))); }
 const res={three:THREE.REVISION, runs:cases.map(run)};
 res.runs.forEach(r=>{ console.log("== "+r.source); Object.keys(r).filter(k=>k!=="source").forEach(k=>console.log("   "+k+": "+JSON.stringify(r[k]))); });
 if(OUT){ fs.mkdirSync(path.dirname(path.resolve(OUT)),{recursive:true}); fs.writeFileSync(path.resolve(OUT),JSON.stringify(res,null,1)); }

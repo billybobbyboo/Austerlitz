@@ -25,16 +25,18 @@ class Col{constructor(h){this.r=1;this.g=1;this.b=1;this.setHex(h===undefined?0x
 class Obj extends REAL.Object3D{}
 function attr(n,item){const a={count:n,array:new Float32Array(n*item),needsUpdate:false,
   getX:i=>a.array[i*item],getY:i=>a.array[i*item+1],getZ:i=>a.array[i*item+2],
-  setY(i,v){a.array[i*item+1]=v},setXYZ(i,x,y,z){a.array[i*item]=x;a.array[i*item+1]=y;a.array[i*item+2]=z},set(x){a.array.set(x)}};return a;}
+  setY(i,v){a.array[i*item+1]=v},setX(i,v){a.array[i*item]=v},setZ(i,v){a.array[i*item+2]=v},   /* setX, setZ: Stage 8, 8E's tapered boxes (kitTaper) */
+  setXYZ(i,x,y,z){a.array[i*item]=x;a.array[i*item+1]=y;a.array[i*item+2]=z},set(x){a.array.set(x)}};return a;}
 let GEON=0;   /* Stage 8, 8D: a geometry's uuid, as three's (CULL.geo and ANIM.env are keyed by it) */
 class Geo{constructor(n=12){this.attributes={position:attr(n,3),normal:attr(n,3),color:attr(n,3)};this.index={};this.uuid="geo-"+(++GEON);}
- rotateX(){return this}
+ rotateX(){return this} applyMatrix4(){return this}   /* applyMatrix4: Stage 8, 8E's limbered piece (artGeo) */
  toNonIndexed(){ if(!this.index) console.warn("THREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed."); this.index=null; return this }
  computeVertexNormals(){}
  setAttribute(k,v){this.attributes[k]=v;return this} setIndex(i){this.index=Array.isArray(i)?{array:i,count:i.length}:i;return this}   /* as three's: it keeps the index (Stage 8, 8B: groundPatch rewrites its own) */
  setFromPoints(){return this} setDrawRange(){return this} dispose(){}}
 const stub={
  Vector3:REAL.Vector3, Color:Col, Object3D:Obj, Group:Obj, Sphere:REAL.Sphere, Frustum:REAL.Frustum,   /* Sphere, Frustum: Stage 8, 8D's culling, r128's own */
+ Box3:REAL.Box3,   /* Stage 8, 8E: the kit's level of detail, a block's box against the frustum (r128's own) */
  Spherical:REAL.Spherical,
  Scene:class extends Obj{},
  PerspectiveCamera:REAL.PerspectiveCamera,
@@ -54,7 +56,7 @@ const stub={
    setRenderTarget(t){this._target=t===undefined?null:t}clear(){}
    /* Stage 8, implementation PR 8B: the ground's depth pass keeps the clear colour and the target it found */
    getRenderTarget(){return this._target||null} getClearColor(c){return c} getClearAlpha(){return 1} setClearColor(){}
-   getDrawingBufferSize(v){v.x=1600;v.y=900;return v}},
+   getDrawingBufferSize(v){v.x=1600;v.y=900;return v} getSize(v){v.x=1600;v.y=900;return v}},   /* getSize: Stage 8, 8E's level of detail (CSS pixels) */
  WebGLRenderTarget:class{constructor(w,h,o){this.width=w;this.height=h;
    this.texture={generateMipmaps:true};Object.assign(this,o||{})}
    setSize(w,h){this.width=w;this.height=h} dispose(){}},
@@ -86,7 +88,9 @@ const stub={
  HemisphereLight:class extends Obj{constructor(a,b,i){super();this.intensity=i}},
  Fog:class{constructor(c,n,f){this.color=new Col(c);this.near=n;this.far=f}},
  PlaneGeometry:class extends Geo{constructor(w,h,a,b){super(((a||1)+1)*((b||1)+1))}},
- SphereGeometry:Geo, ExtrudeGeometry:class extends Geo{translate(){return this}}, Shape:class{moveTo(){}lineTo(){}}, IcosahedronGeometry:class extends Geo{constructor(){super();this.index=null}},BoxGeometry:Geo,ConeGeometry:Geo,CylinderGeometry:Geo,CircleGeometry:Geo,RingGeometry:Geo,
+ SphereGeometry:Geo, ExtrudeGeometry:class extends Geo{translate(){return this}}, Shape:class{moveTo(){}lineTo(){}}, IcosahedronGeometry:class extends Geo{constructor(){super();this.index=null}},BoxGeometry:Geo,
+ /* Stage 8, 8E: the richer kit's head (as the icosahedron, non-indexed), the wheels' rims and the barrel's lathe */
+ OctahedronGeometry:class extends Geo{constructor(){super();this.index=null}}, TorusGeometry:Geo, LatheGeometry:Geo,ConeGeometry:Geo,CylinderGeometry:Geo,CircleGeometry:Geo,RingGeometry:Geo,
  TubeGeometry:Geo,BufferGeometry:Geo,
  /* the real r128 curves (Stage 2C: the draped ribbons sample them by arc length) */
  CatmullRomCurve3:REAL.CatmullRomCurve3, LineCurve3:REAL.LineCurve3,
@@ -94,6 +98,8 @@ const stub={
  ShapeUtils:REAL.ShapeUtils,
  BufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=a;return t},
  Float32BufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=(a instanceof Float32Array)?a:Float32Array.from(a);return t},
+ /* Stage 8, 8E: each mesh's instances' phase offsets (kitWrap), as three's: an attribute over its own array, isBufferAttribute */
+ InstancedBufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=a;t.isBufferAttribute=true;t.isInstancedBufferAttribute=true;t.version=0;return t},
  CanvasTexture:class{constructor(img){this.image=img;this.minFilter=0;this.magFilter=0;this.generateMipmaps=true;
    this.repeat={set(){}};this.needsUpdate=false}
    clone(){return new stub.CanvasTexture()} dispose(){}},
@@ -1231,7 +1237,11 @@ try{
       if(o.geometry.attributes.aPart){ nk++; const U=o.userData.anim;
         if(!U||o.material.onBeforeCompile!==animHook||o.material.userData.anim!==U||!o.customDepthMaterial||o.customDepthMaterial.onBeforeCompile!==animHook||o.customDepthMaterial.userData.anim!==U||o.customDepthMaterial.depthPacking!==THREE.RGBADepthPacking)
           bad.push(id+": a kit mesh not hooked on its material and its own depth material");
-        else if(U.uAnimAmp.value!==0||U.uAnimPhase.value!==0) bad.push(id+": its uniforms not 0"); }
+        else { const G=b.userData.gait, k=o.userData.gaitKind;   /* since 8E: the uniforms are the gait's (gaitStep, the one writer) */
+          if(!k) bad.push(id+": a kit mesh without a kind of the gait");
+          else if(!G){ if(U.uAnimAmp.value!==0||U.uAnimPhase.value!==0) bad.push(id+": a kit mesh of a block never posed with its uniforms not 0"); }
+          else if(G.meshes.indexOf(o)<0) bad.push(id+": a kit mesh outside its block's gait");
+          else if(U.uAnimAmp.value!==G.amp) bad.push(id+": its amplitude "+U.uAnimAmp.value+", its block's "+G.amp); } }
       const v0=o.visible; F.intersectsObject(o);
       if(o.count>0){ if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count) bad.push(id+": its bounds not made at the test"); else if(!inside(o)) bad.push(id+": an instance outside its bounds"); else held++; }
       if(o.visible!==v0) bad.push(id+": the test changed visible"); }); });
@@ -1256,20 +1266,22 @@ try{
        definition changed by animDefine, each must lie inside the bounds the app's frustum test reads, and the envelope must be the geometry's */
     { const leg=part=>{ const P=Array.from(new REAL.BoxGeometry(0.13,0.62,0.18).translate(-0.09,0.31,0).toNonIndexed().attributes.position.array);
         const g=new REAL.BufferGeometry(); g.setAttribute("position",new REAL.Float32BufferAttribute(P,3)); g.setAttribute("aPart",new REAL.Float32BufferAttribute(new Array(P.length/3).fill(part),1)); return g; };
-      const G1=leg(10), G2=leg(1), tm=new THREE.InstancedMesh(G1,new THREE.MeshStandardMaterial({}),1), grp=new THREE.Group(), A=new THREE.Matrix4(), o=[0,0,0], V=new THREE.Vector3();
+      const G1=leg(0), G2=leg(1), tm=new THREE.InstancedMesh(G1,new THREE.MeshStandardMaterial({}),1), grp=new THREE.Group(), A=new THREE.Matrix4(), o=[0,0,0], V=new THREE.Vector3();   /* since 8E: G1 rigid */
       A.makeScale(4,4,4); tm.setMatrixAt(0,A); tm.instanceMatrix.needsUpdate=true; grp.add(tm); cullBlock(grp,"envelope test"); const ci=CULL.meshes.indexOf(tm); if(ci>=0) CULL.meshes.splice(ci,1);
       grp.position.set(100,5,100); grp.updateMatrixWorld(true);
       const cam=new REAL.PerspectiveCamera(50,16/9,0.5,5000); cam.position.set(100,35,40); cam.lookAt(100,5,100); cam.updateMatrixWorld(true);
       const F2=new THREE.Frustum().setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,cam.matrixWorldInverse));
       const beyond=()=>{ F2.intersectsObject(tm); const cl=tm.userData.cull, S2=new THREE.Sphere().copy(cl.s).applyMatrix4(tm.matrixWorld), P=tm.geometry.attributes.position.array, K=tm.geometry.attributes.aPart.array; let w=-1e9;
         Mi.fromArray(tm.instanceMatrix.array,0);
-        for(let v=0;v<K.length;v++) for(let k=0;k<64;k++){ animAt(Math.round(K[v]),P[v*3],P[v*3+1],P[v*3+2],k/64*Math.PI*2,1,o); V.set(o[0],o[1],o[2]).applyMatrix4(Mi).applyMatrix4(tm.matrixWorld); w=Math.max(w,V.distanceTo(S2.center)-S2.radius); }
+        for(let v=0;v<K.length;v++) animPoses(Math.round(K[v]),P[v*3],P[v*3+1],P[v*3+2],64,q=>{ V.set(q[0],q[1],q[2]).applyMatrix4(Mi).applyMatrix4(tm.matrixWorld); w=Math.max(w,V.distanceTo(S2.center)-S2.radius); },o);   /* since 8E: every pose the hook allows */
         return w; };
-      const steps=[["drawn with G1",()=>{}],["given G2",()=>{ tm.geometry=G2; }],["back to G1",()=>{ tm.geometry=G1; }],
-        ["the definition changed",()=>{ const P5=JSON.parse(JSON.stringify(ANIM.PART)); P5[10].bob*=5; tm.userData.p0=ANIM.PART; animDefine(P5); }]];
+      const steps=[["drawn with G1",()=>{}],["given G2",()=>{ tm.geometry=G2; }],
+        ["the definition changed with G2 drawn",()=>{ tm.userData.p0=ANIM.MAN; tm.userData.e2=tm.userData.cull.env; animDefine({MAN:Object.assign({},ANIM.MAN,{AH:ANIM.MAN.AH*2,HIP:ANIM.MAN.HIP*1.5})}); }],
+        ["back to G1",()=>{ tm.geometry=G1; }]];   /* since 8E: the hip's swing doubled, its joint raised */
       steps.forEach(([k,f])=>{ f(); const w=beyond(); if(w>1e-6) bad.push("envelope, "+k+": an animated vertex "+w.toFixed(4)+" outside the bounds");
-        if(Math.abs(tm.userData.cull.env-animEnv(tm.geometry))>1e-12) bad.push("envelope, "+k+": the bounds' envelope "+tm.userData.cull.env+" is not its geometry's "+animEnv(tm.geometry)); });
-      if(tm.userData.p0) animDefine(tm.userData.p0);
+        if(Math.abs(tm.userData.cull.env-animEnv(tm.geometry))>1e-12) bad.push("envelope, "+k+": the bounds' envelope "+tm.userData.cull.env+" is not its geometry's "+animEnv(tm.geometry));
+        if(/definition/.test(k)&&!(tm.userData.cull.env>tm.userData.e2)) bad.push("envelope, "+k+": the envelope "+tm.userData.cull.env+" not above G2's "+tm.userData.e2+" before"); });
+      if(tm.userData.p0) animDefine({MAN:tm.userData.p0});
       const r0=CULL.total.refresh; F2.intersectsObject(tm); F2.intersectsObject(tm); if(CULL.total.refresh!==r0+1) bad.push("envelope: after the definition's restore the bounds refreshed "+(CULL.total.refresh-r0)+" times at two tests (want once)");
       const r1=CULL.total.refresh; G1.attributes.aPart.needsUpdate=true; F2.intersectsObject(tm); if(CULL.total.refresh!==r1+1) bad.push("envelope: a part attribute's version moved and the bounds were not refreshed"); }
     /* another object: r128's own test (the geometry's sphere through its world matrix) */
@@ -1280,7 +1292,95 @@ try{
       if(vs.indexOf("#include <begin_vertex>\n"+ANIM.body)<0||vs.indexOf("#include <common>\n"+ANIM.decl)<0||vs.indexOf("#include <project_vertex>")<vs.indexOf(ANIM.body)) bad.push("the hook is not after begin_vertex and before the projection");
       if(sh.uniforms.uAnimAmp!==mt.userData.anim.uAnimAmp||!Object.keys(ATMO.u).every(k=>sh.uniforms[k]===ATMO.u[k])) bad.push("the hook does not give the mesh's uniforms and the atmosphere's"); }
     if(!nm||!nk||bad.length) throw new Error("culling and the hooks: "+(bad.length?bad.slice(0,5).join("; "):nm+" meshes, "+nk+" kit"));
-    console.log("culling and the hooks: "+nm+" instanced meshes on the blocks bounded and culled by their own bounds ("+held+" with instances, each held), "+nk+" kit meshes hooked on both materials at 0; a test mesh behind the eye culled and still visible, before it drawn, its bounds refreshed by a moved instance and a count, not otherwise, culled with none to draw; since 8E's prerequisite the bounds following a geometry swapped (the leg's envelope 0.022 to 0.283 and back), a changed definition and a part attribute's version, every animated vertex (animAt, 64 phases) inside; the hook after begin_vertex OK"); }
+    console.log("culling and the hooks: "+nm+" instanced meshes on the blocks bounded and culled by their own bounds ("+held+" with instances, each held), "+nk+" kit meshes hooked on both materials, their uniforms their block's gait's; a test mesh behind the eye culled and still visible, before it drawn, its bounds refreshed by a moved instance and a count, not otherwise, culled with none to draw; since 8E's prerequisite the bounds following a geometry swapped and back, a changed definition and a part attribute's version, every animated vertex (animPoses: 64 phases, the slopes, trots and knees at their extremes) inside; the hook after begin_vertex OK"); }
+
+  /* Stage 8, implementation PR 8E (decisions 242 (a), 244 (a); docs/STAGE8_SPEC.md sections 4 and 17): a dry run of the gait and the kit's
+     level of detail on the app's own state (no rendering; the self-test's 8E block holds the drawn picture). The gait a function of the clock:
+     at four clocks with formations marching, every kit mesh's uniforms the same whether the clock was reached from three other clocks, its
+     phase the track's distance over its stride by the test's own arithmetic, the wheels' angles within one spoke's interval; its amplitude by
+     the rule at every speed (full to 3.2 cycles a second, none from 4.8, by the formation's fastest stride, its meshes together), none halted,
+     under 1 km/h or under reduced motion; eased over frames, then asking for none. S-5: every formation's facing at a clock the same from its
+     phase's start, its phase's end or directly. The level of detail along a dolly toward a formation on foot and back: one switch each way,
+     none while the eye holds, the block's meshes together each on its own pair and the knee with it */
+  { const bad=[], log=[], keep={t:clock, pl:playing, sp:speed, rm:RM, fk:FK, md:mode};
+    const settleN=n=>{ const fk=FK; FK=7.2; for(let i=0;i<n;i++){ settling=false; updateVisibility(); } FK=fk; return settling; };
+    const gaitIds=()=>Object.keys(units).filter(id=>{ const r=units[id]; return r.block&&r.block.visible&&r.block.userData.gait&&r.block.userData.gait.meshes.length; });
+    const pose=()=>{ const o={}; gaitIds().forEach(id=>units[id].block.userData.gait.meshes.forEach((m,j)=>{ const U=m.userData.anim;
+      o[id+"#"+j]=[U.uAnimAmp.value,U.uAnimPhase.value,U.uAnimTrot.value,U.uAnimRollG.value,U.uAnimRollL.value]; })); return o; };
+    const TOL=[1e-12,1e-9,1e-12,1e-9,1e-9];
+    /* the test's own arithmetic: the track's distance at t (the legs reached in full and the current one to its fraction), the leg marched at t */
+    const distT=(id,t)=>{ const A=anchorList(id); if(!A.length||A[0].p===null||t<=PHASES[A[0].ph].t0) return 0; let D=0;
+      for(let i=1;i<A.length;i++){ const a=A[i-1], b=A[i]; if(a.p===null||b.p===null) break; if(t>=b.arr){ D+=legPath(a,b).len; continue; }
+        const w=legWindow(a,b); if(t>w[0]) D+=legPath(a,b).len*Math.min(1,(t-w[0])/((w[1]-w[0])||1)); break; } return D; };
+    const legT=(id,t)=>{ const A=anchorList(id); for(let i=1;i<A.length;i++){ const a=A[i-1], b=A[i]; if(a.p===null||b.p===null) continue; const w=legWindow(a,b);
+        if(t>w[0]&&t<w[1]&&t<b.arr){ const len=legPath(a,b).len; if(len*KM_PER_MAP<0.02) return null; return {mpm:len/(w[1]-w[0]), kmh:len*KM_PER_MAP/((w[1]-w[0])/60)}; } } return null; };
+    const fastestOf=id=>{ let f=0; const B=units[id].block; B.traverse(o=>{ const k=o.isInstancedMesh&&o.userData.gaitKind; if(!k) return; for(let a=o;a&&a!==B;a=a.parent) if(!a.visible) return;
+      const st=GAIT.STRIDE[k==="gear"?"team":k]; if(st&&(!f||st<f)) f=st; }); return f; };   /* the parts drawn now (a limbered battery's teams) */
+    try{
+      setMode("terrain"); playing=false; RM=false; DWELL.st=null;
+      /* the gait, the clock's */
+      let nMarch=0, nMesh=0, nWheel=0;
+      [545,640,830,905].forEach(t=>{ const P=[];
+        [t-37,t-180,T_MIN,t+60].forEach(t0=>{ setClock(t0,{force:true}); settleN(6); setClock(t,{force:true}); if(settleN(40)) bad.push("gait at "+t+": never at rest"); P.push(pose()); });
+        for(let k=1;k<P.length;k++) Object.keys(P[0]).forEach(key=>{ const a=P[0][key], b=P[k][key]; if(!b){ bad.push("gait at "+t+": "+key+" only on one path"); return; }
+          for(let i=0;i<5;i++) if(Math.abs(a[i]-b[i])>TOL[i]){ bad.push("gait at "+t+": "+key+" uniform "+i+" "+a[i]+" against "+b[i]+" by another path"); break; } });
+        gaitIds().forEach(id=>{ const G=units[id].block.userData.gait, lg=legT(id,t), D=distT(id,t); if(lg&&lg.kmh>=GAIT.KMH) nMarch++;
+          G.meshes.forEach(m=>{ const U=m.userData.anim, k=m.userData.gaitKind, st=GAIT.STRIDE[k==="gear"?"team":k]; nMesh++; if(!(U.uAnimAmp.value>0)) return;
+            const want=2*Math.PI*(D/st-Math.floor(D/st)); if(Math.abs(U.uAnimPhase.value-want)>1e-6&&Math.abs(Math.abs(U.uAnimPhase.value-want)-2*Math.PI)>1e-6) bad.push("gait at "+t+": "+id+"'s phase "+U.uAnimPhase.value+", the track's "+want);
+            if(k==="gear"){ nWheel++; const pg=Math.PI/ANIM.WHEEL[20].n, pl=Math.PI/ANIM.WHEEL[21].n; if(Math.abs(U.uAnimRollG.value)>pg+1e-9||Math.abs(U.uAnimRollL.value)>pl+1e-9) bad.push("gait at "+t+": "+id+"'s wheels beyond half a spoke's interval"); } }); }); });
+      if(!nMarch||!nWheel) bad.push("gait: no formation marching ("+nMarch+") or no wheel turning ("+nWheel+") at the four clocks");
+      log.push("the gait at 4 clocks from 4 paths each: "+nMesh+" mesh poses, "+nMarch+" formations marching, "+nWheel+" wheel sets, identical");
+      /* the amplitude's rule, every speed; reduced motion; the ease */
+      let full=0, part=0, none=0, drift=0, nJ=0;
+      [545,640,830,905,300].forEach(t=>{ setClock(t,{force:true}); settleN(4);
+        [0,0.5,1,2,4].forEach(x=>{ playing=x>0; if(x) speed=x; DWELL.st=null; settleN(40);
+          gaitIds().forEach(id=>{ const G=units[id].block.userData.gait, lg=legT(id,t); let want=0;
+            if(lg&&lg.kmh>=GAIT.KMH){ const c=x*MIN_PER_SEC*lg.mpm/fastestOf(id); want=Math.max(0,Math.min(1,(GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL))); if(want===1) full++; else if(want===0) none++; else part++; }
+            else if(lg) drift++;
+            nJ++; if(Math.abs(G.amp-want)>1e-9) bad.push("amplitude at "+t+", "+(x?x+"x":"paused")+": "+id+" "+G.amp+", the rule's "+want);
+            G.meshes.forEach(m=>{ if(m.userData.anim.uAnimAmp.value!==G.amp) bad.push("amplitude at "+t+": "+id+"'s meshes not together"); }); }); }); });
+      if(!(full&&part&&none&&drift)) bad.push("amplitude: a case not met (full "+full+", in the fade "+part+", none "+none+", drifting "+drift+")");
+      playing=false; RM=true; settleN(40); gaitIds().forEach(id=>{ const G=units[id].block.userData.gait; if(G.amp!==0) bad.push("reduced motion: "+id+" at "+G.amp); }); RM=false;
+      setClock(545,{force:true}); settleN(40); const ez=gaitIds().find(id=>units[id].block.userData.gait.amp===1);
+      if(ez){ const G=units[ez].block.userData.gait, fk=FK; playing=true; speed=4; FK=1; updateVisibility(); const a1=G.amp; let n=1; while(G.amp>0&&n<200){ updateVisibility(); n++; } FK=fk;
+        settling=false; gaitStep(units[ez],ez); const idle=!settling;
+        if(!(a1<1&&a1>0.5)||!(n>=6&&n<=40)||!idle) bad.push("the ease: "+a1+" after one frame, "+n+" frames to none, idle "+idle);
+        log.push(nJ+" amplitude judgments ("+full+" full, "+part+" in the fade, "+none+" faded out, "+drift+" drifting under 1 km/h), none under reduced motion; eased to none in "+n+" frames, then idle"); playing=false; }
+      else bad.push("the ease: no formation at full amplitude at 09:05");
+      /* S-5 */
+      let gN=0;
+      PHASES.forEach(ph=>{ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(t=>{ const R=[];
+        [ph.t0,ph.t1-1,t].forEach(t0=>{ setClock(t0,{force:true}); faceCache={}; _efT={}; Object.keys(units).forEach(id=>enemyFacing(id)); setClock(t); const o={};
+          Object.keys(units).forEach(id=>{ const w=headingAt(id,clock); o[id]=w===null?enemyFacing(id):w; }); R.push(o); });
+        Object.keys(R[0]).forEach(id=>{ gN++; if(R[0][id]!==R[1][id]||R[0][id]!==R[2][id]) bad.push("S-5 at "+t+": "+id+" faces "+[R[0][id],R[1][id],R[2][id]].join(", ")+" by three paths"); }); }); });
+      log.push(gN+" facings at three clocks of each phase, each the same by three paths");
+      /* the sources sheet's notes on the guns and on the step: the table's values as read (D-5 (b)), the design values as set, the step described
+         as decision 244 asks */
+      { const an=artilleryNotes().join(" "), gn=gaitNotes().join(" "), Wl=ORDNANCE.fr.wheels, Dr=ORDNANCE.fr.drivers[0];
+        if(an.indexOf(Wl.gun_m.toFixed(2)+" m")<0||an.indexOf(Wl.limber_m.toFixed(2)+" m")<0||an.indexOf(ORDNANCE.fr.team.n+" horses")<0||an.indexOf(FORMATIONS[Dr.corps].name)<0||!/no calibre or model is claimed/.test(an)||!/inference/.test(an))
+          bad.push("the guns' notes do not read ORDNANCE as recorded: "+an.slice(0,160));
+        if(gn.indexOf(" "+GAIT.FULL+" ")<0||gn.indexOf(" "+GAIT.NONE+" ")<0||gn.indexOf(" "+GAIT.KMH+" km/h")<0||!/a visual convention for symbols under compressed time, not footsteps matched to the ground/.test(gn))
+          bad.push("the step's notes do not read GAIT or describe the step as decided: "+gn.slice(0,160));
+        log.push("the sources sheet's notes on the guns ("+artilleryNotes().length+") and on the step ("+gaitNotes().length+") read the table and GAIT"); }
+      /* the level of detail along a dolly (kitLod's own decision on a block of the test's: a seated extent of 6 by 4 units at the origin, its men at
+         height 0, two
+         meshes with their pairs; the drawn blocks' switches, through the camera and the picture, are the self-test's) */
+      { const mk=()=>({geometry:null, userData:{lod:{s:{lv:"s"}, r:{lv:"r"}}, anim:{uAnimKnee:{value:0}}}}), blk=new THREE.Group(), u=blk.userData;
+        u.lod=[mk(),mk()]; u.lodRich=false; u.ext=[-3,3,-2,2,0,0]; u.lod.forEach(m=>{ m.geometry=m.userData.lod.s; }); blk.updateMatrixWorld(true);
+        const rec={block:blk}, dir=new THREE.Vector3(-0.55,0.42,0.72).normalize(), sw=[]; let last=null, flips=0;
+        const view=(r,away)=>{ landCam.position.copy(dir).multiplyScalar(r); orbitTarget.set(0,0,0); if(away) orbitTarget.copy(landCam.position).addScaledVector(dir,1); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(true); kitLodFrame(); kitLod(rec); };
+        const together=()=>u.lod.every(m=>m.geometry===(u.lodRich?m.userData.lod.r:m.userData.lod.s)&&m.userData.anim.uAnimKnee.value===(u.lodRich?1:0));
+        [400,300,220,170,140,120,105,92,82,74,66,58,50,42,34,26,34,42,50,58,66,74,82,92,105,120,140,170,220,300,400].forEach(r=>{ view(r); const lv=u.lodRich;
+          if(last!==null&&lv!==last) sw.push((lv?"rich":"simple")+" at "+r+" units ("+u.lodPx.toFixed(1)+" px)"); last=lv; if(!together()) bad.push("level of detail: the block's meshes not together at "+r);
+          for(let h=0;h<4;h++){ view(r); if(u.lodRich!==lv) flips++; } });
+        if(sw.length!==2||flips) bad.push("level of detail: "+sw.length+" switches along the dolly (want one each way), "+flips+" while the eye held");
+        const onIn=/rich at \d+ units \(([\d.]+) px\)/.exec(sw.join(" ")), onOut=/simple at \d+ units \(([\d.]+) px\)/.exec(sw.join(" "));
+        if(!onIn||+onIn[1]<KLOD.IN||!onOut||+onOut[1]>=KLOD.OUT) bad.push("level of detail: switched at "+sw.join(", ")+" (rich from "+KLOD.IN+" px, simple under "+KLOD.OUT+")");
+        view(26); const near=u.lodRich; view(26,true); if(!near||u.lodRich||u.inView) bad.push("level of detail: the block "+(near?"kept rich":"not rich")+" with the eye turned away (in view "+u.inView+")");
+        log.push("kitLod along a dolly: "+sw.join(", ")+"; simple with the eye turned away"); }
+    } finally { playing=keep.pl; speed=keep.sp; RM=keep.rm; FK=keep.fk; setMode(keep.md); setClock(keep.t,{force:true}); updateVisibility(); }
+    if(bad.length) throw new Error("the gait and the level of detail: "+bad.slice(0,6).join("; "));
+    console.log("the gait and the level of detail (8E): "+log.join("; ")); }
 
   /* twelve atlas cells, the three photographs present, fields routed by crop */
   if(_atlasCanvas.height!==1536) throw new Error("atlas is not three rows of cells: "+_atlasCanvas.height);

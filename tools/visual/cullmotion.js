@@ -19,13 +19,17 @@ const inPage=function(){
   function read(){ gl=gl||renderer.getContext(); var w=gl.drawingBufferWidth, h=gl.drawingBufferHeight, b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
   function diff(a,b){ var n=0; for(var i=0;i<a.length;i+=4) if(a[i]!==b[i]||a[i+1]!==b[i+1]||a[i+2]!==b[i+2]) n++; return n; }
   /* the judge's own envelope of a geometry (8E's prerequisite): the largest displacement of any vertex animated at amp 1 over 64 phases by animAt,
-     the hook's arithmetic; 0 for a geometry without parts or a build without the hook. Kept per geometry and its attributes' versions */
+     the hook's arithmetic, and since 8E over every pose the hook allows (animPoses: 32 phases, the slope, the trot, the knee and the wheels at
+     their extremes) where the build has it; 0 for a geometry without parts or a build without the hook. Kept per part attribute (a mesh's own
+     geometry shares its kit's) and its attributes' versions */
   var ENV=new WeakMap(), eo=[0,0,0];
   function envOf(g){ var K=g.attributes.aPart, Pa=g.attributes.position; if(!K||typeof animAt!=="function") return 0;
-    var c=ENV.get(g); if(c&&c.pv===Pa.version&&c.kv===K.version&&c.P===Pa&&c.K===K&&c.av===(typeof ANIM!=="undefined"?ANIM.ver:0)) return c.e;
-    var P=Pa.array, KA=K.array, e=0; for(var v=0;v<KA.length;v++) for(var k=0;k<64;k++){ animAt(Math.round(KA[v]),P[v*3],P[v*3+1],P[v*3+2],k/64*Math.PI*2,1,eo);
-      var d=Math.hypot(eo[0]-P[v*3],eo[1]-P[v*3+1],eo[2]-P[v*3+2]); if(d>e) e=d; }
-    ENV.set(g,{e:e,pv:Pa.version,kv:K.version,P:Pa,K:K,av:(typeof ANIM!=="undefined"?ANIM.ver:0)}); return e; }
+    var c=ENV.get(K); if(c&&c.pv===Pa.version&&c.kv===K.version&&c.P===Pa&&c.av===(typeof ANIM!=="undefined"?ANIM.ver:0)) return c.e;
+    var P=Pa.array, KA=K.array, e=0;
+    for(var v=0;v<KA.length;v++){ var x=P[v*3], y=P[v*3+1], z=P[v*3+2];
+      if(typeof animPoses==="function") animPoses(Math.round(KA[v]),x,y,z,32,function(q){ var d=Math.hypot(q[0]-x,q[1]-y,q[2]-z); if(d>e) e=d; },eo);
+      else for(var k=0;k<64;k++){ animAt(Math.round(KA[v]),x,y,z,k/64*Math.PI*2,1,eo); var d=Math.hypot(eo[0]-x,eo[1]-y,eo[2]-z); if(d>e) e=d; } }
+    ENV.set(K,{e:e,pv:Pa.version,kv:K.version,P:Pa,av:(typeof ANIM!=="undefined"?ANIM.ver:0)}); return e; }
   /* the frame just drawn: each mesh's culling against its instances; the passes it was drawn in */
   function judge(R,passW,passS){
     camera.updateMatrixWorld(); F.setFromProjectionMatrix(M.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse)); R.judged++;

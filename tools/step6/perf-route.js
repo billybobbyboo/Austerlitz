@@ -59,7 +59,14 @@
      neighbouring Bs': "culling faster", "effects off slower"), the slower when every one says the opposite ("culling slower", "effects off
      faster"), else not shown. A build without the switch (before 8D, for culling) runs A alone and says so. The warm-up, the blocks' seconds and
      the rest are design values (a phone's as the phone route's: a 45 s warm-up, a 3-minute rest) */
-  var CULL_VERSION="stage8-cull-route 1", FX_VERSION="stage8-fx-route 1";
+  var CULL_VERSION="stage8-cull-route 1", FX_VERSION="stage8-fx-route 1", GAIT_VERSION="stage8-gait-route 1";
+  /* Stage 8, implementation PR 8E (decision 244 (a); docs/STAGE8_SPEC.md section 17): ?route=gait (run(w,{gait:true})): the gait on and at rest,
+     with the clock played, so that its cost is separated from the richer kit's (the kit and its level of detail the same in A and B). Block A
+     the build as it is (Play at half speed under Follow from 08:30 at the Field vantage, as the played segment play-half: the formations marching
+     step, their slopes written at each seating); block B the gait at rest (GAIT.KMH set past any march for the run, a measurement setting the app
+     never makes: every amplitude eased to 0 before the block is sampled, no slope written, the hook's branch not taken). The same orders,
+     rounds, warm-up, rest and rule as the culling route's: A "the gait costs" when every comparison says A is the slower, "the gait costs
+     nothing seen" when none does either way; else not shown */
   var CULLR={views:{desk:["pratzen-low-4x","pratzen-low-10x"], phone:["pratzen-low-4x"]}, warm:{desk:10, phone:45}, rest:{desk:30, phone:180}, secs:6, rounds:2, orders:["ABABABA","BABABAB"]};
   var BRACKETS={
     cull:{version:CULL_VERSION, word:"cull", title:"CULLING", views:CULLR.views,
@@ -69,7 +76,12 @@
     fx:{version:FX_VERSION, word:"fx", title:"EFFECTS", views:{desk:["pratzen-low-4x"], phone:["pratzen-low-4x"]},
       has:function(w){ return typeof w.setFXEnabled==="function"; }, set:function(w,k){ w.setFXEnabled(k==="A"); }, reset:function(w){ w.setFXEnabled(true); },
       on:function(G){ return !!G("FX.on"); }, A:"the visual effects on", B:"the visual effects off (the F key)", faster:"effects off slower", slower:"effects off faster",
-      none:"this build has no effects switch: block A only, nothing compared"}};
+      none:"this build has no effects switch: block A only, nothing compared"},
+    gait:{version:GAIT_VERSION, word:"gait", title:"GAIT", views:{desk:["play-half"], phone:["play-half"]}, played:true,
+      has:function(w,G){ return !!G("typeof GAIT!=='undefined'&&typeof gaitStep==='function'"); },
+      set:function(w,k){ w.eval("GAIT.KMH="+(k==="A"?"GAIT.KMH0||GAIT.KMH":"1e9")); }, reset:function(w){ w.eval("GAIT.KMH=GAIT.KMH0||GAIT.KMH"); },
+      on:function(G){ return G("GAIT.KMH")<1e9; }, A:"the gait as built (Play at half speed)", B:"the gait at rest (every amplitude 0, no slope written)",
+      faster:"the gait costs nothing (A faster)", slower:"the gait costs", none:"this build has no gait (before Stage 8's 8E): block A only, nothing compared"}};
 
   function pct(a,p){ if(!a.length) return null; var s=a.slice().sort(function(x,y){ return x-y; }); return s[Math.min(s.length-1,Math.floor(p*(s.length-1)+0.5))]; }
   function r1(v){ return v==null?null:Math.round(v*10)/10; }
@@ -202,7 +214,7 @@
           .catch(function(){ return null; });
       }catch(e){ return Promise.resolve(null); }
     }
-    var BR=o.cull?BRACKETS.cull:o.fx?BRACKETS.fx:null;
+    var BR=o.cull?BRACKETS.cull:o.fx?BRACKETS.fx:o.gait?BRACKETS.gait:null;
     var out={version:BR?BR.version:o.phone?PHONE_VERSION:VERSION, started:new Date().toISOString(), device:null, build:null, refreshMs:null, segments:[], notes:[]};
     if(o.phone) out.route="phone"; if(BR) out.route=BR.word;
     function want(id){ return !only||only.indexOf(id)>=0; }
@@ -290,14 +302,18 @@
       out.bracket={kind:B.word, has:has, tier:dev, warm:CULLR.warm[dev], rest:CULLR.rest[dev], secs:CULLR.secs, rounds:CULLR.rounds, orders:CULLR.orders.slice()};
       if(B===BRACKETS.cull) out.cull=out.bracket;
       B.views[dev].forEach(function(id){ var v=VIEWS.filter(function(x){ return x.id===id; })[0]; if(!v||!want(id)) return;
-        then(function(){ log(id+" warm-up"); apply(v.spec); if(has) B.set(w,"A"); return sample(CULLR.warm[dev]*scale,MOVE.orbit(),true).then(function(rows){
+        /* a played bracket (the gait's): each block plays the clock as the played segment play-half does, from its start; else the view orbits */
+        var start=B.played?function(){ apply({t:510, presentation:"watch", mode:"terrain", cam:FIELD}); w.setFollow(true); D.settle(30); w.setSpeed(0.5); w.togglePlay(); }:function(){ apply(v.spec); },
+            stop=B.played?function(){ if(G("playing")) w.stopPlay(); w.setSpeed(0.5); }:function(){}, move=function(){ return B.played?null:MOVE.orbit(); };
+        if(B.played&&has) then(function(){ w.eval("GAIT.KMH0=GAIT.KMH0||GAIT.KMH"); });
+        then(function(){ log(id+" warm-up"); if(has) B.set(w,"A"); start(); return sample(CULLR.warm[dev]*scale,move(),true).then(function(rows){ stop();
           out.segments.push(summarise(id,"warm-up",rows,{cand:"A",note:B.A+", until the device settles (not compared)"})); }); });
         (has?CULLR.orders:["A"]).forEach(function(ord,oi){
           if(oi>0) then(function(){ log(id+" rest"); return wait(w,CULLR.rest[dev]*1000*scale); });
           for(var round=1;round<=(has?CULLR.rounds:1);round++) ord.split("").forEach(function(k,bi){ var r=round;
-            then(function(){ log(id+" "+k+" "+ord+" ("+r+")"); apply(v.spec); if(has) B.set(w,k);
-              return wait(w,300).then(function(){ return sample(CULLR.secs*scale,MOVE.orbit(),true); }).then(function(rows){
-                var on=has?B.on(G):true; if(has) B.reset(w);
+            then(function(){ log(id+" "+k+" "+ord+" ("+r+")"); if(has) B.set(w,k); start(); if(B.played&&has) D.settle(40);   /* the amplitude eased to its block's */
+              return wait(w,300).then(function(){ return sample(CULLR.secs*scale,move(),true); }).then(function(rows){
+                var on=has?B.on(G):true; stop(); if(has) B.reset(w);
                 out.segments.push(summarise(id,B.word+" "+k+" "+ord.slice(0,2)+" "+r+"."+bi,rows,{cand:k, order:ord, round:r, block:bi, setOn:on, note:k==="A"?B.A:B.B})); }); }); }); });
       });
       then(function(){ if(G("FX.on")!==fxWas) w.setFXEnabled(fxWas); out.bracketVerdict=has?bracketVerdict(out.segments,B):null; if(B===BRACKETS.cull) out.cullVerdict=out.bracketVerdict; });
@@ -340,11 +356,11 @@
     L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",6)+pad("p50",8)+pad("p95",8)+pad("p99",8)+pad("max",8)+pad("long%",7)+pad("warm",8)+pad("js50",8)+pad("js95",8)+pad("gpu50",8)+pad("gpu95",8)+pad("calls",6)+pad("tris",9));
     r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)+
       (s.set?"  density "+s.set.density+", shadow pass "+(s.set.shadowPass?"on":"off")+", figures casting "+s.set.figCast+"/"+s.set.fig+", shown "+s.set.figShown+"/"+s.set.fig:"")); });
-    if(r.bracketVerdict) Object.keys(r.bracketVerdict).forEach(function(id){ var X=r.bracketVerdict[id]; L.push((r.route==="fx"?"EFFECTS ":"CULLING ")+id+": "+X.verdict+" ("+X.faster+" comparisons with A the faster, "+X.slower+" with A the slower, "+X.neither+" neither, "+X.missing+" missing)"); });
+    if(r.bracketVerdict) Object.keys(r.bracketVerdict).forEach(function(id){ var X=r.bracketVerdict[id]; L.push((r.route==="fx"?"EFFECTS ":r.route==="gait"?"GAIT ":"CULLING ")+id+": "+X.verdict+" ("+X.faster+" comparisons with A the faster, "+X.slower+" with A the slower, "+X.neither+" neither, "+X.missing+" missing)"); });
     L.push("AUS_PERF_JSON "+JSON.stringify(r,function(k,v){ return k==="text"?undefined:v; }));
     return L.join("\n");
   }
-  var API={run:run, format:format, VERSION:VERSION, PHONE_VERSION:PHONE_VERSION, PHONE:PHONE, CULL_VERSION:CULL_VERSION, FX_VERSION:FX_VERSION, CULLR:CULLR, BRACKETS:BRACKETS, cullVerdict:cullVerdict, bracketVerdict:bracketVerdict, VIEWS:VIEWS, DIAG:DIAG, PLAYED:PLAYED, SECS:SECS, last:null};
+  var API={run:run, format:format, VERSION:VERSION, PHONE_VERSION:PHONE_VERSION, PHONE:PHONE, CULL_VERSION:CULL_VERSION, FX_VERSION:FX_VERSION, GAIT_VERSION:GAIT_VERSION, CULLR:CULLR, BRACKETS:BRACKETS, cullVerdict:cullVerdict, bracketVerdict:bracketVerdict, VIEWS:VIEWS, DIAG:DIAG, PLAYED:PLAYED, SECS:SECS, last:null};
   root.AUS_PERF=API;
   /* pasted into the console of the build's own page: run there at once */
   if(root.AUSTERLITZ_DEBUG&&root.AUSTERLITZ_DEBUG.applyCase&&!root.AUS_PERF_NO_AUTORUN){
