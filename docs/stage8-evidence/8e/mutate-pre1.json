@@ -1,0 +1,118 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "84b5f80c849511c330c31a497c04700e",
+ "chromium": "141.0.7390.37",
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the build as it is)",
+   "block": "8d",
+   "selfTest": {
+    "checks": 14,
+    "failed": [],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88188 culled, 4660 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 492 (185 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88340 culled, 5127 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 231 meshes, shadow pass 526 (314 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order settles)",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 126637 pixels of the frame and 9329 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 117220 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 wit",
+     "culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definit | drawn with G1: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; given G2: envelope 0.283, the farthest animated vertex 1.3095 inside the bounds; back to G1: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; the definition changed (part 10's bob x5): envelop"
+    ],
+    "ms": 179588
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "envonce",
+   "what": "8D's behaviour: the envelope read once, when the mesh's bounds are first made, and kept whatever geometry it is given",
+   "block": "8d",
+   "selfTest": {
+    "checks": 14,
+    "failed": [
+     "culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definit | drawn with G1: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; given G2: envelope 0.022, the farthest animated vertex 0.2577 beyond the bounds; back to G1: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; the definition changed (part 10's bob x5): envelope 0.022, the farthest animated vertex 0.4989 beyond the bounds; given G3: envelope 0.022, the farthest animated vertex 0.7163 beyond the bounds; G1 again: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; G1's parts rewritten in place: envelope 0.022, the farthest animated vertex 0.7163 beyond the bounds; G1's parts restored: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; the eye's frustum: G1's bounds 43.25 units out along the axis, 4 of G3's vertices inside at phase 4.71; at the eye's boundary: the mesh alone, culled against not 100 pixels, drawn again 0, the mesh covers 0 pixels; the sun's box: G1's bounds 157.66 units out along the axis, 9 of G3's vertices inside at phase 4.71; at the sun's boundary: the depth map culled against not 81 texels, drawn again 0, the mesh casts 0 texels; WRONG: given G2: an animated vertex 0.2577 outside the bounds; given G2, the bounds' envelope 0.022 is not G2's 0.28319950704512936; the definition changed (part 10's bob x5): an animated vertex 0.4989 outside the bounds; given G3: an animated vertex 0.7163 outside the bounds; given G3, the bounds' envelope 0.022 is not G3's 0.3524036225860932; G1's parts rewritten in place: an animated vertex 0.7163 outside the bounds; G1's parts rewritten in place, the bounds' envelope 0.022 is not its parts' 0.3524036225860932; at the eye's boundary G3's swing reaches into the view and the mesh is not drawn in the world pass; at the eye's boundary the frame differs from the frame without culling (100 pixels); at the eye's boundary the mesh covers no pixel: the placement proves nothing; at the sun's boundary G3's swing reaches into the sun's box and the mesh is not drawn in the shadow pass; at the sun's boundary the depth map differs from the one without culling (81 texels); at the sun's boundary the mesh casts no texel: the placement proves nothing"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88188 culled, 4660 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 492 (185 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88340 culled, 5127 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 231 meshes, shadow pass 526 (314 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order settles)",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 126637 pixels of the frame and 9329 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 117220 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 wit"
+    ],
+    "ms": 209693
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "stale8d",
+   "what": "8D's staleness test: the instances' version and count and the geometry's identity only (no attribute or definition compared)",
+   "block": "8d",
+   "selfTest": {
+    "checks": 14,
+    "failed": [
+     "culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definit | drawn with G1: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; given G2: envelope 0.283, the farthest animated vertex 1.3095 inside the bounds; back to G1: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; the definition changed (part 10's bob x5): envelope 0.022, the farthest animated vertex 0.4989 beyond the bounds; given G3: envelope 0.352, the farthest animated vertex 1.2661 inside the bounds; G1 again: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; G1's parts rewritten in place: envelope 0.022, the farthest animated vertex 0.7163 beyond the bounds; G1's parts restored: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; the eye's frustum: G1's bounds 43.25 units out along the axis, 4 of G3's vertices inside at phase 4.71; at the eye's boundary: the mesh alone, culled against not 0 pixels, drawn again 0, the mesh covers 100 pixels; the sun's box: G1's bounds 157.66 units out along the axis, 9 of G3's vertices inside at phase 4.71; at the sun's boundary: the depth map culled against not 0 texels, drawn again 0, the mesh casts 81 texels; WRONG: the definition changed (part 10's bob x5): an animated vertex 0.4989 outside the bounds; G1's parts rewritten in place: an animated vertex 0.7163 outside the bounds; G1's parts rewritten in place, the bounds' envelope 0.022 is not its parts' 0.3524036225860932"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88188 culled, 4660 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 492 (185 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88340 culled, 5127 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 231 meshes, shadow pass 526 (314 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order settles)",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 126637 pixels of the frame and 9329 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 117220 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 wit"
+    ],
+    "ms": 246965
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "envcache8d",
+   "what": "8D's envelope cache: one value per part attribute, whatever its version or the animation's definition",
+   "block": "8d",
+   "selfTest": {
+    "checks": 14,
+    "failed": [
+     "culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definit | drawn with G1: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; given G2: envelope 0.283, the farthest animated vertex 1.3095 inside the bounds; back to G1: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; the definition changed (part 10's bob x5): envelope 0.022, the farthest animated vertex 0.4989 beyond the bounds; given G3: envelope 0.352, the farthest animated vertex 1.2661 inside the bounds; G1 again: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; G1's parts rewritten in place: envelope 0.022, the farthest animated vertex 0.7163 beyond the bounds; G1's parts restored: envelope 0.022, the farthest animated vertex 0.0073 inside the bounds; the eye's frustum: G1's bounds 43.25 units out along the axis, 4 of G3's vertices inside at phase 4.71; at the eye's boundary: the mesh alone, culled against not 0 pixels, drawn again 0, the mesh covers 100 pixels; the sun's box: G1's bounds 157.66 units out along the axis, 9 of G3's vertices inside at phase 4.71; at the sun's boundary: the depth map culled against not 0 texels, drawn again 0, the mesh casts 81 texels; WRONG: the definition changed (part 10's bob x5): an animated vertex 0.4989 outside the bounds; G1's parts rewritten in place: an animated vertex 0.7163 outside the bounds; G1's parts rewritten in place, the bounds' envelope 0.022 is not its parts' 0.3524036225860932"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 115140 mesh tests, 88188 culled, 4660 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 334 meshes, shadow pass 492 (185 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 338 meshes with instances of 338 (255 with the kit's parts), 239091 vertices in the world, 1867896 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114837 mesh tests, 88340 culled, 5127 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 231 meshes, shadow pass 526 (314 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 90 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's ta | 255 kit meshes, 30 kit geometries, the hook compiled for 216 materials and 216 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1125 as three sorts them, the clones drawn last: the coplanar faces that order settles)",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 85 kit meshes in view at amp 1: 126637 pixels of the frame and 9329 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 117220 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 219216 vertex positions over a cycle at amp 1 wit"
+    ],
+    "ms": 249883
+   },
+   "pageErrors": []
+  }
+ ]
+}

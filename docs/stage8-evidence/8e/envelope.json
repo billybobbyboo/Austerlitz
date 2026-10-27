@@ -1,0 +1,69 @@
+{
+ "three": "128",
+ "runs": [
+  {
+   "source": "git 2f41819:app.js",
+   "1. drawn with G1": {
+    "env": 0.022,
+    "envOfGeometry": 0.022,
+    "sampled": 0.022,
+    "beyond": -0.00121,
+    "holds": true
+   },
+   "2. given G2": {
+    "env": 0.022,
+    "envOfGeometry": 0.2832,
+    "sampled": 0.26962,
+    "beyond": 0.04295,
+    "holds": false
+   },
+   "3. back to G1": {
+    "env": 0.022,
+    "envOfGeometry": 0.022,
+    "sampled": 0.022,
+    "beyond": -0.00121,
+    "holds": true
+   },
+   "4. unchanged, refreshes at the next test": 0,
+   "5. the definition changed (part 10's bob x5) by writing ANIM.PART (the source has no animDefine)": {
+    "env": 0.022,
+    "envOfGeometry": 0.022,
+    "sampled": 0.11,
+    "beyond": 0.08315,
+    "holds": false
+   }
+  },
+  {
+   "source": "app.js (working tree)",
+   "1. drawn with G1": {
+    "env": 0.022,
+    "envOfGeometry": 0.022,
+    "sampled": 0.022,
+    "beyond": -0.00121,
+    "holds": true
+   },
+   "2. given G2": {
+    "env": 0.2832,
+    "envOfGeometry": 0.2832,
+    "sampled": 0.26962,
+    "beyond": -0.21825,
+    "holds": true
+   },
+   "3. back to G1": {
+    "env": 0.022,
+    "envOfGeometry": 0.022,
+    "sampled": 0.022,
+    "beyond": -0.00121,
+    "holds": true
+   },
+   "4. unchanged, refreshes at the next test": 0,
+   "5. the definition changed (part 10's bob x5) by animDefine": {
+    "env": 0.11,
+    "envOfGeometry": 0.11,
+    "sampled": 0.11,
+    "beyond": -0.00485,
+    "holds": true
+   }
+  }
+ ]
+}

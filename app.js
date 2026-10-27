@@ -787,17 +787,24 @@ var GEO={}, _smokeTex=null, _dustTex=null;
    ground under a formation (values unchanged from the literals they replace) */
 var SPRITE_COL={smoke:0xA9A69E, dust:0xC6BCA6, pad:0x2A2620};
 
-/* the shared geometries of the guns, the tents and the standards (Stage 6C: the seven built for an earlier figure and drawn by no mesh,
-   GEO.shako, bear, musket, sabre, body, horse and rider, are gone; docs/STAGE6_SPEC.md section 1.1) */
+/* the shared geometries of the tents and the standards (Stage 6C: the seven built for an earlier figure and drawn by no mesh,
+   GEO.shako, bear, musket, sabre, body, horse and rider, are gone; docs/STAGE6_SPEC.md section 1.1. Since Stage 8, implementation PR 8E the
+   guns' four, GEO.barrel, wheel, trail and limber, are gone too: the pieces are artGeo's) */
 function initBlockGeo(){
-  GEO.barrel = new THREE.CylinderGeometry(0.09,0.115,1.50,8);
-  GEO.wheel  = new THREE.CylinderGeometry(0.44,0.44,0.10,14);
-  GEO.trail  = new THREE.BoxGeometry(0.20,0.18,1.60);
-  GEO.limber = new THREE.BoxGeometry(1.05,0.58,0.75);
   GEO.tent   = new THREE.ConeGeometry(1.75,2.3,4);
   GEO.pole   = new THREE.CylinderGeometry(0.06,0.06,5.2,5);
-  GEO.flag   = new THREE.PlaneGeometry(2.4,1.4);
+  GEO.flag   = flagGeo();
   GEO.finial = new THREE.ConeGeometry(0.5,1,4);   /* Stage 6D: the eagle or spearhead on the staff, a four-sided point 1 unit high before scaling */
+}
+/* Stage 8, implementation PR 8E (docs/STAGE8_SPEC.md sections 4.5 and 17): the standard's cloth with a little drape, still (no wind, no
+   animation): the plane cut in ten along its length and folded in its own depth only (z), KIT.std.fold.n half-waves from the staff, none at
+   the staff and growing to KIT.std.fold.a at the fly (DESIGN), its normals smoothed, so that it reads as cloth, not as a board. Its width and
+   drop are the plane's as before (2.4 by 1.4 before placeStandards scales it to the cloth's sourced or generic measure), so every carrier,
+   count, painting, measure and decision 106's ratio is unchanged; no cloth is faded or hidden near the eye (section 4.5) */
+function flagGeo(){
+  var g=new THREE.PlaneGeometry(2.4,1.4,10,1), a=g.attributes.position, F=KIT.std.fold;
+  for(var i=0;i<a.count;i++){ var u=(a.getX(i)+1.2)/2.4; a.setZ(i,F.a*(0.35+0.65*u)*Math.sin(Math.PI*F.n*u)); }
+  g.computeVertexNormals(); return g;
 }
 function srnd(i){ var v=Math.sin(i*127.1+i*i*0.017)*43758.5453; return v-Math.floor(v); }
 function imesh(geo,colour,count){
@@ -858,7 +865,12 @@ var KIT={
   paint:{lozenge:{from:"fr_eagle_inf"}, ordinary:{from:"at_inf"}},
   carry:{fr_eagle_inf:{paint:"lozenge"}, fr_guard_eagle:{paint:"lozenge"}, fr_eagle_cav:{paint:"lozenge"}, fr_guard_eagle_cav:{paint:"lozenge"},
          at_inf:{paint:"ordinary", lower:{n:1, per:"bn"}}, at_grenz:{paint:"ordinary"}, at_cav:{paint:"ordinary"}},
-  std:{drop:0.853, thick:0.61, aspect:2.4/1.4},
+  std:{drop:0.853, thick:0.61, aspect:2.4/1.4, fold:{n:2.5, a:0.07}},   /* fold: the cloth's still drape (flagGeo, since 8E): DESIGN */
+  /* Stage 8, implementation PR 8E: the scale the artillery's sourced sizes are drawn at (kitArtScale): the drawn man's head top (headTop: the
+     top of his head under the hat, 1.30 + 0.115 kit units, as a stature is measured bare-headed) stands for a man of stature metres, DESIGN
+     inside the statures STANDARD_MEASURES reads (1.544 m to 1.65 m): a wheel of h metres is drawn h x headTop / stature units high. Decision
+     106's standards are drawn against the man to his hat's top (MAN_FOOT, 1.635), that decision's own convention, kept for them */
+  art:{stature:1.60, headTop:1.415},
   /* the cloth's weave, the faint dark threads every painted or plain cloth carries (flagTexture): a design value, no claim (roadmap step 1,
      docs/FINAL_AUDIT.md T-6: until step 1 a literal in flagTexture, text unchanged). Since roadmap step 5 (the step-1 hand-on) the threads
      are decision 84's black at 12%, not black: a thread on the black cloth (the Austrian eagle) stays at the floor, where 12% black laid it
@@ -912,44 +924,140 @@ function kitLead(parts){ var b=null; (parts||[]).forEach(function(p){ if(!b||p.s
    Everything is at the same symbolic scale as before (a man is 1.5 world units, the frontage is real). Per class, two meshes on foot
    (the coat, coloured per instance; everything else with its colours baked into the vertices) and three mounted (the horse, the coat,
    the rest). FIG holds the generic kit, which is also the standard's reference height (figureTop, decision 26 until 6D). */
-var FIG=null, KIT_GEO={}, _kitShapes=null;
+var FIG=null, KIT_GEO={}, _kitShapes=null, KIT_ALL=[], GEAR_ALL=[];   /* since 8E: every figure geometry and every vehicle geometry made (kitGeos, gearGeos) */
 function kitBox(w,h,d){ return new THREE.BoxGeometry(w,h,d); }
 function kitPart(geo,p,s,rot,col,part){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot||[0,0,0],col:col,part:part}; }
-/* ---- Stage 8, implementation PR 8D (decisions 244 (a), 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 4.3, 8.4 and 16): the kit's parts, for
-   8E's gait ----
-   Every vertex of the figure kit's geometries (the coats, a man's fixed parts, a rider's, a horse) carries the part it belongs to, aPart (one
-   float a vertex, in the geometry: the figure's own frame, feet at y 0, facing +z, in kit units, before the instance's matrix). A part swings
-   about its joint, the line along the figure's x through (y, z) = (py, pz), by an angle A x amp x sin(phase + 2 pi off), and the whole figure
-   rises by bob x amp x |sin(phase)|, where phase and amp are the mesh's two uniforms (ANIM's hook, below). ANIM.PART is the table, each value a
-   DESIGN value carried from Part A's prototype (f-gait, docs/STAGE8_SPEC.md section 4.3) with its joints set on this kit's own boxes; 8E sets
-   the rule that drives phase and amp, and may retune the table. In 8D amp is 0 on every mesh: nothing moves (the hook draws the rest pose
-   exactly), and no code path but the self-test's controlled check and its mutations sets it. Part 0: nothing moves (none of the kit's vertices
-   is part 0 since 8D; the gear and the standards have no aPart). The parts: 1 and 2 a man's left and right legs, 3 his left arm (the right
-   holds the musket, which is drawn with his body), 10 the rest of a man; 5-8 a horse's legs (left fore, right fore, left hind, right hind: the
-   walk's four beats), 11 the rest of a horse; 12 a rider (he rises with his horse; his legs are along it). animEnv(g) (kept in ANIM.env): the largest
-   displacement any vertex of geometry g can take for any phase and any amp in [0, 1] (the chord of its largest swing about its joint, plus its
-   bob): the envelope the culling bounds are widened by (CULL), so that 8E's gait never needs them changed */
-var ANIM={PART:{
-  1:{A:0.42, off:0,    py:0.62, pz:0,     bob:0.022},   2:{A:0.42, off:0.5,  py:0.62, pz:0,     bob:0.022},
-  3:{A:0.30, off:0.5,  py:1.10, pz:0.02,  bob:0.022},  10:{A:0,    off:0,    py:0,    pz:0,     bob:0.022},
-  5:{A:0.38, off:0.25, py:0.62, pz:0.40,  bob:0.025},   6:{A:0.38, off:0.75, py:0.62, pz:0.40,  bob:0.025},
-  7:{A:0.38, off:0,    py:0.62, pz:-0.40, bob:0.025},   8:{A:0.38, off:0.5,  py:0.62, pz:-0.40, bob:0.025},
- 11:{A:0,    off:0,    py:0,    pz:0,     bob:0.025},  12:{A:0,    off:0,    py:0,    pz:0,     bob:0.025}},
-  env:{}, built:0, depth:0};
-/* where a vertex of part k stands at a phase and amp (the hook's arithmetic in JavaScript: the self-test's controlled check reads it) */
-function animAt(k,x,y,z,ph,amp,out){
-  out=out||[0,0,0]; var p=ANIM.PART[k]; if(!p||!(amp>0)){ out[0]=x; out[1]=y; out[2]=z; return out; }
-  amp=Math.min(1,amp); var a=amp*p.A*Math.sin(ph+6.2831853*p.off), c=Math.cos(a), s=Math.sin(a), yy=y-p.py, zz=z-p.pz;
-  out[0]=x; out[1]=p.py+yy*c-zz*s+amp*p.bob*Math.abs(Math.sin(ph)); out[2]=p.pz+yy*s+zz*c; return out;
+/* ---- Stage 8, implementation PR 8D (decisions 244 (a), 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 4.3, 8.4 and 16): the kit's parts, and
+   since implementation PR 8E (decision 244 (a); docs/STAGE8_SPEC.md sections 4.3 and 17) the gait they draw ----
+   Every vertex of the figure kit's geometries (a man's coat and fixed parts, a rider's, a horse; since 8E the guns and limbers too) carries the
+   part it belongs to, aPart (one float a vertex, in the geometry: the figure's own frame, feet at y 0, facing +z, in kit units, before the
+   instance's matrix), and since 8E each instance its own phase offset, aPh (a fraction of a cycle: a horse's own beat, fixed per instance and
+   set once, its rider's or its driver's the same; a man's 0, a formed body stepping together), in the geometry each mesh draws (kitWrap: the
+   kit's shared attributes and the mesh's own aPh). The hook (ANIM.body, after three's begin_vertex, in the kit's material and in its depth
+   material, so that the shadow casts the pose drawn) moves a vertex by the mesh's uniforms: uAnimPhase (radians, the formation's distance along
+   its modelled track over the stride: gaitStep), uAnimAmp (0 to 1: 0 draws the rest pose exactly, the branch not taken), uAnimTrot (0 to 1),
+   uAnimRollG and uAnimRollL
+   (the drawn angles of a gun's and a limber's wheels), uAnimKnee (1 where the rich kit is drawn, whose legs have knees; 0 for the simple
+   kit's straight legs, which then swing unbent, the rise or dip computed for them). What moves, by part (ANIM.PART's kinds; every number a
+   DESIGN value, the figures' joints set on the kit's own shapes, nothing a claim about how men or horses moved; the gait is a visual convention
+   for symbolic figures under compressed time, never physically matched footsteps). A figure faces +z, so its left is +x; the parts are named
+   by the side they stand on:
+   - a man (parts 1 and 2 his thighs at -x and +x, 13 and 14 his shins with the feet, 3 the arm at -x, 10 the rest): the legs swing about the
+     hip by MAN.AH x amp x sin(phase), one forward as the other goes back; the leg swinging forward bends at the knee (MAN.AK x amp x the
+     swing's forward speed's share, so its foot clears the ground; x uAnimKnee); the arm swings against the leg of its side (MAN.AA); and the
+     whole figure rises or dips so that the foot lowest against the ground (the slope ahead counted) stands where the rest pose's stands: one
+     foot planted, the other raised on purpose, none floating or sunk by the gait;
+   - a horse (parts 5-8 its fore legs at -x and +x, then its hind legs at -x and +x, 11 the rest, 12 its rider or driver): each leg swings
+     about its shoulder or hip (HORSE.AW at the walk, its four beats in a walk's lateral order, the -x hind, the -x fore, the +x hind, the +x
+     fore; HORSE.AT at the trot, by diagonal pairs, above GAIT.TROT_KMH of modelled speed, the two eased into each other), and the horse with
+     its rider rises or dips so that its lowest hoof against the ground stands where it stands at rest;
+   - a wheel (part 20 a gun's, 21 a limber's): turned about its axle by its drawn angle (gaitStep: the rolling angle over the track's distance,
+     within one spoke's interval, eased to rest with the amplitude);
+   - part 0 (a gun's or a limber's body) and the rest of a figure never swing.
+   animAt is the hook's arithmetic in JavaScript (the self-test's oracle samples it); animEnv(g) the largest displacement any vertex of g can
+   take for any phase, offset, amp, trot, slope and wheel angle the hook allows (the chord of each rotation it takes, plus the rise or dip's
+   bound): the envelope the culling bounds are widened by.
+   Since 8E's prerequisite (the audit of 8D: cullBlock read the envelope once, so a mesh given another geometry kept the first one's, and an
+   animated vertex could leave its bounds): the envelope is cached per geometry and keyed by what it is computed from, the geometry's position
+   and part attributes (the objects and their versions) and the animation's definition (ANIM.ver, which animDefine moves whenever the table
+   changes); the culling bounds are refreshed whenever any of these differ from the ones they were computed from (cullTest) */
+var ANIM={
+  MAN:{HIP:0.62, KNEE:0.33, FOOT:0.0, HEEL:-0.065, TOE:0.135, AH:0.42, AK:0.55, AA:0.30, SHY:1.10, SHZ:0.02},
+  HORSE:{HIP:0.62, ZF:0.40, ZH:-0.40, L:0.62, HZ:0.05, AW:0.38, AT:0.55, WALK:[0.25,0.75,0,0.5], TROT:[0,0.5,0.5,0]},
+  WHEEL:{20:{r:kitArtR("gun"), n:12}, 21:{r:kitArtR("limber"), n:10}},   /* their axles at (y r, z 0) in the gun's and the limber's own frames (kitArtR); n the
+                                                                          wheel's symmetry, its spokes', its rim's, its hub's and the simple disc's (kitWheel, kitDisc) */
+  SLOPE:3.0,   /* the slopes the gait plants against, clamped: the drawn ground's steepest under a figure is 0.96 at 4x and 2.5 at 10.33x */
+  PART:{0:{kind:"none"}, 1:{kind:"thigh",side:0}, 2:{kind:"thigh",side:1}, 13:{kind:"shin",side:0}, 14:{kind:"shin",side:1}, 3:{kind:"arm"},
+    10:{kind:"root",fig:"man"}, 5:{kind:"hoof",leg:0}, 6:{kind:"hoof",leg:1}, 7:{kind:"hoof",leg:2}, 8:{kind:"hoof",leg:3},
+    11:{kind:"root",fig:"horse"}, 12:{kind:"root",fig:"horse"}, 20:{kind:"wheel"}, 21:{kind:"wheel"}},
+  env:new WeakMap(), ver:0, built:0, depth:0};
+/* rotation of (y, z) about the joint (oy, oz) by a (positive: a point below the joint goes back, -z) */
+function animRot(y,z,oy,oz,a,o){ var c=Math.cos(a), s=Math.sin(a), qy=y-oy, qz=z-oz; o[0]=oy+qy*c-qz*s; o[1]=oz+qy*s+qz*c; return o; }
+var _anT=[0,0], _anU=[0,0];
+/* the man's two feet, posed (each sole's heel and toe, HEEL and TOE from the foot's rest point), and the rise or dip that keeps the lowest of
+   the four against the ground where it stands at rest (an edge moved ahead against the slope ahead of him, sa, one moved back against the
+   slope behind him, sb): one sole's edge planted, none sunk by the gait */
+function animManRoot(f,kL,kR,sa,sb){ var M=ANIM.MAN, g=-1e9; if(sb===undefined) sb=sa;
+  [M.HEEL,M.TOE].forEach(function(z0){
+    animRot(M.FOOT,z0,M.KNEE,0,kL,_anT); animRot(_anT[0],_anT[1],M.HIP,0,-f,_anT); var dL=_anT[1]-z0; g=Math.max(g,(dL>0?sa:sb)*dL-(_anT[0]-M.FOOT));
+    animRot(M.FOOT,z0,M.KNEE,0,kR,_anU); animRot(_anU[0],_anU[1],M.HIP,0,f,_anU); var dR=_anU[1]-z0; g=Math.max(g,(dR>0?sa:sb)*dR-(_anU[0]-M.FOOT)); });
+  return g; }
+/* the horse's four legs' forward angles, and the rise or dip that keeps its lowest hoof where it stands at rest */
+function animHorseF(ph,amp,trot,out){ var H=ANIM.HORSE, t=Math.max(0,Math.min(1,trot||0)), a=amp*(H.AW+(H.AT-H.AW)*t);
+  for(var i=0;i<4;i++) out[i]=a*Math.sin(ph+6.2831853*(H.WALK[i]+(H.TROT[i]-H.WALK[i])*t)); return out; }
+/* each hoof's two edges (HZ fore and aft of its rest point), posed about its shoulder or hip, against the slope ahead of its pair (sf the fore
+   hooves', sh the hind's) */
+function animHorseRoot(F,sf,sh){ var H=ANIM.HORSE, g=-1e9;
+  for(var i=0;i<4;i++){ var Z=i<2?H.ZF:H.ZH, sl=i<2?sf:sh; for(var e=-1;e<=1;e+=2){ animRot(H.HIP-H.L,Z+e*H.HZ,H.HIP,Z,-F[i],_anU); g=Math.max(g,sl*(_anU[1]-Z-e*H.HZ)-(_anU[0]-(H.HIP-H.L))); } }
+  return g; }
+var _anF=[0,0,0,0];
+/* where a vertex of part k stands (the hook's arithmetic in JavaScript): ph the instance's phase (the mesh's plus 2 pi x its aPh), amp, and o
+   {trot, slope, rollG, rollL, knee} the mesh's other uniforms and the instance's slopes (its aSl: a man's [ahead, behind], a horse's [fore,
+   hind]; or one number for both; clamped to ANIM.SLOPE), knee 1 where omitted */
+function animAt(k,x,y,z,ph,amp,out,o){
+  out=out||[0,0,0]; out[0]=x; out[1]=y; out[2]=z; var p=ANIM.PART[k];
+  if(!p||!(amp>0)||k<0.5) return out;
+  amp=Math.min(1,amp); o=o||{}; var S=ANIM.SLOPE, s2=Array.isArray(o.slope)?o.slope:[o.slope||0,o.slope||0], sl=Math.max(-S,Math.min(S,s2[0])), sh=Math.max(-S,Math.min(S,s2[1])), M=ANIM.MAN, H=ANIM.HORSE, r=_anT;
+  if(p.kind==="wheel"){ var w=ANIM.WHEEL[k]; animRot(y,z,w.r,0,k===20?(o.rollG||0):(o.rollL||0),r); out[1]=r[0]; out[2]=r[1]; return out; }
+  if(p.kind==="hoof"||p.fig==="horse"){ var F=animHorseF(ph,amp,o.trot,_anF);
+    if(p.kind==="hoof"){ animRot(y,z,H.HIP,p.leg<2?H.ZF:H.ZH,-F[p.leg],r); y=r[0]; z=r[1]; }
+    out[1]=y+animHorseRoot(F,sl,sh); out[2]=z; return out; }
+  var kn=o.knee===undefined?1:Math.max(0,Math.min(1,o.knee)), s=Math.sin(ph), c=Math.cos(ph), f=amp*M.AH*s, kL=kn*amp*M.AK*Math.max(0,c), kR=kn*amp*M.AK*Math.max(0,-c);
+  if(p.kind==="thigh"||p.kind==="shin"){ var lft=p.side===0;
+    if(p.kind==="shin"){ animRot(y,z,M.KNEE,0,lft?kL:kR,r); y=r[0]; z=r[1]; }
+    animRot(y,z,M.HIP,0,lft?-f:f,r); y=r[0]; z=r[1]; }
+  else if(p.kind==="arm"){ animRot(y,z,M.SHY,M.SHZ,amp*M.AA*s,r); y=r[0]; z=r[1]; }
+  out[1]=y+animManRoot(f,kL,kR,sl,sh); out[2]=z; return out;
 }
-/* the envelope of a geometry (kit units; 0 without parts), once per geometry */
+/* the poses the hook can draw of the vertex (x, y, z) of part k, for an oracle (the self-test's, runtime-test.js's, cullmotion.js's: their own
+   sampling, against which animEnv's bound is judged): n phases at amp 1 with every other uniform at its extremes and between, the slope at its
+   clamp either way and level (a man's two slopes and a horse's two alike and apart), a horse's trot at none, half and full, a man's knee
+   bent and straight; a wheel at either end of its interval,
+   half-way and at rest; cb(out) for each posed position */
+var _apO={}, _apS=null;
+function animPoses(k,x,y,z,n,cb,out){
+  out=out||[0,0,0]; var p=ANIM.PART[k], o=_apO;
+  if(!p||k<0.5){ out[0]=x; out[1]=y; out[2]=z; cb(out); return; }
+  if(p.kind==="wheel"){ var I=Math.PI/ANIM.WHEEL[k].n; [-I,-I/2,0,I/2,I].forEach(function(a){ o.rollG=o.rollL=a; o.slope=0; o.trot=0; o.knee=1; animAt(k,x,y,z,0,1,out,o); cb(out); }); return; }
+  var horse=p.kind==="hoof"||p.fig==="horse", S=ANIM.SLOPE, A=horse?[0,0.5,1]:[0,1], SL=[[-S,-S],[S,S],[-S,S],[S,-S],[0,0]];
+  SL.forEach(function(sl){ A.forEach(function(a){ o.slope=sl; o.rollG=o.rollL=0; o.trot=horse?a:0; o.knee=horse?1:a;
+    for(var i=0;i<n;i++){ animAt(k,x,y,z,i/n*2*Math.PI,1,out,o); cb(out); } }); });
+}
+/* the bound of the rise or dip (a man's, a horse's), over every phase, amp, trot and slope the hook allows: the posed foot or hoof moves at most
+   d from its rest point, so slope x dz - dy is at most sqrt(slope^2 + 1) x d */
+function animRootBound(fig){ var M=ANIM.MAN, H=ANIM.HORSE, S=Math.sqrt(ANIM.SLOPE*ANIM.SLOPE+1), e=Math.max(Math.abs(M.HEEL),Math.abs(M.TOE));
+  if(fig==="horse") return S*2*Math.hypot(H.L,H.HZ)*Math.sin(Math.max(H.AW,H.AT)/2);
+  var rk=Math.hypot(M.KNEE-M.FOOT,e), ck=2*rk*Math.sin(M.AK/2), rh=Math.hypot(M.HIP-M.FOOT,e)+ck; return S*(ck+2*rh*Math.sin(M.AH/2)); }
+/* the envelope of a geometry (kit units; 0 without parts): computed once for what it is computed from (its position and part attributes, as
+   objects and versions, and the animation's definition, ANIM.ver), again whenever one of them changes. Keyed by the part attribute itself, so
+   geometries that share their attributes share it. Per vertex: the chord of each rotation its part takes, at the largest angle the hook
+   allows (each rotation moves it at most 2 r sin(angle/2), r its distance from that joint, the knee's carried to the hip's), plus the rise or
+   dip's bound */
 function animEnv(g){
-  if(!g||!g.attributes||!g.attributes.aPart) return 0;
-  if(ANIM.env[g.uuid]!==undefined) return ANIM.env[g.uuid];
-  var P=g.attributes.position.array, K=g.attributes.aPart.array, e=0;
-  for(var i=0;i<K.length;i++){ var p=ANIM.PART[Math.round(K[i])]; if(!p) continue;
-    var r=Math.hypot(P[i*3+1]-p.py,P[i*3+2]-p.pz); e=Math.max(e,2*r*Math.sin(p.A/2)+p.bob); }
-  return (ANIM.env[g.uuid]=e);
+  var K=g&&g.attributes&&g.attributes.aPart; if(!K) return 0;
+  var Pa=g.attributes.position, c=ANIM.env.get(K);
+  if(c&&c.av===ANIM.ver&&c.P===Pa&&c.pv===Pa.version&&c.kv===K.version) return c.e;
+  var P=Pa.array, KA=K.array, e=0, M=ANIM.MAN, H=ANIM.HORSE, RM=animRootBound("man"), RH=animRootBound("horse");
+  for(var i=0;i<KA.length;i++){ var k=Math.round(KA[i]), p=ANIM.PART[k]; if(!p||k===0) continue;
+    var y=P[i*3+1], z=P[i*3+2], d=0;
+    if(p.kind==="wheel"){ var w=ANIM.WHEEL[k]; d=2*Math.hypot(y-w.r,z)*Math.sin(Math.PI/w.n/2); }
+    else if(p.kind==="hoof") d=2*Math.hypot(y-H.HIP,z-(p.leg<2?H.ZF:H.ZH))*Math.sin(Math.max(H.AW,H.AT)/2)+RH;
+    else if(p.fig==="horse") d=RH;
+    else if(p.kind==="thigh") d=2*Math.hypot(y-M.HIP,z)*Math.sin(M.AH/2)+RM;
+    else if(p.kind==="shin"){ var ck=2*Math.hypot(y-M.KNEE,z)*Math.sin(M.AK/2); d=ck+2*(Math.hypot(y-M.HIP,z)+ck)*Math.sin(M.AH/2)+RM; }
+    else if(p.kind==="arm") d=2*Math.hypot(y-M.SHY,z-M.SHZ)*Math.sin(M.AA/2)+RM;
+    else d=RM;
+    if(d>e) e=d; }
+  ANIM.env.set(K,{e:e, av:ANIM.ver, P:Pa, pv:Pa.version, kv:K.version});
+  return e;
+}
+/* the animation's definition changed (a joint, an angle, an offset, a slope's clamp, a wheel): the envelopes and every bound computed from them
+   are out of date (ANIM.ver), and the kit's programs are built again from the new table (their cache key carries ANIM.ver). def: the fields of
+   ANIM to replace (MAN, HORSE, WHEEL, SLOPE) */
+function animDefine(def){
+  Object.keys(def||{}).forEach(function(k){ ANIM[k]=def[k]; }); ANIM.ver++; ANIM.body=animGLSL();
+  CULL.meshes.forEach(function(m){ if(!m.userData.anim) return; m.material.needsUpdate=true; if(m.customDepthMaterial) m.customDepthMaterial.needsUpdate=true; });
+  requestRender(2);
 }
 /* merges parts into one geometry with vertex colours; colour undefined = white (takes the instance colour). Since 8D each vertex also carries
    its part (aPart: the part's own, else def) */
@@ -984,7 +1092,7 @@ function kitShapes(){
   for(var q=1;q<=6;q++){ var t=q/6; bic.lineTo(-0.21+0.42*t,0.30*t*(1-t)); }
   bic.lineTo(-0.21,0);
   var bg=new THREE.ExtrudeGeometry(bic,{depth:0.10,bevelEnabled:false,curveSegments:5}); bg.translate(0,0,-0.05);
-  return (_kitShapes={head:new THREE.IcosahedronGeometry(0.115,1), cap:new THREE.CylinderGeometry(0.115,0.13,0.27,7),
+  return (_kitShapes={head:new THREE.IcosahedronGeometry(0.115,1), headR:new THREE.OctahedronGeometry(0.115,1), cap:new THREE.CylinderGeometry(0.115,0.13,0.27,7),
     shako:new THREE.CylinderGeometry(0.13,0.118,0.25,7), bicorne:bg, bear:new THREE.CylinderGeometry(0.15,0.165,0.40,8),
     dome:new THREE.SphereGeometry(0.13,8,4,0,Math.PI*2,0,Math.PI/2), fur:new THREE.CylinderGeometry(0.135,0.14,0.17,8),
     turban:new THREE.CylinderGeometry(0.155,0.15,0.11,8), knob:new THREE.SphereGeometry(0.085,7,3,0,Math.PI*2,0,Math.PI/2),
@@ -1038,14 +1146,86 @@ function kitHorse(col){
     P(B(0.30,0.08,0.44),[0,1.01,0],null,null,M.leather)                                        /* saddle */
   ],11);
 }
-/* one cached geometry per kind and class of drawing: "foot" {leg, head, gunner}, "rider" {leg, head, cuirass}, "horse" {col} */
-function kitGeo(kind,o){
-  var key=kind+"|"+(o.leg||0)+"|"+(o.head||"")+"|"+(o.gunner?1:0)+"|"+(o.cuirass||"")+"|"+(o.col||0);
+/* ---- Stage 8, implementation PR 8E (decision 242 (a); docs/STAGE8_SPEC.md sections 4.1, 4.2, 4.7, 8.2-8.4 and 17): the richer kit, drawn
+   only where it is seen ----
+   Every class keeps two geometries: the kit as 6C built it (unchanged, the "simple" level of detail) and a richer one ("rich") drawn where a
+   man stands 16 CSS pixels or more on screen (kitLod). The rich man: a torso wider at the shoulders, the coat's skirts behind, tapered arms
+   with hands, the legs in two segments (thigh and shin, so that the knee bends in the gait) with feet, the head rounder at a third of the
+   simple one's triangles, the class's headgear as 6C draws it (kitHat), the pack, the musket and the bayonet as before. The rich rider: seated,
+   thighs along the horse and shins down, the coat and its skirts over the saddle, the arms toward the reins; the rich horse: a barrel body,
+   the neck raised, the head angled down, each leg tapered from the hoof up. Every colour is the class's own as 6C resolves it (kitDress: the coat by
+   instance, the legwear, the headgear, the cuirass, the horse), the same in both levels: nothing is drawn that the appearance table does not
+   settle (decision 104 kept: no facings; the saddle-cloths' claims carry no colour class, so the saddle stays the kit's leather, as before; the
+   feet in the legwear's colour, the spec's rule, section 4.2). The figure's height to its hat's top is the simple kit's (the hat at the same
+   height): decision 106's ratio unchanged. Each rich geometry costs at most 1.3 times its class's simple one (section 8.2's budget; held by
+   the self-test, reported by tools/stage8/kit-census-8e.js). Shapes and proportions are DESIGN. */
+function kitTaper(w0,d0,w1,d1,h){   /* a box whose bottom is w0 x d0 and top w1 x d1, h high, centred (12 triangles) */
+  var g=new THREE.BoxGeometry(1,1,1), a=g.attributes.position;
+  for(var i=0;i<a.count;i++){ var t=a.getY(i)+0.5; a.setX(i,a.getX(i)*(w0+(w1-w0)*t)); a.setZ(i,a.getZ(i)*(d0+(d1-d0)*t)); a.setY(i,a.getY(i)*h); }
+  return g; }
+function kitFootFixedR(leg,head,gunner){
+  var G=kitShapes(), M=KIT.mat, P=kitPart, B=kitBox, T=kitTaper;
+  var parts=[P(T(0.11,0.13,0.135,0.15,0.29),[-0.085,0.475,0],null,null,leg,1), P(T(0.11,0.13,0.135,0.15,0.29),[0.085,0.475,0],null,null,leg,2),   /* thighs, hip to knee */
+    P(T(0.085,0.10,0.11,0.13,0.28),[-0.085,0.19,0],null,null,leg,13), P(T(0.085,0.10,0.11,0.13,0.28),[0.085,0.19,0],null,null,leg,14),           /* shins */
+    P(B(0.10,0.05,0.20),[-0.085,0.025,0.035],null,null,leg,13), P(B(0.10,0.05,0.20),[0.085,0.025,0.035],null,null,leg,14),                       /* feet, the legwear's colour */
+    P(G.headR,[0,1.30,0.005],[1,1.06,1],null,M.skin), P(B(0.07,0.08,0.07),[-0.255,0.62,0.03],null,null,M.skin,3)].concat(kitHat(head,1.365));   /* head; the swinging arm's hand (-x) */
+  if(!gunner) parts.push(P(B(0.07,0.08,0.07),[0.235,0.66,0.13],null,null,M.skin), P(B(0.28,0.30,0.14),[0,0.96,-0.20],null,null,M.leather),
+    P(B(0.045,1.25,0.045),[0.27,1.12,0.12],null,[0.18,0,0.10],M.wood), P(B(0.03,0.32,0.03),[0.33,1.82,0.06],null,[0.18,0,0.10],M.metal));   /* the musket's hand, pack, musket, bayonet */
+  else parts.push(P(B(0.07,0.08,0.07),[0.255,0.64,0.06],null,null,M.skin));
+  return kitMerge(parts,10);
+}
+function kitFootCoatR(){ var P=kitPart, T=kitTaper;
+  return kitMerge([P(T(0.30,0.20,0.38,0.24,0.54),[0,0.89,0]), P(T(0.30,0.05,0.34,0.05,0.30),[0,0.55,-0.10],null,[0.12,0,0]),   /* torso; the coat's skirts behind */
+    P(T(0.085,0.10,0.10,0.12,0.50),[-0.245,0.88,0.01],null,[0,0,0.06],undefined,3), P(T(0.085,0.10,0.10,0.12,0.46),[0.235,0.90,0.07],null,[-0.32,0,-0.05])],10); }
+function kitRiderFixedR(leg,head,cuir,driver){
+  var G=kitShapes(), M=KIT.mat, P=kitPart, B=kitBox, T=kitTaper;
+  var parts=[P(G.headR,[0,1.68,0.005],[1,1.06,1],null,M.skin)].concat(kitHat(head,1.745)).concat([
+    P(T(0.11,0.15,0.13,0.17,0.36),[-0.17,1.06,0.12],null,[1.35,0,0],leg), P(T(0.11,0.15,0.13,0.17,0.36),[0.17,1.06,0.12],null,[1.35,0,0],leg),   /* thighs along the horse */
+    P(T(0.08,0.10,0.10,0.12,0.40),[-0.20,0.80,0.26],null,[0.18,0,0],leg), P(T(0.08,0.10,0.10,0.12,0.40),[0.20,0.80,0.26],null,[0.18,0,0],leg)]); /* shins down */
+  if(!driver) parts.push(P(B(0.03,0.95,0.03),[0.28,1.55,0.10],null,[-0.55,0,0.15],M.metal));   /* sabre; a driver none */
+  if(cuir) parts.push(P(T(0.34,0.24,0.38,0.27,0.30),[0,1.38,0],null,null,M[cuir]));
+  return kitMerge(parts,12);
+}
+function kitRiderCoatR(){ var P=kitPart, T=kitTaper;
+  return kitMerge([P(T(0.27,0.19,0.34,0.22,0.48),[0,1.31,0]), P(T(0.30,0.05,0.34,0.05,0.24),[0,1.06,-0.13],null,[0.35,0,0]),
+    P(T(0.08,0.09,0.10,0.11,0.40),[-0.22,1.28,0.08],null,[-0.45,0,0.05]), P(T(0.08,0.09,0.10,0.11,0.40),[0.22,1.30,0.06],null,[-0.30,0,-0.05])],12); }
+function kitHorseR(col){
+  var M=KIT.mat, P=kitPart, B=kitBox, T=kitTaper, body=new THREE.CylinderGeometry(0.20,0.20,1.0,6,1); body.rotateX(Math.PI/2);
+  var parts=[P(body,[0,0.78,0],[0.95,1.05,1],null,col), P(T(0.22,0.30,0.14,0.20,0.50),[0,1.08,0.58],null,[0.72,0,0],col),   /* body, neck */
+    P(T(0.12,0.24,0.09,0.15,0.38),[0,1.26,0.86],null,[2.1,0,0],col), P(B(0.06,0.34,0.08),[0,0.80,-0.56],null,[0.6,0,0],M.black),   /* head, tail */
+    P(B(0.30,0.08,0.44),[0,1.01,0],null,null,M.leather)];   /* saddle, as the simple kit's */
+  [[-0.13,0.40,5],[0.13,0.40,6],[-0.13,-0.40,7],[0.13,-0.40,8]].forEach(function(q){   /* each leg one taper, hoof to forearm or gaskin (it swings stiff) */
+    parts.push(P(T(0.06,0.07,0.11,0.15,0.62),[q[0],0.31,q[1]],null,null,col,q[2])); });
+  return kitMerge(parts,11);
+}
+/* one cached geometry per kind, class and level of detail: "foot" {leg, head, gunner}, "rider" {leg, head, cuirass, driver}, "horse" {col},
+   "coat" and "rcoat" (the coats, by instance colour); rich true for the richer kit. Its userData names the class (the 6C checks read it) */
+function kitGeo(kind,o,rich){
+  o=o||{}; var key=kind+"|"+(o.leg||0)+"|"+(o.head||"")+"|"+(o.gunner?1:0)+"|"+(o.cuirass||"")+"|"+(o.col||0)+"|"+(o.driver?1:0)+"|"+(rich?"r":"s");
   if(KIT_GEO[key]) return KIT_GEO[key];
-  var g=kind==="foot"?kitFootFixed(o.leg,o.head,o.gunner):kind==="rider"?kitRiderFixed(o.leg,o.head,o.cuirass):kitHorse(o.col);
-  g.userData={kit:kind, head:o.head||null, gunner:!!o.gunner, cuirass:o.cuirass||null, col:o.col||null, leg:o.leg||null};
+  var K=figKit(), g;
+  if(kind==="coat") g=rich?kitFootCoatR():K.infCoat;
+  else if(kind==="rcoat") g=rich?kitRiderCoatR():K.rider;
+  else if(kind==="foot") g=rich?kitFootFixedR(o.leg,o.head,o.gunner):kitFootFixed(o.leg,o.head,o.gunner);
+  else if(kind==="rider") g=rich?kitRiderFixedR(o.leg,o.head,o.cuirass,o.driver):(o.driver?kitRiderFixedD(o.leg,o.head):kitRiderFixed(o.leg,o.head,o.cuirass));
+  else g=rich?kitHorseR(o.col):kitHorse(o.col);
+  if(!g.userData||!g.userData.kit) g.userData={kit:kind==="coat"?"coat":kind==="rcoat"?"rcoat":kind, head:o.head||null, gunner:!!o.gunner, cuirass:o.cuirass||null, col:o.col||null, leg:o.leg||null, driver:!!o.driver};
+  g.userData.lod=rich?"rich":"simple"; if(KIT_ALL.indexOf(g)<0) KIT_ALL.push(g);
   return (KIT_GEO[key]=g);
 }
+/* a driver in the simple kit: the rider without his sabre */
+function kitRiderFixedD(leg,head){ var G=kitShapes(), M=KIT.mat, P=kitPart, B=kitBox;
+  return kitMerge([P(G.head,[0,1.68,0],null,null,M.skin)].concat(kitHat(head,1.745)).concat([
+    P(B(0.11,0.34,0.14),[-0.14,0.98,0.05],null,[0.5,0,0],leg), P(B(0.11,0.34,0.14),[0.14,0.98,0.05],null,[0.5,0,0],leg)]),12); }
+/* a mesh's own geometry: the kit's shared attributes (position, normal, colour, part), its instances' own phase offsets (aPh, a fraction of a
+   cycle each) and their slopes ahead (aSl: the drawn ground's rise per unit along the way each faces, under a man, under a horse's fore and
+   hind hooves, written at each seating of a formation the gait animates: layoutFigs). A formation's mutable state is never written into a
+   shared geometry: two meshes of one class share the attributes, not aPh or aSl */
+function kitWrap(g,ph,sl,gear){
+  var w=new THREE.BufferGeometry(); ["position","normal","color","aPart"].forEach(function(k){ if(g.attributes[k]) w.setAttribute(k,g.attributes[k]); });
+  w.setAttribute("aPh",ph); w.setAttribute("aSl",sl); w.userData=Object.assign({},g.userData,{src:g}); (gear?GEAR_ALL:KIT_ALL).push(w); return w; }
+/* a fixed phase per instance (0..1), set once from its index: a horse's own beat that never depends on where the block seats it */
+function kitPh(i){ var x=Math.sin(i*12.9898+78.233)*43758.5453; return x-Math.floor(x); }
 function figKit(){
   if(FIG) return FIG;
   var P=kitPart, B=kitBox;
@@ -1059,17 +1239,90 @@ function figKit(){
     rider: kitMerge([
       P(B(0.32,0.50,0.22),[0,1.30,0]),                                    /* coat */
       P(B(0.10,0.40,0.12),[-0.22,1.26,0]), P(B(0.10,0.40,0.12),[0.22,1.28,0.04],null,[-0.4,0,0])
-    ],12),
-    /* the generic kit: the legwear's neutral, the plain cap, a brown horse */
-    infFixed: kitGeo("foot",{leg:KIT.mat.legwear,head:"generic"}),
-    horse: kitGeo("horse",{col:KIT.horse.brown}),
-    riderFixed: kitGeo("rider",{leg:KIT.mat.legwear,head:"generic"})
+    ],12)
   };
+  FIG.infCoat.userData={kit:"coat", lod:"simple"}; FIG.rider.userData={kit:"rcoat", lod:"simple"}; KIT_ALL.push(FIG.infCoat,FIG.rider);
+  /* the generic kit: the legwear's neutral, the plain cap, a brown horse */
+  FIG.infFixed=kitGeo("foot",{leg:KIT.mat.legwear,head:"generic"}); FIG.horse=kitGeo("horse",{col:KIT.horse.brown}); FIG.riderFixed=kitGeo("rider",{leg:KIT.mat.legwear,head:"generic"});
   return FIG;
 }
-/* every geometry of the figure kit drawn by any block: the two coats and every cached class (the float checks read it) */
-function kitGeos(){ var K=figKit(); return [K.infCoat,K.rider].concat(Object.keys(KIT_GEO).map(function(k){ return KIT_GEO[k]; })); }
-
+/* every geometry of the figure kit drawn by any block, in both levels of detail and every mesh's own (the float checks, the seating and the
+   census read it); the vehicles apart (gearGeos) */
+function kitGeos(){ figKit(); return KIT_ALL.slice(); }
+function gearGeos(){ return GEAR_ALL.slice(); }
+/* ---- Stage 8, implementation PR 8E (decision 243 (a), with its source boundaries; ORDNANCE in appearance.js; docs/STAGE8_SPEC.md sections 4.4
+   and 17): the field artillery as drawn ----
+   A generic Gribeauval field piece (ORDNANCE.fr.system: no calibre or model claimed) on a bracket trail of two cheeks ("entre les flasques"),
+   its wheels and its limber's at Gassendi's heights (ORDNANCE.fr.wheels: 1.462 and 1.137 m) at the figures' scale (KIT.art: the drawn man's
+   head top standing for a stature of KIT.art.stature metres, a design value inside the statures read, STANDARD_MEASURES and villerme1829), the
+   gun's wheels of twelve spokes and the limber's of ten (two to a felloe: an inference from the felloes printed); the coffret between the
+   cheeks while limbered and on the limber while the piece is in action (ORDNANCE.fr.coffret); the deployed piece with its limber, team and
+   driver behind it, turned to the rear (ORDNANCE.fr.limberAt; the distance compressed to the figures' scale, a design value); four horses a
+   drawn gun (ORDNANCE.fr.team; a drawn gun stands for two pieces, so the count is a symbol); the drivers by the claim whose scope holds the
+   battery (artDrivers: IV Corps' letter for IV Corps' batteries, on the near wheel horse, the porteur's saddle, an inference; elsewhere none
+   is read and none is drawn); one carriage colour for every army (KIT.gear, decisions 109, 243 (a)); the switch between the deployed and the
+   limbered battery at once (ORDNANCE.fr.limbering: no duration read). Two levels of detail, as the figures': the simple pieces as 6C drew
+   them (a barrel, two solid wheels, a trail; a box limber) at the sourced wheels' sizes, and the rich ones. The shapes' proportions, the
+   track and every distance are DESIGN */
+function kitArtScale(){ return KIT.art.headTop/KIT.art.stature; }
+function kitArtR(which){ var w=ORDNANCE.fr.wheels; return (which==="gun"?w.gun_m:w.limber_m)/2*kitArtScale(); }
+/* a wheel in the (y, z) plane at x, its axle at (y r, z 0): a rim, a hub and n spokes (n/2 bars through the hub), all part k; every part of it
+   symmetric under a turn of 2 pi / n about the axle, so that the drawn angle can be taken within one spoke's interval (gaitStep) */
+function kitWheel(x,r,n,k){ var P=kitPart, B=kitBox, col=KIT.gear.wheel, out=[], rim=new THREE.TorusGeometry(r-0.03,0.035,3,n), hub=new THREE.CylinderGeometry(0.07,0.07,0.18,n);
+  out.push(P(rim,[x,r,0],null,[0,Math.PI/2,0],col,k), P(hub,[x,r,0],null,[0,0,Math.PI/2],col,k));
+  for(var i=0;i<n/2;i++){ var a=(i+0.5)/n*Math.PI*2; out.push(P(B(0.03,2*(r-0.04),0.035),[x,r,0],null,[a,0,0],col,k)); }
+  return out; }
+function kitDisc(x,r,n,k){ return kitPart(new THREE.CylinderGeometry(r,r,0.10,n),[x,r,0],null,[0,0,Math.PI/2],KIT.gear.wheel,k); }   /* the simple wheel, n-fold */
+/* the piece, deployed: facing +z, its axle at (y rG, z 0), the trail's end on the ground behind; coffret true: the chest between the cheeks */
+function kitGunParts(rich,coffret){ var P=kitPart, B=kitBox, G=KIT.gear, rG=kitArtR("gun"), out=[], tl=2.05, ta=Math.atan2(rG+0.08,tl);
+  if(rich){ var pr=[[0,-0.62],[0.075,-0.64],[0.105,-0.58],[0.12,-0.48],[0.12,0.05],[0.105,0.08],[0.095,1.25],[0.11,1.32],[0.0,1.33]].map(function(q){ return new THREE.Vector2(q[0],q[1]); });
+    var bl=new THREE.LatheGeometry(pr,8); bl.rotateX(Math.PI/2);
+    out.push(P(bl,[0,rG+0.30,0.05],null,null,G.barrel));
+    [-0.17,0.17].forEach(function(x){ out.push(P(B(0.07,0.20,tl+0.35),[x,(rG+0.10)/2+0.03,-tl/2+0.10],null,[-ta,0,0],G.trail)); });   /* the two cheeks */
+    out.push(P(B(0.98,0.09,0.09),[0,rG,0],null,null,G.trail), P(B(0.30,0.07,0.24),[0,0.05,-tl],null,null,G.trail));   /* axle-tree; the trail's end */
+    if(coffret) out.push(P(B(0.28,0.22,0.52),[0,0.62,-0.75],null,[-ta,0,0],G.limber));
+    out=out.concat(kitWheel(-0.52,rG,12,20), kitWheel(0.52,rG,12,20)); }
+  else { var bs=new THREE.CylinderGeometry(0.09*1.35,0.115*1.35,1.5*1.35,8); bs.rotateX(Math.PI/2);
+    out.push(P(bs,[0,rG+0.30,0.25],null,null,G.barrel), P(B(0.27,0.24,2.16),[0,(rG+0.10)/2+0.03,-tl/2+0.10],null,[-ta,0,0],G.trail));
+    if(coffret) out.push(P(B(0.28,0.22,0.52),[0,0.62,-0.75],null,[-ta,0,0],G.limber));
+    out.push(kitDisc(-0.72,rG,12,20), kitDisc(0.72,rG,12,20)); }
+  return out; }
+/* the limber: facing +z, its axle at (y rL, z 0), its pole forward; coffret true: the chest on it (in action) */
+function kitLimberParts(rich,coffret){ var P=kitPart, B=kitBox, G=KIT.gear, rL=kitArtR("limber"), out=[];
+  if(rich){ out.push(P(B(1.0,0.09,0.09),[0,rL,0],null,null,G.limber), P(B(0.34,0.07,0.95),[0,rL+0.07,0.10],null,null,G.limber),
+      P(B(0.06,0.06,1.55),[0,rL+0.02,1.30],null,[0.08,0,0],G.limber), P(B(0.10,0.10,0.14),[0,rL,ART_AT.PIN],null,null,G.trail));   /* axle; hounds; pole, to the wheelers' heads; pintle */
+    if(coffret) out.push(P(B(0.30,0.24,0.55),[0,rL+0.22,0.05],null,null,G.limber));
+    out=out.concat(kitWheel(-0.50,rL,10,21), kitWheel(0.50,rL,10,21)); }
+  else { out.push(P(B(0.70,0.30,0.80),[0,rL+0.08,0.05],null,null,G.limber), P(B(0.07,0.07,1.55),[0,rL,1.25],null,null,G.limber));
+    if(coffret) out.push(P(B(0.30,0.24,0.55),[0,rL+0.32,0.05],null,null,G.limber));
+    out.push(kitDisc(-0.55,rL,10,21), kitDisc(0.55,rL,10,21)); }
+  return out; }
+/* the pitch that brings the limbered piece's trail end from the ground onto the limber's pintle (its own rest), about the axle */
+function kitArtPitch(){ var rG=kitArtR("gun"), rL=kitArtR("limber"), tl=2.05, pin=rL+0.02, lo=0, hi=1.2;
+  for(var i=0;i<40;i++){ var m=(lo+hi)/2, y=rG+(0.05-rG)*Math.cos(m)+tl*Math.sin(m); if(y<pin) lo=m; else hi=m; } return (lo+hi)/2; }
+/* one cached vehicle geometry: "gun" {coffret, limbered}, "limber" {coffret}, each simple or rich; the limbered piece turned (its trail
+   forward, onto the limber) and pitched about its axle, so that its wheels keep their axle at (rG, 0) and stay on the ground */
+var ART_GEO={};
+function artGeo(kind,o,rich){ var key=kind+"|"+(o.coffret?1:0)+"|"+(o.limbered?1:0)+"|"+(rich?"r":"s"); if(ART_GEO[key]) return ART_GEO[key];
+  var g=kitMerge(kind==="gun"?kitGunParts(rich,o.coffret):kitLimberParts(rich,o.coffret),0);
+  if(kind==="gun"&&o.limbered){ var rG=kitArtR("gun"), T=new THREE.Matrix4().makeTranslation(0,rG,0).multiply(new THREE.Matrix4().makeRotationX(-kitArtPitch()))
+      .multiply(new THREE.Matrix4().makeTranslation(0,-rG,0)).multiply(new THREE.Matrix4().makeRotationY(Math.PI)); g.applyMatrix4(T); }
+  g.userData={kit:kind, coffret:!!o.coffret, limbered:!!o.limbered, lod:rich?"rich":"simple"}; GEAR_ALL.push(g);
+  return (ART_GEO[key]=g); }
+/* the drivers a drawn team takes: the claim of ORDNANCE.fr.drivers whose scope holds the battery (its corps: the formation's ancestors), else
+   none (no claim reaches it: decision 243, the letter is not a rule elsewhere). {n, claim} */
+function artDrivers(id,nation){ var a=id, n=0; while(a&&n++<8){ var hit=(nation==="fr"&&ORDNANCE.fr&&ORDNANCE.fr.drivers||[]).filter(function(d){ return d.corps===a; })[0];
+    if(hit) return {n:hit.n, claim:hit}; a=FORMATIONS[a]&&FORMATIONS[a].parent; }
+  return {n:0, claim:null}; }
+/* the battery's layout in its block (DESIGN, the figures' scale; z forward, from the block's centre): gun, the deployed piece's axle (and the
+   jitter of its line, +-0.3, as before 8E); limber, the deployed limber's axle from its piece's (its pintle toward the trail's end); lim, the
+   limbered limber's axle; hook(), the limbered piece's axle from it (its trail's end on the pintle, ORDNANCE.fr.coffret's travelling
+   position); crew, the five gunners' posts about the piece [x, z, turn]; team, the horses' places from the limber's axle [x, ahead], the near
+   wheeler, the off, the near leader, the off (1.3 units from pair to pair, the spacing drawn since 6C) */
+var ART_AT={gun:2.0, limber:-3.0, lim:0.2, PIN:-0.42,
+  hook:function(){ var rG=kitArtR("gun"), p=kitArtPitch(), tl=2.05; return ART_AT.PIN-((rG-0.05)*Math.sin(p)+tl*Math.cos(p)); },
+  crew:[[-0.80,0.90,0.4],[0.80,0.90,-0.4],[-0.90,-0.15,0.2],[0.90,-0.15,-0.2],[0.45,-1.65,0]],
+  team:[[0.32,1.3],[-0.32,1.3],[0.32,2.6],[-0.32,2.6]]};
 function makeBlock(f,id){
   var g=new THREE.Group();
   var body=new THREE.Group(), std=new THREE.Group();
@@ -1081,11 +1334,24 @@ function makeBlock(f,id){
   var ud={body:body, std:std, sw:1, sd:1, skirmish:null,
           deployed:null, limbered:null, W0:6, D0:4, figs:[], seat:[], lastSw:-1, lastSd:-1, dress:[]};
 
+  /* Stage 8, implementation PR 8E: every kit mesh at both levels of detail (pair: its class's simple and rich geometry), each drawn through a
+     geometry of the mesh's own (kitWrap: the shared attributes and its instances' phase offsets, one attribute for both levels, so that a
+     switch keeps every instance's beat); it starts at the simple level and kitLod switches the block's meshes together */
+  ud.lod=[]; ud.lodRich=false;
+  function lodPair(m,pair,ph,gear){ var A=ph&&ph.isBufferAttribute?ph:new THREE.InstancedBufferAttribute(ph||new Float32Array(Math.max(1,m.count)),1),
+      S=new THREE.InstancedBufferAttribute(new Float32Array(2*Math.max(1,m.count)),2);
+    m.userData.lod={s:kitWrap(pair.s,A,S,gear), r:kitWrap(pair.r,A,S,gear)}; m.geometry=m.userData.lod.s; ud.lod.push(m); return m; }
+  /* the phase offsets of n instances: a horse's own beat (kitPh of its index, or of the index map gives: a driver takes his horse's), a man's 0 */
+  function phases(n,horse,map){ var a=new Float32Array(Math.max(1,n)); if(horse) for(var i=0;i<n;i++) a[i]=kitPh(map?map(i):i); return new THREE.InstancedBufferAttribute(a,1); }
+  function pairOf(kind,o){ return {s:kitGeo(kind,o,false), r:kitGeo(kind,o,true)}; }
+  /* a kit mesh placed by its own matrices (a team, its drivers), in grp */
+  function figMesh0(pair,n,ph,grp,role,part){ var m=new THREE.InstancedMesh(pair.s,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),Math.max(1,n));
+    m.castShadow=true; lodPair(m,pair,ph); m.userData.kit={dress:null,role:role,part:part}; m.userData.gaitKind="team"; grp.add(m); return m; }
   /* one instanced mesh whose instances are laid out from a base position table,
      so column and line are re-layouts of the same men rather than a stretched box */
-  function figMesh(geo,colour,pts,rotJitter){
-    var m=new THREE.InstancedMesh(geo,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),Math.max(1,pts.length));
-    m.castShadow=true; m.count=Math.max(1,pts.length);
+  function figMesh(pair,colour,pts,rotJitter,ph){
+    var m=new THREE.InstancedMesh(pair.s,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),Math.max(1,pts.length));
+    m.castShadow=true; m.count=Math.max(1,pts.length); lodPair(m,pair,ph);
     var base=new Float32Array(pts.length*3), rots=new Float32Array(pts.length), c=new THREE.Color();
     var tint=lin(colour);
     pts.forEach(function(pt,i){
@@ -1096,7 +1362,8 @@ function makeBlock(f,id){
     });
     if(m.instanceColor) m.instanceColor.needsUpdate=true;
     body.add(m);
-    ud.figs.push({mesh:m,base:base,rots:rots,n:pts.length,src:pts});
+    var rs=new Float32Array(pts.length), rc=new Float32Array(pts.length); for(var q=0;q<pts.length;q++){ rs[q]=Math.sin(rots[q]); rc[q]=Math.cos(rots[q]); }   /* Stage 8, 8E (slopes) */
+    ud.figs.push({mesh:m,base:base,rots:rots,n:pts.length,src:pts,rs:rs,rc:rc,horse:false});
     return m;
   }
   /* Stage 6C: figures by class. unitDress[i] is the class of drawn unit i (a battalion, a squadron, or one rider), null for the generic
@@ -1118,16 +1385,17 @@ function makeBlock(f,id){
     var order=[], by={};
     unitDress.forEach(function(dr,i){ var k=dr===null?"~":dr; if(!by[k]){ by[k]={dr:dr,units:[],pts:[]}; order.push(k); }
       by[k].units.push(i); Array.prototype.push.apply(by[k].pts,unitPts[i]); });
-    order.forEach(function(k){ var c=by[k], kd=c.dr?kitDress(c.dr):kitGeneric(f.nation), ms;
-      ms=mounted?[figMesh(kitGeo("horse",{col:kd.horseCol}),0xFFFFFF,c.pts,rotJ), figMesh(K.rider,kd.coat,c.pts,rotJ),
-                  figMesh(kitGeo("rider",{leg:kd.leg,head:kd.head,cuirass:kd.cuirass}),0xFFFFFF,c.pts,rotJ)]
-                :[figMesh(K.infCoat,kd.coat,c.pts,rotJ), figMesh(kitGeo("foot",{leg:kd.leg,head:kd.head,gunner:kd.gunner}),0xFFFFFF,c.pts,rotJ)];
+    order.forEach(function(k){ var c=by[k], kd=c.dr?kitDress(c.dr):kitGeneric(f.nation), ms, ph=phases(c.pts.length,mounted);   /* 8E: a rider his horse's beat */
+      ms=mounted?[figMesh(pairOf("horse",{col:kd.horseCol}),0xFFFFFF,c.pts,rotJ,ph), figMesh(pairOf("rcoat"),kd.coat,c.pts,rotJ,ph),
+                  figMesh(pairOf("rider",{leg:kd.leg,head:kd.head,cuirass:kd.cuirass}),0xFFFFFF,c.pts,rotJ,ph)]
+                :[figMesh(pairOf("coat"),kd.coat,c.pts,rotJ,ph), figMesh(pairOf("foot",{leg:kd.leg,head:kd.head,gunner:kd.gunner}),0xFFFFFF,c.pts,rotJ,ph)];
       var rec={dress:kd.dress, kd:kd, role:role, mounted:mounted, figures:c.pts.length, units:c.units, meshes:ms};
       ud.dress.push(rec);
       /* Stage 6D: its standards, by its colours entry, at the centres of its units (a battalion's or squadron's; the riders' always shown) */
       if(c.dr&&(role==="ranks"||role==="riders"||role==="escort")) unitStd(c.dr,c.units,function(u){ var P=unitPts[u], x=0, z=0;
         P.forEach(function(q){ x+=q[0]; z+=q[2]; }); return [x/P.length,z/P.length]; },mounted,role==="ranks");
-      ms.forEach(function(m,j){ m.userData.kit={dress:kd.dress, role:role, part:mounted?["horse","coat","fixed"][j]:["coat","fixed"][j]};
+      ms.forEach(function(m,j){ m.userData.kit={dress:kd.dress, role:role, part:mounted?["horse","coat","fixed"][j]:["coat","fixed"][j]}; m.userData.gaitKind=mounted?"horse":"man";
+        ud.figs[ud.figs.length-ms.length+j].horse=mounted;
         if(bat){ var fg=ud.figs[ud.figs.length-ms.length+j]; fg.units=c.units; ud.batFigs.push(fg); } }); });
   }
   /* anything else that stands on the ground - skirmishers, gun crews, teams, guns, limbers, tents -
@@ -1141,7 +1409,9 @@ function makeBlock(f,id){
       R[i*4]=_qr.x; R[i*4+1]=_qr.y; R[i*4+2]=_qr.z; R[i*4+3]=_qr.w;
       S[i*3]=_sv0.x; S[i*3+1]=_sv0.y; S[i*3+2]=_sv0.z;
     }
-    ud.seat.push({mesh:mesh,n:n,P:P,R:R,S:S,shape:!!shape,upright:!!upright});
+    var rs=null, rc=null;
+    if(upright){ rs=new Float32Array(n); rc=new Float32Array(n); for(var j=0;j<n;j++){ var a=2*Math.atan2(R[j*4+1],R[j*4+3]); rs[j]=Math.sin(a); rc[j]=Math.cos(a); } }   /* Stage 8, 8E (slopes) */
+    ud.seat.push({mesh:mesh,n:n,P:P,R:R,S:S,shape:!!shape,upright:!!upright,rs:rs,rc:rc});
     return mesh;
   }
   /* Seating, in world space, on the ground as drawn (groundY). Each man keeps the world x,z his
@@ -1160,43 +1430,72 @@ function makeBlock(f,id){
     _wp.y=groundY(_wp.x,_wp.z);
     return out.copy(_wp).applyMatrix4(_inv);
   }
+  /* Stage 8, 8E: the slopes about the upright figure just seated (its world place _wp, on the drawn ground), facing the block's heading
+     turned by an angle whose sine and cosine are rs and rc: two chords of the drawn ground (groundY) along its facing from where it stands,
+     into out[o] and out[o+1], two lookups a figure: a man's ahead of him and behind him over his soles' travel at full swing (GAIT.REACH), a
+     horse's to the far edge of his fore hooves' travel and to the far edge of his hind hooves' (HORSE.ZF and ZH from his root, and the
+     reach); by the block's scale, so in the figure's own units */
+  var _qw=new THREE.Quaternion(), _fw=new THREE.Vector3(), _yS=0, _yC=1;
+  function slopes(rs,rc,horse,out,o){ var fx=_yS*rc+_yC*rs, fz=_yC*rc-_yS*rs, k=g.scale.x||1, x=_wp.x, z=_wp.z, y=_wp.y;
+    if(!horse){ var a=GAIT.REACH.man*k; out[o]=(groundY(x+fx*a,z+fz*a)-y)/a; out[o+1]=(y-groundY(x-fx*a,z-fz*a))/a; return; }
+    var H=ANIM.HORSE, f=(H.ZF+GAIT.REACH.horse)*k, h=(GAIT.REACH.horse-H.ZH)*k;
+    out[o]=(groundY(x+fx*f,z+fz*f)-y)/f; out[o+1]=(y-groundY(x-fx*h,z-fz*h))/h; }
   /* the block's rotation is tilt x yaw; this is the local rotation that undoes the tilt and keeps the yaw */
   function uprightQuat(){
     _nb.copy(_up0).applyQuaternion(g.quaternion).normalize();
     _qt0.setFromUnitVectors(_up0,_nb).invert();
     return _qc.copy(g.quaternion).invert().multiply(_qt0).multiply(g.quaternion);
   }
-  function layoutFigs(sw,sd){
+  function layoutFigs(sw,sd,force){
     seatPrep();
-    var C=uprightQuat(), cache=new Map();
+    var C=uprightQuat(), cache=new Map(), X=ud.ext||(ud.ext=[0,0,0,0,0,0]);   /* Stage 8, 8E: the seated men's extent in the block's frame, x, z and the heights they stand at (kitLod) */
+    X[0]=X[2]=X[4]=1e9; X[1]=X[3]=X[5]=-1e9;
+    /* Stage 8, 8E: the slopes (slopes()), for a formation the gait animates, in view or not (or when asked, force), from its heading, the
+       block's turn without its tilt; none written for a formation the gait leaves at rest. While the clock moves they are taken again only once
+       the block has moved GAIT.SLOPE_STEP (in its men's units) or turned (SLOPE_TURN) or changed its shape or scale since they were last taken,
+       so the drawn slopes are those of a place at most that far back; with the clock still (paused, in the dwell's hold, scrubbed, a jump)
+       always, and where the clock stopped with them behind (slopeStale) gaitStep takes them again: a still clock's pose is the clock's alone */
+    var wantSl=!!(force||(ud.gait&&(ud.gait.amp>0||ud.gait.want>0)&&!GAIT.noSlopes)), S=ud.slSig||(ud.slSig=new Float64Array(9)), gp=g.position, gq=g.quaternion, gk=g.scale.x||1;
+    var fresh=wantSl&&(!!force||!ud.slopeSeat||clockRate()===0||Math.hypot(gp.x-S[0],gp.z-S[1])>=GAIT.SLOPE_STEP*gk||
+      Math.abs(gq.x-S[2])+Math.abs(gq.y-S[3])+Math.abs(gq.z-S[4])+Math.abs(gq.w-S[5])>GAIT.SLOPE_TURN||S[6]!==sw||S[7]!==sd||S[8]!==gk);
+    ud.slopeSeat=wantSl; ud.slopeStale=wantSl&&!fresh; if(fresh) SEAT_STATS.slopes++; if(wantSl) SEAT_STATS.want++;
+    if(fresh){ S[0]=gp.x; S[1]=gp.z; S[2]=gq.x; S[3]=gq.y; S[4]=gq.z; S[5]=gq.w; S[6]=sw; S[7]=sd; S[8]=gk;
+      _fw.set(0,0,1).applyQuaternion(_qw.copy(_qt0).multiply(g.quaternion)); var yn=Math.hypot(_fw.x,_fw.z)||1; _yS=_fw.x/yn; _yC=_fw.z/yn; }
     ud.figs.forEach(function(fg){
-      var L=cache.get(fg.src);
-      if(!L){
-        L=new Float32Array(fg.n*3);
-        for(var i=0;i<fg.n;i++){ seatLocal(fg.base[i*3]*sw,fg.base[i*3+2]*sd,_gl); L[i*3]=_gl.x; L[i*3+1]=_gl.y; L[i*3+2]=_gl.z; }
-        cache.set(fg.src,L);
+      var c=cache.get(fg.src), L, Sl=null;
+      if(!c){
+        L=new Float32Array(fg.n*3); if(fresh) Sl=fg.slBuf||(fg.slBuf=new Float32Array(fg.n*2));   /* the slopes' buffer kept, not allocated again */
+        for(var i=0;i<fg.n;i++){ seatLocal(fg.base[i*3]*sw,fg.base[i*3+2]*sd,_gl); L[i*3]=_gl.x; L[i*3+1]=_gl.y; L[i*3+2]=_gl.z;
+          if(Sl) slopes(fg.rs[i],fg.rc[i],fg.horse,Sl,i*2); }
+        cache.set(fg.src,c={L:L,Sl:Sl});
       }
+      L=c.L; var SA=fg.mesh.geometry.attributes.aSl; if(SA&&c.Sl){ var SAa=SA.array, Sn=Math.min(c.Sl.length,SAa.length); for(var q2=0;q2<Sn;q2++) SAa[q2]=c.Sl[q2]; SA.needsUpdate=true; }
       for(var j=0;j<fg.n;j++){
         _qa.setFromAxisAngle(_up0,fg.rots[j]).premultiply(C);
         _pv0.set(L[j*3], L[j*3+1]+fg.base[j*3+1], L[j*3+2]);
+        if(_pv0.x<X[0]) X[0]=_pv0.x; if(_pv0.x>X[1]) X[1]=_pv0.x; if(_pv0.z<X[2]) X[2]=_pv0.z; if(_pv0.z>X[3]) X[3]=_pv0.z; if(_pv0.y<X[4]) X[4]=_pv0.y; if(_pv0.y>X[5]) X[5]=_pv0.y;
         _mm.compose(_pv0,_qa,_one);
         fg.mesh.setMatrixAt(j,_mm);
       }
       fg.mesh.instanceMatrix.needsUpdate=true;
     });
     ud.seat.forEach(function(st){
+      var SA=fresh&&st.upright&&st.rs&&st.mesh.geometry.attributes.aSl, horse=st.mesh.userData.gaitKind==="team";   /* Stage 8, 8E: the slopes, for the gait */
       for(var i=0;i<st.n;i++){
         var lx=st.shape?st.P[i*3]*sw:st.P[i*3], lz=st.shape?st.P[i*3+2]*sd:st.P[i*3+2];
         seatLocal(lx,lz,_gl);
+        if(SA&&i*2+1<SA.array.length) slopes(st.rs[i],st.rc[i],horse,SA.array,i*2);
         _pv0.set(_gl.x, _gl.y+st.P[i*3+1], _gl.z);
+        if(_pv0.x<X[0]) X[0]=_pv0.x; if(_pv0.x>X[1]) X[1]=_pv0.x; if(_pv0.z<X[2]) X[2]=_pv0.z; if(_pv0.z>X[3]) X[3]=_pv0.z; if(_pv0.y<X[4]) X[4]=_pv0.y; if(_pv0.y>X[5]) X[5]=_pv0.y;
         _qa.set(st.R[i*4],st.R[i*4+1],st.R[i*4+2],st.R[i*4+3]);
         if(st.upright) _qa.premultiply(C);
         _sv0.set(st.S[i*3],st.S[i*3+1],st.S[i*3+2]);
         _mm.compose(_pv0,_qa,_sv0);
         st.mesh.setMatrixAt(i,_mm);
       }
-      st.mesh.instanceMatrix.needsUpdate=true;
+      st.mesh.instanceMatrix.needsUpdate=true; if(SA) SA.needsUpdate=true;
     });
+    if(ud.afterSeat) ud.afterSeat();   /* Stage 8, 8E: the limbered pieces on their limbers' pintles */
     SEAT_STATS.blocks++;
   }
   ud.layout=layoutFigs;
@@ -1239,28 +1538,56 @@ function makeBlock(f,id){
     var dep=new THREE.Group(), lim=new THREE.Group();
     body.add(dep); body.add(lim);
     ud.deployed=dep; ud.limbered=lim;
-    var bar=imesh(GEO.barrel,KIT.gear.barrel,guns), whl=imesh(GEO.wheel,KIT.gear.wheel,guns*2), tra=imesh(GEO.trail,KIT.gear.trail,guns);
-    var nw=0, crew=[];
+    /* Stage 8, implementation PR 8E (decision 243 (a), "as prototyped": tools/stage8/protos/figures.js; ORDNANCE; the shapes artGeo's, the
+       layout DESIGN at the figures' scale, the real distances compressed). Deployed: each piece facing the front, its five gunners at posts about
+       it (two by the muzzle, two by the wheels, one by the trail: the prototype's, DESIGN, where 6C sampled them behind the piece; no drill
+       manual's posts read), and behind it its limber with the coffret on it (ORDNANCE.fr.coffret), its team of four and its driver, the team
+       facing the rear (ORDNANCE.fr.limberAt reads the limber led 20 paces to the rear and turned, « tourne à gauche », whether by a quarter or a
+       half is not read: the facing DESIGN). Hitched up: the team ahead, the limber, the piece behind with its trail on the limber's pintle and
+       the coffret between its cheeks (the crew drawn with the deployed battery only, as before 8E). The battery's footprint as before (W0 x D0):
+       the drawn pieces and teams overrun it fore and aft by under a metre and two at the figures' scale, as the limbered battery's team did
+       before 8E. The drivers by the claim whose scope holds the battery (artDrivers), on the near (left) horses, the near wheeler first (an
+       inference, ORDNANCE.fr.harness's note); none where no claim reaches it. Each horse keeps one index in both groups (0 the near wheeler,
+       1 the off, 2 the near leader, 3 the off), so its beat, and its driver's, survive the switch */
+    var gk=kitAllocate(KB.foot,1)[0], gd=gk?kitDress(gk):kitGeneric(f.nation), gen=kitGeneric(f.nation), DR=artDrivers(id,f.nation), nd=Math.min(2,DR.n);
+    ud.art={guns:guns, drivers:nd, claim:DR.claim};
+    var vmesh=function(kind,o,n,grp){ var m=new THREE.InstancedMesh(artGeo(kind,o,false),matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),n); m.castShadow=true;
+      lodPair(m,{s:artGeo(kind,o,false),r:artGeo(kind,o,true)},null,true); m.userData.kit={dress:null,role:"gear",part:kind+(o.limbered?" limbered":"")+(o.coffret?" with its coffret":"")}; m.userData.gaitKind="gear"; grp.add(m); return m; };
+    var gD=vmesh("gun",{},guns,dep), lD=vmesh("limber",{coffret:true},guns,dep), gL=vmesh("gun",{coffret:true,limbered:true},guns,lim), lL=vmesh("limber",{},guns,lim);
+    var hph=phases(guns*4,true), hD=figMesh0(pairOf("horse",{col:KIT.horse.brown}),guns*4,hph,dep,"team","horse"), hL=figMesh0(pairOf("horse",{col:KIT.horse.brown}),guns*4,hph,lim,"team","horse");
+    var dph=phases(guns*nd,true,function(i){ return Math.floor(i/nd)*4+(i%nd)*2; });   /* a driver his horse's beat: the near wheeler's, then the near leader's */
+    var dDc=nd?figMesh0(pairOf("rcoat"),guns*nd,dph,dep,"driver","coat"):null, dDf=nd?figMesh0(pairOf("rider",{leg:gen.leg,head:gen.head,driver:true}),guns*nd,dph,dep,"driver","fixed"):null;
+    var dLc=nd?figMesh0(pairOf("rcoat"),guns*nd,dph,lim,"driver","coat"):null, dLf=nd?figMesh0(pairOf("rider",{leg:gen.leg,head:gen.head,driver:true}),guns*nd,dph,lim,"driver","fixed"):null;
+    var crew=[], cc=new THREE.Color(), tint=lin(gd.coat), A=ART_AT;
+    function at(m,i,x,z,yaw){ d.position.set(x,0,z); d.rotation.set(0,yaw||0,0); d.scale.set(1,1,1); d.updateMatrix(); m.setMatrixAt(i,d.matrix); }
     for(var q=0;q<guns;q++){
-      var gx=(q-(guns-1)/2)*2.7, jz=(srnd(q)-0.5)*0.6;
-      d.scale.set(1.35,1.35,1.35);
-      d.position.set(gx,0.95,jz); d.rotation.set(1.5708,0,0); d.updateMatrix(); bar.setMatrixAt(q,d.matrix);
-      d.position.set(gx,0.62,jz-1.15); d.rotation.set(0,0,0); d.updateMatrix(); tra.setMatrixAt(q,d.matrix);
-      for(var sg=-1;sg<=1;sg+=2){
-        d.position.set(gx+sg*0.72,0.60,jz-0.15); d.rotation.set(0,0,1.5708);
-        d.updateMatrix(); whl.setMatrixAt(nw++,d.matrix);
-      }
-      for(var k2=0;k2<5;k2++) crew.push([gx-1.1+srnd(q*7+k2)*2.2, 0, jz-1.6-srnd(q*3+k2)*1.2, (srnd(q*5+k2)-0.5)*1.2]);
+      var gx=(q-(guns-1)/2)*2.7, jz=(srnd(q)-0.5)*0.6, gz=A.gun+jz, lz=gz+A.limber, tz=A.lim, gzL=tz+A.hook();
+      at(gD,q,gx,gz,0); at(lD,q,gx,lz,Math.PI); at(lL,q,gx,tz,0); at(gL,q,gx,gzL,0);
+      A.crew.forEach(function(c,k2){ crew.push([gx+c[0], 0, gz+c[1], c[2]+(srnd(q*5+k2)-0.5)*0.3]); });
+      /* the team: the horse's left is +x in its own frame (it faces +z), so the near horses stand at -x turned to the rear and at +x ahead */
+      A.team.forEach(function(h,j){ at(hD,q*4+j,gx-h[0],lz-h[1],Math.PI); at(hL,q*4+j,gx+h[0],tz+h[1],0); });
+      for(var j2=0;j2<nd;j2++){ var h2=A.team[j2*2];
+        at(dDc,q*nd+j2,gx-h2[0],lz-h2[1],Math.PI); at(dDf,q*nd+j2,gx-h2[0],lz-h2[1],Math.PI);
+        at(dLc,q*nd+j2,gx+h2[0],tz+h2[1],0); at(dLf,q*nd+j2,gx+h2[0],tz+h2[1],0); }
     }
-    dep.add(bar); dep.add(whl); dep.add(tra);
-    seatable(bar,false,false); seatable(whl,false,false); seatable(tra,false,false);
+    [gD,lD,gL,lL,hD,hL,dDc,dDf,dLc,dLf].forEach(function(m){ if(m){ m.instanceMatrix.needsUpdate=true; seatable(m,false,m.userData.kit.role!=="gear"); } });
+    /* each piece seated on the ground under its own wheels and each limber under its own, so on uneven ground the trail's end and the pintle
+       part: after every seating the limbered piece is turned about its axle until its trail's end lies on its limber's pintle's line (its
+       wheels stay on the ground where they stand); the deployed piece's trail rests where its seating puts it, as before 8E */
+    var rG=kitArtR("gun"), tp=kitArtPitch(), tend=[rG+(0.05-rG)*Math.cos(tp)+2.05*Math.sin(tp),(rG-0.05)*Math.sin(tp)+2.05*Math.cos(tp)], _a1=new THREE.Matrix4(), _a2=new THREE.Matrix4(), _a3=new THREE.Matrix4(), _av=new THREE.Vector3();
+    ud.afterSeat=function(){
+      for(var q=0;q<guns;q++){ lL.getMatrixAt(q,_a1); gL.getMatrixAt(q,_a2); _av.set(0,kitArtR("limber")+0.02,ART_AT.PIN).applyMatrix4(_a1).applyMatrix4(_a3.copy(_a2).invert());
+        var d=Math.atan2(tend[0]-rG,tend[1])-Math.atan2(_av.y-rG,_av.z);
+        _a2.multiply(_a3.makeTranslation(0,rG,0)).multiply(_a1.makeRotationX(d)).multiply(_a3.makeTranslation(0,-rG,0)); gL.setMatrixAt(q,_a2); }
+      gL.instanceMatrix.needsUpdate=true; };
+    /* the drivers' coats: the nation's symbol colour (no train dress in the table: generic, section 2.9) */
+    if(nd) [dDc,dLc].forEach(function(m){ for(var i=0;i<m.count;i++){ cc.copy(lin(gen.coat)).multiplyScalar(0.86+0.28*srnd(i*5+1)); m.setColorAt(i,cc); } m.instanceColor.needsUpdate=true; });
     /* crews: the gunners' own figure (6C: no musket or pack) in their class, parented to the deployed group so they limber up with the guns */
-    var gk=kitAllocate(KB.foot,1)[0], gd=gk?kitDress(gk):kitGeneric(f.nation);
     var cM=new THREE.InstancedMesh(K.infCoat,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),crew.length);
     var fM=new THREE.InstancedMesh(kitGeo("foot",{leg:gd.leg,head:gd.head,gunner:true}),matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),crew.length);
-    cM.userData.kit={dress:gd.dress,role:"crew",part:"coat"}; fM.userData.kit={dress:gd.dress,role:"crew",part:"fixed"};
+    lodPair(cM,pairOf("coat"),null); lodPair(fM,pairOf("foot",{leg:gd.leg,head:gd.head,gunner:true}),null);
+    cM.userData.kit={dress:gd.dress,role:"crew",part:"coat"}; fM.userData.kit={dress:gd.dress,role:"crew",part:"fixed"}; cM.userData.gaitKind=fM.userData.gaitKind="man";
     ud.dress.push({dress:gd.dress, kd:gd, role:"crew", mounted:false, figures:crew.length, units:[0], meshes:[cM,fM]});
-    var cc=new THREE.Color(), tint=lin(gd.coat);
     crew.forEach(function(pt,i){
       d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix();
       cM.setMatrixAt(i,d.matrix); fM.setMatrixAt(i,d.matrix);
@@ -1269,28 +1596,6 @@ function makeBlock(f,id){
     if(cM.instanceColor) cM.instanceColor.needsUpdate=true;
     cM.castShadow=fM.castShadow=true;
     dep.add(cM); dep.add(fM); seatable(cM,false,true); seatable(fM,false,true);
-    /* the same battery hitched up and on the move */
-    var lb=imesh(GEO.limber,KIT.gear.limber,guns), lw=imesh(GEO.wheel,KIT.gear.wheel,guns*4), lbar=imesh(GEO.barrel,KIT.gear.barrel,guns);
-    var mw=0, team=[];
-    for(var q2=0;q2<guns;q2++){
-      var lx=(q2-(guns-1)/2)*2.7;
-      d.scale.set(1.35,1.35,1.35); d.rotation.set(0,0,0);
-      d.position.set(lx,0.68,0.5); d.updateMatrix(); lb.setMatrixAt(q2,d.matrix);
-      d.position.set(lx,0.92,-1.9); d.rotation.set(1.5708,0,0); d.updateMatrix(); lbar.setMatrixAt(q2,d.matrix);
-      d.rotation.set(0,0,1.5708);
-      for(var sg2=-1;sg2<=1;sg2+=2){
-        d.position.set(lx+sg2*0.72,0.60,0.5); d.updateMatrix(); lw.setMatrixAt(mw++,d.matrix);
-        d.position.set(lx+sg2*0.72,0.60,-2.2); d.updateMatrix(); lw.setMatrixAt(mw++,d.matrix);
-      }
-      for(var hz=0;hz<2;hz++) team.push([lx-0.25+hz*0.5,0,2.2+hz*0.2,0]);
-      for(var hz2=0;hz2<2;hz2++) team.push([lx-0.25+hz2*0.5,0,3.5+hz2*0.2,0]);
-    }
-    lim.add(lb); lim.add(lw); lim.add(lbar);
-    seatable(lb,false,false); seatable(lw,false,false); seatable(lbar,false,false);
-    var hM=new THREE.InstancedMesh(K.horse,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),team.length);   /* the teams: one brown (decision 109) */
-    hM.userData.kit={dress:null,role:"team",part:"horse"};
-    team.forEach(function(pt,i){ d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix(); hM.setMatrixAt(i,d.matrix); });
-    hM.castShadow=true; lim.add(hM); seatable(hM,false,true);
     lim.visible=false;
   }
   else {
@@ -1334,7 +1639,8 @@ function makeBlock(f,id){
       var lk=kitLead(KB.foot), ld=lk?kitDress(lk):kitGeneric(f.nation);
       var skC=new THREE.InstancedMesh(K.infCoat,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),sk.length);
       var skF=new THREE.InstancedMesh(kitGeo("foot",{leg:ld.leg,head:ld.head,gunner:ld.gunner}),matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),sk.length);
-      skC.userData.kit={dress:ld.dress,role:"skirmish",part:"coat"}; skF.userData.kit={dress:ld.dress,role:"skirmish",part:"fixed"};
+      lodPair(skC,pairOf("coat"),null); lodPair(skF,pairOf("foot",{leg:ld.leg,head:ld.head,gunner:ld.gunner}),null);   /* Stage 8, 8E: both levels */
+      skC.userData.kit={dress:ld.dress,role:"skirmish",part:"coat"}; skF.userData.kit={dress:ld.dress,role:"skirmish",part:"fixed"}; skC.userData.gaitKind=skF.userData.gaitKind="man";
       ud.dress.push({dress:ld.dress, kd:ld, role:"skirmish", mounted:false, figures:sk.length, units:[], meshes:[skC,skF]});
       var cs=new THREE.Color(), ts=lin(ld.coat);
       sk.forEach(function(pt,i){
@@ -1351,18 +1657,13 @@ function makeBlock(f,id){
       var off=[[-(ud.W0*0.5+1.5),0,ud.D0*0.5+0.9,0],[ud.W0*0.5+1.5,0,ud.D0*0.5+0.9,0]];
       classMeshes([null],[off],true,0,"officers",false);
     }
-    if(f.battery){   /* an attached battery in front of the infantry (the Santon's eighteen guns) */
+    if(f.battery){   /* an attached battery in front of the infantry (the Santon's eighteen guns): the pieces alone, deployed, as before 8E (no
+                        limber, team or crew is read for it there; since 8E the generic piece of artGeo, its axle where the wheels stood) */
       var bg=Math.max(3,Math.min(6,Math.round(f.battery/3)));
-      var bb=imesh(GEO.barrel,KIT.gear.barrel,bg), bwl=imesh(GEO.wheel,KIT.gear.wheel,bg*2), btr=imesh(GEO.trail,KIT.gear.trail,bg), bw2=0;
-      for(var bq=0;bq<bg;bq++){
-        var bx=(bq-(bg-1)/2)*2.4, bz=ud.D0*0.5+1.6;
-        d.scale.set(1.35,1.35,1.35);
-        d.position.set(bx,0.95,bz); d.rotation.set(1.5708,0,0); d.updateMatrix(); bb.setMatrixAt(bq,d.matrix);
-        d.position.set(bx,0.62,bz-1.15); d.rotation.set(0,0,0); d.updateMatrix(); btr.setMatrixAt(bq,d.matrix);
-        for(var bs=-1;bs<=1;bs+=2){ d.position.set(bx+bs*0.72,0.60,bz-0.15); d.rotation.set(0,0,1.5708); d.updateMatrix(); bwl.setMatrixAt(bw2++,d.matrix); }
-      }
-      bb.castShadow=bwl.castShadow=btr.castShadow=true; body.add(bb); body.add(bwl); body.add(btr);
-      seatable(bb,false,false); seatable(bwl,false,false); seatable(btr,false,false);
+      var bm=new THREE.InstancedMesh(artGeo("gun",{},false),matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),bg);
+      lodPair(bm,{s:artGeo("gun",{},false),r:artGeo("gun",{},true)},null,true); bm.userData.kit={dress:null,role:"gear",part:"gun"}; bm.userData.gaitKind="gear";
+      for(var bq=0;bq<bg;bq++){ d.position.set((bq-(bg-1)/2)*2.4,0,ud.D0*0.5+1.45); d.rotation.set(0,0,0); d.scale.set(1,1,1); d.updateMatrix(); bm.setMatrixAt(bq,d.matrix); }
+      bm.castShadow=true; body.add(bm); seatable(bm,false,false); ud.art={guns:bg, drivers:0, claim:null, attached:true};
     }
     if(mixed){
       var sq=Math.max(5,Math.min(9,Math.round(str/850))), hp=[];
@@ -1512,40 +1813,65 @@ function placeStandards(g,sw,tilt){
    matrix, the projection and the depth's packing), by aPart and the mesh's two uniforms, uAnimPhase (radians) and uAnimAmp (clamped to [0, 1],
    so that no vertex leaves the envelope animEnv gives the culling bounds). With uAnimAmp 0 the branch is not taken and the vertex is exactly
    three's own: the pose, the light, the fog and the shadow as before 8D (the self-test holds the frame to the frame without the hook). The
-   uniforms belong to the mesh (m.userData.anim), shared by its two materials: 8E's rule will write them; in 8D nothing writes them but the
-   self-test's controlled check (and tools/stage8/mutate-8d.js). The atmosphere's uniforms are given first, as every material's own hook gives
+   uniforms belong to the mesh (m.userData.anim), shared by its two materials. Since 8E (decision 244 (a)) the hook also reads each instance's
+   phase offset (aPh) and the drawn ground's slopes under it (aSl, layoutFigs), and four uniforms more: the trot (uAnimTrot), the wheels' angles
+   (uAnimRollG, uAnimRollL) and the knee (uAnimKnee, the rich kit's); gaitStep writes the gait's (the one writer), kitLodSet the knee, and the
+   self-test's checks set them only on meshes they restore. The atmosphere's uniforms are given first, as every material's own hook gives
    them (atmoUniforms); the hook is one function, so every kit material shares one program and every kit depth material another (two programs
    more than before 8D; ANIM.built and ANIM.depth count their compiles, again after a restored context) */
 function animGLSL(){
-  var f=function(v){ return (+v).toFixed(4); }, s=[];
-  Object.keys(ANIM.PART).forEach(function(k){ var p=ANIM.PART[k];
-    s.push((s.length?"else ":"")+"if(anK=="+k+".0){ anA="+f(p.A)+"; anO="+f(p.off)+"; anY="+f(p.py)+"; anZ="+f(p.pz)+"; anB="+f(p.bob)+"; }"); });
+  var f=function(v){ return (+v).toFixed(5); }, M=ANIM.MAN, H=ANIM.HORSE, W=ANIM.WHEEL;
+  var v4=function(a){ return "vec4("+a.map(f).join(",")+")"; };
   return ["if(uAnimAmp>0.0&&aPart>0.5){",
-    "  float anK=floor(aPart+0.5), anA=0.0, anO=0.0, anY=0.0, anZ=0.0, anB=0.0;",
-    "  "+s.join("\n  "),
-    "  float anM=clamp(uAnimAmp,0.0,1.0), anG=anM*anA*sin(uAnimPhase+6.2831853*anO), anC=cos(anG), anS=sin(anG);",
-    "  float anTy=transformed.y-anY, anTz=transformed.z-anZ;",
-    "  transformed.y=anY+anTy*anC-anTz*anS+anM*anB*abs(sin(uAnimPhase));",
-    "  transformed.z=anZ+anTy*anS+anTz*anC;",
+    "  float anK=floor(aPart+0.5), anA=min(uAnimAmp,1.0), anP=uAnimPhase+6.2831853*aPh;",
+    "  vec2 anSl=clamp(aSl,vec2(-"+f(ANIM.SLOPE)+"),vec2("+f(ANIM.SLOPE)+"));",   /* aSl: the drawn ground's slopes under this instance (a man's ahead and behind; a horse's fore and hind hooves) */
+    "  vec2 anQ=transformed.yz; float anD=0.0;",
+    "  if(anK>19.5&&anK<21.5){",   /* a wheel (20 the gun's, 21 the limber's), about its axle */
+    "    anQ=anK<20.5?anRot(anQ,vec2("+f(W[20].r)+",0.0),uAnimRollG):anRot(anQ,vec2("+f(W[21].r)+",0.0),uAnimRollL);",
+    "  } else if((anK>4.5&&anK<8.5)||(anK>10.5&&anK<12.5)){",   /* a horse (5-8 its legs, 11 the rest), its rider or driver (12) */
+    "    float anT=clamp(uAnimTrot,0.0,1.0), anH=anA*mix("+f(H.AW)+","+f(H.AT)+",anT);",
+    "    vec4 anF=anH*sin(vec4(anP)+6.2831853*mix("+v4(H.WALK)+","+v4(H.TROT)+",anT));",
+    "    if(anK<8.5){ float anF1=anK<5.5?anF.x:(anK<6.5?anF.y:(anK<7.5?anF.z:anF.w)); anQ=anRot(anQ,vec2("+f(H.HIP)+",anK<6.5?"+f(H.ZF)+":"+f(H.ZH)+"),-anF1); }",
+    "    anD=-1e9; for(int anI=0;anI<4;anI++){ float anFi=anI==0?anF.x:(anI==1?anF.y:(anI==2?anF.z:anF.w)), anZ=anI<2?"+f(H.ZF)+":"+f(H.ZH)+";",   /* each hoof's two edges */
+    "      for(int anE=0;anE<2;anE++){ float anZe=anZ+(anE==0?-"+f(H.HZ)+":"+f(H.HZ)+"); vec2 anO=anRot(vec2("+f(H.HIP-H.L)+",anZe),vec2("+f(H.HIP)+",anZ),-anFi);",
+    "        anD=max(anD,(anI<2?anSl.x:anSl.y)*(anO.y-anZe)-(anO.x-"+f(H.HIP-H.L)+")); } }",
+    "  } else if(anK<3.5||(anK>9.5&&anK<10.5)||(anK>12.5&&anK<14.5)){",   /* a man: 1, 2 his thighs, 13, 14 his shins, 3 the arm at -x, 10 the rest; any other part rigid, as animAt has it */
+    "    float anS=sin(anP), anC=cos(anP), anKn=clamp(uAnimKnee,0.0,1.0), anFw=anA*"+f(M.AH)+"*anS, anKL=anKn*anA*"+f(M.AK)+"*max(0.0,anC), anKR=anKn*anA*"+f(M.AK)+"*max(0.0,-anC);",
+    "    if(anK<1.5||(anK>12.5&&anK<13.5)){ if(anK>12.5) anQ=anRot(anQ,vec2("+f(M.KNEE)+",0.0),anKL); anQ=anRot(anQ,vec2("+f(M.HIP)+",0.0),-anFw); }",
+    "    else if(anK<2.5||anK>13.5){ if(anK>13.5) anQ=anRot(anQ,vec2("+f(M.KNEE)+",0.0),anKR); anQ=anRot(anQ,vec2("+f(M.HIP)+",0.0),anFw); }",
+    "    else if(anK<3.5) anQ=anRot(anQ,vec2("+f(M.SHY)+","+f(M.SHZ)+"),anA*"+f(M.AA)+"*anS);",
+    "    anD=-1e9; for(int anE=0;anE<2;anE++){ float anZe=anE==0?"+f(M.HEEL)+":"+f(M.TOE)+";",   /* each sole's heel and toe */
+    "      vec2 anFL=anRot(anRot(vec2("+f(M.FOOT)+",anZe),vec2("+f(M.KNEE)+",0.0),anKL),vec2("+f(M.HIP)+",0.0),-anFw);",
+    "      vec2 anFR=anRot(anRot(vec2("+f(M.FOOT)+",anZe),vec2("+f(M.KNEE)+",0.0),anKR),vec2("+f(M.HIP)+",0.0),anFw);",
+    "      float anDL=anFL.y-anZe, anDR=anFR.y-anZe;",   /* a sole's edge moved ahead takes the slope ahead of him (aSl.x), behind, the slope behind (aSl.y) */
+    "      anD=max(anD,max((anDL>0.0?anSl.x:anSl.y)*anDL-(anFL.x-"+f(M.FOOT)+"),(anDR>0.0?anSl.x:anSl.y)*anDR-(anFR.x-"+f(M.FOOT)+"))); }",
+    "  }",
+    "  transformed.y=anQ.x+anD; transformed.z=anQ.y;",
     "}"].join("\n");
 }
-ANIM.decl="attribute float aPart;\nuniform float uAnimPhase;\nuniform float uAnimAmp;";
+ANIM.decl=["attribute float aPart;","attribute float aPh;","attribute vec2 aSl;","uniform float uAnimPhase;","uniform float uAnimAmp;","uniform float uAnimTrot;",
+  "uniform float uAnimRollG;","uniform float uAnimRollL;","uniform float uAnimKnee;",
+  "vec2 anRot(vec2 p,vec2 o,float a){ vec2 q=p-o; float c=cos(a), s=sin(a); return o+vec2(q.x*c-q.y*s,q.x*s+q.y*c); }"].join("\n");
 ANIM.body=animGLSL();
+ANIM.U=["uAnimPhase","uAnimAmp","uAnimTrot","uAnimRollG","uAnimRollL","uAnimKnee"];
 function animHook(sh){
   atmoUniforms(sh);
   var U=this.userData&&this.userData.anim; if(!U) return;
-  sh.uniforms.uAnimPhase=U.uAnimPhase; sh.uniforms.uAnimAmp=U.uAnimAmp;
+  ANIM.U.forEach(function(k){ sh.uniforms[k]=U[k]; });
   var v=sh.vertexShader;
   if(v.indexOf("#include <common>")<0||v.indexOf("#include <begin_vertex>")<0) throw new Error("ANIM: a kit material's vertex shader has no common or begin_vertex chunk");
   sh.vertexShader=v.replace("#include <common>","#include <common>\n"+ANIM.decl).replace("#include <begin_vertex>","#include <begin_vertex>\n"+ANIM.body);
   if(this.isMeshDepthMaterial) ANIM.depth++; else ANIM.built++;
 }
+/* the kit's programs' cache key: one program for every kit material and one for every kit depth material, as one hook gives them, built again
+   when the animation's definition changes (animDefine) */
+function animKey(){ return "ANIM "+ANIM.ver; }
 /* a kit mesh (its geometry has parts): the hook on its material and on its own depth material, sharing the mesh's uniforms */
 function animMesh(m){
   if(!m.geometry||!m.geometry.attributes||!m.geometry.attributes.aPart||!m.material) return false;
-  var U={uAnimPhase:{value:0}, uAnimAmp:{value:0}};
-  m.userData.anim=U; m.material.userData.anim=U; m.material.onBeforeCompile=animHook;
-  var d=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}); d.userData.anim=U; d.onBeforeCompile=animHook;
+  var U={}; ANIM.U.forEach(function(k){ U[k]={value:0}; });
+  m.userData.anim=U; m.material.userData.anim=U; m.material.onBeforeCompile=animHook; m.material.customProgramCacheKey=animKey;
+  var d=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}); d.userData.anim=U; d.onBeforeCompile=animHook; d.customProgramCacheKey=animKey;
   m.customDepthMaterial=d; return true;
 }
 /* ---- Stage 8, implementation PR 8D (decision 249 (a); docs/STAGE8_SPEC.md sections 8.4, 10 and 16): the figure blocks culled by their own
@@ -1565,26 +1891,31 @@ function animMesh(m){
      limbers), when its count changes (showBattalions, stdCount) or its geometry; so whoever renders, whenever, the test reads current bounds,
      and an idle block costs one compare (CULL.frame counts the tests, the culled, the refreshes, their instances and time);
    - the shared geometries' own bounds are never written (the kit's and the gear's geometries are shared by every block of their class): each
-     geometry's sphere is read once into CULL.geo;
+     geometry's sphere is read once into CULL.geo (since 8E's prerequisite keyed by its position attribute, again if that attribute's version
+     moves), and its animation's envelope from animEnv;
+   - since 8E's prerequisite (the audit of 8D) the bounds are also refreshed when the mesh's geometry, that geometry's position or part
+     attribute (object or version) or the animation's definition (ANIM.ver) differ from the ones they were computed from, and the envelope is
+     read again at each refresh: before, cullBlock read it once, so a mesh given a geometry with a larger envelope kept the smaller one;
    - a mesh with no instance to draw (a count of 0: a cloth whose standards are not shown) is culled: before 8D three issued no draw call for
      it (none for no instances) but set its program and buffers up in every pass;
    - nothing else reads it: visible, the selection, the map layer, the dossiers, the history and the simulation are untouched, and the checks
      that read the blocks (the figures' seating, 6C, 6D) read every block, drawn or not.
    CULL.on false (setCull; a measurement switch, as CONF.none: the app never sets it) draws every block in both passes, as before 8D */
-var CULL={on:true, meshes:[], geo:{}, tmp:new Float32Array(1024), frame:{tests:0, culled:0, refresh:0, inst:0, ms:0}, total:{refresh:0, inst:0, ms:0}};
+var CULL={on:true, meshes:[], geo:new WeakMap(), tmp:new Float32Array(1024), frame:{tests:0, culled:0, refresh:0, inst:0, ms:0}, total:{refresh:0, inst:0, ms:0}};
 var _cullS=THREE.Sphere?new THREE.Sphere():null;
-/* a geometry's own sphere (its box's centre, its farthest vertex), read once */
+/* a geometry's own sphere (its box's centre, its farthest vertex), read once for its position attribute (again if that attribute's version moves) */
 function cullGeo(g){
-  var s=CULL.geo[g.uuid]; if(s) return s;
-  var A=g.attributes.position.array, n=A.length/3, lo=[1e30,1e30,1e30], hi=[-1e30,-1e30,-1e30], i, k;
+  var Pa=g.attributes.position, s=CULL.geo.get(Pa); if(s&&s.pv===Pa.version) return s;
+  var A=Pa.array, n=A.length/3, lo=[1e30,1e30,1e30], hi=[-1e30,-1e30,-1e30], i, k;
   for(i=0;i<n;i++) for(k=0;k<3;k++){ var v=A[i*3+k]; if(v<lo[k]) lo[k]=v; if(v>hi[k]) hi[k]=v; }
   var c=[(lo[0]+hi[0])/2,(lo[1]+hi[1])/2,(lo[2]+hi[2])/2], r2=0;
   for(i=0;i<n;i++){ var dx=A[i*3]-c[0], dy=A[i*3+1]-c[1], dz=A[i*3+2]-c[2]; r2=Math.max(r2,dx*dx+dy*dy+dz*dz); }
-  return (CULL.geo[g.uuid]={c:c, r:Math.sqrt(r2)});
+  s={c:c, r:Math.sqrt(r2), pv:Pa.version}; CULL.geo.set(Pa,s); return s;
 }
-/* the mesh's sphere over its first count instances, in the mesh's frame */
+/* the mesh's sphere over its first count instances, in the mesh's frame, widened by its geometry's envelope as it is now (animEnv) */
 function cullRefresh(m,cl){
-  var t0=performance.now(), G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), gx=G.c[0], gy=G.c[1], gz=G.c[2], rr=G.r+cl.env;
+  var t0=performance.now(), g=m.geometry, Pa=g.attributes.position, K=g.attributes.aPart||null; cl.env=animEnv(g);
+  var G=cullGeo(g), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), gx=G.c[0], gy=G.c[1], gz=G.c[2], rr=G.r+cl.env;
   if(CULL.tmp.length<n*4) CULL.tmp=new Float32Array(n*8);
   var X=CULL.tmp, lx=1e30, ly=1e30, lz=1e30, hx=-1e30, hy=-1e30, hz=-1e30, i;
   for(i=0;i<n;i++){ var o=i*16, e0=A[o], e1=A[o+1], e2=A[o+2], e4=A[o+4], e5=A[o+5], e6=A[o+6], e8=A[o+8], e9=A[o+9], e10=A[o+10];
@@ -1595,12 +1926,20 @@ function cullRefresh(m,cl){
   var cx=(lx+hx)/2, cy=(ly+hy)/2, cz=(lz+hz)/2, R=0;
   for(i=0;i<n;i++){ var d=Math.sqrt((X[i*4]-cx)*(X[i*4]-cx)+(X[i*4+1]-cy)*(X[i*4+1]-cy)+(X[i*4+2]-cz)*(X[i*4+2]-cz))+X[i*4+3]; if(d>R) R=d; }
   if(n>0) cl.s.center.set(cx,cy,cz); else cl.s.center.set(0,0,0);
-  cl.s.radius=n>0?R:-1; cl.ver=m.instanceMatrix.version; cl.n=m.count; cl.g=m.geometry;
+  cl.s.radius=n>0?R:-1; cl.ver=m.instanceMatrix.version; cl.n=m.count; cl.g=g;
+  cl.P=Pa; cl.pv=Pa.version; cl.K=K; cl.kv=K?K.version:-1; cl.av=ANIM.ver;
   var dt=performance.now()-t0; CULL.frame.refresh++; CULL.frame.inst+=n; CULL.frame.ms+=dt; CULL.total.refresh++; CULL.total.inst+=n; CULL.total.ms+=dt;
 }
-/* three's frustum test for a mesh with its own bounds: refreshed if its instances changed, then its sphere through its world matrix */
+/* the bounds out of date: the instances (their matrices' version, their count) or what the sphere and the envelope are computed from (the
+   geometry, its position and part attributes as objects and versions, the animation's definition) differ from the ones they were made from */
+function cullStale(o,cl){
+  if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count||cl.g!==o.geometry||cl.av!==ANIM.ver) return true;
+  var at=o.geometry.attributes, Pa=at.position, K=at.aPart||null;
+  return cl.P!==Pa||cl.pv!==Pa.version||cl.K!==K||cl.kv!==(K?K.version:-1);
+}
+/* three's frustum test for a mesh with its own bounds: refreshed if stale, then its sphere through its world matrix */
 function cullTest(fr,o,cl){
-  if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count||cl.g!==o.geometry) cullRefresh(o,cl);
+  if(cullStale(o,cl)) cullRefresh(o,cl);
   CULL.frame.tests++;
   if(cl.n<=0){ CULL.frame.culled++; return false; }
   _cullS.copy(cl.s).applyMatrix4(o.matrixWorld);
@@ -1614,7 +1953,7 @@ function cullTest(fr,o,cl){
 function cullBlock(g,id){
   if(!_cullS) return;
   g.traverse(function(o){ if(!o.isInstancedMesh) return; animMesh(o);
-    o.userData.cull={s:new THREE.Sphere(), ver:-1, n:-1, g:null, env:animEnv(o.geometry), id:id};
+    o.userData.cull={s:new THREE.Sphere(), ver:-1, n:-1, g:null, P:null, pv:-1, K:null, kv:-1, av:-1, env:0, id:id};
     o.frustumCulled=CULL.on; CULL.meshes.push(o); });
 }
 function setCull(on){ CULL.on=!!on; CULL.meshes.forEach(function(m){ m.frustumCulled=CULL.on; }); requestRender(2); }
@@ -5215,7 +5554,8 @@ function paintLegend(){
           routes:!!ROUTES.shown,   /* Stage 5F: the ordered routes */
           /* Stage 6C (sections 4.3, 6.4): what the figures and the standards are, wherever figures are drawn; the name's side mark
              wherever the landscape draws names */
-          figures:land&&!isTrueScale(), standards:land&&!isTrueScale(), sidemark:mode==="terrain"&&textOn()};
+          figures:land&&!isTrueScale(), standards:land&&!isTrueScale(), sidemark:mode==="terrain"&&textOn(),
+          gait:land&&!isTrueScale()};   /* Stage 8, 8E (decision 244 (a)): wherever figures are drawn, what their step is */
   on.badge=on.badge||(mode==="terrain"&&textOn());
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
@@ -5341,18 +5681,38 @@ var smokeT=0;
 var MAJOR_FEATURES={pratzen:1,vinohrady:1,pratzeberg:1,santon:1,zuran:1,goldbach:1,
   litava:1,austerlitz:1,telnitz:1,sokolnitz:1,augezd:1,satschan:1};
 var _evTicks=[], EV_BAR={GAP:5, TOP:1, STEP:2.5, lanes:0};   /* Stage 5C: the bars' lanes (minutes between bars in a lane; px) */
-var faceCache={};
+/* S-5 (docs/FINAL_AUDIT.md; Stage 8, implementation PR 8E): a formation that is not marching faces the nearest enemy as placed at one clock of
+   its own, faceClock: the start of the phase or of its halt (the arrival at the anchor it stands on), whichever is later. Until 8E the facing
+   was cached per phase at the first clock visited in it, so it depended on the path to the clock (ten cases by more than 30 degrees, Bagration
+   in "The wheel" by 178); now it is a function of the clock alone, and is the facing the day showed when played through (a halt begun inside
+   a phase faced from its arrival, one carried across a phase's start from that start). The block still wheels to it at its arm's rate (WHEEL),
+   as before */
+var faceCache={}, _efT={}, _efV={};   /* _efT, _efV: each formation's facing at the clock it was last asked at, so that nothing is computed or allocated while the clock stands */
+function faceClock(id,t){
+  var p0=PHASES[phaseAt(t)].t0, L=FORMATIONS[id]&&FORMATIONS[id].track?legAt(id,t):null;
+  var tc=L&&L.a&&L.a.arr!==undefined?Math.max(p0,L.a.arr):p0;
+  return tc>t?p0:tc;
+}
+/* a formation's place at clock t (posNow's, at another clock) */
+function posAtT(id,t){
+  var f=FORMATIONS[id];
+  if(f.track) return (goneAt(id,t)||notYetAt(id,t))?null:posAtClock(id,t);
+  var ls=leavesOf(id,[]), sx=0,sy=0,n=0;
+  ls.forEach(function(k){ var p=(goneAt(k,t)||notYetAt(k,t))?null:posAtClock(k,t); if(p){ sx+=p[0]; sy+=p[1]; n++; } });
+  return n?[sx/n,sy/n]:null;
+}
 function enemyFacing(id){
-  var key=curPhase+"|"+id;
-  if(faceCache[key]!==undefined) return faceCache[key];
-  var f=FORMATIONS[id], me=posNow(id), r=null;
+  if(_efT[id]===clock) return _efV[id];
+  var tc=faceClock(id,clock), key=tc+"|"+id;
+  if(faceCache[key]!==undefined){ _efT[id]=clock; return (_efV[id]=faceCache[key]); }
+  var f=FORMATIONS[id], me=posAtT(id,tc), r=null;
   if(me){
     var best=null, bd=1e9;
     Object.keys(units).forEach(function(k){
       var g2=FORMATIONS[k];
       if(g2.arm==="hq") return;
       if((g2.nation==="fr")===(f.nation==="fr")) return;
-      var q=posNow(k); if(!q) return;
+      var q=posAtT(k,tc); if(!q) return;
       var dd=(q[0]-me[0])*(q[0]-me[0])+(q[1]-me[1])*(q[1]-me[1]);
       if(dd<bd){ bd=dd; best=q; }
     });
@@ -5361,17 +5721,150 @@ function enemyFacing(id){
       r=Math.atan2(b[0]-a[0], b[1]-a[1]);
     }
   }
-  faceCache[key]=r; return r;
+  faceCache[key]=r; _efT[id]=clock; _efV[id]=r; return r;
 }
 /* Different arms carry different mass, so they wheel at different rates. */
 var WHEEL={cav:0.085, mixed:0.062, inf:0.050, guard:0.050, art:0.028, hq:0.10};
+/* ---- Stage 8, implementation PR 8E (decision 244 (a); docs/STAGE8_SPEC.md sections 4.3 and 17): the gait, the clock's ----
+   A visual convention for symbolic figures under compressed time (decision 244's words): the march is seen as a march; the feet still slide
+   over the ground, by the ratio of the figures' scale to the clock's, and no footstep is matched to the ground. Every number here is DESIGN:
+   - the phase: the distance the formation's modelled track has covered at the clock (gaitDist: every leg reached in full, the current one to
+     the clock's fraction, in map units) over a stride (STRIDE: 6.6 map units a cycle of two steps for men, 16 for the cavalry's and the
+     officers' horses, 12 for the teams; section 4.3's), so that a paused clock holds the pose, a halted formation does not step, and a clock
+     shows one pose however it was reached; a formed body steps together, each horse on its own beat (aPh, fixed per horse), a rider and a
+     driver on his horse's;
+   - the wheels: turned by the teams' distance, ROLL spoke intervals of the gun's wheel a cycle, the limber's by the two wheels' sourced
+     heights (so the two roll together; much slower than rolling without slip, as the feet slide), drawn within one spoke's interval (each
+     wheel repeats every interval: kitWheel), so the drawn turn never steps more than half an interval a frame below the fade's limit;
+   - the amplitude: none under reduced motion, on a halted formation or on a leg under KMH (1 km/h: a drift between anchors, not a march,
+     which the gait must not animate, section 4.3); else full while the formation's fastest-cycling part (its men, else its horses) makes at
+     most FULL cycles a second on screen at the clock's present rate (none paused or in the dwell's hold, the dwell's ease counted), none from
+     NONE, in proportion between: a formation's parts fade together. Eased (EASE of the way a 60th of a second of real time: nine tenths in
+     0.15 s, within EPS in about half a second), then idle; under reduced motion at once. The rate is the cadence of the parts drawn now
+     (gaitFastest: a limbered battery's teams, its gunners being drawn with the deployed guns). The wheels turn at their distance's angle
+     while the amplitude is above 0 and stand at rest (angle 0, which their symmetry makes the nearest spoke's) once it is 0: one turn of at
+     most half a spoke's interval as the fade ends (an angle scaled down with the fade would step back by a fraction of an interval at
+     every interval);
+   - the trot: above TROT_KMH of modelled speed, eased in the same way;
+   - the slopes: each man's and horse's own (aSl, written at each seating of a formation the gait animates, in view or not: two chords of the
+     drawn ground along the way he faces from where he stands, over his feet's travel, a man's ahead of him and behind him, a horse's to his
+     fore and to his hind hooves' far edges: layoutFigs), so a ring of riders on a knoll, a team turned to the rear or a gunner at his post
+     plants as a file facing the front does. */
+var GAIT={STRIDE:{man:6.6, horse:16, team:12}, ROLL:2, FULL:3.2, NONE:4.8, KMH:1, TROT_KMH:8, EASE:0.22, EPS:1e-3,
+  REACH:{man:0.3, horse:0.3},   /* the slopes' reach beyond a man's rest point and a horse's hooves' (layoutFigs: the slopes): their travel at full swing */
+  SLOPE_STEP:0.1, SLOPE_TURN:0.01,   /* while the clock moves, the slopes taken again once a block has moved a tenth of a unit (a third of the reach) or
+                                        turned by about a degree (the quaternion's components' summed change) */
+  noSlopes:false};   /* a measurement switch the app never sets (tools/stage8/cost-8e.js: the seating's cost without the slopes) */
+/* the clock's rate now, in clock minutes a real second: Play's (MIN_PER_SEC x speed), slowed in a dwell's ease, none in its hold or paused */
+function clockRate(){
+  if(!playing) return 0;
+  var v=MIN_PER_SEC*speed, st=DWELL.st; if(!st) return v;
+  var lim=st.stage==="hold"?DWELL.HOLD:st.te, k=lim>0?Math.min(1,st.tau/lim):1;
+  return st.stage==="in"?v*(1-k):st.stage==="hold"?0:v*k;
+}
+/* the distance (map units) the formation's modelled track has covered at clock t: the legs reached in full and the current one to its fraction */
+function gaitDist(id,t){ var f=FORMATIONS[id]; return gaitDistOf(id,f&&f.track?legAt(id,t):null); }
+function gaitDistOf(id,L){
+  if(!L) return 0; var f=FORMATIONS[id], A=anchorList(id), C=f._gaitCum;
+  if(!C){ C=[0]; for(var i=1;i<A.length;i++){ var a=A[i-1], b=A[i]; C.push(C[i-1]+(a.p&&b.p?legPath(a,b).len:0)); } f._gaitCum=C; }
+  var ia=A.indexOf(L.a); if(ia<0) return 0;
+  return C[ia]+(L.b&&L.u>0?legPath(L.a,L.b).len*L.u:0);
+}
+/* the leg the formation marches at clock t: its rate in map units a clock minute and km/h; null when it does not march (marchRate's rule) */
+function gaitLeg(id,t){ return gaitLegOf(legAt(id,t)); }
+function gaitLegOf(L,out){
+  if(!L||!L.b||!(L.u>0&&L.u<1)) return null;
+  var w=L.w||legWindow(L.a,L.b), min=w[1]-w[0], len=legPath(L.a,L.b).len;
+  if(!(min>0)||len*KM_PER_MAP<0.02) return null;
+  out=out||{}; out.mpm=len/min; out.kmh=len*KM_PER_MAP/(min/60); return out;   /* out: the caller's own object (gaitStep's), so that a frame allocates none */
+}
+/* the wheels' drawn angles at distance D (map units): within one spoke's interval, about 0 */
+function gaitRoll(D,out){
+  var G=ANIM.WHEEL[20], L=ANIM.WHEEL[21], a=D/GAIT.STRIDE.team*GAIT.ROLL*2*Math.PI/G.n, b=a*G.r/L.r, pg=2*Math.PI/G.n, pl=2*Math.PI/L.n;
+  a-=pg*Math.round(a/pg); b-=pl*Math.round(b/pl); out[0]=a; out[1]=b; return out;
+}
+var _gv=new THREE.Vector3(), _gr=[0,0], _glo={mpm:0, kmh:0};
+/* the block's gait at the clock, its uniforms written to each of its kit meshes (the one writer of the gait's uniforms; the self-test's
+   checks set them on meshes of their own). u.gait is made on the block's first frame: its kit meshes by kind */
+function gaitStep(rec,id){
+  var u=rec.block.userData; if(!u) return;
+  var G=u.gait;
+  if(!G){ G=u.gait={meshes:[], fastest:0, amp:0, trot:0, want:0, trotW:0, c:0, drawn:-1, t:null, rate:null, rm:null, fv:0};
+    rec.block.traverse(function(o){ if(o.isInstancedMesh&&o.userData.anim&&o.userData.gaitKind) G.meshes.push(o); });
+    G.meshes.forEach(function(m){ var st=GAIT.STRIDE[m.userData.gaitKind==="gear"?"team":m.userData.gaitKind]; if(st&&(!G.fastest||st<G.fastest)) G.fastest=st; }); }
+  if(!G.meshes.length) return;
+  var rate=clockRate(), fv=gaitFastest(rec,G);
+  /* nothing changed since the last frame (the clock, its rate, reduced motion and the parts drawn the same, the amplitude and the trot arrived,
+     no slope left behind at a still clock): nothing computed, written or allocated, as when only the eye moves */
+  if(G.t===clock&&G.rate===rate&&G.rm===RM&&G.fv===fv&&G.amp===G.want&&G.trot===G.trotW&&!(u.slopeStale&&rate===0)) return;
+  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv;
+  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L,_glo):null, want=0, trot=0, c=0;
+  if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=rate*lg.mpm/fv; want=clamp01((GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL)); trot=lg.kmh>GAIT.TROT_KMH?1:0; }
+  G.want=want; G.c=c; G.trotW=trot;
+  if(want===0&&G.amp===0&&G.trot===0&&G.drawn===0) return;   /* at rest, its uniforms at rest already: nothing to write */
+  if((want>0||G.amp>0)&&!GAIT.noSlopes&&u.layout&&(!u.slopeSeat||(u.slopeStale&&rate===0))) u.layout(u.sw,u.sd);   /* the slopes written as the gait begins, and taken again where the clock stopped with them behind (layoutFigs) */
+  var e=RM?1:ease(GAIT.EASE);   /* under reduced motion what moves stops at once (S-6), the gait with it */
+  if(G.amp!==want){ G.amp+=(want-G.amp)*e; if(Math.abs(want-G.amp)<GAIT.EPS) G.amp=want; else settling=true; }
+  if(G.trot!==trot){ G.trot+=(trot-G.trot)*e; if(Math.abs(trot-G.trot)<GAIT.EPS) G.trot=trot; else settling=true; }
+  var amp=G.amp, D=amp>0?gaitDistOf(id,L):0; G.drawn=amp;
+  if(amp>0) gaitRoll(D,_gr);
+  for(var i=0;i<G.meshes.length;i++){ var m=G.meshes[i], U=m.userData.anim, k=m.userData.gaitKind, st=GAIT.STRIDE[k==="gear"?"team":k], x=st?D/st:0;
+    U.uAnimAmp.value=amp; U.uAnimPhase.value=amp>0?2*Math.PI*(x-Math.floor(x)):0; U.uAnimTrot.value=amp>0?G.trot:0;
+    U.uAnimRollG.value=amp>0?_gr[0]:0; U.uAnimRollL.value=amp>0?_gr[1]:0; }
+}
+/* the shortest stride among the formation's parts drawn now (its meshes whose groups are shown: a battery's crew stands with the deployed
+   guns, so a limbered battery's gait is its teams'), else among all its parts; a loop over the block's few kit meshes, nothing allocated */
+function gaitFastest(rec,G){ var f=0;
+  for(var i=0;i<G.meshes.length;i++){ var m=G.meshes[i], a=m; while(a&&a!==rec.block&&a.visible) a=a.parent; if(a!==rec.block) continue;
+    var st=GAIT.STRIDE[m.userData.gaitKind==="gear"?"team":m.userData.gaitKind]; if(st&&(!f||st<f)) f=st; }
+  return f||G.fastest; }
+/* ---- Stage 8, implementation PR 8E (decision 242 (a); docs/STAGE8_SPEC.md sections 8.2-8.4 and 17): the kit's level of detail ----
+   A block draws the rich kit while it stands in the eye's view and a man of it stands at least IN CSS pixels high on the screen at its
+   nearest point to the eye, and the simple kit (6C's) once he is under OUT, or the block leaves the view: 16 px with a margin each way, so that
+   a view at rest or moving slowly near the threshold never toggles. Measured through the camera: the block's box (the extent its men and
+   pieces are seated over and the heights they stand at, ud.ext, kept by layoutFigs, widened by M units and H high, through the block's own
+   position, tilt, turn and scale)
+   tested against the camera's frustum, and its nearest corner's depth along the view taken for the man's (the man to his hat's top, H units,
+   by the block's scale, through the camera's own projection, the view offset counted: KLOD.k), or where larger a man's height projected
+   exactly at a corner of its base (the perspective stretches him toward the view's edges). A block out of view keeps the simple kit, so
+   that the shadow pass, which draws the blocks the sun's box holds wherever the eye looks, does not pay for detail nobody sees. All of a
+   block's kit meshes switch together, each to the other geometry of its own pair (the same class, colours, parts and phase offsets: kitWrap),
+   so nothing is drawn twice or lost; the culling bounds follow the geometry (cullStale); nothing is allocated */
+var KLOD={IN:17.6, OUT:14.5, H:1.635, M:0.6, k:0, n:0};
+var _kd=new THREE.Vector3(), _ks=new THREE.Vector2(), _kF=new THREE.Frustum(), _kM=new THREE.Matrix4(), _kB=new THREE.Box3(), _kMb=new THREE.Matrix4(), _kC=new THREE.Vector3(),
+    _kP=new THREE.Vector3(), _kQ=new THREE.Vector3(), _kU=new THREE.Vector3();
+function kitLodFrame(){
+  var P=camera.projectionMatrix.elements;
+  KLOD.k=camera.isPerspectiveCamera?P[5]*renderer.getSize(_ks).y/2:0;   /* px a unit at unit depth: the canvas's CSS height over the projection's */
+  KLOD.w=_ks.x/2; KLOD.h=_ks.y/2;
+  camera.updateMatrixWorld(); camera.getWorldDirection(_kd);
+  _kF.setFromProjectionMatrix(_kM.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse));
+}
+function kitLod(rec){
+  var u=rec.block.userData; if(!u||!u.lod||!u.lod.length) return;
+  var rich=false, X=u.ext;
+  if(KLOD.k>0&&X&&X[1]>=X[0]){ var b=rec.block, sc=b.scale.x||1, m=KLOD.M, dmin=1e9;
+    _kMb.compose(b.position,b.quaternion,b.scale); _kB.makeEmpty();
+    var pc=0; _kU.set(0,KLOD.H*sc,0);
+    for(var i=0;i<8;i++){ _kC.set((i&1)?X[1]+m:X[0]-m,(i&2)?X[5]+KLOD.H+m:X[4]-m,(i&4)?X[3]+m:X[2]-m).applyMatrix4(_kMb); _kB.expandByPoint(_kC);
+      var dp=(_kC.x-camera.position.x)*_kd.x+(_kC.y-camera.position.y)*_kd.y+(_kC.z-camera.position.z)*_kd.z; if(dp<dmin) dmin=dp;
+      /* at a bottom corner in front of the eye, a man's height projected exactly: the view's perspective stretches him toward its edges */
+      if(!(i&2)&&dp>camera.near){ _kP.copy(_kC).project(camera); _kQ.copy(_kC).add(_kU).project(camera); pc=Math.max(pc,Math.hypot((_kQ.x-_kP.x)*KLOD.w,(_kQ.y-_kP.y)*KLOD.h)); } }
+    var px=Math.max(KLOD.H*sc*KLOD.k/Math.max(camera.near,dmin),pc);
+    u.inView=_kF.intersectsBox(_kB); u.lodPx=px; rich=u.inView&&(u.lodRich?px>=KLOD.OUT:px>=KLOD.IN); }
+  if(rich!==u.lodRich) kitLodSet(u,rich);
+}
+function kitLodSet(u,rich){
+  u.lodRich=rich; KLOD.n++;
+  u.lod.forEach(function(m){ var L=m.userData.lod; m.geometry=rich?L.r:L.s; var U=m.userData.anim; if(U) U.uAnimKnee.value=rich?1:0; });
+}
 /* lay the block's yaw onto the slope, and re-seat its men when it has moved or turned */
 var _up=new THREE.Vector3(0,1,0), _nrm=new THREE.Vector3(), _qt=new THREE.Quaternion(), _qy=new THREE.Quaternion();
 /* Called after poseBlock, once this frame's position, scale, yaw and deployment are known. The
    men are re-seated whenever anything that moves them in the world has changed - position, tilt,
    yaw, block scale (highlight dimming, hybrid mode) or deployment - and never otherwise, so an
    idle block costs nothing. */
-var SEAT_STATS={blocks:0};
+var SEAT_STATS={blocks:0, slopes:0, want:0};   /* Stage 8, 8E: slopes, the seatings that took the slopes; want, those of a formation the gait animates (tools/stage8/cost-8e.js, the self-test) */
 function settleBlock(rec){
   var b=rec.block, p=b.position, u=b.userData;
   var e=1.6;
@@ -5519,6 +6012,7 @@ function updateVisibility(){
   var showBlocks = mode!=="staff";
   var labels = textOn();
   lodEch = wantCorps?"corps":"div";
+  kitLodFrame();   /* Stage 8, 8E: the kit's level of detail, through this frame's camera */
   /* Stage 5B: which grades are drawn on screen (the legend's rows), and the paper map's cap on a mark's size on screen */
   var confShown={A:false,B:false,C:false,side:false}, confCap=0, lineShown={fr:false,al:false,sel:false,A:false,B:false,C:false};
   /* Stage 8, 8B (decision 239): the selected formation, or a selected corps's formations, outlined in the selection accent */
@@ -5558,7 +6052,7 @@ function updateVisibility(){
     rec.block.visible = showBlocks && !!p && !trueScale && !unc && !ownEye;
     var dimmed = highlight && !highlight[id];
     rec.block.scale.setScalar(1.25*(mode==="hybrid"?0.86:1)*(dimmed?0.80:1));
-    if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
+    if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); kitLod(rec); gaitStep(rec,id); }   /* Stage 8, 8E */
     /* the ground mark (Stage 5B, section A.4): at 1x on the landscape the true-scale footprint (decision 34); on the paper map the grade's
        mark under the counters while "Position confidence" is on there (decision 85, kept there by decision 239). rec.foot is the 1x mark,
        rec.conf every other filled mark. Stage 8, implementation PR 8B (decision 239): at 1x the footprint is drawn by its grade whatever the
@@ -7813,6 +8307,36 @@ function troopNotes(){
     "Side and nation are carried by the counters, the marks beside the names and the marks on the ground, never by a coat"+(ex.length?": "+ex.join(" and "):"")+". With Position confidence off, a footprint in the side's colour stays under every formation drawn as figures."
   ];
 }
+/* Stage 8, implementation PR 8E (decisions 242 (a), 243 (a), 244 (a)): the sources sheet's notes on the guns and on the troops' step. Their
+   historical values are read from the table (ORDNANCE, APPEARANCE_SOURCES, FORMATIONS: roadmap step 2's D-5 (b) rule), the design values from
+   KLOD and GAIT; the step described as decision 244 asks, a visual convention for symbols under compressed time */
+function artilleryNotes(){
+  var MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"], F=ORDNANCE.fr, S=APPEARANCE_SOURCES, w=F.wheels, d=(F.drivers||[])[0], src=function(k){ var x=S[k]; return x?x.au.split(" (")[0]+" ("+x.d+")":k; };
+  var dp=d&&d.dated?d.dated.split("-").map(Number):null, when=dp?dp[2]+" "+MONTHS[dp[1]-1]+" "+dp[0]:"", corps=d&&FORMATIONS[d.corps]?FORMATIONS[d.corps].name:"";
+  /* the batteries as drawn: with their limbers and teams, and with drivers (artDrivers' claim) */
+  var teams=[], drv=[]; Object.keys(units).forEach(function(id){ var A=units[id].block&&units[id].block.userData.art; if(!A) return; teams.push(FORMATIONS[id].name); if(A.drivers>0) drv.push(FORMATIONS[id].name); });
+  return [
+    "Guns: a generic field piece of Gribeauval's system (no calibre or model is claimed: which pieces stood where on the day is not read), its wheels and its limber's at the heights "+
+      src(w.src)+" gives ("+w.gun_m.toFixed(2)+" m and "+w.limber_m.toFixed(2)+" m), drawn at the figures' scale; the piece's chest between the trail's cheeks on the move and on its "+
+      "limber in action ("+src(F.coffret.src)+"). "+(teams.length?"The batteries drawn with their limbers and teams ("+teams.join(", ")+") have, in action, each piece's limber and team behind it; "+
+      F.team.n+" horses a drawn gun: a drawn gun stands for two pieces, so the count is a symbol. ":"")+"The carriages are drawn in one colour for every army.",
+    d&&drv.length?"Drivers are drawn for "+drv.join(", ")+" alone, drawn as the artillery of "+corps+": the order of "+when+" to the divisions of "+corps+" ("+src(d.src)+") allowed their artillery teams one "+
+      "train soldier a vehicle; that these teams were among them and that the order still held on 2 December are not shown, so the drawing is an inference, the driver on the near wheel "+
+      "horse (which horse: a design value). Guns of the Guard listed with them are outside the order and are not drawn as figures; where no source read reaches a battery, no driver is drawn.":null,
+    "A battery changes between deployed and limbered at once: no source read gives how long limbering took. The gunners are drawn with the deployed battery."
+  ].filter(Boolean);
+}
+function gaitNotes(){
+  return [
+    "Marching formations step: the legs swing with the distance the formation's modelled track has covered by the clock, so a paused clock holds the pose and a minute shows one "+
+      "pose however it was reached. The step is a visual convention for symbols under compressed time, not footsteps matched to the ground: the figures still slide over it.",
+    "The step is drawn in full while a formation's men make up to "+GAIT.FULL+" cycles of two steps a second on screen, not from "+GAIT.NONE+" (at faster playback), and fades "+
+      "between; it is not drawn for a halted formation, for one moving under "+GAIT.KMH+" km/h or under reduced motion. Horses walk, and trot above "+GAIT.TROT_KMH+" km/h of "+
+      "modelled speed; the guns' wheels turn with their teams. The stride, the swing and these thresholds are design values.",
+    "Close to the eye (a man about 16 pixels high or more on screen) the figures are drawn in more parts, their knees bending, in the same colours and to the same height; "+
+      "farther off in the simpler kit."
+  ];
+}
 /* Stage 6D: the sources sheet's "How the standards are drawn", from COLOURS_CARRIED, STANDARD_MEASURES and the blocks as drawn. Roadmap
    step 2 (docs/FINAL_AUDIT.md D-5): its historical values are read, not typed: the Austrian infantry's disputed count and its model (with
    its source, without a trailing period claim), the statures' dates, and the cloths of the standards as drawn (kitStdShape's S.cloth: the
@@ -8012,6 +8536,9 @@ function openSources(o){
     /* Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 6): how the troops are drawn, counted from appearance.js and KIT */
     '<h3>How the troops are drawn</h3><ul class="bul">'+troopNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     '<h3>How the standards are drawn</h3><ul class="bul">'+standardNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
+    /* Stage 8, 8E (decisions 243 (a), 244 (a)) */
+    '<h3>How the guns are drawn</h3><ul class="bul">'+artilleryNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
+    '<h3>How the troops move</h3><ul class="bul">'+gaitNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     '<h3>The works read here (for the appearance table and the statements\' claims)</h3><ul class="bul">'+Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];
       return '<li>'+esc(S.au+", "+S.ti+" ("+S.pub+", "+S.d+")")+'</li>'; }).join('')+'</ul>'+
     '<h3 id="claims-index">The statements\' claims</h3>'+claimsIndex()+
@@ -11792,8 +12319,17 @@ var AUSTERLITZ_DEBUG=(function(){
       function grab(){ renderFrame(); var w=gl.drawingBufferWidth, h=gl.drawingBufferHeight, b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
       function diff(a,b){ if(!a||!b||a.length!==b.length) return -1; var n=0; for(var i=0;i<a.length;i+=4) if(a[i]!==b[i]||a[i+1]!==b[i+1]||a[i+2]!==b[i+2]) n++; return n; }
       function frEye(){ camera.updateMatrixWorld(); return eyeF.setFromProjectionMatrix(M4.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse)); }
-      /* each instance's own sphere in the world (its geometry's, through its matrix and the mesh's, widened by the envelope) */
-      function eachInst(m,cb){ var G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), env=m.userData.cull.env, ms=m.matrixWorld.getMaxScaleOnAxis();
+      /* the test's own envelope of a geometry (since 8E's prerequisite, the audit of 8D: not the one the bounds were made with): the largest
+         displacement of any vertex over every pose the hook allows (animPoses: 32 phases at amp 1, the slope, the trot, the knee and the wheels at
+         their extremes), by animAt, the hook's arithmetic; keyed by the attributes themselves (a mesh's own geometry shares its kit's) */
+      var envT=new Map(), eo8=[0,0,0];
+      function envO(g){ var K=g.attributes.aPart; if(!K) return 0; var Pa=g.attributes.position, c=envT.get(K);
+        if(c&&c.av===ANIM.ver&&c.P===Pa&&c.pv===Pa.version&&c.kv===K.version) return c.e;
+        var P=Pa.array, KA=K.array, e=0; for(var v=0;v<KA.length;v++){ var x=P[v*3], y=P[v*3+1], z=P[v*3+2];
+          animPoses(Math.round(KA[v]),x,y,z,32,function(q){ var d=Math.hypot(q[0]-x,q[1]-y,q[2]-z); if(d>e) e=d; },eo8); }
+        envT.set(K,{e:e,av:ANIM.ver,P:Pa,pv:Pa.version,kv:K.version}); return e; }
+      /* each instance's own sphere in the world (its geometry's, through its matrix and the mesh's, widened by the envelope: the test's own) */
+      function eachInst(m,cb){ var G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), env=envO(m.geometry), ms=m.matrixWorld.getMaxScaleOnAxis();
         for(var i=0;i<n;i++){ Mi.fromArray(A,i*16); S1.center.set(G.c[0],G.c[1],G.c[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); S1.radius=(G.r+env)*Mi.getMaxScaleOnAxis()*ms; if(cb(i,S1)) return true; } return false; }
       function worldS(m){ var cl=m.userData.cull; return S0.copy(cl.s).applyMatrix4(m.matrixWorld); }
       /* the app's own answer for the eye (through three's frustum test, which refreshes stale bounds) */
@@ -11816,16 +12352,20 @@ var AUSTERLITZ_DEBUG=(function(){
           var tag=" (at "+fmtFactor(fct)+"×)";
           setDisplayFactor(fct); at(570,"terrain","watch"); settle(24,true);
           /* (a) the bounds hold every instance, and the vertices of its first, middle and last instance in the world */
-          var aBad=[], aN=0, aV=0, F0=frEye();
+          var aBad=[], aN=0, aV=0, aA=0, F0=frEye();
           CULL.meshes.forEach(function(m){ drawsFor(F0,m); var cl=m.userData.cull; if(cl.n<=0) return; aN++;
             if(cl.ver!==m.instanceMatrix.version||cl.n!==m.count) aBad.push(cl.id+": its bounds not refreshed");
             var S=worldS(m), R=S.radius*(1+1e-6)+1e-5;
             eachInst(m,function(i,s){ if(S.center.distanceTo(s.center)+s.radius>R){ aBad.push(cl.id+" instance "+i+" outside by "+(S.center.distanceTo(s.center)+s.radius-S.radius).toExponential(2)); return true; } return false; });
-            var P=m.geometry.attributes.position, n=Math.min(m.count,m.instanceMatrix.array.length/16);
+            var P=m.geometry.attributes.position, K=m.geometry.attributes.aPart, n=Math.min(m.count,m.instanceMatrix.array.length/16), ao=[0,0,0];
             [0,Math.floor(n/2),n-1].forEach(function(i){ Mi.fromArray(m.instanceMatrix.array,i*16);
-              for(var v=0;v<P.count;v++){ V0.fromBufferAttribute(P,v).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); aV++; if(V0.distanceTo(S.center)>R){ aBad.push(cl.id+" a vertex of instance "+i+" outside"); break; } } }); });
-          ck("culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geometry's, through its matrix, widened by the animation's envelope) and every vertex of its first, middle and last instance inside the mesh's bounds"+tag,
-            aN>0&&!aBad.length, aN+" meshes with instances of "+CULL.meshes.length+" ("+CULL.meshes.filter(function(m){ return !!m.userData.anim; }).length+" with the kit's parts), "+aV+" vertices in the world"+(aBad.length?"; WRONG: "+aBad.slice(0,4).join("; "):""));
+              for(var v=0;v<P.count;v++){ V0.fromBufferAttribute(P,v).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); aV++; if(V0.distanceTo(S.center)>R){ aBad.push(cl.id+" a vertex of instance "+i+" outside"); break; } }
+              /* since 8E's prerequisite: the same vertices animated (animPoses: four phases at amp 1 with every other uniform at its extremes, the
+                 test's own oracle, not the cached envelope) */
+              if(K) for(var v2=0;v2<P.count;v2++){ var out2=false; animPoses(Math.round(K.array[v2]),P.array[v2*3],P.array[v2*3+1],P.array[v2*3+2],4,function(q){ if(out2) return;
+                V0.set(q[0],q[1],q[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); aA++; if(V0.distanceTo(S.center)>R){ aBad.push(cl.id+" an animated vertex of instance "+i+" outside"); out2=true; } },ao); if(out2) break; } }); });
+          ck("culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geometry's, through its matrix, widened by the animation's envelope) and every vertex of its first, middle and last instance inside the mesh's bounds, at rest and animated (since 8E's prerequisite)"+tag,
+            aN>0&&!aBad.length, aN+" meshes with instances of "+CULL.meshes.length+" ("+CULL.meshes.filter(function(m){ return !!m.userData.anim; }).length+" with the kit's parts), "+aV+" vertices in the world, "+aA+" animated positions"+(aBad.length?"; WRONG: "+aBad.slice(0,4).join("; "):""));
           /* (b) the sweep: a mesh culled only when none of its instances is in the eye's frustum; a block whose centre is out of view with figures in it drawn */
           var bBad=[], views=0, culled=0, tested=0, offC=0, ids=sweepAims();
           function judge(label){ var F=frEye(); views++;
@@ -11931,20 +12471,24 @@ var AUSTERLITZ_DEBUG=(function(){
           if(k&&!seenG[g.uuid]){ seenG[g.uuid]=1; eG++; for(var i=0;i<k.count;i++){ if(!ANIM.PART[Math.round(k.array[i])]){ eBad.push("a vertex of part "+k.array[i]+" in "+((g.userData&&g.userData.kit)||"a geometry")); break; } } }
           if(!k) return; eN++;
           var U=m.userData.anim; if(!U||m.material.userData.anim!==U||!m.customDepthMaterial||m.customDepthMaterial.userData.anim!==U) eBad.push(m.userData.cull.id+": not hooked");
-          else if(U.uAnimAmp.value!==0||U.uAnimPhase.value!==0) eBad.push(m.userData.cull.id+": its uniforms not 0"); });
+          else { var bl=m; while(bl&&!(bl.userData&&bl.userData.body)) bl=bl.parent; var G=bl&&bl.userData.gait;   /* since 8E: the uniforms are the gait's */
+            if(!m.userData.gaitKind) eBad.push(m.userData.cull.id+": a kit mesh without a kind of the gait");
+            else if(G&&G.meshes.indexOf(m)<0) eBad.push(m.userData.cull.id+": a kit mesh outside its block's gait");
+            else if(G&&U.uAnimAmp.value!==G.amp) eBad.push(m.userData.cull.id+": its amplitude "+U.uAnimAmp.value+", its block's "+G.amp); } });
         var K0=figKit(); [K0.infCoat,K0.rider,K0.infFixed,K0.horse,K0.riderFixed].forEach(function(g){ if(!g.attributes.aPart) eBad.push("a kit geometry without parts"); });
         at(LOW.t,"terrain","watch"); settle(24,true); aim(LOW.map,LOW.dir,LOW.r); settle(4,true);
-        var swp=[], so0=renderer.sortObjects, dh=-1, dh2=-1, dS=-1;
+        var swp=[], so0=renderer.sortObjects, dh=-1, dh2=-1, dS=-1, amps=[];
+        CULL.meshes.forEach(function(m){ var U=m.userData.anim; if(U){ amps.push([U,U.uAnimAmp.value]); U.uAnimAmp.value=0; } });   /* since 8E: every amplitude 0, as under reduced motion */
         function swapKit(){ CULL.meshes.forEach(function(m){ if(!m.userData.anim) return; var c=m.material.clone(); c.onBeforeCompile=THREE.Material.prototype.onBeforeCompile; c.userData={};
           swp.push([m,m.material,m.customDepthMaterial]); m.material=c; m.customDepthMaterial=undefined; }); }
         function backKit(){ swp.forEach(function(q){ q[0].material.dispose(); q[0].material=q[1]; q[0].customDepthMaterial=q[2]; }); swp=[]; }
         try{
           renderer.sortObjects=false; grab(); var Ah=grab(); swapKit(); grab(); var Bh=grab(); backKit(); grab(); var Ah2=grab(); dh=diff(Ah,Bh); dh2=diff(Ah,Ah2);
           renderer.sortObjects=true; grab(); var As=grab(); swapKit(); grab(); var Bs=grab(); backKit(); dS=diff(As,Bs);
-        } finally { if(swp.length) backKit(); renderer.sortObjects=so0; }
+        } finally { if(swp.length) backKit(); renderer.sortObjects=so0; amps.forEach(function(q){ q[0].uAnimAmp.value=q[1]; }); }
         if(dh!==0||dh2!==0) eBad.push("the frame with the hooks differs from the frame without them in "+dh+" pixels, the draw order held ("+dh2+" drawn again)");
         if(!(ANIM.built>0&&ANIM.depth>0)) eBad.push("the hook never compiled ("+ANIM.built+" materials, "+ANIM.depth+" depth materials)");
-        ck("animation hooks (decisions 244, 249; for 8E): every vertex of the kit's geometries carries a part of ANIM's table, every kit mesh has the hook on its material and on its own depth material with its two uniforms at 0 (nothing moves in 8D), and the frame with the hooks is the frame without them, pixel for pixel, the draw order held",
+        ck("animation hooks (decisions 244, 249): every vertex of the kit's geometries carries a part of ANIM's table, every kit mesh has the hook on its material and on its own depth material, its amplitude its block's gait's (since 8E), and with every amplitude 0 the frame with the hooks is the frame without them, pixel for pixel, the draw order held",
           !eBad.length&&eN>0, eN+" kit meshes, "+eG+" kit geometries, the hook compiled for "+ANIM.built+" materials and "+ANIM.depth+" depth materials; the low Pratzen view with and without it "+dh+" pixels differing, the draw order held ("+
           dS+" as three sorts them, the clones drawn last: the coplanar faces that order settles)"+(eBad.length?"; WRONG: "+eBad.slice(0,4).join("; "):""));
         /* (f) a controlled deformation: amp 1 at a quarter cycle on the kit meshes of the blocks in view: the figures drawn move (the frame read with
@@ -11959,6 +12503,7 @@ var AUSTERLITZ_DEBUG=(function(){
             if(!rw){ var Fs=sun.shadow.camera, c=new THREE.Vector3(); near.forEach(function(m){ c.add(worldS(m).center); }); c.multiplyScalar(1/near.length).project(Fs);
               rw=Math.min(256,map.width); rh=Math.min(256,map.height); rx=Math.max(0,Math.min(map.width-rw,Math.round((c.x*0.5+0.5)*map.width-rw/2))); ry=Math.max(0,Math.min(map.height-rh,Math.round((c.y*0.5+0.5)*map.height-rh/2))); }
             var b=new Uint8Array(rw*rh*4); renderer.readRenderTargetPixels(map,rx,ry,rw,rh,b); return b; }
+          near.forEach(function(m){ m.userData.anim.uAnimAmp.value=0; m.userData.anim.uAnimPhase.value=0; });   /* since 8E: the rest pose first (the gait may be drawing some of them) */
           var F0p=grab(), S0p=shadowRead();
           near.forEach(function(m){ m.userData.anim.uAnimAmp.value=1; m.userData.anim.uAnimPhase.value=Math.PI/2; });
           var F1p=grab(), S1p=shadowRead(), dmp=[];
@@ -11966,25 +12511,441 @@ var AUSTERLITZ_DEBUG=(function(){
           var F2p=grab(), S2p=shadowRead();
           dmp.forEach(function(q){ q[0].customDepthMaterial=q[1]; }); near.forEach(function(m){ m.userData.anim.uAnimAmp.value=0; m.userData.anim.uAnimPhase.value=0; });
           var F3p=grab(), S3p=shadowRead();
+          Object.keys(units).forEach(function(id){ var G=units[id].block&&units[id].block.userData.gait; if(G){ G.t=null; G.drawn=-1; } });   /* the gait's own uniforms again at the next frame */
           var dF=diff(F0p,F1p), dF2=diff(F0p,F2p), dS=diff(S0p,S1p), dS2=diff(S0p,S2p), dF3=diff(F0p,F3p), dS3=diff(S0p,S3p);
           fT=near.length+" kit meshes in view at amp 1: "+dF+" pixels of the frame and "+dS+" texels of the sun's depth map ("+rw+" x "+rh+" read) move; with the depth materials' hook removed, the shadow at rest, "+dF2+" pixels (the figures alone) and "+dS2+" texels; back at rest "+dF3+" and "+dS3;
           if(!(dF2>0)) fBad.push("the figures did not move"); if(!(dS>0)) fBad.push("the shadow did not move"); if(dS2!==0) fBad.push("the shadow moved without the depth material's hook");
           if(dF3!==0||dS3!==0) fBad.push("not back at rest");
         } else fBad.push(near.length?"no shadow map":"no kit mesh in view");
-        var envBad=0, envN=0, out3=[0,0,0];
-        kitGeos().forEach(function(g){ var P=g.attributes.position, K=g.attributes.aPart; if(!K) return; var e=animEnv(g);
-          for(var ph=0;ph<16;ph++) for(var i=0;i<P.count;i++){ envN++; animAt(Math.round(K.array[i]),P.array[i*3],P.array[i*3+1],P.array[i*3+2],ph/16*Math.PI*2,1,out3);
-            if(Math.hypot(out3[0]-P.array[i*3],out3[1]-P.array[i*3+1],out3[2]-P.array[i*3+2])>e+1e-6) envBad++; } });
+        var envBad=0, envN=0, out3=[0,0,0], envSeen=new Set();
+        kitGeos().concat(gearGeos()).forEach(function(g){ var P=g.attributes.position, K=g.attributes.aPart; if(!K||envSeen.has(K)) return; envSeen.add(K); var e=animEnv(g);   /* since 8E: every pose, the vehicles too */
+          for(var i=0;i<P.count;i++){ var x=P.array[i*3], y=P.array[i*3+1], z=P.array[i*3+2]; animPoses(Math.round(K.array[i]),x,y,z,16,function(q){ envN++;
+            if(Math.hypot(q[0]-x,q[1]-y,q[2]-z)>e+1e-6) envBad++; },out3); } });
         if(envBad) fBad.push(envBad+" vertex positions outside their geometry's envelope");
         ck("animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the depth material's hook the shadow stays the rest pose's), and no vertex of the kit leaves its geometry's envelope, which the culling bounds hold",
-          !fBad.length, fT+"; "+envN+" vertex positions over a cycle at amp 1 within the envelope"+(fBad.length?"; WRONG: "+fBad.join("; "):""));
+          !fBad.length, fT+"; "+envN+" vertex positions over every pose the hook allows (animPoses) within the envelope"+(fBad.length?"; WRONG: "+fBad.join("; "):""));
+        /* (h) Stage 8, 8E's prerequisite (the audit of 8D: cullBlock read the envelope once, so a mesh given a geometry with a larger envelope kept
+           the smaller one, and an animated vertex left its bounds): the bounds follow the geometry drawn and the animation's definition. A mesh of
+           the test's own, the kit's leg (kitFootFixed's box, scaled up so that it covers pixels), bounded and hooked as cullBlock does a block's,
+           is drawn with G1 (every vertex part 10: the bob alone, envelope 0.022) and then G2 (every vertex part 1, the leg's swing: 0.283), then G1
+           again, then under a changed definition (animDefine: part 10's bob five times), then G3 (every vertex part 3, the arm's swing about the
+           shoulder, whose joint stands above the leg's box: 0.352), then G1 with its part attribute rewritten in place to part 3 and back. The oracle is the test's own, not the envelope: every vertex,
+           animated at amp 1 over 64 phases by animAt (the hook's arithmetic in JavaScript), through the mesh's matrices; after each change it must lie
+           inside the bounds three's test reads. And at the boundaries: the mesh is placed, by a search along the eye's frustum's right axis, where G1's
+           bounds lie outside the eye's frustum but G3's swing reaches into it (and likewise along the sun's box; the leg's own swing, G2, stays inside
+           the slack of its box's sphere at any tangent placement, so it cannot make a boundary); there the app must draw it in that
+           pass, the frame (the mesh alone drawn, the rest of the scene hidden) and the sun's depth map must be what culling off draws, and the mesh
+           must cover pixels (texels) there, so that a culled mesh would show */
+        var hBad=[], hT=[], hHid=[], hMesh=null, hGrp=null, hM0=ANIM.MAN, hKeepAmp=null;
+        function hLeg(part){ var P=Array.prototype.slice.call(new THREE.BoxGeometry(0.13,0.62,0.18).translate(-0.09,0.31,0).toNonIndexed().attributes.position.array), g=new THREE.BufferGeometry();
+          g.setAttribute("position",new THREE.Float32BufferAttribute(P,3)); g.setAttribute("aPart",new THREE.Float32BufferAttribute(P.filter(function(_,i){ return i%3===0; }).map(function(){ return part; }),1));
+          g.computeVertexNormals(); return g; }
+        /* the animated vertices of the test's mesh in the world, over every pose the hook allows (animPoses: 64 phases; the oracle); cb(point) true stops */
+        function hEach(m,cb){ var P=m.geometry.attributes.position.array, K=m.geometry.attributes.aPart.array, o=[0,0,0], V=new THREE.Vector3(), stop=false; Mi.fromArray(m.instanceMatrix.array,0);
+          for(var v=0;v<K.length&&!stop;v++) animPoses(Math.round(K[v]),P[v*3],P[v*3+1],P[v*3+2],64,function(q){ if(stop) return; V.set(q[0],q[1],q[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); if(cb(V)) stop=true; },o);
+          return stop; }
+        function hHolds(m,label){ var F=frEye(); F.intersectsObject(m); var S=worldS(m), worst=-1e9; hEach(m,function(V){ worst=Math.max(worst,V.distanceTo(S.center)-S.radius); return false; });
+          hT.push(label+": envelope "+m.userData.cull.env.toFixed(3)+", the farthest animated vertex "+(worst>0?worst.toFixed(4)+" beyond":(-worst).toFixed(4)+" inside")+" the bounds"); if(worst>1e-5) hBad.push(label+": an animated vertex "+worst.toFixed(4)+" outside the bounds"); }
+        try{
+          at(LOW.t,"terrain","watch"); settle(24,true); aim(LOW.map,LOW.dir,LOW.r); settle(4,true);
+          var G1=hLeg(0), G2=hLeg(1), G3=hLeg(3), sc=6;   /* since 8E: G1 rigid (part 0; every man's part rises or dips with the gait) */
+          hMesh=new THREE.InstancedMesh(G1,matte({color:0xFFFFFF,vertexColors:false,flatShading:true}),1); hMesh.castShadow=true; hGrp=new THREE.Group(); hGrp.add(hMesh); scene.add(hGrp);
+          cullBlock(hGrp,"test (h)"); var hi=CULL.meshes.indexOf(hMesh); if(hi>=0) CULL.meshes.splice(hi,1);   /* bounded and hooked as a block's mesh; not one of the app's */
+          hMesh.userData.anim.uAnimAmp.value=1; hMesh.userData.anim.uAnimPhase.value=0; hMesh.userData.anim.uAnimKnee.value=1;   /* the oracle's knee (animAt's default) */
+          /* the leg turned so that its swing (about its own x axis) carries it along the axis searched */
+          function hPlace(P,axis){ var q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),axis.clone().setY(0).normalize()); Mi.compose(new THREE.Vector3(0,0,0),q,new THREE.Vector3(sc,sc,sc));
+            hMesh.setMatrixAt(0,Mi); hMesh.instanceMatrix.needsUpdate=true; hGrp.position.copy(P); hGrp.updateMatrixWorld(true); }
+          /* 1-4: the geometry swapped and back, and the definition changed, each held by the oracle */
+          var c0=orbitTarget.clone(); c0.y=groundY(c0.x,c0.z); var rt=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0);
+          hPlace(c0,rt); hHolds(hMesh,"drawn with G1"); hMesh.geometry=G2; hHolds(hMesh,"given G2");
+          if(Math.abs(hMesh.userData.cull.env-animEnv(G2))>1e-9) hBad.push("given G2, the bounds' envelope "+hMesh.userData.cull.env+" is not G2's "+animEnv(G2));
+          var e2=hMesh.userData.cull.env; animDefine({MAN:Object.assign({},hM0,{AH:hM0.AH*2,HIP:hM0.HIP*1.5})}); hHolds(hMesh,"the definition changed with G2 drawn (the hip's swing doubled, its joint raised)");
+          if(!(hMesh.userData.cull.env>e2)) hBad.push("the definition changed, the bounds' envelope stays "+hMesh.userData.cull.env);
+          animDefine({MAN:hM0}); hMesh.material.needsUpdate=true; hMesh.customDepthMaterial.needsUpdate=true;   /* not one of CULL.meshes: built again from the table restored */
+          hMesh.geometry=G1; hHolds(hMesh,"back to G1"); if(Math.abs(hMesh.userData.cull.env-animEnv(G1))>1e-9) hBad.push("back to G1, the envelope stays "+hMesh.userData.cull.env);
+          hMesh.geometry=G3; hHolds(hMesh,"given G3"); if(Math.abs(hMesh.userData.cull.env-animEnv(G3))>1e-9) hBad.push("given G3, the bounds' envelope "+hMesh.userData.cull.env+" is not G3's "+animEnv(G3));
+          /* the same geometry object, its part attribute rewritten in place (G1's every vertex given part 3: its version moves, as a rewritten attribute's must) */
+          hMesh.geometry=G1; hHolds(hMesh,"G1 again"); var K1=G1.attributes.aPart; for(var kq=0;kq<K1.count;kq++) K1.array[kq]=3; K1.needsUpdate=true;
+          hHolds(hMesh,"G1's parts rewritten in place"); if(Math.abs(hMesh.userData.cull.env-animEnv(G3))>1e-9) hBad.push("G1's parts rewritten in place, the bounds' envelope "+hMesh.userData.cull.env+" is not its parts' "+animEnv(G3));
+          for(kq=0;kq<K1.count;kq++) K1.array[kq]=0; K1.needsUpdate=true; hHolds(hMesh,"G1's parts restored");
+          /* 5-6: the boundaries. For a frustum F and its right axis: the offset at which G1's bounds have just left F while G3's swing (at a quarter or
+             three quarters of its cycle, whichever reaches in) still has a vertex inside it, by bisection between the target (inside) and far outside */
+          function hBoundary(F,axis,origin,label){ var lo=0, hi2=400, inside=function(x){ hPlace(origin.clone().addScaledVector(axis,x),axis); hMesh.geometry=G1; F.intersectsObject(hMesh); return F.intersectsSphere(worldS(hMesh)); };
+            while(inside(hi2)&&hi2<20000) hi2*=2;
+            if(!inside(lo)||inside(hi2)){ hT.push(label+": the search's ends "+(inside(lo)?"":"its start out of the frustum ")+(inside(hi2)?"still inside at "+hi2+" units":"")); return null; }
+            for(var k=0;k<40;k++){ var mid=(lo+hi2)/2; if(inside(mid)) lo=mid; else hi2=mid; }
+            var x=hi2+0.05; hPlace(origin.clone().addScaledVector(axis,x),axis); hMesh.geometry=G1; F.intersectsObject(hMesh); if(F.intersectsSphere(worldS(hMesh))) return null;
+            hMesh.geometry=G3; var best=null;
+            [Math.PI/2,3*Math.PI/2].forEach(function(ph){ if(best) return; hMesh.userData.anim.uAnimPhase.value=ph; var Pt=hMesh.geometry.attributes.position.array, K=hMesh.geometry.attributes.aPart.array, o=[0,0,0], V=new THREE.Vector3(), n=0;
+              Mi.fromArray(hMesh.instanceMatrix.array,0); for(var v=0;v<K.length;v++){ animAt(Math.round(K[v]),Pt[v*3],Pt[v*3+1],Pt[v*3+2],ph,1,o); V.set(o[0],o[1],o[2]).applyMatrix4(Mi).applyMatrix4(hMesh.matrixWorld); if(F.containsPoint(V)) n++; }
+              if(n) best={ph:ph,n:n}; });
+            hT.push(label+": G1's bounds "+x.toFixed(2)+" units out along the axis, "+(best?best.n+" of G3's vertices inside at phase "+best.ph.toFixed(2):"no vertex of G3 inside: no boundary")); return best; }
+          function hAlone(fn){ scene.children.forEach(function(o){ if(o!==hGrp&&o.visible&&!o.isLight){ o.visible=false; hHid.push(o); } }); try{ return fn(); } finally{ hHid.forEach(function(o){ o.visible=true; }); hHid=[]; } }
+          var Fe=frEye(), be=hBoundary(Fe,rt,c0,"the eye's frustum");
+          if(!be) hBad.push("no boundary placement found for the eye's frustum");
+          else hAlone(function(){ var P0p=passes(); if(!P0p.W.has(hMesh)) hBad.push("at the eye's boundary G3's swing reaches into the view and the mesh is not drawn in the world pass");
+            var A=grab(); setCull(false); hMesh.frustumCulled=false; var B=grab(); setCull(true); hMesh.frustumCulled=true; var A2=grab(); var dAB=diff(A,B), dAA=diff(A,A2);
+            hMesh.visible=false; var E=grab(); hMesh.visible=true; var dAE=diff(A,E);
+            hT.push("at the eye's boundary: the mesh alone, culled against not "+dAB+" pixels, drawn again "+dAA+", the mesh covers "+dAE+" pixels");
+            if(dAB!==0||dAA!==0) hBad.push("at the eye's boundary the frame differs from the frame without culling ("+dAB+" pixels)"); if(!(dAE>0)) hBad.push("at the eye's boundary the mesh covers no pixel: the placement proves nothing"); });
+          if(sun.castShadow&&renderer.shadowMap.enabled){
+            /* from the view's target (the sun's box is fitted to the ground the view shows, placeLights), along the light's own right axis */
+            renderFrame(); var Fs=sun.shadow.getFrustum(), srt=new THREE.Vector3().setFromMatrixColumn(sun.shadow.camera.matrixWorld,0);
+            var bs=hBoundary(Fs,srt,c0,"the sun's box");
+            if(!bs) hBad.push("no boundary placement found for the sun's box");
+            else hAlone(function(){ var map=sun.shadow.map, w=map.width, h=map.height; function sread(){ renderFrame(); var b=new Uint8Array(w*h*4); renderer.readRenderTargetPixels(map,0,0,w,h,b); return b; }
+              var P0s=passes(); if(!P0s.S.has(hMesh)) hBad.push("at the sun's boundary G3's swing reaches into the sun's box and the mesh is not drawn in the shadow pass");
+              var A=sread(); setCull(false); hMesh.frustumCulled=false; var B=sread(); setCull(true); hMesh.frustumCulled=true; var A2=sread(); var dAB=diff(A,B), dAA=diff(A,A2);
+              hMesh.visible=false; var E=sread(); hMesh.visible=true; var dAE=diff(A,E);
+              hT.push("at the sun's boundary: the depth map culled against not "+dAB+" texels, drawn again "+dAA+", the mesh casts "+dAE+" texels");
+              if(dAB!==0||dAA!==0) hBad.push("at the sun's boundary the depth map differs from the one without culling ("+dAB+" texels)"); if(!(dAE>0)) hBad.push("at the sun's boundary the mesh casts no texel: the placement proves nothing"); }); }
+          else hT.push("no shadow map on this tier (decision 236): the sun's boundary not exercised");
+        } catch(err){ hBad.push("threw: "+err.message);
+        } finally { if(ANIM.MAN!==hM0) animDefine({MAN:hM0}); hHid.forEach(function(o){ o.visible=true; }); if(hGrp){ scene.remove(hGrp); hMesh.material.dispose(); hMesh.customDepthMaterial.dispose(); G1.dispose(); G2.dispose(); G3.dispose(); } setCull(true); }
+        ck("culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definition: a mesh given a geometry with another envelope, given its first back, and drawn under a changed definition holds every animated vertex (the test's own oracle: animAt over 64 phases and, since 8E, every pose the hook allows), and at the eye's frustum and the sun's box, where only the swing reaches in, it is drawn in that pass and the frame and the depth map are culling off's",
+          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.join("; "):""));
       } catch(err){ ck("culling and the hooks (decision 249): the checks ran", false, "threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
       } finally {
         setCull(keep8.on); hid8.forEach(function(o){ o.visible=true; }); CULL.meshes.forEach(function(m){ var U=m.userData.anim; if(U){ U.uAnimAmp.value=0; U.uAnimPhase.value=0; } });
+        /* since 8E: the gait writes its uniforms again at the next frame (gaitStep skips a block whose clock and state are unchanged) */
+        Object.keys(units).forEach(function(id){ var G=units[id].block&&units[id].block.userData.gait; if(G){ G.t=null; G.drawn=-1; } });
         if(EYE.on) eyeLeave(); setCommandView(keep8.cv);
         if(DISPLAY.factor!==keep8.f) setDisplayFactor(keep8.f);
         if(mode!==keep8.mode) setMode(keep8.mode); setPresentation(keep8.pres); setClock(keep8.t,{instant:true,force:true,camera:false}); finishTween();
         landCam.position.copy(keep8.pos); orbitTarget.copy(keep8.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=keep8.fc; settle(4,true);
+      }
+    })();
+
+    /* Stage 8, implementation PR 8E (decisions 242 (a), 243 (a), 244 (a), 245 (a); docs/STAGE8_SPEC.md sections 4 and 17): the troops. Self-contained
+       (tools/stage8/mutate-8e.js runs it on copies with one rule broken: from this comment to the 8C block's). Checked: the kit by class at its
+       two levels (the same class, colours and height, the triangles per figure within section 8.2's 1.3 times); the artillery as ORDNANCE draws it
+       (the wheels at Gassendi's heights, the coffret's two places, the piece hooked on its limber, four horses a gun, the drivers only where
+       the claim's scope holds the battery, one carriage colour, the switch at once); the level of detail through the camera (every block with a
+       man of 17.6 px or more in view rich, none rich with every man under 8.8 px, one switch each way along a dolly and none while the view
+       holds, a block's meshes together, each on its own pair, the knee with it, the bounds following); the shared geometries untouched by any
+       formation's state; the gait a function of the clock (the same uniforms at a clock reached from three earlier clocks, still while the
+       clock stands, the phase the track's distance over its stride by the test's own arithmetic), its amplitude by the rule (full to 3.2 cycles
+       a second, none from 4.8, a formation's parts together, none halted, under 1 km/h or under reduced motion, eased then idle), the wheels by
+       the teams' distance within one spoke's interval; S-5's facing a function of the clock; the animated feet and hooves on the drawn ground
+       at 4x and 10.33x (at 1x no figure: decision 34); the standards' still drape */
+    (function(){
+      var keepE={t:clock, mode:mode, pres:presentation, f:DISPLAY.factor, pos:landCam.position.clone(), tgt:orbitTarget.clone(), fc:freeCam, cv:commandView, pl:playing, sp:speed, rm:RM, sel:selection?[selection.kind,selection.id]:null};
+      var gl=renderer.getContext(), V=new THREE.Vector3(), V2=new THREE.Vector3(), Mi=new THREE.Matrix4(), Mw=new THREE.Matrix4();
+      function grab(){ renderFrame(); var w=gl.drawingBufferWidth, h=gl.drawingBufferHeight, b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
+      function diff(a,b){ if(!a||!b||a.length!==b.length) return -1; var n=0; for(var i=0;i<a.length;i+=4) if(a[i]!==b[i]||a[i+1]!==b[i+1]||a[i+2]!==b[i+2]) n++; return n; }
+      function at(t,md,pres){ if(mode!==md) setMode(md); setPresentation(pres||"watch"); setClock(t,{instant:true,force:true,camera:false}); finishTween(); }
+      function aim(mp,dir,r){ var w=W(mp[0],mp[1]), y=displayHeight(w[0],w[1]), d=new THREE.Vector3(dir[0],dir[1],dir[2]).normalize().multiplyScalar(r);
+        placeCamera([w[0]+d.x,y+d.y,w[1]+d.z,w[0],y,w[1]]); syncViewOffset(true); }
+      function look(e,c){ mlReset("placed"); tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.copy(e); orbitTarget.copy(c); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true); }
+      function settleAll(){ for(var i=0;i<40;i++) if(!settle(30,true)) return true; return false; }   /* until nothing eases (a battery turns slowly: WHEEL) */
+      function shown(){ var L=[]; Object.keys(units).forEach(function(id){ var r=units[id]; if(r.block&&r.block.visible&&r.block.userData.lod&&r.block.userData.lod.length) L.push(id); }); return L; }
+      function tri(g){ return g.index?g.index.count/3:g.attributes.position.count/3; }
+      function colours(g){ var C=g.attributes.color, o={}; for(var i=0;i<C.count;i++) o[[C.array[i*3],C.array[i*3+1],C.array[i*3+2]].map(function(v){ return Math.round(v*1e4); }).join(",")]=1; return Object.keys(o).sort().join(" "); }
+      function maxY(g){ var P=g.attributes.position, m=-1e9; for(var i=0;i<P.count;i++) m=Math.max(m,P.array[i*3+1]); return m; }
+      /* the gait's state of every kit mesh of the blocks shown: their uniforms */
+      function pose(){ var o={}; shown().forEach(function(id){ var G=units[id].block.userData.gait; if(!G) return;
+        var u=units[id].block.userData; G.meshes.forEach(function(m,j){ var U=m.userData.anim, SA=m.geometry.attributes.aSl;
+          o[id+"#"+j]=[U.uAnimAmp.value,U.uAnimPhase.value,U.uAnimTrot.value,U.uAnimRollG.value,U.uAnimRollL.value,U.uAnimKnee.value,(SA&&u.slopeSeat&&U.uAnimAmp.value>0)?Array.prototype.slice.call(SA.array,0,2*m.count):null]; }); });
+        return o; }
+      /* field by field, exactly; the instances' slopes (the seventh, where the gait draws them) within STOL: the seating follows the block's tilt,
+         turn and shape, which ease to the clock's within their thresholds, and the slopes are the smooth gradient's under each figure there; the
+         knee (the sixth) not compared: it follows the level of detail, which keeps its own hysteresis ((c)) */
+      var PTOL=[1e-12,1e-9,1e-12,1e-9,1e-9], STOL=0.02, sMax=0;
+      function poseDiff(a,b){ var d=[]; Object.keys(a).forEach(function(k){ if(!(k in b)){ d.push(k+" only in one"); return; }
+          for(var i=0;i<5;i++) if(Math.abs(a[k][i]-b[k][i])>PTOL[i]){ d.push(k+" uniform "+i+": "+a[k][i]+" against "+b[k][i]); return; }
+          var sa=a[k][6], sb=b[k][6]; if(!sa||!sb) return; if(sa.length!==sb.length){ d.push(k+": its slopes' count"); return; }
+          for(var j=0;j<sa.length;j++){ var e=Math.abs(sa[j]-sb[j]); if(e>sMax) sMax=e; if(e>STOL){ d.push(k+" instance "+(j>>1)+"'s slope ahead: "+sa[j]+" against "+sb[j]); return; } } });
+        Object.keys(b).forEach(function(k){ if(!(k in a)) d.push(k+" only in one"); }); return d; }
+      /* the test's own arithmetic of the track's distance at clock t: the legs reached in full and the current one to its fraction (map units) */
+      function distT(id,t){ var A=anchorList(id); if(!A.length||A[0].p===null||t<=PHASES[A[0].ph].t0) return 0; var D=0;
+        for(var i=1;i<A.length;i++){ var a=A[i-1], b=A[i]; if(a.p===null||b.p===null) break; if(t>=b.arr){ D+=legPath(a,b).len; continue; }
+          var w=legWindow(a,b); if(t>w[0]) D+=legPath(a,b).len*Math.min(1,(t-w[0])/((w[1]-w[0])||1)); break; }
+        return D; }
+      /* a leg the formation marches at t: its rate (map units a clock minute) and km/h, by the test (null: halted) */
+      function legT(id,t){ var A=anchorList(id); for(var i=1;i<A.length;i++){ var a=A[i-1], b=A[i]; if(a.p===null||b.p===null) continue; var w=legWindow(a,b);
+          if(t>w[0]&&t<w[1]&&t<b.arr){ var len=legPath(a,b).len; if(len*KM_PER_MAP<0.02) return null; return {mpm:len/(w[1]-w[0]), kmh:len*KM_PER_MAP/((w[1]-w[0])/60)}; } }
+        return null; }
+      /* the shortest stride among the block's kit meshes drawn now (each mesh and its groups shown, up to the block), by the test's own walk */
+      function fastestOf(id){ var f=0, B=units[id].block; B.traverse(function(o){ var k=o.isInstancedMesh&&o.userData.gaitKind; if(!k) return; for(var a=o;a&&a!==B;a=a.parent) if(!a.visible) return;
+          var s=GAIT.STRIDE[k==="gear"?"team":k]; if(s&&(!f||s<f)) f=s; }); return f; }
+      try{
+        setCommandView("none"); select(null,null); setDisplayFactor(DISPLAY.defaultFactor); stopPlay();
+
+        /* (a) the kit by class at its two levels */
+        var aBad=[], aT=[], pairs=0, worst={}, seenP=new Set();
+        Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.lod) return;
+          u.lod.forEach(function(m){ var L=m.userData.lod, s=L.s.userData.src||L.s, r=L.r.userData.src||L.r; if(seenP.has(s)) return; seenP.add(s); pairs++;
+            var ks=s.userData||{}, kr=r.userData||{};
+            ["kit","head","gunner","cuirass","col","leg","driver","coffret","limbered"].forEach(function(k){ if((ks[k]||null)!==(kr[k]||null)) aBad.push(id+": the pair's "+k+" differs ("+ks[k]+", "+kr[k]+")"); });
+            if(ks.lod!=="simple"||kr.lod!=="rich") aBad.push(id+": a pair not simple and rich");
+            if(ks.kit!=="gun"&&ks.kit!=="limber"&&colours(s)!==colours(r)) aBad.push(id+" "+ks.kit+": the rich kit's colours are not the simple kit's");   /* a vehicle's: KIT.gear's, (b) */
+            if(ks.kit==="foot"||ks.kit==="rider"){ if(Math.abs(maxY(s)-maxY(r))>1e-6) aBad.push(id+" "+ks.kit+": the rich figure's top "+maxY(r).toFixed(4)+", the simple's "+maxY(s).toFixed(4)); } }); });
+        /* the triangles a figure costs: a man on foot (coat and the rest), a rider or driver (horse, coat and the rest), a team's horse */
+        var fig=function(kind,parts){ var S=0, R=0; parts.forEach(function(g){ S+=tri(g.s); R+=tri(g.r); }); var k=R/S; if(!worst[kind]||k>worst[kind].k) worst[kind]={k:k,s:S,r:R}; };
+        Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u) return;
+          (u.dress||[]).forEach(function(rec){ var M=rec.meshes.map(function(m){ return m.userData.lod; }); if(M.some(function(x){ return !x; })) return;
+            fig(rec.mounted?"a rider and his horse":rec.role==="crew"?"a gunner":"a man on foot",M); });
+          if(u.art&&u.deployed){ var team=null, drv=[]; u.deployed.traverse(function(m){ if(!m.isInstancedMesh||!m.userData.lod) return; var k=m.userData.kit||{}; if(k.role==="team") team=m.userData.lod; if(k.role==="driver") drv.push(m.userData.lod); });
+            if(team) fig("a team's horse",[team]); if(team&&drv.length===2) fig("a driver and his horse",[team].concat(drv)); } });
+        Object.keys(worst).forEach(function(k){ var w=worst[k]; aT.push(k+" "+w.s+" to "+w.r+" triangles ("+w.k.toFixed(2)+")"); if(w.k>1.3+1e-9) aBad.push(k+": "+w.k.toFixed(3)+" times its simple kit (section 8.2: 1.3)"); });
+        ck("the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every claim it draws (the headgear, the cuirass, the gunner's figure, the legwear, the horse's colour, the same vertex colours) and in the figure's height to its hat's top (decision 106), each figure at most 1.3 times its simple kit's triangles (section 8.2)",
+          pairs>0&&!aBad.length, pairs+" pairs; per figure, the most against its simple kit: "+aT.join("; ")+(aBad.length?"; WRONG: "+aBad.slice(0,5).join("; "):""));
+
+        /* (b) the artillery as ORDNANCE draws it */
+        var bBad=[], bT=[], hg=null; Object.keys(units).forEach(function(id){ if(FORMATIONS[id].arm==="art") hg=id; });
+        var W8=ORDNANCE.fr.wheels, sc=KIT.art.headTop/KIT.art.stature;
+        /* a wheel's lowest point and its diameter by its radius about its axle (its rim's outer edge: a polygon of n sides, so not its height) */
+        function partSpan(g,k){ var P=g.attributes.position, K=g.attributes.aPart, lo=1e9, r=0, w=ANIM.WHEEL[k]; for(var i=0;i<P.count;i++) if(Math.round(K.array[i])===k){ lo=Math.min(lo,P.array[i*3+1]); r=Math.max(r,Math.hypot(P.array[i*3+1]-w.r,P.array[i*3+2])); } return [lo,2*r]; }
+        [false,true].forEach(function(rich){ var gG=artGeo("gun",{},rich), gL=artGeo("limber",{},rich), a=partSpan(gG,20), b=partSpan(gL,21);
+          var dG=a[1], dL=b[1];
+          if(Math.abs(dG/(W8.gun_m*sc)-1)>0.02) bBad.push((rich?"rich":"simple")+" gun's wheels "+dG.toFixed(3)+" high, Gassendi's "+(W8.gun_m*sc).toFixed(3));
+          if(Math.abs(dL/(W8.limber_m*sc)-1)>0.02) bBad.push((rich?"rich":"simple")+" limber's wheels "+dL.toFixed(3)+" high, Gassendi's "+(W8.limber_m*sc).toFixed(3));
+          if(Math.abs(a[0])>0.04||Math.abs(b[0])>0.04) bBad.push((rich?"rich":"simple")+" wheels not on the ground ("+a[0].toFixed(3)+", "+b[0].toFixed(3)+")");
+          bT.push((rich?"rich":"simple")+": the wheels "+dG.toFixed(3)+" and "+dL.toFixed(3)+" units (Gassendi's 1.462 and 1.137 m at "+sc.toFixed(4)+" a metre: "+(W8.gun_m*sc).toFixed(3)+", "+(W8.limber_m*sc).toFixed(3)+")"); });
+        /* a wheel repeats every spoke's interval: its vertices turned by 2 pi / n about the axle are its vertices */
+        [[artGeo("gun",{},true),20],[artGeo("limber",{},true),21],[artGeo("gun",{},false),20],[artGeo("limber",{},false),21]].forEach(function(q){ var g=q[0], k=q[1], w=ANIM.WHEEL[k], P=g.attributes.position, K=g.attributes.aPart, pts=[], o=[0,0,0];
+          for(var i=0;i<P.count;i++) if(Math.round(K.array[i])===k) pts.push([P.array[i*3],P.array[i*3+1],P.array[i*3+2]]);
+          var key=function(p){ return p.map(function(v){ return Math.round(v*2e3); }).join(","); }, set={}; pts.forEach(function(p){ set[key(p)]=1; }); var miss=0;
+          pts.forEach(function(p){ animRot(p[1],p[2],w.r,0,2*Math.PI/w.n,o); var kk=key([p[0],o[0],o[1]]); if(!set[kk]){ var near=false; for(var dx=-1;dx<=1&&!near;dx++) for(var dy=-1;dy<=1&&!near;dy++) for(var dz=-1;dz<=1&&!near;dz++){ var s2=kk.split(",").map(Number); if(set[[s2[0]+dx,s2[1]+dy,s2[2]+dz].join(",")]) near=true; } if(!near) miss++; } });
+          if(miss) bBad.push("a "+(k===20?"gun's":"limber's")+" wheel ("+(g.userData.lod)+") not the same turned by one spoke's interval: "+miss+" of "+pts.length+" vertices"); });
+        if(!hg) bBad.push("no battery drawn as figures");
+        else { var hb=units[hg].block, hu=hb.userData, A=hu.art, D=artDrivers(hg,FORMATIONS[hg].nation);
+          var count=function(grp,role){ var n=0; grp.traverse(function(o){ if(o.isInstancedMesh&&o.userData.kit&&o.userData.kit.role===role&&o.userData.kit.part!=="fixed") n+=o.count; }); return n; };
+          var gearCol={}; Object.keys(KIT.gear).forEach(function(k){ gearCol[lin(KIT.gear[k]).toArray().map(function(v){ return Math.round(v*1e4); }).join(",")]=1; });
+          [hu.deployed,hu.limbered].forEach(function(grp,gi){ var nm=gi?"limbered":"deployed", guns=0, limbers=0;
+            grp.traverse(function(o){ if(!o.isInstancedMesh||!o.userData.kit||o.userData.kit.role!=="gear") return; if(/^gun/.test(o.userData.kit.part)) guns+=o.count; else limbers+=o.count;
+              var L=o.userData.lod; [L.s,L.r].forEach(function(g){ var C=g.attributes.color; for(var i=0;i<C.count;i+=7){ var c=[C.array[i*3],C.array[i*3+1],C.array[i*3+2]].map(function(v){ return Math.round(v*1e4); }).join(","); if(!gearCol[c]){ bBad.push(nm+": a piece's colour outside KIT.gear (decision 109)"); return; } } });
+              var co=o.userData.kit.part.indexOf("coffret")>=0, want=(gi===0&&/^limber/.test(o.userData.kit.part))||(gi===1&&/^gun/.test(o.userData.kit.part));
+              if(co!==want) bBad.push(nm+": the coffret "+(co?"on":"not on")+" the "+o.userData.kit.part+" (ORDNANCE.fr.coffret: on the limber in action, between the cheeks limbered)"); });
+            var horses=count(grp,"team"), drivers=0; grp.traverse(function(o){ if(o.isInstancedMesh&&o.userData.kit&&o.userData.kit.role==="driver"&&o.userData.kit.part==="coat") drivers+=o.count; });
+            if(guns!==A.guns||limbers!==A.guns) bBad.push(nm+": "+guns+" guns and "+limbers+" limbers for "+A.guns+" drawn guns");
+            if(horses!==4*A.guns) bBad.push(nm+": "+horses+" horses for "+A.guns+" guns (ORDNANCE.fr.team: four)");
+            if(drivers!==D.n*A.guns) bBad.push(nm+": "+drivers+" drivers, the claim in scope gives "+D.n+" a vehicle");
+            bT.push(nm+": "+guns+" guns, "+limbers+" limbers, "+horses+" horses, "+drivers+" drivers"); });
+          /* the drivers' claim reaches only its scope: IV Corps' formations (decision 243) */
+          var reach=Object.keys(FORMATIONS).filter(function(k){ return artDrivers(k,FORMATIONS[k].nation).n>0; }), out=reach.filter(function(k){ var a=k, n=0; while(a&&n++<8){ if(a==="c_iv") return false; a=FORMATIONS[a]&&FORMATIONS[a].parent; } return true; });
+          if(out.length) bBad.push("drivers drawn outside IV Corps: "+out.join(", "));
+          bT.push("the drivers' claim reaches "+reach.length+" formations, all of IV Corps; "+hg+" "+D.n+" a vehicle ("+(D.claim?D.claim.src+", "+D.claim.dated:"none")+")");
+          /* the limbered piece's trail on its limber's pintle; the deployed limber behind its piece; the switch at once */
+          var mv=null; anchorList(hg).forEach(function(b,i){ if(i&&!mv&&b.w&&b.w[1]>b.w[0]) mv=b.w; });
+          if(mv){ at((mv[0]+mv[1])/2,"terrain","watch"); settle(24,true); hb.updateMatrixWorld(true);
+            var gLm=null, lLm=null; hu.limbered.traverse(function(o){ if(!o.isInstancedMesh||!o.userData.kit) return; if(o.userData.kit.part==="gun limbered with its coffret") gLm=o; if(o.userData.kit.part==="limber") lLm=o; });
+            var rG=kitArtR("gun"), p=kitArtPitch(), tl=2.05, end=new THREE.Vector3(0,rG+(0.05-rG)*Math.cos(p)+tl*Math.sin(p),(rG-0.05)*Math.sin(p)+tl*Math.cos(p)), pin=new THREE.Vector3(0,kitArtR("limber")+0.02,ART_AT.PIN), wE=0;
+            for(var q=0;q<A.guns;q++){ gLm.getMatrixAt(q,Mi); V.copy(end).applyMatrix4(Mi); lLm.getMatrixAt(q,Mw); V2.copy(pin).applyMatrix4(Mw); wE=Math.max(wE,V.distanceTo(V2)); }
+            bT.push("limbered: each trail's end "+wE.toFixed(3)+" units at most from its limber's pintle");
+            if(wE>0.12) bBad.push("a limbered piece's trail "+wE.toFixed(3)+" units from its limber's pintle");
+            var vis=function(t){ setClock(t,{instant:true,force:true,camera:false}); settle(2,true); return [hu.deployed.visible,hu.limbered.visible]; };
+            var b4=vis(mv[0]-0.5), af=vis(mv[0]+0.5);
+            if(!(b4[0]&&!b4[1]&&!af[0]&&af[1])) bBad.push("the switch at the leg's start: deployed "+b4+", then "+af);
+            else bT.push("the battery deployed half a minute before its leg begins ("+fmtClock(mv[0])+") and limbered half a minute after: the switch at once (ORDNANCE.fr.limbering, no duration read)"); }
+          else bBad.push("no leg of "+hg+" found"); }
+        ck("the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, every wheel the same turned by one spoke's interval, the coffret on the limber in action and between the cheeks limbered, the piece hooked on its limber's pintle, four horses a drawn gun, the drivers by the claim whose scope holds the battery and none outside IV Corps, one carriage colour (decision 109), the switch between the groups at once",
+          !bBad.length, bT.join("; ")+(bBad.length?"; WRONG: "+bBad.slice(0,6).join("; "):""));
+
+        /* (c) the level of detail through the camera. The test's own measure: each instance of a block's figure meshes in the eye's frustum, its
+           feet and its hat's top projected through the camera into CSS pixels; the largest such man of the block */
+        var cBad=[], cT=[], F=new THREE.Frustum(), M4=new THREE.Matrix4(), cs=new THREE.Vector2();
+        function manPx(id){ var b=units[id].block, best=0, sz=renderer.getSize(cs), Wd=sz.x, H=sz.y; camera.updateMatrixWorld(); F.setFromProjectionMatrix(M4.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse)); b.updateMatrixWorld(true);
+          b.traverse(function(o){ if(!o.isInstancedMesh||!o.userData.lod||!o.userData.kit||o.userData.kit.role==="gear"||!o.userData.gaitKind) return; var a=o; while(a){ if(!a.visible) return; a=a.parent; }
+            var ms=o.matrixWorld.getMaxScaleOnAxis(), Sp=new THREE.Sphere();
+            for(var i=0;i<o.count;i++){ o.getMatrixAt(i,Mi); V.set(0,KLOD.H/2,0).applyMatrix4(Mi).applyMatrix4(o.matrixWorld); Sp.center.copy(V); Sp.radius=KLOD.H/2*ms; if(!F.intersectsSphere(Sp)) continue;
+              V.set(0,0,0).applyMatrix4(Mi).applyMatrix4(o.matrixWorld); V2.set(0,KLOD.H,0).applyMatrix4(Mi).applyMatrix4(o.matrixWorld);
+              V.project(camera); V2.project(camera); var px=Math.hypot((V.x-V2.x)*Wd/2,(V.y-V2.y)*H/2); if(px>best) best=px; } });
+          return best; }
+        function lodOk(label){ shown().forEach(function(id){ var u=units[id].block.userData, px=manPx(id), lv=u.lodRich;
+            if(px>=KLOD.IN&&!lv) cBad.push(label+": "+id+" simple with a man "+px.toFixed(1)+" px high");
+            if(lv&&px>0&&px<KLOD.OUT*0.6) cBad.push(label+": "+id+" rich with its largest man in view "+px.toFixed(1)+" px");
+            u.lod.forEach(function(m){ var L=m.userData.lod; if(m.geometry!==(lv?L.r:L.s)) cBad.push(label+": "+id+" a mesh not on its block's level"); if(m.userData.anim&&m.userData.anim.uAnimKnee.value!==(lv?1:0)) cBad.push(label+": "+id+" the knee not its level's"); }); }); }
+        at(590,"terrain","watch"); settle(24,true);
+        Object.keys(VANTAGE).forEach(function(k){ placeCamera(VANTAGE[k]); syncViewOffset(true); settle(6,true); lodOk("vantage "+k); });
+        aim([285,289],[-1.0,0.13,0.18],70); settle(6,true); lodOk("the low Pratzen view");
+        aim([210,362],[-0.62,0.46,0.64],58); settle(6,true); lodOk("close on Sokolnitz");
+        /* a dolly: the eye toward a formation and back, each step a settled frame: the switches counted, none while the view holds */
+        var did=shown().filter(function(id){ return units[id].block.userData.dress.some(function(r){ return !r.mounted; }); })[0], sw=[], last=null, holdFlip=0, byR={};
+        if(did){ var p0=units[did].block.position.clone(), dir=new THREE.Vector3(-0.55,0.42,0.72).normalize();
+          [400,300,220,170,140,120,105,92,82,74,66,58,50,42,34,26,34,42,50,58,66,74,82,92,105,120,140,170,220,300,400].forEach(function(r,i){
+            look(p0.clone().addScaledVector(dir,r),p0); settle(3,true); var u=units[did].block.userData, lv=u.lodRich, px=manPx(did);
+            if(last!==null&&lv!==last) sw.push((lv?"rich":"simple")+" at "+r+" units (the block's nearest point "+u.lodPx.toFixed(1)+" px, its largest man "+px.toFixed(1)+" px)");
+            (byR[r]=byR[r]||[])[i<15?0:1]={lv:lv, px:u.lodPx};   /* the level coming in (0) and going out (1) */
+            last=lv; for(var h=0;h<4;h++){ settle(1,true); if(units[did].block.userData.lodRich!==lv) holdFlip++; } });
+          cT.push(did+" along a dolly: "+sw.join(", "));
+          if(sw.length!==2) cBad.push("the dolly switched "+sw.length+" times (want once each way)"); if(holdFlip) cBad.push(holdFlip+" switches while the view held");
+          /* the hysteresis: between 14.5 and 17.6 px the level is the way the eye came, simple coming in and rich going out; elsewhere the same both ways */
+          var band=[];
+          Object.keys(byR).forEach(function(r){ var q=byR[r]; if(!q[0]||!q[1]) return; var px=q[0].px;
+            if(q[0].lv!==q[1].lv){ if(q[0].lv||!q[1].lv||!(px>=KLOD.OUT&&px<KLOD.IN)) cBad.push("at "+r+" units ("+px.toFixed(1)+" px) "+(q[0].lv?"rich":"simple")+" coming in and "+(q[1].lv?"rich":"simple")+" going out");
+              else band.push(r+" units ("+px.toFixed(1)+" px): simple coming in, rich going out"); }
+            else if(px>=KLOD.OUT&&px<KLOD.IN) cBad.push("at "+r+" units ("+px.toFixed(1)+" px, in the band) "+(q[0].lv?"rich":"simple")+" both ways (no hysteresis)"); });
+          if(!band.length) cBad.push("no distance of the dolly in the band between "+KLOD.OUT+" and "+KLOD.IN+" px where the level is the way the eye came (no hysteresis seen)");
+          else cT.push("the band kept by the way the eye came at "+band.join("; ")); }
+        else cBad.push("no formation on foot shown for the dolly");
+        /* the bounds follow a switch */
+        var bm=null; shown().some(function(id){ var u=units[id].block.userData; return u.lod.some(function(m){ if(m.count>0&&m.userData.cull){ bm=m; return true; } return false; }); });
+        if(bm){ var bu=null, a2=bm; while(a2&&!(a2.userData&&a2.userData.body)) a2=a2.parent; bu=a2.userData; var r0=bu.lodRich, F0=new THREE.Frustum();
+          [!r0,r0].forEach(function(rv){ kitLodSet(bu,rv); camera.updateMatrixWorld(); F0.setFromProjectionMatrix(M4.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse)); F0.intersectsObject(bm);
+            var cl=bm.userData.cull; if(cl.g!==bm.geometry) cBad.push("a switch did not refresh the bounds"); }); }
+        cT.push(KLOD.n+" switches over the checks");
+        ck("the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye's view (the test's own projection of his feet and hat through the camera) draws the rich kit, none with every man in view under 8.7 px; a dolly toward a formation and back switches it once each way and never while the view holds, between 14.5 and 17.6 px at its nearest point the level the way the eye came (simple coming in, rich going out) and the same both ways elsewhere; a block's meshes on one level, each on its own pair, the knee with it; the culling bounds follow a switch",
+          !cBad.length, cT.join("; ")+(cBad.length?"; WRONG: "+cBad.slice(0,6).join("; "):""));
+
+        /* (d) the shared geometries: every kit mesh draws a geometry of its own (kitWrap), over its class's shared attributes, and no formation's
+           state is written into a shared geometry or attribute */
+        var dBad=[], own=new Set(), nM=0, srcs=[], sums=new Map();
+        Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.lod) return;
+          u.lod.forEach(function(m){ nM++; var L=m.userData.lod; [L.s,L.r].forEach(function(w){ if(own.has(w)) dBad.push(id+": a mesh's own geometry drawn by another"); own.add(w); var s=w.userData.src;
+            if(!s) dBad.push(id+": a mesh drawing a shared geometry itself"); else { ["position","normal","color","aPart"].forEach(function(k){ if(s.attributes[k]&&w.attributes[k]!==s.attributes[k]) dBad.push(id+": "+k+" copied, not shared"); }); if(s.attributes.aPh) dBad.push("a shared geometry carries phases"); if(srcs.indexOf(s)<0) srcs.push(s); } });
+            if(L.s.attributes.aPh!==L.r.attributes.aPh) dBad.push(id+": the two levels' phases not one attribute"); }); });
+        var sum=function(a){ var x=0; for(var i=0;i<a.length;i+=7) x+=a[i]*((i%13)+1); return x; };
+        srcs.forEach(function(s){ sums.set(s,[sum(s.attributes.position.array),s.attributes.position.version,s.attributes.aPart?s.attributes.aPart.version:-1]); });
+        [600,720,830,905].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); settle(4,true); });
+        srcs.forEach(function(s){ var q=sums.get(s); if(sum(s.attributes.position.array)!==q[0]||s.attributes.position.version!==q[1]||(s.attributes.aPart?s.attributes.aPart.version:-1)!==q[2]) dBad.push("a shared geometry changed while the day was posed"); });
+        ck("the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its class's shared position, normal, colour and part attributes with its own phase offsets, one attribute for both levels; nothing of a formation's state is written into a shared geometry, which stays as built through a day's poses",
+          nM>0&&!dBad.length, nM+" kit meshes, "+own.size+" geometries of their own over "+srcs.length+" shared ones"+(dBad.length?"; WRONG: "+dBad.slice(0,5).join("; "):""));
+
+        /* (e) the gait, the clock's: at clocks where formations march, the uniforms of every kit mesh shown the same however the clock was reached
+           (three earlier clocks), unchanged while the clock stands and frames are drawn (and the frame with them), the phase the track's distance
+           over the stride by the test's own arithmetic, the wheels' angles within one spoke's interval by the teams' distance */
+        var eBad=[], eT=[], clocks=[545,640,830,905];
+        aim([285,289],[-1.0,0.13,0.18],140);
+        clocks.forEach(function(t){ var P=[];
+          [t-37,t-180,T_MIN,t+60].forEach(function(t0){ setClock(t0,{instant:true,force:true,camera:false}); settle(6,true); setClock(t,{instant:true,force:true,camera:false}); if(!settleAll()) eBad.push(fmtClock(t)+": never at rest"); P.push(pose()); });
+          for(var k=1;k<P.length;k++){ var d=poseDiff(P[0],P[k]); if(d.length) eBad.push(fmtClock(t)+" reached from another clock: "+d.slice(0,2).join("; ")); }
+          settle(30,true);   /* past the easing's tail: a block's shape and turn re-seat it below the threshold that asks for frames (8D's, unchanged) */
+          var A1=grab(); settle(4,true); var p2=pose(), A2=grab(), dd=poseDiff(P[P.length-1],p2), dpx=diff(A1,A2); if(dd.length||dpx!==0) eBad.push(fmtClock(t)+" with the clock standing: "+(dd.length?dd[0]:dpx+" pixels changed"));
+          var nMarch=0;
+          shown().forEach(function(id){ var G=units[id].block.userData.gait; if(!G) return; var lg=legT(id,t), D=distT(id,t);
+            if(lg&&lg.kmh>=GAIT.KMH&&!RM) nMarch++;
+            G.meshes.forEach(function(m){ var U=m.userData.anim, k=m.userData.gaitKind, st=GAIT.STRIDE[k==="gear"?"team":k];
+              if(U.uAnimAmp.value>0){ var want=2*Math.PI*((D/st)-Math.floor(D/st)); if(Math.abs(U.uAnimPhase.value-want)>1e-6&&Math.abs(Math.abs(U.uAnimPhase.value-want)-2*Math.PI)>1e-6) eBad.push(fmtClock(t)+" "+id+": the phase "+U.uAnimPhase.value.toFixed(6)+", the track's "+want.toFixed(6));
+                if(k==="gear"){ var G2=ANIM.WHEEL[20], L2=ANIM.WHEEL[21], a=D/GAIT.STRIDE.team*GAIT.ROLL*2*Math.PI/G2.n, b=a*G2.r/L2.r, pg=2*Math.PI/G2.n, pl=2*Math.PI/L2.n;
+                  a=a-pg*Math.round(a/pg); b=b-pl*Math.round(b/pl);
+                  if(Math.abs(U.uAnimRollG.value-a)>1e-6||Math.abs(U.uAnimRollL.value-b)>1e-6) eBad.push(fmtClock(t)+" "+id+": the wheels "+U.uAnimRollG.value.toFixed(5)+", "+U.uAnimRollL.value.toFixed(5)+"; the distance's "+a.toFixed(5)+", "+b.toFixed(5));
+                  if(Math.abs(U.uAnimRollG.value)>pg/2+1e-9||Math.abs(U.uAnimRollL.value)>pl/2+1e-9) eBad.push(fmtClock(t)+" "+id+": a wheel's angle beyond half a spoke's interval"); } } }); });
+          eT.push(fmtClock(t)+": "+Object.keys(P[0]).length+" kit meshes, "+nMarch+" formations marching"); });
+        eT.push("the slopes ahead at most "+sMax.toFixed(4)+" apart between paths (within "+STOL+")");
+        /* while the clock plays the slopes are taken again by a block's movement (GAIT.SLOPE_STEP), not at every seating; once it stops, the pose
+           is the clock's alone: Play at half speed for 24 steps of a 60th of a second, then four of a 1000th, as Play's clock slows into a dwell's
+           hold (the blocks move a hundredth of a unit a step, are seated again and keep their slopes, so some are left behind as the clock stops:
+           without them the pause would test nothing), then paused, one frame: every animated block's slopes exactly a fresh seating's at that
+           clock (layoutFigs, asked) */
+        setClock(545,{instant:true,force:true,camera:false}); settleAll(); var sk0=SEAT_STATS.slopes, sb0=SEAT_STATS.blocks, sw0=SEAT_STATS.want, fk2=FK;
+        playing=true; speed=0.5; FK=1; DWELL.st=null; for(var pi=0;pi<28;pi++){ setClock(dwellAdvance(pi<24?1/60:1/1000,MIN_PER_SEC*speed)); updateVisibility(); } FK=fk2;
+        var sTook=SEAT_STATS.slopes-sk0, sSeat=SEAT_STATS.blocks-sb0, sWant=SEAT_STATS.want-sw0, stale=shown().filter(function(id){ return units[id].block.userData.slopeStale; }).length;
+        playing=false; updateVisibility(); var pBad=0, pN=0, pP=new THREE.Vector3(), pQ=new THREE.Quaternion();
+        /* each animated block's slopes against a fresh seating at the pose they were taken at (the block's turn and place, slSig: the seating
+           itself, as before 8E, re-seats a block only once it has moved past its thresholds), then the block put back as it was */
+        shown().forEach(function(id){ var b=units[id].block, bu=b.userData, G=bu.gait, S9=bu.slSig; if(!G||!(G.amp>0)||!S9) return; if(bu.slopeStale) pBad++;
+          var got=G.meshes.map(function(m){ var SA=m.geometry.attributes.aSl; return SA?Array.prototype.slice.call(SA.array,0,2*m.count):null; });
+          pP.copy(b.position); pQ.copy(b.quaternion); b.position.x=S9[0]; b.position.z=S9[1]; b.quaternion.set(S9[2],S9[3],S9[4],S9[5]); bu.layout(bu.sw,bu.sd,true);
+          G.meshes.forEach(function(m,j){ var SA=m.geometry.attributes.aSl; if(!SA||!got[j]) return; pN++;
+            for(var q=0;q<got[j].length;q++) if(Math.abs(SA.array[q]-got[j][q])>1e-6){ pBad++; eBad.push("paused after Play: "+id+"'s slopes not the clock's (instance "+(q>>1)+": "+got[j][q]+" against "+SA.array[q]+")"); return; } });
+          b.position.copy(pP); b.quaternion.copy(pQ); bu.layout(bu.sw,bu.sd); });
+        eT.push("Play at half speed for 24 steps and four slow ones: "+sSeat+" seatings, "+sWant+" of animated formations, "+sTook+" of them taking the slopes ("+stale+" blocks left behind at the last step); paused: "+pN+" meshes' slopes exactly the clock's");
+        if(!(sTook<sWant)) eBad.push("while the clock played every animated formation's seating took the slopes ("+sTook+" of "+sWant+": no step rule)");
+        if(!stale) eBad.push("no block's slopes left behind as the clock stopped: the pause's taking them again not exercised");
+        if(pBad&&!eBad.length) eBad.push("paused after Play: "+pBad+" blocks' slopes left behind");
+        ck("the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh's uniforms the same when the clock was reached from three other clocks, unchanged with the frame while the clock stands, the phase the track's distance over its stride (the test's own arithmetic), the wheels turned by the teams' distance within one spoke's interval; while Play runs the slopes taken again by a block's movement, and once it stops exactly the clock's",
+          !eBad.length, eT.join("; ")+(eBad.length?"; WRONG: "+eBad.slice(0,5).join("; "):""));
+
+        /* (f) the amplitude: the rule at each speed, a formation's parts together, none halted, under 1 km/h or under reduced motion; eased, then
+           idle */
+        var fBad=[], fT=[], nJ=0, drift=0, full=0, none=0, part=0;
+        [545,640,830,905,300].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); settle(4,true);
+          [0,0.5,1,2,4].forEach(function(x){ playing=x>0; if(x) speed=x; DWELL.st=null; settle(40,true);
+            shown().forEach(function(id){ var G=units[id].block.userData.gait; if(!G) return; var lg=legT(id,t), want=0, fs=fastestOf(id);
+              if(lg&&lg.kmh>=GAIT.KMH){ var c=x*MIN_PER_SEC*lg.mpm/fs; want=Math.max(0,Math.min(1,(GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL))); if(want===1) full++; else if(want===0) none++; else part++; }
+              else if(lg) drift++;
+              nJ++; if(Math.abs(G.amp-want)>1e-9) fBad.push(fmtClock(t)+" at "+(x?x+"x":"paused")+" "+id+": amplitude "+G.amp.toFixed(4)+", the rule's "+want.toFixed(4)+(lg?" ("+lg.kmh.toFixed(2)+" km/h)":" (halted)"));
+              G.meshes.forEach(function(m){ if(m.userData.anim.uAnimAmp.value!==G.amp) fBad.push(fmtClock(t)+" "+id+": its parts not together"); }); }); }); });
+        /* reduced motion stops the gait at once (S-6: what moves stops): one frame after it is set, every amplitude 0 */
+        setClock(545,{instant:true,force:true,camera:false}); playing=false; settle(40,true); var rmFrom=shown().filter(function(id){ var G=units[id].block.userData.gait; return G&&G.amp>0; }).length;
+        RM=true; settle(1,true); shown().forEach(function(id){ var G=units[id].block.userData.gait; if(G&&G.amp!==0) fBad.push("under reduced motion "+id+" at "+G.amp+" one frame after it was set"); });
+        if(!rmFrom) fBad.push("no formation animated when reduced motion was set"); RM=keepE.rm; settle(40,true);
+        /* the ease: a change of speed eased over frames (none at once), then the app idle */
+        setClock(545,{instant:true,force:true,camera:false}); playing=false; settle(40,true); var ez=shown().filter(function(id){ var G=units[id].block.userData.gait; return G&&G.amp===1; })[0];
+        if(ez){ var G=units[ez].block.userData.gait, fk=FK; playing=true; speed=4; FK=1; updateVisibility(); var a1=G.amp; var n=1; while(G.amp>0&&n<200){ updateVisibility(); n++; } FK=fk;
+          settling=false; gaitStep(units[ez],ez); var idle=!settling;   /* the gait itself asks for no frame once it has converged */
+          fT.push("the ease: "+ez+" from 1 to "+a1.toFixed(3)+" in the first 60th of a second, to none in "+n+" (about "+(n/60).toFixed(2)+" s), then idle "+idle);
+          if(!(a1<1&&a1>0.5)) fBad.push("the amplitude not eased ("+a1+" after one frame)"); if(!(n>=6&&n<=40)) fBad.push("the ease took "+n+" frames"); if(!idle) fBad.push("not idle after the ease"); playing=false; settle(40,true); }
+        else fBad.push("no formation at full amplitude for the ease");
+        fT.push(nJ+" judgments: "+full+" full, "+part+" in the fade, "+none+" faded out, "+drift+" drifting under 1 km/h; under reduced motion "+rmFrom+" animated formations at rest one frame after it was set");
+        if(!(full&&part&&none&&drift)) fBad.push("a case not met (full "+full+", fade "+part+", none "+none+", drift "+drift+")");
+        ck("the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion between, by the formation's fastest-cycling part, its parts together; none halted, under 1 km/h or under reduced motion (at once, S-6); a change of speed eased (nine tenths in 0.15 s), then idle",
+          !fBad.length, fT.join("; ")+(fBad.length?"; WRONG: "+fBad.slice(0,6).join("; "):""));
+
+        /* (g) S-5: the facing a function of the clock: every formation's facing the same however its clock was reached */
+        var gBad=[], gN=0;
+        PHASES.forEach(function(ph,pi){ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(function(t){ var R=[];
+          [ph.t0,ph.t1-1,t].forEach(function(t0){ setClock(t0,{instant:true,force:true,camera:false}); faceCache={}; _efT={}; Object.keys(units).forEach(function(id){ enemyFacing(id); });
+            setClock(t,{instant:true,camera:false}); var o={};   /* as scrubbing moves it, inside the phase: nothing cleared */ Object.keys(units).forEach(function(id){ var w=headingAt(id,clock); o[id]=w===null?enemyFacing(id):w; }); R.push(o); });
+          Object.keys(R[0]).forEach(function(id){ gN++; if(R[0][id]!==R[1][id]||R[0][id]!==R[2][id]) gBad.push(fmtClock(t)+" "+id+": "+[R[0][id],R[1][id],R[2][id]].map(function(v){ return v===null?"none":v.toFixed(3); }).join(", ")); }); }); });
+        ck("the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phase's start, its phase's end or directly (it was the facing at the first clock visited in the phase)",
+          gN>0&&!gBad.length, gN+" facings at three clocks of each phase, each from three paths"+(gBad.length?"; WRONG: "+gBad.slice(0,5).join("; "):""));
+
+        /* (h) the animated feet and hooves on the drawn ground: at 4x and 10.33x (at 1x the formations are footprints, decision 34: no figure), for
+           the formations shown at three clocks, up to 40 instances of each animated man's and horse's mesh, their slopes as the gait draws them
+           (layoutFigs, asked), at four phases at full swing with the gait's knee and trot: each sole's heel and toe and each hoof's two edges
+           posed (animAt), through the instance's and the mesh's matrices into the world, against the same point at rest, each judged by the drawn
+           ground between the two (groundY). The lowest edge is the planted one: its distance from its rest contact is the gait's contact error.
+           Held: at least 99 in 100 poses within H_TOL (0.03 units at 4x, in proportion to the relief at 10.33x, whose facets steepen with it),
+           and none further off than the rest pose itself stands somewhere on the field (the upright figure's sole or hoof edges on a slope, as
+           before 8E: reported). The rest pose's own seating check (5: 0.02 at each figure's origin) is unchanged */
+        var hBad=[], hT=[], MA=ANIM.MAN, HO=ANIM.HORSE;
+        DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct); var E=[], where="", wv=0, restMax=0, H_TOL=0.03*fct/4, nFl=0, nPn=0, wFl=0, wPn=0, RZ=[];
+          [545,640,830].forEach(function(t){ at(t,"terrain","watch"); settle(24,true);
+            shown().forEach(function(id){ var b=units[id].block, G=b.userData.gait, bu=b.userData; if(!G) return;
+              bu.layout(bu.sw,bu.sd,true); b.updateMatrixWorld(true);   /* the slopes as the gait draws a block it animates */
+              G.meshes.forEach(function(m){ var k=m.userData.gaitKind, part=m.userData.kit&&m.userData.kit.part; if(!(k==="man"&&part==="fixed")&&!(k!=="gear"&&part==="horse")) return;
+                var a=m; while(a){ if(!a.visible) return; a=a.parent; }
+                var U=m.userData.anim, ph=m.geometry.attributes.aPh, horse=part==="horse", rich=U.uAnimKnee.value===1, pts=[];
+                if(horse) [[5,HO.ZF],[6,HO.ZF],[7,HO.ZH],[8,HO.ZH]].forEach(function(q,j){ [-HO.HZ,HO.HZ].forEach(function(e){ pts.push([q[0],j%2?0.13:-0.13,HO.HIP-HO.L,q[1]+e]); }); });
+                else [[rich?13:1,-0.085],[rich?14:2,0.085]].forEach(function(q){ [MA.HEEL,MA.TOE].forEach(function(z){ pts.push([q[0],q[1],MA.FOOT,z]); }); });
+                var step=Math.max(1,Math.floor(m.count/40)), o=[0,0,0], SA=m.geometry.attributes.aSl;
+                for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=SA?[SA.array[i*2],SA.array[i*2+1]]:[0,0];
+                  var rest=pts.map(function(q){ V2.set(q[1],q[2],q[3]).applyMatrix4(Mw); var gg=groundY(V2.x,V2.z); restMax=Math.max(restMax,Math.abs(V2.y-gg)); return [V2.y,gg]; });
+                  [0,Math.PI/2,Math.PI,1.5*Math.PI].forEach(function(p0){ var e=[], phv=p0+2*Math.PI*(ph?ph.array[i]:0);
+                    pts.forEach(function(q,j){ animAt(q[0],q[1],q[2],q[3],phv,1,o,{slope:sl,knee:U.uAnimKnee.value,trot:U.uAnimTrot.value}); V.set(o[0],o[1],o[2]).applyMatrix4(Mw);
+                      e.push((V.y-rest[j][0])-(groundY(V.x,V.z)-rest[j][1])); });
+                    /* the planted edge (the lowest against the ground): above its rest contact it floats, below it sinks into the ground; the
+                       highest edge's lift over it is the raised foot's or hoof's (reported) */
+                    var mn=Math.min.apply(null,e), mx=Math.max.apply(null,e), lo=Math.abs(mn);
+                    if(mn>0){ nFl++; if(mn>wFl) wFl=mn; } else if(mn<0){ nPn++; if(-mn>wPn) wPn=-mn; } RZ.push(mx-mn);
+                    E.push(lo); if(lo>wv){ wv=lo; where=id+" ("+part+", "+(rich?"rich":"simple")+") at "+fmtClock(t); } }); } }); }); });
+          RZ.sort(function(x,y){ return x-y; });
+          var fig1=isTrueScale(), srt=E.slice().sort(function(x,y){ return x-y; }), p99=srt.length?srt[Math.min(srt.length-1,Math.floor(0.99*srt.length))]:0, over=E.filter(function(v){ return v>H_TOL; }).length;
+          hT.push(fmtFactor(fct)+"x: "+(fig1?"no figure (decision 34)":E.length+" poses with their slopes; the planted edge off its rest contact: half within "+(srt[Math.floor(srt.length/2)]||0).toFixed(4)+", 99 in 100 within "+p99.toFixed(4)+" (H_TOL "+H_TOL.toFixed(3)+"; "+over+" beyond it), the worst "+wv.toFixed(4)+(where?" ("+where+")":"")+"; floating "+nFl+" (at most "+wFl.toFixed(4)+"), sinking "+nPn+" (at most "+wPn.toFixed(4)+"); the raised edge's lift over the planted one, median "+(RZ[RZ.length>>1]||0).toFixed(3)+", most "+(RZ[RZ.length-1]||0).toFixed(3)+
+            "; at rest the edges stand up to "+restMax.toFixed(3)+" off the ground (the upright figure on a slope, as before 8E)"));
+          if(fig1&&E.length) hBad.push("figures posed at 1x"); if(!fig1&&!E.length) hBad.push(fmtFactor(fct)+"x: no animated figure judged");
+          if(!fig1&&p99>H_TOL) hBad.push(fmtFactor(fct)+"x: 99 in 100 planted edges within "+p99.toFixed(4)+", over "+H_TOL.toFixed(3));
+          if(!fig1&&wv>restMax) hBad.push(fmtFactor(fct)+"x: a planted edge "+wv.toFixed(4)+" off, further than the rest pose stands anywhere ("+restMax.toFixed(3)+")"); });
+        setDisplayFactor(keepE.f);
+        ck("the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' planted hooves keep their rest contact with the drawn ground within 0.03 units (4x; in proportion to the relief at 10.33x) in 99 poses of 100, floating or sinking, and none further off than the rest pose itself stands, the raised edge's lift reported; the rest pose's seating check unchanged; at 1x no figure",
+          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.slice(0,5).join("; "):""));
+
+        /* (j) the step described as decision 244 asks (section 0.3.1, item 8): the legend's row wherever figures are drawn, and the sources sheet's
+           notes, a visual convention for symbols under compressed time, never footsteps matched to the ground */
+        var jBad=[], lgE=document.querySelector(".legend"), lgG=lgE&&lgE.querySelector('[data-lg="gait"]');
+        at(545,"terrain","watch"); settle(4,true); _lgKey=""; paintLegend();
+        if(!lgG||lgG.hidden||!/visual convention for symbols under compressed time, not their footsteps/.test(lgG.textContent)) jBad.push("the legend's row "+(lgG?(lgG.hidden?"hidden where figures are drawn":"worded otherwise"):"missing"));
+        setMode("staff"); settle(2,true); _lgKey=""; paintLegend(); if(lgG&&!lgG.hidden) jBad.push("the legend's row shown on the paper map (no figures)"); setMode("terrain"); settle(2,true); _lgKey=""; paintLegend();
+        var gnT=gaitNotes().join(" "); if(!/a visual convention for symbols under compressed time, not footsteps matched to the ground/.test(gnT)||!/the figures still slide/.test(gnT)) jBad.push("the sources sheet's notes on the step");
+        ck("the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's notes call it a visual convention for symbols under compressed time, not footsteps",
+          !jBad.length, (lgG?'"'+lgG.textContent+'"':"")+(jBad.length?"; WRONG: "+jBad.join("; "):""));
+
+        /* (i) the standards' still drape (section 4.5): the cloth as wide and as deep as before, folded only in its own depth, none at the staff */
+        var iBad=[], P9=GEO.flag.attributes.position, x0=1e9, x1=-1e9, y0=1e9, y1=-1e9, z0=0, zs=0;
+        for(var i9=0;i9<P9.count;i9++){ var x=P9.array[i9*3], y=P9.array[i9*3+1], z=P9.array[i9*3+2]; x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y); z0=Math.max(z0,Math.abs(z)); if(Math.abs(x+1.2)<1e-9) zs=Math.max(zs,Math.abs(z)); }
+        if(Math.abs(x1-x0-2.4)>1e-6||Math.abs(y1-y0-1.4)>1e-6) iBad.push("the cloth "+(x1-x0)+" by "+(y1-y0)); if(!(z0>0)||z0>KIT.std.fold.a+1e-9) iBad.push("its folds "+z0); if(zs>1e-9) iBad.push("folded at the staff");
+        ck("the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most "+KIT.std.fold.a+" units, none at the staff), as wide and as deep as before, so every carrier, count, painting, measure and decision 106's ratio is the 6D checks'",
+          !iBad.length, "the plane 2.4 by 1.4 before scaling, its folds at most "+z0.toFixed(3)+" deep"+(iBad.length?"; WRONG: "+iBad.join("; "):""));
+      } catch(err){ ck("the troops (8E): the checks ran", false, "threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+      } finally {
+        playing=keepE.pl; speed=keepE.sp; RM=keepE.rm; DWELL.st=null;
+        if(EYE.on) eyeLeave(); setCommandView(keepE.cv);
+        if(DISPLAY.factor!==keepE.f) setDisplayFactor(keepE.f);
+        if(mode!==keepE.mode) setMode(keepE.mode); setPresentation(keepE.pres); setClock(keepE.t,{instant:true,force:true,camera:false}); finishTween();
+        if(keepE.sel) select(keepE.sel[0],keepE.sel[1]);
+        landCam.position.copy(keepE.pos); orbitTarget.copy(keepE.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=keepE.fc; settle(4,true);
       }
     })();
 

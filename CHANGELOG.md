@@ -1,8 +1,133 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8E: the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)), with the audit of 8D's two findings
+
+**Status: built on `claude/optimistic-thompson-4e5hsn` (draft PR #70, into `main` at `2f41819`, PR #69's merge), for review; not merged.
+Device acceptance pending** (no owner hardware in the session; the routes are ready, `docs/STAGE8_SPEC.md` §17.13; the phone's route run is
+required before merging, its two Overview views over its triangle budget as before 8D). The record is
+`docs/STAGE8_SPEC.md` §17, the evidence `docs/stage8-evidence/8e/`. The build changed: `austerlitz-command-map.html` **2,537,677 bytes, md5
+`d73d01154b8f6e2552fe04bfb24d05e5`** (8D's build 2,403,007, `ae7f16b8...`; the first prerequisite's 2,419,458, `84b5f80c...`; the data task's 2,430,742, `f3c3f3af...`; the
+troops' commit's 2,535,729, `ff3149ad...`; `a99eb7b`'s 2,537,038, `e80577e2...`);
+`check:baseline` moved to it. Data: one data task, its own commit (`d95bfe0`, below), `check:data`'s reference moved to its build; nothing else
+of the data, the geography or the simulation changed. What a visitor notices: close to the eye the men, horses and riders drawn in more parts;
+the guns as Gribeauval field pieces with spoked wheels, their limbers, teams and drivers behind them; marching formations stepping while the
+clock plays at the speeds a visitor meets (fading out at faster playback), a paused clock holding their pose, the guns' wheels turning with
+their teams; a legend row and the sources sheet saying what the step is; standards with a still drape; a formation's facing the same however
+its clock was reached.
+
+- **Prerequisite 1 (`2af8ed9`): culling's animation allowance follows the geometry drawn and the animation's definition** (the audit of 8D: the
+  envelope read once per mesh; the leg box's 0.022 cached against 0.283 needed). `animEnv` keyed by the attributes and `ANIM.ver`, `cullStale`
+  comparing every field, `animDefine` moving the programs' key; held by the self-test (manifest 284 to 285), `runtime-test.js`, `cullmotion.js`,
+  each made to fail (`docs/stage8-evidence/8e/envelope.json`, `mutate-pre1.json`).
+- **Prerequisite 2 (`1c6b54e`): culling's static comparison requires zero differences, located** (the audit of 8D: a culling difference excused by
+  an equal count of repeat noise elsewhere). `censusCheck` fails any differing pixel and any repeat difference (inconclusive); `cullEquiv` locates
+  both (`docs/stage8-evidence/8e/equiv.json`: the old rule passes a wrongly culled mesh hidden by noise elsewhere, the new fails it).
+- **The data task (`d95bfe0`): the artillery's claims registered, graded and scoped before anything is drawn from them (decision 243 (a)).** The leads of Stage 8
+  Part A (`docs/stage8-evidence/leads.md`, topic 1) re-read on the printed page images (archive.org's page images and the UIBK scan, each
+  read on the image; the register `docs/stage8-evidence/8e/artillery-readings.md`, 15 items with each passage as printed, its grade on the
+  appearance table's scale, its scope and what the drawing takes from it). Recorded in `appearance.js`, declaration by declaration:
+  - `APPEARANCE_SOURCES` **changed**: three works added, `gassendi2_1809` (Gassendi, *Aide-mémoire*, 4e éd., t. II, 1809),
+    `alombert1_1902` (Alombert and Colin, *La campagne de 1805 en Allemagne*, t. I, 1902) and `nilus1904` (Nilus, *История материальной
+    части артиллерии*, т. 2, 1904); every other entry byte-identical.
+  - `ORDNANCE` **added** (guarded by `check:data` since that commit, `tools/visual/data-invariance.js`'s historical datasets): per army, each
+    claim with its source, locator, grade, label, quotation and **scope** (the troops and the time its source speaks for). France: the system
+    (Gribeauval, B; which calibres stood where on 2 December not read, so no calibre or model is claimed), the wheels (Gassendi's 4 pieds
+    6 pouces and 3 pieds 6 pouces, 1.462 and 1.137 m derived, their felloes; B), the coffret's two places (B), the limber 20 paces to the
+    rear (B; how far it turned not read: the facing drawn is a design value), foot artillery limbered on the move (B, with Gassendi's own
+    caveat that it is not regulated), the team of four for the 8, the 4 and the howitzer (B), the harness's two saddles (B; that the porteur
+    is the near horse an inference), and **the drivers: IV Corps' letter of 25 October 1805 (Salligny to its divisions' generals), one train
+    soldier a vehicle, two at most for six horses, grade A as a document, label inference** (that it still held on 2 December is not shown),
+    its scope IV Corps' divisions' teams only; limbering's duration generic (no source read gives it). The Guard: its teams of August 1805
+    (A, nothing drawn from it) and its drivers generic (not read; IV Corps' letter does not reach it). Austria (the Liechtenstein limber's box,
+    B) and Russia (the Arakcheev limbers' boxes, B): boundaries, nothing drawn from them, their drivers generic (not re-read). Their
+    carriages' colour stays one colour for every army (decisions 109, 243 (a)).
+  - `test.js` holds `ORDNANCE`: every value a claim with its scope (or generic with its reason), the wheels in metres with the limber's the
+    smaller, the team a count, each drivers claim a count for a corps of the data, the Guard's, the Austrian and the Russian drivers generic,
+    limbering generic; every source a note names registered.
+  - **`check:data`'s reference moved** from `archive/step5c-45f8f662.html` to `archive/stage8e-f3c3f3af.html`, that commit's build (the 8D
+    build with the new `appearance.js` alone): against the old reference 130 of 132 data declarations byte-identical, `APPEARANCE_SOURCES`
+    changed and `ORDNANCE` added as listed above; against the new, all 132 identical. Nothing is drawn from `ORDNANCE` in that commit.
+  - Its build: `austerlitz-command-map.html` 2,430,742 bytes, md5 `f3c3f3af1200cad9c6685e3633414acf` (`check:baseline` at it until the troops' commit). All nine
+    suites and the height guard pass on it.
+- **Decision 242 (a): the kit, at two levels of detail.** Every class keeps 6C's kit (the simple level, unchanged) and a richer one drawn where a
+  man stands 16 CSS px or more on screen (17.6 to turn rich, 14.5 to turn back), measured through the camera at the block's nearest point, in the
+  eye's view only; a block's meshes switch together, each to its own pair; nothing allocated. The rich man, rider and horse from Part A's
+  direction and the existing claims only (decision 245 (a): no facings; the saddle stays the leather: the saddle-cloths' claims carry no colour
+  class); the same colours and the same height to the hat's top (decision 106's ratio unchanged). Per figure against 8D's kit, the most by
+  kind: a gunner 1.21, a man on foot 1.17 to 1.18, a rider and his horse 1.00 (the same count reshaped: the rich horse 120 triangles
+  against 108, the rich rider 12 fewer); all 39 classes within the limit, and the simple level 8D's kit in every one (section 8.2's limit 1.3). Each mesh draws a geometry of its own over its class's shared attributes, so no formation's state
+  is written into a shared geometry.
+- **Decision 243 (a): the artillery.** A generic Gribeauval field piece (no calibre or model claimed) on a bracket trail, its wheels and its
+  limber's at Gassendi's heights at the figures' scale (1.293 and 1.006 units), twelve and ten spokes (an inference from the felloes); the
+  coffret between the cheeks on the move and on the limber in action; the limbered piece on its limber's pintle; in action, behind each piece of
+  the guns on the heights, its limber, its team of four (a symbol: a drawn gun stands for two pieces) and its driver. **Drivers only there**: the
+  battery's figures are drawn as IV Corps' foot artillery; the letter addresses IV Corps' divisions' teams, so the drawing is an inference
+  (that these teams were among them, and that the order still held on 2 December, are not shown); the Guard's pieces listed with it are outside
+  it and not drawn as figures; no other battery has drivers. One carriage colour for every army; the switch at once. The Santon's battery its
+  pieces alone, as before. Extra equipment per drawn gun: the vehicles 156 triangles on 8D's build against 256 simple and 940 rich, the team behind a deployed piece 432 and 480
+  (none before), its driver 168 and 156 (none before), the gunners 840 and 1,020 (`docs/stage8-evidence/8e/kit-census.json`).
+- **Decision 244 (a): the gait, the clock's.** The phase is the distance the formation's modelled track has covered at the clock over a stride
+  (design values: 6.6 map units for men, 16 for horses, 12 for teams), each horse on its own beat; the amplitude full up to 3.2 cycles a second
+  of the fastest part drawn, none from 4.8, eased between, none halted, under 1 km/h or under reduced motion (at once); a paused clock holds the
+  pose; the horses trot above 8 km/h of modelled speed; the wheels turn with the teams' distance within one spoke's interval. Described as
+  decided, a visual convention for symbols under compressed time, not footsteps matched to the ground: a legend row wherever figures are drawn,
+  and "How the troops move" in the sources sheet (with "How the guns are drawn", its values read from `ORDNANCE` and `GAIT`). No casualty
+  animation, firing, kneeling, falling or wind.
+- **The feet on the ground.** The hook keeps the lowest heel, toe or hoof edge at its rest contact with the drawn ground, against the ground's
+  slopes under each instance (two chords a figure, taken while the clock plays only once a block has moved a tenth of a unit or turned a
+  degree, always at a still clock). Measured by the self-test at 4x and 10.33x, 23,292 poses each: the planted edge within 0.0001 and 0.0002 units of
+  its rest contact in half of them and within 0.020 and 0.047 in 99 of 100 (the check's tolerance at 4x 0.03 units, about 2% of a man's
+  height; 102 and 75 poses beyond it, the worst 0.087 and 0.213); the rest pose's seating unchanged.
+- **S-5: the facing, a function of the clock** (`faceClock`): a formation not marching faces the nearest enemy as placed at the start of its
+  phase or of its halt, whichever is later; until 8E the facing of the first clock visited in the phase (ten formations off by more than 30
+  degrees by path; Bagration in "The wheel" by 178).
+- **The standards' still drape** (section 4.5): two and a half folds, at most 0.07 units deep, in the cloth's depth only; every carrier, count,
+  painting, measure and ratio as 6D's.
+- **The independent review** of the code (an agent reading the diff, not the author): the hook and its JavaScript mirror agree, the envelope
+  holds (400,000 random poses), no crash path; four defects found and fixed before the build was measured: the drivers' scope stated precisely
+  (above), a limbered battery's step faded by its hidden gunners' cadence (now the parts drawn), the wheels stepping back during the fade (now
+  turning whole until it ends), reduced motion taking half a second to stop the gait (now at once); its robustness remarks applied (the hook's
+  man branch names its parts; the level-of-detail box has the men's heights; no allocation in the gait or the facing while the clock stands; the
+  sources sheet's wording).
+- **What the evidence runs found, fixed in a commit of their own (`a99eb7b`).** The self-test's 8E block passed a copy of the build without
+  the level of detail's hysteresis (`mutate-8e.js`'s `lodnohyst`; `css-test.js` held the rule in the source): its check (c) now requires the
+  band between 14.5 and 17.6 px to keep the way the eye came (simple coming in, rich going out; at 140 units, 17.3 px), and fails on the
+  copy. The device route's gait bracket ran no segment (its view looked for among the held views): fixed and run end to end. `clips-8e.js`
+  and `cost-8e.js` played the clock with the dwell on, so stretches begun at an event's start sat in its hold: both now play with the dwell
+  off, the clips and costs made again. Smaller: the deployed battery's still aimed before the guns reach the field; the kit census read no
+  gun count from 8D's battery; one mutation named a condition as it read before a refactor; `alloc-8e.js` gained a warm-up. The build
+  changed in the self-test's check (c) alone: 2,537,038 bytes, md5 `e80577e2...` (the troops' commit `62f5cd2` built 2,535,729 bytes,
+  `ff3149ad...`). **Then two more** (`27a3d2f`): the full mutation table found `slopestale` and `slopeevery` passing the 8E block (its Play left
+  no block behind for the pause to take again, and counted the seatings of formations at rest); check (e) now plays four slow steps after
+  its 24, requires a block left behind and taken again at the pause and the step rule among animated formations' seatings, and both fail.
+  The build: the self-test's check (e) and a counter of the animated formations' seatings (`SEAT_STATS.want`).
+- **Checks.** The self-test 295 of 295 (285 before 8E: ten added and two renamed, the level-of-detail check renamed again in `a99eb7b`; the 8E block ten: the kit, the artillery, the level of detail, the shared geometries, the gait's
+  determinism and its slopes after Play, the amplitude, S-5, the ground contact, the step described, the drape; the 8D block's checks adapted to a
+  gait that writes its uniforms); `css-test.js` an 8E block (17 static mutations, each failing it: `mutate-css-8e.js`); `runtime-test.js` dry
+  runs of the gait, the amplitude, S-5, the notes and the level of detail; the height guard classifies the slopes' ground reads; `boot-check.js` a
+  case `context-gait` (a marching division mid-stride across a lost context); the device route a gait bracket (`perf-run.html?route=gait`). The
+  self-test's 8D and 8E blocks on copies with one rule broken: every one of 26 copies fails the check that holds its rule, and the build passes both blocks;
+  `css-test.js`'s 8E block fails each of 17 copies and its 8D block each of 8. Three self-test mutations passed at first (`lodnohyst`,
+  `slopestale`, `slopeevery`): the checks were strengthened (`a99eb7b`, `27a3d2f`; `tools/stage8/mutate-8e.js`).
+- **Performance** (here: software WebGL, a container's CPU; the device's own for the routes): the frame's triangles at most +8.0% (close on Sokolnitz at 4x; the low Pratzen view +4.7%, the
+  Overviews +0.1% to +0.4%, 1x and the paper map as 8D's), calls at most +2.8%; every desktop view within section 8.3's 2.8 million triangles
+  and 900 calls, so its integrated-GPU condition is not met; the phone's two Overview views over its 1.62 million as before 8D (8E adds
+  0.1% and 0.4%), so the phone route's run is required before merging; the gait no draw call and no triangle (29 views of 29); its CPU
+  0.112 to 0.185 ms a frame (the budget 0.2), the level of detail 0.040 to 0.056 ms more; nothing allocated under 8E's functions while the
+  eye moves; `check:visual` on CI passing in 198 and 169 minutes (8D's 136) on `62f5cd2` and `a99eb7b`; on the final build `27a3d2f`, on a
+  slower runner (every case 1.13 to 1.45 times as long), it reached its job's limit of 240 minutes with its 39 cases passing and about twelve
+  minutes of its work left, so the visual job's limit is now 350 minutes (`.github/workflows/checks.yml`; GitHub ends any job at 360) and
+  the run is made again on the head that carries it; `check:selftest`'s step 19 to 38 minutes on CI (16 to 31 on 8D's), its job's limit 60
+  kept.
+- **What remains uncertain (historical):** which calibres stood where, the limbers' turn, whether IV Corps' reduced drivers held on 2 December
+  and reached the corps' guns on the heights, the gunners beside moving pieces (Gassendi has them; not drawn), the Santon's limbers and teams (not
+  in the data), the saddle-cloths' colours (no colour class). **Implementation choices (design values):** the strides, the swing, the fade's
+  thresholds, the level of detail's 16 px, the battery's layout and every distance at the figures' scale, the crew's posts, the limber's facing.
+
 ## 2026-10 · Stage 8, implementation PR 8D: rendering preparation (decisions 249 (a), 250 (b)), with the owner's decisions 255-258
 
-**Status: built on `claude/kind-darwin-ewmlwu` (draft PR #69, into `main` at `8eb3ef4`), for review; not merged.** No data changed: `check:data`
+**Status: built on `claude/kind-darwin-ewmlwu`; merged into `main` by the owner (PR #69, `2f41819`; the audit of it corrected two findings first
+in 8E).** No data changed: `check:data`
 passes (all 131 declarations byte-identical to its reference); no geography, simulation, visual convention, text size or `lowTier` setting
 changed. The build changed: `austerlitz-command-map.html` **2,403,007 bytes, md5 `ae7f16b8cd2960c8813ff4155263830f`** (8C's build 2,357,922, `04547a28...`; the
 prerequisite's 2,362,317, `87578ebc...`); `check:baseline` moved to it. The record is `docs/STAGE8_SPEC.md` §16; the evidence

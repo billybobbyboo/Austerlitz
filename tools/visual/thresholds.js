@@ -281,9 +281,13 @@ module.exports.motionVis=motionVis;
    in every case (harness.js: measure.js census and cullEquiv on the case's own frame):
    - each of the case's four census frames (culled and not, the ground's depth for the overlays reused and drawn again) reconciled with
      renderer.info for the same frame, draw calls and triangles exactly;
-   - the frame with culling the frame without it, both drawn from the same state and read from the drawing buffer at once: at most EQUIV_PX
-     pixels differing beyond the case's own two renders' difference (0: under software WebGL two renders of one state are equal, so no
-     tolerance is needed, and a case whose two renders were not equal is judged against its own repeat count);
+   - the frame with culling the frame without it, both drawn from the same state and read from the drawing buffer at once: no pixel differing
+     (EQUIV_PX 0), and two renders of the culled frame identical (a deterministic same-state comparison on the pinned browser: under software
+     WebGL two renders of one state are equal). Since 8E's prerequisite (the audit of 8D) a repeat difference fails the comparison as
+     inconclusive, to be investigated, and is never subtracted from the culling's own: before, a case passed while its culled frame differed
+     in as many pixels as its two renders did, wherever those were (equiv-8e.js shows such a pair passing the old rule and failing this one).
+     Were a noise allowance ever justified it would be per pixel (measure.js locates both sets: a difference where the repeat agrees is
+     culling's), never a count taken from elsewhere;
    - section 8.3's budgets, on the frame as the app draws it when the eye moves (culled, every pass, the depth drawn): a desktop's case at
      most DESK's triangles and draw calls (a budget with no alternative: failed); a phone case (lowTier: density 1.0, no shadow) over PHONE's
      triangles is not failed but reported (censusNotes), because section 8.3 gives that budget its own alternative, "else a phone run of the
@@ -299,7 +303,9 @@ function censusCheck(name,m,spec){
   [["culled, the depth reused",C.onWarm],["not culled, the depth reused",C.offWarm],["not culled, the depth drawn",C.offCold],["culled, the depth drawn",C.onCold]].forEach(([k,x])=>{
     if(!x||!x.reconciled) f.push("the census ("+k+"): "+(x?x.calls+" calls and "+x.tris+" triangles counted, renderer.info "+x.infoCalls+" and "+x.infoTris:"not measured")+" (Stage 8, 8D)"); });
   if(!E) f.push("culling's picture not measured (Stage 8, 8D)");
-  else if(!(E.px<=CENSUS.EQUIV_PX+E.repeatPx)) f.push("the frame with culling differs from the frame without it in "+E.px+" pixels (largest channel "+E.max+"; two renders of it "+E.repeatPx+")");
+  else { const loc=q=>(q||[]).slice(0,3).map(p=>"("+p[0]+", "+p[1]+")").join(" ");
+    if(!(E.repeatPx===0)) f.push("inconclusive: two renders of one state differ in "+E.repeatPx+" pixels (first at "+loc(E.firstRepeat)+"): a deterministic comparison must repeat exactly; investigate before judging culling (8E's prerequisite)");
+    if(!(E.px<=CENSUS.EQUIV_PX)) f.push("the frame with culling differs from the frame without it in "+E.px+" pixels (largest channel "+E.max+"; "+(E.outside!==undefined?E.outside+" where two renders of it agree"+(E.outside?", first at "+loc(E.firstOutside):"")+", ":"")+"two renders of it "+E.repeatPx+")"); }
   const D=C.onCold;
   if(D&&!(spec&&spec.device)){ if(!(D.tris<=CENSUS.DESK.tris)) f.push("the frame draws "+D.tris+" triangles, over the desktop's budget of "+CENSUS.DESK.tris+" (section 8.3)");
     if(!(D.calls<=CENSUS.DESK.calls)) f.push("the frame makes "+D.calls+" draw calls, over the desktop's budget of "+CENSUS.DESK.calls+" (section 8.3)"); }

@@ -11,7 +11,9 @@ const DATA={
   "historical datasets":["ASSETS","GEOREF","NATION","CLAIM","CLAIM_FROM_CONF","STATUS","PHASES","FORMATIONS","FEATURES","SOURCE_NOTE",
     "ANALYSIS","COMMAND","KNOW_OVERRIDE","PLANS","ACTS","EVENTS","TOUR","OVERLAYS",
     /* Stage 6B: the historical appearance (appearance.js) */
-    "APPEARANCE_GRADE","APPEARANCE_VOCAB","APPEARANCE_SOURCES","DRESS","COMPOSITION","COLOURS_CARRIED","STANDARD_MEASURES"],
+    "APPEARANCE_GRADE","APPEARANCE_VOCAB","APPEARANCE_SOURCES","DRESS","COMPOSITION","COLOURS_CARRIED","STANDARD_MEASURES",
+    /* Stage 8, implementation PR 8E (decision 243 (a)): the claims the drawn artillery rests on, each with its scope (appearance.js) */
+    "ORDNANCE"],
   "geography and relief model":["W","M2W","UNITS_PER_KM","GOLDBACH_M","LITAVA_M","BROOKS_M","GOLDBACH,LITAVA,BROOKS","ROADS","WOODS","MARSH",
     "VINEYARD","VILLAGES","CHURCHES","CREST_M","TERRAIN_LINES","hash2","vnoise","dist2","pnoise","segDist","polyDist","smoothstep","bump","ell",
     "CREST","PRAT,VINO,PBERG,SANTON,ZURAN,SATS,MENI,SLAV,SCHLAP","regionalH","_RS,_RM","pondHold","regionalLevel","height","localHeight",

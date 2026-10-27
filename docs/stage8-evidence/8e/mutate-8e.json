@@ -1,0 +1,693 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "d73d01154b8f6e2552fe04bfb24d05e5",
+ "chromium": "141.0.7390.37",
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the build as it is)",
+   "block": "8d",
+   "selfTest": {
+    "checks": 14,
+    "failed": [],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 248937 vertices in the world, 12109536 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 264165 vertices in the world, 12718656 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 114380 mesh tests, 85382 culled, 6111 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 352 meshes, shadow pass 495 (170 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 263841 vertices in the world, 12705696 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114079 mesh tests, 85583 culled, 6309 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 249 meshes, shadow pass 522 (292 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 96 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249): every vertex of the kit's geometries carries a part of ANIM's table, eve | 265 kit meshes, 265 kit geometries, the hook compiled for 217 materials and 217 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1570 as three sorts them, the clones drawn last: the coplanar faces that order settles)",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 87 kit meshes in view at amp 1: 80433 pixels of the frame and 8366 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 78226 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 5876136 vertex positions over every pose the hook a",
+     "culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definit | drawn with G1: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; given G2: envelope 1.965, the farthest animated vertex 5.8128 inside the bounds; the definition changed with G2 drawn (the hip's swing doubled, its joint raised): envelope 4.297, the farthest animated vertex 12.429"
+    ],
+    "ms": 154975
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "envonce",
+   "what": "8D's behaviour: the envelope read once, when the mesh's bounds are first made, and kept whatever geometry it is given",
+   "block": "8d",
+   "selfTest": {
+    "checks": 14,
+    "failed": [
+     "culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definit | drawn with G1: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; given G2: envelope 0.000, the farthest animated vertex 5.9797 beyond the bounds; the definition changed with G2 drawn (the hip's swing doubled, its joint raised): envelope 0.000, the farthest animated vertex 13.3541 beyond the bounds; back to G1: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; given G3: envelope 0.000, the farthest animated vertex 6.1247 beyond the bounds; G1 again: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; G1's parts rewritten in place: envelope 0.000, the farthest animated vertex 6.1247 beyond the bounds; G1's parts restored: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; the eye's frustum: G1's bounds 43.10 units out along the axis, 9 of G3's vertices inside at phase 1.57; at the eye's boundary: the mesh alone, culled against not 186 pixels, drawn again 0, the mesh covers 0 pixels; the sun's box: G1's bounds 157.53 units out along the axis, 9 of G3's vertices inside at phase 1.57; at the sun's boundary: the depth map culled against not 135 texels, drawn again 0, the mesh casts 0 texels; WRONG: given G2: an animated vertex 5.9797 outside the bounds; given G2, the bounds' envelope 0 is not G2's 1.9654028577296292; the definition changed with G2 drawn (the hip's swing doubled, its joint raised): an animated vertex 13.3541 outside the bounds; the definition changed, the bounds' envelope stays 0; given G3: an animated vertex 6.1247 outside the bounds; given G3, the bounds' envelope 0 is not G3's 2.034606973270593; G1's parts rewritten in place: an animated vertex 6.1247 outside the bounds; G1's parts rewritten in place, the bounds' envelope 0 is not its parts' 2.034606973270593; at the eye's boundary G3's swing reaches into the view and the mesh is not drawn in the world pass; at the eye's boundary the frame differs from the frame without culling (186 pixels); at the eye's boundary the mesh covers no pixel: the placement proves nothing; at the sun's boundary G3's swing reaches into the sun's box and the mesh is not drawn in the shadow pass; at the sun's boundary the depth map differs from the one without culling (135 texels); at the sun's boundary the mesh casts no texel: the placement proves nothing"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 248937 vertices in the world, 12109536 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 264165 vertices in the world, 12718656 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 114380 mesh tests, 85445 culled, 6111 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 351 meshes, shadow pass 495 (171 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 263841 vertices in the world, 12705696 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114079 mesh tests, 85646 culled, 6309 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 249 meshes, shadow pass 522 (292 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 96 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249): every vertex of the kit's geometries carries a part of ANIM's table, eve | 265 kit meshes, 265 kit geometries, the hook compiled for 217 materials and 217 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1570 as three sorts them, the clones drawn last: the coplanar faces that order settles)",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 87 kit meshes in view at amp 1: 80433 pixels of the frame and 8366 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 78226 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 5876136 vertex positions over every pose the hook a"
+    ],
+    "ms": 147524
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "stale8d",
+   "what": "8D's staleness test: the instances' version and count and the geometry's identity only (no attribute or definition compared)",
+   "block": "8d",
+   "selfTest": {
+    "checks": 14,
+    "failed": [
+     "culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definit | drawn with G1: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; given G2: envelope 1.965, the farthest animated vertex 5.8128 inside the bounds; the definition changed with G2 drawn (the hip's swing doubled, its joint raised): envelope 1.965, the farthest animated vertex 1.5617 beyond the bounds; back to G1: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; given G3: envelope 2.035, the farthest animated vertex 6.0830 inside the bounds; G1 again: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; G1's parts rewritten in place: envelope 0.000, the farthest animated vertex 6.1247 beyond the bounds; G1's parts restored: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; the eye's frustum: G1's bounds 43.10 units out along the axis, 9 of G3's vertices inside at phase 1.57; at the eye's boundary: the mesh alone, culled against not 0 pixels, drawn again 0, the mesh covers 186 pixels; the sun's box: G1's bounds 157.53 units out along the axis, 9 of G3's vertices inside at phase 1.57; at the sun's boundary: the depth map culled against not 0 texels, drawn again 0, the mesh casts 135 texels; WRONG: the definition changed with G2 drawn (the hip's swing doubled, its joint raised): an animated vertex 1.5617 outside the bounds; the definition changed, the bounds' envelope stays 1.9654028577296292; G1's parts rewritten in place: an animated vertex 6.1247 outside the bounds; G1's parts rewritten in place, the bounds' envelope 0 is not its parts' 2.034606973270593"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 248937 vertices in the world, 12109536 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 264165 vertices in the world, 12718656 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 114380 mesh tests, 85382 culled, 6111 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 352 meshes, shadow pass 495 (170 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 263841 vertices in the world, 12705696 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114079 mesh tests, 85583 culled, 6309 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 249 meshes, shadow pass 522 (292 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 96 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249): every vertex of the kit's geometries carries a part of ANIM's table, eve | 265 kit meshes, 265 kit geometries, the hook compiled for 217 materials and 217 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1570 as three sorts them, the clones drawn last: the coplanar faces that order settles)",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 87 kit meshes in view at amp 1: 80433 pixels of the frame and 8366 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 78226 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 5876136 vertex positions over every pose the hook a"
+    ],
+    "ms": 152785
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "envcache8d",
+   "what": "8D's envelope cache: one value per part attribute, whatever its version or the animation's definition",
+   "block": "8d",
+   "selfTest": {
+    "checks": 14,
+    "failed": [
+     "culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definit | drawn with G1: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; given G2: envelope 1.965, the farthest animated vertex 5.8128 inside the bounds; the definition changed with G2 drawn (the hip's swing doubled, its joint raised): envelope 1.965, the farthest animated vertex 1.5617 beyond the bounds; back to G1: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; given G3: envelope 2.035, the farthest animated vertex 6.0830 inside the bounds; G1 again: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; G1's parts rewritten in place: envelope 0.000, the farthest animated vertex 6.1247 beyond the bounds; G1's parts restored: envelope 0.000, the farthest animated vertex 0.0000 inside the bounds; the eye's frustum: G1's bounds 43.10 units out along the axis, 9 of G3's vertices inside at phase 1.57; at the eye's boundary: the mesh alone, culled against not 0 pixels, drawn again 0, the mesh covers 186 pixels; the sun's box: G1's bounds 157.53 units out along the axis, 9 of G3's vertices inside at phase 1.57; at the sun's boundary: the depth map culled against not 0 texels, drawn again 0, the mesh casts 135 texels; WRONG: the definition changed with G2 drawn (the hip's swing doubled, its joint raised): an animated vertex 1.5617 outside the bounds; the definition changed, the bounds' envelope stays 1.9654028577296292; G1's parts rewritten in place: an animated vertex 6.1247 outside the bounds; G1's parts rewritten in place, the bounds' envelope 0 is not its parts' 2.034606973270593"
+    ],
+    "passed": [
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 248937 vertices in the world, 12109536 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 7 views, 0 mesh tests, 0 culled, 0 drawn with their centre out of view (at 1× the blocks are not drawn: decision 34)",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 0 meshes, shadow pass 0 (0 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 264165 vertices in the world, 12718656 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 380 views, 114380 mesh tests, 85382 culled, 6111 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 352 meshes, shadow pass 495 (170 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): every instanced mesh of every block is bounded: each instance's own sphere (its geomet | 339 meshes with instances of 339 (265 with the kit's parts), 263841 vertices in the world, 12705696 animated positions",
+     "culling (decision 249): over a sweep of views a mesh is culled only when none of its instances is in the eye's | 379 views, 114079 mesh tests, 85583 culled, 6309 drawn with their centre out of view",
+     "culling (decision 249): in a frame of the low Pratzen view and of the close view of Sokolnitz the world pass d | world pass 249 meshes, shadow pass 522 (292 of them out of the eye's view, casting); pixels differing the low Pratzen view 0 (two renders of it 0), close on Sokolnitz 0 (two renders of it 0)",
+     "culling (decision 249): the bounds follow the block: after a change of shape, of the battalions shown, a batte | 96 mesh tests on sthilaire and heightguns (at 13:00)",
+     "culling (decision 249): a block out of the eye's view whose shadow falls in it is drawn in the shadow pass onl | sthilaire (10 meshes, 9 drawn in the shadow pass, none in the world pass): the frame against the frame without culling 0 pixels; with the block hidden 108 pixels differ (its shadow in view); drawn again 0",
+     "animation hooks (decisions 244, 249): every vertex of the kit's geometries carries a part of ANIM's table, eve | 265 kit meshes, 265 kit geometries, the hook compiled for 217 materials and 217 depth materials; the low Pratzen view with and without it 0 pixels differing, the draw order held (1570 as three sorts them, the clones drawn last: the coplanar faces that order settles)",
+     "animation hooks (for 8E): a controlled deformation moves the drawn figures and their shadow alike (without the | 87 kit meshes in view at amp 1: 80433 pixels of the frame and 8366 texels of the sun's depth map (256 x 256 read) move; with the depth materials' hook removed, the shadow at rest, 78226 pixels (the figures alone) and 0 texels; back at rest 0 and 0; 5876136 vertex positions over every pose the hook a"
+    ],
+    "ms": 155322
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "none8e",
+   "what": "nothing (the build as it is)",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 52460
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "kitratio",
+   "what": "the rich kit's head four times as fine (its triangles past section 8.2's 1.3 times)",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 572 triangles (2.01); a gunner 168 to 492 triangles (2.93); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 564 triangles (2.04); a man on foot 200 to 524 triangles (2.62); WRONG: a rider and his horse: 2.014 times its simple kit (section 8.2: 1.3); a gunner: 2.929 times its simple kit (section 8.2: 1.3); a driver and his horse: 2.043 times its simple kit (section 8.2: 1.3); a man on foot: 2.620 times its simple kit (section 8.2: 1.3)"
+    ],
+    "passed": [
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 50713
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "kitcolour",
+   "what": "the rich man's feet in the leather's colour, not the legwear's",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18); WRONG: heightguns foot: the rich kit's colours are not the simple kit's"
+    ],
+    "passed": [
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 48519
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "artwheels",
+   "what": "the limber's wheels the gun's size (Gassendi's two heights not kept)",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.293 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.303 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6 drivers; the drivers' claim reaches 5 formations, all of IV Corps; heightguns 1 a vehicle (alombert4_1908, 1805-10-25); limbered: each trail's end 0.046 units at most from its limber's pintle; the battery deployed half a minute before its leg begins (13:45) and limbered half a minute after: the switch at once (ORDNANCE.fr.limbering, no duration read); WRONG: simple limber's wheels 1.293 high, Gassendi's 1.006; rich limber's wheels 1.303 high, Gassendi's 1.006"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 52112
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "artcoffret",
+   "what": "no coffret on the deployed limber (ORDNANCE.fr.coffret not drawn)",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6 drivers; the drivers' claim reaches 5 formations, all of IV Corps; heightguns 1 a vehicle (alombert4_1908, 1805-10-25); limbered: each trail's end 0.056 units at most from its limber's pintle; the battery deployed half a minute before its leg begins (13:45) and limbered half a minute after: the switch at once (ORDNANCE.fr.limbering, no duration read); WRONG: deployed: the coffret not on the limber (ORDNANCE.fr.coffret: on the limber in action, between the cheeks limbered)"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 34 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 68 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 50482
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "artdrivers",
+   "what": "IV Corps' authorisation generalised: a driver on every French team",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6 drivers; the drivers' claim reaches 25 formations, all of IV Corps; heightguns 1 a vehicle (alombert4_1908, 1805-10-25); limbered: each trail's end 0.056 units at most from its limber's pintle; the battery deployed half a minute before its leg begins (13:45) and limbered half a minute after: the switch at once (ORDNANCE.fr.limbering, no duration read); WRONG: drivers drawn outside IV Corps: gqg, c_iii, friant, bourcier, c_v, caffarelli, suchet, santon, c_cav, kellermann, nansouty, dhautpoul, walther, c_i, rivaud, drouet, c_gd, guard_inf, guard_cav, c_gren"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 47325
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "lodcentre",
+   "what": "a man's size on screen measured at the block's centre, not at its nearest point",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 19.5 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 13.8 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (16.8 px): simple coming in, rich going out; 140 switches over the checks; WRONG: close on Sokolnitz: dhautpoul simple with a man 17.7 px high; close on Sokolnitz: rivaud simple with a man 19.1 px high"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0189 (H_TOL 0.030; 98 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9268 (at most 0.0873), sinking 9767 (at most 0.0704); the raised ",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 48443
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "lodnohyst",
+   "what": "no hysteresis: one threshold each way",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 140 units (the block's nearest point 17.3 px, its largest man 15.5 px); 174 switches over the checks; WRONG: at 140 units (17.3 px, in the band) simple both ways (no hysteresis); no distance of the dolly in the band between 14.5 and 17.6 px where the level is the way the eye came (no hysteresis seen)"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0189 (H_TOL 0.030; 98 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9264 (at most 0.0873), sinking 9800 (at most 0.0704); the raised ",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 50288
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "lodsplit",
+   "what": "a block's first mesh left on the simple kit when the block turns rich",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over the checks; WRONG: vantage zuran: sthilaire a mesh not on its block's level; vantage zuran: vandamme a mesh not on its block's level; vantage zuran: caffarelli a mesh not on its block's level; vantage zuran: kellermann a mesh not on its block's level; vantage zuran: nansouty a mesh not on its block's level; vantage zuran: dhautpoul a mesh not on its block's level"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 48239
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "shared",
+   "what": "the phases written into the shared geometry",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones; WRONG: a shared geometry carries phases; a shared geometry carries phases; a shared geometry carries phases; a shared geometry carries phases; a shared geometry carries phases"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 49099
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "gaitwall",
+   "what": "the phase accumulated frame by frame (wall-clock), not the clock's",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0006 apart between paths (within 0.02); Play at half speed for 24 steps and four slow ones: 546 seatings, 189 of animated formations, 157 of them taking the slopes (2 blocks left behind at the last step); paused: 59 meshes' slopes exactly the clock's; WRONG: 09:05 reached from another clock: friant#0 uniform 1: 0.5 against 0.7; friant#1 uniform 1: 0.5 against 0.7; 09:05 reached from another clock: friant#0 uniform 1: 0.5 against 0.4; friant#1 uniform 1: 0.5 against 0.4; 09:05 reached from another clock: friant#0 uniform 1: 0.5 against 0.4; friant#1 uniform 1: 0.5 against 0.4; 09:05 sthilaire: the phase 0.400000, the track's 3.960497; 09:05 sthilaire: the phase 0.400000, the track's 3.960497"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 48090
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "wheelwrap",
+   "what": "the wheels' angle not taken within one spoke's interval",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow ones: 546 seatings, 189 of animated formations, 157 of them taking the slopes (2 blocks left behind at the last step); paused: 59 meshes' slopes exactly the clock's; WRONG: 13:50 heightguns: the wheels 0.72851, 0.93675; the distance's 0.20491, 0.30843; 13:50 heightguns: a wheel's angle beyond half a spoke's interval; 13:50 heightguns: the wheels 0.72851, 0.93675; the distance's 0.20491, 0.30843; 13:50 heightguns: a wheel's angle beyond half a spoke's interval; 13:50 heightguns: the wheels 0.72851, 0.93675; the distance's 0.20491, 0.30843"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 50016
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "gaitnofade",
+   "what": "the amplitude never faded by the speed",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 1.000 in the first 60th of a second, to none in 200 (about 3.33 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set; WRONG: 09:05 at 1x sthilaire: amplitude 1.0000, the rule's 0.5199 (4.97 km/h); 09:05 at 1x vandamme: amplitude 1.0000, the rule's 0.5240 (4.96 km/h); 09:05 at 2x sthilaire: amplitude 1.0000, the rule's 0.0000 (4.97 km/h); 09:05 at 2x vandamme: amplitude 1.0000, the rule's 0.0000 (4.96 km/h); 09:05 at 2x friant: amplitude 1.0000, the rule's 0.9788 (2.02 km/h); 09:05 at 2x rivaud: amplitude 1.0000, the rule's 0.0461 (2.96 km/h)"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 47349
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "gaitcrew",
+   "what": "a battery's cadence its hidden crew's (every part's, not the parts drawn)",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set; WRONG: 13:50 at 2x heightguns: amplitude 0.0000, the rule's 1.0000 (3.17 km/h)"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 51568
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "gaitrmease",
+   "what": "reduced motion eased, not at once",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set; WRONG: under reduced motion sthilaire at 0.16714028538504955 one frame after it was set; under reduced motion vandamme at 0.16714028538504955 one frame after it was set; under reduced motion friant at 0.16714028538504955 one frame after it was set; under reduced motion rivaud at 0.16714028538504955 one frame after it was set; under reduced motion drouet at 0.16714028538504955 one frame after it was set; under reduced motion milo at 0.16714028538504955 one frame after it was set"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 49281
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "gaitparts",
+   "what": "a formation's horses faded apart from its men",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set; WRONG: 09:05 sthilaire: its parts not together; 09:05 sthilaire: its parts not together; 09:05 sthilaire: its parts not together; 09:05 vandamme: its parts not together; 09:05 vandamme: its parts not together; 09:05 vandamme: its parts not together"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 49412
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "gaitdrift",
+   "what": "no 1 km/h floor: a drift between anchors stepped",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 23 animated formations at rest one frame after it was set; WRONG: 09:05 at paused legrand: amplitude 1.0000, the rule's 0.0000 (0.99 km/h); 09:05 at paused bourcier: amplitude 1.0000, the rule's 0.0000 (0.14 km/h); 09:05 at paused kellermann: amplitude 1.0000, the rule's 0.0000 (0.20 km/h); 09:05 at paused nansouty: amplitude 1.0000, the rule's 0.0000 (0.28 km/h); 09:05 at paused dhautpoul: amplitude 1.0000, the rule's 0.0000 (0.31 km/h); 09:05 at paused walther: amplitude 1.0000, the rule's 0.0000 (0.32 km/h)"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 50626
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "gaitrm",
+   "what": "reduced motion ignored by the gait",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set; WRONG: under reduced motion sthilaire at 1 one frame after it was set; under reduced motion vandamme at 1 one frame after it was set; under reduced motion friant at 1 one frame after it was set; under reduced motion rivaud at 1 one frame after it was set; under reduced motion drouet at 1 one frame after it was set; under reduced motion milo at 1 one frame after it was set"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 48071
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "gaitnoease",
+   "what": "the amplitude set at once, not eased",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.000 in the first 60th of a second, to none in 1 (about 0.02 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set; WRONG: the amplitude not eased (0 after one frame); the ease took 1 frames"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 49006
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "slopestale",
+   "what": "the slopes left where Play stopped (not taken again on the pause)",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow ones: 546 seatings, 189 of animated formations, 157 of them taking the slopes (2 blocks left behind at the last step); paused: 59 meshes' slopes exactly the clock's; WRONG: paused after Play: 2 blocks' slopes left behind"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 47308
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "slopeevery",
+   "what": "the slopes taken at every seating while the clock plays (no step)",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow ones: 546 seatings, 189 of animated formations, 189 of them taking the slopes (0 blocks left behind at the last step); paused: 59 meshes' slopes exactly the clock's; WRONG: while the clock played every animated formation's seating took the slopes (189 of 189: no step rule); no block's slopes left behind as the clock stopped: the pause's taking them again not exercised"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 50295
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "s5",
+   "what": "8D's facing: cached per phase at the first clock visited",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0036 apart between paths (within 0.02); Play at half speed for 24 steps and four slow ones: 548 seatings, 189 of animated formations, 157 of them taking the slopes (2 blocks left behind at the last step); paused: 59 meshes' slopes exactly the clock's; WRONG: 13:50 with the clock standing: 22 pixels changed; 15:05 with the clock standing: 2 pixels changed",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths; WRONG: 04:03 gqg: 0.829, 1.000, 0.832; 04:03 friant: 2.021, 1.942, 2.020; 04:03 bourcier: 1.997, 1.971, 1.996; 04:03 rivaud: 0.935, 1.138, 0.938; 04:03 drouet: 1.057, 1.135, 1.061"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 172 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0195 (H_TOL 0.030; 93 beyond it), the worst 0.1094 (guard_inf (fixed, rich) at 09:05); floating 9830 (at most 0.1094), sinking 10228 (at most 0.0704); the rai",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 48667
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "contact",
+   "what": "the drawn ground's slopes not counted in the rise or dip that plants the feet (the hook and its mirror alike)",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0083, 99 in 100 within 0.1660 (H_TOL 0.030; 3373 beyond it), the worst 0.2449 (kamensky (fixed, rich) at 10:40); floating 6018 (at most 0.0441), sinking 14402 (at most 0.2449); the raised edge's lift over the planted one, median 0.131, most 0.611; at rest the edges stand up to 0.543 off the ground (the upright figure on a slope, as before 8E); 10.33x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0215, 99 in 100 within 0.4815 (H_TOL 0.077; 3916 beyond it), the worst 0.6561 (gqg (horse, simple) at 09:05); floating 4338 (at most 0.0746), sinking 16082 (at most 0.6561); the raised edge's lift over the planted one, median 0.140, most 1.381; at rest the edges stand up to 1.406 off the ground (the upright figure on a slope, as before 8E); WRONG: 4x: 99 in 100 planted edges within 0.1660, over 0.030; 10.33x: 99 in 100 planted edges within 0.4815, over 0.077"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\"",
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep"
+    ],
+    "ms": 49146
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "drape",
+   "what": "the cloth narrowed by its folds",
+   "block": "8e",
+   "selfTest": {
+    "checks": 10,
+    "failed": [
+     "the standards' drape (section 4.5; 8E): the cloth folded only in its depth (at most 0.07 units, none at the st | the plane 2.4 by 1.4 before scaling, its folds at most 0.070 deep; WRONG: the cloth 2.328000068664551 by 1.399999976158142"
+    ],
+    "passed": [
+     "the kit (decision 242 (a)): every class drawn at two levels, the rich kit its class's simple one in every clai | 35 pairs; per figure, the most against its simple kit: a rider and his horse 284 to 284 triangles (1.00); a gunner 168 to 204 triangles (1.21); a team's horse 108 to 120 triangles (1.11); a driver and his horse 276 to 276 triangles (1.00); a man on foot 200 to 236 triangles (1.18)",
+     "the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, ev | simple: the wheels 1.293 and 1.006 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); rich: the wheels 1.303 and 1.016 units (Gassendi's 1.462 and 1.137 m at 0.8844 a metre: 1.293, 1.006); deployed: 6 guns, 6 limbers, 24 horses, 6 drivers; limbered: 6 guns, 6 limbers, 24 horses, 6",
+     "the kit's level of detail (decisions 242 (a), 249): every block with a man 17.6 CSS px or more high in the eye | sthilaire along a dolly: rich at 120 units (the block's nearest point 20.3 px, its largest man 18.2 px), simple at 170 units (the block's nearest point 14.2 px, its largest man 12.7 px); the band kept by the way the eye came at 140 units (17.3 px): simple coming in, rich going out; 174 switches over",
+     "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its c | 265 kit meshes, 530 geometries of their own over 70 shared ones",
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.0014 apart between paths (within 0.02); Play at half speed for 24 steps and four slow on",
+     "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion b | the ease: sthilaire from 1 to 0.780 in the first 60th of a second, to none in 28 (about 0.47 s), then idle true; 780 judgments: 111 full, 19 in the fade, 20 faded out, 450 drifting under 1 km/h; under reduced motion 7 animated formations at rest one frame after it was set",
+     "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phas | 960 facings at three clocks of each phase, each from three paths",
+     "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' plant | 1x: no figure (decision 34); 4x: 23292 poses with their slopes; the planted edge off its rest contact: half within 0.0001, 99 in 100 within 0.0199 (H_TOL 0.030; 102 beyond it), the worst 0.0873 (c_gren (fixed, rich) at 09:05); floating 9710 (at most 0.0873), sinking 10262 (at most 0.0704); the raise",
+     "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's not | \"marching figures step: a visual convention for symbols under compressed time, not their footsteps\""
+    ],
+    "ms": 48505
+   },
+   "pageErrors": []
+  }
+ ]
+}

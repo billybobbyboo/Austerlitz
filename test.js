@@ -295,6 +295,20 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
     if(plain(c.cloth)&&!(c.cloth.w>0&&c.cloth.h>0&&c.cloth.unit)) bad("colours "+k+".cloth: no dimensions");
     ["staff","finial","pattern"].forEach(a=>{ if(c[a]!==undefined) claim("colours "+k+"."+a,c[a],null,true); });
     if(plain(c.staff)&&!(c.staff.m>0)) bad("colours "+k+".staff: no metres"); });
+  /* Stage 8, implementation PR 8E (decision 243 (a), with its source boundaries): ORDNANCE, the claims the drawn artillery rests on. Every
+     value a claim (or generic with its reason) with a scope naming the troops and the time its source speaks for; the wheels in metres, the
+     limber's below the gun's, their felloes; the team a count; each drivers claim a count for a corps the data has; the Guard's, the
+     Austrian and the Russian entries' drivers generic (IV Corps' letter does not reach them) */
+  if(typeof ORDNANCE!=="object"||!ORDNANCE) bad("ORDNANCE missing (8E)");
+  else Object.entries(ORDNANCE).forEach(([army,E])=>{ ap++;
+    Object.entries(E).forEach(([k,v])=>{ (Array.isArray(v)?v:[v]).forEach((c,i)=>{ const w="ordnance "+army+"."+k+(Array.isArray(v)?"["+i+"]":"");
+      claim(w,c); if(c&&!c.gen&&!(typeof c.scope==="string"&&c.scope.length>=20)) bad(w+": a claim without its scope (8E: where each source applies)"); }); });
+    if(army!=="fr"&&!(E.drivers&&E.drivers.gen)) bad("ordnance "+army+".drivers: "+army+"'s drivers must stay generic (decision 243: IV Corps' letter is not a rule for them)"); });
+  { const F=ORDNANCE&&ORDNANCE.fr||{}, wl=F.wheels, tm=F.team;
+    if(!(wl&&wl.gun_m>0&&wl.limber_m>0&&wl.limber_m<wl.gun_m&&wl.felloes&&wl.felloes.gun>0&&wl.felloes.limber>0)) bad("ordnance fr.wheels: the gun's and the limber's heights in metres (the limber's the smaller) and their felloes");
+    if(!(tm&&Number.isInteger(tm.n)&&tm.n>0)) bad("ordnance fr.team: no count of horses");
+    (F.drivers||[]).forEach((d,i)=>{ if(!(Number.isInteger(d.n)&&d.n>0&&FORMATIONS[d.corps]&&FORMATIONS[d.corps].ech==="corps")) bad("ordnance fr.drivers["+i+"]: a count a vehicle for a corps of the data ("+d.corps+")"); });
+    if(!(F.limbering&&F.limbering.gen)) bad("ordnance fr.limbering: no source gives limbering's duration, so it stays generic (the switch at once)"); }
   ["fr","ru","at"].forEach(n=>{ ap++; const M=STANDARD_MEASURES[n];
     if(!M){ bad("standard measures: "+n+" missing"); return; }
     if(M.provisional){ if(!M.why) bad("standard measures "+n+": provisional without a reason"); return; }
@@ -302,7 +316,7 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
     if(!(M.staff&&M.staff.m>0&&M.stature&&M.stature.m>0)) bad("standard measures "+n+": no metres"); });
   /* a source a note names counts as cited; a token in a note that looks like a source key must be one */
   const notes=[]; (function walk(o){ if(!o||typeof o!=="object") return; for(const [k,v] of Object.entries(o)){
-    if(typeof v==="string"&&["note","why","basis"].includes(k)) notes.push(v); else if(typeof v==="object") walk(v); } })([DRESS,COMPOSITION,COLOURS_CARRIED,STANDARD_MEASURES]);
+    if(typeof v==="string"&&["note","why","basis"].includes(k)) notes.push(v); else if(typeof v==="object") walk(v); } })([DRESS,COMPOSITION,COLOURS_CARRIED,STANDARD_MEASURES,ORDNANCE]);
   notes.forEach(t=>(t.match(/\b[a-z][a-z0-9_]*\d{4}[a-z]{0,3}\b/g)||[]).forEach(k=>{ if(srcOk(k)) used.add(k); else bad("a note names an unknown source '"+k+"'"); }));
   /* roadmap step 4: a source a statement's claim rests on is cited too (narrative.js; the review of f40ea90: APPEARANCE_SOURCES is the one table of works read) */
   Object.keys(STATEMENT_CLAIMS).forEach(r=>{ const c=STATEMENT_CLAIMS[r]; if(c&&Array.isArray(c.by)) c.by.forEach(b=>{ if(b&&typeof b.src==="string") used.add(b.src); }); });

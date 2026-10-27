@@ -1,0 +1,202 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "e80577e2e2ac815205bf8b1572e767bd",
+ "n": 240,
+ "reps": 5,
+ "t0": 640,
+ "views": {
+  "pratzen-low": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 640,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     5.2208,
+     4.4671
+    ],
+    "seat": [
+     1.39,
+     1.075
+    ],
+    "lod": [
+     0.05,
+     0.0421
+    ],
+    "gait": [
+     0.0883,
+     0.0654
+    ],
+    "slopeLookups": [
+     3670.7,
+     2826.9
+    ],
+    "lookupUs": 0.0275,
+    "slopeMsCounted": 0.0232,
+    "slopeMsTimed": 0.315,
+    "slopeMsTimedPairs": [
+     0.0592,
+     -0.005,
+     0.3271,
+     0.4438,
+     0.0533
+    ],
+    "slopeMsBench": 0.0345,
+    "benchBlocks": 13,
+    "uploads": 36.27,
+    "uploadKB": 6.37,
+    "seatings": 25.52,
+    "slopeSeatings": 4.08,
+    "animationMs": 0.1228,
+    "lodMs": 0.05,
+    "animatedAtEnd": 13
+   }
+  },
+  "close-sokolnitz": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 640,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.81,
+     5.1558
+    ],
+    "seat": [
+     1.1429,
+     1.1425
+    ],
+    "lod": [
+     0.0483,
+     0.0421
+    ],
+    "gait": [
+     0.0825,
+     0.0863
+    ],
+    "slopeLookups": [
+     3670.7,
+     2826.9
+    ],
+    "lookupUs": 0.028,
+    "slopeMsCounted": 0.0236,
+    "slopeMsTimed": 0.0004,
+    "slopeMsTimedPairs": [
+     -0.0758,
+     0.2017,
+     0.4392,
+     -0.3179,
+     0.0579
+    ],
+    "slopeMsBench": 0.035,
+    "benchBlocks": 13,
+    "uploads": 36.27,
+    "uploadKB": 6.37,
+    "seatings": 25.52,
+    "slopeSeatings": 4.08,
+    "animationMs": 0.1175,
+    "lodMs": 0.0483,
+    "animatedAtEnd": 13
+   }
+  },
+  "overview-plan": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 640,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.0367,
+     4.1429
+    ],
+    "seat": [
+     1.0929,
+     1.0767
+    ],
+    "lod": [
+     0.0446,
+     0.0438
+    ],
+    "gait": [
+     0.0704,
+     0.0742
+    ],
+    "slopeLookups": [
+     3670.7,
+     2826.9
+    ],
+    "lookupUs": 0.0265,
+    "slopeMsCounted": 0.0224,
+    "slopeMsTimed": 0.0162,
+    "slopeMsTimedPairs": [
+     0.0163,
+     0.0746,
+     0.1096,
+     0.1533,
+     -0.0937
+    ],
+    "slopeMsBench": 0.0474,
+    "benchBlocks": 13,
+    "uploads": 36.27,
+    "uploadKB": 6.37,
+    "seatings": 25.52,
+    "slopeSeatings": 4.08,
+    "animationMs": 0.1178,
+    "lodMs": 0.0446,
+    "animatedAtEnd": 13
+   }
+  },
+  "overview-field": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 640,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.8725,
+     4.6133
+    ],
+    "seat": [
+     1.1721,
+     1.0467
+    ],
+    "lod": [
+     0.0421,
+     0.0433
+    ],
+    "gait": [
+     0.0792,
+     0.0696
+    ],
+    "slopeLookups": [
+     3670.7,
+     2826.9
+    ],
+    "lookupUs": 0.028,
+    "slopeMsCounted": 0.0236,
+    "slopeMsTimed": 0.1254,
+    "slopeMsTimedPairs": [
+     0.2146,
+     0.0771,
+     0.1708,
+     -0.0679,
+     0.0017
+    ],
+    "slopeMsBench": 0.0365,
+    "benchBlocks": 13,
+    "uploads": 36.27,
+    "uploadKB": 6.37,
+    "seatings": 25.52,
+    "slopeSeatings": 4.08,
+    "animationMs": 0.1157,
+    "lodMs": 0.0421,
+    "animatedAtEnd": 13
+   }
+  }
+ },
+ "chromium": "141.0.7390.37"
+}

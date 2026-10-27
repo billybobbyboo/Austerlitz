@@ -7,7 +7,10 @@
    - "no-webgl": Chromium launched with --disable-3d-apis --disable-gpu (three.js loads; no WebGL context);
    - "slow": three.js answered after 21 s: the status line says so at 20 s, and the page then starts as usual (no failure, nothing inert);
    - "context-loss": a normal start, then the context lost (WEBGL_lose_context) and restored with the page idle (no warning yet), then a step
-     of the clock (decision 212 (b)) that disposes geometries made before the loss: at least one warning, at most CTX_DELETES.
+     of the clock (decision 212 (b)) that disposes geometries made before the loss: at least one warning, at most CTX_DELETES;
+   - "context-depth" (Stage 8, 8C): the ground's depth drawn again across a loss with the eye still;
+   - "context-gait" (Stage 8, 8E): a marching division mid-stride, close and rich, across a loss: the kit's programs compiled again with the
+     hook, the frame and the sun's depth map drawn with the pose (below).
    A failure case passes only if, within 15 s of the page's load: the alert dialog #boot-fail is shown with the reason for its kind and no
    other, focus is on Reload and stays there through Tab and Shift+Tab, every other child of the body is inert, the first-run card is
    hidden, a key behind the dialog does nothing, its text meets WCAG AA (4.5:1) against its own background, and the page's messages are
@@ -45,6 +48,9 @@ const EXPECT={
   /* Stage 8, implementation PR 8C (the audit of 8B, finding A): the same warning, should the case's view dispose anything after the restore
      (none was seen: the view is held still) */
   "context-depth":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
+    "as in context-loss (three r128's dispose listener of the lost context); bound CTX_DELETES",0,"CTX"]],
+  /* Stage 8, implementation PR 8E: the same, should the view dispose anything after the restore */
+  "context-gait":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
     "as in context-loss (three r128's dispose listener of the lost context); bound CTX_DELETES",0,"CTX"]]
 };
 async function page(browser,label,route){
@@ -247,6 +253,54 @@ async function runBootCases(html,only){
         if(!(a.frame<=FRAME_TOL)) bad.push("the frame after the restore differs from the frame before the loss in "+a.frame+" pixels (at most "+FRAME_TOL+", the figures hidden)"); }
       bad.push.apply(bad,judgeLog("context-depth",log));
       R.push({name:"context-depth",ok:!bad.length,line:"context-depth: "+(bad.length?bad.join("; "):"the eye still across a loss and a restore: the ground's depth drawn again ("+a.passes.join(" -> ")+" passes), its "+a.texels+" texels as before, the frame within "+a.frame+" pixels of the frame before the loss (the figures hidden; with them "+a.frameFigures+"), the view's ground hiding "+a.occl+" pixels of the overlays")});
+    } finally { await browser.close(); } }
+  /* Stage 8, implementation PR 8E (docs/STAGE8_SPEC.md section 17): the gait across a lost and restored context. Saint-Hilaire's division
+     climbing at 09:00 (4x), the clock stopped, so its men stand mid-stride at full swing, close enough for the rich kit, the eye and the window
+     still. Before the loss: the frame and a window of the sun's depth map with the pose drawn, and the same with every amplitude 0 (the rest
+     pose: the frame the hook draws at amp 0, the 8D check (e)). After the restore, the app's own frames having drawn: the kit's programs
+     compiled again with the hook (ANIM.built and ANIM.depth moved), the block still rich with its amplitude 1, and the frame and the depth
+     map drawn with the pose: each nearer the posed one before the loss than the rest pose is to it (a restore lets coplanar parts trade places
+     in three's sort, the speckle context-depth reports, so the frame is judged against the pose's own difference, not to the pixel) */
+  if(want("context-gait")){ const browser=await launch({args:BASE_ARGS}), bad=[];
+    try{ const {p,log}=await page(browser,"context-gait",pg=>TR.routeThree(pg));
+      await p.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:60000});
+      await TR.waitBoot(p,240000);
+      const a=await p.evaluate(async()=>{ const ext=renderer.getContext().getExtension("WEBGL_lose_context"); if(!ext) return {noExt:true};
+        if(typeof ANIM==="undefined"||typeof gaitStep!=="function") return {noGait:true};
+        const idle=async()=>{ const t0=performance.now(); let s=0;
+          while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
+          return false; };
+        closeFirst("explore");
+        const id="sthilaire", t=540, pm=posAtClock(id,t), w=W(pm[0],pm[1]), ty=displayHeight(w[0],w[1]), d=new THREE.Vector3(-0.55,0.42,0.72).normalize().multiplyScalar(30);
+        AUSTERLITZ_DEBUG.applyCase({t:t,presentation:"watch",mode:"terrain",factor:4,cam:[w[0]+d.x,ty+d.y,w[1]+d.z,w[0],ty,w[1]]}); AUSTERLITZ_DEBUG.settle(30);
+        requestRender(3); const idle0=await idle();
+        const u=units[id].block.userData, gl=renderer.getContext(), VW=gl.drawingBufferWidth, VH=gl.drawingBufferHeight;
+        const grab=()=>{ renderFrame(); const px=new Uint8Array(VW*VH*4); gl.readPixels(0,0,VW,VH,gl.RGBA,gl.UNSIGNED_BYTE,px); return px; };
+        const smap=()=>{ const m=sun.shadow&&sun.shadow.map; if(!m||!sun.castShadow) return null; const n=Math.min(256,m.width), b=new Uint8Array(n*n*4);
+          renderer.readRenderTargetPixels(m,Math.floor((m.width-n)/2),Math.floor((m.height-n)/2),n,n,b); return b; };
+        const diff=(x,y)=>{ if(!x||!y) return -1; let n=0; for(let i=0;i<x.length;i+=4) if(Math.abs(x[i]-y[i])>3||Math.abs(x[i+1]-y[i+1])>3||Math.abs(x[i+2]-y[i+2])>3) n++; return n; };
+        const amps=v=>{ CULL.meshes.forEach(m=>{ const U=m.userData.anim; if(U){ U._k=U._k===undefined?U.uAnimAmp.value:U._k; U.uAnimAmp.value=v===null?U._k:v; if(v===null) delete U._k; } }); };
+        const rich0=u.lodRich, amp0=u.gait&&u.gait.amp, A=grab(), SA=smap(); amps(0); const R=grab(), SR=smap(); amps(null); grab();
+        const b0=ANIM.built, d0=ANIM.depth;
+        ext.loseContext(); await new Promise(z=>setTimeout(z,400)); ext.restoreContext(); await new Promise(z=>setTimeout(z,300));
+        requestRender(3); const idle1=await idle();
+        const B=grab(), SB=smap();
+        return {idle:[idle0,idle1], lost:GL.lost, rich:[rich0,u.lodRich], amp:[amp0,u.gait&&u.gait.amp], built:[b0,ANIM.built], depth:[d0,ANIM.depth],
+          pose:diff(A,R), poseShadow:diff(SA,SR), after:diff(A,B), afterShadow:diff(SA,SB), shadow:!!SA}; });
+      if(a.noExt) bad.push("no WEBGL_lose_context");
+      else if(a.noGait) bad.push("the build has no gait");
+      else {
+        if(!a.idle[0]||!a.idle[1]) bad.push("the page was not idle within 120 s "+(a.idle[0]?"after the restore":"before the loss"));
+        if(a.lost) bad.push("the context still lost");
+        if(!(a.rich[0]&&a.rich[1])) bad.push("the block not on the rich kit ("+a.rich.join(" -> ")+")");
+        if(!(a.amp[0]===1&&a.amp[1]===1)) bad.push("its amplitude "+a.amp.join(" -> ")+" (want 1: marching, the clock stopped)");
+        if(!(a.built[1]>a.built[0]&&a.depth[1]>a.depth[0])) bad.push("the kit's programs not compiled again with the hook (materials "+a.built.join(" -> ")+", depth materials "+a.depth.join(" -> ")+")");
+        if(!(a.pose>0)) bad.push("the pose moves no pixel (the case proves nothing)");
+        if(!(a.after<a.pose)) bad.push("after the restore the frame differs from the posed one by "+a.after+" pixels, the rest pose by "+a.pose);
+        if(a.shadow){ if(!(a.poseShadow>0)) bad.push("the pose moves no texel of the depth map");
+          else if(!(a.afterShadow<a.poseShadow)) bad.push("after the restore the depth map differs from the posed one by "+a.afterShadow+" texels, the rest pose by "+a.poseShadow); } }
+      bad.push.apply(bad,judgeLog("context-gait",log));
+      R.push({name:"context-gait",ok:!bad.length,line:"context-gait: "+(bad.length?bad.join("; "):"a marching division mid-stride across a loss and a restore: the kit's programs compiled again with the hook ("+a.built.join(" -> ")+" materials, "+a.depth.join(" -> ")+" depth materials), still rich at full swing; the frame "+a.after+" pixels from the pose before the loss (the rest pose "+a.pose+"), "+(a.shadow?"the sun's depth map "+a.afterShadow+" texels (the rest pose "+a.poseShadow+")":"no shadow on this tier"))});
     } finally { await browser.close(); } }
   return R;
 }

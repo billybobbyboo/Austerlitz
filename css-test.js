@@ -455,8 +455,8 @@ if(cerrs) process.exitCode=1;
    block's instanced meshes carry their own bounds and are culled by them (cullBlock in buildFormations, frustumCulled from CULL.on, on by
    default); three r128's frustum test kept for every other object; the bounds refreshed at the test by the instance matrices' version, the count
    and the geometry; the shared geometries' bounds never written (no boundingSphere and no computeBoundingSphere in the culling code); culling
-   never hides (no visible written there); the app never turns it off and never moves the gait (setCull, CULL.on and the uniforms written only
-   by the self-test); the hook after three's begin_vertex, the atmosphere's uniforms first, on the kit's material and on its own depth
+   never hides (no visible written there); the app never turns it off (setCull and CULL.on written only by the self-test) and, since 8E, the
+   gait's uniforms are written by gaitStep alone, the knee by kitLodSet, besides the self-test; the hook after three's begin_vertex, the atmosphere's uniforms first, on the kit's material and on its own depth
    material with the mesh's two uniforms, its branch taken only above amplitude 0 and the amplitude clamped to 1 (the envelope's bound); the
    frame's culling counts reset with renderer.info; lowTier as decision 236 left it (density 1.0, no shadow map) */
 {
@@ -465,34 +465,110 @@ if(cerrs) process.exitCode=1;
   const a0=src.indexOf("  function selfTest(){"), st0=a0, st1=a0<0?-1:src.indexOf("\n  }\n",src.indexOf("/* 11. render on demand */",a0));
   const outsideST=re=>{ const out=[]; let m; const g=new RegExp(re.source,"g"); while((m=g.exec(src))) if(!(m.index>st0&&m.index<st1)) out.push(src.slice(Math.max(0,src.lastIndexOf("\n",m.index)+1),m.index+40).trim().slice(0,90)); return out; };
   if(st0<0||st1<0) cerr.push("the self-test's source not found (its bounds: \"  function selfTest(){\" to the end of its render-on-demand block)");
-  if(!/^var CULL=\{on:true, meshes:\[\], geo:\{\}/m.test(src)) cerr.push("CULL is not on by default");
+  if(!/^var CULL=\{on:true, meshes:\[\], geo:new WeakMap\(\)/m.test(src)) cerr.push("CULL is not on by default");
   const cb=fn("cullBlock")||"", ct=fn("cullTest")||"", cr=fn("cullRefresh")||"", cg=fn("cullGeo")||"", sc=fn("setCull")||"", am=fn("animMesh")||"", ah=fn("animHook")||"";
-  if(!/animMesh\(o\);\s*o\.userData\.cull=\{s:new THREE\.Sphere\(\), ver:-1, n:-1, g:null, env:animEnv\(o\.geometry\), id:id\};\s*o\.frustumCulled=CULL\.on; CULL\.meshes\.push\(o\);/.test(cb))
-    cerr.push("cullBlock does not give every instanced mesh its bounds (with the animation's envelope), its hook and frustumCulled from CULL.on");
+  if(!/animMesh\(o\);\s*o\.userData\.cull=\{s:new THREE\.Sphere\(\), ver:-1, n:-1, g:null, P:null, pv:-1, K:null, kv:-1, av:-1, env:0, id:id\};\s*o\.frustumCulled=CULL\.on; CULL\.meshes\.push\(o\);/.test(cb))
+    cerr.push("cullBlock does not give every instanced mesh its bounds (stale until first made), its hook and frustumCulled from CULL.on");
   if(!/cullBlock\(g,id\);/.test(fn("buildFormations")||"")) cerr.push("buildFormations does not cull each block by its own bounds (cullBlock)");
   if(!/F\.intersectsObject=function\(o\)\{ var cl=o\.userData&&o\.userData\.cull; return cl\?cullTest\(this,o,cl\):r128\.call\(this,o\); \};/.test(src))
     cerr.push("three's frustum test is not r128's own for every object without bounds of its own");
-  if(!/if\(cl\.ver!==o\.instanceMatrix\.version\|\|cl\.n!==o\.count\|\|cl\.g!==o\.geometry\) cullRefresh\(o,cl\);/.test(ct)) cerr.push("the bounds are not refreshed by the instance matrices' version, the count and the geometry");
-  if(!/cl\.ver=m\.instanceMatrix\.version; cl\.n=m\.count; cl\.g=m\.geometry;/.test(cr)) cerr.push("cullRefresh does not record what it was computed from");
+  if(!/if\(cullStale\(o,cl\)\) cullRefresh\(o,cl\);/.test(ct)) cerr.push("the bounds are not refreshed when stale (cullStale) at the test");
+  /* 8E's prerequisite (the audit of 8D): stale also when the geometry's position or part attribute (object, version) or the animation's
+     definition (ANIM.ver) differ from the ones the bounds were made from; the envelope read again at each refresh, keyed by what it is made from */
+  const cs=fn("cullStale")||"", ae=fn("animEnv")||"", ad=fn("animDefine")||"", ak=fn("animKey")||"";
+  if(!/if\(cl\.ver!==o\.instanceMatrix\.version\|\|cl\.n!==o\.count\|\|cl\.g!==o\.geometry\|\|cl\.av!==ANIM\.ver\) return true;/.test(cs)||!/return cl\.P!==Pa\|\|cl\.pv!==Pa\.version\|\|cl\.K!==K\|\|cl\.kv!==\(K\?K\.version:-1\);/.test(cs))
+    cerr.push("cullStale does not compare the instances' version and count, the geometry, its position and part attributes (objects and versions) and the animation's definition (8E's prerequisite)");
+  if(!/cl\.env=animEnv\(g\);/.test(cr)) cerr.push("cullRefresh does not read the envelope of the geometry drawn at each refresh (8E's prerequisite: cullBlock read it once)");
+  if(!/cl\.ver=m\.instanceMatrix\.version; cl\.n=m\.count; cl\.g=g;\s*cl\.P=Pa; cl\.pv=Pa\.version; cl\.K=K; cl\.kv=K\?K\.version:-1; cl\.av=ANIM\.ver;/.test(cr)) cerr.push("cullRefresh does not record what it was computed from");
+  if(!/if\(c&&c\.av===ANIM\.ver&&c\.P===Pa&&c\.pv===Pa\.version&&c\.kv===K\.version\) return c\.e;/.test(ae)) cerr.push("animEnv's cache is not keyed by its attributes' objects and versions and the animation's definition (8E's prerequisite)");
+  if(!/Object\.keys\(def\|\|\{\}\)\.forEach\(function\(k\)\{ ANIM\[k\]=def\[k\]; \}\); ANIM\.ver\+\+; ANIM\.body=animGLSL\(\);/.test(ad)) cerr.push("animDefine does not move the animation's definition's version with its table");
+  if(!/return "ANIM "\+ANIM\.ver;/.test(ak)||!/m\.material\.customProgramCacheKey=animKey;/.test(am)||!/d\.customProgramCacheKey=animKey;/.test(am)) cerr.push("the kit's programs are not keyed by the animation's definition (a changed table would draw with the old program)");
   if(!/if\(cl\.n<=0\)\{ CULL\.frame\.culled\+\+; return false; \}/.test(ct)) cerr.push("a mesh with no instance to draw is not culled");
-  [["cullBlock",cb],["cullTest",ct],["cullRefresh",cr],["cullGeo",cg],["setCull",sc]].forEach(([n,t])=>{ if(!t) cerr.push(n+" missing");
+  [["cullBlock",cb],["cullTest",ct],["cullRefresh",cr],["cullGeo",cg],["cullStale",fn("cullStale")||""],["setCull",sc]].forEach(([n,t])=>{ if(!t) cerr.push(n+" missing");
     if(/boundingSphere|computeBounding|boundingBox/.test(t)) cerr.push(n+" writes or reads a geometry's own bounds (shared by every block of its class)");
     if(/\.visible\s*=/.test(t)) cerr.push(n+" hides or shows an object (culling must leave visible alone: a shadow cast from outside the view)"); });
-  if(!/var s=CULL\.geo\[g\.uuid\]; if\(s\) return s;/.test(cg)) cerr.push("a geometry's sphere is not read once into CULL.geo");
+  if(!/var Pa=g\.attributes\.position, s=CULL\.geo\.get\(Pa\); if\(s&&s\.pv===Pa\.version\) return s;/.test(cg)) cerr.push("a geometry's sphere is not read once into CULL.geo for its position attribute (again when its version moves)");
   const sw=outsideST(/setCull\(/).filter(x=>!/^function setCull\(on\)/.test(x)); if(sw.length) cerr.push("setCull called outside the self-test: "+sw.join(" | "));
   const co=outsideST(/CULL\.on\s*=[^=]/).filter(x=>!/^function setCull\(on\)/.test(x)); if(co.length) cerr.push("CULL.on written outside setCull and the self-test: "+co.join(" | "));
-  const uw=outsideST(/uAnim(Amp|Phase)\.value\s*=[^=]/); if(uw.length) cerr.push("the gait's uniforms written outside the self-test (nothing moves in 8D): "+uw.join(" | "));
+  /* since 8E (decision 244 (a)): the gait's uniforms written by gaitStep alone (its one writer) and the knee by kitLodSet, besides the self-test */
+  { const span=nm=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===nm); return n?[n.start,n.end]:[-1,-1]; }, gS=span("gaitStep"), kS=span("kitLodSet"), uw=[];
+    let m; const g=/uAnim(\w+)\.value\s*=[^=]/g;
+    while((m=g.exec(src))){ const i=m.index; if(i>st0&&i<st1) continue; const inG=i>gS[0]&&i<gS[1], inK=i>kS[0]&&i<kS[1];
+      if(!(inG&&/^(Amp|Phase|Trot|RollG|RollL)$/.test(m[1]))&&!(inK&&m[1]==="Knee")) uw.push(src.slice(Math.max(0,src.lastIndexOf("\n",i)+1),i+40).trim().slice(0,90)); }
+    if(uw.length) cerr.push("the gait's uniforms written outside gaitStep (the knee outside kitLodSet) and the self-test: "+uw.join(" | "));
+    const gs=fn("gaitStep")||"";
+    ["Amp","Phase","Trot","RollG","RollL"].forEach(k=>{ if(!new RegExp("U\\.uAnim"+k+"\\.value=").test(gs)) cerr.push("gaitStep does not write uAnim"+k); });
+    if(!/U\.uAnimKnee\.value=rich\?1:0;/.test(fn("kitLodSet")||"")) cerr.push("kitLodSet does not set the knee with the level of detail"); }
   if(!/^function animHook\(sh\)\{\n  atmoUniforms\(sh\);/.test(ah)) cerr.push("the kit's hook drops the atmosphere's uniforms");
   if(!/\.replace\("#include <begin_vertex>","#include <begin_vertex>\\n"\+ANIM\.body\)/.test(ah)) cerr.push("the hook is not right after three's begin_vertex");
   if(!/m\.material\.onBeforeCompile=animHook;/.test(am)||!/new THREE\.MeshDepthMaterial\(\{depthPacking:THREE\.RGBADepthPacking\}\); d\.userData\.anim=U; d\.onBeforeCompile=animHook;/.test(am)||!/m\.customDepthMaterial=d;/.test(am))
     cerr.push("the hook is not on the kit's material and on its own depth material (the shadow casting the pose drawn)");
   if(!/m\.userData\.anim=U; m\.material\.userData\.anim=U;/.test(am)) cerr.push("the kit's material and its depth material do not share the mesh's uniforms");
-  if(!/"if\(uAnimAmp>0\.0&&aPart>0\.5\)\{"/.test(src)||!/anM=clamp\(uAnimAmp,0\.0,1\.0\)/.test(src)) cerr.push("the hook's branch is not off at amplitude 0, or the amplitude is not clamped to the envelope's 1");
+  if(!/return \["if\(uAnimAmp>0\.0&&aPart>0\.5\)\{",\s*"  float anK=floor\(aPart\+0\.5\), anA=min\(uAnimAmp,1\.0\),/.test(src)) cerr.push("the hook's branch is not off at amplitude 0, or the amplitude is not clamped to the envelope's 1");
   if(!/renderer\.info\.reset\(\); cullFrameStart\(\);/.test(fn("renderFrameNow")||"")) cerr.push("the frame's culling counts are not reset with renderer.info");
   if(!/return Math\.min\(window\.devicePixelRatio\|\|1, lowTier\?1:2\);/.test(src)||!/sun\.castShadow=!lowTier;/.test(src)) cerr.push("lowTier's density (1.0) or its shadow setting (none) changed (decision 236)");
   cerr.forEach(e=>console.log("  ! "+e));
-  console.log("culling and the hooks (decisions 249 (a), 244 (a), 250 (b)): "+(cerr.length?cerr.length+" wrong":"every block's instanced meshes culled by their own bounds, refreshed by version, count and geometry, the shared geometries' bounds untouched, nothing hidden, r128's test for the rest; culling and the gait's uniforms switched only by the self-test; the hook after begin_vertex on the kit's material and its depth material, inert at amplitude 0; lowTier as decision 236"));
+  console.log("culling and the hooks (decisions 249 (a), 244 (a), 250 (b)): "+(cerr.length?cerr.length+" wrong":"every block's instanced meshes culled by their own bounds, refreshed by version, count, geometry, its attributes and the animation's definition (the envelope read again at each refresh), the shared geometries' bounds untouched, nothing hidden, r128's test for the rest; culling switched only by the self-test, the gait's uniforms written by gaitStep alone (the knee by kitLodSet) and the self-test; the hook after begin_vertex on the kit's material and its depth material, inert at amplitude 0; lowTier as decision 236"));
   if(cerr.length) process.exitCode=1;
+}
+/* Stage 8, implementation PR 8E (decisions 242 (a), 243 (a), 244 (a), 245 (a); docs/STAGE8_SPEC.md sections 4 and 17): the troops' values and
+   rules as decided, in the source (the self-test's 8E block runs them). The level of detail (242 (a)): rich from 17.6 CSS px, simple under 14.5
+   (16 px with a margin each way), only in the eye's view, a block's meshes switched together each to its own pair, kitLod allocating nothing.
+   The artillery (243 (a)): its wheels at ORDNANCE's heights; one carriage colour for every army (the vehicles' parts coloured from KIT.gear
+   alone, read by no nation, dress or claim); the drivers only from ORDNANCE.fr.drivers, by the corps a claim names, none elsewhere; the switch
+   between the deployed and the limbered battery at once. The gait (244 (a)): its phase the modelled track's distance over a stride (no wall
+   clock and no random number in it), its amplitude by the clock's rate (full to 3.2 cycles a second, none from 4.8) for a formation's meshes
+   together, none under 1 km/h or under reduced motion, eased; the wheels within one spoke's interval; the hook's parts the legs, the arm, the
+   root and the wheels, nothing else (no firing, kneeling, falling or casualty). 245 (a): no facings (decision 104; Stage 6C's block holds the
+   cloths). The standards' drape (section 4.5): still (flagGeo reads no clock or time), its folds in the cloth's depth only */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), eerr=[];
+  const fn=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):""; };
+  const a0=src.indexOf("  function selfTest(){"), st1=a0<0?-1:src.indexOf("\n  }\n",src.indexOf("/* 11. render on demand */",a0));
+  /* the level of detail */
+  if(!/^var KLOD=\{IN:17\.6, OUT:14\.5, H:1\.635, M:0\.6, k:0, n:0\};/m.test(src)) eerr.push("KLOD is not 17.6 px in and 14.5 px out (16 px with a margin each way)");
+  const kl=fn("kitLod"), ks=fn("kitLodSet");
+  if(!/u\.inView=_kF\.intersectsBox\(_kB\); u\.lodPx=px; rich=u\.inView&&\(u\.lodRich\?px>=KLOD\.OUT:px>=KLOD\.IN\);/.test(kl)) eerr.push("kitLod's switch is not in the eye's view with its hysteresis");
+  if(/new |\[\]|\{\}|\.clone\(/.test(kl)) eerr.push("kitLod allocates (it runs for every block every frame)");
+  if(!/u\.lod\.forEach\(function\(m\)\{ var L=m\.userData\.lod; m\.geometry=rich\?L\.r:L\.s;/.test(ks)) eerr.push("kitLodSet does not switch every mesh of the block to its own pair");
+  if(!/kitLodFrame\(\);/.test(fn("updateVisibility"))||!/settleBlock\(rec\); kitLod\(rec\); gaitStep\(rec,id\);/.test(fn("updateVisibility"))) eerr.push("updateVisibility does not take the level of detail and the gait after each block's seating");
+  /* the artillery */
+  if(!/function kitArtR\(which\)\{ var w=ORDNANCE\.fr\.wheels; return \(which==="gun"\?w\.gun_m:w\.limber_m\)\/2\*kitArtScale\(\); \}/.test(src)) eerr.push("the wheels are not ORDNANCE's heights at the figures' scale (kitArtR)");
+  ["kitGunParts","kitLimberParts","kitWheel","kitDisc","artGeo"].forEach(f=>{ const t=fn(f); if(!t) eerr.push(f+" missing");
+    if(/NATION|nation|dress|DRESS|KIT\.cloth|KIT\.mat|ORDNANCE\.(fr_guard|at|ru)/.test(t)) eerr.push(f+" colours or shapes a vehicle by army or dress (one carriage colour for every army, decisions 109, 243 (a))");
+    if(/0x[0-9A-Fa-f]{6}|#[0-9A-Fa-f]{6}/.test(t)) eerr.push(f+" draws a colour of its own (the vehicles' colours are KIT.gear's)"); });
+  const ad=fn("artDrivers");
+  if(!/ORDNANCE\.fr\.drivers\|\|\[\]\)\.filter\(function\(d\)\{ return d\.corps===a; \}\)\[0\];/.test(ad)||!/a=FORMATIONS\[a\]&&FORMATIONS\[a\]\.parent;/.test(ad)||!/return \{n:0, claim:null\}; \}$/.test(ad))
+    eerr.push("artDrivers does not take its drivers from the claim whose corps holds the battery, and none elsewhere (decision 243 (a))");
+  { let m; const g=/ORDNANCE\.[a-z_]+\.drivers/g, out=[], as=src.indexOf("function artDrivers("), ae=as+ad.length, cm=[];
+    acorn.parse(src,{ecmaVersion:2020,onComment:(blockC,text,start,end)=>cm.push([start,end])});
+    while((m=g.exec(src))) if(!(m.index>=as&&m.index<ae)&&!(m.index>a0&&m.index<st1)&&!cm.some(c=>m.index>=c[0]&&m.index<c[1])) out.push(src.slice(src.lastIndexOf("\n",m.index)+1,m.index+30).trim().slice(0,80));
+    if(out.length) eerr.push("the drivers' claims read outside artDrivers and the self-test: "+out.join(" | ")); }
+  if(!/u\.deployed\.visible=!moving;\s*u\.limbered\.visible=moving;/.test(src)) eerr.push("the switch between the deployed and the limbered battery is not at once (ORDNANCE.fr.limbering: no duration read)");
+  /* the gait */
+  if(!/^var GAIT=\{STRIDE:\{man:6\.6, horse:16, team:12\}, ROLL:2, FULL:3\.2, NONE:4\.8, KMH:1, TROT_KMH:8, EASE:0\.22, EPS:1e-3,/m.test(src)) eerr.push("GAIT's values are not 8E's (the strides, the fade from 3.2 to 4.8 cycles a second, 1 km/h)");
+  const gs=fn("gaitStep"), gr=fn("gaitRoll");
+  if(!/var rate=clockRate\(\), fv=gaitFastest\(rec,G\);/.test(gs)||!/if\(lg&&!RM&&lg\.kmh>=GAIT\.KMH\)\{ c=rate\*lg\.mpm\/fv; want=clamp01\(\(GAIT\.NONE-c\)\/\(GAIT\.NONE-GAIT\.FULL\)\);/.test(gs))
+    eerr.push("the gait's amplitude is not the clock rate's rule by the formation's fastest stride, none under 1 km/h or under reduced motion");
+  if(!/var amp=G\.amp, D=amp>0\?gaitDistOf\(id,L\):0;/.test(gs)||!/U\.uAnimAmp\.value=amp; U\.uAnimPhase\.value=amp>0\?2\*Math\.PI\*\(x-Math\.floor\(x\)\):0;/.test(gs))
+    eerr.push("the gait's phase is not the track's distance over the stride, or a formation's meshes do not share its amplitude");
+  if(!/if\(G\.amp!==want\)\{ G\.amp\+=\(want-G\.amp\)\*e;/.test(gs)||!/var e=RM\?1:ease\(GAIT\.EASE\);/.test(gs)) eerr.push("the gait's amplitude is not eased, or not stopped at once under reduced motion");
+  if(!/if\(G\.t===clock&&G\.rate===rate&&G\.rm===RM&&G\.fv===fv&&G\.amp===G\.want&&G\.trot===G\.trotW&&!\(u\.slopeStale&&rate===0\)\) return;/.test(gs)||/new |\.clone\(/.test(gs.split("G.t=clock;")[0].split("if(!G.meshes.length) return;")[1]||"x new ")||!/lg=L\?gaitLegOf\(L,_glo\):null/.test(gs))
+    eerr.push("gaitStep computes or allocates when nothing changed (the clock, its rate, reduced motion and the parts drawn the same, the gait arrived)");
+  if(!/while\(a&&a!==rec\.block&&a\.visible\) a=a\.parent; if\(a!==rec\.block\) continue;/.test(fn("gaitFastest"))) eerr.push("the gait's cadence is not the parts drawn now's (gaitFastest)");
+  ["gaitStep","gaitDistOf","gaitLegOf","gaitRoll","clockRate"].forEach(f=>{ if(/performance\.now|Date\.now|Math\.random|lastFrame/.test(fn(f))) eerr.push(f+" reads a wall clock or a random number (the gait is the clock's)"); });
+  if(!/a-=pg\*Math\.round\(a\/pg\); b-=pl\*Math\.round\(b\/pl\); out\[0\]=a; out\[1\]=b;/.test(gr)) eerr.push("the wheels' angles are not taken within one spoke's interval, whole (an angle scaled by the fade steps back at each interval)");
+  { const m=/^  PART:\{([\s\S]*?)\}\},\n  env:/m.exec(src); const kinds=new Set(); if(m) (m[1]+"}").replace(/kind:"(\w+)"/g,(x,k)=>{ kinds.add(k); return x; });
+    const ok=new Set(["none","thigh","shin","arm","root","hoof","wheel"]); if(!m||!kinds.size) eerr.push("ANIM.PART not found");
+    kinds.forEach(k=>{ if(!ok.has(k)) eerr.push("the hook moves a part of kind \""+k+"\" (the gait swings legs and arms and turns wheels, nothing else)"); }); }
+  if(/kneel|fire|firing|recoil|fall|casualt|smoke/i.test(fn("animGLSL")+fn("animAt"))) eerr.push("the hook draws a behaviour beyond the gait (firing, kneeling, falling or casualties are not 8E's)");
+  /* the standards' drape */
+  const fg=fn("flagGeo");
+  if(!/^  std:\{drop:0\.853, thick:0\.61, aspect:2\.4\/1\.4, fold:\{n:2\.5, a:0\.07\}\},/m.test(src)) eerr.push("KIT.std's drape is not section 4.5's (two and a half folds, 0.07 deep)");
+  if(!/a\.setZ\(i,F\.a\*\(0\.35\+0\.65\*u\)\*Math\.sin\(Math\.PI\*F\.n\*u\)\);/.test(fg)||/setX|setY|clock|performance|Date|uTime/.test(fg)) eerr.push("the standards' drape is not still, in the cloth's depth only");
+  eerr.forEach(e=>console.log("  ! "+e));
+  console.log("the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)): "+(eerr.length?eerr.length+" wrong":"the level of detail 17.6 in, 14.5 out, in view, a block's meshes together, kitLod allocating nothing; the wheels at ORDNANCE's heights, one carriage colour for every army, the drivers only where a claim's corps holds the battery, the switch at once; the gait's phase the track's distance over its stride, its amplitude the clock rate's rule for a formation's meshes together, none under 1 km/h or reduced motion, eased, no wall clock, the wheels within a spoke's interval, the hook's parts the legs, the arm, the root and the wheels; the standards' drape still"));
+  if(eerr.length) process.exitCode=1;
 }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */

@@ -4,7 +4,8 @@
    kept), the motion reaching the app as a visitor's does (a drag, an orbit, the wheel, Play under Follow, a vantage's glide; a formation taken
    out of the view by each edge, the eye level turned, a finger's pan on a phone). After every frame the app drew (with culling, as it draws it),
    every figure mesh is judged: culled only if none of its instances is in the eye's frustum (each instance's own sphere: its geometry's,
-   through its matrix and the mesh's, widened by the animation's envelope); every second frame the same state is drawn again without culling and
+   through its matrix and the mesh's, widened by the animation's envelope: since 8E's prerequisite the judge's own, every vertex animated at amp 1
+   over 64 phases by animAt, not the envelope the bounds were made with); every second frame the same state is drawn again without culling and
    the two read from the drawing buffer at once and compared pixel for pixel (two renders of one state are equal on this machine, so the
    tolerance is 0). Counted: the frames judged and compared, the pixels differing, the meshes culled, those drawn in the shadow pass only (out of
    view, casting), the frames where a mesh changed between culled and drawn (a boundary crossed), and any instance in view of a culled mesh.
@@ -17,6 +18,18 @@ const inPage=function(){
   function cullSet(on){ CULL.on=on; CULL.meshes.forEach(function(m){ m.frustumCulled=on; }); }
   function read(){ gl=gl||renderer.getContext(); var w=gl.drawingBufferWidth, h=gl.drawingBufferHeight, b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
   function diff(a,b){ var n=0; for(var i=0;i<a.length;i+=4) if(a[i]!==b[i]||a[i+1]!==b[i+1]||a[i+2]!==b[i+2]) n++; return n; }
+  /* the judge's own envelope of a geometry (8E's prerequisite): the largest displacement of any vertex animated at amp 1 over 64 phases by animAt,
+     the hook's arithmetic, and since 8E over every pose the hook allows (animPoses: 32 phases, the slope, the trot, the knee and the wheels at
+     their extremes) where the build has it; 0 for a geometry without parts or a build without the hook. Kept per part attribute (a mesh's own
+     geometry shares its kit's) and its attributes' versions */
+  var ENV=new WeakMap(), eo=[0,0,0];
+  function envOf(g){ var K=g.attributes.aPart, Pa=g.attributes.position; if(!K||typeof animAt!=="function") return 0;
+    var c=ENV.get(K); if(c&&c.pv===Pa.version&&c.kv===K.version&&c.P===Pa&&c.av===(typeof ANIM!=="undefined"?ANIM.ver:0)) return c.e;
+    var P=Pa.array, KA=K.array, e=0;
+    for(var v=0;v<KA.length;v++){ var x=P[v*3], y=P[v*3+1], z=P[v*3+2];
+      if(typeof animPoses==="function") animPoses(Math.round(KA[v]),x,y,z,32,function(q){ var d=Math.hypot(q[0]-x,q[1]-y,q[2]-z); if(d>e) e=d; },eo);
+      else for(var k=0;k<64;k++){ animAt(Math.round(KA[v]),x,y,z,k/64*Math.PI*2,1,eo); var d=Math.hypot(eo[0]-x,eo[1]-y,eo[2]-z); if(d>e) e=d; } }
+    ENV.set(K,{e:e,pv:Pa.version,kv:K.version,P:Pa,av:(typeof ANIM!=="undefined"?ANIM.ver:0)}); return e; }
   /* the frame just drawn: each mesh's culling against its instances; the passes it was drawn in */
   function judge(R,passW,passS){
     camera.updateMatrixWorld(); F.setFromProjectionMatrix(M.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse)); R.judged++;
@@ -24,8 +37,8 @@ const inPage=function(){
       var was=R.state.get(m); if(was!==undefined&&was!==drawn) R.toggles++; R.state.set(m,drawn);
       if(passS.has(m)&&!drawn) R.shadowOnly++;
       if(drawn) return; R.culled++;
-      var G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), ms=m.matrixWorld.getMaxScaleOnAxis();
-      for(var i=0;i<n;i++){ Mi.fromArray(A,i*16); S.center.set(G.c[0],G.c[1],G.c[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); S.radius=(G.r+cl.env)*Mi.getMaxScaleOnAxis()*ms;
+      var G=cullGeo(m.geometry), A=m.instanceMatrix.array, n=Math.min(m.count,A.length/16), ms=m.matrixWorld.getMaxScaleOnAxis(), env=envOf(m.geometry);
+      for(var i=0;i<n;i++){ Mi.fromArray(A,i*16); S.center.set(G.c[0],G.c[1],G.c[2]).applyMatrix4(Mi).applyMatrix4(m.matrixWorld); S.radius=(G.r+env)*Mi.getMaxScaleOnAxis()*ms;
         if(F.intersectsSphere(S)){ R.inView++; if(R.bad.length<6) R.bad.push(R.label+" frame "+R.frame+": "+cl.id+" culled with instance "+i+" in view"); break; } } });
   }
   var C={};
