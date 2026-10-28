@@ -42,7 +42,7 @@ const inPage=function(a){
     if(counting) groundY=function(x,z){ if(inL){ cnt++; if(rec&&rec.length<400000) rec.push(x,z); } return gy(x,z); };   /* the seating's lookups only */
     var up=0, upB=0, sb0=SEAT_STATS.blocks, ss0=SEAT_STATS.slopes||0;
     playing=true; speed=a.x; FK=1; DWELL.on=false; DWELL.st=null;   /* the dwell off: every step at the speed's nominal rate (a stretch from an event's start sat in its hold) */
-    for(var i=0;i<a.n;i++){ var nt=dwellAdvance(1/60,MIN_PER_SEC*speed); setClock(nt);
+    for(var i=0;i<a.n;i++){ var nt=dwellAdvance(1/60,MIN_PER_SEC*speed); setClock(nt,{play:true});
       var v0=slMeshes.map(function(m){ return m.geometry.attributes.aSl.version; });
       var t=performance.now(); updateVisibility(); T.upd+=performance.now()-t;
       slMeshes.forEach(function(m,j){ var A=m.geometry.attributes.aSl; if(A.version!==v0[j]){ up++; upB+=A.array.byteLength; } }); }

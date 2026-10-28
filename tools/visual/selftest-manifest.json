@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build d73d01154b8f6e2552fe04bfb24d05e5 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "d73d01154b8f6e2552fe04bfb24d05e5",
- "count": 295,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 7a37ab066c86779b5944406ffbd806e8 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "7a37ab066c86779b5944406ffbd806e8",
+ "count": 296,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -283,6 +283,7 @@
   "the kit's shared geometries (8E): every kit mesh draws two geometries of its own (its levels), each over its class's shared position, normal, colour and part attributes with its own phase offsets, one attribute for both levels; nothing of a formation's state is written into a shared geometry, which stays as built through a day's poses",
   "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh's uniforms the same when the clock was reached from three other clocks, unchanged with the frame while the clock stands, the phase the track's distance over its stride (the test's own arithmetic), the wheels turned by the teams' distance within one spoke's interval; while Play runs the slopes taken again by a block's movement, and once it stops exactly the clock's",
   "the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion between, by the formation's fastest-cycling part, its parts together; none halted, under 1 km/h or under reduced motion (at once, S-6); a change of speed eased (nine tenths in 0.15 s), then idle",
+  "the gait at a pause (8F's prerequisite, decision 244 (a)): Play, the speed and Pause by their buttons through the app's own loop, an infantry division, a cavalry corps and a limbered battery paused from half speed, in the fade and faded out: the first paused frame's gait the last played's and every paused frame's the first's, the frame and the sun's depth map drawn with the formation alone unchanged; resumed, on from the amplitude held; a seek the clock's own pose at once; the dwell's hold held; reduced motion at once",
   "the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phase's start, its phase's end or directly (it was the facing at the first clock visited in the phase)",
   "the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' planted hooves keep their rest contact with the drawn ground within 0.03 units (4x; in proportion to the relief at 10.33x) in 99 poses of 100, floating or sinking, and none further off than the rest pose itself stands, the raised edge's lift reported; the rest pose's seating check unchanged; at 1x no figure",
   "the step described (decision 244 (a)): the legend's row wherever figures are drawn and the sources sheet's notes call it a visual convention for symbols under compressed time, not footsteps",

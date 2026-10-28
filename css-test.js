@@ -548,12 +548,17 @@ if(cerrs) process.exitCode=1;
   /* the gait */
   if(!/^var GAIT=\{STRIDE:\{man:6\.6, horse:16, team:12\}, ROLL:2, FULL:3\.2, NONE:4\.8, KMH:1, TROT_KMH:8, EASE:0\.22, EPS:1e-3,/m.test(src)) eerr.push("GAIT's values are not 8E's (the strides, the fade from 3.2 to 4.8 cycles a second, 1 km/h)");
   const gs=fn("gaitStep"), gr=fn("gaitRoll");
-  if(!/var rate=clockRate\(\), fv=gaitFastest\(rec,G\);/.test(gs)||!/if\(lg&&!RM&&lg\.kmh>=GAIT\.KMH\)\{ c=rate\*lg\.mpm\/fv; want=clamp01\(\(GAIT\.NONE-c\)\/\(GAIT\.NONE-GAIT\.FULL\)\);/.test(gs))
+  if(!/var rate=clockRate\(\), fv=gaitFastest\(rec,G\), sk=G\.seek!==GAIT\.seek;/.test(gs)||!/if\(lg&&!RM&&lg\.kmh>=GAIT\.KMH\)\{ c=rate\*lg\.mpm\/fv; want=clamp01\(\(GAIT\.NONE-c\)\/\(GAIT\.NONE-GAIT\.FULL\)\);/.test(gs))
     eerr.push("the gait's amplitude is not the clock rate's rule by the formation's fastest stride, none under 1 km/h or under reduced motion");
   if(!/var amp=G\.amp, D=amp>0\?gaitDistOf\(id,L\):0;/.test(gs)||!/U\.uAnimAmp\.value=amp; U\.uAnimPhase\.value=amp>0\?2\*Math\.PI\*\(x-Math\.floor\(x\)\):0;/.test(gs))
     eerr.push("the gait's phase is not the track's distance over the stride, or a formation's meshes do not share its amplitude");
-  if(!/if\(G\.amp!==want\)\{ G\.amp\+=\(want-G\.amp\)\*e;/.test(gs)||!/var e=RM\?1:ease\(GAIT\.EASE\);/.test(gs)) eerr.push("the gait's amplitude is not eased, or not stopped at once under reduced motion");
-  if(!/if\(G\.t===clock&&G\.rate===rate&&G\.rm===RM&&G\.fv===fv&&G\.amp===G\.want&&G\.trot===G\.trotW&&!\(u\.slopeStale&&rate===0\)\) return;/.test(gs)||/new |\.clone\(/.test(gs.split("G.t=clock;")[0].split("if(!G.meshes.length) return;")[1]||"x new ")||!/lg=L\?gaitLegOf\(L,_glo\):null/.test(gs))
+  if(!/if\(G\.amp!==want\)\{ G\.amp\+=\(want-G\.amp\)\*e;/.test(gs)||!/var e=\(RM\|\|sk\)\?1:ease\(GAIT\.EASE\);/.test(gs)) eerr.push("the gait's amplitude is not eased, or not stopped at once under reduced motion, or a seek not shown at once");
+  /* Stage 8, 8F's prerequisite (the audit of 8E): a clock that stands without being moved holds the pose drawn (no ease); every move of the
+     clock but Play's own advance is a seek (setClock counts it; tickClock's two calls are Play's) */
+  if(!/if\(rate===0&&!sk&&!RM\)\{ want=G\.amp; trot=G\.trot; \}/.test(gs)) eerr.push("a paused clock does not hold the gait drawn (the amplitude and the trot eased on with the clock standing)");
+  if(!/^  if\(!opts\.play\) GAIT\.seek\+\+;/m.test(fn("setClock"))) eerr.push("setClock does not count a seek (every move of the clock but Play's own advance)");
+  { const tc=fn("tickClock"); if(!/setClock\(T_MAX,\{play:true\}\); stopPlay\(\);/.test(tc)||!/setClock\(nt,\{play:true\}\); DWELL\.expect=clock;/.test(tc)||(tc.match(/setClock\(/g)||[]).length!==2) eerr.push("tickClock's advance of the clock is not marked Play's own (it would count as a seek)"); }
+  if(!/if\(!sk&&G\.t===clock&&G\.rate===rate&&G\.rm===RM&&G\.fv===fv&&G\.amp===G\.want&&G\.trot===G\.trotW&&!\(u\.slopeStale&&rate===0\)\) return;/.test(gs)||/new |\.clone\(/.test(gs.split("G.t=clock;")[0].split("if(!G.meshes.length) return;")[1]||"x new ")||!/lg=L\?gaitLegOf\(L,_glo\):null/.test(gs))
     eerr.push("gaitStep computes or allocates when nothing changed (the clock, its rate, reduced motion and the parts drawn the same, the gait arrived)");
   if(!/while\(a&&a!==rec\.block&&a\.visible\) a=a\.parent; if\(a!==rec\.block\) continue;/.test(fn("gaitFastest"))) eerr.push("the gait's cadence is not the parts drawn now's (gaitFastest)");
   ["gaitStep","gaitDistOf","gaitLegOf","gaitRoll","clockRate"].forEach(f=>{ if(/performance\.now|Date\.now|Math\.random|lastFrame/.test(fn(f))) eerr.push(f+" reads a wall clock or a random number (the gait is the clock's)"); });

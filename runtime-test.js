@@ -1333,7 +1333,7 @@ try{
       /* the amplitude's rule, every speed; reduced motion; the ease */
       let full=0, part=0, none=0, drift=0, nJ=0;
       [545,640,830,905,300].forEach(t=>{ setClock(t,{force:true}); settleN(4);
-        [0,0.5,1,2,4].forEach(x=>{ playing=x>0; if(x) speed=x; DWELL.st=null; settleN(40);
+        [0,0.5,1,2,4].forEach(x=>{ playing=x>0; if(x) speed=x; DWELL.st=null; if(!x) setClock(t,{force:true}); settleN(40);   /* 8F's prerequisite: the paused rule is a sought clock's (a pause holds the pose drawn) */
           gaitIds().forEach(id=>{ const G=units[id].block.userData.gait, lg=legT(id,t); let want=0;
             if(lg&&lg.kmh>=GAIT.KMH){ const c=x*MIN_PER_SEC*lg.mpm/fastestOf(id); want=Math.max(0,Math.min(1,(GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL))); if(want===1) full++; else if(want===0) none++; else part++; }
             else if(lg) drift++;
@@ -1347,6 +1347,20 @@ try{
         if(!(a1<1&&a1>0.5)||!(n>=6&&n<=40)||!idle) bad.push("the ease: "+a1+" after one frame, "+n+" frames to none, idle "+idle);
         log.push(nJ+" amplitude judgments ("+full+" full, "+part+" in the fade, "+none+" faded out, "+drift+" drifting under 1 km/h), none under reduced motion; eased to none in "+n+" frames, then idle"); playing=false; }
       else bad.push("the ease: no formation at full amplitude at 09:05");
+      /* Stage 8, 8F's prerequisite (the audit of 8E): Play's own advance (tickClock) at 4x from half speed's full stride, stopped (stopPlay) in the
+         fade and again faded out: every gait uniform as drawn in the frame before, for ten frames; resumed, on from where it was held; a seek
+         (setClock) the clock's own pose at once */
+      { const keepDw=DWELL.on; DWELL.on=false; let held=0, faded=0;
+        [["in the fade",1],["faded out",40]].forEach(([way,nF])=>{ playing=false; setClock(532,{force:true}); settleN(40); speed=0.5; playing=true; dwellReset(); FK=2;
+          for(let i=0;i<6;i++){ tickClock(1000/30); updateVisibility(); } speed=4; for(let i=0;i<nF;i++){ tickClock(1000/30); updateVisibility(); }
+          const a0=units.sthilaire.block.userData.gait.amp; if(way==="in the fade"?!(a0>0&&a0<1):a0!==0) bad.push("the pause "+way+": the amplitude "+a0+" before it");
+          const P0=pose(); stopPlay(); for(let i=0;i<10;i++){ updateVisibility(); const P=pose(); Object.keys(P0).forEach(k=>{ for(let j=0;j<5;j++) if(P[k]&&P[k][j]!==P0[k][j]){ bad.push("the pause "+way+": "+k+" uniform "+j+" moved from "+P0[k][j]+" to "+P[k][j]+" with the clock standing"); break; } }); }
+          held+=Object.keys(P0).length; if(way==="faded out") faded=a0===0?1:0;
+          togglePlay(); tickClock(1000/30); updateVisibility(); const a1=units.sthilaire.block.userData.gait.amp; if(a0>0&&!(a1<a0&&a1>0)) bad.push("the pause "+way+": resumed at 4x, the amplitude "+a1+" from "+a0+" (eased on toward none expected)"); stopPlay(); });
+        const tS=clock+10; setClock(tS); updateVisibility(); const G=units.sthilaire.block.userData.gait, lgS=legT("sthilaire",tS); if(lgS&&lgS.kmh>=GAIT.KMH&&G.amp!==1) bad.push("a seek while paused: the amplitude "+G.amp+" in the first frame (the clock's own, full)");
+        const Ps=pose(); setClock(T_MIN,{force:true}); settleN(4); setClock(tS); updateVisibility(); const Ps2=pose(); Object.keys(Ps).forEach(k=>{ if(Ps2[k]&&Ps2[k].join()!==Ps[k].join()) bad.push("a seek: "+k+" not the clock's pose by another path"); });
+        DWELL.on=keepDw; FK=keep.fk; speed=keep.sp;
+        log.push("paused in the fade and faded out by stopPlay, "+held+" mesh poses held for ten frames each, resumed eased on; a seek the clock's own pose at once"); }
       /* S-5 */
       let gN=0;
       PHASES.forEach(ph=>{ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(t=>{ const R=[];

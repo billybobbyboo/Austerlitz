@@ -3452,6 +3452,7 @@ function startPhaseTransition(ph,instant,moveCam){
 function setClock(t,opts){
   opts=opts||{};
   clock=clampT(t);
+  if(!opts.play) GAIT.seek++;   /* Stage 8, 8F's prerequisite: every move of the clock but Play's own advance (tickClock) is a seek: the gait shows that clock's pose at once */
   knowAtClock();   /* Stage 5E (decision 92): the Command view's reading at the clock */
   var ph=phaseAt(clock);
   if(ph!==curPhase || opts.force){
@@ -5746,11 +5747,23 @@ var WHEEL={cav:0.085, mixed:0.062, inf:0.050, guard:0.050, art:0.028, hq:0.10};
      most half a spoke's interval as the fade ends (an angle scaled down with the fade would step back by a fraction of an interval at
      every interval);
    - the trot: above TROT_KMH of modelled speed, eased in the same way;
+   - a clock that stops and a clock that is moved (Stage 8, implementation PR 8F's prerequisite: the audit of 8E). The ease runs only while
+     the clock moves (Play's own advance, tickClock, its rate above 0). A clock that stops without being moved (Pause, stopPlay; the end of
+     the day; the dwell's hold) holds the pose drawn in the frame before it stopped: the amplitude, the trot and with them the riders' and
+     drivers' beat and the wheels' angles stay where they were, the phase being the clock's, so nothing of the gait moves while the clock
+     stands (decision 244 (a): "A paused clock must hold the pose still"); until 8F the amplitude eased on toward the paused clock's rule,
+     full, so a formation faded out at 4x stepped back into its stride after the Pause, the clock standing. A clock that is moved (a seek:
+     setClock from anything but Play's advance, so the slider, the keys, an event, a phase or act, a theme, a tour stop, the opening's step,
+     a harness case) shows that clock's own pose at once, the amplitude and the trot the rule's at the clock and the rate (full where the
+     formation marches at a paused clock, as before), with no ease, so a minute sought shows one pose however it was reached. Reduced motion
+     still stops the gait at once, paused or not;
    - the slopes: each man's and horse's own (aSl, written at each seating of a formation the gait animates, in view or not: two chords of the
      drawn ground along the way he faces from where he stands, over his feet's travel, a man's ahead of him and behind him, a horse's to his
      fore and to his hind hooves' far edges: layoutFigs), so a ring of riders on a knoll, a team turned to the rear or a gunner at his post
      plants as a file facing the front does. */
 var GAIT={STRIDE:{man:6.6, horse:16, team:12}, ROLL:2, FULL:3.2, NONE:4.8, KMH:1, TROT_KMH:8, EASE:0.22, EPS:1e-3,
+  seek:0,   /* the seeks so far: setClock counts every move of the clock but Play's own advance (opts.play); a block that has not seen the latest
+               takes the clock's own pose at once (gaitStep) */
   REACH:{man:0.3, horse:0.3},   /* the slopes' reach beyond a man's rest point and a horse's hooves' (layoutFigs: the slopes): their travel at full swing */
   SLOPE_STEP:0.1, SLOPE_TURN:0.01,   /* while the clock moves, the slopes taken again once a block has moved a tenth of a unit (a third of the reach) or
                                         turned by about a degree (the quaternion's components' summed change) */
@@ -5793,17 +5806,19 @@ function gaitStep(rec,id){
     rec.block.traverse(function(o){ if(o.isInstancedMesh&&o.userData.anim&&o.userData.gaitKind) G.meshes.push(o); });
     G.meshes.forEach(function(m){ var st=GAIT.STRIDE[m.userData.gaitKind==="gear"?"team":m.userData.gaitKind]; if(st&&(!G.fastest||st<G.fastest)) G.fastest=st; }); }
   if(!G.meshes.length) return;
-  var rate=clockRate(), fv=gaitFastest(rec,G);
-  /* nothing changed since the last frame (the clock, its rate, reduced motion and the parts drawn the same, the amplitude and the trot arrived,
-     no slope left behind at a still clock): nothing computed, written or allocated, as when only the eye moves */
-  if(G.t===clock&&G.rate===rate&&G.rm===RM&&G.fv===fv&&G.amp===G.want&&G.trot===G.trotW&&!(u.slopeStale&&rate===0)) return;
-  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv;
+  var rate=clockRate(), fv=gaitFastest(rec,G), sk=G.seek!==GAIT.seek;
+  /* nothing changed since the last frame (no seek, the clock, its rate, reduced motion and the parts drawn the same, the amplitude and the
+     trot arrived, no slope left behind at a still clock): nothing computed, written or allocated, as when only the eye moves */
+  if(!sk&&G.t===clock&&G.rate===rate&&G.rm===RM&&G.fv===fv&&G.amp===G.want&&G.trot===G.trotW&&!(u.slopeStale&&rate===0)) return;
+  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv; G.seek=GAIT.seek;
   var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L,_glo):null, want=0, trot=0, c=0;
   if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=rate*lg.mpm/fv; want=clamp01((GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL)); trot=lg.kmh>GAIT.TROT_KMH?1:0; }
+  /* the clock standing and not moved (Pause, the day's end, the dwell's hold): the pose drawn held, the amplitude and the trot where they are */
+  if(rate===0&&!sk&&!RM){ want=G.amp; trot=G.trot; }
   G.want=want; G.c=c; G.trotW=trot;
   if(want===0&&G.amp===0&&G.trot===0&&G.drawn===0) return;   /* at rest, its uniforms at rest already: nothing to write */
   if((want>0||G.amp>0)&&!GAIT.noSlopes&&u.layout&&(!u.slopeSeat||(u.slopeStale&&rate===0))) u.layout(u.sw,u.sd);   /* the slopes written as the gait begins, and taken again where the clock stopped with them behind (layoutFigs) */
-  var e=RM?1:ease(GAIT.EASE);   /* under reduced motion what moves stops at once (S-6), the gait with it */
+  var e=(RM||sk)?1:ease(GAIT.EASE);   /* under reduced motion what moves stops at once (S-6), the gait with it; a seek shows the clock's own pose at once */
   if(G.amp!==want){ G.amp+=(want-G.amp)*e; if(Math.abs(want-G.amp)<GAIT.EPS) G.amp=want; else settling=true; }
   if(G.trot!==trot){ G.trot+=(trot-G.trot)*e; if(Math.abs(trot-G.trot)<GAIT.EPS) G.trot=trot; else settling=true; }
   var amp=G.amp, D=amp>0?gaitDistOf(id,L):0; G.drawn=amp;
@@ -8597,8 +8612,8 @@ function tickClock(dtMs){
   if(!playing) return;
   if(DWELL.expect!==null&&Math.abs(clock-DWELL.expect)>1e-9) dwellReset();   /* the clock was moved by other means */
   var nt=dwellAdvance(dtMs/1000,MIN_PER_SEC*speed);
-  if(nt>=T_MAX){ setClock(T_MAX); stopPlay(); return; }
-  setClock(nt); DWELL.expect=clock;
+  if(nt>=T_MAX){ setClock(T_MAX,{play:true}); stopPlay(); return; }   /* Play's own advance (opts.play): not a seek, so the gait eases on and holds where the clock stops */
+  setClock(nt,{play:true}); DWELL.expect=clock;
 }
 /* ---- Stage 4D: the dwell (docs/STAGE4_SPEC.md section D.3, item 2; owner decision 75) ----
    While the clock plays, at each event's start (the distinct start minutes of EVENTS) the clock eases down to a stop, holds
@@ -12829,7 +12844,7 @@ var AUSTERLITZ_DEBUG=(function(){
            without them the pause would test nothing), then paused, one frame: every animated block's slopes exactly a fresh seating's at that
            clock (layoutFigs, asked) */
         setClock(545,{instant:true,force:true,camera:false}); settleAll(); var sk0=SEAT_STATS.slopes, sb0=SEAT_STATS.blocks, sw0=SEAT_STATS.want, fk2=FK;
-        playing=true; speed=0.5; FK=1; DWELL.st=null; for(var pi=0;pi<28;pi++){ setClock(dwellAdvance(pi<24?1/60:1/1000,MIN_PER_SEC*speed)); updateVisibility(); } FK=fk2;
+        playing=true; speed=0.5; FK=1; DWELL.st=null; for(var pi=0;pi<28;pi++){ setClock(dwellAdvance(pi<24?1/60:1/1000,MIN_PER_SEC*speed),{play:true}); updateVisibility(); } FK=fk2;   /* Play's own advance (8F: not a seek) */
         var sTook=SEAT_STATS.slopes-sk0, sSeat=SEAT_STATS.blocks-sb0, sWant=SEAT_STATS.want-sw0, stale=shown().filter(function(id){ return units[id].block.userData.slopeStale; }).length;
         playing=false; updateVisibility(); var pBad=0, pN=0, pP=new THREE.Vector3(), pQ=new THREE.Quaternion();
         /* each animated block's slopes against a fresh seating at the pose they were taken at (the block's turn and place, slSig: the seating
@@ -12848,10 +12863,11 @@ var AUSTERLITZ_DEBUG=(function(){
           !eBad.length, eT.join("; ")+(eBad.length?"; WRONG: "+eBad.slice(0,5).join("; "):""));
 
         /* (f) the amplitude: the rule at each speed, a formation's parts together, none halted, under 1 km/h or under reduced motion; eased, then
-           idle */
+           idle. Since 8F's prerequisite the paused clock's rule (full) is that of a clock sought while paused (a pause after Play holds the pose
+           drawn: (k)), so the paused case is reached by a seek */
         var fBad=[], fT=[], nJ=0, drift=0, full=0, none=0, part=0;
         [545,640,830,905,300].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); settle(4,true);
-          [0,0.5,1,2,4].forEach(function(x){ playing=x>0; if(x) speed=x; DWELL.st=null; settle(40,true);
+          [0,0.5,1,2,4].forEach(function(x){ playing=x>0; if(x) speed=x; DWELL.st=null; if(!x) setClock(t,{instant:true,camera:false}); settle(40,true);
             shown().forEach(function(id){ var G=units[id].block.userData.gait; if(!G) return; var lg=legT(id,t), want=0, fs=fastestOf(id);
               if(lg&&lg.kmh>=GAIT.KMH){ var c=x*MIN_PER_SEC*lg.mpm/fs; want=Math.max(0,Math.min(1,(GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL))); if(want===1) full++; else if(want===0) none++; else part++; }
               else if(lg) drift++;
@@ -12872,6 +12888,128 @@ var AUSTERLITZ_DEBUG=(function(){
         if(!(full&&part&&none&&drift)) fBad.push("a case not met (full "+full+", fade "+part+", none "+none+", drift "+drift+")");
         ck("the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion between, by the formation's fastest-cycling part, its parts together; none halted, under 1 km/h or under reduced motion (at once, S-6); a change of speed eased (nine tenths in 0.15 s), then idle",
           !fBad.length, fT.join("; ")+(fBad.length?"; WRONG: "+fBad.slice(0,6).join("; "):""));
+
+        /* (k) Stage 8, 8F's prerequisite (the audit of 8E: Pause after the gait had faded out at 4x left it easing back to full while the clock
+           stood): the pause, by the app's own path. Its loop (loop) is run one frame at a time on a clock of the test's (performance.now answers
+           it, 30 frames a second, as the 8C block drives it), each frame asked for (requestRender) so that the gait is stepped in it; Play, the
+           speed and Pause by their own buttons (a click: togglePlay, setSpeed, stopPlay); the dwell off by its own switch while these play (its
+           hold is judged apart). For an infantry division, a cavalry corps and a limbered battery marching, three ways into the pause: from
+           half speed (the gait full), in the fade (the speed raised to 4x and paused one frame into the ease) and faded out (4x until none).
+           Read at the last frame played, the first frame paused and five frames more: every kit mesh's gait uniforms of the formation exactly
+           as last played (the amplitude, the phase, the trot and the wheels' angles; the riders' and drivers' beat is their horses' phase); the
+           frame and the sun's depth map near it, drawn with that formation's block alone (the blocks' own eases, shape and turn, are the
+           formation model's, not the gait's), the same in every paused frame, and the first paused frame's against the last played reported
+           (the slopes taken again where the clock stopped with them behind: the seating, 8E's rule); the formation drawn and casting in them.
+           Resumed by the button, the amplitude moves on from where it was held toward the speed's rule, never past it, and the phase is the
+           clock's. Then a seek (the button stepping ten minutes on) shows that clock's own pose at once, the same as that clock reached from
+           another; the dwell's hold (the dwell on, 4x into an event's start) keeps every formation's pose in its frames; reduced motion,
+           paused, stops the gait at once, and turned off again nothing steps until the clock moves */
+        var kBad=[], kT=[], kJ=0, kE=0, kNow=performance.now, kOwn=Object.prototype.hasOwnProperty.call(performance,"now"), kRaf=window.requestAnimationFrame, kTm=kNow.call(performance), kDw=DWELL.on, kSp=speed;
+        var kRender=renderer.render;
+        function KF(n){ for(var i=0;i<(n||1);i++){ kTm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=kRender; } } }   /* the app's frame, its draw skipped (kRead draws) */
+        function kClick(sel){ var b=document.querySelector(sel); if(!b) throw new Error("no "+sel); b.click(); }
+        function kUni(id){ var G=units[id].block.userData.gait, o=[]; (G?G.meshes:[]).forEach(function(m){ var U=m.userData.anim; o.push([U.uAnimAmp.value,U.uAnimPhase.value,U.uAnimTrot.value,U.uAnimRollG.value,U.uAnimRollL.value]); }); return o; }
+        function kAll(){ var o={}; shown().forEach(function(id){ o[id]=kUni(id); }); return o; }
+        function kEq(a,b){ return JSON.stringify(a)===JSON.stringify(b); }
+        function kAmp(id){ var G=units[id].block.userData.gait; return G?G.amp:-1; }
+        /* the block's own state, which the formation model eases in real time (its turn toward its heading at its arm's rate, WHEEL, and its
+           shape) and the seating writes (the instances, the slopes): a frame is judged against another only where this is the same in both */
+        function kSig(id){ var b=units[id].block, u=b.userData, o=[b.position.x,b.position.y,b.position.z,b.quaternion.x,b.quaternion.y,b.quaternion.z,b.quaternion.w,b.scale.x,u.sw,u.sd];
+          (u.lod||[]).forEach(function(m){ var SA=m.geometry.attributes.aSl; o.push(m.instanceMatrix.version,m.count,SA?SA.version:-1); }); return o; }
+        /* the same within 1e-9 (the block's turn, eased toward its heading without end, moves its quaternion in the last bits while it stands:
+           nothing the seating, at 2e-5, or the drawing sees) and the instances, their count and slopes the same versions */
+        function kSame(a,b){ if(a.length!==b.length) return false; for(var i=0;i<a.length;i++) if(i<10?Math.abs(a[i]-b[i])>1e-9:a[i]!==b[i]) return false; return true; }
+        function kYaw(id){ return units[id].yaw||0; }
+        /* the frame and the sun's depth map near the formation, drawn with its block alone on the ground (the lights, the sky and the drawn
+           ground kept; every other object of the scene hidden: the other blocks, whose own eases run, and the overlays, whose phase fade is a
+           tween of real time); alone: false hides the block too */
+        function kRead(id,alone){ var hid=[], r0=units[id];
+          scene.children.forEach(function(o){ if(o.visible&&!o.isLight&&o!==sun.target&&o!==world.ground&&o!==world.apron&&o!==world.dome&&(alone===false||o!==r0.block)){ o.visible=false; hid.push(o); } });
+          try{ var F=grab(), S=null, map=(sun.castShadow&&renderer.shadowMap.enabled)?sun.shadow.map:null;
+            if(map){ var c=new THREE.Vector3(); r0.block.getWorldPosition(c); c.project(sun.shadow.camera); var rw=Math.min(192,map.width), rh=Math.min(192,map.height),
+                rx=Math.max(0,Math.min(map.width-rw,Math.round((c.x*0.5+0.5)*map.width-rw/2))), ry=Math.max(0,Math.min(map.height-rh,Math.round((c.y*0.5+0.5)*map.height-rh/2)));
+              S=new Uint8Array(rw*rh*4); renderer.readRenderTargetPixels(map,rx,ry,rw,rh,S); }
+            return {F:F,S:S}; }
+          finally{ hid.forEach(function(o){ o.visible=true; }); } }
+        var KS=[{id:"sthilaire", kind:"infantry", t:532, dir:[0.7,0.35,0.2], r:34},
+                {id:"guard_cav", kind:"cavalry", t:636, dir:[0.95,0.22,0.22], r:34},
+                {id:"heightguns", kind:"limbered artillery", t:830, dir:[0.95,0.22,0.22], r:26}];
+        try{
+          performance.now=function(){ return kTm; }; window.requestAnimationFrame=function(){ return 0; };
+          KS.forEach(function(S0){ var id=S0.id;
+            ["half speed","in the fade","faded out"].forEach(function(way,wi){
+              if(playing) kClick("#play");   /* stopped, by the button */
+              dwellSet(false); kClick('.spd-btn[data-s="0.5"]');
+              setClock(S0.t,{instant:true,force:true,camera:false}); finishTween(); aim(posNow(id),S0.dir,S0.r); settleAll(); lastFrame=kTm;
+              var blk=units[id].block; if(!blk.visible){ kBad.push(S0.kind+" ("+id+"): not shown at "+fmtClock(clock)); return; }
+              if(S0.kind==="limbered artillery"&&!(blk.userData.limbered&&blk.userData.limbered.visible)) kBad.push(id+": not limbered at "+fmtClock(clock));
+              kClick("#play"); KF(12);
+              if(wi>0){ kClick('.spd-btn[data-s="4"]'); KF(1); if(wi===2){ var nF=0; while(kAmp(id)>0&&nF<60){ KF(1); nF++; } } }
+              var a0=kAmp(id), lg=gaitLeg(id,clock);
+              if(!lg||lg.kmh<GAIT.KMH) kBad.push(S0.kind+" ("+id+") "+way+": not marching at "+fmtClock(clock));
+              if(wi===0&&a0!==1) kBad.push(S0.kind+" "+way+": the amplitude "+a0+" before the pause (full expected)");
+              if(wi===1&&!(a0>0.05&&a0<0.95)) kBad.push(S0.kind+" "+way+": the amplitude "+a0+" before the pause (in the fade expected)");
+              if(wi===2&&a0!==0) kBad.push(S0.kind+" "+way+": the amplitude "+a0+" before the pause (none expected)");
+              var U0=kUni(id), R0=kRead(id), t0=clock, sl0=SEAT_STATS.slopes;
+              if(wi===0){ var Rn=kRead(id,false), dFr=diff(R0.F,Rn.F), dSh=R0.S&&Rn.S?diff(R0.S,Rn.S):-1;
+                if(!(dFr>0)) kBad.push(S0.kind+": not drawn in the view read"); if(R0.S&&!(dSh>0)) kBad.push(S0.kind+": casts nothing in the depth map read");
+                kT.push(S0.kind+" ("+id+", "+(blk.userData.lodRich?"rich":"simple")+"): "+dFr+" pixels and "+dSh+" texels its own"); }
+              kClick("#play");   /* Pause */
+              if(playing){ kBad.push(S0.kind+" "+way+": the button did not pause"); return; }
+              var g0=kSig(id), y0=kYaw(id);
+              KF(1); var U1=kUni(id), R1=kRead(id), g1=kSig(id), took=SEAT_STATS.slopes-sl0, d01=diff(R0.F,R1.F), s01=R0.S&&R1.S?diff(R0.S,R1.S):0;
+              if(clock!==t0) kBad.push(S0.kind+" "+way+": the clock moved at the pause");
+              if(!kEq(U0,U1)) kBad.push(S0.kind+" "+way+": the first paused frame's gait is not the last played ("+JSON.stringify(U0[0])+" against "+JSON.stringify(U1[0])+")");
+              if(kSame(g0,g1)&&(d01||s01)) kBad.push(S0.kind+" "+way+": the block as it was, its gait as last played, yet the first paused frame differs from the last played by "+d01+" pixels and "+s01+" texels");
+              var worst=0, sw=0, judged=0, eased=0;
+              for(var k=0;k<5;k++){ KF(1); var Uk=kUni(id), Rk=kRead(id), gk=kSig(id);
+                if(!kEq(U1,Uk)) kBad.push(S0.kind+" "+way+": paused frame "+(k+2)+"'s gait moved (the amplitude "+U1[0][0]+" to "+Uk[0][0]+")");
+                if(!kSame(g1,gk)){ eased++; continue; }   /* the block's own ease moved it: its frame not the gait's to judge */
+                judged++; worst=Math.max(worst,diff(R1.F,Rk.F)); sw=Math.max(sw,R1.S&&Rk.S?diff(R1.S,Rk.S):0); }
+              if(worst||sw) kBad.push(S0.kind+" "+way+": paused, the block as it was, the frame moved by "+worst+" pixels and the depth map by "+sw+" texels");
+              kJ+=judged; kE+=eased;
+              kT.push(S0.kind+" "+way+" (the amplitude "+(+a0.toFixed(4))+" at "+fmtClock(t0)+"): the first paused frame's gait the last played's, then 5 frames the same"+(judged?", "+judged+" of them drawn and cast as the first":"")+
+                (eased?", "+eased+" with the block still wheeling ("+(+(kYaw(id)-y0).toFixed(4))+" rad since the pause: WHEEL, the formation model's)":"")+"; the first against the last played "+(kSame(g0,g1)?"the same block, ":"")+d01+" pixels and "+s01+" texels ("+took+" seatings taking the slopes)");
+              /* resumed by the button: on from the amplitude held toward the speed's rule, never past it; the phase the clock's */
+              var held=U1[0][0]; kClick("#play"); KF(1); var Ur=kUni(id), ar=Ur[0][0], c=clockRate()*lg.mpm/fastestOf(id), want=lg.kmh>=GAIT.KMH?Math.max(0,Math.min(1,(GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL))):0;
+              if(!(clock>t0)) kBad.push(S0.kind+" "+way+": resumed, the clock did not move");
+              if(held===want?ar!==held:!((ar-held)*(want-held)>0&&Math.abs(ar-want)<Math.abs(held-want)&&Math.abs(ar-want)>1e-6)) kBad.push(S0.kind+" "+way+": resumed, the amplitude "+ar+" from "+held+" toward "+want+" (eased on from where it was held expected)");
+              var Dk=distT(id,clock); units[id].block.userData.gait.meshes.forEach(function(m){ var U=m.userData.anim, st=GAIT.STRIDE[m.userData.gaitKind==="gear"?"team":m.userData.gaitKind], ph=2*Math.PI*((Dk/st)-Math.floor(Dk/st));
+                if(U.uAnimAmp.value>0&&Math.abs(U.uAnimPhase.value-ph)>1e-6&&Math.abs(Math.abs(U.uAnimPhase.value-ph)-2*Math.PI)>1e-6) kBad.push(S0.kind+" "+way+": resumed, the phase not the clock's"); });
+              KF(2); kClick("#play");
+              /* a seek after the faded pause: the next ten minutes by the button, the clock's own pose at once (full where it marches), the same as
+                 that clock reached from another */
+              if(wi===2){ var tS=clock+10; KF(1); kClick("#next"); KF(1); var Us=kAll(), lgS=gaitLeg(id,clock), aS=kAmp(id);
+                if(Math.abs(clock-tS)>1e-9) kBad.push(S0.kind+": the next ten minutes' button did not move the clock");
+                if(lgS&&lgS.kmh>=GAIT.KMH&&aS!==1) kBad.push(S0.kind+": sought while paused, the amplitude "+aS+" in the first frame (full expected)");
+                setClock(T_MIN,{instant:true,force:true,camera:false}); KF(2); setClock(tS,{instant:true,camera:false}); KF(1); var Us2=kAll();
+                if(!kEq(Us,Us2)) kBad.push(S0.kind+": the clock sought by the button and from "+fmtClock(T_MIN)+" not one pose");
+                kT.push(S0.kind+": sought ten minutes on while paused, "+fmtClock(tS)+", the amplitude "+aS+" in the first frame, the pose that clock's from another"); }
+            }); });
+          /* the dwell's hold: the dwell on, 4x into 09:00's start, every formation's gait the same in the hold's frames */
+          kClick('.spd-btn[data-s="4"]'); dwellSet(true); setClock(528,{instant:true,force:true,camera:false}); finishTween(); aim(posNow("sthilaire"),[0.7,0.35,0.2],60); settleAll(); lastFrame=kTm;
+          kClick("#play"); var nH=0; while(!(DWELL.st&&DWELL.st.stage==="hold")&&nH<200){ KF(1); nH++; }
+          if(!(DWELL.st&&DWELL.st.stage==="hold")) kBad.push("the dwell's hold not reached");
+          else { KF(1); var H0=kAll(), hMov=0, hF=0; for(var h=0;h<5;h++){ KF(1); if(!kEq(H0,kAll())) hMov++; } Object.keys(H0).forEach(function(k){ if(H0[k].length&&H0[k][0][0]>0) hF++; });
+            if(hMov) kBad.push("in the dwell's hold the gait moved in "+hMov+" frames of 5"); if(!hF) kBad.push("no formation stepping in the dwell's hold");
+            kT.push("the dwell's hold at "+fmtClock(clock)+": "+Object.keys(H0).length+" formations' gait held for 6 frames, "+hF+" of them in stride"); }
+          if(playing) kClick("#play");
+          /* reduced motion while paused with a pose held: none at once; turned off again, nothing steps until the clock moves */
+          kClick('.spd-btn[data-s="0.5"]'); dwellSet(false); setClock(528,{instant:true,force:true,camera:false}); finishTween(); settleAll(); lastFrame=kTm;
+          kClick("#play"); KF(12); kClick("#play"); KF(1);
+          var rmA=kAmp("sthilaire"); RM=true; KF(1); var rmB=shown().filter(function(k){ return kAmp(k)>0; }).length; RM=false; KF(3); var rmC=shown().filter(function(k){ return kAmp(k)>0; }).length;
+          if(!(rmA>0)) kBad.push("reduced motion: nothing held in stride to stop"); if(rmB) kBad.push("reduced motion, paused: "+rmB+" formations still in stride one frame after it was set");
+          if(rmC) kBad.push("reduced motion turned off, paused: "+rmC+" formations stepped back into stride with the clock standing");
+          kT.push("reduced motion, paused: from "+(+rmA.toFixed(3))+" to none in one frame; off again, none until the clock moves");
+          kT.push(kJ+" paused frames drawn and cast with the block as it was, "+kE+" with its own ease moving it");
+          if(kJ<KS.length*5) kBad.push("too few paused frames judged by the drawing ("+kJ+": the blocks were still wheeling)");
+        } catch(err){ kBad.push("threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+        } finally {
+          if(kOwn) performance.now=kNow; else delete performance.now; window.requestAnimationFrame=kRaf; renderer.render=kRender; RM=keepE.rm;
+          if(playing) stopPlay(); dwellSet(kDw); setSpeed(kSp); lastFrame=0;
+        }
+        ck("the gait at a pause (8F's prerequisite, decision 244 (a)): Play, the speed and Pause by their buttons through the app's own loop, an infantry division, a cavalry corps and a limbered battery paused from half speed, in the fade and faded out: the first paused frame's gait the last played's and every paused frame's the first's, the frame and the sun's depth map drawn with the formation alone unchanged; resumed, on from the amplitude held; a seek the clock's own pose at once; the dwell's hold held; reduced motion at once",
+          !kBad.length, kT.join("; ")+(kBad.length?"; WRONG: "+kBad.slice(0,6).join("; "):""));
 
         /* (g) S-5: the facing a function of the clock: every formation's facing the same however its clock was reached */
         var gBad=[], gN=0;

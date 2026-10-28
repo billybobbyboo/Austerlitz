@@ -21,11 +21,16 @@ const MUT=[
   ["rm","reduced motion ignored by the gait","if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=","if(lg&&lg.kmh>=GAIT.KMH){ c="],
   ["fade","the fade from 3.2 to 4.8 cycles a second moved","FULL:3.2, NONE:4.8,","FULL:4.0, NONE:6.0,"],
   ["ease","the amplitude set at once, not eased","if(G.amp!==want){ G.amp+=(want-G.amp)*e;","if(G.amp!==want){ G.amp=want;"],
-  ["rmease","reduced motion eased, not at once","var e=RM?1:ease(GAIT.EASE);","var e=ease(GAIT.EASE);"],
-  ["noskip","gaitStep computing (and allocating) every frame when nothing changed","  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv;\n  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L,_glo):null,","  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv;\n  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L):null,"],
-  ["crew","a battery's cadence its hidden crew's","var rate=clockRate(), fv=gaitFastest(rec,G);","var rate=clockRate(), fv=G.fastest;"],
+  ["rmease","reduced motion eased, not at once","var e=(RM||sk)?1:ease(GAIT.EASE);","var e=sk?1:ease(GAIT.EASE);"],
+  ["noskip","gaitStep computing (and allocating) every frame when nothing changed","  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv; G.seek=GAIT.seek;\n  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L,_glo):null,","  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv; G.seek=GAIT.seek;\n  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L):null,"],
+  ["crew","a battery's cadence its hidden crew's","var rate=clockRate(), fv=gaitFastest(rec,G), sk=","var rate=clockRate(), fv=G.fastest, sk="],
   ["wheelwrap","the wheels' angles not taken within one spoke's interval","a-=pg*Math.round(a/pg); b-=pl*Math.round(b/pl);",""],
   ["kneel","a behaviour beyond the gait: a kneeling part","PART:{0:{kind:\"none\"},","PART:{0:{kind:\"none\"}, 30:{kind:\"kneel\"},"],
+  /* 8F's prerequisite (the audit of 8E): a pause holds the pose drawn; a seek shows the clock's own pose at once; Play's advance not a seek */
+  ["pausehold","8E's behaviour: with the clock standing the amplitude eased on toward the paused rule","  if(rate===0&&!sk&&!RM){ want=G.amp; trot=G.trot; }\n",""],
+  ["seekease","a seek eased like Play, not the clock's own pose at once","var e=(RM||sk)?1:ease(GAIT.EASE);","var e=RM?1:ease(GAIT.EASE);"],
+  ["seekcount","setClock counting no seek","  if(!opts.play) GAIT.seek++;",""],
+  ["playseek","Play's own advance counted a seek","setClock(nt,{play:true}); DWELL.expect=clock;","setClock(nt); DWELL.expect=clock;"],
   ["wind","the standards' cloth moved by the wall clock (wind)","a.setZ(i,F.a*(0.35+0.65*u)*Math.sin(Math.PI*F.n*u));","a.setZ(i,F.a*(0.35+0.65*u)*Math.sin(Math.PI*F.n*u+performance.now()));"]
 ];
 const src=fs.readFileSync(path.join(ROOT,"app.js"),"utf8"), dir=fs.mkdtempSync(path.join(os.tmpdir(),"mutate-css-8e-")), res={mutations:[]};
