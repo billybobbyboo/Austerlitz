@@ -440,6 +440,29 @@ function groundY(x,z){
   return (u+v<=1) ? ha+u*(hd-ha)+v*(hb-ha) : hc+(1-u)*(hb-hc)+(1-v)*(hd-hc);
 }
 
+/* Stage 8, implementation PR 8F's prerequisite 2 (the audit of 8E: the contact): the drawn ground's heights at its grid's vertices in one compact
+   array (GROUND_NX+1 by GROUND_NZ+1, each the value the ground mesh's own triangles carry there), for the gait's slopes, which read the drawn
+   ground ten or twelve times a figure as a block is seated (layoutFigs): groundYFast(H,x,z) is groundY's own arithmetic on it, value for value
+   the same (runtime-test.js and the self-test compare the two), about a third cheaper a lookup where a figure's lookups lie together. Made
+   again whenever the mesh's positions change (a display factor, the flat paper map: scaleGround marks it stale; the attribute's array or
+   version, for any other writer) */
+var GHEIGHTS={h:null, arr:null, ver:-1};
+function groundHeights(){
+  if(!groundMesh) return null;
+  var A=groundMesh.geometry.attributes.position; if(GHEIGHTS.h&&GHEIGHTS.arr===A.array&&GHEIGHTS.ver===A.version) return GHEIGHTS.h;
+  var P=A.array, NX=GROUND_NX, NZ=GROUND_NZ, N1=NX+1, H=(GHEIGHTS.h&&GHEIGHTS.h.length===N1*(NZ+1))?GHEIGHTS.h:new Float32Array(N1*(NZ+1));
+  for(var iz=0;iz<NZ;iz++) for(var ix=0;ix<NX;ix++){ var o0=(iz*NX+ix)*18, o1=o0+9;
+    H[iz*N1+ix]=P[o0+1]; H[(iz+1)*N1+ix]=P[o0+4]; H[iz*N1+ix+1]=P[o0+7]; H[(iz+1)*N1+ix+1]=P[o1+4]; }
+  GHEIGHTS.h=H; GHEIGHTS.arr=P; GHEIGHTS.ver=A.version; return H;
+}
+function groundYFast(H,x,z){
+  var cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ, fx=(x+GROUND_W/2)/cw, fz=(z+GROUND_D/2)/cd;
+  if(!H||fx<0||fz<0||fx>GROUND_NX||fz>GROUND_NZ) return groundY(x,z);
+  var ix=Math.min(GROUND_NX-1,Math.floor(fx)), iz=Math.min(GROUND_NZ-1,Math.floor(fz)), u=fx-ix, v=fz-iz, N1=GROUND_NX+1, k=iz*N1+ix;
+  var ha=H[k], hb=H[k+N1], hd=H[k+1], hc=H[k+N1+1];
+  return (u+v<=1) ? ha+u*(hd-ha)+v*(hb-ha) : hc+(1-u)*(hb-hc)+(1-v)*(hd-hc);
+}
+
 /* ---------------- state ---------------- */
 var scrubMesh=null;
 var groundMesh=null, domeMesh=null, mistGroup=null, treeMesh=null, coniferMesh=null,
@@ -564,6 +587,7 @@ function scaleGround(geo){
     N[i*3]=nx/L; N[i*3+1]=ny/L; N[i*3+2]=nz/L;
   }
   geo.attributes.position.needsUpdate=true; geo.attributes.normal.needsUpdate=true;
+  GHEIGHTS.ver=-1;   /* the slopes' compact heights made again at their next read (groundHeights), whatever the attribute's version does */
   if(geo.computeBoundingSphere) geo.computeBoundingSphere(); if(geo.boundingBox) geo.computeBoundingBox();
   var LX=-0.52, LY=0.70, LZ=-0.49, ln=Math.sqrt(LX*LX+LY*LY+LZ*LZ); LX/=ln; LY/=ln; LZ/=ln;
   for(var q=0;q<FACE.n*3;q++){ var a=N[q*3],b=N[q*3+1],c=N[q*3+2]; FACE.vsh[q]=Math.max(0,a*LX+b*LY+c*LZ); FACE.vnz[q]=c; }
@@ -838,6 +862,7 @@ function coverAtlas(){
   _atlas=new THREE.CanvasTexture(c);
   _atlas.wrapS=_atlas.wrapT=THREE.ClampToEdgeWrapping;
   _atlas.anisotropy=8;
+  atlasLum(d,CW);   /* Stage 8, 8F: each cell's mean grey, for the near detail (from the pixels in hand: no readback of the canvas) */
   photoAtlas();
   return _atlas;
 }
@@ -881,6 +906,7 @@ function photoAtlas(){
     });
     x.putImageData(pattern,0,0);
     _atlas.needsUpdate=true;
+    atlasLum(d,c.width);   /* Stage 8, 8F: the means again, of the photographs (the pixels just painted) */
     if(typeof requestRender==="function") requestRender(2);
     photoNormal();
   }
@@ -965,6 +991,7 @@ var GROUND_FRAG_HEAD=[
   "uniform sampler2D uCovA; uniform sampler2D uCovB; uniform sampler2D uMl; uniform sampler2D uField; uniform sampler2D uVS;",
   "uniform vec4 uCovG; uniform vec2 uCovN; uniform vec4 uMlG; uniform vec2 uMlN; uniform vec4 uVSG; uniform vec2 uVSN; uniform vec4 uFieldG;",
   "uniform vec4 uPondS; uniform vec4 uPondM; uniform vec3 uPal[8]; uniform float uMode; uniform float uVSOn; uniform float uDebug;",
+  "uniform vec4 uDetail; uniform vec2 uDetailR; uniform vec2 uDetailC; uniform float uCellLum[12];",   /* Stage 8, 8F: the near detail (GDETAIL) */
   /* COVER_ML, four nodes along x to a texel (uMlT its size in texels): nodes i0 to i0+3 of row j, and coverMlAt */
   "uniform vec2 uMlT;",
   "vec4 gMlRow(float i0,float j){ float I=floor(i0/4.0), c=i0-4.0*I; vec2 r=(vec2(I,j)+0.5)/uMlT;",
@@ -1000,6 +1027,18 @@ var GROUND_FRAG_ATLAS=[
   "}",
   "#endif"
 ].join("\n");
+/* Stage 8, 8F: the near detail (GDETAIL), the texel scaled by a finer sample of its own cell, near the eye, on the natural ground only (WebGL 2's
+   textureGrad: its own gradients, so no mip seam at a tile's wrap) */
+var GROUND_FRAG_DETAIL=[
+  "#if __VERSION__ >= 300",
+  "  if(uMode>0.5&&uMode<1.5&&uDetail.x>0.0){",
+  "    float gDf=uDetail.x*(1.0-smoothstep(uDetail.y,uDetail.z,length(vViewPosition)));",
+  "    if(gDf>0.002){ vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w;",
+  "      vec2 gDt=vec2(fract(gDu.x)*0.234375+0.0078125+ci*0.25, fract(gDu.y)*0.3125+0.0104167+cj*0.3333333), gDk=vec2(0.234375,0.3125);",
+  "      vec3 gDc=mapTexelToLinear(textureGrad(map,gDt,dFdx(gDu)*gDk,dFdy(gDu)*gDk)).rgb;",
+  "      float gDl=dot(gDc,vec3(0.2126,0.7152,0.0722))/max(uCellLum[int(gCell+0.5)],0.001);",
+  "      texelColor.rgb*=mix(1.0,clamp(gDl,uDetailC.x,uDetailC.y),gDf); } }",
+  "#endif",""].join("\n");
 var GROUND_FRAG_MAIN=[
   "float gCls=vCover, gCrop=0.0; vec3 gCol=vec3(1.0);",
   "if(uMode>0.5){",
@@ -1039,6 +1078,28 @@ var GROUND_FRAG_MAIN=[
   "#endif",
   "vec4 diffuseColor = vec4( diffuse, opacity );"
 ].join("\n");
+/* Stage 8, implementation PR 8F (decision 247 (a): "a finer near-ground detail layer"; docs/STAGE8_SPEC.md sections 7.4 and 18): near the eye
+   the ground's texture is given a second, finer sample of its own cell of the atlas (each class its own texture, so no new class and no new
+   colour: the sample's grey over the cell's mean grey scales the texel, clamped, so the class's tone is kept on average), turned and scaled so
+   that its tiles fall neither on the coarse sample's nor on the grid's; full to `near` units from the eye, fading to nothing at `far`; in world
+   co-ordinates (anchored: it does not swim as the eye moves). Only the landscape's natural ground (uMode 1): not the paper map, not the going
+   layer, not the apron. Not on a low tier (lowTier, decision 236: the phone's frame kept as P5 measured it; groundDetail). The classes, the
+   frost, the strips and the hollows are the shader's as before (they colour gCol, not the texel). Every value a design value */
+var GDETAIL={amount:0.55, near:14, far:60, k:7.3, rot:0.61, lo:0.62, hi:1.38, lum:[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]};
+/* each shader cell's mean grey (linear, as the shader reads the texel), over its period, by the shader's own cell index (gCell): three uploads
+   the canvas flipped (flipY, its default), so the shader's row cj (tuv's v from the texture's foot) is the canvas's row 2-cj; made again when
+   the photographs repaint the atlas, from the pixels the painter holds (d, the canvas's width W: a readback of the canvas would be one more
+   than the photographs' own, and Chrome warns of repeated readbacks) */
+function atlasLum(d,W){
+  var R=512, IN=480, G=16, srgb=_atlas&&_atlas.encoding===THREE.sRGBEncoding, flip=!(_atlas&&_atlas.flipY===false);
+  var lin1=function(v){ v/=255; return srgb?(v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4)):v; };
+  for(var k=0;k<12;k++){ var cx=(k%4)*R, cy=(flip?2-Math.floor(k/4):Math.floor(k/4))*R, sum=0, n=0;
+    for(var j=G;j<G+IN;j+=4) for(var i=G;i<G+IN;i+=4){ var o=((cy+j)*W+(cx+i))*4; sum+=0.2126*lin1(d[o])+0.7152*lin1(d[o+1])+0.0722*lin1(d[o+2]); n++; }
+    GDETAIL.lum[k]=Math.max(1e-3,sum/n); }
+  if(typeof requestRender==="function") requestRender(2);
+}
+/* the detail on or off (app.js: off under lowTier) */
+function groundDetail(on){ if(groundMesh&&groundMesh.material.userData.U) groundMesh.material.userData.U.uDetail.value.x=on?GDETAIL.amount:0; }
 /* the data the shader reads, made once: the six cover rasters (as covAt reads them), the local relief (COVER_ML), the
    field-strip table, and the viewshed (refreshed when one is drawn) */
 var _gTex=null;
@@ -1070,7 +1131,9 @@ function groundUniforms(){
     uField:{value:T.field}, uFieldG:{value:new THREE.Vector4(64,16,128,32)},
     uVS:{value:T.vs}, uVSN:{value:new THREE.Vector2(G_NX,G_NZ)}, uVSG:{value:new THREE.Vector4(G_X0,G_Z0,G_DX,G_DZ)},
     uPondS:{value:new THREE.Vector4(SATS[0],SATS[1],28,10.5)}, uPondM:{value:new THREE.Vector4(MENI[0],MENI[1],23,9)},
-    uPal:{value:groundPal("natural")}, uMode:{value:1}, uVSOn:{value:0}, uDebug:{value:0}};
+    uPal:{value:groundPal("natural")}, uMode:{value:1}, uVSOn:{value:0}, uDebug:{value:0},
+    uDetail:{value:new THREE.Vector4(GDETAIL.amount,GDETAIL.near,GDETAIL.far,GDETAIL.k)}, uDetailR:{value:new THREE.Vector2(Math.cos(GDETAIL.rot),Math.sin(GDETAIL.rot))},
+    uDetailC:{value:new THREE.Vector2(GDETAIL.lo,GDETAIL.hi)}, uCellLum:{value:GDETAIL.lum}};
 }
 function atlasShader(mat){
   var U=groundUniforms(); mat.userData.U=U;
@@ -1088,6 +1151,7 @@ function atlasShader(mat){
         "#ifdef USE_MAP\n"+
         "  vec4 texelColor=gAtlas(map,tuv);\n"+
         "  texelColor=mapTexelToLinear(texelColor);\n"+
+        GROUND_FRAG_DETAIL+
         "  diffuseColor*=texelColor;\n"+
         "#endif")
       .replace("#include <color_fragment>",
@@ -1200,13 +1264,74 @@ function mereLevel(cc,rx,rz,base){
    data: the Satschan mere "frozen on 2 December"; the phase-8 texts' guns firing "down on the ice"): smoother than before, taking
    the computed sun's sheen and the sky (the environment map), with a lighter rim where the shore ice meets the bank. Their
    outlines stay schematic (decision 27); no cracks, holes, snow or figures in the water. The banks and streams are unchanged. */
-var WATER_COL={ice:0x4E5C66, iceRim:0x75838B, bank:0x4E5A4C, stream:0x587A8E};
-var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02};
+/* Stage 8, implementation PR 8F (decision 246 (a); docs/STAGE8_SPEC.md sections 5 and 18): the meres' ice and the streams by their material
+   and light alone. Their outlines, their levels, the shore ice's ring and the streams' lines and widths are 4E's and 8A's, unchanged. On the
+   landscape the ice is clearer, darker and glossier toward the middle (iceClear) and rimed toward the shore (iceFrost: "ce miroir, blanchi par
+   les frimas", Segur 1877, t. II p. 473, a memoir, grade C: the one description of the ice's look read, section 5.2), its margin subdued toward the field's own tones so that it does not stand out
+   as a bright plate's edge (the owner: "Tune the bright ice margins so they integrate with the surrounding terrain"), a broad variation of
+   tone of low contrast (no line, crack, hole, open water or snow: docs/STAGE4_SPEC.md section F.1's rule as 4E built it), the sky reflected
+   more at a grazing view over the clear ice; the shore ice a band feathered at both its edges (no hard ring), drawn after the ice (its render
+   order) over the ice, which writes no depth (so the band never fights it for the pixel at a grazing view, and only the drawn ground hides
+   it: the shore where 4E drew it). The streams still (nothing in them moves: no clock and no time is read, so an idle page
+   draws no frame for them), darker and less blue (streamLand), their banks darker (bankLand), the sky reflected at a grazing view. Every value
+   a design value. The paper map draws the water as before 8F (ice, stream, bank; waterPresentation) */
+var WATER_COL={ice:0x4E5C66, iceRim:0x75838B, bank:0x4E5A4C, stream:0x587A8E,   /* the paper map's (and the landscape's until 8F) */
+  iceClear:0x3E494F, iceFrost:0x5E6664, iceBand:0x5A615E, bankLand:0x454C40, streamLand:0x3E4A51};   /* the landscape's since 8F */
+var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02,
+  clear:0.20, rime:0.62,   /* since 8F: the landscape's roughness over the clear middle and the rimed margin */
+  margin:[0.38,1.0],       /* the rimed margin, from 0.38 of the mere's radius to its shore (the disc's and the ring's own radius) */
+  patch:0.11, fine:0.37,   /* the broad patches' and the rime's scales, in cycles per world unit (anchored to the ground: nothing moves) */
+  tone:0.10,               /* the broad variation of tone, its whole span */
+  sky:1.4,                 /* the sky's reflection added at a grazing view over the clear ice (its weight at the horizon) */
+  band:[0.35,0.55]};       /* the shore band's opacity: up from its inner edge over 0.35 of its width, down to nothing at the shore from 0.55 */
+var STREAM={rough:0.30, env:0.40, tone:0.10, scale:1.3, sky:2.0};   /* since 8F: the landscape's streams (roughness, the environment's weight,
+                                                                       a still variation of tone and its scale, the sky at a grazing view) */
+/* the noise the water's tones read: a value noise over the world plane, three octaves; a hash with no sine (stable at mediump) */
+var WATER_GLSL=["float wHash(vec2 p){ vec3 q=fract(vec3(p.xyx)*0.1031); q+=dot(q,q.yzx+33.33); return fract((q.x+q.y)*q.z); }",
+  "float wNoise(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); return mix(mix(wHash(i),wHash(i+vec2(1.0,0.0)),f.x),mix(wHash(i+vec2(0.0,1.0)),wHash(i+vec2(1.0,1.0)),f.x),f.y); }",
+  "float wFbm(vec2 p){ return 0.55*wNoise(p)+0.28*wNoise(p*2.1+3.7)+0.17*wNoise(p*4.3+9.1); }"].join("\n");
+function glslF(v){ var t=String(v); return /[.e]/.test(t)?t:t+".0"; }
+/* the meres' ice (the disc) and the shore ice (the band) on the landscape */
+function iceHook(mat,band){
+  var U={uIceA:{value:lin(WATER_COL.iceClear)}, uIceF:{value:lin(band?WATER_COL.iceBand:WATER_COL.iceFrost)}};
+  mat.onBeforeCompile=function(sh){
+    if(typeof atmoUniforms==="function") atmoUniforms(sh);   /* the atmosphere's uniforms (app.js), as every material gets them */
+    sh.uniforms.uIceA=U.uIceA; sh.uniforms.uIceF=U.uIceF;
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nvarying vec2 vIceUv; varying vec3 vIceW;")
+      .replace("#include <begin_vertex>","#include <begin_vertex>\nvIceUv=uv; vIceW=(modelMatrix*vec4(transformed,1.0)).xyz;");
+    sh.fragmentShader=sh.fragmentShader.replace("#include <common>","#include <common>\nvarying vec2 vIceUv; varying vec3 vIceW; uniform vec3 uIceA, uIceF;\n"+WATER_GLSL)
+      .replace("#include <color_fragment>","#include <color_fragment>\n"+
+        "float iR=length(vIceUv-0.5)*2.0, iP=wFbm(vIceW.xz*"+glslF(ICE.patch)+"), iM=1.0;\n"+
+        (band?"float iT=clamp((iR-"+glslF(ICE.rim)+")/"+glslF(1-ICE.rim)+",0.0,1.0); diffuseColor.a*=smoothstep(0.0,"+glslF(ICE.band[0])+",iT)*(1.0-smoothstep("+glslF(ICE.band[1])+",1.0,iT));\n"
+             :"iM=clamp(smoothstep("+glslF(ICE.margin[0])+","+glslF(ICE.margin[1])+",iR)+0.40*(iP-0.5)+0.18*(wFbm(vIceW.xz*"+glslF(ICE.fine)+"+7.0)-0.5),0.0,1.0);\n")+
+        "diffuseColor.rgb=mix(uIceA,uIceF,iM)*("+glslF(1-ICE.tone/2)+"+"+glslF(ICE.tone)+"*iP);")
+      .replace("#include <roughnessmap_fragment>","#include <roughnessmap_fragment>\nroughnessFactor=mix("+glslF(ICE.clear)+","+glslF(ICE.rime)+",iM);")
+      .replace("#include <lights_fragment_maps>","#include <lights_fragment_maps>\n"+
+        "{ float iG=1.0-max(normalize(cameraPosition-vIceW).y,0.0); radiance*=1.0+"+glslF(ICE.sky)+"*(1.0-iM)*iG*iG*iG*iG; }");
+  };
+  mat.customProgramCacheKey=function(){ return band?"ice8f-band":"ice8f"; };   /* its own program: never another material's */
+  return mat;
+}
+/* the streams on the landscape: their tone still, the sky at a grazing view */
+function streamHook(mat){
+  mat.onBeforeCompile=function(sh){
+    if(typeof atmoUniforms==="function") atmoUniforms(sh);
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nvarying vec3 vStW;")
+      .replace("#include <begin_vertex>","#include <begin_vertex>\nvStW=(modelMatrix*vec4(transformed,1.0)).xyz;");
+    sh.fragmentShader=sh.fragmentShader.replace("#include <common>","#include <common>\nvarying vec3 vStW;\n"+WATER_GLSL)
+      .replace("#include <color_fragment>","#include <color_fragment>\ndiffuseColor.rgb*="+glslF(1-STREAM.tone/2)+"+"+glslF(STREAM.tone)+"*wFbm(vStW.xz*"+glslF(STREAM.scale)+");")
+      .replace("#include <lights_fragment_maps>","#include <lights_fragment_maps>\n"+
+        "{ float sG=1.0-max(normalize(cameraPosition-vStW).y,0.0); radiance*=1.0+"+glslF(STREAM.sky)+"*sG*sG*sG; }");
+  };
+  mat.customProgramCacheKey=function(){ return "stream8f"; };
+  return mat;
+}
+var WATER_MATS=null;   /* {land, paper}: the landscape's materials (8F's) and the paper map's (8E's, as before 8F); waterPresentation puts them in place */
 function buildWater(scene){
-  var iceMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,
-    transparent:true,opacity:0.96});
-  var rimMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.iceRim),roughness:ICE.roughness+0.2,metalness:0.0,envMapIntensity:ICE.env*0.6,
-    transparent:true,opacity:0.96});
+  var iceMat=iceHook(new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,
+    transparent:true,opacity:0.96,depthWrite:false}),false);   /* 8F: no depth written (the band over it; nothing visible lies under the ice) */
+  var rimMat=iceHook(new THREE.MeshStandardMaterial({color:lin(WATER_COL.iceRim),roughness:ICE.roughness+0.2,metalness:0.0,envMapIntensity:ICE.env*0.6,
+    transparent:true,opacity:0.96}),true);
   function mere(cc,rx,rz,base){
     var m=new THREE.Mesh(new THREE.CircleGeometry(1,48),iceMat);
     m.rotation.x=-Math.PI/2; m.position.set(cc[0],mereLevel(cc,rx,rz,base),cc[1]); m.scale.set(rx,rz,1);
@@ -1215,14 +1340,21 @@ function buildWater(scene){
     var r=new THREE.Mesh(new THREE.RingGeometry(ICE.rim,1,48,1),rimMat);   /* the shore ice: its outer edge the mere's own */
     r.rotation.x=-Math.PI/2; r.position.set(cc[0],mereLevel(cc,rx,rz,base)+ICE.rimLift,cc[1]); r.scale.set(rx,rz,1);
     r.userData.mere=[cc,rx,rz,base]; r.userData.mereLift=ICE.rimLift;
+    r.renderOrder=1;   /* 8F: drawn after its mere's ice whatever the eye (both transparent, their centres a lift apart: an eye looking up would sort
+                          the band first), so that its feathered edges show the ice under them, not the ground */
     scene.add(r); iceRims.push(r);   /* not water: the landscape's ice surface only (hidden on the paper map) */
   }
   mere(SATS,28,10.5,-3.85);
   mere(MENI,23,9,-3.95);
   /* Stage 8, implementation PR 8A (decision 253): the ribbons drawn on both faces (ribbon(): wound facing up), so that a sliver lifted over a
      crest and facing away from the eye, which the 10.33x relief makes, is drawn as the rest of its ribbon is */
-  var bankMat=matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide});
-  var streamMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide});
+  var bankMat=matte({color:WATER_COL.bankLand,roughness:0.96,side:THREE.DoubleSide});
+  var streamMat=streamHook(new THREE.MeshStandardMaterial({color:lin(WATER_COL.streamLand),roughness:STREAM.rough,metalness:0.0,envMapIntensity:STREAM.env,side:THREE.DoubleSide}));
+  /* the paper map's water: 8E's materials, so that the paper map draws it as before 8F */
+  WATER_MATS={land:{ice:iceMat, bank:bankMat, stream:streamMat},
+    paper:{ice:new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,transparent:true,opacity:0.96}),
+      bank:matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide}),
+      stream:new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide})}};
   ribbon(scene,GOLDBACH,4.6,0.16,bankMat,waterMeshes,"bank","stream");
   ribbon(scene,GOLDBACH,2.8,0.26,streamMat,waterMeshes,"stream","stream");
   ribbon(scene,LITAVA,5.0,0.16,bankMat,waterMeshes,"bank","stream");
@@ -1231,6 +1363,14 @@ function buildWater(scene){
     ribbon(scene,b,2.4,0.16,bankMat,waterMeshes,"bank","stream");
     ribbon(scene,b,1.4,0.26,streamMat,waterMeshes,"stream","stream");
   });
+}
+/* the water's presentation (since 8F): each water mesh given the landscape's material (8F's) or the paper map's (8E's: the paper map draws the
+   water as before 8F); app.js setMode calls it, before it sets the water's opacity as before */
+function waterKind(m){ return m.userData.mere?"ice":(m.userData.drape&&m.userData.drape.kind); }
+function waterPresentation(staff){
+  if(!WATER_MATS) return;
+  var S=staff?WATER_MATS.paper:WATER_MATS.land;
+  waterMeshes.forEach(function(m){ var k=waterKind(m); if(S[k]) m.material=S[k]; });
 }
 function buildRoads(scene){
   var hi=matte({color:LAND_COL.road.highway,roughness:0.94,side:THREE.DoubleSide});   /* Stage 8, 8A: both faces, as the streams' (buildWater) */
@@ -1418,7 +1558,7 @@ function buildWoods(scene){
   treeMesh=new THREE.Group(); coniferMesh=new THREE.Group();
   var BARE=LAND_COL.bare;
   byVar.forEach(function(list,vi){
-    var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true}),Math.max(1,list.length));
+    var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,list.length));   /* 8F: both faces (the open shells) */
     im.castShadow=true; im.count=Math.max(1,list.length);
     list.forEach(function(t,k){
       d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -1467,7 +1607,7 @@ function buildWoods(scene){
       scrub.push([x,displayHeight(x,z),z,0.45+rnd()*0.45,"stream"]);   /* bank scrub along the streams: not a wood */
     }
   });
-  scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true}),Math.max(1,scrub.length));
+  scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrub.length));   /* 8F: both faces */
   scrubMesh.castShadow=false; scrubMesh.receiveShadow=true;
   scrub.forEach(function(t,k){
     d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -1482,7 +1622,17 @@ function buildWoods(scene){
 }
 
 /* geometry kit: low-poly crowns merged with their trunks; four bare deciduous
-   habits, two conifers, one bush */
+   habits, two conifers, one bush.
+   Stage 8, implementation PR 8F (decision 247 (a): "airier deciduous silhouettes, restrained variation"; docs/STAGE8_SPEC.md sections 7.3 and 18):
+   the four deciduous habits and the bush bare and open, as the woods stand in December. Each crown a twig shell: the build's crown (its
+   icosahedron and its jitter, so that its envelope, and a wood's mass from afar, are 8E's), a share of its faces kept by a seeded choice
+   (TREE8F.keep) and each shrunk toward its centre (TREE8F.shrink), so that the shell is perforated and its far side, the sky, the ground and
+   the troops beyond show through; inside it the trunk forks into four main limbs toward the crown, one into each lesser crown, each limb ending
+   in two twigs toward the shell. Drawn on both faces (the shell's inside is seen through its gaps), opaque: nothing sorted, no alpha, its
+   shadow its own shape. Each habit's triangles fewer than 8E's (the self-test holds them against 8E's kit). The conifers are 8E's (their
+   shares the build's, pending evidence). Design values, chosen from the prototypes measured first (tools/stage8/protos/woods.js's t-airy;
+   tools/stage8/woods-8f.js; docs/STAGE8_SPEC.md section 18) */
+var TREE8F={keep:0.42, shrink:0.7, scrubKeep:0.45, scrubShrink:0.72};
 function mergeParts(parts){
   var P=[],N=[];
   parts.forEach(function(pt){
@@ -1504,36 +1654,53 @@ function mergeParts(parts){
 var _kit=null;
 function treeKit(){
   if(_kit) return _kit;
-  /* a crown is an icosahedron pushed in and out along its normals, so no two silhouettes match */
-  function crown(seed){
-    var g=new THREE.IcosahedronGeometry(1,2), pa=g.attributes.position.array;
-    for(var i=0;i<pa.length;i+=3){
-      var k=0.78+0.44*hash2(Math.round(pa[i]*13+seed),Math.round(pa[i+1]*7+pa[i+2]*11));
-      pa[i]*=k; pa[i+1]*=k*0.92; pa[i+2]*=k;
-    }
-    g.computeVertexNormals(); return g;
-  }
-  var sph=crown(1), sph2=crown(2), sph3=crown(3), trunk=new THREE.CylinderGeometry(0.11,0.16,1,5), cone=new THREE.ConeGeometry(1,1,7);
+  var trunk=new THREE.CylinderGeometry(0.11,0.16,1,5), cone=new THREE.ConeGeometry(1,1,7);
   var T=function(h){ return {geo:trunk,p:[0,h/2,0],s:[1,h,1]}; };
+  /* 8F: the habits' crowns as 8E drew them (the seed of each crown's jitter, its centre and its radii) and their trunks' heights */
+  var HAB=[{T:1.1, cr:[[1,[0,2.0,0],[1.25,1.05,1.25]],[2,[0.55,2.35,0.2],[0.75,0.7,0.75]],[3,[-0.5,2.25,-0.3],[0.7,0.62,0.7]]]},   /* round-headed oak */
+           {T:1.5, cr:[[2,[0,2.4,0],[0.95,1.1,0.95]],[3,[0.1,3.4,0.1],[0.7,0.85,0.7]]]},                                      /* tall lime, two storeys of crown */
+           {T:0.8, cr:[[3,[0,1.6,0],[1.55,0.85,1.45]],[1,[0.8,1.7,0],[0.7,0.55,0.7]],[2,[-0.75,1.65,0.3],[0.65,0.5,0.65]]]}, /* squat, wide-spreading */
+           {T:1.2, cr:[[2,[0,2.4,0],[0.62,1.5,0.62]],[3,[0,3.5,0],[0.45,0.8,0.45]]]}];                                     /* poplar-like, narrow and tall */
   _kit={
-    broad:[
-      /* round-headed oak */
-      mergeParts([T(1.1),{geo:sph,p:[0,2.0,0],s:[1.25,1.05,1.25]},{geo:sph2,p:[0.55,2.35,0.2],s:[0.75,0.7,0.75]},{geo:sph3,p:[-0.5,2.25,-0.3],s:[0.7,0.62,0.7]}]),
-      /* tall lime, two storeys of crown */
-      mergeParts([T(1.5),{geo:sph2,p:[0,2.4,0],s:[0.95,1.1,0.95]},{geo:sph3,p:[0.1,3.4,0.1],s:[0.7,0.85,0.7]}]),
-      /* squat, wide-spreading */
-      mergeParts([T(0.8),{geo:sph3,p:[0,1.6,0],s:[1.55,0.85,1.45]},{geo:sph,p:[0.8,1.7,0],s:[0.7,0.55,0.7]},{geo:sph2,p:[-0.75,1.65,0.3],s:[0.65,0.5,0.65]}]),
-      /* poplar-like, narrow and tall */
-      mergeParts([T(1.2),{geo:sph2,p:[0,2.4,0],s:[0.62,1.5,0.62]},{geo:sph3,p:[0,3.5,0],s:[0.45,0.8,0.45]}])
-    ],
+    broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); h.cr.forEach(function(C){ treeShell(P,C[0],C[1],C[2],TREE8F.keep,TREE8F.shrink); }); return treeGeo(P); }),
     conifer:[
       mergeParts([T(0.6),{geo:cone,p:[0,2.3,0],s:[0.95,3.4,0.95]},{geo:cone,p:[0,1.35,0],s:[1.25,1.4,1.25]}]),
       mergeParts([T(0.9),{geo:cone,p:[0,3.0,0],s:[0.8,4.2,0.8]}])
     ],
-    scrub: mergeParts([{geo:sph,p:[0,0.5,0],s:[1,0.6,0.9]},{geo:sph,p:[0.6,0.4,0.2],s:[0.6,0.45,0.55]}])
+    scrub:(function(){ var P=[]; treePrism(P,[0,0,0],[0.05,0.55,0],0.05,0.02,3); treePrism(P,[0.1,0,0.05],[0.55,0.45,0.2],0.04,0.016,3);
+      treeShell(P,1,[0,0.5,0],[1,0.6,0.9],TREE8F.scrubKeep,TREE8F.scrubShrink); treeShell(P,1,[0.6,0.4,0.2],[0.6,0.45,0.55],TREE8F.scrubKeep,TREE8F.scrubShrink); return treeGeo(P); })()
   };
   return _kit;
 }
+/* 8F: a tapered prism from p0 to p1 (radii r0, r1, n sides, turned by tw), its triangles wound outward */
+function treePrism(P,p0,p1,r0,r1,n,tw){
+  var ax=p1[0]-p0[0], ay=p1[1]-p0[1], az=p1[2]-p0[2], L=Math.hypot(ax,ay,az)||1; ax/=L; ay/=L; az/=L;
+  var hx=Math.abs(ay)<0.9?0:1, hy=Math.abs(ay)<0.9?1:0, ux=hy*az, uy=-hx*az, uz=hx*ay-hy*ax, ul=Math.hypot(ux,uy,uz)||1; ux/=ul; uy/=ul; uz/=ul;
+  var vx=ay*uz-az*uy, vy=az*ux-ax*uz, vz=ax*uy-ay*ux, ring=function(p,r,i){ var a=2*Math.PI*i/n+(tw||0), c=Math.cos(a)*r, s=Math.sin(a)*r; return [p[0]+ux*c+vx*s, p[1]+uy*c+vy*s, p[2]+uz*c+vz*s]; };
+  for(var i=0;i<n;i++){ var a0=ring(p0,r0,i), a1=ring(p0,r0,i+1), b0=ring(p1,r1,i), b1=ring(p1,r1,i+1);
+    P.push(a0[0],a0[1],a0[2], a1[0],a1[1],a1[2], b1[0],b1[1],b1[2], a0[0],a0[1],a0[2], b1[0],b1[1],b1[2], b0[0],b0[1],b0[2]); }
+}
+/* 8F: a crown's twig shell: 8E's crown (crown(seed): the icosahedron, detail 2, pushed in and out by the same hash), its faces kept by a seeded
+   choice (a share keep) and each shrunk toward its own centre (shrink), placed at c with the radii s */
+function treeShell(P,seed,c,s,keep,shrink){
+  var g=new THREE.IcosahedronGeometry(1,2), pa=g.attributes.position.array.slice(); g.dispose();
+  for(var i=0;i<pa.length;i+=3){ var k=0.78+0.44*hash2(Math.round(pa[i]*13+seed),Math.round(pa[i+1]*7+pa[i+2]*11)); pa[i]*=k; pa[i+1]*=k*0.92; pa[i+2]*=k; }
+  for(var f=0;f<pa.length/9;f++){ if(hash2(f*7+seed*131,seed*17+3)>keep) continue;
+    var o=f*9, cx=(pa[o]+pa[o+3]+pa[o+6])/3, cy=(pa[o+1]+pa[o+4]+pa[o+7])/3, cz=(pa[o+2]+pa[o+5]+pa[o+8])/3;
+    for(var v=0;v<3;v++){ var q=o+v*3; P.push(c[0]+s[0]*(cx+(pa[q]-cx)*shrink), c[1]+s[1]*(cy+(pa[q+1]-cy)*shrink), c[2]+s[2]*(cz+(pa[q+2]-cz)*shrink)); } }
+}
+/* 8F: the trunk to its fork, four main limbs into the main crown and one into each lesser crown, each limb ending in two twigs toward its shell;
+   each limb's direction a seeded jitter (vi the habit) */
+function treeLimbs(P,h,vi){
+  var F=[0,h.T,0]; treePrism(P,[0,0,0],F,0.16,0.11,6);
+  h.cr.forEach(function(C,ci){ var c=C[1], s=C[2], nL=ci===0?4:1;
+    for(var k=0;k<nL;k++){ var a=(ci===0?Math.PI/4+k*Math.PI/2:Math.atan2(c[2],c[0]))+0.5*(hash2(vi*17+ci*5+k,11)-0.5), e=ci===0?0.55+0.25*hash2(vi*13+k,5):0.0;
+      var tip=ci===0?[c[0]+Math.cos(a)*s[0]*0.55, c[1]+(e-0.2)*s[1]*0.6, c[2]+Math.sin(a)*s[2]*0.55]:[c[0],c[1],c[2]];
+      treePrism(P,F,tip,0.085,0.045,4,a);
+      for(var t=0;t<2;t++){ var b=a+(t?0.6:-0.6)+0.3*(hash2(vi*29+ci*7+k*3+t,23)-0.5), up=0.35+0.4*hash2(vi*31+k*5+t,41);
+        treePrism(P,tip,[c[0]+Math.cos(b)*s[0]*0.88*(ci===0?1:0.7), c[1]+up*s[1]*0.8, c[2]+Math.sin(b)*s[2]*0.88*(ci===0?1:0.7)],0.04,0.014,3,b); } } });
+}
+function treeGeo(P){ var g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferAttribute(P,3)); g.computeVertexNormals(); return g; }
 
 var CONTOUR_INTERVAL=1.5, CONTOUR_INDEX=4;
 /* the ground continues beyond the field, coarsely, until the fog takes it */

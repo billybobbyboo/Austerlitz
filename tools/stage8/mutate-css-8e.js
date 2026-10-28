@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 /* Stage 8, implementation PR 8E (docs/STAGE8_SPEC.md section 17): does css-test.js's 8E block (the troops' values and rules as decided) fail
    when what it holds is broken? Each mutation replaces one string of app.js; css-test.js is run on the copy in a temporary tree (every other
-   file the repository's own, linked), and its 8E line and its findings are read. The unmutated source first: the block passes on it.
+   file the repository's own, linked), and its 8E line and its findings are read. The unmutated source first: the block passes on it. Since 8F's
+   prerequisite 2 a mutation may name another file (its fifth element: world.js).
    node tools/stage8/mutate-css-8e.js [--json out.json]
    Measurement code only: nothing is written to a source file. */
 "use strict";
 const fs=require("fs"), path=require("path"), os=require("os"), cp=require("child_process");
 const ROOT=path.resolve(__dirname,"..",".."), argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; }, OUT=opt("--json");
-/* [id, what it breaks, from, to] */
+/* [id, what it breaks, from, to, the file (app.js unless named)] */
 const MUT=[
   ["none","nothing (the source as it is)",null,null],
   ["klod","no margin: the kit simple again only under 17.6 px","var KLOD={IN:17.6, OUT:14.5,","var KLOD={IN:17.6, OUT:17.6,"],
@@ -21,25 +22,38 @@ const MUT=[
   ["rm","reduced motion ignored by the gait","if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=","if(lg&&lg.kmh>=GAIT.KMH){ c="],
   ["fade","the fade from 3.2 to 4.8 cycles a second moved","FULL:3.2, NONE:4.8,","FULL:4.0, NONE:6.0,"],
   ["ease","the amplitude set at once, not eased","if(G.amp!==want){ G.amp+=(want-G.amp)*e;","if(G.amp!==want){ G.amp=want;"],
-  ["rmease","reduced motion eased, not at once","var e=RM?1:ease(GAIT.EASE);","var e=ease(GAIT.EASE);"],
-  ["noskip","gaitStep computing (and allocating) every frame when nothing changed","  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv;\n  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L,_glo):null,","  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv;\n  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L):null,"],
-  ["crew","a battery's cadence its hidden crew's","var rate=clockRate(), fv=gaitFastest(rec,G);","var rate=clockRate(), fv=G.fastest;"],
+  ["rmease","reduced motion eased, not at once","var e=(RM||sk)?1:ease(GAIT.EASE);","var e=sk?1:ease(GAIT.EASE);"],
+  ["noskip","gaitStep computing (and allocating) every frame when nothing changed","  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv; G.seek=GAIT.seek;\n  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L,_glo):null,","  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv; G.seek=GAIT.seek;\n  var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L):null,"],
+  ["crew","a battery's cadence its hidden crew's","var rate=clockRate(), fv=gaitFastest(rec,G), sk=","var rate=clockRate(), fv=G.fastest, sk="],
   ["wheelwrap","the wheels' angles not taken within one spoke's interval","a-=pg*Math.round(a/pg); b-=pl*Math.round(b/pl);",""],
   ["kneel","a behaviour beyond the gait: a kneeling part","PART:{0:{kind:\"none\"},","PART:{0:{kind:\"none\"}, 30:{kind:\"kneel\"},"],
-  ["wind","the standards' cloth moved by the wall clock (wind)","a.setZ(i,F.a*(0.35+0.65*u)*Math.sin(Math.PI*F.n*u));","a.setZ(i,F.a*(0.35+0.65*u)*Math.sin(Math.PI*F.n*u+performance.now()));"]
+  /* 8F's prerequisite (the audit of 8E): a pause holds the pose drawn; a seek shows the clock's own pose at once; Play's advance not a seek */
+  ["pausehold","8E's behaviour: with the clock standing the amplitude eased on toward the paused rule","  if(rate===0&&!sk&&!RM){ want=G.amp; trot=G.trot; }\n",""],
+  ["seekease","a seek eased like Play, not the clock's own pose at once","var e=(RM||sk)?1:ease(GAIT.EASE);","var e=RM?1:ease(GAIT.EASE);"],
+  ["seekcount","setClock counting no seek","  if(!opts.play) GAIT.seek++;",""],
+  ["playseek","Play's own advance counted a seek","setClock(nt,{play:true}); DWELL.expect=clock;","setClock(nt); DWELL.expect=clock;"],
+  ["wind","the standards' cloth moved by the wall clock (wind)","a.setZ(i,F.a*(0.35+0.65*u)*Math.sin(Math.PI*F.n*u));","a.setZ(i,F.a*(0.35+0.65*u)*Math.sin(Math.PI*F.n*u+performance.now()));"],
+  /* 8F's prerequisite 2 (the audit of 8E: the contact) */
+  ["slopeground","the slopes read through groundY, not the compact heights","out[o]=(groundYFast(GH,x+fx*a,z+fz*a)-y)/a;","out[o]=(groundY(x+fx*a,z+fz*a)-y)/a;"],
+  ["slopemore","each foot's own line read (a third chord: over the animation's budget)","out[o+1]=(y-groundYFast(GH,x-fx*a,z-fz*a))/a; return; }","out[o+1]=(y-groundYFast(GH,x-fx*a,z-fz*a))/a+0*groundYFast(GH,x+fz*0.085,z-fx*0.085); return; }"],
+  ["slopesole","the mirror planting the rich kit's soles on the simple kit","[M.HEEL0+(M.HEEL-M.HEEL0)*k,M.TOE0+(M.TOE-M.TOE0)*k].forEach","[M.HEEL,M.TOE].forEach"],
+  ["slopehook","the hook planting the rich kit's soles on the simple kit","float anZe=anE==0?mix(\"+f(M.HEEL0)+\",\"+f(M.HEEL)+\",anKn):mix(\"+f(M.TOE0)+\",\"+f(M.TOE)+\",anKn);","float anZe=anE==0?\"+f(M.HEEL)+\":\"+f(M.TOE)+\";"],
+  ["chorddir","8E's chord rule: an edge's slope by the way it moves, not by the side of the man it stands on (the mirror)","g=Math.max(g,animChord(sa,sb,_anT[1])-animChord(sa,sb,z0)-(_anT[0]-M.FOOT));","g=Math.max(g,(_anT[1]>z0?sa:sb)*(_anT[1]-z0)-(_anT[0]-M.FOOT));"],
+  ["slopestale","scaleGround not marking the compact heights stale","  GHEIGHTS.ver=-1;   /* the slopes' compact heights","  /* the slopes' compact heights","world.js"]
 ];
-const src=fs.readFileSync(path.join(ROOT,"app.js"),"utf8"), dir=fs.mkdtempSync(path.join(os.tmpdir(),"mutate-css-8e-")), res={mutations:[]};
-fs.readdirSync(ROOT).forEach(f=>{ if(f!=="app.js"&&f!==".git") fs.symlinkSync(path.join(ROOT,f),path.join(dir,f)); });
+const MF=["app.js","world.js"], SRC={}, dir=fs.mkdtempSync(path.join(os.tmpdir(),"mutate-css-8e-")), res={mutations:[]};
+MF.forEach(f=>{ SRC[f]=fs.readFileSync(path.join(ROOT,f),"utf8"); });
+fs.readdirSync(ROOT).forEach(f=>{ if(!MF.includes(f)&&f!==".git") fs.symlinkSync(path.join(ROOT,f),path.join(dir,f)); });
 let wrong=0;
-for(const [id,what,a,b] of MUT){
-  let s=src; if(a){ if(s.split(a).length!==2) throw new Error(id+": the string to replace is not found exactly once"); s=s.replace(a,()=>b); }
-  fs.writeFileSync(path.join(dir,"app.js"),s);
+for(const [id,what,a,b,file] of MUT){
+  const F=file||"app.js";
+  MF.forEach(f=>{ let s=SRC[f]; if(a&&f===F){ if(s.split(a).length!==2) throw new Error(id+": the string to replace is not found exactly once in "+F); s=s.replace(a,()=>b); } fs.writeFileSync(path.join(dir,f),s); });
   const r=cp.spawnSync("node",["css-test.js"],{cwd:dir,encoding:"utf8",maxBuffer:64<<20}), out=r.stdout||"";
   const line=(out.split("\n").find(l=>l.startsWith("the troops (decisions 242 (a)"))||""), found=out.split("\n").filter(l=>/^  ! /.test(l)).map(l=>l.slice(4));
   const fails=/: \d+ wrong$/.test(line), ok=id==="none"?!fails&&line.length>0:fails;
   if(!ok) wrong++;
   res.mutations.push({id, what, blockFails:fails, ok, findings:found.slice(0,6), exit:r.status});
-  console.log((ok?"ok    ":"WRONG ")+id.padEnd(11)+(id==="none"?"the block passes":fails?"the block fails: "+found.slice(0,2).join(" | "):"the block passes (it should fail)"));
+  console.log((ok?"ok    ":"WRONG ")+id.padEnd(12)+(id==="none"?"the block passes":fails?"the block fails: "+found.slice(0,2).join(" | "):"the block passes (it should fail)"));
 }
 fs.rmSync(dir,{recursive:true,force:true});
 console.log(wrong?wrong+" WRONG":"every mutation as it should be");

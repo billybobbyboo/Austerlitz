@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /* Stage 2 Part A, section A: every call of the height functions in the bundled sources.
    node tools/stage2/height-sites.js [--json out.json]
-   Parses each bundled source with acorn and lists every call to height(), hAt(), groundY(),
+   Parses each bundled source with acorn and lists every call to height(), hAt(), groundY(), groundYFast() (since 8F's prerequisite 2),
    localHeight(), regionalLevel() and gridAt(gridH, ...) with file, line and the enclosing
    top-level (and innermost named) function. The classification (model or presentation) is
    made by hand in docs/STAGE2_SPEC.md §A; this script only finds the sites, so that the
    inventory can be re-checked and 2B's guard can be tested against it. */
 const fs=require("fs"), path=require("path"), acorn=require("acorn");
 const ROOT=path.resolve(__dirname,"..",".."), FILES=["world.js","symbols.js","app.js","analysis.js","data.js","geo.js"];
-const NAMES=new Set(["height","hAt","groundY","localHeight","regionalLevel"]);
+const NAMES=new Set(["height","hAt","groundY","groundYFast","localHeight","regionalLevel"]);   /* groundYFast since 8F's prerequisite 2: groundY on a compact copy */
 const rows=[];
 for(const f of FILES){
   const src=fs.readFileSync(path.join(ROOT,f),"utf8");
@@ -116,7 +116,15 @@ const CLASS={
   "app.js:kitDayChecks > hiddenFrom":"test","app.js:kitDayChecks > sp":"test",
   /* Stage 8, implementation PR 8E (decision 244 (a)): the slopes of the drawn ground under each animated man's or horse's feet (chords ahead
      and behind, fore and hind), which the gait's hook plants the feet on */
-  "app.js:makeBlock > slopes":"presentation"
+  "app.js:makeBlock > slopes":"presentation",
+  /* Stage 8, implementation PR 8F's prerequisite 2: groundY's own arithmetic on the drawn ground's compact heights (outside the grid it is
+     groundY), read by the slopes above */
+  "world.js:groundYFast":"presentation",
+  /* the self-test's check (h), rewritten with 8F's prerequisite 2: a posed point's offset from the drawn ground (hOffs), the eye placed over a
+     formation for the motion stretches (eye) */
+  "app.js:selfTest > hOffs":"test","app.js:selfTest > eye":"test",
+  /* the self-test's 8F block: the eye aimed at a place on the drawn ground (aim) */
+  "app.js:selfTest > aim":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

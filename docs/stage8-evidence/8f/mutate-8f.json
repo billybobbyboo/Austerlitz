@@ -1,0 +1,348 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "6ba949da17229530324add3c54dd94ff",
+ "chromium": "153.0.8010.12",
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the build as it is)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 96807
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "paperwater",
+   "what": "the paper map's water drawn with the landscape's materials",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters; WRONG: the paper map's ice not drawn with 8E's material; the paper map's ice not drawn with 8E's material; the paper map's bank not drawn with 8E's material; the paper map's stream not drawn with 8E's material; the paper map's bank not drawn with 8E's material; the paper map's stream not drawn with 8E's material; the paper map's bank not drawn with 8E's material; the paper map's stream not drawn with 8E's material; the paper map's bank not drawn with 8E's material; the paper map's stream not drawn with 8E's material; the paper map's bank not drawn with 8E's material; the paper map's stream not drawn with 8E's material; the paper map's bank not drawn with 8E's material; the paper map's stream not drawn with 8E's material; the paper map's bank not drawn with 8E's material; the paper map's stream not drawn with 8E's material"
+    ],
+    "passed": [
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 76884
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "paperstream",
+   "what": "the paper map's streams in the landscape's colour",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters; WRONG: the paper map's stream: its colour #0c1114, 8E's #183144"
+    ],
+    "passed": [
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 104250
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "hardring",
+   "what": "the shore ice a hard ring (its band not feathered)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 31 31 30 30 30 30 30 30 (peak 31); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16; WRONG: a hard edge: at the inner edge 30.8, at the shore 29.9 of a peak 30.8"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 54730
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "brightrim",
+   "what": "the rimed margin as bright as Part A's prototype (#A9B3B7)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 1 33 102 108 105 80 22 0 (peak 108); the middle 15.4, the margin 104.3; against the field, the shore band and the margin: 09:00 1.06 and 1.40, 12:00 1.07 and 1.42, 15:00 1.07 and 1.40; WRONG: at 09:00 the rimed margin 1.40 times the field beside the shore; at 12:00 the rimed margin 1.42 times the field beside the shore; at 15:00 the rimed margin 1.40 times the field beside the shore"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 76044
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "firstrim",
+   "what": "the rimed margin as 8F first drew it (0x7C8686, its band 0x737C79)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 15 46 49 48 36 10 0 (peak 49); the middle 15.4, the margin 56.3; against the field, the shore band and the margin: 09:00 1.02 and 1.25, 12:00 1.02 and 1.26, 15:00 1.02 and 1.23; WRONG: at 12:00 the rimed margin 1.26 times the field beside the shore"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 44564
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "polyoffset",
+   "what": "the shore band drawn with a polygon offset (8F's first way against z-fighting: over the ground at the shore)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters; WRONG: a shore band drawn with a polygon offset (over the ground at the shore); a shore band drawn with a polygon offset (over the ground at the shore)",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.11 and 1.17, 12:00 1.12 and 1.18, 15:00 1.12 and 1.16; WRONG: at 09:00 the shore band 1.11 times the field beside it; at 12:00 the shore band 1.12 times the field beside it; at 15:00 the shore band 1.12 times the field beside it"
+    ],
+    "passed": [
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 73901
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "depthwrite",
+   "what": "the landscape's ice writing its depth (8E's; the band fights it for the pixel)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters; WRONG: the landscape's ice writes its depth (the band would fight it for the pixel)"
+    ],
+    "passed": [
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 78135
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "renderorder",
+   "what": "the shore band sorted with its ice (8E's order: an eye looking up draws the band first)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters; WRONG: a shore band not drawn after its ice; a shore band not drawn after its ice"
+    ],
+    "passed": [
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 63640
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "flow",
+   "what": "the streams animated (their tone moved a little in every frame drawn)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters; WRONG: the landscape's streams or banks not in their landscape colours",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 3853 pixels differ; the view at rest: idle"
+    ],
+    "passed": [
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 0.98 and 1.14, 12:00 0.98 and 1.15, 15:00 0.98 and 1.12",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 69944
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "treecount",
+   "what": "a wood thinned: its trees fewer than 8E's",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":574,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":335}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360); WRONG: wood 574, 8E 634; conifer 335, 8E 376"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.02 and 1.16, 12:00 1.02 and 1.17, 15:00 1.02 and 1.14",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7370 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 107384
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "treetris",
+   "what": "a deciduous habit heavier than 8E's (its shells closed again)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 672, 472, 672, 472 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360); WRONG: deciduous habit 0: 672 triangles, 8E's 560; deciduous habit 1: 472 triangles, 8E's 380; deciduous habit 2: 672 triangles, 8E's 560; deciduous habit 3: 472 triangles, 8E's 380"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.20, 12:00 1.01 and 1.21, 15:00 1.01 and 1.18",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7312 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 75626
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "treeside",
+   "what": "the open crowns drawn on their front faces only",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360); WRONG: a deciduous habit not drawn on both faces; a deciduous habit not drawn on both faces; a deciduous habit not drawn on both faces; a deciduous habit not drawn on both faces"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.01 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7349 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it"
+    ],
+    "ms": 109495
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "detailfar",
+   "what": "the near detail reaching beyond its far edge",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 12071 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.001 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 10349 and the paper map 0 pixels off without it; WRONG: the Field vantage 10349 pixels off without the detail (all its ground beyond the far edge)"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)"
+    ],
+    "ms": 62881
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "detailpaper",
+   "what": "the near detail on the paper map's ground too (its guard, its texture's absence there and the fade all gone: the paper map's eye is always beyond the fade's far edge)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 12071 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.001 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 10349 and the paper map 19398 pixels off without it; WRONG: the Field vantage 10349 pixels off without the detail (all its ground beyond the far edge); the paper map 19398 pixels off without the detail"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)"
+    ],
+    "ms": 68363
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "detailtone",
+   "what": "the near detail darkening the ground (its sample not over its cell's mean)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 22472 pixels near the eye (the low Pratzen view, 480 x 270), their tone 0.984 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it; WRONG: the near ground's mean tone 0.984 times without the detail"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)"
+    ],
+    "ms": 72516
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "lumflip",
+   "what": "the near detail normalised by the canvas's cells as laid out, not as the shader samples them (three's flip ignored)",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 11267 pixels near the eye (the low Pratzen view, 480 x 270), their tone 0.996 times without it; each of the 12 cells' means as sampled 0.285 to 3.508 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it; WRONG: cell 0: its mean 0.2045 as sampled, GDETAIL's 0.2179; cell 2: its mean 0.2420 as sampled, GDETAIL's 0.1841; cell 3: its mean 0.2605 as sampled, GDETAIL's 0.9138; cell 8: its mean 0.2179 as sampled, GDETAIL's 0.2044; cell 10: its mean 0.1842 as sampled, GDETAIL's 0.2419; cell 11: its mean 0.9138 as sampled, GDETAIL's 0.2605"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)"
+    ],
+    "ms": 67771
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "detailoff",
+   "what": "the near detail never drawn",
+   "ok": true,
+   "selfTest": {
+    "checks": 5,
+    "failed": [
+     "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural | 7336 pixels near the eye (the low Pratzen view, 480 x 270), their tone 1.000 times without it; each of the 12 cells' means as sampled 0.999 to 1.001 times GDETAIL's; the Field vantage 0 and the paper map 0 pixels off without it; WRONG: the detail 0 at this tier (lowTier false)"
+    ],
+    "passed": [
+     "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no dep | 16 water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, 45 parameters",
+     "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after  | 0 pixels differ; the view at rest: idle",
+     "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed  | the band's light from its inner edge to the shore 0 10 29 30 30 22 6 0 (peak 30); the middle 15.4, the margin 33.1; against the field, the shore band and the margin: 09:00 1.00 and 1.17, 12:00 1.01 and 1.18, 15:00 1.01 and 1.16",
+     "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles with | {\"wood\":634,\"village\":184,\"edge\":354,\"stream\":202,\"conifer\":376}; triangles a tree: deciduous 348, 254, 348, 254 (8E 560, 380, 560, 380), conifers 62, 41, the bush 174 (8E 360)"
+    ],
+    "ms": 63279
+   },
+   "pageErrors": []
+  }
+ ]
+}

@@ -34,8 +34,8 @@ const MUT=[
   ["gaitwall","the phase accumulated frame by frame (wall-clock), not the clock's","8e",[["U.uAnimPhase.value=amp>0?2*Math.PI*(x-Math.floor(x)):0;","U.uAnimPhase.value=amp>0?(U.uAnimPhase.value+0.1)%(2*Math.PI):0;"]]],
   ["wheelwrap","the wheels' angle not taken within one spoke's interval","8e",[["a-=pg*Math.round(a/pg); b-=pl*Math.round(b/pl);",""]]],
   ["gaitnofade","the amplitude never faded by the speed","8e",[["c=rate*lg.mpm/fv;","c=0;"]]],
-  ["gaitcrew","a battery's cadence its hidden crew's (every part's, not the parts drawn)","8e",[["var rate=clockRate(), fv=gaitFastest(rec,G);","var rate=clockRate(), fv=G.fastest;"]]],
-  ["gaitrmease","reduced motion eased, not at once","8e",[["var e=RM?1:ease(GAIT.EASE);","var e=ease(GAIT.EASE);"]]],
+  ["gaitcrew","a battery's cadence its hidden crew's (every part's, not the parts drawn)","8e",[["var rate=clockRate(), fv=gaitFastest(rec,G), sk=","var rate=clockRate(), fv=G.fastest, sk="]]],
+  ["gaitrmease","reduced motion eased, not at once","8e",[["var e=(RM||sk)?1:ease(GAIT.EASE);","var e=sk?1:ease(GAIT.EASE);"]]],
   ["gaitparts","a formation's horses faded apart from its men","8e",[["U.uAnimAmp.value=amp; U.uAnimPhase.value=","U.uAnimAmp.value=k===\"man\"?amp:Math.min(1,amp*1.6); U.uAnimPhase.value="]]],
   ["gaitdrift","no 1 km/h floor: a drift between anchors stepped","8e",[["if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=","if(lg&&!RM&&lg.kmh>=0){ c="]]],
   ["gaitrm","reduced motion ignored by the gait","8e",[["if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=","if(lg&&lg.kmh>=GAIT.KMH){ c="]]],
@@ -44,6 +44,14 @@ const MUT=[
   ["slopeevery","the slopes taken at every seating while the clock plays (no step)","8e",[["!ud.slopeSeat||clockRate()===0||Math.hypot(","!ud.slopeSeat||true||Math.hypot("]]],
   ["s5","8D's facing: cached per phase at the first clock visited","8e",[["var tc=faceClock(id,clock), key=tc+\"|\"+id;","var tc=clock, key=curPhase+\"|\"+id;"]]],
   ["contact","the drawn ground's slopes not counted in the rise or dip that plants the feet (the hook and its mirror alike)","8e",[["sl=Math.max(-S,Math.min(S,s2[0])), sh=Math.max(-S,Math.min(S,s2[1]))","sl=0, sh=0"],["\"  vec2 anSl=clamp(aSl,vec2(-\"+f(ANIM.SLOPE)+\"),vec2(\"+f(ANIM.SLOPE)+\"));\"","\"  vec2 anSl=vec2(0.0);\""]]],
+  /* 8F's prerequisite 2 (the audit of 8E: the contact) */
+  ["contactsole","8E's soles: the rich kit's heel and toe planted on the simple kit too (hook and mirror)","8e",[["[M.HEEL0+(M.HEEL-M.HEEL0)*k,M.TOE0+(M.TOE-M.TOE0)*k].forEach","[M.HEEL,M.TOE].forEach"],['float anZe=anE==0?mix("+f(M.HEEL0)+","+f(M.HEEL)+",anKn):mix("+f(M.TOE0)+","+f(M.TOE)+",anKn);','float anZe=anE==0?"+f(M.HEEL)+":"+f(M.TOE)+";']]],
+  ["contactdir","8E's chord rule: an edge's slope by the way it moves, not by the side of the man it stands on (hook and mirror)","8e",[["g=Math.max(g,animChord(sa,sb,_anT[1])-animChord(sa,sb,z0)-(_anT[0]-M.FOOT));","g=Math.max(g,(_anT[1]>z0?sa:sb)*(_anT[1]-z0)-(_anT[0]-M.FOOT));"],["g=Math.max(g,animChord(sa,sb,_anU[1])-animChord(sa,sb,z0)-(_anU[0]-M.FOOT));","g=Math.max(g,(_anU[1]>z0?sa:sb)*(_anU[1]-z0)-(_anU[0]-M.FOOT));"],['      float anCz=anZe>=0.0?anSl.x*anZe:anSl.y*anZe;",','      float anCz=0.0;",'],["(anFL.y>=0.0?anSl.x*anFL.y:anSl.y*anFL.y)-anCz-","((anFL.y-anZe)>0.0?anSl.x:anSl.y)*(anFL.y-anZe)-"],["(anFR.y>=0.0?anSl.x*anFR.y:anSl.y*anFR.y)-anCz-","((anFR.y-anZe)>0.0?anSl.x:anSl.y)*(anFR.y-anZe)-"]]],
+  ["contactlookup","the slopes' compact heights never made again (a change of factor keeps the first factor's ground)","8e",[["if(GHEIGHTS.h&&GHEIGHTS.arr===A.array&&GHEIGHTS.ver===A.version) return GHEIGHTS.h;","if(GHEIGHTS.h) return GHEIGHTS.h;"]]],
+  ["contactbound","the original criterion restored for the men's drawn soles at 4x (H_TOL itself, not the proposed bound): the cases kept open are real","8e",[["drawn:{men:{4:3.5, \"10.33\":3.5}","drawn:{men:{4:1, \"10.33\":3.5}"]]],
+  ["pauseease","8E's behaviour: the amplitude eased on toward the paused clock's rule after a Pause (the pose not held)","8e",[["  if(rate===0&&!sk&&!RM){ want=G.amp; trot=G.trot; }\n",""]]],
+  ["seekease","a seek eased like Play (the first frame after it not the clock's own pose)","8e",[["var e=(RM||sk)?1:ease(GAIT.EASE);","var e=RM?1:ease(GAIT.EASE);"]]],
+  ["playseek","Play's own advance counted as a seek (the gait set at once in every frame, never eased)","8e",[["setClock(nt,{play:true}); DWELL.expect=clock;","setClock(nt); DWELL.expect=clock;"]]],
   ["drape","the cloth narrowed by its folds","8e",[["for(var i=0;i<a.count;i++){ var u=(a.getX(i)+1.2)/2.4; a.setZ(i,","for(var i=0;i<a.count;i++){ var u=(a.getX(i)+1.2)/2.4; a.setX(i,a.getX(i)*0.97); a.setZ(i,"]]]
 ];
 const E8="/* Stage 8, implementation PR 8E (decisions 242 (a), 243 (a), 244 (a), 245 (a); docs/STAGE8_SPEC.md sections 4 and 17): the troops.",
@@ -74,8 +82,8 @@ const BLOCK=function(m){
     process.env.AUSTERLITZ_HTML=file;
     const page=await L.open(browser,[1366,768],{}); await page.evaluate(()=>closeFirst(null));
     const st=await page.evaluate(BLOCK,BLOCKS[blk]); const errs=page._errors.slice(); await page.close();
-    const failed=(st.checks||[]).filter(c=>!c.ok).map(c=>c.name.slice(0,110)+" | "+String(c.detail).slice(0,3000));
-    const passed=(st.checks||[]).filter(c=>c.ok).map(c=>c.name.slice(0,110)+" | "+String(c.detail).slice(0,300));
+    const failed=(st.checks||[]).filter(c=>!c.ok).map(c=>c.name.slice(0,110)+" | "+String(c.detail).slice(0,+(process.env.MUT_DETAIL||3000)));
+    const passed=(st.checks||[]).filter(c=>c.ok).map(c=>c.name.slice(0,110)+" | "+String(c.detail).slice(0,+(process.env.MUT_DETAIL||300)));
     const R={id, what, block:blk, selfTest:st.error?st.error:{checks:(st.checks||[]).length, failed, passed, ms:st.ms}, pageErrors:errs};
     res.mutations.push(R);
     console.log("== "+id+": "+what+"\n   the self-test's "+blk+" block: "+(st.error||((st.checks||[]).length+" checks, "+failed.length+" failed, "+st.ms+" ms"))+

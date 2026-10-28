@@ -1333,7 +1333,7 @@ try{
       /* the amplitude's rule, every speed; reduced motion; the ease */
       let full=0, part=0, none=0, drift=0, nJ=0;
       [545,640,830,905,300].forEach(t=>{ setClock(t,{force:true}); settleN(4);
-        [0,0.5,1,2,4].forEach(x=>{ playing=x>0; if(x) speed=x; DWELL.st=null; settleN(40);
+        [0,0.5,1,2,4].forEach(x=>{ playing=x>0; if(x) speed=x; DWELL.st=null; if(!x) setClock(t,{force:true}); settleN(40);   /* 8F's prerequisite: the paused rule is a sought clock's (a pause holds the pose drawn) */
           gaitIds().forEach(id=>{ const G=units[id].block.userData.gait, lg=legT(id,t); let want=0;
             if(lg&&lg.kmh>=GAIT.KMH){ const c=x*MIN_PER_SEC*lg.mpm/fastestOf(id); want=Math.max(0,Math.min(1,(GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL))); if(want===1) full++; else if(want===0) none++; else part++; }
             else if(lg) drift++;
@@ -1347,6 +1347,20 @@ try{
         if(!(a1<1&&a1>0.5)||!(n>=6&&n<=40)||!idle) bad.push("the ease: "+a1+" after one frame, "+n+" frames to none, idle "+idle);
         log.push(nJ+" amplitude judgments ("+full+" full, "+part+" in the fade, "+none+" faded out, "+drift+" drifting under 1 km/h), none under reduced motion; eased to none in "+n+" frames, then idle"); playing=false; }
       else bad.push("the ease: no formation at full amplitude at 09:05");
+      /* Stage 8, 8F's prerequisite (the audit of 8E): Play's own advance (tickClock) at 4x from half speed's full stride, stopped (stopPlay) in the
+         fade and again faded out: every gait uniform as drawn in the frame before, for ten frames; resumed, on from where it was held; a seek
+         (setClock) the clock's own pose at once */
+      { const keepDw=DWELL.on; DWELL.on=false; let held=0, faded=0;
+        [["in the fade",1],["faded out",40]].forEach(([way,nF])=>{ playing=false; setClock(532,{force:true}); settleN(40); speed=0.5; playing=true; dwellReset(); FK=2;
+          for(let i=0;i<6;i++){ tickClock(1000/30); updateVisibility(); } speed=4; for(let i=0;i<nF;i++){ tickClock(1000/30); updateVisibility(); }
+          const a0=units.sthilaire.block.userData.gait.amp; if(way==="in the fade"?!(a0>0&&a0<1):a0!==0) bad.push("the pause "+way+": the amplitude "+a0+" before it");
+          const P0=pose(); stopPlay(); for(let i=0;i<10;i++){ updateVisibility(); const P=pose(); Object.keys(P0).forEach(k=>{ for(let j=0;j<5;j++) if(P[k]&&P[k][j]!==P0[k][j]){ bad.push("the pause "+way+": "+k+" uniform "+j+" moved from "+P0[k][j]+" to "+P[k][j]+" with the clock standing"); break; } }); }
+          held+=Object.keys(P0).length; if(way==="faded out") faded=a0===0?1:0;
+          togglePlay(); tickClock(1000/30); updateVisibility(); const a1=units.sthilaire.block.userData.gait.amp; if(a0>0&&!(a1<a0&&a1>0)) bad.push("the pause "+way+": resumed at 4x, the amplitude "+a1+" from "+a0+" (eased on toward none expected)"); stopPlay(); });
+        const tS=clock+10; setClock(tS); updateVisibility(); const G=units.sthilaire.block.userData.gait, lgS=legT("sthilaire",tS); if(lgS&&lgS.kmh>=GAIT.KMH&&G.amp!==1) bad.push("a seek while paused: the amplitude "+G.amp+" in the first frame (the clock's own, full)");
+        const Ps=pose(); setClock(T_MIN,{force:true}); settleN(4); setClock(tS); updateVisibility(); const Ps2=pose(); Object.keys(Ps).forEach(k=>{ if(Ps2[k]&&Ps2[k].join()!==Ps[k].join()) bad.push("a seek: "+k+" not the clock's pose by another path"); });
+        DWELL.on=keepDw; FK=keep.fk; speed=keep.sp;
+        log.push("paused in the fade and faded out by stopPlay, "+held+" mesh poses held for ten frames each, resumed eased on; a seek the clock's own pose at once"); }
       /* S-5 */
       let gN=0;
       PHASES.forEach(ph=>{ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(t=>{ const R=[];
@@ -1381,6 +1395,45 @@ try{
     } finally { playing=keep.pl; speed=keep.sp; RM=keep.rm; FK=keep.fk; setMode(keep.md); setClock(keep.t,{force:true}); updateVisibility(); }
     if(bad.length) throw new Error("the gait and the level of detail: "+bad.slice(0,6).join("; "));
     console.log("the gait and the level of detail (8E): "+log.join("; ")); }
+  /* Stage 8, implementation PR 8F's prerequisite 2 (the audit of 8E: the contact): groundYFast, the slopes' lookup, is groundY value for value
+     on the drawn ground's own layout (r128's PlaneGeometry, rotated and split as groundGeometry makes it: this suite's stand-in mesh has no
+     cells), its heights the model's at two scales, at random points, the grid's vertices and points outside it; the compact heights made
+     again when scaleGround marks them stale, not otherwise; and the hook's arithmetic (animAt, its mirror) plants each kit's own soles (the
+     simple kit's HEEL0 and TOE0, the rich kit's HEEL and TOE, by the knee) exactly on the ground its two chords describe (a man's from his
+     middle: ahead of it the slope ahead, behind it the slope behind; a horse's fore and hind hooves' each its pair's): for random slopes,
+     phases, knees and trots, each edge's height change posed against the ground's change between its rest place and its posed place, the
+     least of them 0 (one edge where it stood, none below), whatever the slopes within ANIM.SLOPE */
+  { const bad=[], gm0=groundMesh; let nP=0, nE=0, worst=0;
+    try{
+      const g=new REAL.PlaneGeometry(GROUND_W,GROUND_D,GROUND_NX,GROUND_NZ); g.rotateX(-Math.PI/2);
+      const pa=g.attributes.position; for(let i=0;i<pa.count;i++) pa.setY(i,displayHeight(pa.getX(i),pa.getZ(i)));
+      const gn=g.toNonIndexed(), A=gn.attributes.position; groundMesh={geometry:gn}; GHEIGHTS.ver=-1;
+      [1,4].forEach(sc=>{ if(sc!==1){ for(let i=0;i<A.count;i++) A.array[i*3+1]*=sc; GHEIGHTS.ver=-1; }   /* as scaleGround does */
+        const H=groundHeights();
+        for(let i=0;i<4000;i++){ const x=-190+380*((i*7919)%4001)/4000, z=-165+330*((i*104729)%4003)/4002; nP++; if(!Object.is(groundYFast(H,x,z),groundY(x,z))) bad.push("groundYFast at "+x.toFixed(3)+", "+z.toFixed(3)+" (x"+sc+"): "+groundYFast(H,x,z)+" against "+groundY(x,z)); }
+        for(let k=0;k<400;k++){ const ix=(k*37)%(GROUND_NX+1), iz=(k*53)%(GROUND_NZ+1), x=-GROUND_W/2+ix*GROUND_W/GROUND_NX, z=-GROUND_D/2+iz*GROUND_D/GROUND_NZ; nP++;
+          if(!Object.is(groundYFast(H,x,z),groundY(x,z))) bad.push("groundYFast at the vertex "+ix+", "+iz+" (x"+sc+")"); } });
+      const H1=groundHeights(); if(groundHeights()!==H1) bad.push("the compact heights made again with nothing changed");
+      A.array[1]+=1; GHEIGHTS.ver=-1; if(groundYFast(groundHeights(),-GROUND_W/2,-GROUND_D/2)!==A.array[1]) bad.push("the compact heights not made again when marked stale");
+      const M=ANIM.MAN, Ho=ANIM.HORSE, r=[0,0,0], rnd=(i)=>{ const x=Math.sin(i*12.9898+78.233)*43758.5453; return x-Math.floor(x); };
+      const ch=(sa,sb,z)=>z>=0?sa*z:sb*z;   /* the ground along a man's chords: ahead of his middle the slope ahead, behind it the slope behind */
+      for(let t=0;t<600;t++){ const sa=(rnd(t*2)-0.5)*2*ANIM.SLOPE*0.9, sb=(rnd(t*2+1)-0.5)*2*ANIM.SLOPE*0.9, ph=rnd(t+999)*6.2832, kn=t%2, trot=(t%3)/2;
+        if(t%2===0){ /* a man: each kit's own soles on each foot */
+          let mn=1e9; [kn?13:1,kn?14:2].forEach(part=>{ [kn?M.HEEL:M.HEEL0,kn?M.TOE:M.TOE0].forEach(z0=>{ animAt(part,0,M.FOOT,z0,ph,1,r,{slope:[sa,sb],knee:kn});
+            mn=Math.min(mn,(r[1]-M.FOOT)-(ch(sa,sb,r[2])-ch(sa,sb,z0))); nE++; }); });
+          worst=Math.max(worst,Math.abs(mn)); if(Math.abs(mn)>1e-9) bad.push("a man's planted edge "+mn+" off its rest contact on his chords (phase "+ph.toFixed(3)+", knee "+kn+")"); }
+        else { let mn=1e9; [[5,Ho.ZF,sa],[6,Ho.ZF,sa],[7,Ho.ZH,sb],[8,Ho.ZH,sb]].forEach(([part,Z,sl])=>{ [-Ho.HZ,Ho.HZ].forEach(e=>{ animAt(part,0,Ho.HIP-Ho.L,Z+e,ph,1,r,{slope:[sa,sb],trot:trot});
+            mn=Math.min(mn,(r[1]-(Ho.HIP-Ho.L))-sl*(r[2]-Z-e)); nE++; }); });
+          worst=Math.max(worst,Math.abs(mn)); if(Math.abs(mn)>1e-9) bad.push("a horse's planted hoof "+mn+" off its rest contact on its chords (phase "+ph.toFixed(3)+", trot "+trot+")"); } }
+      /* the simple kit's soles are its own: with the knee straight (the simple kit), the rich kit's heel and toe are not the edge planted */
+      { let hit=0; for(let t=0;t<200;t++){ const sa=(rnd(t*3)-0.5)*4, sb=(rnd(t*3+1)-0.5)*4, ph=rnd(t*3+2)*6.2832; let lo0=1e9, loR=1e9;
+          [1,2].forEach(part=>{ [M.HEEL0,M.TOE0].forEach(z0=>{ animAt(part,0,M.FOOT,z0,ph,1,r,{slope:[sa,sb],knee:0}); lo0=Math.min(lo0,(r[1]-M.FOOT)-(ch(sa,sb,r[2])-ch(sa,sb,z0))); });
+            [M.HEEL,M.TOE].forEach(z0=>{ animAt(part,0,M.FOOT,z0,ph,1,r,{slope:[sa,sb],knee:0}); loR=Math.min(loR,(r[1]-M.FOOT)-(ch(sa,sb,r[2])-ch(sa,sb,z0))); }); });
+          if(Math.abs(lo0)>1e-9) bad.push("the simple kit's own soles not planted (phase "+ph.toFixed(3)+")"); if(Math.abs(loR)>1e-9) hit++; }
+        if(!hit) bad.push("the simple kit's soles indistinguishable from the rich kit's in 200 poses (the dry run could not tell them apart)"); }
+    } finally { groundMesh=gm0; GHEIGHTS.ver=-1; }
+    if(bad.length) throw new Error("the contact (8F's prerequisite 2): "+bad.slice(0,6).join("; "));
+    console.log("the contact (8F's prerequisite 2): groundYFast is groundY at "+nP+" points (random, the grid's vertices, outside it) on the drawn ground's layout at two scales, its heights made again when stale; the hook's arithmetic plants the lowest of "+nE+" posed edges of each kit's own soles on its chords from his middle (the worst "+worst.toExponential(1)+"), the simple kit's own soles, not the rich kit's"); }
 
   /* twelve atlas cells, the three photographs present, fields routed by crop */
   if(_atlasCanvas.height!==1536) throw new Error("atlas is not three rows of cells: "+_atlasCanvas.height);
@@ -1500,6 +1553,24 @@ try{
       r.parts.forEach(p=>{ if(!p.d) throw new Error(id+": dress "+p.dress+" unknown"); if(!p.colours) throw new Error(id+": no colours entry for "+p.dress); });
       parts+=r.parts.length; if(r.dominant) dom++; });
     console.log("appearance: "+ids.length+" blocks resolve to "+parts+" dress parts ("+dom+" by their dominant class) OK"); }
+
+  /* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md section 18): dry runs of the water's presentations (each
+     water mesh given its presentation's material by setMode, the paper map's 8E's without a shader hook of their own, the landscape's ice
+     and streams with 8F's, and back) and of the near detail (on at this tier; its cells' means in (0, 1]). The stub's geometry and materials
+     keep no triangles and no render state: the trees' triangles and the ice's depth are the self-test's 8F block's and css-test.js's */
+  { const m0=mode, bad=[], W8=WATER_MATS, kinds={};
+    if(!W8||!W8.land||!W8.paper) throw new Error("8F: no water materials");
+    setMode("staff");
+    world.water.forEach(m=>{ const k=waterKind(m); kinds[k]=(kinds[k]||0)+1; if(m.material!==W8.paper[k]) bad.push("the paper map's "+k+" not 8E's material");
+      if(Object.prototype.hasOwnProperty.call(m.material,"onBeforeCompile")||Object.prototype.hasOwnProperty.call(m.material,"customProgramCacheKey")) bad.push("the paper map's "+k+" hooked"); });
+    world.water.forEach(m=>{ const k=waterKind(m); if(!Object.prototype.hasOwnProperty.call(W8.land[k],"onBeforeCompile")&&k!=="bank") bad.push("the landscape's "+k+" without 8F's hook"); });
+    setMode("terrain");
+    world.water.forEach(m=>{ const k=waterKind(m); if(m.material!==W8.land[k]) bad.push("the landscape's "+k+" not 8F's material"); });
+    if(m0!==mode) setMode(m0);
+    if(groundMesh.material.userData.U.uDetail.value.x!==(lowTier?0:GDETAIL.amount)) bad.push("the near detail "+groundMesh.material.userData.U.uDetail.value.x+" at this tier");
+    if(GDETAIL.lum.length!==12||GDETAIL.lum.some(v=>!(v>0&&v<=1))) bad.push("the atlas cells' means "+GDETAIL.lum.join(","));
+    if(bad.length) throw new Error("8F: "+bad.join("; "));
+    console.log("water and the near ground (8F): "+world.water.length+" water meshes ("+Object.entries(kinds).map(e=>e[1]+" "+e[0]).join(", ")+") each with its presentation's materials both ways (the paper map's 8E's, unhooked); the near detail on at this tier, its 12 cells' means made ("+Math.min(...GDETAIL.lum).toFixed(3)+" to "+Math.max(...GDETAIL.lum).toFixed(3)+", of the procedural patterns: in this stub the photographs are painted after the dry runs) OK"); }
 }catch(e){ errs.push("DRIVE: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n")); }
 
 /* the photograph is painted into the atlas when its image loads (a microtask in this stub): checked after the dry runs, before the report.

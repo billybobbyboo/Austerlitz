@@ -1,0 +1,311 @@
+{
+ "chromium": "153.0.8010.12",
+ "builds": {
+  "before": {
+   "file": "8e-d73d0115.html",
+   "md5": "d73d01154b8f6e2552fe04bfb24d05e5"
+  },
+  "after": {
+   "file": "8f-final.html",
+   "md5": "6ba949da17229530324add3c54dd94ff"
+  }
+ },
+ "views": {
+  "pratzen-low": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 3999.9,
+     "calls": 548,
+     "tris": 2168001,
+     "shimmer": 0.0227
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 3910.7,
+     "calls": 548,
+     "tris": 1787929,
+     "shimmer": 0.0226
+    },
+    "off": {
+     "ms": 3970,
+     "calls": 548,
+     "tris": 1787929,
+     "shimmer": 0.0226
+    }
+   }
+  },
+  "pratzen-low-10x": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 3419.8,
+     "calls": 579,
+     "tris": 2236385,
+     "shimmer": 0.0139
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 3426.5,
+     "calls": 579,
+     "tris": 1856313,
+     "shimmer": 0.0128
+    },
+    "off": {
+     "ms": 3254,
+     "calls": 579,
+     "tris": 1856313,
+     "shimmer": 0.0128
+    }
+   }
+  },
+  "eye-zuran": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 2410,
+     "calls": 180,
+     "tris": 413695,
+     "shimmer": 0.0041
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 2792.1,
+     "calls": 180,
+     "tris": 413695,
+     "shimmer": 0.0041
+    },
+    "off": {
+     "ms": 2492.3,
+     "calls": 180,
+     "tris": 413695,
+     "shimmer": 0.0041
+    }
+   }
+  },
+  "ice-mid": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 3604.8,
+     "calls": 315,
+     "tris": 1712493,
+     "shimmer": 0.0141
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 3707.7,
+     "calls": 315,
+     "tris": 1332421,
+     "shimmer": 0.0139
+    },
+    "off": {
+     "ms": 3530.4,
+     "calls": 315,
+     "tris": 1332421,
+     "shimmer": 0.0139
+    }
+   }
+  },
+  "woods-pheasantry": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 4633.9,
+     "calls": 600,
+     "tris": 2306505,
+     "shimmer": 0.0145
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 4705.3,
+     "calls": 600,
+     "tris": 1926433,
+     "shimmer": 0.021
+    },
+    "off": {
+     "ms": 4844.2,
+     "calls": 600,
+     "tris": 1926433,
+     "shimmer": 0.021
+    }
+   }
+  },
+  "close-sokolnitz": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 4299.7,
+     "calls": 690,
+     "tris": 2480367,
+     "shimmer": 0.0121
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 4328.2,
+     "calls": 690,
+     "tris": 2100295,
+     "shimmer": 0.0188
+    },
+    "off": {
+     "ms": 4557.8,
+     "calls": 690,
+     "tris": 2100295,
+     "shimmer": 0.0188
+    }
+   }
+  },
+  "overview-field": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 4426.3,
+     "calls": 828,
+     "tris": 2546821,
+     "shimmer": 0.0107
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 4366.3,
+     "calls": 828,
+     "tris": 2166749,
+     "shimmer": 0.0103
+    },
+    "off": {
+     "ms": 4434.8,
+     "calls": 828,
+     "tris": 2166749,
+     "shimmer": 0.0103
+    }
+   }
+  },
+  "ph8-overview-watch": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 3644.3,
+     "calls": 809,
+     "tris": 2513937,
+     "shimmer": 0.0045
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 3823.2,
+     "calls": 809,
+     "tris": 2133865,
+     "shimmer": 0.0042
+    },
+    "off": {
+     "ms": 3571.7,
+     "calls": 809,
+     "tris": 2133865,
+     "shimmer": 0.0042
+    }
+   }
+  },
+  "fields-low": {
+   "before": {
+    "lowTier": false,
+    "detail": null,
+    "on": {
+     "ms": 4586.7,
+     "calls": 648,
+     "tris": 2389143,
+     "shimmer": 0.0048
+    }
+   },
+   "after": {
+    "lowTier": false,
+    "detail": 0.55,
+    "on": {
+     "ms": 4660.8,
+     "calls": 648,
+     "tris": 2009071,
+     "shimmer": 0.0053
+    },
+    "off": {
+     "ms": 4353.1,
+     "calls": 648,
+     "tris": 2009071,
+     "shimmer": 0.0053
+    }
+   }
+  },
+  "phone-pratzen-low": {
+   "before": {
+    "lowTier": true,
+    "detail": null,
+    "on": {
+     "ms": 706.6,
+     "calls": 222,
+     "tris": 1067839,
+     "shimmer": 0.019
+    }
+   },
+   "after": {
+    "lowTier": true,
+    "detail": 0,
+    "on": {
+     "ms": 714.2,
+     "calls": 222,
+     "tris": 826095,
+     "shimmer": 0.0191
+    }
+   }
+  },
+  "phone-woods": {
+   "before": {
+    "lowTier": true,
+    "detail": null,
+    "on": {
+     "ms": 867.1,
+     "calls": 287,
+     "tris": 1169247,
+     "shimmer": 0.0186
+    }
+   },
+   "after": {
+    "lowTier": true,
+    "detail": 0,
+    "on": {
+     "ms": 868,
+     "calls": 287,
+     "tris": 927503,
+     "shimmer": 0.0255
+    }
+   }
+  }
+ }
+}

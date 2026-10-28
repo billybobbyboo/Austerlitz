@@ -3,7 +3,7 @@
 **Status: Part A, the specification, is complete and merged (PR #64, `main` at `d86835e`). The owner decided its questions 239-253 on
 24 October 2026 (section 0.3, the decisions with their qualifications, and the points they settle in this text); the implementation follows
 the plan of section 10 in eight implementation PRs, 8A to 8H, of which 8A (section 13) and 8B (section 14, added by its own PR, stacked on
-8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15; merged into `main`, #68) in its own session, after the owner decided question 254, and 8D (section 16; merged into `main`, #69) in its own, after the owner decided questions 255-258, and 8E (section 17; draft PR #70) in its own. Names (section 0.4): "Stage 8 Part A" is this specification only;
+8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15; merged into `main`, #68) in its own session, after the owner decided question 254, and 8D (section 16; merged into `main`, #69) in its own, after the owner decided questions 255-258, and 8E (section 17; merged into `main`, #70) in its own, and 8F (section 18; draft PR #71) in its own. Names (section 0.4): "Stage 8 Part A" is this specification only;
 "implementation PR 8A" is the first of the implementation PRs. Nothing below section 12 was written in Part A, and the decisions for 8C-8H
 set their direction and constraints only: none of them is implemented or verified until its own PR says so.**
 
@@ -174,27 +174,29 @@ those is implemented or verified by 8A or 8B.**
 - **242, troop models: option (a), subject to the specified budgets.** "For 8E, improve infantry, horses and riders using the prototype
   direction and existing appearance claims. Preserve miniature scale and sourced colours, headgear and equipment. Complete rendering
   preparation first. Optimise the models and use richer detail only where it is visible. Do not apply the expensive prototype unchanged across
-  the entire battlefield." *Applied in 8E (section 17), for review.*
+  the entire battlefield." *Applied in 8E (section 17); merged.*
 - **243, artillery: option (a), with explicit source boundaries.** "Use the generic field-piece improvements: spoked wheels, a recognisable
   trail and carriage, improved limbers, appropriate ammunition boxes, and teams behind deployed guns. Retain the single carriage colour and
   current instantaneous deployed/limbered switch. Register and grade each historical claim before using it. Do not generalise IV Corps'
   October authorisation for driver numbers into a demonstrated rule for the Guard, Austrian or Russian artillery. Specify where each source
   applies. Elsewhere use an explicitly identified generic or inferred convention pending stronger evidence." *Applied in 8E with its data
-  task (section 17), for review.*
+  task (section 17); merged. Unchanged in 8F.*
 - **244, gait: option (a).** "Use a gait whose phase follows the modelled track and clock, with amplitude controlled by the specified
   playback-speed thresholds. No swing when halted, below the proposed 1 km/h cutoff, or under reduced motion. A paused clock must hold the
   pose still. Fade a formation's parts together and ease speed-related amplitude changes. Verify reproducibility when scrubbing, terrain
   contact, moving bounds and shadow behaviour. Describe the animation honestly as a visual convention for symbolic figures under compressed
-  time; do not claim physically matched footsteps." *The hooks in 8D (section 16); applied in 8E (section 17), for review.*
+  time; do not claim physically matched footsteps." *The hooks in 8D (section 16); applied in 8E (section 17); merged; the pause and the
+  contact corrected in 8F's prerequisites (sections 18.1, 18.2), for review.*
 - **245, uniform facings: option (a).** "Keep decision 104. Do not add facings in this implementation. Reconsider them after the main
-  troop-model work can be judged." *Nothing built in 8E (section 17.4); to be reconsidered now that the troops can be judged (section 17.16).*
+  troop-model work can be judged." *Nothing built in 8E (section 17.4) or 8F; to be reconsidered now that the troops can be judged (section 17.16).*
 - **246, water: option (a).** "For 8F, improve the meres' ice through material, lighting and restrained tonal variation, with softer shore
   transitions. Keep streams still, darker and less blue. No added stream ice, animated flow, cracks, holes, snow or figures on the ice.
-  Preserve geographic outlines and levels. Tune the bright ice margins so they integrate with the surrounding terrain." *8F; not implemented
-  (8A draws the streams' ribbons with today's materials, section 13).*
+  Preserve geographic outlines and levels. Tune the bright ice margins so they integrate with the surrounding terrain." *Applied in 8F
+  (section 18.3), for review.*
 - **247, woodland and near terrain: option (a).** "For 8F, use airier deciduous silhouettes, restrained variation and a finer near-ground
   detail layer. Preserve woodland boundaries, tree counts, the existing conifer shares pending evidence, land-cover classes, frost and crop
-  strips. Hold tree geometry within the specified budget and measure transparency costs if introduced." *8F; not implemented.*
+  strips. Hold tree geometry within the specified budget and measure transparency costs if introduced." *Applied in 8F (sections 18.4
+  and 18.5), for review; no transparency introduced (the alpha-tested prototype measured, not built).*
 - **248, buildings and landmarks: option (a), with the evidence step first.** "For 8G, develop the villages around the cadastral
   street-and-yard pattern and add supported landmarks after research and a documented data task. Keep later maps' relevance to 1805
   explicitly qualified. Unestablished roofing and other forms must remain labelled design conventions. Preserve village locations, footprints
@@ -3008,8 +3010,9 @@ runs 40284841784 and 40290083254 and the pull request's 40284845988 and 40290087
 
 ## 17. Implementation PR 8E as built (27 October 2026)
 
-**Status.** Built on `claude/optimistic-thompson-4e5hsn` (draft PR #70, base `main` at `2f41819`, PR #69's merge: implementation PR 8D, merged
-by the owner on 26 October 2026), for review; not merged. It applies decisions 242 (a), 243 (a), 244 (a) and 245 (a) as the owner settled them
+**Status.** Built on `claude/optimistic-thompson-4e5hsn` (PR #70, base `main` at `2f41819`, PR #69's merge: implementation PR 8D, merged
+by the owner on 26 October 2026); merged into `main` by the owner on 28 October 2026 (`94d6e46`; the audit of it found two faults, the gait eased
+at a paused clock and the feet's contact judged field-wide, corrected first in 8F, sections 18.1 and 18.2). It applies decisions 242 (a), 243 (a), 244 (a) and 245 (a) as the owner settled them
 (section 0.3, with the points of section 0.3.1, items 7 and 8), after the two findings of the audit of 8D, each corrected in a commit of its own
 (sections 17.1 and 17.2), and the artillery's data task in a commit of its own before anything is drawn from it (section 17.3). In order:
 `2af8ed9`, `1c6b54e`, `d95bfe0` (the data task), `62f5cd2` (the troops and their checks), `a99eb7b` (what the evidence runs found in
@@ -3599,4 +3602,473 @@ Here (Chromium 141.0.7390.37, Playwright 1.56's headless shell, software WebGL; 
      under 1 km/h between anchors (the modelled legs' slow drifts): none steps, as decided; a visitor sees them glide.
 - **Kept outside this PR**, as the brief asks: decision 258 (b)'s counter placement and decision 255 (d)'s far-label prototype (both
   commissioned with 8D, section 16.12, not begun). Nothing of the map layer changed.
+- **Not measured**: a GPU's frame time (software WebGL here); Safari (no WebKit here); memory on a device.
+
+## 18. Implementation PR 8F as built (28 October 2026)
+
+**Status.** Built on `claude/loving-cerf-xmk1wu` (draft PR #71, base `main` at `94d6e46`, PR #70's merge: implementation PR 8E), for review; not
+merged. First the two findings of the audit of 8E, each corrected in a commit of its own (sections 18.1 and 18.2): `5f59c10` (a paused clock holds
+the gait drawn), `0c4ce62` and `3a074c5` (the feet on the ground, each instance against itself, and the count of the cases kept open); then
+decisions 246 (a) and 247 (a) as the owner settled them (section 0.3) with their checks, `e618e5e`; then the evidence and the records. Nothing of
+8G, of decision 258 (b)'s counter placement or of decision 255 (d)'s far-label prototype is in it; decision 245 (a) is kept (no facings), and the
+drivers and the artillery are as 8E drew them. **Device acceptance is pending** for 8E and for 8F: no owner hardware was available to this session
+(section 18.7).
+
+**In numbers** (sections 18.1 to 18.9): at a pause 0 of 30 paused frames move, for each formation and each way into it (8E's 30 of 30 once the
+gait had begun to fade); at 4x the men's poses beyond 0.03 units 263 to 36 and 205 to 35 on the drawn soles, 137 to 11 and 176 to 19 on the
+planted edges, the cases left kept open, bounded (2.5 to 3.5 times the tolerance) and counted; each foot's own profile 0.22 to 0.35 ms a frame
+against the budget of 0.2, not drawn; from above the shore 1.00 to 1.01 times the field beside it (8E's 1.02 to 1.03, the first draft's 1.18 to
+1.20), the rimed margin 1.16 to 1.19 (8E's ice there 1.15 to 1.17); 348, 254, 348 and 254 triangles a deciduous tree (8E's 560, 380, 560, 380),
+the frame 14.7% to 21.6% fewer triangles in six views with the same draw calls and more of the troops seen through the woods, the shimmer higher
+(1.93% of the woods' pixels against 1.39% in the pheasantry view); the near detail's tone 1.000 of the ground without it, each cell's mean within
+0.1%; in the census the desktop frame 380,072 triangles fewer wherever the woods are drawn (14.1% to 16.4%), the draw calls the same in every
+view, every desktop view within section 8.3's budget and the phone's two Overview views back within its own (1.40 million triangles against 1.62);
+the self-test 301 of 301; 17 mutations of the self-test's 8F block and 27 of `css-test.js`'s each caught.
+
+### 18.1 Prerequisite 1: a pause holds the gait drawn; a seek shows the clock's own pose (the audit of 8E; commit `5f59c10`)
+
+- **Found** by the audit of 8E and **reproduced** on the merged build (`tools/stage8/pause-8f.js`: the app's own loop run frame by frame on a
+  clock of the driver's, Play, the speed and Pause by real clicks; `docs/stage8-evidence/8f/pause.json`, the clip
+  `docs/stage8-evidence/8f/clips/pause-8e-8f.mp4`, 8E above, the fix below): after the gait had faded out at 4x, `stopPlay()` fixed the clock but
+  `gaitStep` eased the amplitude back toward the paused clock's rule (full), so an infantry division, a cavalry corps and a limbered battery
+  stepped back into their stride with the clock standing: 0 to 0.39 in the first paused frame at 30 frames a second, 0.63, 0.77, 0.86 in the next
+  three, 1 after about fourteen (30 of 30 paused frames moved); paused in the fade (0.37), the same climb; the dwell's hold did the same.
+- **The correction.** A clock that stands without being moved (Pause, the day's end, the dwell's hold) holds the pose drawn: the amplitude and the
+  trot where they are, and with them the riders' and drivers' beat and the wheels' angles (the phase being the clock's). The ease runs only while
+  the clock moves. `setClock` counts every move of the clock but Play's own advance (`GAIT.seek`; `tickClock` passes `opts.play`), so a seek shows
+  that clock's own pose at once (the rule's amplitude at the clock and the rate: full where the formation marches at a paused clock), and a minute
+  sought shows one pose however it was reached. Reduced motion still stops the gait at once, paused or not.
+- **Shown** (the same reproduction on the fix): every way into the pause, for all three formations, the first paused frame's amplitude the last
+  played's and every one of 30 paused frames the first's (0 of 30 moved); resumed at 4x, eased on from the amplitude held; a seek while paused the
+  clock's own pose in its first frame (8E's eased toward it over several).
+- **Held** by the self-test's new check (k) (the pause by the app's own path: its loop run frame by frame on the test's clock, Play, the speed and
+  Pause by their buttons; infantry, cavalry and a limbered battery paused from half speed, in the fade and faded out; the first paused frame's
+  gait the last played's and every paused frame's the first's; the frame and the sun's depth map drawn with the formation alone, unchanged where
+  its block stands as it was; resumed, eased on from the amplitude held; a seek the clock's own pose at once; the dwell's hold held; reduced
+  motion at once); checks (e) and (f) reach their paused case by a seek and drive Play's advance as Play does; `css-test.js` holds the hold, the
+  seek counter and `tickClock`'s two calls; `runtime-test.js` dry-runs the pause in the fade and faded out by `stopPlay`, the resume and a seek.
+  Each made to fail: `mutate-8e.js`'s `pauseease` (8E's behaviour), `seekease` and `playseek` fail the self-test's block; `mutate-css-8e.js`'s
+  `pausehold`, `seekease`, `seekcount` and `playseek` fail `css-test.js`'s. The manifest 295 to 296.
+- **Found on the way, not changed** (the formation model's, not the gait's): a block still wheeling toward its heading at its arm's rate (`WHEEL`,
+  real time) when the clock stops keeps turning after the pause. Recorded for the owner (section 18.10).
+
+### 18.2 Prerequisite 2: the feet on the ground, each instance against itself (the audit of 8E; commits `0c4ce62` and `3a074c5`)
+
+- **Found** by the audit of 8E: check (h) passed on "99 poses in 100 within 0.03 units" and on "none further off than the rest pose stands
+  anywhere on the field", a field-wide maximum unrelated to any one instance; at 4x 102 poses of 23,292 were beyond 0.03 (the worst 0.087), at
+  10.33x 75 (0.213), the grenadier division's at 09:05 the worst.
+- **Reproduced and taken apart** (`tools/stage8/contact-8f.js`, `docs/stage8-evidence/8f/contact.json`): every formation drawn with a gait at
+  09:05, 10:40 and 13:50, up to 40 instances of every animated mesh (3,484 instance-clocks of men and 612 of horses at each factor), eight phases
+  at full swing, each level, each instance against itself at rest on the drawn ground, on 8E's build (with prerequisite 1) and on the fix: two
+  sets of points, the edges the hook plants (each foot's heel and toe on its line, each hoof's fore and aft edges) and the soles the kit draws
+  (the corners of a man's legs or feet and of a horse's hooves). The **legacy seat** (the upright figure on a slope, a sole's corner off the
+  ground at rest: up to 0.18 units at 4x on the simple kit, 0.55 on a horse's hoof) and the **raised foot** (its lift over the planted one: 0.08
+  to 0.14 at the median) are the rest pose's and the stride's, reported, not the gait's error. Three causes of the gait's own error:
+  1. **the simple kit's soles not planted**: the hook planted the rich kit's heel and toe (-0.065 and 0.135 from the foot's rest point) on both
+     levels, while the simple kit's legs are boxes 0.18 deep (-0.09 to 0.09);
+  2. **a chord taken by the way an edge moves**: the two slopes (ahead of the man and behind him, chords of the drawn ground from his middle) were
+     given to an edge by the direction it moved, so a toe drawn back but still ahead of his middle, or a heel brought forward but still behind it,
+     was judged against the other side's chord;
+  3. **the ground under each foot and each hoof**: the chords are the figure's middle line's, so a crease of the drawn ground running across a
+     foot (its cells' diagonals) is not seen, nor the ground under each hoof.
+- **Corrected within the animation's budget** (section 8.3: 0.2 ms a frame): (1) each kit's own soles planted, chosen by the knee's uniform, which
+  is the level's (`ANIM.MAN.HEEL0`, `TOE0`; the hook and its mirror); (2) the chords anchored at the man's middle, each edge's posed place against
+  its rest place on them (`animChord`; the horse's chords were already its pairs'); the chords read through the drawn ground's compact heights
+  (`world.js` `groundHeights`, `groundYFast`: `groundY`'s own arithmetic on a compact copy of the drawn mesh's vertex heights, value for value the
+  same), made again whenever `scaleGround` changes the ground. Two lookups a figure, as 8E.
+- **The same sample on both builds**: at 4x the men's poses beyond 0.03 on the drawn soles 263 to 36 (the simple kit) and 205 to 35 (the rich), on
+  the planted edges 137 to 11 and 176 to 19; at 10.33x (its tolerance 0.0774, in proportion to the relief) 104 to 24, 159 to 32, 90 to 13 and 106
+  to 22. The horses unchanged (their model was not touched: 27 to 29 poses beyond at 4x, the headquarters' escort on the Zuran mound and the
+  limbered teams). **Not better for every instance**: each instance against itself on the two builds (its worst over the eight phases), of 3,484
+  instance-clocks of men at each factor, 46 to 312 are worse by more than 0.001 units (3 to 12 by more than a third of the tolerance) and at most
+  7 newly beyond it (none in one set), against 862 to 3,394 better and 27 to 105 brought within it; the most worse the grenadiers' #63 at 09:05 at
+  10.33x (0.149 to 0.247 units, sinking), #68 there (0.109 to 0.175) and Saint-Hilaire's #7 at 10:40 at 4x (0.025 to 0.050), each on a crease of
+  the drawn ground across the foot, which 8E's wrong-sided chord had happened to offset. The worst at 10.33x on the drawn soles rose with them:
+  0.214 to 0.247 (the simple kit), 0.200 to 0.216 (the rich); the worst on the planted edges fell (0.213 to 0.175, 0.262 to 0.165), and at 4x
+  every worst of the men fell (the drawn soles 0.101 to 0.096 and 0.102 to 0.086, the edges 0.087 to 0.056 and 0.107 to 0.063).
+- **Not drawn: each foot's own profile** (3), measured as an option (`docs/stage8-evidence/8f/contact/profile-option.patch`): the drawn ground
+  along each foot's own line in four slopes (five lookups a foot) and each hoof's ahead and behind (three a hoof), clamped as before, in two
+  attributes a figure (`aSl`, `aSl2`). It brings the planted edges within 0.03 units at 4x in every pose measured (the worst 0.016 for the men,
+  0.027 for the horses; the drawn soles 11 poses beyond, the worst 0.042, a sole's width across a crease) and at 10.33x all but two hooves'. Its
+  cost (`tools/stage8/cost-8e.js`, the stretch Play draws, `docs/stage8-evidence/8f/contact/cost-*.json`): on every block 0.217 to 0.354 ms a
+  frame (8E's chords 0.109 to 0.162 measured the same way); only on blocks drawn with the rich kit, 0.115 to 0.321 (over in the low and close
+  views); only where a man is drawn 48 px or more (a chord's worst error there about 2.6 px), still 0.239 in the low Pratzen view and 0.284 to
+  0.314 close on Saint-Hilaire's division. So it is not drawn: **a material trade-off, put to the owner** (section 18.10).
+- **Held**: check (h) rewritten: each instance against itself at rest, both levels, at 4x and 10.33x, fresh (three clocks, up to 24 instances of
+  each animated mesh, eight phases) and in motion (Play through the app's own loop on the test's clock for three stretches: Saint-Hilaire's
+  division up the Pratzen through its via point and turn, the eye dollied in so that its blocks turn rich; the Guard's cavalry at 1x; the limbered
+  battery; each third frame every animated instance as drawn; then paused), the hook's edges and the drawn soles: every pose within H_TOL (0.03
+  units at 4x, in proportion to the relief at 10.33x) but where the cases the chords leave are **kept open**, each set with a **proposed bound**
+  on its worst (H_OPEN, in H_TOL: the edges 2.5, the men's drawn soles 3.5, the horses' 3; the largest measured in each set, 2.13 to 3.19, rounded
+  up to the next half) and **no more cases than were found** (H_CASES: the poses beyond H_TOL on prerequisite 2's build, by factor, set, way and
+  level, with a margin of a tenth, at least two; where none was found, none: the original criterion). The count was added by `3a074c5`, when the
+  mutations showed that a bound on the worst alone admitted 8E's soles back on the simple kit (its worst within 3.5 H_TOL). Every case beyond
+  H_TOL counted and reported with its pixels: at its largest size on the screen (a man 17.6 px tall) the simple kit's worst 0.82 px at 4x and 2.12
+  px at 10.33x; in motion through the camera, the rich kit's largest at most 1.13 px for the men (the hook's edges; their drawn soles 0.94 px) and
+  1.42 px for the horses at 4x, 2.61 px and 4.00 px at 10.33x (on 8F's build, here); in motion at 4x no man's pose and one horse's (0.031, a
+  limbered team) beyond H_TOL. The legacy seat and the lift reported, not judged; the resting seat's own check (5) unchanged; the slopes' lookup
+  the drawn ground's at every factor; the level switched along the dolly and the division turned. `runtime-test.js` dry-runs `groundYFast` against
+  `groundY` on the drawn ground's own layout (8,800 points at two scales, the compact heights made again when stale) and the hook's arithmetic
+  (3,600 posed edges of each kit's soles planted on its chords; the simple kit's own soles, not the rich kit's). `css-test.js` holds the rules.
+  The manifest's check (h) renamed twice (296 checks).
+- **The cases kept open, as they stand** (the self-test's check (h) on 8F's build, here, `docs/stage8-evidence/8f/selftest-local.json`; the counts
+  are `H_CASES`'s, found on prerequisite 2's build and unchanged since; every set not listed has none, the original criterion): the poses beyond
+  H_TOL by factor, figures, the edges judged, way and level, with the most `H_CASES` allows, the worst pose and its instance (fresh, every set's
+  worst at 09:05: the headquarters' escort on the Zuran mound, or the grenadiers' #63 on a crease of the drawn ground; in motion, a limbered
+  team's horses or one of Vandamme's men while playing):
+
+  | factor | figures | edges judged | way | level | poses | beyond H_TOL (at most) | the worst, units (H_TOL) | the worst's instance |
+  |---|---|---|---|---|---|---|---|---|
+  | 10.33x | horses | drawn soles | fresh | rich | 7704 | 28 (31) | 0.1848 (2.39) | the headquarters' escort #3 at 09:05 |
+  | 10.33x | horses | drawn soles | fresh | simple | 7704 | 25 (28) | 0.2002 (2.59) | the headquarters' escort #1 at 09:05 |
+  | 10.33x | horses | drawn soles | motion | rich | 1958 | 1 (3) | 0.0875 (1.13) | the guns on the heights' team #20 at 13:51 (playing) |
+  | 10.33x | horses | hook's edges | fresh | rich | 7704 | 29 (32) | 0.1870 (2.42) | the headquarters' escort #3 at 09:05 |
+  | 10.33x | horses | hook's edges | fresh | simple | 7704 | 29 (32) | 0.1870 (2.42) | the headquarters' escort #3 at 09:05 |
+  | 10.33x | horses | hook's edges | motion | rich | 1958 | 2 (4) | 0.0793 (1.02) | the guns on the heights' team #20 at 13:51 (playing) |
+  | 10.33x | men | drawn soles | fresh | rich | 22848 | 21 (24) | 0.2156 (2.79) | the grenadiers' #63 at 09:05 |
+  | 10.33x | men | drawn soles | fresh | simple | 22848 | 14 (16) | 0.2465 (3.18) | the grenadiers' #63 at 09:05 |
+  | 10.33x | men | drawn soles | motion | rich | 7856 | 1 (3) | 0.0804 (1.04) | Vandamme's #0 at 13:58 (playing) |
+  | 10.33x | men | hook's edges | fresh | rich | 22848 | 20 (22) | 0.1652 (2.13) | the grenadiers' #63 at 09:05 |
+  | 10.33x | men | hook's edges | fresh | simple | 22848 | 11 (13) | 0.1394 (1.80) | the grenadiers' #63 at 09:05 |
+  | 4x | horses | drawn soles | fresh | rich | 7704 | 29 (32) | 0.0576 (1.92) | the headquarters' escort #3 at 09:05 |
+  | 4x | horses | drawn soles | fresh | simple | 7704 | 27 (30) | 0.0639 (2.13) | the headquarters' escort #5 at 09:05 |
+  | 4x | horses | drawn soles | motion | rich | 1882 | 1 (3) | 0.0310 (1.03) | the guns on the heights' team #18 at 13:50 (playing) |
+  | 4x | horses | hook's edges | fresh | rich | 7704 | 29 (32) | 0.0583 (1.94) | the headquarters' escort #3 at 09:05 |
+  | 4x | horses | hook's edges | fresh | simple | 7704 | 29 (32) | 0.0583 (1.94) | the headquarters' escort #3 at 09:05 |
+  | 4x | men | drawn soles | fresh | rich | 22848 | 21 (24) | 0.0860 (2.87) | the grenadiers' #63 at 09:05 |
+  | 4x | men | drawn soles | fresh | simple | 22848 | 9 (11) | 0.0958 (3.19) | the grenadiers' #63 at 09:05 |
+  | 4x | men | hook's edges | fresh | rich | 22848 | 14 (16) | 0.0625 (2.08) | the grenadiers' #63 at 09:05 |
+  | 4x | men | hook's edges | fresh | simple | 22848 | 4 (6) | 0.0563 (1.88) | the grenadiers' #63 at 09:05 |
+
+  None is beyond its set's proposed bound (H_OPEN: the worst 3.19 H_TOL against 3.5). **These are open, not accepted**: the original criterion
+  (every pose within H_TOL) is what the owner's choice in section 18.10 would restore.
+
+### 18.3 The water (decision 246 (a); `world.js` `WATER_COL`, `ICE`, `STREAM`, `WATER_GLSL`, `iceHook`, `streamHook`, `buildWater`, `waterPresentation`)
+
+- **The meres' ice, by material and light alone.** On the landscape the ice is clearer, darker and glossier toward the middle (`iceClear`,
+  roughness 0.20) and rimed toward the shore (`iceFrost`, roughness 0.62) from 0.38 of a mere's radius, eased into each other with a broad noise;
+  a broad variation of tone of low contrast (a tenth of the tone in all, value noise on the world's plane, patches about 9 units across, the
+  rime's grain about 2.7: anchored to the ground, nothing moves); the sky reflected more at a grazing view over the clear ice (its weight 1.4 at
+  the horizon, falling with the fourth power of the eye's height over the ice). The rimed margin answers the one description of the ice's look
+  read, Ségur's "ce miroir, blanchi par les frimas" (section 5.2: a memoir, grade C), as Part A's `w-ice` did; every value a design value. No
+  line, crack, hole, open water, snow or figure (`docs/STAGE4_SPEC.md` §F.1's rule as 4E built it).
+- **The shore ice**: 4E's ring (0.86 to 1 of each mere's ellipse, lifted 0.02 units, its outer edge the mere's own) feathered at both edges: its
+  opacity rising over the inner 0.35 of its width and falling to nothing at the shore from 0.55, so that no hard ring is drawn and the shore reads
+  as the drawn ground meeting the ice; drawn after its ice whatever the eye (`renderOrder` 1: both are transparent and their centres a lift apart,
+  so an eye looking up would have sorted the band first and shown the ground through its feathered edges), over ice that writes no depth (nothing
+  visible lies under the ice), so the band never fights the ice for a pixel at a grazing view, and only the drawn ground hides it.
+- **The streams**: still (nothing in them reads a clock or a time, so an idle page draws no frame for them), darker and less blue (`streamLand`,
+  against 8E's `stream`), a little glossier (roughness 0.30, the environment's weight 0.40), a still variation of tone (a tenth in all) and the
+  sky at a grazing view (weight 2.0, the cube of the eye's height over the water); their banks darker (`bankLand`). No ice on the streams, no
+  flow, no crack, hole, snow or figure (section 5.2: no source read says whether the Goldbach or the Littawa was frozen).
+- **Kept**: the meres' outlines and levels, the ring's geometry, the streams' lines and 8A's widths (`terrain-test.js`'s meres' and shore ice's
+  edges at 1x, 4x and 10.33x pass unchanged; the self-test's 4E and 8A checks pass); every colour in `WATER_COL` (8E's `ice`, `iceRim`, `bank` and
+  `stream` kept for the paper map; `iceClear`, `iceFrost`, `iceBand`, `bankLand`, `streamLand` the landscape's); the hooks chain the atmosphere's
+  uniforms (`atmoUniforms`: the haze and the valley fog as on every material) and have programs of their own (`customProgramCacheKey`); nothing
+  new is sorted but the band's order. **The paper map draws the water with 8E's own materials** (`WATER_MATS.paper`, made as `buildWater` made
+  them until 8F), put in place by `setMode` (`waterPresentation`) before it sets the water's opacity as before: every parameter 8E's, no hook of
+  their own.
+- **The bright margin tuned, measured** (`docs/stage8-evidence/8f/ice-margin.json`; the owner: "Tune the bright ice margins so they integrate with
+  the surrounding terrain"). The light of the shore band's middle (0.92 of a mere's radius) and of the rimed margin (0.8) against the field just
+  beyond the shore (1.12), in the frame from above (90 units, 4x), obliquely and low, at 09:00, 12:00 and 15:00 (`tools/stage8/ice-8f.js`, a 1366
+  x 768 page, the light as drawn, linear); each cell the shore band's middle / the rimed margin / the clear middle (0.5 of the radius), the least
+  to the most over the three clocks:
+
+  | view | 8E | 8F's first draft | the first draft with Part A's margin colour (`w-ice`) | 8F as built |
+  |---|---|---|---|---|
+  | from above | 1.02-1.03 / 1.15-1.17 / 1.20-1.21 | 1.18-1.20 / 1.26-1.28 / 1.16-1.17 | 1.40-1.44 / 1.43-1.46 / 1.19-1.20 | **1.00-1.01 / 1.16-1.19 / 1.11-1.12** |
+  | obliquely | 0.95-0.98 / 1.04-1.08 / 1.15-1.21 | 1.08-1.12 / 1.12-1.16 / 1.15-1.21 | 1.26-1.31 / 1.27-1.31 / 1.17-1.23 | **0.93-0.97 / 1.04-1.09 / 1.09-1.16** |
+  | low | 1.10-1.13 / 1.22-1.23 / 1.31-1.38 | 1.14-1.16 / 1.24-1.26 / 1.34-1.40 | 1.24-1.27 / 1.33-1.36 / 1.35-1.42 | **1.07-1.09 / 1.19-1.21 / 1.31-1.36** |
+
+  So, as built, the shore stands against the field a little darker than 8E's ice did everywhere (by 0.010 to 0.043) and the rimed margin within
+  0.03 of 8E's ice there (at most 0.014 lighter, from above), the clear middle darker than 8E's from above, and Part A's margin colour is not
+  drawn (Part A, section 5: "the margin is bright at these distances, the one value to tune in 8F"). From above the margin is lighter than the
+  middle (the rime); obliquely and low the clear middle reflects more of the sky and reads lighter. The first draft's margin was brighter against
+  the field than 8E's ice, and taken apart it was not the colour: the environment's weight at 0 changed the shore's ratio by 0.001 (from above at
+  12:00: 1.196 to 1.195), the frost's colour at 0.82 of itself by about 0.06 (1.134), the band hidden brought it to 1.037, the band without its
+  offset to 1.032. The cause was a fault of the draft: the band's polygon offset (against z-fighting with the ice) drew it over the drawn ground
+  at the shore, wherever the ground stands within the offset's reach above the ice, so the ice reached outside the shore line 4E draws. Corrected:
+  no offset, the ice writing no depth instead; then the margin and the middle darker together, so that the rimed margin stays lighter than the
+  clear middle (the disc alone from above at noon: the margin 33.1 against the middle 15.4, in the self-test's grey) while standing against the
+  field about as 8E's ice stood. The stills (`docs/stage8-evidence/8f/pairs/ice-*.jpg`) show the meres as grey-green ice with a soft, lighter
+  margin, not plates with a white rim; against a low sun the glare on the clear ice spreads wider than 8E's sheen (section 18.10).
+
+### 18.4 The woods (decision 247 (a); `world.js` `TREE8F`, `treeKit`, `treeShell`, `treeLimbs`, `treePrism`, `treeGeo`, `buildWoods`)
+
+- **The prototypes first** ("8F begins with a prototype measured against 2F's checks", section 10): three ways of making the deciduous crowns
+  airier, each put into 8E's live scene (`tools/stage8/protos/woods.js`) and measured in six views (`tools/stage8/woods-8f.js`,
+  `docs/stage8-evidence/8f/woods-8f-8e.json`, the stills in `woods/` and the sheets in `sheets/`): **t-open** (each crown a twig shell: 8E's
+  crown, so its envelope is 8E's, about half its faces kept by a seeded choice, each shrunk toward its own centre, with a trunk forking into limbs
+  and twigs inside it; opaque, drawn on both faces), **t-airy** (t-open more open: 42% of the faces kept, each shrunk to 0.70) and **t-lace**
+  (t-open's trunk and limbs with crossed alpha-tested twig cards in place of each shell: the transparency option, measured for its overdraw,
+  shimmer and shadows as the decision asks). Measured in each: the triangles a tree; the frame's draw calls and triangles, every pass; the troops
+  seen through the woods (the troops' pixels drawn white over every other solid thing drawn black, with the woods and without); the shimmer (the
+  woods' pixels whose grey changes by more than 24 of 255 when the eye moves half a pixel, a share of the woods' pixels); the fragments the woods
+  rasterise per pixel they cover (each drawn alone, additively, with no depth test and its alpha test off: what a card shades before it discards);
+  2F's placement rules (every tree and scrub of a wood inside the drawn wood class, the counts by kind); a low tier's calls and triangles. Every
+  variant keeps the placement: 1,750 instances, none outside the drawn wood class or the model's, the counts by kind 8E's. In the six views (8E's
+  woods against the three):
+
+  | view | measure | 8E | t-open | t-airy | t-lace |
+  |---|---|---|---|---|---|
+  | pheasantry (4x) | the frame's triangles (calls) | 2,306,505 (600) | 2,060,041 (600) | 1,926,433 (600) | 1,691,753 (608) |
+  | | troops seen through | 84.4% | 87.9% | 89.8% | 91.9% |
+  | | shimmer | 1.39% | 1.86% | 1.91% | 2.00% |
+  | | fragments a pixel | 5.75 | 6.63 | 5.61 | 11.51 |
+  | from inside a wood (ice-sun) | triangles (calls) | 1,756,323 (312) | 1,509,859 (312) | 1,376,251 (312) | 1,141,571 (320) |
+  | | troops seen through | 11.0% | 15.3% | 18.5% | 21.7% |
+  | | shimmer | 0.11% | 0.45% | 0.66% | 0.86% |
+  | | fragments a pixel | 10.64 | 11.23 | 8.90 | 20.44 |
+  | the low Pratzen view | triangles (calls) | 2,168,001 (548) | 1,921,537 (548) | 1,787,929 (548) | 1,553,249 (556) |
+  | | shimmer | 0.38% | 0.66% | 0.72% | 0.64% |
+  | | fragments a pixel | 4.43 | 5.17 | 4.49 | 8.44 |
+  | close on Sokolnitz | triangles (calls) | 2,480,417 (690) | 2,233,953 (690) | 2,100,345 (690) | 1,865,665 (698) |
+  | | troops seen through | 85.9% | 89.0% | 90.8% | 93.0% |
+  | | shimmer | 1.74% | 2.18% | 2.47% | 2.57% |
+  | the Field vantage | triangles (calls) | 2,588,869 (828) | 2,342,405 (828) | 2,208,797 (828) | 1,974,117 (836) |
+  | the phase-8 Overview (Watch) | triangles (calls) | 2,513,937 (809) | 2,267,473 (809) | 2,133,865 (809) | 1,899,185 (817) |
+  | a low tier (800 x 600): the Field vantage, the low Pratzen view | triangles (calls) | 1,516,419 (529), 1,144,171 (278) | 1,354,267, 982,019 | 1,274,675, 902,427 | 1,170,123 (533), 797,875 (282) |
+
+- **Chosen: t-airy**, the most open of the opaque ways: the frame's triangles 14.7% to 21.6% fewer than 8E's in every view (`woods-8f.js`'s frame,
+  without the ground's depth pass, which the app draws again only when the eye moves; the census of section 18.7 counts the whole frame), the
+  calls the same; more of the troops seen through the woods (from inside a wood 18.5% against 11.0%; close on Sokolnitz 90.8% against 85.9%); the
+  fragments a pixel about 8E's (2.83 to 8.90 against 3.29 to 10.64). Its price: **the open crowns shimmer more** (1.91% of the woods' pixels
+  against 1.39% in the pheasantry view, 2.47% against 1.74% close on Sokolnitz): the gaps are edges. t-lace was the most open, but its cards
+  rasterise about twice the fragments a pixel (11.51 against 5.61) and add eight draw calls; decision 247 (a) asks that a transparency's costs be
+  measured if one is introduced, and the opaque way meets the ask without one.
+- **Built**: the four deciduous habits and the bush as 8E placed and shaped them (each crown 8E's icosahedron with its jitter, so that its
+  envelope, and a wood's mass from afar, are 8E's), each crown a perforated twig shell (a seeded 42% of its faces kept, each shrunk to 0.70 toward
+  its own centre; the bush 45% and 0.72) around a trunk forking into four limbs into the main crown and one into each lesser crown, each ending in
+  two twigs toward the shell; drawn on both faces (the shell's inside shows through its gaps), opaque (nothing sorted, no alpha; its shadow its
+  own shape). The triangles a tree: 348, 254, 348 and 254 for the four habits (8E's 560, 380, 560, 380), the bush 174 (360), the conifers 8E's own
+  (62 and 41; their shares the build's, pending evidence); the trees by kind as 8E's (634 in the woods, 184 in the villages, 376 conifers, 354 at
+  the woods' edges and 202 along the streams); the woods' boundaries and the cover classes untouched.
+- **As built, measured again** (`woods-8f.js --protos "" --tag 8f` on 8F's build, `docs/stage8-evidence/8f/woods-8f-8f.json`): in each of the six
+  views the prototype's triangles, calls, troops seen through and fragments a pixel exactly; 1,750 instances, none outside the drawn wood class or
+  the model's; the shimmer 0.62% to 2.47% of the woods' pixels (the prototype's 0.66% to 2.47%: 8F's ground behind the crowns differs); on a low
+  tier the Field vantage 529 calls and 1,274,675 triangles, the low Pratzen view 278 and 902,427 (8E's 1,516,419 and 1,144,171).
+- **Its limit**: close to the eye (a low free view a few units from a crown: `pairs/ice-eye.jpg`, `pairs/ice-sun.jpg`; the eye-level vantage
+  itself draws no woods, as at 1x) the shells read as separate facets rather than twigs; at the distances the views are taken from (the low views
+  and above) they read as bare crowns, the troops and standards inside a wood seen through them (`pairs/woods-edge-low.jpg`).
+
+### 18.5 The near ground (decision 247 (a); `world.js` `GDETAIL`, `GROUND_FRAG_DETAIL`, `atlasLum`, `groundDetail`)
+
+- **What it draws**: near the eye, each ground texel scaled by a finer sample of its own cell of the atlas (each class its own texture, so no new
+  class and no new colour): the sample's grey over the cell's mean grey (`atlasLum`: each cell's mean over its period, linear, made again when the
+  photographs repaint the atlas), clamped to 0.62 to 1.38, mixed in at 0.55 at most; the sample 7.3 times finer than the coarse one and turned
+  0.61 rad, so that its tiles fall neither on the coarse sample's nor on the grid's; full to 14 units from the eye, none from 60; in the ground's
+  own co-ordinates (anchored: nothing swims as the eye moves; `clips/ground-pan-8e-8f.mp4`); WebGL 2's `textureGrad` with its own gradients (no
+  mip seam where a tile wraps). The cover classes, the frost, the crop strips and the hollows are the shader's as before (they colour the class,
+  not the texel), and so are the heights, the boundaries and the horizon.
+- **Where**: the landscape's natural ground only (`uMode` 1): not the going layer, not the apron, not the paper map (whose ground has no texture,
+  and whose eye is always beyond the detail's far edge). **Not on a low tier** (`groundDetail(!lowTier)`; decision 236: the phone's frame as P5
+  measured it).
+- **Its normalisation, corrected before commit**: three uploads the atlas's canvas flipped (`CanvasTexture`'s `flipY`, its default), so the
+  shader's cell row cj (tuv's v from the texture's foot) is the canvas's row 2-cj; the first draft took each cell's mean from the canvas's cells
+  as laid out, so the classes of the top and bottom rows were scaled by another cell's mean. `atlasLum` now takes them as the shader samples them,
+  and the self-test reads each of the 12 cells through the GPU as the ground's shader reads it (each within 0.1% of the mean it uses; the copy
+  normalised by the cells as laid out, `mutate-8f.js`'s `lumflip`, fails it).
+- **Measured** (the self-test's check (e)): in the low Pratzen view (480 x 270) 7,335 to 7,343 pixels change with the detail on (three runs),
+  their mean tone 1.000 of what it is without it; the Field vantage and the paper map identical on and off (0 pixels). Its cost: section 18.7.
+- **Found in review, not changed**: the detail's gradients (`dFdx`, `dFdy` of its uv) are taken inside the branch that skips it beyond the fade
+  (`gDf > 0.002`), which GLSL ES 3.00 leaves undefined where a 2 x 2 quad of fragments straddles the branch's edge. There the detail's weight is
+  about 0.002, so a wrong mip level changes a texel by under 0.08% (under one level in 255): nothing visible depends on it. Taking the gradients
+  above that branch (inside the uniform one) is a one-line change for a later build; it was found after this build's checks and evidence had run,
+  and is recorded rather than built here.
+- **Found on the way, not changed (2F's)**: the same flip means that the ground's shader shows for each cover cell k the grain painted for the
+  canvas's cell (k mod 4, 2 - floor(k/4)): the patterns and photographs made for the open field, the meadow, the marsh and the water (cells 0 to
+  3) are drawn on the plough, the pasture, the winter sowing and the trodden ground, and the other way round (the middle row, wood, village,
+  vineyard and track, is its own) (`tools/stage8/atlas-8f.js`, `docs/stage8-evidence/8f/atlas-8f.jpg` and `.json`: for the six cells whose
+  patterns differ, 0, 2, 3, 8, 10 and 11, the shader's sample correlates 0.03 to 0.29 with the canvas's own cell and 0.73 to 1.00 with the flipped
+  one; the meadow's and the pasture's, 1 and 9, made alike, 0.74 to 0.75 with either; the middle row's the same either way). The cover classes'
+  colours, frost and strips are not affected (they colour the class, not the texel); only which grain each class wears. It is 2F's drawing, so it
+  is put to the owner (section 18.10), not changed here.
+
+### 18.6 The checks, and each made to fail
+
+- **The self-test's 8F block**, five checks after the 8E block (its own state kept and restored, its renders its own, into a target of the test's,
+  without post-processing): (a) the water's presentations: on the landscape every water mesh drawn with 8F's material (the streams and banks in
+  their landscape colours; the ice writing no depth; the shore band without a polygon offset and drawn after its ice), on the paper map with 8E's
+  (every parameter of 8E's three materials made afresh, no shader hook of their own); (b) the water still: a view of the meres and the Goldbach,
+  300 of the app's own frames on the test's clock with the clock standing (the view's easings arriving), drawn, 300 more, drawn again: the same
+  pixels, each frame asked for so that anything the frames move would move; at rest no frame asked; (c) the meres' ice: the shore band drawn alone
+  from above feathered at both edges (its light at the inner edge and at the shore at most a tenth of its peak), the rimed margin lighter than the
+  clear middle, and in the frame at three clocks the shore band at most 1.10 times the field beside the shore and the rimed margin at most 1.25
+  times (`ICE8F`: design bounds between 8E's 1.02 and 1.15-1.17 and the first draft's 1.20 and 1.26-1.28); (d) the woods: the trees and the scrub
+  by kind as 8E drew them (`WOODS8E`), each habit's triangles within 8E's (`KIT8E`, read on 8E's build), the conifers 8E's own, the open crowns on
+  both faces and casting shadows; (e) the near ground: drawn near the eye (the low Pratzen view: pixels differ with it on and off), its mean tone
+  within 1% of the ground's without it, each cell's mean that of the cell the shader samples (read through the GPU), nothing beyond its far edge
+  (the Field vantage identical on and off), none on the paper map, on at this tier (the self-test's page is never a low tier: that setting is
+  `css-test.js`'s). The manifest 296 to 301.
+- **`css-test.js`'s 8F block**: the water's colours in `WATER_COL` (8E's four kept for the paper map), `ICE`'s 4E values, the meres' outlines,
+  levels and ring 4E's, the paper map's water 8E's materials, put in place before the opacity as before; the ice writing no depth, the band
+  without an offset and after its ice; the hooks chaining the atmosphere's uniforms with programs of their own; nothing in the water read from a
+  clock or a time, no hole cut, no presentation's branch; `TREE8F`'s values, the crowns opaque on both faces, 8E's crowns' jitter and the
+  conifers; `GDETAIL`'s values, the detail on the natural ground alone, faded by the eye's distance, anchored to the ground's uv, its cell's grey
+  ratio within the clamp (no new colour), inside the texture (none on the paper map), the cells' means as the shader samples them, off under
+  lowTier; and the self-test's bounds (`ICE8F`, `WOODS8E`, `KIT8E`).
+- **`runtime-test.js`** dry-runs the water's presentations (each water mesh its presentation's material both ways, the paper map's unhooked) and
+  the near detail's setting at the tier; **`tools/stage2/height-sites.js`** classifies the block's aim as a test read.
+- **Each made to fail** (`docs/stage8-evidence/8f/mutate-8f.json`, `mutate-css-8f.json`, `mutate-css-8e.json`): the self-test's 8F block passes on
+  the build (5 of 5) and fails on each of 17 copies with one rule broken: the paper map's water drawn with the landscape's materials or its
+  streams in the landscape's colour (`paperwater`, `paperstream`); the shore ice a hard ring, the margin as bright as Part A's prototype or as the
+  first draft drew it (`hardring`, `brightrim`, `firstrim`); the band with a polygon offset, the ice writing its depth, the band sorted with its
+  ice (`polyoffset`, `depthwrite`, `renderorder`); the streams' tone moved in every frame (`flow`); a wood thinned, a habit heavier than 8E's, the
+  crowns one-sided (`treecount`, `treetris`, `treeside`); the near detail beyond its far edge, on the paper map, darkening the ground, normalised
+  by the canvas's cells as laid out, never drawn (`detailfar`, `detailpaper`, `detailtone`, `lumflip`, `detailoff`). `css-test.js`'s 8F block
+  passes on the source and fails on each of 27 copies (`mutate-css-8f.js`: the colours, the ring, a mere's level, the paper map's materials and
+  their order in `setMode`, the depth, the offset, the order, the atmosphere's uniforms, a time, a hole, `TREE8F`, the faces, alpha, the jitter,
+  the conifers, `GDETAIL`, the detail's presentation, fade, anchoring, tint, flip and tier, the self-test's bounds); its 8E block, with the
+  prerequisites' rules, on each of 27 (`mutate-css-8e.js`), both run on this PR's final source. The prerequisites' own: section 18.1
+  (`mutate-pre1.json`: the pause's three rules and four of 8E's, each failing the self-test's 8E block on prerequisite 1's build) and section 18.2
+  (`mutate-pre2.json`, `mutate-pre2-count.json`). 8F's commit does not touch the 8E block's code, so its mutations were not run again on 8F's
+  build; the whole self-test passes there (301 of 301).
+
+### 18.7 Performance: the census against 8E, the frame's cost, the devices pending
+
+- **The census** (`tools/stage8/census-8e.js <8E> <8F> --phone`, `docs/stage8-evidence/8f/census.json`, `census.md`: one whole frame per view
+  after the eye moved, culled, every pass, the ground's depth drawn, reconciled with `renderer.info` in every frame; 8E's build against 8F's; the
+  counts are what each build asks the GPU to draw, the same on any GPU at the same viewport):
+
+  | view | whole frame, 8E → 8F (calls / triangles) | triangles | world pass (triangles) | shadow pass (triangles) |
+  |---|---|---|---|---|
+  | `overview-field` | 830 / 2.694 M → 830 / 2.314 M | **-14.1%** | 1.504 M → 1.263 M | 1.042 M → 904.1 k |
+  | `overview-field-1x` | 197 / 385.1 k → 197 / 385.1 k | **+0.0%** | 238.0 k → 238.0 k | 0 → 0 |
+  | `overview-field-10x` | 830 / 2.697 M → 830 / 2.317 M | **-14.1%** | 1.508 M → 1.266 M | 1.042 M → 904.1 k |
+  | `overview-plan` | 830 / 2.673 M → 830 / 2.293 M | **-14.2%** | 1.483 M → 1.242 M | 1.042 M → 904.1 k |
+  | `close-sokolnitz` | 692 / 2.628 M → 692 / 2.247 M | **-14.5%** | 1.384 M → 1.142 M | 1.096 M → 958.0 k |
+  | `close-sokolnitz-1x` | 181 / 385.7 k → 181 / 385.7 k | **+0.0%** | 238.6 k → 238.6 k | 0 → 0 |
+  | `close-sokolnitz-10x` | 615 / 2.525 M → 615 / 2.145 M | **-15.1%** | 1.281 M → 1.040 M | 1.096 M → 958.0 k |
+  | `staff-paper` | 148 / 238.7 k → 148 / 238.7 k | **+0.0%** | 238.7 k → 238.7 k | 0 → 0 |
+  | `pratzen-low` | 550 / 2.315 M → 550 / 1.935 M | **-16.4%** | 1.173 M → 931.0 k | 995.2 k → 856.9 k |
+  | `selected-formation` | 687 / 2.625 M → 687 / 2.245 M | **-14.5%** | 1.365 M → 1.124 M | 1.112 M → 974.1 k |
+  | `watch-selected` | 626 / 2.535 M → 626 / 2.155 M | **-15.0%** | 1.302 M → 1.060 M | 1.087 M → 948.3 k |
+  | `hybrid-dimmed` | 635 / 2.565 M → 635 / 2.185 M | **-14.8%** | 1.333 M → 1.092 M | 1.085 M → 946.7 k |
+  | `pratzen-low-1x` | 162 / 374.9 k → 162 / 374.9 k | **+0.0%** | 227.8 k → 227.8 k | 0 → 0 |
+  | `pratzen-low-10x` | 581 / 2.383 M → 581 / 2.003 M | **-15.9%** | 1.163 M → 921.6 k | 1.073 M → 934.8 k |
+  | `paper-north-up` | 156 / 240.9 k → 156 / 240.9 k | **+0.0%** | 240.9 k → 240.9 k | 0 → 0 |
+  | `paper-close` | 103 / 203.4 k → 103 / 203.4 k | **+0.0%** | 203.4 k → 203.4 k | 0 → 0 |
+  | `paper-drawer` | 110 / 226.5 k → 110 / 226.5 k | **+0.0%** | 226.5 k → 226.5 k | 0 → 0 |
+  | `ph8-overview-study` | 811 / 2.663 M → 811 / 2.283 M | **-14.3%** | 1.480 M → 1.239 M | 1.036 M → 897.7 k |
+  | `ph8-overview-watch` | 811 / 2.661 M → 811 / 2.281 M | **-14.3%** | 1.478 M → 1.236 M | 1.036 M → 897.7 k |
+  | `ph8-overview-watch-1x` | 183 / 383.8 k → 183 / 383.8 k | **+0.0%** | 236.7 k → 236.7 k | 0 → 0 |
+  | `ph8-overview-watch-10x` | 811 / 2.663 M → 811 / 2.283 M | **-14.3%** | 1.480 M → 1.238 M | 1.036 M → 897.7 k |
+  | `eye-zuran` | 182 / 560.8 k → 182 / 560.8 k | **+0.0%** | 301.1 k → 301.1 k | 112.6 k → 112.6 k |
+  | `eye-zuran-1x` | 129 / 374.2 k → 129 / 374.2 k | **+0.0%** | 227.1 k → 227.1 k | 0 → 0 |
+  | `plans-overview` | 855 / 2.679 M → 855 / 2.299 M | **-14.2%** | 1.489 M → 1.248 M | 1.042 M → 904.1 k |
+  | `paper-laptop` | 156 / 240.9 k → 156 / 240.9 k | **+0.0%** | 240.9 k → 240.9 k | 0 → 0 |
+  | `narrow-1024` | 830 / 2.700 M → 830 / 2.320 M | **-14.1%** | 1.511 M → 1.269 M | 1.042 M → 904.1 k |
+  | `phone:overview-plan` | 543 / 1.643 M → 543 / 1.401 M | **-14.7%** | 1.496 M → 1.254 M | 0 → 0 |
+  | `phone:pratzen-low` | 224 / 1.215 M → 224 / 973.2 k | **-19.9%** | 1.068 M → 826.1 k | 0 → 0 |
+  | `phone:ph8-overview-watch` | 527 / 1.638 M → 527 / 1.396 M | **-14.8%** | 1.491 M → 1.249 M | 0 → 0 |
+
+  Every frame reconciled on both builds; **the draw calls the same in every view**. Wherever the woods are drawn (the landscape at 4x and 10.33x,
+  Landscape with counters, the phone) the frame draws the same number of triangles fewer in every such view: **380,072 on the desktop** (241,744
+  in the world pass and 138,328 in the shadow pass: the woods are never culled, so the saving is the whole woods' each frame), 14.1% to 16.4% of
+  the frame, and 241,744 on the phone (no shadow pass there), 14.7% to 19.9% of its frame; at 1x, at the eye level and on the paper map, where no
+  wood is drawn, every count the same. Every desktop view within section 8.3's budget (the most 2,320,381 triangles, `narrow-1024`, and 855 calls,
+  `plans-overview`, against 2.8 million and 900). **The phone's two Overview views, over its triangle budget since 8D, are within it again**:
+  1,401,041 and 1,396,137 triangles against 1.62 million (8E's 1,642,785 and 1,637,881); section 8.3's alternative for them (a phone run holding
+  the heavy segments' long frames at or under 5%) is no longer what admits them, though the device run itself is still pending. The census's
+  findings name 8E's two phone views alone; 8F has none.
+- **The frame's cost** (`tools/stage8/cost-8f.js`, `docs/stage8-evidence/8f/cost-8f.json`; software WebGL, so where the work goes, not a device's
+  frame time; each view on a fresh page as the harness opens it, the median of 15 frames after 3, the frame as the app draws it at rest, its
+  ground's depth pass reused): in eight desktop views 8F's frame took 0.98 to 1.05 times 8E's; at the eye level 1.16 (no wood is drawn there, so
+  this is the near detail: with it off 1.03). The near detail on against off: 0.95 to 1.07 in those views (the repeats' own spread is of that
+  order; in the phase-8 Overview, whose eye is beyond the detail's fade, 1.07 is that noise) and 1.12 at the eye level, where most of the frame is
+  ground near the eye; on the phone's low tier, which draws no detail, 8F's frame 1.00 and 1.01 times 8E's. The shimmer of the whole frame (its
+  pixels whose grey changes by more than 24 of 255 when the eye moves half a pixel): where the woods are far or few, 8E's (0.41% to 2.26% against
+  0.41% to 2.27%); where they fill the view, up (the pheasantry 1.45% to 2.10%, close on Sokolnitz 1.21% to 1.88%, the phone over the pheasantry
+  1.86% to 2.55%); the near detail adds none (on and off the same in every view).
+- **The CPU**: 8F adds no per-frame work in JavaScript: the water and the near detail are shaders with fixed uniforms (nothing written per frame;
+  the near detail's uniform written once at start), the woods are geometry built once. Prerequisite 2's chords against 8E's
+  (`docs/stage8-evidence/8f/contact/cost-chords-before.json`, `cost-chords-after.json`: `cost-8e.js` on prerequisite 1's build and on 8F's, back
+  to back, alone): the animation's CPU a frame (gaitStep and the slopes, the larger of their counted and benched cost) 0.102 to 0.149 ms with
+  prerequisite 2's chords against 0.110 to 0.167 ms with 8E's, in four views at half speed and 1x, the same 3,519 and 4,337 ground lookups a
+  frame: within the budget of 0.2 ms, as 8E's were.
+- **Render on demand kept**: no clock, time or animation in the water or the woods; the self-test's check (b) holds that a view at rest asks no
+  frame.
+- **lowTier kept** (decision 236): no near detail; the shadow and the density as before; the woods' triangles fewer than 8E's there too.
+- **Device acceptance: pending** for 8E and 8F. No owner hardware was available to this session; software WebGL's timings decide nothing. The
+  builds for the device route (`docs/STEP6_SPEC.md` §2, `tools/step6/perf-run.html`, `?src=` naming the build): 8E's (`git show
+  94d6e46:austerlitz-command-map.html`) and 8F's (this PR's).
+
+### 18.8 The captures and the clips
+
+`tools/stage8/stills-8f.js --before <8E> --after <8F>` (`docs/stage8-evidence/8f/pairs/`, 8E on the left, 8F on the right, each tile captioned
+with its build, clock and factor; each view on a page opened as the harness opens it, the same state on both):
+- **the water**: the meres from above, obliquely and low at 15:00 (`ice-high`, `ice-mid`, `ice-low`), obliquely at 09:00 and 12:00 (the light
+  through the day, `ice-mid-0900`, `ice-mid-1200`), at 1x and 10.33x (`ice-mid-1x`, `ice-mid-10x`), against the low sun from inside a wood at
+  14:00 (`ice-sun`), near the ice's level at 15:00 (`ice-eye`, a low free view), and in Landscape with counters (`ice-hybrid`); the Goldbach from
+  above and obliquely at noon (`goldbach-top`, `goldbach-noon`) and low in the valley fog at 08:20 (`stream-low`);
+- **the woods**: the pheasantry at 4x, 1x and 10.33x at 08:20 (`woods-pheasantry`, `-1x`, `-10x`), through a wood's edge low with troops beyond at
+  09:00 (`woods-edge-low`), close on Sokolnitz at 08:20, the Field vantage at 09:30 and the phase-8 Overview at 14:40 (the silhouettes from afar);
+- **the near ground**: the low Pratzen view at 1x, 4x and 10.33x at 09:50, low toward the east at noon (`horizon-east`), the eye level at the
+  Zuran at 08:30 (`eye-zuran`: the eye-level vantage draws no woods), low over the fields at noon (`fields-low`), and in Landscape with counters
+  (`hybrid-low`);
+- **a phone's screen** (390 x 844, a low tier: no shadow and no near detail) over the meres at 15:00 and over the pheasantry at 08:20
+  (`phone-ice`, `phone-woods`).
+
+And three clips (`docs/stage8-evidence/8f/clips/`, 8E above, 8F below, 10 frames a second, each frame drawn by the app, the clock standing): an
+orbit at the pheasantry's edge (the crowns' openness and their shimmer), a dolly toward a grazing view over the Satschan mere (the ice and the
+shore band), a slow pan low over the fields (the near detail anchored: nothing swims). The woods' prototypes in their six views:
+`woods/<view>-<variant>.jpg` and the sheets `sheets/<view>-woods.jpg`; the atlas's cells as the shader samples them: `atlas-8f.jpg`; the contact's
+worst cases close on both builds: `contact/*.jpg`; the pause: `clips/pause-8e-8f.mp4`.
+
+### 18.9 What was run
+
+Here: Chromium 153.0.8010.12 (the container's browser, `AUSTERLITZ_CHROME`; CI runs 141.0.7390.37, Playwright 1.56's headless shell, the browser
+the motion block's counts are pinned to by decision 257 (b), which this container does not have), software WebGL, the container's CPU shared with
+the runs beside it. On CI, GitHub's `ubuntu-latest` runners. On the commits named:
+
+- **The prerequisites**, each on its own commit's build: `npm test` (all nine suites and the height guard) on each; the self-test's 8E block on
+  each (11 of 11, `mutate-8e.js`'s `none8e`) and its mutations (sections 18.1 and 18.2), the reproductions and measures of sections 18.1 and 18.2.
+  On CI every job passes (the checks job, `check:contrast` and `check:selftest`, 296 of 296 in CI's browser with the motion block within its
+  limits): `5f59c10`, the push run 40613632865 and the pull request's 40613662156; `0c4ce62`, 40634640111 and 40634644072; `3a074c5`, 40639826754
+  and 40639830432.
+- **8F's build** (md5 `6ba949da17229530324add3c54dd94ff`, 2,607,535 bytes, `e618e5e`): `npm run build` writes it byte for byte; `npm test` (all
+  nine suites and the height guard; "console.warn unique" 0); `check:data` (132 of 132 declarations identical to `archive/stage8e-f3c3f3af.html`);
+  `check:chronology` (0 errors; the movement audit 0 findings; its open items as before 8F); `check:baseline`; `check:selftest`, here: the
+  self-test 301 of 301 (1,269 s), every live block passing but the motion block, whose counts in this browser are 8E's own (jumps 240, pops 988,
+  level-of-detail switches 130 and flickers 11 over the 16 motions on 8F's build and on 8E's, against CI's 245, 985, 130 and 10; 23 of its 24 runs
+  identical on the two builds, `hybrid-glide` drawing 3 formation-frames more on 8F's: `docs/stage8-evidence/8f/selftest-local.json`,
+  `motion-8e-chromium153.json`), so it is judged on CI's browser; `check-report.js --write-manifest` wrote the manifest (301 checks) from that
+  run; the mutations of section 18.6 (the static ones again on the final source); the evidence of sections 18.3 to 18.8, each file naming its
+  build.
+- **On CI** (Chromium 141.0.7390.37), on `e618e5e`: the push run 40665825995, the pull request's 40665833860 and the dispatched 40665840278 (with
+  `check:visual`): the checks job (the build written byte for byte, `npm test`, `check:data`, `check:chronology`), `check:contrast` (its start-up
+  cases among them) and `check:selftest` (301 of 301 in CI's browser, the motion block within its limits) pass in each. On `cfa6a22` (the
+  evidence; the build the same): the push run 40675861432 and the pull request's 40675878965 pass every job. The `check:selftest` step took 21 to
+  43 minutes in the five runs (8E's 19 to 38), its job at most 44 of the 60 allowed; a slower runner may bring it near the limit (not changed:
+  recorded). The dispatched run's `check:visual` passes, in 250 minutes (09:39 to 13:49 UTC; the job's limit 350; 8E's 169 to over 240): its 39
+  cases, every census reconciled and every case's frame with culling its frame without it (0 pixels; the low Pratzen view's frame 17.5% fewer
+  triangles with culling), the motion block's counts over its 16 motions 245, 985, 130 and 10 (8E's, exactly: the map layer in motion unchanged),
+  the culling block's 15 runs (485 frames judged, 243 compared, 0 pixels differing), the self-test and every live block, and `STAGE0: all checks
+  passed`. On `96fc022` (the records; the build the same): the push run 40687193681 and the pull request's 40687200421 pass every job.
+
+### 18.10 What remains, for the owner's attention
+
+- **Device acceptance: pending**, for 8E and for 8F (section 18.7). Prepared: 8E's build and 8F's, and the device route with its brackets.
+- **For the owner's decision** (none blocks the build; each is drawn as recorded above):
+  1. *The feet on the ground* (section 18.2): the cases the chords leave are kept open, each set with a proposed bound on its worst (2.5, 3.5 and
+     3 times the tolerance) and its count held. Each foot's own profile meets the original tolerance at 4x but costs 0.22 to 0.35 ms a frame
+     against the animation's budget of 0.2: the choice is to accept the chords with these bounds, to raise the budget for the profile, or to draw
+     it only where a man is large on the screen (still over the budget in the closest views, 0.24 to 0.31 ms).
+  2. *The wheeling block after a pause* (section 18.1): a block still turning toward its heading when the clock stops keeps turning at its arm's
+     rate (`WHEEL`, real time). The formation model's, not the gait's; not changed.
+  3. *The ground's grain on eight cover cells* (section 18.5): 2F's atlas is sampled flipped, so the open field, meadow, marsh and water wear the
+     plough's, pasture's, winter sowing's and trodden ground's grain and the other way round (the trodden ground, for one, the water cell's pale
+     streaks: `atlas-8f.jpg`'s last row). A small change of 2F's drawing (the atlas textures uploaded unflipped, or their rows laid out flipped);
+     the classes' colours do not change. The near detail follows the flip either way.
+  4. *The woods' open crowns*: they shimmer more than 8E's solid ones (1.93% of the woods' pixels against 1.39% in the pheasantry view, 2.47%
+     against 1.74% close on Sokolnitz), and close to the eye (a low free view a few units from a crown) they read as separate facets
+     (`pairs/ice-eye.jpg`). Shading the shells as one volume would calm both; not tried here.
+  5. *The ice against a low sun*: at 15:00 the sun's glare on the clear ice spreads wider and whiter than 8E's sheen (`pairs/ice-mid.jpg`; from
+     above and at the other clocks the measures of section 18.3). A rougher clear ice would narrow it, at the cost of the gloss the decision asks
+     for; left as built.
+- **Kept outside this PR**, as the brief asks, and still to come: 8G (buildings and landmarks, decision 248 (a): the evidence step first);
+  decision 258 (b)'s counter placement in motion and decision 255 (d)'s far-label prototype (both commissioned with 8D, section 16.12, not begun);
+  8H. Nothing of the map layer, the troops' models, their claims, the standards, the level of detail, culling or the shadow system changed, but
+  where the prerequisites required (the gait's pause and its ground contact); the trees cast the shadows of their new crowns. Decision 245 (a)
+  kept: no facings; the drivers and the artillery as 8E drew them.
 - **Not measured**: a GPU's frame time (software WebGL here); Safari (no WebKit here); memory on a device.

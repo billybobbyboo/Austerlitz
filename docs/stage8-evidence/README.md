@@ -151,3 +151,36 @@ they differ in the self-test's checks (c) and (e) and a counter it reads (sectio
 | `8e/route-gait-local.json` | `tools/step6/perf-local.js --gait --quick` | section 17.13: the device route's gait bracket run end to end here, every block in its order (software WebGL draws 0 to 2 frames in a block's seconds, as in 8D's local runs: its times and verdict decide nothing) |
 | `8e/stills/<id>.jpg` | `clips-8e.js --before <8D> --after <8E>` (its PNGs converted to JPEG, `ffmpeg -q:v 3`, to keep the folder small, as Part A's captures) | section 17.14: the troops at a paused clock, 8D above 8E where both draw the view; the level of detail by distance; the slope at 10.33x; a phone's page |
 | `8e/clips/<id>.mp4`, `8e/clips/record-log.txt` | `clips-8e.js` | section 17.14: Play's own stepping at 10 frames a second of the clip: infantry (8D above 8E), cavalry, the limbered guns, the fade with the speed, a pause, the slope at 10.33x, a phone |
+
+## Implementation PR 8F (28 October 2026; `docs/STAGE8_SPEC.md` section 18)
+
+Made in Chromium 153.0.8010.12, the browser this session's container provides (`AUSTERLITZ_CHROME`; CI runs 141.0.7390.37, the headless
+shell Playwright 1.56 pins, which this container does not have), software WebGL, 1600 x 900 unless named. The builds: 8E's as merged
+(`d73d01154b8f6e2552fe04bfb24d05e5`, 2,537,677 bytes, `git show 94d6e46:austerlitz-command-map.html`), the "before" of every 8F comparison;
+prerequisite 1's (`7a37ab066c86779b5944406ffbd806e8`, 2,555,560 bytes, `5f59c10`), the "before" of prerequisite 2's; prerequisite 2's
+(`7dd102275472f8fa61464465fd99b593`, 2,569,416 bytes, `0c4ce62`; `3a074c5`'s `32b7b234e0ac92b4ddb07bd9d73920a6`, 2,571,096 bytes, differs in
+the self-test's check (h) alone); 8F's (`6ba949da17229530324add3c54dd94ff`, 2,607,535 bytes, `e618e5e`). Each JSON names its build (`file`
+or `build`, `md5`) and its browser. The scripts are in `tools/stage8/` (not bundled). The captures are JPEG (as 8E's), the clips H.264.
+
+| path | made by | what |
+|---|---|---|
+| `8f/pause.json`, `8f/clips/pause-8e-8f.mp4` | `pause-8f.js --before <8E> --after <prerequisite 1>` | section 18.1: the gait paused, resumed and sought by real clicks through the app's own loop, 8E above the fix |
+| `8f/mutate-pre1.json` | `mutate-8e.js --only none8e,gaitcrew,gaitrmease,gaitnoease,slopestale,pauseease,seekease,playseek` (on prerequisite 1's build) | section 18.1: the self-test's 8E block with the pause's rules broken (8E's ease at a pause, a seek eased, Play's advance counted as a seek) and four of 8E's own |
+| `8f/contact.json`, `8f/contact/c_gren-4x-*.jpg`, `8f/contact/dok-10.33x-*.jpg` | `contact-8f.js --before <prerequisite 1> --after <prerequisite 2>` | section 18.2: every pose against its instance's rest, both kits, both factors, the cases beyond the tolerance; each instance on the two builds against itself; the worst cases close on both builds |
+| `8f/contact/contact-ways.json` | `contact-8f.js` on the profile option's build | section 18.2: the chords and each foot's own profile, the same sample |
+| `8f/contact/profile-option.patch` | `git diff` of the option against prerequisite 2's first draft | section 18.2: each foot's and each hoof's own profile, measured, not drawn |
+| `8f/contact/cost-8e.json`, `8f/contact/cost-profile-every-block.json`, `cost-profile-rich-kit.json`, `cost-profile-48px.json` | `cost-8e.js [--views ...]` (on prerequisite 1's build and on the option's three builds, each named in its file) | section 18.2: the gait's CPU a frame with 8E's chords, with the profile on every block, on the rich kit's blocks, and where a man is drawn 48 px or more |
+| `8f/contact/cost-chords-before.json`, `8f/contact/cost-chords-after.json` | `cost-8e.js` on prerequisite 1's build and on 8F's, back to back, alone | sections 18.2 and 18.7: the gait's CPU a frame with 8E's chords and with prerequisite 2's |
+| `8f/mutate-pre2.json`, `8f/mutate-pre2-count.json` | `mutate-8e.js --only none8e,contact,contactsole,contactdir,contactlookup,contactbound` (on `0c4ce62`'s build), `--only none8e,contactsole` (on `3a074c5`'s) | section 18.2: the self-test's 8E block with each rule of check (h) broken; `contactsole` passed the first (the bound alone admitted 8E's soles back) and fails the second (the count) |
+| `8f/ice-margin.json` | `ice-8f.js --before <8E> --after <8F>` | section 18.3: the meres' light against the field beside them, three views, three clocks; the first draft taken apart |
+| `8f/woods-8f-8e.json`, `8f/woods/<view>-<variant>.jpg`, `8f/sheets/<view>-woods.jpg` | `woods-8f.js --tag 8e` (on 8E's build, the prototypes in its live scene), `sheets-8f.py` | section 18.4: the three prototypes against 8E's woods in six views |
+| `8f/woods-8f-8f.json`, `8f/woods/<view>-8f.jpg` | `woods-8f.js --protos "" --tag 8f` (on 8F's build) | section 18.4: 8F's woods as built, the same measures |
+| `8f/atlas-8f.json`, `8f/atlas-8f.jpg` | `atlas-8f.js` (on 8F's build) | section 18.5: the ground's atlas cells as the shader samples them, correlated with the canvas's own cell and the flipped one |
+| `8f/mutate-8f.json` | `mutate-8f.js` (on 8F's build) | section 18.6: the self-test's 8F block on the build and on copies with one rule broken |
+| `8f/mutate-css-8f.json`, `8f/mutate-css-8e.json` | `mutate-css-8f.js`, `mutate-css-8e.js` (on 8F's source) | section 18.6: `css-test.js`'s 8F and 8E blocks on the source and on copies with one rule broken |
+| `8f/selftest-local.json` | `npm run check:selftest` (on 8F's build, here) | section 18.9: the harness's report: the self-test 301 of 301 and every live block, the motion block failing here as on 8E's build in this browser (its counts pinned to CI's) |
+| `8f/motion-8e-chromium153.json` | `label-motion.js --app` (on 8E's build, here) | section 18.9: the motion block's 24 runs on 8E's build in this browser: its counts and visibility 8F's in 23 of them |
+| `8f/census.json`, `8f/census.md` | `census-8e.js <8E> <8F> --phone` | section 18.7: one whole frame per view after the eye moved, by pass, reconciled with `renderer.info`, 8E's against 8F's |
+| `8f/cost-8f.json` | `cost-8f.js --before <8E> --after <8F>` | section 18.7: the frame's calls, triangles and time as the app draws it, the near detail on and off (software WebGL: where the work went, not a device's time) |
+| `8f/stills-8f.json`, `8f/pairs/<view>.jpg` | `stills-8f.js --before <8E> --after <8F>` | section 18.8: each view on both builds, side by side (8E left), the state each reached |
+| `8f/clips/<clip>-8e-8f.mp4` | `stills-8f.js` | section 18.8: an orbit at the pheasantry's edge, a dolly toward the Satschan mere's ice, a slow pan low over the fields (8E above, 8F below) |

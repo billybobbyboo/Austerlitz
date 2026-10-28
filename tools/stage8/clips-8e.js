@@ -62,7 +62,7 @@ const SETUP=function(s){
 /* in the page: n steps of Play at speed x (0: the clock still), the last one drawn */
 const STEP=function(a){
   var x=a.x, fk=FK, don=DWELL.on; FK=2; DWELL.on=false; DWELL.st=null;   /* the dwell off for the stretch: Play at its nominal rate (a clip begun at an event's start would otherwise sit in its hold) */
-  for(var i=0;i<a.n;i++){ if(x>0){ playing=true; speed=x; setClock(dwellAdvance(1/30,MIN_PER_SEC*speed)); } else playing=false;
+  for(var i=0;i<a.n;i++){ if(x>0){ playing=true; speed=x; setClock(dwellAdvance(1/30,MIN_PER_SEC*speed),{play:true}); } else playing=false;
     window.__aimAt(); updateVisibility(); }
   playing=false; FK=fk; DWELL.on=don; DWELL.st=null; renderFrame();
   var u=units[window.__aimS.id]&&units[window.__aimS.id].block.userData;

@@ -11,14 +11,15 @@
    The views: the harness's cases that are neither fresh pages nor real pointer input (tools/visual/cases.js), and three of them at 1x and
    10.33x (as census-8d.js); --phone adds the three heavy views of the phone route on a phone's page (390 x 844, density 3, an iPhone's user
    agent).
-   node tools/stage8/census-8e.js <8D build.html> <8E build.html> [--json out.json] [--md out.md] [--only name,name] [--phone]
+   node tools/stage8/census-8e.js <8D build.html> <8E build.html> [--json out.json] [--md out.md] [--only name,name] [--phone] [--labels 8D,8E]
+   (--labels, since 8F: the two builds' names in the markdown table's head; 8D and 8E unless given)
    Measurement only; nothing is written to a source file. */
 "use strict";
 const fs=require("fs"), path=require("path"), crypto=require("crypto");
 const L=require("./lib.js");
 const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; };
-const OUT=opt("--json"), MD=opt("--md"), ONLY=opt("--only")?opt("--only").split(","):null, PHONE=argv.includes("--phone");
-const BUILDS=argv.filter((a,i)=>a.endsWith(".html")&&!["--json","--md","--only"].includes(argv[i-1]));
+const OUT=opt("--json"), MD=opt("--md"), ONLY=opt("--only")?opt("--only").split(","):null, PHONE=argv.includes("--phone"), LAB=(opt("--labels")||"8D,8E").split(",");
+const BUILDS=argv.filter((a,i)=>a.endsWith(".html")&&!["--json","--md","--only","--labels"].includes(argv[i-1]));
 if(!BUILDS.length){ console.error("usage: census-8e.js <build.html> [...] [--json out.json] [--md out.md] [--only names] [--phone]"); process.exit(2); }
 const CASES=require(path.join(L.ROOT,"tools","visual","cases.js")).filter(c=>!c.fresh&&!c.interact);
 const MULTI=["overview-field","close-sokolnitz","ph8-overview-watch"];
@@ -86,7 +87,7 @@ const same=(a,b)=>a&&b&&a.calls===b.calls&&a.tris===b.tris&&Object.keys(a.byPass
           passes:Object.keys(db.byPass).reduce((o,p)=>{ o[p]=[db.byPass[p][0]-((da.byPass[p]||[0,0])[0]),db.byPass[p][1]-((da.byPass[p]||[0,0])[1])]; return o; },{}),
           figures:da.fig&&db.fig?[db.fig[0]-da.fig[0],db.fig[1]-da.fig[1]]:null}); }); });
     res.compare={base:keys[0], rows};
-    if(MD){ const md=["| view | 8D calls / triangles | 8E calls / triangles | change | triangles x | figures' change (calls / triangles) |","|---|---|---|---|---|---|"]
+    if(MD){ const md=["| view | "+LAB[0]+" calls / triangles | "+LAB[1]+" calls / triangles | change | triangles x | figures' change (calls / triangles) |","|---|---|---|---|---|---|"]
       .concat(rows.map(r=>"| `"+r.view+"` | "+r.base[0]+" / "+r.base[1].toLocaleString("en-GB")+" | "+r.build[0]+" / "+r.build[1].toLocaleString("en-GB")+" | "+(r.dCalls>=0?"+":"")+r.dCalls+" / "+(r.dTris>=0?"+":"")+r.dTris.toLocaleString("en-GB")+" | "+r.ratio+" | "+(r.figures?(r.figures[0]>=0?"+":"")+r.figures[0]+" / "+(r.figures[1]>=0?"+":"")+r.figures[1].toLocaleString("en-GB"):"")+" |"));
       fs.writeFileSync(path.resolve(MD),md.join("\n")+"\n"); } }
   if(OUT){ fs.mkdirSync(path.dirname(path.resolve(OUT)),{recursive:true}); fs.writeFileSync(path.resolve(OUT),JSON.stringify(res,null,1)); }

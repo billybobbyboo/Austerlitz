@@ -457,7 +457,7 @@ against the visibility baselines of decision 257 (b) as §15.6 measured 8C, with
 change; (2) decision 255 (d), a hierarchy for far battle information by another means than size (a lighter plate or ink for far names, still at
 AA), prototyped and measured first, with the low views' wall of formation names its test.
 
-**Implementation PR 8E** (27 October 2026; `docs/STAGE8_SPEC.md` §17; draft PR #70 into `main`, for review): first, in commits of their own,
+**Implementation PR 8E** (27 October 2026; `docs/STAGE8_SPEC.md` §17; PR #70, merged into `main` by the owner, `94d6e46`): first, in commits of their own,
 the audit of 8D's two findings (culling's animation allowance follows the geometry drawn and the animation's definition; culling's static
 comparison requires zero differences, located) and the data task (the artillery's claims registered, graded and scoped in `appearance.js`
 `ORDNANCE` before anything is drawn from them; `check:data`'s reference moved). Then decisions 242 (a), 243 (a), 244 (a) and 245 (a): the kit at
@@ -477,6 +477,29 @@ Overview views stay over its triangle budget as they were before 8D (8E adds 0.1
 merging, as for 8D. **For the owner** (§17.16): the drivers' boundary on
 the guns on the heights (drawn as an inference, or none anywhere); the gunners beside moving pieces (Gassendi has them; not drawn); facings,
 to be reconsidered now that the troops can be judged (decision 245 (a)).
+
+**Implementation PR 8F** (28 October 2026; `docs/STAGE8_SPEC.md` §18; draft PR #71 into `main`, for review): first, in commits of their own,
+the audit of 8E's two findings: a paused clock now holds the gait drawn (8E eased it back into its stride with the clock standing) and a seek
+shows the clock's own pose at once (`5f59c10`); the feet on the ground judged each instance against itself (`0c4ce62`, `3a074c5`): the simple
+kit's own soles planted and the chords anchored at the man's middle, at no cost (the men's poses beyond 0.03 units at 4x 263 to 36 on the
+simple kit, 205 to 35 on the rich; not better for every instance, the worst at 10.33x on a crease rising 0.214 to 0.247), the cases the chords
+leave kept open with a proposed bound and their number held, each foot's own profile measured (within 0.03 at 4x) but over the animation's
+budget (0.22 to 0.35 ms a frame against 0.2), put to the owner. Then decisions 246 (a) and 247 (a) (`e618e5e`): the meres' ice by material and
+light (clearer and darker toward the middle, rimed toward the shore, a broad still variation of tone, the sky at a grazing view, the shore band
+feathered and drawn after its ice; the bright margin tuned to stand against the field about as 8E's ice stood, after the first draft's polygon
+offset was found drawing the band over the ground at the shore), the streams still, darker and less blue, the paper map's water 8E's own
+materials; the deciduous crowns airier, chosen from three prototypes measured first (perforated twig shells, opaque, drawn on both faces: 348,
+254, 348 and 254 triangles a tree against 8E's 560, 380, 560, 380; the counts, boundaries, conifers and their shares 8E's; no transparency
+introduced); a finer detail near the eye on the natural ground (a second sample of each class's own texture, anchored, faded out by 60 units,
+no new class or colour, off on a low tier). Measured here: at a pause 0 of 30 paused frames move (8E's 30 of 30); from above the meres' shore 1.00 to 1.01 times the field beside it (8E's 1.02 to 1.03); the desktop frame 380,072 triangles fewer wherever the woods are drawn (14.1% to 16.4%), the draw calls the same, every desktop view within §8.3's budget and the phone's two Overview views back within its own (1.40 million triangles against 1.62); more of the troops seen through the woods, the shimmer higher where the woods fill the view; the near detail's tone 1.000; the self-test 301 of 301; every mutation of the self-test's 8F block (17) and of `css-test.js`'s (27) failing them; `check:selftest` on CI passing in 21 to 43 minutes of its job's 60; `check:visual` on CI passing (39 cases, 250 minutes; the motion block's counts 8E's). Device acceptance pending for 8E and 8F (no owner hardware in the
+session). **For the owner** (§18.10): the feet's remaining cases against the profile option and its budget; the wheeling block that keeps
+turning after a pause (the formation model's, found on the way); 2F's atlas sampled flipped, so eight cover cells wear another row's grain
+(found on the way); the woods' shimmer and facets close to the eye; the low sun's glare on the clear ice.
+
+**Still to come in Stage 8** (none begun in 8F): **8G**, the buildings (decision 248 (a): the evidence step first, the villages around the
+cadastral street-and-yard pattern, the landmarks after research and a documented data task); **8H**, the integration (the device runs after, the effects-off bracket, the open polish findings and the phase's message clear of the view switch); and the two
+follow-ups commissioned with 8D (above), decision 258 (b)'s counter placement while the view moves and decision 255 (d)'s far-label prototype.
+Decision 245 (a)'s facings are still to be reconsidered now that the troops can be judged.
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**

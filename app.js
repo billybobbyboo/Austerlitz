@@ -639,6 +639,7 @@ function init(){
   scene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);
 
   world=buildWorld(scene);
+  groundDetail(!lowTier);   /* Stage 8, 8F (decision 247 (a)): the near ground's detail, not on a low tier (decision 236: the phone's frame as P5 measured it) */
   setFXEnabled(true);
 
   overlayRoot=new THREE.Group(); scene.add(overlayRoot);
@@ -962,7 +963,9 @@ function kitPart(geo,p,s,rot,col,part){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot
    and part attributes (the objects and their versions) and the animation's definition (ANIM.ver, which animDefine moves whenever the table
    changes); the culling bounds are refreshed whenever any of these differ from the ones they were computed from (cullTest) */
 var ANIM={
-  MAN:{HIP:0.62, KNEE:0.33, FOOT:0.0, HEEL:-0.065, TOE:0.135, AH:0.42, AK:0.55, AA:0.30, SHY:1.10, SHZ:0.02},
+  MAN:{HIP:0.62, KNEE:0.33, FOOT:0.0, HEEL:-0.065, TOE:0.135, AH:0.42, AK:0.55, AA:0.30, SHY:1.10, SHZ:0.02,
+    HEEL0:-0.09, TOE0:0.09},   /* since 8F's prerequisite 2 (the audit of 8E: the contact): the simple kit's soles, its legs' boxes 0.18 deep (HEEL0, TOE0);
+                                  the rich kit's feet are HEEL and TOE. Until 8F the hook planted the rich kit's on both */
   HORSE:{HIP:0.62, ZF:0.40, ZH:-0.40, L:0.62, HZ:0.05, AW:0.38, AT:0.55, WALK:[0.25,0.75,0,0.5], TROT:[0,0.5,0.5,0]},
   WHEEL:{20:{r:kitArtR("gun"), n:12}, 21:{r:kitArtR("limber"), n:10}},   /* their axles at (y r, z 0) in the gun's and the limber's own frames (kitArtR); n the
                                                                           wheel's symmetry, its spokes', its rim's, its hub's and the simple disc's (kitWheel, kitDisc) */
@@ -974,13 +977,17 @@ var ANIM={
 /* rotation of (y, z) about the joint (oy, oz) by a (positive: a point below the joint goes back, -z) */
 function animRot(y,z,oy,oz,a,o){ var c=Math.cos(a), s=Math.sin(a), qy=y-oy, qz=z-oz; o[0]=oy+qy*c-qz*s; o[1]=oz+qy*s+qz*c; return o; }
 var _anT=[0,0], _anU=[0,0];
-/* the man's two feet, posed (each sole's heel and toe, HEEL and TOE from the foot's rest point), and the rise or dip that keeps the lowest of
-   the four against the ground where it stands at rest (an edge moved ahead against the slope ahead of him, sa, one moved back against the
-   slope behind him, sb): one sole's edge planted, none sunk by the gait */
-function animManRoot(f,kL,kR,sa,sb){ var M=ANIM.MAN, g=-1e9; if(sb===undefined) sb=sa;
-  [M.HEEL,M.TOE].forEach(function(z0){
-    animRot(M.FOOT,z0,M.KNEE,0,kL,_anT); animRot(_anT[0],_anT[1],M.HIP,0,-f,_anT); var dL=_anT[1]-z0; g=Math.max(g,(dL>0?sa:sb)*dL-(_anT[0]-M.FOOT));
-    animRot(M.FOOT,z0,M.KNEE,0,kR,_anU); animRot(_anU[0],_anU[1],M.HIP,0,f,_anU); var dR=_anU[1]-z0; g=Math.max(g,(dR>0?sa:sb)*dR-(_anU[0]-M.FOOT)); });
+/* the man's two feet, posed (each sole's heel and toe from the foot's rest point: the rich kit's HEEL and TOE, the simple kit's HEEL0 and TOE0,
+   by the knee's uniform, which is the level's: kn 1 the rich, 0 the simple; since 8F's prerequisite 2, until then the rich kit's on both), and
+   the rise or dip that keeps the lowest of the four against the ground where it stands at rest: the ground along him the two chords from his
+   middle (ahead of it the slope ahead, sa; behind it the slope behind, sb: animChord), each edge's posed place against its rest place on it
+   (since 8F's prerequisite 2; until then an edge moved ahead took the slope ahead whichever side of his middle it stood, so a toe drawn back
+   and a heel brought forward were judged against the wrong side's chord): one sole's edge planted, none sunk by the gait */
+function animChord(sa,sb,z){ return z>=0?sa*z:sb*z; }
+function animManRoot(f,kL,kR,sa,sb,kn){ var M=ANIM.MAN, g=-1e9, k=kn===undefined?1:kn; if(sb===undefined) sb=sa;
+  [M.HEEL0+(M.HEEL-M.HEEL0)*k,M.TOE0+(M.TOE-M.TOE0)*k].forEach(function(z0){
+    animRot(M.FOOT,z0,M.KNEE,0,kL,_anT); animRot(_anT[0],_anT[1],M.HIP,0,-f,_anT); g=Math.max(g,animChord(sa,sb,_anT[1])-animChord(sa,sb,z0)-(_anT[0]-M.FOOT));
+    animRot(M.FOOT,z0,M.KNEE,0,kR,_anU); animRot(_anU[0],_anU[1],M.HIP,0,f,_anU); g=Math.max(g,animChord(sa,sb,_anU[1])-animChord(sa,sb,z0)-(_anU[0]-M.FOOT)); });
   return g; }
 /* the horse's four legs' forward angles, and the rise or dip that keeps its lowest hoof where it stands at rest */
 function animHorseF(ph,amp,trot,out){ var H=ANIM.HORSE, t=Math.max(0,Math.min(1,trot||0)), a=amp*(H.AW+(H.AT-H.AW)*t);
@@ -1007,7 +1014,7 @@ function animAt(k,x,y,z,ph,amp,out,o){
     if(p.kind==="shin"){ animRot(y,z,M.KNEE,0,lft?kL:kR,r); y=r[0]; z=r[1]; }
     animRot(y,z,M.HIP,0,lft?-f:f,r); y=r[0]; z=r[1]; }
   else if(p.kind==="arm"){ animRot(y,z,M.SHY,M.SHZ,amp*M.AA*s,r); y=r[0]; z=r[1]; }
-  out[1]=y+animManRoot(f,kL,kR,sl,sh); out[2]=z; return out;
+  out[1]=y+animManRoot(f,kL,kR,sl,sh,kn); out[2]=z; return out;
 }
 /* the poses the hook can draw of the vertex (x, y, z) of part k, for an oracle (the self-test's, runtime-test.js's, cullmotion.js's: their own
    sampling, against which animEnv's bound is judged): n phases at amp 1 with every other uniform at its extremes and between, the slope at its
@@ -1424,7 +1431,7 @@ function makeBlock(f,id){
      Pratzeberg. Men and horses now stand with gravity; guns, limbers and tents keep the slope. */
   var _wp=new THREE.Vector3(), _up0=new THREE.Vector3(0,1,0), _nb=new THREE.Vector3(), _inv=new THREE.Matrix4(),
       _gl=new THREE.Vector3(), _qt0=new THREE.Quaternion(), _qc=new THREE.Quaternion(), _qa=new THREE.Quaternion(), _one=new THREE.Vector3(1,1,1);
-  function seatPrep(){ g.updateMatrixWorld(true); _inv.copy(g.matrixWorld).invert(); }
+  function seatPrep(){ g.updateMatrixWorld(true); _inv.copy(g.matrixWorld).invert(); _gH=groundHeights(); }   /* 8F: the drawn ground's compact heights, for the slopes */
   function seatLocal(lx,lz,out){
     _wp.set(lx,0,lz).applyMatrix4(g.matrixWorld);
     _wp.y=groundY(_wp.x,_wp.z);
@@ -1434,12 +1441,16 @@ function makeBlock(f,id){
      turned by an angle whose sine and cosine are rs and rc: two chords of the drawn ground (groundY) along its facing from where it stands,
      into out[o] and out[o+1], two lookups a figure: a man's ahead of him and behind him over his soles' travel at full swing (GAIT.REACH), a
      horse's to the far edge of his fore hooves' travel and to the far edge of his hind hooves' (HORSE.ZF and ZH from his root, and the
-     reach); by the block's scale, so in the figure's own units */
-  var _qw=new THREE.Quaternion(), _fw=new THREE.Vector3(), _yS=0, _yC=1;
-  function slopes(rs,rc,horse,out,o){ var fx=_yS*rc+_yC*rs, fz=_yC*rc-_yS*rs, k=g.scale.x||1, x=_wp.x, z=_wp.z, y=_wp.y;
-    if(!horse){ var a=GAIT.REACH.man*k; out[o]=(groundY(x+fx*a,z+fz*a)-y)/a; out[o+1]=(y-groundY(x-fx*a,z-fz*a))/a; return; }
+     reach); by the block's scale, so in the figure's own units. Since 8F's prerequisite 2 the drawn ground is read through its compact heights
+     (groundYFast: groundY's values, cheaper a lookup). Each foot's and each hoof's own profile (five lookups a foot, three a hoof), which brings
+     the planted edges within 0.03 units at 4x, was measured and is not drawn: on every block it costs 0.22 to 0.35 ms a frame and, where a man
+     is drawn 48 px or more, still up to 0.31 in the closest views, against the animation's budget of 0.2 (section 8.3;
+     docs/STAGE8_SPEC.md section 18: the cases these chords leave, kept open with their proposed bounds) */
+  var _qw=new THREE.Quaternion(), _fw=new THREE.Vector3(), _yS=0, _yC=1, _gH=null;
+  function slopes(rs,rc,horse,out,o){ var fx=_yS*rc+_yC*rs, fz=_yC*rc-_yS*rs, k=g.scale.x||1, x=_wp.x, z=_wp.z, y=_wp.y, GH=_gH;
+    if(!horse){ var a=GAIT.REACH.man*k; out[o]=(groundYFast(GH,x+fx*a,z+fz*a)-y)/a; out[o+1]=(y-groundYFast(GH,x-fx*a,z-fz*a))/a; return; }
     var H=ANIM.HORSE, f=(H.ZF+GAIT.REACH.horse)*k, h=(GAIT.REACH.horse-H.ZH)*k;
-    out[o]=(groundY(x+fx*f,z+fz*f)-y)/f; out[o+1]=(y-groundY(x-fx*h,z-fz*h))/h; }
+    out[o]=(groundYFast(GH,x+fx*f,z+fz*f)-y)/f; out[o+1]=(y-groundYFast(GH,x-fx*h,z-fz*h))/h; }
   /* the block's rotation is tilt x yaw; this is the local rotation that undoes the tilt and keeps the yaw */
   function uprightQuat(){
     _nb.copy(_up0).applyQuaternion(g.quaternion).normalize();
@@ -1840,11 +1851,11 @@ function animGLSL(){
     "    if(anK<1.5||(anK>12.5&&anK<13.5)){ if(anK>12.5) anQ=anRot(anQ,vec2("+f(M.KNEE)+",0.0),anKL); anQ=anRot(anQ,vec2("+f(M.HIP)+",0.0),-anFw); }",
     "    else if(anK<2.5||anK>13.5){ if(anK>13.5) anQ=anRot(anQ,vec2("+f(M.KNEE)+",0.0),anKR); anQ=anRot(anQ,vec2("+f(M.HIP)+",0.0),anFw); }",
     "    else if(anK<3.5) anQ=anRot(anQ,vec2("+f(M.SHY)+","+f(M.SHZ)+"),anA*"+f(M.AA)+"*anS);",
-    "    anD=-1e9; for(int anE=0;anE<2;anE++){ float anZe=anE==0?"+f(M.HEEL)+":"+f(M.TOE)+";",   /* each sole's heel and toe */
+    "    anD=-1e9; for(int anE=0;anE<2;anE++){ float anZe=anE==0?mix("+f(M.HEEL0)+","+f(M.HEEL)+",anKn):mix("+f(M.TOE0)+","+f(M.TOE)+",anKn);",   /* each sole's heel and toe, the kit's own (8F's prerequisite 2) */
     "      vec2 anFL=anRot(anRot(vec2("+f(M.FOOT)+",anZe),vec2("+f(M.KNEE)+",0.0),anKL),vec2("+f(M.HIP)+",0.0),-anFw);",
     "      vec2 anFR=anRot(anRot(vec2("+f(M.FOOT)+",anZe),vec2("+f(M.KNEE)+",0.0),anKR),vec2("+f(M.HIP)+",0.0),anFw);",
-    "      float anDL=anFL.y-anZe, anDR=anFR.y-anZe;",   /* a sole's edge moved ahead takes the slope ahead of him (aSl.x), behind, the slope behind (aSl.y) */
-    "      anD=max(anD,max((anDL>0.0?anSl.x:anSl.y)*anDL-(anFL.x-"+f(M.FOOT)+"),(anDR>0.0?anSl.x:anSl.y)*anDR-(anFR.x-"+f(M.FOOT)+"))); }",
+    "      float anCz=anZe>=0.0?anSl.x*anZe:anSl.y*anZe;",   /* the ground along him the two chords from his middle: ahead of it the slope ahead (aSl.x), behind it the slope behind (aSl.y); each edge's posed place against its rest place on it (8F's prerequisite 2) */
+    "      anD=max(anD,max((anFL.y>=0.0?anSl.x*anFL.y:anSl.y*anFL.y)-anCz-(anFL.x-"+f(M.FOOT)+"),(anFR.y>=0.0?anSl.x*anFR.y:anSl.y*anFR.y)-anCz-(anFR.x-"+f(M.FOOT)+"))); }",
     "  }",
     "  transformed.y=anQ.x+anD; transformed.z=anQ.y;",
     "}"].join("\n");
@@ -3452,6 +3463,7 @@ function startPhaseTransition(ph,instant,moveCam){
 function setClock(t,opts){
   opts=opts||{};
   clock=clampT(t);
+  if(!opts.play) GAIT.seek++;   /* Stage 8, 8F's prerequisite: every move of the clock but Play's own advance (tickClock) is a seek: the gait shows that clock's pose at once */
   knowAtClock();   /* Stage 5E (decision 92): the Command view's reading at the clock */
   var ph=phaseAt(clock);
   if(ph!==curPhase || opts.force){
@@ -4801,6 +4813,7 @@ function setMode(m){
   world.dome.visible=!staff;
   syncLandscapeLayers();
   renderer.shadowMap.enabled=!staff;
+  waterPresentation(staff);   /* Stage 8, 8F (decision 246 (a)): the landscape's ice and streams (8F's materials), or the paper map's (8E's) */
   world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
   (world.iceRims||[]).forEach(function(r2){ r2.visible=!staff; });   /* Stage 4E: the shore ice is the landscape's */
 
@@ -5746,11 +5759,23 @@ var WHEEL={cav:0.085, mixed:0.062, inf:0.050, guard:0.050, art:0.028, hq:0.10};
      most half a spoke's interval as the fade ends (an angle scaled down with the fade would step back by a fraction of an interval at
      every interval);
    - the trot: above TROT_KMH of modelled speed, eased in the same way;
+   - a clock that stops and a clock that is moved (Stage 8, implementation PR 8F's prerequisite: the audit of 8E). The ease runs only while
+     the clock moves (Play's own advance, tickClock, its rate above 0). A clock that stops without being moved (Pause, stopPlay; the end of
+     the day; the dwell's hold) holds the pose drawn in the frame before it stopped: the amplitude, the trot and with them the riders' and
+     drivers' beat and the wheels' angles stay where they were, the phase being the clock's, so nothing of the gait moves while the clock
+     stands (decision 244 (a): "A paused clock must hold the pose still"); until 8F the amplitude eased on toward the paused clock's rule,
+     full, so a formation faded out at 4x stepped back into its stride after the Pause, the clock standing. A clock that is moved (a seek:
+     setClock from anything but Play's advance, so the slider, the keys, an event, a phase or act, a theme, a tour stop, the opening's step,
+     a harness case) shows that clock's own pose at once, the amplitude and the trot the rule's at the clock and the rate (full where the
+     formation marches at a paused clock, as before), with no ease, so a minute sought shows one pose however it was reached. Reduced motion
+     still stops the gait at once, paused or not;
    - the slopes: each man's and horse's own (aSl, written at each seating of a formation the gait animates, in view or not: two chords of the
      drawn ground along the way he faces from where he stands, over his feet's travel, a man's ahead of him and behind him, a horse's to his
      fore and to his hind hooves' far edges: layoutFigs), so a ring of riders on a knoll, a team turned to the rear or a gunner at his post
      plants as a file facing the front does. */
 var GAIT={STRIDE:{man:6.6, horse:16, team:12}, ROLL:2, FULL:3.2, NONE:4.8, KMH:1, TROT_KMH:8, EASE:0.22, EPS:1e-3,
+  seek:0,   /* the seeks so far: setClock counts every move of the clock but Play's own advance (opts.play); a block that has not seen the latest
+               takes the clock's own pose at once (gaitStep) */
   REACH:{man:0.3, horse:0.3},   /* the slopes' reach beyond a man's rest point and a horse's hooves' (layoutFigs: the slopes): their travel at full swing */
   SLOPE_STEP:0.1, SLOPE_TURN:0.01,   /* while the clock moves, the slopes taken again once a block has moved a tenth of a unit (a third of the reach) or
                                         turned by about a degree (the quaternion's components' summed change) */
@@ -5793,17 +5818,19 @@ function gaitStep(rec,id){
     rec.block.traverse(function(o){ if(o.isInstancedMesh&&o.userData.anim&&o.userData.gaitKind) G.meshes.push(o); });
     G.meshes.forEach(function(m){ var st=GAIT.STRIDE[m.userData.gaitKind==="gear"?"team":m.userData.gaitKind]; if(st&&(!G.fastest||st<G.fastest)) G.fastest=st; }); }
   if(!G.meshes.length) return;
-  var rate=clockRate(), fv=gaitFastest(rec,G);
-  /* nothing changed since the last frame (the clock, its rate, reduced motion and the parts drawn the same, the amplitude and the trot arrived,
-     no slope left behind at a still clock): nothing computed, written or allocated, as when only the eye moves */
-  if(G.t===clock&&G.rate===rate&&G.rm===RM&&G.fv===fv&&G.amp===G.want&&G.trot===G.trotW&&!(u.slopeStale&&rate===0)) return;
-  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv;
+  var rate=clockRate(), fv=gaitFastest(rec,G), sk=G.seek!==GAIT.seek;
+  /* nothing changed since the last frame (no seek, the clock, its rate, reduced motion and the parts drawn the same, the amplitude and the
+     trot arrived, no slope left behind at a still clock): nothing computed, written or allocated, as when only the eye moves */
+  if(!sk&&G.t===clock&&G.rate===rate&&G.rm===RM&&G.fv===fv&&G.amp===G.want&&G.trot===G.trotW&&!(u.slopeStale&&rate===0)) return;
+  G.t=clock; G.rate=rate; G.rm=RM; G.fv=fv; G.seek=GAIT.seek;
   var L=rec.f.track?legAt(id,clock):null, lg=L?gaitLegOf(L,_glo):null, want=0, trot=0, c=0;
   if(lg&&!RM&&lg.kmh>=GAIT.KMH){ c=rate*lg.mpm/fv; want=clamp01((GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL)); trot=lg.kmh>GAIT.TROT_KMH?1:0; }
+  /* the clock standing and not moved (Pause, the day's end, the dwell's hold): the pose drawn held, the amplitude and the trot where they are */
+  if(rate===0&&!sk&&!RM){ want=G.amp; trot=G.trot; }
   G.want=want; G.c=c; G.trotW=trot;
   if(want===0&&G.amp===0&&G.trot===0&&G.drawn===0) return;   /* at rest, its uniforms at rest already: nothing to write */
   if((want>0||G.amp>0)&&!GAIT.noSlopes&&u.layout&&(!u.slopeSeat||(u.slopeStale&&rate===0))) u.layout(u.sw,u.sd);   /* the slopes written as the gait begins, and taken again where the clock stopped with them behind (layoutFigs) */
-  var e=RM?1:ease(GAIT.EASE);   /* under reduced motion what moves stops at once (S-6), the gait with it */
+  var e=(RM||sk)?1:ease(GAIT.EASE);   /* under reduced motion what moves stops at once (S-6), the gait with it; a seek shows the clock's own pose at once */
   if(G.amp!==want){ G.amp+=(want-G.amp)*e; if(Math.abs(want-G.amp)<GAIT.EPS) G.amp=want; else settling=true; }
   if(G.trot!==trot){ G.trot+=(trot-G.trot)*e; if(Math.abs(trot-G.trot)<GAIT.EPS) G.trot=trot; else settling=true; }
   var amp=G.amp, D=amp>0?gaitDistOf(id,L):0; G.drawn=amp;
@@ -8597,8 +8624,8 @@ function tickClock(dtMs){
   if(!playing) return;
   if(DWELL.expect!==null&&Math.abs(clock-DWELL.expect)>1e-9) dwellReset();   /* the clock was moved by other means */
   var nt=dwellAdvance(dtMs/1000,MIN_PER_SEC*speed);
-  if(nt>=T_MAX){ setClock(T_MAX); stopPlay(); return; }
-  setClock(nt); DWELL.expect=clock;
+  if(nt>=T_MAX){ setClock(T_MAX,{play:true}); stopPlay(); return; }   /* Play's own advance (opts.play): not a seek, so the gait eases on and holds where the clock stops */
+  setClock(nt,{play:true}); DWELL.expect=clock;
 }
 /* ---- Stage 4D: the dwell (docs/STAGE4_SPEC.md section D.3, item 2; owner decision 75) ----
    While the clock plays, at each event's start (the distinct start minutes of EVENTS) the clock eases down to a stop, holds
@@ -12829,7 +12856,7 @@ var AUSTERLITZ_DEBUG=(function(){
            without them the pause would test nothing), then paused, one frame: every animated block's slopes exactly a fresh seating's at that
            clock (layoutFigs, asked) */
         setClock(545,{instant:true,force:true,camera:false}); settleAll(); var sk0=SEAT_STATS.slopes, sb0=SEAT_STATS.blocks, sw0=SEAT_STATS.want, fk2=FK;
-        playing=true; speed=0.5; FK=1; DWELL.st=null; for(var pi=0;pi<28;pi++){ setClock(dwellAdvance(pi<24?1/60:1/1000,MIN_PER_SEC*speed)); updateVisibility(); } FK=fk2;
+        playing=true; speed=0.5; FK=1; DWELL.st=null; for(var pi=0;pi<28;pi++){ setClock(dwellAdvance(pi<24?1/60:1/1000,MIN_PER_SEC*speed),{play:true}); updateVisibility(); } FK=fk2;   /* Play's own advance (8F: not a seek) */
         var sTook=SEAT_STATS.slopes-sk0, sSeat=SEAT_STATS.blocks-sb0, sWant=SEAT_STATS.want-sw0, stale=shown().filter(function(id){ return units[id].block.userData.slopeStale; }).length;
         playing=false; updateVisibility(); var pBad=0, pN=0, pP=new THREE.Vector3(), pQ=new THREE.Quaternion();
         /* each animated block's slopes against a fresh seating at the pose they were taken at (the block's turn and place, slSig: the seating
@@ -12848,10 +12875,11 @@ var AUSTERLITZ_DEBUG=(function(){
           !eBad.length, eT.join("; ")+(eBad.length?"; WRONG: "+eBad.slice(0,5).join("; "):""));
 
         /* (f) the amplitude: the rule at each speed, a formation's parts together, none halted, under 1 km/h or under reduced motion; eased, then
-           idle */
+           idle. Since 8F's prerequisite the paused clock's rule (full) is that of a clock sought while paused (a pause after Play holds the pose
+           drawn: (k)), so the paused case is reached by a seek */
         var fBad=[], fT=[], nJ=0, drift=0, full=0, none=0, part=0;
         [545,640,830,905,300].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); settle(4,true);
-          [0,0.5,1,2,4].forEach(function(x){ playing=x>0; if(x) speed=x; DWELL.st=null; settle(40,true);
+          [0,0.5,1,2,4].forEach(function(x){ playing=x>0; if(x) speed=x; DWELL.st=null; if(!x) setClock(t,{instant:true,camera:false}); settle(40,true);
             shown().forEach(function(id){ var G=units[id].block.userData.gait; if(!G) return; var lg=legT(id,t), want=0, fs=fastestOf(id);
               if(lg&&lg.kmh>=GAIT.KMH){ var c=x*MIN_PER_SEC*lg.mpm/fs; want=Math.max(0,Math.min(1,(GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL))); if(want===1) full++; else if(want===0) none++; else part++; }
               else if(lg) drift++;
@@ -12873,6 +12901,128 @@ var AUSTERLITZ_DEBUG=(function(){
         ck("the gait's amplitude (decision 244 (a)): full to 3.2 cycles a second on screen, none from 4.8, in proportion between, by the formation's fastest-cycling part, its parts together; none halted, under 1 km/h or under reduced motion (at once, S-6); a change of speed eased (nine tenths in 0.15 s), then idle",
           !fBad.length, fT.join("; ")+(fBad.length?"; WRONG: "+fBad.slice(0,6).join("; "):""));
 
+        /* (k) Stage 8, 8F's prerequisite (the audit of 8E: Pause after the gait had faded out at 4x left it easing back to full while the clock
+           stood): the pause, by the app's own path. Its loop (loop) is run one frame at a time on a clock of the test's (performance.now answers
+           it, 30 frames a second, as the 8C block drives it), each frame asked for (requestRender) so that the gait is stepped in it; Play, the
+           speed and Pause by their own buttons (a click: togglePlay, setSpeed, stopPlay); the dwell off by its own switch while these play (its
+           hold is judged apart). For an infantry division, a cavalry corps and a limbered battery marching, three ways into the pause: from
+           half speed (the gait full), in the fade (the speed raised to 4x and paused one frame into the ease) and faded out (4x until none).
+           Read at the last frame played, the first frame paused and five frames more: every kit mesh's gait uniforms of the formation exactly
+           as last played (the amplitude, the phase, the trot and the wheels' angles; the riders' and drivers' beat is their horses' phase); the
+           frame and the sun's depth map near it, drawn with that formation's block alone (the blocks' own eases, shape and turn, are the
+           formation model's, not the gait's), the same in every paused frame, and the first paused frame's against the last played reported
+           (the slopes taken again where the clock stopped with them behind: the seating, 8E's rule); the formation drawn and casting in them.
+           Resumed by the button, the amplitude moves on from where it was held toward the speed's rule, never past it, and the phase is the
+           clock's. Then a seek (the button stepping ten minutes on) shows that clock's own pose at once, the same as that clock reached from
+           another; the dwell's hold (the dwell on, 4x into an event's start) keeps every formation's pose in its frames; reduced motion,
+           paused, stops the gait at once, and turned off again nothing steps until the clock moves */
+        var kBad=[], kT=[], kJ=0, kE=0, kNow=performance.now, kOwn=Object.prototype.hasOwnProperty.call(performance,"now"), kRaf=window.requestAnimationFrame, kTm=kNow.call(performance), kDw=DWELL.on, kSp=speed;
+        var kRender=renderer.render;
+        function KF(n){ for(var i=0;i<(n||1);i++){ kTm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=kRender; } } }   /* the app's frame, its draw skipped (kRead draws) */
+        function kClick(sel){ var b=document.querySelector(sel); if(!b) throw new Error("no "+sel); b.click(); }
+        function kUni(id){ var G=units[id].block.userData.gait, o=[]; (G?G.meshes:[]).forEach(function(m){ var U=m.userData.anim; o.push([U.uAnimAmp.value,U.uAnimPhase.value,U.uAnimTrot.value,U.uAnimRollG.value,U.uAnimRollL.value]); }); return o; }
+        function kAll(){ var o={}; shown().forEach(function(id){ o[id]=kUni(id); }); return o; }
+        function kEq(a,b){ return JSON.stringify(a)===JSON.stringify(b); }
+        function kAmp(id){ var G=units[id].block.userData.gait; return G?G.amp:-1; }
+        /* the block's own state, which the formation model eases in real time (its turn toward its heading at its arm's rate, WHEEL, and its
+           shape) and the seating writes (the instances, the slopes): a frame is judged against another only where this is the same in both */
+        function kSig(id){ var b=units[id].block, u=b.userData, o=[b.position.x,b.position.y,b.position.z,b.quaternion.x,b.quaternion.y,b.quaternion.z,b.quaternion.w,b.scale.x,u.sw,u.sd];
+          (u.lod||[]).forEach(function(m){ var SA=m.geometry.attributes.aSl; o.push(m.instanceMatrix.version,m.count,SA?SA.version:-1); }); return o; }
+        /* the same within 1e-9 (the block's turn, eased toward its heading without end, moves its quaternion in the last bits while it stands:
+           nothing the seating, at 2e-5, or the drawing sees) and the instances, their count and slopes the same versions */
+        function kSame(a,b){ if(a.length!==b.length) return false; for(var i=0;i<a.length;i++) if(i<10?Math.abs(a[i]-b[i])>1e-9:a[i]!==b[i]) return false; return true; }
+        function kYaw(id){ return units[id].yaw||0; }
+        /* the frame and the sun's depth map near the formation, drawn with its block alone on the ground (the lights, the sky and the drawn
+           ground kept; every other object of the scene hidden: the other blocks, whose own eases run, and the overlays, whose phase fade is a
+           tween of real time); alone: false hides the block too */
+        function kRead(id,alone){ var hid=[], r0=units[id];
+          scene.children.forEach(function(o){ if(o.visible&&!o.isLight&&o!==sun.target&&o!==world.ground&&o!==world.apron&&o!==world.dome&&(alone===false||o!==r0.block)){ o.visible=false; hid.push(o); } });
+          try{ var F=grab(), S=null, map=(sun.castShadow&&renderer.shadowMap.enabled)?sun.shadow.map:null;
+            if(map){ var c=new THREE.Vector3(); r0.block.getWorldPosition(c); c.project(sun.shadow.camera); var rw=Math.min(192,map.width), rh=Math.min(192,map.height),
+                rx=Math.max(0,Math.min(map.width-rw,Math.round((c.x*0.5+0.5)*map.width-rw/2))), ry=Math.max(0,Math.min(map.height-rh,Math.round((c.y*0.5+0.5)*map.height-rh/2)));
+              S=new Uint8Array(rw*rh*4); renderer.readRenderTargetPixels(map,rx,ry,rw,rh,S); }
+            return {F:F,S:S}; }
+          finally{ hid.forEach(function(o){ o.visible=true; }); } }
+        var KS=[{id:"sthilaire", kind:"infantry", t:532, dir:[0.7,0.35,0.2], r:34},
+                {id:"guard_cav", kind:"cavalry", t:636, dir:[0.95,0.22,0.22], r:34},
+                {id:"heightguns", kind:"limbered artillery", t:830, dir:[0.95,0.22,0.22], r:26}];
+        try{
+          performance.now=function(){ return kTm; }; window.requestAnimationFrame=function(){ return 0; };
+          KS.forEach(function(S0){ var id=S0.id;
+            ["half speed","in the fade","faded out"].forEach(function(way,wi){
+              if(playing) kClick("#play");   /* stopped, by the button */
+              dwellSet(false); kClick('.spd-btn[data-s="0.5"]');
+              setClock(S0.t,{instant:true,force:true,camera:false}); finishTween(); aim(posNow(id),S0.dir,S0.r); settleAll(); lastFrame=kTm;
+              var blk=units[id].block; if(!blk.visible){ kBad.push(S0.kind+" ("+id+"): not shown at "+fmtClock(clock)); return; }
+              if(S0.kind==="limbered artillery"&&!(blk.userData.limbered&&blk.userData.limbered.visible)) kBad.push(id+": not limbered at "+fmtClock(clock));
+              kClick("#play"); KF(12);
+              if(wi>0){ kClick('.spd-btn[data-s="4"]'); KF(1); if(wi===2){ var nF=0; while(kAmp(id)>0&&nF<60){ KF(1); nF++; } } }
+              var a0=kAmp(id), lg=gaitLeg(id,clock);
+              if(!lg||lg.kmh<GAIT.KMH) kBad.push(S0.kind+" ("+id+") "+way+": not marching at "+fmtClock(clock));
+              if(wi===0&&a0!==1) kBad.push(S0.kind+" "+way+": the amplitude "+a0+" before the pause (full expected)");
+              if(wi===1&&!(a0>0.05&&a0<0.95)) kBad.push(S0.kind+" "+way+": the amplitude "+a0+" before the pause (in the fade expected)");
+              if(wi===2&&a0!==0) kBad.push(S0.kind+" "+way+": the amplitude "+a0+" before the pause (none expected)");
+              var U0=kUni(id), R0=kRead(id), t0=clock, sl0=SEAT_STATS.slopes;
+              if(wi===0){ var Rn=kRead(id,false), dFr=diff(R0.F,Rn.F), dSh=R0.S&&Rn.S?diff(R0.S,Rn.S):-1;
+                if(!(dFr>0)) kBad.push(S0.kind+": not drawn in the view read"); if(R0.S&&!(dSh>0)) kBad.push(S0.kind+": casts nothing in the depth map read");
+                kT.push(S0.kind+" ("+id+", "+(blk.userData.lodRich?"rich":"simple")+"): "+dFr+" pixels and "+dSh+" texels its own"); }
+              kClick("#play");   /* Pause */
+              if(playing){ kBad.push(S0.kind+" "+way+": the button did not pause"); return; }
+              var g0=kSig(id), y0=kYaw(id);
+              KF(1); var U1=kUni(id), R1=kRead(id), g1=kSig(id), took=SEAT_STATS.slopes-sl0, d01=diff(R0.F,R1.F), s01=R0.S&&R1.S?diff(R0.S,R1.S):0;
+              if(clock!==t0) kBad.push(S0.kind+" "+way+": the clock moved at the pause");
+              if(!kEq(U0,U1)) kBad.push(S0.kind+" "+way+": the first paused frame's gait is not the last played ("+JSON.stringify(U0[0])+" against "+JSON.stringify(U1[0])+")");
+              if(kSame(g0,g1)&&(d01||s01)) kBad.push(S0.kind+" "+way+": the block as it was, its gait as last played, yet the first paused frame differs from the last played by "+d01+" pixels and "+s01+" texels");
+              var worst=0, sw=0, judged=0, eased=0;
+              for(var k=0;k<5;k++){ KF(1); var Uk=kUni(id), Rk=kRead(id), gk=kSig(id);
+                if(!kEq(U1,Uk)) kBad.push(S0.kind+" "+way+": paused frame "+(k+2)+"'s gait moved (the amplitude "+U1[0][0]+" to "+Uk[0][0]+")");
+                if(!kSame(g1,gk)){ eased++; continue; }   /* the block's own ease moved it: its frame not the gait's to judge */
+                judged++; worst=Math.max(worst,diff(R1.F,Rk.F)); sw=Math.max(sw,R1.S&&Rk.S?diff(R1.S,Rk.S):0); }
+              if(worst||sw) kBad.push(S0.kind+" "+way+": paused, the block as it was, the frame moved by "+worst+" pixels and the depth map by "+sw+" texels");
+              kJ+=judged; kE+=eased;
+              kT.push(S0.kind+" "+way+" (the amplitude "+(+a0.toFixed(4))+" at "+fmtClock(t0)+"): the first paused frame's gait the last played's, then 5 frames the same"+(judged?", "+judged+" of them drawn and cast as the first":"")+
+                (eased?", "+eased+" with the block still wheeling ("+(+(kYaw(id)-y0).toFixed(4))+" rad since the pause: WHEEL, the formation model's)":"")+"; the first against the last played "+(kSame(g0,g1)?"the same block, ":"")+d01+" pixels and "+s01+" texels ("+took+" seatings taking the slopes)");
+              /* resumed by the button: on from the amplitude held toward the speed's rule, never past it; the phase the clock's */
+              var held=U1[0][0]; kClick("#play"); KF(1); var Ur=kUni(id), ar=Ur[0][0], c=clockRate()*lg.mpm/fastestOf(id), want=lg.kmh>=GAIT.KMH?Math.max(0,Math.min(1,(GAIT.NONE-c)/(GAIT.NONE-GAIT.FULL))):0;
+              if(!(clock>t0)) kBad.push(S0.kind+" "+way+": resumed, the clock did not move");
+              if(held===want?ar!==held:!((ar-held)*(want-held)>0&&Math.abs(ar-want)<Math.abs(held-want)&&Math.abs(ar-want)>1e-6)) kBad.push(S0.kind+" "+way+": resumed, the amplitude "+ar+" from "+held+" toward "+want+" (eased on from where it was held expected)");
+              var Dk=distT(id,clock); units[id].block.userData.gait.meshes.forEach(function(m){ var U=m.userData.anim, st=GAIT.STRIDE[m.userData.gaitKind==="gear"?"team":m.userData.gaitKind], ph=2*Math.PI*((Dk/st)-Math.floor(Dk/st));
+                if(U.uAnimAmp.value>0&&Math.abs(U.uAnimPhase.value-ph)>1e-6&&Math.abs(Math.abs(U.uAnimPhase.value-ph)-2*Math.PI)>1e-6) kBad.push(S0.kind+" "+way+": resumed, the phase not the clock's"); });
+              KF(2); kClick("#play");
+              /* a seek after the faded pause: the next ten minutes by the button, the clock's own pose at once (full where it marches), the same as
+                 that clock reached from another */
+              if(wi===2){ var tS=clock+10; KF(1); kClick("#next"); KF(1); var Us=kAll(), lgS=gaitLeg(id,clock), aS=kAmp(id);
+                if(Math.abs(clock-tS)>1e-9) kBad.push(S0.kind+": the next ten minutes' button did not move the clock");
+                if(lgS&&lgS.kmh>=GAIT.KMH&&aS!==1) kBad.push(S0.kind+": sought while paused, the amplitude "+aS+" in the first frame (full expected)");
+                setClock(T_MIN,{instant:true,force:true,camera:false}); KF(2); setClock(tS,{instant:true,camera:false}); KF(1); var Us2=kAll();
+                if(!kEq(Us,Us2)) kBad.push(S0.kind+": the clock sought by the button and from "+fmtClock(T_MIN)+" not one pose");
+                kT.push(S0.kind+": sought ten minutes on while paused, "+fmtClock(tS)+", the amplitude "+aS+" in the first frame, the pose that clock's from another"); }
+            }); });
+          /* the dwell's hold: the dwell on, 4x into 09:00's start, every formation's gait the same in the hold's frames */
+          kClick('.spd-btn[data-s="4"]'); dwellSet(true); setClock(528,{instant:true,force:true,camera:false}); finishTween(); aim(posNow("sthilaire"),[0.7,0.35,0.2],60); settleAll(); lastFrame=kTm;
+          kClick("#play"); var nH=0; while(!(DWELL.st&&DWELL.st.stage==="hold")&&nH<200){ KF(1); nH++; }
+          if(!(DWELL.st&&DWELL.st.stage==="hold")) kBad.push("the dwell's hold not reached");
+          else { KF(1); var H0=kAll(), hMov=0, hF=0; for(var h=0;h<5;h++){ KF(1); if(!kEq(H0,kAll())) hMov++; } Object.keys(H0).forEach(function(k){ if(H0[k].length&&H0[k][0][0]>0) hF++; });
+            if(hMov) kBad.push("in the dwell's hold the gait moved in "+hMov+" frames of 5"); if(!hF) kBad.push("no formation stepping in the dwell's hold");
+            kT.push("the dwell's hold at "+fmtClock(clock)+": "+Object.keys(H0).length+" formations' gait held for 6 frames, "+hF+" of them in stride"); }
+          if(playing) kClick("#play");
+          /* reduced motion while paused with a pose held: none at once; turned off again, nothing steps until the clock moves */
+          kClick('.spd-btn[data-s="0.5"]'); dwellSet(false); setClock(528,{instant:true,force:true,camera:false}); finishTween(); settleAll(); lastFrame=kTm;
+          kClick("#play"); KF(12); kClick("#play"); KF(1);
+          var rmA=kAmp("sthilaire"); RM=true; KF(1); var rmB=shown().filter(function(k){ return kAmp(k)>0; }).length; RM=false; KF(3); var rmC=shown().filter(function(k){ return kAmp(k)>0; }).length;
+          if(!(rmA>0)) kBad.push("reduced motion: nothing held in stride to stop"); if(rmB) kBad.push("reduced motion, paused: "+rmB+" formations still in stride one frame after it was set");
+          if(rmC) kBad.push("reduced motion turned off, paused: "+rmC+" formations stepped back into stride with the clock standing");
+          kT.push("reduced motion, paused: from "+(+rmA.toFixed(3))+" to none in one frame; off again, none until the clock moves");
+          kT.push(kJ+" paused frames drawn and cast with the block as it was, "+kE+" with its own ease moving it");
+          if(kJ<KS.length*5) kBad.push("too few paused frames judged by the drawing ("+kJ+": the blocks were still wheeling)");
+        } catch(err){ kBad.push("threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+        } finally {
+          if(kOwn) performance.now=kNow; else delete performance.now; window.requestAnimationFrame=kRaf; renderer.render=kRender; RM=keepE.rm;
+          if(playing) stopPlay(); dwellSet(kDw); setSpeed(kSp); lastFrame=0;
+        }
+        ck("the gait at a pause (8F's prerequisite, decision 244 (a)): Play, the speed and Pause by their buttons through the app's own loop, an infantry division, a cavalry corps and a limbered battery paused from half speed, in the fade and faded out: the first paused frame's gait the last played's and every paused frame's the first's, the frame and the sun's depth map drawn with the formation alone unchanged; resumed, on from the amplitude held; a seek the clock's own pose at once; the dwell's hold held; reduced motion at once",
+          !kBad.length, kT.join("; ")+(kBad.length?"; WRONG: "+kBad.slice(0,6).join("; "):""));
+
         /* (g) S-5: the facing a function of the clock: every formation's facing the same however its clock was reached */
         var gBad=[], gN=0;
         PHASES.forEach(function(ph,pi){ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(function(t){ var R=[];
@@ -12882,45 +13032,127 @@ var AUSTERLITZ_DEBUG=(function(){
         ck("the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phase's start, its phase's end or directly (it was the facing at the first clock visited in the phase)",
           gN>0&&!gBad.length, gN+" facings at three clocks of each phase, each from three paths"+(gBad.length?"; WRONG: "+gBad.slice(0,5).join("; "):""));
 
-        /* (h) the animated feet and hooves on the drawn ground: at 4x and 10.33x (at 1x the formations are footprints, decision 34: no figure), for
-           the formations shown at three clocks, up to 40 instances of each animated man's and horse's mesh, their slopes as the gait draws them
-           (layoutFigs, asked), at four phases at full swing with the gait's knee and trot: each sole's heel and toe and each hoof's two edges
-           posed (animAt), through the instance's and the mesh's matrices into the world, against the same point at rest, each judged by the drawn
-           ground between the two (groundY). The lowest edge is the planted one: its distance from its rest contact is the gait's contact error.
-           Held: at least 99 in 100 poses within H_TOL (0.03 units at 4x, in proportion to the relief at 10.33x, whose facets steepen with it),
-           and none further off than the rest pose itself stands somewhere on the field (the upright figure's sole or hoof edges on a slope, as
-           before 8E: reported). The rest pose's own seating check (5: 0.02 at each figure's origin) is unchanged */
-        var hBad=[], hT=[], MA=ANIM.MAN, HO=ANIM.HORSE;
-        DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct); var E=[], where="", wv=0, restMax=0, H_TOL=0.03*fct/4, nFl=0, nPn=0, wFl=0, wPn=0, RZ=[];
+        /* (h) the animated feet and hooves on the drawn ground (decision 244 (a): "Verify ... terrain contact"; rewritten with 8F's prerequisite
+           2, the audit of 8E, which found its 99-in-100 rule and its comparison with the largest resting offset anywhere on the field unrelated to
+           any one instance). Each instance against itself at rest, on the drawn ground (groundY), at 4x and 10.33x (at 1x the formations are
+           footprints, decision 34: no figure). Its error: the least, over its points, of a point's offset from the drawn ground posed (animAt, the
+           hook's arithmetic, with the instance's own slopes, the level's knee and the mesh's trot) less the same point's offset at rest: 0, one
+           point where it stood and none below; above 0 the figure floats, below it sinks. Two sets of points: the edges the hook plants (each
+           kit's heel and toe on each foot's line, each hoof's fore and aft edges on its line), and the soles the kit draws (the bottom corners of a
+           man's legs or feet and of a horse's hooves: the vertices within 0.03 of the soles' plane in each level's geometry), whose width carries
+           a crease of the ground across a foot that the hook's lines do not. The legacy seat (the upright figure on a slope, a corner off the
+           ground at rest) and the raised foot (its lift over the planted one) are reported, not judged. Both levels with the slopes they are drawn
+           with (layoutFigs: 8E's two chords from the figure's middle; each foot's own profile was measured and is over the animation's budget,
+           section 18), each kit's own soles planted (since 8F's prerequisite 2). Two ways:
+           - fresh: three clocks, every formation shown with a gait, up to 24 instances of each animated mesh, eight phases at full swing, both
+             levels, the slopes taken at that place (layoutFigs, asked), a horse at its own gait (it walks: no leg of the data is above
+             GAIT.TROT_KMH, so no horse is drawn trotting);
+           - in motion: Play through the app's own loop on the test's clock (30 frames a second; the dwell off) for three stretches (Saint-Hilaire's
+             division up the Pratzen from 08:44, its via point and turn at 08:49, the eye dollied in so that its blocks turn from the simple kit to
+             the rich; the Guard's cavalry at 1x; the limbered battery from 13:50), each third frame every animated instance as drawn (its level,
+             its slopes as the step rule left them, its uniforms), the error also in CSS pixels through the camera; then paused and judged again.
+           Held: every pose of every instance, men and horses, both levels, fresh and in motion, within H_TOL (0.03 units at 4x, in proportion to
+           the relief at 10.33x, the gait's own tolerance since 8E), but where H_OPEN lists the cases found beyond it with the chords and kept open
+           for the owner (docs/STAGE8_SPEC.md section 18), each with its proposed bound in H_TOL: none may be beyond its bound, and no more poses
+           beyond H_TOL than were found (H_CASES); the cases beyond H_TOL counted and reported, with their pixels (the simple kit's at its largest
+           size, a man KLOD.IN px tall; in motion through the camera) */
+        var hBad=[], hT=[], MA=ANIM.MAN, HO=ANIM.HORSE, hSolC=new Map(), hO=[0,0,0], hP1=[], FXL=0.085, LXL=0.13;   /* FXL, LXL: the feet's and the hooves' lines as the kits draw them */
+        /* the proposed bounds of the cases kept open with the chords, in H_TOL, by factor, for the hook's edges and the drawn soles, men and horses
+           (8F's prerequisite 2: the largest measured on its build, fresh, rounded up to the next half H_TOL: the men's planted edges 2.08 and 2.13
+           at 4x and 10.33x, their drawn soles 3.19 and 3.18, the horses' edges 1.94 and 2.42, their drawn soles 2.13 and 2.59; docs/STAGE8_SPEC.md
+           section 18) */
+        var H_OPEN={edges:{men:{4:2.5, "10.33":2.5}, horses:{4:2.5, "10.33":2.5}}, drawn:{men:{4:3.5, "10.33":3.5}, horses:{4:3, "10.33":3}}};
+        /* and the cases themselves: the poses found beyond H_TOL on the prerequisite's build, by factor, men or horses, the edges or the drawn
+           soles, fresh or in motion and the level (every other: none). No more may be beyond H_TOL than were found, with a margin of a tenth (at
+           least two poses); where none was found, none. A bound on the worst alone admitted 8E's soles back on the simple kit (mutate-8e.js's
+           contactsole, its worst within 3.5 H_TOL): the number of cases is what such a change multiplies */
+        var H_CASES={"4|men|edges|fresh|rich":14, "4|men|edges|fresh|simple":4, "4|men|drawn|fresh|rich":21, "4|men|drawn|fresh|simple":9,
+          "4|horses|edges|fresh|rich":29, "4|horses|edges|fresh|simple":29, "4|horses|drawn|fresh|rich":29, "4|horses|drawn|fresh|simple":27, "4|horses|drawn|motion|rich":1,
+          "10.33|men|edges|fresh|rich":20, "10.33|men|edges|fresh|simple":11, "10.33|men|drawn|fresh|rich":21, "10.33|men|drawn|fresh|simple":14, "10.33|men|drawn|motion|rich":1,
+          "10.33|horses|edges|fresh|rich":29, "10.33|horses|edges|fresh|simple":29, "10.33|horses|edges|motion|rich":2, "10.33|horses|drawn|fresh|rich":28,
+          "10.33|horses|drawn|fresh|simple":25, "10.33|horses|drawn|motion|rich":1};
+        function hSoles(g,horse){ var c=hSolC.get(g); if(c) return c; var P=g.attributes.position, K=g.attributes.aPart, seen={}, out=[];
+          for(var i=0;i<P.count;i++){ var k=Math.round(K.array[i]); if(horse?(k<5||k>8):!(k===1||k===2||k===13||k===14)) continue; var y=P.array[i*3+1]; if(y>0.03) continue;
+            var x=P.array[i*3], z=P.array[i*3+2], key=k+","+x.toFixed(4)+","+y.toFixed(4)+","+z.toFixed(4); if(seen[key]) continue; seen[key]=1; out.push([k,x,y,z]); }
+          hSolC.set(g,out); return out; }
+        function hEdges(horse,rich){ var out=[];
+          if(horse) [[5,-LXL,HO.ZF],[6,LXL,HO.ZF],[7,-LXL,HO.ZH],[8,LXL,HO.ZH]].forEach(function(q){ [-HO.HZ,HO.HZ].forEach(function(e){ out.push([q[0],q[1],HO.HIP-HO.L,q[2]+e]); }); });
+          else [[rich?13:1,-FXL],[rich?14:2,FXL]].forEach(function(q){ [rich?MA.HEEL:MA.HEEL0,rich?MA.TOE:MA.TOE0].forEach(function(z){ out.push([q[0],q[1],MA.FOOT,z]); }); });
+          return out; }
+        /* the points' offsets from the drawn ground posed at (ph, amp), through Mw */
+        function hOffs(pts,ph,amp,sl,knee,trot,out){ for(var j=0;j<pts.length;j++){ var q=pts[j]; animAt(q[0],q[1],q[2],q[3],ph,amp,hO,{slope:sl,knee:knee,trot:trot}); V.set(hO[0],hO[1],hO[2]).applyMatrix4(Mw); out[j]=V.y-groundY(V.x,V.z); } out.length=pts.length; return out; }
+        /* [error, the raised point's lift over it, the largest resting offset] of a posed instance against its rest (r0: its rest offsets) */
+        function hErr(pts,r0,ph,amp,sl,knee,trot){ hOffs(pts,ph,amp,sl,knee,trot,hP1); var e=1e9, mx=-1e9, rs=0;
+          for(var j=0;j<pts.length;j++){ var d=hP1[j]-r0[j]; if(d<e) e=d; if(d>mx) mx=d; if(Math.abs(r0[j])>rs) rs=Math.abs(r0[j]); } return [e,mx-e,rs]; }
+        function hSl(m,i){ var SA=m.geometry.attributes.aSl.array; return [SA[i*2],SA[i*2+1]]; }
+        function hMeshes(G){ return G.meshes.filter(function(m){ var k=m.userData.gaitKind, part=m.userData.kit&&m.userData.kit.part; if(!(k==="man"&&part==="fixed")&&!(k!=="gear"&&part==="horse")) return false;
+          for(var a=m;a;a=a.parent) if(!a.visible) return false; return true; }); }
+        /* the simple kit's error in CSS pixels at its largest size on the screen (a man KLOD.IN px tall, his block's scale sc) */
+        function hSimplePx(e,sc){ return Math.abs(e)*KLOD.IN/(KLOD.H*(sc||1)); }
+        var HS={};   /* by "factor|men or horses|edges or drawn|fresh or motion|rich or simple": the errors (units), the worst and where, the legacy seat, the lift, the pixels */
+        function hRec(key,r,where,px){ var s=HS[key]||(HS[key]={a:[],w:0,where:"",rest:0,lift:[],px:0,pxWhere:""}); var a=Math.abs(r[0]);
+          s.a.push(a); if(a>s.w){ s.w=a; s.where=where+" ("+(r[0]>0?"floating":"sinking")+")"; }
+          if(r[2]>s.rest) s.rest=r[2]; s.lift.push(r[1]); if(px!==undefined&&px>s.px){ s.px=px; s.pxWhere=where; } }
+        /* the slopes' lookup (groundYFast on the compact heights) the drawn ground's own (groundY), value for value, at 3,000 points at each
+           factor, its heights made again by the change of factor */
+        var hLk=0;
+        DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct); var GHh=groundHeights();
+          for(var q=0;q<3000;q++){ var qx=-GROUND_W/2+GROUND_W*((q*7919)%3001)/3000, qz=-GROUND_D/2+GROUND_D*((q*104729)%3011)/3010; hLk++;
+            if(!Object.is(groundYFast(GHh,qx,qz),groundY(qx,qz))){ hBad.push("the slopes' lookup at "+qx.toFixed(2)+", "+qz.toFixed(2)+" ("+fmtFactor(fct)+"x): "+groundYFast(GHh,qx,qz)+" against the drawn ground's "+groundY(qx,qz)); break; } } });
+        /* fresh: both levels, with the slopes the gait draws them with */
+        DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct); if(isTrueScale()) return; var F=fmtFactor(fct);
           [545,640,830].forEach(function(t){ at(t,"terrain","watch"); settle(24,true);
             shown().forEach(function(id){ var b=units[id].block, G=b.userData.gait, bu=b.userData; if(!G) return;
               bu.layout(bu.sw,bu.sd,true); b.updateMatrixWorld(true);   /* the slopes as the gait draws a block it animates */
-              G.meshes.forEach(function(m){ var k=m.userData.gaitKind, part=m.userData.kit&&m.userData.kit.part; if(!(k==="man"&&part==="fixed")&&!(k!=="gear"&&part==="horse")) return;
-                var a=m; while(a){ if(!a.visible) return; a=a.parent; }
-                var U=m.userData.anim, ph=m.geometry.attributes.aPh, horse=part==="horse", rich=U.uAnimKnee.value===1, pts=[];
-                if(horse) [[5,HO.ZF],[6,HO.ZF],[7,HO.ZH],[8,HO.ZH]].forEach(function(q,j){ [-HO.HZ,HO.HZ].forEach(function(e){ pts.push([q[0],j%2?0.13:-0.13,HO.HIP-HO.L,q[1]+e]); }); });
-                else [[rich?13:1,-0.085],[rich?14:2,0.085]].forEach(function(q){ [MA.HEEL,MA.TOE].forEach(function(z){ pts.push([q[0],q[1],MA.FOOT,z]); }); });
-                var step=Math.max(1,Math.floor(m.count/40)), o=[0,0,0], SA=m.geometry.attributes.aSl;
-                for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=SA?[SA.array[i*2],SA.array[i*2+1]]:[0,0];
-                  var rest=pts.map(function(q){ V2.set(q[1],q[2],q[3]).applyMatrix4(Mw); var gg=groundY(V2.x,V2.z); restMax=Math.max(restMax,Math.abs(V2.y-gg)); return [V2.y,gg]; });
-                  [0,Math.PI/2,Math.PI,1.5*Math.PI].forEach(function(p0){ var e=[], phv=p0+2*Math.PI*(ph?ph.array[i]:0);
-                    pts.forEach(function(q,j){ animAt(q[0],q[1],q[2],q[3],phv,1,o,{slope:sl,knee:U.uAnimKnee.value,trot:U.uAnimTrot.value}); V.set(o[0],o[1],o[2]).applyMatrix4(Mw);
-                      e.push((V.y-rest[j][0])-(groundY(V.x,V.z)-rest[j][1])); });
-                    /* the planted edge (the lowest against the ground): above its rest contact it floats, below it sinks into the ground; the
-                       highest edge's lift over it is the raised foot's or hoof's (reported) */
-                    var mn=Math.min.apply(null,e), mx=Math.max.apply(null,e), lo=Math.abs(mn);
-                    if(mn>0){ nFl++; if(mn>wFl) wFl=mn; } else if(mn<0){ nPn++; if(-mn>wPn) wPn=-mn; } RZ.push(mx-mn);
-                    E.push(lo); if(lo>wv){ wv=lo; where=id+" ("+part+", "+(rich?"rich":"simple")+") at "+fmtClock(t); } }); } }); }); });
-          RZ.sort(function(x,y){ return x-y; });
-          var fig1=isTrueScale(), srt=E.slice().sort(function(x,y){ return x-y; }), p99=srt.length?srt[Math.min(srt.length-1,Math.floor(0.99*srt.length))]:0, over=E.filter(function(v){ return v>H_TOL; }).length;
-          hT.push(fmtFactor(fct)+"x: "+(fig1?"no figure (decision 34)":E.length+" poses with their slopes; the planted edge off its rest contact: half within "+(srt[Math.floor(srt.length/2)]||0).toFixed(4)+", 99 in 100 within "+p99.toFixed(4)+" (H_TOL "+H_TOL.toFixed(3)+"; "+over+" beyond it), the worst "+wv.toFixed(4)+(where?" ("+where+")":"")+"; floating "+nFl+" (at most "+wFl.toFixed(4)+"), sinking "+nPn+" (at most "+wPn.toFixed(4)+"); the raised edge's lift over the planted one, median "+(RZ[RZ.length>>1]||0).toFixed(3)+", most "+(RZ[RZ.length-1]||0).toFixed(3)+
-            "; at rest the edges stand up to "+restMax.toFixed(3)+" off the ground (the upright figure on a slope, as before 8E)"));
-          if(fig1&&E.length) hBad.push("figures posed at 1x"); if(!fig1&&!E.length) hBad.push(fmtFactor(fct)+"x: no animated figure judged");
-          if(!fig1&&p99>H_TOL) hBad.push(fmtFactor(fct)+"x: 99 in 100 planted edges within "+p99.toFixed(4)+", over "+H_TOL.toFixed(3));
-          if(!fig1&&wv>restMax) hBad.push(fmtFactor(fct)+"x: a planted edge "+wv.toFixed(4)+" off, further than the rest pose stands anywhere ("+restMax.toFixed(3)+")"); });
+              hMeshes(G).forEach(function(m){ var horse=m.userData.kit.part==="horse", ph=m.geometry.attributes.aPh, step=Math.max(1,Math.floor(m.count/24)), sc=b.scale.x||1, trot=m.userData.anim.uAnimTrot.value;   /* the horse's own gait */
+                [["simple",0],["rich",1]].forEach(function(LV){ var S2=[["drawn",hSoles(LV[1]?m.userData.lod.r:m.userData.lod.s,horse)],["edges",hEdges(horse,LV[1]===1)]];
+                  for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=hSl(m,i);
+                    S2.forEach(function(S){ var r0=hOffs(S[1],0,0,sl,LV[1],trot,[]);
+                      for(var pi=0;pi<8;pi++){ var phv=pi/8*2*Math.PI+2*Math.PI*(ph?ph.array[i]:0), r=hErr(S[1],r0,phv,1,sl,LV[1],trot);
+                        hRec(F+"|"+(horse?"horses":"men")+"|"+S[0]+"|fresh|"+LV[0],r,id+" #"+i+" ("+LV[0]+") at "+fmtClock(t)+", phase "+phv.toFixed(2),LV[1]?undefined:hSimplePx(r[0],sc)); } }); } }); }); }); }); });
         setDisplayFactor(keepE.f);
-        ck("the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' planted hooves keep their rest contact with the drawn ground within 0.03 units (4x; in proportion to the relief at 10.33x) in 99 poses of 100, floating or sinking, and none further off than the rest pose itself stands, the raised edge's lift reported; the rest pose's seating check unchanged; at 1x no figure",
-          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.slice(0,5).join("; "):""));
+        /* in motion, through the app's own loop at 4x and 10.33x */
+        var hNow=performance.now, hOwn=Object.prototype.hasOwnProperty.call(performance,"now"), hRaf=window.requestAnimationFrame, hRen=renderer.render, hTm=hNow.call(performance), hDw=DWELL.on, hSp=speed, hFr=0, hLod={}, hTurn=0;
+        function HF(){ hTm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=hRen; } }
+        var _hp=new THREE.Vector3(), _hq=new THREE.Vector3(), hW=renderer.domElement.clientWidth||innerWidth, hH=renderer.domElement.clientHeight||innerHeight;
+        /* the error in CSS pixels at the point V through the camera, where V stands in the view (else undefined) */
+        function hPx(e){ _hp.set(V.x,V.y,V.z).project(camera); if(!(Math.abs(_hp.x)<=1&&Math.abs(_hp.y)<=1&&_hp.z>-1&&_hp.z<1)) return undefined;
+          _hq.set(V.x,V.y+e,V.z).project(camera); return Math.hypot((_hp.x-_hq.x)*hW/2,(_hp.y-_hq.y)*hH/2); }
+        function hJudge(F,tag){ Object.keys(units).forEach(function(id){ var b=units[id].block, G=b&&b.userData.gait; if(!b||!b.visible||!G||!(G.amp>0)) return; b.updateMatrixWorld(true);
+            hMeshes(G).forEach(function(m){ var horse=m.userData.kit.part==="horse", U=m.userData.anim, ph=m.geometry.attributes.aPh, rich=U.uAnimKnee.value===1, step=Math.max(1,Math.floor(m.count/12));
+              if(rich!==!!b.userData.lodRich) hBad.push(id+": its knee not its level's");
+              var S2=[["drawn",hSoles(m.geometry,horse)],["edges",hEdges(horse,rich)]];
+              for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=hSl(m,i), phv=U.uAnimPhase.value+2*Math.PI*(ph?ph.array[i]:0);
+                S2.forEach(function(S){ var r0=hOffs(S[1],0,0,sl,U.uAnimKnee.value,U.uAnimTrot.value,[]), r=hErr(S[1],r0,phv,U.uAnimAmp.value,sl,U.uAnimKnee.value,U.uAnimTrot.value);
+                  hOffs(S[1],phv,U.uAnimAmp.value,sl,U.uAnimKnee.value,U.uAnimTrot.value,hP1);   /* V: the last point posed, for its pixels */
+                  hRec(F+"|"+(horse?"horses":"men")+"|"+S[0]+"|motion|"+(rich?"rich":"simple"),r,id+" #"+i+" ("+(rich?"rich":"simple")+") at "+fmtClock(clock)+" "+tag,hPx(Math.abs(r[0]))); }); } }); }); }
+        try{
+          performance.now=function(){ return hTm; }; window.requestAnimationFrame=function(){ return 0; };
+          [4,GEOREF.EXAG].forEach(function(fct){ setDisplayFactor(fct); var F=fmtFactor(fct);
+            [{t:524,id:"sthilaire",x:0.5,n:75,dolly:[180,24],dir:[0.7,0.35,0.2]},{t:640,id:"guard_cav",x:1,n:45,dolly:[40,40],dir:[0.95,0.22,0.22]},{t:830,id:"heightguns",x:0.5,n:60,dolly:[30,30],dir:[0.95,0.22,0.22]}].forEach(function(R0){
+              if(playing) stopPlay(); dwellSet(false); setSpeed(R0.x); at(R0.t,"terrain","watch"); settleAll(); lastFrame=hTm;
+              var y0=units[R0.id].yaw||0, lv0=units[R0.id].block.userData.lodRich, sw=0;
+              function eye(f){ var r=R0.dolly[0]+(R0.dolly[1]-R0.dolly[0])*f/R0.n, p=posNow(R0.id), w=W(p[0],p[1]), y=groundY(w[0],w[1]), d=new THREE.Vector3(R0.dir[0],R0.dir[1],R0.dir[2]).normalize().multiplyScalar(r);
+                tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,y+d.y,w[1]+d.z); orbitTarget.set(w[0],y,w[1]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true); }
+              eye(0); togglePlay();
+              for(var f=1;f<=R0.n;f++){ eye(f); HF(); hFr++; var lv=units[R0.id].block.userData.lodRich; if(lv!==lv0){ sw++; lv0=lv; } if(f%3===0) hJudge(F,"(playing)"); }
+              hLod[F+" "+R0.id]=sw; if(R0.id==="sthilaire") hTurn=Math.max(hTurn,Math.abs((units[R0.id].yaw||0)-y0));
+              stopPlay(); HF(); HF(); hJudge(F,"(paused)"); }); });
+        } catch(err){ hBad.push("in motion: threw "+err.message);
+        } finally { if(hOwn) performance.now=hNow; else delete performance.now; window.requestAnimationFrame=hRaf; renderer.render=hRen; if(playing) stopPlay(); dwellSet(hDw); setSpeed(hSp); lastFrame=0; setDisplayFactor(keepE.f); }
+        /* the verdicts */
+        var hQ=function(a,q){ var s=a.slice().sort(function(x,y){ return x-y; }); return s.length?s[Math.min(s.length-1,Math.floor(q*s.length))]:0; };
+        Object.keys(HS).sort().forEach(function(key){ var s=HS[key], P=key.split("|"), F=P[0], fct=F==="4"?4:GEOREF.EXAG, TOL=0.03*fct/4, lim=H_OPEN[P[2]][P[1]][F]*TOL, over=s.a.filter(function(v){ return v>TOL; }).length,
+            found=H_CASES[key]||0, allow=found?found+Math.max(2,Math.ceil(found/10)):0;
+          hT.push(F+"x "+P[1]+", "+(P[2]==="edges"?"the hook's edges":"the drawn soles")+", "+P[3]+", "+P[4]+": "+s.a.length+" poses, half within "+hQ(s.a,0.5).toFixed(4)+", 99 in 100 within "+hQ(s.a,0.99).toFixed(4)+", the worst "+s.w.toFixed(4)+" ("+s.where+")"+
+            (s.px?", "+s.px.toFixed(2)+" px at most ("+(P[4]==="simple"&&P[3]==="fresh"?"at the simple kit's largest size, ":"")+s.pxWhere+")":"")+"; "+over+" beyond H_TOL "+TOL.toFixed(4)+(lim>TOL+1e-12?" (kept open: the proposed bound "+lim.toFixed(4)+"; "+found+" found, at most "+allow+")":"")+"; the legacy seat up to "+s.rest.toFixed(3)+" at rest, the raised edge's lift median "+hQ(s.lift,0.5).toFixed(3));
+          if(s.w>lim+1e-9) hBad.push(F+"x "+P[1]+" "+P[2]+" "+P[3]+" "+P[4]+": "+s.w.toFixed(4)+" ("+s.where+"), beyond "+(lim>TOL+1e-12?"its proposed bound ":"H_TOL ")+lim.toFixed(4));
+          if(over>allow) hBad.push(F+"x "+P[1]+" "+P[2]+" "+P[3]+" "+P[4]+": "+over+" poses beyond H_TOL, "+(found?found+" found and kept open (at most "+allow+")":"none kept open")); });
+        ["4","10.33"].forEach(function(F){ ["men","horses"].forEach(function(k){ ["edges","drawn"].forEach(function(d){ ["fresh|rich","fresh|simple","motion|rich","motion|simple"].forEach(function(w){ if(!HS[F+"|"+k+"|"+d+"|"+w]) hBad.push(F+"x "+k+" "+d+" "+w.replace("|"," ")+": nothing judged"); }); }); }); });
+        hT.push("the slopes' lookup the drawn ground's at "+hLk+" points; in motion "+hFr+" frames; the level switched along the dolly "+JSON.stringify(hLod)+"; Saint-Hilaire's turn "+hTurn.toFixed(3)+" rad");
+        if(!(hLod["4 sthilaire"]>0)) hBad.push("in motion the division's level never switched along the dolly"); if(!(hTurn>0.05)) hBad.push("in motion the division never turned");
+        ck("the gait on the ground (decision 244 (a); 8F's prerequisite 2): each instance against itself at rest, both levels, at 4x and 10.33x, fresh and in motion (facets, a turn, the level switched, the pause), each kit's own soles planted on 8E's chords: the hook's edges and the soles the kit draws within 0.03 units (4x; in proportion to the relief at 10.33x) in every pose, but for the cases kept open, none beyond its proposed bound and no more of them than were found, every case beyond 0.03 counted with its pixels; the legacy seat and the lift reported; the slopes' lookup the drawn ground's at every factor; at 1x no figure",
+          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.slice(0,6).join("; "):""));
 
         /* (j) the step described as decision 244 asks (section 0.3.1, item 8): the legend's row wherever figures are drawn, and the sources sheet's
            notes, a visual convention for symbols under compressed time, never footsteps matched to the ground */
@@ -13162,6 +13394,156 @@ var AUSTERLITZ_DEBUG=(function(){
       sIdle==="idle"&&src>0&&sWait==="waiting"&&sAmb==="ambient"&&sRM==="idle"&&(!HARNESS||sOff==="idle"),
       "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust, smoke or a broken formation's sway): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
       (HARNESS?"; the harness's own frames "+sOff+" (drift off under ?harness=1; AMBIENT_TEST turned it on for this check only)":""));
+
+    /* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md sections 5, 7.3, 7.4 and 18): water, woods and the near
+       ground. Self-contained: it keeps and restores what it changes; its renders are its own (the scene drawn into a target of the test's,
+       no post-processing). (a) The water's presentations: on the landscape every water mesh drawn with 8F's material (the streams and
+       banks in their landscape colours; the ice writing no depth, the shore band without a polygon offset and drawn after its ice); on the
+       paper map with 8E's: every parameter as 8E made it and no shader hook of its own (a pixel comparison with materials made afresh
+       would differ by the draw order alone, three sorting by the material's id). (b) Still: a view of the meres and the
+       Goldbach, 300 of the app's own frames run on the test's clock (ten seconds, the clock standing: the view's easings arrive), drawn,
+       300 more, drawn again: the same pixels (each frame asked for, so that anything the frames move would move); at rest the view asks no
+       frame. (c) The shore ice feathered: drawn alone from above, its light at its inner
+       edge and at the shore at most a tenth of its peak (no hard ring); the rimed margin lighter than the clear middle (the disc alone); in
+       the frame, at three clocks, the shore band at most ICE8F.SHORE times the field just beyond the shore and the rimed margin at most
+       ICE8F.MARGIN times it (integrated, the owner's word). (d) The woods: the trees and the scrub by kind as 8E drew them (WOODS8E), each
+       habit's triangles within 8E's (KIT8E) and the conifers' 8E's own, the open crowns drawn on both faces and casting shadows. (e) The near
+       ground: drawn near the eye on the natural ground (the low Pratzen view: pixels differ with it on and off) with its mean tone kept
+       (within 1% over them: 0.996 as built) and each cell's mean that of the cell the shader samples (read through the GPU), nothing of it
+       beyond its far edge (the Field vantage identical on and off), none on the paper map (identical on and off), on at this tier (the self-test's page is never low: lowTier's setting is css-test.js's to hold) */
+    (function(){
+      /* the margin's bounds, in the frame of (c)'s view (from above, 90 units off, 4x), the light against the field just beyond the shore:
+         8E's shore ice there 1.02 to 1.03 times the field and its ice at 0.8 of a mere's radius 1.15 to 1.17; Part A's prototype's margin
+         (w-ice's grey-white) 1.42 to 1.46 at 0.8; 8F's as first drawn, its margin a lighter grey and its band drawn over the ground by a polygon
+         offset, 1.20 at the shore and 1.26 to 1.28 at 0.8; 8F's as built 1.00 to 1.01 and 1.16 to 1.19 (09:00, 12:00, 15:00; docs/STAGE8_SPEC.md
+         section 18).
+         Design bounds: the shore within a tenth of the field, the rimed margin within a quarter */
+      var ICE8F={SHORE:1.10, MARGIN:1.25};
+      var keep8={f:DISPLAY.factor, mode:mode, pres:presentation, t:clock, pos:landCam.position.clone(), tgt:orbitTarget.clone(), fc:freeCam, det:groundMesh.material.userData.U.uDetail.value.x,
+        cc:renderer.getClearColor(new THREE.Color()), ca:renderer.getClearAlpha()};
+      var W0=480, H0=270, rt=new THREE.WebGLRenderTarget(W0,H0), B=new Uint8Array(W0*H0*4);
+      function grab(){ renderer.setRenderTarget(rt); renderer.clear(); renderer.render(scene,camera); renderer.readRenderTargetPixels(rt,0,0,W0,H0,B); renderer.setRenderTarget(null); return Uint8Array.from(B); }
+      function diff(a,b,th){ var n=0; for(var i=0;i<a.length;i+=4) if(Math.abs(a[i]-b[i])>th||Math.abs(a[i+1]-b[i+1])>th||Math.abs(a[i+2]-b[i+2])>th) n++; return n; }
+      function aim(map,dir,r){ var w=W(map[0],map[1]), y=groundY(w[0],w[1]), d=new THREE.Vector3(dir[0],dir[1],dir[2]).normalize().multiplyScalar(r);
+        tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,y+d.y,w[1]+d.z); orbitTarget.set(w[0],y,w[1]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true); settle(6,true); }
+      var _pv=new THREE.Vector3();
+      function pxAt(x,y,z){ _pv.set(x,y,z).project(camera); if(Math.abs(_pv.x)>1||Math.abs(_pv.y)>1||_pv.z<-1||_pv.z>1) return -1; return (Math.floor((_pv.y*0.5+0.5)*H0)*W0+Math.floor((_pv.x*0.5+0.5)*W0))*4; }
+      function lum(b,o){ return 0.2126*b[o]+0.7152*b[o+1]+0.0722*b[o+2]; }
+      var meres=world.water.filter(function(m){ return m.userData.mere; });
+      try{
+        setDisplayFactor(DISPLAY.defaultFactor); setMode("terrain"); setPresentation("watch");
+        /* (a) the two presentations */
+        var aBad=[], L8=WATER_MATS.land, P8=WATER_MATS.paper;
+        world.water.forEach(function(m){ var k=waterKind(m); if(m.material!==L8[k]) aBad.push("the landscape's "+k+" not drawn with 8F's material"); });
+        if(!L8.stream.color.equals(lin(WATER_COL.streamLand))||!L8.bank.color.equals(lin(WATER_COL.bankLand))) aBad.push("the landscape's streams or banks not in their landscape colours");
+        if(L8.ice.depthWrite) aBad.push("the landscape's ice writes its depth (the band would fight it for the pixel)");
+        world.iceRims.forEach(function(r){ if(r.material.polygonOffset) aBad.push("a shore band drawn with a polygon offset (over the ground at the shore)");
+          if(!(r.renderOrder>Math.max.apply(null,meres.map(function(m){ return m.renderOrder; })))) aBad.push("a shore band not drawn after its ice"); });
+        setMode("staff"); settle(6,true); tween=null; freeCam=true; MAPCAM.frameField(true); settle(4,true);
+        world.water.forEach(function(m){ var k=waterKind(m); if(m.material!==P8[k]) aBad.push("the paper map's "+k+" not drawn with 8E's material"); });
+        /* 8E's materials, made as 8E made them (buildWater until 8F), against the paper map's, parameter by parameter */
+        var E8={ice:new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,transparent:true,opacity:0.96}),
+          stream:new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide}),
+          bank:matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide})}, nP=0;
+        Object.keys(E8).forEach(function(k){ var a8=E8[k], b8=P8[k];
+          ["type","roughness","metalness","envMapIntensity","transparent","depthWrite","depthTest","side","flatShading","vertexColors","map","blending","polygonOffset"].forEach(function(f){ nP++;
+            if(a8[f]!==b8[f]) aBad.push("the paper map's "+k+": "+f+" "+b8[f]+", 8E's "+a8[f]); });
+          nP++; if(a8.color.getHex()!==b8.color.getHex()) aBad.push("the paper map's "+k+": its colour #"+b8.color.getHexString()+", 8E's #"+a8.color.getHexString());
+          nP++; if(b8.onBeforeCompile!==THREE.Material.prototype.onBeforeCompile||b8.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey) aBad.push("the paper map's "+k+" has a shader hook of its own");
+          a8.dispose(); });
+        var sw=world.water.filter(function(m){ return P8[waterKind(m)]; });
+        setMode("terrain"); settle(6,true);
+        ck("the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no depth, the shore band without a polygon offset and drawn after it), the paper map's water 8E's, its materials 8E's in every parameter",
+          !aBad.length&&sw.length>0, sw.length+" water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, "+nP+" parameters"+(aBad.length?"; WRONG: "+aBad.join("; "):""));
+        /* (b) still */
+        setClock(360,{instant:true,force:true,camera:false}); finishTween(); aim([240,420],[0.25,0.55,0.80],80); settle(10,true);
+        var s0=null, hNow=performance.now, hOwn=Object.prototype.hasOwnProperty.call(performance,"now"), hRaf=window.requestAnimationFrame, hRen=renderer.render, tm=hNow.call(performance), sIdle="";
+        function F300(){ for(var fi=0;fi<300;fi++){ tm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=hRen; } } }   /* each frame asked for: drawn in full */
+        try{ performance.now=function(){ return tm; }; window.requestAnimationFrame=function(){ return 0; }; lastFrame=tm;
+          F300(); s0=grab(); F300();   /* the first ten seconds: the view's easings arrive; the next ten are judged */
+          needFrames=0; lastInput=-1e9; settling=false; sIdle=frameState(tm+1000);
+        } finally { if(hOwn) performance.now=hNow; else delete performance.now; window.requestAnimationFrame=hRaf; renderer.render=hRen; lastFrame=0; requestRender(2); }
+        var s1=grab(), sd=diff(s0,s1,0);
+        ck("the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after ten seconds of the app's frames with the clock standing, the same pixels; at rest no frame asked",
+          sd===0&&(sIdle==="idle"||!HARNESS), sd+" pixels differ; the view at rest: "+sIdle);
+        /* (c) the shore band, the margin and its brightness */
+        var cBad=[], S=world.iceRims[0], D=meres[0], q=S.userData.mere, cc=q[0], rx=q[1], rz=q[2], sy=S.position.y;
+        setClock(720,{instant:true,force:true,camera:false}); finishTween();
+        tween=null; freeCam=true; curVantage=null; landCam.position.set(cc[0],sy+90,cc[1]+0.01); orbitTarget.set(cc[0],sy,cc[1]); landCam.lookAt(orbitTarget); clampCamera(); settle(4,true);
+        var kv=[]; scene.children.forEach(function(o){ kv.push([o,o.visible]); o.visible=!!(o===S||o===D||o.isLight); });   /* a boolean: three draws an object whose visible is undefined */
+        var bg=scene.background, fog=scene.fog; scene.background=null; scene.fog=null; renderer.setClearColor(0,1);
+        var keepD=D.visible; D.visible=false; var rb=grab(); D.visible=keepD; S.visible=false; var db=grab(); S.visible=true;
+        scene.background=bg; scene.fog=fog; renderer.setClearColor(keep8.cc,keep8.ca); kv.forEach(function(k){ k[0].visible=k[1]; });
+        var prof=[], peak=0; for(var ri=0;ri<=28;ri++){ var r=ICE.rim+(1-ICE.rim)*ri/28, o=pxAt(cc[0]+r*rx,sy,cc[1]); var L1=o<0?-1:lum(rb,o); prof.push(L1); peak=Math.max(peak,L1); }
+        var inner=prof[0], shore=prof[prof.length-1];
+        if(!(peak>20)) cBad.push("the shore band not drawn ("+peak.toFixed(1)+")"); if(inner>0.1*peak||shore>0.1*peak) cBad.push("a hard edge: at the inner edge "+inner.toFixed(1)+", at the shore "+shore.toFixed(1)+" of a peak "+peak.toFixed(1));
+        var mid=0, mar=0, nm=0, nr=0; for(var ai=0;ai<24;ai++){ var a=ai/24*2*Math.PI, o1=pxAt(cc[0]+0.15*rx*Math.cos(a),sy-ICE.rimLift,cc[1]+0.15*rz*Math.sin(a)), o2=pxAt(cc[0]+0.9*rx*Math.cos(a),sy-ICE.rimLift,cc[1]+0.9*rz*Math.sin(a));
+          if(o1>=0){ mid+=lum(db,o1); nm++; } if(o2>=0){ mar+=lum(db,o2); nr++; } }
+        mid/=Math.max(1,nm); mar/=Math.max(1,nr); if(!(mar>mid)) cBad.push("the rimed margin ("+mar.toFixed(1)+") not lighter than the clear middle ("+mid.toFixed(1)+")");
+        var ratios=[];
+        [540,720,900].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); aim([250,440],[0.10,0.80,0.59],90); settle(6,true);
+          var fb=grab(), R=[];
+          [0.92,0.8].forEach(function(rr){ var lm=0, lg=0, n1=0, n2=0;
+            meres.forEach(function(m){ var Q=m.userData.mere, c2=Q[0], y2=m.position.y;
+              for(var bi=0;bi<48;bi++){ var b=bi/48*2*Math.PI, cs=Math.cos(b), sn=Math.sin(b), o3=pxAt(c2[0]+rr*Q[1]*cs,y2,c2[1]+rr*Q[2]*sn), gx=c2[0]+1.12*Q[1]*cs, gz=c2[1]+1.12*Q[2]*sn, o4=pxAt(gx,groundY(gx,gz),gz);
+                if(o3>=0){ lm+=lum(fb,o3); n1++; } if(o4>=0){ lg+=lum(fb,o4); n2++; } } });
+            R.push((lm/Math.max(1,n1))/Math.max(1,lg/Math.max(1,n2))); });
+          ratios.push(fmtClock(t)+" "+R[0].toFixed(2)+" and "+R[1].toFixed(2));
+          if(!(R[0]<=ICE8F.SHORE)) cBad.push("at "+fmtClock(t)+" the shore band "+R[0].toFixed(2)+" times the field beside it");
+          if(!(R[1]<=ICE8F.MARGIN)) cBad.push("at "+fmtClock(t)+" the rimed margin "+R[1].toFixed(2)+" times the field beside the shore"); });
+        ck("the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed margin lighter than the clear middle; in the frame the shore band at most "+ICE8F.SHORE+" times the field beside the shore and the rimed margin at most "+ICE8F.MARGIN+" times",
+          !cBad.length, "the band's light from its inner edge to the shore "+prof.filter(function(v,i){ return i%4===0; }).map(function(v){ return v.toFixed(0); }).join(" ")+" (peak "+peak.toFixed(0)+"); the middle "+mid.toFixed(1)+", the margin "+mar.toFixed(1)+"; against the field, the shore band and the margin: "+ratios.join(", ")+(cBad.length?"; WRONG: "+cBad.join("; "):""));
+        /* (d) the woods */
+        /* 8E's woods: the trees and the scrub by kind, and each habit's triangles (its kit: four deciduous habits, two conifers, the bush), read
+           on the 8E build (tools/stage8/woods-8f.js, docs/stage8-evidence/8f/woods-8f.json) */
+        var WOODS8E={wood:634, village:184, conifer:376, edge:354, stream:202}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
+        var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0};
+        world.trees.children.forEach(function(im){ (im.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(im.material.side!==THREE.DoubleSide) dBad.push("a deciduous habit not drawn on both faces"); if(!im.castShadow) dBad.push("a deciduous habit casts no shadow"); });
+        world.conifers.children.forEach(function(im){ K.conifer+=(im.userData.kinds||[]).length; });
+        (world.scrub.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(world.scrub.material.side!==THREE.DoubleSide) dBad.push("the scrub not drawn on both faces");
+        Object.keys(WOODS8E).forEach(function(k){ if(K[k]!==WOODS8E[k]) dBad.push(k+" "+K[k]+", 8E "+WOODS8E[k]); });
+        var tb=kit.broad.map(tri), tc=kit.conifer.map(tri), ts=tri(kit.scrub);
+        tb.forEach(function(n,i){ if(n>KIT8E.broad[i]) dBad.push("deciduous habit "+i+": "+n+" triangles, 8E's "+KIT8E.broad[i]); });
+        tc.forEach(function(n,i){ if(n!==KIT8E.conifer[i]) dBad.push("conifer "+i+": "+n+" triangles, 8E's "+KIT8E.conifer[i]); });
+        if(ts>KIT8E.scrub) dBad.push("the bush: "+ts+" triangles, 8E's "+KIT8E.scrub);
+        ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
+          !dBad.length, JSON.stringify(K)+"; triangles a tree: deciduous "+tb.join(", ")+" (8E "+KIT8E.broad.join(", ")+"), conifers "+tc.join(", ")+", the bush "+ts+" (8E "+KIT8E.scrub+")"+(dBad.length?"; WRONG: "+dBad.join("; "):""));
+        /* (e) the near ground */
+        var eBad=[], U=groundMesh.material.userData.U;
+        if(U.uDetail.value.x!==(lowTier?0:GDETAIL.amount)) eBad.push("the detail "+U.uDetail.value.x+" at this tier (lowTier "+lowTier+")");
+        U.uDetail.value.x=GDETAIL.amount; setClock(590,{instant:true,force:true,camera:false}); finishTween();
+        aim([285,289],[-1.0,0.13,0.18],40);
+        var e1=grab(); U.uDetail.value.x=0; var e0=grab(); U.uDetail.value.x=GDETAIL.amount;
+        var nd=0, l1=0, l0=0; for(var ei=0;ei<e1.length;ei+=4) if(e1[ei]!==e0[ei]||e1[ei+1]!==e0[ei+1]||e1[ei+2]!==e0[ei+2]){ nd++; l1+=lum(e1,ei); l0+=lum(e0,ei); }
+        var tone=nd?l1/l0:1; if(nd<2000) eBad.push("the detail drawn on "+nd+" pixels near the eye (want at least 2,000 of "+W0*H0+")"); if(Math.abs(tone-1)>0.01) eBad.push("the near ground's mean tone "+tone.toFixed(3)+" times without the detail");
+        /* its normalisation: each shader cell's mean grey (GDETAIL.lum, by the shader's own cell index) that of the cell the ground's shader
+           samples, read through the GPU as the shader reads it (the cell's interior at 256 x 256 points, near the texture's own size, so that
+           no coarse mipmap blends a neighbour in: tuv's own formula, the texture as uploaded, flipped by three), within 2% */
+        var lmap=groundMesh.material.map, lrt=new THREE.WebGLRenderTarget(256,256), lb=new Uint8Array(256*256*4), lsc=new THREE.Scene(), lcam=new THREE.OrthographicCamera(-1,1,1,-1,0,1), lw=[];
+        var lmat=new THREE.ShaderMaterial({uniforms:{map:{value:lmap}, ci:{value:0}, cj:{value:0}}, depthTest:false, depthWrite:false,
+          vertexShader:"varying vec2 vU; void main(){ vU=uv; gl_Position=vec4(position.xy,0.0,1.0); }",
+          fragmentShader:"uniform sampler2D map; uniform float ci, cj; varying vec2 vU; void main(){ gl_FragColor=texture2D(map,vec2(fract(vU.x)*0.234375+0.0078125+ci*0.25, fract(vU.y)*0.3125+0.0104167+cj*0.3333333)); }"});
+        var lq=new THREE.Mesh(new THREE.PlaneGeometry(2,2),lmat); lsc.add(lq);
+        var lsr=lmap&&lmap.encoding===THREE.sRGBEncoding, llin=function(v){ v/=255; return lsr?(v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4)):v; };
+        if(!lmap) eBad.push("the landscape's ground without its texture");
+        else for(var lg=0;lg<12;lg++){ lmat.uniforms.ci.value=lg%4; lmat.uniforms.cj.value=Math.floor(lg/4);
+          renderer.setRenderTarget(lrt); renderer.clear(); renderer.render(lsc,lcam); renderer.readRenderTargetPixels(lrt,0,0,256,256,lb); renderer.setRenderTarget(null);
+          var ls=0; for(var li=0;li<lb.length;li+=4) ls+=0.2126*llin(lb[li])+0.7152*llin(lb[li+1])+0.0722*llin(lb[li+2]); ls/=256*256;
+          var lr=ls/GDETAIL.lum[lg]; lw.push(lr); if(Math.abs(lr-1)>0.02) eBad.push("cell "+lg+": its mean "+ls.toFixed(4)+" as sampled, GDETAIL's "+GDETAIL.lum[lg].toFixed(4)); }
+        lrt.dispose(); lmat.dispose(); lq.geometry.dispose();
+        placeCamera(VANTAGE.field); settle(8,true); var o1=grab(); U.uDetail.value.x=0; var o0=grab(); U.uDetail.value.x=GDETAIL.amount; var od=diff(o1,o0,0); if(od) eBad.push("the Field vantage "+od+" pixels off without the detail (all its ground beyond the far edge)");
+        setMode("staff"); settle(6,true); var p1=grab(); U.uDetail.value.x=0; var p0=grab(); U.uDetail.value.x=GDETAIL.amount; var pdd=diff(p1,p0,0); if(pdd) eBad.push("the paper map "+pdd+" pixels off without the detail");
+        setMode("terrain"); settle(4,true);
+        ck("the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural ground, its mean tone kept (each cell's mean that of the cell the shader samples), nothing of it beyond its far edge, none on the paper map, off under lowTier",
+          !eBad.length, nd+" pixels near the eye (the low Pratzen view, "+W0+" x "+H0+"), their tone "+tone.toFixed(3)+" times without it; each of the 12 cells' means as sampled "+(lw.length?Math.min.apply(null,lw).toFixed(3)+" to "+Math.max.apply(null,lw).toFixed(3):"(none)")+" times GDETAIL's; the Field vantage "+od+" and the paper map "+pdd+" pixels off without it"+(eBad.length?"; WRONG: "+eBad.join("; "):""));
+      } catch(err){ ck("water, woods and the near ground (8F): the checks ran", false, "threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+      } finally {
+        rt.dispose(); groundMesh.material.userData.U.uDetail.value.x=keep8.det; renderer.setClearColor(keep8.cc,keep8.ca);
+        if(DISPLAY.factor!==keep8.f) setDisplayFactor(keep8.f);
+        if(mode!==keep8.mode) setMode(keep8.mode); setPresentation(keep8.pres); setClock(keep8.t,{instant:true,force:true,camera:false}); finishTween();
+        landCam.position.copy(keep8.pos); orbitTarget.copy(keep8.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=keep8.fc; settle(4,true);
+      }
+    })();
 
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
