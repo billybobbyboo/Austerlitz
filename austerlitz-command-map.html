@@ -5471,6 +5471,7 @@ function coverAtlas(){
   _atlas=new THREE.CanvasTexture(c);
   _atlas.wrapS=_atlas.wrapT=THREE.ClampToEdgeWrapping;
   _atlas.anisotropy=8;
+  atlasLum(d,CW);   /* Stage 8, 8F: each cell's mean grey, for the near detail (from the pixels in hand: no readback of the canvas) */
   photoAtlas();
   return _atlas;
 }
@@ -5514,6 +5515,7 @@ function photoAtlas(){
     });
     x.putImageData(pattern,0,0);
     _atlas.needsUpdate=true;
+    atlasLum(d,c.width);   /* Stage 8, 8F: the means again, of the photographs (the pixels just painted) */
     if(typeof requestRender==="function") requestRender(2);
     photoNormal();
   }
@@ -5598,6 +5600,7 @@ var GROUND_FRAG_HEAD=[
   "uniform sampler2D uCovA; uniform sampler2D uCovB; uniform sampler2D uMl; uniform sampler2D uField; uniform sampler2D uVS;",
   "uniform vec4 uCovG; uniform vec2 uCovN; uniform vec4 uMlG; uniform vec2 uMlN; uniform vec4 uVSG; uniform vec2 uVSN; uniform vec4 uFieldG;",
   "uniform vec4 uPondS; uniform vec4 uPondM; uniform vec3 uPal[8]; uniform float uMode; uniform float uVSOn; uniform float uDebug;",
+  "uniform vec4 uDetail; uniform vec2 uDetailR; uniform vec2 uDetailC; uniform float uCellLum[12];",   /* Stage 8, 8F: the near detail (GDETAIL) */
   /* COVER_ML, four nodes along x to a texel (uMlT its size in texels): nodes i0 to i0+3 of row j, and coverMlAt */
   "uniform vec2 uMlT;",
   "vec4 gMlRow(float i0,float j){ float I=floor(i0/4.0), c=i0-4.0*I; vec2 r=(vec2(I,j)+0.5)/uMlT;",
@@ -5633,6 +5636,18 @@ var GROUND_FRAG_ATLAS=[
   "}",
   "#endif"
 ].join("\n");
+/* Stage 8, 8F: the near detail (GDETAIL), the texel scaled by a finer sample of its own cell, near the eye, on the natural ground only (WebGL 2's
+   textureGrad: its own gradients, so no mip seam at a tile's wrap) */
+var GROUND_FRAG_DETAIL=[
+  "#if __VERSION__ >= 300",
+  "  if(uMode>0.5&&uMode<1.5&&uDetail.x>0.0){",
+  "    float gDf=uDetail.x*(1.0-smoothstep(uDetail.y,uDetail.z,length(vViewPosition)));",
+  "    if(gDf>0.002){ vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w;",
+  "      vec2 gDt=vec2(fract(gDu.x)*0.234375+0.0078125+ci*0.25, fract(gDu.y)*0.3125+0.0104167+cj*0.3333333), gDk=vec2(0.234375,0.3125);",
+  "      vec3 gDc=mapTexelToLinear(textureGrad(map,gDt,dFdx(gDu)*gDk,dFdy(gDu)*gDk)).rgb;",
+  "      float gDl=dot(gDc,vec3(0.2126,0.7152,0.0722))/max(uCellLum[int(gCell+0.5)],0.001);",
+  "      texelColor.rgb*=mix(1.0,clamp(gDl,uDetailC.x,uDetailC.y),gDf); } }",
+  "#endif",""].join("\n");
 var GROUND_FRAG_MAIN=[
   "float gCls=vCover, gCrop=0.0; vec3 gCol=vec3(1.0);",
   "if(uMode>0.5){",
@@ -5672,6 +5687,28 @@ var GROUND_FRAG_MAIN=[
   "#endif",
   "vec4 diffuseColor = vec4( diffuse, opacity );"
 ].join("\n");
+/* Stage 8, implementation PR 8F (decision 247 (a): "a finer near-ground detail layer"; docs/STAGE8_SPEC.md sections 7.4 and 18): near the eye
+   the ground's texture is given a second, finer sample of its own cell of the atlas (each class its own texture, so no new class and no new
+   colour: the sample's grey over the cell's mean grey scales the texel, clamped, so the class's tone is kept on average), turned and scaled so
+   that its tiles fall neither on the coarse sample's nor on the grid's; full to `near` units from the eye, fading to nothing at `far`; in world
+   co-ordinates (anchored: it does not swim as the eye moves). Only the landscape's natural ground (uMode 1): not the paper map, not the going
+   layer, not the apron. Not on a low tier (lowTier, decision 236: the phone's frame kept as P5 measured it; groundDetail). The classes, the
+   frost, the strips and the hollows are the shader's as before (they colour gCol, not the texel). Every value a design value */
+var GDETAIL={amount:0.55, near:14, far:60, k:7.3, rot:0.61, lo:0.62, hi:1.38, lum:[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]};
+/* each shader cell's mean grey (linear, as the shader reads the texel), over its period, by the shader's own cell index (gCell): three uploads
+   the canvas flipped (flipY, its default), so the shader's row cj (tuv's v from the texture's foot) is the canvas's row 2-cj; made again when
+   the photographs repaint the atlas, from the pixels the painter holds (d, the canvas's width W: a readback of the canvas would be one more
+   than the photographs' own, and Chrome warns of repeated readbacks) */
+function atlasLum(d,W){
+  var R=512, IN=480, G=16, srgb=_atlas&&_atlas.encoding===THREE.sRGBEncoding, flip=!(_atlas&&_atlas.flipY===false);
+  var lin1=function(v){ v/=255; return srgb?(v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4)):v; };
+  for(var k=0;k<12;k++){ var cx=(k%4)*R, cy=(flip?2-Math.floor(k/4):Math.floor(k/4))*R, sum=0, n=0;
+    for(var j=G;j<G+IN;j+=4) for(var i=G;i<G+IN;i+=4){ var o=((cy+j)*W+(cx+i))*4; sum+=0.2126*lin1(d[o])+0.7152*lin1(d[o+1])+0.0722*lin1(d[o+2]); n++; }
+    GDETAIL.lum[k]=Math.max(1e-3,sum/n); }
+  if(typeof requestRender==="function") requestRender(2);
+}
+/* the detail on or off (app.js: off under lowTier) */
+function groundDetail(on){ if(groundMesh&&groundMesh.material.userData.U) groundMesh.material.userData.U.uDetail.value.x=on?GDETAIL.amount:0; }
 /* the data the shader reads, made once: the six cover rasters (as covAt reads them), the local relief (COVER_ML), the
    field-strip table, and the viewshed (refreshed when one is drawn) */
 var _gTex=null;
@@ -5703,7 +5740,9 @@ function groundUniforms(){
     uField:{value:T.field}, uFieldG:{value:new THREE.Vector4(64,16,128,32)},
     uVS:{value:T.vs}, uVSN:{value:new THREE.Vector2(G_NX,G_NZ)}, uVSG:{value:new THREE.Vector4(G_X0,G_Z0,G_DX,G_DZ)},
     uPondS:{value:new THREE.Vector4(SATS[0],SATS[1],28,10.5)}, uPondM:{value:new THREE.Vector4(MENI[0],MENI[1],23,9)},
-    uPal:{value:groundPal("natural")}, uMode:{value:1}, uVSOn:{value:0}, uDebug:{value:0}};
+    uPal:{value:groundPal("natural")}, uMode:{value:1}, uVSOn:{value:0}, uDebug:{value:0},
+    uDetail:{value:new THREE.Vector4(GDETAIL.amount,GDETAIL.near,GDETAIL.far,GDETAIL.k)}, uDetailR:{value:new THREE.Vector2(Math.cos(GDETAIL.rot),Math.sin(GDETAIL.rot))},
+    uDetailC:{value:new THREE.Vector2(GDETAIL.lo,GDETAIL.hi)}, uCellLum:{value:GDETAIL.lum}};
 }
 function atlasShader(mat){
   var U=groundUniforms(); mat.userData.U=U;
@@ -5721,6 +5760,7 @@ function atlasShader(mat){
         "#ifdef USE_MAP\n"+
         "  vec4 texelColor=gAtlas(map,tuv);\n"+
         "  texelColor=mapTexelToLinear(texelColor);\n"+
+        GROUND_FRAG_DETAIL+
         "  diffuseColor*=texelColor;\n"+
         "#endif")
       .replace("#include <color_fragment>",
@@ -5833,13 +5873,74 @@ function mereLevel(cc,rx,rz,base){
    data: the Satschan mere "frozen on 2 December"; the phase-8 texts' guns firing "down on the ice"): smoother than before, taking
    the computed sun's sheen and the sky (the environment map), with a lighter rim where the shore ice meets the bank. Their
    outlines stay schematic (decision 27); no cracks, holes, snow or figures in the water. The banks and streams are unchanged. */
-var WATER_COL={ice:0x4E5C66, iceRim:0x75838B, bank:0x4E5A4C, stream:0x587A8E};
-var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02};
+/* Stage 8, implementation PR 8F (decision 246 (a); docs/STAGE8_SPEC.md sections 5 and 18): the meres' ice and the streams by their material
+   and light alone. Their outlines, their levels, the shore ice's ring and the streams' lines and widths are 4E's and 8A's, unchanged. On the
+   landscape the ice is clearer, darker and glossier toward the middle (iceClear) and rimed toward the shore (iceFrost: "ce miroir, blanchi par
+   les frimas", Segur 1877, t. II p. 473, a memoir, grade C: the one description of the ice's look read, section 5.2), its margin subdued toward the field's own tones so that it does not stand out
+   as a bright plate's edge (the owner: "Tune the bright ice margins so they integrate with the surrounding terrain"), a broad variation of
+   tone of low contrast (no line, crack, hole, open water or snow: docs/STAGE4_SPEC.md section F.1's rule as 4E built it), the sky reflected
+   more at a grazing view over the clear ice; the shore ice a band feathered at both its edges (no hard ring), drawn after the ice (its render
+   order) over the ice, which writes no depth (so the band never fights it for the pixel at a grazing view, and only the drawn ground hides
+   it: the shore where 4E drew it). The streams still (nothing in them moves: no clock and no time is read, so an idle page
+   draws no frame for them), darker and less blue (streamLand), their banks darker (bankLand), the sky reflected at a grazing view. Every value
+   a design value. The paper map draws the water as before 8F (ice, stream, bank; waterPresentation) */
+var WATER_COL={ice:0x4E5C66, iceRim:0x75838B, bank:0x4E5A4C, stream:0x587A8E,   /* the paper map's (and the landscape's until 8F) */
+  iceClear:0x3E494F, iceFrost:0x5E6664, iceBand:0x5A615E, bankLand:0x454C40, streamLand:0x3E4A51};   /* the landscape's since 8F */
+var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02,
+  clear:0.20, rime:0.62,   /* since 8F: the landscape's roughness over the clear middle and the rimed margin */
+  margin:[0.38,1.0],       /* the rimed margin, from 0.38 of the mere's radius to its shore (the disc's and the ring's own radius) */
+  patch:0.11, fine:0.37,   /* the broad patches' and the rime's scales, in cycles per world unit (anchored to the ground: nothing moves) */
+  tone:0.10,               /* the broad variation of tone, its whole span */
+  sky:1.4,                 /* the sky's reflection added at a grazing view over the clear ice (its weight at the horizon) */
+  band:[0.35,0.55]};       /* the shore band's opacity: up from its inner edge over 0.35 of its width, down to nothing at the shore from 0.55 */
+var STREAM={rough:0.30, env:0.40, tone:0.10, scale:1.3, sky:2.0};   /* since 8F: the landscape's streams (roughness, the environment's weight,
+                                                                       a still variation of tone and its scale, the sky at a grazing view) */
+/* the noise the water's tones read: a value noise over the world plane, three octaves; a hash with no sine (stable at mediump) */
+var WATER_GLSL=["float wHash(vec2 p){ vec3 q=fract(vec3(p.xyx)*0.1031); q+=dot(q,q.yzx+33.33); return fract((q.x+q.y)*q.z); }",
+  "float wNoise(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); return mix(mix(wHash(i),wHash(i+vec2(1.0,0.0)),f.x),mix(wHash(i+vec2(0.0,1.0)),wHash(i+vec2(1.0,1.0)),f.x),f.y); }",
+  "float wFbm(vec2 p){ return 0.55*wNoise(p)+0.28*wNoise(p*2.1+3.7)+0.17*wNoise(p*4.3+9.1); }"].join("\n");
+function glslF(v){ var t=String(v); return /[.e]/.test(t)?t:t+".0"; }
+/* the meres' ice (the disc) and the shore ice (the band) on the landscape */
+function iceHook(mat,band){
+  var U={uIceA:{value:lin(WATER_COL.iceClear)}, uIceF:{value:lin(band?WATER_COL.iceBand:WATER_COL.iceFrost)}};
+  mat.onBeforeCompile=function(sh){
+    if(typeof atmoUniforms==="function") atmoUniforms(sh);   /* the atmosphere's uniforms (app.js), as every material gets them */
+    sh.uniforms.uIceA=U.uIceA; sh.uniforms.uIceF=U.uIceF;
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nvarying vec2 vIceUv; varying vec3 vIceW;")
+      .replace("#include <begin_vertex>","#include <begin_vertex>\nvIceUv=uv; vIceW=(modelMatrix*vec4(transformed,1.0)).xyz;");
+    sh.fragmentShader=sh.fragmentShader.replace("#include <common>","#include <common>\nvarying vec2 vIceUv; varying vec3 vIceW; uniform vec3 uIceA, uIceF;\n"+WATER_GLSL)
+      .replace("#include <color_fragment>","#include <color_fragment>\n"+
+        "float iR=length(vIceUv-0.5)*2.0, iP=wFbm(vIceW.xz*"+glslF(ICE.patch)+"), iM=1.0;\n"+
+        (band?"float iT=clamp((iR-"+glslF(ICE.rim)+")/"+glslF(1-ICE.rim)+",0.0,1.0); diffuseColor.a*=smoothstep(0.0,"+glslF(ICE.band[0])+",iT)*(1.0-smoothstep("+glslF(ICE.band[1])+",1.0,iT));\n"
+             :"iM=clamp(smoothstep("+glslF(ICE.margin[0])+","+glslF(ICE.margin[1])+",iR)+0.40*(iP-0.5)+0.18*(wFbm(vIceW.xz*"+glslF(ICE.fine)+"+7.0)-0.5),0.0,1.0);\n")+
+        "diffuseColor.rgb=mix(uIceA,uIceF,iM)*("+glslF(1-ICE.tone/2)+"+"+glslF(ICE.tone)+"*iP);")
+      .replace("#include <roughnessmap_fragment>","#include <roughnessmap_fragment>\nroughnessFactor=mix("+glslF(ICE.clear)+","+glslF(ICE.rime)+",iM);")
+      .replace("#include <lights_fragment_maps>","#include <lights_fragment_maps>\n"+
+        "{ float iG=1.0-max(normalize(cameraPosition-vIceW).y,0.0); radiance*=1.0+"+glslF(ICE.sky)+"*(1.0-iM)*iG*iG*iG*iG; }");
+  };
+  mat.customProgramCacheKey=function(){ return band?"ice8f-band":"ice8f"; };   /* its own program: never another material's */
+  return mat;
+}
+/* the streams on the landscape: their tone still, the sky at a grazing view */
+function streamHook(mat){
+  mat.onBeforeCompile=function(sh){
+    if(typeof atmoUniforms==="function") atmoUniforms(sh);
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nvarying vec3 vStW;")
+      .replace("#include <begin_vertex>","#include <begin_vertex>\nvStW=(modelMatrix*vec4(transformed,1.0)).xyz;");
+    sh.fragmentShader=sh.fragmentShader.replace("#include <common>","#include <common>\nvarying vec3 vStW;\n"+WATER_GLSL)
+      .replace("#include <color_fragment>","#include <color_fragment>\ndiffuseColor.rgb*="+glslF(1-STREAM.tone/2)+"+"+glslF(STREAM.tone)+"*wFbm(vStW.xz*"+glslF(STREAM.scale)+");")
+      .replace("#include <lights_fragment_maps>","#include <lights_fragment_maps>\n"+
+        "{ float sG=1.0-max(normalize(cameraPosition-vStW).y,0.0); radiance*=1.0+"+glslF(STREAM.sky)+"*sG*sG*sG; }");
+  };
+  mat.customProgramCacheKey=function(){ return "stream8f"; };
+  return mat;
+}
+var WATER_MATS=null;   /* {land, paper}: the landscape's materials (8F's) and the paper map's (8E's, as before 8F); waterPresentation puts them in place */
 function buildWater(scene){
-  var iceMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,
-    transparent:true,opacity:0.96});
-  var rimMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.iceRim),roughness:ICE.roughness+0.2,metalness:0.0,envMapIntensity:ICE.env*0.6,
-    transparent:true,opacity:0.96});
+  var iceMat=iceHook(new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,
+    transparent:true,opacity:0.96,depthWrite:false}),false);   /* 8F: no depth written (the band over it; nothing visible lies under the ice) */
+  var rimMat=iceHook(new THREE.MeshStandardMaterial({color:lin(WATER_COL.iceRim),roughness:ICE.roughness+0.2,metalness:0.0,envMapIntensity:ICE.env*0.6,
+    transparent:true,opacity:0.96}),true);
   function mere(cc,rx,rz,base){
     var m=new THREE.Mesh(new THREE.CircleGeometry(1,48),iceMat);
     m.rotation.x=-Math.PI/2; m.position.set(cc[0],mereLevel(cc,rx,rz,base),cc[1]); m.scale.set(rx,rz,1);
@@ -5848,14 +5949,21 @@ function buildWater(scene){
     var r=new THREE.Mesh(new THREE.RingGeometry(ICE.rim,1,48,1),rimMat);   /* the shore ice: its outer edge the mere's own */
     r.rotation.x=-Math.PI/2; r.position.set(cc[0],mereLevel(cc,rx,rz,base)+ICE.rimLift,cc[1]); r.scale.set(rx,rz,1);
     r.userData.mere=[cc,rx,rz,base]; r.userData.mereLift=ICE.rimLift;
+    r.renderOrder=1;   /* 8F: drawn after its mere's ice whatever the eye (both transparent, their centres a lift apart: an eye looking up would sort
+                          the band first), so that its feathered edges show the ice under them, not the ground */
     scene.add(r); iceRims.push(r);   /* not water: the landscape's ice surface only (hidden on the paper map) */
   }
   mere(SATS,28,10.5,-3.85);
   mere(MENI,23,9,-3.95);
   /* Stage 8, implementation PR 8A (decision 253): the ribbons drawn on both faces (ribbon(): wound facing up), so that a sliver lifted over a
      crest and facing away from the eye, which the 10.33x relief makes, is drawn as the rest of its ribbon is */
-  var bankMat=matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide});
-  var streamMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide});
+  var bankMat=matte({color:WATER_COL.bankLand,roughness:0.96,side:THREE.DoubleSide});
+  var streamMat=streamHook(new THREE.MeshStandardMaterial({color:lin(WATER_COL.streamLand),roughness:STREAM.rough,metalness:0.0,envMapIntensity:STREAM.env,side:THREE.DoubleSide}));
+  /* the paper map's water: 8E's materials, so that the paper map draws it as before 8F */
+  WATER_MATS={land:{ice:iceMat, bank:bankMat, stream:streamMat},
+    paper:{ice:new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,transparent:true,opacity:0.96}),
+      bank:matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide}),
+      stream:new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide})}};
   ribbon(scene,GOLDBACH,4.6,0.16,bankMat,waterMeshes,"bank","stream");
   ribbon(scene,GOLDBACH,2.8,0.26,streamMat,waterMeshes,"stream","stream");
   ribbon(scene,LITAVA,5.0,0.16,bankMat,waterMeshes,"bank","stream");
@@ -5864,6 +5972,14 @@ function buildWater(scene){
     ribbon(scene,b,2.4,0.16,bankMat,waterMeshes,"bank","stream");
     ribbon(scene,b,1.4,0.26,streamMat,waterMeshes,"stream","stream");
   });
+}
+/* the water's presentation (since 8F): each water mesh given the landscape's material (8F's) or the paper map's (8E's: the paper map draws the
+   water as before 8F); app.js setMode calls it, before it sets the water's opacity as before */
+function waterKind(m){ return m.userData.mere?"ice":(m.userData.drape&&m.userData.drape.kind); }
+function waterPresentation(staff){
+  if(!WATER_MATS) return;
+  var S=staff?WATER_MATS.paper:WATER_MATS.land;
+  waterMeshes.forEach(function(m){ var k=waterKind(m); if(S[k]) m.material=S[k]; });
 }
 function buildRoads(scene){
   var hi=matte({color:LAND_COL.road.highway,roughness:0.94,side:THREE.DoubleSide});   /* Stage 8, 8A: both faces, as the streams' (buildWater) */
@@ -6051,7 +6167,7 @@ function buildWoods(scene){
   treeMesh=new THREE.Group(); coniferMesh=new THREE.Group();
   var BARE=LAND_COL.bare;
   byVar.forEach(function(list,vi){
-    var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true}),Math.max(1,list.length));
+    var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,list.length));   /* 8F: both faces (the open shells) */
     im.castShadow=true; im.count=Math.max(1,list.length);
     list.forEach(function(t,k){
       d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -6100,7 +6216,7 @@ function buildWoods(scene){
       scrub.push([x,displayHeight(x,z),z,0.45+rnd()*0.45,"stream"]);   /* bank scrub along the streams: not a wood */
     }
   });
-  scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true}),Math.max(1,scrub.length));
+  scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrub.length));   /* 8F: both faces */
   scrubMesh.castShadow=false; scrubMesh.receiveShadow=true;
   scrub.forEach(function(t,k){
     d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -6115,7 +6231,17 @@ function buildWoods(scene){
 }
 
 /* geometry kit: low-poly crowns merged with their trunks; four bare deciduous
-   habits, two conifers, one bush */
+   habits, two conifers, one bush.
+   Stage 8, implementation PR 8F (decision 247 (a): "airier deciduous silhouettes, restrained variation"; docs/STAGE8_SPEC.md sections 7.3 and 18):
+   the four deciduous habits and the bush bare and open, as the woods stand in December. Each crown a twig shell: the build's crown (its
+   icosahedron and its jitter, so that its envelope, and a wood's mass from afar, are 8E's), a share of its faces kept by a seeded choice
+   (TREE8F.keep) and each shrunk toward its centre (TREE8F.shrink), so that the shell is perforated and its far side, the sky, the ground and
+   the troops beyond show through; inside it the trunk forks into four main limbs toward the crown, one into each lesser crown, each limb ending
+   in two twigs toward the shell. Drawn on both faces (the shell's inside is seen through its gaps), opaque: nothing sorted, no alpha, its
+   shadow its own shape. Each habit's triangles fewer than 8E's (the self-test holds them against 8E's kit). The conifers are 8E's (their
+   shares the build's, pending evidence). Design values, chosen from the prototypes measured first (tools/stage8/protos/woods.js's t-airy;
+   tools/stage8/woods-8f.js; docs/STAGE8_SPEC.md section 18) */
+var TREE8F={keep:0.42, shrink:0.7, scrubKeep:0.45, scrubShrink:0.72};
 function mergeParts(parts){
   var P=[],N=[];
   parts.forEach(function(pt){
@@ -6137,36 +6263,53 @@ function mergeParts(parts){
 var _kit=null;
 function treeKit(){
   if(_kit) return _kit;
-  /* a crown is an icosahedron pushed in and out along its normals, so no two silhouettes match */
-  function crown(seed){
-    var g=new THREE.IcosahedronGeometry(1,2), pa=g.attributes.position.array;
-    for(var i=0;i<pa.length;i+=3){
-      var k=0.78+0.44*hash2(Math.round(pa[i]*13+seed),Math.round(pa[i+1]*7+pa[i+2]*11));
-      pa[i]*=k; pa[i+1]*=k*0.92; pa[i+2]*=k;
-    }
-    g.computeVertexNormals(); return g;
-  }
-  var sph=crown(1), sph2=crown(2), sph3=crown(3), trunk=new THREE.CylinderGeometry(0.11,0.16,1,5), cone=new THREE.ConeGeometry(1,1,7);
+  var trunk=new THREE.CylinderGeometry(0.11,0.16,1,5), cone=new THREE.ConeGeometry(1,1,7);
   var T=function(h){ return {geo:trunk,p:[0,h/2,0],s:[1,h,1]}; };
+  /* 8F: the habits' crowns as 8E drew them (the seed of each crown's jitter, its centre and its radii) and their trunks' heights */
+  var HAB=[{T:1.1, cr:[[1,[0,2.0,0],[1.25,1.05,1.25]],[2,[0.55,2.35,0.2],[0.75,0.7,0.75]],[3,[-0.5,2.25,-0.3],[0.7,0.62,0.7]]]},   /* round-headed oak */
+           {T:1.5, cr:[[2,[0,2.4,0],[0.95,1.1,0.95]],[3,[0.1,3.4,0.1],[0.7,0.85,0.7]]]},                                      /* tall lime, two storeys of crown */
+           {T:0.8, cr:[[3,[0,1.6,0],[1.55,0.85,1.45]],[1,[0.8,1.7,0],[0.7,0.55,0.7]],[2,[-0.75,1.65,0.3],[0.65,0.5,0.65]]]}, /* squat, wide-spreading */
+           {T:1.2, cr:[[2,[0,2.4,0],[0.62,1.5,0.62]],[3,[0,3.5,0],[0.45,0.8,0.45]]]}];                                     /* poplar-like, narrow and tall */
   _kit={
-    broad:[
-      /* round-headed oak */
-      mergeParts([T(1.1),{geo:sph,p:[0,2.0,0],s:[1.25,1.05,1.25]},{geo:sph2,p:[0.55,2.35,0.2],s:[0.75,0.7,0.75]},{geo:sph3,p:[-0.5,2.25,-0.3],s:[0.7,0.62,0.7]}]),
-      /* tall lime, two storeys of crown */
-      mergeParts([T(1.5),{geo:sph2,p:[0,2.4,0],s:[0.95,1.1,0.95]},{geo:sph3,p:[0.1,3.4,0.1],s:[0.7,0.85,0.7]}]),
-      /* squat, wide-spreading */
-      mergeParts([T(0.8),{geo:sph3,p:[0,1.6,0],s:[1.55,0.85,1.45]},{geo:sph,p:[0.8,1.7,0],s:[0.7,0.55,0.7]},{geo:sph2,p:[-0.75,1.65,0.3],s:[0.65,0.5,0.65]}]),
-      /* poplar-like, narrow and tall */
-      mergeParts([T(1.2),{geo:sph2,p:[0,2.4,0],s:[0.62,1.5,0.62]},{geo:sph3,p:[0,3.5,0],s:[0.45,0.8,0.45]}])
-    ],
+    broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); h.cr.forEach(function(C){ treeShell(P,C[0],C[1],C[2],TREE8F.keep,TREE8F.shrink); }); return treeGeo(P); }),
     conifer:[
       mergeParts([T(0.6),{geo:cone,p:[0,2.3,0],s:[0.95,3.4,0.95]},{geo:cone,p:[0,1.35,0],s:[1.25,1.4,1.25]}]),
       mergeParts([T(0.9),{geo:cone,p:[0,3.0,0],s:[0.8,4.2,0.8]}])
     ],
-    scrub: mergeParts([{geo:sph,p:[0,0.5,0],s:[1,0.6,0.9]},{geo:sph,p:[0.6,0.4,0.2],s:[0.6,0.45,0.55]}])
+    scrub:(function(){ var P=[]; treePrism(P,[0,0,0],[0.05,0.55,0],0.05,0.02,3); treePrism(P,[0.1,0,0.05],[0.55,0.45,0.2],0.04,0.016,3);
+      treeShell(P,1,[0,0.5,0],[1,0.6,0.9],TREE8F.scrubKeep,TREE8F.scrubShrink); treeShell(P,1,[0.6,0.4,0.2],[0.6,0.45,0.55],TREE8F.scrubKeep,TREE8F.scrubShrink); return treeGeo(P); })()
   };
   return _kit;
 }
+/* 8F: a tapered prism from p0 to p1 (radii r0, r1, n sides, turned by tw), its triangles wound outward */
+function treePrism(P,p0,p1,r0,r1,n,tw){
+  var ax=p1[0]-p0[0], ay=p1[1]-p0[1], az=p1[2]-p0[2], L=Math.hypot(ax,ay,az)||1; ax/=L; ay/=L; az/=L;
+  var hx=Math.abs(ay)<0.9?0:1, hy=Math.abs(ay)<0.9?1:0, ux=hy*az, uy=-hx*az, uz=hx*ay-hy*ax, ul=Math.hypot(ux,uy,uz)||1; ux/=ul; uy/=ul; uz/=ul;
+  var vx=ay*uz-az*uy, vy=az*ux-ax*uz, vz=ax*uy-ay*ux, ring=function(p,r,i){ var a=2*Math.PI*i/n+(tw||0), c=Math.cos(a)*r, s=Math.sin(a)*r; return [p[0]+ux*c+vx*s, p[1]+uy*c+vy*s, p[2]+uz*c+vz*s]; };
+  for(var i=0;i<n;i++){ var a0=ring(p0,r0,i), a1=ring(p0,r0,i+1), b0=ring(p1,r1,i), b1=ring(p1,r1,i+1);
+    P.push(a0[0],a0[1],a0[2], a1[0],a1[1],a1[2], b1[0],b1[1],b1[2], a0[0],a0[1],a0[2], b1[0],b1[1],b1[2], b0[0],b0[1],b0[2]); }
+}
+/* 8F: a crown's twig shell: 8E's crown (crown(seed): the icosahedron, detail 2, pushed in and out by the same hash), its faces kept by a seeded
+   choice (a share keep) and each shrunk toward its own centre (shrink), placed at c with the radii s */
+function treeShell(P,seed,c,s,keep,shrink){
+  var g=new THREE.IcosahedronGeometry(1,2), pa=g.attributes.position.array.slice(); g.dispose();
+  for(var i=0;i<pa.length;i+=3){ var k=0.78+0.44*hash2(Math.round(pa[i]*13+seed),Math.round(pa[i+1]*7+pa[i+2]*11)); pa[i]*=k; pa[i+1]*=k*0.92; pa[i+2]*=k; }
+  for(var f=0;f<pa.length/9;f++){ if(hash2(f*7+seed*131,seed*17+3)>keep) continue;
+    var o=f*9, cx=(pa[o]+pa[o+3]+pa[o+6])/3, cy=(pa[o+1]+pa[o+4]+pa[o+7])/3, cz=(pa[o+2]+pa[o+5]+pa[o+8])/3;
+    for(var v=0;v<3;v++){ var q=o+v*3; P.push(c[0]+s[0]*(cx+(pa[q]-cx)*shrink), c[1]+s[1]*(cy+(pa[q+1]-cy)*shrink), c[2]+s[2]*(cz+(pa[q+2]-cz)*shrink)); } }
+}
+/* 8F: the trunk to its fork, four main limbs into the main crown and one into each lesser crown, each limb ending in two twigs toward its shell;
+   each limb's direction a seeded jitter (vi the habit) */
+function treeLimbs(P,h,vi){
+  var F=[0,h.T,0]; treePrism(P,[0,0,0],F,0.16,0.11,6);
+  h.cr.forEach(function(C,ci){ var c=C[1], s=C[2], nL=ci===0?4:1;
+    for(var k=0;k<nL;k++){ var a=(ci===0?Math.PI/4+k*Math.PI/2:Math.atan2(c[2],c[0]))+0.5*(hash2(vi*17+ci*5+k,11)-0.5), e=ci===0?0.55+0.25*hash2(vi*13+k,5):0.0;
+      var tip=ci===0?[c[0]+Math.cos(a)*s[0]*0.55, c[1]+(e-0.2)*s[1]*0.6, c[2]+Math.sin(a)*s[2]*0.55]:[c[0],c[1],c[2]];
+      treePrism(P,F,tip,0.085,0.045,4,a);
+      for(var t=0;t<2;t++){ var b=a+(t?0.6:-0.6)+0.3*(hash2(vi*29+ci*7+k*3+t,23)-0.5), up=0.35+0.4*hash2(vi*31+k*5+t,41);
+        treePrism(P,tip,[c[0]+Math.cos(b)*s[0]*0.88*(ci===0?1:0.7), c[1]+up*s[1]*0.8, c[2]+Math.sin(b)*s[2]*0.88*(ci===0?1:0.7)],0.04,0.014,3,b); } } });
+}
+function treeGeo(P){ var g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferAttribute(P,3)); g.computeVertexNormals(); return g; }
 
 var CONTOUR_INTERVAL=1.5, CONTOUR_INDEX=4;
 /* the ground continues beyond the field, coarsely, until the fog takes it */
@@ -7193,6 +7336,7 @@ function init(){
   scene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);
 
   world=buildWorld(scene);
+  groundDetail(!lowTier);   /* Stage 8, 8F (decision 247 (a)): the near ground's detail, not on a low tier (decision 236: the phone's frame as P5 measured it) */
   setFXEnabled(true);
 
   overlayRoot=new THREE.Group(); scene.add(overlayRoot);
@@ -11366,6 +11510,7 @@ function setMode(m){
   world.dome.visible=!staff;
   syncLandscapeLayers();
   renderer.shadowMap.enabled=!staff;
+  waterPresentation(staff);   /* Stage 8, 8F (decision 246 (a)): the landscape's ice and streams (8F's materials), or the paper map's (8E's) */
   world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
   (world.iceRims||[]).forEach(function(r2){ r2.visible=!staff; });   /* Stage 4E: the shore ice is the landscape's */
 
@@ -19946,6 +20091,156 @@ var AUSTERLITZ_DEBUG=(function(){
       sIdle==="idle"&&src>0&&sWait==="waiting"&&sAmb==="ambient"&&sRM==="idle"&&(!HARNESS||sOff==="idle"),
       "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust, smoke or a broken formation's sway): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
       (HARNESS?"; the harness's own frames "+sOff+" (drift off under ?harness=1; AMBIENT_TEST turned it on for this check only)":""));
+
+    /* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md sections 5, 7.3, 7.4 and 18): water, woods and the near
+       ground. Self-contained: it keeps and restores what it changes; its renders are its own (the scene drawn into a target of the test's,
+       no post-processing). (a) The water's presentations: on the landscape every water mesh drawn with 8F's material (the streams and
+       banks in their landscape colours; the ice writing no depth, the shore band without a polygon offset and drawn after its ice); on the
+       paper map with 8E's: every parameter as 8E made it and no shader hook of its own (a pixel comparison with materials made afresh
+       would differ by the draw order alone, three sorting by the material's id). (b) Still: a view of the meres and the
+       Goldbach, 300 of the app's own frames run on the test's clock (ten seconds, the clock standing: the view's easings arrive), drawn,
+       300 more, drawn again: the same pixels (each frame asked for, so that anything the frames move would move); at rest the view asks no
+       frame. (c) The shore ice feathered: drawn alone from above, its light at its inner
+       edge and at the shore at most a tenth of its peak (no hard ring); the rimed margin lighter than the clear middle (the disc alone); in
+       the frame, at three clocks, the shore band at most ICE8F.SHORE times the field just beyond the shore and the rimed margin at most
+       ICE8F.MARGIN times it (integrated, the owner's word). (d) The woods: the trees and the scrub by kind as 8E drew them (WOODS8E), each
+       habit's triangles within 8E's (KIT8E) and the conifers' 8E's own, the open crowns drawn on both faces and casting shadows. (e) The near
+       ground: drawn near the eye on the natural ground (the low Pratzen view: pixels differ with it on and off) with its mean tone kept
+       (within 1% over them: 0.996 as built) and each cell's mean that of the cell the shader samples (read through the GPU), nothing of it
+       beyond its far edge (the Field vantage identical on and off), none on the paper map (identical on and off), on at this tier (the self-test's page is never low: lowTier's setting is css-test.js's to hold) */
+    (function(){
+      /* the margin's bounds, in the frame of (c)'s view (from above, 90 units off, 4x), the light against the field just beyond the shore:
+         8E's shore ice there 1.02 to 1.03 times the field and its ice at 0.8 of a mere's radius 1.15 to 1.17; Part A's prototype's margin
+         (w-ice's grey-white) 1.42 to 1.46 at 0.8; 8F's as first drawn, its margin a lighter grey and its band drawn over the ground by a polygon
+         offset, 1.20 at the shore and 1.26 to 1.28 at 0.8; 8F's as built 1.00 to 1.01 and 1.16 to 1.19 (09:00, 12:00, 15:00; docs/STAGE8_SPEC.md
+         section 18).
+         Design bounds: the shore within a tenth of the field, the rimed margin within a quarter */
+      var ICE8F={SHORE:1.10, MARGIN:1.25};
+      var keep8={f:DISPLAY.factor, mode:mode, pres:presentation, t:clock, pos:landCam.position.clone(), tgt:orbitTarget.clone(), fc:freeCam, det:groundMesh.material.userData.U.uDetail.value.x,
+        cc:renderer.getClearColor(new THREE.Color()), ca:renderer.getClearAlpha()};
+      var W0=480, H0=270, rt=new THREE.WebGLRenderTarget(W0,H0), B=new Uint8Array(W0*H0*4);
+      function grab(){ renderer.setRenderTarget(rt); renderer.clear(); renderer.render(scene,camera); renderer.readRenderTargetPixels(rt,0,0,W0,H0,B); renderer.setRenderTarget(null); return Uint8Array.from(B); }
+      function diff(a,b,th){ var n=0; for(var i=0;i<a.length;i+=4) if(Math.abs(a[i]-b[i])>th||Math.abs(a[i+1]-b[i+1])>th||Math.abs(a[i+2]-b[i+2])>th) n++; return n; }
+      function aim(map,dir,r){ var w=W(map[0],map[1]), y=groundY(w[0],w[1]), d=new THREE.Vector3(dir[0],dir[1],dir[2]).normalize().multiplyScalar(r);
+        tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,y+d.y,w[1]+d.z); orbitTarget.set(w[0],y,w[1]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true); settle(6,true); }
+      var _pv=new THREE.Vector3();
+      function pxAt(x,y,z){ _pv.set(x,y,z).project(camera); if(Math.abs(_pv.x)>1||Math.abs(_pv.y)>1||_pv.z<-1||_pv.z>1) return -1; return (Math.floor((_pv.y*0.5+0.5)*H0)*W0+Math.floor((_pv.x*0.5+0.5)*W0))*4; }
+      function lum(b,o){ return 0.2126*b[o]+0.7152*b[o+1]+0.0722*b[o+2]; }
+      var meres=world.water.filter(function(m){ return m.userData.mere; });
+      try{
+        setDisplayFactor(DISPLAY.defaultFactor); setMode("terrain"); setPresentation("watch");
+        /* (a) the two presentations */
+        var aBad=[], L8=WATER_MATS.land, P8=WATER_MATS.paper;
+        world.water.forEach(function(m){ var k=waterKind(m); if(m.material!==L8[k]) aBad.push("the landscape's "+k+" not drawn with 8F's material"); });
+        if(!L8.stream.color.equals(lin(WATER_COL.streamLand))||!L8.bank.color.equals(lin(WATER_COL.bankLand))) aBad.push("the landscape's streams or banks not in their landscape colours");
+        if(L8.ice.depthWrite) aBad.push("the landscape's ice writes its depth (the band would fight it for the pixel)");
+        world.iceRims.forEach(function(r){ if(r.material.polygonOffset) aBad.push("a shore band drawn with a polygon offset (over the ground at the shore)");
+          if(!(r.renderOrder>Math.max.apply(null,meres.map(function(m){ return m.renderOrder; })))) aBad.push("a shore band not drawn after its ice"); });
+        setMode("staff"); settle(6,true); tween=null; freeCam=true; MAPCAM.frameField(true); settle(4,true);
+        world.water.forEach(function(m){ var k=waterKind(m); if(m.material!==P8[k]) aBad.push("the paper map's "+k+" not drawn with 8E's material"); });
+        /* 8E's materials, made as 8E made them (buildWater until 8F), against the paper map's, parameter by parameter */
+        var E8={ice:new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,transparent:true,opacity:0.96}),
+          stream:new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide}),
+          bank:matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide})}, nP=0;
+        Object.keys(E8).forEach(function(k){ var a8=E8[k], b8=P8[k];
+          ["type","roughness","metalness","envMapIntensity","transparent","depthWrite","depthTest","side","flatShading","vertexColors","map","blending","polygonOffset"].forEach(function(f){ nP++;
+            if(a8[f]!==b8[f]) aBad.push("the paper map's "+k+": "+f+" "+b8[f]+", 8E's "+a8[f]); });
+          nP++; if(a8.color.getHex()!==b8.color.getHex()) aBad.push("the paper map's "+k+": its colour #"+b8.color.getHexString()+", 8E's #"+a8.color.getHexString());
+          nP++; if(b8.onBeforeCompile!==THREE.Material.prototype.onBeforeCompile||b8.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey) aBad.push("the paper map's "+k+" has a shader hook of its own");
+          a8.dispose(); });
+        var sw=world.water.filter(function(m){ return P8[waterKind(m)]; });
+        setMode("terrain"); settle(6,true);
+        ck("the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no depth, the shore band without a polygon offset and drawn after it), the paper map's water 8E's, its materials 8E's in every parameter",
+          !aBad.length&&sw.length>0, sw.length+" water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, "+nP+" parameters"+(aBad.length?"; WRONG: "+aBad.join("; "):""));
+        /* (b) still */
+        setClock(360,{instant:true,force:true,camera:false}); finishTween(); aim([240,420],[0.25,0.55,0.80],80); settle(10,true);
+        var s0=null, hNow=performance.now, hOwn=Object.prototype.hasOwnProperty.call(performance,"now"), hRaf=window.requestAnimationFrame, hRen=renderer.render, tm=hNow.call(performance), sIdle="";
+        function F300(){ for(var fi=0;fi<300;fi++){ tm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=hRen; } } }   /* each frame asked for: drawn in full */
+        try{ performance.now=function(){ return tm; }; window.requestAnimationFrame=function(){ return 0; }; lastFrame=tm;
+          F300(); s0=grab(); F300();   /* the first ten seconds: the view's easings arrive; the next ten are judged */
+          needFrames=0; lastInput=-1e9; settling=false; sIdle=frameState(tm+1000);
+        } finally { if(hOwn) performance.now=hNow; else delete performance.now; window.requestAnimationFrame=hRaf; renderer.render=hRen; lastFrame=0; requestRender(2); }
+        var s1=grab(), sd=diff(s0,s1,0);
+        ck("the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after ten seconds of the app's frames with the clock standing, the same pixels; at rest no frame asked",
+          sd===0&&(sIdle==="idle"||!HARNESS), sd+" pixels differ; the view at rest: "+sIdle);
+        /* (c) the shore band, the margin and its brightness */
+        var cBad=[], S=world.iceRims[0], D=meres[0], q=S.userData.mere, cc=q[0], rx=q[1], rz=q[2], sy=S.position.y;
+        setClock(720,{instant:true,force:true,camera:false}); finishTween();
+        tween=null; freeCam=true; curVantage=null; landCam.position.set(cc[0],sy+90,cc[1]+0.01); orbitTarget.set(cc[0],sy,cc[1]); landCam.lookAt(orbitTarget); clampCamera(); settle(4,true);
+        var kv=[]; scene.children.forEach(function(o){ kv.push([o,o.visible]); o.visible=!!(o===S||o===D||o.isLight); });   /* a boolean: three draws an object whose visible is undefined */
+        var bg=scene.background, fog=scene.fog; scene.background=null; scene.fog=null; renderer.setClearColor(0,1);
+        var keepD=D.visible; D.visible=false; var rb=grab(); D.visible=keepD; S.visible=false; var db=grab(); S.visible=true;
+        scene.background=bg; scene.fog=fog; renderer.setClearColor(keep8.cc,keep8.ca); kv.forEach(function(k){ k[0].visible=k[1]; });
+        var prof=[], peak=0; for(var ri=0;ri<=28;ri++){ var r=ICE.rim+(1-ICE.rim)*ri/28, o=pxAt(cc[0]+r*rx,sy,cc[1]); var L1=o<0?-1:lum(rb,o); prof.push(L1); peak=Math.max(peak,L1); }
+        var inner=prof[0], shore=prof[prof.length-1];
+        if(!(peak>20)) cBad.push("the shore band not drawn ("+peak.toFixed(1)+")"); if(inner>0.1*peak||shore>0.1*peak) cBad.push("a hard edge: at the inner edge "+inner.toFixed(1)+", at the shore "+shore.toFixed(1)+" of a peak "+peak.toFixed(1));
+        var mid=0, mar=0, nm=0, nr=0; for(var ai=0;ai<24;ai++){ var a=ai/24*2*Math.PI, o1=pxAt(cc[0]+0.15*rx*Math.cos(a),sy-ICE.rimLift,cc[1]+0.15*rz*Math.sin(a)), o2=pxAt(cc[0]+0.9*rx*Math.cos(a),sy-ICE.rimLift,cc[1]+0.9*rz*Math.sin(a));
+          if(o1>=0){ mid+=lum(db,o1); nm++; } if(o2>=0){ mar+=lum(db,o2); nr++; } }
+        mid/=Math.max(1,nm); mar/=Math.max(1,nr); if(!(mar>mid)) cBad.push("the rimed margin ("+mar.toFixed(1)+") not lighter than the clear middle ("+mid.toFixed(1)+")");
+        var ratios=[];
+        [540,720,900].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); aim([250,440],[0.10,0.80,0.59],90); settle(6,true);
+          var fb=grab(), R=[];
+          [0.92,0.8].forEach(function(rr){ var lm=0, lg=0, n1=0, n2=0;
+            meres.forEach(function(m){ var Q=m.userData.mere, c2=Q[0], y2=m.position.y;
+              for(var bi=0;bi<48;bi++){ var b=bi/48*2*Math.PI, cs=Math.cos(b), sn=Math.sin(b), o3=pxAt(c2[0]+rr*Q[1]*cs,y2,c2[1]+rr*Q[2]*sn), gx=c2[0]+1.12*Q[1]*cs, gz=c2[1]+1.12*Q[2]*sn, o4=pxAt(gx,groundY(gx,gz),gz);
+                if(o3>=0){ lm+=lum(fb,o3); n1++; } if(o4>=0){ lg+=lum(fb,o4); n2++; } } });
+            R.push((lm/Math.max(1,n1))/Math.max(1,lg/Math.max(1,n2))); });
+          ratios.push(fmtClock(t)+" "+R[0].toFixed(2)+" and "+R[1].toFixed(2));
+          if(!(R[0]<=ICE8F.SHORE)) cBad.push("at "+fmtClock(t)+" the shore band "+R[0].toFixed(2)+" times the field beside it");
+          if(!(R[1]<=ICE8F.MARGIN)) cBad.push("at "+fmtClock(t)+" the rimed margin "+R[1].toFixed(2)+" times the field beside the shore"); });
+        ck("the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed margin lighter than the clear middle; in the frame the shore band at most "+ICE8F.SHORE+" times the field beside the shore and the rimed margin at most "+ICE8F.MARGIN+" times",
+          !cBad.length, "the band's light from its inner edge to the shore "+prof.filter(function(v,i){ return i%4===0; }).map(function(v){ return v.toFixed(0); }).join(" ")+" (peak "+peak.toFixed(0)+"); the middle "+mid.toFixed(1)+", the margin "+mar.toFixed(1)+"; against the field, the shore band and the margin: "+ratios.join(", ")+(cBad.length?"; WRONG: "+cBad.join("; "):""));
+        /* (d) the woods */
+        /* 8E's woods: the trees and the scrub by kind, and each habit's triangles (its kit: four deciduous habits, two conifers, the bush), read
+           on the 8E build (tools/stage8/woods-8f.js, docs/stage8-evidence/8f/woods-8f.json) */
+        var WOODS8E={wood:634, village:184, conifer:376, edge:354, stream:202}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
+        var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0};
+        world.trees.children.forEach(function(im){ (im.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(im.material.side!==THREE.DoubleSide) dBad.push("a deciduous habit not drawn on both faces"); if(!im.castShadow) dBad.push("a deciduous habit casts no shadow"); });
+        world.conifers.children.forEach(function(im){ K.conifer+=(im.userData.kinds||[]).length; });
+        (world.scrub.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(world.scrub.material.side!==THREE.DoubleSide) dBad.push("the scrub not drawn on both faces");
+        Object.keys(WOODS8E).forEach(function(k){ if(K[k]!==WOODS8E[k]) dBad.push(k+" "+K[k]+", 8E "+WOODS8E[k]); });
+        var tb=kit.broad.map(tri), tc=kit.conifer.map(tri), ts=tri(kit.scrub);
+        tb.forEach(function(n,i){ if(n>KIT8E.broad[i]) dBad.push("deciduous habit "+i+": "+n+" triangles, 8E's "+KIT8E.broad[i]); });
+        tc.forEach(function(n,i){ if(n!==KIT8E.conifer[i]) dBad.push("conifer "+i+": "+n+" triangles, 8E's "+KIT8E.conifer[i]); });
+        if(ts>KIT8E.scrub) dBad.push("the bush: "+ts+" triangles, 8E's "+KIT8E.scrub);
+        ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
+          !dBad.length, JSON.stringify(K)+"; triangles a tree: deciduous "+tb.join(", ")+" (8E "+KIT8E.broad.join(", ")+"), conifers "+tc.join(", ")+", the bush "+ts+" (8E "+KIT8E.scrub+")"+(dBad.length?"; WRONG: "+dBad.join("; "):""));
+        /* (e) the near ground */
+        var eBad=[], U=groundMesh.material.userData.U;
+        if(U.uDetail.value.x!==(lowTier?0:GDETAIL.amount)) eBad.push("the detail "+U.uDetail.value.x+" at this tier (lowTier "+lowTier+")");
+        U.uDetail.value.x=GDETAIL.amount; setClock(590,{instant:true,force:true,camera:false}); finishTween();
+        aim([285,289],[-1.0,0.13,0.18],40);
+        var e1=grab(); U.uDetail.value.x=0; var e0=grab(); U.uDetail.value.x=GDETAIL.amount;
+        var nd=0, l1=0, l0=0; for(var ei=0;ei<e1.length;ei+=4) if(e1[ei]!==e0[ei]||e1[ei+1]!==e0[ei+1]||e1[ei+2]!==e0[ei+2]){ nd++; l1+=lum(e1,ei); l0+=lum(e0,ei); }
+        var tone=nd?l1/l0:1; if(nd<2000) eBad.push("the detail drawn on "+nd+" pixels near the eye (want at least 2,000 of "+W0*H0+")"); if(Math.abs(tone-1)>0.01) eBad.push("the near ground's mean tone "+tone.toFixed(3)+" times without the detail");
+        /* its normalisation: each shader cell's mean grey (GDETAIL.lum, by the shader's own cell index) that of the cell the ground's shader
+           samples, read through the GPU as the shader reads it (the cell's interior at 256 x 256 points, near the texture's own size, so that
+           no coarse mipmap blends a neighbour in: tuv's own formula, the texture as uploaded, flipped by three), within 2% */
+        var lmap=groundMesh.material.map, lrt=new THREE.WebGLRenderTarget(256,256), lb=new Uint8Array(256*256*4), lsc=new THREE.Scene(), lcam=new THREE.OrthographicCamera(-1,1,1,-1,0,1), lw=[];
+        var lmat=new THREE.ShaderMaterial({uniforms:{map:{value:lmap}, ci:{value:0}, cj:{value:0}}, depthTest:false, depthWrite:false,
+          vertexShader:"varying vec2 vU; void main(){ vU=uv; gl_Position=vec4(position.xy,0.0,1.0); }",
+          fragmentShader:"uniform sampler2D map; uniform float ci, cj; varying vec2 vU; void main(){ gl_FragColor=texture2D(map,vec2(fract(vU.x)*0.234375+0.0078125+ci*0.25, fract(vU.y)*0.3125+0.0104167+cj*0.3333333)); }"});
+        var lq=new THREE.Mesh(new THREE.PlaneGeometry(2,2),lmat); lsc.add(lq);
+        var lsr=lmap&&lmap.encoding===THREE.sRGBEncoding, llin=function(v){ v/=255; return lsr?(v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4)):v; };
+        if(!lmap) eBad.push("the landscape's ground without its texture");
+        else for(var lg=0;lg<12;lg++){ lmat.uniforms.ci.value=lg%4; lmat.uniforms.cj.value=Math.floor(lg/4);
+          renderer.setRenderTarget(lrt); renderer.clear(); renderer.render(lsc,lcam); renderer.readRenderTargetPixels(lrt,0,0,256,256,lb); renderer.setRenderTarget(null);
+          var ls=0; for(var li=0;li<lb.length;li+=4) ls+=0.2126*llin(lb[li])+0.7152*llin(lb[li+1])+0.0722*llin(lb[li+2]); ls/=256*256;
+          var lr=ls/GDETAIL.lum[lg]; lw.push(lr); if(Math.abs(lr-1)>0.02) eBad.push("cell "+lg+": its mean "+ls.toFixed(4)+" as sampled, GDETAIL's "+GDETAIL.lum[lg].toFixed(4)); }
+        lrt.dispose(); lmat.dispose(); lq.geometry.dispose();
+        placeCamera(VANTAGE.field); settle(8,true); var o1=grab(); U.uDetail.value.x=0; var o0=grab(); U.uDetail.value.x=GDETAIL.amount; var od=diff(o1,o0,0); if(od) eBad.push("the Field vantage "+od+" pixels off without the detail (all its ground beyond the far edge)");
+        setMode("staff"); settle(6,true); var p1=grab(); U.uDetail.value.x=0; var p0=grab(); U.uDetail.value.x=GDETAIL.amount; var pdd=diff(p1,p0,0); if(pdd) eBad.push("the paper map "+pdd+" pixels off without the detail");
+        setMode("terrain"); settle(4,true);
+        ck("the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural ground, its mean tone kept (each cell's mean that of the cell the shader samples), nothing of it beyond its far edge, none on the paper map, off under lowTier",
+          !eBad.length, nd+" pixels near the eye (the low Pratzen view, "+W0+" x "+H0+"), their tone "+tone.toFixed(3)+" times without it; each of the 12 cells' means as sampled "+(lw.length?Math.min.apply(null,lw).toFixed(3)+" to "+Math.max.apply(null,lw).toFixed(3):"(none)")+" times GDETAIL's; the Field vantage "+od+" and the paper map "+pdd+" pixels off without it"+(eBad.length?"; WRONG: "+eBad.join("; "):""));
+      } catch(err){ ck("water, woods and the near ground (8F): the checks ran", false, "threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+      } finally {
+        rt.dispose(); groundMesh.material.userData.U.uDetail.value.x=keep8.det; renderer.setClearColor(keep8.cc,keep8.ca);
+        if(DISPLAY.factor!==keep8.f) setDisplayFactor(keep8.f);
+        if(mode!==keep8.mode) setMode(keep8.mode); setPresentation(keep8.pres); setClock(keep8.t,{instant:true,force:true,camera:false}); finishTween();
+        landCam.position.copy(keep8.pos); orbitTarget.copy(keep8.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=keep8.fc; settle(4,true);
+      }
+    })();
 
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);

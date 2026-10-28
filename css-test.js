@@ -593,6 +593,56 @@ if(cerrs) process.exitCode=1;
   console.log("the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)): "+(eerr.length?eerr.length+" wrong":"the level of detail 17.6 in, 14.5 out, in view, a block's meshes together, kitLod allocating nothing; the wheels at ORDNANCE's heights, one carriage colour for every army, the drivers only where a claim's corps holds the battery, the switch at once; the gait's phase the track's distance over its stride, its amplitude the clock rate's rule for a formation's meshes together, none under 1 km/h or reduced motion, eased, no wall clock, the wheels within a spoke's interval, the hook's parts the legs, the arm, the root and the wheels; the standards' drape still"));
   if(eerr.length) process.exitCode=1;
 }
+/* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md sections 5, 7.3, 7.4 and 18): water, woods and the near
+   ground as decided, in the source (the self-test's 8F block draws them). The water: its colours in WATER_COL, 8E's kept for the paper map,
+   which draws the water with 8E's own materials (waterPresentation, called by setMode before the water's opacity as before); the meres'
+   outlines, levels and shore ring 4E's; the landscape's ice writing no depth, the shore band without a polygon offset and drawn after its ice;
+   the hooks chaining the atmosphere's uniforms, each with its own program; nothing in the water read from a clock or a time (no animated
+   water), no hole cut (no discard). The woods: TREE8F's values; the deciduous habits and the bush drawn on both faces and opaque (no alpha);
+   8E's crowns' jitter kept in the shells; the conifers 8E's. The near ground: GDETAIL's values, on the landscape's natural ground only (uMode
+   1), faded by the eye's distance, anchored to the ground (its uv, not the screen), the texel scaled by a grey ratio within GDETAIL's clamp
+   (no new colour), off under lowTier. The self-test's bounds for them: ICE8F, WOODS8E and KIT8E */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), wsrc=fs.readFileSync('world.js','utf8'), wast=acorn.parse(wsrc,{ecmaVersion:2020}), ferr=[];
+  const wfn=name=>{ const n=wast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?wsrc.slice(n.start,n.end):""; };
+  const wvar=name=>{ const n=wast.body.find(q=>q.type==="VariableDeclaration"&&q.declarations.some(d=>d.id.name===name)); return n?wsrc.slice(n.start,n.end):""; };
+  /* the water */
+  if(!/^var WATER_COL=\{ice:0x4E5C66, iceRim:0x75838B, bank:0x4E5A4C, stream:0x587A8E,/m.test(wsrc)) ferr.push("WATER_COL's paper colours are not 8E's (ice, iceRim, bank, stream)");
+  if(!/^  iceClear:0x[0-9A-F]{6}, iceFrost:0x[0-9A-F]{6}, iceBand:0x[0-9A-F]{6}, bankLand:0x[0-9A-F]{6}, streamLand:0x[0-9A-F]{6}\};/m.test(wsrc)) ferr.push("the landscape's water colours are not in WATER_COL");
+  if(!/^var ICE=\{roughness:0\.32, env:0\.42, rim:0\.86, rimLift:0\.02,/m.test(wsrc)) ferr.push("ICE's 4E values changed (the ice's material, the shore ring's width and lift)");
+  const bw=wfn("buildWater"), wp=wfn("waterPresentation"), hooks=wfn("iceHook")+wfn("streamHook")+wvar("WATER_GLSL");
+  if(!/mere\(SATS,28,10\.5,-3\.85\);\s*mere\(MENI,23,9,-3\.95\);/.test(bw)||!/new THREE\.CircleGeometry\(1,48\)/.test(bw)||!/new THREE\.RingGeometry\(ICE\.rim,1,48,1\)/.test(bw)) ferr.push("the meres' outlines, levels or shore ring are not 4E's");
+  if(!/paper:\{ice:new THREE\.MeshStandardMaterial\(\{color:lin\(WATER_COL\.ice\),roughness:ICE\.roughness,metalness:0\.0,envMapIntensity:ICE\.env,transparent:true,opacity:0\.96\}\),\s*bank:matte\(\{color:WATER_COL\.bank,roughness:0\.96,side:THREE\.DoubleSide\}\),\s*stream:new THREE\.MeshStandardMaterial\(\{color:lin\(WATER_COL\.stream\),roughness:0\.48,metalness:0\.0,envMapIntensity:0\.18,side:THREE\.DoubleSide\}\)\}\};/.test(bw))
+    ferr.push("the paper map's water materials are not 8E's (buildWater until 8F)");
+  if(!/var S=staff\?WATER_MATS\.paper:WATER_MATS\.land;\s*waterMeshes\.forEach\(function\(m\)\{ var k=waterKind\(m\); if\(S\[k\]\) m\.material=S\[k\]; \}\);/.test(wp)) ferr.push("waterPresentation does not give each water mesh its presentation's materials");
+  if(!/  waterPresentation\(staff\);[^\n]*\n  world\.water\.forEach\(function\(w2\)\{ if\(w2\.material\.opacity!==undefined\) w2\.material\.opacity=staff\?1:0\.94; \}\);/.test(src)) ferr.push("setMode does not put the water's materials in place before it sets their opacity as before");
+  if(!/transparent:true,opacity:0\.96,depthWrite:false\}\),false\);/.test(bw)||/polygonOffset/.test(bw)||!/r\.renderOrder=1;/.test(bw)) ferr.push("the landscape's ice writes its depth, or the shore band has a polygon offset or is not drawn after its ice");
+  if((hooks.match(/atmoUniforms\(sh\)/g)||[]).length!==2||!/customProgramCacheKey=function\(\)\{ return band\?"ice8f-band":"ice8f"; \}/.test(hooks)||!/customProgramCacheKey=function\(\)\{ return "stream8f"; \}/.test(hooks)) ferr.push("the water's hooks do not chain the atmosphere's uniforms or have no program of their own");
+  if(/uTime|performance|Date|clock|Math\.random|discard/.test(hooks)) ferr.push("the water reads a clock or a time (animated water) or cuts a hole (discard)");
+  if(/uWaterLand|WATER_U/.test(wsrc)) ferr.push("a presentation's uniform in the water (the paper map's water is 8E's materials, not a branch)");
+  /* the woods */
+  if(!/^var TREE8F=\{keep:0\.42, shrink:0\.7, scrubKeep:0\.45, scrubShrink:0\.72\};/m.test(wsrc)) ferr.push("TREE8F is not the prototype's t-airy (keep 0.42, shrink 0.70; the bush 0.45, 0.72)");
+  const bwd=wfn("buildWoods"), tk=wfn("treeKit"), ts=wfn("treeShell");
+  if(!/matte\(\{color:0xFFFFFF,flatShading:true,side:THREE\.DoubleSide\}\),Math\.max\(1,list\.length\)\);/.test(bwd)||!/scrubMesh=new THREE\.InstancedMesh\(kit\.scrub,matte\(\{color:0xFFFFFF,flatShading:true,side:THREE\.DoubleSide\}\)/.test(bwd)) ferr.push("the deciduous habits or the bush are not drawn on both faces");
+  if(/transparent|alphaTest|alphaMap|opacity/.test(bwd)) ferr.push("the woods drawn with alpha (8F's crowns are opaque: nothing sorted)");
+  if(!/var k=0\.78\+0\.44\*hash2\(Math\.round\(pa\[i\]\*13\+seed\),Math\.round\(pa\[i\+1\]\*7\+pa\[i\+2\]\*11\)\); pa\[i\]\*=k; pa\[i\+1\]\*=k\*0\.92; pa\[i\+2\]\*=k;/.test(ts)||!/new THREE\.IcosahedronGeometry\(1,2\)/.test(ts)) ferr.push("the shells are not 8E's crowns (the icosahedron, detail 2, and its jitter)");
+  if(!/mergeParts\(\[T\(0\.6\),\{geo:cone,p:\[0,2\.3,0\],s:\[0\.95,3\.4,0\.95\]\},\{geo:cone,p:\[0,1\.35,0\],s:\[1\.25,1\.4,1\.25\]\}\]\),\s*mergeParts\(\[T\(0\.9\),\{geo:cone,p:\[0,3\.0,0\],s:\[0\.8,4\.2,0\.8\]\}\]\)/.test(tk)) ferr.push("the conifers are not 8E's");
+  /* the near ground */
+  if(!/^var GDETAIL=\{amount:0\.55, near:14, far:60, k:7\.3, rot:0\.61, lo:0\.62, hi:1\.38,/m.test(wsrc)) ferr.push("GDETAIL's values changed");
+  const gd=wvar("GROUND_FRAG_DETAIL");
+  if(!/if\(uMode>0\.5&&uMode<1\.5&&uDetail\.x>0\.0\)\{/.test(gd)||!/float gDf=uDetail\.x\*\(1\.0-smoothstep\(uDetail\.y,uDetail\.z,length\(vViewPosition\)\)\);/.test(gd)) ferr.push("the near detail is not the landscape's natural ground's alone, faded by the eye's distance");
+  if(!/vec2 gDu=mat2\(uDetailR\.x,uDetailR\.y,-uDetailR\.y,uDetailR\.x\)\*vUv\*uDetail\.w;/.test(gd)||/gl_FragCoord/.test(gd)) ferr.push("the near detail is not anchored to the ground (its uv)");
+  if(!/texelColor\.rgb\*=mix\(1\.0,clamp\(gDl,uDetailC\.x,uDetailC\.y\),gDf\);/.test(gd)||!/\/max\(uCellLum\[int\(gCell\+0\.5\)\],0\.001\);/.test(gd)) ferr.push("the near detail is not its cell's grey ratio within GDETAIL's clamp (a new colour, or the class's tone moved)");
+  if(!/^  groundDetail\(!lowTier\);/m.test(src)) ferr.push("the near detail is not off under lowTier (decision 236)");
+  if(!/flip=!\(_atlas&&_atlas\.flipY===false\);/.test(wfn("atlasLum"))||!/cy=\(flip\?2-Math\.floor\(k\/4\):Math\.floor\(k\/4\)\)\*R,/.test(wfn("atlasLum"))) ferr.push("the near detail's cells' means are not taken as the shader samples the cells (three uploads the canvas flipped)");
+  if(!/\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))||!/"#ifdef USE_MAP\\n"\+\s*"  vec4 texelColor=gAtlas\(map,tuv\);\\n"\+\s*"  texelColor=mapTexelToLinear\(texelColor\);\\n"\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))) ferr.push("the near detail is not inside the ground's texture (USE_MAP: none on the paper map, whose ground has no texture)");
+  /* the self-test's bounds */
+  if(!/var ICE8F=\{SHORE:1\.10, MARGIN:1\.25\};/.test(src)) ferr.push("the self-test's ice bounds (ICE8F) are not 1.10 at the shore and 1.25 at the margin");
+  if(!/var WOODS8E=\{wood:634, village:184, conifer:376, edge:354, stream:202\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's 8E woods (WOODS8E, KIT8E) are not 8E's");
+  ferr.forEach(e=>console.log("  ! "+e));
+  console.log("water, woods and the near ground (decisions 246 (a), 247 (a)): "+(ferr.length?ferr.length+" wrong":"the water's colours in WATER_COL, the paper map's water 8E's materials, the meres' outlines, levels and ring 4E's, the ice writing no depth, the band without an offset and after its ice, nothing animated; TREE8F, the crowns opaque on both faces, 8E's jitter and conifers; GDETAIL on the natural ground only, faded, anchored, a grey ratio, off under lowTier; the self-test's bounds"));
+  if(ferr.length) process.exitCode=1;
+}
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */
 {

@@ -639,6 +639,7 @@ function init(){
   scene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);
 
   world=buildWorld(scene);
+  groundDetail(!lowTier);   /* Stage 8, 8F (decision 247 (a)): the near ground's detail, not on a low tier (decision 236: the phone's frame as P5 measured it) */
   setFXEnabled(true);
 
   overlayRoot=new THREE.Group(); scene.add(overlayRoot);
@@ -4812,6 +4813,7 @@ function setMode(m){
   world.dome.visible=!staff;
   syncLandscapeLayers();
   renderer.shadowMap.enabled=!staff;
+  waterPresentation(staff);   /* Stage 8, 8F (decision 246 (a)): the landscape's ice and streams (8F's materials), or the paper map's (8E's) */
   world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
   (world.iceRims||[]).forEach(function(r2){ r2.visible=!staff; });   /* Stage 4E: the shore ice is the landscape's */
 
@@ -13392,6 +13394,156 @@ var AUSTERLITZ_DEBUG=(function(){
       sIdle==="idle"&&src>0&&sWait==="waiting"&&sAmb==="ambient"&&sRM==="idle"&&(!HARNESS||sOff==="idle"),
       "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust, smoke or a broken formation's sway): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
       (HARNESS?"; the harness's own frames "+sOff+" (drift off under ?harness=1; AMBIENT_TEST turned it on for this check only)":""));
+
+    /* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md sections 5, 7.3, 7.4 and 18): water, woods and the near
+       ground. Self-contained: it keeps and restores what it changes; its renders are its own (the scene drawn into a target of the test's,
+       no post-processing). (a) The water's presentations: on the landscape every water mesh drawn with 8F's material (the streams and
+       banks in their landscape colours; the ice writing no depth, the shore band without a polygon offset and drawn after its ice); on the
+       paper map with 8E's: every parameter as 8E made it and no shader hook of its own (a pixel comparison with materials made afresh
+       would differ by the draw order alone, three sorting by the material's id). (b) Still: a view of the meres and the
+       Goldbach, 300 of the app's own frames run on the test's clock (ten seconds, the clock standing: the view's easings arrive), drawn,
+       300 more, drawn again: the same pixels (each frame asked for, so that anything the frames move would move); at rest the view asks no
+       frame. (c) The shore ice feathered: drawn alone from above, its light at its inner
+       edge and at the shore at most a tenth of its peak (no hard ring); the rimed margin lighter than the clear middle (the disc alone); in
+       the frame, at three clocks, the shore band at most ICE8F.SHORE times the field just beyond the shore and the rimed margin at most
+       ICE8F.MARGIN times it (integrated, the owner's word). (d) The woods: the trees and the scrub by kind as 8E drew them (WOODS8E), each
+       habit's triangles within 8E's (KIT8E) and the conifers' 8E's own, the open crowns drawn on both faces and casting shadows. (e) The near
+       ground: drawn near the eye on the natural ground (the low Pratzen view: pixels differ with it on and off) with its mean tone kept
+       (within 1% over them: 0.996 as built) and each cell's mean that of the cell the shader samples (read through the GPU), nothing of it
+       beyond its far edge (the Field vantage identical on and off), none on the paper map (identical on and off), on at this tier (the self-test's page is never low: lowTier's setting is css-test.js's to hold) */
+    (function(){
+      /* the margin's bounds, in the frame of (c)'s view (from above, 90 units off, 4x), the light against the field just beyond the shore:
+         8E's shore ice there 1.02 to 1.03 times the field and its ice at 0.8 of a mere's radius 1.15 to 1.17; Part A's prototype's margin
+         (w-ice's grey-white) 1.42 to 1.46 at 0.8; 8F's as first drawn, its margin a lighter grey and its band drawn over the ground by a polygon
+         offset, 1.20 at the shore and 1.26 to 1.28 at 0.8; 8F's as built 1.00 to 1.01 and 1.16 to 1.19 (09:00, 12:00, 15:00; docs/STAGE8_SPEC.md
+         section 18).
+         Design bounds: the shore within a tenth of the field, the rimed margin within a quarter */
+      var ICE8F={SHORE:1.10, MARGIN:1.25};
+      var keep8={f:DISPLAY.factor, mode:mode, pres:presentation, t:clock, pos:landCam.position.clone(), tgt:orbitTarget.clone(), fc:freeCam, det:groundMesh.material.userData.U.uDetail.value.x,
+        cc:renderer.getClearColor(new THREE.Color()), ca:renderer.getClearAlpha()};
+      var W0=480, H0=270, rt=new THREE.WebGLRenderTarget(W0,H0), B=new Uint8Array(W0*H0*4);
+      function grab(){ renderer.setRenderTarget(rt); renderer.clear(); renderer.render(scene,camera); renderer.readRenderTargetPixels(rt,0,0,W0,H0,B); renderer.setRenderTarget(null); return Uint8Array.from(B); }
+      function diff(a,b,th){ var n=0; for(var i=0;i<a.length;i+=4) if(Math.abs(a[i]-b[i])>th||Math.abs(a[i+1]-b[i+1])>th||Math.abs(a[i+2]-b[i+2])>th) n++; return n; }
+      function aim(map,dir,r){ var w=W(map[0],map[1]), y=groundY(w[0],w[1]), d=new THREE.Vector3(dir[0],dir[1],dir[2]).normalize().multiplyScalar(r);
+        tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,y+d.y,w[1]+d.z); orbitTarget.set(w[0],y,w[1]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true); settle(6,true); }
+      var _pv=new THREE.Vector3();
+      function pxAt(x,y,z){ _pv.set(x,y,z).project(camera); if(Math.abs(_pv.x)>1||Math.abs(_pv.y)>1||_pv.z<-1||_pv.z>1) return -1; return (Math.floor((_pv.y*0.5+0.5)*H0)*W0+Math.floor((_pv.x*0.5+0.5)*W0))*4; }
+      function lum(b,o){ return 0.2126*b[o]+0.7152*b[o+1]+0.0722*b[o+2]; }
+      var meres=world.water.filter(function(m){ return m.userData.mere; });
+      try{
+        setDisplayFactor(DISPLAY.defaultFactor); setMode("terrain"); setPresentation("watch");
+        /* (a) the two presentations */
+        var aBad=[], L8=WATER_MATS.land, P8=WATER_MATS.paper;
+        world.water.forEach(function(m){ var k=waterKind(m); if(m.material!==L8[k]) aBad.push("the landscape's "+k+" not drawn with 8F's material"); });
+        if(!L8.stream.color.equals(lin(WATER_COL.streamLand))||!L8.bank.color.equals(lin(WATER_COL.bankLand))) aBad.push("the landscape's streams or banks not in their landscape colours");
+        if(L8.ice.depthWrite) aBad.push("the landscape's ice writes its depth (the band would fight it for the pixel)");
+        world.iceRims.forEach(function(r){ if(r.material.polygonOffset) aBad.push("a shore band drawn with a polygon offset (over the ground at the shore)");
+          if(!(r.renderOrder>Math.max.apply(null,meres.map(function(m){ return m.renderOrder; })))) aBad.push("a shore band not drawn after its ice"); });
+        setMode("staff"); settle(6,true); tween=null; freeCam=true; MAPCAM.frameField(true); settle(4,true);
+        world.water.forEach(function(m){ var k=waterKind(m); if(m.material!==P8[k]) aBad.push("the paper map's "+k+" not drawn with 8E's material"); });
+        /* 8E's materials, made as 8E made them (buildWater until 8F), against the paper map's, parameter by parameter */
+        var E8={ice:new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,transparent:true,opacity:0.96}),
+          stream:new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide}),
+          bank:matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide})}, nP=0;
+        Object.keys(E8).forEach(function(k){ var a8=E8[k], b8=P8[k];
+          ["type","roughness","metalness","envMapIntensity","transparent","depthWrite","depthTest","side","flatShading","vertexColors","map","blending","polygonOffset"].forEach(function(f){ nP++;
+            if(a8[f]!==b8[f]) aBad.push("the paper map's "+k+": "+f+" "+b8[f]+", 8E's "+a8[f]); });
+          nP++; if(a8.color.getHex()!==b8.color.getHex()) aBad.push("the paper map's "+k+": its colour #"+b8.color.getHexString()+", 8E's #"+a8.color.getHexString());
+          nP++; if(b8.onBeforeCompile!==THREE.Material.prototype.onBeforeCompile||b8.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey) aBad.push("the paper map's "+k+" has a shader hook of its own");
+          a8.dispose(); });
+        var sw=world.water.filter(function(m){ return P8[waterKind(m)]; });
+        setMode("terrain"); settle(6,true);
+        ck("the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no depth, the shore band without a polygon offset and drawn after it), the paper map's water 8E's, its materials 8E's in every parameter",
+          !aBad.length&&sw.length>0, sw.length+" water meshes, each with its presentation's material; the paper map's three against 8E's made afresh, "+nP+" parameters"+(aBad.length?"; WRONG: "+aBad.join("; "):""));
+        /* (b) still */
+        setClock(360,{instant:true,force:true,camera:false}); finishTween(); aim([240,420],[0.25,0.55,0.80],80); settle(10,true);
+        var s0=null, hNow=performance.now, hOwn=Object.prototype.hasOwnProperty.call(performance,"now"), hRaf=window.requestAnimationFrame, hRen=renderer.render, tm=hNow.call(performance), sIdle="";
+        function F300(){ for(var fi=0;fi<300;fi++){ tm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=hRen; } } }   /* each frame asked for: drawn in full */
+        try{ performance.now=function(){ return tm; }; window.requestAnimationFrame=function(){ return 0; }; lastFrame=tm;
+          F300(); s0=grab(); F300();   /* the first ten seconds: the view's easings arrive; the next ten are judged */
+          needFrames=0; lastInput=-1e9; settling=false; sIdle=frameState(tm+1000);
+        } finally { if(hOwn) performance.now=hNow; else delete performance.now; window.requestAnimationFrame=hRaf; renderer.render=hRen; lastFrame=0; requestRender(2); }
+        var s1=grab(), sd=diff(s0,s1,0);
+        ck("the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after ten seconds of the app's frames with the clock standing, the same pixels; at rest no frame asked",
+          sd===0&&(sIdle==="idle"||!HARNESS), sd+" pixels differ; the view at rest: "+sIdle);
+        /* (c) the shore band, the margin and its brightness */
+        var cBad=[], S=world.iceRims[0], D=meres[0], q=S.userData.mere, cc=q[0], rx=q[1], rz=q[2], sy=S.position.y;
+        setClock(720,{instant:true,force:true,camera:false}); finishTween();
+        tween=null; freeCam=true; curVantage=null; landCam.position.set(cc[0],sy+90,cc[1]+0.01); orbitTarget.set(cc[0],sy,cc[1]); landCam.lookAt(orbitTarget); clampCamera(); settle(4,true);
+        var kv=[]; scene.children.forEach(function(o){ kv.push([o,o.visible]); o.visible=!!(o===S||o===D||o.isLight); });   /* a boolean: three draws an object whose visible is undefined */
+        var bg=scene.background, fog=scene.fog; scene.background=null; scene.fog=null; renderer.setClearColor(0,1);
+        var keepD=D.visible; D.visible=false; var rb=grab(); D.visible=keepD; S.visible=false; var db=grab(); S.visible=true;
+        scene.background=bg; scene.fog=fog; renderer.setClearColor(keep8.cc,keep8.ca); kv.forEach(function(k){ k[0].visible=k[1]; });
+        var prof=[], peak=0; for(var ri=0;ri<=28;ri++){ var r=ICE.rim+(1-ICE.rim)*ri/28, o=pxAt(cc[0]+r*rx,sy,cc[1]); var L1=o<0?-1:lum(rb,o); prof.push(L1); peak=Math.max(peak,L1); }
+        var inner=prof[0], shore=prof[prof.length-1];
+        if(!(peak>20)) cBad.push("the shore band not drawn ("+peak.toFixed(1)+")"); if(inner>0.1*peak||shore>0.1*peak) cBad.push("a hard edge: at the inner edge "+inner.toFixed(1)+", at the shore "+shore.toFixed(1)+" of a peak "+peak.toFixed(1));
+        var mid=0, mar=0, nm=0, nr=0; for(var ai=0;ai<24;ai++){ var a=ai/24*2*Math.PI, o1=pxAt(cc[0]+0.15*rx*Math.cos(a),sy-ICE.rimLift,cc[1]+0.15*rz*Math.sin(a)), o2=pxAt(cc[0]+0.9*rx*Math.cos(a),sy-ICE.rimLift,cc[1]+0.9*rz*Math.sin(a));
+          if(o1>=0){ mid+=lum(db,o1); nm++; } if(o2>=0){ mar+=lum(db,o2); nr++; } }
+        mid/=Math.max(1,nm); mar/=Math.max(1,nr); if(!(mar>mid)) cBad.push("the rimed margin ("+mar.toFixed(1)+") not lighter than the clear middle ("+mid.toFixed(1)+")");
+        var ratios=[];
+        [540,720,900].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); aim([250,440],[0.10,0.80,0.59],90); settle(6,true);
+          var fb=grab(), R=[];
+          [0.92,0.8].forEach(function(rr){ var lm=0, lg=0, n1=0, n2=0;
+            meres.forEach(function(m){ var Q=m.userData.mere, c2=Q[0], y2=m.position.y;
+              for(var bi=0;bi<48;bi++){ var b=bi/48*2*Math.PI, cs=Math.cos(b), sn=Math.sin(b), o3=pxAt(c2[0]+rr*Q[1]*cs,y2,c2[1]+rr*Q[2]*sn), gx=c2[0]+1.12*Q[1]*cs, gz=c2[1]+1.12*Q[2]*sn, o4=pxAt(gx,groundY(gx,gz),gz);
+                if(o3>=0){ lm+=lum(fb,o3); n1++; } if(o4>=0){ lg+=lum(fb,o4); n2++; } } });
+            R.push((lm/Math.max(1,n1))/Math.max(1,lg/Math.max(1,n2))); });
+          ratios.push(fmtClock(t)+" "+R[0].toFixed(2)+" and "+R[1].toFixed(2));
+          if(!(R[0]<=ICE8F.SHORE)) cBad.push("at "+fmtClock(t)+" the shore band "+R[0].toFixed(2)+" times the field beside it");
+          if(!(R[1]<=ICE8F.MARGIN)) cBad.push("at "+fmtClock(t)+" the rimed margin "+R[1].toFixed(2)+" times the field beside the shore"); });
+        ck("the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed margin lighter than the clear middle; in the frame the shore band at most "+ICE8F.SHORE+" times the field beside the shore and the rimed margin at most "+ICE8F.MARGIN+" times",
+          !cBad.length, "the band's light from its inner edge to the shore "+prof.filter(function(v,i){ return i%4===0; }).map(function(v){ return v.toFixed(0); }).join(" ")+" (peak "+peak.toFixed(0)+"); the middle "+mid.toFixed(1)+", the margin "+mar.toFixed(1)+"; against the field, the shore band and the margin: "+ratios.join(", ")+(cBad.length?"; WRONG: "+cBad.join("; "):""));
+        /* (d) the woods */
+        /* 8E's woods: the trees and the scrub by kind, and each habit's triangles (its kit: four deciduous habits, two conifers, the bush), read
+           on the 8E build (tools/stage8/woods-8f.js, docs/stage8-evidence/8f/woods-8f.json) */
+        var WOODS8E={wood:634, village:184, conifer:376, edge:354, stream:202}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
+        var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0};
+        world.trees.children.forEach(function(im){ (im.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(im.material.side!==THREE.DoubleSide) dBad.push("a deciduous habit not drawn on both faces"); if(!im.castShadow) dBad.push("a deciduous habit casts no shadow"); });
+        world.conifers.children.forEach(function(im){ K.conifer+=(im.userData.kinds||[]).length; });
+        (world.scrub.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(world.scrub.material.side!==THREE.DoubleSide) dBad.push("the scrub not drawn on both faces");
+        Object.keys(WOODS8E).forEach(function(k){ if(K[k]!==WOODS8E[k]) dBad.push(k+" "+K[k]+", 8E "+WOODS8E[k]); });
+        var tb=kit.broad.map(tri), tc=kit.conifer.map(tri), ts=tri(kit.scrub);
+        tb.forEach(function(n,i){ if(n>KIT8E.broad[i]) dBad.push("deciduous habit "+i+": "+n+" triangles, 8E's "+KIT8E.broad[i]); });
+        tc.forEach(function(n,i){ if(n!==KIT8E.conifer[i]) dBad.push("conifer "+i+": "+n+" triangles, 8E's "+KIT8E.conifer[i]); });
+        if(ts>KIT8E.scrub) dBad.push("the bush: "+ts+" triangles, 8E's "+KIT8E.scrub);
+        ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
+          !dBad.length, JSON.stringify(K)+"; triangles a tree: deciduous "+tb.join(", ")+" (8E "+KIT8E.broad.join(", ")+"), conifers "+tc.join(", ")+", the bush "+ts+" (8E "+KIT8E.scrub+")"+(dBad.length?"; WRONG: "+dBad.join("; "):""));
+        /* (e) the near ground */
+        var eBad=[], U=groundMesh.material.userData.U;
+        if(U.uDetail.value.x!==(lowTier?0:GDETAIL.amount)) eBad.push("the detail "+U.uDetail.value.x+" at this tier (lowTier "+lowTier+")");
+        U.uDetail.value.x=GDETAIL.amount; setClock(590,{instant:true,force:true,camera:false}); finishTween();
+        aim([285,289],[-1.0,0.13,0.18],40);
+        var e1=grab(); U.uDetail.value.x=0; var e0=grab(); U.uDetail.value.x=GDETAIL.amount;
+        var nd=0, l1=0, l0=0; for(var ei=0;ei<e1.length;ei+=4) if(e1[ei]!==e0[ei]||e1[ei+1]!==e0[ei+1]||e1[ei+2]!==e0[ei+2]){ nd++; l1+=lum(e1,ei); l0+=lum(e0,ei); }
+        var tone=nd?l1/l0:1; if(nd<2000) eBad.push("the detail drawn on "+nd+" pixels near the eye (want at least 2,000 of "+W0*H0+")"); if(Math.abs(tone-1)>0.01) eBad.push("the near ground's mean tone "+tone.toFixed(3)+" times without the detail");
+        /* its normalisation: each shader cell's mean grey (GDETAIL.lum, by the shader's own cell index) that of the cell the ground's shader
+           samples, read through the GPU as the shader reads it (the cell's interior at 256 x 256 points, near the texture's own size, so that
+           no coarse mipmap blends a neighbour in: tuv's own formula, the texture as uploaded, flipped by three), within 2% */
+        var lmap=groundMesh.material.map, lrt=new THREE.WebGLRenderTarget(256,256), lb=new Uint8Array(256*256*4), lsc=new THREE.Scene(), lcam=new THREE.OrthographicCamera(-1,1,1,-1,0,1), lw=[];
+        var lmat=new THREE.ShaderMaterial({uniforms:{map:{value:lmap}, ci:{value:0}, cj:{value:0}}, depthTest:false, depthWrite:false,
+          vertexShader:"varying vec2 vU; void main(){ vU=uv; gl_Position=vec4(position.xy,0.0,1.0); }",
+          fragmentShader:"uniform sampler2D map; uniform float ci, cj; varying vec2 vU; void main(){ gl_FragColor=texture2D(map,vec2(fract(vU.x)*0.234375+0.0078125+ci*0.25, fract(vU.y)*0.3125+0.0104167+cj*0.3333333)); }"});
+        var lq=new THREE.Mesh(new THREE.PlaneGeometry(2,2),lmat); lsc.add(lq);
+        var lsr=lmap&&lmap.encoding===THREE.sRGBEncoding, llin=function(v){ v/=255; return lsr?(v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4)):v; };
+        if(!lmap) eBad.push("the landscape's ground without its texture");
+        else for(var lg=0;lg<12;lg++){ lmat.uniforms.ci.value=lg%4; lmat.uniforms.cj.value=Math.floor(lg/4);
+          renderer.setRenderTarget(lrt); renderer.clear(); renderer.render(lsc,lcam); renderer.readRenderTargetPixels(lrt,0,0,256,256,lb); renderer.setRenderTarget(null);
+          var ls=0; for(var li=0;li<lb.length;li+=4) ls+=0.2126*llin(lb[li])+0.7152*llin(lb[li+1])+0.0722*llin(lb[li+2]); ls/=256*256;
+          var lr=ls/GDETAIL.lum[lg]; lw.push(lr); if(Math.abs(lr-1)>0.02) eBad.push("cell "+lg+": its mean "+ls.toFixed(4)+" as sampled, GDETAIL's "+GDETAIL.lum[lg].toFixed(4)); }
+        lrt.dispose(); lmat.dispose(); lq.geometry.dispose();
+        placeCamera(VANTAGE.field); settle(8,true); var o1=grab(); U.uDetail.value.x=0; var o0=grab(); U.uDetail.value.x=GDETAIL.amount; var od=diff(o1,o0,0); if(od) eBad.push("the Field vantage "+od+" pixels off without the detail (all its ground beyond the far edge)");
+        setMode("staff"); settle(6,true); var p1=grab(); U.uDetail.value.x=0; var p0=grab(); U.uDetail.value.x=GDETAIL.amount; var pdd=diff(p1,p0,0); if(pdd) eBad.push("the paper map "+pdd+" pixels off without the detail");
+        setMode("terrain"); settle(4,true);
+        ck("the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural ground, its mean tone kept (each cell's mean that of the cell the shader samples), nothing of it beyond its far edge, none on the paper map, off under lowTier",
+          !eBad.length, nd+" pixels near the eye (the low Pratzen view, "+W0+" x "+H0+"), their tone "+tone.toFixed(3)+" times without it; each of the 12 cells' means as sampled "+(lw.length?Math.min.apply(null,lw).toFixed(3)+" to "+Math.max.apply(null,lw).toFixed(3):"(none)")+" times GDETAIL's; the Field vantage "+od+" and the paper map "+pdd+" pixels off without it"+(eBad.length?"; WRONG: "+eBad.join("; "):""));
+      } catch(err){ ck("water, woods and the near ground (8F): the checks ran", false, "threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+      } finally {
+        rt.dispose(); groundMesh.material.userData.U.uDetail.value.x=keep8.det; renderer.setClearColor(keep8.cc,keep8.ca);
+        if(DISPLAY.factor!==keep8.f) setDisplayFactor(keep8.f);
+        if(mode!==keep8.mode) setMode(keep8.mode); setPresentation(keep8.pres); setClock(keep8.t,{instant:true,force:true,camera:false}); finishTween();
+        landCam.position.copy(keep8.pos); orbitTarget.copy(keep8.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=keep8.fc; settle(4,true);
+      }
+    })();
 
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);

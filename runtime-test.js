@@ -1553,6 +1553,24 @@ try{
       r.parts.forEach(p=>{ if(!p.d) throw new Error(id+": dress "+p.dress+" unknown"); if(!p.colours) throw new Error(id+": no colours entry for "+p.dress); });
       parts+=r.parts.length; if(r.dominant) dom++; });
     console.log("appearance: "+ids.length+" blocks resolve to "+parts+" dress parts ("+dom+" by their dominant class) OK"); }
+
+  /* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md section 18): dry runs of the water's presentations (each
+     water mesh given its presentation's material by setMode, the paper map's 8E's without a shader hook of their own, the landscape's ice
+     and streams with 8F's, and back) and of the near detail (on at this tier; its cells' means in (0, 1]). The stub's geometry and materials
+     keep no triangles and no render state: the trees' triangles and the ice's depth are the self-test's 8F block's and css-test.js's */
+  { const m0=mode, bad=[], W8=WATER_MATS, kinds={};
+    if(!W8||!W8.land||!W8.paper) throw new Error("8F: no water materials");
+    setMode("staff");
+    world.water.forEach(m=>{ const k=waterKind(m); kinds[k]=(kinds[k]||0)+1; if(m.material!==W8.paper[k]) bad.push("the paper map's "+k+" not 8E's material");
+      if(Object.prototype.hasOwnProperty.call(m.material,"onBeforeCompile")||Object.prototype.hasOwnProperty.call(m.material,"customProgramCacheKey")) bad.push("the paper map's "+k+" hooked"); });
+    world.water.forEach(m=>{ const k=waterKind(m); if(!Object.prototype.hasOwnProperty.call(W8.land[k],"onBeforeCompile")&&k!=="bank") bad.push("the landscape's "+k+" without 8F's hook"); });
+    setMode("terrain");
+    world.water.forEach(m=>{ const k=waterKind(m); if(m.material!==W8.land[k]) bad.push("the landscape's "+k+" not 8F's material"); });
+    if(m0!==mode) setMode(m0);
+    if(groundMesh.material.userData.U.uDetail.value.x!==(lowTier?0:GDETAIL.amount)) bad.push("the near detail "+groundMesh.material.userData.U.uDetail.value.x+" at this tier");
+    if(GDETAIL.lum.length!==12||GDETAIL.lum.some(v=>!(v>0&&v<=1))) bad.push("the atlas cells' means "+GDETAIL.lum.join(","));
+    if(bad.length) throw new Error("8F: "+bad.join("; "));
+    console.log("water and the near ground (8F): "+world.water.length+" water meshes ("+Object.entries(kinds).map(e=>e[1]+" "+e[0]).join(", ")+") each with its presentation's materials both ways (the paper map's 8E's, unhooked); the near detail on at this tier, its 12 cells' means made ("+Math.min(...GDETAIL.lum).toFixed(3)+" to "+Math.max(...GDETAIL.lum).toFixed(3)+", of the procedural patterns: in this stub the photographs are painted after the dry runs) OK"); }
 }catch(e){ errs.push("DRIVE: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n")); }
 
 /* the photograph is painted into the atlas when its image loads (a microtask in this stub): checked after the dry runs, before the report.

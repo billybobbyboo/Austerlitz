@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 32b7b234e0ac92b4ddb07bd9d73920a6 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "32b7b234e0ac92b4ddb07bd9d73920a6",
- "count": 296,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 6ba949da17229530324add3c54dd94ff (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "6ba949da17229530324add3c54dd94ff",
+ "count": 301,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -298,6 +298,11 @@
   "map layer (decision 240; the audit of 8C): an item held hidden or fading out when it gains the keyboard's focus, the selection or the hover is drawn at full opacity in that frame (the stabiliser's fade is for what it holds)",
   "map layer (decision 240): input that moves nothing leaves the layer at rest (motion is a motion source and a view that changed)",
   "map layer (section 7.2, decision 240): in the low views the place and terrain-study names beyond 1.5 times the eye's distance to its target a type step smaller (10.5 px), in the box their own size gives them, so no item is placed otherwise; battle information never (decision 16); none on the paper map",
-  "render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate"
+  "render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate",
+  "the water's presentations (8F, decision 246 (a)): the landscape's ice and streams 8F's (the ice writing no depth, the shore band without a polygon offset and drawn after it), the paper map's water 8E's, its materials 8E's in every parameter",
+  "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after ten seconds of the app's frames with the clock standing, the same pixels; at rest no frame asked",
+  "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed margin lighter than the clear middle; in the frame the shore band at most 1.1 times the field beside the shore and the rimed margin at most 1.25 times",
+  "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
+  "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural ground, its mean tone kept (each cell's mean that of the cell the shader samples), nothing of it beyond its far edge, none on the paper map, off under lowTier"
  ]
 }

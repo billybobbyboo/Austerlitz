@@ -122,7 +122,9 @@ const CLASS={
   "world.js:groundYFast":"presentation",
   /* the self-test's check (h), rewritten with 8F's prerequisite 2: a posed point's offset from the drawn ground (hOffs), the eye placed over a
      formation for the motion stretches (eye) */
-  "app.js:selfTest > hOffs":"test","app.js:selfTest > eye":"test"
+  "app.js:selfTest > hOffs":"test","app.js:selfTest > eye":"test",
+  /* the self-test's 8F block: the eye aimed at a place on the drawn ground (aim) */
+  "app.js:selfTest > aim":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */
