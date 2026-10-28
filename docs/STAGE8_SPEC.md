@@ -3,7 +3,7 @@
 **Status: Part A, the specification, is complete and merged (PR #64, `main` at `d86835e`). The owner decided its questions 239-253 on
 24 October 2026 (section 0.3, the decisions with their qualifications, and the points they settle in this text); the implementation follows
 the plan of section 10 in eight implementation PRs, 8A to 8H, of which 8A (section 13) and 8B (section 14, added by its own PR, stacked on
-8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15; merged into `main`, #68) in its own session, after the owner decided question 254, and 8D (section 16; merged into `main`, #69) in its own, after the owner decided questions 255-258, and 8E (section 17; draft PR #70) in its own. Names (section 0.4): "Stage 8 Part A" is this specification only;
+8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15; merged into `main`, #68) in its own session, after the owner decided question 254, and 8D (section 16; merged into `main`, #69) in its own, after the owner decided questions 255-258, and 8E (section 17; merged into `main`, #70) in its own, and 8F (section 18; draft PR #71) in its own. Names (section 0.4): "Stage 8 Part A" is this specification only;
 "implementation PR 8A" is the first of the implementation PRs. Nothing below section 12 was written in Part A, and the decisions for 8C-8H
 set their direction and constraints only: none of them is implemented or verified until its own PR says so.**
 
@@ -4040,8 +4040,11 @@ the runs beside it. On CI, GitHub's `ubuntu-latest` runners. On the commits name
   cases among them) and `check:selftest` (301 of 301 in CI's browser, the motion block within its limits) pass in each. On `cfa6a22` (the
   evidence; the build the same): the push run 40675861432 and the pull request's 40675878965 pass every job. The `check:selftest` step took 21 to
   43 minutes in the five runs (8E's 19 to 38), its job at most 44 of the 60 allowed; a slower runner may bring it near the limit (not changed:
-  recorded). The dispatched run's `check:visual`: running when these records were written (begun at 09:39 UTC; 8E's took 169 to over 240 minutes);
-  its result is added here and to the pull request when it ends.
+  recorded). The dispatched run's `check:visual` passes, in 250 minutes (09:39 to 13:49 UTC; the job's limit 350; 8E's 169 to over 240): its 39
+  cases, every census reconciled and every case's frame with culling its frame without it (0 pixels; the low Pratzen view's frame 17.5% fewer
+  triangles with culling), the motion block's counts over its 16 motions 245, 985, 130 and 10 (8E's, exactly: the map layer in motion unchanged),
+  the culling block's 15 runs (485 frames judged, 243 compared, 0 pixels differing), the self-test and every live block, and `STAGE0: all checks
+  passed`. On `96fc022` (the records; the build the same): the push run 40687193681 and the pull request's 40687200421 pass every job.
 
 ### 18.10 What remains, for the owner's attention
 

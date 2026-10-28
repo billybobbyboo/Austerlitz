@@ -111,9 +111,11 @@ greyer; the deciduous woods bare and open, the ground, the troops and the sky sh
   flickers 11 on both builds, 23 of the 24 runs identical, the limits CI's browser's: `docs/stage8-evidence/8f/selftest-local.json`,
   `motion-8e-chromium153.json`); on CI (Chromium 141), on `e618e5e`, the push run 40665825995 and the pull request's 40665833860 pass every job
   and the dispatched 40665840278's checks job, `check:contrast` and `check:selftest` pass (the self-test 301 of 301 in CI's browser, the motion
-  block within its limits; the step 21 to 43 minutes in five runs, its job's limit 60), its `check:visual` running when this was written (its
-  result added when it ends); on `cfa6a22` (the evidence) the push run 40675861432 and the pull request's 40675878965 pass every job. The evidence
-  runs listed in `docs/stage8-evidence/README.md`.
+  block within its limits; the step 21 to 43 minutes in five runs, its job's limit 60), its `check:visual` passing in 250 minutes (the job's limit
+  350: its 39 cases, every census reconciled and every frame with culling its frame without, 0 pixels; the motion block's 16 motions 245, 985, 130
+  and 10, 8E's exactly; the culling block's 485 frames judged and 243 compared, 0 pixels differing); on `cfa6a22` (the evidence) the push run
+  40675861432 and the pull request's 40675878965, and on `96fc022` (the records) 40687193681 and 40687200421, pass every job. The evidence runs
+  listed in `docs/stage8-evidence/README.md`.
 - **Uncertain or open** (none blocks the build; each drawn as recorded): the feet's remaining cases and the profile option against the budget
   (§18.2); the wheeling block after a pause (the formation model's); the ground's grain on eight cover cells (2F's atlas flip); the woods' shimmer
   and their facets close to the eye; the low sun's glare on the clear ice at 15:00 wider than 8E's sheen; the conifer shares still unsourced

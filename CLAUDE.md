@@ -655,5 +655,5 @@ another row's grain. Measured here: at a pause 0 of 30 paused frames move (8E's 
 (rich); from above the shore 1.00 to 1.01 times the field beside it (8E's 1.02 to 1.03); 348, 254, 348 and 254 triangles a deciduous tree (8E's 560,
 380, 560, 380); the desktop frame 380,072 triangles fewer wherever the woods are drawn (14.1% to 16.4%), the draw calls the same, every desktop view within
 section 8.3's budget and the phone's two Overview views back within its own; the near detail's tone 1.000; the self-test 301 of 301; every mutation
-of the self-test's 8F block (17) and of `css-test.js`'s (27) failing them; `check:selftest` on CI passing (21 to 43 minutes, its job's limit 60). Device acceptance is pending for 8E and 8F (no owner hardware in the
+of the self-test's 8F block (17) and of `css-test.js`'s (27) failing them; `check:selftest` on CI passing (21 to 43 minutes, its job's limit 60) and `check:visual` (its 39 cases, 250 minutes of its job's 350). Device acceptance is pending for 8E and 8F (no owner hardware in the
 session; the device route and both builds prepared).
