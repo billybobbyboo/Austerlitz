@@ -1,0 +1,69 @@
+{
+ "flipY": true,
+ "cells": [
+  {
+   "k": 0,
+   "withOwn": 0.133,
+   "withFlipped": 0.856
+  },
+  {
+   "k": 1,
+   "withOwn": 0.738,
+   "withFlipped": 0.755
+  },
+  {
+   "k": 2,
+   "withOwn": 0.29,
+   "withFlipped": 0.725
+  },
+  {
+   "k": 3,
+   "withOwn": 0.034,
+   "withFlipped": 0.876
+  },
+  {
+   "k": 4,
+   "withOwn": 0.824,
+   "withFlipped": 0.824
+  },
+  {
+   "k": 5,
+   "withOwn": 0.877,
+   "withFlipped": 0.877
+  },
+  {
+   "k": 6,
+   "withOwn": 0.783,
+   "withFlipped": 0.783
+  },
+  {
+   "k": 7,
+   "withOwn": 0.881,
+   "withFlipped": 0.881
+  },
+  {
+   "k": 8,
+   "withOwn": 0.144,
+   "withFlipped": 0.793
+  },
+  {
+   "k": 9,
+   "withOwn": 0.748,
+   "withFlipped": 0.75
+  },
+  {
+   "k": 10,
+   "withOwn": 0.201,
+   "withFlipped": 0.88
+  },
+  {
+   "k": 11,
+   "withOwn": 0.025,
+   "withFlipped": 0.999
+  }
+ ],
+ "png": null,
+ "chromium": "153.0.8010.12",
+ "build": "8f-final.html",
+ "md5": "6ba949da17229530324add3c54dd94ff"
+}

@@ -1,0 +1,285 @@
+{
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the source as it is)",
+   "blockFails": false,
+   "ok": true,
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "klod",
+   "what": "no margin: the kit simple again only under 17.6 px",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "KLOD is not 17.6 px in and 14.5 px out (16 px with a margin each way)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "lodhyst",
+   "what": "kitLod's switch without its hysteresis: one threshold each way",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "kitLod's switch is not in the eye's view with its hysteresis"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "lodalloc",
+   "what": "kitLod allocating for every block every frame",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "kitLod allocates (it runs for every block every frame)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "colour",
+   "what": "a vehicle part drawn in a colour of its own, not KIT.gear's",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "app.js: kitDisc has colour literals outside the palette tables (0x808000 (line 1282))",
+    "kitDisc draws a colour of its own (the vehicles' colours are KIT.gear's)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "armycolour",
+   "what": "a carriage coloured by its army",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "kitDisc colours or shapes a vehicle by army or dress (one carriage colour for every army, decisions 109, 243 (a))"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "drivers",
+   "what": "IV Corps' letter generalised: a driver on every team the claim does not reach",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "artDrivers does not take its drivers from the claim whose corps holds the battery, and none elsewhere (decision 243 (a))"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "switch",
+   "what": "the deployed and limbered battery eased over a duration no source gives",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the switch between the deployed and the limbered battery is not at once (ORDNANCE.fr.limbering: no duration read)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "wall",
+   "what": "the gait's phase from the wall clock, not the track's distance",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the gait's phase is not the track's distance over the stride, or a formation's meshes do not share its amplitude",
+    "gaitStep reads a wall clock or a random number (the gait is the clock's)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "rm",
+   "what": "reduced motion ignored by the gait",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the gait's amplitude is not the clock rate's rule by the formation's fastest stride, none under 1 km/h or under reduced motion"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "fade",
+   "what": "the fade from 3.2 to 4.8 cycles a second moved",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "GAIT's values are not 8E's (the strides, the fade from 3.2 to 4.8 cycles a second, 1 km/h)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "ease",
+   "what": "the amplitude set at once, not eased",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the gait's amplitude is not eased, or not stopped at once under reduced motion, or a seek not shown at once"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "rmease",
+   "what": "reduced motion eased, not at once",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the gait's amplitude is not eased, or not stopped at once under reduced motion, or a seek not shown at once"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "noskip",
+   "what": "gaitStep computing (and allocating) every frame when nothing changed",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "gaitStep computes or allocates when nothing changed (the clock, its rate, reduced motion and the parts drawn the same, the gait arrived)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "crew",
+   "what": "a battery's cadence its hidden crew's",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the gait's amplitude is not the clock rate's rule by the formation's fastest stride, none under 1 km/h or under reduced motion"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "wheelwrap",
+   "what": "the wheels' angles not taken within one spoke's interval",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the wheels' angles are not taken within one spoke's interval, whole (an angle scaled by the fade steps back at each interval)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "kneel",
+   "what": "a behaviour beyond the gait: a kneeling part",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the hook moves a part of kind \"kneel\" (the gait swings legs and arms and turns wheels, nothing else)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "pausehold",
+   "what": "8E's behaviour: with the clock standing the amplitude eased on toward the paused rule",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "a paused clock does not hold the gait drawn (the amplitude and the trot eased on with the clock standing)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "seekease",
+   "what": "a seek eased like Play, not the clock's own pose at once",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the gait's amplitude is not eased, or not stopped at once under reduced motion, or a seek not shown at once"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "seekcount",
+   "what": "setClock counting no seek",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "setClock does not count a seek (every move of the clock but Play's own advance)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "playseek",
+   "what": "Play's own advance counted a seek",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "tickClock's advance of the clock is not marked Play's own (it would count as a seek)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "wind",
+   "what": "the standards' cloth moved by the wall clock (wind)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the standards' drape is not still, in the cloth's depth only"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "slopeground",
+   "what": "the slopes read through groundY, not the compact heights",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the slopes read the ground other than through groundYFast on the compact heights",
+    "the slopes are not 8E's two chords a figure (four lookups in all: a man's two, a horse's two)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "slopemore",
+   "what": "each foot's own line read (a third chord: over the animation's budget)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the slopes are not 8E's two chords a figure (four lookups in all: a man's two, a horse's two)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "slopesole",
+   "what": "the mirror planting the rich kit's soles on the simple kit",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the hook or its mirror does not plant the kit's own soles (the simple kit's HEEL0 and TOE0, the rich kit's HEEL and TOE)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "slopehook",
+   "what": "the hook planting the rich kit's soles on the simple kit",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the hook or its mirror does not plant the kit's own soles (the simple kit's HEEL0 and TOE0, the rich kit's HEEL and TOE)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "chorddir",
+   "what": "8E's chord rule: an edge's slope by the way it moves, not by the side of the man it stands on (the mirror)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the man's chords are not the ground from his middle in the hook and its mirror (ahead of it the slope ahead, behind it the slope behind; each edge's posed place against its rest place)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "slopestale",
+   "what": "scaleGround not marking the compact heights stale",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "scaleGround does not mark the compact heights stale (the slopes would read the ground before the change)"
+   ],
+   "exit": 1
+  }
+ ]
+}

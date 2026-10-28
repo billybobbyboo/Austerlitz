@@ -1,0 +1,202 @@
+{
+ "chromium": "153.0.8010.12",
+ "build": "6ba949da17229530324add3c54dd94ff",
+ "views": {
+  "woods-pheasantry": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174,
+     "lace": []
+    },
+    "cost": {
+     "calls": 600,
+     "tris": 1926433
+    },
+    "place": {
+     "wood": 1010,
+     "edge": 354,
+     "village": 184,
+     "stream": 202,
+     "out": 0,
+     "notModel": 0,
+     "instances": 1750,
+     "broad": {
+      "wood": 634,
+      "village": 184
+     },
+     "conifer": 376,
+     "scrub": {
+      "edge": 354,
+      "stream": 202
+     }
+    },
+    "troopsWith": 59930,
+    "troopsWithout": 66738,
+    "seen": 0.898,
+    "woodPx": 52490,
+    "shimmer": 0.0193,
+    "shimmerPx": 1011,
+    "fragments": 302227,
+    "covered": 53849,
+    "overdraw": 5.61
+   }
+  },
+  "ice-sun": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174,
+     "lace": []
+    },
+    "cost": {
+     "calls": 312,
+     "tris": 1376251
+    },
+    "troopsWith": 20368,
+    "troopsWithout": 110112,
+    "seen": 0.185,
+    "woodPx": 190353,
+    "shimmer": 0.0063,
+    "shimmerPx": 1199,
+    "fragments": 1700781,
+    "covered": 191140,
+    "overdraw": 8.9
+   }
+  },
+  "pratzen-low": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174,
+     "lace": []
+    },
+    "cost": {
+     "calls": 548,
+     "tris": 1787929
+    },
+    "troopsWith": 47568,
+    "troopsWithout": 47731,
+    "seen": 0.9966,
+    "woodPx": 21054,
+    "shimmer": 0.0062,
+    "shimmerPx": 131,
+    "fragments": 95305,
+    "covered": 21216,
+    "overdraw": 4.49
+   }
+  },
+  "close-sokolnitz": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174,
+     "lace": []
+    },
+    "cost": {
+     "calls": 690,
+     "tris": 2100345
+    },
+    "troopsWith": 39453,
+    "troopsWithout": 43446,
+    "seen": 0.9081,
+    "woodPx": 34916,
+    "shimmer": 0.0247,
+    "shimmerPx": 864,
+    "fragments": 207644,
+    "covered": 35904,
+    "overdraw": 5.78
+   }
+  },
+  "overview-field": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174,
+     "lace": []
+    },
+    "cost": {
+     "calls": 828,
+     "tris": 2208797
+    },
+    "troopsWith": 9239,
+    "troopsWithout": 9526,
+    "seen": 0.9699,
+    "woodPx": 11341,
+    "shimmer": 0.0142,
+    "shimmerPx": 161,
+    "fragments": 51736,
+    "covered": 11509,
+    "overdraw": 4.5
+   }
+  },
+  "ph8-overview-watch": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174,
+     "lace": []
+    },
+    "cost": {
+     "calls": 809,
+     "tris": 2133865
+    },
+    "troopsWith": 2376,
+    "troopsWithout": 2435,
+    "seen": 0.9758,
+    "woodPx": 5168,
+    "shimmer": 0.0168,
+    "shimmerPx": 87,
+    "fragments": 14638,
+    "covered": 5169,
+    "overdraw": 2.83
+   }
+  }
+ },
+ "lowTier": {
+  "overview-field": {
+   "lowTier": true,
+   "base": {
+    "calls": 529,
+    "tris": 1274675
+   }
+  },
+  "pratzen-low": {
+   "lowTier": true,
+   "base": {
+    "calls": 278,
+    "tris": 902427
+   }
+  }
+ }
+}

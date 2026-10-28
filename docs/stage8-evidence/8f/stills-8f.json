@@ -1,0 +1,436 @@
+{
+ "chromium": "153.0.8010.12",
+ "before": {
+  "file": "8e-d73d0115.html",
+  "md5": "d73d01154b8f6e2552fe04bfb24d05e5"
+ },
+ "after": {
+  "file": "8f-final.html",
+  "md5": "6ba949da17229530324add3c54dd94ff"
+ },
+ "views": {
+  "ice-high": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-mid": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-low": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-sun": {
+   "before": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-mid-0900": {
+   "before": {
+    "clock": "09:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "09:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-mid-1200": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-mid-1x": {
+   "before": {
+    "clock": "15:00",
+    "factor": 1,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 1,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-mid-10x": {
+   "before": {
+    "clock": "15:00",
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-eye": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ice-hybrid": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "hybrid",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "hybrid",
+    "lowTier": false
+   }
+  },
+  "goldbach-top": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "goldbach-noon": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "stream-low": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "woods-pheasantry": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "woods-pheasantry-1x": {
+   "before": {
+    "clock": "08:20",
+    "factor": 1,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 1,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "woods-pheasantry-10x": {
+   "before": {
+    "clock": "08:20",
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "woods-edge-low": {
+   "before": {
+    "clock": "09:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "09:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "close-sokolnitz": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "overview-field": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "ph8-overview-watch": {
+   "before": {
+    "clock": "14:40",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "14:40",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "pratzen-low": {
+   "before": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "pratzen-low-1x": {
+   "before": {
+    "clock": "09:50",
+    "factor": 1,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 1,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "pratzen-low-10x": {
+   "before": {
+    "clock": "09:50",
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "horizon-east": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "eye-zuran": {
+   "before": {
+    "clock": "08:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "08:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "fields-low": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false
+   }
+  },
+  "hybrid-low": {
+   "before": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "hybrid",
+    "lowTier": false
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "hybrid",
+    "lowTier": false
+   }
+  },
+  "phone-ice": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true
+   }
+  },
+  "phone-woods": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true
+   }
+  }
+ },
+ "clips": {
+  "woods-orbit": {
+   "file": "docs/stage8-evidence/8f/clips/woods-orbit-8e-8f.mp4",
+   "frames": 30,
+   "clock": 540
+  },
+  "ice-dolly": {
+   "file": "docs/stage8-evidence/8f/clips/ice-dolly-8e-8f.mp4",
+   "frames": 30,
+   "clock": 900
+  },
+  "ground-pan": {
+   "file": "docs/stage8-evidence/8f/clips/ground-pan-8e-8f.mp4",
+   "frames": 30,
+   "clock": 720
+  }
+ }
+}

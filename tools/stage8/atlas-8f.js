@@ -7,7 +7,8 @@
    tool shows it: for each k, the cell as the shader's formula samples it through the GPU (its luminance, 128 x 128) beside the canvas's cell k
    and the canvas's cell (k mod 4, 2 - floor(k/4)), each with the correlation of their greys; a contact sheet of the twelve.
    node tools/stage8/atlas-8f.js [--out dir]   (the build: AUSTERLITZ_HTML, else the repository's)
-   Writes <out>/atlas-8f.json and <out>/atlas-8f.png; measurement code only. */
+   Writes <out>/atlas-8f.json and <out>/atlas-8f.jpg (rows by k: the shader's sample, the canvas's cell k, the canvas's cell flipped); measurement code
+   only. */
 "use strict";
 const fs=require("fs"), path=require("path"), crypto=require("crypto");
 const L=require("./lib.js");
@@ -33,10 +34,10 @@ const MEAS=function(){
     var own=canvasCell(k%4,Math.floor(k/4)), other=canvasCell(k%4,2-Math.floor(k/4));
     out.cells.push({k:k, withOwn:+corr(s,own).toFixed(3), withFlipped:+corr(s,other).toFixed(3)});
     sx.putImageData(img,0,k*(N+8)); sx.drawImage(c,(k%4)*512+16,Math.floor(k/4)*512+16,480,480,N+20,k*(N+8),N,N); sx.drawImage(c,(k%4)*512+16,(2-Math.floor(k/4))*512+16,480,480,2*N+40,k*(N+8),N,N); }
-  rt.dispose(); mat.dispose(); out.png=sheet.toDataURL("image/png"); return out; };
+  rt.dispose(); mat.dispose(); out.sheet=sheet.toDataURL("image/jpeg",0.9); return out; };
 (async()=>{
-  const browser=await L.launch(); process.env.AUSTERLITZ_HTML=HTML; const page=await L.open(browser,[1366,768],{}); const r=await page.evaluate(MEAS); await page.close(); await browser.close();
-  fs.mkdirSync(OUT,{recursive:true}); fs.writeFileSync(path.join(OUT,"atlas-8f.png"),Buffer.from(r.png.split(",")[1],"base64")); delete r.png;
+  const browser=await L.launch(); process.env.AUSTERLITZ_HTML=HTML; const page=await L.open(browser,[1366,768],{}); const r=await page.evaluate(MEAS); await page.close(); r.chromium=browser.version(); await browser.close();
+  fs.mkdirSync(OUT,{recursive:true}); fs.writeFileSync(path.join(OUT,"atlas-8f.jpg"),Buffer.from(r.sheet.split(",")[1],"base64")); delete r.sheet;
   r.build=path.basename(HTML); r.md5=crypto.createHash("md5").update(fs.readFileSync(HTML)).digest("hex");
   fs.writeFileSync(path.join(OUT,"atlas-8f.json"),JSON.stringify(r,null,1));
   console.log("flipY "+r.flipY); r.cells.forEach(c=>console.log("cell "+String(c.k).padStart(2)+": the shader's sample against the canvas's cell k "+c.withOwn+", against its cell (k mod 4, 2 - floor(k/4)) "+c.withFlipped));

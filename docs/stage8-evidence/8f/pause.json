@@ -1,0 +1,948 @@
+{
+ "chromium": "153.0.8010.12",
+ "builds": {
+  "8E": {
+   "file": "8e-d73d0115.html",
+   "md5": "d73d01154b8f6e2552fe04bfb24d05e5",
+   "subjects": {
+    "infantry": {
+     "id": "sthilaire",
+     "ways": {
+      "half speed": {
+       "clock": 534.167,
+       "ampLastPlayed": 1,
+       "ampPaused": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 535.5,
+         "amp": 0.608406
+        },
+        {
+         "clock": 536.833,
+         "amp": 0.370158
+        },
+        {
+         "clock": 538.167,
+         "amp": 0.225206
+        },
+        {
+         "clock": 539.5,
+         "amp": 0.137017
+        },
+        {
+         "clock": 540.833,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "in the fade": {
+       "clock": 536.667,
+       "ampLastPlayed": 0.370158,
+       "ampPaused": [
+        0.6168,
+        0.766859,
+        0.858156,
+        0.913701,
+        0.947495,
+        0.995623,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 30,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 538,
+         "amp": 0.608406
+        },
+        {
+         "clock": 539.333,
+         "amp": 0.370158
+        },
+        {
+         "clock": 540.667,
+         "amp": 0.225206
+        },
+        {
+         "clock": 542,
+         "amp": 0.137017
+        },
+        {
+         "clock": 543.333,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "faded out": {
+       "clock": 554,
+       "ampLastPlayed": 0,
+       "ampPaused": [
+        0.391594,
+        0.629842,
+        0.774794,
+        0.862983,
+        0.916638,
+        0.993051,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 30,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 555.333,
+         "amp": 0.608406
+        },
+        {
+         "clock": 556.667,
+         "amp": 0.370158
+        },
+        {
+         "clock": 558,
+         "amp": 0.225206
+        },
+        {
+         "clock": 559.333,
+         "amp": 0.137017
+        },
+        {
+         "clock": 560.667,
+         "amp": 0.083362
+        }
+       ],
+       "seek": {
+        "before": {
+         "clock": 560.667,
+         "playing": false,
+         "amp": 0.442312,
+         "uni": [
+          0.44231183788610323,
+          4.670195997097343,
+          0,
+          0.11394203437494355,
+          0.23732359965184635
+         ]
+        },
+        "after": [
+         {
+          "clock": 570.667,
+          "amp": 0.269105
+         },
+         {
+          "clock": 570.667,
+          "amp": 0.163725
+         },
+         {
+          "clock": 570.667,
+          "amp": 0.099611
+         }
+        ]
+       }
+      }
+     }
+    },
+    "cavalry": {
+     "id": "guard_cav",
+     "ways": {
+      "half speed": {
+       "clock": 638.167,
+       "ampLastPlayed": 1,
+       "ampPaused": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 639.5,
+         "amp": 0.608406
+        },
+        {
+         "clock": 640.833,
+         "amp": 0.370158
+        },
+        {
+         "clock": 642.167,
+         "amp": 0.225206
+        },
+        {
+         "clock": 643.5,
+         "amp": 0.137017
+        },
+        {
+         "clock": 644.833,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "in the fade": {
+       "clock": 640.667,
+       "ampLastPlayed": 0.370158,
+       "ampPaused": [
+        0.6168,
+        0.766859,
+        0.858156,
+        0.913701,
+        0.947495,
+        0.995623,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 30,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 642,
+         "amp": 0.608406
+        },
+        {
+         "clock": 643.333,
+         "amp": 0.370158
+        },
+        {
+         "clock": 644.667,
+         "amp": 0.225206
+        },
+        {
+         "clock": 646,
+         "amp": 0.137017
+        },
+        {
+         "clock": 647.333,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "faded out": {
+       "clock": 658,
+       "ampLastPlayed": 0,
+       "ampPaused": [
+        0.391594,
+        0.629842,
+        0.774794,
+        0.862983,
+        0.916638,
+        0.993051,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 30,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 659.333,
+         "amp": 0.608406
+        },
+        {
+         "clock": 660.667,
+         "amp": 0.370158
+        },
+        {
+         "clock": 662,
+         "amp": 0.225206
+        },
+        {
+         "clock": 663.333,
+         "amp": 0.137017
+        },
+        {
+         "clock": 664.667,
+         "amp": 0.083362
+        }
+       ],
+       "seek": {
+        "before": {
+         "clock": 664.667,
+         "playing": false,
+         "amp": 0.442312,
+         "uni": [
+          0.44231183788610323,
+          3.444353185779063,
+          0,
+          -0.10725280693514883,
+          -0.09204324159155597
+         ]
+        },
+        "after": [
+         {
+          "clock": 674.667,
+          "amp": 0.660699
+         },
+         {
+          "clock": 674.667,
+          "amp": 0.793567
+         },
+         {
+          "clock": 674.667,
+          "amp": 0.874405
+         }
+        ]
+       }
+      }
+     }
+    },
+    "limbered artillery": {
+     "id": "heightguns",
+     "ways": {
+      "half speed": {
+       "clock": 832.167,
+       "ampLastPlayed": 1,
+       "ampPaused": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 833.5,
+         "amp": 0.608406
+        },
+        {
+         "clock": 834.833,
+         "amp": 0.370158
+        },
+        {
+         "clock": 836.167,
+         "amp": 0.225206
+        },
+        {
+         "clock": 837.5,
+         "amp": 0.137017
+        },
+        {
+         "clock": 838.833,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "in the fade": {
+       "clock": 834.667,
+       "ampLastPlayed": 0.370158,
+       "ampPaused": [
+        0.6168,
+        0.766859,
+        0.858156,
+        0.913701,
+        0.947495,
+        0.995623,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 30,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 836,
+         "amp": 0.608406
+        },
+        {
+         "clock": 837.333,
+         "amp": 0.370158
+        },
+        {
+         "clock": 838.667,
+         "amp": 0.225206
+        },
+        {
+         "clock": 840,
+         "amp": 0.137017
+        },
+        {
+         "clock": 841.333,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "faded out": {
+       "clock": 852,
+       "ampLastPlayed": 0,
+       "ampPaused": [
+        0.391594,
+        0.629842,
+        0.774794,
+        0.862983,
+        0.916638,
+        0.993051,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 30,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 853.333,
+         "amp": 0.608406
+        },
+        {
+         "clock": 854.667,
+         "amp": 0.370158
+        },
+        {
+         "clock": 856,
+         "amp": 0.225206
+        },
+        {
+         "clock": 857.333,
+         "amp": 0.137017
+        },
+        {
+         "clock": 858.667,
+         "amp": 0.083362
+        }
+       ],
+       "seek": {
+        "before": {
+         "clock": 858.667,
+         "playing": false,
+         "amp": 0.442312,
+         "uni": [
+          0.44231183788610323,
+          4.299152095589036,
+          0,
+          0.19292657366654087,
+          0.024265299700711118
+         ]
+        },
+        "after": [
+         {
+          "clock": 868.667,
+          "amp": 0.660699
+         },
+         {
+          "clock": 868.667,
+          "amp": 0.793567
+         },
+         {
+          "clock": 868.667,
+          "amp": 0.874405
+         }
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "8F": {
+   "file": "pre1.html",
+   "md5": "7a37ab066c86779b5944406ffbd806e8",
+   "subjects": {
+    "infantry": {
+     "id": "sthilaire",
+     "ways": {
+      "half speed": {
+       "clock": 534.167,
+       "ampLastPlayed": 1,
+       "ampPaused": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 535.5,
+         "amp": 0.608406
+        },
+        {
+         "clock": 536.833,
+         "amp": 0.370158
+        },
+        {
+         "clock": 538.167,
+         "amp": 0.225206
+        },
+        {
+         "clock": 539.5,
+         "amp": 0.137017
+        },
+        {
+         "clock": 540.833,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "in the fade": {
+       "clock": 536.667,
+       "ampLastPlayed": 0.370158,
+       "ampPaused": [
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 0.370158,
+       "resumed": [
+        {
+         "clock": 538,
+         "amp": 0.225206
+        },
+        {
+         "clock": 539.333,
+         "amp": 0.137017
+        },
+        {
+         "clock": 540.667,
+         "amp": 0.083362
+        },
+        {
+         "clock": 542,
+         "amp": 0.050718
+        },
+        {
+         "clock": 543.333,
+         "amp": 0.030857
+        }
+       ],
+       "seek": null
+      },
+      "faded out": {
+       "clock": 554,
+       "ampLastPlayed": 0,
+       "ampPaused": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 0,
+       "resumed": [
+        {
+         "clock": 555.333,
+         "amp": 0
+        },
+        {
+         "clock": 556.667,
+         "amp": 0
+        },
+        {
+         "clock": 558,
+         "amp": 0
+        },
+        {
+         "clock": 559.333,
+         "amp": 0
+        },
+        {
+         "clock": 560.667,
+         "amp": 0
+        }
+       ],
+       "seek": {
+        "before": {
+         "clock": 560.667,
+         "playing": false,
+         "amp": 0,
+         "uni": [
+          0,
+          0,
+          0,
+          0,
+          0
+         ]
+        },
+        "after": [
+         {
+          "clock": 570.667,
+          "amp": 0
+         },
+         {
+          "clock": 570.667,
+          "amp": 0
+         },
+         {
+          "clock": 570.667,
+          "amp": 0
+         }
+        ]
+       }
+      }
+     }
+    },
+    "cavalry": {
+     "id": "guard_cav",
+     "ways": {
+      "half speed": {
+       "clock": 638.167,
+       "ampLastPlayed": 1,
+       "ampPaused": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 639.5,
+         "amp": 0.608406
+        },
+        {
+         "clock": 640.833,
+         "amp": 0.370158
+        },
+        {
+         "clock": 642.167,
+         "amp": 0.225206
+        },
+        {
+         "clock": 643.5,
+         "amp": 0.137017
+        },
+        {
+         "clock": 644.833,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "in the fade": {
+       "clock": 640.667,
+       "ampLastPlayed": 0.370158,
+       "ampPaused": [
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 0.370158,
+       "resumed": [
+        {
+         "clock": 642,
+         "amp": 0.225206
+        },
+        {
+         "clock": 643.333,
+         "amp": 0.137017
+        },
+        {
+         "clock": 644.667,
+         "amp": 0.083362
+        },
+        {
+         "clock": 646,
+         "amp": 0.050718
+        },
+        {
+         "clock": 647.333,
+         "amp": 0.030857
+        }
+       ],
+       "seek": null
+      },
+      "faded out": {
+       "clock": 658,
+       "ampLastPlayed": 0,
+       "ampPaused": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 0,
+       "resumed": [
+        {
+         "clock": 659.333,
+         "amp": 0
+        },
+        {
+         "clock": 660.667,
+         "amp": 0
+        },
+        {
+         "clock": 662,
+         "amp": 0
+        },
+        {
+         "clock": 663.333,
+         "amp": 0
+        },
+        {
+         "clock": 664.667,
+         "amp": 0
+        }
+       ],
+       "seek": {
+        "before": {
+         "clock": 664.667,
+         "playing": false,
+         "amp": 0,
+         "uni": [
+          0,
+          0,
+          0,
+          0,
+          0
+         ]
+        },
+        "after": [
+         {
+          "clock": 674.667,
+          "amp": 1
+         },
+         {
+          "clock": 674.667,
+          "amp": 1
+         },
+         {
+          "clock": 674.667,
+          "amp": 1
+         }
+        ]
+       }
+      }
+     }
+    },
+    "limbered artillery": {
+     "id": "heightguns",
+     "ways": {
+      "half speed": {
+       "clock": 832.167,
+       "ampLastPlayed": 1,
+       "ampPaused": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 1,
+       "resumed": [
+        {
+         "clock": 833.5,
+         "amp": 0.608406
+        },
+        {
+         "clock": 834.833,
+         "amp": 0.370158
+        },
+        {
+         "clock": 836.167,
+         "amp": 0.225206
+        },
+        {
+         "clock": 837.5,
+         "amp": 0.137017
+        },
+        {
+         "clock": 838.833,
+         "amp": 0.083362
+        }
+       ],
+       "seek": null
+      },
+      "in the fade": {
+       "clock": 834.667,
+       "ampLastPlayed": 0.370158,
+       "ampPaused": [
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158,
+        0.370158
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 0.370158,
+       "resumed": [
+        {
+         "clock": 836,
+         "amp": 0.225206
+        },
+        {
+         "clock": 837.333,
+         "amp": 0.137017
+        },
+        {
+         "clock": 838.667,
+         "amp": 0.083362
+        },
+        {
+         "clock": 840,
+         "amp": 0.050718
+        },
+        {
+         "clock": 841.333,
+         "amp": 0.030857
+        }
+       ],
+       "seek": null
+      },
+      "faded out": {
+       "clock": 852,
+       "ampLastPlayed": 0,
+       "ampPaused": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pausedFramesMoved": 0,
+       "ampPausedLast": 0,
+       "resumed": [
+        {
+         "clock": 853.333,
+         "amp": 0
+        },
+        {
+         "clock": 854.667,
+         "amp": 0
+        },
+        {
+         "clock": 856,
+         "amp": 0
+        },
+        {
+         "clock": 857.333,
+         "amp": 0
+        },
+        {
+         "clock": 858.667,
+         "amp": 0
+        }
+       ],
+       "seek": {
+        "before": {
+         "clock": 858.667,
+         "playing": false,
+         "amp": 0,
+         "uni": [
+          0,
+          0,
+          0,
+          0,
+          0
+         ]
+        },
+        "after": [
+         {
+          "clock": 868.667,
+          "amp": 1
+         },
+         {
+          "clock": 868.667,
+          "amp": 1
+         },
+         {
+          "clock": 868.667,
+          "amp": 1
+         }
+        ]
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "note": "Every value read from the app's own state after its own loop's frame; Play, the speed and Pause by real clicks."
+}
