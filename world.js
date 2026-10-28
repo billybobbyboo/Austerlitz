@@ -440,6 +440,29 @@ function groundY(x,z){
   return (u+v<=1) ? ha+u*(hd-ha)+v*(hb-ha) : hc+(1-u)*(hb-hc)+(1-v)*(hd-hc);
 }
 
+/* Stage 8, implementation PR 8F's prerequisite 2 (the audit of 8E: the contact): the drawn ground's heights at its grid's vertices in one compact
+   array (GROUND_NX+1 by GROUND_NZ+1, each the value the ground mesh's own triangles carry there), for the gait's slopes, which read the drawn
+   ground ten or twelve times a figure as a block is seated (layoutFigs): groundYFast(H,x,z) is groundY's own arithmetic on it, value for value
+   the same (runtime-test.js and the self-test compare the two), about a third cheaper a lookup where a figure's lookups lie together. Made
+   again whenever the mesh's positions change (a display factor, the flat paper map: scaleGround marks it stale; the attribute's array or
+   version, for any other writer) */
+var GHEIGHTS={h:null, arr:null, ver:-1};
+function groundHeights(){
+  if(!groundMesh) return null;
+  var A=groundMesh.geometry.attributes.position; if(GHEIGHTS.h&&GHEIGHTS.arr===A.array&&GHEIGHTS.ver===A.version) return GHEIGHTS.h;
+  var P=A.array, NX=GROUND_NX, NZ=GROUND_NZ, N1=NX+1, H=(GHEIGHTS.h&&GHEIGHTS.h.length===N1*(NZ+1))?GHEIGHTS.h:new Float32Array(N1*(NZ+1));
+  for(var iz=0;iz<NZ;iz++) for(var ix=0;ix<NX;ix++){ var o0=(iz*NX+ix)*18, o1=o0+9;
+    H[iz*N1+ix]=P[o0+1]; H[(iz+1)*N1+ix]=P[o0+4]; H[iz*N1+ix+1]=P[o0+7]; H[(iz+1)*N1+ix+1]=P[o1+4]; }
+  GHEIGHTS.h=H; GHEIGHTS.arr=P; GHEIGHTS.ver=A.version; return H;
+}
+function groundYFast(H,x,z){
+  var cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ, fx=(x+GROUND_W/2)/cw, fz=(z+GROUND_D/2)/cd;
+  if(!H||fx<0||fz<0||fx>GROUND_NX||fz>GROUND_NZ) return groundY(x,z);
+  var ix=Math.min(GROUND_NX-1,Math.floor(fx)), iz=Math.min(GROUND_NZ-1,Math.floor(fz)), u=fx-ix, v=fz-iz, N1=GROUND_NX+1, k=iz*N1+ix;
+  var ha=H[k], hb=H[k+N1], hd=H[k+1], hc=H[k+N1+1];
+  return (u+v<=1) ? ha+u*(hd-ha)+v*(hb-ha) : hc+(1-u)*(hb-hc)+(1-v)*(hd-hc);
+}
+
 /* ---------------- state ---------------- */
 var scrubMesh=null;
 var groundMesh=null, domeMesh=null, mistGroup=null, treeMesh=null, coniferMesh=null,
@@ -564,6 +587,7 @@ function scaleGround(geo){
     N[i*3]=nx/L; N[i*3+1]=ny/L; N[i*3+2]=nz/L;
   }
   geo.attributes.position.needsUpdate=true; geo.attributes.normal.needsUpdate=true;
+  GHEIGHTS.ver=-1;   /* the slopes' compact heights made again at their next read (groundHeights), whatever the attribute's version does */
   if(geo.computeBoundingSphere) geo.computeBoundingSphere(); if(geo.boundingBox) geo.computeBoundingBox();
   var LX=-0.52, LY=0.70, LZ=-0.49, ln=Math.sqrt(LX*LX+LY*LY+LZ*LZ); LX/=ln; LY/=ln; LZ/=ln;
   for(var q=0;q<FACE.n*3;q++){ var a=N[q*3],b=N[q*3+1],c=N[q*3+2]; FACE.vsh[q]=Math.max(0,a*LX+b*LY+c*LZ); FACE.vnz[q]=c; }

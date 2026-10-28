@@ -962,7 +962,9 @@ function kitPart(geo,p,s,rot,col,part){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot
    and part attributes (the objects and their versions) and the animation's definition (ANIM.ver, which animDefine moves whenever the table
    changes); the culling bounds are refreshed whenever any of these differ from the ones they were computed from (cullTest) */
 var ANIM={
-  MAN:{HIP:0.62, KNEE:0.33, FOOT:0.0, HEEL:-0.065, TOE:0.135, AH:0.42, AK:0.55, AA:0.30, SHY:1.10, SHZ:0.02},
+  MAN:{HIP:0.62, KNEE:0.33, FOOT:0.0, HEEL:-0.065, TOE:0.135, AH:0.42, AK:0.55, AA:0.30, SHY:1.10, SHZ:0.02,
+    HEEL0:-0.09, TOE0:0.09},   /* since 8F's prerequisite 2 (the audit of 8E: the contact): the simple kit's soles, its legs' boxes 0.18 deep (HEEL0, TOE0);
+                                  the rich kit's feet are HEEL and TOE. Until 8F the hook planted the rich kit's on both */
   HORSE:{HIP:0.62, ZF:0.40, ZH:-0.40, L:0.62, HZ:0.05, AW:0.38, AT:0.55, WALK:[0.25,0.75,0,0.5], TROT:[0,0.5,0.5,0]},
   WHEEL:{20:{r:kitArtR("gun"), n:12}, 21:{r:kitArtR("limber"), n:10}},   /* their axles at (y r, z 0) in the gun's and the limber's own frames (kitArtR); n the
                                                                           wheel's symmetry, its spokes', its rim's, its hub's and the simple disc's (kitWheel, kitDisc) */
@@ -974,13 +976,17 @@ var ANIM={
 /* rotation of (y, z) about the joint (oy, oz) by a (positive: a point below the joint goes back, -z) */
 function animRot(y,z,oy,oz,a,o){ var c=Math.cos(a), s=Math.sin(a), qy=y-oy, qz=z-oz; o[0]=oy+qy*c-qz*s; o[1]=oz+qy*s+qz*c; return o; }
 var _anT=[0,0], _anU=[0,0];
-/* the man's two feet, posed (each sole's heel and toe, HEEL and TOE from the foot's rest point), and the rise or dip that keeps the lowest of
-   the four against the ground where it stands at rest (an edge moved ahead against the slope ahead of him, sa, one moved back against the
-   slope behind him, sb): one sole's edge planted, none sunk by the gait */
-function animManRoot(f,kL,kR,sa,sb){ var M=ANIM.MAN, g=-1e9; if(sb===undefined) sb=sa;
-  [M.HEEL,M.TOE].forEach(function(z0){
-    animRot(M.FOOT,z0,M.KNEE,0,kL,_anT); animRot(_anT[0],_anT[1],M.HIP,0,-f,_anT); var dL=_anT[1]-z0; g=Math.max(g,(dL>0?sa:sb)*dL-(_anT[0]-M.FOOT));
-    animRot(M.FOOT,z0,M.KNEE,0,kR,_anU); animRot(_anU[0],_anU[1],M.HIP,0,f,_anU); var dR=_anU[1]-z0; g=Math.max(g,(dR>0?sa:sb)*dR-(_anU[0]-M.FOOT)); });
+/* the man's two feet, posed (each sole's heel and toe from the foot's rest point: the rich kit's HEEL and TOE, the simple kit's HEEL0 and TOE0,
+   by the knee's uniform, which is the level's: kn 1 the rich, 0 the simple; since 8F's prerequisite 2, until then the rich kit's on both), and
+   the rise or dip that keeps the lowest of the four against the ground where it stands at rest: the ground along him the two chords from his
+   middle (ahead of it the slope ahead, sa; behind it the slope behind, sb: animChord), each edge's posed place against its rest place on it
+   (since 8F's prerequisite 2; until then an edge moved ahead took the slope ahead whichever side of his middle it stood, so a toe drawn back
+   and a heel brought forward were judged against the wrong side's chord): one sole's edge planted, none sunk by the gait */
+function animChord(sa,sb,z){ return z>=0?sa*z:sb*z; }
+function animManRoot(f,kL,kR,sa,sb,kn){ var M=ANIM.MAN, g=-1e9, k=kn===undefined?1:kn; if(sb===undefined) sb=sa;
+  [M.HEEL0+(M.HEEL-M.HEEL0)*k,M.TOE0+(M.TOE-M.TOE0)*k].forEach(function(z0){
+    animRot(M.FOOT,z0,M.KNEE,0,kL,_anT); animRot(_anT[0],_anT[1],M.HIP,0,-f,_anT); g=Math.max(g,animChord(sa,sb,_anT[1])-animChord(sa,sb,z0)-(_anT[0]-M.FOOT));
+    animRot(M.FOOT,z0,M.KNEE,0,kR,_anU); animRot(_anU[0],_anU[1],M.HIP,0,f,_anU); g=Math.max(g,animChord(sa,sb,_anU[1])-animChord(sa,sb,z0)-(_anU[0]-M.FOOT)); });
   return g; }
 /* the horse's four legs' forward angles, and the rise or dip that keeps its lowest hoof where it stands at rest */
 function animHorseF(ph,amp,trot,out){ var H=ANIM.HORSE, t=Math.max(0,Math.min(1,trot||0)), a=amp*(H.AW+(H.AT-H.AW)*t);
@@ -1007,7 +1013,7 @@ function animAt(k,x,y,z,ph,amp,out,o){
     if(p.kind==="shin"){ animRot(y,z,M.KNEE,0,lft?kL:kR,r); y=r[0]; z=r[1]; }
     animRot(y,z,M.HIP,0,lft?-f:f,r); y=r[0]; z=r[1]; }
   else if(p.kind==="arm"){ animRot(y,z,M.SHY,M.SHZ,amp*M.AA*s,r); y=r[0]; z=r[1]; }
-  out[1]=y+animManRoot(f,kL,kR,sl,sh); out[2]=z; return out;
+  out[1]=y+animManRoot(f,kL,kR,sl,sh,kn); out[2]=z; return out;
 }
 /* the poses the hook can draw of the vertex (x, y, z) of part k, for an oracle (the self-test's, runtime-test.js's, cullmotion.js's: their own
    sampling, against which animEnv's bound is judged): n phases at amp 1 with every other uniform at its extremes and between, the slope at its
@@ -1424,7 +1430,7 @@ function makeBlock(f,id){
      Pratzeberg. Men and horses now stand with gravity; guns, limbers and tents keep the slope. */
   var _wp=new THREE.Vector3(), _up0=new THREE.Vector3(0,1,0), _nb=new THREE.Vector3(), _inv=new THREE.Matrix4(),
       _gl=new THREE.Vector3(), _qt0=new THREE.Quaternion(), _qc=new THREE.Quaternion(), _qa=new THREE.Quaternion(), _one=new THREE.Vector3(1,1,1);
-  function seatPrep(){ g.updateMatrixWorld(true); _inv.copy(g.matrixWorld).invert(); }
+  function seatPrep(){ g.updateMatrixWorld(true); _inv.copy(g.matrixWorld).invert(); _gH=groundHeights(); }   /* 8F: the drawn ground's compact heights, for the slopes */
   function seatLocal(lx,lz,out){
     _wp.set(lx,0,lz).applyMatrix4(g.matrixWorld);
     _wp.y=groundY(_wp.x,_wp.z);
@@ -1434,12 +1440,16 @@ function makeBlock(f,id){
      turned by an angle whose sine and cosine are rs and rc: two chords of the drawn ground (groundY) along its facing from where it stands,
      into out[o] and out[o+1], two lookups a figure: a man's ahead of him and behind him over his soles' travel at full swing (GAIT.REACH), a
      horse's to the far edge of his fore hooves' travel and to the far edge of his hind hooves' (HORSE.ZF and ZH from his root, and the
-     reach); by the block's scale, so in the figure's own units */
-  var _qw=new THREE.Quaternion(), _fw=new THREE.Vector3(), _yS=0, _yC=1;
-  function slopes(rs,rc,horse,out,o){ var fx=_yS*rc+_yC*rs, fz=_yC*rc-_yS*rs, k=g.scale.x||1, x=_wp.x, z=_wp.z, y=_wp.y;
-    if(!horse){ var a=GAIT.REACH.man*k; out[o]=(groundY(x+fx*a,z+fz*a)-y)/a; out[o+1]=(y-groundY(x-fx*a,z-fz*a))/a; return; }
+     reach); by the block's scale, so in the figure's own units. Since 8F's prerequisite 2 the drawn ground is read through its compact heights
+     (groundYFast: groundY's values, cheaper a lookup). Each foot's and each hoof's own profile (five lookups a foot, three a hoof), which brings
+     the planted edges within 0.03 units at 4x, was measured and is not drawn: on every block it costs 0.22 to 0.35 ms a frame and, where a man
+     is drawn 48 px or more, still up to 0.31 in the closest views, against the animation's budget of 0.2 (section 8.3;
+     docs/STAGE8_SPEC.md section 18: the cases these chords leave, kept open with their proposed bounds) */
+  var _qw=new THREE.Quaternion(), _fw=new THREE.Vector3(), _yS=0, _yC=1, _gH=null;
+  function slopes(rs,rc,horse,out,o){ var fx=_yS*rc+_yC*rs, fz=_yC*rc-_yS*rs, k=g.scale.x||1, x=_wp.x, z=_wp.z, y=_wp.y, GH=_gH;
+    if(!horse){ var a=GAIT.REACH.man*k; out[o]=(groundYFast(GH,x+fx*a,z+fz*a)-y)/a; out[o+1]=(y-groundYFast(GH,x-fx*a,z-fz*a))/a; return; }
     var H=ANIM.HORSE, f=(H.ZF+GAIT.REACH.horse)*k, h=(GAIT.REACH.horse-H.ZH)*k;
-    out[o]=(groundY(x+fx*f,z+fz*f)-y)/f; out[o+1]=(y-groundY(x-fx*h,z-fz*h))/h; }
+    out[o]=(groundYFast(GH,x+fx*f,z+fz*f)-y)/f; out[o+1]=(y-groundYFast(GH,x-fx*h,z-fz*h))/h; }
   /* the block's rotation is tilt x yaw; this is the local rotation that undoes the tilt and keeps the yaw */
   function uprightQuat(){
     _nb.copy(_up0).applyQuaternion(g.quaternion).normalize();
@@ -1840,11 +1850,11 @@ function animGLSL(){
     "    if(anK<1.5||(anK>12.5&&anK<13.5)){ if(anK>12.5) anQ=anRot(anQ,vec2("+f(M.KNEE)+",0.0),anKL); anQ=anRot(anQ,vec2("+f(M.HIP)+",0.0),-anFw); }",
     "    else if(anK<2.5||anK>13.5){ if(anK>13.5) anQ=anRot(anQ,vec2("+f(M.KNEE)+",0.0),anKR); anQ=anRot(anQ,vec2("+f(M.HIP)+",0.0),anFw); }",
     "    else if(anK<3.5) anQ=anRot(anQ,vec2("+f(M.SHY)+","+f(M.SHZ)+"),anA*"+f(M.AA)+"*anS);",
-    "    anD=-1e9; for(int anE=0;anE<2;anE++){ float anZe=anE==0?"+f(M.HEEL)+":"+f(M.TOE)+";",   /* each sole's heel and toe */
+    "    anD=-1e9; for(int anE=0;anE<2;anE++){ float anZe=anE==0?mix("+f(M.HEEL0)+","+f(M.HEEL)+",anKn):mix("+f(M.TOE0)+","+f(M.TOE)+",anKn);",   /* each sole's heel and toe, the kit's own (8F's prerequisite 2) */
     "      vec2 anFL=anRot(anRot(vec2("+f(M.FOOT)+",anZe),vec2("+f(M.KNEE)+",0.0),anKL),vec2("+f(M.HIP)+",0.0),-anFw);",
     "      vec2 anFR=anRot(anRot(vec2("+f(M.FOOT)+",anZe),vec2("+f(M.KNEE)+",0.0),anKR),vec2("+f(M.HIP)+",0.0),anFw);",
-    "      float anDL=anFL.y-anZe, anDR=anFR.y-anZe;",   /* a sole's edge moved ahead takes the slope ahead of him (aSl.x), behind, the slope behind (aSl.y) */
-    "      anD=max(anD,max((anDL>0.0?anSl.x:anSl.y)*anDL-(anFL.x-"+f(M.FOOT)+"),(anDR>0.0?anSl.x:anSl.y)*anDR-(anFR.x-"+f(M.FOOT)+"))); }",
+    "      float anCz=anZe>=0.0?anSl.x*anZe:anSl.y*anZe;",   /* the ground along him the two chords from his middle: ahead of it the slope ahead (aSl.x), behind it the slope behind (aSl.y); each edge's posed place against its rest place on it (8F's prerequisite 2) */
+    "      anD=max(anD,max((anFL.y>=0.0?anSl.x*anFL.y:anSl.y*anFL.y)-anCz-(anFL.x-"+f(M.FOOT)+"),(anFR.y>=0.0?anSl.x*anFR.y:anSl.y*anFR.y)-anCz-(anFR.x-"+f(M.FOOT)+"))); }",
     "  }",
     "  transformed.y=anQ.x+anD; transformed.z=anQ.y;",
     "}"].join("\n");
@@ -13020,45 +13030,116 @@ var AUSTERLITZ_DEBUG=(function(){
         ck("the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phase's start, its phase's end or directly (it was the facing at the first clock visited in the phase)",
           gN>0&&!gBad.length, gN+" facings at three clocks of each phase, each from three paths"+(gBad.length?"; WRONG: "+gBad.slice(0,5).join("; "):""));
 
-        /* (h) the animated feet and hooves on the drawn ground: at 4x and 10.33x (at 1x the formations are footprints, decision 34: no figure), for
-           the formations shown at three clocks, up to 40 instances of each animated man's and horse's mesh, their slopes as the gait draws them
-           (layoutFigs, asked), at four phases at full swing with the gait's knee and trot: each sole's heel and toe and each hoof's two edges
-           posed (animAt), through the instance's and the mesh's matrices into the world, against the same point at rest, each judged by the drawn
-           ground between the two (groundY). The lowest edge is the planted one: its distance from its rest contact is the gait's contact error.
-           Held: at least 99 in 100 poses within H_TOL (0.03 units at 4x, in proportion to the relief at 10.33x, whose facets steepen with it),
-           and none further off than the rest pose itself stands somewhere on the field (the upright figure's sole or hoof edges on a slope, as
-           before 8E: reported). The rest pose's own seating check (5: 0.02 at each figure's origin) is unchanged */
-        var hBad=[], hT=[], MA=ANIM.MAN, HO=ANIM.HORSE;
-        DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct); var E=[], where="", wv=0, restMax=0, H_TOL=0.03*fct/4, nFl=0, nPn=0, wFl=0, wPn=0, RZ=[];
+        /* (h) the animated feet and hooves on the drawn ground (decision 244 (a): "Verify ... terrain contact"; rewritten with 8F's prerequisite
+           2, the audit of 8E, which found its 99-in-100 rule and its comparison with the largest resting offset anywhere on the field unrelated to
+           any one instance). Each instance against itself at rest, on the drawn ground (groundY), at 4x and 10.33x (at 1x the formations are
+           footprints, decision 34: no figure). Its error: the least, over its points, of a point's offset from the drawn ground posed (animAt, the
+           hook's arithmetic, with the instance's own slopes, the level's knee and the mesh's trot) less the same point's offset at rest: 0, one
+           point where it stood and none below; above 0 the figure floats, below it sinks. Two sets of points: the edges the hook plants (each
+           kit's heel and toe on each foot's line, each hoof's fore and aft edges on its line), and the soles the kit draws (the bottom corners of a
+           man's legs or feet and of a horse's hooves: the vertices within 0.03 of the soles' plane in each level's geometry), whose width carries
+           a crease of the ground across a foot that the hook's lines do not. The legacy seat (the upright figure on a slope, a corner off the
+           ground at rest) and the raised foot (its lift over the planted one) are reported, not judged. Both levels with the slopes they are drawn
+           with (layoutFigs: 8E's two chords from the figure's middle; each foot's own profile was measured and is over the animation's budget,
+           section 18), each kit's own soles planted (since 8F's prerequisite 2). Two ways:
+           - fresh: three clocks, every formation shown with a gait, up to 24 instances of each animated mesh, eight phases at full swing, both
+             levels, the slopes taken at that place (layoutFigs, asked), a horse at its own gait (it walks: no leg of the data is above
+             GAIT.TROT_KMH, so no horse is drawn trotting);
+           - in motion: Play through the app's own loop on the test's clock (30 frames a second; the dwell off) for three stretches (Saint-Hilaire's
+             division up the Pratzen from 08:44, its via point and turn at 08:49, the eye dollied in so that its blocks turn from the simple kit to
+             the rich; the Guard's cavalry at 1x; the limbered battery from 13:50), each third frame every animated instance as drawn (its level,
+             its slopes as the step rule left them, its uniforms), the error also in CSS pixels through the camera; then paused and judged again.
+           Held: every pose of every instance, men and horses, both levels, fresh and in motion, within H_TOL (0.03 units at 4x, in proportion to
+           the relief at 10.33x, the gait's own tolerance since 8E), but where H_OPEN lists the cases found beyond it with the chords and kept open
+           for the owner (docs/STAGE8_SPEC.md section 18), each with its proposed bound in H_TOL: none may be beyond its bound; the cases beyond
+           H_TOL counted and reported, with their pixels (the simple kit's at its largest size, a man KLOD.IN px tall; in motion through the
+           camera) */
+        var hBad=[], hT=[], MA=ANIM.MAN, HO=ANIM.HORSE, hSolC=new Map(), hO=[0,0,0], hP1=[], FXL=0.085, LXL=0.13;   /* FXL, LXL: the feet's and the hooves' lines as the kits draw them */
+        /* the proposed bounds of the cases kept open with the chords, in H_TOL, by factor, for the hook's edges and the drawn soles, men and horses
+           (8F's prerequisite 2: the largest measured on its build, fresh, rounded up to the next half H_TOL: the men's planted edges 2.08 and 2.13
+           at 4x and 10.33x, their drawn soles 3.19 and 3.18, the horses' edges 1.94 and 2.42, their drawn soles 2.13 and 2.59; docs/STAGE8_SPEC.md
+           section 18) */
+        var H_OPEN={edges:{men:{4:2.5, "10.33":2.5}, horses:{4:2.5, "10.33":2.5}}, drawn:{men:{4:3.5, "10.33":3.5}, horses:{4:3, "10.33":3}}};
+        function hSoles(g,horse){ var c=hSolC.get(g); if(c) return c; var P=g.attributes.position, K=g.attributes.aPart, seen={}, out=[];
+          for(var i=0;i<P.count;i++){ var k=Math.round(K.array[i]); if(horse?(k<5||k>8):!(k===1||k===2||k===13||k===14)) continue; var y=P.array[i*3+1]; if(y>0.03) continue;
+            var x=P.array[i*3], z=P.array[i*3+2], key=k+","+x.toFixed(4)+","+y.toFixed(4)+","+z.toFixed(4); if(seen[key]) continue; seen[key]=1; out.push([k,x,y,z]); }
+          hSolC.set(g,out); return out; }
+        function hEdges(horse,rich){ var out=[];
+          if(horse) [[5,-LXL,HO.ZF],[6,LXL,HO.ZF],[7,-LXL,HO.ZH],[8,LXL,HO.ZH]].forEach(function(q){ [-HO.HZ,HO.HZ].forEach(function(e){ out.push([q[0],q[1],HO.HIP-HO.L,q[2]+e]); }); });
+          else [[rich?13:1,-FXL],[rich?14:2,FXL]].forEach(function(q){ [rich?MA.HEEL:MA.HEEL0,rich?MA.TOE:MA.TOE0].forEach(function(z){ out.push([q[0],q[1],MA.FOOT,z]); }); });
+          return out; }
+        /* the points' offsets from the drawn ground posed at (ph, amp), through Mw */
+        function hOffs(pts,ph,amp,sl,knee,trot,out){ for(var j=0;j<pts.length;j++){ var q=pts[j]; animAt(q[0],q[1],q[2],q[3],ph,amp,hO,{slope:sl,knee:knee,trot:trot}); V.set(hO[0],hO[1],hO[2]).applyMatrix4(Mw); out[j]=V.y-groundY(V.x,V.z); } out.length=pts.length; return out; }
+        /* [error, the raised point's lift over it, the largest resting offset] of a posed instance against its rest (r0: its rest offsets) */
+        function hErr(pts,r0,ph,amp,sl,knee,trot){ hOffs(pts,ph,amp,sl,knee,trot,hP1); var e=1e9, mx=-1e9, rs=0;
+          for(var j=0;j<pts.length;j++){ var d=hP1[j]-r0[j]; if(d<e) e=d; if(d>mx) mx=d; if(Math.abs(r0[j])>rs) rs=Math.abs(r0[j]); } return [e,mx-e,rs]; }
+        function hSl(m,i){ var SA=m.geometry.attributes.aSl.array; return [SA[i*2],SA[i*2+1]]; }
+        function hMeshes(G){ return G.meshes.filter(function(m){ var k=m.userData.gaitKind, part=m.userData.kit&&m.userData.kit.part; if(!(k==="man"&&part==="fixed")&&!(k!=="gear"&&part==="horse")) return false;
+          for(var a=m;a;a=a.parent) if(!a.visible) return false; return true; }); }
+        /* the simple kit's error in CSS pixels at its largest size on the screen (a man KLOD.IN px tall, his block's scale sc) */
+        function hSimplePx(e,sc){ return Math.abs(e)*KLOD.IN/(KLOD.H*(sc||1)); }
+        var HS={};   /* by "factor|men or horses|edges or drawn|fresh or motion|rich or simple": the errors (units), the worst and where, the legacy seat, the lift, the pixels */
+        function hRec(key,r,where,px){ var s=HS[key]||(HS[key]={a:[],w:0,where:"",rest:0,lift:[],px:0,pxWhere:""}); var a=Math.abs(r[0]);
+          s.a.push(a); if(a>s.w){ s.w=a; s.where=where+" ("+(r[0]>0?"floating":"sinking")+")"; }
+          if(r[2]>s.rest) s.rest=r[2]; s.lift.push(r[1]); if(px!==undefined&&px>s.px){ s.px=px; s.pxWhere=where; } }
+        /* the slopes' lookup (groundYFast on the compact heights) the drawn ground's own (groundY), value for value, at 3,000 points at each
+           factor, its heights made again by the change of factor */
+        var hLk=0;
+        DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct); var GHh=groundHeights();
+          for(var q=0;q<3000;q++){ var qx=-GROUND_W/2+GROUND_W*((q*7919)%3001)/3000, qz=-GROUND_D/2+GROUND_D*((q*104729)%3011)/3010; hLk++;
+            if(!Object.is(groundYFast(GHh,qx,qz),groundY(qx,qz))){ hBad.push("the slopes' lookup at "+qx.toFixed(2)+", "+qz.toFixed(2)+" ("+fmtFactor(fct)+"x): "+groundYFast(GHh,qx,qz)+" against the drawn ground's "+groundY(qx,qz)); break; } } });
+        /* fresh: both levels, with the slopes the gait draws them with */
+        DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct); if(isTrueScale()) return; var F=fmtFactor(fct);
           [545,640,830].forEach(function(t){ at(t,"terrain","watch"); settle(24,true);
             shown().forEach(function(id){ var b=units[id].block, G=b.userData.gait, bu=b.userData; if(!G) return;
               bu.layout(bu.sw,bu.sd,true); b.updateMatrixWorld(true);   /* the slopes as the gait draws a block it animates */
-              G.meshes.forEach(function(m){ var k=m.userData.gaitKind, part=m.userData.kit&&m.userData.kit.part; if(!(k==="man"&&part==="fixed")&&!(k!=="gear"&&part==="horse")) return;
-                var a=m; while(a){ if(!a.visible) return; a=a.parent; }
-                var U=m.userData.anim, ph=m.geometry.attributes.aPh, horse=part==="horse", rich=U.uAnimKnee.value===1, pts=[];
-                if(horse) [[5,HO.ZF],[6,HO.ZF],[7,HO.ZH],[8,HO.ZH]].forEach(function(q,j){ [-HO.HZ,HO.HZ].forEach(function(e){ pts.push([q[0],j%2?0.13:-0.13,HO.HIP-HO.L,q[1]+e]); }); });
-                else [[rich?13:1,-0.085],[rich?14:2,0.085]].forEach(function(q){ [MA.HEEL,MA.TOE].forEach(function(z){ pts.push([q[0],q[1],MA.FOOT,z]); }); });
-                var step=Math.max(1,Math.floor(m.count/40)), o=[0,0,0], SA=m.geometry.attributes.aSl;
-                for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=SA?[SA.array[i*2],SA.array[i*2+1]]:[0,0];
-                  var rest=pts.map(function(q){ V2.set(q[1],q[2],q[3]).applyMatrix4(Mw); var gg=groundY(V2.x,V2.z); restMax=Math.max(restMax,Math.abs(V2.y-gg)); return [V2.y,gg]; });
-                  [0,Math.PI/2,Math.PI,1.5*Math.PI].forEach(function(p0){ var e=[], phv=p0+2*Math.PI*(ph?ph.array[i]:0);
-                    pts.forEach(function(q,j){ animAt(q[0],q[1],q[2],q[3],phv,1,o,{slope:sl,knee:U.uAnimKnee.value,trot:U.uAnimTrot.value}); V.set(o[0],o[1],o[2]).applyMatrix4(Mw);
-                      e.push((V.y-rest[j][0])-(groundY(V.x,V.z)-rest[j][1])); });
-                    /* the planted edge (the lowest against the ground): above its rest contact it floats, below it sinks into the ground; the
-                       highest edge's lift over it is the raised foot's or hoof's (reported) */
-                    var mn=Math.min.apply(null,e), mx=Math.max.apply(null,e), lo=Math.abs(mn);
-                    if(mn>0){ nFl++; if(mn>wFl) wFl=mn; } else if(mn<0){ nPn++; if(-mn>wPn) wPn=-mn; } RZ.push(mx-mn);
-                    E.push(lo); if(lo>wv){ wv=lo; where=id+" ("+part+", "+(rich?"rich":"simple")+") at "+fmtClock(t); } }); } }); }); });
-          RZ.sort(function(x,y){ return x-y; });
-          var fig1=isTrueScale(), srt=E.slice().sort(function(x,y){ return x-y; }), p99=srt.length?srt[Math.min(srt.length-1,Math.floor(0.99*srt.length))]:0, over=E.filter(function(v){ return v>H_TOL; }).length;
-          hT.push(fmtFactor(fct)+"x: "+(fig1?"no figure (decision 34)":E.length+" poses with their slopes; the planted edge off its rest contact: half within "+(srt[Math.floor(srt.length/2)]||0).toFixed(4)+", 99 in 100 within "+p99.toFixed(4)+" (H_TOL "+H_TOL.toFixed(3)+"; "+over+" beyond it), the worst "+wv.toFixed(4)+(where?" ("+where+")":"")+"; floating "+nFl+" (at most "+wFl.toFixed(4)+"), sinking "+nPn+" (at most "+wPn.toFixed(4)+"); the raised edge's lift over the planted one, median "+(RZ[RZ.length>>1]||0).toFixed(3)+", most "+(RZ[RZ.length-1]||0).toFixed(3)+
-            "; at rest the edges stand up to "+restMax.toFixed(3)+" off the ground (the upright figure on a slope, as before 8E)"));
-          if(fig1&&E.length) hBad.push("figures posed at 1x"); if(!fig1&&!E.length) hBad.push(fmtFactor(fct)+"x: no animated figure judged");
-          if(!fig1&&p99>H_TOL) hBad.push(fmtFactor(fct)+"x: 99 in 100 planted edges within "+p99.toFixed(4)+", over "+H_TOL.toFixed(3));
-          if(!fig1&&wv>restMax) hBad.push(fmtFactor(fct)+"x: a planted edge "+wv.toFixed(4)+" off, further than the rest pose stands anywhere ("+restMax.toFixed(3)+")"); });
+              hMeshes(G).forEach(function(m){ var horse=m.userData.kit.part==="horse", ph=m.geometry.attributes.aPh, step=Math.max(1,Math.floor(m.count/24)), sc=b.scale.x||1, trot=m.userData.anim.uAnimTrot.value;   /* the horse's own gait */
+                [["simple",0],["rich",1]].forEach(function(LV){ var S2=[["drawn",hSoles(LV[1]?m.userData.lod.r:m.userData.lod.s,horse)],["edges",hEdges(horse,LV[1]===1)]];
+                  for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=hSl(m,i);
+                    S2.forEach(function(S){ var r0=hOffs(S[1],0,0,sl,LV[1],trot,[]);
+                      for(var pi=0;pi<8;pi++){ var phv=pi/8*2*Math.PI+2*Math.PI*(ph?ph.array[i]:0), r=hErr(S[1],r0,phv,1,sl,LV[1],trot);
+                        hRec(F+"|"+(horse?"horses":"men")+"|"+S[0]+"|fresh|"+LV[0],r,id+" #"+i+" ("+LV[0]+") at "+fmtClock(t)+", phase "+phv.toFixed(2),LV[1]?undefined:hSimplePx(r[0],sc)); } }); } }); }); }); }); });
         setDisplayFactor(keepE.f);
-        ck("the gait on the ground (decision 244 (a)): at 4x and 10.33x the animated men's planted soles and horses' planted hooves keep their rest contact with the drawn ground within 0.03 units (4x; in proportion to the relief at 10.33x) in 99 poses of 100, floating or sinking, and none further off than the rest pose itself stands, the raised edge's lift reported; the rest pose's seating check unchanged; at 1x no figure",
-          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.slice(0,5).join("; "):""));
+        /* in motion, through the app's own loop at 4x and 10.33x */
+        var hNow=performance.now, hOwn=Object.prototype.hasOwnProperty.call(performance,"now"), hRaf=window.requestAnimationFrame, hRen=renderer.render, hTm=hNow.call(performance), hDw=DWELL.on, hSp=speed, hFr=0, hLod={}, hTurn=0;
+        function HF(){ hTm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=hRen; } }
+        var _hp=new THREE.Vector3(), _hq=new THREE.Vector3(), hW=renderer.domElement.clientWidth||innerWidth, hH=renderer.domElement.clientHeight||innerHeight;
+        /* the error in CSS pixels at the point V through the camera, where V stands in the view (else undefined) */
+        function hPx(e){ _hp.set(V.x,V.y,V.z).project(camera); if(!(Math.abs(_hp.x)<=1&&Math.abs(_hp.y)<=1&&_hp.z>-1&&_hp.z<1)) return undefined;
+          _hq.set(V.x,V.y+e,V.z).project(camera); return Math.hypot((_hp.x-_hq.x)*hW/2,(_hp.y-_hq.y)*hH/2); }
+        function hJudge(F,tag){ Object.keys(units).forEach(function(id){ var b=units[id].block, G=b&&b.userData.gait; if(!b||!b.visible||!G||!(G.amp>0)) return; b.updateMatrixWorld(true);
+            hMeshes(G).forEach(function(m){ var horse=m.userData.kit.part==="horse", U=m.userData.anim, ph=m.geometry.attributes.aPh, rich=U.uAnimKnee.value===1, step=Math.max(1,Math.floor(m.count/12));
+              if(rich!==!!b.userData.lodRich) hBad.push(id+": its knee not its level's");
+              var S2=[["drawn",hSoles(m.geometry,horse)],["edges",hEdges(horse,rich)]];
+              for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=hSl(m,i), phv=U.uAnimPhase.value+2*Math.PI*(ph?ph.array[i]:0);
+                S2.forEach(function(S){ var r0=hOffs(S[1],0,0,sl,U.uAnimKnee.value,U.uAnimTrot.value,[]), r=hErr(S[1],r0,phv,U.uAnimAmp.value,sl,U.uAnimKnee.value,U.uAnimTrot.value);
+                  hOffs(S[1],phv,U.uAnimAmp.value,sl,U.uAnimKnee.value,U.uAnimTrot.value,hP1);   /* V: the last point posed, for its pixels */
+                  hRec(F+"|"+(horse?"horses":"men")+"|"+S[0]+"|motion|"+(rich?"rich":"simple"),r,id+" #"+i+" ("+(rich?"rich":"simple")+") at "+fmtClock(clock)+" "+tag,hPx(Math.abs(r[0]))); }); } }); }); }
+        try{
+          performance.now=function(){ return hTm; }; window.requestAnimationFrame=function(){ return 0; };
+          [4,GEOREF.EXAG].forEach(function(fct){ setDisplayFactor(fct); var F=fmtFactor(fct);
+            [{t:524,id:"sthilaire",x:0.5,n:75,dolly:[180,24],dir:[0.7,0.35,0.2]},{t:640,id:"guard_cav",x:1,n:45,dolly:[40,40],dir:[0.95,0.22,0.22]},{t:830,id:"heightguns",x:0.5,n:60,dolly:[30,30],dir:[0.95,0.22,0.22]}].forEach(function(R0){
+              if(playing) stopPlay(); dwellSet(false); setSpeed(R0.x); at(R0.t,"terrain","watch"); settleAll(); lastFrame=hTm;
+              var y0=units[R0.id].yaw||0, lv0=units[R0.id].block.userData.lodRich, sw=0;
+              function eye(f){ var r=R0.dolly[0]+(R0.dolly[1]-R0.dolly[0])*f/R0.n, p=posNow(R0.id), w=W(p[0],p[1]), y=groundY(w[0],w[1]), d=new THREE.Vector3(R0.dir[0],R0.dir[1],R0.dir[2]).normalize().multiplyScalar(r);
+                tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,y+d.y,w[1]+d.z); orbitTarget.set(w[0],y,w[1]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true); }
+              eye(0); togglePlay();
+              for(var f=1;f<=R0.n;f++){ eye(f); HF(); hFr++; var lv=units[R0.id].block.userData.lodRich; if(lv!==lv0){ sw++; lv0=lv; } if(f%3===0) hJudge(F,"(playing)"); }
+              hLod[F+" "+R0.id]=sw; if(R0.id==="sthilaire") hTurn=Math.max(hTurn,Math.abs((units[R0.id].yaw||0)-y0));
+              stopPlay(); HF(); HF(); hJudge(F,"(paused)"); }); });
+        } catch(err){ hBad.push("in motion: threw "+err.message);
+        } finally { if(hOwn) performance.now=hNow; else delete performance.now; window.requestAnimationFrame=hRaf; renderer.render=hRen; if(playing) stopPlay(); dwellSet(hDw); setSpeed(hSp); lastFrame=0; setDisplayFactor(keepE.f); }
+        /* the verdicts */
+        var hQ=function(a,q){ var s=a.slice().sort(function(x,y){ return x-y; }); return s.length?s[Math.min(s.length-1,Math.floor(q*s.length))]:0; };
+        Object.keys(HS).sort().forEach(function(key){ var s=HS[key], P=key.split("|"), F=P[0], fct=F==="4"?4:GEOREF.EXAG, TOL=0.03*fct/4, lim=H_OPEN[P[2]][P[1]][F]*TOL, over=s.a.filter(function(v){ return v>TOL; }).length;
+          hT.push(F+"x "+P[1]+", "+(P[2]==="edges"?"the hook's edges":"the drawn soles")+", "+P[3]+", "+P[4]+": "+s.a.length+" poses, half within "+hQ(s.a,0.5).toFixed(4)+", 99 in 100 within "+hQ(s.a,0.99).toFixed(4)+", the worst "+s.w.toFixed(4)+" ("+s.where+")"+
+            (s.px?", "+s.px.toFixed(2)+" px at most ("+(P[4]==="simple"&&P[3]==="fresh"?"at the simple kit's largest size, ":"")+s.pxWhere+")":"")+"; "+over+" beyond H_TOL "+TOL.toFixed(4)+(lim>TOL+1e-12?" (kept open: the proposed bound "+lim.toFixed(4)+")":"")+"; the legacy seat up to "+s.rest.toFixed(3)+" at rest, the raised edge's lift median "+hQ(s.lift,0.5).toFixed(3));
+          if(s.w>lim+1e-9) hBad.push(F+"x "+P[1]+" "+P[2]+" "+P[3]+" "+P[4]+": "+s.w.toFixed(4)+" ("+s.where+"), beyond "+(lim>TOL+1e-12?"its proposed bound ":"H_TOL ")+lim.toFixed(4)); });
+        ["4","10.33"].forEach(function(F){ ["men","horses"].forEach(function(k){ ["edges","drawn"].forEach(function(d){ ["fresh|rich","fresh|simple","motion|rich","motion|simple"].forEach(function(w){ if(!HS[F+"|"+k+"|"+d+"|"+w]) hBad.push(F+"x "+k+" "+d+" "+w.replace("|"," ")+": nothing judged"); }); }); }); });
+        hT.push("the slopes' lookup the drawn ground's at "+hLk+" points; in motion "+hFr+" frames; the level switched along the dolly "+JSON.stringify(hLod)+"; Saint-Hilaire's turn "+hTurn.toFixed(3)+" rad");
+        if(!(hLod["4 sthilaire"]>0)) hBad.push("in motion the division's level never switched along the dolly"); if(!(hTurn>0.05)) hBad.push("in motion the division never turned");
+        ck("the gait on the ground (decision 244 (a); 8F's prerequisite 2): each instance against itself at rest, both levels, at 4x and 10.33x, fresh and in motion (facets, a turn, the level switched, the pause), each kit's own soles planted on 8E's chords: the hook's edges and the soles the kit draws within 0.03 units (4x; in proportion to the relief at 10.33x) in every pose, but for the cases kept open within their proposed bounds, every case beyond 0.03 counted with its pixels; the legacy seat and the lift reported; the slopes' lookup the drawn ground's at every factor; at 1x no figure",
+          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.slice(0,6).join("; "):""));
 
         /* (j) the step described as decision 244 asks (section 0.3.1, item 8): the legend's row wherever figures are drawn, and the sources sheet's
            notes, a visual convention for symbols under compressed time, never footsteps matched to the ground */

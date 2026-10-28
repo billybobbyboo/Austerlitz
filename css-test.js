@@ -558,6 +558,24 @@ if(cerrs) process.exitCode=1;
   if(!/if\(rate===0&&!sk&&!RM\)\{ want=G\.amp; trot=G\.trot; \}/.test(gs)) eerr.push("a paused clock does not hold the gait drawn (the amplitude and the trot eased on with the clock standing)");
   if(!/^  if\(!opts\.play\) GAIT\.seek\+\+;/m.test(fn("setClock"))) eerr.push("setClock does not count a seek (every move of the clock but Play's own advance)");
   { const tc=fn("tickClock"); if(!/setClock\(T_MAX,\{play:true\}\); stopPlay\(\);/.test(tc)||!/setClock\(nt,\{play:true\}\); DWELL\.expect=clock;/.test(tc)||(tc.match(/setClock\(/g)||[]).length!==2) eerr.push("tickClock's advance of the clock is not marked Play's own (it would count as a seek)"); }
+  /* Stage 8, 8F's prerequisite 2 (the audit of 8E: the contact): the hook and its mirror plant each kit's own soles (the simple kit's HEEL0 and
+     TOE0, its legs' boxes, by the knee's uniform; the rich kit's HEEL and TOE); 8E's two chords a figure, read through the drawn ground's
+     compact heights alone (groundYFast; no other reader of the ground in the slopes), made again whenever scaleGround changes the ground. Each
+     foot's own profile (ten lookups a man, twelve a horse) was measured over the animation's budget and is not drawn (docs/STAGE8_SPEC.md 18) */
+  { const sl=(/\n  function slopes\(rs,rc,horse,out,o\)\{[\s\S]*?\n  \/\* the block's rotation/.exec(src)||[""])[0], wsrc=fs.readFileSync('world.js','utf8');
+    if(!sl) eerr.push("layoutFigs's slopes not found");
+    else { if(/groundY\(|displayHeight\(|height\(|hAt\(/.test(sl)) eerr.push("the slopes read the ground other than through groundYFast on the compact heights");
+      if((sl.match(/groundYFast\(GH,/g)||[]).length!==4) eerr.push("the slopes are not 8E's two chords a figure (four lookups in all: a man's two, a horse's two)"); }
+    if(!/_gH=groundHeights\(\); \}/.test(src)) eerr.push("the seating does not take the drawn ground's compact heights (seatPrep)");
+    if(!/"attribute vec2 aSl;"/.test(src)) eerr.push("the hook's slopes are not 8E's two a figure (aSl, a vec2)");
+    if(!/float anZe=anE==0\?mix\("\+f\(M\.HEEL0\)\+","\+f\(M\.HEEL\)\+",anKn\):mix\("\+f\(M\.TOE0\)\+","\+f\(M\.TOE\)\+",anKn\);/.test(src)||!/function animManRoot\(f,kL,kR,sa,sb,kn\)\{ var M=ANIM\.MAN, g=-1e9, k=kn===undefined\?1:kn;/.test(src)||
+       !/\[M\.HEEL0\+\(M\.HEEL-M\.HEEL0\)\*k,M\.TOE0\+\(M\.TOE-M\.TOE0\)\*k\]\.forEach/.test(src)||!/out\[1\]=y\+animManRoot\(f,kL,kR,sl,sh,kn\);/.test(src))
+      eerr.push("the hook or its mirror does not plant the kit's own soles (the simple kit's HEEL0 and TOE0, the rich kit's HEEL and TOE)");
+    if(!/^    HEEL0:-0\.09, TOE0:0\.09\},/m.test(src)) eerr.push("ANIM.MAN's simple soles are not its legs' boxes' (HEEL0 -0.09, TOE0 0.09)");
+    if(!/function animChord\(sa,sb,z\)\{ return z>=0\?sa\*z:sb\*z; \}/.test(src)||!/g=Math\.max\(g,animChord\(sa,sb,_anT\[1\]\)-animChord\(sa,sb,z0\)-\(_anT\[0\]-M\.FOOT\)\);/.test(src)||
+       !/"      float anCz=anZe>=0\.0\?anSl\.x\*anZe:anSl\.y\*anZe;",/.test(src)||!/\(anFL\.y>=0\.0\?anSl\.x\*anFL\.y:anSl\.y\*anFL\.y\)-anCz-/.test(src))
+      eerr.push("the man's chords are not the ground from his middle in the hook and its mirror (ahead of it the slope ahead, behind it the slope behind; each edge's posed place against its rest place)");
+    if(!/GHEIGHTS\.ver=-1;/.test((/\nfunction scaleGround\(geo\)\{[\s\S]*?\n\}/.exec(wsrc)||[""])[0])) eerr.push("scaleGround does not mark the compact heights stale (the slopes would read the ground before the change)"); }
   if(!/if\(!sk&&G\.t===clock&&G\.rate===rate&&G\.rm===RM&&G\.fv===fv&&G\.amp===G\.want&&G\.trot===G\.trotW&&!\(u\.slopeStale&&rate===0\)\) return;/.test(gs)||/new |\.clone\(/.test(gs.split("G.t=clock;")[0].split("if(!G.meshes.length) return;")[1]||"x new ")||!/lg=L\?gaitLegOf\(L,_glo\):null/.test(gs))
     eerr.push("gaitStep computes or allocates when nothing changed (the clock, its rate, reduced motion and the parts drawn the same, the gait arrived)");
   if(!/while\(a&&a!==rec\.block&&a\.visible\) a=a\.parent; if\(a!==rec\.block\) continue;/.test(fn("gaitFastest"))) eerr.push("the gait's cadence is not the parts drawn now's (gaitFastest)");

@@ -1395,6 +1395,45 @@ try{
     } finally { playing=keep.pl; speed=keep.sp; RM=keep.rm; FK=keep.fk; setMode(keep.md); setClock(keep.t,{force:true}); updateVisibility(); }
     if(bad.length) throw new Error("the gait and the level of detail: "+bad.slice(0,6).join("; "));
     console.log("the gait and the level of detail (8E): "+log.join("; ")); }
+  /* Stage 8, implementation PR 8F's prerequisite 2 (the audit of 8E: the contact): groundYFast, the slopes' lookup, is groundY value for value
+     on the drawn ground's own layout (r128's PlaneGeometry, rotated and split as groundGeometry makes it: this suite's stand-in mesh has no
+     cells), its heights the model's at two scales, at random points, the grid's vertices and points outside it; the compact heights made
+     again when scaleGround marks them stale, not otherwise; and the hook's arithmetic (animAt, its mirror) plants each kit's own soles (the
+     simple kit's HEEL0 and TOE0, the rich kit's HEEL and TOE, by the knee) exactly on the ground its two chords describe (a man's from his
+     middle: ahead of it the slope ahead, behind it the slope behind; a horse's fore and hind hooves' each its pair's): for random slopes,
+     phases, knees and trots, each edge's height change posed against the ground's change between its rest place and its posed place, the
+     least of them 0 (one edge where it stood, none below), whatever the slopes within ANIM.SLOPE */
+  { const bad=[], gm0=groundMesh; let nP=0, nE=0, worst=0;
+    try{
+      const g=new REAL.PlaneGeometry(GROUND_W,GROUND_D,GROUND_NX,GROUND_NZ); g.rotateX(-Math.PI/2);
+      const pa=g.attributes.position; for(let i=0;i<pa.count;i++) pa.setY(i,displayHeight(pa.getX(i),pa.getZ(i)));
+      const gn=g.toNonIndexed(), A=gn.attributes.position; groundMesh={geometry:gn}; GHEIGHTS.ver=-1;
+      [1,4].forEach(sc=>{ if(sc!==1){ for(let i=0;i<A.count;i++) A.array[i*3+1]*=sc; GHEIGHTS.ver=-1; }   /* as scaleGround does */
+        const H=groundHeights();
+        for(let i=0;i<4000;i++){ const x=-190+380*((i*7919)%4001)/4000, z=-165+330*((i*104729)%4003)/4002; nP++; if(!Object.is(groundYFast(H,x,z),groundY(x,z))) bad.push("groundYFast at "+x.toFixed(3)+", "+z.toFixed(3)+" (x"+sc+"): "+groundYFast(H,x,z)+" against "+groundY(x,z)); }
+        for(let k=0;k<400;k++){ const ix=(k*37)%(GROUND_NX+1), iz=(k*53)%(GROUND_NZ+1), x=-GROUND_W/2+ix*GROUND_W/GROUND_NX, z=-GROUND_D/2+iz*GROUND_D/GROUND_NZ; nP++;
+          if(!Object.is(groundYFast(H,x,z),groundY(x,z))) bad.push("groundYFast at the vertex "+ix+", "+iz+" (x"+sc+")"); } });
+      const H1=groundHeights(); if(groundHeights()!==H1) bad.push("the compact heights made again with nothing changed");
+      A.array[1]+=1; GHEIGHTS.ver=-1; if(groundYFast(groundHeights(),-GROUND_W/2,-GROUND_D/2)!==A.array[1]) bad.push("the compact heights not made again when marked stale");
+      const M=ANIM.MAN, Ho=ANIM.HORSE, r=[0,0,0], rnd=(i)=>{ const x=Math.sin(i*12.9898+78.233)*43758.5453; return x-Math.floor(x); };
+      const ch=(sa,sb,z)=>z>=0?sa*z:sb*z;   /* the ground along a man's chords: ahead of his middle the slope ahead, behind it the slope behind */
+      for(let t=0;t<600;t++){ const sa=(rnd(t*2)-0.5)*2*ANIM.SLOPE*0.9, sb=(rnd(t*2+1)-0.5)*2*ANIM.SLOPE*0.9, ph=rnd(t+999)*6.2832, kn=t%2, trot=(t%3)/2;
+        if(t%2===0){ /* a man: each kit's own soles on each foot */
+          let mn=1e9; [kn?13:1,kn?14:2].forEach(part=>{ [kn?M.HEEL:M.HEEL0,kn?M.TOE:M.TOE0].forEach(z0=>{ animAt(part,0,M.FOOT,z0,ph,1,r,{slope:[sa,sb],knee:kn});
+            mn=Math.min(mn,(r[1]-M.FOOT)-(ch(sa,sb,r[2])-ch(sa,sb,z0))); nE++; }); });
+          worst=Math.max(worst,Math.abs(mn)); if(Math.abs(mn)>1e-9) bad.push("a man's planted edge "+mn+" off its rest contact on his chords (phase "+ph.toFixed(3)+", knee "+kn+")"); }
+        else { let mn=1e9; [[5,Ho.ZF,sa],[6,Ho.ZF,sa],[7,Ho.ZH,sb],[8,Ho.ZH,sb]].forEach(([part,Z,sl])=>{ [-Ho.HZ,Ho.HZ].forEach(e=>{ animAt(part,0,Ho.HIP-Ho.L,Z+e,ph,1,r,{slope:[sa,sb],trot:trot});
+            mn=Math.min(mn,(r[1]-(Ho.HIP-Ho.L))-sl*(r[2]-Z-e)); nE++; }); });
+          worst=Math.max(worst,Math.abs(mn)); if(Math.abs(mn)>1e-9) bad.push("a horse's planted hoof "+mn+" off its rest contact on its chords (phase "+ph.toFixed(3)+", trot "+trot+")"); } }
+      /* the simple kit's soles are its own: with the knee straight (the simple kit), the rich kit's heel and toe are not the edge planted */
+      { let hit=0; for(let t=0;t<200;t++){ const sa=(rnd(t*3)-0.5)*4, sb=(rnd(t*3+1)-0.5)*4, ph=rnd(t*3+2)*6.2832; let lo0=1e9, loR=1e9;
+          [1,2].forEach(part=>{ [M.HEEL0,M.TOE0].forEach(z0=>{ animAt(part,0,M.FOOT,z0,ph,1,r,{slope:[sa,sb],knee:0}); lo0=Math.min(lo0,(r[1]-M.FOOT)-(ch(sa,sb,r[2])-ch(sa,sb,z0))); });
+            [M.HEEL,M.TOE].forEach(z0=>{ animAt(part,0,M.FOOT,z0,ph,1,r,{slope:[sa,sb],knee:0}); loR=Math.min(loR,(r[1]-M.FOOT)-(ch(sa,sb,r[2])-ch(sa,sb,z0))); }); });
+          if(Math.abs(lo0)>1e-9) bad.push("the simple kit's own soles not planted (phase "+ph.toFixed(3)+")"); if(Math.abs(loR)>1e-9) hit++; }
+        if(!hit) bad.push("the simple kit's soles indistinguishable from the rich kit's in 200 poses (the dry run could not tell them apart)"); }
+    } finally { groundMesh=gm0; GHEIGHTS.ver=-1; }
+    if(bad.length) throw new Error("the contact (8F's prerequisite 2): "+bad.slice(0,6).join("; "));
+    console.log("the contact (8F's prerequisite 2): groundYFast is groundY at "+nP+" points (random, the grid's vertices, outside it) on the drawn ground's layout at two scales, its heights made again when stale; the hook's arithmetic plants the lowest of "+nE+" posed edges of each kit's own soles on its chords from his middle (the worst "+worst.toExponential(1)+"), the simple kit's own soles, not the rich kit's"); }
 
   /* twelve atlas cells, the three photographs present, fields routed by crop */
   if(_atlasCanvas.height!==1536) throw new Error("atlas is not three rows of cells: "+_atlasCanvas.height);
