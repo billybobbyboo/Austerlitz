@@ -19605,15 +19605,24 @@ var AUSTERLITZ_DEBUG=(function(){
              its slopes as the step rule left them, its uniforms), the error also in CSS pixels through the camera; then paused and judged again.
            Held: every pose of every instance, men and horses, both levels, fresh and in motion, within H_TOL (0.03 units at 4x, in proportion to
            the relief at 10.33x, the gait's own tolerance since 8E), but where H_OPEN lists the cases found beyond it with the chords and kept open
-           for the owner (docs/STAGE8_SPEC.md section 18), each with its proposed bound in H_TOL: none may be beyond its bound; the cases beyond
-           H_TOL counted and reported, with their pixels (the simple kit's at its largest size, a man KLOD.IN px tall; in motion through the
-           camera) */
+           for the owner (docs/STAGE8_SPEC.md section 18), each with its proposed bound in H_TOL: none may be beyond its bound, and no more poses
+           beyond H_TOL than were found (H_CASES); the cases beyond H_TOL counted and reported, with their pixels (the simple kit's at its largest
+           size, a man KLOD.IN px tall; in motion through the camera) */
         var hBad=[], hT=[], MA=ANIM.MAN, HO=ANIM.HORSE, hSolC=new Map(), hO=[0,0,0], hP1=[], FXL=0.085, LXL=0.13;   /* FXL, LXL: the feet's and the hooves' lines as the kits draw them */
         /* the proposed bounds of the cases kept open with the chords, in H_TOL, by factor, for the hook's edges and the drawn soles, men and horses
            (8F's prerequisite 2: the largest measured on its build, fresh, rounded up to the next half H_TOL: the men's planted edges 2.08 and 2.13
            at 4x and 10.33x, their drawn soles 3.19 and 3.18, the horses' edges 1.94 and 2.42, their drawn soles 2.13 and 2.59; docs/STAGE8_SPEC.md
            section 18) */
         var H_OPEN={edges:{men:{4:2.5, "10.33":2.5}, horses:{4:2.5, "10.33":2.5}}, drawn:{men:{4:3.5, "10.33":3.5}, horses:{4:3, "10.33":3}}};
+        /* and the cases themselves: the poses found beyond H_TOL on the prerequisite's build, by factor, men or horses, the edges or the drawn
+           soles, fresh or in motion and the level (every other: none). No more may be beyond H_TOL than were found, with a margin of a tenth (at
+           least two poses); where none was found, none. A bound on the worst alone admitted 8E's soles back on the simple kit (mutate-8e.js's
+           contactsole, its worst within 3.5 H_TOL): the number of cases is what such a change multiplies */
+        var H_CASES={"4|men|edges|fresh|rich":14, "4|men|edges|fresh|simple":4, "4|men|drawn|fresh|rich":21, "4|men|drawn|fresh|simple":9,
+          "4|horses|edges|fresh|rich":29, "4|horses|edges|fresh|simple":29, "4|horses|drawn|fresh|rich":29, "4|horses|drawn|fresh|simple":27, "4|horses|drawn|motion|rich":1,
+          "10.33|men|edges|fresh|rich":20, "10.33|men|edges|fresh|simple":11, "10.33|men|drawn|fresh|rich":21, "10.33|men|drawn|fresh|simple":14, "10.33|men|drawn|motion|rich":1,
+          "10.33|horses|edges|fresh|rich":29, "10.33|horses|edges|fresh|simple":29, "10.33|horses|edges|motion|rich":2, "10.33|horses|drawn|fresh|rich":28,
+          "10.33|horses|drawn|fresh|simple":25, "10.33|horses|drawn|motion|rich":1};
         function hSoles(g,horse){ var c=hSolC.get(g); if(c) return c; var P=g.attributes.position, K=g.attributes.aPart, seen={}, out=[];
           for(var i=0;i<P.count;i++){ var k=Math.round(K.array[i]); if(horse?(k<5||k>8):!(k===1||k===2||k===13||k===14)) continue; var y=P.array[i*3+1]; if(y>0.03) continue;
             var x=P.array[i*3], z=P.array[i*3+2], key=k+","+x.toFixed(4)+","+y.toFixed(4)+","+z.toFixed(4); if(seen[key]) continue; seen[key]=1; out.push([k,x,y,z]); }
@@ -19685,14 +19694,16 @@ var AUSTERLITZ_DEBUG=(function(){
         } finally { if(hOwn) performance.now=hNow; else delete performance.now; window.requestAnimationFrame=hRaf; renderer.render=hRen; if(playing) stopPlay(); dwellSet(hDw); setSpeed(hSp); lastFrame=0; setDisplayFactor(keepE.f); }
         /* the verdicts */
         var hQ=function(a,q){ var s=a.slice().sort(function(x,y){ return x-y; }); return s.length?s[Math.min(s.length-1,Math.floor(q*s.length))]:0; };
-        Object.keys(HS).sort().forEach(function(key){ var s=HS[key], P=key.split("|"), F=P[0], fct=F==="4"?4:GEOREF.EXAG, TOL=0.03*fct/4, lim=H_OPEN[P[2]][P[1]][F]*TOL, over=s.a.filter(function(v){ return v>TOL; }).length;
+        Object.keys(HS).sort().forEach(function(key){ var s=HS[key], P=key.split("|"), F=P[0], fct=F==="4"?4:GEOREF.EXAG, TOL=0.03*fct/4, lim=H_OPEN[P[2]][P[1]][F]*TOL, over=s.a.filter(function(v){ return v>TOL; }).length,
+            found=H_CASES[key]||0, allow=found?found+Math.max(2,Math.ceil(found/10)):0;
           hT.push(F+"x "+P[1]+", "+(P[2]==="edges"?"the hook's edges":"the drawn soles")+", "+P[3]+", "+P[4]+": "+s.a.length+" poses, half within "+hQ(s.a,0.5).toFixed(4)+", 99 in 100 within "+hQ(s.a,0.99).toFixed(4)+", the worst "+s.w.toFixed(4)+" ("+s.where+")"+
-            (s.px?", "+s.px.toFixed(2)+" px at most ("+(P[4]==="simple"&&P[3]==="fresh"?"at the simple kit's largest size, ":"")+s.pxWhere+")":"")+"; "+over+" beyond H_TOL "+TOL.toFixed(4)+(lim>TOL+1e-12?" (kept open: the proposed bound "+lim.toFixed(4)+")":"")+"; the legacy seat up to "+s.rest.toFixed(3)+" at rest, the raised edge's lift median "+hQ(s.lift,0.5).toFixed(3));
-          if(s.w>lim+1e-9) hBad.push(F+"x "+P[1]+" "+P[2]+" "+P[3]+" "+P[4]+": "+s.w.toFixed(4)+" ("+s.where+"), beyond "+(lim>TOL+1e-12?"its proposed bound ":"H_TOL ")+lim.toFixed(4)); });
+            (s.px?", "+s.px.toFixed(2)+" px at most ("+(P[4]==="simple"&&P[3]==="fresh"?"at the simple kit's largest size, ":"")+s.pxWhere+")":"")+"; "+over+" beyond H_TOL "+TOL.toFixed(4)+(lim>TOL+1e-12?" (kept open: the proposed bound "+lim.toFixed(4)+"; "+found+" found, at most "+allow+")":"")+"; the legacy seat up to "+s.rest.toFixed(3)+" at rest, the raised edge's lift median "+hQ(s.lift,0.5).toFixed(3));
+          if(s.w>lim+1e-9) hBad.push(F+"x "+P[1]+" "+P[2]+" "+P[3]+" "+P[4]+": "+s.w.toFixed(4)+" ("+s.where+"), beyond "+(lim>TOL+1e-12?"its proposed bound ":"H_TOL ")+lim.toFixed(4));
+          if(over>allow) hBad.push(F+"x "+P[1]+" "+P[2]+" "+P[3]+" "+P[4]+": "+over+" poses beyond H_TOL, "+(found?found+" found and kept open (at most "+allow+")":"none kept open")); });
         ["4","10.33"].forEach(function(F){ ["men","horses"].forEach(function(k){ ["edges","drawn"].forEach(function(d){ ["fresh|rich","fresh|simple","motion|rich","motion|simple"].forEach(function(w){ if(!HS[F+"|"+k+"|"+d+"|"+w]) hBad.push(F+"x "+k+" "+d+" "+w.replace("|"," ")+": nothing judged"); }); }); }); });
         hT.push("the slopes' lookup the drawn ground's at "+hLk+" points; in motion "+hFr+" frames; the level switched along the dolly "+JSON.stringify(hLod)+"; Saint-Hilaire's turn "+hTurn.toFixed(3)+" rad");
         if(!(hLod["4 sthilaire"]>0)) hBad.push("in motion the division's level never switched along the dolly"); if(!(hTurn>0.05)) hBad.push("in motion the division never turned");
-        ck("the gait on the ground (decision 244 (a); 8F's prerequisite 2): each instance against itself at rest, both levels, at 4x and 10.33x, fresh and in motion (facets, a turn, the level switched, the pause), each kit's own soles planted on 8E's chords: the hook's edges and the soles the kit draws within 0.03 units (4x; in proportion to the relief at 10.33x) in every pose, but for the cases kept open within their proposed bounds, every case beyond 0.03 counted with its pixels; the legacy seat and the lift reported; the slopes' lookup the drawn ground's at every factor; at 1x no figure",
+        ck("the gait on the ground (decision 244 (a); 8F's prerequisite 2): each instance against itself at rest, both levels, at 4x and 10.33x, fresh and in motion (facets, a turn, the level switched, the pause), each kit's own soles planted on 8E's chords: the hook's edges and the soles the kit draws within 0.03 units (4x; in proportion to the relief at 10.33x) in every pose, but for the cases kept open, none beyond its proposed bound and no more of them than were found, every case beyond 0.03 counted with its pixels; the legacy seat and the lift reported; the slopes' lookup the drawn ground's at every factor; at 1x no figure",
           !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.slice(0,6).join("; "):""));
 
         /* (j) the step described as decision 244 asks (section 0.3.1, item 8): the legend's row wherever figures are drawn, and the sources sheet's
