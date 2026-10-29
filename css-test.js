@@ -631,7 +631,14 @@ if(cerrs) process.exitCode=1;
   if(!/^var GDETAIL=\{amount:0\.55, near:14, far:60, k:7\.3, rot:0\.61, lo:0\.62, hi:1\.38,/m.test(wsrc)) ferr.push("GDETAIL's values changed");
   const gd=wvar("GROUND_FRAG_DETAIL");
   if(!/if\(uMode>0\.5&&uMode<1\.5&&\(uDetail\.x>0\.0\|\|uDebug>4\.5\)\)\{/.test(gd)||!/float gDf=uDetail\.x\*\(1\.0-smoothstep\(uDetail\.y,uDetail\.z,length\(vViewPosition\)\)\);/.test(gd)) ferr.push("the near detail is not the landscape's natural ground's alone, faded by the eye's distance");
-  if(!/vec2 gDu=mat2\(uDetailR\.x,uDetailR\.y,-uDetailR\.y,uDetailR\.x\)\*vUv\*uDetail\.w;/.test(gd)||/gl_FragCoord/.test(gd)) ferr.push("the near detail is not anchored to the ground (its uv)");
+  if(!/vec2 gDu=mat2\(uDetailR\.x,uDetailR\.y,-uDetailR\.y,uDetailR\.x\)\*vUv\*uDetail\.w[,;]/.test(gd)||/gl_FragCoord/.test(gd)) ferr.push("the near detail is not anchored to the ground (its uv)");
+  /* 8G's prerequisite 2 (docs/STAGE8_SPEC.md section 19.2): the gradients taken under the uniforms' test alone, before the fade's; inside the
+     fade's branch no derivative and no sampling that takes its own (only textureGrad with the gradients taken before it) */
+  { const i0=gd.indexOf("if(uMode>0.5&&uMode<1.5&&(uDetail.x>0.0||uDebug>4.5)){"), i1=gd.indexOf("gDgx=dFdx(gDu)*gDk, gDgy=dFdy(gDu)*gDk;"), i2=gd.indexOf("float gDf="), i3=gd.indexOf("if(gDf>0.002");
+    const inner=i3>=0?gd.slice(i3):"";
+    if(!(i0>=0&&i1>i0&&i2>i1&&i3>i2)) ferr.push("the near detail's gradients are not taken under the uniforms' test alone, before the fade's test (8G's prerequisite 2)");
+    if(/dFdx|dFdy|fwidth/.test(inner)) ferr.push("a derivative is taken inside the near detail's fade branch, where the fragments of a quad differ (8G's prerequisite 2)");
+    if(/\btexture2D\(|\btexture\(|\btextureLod\(/.test(inner)||(inner.match(/textureGrad\(/g)||[]).length!==1||!/textureGrad\(map,gDt,gDgx,gDgy\)/.test(inner)) ferr.push("the near detail samples its texture inside the fade branch otherwise than by textureGrad with the gradients taken before it (8G's prerequisite 2)"); }
   if(!/texelColor\.rgb\*=mix\(1\.0,clamp\(gDl,uDetailC\.x,uDetailC\.y\),gDf\);/.test(gd)||!/\/max\(uCellLum\[int\(gCell\+0\.5\)\],0\.001\);/.test(gd)) ferr.push("the near detail is not its cell's grey ratio within GDETAIL's clamp (a new colour, or the class's tone moved)");
   if(!/^  groundDetail\(!lowTier\);/m.test(src)) ferr.push("the near detail is not off under lowTier (decision 236)");
   if(!/flip=!\(_atlas&&_atlas\.flipY===false\);/.test(wfn("atlasLum"))||!/cy=\(flip\?2-Math\.floor\(k\/4\):Math\.floor\(k\/4\)\)\*R,/.test(wfn("atlasLum"))) ferr.push("the near detail's cells' means are not taken as the shader samples the cells (the flip read from the texture as uploaded)");

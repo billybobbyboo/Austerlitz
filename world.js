@@ -1053,15 +1053,19 @@ var GROUND_FRAG_ATLAS=[
   "#endif"
 ].join("\n");
 /* Stage 8, 8F: the near detail (GDETAIL), the texel scaled by a finer sample of its own cell, near the eye, on the natural ground only (WebGL 2's
-   textureGrad: its own gradients, so no mip seam at a tile's wrap) */
+   textureGrad: its own gradients, so no mip seam at a tile's wrap). 8G's prerequisite 2 (docs/STAGE8_SPEC.md section 19.2): the gradients are
+   taken where every fragment of a draw takes the same way (the test of uniforms alone), before the fade's test, which differs from fragment to
+   fragment and between the fragments of one quad at the fade's far edge, where a derivative taken inside it is undefined (8F took them there);
+   the texture is still sampled only where the fade is on, through textureGrad with those gradients */
 var GROUND_FRAG_DETAIL=[
   "  vec3 gDbgD=vec3(0.0);",   /* 8G's prerequisite 1: the detail's own sample, whatever the eye's distance, for the self-test (uDebug 5) */
   "#if __VERSION__ >= 300",
   "  if(uMode>0.5&&uMode<1.5&&(uDetail.x>0.0||uDebug>4.5)){",
+  "    vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w, gDk=vec2(0.234375,0.3125), gDgx=dFdx(gDu)*gDk, gDgy=dFdy(gDu)*gDk;",
   "    float gDf=uDetail.x*(1.0-smoothstep(uDetail.y,uDetail.z,length(vViewPosition)));",
-  "    if(gDf>0.002||uDebug>4.5){ vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w;",
-  "      vec2 gDt=vec2(fract(gDu.x)*0.234375+0.0078125+ci*0.25, fract(gDu.y)*0.3125+0.0104167+cj*0.3333333), gDk=vec2(0.234375,0.3125);",
-  "      vec3 gDc=mapTexelToLinear(textureGrad(map,gDt,dFdx(gDu)*gDk,dFdy(gDu)*gDk)).rgb;",
+  "    if(gDf>0.002||uDebug>4.5){",
+  "      vec2 gDt=vec2(fract(gDu.x)*0.234375+0.0078125+ci*0.25, fract(gDu.y)*0.3125+0.0104167+cj*0.3333333);",
+  "      vec3 gDc=mapTexelToLinear(textureGrad(map,gDt,gDgx,gDgy)).rgb;",
   "      if(uDebug>4.5) gDbgD=gDc; else {",
   "      float gDl=dot(gDc,vec3(0.2126,0.7152,0.0722))/max(uCellLum[int(gCell+0.5)],0.001);",
   "      texelColor.rgb*=mix(1.0,clamp(gDl,uDetailC.x,uDetailC.y),gDf); } } }",

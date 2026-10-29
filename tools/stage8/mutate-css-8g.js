@@ -9,6 +9,7 @@
 const fs=require("fs"), path=require("path"), os=require("os"), cp=require("child_process");
 const ROOT=path.resolve(__dirname,"..",".."), argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; }, OUT=opt("--json"), ONLY=opt("--only")?opt("--only").split(","):null;
 const REST="a block at rest (8G's verification)";
+const NEAR="water, woods and the near ground (decisions 246 (a), 247 (a))";
 /* [id, what it breaks, from, to, the file (app.js unless named), the block's line] */
 const MUT=[
   ["none","nothing (the source as it is)",null,null,null,null],
@@ -19,7 +20,14 @@ const MUT=[
   ["yaw","the block's heading easing on below its threshold (8F's)","  if(!LOOSE[st]&&Math.abs(d0)<=0.002) rec.yaw=want0+Math.PI*2*Math.round((rec.yaw-want0)/(Math.PI*2));\n  else if(Math.abs(diff)<1e-6) rec.yaw=want+Math.PI*2*Math.round((rec.yaw-want)/(Math.PI*2));\n  else rec.yaw += diff*ease(WHEEL[f.arm]||0.05);",
     "  rec.yaw += diff*ease(WHEEL[f.arm]||0.05);",null,REST],
   ["swayexact","a loose body's sway eased on below 1e-6","  else if(Math.abs(diff)<1e-6) rec.yaw=want+Math.PI*2*Math.round((rec.yaw-want)/(Math.PI*2));\n","",null,REST],
-  ["eased","another value eased in poseBlock","  var lowered = (st===","  u.sw2=(u.sw2||0); u.sw2 += 0.001;\n  var lowered = (st===",null,REST]
+  ["eased","another value eased in poseBlock","  var lowered = (st===","  u.sw2=(u.sw2||0); u.sw2 += 0.001;\n  var lowered = (st===",null,REST],
+  /* prerequisite 2: the near detail's gradients before its fade's branch (css-test.js's 8F block holds it) */
+  ["gradinside","the near detail's gradients taken inside its fade's branch (8F's)",
+    '  "    vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w, gDk=vec2(0.234375,0.3125), gDgx=dFdx(gDu)*gDk, gDgy=dFdy(gDu)*gDk;",\n  "    float gDf=uDetail.x*(1.0-smoothstep(uDetail.y,uDetail.z,length(vViewPosition)));",\n  "    if(gDf>0.002||uDebug>4.5){",\n  "      vec2 gDt=vec2(fract(gDu.x)*0.234375+0.0078125+ci*0.25, fract(gDu.y)*0.3125+0.0104167+cj*0.3333333);",\n  "      vec3 gDc=mapTexelToLinear(textureGrad(map,gDt,gDgx,gDgy)).rgb;",',
+    '  "    float gDf=uDetail.x*(1.0-smoothstep(uDetail.y,uDetail.z,length(vViewPosition)));",\n  "    if(gDf>0.002||uDebug>4.5){ vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w;",\n  "      vec2 gDt=vec2(fract(gDu.x)*0.234375+0.0078125+ci*0.25, fract(gDu.y)*0.3125+0.0104167+cj*0.3333333), gDk=vec2(0.234375,0.3125);",\n  "      vec3 gDc=mapTexelToLinear(textureGrad(map,gDt,dFdx(gDu)*gDk,dFdy(gDu)*gDk)).rgb;",',
+    "world.js",NEAR],
+  ["implicit","the near detail sampled inside its fade's branch by a sample that takes its own gradients","textureGrad(map,gDt,gDgx,gDgy)","texture(map,gDt)","world.js",NEAR],
+  ["gradlate","a derivative taken inside the near detail's fade's branch","textureGrad(map,gDt,gDgx,gDgy)","textureGrad(map,gDt,dFdx(gDu)*gDk,gDgy)","world.js",NEAR]
 ];
 const MF=["app.js","world.js"], SRC={}, dir=fs.mkdtempSync(path.join(os.tmpdir(),"mutate-css-8g-")), res={mutations:[]};
 MF.forEach(f=>{ SRC[f]=fs.readFileSync(path.join(ROOT,f),"utf8"); });

@@ -32,7 +32,7 @@ const MUT=[
   ["detailvals","GDETAIL's reach moved","var GDETAIL={amount:0.55, near:14, far:60,","var GDETAIL={amount:0.55, near:14, far:90,"],
   ["detailmode","the near detail on every mode","  \"  if(uMode>0.5&&uMode<1.5&&(uDetail.x>0.0||uDebug>4.5)){\",","  \"  if(uDetail.x>0.0||uDebug>4.5){\","],
   ["detailfade","the near detail not faded by the eye's distance","float gDf=uDetail.x*(1.0-smoothstep(uDetail.y,uDetail.z,length(vViewPosition)));","float gDf=uDetail.x;"],
-  ["detailscreen","the near detail on the screen, not the ground","vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w;","vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*gl_FragCoord.xy*0.01*uDetail.w;"],
+  ["detailscreen","the near detail on the screen, not the ground","vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w,","vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*gl_FragCoord.xy*0.01*uDetail.w,"],
   ["detailtint","the near detail a colour of its own","texelColor.rgb*=mix(1.0,clamp(gDl,uDetailC.x,uDetailC.y),gDf);","texelColor.rgb*=mix(vec3(1.0),vec3(0.9,1.0,0.9)*clamp(gDl,uDetailC.x,uDetailC.y),gDf);"],
   ["lumflip","the near detail normalised by the canvas's cells as laid out (three's flip ignored)","cy=(flip?2-Math.floor(k/4):Math.floor(k/4))*R,","cy=Math.floor(k/4)*R,"],
   ["detaillow","the near detail drawn under lowTier","  groundDetail(!lowTier);","  groundDetail(true);","app.js"],
