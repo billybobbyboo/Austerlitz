@@ -1,0 +1,148 @@
+{
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the sources as they are)",
+   "file": null,
+   "errors": 0,
+   "matched": null,
+   "ok": true,
+   "lines": [
+    "guard: the 29 declarations of the five data files and app.js's 7 data declarations are in check:data's lists (134 names)",
+    "ERRORS: 0"
+   ]
+  },
+  {
+   "id": "noscope",
+   "what": "a claim whose scope does not say how it bears on 1805",
+   "file": "appearance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: buildings churches.Telnitz: a claim without a scope saying how it bears on 1805 (decision 248 (a): later maps' relevance to 1805 explicitly qualified)"
+   ]
+  },
+  {
+   "id": "roofsclaim",
+   "what": "the villages' roofs made a claim (no source names them)",
+   "file": "appearance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: buildings plan.roofs: must stay generic with its reason (no source read settles it: a design convention)"
+   ]
+  },
+  {
+   "id": "churchnoclaim",
+   "what": "a church drawn with no claim",
+   "file": "world.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: CHURCHES: Turas drawn with a church and no claim in BUILDINGS.churches"
+   ]
+  },
+  {
+   "id": "legacy",
+   "what": "a village drawn with a church until 8G and not since, with no claim of why",
+   "file": "appearance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: buildings: Girzikowitz was drawn with a church until 8G and is not now, with no claim of why (BUILDINGS.noChurch)"
+   ]
+  },
+  {
+   "id": "chapelchurch",
+   "what": "a village drawn with a church and a chapel",
+   "file": "world.js",
+   "errors": 2,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: CHAPELS: Telnitz drawn with a church and a chapel"
+   ]
+  },
+  {
+   "id": "rearwall",
+   "what": "a village's rear buildings with walls of no class",
+   "file": "appearance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: buildings villages.Pratzen.rear: its share (0 to 1) and its walls (masonry or timber)"
+   ]
+  },
+  {
+   "id": "notdrawnclaim",
+   "what": "what is not drawn made a claim",
+   "file": "appearance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: buildings notDrawn.santon: what is not drawn stays generic, with why and the alternatives"
+   ]
+  },
+  {
+   "id": "unknownsrc",
+   "what": "a claim naming a source not registered",
+   "file": "appearance.js",
+   "errors": 2,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: buildings villages.Telnitz.rear: unknown source mza_tellnitz1825"
+   ]
+  },
+  {
+   "id": "badlabel",
+   "what": "a claim with a label outside the vocabulary",
+   "file": "appearance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: buildings telnitz.churchyard: label probable"
+   ]
+  },
+  {
+   "id": "attributedelsewhere",
+   "what": "\"attributed\", BUILDINGS's alone, used in DRESS",
+   "file": "appearance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: dress fr_cuirassier.coat: label attributed"
+   ]
+  },
+  {
+   "id": "unregistered",
+   "what": "a new source cited nowhere",
+   "file": "appearance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! appearance: source nosuch2026 is cited nowhere (every source cited and registered, 6B)"
+   ]
+  },
+  {
+   "id": "unguarded",
+   "what": "BUILDINGS out of check:data's lists",
+   "file": "tools/visual/data-invariance.js",
+   "errors": 1,
+   "matched": true,
+   "ok": true,
+   "lines": [
+    "  ! guard: appearance.js's BUILDINGS is not in check:data's lists (tools/visual/data-invariance.js)"
+   ]
+  }
+ ]
+}

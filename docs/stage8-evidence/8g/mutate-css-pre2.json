@@ -1,0 +1,104 @@
+{
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the source as it is)",
+   "block": null,
+   "blockFails": null,
+   "ok": true,
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "shape",
+   "what": "the block's shape easing on below its threshold (8F's)",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the block's shape eases on below its threshold (it does not take its target exactly)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "tilt",
+   "what": "the block's tilt easing on below its threshold (8F's)",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the block's tilt eases on below its threshold"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "yaw",
+   "what": "the block's heading easing on below its threshold (8F's)",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the block's heading eases on below its threshold"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "swayexact",
+   "what": "a loose body's sway eased on below 1e-6",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the block's heading eases on below its threshold"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "eased",
+   "what": "another value eased in poseBlock",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "poseBlock eases values other than the shape and the heading (rec.yaw,u.sd,u.sw,u.sw2,want): each eased value takes its target exactly at rest"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "gradinside",
+   "what": "the near detail's gradients taken inside its fade's branch (8F's)",
+   "block": "water, woods and the near ground (decisions 246 (a), 247 (a))",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the near detail's gradients are not taken under the uniforms' test alone, before the fade's test (8G's prerequisite 2)",
+    "a derivative is taken inside the near detail's fade branch, where the fragments of a quad differ (8G's prerequisite 2)",
+    "the near detail samples its texture inside the fade branch otherwise than by textureGrad with the gradients taken before it (8G's prerequisite 2)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "implicit",
+   "what": "the near detail sampled inside its fade's branch by a sample that takes its own gradients",
+   "block": "water, woods and the near ground (decisions 246 (a), 247 (a))",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the near detail samples its texture inside the fade branch otherwise than by textureGrad with the gradients taken before it (8G's prerequisite 2)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "gradlate",
+   "what": "a derivative taken inside the near detail's fade's branch",
+   "block": "water, woods and the near ground (decisions 246 (a), 247 (a))",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "a derivative is taken inside the near detail's fade branch, where the fragments of a quad differ (8G's prerequisite 2)",
+    "the near detail samples its texture inside the fade branch otherwise than by textureGrad with the gradients taken before it (8G's prerequisite 2)"
+   ],
+   "exit": 1
+  }
+ ]
+}

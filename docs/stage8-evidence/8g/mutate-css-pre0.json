@@ -1,0 +1,68 @@
+{
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the source as it is)",
+   "block": null,
+   "blockFails": null,
+   "ok": true,
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "shape",
+   "what": "the block's shape easing on below its threshold (8F's)",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the block's shape eases on below its threshold (it does not take its target exactly)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "tilt",
+   "what": "the block's tilt easing on below its threshold (8F's)",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the block's tilt eases on below its threshold"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "yaw",
+   "what": "the block's heading easing on below its threshold (8F's)",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the block's heading eases on below its threshold"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "swayexact",
+   "what": "a loose body's sway eased on below 1e-6",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the block's heading eases on below its threshold"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "eased",
+   "what": "another value eased in poseBlock",
+   "block": "a block at rest (8G's verification)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "poseBlock eases values other than the shape and the heading (rec.yaw,u.sd,u.sw,u.sw2,want): each eased value takes its target exactly at rest"
+   ],
+   "exit": 1
+  }
+ ]
+}

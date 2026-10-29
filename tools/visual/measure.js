@@ -592,7 +592,7 @@
       if(ud){ if(ud.std) tag(ud.std,"figures: standards",b);
         if(ud.body) ud.body.traverse(function(x){ if(!x.isMesh) return; label.set(x,geos.indexOf(x.geometry)>=0?"figures: men and horses":"figures: guns and gear"); blockOf.set(x,b); }); tag(b,"figures: block other",b); }
       tag(r.smoke,"smoke"); tag(r.pad,"formation pads"); tag(r.dust,"dust"); tag(r.trail,"trails"); tag(r.conf,"ground cues: filled marks"); tag(r.foot,"ground cues: footprints (1x)"); tag(r.line,"ground cues: outlines"); });
-    [["groundMesh","ground"],["apronMesh","ground"],["treeMesh","trees"],["coniferMesh","trees"],["scrubMesh","scrub"],["houseMesh","houses"],["roofMesh","roofs"],["chimMesh","chimneys"],
+    [["groundMesh","ground"],["apronMesh","ground"],["treeMesh","trees"],["coniferMesh","trees"],["scrubMesh","scrub"],["houseMesh","houses"],["roofMesh","roofs"],["chimneyMesh","chimneys"],["barnMesh","houses"],["plinthMesh","houses"],["thatchMesh","roofs"],["stoneMesh","walls and fences"],["fenceMesh","walls and fences"],
      ["spireMesh","spires"],["domeMesh","sky"],["sunDisc","sky"],["contourGroup","contours"],["marshGroup","marsh"],["paperGroup","paper map"],["mistGroup","mist"],
      ["analysisGroup","analysis overlay"],["eventGroup","event glyphs"],["overlayRoot","overlays (arrows)"],["planGroup","plans"],["selRing","selection ring"]].forEach(function(p){
       var x; try{ x=eval(p[0]); }catch(e){ x=null; } if(x&&x.traverse) tag(x,p[1]); });

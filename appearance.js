@@ -135,7 +135,20 @@ var APPEARANCE_SOURCES = {
   czartoryski1887: {au:"A. Czartoryski (ed. Ch. de Mazade)", ti:"Mémoires du prince Adam Czartoryski et correspondance avec l'empereur Alexandre Ier, t. I", pub:"Paris, Plon", d:1887, kind:"primary-text", url:"https://archive.org/details/mmoiresduprincea01czar", ia:"mmoiresduprincea01czar"},
   austerlitzorg2000: {au:"Team Austerlitz (austerlitz.org)", ti:"The first cannon shot (no source named)", pub:"website, posted 4 May 2000, fetched 14 October 2026", d:2000, kind:"modern-web-specialist", url:"https://www.austerlitz.org/en/?p=36"},
   wolny1836: {au:"G. Wolny", ti:"Die Markgrafschaft Mähren, topographisch, statistisch und historisch geschildert, Bd. II, Abth. 1 (Brünner Kreis)", pub:"Brünn", d:1836, kind:"specialist", url:"https://archive.org/details/10011827bsb", ia:"10011827bsb"},
-  thiers1847: {au:"A. Thiers", ti:"Histoire du Consulat et de l'Empire, t. VI", pub:"Paris, Paulin", d:1847, kind:"specialist", url:"https://archive.org/details/histoireduconsul06thieuoft", ia:"histoireduconsul06thieuoft"}
+  thiers1847: {au:"A. Thiers", ti:"Histoire du Consulat et de l'Empire, t. VI", pub:"Paris, Paulin", d:1847, kind:"specialist", url:"https://archive.org/details/histoireduconsul06thieuoft", ia:"histoireduconsul06thieuoft"},
+  /* Stage 8, implementation PR 8G (decision 248 (a)): the works read for the villages' buildings and landmarks (docs/stage8-evidence/8g/sources.md,
+     readings-texts.md, readings-cadastre.md); each title page read on its image */
+  schwoy1793: {au:"F. J. Schwoy", ti:"Topographie vom Markgrafthum Mähren, Zweyter Band, enthält den Brünner und Hradischer-Kreis", pub:"Wien, Joseph Hraschanzky", d:1793, kind:"specialist", url:"https://archive.org/details/10011319bsb", ia:"10011319bsb"},
+  wolny1837: {au:"G. Wolny", ti:"Die Markgrafschaft Mähren, topographisch, statistisch und historisch geschildert, Bd. II, Abth. 2 (Brünner Kreis)", pub:"Brünn, Selbstverlag; L. W. Seidel", d:1837, kind:"specialist", url:"https://archive.org/details/10011828bsb", ia:"10011828bsb"},
+  wolnykt1_1856: {au:"G. Wolný", ti:"Kirchliche Topographie von Mähren, meist nach Urkunden und Handschriften, II. Abtheilung: Brünner Diöcese, Bd. I", pub:"Brünn, Selbstverlag; Nitsch und Grosse", d:1856, kind:"specialist", url:"https://www.digitale-sammlungen.de/view/bsb10028418"},
+  wolnykt2_1858: {au:"G. Wolný", ti:"Kirchliche Topographie von Mähren, II. Abtheilung: Brünner Diöcese, Bd. II", pub:"Brünn, Selbstverlag; Nitsch und Grosse", d:1858, kind:"specialist", url:"https://archive.org/details/10028419bsb", ia:"10028419bsb"},
+  wolnykt3_1860: {au:"G. Wolný", ti:"Kirchliche Topographie von Mähren, II. Abtheilung: Brünner Diöcese, Bd. III", pub:"Brünn, Selbstverlag; A. Nitsch", d:1860, kind:"specialist", url:"https://www.digitale-sammlungen.de/view/bsb10028420"},
+  instruction1824: {au:"(official; no author or office printed)", ti:"Instruction zur Ausführung der zum Behufe des allgemeinen Catasters in Folge des 8ten und 9ten Paragraphes des Allerhöchsten Patentes vom 23. December 1817 angeordneten Landes-Vermessung", pub:"Wien, k. k. Hof- und Staats-Aerarial-Druckerey", d:1824, kind:"regulation", url:"https://ulb-digital.uibk.ac.at/content/titleinfo/19050"},
+  mza_sokolnitz1825: {au:"(the stable cadastre's survey: Geometer W. Krautzky, Adjunct F. Knoblech, as the sheet's title reads them)", ti:"Indication sketch of the Gemeinde Sokolnitz, 1825 (MOR246318250)", pub:"Moravský zemský archiv v Brně, fund D9 Indikační skici", d:1825, kind:"primary-image", url:"https://www.mza.cz/indikacniskici/skica/detail/MOR246318250"},
+  mza_telnitz1825: {au:"(the stable cadastre's survey)", ti:"Indication sketch of the Gemeinde Tellnitz, 1825 (MOR265518250)", pub:"Moravský zemský archiv v Brně, fund D9 Indikační skici", d:1825, kind:"primary-image", url:"https://www.mza.cz/indikacniskici/skica/detail/MOR265518250"},
+  mza_pratzen1826: {au:"(the stable cadastre's survey)", ti:"Indication sketch of the Gemeinde Pratze, 1826, with its detail pieces of the village (MOR205818260)", pub:"Moravský zemský archiv v Brně, fund D9 Indikační skici", d:1826, kind:"primary-image", url:"https://www.mza.cz/indikacniskici/skica/detail/MOR205818260"},
+  mza_kobelnitz1825: {au:"(the stable cadastre's survey)", ti:"Indication sketch of the Gemeinde Kobelnitz with the enclave Puntowitz, 1825 (MOR102418250)", pub:"Moravský zemský archiv v Brně, fund D9 Indikační skici", d:1825, kind:"primary-image", url:"https://www.mza.cz/indikacniskici/skica/detail/MOR102418250"},
+  npu1000133864: {au:"Národní památkový ústav", ti:"Památkový katalog, record 1000133864: kaple sv. Gottharda, Holubice (its annotation, read through the NPÚ geoportal's layers 5 and 12)", pub:"NPÚ geoportal, read 28 October 2026", d:2026, kind:"modern-web-specialist", url:"https://pamatkovykatalog.cz/x-14918913"}
 };
 
 /* dress classes: one per kind of dress the sources describe for a class of troops present. nation and arm as data.js
@@ -869,6 +882,183 @@ var ORDNANCE = {
       scope:"the Russian matériel of the Arakcheev period",
       note:"item 15; nothing is drawn from it (no Russian battery is drawn as figures)"},
     drivers:{gen:true, why:"not re-read for 8E (viskovatov12_1900, the rules of 1806 and 1809: the company's own men; Part A's leads); nothing is drawn from it"}
+  }
+};
+
+
+/* Stage 8, implementation PR 8G (decision 248 (a): "develop the villages around the cadastral street-and-yard pattern and add supported landmarks
+   after research and a documented data task. Keep later maps' relevance to 1805 explicitly qualified. Unestablished roofing and other forms must
+   remain labelled design conventions"; docs/STAGE8_SPEC.md section 19): the claims the drawn buildings rest on, each read on its page image or its
+   sheet for 8G (docs/stage8-evidence/8g/README.md: the texts' register readings-texts.md, entries T, the sketches' readings-cadastre.md, sections C; each
+   quotation checked again on its page image, quote-check.md). Each claim carries scope: the place and the time its source
+   speaks for, and how far it is applied to 1805. Nothing here is drawn as such: the drawn sizes, heights, roofs, colours and spacings are
+   presentation (VILL8G and BLD8G in world.js), design values at the building scale (decision 14). The stable cadastre's indication sketches of
+   1825-1826 show the villages twenty years after the battle, after fires (Pratzen 1805, 1814, 1818; Telnitz 1808) and rebuilding: their pattern
+   is applied to 1805 by inference, never as fact. A value is a claim, a disputed value with its sides, or {gen:true, why}; notDrawn holds what
+   the sources name and the map does not draw, each with why and the alternatives put to the owner. */
+var BUILDINGS = {
+  /* the villages' plan, as the sketches read at full resolution show it (Sokolnitz, Telnitz, Pratzen, Kobelnitz with Puntowitz) */
+  plan: {
+    form:{v:"each farmstead one carmine mass drawn as an L: a range along the street and a long range back along a side boundary of a narrow, deep plot, its narrow end at the street",
+      en:"the farmsteads L-shaped, a range along the street and a long range back along the plot's side", src:"mza_sokolnitz1825", at:"pieces A04D and A05D, level 4: the west row's plots 52-40 and the east row's 20-32 (about 22 of 26 an L); the title on the back of sheet II, piece R02D",
+      gr:"B", lab:"inference", q:"Gemeinde SOKOLLNITZ",
+      scope:"Sokolnitz as surveyed in 1825, and as read the same way at Telnitz (1825, all 14 plots measured) and Pratzen (1826, 16 of 17); Puntowitz's closed courtyards the exception read. Drawn for every village: for 1805 an inference, and for the villages whose sketches of the 1820s were not read a design value",
+      note:"readings C1.1-C1.4; plots about 22 m wide and 83-112 m deep (drawn narrower and shallower: the building scale); which part of the L was the dwelling is not drawn on the sheets"},
+    north:{v:"the long range on the plot's north boundary in the west row's plots 51, 50, 45, 44, 43, 42, 41, 40 and in every plot of the east row read",
+      en:"the long range on the plot's northern boundary", src:"mza_sokolnitz1825", at:"pieces A04D and A05D, level 4; the title on the back of sheet II, piece R02D", gr:"B", lab:"inference", q:"Gemeinde SOKOLLNITZ",
+      scope:"Sokolnitz in 1825 (8 of 11 in the west row, all in the east), Telnitz in 1825 (all 14 on the north-east boundary), Pratzen in 1826 (on the north); for 1805 an inference; drawn on most plots of every village (VILL8G.north): a design value from these",
+      note:"reading C1.1-C1.3"},
+    walls:{v:"Die Chausseen, das Innere aller gemauerten Gebäude, die steinernen Brücken werden mit blassem Carmin, die öffentlichen Gebäude mit starkem Carmin angelegt. [...] Alle hölzernen Gebäude werden blaßgelb angelegt.",
+      en:"on the survey's sketches masonry buildings are washed pale carmine, public buildings strong carmine, wooden buildings pale yellow", src:"instruction1824", at:"p. 79, §§ 466 and 468",
+      gr:"B", lab:"fact", q:"Alle hölzernen Gebäude werden blaßgelb angelegt",
+      scope:"what the colours of the 1824-1826 survey's sketches mean: the buildings' walls, masonry or wooden; it names no roof. The villages' houses are carmine on every sketch read; drawn whitewashed (the colour a design value). The regulation of the 1824-1826 survey: not a claim about 1805",
+      note:"reading T4.1; the regulation in force for the survey, not for 1805"},
+    roofs:{gen:true, why:"no source read names the roofing of the field's villages' houses: not the topographies of 1793 and 1836-1861, not the 1824 Instruction (its colours are the walls'), not the battle accounts. Lejeune names old thatched roofs in the French bivouacs on the eve (lejeune1851, pp. 194-195), Schwoy the town of Austerlitz all tiled (below). Drawn as a design convention: thatch, tile on about one farmstead in six, tile on the town and on the manors (BLD8G.tile)"},
+    counts:{gen:true, why:"the number of farmsteads drawn is the build's own symbol count for each village (VILLAGES), not the 28 to 138 houses each had in 1793 (Schwoy) or in 1836-1837 (Wolny): at the building scale more would not fit the village's place; at Satschan five of its seven, its drawn place lying half under the drawn mere's ice and crossed by the Littawa, its church in it"}
+  },
+  /* the buildings at the back of the yards, village by village: the share of the plots that have one and their walls, as the sketch shows */
+  villages: {
+    Sokolnitz:{rear:{v:"a separate carmine building at or near the back of the yard in 6 of 26 plots; no yellow building in the village", en:"a masonry building at the back of the yard on about a quarter of the plots",
+      n:0.23, wall:"masonry", src:"mza_sokolnitz1825", at:"pieces A04D and A05D, level 4: west row 44, 40; east row 20, 25, 26, 32; the title on the back of sheet II, piece R02D", gr:"B", lab:"inference", q:"Gemeinde SOKOLLNITZ",
+      scope:"Sokolnitz in 1825; for 1805 an inference", note:"reading C1.1"}},
+    Telnitz:{rear:{v:"a separate building at the back of the yard in 1 of 10 plots checked; no yellow building", en:"a masonry building at the back of the yard on a tenth of the plots",
+      n:0.1, wall:"masonry", src:"mza_telnitz1825", at:"pieces A02D and A03D, level 4: north-west row plot 37; the title's count of building parcels on piece A01A", gr:"B", lab:"inference", q:"Bauparzellen 98",
+      scope:"Telnitz in 1825, after the fire of 1808 that took 22 houses (Wolny 1837): for 1805 an inference", note:"reading C1.2"}},
+    Pratzen:{rear:{v:"a yellow building at the back of the yard, where the yard meets the garden, in about 13 of 17 plots of the main street", en:"a wooden building at the back of the yard on most plots",
+      n:0.76, wall:"timber", src:"mza_pratzen1826", at:"detail pieces A07A and A08A, level 4: east row 9 of 9 but 21, west row 89, 86, 78, 77 and probably 82; the title on piece A01A", gr:"B", lab:"inference", q:"Gemeinde PRATZE",
+      scope:"Pratzen in 1826, after the fires of 1805, 1814 and 1818 (Wolny 1837): for 1805 an inference; yellow is wooden by the 1824 Instruction's colours", note:"reading C1.3"}},
+    Kobelnitz:{rear:{v:"three small yellow squares (about 6 by 6 m) in yards of the village's south part", en:"a few small wooden buildings in the yards",
+      n:0.15, wall:"timber", src:"mza_kobelnitz1825", at:"piece A04C, level 4; the title on piece A01A", gr:"B", lab:"inference", q:"Kobelnitz samt Enclav Puntowitz",
+      scope:"Kobelnitz in 1825; for 1805 an inference", note:"reading C1.4"}},
+    Puntowitz:{rear:{v:"closed courtyards: a continuous carmine range along the green, side ranges and a back range round a small light yard, in nearly every plot of both rows", en:"courtyards closed by a back range",
+      n:0.8, wall:"masonry", src:"mza_kobelnitz1825", at:"piece A02D, level 4: north row parcels 10-19, south row about 1-10; the title on piece A01A", gr:"B", lab:"inference", q:"Kobelnitz samt Enclav Puntowitz",
+      scope:"Puntowitz (an enclave of the Kobelnitz survey) in 1825; drawn as the L with a building at the back of its yard; for 1805 an inference", note:"reading C1.4"}},
+    Augezd:{rear:{gen:true, why:"no indication sketch of the 1820s: the archive's fund holds Augezd's (Újezd u Brna) from 1873 on only (searched 29 October 2026); the design share drawn (VILL8G.rear)"}},
+    Satschan:{rear:{gen:true, why:"no indication sketch of the 1820s: Žatčany's from 1873 only (searched 29 October 2026); the design share drawn"}},
+    Menitz:{rear:{gen:true, why:"no indication sketch of the 1820s: Měnín's from 1873 on only (searched 29 October 2026); the design share drawn"}}
+  },
+  /* the churches standing on 2 December 1805, one claim each (CHURCHES in world.js draws them by the village's point, as the build drew them at
+     it: each moved the least step that clears the roads and streams drawn through the point, docs/STAGE8_SPEC.md section 19; the place each
+     source gives within or beside the village is in its scope, and its own place a geographic correction proposed, not made) */
+  churches: {
+    Telnitz:{v:"die dem hl. Johann d. Täuf. geweihte Kirche mit 3 Altären wurde in ihrer dermaligen Gestalt [...] zwischen 1726 u. 1740 neu erbaut", en:"the church of St John the Baptist, rebuilt between 1726 and 1740",
+      src:"wolny1837", at:"p. 467 (leaf n472)", gr:"B", lab:"fact", q:"zwischen 1726 u. 1740 neu erbaut",
+      scope:"the church that stood in 1805 (its rebuilding 1726-1734 in the church topography, wolnykt1_1856 p. 438: disputed, both before 1805); a little apart from the village in its walled churchyard (1856), at the street's north-east end on the 1825 sketch; its old tower 'kegelförmig auslaufend' (ending in a cone), as the build's spire draws it",
+      note:"readings T1.5, T3.7, C1.2"},
+    Pratzen:{v:"Pratzen [...] mit einer außer dem Orte stehenden Kirche", en:"a church standing outside the village",
+      src:"schwoy1793", at:"p. 309 (leaf n317)", gr:"B", lab:"fact", q:"mit einer außer dem Orte stehenden Kirche",
+      scope:"the church of 1728-1730 (Wolny 1837, pp. 51-52), so standing in 1805; outside the village in 1793 and on the 1826 sketch (276 m south-south-west of the street's midpoint, south of the brook, on a north-facing slope): drawn by the village's point, as at it before 8G; its own place, about 400 m south of the village's point, a geographic correction proposed, not made",
+      note:"readings T2.3, T1.7, T3.10, C4"},
+    Augezd:{v:"Die alte Pfarrkirche zu den hl. Fürsten-Aposteln Peter und Paul, mitten im D. etwas erhöhet stehend", en:"the old parish church, standing slightly raised in the middle of the village",
+      src:"wolnykt2_1858", at:"p. 212 (leaf n231)", gr:"B", lab:"inference",
+      q:"mitten im D. etwas erhöhet stehend", scope:"the church replaced in 1845-1846, which had survived the fire of 1794 that took the rest of the village (Wolny 1836, p. 237): standing in 1805 by inference; Schwoy (1793) names Augezd's parish",
+      note:"readings T3.2, T1.16, T2.4"},
+    Satschan:{v:"Satschan [...] Dorf von 38 Häusern, 38 Familien, 284 Seelen, mit einer Kirche", en:"a village with a church",
+      src:"schwoy1793", at:"p. 370 (leaf n378)", gr:"B", lab:"fact", q:"mit einer Kirche",
+      scope:"Satschan in 1793, its church standing in 1805 by inference (no change read); north of the village by the churchyard, with a Romanesque west tower (the church topography, 1858, p. 213); drawn by the village's point. Not drawn before 8G",
+      note:"readings T2.5, T3.3"},
+    Menitz:{v:"Am nördlichsten Ende des Ortes und im ummauerten Friedhofe steht etwas erhöht die Kirche zur hl. Jgfr. u. Martyr. Margareth.", en:"the church of St Margaret at the north end of the market, in its walled churchyard",
+      src:"wolnykt2_1858", at:"p. 220 (leaf n239)", gr:"B", lab:"inference", q:"Am nördlichsten Ende des Ortes",
+      scope:"the church restored after the storm of 1763, keeping its Gothic presbytery: standing in 1805 by inference; Schwoy (1793) names Menitz's local chaplaincy of 1785; drawn by the village's point. Not drawn before 8G",
+      note:"readings T3.4, T2.6"},
+    Schlapanitz:{v:"Nach der Schlacht von Austerlitz diente die Kirche durch einige Tage zum Gefängniß", en:"after the battle the church served for some days as a prison",
+      src:"wolnykt1_1856", at:"p. 437", gr:"B", lab:"fact", q:"diente die Kirche durch einige Tage zum Gefängniß",
+      scope:"standing in 1805 (the claim itself): the parish church rebuilt after the fire of 1757, in the old churchyard close by the market on a height (p. 433); drawn by the village's point",
+      note:"reading T3.5"},
+    Krzenowitz:{v:"Die Franzosen raubten hier 1805 außer 5 Kaseln, bedeutender Wäsche u. a., auch 3 Mk. an Silber.", en:"the French plundered the church in 1805",
+      src:"wolnykt3_1860", at:"p. 475", gr:"B", lab:"fact", q:"Die Franzosen raubten hier 1805",
+      scope:"standing in 1805 (the claim itself): the church of St Laurence on a hill east of the village (1860), its presbytery perhaps of the fifteenth century; Schwoy (1793) names it; drawn by the village's point",
+      note:"readings T3.14, T2.12"},
+    Bosenitz:{v:"Die Kirche, dem hl. Bischof Nikolaus geweiht, steht etwas erhöht über dem D. gegen OSO. auf dem alten Friedhofe", en:"the church of St Nicholas, a little raised above the village to the east-south-east",
+      src:"wolnykt3_1860", at:"p. 482", gr:"B", lab:"inference", q:"steht etwas erhöht über dem D. gegen OSO.",
+      scope:"its tower built new in 1794, the church reshaped in 1830-1848: standing in 1805 by inference; Schwoy (1793) names Bosenitz's parish; drawn by the village's point",
+      note:"readings T3.12, T2.11"},
+    Austerlitz:{v:"so erbaute nur gedachter Fürst erst vor wenig Jahren an einer anderen Stelle, auch von Grund auf, eine ganz neue, geschmackvolle, sehr schöne Kirche", en:"a wholly new church built a few years before 1793",
+      src:"schwoy1793", at:"p. 48 (leaf n56)", gr:"B", lab:"fact", q:"eine ganz neue, geschmackvolle, sehr schöne Kirche",
+      scope:"the parish church of 1786-1790, standing in 1805, at the north side of the square near the château; drawn as the church topography describes it (below), not with the build's spire",
+      note:"readings T2.15, T1.12, T3.13"}
+  },
+  /* a chapel standing in 1805 where no church stood (CHAPELS in world.js draws it, smaller than the churches) */
+  chapels: {
+    Holubitz:{v:"Hodnotný historický doklad vrcholně barokní drobné sakrální architektury z roku 1769, výrazná dominanta obce středu obce.", en:"a small high-Baroque chapel of 1769 at the village's centre",
+      src:"npu1000133864", at:"the record's annotations (the geoportal's layers 12 and 5)", gr:"C", lab:"inference", q:"drobné sakrální architektury z roku 1769",
+      scope:"the chapel of St Gotthard with its belfry on the green (layer 5: 'Kaple sv. Gottharda se zvonicí je sitovaná na návsi obce'), of 1769 by the modern heritage catalogue: standing in 1805 by inference from that date; the topographies of 1793, 1836 and 1856-1861 name no church or chapel at Holubitz (their silence read, not a denial). Drawn as the build's church silhouette at a chapel's size (its form and size a design value; the building today about 4 by 4 m); drawn with a full church until 8G",
+      note:"docs/stage8-evidence/8g/places.md, Table A row 23; readings T2.9, T1.14, N3.1"}
+  },
+  /* the villages the build drew with a church until 8G, where no source read names one */
+  noChurch: {
+    Girzikowitz:{v:"Girzikowitz, ein Dorf, zwey Meilen von Brünn südwärts gelegen, hat einen Mayerhof", en:"a village with a manorial farm (no church named)",
+      src:"schwoy1793", at:"p. 120 (leaf n128)", gr:"B", lab:"inference", q:"hat einen Mayerhof",
+      scope:"no church or chapel named in 1793, in 1836-1837 (Wolny) or in the church topography of 1856-1861, whose index has no entry for the village: for 1805 the sources' silence before and after; drawn with a church until 8G, none since", note:"readings T2.8, T1.6, N1.4, N3.1"},
+    Kobelnitz:{v:"Kobelnitz, zur Herrschaft Sokolnitz gehöriges Dorf mit einem Mayerhof", en:"a village with a manorial farm (no church named)",
+      src:"schwoy1793", at:"p. 160 (leaf n168)", gr:"B", lab:"inference", q:"Dorf mit einem Mayerhof",
+      scope:"no church named in 1793, in 1837 or in the church topography (in Schlapanitz parish, with a school only); the 1825 sketch draws a cross on the green and no church: for 1805 the sources' silence before and after; drawn with a church until 8G, none since", note:"readings T2.7, T1.4, T3.5, C1.4"},
+    Sokolnitz:{v:"Im Schloße befindet sich eine geräumige Kapelle", en:"in the castle a spacious chapel",
+      src:"schwoy1793", at:"p. 394 (leaf n402)", gr:"B", lab:"inference", q:"Im Schloße befindet sich eine geräumige Kapelle",
+      scope:"in 1793 and 1837, so in 1805 by inference, the village had no church of its own: it was in Telnitz parish, its church the castle's chapel (Wolny 1837, p. 465); the 1825 sketch draws no church in the village; drawn with a church until 8G, none since (the castle's chapel is within its ranges)", note:"readings T2.1, T1.1, C1.1"},
+    Blasowitz:{v:"Blazowitz, Dorf, mit einem Schloße, Bräuhaus, und großen Mayerhof", en:"a village with a castle, a brewery and a large manorial farm (no church named)",
+      src:"schwoy1793", at:"p. 60 (leaf n68)", gr:"B", lab:"inference", q:"mit einem Schloße, Bräuhaus, und großen Mayerhof",
+      scope:"no church named in 1793 or 1837; in Bosenitz parish, with a school and no chapel (1860): for 1805 the sources' silence before and after (its belfry dates from 1831-1832, places.md); drawn with a church until 8G, none since", note:"readings T2.10, T1.18, T3.12"}
+  },
+  /* the Sokolnitz castle and its farm (drawn by the map's legacy place, moved off the drawn brook it stood on until 8G) */
+  sokolnitz: {
+    castle:{v:"Das obrgktl. Schloß steht auf einer Anhöhe und bildet ein regelmäßiges Viereck, dessen östl. Fronte 2 Stockwerke hoch ist [...] während die andern 3 Seiten nur 1 Stockwerk haben",
+      en:"a regular quadrangle, its east front two storeys, the other three sides one", src:"wolny1837", at:"p. 465 (leaf n470)", gr:"B", lab:"inference", q:"bildet ein regelmäßiges Viereck",
+      scope:"the castle in 1837, and in 1825 a closed carmine quadrangle of 79.6 by 60.0 m round a court, its east range about 1.7 times as deep as the others (mza_sokolnitz1825, piece A04E); no rebuilding between 1805 and 1837 read: its form in 1805 an inference. Drawn at the map's legacy place, moved just far enough to clear the drawn brook it stood on (docs/STAGE8_SPEC.md section 19 gives the move); the castle's own place, about 535 m north-west of the legacy place across the drawn Goldbach, a geographic correction proposed, not made",
+      note:"readings T1.1, C3.1; Thiébault (1894) names its main house, stables, barns, outbuildings and avenues in the fight (T6.6)"},
+    farm:{v:"Sokolnitz, Dorf von 75 Häusern, 574 Seelen, mit einem guten Schloße und Garten, auch einem Bräuhause und Mayerhof", en:"the manorial farm named with the castle in 1793",
+      src:"schwoy1793", at:"p. 393 (leaf n401)", gr:"B", lab:"fact", q:"auch einem Bräuhause und Mayerhof",
+      scope:"the farm in 1793, standing in 1805 by inference; south of the castle in 1837 (Wolny, p. 466) and on the 1825 sketch (two yards on either side of a road, long carmine ranges); drawn as three ranges round one yard south of the castle (DESIGN), across the drawn brook from it",
+      note:"readings T2.1, T1.2, C3.6"},
+    orchardWall:{v:"the walled orchard west of the castle", lab:"disputed", gr:"C",
+      scope:"the orchard west of the castle: walled in 1837 (Wolny), no wall drawn there on the 1825 sketch; for 1805 neither settles it, so no wall is drawn", sides:[
+      {v:"An dasselbe stoßt im W. der mit seltenen Weinreben, Pfirsich- und andern edlen Bäumen besetzte und ummauerte Obstgarten an", en:"a walled orchard adjoins the castle on the west",
+        src:"wolny1837", at:"p. 465 (leaf n470)", gr:"B", lab:"fact", q:"ummauerte Obstgarten"},
+      {v:"parcel 620 west of the castle unwashed (not the gardens' green), with no wall line drawn round it or the garden 619", en:"no wall drawn west of the castle in 1825",
+        src:"mza_sokolnitz1825", at:"piece A04E, level 4; the title on the back of sheet II, piece R02D", gr:"B", lab:"fact", q:"Gemeinde SOKOLLNITZ"}],
+      note:"not drawn (decision 103's rule for a disputed value): Wolny (1837) has the orchard walled, the 1825 sketch draws no wall there (the 1824 Instruction marks a single wall with a carmine line, § 458); for 1805 neither settles it. Readings T1.1, C3.2"}
+  },
+  /* Telnitz's churchyard, walled in the battle */
+  telnitz: {
+    churchyard:{v:"Während der Schlacht hat das Pfarrhaus vom russischen Geschütz viel gelitten, weil sich die Franzosen in dem ummauerten Friedhof hartnäckig vertheidigten",
+      en:"the French defended themselves stubbornly in the walled churchyard", src:"wolnykt1_1856", at:"p. 440", gr:"B", lab:"attributed", q:"in dem ummauerten Friedhof hartnäckig vertheidigten",
+      scope:"the churchyard on 2 December 1805, from the parish memorial book of the priest, an eyewitness, as Wolny reports it; its line and height not read: drawn round the church at a design distance, its gate toward the village",
+      note:"reading T3.8; the 1825 sketch draws the churchyard as a light-green polygon by the church (C1.2)"}
+  },
+  /* the fences round the villages where a source names them (BLD8G.fence draws them along the village's drawn edge: a convention) */
+  fences: {
+    Telnitz:{v:"welches besonders bei den Dörfern Tellnitz und Sokolnitz schwer zu passiren ist, weil diese mit Zäunen und Gräben umgeben sind", en:"Tellnitz and Sokolnitz surrounded by fences and ditches",
+      src:"schoenhals1873", at:"p. 155 (leaf n159)", gr:"B", lab:"fact", q:"mit Zäunen und Gräben umgeben",
+      scope:"the two villages as Schönhals (1873, from the war archive's records) describes the ground of 1805; their course not read; the 1825 sketches draw no fence, hedge or ditch at either village's edge (the 1824 Instruction has a sign for each)",
+      note:"readings T6.1, C1.1, C1.2; the ditches round Telnitz also in Stutterheim (1806), below"},
+    Sokolnitz:{v:"welches besonders bei den Dörfern Tellnitz und Sokolnitz schwer zu passiren ist, weil diese mit Zäunen und Gräben umgeben sind", en:"Tellnitz and Sokolnitz surrounded by fences and ditches",
+      src:"schoenhals1873", at:"p. 155 (leaf n159)", gr:"B", lab:"fact", q:"mit Zäunen und Gräben umgeben",
+      scope:"as for Telnitz (the ground of 1805 as Schönhals describes it); the fence drawn round the village's place, not round the castle and its farm",
+      note:"readings T6.1, C1.1"}
+  },
+  /* Austerlitz */
+  austerlitz: {
+    roofs:{v:"215 christliche und 32 jüdische Häuser, so seit dem vor ungefähr 20 Jahren fürgewesenen Brand, auf Veranstaltung des fürstlichen Grundherrn, alle mit Ziegeln eingedecket sind",
+      en:"the town's houses all roofed with tiles since a fire about twenty years before 1792", src:"schwoy1793", at:"p. 47 (leaf n55)", gr:"B", lab:"fact", q:"alle mit Ziegeln eingedecket",
+      scope:"the town's houses at the count of 1792; for 1805 an inference (no change read): drawn tiled, the one village or town whose roofing a source gives",
+      note:"reading T2.15"},
+    church:{v:"Die neue, in mancher Hinsicht auffallende Kirche, welche nahe am Schloße und an der äußersten Nordseite des Stadtplatzes mit dem Hochaltar ebenfalls gegen N. gestellt steht [...] dem, wegen schlechten Grundes nur bis zum mit Ziegeln gedeckten Dach reichenden, hinter dem Hochaltar angebauten Thurm",
+      en:"the church near the château at the north side of the square, its altar to the north, its one tower behind the altar rising only to its tiled roof", src:"wolnykt3_1860", at:"pp. 473-474", gr:"B", lab:"inference",
+      q:"nur bis zum mit Ziegeln gedeckten Dach reichenden",
+      scope:"the church finished in 1790, as the church topography describes it in 1860: a temple's front of six columns (Ionic in Wolny 1836, Corinthian in 1860: disputed, the order not drawn) under a pediment, its portico to the south; the low tower put down to the bad ground, so taken for 1805 (inference). Drawn so in place of the build's spired church there; its place a layout of the town's",
+      note:"readings T3.13, T1.12"},
+    chateau:{v:"Mit der Hauptfronte, an die sich zu beiden Seiten Flügel anschließen, ist es gegen SW. gekehrt, und hat (mit Einschluß des untern), 3 Stockwerke",
+      en:"its main front, with a wing at each end, facing south-west; three storeys", src:"wolny1836", at:"p. 152 (leaf n219)", gr:"B", lab:"inference", q:"ist es gegen SW. gekehrt",
+      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within a quarter-turn of the bearing its own place has from the church's today (west-south-west, places.md) where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point)",
+      note:"readings T1.13, T2.15"}
+  },
+  /* what the sources name and the map does not draw, each with why and the alternatives put to the owner (docs/STAGE8_SPEC.md section 19) */
+  notDrawn: {
+    stAnthony:{gen:true, en:"the chapel of St Anthony above Augezd (it stood, but its form and its state on the day are not known)", why:"the chapel of St Anthony above Augezd stood in 1805 (built before 1713, still standing, deconsecrated, in 1818, demolished afterwards: wolnykt2_1858, pp. 214-215; named as a landmark by Stutterheim in 1806), but its form, its roof and its state on the day are in no source read; that it 'lost its roof about the time of the battle' is a modern web text only (ujezd2025). Alternatives: as now, its name on the ground; a small generic chapel, roofed as a convention and labelled so; or a source first (the Augezd parish memorial book, the First Military Survey's sheet)"},
+    santon:{gen:true, en:"the Santon's chapel (destroyed by the French during the battle, at an hour no source read gives)", why:"the Santon's chapel, half masonry and half wood (wolnykt3_1860, pp. 482-483), was destroyed by the French during the battle (wolny1837, p. 130), at an hour no source read gives, and rebuilt in 1832: to draw it would fix a time of destruction, and the rebuilt chapel is not the chapel of 1805. Alternatives: as now; drawn standing until a stated phase, that phase a convention labelled so; or a source for the hour first"},
+    granary:{gen:true, en:"the Sokolnitz granary (its date not read)", why:"the Sokolnitz granary is drawn on the 1825 sketch (35.5 by 16.5 m, south-west of the castle) and was four storeys in 1837 (Wolny, p. 466), who writes in his own voice, naming no source, that over 3,000 Russians were taken near it by the French in the afternoon, between 3 and 4; its date is not read (a heritage catalogue's 'first quarter of the eighteenth century' is a search snippet). Alternatives: drawn as standing in 1805 (an inference from the tradition), or the catalogue read first"},
+    pheasantryWall:{gen:true, why:"no wall round the pheasantry: the 1825 sketch draws none round the 'Fasangarten' (nor any fence), Wolny (1837) names only the orchard walled, and a regional site dates the wall later (C)"},
+    ditches:{gen:true, why:"the ditches round Telnitz and its vineyards (stutterheim1806de, pp. 50-51 and 77: 'mit Gräben umgeben'; Schönhals's 'Gräben' at both villages) are not drawn: their course is not read, and at the building scale a ditch is a line on the ground, left with the ground's polish"}
   }
 };
 

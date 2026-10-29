@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 6ba949da17229530324add3c54dd94ff (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "6ba949da17229530324add3c54dd94ff",
- "count": 301,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 508927e6f72e1b6f2f9186e954d61b59 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "508927e6f72e1b6f2f9186e954d61b59",
+ "count": 313,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -54,6 +54,7 @@
   "arrows (decision 241): in the two perspective presentations every movement arrow's casing, and its drawn-on part's, at most 16 px across on screen at every drawn row, never wider than built, its centre on the arrow's curve at its lift, the fill and the head in proportion, the head's tip on the arrow's end; laid by the drawn frame for its eye; on the paper map every width as built and the casing under the whole fill, as before 8B (at 1×)",
   "arrows (decision 241): a movement arrow's fill, and its drawn-on part's, at 0.62 of its opacity before 8B in the two perspective presentations and as before on the paper map, its casing at its own; the lines of battle, the boundaries and the halt bars at theirs, phase by phase (at 1×)",
   "arrows (decision 241): every overlay ribbon (arrows, lines of battle, boundaries, halt bars) hidden by the drawn ground alone: from Napoleon's eye level, the low Pratzen view and Puntowitz below the plateau's edge, judged at the canvas's size wherever its strip is 5 px across, every point of its centre line the ground hides not drawn, every point in sight drawn, also where a figure, a wood or a building stands in front; a movement arrow's casing a border, none of it under its fill (at 1×)",
+  "buildings (8G, decision 248 (a)): none drawn at true scale (decision 34) (at 1×)",
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 4×)",
   "camera: every fixed and computed view is above the ground (at 4×)",
   "camera: glides between tour stops, phases, chapters and vantages stay above the ground (at 4×)",
@@ -105,6 +106,7 @@
   "arrows (decision 241): in the two perspective presentations every movement arrow's casing, and its drawn-on part's, at most 16 px across on screen at every drawn row, never wider than built, its centre on the arrow's curve at its lift, the fill and the head in proportion, the head's tip on the arrow's end; laid by the drawn frame for its eye; on the paper map every width as built and the casing under the whole fill, as before 8B (at 4×)",
   "arrows (decision 241): a movement arrow's fill, and its drawn-on part's, at 0.62 of its opacity before 8B in the two perspective presentations and as before on the paper map, its casing at its own; the lines of battle, the boundaries and the halt bars at theirs, phase by phase (at 4×)",
   "arrows (decision 241): every overlay ribbon (arrows, lines of battle, boundaries, halt bars) hidden by the drawn ground alone: from Napoleon's eye level, the low Pratzen view and Puntowitz below the plateau's edge, judged at the canvas's size wherever its strip is 5 px across, every point of its centre line the ground hides not drawn, every point in sight drawn, also where a figure, a wood or a building stands in front; a movement arrow's casing a border, none of it under its fill (at 4×)",
+  "buildings (8G, decision 248 (a)): on the drawn ground, each read as drawn: its plinth's foot below the lowest ground under it, its walls' foot on the plinth, at most the highest ground and sunk at most half its walls' height; the fences and the churchyard's wall from the ground at their ends (at 4×)",
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 10.33×)",
   "camera: every fixed and computed view is above the ground (at 10.33×)",
   "camera: glides between tour stops, phases, chapters and vantages stay above the ground (at 10.33×)",
@@ -156,6 +158,7 @@
   "arrows (decision 241): in the two perspective presentations every movement arrow's casing, and its drawn-on part's, at most 16 px across on screen at every drawn row, never wider than built, its centre on the arrow's curve at its lift, the fill and the head in proportion, the head's tip on the arrow's end; laid by the drawn frame for its eye; on the paper map every width as built and the casing under the whole fill, as before 8B (at 10.33×)",
   "arrows (decision 241): a movement arrow's fill, and its drawn-on part's, at 0.62 of its opacity before 8B in the two perspective presentations and as before on the paper map, its casing at its own; the lines of battle, the boundaries and the halt bars at theirs, phase by phase (at 10.33×)",
   "arrows (decision 241): every overlay ribbon (arrows, lines of battle, boundaries, halt bars) hidden by the drawn ground alone: from Napoleon's eye level, the low Pratzen view and Puntowitz below the plateau's edge, judged at the canvas's size wherever its strip is 5 px across, every point of its centre line the ground hides not drawn, every point in sight drawn, also where a figure, a wood or a building stands in front; a movement arrow's casing a border, none of it under its fill (at 10.33×)",
+  "buildings (8G, decision 248 (a)): on the drawn ground, each read as drawn: its plinth's foot below the lowest ground under it, its walls' foot on the plinth, at most the highest ground and sunk at most half its walls' height; the fences and the churchyard's wall from the ground at their ends (at 10.33×)",
   "relief: the drawn Pratzeberg-Sokolnitz relief is s times the model's at every factor",
   "going: the going classes (from the model slope) are identical at every factor",
   "standards: the top over its denominator is the sourced ratio (Russian and Austrian standards on foot: staff and finial over the stature, the man to his hat's top) or the provisional 1.6 (the figure's top) for every standard (decision 106)",
@@ -303,6 +306,15 @@
   "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after ten seconds of the app's frames with the clock standing, the same pixels; at rest no frame asked",
   "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed margin lighter than the clear middle; in the frame the shore band at most 1.1 times the field beside the shore and the rimed margin at most 1.25 times",
   "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
-  "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural ground, its mean tone kept (each cell's mean that of the cell the shader samples), nothing of it beyond its far edge, none on the paper map, off under lowTier"
+  "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural ground, its mean tone kept (each cell's mean that of the cell the shader samples), nothing of it beyond its far edge, none on the paper map, off under lowTier",
+  "the ground's atlas (8G's prerequisite 1): each cover cell drawn from its own painting, the right way up, in the colour atlas, the normal atlas and the near detail, as repainted by the photographs and as painted; its normals turned the way its patterns rise, the photographs' and the patterns' one convention",
+  "the villages (8G, decision 248 (a)): each drawn with the build's number of houses as farmsteads (VILLAGES), each a long range back along its plot, the ranges along the street and the buildings at the back of the yards added; the plan made again the same",
+  "the villages (8G): every building in its village's place, its centre where the paper map draws the village and its corners within the place's margin; the share on the ground's drawn village class reported",
+  "the buildings (8G): clear of the drawn roads and streams (their ribbons as the landscape draws them), the meres' ice as drawn, each other and the trees; the fences and the churchyard's wall clear of the ribbons",
+  "the farmsteads' plots (8G): no building of another on a farmstead's plot, its yard and its access from the street",
+  "the buildings (8G): drawn on the landscape in Study, Watch and Clean and on the landscape with counters, none on the paper map or at the eye level; casting and receiving shadows",
+  "the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhere, each by its village's point; Austerlitz's the temple, its tower no higher than its roof; the castle a closed quadrangle, its east range the deepest and highest, its farm south of it; the château within a quarter-turn of its bearing today from its church; Telnitz's churchyard walled with one gate; fences only where BUILDINGS.fences names them; no other wall",
+  "the dossiers (8G): each village's and the town's dossier names the claims its buildings rest on, with their grades and sources, and its conventions as such; the sources sheet every church's and chapel's claim and each village drawn short",
+  "the roofs (8G, a design convention): a rear building's its farmstead's (its walls never choose it), the town's and the landmarks' tile, the villages' tile at BLD8G.tile's share"
  ]
 }

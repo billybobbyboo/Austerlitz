@@ -124,7 +124,12 @@ const CLASS={
      formation for the motion stretches (eye) */
   "app.js:selfTest > hOffs":"test","app.js:selfTest > eye":"test",
   /* the self-test's 8F block: the eye aimed at a place on the drawn ground (aim) */
-  "app.js:selfTest > aim":"test"
+  "app.js:selfTest > aim":"test",
+  /* Stage 8, implementation PR 8G (decision 248 (a)): each building seated on the drawn ground under its footprint, read exactly
+     (bldGround), its fences and walls laid from end to end on it (layBuildings > run); the meres' ice as drawn, where the plan keeps
+     buildings off (v8Mere, the drawn ground's compact heights against the meres' own level); the self-test's check of both */
+  "world.js:bldGround > rd":"presentation","world.js:bldGround":"presentation","world.js:layBuildings > run":"presentation","world.js:v8Mere":"presentation",
+  "app.js:buildingChecks > rd":"test","app.js:buildingChecks":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

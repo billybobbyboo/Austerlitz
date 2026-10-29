@@ -630,18 +630,115 @@ if(cerrs) process.exitCode=1;
   /* the near ground */
   if(!/^var GDETAIL=\{amount:0\.55, near:14, far:60, k:7\.3, rot:0\.61, lo:0\.62, hi:1\.38,/m.test(wsrc)) ferr.push("GDETAIL's values changed");
   const gd=wvar("GROUND_FRAG_DETAIL");
-  if(!/if\(uMode>0\.5&&uMode<1\.5&&uDetail\.x>0\.0\)\{/.test(gd)||!/float gDf=uDetail\.x\*\(1\.0-smoothstep\(uDetail\.y,uDetail\.z,length\(vViewPosition\)\)\);/.test(gd)) ferr.push("the near detail is not the landscape's natural ground's alone, faded by the eye's distance");
-  if(!/vec2 gDu=mat2\(uDetailR\.x,uDetailR\.y,-uDetailR\.y,uDetailR\.x\)\*vUv\*uDetail\.w;/.test(gd)||/gl_FragCoord/.test(gd)) ferr.push("the near detail is not anchored to the ground (its uv)");
+  if(!/if\(uMode>0\.5&&uMode<1\.5&&\(uDetail\.x>0\.0\|\|uDebug>4\.5\)\)\{/.test(gd)||!/float gDf=uDetail\.x\*\(1\.0-smoothstep\(uDetail\.y,uDetail\.z,length\(vViewPosition\)\)\);/.test(gd)) ferr.push("the near detail is not the landscape's natural ground's alone, faded by the eye's distance");
+  if(!/vec2 gDu=mat2\(uDetailR\.x,uDetailR\.y,-uDetailR\.y,uDetailR\.x\)\*vUv\*uDetail\.w[,;]/.test(gd)||/gl_FragCoord/.test(gd)) ferr.push("the near detail is not anchored to the ground (its uv)");
+  /* 8G's prerequisite 2 (docs/STAGE8_SPEC.md section 19.2): the gradients taken under the uniforms' test alone, before the fade's; inside the
+     fade's branch no derivative and no sampling that takes its own (only textureGrad with the gradients taken before it) */
+  { const i0=gd.indexOf("if(uMode>0.5&&uMode<1.5&&(uDetail.x>0.0||uDebug>4.5)){"), i1=gd.indexOf("gDgx=dFdx(gDu)*gDk, gDgy=dFdy(gDu)*gDk;"), i2=gd.indexOf("float gDf="), i3=gd.indexOf("if(gDf>0.002");
+    const inner=i3>=0?gd.slice(i3):"";
+    if(!(i0>=0&&i1>i0&&i2>i1&&i3>i2)) ferr.push("the near detail's gradients are not taken under the uniforms' test alone, before the fade's test (8G's prerequisite 2)");
+    if(/dFdx|dFdy|fwidth/.test(inner)) ferr.push("a derivative is taken inside the near detail's fade branch, where the fragments of a quad differ (8G's prerequisite 2)");
+    if(/\btexture2D\(|\btexture\(|\btextureLod\(/.test(inner)||(inner.match(/textureGrad\(/g)||[]).length!==1||!/textureGrad\(map,gDt,gDgx,gDgy\)/.test(inner)) ferr.push("the near detail samples its texture inside the fade branch otherwise than by textureGrad with the gradients taken before it (8G's prerequisite 2)"); }
   if(!/texelColor\.rgb\*=mix\(1\.0,clamp\(gDl,uDetailC\.x,uDetailC\.y\),gDf\);/.test(gd)||!/\/max\(uCellLum\[int\(gCell\+0\.5\)\],0\.001\);/.test(gd)) ferr.push("the near detail is not its cell's grey ratio within GDETAIL's clamp (a new colour, or the class's tone moved)");
   if(!/^  groundDetail\(!lowTier\);/m.test(src)) ferr.push("the near detail is not off under lowTier (decision 236)");
-  if(!/flip=!\(_atlas&&_atlas\.flipY===false\);/.test(wfn("atlasLum"))||!/cy=\(flip\?2-Math\.floor\(k\/4\):Math\.floor\(k\/4\)\)\*R,/.test(wfn("atlasLum"))) ferr.push("the near detail's cells' means are not taken as the shader samples the cells (three uploads the canvas flipped)");
-  if(!/\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))||!/"#ifdef USE_MAP\\n"\+\s*"  vec4 texelColor=gAtlas\(map,tuv\);\\n"\+\s*"  texelColor=mapTexelToLinear\(texelColor\);\\n"\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))) ferr.push("the near detail is not inside the ground's texture (USE_MAP: none on the paper map, whose ground has no texture)");
+  if(!/flip=!\(_atlas&&_atlas\.flipY===false\);/.test(wfn("atlasLum"))||!/cy=\(flip\?2-Math\.floor\(k\/4\):Math\.floor\(k\/4\)\)\*R,/.test(wfn("atlasLum"))) ferr.push("the near detail's cells' means are not taken as the shader samples the cells (the flip read from the texture as uploaded)");
+  if(!/\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))||!/"#ifdef USE_MAP\\n"\+\s*"  vec4 texelColor=gAtlas\(map,tuv\);\\n"\+\s*"  vec4 gDbgT=texelColor;\\n"\+[^\n]*\n\s*"  texelColor=mapTexelToLinear\(texelColor\);\\n"\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))) ferr.push("the near detail is not inside the ground's texture (USE_MAP: none on the paper map, whose ground has no texture)");
+  /* the near detail's debug sample (8G's prerequisite 1) never scales the texel: the scaling only where it is not asked for */
+  if(!/if\(uDebug>4\.5\) gDbgD=gDc; else \{/.test(gd)) ferr.push("the near detail's debug sample is not apart from the detail's scaling (uDebug 5)");
   /* the self-test's bounds */
   if(!/var ICE8F=\{SHORE:1\.10, MARGIN:1\.25\};/.test(src)) ferr.push("the self-test's ice bounds (ICE8F) are not 1.10 at the shore and 1.25 at the margin");
   if(!/var WOODS8E=\{wood:634, village:184, conifer:376, edge:354, stream:202\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's 8E woods (WOODS8E, KIT8E) are not 8E's");
   ferr.forEach(e=>console.log("  ! "+e));
   console.log("water, woods and the near ground (decisions 246 (a), 247 (a)): "+(ferr.length?ferr.length+" wrong":"the water's colours in WATER_COL, the paper map's water 8E's materials, the meres' outlines, levels and ring 4E's, the ice writing no depth, the band without an offset and after its ice, nothing animated; TREE8F, the crowns opaque on both faces, 8E's jitter and conifers; GDETAIL on the natural ground only, faded, anchored, a grey ratio, off under lowTier; the self-test's bounds"));
   if(ferr.length) process.exitCode=1;
+}
+/* Stage 8, 8G's verification (docs/STAGE8_SPEC.md section 19.1): a block at rest is drawn the same in every frame. Each of poseBlock's eased
+   values (the shape, the tilt, the heading) takes its target exactly once it is within the threshold that stops asking for frames, instead of
+   easing on below it (by about 1e-9 a frame until 8G); a loose body's sway, ambient, eases on, but takes its swayed heading exactly within 1e-6 */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), rerr=[];
+  const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name==="poseBlock"), pb=n?src.slice(n.start,n.end):"";
+  if(!/if\(Math\.abs\(sh\[0\]-u\.sw\)>0\.002\|\|Math\.abs\(sh\[1\]-u\.sd\)>0\.002\)\{ settling=true; u\.sw \+= \(sh\[0\]-u\.sw\)\*rate; u\.sd \+= \(sh\[1\]-u\.sd\)\*rate; \}\s*else \{ u\.sw=sh\[0\]; u\.sd=sh\[1\]; \}/.test(pb)) rerr.push("the block's shape eases on below its threshold (it does not take its target exactly)");
+  if(!/if\(Math\.abs\(lowered-\(u\.tilt\|\|0\)\)>0\.002\)\{ settling=true; u\.tilt = \(u\.tilt\|\|0\) \+ \(lowered-\(u\.tilt\|\|0\)\)\*ease\(0\.05\); \}\s*else u\.tilt=lowered;/.test(pb)) rerr.push("the block's tilt eases on below its threshold");
+  if(!/if\(!LOOSE\[st\]&&Math\.abs\(d0\)<=0\.002\) rec\.yaw=want0\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want0\)\/\(Math\.PI\*2\)\);/.test(pb)||!/else if\(Math\.abs\(diff\)<1e-6\) rec\.yaw=want\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want\)\/\(Math\.PI\*2\)\);/.test(pb)) rerr.push("the block's heading eases on below its threshold");
+  { const eased=(pb.match(/[\w.]+ \+=/g)||[]).map(t=>t.slice(0,-3)).sort().join(",");
+    if(eased!=="rec.yaw,u.sd,u.sw,want") rerr.push("poseBlock eases values other than the shape and the heading ("+eased+"): each eased value takes its target exactly at rest"); }
+  rerr.forEach(e=>console.log("  ! "+e));
+  console.log("a block at rest (8G's verification): "+(rerr.length?rerr.length+" wrong":"its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames"));
+  if(rerr.length) process.exitCode=1;
+}
+/* Stage 8, implementation PR 8G's prerequisite 1 (the audit of 8F; docs/STAGE8_SPEC.md section 19.1): the ground's atlas mapped as painted. Both
+   atlases uploaded with their rows as painted (flipY false: the shader's cell k, rows from the texture's first, is the canvas's cell k the right
+   way up); the photographs' normals turned to the atlas's own convention as they are blended in (their green, OpenGL's, toward the image's top;
+   the patterns' toward its foot, the way the shader's v runs); the procedural painters shared by the atlases and the self-test's check; the
+   shader's debug outputs (uDebug 2 to 5, the cell forced by uDebugCell) each behind its own uDebug test, both 0 as built, so that nothing drawn
+   changes; the self-test's check of the mapping present */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), wsrc=fs.readFileSync('world.js','utf8'), wast=acorn.parse(wsrc,{ecmaVersion:2020}), perr=[];
+  const wfn=name=>{ const n=wast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?wsrc.slice(n.start,n.end):""; };
+  const ca=wfn("coverAtlas"), cn=wfn("coverNormalAtlas"), pn=wfn("photoNormal"), as=wfn("atlasShader"), gu=wfn("groundUniforms");
+  if(!/_atlas=new THREE\.CanvasTexture\(c\);\s*_atlas\.flipY=false;/.test(ca)||!/paintAtlasCells\(d,CW\);/.test(ca)) perr.push("the colour atlas is not uploaded as painted (flipY false) from paintAtlasCells");
+  if(!/_nrmAtlas=new THREE\.CanvasTexture\(c\);\s*_nrmAtlas\.flipY=false;/.test(cn)||!/paintNormalCells\(d,CW\);/.test(cn)) perr.push("the normal atlas is not uploaded as painted (flipY false) from paintNormalCells");
+  if(!/var nx=-\(hR-hL\)\*s, ny=-\(hU-hD\)\*s, nz=1\.0;/.test(wfn("paintNormalCells"))) perr.push("the patterns' normals are not differentiated along the canvas's rows and down its columns (their green toward its foot)");
+  if(!/d\[o\+1\]=Math\.round\(d\[o\+1\]\*\(1-w\)\+\(255-ph\[p\+1\]\)\*w\);/.test(pn)) perr.push("the photographs' normals are not turned to the atlas's convention as they are blended in (their green, OpenGL's, toward the image's top)");
+  if(/flipY\s*=\s*true/.test(wsrc)) perr.push("a texture of world.js uploaded flipped");
+  if(!/"float gCell=uDebug>1\.5\?uDebugCell:\(uMode>0\.5\?/.test(wsrc)) perr.push("the forced cell is not the debug outputs' alone (uDebug above 1.5)");
+  { const m=/\.replace\("#include <dithering_fragment>",([\s\S]*?)\);\s*\};/.exec(as), body=m?m[1]:"";
+    const assigns=(body.match(/gl_FragColor=/g)||[]).length, guarded=(body.match(/if\(uDebug>[0-9.]+(&&uDebug<[0-9.]+)?\) gl_FragColor=/g)||[]).length;
+    if(!m||assigns!==5||guarded!==5) perr.push("the ground's debug outputs are not five, each behind its own uDebug test ("+guarded+" of "+assigns+")"); }
+  if(!/uDebug:\{value:0\}, uDebugCell:\{value:0\}/.test(gu)) perr.push("the debug uniforms are not 0 as built");
+  if(!/the ground's atlas \(8G's prerequisite 1\): each cover cell drawn from its own painting, the right way up/.test(src)) perr.push("the self-test's check of the atlas's mapping is missing");
+  perr.forEach(e=>console.log("  ! "+e));
+  console.log("the ground's atlas (8G's prerequisite 1): "+(perr.length?perr.length+" wrong":"both atlases uploaded as painted, the photographs' normals turned to the patterns' convention, the painters shared with the self-test, the debug outputs behind uDebug and off as built, the self-test's check present"));
+  if(perr.length) process.exitCode=1;
+}
+/* Stage 8, implementation PR 8G (decision 248 (a); docs/STAGE8_SPEC.md section 19): the buildings. Their values (VILL8G, BLD8G: design values,
+   changed only on purpose); what they read of the claims (BUILDINGS: the rear buildings' share and walls, the fences; CHURCHES and CHAPELS);
+   the roofs a convention by a share, never chosen by a building's walls; no wall drawn round the castle, its orchard or its pheasantry, no
+   other wall than Telnitz's churchyard's; the plan deterministic (seeded, no Math.random); each building on the drawn ground read exactly and
+   laid again whenever the ground changes; every building mesh shown and hidden with the landscape's layers */
+{
+  const acorn=require('acorn'), wsrc=fs.readFileSync('world.js','utf8'), src=fs.readFileSync('app.js','utf8'), wast=acorn.parse(wsrc,{ecmaVersion:2020}), gerr=[];
+  const wfn=name=>{ const n=wast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?wsrc.slice(n.start,n.end):""; };
+  const wvar=name=>{ const n=wast.body.find(q=>q.type==="VariableDeclaration"&&q.declarations.some(d=>d.id.name===name)); return n?wsrc.slice(n.start,n.end):""; };
+  const V=wvar("VILL8G"), Bv=wvar("BLD8G");
+  if(!/plot:\[1\.9,2\.2\],/.test(V)||!/small:\{plot:\[1\.75,1\.95\], long:\[2\.05,2\.45\]\},/.test(V)||!/tiny:\{plot:\[1\.5,1\.7\], long:\[1\.75,2\.05\], w:\[0\.9,1\.0\], d:\[0\.85,0\.95\]\},/.test(V)||
+     !/side:\{w:\[1\.0,1\.12\], l:\[2\.3,2\.8\]\},/.test(V)||!/north:0\.85,/.test(V)||!/rear:\{d:\[0\.9,1\.05\], h:\[0\.82,0\.95\], share:0\.2\},/.test(V)||!/clear:\{road:0\.25, stream:0\.35, tree:0\.2\},/.test(V)||
+     !/margin:0\.40,/.test(V)||!/mere:0\.25,/.test(V)||!/touch:0\.01,/.test(V)) gerr.push("VILL8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19)");
+  if(!/pitch:\{thatch:1\.15, tile:0\.84\},/.test(Bv)||!/tile:0\.17,/.test(Bv)||!/castle:\{w:7\.6, d:5\.8, west:1\.35, east:2\.3, ns:1\.2, h:\[1\.15,2\.05\]\},/.test(Bv)||!/fence:\{len:0\.62, h:0\.3, inset:0\.3\},/.test(Bv)||
+     !/chateau:\{w:5\.6, d:1\.5, wing:\[1\.4,2\.6\], h:2\.0, near:10, bearing:236\}/.test(Bv))
+    gerr.push("BLD8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19)");
+  if(!/var CHAPEL8G=0\.5;/.test(wsrc)) gerr.push("the chapel's size (CHAPEL8G) changed");
+  if(!/var V8CANDS=24;/.test(wsrc)) gerr.push("the church's places tried for its village's plan (V8CANDS) changed");
+  /* the claims read, not typed */
+  const rear=wfn("v8Rear"), plan=wfn("planBuildings8g"), church=wfn("churchPlan8g");
+  if(!/BUILDINGS\.villages/.test(rear)||!/c\.n/.test(rear)||!/c\.wall==="timber"/.test(rear)) gerr.push("the rear buildings' share and walls not read from BUILDINGS.villages");
+  if(!/BUILDINGS\.fences/.test(plan)) gerr.push("the fences not drawn from BUILDINGS.fences");
+  if(!/CHAPELS\.indexOf\(v\[0\]\)/.test(church)||!/CHURCHES\.indexOf\(v\[0\]\)/.test(church)) gerr.push("the churches and the chapel not drawn from CHURCHES and CHAPELS");
+  /* the roofs: a convention by a share; the walls never choose a roof */
+  if(!/var roof=town\?"tile":\(f\.roof<BLD8G\.tile\?"tile":"thatch"\);/.test(plan)) gerr.push("the farmsteads' roofs not the design share (BLD8G.tile), the town's tile");
+  if(!/part:"rear building", village:v\[0\], farm:i\}/.test(plan)||!/L\.push\(\{R:f\.rear\.R, h:f\.rear\.h, roof:roof, wall:/.test(plan)) gerr.push("a rear building's roof not its farmstead's");
+  { const roofs=(plan.match(/roof:[^,}]+/g)||[]); if(roofs.some(r=>/timber|wall/.test(r))) gerr.push("a roof chosen by a building's walls ("+roofs.filter(r=>/timber|wall/.test(r)).join(", ")+")"); }
+  /* no wall but Telnitz's churchyard's: no ring round the castle (8F's), no orchard or pheasantry wall */
+  if(/Math\.cos\(a\)\*7\.0/.test(wsrc)||/orchard|pheasant|Fasan/i.test(wfn("castlePlan8g")+plan)) gerr.push("a wall drawn round the castle, its orchard or its pheasantry");
+  if((plan.match(/wall="stone"|wall:"stone"/g)||[]).length!==1||!/churchyard8g\(ch,cc\)\.forEach\(function\(q\)\{ q\.village=v\[0\]; q\.wall="stone";/.test(plan)) gerr.push("a stone wall drawn other than Telnitz's churchyard's");
+  if(!/if\(v\[0\]==="Telnitz"\) churchyard8g/.test(plan)) gerr.push("the churchyard's wall not Telnitz's alone");
+  /* the plan deterministic */
+  ["v8PlanAt","villagePlan8g","churchPlan8g","castlePlan8g","chateauPlan8g","fences8g","planBuildings8g","v8Near","v8NearAll","v8Settle"].forEach(f=>{ const b=wfn(f); if(!b) gerr.push(f+" missing"); else if(/Math\.random/.test(b)) gerr.push(f+" draws Math.random (the plan is seeded)"); });
+  /* on the drawn ground, read exactly; laid again when it changes */
+  const bg=wfn("bldGround");
+  if(!/\[\[ax,bx\],\[az,bz\],\[ax\+az,bx\+bz\]\]/.test(bg)||!/if\(v8BoxPt\(R,gx,gz\)===0\) rd\(gx,gz\);/.test(bg)) gerr.push("the ground under a building not read exactly (its edges' crossings of the grid and the cells' diagonals, the grid's vertices inside)");
+  if(!/layBuildings\(\);/.test(wfn("rescaleWorld"))) gerr.push("the buildings not laid again when the drawn ground changes (rescaleWorld)");
+  if(!/floor=Math\.max\(G\.mean,G\.g1-0\.45\*Math\.max\(b\.h,0\.6\)\);/.test(wfn("layBuildings"))) gerr.push("a building's floor not between the ground's mean and its highest point less 0.45 of its walls");
+  /* shown with the landscape's layers */
+  { const n=acorn.parse(src,{ecmaVersion:2020}).body.find(q=>q.type==="FunctionDeclaration"&&q.id.name==="syncLandscapeLayers"), sl=n?src.slice(n.start,n.end):"";
+    if(!/\["barns","plinths","thatch","stone","fences"\]\.forEach\(function\(k\)\{ if\(world\[k\]\) world\[k\]\.visible=on; \}\);/.test(sl)) gerr.push("the 8G building meshes not shown and hidden with the landscape's layers (syncLandscapeLayers)"); }
+  if(!/barns:barnMesh, plinths:plinthMesh, thatch:thatchMesh, stone:stoneMesh, fences:fenceMesh/.test(wfn("buildWorld"))) gerr.push("buildWorld does not hand the 8G meshes to the app");
+  /* the self-test's exception, named with its reason */
+  if(!/var FARMS8G=\{Satschan:\{n:5, why:"half its place lies under the drawn Satschan mere's ice, the Littawa crosses the rest and its church stands in it"\}\};/.test(src)) gerr.push("the self-test's FARMS8G changed (Satschan's 5 of 7, with its reason: a shortfall needs its reason, with docs/STAGE8_SPEC.md section 19)");
+  gerr.forEach(e=>console.log("  ! "+e));
+  console.log("the buildings (decision 248 (a)): "+(gerr.length?gerr.length+" wrong":"VILL8G, BLD8G and CHAPEL8G as built; the rear buildings, the fences, the churches and the chapel read from BUILDINGS, CHURCHES and CHAPELS; the roofs a share, never the walls'; no wall but Telnitz's churchyard's; the plan seeded; the ground read exactly, laid again with it; shown with the landscape; FARMS8G"));
+  if(gerr.length) process.exitCode=1;
 }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */

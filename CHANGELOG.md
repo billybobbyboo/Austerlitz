@@ -1,5 +1,91 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8G: buildings and structures (decision 248 (a)), with its prerequisites
+
+**Status: being built on `claude/great-pasteur-pi33mf` (into `main` at `51d4a15`, PR #71's merge); not merged.** The record is
+`docs/STAGE8_SPEC.md` §19, the evidence `docs/stage8-evidence/8g/`. The data task's build: `austerlitz-command-map.html` 2,656,947 bytes, md5
+`84fe987be066770e2ee1a145217cd17e` (archived as `archive/stage8g-84fe987b.html`, `check:data`'s reference); `check:baseline` moved to it.
+
+- **Prerequisite 0 (`1c427d1`): a block at rest is drawn the same in every frame** (found while verifying prerequisite 1: the self-test's gait
+  check saw 2 pixels change between two frames with the clock standing). `poseBlock` eased each block's shape, tilt and heading toward its
+  target on every frame and stopped asking for frames within 0.002 of it, but went on easing below that, about 1e-9 a frame; between two frames
+  of the low Pratzen view with the camera fixed 122 to 294 objects' matrices moved by up to 1.4e-7 units (`tools/stage8/rest-8g.js`). Within
+  the threshold each eased value now takes its target exactly (a loose body's sway eases on, and takes its swayed heading exactly within 1e-6).
+  Measured: 0 objects move at four clocks (8F: 247 to 294 at three of them); `css-test.js` holds the rule, each of 8F's three easings put back
+  failing it (`docs/stage8-evidence/8g/rest-pre0.json`, `mutate-css-pre0.json`; the self-test 301 of 301 here, `selftest-pre0-local.json`).
+  Build 2,608,344 bytes, `27b54e45...`.
+- **Prerequisite 1 (`f24d944`): the ground's atlas mapped as painted** (8F's finding, `docs/STAGE8_SPEC.md` §18). three uploads a canvas
+  flipped (`CanvasTexture`'s `flipY`), so for cell k the shader drew the canvas's cell (k mod 4, 2 - floor(k/4)) upside down: eight of the twelve
+  cells wore another row's grain (the open field, the meadow, the marsh and the water the plough's, the pasture's, the winter sowing's and the
+  trodden ground's, and the other way round) in the colour atlas, the normal atlas and 8F's near detail. Both atlases uploaded as painted; the
+  photographs' normal maps (OpenGL's, green toward the image's top) turned over as they are blended in, so the atlas has one convention; the
+  water cell given a photograph of its own (the mud), tinted so that the class keeps the tone the flip showed for it (a design value; drawn
+  correctly without one its pale ripple read as a blue band beside every stream); `atlasLum` follows the upload. The self-test's new check
+  (the manifest 301 to 302): each cell forced over the ground and read through the GPU straight down, for the atlases as the photographs
+  repainted them and for the procedural ones painted afresh, against what each of the 12 cells would show the right way up or flipped in u, v
+  or both (48 expectations), its own the nearest and every other at least half its difference further off; the normals' direction correlated
+  with the painted slopes and the repainted normals integrable. Mean-luminance agreement alone is not the criterion. Every mutation of what it
+  holds fails it (`tools/stage8/mutate-8g.js`, `mutate-pre1.json`); `css-test.js` holds the upload, the painters, the turned green and the
+  debug outputs off as built. Measured (`classtone-pre1.json`, five views): every class's tone within about 2% but the winter sowing (6 to 15%
+  lighter), the marsh (4 to 8% darker), the plough (2 to 3% darker) and the stubble (2 to 4% lighter), each its own grain now; the atlas through
+  the GPU before and after (`atlas-8f.json`, `atlas-pre1.json`, their sheets); the captures (`stills-pre1.json`, `pairs/pre1-*.jpg`); the paper
+  map identical. The self-test 302 of 302 here (`selftest-pre1-local.json`). Build 2,624,565 bytes, `1dbb7d85...`.
+- **Prerequisite 2 (`bf97e9e`): the near detail's gradients taken before its fade's branch** (8F's review, §18.5, no visible effect recorded).
+  `GROUND_FRAG_DETAIL` took `dFdx` and `dFdy` inside the fade's test, which differs between the fragments of a quad at the fade's far edge
+  (undefined in GLSL). The coordinates and both gradients are now taken under the uniforms' test alone (the landscape's mode, the detail on, the
+  self-test's debug sample); the texture is still sampled only where the fade is on, through `textureGrad` with those gradients. `css-test.js`
+  holds the order, each mutation failing it (`mutate-css-pre2.json`). Found and left, harmless: the viewshed's `texture2D(uVS, ...)` inside a
+  non-uniform test (one level, nearest filtering: no level of detail is chosen). Build 2,625,059 bytes, `6144b577...`.
+- **The data task (decision 248 (a): "add supported landmarks after research and a documented data task").** The sources read first,
+  every quotation on its page image (`docs/stage8-evidence/8g/`: the texts' register `readings-texts.md`, 76 entries in seven sections, T1 to
+  T7, with its negatives `negatives.md` and its works `sources.md`; the stable cadastre's indication sketches of 1825-1826 read at their
+  highest level, `readings-cadastre.md`, with eleven of its crops in `cadastre/`; the landmarks' modern places in the map's frame,
+  `places.md`; and a second reader's check of every quotation of the claims on its page image, `quote-check.md`: 21 of 32 right as drafted,
+  11 corrected and one note's wording, all applied). Declaration by declaration:
+  - **`APPEARANCE_SOURCES` changed**: eleven works added, every other entry byte-identical: Schwoy's topography of Moravia (1793,
+    `schwoy1793`), Wolny's Brünn district, part 2 (1837, `wolny1837`), Wolný's church topography of the Brünn diocese, vols. I-III (1856,
+    1858, 1860: `wolnykt1_1856`, `wolnykt2_1858`, `wolnykt3_1860`), the cadastral survey's Instruction of 1824 (`instruction1824`, a
+    regulation: what the sketches' colours mean), the indication sketches of Sokolnitz (1825), Telnitz (1825), Pratzen (1826) and Kobelnitz
+    with Puntowitz (1825) (`mza_sokolnitz1825`, `mza_telnitz1825`, `mza_pratzen1826`, `mza_kobelnitz1825`), and the national heritage
+    catalogue's record of the Holubice chapel (`npu1000133864`, modern, grade C).
+  - **`BUILDINGS` added** (guarded by `check:data` from this commit): every value a claim with source, locator, grade, label, quotation and a
+    scope saying how it bears on 1805, or generic with its reason. The villages' plan from the sketches (the farmsteads an L, the long range
+    on the plot's northern boundary: inference for 1805, the sketches twenty years later and after fires); the 1824 Instruction's colours
+    (walls only, no roof: the roofs are not inferred from them); the roofs and the counts generic (no source names the villages' roofing;
+    the build's counts are symbols); each village's buildings at the back of the yard where its sketch was read (Sokolnitz, Telnitz, Pratzen
+    in timber, Kobelnitz, Puntowitz) and generic where only sketches of 1873 on exist (Augezd, Satschan, Menitz); a claim for each church
+    standing in 1805 and for Holubitz's chapel; the villages the build drew with a church where none is named (Girzikowitz, Kobelnitz,
+    Sokolnitz, its chapel in the castle, Blasowitz); the Sokolnitz castle (a closed quadrangle, its east range of two storeys) and its farm;
+    its walled orchard **disputed** (Wolny 1837 against the 1825 sketch, which draws no wall there), not drawn; Telnitz's churchyard walled
+    in the battle (**attributed**: the parish's own record as Wolný reports it); the fences round Telnitz and Sokolnitz (Schönhals 1873); the
+    town of Austerlitz tiled (Schwoy 1793), its church (the temple's front, its tower no higher than its roof) and its château; and
+    `notDrawn`, what the sources name and the map does not draw, each with its reason and the alternatives put to the owner: the chapel of
+    St Anthony above Augezd (it stood until after 1818, but its form and its state on the day are not read; its roof's loss rests on a
+    modern web text only, so no roofless chapel is drawn), the Santon's chapel (destroyed by the French during the battle at an hour no source
+    gives, rebuilt in 1832: not drawn rather than fixing a time or drawing the later chapel), the Sokolnitz granary, the pheasantry's wall
+    (none on the 1825 sketch), the ditches.
+  - **`CHURCHES` changed (`world.js`)**: the villages drawn with a church are those where a source names one standing in 1805: Telnitz,
+    Augezd, Pratzen, Schlapanitz, Krzenowitz, Austerlitz, Bosenitz, **Satschan and Menitz added** (their churches named in 1793 and 1858, not
+    drawn until now), **Girzikowitz, Kobelnitz, Sokolnitz and Blasowitz removed** (no church named there in 1793, 1836-1837 or 1856-1861;
+    Blasowitz's belfry dates from 1831-1832, its church from 1930-1934; Sokolnitz's sacral building was the castle's chapel), **Holubitz
+    moved to `CHAPELS`**.
+  - **`CHAPELS` added (`world.js`)**: Holubitz, its chapel of St Gotthard of 1769 by the heritage catalogue (grade C, standing in 1805 by
+    inference; the topographies name none), drawn smaller than a church.
+  - The data task's build draws the churches from the new list with 8F's code (a church at the village's point; Holubitz with none until the
+    buildings' commit draws its chapel); the buildings' commit draws them as section 19 describes.
+  - `test.js` holds `BUILDINGS` (every value a claim or generic with its reason, every claim's scope naming 1805, the roofs and the counts
+    generic, a claim for each church and chapel drawn and for each village drawn with a church until 8G and not since, the rear buildings'
+    share and walls, the fences at villages of the build, what is not drawn generic with its reason; BUILDINGS's claims may be labelled
+    "attributed", as narrative.js's are).
+  - `check:data`'s reference moves from `archive/stage8e-f3c3f3af.html` to this commit's build, `archive/stage8g-84fe987b.html`: against the
+    old reference 130 data declarations identical, `APPEARANCE_SOURCES` and `CHURCHES` changed, `BUILDINGS` and `CHAPELS` added.
+  - Not changed, proposed: the places themselves. The drawn Sokolnitz castle stands about 535 m from the castle's own place, across the
+    drawn Goldbach, which at Sokolnitz runs 0.3 to 0.5 km west of the stream; the pheasantry's wood is drawn 2.3 km south of the enclosure
+    (north of the castle); Pratzen's church stood about 400 m south of the village's point, outside the village; the Posoritz post house
+    stood 1,367 m south-east of its drawn place, on the old road, which the map draws up to 1.2 km north of its course east of the Santon;
+    the château garden at Austerlitz lies west of the château, the drawn park 2 km south-east (`places.md`). Each a geographic correction
+    for a review of its own (decision 248 (a)'s and the brief's terms); none made here.
+
 ## 2026-10 · Stage 8, implementation PR 8F: water, woods and the near ground (decisions 246 (a), 247 (a)), with the audit of 8E's two findings
 
 **Status: built on `claude/loving-cerf-xmk1wu` (draft PR #71, into `main` at `94d6e46`, PR #70's merge), for review; not merged. Device acceptance
