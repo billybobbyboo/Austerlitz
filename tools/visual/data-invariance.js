@@ -13,9 +13,11 @@ const DATA={
     /* Stage 6B: the historical appearance (appearance.js) */
     "APPEARANCE_GRADE","APPEARANCE_VOCAB","APPEARANCE_SOURCES","DRESS","COMPOSITION","COLOURS_CARRIED","STANDARD_MEASURES",
     /* Stage 8, implementation PR 8E (decision 243 (a)): the claims the drawn artillery rests on, each with its scope (appearance.js) */
-    "ORDNANCE"],
+    "ORDNANCE",
+    /* Stage 8, implementation PR 8G (decision 248 (a)): the claims the drawn buildings rest on, each with its scope (appearance.js) */
+    "BUILDINGS"],
   "geography and relief model":["W","M2W","UNITS_PER_KM","GOLDBACH_M","LITAVA_M","BROOKS_M","GOLDBACH,LITAVA,BROOKS","ROADS","WOODS","MARSH",
-    "VINEYARD","VILLAGES","CHURCHES","CREST_M","TERRAIN_LINES","hash2","vnoise","dist2","pnoise","segDist","polyDist","smoothstep","bump","ell",
+    "VINEYARD","VILLAGES","CHURCHES","CHAPELS","CREST_M","TERRAIN_LINES","hash2","vnoise","dist2","pnoise","segDist","polyDist","smoothstep","bump","ell",
     "CREST","PRAT,VINO,PBERG,SANTON,ZURAN,SATS,MENI,SLAV,SCHLAP","regionalH","_RS,_RM","pondHold","regionalLevel","height","localHeight",
     "coverClass","hAt","COV_NX,COV_NZ,COV_X0,COV_Z0,COV_DX,COV_DZ","covWood,covMarsh,covVill,covRoad,covWater,covVine","buildCover","covAt",
     "G_NX,G_NZ,G_X0,G_Z0,G_DX,G_DZ","gridH,gridCurv","buildGrid","gridAt","CONTOUR_INTERVAL,CONTOUR_INDEX"],

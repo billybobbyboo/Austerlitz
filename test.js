@@ -229,13 +229,13 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
     if(!S.au||!S.ti||!S.pub||!(S.d>1700&&S.d<2100)||!KINDS.includes(S.kind)||!S.url) bad("source "+k+" lacks author, title, publisher, year, kind or url"); });
   const year=d=>{ const m=/^(\d{4})/.exec(String(d||"")); return m?+m[1]:null; };
   /* a claim; or a disputed value with its sides; or {gen:true, why}; or, where allowNone, {none:true, why} */
-  function claim(where,c,cls,allowNone){ ap++;
+  function claim(where,c,cls,allowNone,more){ ap++;
     if(!c||typeof c!=="object") return bad(where+": missing");
     if(c.gen){ if(!c.why) bad(where+": generic without a reason"); return; }
     if(c.none){ if(!allowNone) bad(where+": 'none' is allowed only for colours"); else if(!c.why) bad(where+": none without a reason"); return; }
     if(!c.v||!c.gr||!c.lab) return bad(where+": lacks v, gr or lab");
     if(!"ABC".includes(c.gr)||c.gr.length!==1) bad(where+": grade "+c.gr);
-    if(!LABELS.includes(c.lab)) bad(where+": label "+c.lab);
+    if(!LABELS.concat(more||[]).includes(c.lab)) bad(where+": label "+c.lab);   /* more: since 8G, BUILDINGS's "attributed" (as narrative.js's) */
     if(cls==="colour"&&!APPEARANCE_VOCAB.colour.includes(c.c)) bad(where+": colour class "+c.c+" not in the vocabulary");
     if(cls==="head"&&!APPEARANCE_VOCAB.head.includes(c.h)) bad(where+": headgear class "+c.h+" not in the vocabulary");
     if(c.lab==="disputed"){
@@ -309,6 +309,31 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
     if(!(tm&&Number.isInteger(tm.n)&&tm.n>0)) bad("ordnance fr.team: no count of horses");
     (F.drivers||[]).forEach((d,i)=>{ if(!(Number.isInteger(d.n)&&d.n>0&&FORMATIONS[d.corps]&&FORMATIONS[d.corps].ech==="corps")) bad("ordnance fr.drivers["+i+"]: a count a vehicle for a corps of the data ("+d.corps+")"); });
     if(!(F.limbering&&F.limbering.gen)) bad("ordnance fr.limbering: no source gives limbering's duration, so it stays generic (the switch at once)"); }
+  /* Stage 8, implementation PR 8G (decision 248 (a): "develop the villages around the cadastral street-and-yard pattern and add supported
+     landmarks after research and a documented data task. Keep later maps' relevance to 1805 explicitly qualified. Unestablished roofing and
+     other forms must remain labelled design conventions"): BUILDINGS, the claims the drawn buildings rest on. Every value a claim (or generic with
+     its reason), every claim with a scope that says how it bears on 1805; the roofing and the counts generic; each drawn church (world.js
+     CHURCHES) and chapel (CHAPELS) a claim of its own, each village drawn with a church until 8G and not since a claim of why; the rear
+     buildings' share a fraction with the walls' class; the fences only at villages of the build; what is not drawn generic with its
+     alternatives */
+  if(typeof BUILDINGS!=="object"||!BUILDINGS) bad("BUILDINGS missing (8G)");
+  else { const B=BUILDINGS, names=new Set(VILLAGES.map(v=>v[0])), LEGACY_CHURCHES=["Girzikowitz","Kobelnitz","Sokolnitz","Telnitz","Augezd","Blasowitz","Pratzen","Schlapanitz","Krzenowitz","Austerlitz","Bosenitz","Holubitz"];
+    const scoped=(w,c)=>{ claim(w,c,null,false,["attributed"]); if(c&&!c.gen&&!(typeof c.scope==="string"&&/\b1805\b/.test(c.scope))) bad(w+": a claim without a scope saying how it bears on 1805 (decision 248 (a): later maps' relevance to 1805 explicitly qualified)"); };
+    const each=(w,o,f)=>{ if(!o||typeof o!=="object") return bad(w+": missing"); Object.entries(o).forEach(([k,c])=>f(w+"."+k,c,k)); };
+    each("buildings plan",B.plan,(w,c)=>scoped(w,c));
+    ["roofs","counts"].forEach(k=>{ ap++; if(!(B.plan&&B.plan[k]&&B.plan[k].gen&&String(B.plan[k].why).length>=60)) bad("buildings plan."+k+": must stay generic with its reason (no source read settles it: a design convention)"); });
+    each("buildings villages",B.villages,(w,c,k)=>{ if(!names.has(k)) bad(w+": not a village of the build");
+      scoped(w+".rear",c.rear); if(c.rear&&!c.rear.gen&&!(c.rear.n>=0&&c.rear.n<=1&&["masonry","timber"].includes(c.rear.wall))) bad(w+".rear: its share (0 to 1) and its walls (masonry or timber)"); });
+    each("buildings churches",B.churches,(w,c,k)=>{ scoped(w,c); if(!CHURCHES.includes(k)) bad(w+": a church claimed but not drawn (world.js CHURCHES)"); });
+    each("buildings chapels",B.chapels,(w,c,k)=>{ scoped(w,c); if(!CHAPELS.includes(k)) bad(w+": a chapel claimed but not drawn (world.js CHAPELS)"); });
+    CHURCHES.forEach(k=>{ ap++; if(!names.has(k)) bad("CHURCHES: "+k+" is not a village of the build"); if(!(B.churches&&B.churches[k])) bad("CHURCHES: "+k+" drawn with a church and no claim in BUILDINGS.churches"); });
+    CHAPELS.forEach(k=>{ ap++; if(!names.has(k)) bad("CHAPELS: "+k+" is not a village of the build"); if(CHURCHES.includes(k)) bad("CHAPELS: "+k+" drawn with a church and a chapel"); if(!(B.chapels&&B.chapels[k])) bad("CHAPELS: "+k+" drawn with a chapel and no claim in BUILDINGS.chapels"); });
+    LEGACY_CHURCHES.forEach(k=>{ ap++; if(!CHURCHES.includes(k)&&!CHAPELS.includes(k)&&!(B.noChurch&&B.noChurch[k])) bad("buildings: "+k+" was drawn with a church until 8G and is not now, with no claim of why (BUILDINGS.noChurch)"); });
+    each("buildings noChurch",B.noChurch,(w,c,k)=>{ scoped(w,c); if(CHURCHES.includes(k)||CHAPELS.includes(k)) bad(w+": drawn with a church or a chapel"); });
+    ["sokolnitz","telnitz","austerlitz"].forEach(s=>each("buildings "+s,B[s],(w,c)=>scoped(w,c)));
+    each("buildings fences",B.fences,(w,c,k)=>{ scoped(w,c); if(!names.has(k)) bad(w+": not a village of the build"); });
+    each("buildings notDrawn",B.notDrawn,(w,c)=>{ ap++; if(!(c&&c.gen&&String(c.why).length>=60)) bad(w+": what is not drawn stays generic, with why and the alternatives"); });
+  }
   ["fr","ru","at"].forEach(n=>{ ap++; const M=STANDARD_MEASURES[n];
     if(!M){ bad("standard measures: "+n+" missing"); return; }
     if(M.provisional){ if(!M.why) bad("standard measures "+n+": provisional without a reason"); return; }
@@ -316,7 +341,7 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
     if(!(M.staff&&M.staff.m>0&&M.stature&&M.stature.m>0)) bad("standard measures "+n+": no metres"); });
   /* a source a note names counts as cited; a token in a note that looks like a source key must be one */
   const notes=[]; (function walk(o){ if(!o||typeof o!=="object") return; for(const [k,v] of Object.entries(o)){
-    if(typeof v==="string"&&["note","why","basis"].includes(k)) notes.push(v); else if(typeof v==="object") walk(v); } })([DRESS,COMPOSITION,COLOURS_CARRIED,STANDARD_MEASURES,ORDNANCE]);
+    if(typeof v==="string"&&["note","why","basis"].includes(k)) notes.push(v); else if(typeof v==="object") walk(v); } })([DRESS,COMPOSITION,COLOURS_CARRIED,STANDARD_MEASURES,ORDNANCE,BUILDINGS]);
   notes.forEach(t=>(t.match(/\b[a-z][a-z0-9_]*\d{4}[a-z]{0,3}\b/g)||[]).forEach(k=>{ if(srcOk(k)) used.add(k); else bad("a note names an unknown source '"+k+"'"); }));
   /* roadmap step 4: a source a statement's claim rests on is cited too (narrative.js; the review of f40ea90: APPEARANCE_SOURCES is the one table of works read) */
   Object.keys(STATEMENT_CLAIMS).forEach(r=>{ const c=STATEMENT_CLAIMS[r]; if(c&&Array.isArray(c.by)) c.by.forEach(b=>{ if(b&&typeof b.src==="string") used.add(b.src); }); });

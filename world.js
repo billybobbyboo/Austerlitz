@@ -111,8 +111,13 @@ var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the 
  ["Menitz",181,489,7],["Satschan",262,444,7],["Turas",44,294,5],
  ["Hostieradek",342,309,7],["Posoritz post house",324,36,3]
 ];
-var CHURCHES=["Girzikowitz","Kobelnitz","Sokolnitz","Telnitz","Augezd","Blasowitz",
-  "Pratzen","Schlapanitz","Krzenowitz","Austerlitz","Bosenitz","Holubitz"];
+/* the villages drawn with a church: where a source read names one standing on 2 December 1805 (Stage 8, implementation PR 8G's data task,
+   decision 248 (a): appearance.js BUILDINGS.churches holds each one's claim). Until 8G Girzikowitz, Kobelnitz, Sokolnitz, Telnitz, Augezd,
+   Blasowitz, Pratzen, Schlapanitz, Krzenowitz, Austerlitz, Bosenitz and Holubitz: of these Girzikowitz, Kobelnitz, Sokolnitz and Blasowitz
+   had none (BUILDINGS.noChurch) and Holubitz a chapel (CHAPELS), and Satschan's and Menitz's churches were not drawn */
+var CHURCHES=["Telnitz","Augezd","Pratzen","Schlapanitz","Krzenowitz","Austerlitz","Bosenitz","Satschan","Menitz"];
+/* a chapel standing in 1805 where no church stood, drawn smaller than a church (BUILDINGS.chapels) */
+var CHAPELS=["Holubitz"];
 
 /* The Pratzen crest: Stare Vinohrady -> the col between them -> the Pratzeberg (GEOREF ground truth;
    the col is PeakVisor's key col of Stare Vinohrady). Used by the relief and the terrain line. */
