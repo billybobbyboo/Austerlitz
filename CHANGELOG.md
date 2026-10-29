@@ -67,6 +67,29 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
     `main` landmark (its place in the tab order unchanged) and the timeline a named region (`section`, "Timeline"); the heading levels: the Now
     tab's "What changed" an `h3` under the dispatch's `h2` (an `h4`), the Plans tab's heads `h2` and `h3` under the rail's `h1` (`h3` and `h4`), an
     Analysis theme's title an `h2` (an `h3`), each keeping its look by its own rule.
+- **Maintenance (section 20.7): G-2, P-3, P-4, T-7; a second data task, no coordinate changed.**
+  - *G-2, the map-to-world factor typed outside `geo.js`:* `GEOREF` exports `MAP_PER_WORLD` (2, its own value, unexported until now) and
+    `WORLD_ORIGIN` (the map point at the world's origin, [340, 250], frozen); `world.js`'s `W` and `regionalH`'s inverse and `app.js`'s
+    `SUN_DAY` (the field's centre) read them, where each typed them; a theme's length is `len*KM_PER_MAP` (it typed `len*0.5/UNITS_PER_KM`); the
+    atmosphere's first uniforms take `DISPLAY.defaultFactor`, `GEOREF.DATUM_M`, `GEOREF.M_PER_WORLD` and `ATMO.FOG_TOP` (they typed 4, 243.1,
+    63.2 and 238.2). Shown without changing a coordinate: `tools/stage8/g2-8h.js` loads `world.js` and `geo.js` at `636cc5d` and as they stand, as
+    the suites load them, and compares 3,078,746 numbers with `===`: `W` over every map point the data and the ground truth name and a grid of
+    the map, `regionalH`, `height`, `hAt` and `localHeight` over a grid of the world, the cover class, every land-cover and relief array, the
+    sun's place, the transform: 0 differ. `geo-test.js` holds the single authority (four checks; 63 of 63).
+  - **Data (guarded): `GEOREF`, `W`, `regionalH` and `SUN_DAY` changed** (above; each a reading of the same numbers from `GEOREF`).
+    `check:data`'s reference moves to this commit's build, `archive/stage8h-24e29da7.html` (2,762,706 bytes): against 8G's reference
+    (`archive/stage8g-84fe987b.html`) 129 data declarations identical, `BUILDINGS` (the château's scope, above), `GEOREF`, `W`, `regionalH` and
+    `SUN_DAY` changed. The first 8H reference, `archive/stage8h-e47b39cd.html`, is removed (its one commit's reference, kept in history at
+    `f869d17`).
+  - *P-3, idle work per animation frame:* `syncFollow` (eight buttons' attributes read in every frame, idle ones too) touches the document only
+    when Follow or the vantage changed; the developer readout, off and hidden, reads and writes nothing in a frame. The gait's uniforms already
+    run only in drawn frames (8E's `gaitStep`, after the idle test); render on demand unchanged.
+  - *P-4, the start's cost:* the start's phases timed once (`BOOTMS`: the renderer, the world, the formations, the interface, the state, init;
+    `WORLDMS`: the land cover's and the relief's grids, the cover's multi-level grid, the ground, the water, the roads, the settlements, the
+    woods), and the first frame's time; measured over repeated loads by `tools/stage8/startup-8h.js` (section 20.7).
+  - *T-7, wall-clock thresholds:* the self-test's pan budget (2 ms a move) is judged at the median of the run's moves, with the 95th percentile
+    and the mean reported (it was the mean, which one move slowed by a busy machine could lift past the budget); the map layer's pass time was
+    already the median of five passes (`measure.js`); the harness's 20 s waits are functional timeouts, not thresholds, and are kept.
 
 ## 2026-10 · Stage 8, implementation PR 8G: buildings and structures (decision 248 (a)), with its prerequisites
 

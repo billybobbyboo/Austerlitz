@@ -195,7 +195,7 @@ var LIGHT={
    not established). tools/stage4/ephem.js is the same computation, used by the measurement scripts (one coefficient is
    written 1.9993e-2 here, so geo-test.js's search for the retired map scale's digits does not take it for one). */
 var SUN_DAY=(function(){
-  var ll=GEOREF.toGeo(340,250), LAT=ll[0], LON=ll[1], D2R=Math.PI/180, R2D=180/Math.PI;   /* the field's centre, W(0,0) */
+  var ll=GEOREF.toGeo(GEOREF.WORLD_ORIGIN[0],GEOREF.WORLD_ORIGIN[1]), LAT=ll[0], LON=ll[1], D2R=Math.PI/180, R2D=180/Math.PI;   /* the field's centre, W(0,0): GEOREF's origin since 8H (G-2) */
   function jd(y,m,d){ if(m<=2){ y--; m+=12; } var A=Math.floor(y/100), B=2-A+Math.floor(A/4);
     return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5; }
   var JD0=jd(1805,12,2);
@@ -378,9 +378,12 @@ function placeLights(){
    On the paper map neither is drawn. Line of sight, the viewshed and the knowledge model are not touched. */
 var ATMO={HS:400, M0:200, EDGE:6, FOG_EASE:20, FOG_SINK:20, FOG_VIS_KM:0.2, CAP:0.55,
   FOG_TOP_H:-0.8,   /* the knowledge model's threshold (knowledgeOf: hAt(p) < -0.8), model units */
-  u:{uAtmoA:{value:new THREE.Vector4(4,243.1,63.2,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
-     uAtmoC:{value:new THREE.Vector4(238.2,15,0,0)}, uAtmoV:{value:new THREE.Color(LIGHT_RIG.atmo0[0],LIGHT_RIG.atmo0[1],LIGHT_RIG.atmo0[2])}}};
+  /* the uniforms' first values (applyAtmo writes them every frame): since 8H (G-2) the scale's and the fog top's from GEOREF and DISPLAY, below,
+     not typed (243.1, 63.2 and 238.2 until 8H) */
+  u:{uAtmoA:{value:new THREE.Vector4(DISPLAY.defaultFactor,GEOREF.DATUM_M,GEOREF.M_PER_WORLD,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
+     uAtmoC:{value:new THREE.Vector4(0,15,0,0)}, uAtmoV:{value:new THREE.Color(LIGHT_RIG.atmo0[0],LIGHT_RIG.atmo0[1],LIGHT_RIG.atmo0[2])}}};
 ATMO.FOG_TOP=GEOREF.elevM(ATMO.FOG_TOP_H);
+ATMO.u.uAtmoC.value.x=ATMO.FOG_TOP;
 /* sigma, the extinction per world unit for a meteorological visibility in km (Koschmieder: 3.912 / V) */
 function atmoSigma(km){ return 3.912/km*GEOREF.M_PER_WORLD/1000; }
 /* the valley fog's amount at a clock: PHASES[].mist, each phase's value reached FOG_EASE minutes after its start */
@@ -597,12 +600,18 @@ function endTweens(){ var n=0; if(tween) mlReset("tween ended at once"); while(t
    rule 3) picked density 1.0 with the sun casting no shadow (below) for the low tier, a gain on the phone (about 1.5 times the frames a
    second in its heavy views), not a cure */
 function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1:2); }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md P-4): the start's phases, timed once in milliseconds from init's start (BOOTMS; world.js's own phases in
+   WORLDMS, the relief and the land cover's grids among them), and the first frame's time from the page's start: read by
+   tools/stage8/startup-8h.js and the device route; nothing drawn or changed by it */
+var BOOTMS={};
+function bootMark(k,t0){ BOOTMS[k]=Math.round((performance.now()-t0)*10)/10; }
 function boot(){
   try{ init(); }
   catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
   if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.ok();   /* started: the guard's watch ends here at the latest */
 }
 function init(){
+  var tb=performance.now(); BOOTMS.initAt=Math.round(tb);
   scene=new THREE.Scene();
   scene.background=lin(LIGHT_RIG.bg0);
   scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);
@@ -620,6 +629,7 @@ function init(){
   renderer.toneMapping=THREE.NoToneMapping;
   document.getElementById("stage").appendChild(renderer.domElement);
   bindContextLoss(renderer.domElement);
+  bootMark("renderer",tb);
 
   camera=landCam=new THREE.PerspectiveCamera(37,window.innerWidth/window.innerHeight,1,1900);
   camera.position.set(-196,132,226);
@@ -643,7 +653,7 @@ function init(){
   sun.shadow.normalBias=0.35;
   scene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);
 
-  world=buildWorld(scene);
+  world=buildWorld(scene); bootMark("world",tb); if(typeof WORLDMS!=="undefined") BOOTMS.worldParts=WORLDMS;
   groundDetail(!lowTier);   /* Stage 8, 8F (decision 247 (a)): the near ground's detail, not on a low tier (decision 236: the phone's frame as P5 measured it) */
   setFXEnabled(true);
 
@@ -651,11 +661,11 @@ function init(){
   curOv=new THREE.Group(); overlayRoot.add(curOv);
 
   buildSunDisc();
-  buildFormations();
+  buildFormations(); bootMark("formations",tb);
   buildFeatureGlyphs();
   buildAnalysisLabels();
   buildEventLayer();
-  buildUI();
+  buildUI(); bootMark("ui",tb);
   mlInit();
 
   camera.lookAt(orbitTarget);
@@ -663,12 +673,13 @@ function init(){
   setClock(T_MIN,{instant:true,force:true});
   setCommandView("none");
   setPresentation("study");
-  openFirstRun();
+  openFirstRun(); bootMark("state",tb);
   var probs=auditMovement();
   if(probs.length){
     console.warn("Austerlitz movement audit: "+probs.length+" leg(s) need attention");
     probs.forEach(function(x){ console.warn("  ",x.id,x.leg,x.why,x.kmh?x.kmh.toFixed(2)+" km/h":""); });
   }
+  bootMark("init",tb);
   loop();
 
   /* decision 141: the boot screen lifts once the embedded faces have loaded (fontsReady); a fault after it still lifts the screen, and is thrown */
@@ -3811,8 +3822,10 @@ function devMark(){ var r=renderer.info.render; return {calls:r.calls,triangles:
 var devOn=/[?&]stats\b/.test(location.search), _devT=0, _devSeat=0;
 function kfmt(n){ return n>=1e6?(n/1e6).toFixed(2)+"M":(n>=1e3?(n/1e3).toFixed(1)+"k":String(n)); }
 function paintDevStats(now){
+  if(!devOn&&paintDevStats.off) return;   /* Stage 8, 8H (P-3): the readout off and hidden: nothing read or written in a frame */
   var el=paintDevStats.el||(paintDevStats.el=document.getElementById("devstats")); if(!el) return;   /* roadmap step 5 (SW-13): found once */
   if(el.hidden===devOn) el.hidden=!devOn;
+  paintDevStats.off=!devOn;
   if(!devOn||now-_devT<500) return;
   var sec=_devT?(now-_devT)/1000:1; _devT=now;
   var fps=DEV.frames/sec, sk=DEV.skipped/sec, se=(SEAT_STATS.blocks-_devSeat)/sec;
@@ -6415,6 +6428,10 @@ function fitOverview(c){
    The button and the vantages' pressed state are brought up to date every animation frame (and by the self-test). */
 var curVantage=null;
 function syncFollow(){
+  /* Stage 8, 8H (docs/FINAL_AUDIT.md P-3): called every animation frame, idle ones too; it touches the document only when what it shows
+     changed (Follow, the vantage): until 8H it read eight buttons' attributes in every frame */
+  if(syncFollow.fc===freeCam&&syncFollow.cv===curVantage) return;
+  syncFollow.fc=freeCam; syncFollow.cv=curVantage;
   var b=document.getElementById("follow"), on=String(!freeCam);
   if(b&&b.getAttribute("aria-pressed")!==on) b.setAttribute("aria-pressed",on);
   var vs=syncFollow.vs||(syncFollow.vs=document.querySelectorAll(".van-btn"));   /* roadmap step 5 (SW-13): the static buttons found once, not every frame */
@@ -6459,7 +6476,7 @@ var LANDCAM=(function(){
     dx=Math.max(-FX,Math.min(FX,orbitTarget.x+dx))-orbitTarget.x; dz=Math.max(-FZ,Math.min(FZ,orbitTarget.z+dz))-orbitTarget.z;
     orbitTarget.x+=dx; orbitTarget.z+=dz; E.x+=dx; E.z+=dz;
     clampCamera(); landCam.lookAt(orbitTarget); free();
-    stats.moves++; stats.ms+=performance.now()-a; requestRender(2); return true;
+    var dm=performance.now()-a; stats.moves++; stats.ms+=dm; (stats.t||(stats.t=[])).push(dm); if(stats.t.length>512) stats.t.shift(); requestRender(2); return true;   /* Stage 8, 8H (T-7): each move's time kept, the last 512 */
   }
   function panEnd(){ if(grab){ grab=null; anchor(); requestRender(2); } }
   function zoomAt(sx,sy,k){
@@ -8317,7 +8334,7 @@ function dossierAnalysis(name){
   var len=0;
   for(var i=0;i<tl.p.length-1;i++) len+=Math.hypot(tl.p[i+1][0]-tl.p[i][0],tl.p[i+1][1]-tl.p[i][1]);
   wrap.appendChild(el("dl","kvs",
-    row("Length","about "+(len*0.5/UNITS_PER_KM).toFixed(1)+" km")+
+    row("Length","about "+(len*KM_PER_MAP).toFixed(1)+" km")+   /* Stage 8, 8H (docs/FINAL_AUDIT.md G-2): map units by GEOREF's own factor (0.5/UNITS_PER_KM typed the map-to-world factor until 8H) */
     row("Elevation along it","\u2248 "+Math.round(GEOREF.elevM(lo))+"\u2013"+Math.round(GEOREF.elevM(hi))+" m on this model")));
   var s2=el("div","sect");
   s2.innerHTML='<h3>Why it matters</h3><p class="prose">'+esc(tl.note)+'</p>';
@@ -9072,6 +9089,7 @@ function loop(){
   smokeT=HARNESS?0:now*0.001;
   renderFrame();
   if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT&&!AUS_BOOT.done) AUS_BOOT.ok();   /* the first frame drawn: the start-up guard's watch ends */
+  if(BOOTMS.firstFrameAt===undefined) BOOTMS.firstFrameAt=Math.round(performance.now());   /* Stage 8, 8H (P-4): from the page's start */
   loop._n=(loop._n||0)+1;
   if(devOn&&loop._n%120===0){ var fe=AUSTERLITZ_DEBUG.figureError();   /* with the readout on: a periodic check of the seating */
     if(fe.worst>0.02&&!loop._warned){ loop._warned=true; console.warn("Austerlitz runtime check: a figure is "+fe.worst.toFixed(3)+" units off the drawn ground ("+fe.where+")"); } }
@@ -11246,12 +11264,15 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("camera: orbiting at the lowest pitch and closest zoom never enters the ground", orbBad===0,
         orbN+" orbit positions around "+views.length+" targets; lowest clearance "+orbMin.toFixed(2)+" units");
       /* Stage 3D: the landscape's controls, through real pointer and wheel events, from every vantage */
-      var m0=LANDCAM.stats.moves, t0m=LANDCAM.stats.ms, lc=landControls(), kt=landKeysTouch(), mv=LANDCAM.stats.moves-m0, msMove=mv?(LANDCAM.stats.ms-t0m)/mv:0;
+      /* Stage 8, 8H (docs/FINAL_AUDIT.md T-7): a pan move's time judged at its median over this run's moves (its 95th percentile reported), not
+         the mean, which one move slowed by a busy machine could lift past the budget */
+      var m0=LANDCAM.stats.moves, t0m=LANDCAM.stats.ms; LANDCAM.stats.t=[]; var lc=landControls(), kt=landKeysTouch(), mv=LANDCAM.stats.moves-m0, mvT=(LANDCAM.stats.t||[]).slice().sort(function(p,q){ return p-q; }),
+        msMean=mv?(LANDCAM.stats.ms-t0m)/mv:0, msMove=mvT.length?mvT[Math.floor((mvT.length-1)/2)]:msMean, ms95=mvT.length?mvT[Math.min(mvT.length-1,Math.floor(mvT.length*0.95))]:msMean;
       ck("camera controls: a left-drag pans (the grabbed ground point within 1 px of the pointer during and after), the wheel zooms toward the cursor (within 1 px, a step the floor shortens included), a double-click centres the point in the free rectangle (within 2 px), a right-drag orbits; the eye at or above the floor after every step",
         lc.pan<=1&&lc.panAfter<=1&&lc.zoom<=1&&lc.focus<=2&&!lc.orbitBad&&!lc.below&&!lc.lost.length&&lc.panN>0&&lc.zoomN>0&&msMove<=2,
         lc.views+" vantages: pan worst "+lc.pan.toFixed(3)+" px during ("+lc.panN+" steps; "+lc.panLifted+" the floor lifted, counted apart), "+lc.panAfter.toFixed(3)+" px after; wheel worst "+
         lc.zoom.toFixed(3)+" px over "+lc.zoomN+" steps ("+lc.zoomStops+" shortened by the floor); double-click "+lc.focus.toFixed(3)+" px from the free centre; right-drag orbits "+(lc.orbitN-lc.orbitBad)+" of "+lc.orbitN+
-        "; below the floor "+lc.below+"; a pan move "+msMove.toFixed(3)+" ms on average over "+mv+" (budget 2 ms)"+(lc.lost.length?"; "+lc.lost.join(", "):""));
+        "; below the floor "+lc.below+"; a pan move "+msMove.toFixed(3)+" ms at the median over "+mv+" (95th percentile "+ms95.toFixed(3)+", mean "+msMean.toFixed(3)+"; budget 2 ms at the median)"+(lc.lost.length?"; "+lc.lost.join(", "):""));
       ck("camera controls: the keys on the focused map layer pan, zoom and turn without stepping the clock; one finger pans, two pinch and twist",
         kt.keyPan>1&&kt.keyZoom<1&&Math.abs(kt.keyTurnDeg-15)<0.01&&kt.clockKept&&kt.keyFree&&kt.touchPan<=1&&kt.pinchRatio<1&&Math.abs(kt.twistDeg)>1,
         "the right arrow moves the target "+kt.keyPan+" units; + brings the eye to "+kt.keyZoom+" of its distance; Shift + left arrow turns "+kt.keyTurnDeg+"\u00b0; clock "+(kt.clockKept?"unchanged":"MOVED")+

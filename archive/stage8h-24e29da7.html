@@ -15,7 +15,7 @@ canvas{display:block;touch-action:none}   /* Stage 3D: the landscape takes one-f
 #stage{position:fixed;inset:0}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 button{font:inherit;color:inherit}
-:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}   /* Stage 8, 8H (A-6): 2 px (1 px until 8H: WCAG 2.4.7 met, under 2.4.13's 2 px); the accent is the theme's (dark on the paper map) */
 
 #boot{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;padding:16px;
   background:var(--ink);transition:opacity .8s ease}
@@ -232,7 +232,7 @@ ul.bul.claim-sides li{font-size:var(--t-ui);color:var(--text-muted);margin-botto
 #help[hidden]{display:none}
 #help-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer;min-width:24px;min-height:24px}
 .help-sheet{max-width:720px}
-#help-body:focus-visible,#modal-body:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+#help-body:focus-visible,#modal-body:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 /* roadmap step 3 (decision 134 (a)): the shortcuts switch, the layers panel's toggle row; its note in the interface face */
 #help-keys{margin:0 0 4px;width:100%}
 .sheet p.help-note{font-family:var(--sans);font-size:var(--t-small);line-height:1.45;color:var(--text-muted);margin:0 0 10px}
@@ -244,10 +244,14 @@ ul.bul.claim-sides li{font-size:var(--t-ui);color:var(--text-muted);margin-botto
   text-align:center;font-weight:400;background:rgba(var(--panel-rgb),.6)}
 .tb-help{min-width:32px;min-height:32px;font-weight:600;flex:0 0 auto}   /* in the timeline's control row, Study and Watch: no panel grows */
 
-#toast{position:fixed;left:calc(50% + var(--rail)/2);top:26px;transform:translateX(-50%);z-index:40;
+/* Stage 8, 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): centred over the free area, which is the window's but where the rail is docked and
+   shown (until 8H always offset by half the rail: on a phone it was pushed to the right edge and wrapped into a 102 px column); its own width,
+   within the screen; app.js placeToast moves it down below any control its box would cross (the presentation switch in Study) */
+#toast{position:fixed;left:50%;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;top:26px;transform:translateX(-50%);z-index:40;
   font-family:var(--serif);font-size:var(--t-prose);color:var(--text-hi);background:rgba(var(--scrim-rgb),.82);
   border:1px solid rgba(var(--accent-rgb),.38);padding:8px 18px;opacity:0;transition:opacity .8s ease;pointer-events:none}
 #toast.on{opacity:1}
+body.docked:not(.rail-hidden) #toast{left:calc(50% + var(--rail)/2);max-width:calc(100vw - var(--rail) - 24px)}
 /* roadmap step 5: the timeline's one tooltip (app.js timeTip), in place of the native title tooltips */
 #tltip{position:fixed;left:0;top:0;z-index:62;max-width:min(380px,calc(100vw - 16px));padding:5px 9px;
   font-family:var(--sans);font-size:var(--t-ui);line-height:1.4;color:var(--text-hi);background:rgba(var(--scrim-rgb),.96);
@@ -316,7 +320,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .chap[aria-current="true"]{color:var(--text-hi);border-left-color:var(--accent);background:rgba(var(--accent-rgb),.10)}
 .chap em{font-style:normal;font-size:var(--t-ui);color:var(--text-muted);font-variant-numeric:tabular-nums;flex:0 0 38px}
 .chap[aria-current="true"] em{color:var(--text-hi)}
-#chaptext h3{font-size:var(--t-ui);color:var(--text-hi);font-weight:400;margin:0 0 6px;border:0;padding:0;letter-spacing:0}
+#chaptext h2{font-size:var(--t-ui);color:var(--text-hi);font-weight:400;margin:0 0 6px;border:0;padding:0;letter-spacing:0}
 #chaptext .hh{font-size:var(--t-ui);color:var(--text-muted);font-variant-numeric:tabular-nums}
 #chaptext .prose{font-size:var(--t-prose);line-height:1.6}
 .chapfeat{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
@@ -383,7 +387,7 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
   opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease}
 .ev-mark::after{content:"";position:absolute;inset:-6px;display:block}
 .ev-mark:hover{transform:translateX(-50%) rotate(45deg) scale(1.5);opacity:1}
-.ev-mark:focus-visible{outline:1px solid var(--accent);outline-offset:3px;opacity:1}
+.ev-mark:focus-visible{outline:2px solid var(--accent);outline-offset:3px;opacity:1}
 .ev-mark.fr{background:var(--side-fr)}
 .ev-mark.al{background:var(--side-al)}
 .ev-mark.dec{background:var(--ink);border:2px solid var(--side-al);width:10px;height:10px;top:1px}
@@ -396,7 +400,7 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
 .ev-mark.inth{opacity:1;outline:1px solid var(--text-hi);outline-offset:3px}
 .step.inth{box-shadow:inset 0 -2px 0 var(--text-hi)}
 .step.inth[aria-current="true"]{box-shadow:inset 0 2px 0 var(--accent),inset 0 -2px 0 var(--text-hi)}
-.ev-mark.inth:focus-visible{outline-color:var(--accent)}
+.ev-mark.inth:focus-visible{outline:2px solid var(--accent)}   /* 8H: focused, 2 px in the accent, apart from its 1 px in-the-hour ring */
 /* Stage 5C (docs/STAGE5_SPEC.md section C.3; decision 89): an interval's window as a bar from its start (where its diamond stands) to its
    end, in the side's colour at full strength (3:1 against the timebar in both themes), in one of four lanes at the top of the event row,
    under the diamonds; lit with its marker */
@@ -457,10 +461,10 @@ body.pm-map #restore{display:block}
 .planblock{margin-bottom:20px;padding-left:10px;border-left:2px solid var(--line-2)}
 .planblock.plan-fr{border-left-color:var(--side-fr)}
 .planblock.plan-al{border-left-color:var(--side-al)}
-.planblock h3{font-size:var(--t-prose);color:var(--text-hi);font-weight:400;margin:0 0 5px;
+.planblock h2{font-size:var(--t-prose);color:var(--text-hi);font-weight:400;margin:0 0 5px;
   font-family:var(--serif);border:0;padding:0;letter-spacing:0}
 .planauth{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0 0 10px}
-.planblock h4{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:12px 0 5px}
+.planblock h3{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:12px 0 5px}
 .planblock .prose{font-size:var(--t-prose);line-height:1.6;margin:0}
 .planblock .kv{grid-template-columns:1fr;gap:2px}
 .planblock .kv dt{color:var(--text);font-size:var(--t-small)}
@@ -483,7 +487,7 @@ body.pm-map #restore{display:block}
 /* event ticks on the scrub rail */
 /* what changed in this phase */
 #d-changes{margin-top:9px;border-top:1px solid var(--line);padding-top:7px}
-#d-changes h4{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:0 0 5px}
+#d-changes h3{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:0 0 5px}
 #d-changes ul{list-style:none;margin:0;padding:0}
 #d-changes li{font-size:var(--t-ui);color:var(--text-muted);line-height:1.5;padding:2px 0;
   display:grid;grid-template-columns:auto 1fr;gap:7px}
@@ -1509,7 +1513,8 @@ $Id$
      the clock, one caption line, Watch's presentation switch, the speeds, the scale) and one track on one time axis: the act
      bands, the phase ticks with their labels, and the rail (hour ticks, the event markers, the playhead). The situation's
      readings and the live event's reason moved to the top of the Now tab (inside the dispatch). -->
-<div class="timebar">
+<!-- Stage 8, 8H (docs/FINAL_AUDIT.md A-6): the timeline a named region (a landmark), the map layer in the page's main landmark (below) -->
+<section class="timebar" aria-label="Timeline">
   <div id="prog"><i></i></div>
   <div class="tb-top">
     <!-- roadmap step 5 (docs/VISUAL_AUDIT.md, low; question 208, the default meanwhile): the event steps in the media players' order, the
@@ -1551,7 +1556,7 @@ $Id$
     </div>
     <div class="evmarks" id="evmarks" role="group" aria-label="Events"></div>
   </div>
-</div>
+</section>
 
 <aside class="drawer" id="drawer" aria-label="Dossier">
   <div class="dbar"><button id="drawer-back" type="button">&lsaquo; Back to <span id="drawer-back-to">Now</span></button>
@@ -1612,7 +1617,7 @@ $Id$
 
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
-<div id="maplayer" role="group" aria-label="The map: formations, events and places"></div>
+<main id="map-main"><div id="maplayer" role="group" aria-label="The map: formations, events and places"></div></main>
 <!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
 <div id="eyecap" class="eyecap" hidden></div>
 
@@ -1823,6 +1828,8 @@ var GEOREF = (function(){
   /* ---- horizontal scale: the only one ---- */
   var KM_PER_MAP   = 1/K;          /* 0.03160 km per map unit           */
   var MAP_PER_WORLD= 2;            /* W(): one world unit = two map units */
+  var WORLD_ORIGIN = [340,250];    /* W(): the map point at the world's origin, the field's centre (world.js W, regionalH's inverse and
+                                      app.js SUN_DAY read it here since Stage 8's 8H, docs/FINAL_AUDIT.md G-2; until then each typed it) */
   var UNITS_PER_KM = K/MAP_PER_WORLD;     /* world units per km         */
   var M_PER_WORLD  = 1000/UNITS_PER_KM;   /* metres per world unit      */
 
@@ -1904,6 +1911,7 @@ var GEOREF = (function(){
     toMap:toMap, toGeo:toGeo, mapToEN:mapToEN,
     K:K, ROT_DEG:ROT, NORTH:NORTH,
     KM_PER_MAP:KM_PER_MAP, UNITS_PER_KM:UNITS_PER_KM, M_PER_WORLD:M_PER_WORLD,
+    MAP_PER_WORLD:MAP_PER_WORLD, WORLD_ORIGIN:Object.freeze(WORLD_ORIGIN.slice()),
     V_M_PER_UNIT:V_M_PER_UNIT, DATUM_M:DATUM_M, EXAG:EXAG, elevM:elevM, unitsFromM:unitsFromM,
     kmBetween:kmBetween, bearingDeg:bearingDeg, compass8:compass8, northingKm:northingKm,
     place:function(id){ return GT[id].map.slice(); }
@@ -4832,7 +4840,7 @@ function ctex(cv){
   t.generateMipmaps=false; t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;
   return t;
 }
-function W(mx,my){ return [(mx-340)*0.5, (my-250)*0.5]; }
+function W(mx,my){ var o=GEOREF.WORLD_ORIGIN, k=GEOREF.MAP_PER_WORLD; return [(mx-o[0])/k, (my-o[1])/k]; }   /* since 8H (G-2) GEOREF's factor and origin, not typed: the same numbers (a division by 2 is exact as the product by 0.5 was) */
 function M2W(pts){ return pts.map(function(p){ return W(p[0],p[1]); }); }
 
 var UNITS_PER_KM = GEOREF.UNITS_PER_KM;   /* from geo.js: the only scale */
@@ -4998,7 +5006,7 @@ var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
    from the local relief, because the floor, the land-cover thresholds and the pond levels are
    calibrated on local relief and must keep their meaning. World units, before the 1.2 factor. */
 function regionalH(x,z){
-  var nk=GEOREF.mapToEN(x*2+340,z*2+250)[1];                 /* true northing, km           */
+  var nk=GEOREF.mapToEN(x*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[0],z*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[1])[1];   /* true northing, km (W's inverse by GEOREF's own factor and origin since 8H, G-2) */
   var dv=Math.min(polyDist(x,z,LITAVA),polyDist(x,z,BROOKS[BROOKS.length-1]));
   return 0.51*smoothstep(3.0,6.0,nk) + 0.37*nk - 3.16*Math.exp(-(dv*dv)/625);
 }
@@ -5317,10 +5325,13 @@ function groundGeometry(){
   scaleGround(geo);
   return geo;
 }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md P-4): buildWorld's phases timed once at the start, in milliseconds (read by app.js's BOOTMS) */
+var WORLDMS={};
 function buildWorld(scene){
-  buildCover();
-  buildGrid();
-  buildCoverMl();
+  var tw=(typeof performance!=="undefined")?performance.now():0, wm=function(k){ if(typeof performance!=="undefined") WORLDMS[k]=Math.round((performance.now()-tw)*10)/10; };
+  buildCover(); wm("cover");
+  buildGrid(); wm("grid");
+  buildCoverMl(); wm("coverMl");
 
   var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
   var sctx=sc.getContext("2d");
@@ -5331,7 +5342,7 @@ function buildWorld(scene){
     new THREE.MeshBasicMaterial({map:ctex(sc),side:THREE.BackSide,fog:false,depthWrite:false}));
   scene.add(domeMesh);
 
-  var geo=groundGeometry();
+  var geo=groundGeometry(); wm("groundGeometry");
   (function(){
     var cov=new Float32Array(FACE.n*3);
     for(var f=0;f<FACE.n;f++){
@@ -5351,18 +5362,18 @@ function buildWorld(scene){
   groundMesh.material.userData.grain=groundMesh.material.map;
   groundMesh.receiveShadow=true;
   scene.add(groundMesh);
-  applyGround();
+  applyGround(); wm("ground");
 
-  buildWater(scene);
-  buildRoads(scene);
-  buildSettlements(scene);
-  buildWoods(scene);
+  buildWater(scene); wm("water");
+  buildRoads(scene); wm("roads");
+  buildSettlements(scene); wm("settlements");
+  buildWoods(scene); wm("woods");
   apronMesh=buildApron(scene);
   buildContours(scene);
   buildMarshSymbols(scene);
   buildAnalysis(scene);
   buildMist(scene);
-  buildPaperSymbols(scene);
+  buildPaperSymbols(scene); wm("rest");
 
   return {ground:groundMesh, apron:apronMesh, dome:domeMesh, mist:mistGroup, trees:treeMesh, conifers:coniferMesh, scrub:scrubMesh,
           houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, iceRims:iceRims, roads:roadMeshes,
@@ -7489,7 +7500,8 @@ var selection=null, freeCam=false;
    holds a phase change's light and overlay fade; the camera slot holds a glide, a phase's camera arc or an eased move of the
    paper map. Each step returns true when it has ended. A phase change replaces the camera move only when it moves the camera
    itself (Follow on): before, it assigned `tween` and dropped any glide in flight, so a centring or a double-click made while
-   the battle played was lost at the next phase boundary. Setting `tween=null` (a placement, the tools) still stops both. */
+   the battle played was lost at the next phase boundary. Setting `tween=null` (a placement, the tools) still stops both; since 8H the app's own
+   stop (a relief change, redrawGround) is stopTweens, which clears the slots too (S-7). */
 var _tw={scene:null,cam:null};
 function _runTween(now){
   var s=_tw.scene, c=_tw.cam;
@@ -7502,6 +7514,10 @@ function setTween(slot,fn){
   _tw[slot]=fn||null;
   tween=(_tw.scene||_tw.cam)?_runTween:(tween===_runTween?null:tween);
 }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md S-7): stop the tween where it is, both slots with it (endTweens, 8C's, runs them to their ends instead).
+   A bare `tween=null` stopped the steps but left the slots set: followActive reads the camera's (`!_tw.cam`), so after a relief change
+   during a glide (redrawGround) Follow stayed idle under Play until the next phase boundary's setTween cleared it */
+function stopTweens(){ tween=null; _tw.scene=null; _tw.cam=null; }
 var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:false,skeleton:false,routes:false};   /* confidence: Stage 5B, decision 85, on; since Stage 8, implementation PR 8B (decision 239), the setting of the presentation shown (CONF_ON): off at first on the landscape, where the app opens; skeleton: Stage 5D, off; routes: Stage 5F, off (decision 93) */
 var goingOn=false;
 var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
@@ -7562,7 +7578,7 @@ var LIGHT={
    not established). tools/stage4/ephem.js is the same computation, used by the measurement scripts (one coefficient is
    written 1.9993e-2 here, so geo-test.js's search for the retired map scale's digits does not take it for one). */
 var SUN_DAY=(function(){
-  var ll=GEOREF.toGeo(340,250), LAT=ll[0], LON=ll[1], D2R=Math.PI/180, R2D=180/Math.PI;   /* the field's centre, W(0,0) */
+  var ll=GEOREF.toGeo(GEOREF.WORLD_ORIGIN[0],GEOREF.WORLD_ORIGIN[1]), LAT=ll[0], LON=ll[1], D2R=Math.PI/180, R2D=180/Math.PI;   /* the field's centre, W(0,0): GEOREF's origin since 8H (G-2) */
   function jd(y,m,d){ if(m<=2){ y--; m+=12; } var A=Math.floor(y/100), B=2-A+Math.floor(A/4);
     return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5; }
   var JD0=jd(1805,12,2);
@@ -7745,9 +7761,12 @@ function placeLights(){
    On the paper map neither is drawn. Line of sight, the viewshed and the knowledge model are not touched. */
 var ATMO={HS:400, M0:200, EDGE:6, FOG_EASE:20, FOG_SINK:20, FOG_VIS_KM:0.2, CAP:0.55,
   FOG_TOP_H:-0.8,   /* the knowledge model's threshold (knowledgeOf: hAt(p) < -0.8), model units */
-  u:{uAtmoA:{value:new THREE.Vector4(4,243.1,63.2,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
-     uAtmoC:{value:new THREE.Vector4(238.2,15,0,0)}, uAtmoV:{value:new THREE.Color(LIGHT_RIG.atmo0[0],LIGHT_RIG.atmo0[1],LIGHT_RIG.atmo0[2])}}};
+  /* the uniforms' first values (applyAtmo writes them every frame): since 8H (G-2) the scale's and the fog top's from GEOREF and DISPLAY, below,
+     not typed (243.1, 63.2 and 238.2 until 8H) */
+  u:{uAtmoA:{value:new THREE.Vector4(DISPLAY.defaultFactor,GEOREF.DATUM_M,GEOREF.M_PER_WORLD,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
+     uAtmoC:{value:new THREE.Vector4(0,15,0,0)}, uAtmoV:{value:new THREE.Color(LIGHT_RIG.atmo0[0],LIGHT_RIG.atmo0[1],LIGHT_RIG.atmo0[2])}}};
 ATMO.FOG_TOP=GEOREF.elevM(ATMO.FOG_TOP_H);
+ATMO.u.uAtmoC.value.x=ATMO.FOG_TOP;
 /* sigma, the extinction per world unit for a meteorological visibility in km (Koschmieder: 3.912 / V) */
 function atmoSigma(km){ return 3.912/km*GEOREF.M_PER_WORLD/1000; }
 /* the valley fog's amount at a clock: PHASES[].mist, each phase's value reached FOG_EASE minutes after its start */
@@ -7964,12 +7983,18 @@ function endTweens(){ var n=0; if(tween) mlReset("tween ended at once"); while(t
    rule 3) picked density 1.0 with the sun casting no shadow (below) for the low tier, a gain on the phone (about 1.5 times the frames a
    second in its heavy views), not a cure */
 function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1:2); }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md P-4): the start's phases, timed once in milliseconds from init's start (BOOTMS; world.js's own phases in
+   WORLDMS, the relief and the land cover's grids among them), and the first frame's time from the page's start: read by
+   tools/stage8/startup-8h.js and the device route; nothing drawn or changed by it */
+var BOOTMS={};
+function bootMark(k,t0){ BOOTMS[k]=Math.round((performance.now()-t0)*10)/10; }
 function boot(){
   try{ init(); }
   catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
   if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.ok();   /* started: the guard's watch ends here at the latest */
 }
 function init(){
+  var tb=performance.now(); BOOTMS.initAt=Math.round(tb);
   scene=new THREE.Scene();
   scene.background=lin(LIGHT_RIG.bg0);
   scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);
@@ -7987,6 +8012,7 @@ function init(){
   renderer.toneMapping=THREE.NoToneMapping;
   document.getElementById("stage").appendChild(renderer.domElement);
   bindContextLoss(renderer.domElement);
+  bootMark("renderer",tb);
 
   camera=landCam=new THREE.PerspectiveCamera(37,window.innerWidth/window.innerHeight,1,1900);
   camera.position.set(-196,132,226);
@@ -8010,7 +8036,7 @@ function init(){
   sun.shadow.normalBias=0.35;
   scene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);
 
-  world=buildWorld(scene);
+  world=buildWorld(scene); bootMark("world",tb); if(typeof WORLDMS!=="undefined") BOOTMS.worldParts=WORLDMS;
   groundDetail(!lowTier);   /* Stage 8, 8F (decision 247 (a)): the near ground's detail, not on a low tier (decision 236: the phone's frame as P5 measured it) */
   setFXEnabled(true);
 
@@ -8018,11 +8044,11 @@ function init(){
   curOv=new THREE.Group(); overlayRoot.add(curOv);
 
   buildSunDisc();
-  buildFormations();
+  buildFormations(); bootMark("formations",tb);
   buildFeatureGlyphs();
   buildAnalysisLabels();
   buildEventLayer();
-  buildUI();
+  buildUI(); bootMark("ui",tb);
   mlInit();
 
   camera.lookAt(orbitTarget);
@@ -8030,12 +8056,13 @@ function init(){
   setClock(T_MIN,{instant:true,force:true});
   setCommandView("none");
   setPresentation("study");
-  openFirstRun();
+  openFirstRun(); bootMark("state",tb);
   var probs=auditMovement();
   if(probs.length){
     console.warn("Austerlitz movement audit: "+probs.length+" leg(s) need attention");
     probs.forEach(function(x){ console.warn("  ",x.id,x.leg,x.why,x.kmh?x.kmh.toFixed(2)+" km/h":""); });
   }
+  bootMark("init",tb);
   loop();
 
   /* decision 141: the boot screen lifts once the embedded faces have loaded (fontsReady); a fault after it still lifts the screen, and is thrown */
@@ -9899,7 +9926,7 @@ function redrawGround(change){
   rescaleWorld();
   hold.forEach(function(h){ h[0].y=displayHeight(h[0].x,h[0].z)+h[1]; });
   if(plateauRing) reseatGeometry(plateauRing);
-  tween=null; camArc=null;
+  stopTweens(); camArc=null;   /* Stage 8, 8H (S-7): both slots stopped with the tween; until 8H the camera's slot was left set, and Follow (followActive) stayed idle */
   landCam.lookAt(orbitTarget); clampCamera();
   rebuildOverlays(curPhase,true);
   if(planSide){ var ps=planSide, fc=freeCam; planSide=null; freeCam=true; setPlan(ps); freeCam=fc; }
@@ -11178,8 +11205,10 @@ function devMark(){ var r=renderer.info.render; return {calls:r.calls,triangles:
 var devOn=/[?&]stats\b/.test(location.search), _devT=0, _devSeat=0;
 function kfmt(n){ return n>=1e6?(n/1e6).toFixed(2)+"M":(n>=1e3?(n/1e3).toFixed(1)+"k":String(n)); }
 function paintDevStats(now){
+  if(!devOn&&paintDevStats.off) return;   /* Stage 8, 8H (P-3): the readout off and hidden: nothing read or written in a frame */
   var el=paintDevStats.el||(paintDevStats.el=document.getElementById("devstats")); if(!el) return;   /* roadmap step 5 (SW-13): found once */
   if(el.hidden===devOn) el.hidden=!devOn;
+  paintDevStats.off=!devOn;
   if(!devOn||now-_devT<500) return;
   var sec=_devT?(now-_devT)/1000:1; _devT=now;
   var fps=DEV.frames/sec, sk=DEV.skipped/sec, se=(SEAT_STATS.blocks-_devSeat)/sec;
@@ -11572,7 +11601,7 @@ function paintChapterText(){
     var nm=fid; FEATURES.forEach(function(x){ if(x.id===fid) nm=x.name; });
     return '<button class="linkb" data-feat="'+esc(fid)+'">'+esc(nm)+'</button>';
   }).join(" ");
-  host.innerHTML='<h3>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h3>'+
+  host.innerHTML='<h2>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h2>'+   /* Stage 8, 8H (A-6): an h2 under the rail's h1 (an h3 until 8H) */
     '<p class="prose">'+esc(c.text)+'</p>'+
     '<div class="chapfeat">'+feats+'</div>';
   host.querySelectorAll("[data-feat]").forEach(function(b){
@@ -11969,11 +11998,11 @@ function paintPlanText(){
   host.innerHTML = sides.map(function(sd){
     var P=PLANS[sd];
     return '<div class="planblock plan-'+sd+'">'+
-      '<h3>'+esc(P.name)+'</h3>'+
+      '<h2>'+esc(P.name)+'</h2>'+   /* Stage 8, 8H (A-6): the panel's heads h2 and h3 under the rail's h1 (h3 and h4 until 8H, a skipped level) */
       '<p class="planauth">'+esc(P.author)+'</p>'+
-      '<h4>Intent</h4><p class="prose">'+esc(P.intent)+'</p>'+
-      '<h4>What it assumed</h4><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
-      '<h4>Orders</h4><dl class="kvs">'+P.cols.map(function(c){
+      '<h3>Intent</h3><p class="prose">'+esc(P.intent)+'</p>'+
+      '<h3>What it assumed</h3><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
+      '<h3>Orders</h3><dl class="kvs">'+P.cols.map(function(c){
         return '<div class="kv"><dt>'+esc(c.n)+'</dt><dd>'+esc(c.ord)+'</dd></div>'; }).join('')+'</dl>'+
       '<p class="note">'+esc(P.cost)+'</p></div>';
   }).join('');
@@ -13292,14 +13321,25 @@ function poseBlock(rec,id,st){
   if(!u||!u.body) return;
   var f=rec.f, mr=f.track?marchRate(id,clock):null;
   var moving=!!(mr&&mr.moving);
+  /* Stage 8, 8H (the block wheeling on after a pause, docs/STAGE8_SPEC.md sections 18.10 item 2 and 20.4): the block's own eases (its shape, its
+     standards' dip, its turn toward its heading at its arm's rate, WHEEL, a loose body's sway) run only while the clock moves on under Play
+     (adv: the clock is not where this block was last posed); with the clock standing (paused, or a dwell's hold) the pose is held as last
+     drawn; a seek (every move of the clock but Play's own advance: GAIT.seek, 8F's count) or the block's first pose shows that clock's pose at
+     once (sk), as the gait does since 8F. Until 8H the eases ran in real time whatever the clock did: a block still turning when the clock was
+     paused went on turning, its shape and dip easing on, and after a seek a block eased from wherever it stood, so a clock's pose depended on
+     the path to it */
+  var sk=rec.pSeek!==GAIT.seek||rec.yaw===undefined, adv=rec.pClock!==clock;
+  rec.pSeek=GAIT.seek; rec.pClock=clock;
 
   var sh=shapeFor(st);
   var rate=ease(moving?0.075:0.045);
   /* Stage 8, 8G's verification (docs/STAGE8_SPEC.md section 19.1): within the threshold that stops asking for frames, each eased value takes
      its target exactly, so a block at rest is drawn the same in every frame (until 8G the easing went on below it, moving the blocks by about
      1e-9 a frame: enough, at a shadow's or a depth test's edge, to change a pixel of a frame with nothing moving) */
-  if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002){ settling=true; u.sw += (sh[0]-u.sw)*rate; u.sd += (sh[1]-u.sd)*rate; }
-  else { u.sw=sh[0]; u.sd=sh[1]; }
+  if(sk){ u.sw=sh[0]; u.sd=sh[1]; }
+  else if(adv){
+    if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002){ settling=true; u.sw += (sh[0]-u.sw)*rate; u.sd += (sh[1]-u.sd)*rate; }
+    else { u.sw=sh[0]; u.sd=sh[1]; } }
   /* column and line are re-layouts of the same men, not a stretched block; the re-seat itself
      happens in settleBlock, once the frame's scale and yaw are known too */
   if(u.showBattalions && f.strength && f.track && trackedDescendants(id).length){
@@ -13307,8 +13347,10 @@ function poseBlock(rec,id,st){
     if(kb!==u.shownBat) u.showBattalions(kb);
   }
   var lowered = (st==="broken"||st==="captured"||st==="encircled"||st==="repulsed") ? 0.95 : 0;
-  if(Math.abs(lowered-(u.tilt||0))>0.002){ settling=true; u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05); }
-  else u.tilt=lowered;
+  if(sk) u.tilt=lowered;
+  else if(adv){
+    if(Math.abs(lowered-(u.tilt||0))>0.002){ settling=true; u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05); }
+    else u.tilt=lowered; }
 
   if(u.skirmish) u.skirmish.visible = !!SKIRMISH[st] && (!moving || st==="advancing" || st==="pursuing");
   if(rec.pad){
@@ -13326,8 +13368,11 @@ function poseBlock(rec,id,st){
   if(want===null) want=enemyFacing(id);
   if(want===null) return;
   var want0=want;
-  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;   /* a broken body sways: ambient, not settling */
-  if(rec.yaw===undefined) rec.yaw=rec.block.rotation.y||0;
+  /* a seek or the first pose: the clock's own heading at once, its turns kept (a loose body's sway eases in under Play); the clock standing:
+     the turn and the sway held where they are (8H) */
+  if(sk){ rec.yaw=rec.yaw===undefined?want0:want0+Math.PI*2*Math.round((rec.yaw-want0)/(Math.PI*2)); return; }
+  if(!adv) return;
+  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;   /* a broken body sways while the clock plays: not settling */
   var diff=want-rec.yaw, d0=want0-rec.yaw;
   while(diff>Math.PI) diff-=Math.PI*2;
   while(diff<-Math.PI) diff+=Math.PI*2;
@@ -13766,6 +13811,10 @@ function fitOverview(c){
    The button and the vantages' pressed state are brought up to date every animation frame (and by the self-test). */
 var curVantage=null;
 function syncFollow(){
+  /* Stage 8, 8H (docs/FINAL_AUDIT.md P-3): called every animation frame, idle ones too; it touches the document only when what it shows
+     changed (Follow, the vantage): until 8H it read eight buttons' attributes in every frame */
+  if(syncFollow.fc===freeCam&&syncFollow.cv===curVantage) return;
+  syncFollow.fc=freeCam; syncFollow.cv=curVantage;
   var b=document.getElementById("follow"), on=String(!freeCam);
   if(b&&b.getAttribute("aria-pressed")!==on) b.setAttribute("aria-pressed",on);
   var vs=syncFollow.vs||(syncFollow.vs=document.querySelectorAll(".van-btn"));   /* roadmap step 5 (SW-13): the static buttons found once, not every frame */
@@ -13810,7 +13859,7 @@ var LANDCAM=(function(){
     dx=Math.max(-FX,Math.min(FX,orbitTarget.x+dx))-orbitTarget.x; dz=Math.max(-FZ,Math.min(FZ,orbitTarget.z+dz))-orbitTarget.z;
     orbitTarget.x+=dx; orbitTarget.z+=dz; E.x+=dx; E.z+=dz;
     clampCamera(); landCam.lookAt(orbitTarget); free();
-    stats.moves++; stats.ms+=performance.now()-a; requestRender(2); return true;
+    var dm=performance.now()-a; stats.moves++; stats.ms+=dm; (stats.t||(stats.t=[])).push(dm); if(stats.t.length>512) stats.t.shift(); requestRender(2); return true;   /* Stage 8, 8H (T-7): each move's time kept, the last 512 */
   }
   function panEnd(){ if(grab){ grab=null; anchor(); requestRender(2); } }
   function zoomAt(sx,sy,k){
@@ -14971,7 +15020,8 @@ function paintChanges(phIdx){
   if(!items.length){ host.innerHTML=""; return; }
   items.sort(function(a,b){ return a.rank-b.rank; });
   items=items.slice(0,7);
-  host.innerHTML='<h4>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h4><ul>'+
+  host.innerHTML='<h3>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h3><ul>'+   /* Stage 8, 8H (A-6): an h3 under the dispatch's h2 (an h4 until 8H, a skipped level) */
+    ''+
     items.map(function(it){
       return '<li><i style="background:'+NATION[FORMATIONS[it.id].nation].fill+'"></i>'+
              '<span>'+esc(it.txt)+'</span></li>';
@@ -15667,7 +15717,7 @@ function dossierAnalysis(name){
   var len=0;
   for(var i=0;i<tl.p.length-1;i++) len+=Math.hypot(tl.p[i+1][0]-tl.p[i][0],tl.p[i+1][1]-tl.p[i][1]);
   wrap.appendChild(el("dl","kvs",
-    row("Length","about "+(len*0.5/UNITS_PER_KM).toFixed(1)+" km")+
+    row("Length","about "+(len*KM_PER_MAP).toFixed(1)+" km")+   /* Stage 8, 8H (docs/FINAL_AUDIT.md G-2): map units by GEOREF's own factor (0.5/UNITS_PER_KM typed the map-to-world factor until 8H) */
     row("Elevation along it","\u2248 "+Math.round(GEOREF.elevM(lo))+"\u2013"+Math.round(GEOREF.elevM(hi))+" m on this model")));
   var s2=el("div","sect");
   s2.innerHTML='<h3>Why it matters</h3><p class="prose">'+esc(tl.note)+'</p>';
@@ -16037,9 +16087,28 @@ function openSources(o){
   if(refs&&!(o&&o.repaint)) sc.scrollTop=0;   /* decision 203: the dossier's statements at the sheet's head */
 }
 
+/* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): the phase's message placed clear of the presentation switch and of
+   every control along the top of the screen. The stylesheet centres it over the free area at its top; where its box would cross a shown control
+   (the switch, the tools, the Panels or the Menu button: anything a visitor presses; the map layer's items aside, the message taking no pointer)
+   it moves down below that control, again until it crosses none, within the screen's top half. Until 8H the switch stood over its first words
+   in Study at every desktop size (77 x 22 px) and at 1024 px the opening's button lay under it too */
+function placeToast(t){
+  if(!t||!t.getBoundingClientRect||typeof getComputedStyle!=="function"||!document.querySelectorAll) return;   /* (runtime-test.js's page has no layout) */
+  t.style.top="";
+  var r=t.getBoundingClientRect(), top=r.top, H=r.height, n=0, moved=true;
+  if(!(r.width>0&&H>0)) return;
+  var C=[]; [].forEach.call(document.querySelectorAll("button,a[href],input,select,[role=button],[role=tab],[role=slider]"),function(e){
+    if(ML.root&&ML.root.contains(e)) return;
+    var q=e.getBoundingClientRect(); if(!(q.width>0&&q.height>0)||q.top>innerHeight/2) return;
+    for(var p=e;p&&p.nodeType===1;p=p.parentElement){ var s=getComputedStyle(p); if(s.display==="none"||s.visibility==="hidden"||+s.opacity===0) return; }
+    C.push(q); });
+  while(moved&&n++<16){ moved=false;
+    for(var i=0;i<C.length;i++){ var q=C[i]; if(q.right>r.left&&q.left<r.right&&q.bottom>top&&q.top<top+H){ top=q.bottom+8; moved=true; } } }
+  if(top!==r.top&&top+H<=innerHeight/2) t.style.top=Math.round(top)+"px";
+}
 function flash(msg){
   var t=document.getElementById("toast");
-  t.textContent=msg; t.classList.add("on");
+  t.textContent=msg; placeToast(t); t.classList.add("on");
   clearTimeout(flash._t);   /* roadmap step 5 (docs/FINAL_AUDIT.md SW-13): a second message keeps its whole 3.4 s */
   flash._t=setTimeout(function(){ t.classList.remove("on"); },3400);
 }
@@ -16119,8 +16188,14 @@ function dwellAdvance(dt,v){
       if(c+dt*v<z){ return c+dt*v; }
       if(c<z){ dt-=(z-c)/v; c=z; }
       else { d=Math.max(1e-6,E-c); }   /* already inside the ease (a change of speed): ease from here */
-      DWELL.st={E:E,d:d,te:2*d/v,stage:"in",tau:0}; continue;
+      DWELL.st={E:E,d:d,te:2*d/v,stage:"in",tau:0,v:v}; continue;
     }
+    /* Stage 8, 8H (docs/FINAL_AUDIT.md S-7; docs/STAGE8_SPEC.md section 20.4): a change of speed inside a dwell. Until 8H the ease kept the
+       speed it was entered at: from 4x to 1/2x mid-ease the clock eased on at 4x's pace and left the dwell at 4x's rate (37.8 clock minutes a
+       second), then dropped to 1/2x's 5. Now the ease's remaining time is scaled by the speeds' ratio (its fraction and distance kept): the
+       clock stays where it is, its rate changes by the ratio as a change of speed off the ease does, and the ease out ends at the new speed's
+       rate; during the hold only the ease out to come is rescaled (the hold is time) */
+    if(st.v!==v&&v>0){ var sf=st.v/v; st.te*=sf; if(st.stage!=="hold") st.tau*=sf; st.v=v; }
     var lim=st.stage==="hold"?DWELL.HOLD:st.te, step=Math.min(dt,lim-st.tau);
     st.tau+=step; dt-=step;
     var k=lim>0?st.tau/lim:1;
@@ -16345,7 +16420,8 @@ var lastFrame=0;
 /* ---- render on demand ----
    A frame is drawn when something changes: a tween, playback, recent input, an easing that has
    not arrived (settling), or a request from a state change. When the only motion is slow drift -
-   mist, smoke, dust, a broken formation's sway - frames drop to the ambient rate; when nothing
+   mist, smoke, dust (a broken formation's sway was drift until 8H; since, it is the block's pose, held while the clock stands) -
+   frames drop to the ambient rate; when nothing
    moves, nothing is drawn. Easings are time-based through ease(), so they run at the same
    wall-clock speed at any frame rate. */
 var needFrames=3, lastInput=0, lastAmbient=0, settling=false, FK=1;
@@ -16360,7 +16436,7 @@ function ambientNow(){
   for(var id in units){
     var r=units[id];
     if((r.smoke&&r.smoke.visible)||(r.dust&&r.dust.visible)) return true;
-    if(r.block&&r.block.visible&&LOOSE[liveStatus(id,curPhase)]) return true;
+    /* a broken formation's sway is no longer drift: since 8H it is part of the block's pose, which the clock standing holds (poseBlock) */
   }
   return false;
 }
@@ -16396,6 +16472,7 @@ function loop(){
   smokeT=HARNESS?0:now*0.001;
   renderFrame();
   if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT&&!AUS_BOOT.done) AUS_BOOT.ok();   /* the first frame drawn: the start-up guard's watch ends */
+  if(BOOTMS.firstFrameAt===undefined) BOOTMS.firstFrameAt=Math.round(performance.now());   /* Stage 8, 8H (P-4): from the page's start */
   loop._n=(loop._n||0)+1;
   if(devOn&&loop._n%120===0){ var fe=AUSTERLITZ_DEBUG.figureError();   /* with the readout on: a periodic check of the seating */
     if(fe.worst>0.02&&!loop._warned){ loop._warned=true; console.warn("Austerlitz runtime check: a figure is "+fe.worst.toFixed(3)+" units off the drawn ground ("+fe.where+")"); } }
@@ -18570,12 +18647,15 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("camera: orbiting at the lowest pitch and closest zoom never enters the ground", orbBad===0,
         orbN+" orbit positions around "+views.length+" targets; lowest clearance "+orbMin.toFixed(2)+" units");
       /* Stage 3D: the landscape's controls, through real pointer and wheel events, from every vantage */
-      var m0=LANDCAM.stats.moves, t0m=LANDCAM.stats.ms, lc=landControls(), kt=landKeysTouch(), mv=LANDCAM.stats.moves-m0, msMove=mv?(LANDCAM.stats.ms-t0m)/mv:0;
+      /* Stage 8, 8H (docs/FINAL_AUDIT.md T-7): a pan move's time judged at its median over this run's moves (its 95th percentile reported), not
+         the mean, which one move slowed by a busy machine could lift past the budget */
+      var m0=LANDCAM.stats.moves, t0m=LANDCAM.stats.ms; LANDCAM.stats.t=[]; var lc=landControls(), kt=landKeysTouch(), mv=LANDCAM.stats.moves-m0, mvT=(LANDCAM.stats.t||[]).slice().sort(function(p,q){ return p-q; }),
+        msMean=mv?(LANDCAM.stats.ms-t0m)/mv:0, msMove=mvT.length?mvT[Math.floor((mvT.length-1)/2)]:msMean, ms95=mvT.length?mvT[Math.min(mvT.length-1,Math.floor(mvT.length*0.95))]:msMean;
       ck("camera controls: a left-drag pans (the grabbed ground point within 1 px of the pointer during and after), the wheel zooms toward the cursor (within 1 px, a step the floor shortens included), a double-click centres the point in the free rectangle (within 2 px), a right-drag orbits; the eye at or above the floor after every step",
         lc.pan<=1&&lc.panAfter<=1&&lc.zoom<=1&&lc.focus<=2&&!lc.orbitBad&&!lc.below&&!lc.lost.length&&lc.panN>0&&lc.zoomN>0&&msMove<=2,
         lc.views+" vantages: pan worst "+lc.pan.toFixed(3)+" px during ("+lc.panN+" steps; "+lc.panLifted+" the floor lifted, counted apart), "+lc.panAfter.toFixed(3)+" px after; wheel worst "+
         lc.zoom.toFixed(3)+" px over "+lc.zoomN+" steps ("+lc.zoomStops+" shortened by the floor); double-click "+lc.focus.toFixed(3)+" px from the free centre; right-drag orbits "+(lc.orbitN-lc.orbitBad)+" of "+lc.orbitN+
-        "; below the floor "+lc.below+"; a pan move "+msMove.toFixed(3)+" ms on average over "+mv+" (budget 2 ms)"+(lc.lost.length?"; "+lc.lost.join(", "):""));
+        "; below the floor "+lc.below+"; a pan move "+msMove.toFixed(3)+" ms at the median over "+mv+" (95th percentile "+ms95.toFixed(3)+", mean "+msMean.toFixed(3)+"; budget 2 ms at the median)"+(lc.lost.length?"; "+lc.lost.join(", "):""));
       ck("camera controls: the keys on the focused map layer pan, zoom and turn without stepping the clock; one finger pans, two pinch and twist",
         kt.keyPan>1&&kt.keyZoom<1&&Math.abs(kt.keyTurnDeg-15)<0.01&&kt.clockKept&&kt.keyFree&&kt.touchPan<=1&&kt.pinchRatio<1&&Math.abs(kt.twistDeg)>1,
         "the right arrow moves the target "+kt.keyPan+" units; + brings the eye to "+kt.keyZoom+" of its distance; Shift + left arrow turns "+kt.keyTurnDeg+"\u00b0; clock "+(kt.clockKept?"unchanged":"MOVED")+
@@ -20531,6 +20611,55 @@ var AUSTERLITZ_DEBUG=(function(){
         ck("the gait at a pause (8F's prerequisite, decision 244 (a)): Play, the speed and Pause by their buttons through the app's own loop, an infantry division, a cavalry corps and a limbered battery paused from half speed, in the fade and faded out: the first paused frame's gait the last played's and every paused frame's the first's, the frame and the sun's depth map drawn with the formation alone unchanged; resumed, on from the amplitude held; a seek the clock's own pose at once; the dwell's hold held; reduced motion at once",
           !kBad.length, kT.join("; ")+(kBad.length?"; WRONG: "+kBad.slice(0,6).join("; "):""));
 
+        /* (l) Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.4; 8F's finding, section 18.10 item 2): the blocks' own pose at a pause,
+           a seek and a resume. The loop run one frame at a time on a clock of the test's, its draw skipped (as (k)); Play at 4x by its buttons from
+           08:40 until a shown block stands more than 0.3 rad from the heading it turns to (not a loose body's sway), then Pause: in 30 paused
+           frames every shown block's heading, shape, standards' dip and quaternion as at the pause (until 8H the block turned on at its arm's
+           rate, WHEEL, with the clock standing); a seek by the next-ten-minutes button: every shown block at its own heading in the first frame,
+           and the same pose as that clock reached from 23 minutes before; resumed by the button, paused mid-turn first, the block turns on from
+           where it was held (toward its heading, not snapped to it) */
+        var lBad=[], lT=[], lNow=performance.now, lOwn=Object.prototype.hasOwnProperty.call(performance,"now"), lRaf=window.requestAnimationFrame, lTm=lNow.call(performance), lDw=DWELL.on, lSp=speed, lRender=renderer.render;
+        function LF(n){ for(var i=0;i<(n||1);i++){ lTm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=lRender; } } }
+        function lClick(sel){ var b=document.querySelector(sel); if(!b) throw new Error("no "+sel); b.click(); }
+        function lPoses(){ var o={}; shown().forEach(function(id){ var r=units[id], b=r.block, u=b.userData; if(!u||!u.body) return; var w=headingAt(id,clock); if(w===null) w=enemyFacing(id);
+          var d=w===null?0:w-(r.yaw||0); while(d>Math.PI) d-=2*Math.PI; while(d<-Math.PI) d+=2*Math.PI;
+          o[id]=[r.yaw||0,u.sw,u.sd,u.tilt||0,b.quaternion.x,b.quaternion.y,b.quaternion.z,b.quaternion.w,Math.abs(d),LOOSE[liveStatus(id,curPhase)]?1:0]; }); return o; }
+        function lDiff(a,b){ var m=0; Object.keys(a).forEach(function(id){ if(!b[id]) return; for(var i=0;i<8;i++) m=Math.max(m,Math.abs(a[id][i]-b[id][i])); }); return m; }
+        try{
+          performance.now=function(){ return lTm; }; window.requestAnimationFrame=function(){ return 0; };
+          if(playing) lClick("#play"); dwellSet(false); setClock(520,{instant:true,force:true,camera:false}); finishTween(); settleAll(); lastFrame=lTm;
+          lClick('.spd-btn[data-s="4"]'); lClick("#play");
+          var turn=null, nT=0; while(!turn&&nT<300){ LF(1); nT++; var P=lPoses(); for(var pid in P) if(P[pid][8]>0.3&&!P[pid][9]){ turn=pid; break; } }
+          if(!turn) lBad.push("no block turning more than 0.3 rad in "+nT+" frames of Play from 08:40");
+          else {
+            var tP=clock; lClick("#play"); if(playing) lBad.push("the button did not pause");
+            var P0=lPoses(), mv=0, worst=0; for(var f=0;f<30;f++){ LF(1); var dd=lDiff(P0,lPoses()); if(dd>0){ mv++; worst=Math.max(worst,dd); } }
+            if(mv) lBad.push("paused at "+fmtClock(tP)+", the blocks' pose moved in "+mv+" of 30 frames (by up to "+worst.toFixed(4)+")");
+            lT.push("paused at "+fmtClock(tP)+" with "+turn+" "+P0[turn][8].toFixed(3)+" rad from its heading: "+Object.keys(P0).length+" blocks held for 30 frames ("+mv+" moved)");
+            var tS=clock+10; lClick("#next"); LF(1); var S1=lPoses(), off=0, offAt="";
+            if(Math.abs(clock-tS)>1e-9) lBad.push("the next ten minutes' button did not move the clock");
+            Object.keys(S1).forEach(function(k){ if(!S1[k][9]&&S1[k][8]>off){ off=S1[k][8]; offAt=k; } });
+            if(off>1e-9) lBad.push("sought, "+offAt+" "+off.toFixed(4)+" rad from its heading in the first frame");
+            setClock(tS-23,{instant:true,camera:false}); LF(3); setClock(tS,{instant:true,camera:false}); LF(1); var dS=lDiff(S1,lPoses());
+            if(dS>1e-9) lBad.push("the clock sought by the button and from 23 minutes before not one pose (by "+dS.toFixed(6)+")");
+            lT.push("sought to "+fmtClock(tS)+": "+Object.keys(S1).length+" blocks at their own heading in the first frame, the same pose from 23 minutes before");
+            /* resumed: paused mid-turn first (Play's own advance into the turn), then on by the button */
+            setClock(tP-3,{instant:true,camera:false}); LF(2); lClick("#play"); var nR=0, h0=null; while(nR<120){ LF(1); nR++; var Pq=lPoses(); if(Pq[turn]&&Pq[turn][8]>0.05){ h0=Pq[turn][8]; break; } }
+            lClick("#play"); LF(3); var hH=lPoses()[turn];
+            if(!hH||h0===null) lBad.push(turn+": not turning when paused again");
+            else { if(Math.abs(hH[8]-h0)>1e-9) lBad.push(turn+": paused mid-turn, it turned on ("+h0.toFixed(4)+" to "+hH[8].toFixed(4)+" rad)");
+              lClick("#play"); LF(1); var hR=lPoses()[turn]; lClick("#play");
+              if(!(hR&&hR[8]<hH[8]-1e-6&&hR[8]>1e-6)) lBad.push(turn+": resumed, "+(hR?hR[8].toFixed(4):"none")+" rad from its heading after "+hH[8].toFixed(4)+" held (turning on from where it was held expected)");
+              else lT.push("resumed mid-turn: "+turn+" from "+hH[8].toFixed(3)+" rad held to "+hR[8].toFixed(3)+" in the first frame"); }
+          }
+        } catch(err){ lBad.push("threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+        } finally {
+          if(lOwn) performance.now=lNow; else delete performance.now; window.requestAnimationFrame=lRaf; renderer.render=lRender;
+          if(playing) stopPlay(); dwellSet(lDw); setSpeed(lSp); lastFrame=0;
+        }
+        ck("the blocks' pose at a pause (8H): Play at 4x and Pause by their buttons through the app's own loop with a block turning: every block's heading, shape, dip and quaternion held in the paused frames; a seek every block at its own heading at once, the same pose by two paths; resumed, the turn on from where it was held",
+          !lBad.length, lT.join("; ")+(lBad.length?"; WRONG: "+lBad.slice(0,6).join("; "):""));
+
         /* (g) S-5: the facing a function of the clock: every formation's facing the same however its clock was reached */
         var gBad=[], gN=0;
         PHASES.forEach(function(ph,pi){ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(function(t){ var R=[];
@@ -20892,7 +21021,7 @@ var AUSTERLITZ_DEBUG=(function(){
     needFrames=0; lastInput=-1e9; settling=false; panelMoveUntil=0;
     var sOff=frameState(performance.now()+1000), keepRM=RM, src=0, sWait, sAmb, sRM;
     try{ AMBIENT_TEST=true; RM=false;   /* this check only: drift as a visitor's page has it (see AMBIENT_TEST) */
-      for(var did in units){ var ur=units[did]; if((ur.smoke&&ur.smoke.visible)||(ur.dust&&ur.dust.visible)||(ur.block&&ur.block.visible&&LOOSE[liveStatus(did,curPhase)])) src++; }
+      for(var did in units){ var ur=units[did]; if((ur.smoke&&ur.smoke.visible)||(ur.dust&&ur.dust.visible)) src++; }   /* since 8H a broken body's sway is the pose's, held while the clock stands, not drift */
       var tA=performance.now(); lastAmbient=tA;
       sWait=frameState(tA+AMBIENT_MS*0.5); sAmb=frameState(tA+AMBIENT_MS);
       RM=true; sRM=frameState(tA+AMBIENT_MS);
@@ -20900,7 +21029,7 @@ var AUSTERLITZ_DEBUG=(function(){
     if(DISPLAY.factor!==f0) setDisplayFactor(f0);
     ck("render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate",
       sIdle==="idle"&&src>0&&sWait==="waiting"&&sAmb==="ambient"&&sRM==="idle"&&(!HARNESS||sOff==="idle"),
-      "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust, smoke or a broken formation's sway): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
+      "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust or smoke): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
       (HARNESS?"; the harness's own frames "+sOff+" (drift off under ?harness=1; AMBIENT_TEST turned it on for this check only)":""));
 
     /* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md sections 5, 7.3, 7.4 and 18): water, woods and the near

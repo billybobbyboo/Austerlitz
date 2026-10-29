@@ -33,7 +33,7 @@ function ctex(cv){
   t.generateMipmaps=false; t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;
   return t;
 }
-function W(mx,my){ return [(mx-340)*0.5, (my-250)*0.5]; }
+function W(mx,my){ var o=GEOREF.WORLD_ORIGIN, k=GEOREF.MAP_PER_WORLD; return [(mx-o[0])/k, (my-o[1])/k]; }   /* since 8H (G-2) GEOREF's factor and origin, not typed: the same numbers (a division by 2 is exact as the product by 0.5 was) */
 function M2W(pts){ return pts.map(function(p){ return W(p[0],p[1]); }); }
 
 var UNITS_PER_KM = GEOREF.UNITS_PER_KM;   /* from geo.js: the only scale */
@@ -199,7 +199,7 @@ var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
    from the local relief, because the floor, the land-cover thresholds and the pond levels are
    calibrated on local relief and must keep their meaning. World units, before the 1.2 factor. */
 function regionalH(x,z){
-  var nk=GEOREF.mapToEN(x*2+340,z*2+250)[1];                 /* true northing, km           */
+  var nk=GEOREF.mapToEN(x*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[0],z*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[1])[1];   /* true northing, km (W's inverse by GEOREF's own factor and origin since 8H, G-2) */
   var dv=Math.min(polyDist(x,z,LITAVA),polyDist(x,z,BROOKS[BROOKS.length-1]));
   return 0.51*smoothstep(3.0,6.0,nk) + 0.37*nk - 3.16*Math.exp(-(dv*dv)/625);
 }
@@ -518,10 +518,13 @@ function groundGeometry(){
   scaleGround(geo);
   return geo;
 }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md P-4): buildWorld's phases timed once at the start, in milliseconds (read by app.js's BOOTMS) */
+var WORLDMS={};
 function buildWorld(scene){
-  buildCover();
-  buildGrid();
-  buildCoverMl();
+  var tw=(typeof performance!=="undefined")?performance.now():0, wm=function(k){ if(typeof performance!=="undefined") WORLDMS[k]=Math.round((performance.now()-tw)*10)/10; };
+  buildCover(); wm("cover");
+  buildGrid(); wm("grid");
+  buildCoverMl(); wm("coverMl");
 
   var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
   var sctx=sc.getContext("2d");
@@ -532,7 +535,7 @@ function buildWorld(scene){
     new THREE.MeshBasicMaterial({map:ctex(sc),side:THREE.BackSide,fog:false,depthWrite:false}));
   scene.add(domeMesh);
 
-  var geo=groundGeometry();
+  var geo=groundGeometry(); wm("groundGeometry");
   (function(){
     var cov=new Float32Array(FACE.n*3);
     for(var f=0;f<FACE.n;f++){
@@ -552,18 +555,18 @@ function buildWorld(scene){
   groundMesh.material.userData.grain=groundMesh.material.map;
   groundMesh.receiveShadow=true;
   scene.add(groundMesh);
-  applyGround();
+  applyGround(); wm("ground");
 
-  buildWater(scene);
-  buildRoads(scene);
-  buildSettlements(scene);
-  buildWoods(scene);
+  buildWater(scene); wm("water");
+  buildRoads(scene); wm("roads");
+  buildSettlements(scene); wm("settlements");
+  buildWoods(scene); wm("woods");
   apronMesh=buildApron(scene);
   buildContours(scene);
   buildMarshSymbols(scene);
   buildAnalysis(scene);
   buildMist(scene);
-  buildPaperSymbols(scene);
+  buildPaperSymbols(scene); wm("rest");
 
   return {ground:groundMesh, apron:apronMesh, dome:domeMesh, mist:mistGroup, trees:treeMesh, conifers:coniferMesh, scrub:scrubMesh,
           houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, iceRims:iceRims, roads:roadMeshes,

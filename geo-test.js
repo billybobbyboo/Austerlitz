@@ -58,6 +58,17 @@ const PAIRS=[]; GTK.forEach(i=>GTK.forEach(j=>{ if(i!==j&&havKm(G.GT[i],G.GT[j])
 console.log('-- one scale --');
 check('world.js takes UNITS_PER_KM from GEOREF', /var UNITS_PER_KM = GEOREF\.UNITS_PER_KM;/.test(WORLD) && Math.abs(M.UNITS_PER_KM-G.UNITS_PER_KM)<1e-12);
 check('app.js takes KM_PER_MAP from GEOREF', /var KM_PER_MAP=GEOREF\.KM_PER_MAP;/.test(APP));
+/* Stage 8, 8H (docs/FINAL_AUDIT.md G-2): the map-to-world factor and origin GEOREF's own, read by W, regionalH's inverse and SUN_DAY (each typed
+   them until 8H; tools/stage8/g2-8h.js showed every coordinate, height and cover cell identical after the change) */
+{ const wast=require('acorn').parse(WORLD,{ecmaVersion:2020}), fnSrc=(src,name)=>{ const n=wast.body.find(q=>q.type==='FunctionDeclaration'&&q.id.name===name); return n?src.slice(n.start,n.end):''; };
+  const w=fnSrc(WORLD,'W'), rh=fnSrc(WORLD,'regionalH');
+  check('GEOREF exports the map-to-world factor and origin, consistent with its scale', G.MAP_PER_WORLD===2&&Array.isArray(G.WORLD_ORIGIN)&&G.WORLD_ORIGIN[0]===340&&G.WORLD_ORIGIN[1]===250&&Object.isFrozen(G.WORLD_ORIGIN)&&Math.abs(G.K/G.UNITS_PER_KM-G.MAP_PER_WORLD)<1e-12,
+    'MAP_PER_WORLD '+G.MAP_PER_WORLD+', WORLD_ORIGIN '+JSON.stringify(G.WORLD_ORIGIN));
+  check('world.js W and regionalH read them, no copy typed (G-2)', /GEOREF\.WORLD_ORIGIN/.test(w)&&/GEOREF\.MAP_PER_WORLD/.test(w)&&!/0\.5|340|250/.test(w)&&/GEOREF\.WORLD_ORIGIN/.test(rh)&&!/\*2\+340|\+340|\+250/.test(rh),
+    w.length&&rh.length?'W and regionalH read GEOREF':'W or regionalH not found');
+  check("app.js SUN_DAY takes the field's centre from GEOREF, and no theme's length types the factor (G-2)", /GEOREF\.toGeo\(GEOREF\.WORLD_ORIGIN\[0\],GEOREF\.WORLD_ORIGIN\[1\]\)/.test(APP)&&!/toGeo\(340,250\)/.test(APP)&&!/len\*0\.5\/UNITS_PER_KM/.test(APP));
+  const Wp=M.W(G.WORLD_ORIGIN[0],G.WORLD_ORIGIN[1]), W1=M.W(G.WORLD_ORIGIN[0]+G.MAP_PER_WORLD,G.WORLD_ORIGIN[1]);
+  check("W maps GEOREF's origin to the world's and MAP_PER_WORLD map units to one world unit", Wp[0]===0&&Wp[1]===0&&W1[0]===1&&W1[1]===0); }
 const stale=[]; [['app.js',APP],['world.js',WORLD],['redteam.js',fs.readFileSync('redteam.js','utf8')],['sim-test.js',fs.readFileSync('sim-test.js','utf8')],['audit.js',fs.readFileSync('audit.js','utf8')]]
   .forEach(([f,t])=>{ (t.match(/0\.019\d*|\b26\.1\b/g)||[]).forEach(m=>stale.push(f+':'+m)); });
 check('no hard-coded legacy scale constants anywhere', stale.length===0, stale.join(', '));

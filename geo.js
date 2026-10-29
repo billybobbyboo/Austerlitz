@@ -36,6 +36,8 @@ var GEOREF = (function(){
   /* ---- horizontal scale: the only one ---- */
   var KM_PER_MAP   = 1/K;          /* 0.03160 km per map unit           */
   var MAP_PER_WORLD= 2;            /* W(): one world unit = two map units */
+  var WORLD_ORIGIN = [340,250];    /* W(): the map point at the world's origin, the field's centre (world.js W, regionalH's inverse and
+                                      app.js SUN_DAY read it here since Stage 8's 8H, docs/FINAL_AUDIT.md G-2; until then each typed it) */
   var UNITS_PER_KM = K/MAP_PER_WORLD;     /* world units per km         */
   var M_PER_WORLD  = 1000/UNITS_PER_KM;   /* metres per world unit      */
 
@@ -117,6 +119,7 @@ var GEOREF = (function(){
     toMap:toMap, toGeo:toGeo, mapToEN:mapToEN,
     K:K, ROT_DEG:ROT, NORTH:NORTH,
     KM_PER_MAP:KM_PER_MAP, UNITS_PER_KM:UNITS_PER_KM, M_PER_WORLD:M_PER_WORLD,
+    MAP_PER_WORLD:MAP_PER_WORLD, WORLD_ORIGIN:Object.freeze(WORLD_ORIGIN.slice()),
     V_M_PER_UNIT:V_M_PER_UNIT, DATUM_M:DATUM_M, EXAG:EXAG, elevM:elevM, unitsFromM:unitsFromM,
     kmBetween:kmBetween, bearingDeg:bearingDeg, compass8:compass8, northingKm:northingKm,
     place:function(id){ return GT[id].map.slice(); }
