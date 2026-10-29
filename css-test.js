@@ -630,12 +630,14 @@ if(cerrs) process.exitCode=1;
   /* the near ground */
   if(!/^var GDETAIL=\{amount:0\.55, near:14, far:60, k:7\.3, rot:0\.61, lo:0\.62, hi:1\.38,/m.test(wsrc)) ferr.push("GDETAIL's values changed");
   const gd=wvar("GROUND_FRAG_DETAIL");
-  if(!/if\(uMode>0\.5&&uMode<1\.5&&uDetail\.x>0\.0\)\{/.test(gd)||!/float gDf=uDetail\.x\*\(1\.0-smoothstep\(uDetail\.y,uDetail\.z,length\(vViewPosition\)\)\);/.test(gd)) ferr.push("the near detail is not the landscape's natural ground's alone, faded by the eye's distance");
+  if(!/if\(uMode>0\.5&&uMode<1\.5&&\(uDetail\.x>0\.0\|\|uDebug>4\.5\)\)\{/.test(gd)||!/float gDf=uDetail\.x\*\(1\.0-smoothstep\(uDetail\.y,uDetail\.z,length\(vViewPosition\)\)\);/.test(gd)) ferr.push("the near detail is not the landscape's natural ground's alone, faded by the eye's distance");
   if(!/vec2 gDu=mat2\(uDetailR\.x,uDetailR\.y,-uDetailR\.y,uDetailR\.x\)\*vUv\*uDetail\.w;/.test(gd)||/gl_FragCoord/.test(gd)) ferr.push("the near detail is not anchored to the ground (its uv)");
   if(!/texelColor\.rgb\*=mix\(1\.0,clamp\(gDl,uDetailC\.x,uDetailC\.y\),gDf\);/.test(gd)||!/\/max\(uCellLum\[int\(gCell\+0\.5\)\],0\.001\);/.test(gd)) ferr.push("the near detail is not its cell's grey ratio within GDETAIL's clamp (a new colour, or the class's tone moved)");
   if(!/^  groundDetail\(!lowTier\);/m.test(src)) ferr.push("the near detail is not off under lowTier (decision 236)");
-  if(!/flip=!\(_atlas&&_atlas\.flipY===false\);/.test(wfn("atlasLum"))||!/cy=\(flip\?2-Math\.floor\(k\/4\):Math\.floor\(k\/4\)\)\*R,/.test(wfn("atlasLum"))) ferr.push("the near detail's cells' means are not taken as the shader samples the cells (three uploads the canvas flipped)");
-  if(!/\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))||!/"#ifdef USE_MAP\\n"\+\s*"  vec4 texelColor=gAtlas\(map,tuv\);\\n"\+\s*"  texelColor=mapTexelToLinear\(texelColor\);\\n"\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))) ferr.push("the near detail is not inside the ground's texture (USE_MAP: none on the paper map, whose ground has no texture)");
+  if(!/flip=!\(_atlas&&_atlas\.flipY===false\);/.test(wfn("atlasLum"))||!/cy=\(flip\?2-Math\.floor\(k\/4\):Math\.floor\(k\/4\)\)\*R,/.test(wfn("atlasLum"))) ferr.push("the near detail's cells' means are not taken as the shader samples the cells (the flip read from the texture as uploaded)");
+  if(!/\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))||!/"#ifdef USE_MAP\\n"\+\s*"  vec4 texelColor=gAtlas\(map,tuv\);\\n"\+\s*"  vec4 gDbgT=texelColor;\\n"\+[^\n]*\n\s*"  texelColor=mapTexelToLinear\(texelColor\);\\n"\+\s*GROUND_FRAG_DETAIL\+/.test(wfn("atlasShader"))) ferr.push("the near detail is not inside the ground's texture (USE_MAP: none on the paper map, whose ground has no texture)");
+  /* the near detail's debug sample (8G's prerequisite 1) never scales the texel: the scaling only where it is not asked for */
+  if(!/if\(uDebug>4\.5\) gDbgD=gDc; else \{/.test(gd)) ferr.push("the near detail's debug sample is not apart from the detail's scaling (uDebug 5)");
   /* the self-test's bounds */
   if(!/var ICE8F=\{SHORE:1\.10, MARGIN:1\.25\};/.test(src)) ferr.push("the self-test's ice bounds (ICE8F) are not 1.10 at the shore and 1.25 at the margin");
   if(!/var WOODS8E=\{wood:634, village:184, conifer:376, edge:354, stream:202\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's 8E woods (WOODS8E, KIT8E) are not 8E's");
@@ -657,6 +659,31 @@ if(cerrs) process.exitCode=1;
   rerr.forEach(e=>console.log("  ! "+e));
   console.log("a block at rest (8G's verification): "+(rerr.length?rerr.length+" wrong":"its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames"));
   if(rerr.length) process.exitCode=1;
+}
+/* Stage 8, implementation PR 8G's prerequisite 1 (the audit of 8F; docs/STAGE8_SPEC.md section 19.1): the ground's atlas mapped as painted. Both
+   atlases uploaded with their rows as painted (flipY false: the shader's cell k, rows from the texture's first, is the canvas's cell k the right
+   way up); the photographs' normals turned to the atlas's own convention as they are blended in (their green, OpenGL's, toward the image's top;
+   the patterns' toward its foot, the way the shader's v runs); the procedural painters shared by the atlases and the self-test's check; the
+   shader's debug outputs (uDebug 2 to 5, the cell forced by uDebugCell) each behind its own uDebug test, both 0 as built, so that nothing drawn
+   changes; the self-test's check of the mapping present */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), wsrc=fs.readFileSync('world.js','utf8'), wast=acorn.parse(wsrc,{ecmaVersion:2020}), perr=[];
+  const wfn=name=>{ const n=wast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?wsrc.slice(n.start,n.end):""; };
+  const ca=wfn("coverAtlas"), cn=wfn("coverNormalAtlas"), pn=wfn("photoNormal"), as=wfn("atlasShader"), gu=wfn("groundUniforms");
+  if(!/_atlas=new THREE\.CanvasTexture\(c\);\s*_atlas\.flipY=false;/.test(ca)||!/paintAtlasCells\(d,CW\);/.test(ca)) perr.push("the colour atlas is not uploaded as painted (flipY false) from paintAtlasCells");
+  if(!/_nrmAtlas=new THREE\.CanvasTexture\(c\);\s*_nrmAtlas\.flipY=false;/.test(cn)||!/paintNormalCells\(d,CW\);/.test(cn)) perr.push("the normal atlas is not uploaded as painted (flipY false) from paintNormalCells");
+  if(!/var nx=-\(hR-hL\)\*s, ny=-\(hU-hD\)\*s, nz=1\.0;/.test(wfn("paintNormalCells"))) perr.push("the patterns' normals are not differentiated along the canvas's rows and down its columns (their green toward its foot)");
+  if(!/d\[o\+1\]=Math\.round\(d\[o\+1\]\*\(1-w\)\+\(255-ph\[p\+1\]\)\*w\);/.test(pn)) perr.push("the photographs' normals are not turned to the atlas's convention as they are blended in (their green, OpenGL's, toward the image's top)");
+  if(/flipY\s*=\s*true/.test(wsrc)) perr.push("a texture of world.js uploaded flipped");
+  if(!/"float gCell=uDebug>1\.5\?uDebugCell:\(uMode>0\.5\?/.test(wsrc)) perr.push("the forced cell is not the debug outputs' alone (uDebug above 1.5)");
+  { const m=/\.replace\("#include <dithering_fragment>",([\s\S]*?)\);\s*\};/.exec(as), body=m?m[1]:"";
+    const assigns=(body.match(/gl_FragColor=/g)||[]).length, guarded=(body.match(/if\(uDebug>[0-9.]+(&&uDebug<[0-9.]+)?\) gl_FragColor=/g)||[]).length;
+    if(!m||assigns!==5||guarded!==5) perr.push("the ground's debug outputs are not five, each behind its own uDebug test ("+guarded+" of "+assigns+")"); }
+  if(!/uDebug:\{value:0\}, uDebugCell:\{value:0\}/.test(gu)) perr.push("the debug uniforms are not 0 as built");
+  if(!/the ground's atlas \(8G's prerequisite 1\): each cover cell drawn from its own painting, the right way up/.test(src)) perr.push("the self-test's check of the atlas's mapping is missing");
+  perr.forEach(e=>console.log("  ! "+e));
+  console.log("the ground's atlas (8G's prerequisite 1): "+(perr.length?perr.length+" wrong":"both atlases uploaded as painted, the photographs' normals turned to the patterns' convention, the painters shared with the self-test, the debug outputs behind uDebug and off as built, the self-test's check present"));
+  if(perr.length) process.exitCode=1;
 }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */

@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 6ba949da17229530324add3c54dd94ff (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "6ba949da17229530324add3c54dd94ff",
- "count": 301,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 1dbb7d85977f153fc7b75b6ba1e2acbe (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "1dbb7d85977f153fc7b75b6ba1e2acbe",
+ "count": 302,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -303,6 +303,7 @@
   "the water still (8F, decision 246 (a): no animated water): the meres and the Goldbach drawn, then again after ten seconds of the app's frames with the clock standing, the same pixels; at rest no frame asked",
   "the meres' ice (8F, decision 246 (a)): the shore ice a band feathered at both edges (no hard ring), the rimed margin lighter than the clear middle; in the frame the shore band at most 1.1 times the field beside the shore and the rimed margin at most 1.25 times",
   "the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
-  "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural ground, its mean tone kept (each cell's mean that of the cell the shader samples), nothing of it beyond its far edge, none on the paper map, off under lowTier"
+  "the near ground (8F, decision 247 (a)): a finer sample of each class's own texture near the eye on the natural ground, its mean tone kept (each cell's mean that of the cell the shader samples), nothing of it beyond its far edge, none on the paper map, off under lowTier",
+  "the ground's atlas (8G's prerequisite 1): each cover cell drawn from its own painting, the right way up, in the colour atlas, the normal atlas and the near detail, as repainted by the photographs and as painted; its normals turned the way its patterns rise, the photographs' and the patterns' one convention"
  ]
 }

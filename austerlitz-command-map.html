@@ -5450,25 +5450,35 @@ function coverPatterns(){
   return _pats;
 }
 var _atlas=null, _atlasCanvas=null;
-function coverAtlas(){
-  if(_atlas) return _atlas;
-  var CW=2048, CH=1536, R=512, IN=480, G=16;
-  var c=document.createElement("canvas"); c.width=CW; c.height=CH;
-  var x=c.getContext("2d"), img=x.createImageData(CW,CH), d=img.data;
-  function cell(cx,cy,fn){
+var ATLAS_PHOTO={colour:false, normal:false};   /* 8G's prerequisite 1: the photographs painted into each atlas (the self-test's check of the mapping reads the atlas as repainted) */
+/* Stage 8, implementation PR 8G's prerequisite 1 (the audit of 8F; docs/STAGE8_SPEC.md section 19.1): the atlases are uploaded as painted, rows
+   from the canvas's top (flipY false), so that the shader's cell k, (k mod 4, floor(k/4)) with tuv's v from the texture's first row, is the
+   canvas's cell k, and the pattern within it is painted's own way up: v = fract(vUv.y) is the canvas's row j = G + IN v of that cell. Until 8G
+   three uploaded the canvases flipped (CanvasTexture's default), so the shader drew for cell k the canvas's cell (k mod 4, 2 - floor(k/4)),
+   upside down: the open field, meadow, marsh and water wore the plough's, the pasture's, the winter sowing's and the trodden ground's grain and
+   the other way round (2F's drawing, found in 8F: tools/stage8/atlas-8f.js). The cell painters, made once for the canvases and again, unchanged,
+   by the self-test's check of the mapping (the procedural atlas as painted, without reading a canvas back) */
+function paintAtlasCells(d,CW){
+  var R=512, IN=480, G=16, pats=coverPatterns();
+  for(var k=0;k<12;k++){ var cx=k%4, cy=Math.floor(k/4), fn=pats[k];
     for(var j=0;j<R;j++) for(var i=0;i<R;i++){
       var u=(i-G)/IN, v=(j-G)/IN;               /* 0..1 across the period */
       var g=fn(u,v);
       var val=Math.max(0,Math.min(255,g*255))|0;
       var o=((cy*R+j)*CW+(cx*R+i))*4;
       d[o]=val; d[o+1]=val; d[o+2]=val; d[o+3]=255;
-    }
-  }
-  var pats=coverPatterns();
-  for(var k=0;k<12;k++) cell(k%4,Math.floor(k/4),pats[k]);
+    } }
+}
+function coverAtlas(){
+  if(_atlas) return _atlas;
+  var CW=2048, CH=1536;
+  var c=document.createElement("canvas"); c.width=CW; c.height=CH;
+  var x=c.getContext("2d"), img=x.createImageData(CW,CH), d=img.data;
+  paintAtlasCells(d,CW);
   x.putImageData(img,0,0);
   _atlasCanvas=c;
   _atlas=new THREE.CanvasTexture(c);
+  _atlas.flipY=false;   /* 8G's prerequisite 1: the rows as painted (above) */
   _atlas.wrapS=_atlas.wrapT=THREE.ClampToEdgeWrapping;
   _atlas.anisotropy=8;
   atlasLum(d,CW);   /* Stage 8, 8F: each cell's mean grey, for the near detail (from the pixels in hand: no readback of the canvas) */
@@ -5481,8 +5491,12 @@ function coverAtlas(){
    so the material simply updates. */
 function photoAtlas(){
   if(typeof ASSETS==="undefined"||!ASSETS.grass) return;
-  /* cell -> [source, r, g, b, pattern weight] */
-  var CELL={0:["grass",0.94,0.92,0.86,0.55], 1:["grass",1.00,1.00,0.92,0.35], 2:["grass",0.78,0.82,0.78,0.60],
+  /* cell -> [source, r, g, b, pattern weight]. 8G's prerequisite 1: the water cell (3) given a photograph of its own, the mud the trodden
+     ground's entry (11) paints, its tint set so that the class's mean tone is what 8F's flip showed for it (the trodden ground's cell, which
+     every review since 2F saw at the streams, 8A's widths and 8F's stream tones among them, decisions 253 (b), 246 (a)); drawn correctly
+     without one, its pale procedural ripple made the ground beside each stream read as a wide blue band (docs/STAGE8_SPEC.md section 19.1). A
+     design value */
+  var CELL={0:["grass",0.94,0.92,0.86,0.55], 1:["grass",1.00,1.00,0.92,0.35], 2:["grass",0.78,0.82,0.78,0.60], 3:["mud",0.86,0.84,0.80,0.50],
             4:["litter",0.72,0.70,0.64,0.50], 5:["mud",1.06,1.02,0.96,0.45], 6:["litter",0.96,0.94,0.86,0.60],
             7:["mud",0.98,0.94,0.88,0.65], 8:["litter",0.80,0.76,0.70,0.70], 9:["grass",0.96,1.02,0.88,0.40],
             10:["litter",0.86,0.86,0.76,0.55], 11:["mud",0.92,0.90,0.86,0.50]};
@@ -5514,7 +5528,7 @@ function photoAtlas(){
       }
     });
     x.putImageData(pattern,0,0);
-    _atlas.needsUpdate=true;
+    _atlas.needsUpdate=true; ATLAS_PHOTO.colour=true;
     atlasLum(d,c.width);   /* Stage 8, 8F: the means again, of the photographs (the pixels just painted) */
     if(typeof requestRender==="function") requestRender(2);
     photoNormal();
@@ -5522,7 +5536,7 @@ function photoAtlas(){
 }
 function photoNormal(){
   if(!_nrmAtlas||!ASSETS.grass) return;
-  var SRC={0:"grass",1:"grass",2:"grass",4:"litter",5:"mud",6:"litter",7:"mud",8:"litter",9:"grass",10:"litter",11:"mud"};
+  var SRC={0:"grass",1:"grass",2:"grass",3:"mud",4:"litter",5:"mud",6:"litter",7:"mud",8:"litter",9:"grass",10:"litter",11:"mud"};   /* 3: 8G's prerequisite 1 (photoAtlas) */
   var KEEP={0:0.55,6:0.5,7:0.45,8:0.4,10:0.5};      /* how much of the procedural furrow/rut normal survives */
   var srcs={}, pending=3;
   ["grass","mud","litter"].forEach(function(n){
@@ -5539,29 +5553,32 @@ function photoNormal(){
       for(var oy=-1;oy<=1;oy++) for(var ox=-1;ox<=1;ox++) tx.drawImage(srcs[n], G+ox*IN, G+oy*IN, IN, IN);
       tiles[n]=tx.getImageData(0,0,R,R).data;
     });
+    /* 8G's prerequisite 1: the photographs' normals are OpenGL's, their green toward the image's top (each a gradient field that way: its curl
+       a fifth of what the other way leaves, tools/stage8/atlas-8g.js), the procedural atlas's toward its foot, as coverNormalAtlas paints it; the
+       atlas uploaded as painted, the shader's v (three's tangent B, where vUv.y grows) runs down the canvas, so the photographs' green is
+       turned over as they are blended in, and the two conventions are one */
     Object.keys(SRC).forEach(function(kk){
       var k=+kk, ph=tiles[SRC[kk]], w=1-(KEEP[kk]||0.25);
       var cx=(k%4)*R, cy=Math.floor(k/4)*R;
       for(var j=0;j<R;j++) for(var i=0;i<R;i++){
         var o=((cy+j)*c.width+(cx+i))*4, p=(j*R+i)*4;
         d[o]  =Math.round(d[o]  *(1-w)+ph[p]  *w);
-        d[o+1]=Math.round(d[o+1]*(1-w)+ph[p+1]*w);
+        d[o+1]=Math.round(d[o+1]*(1-w)+(255-ph[p+1])*w);
       }
     });
     x.putImageData(base,0,0);
-    _nrmAtlas.needsUpdate=true;
+    _nrmAtlas.needsUpdate=true; ATLAS_PHOTO.normal=true;
     if(typeof requestRender==="function") requestRender(2);
   }
 }
 /* the same eight patterns, differentiated into a tangent-space normal map so
    the ground catches the low winter light instead of reading as tinted paper */
 var _nrmAtlas=null;
-function coverNormalAtlas(){
-  if(_nrmAtlas) return _nrmAtlas;
-  var CW=2048, CH=1536, R=512, IN=480, G=16;
-  var c=document.createElement("canvas"); c.width=CW; c.height=CH;
-  var x=c.getContext("2d"), img=x.createImageData(CW,CH), d=img.data;
-  var pats=coverPatterns(), STR=[2.6,1.5,2.2,0.8,3.2,2.4,2.0,2.2,3.0,1.4,1.8,2.4];
+/* the normals' painter (8G's prerequisite 1: made again, unchanged, by the self-test's check of the mapping): each cell's pattern
+   differentiated along the canvas's rows and down its columns, so its green is the normal's part toward the canvas's foot, the way the
+   shader's v runs with the atlas uploaded as painted (coverAtlas) */
+function paintNormalCells(d,CW){
+  var R=512, IN=480, G=16, pats=coverPatterns(), STR=[2.6,1.5,2.2,0.8,3.2,2.4,2.0,2.2,3.0,1.4,1.8,2.4];
   for(var k=0;k<12;k++){
     var cx=k%4, cy=Math.floor(k/4), fn=pats[k], s=STR[k];
     for(var j=0;j<R;j++) for(var i=0;i<R;i++){
@@ -5573,8 +5590,16 @@ function coverNormalAtlas(){
       d[o]=(nx*0.5+0.5)*255|0; d[o+1]=(ny*0.5+0.5)*255|0; d[o+2]=(nz*0.5+0.5)*255|0; d[o+3]=255;
     }
   }
+}
+function coverNormalAtlas(){
+  if(_nrmAtlas) return _nrmAtlas;
+  var CW=2048, CH=1536;
+  var c=document.createElement("canvas"); c.width=CW; c.height=CH;
+  var x=c.getContext("2d"), img=x.createImageData(CW,CH), d=img.data;
+  paintNormalCells(d,CW);
   x.putImageData(img,0,0);
   _nrmAtlas=new THREE.CanvasTexture(c);
+  _nrmAtlas.flipY=false;   /* 8G's prerequisite 1: the rows as painted, as the colour atlas (coverAtlas) */
   _nrmAtlas.wrapS=_nrmAtlas.wrapT=THREE.ClampToEdgeWrapping;
   _nrmAtlas.anisotropy=8;
   return _nrmAtlas;
@@ -5599,7 +5624,7 @@ var GROUND_FRAG_HEAD=[
   "varying float vCover; varying vec4 vGnd; varying vec2 vWxz;",
   "uniform sampler2D uCovA; uniform sampler2D uCovB; uniform sampler2D uMl; uniform sampler2D uField; uniform sampler2D uVS;",
   "uniform vec4 uCovG; uniform vec2 uCovN; uniform vec4 uMlG; uniform vec2 uMlN; uniform vec4 uVSG; uniform vec2 uVSN; uniform vec4 uFieldG;",
-  "uniform vec4 uPondS; uniform vec4 uPondM; uniform vec3 uPal[8]; uniform float uMode; uniform float uVSOn; uniform float uDebug;",
+  "uniform vec4 uPondS; uniform vec4 uPondM; uniform vec3 uPal[8]; uniform float uMode; uniform float uVSOn; uniform float uDebug; uniform float uDebugCell;",
   "uniform vec4 uDetail; uniform vec2 uDetailR; uniform vec2 uDetailC; uniform float uCellLum[12];",   /* Stage 8, 8F: the near detail (GDETAIL) */
   /* COVER_ML, four nodes along x to a texel (uMlT its size in texels): nodes i0 to i0+3 of row j, and coverMlAt */
   "uniform vec2 uMlT;",
@@ -5639,14 +5664,16 @@ var GROUND_FRAG_ATLAS=[
 /* Stage 8, 8F: the near detail (GDETAIL), the texel scaled by a finer sample of its own cell, near the eye, on the natural ground only (WebGL 2's
    textureGrad: its own gradients, so no mip seam at a tile's wrap) */
 var GROUND_FRAG_DETAIL=[
+  "  vec3 gDbgD=vec3(0.0);",   /* 8G's prerequisite 1: the detail's own sample, whatever the eye's distance, for the self-test (uDebug 5) */
   "#if __VERSION__ >= 300",
-  "  if(uMode>0.5&&uMode<1.5&&uDetail.x>0.0){",
+  "  if(uMode>0.5&&uMode<1.5&&(uDetail.x>0.0||uDebug>4.5)){",
   "    float gDf=uDetail.x*(1.0-smoothstep(uDetail.y,uDetail.z,length(vViewPosition)));",
-  "    if(gDf>0.002){ vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w;",
+  "    if(gDf>0.002||uDebug>4.5){ vec2 gDu=mat2(uDetailR.x,uDetailR.y,-uDetailR.y,uDetailR.x)*vUv*uDetail.w;",
   "      vec2 gDt=vec2(fract(gDu.x)*0.234375+0.0078125+ci*0.25, fract(gDu.y)*0.3125+0.0104167+cj*0.3333333), gDk=vec2(0.234375,0.3125);",
   "      vec3 gDc=mapTexelToLinear(textureGrad(map,gDt,dFdx(gDu)*gDk,dFdy(gDu)*gDk)).rgb;",
+  "      if(uDebug>4.5) gDbgD=gDc; else {",
   "      float gDl=dot(gDc,vec3(0.2126,0.7152,0.0722))/max(uCellLum[int(gCell+0.5)],0.001);",
-  "      texelColor.rgb*=mix(1.0,clamp(gDl,uDetailC.x,uDetailC.y),gDf); } }",
+  "      texelColor.rgb*=mix(1.0,clamp(gDl,uDetailC.x,uDetailC.y),gDf); } } }",
   "#endif",""].join("\n");
 var GROUND_FRAG_MAIN=[
   "float gCls=vCover, gCrop=0.0; vec3 gCol=vec3(1.0);",
@@ -5680,7 +5707,8 @@ var GROUND_FRAG_MAIN=[
   "    if(q.x>=0.0&&q.y>=0.0&&q.x<uVSN.x&&q.y<uVSN.y) vis=texture2D(uVS,(q+0.5)/uVSN).x;",
   "    gCol=vis>0.75?gCol*"+glslV3(LAND_COL.glsl.vs[0][0])+"+"+glslV3(LAND_COL.glsl.vs[0][1])+":vis>0.25?gCol*"+glslV3(LAND_COL.glsl.vs[1][0])+"+"+glslV3(LAND_COL.glsl.vs[1][1])+":gCol*"+glslV3(LAND_COL.glsl.vs[2][0])+"+"+glslV3(LAND_COL.glsl.vs[2][1])+"; }",   /* Stage 5E: in sight, in sight under the fog, out of sight */
   "}",
-  "float gCell=uMode>0.5?(gCls==0.0?(gCrop==1.0?8.0:gCrop==2.0?9.0:gCrop==3.0?10.0:0.0):gCls):vCover;",
+  /* 8G's prerequisite 1: the self-test's check of the atlas's mapping draws one cell over the whole ground (uDebug 2 to 4, uDebugCell) */
+  "float gCell=uDebug>1.5?uDebugCell:(uMode>0.5?(gCls==0.0?(gCrop==1.0?8.0:gCrop==2.0?9.0:gCrop==3.0?10.0:0.0):gCls):vCover);",
   "float ci=mod(gCell,4.0), cj=floor(gCell/4.0);",
   "#ifdef USE_UV",
   "vec2 tuv=vec2(fract(vUv.x)*0.234375+0.0078125+ci*0.25, fract(vUv.y)*0.3125+0.0104167+cj*0.3333333);",
@@ -5695,10 +5723,11 @@ var GROUND_FRAG_MAIN=[
    layer, not the apron. Not on a low tier (lowTier, decision 236: the phone's frame kept as P5 measured it; groundDetail). The classes, the
    frost, the strips and the hollows are the shader's as before (they colour gCol, not the texel). Every value a design value */
 var GDETAIL={amount:0.55, near:14, far:60, k:7.3, rot:0.61, lo:0.62, hi:1.38, lum:[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]};
-/* each shader cell's mean grey (linear, as the shader reads the texel), over its period, by the shader's own cell index (gCell): three uploads
-   the canvas flipped (flipY, its default), so the shader's row cj (tuv's v from the texture's foot) is the canvas's row 2-cj; made again when
-   the photographs repaint the atlas, from the pixels the painter holds (d, the canvas's width W: a readback of the canvas would be one more
-   than the photographs' own, and Chrome warns of repeated readbacks) */
+/* each shader cell's mean grey (linear, as the shader reads the texel), over its period, by the shader's own cell index (gCell): the shader's
+   row cj (tuv's v from the texture's first row) is the canvas's row cj since 8G's prerequisite 1 uploads the atlas as painted (flipY false),
+   and was the canvas's row 2-cj while three uploaded it flipped (its default, 8F's build): the flip is read from the texture, so the means
+   follow the upload either way; made again when the photographs repaint the atlas, from the pixels the painter holds (d, the canvas's width
+   W: a readback of the canvas would be one more than the photographs' own, and Chrome warns of repeated readbacks) */
 function atlasLum(d,W){
   var R=512, IN=480, G=16, srgb=_atlas&&_atlas.encoding===THREE.sRGBEncoding, flip=!(_atlas&&_atlas.flipY===false);
   var lin1=function(v){ v/=255; return srgb?(v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4)):v; };
@@ -5740,7 +5769,7 @@ function groundUniforms(){
     uField:{value:T.field}, uFieldG:{value:new THREE.Vector4(64,16,128,32)},
     uVS:{value:T.vs}, uVSN:{value:new THREE.Vector2(G_NX,G_NZ)}, uVSG:{value:new THREE.Vector4(G_X0,G_Z0,G_DX,G_DZ)},
     uPondS:{value:new THREE.Vector4(SATS[0],SATS[1],28,10.5)}, uPondM:{value:new THREE.Vector4(MENI[0],MENI[1],23,9)},
-    uPal:{value:groundPal("natural")}, uMode:{value:1}, uVSOn:{value:0}, uDebug:{value:0},
+    uPal:{value:groundPal("natural")}, uMode:{value:1}, uVSOn:{value:0}, uDebug:{value:0}, uDebugCell:{value:0},
     uDetail:{value:new THREE.Vector4(GDETAIL.amount,GDETAIL.near,GDETAIL.far,GDETAIL.k)}, uDetailR:{value:new THREE.Vector2(Math.cos(GDETAIL.rot),Math.sin(GDETAIL.rot))},
     uDetailC:{value:new THREE.Vector2(GDETAIL.lo,GDETAIL.hi)}, uCellLum:{value:GDETAIL.lum}};
 }
@@ -5759,6 +5788,7 @@ function atlasShader(mat){
       .replace("#include <map_fragment>",
         "#ifdef USE_MAP\n"+
         "  vec4 texelColor=gAtlas(map,tuv);\n"+
+        "  vec4 gDbgT=texelColor;\n"+   /* 8G's prerequisite 1: the atlas's texel as sampled, for uDebug 2 */
         "  texelColor=mapTexelToLinear(texelColor);\n"+
         GROUND_FRAG_DETAIL+
         "  diffuseColor*=texelColor;\n"+
@@ -5767,11 +5797,17 @@ function atlasShader(mat){
         "#if defined( USE_COLOR )\n  diffuseColor.rgb*=(uMode>0.5?gCol:vColor);\n#endif")
       .replace("#include <normal_fragment_maps>",
         "#ifdef USE_NORMALMAP\n"+
-        "  vec3 mapN=gAtlas(normalMap,tuv).xyz*2.0-1.0;\n"+
+        "  vec3 gDbgN=gAtlas(normalMap,tuv).xyz;\n"+   /* the normal atlas's texel as sampled, for uDebug 3 */
+        "  vec3 mapN=gDbgN*2.0-1.0;\n"+
         "  mapN.xy*=normalScale;\n"+
         "  normal=perturbNormal2Arb(-vViewPosition,normal,mapN,faceDirection);\n"+
         "#endif")
-      .replace("#include <dithering_fragment>","#include <dithering_fragment>\n  if(uDebug>0.5) gl_FragColor=vec4(gCls/255.0,gCrop/255.0,uMode/255.0,1.0);");
+      /* the self-test's outputs (uDebug): 1 the class, the crop and the mode (2F's cover checks); 8G's prerequisite 1, with the cell forced
+         (uDebugCell), 2 the colour atlas's texel, 3 the normal atlas's, 4 the shading normal in world space (the tangent frame applied), 5 the
+         near detail's own sample of its cell (GROUND_FRAG_DETAIL, at any distance) */
+      .replace("#include <dithering_fragment>","#include <dithering_fragment>\n  if(uDebug>0.5&&uDebug<1.5) gl_FragColor=vec4(gCls/255.0,gCrop/255.0,uMode/255.0,1.0);\n"+
+        "#ifdef USE_MAP\n  if(uDebug>1.5&&uDebug<2.5) gl_FragColor=vec4(gDbgT.rgb,1.0);\n  if(uDebug>4.5) gl_FragColor=vec4(gDbgD,1.0);\n#endif\n"+
+        "#ifdef USE_NORMALMAP\n  if(uDebug>2.5&&uDebug<3.5) gl_FragColor=vec4(gDbgN,1.0);\n  if(uDebug>3.5&&uDebug<4.5) gl_FragColor=vec4(inverseTransformDirection(normal,viewMatrix)*0.5+0.5,1.0);\n#endif");
   };
   return mat;
 }
@@ -20220,7 +20256,8 @@ var AUSTERLITZ_DEBUG=(function(){
         var tone=nd?l1/l0:1; if(nd<2000) eBad.push("the detail drawn on "+nd+" pixels near the eye (want at least 2,000 of "+W0*H0+")"); if(Math.abs(tone-1)>0.01) eBad.push("the near ground's mean tone "+tone.toFixed(3)+" times without the detail");
         /* its normalisation: each shader cell's mean grey (GDETAIL.lum, by the shader's own cell index) that of the cell the ground's shader
            samples, read through the GPU as the shader reads it (the cell's interior at 256 x 256 points, near the texture's own size, so that
-           no coarse mipmap blends a neighbour in: tuv's own formula, the texture as uploaded, flipped by three), within 2% */
+           no coarse mipmap blends a neighbour in: tuv's own formula, the texture as uploaded: as painted since 8G's prerequisite 1, flipped by three
+           until then), within 2% */
         var lmap=groundMesh.material.map, lrt=new THREE.WebGLRenderTarget(256,256), lb=new Uint8Array(256*256*4), lsc=new THREE.Scene(), lcam=new THREE.OrthographicCamera(-1,1,1,-1,0,1), lw=[];
         var lmat=new THREE.ShaderMaterial({uniforms:{map:{value:lmap}, ci:{value:0}, cj:{value:0}}, depthTest:false, depthWrite:false,
           vertexShader:"varying vec2 vU; void main(){ vU=uv; gl_Position=vec4(position.xy,0.0,1.0); }",
@@ -20245,6 +20282,99 @@ var AUSTERLITZ_DEBUG=(function(){
         if(mode!==keep8.mode) setMode(keep8.mode); setPresentation(keep8.pres); setClock(keep8.t,{instant:true,force:true,camera:false}); finishTween();
         landCam.position.copy(keep8.pos); orbitTarget.copy(keep8.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=keep8.fc; settle(4,true);
       }
+    })();
+
+    /* Stage 8, implementation PR 8G's prerequisite 1 (the audit of 8F; docs/STAGE8_SPEC.md section 19.1): the ground's atlas, each cell drawn
+       from its own painting, the right way up, its normals turned the way its colours rise. Read through the GPU as the ground's own shader samples
+       it, the cell forced over the whole ground (world.js uDebug 2 to 5, uDebugCell), straight down onto a patch read pixel by pixel: (a) the
+       colour atlas's texel (uDebug 2), the normal atlas's (3) and the near detail's own sample (5), for the atlases as the photographs repainted
+       them and for the procedural atlases painted afresh by the same painters and uploaded as the live ones are (paintAtlasCells,
+       paintNormalCells: no canvas is read back but a copy of each live one, once), each render against what every one of the 12 cells would
+       show the right way up or flipped in u, in v or both (48 expectations): the cell's own nearest, within a level of 255 on average, and every
+       other expectation that differs from its own by a level or more at least half that difference further off (so the meadow and the pasture,
+       whose patterns and photographs are alike, are told apart by their colours; expectations within a level of the own, the same to the eye,
+       are counted, not judged); (b) the normals' direction: on the procedural atlas the shading normal's change (uDebug 4, the tangent frame
+       applied, with the material's normal scale against none) correlated with the painted pattern's slope along x and z, wherever a cell's
+       slope in that direction is a quarter of its largest or more; on the repainted atlas, where the photographs' normals carry most of the
+       slope, their field integrable (its curl at most 0.8 of its cross-derivatives' energy: 0.38 to 0.48 as built, 1.44 to 1.62 with the
+       photographs' green unturned, tools/stage8/atlas-8g.js) */
+    (function(){
+      var U=groundMesh.material.userData.U, mat=groundMesh.material, N=192, gl2=renderer.capabilities.isWebGL2;
+      var keep={map:mat.map, nrm:mat.normalMap, ns:mat.normalScale.clone(), cc:renderer.getClearColor(new THREE.Color()), ca:renderer.getClearAlpha(), tm:renderer.toneMapping, oe:renderer.outputEncoding, mode:mode, f:DISPLAY.factor}, kv=[];
+      var rt=new THREE.WebGLRenderTarget(N,N,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter}), buf=new Uint8Array(N*N*4), fresh=[];
+      /* the patches: a fifth of a tile at 192 px (two pixels a texel: the full-size level, no mipmap blends a neighbour in), and for the near
+         detail, 7.3 times finer, a patch of 0.25 units; each away from a tile's seam, u and v unequal so that every flip moves the pattern */
+      function cam(x0,z0,S){ var c=new THREE.OrthographicCamera(x0,x0+S,-z0,-(z0+S),1,4000); c.position.set(0,2000,0); c.up.set(0,0,-1); c.lookAt(0,0,0); c.updateMatrixWorld(); c.updateProjectionMatrix(); return c; }
+      var P1={x0:11*3+0.62*11, z0:-22+0.17*11, S:2.2}, P5={x0:11*3+0.41*11, z0:-22+0.23*11, S:0.25};
+      P1.cam=cam(P1.x0,P1.z0,P1.S); P5.cam=cam(P5.x0,P5.z0,P5.S);
+      function rend(m,k,P){ U.uDebug.value=m; U.uDebugCell.value=k; renderer.setRenderTarget(rt); renderer.clear(); renderer.render(scene,P.cam); renderer.readRenderTargetPixels(rt,0,0,N,N,buf); renderer.setRenderTarget(null); return Float32Array.from(buf); }
+      /* each pixel's place in its cell (row q from the target's foot: z from the patch's far edge), as the shader's tuv (uv the ground's x/11,
+         z/11) or the detail's (that uv turned by GDETAIL.rot and scaled by GDETAIL.k) */
+      function cellUV(P,det){ var F=new Float32Array(N*N*2), cr=Math.cos(GDETAIL.rot), sr=Math.sin(GDETAIL.rot);
+        for(var q=0;q<N;q++) for(var i=0;i<N;i++){ var x=P.x0+(i+0.5)*P.S/N, z=P.z0+P.S-(q+0.5)*P.S/N, u=x/11, v=z/11;
+          if(det){ var a=GDETAIL.k*(cr*u-sr*v), b=GDETAIL.k*(sr*u+cr*v); u=a; v=b; }
+          F[(q*N+i)*2]=u-Math.floor(u); F[(q*N+i)*2+1]=v-Math.floor(v); } return F; }
+      function bil(D,X,Y,ch){ X-=0.5; Y-=0.5; var i=Math.floor(X), j=Math.floor(Y), a=X-i, b=Y-j, o=function(ii,jj){ return D[(jj*2048+ii)*4+ch]; };
+        return (o(i,j)*(1-a)+o(i+1,j)*a)*(1-b)+(o(i,j+1)*(1-a)+o(i+1,j+1)*a)*b; }
+      /* what cell k shows at each pixel, the right way up (or 0) or flipped in v (1), in u (2) or both (3), from the canvas's pixels D */
+      function expect(D,F,k,or){ var e=new Float32Array(N*N*3), cx=(k%4)*512+16, cy=Math.floor(k/4)*512+16;
+        for(var p=0;p<N*N;p++){ var fu=F[p*2], fv=F[p*2+1]; if(or&1) fv=1-fv; if(or&2) fu=1-fu; for(var ch=0;ch<3;ch++) e[p*3+ch]=bil(D,cx+480*fu,cy+480*fv,ch); }
+        return e; }
+      function mad(r,e,rgba){ var s=0; for(var p=0;p<N*N;p++) for(var ch=0;ch<3;ch++) s+=Math.abs((rgba?r[p*4+ch]:r[p*3+ch])-e[p*3+ch]); return s/(N*N*3); }
+      var bad=[], rep=[];
+      /* (a) one set: the renders of each forced cell against the 48 expectations */
+      function idSet(name,D,m,P,det){
+        var F=cellUV(P,det), E=[], worst=null, own=0, nIn=0, nJ=0;
+        for(var k=0;k<12;k++) for(var or=0;or<4;or++) E.push({k:k,or:or,e:expect(D,F,k,or)});
+        for(var k2=0;k2<12;k2++){ var R=rend(m,k2,P), eo=E[k2*4].e, mo=mad(R,eo,true); own=Math.max(own,mo);
+          if(!(mo<=1.0)) bad.push(name+", cell "+k2+": "+mo.toFixed(2)+" levels from its own painting");
+          E.forEach(function(c){ if(c.k===k2&&c.or===0) return; var d=mad(c.e,eo,false); if(d<1.0){ nIn++; return; } nJ++;
+            var mg=(mad(R,c.e,true)-mo)/d; if(!worst||mg<worst.mg) worst={mg:mg, cell:k2, k:c.k, or:c.or, d:d};
+            if(mg<0.5) bad.push(name+", cell "+k2+": nearer cell "+c.k+(c.or?" flipped ("+["","v","u","u and v"][c.or]+")":"")+" than its own (margin "+mg.toFixed(2)+" of their difference, "+d.toFixed(2)+" levels)"); }); }
+        rep.push(name+": own within "+own.toFixed(2)+" levels, the nearest other "+(worst?"cell "+worst.k+(worst.or?" flipped":"")+" for cell "+worst.cell+" at a margin "+worst.mg.toFixed(2):"(none)")+", "+nJ+" judged, "+nIn+" alike within a level"); }
+      try{
+        if(mode!=="terrain") setMode("terrain"); if(DISPLAY.factor!==DISPLAY.defaultFactor) setDisplayFactor(DISPLAY.defaultFactor);
+        if(!gl2) bad.push("not WebGL 2: the near detail's sample cannot be read");
+        if(!ATLAS_PHOTO.colour||!ATLAS_PHOTO.normal) bad.push("the photographs not yet painted into the atlases (colour "+ATLAS_PHOTO.colour+", normals "+ATLAS_PHOTO.normal+")");
+        scene.children.forEach(function(o){ kv.push([o,o.visible]); o.visible=(o===groundMesh); });
+        renderer.toneMapping=THREE.NoToneMapping; renderer.outputEncoding=THREE.LinearEncoding; renderer.setClearColor(0,1);
+        /* the repainted atlases, each read once through a copy of its canvas */
+        function grab(cv){ var c=document.createElement("canvas"); c.width=cv.width; c.height=cv.height; var x=c.getContext("2d"); x.drawImage(cv,0,0); return x.getImageData(0,0,cv.width,cv.height).data; }
+        var LC=grab(_atlasCanvas), LN=grab(_nrmAtlas.image);
+        idSet("the colour atlas as repainted",LC,2,P1,false); idSet("the normal atlas as repainted",LN,3,P1,false); if(gl2) idSet("the near detail on the atlas as repainted",LC,5,P5,true);
+        /* the repainted atlas's normals: integrable where they carry slope */
+        var curl=[];
+        for(var k3=0;k3<12;k3++){ mat.normalScale.copy(keep.ns); var a3=rend(4,k3,P1); mat.normalScale.set(0,0); var b3=rend(4,k3,P1); mat.normalScale.copy(keep.ns);
+          var c2=0, e2=0, n3=0, NX=function(i,q){ var o=(q*N+i)*4; return a3[o]-b3[o]; }, NZ=function(i,q){ var o=(q*N+i)*4; return a3[o+2]-b3[o+2]; };
+          for(var q3=2;q3<N-2;q3++) for(var i3=2;i3<N-2;i3++){ var gx=(NZ(i3+1,q3)-NZ(i3-1,q3))/2, gz=(NX(i3,q3-1)-NX(i3,q3+1))/2; c2+=(gx-gz)*(gx-gz); e2+=gx*gx+gz*gz; n3++; }
+          if(e2/n3<0.5){ curl.push(k3+" faint"); continue; } var cr3=c2/e2; curl.push(k3+" "+cr3.toFixed(2)); if(!(cr3<=0.8)) bad.push("the repainted normals of cell "+k3+" not integrable (curl "+cr3.toFixed(2)+" of their cross-derivatives' energy): the photographs' and the patterns' conventions differ"); }
+        rep.push("the repainted normals' curl by cell: "+curl.join(", "));
+        /* the procedural atlases, painted afresh and uploaded as the live ones */
+        function paint(painter,like){ var c=document.createElement("canvas"); c.width=2048; c.height=1536; var x=c.getContext("2d"), img=x.createImageData(2048,1536); painter(img.data,2048); x.putImageData(img,0,0);
+          var t=new THREE.CanvasTexture(c); ["flipY","wrapS","wrapT","anisotropy","encoding","minFilter","magFilter","generateMipmaps"].forEach(function(f){ t[f]=like[f]; }); fresh.push(t); return {t:t, d:img.data}; }
+        var PC=paint(paintAtlasCells,keep.map), PN=paint(paintNormalCells,keep.nrm); mat.map=PC.t; mat.normalMap=PN.t;
+        idSet("the colour atlas as painted",PC.d,2,P1,false); idSet("the normal atlas as painted",PN.d,3,P1,false); if(gl2) idSet("the near detail on the atlas as painted",PC.d,5,P5,true);
+        /* (b) the normals' direction on the procedural atlas: their change against the pattern's slope */
+        var F1=cellUV(P1,false), dirs=[];
+        for(var k=0;k<12;k++){ mat.normalScale.copy(keep.ns); var a=rend(4,k,P1); mat.normalScale.set(0,0); var b=rend(4,k,P1); mat.normalScale.copy(keep.ns);
+          var cx=(k%4)*512+16, cy=Math.floor(k/4)*512+16, h=function(i,q){ var p=q*N+i; return bil(PC.d,cx+480*F1[p*2],cy+480*F1[p*2+1],0); };
+          var sx=0, sz=0, xx=0, zz=0, gxx=0, gzz=0, n=0;
+          for(var q=2;q<N-2;q++) for(var i=2;i<N-2;i++){ var o=(q*N+i)*4, dx=(a[o]-b[o])/127.5, dz=(a[o+2]-b[o+2])/127.5, gx=h(i-1,q)-h(i+1,q), gz=h(i,q+1)-h(i,q-1);
+            sx+=dx*gx; sz+=dz*gz; xx+=dx*dx; zz+=dz*dz; gxx+=gx*gx; gzz+=gz*gz; n++; }
+          var en=(xx+zz)/n*1e4, gm=Math.max(gxx,gzz), cX=sx/Math.sqrt(xx*gxx||1), cZ=sz/Math.sqrt(zz*gzz||1), J=[];
+          if(en>=1.0){ if(gxx>=0.25*gm){ J.push("x "+cX.toFixed(2)); if(!(cX>=0.6)) bad.push("cell "+k+": the normals' change along x against the pattern's slope "+cX.toFixed(2)); }
+            if(gzz>=0.25*gm){ J.push("z "+cZ.toFixed(2)); if(!(cZ>=0.6)) bad.push("cell "+k+": the normals' change along z against the pattern's slope "+cZ.toFixed(2)); } }
+          dirs.push(k+(J.length?" ("+J.join(", ")+")":" faint")); }
+        rep.push("the painted normals' change against the pattern's slope, by cell and direction: "+dirs.join("; "));
+        if(dirs.filter(function(d){ return d.indexOf("(")>=0; }).length<6) bad.push("fewer than six cells with slope enough to judge the normals' direction");
+      } catch(err){ bad.push("threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+      } finally {
+        U.uDebug.value=0; U.uDebugCell.value=0; mat.map=keep.map; mat.normalMap=keep.nrm; mat.normalScale.copy(keep.ns); fresh.forEach(function(t){ t.dispose(); });
+        renderer.toneMapping=keep.tm; renderer.outputEncoding=keep.oe; renderer.setClearColor(keep.cc,keep.ca); kv.forEach(function(k){ k[0].visible=k[1]; }); rt.dispose();
+        if(DISPLAY.factor!==keep.f) setDisplayFactor(keep.f); if(mode!==keep.mode) setMode(keep.mode); requestRender(2);
+      }
+      ck("the ground's atlas (8G's prerequisite 1): each cover cell drawn from its own painting, the right way up, in the colour atlas, the normal atlas and the near detail, as repainted by the photographs and as painted; its normals turned the way its patterns rise, the photographs' and the patterns' one convention",
+        !bad.length, rep.join("; ")+(bad.length?"; WRONG: "+bad.slice(0,8).join("; ")+(bad.length>8?" (and "+(bad.length-8)+" more)":""):""));
     })();
 
     if(mode!==save.mode) setMode(save.mode);

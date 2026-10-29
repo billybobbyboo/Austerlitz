@@ -1,0 +1,528 @@
+{
+ "chromium": "153.0.8010.12",
+ "before": "8f.html",
+ "after": "austerlitz-command-map.html",
+ "views": {
+  "overview-field": {
+   "before": [
+    {
+     "grey": 58.6,
+     "share": 20.62
+    },
+    {
+     "grey": 67.7,
+     "share": 3.45
+    },
+    {
+     "grey": 64.2,
+     "share": 2.58
+    },
+    {
+     "grey": 61,
+     "share": 0.63
+    },
+    {
+     "grey": 51.3,
+     "share": 0.21
+    },
+    {
+     "grey": 66.1,
+     "share": 0.8
+    },
+    {
+     "grey": 60.2,
+     "share": 0.03
+    },
+    {
+     "grey": 59.6,
+     "share": 0.96
+    },
+    {
+     "grey": 54.1,
+     "share": 15.59
+    },
+    {
+     "grey": 69.3,
+     "share": 5.69
+    },
+    {
+     "grey": 55,
+     "share": 5.74
+    }
+   ],
+   "after": [
+    {
+     "grey": 60.2,
+     "share": 20.62
+    },
+    {
+     "grey": 67.7,
+     "share": 3.45
+    },
+    {
+     "grey": 61.4,
+     "share": 2.58
+    },
+    {
+     "grey": 60.2,
+     "share": 0.63
+    },
+    {
+     "grey": 51.3,
+     "share": 0.21
+    },
+    {
+     "grey": 66.1,
+     "share": 0.8
+    },
+    {
+     "grey": 60.3,
+     "share": 0.03
+    },
+    {
+     "grey": 59.6,
+     "share": 0.96
+    },
+    {
+     "grey": 52.8,
+     "share": 15.59
+    },
+    {
+     "grey": 69.5,
+     "share": 5.69
+    },
+    {
+     "grey": 60.9,
+     "share": 5.74
+    }
+   ],
+   "ratio": {
+    "stubble": 1.027,
+    "meadow": 1,
+    "marsh": 0.956,
+    "water": 0.987,
+    "wood": 1,
+    "village": 1,
+    "vineyard": 1.002,
+    "track": 1,
+    "plough": 0.976,
+    "pasture": 1.003,
+    "winter sowing": 1.107
+   }
+  },
+  "pratzen-low": {
+   "before": [
+    {
+     "grey": 72.9,
+     "share": 14.2
+    },
+    {
+     "grey": 53.3,
+     "share": 7.73
+    },
+    {
+     "grey": 66.5,
+     "share": 2.44
+    },
+    {
+     "grey": 44.5,
+     "share": 0.67
+    },
+    {
+     "grey": 31.6,
+     "share": 0.4
+    },
+    {
+     "grey": 52.6,
+     "share": 1.1
+    },
+    {
+     "grey": 50.4,
+     "share": 0.3
+    },
+    {
+     "grey": 44.6,
+     "share": 1.89
+    },
+    {
+     "grey": 65,
+     "share": 13.57
+    },
+    {
+     "grey": 89.4,
+     "share": 2.64
+    },
+    {
+     "grey": 60.9,
+     "share": 3.98
+    }
+   ],
+   "after": [
+    {
+     "grey": 74.4,
+     "share": 14.2
+    },
+    {
+     "grey": 53.4,
+     "share": 7.73
+    },
+    {
+     "grey": 64.5,
+     "share": 2.44
+    },
+    {
+     "grey": 43.8,
+     "share": 0.67
+    },
+    {
+     "grey": 31.8,
+     "share": 0.4
+    },
+    {
+     "grey": 52.2,
+     "share": 1.1
+    },
+    {
+     "grey": 50.5,
+     "share": 0.3
+    },
+    {
+     "grey": 44.5,
+     "share": 1.89
+    },
+    {
+     "grey": 63.7,
+     "share": 13.57
+    },
+    {
+     "grey": 89.5,
+     "share": 2.64
+    },
+    {
+     "grey": 66.5,
+     "share": 3.98
+    }
+   ],
+   "ratio": {
+    "stubble": 1.021,
+    "meadow": 1.002,
+    "marsh": 0.97,
+    "water": 0.984,
+    "wood": 1.006,
+    "village": 0.992,
+    "vineyard": 1.002,
+    "track": 0.998,
+    "plough": 0.98,
+    "pasture": 1.001,
+    "winter sowing": 1.092
+   }
+  },
+  "goldbach-noon": {
+   "before": [
+    {
+     "grey": 64.6,
+     "share": 4.11
+    },
+    {
+     "grey": 67.3,
+     "share": 1.76
+    },
+    {
+     "grey": 56.1,
+     "share": 1.72
+    },
+    {
+     "grey": 44.8,
+     "share": 0.35
+    },
+    {
+     "grey": 38.6,
+     "share": 0.12
+    },
+    {
+     "grey": 64.3,
+     "share": 0.39
+    },
+    {
+     "grey": 93.6,
+     "share": 0.01
+    },
+    {
+     "grey": 80.9,
+     "share": 0.07
+    },
+    {
+     "grey": 56.8,
+     "share": 10.75
+    },
+    {
+     "grey": 87.4,
+     "share": 0.37
+    },
+    {
+     "grey": 51.2,
+     "share": 35.26
+    }
+   ],
+   "after": [
+    {
+     "grey": 66.9,
+     "share": 4.11
+    },
+    {
+     "grey": 67.5,
+     "share": 1.76
+    },
+    {
+     "grey": 51.5,
+     "share": 1.72
+    },
+    {
+     "grey": 44.4,
+     "share": 0.35
+    },
+    {
+     "grey": 38.3,
+     "share": 0.12
+    },
+    {
+     "grey": 62.9,
+     "share": 0.39
+    },
+    {
+     "grey": 93.9,
+     "share": 0.01
+    },
+    {
+     "grey": 81.1,
+     "share": 0.07
+    },
+    {
+     "grey": 54.9,
+     "share": 10.75
+    },
+    {
+     "grey": 87.3,
+     "share": 0.37
+    },
+    {
+     "grey": 58.8,
+     "share": 35.26
+    }
+   ],
+   "ratio": {
+    "stubble": 1.036,
+    "meadow": 1.003,
+    "marsh": 0.918,
+    "water": 0.991,
+    "wood": 0.992,
+    "village": 0.978,
+    "vineyard": 1.003,
+    "track": 1.002,
+    "plough": 0.967,
+    "pasture": 0.999,
+    "winter sowing": 1.148
+   }
+  },
+  "kobelnitz-bank": {
+   "before": [
+    {
+     "grey": 74.4,
+     "share": 8.61
+    },
+    {
+     "grey": 68,
+     "share": 4.64
+    },
+    {
+     "grey": 69.5,
+     "share": 1.72
+    },
+    {
+     "grey": 56.9,
+     "share": 0.77
+    },
+    null,
+    {
+     "grey": 91.8,
+     "share": 0.35
+    },
+    null,
+    {
+     "grey": 59.8,
+     "share": 0.77
+    },
+    {
+     "grey": 77.9,
+     "share": 5.62
+    },
+    {
+     "grey": 96.6,
+     "share": 1.74
+    },
+    {
+     "grey": 82.9,
+     "share": 1.46
+    }
+   ],
+   "after": [
+    {
+     "grey": 76.4,
+     "share": 8.61
+    },
+    {
+     "grey": 67.8,
+     "share": 4.64
+    },
+    {
+     "grey": 64.5,
+     "share": 1.72
+    },
+    {
+     "grey": 56.9,
+     "share": 0.77
+    },
+    null,
+    {
+     "grey": 92.2,
+     "share": 0.35
+    },
+    null,
+    {
+     "grey": 59,
+     "share": 0.77
+    },
+    {
+     "grey": 76.4,
+     "share": 5.62
+    },
+    {
+     "grey": 96.5,
+     "share": 1.74
+    },
+    {
+     "grey": 88.2,
+     "share": 1.46
+    }
+   ],
+   "ratio": {
+    "stubble": 1.027,
+    "meadow": 0.997,
+    "marsh": 0.928,
+    "water": 1,
+    "village": 1.004,
+    "track": 0.987,
+    "plough": 0.981,
+    "pasture": 0.999,
+    "winter sowing": 1.064
+   }
+  },
+  "fields-low": {
+   "before": [
+    {
+     "grey": 56.3,
+     "share": 71.52
+    },
+    {
+     "grey": 92.5,
+     "share": 0.21
+    },
+    {
+     "grey": 111.5,
+     "share": 0
+    },
+    {
+     "grey": 74.6,
+     "share": 0.02
+    },
+    {
+     "grey": 68,
+     "share": 0.04
+    },
+    {
+     "grey": 98.9,
+     "share": 0.08
+    },
+    {
+     "grey": 95.8,
+     "share": 0.17
+    },
+    {
+     "grey": 92.4,
+     "share": 0.45
+    },
+    {
+     "grey": 56.3,
+     "share": 6.89
+    },
+    {
+     "grey": 107.3,
+     "share": 0.3
+    },
+    {
+     "grey": 80.8,
+     "share": 1.56
+    }
+   ],
+   "after": [
+    {
+     "grey": 58.2,
+     "share": 71.52
+    },
+    {
+     "grey": 92.5,
+     "share": 0.21
+    },
+    {
+     "grey": 112.7,
+     "share": 0
+    },
+    {
+     "grey": 74.7,
+     "share": 0.02
+    },
+    {
+     "grey": 67.9,
+     "share": 0.04
+    },
+    {
+     "grey": 100.1,
+     "share": 0.08
+    },
+    {
+     "grey": 95.5,
+     "share": 0.17
+    },
+    {
+     "grey": 92.4,
+     "share": 0.45
+    },
+    {
+     "grey": 54.6,
+     "share": 6.89
+    },
+    {
+     "grey": 107.3,
+     "share": 0.3
+    },
+    {
+     "grey": 86.9,
+     "share": 1.56
+    }
+   ],
+   "ratio": {
+    "stubble": 1.034,
+    "meadow": 1,
+    "marsh": 1.011,
+    "water": 1.001,
+    "wood": 0.999,
+    "village": 1.012,
+    "vineyard": 0.997,
+    "track": 1,
+    "plough": 0.97,
+    "pasture": 1,
+    "winter sowing": 1.075
+   }
+  }
+ }
+}

@@ -1,0 +1,284 @@
+{
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the source as it is)",
+   "blockFails": false,
+   "ok": true,
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "papercol",
+   "what": "the paper map's stream colour moved (8E's WATER_COL.stream)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "WATER_COL's paper colours are not 8E's (ice, iceRim, bank, stream)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "landcol",
+   "what": "a landscape water colour written outside WATER_COL",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the landscape's water colours are not in WATER_COL"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "rimwidth",
+   "what": "the shore ring wider than 4E's",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "ICE's 4E values changed (the ice's material, the shore ring's width and lift)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "level",
+   "what": "a mere moved (its level changed)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the meres' outlines, levels or shore ring are not 4E's"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "paper8e",
+   "what": "the paper map's ice not 8E's (its roughness)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the paper map's water materials are not 8E's (buildWater until 8F)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "papermats",
+   "what": "the paper map drawn with the landscape's water",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "waterPresentation does not give each water mesh its presentation's materials"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "opacityfirst",
+   "what": "setMode setting the water's opacity before its materials are in place",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "setMode does not put the water's materials in place before it sets their opacity as before"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "depth",
+   "what": "the landscape's ice writing its depth",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the landscape's ice writes its depth, or the shore band has a polygon offset or is not drawn after its ice"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "offset",
+   "what": "the shore band drawn with a polygon offset",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the landscape's ice writes its depth, or the shore band has a polygon offset or is not drawn after its ice"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "order",
+   "what": "the shore band sorted with its ice",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the landscape's ice writes its depth, or the shore band has a polygon offset or is not drawn after its ice"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "atmo",
+   "what": "the stream's hook not chaining the atmosphere's uniforms",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the water's hooks do not chain the atmosphere's uniforms or have no program of their own"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "flow",
+   "what": "the streams animated (a time in their hook)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the water reads a clock or a time (animated water) or cuts a hole (discard)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "hole",
+   "what": "a hole cut in the ice (discard)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the water reads a clock or a time (animated water) or cuts a hole (discard)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "treevals",
+   "what": "TREE8F's crowns denser than the prototype's",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "TREE8F is not the prototype's t-airy (keep 0.42, shrink 0.70; the bush 0.45, 0.72)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "treeside",
+   "what": "the deciduous habits drawn on their front faces only",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the deciduous habits or the bush are not drawn on both faces"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "treealpha",
+   "what": "the crowns drawn with alpha",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the deciduous habits or the bush are not drawn on both faces",
+    "the woods drawn with alpha (8F's crowns are opaque: nothing sorted)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "jitter",
+   "what": "the shells not 8E's crowns (their jitter)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the shells are not 8E's crowns (the icosahedron, detail 2, and its jitter)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "conifer",
+   "what": "a conifer changed",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the conifers are not 8E's"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "detailvals",
+   "what": "GDETAIL's reach moved",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "GDETAIL's values changed"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "detailmode",
+   "what": "the near detail on every mode",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the near detail is not the landscape's natural ground's alone, faded by the eye's distance"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "detailfade",
+   "what": "the near detail not faded by the eye's distance",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the near detail is not the landscape's natural ground's alone, faded by the eye's distance"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "detailscreen",
+   "what": "the near detail on the screen, not the ground",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the near detail is not anchored to the ground (its uv)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "detailtint",
+   "what": "the near detail a colour of its own",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "world.js: GROUND_FRAG_DETAIL has colour literals outside the palette tables (vec3(0.9,1.0,0.9) (line 1067))",
+    "the near detail is not its cell's grey ratio within GDETAIL's clamp (a new colour, or the class's tone moved)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "lumflip",
+   "what": "the near detail normalised by the canvas's cells as laid out (three's flip ignored)",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the near detail's cells' means are not taken as the shader samples the cells (the flip read from the texture as uploaded)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "detaillow",
+   "what": "the near detail drawn under lowTier",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the near detail is not off under lowTier (decision 236)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "bounds",
+   "what": "the self-test's margin bound loosened",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the self-test's ice bounds (ICE8F) are not 1.10 at the shore and 1.25 at the margin"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "woods8e",
+   "what": "the self-test's 8E tree counts not 8E's",
+   "blockFails": true,
+   "ok": true,
+   "findings": [
+    "the self-test's 8E woods (WOODS8E, KIT8E) are not 8E's"
+   ],
+   "exit": 1
+  }
+ ]
+}
