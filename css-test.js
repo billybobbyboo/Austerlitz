@@ -643,6 +643,21 @@ if(cerrs) process.exitCode=1;
   console.log("water, woods and the near ground (decisions 246 (a), 247 (a)): "+(ferr.length?ferr.length+" wrong":"the water's colours in WATER_COL, the paper map's water 8E's materials, the meres' outlines, levels and ring 4E's, the ice writing no depth, the band without an offset and after its ice, nothing animated; TREE8F, the crowns opaque on both faces, 8E's jitter and conifers; GDETAIL on the natural ground only, faded, anchored, a grey ratio, off under lowTier; the self-test's bounds"));
   if(ferr.length) process.exitCode=1;
 }
+/* Stage 8, 8G's verification (docs/STAGE8_SPEC.md section 19.1): a block at rest is drawn the same in every frame. Each of poseBlock's eased
+   values (the shape, the tilt, the heading) takes its target exactly once it is within the threshold that stops asking for frames, instead of
+   easing on below it (by about 1e-9 a frame until 8G); a loose body's sway, ambient, eases on, but takes its swayed heading exactly within 1e-6 */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), rerr=[];
+  const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name==="poseBlock"), pb=n?src.slice(n.start,n.end):"";
+  if(!/if\(Math\.abs\(sh\[0\]-u\.sw\)>0\.002\|\|Math\.abs\(sh\[1\]-u\.sd\)>0\.002\)\{ settling=true; u\.sw \+= \(sh\[0\]-u\.sw\)\*rate; u\.sd \+= \(sh\[1\]-u\.sd\)\*rate; \}\s*else \{ u\.sw=sh\[0\]; u\.sd=sh\[1\]; \}/.test(pb)) rerr.push("the block's shape eases on below its threshold (it does not take its target exactly)");
+  if(!/if\(Math\.abs\(lowered-\(u\.tilt\|\|0\)\)>0\.002\)\{ settling=true; u\.tilt = \(u\.tilt\|\|0\) \+ \(lowered-\(u\.tilt\|\|0\)\)\*ease\(0\.05\); \}\s*else u\.tilt=lowered;/.test(pb)) rerr.push("the block's tilt eases on below its threshold");
+  if(!/if\(!LOOSE\[st\]&&Math\.abs\(d0\)<=0\.002\) rec\.yaw=want0\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want0\)\/\(Math\.PI\*2\)\);/.test(pb)||!/else if\(Math\.abs\(diff\)<1e-6\) rec\.yaw=want\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want\)\/\(Math\.PI\*2\)\);/.test(pb)) rerr.push("the block's heading eases on below its threshold");
+  { const eased=(pb.match(/[\w.]+ \+=/g)||[]).map(t=>t.slice(0,-3)).sort().join(",");
+    if(eased!=="rec.yaw,u.sd,u.sw,want") rerr.push("poseBlock eases values other than the shape and the heading ("+eased+"): each eased value takes its target exactly at rest"); }
+  rerr.forEach(e=>console.log("  ! "+e));
+  console.log("a block at rest (8G's verification): "+(rerr.length?rerr.length+" wrong":"its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames"));
+  if(rerr.length) process.exitCode=1;
+}
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */
 {

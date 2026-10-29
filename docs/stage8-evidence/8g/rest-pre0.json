@@ -1,0 +1,97 @@
+{
+ "chromium": "153.0.8010.12",
+ "builds": [
+  {
+   "file": "8f.html",
+   "md5": "6ba949da17229530324add3c54dd94ff",
+   "clocks": [
+    {
+     "clock": "09:05",
+     "pixels": 0,
+     "objectsMoved": 294,
+     "largestBy": {
+      "a formation's block": 4.5422460237531936e-10,
+      "Group of a formation's block": 4.5422460237531936e-10,
+      "Mesh of a formation's block": 4.5422460237531936e-10,
+      "Sprite": 3.0073650236772664e-9,
+      "Mesh": 1.280612771381584e-8
+     },
+     "camera": 0
+    },
+    {
+     "clock": "10:40",
+     "pixels": 0,
+     "objectsMoved": 256,
+     "largestBy": {
+      "a formation's block": 6.398193086454285e-10,
+      "Group of a formation's block": 6.398193086454285e-10,
+      "Mesh of a formation's block": 6.398193086454285e-10,
+      "Mesh": 2.2178507919079493e-8,
+      "Sprite": 5.629757993119711e-9
+     },
+     "camera": 0
+    },
+    {
+     "clock": "13:50",
+     "pixels": 0,
+     "objectsMoved": 247,
+     "largestBy": {
+      "a formation's block": 5.957761867181333e-9,
+      "Group of a formation's block": 5.957761867181333e-9,
+      "Mesh of a formation's block": 5.957761867181333e-9,
+      "Mesh": 1.4476670351371013e-7,
+      "Sprite": 2.8604993929093325e-8
+     },
+     "camera": 0
+    },
+    {
+     "clock": "15:05",
+     "pixels": 0,
+     "objectsMoved": 122,
+     "largestBy": {
+      "a formation's block": 4.676636855549532e-10,
+      "Group of a formation's block": 4.676636855549532e-10,
+      "Mesh of a formation's block": 4.676636855549532e-10,
+      "Mesh": 1.0576752806912282e-8,
+      "Sprite": 4.462208380573429e-12
+     },
+     "camera": 0
+    }
+   ]
+  },
+  {
+   "file": "austerlitz-command-map.html",
+   "md5": "27b54e45061d3110222e02683e18c9a5",
+   "clocks": [
+    {
+     "clock": "09:05",
+     "pixels": 0,
+     "objectsMoved": 0,
+     "largestBy": {},
+     "camera": 0
+    },
+    {
+     "clock": "10:40",
+     "pixels": 0,
+     "objectsMoved": 0,
+     "largestBy": {},
+     "camera": 0
+    },
+    {
+     "clock": "13:50",
+     "pixels": 0,
+     "objectsMoved": 0,
+     "largestBy": {},
+     "camera": 0
+    },
+    {
+     "clock": "15:05",
+     "pixels": 0,
+     "objectsMoved": 0,
+     "largestBy": {},
+     "camera": 0
+    }
+   ]
+  }
+ ]
+}

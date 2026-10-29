@@ -12619,9 +12619,11 @@ function poseBlock(rec,id,st){
 
   var sh=shapeFor(st);
   var rate=ease(moving?0.075:0.045);
-  if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002) settling=true;
-  u.sw += (sh[0]-u.sw)*rate;
-  u.sd += (sh[1]-u.sd)*rate;
+  /* Stage 8, 8G's verification (docs/STAGE8_SPEC.md section 19.1): within the threshold that stops asking for frames, each eased value takes
+     its target exactly, so a block at rest is drawn the same in every frame (until 8G the easing went on below it, moving the blocks by about
+     1e-9 a frame: enough, at a shadow's or a depth test's edge, to change a pixel of a frame with nothing moving) */
+  if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002){ settling=true; u.sw += (sh[0]-u.sw)*rate; u.sd += (sh[1]-u.sd)*rate; }
+  else { u.sw=sh[0]; u.sd=sh[1]; }
   /* column and line are re-layouts of the same men, not a stretched block; the re-seat itself
      happens in settleBlock, once the frame's scale and yaw are known too */
   if(u.showBattalions && f.strength && f.track && trackedDescendants(id).length){
@@ -12629,8 +12631,8 @@ function poseBlock(rec,id,st){
     if(kb!==u.shownBat) u.showBattalions(kb);
   }
   var lowered = (st==="broken"||st==="captured"||st==="encircled"||st==="repulsed") ? 0.95 : 0;
-  if(Math.abs(lowered-(u.tilt||0))>0.002) settling=true;
-  u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05);
+  if(Math.abs(lowered-(u.tilt||0))>0.002){ settling=true; u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05); }
+  else u.tilt=lowered;
 
   if(u.skirmish) u.skirmish.visible = !!SKIRMISH[st] && (!moving || st==="advancing" || st==="pursuing");
   if(rec.pad){
@@ -12656,7 +12658,10 @@ function poseBlock(rec,id,st){
   while(d0>Math.PI) d0-=Math.PI*2;
   while(d0<-Math.PI) d0+=Math.PI*2;
   if(Math.abs(d0)>(LOOSE[st]?0.13:0.002)) settling=true;
-  rec.yaw += diff*ease(WHEEL[f.arm]||0.05);
+  /* at rest exactly, its turns kept; a loose body's sway is ambient and eases on, but takes its swayed heading exactly once within 1e-6 of it */
+  if(!LOOSE[st]&&Math.abs(d0)<=0.002) rec.yaw=want0+Math.PI*2*Math.round((rec.yaw-want0)/(Math.PI*2));
+  else if(Math.abs(diff)<1e-6) rec.yaw=want+Math.PI*2*Math.round((rec.yaw-want)/(Math.PI*2));
+  else rec.yaw += diff*ease(WHEEL[f.arm]||0.05);
 }
 var FIGHTING={attacking:1,engaged:1,charging:1,counterattack:1,repulsed:1,encircled:1,broken:1};
 /* ---- Stage 4E: smoke (docs/STAGE4_SPEC.md section E.2; owner decision 77) ----
