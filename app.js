@@ -4205,7 +4205,7 @@ function paintChapterText(){
     var nm=fid; FEATURES.forEach(function(x){ if(x.id===fid) nm=x.name; });
     return '<button class="linkb" data-feat="'+esc(fid)+'">'+esc(nm)+'</button>';
   }).join(" ");
-  host.innerHTML='<h3>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h3>'+
+  host.innerHTML='<h2>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h2>'+   /* Stage 8, 8H (A-6): an h2 under the rail's h1 (an h3 until 8H) */
     '<p class="prose">'+esc(c.text)+'</p>'+
     '<div class="chapfeat">'+feats+'</div>';
   host.querySelectorAll("[data-feat]").forEach(function(b){
@@ -4602,11 +4602,11 @@ function paintPlanText(){
   host.innerHTML = sides.map(function(sd){
     var P=PLANS[sd];
     return '<div class="planblock plan-'+sd+'">'+
-      '<h3>'+esc(P.name)+'</h3>'+
+      '<h2>'+esc(P.name)+'</h2>'+   /* Stage 8, 8H (A-6): the panel's heads h2 and h3 under the rail's h1 (h3 and h4 until 8H, a skipped level) */
       '<p class="planauth">'+esc(P.author)+'</p>'+
-      '<h4>Intent</h4><p class="prose">'+esc(P.intent)+'</p>'+
-      '<h4>What it assumed</h4><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
-      '<h4>Orders</h4><dl class="kvs">'+P.cols.map(function(c){
+      '<h3>Intent</h3><p class="prose">'+esc(P.intent)+'</p>'+
+      '<h3>What it assumed</h3><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
+      '<h3>Orders</h3><dl class="kvs">'+P.cols.map(function(c){
         return '<div class="kv"><dt>'+esc(c.n)+'</dt><dd>'+esc(c.ord)+'</dd></div>'; }).join('')+'</dl>'+
       '<p class="note">'+esc(P.cost)+'</p></div>';
   }).join('');
@@ -7620,7 +7620,8 @@ function paintChanges(phIdx){
   if(!items.length){ host.innerHTML=""; return; }
   items.sort(function(a,b){ return a.rank-b.rank; });
   items=items.slice(0,7);
-  host.innerHTML='<h4>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h4><ul>'+
+  host.innerHTML='<h3>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h3><ul>'+   /* Stage 8, 8H (A-6): an h3 under the dispatch's h2 (an h4 until 8H, a skipped level) */
+    ''+
     items.map(function(it){
       return '<li><i style="background:'+NATION[FORMATIONS[it.id].nation].fill+'"></i>'+
              '<span>'+esc(it.txt)+'</span></li>';
@@ -8686,9 +8687,28 @@ function openSources(o){
   if(refs&&!(o&&o.repaint)) sc.scrollTop=0;   /* decision 203: the dossier's statements at the sheet's head */
 }
 
+/* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): the phase's message placed clear of the presentation switch and of
+   every control along the top of the screen. The stylesheet centres it over the free area at its top; where its box would cross a shown control
+   (the switch, the tools, the Panels or the Menu button: anything a visitor presses; the map layer's items aside, the message taking no pointer)
+   it moves down below that control, again until it crosses none, within the screen's top half. Until 8H the switch stood over its first words
+   in Study at every desktop size (77 x 22 px) and at 1024 px the opening's button lay under it too */
+function placeToast(t){
+  if(!t||!t.getBoundingClientRect||typeof getComputedStyle!=="function"||!document.querySelectorAll) return;   /* (runtime-test.js's page has no layout) */
+  t.style.top="";
+  var r=t.getBoundingClientRect(), top=r.top, H=r.height, n=0, moved=true;
+  if(!(r.width>0&&H>0)) return;
+  var C=[]; [].forEach.call(document.querySelectorAll("button,a[href],input,select,[role=button],[role=tab],[role=slider]"),function(e){
+    if(ML.root&&ML.root.contains(e)) return;
+    var q=e.getBoundingClientRect(); if(!(q.width>0&&q.height>0)||q.top>innerHeight/2) return;
+    for(var p=e;p&&p.nodeType===1;p=p.parentElement){ var s=getComputedStyle(p); if(s.display==="none"||s.visibility==="hidden"||+s.opacity===0) return; }
+    C.push(q); });
+  while(moved&&n++<16){ moved=false;
+    for(var i=0;i<C.length;i++){ var q=C[i]; if(q.right>r.left&&q.left<r.right&&q.bottom>top&&q.top<top+H){ top=q.bottom+8; moved=true; } } }
+  if(top!==r.top&&top+H<=innerHeight/2) t.style.top=Math.round(top)+"px";
+}
 function flash(msg){
   var t=document.getElementById("toast");
-  t.textContent=msg; t.classList.add("on");
+  t.textContent=msg; placeToast(t); t.classList.add("on");
   clearTimeout(flash._t);   /* roadmap step 5 (docs/FINAL_AUDIT.md SW-13): a second message keeps its whole 3.4 s */
   flash._t=setTimeout(function(){ t.classList.remove("on"); },3400);
 }

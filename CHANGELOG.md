@@ -54,6 +54,19 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
     body's sway is part of the held pose, so it no longer counts as drift for render on demand (`ambientNow`).
   - Checks: the self-test's (l), "the blocks' pose at a pause (8H)" (the manifest 313 to 314); 8F's check (k) judges every paused frame now
     (it set aside those the block's own ease moved); `css-test.js`'s block "a block at rest" holds the hold, the seek and 8G's exact rest.
+- **The interface (section 20.5): the phase's message clear of the controls; A-6.**
+  - *The phase's message* (section 9.6): measured on 8G's build at the nine sizes the harness measures, in Study and Watch, by a real PageDown
+    from 08:40 to 08:45's message (`tools/stage8/toast-8h.js`): over the presentation switch by 1,685 px at 1600 x 900, 1366 x 768 and 1280 x 720
+    in Study and 1,993 px at 1024 x 768, where it also covered "Begin the opening" (483 px); on every phone pushed against the right edge by half
+    the rail's width and wrapped into a 102 px column, over the Menu button (1,175 to 1,680 px). Now centred over the free area (the window's but
+    where the rail is docked and shown), its own width within the screen, and placed below any control its box would cross (`placeToast`): 0 px
+    over the switch and over every control in all 18 cases. A live block of the harness, `toast`, judged by `checkLive` (0 px in each of the 18
+    cases, the message 08:45's), in `check:selftest` and `check:visual`.
+  - *A-6*: the focus ring 2 px (it was 1 px: WCAG 2.4.7 met, under 2.4.13's 2 px), in the theme's accent, on the base rule, the two sheets'
+    bodies and the event markers (a focused in-the-hour marker 2 px in the accent, apart from its 1 px ring); the map layer's group in the page's
+    `main` landmark (its place in the tab order unchanged) and the timeline a named region (`section`, "Timeline"); the heading levels: the Now
+    tab's "What changed" an `h3` under the dispatch's `h2` (an `h4`), the Plans tab's heads `h2` and `h3` under the rail's `h1` (`h3` and `h4`), an
+    Analysis theme's title an `h2` (an `h3`), each keeping its look by its own rule.
 
 ## 2026-10 · Stage 8, implementation PR 8G: buildings and structures (decision 248 (a)), with its prerequisites
 

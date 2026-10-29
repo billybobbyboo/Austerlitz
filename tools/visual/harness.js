@@ -597,6 +597,32 @@ async function interact(page,it,vp){
         await first.evaluate(()=>{ setSpeed(0.5); setPresentation("study"); select(null,null); });
         LIVE.phone=PH; console.log("phone layout on this page: "+JSON.stringify({menu:PH.menuOpen.menu,esc:PH.menuEsc.focus,sheet:PH.sheet.sheet,phase:PH.phase.phase,dossier:PH.dossier.drawer,rail:PH.rail.rail}));
       }
+      /* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): the phase's message clear of the presentation switch and of
+         every shown control at every size the harness measures (cases.js: 1600 x 900, 1366 x 768, 1280 x 720 and 1024 x 768, and the phones'
+         390 x 844, 360 x 800, 430 x 932, 402 x 714 and 844 x 390; the layout is the width's and the height's, so this page is narrowed to each), in
+         Study and in Watch: 08:45's message brought by a real PageDown on the time rail from 08:40, its box against the switch's (where it is shown)
+         and every shown control's but the map layer's own (a button, a link, an input, a tab, a slider), measured, then hidden again */
+      if(await first.evaluate(()=>typeof flash==="function"&&!!document.getElementById("timerail"))){
+        AT="toast"; const TS=[];
+        for(const sz of [[1600,900],[1366,768],[1280,720],[1024,768],[390,844],[360,800],[430,932],[402,714],[844,390]]) for(const pres of ["study","watch"]){
+          await size(sz[0],sz[1]);
+          await first.evaluate(p=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); if(typeof setMenu==="function") setMenu(false); setPresentation(p);
+            setClock(520,{instant:true,force:true,camera:false}); clearTimeout(flash._t); document.getElementById("toast").classList.remove("on"); document.getElementById("timerail").focus(); },pres);
+          await first.keyboard.press("PageDown"); await first.waitForTimeout(150);
+          TS.push(Object.assign({at:sz.join("x")+" "+pres},await first.evaluate(()=>{
+            const t=document.getElementById("toast"), v=document.getElementById("viewmode"), a=t.getBoundingClientRect();
+            const shown=e=>{ if(!e) return false; const q=e.getBoundingClientRect(); if(!(q.width>0&&q.height>0)) return false; for(let n=e;n&&n.nodeType===1;n=n.parentElement){ const s=getComputedStyle(n); if(s.display==="none"||s.visibility==="hidden"||+s.opacity===0) return false; } return true; };
+            const ov=(p,q)=>Math.round(Math.max(0,Math.min(p.right,q.right)-Math.max(p.left,q.left))*Math.max(0,Math.min(p.bottom,q.bottom)-Math.max(p.top,q.top)));
+            const vs=shown(v), others=[];
+            document.querySelectorAll("button,a[href],input,select,[role=button],[role=tab],[role=slider]").forEach(e=>{ if(t.contains(e)||(v&&v.contains(e))||e.closest("#maplayer")||!shown(e)) return;
+              const o=ov(a,e.getBoundingClientRect()); if(o>0) others.push({el:e.id?"#"+e.id:e.tagName.toLowerCase(), px:o}); });
+            const out={on:t.classList.contains("on"), text:t.textContent, want:PHASES[3].flash, clock:Math.round(clock), box:[Math.round(a.left),Math.round(a.top),Math.round(a.width),Math.round(a.height)],
+              switchShown:vs, overlapSwitch:vs?ov(a,v.getBoundingClientRect()):0, others:others};
+            clearTimeout(flash._t); t.classList.remove("on"); return out; })));
+        }
+        await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
+        LIVE.toast=TS; console.log("the phase's message: "+TS.map(c=>c.at+" "+(c.on?"shown":"NOT SHOWN")+" at "+c.box.join(",")+(c.overlapSwitch||c.others.length?" OVER "+c.overlapSwitch+" px of the switch, "+JSON.stringify(c.others):"")).join("; "));
+      }
       /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): the reduced-motion preference turned on and off while the page is open (the audit's rm-live):
          the app follows it (RM) and the panels' slides stop (the rail's transition-duration) */
       AT="reduced motion";

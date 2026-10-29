@@ -15,7 +15,7 @@ canvas{display:block;touch-action:none}   /* Stage 3D: the landscape takes one-f
 #stage{position:fixed;inset:0}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 button{font:inherit;color:inherit}
-:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}   /* Stage 8, 8H (A-6): 2 px (1 px until 8H: WCAG 2.4.7 met, under 2.4.13's 2 px); the accent is the theme's (dark on the paper map) */
 
 #boot{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;padding:16px;
   background:var(--ink);transition:opacity .8s ease}
@@ -232,7 +232,7 @@ ul.bul.claim-sides li{font-size:var(--t-ui);color:var(--text-muted);margin-botto
 #help[hidden]{display:none}
 #help-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer;min-width:24px;min-height:24px}
 .help-sheet{max-width:720px}
-#help-body:focus-visible,#modal-body:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+#help-body:focus-visible,#modal-body:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 /* roadmap step 3 (decision 134 (a)): the shortcuts switch, the layers panel's toggle row; its note in the interface face */
 #help-keys{margin:0 0 4px;width:100%}
 .sheet p.help-note{font-family:var(--sans);font-size:var(--t-small);line-height:1.45;color:var(--text-muted);margin:0 0 10px}
@@ -244,10 +244,14 @@ ul.bul.claim-sides li{font-size:var(--t-ui);color:var(--text-muted);margin-botto
   text-align:center;font-weight:400;background:rgba(var(--panel-rgb),.6)}
 .tb-help{min-width:32px;min-height:32px;font-weight:600;flex:0 0 auto}   /* in the timeline's control row, Study and Watch: no panel grows */
 
-#toast{position:fixed;left:calc(50% + var(--rail)/2);top:26px;transform:translateX(-50%);z-index:40;
+/* Stage 8, 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): centred over the free area, which is the window's but where the rail is docked and
+   shown (until 8H always offset by half the rail: on a phone it was pushed to the right edge and wrapped into a 102 px column); its own width,
+   within the screen; app.js placeToast moves it down below any control its box would cross (the presentation switch in Study) */
+#toast{position:fixed;left:50%;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;top:26px;transform:translateX(-50%);z-index:40;
   font-family:var(--serif);font-size:var(--t-prose);color:var(--text-hi);background:rgba(var(--scrim-rgb),.82);
   border:1px solid rgba(var(--accent-rgb),.38);padding:8px 18px;opacity:0;transition:opacity .8s ease;pointer-events:none}
 #toast.on{opacity:1}
+body.docked:not(.rail-hidden) #toast{left:calc(50% + var(--rail)/2);max-width:calc(100vw - var(--rail) - 24px)}
 /* roadmap step 5: the timeline's one tooltip (app.js timeTip), in place of the native title tooltips */
 #tltip{position:fixed;left:0;top:0;z-index:62;max-width:min(380px,calc(100vw - 16px));padding:5px 9px;
   font-family:var(--sans);font-size:var(--t-ui);line-height:1.4;color:var(--text-hi);background:rgba(var(--scrim-rgb),.96);
@@ -316,7 +320,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .chap[aria-current="true"]{color:var(--text-hi);border-left-color:var(--accent);background:rgba(var(--accent-rgb),.10)}
 .chap em{font-style:normal;font-size:var(--t-ui);color:var(--text-muted);font-variant-numeric:tabular-nums;flex:0 0 38px}
 .chap[aria-current="true"] em{color:var(--text-hi)}
-#chaptext h3{font-size:var(--t-ui);color:var(--text-hi);font-weight:400;margin:0 0 6px;border:0;padding:0;letter-spacing:0}
+#chaptext h2{font-size:var(--t-ui);color:var(--text-hi);font-weight:400;margin:0 0 6px;border:0;padding:0;letter-spacing:0}
 #chaptext .hh{font-size:var(--t-ui);color:var(--text-muted);font-variant-numeric:tabular-nums}
 #chaptext .prose{font-size:var(--t-prose);line-height:1.6}
 .chapfeat{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
@@ -383,7 +387,7 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
   opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease}
 .ev-mark::after{content:"";position:absolute;inset:-6px;display:block}
 .ev-mark:hover{transform:translateX(-50%) rotate(45deg) scale(1.5);opacity:1}
-.ev-mark:focus-visible{outline:1px solid var(--accent);outline-offset:3px;opacity:1}
+.ev-mark:focus-visible{outline:2px solid var(--accent);outline-offset:3px;opacity:1}
 .ev-mark.fr{background:var(--side-fr)}
 .ev-mark.al{background:var(--side-al)}
 .ev-mark.dec{background:var(--ink);border:2px solid var(--side-al);width:10px;height:10px;top:1px}
@@ -396,7 +400,7 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
 .ev-mark.inth{opacity:1;outline:1px solid var(--text-hi);outline-offset:3px}
 .step.inth{box-shadow:inset 0 -2px 0 var(--text-hi)}
 .step.inth[aria-current="true"]{box-shadow:inset 0 2px 0 var(--accent),inset 0 -2px 0 var(--text-hi)}
-.ev-mark.inth:focus-visible{outline-color:var(--accent)}
+.ev-mark.inth:focus-visible{outline:2px solid var(--accent)}   /* 8H: focused, 2 px in the accent, apart from its 1 px in-the-hour ring */
 /* Stage 5C (docs/STAGE5_SPEC.md section C.3; decision 89): an interval's window as a bar from its start (where its diamond stands) to its
    end, in the side's colour at full strength (3:1 against the timebar in both themes), in one of four lanes at the top of the event row,
    under the diamonds; lit with its marker */
@@ -457,10 +461,10 @@ body.pm-map #restore{display:block}
 .planblock{margin-bottom:20px;padding-left:10px;border-left:2px solid var(--line-2)}
 .planblock.plan-fr{border-left-color:var(--side-fr)}
 .planblock.plan-al{border-left-color:var(--side-al)}
-.planblock h3{font-size:var(--t-prose);color:var(--text-hi);font-weight:400;margin:0 0 5px;
+.planblock h2{font-size:var(--t-prose);color:var(--text-hi);font-weight:400;margin:0 0 5px;
   font-family:var(--serif);border:0;padding:0;letter-spacing:0}
 .planauth{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0 0 10px}
-.planblock h4{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:12px 0 5px}
+.planblock h3{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:12px 0 5px}
 .planblock .prose{font-size:var(--t-prose);line-height:1.6;margin:0}
 .planblock .kv{grid-template-columns:1fr;gap:2px}
 .planblock .kv dt{color:var(--text);font-size:var(--t-small)}
@@ -483,7 +487,7 @@ body.pm-map #restore{display:block}
 /* event ticks on the scrub rail */
 /* what changed in this phase */
 #d-changes{margin-top:9px;border-top:1px solid var(--line);padding-top:7px}
-#d-changes h4{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:0 0 5px}
+#d-changes h3{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:0 0 5px}
 #d-changes ul{list-style:none;margin:0;padding:0}
 #d-changes li{font-size:var(--t-ui);color:var(--text-muted);line-height:1.5;padding:2px 0;
   display:grid;grid-template-columns:auto 1fr;gap:7px}
@@ -1509,7 +1513,8 @@ $Id$
      the clock, one caption line, Watch's presentation switch, the speeds, the scale) and one track on one time axis: the act
      bands, the phase ticks with their labels, and the rail (hour ticks, the event markers, the playhead). The situation's
      readings and the live event's reason moved to the top of the Now tab (inside the dispatch). -->
-<div class="timebar">
+<!-- Stage 8, 8H (docs/FINAL_AUDIT.md A-6): the timeline a named region (a landmark), the map layer in the page's main landmark (below) -->
+<section class="timebar" aria-label="Timeline">
   <div id="prog"><i></i></div>
   <div class="tb-top">
     <!-- roadmap step 5 (docs/VISUAL_AUDIT.md, low; question 208, the default meanwhile): the event steps in the media players' order, the
@@ -1551,7 +1556,7 @@ $Id$
     </div>
     <div class="evmarks" id="evmarks" role="group" aria-label="Events"></div>
   </div>
-</div>
+</section>
 
 <aside class="drawer" id="drawer" aria-label="Dossier">
   <div class="dbar"><button id="drawer-back" type="button">&lsaquo; Back to <span id="drawer-back-to">Now</span></button>
@@ -1612,7 +1617,7 @@ $Id$
 
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
-<div id="maplayer" role="group" aria-label="The map: formations, events and places"></div>
+<main id="map-main"><div id="maplayer" role="group" aria-label="The map: formations, events and places"></div></main>
 <!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
 <div id="eyecap" class="eyecap" hidden></div>
 
@@ -11577,7 +11582,7 @@ function paintChapterText(){
     var nm=fid; FEATURES.forEach(function(x){ if(x.id===fid) nm=x.name; });
     return '<button class="linkb" data-feat="'+esc(fid)+'">'+esc(nm)+'</button>';
   }).join(" ");
-  host.innerHTML='<h3>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h3>'+
+  host.innerHTML='<h2>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h2>'+   /* Stage 8, 8H (A-6): an h2 under the rail's h1 (an h3 until 8H) */
     '<p class="prose">'+esc(c.text)+'</p>'+
     '<div class="chapfeat">'+feats+'</div>';
   host.querySelectorAll("[data-feat]").forEach(function(b){
@@ -11974,11 +11979,11 @@ function paintPlanText(){
   host.innerHTML = sides.map(function(sd){
     var P=PLANS[sd];
     return '<div class="planblock plan-'+sd+'">'+
-      '<h3>'+esc(P.name)+'</h3>'+
+      '<h2>'+esc(P.name)+'</h2>'+   /* Stage 8, 8H (A-6): the panel's heads h2 and h3 under the rail's h1 (h3 and h4 until 8H, a skipped level) */
       '<p class="planauth">'+esc(P.author)+'</p>'+
-      '<h4>Intent</h4><p class="prose">'+esc(P.intent)+'</p>'+
-      '<h4>What it assumed</h4><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
-      '<h4>Orders</h4><dl class="kvs">'+P.cols.map(function(c){
+      '<h3>Intent</h3><p class="prose">'+esc(P.intent)+'</p>'+
+      '<h3>What it assumed</h3><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
+      '<h3>Orders</h3><dl class="kvs">'+P.cols.map(function(c){
         return '<div class="kv"><dt>'+esc(c.n)+'</dt><dd>'+esc(c.ord)+'</dd></div>'; }).join('')+'</dl>'+
       '<p class="note">'+esc(P.cost)+'</p></div>';
   }).join('');
@@ -14992,7 +14997,8 @@ function paintChanges(phIdx){
   if(!items.length){ host.innerHTML=""; return; }
   items.sort(function(a,b){ return a.rank-b.rank; });
   items=items.slice(0,7);
-  host.innerHTML='<h4>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h4><ul>'+
+  host.innerHTML='<h3>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h3><ul>'+   /* Stage 8, 8H (A-6): an h3 under the dispatch's h2 (an h4 until 8H, a skipped level) */
+    ''+
     items.map(function(it){
       return '<li><i style="background:'+NATION[FORMATIONS[it.id].nation].fill+'"></i>'+
              '<span>'+esc(it.txt)+'</span></li>';
@@ -16058,9 +16064,28 @@ function openSources(o){
   if(refs&&!(o&&o.repaint)) sc.scrollTop=0;   /* decision 203: the dossier's statements at the sheet's head */
 }
 
+/* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): the phase's message placed clear of the presentation switch and of
+   every control along the top of the screen. The stylesheet centres it over the free area at its top; where its box would cross a shown control
+   (the switch, the tools, the Panels or the Menu button: anything a visitor presses; the map layer's items aside, the message taking no pointer)
+   it moves down below that control, again until it crosses none, within the screen's top half. Until 8H the switch stood over its first words
+   in Study at every desktop size (77 x 22 px) and at 1024 px the opening's button lay under it too */
+function placeToast(t){
+  if(!t||!t.getBoundingClientRect||typeof getComputedStyle!=="function"||!document.querySelectorAll) return;   /* (runtime-test.js's page has no layout) */
+  t.style.top="";
+  var r=t.getBoundingClientRect(), top=r.top, H=r.height, n=0, moved=true;
+  if(!(r.width>0&&H>0)) return;
+  var C=[]; [].forEach.call(document.querySelectorAll("button,a[href],input,select,[role=button],[role=tab],[role=slider]"),function(e){
+    if(ML.root&&ML.root.contains(e)) return;
+    var q=e.getBoundingClientRect(); if(!(q.width>0&&q.height>0)||q.top>innerHeight/2) return;
+    for(var p=e;p&&p.nodeType===1;p=p.parentElement){ var s=getComputedStyle(p); if(s.display==="none"||s.visibility==="hidden"||+s.opacity===0) return; }
+    C.push(q); });
+  while(moved&&n++<16){ moved=false;
+    for(var i=0;i<C.length;i++){ var q=C[i]; if(q.right>r.left&&q.left<r.right&&q.bottom>top&&q.top<top+H){ top=q.bottom+8; moved=true; } } }
+  if(top!==r.top&&top+H<=innerHeight/2) t.style.top=Math.round(top)+"px";
+}
 function flash(msg){
   var t=document.getElementById("toast");
-  t.textContent=msg; t.classList.add("on");
+  t.textContent=msg; placeToast(t); t.classList.add("on");
   clearTimeout(flash._t);   /* roadmap step 5 (docs/FINAL_AUDIT.md SW-13): a second message keeps its whole 3.4 s */
   flash._t=setTimeout(function(){ t.classList.remove("on"); },3400);
 }
