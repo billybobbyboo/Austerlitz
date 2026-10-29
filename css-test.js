@@ -654,17 +654,27 @@ if(cerrs) process.exitCode=1;
 }
 /* Stage 8, 8G's verification (docs/STAGE8_SPEC.md section 19.1): a block at rest is drawn the same in every frame. Each of poseBlock's eased
    values (the shape, the tilt, the heading) takes its target exactly once it is within the threshold that stops asking for frames, instead of
-   easing on below it (by about 1e-9 a frame until 8G); a loose body's sway, ambient, eases on, but takes its swayed heading exactly within 1e-6 */
+   easing on below it (by about 1e-9 a frame until 8G); a loose body's sway eases on, but takes its swayed heading exactly within 1e-6.
+   Since 8H (section 20.4; the block wheeling on after a pause): the eases run only while the clock moves on under Play (adv); the clock
+   standing, the pose is held (the turn, the shape, the dip and the sway); a seek (GAIT.seek) or a block's first pose takes the clock's pose
+   at once (sk); a broken body's sway is no longer drift for render on demand (ambientNow) */
 {
   const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), rerr=[];
-  const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name==="poseBlock"), pb=n?src.slice(n.start,n.end):"";
-  if(!/if\(Math\.abs\(sh\[0\]-u\.sw\)>0\.002\|\|Math\.abs\(sh\[1\]-u\.sd\)>0\.002\)\{ settling=true; u\.sw \+= \(sh\[0\]-u\.sw\)\*rate; u\.sd \+= \(sh\[1\]-u\.sd\)\*rate; \}\s*else \{ u\.sw=sh\[0\]; u\.sd=sh\[1\]; \}/.test(pb)) rerr.push("the block's shape eases on below its threshold (it does not take its target exactly)");
-  if(!/if\(Math\.abs\(lowered-\(u\.tilt\|\|0\)\)>0\.002\)\{ settling=true; u\.tilt = \(u\.tilt\|\|0\) \+ \(lowered-\(u\.tilt\|\|0\)\)\*ease\(0\.05\); \}\s*else u\.tilt=lowered;/.test(pb)) rerr.push("the block's tilt eases on below its threshold");
+  const fnOf=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):""; };
+  const pb=fnOf("poseBlock");
+  if(!/if\(sk\)\{ u\.sw=sh\[0\]; u\.sd=sh\[1\]; \}\s*else if\(adv\)\{\s*if\(Math\.abs\(sh\[0\]-u\.sw\)>0\.002\|\|Math\.abs\(sh\[1\]-u\.sd\)>0\.002\)\{ settling=true; u\.sw \+= \(sh\[0\]-u\.sw\)\*rate; u\.sd \+= \(sh\[1\]-u\.sd\)\*rate; \}\s*else \{ u\.sw=sh\[0\]; u\.sd=sh\[1\]; \} \}/.test(pb)) rerr.push("the block's shape: not held with the clock standing, not the clock's at a seek, or easing on below its threshold");
+  if(!/if\(sk\) u\.tilt=lowered;\s*else if\(adv\)\{\s*if\(Math\.abs\(lowered-\(u\.tilt\|\|0\)\)>0\.002\)\{ settling=true; u\.tilt = \(u\.tilt\|\|0\) \+ \(lowered-\(u\.tilt\|\|0\)\)\*ease\(0\.05\); \}\s*else u\.tilt=lowered; \}/.test(pb)) rerr.push("the block's tilt: not held with the clock standing, not the clock's at a seek, or easing on below its threshold");
   if(!/if\(!LOOSE\[st\]&&Math\.abs\(d0\)<=0\.002\) rec\.yaw=want0\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want0\)\/\(Math\.PI\*2\)\);/.test(pb)||!/else if\(Math\.abs\(diff\)<1e-6\) rec\.yaw=want\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want\)\/\(Math\.PI\*2\)\);/.test(pb)) rerr.push("the block's heading eases on below its threshold");
   { const eased=(pb.match(/[\w.]+ \+=/g)||[]).map(t=>t.slice(0,-3)).sort().join(",");
     if(eased!=="rec.yaw,u.sd,u.sw,want") rerr.push("poseBlock eases values other than the shape and the heading ("+eased+"): each eased value takes its target exactly at rest"); }
+  /* 8H: the seek and the clock's advance read once, before any ease; the heading the clock's at a seek, held with the clock standing, before the sway */
+  if(!/var sk=rec\.pSeek!==GAIT\.seek\|\|rec\.yaw===undefined, adv=rec\.pClock!==clock;\s*rec\.pSeek=GAIT\.seek; rec\.pClock=clock;/.test(pb)) rerr.push("poseBlock does not read the seek (GAIT.seek) and the clock's advance once per pose");
+  { const iSk=pb.indexOf("if(sk){ rec.yaw="), iAdv=pb.indexOf("if(!adv) return;"), iSw=pb.indexOf("if(LOOSE[st]) want +="), iEase=pb.indexOf("rec.yaw += diff*ease(WHEEL[f.arm]");
+    if(!(iSk>0&&iAdv>iSk&&iSw>iAdv&&iEase>iSw)) rerr.push("the heading: not the clock's at a seek, then held with the clock standing, before the sway and the turn ease");
+    if(!/if\(sk\)\{ rec\.yaw=rec\.yaw===undefined\?want0:want0\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want0\)\/\(Math\.PI\*2\)\); return; \}/.test(pb)) rerr.push("a seek does not take the clock's heading at once, its turns kept"); }
+  if(/LOOSE\[/.test(fnOf("ambientNow"))) rerr.push("a broken body's sway still counted as drift (ambientNow): it is the pose's, held while the clock stands");
   rerr.forEach(e=>console.log("  ! "+e));
-  console.log("a block at rest (8G's verification): "+(rerr.length?rerr.length+" wrong":"its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames"));
+  console.log("a block at rest (8G's verification; 8H's pause): "+(rerr.length?rerr.length+" wrong":"its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames; eased only while the clock moves on under Play, held while it stands, the clock's at a seek"));
   if(rerr.length) process.exitCode=1;
 }
 /* Stage 8, implementation PR 8G's prerequisite 1 (the audit of 8F; docs/STAGE8_SPEC.md section 19.1): the ground's atlas mapped as painted. Both

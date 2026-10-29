@@ -31,6 +31,29 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
     Littawa across the rest and its church in it, no lane, size or church place the planner can try holds seven (204 lanes more, every size,
     24 church places: five); a fourth, smaller farmstead size would draw seven (two of them an L), a looser place margin six; each changes a
     convention for one village's count, and the cause is the drawn mere's outline (decision 27).
+- **Timing and the pause (section 20.4): S-7's two seams; the block wheeling on after a pause.** Reproduced on 8G's build by
+  `tools/stage8/s7-8h.js` and `tools/stage8/pose-8h.js` (the app's own loop on the driver's clock, Play and Pause by real clicks):
+  - *A change of speed inside a dwell* (S-7): the ease kept the speed it was entered at; from 4x to 1/2x a third of the way into the ease in,
+    out or during the hold, the clock eased on at 4x's pace and left the dwell at 37.8 clock minutes a second before dropping to 1/2x's 5.
+    `dwellAdvance` now scales the ease's remaining time by the speeds' ratio (its fraction and distance kept): the rate changes by the ratio at
+    the change, as a change of speed off the ease does, and every ease ends at the new speed's rate (4.965).
+  - *A relief change during a glide* (S-7): `redrawGround` stopped the tween but left the camera's slot set, so `followActive` stayed false and
+    Follow idle under Play until the next phase boundary (the target moved 0 in a second of play). `stopTweens` clears both slots (8C's
+    `endTweens`, which runs tweens to their ends, is another operation, kept): the camera stays where the glide stopped (moved 0), Follow follows
+    (its target 18.2 units in a second).
+  - *The knowledge rule against the eased fog* (S-7's third seam): measured every minute 08:00-10:00 for both headquarters, no formation's
+    reading would differ were the rule taken on the drawn fog's eased amount instead of the phase's mist (0 of 242 minutes); kept, as the
+    historical rule (decision 92: the reading at the phase's record), the drawn fog's twenty-minute ease a presentation (section 20.4).
+  - *The block wheeling on after a pause* (8F's finding, section 18.10 item 2): `poseBlock` eased each block's heading (at its arm's rate,
+    `WHEEL`), shape, standards' dip and a broken body's sway in real time whatever the clock did. On 8G's build 60 of 60 paused frames moved
+    (Vandamme's division turned 1.18 rad with the clock standing; up to 2.73 rad across the blocks), and one clock reached by two paths showed
+    two poses 1.15 rad apart. Now the eases run only while Play advances the clock; with the clock standing (paused, a dwell's hold) the pose
+    is held; a seek (8F's `GAIT.seek`, every move of the clock but Play's own) or a block's first pose shows that clock's pose at once; Resume
+    turns on from the held pose. Measured: 0 of 60 paused frames move, the two paths' poses identical, every block at its own heading in the
+    first frame after a seek, the held block turning on when resumed; 8G's exact rest (its prerequisite 0) kept inside the eases. A broken
+    body's sway is part of the held pose, so it no longer counts as drift for render on demand (`ambientNow`).
+  - Checks: the self-test's (l), "the blocks' pose at a pause (8H)" (the manifest 313 to 314); 8F's check (k) judges every paused frame now
+    (it set aside those the block's own ease moved); `css-test.js`'s block "a block at rest" holds the hold, the seek and 8G's exact rest.
 
 ## 2026-10 · Stage 8, implementation PR 8G: buildings and structures (decision 248 (a)), with its prerequisites
 

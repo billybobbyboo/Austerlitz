@@ -117,7 +117,8 @@ var selection=null, freeCam=false;
    holds a phase change's light and overlay fade; the camera slot holds a glide, a phase's camera arc or an eased move of the
    paper map. Each step returns true when it has ended. A phase change replaces the camera move only when it moves the camera
    itself (Follow on): before, it assigned `tween` and dropped any glide in flight, so a centring or a double-click made while
-   the battle played was lost at the next phase boundary. Setting `tween=null` (a placement, the tools) still stops both. */
+   the battle played was lost at the next phase boundary. Setting `tween=null` (a placement, the tools) still stops both; since 8H the app's own
+   stop (a relief change, redrawGround) is stopTweens, which clears the slots too (S-7). */
 var _tw={scene:null,cam:null};
 function _runTween(now){
   var s=_tw.scene, c=_tw.cam;
@@ -130,6 +131,10 @@ function setTween(slot,fn){
   _tw[slot]=fn||null;
   tween=(_tw.scene||_tw.cam)?_runTween:(tween===_runTween?null:tween);
 }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md S-7): stop the tween where it is, both slots with it (endTweens, 8C's, runs them to their ends instead).
+   A bare `tween=null` stopped the steps but left the slots set: followActive reads the camera's (`!_tw.cam`), so after a relief change
+   during a glide (redrawGround) Follow stayed idle under Play until the next phase boundary's setTween cleared it */
+function stopTweens(){ tween=null; _tw.scene=null; _tw.cam=null; }
 var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:false,skeleton:false,routes:false};   /* confidence: Stage 5B, decision 85, on; since Stage 8, implementation PR 8B (decision 239), the setting of the presentation shown (CONF_ON): off at first on the landscape, where the app opens; skeleton: Stage 5D, off; routes: Stage 5F, off (decision 93) */
 var goingOn=false;
 var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
@@ -2527,7 +2532,7 @@ function redrawGround(change){
   rescaleWorld();
   hold.forEach(function(h){ h[0].y=displayHeight(h[0].x,h[0].z)+h[1]; });
   if(plateauRing) reseatGeometry(plateauRing);
-  tween=null; camArc=null;
+  stopTweens(); camArc=null;   /* Stage 8, 8H (S-7): both slots stopped with the tween; until 8H the camera's slot was left set, and Follow (followActive) stayed idle */
   landCam.lookAt(orbitTarget); clampCamera();
   rebuildOverlays(curPhase,true);
   if(planSide){ var ps=planSide, fc=freeCam; planSide=null; freeCam=true; setPlan(ps); freeCam=fc; }
@@ -5920,14 +5925,25 @@ function poseBlock(rec,id,st){
   if(!u||!u.body) return;
   var f=rec.f, mr=f.track?marchRate(id,clock):null;
   var moving=!!(mr&&mr.moving);
+  /* Stage 8, 8H (the block wheeling on after a pause, docs/STAGE8_SPEC.md sections 18.10 item 2 and 20.4): the block's own eases (its shape, its
+     standards' dip, its turn toward its heading at its arm's rate, WHEEL, a loose body's sway) run only while the clock moves on under Play
+     (adv: the clock is not where this block was last posed); with the clock standing (paused, or a dwell's hold) the pose is held as last
+     drawn; a seek (every move of the clock but Play's own advance: GAIT.seek, 8F's count) or the block's first pose shows that clock's pose at
+     once (sk), as the gait does since 8F. Until 8H the eases ran in real time whatever the clock did: a block still turning when the clock was
+     paused went on turning, its shape and dip easing on, and after a seek a block eased from wherever it stood, so a clock's pose depended on
+     the path to it */
+  var sk=rec.pSeek!==GAIT.seek||rec.yaw===undefined, adv=rec.pClock!==clock;
+  rec.pSeek=GAIT.seek; rec.pClock=clock;
 
   var sh=shapeFor(st);
   var rate=ease(moving?0.075:0.045);
   /* Stage 8, 8G's verification (docs/STAGE8_SPEC.md section 19.1): within the threshold that stops asking for frames, each eased value takes
      its target exactly, so a block at rest is drawn the same in every frame (until 8G the easing went on below it, moving the blocks by about
      1e-9 a frame: enough, at a shadow's or a depth test's edge, to change a pixel of a frame with nothing moving) */
-  if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002){ settling=true; u.sw += (sh[0]-u.sw)*rate; u.sd += (sh[1]-u.sd)*rate; }
-  else { u.sw=sh[0]; u.sd=sh[1]; }
+  if(sk){ u.sw=sh[0]; u.sd=sh[1]; }
+  else if(adv){
+    if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002){ settling=true; u.sw += (sh[0]-u.sw)*rate; u.sd += (sh[1]-u.sd)*rate; }
+    else { u.sw=sh[0]; u.sd=sh[1]; } }
   /* column and line are re-layouts of the same men, not a stretched block; the re-seat itself
      happens in settleBlock, once the frame's scale and yaw are known too */
   if(u.showBattalions && f.strength && f.track && trackedDescendants(id).length){
@@ -5935,8 +5951,10 @@ function poseBlock(rec,id,st){
     if(kb!==u.shownBat) u.showBattalions(kb);
   }
   var lowered = (st==="broken"||st==="captured"||st==="encircled"||st==="repulsed") ? 0.95 : 0;
-  if(Math.abs(lowered-(u.tilt||0))>0.002){ settling=true; u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05); }
-  else u.tilt=lowered;
+  if(sk) u.tilt=lowered;
+  else if(adv){
+    if(Math.abs(lowered-(u.tilt||0))>0.002){ settling=true; u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05); }
+    else u.tilt=lowered; }
 
   if(u.skirmish) u.skirmish.visible = !!SKIRMISH[st] && (!moving || st==="advancing" || st==="pursuing");
   if(rec.pad){
@@ -5954,8 +5972,11 @@ function poseBlock(rec,id,st){
   if(want===null) want=enemyFacing(id);
   if(want===null) return;
   var want0=want;
-  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;   /* a broken body sways: ambient, not settling */
-  if(rec.yaw===undefined) rec.yaw=rec.block.rotation.y||0;
+  /* a seek or the first pose: the clock's own heading at once, its turns kept (a loose body's sway eases in under Play); the clock standing:
+     the turn and the sway held where they are (8H) */
+  if(sk){ rec.yaw=rec.yaw===undefined?want0:want0+Math.PI*2*Math.round((rec.yaw-want0)/(Math.PI*2)); return; }
+  if(!adv) return;
+  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;   /* a broken body sways while the clock plays: not settling */
   var diff=want-rec.yaw, d0=want0-rec.yaw;
   while(diff>Math.PI) diff-=Math.PI*2;
   while(diff<-Math.PI) diff+=Math.PI*2;
@@ -8747,8 +8768,14 @@ function dwellAdvance(dt,v){
       if(c+dt*v<z){ return c+dt*v; }
       if(c<z){ dt-=(z-c)/v; c=z; }
       else { d=Math.max(1e-6,E-c); }   /* already inside the ease (a change of speed): ease from here */
-      DWELL.st={E:E,d:d,te:2*d/v,stage:"in",tau:0}; continue;
+      DWELL.st={E:E,d:d,te:2*d/v,stage:"in",tau:0,v:v}; continue;
     }
+    /* Stage 8, 8H (docs/FINAL_AUDIT.md S-7; docs/STAGE8_SPEC.md section 20.4): a change of speed inside a dwell. Until 8H the ease kept the
+       speed it was entered at: from 4x to 1/2x mid-ease the clock eased on at 4x's pace and left the dwell at 4x's rate (37.8 clock minutes a
+       second), then dropped to 1/2x's 5. Now the ease's remaining time is scaled by the speeds' ratio (its fraction and distance kept): the
+       clock stays where it is, its rate changes by the ratio as a change of speed off the ease does, and the ease out ends at the new speed's
+       rate; during the hold only the ease out to come is rescaled (the hold is time) */
+    if(st.v!==v&&v>0){ var sf=st.v/v; st.te*=sf; if(st.stage!=="hold") st.tau*=sf; st.v=v; }
     var lim=st.stage==="hold"?DWELL.HOLD:st.te, step=Math.min(dt,lim-st.tau);
     st.tau+=step; dt-=step;
     var k=lim>0?st.tau/lim:1;
@@ -8973,7 +9000,8 @@ var lastFrame=0;
 /* ---- render on demand ----
    A frame is drawn when something changes: a tween, playback, recent input, an easing that has
    not arrived (settling), or a request from a state change. When the only motion is slow drift -
-   mist, smoke, dust, a broken formation's sway - frames drop to the ambient rate; when nothing
+   mist, smoke, dust (a broken formation's sway was drift until 8H; since, it is the block's pose, held while the clock stands) -
+   frames drop to the ambient rate; when nothing
    moves, nothing is drawn. Easings are time-based through ease(), so they run at the same
    wall-clock speed at any frame rate. */
 var needFrames=3, lastInput=0, lastAmbient=0, settling=false, FK=1;
@@ -8988,7 +9016,7 @@ function ambientNow(){
   for(var id in units){
     var r=units[id];
     if((r.smoke&&r.smoke.visible)||(r.dust&&r.dust.visible)) return true;
-    if(r.block&&r.block.visible&&LOOSE[liveStatus(id,curPhase)]) return true;
+    /* a broken formation's sway is no longer drift: since 8H it is part of the block's pose, which the clock standing holds (poseBlock) */
   }
   return false;
 }
@@ -13159,6 +13187,55 @@ var AUSTERLITZ_DEBUG=(function(){
         ck("the gait at a pause (8F's prerequisite, decision 244 (a)): Play, the speed and Pause by their buttons through the app's own loop, an infantry division, a cavalry corps and a limbered battery paused from half speed, in the fade and faded out: the first paused frame's gait the last played's and every paused frame's the first's, the frame and the sun's depth map drawn with the formation alone unchanged; resumed, on from the amplitude held; a seek the clock's own pose at once; the dwell's hold held; reduced motion at once",
           !kBad.length, kT.join("; ")+(kBad.length?"; WRONG: "+kBad.slice(0,6).join("; "):""));
 
+        /* (l) Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.4; 8F's finding, section 18.10 item 2): the blocks' own pose at a pause,
+           a seek and a resume. The loop run one frame at a time on a clock of the test's, its draw skipped (as (k)); Play at 4x by its buttons from
+           08:40 until a shown block stands more than 0.3 rad from the heading it turns to (not a loose body's sway), then Pause: in 30 paused
+           frames every shown block's heading, shape, standards' dip and quaternion as at the pause (until 8H the block turned on at its arm's
+           rate, WHEEL, with the clock standing); a seek by the next-ten-minutes button: every shown block at its own heading in the first frame,
+           and the same pose as that clock reached from 23 minutes before; resumed by the button, paused mid-turn first, the block turns on from
+           where it was held (toward its heading, not snapped to it) */
+        var lBad=[], lT=[], lNow=performance.now, lOwn=Object.prototype.hasOwnProperty.call(performance,"now"), lRaf=window.requestAnimationFrame, lTm=lNow.call(performance), lDw=DWELL.on, lSp=speed, lRender=renderer.render;
+        function LF(n){ for(var i=0;i<(n||1);i++){ lTm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=lRender; } } }
+        function lClick(sel){ var b=document.querySelector(sel); if(!b) throw new Error("no "+sel); b.click(); }
+        function lPoses(){ var o={}; shown().forEach(function(id){ var r=units[id], b=r.block, u=b.userData; if(!u||!u.body) return; var w=headingAt(id,clock); if(w===null) w=enemyFacing(id);
+          var d=w===null?0:w-(r.yaw||0); while(d>Math.PI) d-=2*Math.PI; while(d<-Math.PI) d+=2*Math.PI;
+          o[id]=[r.yaw||0,u.sw,u.sd,u.tilt||0,b.quaternion.x,b.quaternion.y,b.quaternion.z,b.quaternion.w,Math.abs(d),LOOSE[liveStatus(id,curPhase)]?1:0]; }); return o; }
+        function lDiff(a,b){ var m=0; Object.keys(a).forEach(function(id){ if(!b[id]) return; for(var i=0;i<8;i++) m=Math.max(m,Math.abs(a[id][i]-b[id][i])); }); return m; }
+        try{
+          performance.now=function(){ return lTm; }; window.requestAnimationFrame=function(){ return 0; };
+          if(playing) lClick("#play"); dwellSet(false); setClock(520,{instant:true,force:true,camera:false}); finishTween(); settleAll(); lastFrame=lTm;
+          lClick('.spd-btn[data-s="4"]'); lClick("#play");
+          var turn=null, nT=0; while(!turn&&nT<300){ LF(1); nT++; var P=lPoses(); for(var pid in P) if(P[pid][8]>0.3&&!P[pid][9]){ turn=pid; break; } }
+          if(!turn) lBad.push("no block turning more than 0.3 rad in "+nT+" frames of Play from 08:40");
+          else {
+            var tP=clock; lClick("#play"); if(playing) lBad.push("the button did not pause");
+            var P0=lPoses(), mv=0, worst=0; for(var f=0;f<30;f++){ LF(1); var dd=lDiff(P0,lPoses()); if(dd>0){ mv++; worst=Math.max(worst,dd); } }
+            if(mv) lBad.push("paused at "+fmtClock(tP)+", the blocks' pose moved in "+mv+" of 30 frames (by up to "+worst.toFixed(4)+")");
+            lT.push("paused at "+fmtClock(tP)+" with "+turn+" "+P0[turn][8].toFixed(3)+" rad from its heading: "+Object.keys(P0).length+" blocks held for 30 frames ("+mv+" moved)");
+            var tS=clock+10; lClick("#next"); LF(1); var S1=lPoses(), off=0, offAt="";
+            if(Math.abs(clock-tS)>1e-9) lBad.push("the next ten minutes' button did not move the clock");
+            Object.keys(S1).forEach(function(k){ if(!S1[k][9]&&S1[k][8]>off){ off=S1[k][8]; offAt=k; } });
+            if(off>1e-9) lBad.push("sought, "+offAt+" "+off.toFixed(4)+" rad from its heading in the first frame");
+            setClock(tS-23,{instant:true,camera:false}); LF(3); setClock(tS,{instant:true,camera:false}); LF(1); var dS=lDiff(S1,lPoses());
+            if(dS>1e-9) lBad.push("the clock sought by the button and from 23 minutes before not one pose (by "+dS.toFixed(6)+")");
+            lT.push("sought to "+fmtClock(tS)+": "+Object.keys(S1).length+" blocks at their own heading in the first frame, the same pose from 23 minutes before");
+            /* resumed: paused mid-turn first (Play's own advance into the turn), then on by the button */
+            setClock(tP-3,{instant:true,camera:false}); LF(2); lClick("#play"); var nR=0, h0=null; while(nR<120){ LF(1); nR++; var Pq=lPoses(); if(Pq[turn]&&Pq[turn][8]>0.05){ h0=Pq[turn][8]; break; } }
+            lClick("#play"); LF(3); var hH=lPoses()[turn];
+            if(!hH||h0===null) lBad.push(turn+": not turning when paused again");
+            else { if(Math.abs(hH[8]-h0)>1e-9) lBad.push(turn+": paused mid-turn, it turned on ("+h0.toFixed(4)+" to "+hH[8].toFixed(4)+" rad)");
+              lClick("#play"); LF(1); var hR=lPoses()[turn]; lClick("#play");
+              if(!(hR&&hR[8]<hH[8]-1e-6&&hR[8]>1e-6)) lBad.push(turn+": resumed, "+(hR?hR[8].toFixed(4):"none")+" rad from its heading after "+hH[8].toFixed(4)+" held (turning on from where it was held expected)");
+              else lT.push("resumed mid-turn: "+turn+" from "+hH[8].toFixed(3)+" rad held to "+hR[8].toFixed(3)+" in the first frame"); }
+          }
+        } catch(err){ lBad.push("threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+        } finally {
+          if(lOwn) performance.now=lNow; else delete performance.now; window.requestAnimationFrame=lRaf; renderer.render=lRender;
+          if(playing) stopPlay(); dwellSet(lDw); setSpeed(lSp); lastFrame=0;
+        }
+        ck("the blocks' pose at a pause (8H): Play at 4x and Pause by their buttons through the app's own loop with a block turning: every block's heading, shape, dip and quaternion held in the paused frames; a seek every block at its own heading at once, the same pose by two paths; resumed, the turn on from where it was held",
+          !lBad.length, lT.join("; ")+(lBad.length?"; WRONG: "+lBad.slice(0,6).join("; "):""));
+
         /* (g) S-5: the facing a function of the clock: every formation's facing the same however its clock was reached */
         var gBad=[], gN=0;
         PHASES.forEach(function(ph,pi){ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(function(t){ var R=[];
@@ -13520,7 +13597,7 @@ var AUSTERLITZ_DEBUG=(function(){
     needFrames=0; lastInput=-1e9; settling=false; panelMoveUntil=0;
     var sOff=frameState(performance.now()+1000), keepRM=RM, src=0, sWait, sAmb, sRM;
     try{ AMBIENT_TEST=true; RM=false;   /* this check only: drift as a visitor's page has it (see AMBIENT_TEST) */
-      for(var did in units){ var ur=units[did]; if((ur.smoke&&ur.smoke.visible)||(ur.dust&&ur.dust.visible)||(ur.block&&ur.block.visible&&LOOSE[liveStatus(did,curPhase)])) src++; }
+      for(var did in units){ var ur=units[did]; if((ur.smoke&&ur.smoke.visible)||(ur.dust&&ur.dust.visible)) src++; }   /* since 8H a broken body's sway is the pose's, held while the clock stands, not drift */
       var tA=performance.now(); lastAmbient=tA;
       sWait=frameState(tA+AMBIENT_MS*0.5); sAmb=frameState(tA+AMBIENT_MS);
       RM=true; sRM=frameState(tA+AMBIENT_MS);
@@ -13528,7 +13605,7 @@ var AUSTERLITZ_DEBUG=(function(){
     if(DISPLAY.factor!==f0) setDisplayFactor(f0);
     ck("render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate",
       sIdle==="idle"&&src>0&&sWait==="waiting"&&sAmb==="ambient"&&sRM==="idle"&&(!HARNESS||sOff==="idle"),
-      "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust, smoke or a broken formation's sway): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
+      "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust or smoke): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
       (HARNESS?"; the harness's own frames "+sOff+" (drift off under ?harness=1; AMBIENT_TEST turned it on for this check only)":""));
 
     /* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md sections 5, 7.3, 7.4 and 18): water, woods and the near
