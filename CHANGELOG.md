@@ -1,5 +1,37 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8H: integration, polish and verification (being built)
+
+**Status: being built on `claude/sharp-faraday-g2uy8o`, from `main` at `636cc5ddba6c146ecabff01e6d7c86738add0e4b` (PR #72's merge, 8G; no
+newer commit on `main` when the work began, 29 October 2026); not merged.** The record is `docs/STAGE8_SPEC.md` section 20, the evidence
+`docs/stage8-evidence/8h/`. This entry grows with each commit; the summary at its end is written last.
+
+- **The buildings' acceptance (section 20.3): the château, the farmsteads' words; a data task.** Reproduced on 8G's build
+  (`tools/stage8/buildings-8h.js`): the Austerlitz château drawn at 322.5 degrees from its church, 86.5 degrees off the bearing its own place has
+  from the church today (236 degrees, `places.md`), admitted by 8G's quarter-turn; every village dossier saying "each an L" though 27 of the
+  177 farmsteads drawn are a long range alone. Changed:
+  - `world.js`: the château sought within `BLD8G.chateau.tol`, 22.5 degrees (an octant: the sources name the relation in words, the survey's
+    centroids within a few degrees; the symbols at the building scale cannot stand 143 m apart, so the distance is a convention and the bearing
+    is kept), its centre in the town's place and no drawn road or stream between it and its church; the town's church taking the least move,
+    among its every clear place within 5 units (the self-test's limit for a church), that leaves the château such a place. Drawn now at 255
+    degrees (19 off), 379 m from the church, as before; the church 4.75 units (300 m) from the town's point at 2 degrees true (8G: 2.5 units,
+    east), which brings it within 60 m of its own place (not the rule's aim: a consequence, recorded); the town keeps its 24 farmsteads (now
+    all an L) and every building's centre on the drawn village class (61 of 61); every other village's plan identical, record for record.
+  - `app.js`: the dossiers' farmsteads counted as drawn (`farmsteadsText`: "each an L" only where every one is), the sources sheet stating the
+    long ranges drawn alone (26 of 177 now) and the château's rule with its drawn bearing; the self-test's 8G checks (e) and (e') hold them
+    (the château within the tolerance, in the town's place, nothing drawn between; the words recounted from the drawn records); `css-test.js`
+    holds the tolerance's value and the rule.
+  - **Data (`appearance.js`, guarded): `BUILDINGS` changed**, one string: `austerlitz.chateau.scope`, "within a quarter-turn of the bearing
+    its own place has from the church's today (west-south-west, places.md)" to "within 22.5 degrees of the bearing its own place has from the
+    church's today (236 degrees, west-south-west, places.md), its centre in the town's place and no road or stream of this map's between them":
+    the scope describes the drawing, which changed; no claim's value, source, grade or label changed. `check:data`'s reference moves from
+    `archive/stage8g-84fe987b.html` to this commit's build, `archive/stage8h-e47b39cd.html` (2,747,157 bytes): against the old reference 133
+    data declarations identical and `BUILDINGS` changed.
+  - Not corrected, put to the owner (section 20.3): Satschan's five farmsteads of seven. With the drawn mere's ice over half its place, the
+    Littawa across the rest and its church in it, no lane, size or church place the planner can try holds seven (204 lanes more, every size,
+    24 church places: five); a fourth, smaller farmstead size would draw seven (two of them an L), a looser place margin six; each changes a
+    convention for one village's count, and the cause is the drawn mere's outline (decision 27).
+
 ## 2026-10 · Stage 8, implementation PR 8G: buildings and structures (decision 248 (a)), with its prerequisites
 
 **Status: being built on `claude/great-pasteur-pi33mf` (into `main` at `51d4a15`, PR #71's merge); not merged.** The record is

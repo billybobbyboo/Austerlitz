@@ -706,12 +706,22 @@ if(cerrs) process.exitCode=1;
      !/side:\{w:\[1\.0,1\.12\], l:\[2\.3,2\.8\]\},/.test(V)||!/north:0\.85,/.test(V)||!/rear:\{d:\[0\.9,1\.05\], h:\[0\.82,0\.95\], share:0\.2\},/.test(V)||!/clear:\{road:0\.25, stream:0\.35, tree:0\.2\},/.test(V)||
      !/margin:0\.40,/.test(V)||!/mere:0\.25,/.test(V)||!/touch:0\.01,/.test(V)) gerr.push("VILL8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19)");
   if(!/pitch:\{thatch:1\.15, tile:0\.84\},/.test(Bv)||!/tile:0\.17,/.test(Bv)||!/castle:\{w:7\.6, d:5\.8, west:1\.35, east:2\.3, ns:1\.2, h:\[1\.15,2\.05\]\},/.test(Bv)||!/fence:\{len:0\.62, h:0\.3, inset:0\.3\},/.test(Bv)||
-     !/chateau:\{w:5\.6, d:1\.5, wing:\[1\.4,2\.6\], h:2\.0, near:10, bearing:236\}/.test(Bv))
-    gerr.push("BLD8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19)");
+     !/chateau:\{w:5\.6, d:1\.5, wing:\[1\.4,2\.6\], h:2\.0, near:10, bearing:236, tol:22\.5\}/.test(Bv))
+    gerr.push("BLD8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19; the château's tolerance, 22.5 degrees, with section 20.3)");
   if(!/var CHAPEL8G=0\.5;/.test(wsrc)) gerr.push("the chapel's size (CHAPEL8G) changed");
   if(!/var V8CANDS=24;/.test(wsrc)) gerr.push("the church's places tried for its village's plan (V8CANDS) changed");
   /* the claims read, not typed */
   const rear=wfn("v8Rear"), plan=wfn("planBuildings8g"), church=wfn("churchPlan8g");
+  /* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.3): the château within its tolerance of its bearing today (an octant, not 8G's
+     quarter-turn), its centre in the town's place, no drawn road or stream between it and its church; the town's church taking the least move,
+     among its every clear place within 5 units, that leaves the château such a place; the farmsteads' words counted from what is drawn */
+  { const cp=wfn("chateauPlan8g");
+    if(!/if\(dev>B\.tol\+1e-9\) continue;/.test(cp)||/>90\+1e-9/.test(cp)) gerr.push("the château not sought within BLD8G.chateau.tol of its bearing (8G's quarter-turn back?)");
+    if(!/if\(!v8Foot\(c\[0\],c\[1\]\)\) continue;/.test(cp)||!/if\(v8Between\(ch\.x,ch\.z,c\[0\],c\[1\],segs\)\) continue;/.test(cp)) gerr.push("the château's place not held in the town's place, or a drawn road or stream allowed between it and its church");
+    if(!/kind==="temple"\?0:V8CANDS/.test(wfn("churchPlan8g"))) gerr.push("the town's church not offered its every clear place within 5 units");
+    if(!/if\(!ct\.parts\.length\) continue;/.test(plan)) gerr.push("a place of the town's church taken that leaves its château none");
+    const bs=(acorn.parse(src,{ecmaVersion:2020}).body.find(q=>q.type==="FunctionDeclaration"&&q.id.name==="buildingsSection")||{}), bsrc=bs.start!=null?src.slice(bs.start,bs.end):"";
+    if(!/farmsteadsText\(P\)/.test(bsrc)||/each an L along its street: this map/.test(bsrc)) gerr.push("the dossier's farmsteads not counted as drawn (farmsteadsText): 'each an L' typed for every village"); }
   if(!/BUILDINGS\.villages/.test(rear)||!/c\.n/.test(rear)||!/c\.wall==="timber"/.test(rear)) gerr.push("the rear buildings' share and walls not read from BUILDINGS.villages");
   if(!/BUILDINGS\.fences/.test(plan)) gerr.push("the fences not drawn from BUILDINGS.fences");
   if(!/CHAPELS\.indexOf\(v\[0\]\)/.test(church)||!/CHURCHES\.indexOf\(v\[0\]\)/.test(church)) gerr.push("the churches and the chapel not drawn from CHURCHES and CHAPELS");

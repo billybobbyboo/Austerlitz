@@ -5,8 +5,8 @@
   "scripts": {
     "build": "python3 build.py",
     "test": "sh tools/run-all.sh",
-    "check:baseline": "python3 build.py && node -e \"const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='508927e6f72e1b6f2f9186e954d61b59'&&b.length===2740873?0:1)\"",
-    "check:data": "node tools/visual/data-invariance.js archive/stage8g-84fe987b.html austerlitz-command-map.html",
+    "check:baseline": "python3 build.py && node -e \"const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='e47b39cd993fed75cfb85733699e130b'&&b.length===2747157?0:1)\"",
+    "check:data": "node tools/visual/data-invariance.js archive/stage8h-e47b39cd.html austerlitz-command-map.html",
     "check:visual": "node tools/visual/harness.js austerlitz-command-map.html tools/visual/out --test",
     "check:report": "node tools/visual/check-report.js tools/visual/out",
     "check:selftest": "node tools/visual/harness.js austerlitz-command-map.html tools/visual/out-selftest --test --selftest-only",

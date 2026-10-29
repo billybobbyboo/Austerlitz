@@ -1049,7 +1049,7 @@ var BUILDINGS = {
       note:"readings T3.13, T1.12"},
     chateau:{v:"Mit der Hauptfronte, an die sich zu beiden Seiten Flügel anschließen, ist es gegen SW. gekehrt, und hat (mit Einschluß des untern), 3 Stockwerke",
       en:"its main front, with a wing at each end, facing south-west; three storeys", src:"wolny1836", at:"p. 152 (leaf n219)", gr:"B", lab:"inference", q:"ist es gegen SW. gekehrt",
-      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within a quarter-turn of the bearing its own place has from the church's today (west-south-west, places.md) where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point)",
+      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within 22.5 degrees of the bearing its own place has from the church's today (236 degrees, west-south-west, places.md), its centre in the town's place and no road or stream of this map's between them, where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point)",
       note:"readings T1.13, T2.15"}
   },
   /* what the sources name and the map does not draw, each with why and the alternatives put to the owner (docs/STAGE8_SPEC.md section 19) */

@@ -1472,7 +1472,8 @@ function roofTexture(){
    they and the topographies of 1793-1861 say, each claim graded for 1805; the sketches' pattern applied to 1805 by inference): each village's
    farmsteads front onto the drawn roads through it, on both sides, from its point outward (where those do not hold them, onto its streams'
    banks, then a lane through or beside its point); each farmstead an L, a long range back along the plot's northern boundary and a range
-   along the street, with a building at the back of the yard on the share of plots its sketch shows. The build's number of houses (VILLAGES)
+   along the street (its long range alone where the street leaves the range along it no room: 27 of 177 on 8G's build, 26 since 8H, counted in the
+   dossiers since 8H), with a building at the back of the yard on the share of plots its sketch shows. The build's number of houses (VILLAGES)
    is each village's number of farmsteads, at the first size where they stand and smaller only in the tight spots (v8Sizes); the ranges along
    the street and the buildings at the back are added. Every building's centre stands in the village's place (the paper map's footprint,
    covVill above PAPER_SYM.village.level) and its corners within that place's margin (VILL8G.margin), clear of the drawn roads, streams and
@@ -1513,8 +1514,13 @@ var BLD8G={
   fence:{len:0.62, h:0.3, inset:0.3},      /* a fence's panel, its height, its line inside the village's edge */
   wall:{h:0.34, th:0.12, margin:0.45},     /* the churchyard's wall: height, thickness, its distance from the church */
   castle:{w:7.6, d:5.8, west:1.35, east:2.3, ns:1.2, h:[1.15,2.05]},   /* the Sokolnitz castle (79.6 by 60.0 m in 1825, its east range the deepest) */
-  chateau:{w:5.6, d:1.5, wing:[1.4,2.6], h:2.0, near:10, bearing:236}  /* the Austerlitz château: its main range, its wings, how far from its church it is sought, its
-                                                                         bearing from the church today (places.md: 143 m at 236 degrees, RÚIAN buildings 13846744, 39712834) */
+  chateau:{w:5.6, d:1.5, wing:[1.4,2.6], h:2.0, near:10, bearing:236, tol:22.5}
+  /* the Austerlitz château: its main range, its wings, how far from its church it is sought, its bearing from the church today (places.md:
+     143 m at 236 degrees, RÚIAN buildings 13846744, 39712834) and how far from that bearing it may be drawn. Since 8H (docs/STAGE8_SPEC.md section
+     20.3) an octant, half a compass point each way: the sources name the two's relation in words ("nahe am Schloße", the church at the square's
+     north side, 1860; the château's front "gegen SW.", 1836) and the survey's centroids put it within a few degrees (a few metres on 143 m); the
+     symbols, at the building scale, cannot stand 143 m apart, so their distance is a convention and their bearing is what is kept. 8G drew it within
+     a quarter-turn, which admitted 86.5 degrees off (north-west of the church) */
 };
 var BLDG=null;   /* the buildings drawn (buildSettlements): one record each, read by layBuildings and the self-test */
 function v8Rnd(seed){ var s=seed>>>0; return function(){ s=(s*1664525+1013904223)%4294967296; return s/4294967296; }; }
@@ -1638,7 +1644,9 @@ function churchPlan8g(v,trees,extra){
   var C8=VILL8G.church, k=kind==="chapel"?CHAPEL8G:1, yard=v[0]==="Telnitz"?BLD8G.wall.margin+BLD8G.wall.th:0, n=v8North(), tN=Math.atan2(n[1],n[0]);
   var mk=kind==="temple"?function(x,z){ return v8Rect(x,z,tN,2.75,1.25); }   /* the temple whole (templeParts8g): its pediment's front 2.72 south of its point, its tower's back 2.70 north */
     :function(x,z){ return v8Rect(x+C8.dx*k*Math.cos(0.1),z-C8.dx*k*Math.sin(0.1),-0.1,C8.a*k+yard,C8.b*k+yard); };
-  var all=v8NearAll(cc,mk,function(R){ return v8Why(R,ctx); },ctx,5.0,V8CANDS);
+  /* the temple's every clear place within 5 units (since 8H: the town's church takes the least move that leaves its château a place within
+     its tolerance, planBuildings8g); the others' nearest V8CANDS */
+  var all=v8NearAll(cc,mk,function(R){ return v8Why(R,ctx); },ctx,5.0,kind==="temple"?0:V8CANDS);
   all.forEach(function(c){ c.kind=kind; c.scale=k; });
   return all; }
 /* a village's fronts and the drawn obstacles' segments within its reach: pure functions of its place, kept for its plans */
@@ -1758,24 +1766,31 @@ function castlePlan8g(trees){
   return {parts:m1?cas.concat(m2?farm:[]):[], moved:m1, farmMoved:m2}; }
 /* the château at Austerlitz as Wolny (1836) gives it: its main front to the south-west, a wing at each end (drawn running back from the
    front), three storeys; the church stands "nahe am Schloße" at the north side of the square (the church topography, 1860), the château today
-   west-south-west of it (places.md, the modern cadastre: BLD8G.chateau.bearing). The drawn road and the Litava take that side of the drawn
-   church at the building scale, so the château is drawn at the nearest place within a quarter-turn of that bearing that clears them, the trees
-   and the church (a quarter unit at a time on 48 bearings; at one distance the place standing farthest clear, v8Margin): a layout */
+   west-south-west of it (places.md, the modern cadastre: BLD8G.chateau.bearing). Drawn at the nearest place within BLD8G.chateau.tol of that
+   bearing (since 8H an octant; 8G's quarter-turn admitted the château north-west of its church) that clears the drawn roads, streams, trees and
+   the church, its centre in the town's place, and no drawn road or stream between it and its church (they stand together at the square's north
+   end): a quarter unit at a time on 96 bearings; at one distance the bearing nearest its own, then the place standing farthest clear
+   (v8Margin): a layout. None (empty parts) where no such place lies within BLD8G.chateau.near: planBuildings8g then tries the church's next place */
 function chateauPlan8g(ch,trees){
   var B=BLD8G.chateau, n=v8North(), e=v8East(), sw=[-(e[0]+n[0])/Math.SQRT2,-(e[1]+n[1])/Math.SQRT2], along=[-sw[1],sw[0]], tF=Math.atan2(along[1],along[0]), tW=Math.atan2(sw[1],sw[0]);
   function parts(c){ var P=[{R:v8Rect(c[0],c[1],tF,B.w/2,B.d/2), h:B.h, part:"chateau main range"}];
     [-1,1].forEach(function(s){ var x=c[0]+along[0]*s*(B.w/2-B.wing[0]/2)-sw[0]*(B.d/2+B.wing[1]/2), z=c[1]+along[1]*s*(B.w/2-B.wing[0]/2)-sw[1]*(B.d/2+B.wing[1]/2);
       P.push({R:v8Rect(x,z,tW,B.wing[1]/2,B.wing[0]/2), h:B.h, part:"chateau wing"}); });
     return P; }
-  var ctx={placed:[{R:ch.R}], segs:v8NearSegs([ch.x,ch.z],B.near+8), trees:trees.filter(function(t){ return Math.hypot(t[0]-ch.x,t[2]-ch.z)<B.near+12; })};
+  var segs=v8NearSegs([ch.x,ch.z],B.near+8), ctx={placed:[{R:ch.R}], segs:segs, trees:trees.filter(function(t){ return Math.hypot(t[0]-ch.x,t[2]-ch.z)<B.near+12; })};
   for(var r=0.25;r<=B.near+1e-9;r+=0.25){ var best=null;
-    for(var q=0;q<48;q++){ var a=q/48*Math.PI*2, de=Math.cos(a)*r, dn=Math.sin(a)*r, az=Math.atan2(de,dn)*180/Math.PI;
-      if(Math.abs(((az-B.bearing)%360+540)%360-180)>90+1e-9) continue;   /* within a quarter-turn of its bearing today */
-      var c=[ch.x+e[0]*de+n[0]*dn, ch.z+e[1]*de+n[1]*dn], P=parts(c), m=Infinity, ok=true;
+    for(var q=0;q<96;q++){ var a=q/96*Math.PI*2, de=Math.cos(a)*r, dn=Math.sin(a)*r, az=(Math.atan2(de,dn)*180/Math.PI+360)%360, dev=Math.abs(((az-B.bearing)%360+540)%360-180);
+      if(dev>B.tol+1e-9) continue;   /* within the tolerance of its bearing today */
+      var c=[ch.x+e[0]*de+n[0]*dn, ch.z+e[1]*de+n[1]*dn];
+      if(!v8Foot(c[0],c[1])) continue;   /* its centre in the town's place */
+      if(v8Between(ch.x,ch.z,c[0],c[1],segs)) continue;   /* no drawn road or stream between it and its church */
+      var P=parts(c), m=Infinity, ok=true;
       for(var i=0;i<P.length&&ok;i++){ if(v8Clear(P[i].R,ctx)) ok=false; else m=Math.min(m,v8Margin(P[i].R,ctx)); }
-      if(ok&&(!best||m>best.m+1e-9)) best={P:P, m:m, moved:{dx:c[0]-ch.x, dz:c[1]-ch.z, off:r, de:de, dn:dn}}; }
+      if(ok&&(!best||dev<best.dev-1e-9||(Math.abs(dev-best.dev)<=1e-9&&m>best.m+1e-9))) best={P:P, m:m, dev:dev, moved:{dx:c[0]-ch.x, dz:c[1]-ch.z, off:r, de:de, dn:dn, az:az, dev:dev}}; }
     if(best) return {parts:best.P, moved:best.moved}; }
   return {parts:[], moved:null}; }
+/* does a drawn road's or stream's centre line (v8NearSegs) cross the segment between two points? */
+function v8Between(ax,az,bx,bz,segs){ for(var k=0;k<segs.length;k++){ var s=segs[k]; if(v8Cross(ax,az,bx,bz,s.ax,s.az,s.bx,s.bz)) return true; } return false; }
 /* the church at Austerlitz as the church topography (1860) describes it, finished in 1790: a temple's front, six columns under a pediment,
    its portico to the south and its altar to the north, its one tower behind the altar no higher than its tiled roof; drawn in place of the
    build's spired church there (BUILDINGS.austerlitz.church). Sizes DESIGN; its axis true north-south */
@@ -1828,12 +1843,15 @@ function planBuildings8g(trees){
     /* the church at the least move that clears it and leaves the village its farmsteads (of its places clear, the nearest first; at
        Austerlitz the château with it), the farmsteads planned from their first size where one of those places lets the village hold them all,
        else from the next (v8PlanAt: each plot smaller only where it must be): the farmsteads' size kept before the church's least move */
-    var cands=(churchPlan8g(v,trees,extra)||[]).slice(0,V8CANDS), ch=null, chat=null, P=null, done=false;
+    var cands=churchPlan8g(v,trees,extra)||[], ch=null, chat=null, P=null, done=false, cts=[];
+    if(!(cands.length&&cands[0].kind==="temple")) cands=cands.slice(0,V8CANDS);
+    /* at Austerlitz (since 8H) a place of the church is taken only where its château finds a place within its tolerance (chateauPlan8g) */
     for(var k=0; k<3&&!done; k++) for(var ci=0; ci<Math.max(1,cands.length)&&!done; ci++){ var c=cands[ci]||null, ex=extra.slice(), ct=null;
-      if(c&&c.kind==="temple"){ ct=chateauPlan8g(c,trees); ct.parts.forEach(function(p){ ex.push({R:p.R}); }); }
+      if(c&&c.kind==="temple"){ ct=cts[ci]||(cts[ci]=chateauPlan8g(c,trees)); if(!ct.parts.length) continue; ct.parts.forEach(function(p){ ex.push({R:p.R}); }); }
       var Q=villagePlan8g(v,trees,ex,c,k);
       if(!P||Q.farms.length>P.farms.length){ P=Q; ch=c; chat=ct; }
       if(P.farms.length>=v[3]) done=true; }
+    if(!P){ ch=cands[0]||null; chat=null; P=villagePlan8g(v,trees,extra.slice(),ch,0); }   /* no place of the church leaves the château one: the town without it (the self-test fails it) */
     if(chat) chat.parts.forEach(function(p){ extra.push({R:p.R}); });
     if(chat) chat.parts.forEach(function(p){ L.push({R:p.R, h:p.h, roof:"tile", wall:"plaster", part:p.part, village:v[0], landmark:true}); });
     if(ch){
