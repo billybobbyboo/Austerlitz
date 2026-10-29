@@ -692,6 +692,54 @@ if(cerrs) process.exitCode=1;
   console.log("the ground's atlas (8G's prerequisite 1): "+(perr.length?perr.length+" wrong":"both atlases uploaded as painted, the photographs' normals turned to the patterns' convention, the painters shared with the self-test, the debug outputs behind uDebug and off as built, the self-test's check present"));
   if(perr.length) process.exitCode=1;
 }
+/* Stage 8, implementation PR 8G (decision 248 (a); docs/STAGE8_SPEC.md section 19): the buildings. Their values (VILL8G, BLD8G: design values,
+   changed only on purpose); what they read of the claims (BUILDINGS: the rear buildings' share and walls, the fences; CHURCHES and CHAPELS);
+   the roofs a convention by a share, never chosen by a building's walls; no wall drawn round the castle, its orchard or its pheasantry, no
+   other wall than Telnitz's churchyard's; the plan deterministic (seeded, no Math.random); each building on the drawn ground read exactly and
+   laid again whenever the ground changes; every building mesh shown and hidden with the landscape's layers */
+{
+  const acorn=require('acorn'), wsrc=fs.readFileSync('world.js','utf8'), src=fs.readFileSync('app.js','utf8'), wast=acorn.parse(wsrc,{ecmaVersion:2020}), gerr=[];
+  const wfn=name=>{ const n=wast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?wsrc.slice(n.start,n.end):""; };
+  const wvar=name=>{ const n=wast.body.find(q=>q.type==="VariableDeclaration"&&q.declarations.some(d=>d.id.name===name)); return n?wsrc.slice(n.start,n.end):""; };
+  const V=wvar("VILL8G"), Bv=wvar("BLD8G");
+  if(!/plot:\[1\.9,2\.2\],/.test(V)||!/small:\{plot:\[1\.75,1\.95\], long:\[2\.05,2\.45\]\},/.test(V)||!/tiny:\{plot:\[1\.5,1\.7\], long:\[1\.75,2\.05\], w:\[0\.9,1\.0\], d:\[0\.85,0\.95\]\},/.test(V)||
+     !/side:\{w:\[1\.0,1\.12\], l:\[2\.3,2\.8\]\},/.test(V)||!/north:0\.85,/.test(V)||!/rear:\{d:\[0\.9,1\.05\], h:\[0\.82,0\.95\], share:0\.2\},/.test(V)||!/clear:\{road:0\.25, stream:0\.35, tree:0\.2\},/.test(V)||
+     !/margin:0\.40,/.test(V)||!/mere:0\.25,/.test(V)||!/touch:0\.01,/.test(V)) gerr.push("VILL8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19)");
+  if(!/pitch:\{thatch:1\.15, tile:0\.84\},/.test(Bv)||!/tile:0\.17,/.test(Bv)||!/castle:\{w:7\.6, d:5\.8, west:1\.35, east:2\.3, ns:1\.2, h:\[1\.15,2\.05\]\},/.test(Bv)||!/fence:\{len:0\.62, h:0\.3, inset:0\.3\},/.test(Bv)||
+     !/chateau:\{w:5\.6, d:1\.5, wing:\[1\.4,2\.6\], h:2\.0, near:10, bearing:236\}/.test(Bv))
+    gerr.push("BLD8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19)");
+  if(!/var CHAPEL8G=0\.5;/.test(wsrc)) gerr.push("the chapel's size (CHAPEL8G) changed");
+  if(!/var V8CANDS=24;/.test(wsrc)) gerr.push("the church's places tried for its village's plan (V8CANDS) changed");
+  /* the claims read, not typed */
+  const rear=wfn("v8Rear"), plan=wfn("planBuildings8g"), church=wfn("churchPlan8g");
+  if(!/BUILDINGS\.villages/.test(rear)||!/c\.n/.test(rear)||!/c\.wall==="timber"/.test(rear)) gerr.push("the rear buildings' share and walls not read from BUILDINGS.villages");
+  if(!/BUILDINGS\.fences/.test(plan)) gerr.push("the fences not drawn from BUILDINGS.fences");
+  if(!/CHAPELS\.indexOf\(v\[0\]\)/.test(church)||!/CHURCHES\.indexOf\(v\[0\]\)/.test(church)) gerr.push("the churches and the chapel not drawn from CHURCHES and CHAPELS");
+  /* the roofs: a convention by a share; the walls never choose a roof */
+  if(!/var roof=town\?"tile":\(f\.roof<BLD8G\.tile\?"tile":"thatch"\);/.test(plan)) gerr.push("the farmsteads' roofs not the design share (BLD8G.tile), the town's tile");
+  if(!/part:"rear building", village:v\[0\], farm:i\}/.test(plan)||!/L\.push\(\{R:f\.rear\.R, h:f\.rear\.h, roof:roof, wall:/.test(plan)) gerr.push("a rear building's roof not its farmstead's");
+  { const roofs=(plan.match(/roof:[^,}]+/g)||[]); if(roofs.some(r=>/timber|wall/.test(r))) gerr.push("a roof chosen by a building's walls ("+roofs.filter(r=>/timber|wall/.test(r)).join(", ")+")"); }
+  /* no wall but Telnitz's churchyard's: no ring round the castle (8F's), no orchard or pheasantry wall */
+  if(/Math\.cos\(a\)\*7\.0/.test(wsrc)||/orchard|pheasant|Fasan/i.test(wfn("castlePlan8g")+plan)) gerr.push("a wall drawn round the castle, its orchard or its pheasantry");
+  if((plan.match(/wall="stone"|wall:"stone"/g)||[]).length!==1||!/churchyard8g\(ch,cc\)\.forEach\(function\(q\)\{ q\.village=v\[0\]; q\.wall="stone";/.test(plan)) gerr.push("a stone wall drawn other than Telnitz's churchyard's");
+  if(!/if\(v\[0\]==="Telnitz"\) churchyard8g/.test(plan)) gerr.push("the churchyard's wall not Telnitz's alone");
+  /* the plan deterministic */
+  ["v8PlanAt","villagePlan8g","churchPlan8g","castlePlan8g","chateauPlan8g","fences8g","planBuildings8g","v8Near","v8NearAll","v8Settle"].forEach(f=>{ const b=wfn(f); if(!b) gerr.push(f+" missing"); else if(/Math\.random/.test(b)) gerr.push(f+" draws Math.random (the plan is seeded)"); });
+  /* on the drawn ground, read exactly; laid again when it changes */
+  const bg=wfn("bldGround");
+  if(!/\[\[ax,bx\],\[az,bz\],\[ax\+az,bx\+bz\]\]/.test(bg)||!/if\(v8BoxPt\(R,gx,gz\)===0\) rd\(gx,gz\);/.test(bg)) gerr.push("the ground under a building not read exactly (its edges' crossings of the grid and the cells' diagonals, the grid's vertices inside)");
+  if(!/layBuildings\(\);/.test(wfn("rescaleWorld"))) gerr.push("the buildings not laid again when the drawn ground changes (rescaleWorld)");
+  if(!/floor=Math\.max\(G\.mean,G\.g1-0\.45\*Math\.max\(b\.h,0\.6\)\);/.test(wfn("layBuildings"))) gerr.push("a building's floor not between the ground's mean and its highest point less 0.45 of its walls");
+  /* shown with the landscape's layers */
+  { const n=acorn.parse(src,{ecmaVersion:2020}).body.find(q=>q.type==="FunctionDeclaration"&&q.id.name==="syncLandscapeLayers"), sl=n?src.slice(n.start,n.end):"";
+    if(!/\["barns","plinths","thatch","stone","fences"\]\.forEach\(function\(k\)\{ if\(world\[k\]\) world\[k\]\.visible=on; \}\);/.test(sl)) gerr.push("the 8G building meshes not shown and hidden with the landscape's layers (syncLandscapeLayers)"); }
+  if(!/barns:barnMesh, plinths:plinthMesh, thatch:thatchMesh, stone:stoneMesh, fences:fenceMesh/.test(wfn("buildWorld"))) gerr.push("buildWorld does not hand the 8G meshes to the app");
+  /* the self-test's exception, named with its reason */
+  if(!/var FARMS8G=\{Satschan:\{n:5, why:"half its place lies under the drawn Satschan mere's ice, the Littawa crosses the rest and its church stands in it"\}\};/.test(src)) gerr.push("the self-test's FARMS8G changed (Satschan's 5 of 7, with its reason: a shortfall needs its reason, with docs/STAGE8_SPEC.md section 19)");
+  gerr.forEach(e=>console.log("  ! "+e));
+  console.log("the buildings (decision 248 (a)): "+(gerr.length?gerr.length+" wrong":"VILL8G, BLD8G and CHAPEL8G as built; the rear buildings, the fences, the churches and the chapel read from BUILDINGS, CHURCHES and CHAPELS; the roofs a share, never the walls'; no wall but Telnitz's churchyard's; the plan seeded; the ground read exactly, laid again with it; shown with the landscape; FARMS8G"));
+  if(gerr.length) process.exitCode=1;
+}
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */
 {

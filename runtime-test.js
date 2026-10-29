@@ -1376,6 +1376,23 @@ try{
         if(gn.indexOf(" "+GAIT.FULL+" ")<0||gn.indexOf(" "+GAIT.NONE+" ")<0||gn.indexOf(" "+GAIT.KMH+" km/h")<0||!/a visual convention for symbols under compressed time, not footsteps matched to the ground/.test(gn))
           bad.push("the step's notes do not read GAIT or describe the step as decided: "+gn.slice(0,160));
         log.push("the sources sheet's notes on the guns ("+artilleryNotes().length+") and on the step ("+gaitNotes().length+") read the table and GAIT"); }
+      /* Stage 8, implementation PR 8G (decision 248 (a)): the buildings planned in the headless init: every village's farmsteads the build's count
+         or, where the self-test's FARMS8G names a village short, at least its count (Satschan's five: the headless ground is not the drawn one, so
+         the meres' ice is not tested as drawn here), a church at each village of CHURCHES and a chapel at each of CHAPELS, none elsewhere;
+         the sources sheet's notes on the villages read BUILDINGS, CHURCHES and CHAPELS: each church's and chapel's claim as the dossiers give it
+         (grade, label, source), and each village drawn short named with its count */
+      { const fm={}, short={Satschan:5}; BLDG.forEach(b=>{ if(b.part==="long range") fm[b.village]=(fm[b.village]||0)+1; });
+        VILLAGES.forEach(v=>{ const k=fm[v[0]]||0, lo=short[v[0]]!==undefined?short[v[0]]:v[3]; if(k<lo||k>v[3]) bad.push("8G: "+v[0]+" "+k+" farmsteads, not "+(lo<v[3]?lo+" to ":"")+v[3]); });
+        const cs=BLDG.filter(b=>b.part==="church"||b.part==="chapel"||b.part==="church nave").map(b=>b.village).sort().join(","), cw=CHURCHES.concat(CHAPELS).sort().join(",");
+        if(cs!==cw) bad.push("8G: churches and chapels at "+cs+", not "+cw);
+        const bn=buildingNotes().join(" ");
+        if(CHURCHES.concat(CHAPELS,Object.keys(BUILDINGS.noChurch)).some(k=>bn.indexOf(k)<0)||!/never decide its roof/.test(bn)||!/applied to 1805 as an inference/.test(bn)||!/design value/.test(bn))
+          bad.push("8G: the sources sheet's notes on the villages do not read BUILDINGS: "+bn.slice(0,160));
+        const cOf=(k,c)=>k+": "+apText(c.en)+" ("+c.gr+", "+c.lab+"; "+apCite(c)+")";
+        CHURCHES.forEach(k=>{ const c=BUILDINGS.churches[k]; if(!c||bn.indexOf(cOf(k,c))<0) bad.push("8G: the sources sheet's notes do not give "+k+"'s church's claim"); });
+        CHAPELS.forEach(k=>{ const c=BUILDINGS.chapels[k]; if(!c||bn.indexOf(cOf(k,c))<0) bad.push("8G: the sources sheet's notes do not give "+k+"'s chapel's claim"); });
+        VILLAGES.forEach(v=>{ const k=fm[v[0]]||0; if(k<v[3]&&bn.indexOf("at "+v[0]+", "+k+" of the map's "+v[3])<0) bad.push("8G: "+v[0]+" drawn short and not named in the sources sheet's notes"); });
+        log.push("the buildings planned headless: "+BLDG.length+" records, the farmsteads the build's counts (Satschan at least five of seven), the churches and the chapel as CHURCHES and CHAPELS; the villages' notes ("+buildingNotes().length+") read BUILDINGS"); }
       /* the level of detail along a dolly (kitLod's own decision on a block of the test's: a seated extent of 6 by 4 units at the origin, its men at
          height 0, two
          meshes with their pairs; the drawn blocks' switches, through the camera and the picture, are the self-test's) */
