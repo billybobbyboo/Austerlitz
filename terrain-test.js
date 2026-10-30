@@ -82,8 +82,15 @@ const order=[mAt('pratzeberg')-Math.max(mAt('santon'),mAt('vinohrady'),mAt('zura
              mAt('vinocol')>mAt('pratzen'), mAt('pratzen')>Math.max(mAt('kobelnitz'),mAt('sokolnitz'))];
 console.log("  summit ordering (Pratzeberg 25+ m above Santon/Vinohrady/Zuran > col > Pratzen village > Goldbach): "+(order.every(x=>x)?"OK":"BROKEN "+order)+
   "  (the Pratzeberg "+(mAt('pratzeberg')-Math.max(mAt('santon'),mAt('vinohrady'),mAt('zuran'))).toFixed(1)+" m above the highest of the three)");
-const down=mAt('kobelnitz')>=mAt('sokolnitz') && mAt('sokolnitz')>=mAt('telnitz');
-console.log("  the Goldbach falls downstream (Kobelnitz >= Sokolnitz >= Telnitz): "+(down?"OK":"BROKEN")+"  ("+['kobelnitz','sokolnitz','telnitz'].map(k=>mAt(k).toFixed(0)).join(" > ")+" m)");
+/* the Goldbach falls downstream: its bed, the model's height on GOLDBACH_M at the point nearest each village, by Kobelnitz, Sokolnitz and Telnitz.
+   Until Stage 8's follow-up 8J this read the three villages' points, the brook drawn through them; with the bed corrected (decision 259 (a))
+   Sokolnitz's point stands about 200 m west of it on the valley's side (its own elevation is held above against the verified one). On the 8H build
+   the bed reads 209.9, 207.1 and 194.4 m, the points 210.2, 206.7 and 196.2: both fall there */
+const bedAt=k=>{ const p=P(k); let best=null; for(let i=0;i<GOLDBACH_M.length-1;i++){ const a=GOLDBACH_M[i], b=GOLDBACH_M[i+1], dx=b[0]-a[0], dy=b[1]-a[1], L=dx*dx+dy*dy,
+  t=Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dy)/L)), q=[a[0]+t*dx,a[1]+t*dy], d=Math.hypot(p[0]-q[0],p[1]-q[1]); if(!best||d<best.d) best={q:q,d:d}; }
+  return G.elevM(hAt(best.q[0],best.q[1])); };
+const down=bedAt('kobelnitz')>=bedAt('sokolnitz') && bedAt('sokolnitz')>=bedAt('telnitz');
+console.log("  the Goldbach falls downstream, its bed by Kobelnitz >= by Sokolnitz >= by Telnitz: "+(down?"OK":"BROKEN")+"  ("+['kobelnitz','sokolnitz','telnitz'].map(k=>bedAt(k).toFixed(1)).join(" > ")+" m; the villages' points "+['kobelnitz','sokolnitz','telnitz'].map(k=>mAt(k).toFixed(1)).join(", ")+" m)");
 /* the meres: no edge of the ice, nor of its shore ice, may hang above the DRAWN ground (docs/STAGE4_SPEC.md section F.1; roadmap step 1,
    docs/FINAL_AUDIT.md T-2: until step 1 this block computed a level with its own copy of mereLevel's rule, on the model height, and
    compared it with the same model height, which holds by construction). Now every part is the live code's: the meres as buildWater

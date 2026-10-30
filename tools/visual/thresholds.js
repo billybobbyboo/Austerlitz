@@ -251,11 +251,23 @@ const MOTION={JUMPS:245, POPS:985, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.2
   /* VIS[run key] = [drawn, in view, longest hidden ms]: the prerequisite's build (the 8C build with the protected items' fade fixed, section
      16.1), Chromium 141, check:selftest's block; a key is the motion's id, "+sel" with Saint-Hilaire's division selected, "+fr"/"+al" under a
      headquarters' reading, "+touch" for the finger's pan at 390 px (tools/visual/motion.js runKey) */
-  VIS:{"hybrid-pan":[1378,2049,2467], "hybrid-zoom":[1375,2254,1533], "hybrid-orbit":[1489,2548,2200], "hybrid-glide":[1218,1805,2533],
-    "hybrid-play":[2115,3388,3100], "paper-pan":[1240,1274,667], "paper-zoom":[850,1229,667], "paper-glide":[566,821,633], "paper-play":[1570,1694,667],
-    "land-pan":[1869,2051,1133], "land-zoom":[1730,2261,667], "land-orbit":[1955,2366,667], "land-play":[2613,3146,667], "low-pan":[820,885,533],
-    "low-orbit":[691,887,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1494,2548,2000], "paper-zoom+sel":[823,1229,667],
-    "hybrid-pan+fr":[1308,1935,2467], "hybrid-pan+al":[979,1346,2467], "paper-play+al":[1180,1331,667], "phone-pan+touch":[296,732,1367]}};
+  /* since the follow-up 8J (decision 259 (a), a geographic data task; the owner's brief of 30 October 2026: geographic baselines updated only where
+     the authorized data change justifies it, with the reason recorded; docs/STAGE8_SPEC.md section 21.7): the runs whose views 8J's data changes,
+     the III Column's places (prz@2, @4, @7), the ground under the formations by the corrected Goldbach's bed (localHeight's carve) and Napoleon's
+     readings in the morning (15 of 2,636, tools/stage8/know-8j.js), re-measured on 8J's build (check:selftest's block, Chromium 141, repeated by
+     tools/stage8/motion-8h.js on a page of its own): "hybrid-pan" [1378,2049,2467] to [1376,2053,2467], "hybrid-zoom" [1375,2254,1533] to
+     [1371,2242,1533], "hybrid-orbit" [1489,2548,2200] to [1487,2548,2200], "hybrid-glide" [1218,1805,2533] to [1227,1804,2533], "hybrid-play"
+     [2115,3388,3100] to [2153,3388,3100], "land-pan" [1869,2051,1133] to [1879,2055,1133], "land-zoom" [1730,2261,667] to [1714,2252,667],
+     "land-orbit" [1955,2366,667] to [1965,2366,667], "land-play" [2613,3146,667] to [2630,3146,667], "low-orbit" [691,887,633] to [681,876,633],
+     "hybrid-orbit+sel" [1494,2548,2000] to [1454,2548,2000], "hybrid-pan+fr" [1308,1935,2467] to [1319,1970,2467], "hybrid-pan+al" [979,1346,2467]
+     to [955,1350,2467]; the map layer's code unchanged since 8I, whose run gave the earlier values exactly; the paper map's runs, on flat ground,
+     unchanged; the 16's totals within their ceilings (238, 985, 130, 9) */
+  VIS:{"hybrid-pan":[1376,2053,2467], "hybrid-zoom":[1371,2242,1533], "hybrid-orbit":[1487,2548,2200], "hybrid-glide":[1227,1804,2533],
+    "hybrid-play":[2153,3388,3100], "paper-pan":[1240,1274,667], "paper-zoom":[850,1229,667], "paper-glide":[566,821,633],
+    "paper-play":[1570,1694,667], "land-pan":[1879,2055,1133], "land-zoom":[1714,2252,667], "land-orbit":[1965,2366,667],
+    "land-play":[2630,3146,667], "low-pan":[820,885,533], "low-orbit":[681,876,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1454,2548,2000],
+    "paper-zoom+sel":[823,1229,667], "hybrid-pan+fr":[1319,1970,2467], "hybrid-pan+al":[955,1350,2467], "paper-play+al":[1180,1331,667],
+    "phone-pan+touch":[296,732,1367]}};
 module.exports.MOTION=MOTION;
 /* decision 257 (b)'s visibility rule for one run (r: a run of live.motion with its track; base: VIS's entry, or for a run by real input its twin's
    measures as [drawn, in view, longest]); the words of each failure, empty when it holds */

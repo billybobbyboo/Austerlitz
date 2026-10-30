@@ -226,8 +226,11 @@ legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
     1:{p:[211,379],st:"engaged",cf:"A",obj:"Hold Telnitz",act:"Contests Telnitz house by house against Kienmayer"},
     2:{p:[206,366],st:"engaged",obj:"Hold Sokolnitz",act:"Fights for Sokolnitz village and the castle wall"},
     4:{p:[220,321],st:"supporting",cf:"B",act:"Levasseur's brigade marches up onto the Pratzeberg: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right"},
-    7:{tm:{dep:780,at:840,gr:"C",basis:"app narrative, unsourced",ev:["Presses east across the stream as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"],note:"the act ties the move to the trap closing, dated 13:00-14:00"},
-       p:[213,371],st:"attacking",via:[[211,322],[208,365]],act:"Presses east across the stream as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march */,
+    7:{tm:{dep:780,at:840,gr:"C",basis:"app narrative, unsourced",ev:["Presses east to the stream at Sokolnitz as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"],note:"the act ties the move to the trap closing, dated 13:00-14:00"},
+       p:[213,371],st:"attacking",via:[[211,322],[208,365]],act:"Presses east to the stream at Sokolnitz as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march.
+       Stage 8, the follow-up 8J (decision 259 (a)): "across the stream" until 8J, when the drawn brook ran west of the village and this place stood
+       east of it; with the bed corrected the place stands at the stream's west bank (15 m from it) and the route on the west bank throughout: the act
+       says where the anchor is. No source read gives this move */,
     8:{tm:{at:900,gr:"C",basis:"app narrative, unsourced",ev:["Several times between 07:00 and 15:00","Retakes Telnitz for good"],note:"Telnitz changed hands until about 15:00; taking it for good is the last change"},
        p:[217,387],st:"attacking",via:[[206,372],[210,377]],act:"Retakes Telnitz for good"},
     9:{p:[228,393],st:"holding"}}},
@@ -524,10 +527,16 @@ prz:{ ech:"div", nation:"ru", arm:"inf", desig:"III Column",
     0:{p:[290,282],st:"forming",cf:"A",obj:"Take the Sokolnitz castle and pheasantry"},
     1:{tm:{dep:420,gr:"B",basis:"source",ev:["the disposition ordered all the columns to march at 07:00","as did the III Column in Przybyszewski's report","the II and III Columns at 07:30"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)"},
        p:[266,296],st:"advancing"},
-    2:{p:[238,332],st:"attacking",cf:"A",obj:"Take the castle and pheasantry",act:"Storms the walled castle grounds and the pheasant enclosure"},
-    4:{p:[233,344],st:"engaged"},
-    7:{p:[227,338],st:"encircled",cf:"A",obj:"Break out toward Kobelnitz",act:"Cut off by Soult from the east and Davout from the west"},
-    8:{p:[227,309],st:"broken",cf:"A",moveMin:20,act:"Attempts to break out north toward Kobelnitz; the column disintegrates"}   /* timing inferred: holds at Sokolnitz until it is surrounded (~14:00, the file's own event), then breaks out */,
+    2:{p:[215,341],st:"attacking",cf:"B",obj:"Take the castle and pheasantry",act:"Storms the walled castle grounds and the pheasant enclosure"},
+    4:{p:[215,341],st:"engaged"},
+    7:{p:[215,341],st:"encircled",cf:"B",obj:"Break out toward Kobelnitz",act:"Cut off by Soult from the east and Davout from the west"},
+    8:{p:[227,309],st:"broken",cf:"A",moveMin:20,act:"Attempts to break out north toward Kobelnitz; the column disintegrates"}   /* timing inferred: holds at Sokolnitz until it is surrounded (~14:00, the file's own event), then breaks out */
+    /* Stage 8, the follow-up 8J (decision 259 (a)): phases 2, 4 and 7 re-plotted at the castle and the pheasantry as corrected (LANDMARK_SITES.castle,
+       WOODS[0]), where the acts put the column ("Storms the walled castle grounds and the pheasant enclosure", the objective arrow's words that the
+       model has the column there from phase 2 on, "Cut off by Soult from the east and Davout from the west"; Schönhals 1873, p. 160: its head "rückte
+       in Sokolnitz ein"): one place for the three, the column holding at Sokolnitz until it is surrounded (the correction pass's inference), graded B: the
+       sector documented, the frontage an approximation, the castle's and the pheasantry's sites in 1805 the 1825 sketch's carried back. Until 8J
+       [238,332] (A), [233,344] and [227,338] (A): by the build's castle, 535 m south-east of its site, east of the drawn brook */,
     9:{p:null,st:"captured",act:"Surrendered almost entire, near Kobelnitz by evening. Przybyszewski was later court-martialled."}}},
 
 col4:{ ech:"corps", nation:"at", arm:"inf", desig:"IV Column",

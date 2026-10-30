@@ -4886,3 +4886,100 @@ https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html (the deskto
 evidence note), so they are usable now for 8H's build and will serve this follow-up's build once it is merged (or at once if the owner points Pages
 at a branch: an outward-facing setting, the owner's). The protocol is section 20.12's, unchanged. No device was reachable from this session: the
 device acceptance of 8E-8K stays pending; nothing here is a device's time.
+
+### 21.7 The Sokolnitz group, the Pratzen church and the Austerlitz garden (8J; decision 259 (a); a data task)
+
+*What it implements.* 8H's proposal G1, G2, G3, G6 and G7 (`docs/stage8-evidence/8h/geo/proposal.md`), each validated again against its evidence
+before it was drawn, with the qualifications the owner set: the later map's position and the 1805 inference kept apart in the records and in what
+a visitor reads; the pheasantry drawn to its researched historical outline, not today's woodland; the garden by the evidence, its conventions
+labelled; every layer updated (the landscape, the ground's cover, the paper map, the day-track, the dossiers and the sources sheet); roads,
+crossings, positions, sight lines, knowledge, movement and the narrative checked; Legrand's "across the stream" and the castle's and the
+enclosure's anchor revisited explicitly; what no source supports kept uncertain.
+
+| place | was | is | the later map (grade) | 1805 |
+|---|---|---|---|---|
+| the Goldbach at Sokolnitz (`GOLDBACH_M`) | x 204-205, 316-515 m west of the stream | today's Říčka from y 309.8 to 377.9 | the 1825 sketch within about 10 m (B) | C; which of two channels north of the castle, not established |
+| the pheasantry (`WOODS[0]`) | an ellipse 1.9 km south-south-east, 190 trees | the 1825 "Fasangarten", 0.246 km², 46 trees | the 1825 sketch, traced (B) | C (the castle's garden of the 18th century) |
+| the castle (`LANDMARK_SITES.castle`) | the build's legacy place, 535 m south-east | its own site [212.9,344.3] | the 1825 quadrangle and today's castle on one site (B) | B by the texts (Schwoy 1793; Mikhailovsky-Danilevsky) |
+| the Pratzen church (`LANDMARK_SITES.church`) | the village's point | its own site [277.0,255.6], 399 m at 193 degrees | the 1826 sketch's round churchyard, today's church (B) | "outside the village" A (Schwoy 1793); the site B |
+| the Austerlitz garden (`GARDENS`; `WOODS[1]` dropped) | a wood 1.6 km south-east of the town | the garden west of the château, rows of trees | the 1826 sketch and the Second Survey, today's outline (B) | C (Kaunitz's, before 1794); the planting not established |
+
+*The III Column and Legrand.* The III Column's phases 2, 4 and 7 stood by the build's castle, east of the drawn brook; they are re-plotted to one
+place at the castle and the pheasantry as corrected, where their acts put the column, graded B (A until 8J: the sector documented, the frontage an
+approximation, the 1825 sites carried back). Legrand's phase 7 stays where it was; with the bed corrected it stands at the stream's west bank, so
+its act says "to the stream" where it said "across" (no source read gives this move). The III Column's arrow (`OVERLAYS[2]`) ends at the castle.
+
+*What it draws* (`tools/stage8/geo-8j.js`, `docs/stage8-evidence/8j/geo-8j.json`): the traced outline 85.2% drawn as wood (the rest the brook's water and wet bottom), 1.8% of the ground within 3 units
+outside it; the castle's site on the model's road class, the Pratzen church's on the village class, the garden 100% the town's village class; the
+corrected bed 203 m east of the village's point (the old bed 103 m west of it), 146 m from the castle's site.
+
+*The castle's size* (`tools/stage8/castle-8j.js`, `docs/stage8-evidence/8j/castle-8j.json`). At its site the drawn track (118 m west, drawn 76 m
+wide) and the drawn brook (146 m east, drawn 145 m wide: decision 253 (b)'s display widths) leave 8G's quadrangle (480 by 367 m) no room: down to
+40% of that size no clear place lies within 8 units on the castle's side of both (8G's size finds its nearest, 461 m off, across the track), and at
+35%, 30% and 25% the nearest clear places (114, 89 and 57 m off) leave the site outside the quadrangle. The planner now draws the castle and its
+farm at the largest of 8G's size and smaller ones, in steps of 5% down to 15% (`CASTLE8J`, design values; as a farmstead takes a smaller size in a
+tight spot), at which the quadrangle stands clear and covers its own site: 20%, 96 by 73 m, at the site (its centre 2 m from it), the farm unmoved
+south of it, Sokolnitz's 13 farmsteads all drawn. The storeys' heights are kept, so beside the villages' farmsteads (drawn at the buildings'
+convention, a plot's frontage 1.9-2.2 units, 120-139 m, against the sketches' about 22 m) the castle stands near its own size (the 1825 quadrangle 79.6 by 60.0 m). The self-test's landmarks check holds the
+quadrangle covering its site and the castle and farm at one size; `css-test.js` pins `CASTLE8J` and the rule; the sources sheet gives the drawn
+size, read from what is drawn; the castle's claim (`appearance.js`) says so. Seen close (`pairs/8j-sokolnitz-castle-afternoon.jpg`, 15:00, the
+III Column gone), the castle at about its own size reads smaller than the farmhouses beside it, which are drawn at the buildings' convention: a
+visitor sees its form (the closed quadrangle, the taller east range) but not its standing among the village's buildings. No size of 8G's
+convention can stand at the site: the drawn track and brook with their clearances leave 115 m clear across the site (64 m west of it, 51 m
+east: `castle-8j.json`), and the quadrangle at 8G's size, turned to the true north while the corridor runs about 20 degrees east of it, spans
+about 580 m across the corridor; narrowing the drawn ribbons there would admit about 30% (an estimate from the corridor's width, not built). *Put to the owner, question 266*: (a) keep it so (recommended,
+by the project's order of priorities: the site and its relations are geographic integrity, the size a visual convention, stated where it is
+drawn); (b) a middle size off its site, 25-35% of 8G's size with the quadrangle's centre 57-114 m south of the site and the site outside it
+(measured; not built); (c) narrow the drawn track's and brook's ribbons at Sokolnitz (decision 253 (b)'s convention changed at one place; about
+30% at most, estimated); (d) 8G's size at its nearest clear place, 461 m off across the track (its site and its side of the track lost).
+
+*The woods' random sequence.* The woods drew their trees from one continuing sequence and the buildings keep clear of the woods' and the
+villages' trees; replacing the pheasantry and dropping the park re-planned the buildings of ten villages far from either. Each kept wood and the
+villages' trees now restart from their state in 8H's sequence (`WOODS_RS`, read by `tools/stage8/woods-rs-8j.js`): the buildings' plans of Austerlitz, Pratzen, Sokolnitz and Telnitz changed, each by the data (no house in the garden, the church,
+the castle and the pheasantry, the old pheasantry on Telnitz's fields), the 16 other villages' identical part for part (without the hold 14
+villages were re-planned, 10 of them, Augezd, Bosenitz, Girzikowitz, Holubitz, Hostieradek, Kobelnitz, Krzenowitz, Menitz, Puntowitz and
+Schlapanitz, for no change of their own; `tools/stage8/woods-bldg-8j.js`, `docs/stage8-evidence/8j/woods-bldg-8j.json` and `-nohold.json`). The trees' habits, turns and the scrub, drawn from the sequence's end, are not held: a presentation only.
+
+*Consequences checked* (`tools/stage8/know-8j.js` against 8I's build; `check:chronology`; the movement audit; the narrative): 2,636 readings of "Whose eyes?" (both headquarters, every ten minutes): 15 differ, all Napoleon's, all of Kienmayer's
+advance guard and the I Column by Telnitz and Sokolnitz, unknown before (no line of sight), uncertain (valley fog) 05:10-08:40 and seen
+08:50-09:40 now: the relief's carve follows the corrected bed, so the trench that hid them from the Zuran runs elsewhere, a reading of the
+model; the Allied reading identical; the viewsheds within 0.4 points but Sokolnitz's own (0.74% to 1.66%); the plateau's strength and the
+centres' separation identical; `check:chronology`'s verdicts unchanged (66 consistent, the four named conflicts), the movement audit 0
+findings; the narrative's statements naming the brook at Sokolnitz true but Legrand's act, rewritten.
+
+*The captures* (`tools/stage8/stills-8j.js`, `pairs/`): 8I's build beside 8J's in ten matched views, among them the castle at 10:00 (under the
+III Column) and at 15:00 close, the pheasantry, the brook by the village, the column at the castle, the Pratzen church, the garden and the paper
+map on Sokolnitz; each inspected.
+
+*Two faults found by the first local self-test run, fixed.* The château was not drawn: 8J's garden rule kept the church as well as the town's
+houses off the garden's outline, and from no remaining place of the church did the château find one within its octant (section 20.3). The
+rule is now the houses' only (`ctx.landmark` in `churchPlan8g`): the church and the château, whose places are a layout of their symbols, may
+stand over the outline, the château at its 8I place and the garden's rows ending west of it (12 trees). And the bank scrub along the streams,
+set at random off their lines, kept clear of the villages' places only: with the brook corrected one bush stood on the castle's farm (the
+buildings check's nearest crown -0.194). It now keeps clear of every building as drawn, its scale drawn before the test so that no other bush
+moves (4 bushes not drawn). Austerlitz's plan without the garden rule is 8I's part for part; Telnitz's changed by the old pheasantry, whose 199
+trees bordered its buildings (the nearest 0.86 units off in 8I).
+
+*The motion block's visibility* (decision 257 (b)'s baselines, `MOTION.VIS`). 8J's data moves what each motion has in view: the III Column's
+places, the ground under the formations by the corrected Goldbach's carve, and Napoleon's readings in the morning. On 8J's build 13 of the 22
+runs differ from the baselines (the counts and the was and is in `CHANGELOG.md` and `thresholds.js`; repeated run for run on a page of its
+own, `motion-8j.json`): seven fell in their drawn (the most, Saint-Hilaire selected in the orbit, 1,494 to 1,454 drawn of the same 2,548 in view), six
+rose. The map layer's code is 8I's, whose run gave the earlier values exactly, and the paper map's
+runs, on flat ground, are unchanged; putting the III Column and its arrow back at their 8I places on 8J's build moves the counts part of the
+way back (`motion-8j-prz8i.json`), the ground's change remaining. Under the owner's rule for this follow-up (geographic baselines moved only
+where the authorized data change justifies it, the reason recorded) they are re-measured on 8J's build; the totals stay within their ceilings
+(238, 985, 130 and 9 against 245, 985, 130 and 10).
+
+*The checks.* `terrain-test.js`'s downstream check reads the corrected bed; the self-test's church check reads a church's own site, its landmarks
+check the castle covering its site at one size with its farm (its name and the manifest's entry with it); its woods
+pins at 8J's counts, the check named "as pinned" since (the manifest's entry renamed with it); `redteam.js`'s march-rate acknowledgement; the motion block's visibility baselines re-measured (above); `check:data`'s reference moved to
+8J's build.
+
+*Verification* (here; CI's runs and the census in section 21.9): `npm test`, `check:data`, `check:chronology` and `check:baseline` pass; the
+self-test 317 of 317 with every live block run, the motion block judged again with its re-measured baselines without a failure; the evidence
+re-taken on the delivered build (`7d5594ba...`). The device runs pending.
+
+*Found and recorded, not changed*: kienmayer@7's and lang@2's places beside the corrected brook (each on its own evidence, not re-plotted); the
+castle's site on the model's road class (a track passes it); the castle's walls (not established); from 08:00 to 14:10 the III Column's place
+stands 124 m from the castle's site, so its figures stand over the castle's symbol while it holds the castle (as its acts have it; figures are
+drawn over buildings everywhere: `castle-8j.json`); the garden under the château's symbol at the Overview's scale; no garden sign on the paper map.

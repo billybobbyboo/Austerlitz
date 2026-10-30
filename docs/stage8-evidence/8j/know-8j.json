@@ -1,0 +1,177 @@
+{
+ "tool": "tools/stage8/know-8j.js",
+ "builds": {
+  "before": {
+   "file": "austerlitz-8i.html",
+   "md5": "697bbf34ec29fc4d05695dc8e1cd3c5e",
+   "readings": 2636,
+   "errors": []
+  },
+  "after": {
+   "file": "austerlitz-8j-final.html",
+   "md5": "7d5594baf7468f943ab42f7d848608d1",
+   "readings": 2636,
+   "errors": []
+  }
+ },
+ "diff": {
+  "know": [
+   {
+    "reading": "fr",
+    "clock": 310,
+    "id": "kienmayer",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 460,
+    "id": "kienmayer",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 480,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 490,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 500,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 510,
+    "id": "kienmayer",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 510,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 520,
+    "id": "kienmayer",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 520,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "uncertain (valley fog)"
+   },
+   {
+    "reading": "fr",
+    "clock": 530,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "seen"
+   },
+   {
+    "reading": "fr",
+    "clock": 540,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "seen"
+   },
+   {
+    "reading": "fr",
+    "clock": 550,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "seen"
+   },
+   {
+    "reading": "fr",
+    "clock": 560,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "seen"
+   },
+   {
+    "reading": "fr",
+    "clock": 570,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "seen"
+   },
+   {
+    "reading": "fr",
+    "clock": 580,
+    "id": "dok",
+    "before": "unknown (no line of sight)",
+    "after": "seen"
+   }
+  ],
+  "vs": {
+   "pratzeberg": {
+    "before": 73.4,
+    "after": 73.42,
+    "d": 0.02
+   },
+   "vinohrady": {
+    "before": 64.41,
+    "after": 64.41,
+    "d": 0
+   },
+   "santon": {
+    "before": 41.9,
+    "after": 41.5,
+    "d": -0.4
+   },
+   "zuran": {
+    "before": 38.74,
+    "after": 38.41,
+    "d": -0.33
+   },
+   "puntowitz": {
+    "before": 2.15,
+    "after": 2.19,
+    "d": 0.04
+   },
+   "sokolnitz": {
+    "before": 0.74,
+    "after": 1.66,
+    "d": 0.92
+   },
+   "augezd": {
+    "before": 4.81,
+    "after": 4.8,
+    "d": -0.01
+   }
+  },
+  "plateau": [],
+  "sep": []
+ },
+ "summary": {
+  "readings": 2636,
+  "differ": 15,
+  "byReading": {
+   "fr": 15,
+   "al": 0
+  },
+  "formations": [
+   "kienmayer",
+   "dok"
+  ]
+ }
+}
