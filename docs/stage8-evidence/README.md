@@ -217,3 +217,18 @@ comparison; 8H's commits' builds, each named by its md5 in its file. The scripts
 | `8h/mutate-css-8h.json` | `mutate-css-8h.js` | section 20.11: `css-test.js`'s and `geo-test.js`'s 8H rules on copies with one broken |
 | `8h/mutate-8h.json` | `mutate-8h.js` | section 20.11: the self-test's 8H checks on copies with one rule broken |
 | `8h/geo/` | `fetch-places.js`, `period-trace.py`, `compute-places.js`, `period-figures.py`, `consequences.js` (its `README.md`) | section 20.6: the landmarks' research made again (every response kept, `raw/manifest.json`), the frame checked, the period maps read; `proposal.md` and `consequences.json` |
+| `8h/near/near-frame-e8fed44b.log`, `8h/near/near-frame-final.json` | `near-8h.js` (the prototypes on `e8fed44b`'s build; `--uniform` on the final build, the hook on and off) | section 20.10: the shimmer over the whole frame, the measure the tree check is built on |
+| `8h/ice/ice-8h-clear.json`, `ice-8h-sky.json`, `8h/ice/ice-<view>-1500-<variant>.jpg`, `<view>-1500-<clear|sky>-sheet.jpg` | `ice-8h.js --clear 0.20,0.26,0.32,0.40`, `ice-8h.js --sky 1.4,0.7,0` | section 20.10: the ice under a low sun, the ice rules' ratios and the glare by variant |
+| `8h/contact-8g-8h/contact.json`, `contact/*.jpg` | `contact-8f.js --before <8G> --after <8H>` | section 20.10: the troops on the ground against the original criterion, 8G's build and 8H's |
+| `8h/contact-profile/contact.json`, `contact/*.jpg` | `contact-8f.js --before <8H> --after <8H with 8F's profile option>` (the option's patch applied to 8H's sources but for its self-test hunk) | section 20.10: the profile option's contact on 8H's build |
+| `8h/contact/cost-*.json` | `cost-8e.js` on 8H's build, with the profile option on every block and where a man is drawn 48 px or more, on an idle machine | section 20.10: the profile option's cost a frame against the chords' |
+| `8h/buildings-8h.json`, `8h/plans/` | `buildings-8h.js --builds 8g=<8G>,8h=<final>`, `plan-8h.js` | section 20.3: the buildings per village, 8G's build and the final, and Austerlitz's and Satschan's plans drawn |
+| `8h/s7-8g.json`, `8h/s7-8h.json` | `s7-8h.js` on 8G's build and the final | section 20.4: S-7's three seams |
+| `8h/pose-8h.json` | `pose-8h.js --builds 8g=<8G>,8h=<final>` | section 20.4: a block at a pause, a seek and a resume |
+| `8h/clips/pause-8g-8h.mp4`, `pause-8g-8h.json` | `pause-clip-8h.js` | section 20.4: the clip, 8G's above, 8H's below |
+| `8h/toast-8g.json`, `8h/toast-8h.json` | `toast-8h.js` on 8G's build and the final | section 20.5: the phase's message against the controls at the nine sizes, Study and Watch |
+| `8h/g2-8h.json` | `g2-8h.js` | section 20.7: the geography of `636cc5d` and of the final sources compared number by number |
+| `8h/startup-8h.json` | `startup-8h.js --builds 8g=<8G>,8h=<final> --loads 7` (an idle machine) | section 20.7: the start's cost over repeated loads, medians and 95th percentiles |
+| `8h/stills-8h.json`, `8h/pairs/8h-<view>.jpg` | `stills-8h.js --before <8G> --after <final>` | section 20: the matched captures of what 8H changes on screen, and of views where it changes nothing |
+| `8h/mutate-8h-final.json` | `mutate-8h.js --only ...` on the final build (the planner's equivalent mutations reported as such; the crowns' check) | section 20.11 |
+| `8h/route-phone-local.json`, `route-fx-local.json`, `route-desktop-local.json` | `tools/step6/perf-local.js` (the phone route, the effects bracket, the desktop route) on the final build, software WebGL | section 20.12: the device routes run end to end here (their times decide nothing) |

@@ -184,7 +184,7 @@ Grades as the brief asks: **A** a period source read directly; **B** a period ma
 3. **Kept until decided**: everything as drawn, the dossiers' and the sources sheet's words saying where a place is drawn away from its own (as
    `appearance.js` already does for the castle and the Pratzen church).
 
-## 4. For the owner (questions 259-260, `docs/STAGE8_SPEC.md` section 20.6)
+## 4. For the owner (questions 259-260, `docs/STAGE8_SPEC.md` section 20.14)
 
 - **Question 259: the Sokolnitz group and the two small ones (G1, G2, G3, G6, G7).** (a) **Authorise one geographic data task** implementing them
   as proposed (the pheasantry drawn to its 1825 outline, the brook at the castle and the village to its 1825 bed, the castle, the Pratzen church

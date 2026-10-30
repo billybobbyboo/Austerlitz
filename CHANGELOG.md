@@ -85,6 +85,11 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
   every other run's frames are as before. No limit changed.
 - **`dwellAdvance`** takes a dwell state set by other means without its speed (the self-test's own) as entered at the current speed, so the
   rescale of S-7 never divides by an absent speed.
+- **The self-test's manifest: 313 to 316 checks** (`tools/visual/check-report.js --write-manifest` from a run on CI's browser, Playwright 1.56's
+  headless shell, Chromium 141.0.7390.37, on this build: every one of the 316 checks and every live block passing, the motion block's 24 runs at
+  their baselines, `docs/stage8-evidence/8h/selftest-chromium141.json`). Added: "the blocks' pose at a pause (8H)", "A-6 (8H)", "the crowns closing
+  near the eye (8H)"; renamed: "the landmarks (8G)" (the château "within an octant of its bearing today ... no drawn road or stream between them",
+  was "within a quarter-turn").
 - **8G's records (section 19, written in 8H; section 20.2).** 8G's pull request was merged ahead of its record: section 19 was cited by its
   commits, code comments, self-test checks and evidence README but never written, and the roadmap and `CLAUDE.md` stopped at 8F. Written from
   the commits, CI's own runs (its self-test report and its `check:visual` reports and captures of 8F's and 8G's commits, runs 40665840278 and
@@ -117,6 +122,14 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
   (`world.js` `TREE8H`, `treeNearGeo`, `treeNear`): the self-test's new check (d') in the 8F block (the hook on every habit and the bush; among the
   crowns at least 1,000 pixels differ with it off, 15,144 measured; from the Field vantage none), `css-test.js`'s rules, and the mutations of both
   failing them. Not adopted, recorded: the volume shading.
+- **The troops on the ground (8F's item 1), measured again (section 20.10); nothing changed.** By 8F's own tool on 8G's build and 8H's
+  (`tools/stage8/contact-8f.js`; `docs/stage8-evidence/8h/contact-8g-8h/`: every set identical on both builds): against the original criterion
+  (within 0.03 units at 4x, 0.0774 at 10.33x) the chords leave the men's planted edges 11 and 18 poses beyond (simple and rich kits; the worst
+  1.88 and 2.08 times the tolerance), the men's **drawn soles 36 and 35** (the worst 3.19 times), the horses' 27 to 29; their pixels at their
+  largest at most 0.82 on the simple kit, up to 4.82 px on the rich kit in the closest figure view at 4x (12.09 at 10.33x). These are 8F's cases
+  kept open (`H_OPEN`'s bounds, `H_CASES`'s counts), unchanged: no bound raised, no exception renamed. 8F's correction, each foot's own profile
+  (its patch applied to 8H's sources; `contact-profile/`), brings every planted edge within the tolerance at 4x and leaves 11 drawn-sole poses
+  (1.4 times); its cost a frame is section 20.10's, over the animation's budget, which is not raised: question 265.
 - **Decision 258 (b), measured, not adopted (section 20.8).** More places beside a counter's anchor while the view moves
   (`tools/stage8/protos/counters.js`, four or eight), on the motion block's 26 runs on CI's browser: more formation-frames drawn (34,116 and
   34,381 of 46,492, against 33,159) and fewer disappearances, but jumps 302 and 336 over decision 257's ceiling of 245 (each counter moved beside its
@@ -148,7 +161,9 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
 
 ## 2026-10 · Stage 8, implementation PR 8G: buildings and structures (decision 248 (a)), with its prerequisites
 
-**Status: being built on `claude/great-pasteur-pi33mf` (into `main` at `51d4a15`, PR #71's merge); not merged.** The record is
+**Status: merged into `main` by the owner on 29 October 2026 (#72, `636cc5d`), built on `claude/great-pasteur-pi33mf` from `main` at `51d4a15`
+(PR #71's merge). Merged ahead of its record: this status line and the entry's last part (the buildings, `dddd4e4`) were written in
+implementation PR 8H from the commit, CI's own runs and the evidence (`docs/STAGE8_SPEC.md` §19, written in 8H).** The record is
 `docs/STAGE8_SPEC.md` §19, the evidence `docs/stage8-evidence/8g/`. The data task's build: `austerlitz-command-map.html` 2,656,947 bytes, md5
 `84fe987be066770e2ee1a145217cd17e` (archived as `archive/stage8g-84fe987b.html`, `check:data`'s reference); `check:baseline` moved to it.
 
@@ -231,11 +246,29 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
     stood 1,367 m south-east of its drawn place, on the old road, which the map draws up to 1.2 km north of its course east of the Santon;
     the château garden at Austerlitz lies west of the château, the drawn park 2 km south-east (`places.md`). Each a geographic correction
     for a review of its own (decision 248 (a)'s and the brief's terms); none made here.
+- **The villages and the landmarks (`dddd4e4`; decision 248 (a); written in 8H, `docs/STAGE8_SPEC.md` §19.4).** `world.js` (`VILL8G`, `BLD8G`,
+  `CHAPEL8G`, the planner's `v8*` helpers, `villagePlan8g`, `churchPlan8g`, `chateauPlan8g`, `castlePlan8g`, `planBuildings8g`, `BLDG`): the
+  villages laid out on the sketches' pattern, applied to 1805 as an inference: 177 farmsteads for the build's 179 houses (Satschan five of seven,
+  the self-test's `FARMS8G` naming the exception), 150 of them an L, 27 buildings at the back of the yards, 625 records; every building's centre in
+  its village's place as the paper map draws it, clear of the drawn roads, streams, ice, trees and each other, off every other farmstead's plot;
+  the roofs a design convention (thatch, tile on about one farmstead in six, the town and the manors tiled); the churches standing in 1805 by
+  their villages, Holubitz's chapel smaller, Austerlitz's church the temple of 1790, its château by it; the Sokolnitz castle a closed quadrangle
+  with its farm south of it, by the map's legacy place moved off the drawn brook; 8F's ring of wall round the castle removed; Telnitz's
+  churchyard walled; fences round Telnitz and Sokolnitz; on the drawn ground at every factor (none at 1x, on the paper map or at the eye level).
+  `app.js`: the village and town dossiers name the claims their buildings rest on; the sources sheet says how the villages are drawn. Checks:
+  the self-test 302 to 313 (the buildings on the drawn ground at each factor; the 8G block: the farmsteads and the plan made again, in their
+  place, clear of the ribbons, the ice, the trees and each other, the plots, the presentations, the landmarks, the dossiers, the roofs);
+  `css-test.js`'s "the buildings"; `runtime-test.js` plans them headless. The frame: +9 draw calls and +31,740 triangles on every desktop
+  landscape view (+1.5% to +1.8%), +5 and +23,010 on a phone's, nothing on the paper map, at 1x or at the eye level (CI's own reports,
+  `docs/stage8-evidence/8g/census-ci.md`). On CI (Chromium 141): the self-test 313 of 313 and every live block (run 40870570661,
+  `selftest-ci-dddd4e4.json`); `check:visual` its 39 cases in 208 minutes. Build `508927e6f72e1b6f2f9186e954d61b59`, 2,740,873 bytes
+  (`check:baseline`). Found after the merge and taken up in 8H: the château drawn 86.5 degrees off its bearing (the quarter-turn admitted it),
+  Satschan's five of seven, the dossiers' "each an L" for every village, and this record itself.
 
 ## 2026-10 · Stage 8, implementation PR 8F: water, woods and the near ground (decisions 246 (a), 247 (a)), with the audit of 8E's two findings
 
-**Status: built on `claude/loving-cerf-xmk1wu` (draft PR #71, into `main` at `94d6e46`, PR #70's merge), for review; not merged. Device acceptance
-pending for 8E and 8F** (no owner hardware in the session; `docs/STAGE8_SPEC.md` §18.7). The record is `docs/STAGE8_SPEC.md` §18, the evidence
+**Status: built on `claude/loving-cerf-xmk1wu` (PR #71, into `main` at `94d6e46`, PR #70's merge); merged into `main` by the owner (`51d4a15`; noted
+in 8H). Device acceptance pending for 8E and 8F** (no owner hardware in the session; `docs/STAGE8_SPEC.md` §18.7). The record is `docs/STAGE8_SPEC.md` §18, the evidence
 `docs/stage8-evidence/8f/`. The build changed: `austerlitz-command-map.html` **2,607,535 bytes, md5 `6ba949da17229530324add3c54dd94ff`** (8E's
 build 2,537,677, `d73d0115...`; prerequisite 1's 2,555,560, `7a37ab06...`; prerequisite 2's 2,569,416, `7dd10227...`, and 2,571,096,
 `32b7b234...`); `check:baseline` moved to it. Data: none changed (`check:data`: 132 of 132 declarations identical to its reference,

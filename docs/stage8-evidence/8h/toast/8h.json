@@ -1,0 +1,438 @@
+{
+ "tool": "tools/stage8/toast-8h.js",
+ "build": "../../../tmp/claude-0/-home-user-Austerlitz/1ee4a9c8-902f-5b36-b09d-00231ca958cd/scratchpad/builds/final-st.html",
+ "md5": "9fa50cb46a085ab4ea8f932cd405f1e8",
+ "browser": "153.0.8010.12",
+ "cases": {
+  "1600x900-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 809,
+    "y": 55,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 714,
+    "y": 14,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": true,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "1600x900-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 659,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 1153,
+    "y": 811,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": true,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "1366x768-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 692,
+    "y": 55,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 597,
+    "y": 14,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": true,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "1366x768-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 542,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 919,
+    "y": 679,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": true,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "1280x720-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 649,
+    "y": 55,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 554,
+    "y": 14,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": true,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "1280x720-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 499,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 833,
+    "y": 631,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": true,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "1024x768-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 371,
+    "y": 55,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 426,
+    "y": 14,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "1024x768-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 371,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 683,
+    "y": 679,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "390x844-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 54,
+    "y": 62,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": false,
+   "switchBox": null,
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": true,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "390x844-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 54,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 8,
+    "y": 774,
+    "w": 167,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": true,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "360x800-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 39,
+    "y": 62,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": false,
+   "switchBox": null,
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": true,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "360x800-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 39,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 8,
+    "y": 730,
+    "w": 167,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": true,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "430x932-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 74,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": false,
+   "switchBox": null,
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": true,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "430x932-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 74,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 8,
+    "y": 862,
+    "w": 167,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": true,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "402x714-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 60,
+    "y": 62,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": false,
+   "switchBox": null,
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": true,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "402x714-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 60,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 8,
+    "y": 644,
+    "w": 167,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": true,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "844x390-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 281,
+    "y": 127,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 336,
+    "y": 14,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  },
+  "844x390-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 281,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "switchShown": true,
+   "switchBox": {
+    "x": 659,
+    "y": 301,
+    "w": 171,
+    "h": 34
+   },
+   "overlapSwitch": 0,
+   "overlapOthers": [],
+   "phone": false,
+   "docked": false,
+   "timerCleared": true,
+   "pageErrors": []
+  }
+ }
+}

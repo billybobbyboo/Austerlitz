@@ -516,8 +516,10 @@ block's pose held at a pause and the clock's at a seek (8F's finding: 60 of 60 p
 baselines were measured (decision 257 (b) kept at its counts on every run). The phase's message clear of every control at the nine sizes (0 px in
 18 cases); A-6 (a 2 px ring, read on a screenshot after real Tab presses; a main landmark; the heading levels). G-2 (one authority, 3,078,746
 numbers unchanged), P-3, P-4 and T-7. Decision 258 (b) measured (more formations drawn, but jumps over decision 257's ceiling: not adopted, question
-262) and decision 255 (d) prototyped (§20.9). The trees, the ice under a low sun and the troops' contact with the ground measured (§20.10). Device
-acceptance for 8E-8H pending: the builds, routes and protocol prepared (§20.12).
+262) and decision 255 (d) prototyped (a lighter plate for far names, at AA; not adopted, question 263). The crowns close up near the eye (the
+frame's half-pixel shimmer among them 10,616 to 7,663 pixels, the same triangles and calls); the ice under a low sun and the troops' contact with
+the ground measured against their rules and the original criterion, kept (questions 264, 265; §20.10). Device acceptance for 8E-8H pending: the
+builds, routes and protocol prepared (§20.12).
 
 **Still open in Stage 8** (none blocking the build): the owner's questions 259-263 (§20.14); the device runs; decision 245 (a)'s facings, to be
 reconsidered now that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
