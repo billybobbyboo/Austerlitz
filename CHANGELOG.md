@@ -157,7 +157,13 @@ moved to it; `check:data`'s reference `archive/stage8h-24e29da7.html` (two data 
     run only in drawn frames (8E's `gaitStep`, after the idle test); render on demand unchanged.
   - *P-4, the start's cost:* the start's phases timed once (`BOOTMS`: the renderer, the world, the formations, the interface, the state, init;
     `WORLDMS`: the land cover's and the relief's grids, the cover's multi-level grid, the ground, the water, the roads, the settlements, the
-    woods), and the first frame's time; measured over repeated loads by `tools/stage8/startup-8h.js` (section 20.7).
+    woods), and the first frame's time; measured over repeated loads by `tools/stage8/startup-8h.js` (section 20.7;
+    `docs/stage8-evidence/8h/startup-8h.json`: seven loads of each build interleaved on a fresh page, software WebGL, 1600 x 900, the machine
+    otherwise idle): the first frame 15.2 s on 8H's build (p95 15.9 s) and 14.9 s on 8G's (p95 19.0 s), the same within the loads' spread; init
+    4.88 s (it begins about 0.25 s after the page's start), of which the world 4.53 s (the ground's mesh, material and atlases 3.19 s; the
+    cover's multi-level grid 456 ms; the relief grid 71 ms cold, 52 ms warm on both builds, 2E's "+0.45 s"; the settlements 233 ms); the ten
+    seconds after init are the first frame's own work in software WebGL (its programs compiled and drawn), which only a device measures. Nothing
+    cut on software timings.
   - *T-7, wall-clock thresholds:* the self-test's pan budget (2 ms a move) is judged at the median of the run's moves, with the 95th percentile
     and the mean reported (it was the mean, which one move slowed by a busy machine could lift past the budget); the map layer's pass time was
     already the median of five passes (`measure.js`); the harness's 20 s waits are functional timeouts, not thresholds, and are kept.
