@@ -1,0 +1,6 @@
+# tools/stage8/near-8h.js --toggle --frames 60 on the final build (9fa50cb4...), Chromium 153.0.8010.12, here; two runs stopped part-way.
+# run 1 (05:43 UTC; 5 frames unmeasured first; stopped after two views):
+trees-eye {"pairs":60,"on":{"median":6230.6,"p95":6680.2},"off":{"median":6166.5,"p95":6637.1},"diffMedian":1.1,"diffP25":-6.4,"diffP75":89.1}
+woods-pheasantry {"pairs":60,"on":{"median":4182.3,"p95":4522},"off":{"median":4255.5,"p95":4556.3},"diffMedian":-0.3,"diffP25":-22.2,"diffP75":28.9}
+# run 2 (06:12 UTC; 12 frames unmeasured first, slow frames over 1 s counted; stopped after one view):
+trees-eye {"pairs":60,"on":{"median":6279.5,"p95":6668.4},"off":{"median":6294,"p95":6693.4},"diffMedian":-0.8,"diffP25":-81.9,"diffP75":43.5,"slowFrames":76}
