@@ -607,6 +607,10 @@ async function interact(page,it,vp){
         for(const sz of [[1600,900],[1366,768],[1280,720],[1024,768],[390,844],[360,800],[430,932],[402,714],[844,390]]) for(const pres of ["study","watch"]){
           await size(sz[0],sz[1]);
           await first.evaluate(p=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); if(typeof setMenu==="function") setMenu(false); setPresentation(p);
+            /* the message held for the read (as tools/stage8/toast-8h.js holds it): on a slow runner the frame the clock's change draws can take longer
+               than the message's 3.4 s, and its hiding timer then fired before the read (CI, 30 October 2026: "844x390 watch NOT SHOWN"); its place
+               is what this block judges, and the app's own flash() still places and shows it */
+            if(!window.__flash0){ const f0=flash; window.__flash0=f0; flash=function(m){ f0(m); clearTimeout(flash._t); }; }
             setClock(520,{instant:true,force:true,camera:false}); clearTimeout(flash._t); document.getElementById("toast").classList.remove("on"); document.getElementById("timerail").focus(); },pres);
           await first.keyboard.press("PageDown"); await first.waitForTimeout(150);
           TS.push(Object.assign({at:sz.join("x")+" "+pres},await first.evaluate(()=>{
@@ -620,7 +624,7 @@ async function interact(page,it,vp){
               switchShown:vs, overlapSwitch:vs?ov(a,v.getBoundingClientRect()):0, others:others};
             clearTimeout(flash._t); t.classList.remove("on"); return out; })));
         }
-        await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
+        await size(vp0.width,vp0.height); await first.evaluate(()=>{ if(window.__flash0){ flash=window.__flash0; delete window.__flash0; } setPresentation("study"); select(null,null); });
         LIVE.toast=TS; console.log("the phase's message: "+TS.map(c=>c.at+" "+(c.on?"shown":"NOT SHOWN")+" at "+c.box.join(",")+(c.overlapSwitch||c.others.length?" OVER "+c.overlapSwitch+" px of the switch, "+JSON.stringify(c.others):"")).join("; "));
       }
       /* Stage 8, implementation PR 8H (docs/FINAL_AUDIT.md A-6; docs/STAGE8_SPEC.md section 20.5): the focus ring as a keyboard user sees it. Play
