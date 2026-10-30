@@ -5109,19 +5109,31 @@ cases taken separately; geometry counts, not frame times):
 | build | the complete frame (the budget's): desktop calls, triangles | phone triangles | the still eye: desktop calls, triangles | phone triangles | its `check:visual` run |
 |---|---|---|---|---|---|
 | 8I (`697bbf34...`) | 864 (plans-overview), 2,352,049 (narrow-1024) | 1,398,127 (phone-390-first) | 862, 2,204,961 | 1,251,039 | 41048882622: all 39 cases, the self-test 317 of 317 and every live block passing (4 h 13 min) |
-| 8J (`7d5594ba...`) | pending | pending | pending | pending | 41071549726, running |
+| 8J (`7d5594ba...`) | 864 (plans-overview), 2,200,439 (narrow-1024) | 1,315,760 (phone-390-first) | 862, 2,053,351 | 1,168,672 | 41071549726: 38 of the 39 cases, the self-test 317 of 317 and every live block passing (the motion block with its re-measured baselines); one line failing, below (2 h 4 min) |
 | 8K (`f10fe585...`) | pending | pending | pending | pending | 41080693215, running |
 
 Section 8.3's budgets against the complete frame: 8I's desktop 36 calls (4%) and 447,951 triangles (16%) within 900 and 2.8 million, its phone
 221,873 triangles (13.7%) within 1.62 million; the same as 8H's to the triangle (section 21.4), as a change to the page's text and timers alone
-should be (`docs/stage8-evidence/8k/census/census-8i.json`, `.md`). The rows still pending are filled from their builds' own runs as they
+should be (`docs/stage8-evidence/8k/census/census-8i.json`, `.md`). 8J's desktop 36 calls (4%) and 599,561 triangles (21.4%) within the
+budget, its phone 304,240 (18.8%): 151,610 triangles fewer than 8I's on the desktop and 82,367 on the phone, the pheasantry's 46 trees for
+190 and the park's 170 no longer drawn (`census-8j.json`, `.md`).
+
+*8J's one failing line* (judged again by `check-report.js` with 8J's thresholds): `phone-844x390-explore`'s framing floor (decision 232
+(a)), 9 of the map layer's 11 items inside the free rectangle against the floor of 10, 8I's build standing at the floor. The case replayed as
+the harness reaches it (a phone held landscape, Explore, 09:30): every item drawn a pixel up and left of where 8I draws it, and the Guard
+Cavalry's name, its first place 3 px from the Allied Headquarters' name, taking its next place, above the free rectangle; with the III Column
+put back at its 8I places the same, so the shift is the fitted view's over the corrected Goldbach's ground. 8K's build meets the floor again
+(10 of 12, its "To Rausnitz" marker now in the view). The floor is not moved: it holds on the stack's last build, and on 8J's alone it would be
+the owner's to move (as decisions 199 and 214 moved drop limits). The rows still pending are filled from their builds' own runs as they
 complete, never carried over.
 
 **CI on each pushed head** (as recorded when this section was written; completed when the runs complete): 8I (`9d7a966`): the push's and
 the pull request's runs passing (41048791108, 41048869905: the checks job, `check:contrast`, `check:selftest`), the dispatched run passing
 whole (41048882622: the checks job, `check:contrast`, `check:selftest` and `check:visual`); 8J (`0ed98b9`): runs 41071486091, 41071525851 and
-41071549726, the checks job and `check:contrast` passing, `check:selftest` and `check:visual` running; 8K: the runs of its pull request, its
-self-test's motion block expected to fail on question 267's three lines alone.
+41071549726, the checks job, `check:contrast` and `check:selftest` passing on all three, the dispatched `check:visual` failing on the one line
+above; 8K (`5efb458`, then `58c6b3f` with these records): the checks job and `check:contrast` passing, `check:selftest` failing on question
+267's three lines alone (judged again here from the run's report: 317 of 317 in-app checks, the motion block's jumps 248, pops 998 and the
+paper map's zoom by real input; runs 41088292871, 41088300578), its dispatched `check:visual` (41080693215) running.
 
 **Device acceptance: pending.** No owner hardware was reachable from this session; nothing here substitutes emulation or software-WebGL timing
 for a device. The routes are live on GitHub Pages for `main`'s build, each checked from this session (the page loads, its build boots in
@@ -5137,7 +5149,8 @@ models. They decide section 8.3's budgets on hardware; the geometry counts above
 **Stability.** What is settled: every regression suite, `check:data`, `check:chronology` and `check:baseline` pass on each of the three
 builds; the self-test passes all 317 of its checks on each; 8I and 8J pass every live block; the geographic corrections of decisions 259 (a)
 and 260 (a) are in the data with their evidence, grades and registers, and every derived reading, chronology verdict and sight line they move
-is measured and recorded. What is not: 8K's motion block fails on three lines (question 267) until the owner decides; the census and the
+is measured and recorded. What is not: 8K's motion block fails on three lines (question 267) until the owner decides; 8J's `check:visual`, on its own build, fails
+one line (a phone framing floor, met again on 8K's build: above); the census and the
 `check:visual` runs of the three builds are pending on CI and are recorded here as they complete; the device runs are pending. The build is
 therefore stable for the final audits' reading of its data, records and code, with question 267 and the device acceptance named as the two
 open conditions; nothing in it is known to be broken but what this section names.
