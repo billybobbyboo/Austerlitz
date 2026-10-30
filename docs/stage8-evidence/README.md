@@ -237,3 +237,4 @@ comparison; 8H's commits' builds, each named by its md5 in its file. The scripts
 | `8h/stills-8h.json`, `8h/pairs/8h-<view>.jpg` | `stills-8h.js --before <8G> --after <final>` | section 20: the matched captures of what 8H changes on screen, and of views where it changes nothing |
 | `8h/mutate-8h-final.json` | `mutate-8h.js --only ...` on the final build (the planner's equivalent mutations reported as such; the crowns' check) | section 20.11 |
 | `8h/route-phone-local.json`, `route-fx-local.json`, `route-desktop-local.json` | `tools/step6/perf-local.js` (the phone route, the effects bracket, the desktop route) on the final build, software WebGL | section 20.12: the device routes run end to end here (their times decide nothing) |
+| `8h/census-ci.json`, `8h/census-ci.md` | `census-8g.js --before <8G's report> --after <8H's report>` (CI's `check:visual` reports, runs 40870570661 and 40995113422) | section 20.12: one frame by pass in every case, 8G's build and 8H's |
