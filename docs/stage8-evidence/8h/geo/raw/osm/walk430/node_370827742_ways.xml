@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2964028 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="32929762" visible="true" version="11" changeset="178666218" timestamp="2026-02-17T08:56:34Z" user="JBS21" uid="13953005">
+  <nd ref="370827736"/>
+  <nd ref="8009209916"/>
+  <nd ref="8009209915"/>
+  <nd ref="8009209912"/>
+  <nd ref="8009209911"/>
+  <nd ref="8009209910"/>
+  <nd ref="8009209914"/>
+  <nd ref="8009209909"/>
+  <nd ref="8009209908"/>
+  <nd ref="8009209913"/>
+  <nd ref="8009209907"/>
+  <nd ref="370827742"/>
+  <tag k="destination" v="Vyškov;Rousínov"/>
+  <tag k="destination:ref" v="430"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="noname" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="484402140" visible="true" version="6" changeset="154339868" timestamp="2024-07-24T09:18:45Z" user="JBS21" uid="13953005">
+  <nd ref="370827742"/>
+  <nd ref="28230680"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="3"/>
+  <tag k="lanes:forward" v="2"/>
+  <tag k="maxspeed:backward" v="90"/>
+  <tag k="maxspeed:forward" v="70"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="turn:lanes:forward" v="left|through"/>
+ </way>
+ <way id="484402142" visible="true" version="8" changeset="171930023" timestamp="2025-09-14T17:40:23Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="4771527682"/>
+  <nd ref="13142999516"/>
+  <nd ref="370827742"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="4"/>
+  <tag k="lanes:forward" v="2"/>
+  <tag k="maxspeed:backward" v="90"/>
+  <tag k="maxspeed:forward" v="70"/>
+  <tag k="placement:forward" v="middle_of:1"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="turn:lanes:backward" v="through|merge_to_left"/>
+  <tag k="turn:lanes:forward" v="left|through"/>
+ </way>
+</osm>

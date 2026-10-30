@@ -478,7 +478,7 @@ merging, as for 8D. **For the owner** (§17.16): the drivers' boundary on
 the guns on the heights (drawn as an inference, or none anywhere); the gunners beside moving pieces (Gassendi has them; not drawn); facings,
 to be reconsidered now that the troops can be judged (decision 245 (a)).
 
-**Implementation PR 8F** (28 October 2026; `docs/STAGE8_SPEC.md` §18; draft PR #71 into `main`, for review): first, in commits of their own,
+**Implementation PR 8F** (28 October 2026; `docs/STAGE8_SPEC.md` §18; merged into `main` by the owner, #71, `51d4a15`): first, in commits of their own,
 the audit of 8E's two findings: a paused clock now holds the gait drawn (8E eased it back into its stride with the clock standing) and a seek
 shows the clock's own pose at once (`5f59c10`); the feet on the ground judged each instance against itself (`0c4ce62`, `3a074c5`): the simple
 kit's own soles planted and the chords anchored at the man's middle, at no cost (the men's poses beyond 0.03 units at 4x 263 to 36 on the
@@ -496,10 +496,34 @@ session). **For the owner** (§18.10): the feet's remaining cases against the pr
 turning after a pause (the formation model's, found on the way); 2F's atlas sampled flipped, so eight cover cells wear another row's grain
 (found on the way); the woods' shimmer and facets close to the eye; the low sun's glare on the clear ice.
 
-**Still to come in Stage 8** (none begun in 8F): **8G**, the buildings (decision 248 (a): the evidence step first, the villages around the
-cadastral street-and-yard pattern, the landmarks after research and a documented data task); **8H**, the integration (the device runs after, the effects-off bracket, the open polish findings and the phase's message clear of the view switch); and the two
-follow-ups commissioned with 8D (above), decision 258 (b)'s counter placement while the view moves and decision 255 (d)'s far-label prototype.
-Decision 245 (a)'s facings are still to be reconsidered now that the troops can be judged.
+**Implementation PR 8G** (29 October 2026; `docs/STAGE8_SPEC.md` §19, written in 8H; merged into `main` by the owner, #72, `636cc5d`):
+decision 248 (a). Its prerequisites first, each in a commit of its own: a block at rest drawn the same in every frame (`1c427d1`); the ground's
+atlas mapped as painted, 8F's finding (`f24d944`: eight of the twelve cover cells had worn another row's grain); the near detail's gradients
+taken before its fade's branch (`bf97e9e`). Then the data task (`7e989a1`: the texts and the stable cadastre's sketches of 1825-1826 read on
+their page images, 76 readings, a second reader's check of 32 claims; `BUILDINGS` and `CHAPELS` added, `CHURCHES` and `APPEARANCE_SOURCES`
+changed) and the buildings (`dddd4e4`): the villages laid out on the sketches' street-and-yard pattern (an inference for 1805), 177 farmsteads,
+the roofs a design convention, the churches standing in 1805 by their villages, the Sokolnitz castle and its farm, the Austerlitz château,
+Telnitz's churchyard wall, fences; the dossiers and the sources sheet naming the claims; the frame +9 draw calls and +31,740 triangles on every
+desktop landscape view (+1.5% to +1.8%). The geographic corrections its research proposed were identified, not made.
+
+**Implementation PR 8H** (30 October 2026; `docs/STAGE8_SPEC.md` §20; built on `claude/sharp-faraday-g2uy8o` from `main` at `636cc5d`, a draft
+pull request for review, not merged): the final integration, polish and verification pass. 8G's missing records written (§19; the evidence index
+saying what is original, what was added from CI's runs and what is reconstructed). The buildings' acceptance: the château held to an octant of
+its bearing (drawn at 255 degrees, 19 off; 8G's quarter-turn had admitted 86.5), the dossiers' farmsteads counted as drawn; Satschan's five of
+seven put to the owner. The geographic review made again from fresh fetches (8G's Table A reproduced; the 1825-52 maps read; the frame sound) and
+a correction proposal with its consequences traced, nothing changed (questions 259, 260). S-7's two timing seams fixed and its third explained; a
+block's pose held at a pause and the clock's at a seek (8F's finding: 60 of 60 paused frames had moved); the motion block's Play runs set up as its
+baselines were measured (decision 257 (b) kept at its counts on every run). The phase's message clear of every control at the nine sizes (0 px in
+18 cases); A-6 (a 2 px ring, read on a screenshot after real Tab presses; a main landmark; the heading levels). G-2 (one authority, 3,078,746
+numbers unchanged), P-3, P-4 and T-7. Decision 258 (b) measured (more formations drawn, but jumps over decision 257's ceiling: not adopted, question
+262) and decision 255 (d) prototyped (a lighter plate for far names, at AA; not adopted, question 263). The crowns close up near the eye (the
+frame's half-pixel shimmer among them 10,616 to 7,663 pixels, the same triangles and calls); the ice under a low sun and the troops' contact with
+the ground measured against their rules and the original criterion, kept (questions 264, 265; §20.10). Device acceptance for 8E-8H pending: the
+builds, routes and protocol prepared (§20.12).
+
+**Still open in Stage 8** (none blocking the build): the owner's questions 259-265 (§20.14); the device runs for 8E-8H (§20.12); decision 245 (a)'s facings, to be
+reconsidered now that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
+`BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary).
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**

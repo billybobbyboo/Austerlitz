@@ -1,5 +1,12 @@
 # Landmarks of the Austerlitz battlefield: modern positions in the map's frame
 
+> **Note added in implementation PR 8H (30 October 2026).** The companion files this note names (`places.json`, `raw/`, the figures
+> `fig_sokolnice_mapframe.svg` and `fig_highway_mapframe.svg`, the scripts) were not committed with it. They are replaced by a research made
+> again from fresh fetches, with every request's response kept and the scripts to re-run it: `docs/stage8-evidence/8h/geo/` (`README.md`,
+> `places.json`, `raw/`, `fig/`). It reproduces Table A below (all 28 modern positions to 0.1 m; 27 offsets to the metre and the degree, the 28th
+> 110.6 m, rounded 110 there); where it differs from this note (a few spreads, the village points' "within 0.5 map units", 0.62 at most, the gap
+> west of the Santon) it says so. The note itself is kept as 8G wrote it.
+
 Research note, 2026-10-28. Read-only with respect to the repository: `geo.js` (GEOREF) and the generated world module were only required, nothing under `the repository` was changed.
 Machine-readable companion: `places.json` (same folder). Raw query results: `raw/`. Working figures in the map frame: `fig_sokolnice_mapframe.svg`, `fig_highway_mapframe.svg`.
 

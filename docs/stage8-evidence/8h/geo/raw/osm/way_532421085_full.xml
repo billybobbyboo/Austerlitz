@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2983732 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="5166473282" visible="true" version="1" changeset="52912061" timestamp="2017-10-13T21:52:45Z" user="hanoj" uid="4788" lat="49.1140250" lon="16.7211880"/>
+ <node id="5166473283" visible="true" version="1" changeset="52912061" timestamp="2017-10-13T21:52:45Z" user="hanoj" uid="4788" lat="49.1140110" lon="16.7211980"/>
+ <node id="5166473284" visible="true" version="1" changeset="52912061" timestamp="2017-10-13T21:52:46Z" user="hanoj" uid="4788" lat="49.1140030" lon="16.7212290"/>
+ <node id="5166473285" visible="true" version="1" changeset="52912061" timestamp="2017-10-13T21:52:46Z" user="hanoj" uid="4788" lat="49.1140060" lon="16.7212500"/>
+ <node id="5166473286" visible="true" version="1" changeset="52912061" timestamp="2017-10-13T21:52:46Z" user="hanoj" uid="4788" lat="49.1140610" lon="16.7212880"/>
+ <node id="5166473287" visible="true" version="1" changeset="52912061" timestamp="2017-10-13T21:52:46Z" user="hanoj" uid="4788" lat="49.1140780" lon="16.7212250"/>
+ <way id="532421085" visible="true" version="6" changeset="185023909" timestamp="2026-07-03T07:33:30Z" user="Dvorný" uid="21967558">
+  <nd ref="5166473287"/>
+  <nd ref="5166473286"/>
+  <nd ref="5166473285"/>
+  <nd ref="5166473284"/>
+  <nd ref="5166473283"/>
+  <nd ref="5166473282"/>
+  <nd ref="5166473287"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="chapel"/>
+  <tag k="denomination" v="roman_catholic"/>
+  <tag k="description" v="Kaple Panny Marie v Sokolnicích"/>
+  <tag k="name" v="Kaple Panny Marie"/>
+  <tag k="ref:drobne_pamatky" v="59494"/>
+  <tag k="religion" v="christian"/>
+  <tag k="source" v="cuzk:km"/>
+  <tag k="wikidata" v="Q55792212"/>
+ </way>
+</osm>

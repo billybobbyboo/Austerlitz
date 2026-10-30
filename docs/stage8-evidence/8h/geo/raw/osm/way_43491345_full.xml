@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3004717 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="549089896" visible="true" version="3" changeset="46038522" timestamp="2017-02-13T07:35:11Z" user="jirislaby" uid="476713" lat="49.1883793" lon="16.7637014"/>
+ <node id="549089920" visible="true" version="3" changeset="46038522" timestamp="2017-02-13T07:35:11Z" user="jirislaby" uid="476713" lat="49.1884186" lon="16.7637559"/>
+ <node id="549089923" visible="true" version="3" changeset="46038522" timestamp="2017-02-13T07:35:11Z" user="jirislaby" uid="476713" lat="49.1883590" lon="16.7637359"/>
+ <node id="549089925" visible="true" version="3" changeset="46038522" timestamp="2017-02-13T07:35:11Z" user="jirislaby" uid="476713" lat="49.1883990" lon="16.7637899"/>
+ <node id="4682926148" visible="true" version="1" changeset="46038522" timestamp="2017-02-13T07:35:08Z" user="jirislaby" uid="476713" lat="49.1883742" lon="16.7637101"/>
+ <node id="4682926149" visible="true" version="1" changeset="46038522" timestamp="2017-02-13T07:35:08Z" user="jirislaby" uid="476713" lat="49.1883708" lon="16.7637064"/>
+ <node id="4682926150" visible="true" version="1" changeset="46038522" timestamp="2017-02-13T07:35:08Z" user="jirislaby" uid="476713" lat="49.1883666" lon="16.7637072"/>
+ <node id="4682926151" visible="true" version="1" changeset="46038522" timestamp="2017-02-13T07:35:08Z" user="jirislaby" uid="476713" lat="49.1883636" lon="16.7637113"/>
+ <node id="4682926152" visible="true" version="1" changeset="46038522" timestamp="2017-02-13T07:35:08Z" user="jirislaby" uid="476713" lat="49.1883620" lon="16.7637160"/>
+ <node id="4682926153" visible="true" version="1" changeset="46038522" timestamp="2017-02-13T07:35:08Z" user="jirislaby" uid="476713" lat="49.1883621" lon="16.7637227"/>
+ <node id="4682926154" visible="true" version="1" changeset="46038522" timestamp="2017-02-13T07:35:08Z" user="jirislaby" uid="476713" lat="49.1883645" lon="16.7637266"/>
+ <way id="43491345" visible="true" version="8" changeset="185023909" timestamp="2026-07-03T07:33:22Z" user="Dvorný" uid="21967558">
+  <nd ref="549089923"/>
+  <nd ref="4682926154"/>
+  <nd ref="4682926153"/>
+  <nd ref="4682926152"/>
+  <nd ref="4682926151"/>
+  <nd ref="4682926150"/>
+  <nd ref="4682926149"/>
+  <nd ref="4682926148"/>
+  <nd ref="549089896"/>
+  <nd ref="549089920"/>
+  <nd ref="549089925"/>
+  <nd ref="549089923"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="chapel"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="denomination" v="roman_catholic"/>
+  <tag k="description" v="Kaple Panny Marie Sněžné na vrchu Santon"/>
+  <tag k="name" v="Kaple Panny Marie Sněžné"/>
+  <tag k="ref:drobne_pamatky" v="30578"/>
+  <tag k="ref:ruian:building" v="46085165"/>
+  <tag k="religion" v="christian"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="tourism" v="attraction"/>
+  <tag k="wikidata" v="Q38150137"/>
+ </way>
+</osm>

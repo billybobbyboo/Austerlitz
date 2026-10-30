@@ -627,6 +627,16 @@ if(cerrs) process.exitCode=1;
   if(/transparent|alphaTest|alphaMap|opacity/.test(bwd)) ferr.push("the woods drawn with alpha (8F's crowns are opaque: nothing sorted)");
   if(!/var k=0\.78\+0\.44\*hash2\(Math\.round\(pa\[i\]\*13\+seed\),Math\.round\(pa\[i\+1\]\*7\+pa\[i\+2\]\*11\)\); pa\[i\]\*=k; pa\[i\+1\]\*=k\*0\.92; pa\[i\+2\]\*=k;/.test(ts)||!/new THREE\.IcosahedronGeometry\(1,2\)/.test(ts)) ferr.push("the shells are not 8E's crowns (the icosahedron, detail 2, and its jitter)");
   if(!/mergeParts\(\[T\(0\.6\),\{geo:cone,p:\[0,2\.3,0\],s:\[0\.95,3\.4,0\.95\]\},\{geo:cone,p:\[0,1\.35,0\],s:\[1\.25,1\.4,1\.25\]\}\]\),\s*mergeParts\(\[T\(0\.9\),\{geo:cone,p:\[0,3\.0,0\],s:\[0\.8,4\.2,0\.8\]\}\]\)/.test(tk)) ferr.push("the conifers are not 8E's");
+  /* Stage 8, 8H (docs/STAGE8_SPEC.md section 20.10): the crowns closing near the eye: TREE8H's values; each deciduous habit and the bush made
+     with its faces' centres (treeNearGeo, from the shells' first float) and drawn with the near hook (treeNear), which grows a face about its own
+     centre by mix(1, 1/shrink, the eye's nearness) and chains the atmosphere's uniforms; its one uniform shared, 1 as built */
+  if(!/^var TREE8H=\{near:5, far:16, U:\{uTreeNear:\{value:1\}\}\};/m.test(wsrc)) ferr.push("TREE8H's values changed (near 5, far 16; its uniform 1 as built)");
+  { const tn=wfn("treeNear"), tg=wfn("treeNearGeo");
+    if(!/treeNear\(im\.material,1\/TREE8F\.shrink\);/.test(bwd)||!/treeNear\(scrubMesh\.material,1\/TREE8F\.scrubShrink\);/.test(bwd)) ferr.push("a crown drawn without the near hook (treeNear)");
+    if((tk.match(/treeNearGeo\(treeGeo\(P\),P,a\)/g)||[]).length!==2) ferr.push("a crown made without its faces' centres (treeNearGeo)");
+    if(!/C\[i\+k\]=c; C\[i\+3\+k\]=c; C\[i\+6\+k\]=c;/.test(tg)) ferr.push("the faces' centres not each triangle's own");
+    if(!/atmoUniforms\(sh\)/.test(tn)||!/distance\(tnW\.xyz,cameraPosition\)/.test(tn)||!/transformed=aFC\+\(transformed-aFC\)\*mix\(1\.0,"\+glslF\(\+inv\.toFixed\(6\)\)\+",tnG\*uTreeNear\);/.test(tn)||!/customProgramCacheKey/.test(tn))
+      ferr.push("the near hook not growing a face about its own centre by the eye's nearness (or not chaining the atmosphere's uniforms, or without its own program key)"); }
   /* the near ground */
   if(!/^var GDETAIL=\{amount:0\.55, near:14, far:60, k:7\.3, rot:0\.61, lo:0\.62, hi:1\.38,/m.test(wsrc)) ferr.push("GDETAIL's values changed");
   const gd=wvar("GROUND_FRAG_DETAIL");
@@ -654,17 +664,27 @@ if(cerrs) process.exitCode=1;
 }
 /* Stage 8, 8G's verification (docs/STAGE8_SPEC.md section 19.1): a block at rest is drawn the same in every frame. Each of poseBlock's eased
    values (the shape, the tilt, the heading) takes its target exactly once it is within the threshold that stops asking for frames, instead of
-   easing on below it (by about 1e-9 a frame until 8G); a loose body's sway, ambient, eases on, but takes its swayed heading exactly within 1e-6 */
+   easing on below it (by about 1e-9 a frame until 8G); a loose body's sway eases on, but takes its swayed heading exactly within 1e-6.
+   Since 8H (section 20.4; the block wheeling on after a pause): the eases run only while the clock moves on under Play (adv); the clock
+   standing, the pose is held (the turn, the shape, the dip and the sway); a seek (GAIT.seek) or a block's first pose takes the clock's pose
+   at once (sk); a broken body's sway is no longer drift for render on demand (ambientNow) */
 {
   const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), rerr=[];
-  const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name==="poseBlock"), pb=n?src.slice(n.start,n.end):"";
-  if(!/if\(Math\.abs\(sh\[0\]-u\.sw\)>0\.002\|\|Math\.abs\(sh\[1\]-u\.sd\)>0\.002\)\{ settling=true; u\.sw \+= \(sh\[0\]-u\.sw\)\*rate; u\.sd \+= \(sh\[1\]-u\.sd\)\*rate; \}\s*else \{ u\.sw=sh\[0\]; u\.sd=sh\[1\]; \}/.test(pb)) rerr.push("the block's shape eases on below its threshold (it does not take its target exactly)");
-  if(!/if\(Math\.abs\(lowered-\(u\.tilt\|\|0\)\)>0\.002\)\{ settling=true; u\.tilt = \(u\.tilt\|\|0\) \+ \(lowered-\(u\.tilt\|\|0\)\)\*ease\(0\.05\); \}\s*else u\.tilt=lowered;/.test(pb)) rerr.push("the block's tilt eases on below its threshold");
+  const fnOf=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):""; };
+  const pb=fnOf("poseBlock");
+  if(!/if\(sk\)\{ u\.sw=sh\[0\]; u\.sd=sh\[1\]; \}\s*else if\(adv\)\{\s*if\(Math\.abs\(sh\[0\]-u\.sw\)>0\.002\|\|Math\.abs\(sh\[1\]-u\.sd\)>0\.002\)\{ settling=true; u\.sw \+= \(sh\[0\]-u\.sw\)\*rate; u\.sd \+= \(sh\[1\]-u\.sd\)\*rate; \}\s*else \{ u\.sw=sh\[0\]; u\.sd=sh\[1\]; \} \}/.test(pb)) rerr.push("the block's shape: not held with the clock standing, not the clock's at a seek, or easing on below its threshold");
+  if(!/if\(sk\) u\.tilt=lowered;\s*else if\(adv\)\{\s*if\(Math\.abs\(lowered-\(u\.tilt\|\|0\)\)>0\.002\)\{ settling=true; u\.tilt = \(u\.tilt\|\|0\) \+ \(lowered-\(u\.tilt\|\|0\)\)\*ease\(0\.05\); \}\s*else u\.tilt=lowered; \}/.test(pb)) rerr.push("the block's tilt: not held with the clock standing, not the clock's at a seek, or easing on below its threshold");
   if(!/if\(!LOOSE\[st\]&&Math\.abs\(d0\)<=0\.002\) rec\.yaw=want0\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want0\)\/\(Math\.PI\*2\)\);/.test(pb)||!/else if\(Math\.abs\(diff\)<1e-6\) rec\.yaw=want\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want\)\/\(Math\.PI\*2\)\);/.test(pb)) rerr.push("the block's heading eases on below its threshold");
   { const eased=(pb.match(/[\w.]+ \+=/g)||[]).map(t=>t.slice(0,-3)).sort().join(",");
     if(eased!=="rec.yaw,u.sd,u.sw,want") rerr.push("poseBlock eases values other than the shape and the heading ("+eased+"): each eased value takes its target exactly at rest"); }
+  /* 8H: the seek and the clock's advance read once, before any ease; the heading the clock's at a seek, held with the clock standing, before the sway */
+  if(!/var sk=rec\.pSeek!==GAIT\.seek\|\|rec\.yaw===undefined, adv=rec\.pClock!==clock;\s*rec\.pSeek=GAIT\.seek; rec\.pClock=clock;/.test(pb)) rerr.push("poseBlock does not read the seek (GAIT.seek) and the clock's advance once per pose");
+  { const iSk=pb.indexOf("if(sk){ rec.yaw="), iAdv=pb.indexOf("if(!adv) return;"), iSw=pb.indexOf("if(LOOSE[st]) want +="), iEase=pb.indexOf("rec.yaw += diff*ease(WHEEL[f.arm]");
+    if(!(iSk>0&&iAdv>iSk&&iSw>iAdv&&iEase>iSw)) rerr.push("the heading: not the clock's at a seek, then held with the clock standing, before the sway and the turn ease");
+    if(!/if\(sk\)\{ rec\.yaw=rec\.yaw===undefined\?want0:want0\+Math\.PI\*2\*Math\.round\(\(rec\.yaw-want0\)\/\(Math\.PI\*2\)\); return; \}/.test(pb)) rerr.push("a seek does not take the clock's heading at once, its turns kept"); }
+  if(/LOOSE\[/.test(fnOf("ambientNow"))) rerr.push("a broken body's sway still counted as drift (ambientNow): it is the pose's, held while the clock stands");
   rerr.forEach(e=>console.log("  ! "+e));
-  console.log("a block at rest (8G's verification): "+(rerr.length?rerr.length+" wrong":"its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames"));
+  console.log("a block at rest (8G's verification; 8H's pause): "+(rerr.length?rerr.length+" wrong":"its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames; eased only while the clock moves on under Play, held while it stands, the clock's at a seek"));
   if(rerr.length) process.exitCode=1;
 }
 /* Stage 8, implementation PR 8G's prerequisite 1 (the audit of 8F; docs/STAGE8_SPEC.md section 19.1): the ground's atlas mapped as painted. Both
@@ -706,12 +726,22 @@ if(cerrs) process.exitCode=1;
      !/side:\{w:\[1\.0,1\.12\], l:\[2\.3,2\.8\]\},/.test(V)||!/north:0\.85,/.test(V)||!/rear:\{d:\[0\.9,1\.05\], h:\[0\.82,0\.95\], share:0\.2\},/.test(V)||!/clear:\{road:0\.25, stream:0\.35, tree:0\.2\},/.test(V)||
      !/margin:0\.40,/.test(V)||!/mere:0\.25,/.test(V)||!/touch:0\.01,/.test(V)) gerr.push("VILL8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19)");
   if(!/pitch:\{thatch:1\.15, tile:0\.84\},/.test(Bv)||!/tile:0\.17,/.test(Bv)||!/castle:\{w:7\.6, d:5\.8, west:1\.35, east:2\.3, ns:1\.2, h:\[1\.15,2\.05\]\},/.test(Bv)||!/fence:\{len:0\.62, h:0\.3, inset:0\.3\},/.test(Bv)||
-     !/chateau:\{w:5\.6, d:1\.5, wing:\[1\.4,2\.6\], h:2\.0, near:10, bearing:236\}/.test(Bv))
-    gerr.push("BLD8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19)");
+     !/chateau:\{w:5\.6, d:1\.5, wing:\[1\.4,2\.6\], h:2\.0, near:10, bearing:236, tol:22\.5\}/.test(Bv))
+    gerr.push("BLD8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19; the château's tolerance, 22.5 degrees, with section 20.3)");
   if(!/var CHAPEL8G=0\.5;/.test(wsrc)) gerr.push("the chapel's size (CHAPEL8G) changed");
   if(!/var V8CANDS=24;/.test(wsrc)) gerr.push("the church's places tried for its village's plan (V8CANDS) changed");
   /* the claims read, not typed */
   const rear=wfn("v8Rear"), plan=wfn("planBuildings8g"), church=wfn("churchPlan8g");
+  /* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.3): the château within its tolerance of its bearing today (an octant, not 8G's
+     quarter-turn), its centre in the town's place, no drawn road or stream between it and its church; the town's church taking the least move,
+     among its every clear place within 5 units, that leaves the château such a place; the farmsteads' words counted from what is drawn */
+  { const cp=wfn("chateauPlan8g");
+    if(!/if\(dev>B\.tol\+1e-9\) continue;/.test(cp)||/>90\+1e-9/.test(cp)) gerr.push("the château not sought within BLD8G.chateau.tol of its bearing (8G's quarter-turn back?)");
+    if(!/if\(!v8Foot\(c\[0\],c\[1\]\)\) continue;/.test(cp)||!/if\(v8Between\(ch\.x,ch\.z,c\[0\],c\[1\],segs\)\) continue;/.test(cp)) gerr.push("the château's place not held in the town's place, or a drawn road or stream allowed between it and its church");
+    if(!/kind==="temple"\?0:V8CANDS/.test(wfn("churchPlan8g"))) gerr.push("the town's church not offered its every clear place within 5 units");
+    if(!/if\(!ct\.parts\.length\) continue;/.test(plan)) gerr.push("a place of the town's church taken that leaves its château none");
+    const bs=(acorn.parse(src,{ecmaVersion:2020}).body.find(q=>q.type==="FunctionDeclaration"&&q.id.name==="buildingsSection")||{}), bsrc=bs.start!=null?src.slice(bs.start,bs.end):"";
+    if(!/farmsteadsText\(P\)/.test(bsrc)||/each an L along its street: this map/.test(bsrc)) gerr.push("the dossier's farmsteads not counted as drawn (farmsteadsText): 'each an L' typed for every village"); }
   if(!/BUILDINGS\.villages/.test(rear)||!/c\.n/.test(rear)||!/c\.wall==="timber"/.test(rear)) gerr.push("the rear buildings' share and walls not read from BUILDINGS.villages");
   if(!/BUILDINGS\.fences/.test(plan)) gerr.push("the fences not drawn from BUILDINGS.fences");
   if(!/CHAPELS\.indexOf\(v\[0\]\)/.test(church)||!/CHURCHES\.indexOf\(v\[0\]\)/.test(church)) gerr.push("the churches and the chapel not drawn from CHURCHES and CHAPELS");

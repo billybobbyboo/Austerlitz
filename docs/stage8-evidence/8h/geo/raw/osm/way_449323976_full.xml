@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2976895 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="4462939155" visible="true" version="1" changeset="43150616" timestamp="2016-10-25T08:17:21Z" user="JandaM" uid="2169558" lat="49.1777245" lon="16.8121864"/>
+ <node id="4462939157" visible="true" version="1" changeset="43150616" timestamp="2016-10-25T08:17:21Z" user="JandaM" uid="2169558" lat="49.1777254" lon="16.8121953"/>
+ <node id="4462939173" visible="true" version="1" changeset="43150616" timestamp="2016-10-25T08:17:21Z" user="JandaM" uid="2169558" lat="49.1777457" lon="16.8121548"/>
+ <node id="4462939174" visible="true" version="1" changeset="43150616" timestamp="2016-10-25T08:17:21Z" user="JandaM" uid="2169558" lat="49.1777459" lon="16.8122239"/>
+ <node id="4462939176" visible="true" version="1" changeset="43150616" timestamp="2016-10-25T08:17:21Z" user="JandaM" uid="2169558" lat="49.1777511" lon="16.8121545"/>
+ <node id="4462939177" visible="true" version="1" changeset="43150616" timestamp="2016-10-25T08:17:21Z" user="JandaM" uid="2169558" lat="49.1777519" lon="16.8122251"/>
+ <node id="4462939198" visible="true" version="1" changeset="43150616" timestamp="2016-10-25T08:17:22Z" user="JandaM" uid="2169558" lat="49.1777716" lon="16.8121922"/>
+ <way id="449323976" visible="true" version="7" changeset="188551702" timestamp="2026-09-05T02:04:35Z" user="reperfect-it_bot" uid="24283398">
+  <nd ref="4462939173"/>
+  <nd ref="4462939176"/>
+  <nd ref="4462939198"/>
+  <nd ref="4462939177"/>
+  <nd ref="4462939174"/>
+  <nd ref="4462939157"/>
+  <nd ref="4462939155"/>
+  <nd ref="4462939173"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="chapel"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="check_date" v="2026-04-18"/>
+  <tag k="description" v="Kaple svatého Gottharda v Holubicích"/>
+  <tag k="name" v="Kaplička"/>
+  <tag k="ref:drobne_pamatky" v="52888"/>
+  <tag k="ref:ruian:building" v="45872252"/>
+  <tag k="religion" v="christian"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="wikidata" v="Q37281331"/>
+ </way>
+</osm>

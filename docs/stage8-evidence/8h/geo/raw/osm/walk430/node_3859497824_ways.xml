@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2945405 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="382732356" visible="true" version="10" changeset="153576231" timestamp="2024-07-05T08:04:29Z" user="JBS21" uid="13953005">
+  <nd ref="3859497829"/>
+  <nd ref="7733507037"/>
+  <nd ref="7733507039"/>
+  <nd ref="3859497824"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="destination" v="Brno"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="survey"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="4"/>
+ </way>
+ <way id="387315543" visible="true" version="11" changeset="153576231" timestamp="2024-07-05T08:04:27Z" user="JBS21" uid="13953005">
+  <nd ref="3859497824"/>
+  <nd ref="5951823831"/>
+  <nd ref="7733507038"/>
+  <nd ref="3859497825"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="4"/>
+ </way>
+ <way id="608425212" visible="true" version="6" changeset="151776692" timestamp="2024-05-24T15:38:16Z" user="PizzaChips" uid="19627237">
+  <nd ref="3859497824"/>
+  <nd ref="74262424"/>
+  <nd ref="74147804"/>
+  <nd ref="3859497821"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed:backward" v="50"/>
+  <tag k="maxspeed:forward" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:left" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

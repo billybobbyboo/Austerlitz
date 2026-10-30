@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2696428 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74170967" visible="true" version="5" changeset="153116112" timestamp="2024-06-24T14:46:50Z" user="Jakuje" uid="1641564" lat="49.2014666" lon="16.8763598">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="299694997" visible="true" version="4" changeset="110389527" timestamp="2021-08-28T17:50:51Z" user="Milancer" uid="1189910" lat="49.2024373" lon="16.8785381"/>
+ <node id="9647628917" visible="true" version="1" changeset="119411123" timestamp="2022-04-07T05:04:44Z" user="Cat_Ritha" uid="14385299" lat="49.2026054" lon="16.8789011"/>
+ <node id="11742250616" visible="true" version="1" changeset="148833017" timestamp="2024-03-18T20:04:38Z" user="KosutM" uid="14035254" lat="49.2025657" lon="16.8788160"/>
+ <node id="12006684356" visible="true" version="1" changeset="153116112" timestamp="2024-06-24T14:46:50Z" user="Jakuje" uid="1641564" lat="49.2018665" lon="16.8772620"/>
+ <way id="382011598" visible="true" version="16" changeset="177425333" timestamp="2026-01-19T12:33:45Z" user="JBS21" uid="13953005">
+  <nd ref="9647628917"/>
+  <nd ref="11742250616"/>
+  <nd ref="299694997"/>
+  <nd ref="12006684356"/>
+  <nd ref="74170967"/>
+  <tag k="cycleway" v="lane"/>
+  <tag k="cycleway:both" v="lane"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="both"/>
+  <tag k="sidewalk:both:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

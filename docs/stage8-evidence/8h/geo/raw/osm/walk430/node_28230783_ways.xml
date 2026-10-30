@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713538 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="532819679" visible="true" version="7" changeset="160762914" timestamp="2024-12-29T18:21:38Z" user="Pavel_Š" uid="21958359">
+  <nd ref="28230783"/>
+  <nd ref="12461346410"/>
+  <nd ref="3459717377"/>
+  <nd ref="362213710"/>
+  <nd ref="74312242"/>
+  <nd ref="8140083839"/>
+  <nd ref="74213660"/>
+  <nd ref="297537004"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="source:maxspeed" v="CZ:rural"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="866909206" visible="true" version="5" changeset="188001210" timestamp="2026-08-25T16:56:32Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="28230783"/>
+  <nd ref="14123175947"/>
+  <nd ref="14123175948"/>
+  <nd ref="28230794"/>
+  <nd ref="28230803"/>
+  <nd ref="14123175945"/>
+  <nd ref="14123175944"/>
+  <nd ref="14123175946"/>
+  <nd ref="3459717363"/>
+  <nd ref="14123175943"/>
+  <nd ref="28230814"/>
+  <nd ref="14123175941"/>
+  <nd ref="14123175939"/>
+  <nd ref="14123175940"/>
+  <nd ref="3459717362"/>
+  <nd ref="14123175937"/>
+  <nd ref="28230826"/>
+  <nd ref="14123175938"/>
+  <nd ref="3459717361"/>
+  <nd ref="14123175936"/>
+  <nd ref="14123175933"/>
+  <nd ref="14123175935"/>
+  <nd ref="3459717360"/>
+  <nd ref="14123175934"/>
+  <nd ref="14123175928"/>
+  <nd ref="28230842"/>
+  <nd ref="14123175926"/>
+  <nd ref="14123175927"/>
+  <nd ref="3459717359"/>
+  <nd ref="14123175924"/>
+  <nd ref="28230853"/>
+  <nd ref="14123175925"/>
+  <nd ref="3459717358"/>
+  <nd ref="3459717357"/>
+  <nd ref="14123175923"/>
+  <nd ref="28230868"/>
+  <nd ref="14123175914"/>
+  <nd ref="14123175918"/>
+  <nd ref="14123175915"/>
+  <nd ref="8080587315"/>
+  <tag k="highway" v="tertiary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="4161"/>
+  <tag k="source:maxspeed" v="CZ:rural"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1307018764" visible="true" version="1" changeset="155098158" timestamp="2024-08-11T11:41:26Z" user="Eith" uid="10304669">
+  <nd ref="308978667"/>
+  <nd ref="28230783"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="source:maxspeed" v="CZ:rural"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

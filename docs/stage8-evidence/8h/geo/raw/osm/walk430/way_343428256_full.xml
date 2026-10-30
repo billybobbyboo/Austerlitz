@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3001416 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74175906" visible="true" version="6" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826" lat="49.1994565" lon="16.8716435">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="565461873" visible="true" version="3" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826" lat="49.1978234" lon="16.8677293"/>
+ <node id="1246605696" visible="true" version="1" changeset="7876147" timestamp="2011-04-16T08:07:04Z" user="hopet" uid="191339" lat="49.1987001" lon="16.8698500"/>
+ <node id="1246605776" visible="true" version="1" changeset="7876147" timestamp="2011-04-16T08:07:08Z" user="hopet" uid="191339" lat="49.1981014" lon="16.8684178"/>
+ <node id="11742250997" visible="true" version="6" changeset="177371225" timestamp="2026-01-18T12:22:51Z" user="JBS21" uid="13953005" lat="49.1993894" lon="16.8714870">
+  <tag k="crossing:island" v="no"/>
+  <tag k="crossing:markings" v="yes"/>
+  <tag k="crossing:signals" v="no"/>
+  <tag k="highway" v="crossing"/>
+  <tag k="tactile_paving" v="yes"/>
+ </node>
+ <node id="13736054491" visible="true" version="1" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826" lat="49.1984129" lon="16.8691729"/>
+ <way id="343428256" visible="true" version="15" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="74175906"/>
+  <nd ref="11742250997"/>
+  <nd ref="1246605696"/>
+  <nd ref="13736054491"/>
+  <nd ref="1246605776"/>
+  <nd ref="565461873"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

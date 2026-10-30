@@ -1,0 +1,300 @@
+{
+ "chromium": "153.0.8010.12",
+ "set": "8h",
+ "before": {
+  "file": "8g.html",
+  "md5": "508927e6f72e1b6f2f9186e954d61b59"
+ },
+ "after": {
+  "file": "final.html",
+  "md5": "9fa50cb46a085ab4ea8f932cd405f1e8"
+ },
+ "views": {
+  "austerlitz-town": {
+   "before": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 30,
+    "linked": 30,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 11.745,
+    "meanDiff": 5.006
+   }
+  },
+  "austerlitz-church": {
+   "before": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 30,
+    "linked": 30,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 35.523,
+    "meanDiff": 13.885
+   }
+  },
+  "toast-1600-study": {
+   "before": {
+    "clock": "08:45",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:45",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 1.267,
+    "meanDiff": 1.306
+   }
+  },
+  "toast-1024-study": {
+   "before": {
+    "clock": "08:45",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:45",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 2.345,
+    "meanDiff": 2.459
+   }
+  },
+  "toast-phone": {
+   "before": {
+    "clock": "08:45",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true,
+    "going": false,
+    "programs": 30,
+    "linked": 30,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:45",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 5.419,
+    "meanDiff": 5.479
+   }
+  },
+  "trees-eye": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 11.573,
+    "meanDiff": 4.419
+   }
+  },
+  "tree-close": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 33,
+    "linked": 33,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 31.855,
+    "meanDiff": 12.865
+   }
+  },
+  "pratzen-low": {
+   "before": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0.037,
+    "meanDiff": 0.009
+   }
+  },
+  "overview-field": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0.05,
+    "meanDiff": 0.012
+   }
+  },
+  "close-sokolnitz": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0,
+    "meanDiff": 0
+   }
+  },
+  "paper": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 42,
+    "linked": 42,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0,
+    "meanDiff": 0
+   }
+  }
+ }
+}

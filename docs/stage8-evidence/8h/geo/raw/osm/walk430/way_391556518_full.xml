@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2700735 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74300097" visible="true" version="2" changeset="5575513" timestamp="2010-08-23T21:31:15Z" user="hanoj" uid="4788" lat="49.1831370" lon="16.6701603">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="3947832090" visible="true" version="2" changeset="144735184" timestamp="2023-12-03T23:07:42Z" user="MIGORMCZ" uid="10284764" lat="49.1832472" lon="16.6687429">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="3976790086" visible="true" version="1" changeset="36887488" timestamp="2016-01-29T20:44:52Z" user="puczmeloun" uid="588194" lat="49.1831770" lon="16.6696650"/>
+ <node id="6199691569" visible="true" version="1" changeset="66210853" timestamp="2019-01-10T22:38:20Z" user="itamas80" uid="1719518" lat="49.1832244" lon="16.6690907">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Černovičky"/>
+  <tag k="public_transport" v="stop_position"/>
+  <tag k="trolleybus" v="yes"/>
+ </node>
+ <way id="391556518" visible="true" version="9" changeset="141244412" timestamp="2023-09-14T07:59:22Z" user="JBS21" uid="13953005">
+  <nd ref="3947832090"/>
+  <nd ref="6199691569"/>
+  <nd ref="3976790086"/>
+  <nd ref="74300097"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="both"/>
+  <tag k="sidewalk:both:surface" v="asphalt"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="trolley_wire" v="yes"/>
+ </way>
+</osm>

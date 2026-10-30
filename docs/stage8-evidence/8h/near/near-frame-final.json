@@ -1,0 +1,37 @@
+{
+ "tool": "tools/stage8/near-8h.js",
+ "chromium": "153.0.8010.12",
+ "build": "final.html",
+ "views": {
+  "trees-eye": {
+   "off": {
+    "changed": 10616,
+    "of": 360000
+   },
+   "on": {
+    "changed": 7663,
+    "of": 360000
+   }
+  },
+  "woods-pheasantry": {
+   "off": {
+    "changed": 8094,
+    "of": 360000
+   },
+   "on": {
+    "changed": 8094,
+    "of": 360000
+   }
+  },
+  "close-sokolnitz": {
+   "off": {
+    "changed": 7084,
+    "of": 360000
+   },
+   "on": {
+    "changed": 7084,
+    "of": 360000
+   }
+  }
+ }
+}

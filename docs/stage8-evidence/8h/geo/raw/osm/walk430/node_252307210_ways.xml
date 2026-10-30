@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2964028 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="378268315" visible="true" version="9" changeset="178441550" timestamp="2026-02-12T08:16:33Z" user="JBS21" uid="13953005">
+  <nd ref="252307210"/>
+  <nd ref="8140073115"/>
+  <nd ref="8140073116"/>
+  <nd ref="8140083817"/>
+  <nd ref="8140083821"/>
+  <nd ref="8140083818"/>
+  <nd ref="8140083819"/>
+  <nd ref="8140083820"/>
+  <nd ref="8140083822"/>
+  <nd ref="8140083825"/>
+  <nd ref="8140083823"/>
+  <nd ref="8140083826"/>
+  <nd ref="8140083824"/>
+  <nd ref="74224451"/>
+  <nd ref="1246601552"/>
+  <nd ref="8140083827"/>
+  <nd ref="8140083828"/>
+  <nd ref="252307212"/>
+  <nd ref="74117358"/>
+  <nd ref="8140083829"/>
+  <nd ref="252307215"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="608421014" visible="true" version="7" changeset="177468549" timestamp="2026-01-20T10:25:36Z" user="JBS21" uid="13953005">
+  <nd ref="252307206"/>
+  <nd ref="252307210"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxheight" v="4.6"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="874420674" visible="true" version="4" changeset="177468549" timestamp="2026-01-20T10:25:22Z" user="JBS21" uid="13953005">
+  <nd ref="8140073113"/>
+  <nd ref="8140073090"/>
+  <nd ref="8140073089"/>
+  <nd ref="8140073086"/>
+  <nd ref="8140073085"/>
+  <nd ref="8140073084"/>
+  <nd ref="8140073088"/>
+  <nd ref="8140073083"/>
+  <nd ref="8140073082"/>
+  <nd ref="8140073087"/>
+  <nd ref="8140073081"/>
+  <nd ref="252307210"/>
+  <nd ref="252307206"/>
+  <nd ref="8140073103"/>
+  <nd ref="8140073104"/>
+  <nd ref="8140073105"/>
+  <nd ref="8140073109"/>
+  <nd ref="8140073106"/>
+  <nd ref="8140073107"/>
+  <nd ref="8140073108"/>
+  <nd ref="8140073110"/>
+  <nd ref="8140073113"/>
+  <tag k="area" v="yes"/>
+  <tag k="highway" v="service"/>
+  <tag k="lit" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="874420675" visible="true" version="4" changeset="177468549" timestamp="2026-01-20T10:25:25Z" user="JBS21" uid="13953005">
+  <nd ref="8140083825"/>
+  <nd ref="8140073102"/>
+  <nd ref="8140073099"/>
+  <nd ref="8140073098"/>
+  <nd ref="8140073097"/>
+  <nd ref="8140073096"/>
+  <nd ref="8140073101"/>
+  <nd ref="8140073095"/>
+  <nd ref="8140073094"/>
+  <nd ref="8140073093"/>
+  <nd ref="8140073100"/>
+  <nd ref="8140073092"/>
+  <nd ref="8140073091"/>
+  <nd ref="252307206"/>
+  <nd ref="252307210"/>
+  <nd ref="8140073115"/>
+  <nd ref="8140073116"/>
+  <nd ref="8140083817"/>
+  <nd ref="8140083821"/>
+  <nd ref="8140083818"/>
+  <nd ref="8140083819"/>
+  <nd ref="8140083820"/>
+  <nd ref="8140083822"/>
+  <nd ref="8140083825"/>
+  <tag k="area" v="yes"/>
+  <tag k="highway" v="service"/>
+  <tag k="lit" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

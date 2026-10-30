@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2662872 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="708929228" visible="true" version="6" changeset="148456005" timestamp="2024-03-10T10:55:22Z" user="d4d3" uid="20988814">
+  <nd ref="6661379292"/>
+  <nd ref="9872044306"/>
+  <nd ref="9872044307"/>
+  <nd ref="9872044308"/>
+  <nd ref="9872044295"/>
+  <nd ref="6459206128"/>
+  <tag k="highway" v="unclassified"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="noname" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1331122468" visible="true" version="1" changeset="158794350" timestamp="2024-11-05T20:43:25Z" user="adamos" uid="25867">
+  <nd ref="6459206131"/>
+  <nd ref="6459206130"/>
+  <nd ref="6459206129"/>
+  <nd ref="6459206128"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1331122469" visible="true" version="1" changeset="158794350" timestamp="2024-11-05T20:43:25Z" user="adamos" uid="25867">
+  <nd ref="6459206128"/>
+  <nd ref="6459206126"/>
+  <nd ref="9872044297"/>
+  <nd ref="6459206125"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

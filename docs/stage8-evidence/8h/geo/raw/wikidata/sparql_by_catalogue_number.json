@@ -1,0 +1,331 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "kat", "coord" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000152934"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1418278"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87455556 49.15472222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "zámek Slavkov u Brna"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000140666"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12030376"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7266 49.1696)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kostel Nanebevzetí Panny Marie"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000134522"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12030519"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7643 49.1378)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kostel Povýšení svatého Kříže"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000138600"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12030543"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8765 49.1556)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kostel Vzkříšení Páně ve Slavkově u Brna"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000148882"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12030791"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7182 49.1021)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kostel svatého Jana Křtitele"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000138297"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12030943"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7758 49.1903)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kostel svatého Mikuláše"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000130835"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12030989"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7565 49.1045)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kostel svatého Petra a Pavla"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000120787"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12055280"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7262 49.1192)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "zámek Sokolnice"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000144472"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27971669"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.828733611 49.140989444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kostel svatého Vavřince"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000119615"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31145378"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7584425 49.1670842)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "panský dvůr"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000121971"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31149564"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.88284 49.20383)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Stará pošta Rousínov"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000133864"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37281331"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8122087 49.1777691)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kaple svatého Gottharda"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000124062"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37322595"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7581292 49.1679256)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "zvonice"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000135245"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37423595"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7317861 49.1396417)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kaple - zvonice"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000153004"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38134887"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7243419 49.1180239)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Sýpka"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000151014"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38150137"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7637639 49.1884149)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kaple Panny Marie Sněžné"
+      }
+    }, {
+      "kat" : {
+        "type" : "literal",
+        "value" : "1000141624"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38234573"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.7568461 49.1089717)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kaple sv. Antonína Paduánského"
+      }
+    } ]
+  }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713354 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="308975815" visible="true" version="5" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822698" lon="16.6921765"/>
+ <node id="1432459889" visible="true" version="1" changeset="9296698" timestamp="2011-09-14T07:30:23Z" user="Jose Riha" uid="29762" lat="49.1823076" lon="16.6944198">
+  <tag k="name" v="Brno"/>
+  <tag k="traffic_sign" v="city_limit"/>
+ </node>
+ <node id="4588678225" visible="true" version="3" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822893" lon="16.6934517"/>
+ <node id="5762087816" visible="true" version="1" changeset="60736666" timestamp="2018-07-15T17:28:49Z" user="mahdi1234" uid="8244053" lat="49.1823119" lon="16.6946615"/>
+ <node id="10765836518" visible="true" version="2" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822754" lon="16.6925810"/>
+ <node id="12048133264" visible="true" version="1" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822688" lon="16.6922993"/>
+ <node id="12048133267" visible="true" version="2" changeset="160336116" timestamp="2024-12-18T07:10:52Z" user="mtrutman" uid="520014" lat="49.1822820" lon="16.6929969"/>
+ <node id="12048133395" visible="true" version="2" changeset="153831297" timestamp="2024-07-11T22:07:46Z" user="mtrutman" uid="520014" lat="49.1822759" lon="16.6926114"/>
+ <way id="608123184" visible="true" version="10" changeset="162428649" timestamp="2025-02-12T12:50:10Z" user="JBS21" uid="13953005">
+  <nd ref="5762087816"/>
+  <nd ref="1432459889"/>
+  <nd ref="4588678225"/>
+  <nd ref="12048133267"/>
+  <nd ref="12048133395"/>
+  <nd ref="10765836518"/>
+  <nd ref="12048133264"/>
+  <nd ref="308975815"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:left" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

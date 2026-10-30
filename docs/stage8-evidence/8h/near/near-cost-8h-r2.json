@@ -1,0 +1,96 @@
+{
+ "tool": "tools/stage8/near-8h.js --cost",
+ "chromium": "153.0.8010.12",
+ "builds": [
+  {
+   "tag": "pre",
+   "file": "cur.html",
+   "md5": "e8fed44b0884e48a277c68ef2f39598a"
+  },
+  {
+   "tag": "8h",
+   "file": "final.html",
+   "md5": "9fa50cb46a085ab4ea8f932cd405f1e8"
+  }
+ ],
+ "views": {
+  "trees-eye": {
+   "pre": [
+    {
+     "median": 11.1,
+     "p95": 14.7,
+     "frames": 25
+    },
+    {
+     "median": 12.8,
+     "p95": 15.5,
+     "frames": 25
+    }
+   ],
+   "8h": [
+    {
+     "median": 14.9,
+     "p95": 23.2,
+     "frames": 25
+    },
+    {
+     "median": 13.9,
+     "p95": 33.7,
+     "frames": 25
+    }
+   ]
+  },
+  "woods-pheasantry": {
+   "pre": [
+    {
+     "median": 11.8,
+     "p95": 22.8,
+     "frames": 25
+    },
+    {
+     "median": 11.2,
+     "p95": 18.3,
+     "frames": 25
+    }
+   ],
+   "8h": [
+    {
+     "median": 12.9,
+     "p95": 15.4,
+     "frames": 25
+    },
+    {
+     "median": 9.6,
+     "p95": 13.3,
+     "frames": 25
+    }
+   ]
+  },
+  "close-sokolnitz": {
+   "pre": [
+    {
+     "median": 14.8,
+     "p95": 25.6,
+     "frames": 25
+    },
+    {
+     "median": 13.8,
+     "p95": 18.1,
+     "frames": 25
+    }
+   ],
+   "8h": [
+    {
+     "median": 12.1,
+     "p95": 23.3,
+     "frames": 25
+    },
+    {
+     "median": 13.4,
+     "p95": 20.2,
+     "frames": 25
+    }
+   ]
+  }
+ }
+}

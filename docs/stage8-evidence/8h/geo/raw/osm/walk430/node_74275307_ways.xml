@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2926430 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="704559402" visible="true" version="11" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="12795881614"/>
+  <nd ref="11742250603"/>
+  <nd ref="13736054488"/>
+  <nd ref="74275307"/>
+  <tag k="cycleway:left" v="separate"/>
+  <tag k="cycleway:right" v="lane"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1382099766" visible="true" version="3" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="74275307"/>
+  <nd ref="13736054487"/>
+  <nd ref="11742250596"/>
+  <nd ref="1246581691"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

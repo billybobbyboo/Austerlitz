@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2758497 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="4539173" visible="true" version="14" changeset="154339868" timestamp="2024-07-24T09:17:04Z" user="JBS21" uid="13953005">
+  <nd ref="28230680"/>
+  <nd ref="370827713"/>
+  <tag k="destination:backward" v="Vyškov"/>
+  <tag k="destination:forward" v="Brno"/>
+  <tag k="destination:ref:forward" v="430"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="maxspeed" v="70"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source:maxspeed" v="sign"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="32929753" visible="true" version="14" changeset="178666218" timestamp="2026-02-17T08:56:31Z" user="JBS21" uid="13953005">
+  <nd ref="28230680"/>
+  <nd ref="13142999507"/>
+  <nd ref="8009209903"/>
+  <nd ref="13142999506"/>
+  <nd ref="8009209900"/>
+  <nd ref="13142999505"/>
+  <nd ref="13142999504"/>
+  <nd ref="8009209898"/>
+  <nd ref="13142999503"/>
+  <nd ref="8009209901"/>
+  <nd ref="13142999502"/>
+  <nd ref="8009209897"/>
+  <nd ref="13142999508"/>
+  <nd ref="370827719"/>
+  <tag k="destination" v="Uherské Hradiště;Slavkov u Brna;Zlín"/>
+  <tag k="destination:ref" v="50"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="noname" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="422874477" visible="true" version="17" changeset="178666218" timestamp="2026-02-17T08:56:36Z" user="JBS21" uid="13953005">
+  <nd ref="370827736"/>
+  <nd ref="13142972299"/>
+  <nd ref="13142972300"/>
+  <nd ref="13142972297"/>
+  <nd ref="13142999501"/>
+  <nd ref="13142972298"/>
+  <nd ref="28230659"/>
+  <nd ref="28230669"/>
+  <nd ref="28230680"/>
+  <tag k="destination" v="Brno"/>
+  <tag k="destination:ref" v="430"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="noname" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="turn" v="left"/>
+ </way>
+ <way id="484402140" visible="true" version="6" changeset="154339868" timestamp="2024-07-24T09:18:45Z" user="JBS21" uid="13953005">
+  <nd ref="370827742"/>
+  <nd ref="28230680"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="3"/>
+  <tag k="lanes:forward" v="2"/>
+  <tag k="maxspeed:backward" v="90"/>
+  <tag k="maxspeed:forward" v="70"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="turn:lanes:forward" v="left|through"/>
+ </way>
+</osm>

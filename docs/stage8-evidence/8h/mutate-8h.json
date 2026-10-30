@@ -1,0 +1,195 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "e8fed44b0884e48a277c68ef2f39598a",
+ "chromium": "153.0.8010.12",
+ "mutations": [
+  {
+   "id": "none8g",
+   "block": "8g",
+   "what": "nothing (the build as it is)",
+   "ok": true,
+   "selfTest": {
+    "checks": 8,
+    "failed": [],
+    "ms": 823
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "noocant",
+   "block": "8g",
+   "what": "the château's octant not sought (the planner takes the nearest clear place whatever its bearing, as 8G's quarter-turn let it)",
+   "ok": true,
+   "selfTest": {
+    "checks": 8,
+    "failed": [
+     "the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhe | 10 churches and chapels (9 in CHURCHES, 1 in CHAPELS); 6 columns; the castle 4 ranges and its farm 3; the château 41 degrees from its church (today 236); 5 runs of churchyard wall; fences at Sokolnitz 143, Telnitz 95; WRONG: the château 41 degrees from its church, not within 22.5 degrees of its bearing today (236)"
+    ],
+    "ms": 1283
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "noplace",
+   "block": "8g",
+   "what": "the château's centre not held in the town's place",
+   "ok": false,
+   "selfTest": {
+    "checks": 8,
+    "failed": [],
+    "ms": 3386
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "nobetween",
+   "block": "8g",
+   "what": "a drawn road or stream allowed between the château and its church",
+   "ok": false,
+   "selfTest": {
+    "checks": 8,
+    "failed": [],
+    "ms": 1355
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "eachL",
+   "block": "8g",
+   "what": "the dossiers saying \"each an L\" of every village (8G's words)",
+   "ok": true,
+   "selfTest": {
+    "checks": 8,
+    "failed": [
+     "the dossiers (8G): each village's and the town's dossier names the claims its buildings rest on, with their gr | 10 village and town dossiers, each with its farmsteads, its church or chapel or why none, its roofs; the sources sheet 10 churches' and chapels' claims and 1 village drawn short; WRONG: Telnitz: \"each an L\" with 5 of its 12 farmsteads a long range alone; Telnitz: not \"12 drawn along its streets: 7 an L\"; Telnitz: not \"5 a long range alone\"; Sokolnitz: \"each an L\" with 2 of its 13 farmsteads a long range alone; Sokolnitz: not \"13 drawn along its streets: 11 an L\"; Sokolnitz: not \"2 a long range alone\""
+    ],
+    "ms": 1512
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "none8e",
+   "block": "8e",
+   "what": "nothing (the build as it is)",
+   "ok": true,
+   "selfTest": {
+    "checks": 12,
+    "failed": [],
+    "ms": 497911
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "poseease",
+   "block": "8e",
+   "what": "a block's heading eased on with the clock standing (8G's real-time ease)",
+   "ok": true,
+   "selfTest": {
+    "checks": 12,
+    "failed": [
+     "the blocks' pose at a pause (8H): Play at 4x and Pause by their buttons through the app's own loop with a bloc | paused at 08:45 with vandamme 1.181 rad from its heading: 31 blocks held for 30 frames (30 moved); sought to 08:55: 31 blocks at their own heading in the first frame, the same pose from 23 minutes before; resumed mid-turn: vandamme from 0.868 rad held to 0.783 in the first frame; WRONG: paused at 08:45, the blocks' pose moved in 30 of 30 frames (by up to 2.6094); vandamme: paused mid-turn, it turned on (1.1808 to 0.8680 rad)"
+    ],
+    "ms": 755326
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "poseshape",
+   "block": "8e",
+   "what": "a block's shape eased on with the clock standing",
+   "ok": true,
+   "selfTest": {
+    "checks": 12,
+    "failed": [
+     "the blocks' pose at a pause (8H): Play at 4x and Pause by their buttons through the app's own loop with a bloc | paused at 08:45 with vandamme 1.181 rad from its heading: 31 blocks held for 30 frames (30 moved); sought to 08:55: 31 blocks at their own heading in the first frame, the same pose from 23 minutes before; resumed mid-turn: vandamme from 1.181 rad held to 1.066 in the first frame; WRONG: paused at 08:45, the blocks' pose moved in 30 of 30 frames (by up to 1.4834)"
+    ],
+    "ms": 704361
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "noseek",
+   "block": "8e",
+   "what": "a seek not showing the clock's pose at once (the heading eased from where it stood)",
+   "ok": true,
+   "selfTest": {
+    "checks": 12,
+    "failed": [
+     "the gait (decision 244 (a)): a function of the clock: at four clocks with formations marching, every kit mesh' | 09:05: 253 kit meshes, 7 formations marching; 10:40: 253 kit meshes, 13 formations marching; 13:50: 265 kit meshes, 8 formations marching; 15:05: 265 kit meshes, 2 formations marching; the slopes ahead at most 0.3979 apart between paths (within 0.02); Play at half speed for 24 steps and four slow ones: 864 seatings, 196 of animated formations, 128 of them taking the slopes (5 blocks left behind at the last step); paused: 59 meshes' slopes exactly the clock's; WRONG: 09:05 reached from another clock: sthilaire#0 instance 0's slope ahead: 0.0520436093211174 against 0.07565265893936157; sthilaire",
+     "the blocks' pose at a pause (8H): Play at 4x and Pause by their buttons through the app's own loop with a bloc | paused at 08:41 with vandamme 0.619 rad from its heading: 31 blocks held for 30 frames (0 moved); sought to 08:51: 31 blocks at their own heading in the first frame, the same pose from 23 minutes before; resumed mid-turn: vandamme from 0.370 rad held to 0.334 in the first frame; WRONG: sought, ahq 1.5223 rad from its heading in the first frame; the clock sought by the button and from 23 minutes before not one pose (by 0.103667)",
+     "the gait on the ground (decision 244 (a); 8F's prerequisite 2): each instance against itself at rest, both lev | 10.33x horses, the drawn soles, fresh, rich: 7704 poses, half within 0.0038, 99 in 100 within 0.0515, the worst 0.2236 (gqg #1 (rich) at 10:40, phase 6.22 (sinking)); 30 beyond H_TOL 0.0774 (kept open: the proposed bound 0.2323; 28 found, at most 31); the legacy seat up to 1.319 at rest, the raised edge's lift median 0.104; 10.33x horses, the drawn soles, fresh, simple: 7704 poses, half within 0.0005, 99 in 100 within 0.0535, the worst 0.2324 (gqg #1 (simple) at 10:40, phase 6.22 (sinking)), 2.00 px at most (at the simple kit's largest size, gqg #1 (simple) at 10:40, phase 6.22); 31 beyond H_T"
+    ],
+    "ms": 612734
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "none6",
+   "block": "a6",
+   "what": "nothing (the build as it is)",
+   "ok": true,
+   "selfTest": {
+    "checks": 1,
+    "failed": [],
+    "ms": 145
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "nomain",
+   "block": "a6",
+   "what": "the map layer outside a main landmark (8G's page)",
+   "ok": true,
+   "selfTest": {
+    "checks": 1,
+    "failed": [
+     "A-6 (8H): one main landmark holding the map layer and the timeline a named region; no heading level skipped in | the Now tab 123; the Plans tab 123332333; an Analysis theme 12; a formation's dossier 1232; an event's dossier 12323333; a place's dossier 1232333; the sources sheet 123233333333333333; the keys overlay 12323333333; the focus ring 2px (the control focused); WRONG: 0 main landmarks"
+    ],
+    "ms": 227
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "noregion",
+   "block": "a6",
+   "what": "the timeline not a named region (a div, as before 8H)",
+   "ok": true,
+   "selfTest": {
+    "checks": 1,
+    "failed": [
+     "A-6 (8H): one main landmark holding the map layer and the timeline a named region; no heading level skipped in | the Now tab 123; the Plans tab 123332333; an Analysis theme 12; a formation's dossier 1232; an event's dossier 12323333; a place's dossier 1232333; the sources sheet 123233333333333333; the keys overlay 12323333333; the focus ring 2px (the control focused); WRONG: the timeline not a named region"
+    ],
+    "ms": 266
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "h4",
+   "block": "a6",
+   "what": "the Now tab's \"What changed\" an h4 under the dispatch's h2 (a skipped level, as before 8H)",
+   "ok": true,
+   "selfTest": {
+    "checks": 1,
+    "failed": [
+     "A-6 (8H): one main landmark holding the map layer and the timeline a named region; no heading level skipped in | the Now tab 124; the Plans tab 123332333; an Analysis theme 12; a formation's dossier 1242; an event's dossier 12423333; a place's dossier 1242333; the sources sheet 124233333333333333; the keys overlay 12423333333; the focus ring 2px (the control focused); WRONG: the Now tab: H4 \"WHAT CHANGED AT 08:45\" after an h2; a formation's dossier: H4 \"WHAT CHANGED AT 04:00\" after an h2; an event's dossier: H4 \"WHAT CHANGED AT 04:00\" after an h2; a place's dossier: H4 \"WHAT CHANGED AT 04:00\" after an h2; the sources sheet: H4 \"WHAT CHANGED AT 04:00\" after an h2; the keys overlay: H4 \"WHAT CHANGED AT 04:"
+    ],
+    "ms": 141
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "ring1",
+   "block": "a6",
+   "what": "the focus ring 1 px (as before 8H)",
+   "ok": true,
+   "selfTest": {
+    "checks": 1,
+    "failed": [
+     "A-6 (8H): one main landmark holding the map layer and the timeline a named region; no heading level skipped in | the Now tab 123; the Plans tab 123332333; an Analysis theme 12; a formation's dossier 1232; an event's dossier 12323333; a place's dossier 1232333; the sources sheet 123233333333333333; the keys overlay 12323333333; the focus ring 1px (the control focused); WRONG: the focus ring 1px (the control focused), not 2px"
+    ],
+    "ms": 179
+   },
+   "pageErrors": []
+  }
+ ]
+}

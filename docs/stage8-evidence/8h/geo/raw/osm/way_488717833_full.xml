@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2976874 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="4799029908" visible="true" version="2" changeset="123696370" timestamp="2022-07-16T17:06:53Z" user="Michal Špondr" uid="587067" lat="49.1248984" lon="16.7321099">
+  <tag k="historic" v="memorial"/>
+  <tag k="memorial" v="stone"/>
+  <tag k="name" v="1805"/>
+  <tag k="source" v="survey"/>
+ </node>
+ <node id="4810027004" visible="true" version="1" changeset="48038538" timestamp="2017-04-22T16:48:44Z" user="qqipp" uid="326549" lat="49.1215150" lon="16.7306063"/>
+ <node id="4810056585" visible="true" version="1" changeset="48039072" timestamp="2017-04-22T17:09:10Z" user="qqipp" uid="326549" lat="49.1278523" lon="16.7333858"/>
+ <way id="488717833" visible="true" version="3" changeset="164470606" timestamp="2025-04-03T15:27:35Z" user="nmimn" uid="21621030">
+  <nd ref="4810027004"/>
+  <nd ref="4799029908"/>
+  <nd ref="4810056585"/>
+  <tag k="barrier" v="wall"/>
+ </way>
+</osm>

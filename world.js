@@ -33,7 +33,7 @@ function ctex(cv){
   t.generateMipmaps=false; t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;
   return t;
 }
-function W(mx,my){ return [(mx-340)*0.5, (my-250)*0.5]; }
+function W(mx,my){ var o=GEOREF.WORLD_ORIGIN, k=GEOREF.MAP_PER_WORLD; return [(mx-o[0])/k, (my-o[1])/k]; }   /* since 8H (G-2) GEOREF's factor and origin, not typed: the same numbers (a division by 2 is exact as the product by 0.5 was) */
 function M2W(pts){ return pts.map(function(p){ return W(p[0],p[1]); }); }
 
 var UNITS_PER_KM = GEOREF.UNITS_PER_KM;   /* from geo.js: the only scale */
@@ -199,7 +199,7 @@ var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
    from the local relief, because the floor, the land-cover thresholds and the pond levels are
    calibrated on local relief and must keep their meaning. World units, before the 1.2 factor. */
 function regionalH(x,z){
-  var nk=GEOREF.mapToEN(x*2+340,z*2+250)[1];                 /* true northing, km           */
+  var nk=GEOREF.mapToEN(x*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[0],z*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[1])[1];   /* true northing, km (W's inverse by GEOREF's own factor and origin since 8H, G-2) */
   var dv=Math.min(polyDist(x,z,LITAVA),polyDist(x,z,BROOKS[BROOKS.length-1]));
   return 0.51*smoothstep(3.0,6.0,nk) + 0.37*nk - 3.16*Math.exp(-(dv*dv)/625);
 }
@@ -518,10 +518,13 @@ function groundGeometry(){
   scaleGround(geo);
   return geo;
 }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md P-4): buildWorld's phases timed once at the start, in milliseconds (read by app.js's BOOTMS) */
+var WORLDMS={};
 function buildWorld(scene){
-  buildCover();
-  buildGrid();
-  buildCoverMl();
+  var tw=(typeof performance!=="undefined")?performance.now():0, wm=function(k){ if(typeof performance!=="undefined") WORLDMS[k]=Math.round((performance.now()-tw)*10)/10; };
+  buildCover(); wm("cover");
+  buildGrid(); wm("grid");
+  buildCoverMl(); wm("coverMl");
 
   var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
   var sctx=sc.getContext("2d");
@@ -532,7 +535,7 @@ function buildWorld(scene){
     new THREE.MeshBasicMaterial({map:ctex(sc),side:THREE.BackSide,fog:false,depthWrite:false}));
   scene.add(domeMesh);
 
-  var geo=groundGeometry();
+  var geo=groundGeometry(); wm("groundGeometry");
   (function(){
     var cov=new Float32Array(FACE.n*3);
     for(var f=0;f<FACE.n;f++){
@@ -552,18 +555,18 @@ function buildWorld(scene){
   groundMesh.material.userData.grain=groundMesh.material.map;
   groundMesh.receiveShadow=true;
   scene.add(groundMesh);
-  applyGround();
+  applyGround(); wm("ground");
 
-  buildWater(scene);
-  buildRoads(scene);
-  buildSettlements(scene);
-  buildWoods(scene);
+  buildWater(scene); wm("water");
+  buildRoads(scene); wm("roads");
+  buildSettlements(scene); wm("settlements");
+  buildWoods(scene); wm("woods");
   apronMesh=buildApron(scene);
   buildContours(scene);
   buildMarshSymbols(scene);
   buildAnalysis(scene);
   buildMist(scene);
-  buildPaperSymbols(scene);
+  buildPaperSymbols(scene); wm("rest");
 
   return {ground:groundMesh, apron:apronMesh, dome:domeMesh, mist:mistGroup, trees:treeMesh, conifers:coniferMesh, scrub:scrubMesh,
           houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, iceRims:iceRims, roads:roadMeshes,
@@ -1472,7 +1475,8 @@ function roofTexture(){
    they and the topographies of 1793-1861 say, each claim graded for 1805; the sketches' pattern applied to 1805 by inference): each village's
    farmsteads front onto the drawn roads through it, on both sides, from its point outward (where those do not hold them, onto its streams'
    banks, then a lane through or beside its point); each farmstead an L, a long range back along the plot's northern boundary and a range
-   along the street, with a building at the back of the yard on the share of plots its sketch shows. The build's number of houses (VILLAGES)
+   along the street (its long range alone where the street leaves the range along it no room: 27 of 177 on 8G's build, 26 since 8H, counted in the
+   dossiers since 8H), with a building at the back of the yard on the share of plots its sketch shows. The build's number of houses (VILLAGES)
    is each village's number of farmsteads, at the first size where they stand and smaller only in the tight spots (v8Sizes); the ranges along
    the street and the buildings at the back are added. Every building's centre stands in the village's place (the paper map's footprint,
    covVill above PAPER_SYM.village.level) and its corners within that place's margin (VILL8G.margin), clear of the drawn roads, streams and
@@ -1513,8 +1517,13 @@ var BLD8G={
   fence:{len:0.62, h:0.3, inset:0.3},      /* a fence's panel, its height, its line inside the village's edge */
   wall:{h:0.34, th:0.12, margin:0.45},     /* the churchyard's wall: height, thickness, its distance from the church */
   castle:{w:7.6, d:5.8, west:1.35, east:2.3, ns:1.2, h:[1.15,2.05]},   /* the Sokolnitz castle (79.6 by 60.0 m in 1825, its east range the deepest) */
-  chateau:{w:5.6, d:1.5, wing:[1.4,2.6], h:2.0, near:10, bearing:236}  /* the Austerlitz château: its main range, its wings, how far from its church it is sought, its
-                                                                         bearing from the church today (places.md: 143 m at 236 degrees, RÚIAN buildings 13846744, 39712834) */
+  chateau:{w:5.6, d:1.5, wing:[1.4,2.6], h:2.0, near:10, bearing:236, tol:22.5}
+  /* the Austerlitz château: its main range, its wings, how far from its church it is sought, its bearing from the church today (places.md:
+     143 m at 236 degrees, RÚIAN buildings 13846744, 39712834) and how far from that bearing it may be drawn. Since 8H (docs/STAGE8_SPEC.md section
+     20.3) an octant, half a compass point each way: the sources name the two's relation in words ("nahe am Schloße", the church at the square's
+     north side, 1860; the château's front "gegen SW.", 1836) and the survey's centroids put it within a few degrees (a few metres on 143 m); the
+     symbols, at the building scale, cannot stand 143 m apart, so their distance is a convention and their bearing is what is kept. 8G drew it within
+     a quarter-turn, which admitted 86.5 degrees off (north-west of the church) */
 };
 var BLDG=null;   /* the buildings drawn (buildSettlements): one record each, read by layBuildings and the self-test */
 function v8Rnd(seed){ var s=seed>>>0; return function(){ s=(s*1664525+1013904223)%4294967296; return s/4294967296; }; }
@@ -1638,7 +1647,9 @@ function churchPlan8g(v,trees,extra){
   var C8=VILL8G.church, k=kind==="chapel"?CHAPEL8G:1, yard=v[0]==="Telnitz"?BLD8G.wall.margin+BLD8G.wall.th:0, n=v8North(), tN=Math.atan2(n[1],n[0]);
   var mk=kind==="temple"?function(x,z){ return v8Rect(x,z,tN,2.75,1.25); }   /* the temple whole (templeParts8g): its pediment's front 2.72 south of its point, its tower's back 2.70 north */
     :function(x,z){ return v8Rect(x+C8.dx*k*Math.cos(0.1),z-C8.dx*k*Math.sin(0.1),-0.1,C8.a*k+yard,C8.b*k+yard); };
-  var all=v8NearAll(cc,mk,function(R){ return v8Why(R,ctx); },ctx,5.0,V8CANDS);
+  /* the temple's every clear place within 5 units (since 8H: the town's church takes the least move that leaves its château a place within
+     its tolerance, planBuildings8g); the others' nearest V8CANDS */
+  var all=v8NearAll(cc,mk,function(R){ return v8Why(R,ctx); },ctx,5.0,kind==="temple"?0:V8CANDS);
   all.forEach(function(c){ c.kind=kind; c.scale=k; });
   return all; }
 /* a village's fronts and the drawn obstacles' segments within its reach: pure functions of its place, kept for its plans */
@@ -1758,24 +1769,31 @@ function castlePlan8g(trees){
   return {parts:m1?cas.concat(m2?farm:[]):[], moved:m1, farmMoved:m2}; }
 /* the château at Austerlitz as Wolny (1836) gives it: its main front to the south-west, a wing at each end (drawn running back from the
    front), three storeys; the church stands "nahe am Schloße" at the north side of the square (the church topography, 1860), the château today
-   west-south-west of it (places.md, the modern cadastre: BLD8G.chateau.bearing). The drawn road and the Litava take that side of the drawn
-   church at the building scale, so the château is drawn at the nearest place within a quarter-turn of that bearing that clears them, the trees
-   and the church (a quarter unit at a time on 48 bearings; at one distance the place standing farthest clear, v8Margin): a layout */
+   west-south-west of it (places.md, the modern cadastre: BLD8G.chateau.bearing). Drawn at the nearest place within BLD8G.chateau.tol of that
+   bearing (since 8H an octant; 8G's quarter-turn admitted the château north-west of its church) that clears the drawn roads, streams, trees and
+   the church, its centre in the town's place, and no drawn road or stream between it and its church (they stand together at the square's north
+   end): a quarter unit at a time on 96 bearings; at one distance the bearing nearest its own, then the place standing farthest clear
+   (v8Margin): a layout. None (empty parts) where no such place lies within BLD8G.chateau.near: planBuildings8g then tries the church's next place */
 function chateauPlan8g(ch,trees){
   var B=BLD8G.chateau, n=v8North(), e=v8East(), sw=[-(e[0]+n[0])/Math.SQRT2,-(e[1]+n[1])/Math.SQRT2], along=[-sw[1],sw[0]], tF=Math.atan2(along[1],along[0]), tW=Math.atan2(sw[1],sw[0]);
   function parts(c){ var P=[{R:v8Rect(c[0],c[1],tF,B.w/2,B.d/2), h:B.h, part:"chateau main range"}];
     [-1,1].forEach(function(s){ var x=c[0]+along[0]*s*(B.w/2-B.wing[0]/2)-sw[0]*(B.d/2+B.wing[1]/2), z=c[1]+along[1]*s*(B.w/2-B.wing[0]/2)-sw[1]*(B.d/2+B.wing[1]/2);
       P.push({R:v8Rect(x,z,tW,B.wing[1]/2,B.wing[0]/2), h:B.h, part:"chateau wing"}); });
     return P; }
-  var ctx={placed:[{R:ch.R}], segs:v8NearSegs([ch.x,ch.z],B.near+8), trees:trees.filter(function(t){ return Math.hypot(t[0]-ch.x,t[2]-ch.z)<B.near+12; })};
+  var segs=v8NearSegs([ch.x,ch.z],B.near+8), ctx={placed:[{R:ch.R}], segs:segs, trees:trees.filter(function(t){ return Math.hypot(t[0]-ch.x,t[2]-ch.z)<B.near+12; })};
   for(var r=0.25;r<=B.near+1e-9;r+=0.25){ var best=null;
-    for(var q=0;q<48;q++){ var a=q/48*Math.PI*2, de=Math.cos(a)*r, dn=Math.sin(a)*r, az=Math.atan2(de,dn)*180/Math.PI;
-      if(Math.abs(((az-B.bearing)%360+540)%360-180)>90+1e-9) continue;   /* within a quarter-turn of its bearing today */
-      var c=[ch.x+e[0]*de+n[0]*dn, ch.z+e[1]*de+n[1]*dn], P=parts(c), m=Infinity, ok=true;
+    for(var q=0;q<96;q++){ var a=q/96*Math.PI*2, de=Math.cos(a)*r, dn=Math.sin(a)*r, az=(Math.atan2(de,dn)*180/Math.PI+360)%360, dev=Math.abs(((az-B.bearing)%360+540)%360-180);
+      if(dev>B.tol+1e-9) continue;   /* within the tolerance of its bearing today */
+      var c=[ch.x+e[0]*de+n[0]*dn, ch.z+e[1]*de+n[1]*dn];
+      if(!v8Foot(c[0],c[1])) continue;   /* its centre in the town's place */
+      if(v8Between(ch.x,ch.z,c[0],c[1],segs)) continue;   /* no drawn road or stream between it and its church */
+      var P=parts(c), m=Infinity, ok=true;
       for(var i=0;i<P.length&&ok;i++){ if(v8Clear(P[i].R,ctx)) ok=false; else m=Math.min(m,v8Margin(P[i].R,ctx)); }
-      if(ok&&(!best||m>best.m+1e-9)) best={P:P, m:m, moved:{dx:c[0]-ch.x, dz:c[1]-ch.z, off:r, de:de, dn:dn}}; }
+      if(ok&&(!best||dev<best.dev-1e-9||(Math.abs(dev-best.dev)<=1e-9&&m>best.m+1e-9))) best={P:P, m:m, dev:dev, moved:{dx:c[0]-ch.x, dz:c[1]-ch.z, off:r, de:de, dn:dn, az:az, dev:dev}}; }
     if(best) return {parts:best.P, moved:best.moved}; }
   return {parts:[], moved:null}; }
+/* does a drawn road's or stream's centre line (v8NearSegs) cross the segment between two points? */
+function v8Between(ax,az,bx,bz,segs){ for(var k=0;k<segs.length;k++){ var s=segs[k]; if(v8Cross(ax,az,bx,bz,s.ax,s.az,s.bx,s.bz)) return true; } return false; }
 /* the church at Austerlitz as the church topography (1860) describes it, finished in 1790: a temple's front, six columns under a pediment,
    its portico to the south and its altar to the north, its one tower behind the altar no higher than its tiled roof; drawn in place of the
    build's spired church there (BUILDINGS.austerlitz.church). Sizes DESIGN; its axis true north-south */
@@ -1828,12 +1846,15 @@ function planBuildings8g(trees){
     /* the church at the least move that clears it and leaves the village its farmsteads (of its places clear, the nearest first; at
        Austerlitz the château with it), the farmsteads planned from their first size where one of those places lets the village hold them all,
        else from the next (v8PlanAt: each plot smaller only where it must be): the farmsteads' size kept before the church's least move */
-    var cands=(churchPlan8g(v,trees,extra)||[]).slice(0,V8CANDS), ch=null, chat=null, P=null, done=false;
+    var cands=churchPlan8g(v,trees,extra)||[], ch=null, chat=null, P=null, done=false, cts=[];
+    if(!(cands.length&&cands[0].kind==="temple")) cands=cands.slice(0,V8CANDS);
+    /* at Austerlitz (since 8H) a place of the church is taken only where its château finds a place within its tolerance (chateauPlan8g) */
     for(var k=0; k<3&&!done; k++) for(var ci=0; ci<Math.max(1,cands.length)&&!done; ci++){ var c=cands[ci]||null, ex=extra.slice(), ct=null;
-      if(c&&c.kind==="temple"){ ct=chateauPlan8g(c,trees); ct.parts.forEach(function(p){ ex.push({R:p.R}); }); }
+      if(c&&c.kind==="temple"){ ct=cts[ci]||(cts[ci]=chateauPlan8g(c,trees)); if(!ct.parts.length) continue; ct.parts.forEach(function(p){ ex.push({R:p.R}); }); }
       var Q=villagePlan8g(v,trees,ex,c,k);
       if(!P||Q.farms.length>P.farms.length){ P=Q; ch=c; chat=ct; }
       if(P.farms.length>=v[3]) done=true; }
+    if(!P){ ch=cands[0]||null; chat=null; P=villagePlan8g(v,trees,extra.slice(),ch,0); }   /* no place of the church leaves the château one: the town without it (the self-test fails it) */
     if(chat) chat.parts.forEach(function(p){ extra.push({R:p.R}); });
     if(chat) chat.parts.forEach(function(p){ L.push({R:p.R, h:p.h, roof:"tile", wall:"plaster", part:p.part, village:v[0], landmark:true}); });
     if(ch){
@@ -2026,6 +2047,7 @@ function buildWoods(scene){
   var BARE=LAND_COL.bare;
   byVar.forEach(function(list,vi){
     var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,list.length));   /* 8F: both faces (the open shells) */
+    treeNear(im.material,1/TREE8F.shrink);   /* 8H: the crowns closing near the eye */
     im.castShadow=true; im.count=Math.max(1,list.length);
     list.forEach(function(t,k){
       d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -2075,6 +2097,7 @@ function buildWoods(scene){
     }
   });
   scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrub.length));   /* 8F: both faces */
+  treeNear(scrubMesh.material,1/TREE8F.scrubShrink);   /* 8H: the crowns closing near the eye */
   scrubMesh.castShadow=false; scrubMesh.receiveShadow=true;
   scrub.forEach(function(t,k){
     d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -2129,13 +2152,13 @@ function treeKit(){
            {T:0.8, cr:[[3,[0,1.6,0],[1.55,0.85,1.45]],[1,[0.8,1.7,0],[0.7,0.55,0.7]],[2,[-0.75,1.65,0.3],[0.65,0.5,0.65]]]}, /* squat, wide-spreading */
            {T:1.2, cr:[[2,[0,2.4,0],[0.62,1.5,0.62]],[3,[0,3.5,0],[0.45,0.8,0.45]]]}];                                     /* poplar-like, narrow and tall */
   _kit={
-    broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); h.cr.forEach(function(C){ treeShell(P,C[0],C[1],C[2],TREE8F.keep,TREE8F.shrink); }); return treeGeo(P); }),
+    broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); var a=P.length; h.cr.forEach(function(C){ treeShell(P,C[0],C[1],C[2],TREE8F.keep,TREE8F.shrink); }); return treeNearGeo(treeGeo(P),P,a); }),
     conifer:[
       mergeParts([T(0.6),{geo:cone,p:[0,2.3,0],s:[0.95,3.4,0.95]},{geo:cone,p:[0,1.35,0],s:[1.25,1.4,1.25]}]),
       mergeParts([T(0.9),{geo:cone,p:[0,3.0,0],s:[0.8,4.2,0.8]}])
     ],
-    scrub:(function(){ var P=[]; treePrism(P,[0,0,0],[0.05,0.55,0],0.05,0.02,3); treePrism(P,[0.1,0,0.05],[0.55,0.45,0.2],0.04,0.016,3);
-      treeShell(P,1,[0,0.5,0],[1,0.6,0.9],TREE8F.scrubKeep,TREE8F.scrubShrink); treeShell(P,1,[0.6,0.4,0.2],[0.6,0.45,0.55],TREE8F.scrubKeep,TREE8F.scrubShrink); return treeGeo(P); })()
+    scrub:(function(){ var P=[]; treePrism(P,[0,0,0],[0.05,0.55,0],0.05,0.02,3); treePrism(P,[0.1,0,0.05],[0.55,0.45,0.2],0.04,0.016,3); var a=P.length;
+      treeShell(P,1,[0,0.5,0],[1,0.6,0.9],TREE8F.scrubKeep,TREE8F.scrubShrink); treeShell(P,1,[0.6,0.4,0.2],[0.6,0.45,0.55],TREE8F.scrubKeep,TREE8F.scrubShrink); return treeNearGeo(treeGeo(P),P,a); })()
   };
   return _kit;
 }
@@ -2168,6 +2191,30 @@ function treeLimbs(P,h,vi){
         treePrism(P,tip,[c[0]+Math.cos(b)*s[0]*0.88*(ci===0?1:0.7), c[1]+up*s[1]*0.8, c[2]+Math.sin(b)*s[2]*0.88*(ci===0?1:0.7)],0.04,0.014,3,b); } } });
 }
 function treeGeo(P){ var g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferAttribute(P,3)); g.computeVertexNormals(); return g; }
+/* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.10; 8F's item 4, the crowns close to the eye): near the eye each kept face of a
+   crown grows back toward its full size about its own centre, so that close up a crown reads as a volume of facets rather than separate shards
+   and shimmers less under a small move (the frame's pixels changed by half a pixel's move, 8F's measure taken over the whole frame, 10,616 to
+   7,663 in a view among the crowns, section 20.10): the face at 8F's shrink (TREE8F.shrink, scrubShrink) beyond TREE8H.far units from the eye,
+   at its full size within TREE8H.near, eased between; in the vertex shader, the same triangles, instances and draw calls (8F's triangles a tree
+   kept). The shadows are the built crowns' (the depth material is three's own: the sun's eye is never near). Design values */
+var TREE8H={near:5, far:16, U:{uTreeNear:{value:1}}};   /* U: the hook's one uniform, shared (1 as built; the self-test sets it to 0 for a frame to compare) */
+/* each crown triangle's centre (its face's: 8F's shrink about the face's own centre keeps it), the limbs' and the trunk's vertices their own
+   (from the shells' first float, a, on) */
+function treeNearGeo(g,P,a){ var C=new Float32Array(P.length); C.set(P);
+  for(var i=a;i+8<P.length;i+=9) for(var k=0;k<3;k++){ var c=(P[i+k]+P[i+3+k]+P[i+6+k])/3; C[i+k]=c; C[i+3+k]=c; C[i+6+k]=c; }
+  g.setAttribute("aFC",new THREE.Float32BufferAttribute(C,3)); return g; }
+/* the hook on a crown's material: the vertex moved from its face's centre by mix(1, 1/shrink, g), g the eye's nearness (0 beyond far, 1 within near) */
+function treeNear(mat,inv){
+  mat.onBeforeCompile=function(sh){
+    if(typeof atmoUniforms==="function") atmoUniforms(sh);   /* the atmosphere's uniforms (app.js), as every material gets them */
+    sh.uniforms.uTreeNear=TREE8H.U.uTreeNear;
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nattribute vec3 aFC; uniform float uTreeNear;")
+      .replace("#include <begin_vertex>","#include <begin_vertex>\n#ifdef USE_INSTANCING\nvec4 tnW=modelMatrix*instanceMatrix*vec4(aFC,1.0);\n#else\nvec4 tnW=modelMatrix*vec4(aFC,1.0);\n#endif\n"+
+        "float tnG=clamp(("+glslF(TREE8H.far)+"-distance(tnW.xyz,cameraPosition))/"+glslF(TREE8H.far-TREE8H.near)+",0.0,1.0); tnG=tnG*tnG*(3.0-2.0*tnG);\n"+
+        "transformed=aFC+(transformed-aFC)*mix(1.0,"+glslF(+inv.toFixed(6))+",tnG*uTreeNear);");
+  };
+  mat.customProgramCacheKey=function(){ return "tree-near-"+inv.toFixed(6); };
+  return mat; }
 
 var CONTOUR_INTERVAL=1.5, CONTOUR_INDEX=4;
 /* the ground continues beyond the field, coarsely, until the fog takes it */

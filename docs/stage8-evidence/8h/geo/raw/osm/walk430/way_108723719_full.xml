@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3001393 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74132466" visible="true" version="3" changeset="2277236" timestamp="2009-08-27T13:05:55Z" user="CZmeelan" uid="143706" lat="49.1973421" lon="16.8665086">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="1246601990" visible="true" version="2" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1960932" lon="16.8633505"/>
+ <node id="3816701230" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1960169" lon="16.8631482">
+  <tag k="name" v="Rousínov"/>
+  <tag k="traffic_sign" v="city_limit"/>
+ </node>
+ <node id="13736054492" visible="true" version="1" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826" lat="49.1969475" lon="16.8655035"/>
+ <way id="108723719" visible="true" version="10" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="74132466"/>
+  <nd ref="13736054492"/>
+  <nd ref="1246601990"/>
+  <nd ref="3816701230"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

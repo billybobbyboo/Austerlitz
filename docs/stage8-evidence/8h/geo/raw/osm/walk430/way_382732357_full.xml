@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2801651 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="3859497828" visible="true" version="6" changeset="160762914" timestamp="2024-12-29T18:21:38Z" user="Pavel_Š" uid="21958359" lat="49.1829400" lon="16.7230728">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Šlapanice, Bedřichovice, rozcestí"/>
+  <tag k="public_transport" v="stop_position"/>
+ </node>
+ <node id="3859497832" visible="true" version="6" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1830092" lon="16.7225845"/>
+ <node id="5169043278" visible="true" version="5" changeset="124483116" timestamp="2022-08-04T14:11:25Z" user="JBS21" uid="13953005" lat="49.1829771" lon="16.7227438">
+  <tag k="crossing" v="marked"/>
+  <tag k="highway" v="crossing"/>
+  <tag k="source" v="cuzk:km;digitalglobe:orto"/>
+  <tag k="tactile_paving" v="yes"/>
+ </node>
+ <node id="5951823832" visible="true" version="3" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1829881" lon="16.7226533">
+  <tag k="direction" v="forward"/>
+  <tag k="highway" v="give_way"/>
+ </node>
+ <way id="382732357" visible="true" version="11" changeset="153576231" timestamp="2024-07-05T08:04:04Z" user="JBS21" uid="13953005">
+  <nd ref="3859497828"/>
+  <nd ref="5169043278"/>
+  <nd ref="5951823832"/>
+  <nd ref="3859497832"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="4"/>
+ </way>
+</osm>

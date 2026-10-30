@@ -1,8 +1,220 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8H: integration, polish and verification
+
+**Status: built on `claude/sharp-faraday-g2uy8o` (draft PR #73 into `main`, for review; not merged), from `main` at
+`636cc5ddba6c146ecabff01e6d7c86738add0e4b` (PR #72's merge, 8G; no newer commit on `main` when the work began, 29 October 2026, nor when fetched
+again on 30 October). Stage 8 is not complete: device acceptance for 8E-8H is pending, and the owner's questions 259-265 are open.** The record is
+`docs/STAGE8_SPEC.md` section 20 (and section 19, 8G as built, written here), the evidence `docs/stage8-evidence/8h/`. The build:
+`austerlitz-command-map.html` **2,772,772 bytes, md5 `9fa50cb46a085ab4ea8f932cd405f1e8`** (8G's 2,740,873, `508927e6...`); `check:baseline`
+moved to it; `check:data`'s reference `archive/stage8h-24e29da7.html` (two data tasks, below). What was verified and what stays open are at the
+entry's end.
+
+- **The buildings' acceptance (section 20.3): the château, the farmsteads' words; a data task.** Reproduced on 8G's build
+  (`tools/stage8/buildings-8h.js`): the Austerlitz château drawn at 322.5 degrees from its church, 86.5 degrees off the bearing its own place has
+  from the church today (236 degrees, `places.md`), admitted by 8G's quarter-turn; every village dossier saying "each an L" though 27 of the
+  177 farmsteads drawn are a long range alone. Changed:
+  - `world.js`: the château sought within `BLD8G.chateau.tol`, 22.5 degrees (an octant: the sources name the relation in words, the survey's
+    centroids within a few degrees; the symbols at the building scale cannot stand 143 m apart, so the distance is a convention and the bearing
+    is kept), its centre in the town's place and no drawn road or stream between it and its church; the town's church taking the least move,
+    among its every clear place within 5 units (the self-test's limit for a church), that leaves the château such a place. Drawn now at 255
+    degrees (19 off), 379 m from the church, as before; the church 4.75 units (300 m) from the town's point at 2 degrees true (8G: 2.5 units,
+    east), which brings it within 60 m of its own place (not the rule's aim: a consequence, recorded); the town keeps its 24 farmsteads (now
+    all an L) and every building's centre on the drawn village class (61 of 61); every other village's plan identical, record for record.
+  - `app.js`: the dossiers' farmsteads counted as drawn (`farmsteadsText`: "each an L" only where every one is), the sources sheet stating the
+    long ranges drawn alone (26 of 177 now) and the château's rule with its drawn bearing; the self-test's 8G checks (e) and (e') hold them
+    (the château within the tolerance, in the town's place, nothing drawn between; the words recounted from the drawn records); `css-test.js`
+    holds the tolerance's value and the rule.
+  - **Data (`appearance.js`, guarded): `BUILDINGS` changed**, one string: `austerlitz.chateau.scope`, "within a quarter-turn of the bearing
+    its own place has from the church's today (west-south-west, places.md)" to "within 22.5 degrees of the bearing its own place has from the
+    church's today (236 degrees, west-south-west, places.md), its centre in the town's place and no road or stream of this map's between them":
+    the scope describes the drawing, which changed; no claim's value, source, grade or label changed. `check:data`'s reference moves from
+    `archive/stage8g-84fe987b.html` to this commit's build, `archive/stage8h-e47b39cd.html` (2,747,157 bytes): against the old reference 133
+    data declarations identical and `BUILDINGS` changed.
+  - Not corrected, put to the owner (section 20.3): Satschan's five farmsteads of seven. With the drawn mere's ice over half its place, the
+    Littawa across the rest and its church in it, no lane, size or church place the planner can try holds seven (204 lanes more, every size,
+    24 church places: five); a fourth, smaller farmstead size would draw seven (two of them an L), a looser place margin six; each changes a
+    convention for one village's count, and the cause is the drawn mere's outline (decision 27).
+- **Timing and the pause (section 20.4): S-7's two seams; the block wheeling on after a pause.** Reproduced on 8G's build by
+  `tools/stage8/s7-8h.js` and `tools/stage8/pose-8h.js` (the app's own loop on the driver's clock, Play and Pause by real clicks):
+  - *A change of speed inside a dwell* (S-7): the ease kept the speed it was entered at; from 4x to 1/2x a third of the way into the ease in,
+    out or during the hold, the clock eased on at 4x's pace and left the dwell at 37.8 clock minutes a second before dropping to 1/2x's 5.
+    `dwellAdvance` now scales the ease's remaining time by the speeds' ratio (its fraction and distance kept): the rate changes by the ratio at
+    the change, as a change of speed off the ease does, and every ease ends at the new speed's rate (4.965).
+  - *A relief change during a glide* (S-7): `redrawGround` stopped the tween but left the camera's slot set, so `followActive` stayed false and
+    Follow idle under Play until the next phase boundary (the target moved 0 in a second of play). `stopTweens` clears both slots (8C's
+    `endTweens`, which runs tweens to their ends, is another operation, kept): the camera stays where the glide stopped (moved 0), Follow follows
+    (its target 18.2 units in a second).
+  - *The knowledge rule against the eased fog* (S-7's third seam): measured every minute 08:00-10:00 for both headquarters, no formation's
+    reading would differ were the rule taken on the drawn fog's eased amount instead of the phase's mist (0 of 242 minutes); kept, as the
+    historical rule (decision 92: the reading at the phase's record), the drawn fog's twenty-minute ease a presentation (section 20.4).
+  - *The block wheeling on after a pause* (8F's finding, section 18.10 item 2): `poseBlock` eased each block's heading (at its arm's rate,
+    `WHEEL`), shape, standards' dip and a broken body's sway in real time whatever the clock did. On 8G's build 60 of 60 paused frames moved
+    (Vandamme's division turned 1.18 rad with the clock standing; up to 2.73 rad across the blocks), and one clock reached by two paths showed
+    two poses 1.15 rad apart. Now the eases run only while Play advances the clock; with the clock standing (paused, a dwell's hold) the pose
+    is held; a seek (8F's `GAIT.seek`, every move of the clock but Play's own) or a block's first pose shows that clock's pose at once; Resume
+    turns on from the held pose. Measured: 0 of 60 paused frames move, the two paths' poses identical, every block at its own heading in the
+    first frame after a seek, the held block turning on when resumed; 8G's exact rest (its prerequisite 0) kept inside the eases. A broken
+    body's sway is part of the held pose, so it no longer counts as drift for render on demand (`ambientNow`).
+  - Checks: the self-test's (l), "the blocks' pose at a pause (8H)" (the manifest 313 to 314); 8F's check (k) judges every paused frame now
+    (it set aside those the block's own ease moved); `css-test.js`'s block "a block at rest" holds the hold, the seek and 8G's exact rest.
+- **The interface (section 20.5): the phase's message clear of the controls; A-6.**
+  - *The phase's message* (section 9.6): measured on 8G's build at the nine sizes the harness measures, in Study and Watch, by a real PageDown
+    from 08:40 to 08:45's message (`tools/stage8/toast-8h.js`): over the presentation switch by 1,685 px at 1600 x 900, 1366 x 768 and 1280 x 720
+    in Study and 1,993 px at 1024 x 768, where it also covered "Begin the opening" (483 px); on every phone pushed against the right edge by half
+    the rail's width and wrapped into a 102 px column, over the Menu button (1,175 to 1,680 px). Now centred over the free area (the window's but
+    where the rail is docked and shown), its own width within the screen, and placed below any control its box would cross (`placeToast`): 0 px
+    over the switch and over every control in all 18 cases. A live block of the harness, `toast`, judged by `checkLive` (0 px in each of the 18
+    cases, the message 08:45's), in `check:selftest` and `check:visual`.
+  - *A-6*: the focus ring 2 px (it was 1 px: WCAG 2.4.7 met, under 2.4.13's 2 px), in the theme's accent, on the base rule, the two sheets'
+    bodies and the event markers (a focused in-the-hour marker 2 px in the accent, apart from its 1 px ring); the map layer's group in the page's
+    `main` landmark (its place in the tab order unchanged) and the timeline a named region (`section`, "Timeline"); the heading levels: the Now
+    tab's "What changed" an `h3` under the dispatch's `h2` (an `h4`), the Plans tab's heads `h2` and `h3` under the rail's `h1` (`h3` and `h4`), an
+    Analysis theme's title an `h2` (an `h3`), each keeping its look by its own rule. The self-test's new check, "A-6 (8H)" (the manifest 314 to
+    315), holds the one `main` landmark holding the map layer, the timeline a named region, no heading level skipped in the states a visitor reads
+    headings in (the Now tab at 09:00, the Plans tab with both plans, an Analysis theme, a formation's, an event's and a place's dossier, the
+    sources sheet, the keys overlay) and the 2 px ring; run on 8G's build it fails (no `main`, the timeline a `div`, skipped levels, a 1 px ring),
+    and it passes here. And the ring as a keyboard user sees it, not from a style: a live block of the harness, `ring` (in `check:selftest` and
+    `check:visual`, judged by `checkLive`), reaches Play by real Tab presses from the page's start and reads its ring off a screenshot (from the
+    middle of each side outward, the pixels of the ring's colour): 2 px on each of the four sides here (8G's build: 1 px each), focused and
+    `:focus-visible`, solid, in the theme's accent.
+- **The motion block (decision 257 (b)) kept at its own counts.** On CI's browser (Chromium 141, `tools/stage8/motion-8h.js`) 8H's pose held at a
+  seek changed two runs: the paper map's Play, 4 jumps, 29 pops and 1,564 formation-frames drawn where 8G's build measures 5, 30 and 1,570, and the
+  same under the Allied reading, 1,178 drawn where 1,180 (`MOTION.VIS` holds "drawn at least" 1,570 and 1,180: both would fail). The cause,
+  measured: a Play run sets its own clock (a seek) before its eight frames at rest; on 8G's build the blocks went on easing after that seek, which
+  kept all eight drawn, each laying the map layer out; on 8H's a seek shows the clock's pose at once and render on demand draws the two the driver
+  asks for, so the layer's re-placement passes during Play fall six frames earlier (the landscape's two Play runs draw all eight on both builds:
+  Follow keeps them drawn). With the eight frames drawn, 8H's build gives 8G's counts exactly (5, 30, 1,570). The driver
+  (`tools/visual/motion.js`, the Play run's set-up) now asks for its pre frames, so they are drawn on any build as the baselines were measured;
+  every other run's frames are as before. No limit changed.
+- **`dwellAdvance`** takes a dwell state set by other means without its speed (the self-test's own) as entered at the current speed, so the
+  rescale of S-7 never divides by an absent speed.
+- **The self-test's manifest: 313 to 316 checks** (`tools/visual/check-report.js --write-manifest` from a run on CI's browser, Playwright 1.56's
+  headless shell, Chromium 141.0.7390.37, on this build: every one of the 316 checks and every live block passing, the motion block's 24 runs at
+  their baselines, `docs/stage8-evidence/8h/selftest-chromium141.json`, its only failures the old manifest's six: 313 checks against 316, three
+  new and one renamed; CI's runs since judge it against the written manifest: `selftest-ci-8d05f2b.json`, 316 of 316, no failure). Added: "the blocks' pose at a pause (8H)", "A-6 (8H)", "the crowns closing
+  near the eye (8H)"; renamed: "the landmarks (8G)" (the château "within an octant of its bearing today ... no drawn road or stream between them",
+  was "within a quarter-turn").
+- **8G's records (section 19, written in 8H; section 20.2).** 8G's pull request was merged ahead of its record: section 19 was cited by its
+  commits, code comments, self-test checks and evidence README but never written, and the roadmap and `CLAUDE.md` stopped at 8F. Written from
+  the commits, CI's own runs (its self-test report and its `check:visual` reports and captures of 8F's and 8G's commits, runs 40665840278 and
+  40870570661, downloaded) and measures made again on the exact builds: `docs/STAGE8_SPEC.md` section 19; the evidence README saying what is
+  original, what was added from CI's runs (`selftest-ci-dddd4e4.json`: 313 of 313; `census-ci.json` and `.md`, by `tools/stage8/census-8g.js`:
+  +9 draw calls and +31,740 triangles on every desktop landscape view, +5 and +23,010 on a phone's; `ci-pairs/`, CI's own captures of seven
+  cases) and what is reconstructed (`stills-pre1.json`, `stills-pre2.json`, `stills-8g.json` and `pairs/`, made with 8G's own tool, unchanged, in
+  this container); `places.md` noting that its companion files were never committed, pointing to 8H's research.
+- **The geographic review (section 20.6; no correction made).** `docs/stage8-evidence/8h/geo/`: 8G's `places.md` research made again from fresh
+  fetches, every response kept with its URL, status and hash (783), and re-runnable (`fetch-places.js`, `krovak.js`, `period-trace.py`,
+  `compute-places.js`, `period-figures.py`); its Table A reproduced (28 positions to 0.1 m); the frame checked (sound: round trips exact,
+  distances within 0.3% of the ellipsoid's, bearings within 0.11°); the stable cadastre's sketches of 1825-26 and the Second Military Survey
+  read (the First not reached, so every site in 1805 is the 1825-52 site carried back by inference). Verdicts, each facet apart: the pheasantry
+  north of the castle (its 1825 wood not today's woodland), the castle on today's site, the Goldbach east of the castle, the post house at
+  Kovalovice No. 109, the highway east of the Santon on II/430's line, the Austerlitz garden west of the château, Pratzen's church outside the
+  village. `proposal.md` with the consequences traced (`consequences.js` from the repository's declarations): the Sokolnitz group and the two
+  small ones move no anchor and put the French line at Sokolnitz on its own bank; the highway and the post house move eleven anchors off the
+  drawn road and contradict the correction pass's recorded route (an established decision: stated, not changed). Questions 259 and 260; nothing
+  of the data changed.
+- **The crowns close to the eye (8F's item 4; section 20.10): they close up near the eye.** Two prototypes measured in the live page by 8F's own
+  tool (`tools/stage8/woods-8f.js --module woods8h`, `tools/stage8/protos/woods8h.js`): the crowns shaded as one volume (8F's suggestion: the
+  ellipsoid's normals, flat shading off) changed nothing measurable (the shimmer 2.12% to 2.07% among the crowns, 1.93% to 1.92% in the
+  pheasantry view, 2.57% to 2.55% close on Sokolnitz): the shimmer is the shells' gaps crossing pixels, not their light. The crowns closing near
+  the eye did: each kept face grown back about its own centre toward its full size by the eye's distance (8F's shrink beyond 16 units, full
+  size within 5, eased), in the vertex shader. Among the crowns (8F's own close view by the Satschan mere) the frame's pixels changed by half a
+  pixel's move fall from 10,616 to 7,663 of 360,000 (over the whole frame: 8F's tool counts them inside a mask of the woods drawn without the
+  hook, which would favour it), and close up a crown reads as a volume of facets
+  rather than separate shards; from afar not one pixel differs. The same triangles (348, 254, 348, 254 a tree, the bush 174), instances and draw
+  calls: 8F's savings kept; one attribute more a vertex (the face's centre); the shadows the built crowns' (three's own depth material). Built
+  (`world.js` `TREE8H`, `treeNearGeo`, `treeNear`): the self-test's new check (d') in the 8F block (the hook on every habit and the bush; among the
+  crowns at least 1,000 pixels differ with it off, 15,144 measured; from the Field vantage none), `css-test.js`'s rules, and the mutations of both
+  failing them. Not adopted, recorded: the volume shading.
+- **The troops on the ground (8F's item 1), measured again (section 20.10); nothing changed.** By 8F's own tool on 8G's build and 8H's
+  (`tools/stage8/contact-8f.js`; `docs/stage8-evidence/8h/contact-8g-8h/`: every set identical on both builds): against the original criterion
+  (within 0.03 units at 4x, 0.0774 at 10.33x) the chords leave the men's planted edges 11 and 18 poses beyond (simple and rich kits; the worst
+  1.88 and 2.08 times the tolerance), the men's **drawn soles 36 and 35** (the worst 3.19 times), the horses' 27 to 29; their pixels at their
+  largest at most 0.82 on the simple kit, up to 4.82 px on the rich kit in the closest figure view at 4x (12.09 at 10.33x). These are 8F's cases
+  kept open (`H_OPEN`'s bounds, `H_CASES`'s counts), unchanged: no bound raised, no exception renamed. 8F's correction, each foot's own profile
+  (its patch applied to 8H's sources; `contact-profile/`), brings every planted edge within the tolerance at 4x and leaves 11 drawn-sole poses
+  (1.4 times); its cost a frame is section 20.10's, over the animation's budget, which is not raised: question 265.
+- **Decision 258 (b), measured, not adopted (section 20.8).** More places beside a counter's anchor while the view moves
+  (`tools/stage8/protos/counters.js`, four or eight), on the motion block's 26 runs on CI's browser: more formation-frames drawn (34,116 and
+  34,381 of 46,492, against 33,159) and fewer disappearances, but jumps 302 and 336 over decision 257's ceiling of 245 (each counter moved beside its
+  anchor is a jump), flickers 11 with four places, and three runs' longest disappearance over its baseline (to 3,033 and 4,033 ms). Adopting it
+  would need decision 257's ceilings raised: question 262.
+- **Maintenance (section 20.7): G-2, P-3, P-4, T-7; a second data task, no coordinate changed.**
+  - *G-2, the map-to-world factor typed outside `geo.js`:* `GEOREF` exports `MAP_PER_WORLD` (2, its own value, unexported until now) and
+    `WORLD_ORIGIN` (the map point at the world's origin, [340, 250], frozen); `world.js`'s `W` and `regionalH`'s inverse and `app.js`'s
+    `SUN_DAY` (the field's centre) read them, where each typed them; a theme's length is `len*KM_PER_MAP` (it typed `len*0.5/UNITS_PER_KM`); the
+    atmosphere's first uniforms take `DISPLAY.defaultFactor`, `GEOREF.DATUM_M`, `GEOREF.M_PER_WORLD` and `ATMO.FOG_TOP` (they typed 4, 243.1,
+    63.2 and 238.2). Shown without changing a coordinate: `tools/stage8/g2-8h.js` loads `world.js` and `geo.js` at `636cc5d` and as they stand, as
+    the suites load them, and compares 3,078,746 numbers with `===`: `W` over every map point the data and the ground truth name and a grid of
+    the map, `regionalH`, `height`, `hAt` and `localHeight` over a grid of the world, the cover class, every land-cover and relief array, the
+    sun's place, the transform: 0 differ. `geo-test.js` holds the single authority (four checks; 63 of 63).
+  - **Data (guarded): `GEOREF`, `W`, `regionalH` and `SUN_DAY` changed** (above; each a reading of the same numbers from `GEOREF`).
+    `check:data`'s reference moves to this commit's build, `archive/stage8h-24e29da7.html` (2,762,706 bytes): against 8G's reference
+    (`archive/stage8g-84fe987b.html`) 129 data declarations identical, `BUILDINGS` (the château's scope, above), `GEOREF`, `W`, `regionalH` and
+    `SUN_DAY` changed. The first 8H reference, `archive/stage8h-e47b39cd.html`, is removed (its one commit's reference, kept in history at
+    `f869d17`).
+  - *P-3, idle work per animation frame:* `syncFollow` (eight buttons' attributes read in every frame, idle ones too) touches the document only
+    when Follow or the vantage changed; the developer readout, off and hidden, reads and writes nothing in a frame. The gait's uniforms already
+    run only in drawn frames (8E's `gaitStep`, after the idle test); render on demand unchanged.
+  - *P-4, the start's cost:* the start's phases timed once (`BOOTMS`: the renderer, the world, the formations, the interface, the state, init;
+    `WORLDMS`: the land cover's and the relief's grids, the cover's multi-level grid, the ground, the water, the roads, the settlements, the
+    woods), and the first frame's time; measured over repeated loads by `tools/stage8/startup-8h.js` (section 20.7;
+    `docs/stage8-evidence/8h/startup-8h.json`: seven loads of each build interleaved on a fresh page, software WebGL, 1600 x 900, the machine
+    otherwise idle): the first frame 15.2 s on 8H's build (p95 15.9 s) and 14.9 s on 8G's (p95 19.0 s), the same within the loads' spread; init
+    4.88 s (it begins about 0.25 s after the page's start), of which the world 4.53 s (the ground's mesh, material and atlases 3.19 s; the
+    cover's multi-level grid 456 ms; the relief grid 71 ms cold, 52 ms warm on both builds, 2E's "+0.45 s"; the settlements 233 ms); the ten
+    seconds after init are the first frame's own work in software WebGL (its programs compiled and drawn), which only a device measures. Nothing
+    cut on software timings.
+  - *T-7, wall-clock thresholds:* the self-test's pan budget (2 ms a move) is judged at the median of the run's moves, with the 95th percentile
+    and the mean reported (it was the mean, which one move slowed by a busy machine could lift past the budget); the map layer's pass time was
+    already the median of five passes (`measure.js`); the harness's 20 s waits are functional timeouts, not thresholds, and are kept.
+- **The verification's own faults, found and fixed on the way** (tools only; the build unchanged). The harness's `toast` block read the
+  phase's message 150 ms after its key, and on a slow runner after the message's own 3.4 s (CI on `ac2067a`: one case of 18 read hidden,
+  844 x 390 in Watch): it holds the message for its read now, as `tools/stage8/toast-8h.js` does (`91434fd`; reproduced here with the main
+  thread stalled 4 s after the key, the block as it was reading the message hidden, as it is reading it shown at its place). `mutate-8h.js`
+  told its controls by an id's prefix ("nonear" begins with "none") and looked for the château in `BLDG` as an object of arrays (`7b78265`);
+  `perf-local.js` ignored `AUSTERLITZ_CHROME` (`7b78265`); `stills-8h.js` captured the message after its timer at the desktop sizes
+  (`0cc3ec0`); `near-8h.js --toggle` warms up longer and counts its slow frames (`f2227f0`).
+- **Performance** (software WebGL here and on CI: none of it a device's frame rate; `docs/STAGE8_SPEC.md` section 20.12). The frame on CI's
+  runs as 8G's: the same draw calls in all 39 cases, 72 triangles fewer on the desktop landscape and 36 on a phone's (the buildings'), more in
+  none; the largest desktop frame 862 calls and 2,204,961 triangles (section 8.3's budget 900 and 2.8 million), the phone's 1,251,039 (1.62
+  million). The gait as built 0.104-0.131 ms a frame (the budget 0.2); 8F's profile option 0.206-0.362 ms on every block and 0.107-0.256 ms
+  where a man is drawn 48 px or more (question 265). The crowns' hook: no cost distinguishable from the spread of software WebGL's frames (from
+  9 ms to 6.6 s on one page, the hook on or off). The start as above. No per-frame JavaScript added; render on demand, `lowTier`, culling, the
+  shadows and reduced motion kept. The device routes run end to end here (the phone route, the effects bracket, the desktop route;
+  `route-*-local.json`): no console warning or error, the largest frames 532 calls and 1,452,827 triangles on the phone's low tier and 820
+  calls and 2,375,397 triangles on the desktop, within their budgets; their times this container's CPU (0.02 to 9 s a frame), deciding nothing.
+- **Verified** (here: Chromium 153.0.8010.12, the container's, and 141.0.7390.37, CI's, installed here; CI: 141.0.7390.37). `npm test` (all nine
+  suites and the height guard), `check:data` (134 of 134 identical to `archive/stage8h-24e29da7.html`), `check:chronology` (0 errors),
+  `check:baseline` on `9fa50cb4...`; `check:selftest` here in Chromium 141, 316 of 316 and every live block. On CI, on `8d05f2b`: the push run
+  40995027349 and the pull request's 40995106927 pass every job (the self-test 316 of 316 against the written manifest, the motion block's 16 at 245,
+  985, 130 and 10, `toast` 18 of 18 at 0 px, `ring` 2 px), and the dispatched 40995113422's four jobs, its `check:visual` passing in 198 minutes (its
+  39 cases; every census reconciled and every frame with culling its frame without, 0 pixels; the motion block's 26 runs at 8G's counts and
+  visibility, 33,159 of 46,492 formation-frames drawn; the culling block's 485 frames judged and 243 compared, 0 pixels differing); `check:contrast`
+  on every run; the later commits (records and tools, the build the same): every run of the later commits (records and tools; the build the same) that
+  had finished when this section was written passes every job but one: the push run on `ac2067a` (41010403258), whose `toast` block read the phase's
+  message hidden in one of its 18 cases (844 x 390, Watch) on a slow runner, the block's race (section 20.5; the same commit's pull-request run
+  passing); fixed in `91434fd`, and on `607bb22` (run 41014490595) the self-test with the block as fixed passes 316 of 316, `toast` 18 of 18 shown at
+  0 px (`selftest-ci-607bb22.json`). The mutations: `mutate-css-8h.js` (17 failing their rules, 4 controls passing); `mutate-8h.js` on `e8fed44b` (the
+  8G, 8E and A-6 blocks: nine failing their checks, the controls passing) and on the final build (the 8F block's two failing the crowns' check, the
+  château's two planner mutations reported equivalent). The matched captures (eleven views, `pairs/`) and the pause clip (`clips/pause-8g-8h.mp4`).
+  The evidence listed in `docs/stage8-evidence/README.md`.
+- **Uncertain or open** (none blocks the build; each drawn as recorded; the questions in section 20.14). *Historical:* the geographic
+  corrections proposed and not made (questions 259 and 260; every site in 1805 is the 1825-52 site carried back by inference, the First
+  Military Survey not reached; the highway's correction would supersede the correction pass's recorded route); the château's distance from its
+  church a convention, its bearing held within an octant of today's; Satschan's five farmsteads of seven (question 261). *Implementation:* the
+  device runs for 8E-8H (desktop, iPhone, an integrated-GPU laptop, the effects-off bracket) pending; decisions 258 (b) and 255 (d) prototyped,
+  not adopted (questions 262, 263); the ice under a low sun kept (question 264); the feet's remaining cases kept open with their bounds and
+  counts (question 265); a crown within a few units of the eye still large facets; four villages' buildings largely off the drawn village class
+  (8G's, a land-cover question); `GEOREF.GT`'s 13.5 m shift against the Czech survey (below the map's unit); 8G's uncommitted evidence
+  reconstructed or replaced, not recovered. Carried: 8E's drivers and gunners, decision 245 (a)'s facings, 8G's `notDrawn`.
+
 ## 2026-10 · Stage 8, implementation PR 8G: buildings and structures (decision 248 (a)), with its prerequisites
 
-**Status: being built on `claude/great-pasteur-pi33mf` (into `main` at `51d4a15`, PR #71's merge); not merged.** The record is
+**Status: merged into `main` by the owner on 29 October 2026 (#72, `636cc5d`), built on `claude/great-pasteur-pi33mf` from `main` at `51d4a15`
+(PR #71's merge). Merged ahead of its record: this status line and the entry's last part (the buildings, `dddd4e4`) were written in
+implementation PR 8H from the commit, CI's own runs and the evidence (`docs/STAGE8_SPEC.md` §19, written in 8H).** The record is
 `docs/STAGE8_SPEC.md` §19, the evidence `docs/stage8-evidence/8g/`. The data task's build: `austerlitz-command-map.html` 2,656,947 bytes, md5
 `84fe987be066770e2ee1a145217cd17e` (archived as `archive/stage8g-84fe987b.html`, `check:data`'s reference); `check:baseline` moved to it.
 
@@ -85,11 +297,29 @@
     stood 1,367 m south-east of its drawn place, on the old road, which the map draws up to 1.2 km north of its course east of the Santon;
     the château garden at Austerlitz lies west of the château, the drawn park 2 km south-east (`places.md`). Each a geographic correction
     for a review of its own (decision 248 (a)'s and the brief's terms); none made here.
+- **The villages and the landmarks (`dddd4e4`; decision 248 (a); written in 8H, `docs/STAGE8_SPEC.md` §19.4).** `world.js` (`VILL8G`, `BLD8G`,
+  `CHAPEL8G`, the planner's `v8*` helpers, `villagePlan8g`, `churchPlan8g`, `chateauPlan8g`, `castlePlan8g`, `planBuildings8g`, `BLDG`): the
+  villages laid out on the sketches' pattern, applied to 1805 as an inference: 177 farmsteads for the build's 179 houses (Satschan five of seven,
+  the self-test's `FARMS8G` naming the exception), 150 of them an L, 27 buildings at the back of the yards, 625 records; every building's centre in
+  its village's place as the paper map draws it, clear of the drawn roads, streams, ice, trees and each other, off every other farmstead's plot;
+  the roofs a design convention (thatch, tile on about one farmstead in six, the town and the manors tiled); the churches standing in 1805 by
+  their villages, Holubitz's chapel smaller, Austerlitz's church the temple of 1790, its château by it; the Sokolnitz castle a closed quadrangle
+  with its farm south of it, by the map's legacy place moved off the drawn brook; 8F's ring of wall round the castle removed; Telnitz's
+  churchyard walled; fences round Telnitz and Sokolnitz; on the drawn ground at every factor (none at 1x, on the paper map or at the eye level).
+  `app.js`: the village and town dossiers name the claims their buildings rest on; the sources sheet says how the villages are drawn. Checks:
+  the self-test 302 to 313 (the buildings on the drawn ground at each factor; the 8G block: the farmsteads and the plan made again, in their
+  place, clear of the ribbons, the ice, the trees and each other, the plots, the presentations, the landmarks, the dossiers, the roofs);
+  `css-test.js`'s "the buildings"; `runtime-test.js` plans them headless. The frame: +9 draw calls and +31,740 triangles on every desktop
+  landscape view (+1.5% to +1.8%), +5 and +23,010 on a phone's, nothing on the paper map, at 1x or at the eye level (CI's own reports,
+  `docs/stage8-evidence/8g/census-ci.md`). On CI (Chromium 141): the self-test 313 of 313 and every live block (run 40870570661,
+  `selftest-ci-dddd4e4.json`); `check:visual` its 39 cases in 208 minutes. Build `508927e6f72e1b6f2f9186e954d61b59`, 2,740,873 bytes
+  (`check:baseline`). Found after the merge and taken up in 8H: the château drawn 86.5 degrees off its bearing (the quarter-turn admitted it),
+  Satschan's five of seven, the dossiers' "each an L" for every village, and this record itself.
 
 ## 2026-10 · Stage 8, implementation PR 8F: water, woods and the near ground (decisions 246 (a), 247 (a)), with the audit of 8E's two findings
 
-**Status: built on `claude/loving-cerf-xmk1wu` (draft PR #71, into `main` at `94d6e46`, PR #70's merge), for review; not merged. Device acceptance
-pending for 8E and 8F** (no owner hardware in the session; `docs/STAGE8_SPEC.md` §18.7). The record is `docs/STAGE8_SPEC.md` §18, the evidence
+**Status: built on `claude/loving-cerf-xmk1wu` (PR #71, into `main` at `94d6e46`, PR #70's merge); merged into `main` by the owner (`51d4a15`; noted
+in 8H). Device acceptance pending for 8E and 8F** (no owner hardware in the session; `docs/STAGE8_SPEC.md` §18.7). The record is `docs/STAGE8_SPEC.md` §18, the evidence
 `docs/stage8-evidence/8f/`. The build changed: `austerlitz-command-map.html` **2,607,535 bytes, md5 `6ba949da17229530324add3c54dd94ff`** (8E's
 build 2,537,677, `d73d0115...`; prerequisite 1's 2,555,560, `7a37ab06...`; prerequisite 2's 2,569,416, `7dd10227...`, and 2,571,096,
 `32b7b234...`); `check:baseline` moved to it. Data: none changed (`check:data`: 132 of 132 declarations identical to its reference,

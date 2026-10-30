@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2976874 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="387315539" visible="true" version="10" changeset="168242611" timestamp="2025-06-28T20:49:21Z" user="mahdi1234" uid="8244053">
+  <nd ref="3859497834"/>
+  <nd ref="7733507013"/>
+  <nd ref="5169043275"/>
+  <nd ref="1432459899"/>
+  <tag k="destination" v="Podolí"/>
+  <tag k="highway" v="tertiary"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="37370"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:maxspeed" v="CZ:rural"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="5.4"/>
+ </way>
+ <way id="1298150819" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="3859497832"/>
+  <nd ref="7733507015"/>
+  <nd ref="3859497834"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+ <way id="1298150821" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="3859497834"/>
+  <nd ref="7733507014"/>
+  <nd ref="3980611357"/>
+  <nd ref="3859497833"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+</osm>

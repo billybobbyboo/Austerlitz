@@ -1,0 +1,2410 @@
+{
+ "tool": "tools/stage8/census-8g.js",
+ "state": "onWarm",
+ "before": {
+  "md5": "6ba949da17229530324add3c54dd94ff",
+  "chromium": "141.0.7390.37",
+  "when": "2026-10-28T09:39:18.595Z"
+ },
+ "after": {
+  "md5": "508927e6f72e1b6f2f9186e954d61b59",
+  "chromium": "141.0.7390.37",
+  "when": "2026-10-29T12:07:07.838Z"
+ },
+ "cases": {
+  "first-run": {
+   "before": {
+    "calls": 739,
+    "tris": 2092449,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 748,
+    "tris": 2124189,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.52
+   }
+  },
+  "opening-1": {
+   "before": {
+    "calls": 710,
+    "tris": 2083309,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 719,
+    "tris": 2115049,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.52
+   }
+  },
+  "opening-2": {
+   "before": {
+    "calls": 614,
+    "tris": 2086583,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 623,
+    "tris": 2118323,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.52
+   }
+  },
+  "opening-3": {
+   "before": {
+    "calls": 483,
+    "tris": 1776045,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 492,
+    "tris": 1807785,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.79
+   }
+  },
+  "opening-4": {
+   "before": {
+    "calls": 541,
+    "tris": 1915853,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 550,
+    "tris": 1947593,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.66
+   }
+  },
+  "opening-end": {
+   "before": {
+    "calls": 739,
+    "tris": 2093541,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 748,
+    "tris": 2125281,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.52
+   }
+  },
+  "overview-field": {
+   "before": {
+    "calls": 828,
+    "tris": 2166749,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 837,
+    "tris": 2198489,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.46
+   }
+  },
+  "overview-plan": {
+   "before": {
+    "calls": 828,
+    "tris": 2145869,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 837,
+    "tris": 2177609,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.48
+   }
+  },
+  "close-sokolnitz": {
+   "before": {
+    "calls": 690,
+    "tris": 2100345,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 699,
+    "tris": 2132085,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.51
+   }
+  },
+  "staff-paper": {
+   "before": {
+    "calls": 148,
+    "tris": 238701,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 148,
+    "tris": 238701,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "pratzen-low": {
+   "before": {
+    "calls": 548,
+    "tris": 1787929,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 557,
+    "tris": 1819669,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.78
+   }
+  },
+  "pratzen-orbit-min": {
+   "before": {
+    "calls": 611,
+    "tris": 1941947,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 620,
+    "tris": 1973687,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.63
+   }
+  },
+  "selected-formation": {
+   "before": {
+    "calls": 685,
+    "tris": 2090733,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 694,
+    "tris": 2122473,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.52
+   }
+  },
+  "watch-selected": {
+   "before": {
+    "calls": 624,
+    "tris": 2001213,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 633,
+    "tris": 2032953,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.59
+   }
+  },
+  "hybrid-dimmed": {
+   "before": {
+    "calls": 633,
+    "tris": 2021485,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "hybrid",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 642,
+    "tris": 2053225,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "hybrid",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.57
+   }
+  },
+  "pratzen-low-1x": {
+   "before": {
+    "calls": 160,
+    "tris": 227833,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": true,
+    "factor": 1,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 160,
+    "tris": 227833,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": true,
+    "factor": 1,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "pratzen-low-10x": {
+   "before": {
+    "calls": 579,
+    "tris": 1856313,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 588,
+    "tris": 1888053,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.71
+   }
+  },
+  "paper-north-up": {
+   "before": {
+    "calls": 156,
+    "tris": 240915,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 156,
+    "tris": 240915,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "paper-close": {
+   "before": {
+    "calls": 102,
+    "tris": 203431,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 102,
+    "tris": 203431,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "paper-drawer": {
+   "before": {
+    "calls": 110,
+    "tris": 226499,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 110,
+    "tris": 226499,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "paper-laptop": {
+   "before": {
+    "calls": 156,
+    "tris": 240915,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 156,
+    "tris": 240915,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "narrow-1024": {
+   "before": {
+    "calls": 828,
+    "tris": 2173293,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 837,
+    "tris": 2205033,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.46
+   }
+  },
+  "ph8-overview-study": {
+   "before": {
+    "calls": 809,
+    "tris": 2136251,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 818,
+    "tris": 2167991,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.49
+   }
+  },
+  "ph8-overview-watch": {
+   "before": {
+    "calls": 809,
+    "tris": 2133865,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 818,
+    "tris": 2165605,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.49
+   }
+  },
+  "eye-zuran": {
+   "before": {
+    "calls": 175,
+    "tris": 413695,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 175,
+    "tris": 413695,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "eye-zuran-1x": {
+   "before": {
+    "calls": 122,
+    "tris": 227105,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": true,
+    "factor": 1,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 122,
+    "tris": 227105,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": false,
+    "shadow": true,
+    "factor": 1,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "plans-overview": {
+   "before": {
+    "calls": 853,
+    "tris": 2151875,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 862,
+    "tris": 2183615,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.47
+   }
+  },
+  "opening-1-laptop": {
+   "before": {
+    "calls": 715,
+    "tris": 2118037,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 724,
+    "tris": 2149777,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.5
+   }
+  },
+  "phone-390-first": {
+   "before": {
+    "calls": 475,
+    "tris": 1228065,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 480,
+    "tris": 1251075,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 1.87
+   }
+  },
+  "phone-390-explore": {
+   "before": {
+    "calls": 244,
+    "tris": 875475,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 249,
+    "tris": 898485,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 2.63
+   }
+  },
+  "phone-390-dossier": {
+   "before": {
+    "calls": 191,
+    "tris": 849285,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 196,
+    "tris": 872295,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 2.71
+   }
+  },
+  "phone-390-watch": {
+   "before": {
+    "calls": 244,
+    "tris": 875475,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 249,
+    "tris": 898485,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 2.63
+   }
+  },
+  "phone-390-layers": {
+   "before": {
+    "calls": 202,
+    "tris": 764577,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 207,
+    "tris": 787587,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 3.01
+   }
+  },
+  "phone-360-explore": {
+   "before": {
+    "calls": 246,
+    "tris": 872739,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 251,
+    "tris": 895749,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 2.64
+   }
+  },
+  "phone-430-explore": {
+   "before": {
+    "calls": 244,
+    "tris": 873143,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 249,
+    "tris": 896153,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 2.64
+   }
+  },
+  "phone-844x390-explore": {
+   "before": {
+    "calls": 262,
+    "tris": 825935,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 267,
+    "tris": 848945,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 2.79
+   }
+  },
+  "phone-402x714-explore": {
+   "before": {
+    "calls": 235,
+    "tris": 868831,
+    "bCalls": 3,
+    "bTris": 4356,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 1,
+      "tris": 2676
+     },
+     "roofs": {
+      "calls": 1,
+      "tris": 1464
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 216
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 240,
+    "tris": 891841,
+    "bCalls": 9,
+    "bTris": 28350,
+    "bShadowTris": 0,
+    "byKind": {
+     "houses": {
+      "calls": 3,
+      "tris": 9216
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "chimneys": {
+      "calls": 1,
+      "tris": 1632
+     },
+     "spires": {
+      "calls": 1,
+      "tris": 162
+     },
+     "walls and fences": {
+      "calls": 2,
+      "tris": 14412
+     }
+    },
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 5,
+    "tris": 23010,
+    "bCalls": 6,
+    "bTris": 23994,
+    "trisPct": 2.65
+   }
+  },
+  "phone-390-paper": {
+   "before": {
+    "calls": 156,
+    "tris": 240915,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 156,
+    "tris": 240915,
+    "bCalls": 0,
+    "bTris": 0,
+    "bShadowTris": 0,
+    "byKind": {},
+    "lowTier": true,
+    "shadow": false,
+    "factor": 4,
+    "mode": "staff",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 0,
+    "tris": 0,
+    "bCalls": 0,
+    "bTris": 0,
+    "trisPct": 0
+   }
+  },
+  "first-run-laptop": {
+   "before": {
+    "calls": 739,
+    "tris": 2095063,
+    "bCalls": 6,
+    "bTris": 8712,
+    "bShadowTris": 4356,
+    "byKind": {
+     "houses": {
+      "calls": 2,
+      "tris": 5352
+     },
+     "roofs": {
+      "calls": 2,
+      "tris": 2928
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 432
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "after": {
+    "calls": 748,
+    "tris": 2126803,
+    "bCalls": 17,
+    "bTris": 42420,
+    "bShadowTris": 14070,
+    "byKind": {
+     "houses": {
+      "calls": 6,
+      "tris": 18432
+     },
+     "roofs": {
+      "calls": 4,
+      "tris": 5856
+     },
+     "chimneys": {
+      "calls": 2,
+      "tris": 3264
+     },
+     "spires": {
+      "calls": 2,
+      "tris": 324
+     },
+     "walls and fences": {
+      "calls": 3,
+      "tris": 14544
+     }
+    },
+    "lowTier": false,
+    "shadow": true,
+    "factor": 4,
+    "mode": "terrain",
+    "reconciled": true
+   },
+   "d": {
+    "calls": 9,
+    "tris": 31740,
+    "bCalls": 11,
+    "bTris": 33708,
+    "trisPct": 1.51
+   }
+  }
+ },
+ "summary": {
+  "cases": 39,
+  "framesMoreTris": 30,
+  "largestTrisPct": 3.01,
+  "largestBuildingTris": 42420,
+  "maxCallsDesktop": 862,
+  "maxTrisDesktop": 2205033,
+  "maxTrisPhone": 1251075
+ }
+}

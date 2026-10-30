@@ -1,0 +1,198 @@
+{
+ "build": "final.html",
+ "md5": "9fa50cb46a085ab4ea8f932cd405f1e8",
+ "n": 240,
+ "reps": 5,
+ "t0": 525,
+ "views": {
+  "inf-close": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     3.5008,
+     3.4304
+    ],
+    "seat": [
+     0.9104,
+     0.8725
+    ],
+    "lod": [
+     0.0371,
+     0.045
+    ],
+    "gait": [
+     0.06,
+     0.0662
+    ],
+    "slopeLookups": [
+     3521.1,
+     2457.8
+    ],
+    "lookupUs": 0.0225,
+    "slopeMsCounted": 0.0239,
+    "slopeMsTimed": 0.0379,
+    "slopeMsTimedPairs": [
+     0.1142,
+     0.0646,
+     0.1333,
+     -0.1179,
+     0.0933
+    ],
+    "slopeMsBench": 0.0329,
+    "benchBlocks": 7,
+    "uploads": 27.02,
+    "uploadKB": 7.53,
+    "seatings": 21.85,
+    "slopeSeatings": 3.2,
+    "animationMs": 0.0929,
+    "lodMs": 0.0371,
+    "animatedAtEnd": 7
+   },
+   "1x": {
+    "x": 1,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     3.4608,
+     3.4612
+    ],
+    "seat": [
+     0.9704,
+     0.8338
+    ],
+    "lod": [
+     0.0404,
+     0.0413
+    ],
+    "gait": [
+     0.0658,
+     0.0646
+    ],
+    "slopeLookups": [
+     4338.2,
+     2587
+    ],
+    "lookupUs": 0.0225,
+    "slopeMsCounted": 0.0394,
+    "slopeMsTimed": 0.1366,
+    "slopeMsTimedPairs": [
+     0.0054,
+     0.04,
+     0.1817,
+     0.1454,
+     0.0958
+    ],
+    "slopeMsBench": 0.0552,
+    "benchBlocks": 7,
+    "uploads": 44.68,
+    "uploadKB": 12.41,
+    "seatings": 23.02,
+    "slopeSeatings": 5.29,
+    "animationMs": 0.121,
+    "lodMs": 0.0404,
+    "animatedAtEnd": 7
+   }
+  },
+  "cav-close": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     3.2679,
+     3.28
+    ],
+    "seat": [
+     0.9079,
+     0.8683
+    ],
+    "lod": [
+     0.0388,
+     0.04
+    ],
+    "gait": [
+     0.0588,
+     0.0562
+    ],
+    "slopeLookups": [
+     3521.1,
+     2457.8
+    ],
+    "lookupUs": 0.0235,
+    "slopeMsCounted": 0.025,
+    "slopeMsTimed": 0.0396,
+    "slopeMsTimedPairs": [
+     0.2179,
+     -0.1529,
+     0.0862,
+     0.1192,
+     0.1246
+    ],
+    "slopeMsBench": 0.0354,
+    "benchBlocks": 7,
+    "uploads": 27.02,
+    "uploadKB": 7.53,
+    "seatings": 21.85,
+    "slopeSeatings": 3.2,
+    "animationMs": 0.0942,
+    "lodMs": 0.0388,
+    "animatedAtEnd": 7
+   },
+   "1x": {
+    "x": 1,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     3.5758,
+     3.5642
+    ],
+    "seat": [
+     1.0704,
+     0.9817
+    ],
+    "lod": [
+     0.0371,
+     0.0379
+    ],
+    "gait": [
+     0.0625,
+     0.0604
+    ],
+    "slopeLookups": [
+     4338.2,
+     2587
+    ],
+    "lookupUs": 0.023,
+    "slopeMsCounted": 0.0403,
+    "slopeMsTimed": 0.0887,
+    "slopeMsTimedPairs": [
+     -0.0392,
+     0.0033,
+     0.2137,
+     0.2937,
+     0.0087
+    ],
+    "slopeMsBench": 0.0856,
+    "benchBlocks": 7,
+    "uploads": 44.68,
+    "uploadKB": 12.41,
+    "seatings": 23.02,
+    "slopeSeatings": 5.29,
+    "animationMs": 0.1481,
+    "lodMs": 0.0371,
+    "animatedAtEnd": 7
+   }
+  }
+ },
+ "chromium": "153.0.8010.12"
+}

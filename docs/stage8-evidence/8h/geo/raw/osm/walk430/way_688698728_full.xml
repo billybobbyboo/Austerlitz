@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713519 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="4767740813" visible="true" version="1" changeset="47331652" timestamp="2017-03-31T16:34:40Z" user="&lt;0174" uid="172147" lat="49.1830020" lon="16.7406610"/>
+ <node id="6661379294" visible="true" version="2" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1831592" lon="16.7435288"/>
+ <way id="688698728" visible="true" version="9" changeset="148456005" timestamp="2024-03-10T10:55:17Z" user="d4d3" uid="20988814">
+  <nd ref="4767740813"/>
+  <nd ref="6661379294"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="3"/>
+  <tag k="lanes:backward" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed:backward" v="90"/>
+  <tag k="maxspeed:forward" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="source:maxspeed:backward" v="CZ:rural"/>
+  <tag k="source:maxspeed:forward" v="sign"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="turn:lanes:backward" v="left|through;right"/>
+ </way>
+</osm>

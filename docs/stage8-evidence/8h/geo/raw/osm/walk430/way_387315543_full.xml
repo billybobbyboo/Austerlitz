@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2720533 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="3859497824" visible="true" version="4" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1828136" lon="16.7216474"/>
+ <node id="3859497825" visible="true" version="6" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1828633" lon="16.7222428"/>
+ <node id="5951823831" visible="true" version="3" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1828793" lon="16.7221287">
+  <tag k="direction" v="forward"/>
+  <tag k="highway" v="give_way"/>
+ </node>
+ <node id="7733507038" visible="true" version="1" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1828754" lon="16.7221865"/>
+ <way id="387315543" visible="true" version="11" changeset="153576231" timestamp="2024-07-05T08:04:27Z" user="JBS21" uid="13953005">
+  <nd ref="3859497824"/>
+  <nd ref="5951823831"/>
+  <nd ref="7733507038"/>
+  <nd ref="3859497825"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="4"/>
+ </way>
+</osm>

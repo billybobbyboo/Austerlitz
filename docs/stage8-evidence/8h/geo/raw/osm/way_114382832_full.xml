@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2976895 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1295828522" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742569" lon="16.8130274"/>
+ <node id="1295828523" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742671" lon="16.8127749"/>
+ <node id="1295828524" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743176" lon="16.8131059"/>
+ <node id="1295828525" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742707" lon="16.8127636"/>
+ <node id="1295828526" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743283" lon="16.8130804"/>
+ <node id="1295828527" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743452" lon="16.8130288"/>
+ <node id="1295828528" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742514" lon="16.8130266"/>
+ <node id="1295828529" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742507" lon="16.8128731"/>
+ <node id="1295828530" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742685" lon="16.8130785"/>
+ <node id="1295828531" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743407" lon="16.8130299"/>
+ <node id="1295828532" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743398" lon="16.8130807"/>
+ <node id="1295828533" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742159" lon="16.8128739"/>
+ <node id="1295828534" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743284" lon="16.8127642"/>
+ <node id="1295828535" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743377" lon="16.8128282"/>
+ <node id="1295828536" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742566" lon="16.8130782"/>
+ <node id="1295828537" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743465" lon="16.8128289"/>
+ <node id="1295828538" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742167" lon="16.8127747"/>
+ <node id="1295828539" visible="true" version="3" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742774" lon="16.8131049"/>
+ <node id="4462938236" visible="true" version="2" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1742787" lon="16.8127576"/>
+ <node id="4462938244" visible="true" version="2" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743197" lon="16.8127580"/>
+ <node id="4462938245" visible="true" version="2" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743316" lon="16.8127770"/>
+ <node id="4462938246" visible="true" version="2" changeset="94017683" timestamp="2020-11-12T20:39:06Z" user="Mar4s" uid="461574" lat="49.1743377" lon="16.8127768"/>
+ <way id="114382832" visible="true" version="6" changeset="181499546" timestamp="2026-04-18T13:50:37Z" user="kiwichickenmusician" uid="442279">
+  <nd ref="4462938244"/>
+  <nd ref="1295828534"/>
+  <nd ref="4462938245"/>
+  <nd ref="4462938246"/>
+  <nd ref="1295828535"/>
+  <nd ref="1295828537"/>
+  <nd ref="1295828527"/>
+  <nd ref="1295828531"/>
+  <nd ref="1295828532"/>
+  <nd ref="1295828526"/>
+  <nd ref="1295828524"/>
+  <nd ref="1295828539"/>
+  <nd ref="1295828530"/>
+  <nd ref="1295828536"/>
+  <nd ref="1295828522"/>
+  <nd ref="1295828528"/>
+  <nd ref="1295828529"/>
+  <nd ref="1295828533"/>
+  <nd ref="1295828538"/>
+  <nd ref="1295828523"/>
+  <nd ref="1295828525"/>
+  <nd ref="4462938236"/>
+  <nd ref="4462938244"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="civic"/>
+  <tag k="building:levels" v="1"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="check_date" v="2026-04-18"/>
+  <tag k="name" v="svatý Václav"/>
+  <tag k="ref:ruian:building" v="49964330"/>
+  <tag k="religion" v="christian"/>
+  <tag k="roof:levels" v="3"/>
+  <tag k="roof:shape" v="pyramidal"/>
+  <tag k="source" v="cuzk:ruian"/>
+ </way>
+</osm>

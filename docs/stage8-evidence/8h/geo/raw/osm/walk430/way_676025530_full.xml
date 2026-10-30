@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2635601 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74106873" visible="true" version="3" changeset="175595915" timestamp="2025-12-06T18:04:07Z" user="Zedna" uid="11995991" lat="49.1840013" lon="16.7575441">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74242202" visible="true" version="1" changeset="198243" timestamp="2007-10-16T00:42:08Z" user="pavel" uid="1066" lat="49.1837030" lon="16.7525000">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="250131915" visible="true" version="1" changeset="251815" timestamp="2008-03-02T17:54:46Z" user="walley" uid="5013" lat="49.1839539" lon="16.7567347">
+  <tag k="created_by" v="JOSM"/>
+ </node>
+ <node id="1150919452" visible="true" version="1" changeset="7275445" timestamp="2011-02-13T13:44:25Z" user="Tombo" uid="379917" lat="49.1837069" lon="16.7525662"/>
+ <node id="1248472157" visible="true" version="1" changeset="7887534" timestamp="2011-04-17T14:58:17Z" user="Tombo" uid="379917" lat="49.1838813" lon="16.7555102"/>
+ <node id="5380294401" visible="true" version="1" changeset="55991924" timestamp="2018-02-02T10:39:21Z" user="LukasPolicky" uid="4120956" lat="49.1839907" lon="16.7573446"/>
+ <node id="7342671244" visible="true" version="1" changeset="82774877" timestamp="2020-03-29T10:36:04Z" user="Mar4s" uid="461574" lat="49.1839663" lon="16.7569407"/>
+ <node id="7342671246" visible="true" version="1" changeset="82774877" timestamp="2020-03-29T10:36:04Z" user="Mar4s" uid="461574" lat="49.1839368" lon="16.7564459"/>
+ <way id="676025530" visible="true" version="8" changeset="151776075" timestamp="2024-05-24T15:35:16Z" user="PizzaChips" uid="19627237">
+  <nd ref="74242202"/>
+  <nd ref="1150919452"/>
+  <nd ref="1248472157"/>
+  <nd ref="7342671246"/>
+  <nd ref="250131915"/>
+  <nd ref="7342671244"/>
+  <nd ref="5380294401"/>
+  <nd ref="74106873"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="70"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:right" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="source:maxspeed" v="sign"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

@@ -15,7 +15,7 @@ canvas{display:block;touch-action:none}   /* Stage 3D: the landscape takes one-f
 #stage{position:fixed;inset:0}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 button{font:inherit;color:inherit}
-:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}   /* Stage 8, 8H (A-6): 2 px (1 px until 8H: WCAG 2.4.7 met, under 2.4.13's 2 px); the accent is the theme's (dark on the paper map) */
 
 #boot{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;padding:16px;
   background:var(--ink);transition:opacity .8s ease}
@@ -232,7 +232,7 @@ ul.bul.claim-sides li{font-size:var(--t-ui);color:var(--text-muted);margin-botto
 #help[hidden]{display:none}
 #help-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer;min-width:24px;min-height:24px}
 .help-sheet{max-width:720px}
-#help-body:focus-visible,#modal-body:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+#help-body:focus-visible,#modal-body:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 /* roadmap step 3 (decision 134 (a)): the shortcuts switch, the layers panel's toggle row; its note in the interface face */
 #help-keys{margin:0 0 4px;width:100%}
 .sheet p.help-note{font-family:var(--sans);font-size:var(--t-small);line-height:1.45;color:var(--text-muted);margin:0 0 10px}
@@ -244,10 +244,14 @@ ul.bul.claim-sides li{font-size:var(--t-ui);color:var(--text-muted);margin-botto
   text-align:center;font-weight:400;background:rgba(var(--panel-rgb),.6)}
 .tb-help{min-width:32px;min-height:32px;font-weight:600;flex:0 0 auto}   /* in the timeline's control row, Study and Watch: no panel grows */
 
-#toast{position:fixed;left:calc(50% + var(--rail)/2);top:26px;transform:translateX(-50%);z-index:40;
+/* Stage 8, 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): centred over the free area, which is the window's but where the rail is docked and
+   shown (until 8H always offset by half the rail: on a phone it was pushed to the right edge and wrapped into a 102 px column); its own width,
+   within the screen; app.js placeToast moves it down below any control its box would cross (the presentation switch in Study) */
+#toast{position:fixed;left:50%;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;top:26px;transform:translateX(-50%);z-index:40;
   font-family:var(--serif);font-size:var(--t-prose);color:var(--text-hi);background:rgba(var(--scrim-rgb),.82);
   border:1px solid rgba(var(--accent-rgb),.38);padding:8px 18px;opacity:0;transition:opacity .8s ease;pointer-events:none}
 #toast.on{opacity:1}
+body.docked:not(.rail-hidden) #toast{left:calc(50% + var(--rail)/2);max-width:calc(100vw - var(--rail) - 24px)}
 /* roadmap step 5: the timeline's one tooltip (app.js timeTip), in place of the native title tooltips */
 #tltip{position:fixed;left:0;top:0;z-index:62;max-width:min(380px,calc(100vw - 16px));padding:5px 9px;
   font-family:var(--sans);font-size:var(--t-ui);line-height:1.4;color:var(--text-hi);background:rgba(var(--scrim-rgb),.96);
@@ -316,7 +320,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .chap[aria-current="true"]{color:var(--text-hi);border-left-color:var(--accent);background:rgba(var(--accent-rgb),.10)}
 .chap em{font-style:normal;font-size:var(--t-ui);color:var(--text-muted);font-variant-numeric:tabular-nums;flex:0 0 38px}
 .chap[aria-current="true"] em{color:var(--text-hi)}
-#chaptext h3{font-size:var(--t-ui);color:var(--text-hi);font-weight:400;margin:0 0 6px;border:0;padding:0;letter-spacing:0}
+#chaptext h2{font-size:var(--t-ui);color:var(--text-hi);font-weight:400;margin:0 0 6px;border:0;padding:0;letter-spacing:0}
 #chaptext .hh{font-size:var(--t-ui);color:var(--text-muted);font-variant-numeric:tabular-nums}
 #chaptext .prose{font-size:var(--t-prose);line-height:1.6}
 .chapfeat{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
@@ -383,7 +387,7 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
   opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease}
 .ev-mark::after{content:"";position:absolute;inset:-6px;display:block}
 .ev-mark:hover{transform:translateX(-50%) rotate(45deg) scale(1.5);opacity:1}
-.ev-mark:focus-visible{outline:1px solid var(--accent);outline-offset:3px;opacity:1}
+.ev-mark:focus-visible{outline:2px solid var(--accent);outline-offset:3px;opacity:1}
 .ev-mark.fr{background:var(--side-fr)}
 .ev-mark.al{background:var(--side-al)}
 .ev-mark.dec{background:var(--ink);border:2px solid var(--side-al);width:10px;height:10px;top:1px}
@@ -396,7 +400,7 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
 .ev-mark.inth{opacity:1;outline:1px solid var(--text-hi);outline-offset:3px}
 .step.inth{box-shadow:inset 0 -2px 0 var(--text-hi)}
 .step.inth[aria-current="true"]{box-shadow:inset 0 2px 0 var(--accent),inset 0 -2px 0 var(--text-hi)}
-.ev-mark.inth:focus-visible{outline-color:var(--accent)}
+.ev-mark.inth:focus-visible{outline:2px solid var(--accent)}   /* 8H: focused, 2 px in the accent, apart from its 1 px in-the-hour ring */
 /* Stage 5C (docs/STAGE5_SPEC.md section C.3; decision 89): an interval's window as a bar from its start (where its diamond stands) to its
    end, in the side's colour at full strength (3:1 against the timebar in both themes), in one of four lanes at the top of the event row,
    under the diamonds; lit with its marker */
@@ -457,10 +461,10 @@ body.pm-map #restore{display:block}
 .planblock{margin-bottom:20px;padding-left:10px;border-left:2px solid var(--line-2)}
 .planblock.plan-fr{border-left-color:var(--side-fr)}
 .planblock.plan-al{border-left-color:var(--side-al)}
-.planblock h3{font-size:var(--t-prose);color:var(--text-hi);font-weight:400;margin:0 0 5px;
+.planblock h2{font-size:var(--t-prose);color:var(--text-hi);font-weight:400;margin:0 0 5px;
   font-family:var(--serif);border:0;padding:0;letter-spacing:0}
 .planauth{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0 0 10px}
-.planblock h4{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:12px 0 5px}
+.planblock h3{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:12px 0 5px}
 .planblock .prose{font-size:var(--t-prose);line-height:1.6;margin:0}
 .planblock .kv{grid-template-columns:1fr;gap:2px}
 .planblock .kv dt{color:var(--text);font-size:var(--t-small)}
@@ -483,7 +487,7 @@ body.pm-map #restore{display:block}
 /* event ticks on the scrub rail */
 /* what changed in this phase */
 #d-changes{margin-top:9px;border-top:1px solid var(--line);padding-top:7px}
-#d-changes h4{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:0 0 5px}
+#d-changes h3{font-size:var(--t-micro);color:var(--text-muted);letter-spacing:.06em;font-weight:400;margin:0 0 5px}
 #d-changes ul{list-style:none;margin:0;padding:0}
 #d-changes li{font-size:var(--t-ui);color:var(--text-muted);line-height:1.5;padding:2px 0;
   display:grid;grid-template-columns:auto 1fr;gap:7px}
@@ -1509,7 +1513,8 @@ $Id$
      the clock, one caption line, Watch's presentation switch, the speeds, the scale) and one track on one time axis: the act
      bands, the phase ticks with their labels, and the rail (hour ticks, the event markers, the playhead). The situation's
      readings and the live event's reason moved to the top of the Now tab (inside the dispatch). -->
-<div class="timebar">
+<!-- Stage 8, 8H (docs/FINAL_AUDIT.md A-6): the timeline a named region (a landmark), the map layer in the page's main landmark (below) -->
+<section class="timebar" aria-label="Timeline">
   <div id="prog"><i></i></div>
   <div class="tb-top">
     <!-- roadmap step 5 (docs/VISUAL_AUDIT.md, low; question 208, the default meanwhile): the event steps in the media players' order, the
@@ -1551,7 +1556,7 @@ $Id$
     </div>
     <div class="evmarks" id="evmarks" role="group" aria-label="Events"></div>
   </div>
-</div>
+</section>
 
 <aside class="drawer" id="drawer" aria-label="Dossier">
   <div class="dbar"><button id="drawer-back" type="button">&lsaquo; Back to <span id="drawer-back-to">Now</span></button>
@@ -1612,7 +1617,7 @@ $Id$
 
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
-<div id="maplayer" role="group" aria-label="The map: formations, events and places"></div>
+<main id="map-main"><div id="maplayer" role="group" aria-label="The map: formations, events and places"></div></main>
 <!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
 <div id="eyecap" class="eyecap" hidden></div>
 
@@ -1823,6 +1828,8 @@ var GEOREF = (function(){
   /* ---- horizontal scale: the only one ---- */
   var KM_PER_MAP   = 1/K;          /* 0.03160 km per map unit           */
   var MAP_PER_WORLD= 2;            /* W(): one world unit = two map units */
+  var WORLD_ORIGIN = [340,250];    /* W(): the map point at the world's origin, the field's centre (world.js W, regionalH's inverse and
+                                      app.js SUN_DAY read it here since Stage 8's 8H, docs/FINAL_AUDIT.md G-2; until then each typed it) */
   var UNITS_PER_KM = K/MAP_PER_WORLD;     /* world units per km         */
   var M_PER_WORLD  = 1000/UNITS_PER_KM;   /* metres per world unit      */
 
@@ -1904,6 +1911,7 @@ var GEOREF = (function(){
     toMap:toMap, toGeo:toGeo, mapToEN:mapToEN,
     K:K, ROT_DEG:ROT, NORTH:NORTH,
     KM_PER_MAP:KM_PER_MAP, UNITS_PER_KM:UNITS_PER_KM, M_PER_WORLD:M_PER_WORLD,
+    MAP_PER_WORLD:MAP_PER_WORLD, WORLD_ORIGIN:Object.freeze(WORLD_ORIGIN.slice()),
     V_M_PER_UNIT:V_M_PER_UNIT, DATUM_M:DATUM_M, EXAG:EXAG, elevM:elevM, unitsFromM:unitsFromM,
     kmBetween:kmBetween, bearingDeg:bearingDeg, compass8:compass8, northingKm:northingKm,
     place:function(id){ return GT[id].map.slice(); }
@@ -3751,7 +3759,7 @@ var BUILDINGS = {
       note:"readings T3.13, T1.12"},
     chateau:{v:"Mit der Hauptfronte, an die sich zu beiden Seiten Flügel anschließen, ist es gegen SW. gekehrt, und hat (mit Einschluß des untern), 3 Stockwerke",
       en:"its main front, with a wing at each end, facing south-west; three storeys", src:"wolny1836", at:"p. 152 (leaf n219)", gr:"B", lab:"inference", q:"ist es gegen SW. gekehrt",
-      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within a quarter-turn of the bearing its own place has from the church's today (west-south-west, places.md) where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point)",
+      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within 22.5 degrees of the bearing its own place has from the church's today (236 degrees, west-south-west, places.md), its centre in the town's place and no road or stream of this map's between them, where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point)",
       note:"readings T1.13, T2.15"}
   },
   /* what the sources name and the map does not draw, each with why and the alternatives put to the owner (docs/STAGE8_SPEC.md section 19) */
@@ -4832,7 +4840,7 @@ function ctex(cv){
   t.generateMipmaps=false; t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;
   return t;
 }
-function W(mx,my){ return [(mx-340)*0.5, (my-250)*0.5]; }
+function W(mx,my){ var o=GEOREF.WORLD_ORIGIN, k=GEOREF.MAP_PER_WORLD; return [(mx-o[0])/k, (my-o[1])/k]; }   /* since 8H (G-2) GEOREF's factor and origin, not typed: the same numbers (a division by 2 is exact as the product by 0.5 was) */
 function M2W(pts){ return pts.map(function(p){ return W(p[0],p[1]); }); }
 
 var UNITS_PER_KM = GEOREF.UNITS_PER_KM;   /* from geo.js: the only scale */
@@ -4998,7 +5006,7 @@ var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
    from the local relief, because the floor, the land-cover thresholds and the pond levels are
    calibrated on local relief and must keep their meaning. World units, before the 1.2 factor. */
 function regionalH(x,z){
-  var nk=GEOREF.mapToEN(x*2+340,z*2+250)[1];                 /* true northing, km           */
+  var nk=GEOREF.mapToEN(x*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[0],z*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[1])[1];   /* true northing, km (W's inverse by GEOREF's own factor and origin since 8H, G-2) */
   var dv=Math.min(polyDist(x,z,LITAVA),polyDist(x,z,BROOKS[BROOKS.length-1]));
   return 0.51*smoothstep(3.0,6.0,nk) + 0.37*nk - 3.16*Math.exp(-(dv*dv)/625);
 }
@@ -5317,10 +5325,13 @@ function groundGeometry(){
   scaleGround(geo);
   return geo;
 }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md P-4): buildWorld's phases timed once at the start, in milliseconds (read by app.js's BOOTMS) */
+var WORLDMS={};
 function buildWorld(scene){
-  buildCover();
-  buildGrid();
-  buildCoverMl();
+  var tw=(typeof performance!=="undefined")?performance.now():0, wm=function(k){ if(typeof performance!=="undefined") WORLDMS[k]=Math.round((performance.now()-tw)*10)/10; };
+  buildCover(); wm("cover");
+  buildGrid(); wm("grid");
+  buildCoverMl(); wm("coverMl");
 
   var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
   var sctx=sc.getContext("2d");
@@ -5331,7 +5342,7 @@ function buildWorld(scene){
     new THREE.MeshBasicMaterial({map:ctex(sc),side:THREE.BackSide,fog:false,depthWrite:false}));
   scene.add(domeMesh);
 
-  var geo=groundGeometry();
+  var geo=groundGeometry(); wm("groundGeometry");
   (function(){
     var cov=new Float32Array(FACE.n*3);
     for(var f=0;f<FACE.n;f++){
@@ -5351,18 +5362,18 @@ function buildWorld(scene){
   groundMesh.material.userData.grain=groundMesh.material.map;
   groundMesh.receiveShadow=true;
   scene.add(groundMesh);
-  applyGround();
+  applyGround(); wm("ground");
 
-  buildWater(scene);
-  buildRoads(scene);
-  buildSettlements(scene);
-  buildWoods(scene);
+  buildWater(scene); wm("water");
+  buildRoads(scene); wm("roads");
+  buildSettlements(scene); wm("settlements");
+  buildWoods(scene); wm("woods");
   apronMesh=buildApron(scene);
   buildContours(scene);
   buildMarshSymbols(scene);
   buildAnalysis(scene);
   buildMist(scene);
-  buildPaperSymbols(scene);
+  buildPaperSymbols(scene); wm("rest");
 
   return {ground:groundMesh, apron:apronMesh, dome:domeMesh, mist:mistGroup, trees:treeMesh, conifers:coniferMesh, scrub:scrubMesh,
           houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, iceRims:iceRims, roads:roadMeshes,
@@ -6271,7 +6282,8 @@ function roofTexture(){
    they and the topographies of 1793-1861 say, each claim graded for 1805; the sketches' pattern applied to 1805 by inference): each village's
    farmsteads front onto the drawn roads through it, on both sides, from its point outward (where those do not hold them, onto its streams'
    banks, then a lane through or beside its point); each farmstead an L, a long range back along the plot's northern boundary and a range
-   along the street, with a building at the back of the yard on the share of plots its sketch shows. The build's number of houses (VILLAGES)
+   along the street (its long range alone where the street leaves the range along it no room: 27 of 177 on 8G's build, 26 since 8H, counted in the
+   dossiers since 8H), with a building at the back of the yard on the share of plots its sketch shows. The build's number of houses (VILLAGES)
    is each village's number of farmsteads, at the first size where they stand and smaller only in the tight spots (v8Sizes); the ranges along
    the street and the buildings at the back are added. Every building's centre stands in the village's place (the paper map's footprint,
    covVill above PAPER_SYM.village.level) and its corners within that place's margin (VILL8G.margin), clear of the drawn roads, streams and
@@ -6312,8 +6324,13 @@ var BLD8G={
   fence:{len:0.62, h:0.3, inset:0.3},      /* a fence's panel, its height, its line inside the village's edge */
   wall:{h:0.34, th:0.12, margin:0.45},     /* the churchyard's wall: height, thickness, its distance from the church */
   castle:{w:7.6, d:5.8, west:1.35, east:2.3, ns:1.2, h:[1.15,2.05]},   /* the Sokolnitz castle (79.6 by 60.0 m in 1825, its east range the deepest) */
-  chateau:{w:5.6, d:1.5, wing:[1.4,2.6], h:2.0, near:10, bearing:236}  /* the Austerlitz château: its main range, its wings, how far from its church it is sought, its
-                                                                         bearing from the church today (places.md: 143 m at 236 degrees, RÚIAN buildings 13846744, 39712834) */
+  chateau:{w:5.6, d:1.5, wing:[1.4,2.6], h:2.0, near:10, bearing:236, tol:22.5}
+  /* the Austerlitz château: its main range, its wings, how far from its church it is sought, its bearing from the church today (places.md:
+     143 m at 236 degrees, RÚIAN buildings 13846744, 39712834) and how far from that bearing it may be drawn. Since 8H (docs/STAGE8_SPEC.md section
+     20.3) an octant, half a compass point each way: the sources name the two's relation in words ("nahe am Schloße", the church at the square's
+     north side, 1860; the château's front "gegen SW.", 1836) and the survey's centroids put it within a few degrees (a few metres on 143 m); the
+     symbols, at the building scale, cannot stand 143 m apart, so their distance is a convention and their bearing is what is kept. 8G drew it within
+     a quarter-turn, which admitted 86.5 degrees off (north-west of the church) */
 };
 var BLDG=null;   /* the buildings drawn (buildSettlements): one record each, read by layBuildings and the self-test */
 function v8Rnd(seed){ var s=seed>>>0; return function(){ s=(s*1664525+1013904223)%4294967296; return s/4294967296; }; }
@@ -6437,7 +6454,9 @@ function churchPlan8g(v,trees,extra){
   var C8=VILL8G.church, k=kind==="chapel"?CHAPEL8G:1, yard=v[0]==="Telnitz"?BLD8G.wall.margin+BLD8G.wall.th:0, n=v8North(), tN=Math.atan2(n[1],n[0]);
   var mk=kind==="temple"?function(x,z){ return v8Rect(x,z,tN,2.75,1.25); }   /* the temple whole (templeParts8g): its pediment's front 2.72 south of its point, its tower's back 2.70 north */
     :function(x,z){ return v8Rect(x+C8.dx*k*Math.cos(0.1),z-C8.dx*k*Math.sin(0.1),-0.1,C8.a*k+yard,C8.b*k+yard); };
-  var all=v8NearAll(cc,mk,function(R){ return v8Why(R,ctx); },ctx,5.0,V8CANDS);
+  /* the temple's every clear place within 5 units (since 8H: the town's church takes the least move that leaves its château a place within
+     its tolerance, planBuildings8g); the others' nearest V8CANDS */
+  var all=v8NearAll(cc,mk,function(R){ return v8Why(R,ctx); },ctx,5.0,kind==="temple"?0:V8CANDS);
   all.forEach(function(c){ c.kind=kind; c.scale=k; });
   return all; }
 /* a village's fronts and the drawn obstacles' segments within its reach: pure functions of its place, kept for its plans */
@@ -6557,24 +6576,31 @@ function castlePlan8g(trees){
   return {parts:m1?cas.concat(m2?farm:[]):[], moved:m1, farmMoved:m2}; }
 /* the château at Austerlitz as Wolny (1836) gives it: its main front to the south-west, a wing at each end (drawn running back from the
    front), three storeys; the church stands "nahe am Schloße" at the north side of the square (the church topography, 1860), the château today
-   west-south-west of it (places.md, the modern cadastre: BLD8G.chateau.bearing). The drawn road and the Litava take that side of the drawn
-   church at the building scale, so the château is drawn at the nearest place within a quarter-turn of that bearing that clears them, the trees
-   and the church (a quarter unit at a time on 48 bearings; at one distance the place standing farthest clear, v8Margin): a layout */
+   west-south-west of it (places.md, the modern cadastre: BLD8G.chateau.bearing). Drawn at the nearest place within BLD8G.chateau.tol of that
+   bearing (since 8H an octant; 8G's quarter-turn admitted the château north-west of its church) that clears the drawn roads, streams, trees and
+   the church, its centre in the town's place, and no drawn road or stream between it and its church (they stand together at the square's north
+   end): a quarter unit at a time on 96 bearings; at one distance the bearing nearest its own, then the place standing farthest clear
+   (v8Margin): a layout. None (empty parts) where no such place lies within BLD8G.chateau.near: planBuildings8g then tries the church's next place */
 function chateauPlan8g(ch,trees){
   var B=BLD8G.chateau, n=v8North(), e=v8East(), sw=[-(e[0]+n[0])/Math.SQRT2,-(e[1]+n[1])/Math.SQRT2], along=[-sw[1],sw[0]], tF=Math.atan2(along[1],along[0]), tW=Math.atan2(sw[1],sw[0]);
   function parts(c){ var P=[{R:v8Rect(c[0],c[1],tF,B.w/2,B.d/2), h:B.h, part:"chateau main range"}];
     [-1,1].forEach(function(s){ var x=c[0]+along[0]*s*(B.w/2-B.wing[0]/2)-sw[0]*(B.d/2+B.wing[1]/2), z=c[1]+along[1]*s*(B.w/2-B.wing[0]/2)-sw[1]*(B.d/2+B.wing[1]/2);
       P.push({R:v8Rect(x,z,tW,B.wing[1]/2,B.wing[0]/2), h:B.h, part:"chateau wing"}); });
     return P; }
-  var ctx={placed:[{R:ch.R}], segs:v8NearSegs([ch.x,ch.z],B.near+8), trees:trees.filter(function(t){ return Math.hypot(t[0]-ch.x,t[2]-ch.z)<B.near+12; })};
+  var segs=v8NearSegs([ch.x,ch.z],B.near+8), ctx={placed:[{R:ch.R}], segs:segs, trees:trees.filter(function(t){ return Math.hypot(t[0]-ch.x,t[2]-ch.z)<B.near+12; })};
   for(var r=0.25;r<=B.near+1e-9;r+=0.25){ var best=null;
-    for(var q=0;q<48;q++){ var a=q/48*Math.PI*2, de=Math.cos(a)*r, dn=Math.sin(a)*r, az=Math.atan2(de,dn)*180/Math.PI;
-      if(Math.abs(((az-B.bearing)%360+540)%360-180)>90+1e-9) continue;   /* within a quarter-turn of its bearing today */
-      var c=[ch.x+e[0]*de+n[0]*dn, ch.z+e[1]*de+n[1]*dn], P=parts(c), m=Infinity, ok=true;
+    for(var q=0;q<96;q++){ var a=q/96*Math.PI*2, de=Math.cos(a)*r, dn=Math.sin(a)*r, az=(Math.atan2(de,dn)*180/Math.PI+360)%360, dev=Math.abs(((az-B.bearing)%360+540)%360-180);
+      if(dev>B.tol+1e-9) continue;   /* within the tolerance of its bearing today */
+      var c=[ch.x+e[0]*de+n[0]*dn, ch.z+e[1]*de+n[1]*dn];
+      if(!v8Foot(c[0],c[1])) continue;   /* its centre in the town's place */
+      if(v8Between(ch.x,ch.z,c[0],c[1],segs)) continue;   /* no drawn road or stream between it and its church */
+      var P=parts(c), m=Infinity, ok=true;
       for(var i=0;i<P.length&&ok;i++){ if(v8Clear(P[i].R,ctx)) ok=false; else m=Math.min(m,v8Margin(P[i].R,ctx)); }
-      if(ok&&(!best||m>best.m+1e-9)) best={P:P, m:m, moved:{dx:c[0]-ch.x, dz:c[1]-ch.z, off:r, de:de, dn:dn}}; }
+      if(ok&&(!best||dev<best.dev-1e-9||(Math.abs(dev-best.dev)<=1e-9&&m>best.m+1e-9))) best={P:P, m:m, dev:dev, moved:{dx:c[0]-ch.x, dz:c[1]-ch.z, off:r, de:de, dn:dn, az:az, dev:dev}}; }
     if(best) return {parts:best.P, moved:best.moved}; }
   return {parts:[], moved:null}; }
+/* does a drawn road's or stream's centre line (v8NearSegs) cross the segment between two points? */
+function v8Between(ax,az,bx,bz,segs){ for(var k=0;k<segs.length;k++){ var s=segs[k]; if(v8Cross(ax,az,bx,bz,s.ax,s.az,s.bx,s.bz)) return true; } return false; }
 /* the church at Austerlitz as the church topography (1860) describes it, finished in 1790: a temple's front, six columns under a pediment,
    its portico to the south and its altar to the north, its one tower behind the altar no higher than its tiled roof; drawn in place of the
    build's spired church there (BUILDINGS.austerlitz.church). Sizes DESIGN; its axis true north-south */
@@ -6627,12 +6653,15 @@ function planBuildings8g(trees){
     /* the church at the least move that clears it and leaves the village its farmsteads (of its places clear, the nearest first; at
        Austerlitz the château with it), the farmsteads planned from their first size where one of those places lets the village hold them all,
        else from the next (v8PlanAt: each plot smaller only where it must be): the farmsteads' size kept before the church's least move */
-    var cands=(churchPlan8g(v,trees,extra)||[]).slice(0,V8CANDS), ch=null, chat=null, P=null, done=false;
+    var cands=churchPlan8g(v,trees,extra)||[], ch=null, chat=null, P=null, done=false, cts=[];
+    if(!(cands.length&&cands[0].kind==="temple")) cands=cands.slice(0,V8CANDS);
+    /* at Austerlitz (since 8H) a place of the church is taken only where its château finds a place within its tolerance (chateauPlan8g) */
     for(var k=0; k<3&&!done; k++) for(var ci=0; ci<Math.max(1,cands.length)&&!done; ci++){ var c=cands[ci]||null, ex=extra.slice(), ct=null;
-      if(c&&c.kind==="temple"){ ct=chateauPlan8g(c,trees); ct.parts.forEach(function(p){ ex.push({R:p.R}); }); }
+      if(c&&c.kind==="temple"){ ct=cts[ci]||(cts[ci]=chateauPlan8g(c,trees)); if(!ct.parts.length) continue; ct.parts.forEach(function(p){ ex.push({R:p.R}); }); }
       var Q=villagePlan8g(v,trees,ex,c,k);
       if(!P||Q.farms.length>P.farms.length){ P=Q; ch=c; chat=ct; }
       if(P.farms.length>=v[3]) done=true; }
+    if(!P){ ch=cands[0]||null; chat=null; P=villagePlan8g(v,trees,extra.slice(),ch,0); }   /* no place of the church leaves the château one: the town without it (the self-test fails it) */
     if(chat) chat.parts.forEach(function(p){ extra.push({R:p.R}); });
     if(chat) chat.parts.forEach(function(p){ L.push({R:p.R, h:p.h, roof:"tile", wall:"plaster", part:p.part, village:v[0], landmark:true}); });
     if(ch){
@@ -6825,6 +6854,7 @@ function buildWoods(scene){
   var BARE=LAND_COL.bare;
   byVar.forEach(function(list,vi){
     var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,list.length));   /* 8F: both faces (the open shells) */
+    treeNear(im.material,1/TREE8F.shrink);   /* 8H: the crowns closing near the eye */
     im.castShadow=true; im.count=Math.max(1,list.length);
     list.forEach(function(t,k){
       d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -6874,6 +6904,7 @@ function buildWoods(scene){
     }
   });
   scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrub.length));   /* 8F: both faces */
+  treeNear(scrubMesh.material,1/TREE8F.scrubShrink);   /* 8H: the crowns closing near the eye */
   scrubMesh.castShadow=false; scrubMesh.receiveShadow=true;
   scrub.forEach(function(t,k){
     d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -6928,13 +6959,13 @@ function treeKit(){
            {T:0.8, cr:[[3,[0,1.6,0],[1.55,0.85,1.45]],[1,[0.8,1.7,0],[0.7,0.55,0.7]],[2,[-0.75,1.65,0.3],[0.65,0.5,0.65]]]}, /* squat, wide-spreading */
            {T:1.2, cr:[[2,[0,2.4,0],[0.62,1.5,0.62]],[3,[0,3.5,0],[0.45,0.8,0.45]]]}];                                     /* poplar-like, narrow and tall */
   _kit={
-    broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); h.cr.forEach(function(C){ treeShell(P,C[0],C[1],C[2],TREE8F.keep,TREE8F.shrink); }); return treeGeo(P); }),
+    broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); var a=P.length; h.cr.forEach(function(C){ treeShell(P,C[0],C[1],C[2],TREE8F.keep,TREE8F.shrink); }); return treeNearGeo(treeGeo(P),P,a); }),
     conifer:[
       mergeParts([T(0.6),{geo:cone,p:[0,2.3,0],s:[0.95,3.4,0.95]},{geo:cone,p:[0,1.35,0],s:[1.25,1.4,1.25]}]),
       mergeParts([T(0.9),{geo:cone,p:[0,3.0,0],s:[0.8,4.2,0.8]}])
     ],
-    scrub:(function(){ var P=[]; treePrism(P,[0,0,0],[0.05,0.55,0],0.05,0.02,3); treePrism(P,[0.1,0,0.05],[0.55,0.45,0.2],0.04,0.016,3);
-      treeShell(P,1,[0,0.5,0],[1,0.6,0.9],TREE8F.scrubKeep,TREE8F.scrubShrink); treeShell(P,1,[0.6,0.4,0.2],[0.6,0.45,0.55],TREE8F.scrubKeep,TREE8F.scrubShrink); return treeGeo(P); })()
+    scrub:(function(){ var P=[]; treePrism(P,[0,0,0],[0.05,0.55,0],0.05,0.02,3); treePrism(P,[0.1,0,0.05],[0.55,0.45,0.2],0.04,0.016,3); var a=P.length;
+      treeShell(P,1,[0,0.5,0],[1,0.6,0.9],TREE8F.scrubKeep,TREE8F.scrubShrink); treeShell(P,1,[0.6,0.4,0.2],[0.6,0.45,0.55],TREE8F.scrubKeep,TREE8F.scrubShrink); return treeNearGeo(treeGeo(P),P,a); })()
   };
   return _kit;
 }
@@ -6967,6 +6998,30 @@ function treeLimbs(P,h,vi){
         treePrism(P,tip,[c[0]+Math.cos(b)*s[0]*0.88*(ci===0?1:0.7), c[1]+up*s[1]*0.8, c[2]+Math.sin(b)*s[2]*0.88*(ci===0?1:0.7)],0.04,0.014,3,b); } } });
 }
 function treeGeo(P){ var g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferAttribute(P,3)); g.computeVertexNormals(); return g; }
+/* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.10; 8F's item 4, the crowns close to the eye): near the eye each kept face of a
+   crown grows back toward its full size about its own centre, so that close up a crown reads as a volume of facets rather than separate shards
+   and shimmers less under a small move (the frame's pixels changed by half a pixel's move, 8F's measure taken over the whole frame, 10,616 to
+   7,663 in a view among the crowns, section 20.10): the face at 8F's shrink (TREE8F.shrink, scrubShrink) beyond TREE8H.far units from the eye,
+   at its full size within TREE8H.near, eased between; in the vertex shader, the same triangles, instances and draw calls (8F's triangles a tree
+   kept). The shadows are the built crowns' (the depth material is three's own: the sun's eye is never near). Design values */
+var TREE8H={near:5, far:16, U:{uTreeNear:{value:1}}};   /* U: the hook's one uniform, shared (1 as built; the self-test sets it to 0 for a frame to compare) */
+/* each crown triangle's centre (its face's: 8F's shrink about the face's own centre keeps it), the limbs' and the trunk's vertices their own
+   (from the shells' first float, a, on) */
+function treeNearGeo(g,P,a){ var C=new Float32Array(P.length); C.set(P);
+  for(var i=a;i+8<P.length;i+=9) for(var k=0;k<3;k++){ var c=(P[i+k]+P[i+3+k]+P[i+6+k])/3; C[i+k]=c; C[i+3+k]=c; C[i+6+k]=c; }
+  g.setAttribute("aFC",new THREE.Float32BufferAttribute(C,3)); return g; }
+/* the hook on a crown's material: the vertex moved from its face's centre by mix(1, 1/shrink, g), g the eye's nearness (0 beyond far, 1 within near) */
+function treeNear(mat,inv){
+  mat.onBeforeCompile=function(sh){
+    if(typeof atmoUniforms==="function") atmoUniforms(sh);   /* the atmosphere's uniforms (app.js), as every material gets them */
+    sh.uniforms.uTreeNear=TREE8H.U.uTreeNear;
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nattribute vec3 aFC; uniform float uTreeNear;")
+      .replace("#include <begin_vertex>","#include <begin_vertex>\n#ifdef USE_INSTANCING\nvec4 tnW=modelMatrix*instanceMatrix*vec4(aFC,1.0);\n#else\nvec4 tnW=modelMatrix*vec4(aFC,1.0);\n#endif\n"+
+        "float tnG=clamp(("+glslF(TREE8H.far)+"-distance(tnW.xyz,cameraPosition))/"+glslF(TREE8H.far-TREE8H.near)+",0.0,1.0); tnG=tnG*tnG*(3.0-2.0*tnG);\n"+
+        "transformed=aFC+(transformed-aFC)*mix(1.0,"+glslF(+inv.toFixed(6))+",tnG*uTreeNear);");
+  };
+  mat.customProgramCacheKey=function(){ return "tree-near-"+inv.toFixed(6); };
+  return mat; }
 
 var CONTOUR_INTERVAL=1.5, CONTOUR_INDEX=4;
 /* the ground continues beyond the field, coarsely, until the fog takes it */
@@ -7471,7 +7526,8 @@ var selection=null, freeCam=false;
    holds a phase change's light and overlay fade; the camera slot holds a glide, a phase's camera arc or an eased move of the
    paper map. Each step returns true when it has ended. A phase change replaces the camera move only when it moves the camera
    itself (Follow on): before, it assigned `tween` and dropped any glide in flight, so a centring or a double-click made while
-   the battle played was lost at the next phase boundary. Setting `tween=null` (a placement, the tools) still stops both. */
+   the battle played was lost at the next phase boundary. Setting `tween=null` (a placement, the tools) still stops both; since 8H the app's own
+   stop (a relief change, redrawGround) is stopTweens, which clears the slots too (S-7). */
 var _tw={scene:null,cam:null};
 function _runTween(now){
   var s=_tw.scene, c=_tw.cam;
@@ -7484,6 +7540,10 @@ function setTween(slot,fn){
   _tw[slot]=fn||null;
   tween=(_tw.scene||_tw.cam)?_runTween:(tween===_runTween?null:tween);
 }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md S-7): stop the tween where it is, both slots with it (endTweens, 8C's, runs them to their ends instead).
+   A bare `tween=null` stopped the steps but left the slots set: followActive reads the camera's (`!_tw.cam`), so after a relief change
+   during a glide (redrawGround) Follow stayed idle under Play until the next phase boundary's setTween cleared it */
+function stopTweens(){ tween=null; _tw.scene=null; _tw.cam=null; }
 var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:false,skeleton:false,routes:false};   /* confidence: Stage 5B, decision 85, on; since Stage 8, implementation PR 8B (decision 239), the setting of the presentation shown (CONF_ON): off at first on the landscape, where the app opens; skeleton: Stage 5D, off; routes: Stage 5F, off (decision 93) */
 var goingOn=false;
 var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
@@ -7544,7 +7604,7 @@ var LIGHT={
    not established). tools/stage4/ephem.js is the same computation, used by the measurement scripts (one coefficient is
    written 1.9993e-2 here, so geo-test.js's search for the retired map scale's digits does not take it for one). */
 var SUN_DAY=(function(){
-  var ll=GEOREF.toGeo(340,250), LAT=ll[0], LON=ll[1], D2R=Math.PI/180, R2D=180/Math.PI;   /* the field's centre, W(0,0) */
+  var ll=GEOREF.toGeo(GEOREF.WORLD_ORIGIN[0],GEOREF.WORLD_ORIGIN[1]), LAT=ll[0], LON=ll[1], D2R=Math.PI/180, R2D=180/Math.PI;   /* the field's centre, W(0,0): GEOREF's origin since 8H (G-2) */
   function jd(y,m,d){ if(m<=2){ y--; m+=12; } var A=Math.floor(y/100), B=2-A+Math.floor(A/4);
     return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5; }
   var JD0=jd(1805,12,2);
@@ -7727,9 +7787,12 @@ function placeLights(){
    On the paper map neither is drawn. Line of sight, the viewshed and the knowledge model are not touched. */
 var ATMO={HS:400, M0:200, EDGE:6, FOG_EASE:20, FOG_SINK:20, FOG_VIS_KM:0.2, CAP:0.55,
   FOG_TOP_H:-0.8,   /* the knowledge model's threshold (knowledgeOf: hAt(p) < -0.8), model units */
-  u:{uAtmoA:{value:new THREE.Vector4(4,243.1,63.2,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
-     uAtmoC:{value:new THREE.Vector4(238.2,15,0,0)}, uAtmoV:{value:new THREE.Color(LIGHT_RIG.atmo0[0],LIGHT_RIG.atmo0[1],LIGHT_RIG.atmo0[2])}}};
+  /* the uniforms' first values (applyAtmo writes them every frame): since 8H (G-2) the scale's and the fog top's from GEOREF and DISPLAY, below,
+     not typed (243.1, 63.2 and 238.2 until 8H) */
+  u:{uAtmoA:{value:new THREE.Vector4(DISPLAY.defaultFactor,GEOREF.DATUM_M,GEOREF.M_PER_WORLD,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
+     uAtmoC:{value:new THREE.Vector4(0,15,0,0)}, uAtmoV:{value:new THREE.Color(LIGHT_RIG.atmo0[0],LIGHT_RIG.atmo0[1],LIGHT_RIG.atmo0[2])}}};
 ATMO.FOG_TOP=GEOREF.elevM(ATMO.FOG_TOP_H);
+ATMO.u.uAtmoC.value.x=ATMO.FOG_TOP;
 /* sigma, the extinction per world unit for a meteorological visibility in km (Koschmieder: 3.912 / V) */
 function atmoSigma(km){ return 3.912/km*GEOREF.M_PER_WORLD/1000; }
 /* the valley fog's amount at a clock: PHASES[].mist, each phase's value reached FOG_EASE minutes after its start */
@@ -7946,12 +8009,18 @@ function endTweens(){ var n=0; if(tween) mlReset("tween ended at once"); while(t
    rule 3) picked density 1.0 with the sun casting no shadow (below) for the low tier, a gain on the phone (about 1.5 times the frames a
    second in its heavy views), not a cure */
 function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1:2); }
+/* Stage 8, 8H (docs/FINAL_AUDIT.md P-4): the start's phases, timed once in milliseconds from init's start (BOOTMS; world.js's own phases in
+   WORLDMS, the relief and the land cover's grids among them), and the first frame's time from the page's start: read by
+   tools/stage8/startup-8h.js and the device route; nothing drawn or changed by it */
+var BOOTMS={};
+function bootMark(k,t0){ BOOTMS[k]=Math.round((performance.now()-t0)*10)/10; }
 function boot(){
   try{ init(); }
   catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
   if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.ok();   /* started: the guard's watch ends here at the latest */
 }
 function init(){
+  var tb=performance.now(); BOOTMS.initAt=Math.round(tb);
   scene=new THREE.Scene();
   scene.background=lin(LIGHT_RIG.bg0);
   scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);
@@ -7969,6 +8038,7 @@ function init(){
   renderer.toneMapping=THREE.NoToneMapping;
   document.getElementById("stage").appendChild(renderer.domElement);
   bindContextLoss(renderer.domElement);
+  bootMark("renderer",tb);
 
   camera=landCam=new THREE.PerspectiveCamera(37,window.innerWidth/window.innerHeight,1,1900);
   camera.position.set(-196,132,226);
@@ -7992,7 +8062,7 @@ function init(){
   sun.shadow.normalBias=0.35;
   scene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);
 
-  world=buildWorld(scene);
+  world=buildWorld(scene); bootMark("world",tb); if(typeof WORLDMS!=="undefined") BOOTMS.worldParts=WORLDMS;
   groundDetail(!lowTier);   /* Stage 8, 8F (decision 247 (a)): the near ground's detail, not on a low tier (decision 236: the phone's frame as P5 measured it) */
   setFXEnabled(true);
 
@@ -8000,11 +8070,11 @@ function init(){
   curOv=new THREE.Group(); overlayRoot.add(curOv);
 
   buildSunDisc();
-  buildFormations();
+  buildFormations(); bootMark("formations",tb);
   buildFeatureGlyphs();
   buildAnalysisLabels();
   buildEventLayer();
-  buildUI();
+  buildUI(); bootMark("ui",tb);
   mlInit();
 
   camera.lookAt(orbitTarget);
@@ -8012,12 +8082,13 @@ function init(){
   setClock(T_MIN,{instant:true,force:true});
   setCommandView("none");
   setPresentation("study");
-  openFirstRun();
+  openFirstRun(); bootMark("state",tb);
   var probs=auditMovement();
   if(probs.length){
     console.warn("Austerlitz movement audit: "+probs.length+" leg(s) need attention");
     probs.forEach(function(x){ console.warn("  ",x.id,x.leg,x.why,x.kmh?x.kmh.toFixed(2)+" km/h":""); });
   }
+  bootMark("init",tb);
   loop();
 
   /* decision 141: the boot screen lifts once the embedded faces have loaded (fontsReady); a fault after it still lifts the screen, and is thrown */
@@ -9881,7 +9952,7 @@ function redrawGround(change){
   rescaleWorld();
   hold.forEach(function(h){ h[0].y=displayHeight(h[0].x,h[0].z)+h[1]; });
   if(plateauRing) reseatGeometry(plateauRing);
-  tween=null; camArc=null;
+  stopTweens(); camArc=null;   /* Stage 8, 8H (S-7): both slots stopped with the tween; until 8H the camera's slot was left set, and Follow (followActive) stayed idle */
   landCam.lookAt(orbitTarget); clampCamera();
   rebuildOverlays(curPhase,true);
   if(planSide){ var ps=planSide, fc=freeCam; planSide=null; freeCam=true; setPlan(ps); freeCam=fc; }
@@ -11160,8 +11231,10 @@ function devMark(){ var r=renderer.info.render; return {calls:r.calls,triangles:
 var devOn=/[?&]stats\b/.test(location.search), _devT=0, _devSeat=0;
 function kfmt(n){ return n>=1e6?(n/1e6).toFixed(2)+"M":(n>=1e3?(n/1e3).toFixed(1)+"k":String(n)); }
 function paintDevStats(now){
+  if(!devOn&&paintDevStats.off) return;   /* Stage 8, 8H (P-3): the readout off and hidden: nothing read or written in a frame */
   var el=paintDevStats.el||(paintDevStats.el=document.getElementById("devstats")); if(!el) return;   /* roadmap step 5 (SW-13): found once */
   if(el.hidden===devOn) el.hidden=!devOn;
+  paintDevStats.off=!devOn;
   if(!devOn||now-_devT<500) return;
   var sec=_devT?(now-_devT)/1000:1; _devT=now;
   var fps=DEV.frames/sec, sk=DEV.skipped/sec, se=(SEAT_STATS.blocks-_devSeat)/sec;
@@ -11554,7 +11627,7 @@ function paintChapterText(){
     var nm=fid; FEATURES.forEach(function(x){ if(x.id===fid) nm=x.name; });
     return '<button class="linkb" data-feat="'+esc(fid)+'">'+esc(nm)+'</button>';
   }).join(" ");
-  host.innerHTML='<h3>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h3>'+
+  host.innerHTML='<h2>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h2>'+   /* Stage 8, 8H (A-6): an h2 under the rail's h1 (an h3 until 8H) */
     '<p class="prose">'+esc(c.text)+'</p>'+
     '<div class="chapfeat">'+feats+'</div>';
   host.querySelectorAll("[data-feat]").forEach(function(b){
@@ -11951,11 +12024,11 @@ function paintPlanText(){
   host.innerHTML = sides.map(function(sd){
     var P=PLANS[sd];
     return '<div class="planblock plan-'+sd+'">'+
-      '<h3>'+esc(P.name)+'</h3>'+
+      '<h2>'+esc(P.name)+'</h2>'+   /* Stage 8, 8H (A-6): the panel's heads h2 and h3 under the rail's h1 (h3 and h4 until 8H, a skipped level) */
       '<p class="planauth">'+esc(P.author)+'</p>'+
-      '<h4>Intent</h4><p class="prose">'+esc(P.intent)+'</p>'+
-      '<h4>What it assumed</h4><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
-      '<h4>Orders</h4><dl class="kvs">'+P.cols.map(function(c){
+      '<h3>Intent</h3><p class="prose">'+esc(P.intent)+'</p>'+
+      '<h3>What it assumed</h3><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
+      '<h3>Orders</h3><dl class="kvs">'+P.cols.map(function(c){
         return '<div class="kv"><dt>'+esc(c.n)+'</dt><dd>'+esc(c.ord)+'</dd></div>'; }).join('')+'</dl>'+
       '<p class="note">'+esc(P.cost)+'</p></div>';
   }).join('');
@@ -13274,14 +13347,25 @@ function poseBlock(rec,id,st){
   if(!u||!u.body) return;
   var f=rec.f, mr=f.track?marchRate(id,clock):null;
   var moving=!!(mr&&mr.moving);
+  /* Stage 8, 8H (the block wheeling on after a pause, docs/STAGE8_SPEC.md sections 18.10 item 2 and 20.4): the block's own eases (its shape, its
+     standards' dip, its turn toward its heading at its arm's rate, WHEEL, a loose body's sway) run only while the clock moves on under Play
+     (adv: the clock is not where this block was last posed); with the clock standing (paused, or a dwell's hold) the pose is held as last
+     drawn; a seek (every move of the clock but Play's own advance: GAIT.seek, 8F's count) or the block's first pose shows that clock's pose at
+     once (sk), as the gait does since 8F. Until 8H the eases ran in real time whatever the clock did: a block still turning when the clock was
+     paused went on turning, its shape and dip easing on, and after a seek a block eased from wherever it stood, so a clock's pose depended on
+     the path to it */
+  var sk=rec.pSeek!==GAIT.seek||rec.yaw===undefined, adv=rec.pClock!==clock;
+  rec.pSeek=GAIT.seek; rec.pClock=clock;
 
   var sh=shapeFor(st);
   var rate=ease(moving?0.075:0.045);
   /* Stage 8, 8G's verification (docs/STAGE8_SPEC.md section 19.1): within the threshold that stops asking for frames, each eased value takes
      its target exactly, so a block at rest is drawn the same in every frame (until 8G the easing went on below it, moving the blocks by about
      1e-9 a frame: enough, at a shadow's or a depth test's edge, to change a pixel of a frame with nothing moving) */
-  if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002){ settling=true; u.sw += (sh[0]-u.sw)*rate; u.sd += (sh[1]-u.sd)*rate; }
-  else { u.sw=sh[0]; u.sd=sh[1]; }
+  if(sk){ u.sw=sh[0]; u.sd=sh[1]; }
+  else if(adv){
+    if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002){ settling=true; u.sw += (sh[0]-u.sw)*rate; u.sd += (sh[1]-u.sd)*rate; }
+    else { u.sw=sh[0]; u.sd=sh[1]; } }
   /* column and line are re-layouts of the same men, not a stretched block; the re-seat itself
      happens in settleBlock, once the frame's scale and yaw are known too */
   if(u.showBattalions && f.strength && f.track && trackedDescendants(id).length){
@@ -13289,8 +13373,10 @@ function poseBlock(rec,id,st){
     if(kb!==u.shownBat) u.showBattalions(kb);
   }
   var lowered = (st==="broken"||st==="captured"||st==="encircled"||st==="repulsed") ? 0.95 : 0;
-  if(Math.abs(lowered-(u.tilt||0))>0.002){ settling=true; u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05); }
-  else u.tilt=lowered;
+  if(sk) u.tilt=lowered;
+  else if(adv){
+    if(Math.abs(lowered-(u.tilt||0))>0.002){ settling=true; u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05); }
+    else u.tilt=lowered; }
 
   if(u.skirmish) u.skirmish.visible = !!SKIRMISH[st] && (!moving || st==="advancing" || st==="pursuing");
   if(rec.pad){
@@ -13308,8 +13394,11 @@ function poseBlock(rec,id,st){
   if(want===null) want=enemyFacing(id);
   if(want===null) return;
   var want0=want;
-  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;   /* a broken body sways: ambient, not settling */
-  if(rec.yaw===undefined) rec.yaw=rec.block.rotation.y||0;
+  /* a seek or the first pose: the clock's own heading at once, its turns kept (a loose body's sway eases in under Play); the clock standing:
+     the turn and the sway held where they are (8H) */
+  if(sk){ rec.yaw=rec.yaw===undefined?want0:want0+Math.PI*2*Math.round((rec.yaw-want0)/(Math.PI*2)); return; }
+  if(!adv) return;
+  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;   /* a broken body sways while the clock plays: not settling */
   var diff=want-rec.yaw, d0=want0-rec.yaw;
   while(diff>Math.PI) diff-=Math.PI*2;
   while(diff<-Math.PI) diff+=Math.PI*2;
@@ -13748,6 +13837,10 @@ function fitOverview(c){
    The button and the vantages' pressed state are brought up to date every animation frame (and by the self-test). */
 var curVantage=null;
 function syncFollow(){
+  /* Stage 8, 8H (docs/FINAL_AUDIT.md P-3): called every animation frame, idle ones too; it touches the document only when what it shows
+     changed (Follow, the vantage): until 8H it read eight buttons' attributes in every frame */
+  if(syncFollow.fc===freeCam&&syncFollow.cv===curVantage) return;
+  syncFollow.fc=freeCam; syncFollow.cv=curVantage;
   var b=document.getElementById("follow"), on=String(!freeCam);
   if(b&&b.getAttribute("aria-pressed")!==on) b.setAttribute("aria-pressed",on);
   var vs=syncFollow.vs||(syncFollow.vs=document.querySelectorAll(".van-btn"));   /* roadmap step 5 (SW-13): the static buttons found once, not every frame */
@@ -13792,7 +13885,7 @@ var LANDCAM=(function(){
     dx=Math.max(-FX,Math.min(FX,orbitTarget.x+dx))-orbitTarget.x; dz=Math.max(-FZ,Math.min(FZ,orbitTarget.z+dz))-orbitTarget.z;
     orbitTarget.x+=dx; orbitTarget.z+=dz; E.x+=dx; E.z+=dz;
     clampCamera(); landCam.lookAt(orbitTarget); free();
-    stats.moves++; stats.ms+=performance.now()-a; requestRender(2); return true;
+    var dm=performance.now()-a; stats.moves++; stats.ms+=dm; (stats.t||(stats.t=[])).push(dm); if(stats.t.length>512) stats.t.shift(); requestRender(2); return true;   /* Stage 8, 8H (T-7): each move's time kept, the last 512 */
   }
   function panEnd(){ if(grab){ grab=null; anchor(); requestRender(2); } }
   function zoomAt(sx,sy,k){
@@ -14953,7 +15046,8 @@ function paintChanges(phIdx){
   if(!items.length){ host.innerHTML=""; return; }
   items.sort(function(a,b){ return a.rank-b.rank; });
   items=items.slice(0,7);
-  host.innerHTML='<h4>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h4><ul>'+
+  host.innerHTML='<h3>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h3><ul>'+   /* Stage 8, 8H (A-6): an h3 under the dispatch's h2 (an h4 until 8H, a skipped level) */
+    ''+
     items.map(function(it){
       return '<li><i style="background:'+NATION[FORMATIONS[it.id].nation].fill+'"></i>'+
              '<span>'+esc(it.txt)+'</span></li>';
@@ -15455,13 +15549,29 @@ var FEATURE_GT={pratzeberg:"pratzeberg",vinohrady:"vinohrady",santon:"santon",zu
    dossier names the claims its drawn buildings rest on (BUILDINGS), each with its grade, label and source as the Dress section gives them
    (apValue), and says what is a convention: the farmsteads' count the map's symbol, the sketches' pattern applied to 1805 by inference, the
    roofs (but the town's), every size and colour a design value. Its place by the feature's own point, the village's (VILLAGES) */
+/* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.3): what a village's farmsteads are as drawn. Until 8H the dossier said "each an
+   L" of every village, though a farmstead whose street leaves no room for its range along the street is drawn as its long range alone (27 of 177
+   on 8G's build); the words now count each kind */
+/* the drawn château's true bearing from its church's nave (degrees, null without either), as the self-test reads it */
+function chateauBearing8h(){
+  if(!BLDG) return null;
+  var nave=null, chat=null; BLDG.forEach(function(b){ if(b.part==="church nave"&&b.village==="Austerlitz") nave=b; if(b.part==="chateau main range") chat=b; });
+  if(!nave||!chat) return null;
+  var E=v8East(), N=v8North(), dx=chat.R.x-nave.R.x, dz=chat.R.z-nave.R.z;
+  return (Math.atan2(dx*E[0]+dz*E[1],dx*N[0]+dz*N[1])*180/Math.PI+360)%360;
+}
+function farmsteadsText(P){
+  var n=P.farms.length, ell=P.farms.filter(function(f){ return !!f.street; }).length, lone=n-ell;
+  if(!lone) return n+" drawn, each an L along its street";
+  return n+" drawn along its streets: "+ell+" an L (a range along the street and a long range back along the plot) and "+lone+" a long range alone, where the street left no room for the range along it";
+}
 function buildingsSection(ft){
   if(typeof BUILDINGS==="undefined"||!BLDG||!BLDG.plans||(ft.kind!=="village"&&ft.kind!=="town")) return null;
   var v=null; VILLAGES.forEach(function(q){ if(q[1]===ft.p[0]&&q[2]===ft.p[1]) v=q; });
   if(!v||!BLDG.plans[v[0]]) return null;
   var B=BUILDINGS, vn=v[0], P=BLDG.plans[vn], rear=B.villages&&B.villages[vn]&&B.villages[vn].rear, h='', not=' <span class="hh">&middot; not drawn</span>';
   var yrs=Object.keys(APPEARANCE_SOURCES).filter(function(k){ return /^mza_/.test(k); }).map(function(k){ return APPEARANCE_SOURCES[k].d; }).sort();
-  h+=row("Farmsteads",esc(P.farms.length+" drawn, each an L along its street: this map's symbol for the "+(ft.kind==="town"?"town":"village")+", not its count of houses, "+
+  h+=row("Farmsteads",esc(farmsteadsText(P)+": this map's symbol for the "+(ft.kind==="town"?"town":"village")+", not its count of houses, "+
     "on the pattern the stable cadastre's sketches of "+yrs[0]+"-"+yrs[yrs.length-1]+" show, applied to 1805 as an inference"));
   if(rear&&!rear.gen) h+=row("At the back of the yards",apValue(rear));
   var ch=B.churches&&B.churches[vn], cp=B.chapels&&B.chapels[vn], no=B.noChurch&&B.noChurch[vn];
@@ -15633,7 +15743,7 @@ function dossierAnalysis(name){
   var len=0;
   for(var i=0;i<tl.p.length-1;i++) len+=Math.hypot(tl.p[i+1][0]-tl.p[i][0],tl.p[i+1][1]-tl.p[i][1]);
   wrap.appendChild(el("dl","kvs",
-    row("Length","about "+(len*0.5/UNITS_PER_KM).toFixed(1)+" km")+
+    row("Length","about "+(len*KM_PER_MAP).toFixed(1)+" km")+   /* Stage 8, 8H (docs/FINAL_AUDIT.md G-2): map units by GEOREF's own factor (0.5/UNITS_PER_KM typed the map-to-world factor until 8H) */
     row("Elevation along it","\u2248 "+Math.round(GEOREF.elevM(lo))+"\u2013"+Math.round(GEOREF.elevM(hi))+" m on this model")));
   var s2=el("div","sect");
   s2.innerHTML='<h3>Why it matters</h3><p class="prose">'+esc(tl.note)+'</p>';
@@ -15752,10 +15862,15 @@ function buildingNotes(){
   var claim=function(k,c){ return k+": "+(c?apText(c.en)+" ("+c.gr+", "+c.lab+"; "+apCite(c)+")":"its claim not recorded"); };
   var chs=CHURCHES.map(function(k){ return claim(k,B.churches&&B.churches[k]); }), chap=CHAPELS.map(function(k){ return claim(k,B.chapels&&B.chapels[k]); });
   var short=VILLAGES.filter(function(v){ var P=BLDG&&BLDG.plans&&BLDG.plans[v[0]]; return P&&P.farms.length<v[3]; }).map(function(v){ return "at "+v[0]+", "+BLDG.plans[v[0]].farms.length+" of the map's "+v[3]; });
+  /* Stage 8, 8H: the farmsteads drawn as their long range alone, counted (section 20.3) */
+  var nF=0, nL=0; Object.keys((BLDG&&BLDG.plans)||{}).forEach(function(k){ BLDG.plans[k].farms.forEach(function(f){ nF++; if(f.street) nL++; }); });
+  var chAz=chateauBearing8h();
   var ow=B.sokolnitz&&B.sokolnitz.orchardWall, cas=B.sokolnitz&&B.sokolnitz.castle, cy=B.telnitz&&B.telnitz.churchyard, ar=B.austerlitz&&B.austerlitz.roofs;
   return [
     "The villages follow the pattern of the stable cadastre's survey sketches of "+yrs[0]+"-"+yrs[yrs.length-1]+": "+B.plan.form.en+", "+B.plan.north.en+" on most plots, "+
-      "and a building at the back of some yards ("+rearT.map(function(k){ return k+"'s"; }).join(" and ")+" of timber, drawn in yellow on their sketches). The sketches show the villages twenty years after the battle, "+
+      "and a building at the back of some yards ("+rearT.map(function(k){ return k+"'s"; }).join(" and ")+" of timber, drawn in yellow on their sketches). "+
+      (nF>nL?"Where a drawn street leaves no room for the range along it, the farmstead is drawn as its long range alone ("+(nF-nL)+" of the "+nF+" drawn). ":"")+
+      "The sketches show the villages twenty years after the battle, "+
       "after fires and rebuilding, so their pattern is applied to 1805 as an inference. Each village's number of farmsteads is the map's symbol for it, not its count of houses"+
       (short.length?"; fewer are drawn where a village's place on this map cannot hold them all clear of its roads, streams and frozen meres: "+short.join("; "):"")+".",
     "Roofs: no source read names the roofing of the villages' houses, so the roofs are a convention: thatch, with about one farmstead in "+["","one","two","three","four","five","six","seven","eight","nine","ten"][Math.round(1/BLD8G.tile)]+" tiled. "+
@@ -15765,7 +15880,9 @@ function buildingNotes(){
     cas?"The Sokolnitz castle: "+cas.en+" ("+src(cas.src)+", and the sketch of "+S.mza_sokolnitz1825.d+"), its farm south of it, drawn near this map's place for it, not at its own. "+
       (ow&&ow.lab==="disputed"?"Its walled orchard is not drawn, the sources disagreeing: "+ow.sides.map(function(s){ return s.en+" ("+src(s.src)+")"; }).join("; ")+". ":"")+"No wall round its pheasantry is drawn.":null,
     B.austerlitz&&B.austerlitz.chateau&&B.austerlitz.church?"Austerlitz: the church as the church topography describes it ("+B.austerlitz.church.en+", "+src(B.austerlitz.church.src)+") and the château ("+
-      B.austerlitz.chateau.en+", "+src(B.austerlitz.chateau.src)+"), drawn by the church where this map's roads and stream through the town leave room, not at its own place.":null,
+      B.austerlitz.chateau.en+", "+src(B.austerlitz.chateau.src)+"), drawn by the church, the château within "+BLD8G.chateau.tol+"° of the bearing it has from the church today ("+
+      BLD8G.chateau.bearing+"°, west-south-west"+(chAz!=null?"; drawn at "+Math.round(chAz)+"°":"")+"), with no road or stream of this map's between them, where its roads and stream through the town leave room; "+
+      "neither at its own place, their distance the symbols'.":null,
     (cy?"Telnitz: "+cy.en+" (as "+src(cy.src)+" reports the parish's own record): its churchyard drawn walled. ":"")+(f0?"Fences round "+fences.join(" and ")+": "+f0.en+" ("+src(f0.src)+"); their course is not known, so they run along each village's edge, and the ditches are not drawn.":""),
     (function(){ var nd=Object.keys(B.notDrawn||{}).map(function(k){ return B.notDrawn[k].en; }).filter(Boolean); return nd.length?"Not drawn: "+nd.slice(0,-1).join(", ")+(nd.length>1?" and ":"")+nd[nd.length-1]+".":null; })(),
     "Every size, height, colour and spacing of the buildings is a design value at their symbol scale."
@@ -15996,9 +16113,28 @@ function openSources(o){
   if(refs&&!(o&&o.repaint)) sc.scrollTop=0;   /* decision 203: the dossier's statements at the sheet's head */
 }
 
+/* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): the phase's message placed clear of the presentation switch and of
+   every control along the top of the screen. The stylesheet centres it over the free area at its top; where its box would cross a shown control
+   (the switch, the tools, the Panels or the Menu button: anything a visitor presses; the map layer's items aside, the message taking no pointer)
+   it moves down below that control, again until it crosses none, within the screen's top half. Until 8H the switch stood over its first words
+   in Study at every desktop size (77 x 22 px) and at 1024 px the opening's button lay under it too */
+function placeToast(t){
+  if(!t||!t.getBoundingClientRect||typeof getComputedStyle!=="function"||!document.querySelectorAll) return;   /* (runtime-test.js's page has no layout) */
+  t.style.top="";
+  var r=t.getBoundingClientRect(), top=r.top, H=r.height, n=0, moved=true;
+  if(!(r.width>0&&H>0)) return;
+  var C=[]; [].forEach.call(document.querySelectorAll("button,a[href],input,select,[role=button],[role=tab],[role=slider]"),function(e){
+    if(ML.root&&ML.root.contains(e)) return;
+    var q=e.getBoundingClientRect(); if(!(q.width>0&&q.height>0)||q.top>innerHeight/2) return;
+    for(var p=e;p&&p.nodeType===1;p=p.parentElement){ var s=getComputedStyle(p); if(s.display==="none"||s.visibility==="hidden"||+s.opacity===0) return; }
+    C.push(q); });
+  while(moved&&n++<16){ moved=false;
+    for(var i=0;i<C.length;i++){ var q=C[i]; if(q.right>r.left&&q.left<r.right&&q.bottom>top&&q.top<top+H){ top=q.bottom+8; moved=true; } } }
+  if(top!==r.top&&top+H<=innerHeight/2) t.style.top=Math.round(top)+"px";
+}
 function flash(msg){
   var t=document.getElementById("toast");
-  t.textContent=msg; t.classList.add("on");
+  t.textContent=msg; placeToast(t); t.classList.add("on");
   clearTimeout(flash._t);   /* roadmap step 5 (docs/FINAL_AUDIT.md SW-13): a second message keeps its whole 3.4 s */
   flash._t=setTimeout(function(){ t.classList.remove("on"); },3400);
 }
@@ -16078,8 +16214,15 @@ function dwellAdvance(dt,v){
       if(c+dt*v<z){ return c+dt*v; }
       if(c<z){ dt-=(z-c)/v; c=z; }
       else { d=Math.max(1e-6,E-c); }   /* already inside the ease (a change of speed): ease from here */
-      DWELL.st={E:E,d:d,te:2*d/v,stage:"in",tau:0}; continue;
+      DWELL.st={E:E,d:d,te:2*d/v,stage:"in",tau:0,v:v}; continue;
     }
+    /* Stage 8, 8H (docs/FINAL_AUDIT.md S-7; docs/STAGE8_SPEC.md section 20.4): a change of speed inside a dwell. Until 8H the ease kept the
+       speed it was entered at: from 4x to 1/2x mid-ease the clock eased on at 4x's pace and left the dwell at 4x's rate (37.8 clock minutes a
+       second), then dropped to 1/2x's 5. Now the ease's remaining time is scaled by the speeds' ratio (its fraction and distance kept): the
+       clock stays where it is, its rate changes by the ratio as a change of speed off the ease does, and the ease out ends at the new speed's
+       rate; during the hold only the ease out to come is rescaled (the hold is time) */
+    if(st.v===undefined) st.v=v;   /* a state set by other means (the self-test's): entered at this speed */
+    if(st.v!==v&&v>0){ var sf=st.v/v; st.te*=sf; if(st.stage!=="hold") st.tau*=sf; st.v=v; }
     var lim=st.stage==="hold"?DWELL.HOLD:st.te, step=Math.min(dt,lim-st.tau);
     st.tau+=step; dt-=step;
     var k=lim>0?st.tau/lim:1;
@@ -16304,7 +16447,8 @@ var lastFrame=0;
 /* ---- render on demand ----
    A frame is drawn when something changes: a tween, playback, recent input, an easing that has
    not arrived (settling), or a request from a state change. When the only motion is slow drift -
-   mist, smoke, dust, a broken formation's sway - frames drop to the ambient rate; when nothing
+   mist, smoke, dust (a broken formation's sway was drift until 8H; since, it is the block's pose, held while the clock stands) -
+   frames drop to the ambient rate; when nothing
    moves, nothing is drawn. Easings are time-based through ease(), so they run at the same
    wall-clock speed at any frame rate. */
 var needFrames=3, lastInput=0, lastAmbient=0, settling=false, FK=1;
@@ -16319,7 +16463,7 @@ function ambientNow(){
   for(var id in units){
     var r=units[id];
     if((r.smoke&&r.smoke.visible)||(r.dust&&r.dust.visible)) return true;
-    if(r.block&&r.block.visible&&LOOSE[liveStatus(id,curPhase)]) return true;
+    /* a broken formation's sway is no longer drift: since 8H it is part of the block's pose, which the clock standing holds (poseBlock) */
   }
   return false;
 }
@@ -16355,6 +16499,7 @@ function loop(){
   smokeT=HARNESS?0:now*0.001;
   renderFrame();
   if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT&&!AUS_BOOT.done) AUS_BOOT.ok();   /* the first frame drawn: the start-up guard's watch ends */
+  if(BOOTMS.firstFrameAt===undefined) BOOTMS.firstFrameAt=Math.round(performance.now());   /* Stage 8, 8H (P-4): from the page's start */
   loop._n=(loop._n||0)+1;
   if(devOn&&loop._n%120===0){ var fe=AUSTERLITZ_DEBUG.figureError();   /* with the readout on: a periodic check of the seating */
     if(fe.worst>0.02&&!loop._warned){ loop._warned=true; console.warn("Austerlitz runtime check: a figure is "+fe.worst.toFixed(3)+" units off the drawn ground ("+fe.where+")"); } }
@@ -18529,12 +18674,15 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("camera: orbiting at the lowest pitch and closest zoom never enters the ground", orbBad===0,
         orbN+" orbit positions around "+views.length+" targets; lowest clearance "+orbMin.toFixed(2)+" units");
       /* Stage 3D: the landscape's controls, through real pointer and wheel events, from every vantage */
-      var m0=LANDCAM.stats.moves, t0m=LANDCAM.stats.ms, lc=landControls(), kt=landKeysTouch(), mv=LANDCAM.stats.moves-m0, msMove=mv?(LANDCAM.stats.ms-t0m)/mv:0;
+      /* Stage 8, 8H (docs/FINAL_AUDIT.md T-7): a pan move's time judged at its median over this run's moves (its 95th percentile reported), not
+         the mean, which one move slowed by a busy machine could lift past the budget */
+      var m0=LANDCAM.stats.moves, t0m=LANDCAM.stats.ms; LANDCAM.stats.t=[]; var lc=landControls(), kt=landKeysTouch(), mv=LANDCAM.stats.moves-m0, mvT=(LANDCAM.stats.t||[]).slice().sort(function(p,q){ return p-q; }),
+        msMean=mv?(LANDCAM.stats.ms-t0m)/mv:0, msMove=mvT.length?mvT[Math.floor((mvT.length-1)/2)]:msMean, ms95=mvT.length?mvT[Math.min(mvT.length-1,Math.floor(mvT.length*0.95))]:msMean;
       ck("camera controls: a left-drag pans (the grabbed ground point within 1 px of the pointer during and after), the wheel zooms toward the cursor (within 1 px, a step the floor shortens included), a double-click centres the point in the free rectangle (within 2 px), a right-drag orbits; the eye at or above the floor after every step",
         lc.pan<=1&&lc.panAfter<=1&&lc.zoom<=1&&lc.focus<=2&&!lc.orbitBad&&!lc.below&&!lc.lost.length&&lc.panN>0&&lc.zoomN>0&&msMove<=2,
         lc.views+" vantages: pan worst "+lc.pan.toFixed(3)+" px during ("+lc.panN+" steps; "+lc.panLifted+" the floor lifted, counted apart), "+lc.panAfter.toFixed(3)+" px after; wheel worst "+
         lc.zoom.toFixed(3)+" px over "+lc.zoomN+" steps ("+lc.zoomStops+" shortened by the floor); double-click "+lc.focus.toFixed(3)+" px from the free centre; right-drag orbits "+(lc.orbitN-lc.orbitBad)+" of "+lc.orbitN+
-        "; below the floor "+lc.below+"; a pan move "+msMove.toFixed(3)+" ms on average over "+mv+" (budget 2 ms)"+(lc.lost.length?"; "+lc.lost.join(", "):""));
+        "; below the floor "+lc.below+"; a pan move "+msMove.toFixed(3)+" ms at the median over "+mv+" (95th percentile "+ms95.toFixed(3)+", mean "+msMean.toFixed(3)+"; budget 2 ms at the median)"+(lc.lost.length?"; "+lc.lost.join(", "):""));
       ck("camera controls: the keys on the focused map layer pan, zoom and turn without stepping the clock; one finger pans, two pinch and twist",
         kt.keyPan>1&&kt.keyZoom<1&&Math.abs(kt.keyTurnDeg-15)<0.01&&kt.clockKept&&kt.keyFree&&kt.touchPan<=1&&kt.pinchRatio<1&&Math.abs(kt.twistDeg)>1,
         "the right arrow moves the target "+kt.keyPan+" units; + brings the eye to "+kt.keyZoom+" of its distance; Shift + left arrow turns "+kt.keyTurnDeg+"\u00b0; clock "+(kt.clockKept?"unchanged":"MOVED")+
@@ -19460,6 +19608,49 @@ var AUSTERLITZ_DEBUG=(function(){
       select(null,null); setPresentation(K0.pres); if(K0.sel) select(K0.sel.kind,K0.sel.id);
       ck("events: every event has a pointer path, its own marker or the dossier of an event starting at the same minute whose marker a press reaches (docs/FINAL_AUDIT.md A-3)",
         !bad.length&&_evTicks.length>0, bad.length?bad.join("; "):_evTicks.length+" markers: "+(_evTicks.length-viaD)+" by their own marker, "+viaD+" through a coinciding event's dossier");
+    })();
+    /* Stage 8, implementation PR 8H (docs/FINAL_AUDIT.md A-6; docs/STAGE8_SPEC.md section 20.5): one main landmark, holding the map layer; the
+       timeline a named region; in each state a visitor reads headings in (the Now tab at 09:00, the Plans tab with both plans, an Analysis theme,
+       a formation's, an event's and a place's dossier, the sources sheet, the keys overlay) no heading level skipped: each visible heading in the
+       document's order at most one level below the one before it (until 8H the Now tab's "What changed" stood an h4 under the dispatch's h2,
+       the Plans tab's heads h3 under the rail's h1); and a focused control's ring 2 px, read on the control focused (or, where the browser does
+       not take a script's focus as visible, its rule). Self-contained: it keeps and restores what it changes */
+    (function(){
+      var bad=[], rep=[], K={clock:clock, tab:tabNow, ch:tabChosen, chap:chapter, plan:planSide, sel:selection, pres:presentation, act:document.activeElement};
+      try{
+        var mains=document.querySelectorAll("main,[role=main]"), ml=document.getElementById("maplayer"), tb=document.querySelector(".timebar");
+        if(mains.length!==1||!ml||!mains[0].contains(ml)) bad.push(mains.length+" main landmarks"+(ml&&mains.length===1&&!mains[0].contains(ml)?", the map layer outside it":""));
+        if(!tb||!((tb.tagName==="SECTION"&&tb.getAttribute("aria-label"))||(tb.getAttribute("role")==="region"&&tb.getAttribute("aria-label")))) bad.push("the timeline not a named region");
+        function shownH(e){ for(var n=e;n&&n.nodeType===1;n=n.parentElement){ if(n.hidden) return false; var s=getComputedStyle(n); if(s.display==="none"||s.visibility==="hidden") return false; } return true; }
+        function outline(label){ var H=[].filter.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6"),shownH), prev=0, lv=[];
+          H.forEach(function(h){ var l=+h.tagName[1]; lv.push(l); if(prev&&l>prev+1) bad.push(label+": "+h.tagName+" \""+(h.textContent||"").trim().slice(0,30)+"\" after an h"+prev); prev=l; });
+          rep.push(label+" "+lv.join("")); }
+        if(presentation!=="study") setPresentation("study"); select(null,null);
+        setClock(540,{instant:true,force:true,camera:false}); finishTween();
+        if(docked){ selectTab("now"); outline("the Now tab"); }
+        selectTab("plans"); if(!planSide) setPlan("both"); outline("the Plans tab"); if(!K.plan&&planSide==="both") setPlan("both");   /* setPlan toggles */
+        selectTab("analysis"); if(ANALYSIS.length){ setChapter(ANALYSIS[0].id); outline("an Analysis theme"); setChapter(null); }
+        selectTab(docked?"now":"oob");
+        select("f","sthilaire"); outline("a formation's dossier"); select(null,null);
+        if(EVENTS.length){ select("e",EVENTS[0].id); outline("an event's dossier"); select(null,null); }
+        var tl=FEATURES.filter(function(f){ return f.kind==="village"||f.kind==="town"; })[0]; if(tl){ select("t",tl.id); outline("a place's dossier"); select(null,null); }
+        openSources(); outline("the sources sheet"); closeSources();
+        setHelp(true); outline("the keys overlay"); setHelp(false);
+        /* the ring: on the Play button focused; Chrome takes a script's focus as visible when the last input was a key, else the rule is read */
+        var pb=document.getElementById("play"), w=null, how="";
+        if(pb){ pb.focus(); if(pb.matches(":focus-visible")){ w=getComputedStyle(pb).outlineWidth; how="the control focused"; } }
+        if(w===null){ [].forEach.call(document.styleSheets,function(ss){ var R; try{ R=ss.cssRules; }catch(e){ return; } [].forEach.call(R||[],function(r){ if(r.selectorText===":focus-visible") w=r.style.outlineWidth; }); }); how="the :focus-visible rule"; }
+        if(w!=="2px") bad.push("the focus ring "+w+" ("+how+"), not 2px");
+        rep.push("the focus ring "+w+" ("+how+")");
+      } catch(err){ bad.push("threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+      } finally {
+        if(sheetIsOpen&&sheetIsOpen("help")) setHelp(false); closeSources(); select(K.sel?K.sel.kind:null,K.sel?K.sel.id:null);
+        if(chapter!==K.chap) setChapter(K.chap||null); if(planSide!==K.plan){ if(planSide) setPlan(planSide); if(K.plan) setPlan(K.plan); } selectTab(K.tab); tabChosen=K.ch;
+        if(presentation!==K.pres) setPresentation(K.pres); setClock(K.clock,{instant:true,force:true,camera:false}); finishTween();
+        if(K.act&&K.act.focus) K.act.focus(); else if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      }
+      ck("A-6 (8H): one main landmark holding the map layer and the timeline a named region; no heading level skipped in the rail's tabs, the dossiers and the sheets; a focused control's ring 2 px (docs/FINAL_AUDIT.md A-6)",
+        !bad.length, rep.join("; ")+(bad.length?"; WRONG: "+bad.slice(0,6).join("; "):""));
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),
@@ -20490,6 +20681,55 @@ var AUSTERLITZ_DEBUG=(function(){
         ck("the gait at a pause (8F's prerequisite, decision 244 (a)): Play, the speed and Pause by their buttons through the app's own loop, an infantry division, a cavalry corps and a limbered battery paused from half speed, in the fade and faded out: the first paused frame's gait the last played's and every paused frame's the first's, the frame and the sun's depth map drawn with the formation alone unchanged; resumed, on from the amplitude held; a seek the clock's own pose at once; the dwell's hold held; reduced motion at once",
           !kBad.length, kT.join("; ")+(kBad.length?"; WRONG: "+kBad.slice(0,6).join("; "):""));
 
+        /* (l) Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.4; 8F's finding, section 18.10 item 2): the blocks' own pose at a pause,
+           a seek and a resume. The loop run one frame at a time on a clock of the test's, its draw skipped (as (k)); Play at 4x by its buttons from
+           08:40 until a shown block stands more than 0.3 rad from the heading it turns to (not a loose body's sway), then Pause: in 30 paused
+           frames every shown block's heading, shape, standards' dip and quaternion as at the pause (until 8H the block turned on at its arm's
+           rate, WHEEL, with the clock standing); a seek by the next-ten-minutes button: every shown block at its own heading in the first frame,
+           and the same pose as that clock reached from 23 minutes before; resumed by the button, paused mid-turn first, the block turns on from
+           where it was held (toward its heading, not snapped to it) */
+        var lBad=[], lT=[], lNow=performance.now, lOwn=Object.prototype.hasOwnProperty.call(performance,"now"), lRaf=window.requestAnimationFrame, lTm=lNow.call(performance), lDw=DWELL.on, lSp=speed, lRender=renderer.render;
+        function LF(n){ for(var i=0;i<(n||1);i++){ lTm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=lRender; } } }
+        function lClick(sel){ var b=document.querySelector(sel); if(!b) throw new Error("no "+sel); b.click(); }
+        function lPoses(){ var o={}; shown().forEach(function(id){ var r=units[id], b=r.block, u=b.userData; if(!u||!u.body) return; var w=headingAt(id,clock); if(w===null) w=enemyFacing(id);
+          var d=w===null?0:w-(r.yaw||0); while(d>Math.PI) d-=2*Math.PI; while(d<-Math.PI) d+=2*Math.PI;
+          o[id]=[r.yaw||0,u.sw,u.sd,u.tilt||0,b.quaternion.x,b.quaternion.y,b.quaternion.z,b.quaternion.w,Math.abs(d),LOOSE[liveStatus(id,curPhase)]?1:0]; }); return o; }
+        function lDiff(a,b){ var m=0; Object.keys(a).forEach(function(id){ if(!b[id]) return; for(var i=0;i<8;i++) m=Math.max(m,Math.abs(a[id][i]-b[id][i])); }); return m; }
+        try{
+          performance.now=function(){ return lTm; }; window.requestAnimationFrame=function(){ return 0; };
+          if(playing) lClick("#play"); dwellSet(false); setClock(520,{instant:true,force:true,camera:false}); finishTween(); settleAll(); lastFrame=lTm;
+          lClick('.spd-btn[data-s="4"]'); lClick("#play");
+          var turn=null, nT=0; while(!turn&&nT<300){ LF(1); nT++; var P=lPoses(); for(var pid in P) if(P[pid][8]>0.3&&!P[pid][9]){ turn=pid; break; } }
+          if(!turn) lBad.push("no block turning more than 0.3 rad in "+nT+" frames of Play from 08:40");
+          else {
+            var tP=clock; lClick("#play"); if(playing) lBad.push("the button did not pause");
+            var P0=lPoses(), mv=0, worst=0; for(var f=0;f<30;f++){ LF(1); var dd=lDiff(P0,lPoses()); if(dd>0){ mv++; worst=Math.max(worst,dd); } }
+            if(mv) lBad.push("paused at "+fmtClock(tP)+", the blocks' pose moved in "+mv+" of 30 frames (by up to "+worst.toFixed(4)+")");
+            lT.push("paused at "+fmtClock(tP)+" with "+turn+" "+P0[turn][8].toFixed(3)+" rad from its heading: "+Object.keys(P0).length+" blocks held for 30 frames ("+mv+" moved)");
+            var tS=clock+10; lClick("#next"); LF(1); var S1=lPoses(), off=0, offAt="";
+            if(Math.abs(clock-tS)>1e-9) lBad.push("the next ten minutes' button did not move the clock");
+            Object.keys(S1).forEach(function(k){ if(!S1[k][9]&&S1[k][8]>off){ off=S1[k][8]; offAt=k; } });
+            if(off>1e-9) lBad.push("sought, "+offAt+" "+off.toFixed(4)+" rad from its heading in the first frame");
+            setClock(tS-23,{instant:true,camera:false}); LF(3); setClock(tS,{instant:true,camera:false}); LF(1); var dS=lDiff(S1,lPoses());
+            if(dS>1e-9) lBad.push("the clock sought by the button and from 23 minutes before not one pose (by "+dS.toFixed(6)+")");
+            lT.push("sought to "+fmtClock(tS)+": "+Object.keys(S1).length+" blocks at their own heading in the first frame, the same pose from 23 minutes before");
+            /* resumed: paused mid-turn first (Play's own advance into the turn), then on by the button */
+            setClock(tP-3,{instant:true,camera:false}); LF(2); lClick("#play"); var nR=0, h0=null; while(nR<120){ LF(1); nR++; var Pq=lPoses(); if(Pq[turn]&&Pq[turn][8]>0.05){ h0=Pq[turn][8]; break; } }
+            lClick("#play"); LF(3); var hH=lPoses()[turn];
+            if(!hH||h0===null) lBad.push(turn+": not turning when paused again");
+            else { if(Math.abs(hH[8]-h0)>1e-9) lBad.push(turn+": paused mid-turn, it turned on ("+h0.toFixed(4)+" to "+hH[8].toFixed(4)+" rad)");
+              lClick("#play"); LF(1); var hR=lPoses()[turn]; lClick("#play");
+              if(!(hR&&hR[8]<hH[8]-1e-6&&hR[8]>1e-6)) lBad.push(turn+": resumed, "+(hR?hR[8].toFixed(4):"none")+" rad from its heading after "+hH[8].toFixed(4)+" held (turning on from where it was held expected)");
+              else lT.push("resumed mid-turn: "+turn+" from "+hH[8].toFixed(3)+" rad held to "+hR[8].toFixed(3)+" in the first frame"); }
+          }
+        } catch(err){ lBad.push("threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+        } finally {
+          if(lOwn) performance.now=lNow; else delete performance.now; window.requestAnimationFrame=lRaf; renderer.render=lRender;
+          if(playing) stopPlay(); dwellSet(lDw); setSpeed(lSp); lastFrame=0;
+        }
+        ck("the blocks' pose at a pause (8H): Play at 4x and Pause by their buttons through the app's own loop with a block turning: every block's heading, shape, dip and quaternion held in the paused frames; a seek every block at its own heading at once, the same pose by two paths; resumed, the turn on from where it was held",
+          !lBad.length, lT.join("; ")+(lBad.length?"; WRONG: "+lBad.slice(0,6).join("; "):""));
+
         /* (g) S-5: the facing a function of the clock: every formation's facing the same however its clock was reached */
         var gBad=[], gN=0;
         PHASES.forEach(function(ph,pi){ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(function(t){ var R=[];
@@ -20851,7 +21091,7 @@ var AUSTERLITZ_DEBUG=(function(){
     needFrames=0; lastInput=-1e9; settling=false; panelMoveUntil=0;
     var sOff=frameState(performance.now()+1000), keepRM=RM, src=0, sWait, sAmb, sRM;
     try{ AMBIENT_TEST=true; RM=false;   /* this check only: drift as a visitor's page has it (see AMBIENT_TEST) */
-      for(var did in units){ var ur=units[did]; if((ur.smoke&&ur.smoke.visible)||(ur.dust&&ur.dust.visible)||(ur.block&&ur.block.visible&&LOOSE[liveStatus(did,curPhase)])) src++; }
+      for(var did in units){ var ur=units[did]; if((ur.smoke&&ur.smoke.visible)||(ur.dust&&ur.dust.visible)) src++; }   /* since 8H a broken body's sway is the pose's, held while the clock stands, not drift */
       var tA=performance.now(); lastAmbient=tA;
       sWait=frameState(tA+AMBIENT_MS*0.5); sAmb=frameState(tA+AMBIENT_MS);
       RM=true; sRM=frameState(tA+AMBIENT_MS);
@@ -20859,7 +21099,7 @@ var AUSTERLITZ_DEBUG=(function(){
     if(DISPLAY.factor!==f0) setDisplayFactor(f0);
     ck("render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate",
       sIdle==="idle"&&src>0&&sWait==="waiting"&&sAmb==="ambient"&&sRM==="idle"&&(!HARNESS||sOff==="idle"),
-      "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust, smoke or a broken formation's sway): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
+      "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust or smoke): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
       (HARNESS?"; the harness's own frames "+sOff+" (drift off under ?harness=1; AMBIENT_TEST turned it on for this check only)":""));
 
     /* Stage 8, implementation PR 8F (decisions 246 (a), 247 (a); docs/STAGE8_SPEC.md sections 5, 7.3, 7.4 and 18): water, woods and the near
@@ -20975,6 +21215,24 @@ var AUSTERLITZ_DEBUG=(function(){
         if(ts>KIT8E.scrub) dBad.push("the bush: "+ts+" triangles, 8E's "+KIT8E.scrub);
         ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
           !dBad.length, JSON.stringify(K)+"; triangles a tree: deciduous "+tb.join(", ")+" (8E "+KIT8E.broad.join(", ")+"), conifers "+tc.join(", ")+", the bush "+ts+" (8E "+KIT8E.scrub+")"+(dBad.length?"; WRONG: "+dBad.join("; "):""));
+        /* (d') Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.10): the crowns closing near the eye. Each deciduous habit and the
+           bush drawn with the near hook (treeNear: its program's key, the faces' centres aFC on its geometry); in 8F's own close view of the
+           crowns (the copse by the Satschan mere, a free eye 16 units off at 15:00) the frame differs with the hook off (the uniform at 0, a frame
+           of the test's) on at least 1,000 of its pixels, the faces near the eye grown; from afar (the Field vantage) not one pixel differs: beyond
+           TREE8H.far every crown is 8F's */
+        var nBad=[], nNear=0, nFar=0;
+        world.trees.children.concat([world.scrub]).forEach(function(im,i){ var ok=im.geometry.attributes.aFC&&typeof im.material.customProgramCacheKey==="function"&&/^tree-near-/.test(im.material.customProgramCacheKey());
+          if(!ok) nBad.push((im===world.scrub?"the bush":"deciduous habit "+i)+" without the near hook"); });
+        setClock(900,{instant:true,force:true,camera:false}); finishTween(); aim([262,428],[0.22,0.075,0.97],16);
+        var n1=grab(); TREE8H.U.uTreeNear.value=0; var n0=grab(); TREE8H.U.uTreeNear.value=1;
+        for(var ni=0;ni<n1.length;ni+=4) if(n1[ni]!==n0[ni]||n1[ni+1]!==n0[ni+1]||n1[ni+2]!==n0[ni+2]) nNear++;
+        if(nNear<1000) nBad.push("among the crowns, "+nNear+" pixels differ with the hook off (at least 1,000: the near faces grown)");
+        placeCamera(VANTAGE.field); syncViewOffset(true); settle(6,true);
+        var m1=grab(); TREE8H.U.uTreeNear.value=0; var m0=grab(); TREE8H.U.uTreeNear.value=1;
+        for(var mi=0;mi<m1.length;mi+=4) if(m1[mi]!==m0[mi]||m1[mi+1]!==m0[mi+1]||m1[mi+2]!==m0[mi+2]) nFar++;
+        if(nFar) nBad.push("from the Field vantage "+nFar+" pixels differ with the hook off (none: beyond "+TREE8H.far+" units every crown 8F's)");
+        ck("the crowns closing near the eye (8H): each deciduous habit and the bush with the near hook; among the crowns the faces near the eye grown, from afar every crown as 8F drew it",
+          !nBad.length, "among the crowns "+nNear+" of "+(n1.length/4)+" pixels differ with the hook off; from the Field vantage "+nFar+(nBad.length?"; WRONG: "+nBad.join("; "):""));
         /* (e) the near ground */
         var eBad=[], U=groundMesh.material.userData.U;
         if(U.uDetail.value.x!==(lowTier?0:GDETAIL.amount)) eBad.push("the detail "+U.uDetail.value.x+" at this tier (lowTier "+lowTier+")");
@@ -21227,15 +21485,19 @@ var AUSTERLITZ_DEBUG=(function(){
           var fx=fm.reduce(function(s,b){ return s+b.R.x; },0)/Math.max(1,fm.length), fz=fm.reduce(function(s,b){ return s+b.R.z; },0)/Math.max(1,fm.length);
           if(fm.length!==3||((fx-cx)*Nn[0]+(fz-cz)*Nn[1])>=0) lBad.push("the castle's farm not south of it"); }
         var chat=B.filter(function(b){ return b.part==="chateau main range"; })[0];
+        /* since 8H (section 20.3): within BLD8G.chateau.tol of its bearing today (an octant; css-test.js holds the value), its centre in the town's
+           place, and no drawn road or stream between it and its church (8G's quarter-turn admitted it north-west of the church, 86.5 degrees off) */
         var chAz=null; if(!chat||!nave) lBad.push("no château"); else { var dx=chat.R.x-nave.R.x, dz=chat.R.z-nave.R.z; chAz=(Math.atan2(dx*En[0]+dz*En[1],dx*Nn[0]+dz*Nn[1])*180/Math.PI+360)%360;
-          if(Math.abs(((chAz-BLD8G.chateau.bearing)%360+540)%360-180)>90+1e-6) lBad.push("the château "+chAz.toFixed(0)+" degrees from its church, not within a quarter-turn of its bearing today ("+BLD8G.chateau.bearing+")"); }
+          if(Math.abs(((chAz-BLD8G.chateau.bearing)%360+540)%360-180)>BLD8G.chateau.tol+1e-6) lBad.push("the château "+chAz.toFixed(0)+" degrees from its church, not within "+BLD8G.chateau.tol+" degrees of its bearing today ("+BLD8G.chateau.bearing+")");
+          if(!v8Foot(chat.R.x,chat.R.z)) lBad.push("the château's centre outside the town's place");
+          if(v8Between(nave.R.x,nave.R.z,chat.R.x,chat.R.z,v8NearSegs([nave.R.x,nave.R.z],BLD8G.chateau.near+8))) lBad.push("a drawn road or stream between the château and its church"); }
         var cy=B.filter(function(b){ return b.part==="churchyard wall"; });
         if(cy.length!==5||cy.some(function(b){ return b.village!=="Telnitz"; })) lBad.push("Telnitz's churchyard: "+cy.length+" runs of wall (four sides, one with its gate)");
         var fv={}; B.forEach(function(b){ if(b.part==="fence") fv[b.village]=(fv[b.village]||0)+1; });
         Object.keys(fv).forEach(function(k){ var c=BUILDINGS.fences&&BUILDINGS.fences[k]; if(!c||c.gen) lBad.push("a fence at "+k+", which BUILDINGS.fences does not name"); });
         Object.keys(BUILDINGS.fences||{}).forEach(function(k){ if(!BUILDINGS.fences[k].gen&&!fv[k]) lBad.push("no fence at "+k); });
         if(B.some(function(b){ return b.wall==="stone"&&b.part!=="churchyard wall"&&b.part!=="church column"; })) lBad.push("a wall drawn other than Telnitz's churchyard's");
-        ck("the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhere, each by its village's point; Austerlitz's the temple, its tower no higher than its roof; the castle a closed quadrangle, its east range the deepest and highest, its farm south of it; the château within a quarter-turn of its bearing today from its church; Telnitz's churchyard walled with one gate; fences only where BUILDINGS.fences names them; no other wall",
+        ck("the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhere, each by its village's point; Austerlitz's the temple, its tower no higher than its roof; the castle a closed quadrangle, its east range the deepest and highest, its farm south of it; the château within an octant of its bearing today from its church, in the town's place, no drawn road or stream between them; Telnitz's churchyard walled with one gate; fences only where BUILDINGS.fences names them; no other wall",
           !lBad.length, ch.length+" churches and chapels ("+CHURCHES.length+" in CHURCHES, "+CHAPELS.length+" in CHAPELS); "+cols.length+" columns; the castle "+cr.length+" ranges and its farm "+fm.length+"; the château "+(chAz==null?"-":chAz.toFixed(0)+" degrees from its church (today "+BLD8G.chateau.bearing+")")+"; "+cy.length+" runs of churchyard wall; fences at "+Object.keys(fv).map(function(k){ return k+" "+fv[k]; }).join(", ")+(lBad.length?"; WRONG: "+lBad.join("; "):""));
 
         /* (e') the dossiers: each village's and the town's names the claims its buildings rest on, with their grades and sources (apValue), and
@@ -21243,7 +21505,11 @@ var AUSTERLITZ_DEBUG=(function(){
         var oBad=[], nDos=0, BU=BUILDINGS;
         FEATURES.forEach(function(ft){ if(ft.kind!=="village"&&ft.kind!=="town") return;
           var v=VILLAGES.filter(function(q){ return q[1]===ft.p[0]&&q[2]===ft.p[1]; })[0]; if(!v) return; nDos++;
-          var d=dossierFeature(ft.id), t=d.textContent, vn=v[0], want=[String(B.plans[vn].farms.length)+" drawn, each an L"];
+          /* since 8H (section 20.3): the farmsteads as drawn, counted from the drawn records (a long range, with or without its range along the street),
+             not from the words' own function: "each an L" only where every one is */
+          var d=dossierFeature(ft.id), t=d.textContent, vn=v[0], fl={}, fs={}; B.forEach(function(b){ if(b.village!==vn||b.farm==null) return; if(b.part==="long range") fl[b.farm]=1; if(b.part==="street range") fs[b.farm]=1; });
+          var nf=Object.keys(fl).length, nl=Object.keys(fs).filter(function(k){ return fl[k]; }).length, want=nf===nl?[nf+" drawn, each an L"]:[nf+" drawn along its streets: "+nl+" an L", (nf-nl)+" a long range alone"];
+          if(nf!==nl&&t.indexOf("each an L")>=0) oBad.push(ft.name+": \"each an L\" with "+(nf-nl)+" of its "+nf+" farmsteads a long range alone");
           if(![].some.call(d.querySelectorAll(".sect h3"),function(h){ return /^Buildings drawn here/.test(h.textContent); })){ oBad.push(ft.name+": no buildings section"); return; }
           var cl=BU.churches[vn]||BU.chapels[vn]||BU.noChurch[vn]; if(cl) want.push(cl.en,"("+cl.gr+", "+cl.lab+"; ");
           if(vn==="Sokolnitz") want.push(BU.sokolnitz.castle.en,BU.sokolnitz.farm.en,"disputed: ");
@@ -21256,6 +21522,10 @@ var AUSTERLITZ_DEBUG=(function(){
         CHURCHES.forEach(function(k){ var c=BU.churches[k]; if(!c||bnT.indexOf(cOf(k,c))<0) oBad.push("the sources sheet: not "+k+"'s church's claim"); });
         CHAPELS.forEach(function(k){ var c=BU.chapels[k]; if(!c||bnT.indexOf(cOf(k,c))<0) oBad.push("the sources sheet: not "+k+"'s chapel's claim"); });
         VILLAGES.forEach(function(v){ var n=B.plans[v[0]].farms.length; if(n<v[3]){ nShort++; if(bnT.indexOf("at "+v[0]+", "+n+" of the map's "+v[3])<0) oBad.push("the sources sheet: "+v[0]+" drawn short and not named"); } });
+        /* since 8H (section 20.3): the farmsteads drawn as their long range alone, counted from the drawn records, stated in the sources sheet */
+        var aF={}, aS={}; B.forEach(function(b){ if(b.farm==null) return; var kk=b.village+" "+b.farm; if(b.part==="long range") aF[kk]=1; if(b.part==="street range") aS[kk]=1; });
+        var tF=Object.keys(aF).length, tL=Object.keys(aS).filter(function(kk){ return aF[kk]; }).length;
+        if(tF>tL&&bnT.indexOf("("+(tF-tL)+" of the "+tF+" drawn)")<0) oBad.push("the sources sheet: the "+(tF-tL)+" farmsteads drawn as their long range alone not stated");
         ck("the dossiers (8G): each village's and the town's dossier names the claims its buildings rest on, with their grades and sources, and its conventions as such; the sources sheet every church's and chapel's claim and each village drawn short",
           nDos>0&&!oBad.length, nDos+" village and town dossiers, each with its farmsteads, its church or chapel or why none, its roofs; the sources sheet "+(CHURCHES.length+CHAPELS.length)+
           " churches' and chapels' claims and "+nShort+" village drawn short"+(oBad.length?"; WRONG: "+oBad.slice(0,6).join("; "):""));

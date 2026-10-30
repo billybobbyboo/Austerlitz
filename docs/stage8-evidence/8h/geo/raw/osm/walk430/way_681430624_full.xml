@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2350050 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74178042" visible="true" version="1" changeset="190957" timestamp="2007-10-16T00:09:22Z" user="pavel" uid="1066" lat="49.1824990" lon="16.7262080">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74192067" visible="true" version="1" changeset="198243" timestamp="2007-10-16T00:16:35Z" user="pavel" uid="1066" lat="49.1822920" lon="16.7271830">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74208390" visible="true" version="2" changeset="102418034" timestamp="2021-04-06T15:30:03Z" user="mtrutman" uid="520014" lat="49.1822222" lon="16.7281467">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74218970" visible="true" version="1" changeset="198243" timestamp="2007-10-16T00:29:49Z" user="pavel" uid="1066" lat="49.1825770" lon="16.7339090">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74291006" visible="true" version="1" changeset="198243" timestamp="2007-10-16T01:06:44Z" user="pavel" uid="1066" lat="49.1823740" lon="16.7267520">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74305049" visible="true" version="2" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1822536" lon="16.7274849">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74314145" visible="true" version="1" changeset="198243" timestamp="2007-10-16T01:19:10Z" user="pavel" uid="1066" lat="49.1822780" lon="16.7292220">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="1035674222" visible="true" version="1" changeset="6636338" timestamp="2010-12-12T13:54:45Z" user="Tombo" uid="379917" lat="49.1823278" lon="16.7300030"/>
+ <node id="3859497822" visible="true" version="2" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1827386" lon="16.7252773"/>
+ <node id="7733507011" visible="true" version="1" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1826905" lon="16.7356646"/>
+ <node id="8599611497" visible="true" version="1" changeset="102418034" timestamp="2021-04-06T15:30:03Z" user="mtrutman" uid="520014" lat="49.1822330" lon="16.7277806"/>
+ <node id="8599611498" visible="true" version="1" changeset="102418034" timestamp="2021-04-06T15:30:03Z" user="mtrutman" uid="520014" lat="49.1822253" lon="16.7283922"/>
+ <node id="8599611499" visible="true" version="1" changeset="102418034" timestamp="2021-04-06T15:30:03Z" user="mtrutman" uid="520014" lat="49.1822271" lon="16.7279821"/>
+ <way id="681430624" visible="true" version="9" changeset="148455948" timestamp="2024-03-10T10:55:54Z" user="d4d3" uid="20988814">
+  <nd ref="7733507011"/>
+  <nd ref="74218970"/>
+  <nd ref="1035674222"/>
+  <nd ref="74314145"/>
+  <nd ref="8599611498"/>
+  <nd ref="74208390"/>
+  <nd ref="8599611499"/>
+  <nd ref="8599611497"/>
+  <nd ref="74305049"/>
+  <nd ref="74192067"/>
+  <nd ref="74291006"/>
+  <nd ref="74178042"/>
+  <nd ref="3859497822"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="3"/>
+  <tag k="lanes:backward" v="2"/>
+  <tag k="lanes:forward" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="shoulder" v="no"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

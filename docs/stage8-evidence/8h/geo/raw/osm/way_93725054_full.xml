@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2976874 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1088364015" visible="true" version="2" changeset="6966833" timestamp="2011-01-14T12:39:20Z" user="Tombo" uid="379917" lat="49.1856853" lon="16.8263181"/>
+ <node id="1088364021" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:13Z" user="Tombo" uid="379917" lat="49.1850316" lon="16.8245397"/>
+ <node id="1088364048" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:14Z" user="Tombo" uid="379917" lat="49.1851262" lon="16.8265385"/>
+ <node id="1088364055" visible="true" version="2" changeset="6966833" timestamp="2011-01-14T12:39:21Z" user="Tombo" uid="379917" lat="49.1847869" lon="16.8246181"/>
+ <node id="1088364066" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:14Z" user="Tombo" uid="379917" lat="49.1846170" lon="16.8279918"/>
+ <node id="1088364077" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:14Z" user="Tombo" uid="379917" lat="49.1856942" lon="16.8263138"/>
+ <node id="1088364114" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:15Z" user="Tombo" uid="379917" lat="49.1851556" lon="16.8277221"/>
+ <node id="1088364134" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:15Z" user="Tombo" uid="379917" lat="49.1855440" lon="16.8258394"/>
+ <node id="1088364144" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:15Z" user="Tombo" uid="379917" lat="49.1853667" lon="16.8276552"/>
+ <node id="1088364164" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:16Z" user="Tombo" uid="379917" lat="49.1845485" lon="16.8272277"/>
+ <node id="1088364217" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:16Z" user="Tombo" uid="379917" lat="49.1844538" lon="16.8272677"/>
+ <node id="1088364221" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:16Z" user="Tombo" uid="379917" lat="49.1848978" lon="16.8268731"/>
+ <node id="1088364251" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:17Z" user="Tombo" uid="379917" lat="49.1845942" lon="16.8266784"/>
+ <node id="1088364263" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:17Z" user="Tombo" uid="379917" lat="49.1846921" lon="16.8269880"/>
+ <node id="1088364278" visible="true" version="2" changeset="6966833" timestamp="2011-01-14T12:39:19Z" user="Tombo" uid="379917" lat="49.1855107" lon="16.8274012"/>
+ <node id="1088364298" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:17Z" user="Tombo" uid="379917" lat="49.1851099" lon="16.8249405"/>
+ <node id="1088364305" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:17Z" user="Tombo" uid="379917" lat="49.1844212" lon="16.8267383"/>
+ <node id="1088364309" visible="true" version="1" changeset="6893274" timestamp="2011-01-07T14:32:17Z" user="Tombo" uid="379917" lat="49.1848880" lon="16.8252651"/>
+ <node id="1103185942" visible="true" version="1" changeset="6966833" timestamp="2011-01-14T12:39:11Z" user="Tombo" uid="379917" lat="49.1850215" lon="16.8266919"/>
+ <node id="1103185997" visible="true" version="1" changeset="6966833" timestamp="2011-01-14T12:39:13Z" user="Tombo" uid="379917" lat="49.1853326" lon="16.8264455"/>
+ <way id="93725054" visible="true" version="3" changeset="47815488" timestamp="2017-04-15T14:30:37Z" user="beweta" uid="152074">
+  <nd ref="1088364055"/>
+  <nd ref="1088364021"/>
+  <nd ref="1088364298"/>
+  <nd ref="1088364134"/>
+  <nd ref="1088364077"/>
+  <nd ref="1088364015"/>
+  <nd ref="1103185997"/>
+  <nd ref="1088364278"/>
+  <nd ref="1088364144"/>
+  <nd ref="1088364114"/>
+  <nd ref="1088364066"/>
+  <nd ref="1088364217"/>
+  <nd ref="1088364164"/>
+  <nd ref="1088364305"/>
+  <nd ref="1088364251"/>
+  <nd ref="1088364263"/>
+  <nd ref="1088364221"/>
+  <nd ref="1103185942"/>
+  <nd ref="1088364048"/>
+  <nd ref="1088364309"/>
+  <nd ref="1088364055"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="Stará Pošta"/>
+  <tag k="name:cs" v="Stará Pošta"/>
+  <tag k="name:de" v="Alte Post"/>
+  <tag k="source" v="uhul:ortofoto;cuzk:km"/>
+ </way>
+</osm>

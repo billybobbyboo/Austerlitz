@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2964028 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="50560570" visible="true" version="14" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="74231773"/>
+  <nd ref="5709446454"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="left"/>
+  <tag k="sidewalk:left:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="600428654" visible="true" version="8" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="876472581"/>
+  <nd ref="12578509961"/>
+  <nd ref="12578509962"/>
+  <nd ref="12578509958"/>
+  <nd ref="12578509960"/>
+  <nd ref="12578509963"/>
+  <nd ref="12578509959"/>
+  <nd ref="5709446454"/>
+  <tag k="highway" v="residential"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="name" v="Tilhonova"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1358996704" visible="true" version="1" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="5709446454"/>
+  <nd ref="288554159"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="left"/>
+  <tag k="sidewalk:left:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

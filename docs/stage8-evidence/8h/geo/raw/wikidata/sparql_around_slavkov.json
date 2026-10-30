@@ -1,0 +1,4068 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "coord", "dist" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1418278"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87455556 49.15472222)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.026"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "zámek Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983006"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.874179 49.154739)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.053"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Putti vpravo na schodišti do zámku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983005"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.874176 49.15478)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.053"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Putti vlevo na schodišti do zámku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982982"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875246 49.155432)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.075"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Boha a Krista v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983003"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873808 49.154828)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.079"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Venuše v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983146"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.874909 49.154086)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.079"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pomník padlým sovětským vojákům ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982965"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875873 49.154411)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.083"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha svatého Jana Nepomuckého pod zámkem ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096271"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8758817 49.1543936)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.084"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha svatého Jana Nepomuckého"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982998"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873775 49.155099)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.088"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Aesculapa v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q105001102"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873879 49.154376)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.088"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Adonise v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982984"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875191 49.155596)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.091"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha klečící postavy v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982997"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873761 49.155168)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.092"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Hygie v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983132"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873893 49.154306)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.092"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Mater nutrix v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983118"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873578 49.154934)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.097"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Putti Podzim v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983119"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873625 49.154518)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.098"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Putti Jaro v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983125"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873519 49.154724)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.101"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Fontána před zámkem v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983145"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876149 49.155302)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.107"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "pomník obětem světových válek"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983134"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873625 49.154299)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.108"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Thésea v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983120"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87348 49.154511)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.108"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Putti Léto v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983117"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873422 49.154926)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.108"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Putti Zima v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982995"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873505 49.155152)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.109"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Narcise v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982968"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876426 49.154919)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.112"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kašna pod zámkem ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983135"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873531 49.154296)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.114"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Omfaé v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982986"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873712 49.155486)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.115"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Alegorie Hudby v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983144"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873933 49.153984)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.115"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Flóry v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982994"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873403 49.155149)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.116"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Pomony v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983128"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873605 49.154128)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.12"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Fontána jižně od zámku v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983127"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873449 49.155324)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.121"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Fontána severně od zámku v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140514622"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8756806 49.1538358)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.121"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Společenské centrum Bonaparte"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138655697"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8756845 49.1538349)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.122"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Dekorativní okno a výzdoba interiéru Kulturního domu Bonaparte"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61777818"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876455833 49.155225277)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.123"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha svatého Floriána u kostela ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490361"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87427143 49.153776359)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.123"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Fügnerova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983122"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873204 49.154622)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.125"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Galatey v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983002"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873174 49.154796)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.126"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Adonise v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983142"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873708 49.153974)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.126"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Pana v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982988"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873457 49.155473)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.129"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Ceres v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983124"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873246 49.154346)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.13"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha poustevníka v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983000"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873139 49.155059)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.131"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Flory v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982969"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876303 49.154051)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.132"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kašna na Palackého náměstí ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983137"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873291 49.154256)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.132"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Apolóna v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27975499"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.874625833 49.153617777)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.133"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "evangelický kostel ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q118154654"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876739984 49.154828598)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.134"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "pošta Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982992"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873135 49.155133)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.134"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Merkura v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983141"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873558 49.153965)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.135"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Diany v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982989"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873352 49.15547)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.135"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Herkula v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982961"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876683 49.155229)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.138"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kříž u kostela ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982966"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876638 49.154147)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.146"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "pamětní deska Bernardina Ochina"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12030543"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8765 49.1556)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.146"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kostel Vzkříšení Páně ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207451"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87397 49.15364)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.146"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Dům čp. 109"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138655696"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87662286 49.15410037)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.147"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "dekorativní mříž na vstupu radnice"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983139"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873327 49.153954)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.148"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha Bacchuse v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982967"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876638 49.154091)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.149"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "pamětní deska Františka Palackého"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982991"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873092 49.155454)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.15"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Alegorie Hojnosti v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982980"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.872773 49.154686)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.155"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Sochy najád v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207440"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8764714 49.1557619)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.157"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Fara"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46159904"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873682076 49.155975802)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.158"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "U Stadionu"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207462"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876810856 49.154098832)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.159"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "radnice ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983130"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873272 49.153783)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.164"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Sousoší Jupiter s Amorem v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982985"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873014 49.155608)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.164"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Sousoší Polibek Amora a Psyché v zámeckém parku ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207447"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876740472 49.153880359)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.168"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Soud ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q108612964"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.877022222 49.154088888)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.173"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "měšťanský dům Husova čp. 63"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207434"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87313 49.15367)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.18"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zámecké zahradnictví"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207459"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87621 49.15339)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.183"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Dům čp. 123"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982959"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876906 49.155858)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.187"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kříž za kostelem ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982958"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876456 49.156168)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.19"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kříž v Malinovského ulici ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207455"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875892279 49.153207389)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.191"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Panský dům"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490345"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.874472086 49.15307911)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.194"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Brněnská"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982957"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876914 49.155952)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.195"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Strom smíření ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140629779"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8775025 49.1553156)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.198"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "budova ZŠ Komenského"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q193724"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876504369 49.153275386)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.206"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56648422"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8726638 49.153513)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.217"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Městská památková zóna Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207430"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87388 49.15294)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.22"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Dům čp. 104"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q116201480"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87642779 49.152985336)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.23"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "měšťanský dům Palackého náměstí čp. 88"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q110214378"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878000259 49.153999328)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.242"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43585911"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878323697 49.154862406)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.249"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Komenského náměstí"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q123734676"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8714861 49.1545172)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.25"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "zámecký park ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946545"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878206482 49.153992666)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.257"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Husova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9350137"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8752 49.1525)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.257"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Synagoga ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q78029158"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875177 49.152482)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.259"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Židovská politická obec Slavkov"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76656451"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876659 49.152745)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.262"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Soudní okres Slavkov"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104983148"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875044 49.152438)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.263"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pamětní deska židovským obyvatelům na synagoze ve Slavkově"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140630036"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8785361 49.1549592)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.265"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Svojsíkův park"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946920"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875544342 49.152429068)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.268"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Úzká"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43585896"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.874171238 49.152417283)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.27"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Koláčkovo náměstí"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138412258"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.877766666 49.156355555)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Hasičská stanice SDH Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490392"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878069743 49.156122244)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.273"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Malinovského"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43585930"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876745732 49.152638665)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.275"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Palackého náměstí"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138411943"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.871323888 49.154001388)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.275"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Čínský altánek"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45983236"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875949318 49.15240555)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.277"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pustá"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140630861"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87384 49.1572097)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.279"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "fotbalový stadion"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982956"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.877999 49.156346)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.283"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pomník Mistra Jana Husa ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982954"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878857 49.154999)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.289"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "pomník Antonína Benjamina Svojsíka"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946587"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.872729737 49.152605681)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.291"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kollárova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q116201479"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875519821 49.152197306)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.293"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "radnice židovská"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982976"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.872281 49.15265)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.306"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kříž u hřbitova ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946353"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8767488 49.1573836)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.317"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zahradní"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096292"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8721342 49.1525873)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.318"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Hřbitovní kaple svatého Jana Křtitele se špitálem Na Špitálce, hřbitovní branou a křížem"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946898"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875051291 49.151935482)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.319"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "U Synagogy"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46100194"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.871748999 49.156810447)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.32"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Na golfovém hřišti"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982978"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.872163 49.152515)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.323"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kříž před kaplí svatého Jana Křtitele ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982972"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.872414 49.152384)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.324"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pomník obětem 2. světové války na hřbitově ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982975"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.872414 49.152384)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.324"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Centrální kříž na hřbitově ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q112219103"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.872414 49.152384)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.324"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Centrální kříž na hřbitově ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946566"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.875498895 49.157751056)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.331"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kaunicova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982979"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.872013 49.152493)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.331"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "kaple svatého Jana Křtitele ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207443"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8766 49.15203)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.332"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Dům čp. 80"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096265"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878801 49.156441)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.337"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Boží muka svatého Vendelína"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096249"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8704084 49.1557296)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.343"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zámecká jírovcová alej"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096258"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87725 49.1521)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.345"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Palírna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61780891"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8725633 49.1520944)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.346"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "hřbitov ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946668"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.877546226 49.157399012)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.347"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Malčevského"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946940"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876329024 49.151784319)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.351"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Za Branou"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28915627"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.870040869 49.154588799)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.354"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Slavkovský zámecký park a aleje"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946642"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873895943 49.15161335)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.362"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Lomená"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946969"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878880576 49.152776116)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.367"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zborovská"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096244"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8796436 49.1533293)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.382"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "městské opevnění ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946529"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878291663 49.151976651)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.399"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Hradební"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096306"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8755339 49.1585539)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.42"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zámecký zemědělský dvůr"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946320"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878270775 49.151698722)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.423"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "B. Němcové"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946624"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.879818676 49.152735427)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.425"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Lidická"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946767"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876795893 49.158463627)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.43"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Příční"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946692"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.880877113 49.154662161)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.435"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Mánesova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140631018"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8708792 49.1578094)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.444"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "vyhlídková věž"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946881"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.880962949 49.154248741)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.445"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Tylova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q63384744"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.869816666 49.152122222)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.475"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Špitálka"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946957"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.868658628 49.153275096)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.485"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zámecká"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946389"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.881659167 49.154363841)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.494"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Čapkova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946710"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.874371575 49.150294235)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.502"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Nerudova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46265562"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.871293413 49.150785884)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.518"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zelnice I"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490459"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.869074402 49.152067199)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.521"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Špitálská"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946828"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.870527937 49.151085158)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.521"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Slovákova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490420"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.879991584 49.158198138)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.529"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Tyršova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46354841"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.870657048 49.150853476)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.536"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zelnice II"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946864"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.881050438 49.157526384)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.54"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Sušilova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490436"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.881960183 49.1564959)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.547"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zlatá Hora"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946787"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.880477891 49.158426322)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.572"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Purkyňova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946730"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.877902731 49.159571501)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.574"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pod Oborou"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946516"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.88226183 49.152521528)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.592"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Havlíčkova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q59822915"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.870884133 49.149823642)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.626"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zelnice II."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46354891"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.869345724 49.150413023)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.633"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zelnice III"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q59822921"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.869345724 49.150413023)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.633"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zelnice V."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946749"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.881531967 49.151043422)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.638"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Polní"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140631293"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8659214 49.1556564)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.66"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "veřejné ohniště"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46192878"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876574073 49.16063939)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.661"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Sadová"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946606"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.882322342 49.151286667)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.666"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Krátká"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61780861"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8762875 49.1488608)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.668"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "autobusové stanoviště ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946405"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.884195942 49.155346113)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.679"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Čelakovského"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46005810"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.879513702 49.149477442)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.68"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Luční"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q59822918"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.869968313 49.149576247)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.683"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Zelnice IV."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138655713"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.883094602 49.158059262)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.697"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pylon"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138655672"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.883372374 49.157820419)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.702"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Česači jablek"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946846"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.883310921 49.151426396)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Smetanova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096254"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8652651 49.1532191)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.722"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha svatého Jana Nepomuckého"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46022337"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.882124812 49.150265692)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.728"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Litavská"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138412170"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.876733055 49.148326944)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.732"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Hasičská stanice HZS Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q59822923"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.868655643 49.149570066)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.738"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "U Valu I."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946458"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.884089552 49.15195773)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.739"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Dvořákova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946334"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.88447236 49.152540706)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.74"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Bezručova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490374"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878018534 49.161149739)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.742"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Jiráskova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q59822924"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.868733078 49.149258898)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.762"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "U Valu II."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28915627"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.864722 49.152778)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.774"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Slavkovský zámecký park a aleje"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q59822929"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.868983441 49.148946907)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.78"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "U Mokřadu"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q123041897"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878584 49.148093)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.792"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Nížkovický potok"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946440"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.863951504 49.155871384)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.805"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Čsl. Červeného kříže"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096311"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.877337 49.147729)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.806"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha svatého Jana Nepomuckého"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46074067"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.883428882 49.15945774)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.808"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pod Vinohrady"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946486"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.884304319 49.150822518)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.814"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Foerstrova"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946809"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.886192933 49.156353788)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.839"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Slovanská"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124433380"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8779567 49.1474322)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.849"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Vila Felixe Redlicha"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124433324"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8760314 49.1471533)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.854"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Lidl Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46354799"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.885118397 49.158719473)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.861"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Slunečná"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46354957"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.880141869 49.16189127)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.876"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Větrná"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138411872"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.877460277 49.146332777)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "0.96"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "most silnice I/54 přes silnici I/50 a Vlárskou dráhu"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31207427"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.87849 49.14591)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.022"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Redlichova vila"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138411870"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.86844 49.146641111)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.022"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "most silnice I/50 přes Litavu ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46159884"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.861349962 49.151941558)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.035"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Křenovická"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946372"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.889129707 49.153481564)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.045"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Bučovická"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46379745"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.881145667 49.163311781)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.05"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Na Vyhlídce"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46379769"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8793517 49.1638633)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.058"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Lesní"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490408"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.874920604 49.14522563)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.065"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Nádražní"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46129795"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878727893 49.145375585)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.084"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "U Vily"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18180512"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.873611388 49.144954722)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.099"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Slavkov u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q127543773"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8736464 49.1448881)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.106"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "pamětní deska Antonína Vorálka"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45947008"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.888477961 49.15002375)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.121"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "U Mlýna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38096297"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8826111 49.1635383)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.122"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha svatého Jana Nepomuckého"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982971"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.882681 49.163572)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.128"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Socha svatého Jana Nepomuckého ve Slavkově u Brna pod Urbanem"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946993"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.879861039 49.144812716)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.168"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Topolová"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982949"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.883235 49.163853)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.175"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "1. zastavení křížové cesty ke kapli svatého Urbana"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982948"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.883492 49.164004)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.199"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "2. zastavení křížové cesty ke kapli svatého Urbana"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946501"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.877013049 49.144090795)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.201"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "sídliště Nádražní"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982952"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878933 49.165734)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.251"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Pomník obětem holocaustu ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982946"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.88368 49.164559)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.259"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "3. zastavení křížové cesty ke kapli svatého Urbana"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q10291227"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.8785 49.1659)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.262"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Židovský hřbitov ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138411958"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.887279722 49.146683611)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.275"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "most silnice I/50 přes Nížkovický potok ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45947024"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.866179327 49.144837019)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.276"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "U Splavu"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138411868"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.88753 49.14642)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.308"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "železniční most přes Nížkovický potok ve Slavkově u Brna"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946474"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.861147295 49.14706347)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.319"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Dvůr Rybník"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982943"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.884142 49.16512)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.33"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "4. zastavení křížové cesty ke kapli svatého Urbana"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982939"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.884295 49.16537)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.359"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Kaplička se sochou Panny Marie na cestě ke kapli svatého Urbana"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982941"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.884156 49.165424)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.36"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "5. zastavení křížové cesty ke kapli svatého Urbana"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43490446"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.878826512 49.142793858)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.365"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Československé armády"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104982936"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.884562 49.165601)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.391"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "7. zastavení křížové cesty ke kapli svatého Urbana"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45946421"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(16.893506469 49.151355762)"
+      },
+      "dist" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#double",
+        "type" : "literal",
+        "value" : "1.406"
+      },
+      "itemLabel" : {
+        "xml:lang" : "cs",
+        "type" : "literal",
+        "value" : "Okružní"
+      }
+    } ]
+  }
+}

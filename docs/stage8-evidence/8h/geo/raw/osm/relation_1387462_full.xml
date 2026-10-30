@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2716212 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1115361213" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1189124" lon="16.7265634"/>
+ <node id="1115361242" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1192738" lon="16.7264938"/>
+ <node id="1115361258" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1191157" lon="16.7263769"/>
+ <node id="1115361355" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1194542" lon="16.7259342"/>
+ <node id="1115361364" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1193789" lon="16.7260228"/>
+ <node id="1115361396" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1191466" lon="16.7263931"/>
+ <node id="1115361409" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1191143" lon="16.7259042"/>
+ <node id="1115361483" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1192903" lon="16.7264606"/>
+ <node id="1115361610" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1191549" lon="16.7264412"/>
+ <node id="1115361643" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1190546" lon="16.7257566"/>
+ <node id="1115361648" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1190380" lon="16.7263431"/>
+ <node id="1115361761" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1193133" lon="16.7264572"/>
+ <node id="1115361786" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:10:35Z" user="Mar4s" uid="461574" lat="49.1193327" lon="16.7267644"/>
+ <node id="4811270452" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1192035" lon="16.7259457"/>
+ <node id="4811270453" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1192630" lon="16.7259684"/>
+ <node id="4811270454" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1192599" lon="16.7259852"/>
+ <node id="4811270455" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1192014" lon="16.7259605"/>
+ <node id="4811270456" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1193538" lon="16.7261988"/>
+ <node id="4811270457" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1193397" lon="16.7262926"/>
+ <node id="4811270458" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1193369" lon="16.7261930"/>
+ <node id="4811270459" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1193230" lon="16.7262870"/>
+ <node id="4811270460" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1192993" lon="16.7264560"/>
+ <node id="4811270461" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1192796" lon="16.7264743"/>
+ <node id="4811270462" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1191540" lon="16.7264120"/>
+ <node id="4811270463" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1191390" lon="16.7263838"/>
+ <node id="4811270464" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1191301" lon="16.7263780"/>
+ <node id="4811270465" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1190871" lon="16.7261009"/>
+ <node id="4811270466" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1190712" lon="16.7261930"/>
+ <node id="4811270467" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1190647" lon="16.7261905"/>
+ <node id="4811270468" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1190804" lon="16.7260981"/>
+ <node id="4811270469" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1190004" lon="16.7260689"/>
+ <node id="4811270470" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1189828" lon="16.7261624"/>
+ <node id="4811270471" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1189779" lon="16.7260596"/>
+ <node id="4811270472" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1189613" lon="16.7261537"/>
+ <node id="4811270473" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1194067" lon="16.7262172"/>
+ <node id="4811270474" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1194235" lon="16.7262233"/>
+ <node id="4811270475" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:59Z" user="Mar4s" uid="461574" lat="49.1194084" lon="16.7263192"/>
+ <node id="4811270476" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193925" lon="16.7263132"/>
+ <node id="4811270477" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193613" lon="16.7265189"/>
+ <node id="4811270478" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193551" lon="16.7265506"/>
+ <node id="4811270479" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193703" lon="16.7265224"/>
+ <node id="4811270480" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193650" lon="16.7265551"/>
+ <node id="4811270481" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193285" lon="16.7267265"/>
+ <node id="4811270482" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193126" lon="16.7267402"/>
+ <node id="4811270483" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193383" lon="16.7267302"/>
+ <node id="4811270484" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:12:00Z" user="Mar4s" uid="461574" lat="49.1193106" lon="16.7267561"/>
+ <node id="6111376252" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1193087" lon="16.7264558"/>
+ <node id="6111376253" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1193040" lon="16.7264554"/>
+ <node id="6111376254" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1192947" lon="16.7264578"/>
+ <node id="6111376255" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1192863" lon="16.7264643"/>
+ <node id="6111376256" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1192827" lon="16.7264689"/>
+ <node id="6111376257" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1192770" lon="16.7264803"/>
+ <node id="6111376258" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1192751" lon="16.7264869"/>
+ <node id="6111376259" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191557" lon="16.7264339"/>
+ <node id="6111376260" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191558" lon="16.7264265"/>
+ <node id="6111376261" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191552" lon="16.7264191"/>
+ <node id="6111376262" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191521" lon="16.7264052"/>
+ <node id="6111376263" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191496" lon="16.7263988"/>
+ <node id="6111376264" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191430" lon="16.7263880"/>
+ <node id="6111376265" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191347" lon="16.7263804"/>
+ <node id="6111376266" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191254" lon="16.7263766"/>
+ <node id="6111376267" visible="true" version="1" changeset="65103137" timestamp="2018-12-02T19:10:05Z" user="Mar4s" uid="461574" lat="49.1191205" lon="16.7263762"/>
+ <way id="96217975" visible="true" version="6" changeset="65103137" timestamp="2018-12-02T19:12:06Z" user="Mar4s" uid="461574">
+  <nd ref="4811270469"/>
+  <nd ref="1115361643"/>
+  <nd ref="1115361355"/>
+  <nd ref="4811270473"/>
+  <nd ref="4811270474"/>
+  <nd ref="4811270475"/>
+  <nd ref="4811270476"/>
+  <nd ref="4811270477"/>
+  <nd ref="4811270479"/>
+  <nd ref="4811270480"/>
+  <nd ref="4811270478"/>
+  <nd ref="4811270481"/>
+  <nd ref="4811270483"/>
+  <nd ref="1115361786"/>
+  <nd ref="4811270484"/>
+  <nd ref="4811270482"/>
+  <nd ref="1115361213"/>
+  <nd ref="4811270470"/>
+  <nd ref="4811270472"/>
+  <nd ref="4811270471"/>
+  <nd ref="4811270469"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+ </way>
+ <way id="96217976" visible="true" version="3" changeset="65103137" timestamp="2018-12-02T19:12:06Z" user="Mar4s" uid="461574">
+  <nd ref="4811270468"/>
+  <nd ref="4811270465"/>
+  <nd ref="4811270466"/>
+  <nd ref="4811270467"/>
+  <nd ref="1115361648"/>
+  <nd ref="1115361258"/>
+  <nd ref="6111376267"/>
+  <nd ref="6111376266"/>
+  <nd ref="4811270464"/>
+  <nd ref="6111376265"/>
+  <nd ref="4811270463"/>
+  <nd ref="6111376264"/>
+  <nd ref="1115361396"/>
+  <nd ref="6111376263"/>
+  <nd ref="6111376262"/>
+  <nd ref="4811270462"/>
+  <nd ref="6111376261"/>
+  <nd ref="6111376260"/>
+  <nd ref="6111376259"/>
+  <nd ref="1115361610"/>
+  <nd ref="1115361242"/>
+  <nd ref="6111376258"/>
+  <nd ref="6111376257"/>
+  <nd ref="4811270461"/>
+  <nd ref="6111376256"/>
+  <nd ref="6111376255"/>
+  <nd ref="1115361483"/>
+  <nd ref="6111376254"/>
+  <nd ref="4811270460"/>
+  <nd ref="6111376253"/>
+  <nd ref="6111376252"/>
+  <nd ref="1115361761"/>
+  <nd ref="4811270457"/>
+  <nd ref="4811270459"/>
+  <nd ref="4811270458"/>
+  <nd ref="4811270456"/>
+  <nd ref="1115361364"/>
+  <nd ref="4811270453"/>
+  <nd ref="4811270454"/>
+  <nd ref="4811270455"/>
+  <nd ref="4811270452"/>
+  <nd ref="1115361409"/>
+  <nd ref="4811270468"/>
+ </way>
+ <relation id="1387462" visible="true" version="6" changeset="146236635" timestamp="2024-01-14T11:59:53Z" user="JBS21" uid="13953005">
+  <member type="way" ref="96217975" role="outer"/>
+  <member type="way" ref="96217976" role="inner"/>
+  <tag k="amenity" v="nursing_home"/>
+  <tag k="building" v="house"/>
+  <tag k="building:levels" v="3"/>
+  <tag k="building:ruian:type" v="7"/>
+  <tag k="historic" v="castle"/>
+  <tag k="name" v="zámek Sokolnice"/>
+  <tag k="ref:ruian:building" v="13158571"/>
+  <tag k="roof:levels" v="0"/>
+  <tag k="roof:shape" v="hipped"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="type" v="multipolygon"/>
+  <tag k="wikidata" v="Q12055280"/>
+  <tag k="wikimedia_commons" v="Category:Sokolnice Chateau"/>
+  <tag k="wikipedia" v="cs:Sokolnice (zámek)"/>
+ </relation>
+</osm>

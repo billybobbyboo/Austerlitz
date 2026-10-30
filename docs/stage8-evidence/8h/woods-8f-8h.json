@@ -1,0 +1,314 @@
+{
+ "chromium": "153.0.8010.12",
+ "build": "e8fed44b0884e48a277c68ef2f39598a",
+ "views": {
+  "tree-close": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 429,
+     "tris": 1689049
+    },
+    "place": {
+     "wood": 1010,
+     "edge": 354,
+     "village": 184,
+     "stream": 202,
+     "out": 0,
+     "notModel": 0,
+     "instances": 1750,
+     "broad": {
+      "wood": 634,
+      "village": 184
+     },
+     "conifer": 376,
+     "scrub": {
+      "edge": 354,
+      "stream": 202
+     }
+    },
+    "troopsWith": 50857,
+    "troopsWithout": 303995,
+    "seen": 0.1673,
+    "woodPx": 352247,
+    "shimmer": 0.0212,
+    "shimmerPx": 7463,
+    "fragments": 3559136,
+    "covered": 352247,
+    "overdraw": 10.1
+   },
+   "t-vol": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 429,
+     "tris": 1689049
+    },
+    "place": {
+     "wood": 1010,
+     "edge": 354,
+     "village": 184,
+     "stream": 202,
+     "out": 0,
+     "notModel": 0,
+     "instances": 1750,
+     "broad": {
+      "wood": 634,
+      "village": 184
+     },
+     "conifer": 376,
+     "scrub": {
+      "edge": 354,
+      "stream": 202
+     }
+    },
+    "troopsWith": 50857,
+    "troopsWithout": 303995,
+    "seen": 0.1673,
+    "woodPx": 352247,
+    "shimmer": 0.0207,
+    "shimmerPx": 7304,
+    "fragments": 3559136,
+    "covered": 352247,
+    "overdraw": 10.1
+   },
+   "t-vol50": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 429,
+     "tris": 1689049
+    },
+    "place": {
+     "wood": 1010,
+     "edge": 354,
+     "village": 184,
+     "stream": 202,
+     "out": 0,
+     "notModel": 0,
+     "instances": 1750,
+     "broad": {
+      "wood": 634,
+      "village": 184
+     },
+     "conifer": 376,
+     "scrub": {
+      "edge": 354,
+      "stream": 202
+     }
+    },
+    "troopsWith": 50857,
+    "troopsWithout": 303995,
+    "seen": 0.1673,
+    "woodPx": 352247,
+    "shimmer": 0.0201,
+    "shimmerPx": 7088,
+    "fragments": 3559136,
+    "covered": 352247,
+    "overdraw": 10.1
+   }
+  },
+  "woods-pheasantry": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 609,
+     "tris": 1958061
+    },
+    "troopsWith": 66129,
+    "troopsWithout": 72935,
+    "seen": 0.9067,
+    "woodPx": 52781,
+    "shimmer": 0.0193,
+    "shimmerPx": 1021,
+    "fragments": 302227,
+    "covered": 53849,
+    "overdraw": 5.61
+   },
+   "t-vol": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 609,
+     "tris": 1958061
+    },
+    "troopsWith": 66129,
+    "troopsWithout": 72935,
+    "seen": 0.9067,
+    "woodPx": 52781,
+    "shimmer": 0.0192,
+    "shimmerPx": 1012,
+    "fragments": 302227,
+    "covered": 53849,
+    "overdraw": 5.61
+   },
+   "t-vol50": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 609,
+     "tris": 1958061
+    },
+    "troopsWith": 66129,
+    "troopsWithout": 72935,
+    "seen": 0.9067,
+    "woodPx": 52781,
+    "shimmer": 0.0193,
+    "shimmerPx": 1017,
+    "fragments": 302227,
+    "covered": 53849,
+    "overdraw": 5.61
+   }
+  },
+  "close-sokolnitz": {
+   "base": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 699,
+     "tris": 2131953
+    },
+    "troopsWith": 43158,
+    "troopsWithout": 47193,
+    "seen": 0.9145,
+    "woodPx": 35254,
+    "shimmer": 0.0257,
+    "shimmerPx": 906,
+    "fragments": 207644,
+    "covered": 35904,
+    "overdraw": 5.78
+   },
+   "t-vol": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 699,
+     "tris": 2131953
+    },
+    "troopsWith": 43158,
+    "troopsWithout": 47193,
+    "seen": 0.9145,
+    "woodPx": 35254,
+    "shimmer": 0.0255,
+    "shimmerPx": 900,
+    "fragments": 207644,
+    "covered": 35904,
+    "overdraw": 5.78
+   },
+   "t-vol50": {
+    "tris": {
+     "broad": [
+      348,
+      254,
+      348,
+      254
+     ],
+     "scrub": 174
+    },
+    "cost": {
+     "calls": 699,
+     "tris": 2131953
+    },
+    "troopsWith": 43158,
+    "troopsWithout": 47193,
+    "seen": 0.9145,
+    "woodPx": 35254,
+    "shimmer": 0.0257,
+    "shimmerPx": 906,
+    "fragments": 207644,
+    "covered": 35904,
+    "overdraw": 5.78
+   }
+  }
+ },
+ "lowTier": {
+  "overview-field": {
+   "lowTier": true,
+   "base": {
+    "calls": 534,
+    "tris": 1297649
+   },
+   "t-vol": {
+    "calls": 534,
+    "tris": 1297649
+   },
+   "t-vol50": {
+    "calls": 534,
+    "tris": 1297649
+   }
+  },
+  "pratzen-low": {
+   "lowTier": true,
+   "base": {
+    "calls": 283,
+    "tris": 925401
+   },
+   "t-vol": {
+    "calls": 283,
+    "tris": 925401
+   },
+   "t-vol50": {
+    "calls": 283,
+    "tris": 925401
+   }
+  }
+ }
+}

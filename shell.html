@@ -277,7 +277,8 @@
      the clock, one caption line, Watch's presentation switch, the speeds, the scale) and one track on one time axis: the act
      bands, the phase ticks with their labels, and the rail (hour ticks, the event markers, the playhead). The situation's
      readings and the live event's reason moved to the top of the Now tab (inside the dispatch). -->
-<div class="timebar">
+<!-- Stage 8, 8H (docs/FINAL_AUDIT.md A-6): the timeline a named region (a landmark), the map layer in the page's main landmark (below) -->
+<section class="timebar" aria-label="Timeline">
   <div id="prog"><i></i></div>
   <div class="tb-top">
     <!-- roadmap step 5 (docs/VISUAL_AUDIT.md, low; question 208, the default meanwhile): the event steps in the media players' order, the
@@ -319,7 +320,7 @@
     </div>
     <div class="evmarks" id="evmarks" role="group" aria-label="Events"></div>
   </div>
-</div>
+</section>
 
 <aside class="drawer" id="drawer" aria-label="Dossier">
   <div class="dbar"><button id="drawer-back" type="button">&lsaquo; Back to <span id="drawer-back-to">Now</span></button>
@@ -380,7 +381,7 @@
 
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
-<div id="maplayer" role="group" aria-label="The map: formations, events and places"></div>
+<main id="map-main"><div id="maplayer" role="group" aria-label="The map: formations, events and places"></div></main>
 <!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
 <div id="eyecap" class="eyecap" hidden></div>
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2992918 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1125765357" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:30Z" user="Petr1868" uid="72020" lat="49.1409912" lon="16.8290120"/>
+ <node id="1125766313" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:32Z" user="Petr1868" uid="72020" lat="49.1410361" lon="16.8288420"/>
+ <node id="1125766443" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:32Z" user="Petr1868" uid="72020" lat="49.1410188" lon="16.8290278"/>
+ <node id="1125767453" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:34Z" user="Petr1868" uid="72020" lat="49.1409774" lon="16.8289632"/>
+ <node id="1125768391" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:36Z" user="Petr1868" uid="72020" lat="49.1410221" lon="16.8288477"/>
+ <node id="1125768509" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:36Z" user="Petr1868" uid="72020" lat="49.1410104" lon="16.8290497"/>
+ <node id="1125769618" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:37Z" user="Petr1868" uid="72020" lat="49.1409176" lon="16.8289929"/>
+ <node id="1125769727" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:38Z" user="Petr1868" uid="72020" lat="49.1410686" lon="16.8289712"/>
+ <node id="1125770709" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:39Z" user="Petr1868" uid="72020" lat="49.1410539" lon="16.8289659"/>
+ <node id="1125770842" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:39Z" user="Petr1868" uid="72020" lat="49.1410105" lon="16.8290282"/>
+ <node id="1125771852" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:41Z" user="Petr1868" uid="72020" lat="49.1408958" lon="16.8289071"/>
+ <node id="1125771966" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:41Z" user="Petr1868" uid="72020" lat="49.1410674" lon="16.8289823"/>
+ <node id="1125772850" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:42Z" user="Petr1868" uid="72020" lat="49.1410456" lon="16.8289304"/>
+ <node id="1125772962" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:42Z" user="Petr1868" uid="72020" lat="49.1409859" lon="16.8290035"/>
+ <node id="1125773958" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:44Z" user="Petr1868" uid="72020" lat="49.1409509" lon="16.8288765"/>
+ <node id="1125774086" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:44Z" user="Petr1868" uid="72020" lat="49.1410539" lon="16.8289799"/>
+ <node id="1125775078" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:46Z" user="Petr1868" uid="72020" lat="49.1409764" lon="16.8290199"/>
+ <node id="1125776071" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:47Z" user="Petr1868" uid="72020" lat="49.1408814" lon="16.8285390"/>
+ <node id="1125776194" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:48Z" user="Petr1868" uid="72020" lat="49.1410392" lon="16.8290175"/>
+ <node id="1125777231" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:49Z" user="Petr1868" uid="72020" lat="49.1409816" lon="16.8290276"/>
+ <node id="1125778226" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:51Z" user="Petr1868" uid="72020" lat="49.1409648" lon="16.8284971"/>
+ <node id="1125778354" visible="true" version="2" changeset="54518052" timestamp="2017-12-10T18:24:51Z" user="Petr1868" uid="72020" lat="49.1410449" lon="16.8290077"/>
+ <node id="5275791416" visible="true" version="1" changeset="54518052" timestamp="2017-12-10T18:24:20Z" user="Petr1868" uid="72020" lat="49.1410181" lon="16.8290500"/>
+ <node id="5275791417" visible="true" version="1" changeset="54518052" timestamp="2017-12-10T18:24:20Z" user="Petr1868" uid="72020" lat="49.1410485" lon="16.8290334"/>
+ <node id="5275791418" visible="true" version="1" changeset="54518052" timestamp="2017-12-10T18:24:20Z" user="Petr1868" uid="72020" lat="49.1410537" lon="16.8290258"/>
+ <node id="5275791419" visible="true" version="1" changeset="54518052" timestamp="2017-12-10T18:24:20Z" user="Petr1868" uid="72020" lat="49.1410413" lon="16.8289329"/>
+ <node id="6542455406" visible="true" version="1" changeset="71180279" timestamp="2019-06-12T13:13:24Z" user="JandaM" uid="2169558" lat="49.1409803" lon="16.8290132"/>
+ <way id="97186802" visible="true" version="4" changeset="131818513" timestamp="2023-01-28T18:48:41Z" user="Minimalis" uid="665336">
+  <nd ref="1125767453"/>
+  <nd ref="1125769618"/>
+  <nd ref="1125771852"/>
+  <nd ref="1125773958"/>
+  <nd ref="1125776071"/>
+  <nd ref="1125778226"/>
+  <nd ref="1125766313"/>
+  <nd ref="1125768391"/>
+  <nd ref="5275791419"/>
+  <nd ref="1125772850"/>
+  <nd ref="1125770709"/>
+  <nd ref="1125769727"/>
+  <nd ref="1125771966"/>
+  <nd ref="1125774086"/>
+  <nd ref="1125778354"/>
+  <nd ref="5275791418"/>
+  <nd ref="5275791417"/>
+  <nd ref="1125776194"/>
+  <nd ref="1125766443"/>
+  <nd ref="5275791416"/>
+  <nd ref="1125768509"/>
+  <nd ref="1125770842"/>
+  <nd ref="1125765357"/>
+  <nd ref="1125777231"/>
+  <nd ref="1125775078"/>
+  <nd ref="6542455406"/>
+  <nd ref="1125772962"/>
+  <nd ref="1125767453"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="church"/>
+  <tag k="building:ruian:type" v="15"/>
+  <tag k="denomination" v="roman_catholic"/>
+  <tag k="name" v="Svatý Vavřinec"/>
+  <tag k="ref:ruian:building" v="45858501"/>
+  <tag k="religion" v="christian"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="wikidata" v="Q27971669"/>
+  <tag k="wikipedia" v="cs:Kostel svatého Vavřince (Křenovice)"/>
+ </way>
+</osm>

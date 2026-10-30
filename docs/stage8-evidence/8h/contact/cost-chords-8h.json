@@ -1,0 +1,386 @@
+{
+ "build": "final.html",
+ "md5": "9fa50cb46a085ab4ea8f932cd405f1e8",
+ "n": 240,
+ "reps": 5,
+ "t0": 525,
+ "views": {
+  "pratzen-low": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     3.9288,
+     3.9096
+    ],
+    "seat": [
+     0.9438,
+     0.8771
+    ],
+    "lod": [
+     0.0458,
+     0.0404
+    ],
+    "gait": [
+     0.0608,
+     0.0658
+    ],
+    "slopeLookups": [
+     3521.1,
+     2457.8
+    ],
+    "lookupUs": 0.0225,
+    "slopeMsCounted": 0.0239,
+    "slopeMsTimed": 0.0667,
+    "slopeMsTimedPairs": [
+     0.245,
+     -0.0383,
+     0.0608,
+     0.065,
+     0.1004
+    ],
+    "slopeMsBench": 0.0427,
+    "benchBlocks": 7,
+    "uploads": 27.02,
+    "uploadKB": 7.53,
+    "seatings": 21.85,
+    "slopeSeatings": 3.2,
+    "animationMs": 0.1035,
+    "lodMs": 0.0458,
+    "animatedAtEnd": 7
+   },
+   "1x": {
+    "x": 1,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.0179,
+     3.9229
+    ],
+    "seat": [
+     0.9579,
+     0.9042
+    ],
+    "lod": [
+     0.0404,
+     0.0429
+    ],
+    "gait": [
+     0.0708,
+     0.0625
+    ],
+    "slopeLookups": [
+     4338.2,
+     2587
+    ],
+    "lookupUs": 0.023,
+    "slopeMsCounted": 0.0403,
+    "slopeMsTimed": 0.0537,
+    "slopeMsTimedPairs": [
+     0.0979,
+     0.0446,
+     -0.2096,
+     0.0158,
+     0.1879
+    ],
+    "slopeMsBench": 0.0579,
+    "benchBlocks": 7,
+    "uploads": 44.68,
+    "uploadKB": 12.41,
+    "seatings": 23.02,
+    "slopeSeatings": 5.29,
+    "animationMs": 0.1287,
+    "lodMs": 0.0404,
+    "animatedAtEnd": 7
+   }
+  },
+  "close-sokolnitz": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.1017,
+     4.0325
+    ],
+    "seat": [
+     0.9754,
+     0.8963
+    ],
+    "lod": [
+     0.0488,
+     0.0429
+    ],
+    "gait": [
+     0.0767,
+     0.0712
+    ],
+    "slopeLookups": [
+     3521.1,
+     2457.8
+    ],
+    "lookupUs": 0.0225,
+    "slopeMsCounted": 0.0239,
+    "slopeMsTimed": 0.0791,
+    "slopeMsTimedPairs": [
+     0.145,
+     0.0321,
+     0.1571,
+     -0.0979,
+     0.0325
+    ],
+    "slopeMsBench": 0.0389,
+    "benchBlocks": 7,
+    "uploads": 27.02,
+    "uploadKB": 7.53,
+    "seatings": 21.85,
+    "slopeSeatings": 3.2,
+    "animationMs": 0.1156,
+    "lodMs": 0.0488,
+    "animatedAtEnd": 7
+   },
+   "1x": {
+    "x": 1,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.4071,
+     4.0929
+    ],
+    "seat": [
+     1.0292,
+     0.9162
+    ],
+    "lod": [
+     0.0471,
+     0.0467
+    ],
+    "gait": [
+     0.0683,
+     0.0633
+    ],
+    "slopeLookups": [
+     4338.2,
+     2587
+    ],
+    "lookupUs": 0.024,
+    "slopeMsCounted": 0.042,
+    "slopeMsTimed": 0.113,
+    "slopeMsTimedPairs": [
+     0.0312,
+     0.17,
+     0.2696,
+     -0.0671,
+     0.1925
+    ],
+    "slopeMsBench": 0.061,
+    "benchBlocks": 7,
+    "uploads": 44.68,
+    "uploadKB": 12.41,
+    "seatings": 23.02,
+    "slopeSeatings": 5.29,
+    "animationMs": 0.1293,
+    "lodMs": 0.0471,
+    "animatedAtEnd": 7
+   }
+  },
+  "overview-plan": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     3.8342,
+     3.89
+    ],
+    "seat": [
+     1.0112,
+     0.9467
+    ],
+    "lod": [
+     0.0521,
+     0.0479
+    ],
+    "gait": [
+     0.0846,
+     0.0896
+    ],
+    "slopeLookups": [
+     3521.1,
+     2457.8
+    ],
+    "lookupUs": 0.0235,
+    "slopeMsCounted": 0.025,
+    "slopeMsTimed": 0.0645,
+    "slopeMsTimedPairs": [
+     0.0646,
+     -0.1733,
+     0.0292,
+     0.1746,
+     0.1617
+    ],
+    "slopeMsBench": 0.0372,
+    "benchBlocks": 7,
+    "uploads": 27.02,
+    "uploadKB": 7.53,
+    "seatings": 21.85,
+    "slopeSeatings": 3.2,
+    "animationMs": 0.1218,
+    "lodMs": 0.0521,
+    "animatedAtEnd": 7
+   },
+   "1x": {
+    "x": 1,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.0179,
+     3.6225
+    ],
+    "seat": [
+     1.0925,
+     0.8775
+    ],
+    "lod": [
+     0.0446,
+     0.0437
+    ],
+    "gait": [
+     0.0696,
+     0.065
+    ],
+    "slopeLookups": [
+     4338.2,
+     2587
+    ],
+    "lookupUs": 0.0225,
+    "slopeMsCounted": 0.0394,
+    "slopeMsTimed": 0.215,
+    "slopeMsTimedPairs": [
+     0.3075,
+     0.0079,
+     0.265,
+     0.1608,
+     0.1679
+    ],
+    "slopeMsBench": 0.0618,
+    "benchBlocks": 7,
+    "uploads": 44.68,
+    "uploadKB": 12.41,
+    "seatings": 23.02,
+    "slopeSeatings": 5.29,
+    "animationMs": 0.1314,
+    "lodMs": 0.0446,
+    "animatedAtEnd": 7
+   }
+  },
+  "overview-field": {
+   "0.5x": {
+    "x": 0.5,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.7488,
+     4.155
+    ],
+    "seat": [
+     1.1204,
+     1.0133
+    ],
+    "lod": [
+     0.0533,
+     0.0492
+    ],
+    "gait": [
+     0.0708,
+     0.0654
+    ],
+    "slopeLookups": [
+     3521.1,
+     2457.8
+    ],
+    "lookupUs": 0.0225,
+    "slopeMsCounted": 0.0239,
+    "slopeMsTimed": 0.1071,
+    "slopeMsTimedPairs": [
+     0.1908,
+     0.0867,
+     0.1562,
+     -0.0063,
+     0.3087
+    ],
+    "slopeMsBench": 0.0394,
+    "benchBlocks": 7,
+    "uploads": 27.02,
+    "uploadKB": 7.53,
+    "seatings": 21.85,
+    "slopeSeatings": 3.2,
+    "animationMs": 0.1102,
+    "lodMs": 0.0533,
+    "animatedAtEnd": 7
+   },
+   "1x": {
+    "x": 1,
+    "t0": 525,
+    "frames": 240,
+    "reps": 5,
+    "sink": true,
+    "upd": [
+     4.24,
+     4.2171
+    ],
+    "seat": [
+     1.0279,
+     0.9529
+    ],
+    "lod": [
+     0.0417,
+     0.0454
+    ],
+    "gait": [
+     0.0646,
+     0.0683
+    ],
+    "slopeLookups": [
+     4338.2,
+     2587
+    ],
+    "lookupUs": 0.024,
+    "slopeMsCounted": 0.042,
+    "slopeMsTimed": 0.075,
+    "slopeMsTimedPairs": [
+     0.2033,
+     0.025,
+     0.0667,
+     0.0404,
+     -0.0017
+    ],
+    "slopeMsBench": 0.0649,
+    "benchBlocks": 7,
+    "uploads": 44.68,
+    "uploadKB": 12.41,
+    "seatings": 23.02,
+    "slopeSeatings": 5.29,
+    "animationMs": 0.1295,
+    "lodMs": 0.0417,
+    "animatedAtEnd": 7
+   }
+  }
+ },
+ "chromium": "153.0.8010.12"
+}

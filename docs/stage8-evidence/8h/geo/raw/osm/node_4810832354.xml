@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2644895 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="4810832354" visible="true" version="3" changeset="147619903" timestamp="2024-02-18T18:05:39Z" user="qqipp" uid="326549" lat="49.1211230" lon="16.7263609">
+  <tag k="access" v="no"/>
+  <tag k="barrier" v="gate"/>
+  <tag k="bicycle" v="no"/>
+  <tag k="description" v="vstup do bažantnice"/>
+  <tag k="foot" v="yes"/>
+  <tag k="horse" v="no"/>
+  <tag k="motor_vehicle" v="no"/>
+  <tag k="name" v="vstup do bažantnice"/>
+  <tag k="wheelchair" v="limited"/>
+ </node>
+</osm>

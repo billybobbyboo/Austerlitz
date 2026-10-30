@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2656536 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74167183" visible="true" version="2" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1828510" lon="16.7245674">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74277091" visible="true" version="2" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1827830" lon="16.7250526">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="3859497822" visible="true" version="2" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1827386" lon="16.7252773"/>
+ <node id="3859497823" visible="true" version="2" changeset="36122338" timestamp="2015-12-23T10:25:23Z" user="&lt;0174" uid="172147" lat="49.1828139" lon="16.7248558"/>
+ <node id="7733507067" visible="true" version="1" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1828982" lon="16.7240842"/>
+ <way id="608424761" visible="true" version="8" changeset="151776692" timestamp="2024-05-24T15:37:47Z" user="PizzaChips" uid="19627237">
+  <nd ref="3859497822"/>
+  <nd ref="74277091"/>
+  <nd ref="3859497823"/>
+  <nd ref="74167183"/>
+  <nd ref="7733507067"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="3"/>
+  <tag k="lanes:backward" v="2"/>
+  <tag k="lanes:forward" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed:backward" v="90"/>
+  <tag k="maxspeed:forward" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:left" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

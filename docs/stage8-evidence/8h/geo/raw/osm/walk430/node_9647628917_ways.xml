@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2692139 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="382011598" visible="true" version="16" changeset="177425333" timestamp="2026-01-19T12:33:45Z" user="JBS21" uid="13953005">
+  <nd ref="9647628917"/>
+  <nd ref="11742250616"/>
+  <nd ref="299694997"/>
+  <nd ref="12006684356"/>
+  <nd ref="74170967"/>
+  <tag k="cycleway" v="lane"/>
+  <tag k="cycleway:both" v="lane"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="both"/>
+  <tag k="sidewalk:both:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1049824366" visible="true" version="4" changeset="177425007" timestamp="2026-01-19T12:39:24Z" user="JBS21" uid="13953005">
+  <nd ref="9647629017"/>
+  <nd ref="11742250611"/>
+  <nd ref="9647628917"/>
+  <tag k="highway" v="service"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1382099762" visible="true" version="2" changeset="177425013" timestamp="2026-01-19T12:39:50Z" user="JBS21" uid="13953005">
+  <nd ref="11742250619"/>
+  <nd ref="9647628917"/>
+  <tag k="highway" v="cycleway"/>
+  <tag k="lit" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1382099763" visible="true" version="3" changeset="177425333" timestamp="2026-01-19T12:39:47Z" user="JBS21" uid="13953005">
+  <nd ref="8975302979"/>
+  <nd ref="9647628917"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="both"/>
+  <tag k="sidewalk:both:surface" v="paving_stones"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1382099764" visible="true" version="2" changeset="177425013" timestamp="2026-01-19T12:39:55Z" user="JBS21" uid="13953005">
+  <nd ref="9647628917"/>
+  <nd ref="11742250612"/>
+  <tag k="highway" v="cycleway"/>
+  <tag k="lit" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

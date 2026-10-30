@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2980399 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="4105812602" visible="true" version="1" changeset="38388029" timestamp="2016-04-07T18:25:49Z" user="Mar4s" uid="461574" lat="49.1667896" lon="16.7867532"/>
+ <node id="4105812603" visible="true" version="1" changeset="38388029" timestamp="2016-04-07T18:25:49Z" user="Mar4s" uid="461574" lat="49.1667984" lon="16.7867105"/>
+ <node id="4105812604" visible="true" version="1" changeset="38388029" timestamp="2016-04-07T18:25:49Z" user="Mar4s" uid="461574" lat="49.1668172" lon="16.7867659"/>
+ <node id="4105812605" visible="true" version="1" changeset="38388029" timestamp="2016-04-07T18:25:49Z" user="Mar4s" uid="461574" lat="49.1668261" lon="16.7867240"/>
+ <way id="408678509" visible="true" version="5" changeset="188896671" timestamp="2026-09-12T02:04:02Z" user="reperfect-it_bot" uid="24283398">
+  <nd ref="4105812605"/>
+  <nd ref="4105812604"/>
+  <nd ref="4105812602"/>
+  <nd ref="4105812603"/>
+  <nd ref="4105812605"/>
+  <tag k="building" v="civic"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="description" v="Zvonice v Blažovicích"/>
+  <tag k="man_made" v="tower"/>
+  <tag k="ref:drobne_pamatky" v="62316"/>
+  <tag k="ref:ruian:building" v="39854426"/>
+  <tag k="roof:shape" v="pyramidal"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="tower:type" v="bell_tower"/>
+  <tag k="wikidata" v="Q51323032"/>
+ </way>
+</osm>

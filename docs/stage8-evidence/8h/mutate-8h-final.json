@@ -1,0 +1,113 @@
+{
+ "build": "final.html",
+ "md5": "9fa50cb46a085ab4ea8f932cd405f1e8",
+ "chromium": "153.0.8010.12",
+ "mutations": [
+  {
+   "id": "none8g",
+   "block": "8g",
+   "what": "nothing (the build as it is)",
+   "ok": true,
+   "equivalent": false,
+   "chateau": [
+    77.2059,
+    -63.3712
+   ],
+   "selfTest": {
+    "checks": 8,
+    "failed": [],
+    "ms": 1088
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "noplace",
+   "block": "8g",
+   "what": "the château's centre not held in the town's place",
+   "ok": true,
+   "equivalent": true,
+   "chateau": [
+    77.2059,
+    -63.3712
+   ],
+   "selfTest": {
+    "checks": 8,
+    "failed": [],
+    "ms": 1528
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "nobetween",
+   "block": "8g",
+   "what": "a drawn road or stream allowed between the château and its church",
+   "ok": true,
+   "equivalent": true,
+   "chateau": [
+    77.2059,
+    -63.3712
+   ],
+   "selfTest": {
+    "checks": 8,
+    "failed": [],
+    "ms": 927
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "none8f",
+   "block": "8f",
+   "what": "nothing (the build as it is)",
+   "ok": true,
+   "equivalent": false,
+   "chateau": [
+    77.2059,
+    -63.3712
+   ],
+   "selfTest": {
+    "checks": 15,
+    "failed": [],
+    "ms": 38383
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "nonear",
+   "block": "8f",
+   "what": "the crowns not closing near the eye (the hook's growth gone: 8F's crowns at every distance)",
+   "ok": true,
+   "equivalent": false,
+   "chateau": [
+    77.2059,
+    -63.3712
+   ],
+   "selfTest": {
+    "checks": 15,
+    "failed": [
+     "the crowns closing near the eye (8H): each deciduous habit and the bush with the near hook; among the crowns t | among the crowns 0 of 129600 pixels differ with the hook off; from the Field vantage 0; WRONG: among the crowns, 0 pixels differ with the hook off (at least 1,000: the near faces grown)"
+    ],
+    "ms": 40162
+   },
+   "pageErrors": []
+  },
+  {
+   "id": "nohook",
+   "block": "8f",
+   "what": "a deciduous habit drawn without the near hook",
+   "ok": true,
+   "equivalent": false,
+   "chateau": [
+    77.2059,
+    -63.3712
+   ],
+   "selfTest": {
+    "checks": 15,
+    "failed": [
+     "the crowns closing near the eye (8H): each deciduous habit and the bush with the near hook; among the crowns t | among the crowns 0 of 129600 pixels differ with the hook off; from the Field vantage 0; WRONG: deciduous habit 0 without the near hook; deciduous habit 1 without the near hook; deciduous habit 2 without the near hook; deciduous habit 3 without the near hook; among the crowns, 0 pixels differ with the hook off (at least 1,000: the near faces grown)"
+    ],
+    "ms": 36875
+   },
+   "pageErrors": []
+  }
+ ]
+}

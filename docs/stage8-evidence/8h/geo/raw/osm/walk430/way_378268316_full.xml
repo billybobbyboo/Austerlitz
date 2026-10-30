@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2945405 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="299679704" visible="true" version="3" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1848292" lon="16.8253129"/>
+ <node id="3721901524" visible="true" version="2" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1849546" lon="16.8260349"/>
+ <node id="3816701231" visible="true" version="4" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1853235" lon="16.8279341">
+  <tag k="name" v="Kovalovice"/>
+  <tag k="traffic_sign" v="city_limit"/>
+ </node>
+ <node id="3816701232" visible="true" version="3" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1846599" lon="16.8240960">
+  <tag k="name" v="Kovalovice"/>
+  <tag k="traffic_sign" v="city_limit"/>
+ </node>
+ <node id="6514183595" visible="true" version="2" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1847274" lon="16.8246302"/>
+ <node id="13482617630" visible="true" version="4" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1849798" lon="16.8261717">
+  <tag k="crossing" v="uncontrolled"/>
+  <tag k="crossing:island" v="yes"/>
+  <tag k="crossing:markings" v="zebra"/>
+  <tag k="highway" v="crossing"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+ </node>
+ <node id="14031915118" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1850311" lon="16.8264382"/>
+ <node id="14031915120" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1849662" lon="16.8260972"/>
+ <node id="14031915121" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1848899" lon="16.8256752"/>
+ <node id="14031915122" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1847806" lon="16.8250038"/>
+ <node id="14031915123" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1847535" lon="16.8248170"/>
+ <node id="14031915124" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1848043" lon="16.8251606"/>
+ <node id="14031915125" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1846940" lon="16.8243772"/>
+ <node id="14031915129" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1847045" lon="16.8244571"/>
+ <node id="14031915135" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1851929" lon="16.8272748"/>
+ <node id="14031915143" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1852301" lon="16.8274624"/>
+ <node id="14031915144" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1850858" lon="16.8267210"/>
+ <node id="14031915171" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1848639" lon="16.8255201"/>
+ <node id="14031943507" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1848957" lon="16.8257079"/>
+ <node id="14031943510" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1848274" lon="16.8253019"/>
+ <node id="14031943512" visible="true" version="1" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1852757" lon="16.8276928"/>
+ <way id="378268316" visible="true" version="9" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="3816701231"/>
+  <nd ref="14031943512"/>
+  <nd ref="14031915143"/>
+  <nd ref="14031915135"/>
+  <nd ref="14031915144"/>
+  <nd ref="14031915118"/>
+  <nd ref="13482617630"/>
+  <nd ref="14031915120"/>
+  <nd ref="3721901524"/>
+  <nd ref="14031943507"/>
+  <nd ref="14031915121"/>
+  <nd ref="14031915171"/>
+  <nd ref="299679704"/>
+  <nd ref="14031943510"/>
+  <nd ref="14031915124"/>
+  <nd ref="14031915122"/>
+  <nd ref="14031915123"/>
+  <nd ref="6514183595"/>
+  <nd ref="14031915129"/>
+  <nd ref="14031915125"/>
+  <nd ref="3816701232"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

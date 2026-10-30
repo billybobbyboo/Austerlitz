@@ -1,0 +1,444 @@
+{
+ "tool": "tools/stage8/ice-8h.js",
+ "build": "cur.html",
+ "md5": "e8fed44b0884e48a277c68ef2f39598a",
+ "chromium": "153.0.8010.12",
+ "variants": {
+  "0.20": {
+   "views": {
+    "above": {
+     "09:00": {
+      "shore": 0.984,
+      "margin": 1.156,
+      "clear": 1.112,
+      "field": 71.6,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.239,
+      "max": 1.574
+     },
+     "12:00": {
+      "shore": 0.994,
+      "margin": 1.165,
+      "clear": 1.112,
+      "field": 71.8,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.253,
+      "max": 1.584
+     },
+     "15:00": {
+      "shore": 0.99,
+      "margin": 1.147,
+      "clear": 1.107,
+      "field": 57.4,
+      "samples": 3264,
+      "glare15": 0,
+      "white": 0,
+      "p95": 1.255,
+      "max": 1.393
+     }
+    },
+    "oblique": {
+     "09:00": {
+      "shore": 0.965,
+      "margin": 1.076,
+      "clear": 1.151,
+      "field": 69.7,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.203,
+      "max": 1.782
+     },
+     "12:00": {
+      "shore": 0.961,
+      "margin": 1.081,
+      "clear": 1.155,
+      "field": 70.9,
+      "samples": 3264,
+      "glare15": 0.25,
+      "white": 0,
+      "p95": 1.21,
+      "max": 2.158
+     },
+     "15:00": {
+      "shore": 0.916,
+      "margin": 1.033,
+      "clear": 1.08,
+      "field": 58.9,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.165,
+      "max": 1.862
+     }
+    },
+    "low": {
+     "09:00": {
+      "shore": 1.067,
+      "margin": 1.184,
+      "clear": 1.308,
+      "field": 60.8,
+      "samples": 3255,
+      "glare15": 18.19,
+      "white": 0,
+      "p95": 1.539,
+      "max": 2.171
+     },
+     "12:00": {
+      "shore": 1.083,
+      "margin": 1.204,
+      "clear": 1.356,
+      "field": 61.2,
+      "samples": 3255,
+      "glare15": 21.2,
+      "white": 0,
+      "p95": 1.56,
+      "max": 2.564
+     },
+     "15:00": {
+      "shore": 1.087,
+      "margin": 1.207,
+      "clear": 1.305,
+      "field": 45.7,
+      "samples": 3255,
+      "glare15": 43.5,
+      "white": 0,
+      "p95": 1.703,
+      "max": 3.153
+     }
+    }
+   }
+  },
+  "0.26": {
+   "views": {
+    "above": {
+     "09:00": {
+      "shore": 0.984,
+      "margin": 1.156,
+      "clear": 1.12,
+      "field": 71.6,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.242,
+      "max": 1.574
+     },
+     "12:00": {
+      "shore": 0.994,
+      "margin": 1.165,
+      "clear": 1.121,
+      "field": 71.8,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.253,
+      "max": 1.584
+     },
+     "15:00": {
+      "shore": 0.99,
+      "margin": 1.148,
+      "clear": 1.116,
+      "field": 57.4,
+      "samples": 3264,
+      "glare15": 0,
+      "white": 0,
+      "p95": 1.255,
+      "max": 1.393
+     }
+    },
+    "oblique": {
+     "09:00": {
+      "shore": 0.965,
+      "margin": 1.076,
+      "clear": 1.149,
+      "field": 69.7,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.203,
+      "max": 1.782
+     },
+     "12:00": {
+      "shore": 0.961,
+      "margin": 1.081,
+      "clear": 1.154,
+      "field": 70.9,
+      "samples": 3264,
+      "glare15": 0.25,
+      "white": 0,
+      "p95": 1.21,
+      "max": 2.158
+     },
+     "15:00": {
+      "shore": 0.916,
+      "margin": 1.033,
+      "clear": 1.079,
+      "field": 58.9,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.165,
+      "max": 1.862
+     }
+    },
+    "low": {
+     "09:00": {
+      "shore": 1.067,
+      "margin": 1.183,
+      "clear": 1.301,
+      "field": 60.8,
+      "samples": 3255,
+      "glare15": 15.51,
+      "white": 0,
+      "p95": 1.511,
+      "max": 2.171
+     },
+     "12:00": {
+      "shore": 1.083,
+      "margin": 1.203,
+      "clear": 1.349,
+      "field": 61.2,
+      "samples": 3255,
+      "glare15": 19.48,
+      "white": 0,
+      "p95": 1.543,
+      "max": 2.564
+     },
+     "15:00": {
+      "shore": 1.087,
+      "margin": 1.206,
+      "clear": 1.297,
+      "field": 45.7,
+      "samples": 3255,
+      "glare15": 37.24,
+      "white": 0,
+      "p95": 1.661,
+      "max": 3.153
+     }
+    }
+   }
+  },
+  "0.32": {
+   "views": {
+    "above": {
+     "09:00": {
+      "shore": 0.984,
+      "margin": 1.156,
+      "clear": 1.133,
+      "field": 71.6,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.242,
+      "max": 1.574
+     },
+     "12:00": {
+      "shore": 0.994,
+      "margin": 1.164,
+      "clear": 1.133,
+      "field": 71.8,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.253,
+      "max": 1.584
+     },
+     "15:00": {
+      "shore": 0.99,
+      "margin": 1.147,
+      "clear": 1.128,
+      "field": 57.4,
+      "samples": 3264,
+      "glare15": 0,
+      "white": 0,
+      "p95": 1.255,
+      "max": 1.393
+     }
+    },
+    "oblique": {
+     "09:00": {
+      "shore": 0.965,
+      "margin": 1.076,
+      "clear": 1.148,
+      "field": 69.7,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.203,
+      "max": 1.782
+     },
+     "12:00": {
+      "shore": 0.961,
+      "margin": 1.081,
+      "clear": 1.152,
+      "field": 70.9,
+      "samples": 3264,
+      "glare15": 0.25,
+      "white": 0,
+      "p95": 1.21,
+      "max": 2.158
+     },
+     "15:00": {
+      "shore": 0.916,
+      "margin": 1.033,
+      "clear": 1.078,
+      "field": 58.9,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.165,
+      "max": 1.862
+     }
+    },
+    "low": {
+     "09:00": {
+      "shore": 1.066,
+      "margin": 1.182,
+      "clear": 1.292,
+      "field": 60.8,
+      "samples": 3255,
+      "glare15": 0.43,
+      "white": 0,
+      "p95": 1.49,
+      "max": 2.171
+     },
+     "12:00": {
+      "shore": 1.083,
+      "margin": 1.201,
+      "clear": 1.339,
+      "field": 61.2,
+      "samples": 3255,
+      "glare15": 16.77,
+      "white": 0,
+      "p95": 1.513,
+      "max": 2.564
+     },
+     "15:00": {
+      "shore": 1.087,
+      "margin": 1.206,
+      "clear": 1.287,
+      "field": 45.7,
+      "samples": 3255,
+      "glare15": 31.71,
+      "white": 0,
+      "p95": 1.637,
+      "max": 3.153
+     }
+    }
+   }
+  },
+  "0.40": {
+   "views": {
+    "above": {
+     "09:00": {
+      "shore": 0.984,
+      "margin": 1.154,
+      "clear": 1.149,
+      "field": 71.6,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.242,
+      "max": 1.574
+     },
+     "12:00": {
+      "shore": 0.994,
+      "margin": 1.163,
+      "clear": 1.151,
+      "field": 71.8,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.253,
+      "max": 1.584
+     },
+     "15:00": {
+      "shore": 0.99,
+      "margin": 1.146,
+      "clear": 1.144,
+      "field": 57.4,
+      "samples": 3264,
+      "glare15": 0,
+      "white": 0,
+      "p95": 1.255,
+      "max": 1.393
+     }
+    },
+    "oblique": {
+     "09:00": {
+      "shore": 0.965,
+      "margin": 1.076,
+      "clear": 1.147,
+      "field": 69.7,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.203,
+      "max": 1.782
+     },
+     "12:00": {
+      "shore": 0.961,
+      "margin": 1.081,
+      "clear": 1.15,
+      "field": 70.9,
+      "samples": 3264,
+      "glare15": 0.25,
+      "white": 0,
+      "p95": 1.21,
+      "max": 2.158
+     },
+     "15:00": {
+      "shore": 0.916,
+      "margin": 1.033,
+      "clear": 1.077,
+      "field": 58.9,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.165,
+      "max": 1.862
+     }
+    },
+    "low": {
+     "09:00": {
+      "shore": 1.066,
+      "margin": 1.18,
+      "clear": 1.281,
+      "field": 60.8,
+      "samples": 3255,
+      "glare15": 0.43,
+      "white": 0,
+      "p95": 1.444,
+      "max": 2.171
+     },
+     "12:00": {
+      "shore": 1.082,
+      "margin": 1.199,
+      "clear": 1.328,
+      "field": 61.2,
+      "samples": 3255,
+      "glare15": 1.66,
+      "white": 0,
+      "p95": 1.48,
+      "max": 2.564
+     },
+     "15:00": {
+      "shore": 1.087,
+      "margin": 1.203,
+      "clear": 1.275,
+      "field": 45.7,
+      "samples": 3255,
+      "glare15": 27.13,
+      "white": 0,
+      "p95": 1.573,
+      "max": 3.153
+     }
+    }
+   }
+  }
+ }
+}

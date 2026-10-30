@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2725564 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="28230783" visible="true" version="4" changeset="188001210" timestamp="2026-08-25T16:56:32Z" user="MIGORMCZ" uid="10284764" lat="49.1845064" lon="16.8003345"/>
+ <node id="74213660" visible="true" version="2" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1850850" lon="16.7826872">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74312242" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1848655" lon="16.7896275">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="297537004" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1851378" lon="16.7811229"/>
+ <node id="362213710" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1847428" lon="16.7933118"/>
+ <node id="3459717377" visible="true" version="1" changeset="30268595" timestamp="2015-04-16T16:08:19Z" user="Jezevec" uid="102554" lat="49.1846243" lon="16.7968395"/>
+ <node id="8140083839" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1849670" lon="16.7861693"/>
+ <node id="12461346410" visible="true" version="2" changeset="162141611" timestamp="2025-02-04T20:42:11Z" user="MIGORMCZ" uid="10284764" lat="49.1845332" lon="16.7995274">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Holubice, kruh"/>
+  <tag k="public_transport" v="stop_position"/>
+ </node>
+ <way id="532819679" visible="true" version="7" changeset="160762914" timestamp="2024-12-29T18:21:38Z" user="Pavel_Š" uid="21958359">
+  <nd ref="28230783"/>
+  <nd ref="12461346410"/>
+  <nd ref="3459717377"/>
+  <nd ref="362213710"/>
+  <nd ref="74312242"/>
+  <nd ref="8140083839"/>
+  <nd ref="74213660"/>
+  <nd ref="297537004"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="source:maxspeed" v="CZ:rural"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

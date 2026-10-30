@@ -1,0 +1,1216 @@
+[[Soubor:Battlefield of Austerlitz - conservation area.svg|náhled|Areál chráněné památkové zóny Slavkovského bojiště]]
+'''Seznam památek Slavkovského bojiště''' představuje výčet kulturních památek – pomníků, křížů, kapliček, hromadných hrobů, míst významných z hlediska velení a dalších nemovitých objektů spojených s [[Bitva u Slavkova|bitvou tří císařů]] u [[Slavkov u Brna|Slavkova]] dne [[2. prosinec|2. prosince]] [[1805]].<ref group="p">Kritériem významnosti pro zařazení do seznamu je uvedení v některé z těchto publikací:
+* {{Citace monografie
+ | příjmení = Špatný
+ | jméno = Jan
+ | titul = Slavkov – Austerlitz, bitva tří císařů
+ | vydavatel = Geodézie Brno
+ | místo = Brno
+ | rok = 1991
+ | isbn = 80-85302-03-9
+}}
+* {{Citace sborníku
+ | příjmení = Král
+ | jméno = Adolf B
+ | titul = Mlčící svědkové bitvy
+ | příjmení sestavitele = Dacík
+ | jméno sestavitele = T.
+ | sborník = Psal se rok 1805
+ | vydavatel = Okresní muzeum Brno-venkov
+ | místo = Ivančice
+ | rok vydání = 1988
+ | strany = 8–12
+}}
+* {{Citace monografie
+ | titul = Okolí Brna – Slavkovské bojiště a Ždánický les. Mapa KČT č. 87
+ | vydání = 3
+ | vydavatel = [[Klub českých turistů]]
+ | místo = Praha
+ | rok = 2010
+ | isbn = 978-80-7324-265-7
+}}
+* {{Citace monografie
+ | titul = Památky slavkovského bojiště. Cykloturistická mapa
+ | vydavatel = Město Slavkov u Brna
+ | místo = Slavkov u Brna
+ | rok = 2009
+}}
+* {{Citace monografie
+ | příjmení = Kopecký
+ | jméno = František
+ | titul = O slavkovské bitvě – dopady a tradice
+ | vydavatel = Onufrius
+ | místo = Brno
+ | rok = 2009
+ | isbn = 978-80-9038-816-1
+ | strany = 178–183
+}}</ref>
+
+== Území ==
+'''Slavkovské bojiště''' je oblast o ploše asi 120 km² rozkládající se na východ od [[Brno|Brna]], na území dvou okresů [[Okres Vyškov|Vyškov]] a [[Okres Brno-venkov|Brno-venkov]]. Přibližně je vymezená obcemi [[Pozořice]] (ze severu), [[Slavkov u Brna]] (z východu), [[Žatčany]] (z jihu) a [[Šlapanice]] (ze západu). Alternativní vymezení představují říčky [[Litava (přítok Svratky)|Litava]] (z jihovýchodu) a [[Říčka (přítok Litavy)|Zlatý potok]] (ze západu) a stará císařská cesta (ze severu).
+
+V roce [[1992]] byla vymezená část území o rozloze 72 km² vyhlášena [[Krajinná památková zóna|krajinnou památkovou zónou]].<ref>{{Citace elektronického periodika
+| titul = Bojiště bitvy u Slavkova - Památkový Katalog
+| periodikum = pamatkovykatalog.cz
+| url = https://pamatkovykatalog.cz/pravni-ochrana/bojiste-bitvy-u-slavkova-84346
+| datum přístupu = 2025-05-28
+}}</ref><ref>{{Citace elektronického periodika
+| titul = e-Sbírka
+| periodikum = www.e-sbirka.cz
+| url = https://www.e-sbirka.cz/sb/1992/475?zalozka=text
+| datum přístupu = 2025-05-28
+}}</ref>{{Podrobně|Bojiště bitvy u Slavkova}}
+
+== Seznam ==
+
+Seznam je řazen abecedně dle umístění památek. [[Soubor:Emblem-star.svg|20px|Významná památka]] Hvězdou jsou vyznačeny nejvýznamnější, v literatuře nejčastěji nebo nejobšírněji zmiňované památky [[Slavkovské bojiště|Slavkovského bojiště]]. Šedě podbarvené jsou památky, které mají s bitvou souvislost, leží však mimo území památkové zóny.
+
+{{Sticky header}}
+{| class="wikitable sortable sticky-header" style="font-size:90%;"
+! Název
+! class="unsortable" | Obrázek
+! class="unsortable" | Commons
+! Umístění
+! class="unsortable" | Poznámky
+|-
+|<!--název--> Kovárna
+|<!--obr. -->[[Soubor:Blažovice, Náves 41, kovárna (9778a).jpg|150x150pixelů|Kovárna v Blažovicích]]
+|<!--comm.-->{{Commonscat v tabulce|Stará kovárna (Blažovice)}}
+|<!--místo-->[[Blažovice]] <br />{{Souřadnice|49.1679864|16.7881383}}
+|<!--pozn.-->V místech bývalé obecní kovárny, kde si před bitvou nechávali francouzští vojáci okovat koně, byl na přelomu 19. a 20. století postaven dům, rovněž sloužící jako kovárna, dnes č. p. 41. Dům č. p. 19 naproti přes silnici měl ve fasádě zazděné dělové koule z bitvy, v roce 2008 byl zbořen.<ref name="špatný">{{Citace monografie
+ | příjmení = Špatný
+ | jméno = Jan
+ | titul = Slavkov – Austerlitz, bitva tří císařů
+ | vydavatel = Geodézie Brno
+ | místo = Brno
+ | rok = 1991
+ | isbn = 80-85302-03-9
+}}</ref><ref name="kčt">{{Citace monografie
+ | titul = Okolí Brna – Slavkovské bojiště a Ždánický les. Mapa KČT č. 87
+ | vydání = 1
+ | vydavatel = [[Klub českých turistů]]
+ | místo = Praha
+ | rok = 1997
+ | isbn = 80-85999-02-1
+}}</ref><ref name="cyklo2009" /><ref name="blažovice">{{Citace elektronického periodika
+| příjmení = Pleva
+| jméno = Petr
+| titul = Historie a památky
+| periodikum = www.blazovice.eu
+| vydavatel = Blažovice
+| url = http://www.blazovice.eu/historie/d-1003/p1=52
+| datum vydání = 2007-03-10
+| datum přístupu = 2023-10-04
+| datum archivace = 2023-07-15
+| url archivu = https://web.archive.org/web/20230715232810/http://www.blazovice.eu/historie/d-1003/p1=52
+| nedostupné = ano
+}}</ref><ref name=":20">HANÁK (2015). S. 102–103.</ref><ref name=":21">HOCHEL (2011). S. 112–113.</ref>
+|-
+|<!--název--> Zvonice
+|<!--obr. -->[[Soubor:Blažovice, Náves, zvonice (9711b).jpg|150x150pixelů|Zvonice v Blažovicích]]
+|<!--comm.-->{{Commonscat v tabulce|Bell tower in Blažovice‎}}
+|<!--místo-->[[Blažovice]] <br />{{Souřadnice|49.1668056|16.7867222}}
+|<!--pozn.-->Uvnitř kapličky/zvonice z let 1831–1832 jsou umístěny dvě pamětní desky francouzským vojákům a jejich velitelům z dílny člena [[Československá napoleonská společnost|Československé napoleonské společnosti]] Přemysla Filipa. Jedna z roku 1995 je věnovaná veliteli francouzského 13. lehkého pěšího pluku Pierru Castexovi, který padl v bojích o Blažovice. Druhá z 29. dubna 1997 přísluší veliteli gardových jízdních myslivců plukovníku Jeanu-Pierru Morlandovi, který padl při střetu s ruskou gardou na Starých vinohradech.<ref name="kopecký2009" /><ref name="blažovice" /><ref name=":20" /><ref name=":21" />
+|-
+|<!--název-->Hromaný hrob
+|<!--obr. -->[[Soubor:Blažovice, kříž v Úlehlích (9789).jpg|alt=Kříž v Úlehlích|150x150pixelů|Zvonice v Blažovicích]]
+|<!--comm.-->{{Commonscat v tabulce|Kříž v Úlehlích (Blažovice)}}
+|<!--místo-->[[Blažovice]] <br />{{Souřadnice|49.1534372|16.7890478}}
+|<!--pozn.-->V blízkosti kříže „v Úlehlích“<!-- HANÁK (2015) jmenuje lokalitu "v Úlehlích", HOCHEL (2011) "V úlehlách", na starých katastrálních mapách je označena jako "Oulehla", v těsné blízkosti pod Starými i Novými vinohrady. -->, který byl později postaven při cestě na Zbýšov, resp. ke křižovatce se silnicí Prace–Křenovice, je jeden z řady neoznačených hromadných hrobů z bitvy.<ref name="blažovice" /><ref name=":21" /><ref name=":22">HANÁK (2015). S. 108–109.</ref><!-- Další, památkově neoznačený hromadný hrob uvádí HOCHEL (2011) v lokalitě mezi železniční tratí a polní cestou do Prace. -->
+|-
+|<!--název-->Plastika Smíření
+|<!--obr. -->[[Soubor:Blažovice, Setkání (5409).jpg|alt=Plastika Setkání|150x150pixelů|Zvonice v Blažovicích]]
+|<!--comm.-->{{Commonscat v tabulce|Setkání statue (Blažovice)}}
+|<!--místo-->[[Blažovice]] <br />{{Souřadnice|49.1688658|16.7882014}}
+|<!--pozn.-->Dřevěná vyřezávaná plastika s postavami tří vojáků různých armád stojí za obcí u silnice vedoucí severně do Tvarožné. Vedle tří vzájemně propojených vysokých pylonů stojí menší pylon symbolizující blažovického rodáka [[Šebestián Kubínek|Šebestiána Kubínka]]. Dílo Daniela Klose bylo odhaleno v roce 2002 péčí obce Blažovice.<ref name=":20" /><ref name=":21" /><ref>{{Citace elektronického periodika
+| příjmení = Pleva
+| jméno = Petr
+| titul = Plastika Setkání
+| periodikum = www.blazovice.eu
+| vydavatel = Blažovice
+| url = http://www.blazovice.eu/plastika-setkani/d-1009/p1=53
+| datum vydání = 2007-03-15
+| datum přístupu = 2023-10-04
+| datum archivace = 2023-10-05
+| url archivu = https://web.archive.org/web/20231005132111/http://www.blazovice.eu/plastika-setkani/d-1009/p1=53
+| nedostupné = ano
+}}</ref><ref>{{Citace kvalifikační práce
+| příjmení = Dvořáková
+| jméno = Klára
+| instituce = Masarykova univerzita, Pedagogická fakulta
+| odkaz na instituci = Pedagogická fakulta Masarykovy univerzity
+| titul = Regionální princip v učebních úlohách na příkladu obce Blažovice
+| url = https://is.muni.cz/th/aput1/
+| typ práce = Diplomová práce
+| vedoucí = Iva Frýzová
+| odkaz na vedoucího = {{UČO na článek|12077}}
+| místo = Brno
+| rok = 2019
+| počet stran = 
+| strany = 44
+| citace = 2023-10-04
+| jazyk = cs
+}}</ref><!-- Plastika je v různých zdrojích nazývána také Setkání, HANÁK I HOCHEL ji však shodně nazývají Smíření. -->
+|- style="background:#F0F0F0"
+|<!--název--> [[Místodržitelský palác (Brno)|Místodržitelský palác]]
+|<!--obr. --> [[Soubor:Pamětní deska na Místodržitelském paláci 1995.jpg|150px|Napoleonova pamětní deska na Místodržitelském paláci]]
+|<!--comm.-->{{Commonscat v tabulce|Místodržitelský palác (Brno)}}
+|<!--místo-->[[Brno]]  <br />Moravské nám.&nbsp;1 <br />{{Souřadnice|49.1978306|16.6083097}}
+|<!--pozn.--> Budova moravského místodržitelství a předtím augustiniánského kláštera (dnes Moravská galerie), kde před bitvou pobýval francouzský císař Napoleon a tuto skutečnost dnes upomíná pamětní deska od akademického malíře Karla Zemana, odhalená [[30. listopad]]u [[1995]].<ref name="cyklo2009" /><ref name="kopecký2009" /><ref name="čsns-pomníky" />
+|- style="background:#F0F0F0"
+|<!--název--> [[Dietrichsteinský palác (Brno)|Dietrichsteinský palác]]
+|<!--obr. --> [[Soubor:Kutuzov.JPG|150px|Kutuzovova pamětní deska na Dietrichsteinském paláci]]
+|<!--comm.-->{{Commonscat v tabulce|Plaque of Mikhail Kutuzov in Brno}}
+|<!--místo-->[[Brno]]  <br />Zelný trh&nbsp;8 <br />{{Souřadnice|49.1919464|16.6083797}}
+|<!--pozn.--> Někdejší Dietrichsteinský palác (dnes Moravské zemské muzeum), kde 2.-5. října 1805 pobýval ruský generál Kutuzov ještě před ústupem k Olomouci, odkud se posléze znovu s vojsky vrátil téměř k Brnu k rozhodné slavkovské bitvě. Generálův pobyt dnes upomíná pamětní deska.<ref name="cyklo2009" />
+|- style="background:#F0F0F0"
+|<!--název--> Obelisk
+|<!--obr. --> [[Soubor:Brno-Denisovy Sady IX (obelisk).jpg|150px|Obelisk v Denisových sadech]]
+|<!--comm.-->{{Commonscat v tabulce|Obelisk, Denisovy sady (Brno)}}
+|<!--místo-->[[Brno]]  <br />[[Denisovy sady]] <br />{{Souřadnice|49.1908644|16.6056475}}
+|<!--pozn.--> Obelisk postavený na místě předchozího železného kříže z roku [[1818]] upomíná na ukončení napoleonských válek.<ref name="cyklo2009" />
+|- style="background:#F0F0F0"
+|<!--název--> Pomník generála Valhuberta
+|<!--obr. --> [[Soubor:Valhubertův pomník Tyršův sad Brno 1995.jpg|150px|Pomník gen. Valhuberta v Tyršově sadu]]
+|<!--comm.-->{{Commonscat v tabulce|Memorial to Napoleon's general Valhubert at Tyršův sad}}
+|<!--místo-->[[Brno]] <br />[[Tyršův sad (Brno-Veveří)|Tyršův sad]] <br />{{Souřadnice|49.2025647|16.6024778}}
+|<!--pozn.--> Pomník byl v místech bývalého městského hřbitova postaven v 60. letech 20. století na počest francouzského generála Rogera Mellona-Valhuberta, který v Brně zemřel na následky zranění z bitvy.<ref name="cyklo2009" />
+|- style="background:#F0F0F0"
+|<!--název--> Fara
+|<!--obr. -->[[Soubor:Dražovice 45, fara (8847).jpg|alt=Fara v Dražovicích|150x150pixelů|Pomník gen. Valhuberta v Tyršově sadu]]
+|<!--comm.-->{{Commonscat v tabulce|Rectory in Dražovice (Vyškov District)}}
+|<!--místo-->[[Dražovice (okres Vyškov)|Dražovice]] <br />{{Souřadnice|49.1944789|16.9461592}}
+|<!--pozn.-->Pozdně barokní stavba z roku 1792, v níž podle zápisu v kronice po bitvě, 4. prosince, Napoleon spolu s pěti důstojníky přenocoval. Historicky to však není potvrzeno a mohlo se jednat o jiného vysokého důstojníka.<ref name="cyklo2009" /><ref>{{Citace elektronického periodika
+| příjmení = Svobodová
+| jméno = Miloslava
+| titul = Z historie obce
+| periodikum = www.drazovice.cz
+| vydavatel = Dražovice
+| url = https://www.drazovice.cz/z-historie-obce/d-23854
+| datum vydání = 2008-06-24
+| datum přístupu = 2023-08-11
+| datum archivace = 2023-08-11
+| url archivu = https://web.archive.org/web/20230811164327/https://www.drazovice.cz/z-historie-obce/d-23854
+| nedostupné = ano
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = Bejček
+| jméno = P
+| titul = Dražovice, kostel Narození sv. Jana Křtitele
+| periodikum = Křesťanské Vánoce
+| url = https://www.krestanskevanoce.cz/kostel/1588/
+| datum vydání = 2012
+| jazyk = cs
+| datum přístupu = 2023-08-11
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = Skokan
+| jméno = Jiří
+| titul = Letonice v době Napoleonské války
+| periodikum = www.letonice.cz
+| vydavatel = Letonice
+| url = https://www.letonice.cz/letonice-v-dobe-napoleonske-valky
+| datum přístupu = 2023-08-11
+}}</ref>
+|-
+|<!--název--> [[Kaple svatého Gottharda (Holubice)|Kaple sv. Gottharda]]
+|<!--obr. --> [[Soubor:Holubice (VY), kaple (2).jpg|100px|Kaple sv. Gottharda]]
+|<!--comm.-->{{Commonscat v tabulce|Chapel of Saint Godehard (Holubice)}}
+|<!--místo-->[[Holubice (okres Vyškov)|Holubice]] <br />{{Souřadnice|49.1777289|16.8122317}}
+|<!--pozn.--> Stavba z konce 18. století, „pamětník bojů“.<ref name="cyklo2009" /> Kaple byla vyhlášena kulturní nemovitou památkou.<ref>{{MonumNet|ID=133864|název=Kaple sv. Gottharda}}</ref>
+|-
+|<!--název--> Pomník obětem bitvy
+|<!--obr. --> [[Soubor:Holubice (VY), pomník bitva u Slavkova (1).jpg|150px|Pomník obětem bitvy]]
+|<!--comm.-->
+|<!--místo-->[[Holubice (okres Vyškov)|Holubice]] <br />{{Souřadnice|49.183|16.8016111}}
+|<!--pozn.--> U cesty z olomoucké silnice do Holubic byl 24. května 2003 odhalen 3,7 metrů vysoký žulový pomník věnovaný obětem bitvy tří císařů, s podobiznou maršála Murata jako zvětšené kopie medaile od Karla Zemana. U pomníku je také úložiště na nalezené kosterní pozůstatky. Z dálky viditelnou připomínkou bitvy je také nedaleké skladovací zařízení betonárny, upravené do podoby obřího kanónu s obsluhou.<ref name="kopecký2009" /><ref name="čsns-pomníky" /><ref>[http://www.austerlitz.org/slavnostni-odhaleni-posveceni-pomniku-_a312 Slavnostní odhalení a posvěcení pomníku]{{Nedostupný zdroj}}, Projekt Austerlitz</ref>
+|-
+|<!--název--> Mlýn
+|<!--obr. -->[[Soubor:Holubice, Stará valcha (5617).jpg|alt=Stará valcha u Holubic|150x150pixelů|Kříž a pomník nad Jiříkovicemi]]
+|<!--comm.-->{{Commonscat v tabulce|Stará valcha (Holubice)}}
+|<!--místo-->[[Holubice (okres Vyškov)|Holubice]] <br />{{Souřadnice|49.1661486|16.8193953}}
+|<!--pozn.-->Asi 300 let starý bývalý mlýn zvaný Stará valcha (dnes č. p. 147) na potoce [[Rakovec (přítok Litavy)|Rakovec]], asi 400 metrů jižní od Holubic při cestě na Křenovice, „pamětník bojů“. Až k mlýnu údajně dojely a zde se zastavily zbytky ruských hulánů velkoknížete [[Konstantin Pavlovič Ruský|Konstantina]] rozprášených francouzskou jízdou při velkém jezdeckém střetnutí na pláni západně od Holubic.<ref name="cyklo2009" /><ref>HOCHEL (2011). S. 123.</ref><ref>HANÁK (2015). S. 142–143.</ref><ref>{{Citace elektronického periodika
+| titul = Stará valcha
+| periodikum = vodnimlyny.cz
+| url = https://www.vodnimlyny.cz/hu/mlyny/estates/detail/2530-stara-valcha
+| datum přístupu = 2023-09-10
+}}</ref><ref>{{Citace elektronického periodika
+| titul = 11 / Střet elitních gard u Holubic
+| periodikum = Morava Napoleonská
+| vydavatel = Regionální rozvojová agentura jižní Moravy
+| url = https://www.morava-napoleonska.cz/cz/pamatky-na-morave/stret-elitnich-gard-u-holubic/
+| datum přístupu = 2023-09-10
+}}</ref>
+|-
+|<!--název--> Cikán
+|<!--obr. -->[[Soubor:Holubice, výhled od hřbitova na Cikán (5524).jpg|alt=Vrch Cikán u Holubic|150x150pixelů|Kříž a pomník nad Jiříkovicemi]]
+|<!--comm.-->{{Commonscat v tabulce|Cikán (Holubice)}}
+|<!--místo-->[[Holubice (okres Vyškov)|Holubice]] <br />{{Souřadnice|49.1617819|16.8408983}}
+|<!--pozn.-->Z návrší Cikán mezi Holubicemi a Slavkovem pozorovali rakouský císař František I. a ruský car Alexandr I. vývoj bitvy. Na jeho svazích se již večer před bitvou rozložila ruská garda.<ref name="kčt" /><ref>{{Citace monografie
+| titul = Slavkovské bojiště: turistický průvodce
+| url = https://www.zamek-slavkov.cz/wp-content/uploads/Slavkovsk%C3%A9-boji%C5%A1t%C4%9B-mapa-pr%C5%AFvodce.pdf
+| formát = PDF online
+| vydavatel = Zámek Slavkov – Austerlitz
+| místo = Slavkov u Brna
+| počet stran = 8
+| strany = 8
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = Chromý
+| jméno = Zdeněk
+| titul = Největší záhada slavkovského bojiště: Opravdu se zde ukrývá zlatý poklad?
+| periodikum = 100+1 zahraniční zajímavost
+| url = https://www.stoplusjednicka.cz/nejvetsi-zahada-slavkovskeho-bojiste-opravdu-se-zde-ukryva-zlaty-poklad
+| datum vydání = 2022-09-11
+| jazyk = cs
+| datum přístupu = 2023-09-10
+}}</ref>
+|-
+|<!--název--> Kříž a pomník nad vsí
+|<!--obr. --> [[Soubor:Kříž a památník na kraji Jiříkovic 2.jpg|150px|Kříž a pomník nad Jiříkovicemi]]
+|<!--comm.-->{{Commonscat v tabulce|Kříž (Jiříkovice)}}
+|<!--místo-->[[Jiříkovice]] <br />{{Souřadnice|49.1719017|16.7599131}}
+|<!--pozn.-->Železný kříž z roku [[1884]] stojí v místech původních kamenných božích muk, která se zřítila roku [[1850]]. Na dochované části božích muk byly vyznačeny šipky směřující k šachtovým hrobům. V Jiříkovicích byla umístěna francouzská polní ambulance, nejspíše v tehdejším dvoře, který však podlehl požáru vsi v roce [[1821]].<ref name="špatný" /><ref name="kčt" /><ref name="cyklo2009" /><ref>{{Citace monografie
+ | příjmení = Stěpánek
+ | jméno = Václav
+ | příjmení2 = Ustohal
+ | jméno2 = Vladimír
+ | titul = Jiříkovice 1805
+ | vydavatel = Moravské zemské muzeum
+ | vydání = 1
+ | místo = Brno
+ | rok = 1992
+ | isbn = 80-7028-043-3
+ | strany = 11–13
+}}</ref><ref name=":12">HANÁK (2015). S. 71–72.</ref><ref name=":13">HOCHEL (2011). S. 90–91.</ref> Kříž byl v roce 1996 vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=124061|název=Krucifix při silnici k Rohlence}}</ref> [[25. listopad]]u [[2000]] byl v jeho blízkosti odhalen pískovcový pomník podle návrhu Miroslava Pražáka, věnovaný obětem z let 1805–[[1809]] a na památku „poutníka míru“ Norberta Brassina, který slavkovské bojiště navštěvoval v letech [[1966]]–[[1984]].<ref name="kopecký2009" /><ref name="pa-jiříkovice">[http://www.austerlitz.org/jirikovice_a403 Jiříkovice]{{Nedostupný zdroj}} na stránkách Projektu Austerlitz</ref><ref name=":12" /><ref name=":13" />
+|-
+|<!--název--> Statek a zvonice
+|<!--obr. --> [[Soubor:Statek na návsi, Jiříkovice 1.jpg|150px|Statek na návsi]]
+|<!--comm.-->{{Commonscat v tabulce|Panský dvůr (Jiříkovice)}} {{Commonscat v tabulce|Zvonice (Jiříkovice)}}
+|<!--místo-->[[Jiříkovice]] <br />{{Souřadnice|49.1670347|16.7581492}}
+|<!--pozn.-->Statek na návsi (někdejší tvrz) a zvonice jsou „pamětníky bojů“, jako jediné přežily požár Jiříkovic.<ref name="cyklo2009" /> Statek i zvonice byly v roce 1996 vyhlášeny kulturními nemovitými památkami.<ref>{{MonumNet|ID=119615|název=Tvrz}}</ref><ref>{{MonumNet|ID=124062|název=Zvonice na návsi}}</ref><ref name=":12" /><ref name=":13" />
+|-
+|<!--název-->Strom přátelství
+|<!--obr. -->[[Soubor:Strom přátelství Jiříkovice 3.jpg|alt=Strom přátelství|150x150pixelů|Statek na návsi]]
+|<!--comm.-->{{Commonscat v tabulce|Strom přátelství (Jiříkovice)}}
+|<!--místo-->[[Jiříkovice]] <br />{{Souřadnice|49.1662175|16.7547508}}
+|<!--pozn.-->Ke 200. výročí bitvy byl na západním okraji Jiříkovic, při křížení silnice na Šlapanice a potoka [[Roketnice]], vysazen Strom přátelství.<ref name=":12" />
+|- style="background:#F0F0F0"
+|<!--název--> Zájezdní hospoda Kandie
+|<!--obr. -->[[Soubor:Brno-Líšeň, Kandie, Malečkova (9084b).jpg|150x150pixelů|Osada Kandie]]
+|<!--comm.--> {{Commonscat v tabulce|Kandie}}
+|<!--místo-->[[Kandie]] ([[Brno-Líšeň]]) <br />{{Souřadnice|49.1871408|16.7058169}}
+|<!--pozn.-->Bývalá zájezdní hospoda s osadou<!-- HOCHEL (2011) a mapa KČT uvádějí, že původní zájezdní hospoda má č. p. 12. Současná čísla popisná se však v Kandii, resp. v líšeňské Malečkově ulici pohybují kolem 580, i čísla orientační jsou zde jen lichá v rozsahu 1-15, číslo 12 tedy patrně neexistuje. HANÁK (2015) uvádí, že hospoda je "dnes zcela přestavěná". -->, kde pobýval čtyři dny před bitvou Napoleon se svým generálním štábem. Trám s nápisem připomínajícím tuto událost je uložen ve slavkovském muzeu.<ref name="špatný" /><ref name="kčt" /><ref name=":0">HOCHEL (2011). S. 52–53.</ref><ref name=":1">HANÁK (2015). S. 66.</ref><ref>{{Citace elektronického periodika
+| autor = ADMIN
+| titul = Osada Kandie
+| periodikum = Portál vlisni.cz
+| url = https://www.vlisni.cz/osada-kandie
+| datum vydání = 2010-11-12
+| datum přístupu = 2023-07-12
+}}</ref><!-- Nachází se na rozhraní území Líšně a Podolí a některé zdroje ji uvádí v souvislosti s Podolím (HOCHEL, HANÁK), osada však náleží k Líšni. -->
+|-
+|<!--název--> Hráz mezi rybníky
+|<!--obr. -->[[Soubor:Kobylnice, hráz mezi bývalými rybníky (8539).jpg|150x150pixelů|Bývalá hráz mezi rybníky]]
+|<!--comm.--> {{Commonscat v tabulce|Former dam between ponds in Kobylnice (Brno-Country District)}}
+|<!--místo-->[[Kobylnice (okres Brno-venkov)|Kobylnice]] <br />{{Souřadnice|49.1435833|16.7303611}}
+|<!--pozn.-->Po hrázi mezi bývalým Horním a Dolním rybníkem, které se rozkládaly západně od Kobylnic, v závěru bitvy ustupovali vojáci III. spojeneckého armádního sboru generálporučíka [[Ignacy Przybyszewski|Przybyszewského]] k [[Dvorska|Dvorskům]]. Dnes tudy vede [[silnice II/417]]. Nedaleko v lokalitě „Nad rybníky“ je památkově neoznačený hromadný hrob.<ref name="špatný" /><ref name="kčt" /><ref name=":10">HOCHEL (2011). S. 65–66.</ref><ref name=":11">HANÁK (2015). S. 59.</ref>
+|-
+|<!--název-->Pomník francouzským vojákům
+|<!--obr. -->[[Soubor:Kobylnice, U Mlýna, pomník francouzským vojákům (8547).jpg|alt=Pomník francouzským vojákům|150x150pixelů|Bývalá hráz mezi rybníky]]
+|<!--comm.-->{{Commonscat v tabulce|French soldiers monument in Kobylnice (Brno-Country District)}}
+|<!--místo-->[[Kobylnice (okres Brno-venkov)|Kobylnice]] <br />{{Souřadnice|49.1409514|16.7323725}}
+|<!--pozn.-->U křižovatky ulic U Mlýna, Táborská a Ponětovická byl [[5. listopad]]u [[2005]] péčí Klubu přátel francouzské revoluce a 1. císařství odhalen pamětní kámen francouzského 18. pluku řadové pěchoty, který v bitvě bojoval pod IV. armádním sborem maršála [[Nicolas Jean de Dieu Soult|Soulta]].<ref name="kopecký2009" /><ref>{{Citace periodika
+| příjmení = Kopecký
+| jméno = František
+| titul = Rok 2005, rok památného 200. výročí bitvy u Slavkova
+| periodikum = Tvaroženský zpravodaj
+| ročník = 34
+| číslo = 1
+| strany = 17
+| url = http://www.tvarozna.cz/resources/upload/data/36_zpravodaj_2006_01.pdf
+| rok = 2005
+| měsíc = 1
+| den = 17
+}}</ref><ref name=":10" /><ref name=":11" />
+|-
+|<!--název--> Spáčilův statek
+|<!--obr. --> [[Soubor:Spáčilův statek, Křenovice 3.jpg|150px|Spáčilův statek]]
+|<!--comm.--> {{Commonscat v tabulce|Spáčilův statek (Křenovice)}}
+|<!--místo-->[[Křenovice (okres Vyškov)|Křenovice]] <br />{{Souřadnice|49.1427778|16.8283611}}
+|<!--pozn.--> Bývalý Spáčilův statek, dnes domy č. p. 65 a 222. Velitel spojeneckých vojsk, ruský generál [[Michail Illarionovič Kutuzov]] zde přespal v noci před bitvou z 1. na 2. prosince 1805, což připomíná pamětní deska.<ref name="špatný" /><ref name="kčt" /><ref name="mudra" /><ref name="cyklo2009" /><ref name="kartografie" />
+|-
+|<!--název--> Socha generála Kutuzova
+|<!--obr. --> [[Soubor:Pomník generála Kutuzova Křenovice 1.jpg|150px|Pomník generála Kutuzova]]
+|<!--comm.--> {{Commonscat v tabulce|Mikhail Kutuzov monument in Křenovice}}
+|<!--místo-->[[Křenovice (okres Vyškov)|Křenovice]] <br />{{Souřadnice|49.1422778|16.8271389}}
+|<!--pozn.--> Při vzpomínkových akcích ke 200. výročí bitvy byl [[4. prosinec|4. prosince]] [[2005]] odhalen pomník v podobě sochy ruského generála Kutuzova. Sochu z tepaného měděného plechu vytvořil místní umělecký kovář Oldřich Bartošek podle původního projektu Karla Ochmana a modelu Přemysla Baumajera z roku [[1973]].<ref name="cyklo2009" /><ref name="kopecký2009" /><ref>[http://www.irucz.ru/cz/zpravy/1-/102-ceska-republika/10201-/-/405-historie/7055-ve-slavkove-u-brna-odhalili-pamatnik-generalu-kutuzovovi-highlight-krenovice/ Ve Slavkově u Brna odhalili památník generálu Kutuzovovi] {{Wayback|url=http://www.irucz.ru/cz/zpravy/1-/102-ceska-republika/10201-/-/405-historie/7055-ve-slavkove-u-brna-odhalili-pamatnik-generalu-kutuzovovi-highlight-krenovice/ |date=20151006143823 }} i-RU.cz, 5.12.2005</ref><ref>[http://www.obec-krenovice.cz/pdf/zpravodaj/2005_12.pdf Křenovický zpravodaj Prosinec 2005]{{Nedostupný zdroj}}</ref>
+|-
+|<!--název--> Velký hospodářský dvůr
+|<!--obr. --> [[Soubor:Velký hospodářský dvůr Křenovice.jpg|150px|Velký hospodářský dvůr]]
+|<!--comm.--> 
+|<!--místo-->[[Křenovice (okres Vyškov)|Křenovice]] <br />{{Souřadnice|49.14625|16.8306389}}
+|<!--pozn.--> Před bitvou se v hospodářském dvoře (dnes č. p. 1) konala porada ruského generálního štábu, při níž byli velitelé seznámeni s rozkazy pro bitvu.<ref name="špatný" /><ref name="kčt" /><ref name="cyklo2009" />
+|-
+|<!--název--> [[Kostel svatého Vavřince (Křenovice)|Kostel sv. Vavřince]]
+|<!--obr. --> [[Soubor:Křenovice, kostel.jpg|150px|Kostel sv. Vavřince]]
+|<!--comm.--> {{Commonscat v tabulce|Church of Saint Lawrence (Křenovice)}}
+|<!--místo-->[[Křenovice (okres Vyškov)|Křenovice]] <br />{{Souřadnice|49.1409722|16.8287778}}
+|<!--pozn.--> V kostele byli po bitvě shromážděni zajatí Rusové.<ref name="špatný" /><ref name="kčt" /> Byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=144472|název=Kostel sv. Vavřince}}</ref>
+|-
+|<!--název--> Krchůvek
+|<!--obr. --> [[Soubor:Pomník bitvy u Slavkova, Krchůvek, Křenovice 4.jpg|150px|Pomník padlým na Krchůvku]]
+|<!--comm.--> {{Commonscat v tabulce|Monument to the Battle of Austerlitz at Krchůvek, Křenovice}} {{Commonscat v tabulce|Crucifix at Krchůvek (Křenovice, Vyškov District)}}
+|<!--místo-->[[Křenovice (okres Vyškov)|Křenovice]] <br />{{Souřadnice|49.1460833|16.8144167}}
+|<!--pozn.--> Pomník padlým a kříž z roku 1920 nad hromadným hrobem vojáků z bitvy.<ref name="špatný" /><ref name="kčt" /><ref name="cyklo2009" />
+|-
+|<!--název-->Zájezdní hospoda Maxlůvka
+|<!--obr. -->[[Soubor:Velatice, Maxlůvka 75 (9413a).jpg|alt=Zájezdní hospoda Maxlůvka|150x150pixelů|Zájezdní hospoda Pindulka]]
+|<!--comm.-->{{Commonscat v tabulce|Maxlovka}}
+|<!--místo-->[[Maxlůvka]] ([[Velatice]]) <br />{{Souřadnice|49.183955|16.753192}}
+|<!--pozn.-->Bývalý formanský hostinec při olomoucké silnici, dnes samota čítající několik domů. Těsně před bitvou byla stanovištěm deseti eskadron francouzské jízdy, které se poté vydaly směrem k Blažovicím.<ref name=":0" /><ref>{{Citace elektronické monografie
+| příjmení = Kopecký
+| jméno = František
+| odkaz na autora = František Kopecký (1949)
+| titul = Velatice, Mokrá, Horákov v bitvě u Slavkova
+| url = https://www.austerlitz.org/cz/velatice-mokra-horakov-v-bitve-u-slavkova/
+| vydavatel = Austerlitz.org
+| datum vydání = 2005-04-20
+| datum přístupu = 2023-08-17
+| jazyk = cs-CZ
+}}</ref><ref>{{Citace elektronického periodika
+| titul = Velatice
+| periodikum = www.roketnice.cz
+| vydavatel = Mikroregion Roketnice
+| url = https://www.roketnice.cz/obce-mikroregionu-1/velatice/
+| datum přístupu = 2023-08-17
+}}</ref><ref>{{Citace periodika
+| příjmení = Sedlmajer
+| jméno = Václav
+| titul = Císařská silnice vedoucí z Brna do Olomouce
+| periodikum = Vyškovský deník
+| datum vydání = 2008-05-25
+| jazyk = cs
+| url = https://vyskovsky.denik.cz/publicistika/silnice-vedouci-z-brna-do-olomouce20080523.html
+| datum přístupu = 2023-08-17
+}}</ref>
+|-
+|<!--název-->Zájezdní hospoda Pindulka
+|<!--obr. -->[[Soubor:Podolí, Pindulka, správa silnic (9473a).jpg|150x150pixelů|Zájezdní hospoda Pindulka]]
+|<!--comm.-->{{Commonscat v tabulce|Pindulka}}
+|<!--místo-->[[Pindulka]] ([[Podolí (okres Brno-venkov)|Podolí]]) <br />{{Souřadnice|49.1828333|16.7263611}}
+|<!--pozn.-->Bývalá zájezdní hospoda, dnes objekt správy a údržby silnic. Dne 1. prosince 1805 zde povečeřel Napoleon se svými maršály, generály a pobočníky.<ref name="špatný" /><ref name="kčt" /><ref name=":0" /><ref name=":1" /><ref name="vd080525">{{Citace periodika
+ | příjmení = Sedlmajer
+ | jméno = Václav
+ | titul = Císařská silnice vedoucí z Brna do Olomouce
+ | periodikum = Vyškovský deník
+ | rok = 2008
+ | měsíc = 5
+ | den = 25
+ | url = http://vyskovsky.denik.cz/publicistika/silnice-vedouci-z-brna-do-olomouce20080523.html
+ | issn = 
+ | datum přístupu = 2011-07-15
+ | datum archivace = 2020-07-14
+ | url archivu = https://web.archive.org/web/20200714182543/https://vyskovsky.denik.cz/publicistika/silnice-vedouci-z-brna-do-olomouce20080523.html
+ | nedostupné = ano
+ }}</ref>
+|-
+|<!--název-->[[Podolí (zámek, okres Brno-venkov)|Zámeček]]
+|<!--obr. -->[[Soubor:Obecní úřad Podolí 2.jpg|150x150pixelů|Bývalý zámeček v Podolí]]
+|<!--comm.-->{{Commonscat v tabulce|Podolí Castle}}
+|<!--místo-->[[Podolí (okres Brno-venkov)|Podolí]]<br />{{Souřadnice|49.1902|16.7289}}
+|<!--pozn.-->Bývalý zámeček v Podolí, dnes obecní úřad, č. p. 1. Před bitvou zde ve dnech 27.–29. listopadu bylo velitelství záložní francouzské jízdy [[Joachim Murat|maršála Murata]]. Do obce pak byla 29. listopadu převelena 2. divize těžkého jezdectva [[Jean Joseph Ange d'Hautpoul|generála d'Hautpoula]]. Boje se však Podolí vyhnuly.<!-- HOCHEL (2011) navíc uvádí, že v průběhu bitvy byl zřízen francouzský válečný lazaret v kostele sv. Jana Nepomuckého s areálem. Kostel však byl postaven až v roce 1899, do té doby v obci kostel nebyl a farníci chodili na bohoslužby do Šlapanic. Není proto zřejmé, co má autor na mysli, v jiných zdrojích podolský kostel zmíněn není, proto jej zde neuvádíme. --><ref name=":0" /><ref>HANÁK (2015). S. 63.</ref>
+|-
+|<!--název-->Hostinec a hospodářský dvůr
+|<!--obr. -->[[Soubor:Ponětovice - dům čp 1.jpg|alt=Hostinec a bývalý hospodářský dvůr|150x150pixelů|Bývalý zámeček v Podolí]]
+|<!--comm.-->
+|<!--místo-->[[Ponětovice]]<br />{{Souřadnice|49.15207|16.74185}}
+|<!--pozn.-->V bývalém hospodářském dvoře, dnes domě č. p. 1, bylo během bitvy obvaziště francouzské I. pěší divize [[Louis Charles Vincent Le Blond de Saint-Hilaire|generála Saint-Hilaira]] od IV. armádního sboru maršála Soulta.<ref name=":15">HOCHEL (2011). S. 96.</ref><ref name=":16">HANÁK (2015). S. 78–79.</ref>
+|-
+|<!--název-->Hromadný hrob
+|<!--obr. -->[[Soubor:Ponětovice - pomník padlým.jpg|alt=Pomníky u hromadného hrobu|150x150pixelů|Bývalý zámeček v Podolí]]
+|<!--comm.-->
+|<!--místo-->[[Ponětovice]]<br />{{Souřadnice|49.1521778|16.7424342}}
+|<!--pozn.-->Pomníky palým ze světových válek stojí u místní zvonice, v jejímž okolí byl hromadný hrob padlých v bitvě.<ref name=":15" /><ref name=":16" /><!-- HOCHEL (2011) uvádí, že další hromadný hrob se nechází v lokalitě Zadní podíly a vedle V Kobylnické, tj. někde na jižním okraji katastru při cestě na Kobylnice. -->
+|-
+|<!--název-->Kříž u rybníka
+|<!--obr. -->[[Soubor:Kříž u rybníka, Prace 1.jpg|150px|Kříž u rybníka v Praci]]
+|<!--comm.-->{{Commonscat v tabulce|Hromadný hrob ruských vojáků z bitvy u Slavkova}}
+|<!--místo-->[[Prace]] <br />{{Souřadnice|49.1395556|16.7677222}}
+|<!--pozn.-->Kříž označuje šachtový hrob asi 800 ruských vojáků.<ref name="špatný" /><ref name="kčt" /><ref name="cyklo2009" /><ref name=":17">HOCHEL (2011). S. 100–101.</ref><ref name=":18">HANÁK (2015). S. 80–81.</ref> Byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=150111|název=Hromadný hrob z bitvy u Slavkova}}</ref>
+|-
+|<!--název-->[[Kostel Povýšení svatého Kříže (Prace)|Kostel Povýšení sv. Kříže]]
+|<!--obr. -->[[Soubor:Kostel Povýšení svatého Kříže, Prace 1.jpg|150px|Kostel sv. Kříže]]
+|<!--comm.-->{{Commonscat v tabulce|Church of the Exaltation of the Holy Cross (Prace)}}
+|<!--místo-->[[Prace]] <br />{{Souřadnice|49.1378056|16.76425}}
+|<!--pozn.-->Původně barokní kostel z doby kolem roku [[1730]], jehož věž sloužila během bitvy ruským vojskům v Praci jako pozorovatelna. Byla však zasažena francouzským dělostřelectvem, vyhořela a po bitvě byla stržena. Po přestavbě kostela v roce [[1810]] byla o patro snížena.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="mudra" /><ref name="cyklo2009" /><ref name=":17" /><ref name=":18" /> Byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=134522|název=Kostel Povýšení sv. Kříže}}</ref>
+|-
+|<!--název-->Památník smíření
+|<!--obr. -->[[Soubor:Prace - památník na ulici K Mohyle míru.jpg|alt=Památník Smíření|150x150pixelů|Kostel sv. Kříže]]
+|<!--comm.-->
+|<!--místo-->[[Prace]] <br />{{Souřadnice|49.1343981|16.7641328}}
+|<!--pozn.-->U silnice z Prace k Mohyle míru byl [[26. listopad]]u [[2005]] odhalen Památník smíření od Jana Tomíčka, který připomíná tři bojující armády a také tři církve: katolickou, protestantskou a pravoslavnou.<ref name="kopecký2009" /><ref name=":17" /><ref name=":18" /><ref>[http://jantomicek.exd.cz/pamatnik-smireni-v-praci/ Památník smíření v Praci] {{Wayback|url=http://jantomicek.exd.cz/pamatnik-smireni-v-praci/|date=20151015015107}} na stránkách uměleckého štukatéra Jana Tomíčka</ref>
+|-
+|<!--název-->[[Soubor:Emblem-star.svg|20px|Významná památka]] '''[[Mohyla míru]]'''
+|<!--obr. -->[[Soubor:Mohyla miru 2.jpg|150px|Mohyla míru]]
+|<!--comm.-->{{Commonscat v tabulce|Mohyla míru}}
+|<!--místo-->[[Pracký kopec]] ([[Prace]]) <br />{{Souřadnice|49.1281389|16.7625278}}
+|<!--pozn.-->Významný secesní památník z let 1910–1912 vznikl podle návrhu [[Josef Fanta|Josefa Fanty]] v podobě kaple s [[Kostnice|ossariem]], kam byly ukládány ostatky padlých nalezené na bojišti. Jednalo se ve své době o první mírový památník v Evropě. Památník byl postaven v místech, kde francouzský IV. armádní sbor kolem 11. hodiny dopoledne rozrazil střed spojeneckých vojsk a rozhodl tak vítězství v bitvě.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref name="mudra" /><ref name="cyklo2009" /><ref name="kartografie" /> Památník byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=145477|název=Pomník Mohyla míru}}</ref> V letech předcházejících 200. výročí bitvy byly poblíž vysazeny 4 pamětní stromy: francouzský dub, rakouský krvavý buk, ruská bříza a lípa.<ref name=":19">HANÁK (2015). S. 88–94.</ref>
+|-
+|<!--název-->[[Soubor:Emblem-star.svg|20px|Významná památka]] '''Muzeum památníku Mohyla míru'''
+|<!--obr. -->[[Soubor:Mohyla míru - muzeum obr1.jpg|alt=Muzeum památníku Mohyla míru|150x150pixelů|Mohyla míru]]
+|<!--comm.-->{{Commonscat v tabulce|Muzeum památníku Mohyla míru}} {{Commonscat v tabulce|Pomník Jirčíkovy brigády}}
+|<!--místo-->[[Pracký kopec]] ([[Prace]]) <br />{{Souřadnice|49.1279736|16.7628878}}
+|<!--pozn.-->Budova muzea přiléhající k památníku pochází z roku [[1925]] a obsahuje expozici k bitvě.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref name="mudra" /><ref name="cyklo2009" /><ref name="kartografie" /><ref name="kopecký2009" /> Po renovaci vznikla ve stávajících výstavních prostorech multimediální expozice a od června 2010 byly propojeny s novým pavilonem, v němž byla otevřena expozice věnovaná ohlasu a tradicím spojeným s bitvou.<ref name=":17" /><ref name=":19" /><ref>{{Citace elektronického periodika
+| autor = ČTK
+| titul = Památník Mohyla míru otevírá novou multimediální expozici
+| periodikum = ČeskéNoviny.cz
+| vydavatel = Česká tisková kancelář
+| url = https://www.ceskenoviny.cz/zpravy/493908
+| datum vydání = 2010-06-21
+| jazyk = cs
+| datum přístupu = 2023-08-24
+}}</ref><ref>{{Citace periodika
+| příjmení = Peringerová
+| jméno = Gabriela
+| titul = Fenomén Austerlitz představí bitvu tří císařů z jiného pohledu
+| periodikum = Brněnský deník
+| datum vydání = 2010-06-22
+| jazyk = cs
+| url = https://brnensky.denik.cz/zpravy_region/fenomen-austerlitz-predstavi-bitvu-tri-cisaru-z-ji.html
+| datum přístupu = 2023-08-24
+}}</ref> Na jaře 2023 byla zahájena další stavební úprava vestibulu s přístavbou vyhlídkových plošin.<ref>{{Citace elektronického periodika
+| příjmení = Haluza
+| jméno = Oldřich
+| titul = U Mohyly míru vznikne nově vyhlídka na slavné bojiště bitvy tří císařů
+| periodikum = iDNES.cz
+| vydavatel = MAFRA
+| url = https://www.idnes.cz/brno/zpravy/oprava-pamatnik-slavkov-napoleon-mohyla-miru.A230217_105054_brno-zpravy_mos1
+| datum vydání = 2023-02-17
+| jazyk = cs
+| datum přístupu = 2023-08-24
+}}</ref> V areálu se též nachází pískovcový pomník rakouské pěší brigádě generálmajora Jirčíka, která v bitvě bránila Pracký kopec, a replika rakouského polního děla (obojí z roku [[1995]]).<ref name="kopecký2009" /><ref name=":17" /><ref name=":19" />
+|-
+|<!--název-->Zájezdní hospoda Rohlenka
+|<!--obr. -->[[Soubor:Jiříkovice, Rohlenka, motorest (2017-04-10; 02).jpg|alt=Motorest Rohlenka|150x150pixelů|Zájezdní hospoda Pindulka]]
+|<!--comm.-->{{Commonscat v tabulce|Rohlenka}}
+|<!--místo-->[[Rohlenka]] ([[Jiříkovice]]) <br />{{Souřadnice|49.1840267|16.7611208}}
+|<!--pozn.-->Bývalá zájezdní hospoda, dnes motorest při [[Silnice II/430|státní silnici Brno–Olomouc]] a dálnici [[Dálnice D1|D1]]. V roce 1994 zde byly při budování provozovny [[McDonald's]] nalezeny ostatky z hromadného hrobu, po ohledání následujícího roku uložené do osária v kapli na Mohyle míru.<ref name=":12" /><ref name=":13" /><ref>{{Citace elektronické monografie
+| příjmení = Kopecký
+| jméno = František
+| odkaz na autora = František Kopecký (1949)
+| titul = Hromadný hrob u Rohlenky
+| url = https://www.austerlitz.org/cz/hromadny-hrob-u-rohlenky/
+| vydavatel = Austerlitz.org
+| datum vydání = 2003-05-25
+| datum přístupu = 2023-08-23
+| jazyk = cs-CZ
+}}</ref><ref>{{Citace periodika
+| příjmení = Vitula
+| jméno = Petr
+| titul = Pravěké osídlení a doklady pobytu novověkých vojsk v prostoru Rohlenky mezi Brnem a Slavkovem
+| periodikum = VVM
+| datum vydání = 1997
+| ročník = XLIX
+| strany = 256–271
+| url = https://docplayer.cz/112771224-Praveke-osidleni-a-doklady-pobytu-novovekych-vojsk-v-prostoru-rohlenky-mezi-brnem-a-slavkovem.html
+| url2 = http://media.archeologicky-atlas.cz.s3.amazonaws.com/production/application/source/2018/6/28/vitula_1997-pdf
+| formát = PDF online
+| datum přístupu = 2023-08-23
+}}</ref>
+|-
+|<!--název--> [[Soubor:Emblem-star.svg|20px|Významná památka]] '''[[Santon (kopec)|Santon]]'''
+|<!--obr. --> [[Soubor:Santon, 2009 (1).JPG|150px|Santon]]
+|<!--comm.--> {{Commonscat v tabulce|Santon, South Moravia}}
+|<!--místo-->[[Santon (kopec)|Santon]] ([[Tvarožná]]) <br />{{Souřadnice|49.1884167|16.7638056}}
+|<!--pozn.--> Přírodní návrší původně nazývané Padělek bylo před bitvou francouzskými ženisty uměle srovnáno a opevněno třemi pásy okopů, aby vytvořilo palebná postavení pro 18 děl s pěchotní ochranou. Na západní straně kopce byla umístěna polní kuchyň. Původní mariánská kaple na vrcholu byla vojáky také stržena. Na zdi nově vybudované klasicistní kaple Panny Marie Sněžné z roku [[1832]] jsou dnes pamětní desky francouzských generálů Claparèda a Valhuberta a ruského generála Bagrationa. Od roku [[1988]] byla na vrcholu kopce instalována kopie francouzského polního kanónu, od roku [[2009]] snesená na náves. Na úpatí je kříž z bílého kamene na paměť padlých vojáků z roku [[1987]].<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref name="mudra" /><ref name="cyklo2009" /><ref name="kartografie" /><ref name="kopecký2009" /><ref name="tvarožná-památky" /> Kaple, opevnění Santona i hrob pod kopcem byly vyhlášeny kulturními nemovitými památkami.<ref>{{MonumNet|ID=151014|název=Kaple P. Marie}}</ref><ref>{{MonumNet|ID=130993|název=Polní opevnění bitvy u Slavkova}}</ref><ref>{{MonumNet|ID=130992|název=Vojenský hřbitov bitvy u Slavkova}}</ref>
+|- style="background:#F0F0F0"
+|<!--název--> Pamětní kříž
+|<!--obr. --> [[Soubor:Silničná - pomník hraběte Tisenhausena, 2023-09, obr01.jpg|100px|Kříž hraběte Tiesenhausena]]
+|<!--comm.--> {{Commonscat v tabulce|Memorial of Ferdinand Tiesenhausen in Silničná}}
+|<!--místo-->[[Silničná]] <br />{{Souřadnice|49.0524722|16.9525}}
+|<!--pozn.--> Kříž z doby kolem roku 1900 nad bývalým hrobem Ferdinanda hraběte Tiesenhausena (křídelního pobočníka ruského cara Alexandra I. a zetě generála Kutuzova). Kříž stojí před domem, v němž hrabě zemřel na zranění z bitvy.<ref name="kčt" /><ref name="cyklo2009" />
+|- style="background:#F0F0F0"
+|<!--název--> Smírčí kámen
+|<!--obr. --> [[Soubor:Sivice, kříž a křížový kámen (2763).jpg|150px|Kříž a smírčí kámen u silnice]]
+|<!--comm.--> {{Commonscat v tabulce|Pamětní kámen v Sivicích}} {{Commonscat v tabulce|Kamenný kříž (Sivice)}}
+|<!--místo-->[[Sivice]] <br />{{Souřadnice|49.1991111|16.7835833}}
+|<!--pozn.--> Při silnici na Tvarožnou je u smírčího kamene ze 17. století a barokního kříže z roku [[1772]] hromadný hrob francouzských vojáků a také hrob plukovníka Jeana Baptista Gérarda.<ref name="kčt" /><ref name="král" /><ref name="cyklo2009" /> Byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=140332|název=Pamětní kámen s hrobem}}</ref>
+|-
+|<!--název--> [[Soubor:Emblem-star.svg|20px|Významná památka]] '''[[Slavkov u Brna (zámek)|Zámek s&nbsp;parkem]]'''
+|<!--obr. --> [[Soubor:Slavkov u Brna - Castle.jpg|150px|Zámek Slavkov u Brna]]
+|<!--comm.--> {{Commonscat v tabulce|Slavkov Castle}}
+|<!--místo-->[[Slavkov u Brna|Slavkov&nbsp;u&nbsp;Brna]] <br />{{Souřadnice|49.15475|16.8749722}}
+|<!--pozn.--> Před bitvou nocovali na zámku ruský car Alexandr I. a rakouský císař František I. Po bitvě 3. prosince z balkónu zámku Napoleon pronesl svoji proklamaci k vojákům, podle níž byla bitva označena za slavkovskou (Austerlitz). Ve dnech 3.-7. prosince zde Napoleon nocoval a 6. prosince zde bylo uzavřeno příměří. Dnes zde turisté navštěvují zámecké expozice, podzemí a tematickou expozici Napoleon – Austerlitz.<ref name="špatný" /><ref name="kčt" /><ref name="arc" /><ref name="mudra" /><ref name="cyklo2009" /><ref name="kartografie" /> Zámek s parkem byl vyhlášen kulturní nemovitou památkou a v roce 2008 národní kulturní památkou.<ref>{{MonumNet|ID=152934|název=Zámek s předzámčím, parkem a sochařskou výzdobou}}</ref><ref>{{MonumNet|ID=152934|název=Zámek Slavkov u Brna}}</ref>
+|- style="background:#F0F0F0"
+|<!--název--> [[Kaple svatého Urbana (Slavkov u Brna)|Kaple sv. Urbana]]
+|<!--obr. --> [[Soubor:Slavkov u Brna, kaple svatého Urbana.jpg|150px|Kaple svatého Urbana]]
+|<!--comm.--> {{Commonscat v tabulce|Chapel of Saint Urban (Slavkov u Brna)}}
+|<!--místo-->[[Slavkov u Brna]] <br />{{Souřadnice|49.1699722|16.8886111}}
+|<!--pozn.--> Původně barokní kaple z roku [[1712]] (znovu zřízena r. [[1858]]) na vrchu Urban sloužila francouzským jednotkám jako strážní stanoviště. 28. listopadu zde byl výstřelem z děla oznámen postup spojeneckých vojsk od Olomouce a francouzská vojska se pak stáhla k linii Zlatého potoka, odkud 2. prosince vstoupila do bitvy.<ref name="špatný" /><ref name="kčt" /><ref name="cyklo2009" /> Kaple byla vyhlášena kulturní nemovitou památkou.<ref>{{MonumNet|ID=158823|název=Kaple sv. Urbana}}</ref>
+|- style="background:#F0F0F0"
+|<!--název--> Pamětní sloupek
+|<!--obr. --> [[Soubor:Pamětní sloupek pod Urbanem Slavkov u Brna.jpg|100px|Památník pod Urbanem]]
+|<!--comm.--> {{Commonscat v tabulce|Pomník Pod Urbáňkem (Slavkov u Brna)}}
+|<!--místo-->[[Slavkov u Brna]] <br />{{Souřadnice|49.1661667|16.8922222}}
+|<!--pozn.--> Sloupek nad údajným hromadným hrobem z bitvy na svahu pod kopcem Urbanem.<ref name="špatný" /><ref name="cyklo2009" /> Pomník byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=138941|název=Pomník bitvy u Slavkova}}</ref>
+|-
+|<!--název--> Smírčí kříž
+|<!--obr. --> [[Soubor:Smírčí kříž Pod stráží Sokolnice 1995.jpg|150px|Smírčí kříž Pod stráží]]
+|<!--comm.--> {{Commonscat v tabulce|Smírčí kříž v ulici Pod Stráží (Sokolnice)}}
+|<!--místo-->[[Sokolnice]] <br />{{Souřadnice|49.1140278|16.7188056}}
+|<!--pozn.-->Starší kříž (z roku 1796) stojí v ulici Pod Stráží poblíž vyvýšeniny zvané Stráž coby pozůstatku opevněného místa. V místě by se měl údajně nacházet hromadný hrob, kříž však byl několikrát přesunut.<ref name="špatný" /><ref name="kčt" /><ref name=":3" /><ref name=":5">HANÁK (2015). S. 46–47.</ref> Kříž byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=149002|název=Kříž z roku 1796}}</ref>
+|-
+|<!--název--> [[Sokolnice (zámek)|Zámek s parkem]]
+|<!--obr. --> [[Soubor:Sokolnice, zámek zprava.jpg|150px|Zámek Sokolnice]]
+|<!--comm.--> {{Commonscat v tabulce|Sokolnice Chateau}}
+|<!--místo-->[[Sokolnice]] <br />{{Souřadnice|49.1190278|16.7265278}}
+|<!--pozn.-->O zámek probíhaly úporné boje a během bitvy vyhořel. Po roce [[1848]] byl přestavěn v novorenesančním stylu a dnes slouží jako domov pro seniory.<ref name="špatný" /><ref>[http://www.ddsokolnice.cz/ Domov pro seniory Sokolnice]</ref><ref name="kčt" /><ref name="král" /><ref name="mudra" /><ref name="cyklo2009" /><ref name="kartografie" /><ref name=":5" /> V zámeckém parku v bývalé oranžerii byla zazděna dělová koule z houfnice.<ref name=":3" /> Zámek byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=120787|název=Zámek Sokolnice}}</ref>
+|-
+|<!--název-->Hospoda Na Bednárně
+|<!--obr. -->
+|<!--comm.-->
+|<!--místo-->[[Sokolnice]] <br />{{Souřadnice|49.1176889|16.7252250}}
+|<!--pozn.-->Před zámkem, naproti barokní sýpky, na zdi hostince Na Bednárně (Zámecká 352<ref>{{Citace elektronického periodika
+| titul = Restaurace Na Bednárně, Sokolnice, okres Brno-venkov
+| periodikum = 
+| vydavatel = ZlatéStránky.cz
+| url = https://www.zlatestranky.cz/profil/H102725
+| datum přístupu = 2023-07-13
+}}</ref>, resp. č. p. 56<ref>{{Citace elektronického periodika
+| titul = Služby a firmy: Restaurace Na Bednárně
+| periodikum = 
+| vydavatel = Sokolnice
+| url = https://www.sokolnice.cz/sluzby-a-firmy/restaurace-na-bednarne
+| datum přístupu = 2023-07-13
+| url archivu = https://web.archive.org/web/20230713143406/https://www.sokolnice.cz/sluzby-a-firmy/restaurace-na-bednarne
+| datum archivace = 2023-07-13
+}}</ref>) byla 2. prosince 2005 odhalena pamětní deska připomínající založení Komitétu pro postavení Mohyly míru, k němuž došlo v místním sále v roce [[1899]].<ref name="kopecký2009" /><ref name=":3" /><ref name=":5" /><ref>{{Citace periodika
+| příjmení = 
+| jméno = 
+| autor = M.M.
+| titul = Sokolnický pivovar a panské hostince
+| periodikum = Sokolnický zpravodaj
+| číslo = 10
+| strany = 5
+| url = http://www.sokolnice.cz/resources/upload/data/1280_Zpravodaj_10-2008.pdf
+| datum přístupu = 2011-07-22
+| rok = 2008
+| měsíc = říjen
+| url archivu = https://web.archive.org/web/20160307004400/http://www.sokolnice.cz/resources/upload/data/1280_Zpravodaj_10-2008.pdf
+| datum archivace = 2016-03-07
+| nedostupné = ano
+}} {{Wayback|url=http://www.sokolnice.cz/resources/upload/data/1280_Zpravodaj_10-2008.pdf|date=20160307004400}}</ref>
+|-
+|<!--název-->Bažantnice
+|<!--obr. -->[[Soubor:Sokolnice, Kobylnická, zámecká bažantnice, vyznačený palpost (8595a).jpg|150px|Palpost ve zdi bažantnice]]
+|<!--comm.-->{{Commonscat v tabulce|Gun emplacements in the pheasantry in Sokolnice}}
+|<!--místo-->[[Sokolnice]] <br />{{Souřadnice|49.1248333|16.7320556}}
+|<!--pozn.-->V ohradní zdi obory byla sekundárně vyznačena údajná palebná postavení francouzské dělostřelecké baterie. Pět kanónů mělo stát v průlomech zdi, šestý v bráně.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="mudra" /><ref name=":3" /> Někteří autoři však věrohodnost palpostů zpochybňují, žádné prameny psané účastníky bitvy o dělech v bažantnici nehovoří.<ref name=":5" /><ref>{{Citace elektronické monografie
+| příjmení = Samek
+| jméno = Jakub
+| příjmení2 = Tupý
+| jméno2 = Ondřej
+| příjmení3 = Sáček
+| jméno3 = Karel
+| odkaz na autora3 = Karel Sáček
+| titul = Byla v průběhu bitvy u Slavkova bráněna sokolnická bažantnice?
+| url = https://www.austerlitz.org/cz/byla-v-prubehu-bitvy-u-slavkova-branena-sokolnicka-bazantnice/
+| vydavatel = Austerlitz.org
+| datum vydání = 2006-01-11
+| datum přístupu = 2023-07-13
+| jazyk = cs-CZ
+}}</ref>
+|-
+|<!--název-->Zámecká sýpka
+|<!--obr. -->[[Soubor:Sokolnice, sýpka.jpg|150px|Bývalá zámecká sýpka]]
+|<!--comm.-->{{Commonscat v tabulce|Granary in Sokolnice}}
+|<!--místo-->[[Sokolnice]] <br />{{Souřadnice|49.1180278|16.7243333}}
+|<!--pozn.-->Bývalá sýpka z 18. století tvořila obranný objekt francouzských vojsk a po bitvě zde byli shromážděni zajatí spojenci. V polích za sýpkou jsou tři neoznačené šachtové hroby.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="cyklo2009" /><ref name=":3" /><ref name=":5" /> Barokní sýpka byla vyhlášena kulturní nemovitou památkou,<ref>{{MonumNet|ID=153004|název=Sýpka}}</ref> v roce 2020 byla přestavěna na bytový dům.<ref>{{Citace elektronického periodika
+| titul = Rekonstrukce barokní sýpky v Sokolnicích - Česká cena za architekturu 2022
+| periodikum = Česká cena za architekturu
+| url = https://ceskacenazaarchitekturu.cz/rocniky/2022/rekonstrukce-barokni-sypky-v-sokolnicich
+| jazyk = cs
+| datum přístupu = 2023-07-13
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = Krynek
+| jméno = Ondřej
+| titul = Kousek od Brna přestavěli barokní sýpku z roku 1745 na originální bytový dům
+| periodikum = DesignMag.cz
+| url = https://www.designmag.cz/architektura/106332-kousek-od-brna-prestaveli-barokni-sypku-z-roku-1745-na-originalni-bytovy-dum.html
+| datum vydání = 2022-08-24
+| jazyk = cs
+| datum přístupu = 2023-07-13
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = Řezníčková
+| jméno = Alena (řez)
+| titul = Dva prádelní koše povolení. Sýpka v Brně se změnila na unikátní bydlení
+| periodikum = Bydlení iDNES.cz
+| vydavatel = MAFRA
+| url = https://www.idnes.cz/bydleni/stavba/rekonstrukce-sypky-na-byty.A200617_132052_stavba_rez
+| datum vydání = 2020-06-18
+| jazyk = cs
+| datum přístupu = 2023-07-13
+}}</ref>
+|-
+|<!--název--> [[Soubor:Emblem-star.svg|20px|Významná památka]] '''[[Stará Pošta (Kovalovice)|Stará pošta]]'''
+|<!--obr. --> [[Soubor:Stará pošta Kovalovice.jpg|150px|Stará pozořická pošta]]
+|<!--comm.--> {{Commonscat v tabulce|Stará Pošta (Kovalovice)}}
+|<!--místo-->[[Stará Pošta (Kovalovice)|Stará pošta]] ([[Kovalovice]]) <br />{{Souřadnice|49.1851667|16.8261667}}
+|<!--pozn.--> Dědičná pozořická pošta z roku 1785, v níž 28. listopadu pobýval Napoleon se svými maršály a během bitvy 2. prosince ji využil ruský generál Bagration jako svůj hlavní stan. Ráno 3. prosince zde Napoleon přijal rakouského knížete Lichtensteina, který přišel s nabídkou příměří a osobní schůzky s císařem Františkem I. Dnes areál slouží jako malé muzeum s restauračními a ubytovacími službami. Přes silnici je ruská pamětní kaple, údajně vybudovaná ruskou šlechtičnou na paměť některého z padlých ruských důstojníků. V letech 2008-2010 zde byl vystavěn ojedinělý pomník padlým koním v podobě koně zasaženého kulkou.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref name="mudra" /><ref name="cyklo2009" /><ref name="kartografie" /><ref name="kopecký2009">{{Citace monografie
+ | příjmení = Kopecký
+ | jméno = František
+ | titul = O slavkovské bitvě – dopady a tradice
+ | vydavatel = Onufrius
+ | místo = Brno
+ | rok = 2009
+ | isbn = 978-80-9038-816-1
+ | strany = 178–183
+}}</ref><ref>[http://www.staraposta.cz/ Oficiální stránky restaurace, hotelu a muzea Stará Pošta]</ref>
+|- style="background:#F0F0F0"
+|<!--název--> Pomník rakouským dělostřelcům
+|<!--obr. --> [[Soubor:Pomník rakouským dělostřelcům u Staré pozořické pošty 1.jpg|150px|Pomník rakouským dělostřelcům]]
+|<!--comm.--> {{Commonscat v tabulce|Pomník rakouským dělostřelcům (Kovalovice)}}
+|<!--místo-->[[Stará Pošta (Kovalovice)|Stará pošta]] ([[Kovalovice]]) <br />{{Souřadnice|49.18925|16.8432778}}
+|<!--pozn.--> Kamenný pomník s trčící dělovou hlavní byl odhalen [[2. prosinec|2. prosince]] [[1995]] při olomoucké silnici za Starou poštou dále na Rousínov. Pomník je věnován dvěma rakouským dělostřeleckým bateriím, které pod velením majora [[Václav Jan Frierenberger|Václava Jana Frierenbergera]] (na [[kroměříž]]ském  [[Hřbitovy v Kroměříži|hřbitově]] se jako  [[Seznam kulturních památek v Kroměříži#ZSJ Zachar|kulturní památka]] dochoval jeho náhrobek) kryly ústup ruského sboru generála Bagrationa v závěru bitvy.<ref name="kopecký2009" /><ref name="čsns-pomníky">[http://napoleonska-spolecnost.cz/pomniky Zřízené pomníky a pamětní desky] Československé napoleonské společnosti</ref> 
+|-
+|<!--název--> [[Soubor:Emblem-star.svg|20px|Významná památka]] '''[[Staré vinohrady]]'''
+|<!--obr. -->[[Soubor:Staré vinohrady, vrchol 1.jpg|alt=Vrcholová kóta Starých vinohrad|150x150pixelů|Boží muka na Starých vinohradech]]
+|<!--comm.--> {{Commonscat v tabulce|Staré vinohrady}}
+|<!--místo-->[[Staré vinohrady]] ([[Blažovice]]) <br />{{Souřadnice|49.1480275|16.7861272}}
+|<!--pozn.-->Vrch na hranici katastrů Jiříkovic, Blažovic, Křenovic a Zbýšova, jedno z vyvýšených míst celého Prateckého návrší, bylo místem klíčových bojů bitvy. Střetla se zde ruská a francouzská císařská garda. Ráno zde bylo stanoviště spojeneckého štábu. Vrcholovou kótu 298 uprostřed polí označuje poškozená kamenná plastika s datováním 187…<ref name="cyklo2009" /><ref name="kopecký2009" /><ref name="pa-jiříkovice" /><ref name=":21" /><ref name=":22" />
+|-
+|<!--název-->Boží muka
+|<!--obr. -->[[Soubor:Boží muka, Staré vinohrady 3.jpg|150px|Boží muka na Starých vinohradech]]
+|<!--comm.-->{{Commonscat v tabulce|Column shrine in Staré vinohrady (Blažovice)}}{{Commonscat v tabulce|Kříž na Starých vinohradech}}
+|<!--místo-->[[Staré vinohrady]] ([[Blažovice]]) <br />{{Souřadnice|49.1449161|16.7908972}}
+|<!--pozn.-->Nedaleko vrcholu Starých vinohrad stojí na křižovatce silnic Prace–Křenovice a Blažovice–Zbýšov boží muka podle návrhu Miroslava Pražáka, zbudovaná a vysvěcená v roce 1992. Ta nahradila původní ze 17. století, jež zde bez úhony přečkala bitvu a byla do základů pobořena až nákladním vozem při polních pracích v roce 1953. Naproti přes silnici stojí litinový kříž z roku 1863.<ref name="cyklo2009" /><ref name="kopecký2009" /><ref name="pa-jiříkovice" /><ref name=":21" /><ref name=":22" />
+|- style="background:#F0F0F0"
+|<!--název--> Kopeček
+|<!--obr. --> [[Soubor:Šaratice, Kopeček, kříž (17.02.15).jpg|100px|Kříž na Kopečku u Šaratic]]
+|<!--comm.--> {{Commonscat v tabulce|Kopeček (Šaratice)}}
+|<!--místo-->[[Šaratice]] <br />{{Souřadnice|49.1155556|16.8135278}}
+|<!--pozn.-->Kříž označuje údajné hromadné hroby ze slavkovské bitvy.<ref name="špatný" /><ref name="cyklo2009" /><!-- Kopeček je uváděn pouze v obou citovaných mapách. HOCHEL (2011) ani HANÁK (2015) již žádnou památku v Šaraticích neuvádějí, pouze shodně popisují památkově neoznačená místa hromadných hrobů v sousedních Hostěrádkách-Rešově. --> Kopeček jakožto mohyla ze starší body železné byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=136294|název=Mohylník Kopeček}}</ref>
+|-
+|<!--název--> [[Šlapanice (zámek)|Zámek s parkem]]
+|<!--obr. --> [[Soubor:Šlapanice, gymnázium.jpg|150px|Zámek ve Šlapanicích, dnes gymnázium]]
+|<!--comm.--> {{Commonscat v tabulce|Šlapanice Castle}}
+|<!--místo-->[[Šlapanice]] <br />{{Souřadnice|49.1688611|16.7250278}}
+|<!--pozn.--> Původně barokní zámek sloužil jako francouzská polní nemocnice a v parku byl soustředěn dělostřelecký trén. Byl zde před převozem do Brna ošetřován také Roger Valhubert, jediný francouzský generál, který zemřel na následky zranění z bitvy. Dnes je v zámku výrazně změněném přestavbami gymnázium.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref>[http://g.slapanice.cz/content/historie-budovy Historie budovy] {{Wayback|url=http://g.slapanice.cz/content/historie-budovy |date=20101206104618 }} na stránkách Gymnázia Šlapanice</ref><ref name="ops-šlap">[http://www.austerlitz-ops.cz/clenove_ops/vyznamna_historicka_mista_ke_vztahu_bitva_tri_cisaru Významná historická místa ke vztahu k Bitvě tří císařů] {{Wayback|url=http://www.austerlitz-ops.cz/clenove_ops/vyznamna_historicka_mista_ke_vztahu_bitva_tri_cisaru |date=20100213212941 }} na Austerlitz-ops.cz</ref><ref name="kartografie" />
+|-
+|<!--název--> Pomník lékařům
+|<!--obr. --> [[Soubor:Pomník Larreyovi a lékařům, Šlapanice 1.jpg|150px|Pomník J. D. Larreyovi a lékařům]]
+|<!--comm.--> {{Commonscat v tabulce|Memorial to french surgeon J. D. Larrey and his medics in Šlapanice}}
+|<!--místo-->[[Šlapanice]] <br />{{Souřadnice|49.1675556|16.7267222}}
+|<!--pozn.--> Na rohu ulic Brněnské a Riegrovy byl u příležitosti 200. výročí bitvy [[2. prosinec|2. prosince]] [[2005]] odhalen pomník [[Dominique Jean Larrey|Jeanu Dominigue Larreyovi]], vrchnímu chirurgovi francouzské armády a všem lékařům ošetřujícím zraněné v bitvě. Autorem pomníku v podobě žulového kvádru na stupňovitém podstavci je zdejší rodák, sochař [[Jaromír Blažek (sochař)|Jaromír Blažek]].<ref name="kčt" /><ref name="ops-šlap" /><ref name="kopecký2009" /><ref>[http://www2.slapanice.cz/mambo/index.php?option=com_content&task=blogcategory&id=3&Itemid=9 Památky města Šlapanice] {{Wayback|url=http://www2.slapanice.cz/mambo/index.php?option=com_content&task=blogcategory&id=3&Itemid=9 |date=20110718184127 }} na stránkách města</ref><ref>{{Citace elektronického periodika
+ | příjmení = Nosko
+ | jméno = Julius
+ | titul = Milovaný kámen mu vzal nohu. Srdce ne
+ | periodikum = Brněnský deník.cz
+ | den vydání = 28
+ | měsíc vydání = 11
+ | rok vydání = 2007
+ | datum přístupu = 2011-07-15
+ | url = http://brnensky.denik.cz/zpravy_region/kamenik_20071127.html
+}}</ref>
+|-
+|<!--název--> [[Scholasterie (Šlapanice)|Klášterní scholasterie]]
+|<!--obr. --> [[Soubor:Šlapanice, cukrárna.jpg|150px|Klášterní scholasterie (vpravo)]]
+|<!--comm.--> {{Commonscat v tabulce|Muzeum ve Šlapanicích}}
+|<!--místo-->[[Šlapanice]] <br />{{Souřadnice|49.16925|16.7270833}}
+|<!--pozn.--> V bývalé klášterní scholasterii byl 18. listopadu štáb spojenecké armády ustupující k Olomouci, v den bitvy 2. prosince pak štáb francouzského IV. armádního sboru maršála Soulta. Připomíná to pamětní deska instalovaná v roce 2000. Od roku [[1949]] v budově sídlí muzeum, v současnosti jedna z poboček Muzea Brněnska.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref name="cyklo2009" /><ref name="ops-šlap" /><ref name="kartografie" /><ref name="kopecký2009" /><ref>[http://www.muzeumbrnenska.cz/35-kontakty.aspx Adresy poboček (pracovišť) muzea] {{Wayback|url=http://www.muzeumbrnenska.cz/35-kontakty.aspx |date=20110825101511 }} na stránkách Muzea Brněnska</ref> Scholasterie byla vyhlášena kulturní nemovitou památkou.<ref>{{MonumNet|název=Škola - scholasterie|ID=145346|datum=2013-2-4}}</ref>
+|-
+|<!--název--> [[Kostel Nanebevzetí Panny Marie (Šlapanice)|Kostel Nanebevzetí Panny Marie]]
+|<!--obr. --> [[Soubor:Šlapanice, kostel od náměstí.jpg|150px|Kostel Nanebevzetí Panny Marie]]
+|<!--comm.--> {{Commonscat v tabulce|Church of the Assumption of the Virgin Mary (Šlapanice)}}
+|<!--místo-->[[Šlapanice]] <br />{{Souřadnice|49.1696389|16.7264722}}
+|<!--pozn.--> Původně gotický kostel z 15. století, v polovině 18. barokně přestavěný. V kostele byli po bitvě shromážděni zajatí spojenečtí vojáci.<ref name="špatný" /><ref name="kčt" /><ref name="arc" /><ref name="cyklo2009" /><ref name="ops-šlap" /> Kostel byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=140666|název=Kostel Nanebevzetí P. Marie}}</ref>
+|-
+|<!--název--> Zazděná boží muka
+|<!--obr. --> [[Soubor:Zazděná boží muka, Jiříkovická 6, Šlapanice.jpg|100px|Zazděná boží muka]]
+|<!--comm.--> 
+|<!--místo-->[[Šlapanice]] <br />{{Souřadnice|49.1658056|16.7311667}}
+|<!--pozn.-->Boží muka v Jiříkovské ulici zazděná do domu (č. p. 139) připomínají šachtový hrob.<ref name="špatný" /><ref name="ops-šlap" /><!-- HOCHEL (2011) uvádí ve Šlapanicích také další dva, památkově neoznačené hromadné hroby: jeden severně v zářezu Říčky směrem na Bedřichovice (autor jmenuje lokalitu Liché vinohrady, historické mapy však ukazují Lichy jako část západně od silnice a Vinohrady jako svahy východně od silnice) a druhý jižně poblíž silnice na Kobylnice (jmenuje lokalitu Doliny nad rybníkem, historické mapy ji nazývají Dolní nad rybníkem, východně od Vrchní nad rybníkem, zhruba mezi železniční zákrutou na Ponětovice a východním okrajem tuřanského letiště). -->
+|-
+|<!--název--> Pomník na hřbitově
+|<!--obr. --> [[Soubor:Pomník na hřbitově, Šlapanice v noci.jpg|100px|Pomník na hřbitově]]
+|<!--comm.--> {{Commonscat v tabulce|Hrob francouzských vojáků (Šlapanice)}}
+|<!--místo-->[[Šlapanice]] <br />{{Souřadnice|49.1708611|16.7290278}}
+|<!--pozn.--> Pomník z roku [[1965]] na městském hřbitově nad hrobem obětí bitvy. Kosterní pozůstatky padlých francouzských vojáků sem byly umístěny ze zrušeného Krchůvku v polovině 19. století.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref name="cyklo2009" /><ref name="ops-šlap" /><ref name="kartografie" />
+|-
+|<!--název-->Boží muka a pomník padlým koním
+|<!--obr. --> [[Soubor:Telnice, boží muka Na Lopatě s přístřeškem (8393b).jpg|150px|Boží muka Na Lopatě s pomníkem]]
+|<!--comm.-->{{Commonscat v tabulce|Boží muka Na Lopatě (Telnice)}}{{Commonscat v tabulce|Pomník padlým koním Na Lopatě}}
+|<!--místo-->[[Telnice (okres Brno-venkov)|Telnice]] <br />{{Souřadnice|49.102|16.7251389}}
+|<!--pozn.-->V okolí [[Barokní architektura|barokních]] božích muk „Na Lopatě“ z konce 18. století s dobrým výhledem na bojiště byla soustředěna obrana francouzských vojsk v Telnici.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name=":2">HOCHEL (2011). S. 76–77.</ref><ref name=":4">HANÁK (2015). S. 38–39.</ref> Boží muka byla vyhlášena kulturní nemovitou památkou.<ref>{{MonumNet|ID=150891|název=Boží muka směrem k Újezdu}}</ref> V prosinci [[2019]] byl v sousedství odhalen pomník koním padlým v bitvě.<ref>{{Citace elektronického periodika
+| autor = Rodina Jana Rožnovského
+| titul = Reportáž: Odhalení pomníku padlým koním Na Lopatě - 29. prosince 2019
+| periodikum = 
+| vydavatel = Obec Telnice
+| url = https://www.telnice.cz/index.php?&desktop_back=clanky&action_back=&id_back=31&desktop=clanky&action=view&id=13636
+| datum vydání = 2019
+| datum přístupu = 2023-07-13
+| url archivu = https://web.archive.org/web/20230713102945/https://www.telnice.cz/index.php?&desktop_back=clanky&action_back=&id_back=31&desktop=clanky&action=view&id=13636
+| datum archivace = 2023-07-13
+}}</ref><!-- Nachází se u hranice telnického a újezdského území. Podle vyznačení na Mapách.cz stojí boží muka na území Telnice, zatímco památník s turistickým přístřeškem už patrně na území Újezda u Brna. Pro jednoduchost však obě památky řadíme k jednomu místu a obci. -->
+|-
+|<!--název--> Boží muka
+|<!--obr. --> [[Soubor:Telnice, boží muka na Mrtvé cestě (8272b).jpg|150px|Boží muka na Mrtvé cestě]]
+|<!--comm.--> {{Commonscat v tabulce|Boží muka u Mrtvé cesty}}
+|<!--místo-->[[Telnice (okres Brno-venkov)|Telnice]] <br />{{Souřadnice|49.10625|16.7134444}}
+|<!--pozn.-->Poblíž božích muk u silnice, která nahradila tzv. „Mrtvou cestu“, kudy chodívaly pohřební průvody ze Sokolnic na telnický hřbitov, byla pozice francouzské dělostřelecké baterie.<ref name="špatný" /><ref name=":4" /><ref name=":3">HOCHEL (2011). S. 69–70.</ref> Boží muka byla vyhlášena kulturní nemovitou památkou.<ref>{{MonumNet|ID=158607|název=Boží muka u Mrtvé cesty}}</ref><!-- Nachází se u hranice telnického a sokolnického území a různé zdroje je zahrnují buď k Telnici (HANÁK), nebo Sokolnicím (HOCHEL), památkový katalog však udává umístění v Telnici, ve shodě s vyznačením na Mapách.cz. -->
+|-
+|<!--název--> Boží muka
+|<!--obr. --> [[Soubor:Telnice, Růžová, boží muka (8351).jpg|150px|Boží muka v Růžové ulici]]
+|<!--comm.--> {{Commonscat v tabulce|Boží muka na křižovatce Růžová - V dědině}}
+|<!--místo-->[[Telnice (okres Brno-venkov)|Telnice]] <br />{{Souřadnice|49.0991667|16.7132778}}
+|[[Klasicistní architektura|<!--pozn.-->Klasicistní]] trojboká boží muka z 20. let 19. století v Růžové ulici vyznačují údajný hromadný šachtový hrob.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref name=":2" /><ref name=":4" /> Byla vyhlášena kulturní nemovitou památkou.<ref>{{MonumNet|ID=137943|název=Boží muka v Růžové ulici}}</ref> Další tři – památkově neoznačené – hromadné hroby jsou v Telnici známy v lokalitách Odměrky, Malá dráha a Za kostelem.<ref name=":2" /><ref>{{Citace elektronické monografie
+| titul = Indikační skica: katastr Telnice, identifikátor MOR265518250, signatura 2655
+| url = https://www.mza.cz/indikacniskici/skica/detail/3758
+| vydavatel = Moravský zemský archiv v Brně
+| datum vydání = 1825
+| datum přístupu = 2023-07-13
+}}</ref><!-- Hochel sice jmenuje lokalitu "Za telnickým hřbitovem", starý hřbitov je však uváděn právě u kostela a současný hřbitov je rovněž hned za kostelem, dobové mapy pak ve shodě s nynějšími označují lokalitu "Za kostelem". -->
+|-
+|<!--název--> [[Kostel svatého Jana Křtitele (Telnice)|Kostel sv. Jana Křtitele]]
+|<!--obr. --> [[Soubor:Telnice, kostel (8295).jpg|100px|Kostel sv. Jana Křtitele]]
+|<!--comm.--> {{Commonscat v tabulce|Church of Saint John the Baptist (Telnice)}}
+|<!--místo-->[[Telnice (okres Brno-venkov)|Telnice]] <br />{{Souřadnice|49.1020556|16.7183611}}
+|<!--pozn.-->Kolem kostela byla soustředěna obrana francouzských vojsk v Telnici, ve zdi kolem kostela jsou znatelné pozice děl a ve věži jsou zazděny dělové koule. Na farním úřadě 27. listopadu přespal [[Napoleon Bonaparte|Napoleon]].<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="arc" /><ref name="cyklo2009" /><ref name="kartografie" /><ref name=":2" /><ref name=":4" /> Kostel byl vyhlášen kulturní nemovitou památkou.<ref>{{MonumNet|ID=148882|název=Kostel sv. Jana Křtitele}}</ref>
+|-
+|<!--název--> Pomník uherským vojákům „Kopjafa“
+|<!--obr. --> [[Soubor:Telnice - pomník uherským vojákům.jpg|100px|Pomník uherským vojákům „Kopjafa“]]
+|<!--comm.--> {{Commonscat v tabulce|Monument to Hungarian soldiers from the Battle of Austerlitz in Telnice}}
+|<!--místo-->[[Telnice (okres Brno-venkov)|Telnice]] <br />{{Souřadnice|49.1013889|16.7195}}
+|<!--pozn.-->Dne 2. prosince [[2006]] byl v parčíku před mateřskou školou odhalen pomník v podobě vyřezávaného dubového sloupu. Věnován byl padlým uherským vojákům, kteří v bitvě bojovali jako předvoj I. kolony polního podmaršála [[Michael von Kienmayer|Kienmayera]].<ref name="kopecký2009" /><ref name=":2" /><ref name=":4" /><ref>{{Citace elektronického periodika
+| titul = Kulturní pamětihodnosti
+| periodikum = 
+| vydavatel = Obec Telnice
+| url = https://www.telnice.cz/index.php?&desktop=clanky&id=43
+| kapitola = Památníky
+| datum přístupu = 2023-07-17
+| url archivu = https://web.archive.org/web/20230717112450/https://www.telnice.cz/index.php?&desktop=clanky&id=43
+| datum archivace = 2023-07-17
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = 
+| jméno = 
+| titul = Památky slavkovského bojiště mapuje nový průvodce
+| periodikum = Týden.cz
+| url = https://www.tyden.cz/rubriky/relax/cestovani/pamatky-slavkovskeho-bojiste-mapuje-novy-pruvodce_158503.html
+| datum vydání = 2010-02-12
+| jazyk = cs
+| datum přístupu = 2023-07-17
+}}</ref><ref>{{Citace elektronického periodika
+| titul = Pomník maďarských vojáků padlých v bitvě u Slavkova v Telnicích
+| periodikum = Drobné památky
+| url = https://www.drobnepamatky.cz/node/68723
+| datum vydání = 2022-06-28
+| datum přístupu = 2023-07-17
+}}</ref> O pět let později, 3. prosince [[2011]], vedle něj přibyl další, zdobnější sloup.<ref>{{Citace elektronického periodika
+| příjmení = Haniková
+| jméno = Monika
+| titul = Reportáž: Pietní akt s odhalením nového pomníku - 4. prosince 2011
+| periodikum = 
+| vydavatel = Obec Telnice
+| url = https://www.telnice.cz/index.php?desktop=clanky&action=view&id=2119
+| datum vydání = 2011
+| datum přístupu = 2023-07-17
+| url archivu = https://web.archive.org/web/20230716235830/https://www.telnice.cz/index.php?desktop=clanky&action=view&id=2119
+| datum archivace = 2023-07-16
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = György
+| jméno = Kövér
+| titul = Popis nového památníku Kopjafa od jeho sekelského tvůrce
+| periodikum = 
+| vydavatel = Obec Telnice
+| url = https://www.telnice.cz/index.php?&desktop=clanky&action=view&id=2120&desktop_back=clanky&action_back=&id_back=31&hlasuj=127&hlasuj_id=2
+| datum vydání = 2011
+| datum přístupu = 2023-07-17
+| url archivu = https://web.archive.org/web/20230717002018/https://www.telnice.cz/index.php?&desktop=clanky&action=view&id=2120&desktop_back=clanky&action_back=&id_back=31&hlasuj=127&hlasuj_id=2
+| datum archivace = 2023-07-17
+}}</ref><ref>{{Citace elektronického periodika
+| titul = Pomník szekelských vojáků padlých v bitvě u Slavkova v Telnicích
+| periodikum = Drobné památky
+| url = https://www.drobnepamatky.cz/node/68722
+| datum vydání = 2022-06-28
+| datum přístupu = 2023-07-17
+}}</ref>
+|-
+|<!--název--> Kosmákův kříž a Valhubertův památník
+|<!--obr. --> [[Soubor:Kosmákův kříž ve Tvarožné 1995.jpg|100px|Kosmákův kříž]]
+|<!--comm.--> {{Commonscat v tabulce|Kosmákův kříž}} {{Commonscat v tabulce|Pomník generála Valhuberta pod Santonem}}
+|<!--místo-->[[Tvarožná]] <br />{{Souřadnice|49.1880278|16.7666111}}
+|<!--pozn.--> Dřevěný vyřezávaný kříž věnovaný místnímu knězi a spisovateli stojí nad údajným hromadným hrobem. Vedle je i památník vyznačující místo smrtelného zranění francouzského generála Valhuberta. Asi dva metry vysoký žulový památník byl odhalen [[24. listopad]]u [[2000]].<ref name="špatný" /><ref name="kčt" /><ref name="cyklo2009" /><ref name="tvarožná-památky" /><ref name="kopecký2009" />
+|- 
+|<!--název--> Pamětní deska
+|<!--obr. --> [[Soubor:Pomník padlým v Bitvě tří císařů v Tvarožné (Q105001884).jpg|150px|Pamětní deska na návsi]]
+|<!--comm.--> 
+|<!--místo-->[[Tvarožná]] <br />{{Souřadnice|49.1913056|16.7745}}
+|<!--pozn.--> V roce [[1993]] byla na návsi odhalena pamětní deska obětem bitvy tří císařů. V naproti stojící budově obecního úřadu je umístěna plastická mapa bojiště zobrazující bitevní situaci, kterou obec obdržela darem v roce [[1990]] od vídeňské jednotky Deutschmeister Schützen Korps.<ref name="kopecký2009" /><ref name="tvarožná-památky">[http://www.tvarozna.cz/index.php?desktop=clanky&id=32 Drobné památky] {{Wayback|url=http://www.tvarozna.cz/index.php?desktop=clanky&id=32 |date=20071010095130 }} na stránkách obce Tvarožná</ref>
+|- 
+|<!--název--> Pomník ruským vojákům
+|<!--obr. --> [[Soubor:Pomník ruským vojákům padlým pod Santonem v Tvarožné (Q105001880).jpg|150px|Pomník ruským vojákům]]
+|<!--comm.--> 
+|<!--místo-->[[Tvarožná]] <br />{{Souřadnice|49.1905833|16.7759167}}
+|<!--pozn.--> Pomník odhalený [[21. listopad]]u [[2004]] u [[Kostel svatého Mikuláše (Tvarožná)|kostela sv. Mikuláše]] stojí v místech společného hrobu ruských vojáků, který byl objeven v roce [[1923]]. Ve vstupní bráně nedalekého hřbitova byla v srpnu [[1994]] odhalena pamětní deska [[pplk.]] [[Emil Kaláb|Emila Kalába]], zdejšího rodáka a jednoho z prvních historiků slavkovské bitvy.<ref name="kopecký2009" /><ref name="tvarožná-památky"/><ref>[http://www.austerlitz.org/pozvanka-na-odhaleni-pomiku-padlym-ruskym-vojakum-ve-tvarozne-u-brna_a808 Pozvánka na odhalení pomníku padlým ruským vojákům ve Tvarožné u Brna]{{Nedostupný zdroj}}</ref>
+|- style="background:#F0F0F0"
+|<!--název--> Spálený mlýn
+|<!--obr. -->[[Soubor:Uhřice, Janův Dvůr, průčelí s pamětní deskou (8954b).jpg|alt=Janův Dvůr u Spáleného mlýna|150x150pixelů|Janův dvůr u Spáleného mlýna]]
+|<!--comm.--> {{Commonscat v tabulce|Spálený mlýn (Násedlovice)}}
+|<!--místo-->[[Uhřice (okres Hodonín)|Uhřice]]/[[Násedlovice]] <br />{{Souřadnice|49.0250833|16.9626111}}
+|<!--pozn.-->Místo setkání Napoleona s rakouským císařem [[František I. Rakouský|Františkem I.]] dne 4. prosince 1805, kde došlo k dohodnutí příměří, na druhý den podepsaného ve slavkovském zámku. [[Císařská lípa (Žarošice)|Torzo lípy]], pod níž údajně k jednání došlo, je uloženo ve slavkovském muzeu. Později byl u Spáleného mlýna postaven Janův Dvůr zvaný též Bačalárna. Roku 1900 byla na západním průčelí budovy umístěna pamětní deska ze [[Syenit|syenitu]], dílo sochaře [[Johann Eduard Tomola|Johanna Eduarda Tomoly]]. Roku 2003 zde byl umístěn obelisk připomínající oběti války a vysazeny 4 lípy.<ref name="kčt" /><ref name="mudra" /><ref name="cyklo2009" /><ref>HANÁK (2015). S. 178–179.</ref><ref>[http://www.uhrice.cz/zajimavosti.php Zajímavosti a památky] {{Wayback|url=http://www.uhrice.cz/zajimavosti.php |date=20120204030023 }} na stránkách obce Uhřice</ref><ref>{{Citace elektronického periodika
+| příjmení = Veselý
+| jméno = Josef
+| titul = 683. schůzka: Rendez-vous u Spáleného mlýna
+| periodikum = ČRo Dvojka
+| vydavatel = Český rozhlas
+| url = https://dvojka.rozhlas.cz/683-schuzka-rendez-vous-u-spaleneho-mlyna-7940596
+| datum vydání = 2021-10-07
+| jazyk = cs
+| datum přístupu = 2023-08-13
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = Kučera
+| jméno = Tomáš
+| titul = Spálený mlýn; Spaleni Mühle
+| periodikum = 
+| vydavatel = Vodnimlyny.cz
+| url = https://www.vodnimlyny.cz/mlyny/objekty/detail/9250-spaleny-mlyn-spaleni-muhle
+| datum vydání = 2020-06-29
+| datum přístupu = 2023-08-13
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = Řezáč
+| jméno = Roman
+| titul = Lípa u Spáleného mlýna
+| periodikum = Hrady.cz
+| url = https://www.hrady.cz/lipa-u-spaleneho-mlyna
+| datum vydání = 2008-01-03
+| jazyk = cs
+| datum přístupu = 2023-08-13
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = Vystrčil
+| jméno = Robert
+| titul = Uhřice u Kyjova
+| periodikum = DuseKarpat.cz
+| url = https://www.dusekarpat.cz/cesko/uhrice/
+| datum vydání = 2021-06-15
+| jazyk = cs
+| datum přístupu = 2023-08-13
+}}</ref><ref>{{Citace elektronického periodika
+| příjmení = 
+| jméno = 
+| titul = Zajímavosti a památky: Setkání dvou císařů
+| periodikum = Obec Uhřice - oficiální web obce
+| url = https://obec-uhrice.cz/zajimavosti_a_pamatky.php
+| jazyk = cs-CZ
+| datum přístupu = 2023-08-13
+}}</ref>
+|-
+|<!--název-->[[Kaple svatého Antonína Paduánského (Újezd u Brna)|Kaple sv.&nbsp;Antonína Paduánského]]
+|<!--obr. -->[[Soubor:Újezd u Brna, kaple (8493b).jpg|150px|Kaple sv. Antonína Paduánského]]
+|<!--comm.--> {{Commonscat v tabulce|Kaple svatého Antonína Paduánského (Újezd u Brna)}}
+|<!--místo-->[[Újezd u Brna]] <br />{{Souřadnice|49.1096667|16.7564722}}
+|<!--pozn.-->Dělostřelbou rakouských děl z těchto míst byla podle předpokladu ráno 2. prosince zahájena slavkovská bitva a odpoledne odtud Napoleon pozoroval ústup spojenců od Telnice a Žatčan. Kaple z roku [[1703]], od roku 1785 zrušená, vyhořela a současná novorománská kaple byla na stejném místě postavena roku [[1863]].<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="mudra" /><ref name="cyklo2009" /><ref name=":8" /><ref name=":9" /> Kaple byla vyhlášena kulturní nemovitou památkou.<ref>{{MonumNet|ID=141624|název=Kaple sv. Antonína Paduánského}}</ref>
+|-
+|<!--název-->Bývalý mlýn
+|<!--obr. -->[[Soubor:Újezd u Brna - mlýn.jpg|150px|Areál mlýna|alt=Areál mlýna roku 2013]]
+|<!--comm.-->{{Commonscat v tabulce|Former mill (Rychmanov)}}
+|<!--místo-->[[Újezd u Brna]] <br />{{Souřadnice|49.1070556|16.7668056}}
+|<!--pozn.-->Tzv. Peclův mlýn, v písemných pramenech poprvé zmíněný v roce 1465, je připomínán také v románu [[Lev Nikolajevič Tolstoj|Lva Nikolajeviče Tolstého]] [[Vojna a mír|''Vojna a mír'']]. Za bitvy v něm byl umístěn válečný lazaret. Ve dvoře byla pamětní deska majitelů, původní objekt sloužil později jako sklad. Po roce 2015 došlo k ukončení výroby a budova byla zbořena. V lokalitě byla ohlášena výstavba obytné čtvrti.<ref name="špatný" /><ref name=":8" /><ref>{{Citace elektronického periodika
+| titul = mlýn v Újezdě u Brna, Peclův mlýn
+| periodikum = Vodnimlyny.cz
+| url = https://www.vodnimlyny.cz/mlyny/objekty/detail/9571-mlyn-v-ujezde-u-brna
+| datum přístupu = 2023-07-30
+}}</ref><ref>{{Citace elektronického periodika
+| titul = Újezd
+| periodikum = ujezdubrna.cz
+| vydavatel = Město Újezd u Brna
+| url = https://ujezdubrna.cz/ujezd/
+| datum přístupu = 2023-07-30
+| datum archivace = 2023-07-30
+| url archivu = https://web.archive.org/web/20230730210744/https://ujezdubrna.cz/ujezd/
+}}</ref><ref>{{Citace elektronického periodika
+| titul = Nejstarší dějiny – Město Újezd u Brna
+| periodikum = ujezdubrna.cz
+| url = https://ujezdubrna.cz/nejstarsi-dejiny/
+| datum přístupu = 2023-07-30
+| datum archivace = 2024-04-25
+| url archivu = https://web.archive.org/web/20240425134028/https://ujezdubrna.cz/nejstarsi-dejiny/
+}}</ref><ref>{{Citace periodika
+| příjmení = Blažková
+| jméno = Magdaléna
+| titul = Výstavba nedaleko Brna: ze sutin vyroste nová čtvrť jako moravská vesnice
+| periodikum = Brněnský deník
+| datum vydání = 2023-06-07
+| jazyk = cs
+| url = https://brnensky.denik.cz/zpravy_region/bydleni-ujezd-u-brna-nova-ctvrt-tri-dvory-drfg-moravska-vesnice-jak-bude-vypadat.html
+| datum přístupu = 2023-07-30
+}}</ref>
+|-
+|<!--název-->Pieta
+|<!--obr. -->[[Soubor:Újezd u Brna, Rychmanov, Pieta v parku (8467).jpg|150px|Pieta v Rychmanově|alt=Pieta v Rychmanově]]
+|<!--comm.-->{{Commonscat v tabulce|Pieta (Rychmanov)}}
+|<!--místo-->[[Újezd u Brna]] <br />{{Souřadnice|49.1016281|16.7672200}}
+|<!--pozn.-->V listopadu 2009 byl u příležitosti 10. výročí založení [[Obecně prospěšná společnost|společnosti]] [[Mohyla míru - Austerlitz]] odhalen pomník civilním obětem bitvy, umístěný v parčíku u rybníka v [[Rychmanov|Rychmanově]]. Autorem plastiky nazvané Pieta byl [[Nikos Armutidis]].<ref name=":8">HOCHEL (2011). S. 82.</ref><ref name=":9">HANÁK (2015). S. 50.</ref><ref>{{Citace elektronického periodika
+| titul = 10. výročí založení Mohyla míru - Austerlitz, o.p.s.
+| periodikum = Zpravodaj Újezd u Brna
+| vydavatel = Újezd u Brna
+| druh nosiče = PDF online
+| url = http://ujezdubrna.cz/wp-content/uploads/SouboryKeStrankam/2010_zpravodaj_kveten_.pdf
+| rok vydání = 2010
+| měsíc vydání = květen
+| strany = 1, 7, 10, 49
+| datum přístupu = 2023-07-30
+| datum archivace = 2023-07-30
+| url archivu = https://web.archive.org/web/20230730194825/http://ujezdubrna.cz/wp-content/uploads/SouboryKeStrankam/2010_zpravodaj_kveten_.pdf
+}}</ref><ref>{{Citace elektronické monografie
+| titul = Zpráva o činnosti za rok 2009
+| url = https://www.muzeumbrnenska.cz/cz/o-muzeu/zpravy-o-cinnosti?task=document.download&id=211
+| url2 = https://www.muzeumbrnenska.cz/cz/o-muzeu/zpravy-o-cinnosti
+| druh nosiče = PDF online
+| vydavatel = Muzeum Brněnska
+| místo = Šlapanice
+| datum vydání = 2010-01-04
+| datum přístupu = 2023-07-30
+| strany = 13
+}}</ref><ref>{{Citace periodika
+| příjmení = Nečasová
+| jméno = Alžběta
+| titul = Dvojče sochy pro prezidenta si nechají v Újezdu u Brna
+| periodikum = Brněnský deník
+| datum vydání = 2016-01-26
+| jazyk = cs
+| url = https://brnensky.denik.cz/zpravy_region/dvojce-sochy-pro-prezidenta-si-nechaji-v-ujezdu-u-brna-20160126.html
+| datum přístupu = 2023-07-30
+}}</ref><!-- Pár hromadných hrobů je dle Hochela (2011) a Hanáka (2015) hlášeno i ze sousedních Hostěrádek-Rešova, a to západně od obce směrem na Újezd, v lokalitě "Stará hora" (dříve označený dřevěným křížem na blízkém stromu) a "Přední vinohrady". Ty však již nejsou nijak památkově označené. -->
+|-
+|<!--název-->Pomník Tří císařů
+|<!--obr. -->[[Soubor:Monument to the three emperors, Zbýšov, VY 2.jpg|alt=Pomník Tří císařů|150x150pixelů|Kříž ve Zbýšově]]
+|<!--comm.-->{{Commonscat v tabulce|Monument to the three emperors}}
+|<!--místo-->[[Zbýšov (okres Vyškov)|Zbýšov]] <br />{{Souřadnice|49.141284|16.793832}}
+|<!--pozn.-->Moderní památník Tří císařů, odhalený k dvoustému výročí bitvy [[17. září]] [[2005]] péčí Československé napoleonské společnosti a obce Zbýšov, stojí na návrší nad Zbýšovem, poblíž křižovatky Blažovice–Křenovice–Prace. V místě již zaniklé polní cesty nezávisle na sobě v různých časech během bitvy prošli všichni tři císařové. Ty symbolizuje trojice sloupků nesoucí „slavkovské slunce“ a také materiálové složení pomníku z francouzské, ruské a německé žuly.<ref name=":14">HOCHEL (2011). S. 118.</ref><ref name=":23">HANÁK (2015). S. 52–53.</ref><ref name="čsns-pomníky" />
+|-
+|<!--název-->Kříž
+|<!--obr. -->[[Soubor:Zbýšov, kříž na cestě k vinohradům (9562).jpg|150x150pixelů|Kříž ve Zbýšově]]
+|<!--comm.-->{{Commonscat v tabulce|Kříž na cestě k vinohradům (Zbýšov)‎}}
+|<!--místo-->[[Zbýšov (okres Vyškov)|Zbýšov]] <br />{{Souřadnice|49.1325278|16.8093333}}
+|<!--pozn.-->Litinový kříž z roku 1870 v lokalitě První díly nad šachtovým hrobem z bitvy. Ostatky z něj byly v roce 1836 převezeny do Křenovic do hromadného hrobu poblíž Krchůvku. Kříž stál původně mimo zástavbu u cesty vedoucí k vinohradům, později byl při dalším rozvoji zástavby přesunut o několik metrů k silnici.<ref name="špatný" /><ref name="kčt" /><ref name=":14" /><ref name=":23" /><ref>{{Citace periodika
+| příjmení = Hašková
+| jméno = Martina
+| titul = Zlatá Hora: místo odpočinku mrtvých hrdinů
+| periodikum = Vyškovský deník
+| datum vydání = 2014-08-09
+| jazyk = cs
+| url = https://vyskovsky.denik.cz/serialy/zlata-hora-misto-odpocinku-mrtvych-hrdinu-20140808-wlq7.html
+| datum přístupu = 2023-09-20
+}}</ref>
+|-
+|<!--název-->Zvonice
+|<!--obr. -->[[Soubor:Zbýšov, zvonice na návsi (9590a).jpg|150x150pixelů|Zvonice ve Zbýšově]]
+|<!--comm.-->{{Commonscat v tabulce|Bell tower in Zbýšov (Vyškov District)}}
+|<!--místo-->[[Zbýšov (okres Vyškov)|Zbýšov]] <br />{{Souřadnice|49.1304722|16.8068056}}
+|<!--pozn.-->V rozích zvonice na návsi jsou zazděné dělové koule ze slavkovské bitvy. Zvonice/kaplička Panny Marie Sedmibolestné byla vystavěna v roce 1836 právě jako dík za přežití útrap během bitvy.<ref name="špatný" /><ref name="kčt" /><ref name="cyklo2009" /><ref name=":14" /><ref name=":23" />
+|-
+|<!--název-->Mlýn
+|<!--obr. -->[[Soubor:Žatčany, bývalý mlýn (8433).jpg|150px|Žatčanský mlýn]]
+|<!--comm.-->{{Commonscat v tabulce|Žatčanský mlýn}}
+|<!--místo-->[[Žatčany]] <br />{{Souřadnice|49.0868611|16.7223056}}
+|<!--pozn.-->Mlýn na hrázi mezi Žatčanským a Měnínským rybníkem v části [[Třebomyslice (Žatčany)|Třebomyslice]], tehdy samostatné vesnici, během bitvy vyhořel. Později byl k němu přistavěn dvůr, zvaný též zámeček. Ve štítě bývalého mlýna je zazděno 5 dělových koulí ze slavkovské bitvy nalezených v okolí.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name="kartografie" /><ref name=":6">HOCHEL (2011). S. 87.</ref><ref name=":7">HANÁK (2015). S. 42–43.</ref><ref>{{Citace elektronické monografie
+| titul = Naučná stezka „Žatčany včera a dnes“: Žatčanský dvůr a mlýn
+| url = https://www.obeczatcany.cz/resources/upload/data/2230_%aeat%e8ansk%fd%20dv%f9r.pdf
+| druh nosiče = PDF online
+| vydavatel = Obec Žatčany
+| datum přístupu = 2023-07-17
+}}</ref><!-- Samotné obce Žatčany se boje přímo nedotkly. HANÁK (2015) uvádí jako další památku žatčanský kostel s tím, že měl být za bitvy zpustošen a téměř vydrancován, jiná spojitost či památkové označení však chybí a žádné jiné zdroje jej neuvádějí. -->
+|-
+|<!--název-->Hráz rybníka
+|<!--obr. -->[[Soubor:Žatčany bývalá hráz rybníka.jpg|150px|Hráz bývalého rybníka]]
+|<!--comm.-->
+|<!--místo-->[[Žatčany]] <br />{{Souřadnice|49.0872778|16.7211944}}
+|<!--pozn.-->Po hrázi bývalého Žatčanského rybníka ustupovala spojenecká vojska v odpoledních hodinách 2. prosince 1805. Dnes je zde [[silnice II/416]]. K Žatčanskému a Měnínskému rybníku se váže legenda o množství utonulých, když zamrzlou hladinu s prchajícími vojáky údajně rozstřílelo francouzské dělostřelectvo, ta je však nepotvrzená a pravděpodobně silně nadsazená.<ref name="špatný" /><ref name="kčt" /><ref name="král" /><ref name=":6" /><ref name=":7" />
+|-
+|<!--název--> Štěrkový lom
+|<!--obr. --> [[Soubor:Bývalý lom na Žuráni.jpg|150px|Štěrkový lom na Žuráni]]
+|<!--comm.--> {{Commonscat v tabulce|Horka (natural monument)}}
+|<!--místo-->[[Žuráň]] ([[Podolí (okres Brno-venkov)|Podolí]]) <br />{{Souřadnice|49.1808889|16.7285}}
+|<!--pozn.--> Ve štěrkovém lomu pod kopcem Žuráň měl Napoleon 1. prosince hlavní stan a přenocoval zde ve svém kočáře.<ref name="špatný" /><ref name="mudra" />
+|-
+|<!--název--> [[Soubor:Emblem-star.svg|20px|Významná památka]] '''[[Žuráň]]'''
+|<!--obr. --> [[Soubor:Žuráň, 2009 (2).JPG|150px|Žuráň]]
+|<!--comm.--> {{Commonscat v tabulce|Žuráň}}
+|<!--místo-->[[Žuráň]] ([[Podolí (okres Brno-venkov)|Podolí]]) <br />{{Souřadnice|49.17975|16.7384167}}
+|<!--pozn.-->Na Žuráni bylo velitelské stanoviště francouzského císaře Napoleona, odkud ráno dal rozkaz k útoku na Pratecké výšiny. V roce 1930 zde byl instalován kubistický žulový památník s plastickou mapou bitevního rozložení vojsk a francouzskou proklamací před bitvou. Je uváděn jako symbolické [[Exteritorialita|exteritoriální území]] Francie a od roku 1958 je kulturní nemovitou památkou.<ref name="špatný" /><ref name="kčt" /><ref>{{MonumNet|ID=128482|název=Pomník bitvy u Slavkova}}</ref><ref name="král">{{Citace sborníku
+ | příjmení = Král
+ | jméno = Adolf B
+ | titul = Mlčící svědkové bitvy
+ | příjmení sestavitele = Dacík
+ | jméno sestavitele = T.
+ | sborník = Psal se rok 1805
+ | vydavatel = Okresní muzeum Brno-venkov
+ | místo = Ivančice
+ | rok vydání = 1988
+ | strany = 8–12
+}}</ref><ref name="arc">{{Citace monografie
+ | titul = Slavkovské bojiště Austerlitz. Informační mapa
+ | vydání = 1
+ | vydavatel = ARC Mikulov
+ | místo = Mikulov
+ | rok = 1998
+ | isbn = 80-85999-02-1
+}}</ref><ref name="mudra">{{Citace sborníku
+ | příjmení = Mudra
+ | jméno = M
+ | titul = Přehled památných míst slavkovského bojiště
+ | příjmení sestavitele = Svatoň
+ | jméno sestavitele = S
+ | sborník = Bitva u Slavkova 2. prosince 1805. Její příčiny a průběh, průvodce po bojišti
+ | vydání = 1
+ | vydavatel = Naše vojsko
+ | místo = Praha
+ | rok vydání = 1958
+ | strany = 23–26
+}}</ref><ref name="cyklo2009">{{Citace monografie
+ | titul = Památky slavkovského bojiště. Cykloturistická mapa
+ | vydavatel = Město Slavkov u Brna
+ | místo = Slavkov u Brna
+ | rok = 2009
+}}</ref><ref name="kartografie">{{Citace monografie
+ | příjmení = Basařová
+ | jméno = Miroslava
+ | titul = Okolí Brna – Moravský kras, turistická mapa
+ | vydání = 1
+ | vydavatel = Kartografie Praha 
+ | místo = Praha
+ | rok = 2010
+ | isbn = 978-80-7393-013-4
+}}</ref><ref name=":1" />
+|-
+|}
+
+== Odkazy ==
+
+=== Poznámky ===
+<references group="p" />
+
+=== Reference ===
+<references />
+
+=== Literatura ===
+* {{Citace monografie
+ | příjmení = Hochel
+ | jméno = Marian
+ | spoluautoři = a kol.
+ | titul = Bojiště Bitvy tří císařů u Slavkova: Průvodce po památkové zóně
+ | vydání = 2
+ | vydavatel = [[Československá napoleonská společnost|ČSNS]]
+ | místo = Brno
+ | rok = 2011
+ | počet stran = 208
+ | přílohy = 6 map
+ | isbn = 978-80-254-6229-4
+}}
+* {{Citace monografie
+| příjmení = Hanák
+| jméno = Jaromír
+| titul = Slavkovské bojiště. Průvodce krajinou bitvy "tří císařů"
+| vydání = 1
+| vydavatel = Ave
+| místo = Brno
+| rok vydání = 2015
+| počet stran = 221
+| isbn = 978-80-86831-00-8
+}}
+* {{Citace monografie
+ | příjmení = Kopecký
+ | jméno = František
+ | titul = O slavkovské bitvě – dopady a tradice
+ | vydavatel = Onufrius
+ | místo = Brno
+ | rok = 2009
+ | isbn = 978-80-9038-816-1
+ | strany = 178–183
+}}
+* {{Citace monografie
+ | příjmení = Špatný
+ | jméno = Jan
+ | titul = Slavkov – Austerlitz, bitva tří císařů
+ | vydavatel = Geodézie Brno
+ | místo = Brno
+ | rok = 1991
+ | isbn = 80-85302-03-9
+ | jazyk = cs/fr/de/en/ru
+}}
+* {{Citace sborníku
+ | příjmení = Král
+ | jméno = Adolf B
+ | titul = Mlčící svědkové bitvy
+ | příjmení sestavitele = Dacík
+ | jméno sestavitele = T.
+ | sborník = Psal se rok 1805
+ | vydavatel = Okresní muzeum Brno-venkov
+ | místo = Ivančice
+ | rok vydání = 1988
+ | strany = 8–12
+}}
+* {{Citace sborníku
+ | příjmení = Mudra
+ | jméno = M
+ | titul = Přehled památných míst slavkovského bojiště
+ | příjmení sestavitele = Svatoň
+ | jméno sestavitele = S
+ | sborník = Bitva u Slavkova 2. prosince 1805. Její příčiny a průběh, průvodce po bojišti
+ | vydání = 1
+ | vydavatel = Naše vojsko
+ | místo = Praha
+ | rok vydání = 1958
+ | strany = 23–26
+}}
+* {{Citace monografie
+ | příjmení = Procházka
+ | jméno = Alois
+ | titul = Památky z bitvy u Slavkova r. 1805
+ | vydání = 2
+ | vydavatel = Učitelská jednota „Komenský“
+ | místo = Slavkov u Brna
+ | rok = 1931
+ | url = http://detektory.hantec.cz/download/pamatky-z-bitvy-u-slavkova-r-1805.pdf
+}}
+* {{Citace monografie
+ | titul = Okolí Brna – Slavkovské bojiště a Ždánický les. Mapa KČT č. 87
+ | vydání = 3
+ | vydavatel = [[Klub českých turistů]]
+ | místo = Praha
+ | rok = 2010
+ | isbn = 978-80-7324-265-7
+}}
+* {{Citace monografie
+ | titul = Slavkovské bojiště Austerlitz. Informační mapa
+ | vydání = 1
+ | vydavatel = ARC Mikulov
+ | místo = Mikulov
+ | rok = 1998
+ | jazyk = cs/fr
+}}
+* {{Citace monografie
+ | titul = Památky slavkovského bojiště. Cykloturistická mapa
+ | vydavatel = Město Slavkov u Brna
+ | místo = Slavkov u Brna
+ | rok = 2009
+}}
+
+=== Externí odkazy ===
+* {{Commonscat|Austerlitz Battlefield|Slavkovské bojiště}}
+* [http://www.brno.cz/turista-volny-cas/vylety-do-okoli/slavkovske-bojiste-a-okoli/ Slavkovské bojiště a okolí] na webu Brna
+* [http://www2.slapanice.cz/mambo/index.php?option=com_content&task=view&id=12&Itemid=115 Památková zóna Slavkovské bojiště]{{Nedostupný zdroj}} na webu Šlapanic
+* [https://web.archive.org/web/20110725230345/http://www.zamek-slavkov.cz/cz/bitva-1805/ Významná místa Slavkovského bojiště] na webu Slavkovského zámku (ve webovém archivu)
+* [https://web.archive.org/web/20110813200145/http://www.slavkov.cz/cz/naucne-stezky/?id=46 Naučná stezka bitvy tří císařů] na stránkách města Slavkova (ve webovém archivu)
+* [http://www.austerlitz.org/ Projekt Austerlitz]
+* [https://web.archive.org/web/20100106000845/http://www.austerlitz-ops.cz/ Austerlitz o.p.s.] (ve webovém archivu)
+* [http://www.south-moravia.cz/doc/vrt/1830/start.html Virtuální prohlídka Mohyly míru a Žuráně]
+
+{{Bitva u Slavkova}}
+
+{{Portály|Morava}}
+[[Kategorie:Seznamy staveb v Česku|Památky Slavkovského bojiště]]
+[[Kategorie:Stavby v okrese Vyškov]]
+[[Kategorie:Stavby v okrese Brno-venkov]]
+[[Kategorie:Seznamy k okresu Brno-venkov|Památky Slavkovského bojiště]]
+[[Kategorie:Bitva u Slavkova]]
+[[Kategorie:Seznamy k okresu Vyškov]]
+[[Kategorie:Pomníky a památníky válek v Jihomoravském kraji]]
+[[Kategorie:Pomníky a památníky napoleonských válek]]

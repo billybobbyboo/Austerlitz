@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2980393 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="660184586" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1043814" lon="16.7567551"/>
+ <node id="660184587" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1043876" lon="16.7566376"/>
+ <node id="660184588" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1044047" lon="16.7565193"/>
+ <node id="660184589" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1044084" lon="16.7564473"/>
+ <node id="660184598" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1044334" lon="16.7565235"/>
+ <node id="660184599" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1044365" lon="16.7564509"/>
+ <node id="660184600" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1044430" lon="16.7563267"/>
+ <node id="660184601" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1044639" lon="16.7563030"/>
+ <node id="660184602" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1044673" lon="16.7562465"/>
+ <node id="660184603" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:58Z" user="Minimalis" uid="665336" lat="49.1044971" lon="16.7562495"/>
+ <node id="660184604" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1044980" lon="16.7562370"/>
+ <node id="660184605" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1045448" lon="16.7562424"/>
+ <node id="660184606" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1045447" lon="16.7562564"/>
+ <node id="660184608" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1045741" lon="16.7562593"/>
+ <node id="660184609" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1045715" lon="16.7563156"/>
+ <node id="660184610" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1045904" lon="16.7563444"/>
+ <node id="660184611" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1045745" lon="16.7566626"/>
+ <node id="660184612" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1045520" lon="16.7566971"/>
+ <node id="660184613" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1045463" lon="16.7567910"/>
+ <node id="660184614" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1044415" lon="16.7567778"/>
+ <node id="660184615" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1044421" lon="16.7567620"/>
+ <node id="660184616" visible="true" version="2" changeset="36765052" timestamp="2016-01-23T20:08:59Z" user="Minimalis" uid="665336" lat="49.1044276" lon="16.7566446"/>
+ <node id="5467702882" visible="true" version="1" changeset="57036997" timestamp="2018-03-09T16:35:50Z" user="Clonewayx" uid="2252840" lat="49.1045214" lon="16.7562397">
+  <tag k="entrance" v="yes"/>
+ </node>
+ <node id="5467702883" visible="true" version="1" changeset="57036997" timestamp="2018-03-09T16:35:50Z" user="Clonewayx" uid="2252840" lat="49.1044076" lon="16.7566411">
+  <tag k="entrance" v="yes"/>
+ </node>
+ <way id="51730107" visible="true" version="6" changeset="164345374" timestamp="2025-03-31T19:14:16Z" user="onovy" uid="27052">
+  <nd ref="660184601"/>
+  <nd ref="660184602"/>
+  <nd ref="660184603"/>
+  <nd ref="660184604"/>
+  <nd ref="5467702882"/>
+  <nd ref="660184605"/>
+  <nd ref="660184606"/>
+  <nd ref="660184608"/>
+  <nd ref="660184609"/>
+  <nd ref="660184610"/>
+  <nd ref="660184611"/>
+  <nd ref="660184612"/>
+  <nd ref="660184613"/>
+  <nd ref="660184614"/>
+  <nd ref="660184615"/>
+  <nd ref="660184586"/>
+  <nd ref="660184587"/>
+  <nd ref="5467702883"/>
+  <nd ref="660184616"/>
+  <nd ref="660184598"/>
+  <nd ref="660184588"/>
+  <nd ref="660184589"/>
+  <nd ref="660184599"/>
+  <nd ref="660184600"/>
+  <nd ref="660184601"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="church"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="check_date" v="2023-10-15"/>
+  <tag k="denomination" v="roman_catholic"/>
+  <tag k="name" v="svatý Petr a Pavel"/>
+  <tag k="official_name" v="Kostel svatého Petra a Pavla"/>
+  <tag k="ref:ruian:building" v="39874931"/>
+  <tag k="religion" v="christian"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="wikidata" v="Q12030989"/>
+ </way>
+</osm>

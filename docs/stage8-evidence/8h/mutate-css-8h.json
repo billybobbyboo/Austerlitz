@@ -1,0 +1,272 @@
+{
+ "mutations": [
+  {
+   "id": "none",
+   "rule": "bld",
+   "suite": "css-test.js",
+   "what": "nothing (the source as it is)",
+   "lineFails": false,
+   "ok": true,
+   "line": "the buildings (decision 248 (a)): VILL8G, BLD8G and CHAPEL8G as built; the rear buildings, the fences, the churches and the chapel read from BUILDINGS, CHURCHES and CHAPELS; the roofs a share, never t",
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "nonerest",
+   "rule": "rest",
+   "suite": "css-test.js",
+   "what": "nothing (the source as it is)",
+   "lineFails": false,
+   "ok": true,
+   "line": "a block at rest (8G's verification; 8H's pause): its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames; eased only while the clock moves on under Pla",
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "nonegeo",
+   "rule": "geo",
+   "suite": "geo-test.js",
+   "what": "nothing (the source as it is)",
+   "lineFails": false,
+   "ok": true,
+   "line": "geo-test: 63 passed, 0 failed",
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "tol",
+   "rule": "bld",
+   "suite": "css-test.js",
+   "what": "the château's tolerance a quarter-turn again (8G's)",
+   "lineFails": true,
+   "ok": true,
+   "line": "the buildings (decision 248 (a)): 1 wrong",
+   "findings": [
+    "! BLD8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19; the château's tolerance, 22.5 degrees, with section 20.3)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "octant",
+   "rule": "bld",
+   "suite": "css-test.js",
+   "what": "the château's octant typed as a quarter-turn in the planner",
+   "lineFails": true,
+   "ok": true,
+   "line": "the buildings (decision 248 (a)): 1 wrong",
+   "findings": [
+    "! the château not sought within BLD8G.chateau.tol of its bearing (8G's quarter-turn back?)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "foot",
+   "rule": "bld",
+   "suite": "css-test.js",
+   "what": "the château's centre not held in the town's place",
+   "lineFails": true,
+   "ok": true,
+   "line": "the buildings (decision 248 (a)): 1 wrong",
+   "findings": [
+    "! the château's place not held in the town's place, or a drawn road or stream allowed between it and its church"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "between",
+   "rule": "bld",
+   "suite": "css-test.js",
+   "what": "a drawn road or stream allowed between the château and its church",
+   "lineFails": true,
+   "ok": true,
+   "line": "the buildings (decision 248 (a)): 1 wrong",
+   "findings": [
+    "! the château's place not held in the town's place, or a drawn road or stream allowed between it and its church"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "temple",
+   "rule": "bld",
+   "suite": "css-test.js",
+   "what": "the town's church offered only the village's first places (8G's)",
+   "lineFails": true,
+   "ok": true,
+   "line": "the buildings (decision 248 (a)): 1 wrong",
+   "findings": [
+    "! the town's church not offered its every clear place within 5 units"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "noparts",
+   "rule": "bld",
+   "suite": "css-test.js",
+   "what": "a church place taken that leaves its château none",
+   "lineFails": true,
+   "ok": true,
+   "line": "the buildings (decision 248 (a)): 1 wrong",
+   "findings": [
+    "! a place of the town's church taken that leaves its château none"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "words",
+   "rule": "bld",
+   "suite": "css-test.js",
+   "what": "the dossier's farmsteads typed \"each an L\" for every village",
+   "lineFails": true,
+   "ok": true,
+   "line": "the buildings (decision 248 (a)): 1 wrong",
+   "findings": [
+    "! the dossier's farmsteads not counted as drawn (farmsteadsText): 'each an L' typed for every village"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "restease",
+   "rule": "rest",
+   "suite": "css-test.js",
+   "what": "a block's shape eased with the clock standing",
+   "lineFails": true,
+   "ok": true,
+   "line": "a block at rest (8G's verification; 8H's pause): 1 wrong",
+   "findings": [
+    "! the block's shape: not held with the clock standing, not the clock's at a seek, or easing on below its threshold"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "noseek",
+   "rule": "rest",
+   "suite": "css-test.js",
+   "what": "a seek not taking the clock's heading at once",
+   "lineFails": true,
+   "ok": true,
+   "line": "a block at rest (8G's verification; 8H's pause): 2 wrong",
+   "findings": [
+    "! the heading: not the clock's at a seek, then held with the clock standing, before the sway and the turn ease",
+    "! a seek does not take the clock's heading at once, its turns kept"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "noadv",
+   "rule": "rest",
+   "suite": "css-test.js",
+   "what": "the heading eased on with the clock standing",
+   "lineFails": true,
+   "ok": true,
+   "line": "a block at rest (8G's verification; 8H's pause): 1 wrong",
+   "findings": [
+    "! the heading: not the clock's at a seek, then held with the clock standing, before the sway and the turn ease"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "drift",
+   "rule": "rest",
+   "suite": "css-test.js",
+   "what": "a broken body's sway counted as drift again",
+   "lineFails": true,
+   "ok": true,
+   "line": "a block at rest (8G's verification; 8H's pause): 1 wrong",
+   "findings": [
+    "! a broken body's sway still counted as drift (ambientNow): it is the pose's, held while the clock stands"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "nonewoods",
+   "rule": "woods",
+   "suite": "css-test.js",
+   "what": "nothing (the source as it is)",
+   "lineFails": false,
+   "ok": true,
+   "line": "water, woods and the near ground (decisions 246 (a), 247 (a)): the water's colours in WATER_COL, the paper map's water 8E's materials, the meres' outlines, levels and ring 4E's, the ice writing no dep",
+   "findings": [],
+   "exit": 0
+  },
+  {
+   "id": "nearvals",
+   "rule": "woods",
+   "suite": "css-test.js",
+   "what": "the crowns closing nearer or farther than TREE8H's (far 16 to 30)",
+   "lineFails": true,
+   "ok": true,
+   "line": "water, woods and the near ground (decisions 246 (a), 247 (a)): 1 wrong",
+   "findings": [
+    "! TREE8H's values changed (near 5, far 16; its uniform 1 as built)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "nearcall",
+   "rule": "woods",
+   "suite": "css-test.js",
+   "what": "the bush drawn without the near hook",
+   "lineFails": true,
+   "ok": true,
+   "line": "water, woods and the near ground (decisions 246 (a), 247 (a)): 1 wrong",
+   "findings": [
+    "! a crown drawn without the near hook (treeNear)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "neargeo",
+   "rule": "woods",
+   "suite": "css-test.js",
+   "what": "a habit made without its faces' centres",
+   "lineFails": true,
+   "ok": true,
+   "line": "water, woods and the near ground (decisions 246 (a), 247 (a)): 1 wrong",
+   "findings": [
+    "! a crown made without its faces' centres (treeNearGeo)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "nearatmo",
+   "rule": "woods",
+   "suite": "css-test.js",
+   "what": "the near hook not chaining the atmosphere's uniforms",
+   "lineFails": true,
+   "ok": true,
+   "line": "water, woods and the near ground (decisions 246 (a), 247 (a)): 1 wrong",
+   "findings": [
+    "! the near hook not growing a face about its own centre by the eye's nearness (or not chaining the atmosphere's uniforms, or without its own program key)"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "wtyped",
+   "rule": "geo",
+   "suite": "geo-test.js",
+   "what": "W's factor and origin typed again (0.5, 340, 250)",
+   "lineFails": true,
+   "ok": true,
+   "line": "geo-test: 62 passed, 1 failed",
+   "findings": [
+    "FAIL world.js W and regionalH read them, no copy typed (G-2)  (W and regionalH read GEOREF)",
+    "! world.js W and regionalH read them, no copy typed (G-2): W and regionalH read GEOREF"
+   ],
+   "exit": 1
+  },
+  {
+   "id": "themelen",
+   "rule": "geo",
+   "suite": "geo-test.js",
+   "what": "a theme's length by a typed factor again",
+   "lineFails": true,
+   "ok": true,
+   "line": "geo-test: 62 passed, 1 failed",
+   "findings": [
+    "FAIL app.js SUN_DAY takes the field's centre from GEOREF, and no theme's length types the factor (G-2)",
+    "! app.js SUN_DAY takes the field's centre from GEOREF, and no theme's length types the factor (G-2)"
+   ],
+   "exit": 1
+  }
+ ]
+}

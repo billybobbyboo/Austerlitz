@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2656536 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74117358" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1921058" lon="16.8527949">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74224451" visible="true" version="4" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1946047" lon="16.8595909">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="252307210" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1950324" lon="16.8607653"/>
+ <node id="252307212" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1927859" lon="16.8548649"/>
+ <node id="252307215" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1909886" lon="16.8493296"/>
+ <node id="1246601552" visible="true" version="2" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1936605" lon="16.8572113"/>
+ <node id="8140073115" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1949888" lon="16.8607400"/>
+ <node id="8140073116" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1949476" lon="16.8607066"/>
+ <node id="8140083817" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1949096" lon="16.8606655"/>
+ <node id="8140083818" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1948397" lon="16.8605517"/>
+ <node id="8140083819" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1948111" lon="16.8604786"/>
+ <node id="8140083820" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1947901" lon="16.8603997"/>
+ <node id="8140083821" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1948752" lon="16.8606173"/>
+ <node id="8140083822" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1947770" lon="16.8603169"/>
+ <node id="8140083823" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1947246" lon="16.8599835"/>
+ <node id="8140083824" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1946507" lon="16.8597121"/>
+ <node id="8140083825" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1947503" lon="16.8601325"/>
+ <node id="8140083826" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1946898" lon="16.8598388"/>
+ <node id="8140083827" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1933761" lon="16.8565008"/>
+ <node id="8140083828" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1931430" lon="16.8558866"/>
+ <node id="8140083829" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1915435" lon="16.8510613"/>
+ <way id="378268315" visible="true" version="9" changeset="178441550" timestamp="2026-02-12T08:16:33Z" user="JBS21" uid="13953005">
+  <nd ref="252307210"/>
+  <nd ref="8140073115"/>
+  <nd ref="8140073116"/>
+  <nd ref="8140083817"/>
+  <nd ref="8140083821"/>
+  <nd ref="8140083818"/>
+  <nd ref="8140083819"/>
+  <nd ref="8140083820"/>
+  <nd ref="8140083822"/>
+  <nd ref="8140083825"/>
+  <nd ref="8140083823"/>
+  <nd ref="8140083826"/>
+  <nd ref="8140083824"/>
+  <nd ref="74224451"/>
+  <nd ref="1246601552"/>
+  <nd ref="8140083827"/>
+  <nd ref="8140083828"/>
+  <nd ref="252307212"/>
+  <nd ref="74117358"/>
+  <nd ref="8140083829"/>
+  <nd ref="252307215"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

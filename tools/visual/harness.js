@@ -597,6 +597,58 @@ async function interact(page,it,vp){
         await first.evaluate(()=>{ setSpeed(0.5); setPresentation("study"); select(null,null); });
         LIVE.phone=PH; console.log("phone layout on this page: "+JSON.stringify({menu:PH.menuOpen.menu,esc:PH.menuEsc.focus,sheet:PH.sheet.sheet,phase:PH.phase.phase,dossier:PH.dossier.drawer,rail:PH.rail.rail}));
       }
+      /* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md sections 9.6 and 20.5): the phase's message clear of the presentation switch and of
+         every shown control at every size the harness measures (cases.js: 1600 x 900, 1366 x 768, 1280 x 720 and 1024 x 768, and the phones'
+         390 x 844, 360 x 800, 430 x 932, 402 x 714 and 844 x 390; the layout is the width's and the height's, so this page is narrowed to each), in
+         Study and in Watch: 08:45's message brought by a real PageDown on the time rail from 08:40, its box against the switch's (where it is shown)
+         and every shown control's but the map layer's own (a button, a link, an input, a tab, a slider), measured, then hidden again */
+      if(await first.evaluate(()=>typeof flash==="function"&&!!document.getElementById("timerail"))){
+        AT="toast"; const TS=[];
+        for(const sz of [[1600,900],[1366,768],[1280,720],[1024,768],[390,844],[360,800],[430,932],[402,714],[844,390]]) for(const pres of ["study","watch"]){
+          await size(sz[0],sz[1]);
+          await first.evaluate(p=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); if(typeof setMenu==="function") setMenu(false); setPresentation(p);
+            /* the message held for the read (as tools/stage8/toast-8h.js holds it): on a slow runner the frame the clock's change draws can take longer
+               than the message's 3.4 s, and its hiding timer then fired before the read (CI, 30 October 2026: "844x390 watch NOT SHOWN"); its place
+               is what this block judges, and the app's own flash() still places and shows it */
+            if(!window.__flash0){ const f0=flash; window.__flash0=f0; flash=function(m){ f0(m); clearTimeout(flash._t); }; }
+            setClock(520,{instant:true,force:true,camera:false}); clearTimeout(flash._t); document.getElementById("toast").classList.remove("on"); document.getElementById("timerail").focus(); },pres);
+          await first.keyboard.press("PageDown"); await first.waitForTimeout(150);
+          TS.push(Object.assign({at:sz.join("x")+" "+pres},await first.evaluate(()=>{
+            const t=document.getElementById("toast"), v=document.getElementById("viewmode"), a=t.getBoundingClientRect();
+            const shown=e=>{ if(!e) return false; const q=e.getBoundingClientRect(); if(!(q.width>0&&q.height>0)) return false; for(let n=e;n&&n.nodeType===1;n=n.parentElement){ const s=getComputedStyle(n); if(s.display==="none"||s.visibility==="hidden"||+s.opacity===0) return false; } return true; };
+            const ov=(p,q)=>Math.round(Math.max(0,Math.min(p.right,q.right)-Math.max(p.left,q.left))*Math.max(0,Math.min(p.bottom,q.bottom)-Math.max(p.top,q.top)));
+            const vs=shown(v), others=[];
+            document.querySelectorAll("button,a[href],input,select,[role=button],[role=tab],[role=slider]").forEach(e=>{ if(t.contains(e)||(v&&v.contains(e))||e.closest("#maplayer")||!shown(e)) return;
+              const o=ov(a,e.getBoundingClientRect()); if(o>0) others.push({el:e.id?"#"+e.id:e.tagName.toLowerCase(), px:o}); });
+            const out={on:t.classList.contains("on"), text:t.textContent, want:PHASES[3].flash, clock:Math.round(clock), box:[Math.round(a.left),Math.round(a.top),Math.round(a.width),Math.round(a.height)],
+              switchShown:vs, overlapSwitch:vs?ov(a,v.getBoundingClientRect()):0, others:others};
+            clearTimeout(flash._t); t.classList.remove("on"); return out; })));
+        }
+        await size(vp0.width,vp0.height); await first.evaluate(()=>{ if(window.__flash0){ flash=window.__flash0; delete window.__flash0; } setPresentation("study"); select(null,null); });
+        LIVE.toast=TS; console.log("the phase's message: "+TS.map(c=>c.at+" "+(c.on?"shown":"NOT SHOWN")+" at "+c.box.join(",")+(c.overlapSwitch||c.others.length?" OVER "+c.overlapSwitch+" px of the switch, "+JSON.stringify(c.others):"")).join("; "));
+      }
+      /* Stage 8, implementation PR 8H (docs/FINAL_AUDIT.md A-6; docs/STAGE8_SPEC.md section 20.5): the focus ring as a keyboard user sees it. Play
+         reached from the page's start by real Tab presses (Study, nothing open), then its ring read off a screenshot, not a style: from the middle
+         of each of the button's four sides outward, the run of pixels within 60 of the ring's colour (its outline colour, the theme's accent) */
+      if(await first.evaluate(()=>!!document.getElementById("play"))){
+        AT="ring";
+        await first.evaluate(()=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); if(typeof setMenu==="function") setMenu(false); setPresentation("study"); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+        let tabs=0; while(tabs<120&&await first.evaluate(()=>!(document.activeElement&&document.activeElement.id==="play"))){ await first.keyboard.press("Tab"); tabs++; }
+        const B=await first.evaluate(()=>{ const e=document.getElementById("play"), r=e.getBoundingClientRect(), cs=getComputedStyle(e);
+          return {x:r.left,y:r.top,w:r.width,h:r.height,focused:document.activeElement===e,fv:e.matches(":focus-visible"),color:cs.outlineColor,style:cs.outlineStyle,width:cs.outlineWidth,offset:cs.outlineOffset}; });
+        const pad=10, clip={x:Math.max(0,Math.floor(B.x)-pad),y:Math.max(0,Math.floor(B.y)-pad),width:Math.ceil(B.w)+2*pad,height:Math.ceil(B.h)+2*pad};
+        const b64=(await first.screenshot({clip:clip,timeout:180000,scale:"css"})).toString("base64");
+        const R=await first.evaluate(a=>new Promise(res=>{ const im=new Image(); im.onload=()=>{ const cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height;
+          const x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); const d=x.getImageData(0,0,cv.width,cv.height).data, m=/rgba?\(([^)]+)\)/.exec(a.color), c=m?m[1].split(",").map(parseFloat):[0,0,0];
+          const near=(i,j)=>{ const o=(j*cv.width+i)*4; return Math.hypot(d[o]-c[0],d[o+1]-c[1],d[o+2]-c[2])<=60; };
+          const L=Math.round(a.bx-a.cx), T=Math.round(a.by-a.cy), Rr=Math.round(a.bx-a.cx+a.bw)-1, Bb=Math.round(a.by-a.cy+a.bh)-1, mx=Math.round((L+Rr)/2), my=Math.round((T+Bb)/2);
+          const run=(i,j,di,dj)=>{ let k=0, seen=0; for(;i>=0&&j>=0&&i<cv.width&&j<cv.height&&k<a.pad+2;i+=di,j+=dj,k++){ if(near(i,j)) seen++; else if(seen) break; } return seen; };
+          res({top:run(mx,T-1,0,-1),bottom:run(mx,Bb+1,0,1),left:run(L-1,my,-1,0),right:run(Rr+1,my,1,0)}); }; im.src="data:image/png;base64,"+a.b64; }),
+          {b64:b64,color:B.color,bx:B.x,by:B.y,bw:B.w,bh:B.h,cx:clip.x,cy:clip.y,pad:pad});
+        const accent=await first.evaluate(()=>{ const p=document.createElement("div"); p.style.color=getComputedStyle(document.body).getPropertyValue("--accent")||""; document.body.appendChild(p); const c=getComputedStyle(p).color; p.remove(); return c; });
+        LIVE.ring=Object.assign({tabs:tabs,accent:accent},B,{runs:R}); console.log("the focus ring by real Tab presses: "+JSON.stringify(LIVE.ring));
+        await first.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      }
       /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): the reduced-motion preference turned on and off while the page is open (the audit's rm-live):
          the app follows it (RM) and the panels' slides stop (the rail's transition-duration) */
       AT="reduced motion";

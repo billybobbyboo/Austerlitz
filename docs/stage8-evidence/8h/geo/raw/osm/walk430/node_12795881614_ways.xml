@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2970834 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="704559402" visible="true" version="11" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="12795881614"/>
+  <nd ref="11742250603"/>
+  <nd ref="13736054488"/>
+  <nd ref="74275307"/>
+  <tag k="cycleway:left" v="separate"/>
+  <tag k="cycleway:right" v="lane"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1382099759" visible="true" version="2" changeset="177425167" timestamp="2026-01-19T12:25:23Z" user="JBS21" uid="13953005">
+  <nd ref="11742250597"/>
+  <nd ref="11742250550"/>
+  <nd ref="8975303008"/>
+  <nd ref="8975303009"/>
+  <nd ref="8975303010"/>
+  <nd ref="11742250604"/>
+  <nd ref="12795881614"/>
+  <tag k="bicycle" v="designated"/>
+  <tag k="foot" v="designated"/>
+  <tag k="footway:surface" v="paving_stones"/>
+  <tag k="highway" v="cycleway"/>
+  <tag k="lit" v="yes"/>
+  <tag k="oneway:bicycle" v="yes"/>
+  <tag k="segregated" v="yes"/>
+  <tag k="surface" v="paving_stones"/>
+ </way>
+ <way id="1382099765" visible="true" version="3" changeset="177425333" timestamp="2026-01-19T12:28:43Z" user="JBS21" uid="13953005">
+  <nd ref="74170967"/>
+  <nd ref="12795881614"/>
+  <tag k="cycleway:both" v="lane"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="both"/>
+  <tag k="sidewalk:both:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

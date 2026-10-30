@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2725433 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="6459206131" visible="true" version="2" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1830709" lon="16.7442432"/>
+ <node id="6459206134" visible="true" version="2" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1830991" lon="16.7441944"/>
+ <node id="12458790812" visible="true" version="1" changeset="160710290" timestamp="2024-12-28T11:53:03Z" user="andrisl" uid="20575324" lat="49.1830838" lon="16.7442172"/>
+ <way id="1331122467" visible="true" version="2" changeset="160710290" timestamp="2024-12-28T11:53:03Z" user="andrisl" uid="20575324">
+  <nd ref="6459206134"/>
+  <nd ref="12458790812"/>
+  <nd ref="6459206131"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

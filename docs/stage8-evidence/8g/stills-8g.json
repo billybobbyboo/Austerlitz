@@ -1,0 +1,508 @@
+{
+ "chromium": "153.0.8010.12",
+ "set": "8g",
+ "before": {
+  "file": "pre2.html",
+  "md5": "6144b57739bddd3f841a0039a65bff9d"
+ },
+ "after": {
+  "file": "8g.html",
+  "md5": "508927e6f72e1b6f2f9186e954d61b59"
+ },
+ "views": {
+  "telnitz-fog": {
+   "before": {
+    "clock": "07:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "07:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 8.892,
+    "meanDiff": 2.734
+   }
+  },
+  "telnitz-noon": {
+   "before": {
+    "clock": "13:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "13:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 9.594,
+    "meanDiff": 5.042
+   }
+  },
+  "sokolnitz-fog": {
+   "before": {
+    "clock": "08:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 9.36,
+    "meanDiff": 2.636
+   }
+  },
+  "sokolnitz-noon": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 33,
+    "linked": 33,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 33,
+    "linked": 33,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 14.829,
+    "meanDiff": 8.347
+   }
+  },
+  "sokolnitz-castle": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 18.778,
+    "meanDiff": 6.679
+   }
+  },
+  "close-sokolnitz": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 6.831,
+    "meanDiff": 2.297
+   }
+  },
+  "pratzen-close": {
+   "before": {
+    "clock": "09:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 12.311,
+    "meanDiff": 6.084
+   }
+  },
+  "pratzen-low": {
+   "before": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 2.818,
+    "meanDiff": 1.195
+   }
+  },
+  "kobelnitz-puntowitz": {
+   "before": {
+    "clock": "10:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "10:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 8.955,
+    "meanDiff": 4.86
+   }
+  },
+  "augezd-meres": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 3.697,
+    "meanDiff": 1.602
+   }
+  },
+  "holubitz-blasowitz": {
+   "before": {
+    "clock": "11:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "11:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 7.414,
+    "meanDiff": 3.668
+   }
+  },
+  "austerlitz-town": {
+   "before": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 15.765,
+    "meanDiff": 7.606
+   }
+  },
+  "overview-field": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 2.15,
+    "meanDiff": 0.846
+   }
+  },
+  "overview-plan": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 1.048,
+    "meanDiff": 0.374
+   }
+  },
+  "pratzen-low-10x": {
+   "before": {
+    "clock": "09:50",
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 1.758,
+    "meanDiff": 0.701
+   }
+  },
+  "pratzen-low-1x": {
+   "before": {
+    "clock": "09:50",
+    "factor": 1,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 1,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0,
+    "meanDiff": 0
+   }
+  },
+  "paper": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0,
+    "meanDiff": 0
+   }
+  },
+  "eye-zuran": {
+   "before": {
+    "clock": "08:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0,
+    "meanDiff": 0
+   }
+  },
+  "phone-telnitz": {
+   "before": {
+    "clock": "13:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "13:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 8.242,
+    "meanDiff": 3.915
+   }
+  }
+ }
+}
