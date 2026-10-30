@@ -3,8 +3,9 @@
    tools/stage8/stills-8g.js takes it (the same machinery, copied: two builds, each view on a page opened as the harness opens it, the same state on
    both, the pair side by side, the before on the left, each captioned with its build, clock and factor, and how much of the frame differs). The
    views: the town of Austerlitz from 8G's view and close by its church (the château's bearing, section 20.3); the phase's message at 08:45 in
-   Study at 1600 x 900, 1024 x 768 and on a phone (the message placed clear of the controls, section 20.5); and views where 8H changes nothing to
-   be seen (the low Pratzen view, the Overview, close on Sokolnitz, the paper map), each pair's difference measured. A view's "after" runs in the
+   Study at 1600 x 900, 1024 x 768 and on a phone (the message placed clear of the controls, section 20.5); the crowns near the eye, 8F's close
+   view by the Satschan mere and among the pheasantry wood's crowns (the crowns closing near the eye, section 20.10); and views where 8H changes
+   nothing to be seen (the low Pratzen view, the Overview, close on Sokolnitz, the paper map), each pair's difference measured. A view's "after" runs in the
    page once the case is applied (the message flashed as the clock's phase change flashes it).
    node tools/stage8/stills-8h.js --before 8g.html --after 8h.html [--out dir] [--only a,b]
    Writes <out>/pairs/8h-<view>.jpg and <out>/stills-8h.json; measurement code only. */
@@ -23,6 +24,7 @@ const SETS={
     "toast-1600-study":{viewport:VP, t:525, presentation:"study", mode:"terrain", aim:{map:[285,289], dir:[-1.0,0.35,0.18], r:110}, after:TOAST},
     "toast-1024-study":{viewport:[1024,768], t:525, presentation:"study", mode:"terrain", aim:{map:[285,289], dir:[-1.0,0.35,0.18], r:110}, after:TOAST},
     "toast-phone":{viewport:PH, t:525, presentation:"study", mode:"terrain", aim:{map:[285,289], dir:[-1.0,0.35,0.18], r:140}, after:TOAST},
+    "trees-eye":V["trees-eye"], "tree-close":V["tree-close"],
     "pratzen-low":V["pratzen-low"], "overview-field":V["overview-field"], "close-sokolnitz":V["close-sokolnitz"], "paper":V["paper-north-up"]
   }
 };

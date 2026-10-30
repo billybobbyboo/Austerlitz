@@ -680,7 +680,7 @@ task (the texts and the stable cadastre's sketches of 1825-1826 read on their pa
 `APPEARANCE_SOURCES` changed; `check:data`'s reference moved) and the buildings (the villages on the sketches' street-and-yard pattern, an inference
 for 1805; the roofs a design convention; the churches standing in 1805; the Sokolnitz castle, the Austerlitz château; the dossiers naming the claims);
 the geographic corrections its research proposed identified, not made; its record and part of its evidence missing at its merge. Implementation PR 8H
-(`docs/STAGE8_SPEC.md` §20) is built on `claude/sharp-faraday-g2uy8o` ([PR8H] into `main`, for review): the final integration, polish and
+(`docs/STAGE8_SPEC.md` §20) is built on `claude/sharp-faraday-g2uy8o` (draft PR #73 into `main`, for review): the final integration, polish and
 verification pass: 8G's records written and its evidence added from CI's runs or reconstructed (said which); the buildings' acceptance (the
 château held to an octant of its bearing, the dossiers' farmsteads counted as drawn; Satschan's five of seven put to the owner); the geographic
 review made again from fresh fetches (8G's Table A reproduced, the frame sound, the 1825-52 maps read) with a correction proposal and its

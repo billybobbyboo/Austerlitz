@@ -521,7 +521,7 @@ frame's half-pixel shimmer among them 10,616 to 7,663 pixels, the same triangles
 the ground measured against their rules and the original criterion, kept (questions 264, 265; §20.10). Device acceptance for 8E-8H pending: the
 builds, routes and protocol prepared (§20.12).
 
-**Still open in Stage 8** (none blocking the build): the owner's questions 259-263 (§20.14); the device runs; decision 245 (a)'s facings, to be
+**Still open in Stage 8** (none blocking the build): the owner's questions 259-265 (§20.14); the device runs for 8E-8H (§20.12); decision 245 (a)'s facings, to be
 reconsidered now that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
 `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary).
 

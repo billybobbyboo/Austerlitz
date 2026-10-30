@@ -1,10 +1,13 @@
 # Austerlitz Command Map — Changelog
 
-## 2026-10 · Stage 8, implementation PR 8H: integration, polish and verification (being built)
+## 2026-10 · Stage 8, implementation PR 8H: integration, polish and verification
 
-**Status: being built on `claude/sharp-faraday-g2uy8o`, from `main` at `636cc5ddba6c146ecabff01e6d7c86738add0e4b` (PR #72's merge, 8G; no
-newer commit on `main` when the work began, 29 October 2026); not merged.** The record is `docs/STAGE8_SPEC.md` section 20, the evidence
-`docs/stage8-evidence/8h/`. This entry grows with each commit; the summary at its end is written last.
+**Status: built on `claude/sharp-faraday-g2uy8o` (draft PR #73 into `main`, for review; not merged), from `main` at
+`636cc5ddba6c146ecabff01e6d7c86738add0e4b` (PR #72's merge, 8G; no newer commit on `main` when the work began, 29 October 2026, nor when fetched
+again on 30 October). Stage 8 is not complete: device acceptance for 8E-8H is pending, and the owner's questions 259-265 are open.** The record is
+`docs/STAGE8_SPEC.md` section 20 (and section 19, 8G as built, written here), the evidence `docs/stage8-evidence/8h/`. The build:
+`austerlitz-command-map.html` **2,772,772 bytes, md5 `9fa50cb46a085ab4ea8f932cd405f1e8`** (8G's 2,740,873, `508927e6...`); `check:baseline`
+moved to it; `check:data`'s reference `archive/stage8h-24e29da7.html` (two data tasks, below). The summary is at the entry's end.
 
 - **The buildings' acceptance (section 20.3): the château, the farmsteads' words; a data task.** Reproduced on 8G's build
   (`tools/stage8/buildings-8h.js`): the Austerlitz château drawn at 322.5 degrees from its church, 86.5 degrees off the bearing its own place has

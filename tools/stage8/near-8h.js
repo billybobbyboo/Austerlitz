@@ -6,7 +6,9 @@
    changes by more than 24 of 255, over the whole frame; the woods being the only thing a prototype changes, the difference between two variants
    is theirs. Each prototype of tools/stage8/protos/woods8h.js put into the live page and undone; on 8H's build, where the crowns close near the
    eye as built, the comparison is with the hook's uniform at 0 (8F's crowns at every distance) and at 1 ("--uniform").
-   node tools/stage8/near-8h.js [--views trees-eye,woods-pheasantry,close-sokolnitz] [--protos t-near,t-nearvol | --uniform] [--json out.json]
+   --cost: instead, the frame's cost in each view on two builds (--builds a=<html>,b=<html>, interleaved, the same machine): each frame drawn whole
+   (the render, then the GL finished: software WebGL, where the vertex work is the CPU's), 25 frames after 5 unmeasured, median and 95th percentile.
+   node tools/stage8/near-8h.js [--views trees-eye,woods-pheasantry,close-sokolnitz] [--protos t-near,t-nearvol | --uniform | --cost --builds a=..,b=..] [--json out.json]
    Measurement and prototype code only. */
 "use strict";
 const fs=require("fs"), path=require("path");
@@ -20,7 +22,15 @@ const SHIM=function(){ var W0=800,H0=450, rt=new THREE.WebGLRenderTarget(W0,H0),
   landCam.position.addScaledVector(right,0.5*upx); orbitTarget.addScaledVector(right,0.5*upx); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(true);
   var g1=draw(), ch=0; for(var i=0;i<W0*H0;i++) if(Math.abs(g1[i]-g0[i])>24) ch++;
   landCam.position.copy(keepP); orbitTarget.copy(keepT); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(true); rt.dispose(); return {changed:ch, of:W0*H0}; };
-(async()=>{ const browser=await L.launch(), out={tool:"tools/stage8/near-8h.js", chromium:browser.version(), build:path.basename(process.env.AUSTERLITZ_HTML||"austerlitz-command-map.html"), views:{}};
+const COST=function(){ var gl=renderer.getContext(), t=[]; for(var i=0;i<30;i++){ var a=performance.now(); renderFrame(); gl.finish(); if(i>=5) t.push(performance.now()-a); }
+  t.sort(function(x,y){ return x-y; }); return {median:+t[Math.floor(t.length/2)].toFixed(1), p95:+t[Math.floor(0.95*(t.length-1))].toFixed(1), frames:t.length}; };
+if(argv.includes("--cost")) (async()=>{ const B=(opt("--builds")||"").split(",").map(x=>{ const i=x.indexOf("="); return {tag:x.slice(0,i), file:path.resolve(x.slice(i+1))}; });
+  const browser=await L.launch(), out={tool:"tools/stage8/near-8h.js --cost", chromium:browser.version(), builds:B.map(b=>({tag:b.tag, file:path.basename(b.file), md5:require("crypto").createHash("md5").update(fs.readFileSync(b.file)).digest("hex")})), views:{}};
+  for(const vn of VIEWS){ out.views[vn]={}; for(let rep=0;rep<2;rep++) for(const b of (rep%2?B.slice().reverse():B)){ process.env.AUSTERLITZ_HTML=b.file; const p=await L.open(browser,V[vn].viewport,{}); await L.applyCase(p,V[vn]);
+      const c=await p.evaluate(COST); (out.views[vn][b.tag]=out.views[vn][b.tag]||[]).push(c); await p.close(); }
+    console.log(vn, JSON.stringify(out.views[vn])); }
+  await browser.close(); if(OUT){ fs.mkdirSync(path.dirname(path.resolve(OUT)),{recursive:true}); fs.writeFileSync(OUT,JSON.stringify(out,null,1)); } })().catch(e=>{ console.error(e); process.exit(1); });
+else (async()=>{ const browser=await L.launch(), out={tool:"tools/stage8/near-8h.js", chromium:browser.version(), build:path.basename(process.env.AUSTERLITZ_HTML||"austerlitz-command-map.html"), views:{}};
   for(const vn of VIEWS){ const p=await L.open(browser,V[vn].viewport,{}); if(!UNI) await L.inject(p,PW.inPage); await L.applyCase(p,V[vn]); const R=out.views[vn]={};
     for(const id of (UNI?PROTOS:["base"].concat(PROTOS))){
       if(UNI) await p.evaluate(k=>{ TREE8H.U.uTreeNear.value=k==="on"?1:0; AUSTERLITZ_DEBUG.settle(2); },id);
