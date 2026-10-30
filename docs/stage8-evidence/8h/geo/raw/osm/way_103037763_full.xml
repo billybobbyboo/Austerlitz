@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3001470 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1189812532" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377543" lon="16.7644679"/>
+ <node id="1189812563" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377295" lon="16.7642411"/>
+ <node id="1189812588" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1378567" lon="16.7644630"/>
+ <node id="1189812591" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1378042" lon="16.7642230"/>
+ <node id="1189812604" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377909" lon="16.7645035"/>
+ <node id="1189812618" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1378542" lon="16.7644048"/>
+ <node id="1189812660" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1376925" lon="16.7643528"/>
+ <node id="1189812714" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377619" lon="16.7642251"/>
+ <node id="1189812734" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1378083" lon="16.7644906"/>
+ <node id="1189812753" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377816" lon="16.7645041"/>
+ <node id="1189812770" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377902" lon="16.7645268"/>
+ <node id="1189812811" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377262" lon="16.7643409"/>
+ <node id="1189812838" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377308" lon="16.7643498"/>
+ <node id="1189812865" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1378030" lon="16.7641779"/>
+ <node id="1189812885" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1378382" lon="16.7643990"/>
+ <node id="1189812911" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1376968" lon="16.7644690"/>
+ <node id="1189812937" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377645" lon="16.7644893"/>
+ <node id="1189812968" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1377384" lon="16.7642257"/>
+ <node id="1189812980" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1378187" lon="16.7644640"/>
+ <node id="1189813008" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:45Z" user="Mar4s" uid="461574" lat="49.1378337" lon="16.7642251"/>
+ <node id="1189813014" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:46Z" user="Mar4s" uid="461574" lat="49.1377811" lon="16.7645263"/>
+ <node id="1189813039" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:46Z" user="Mar4s" uid="461574" lat="49.1377307" lon="16.7643407"/>
+ <node id="1189813075" visible="true" version="2" changeset="38483795" timestamp="2016-04-11T19:47:46Z" user="Mar4s" uid="461574" lat="49.1377615" lon="16.7641797"/>
+ <node id="4114951094" visible="true" version="1" changeset="38483795" timestamp="2016-04-11T19:46:37Z" user="Mar4s" uid="461574" lat="49.1377257" lon="16.7643021"/>
+ <node id="4114951096" visible="true" version="1" changeset="38483795" timestamp="2016-04-11T19:46:38Z" user="Mar4s" uid="461574" lat="49.1377302" lon="16.7643019"/>
+ <node id="4114951102" visible="true" version="1" changeset="38483795" timestamp="2016-04-11T19:46:38Z" user="Mar4s" uid="461574" lat="49.1378275" lon="16.7642222"/>
+ <node id="4114951104" visible="true" version="1" changeset="38483795" timestamp="2016-04-11T19:46:38Z" user="Mar4s" uid="461574" lat="49.1378361" lon="16.7642348"/>
+ <node id="4114951105" visible="true" version="1" changeset="38483795" timestamp="2016-04-11T19:46:38Z" user="Mar4s" uid="461574" lat="49.1378369" lon="16.7642946"/>
+ <node id="4114951106" visible="true" version="1" changeset="38483795" timestamp="2016-04-11T19:46:38Z" user="Mar4s" uid="461574" lat="49.1378374" lon="16.7643361"/>
+ <node id="4114951107" visible="true" version="1" changeset="38483795" timestamp="2016-04-11T19:46:38Z" user="Mar4s" uid="461574" lat="49.1378415" lon="16.7642945"/>
+ <node id="4114951108" visible="true" version="1" changeset="38483795" timestamp="2016-04-11T19:46:38Z" user="Mar4s" uid="461574" lat="49.1378420" lon="16.7643359"/>
+ <node id="10310620802" visible="true" version="2" changeset="142222048" timestamp="2023-10-06T08:50:59Z" user="JBS21" uid="13953005" lat="49.1377808" lon="16.7641789">
+  <tag k="entrance" v="main"/>
+ </node>
+ <way id="103037763" visible="true" version="7" changeset="164345374" timestamp="2025-03-31T19:14:11Z" user="onovy" uid="27052">
+  <nd ref="1189812618"/>
+  <nd ref="1189812588"/>
+  <nd ref="1189812980"/>
+  <nd ref="1189812734"/>
+  <nd ref="1189812604"/>
+  <nd ref="1189812770"/>
+  <nd ref="1189813014"/>
+  <nd ref="1189812753"/>
+  <nd ref="1189812937"/>
+  <nd ref="1189812532"/>
+  <nd ref="1189812911"/>
+  <nd ref="1189812660"/>
+  <nd ref="1189812838"/>
+  <nd ref="1189813039"/>
+  <nd ref="1189812811"/>
+  <nd ref="4114951094"/>
+  <nd ref="4114951096"/>
+  <nd ref="1189812563"/>
+  <nd ref="1189812968"/>
+  <nd ref="1189812714"/>
+  <nd ref="1189813075"/>
+  <nd ref="10310620802"/>
+  <nd ref="1189812865"/>
+  <nd ref="1189812591"/>
+  <nd ref="4114951102"/>
+  <nd ref="1189813008"/>
+  <nd ref="4114951104"/>
+  <nd ref="4114951105"/>
+  <nd ref="4114951107"/>
+  <nd ref="4114951108"/>
+  <nd ref="4114951106"/>
+  <nd ref="1189812885"/>
+  <nd ref="1189812618"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="church"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="name" v="kostel Povýšení svatého Kříže"/>
+  <tag k="official_name" v="Kostel Povýšení svatého Kříže"/>
+  <tag k="ref:ruian:building" v="46052721"/>
+  <tag k="religion" v="christian"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="wikidata" v="Q12030519"/>
+ </way>
+</osm>

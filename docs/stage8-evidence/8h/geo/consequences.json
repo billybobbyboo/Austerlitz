@@ -1,0 +1,1841 @@
+{
+ "tool": "docs/stage8-evidence/8h/geo/consequences.js",
+ "radius_map_units": 20,
+ "corrections": {
+  "castle": {
+   "what": "Sokolnitz castle: the buildings planner's legacy place W(226,355) (world.js castlePlan8g) to today's castle, the 1825 quadrangle's site",
+   "from": [
+    226,
+    355
+   ],
+   "to": [
+    212.9,
+    344.29
+   ],
+   "moveM": 535,
+   "declarations": [
+    {
+     "name": "castlePlan8g (world.js; its W(226,355) and v8NearSegs radius)",
+     "guarded": false
+    }
+   ],
+   "near": [
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[2].route[2]",
+     "who": "2nd Column - Langeron",
+     "p": [
+      227,
+      356
+     ],
+     "oldM": 45,
+     "newM": 579
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[2].arrows[0].pts[2]",
+     "who": "II Column → Sokolnitz",
+     "p": [
+      229,
+      356
+     ],
+     "oldM": 100,
+     "newM": 629
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.lang.track[\"7\"]",
+     "who": "Second Column",
+     "p": [
+      233,
+      357
+     ],
+     "cf": null,
+     "st": "engaged",
+     "oldM": 230,
+     "newM": 751
+    },
+    {
+     "kind": "event",
+     "ref": "EVENTS[#sokolnitz-falls]",
+     "who": "Sokolnitz falls; Przybyszewski's column is surrounded",
+     "p": [
+      217,
+      352
+     ],
+     "oldM": 300,
+     "newM": 276
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.lang.track[\"2\"]",
+     "who": "Second Column",
+     "p": [
+      235,
+      350
+     ],
+     "cf": "A",
+     "st": "attacking",
+     "oldM": 325,
+     "newM": 721
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.sthilaire.track[\"8\"]",
+     "who": "Saint-Hilaire's Division",
+     "p": [
+      236,
+      352
+     ],
+     "cf": "B",
+     "st": "attacking",
+     "oldM": 330,
+     "newM": 770
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.prz.track[\"4\"]",
+     "who": "Third Column",
+     "p": [
+      233,
+      344
+     ],
+     "cf": null,
+     "st": "engaged",
+     "oldM": 412,
+     "newM": 635
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[0].arrows[1].pts[2]",
+     "who": "II Column → Sokolnitz",
+     "p": [
+      237,
+      348
+     ],
+     "oldM": 412,
+     "newM": 771
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.prz.track[\"7\"]",
+     "who": "Third Column",
+     "p": [
+      227,
+      338
+     ],
+     "cf": "A",
+     "st": "encircled",
+     "oldM": 538,
+     "newM": 488
+    }
+   ],
+   "statements": [
+    {
+     "ref": "PHASES[#2].title",
+     "file": "data.js",
+     "line": 67,
+     "t": "Sokolnitz, the castle and the pheasantry"
+    },
+    {
+     "ref": "PHASES[#2].lede",
+     "file": "data.js",
+     "line": 68,
+     "t": "Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. On the plateau the 4th Column, w"
+    },
+    {
+     "ref": "PHASES[#2].events[0]",
+     "file": "data.js",
+     "line": 70,
+     "t": "c. 08:00 / Langeron attacks Sokolnitz; Przybyszewski goes for the castle and pheasantry."
+    },
+    {
+     "ref": "FORMATIONS.legrand.track[\"2\"].act",
+     "file": "data.js",
+     "line": 227,
+     "t": "Fights for Sokolnitz village and the castle wall"
+    },
+    {
+     "ref": "FORMATIONS.prz.role",
+     "file": "data.js",
+     "line": 522,
+     "t": "Attacks the Sokolnitz castle and pheasantry; surrounded and destroyed as a formation."
+    },
+    {
+     "ref": "FORMATIONS.prz.track[\"0\"].obj",
+     "file": "data.js",
+     "line": 524,
+     "t": "Take the Sokolnitz castle and pheasantry"
+    },
+    {
+     "ref": "FORMATIONS.prz.track[\"2\"].obj",
+     "file": "data.js",
+     "line": 527,
+     "t": "Take the castle and pheasantry"
+    },
+    {
+     "ref": "FORMATIONS.prz.track[\"2\"].act",
+     "file": "data.js",
+     "line": 527,
+     "t": "Storms the walled castle grounds and the pheasant enclosure"
+    },
+    {
+     "ref": "FEATURES[#sokolnitz].sub",
+     "file": "data.js",
+     "line": 683,
+     "t": "Village with a walled castle and a pheasantry enclosure"
+    },
+    {
+     "ref": "FEATURES[#sokolnitz].facts[0]",
+     "file": "data.js",
+     "line": 684,
+     "t": "Attacked by / Langeron (village) and Przybyszewski (castle and pheasantry)"
+    },
+    {
+     "ref": "FEATURES[#sokolnitz].why[0]",
+     "file": "data.js",
+     "line": 685,
+     "t": "A walled castle and a pheasantry enclosure stand beside the village on the lower Goldbach; Davout reported the village taken and retaken sev"
+    },
+    {
+     "ref": "PLANS.al.cols[3].ord",
+     "file": "analysis.js",
+     "line": 177,
+     "t": "Take the Sokolnitz castle and the pheasantry, cross, and link the attack to the centre."
+    },
+    {
+     "ref": "EVENTS[#sokolnitz].why",
+     "file": "analysis.js",
+     "line": 271,
+     "t": "The fight for the village, the castle and the pheasantry absorbs two columns; Davout reported the village taken and retaken several times."
+    },
+    {
+     "ref": "EVENTS[#sokolnitz-falls].dispute",
+     "file": "analysis.js",
+     "line": 341,
+     "t": "When Sokolnitz fell: 14:00 on this map, which no account read dates; Przybyszewski's report has his men fighting until 16:00, Thiébault is w"
+    }
+   ]
+  },
+  "pheasantry": {
+   "what": "the Sokolnitz pheasantry: WOODS[0] (c 236,385, rx 24, ry 17) to the 1825 Fasangarten's outline",
+   "from": [
+    236,
+    385
+   ],
+   "to": [
+    214.6,
+    328.5
+   ],
+   "moveM": 1909,
+   "outline1825": {
+    "x": [
+     207.4,
+     221
+    ],
+    "y": [
+     311.6,
+     342.1
+    ],
+    "points": 149
+   },
+   "todayCentroid": [
+    211.9,
+    316.2
+   ],
+   "declarations": [
+    {
+     "name": "WOODS (world.js)",
+     "guarded": true
+    }
+   ],
+   "anchorsInside": [
+    {
+     "ref": "FORMATIONS.sthilaire.track[\"9\"]",
+     "who": "Saint-Hilaire's Division",
+     "p": [
+      255,
+      390
+     ],
+     "inOld": true,
+     "in1825": false,
+     "inToday": false
+    },
+    {
+     "ref": "FORMATIONS.legrand.track[\"0\"]",
+     "who": "Legrand's Division",
+     "p": [
+      208,
+      312
+     ],
+     "inOld": false,
+     "in1825": false,
+     "inToday": true
+    },
+    {
+     "ref": "FORMATIONS.legrand.track[\"4\"]",
+     "who": "Legrand's Division",
+     "p": [
+      220,
+      321
+     ],
+     "inOld": false,
+     "in1825": true,
+     "inToday": false
+    },
+    {
+     "ref": "FORMATIONS.legrand.track[\"8\"]",
+     "who": "Legrand's Division",
+     "p": [
+      217,
+      387
+     ],
+     "inOld": true,
+     "in1825": false,
+     "inToday": false
+    },
+    {
+     "ref": "FORMATIONS.legrand.track[\"9\"]",
+     "who": "Legrand's Division",
+     "p": [
+      228,
+      393
+     ],
+     "inOld": true,
+     "in1825": false,
+     "inToday": false
+    },
+    {
+     "ref": "FORMATIONS.bourcier.track[\"8\"]",
+     "who": "Bourcier's Dragoons",
+     "p": [
+      253,
+      393
+     ],
+     "inOld": true,
+     "in1825": false,
+     "inToday": false
+    },
+    {
+     "ref": "FORMATIONS.kienmayer.track[\"1\"]",
+     "who": "Kienmayer's Advance Guard",
+     "p": [
+      236,
+      398
+     ],
+     "inOld": true,
+     "in1825": false,
+     "inToday": false
+    },
+    {
+     "ref": "FORMATIONS.kienmayer.track[\"7\"]",
+     "who": "Kienmayer's Advance Guard",
+     "p": [
+      242,
+      400
+     ],
+     "inOld": true,
+     "in1825": false,
+     "inToday": false
+    },
+    {
+     "ref": "FORMATIONS.dok.track[\"2\"]",
+     "who": "First Column",
+     "p": [
+      232,
+      397
+     ],
+     "inOld": true,
+     "in1825": false,
+     "inToday": false
+    },
+    {
+     "ref": "FORMATIONS.lang.track[\"8\"]",
+     "who": "Second Column",
+     "p": [
+      253,
+      378
+     ],
+     "inOld": true,
+     "in1825": false,
+     "inToday": false
+    }
+   ],
+   "near": [
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[7].arrows[2].pts[2]",
+     "who": "Davout resumes the offensive",
+     "p": [
+      238,
+      392
+     ],
+     "oldM": 230,
+     "newM": 2138
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[8].arrows[4].pts[1]",
+     "who": "Legrand and Friant",
+     "p": [
+      244,
+      388
+     ],
+     "oldM": 270,
+     "newM": 2097
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.legrand.track[\"4\"]",
+     "who": "Legrand's Division",
+     "p": [
+      220,
+      321
+     ],
+     "cf": "B",
+     "st": "supporting",
+     "oldM": 2085,
+     "newM": 292
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[1].route[2]",
+     "who": "1st Column - Dokhturov",
+     "p": [
+      234,
+      395
+     ],
+     "oldM": 322,
+     "newM": 2189
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[0].arrows[0].pts[2]",
+     "who": "I Column → Telnitz",
+     "p": [
+      234,
+      395
+     ],
+     "oldM": 322,
+     "newM": 2189
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.legrand.track[\"9\"]",
+     "who": "Legrand's Division",
+     "p": [
+      228,
+      393
+     ],
+     "cf": null,
+     "st": "holding",
+     "oldM": 358,
+     "newM": 2081
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.dok.track[\"2\"]",
+     "who": "First Column",
+     "p": [
+      232,
+      397
+     ],
+     "cf": "A",
+     "st": "attacking",
+     "oldM": 400,
+     "newM": 2233
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.kienmayer.track[\"1\"]",
+     "who": "Kienmayer's Advance Guard",
+     "p": [
+      236,
+      398
+     ],
+     "cf": "A",
+     "st": "attacking",
+     "oldM": 411,
+     "newM": 2297
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[8].arrows[2].pts[0]",
+     "who": "Across the Menitz mere",
+     "p": [
+      243,
+      396
+     ],
+     "oldM": 412,
+     "newM": 2314
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[8].arrows[4].pts[0]",
+     "who": "Legrand and Friant",
+     "p": [
+      223,
+      379
+     ],
+     "oldM": 452,
+     "newM": 1617
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.prz.track[\"7\"]",
+     "who": "Third Column",
+     "p": [
+      227,
+      338
+     ],
+     "cf": "A",
+     "st": "encircled",
+     "oldM": 1512,
+     "newM": 493
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.kienmayer.track[\"7\"]",
+     "who": "Kienmayer's Advance Guard",
+     "p": [
+      242,
+      400
+     ],
+     "cf": "B",
+     "st": "holding",
+     "oldM": 510,
+     "newM": 2419
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[0].route[1]",
+     "who": "Advance Guard - Kienmayer",
+     "p": [
+      247,
+      397
+     ],
+     "oldM": 514,
+     "newM": 2394
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.legrand.track[\"0\"]",
+     "who": "Legrand's Division",
+     "p": [
+      208,
+      312
+     ],
+     "cf": "A",
+     "st": "holding",
+     "oldM": 2471,
+     "newM": 562
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.fr[0].route[0]",
+     "who": "The bait - Legrand, then Davout",
+     "p": [
+      208,
+      312
+     ],
+     "oldM": 2471,
+     "newM": 562
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.lang.track[\"8\"]",
+     "who": "Second Column",
+     "p": [
+      253,
+      378
+     ],
+     "cf": null,
+     "st": "retreating",
+     "oldM": 581,
+     "newM": 1979
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.bourcier.track[\"8\"]",
+     "who": "Bourcier's Dragoons",
+     "p": [
+      253,
+      393
+     ],
+     "cf": null,
+     "st": "pursuing",
+     "oldM": 594,
+     "newM": 2372
+    },
+    {
+     "kind": "plan objective",
+     "ref": "PLANS.al[3].obj",
+     "who": "3rd Column - Przybyszewski",
+     "p": [
+      196,
+      332
+     ],
+     "oldM": 2098,
+     "newM": 598
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[3].route[3]",
+     "who": "3rd Column - Przybyszewski",
+     "p": [
+      196,
+      332
+     ],
+     "oldM": 2098,
+     "newM": 598
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.legrand.track[\"8\"]",
+     "who": "Legrand's Division",
+     "p": [
+      217,
+      387
+     ],
+     "cf": null,
+     "st": "attacking",
+     "oldM": 604,
+     "newM": 1850
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.sthilaire.track[\"9\"]",
+     "who": "Saint-Hilaire's Division",
+     "p": [
+      255,
+      390
+     ],
+     "cf": null,
+     "st": "pursuing",
+     "oldM": 621,
+     "newM": 2325
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[3].route[2]",
+     "who": "3rd Column - Przybyszewski",
+     "p": [
+      234,
+      332
+     ],
+     "oldM": 1676,
+     "newM": 622
+    }
+   ],
+   "statements": [
+    {
+     "ref": "PHASES[#2].title",
+     "file": "data.js",
+     "line": 67,
+     "t": "Sokolnitz, the castle and the pheasantry"
+    },
+    {
+     "ref": "PHASES[#2].lede",
+     "file": "data.js",
+     "line": 68,
+     "t": "Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. On the plateau the 4th Column, w"
+    },
+    {
+     "ref": "PHASES[#2].events[0]",
+     "file": "data.js",
+     "line": 70,
+     "t": "c. 08:00 / Langeron attacks Sokolnitz; Przybyszewski goes for the castle and pheasantry."
+    },
+    {
+     "ref": "FORMATIONS.prz.role",
+     "file": "data.js",
+     "line": 522,
+     "t": "Attacks the Sokolnitz castle and pheasantry; surrounded and destroyed as a formation."
+    },
+    {
+     "ref": "FORMATIONS.prz.track[\"0\"].obj",
+     "file": "data.js",
+     "line": 524,
+     "t": "Take the Sokolnitz castle and pheasantry"
+    },
+    {
+     "ref": "FORMATIONS.prz.track[\"2\"].obj",
+     "file": "data.js",
+     "line": 527,
+     "t": "Take the castle and pheasantry"
+    },
+    {
+     "ref": "FORMATIONS.prz.track[\"2\"].act",
+     "file": "data.js",
+     "line": 527,
+     "t": "Storms the walled castle grounds and the pheasant enclosure"
+    },
+    {
+     "ref": "FEATURES[#sokolnitz].sub",
+     "file": "data.js",
+     "line": 683,
+     "t": "Village with a walled castle and a pheasantry enclosure"
+    },
+    {
+     "ref": "FEATURES[#sokolnitz].facts[0]",
+     "file": "data.js",
+     "line": 684,
+     "t": "Attacked by / Langeron (village) and Przybyszewski (castle and pheasantry)"
+    },
+    {
+     "ref": "FEATURES[#sokolnitz].why[0]",
+     "file": "data.js",
+     "line": 685,
+     "t": "A walled castle and a pheasantry enclosure stand beside the village on the lower Goldbach; Davout reported the village taken and retaken sev"
+    },
+    {
+     "ref": "PLANS.al.cols[3].ord",
+     "file": "analysis.js",
+     "line": 177,
+     "t": "Take the Sokolnitz castle and the pheasantry, cross, and link the attack to the centre."
+    },
+    {
+     "ref": "EVENTS[#sokolnitz].why",
+     "file": "analysis.js",
+     "line": 271,
+     "t": "The fight for the village, the castle and the pheasantry absorbs two columns; Davout reported the village taken and retaken several times."
+    }
+   ]
+  },
+  "goldbach": {
+   "what": "the Goldbach at Sokolnitz: GOLDBACH_M's course between y 300 and 380 to today's Říčka (the 1825 brook at the castle and the village)",
+   "rows": [
+    {
+     "y": 300,
+     "oldX": 206.9,
+     "newX": 203.7,
+     "gapM": 101
+    },
+    {
+     "y": 305,
+     "oldX": 206.6,
+     "newX": 207.5,
+     "gapM": 28
+    },
+    {
+     "y": 310,
+     "oldX": 206.4,
+     "newX": 211.8,
+     "gapM": 172
+    },
+    {
+     "y": 315,
+     "oldX": 206.2,
+     "newX": 212,
+     "gapM": 185
+    },
+    {
+     "y": 320,
+     "oldX": 205.9,
+     "newX": 212.1,
+     "gapM": 195
+    },
+    {
+     "y": 325,
+     "oldX": 205.7,
+     "newX": 213.7,
+     "gapM": 252
+    },
+    {
+     "y": 330,
+     "oldX": 205.5,
+     "newX": 212.3,
+     "gapM": 216
+    },
+    {
+     "y": 335,
+     "oldX": 205.2,
+     "newX": 212.5,
+     "gapM": 230
+    },
+    {
+     "y": 340,
+     "oldX": 205,
+     "newX": 216.9,
+     "gapM": 376
+    },
+    {
+     "y": 345,
+     "oldX": 204.8,
+     "newX": 220,
+     "gapM": 479
+    },
+    {
+     "y": 350,
+     "oldX": 204.6,
+     "newX": 220.8,
+     "gapM": 515
+    },
+    {
+     "y": 355,
+     "oldX": 204.3,
+     "newX": 218.1,
+     "gapM": 435
+    },
+    {
+     "y": 360,
+     "oldX": 204.1,
+     "newX": 216.5,
+     "gapM": 391
+    },
+    {
+     "y": 365,
+     "oldX": 204.9,
+     "newX": 214.9,
+     "gapM": 316
+    },
+    {
+     "y": 370,
+     "oldX": 206.3,
+     "newX": 213.6,
+     "gapM": 232
+    },
+    {
+     "y": 375,
+     "oldX": 207.7,
+     "newX": 212.8,
+     "gapM": 161
+    },
+    {
+     "y": 380,
+     "oldX": 208.7,
+     "newX": 212.4,
+     "gapM": 117
+    }
+   ],
+   "declarations": [
+    {
+     "name": "GOLDBACH_M (world.js)",
+     "guarded": true
+    },
+    {
+     "name": "MARSH[0] 'lower Goldbach' (world.js), its centre on the drawn brook",
+     "guarded": true
+    }
+   ],
+   "sideChanges": [
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.legrand.track[\"0\"]",
+     "who": "Legrand's Division",
+     "p": [
+      208,
+      312
+     ],
+     "cf": "A",
+     "st": "holding",
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 53,
+     "toNewM": 124
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.legrand.track[\"1\"]",
+     "who": "Legrand's Division",
+     "p": [
+      211,
+      379
+     ],
+     "cf": "A",
+     "st": "engaged",
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 78,
+     "toNewM": 43
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.legrand.track[\"2\"]",
+     "who": "Legrand's Division",
+     "p": [
+      206,
+      366
+     ],
+     "cf": null,
+     "st": "engaged",
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 27,
+     "toNewM": 268
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.legrand.track[\"7\"]",
+     "who": "Legrand's Division",
+     "p": [
+      213,
+      371
+     ],
+     "cf": null,
+     "st": "attacking",
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 203,
+     "toNewM": 15
+    },
+    {
+     "kind": "place",
+     "ref": "FEATURES[#sokolnitz]",
+     "who": "Sokolnitz",
+     "p": [
+      208,
+      365
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 99,
+     "toNewM": 217
+    },
+    {
+     "kind": "event",
+     "ref": "EVENTS[#sokolnitz]",
+     "who": "Langeron and Przybyszewski attack Sokolnitz",
+     "p": [
+      208,
+      365
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 99,
+     "toNewM": 217
+    },
+    {
+     "kind": "event",
+     "ref": "EVENTS[#sokolnitz-falls]",
+     "who": "Sokolnitz falls; Przybyszewski's column is surrounded",
+     "p": [
+      217,
+      352
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 396,
+     "toNewM": 99
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.fr[0].route[0]",
+     "who": "The bait - Legrand, then Davout",
+     "p": [
+      208,
+      312
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 53,
+     "toNewM": 124
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.fr[0].route[1]",
+     "who": "The bait - Legrand, then Davout",
+     "p": [
+      207,
+      371
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 14,
+     "toNewM": 205
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[0].lines[0].pts[5]",
+     "who": "French line on the Goldbach",
+     "p": [
+      208,
+      365
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 99,
+     "toNewM": 217
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[1].lines[0].pts[5]",
+     "who": "French line on the Goldbach",
+     "p": [
+      208,
+      365
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 99,
+     "toNewM": 217
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[2].lines[0].pts[2]",
+     "who": "Legrand on the stream",
+     "p": [
+      208,
+      365
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 99,
+     "toNewM": 217
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[7].lines[0].pts[1]",
+     "who": "Buxhowden's columns, now cut off",
+     "p": [
+      208,
+      365
+     ],
+     "oldSide": "east",
+     "newSide": "west",
+     "toOldM": 99,
+     "toNewM": 217
+    }
+   ],
+   "onTheNewBrook": [],
+   "roadCrossings": [
+    {
+     "n": "Sokolnitz-Telnitz track",
+     "oldX": [
+      [
+       208,
+       376
+      ],
+      [
+       208,
+       376
+      ]
+     ],
+     "newX": []
+    },
+    {
+     "n": "Kobelnitz-Sokolnitz track",
+     "oldX": [],
+     "newX": [
+      [
+       210.5,
+       309
+      ]
+     ]
+    }
+   ],
+   "statements": [
+    {
+     "ref": "FORMATIONS.legrand.role",
+     "file": "data.js",
+     "line": 223,
+     "t": "The bait. Two brigades in Sokolov's order of battle cover roughly five kilometres of the lower Goldbach alone."
+    },
+    {
+     "ref": "FORMATIONS.legrand.track[\"0\"].obj",
+     "file": "data.js",
+     "line": 225,
+     "t": "Hold the lower Goldbach from Kobelnitz to Telnitz"
+    },
+    {
+     "ref": "FORMATIONS.legrand.track[\"0\"].act",
+     "file": "data.js",
+     "line": 225,
+     "t": "Strung out along the stream; skirmishing through the night"
+    },
+    {
+     "ref": "FORMATIONS.legrand.track[\"7\"].act",
+     "file": "data.js",
+     "line": 230,
+     "t": "Presses east across the stream as the trap closes"
+    },
+    {
+     "ref": "FORMATIONS.friant.track[\"0\"].obj",
+     "file": "data.js",
+     "line": 248,
+     "t": "Reach the lower Goldbach"
+    },
+    {
+     "ref": "FORMATIONS.friant.track[\"1\"].tm.note",
+     "file": "data.js",
+     "line": 249,
+     "t": "the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December ("
+    },
+    {
+     "ref": "FORMATIONS.friant.track[\"5\"].obj",
+     "file": "data.js",
+     "line": 253,
+     "t": "Hold the stream line"
+    },
+    {
+     "ref": "FORMATIONS.friant.track[\"7\"].obj",
+     "file": "data.js",
+     "line": 254,
+     "t": "Press east across the Goldbach"
+    },
+    {
+     "ref": "FEATURES[#sokolnitz].why[0]",
+     "file": "data.js",
+     "line": 685,
+     "t": "A walled castle and a pheasantry enclosure stand beside the village on the lower Goldbach; Davout reported the village taken and retaken sev"
+    },
+    {
+     "ref": "FEATURES[#kobelnitz].sub",
+     "file": "data.js",
+     "line": 689,
+     "t": "Village on the Goldbach north of Sokolnitz"
+    },
+    {
+     "ref": "PLANS.al.cols[2].ord",
+     "file": "analysis.js",
+     "line": 175,
+     "t": "Take Sokolnitz, cross the stream, conform on Dokhturov's right."
+    }
+   ]
+  },
+  "highway": {
+   "what": "the Brünn-Olmütz highway east of the Santon: ROADS[0]'s points [225,97],[239,80],[324,36],[401,-4] to II/430's line (the 1826 and 1836-52 road)",
+   "rows": [
+    {
+     "x": 222,
+     "oldY": 98.1,
+     "newY": 104.3,
+     "gapM": 195
+    },
+    {
+     "x": 240,
+     "oldY": 79.5,
+     "newY": 94.2,
+     "gapM": 465
+    },
+    {
+     "x": 260,
+     "oldY": 69.1,
+     "newY": 86.1,
+     "gapM": 538
+    },
+    {
+     "x": 280,
+     "oldY": 58.8,
+     "newY": 80.9,
+     "gapM": 700
+    },
+    {
+     "x": 300,
+     "oldY": 48.4,
+     "newY": 75.7,
+     "gapM": 863
+    },
+    {
+     "x": 324,
+     "oldY": 36,
+     "newY": 69.6,
+     "gapM": 1063
+    },
+    {
+     "x": 340,
+     "oldY": 27.7,
+     "newY": 64.8,
+     "gapM": 1172
+    },
+    {
+     "x": 363,
+     "oldY": 15.7,
+     "newY": 54.7,
+     "gapM": 1231
+    },
+    {
+     "x": 380,
+     "oldY": 6.9,
+     "newY": 43.1,
+     "gapM": 1143
+    },
+    {
+     "x": 400,
+     "oldY": -3.5,
+     "newY": 25.5,
+     "gapM": 917
+    }
+   ],
+   "declarations": [
+    {
+     "name": "ROADS (world.js)",
+     "guarded": true
+    }
+   ],
+   "near": [
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.suchet.track[\"0\"]",
+     "who": "Suchet's Division",
+     "p": [
+      225,
+      97
+     ],
+     "cf": "A",
+     "st": "holding",
+     "toOldM": 0,
+     "toNewM": 161
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.suchet.track[\"5\"]",
+     "who": "Suchet's Division",
+     "p": [
+      242,
+      78
+     ],
+     "cf": "B",
+     "st": "attacking",
+     "toOldM": 13,
+     "toNewM": 448
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.suchet.track[\"6\"]",
+     "who": "Suchet's Division",
+     "p": [
+      264,
+      67
+     ],
+     "cf": null,
+     "st": "advancing",
+     "toOldM": 2,
+     "toNewM": 554
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.suchet.track[\"7\"]",
+     "who": "Suchet's Division",
+     "p": [
+      284,
+      57
+     ],
+     "cf": null,
+     "st": "advancing",
+     "toOldM": 8,
+     "toNewM": 700
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.suchet.track[\"8\"]",
+     "who": "Suchet's Division",
+     "p": [
+      309,
+      43
+     ],
+     "cf": null,
+     "st": "pursuing",
+     "toOldM": 21,
+     "toNewM": 931
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.suchet.track[\"9\"]",
+     "who": "Suchet's Division",
+     "p": [
+      321,
+      38
+     ],
+     "cf": null,
+     "st": "holding",
+     "toOldM": 13,
+     "toNewM": 988
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.bag.track[\"5\"]",
+     "who": "Advance Guard of the Right",
+     "p": [
+      262,
+      68
+     ],
+     "cf": "B",
+     "st": "attacking",
+     "toOldM": 3,
+     "toNewM": 539
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.bag.track[\"6\"]",
+     "who": "Advance Guard of the Right",
+     "p": [
+      284,
+      57
+     ],
+     "cf": null,
+     "st": "holding",
+     "toOldM": 8,
+     "toNewM": 700
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.bag.track[\"7\"]",
+     "who": "Advance Guard of the Right",
+     "p": [
+      304,
+      46
+     ],
+     "cf": null,
+     "st": "withdrawing",
+     "toOldM": 10,
+     "toNewM": 879
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.bag.track[\"8\"]",
+     "who": "Advance Guard of the Right",
+     "p": [
+      337,
+      29
+     ],
+     "cf": "B",
+     "st": "retreating",
+     "toOldM": 7,
+     "toNewM": 1086
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.bag.track[\"9\"]",
+     "who": "Advance Guard of the Right",
+     "p": [
+      366,
+      14
+     ],
+     "cf": null,
+     "st": "retreating",
+     "toOldM": 5,
+     "toNewM": 986
+    },
+    {
+     "kind": "place",
+     "ref": "FEATURES[#posthouse]",
+     "who": "Posoritz post house",
+     "p": [
+      324,
+      36
+     ],
+     "toOldM": 0,
+     "toNewM": 1026
+    },
+    {
+     "kind": "place",
+     "ref": "FEATURES[#rausnitz]",
+     "who": "To Rausnitz",
+     "p": [
+      393,
+      6
+     ],
+     "toOldM": 164,
+     "toNewM": 606
+    },
+    {
+     "kind": "plan objective",
+     "ref": "PLANS.al[6].obj",
+     "who": "Advance Guard of the Right - Bagration",
+     "p": [
+      253,
+      73
+     ],
+     "toOldM": 7,
+     "toNewM": 464
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[6].route[0]",
+     "who": "Advance Guard of the Right - Bagration",
+     "p": [
+      315,
+      41
+     ],
+     "toOldM": 10,
+     "toNewM": 947
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[6].route[1]",
+     "who": "Advance Guard of the Right - Bagration",
+     "p": [
+      292,
+      52
+     ],
+     "toOldM": 16,
+     "toNewM": 790
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[6].route[2]",
+     "who": "Advance Guard of the Right - Bagration",
+     "p": [
+      273,
+      62
+     ],
+     "toOldM": 11,
+     "toNewM": 635
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[6].route[3]",
+     "who": "Advance Guard of the Right - Bagration",
+     "p": [
+      253,
+      73
+     ],
+     "toOldM": 7,
+     "toNewM": 464
+    },
+    {
+     "kind": "plan objective",
+     "ref": "PLANS.fr[3].obj",
+     "who": "The pivot - Lannes and Murat",
+     "p": [
+      304,
+      46
+     ],
+     "toOldM": 10,
+     "toNewM": 879
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.fr[3].route[0]",
+     "who": "The pivot - Lannes and Murat",
+     "p": [
+      225,
+      97
+     ],
+     "toOldM": 0,
+     "toNewM": 161
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.fr[3].route[1]",
+     "who": "The pivot - Lannes and Murat",
+     "p": [
+      247,
+      75
+     ],
+     "toOldM": 24,
+     "toNewM": 476
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.fr[3].route[2]",
+     "who": "The pivot - Lannes and Murat",
+     "p": [
+      276,
+      61
+     ],
+     "toOldM": 4,
+     "toNewM": 641
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.fr[3].route[3]",
+     "who": "The pivot - Lannes and Murat",
+     "p": [
+      304,
+      46
+     ],
+     "toOldM": 10,
+     "toNewM": 879
+    }
+   ],
+   "statements": [
+    {
+     "ref": "PHASES[#4].lede",
+     "file": "data.js",
+     "line": 85,
+     "t": "Kamensky's brigade, marching for Sokolnitz at the tail of Langeron's column, sees the French on the height behind it, turns about and attack"
+    },
+    {
+     "ref": "PHASES[#4].events[0]",
+     "file": "data.js",
+     "line": 87,
+     "t": "c. 09:30 / Lannes advances along the highway. Bagration counter-attacks. The two battles now run in parallel."
+    },
+    {
+     "ref": "FORMATIONS.c_v.role",
+     "file": "data.js",
+     "line": 273,
+     "t": "Holds and then advances along the Brünn–Olmütz highway; forbidden to press too hard early."
+    },
+    {
+     "ref": "FORMATIONS.caffarelli.track[\"0\"].obj",
+     "file": "data.js",
+     "line": 282,
+     "t": "Hold south of the highway; do not press"
+    },
+    {
+     "ref": "FORMATIONS.caffarelli.track[\"7\"].obj",
+     "file": "data.js",
+     "line": 286,
+     "t": "Push Bagration off the highway"
+    },
+    {
+     "ref": "FORMATIONS.suchet.track[\"0\"].obj",
+     "file": "data.js",
+     "line": 296,
+     "t": "Hold the highway on the Santon's flank"
+    },
+    {
+     "ref": "FORMATIONS.suchet.track[\"5\"].act",
+     "file": "data.js",
+     "line": 298,
+     "t": "Advances astride the highway toward the post house"
+    },
+    {
+     "ref": "FORMATIONS.santon.track[\"0\"].act",
+     "file": "data.js",
+     "line": 309,
+     "t": "Holding the fortified hill north of the highway with eighteen guns"
+    },
+    {
+     "ref": "FORMATIONS.bag.role",
+     "file": "data.js",
+     "line": 587,
+     "t": "Holds the Brünn–Olmütz highway. Driven back from Holubitz and Kruh, it re-forms on the height toward Rausnitz and withdraws toward Austerlit"
+    },
+    {
+     "ref": "FORMATIONS.bag.track[\"0\"].obj",
+     "file": "data.js",
+     "line": 589,
+     "t": "Hold the highway and cover the Allied right"
+    },
+    {
+     "ref": "FORMATIONS.bag.track[\"0\"].act",
+     "file": "data.js",
+     "line": 589,
+     "t": "Astride the Olmütz highway, his line reaching south toward Holubitz. Re-plotted on the corrected road, which passes about 2 km north of Holu"
+    },
+    {
+     "ref": "FORMATIONS.bag.track[\"5\"].act",
+     "file": "data.js",
+     "line": 591,
+     "t": "Attacks along the highway; cannot get past the Santon battery"
+    },
+    {
+     "ref": "FEATURES[#vinohrady].why[0]",
+     "file": "data.js",
+     "line": 639,
+     "t": "Northern shoulder of the plateau, linking the centre to the Olmütz road sector"
+    },
+    {
+     "ref": "FEATURES[#santon].sub",
+     "file": "data.js",
+     "line": 650,
+     "t": "Fortified hill north of the Brünn–Olmütz highway"
+    },
+    {
+     "ref": "FEATURES[#santon].why[0]",
+     "file": "data.js",
+     "line": 652,
+     "t": "Anchors the extreme French left and enfilades the highway"
+    },
+    {
+     "ref": "FEATURES[#telnitz].why[0]",
+     "file": "data.js",
+     "line": 678,
+     "t": "The southern hinge of the French line and the road to the Vienna highway"
+    },
+    {
+     "ref": "FEATURES[#blasowitz].sub",
+     "file": "data.js",
+     "line": 711,
+     "t": "Village between the plateau and the Olmütz road"
+    },
+    {
+     "ref": "FEATURES[#posthouse].sub",
+     "file": "data.js",
+     "line": 760,
+     "t": "Post station on the Olmütz highway north of Holubitz, named after Posoritz, whose parish included Holubitz and Kruh; position approximate (a"
+    },
+    {
+     "ref": "FEATURES[#posthouse].why[0]",
+     "file": "data.js",
+     "line": 762,
+     "t": "Marks where the highway leaves the field for Rausnitz and Olmütz"
+    },
+    {
+     "ref": "FEATURES[#rausnitz].sub",
+     "file": "data.js",
+     "line": 764,
+     "t": "Rousínov (Rausnitz) lies about 2.7 km beyond this edge of the map on the Olmütz highway"
+    },
+    {
+     "ref": "ANALYSIS[#plan].text",
+     "file": "analysis.js",
+     "line": 15,
+     "t": "Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road t"
+    },
+    {
+     "ref": "COMMAND.fr[\"5\"][0]",
+     "file": "analysis.js",
+     "line": 82,
+     "t": "saw / inf / The northern battle from the Zuran. Inferred from the model's terrain, not documented: most of the Olmütz road sector, including"
+    },
+    {
+     "ref": "COMMAND.al[\"0\"][3]",
+     "file": "analysis.js",
+     "line": 96,
+     "t": "ordered / doc / Weyrother's dispositions: four columns south-west against the French right, Bagration to hold the highway."
+    },
+    {
+     "ref": "PLANS.al.cols[6].ord",
+     "file": "analysis.js",
+     "line": 183,
+     "t": "Hold the Olmütz highway, pin the French left, and link to Liechtenstein."
+    },
+    {
+     "ref": "PLANS.fr.cols[3].ord",
+     "file": "analysis.js",
+     "line": 212,
+     "t": "Hold the Olmütz highway with the Santon fortified and entrenched. Advance only when the centre has gone in."
+    },
+    {
+     "ref": "PLANS.fr.cols[5].ord",
+     "file": "analysis.js",
+     "line": 216,
+     "t": "Once the plateau is held from Pratzen to the highway, turn the centre ninety degrees and come down on the rear of the Allied left."
+    }
+   ]
+  },
+  "posthouse": {
+   "what": "the Posoritz post house: GT.posthouse (geo.js; drawn place FEATURES posthouse p [324,36]) to Kovalovice No. 109",
+   "from": [
+    323.8,
+    36
+   ],
+   "to": [
+    363.2,
+    53.8
+   ],
+   "moveM": 1367,
+   "declarations": [
+    {
+     "name": "GT.posthouse (geo.js GEOREF)",
+     "guarded": true
+    },
+    {
+     "name": "FEATURES (data.js) #posthouse p",
+     "guarded": true
+    }
+   ],
+   "near": [
+    {
+     "kind": "place",
+     "ref": "FEATURES[#posthouse]",
+     "who": "Posoritz post house",
+     "p": [
+      324,
+      36
+     ],
+     "oldM": 6,
+     "newM": 1361
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.suchet.track[\"9\"]",
+     "who": "Suchet's Division",
+     "p": [
+      321,
+      38
+     ],
+     "cf": null,
+     "st": "holding",
+     "oldM": 109,
+     "newM": 1425
+    },
+    {
+     "kind": "plan route",
+     "ref": "PLANS.al[6].route[0]",
+     "who": "Advance Guard of the Right - Bagration",
+     "p": [
+      315,
+      41
+     ],
+     "oldM": 320,
+     "newM": 1577
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.bag.track[\"0\"]",
+     "who": "Advance Guard of the Right",
+     "p": [
+      319,
+      49
+     ],
+     "cf": "B",
+     "st": "holding",
+     "oldM": 438,
+     "newM": 1406
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.bag.track[\"8\"]",
+     "who": "Advance Guard of the Right",
+     "p": [
+      337,
+      29
+     ],
+     "cf": "B",
+     "st": "retreating",
+     "oldM": 472,
+     "newM": 1140
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.suchet.track[\"8\"]",
+     "who": "Suchet's Division",
+     "p": [
+      309,
+      43
+     ],
+     "cf": null,
+     "st": "pursuing",
+     "oldM": 517,
+     "newM": 1747
+    }
+   ],
+   "statements": [
+    {
+     "ref": "FORMATIONS.suchet.track[\"5\"].act",
+     "file": "data.js",
+     "line": 298,
+     "t": "Advances astride the highway toward the post house"
+    },
+    {
+     "ref": "FEATURES[#olmutzroad].sub",
+     "file": "data.js",
+     "line": 746,
+     "t": "The road across the northern battlefield: east-north-east from Brünn past the Santon to the Posoritz post house and Rausnitz"
+    },
+    {
+     "ref": "SOURCE_NOTE.body[5]",
+     "file": "data.js",
+     "line": 776,
+     "t": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; wheth"
+    }
+   ]
+  },
+  "park": {
+   "what": "the Austerlitz park: WOODS[1] (c 551,151, rx 30, ry 22) to the château garden west of the château",
+   "from": [
+    551,
+    151
+   ],
+   "to": [
+    493.3,
+    125.8
+   ],
+   "extent": {
+    "x": [
+     480.7,
+     505.5
+    ],
+    "y": [
+     117.9,
+     133.7
+    ]
+   },
+   "moveM": 1990,
+   "declarations": [
+    {
+     "name": "WOODS (world.js)",
+     "guarded": true
+    }
+   ],
+   "near": [
+    {
+     "kind": "place",
+     "ref": "FEATURES[#austerlitz]",
+     "who": "Austerlitz",
+     "p": [
+      507,
+      126
+     ],
+     "oldM": 1599,
+     "newM": 433
+    },
+    {
+     "kind": "anchor",
+     "ref": "FORMATIONS.rg_cav.track[\"9\"]",
+     "who": "Guard Cavalry",
+     "p": [
+      481,
+      132
+     ],
+     "cf": null,
+     "st": "retreating",
+     "oldM": 2292,
+     "newM": 435
+    }
+   ],
+   "statements": []
+  },
+  "pratzenChurch": {
+   "what": "the Pratzen church: by the village point (276,243) (world.js churchPlan8g, CHURCHES) to its site outside the village",
+   "from": [
+    276,
+    243
+   ],
+   "to": [
+    277,
+    255.6
+   ],
+   "moveM": 399,
+   "declarations": [
+    {
+     "name": "churchPlan8g (world.js; the village's church placed near its point)",
+     "guarded": false
+    }
+   ],
+   "near": [
+    {
+     "kind": "place",
+     "ref": "FEATURES[#pratzenv]",
+     "who": "Pratzen village",
+     "p": [
+      276,
+      243
+     ],
+     "oldM": 0,
+     "newM": 399
+    },
+    {
+     "kind": "event",
+     "ref": "EVENTS[#pratzen-village]",
+     "who": "Thiébault's brigade clears Pratzen village",
+     "p": [
+      276,
+      243
+     ],
+     "oldM": 0,
+     "newM": 399
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[4].arrows[1].pts[1]",
+     "who": "Jurczek's Austrians",
+     "p": [
+      280,
+      239
+     ],
+     "oldM": 179,
+     "newM": 533
+    },
+    {
+     "kind": "overlay point",
+     "ref": "OVERLAYS[0].arrows[3].pts[1]",
+     "who": "IV Column → Kobelnitz",
+     "p": [
+      285,
+      251
+     ],
+     "oldM": 381,
+     "newM": 291
+    }
+   ],
+   "statements": []
+  }
+ }
+}

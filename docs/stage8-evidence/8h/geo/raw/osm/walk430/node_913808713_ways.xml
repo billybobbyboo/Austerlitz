@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2696421 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="387315544" visible="true" version="10" changeset="153576231" timestamp="2024-07-05T08:04:06Z" user="JBS21" uid="13953005">
+  <nd ref="913808713"/>
+  <nd ref="7733507012"/>
+  <nd ref="5169043277"/>
+  <nd ref="3859497828"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="destination" v="Vyškov"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="4"/>
+ </way>
+ <way id="1298150817" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="74237813"/>
+  <nd ref="3859497826"/>
+  <nd ref="3980608353"/>
+  <nd ref="913808713"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+ <way id="1298150818" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="913808713"/>
+  <nd ref="5169043215"/>
+  <nd ref="7273885528"/>
+  <nd ref="3859497832"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+</osm>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="Mapová aplikace pro prohlížení Archivních map a archivu Leteckých měřických snímků.">
+
+  <!-- Ikony -->
+  <link rel="apple-touch-icon" sizes="120x120" href="/archiv/images/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="/archiv/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="16x16" href="/archiv/images/favicon.ico">
+  <link rel="manifest" href="./manifest.json">
+
+  <link rel="canonical" href="https://ags.cuzk.gov.cz/archiv/">
+
+  <meta property="og:title" content="Archiv">
+  <meta property="og:description" content="Mapová aplikace pro prohlížení Archivních map a archivu Leteckých měřických snímků.">
+  <meta property="og:url" content="https://ags.cuzk.gov.cz/archiv/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ags.cuzk.gov.cz/archiv/images/og_image.jpg">
+
+  <title id="appTitle"></title>
+
+  <script>
+    globalThis.esriConfig = {
+      assetsPath: "./assets"
+    };
+  </script>
+  <script type="module" crossorigin src="/archiv/assets/main-CvEa8hd8.js"></script>
+  <link rel="modulepreload" crossorigin href="/archiv/assets/vendor-CxgthpwD.js">
+  <link rel="modulepreload" crossorigin href="/archiv/assets/data-D47DtZz0.js">
+  <link rel="stylesheet" crossorigin href="/archiv/assets/vendor-q2bC0pxE.css">
+  <link rel="stylesheet" crossorigin href="/archiv/assets/main-BtnIAIaG.css">
+</head>
+
+<body>
+  <calcite-shell contentBehind="true">
+    <calcite-navigation slot="header">
+      <calcite-navigation-logo id="label_1" slot="logo"></calcite-navigation-logo>
+      <arcgis-search slot="content-start" id="widgetSearch"></arcgis-search>
+      <calcite-menu slot="content-end" id="viewMenu" class="hide-xs hide-sm">
+        <calcite-menu-item id="menu-item-archiv" icon-start="clock" active></calcite-menu-item>
+        <calcite-menu-item id="menu-item-lms" icon-start="drone-fixed-wing"></calcite-menu-item>
+      </calcite-menu>
+    </calcite-navigation>
+
+    <calcite-shell-panel id="myShellPanel" slot="panel-end" position="end" width="m">
+      <calcite-action-bar slot="action-bar">
+        <calcite-action-group class="hide-md hide-lg hide-xl">
+          <calcite-action id="action-archiv" data-type-theme icon="clock" indicator="true" disabled></calcite-action>
+          <calcite-action id="action-lms" data-type-theme icon="drone-fixed-wing"></calcite-action>
+        </calcite-action-group>
+        <calcite-action-group>
+          <calcite-action id="action-prohlizeni" icon="show-all-parameters"></calcite-action>
+          <calcite-action id="action-nakupniKosik" icon="shopping-cart"></calcite-action>
+        </calcite-action-group>
+        <calcite-action-group>
+          <calcite-action id="action-adds" icon="plus"></calcite-action>
+        </calcite-action-group>
+        <calcite-action-group>
+          <calcite-action id="action-swipe" icon="split-geometry"></calcite-action>
+          <calcite-action id="action-sdileni" icon="share"></calcite-action>
+          <calcite-action id="action-napoveda" icon="information"></calcite-action>
+        </calcite-action-group>
+      </calcite-action-bar>
+
+      <!-- Obsah -->
+
+      <calcite-panel id="panel-adds" hidden closable>
+        <div class="panelObsah">
+          <b id="hledaniInfo"></b>
+          <calcite-button id="hledaniBod" icon-start="pin" disabled></calcite-button>
+          <calcite-button id="hledaniPolygon" icon-start="polygon" disabled></calcite-button>
+          <calcite-button id="hledaniStred" icon-start="gps-on" hidden disabled></calcite-button>
+          <hr>
+          <div id="archivAdds">
+            <b id="label_35"></b>
+            <div class="switch-wrapper mBottom mLowTop">
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="vrs_checkBox9"
+                  name="mullerova_mapa_c" disabled><span class="slider"></span></label> <label for="vrs_checkBox9"
+                id="label_49"></label>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="vrs_checkBox10"
+                  name="mullerova_mapa_m" disabled><span class="slider"></span></label> <label for="vrs_checkBox10"
+                id="label_51"></label>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="vrs_checkBox2" name="or"
+                  disabled><span class="slider"></span></label> <label for="vrs_checkBox2" id="label_37"></label>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="vrs_checkBox1" name="cio"
+                  disabled><span class="slider"></span></label> <label for="vrs_checkBox1" id="label_36"></label>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="vrs_checkBox4" name="pk"
+                  disabled><span class="slider"></span></label> <label for="vrs_checkBox4" id="label_32"></label>
+              <div id="pk_sublayers" class="switch-wrapper hidden">
+                <label class="switch"><input type="checkbox" class="doplnkyCheckbox pk_sublayer" id="vrs_checkBox5"
+                    name="pk"><span class="slider"></span></label> <label for="vrs_checkBox5" id="label_27"></label>
+                <label class="switch"><input type="checkbox" class="doplnkyCheckbox pk_sublayer" id="vrs_checkBox8"
+                    name="pk"><span class="slider"></span></label> <label for="vrs_checkBox8" id="label_30"></label>
+                <label class="switch"><input type="checkbox" class="doplnkyCheckbox pk_sublayer" id="vrs_checkBox6"
+                    name="pk"><span class="slider"></span></label> <label for="vrs_checkBox6" id="label_28"></label>
+                <label class="switch"><input type="checkbox" class="doplnkyCheckbox pk_sublayer" id="vrs_checkBox7"
+                    name="pk"><span class="slider"></span></label> <label for="vrs_checkBox7" id="label_29"></label>
+              </div>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="vrs_checkBox3" name="smo5"
+                  disabled><span class="slider"></span></label> <label for="vrs_checkBox3" id="label_38"></label>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="vrs_checkBox12" name="zm"
+                  disabled><span class="slider"></span></label> <label for="vrs_checkBox12" id="label_168"></label>
+            </div>
+            <b id="label_167"></b>
+            <div class="switch-wrapper mLowTop mBottom">
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="vrs_checkBox11" name="slovensko"
+                  disabled><span class="slider"></span></label> <label for="vrs_checkBox11" id="label_166"></label>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="podkl_checkBox5"
+                  name="podkl_checkBox5"><span class="slider"></span></label> <label for="podkl_checkBox5"
+                id="label_116"></label>
+            </div>
+            <b id="label_39"></b>
+            <calcite-select id="klady_select" disabled>
+              <calcite-option id="label_139" value="0" selected></calcite-option>
+              <calcite-option-group id="optgroup1">
+                <calcite-option id="label_42" value="3"></calcite-option>
+                <calcite-option id="label_41" value="2"></calcite-option>
+                <calcite-option id="label_40" value="1"></calcite-option>
+                <calcite-option id="label_45" value="6"></calcite-option>
+                <calcite-option id="label_44" value="5"></calcite-option>
+                <calcite-option id="label_43" value="4"></calcite-option>
+                <calcite-option id="label_142" value="16"></calcite-option>
+              </calcite-option-group>
+              <calcite-option-group id="optgroup2">
+                <calcite-option id="label_46" value="7"></calcite-option>
+                <calcite-option id="label_47" value="8"></calcite-option>
+                <calcite-option id="label_147" value="14"></calcite-option>
+                <calcite-option id="label_52" value="13"></calcite-option>
+              </calcite-option-group>
+              <calcite-option-group id="optgroup3">
+                <calcite-option id="label_50" value="11"></calcite-option>
+                <calcite-option id="label_169" value="15"></calcite-option>
+                <calcite-option id="label_48" value="9"></calcite-option>
+              </calcite-option-group>
+            </calcite-select>
+            <calcite-select id="meritkaTopoSelect" class="hidden mTop"></calcite-select>
+            <calcite-select id="meritkaZMSelect" class="hidden mTop"></calcite-select>
+            <calcite-select id="otiskyKMklad" class="hidden mTop">
+              <calcite-option id="label_143" value="Praha"></calcite-option>
+              <calcite-option id="label_144" value="ostatni"></calcite-option>
+            </calcite-select>
+            <div id="klady_select_legenda" class="hidden mTop"></div>
+          </div>
+          <div id="lmsAdds" class="hidden">
+            <b id="label_53"></b>
+            <div class="switch-wrapper mLowTop">
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="lms_checkBox2" name="lms_stredy"
+                  disabled><span class="slider"></span></label> <label for="lms_checkBox2" id="label_54"></label>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="lms_checkBox3"
+                  name="lms_snimky_klad" disabled><span class="slider"></span></label> <label for="lms_checkBox3"
+                id="label_55"></label>
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="lms_checkBox1" name="lms_cover"
+                  disabled><span class="slider"></span></label> <label for="lms_checkBox1" id="label_56"></label>
+            </div>
+            <div class="mTop mBottom">
+              <b id="label_59"></b>
+              <calcite-select id="selectRokLms" disabled></calcite-select>
+            </div>
+            <b id="label_57" class="mTop"></b>
+            <div class="switch-wrapper mLowTop">
+              <label class="switch"><input type="checkbox" class="doplnkyCheckbox" id="lms_checkBox4"
+                  name="archivniortofota" disabled><span class="slider"></span></label> <label for="lms_checkBox4"
+                id="label_58"></label>
+              <label class="switch hidden"><input type="checkbox" class="doplnkyCheckbox" id="lms_checkBox5"
+                  name="archivniortofota_roky" disabled><span class="slider"></span></label> <label for="lms_checkBox5"
+                id="label_117" class="hidden"></label>
+            </div>
+          </div>
+          <div class="mTop">
+            <b id="label_100"></b>
+            <calcite-select id="selectBasemapPanel">
+              <calcite-option id="label_101" value="zm"></calcite-option>
+              <calcite-option id="label_102" value="ortofoto"></calcite-option>
+              <calcite-option id="label_122" value="histortofoto"></calcite-option>
+              <calcite-option id="label_103" value="sedy"></calcite-option>
+              <calcite-option id="label_31" value="prazdna"></calcite-option>
+            </calcite-select>
+          </div>
+          <div id="volbarokuhistortofota" class="hidden">
+            <b id="label_121"></b>
+            <calcite-select id="selectOldOrtoYear"></calcite-select>
+          </div>
+        </div>
+      </calcite-panel>
+
+      <calcite-panel id="panel-prohlizeni" hidden closable>
+        <div id="ArchivVysledkyPanel" class="panelObsah">
+          <calcite-segmented-control id="vysledkySwitch" data-group="vysledky" scale="s" width="full">
+            <calcite-segmented-control-item id="switchTabVysledky" value="TabVysledky"
+              checked></calcite-segmented-control-item>
+            <calcite-segmented-control-item id="switchTabProhlizeni"
+              value="TabProhlizeni"></calcite-segmented-control-item>
+          </calcite-segmented-control>
+          <div class="panel-content mTop" data-group="vysledky" data-view="TabVysledky">
+            <div id="archivniMapyVysledky" class="myFlex">
+              <span id="stabilniKatastrLine" class="line"></span>
+              <div id="skici_vysledky" class="myFlex"></div>
+              <div id="om_stabilnihokatastru_vysledky" class="myFlex"></div>
+              <div id="cio_vysledky" class="myFlex"></div>
+              <div id="mapa_kultur_vysledky" class="myFlex"></div>
+              <div id="vykazyPloch_vysledky" class="myFlex"></div>
+              <div id="kat_evidence_vysledky" class="myFlex"></div>
+              <div id="otiskyKM_vysledky" class="myFlex"></div>
+              <span id="tretiVojMapLine" class="line"></span>
+              <div id="treti_voj_toposekce_vysledky" class="myFlex"></div>
+              <div id="treti_voj_vysledky" class="myFlex"></div>
+              <div id="generalky_vysledky" class="myFlex"></div>
+              <div id="topo1952_vysledky" class="myFlex"></div>
+              <span id="ostatniLine" class="line"></span>
+              <div id="evidence_nem_vysledky" class="myFlex"></div>
+              <div id="sm5_vysledky" class="myFlex"></div>
+              <div id="zm_vysledky" class="myFlex"></div>
+              <div id="sbirka1_vysledky" class="myFlex"></div>
+            </div>
+            <div id="lmsVysledky" class="hidden">
+              <div id="lms_vysledky" class="myFlex"></div>
+              <div id="nenaskenovaneroky"></div>
+            </div>
+          </div>
+          <div class="panel-content hidden" data-group="vysledky" data-view="TabProhlizeni">
+
+            <calcite-accordion id="accordionNakupEl" class="mBottom">
+              <calcite-accordion-item id="accordionNakup" class="myFlex">
+                <calcite-button id="btn_do_nakupniho_seznamu" width="full"></calcite-button>
+                <hr>
+                <calcite-button id="btn_objednat_vybrane" icon-start="shopping-cart" width="full"></calcite-button>
+                <calcite-button id="btn_tisk_vybrane" icon-start="print" width="full" class="mLowTop"></calcite-button>
+                <hr>
+                <calcite-button id="btn_vybrat_vse" icon-start="check" width="full"></calcite-button>
+                <calcite-button id="btn_odebrat_vse" icon-start="x" width="full" class="mLowTop"></calcite-button>
+              </calcite-accordion-item>
+            </calcite-accordion>
+            <b id="nazevproduktu"></b>
+            <div id="apr_miniatury"></div>
+          </div>
+        </div>
+      </calcite-panel>
+
+      <calcite-panel id="panel-nakupniKosik" hidden closable>
+        <div class="panelObsah">
+          <calcite-button id="nakupniSeznamKoupit" icon-start="shopping-cart" disabled></calcite-button>
+          <calcite-button id="nakupniSeznamTisknout" icon-start="print" disabled></calcite-button>
+          <calcite-button id="nakupniSeznamOdstranit" icon-start="trash" disabled></calcite-button>
+          <hr>
+          <calcite-button id="nakupniSeznamExport" icon-start="download" disabled></calcite-button>
+          <b id="nakupniSeznamNazevProduktu"></b>
+          <div id="nakupniKosikVysledky"></div>
+        </div>
+      </calcite-panel>
+
+      <calcite-panel id="panel-swipe" hidden closable>
+        <div class="panelObsah">
+          <div><b id="label_94"></b>
+          <calcite-select id="swipeZdroj0">
+          </calcite-select></div>
+          <div><b id="label_96"></b>
+          <calcite-select id="swipeZdroj1">
+          </calcite-select></div>
+          <div class="obsahSwipe">
+            <b id="label_98"></b>
+            <calcite-select id="swipeOrientace">
+              <calcite-option id="label_99" value="horizontal" selected></calcite-option>
+              <calcite-option id="label_97" value="vertical"></calcite-option>
+            </calcite-select>
+          </div>
+          <calcite-button id="useSwipe" icon-start="split-geometry" class="mTop hidden"></calcite-button>
+          <calcite-button id="label_146" class="mTop hidden"></calcite-button>
+        </div>
+      </calcite-panel>
+
+      <calcite-panel id="panel-sdileni" hidden closable>
+        <div class="panelObsah">
+          <calcite-button id="label_108"></calcite-button>
+          <calcite-button id="label_109"></calcite-button>
+          <input id="URLsdileni" type="text" style="display: none;" />
+          <hr>
+          <b id="prechodAppTitle"></b>
+          <calcite-button icon-start="launch-2" id="prechodApp1"></calcite-button>
+          <calcite-button icon-start="launch-2" id="prechodApp2"></calcite-button>
+          <calcite-button icon-start="launch-2" id="prechodApp5"></calcite-button>
+          <hr>
+          <calcite-button icon-start="launch-2" id="prechodApp4"></calcite-button>
+          <calcite-button icon-start="launch-2" id="prechodApp3"></calcite-button>
+        </div>
+      </calcite-panel>
+
+      <calcite-panel id="panel-napoveda" hidden closable>
+        <div class="panelObsah">
+          <div id="label_6"></div>
+          <a
+            href="mailto:tomas.nemecek@cuzk.gov.cz?subject=Archiv - náměty a připomínky&body=Nový Archiv je skvělý, ale..."><b
+              id="label_11"></b><span id="mailContact">(tomas.nemecek@cuzk.gov.cz)</span></a><hr>
+          <div id="label_8"></div>
+          <calcite-accordion class="mTop">
+            <calcite-accordion-item id="accordionNapoveda1">
+              <div id="label_12"></div>
+            </calcite-accordion-item>
+          </calcite-accordion>
+          <calcite-accordion>
+            <calcite-accordion-item id="accordionNapoveda2">
+              <div id="label_13"></div>
+            </calcite-accordion-item>
+          </calcite-accordion>
+          <calcite-accordion class="mBottom">
+            <calcite-accordion-item id="accordionNapoveda3">
+              <div id="label_14"></div>
+            </calcite-accordion-item>
+          </calcite-accordion>
+          <div class="flex-row">
+            <calcite-select id="settingslangSelect">
+              <calcite-option value="cs">Čeština</calcite-option>
+              <calcite-option value="en">English</calcite-option>
+            </calcite-select><img id="settingslangFlag" src="./images/cs.svg" alt="cs">
+          </div>
+          <div class="mTop">
+            <b id="label_15"></b>
+            <div>Microsoft Edge 146+</div>
+            <div>Mozilla Firefox 151+</div>
+            <div>Safari 18+</div>
+            <div>iOS 18+</div>
+            <div>Google Chrome 146+</div>
+          </div>
+          <a id="cookies" href="javascript:void(0)" rel="noopener"></a>
+          <a id="label_141" href="https://geoportal.cuzk.gov.cz/Default.aspx?mode=TextMeta&text=prohlaseni&side=about"
+            target="_blank" rel="noopener"></a>
+        </div>
+      </calcite-panel>
+    </calcite-shell-panel>
+
+    <arcgis-map id="mapView" active popup-component-enabled="true">
+      <arcgis-zoom slot="top-left"></arcgis-zoom>
+      <arcgis-track slot="top-left"></arcgis-track>
+      <arcgis-compass slot="top-left"></arcgis-compass>
+      <arcgis-scale-bar slot="bottom-right" bar-style="line" unit="metric" class="padding-bottomRight"></arcgis-scale-bar>
+      <arcgis-popup slot="popup"></arcgis-popup>
+    </arcgis-map>
+  </calcite-shell>
+  <calcite-loader label="Načítání" text="Načítání..."></calcite-loader>
+
+</body>
+
+</html>

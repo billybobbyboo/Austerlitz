@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2559965 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74109490" visible="true" version="4" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1831451" lon="16.7445665"/>
+ <node id="6459206122" visible="true" version="2" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1832859" lon="16.7445199"/>
+ <node id="6459206124" visible="true" version="2" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1832048" lon="16.7445763"/>
+ <node id="6459206125" visible="true" version="2" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1831177" lon="16.7445474"/>
+ <node id="9872044294" visible="true" version="1" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1832617" lon="16.7445474"/>
+ <node id="9872044323" visible="true" version="1" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1831746" lon="16.7445763"/>
+ <node id="9872044324" visible="true" version="1" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1832343" lon="16.7445665"/>
+ <way id="1331122470" visible="true" version="1" changeset="158794350" timestamp="2024-11-05T20:43:25Z" user="adamos" uid="25867">
+  <nd ref="6459206125"/>
+  <nd ref="74109490"/>
+  <nd ref="9872044323"/>
+  <nd ref="6459206124"/>
+  <nd ref="9872044324"/>
+  <nd ref="9872044294"/>
+  <nd ref="6459206122"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

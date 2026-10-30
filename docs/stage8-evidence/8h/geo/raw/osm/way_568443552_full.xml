@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2720518 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1647726778" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1089459" lon="16.7568422"/>
+ <node id="1647726782" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1089457" lon="16.7568559"/>
+ <node id="1647726785" visible="true" version="1" changeset="10792671" timestamp="2012-02-25T22:01:29Z" user="honny" uid="54223" lat="49.1089491" lon="16.7568004"/>
+ <node id="1647726788" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1089528" lon="16.7568207"/>
+ <node id="1647726790" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1089535" lon="16.7568802"/>
+ <node id="1647726793" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1089649" lon="16.7568911"/>
+ <node id="1647726796" visible="true" version="1" changeset="10792671" timestamp="2012-02-25T22:01:29Z" user="honny" uid="54223" lat="49.1089705" lon="16.7569073"/>
+ <node id="1647726812" visible="true" version="1" changeset="10792671" timestamp="2012-02-25T22:01:30Z" user="honny" uid="54223" lat="49.1089787" lon="16.7567877"/>
+ <node id="1647726813" visible="true" version="1" changeset="10792671" timestamp="2012-02-25T22:01:30Z" user="honny" uid="54223" lat="49.1089794" lon="16.7569122"/>
+ <node id="1647726815" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1089832" lon="16.7568089"/>
+ <node id="1647726816" visible="true" version="1" changeset="10792671" timestamp="2012-02-25T22:01:30Z" user="honny" uid="54223" lat="49.1089882" lon="16.7569085"/>
+ <node id="1647726817" visible="true" version="1" changeset="10792671" timestamp="2012-02-25T22:01:30Z" user="honny" uid="54223" lat="49.1089951" lon="16.7568955"/>
+ <node id="1647726818" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1089952" lon="16.7568814"/>
+ <node id="1647726819" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1089957" lon="16.7568205"/>
+ <node id="1647726820" visible="true" version="2" changeset="43479380" timestamp="2016-11-08T05:53:47Z" user="JandaM" uid="2169558" lat="49.1090034" lon="16.7568449"/>
+ <node id="4488031855" visible="true" version="1" changeset="43479380" timestamp="2016-11-08T05:52:28Z" user="JandaM" uid="2169558" lat="49.1090000" lon="16.7568716"/>
+ <node id="4488031856" visible="true" version="1" changeset="43479380" timestamp="2016-11-08T05:52:28Z" user="JandaM" uid="2169558" lat="49.1090031" lon="16.7568586"/>
+ <node id="4488031857" visible="true" version="1" changeset="43479380" timestamp="2016-11-08T05:52:28Z" user="JandaM" uid="2169558" lat="49.1090008" lon="16.7568317"/>
+ <node id="4488031858" visible="true" version="1" changeset="43479380" timestamp="2016-11-08T05:52:28Z" user="JandaM" uid="2169558" lat="49.1089885" lon="16.7568122"/>
+ <node id="4488031862" visible="true" version="1" changeset="43479380" timestamp="2016-11-08T05:52:28Z" user="JandaM" uid="2169558" lat="49.1089489" lon="16.7568292"/>
+ <node id="4488031863" visible="true" version="1" changeset="43479380" timestamp="2016-11-08T05:52:28Z" user="JandaM" uid="2169558" lat="49.1089483" lon="16.7568690"/>
+ <node id="4488031864" visible="true" version="1" changeset="43479380" timestamp="2016-11-08T05:52:28Z" user="JandaM" uid="2169558" lat="49.1089608" lon="16.7568884"/>
+ <node id="5467702909" visible="true" version="1" changeset="57036997" timestamp="2018-03-09T16:35:51Z" user="Clonewayx" uid="2252840" lat="49.1089639" lon="16.7567941">
+  <tag k="entrance" v="yes"/>
+ </node>
+ <way id="568443552" visible="true" version="4" changeset="185023909" timestamp="2026-07-03T07:33:34Z" user="Dvorný" uid="21967558">
+  <nd ref="1647726812"/>
+  <nd ref="1647726815"/>
+  <nd ref="4488031858"/>
+  <nd ref="1647726819"/>
+  <nd ref="4488031857"/>
+  <nd ref="1647726820"/>
+  <nd ref="4488031856"/>
+  <nd ref="4488031855"/>
+  <nd ref="1647726818"/>
+  <nd ref="1647726817"/>
+  <nd ref="1647726816"/>
+  <nd ref="1647726813"/>
+  <nd ref="1647726796"/>
+  <nd ref="1647726793"/>
+  <nd ref="4488031864"/>
+  <nd ref="1647726790"/>
+  <nd ref="4488031863"/>
+  <nd ref="1647726782"/>
+  <nd ref="1647726778"/>
+  <nd ref="4488031862"/>
+  <nd ref="1647726788"/>
+  <nd ref="1647726785"/>
+  <nd ref="5467702909"/>
+  <nd ref="1647726812"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="chapel"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="check_date" v="2023-10-15"/>
+  <tag k="description" v="Kaple svatého Antonína Paduánského v Újezdu u Brna"/>
+  <tag k="name" v="svatý Antonín Paduánský"/>
+  <tag k="official_name" v="Kaple svatého Antonína Paduánského"/>
+  <tag k="ref:drobne_pamatky" v="60257"/>
+  <tag k="ref:ruian:building" v="39874940"/>
+  <tag k="religion" v="christian"/>
+  <tag k="wikidata" v="Q38234573"/>
+ </way>
+</osm>

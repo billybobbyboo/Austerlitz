@@ -3,3 +3,5 @@
 *.jpg binary
 *.jpeg binary
 *.zip binary
+# Stage 8, 8H: the geographic research's raw responses kept byte for byte as served (their sha256 in raw/manifest.json)
+docs/stage8-evidence/8h/geo/raw/** -text

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713541 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="2853491690" visible="true" version="1" changeset="22297562" timestamp="2014-05-12T18:24:05Z" user="kwiecpav" uid="1125908" lat="49.1397087" lon="16.7316827"/>
+ <node id="2853491691" visible="true" version="1" changeset="22297562" timestamp="2014-05-12T18:24:05Z" user="kwiecpav" uid="1125908" lat="49.1397195" lon="16.7316321"/>
+ <node id="2853491696" visible="true" version="1" changeset="22297562" timestamp="2014-05-12T18:24:05Z" user="kwiecpav" uid="1125908" lat="49.1397418" lon="16.7316988"/>
+ <node id="2853491700" visible="true" version="1" changeset="22297562" timestamp="2014-05-12T18:24:06Z" user="kwiecpav" uid="1125908" lat="49.1397522" lon="16.7316491"/>
+ <way id="281397740" visible="true" version="6" changeset="188551702" timestamp="2026-09-05T02:04:35Z" user="reperfect-it_bot" uid="24283398">
+  <nd ref="2853491700"/>
+  <nd ref="2853491696"/>
+  <nd ref="2853491690"/>
+  <nd ref="2853491691"/>
+  <nd ref="2853491700"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="chapel"/>
+  <tag k="building:flats" v="0"/>
+  <tag k="building:levels" v="0"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="description" v="Zvonice v Kobylnicích"/>
+  <tag k="name" v="Panna Maria Sněžná"/>
+  <tag k="ref:drobne_pamatky" v="54583"/>
+  <tag k="ref:ruian:building" v="39854523"/>
+  <tag k="religion" v="christian"/>
+  <tag k="roof:colour" v="red"/>
+  <tag k="roof:shape" v="pyramidal"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="wikidata" v="Q37423595"/>
+ </way>
+</osm>

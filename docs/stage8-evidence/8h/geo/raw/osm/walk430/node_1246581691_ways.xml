@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2692139 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="171410404" visible="true" version="10" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="1824437092"/>
+  <nd ref="2474100806"/>
+  <nd ref="299977514"/>
+  <nd ref="13736054442"/>
+  <nd ref="13736054443"/>
+  <nd ref="13736054444"/>
+  <nd ref="21380665"/>
+  <nd ref="13736054445"/>
+  <nd ref="13736054446"/>
+  <nd ref="13736054447"/>
+  <nd ref="1326861692"/>
+  <nd ref="13736054448"/>
+  <nd ref="3305512964"/>
+  <nd ref="3459612385"/>
+  <nd ref="27203452"/>
+  <nd ref="3305512965"/>
+  <nd ref="3459612386"/>
+  <nd ref="21380668"/>
+  <nd ref="3459612387"/>
+  <nd ref="11742250988"/>
+  <nd ref="1246581691"/>
+  <nd ref="11742250594"/>
+  <nd ref="3459612388"/>
+  <nd ref="27203451"/>
+  <nd ref="3459612389"/>
+  <nd ref="1246609696"/>
+  <nd ref="3459612390"/>
+  <nd ref="21380671"/>
+  <nd ref="1246609705"/>
+  <nd ref="3459612391"/>
+  <nd ref="1246609692"/>
+  <nd ref="27203453"/>
+  <nd ref="21380674"/>
+  <tag k="electrified" v="contact_line"/>
+  <tag k="frequency" v="50"/>
+  <tag k="gauge" v="1435"/>
+  <tag k="maxspeed" v="70"/>
+  <tag k="railway" v="rail"/>
+  <tag k="railway:etcs" v="no"/>
+  <tag k="railway:ls" v="no"/>
+  <tag k="railway:lzb" v="no"/>
+  <tag k="railway:preferred_direction" v="both"/>
+  <tag k="railway:pzb" v="no"/>
+  <tag k="railway:radio" v="trs"/>
+  <tag k="railway:track_class" v="C3"/>
+  <tag k="railway:traffic_mode" v="mixed"/>
+  <tag k="ref" v="300"/>
+  <tag k="source:maxspeed" v="sign"/>
+  <tag k="usage" v="main"/>
+  <tag k="voltage" v="25000"/>
+ </way>
+ <way id="969885822" visible="true" version="5" changeset="177370002" timestamp="2026-01-18T12:29:18Z" user="JBS21" uid="13953005">
+  <nd ref="1246581691"/>
+  <nd ref="8975303011"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1382099766" visible="true" version="3" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="74275307"/>
+  <nd ref="13736054487"/>
+  <nd ref="11742250596"/>
+  <nd ref="1246581691"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2516060 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74151749" visible="true" version="2" changeset="5575513" timestamp="2010-08-23T21:31:13Z" user="hanoj" uid="4788" lat="49.1822600" lon="16.6852970"/>
+ <node id="74279843" visible="true" version="5" changeset="18692961" timestamp="2013-11-03T12:33:13Z" user="Petr Dlouhý" uid="17615" lat="49.1822452" lon="16.6894065"/>
+ <node id="74292200" visible="true" version="3" changeset="18212018" timestamp="2013-10-06T12:59:29Z" user="hopet" uid="191339" lat="49.1822121" lon="16.6864576"/>
+ <node id="2484981716" visible="true" version="1" changeset="18212018" timestamp="2013-10-06T12:59:17Z" user="hopet" uid="191339" lat="49.1822254" lon="16.6880867"/>
+ <node id="2484981717" visible="true" version="1" changeset="18212018" timestamp="2013-10-06T12:59:17Z" user="hopet" uid="191339" lat="49.1823653" lon="16.6835822"/>
+ <node id="4461601974" visible="true" version="1" changeset="43119681" timestamp="2016-10-24T10:58:16Z" user="jirislaby" uid="476713" lat="49.1822899" lon="16.6848100"/>
+ <way id="240806174" visible="true" version="11" changeset="162428649" timestamp="2025-02-12T12:44:10Z" user="JBS21" uid="13953005">
+  <nd ref="2484981717"/>
+  <nd ref="4461601974"/>
+  <nd ref="74151749"/>
+  <nd ref="74292200"/>
+  <nd ref="2484981716"/>
+  <nd ref="74279843"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:right" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

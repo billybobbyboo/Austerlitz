@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2720518 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="28211002" visible="true" version="16" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014">
+  <nd ref="288553700"/>
+  <nd ref="392271288"/>
+  <nd ref="9700868615"/>
+  <nd ref="10765836511"/>
+  <nd ref="12048133397"/>
+  <nd ref="12048133401"/>
+  <nd ref="12048133400"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="tertiary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Bedřichovická"/>
+  <tag k="ref" v="15283"/>
+  <tag k="sidewalk" v="left"/>
+  <tag k="sidewalk:left:surface" v="paving_stones"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="source:ref" v="rsd_cr"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1055738879" visible="true" version="8" changeset="160322820" timestamp="2024-12-17T21:25:19Z" user="Mar4s" uid="461574">
+  <nd ref="12048133400"/>
+  <nd ref="392092110"/>
+  <nd ref="308975805"/>
+  <nd ref="392092109"/>
+  <nd ref="308975816"/>
+  <nd ref="392092108"/>
+  <nd ref="308975815"/>
+  <tag k="bus" v="yes"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="opening_date" v="2024-12-14"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1056528349" visible="true" version="7" changeset="160322820" timestamp="2024-12-17T21:25:19Z" user="Mar4s" uid="461574">
+  <nd ref="12048133263"/>
+  <nd ref="308975811"/>
+  <nd ref="392092113"/>
+  <nd ref="392092111"/>
+  <nd ref="308975810"/>
+  <nd ref="12048133400"/>
+  <tag k="bus" v="yes"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="opening_date" v="2024-12-14"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2992919 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74109067" visible="true" version="2" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829318" lon="16.6734737">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Vozovna Slatina"/>
+  <tag k="public_transport" v="stop_position"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="trolleybus" v="yes"/>
+ </node>
+ <node id="4237654660" visible="true" version="2" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829367" lon="16.6733845"/>
+ <node id="5372064809" visible="true" version="3" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829793" lon="16.6726680"/>
+ <node id="6199691567" visible="true" version="2" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829725" lon="16.6727820">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Vozovna Slatina"/>
+  <tag k="public_transport" v="stop_position"/>
+  <tag k="trolleybus" v="yes"/>
+ </node>
+ <node id="12578509912" visible="true" version="1" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829521" lon="16.6731501"/>
+ <node id="12578509952" visible="true" version="1" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829123" lon="16.6738767"/>
+ <way id="1055838699" visible="true" version="3" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="5372064809"/>
+  <nd ref="6199691567"/>
+  <nd ref="12578509912"/>
+  <nd ref="4237654660"/>
+  <nd ref="74109067"/>
+  <nd ref="12578509952"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="trolley_wire" v="yes"/>
+ </way>
+</osm>

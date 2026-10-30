@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2696428 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="114070777" visible="true" version="4" changeset="188001210" timestamp="2026-08-25T16:56:32Z" user="MIGORMCZ" uid="10284764" lat="49.1840865" lon="16.8131823"/>
+ <node id="299679706" visible="true" version="1" changeset="694276" timestamp="2008-09-25T11:22:07Z" user="Ivan M" uid="57845" lat="49.1845427" lon="16.8227478"/>
+ <node id="3816701232" visible="true" version="3" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1846599" lon="16.8240960">
+  <tag k="name" v="Kovalovice"/>
+  <tag k="traffic_sign" v="city_limit"/>
+ </node>
+ <node id="5672410525" visible="true" version="1" changeset="59634968" timestamp="2018-06-07T11:54:19Z" user="marnov" uid="2807738" lat="49.1841424" lon="16.8144564"/>
+ <node id="8140083836" visible="true" version="2" changeset="186134752" timestamp="2026-07-21T18:59:13Z" user="MIGORMCZ" uid="10284764" lat="49.1845644" lon="16.8231026"/>
+ <node id="8140083837" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1846049" lon="16.8235646"/>
+ <node id="13310441289" visible="true" version="1" changeset="174758914" timestamp="2025-11-17T07:42:07Z" user="stl88" uid="10334355" lat="49.1843592" lon="16.8189475"/>
+ <node id="14123175956" visible="true" version="1" changeset="188001210" timestamp="2026-08-25T16:56:32Z" user="MIGORMCZ" uid="10284764" lat="49.1840891" lon="16.8133324"/>
+ <way id="532819678" visible="true" version="10" changeset="188001210" timestamp="2026-08-25T16:56:32Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="3816701232"/>
+  <nd ref="8140083837"/>
+  <nd ref="8140083836"/>
+  <nd ref="299679706"/>
+  <nd ref="13310441289"/>
+  <nd ref="5672410525"/>
+  <nd ref="14123175956"/>
+  <nd ref="114070777"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

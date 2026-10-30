@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3004717 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="11088737347" visible="true" version="1" changeset="139430088" timestamp="2023-08-04T08:46:05Z" user="Eith" uid="10304669" lat="49.1883984" lon="16.8406799"/>
+ <node id="11088737348" visible="true" version="1" changeset="139430088" timestamp="2023-08-04T08:46:05Z" user="Eith" uid="10304669" lat="49.1884315" lon="16.8407931"/>
+ <way id="1194686168" visible="true" version="6" changeset="178441550" timestamp="2026-02-12T08:18:49Z" user="JBS21" uid="13953005">
+  <nd ref="11088737348"/>
+  <nd ref="11088737347"/>
+  <tag k="bridge" v="yes"/>
+  <tag k="foot" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="layer" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="maxweight:signed" v="no"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

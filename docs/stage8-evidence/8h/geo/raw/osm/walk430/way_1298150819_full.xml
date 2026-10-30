@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2720536 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="3859497832" visible="true" version="6" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1830092" lon="16.7225845"/>
+ <node id="3859497834" visible="true" version="6" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1830567" lon="16.7225266"/>
+ <node id="7733507015" visible="true" version="1" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1830351" lon="16.7225597"/>
+ <way id="1298150819" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="3859497832"/>
+  <nd ref="7733507015"/>
+  <nd ref="3859497834"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+</osm>

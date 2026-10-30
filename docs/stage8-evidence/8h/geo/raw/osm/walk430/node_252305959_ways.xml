@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3004695 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="9584044" visible="true" version="21" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="74106873"/>
+  <nd ref="1690471566"/>
+  <nd ref="74230773"/>
+  <nd ref="74153823"/>
+  <nd ref="74268668"/>
+  <nd ref="74138921"/>
+  <nd ref="4682937241"/>
+  <nd ref="12461346401"/>
+  <nd ref="74255658"/>
+  <nd ref="12461346411"/>
+  <nd ref="74285870"/>
+  <nd ref="74185631"/>
+  <nd ref="13625611776"/>
+  <nd ref="13625611774"/>
+  <nd ref="13625611775"/>
+  <nd ref="74273392"/>
+  <nd ref="13625611772"/>
+  <nd ref="13625611770"/>
+  <nd ref="13625611771"/>
+  <nd ref="74175567"/>
+  <nd ref="13625611773"/>
+  <nd ref="4682937242"/>
+  <nd ref="250131989"/>
+  <nd ref="9597503671"/>
+  <nd ref="252305959"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed:backward" v="70"/>
+  <tag k="maxspeed:forward" v="90"/>
+  <tag k="name" v="Rohlenka"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:right" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="source:maxspeed:backward" v="sign"/>
+  <tag k="source:maxspeed:forward" v="CZ:rural"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="156814435" visible="true" version="4" changeset="142295124" timestamp="2023-10-08T09:41:45Z" user="JBS21" uid="13953005">
+  <nd ref="1690471549"/>
+  <nd ref="252305959"/>
+  <tag k="highway" v="footway"/>
+  <tag k="lit" v="yes"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="survey"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="156814447" visible="true" version="10" changeset="178760028" timestamp="2026-02-19T09:03:46Z" user="JBS21" uid="13953005">
+  <nd ref="252305959"/>
+  <nd ref="10781715996"/>
+  <nd ref="10781715991"/>
+  <nd ref="250131991"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="70"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:right" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

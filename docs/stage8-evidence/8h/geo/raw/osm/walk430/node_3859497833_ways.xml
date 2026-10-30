@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2573967 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="27296078" visible="true" version="24" changeset="142807803" timestamp="2023-10-19T11:50:25Z" user="JBS21" uid="13953005">
+  <nd ref="1432459899"/>
+  <nd ref="5169043274"/>
+  <nd ref="5951823830"/>
+  <nd ref="3859497833"/>
+  <tag k="highway" v="tertiary"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="37370"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="source:ref" v="rsd_cr"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="4"/>
+ </way>
+ <way id="1298150821" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="3859497834"/>
+  <nd ref="7733507014"/>
+  <nd ref="3980611357"/>
+  <nd ref="3859497833"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+ <way id="1298150822" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="3859497833"/>
+  <nd ref="3859497831"/>
+  <nd ref="3980611358"/>
+  <nd ref="7273885529"/>
+  <nd ref="3859497829"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+</osm>

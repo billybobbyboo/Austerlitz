@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713541 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="27296451" visible="true" version="28" changeset="142808319" timestamp="2023-10-19T11:51:41Z" user="JBS21" uid="13953005">
+  <nd ref="74237813"/>
+  <nd ref="7733506993"/>
+  <nd ref="5951823829"/>
+  <nd ref="9729479360"/>
+  <nd ref="299656592"/>
+  <nd ref="299656589"/>
+  <tag k="destination:forward" v="Šlapanice;Bedřichovice"/>
+  <tag k="highway" v="tertiary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="name" v="Hlavní"/>
+  <tag k="ref" v="4171"/>
+  <tag k="sidewalk" v="separate"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="source:ref" v="rsd_cr"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1298150817" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="74237813"/>
+  <nd ref="3859497826"/>
+  <nd ref="3980608353"/>
+  <nd ref="913808713"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+ <way id="1298150820" visible="true" version="1" changeset="153419528" timestamp="2024-07-01T16:16:34Z" user="adamos" uid="25867">
+  <nd ref="3859497825"/>
+  <nd ref="3980608351"/>
+  <nd ref="7273885527"/>
+  <nd ref="74237813"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.8"/>
+ </way>
+</osm>

@@ -3,7 +3,9 @@
 **Status: Part A, the specification, is complete and merged (PR #64, `main` at `d86835e`). The owner decided its questions 239-253 on
 24 October 2026 (section 0.3, the decisions with their qualifications, and the points they settle in this text); the implementation follows
 the plan of section 10 in eight implementation PRs, 8A to 8H, of which 8A (section 13) and 8B (section 14, added by its own PR, stacked on
-8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15; merged into `main`, #68) in its own session, after the owner decided question 254, and 8D (section 16; merged into `main`, #69) in its own, after the owner decided questions 255-258, and 8E (section 17; merged into `main`, #70) in its own, and 8F (section 18; draft PR #71) in its own. Names (section 0.4): "Stage 8 Part A" is this specification only;
+8A's) are built in the session that recorded the decisions, both now in `main` (#65; #66 into 8A's branch, brought into `main` by #67), and 8C (section 15; merged into `main`, #68) in its own session, after the owner decided question 254, and 8D (section 16; merged into `main`, #69) in its own, after the owner decided questions 255-258, and 8E (section 17; merged into `main`, #70) in its own, and 8F (section 18; merged into `main`, #71) in its own, and 8G (section 19, written
+in 8H; merged into `main`, #72, at `636cc5d`) in its own, and 8H (section 20; the final integration, polish and verification, built on
+`claude/sharp-faraday-g2uy8o` for review, not merged) in its own. Names (section 0.4): "Stage 8 Part A" is this specification only;
 "implementation PR 8A" is the first of the implementation PRs. Nothing below section 12 was written in Part A, and the decisions for 8C-8H
 set their direction and constraints only: none of them is implemented or verified until its own PR says so.**
 
@@ -201,7 +203,9 @@ those is implemented or verified by 8A or 8B.**
   street-and-yard pattern and add supported landmarks after research and a documented data task. Keep later maps' relevance to 1805
   explicitly qualified. Unestablished roofing and other forms must remain labelled design conventions. Preserve village locations, footprints
   and symbolic scale. Do not replace the existing church silhouettes with the prototype's weaker generic towers without adequate evidence and
-  a convincing visual result. Any proposed geographic correction must be identified and reviewed as such." *8G; not implemented.*
+  a convincing visual result. Any proposed geographic correction must be identified and reviewed as such." *Applied in 8G (section 19,
+  written in 8H; merged, #72); its acceptance discrepancies corrected or put to the owner in 8H (section 20.3), its proposed geographic
+  corrections reviewed in 8H (section 20.6), none made.*
 - **249, culling: option (a).** "For 8D, cull figure blocks using correct per-block bounds before adding richer models. Account for changing
   formation shape, terrain seating, animation and shadow visibility. Verify that visible figures and their shadows do not disappear
   incorrectly." *Applied in 8D (section 16).*
@@ -4072,3 +4076,181 @@ the runs beside it. On CI, GitHub's `ubuntu-latest` runners. On the commits name
   where the prerequisites required (the gait's pause and its ground contact); the trees cast the shadows of their new crowns. Decision 245 (a)
   kept: no facings; the drivers and the artillery as 8E drew them.
 - **Not measured**: a GPU's frame time (software WebGL here); Safari (no WebKit here); memory on a device.
+
+## 19. Implementation PR 8G as built (29 October 2026; this record written in 8H, 30 October 2026)
+
+**Status.** Built on `claude/great-pasteur-pi33mf` (PR #72, base `main` at `51d4a15`, PR #71's merge: implementation PR 8F), merged into `main`
+by the owner on 29 October 2026 (`636cc5ddba6c146ecabff01e6d7c86738add0e4b`). It applied decision 248 (a) (section 0.3) after the two
+prerequisites 8F handed on (section 18.10, items 3 and, from 8F's review, the near detail's gradients) and a third found on the way, each in a
+commit of its own, then the data task and the buildings. **The PR's code was merged ahead of its record:** the commits, the code's comments, the
+self-test's checks and the evidence README cited this section (19, 19.1, 19.2, 19.5) before it was written; implementation PR 8H wrote it from the
+commits, CI's runs and reports, the committed evidence and measures made again on the exact builds (each named by its md5). What 8H reconstructed
+is said to be so where it is cited (sections 19.6 and 19.7; `docs/stage8-evidence/8g/README.md`).
+
+**In numbers.** The prerequisites: a block at rest drawn the same in every frame (between two frames with the clock standing, 247 to 294 objects'
+matrices moved by up to 1.4e-7 units on 8F's build, 0 since); the ground's atlas mapped as painted (eight of the twelve cover cells had worn
+another row's grain); the near detail's gradients taken outside its fade's branch. The data task: 76 readings of the texts and the stable
+cadastre's sketches of 1825-1826 read on their page images, 32 claims checked a second time (11 corrected), `BUILDINGS` and `CHAPELS` added,
+`APPEARANCE_SOURCES` and `CHURCHES` changed. The buildings: 177 farmsteads for the build's 179 houses (Satschan 5 of 7), 150 of them an L, 27
+buildings at the back of the yards, 10 churches and chapels, the Sokolnitz castle and its farm, the Austerlitz château, Telnitz's churchyard
+wall, fences round Telnitz and Sokolnitz (625 records); the self-test 302 to 313 checks, 313 of 313 on CI's browser; the frame +9 draw calls and
++31,740 triangles on every desktop landscape view (+1.5% to +1.8%), +5 and +23,010 on a phone's (+1.9% to +3.0%), nothing on the paper map, at
+1x or at the eye level; `check:visual` on CI passing (its 39 cases, 208 minutes).
+
+### 19.1 Prerequisites 0 and 1: a block at rest drawn the same in every frame; the ground's atlas mapped as painted (`1c427d1`, `f24d944`)
+
+- **Prerequisite 0 (`1c427d1`; found while verifying prerequisite 1).** The self-test's gait check saw 2 pixels change between two frames four
+  settles apart with the clock standing. `poseBlock` eased each block's shape, tilt and heading toward its target on every frame and stopped
+  asking for frames within 0.002 of it, but eased on below that, about 1e-9 a frame. Measured by `tools/stage8/rest-8g.js` (two frames of the low
+  Pratzen view, the camera fixed, every object's world matrix compared): on 8F's build 294, 256, 247 and 122 objects moved at 09:05, 10:40, 13:50
+  and 15:05, by up to 1.4e-7 units; on the fix's build 0 at each (`docs/stage8-evidence/8g/rest-pre0.json`). Within the threshold each eased value
+  now takes its target exactly; a loose body's sway eased on, taking its swayed heading exactly within 1e-6. `css-test.js`'s block "a block at
+  rest" holds it; each of 8F's three easings put back fails it (`mutate-css-pre0.json`). The self-test 301 of 301 here
+  (`selftest-pre0-local.json`, Chromium 153; its motion block failing in this browser as on 8F's build, pops 988 against CI's 985 and flickers 11
+  against 10, its counts pinned to CI's browser). Build `27b54e45...`, 2,608,344 bytes.
+- **Prerequisite 1 (`f24d944`; 8F's finding, section 18.10 item 3).** three uploads a canvas flipped (`CanvasTexture`'s `flipY`), so for cell k
+  the shader drew the canvas's cell (k mod 4, 2 - floor(k/4)) upside down: eight of the twelve cells wore another row's grain (the open field, the
+  meadow, the marsh and the water the plough's, the pasture's, the winter sowing's and the trodden ground's, and the reverse) in the colour atlas,
+  the normal atlas and 8F's near detail. Both atlases are uploaded as painted; the photographs' normal maps (OpenGL's convention, green toward the
+  image's top) are turned over as they are blended in, so the atlas has one convention; the water cell takes a photograph of its own (the mud),
+  tinted so that the class keeps the tone the flip had shown for it (a design value: drawn correctly without one, its pale ripple read as a blue
+  band beside every stream); `atlasLum` follows the upload. The self-test's new check (the manifest 301 to 302): each cell forced over the ground
+  and read through the GPU straight down, for the atlases as the photographs repainted them and for the procedural ones painted afresh, against
+  what each of the 12 cells would show the right way up or flipped in u, v or both (48 expectations), its own the nearest and every other at least
+  half its difference further off; the normals' direction correlated with the painted slopes and the repainted normals integrable; every mutation
+  of what it holds fails it (`tools/stage8/mutate-8g.js`, `mutate-pre1.json`); `css-test.js` holds the upload, the painters, the turned green and
+  the debug outputs off as built. Measured (`tools/stage8/classtone-8g.js`, `classtone-pre1.json`, five views): every class's tone within about 2%
+  but the winter sowing (6% to 15% lighter), the marsh (4% to 8% darker), the plough (2% to 3% darker) and the stubble (2% to 4% lighter), each now
+  its own grain; the atlas through the GPU before and after (`tools/stage8/atlas-8g.js`, `atlas-8f.json`, `atlas-pre1.json` and their sheets); the
+  paper map identical. The self-test 302 of 302 here (`selftest-pre1-local.json`). Build `1dbb7d85...`, 2,624,565 bytes.
+
+### 19.2 Prerequisite 2: the near detail's gradients taken before its fade's branch (`bf97e9e`; 8F's review, section 18.5)
+
+`GROUND_FRAG_DETAIL` took `dFdx` and `dFdy` inside the fade's test, which differs between the four fragments of a quad at the fade's far edge, and a
+derivative taken there is undefined in GLSL. The coordinates and both gradients are now taken under the uniforms' test alone (the landscape's
+mode, the detail on, the self-test's debug sample), the texture still sampled only where the fade is on, through `textureGrad` with those
+gradients. `css-test.js` holds the order; each mutation fails it (`tools/stage8/mutate-css-8g.js`, `mutate-css-pre2.json`). Found and left,
+harmless: the viewshed's `texture2D(uVS, ...)` inside a non-uniform test (one level, nearest filtering: no level of detail is chosen). Build
+`6144b577...`, 2,625,059 bytes. No visible effect was expected; 8H's captures (section 19.7) compare the views where the detail is drawn, fades and
+is not drawn.
+
+### 19.3 The data task (`7e989a1`; decision 248 (a): "add supported landmarks after research and a documented data task")
+
+The sources were read first, every quotation on its page image (`docs/stage8-evidence/8g/`): the texts' register `readings-texts.md` (76 entries
+in seven sections, T1 to T7: Wolny's topography of the Brünn district, 1836-1837; Schwoy's of Moravia, 1793; Wolný's church topography of the
+Brünn diocese, 1856-1861; what the stable cadastre's colours mean, the Instruction of 1824; the roofing, every statement found; the battle
+accounts on the villages' edges and the landmarks; corrections to earlier registers), its negatives (`negatives.md`) and works (`sources.md`);
+the cadastre's indication sketches of 1825-1826 for Sokolnitz, Telnitz, Pratzen and Kobelnitz with Puntowitz read at the Moravian Land Archive's
+highest level (`readings-cadastre.md`, eleven crops in `cadastre/`); the landmarks' modern places in the map's frame (`places.md`); and a second
+reader's check of every claim on its page image (`quote-check.md`: 32 claims, 21 right as drafted, 11 corrected, all applied).
+`APPEARANCE_SOURCES` changed (eleven works added, every other entry byte-identical); `BUILDINGS` added (guarded: every value a claim with source,
+locator, grade, label, quotation and a scope saying how it bears on 1805, or generic with its reason; the roofs and the counts generic; the
+Sokolnitz castle's walled orchard disputed and not drawn; Telnitz's churchyard walled in the battle, attributed; `notDrawn`, what the sources
+name and the map does not draw, each with its reason and the alternatives put to the owner); `CHURCHES` changed (Satschan and Menitz added;
+Girzikowitz, Kobelnitz, Sokolnitz and Blasowitz removed, no church being named there in 1793, 1836-1837 or 1856-1861; Holubitz moved to
+`CHAPELS`, added). `test.js` holds `BUILDINGS`, each rule made to fail (`tools/stage8/mutate-test-8g.js`, `mutate-test-data.json`).
+`check:data`'s reference moved to the data task's build, `archive/stage8g-84fe987b.html` (against the step-5c/8E reference 130 data declarations
+identical). The full list is `CHANGELOG.md`'s 8G entry. Build `84fe987b...`, 2,656,947 bytes.
+
+### 19.4 The villages and the landmarks (`dddd4e4`; decision 248 (a))
+
+- **The villages** (`world.js` `VILL8G`, `v8PlanAt`, `villagePlan8g`, `planBuildings8g`): laid out on the sketches' pattern, applied to 1805 as an
+  inference (`BUILDINGS.plan`): each farmstead an L along the drawn roads through its village's place (then its streams' banks, then a lane), the
+  long range back along the plot's northern boundary on most plots (`VILL8G.north` 0.85), a range along the street, a building at the back of the
+  yard on the share its village's sketch gives (timber at Pratzen and Kobelnitz). The farmsteads' count is the build's symbol count (`VILLAGES`)
+  but at Satschan, five of seven (its drawn place half under the drawn mere's ice, the Littawa across the rest, its church in it; the self-test's
+  `FARMS8G` names the exception with its reason). Every building's centre in its village's place as the paper map draws it and its corners within
+  the place's margin, clear of the drawn roads and streams (their ribbons as the landscape draws them), the meres' ice as drawn, the trees and each
+  other, and off every other farmstead's plot (the first draft left 51 buildings on another's plot); each plot at the first size where it stands,
+  smaller only in the tight spots; the plan seeded and made again the same to the last coordinate. As built: 177 farmsteads, 150 of them with
+  their range along the street, 27 a long range alone where the street left no room for it (the dossiers said "each an L" of every village:
+  corrected in 8H, section 20.3), 27 buildings at the back of the yards, 625 records; 372 of 372 buildings in their village's place; their centres
+  on the ground's drawn village class 308 of 372 (83%; 0% at Sokolnitz, 5% at Telnitz and 19% at Kobelnitz, where the drawn class is the water's
+  or the marsh's along the streams, 100% in eleven villages).
+- **The roofs** a design convention (no source read names the villages' roofing): thatch, tile on about one farmstead in six (`BLD8G.tile` 0.17:
+  32 of 153 village farmsteads as drawn), the town of Austerlitz tiled (Schwoy 1793), the manors and the churches tiled; a building's walls never
+  choose its roof. The walls whitewashed on a darker plinth; the timber buildings boarded; the thatch textured.
+- **The churches** where a source names one standing in 1805 (`CHURCHES`), in the build's silhouette, each at its village's point moved the least
+  step that clears the drawn roads and streams through it (the build's stood on them, Telnitz's in the Goldbach); Holubitz's chapel at half a
+  church's size; Austerlitz's church the temple the church topography of 1860 describes (six columns under a pediment, its tower no higher than its
+  roof), its château by it within a quarter-turn of its bearing today (drawn at 323 degrees, the bearing today 236: corrected in 8H, section 20.3);
+  the Sokolnitz castle the closed quadrangle of 1825 and 1837, its east range the deepest and two storeys, by the map's legacy place moved off the
+  drawn brook, its farm south of it; 8F's ring of wall round the castle removed, no wall round its orchard (disputed) or its pheasantry (unread);
+  Telnitz's churchyard walled with its gate (attributed); post-and-rail fences round Telnitz and Sokolnitz, their course a convention. Not drawn:
+  St Anthony's chapel, the Santon's chapel, the Sokolnitz granary (`BUILDINGS.notDrawn`).
+- **On the ground** at every factor (each building's floor and plinth from the drawn ground under its footprint, read exactly; the fences' and
+  walls' runs sheared along the slope with plumb posts), laid again whenever the ground is rescaled; none at 1x, on the paper map or at the eye
+  level. **The dossiers:** each village's and the town's names the claims its buildings rest on ("Buildings drawn here"); the sources sheet says
+  how the villages are drawn, with every church's and the chapel's claim (ten villages have no dossier of their own) and each village drawn with
+  fewer farmsteads than the map's symbol.
+
+### 19.5 The geographic corrections proposed, not made (`places.md`)
+
+No landmark was moved to its own place: decision 248 (a) asks that "any proposed geographic correction must be identified and reviewed as such".
+`places.md` (a research reader's note of 28 October 2026, the landmarks' modern positions converted into the map's frame by `GEOREF`) proposed:
+the Sokolnitz castle about 535 m north-west of the drawn one, across a drawn Goldbach that runs 0.3 to 0.5 km west of the stream there; the
+pheasantry's enclosure 2.3 km north of the drawn wood (north of the castle, not south-east of the village); Pratzen's church about 400 m south of
+the village's point, outside the village; the Posoritz post house 1,367 m south-east of its drawn place, on the old road, which the map draws up to
+1.2 km north of its course east of the Santon; the château garden at Austerlitz west of the château, the drawn park 2 km south-east. The note's
+companion files (`places.json`, `raw/`, the figures and the scripts) were not committed, so its numbers could not be reproduced from the
+repository; 8H made the research inputs again where the network allowed and reviewed each proposal (section 20.6,
+`docs/stage8-evidence/8h/geo/`).
+
+### 19.6 The checks, and the frame's cost
+
+- **The self-test** 302 to 313 checks (the manifest written from a passing run): at each factor the buildings on the drawn ground (each read as
+  drawn: the plinth's foot below the lowest ground under it, the walls on their plinths, the runs' ends on the ground) and none at 1x; the 8G
+  block: the farmsteads and the plan made again; every building in its village's place, the share on the drawn class reported; clear of the
+  ribbons, the ice, the trees and each other; the plots; the presentations; the landmarks; the dossiers; the roofs. On CI (Chromium 141) 313 of 313,
+  every live block passing (`docs/stage8-evidence/8g/selftest-ci-dddd4e4.json`, CI's own report, run 40870570661). `css-test.js`'s block "the
+  buildings" (the values, what is read from the claims, the roofs, the walls, the plan seeded, the ground read exactly, the layers); `runtime-test.js`
+  plans the buildings headless; the height guard classifies the new ground reads; the harness's census names the building meshes.
+- **The frame's cost**, from CI's own `check:visual` reports, 8F's (run 40665840278, build `6ba949da...`) against 8G's (run 40870570661, build
+  `508927e6...`), one frame as a visitor's page draws it in each of the 39 cases (`tools/stage8/census-8g.js`; written in 8H; `census-ci.json`,
+  `census-ci.md` in `docs/stage8-evidence/8g/`): on every desktop landscape view +9 draw calls and +31,740 triangles (+1.46% to +1.79%), the
+  buildings from 6 calls and 8,712 triangles to 17 and 42,420 (14,070 of them in the shadow pass); on the phones (low tier, no shadow) +5 calls and
+  +23,010 triangles (+1.87% to +3.01%; 4,356 to 28,350); the paper map, 1x and the eye level unchanged (no building drawn). The largest desktop frame
+  2,205,033 triangles (`narrow-1024`) and 862 draw calls (`plans-overview`), within section 8.3's 2.8 million and 900; the largest phone frame
+  1,251,075 triangles, within its 1.62 million. The buildings' meshes are drawn whole in every landscape view (not culled: one instanced mesh a
+  kind over the whole field).
+
+### 19.7 The captures (reconstructed in 8H)
+
+The README of `docs/stage8-evidence/8g/` cited `stills-pre1.json`, `stills-pre2.json` and their pairs, and `selftest-pre2-local.json`, which were
+not committed, and no capture of the buildings was committed. 8H made them again with 8G's own tool (`tools/stage8/stills-8g.js`, unchanged) on the
+exact builds, in this container's Chromium 153 and software WebGL, at 1600 x 900 (390 x 844 for the phone's view), each pair side by side with
+the share of the frame whose grey changed by more than 8 of 255 (every page's programs linked, no page error):
+- **Prerequisite 1** (`stills-pre1.json`, `pairs/pre1-*.jpg`, 8F's build against prerequisite 1's): the fields low and close 11.3% and 12.7% of
+  the frame changed, the Goldbach at noon 14.0%, the Littawa's bank 13.1%, the marsh bottoms 6.9%, the going layer 6.4%, a phone's fields 5.4%,
+  the low Pratzen view 2.1% and the Overview 1.3% (each cell now its own grain); the stream in the valley fog 0.1%; the paper map 0% (it draws no
+  texture).
+- **Prerequisite 2** (`stills-pre2.json`, `pairs/pre2-*.jpg`, prerequisite 1's against prerequisite 2's): 0% in all ten views, where the near
+  detail is drawn, where it fades out and where it is not: no visible effect, as expected.
+- **The buildings** (`stills-8g.json`, `pairs/8g-*.jpg`, prerequisite 2's against 8G's; the captures 8G's own README did not list): the
+  villages close and low 6.8% to 18.8% of the frame (the Sokolnitz castle 18.8%, Austerlitz 15.8%, Sokolnitz at noon 14.8%, Pratzen close 12.3%,
+  Telnitz 8.9% and 9.6%, Kobelnitz and Puntowitz 9.0%, a phone at Telnitz 8.2%), from afar 1.0% to 3.7% (the Overview, the low Pratzen view, the
+  meres at Augezd), at 10.33x 1.8%; at 1x, on the paper map and at the eye level 0% (no building drawn there, as built).
+CI's own captures of the same cases on 8F's and 8G's builds, from the two `check:visual` runs (not reconstructed), are `ci-pairs/` (seven
+cases).
+
+### 19.8 What was run
+
+Here (the 8G session's container: Chromium 153.0.8010.12, software WebGL; CI runs 141.0.7390.37, Playwright 1.56's headless shell, the browser
+the motion block's counts are pinned to): on each prerequisite's build `npm test` (all nine suites and the height guard) and the self-test (301
+of 301, 302 of 302; `selftest-pre0-local.json`, `selftest-pre1-local.json`), the measures and mutations of sections 19.1 and 19.2; on the data
+task's build `npm test` (the language scan 0 findings, one scope reworded); on 8G's build `npm test`, `check:data` (134 of 134 declarations
+identical to `archive/stage8g-84fe987b.html`), `check:chronology` (0 errors) and the self-test, 313 of 313 (the motion block failing in this browser
+exactly as on 8F's, character for character). On CI (`ubuntu-latest`, Chromium 141.0.7390.37), on `7e989a1` (the data task): the push run
+40865614417 and the pull request's 40865656626 pass every job; on `dddd4e4` (8G): the push run 40870563554 (the checks job, `npm test` 5 min 22 s;
+`check:contrast` 17 min 40 s; `check:selftest` 43 min 13 s), the pull request's 40870571183 and the dispatched 40870570661 (the checks job;
+`check:contrast` 9 min 42 s; `check:selftest` 41 min 40 s, the self-test 313 of 313 in 1,716 s; `check:visual` 208 minutes, 12:07 to 15:35 UTC,
+its 39 cases and every live block passing, no failure in its report) pass every job. 8G's build: `austerlitz-command-map.html` 2,740,873 bytes, md5
+`508927e6f72e1b6f2f9186e954d61b59` (`check:baseline`).
+
+### 19.9 What remained (found after the merge; taken up in 8H, section 20)
+
+The audit of 8G (the brief for 8H) found three acceptance discrepancies in the buildings, each reproduced by 8H on the merged build: the
+château drawn 86.5 degrees off its bearing today, accepted by the quarter-turn the planner and its check allowed; Satschan's five farmsteads of
+seven, accepted by an explicit exception; the dossiers' "each an L" though 27 farmsteads are a long range alone. And the records: this section,
+`docs/ROADMAP.md`, `CLAUDE.md` and the evidence index stopped at 8F or cited what did not exist. The geographic corrections of section 19.5 were
+left for a review of their own.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2674974 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74156324" visible="true" version="3" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1828308" lon="16.6754034"/>
+ <node id="288554159" visible="true" version="3" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1828501" lon="16.6750374"/>
+ <node id="5109770748" visible="true" version="2" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1828480" lon="16.6750779"/>
+ <way id="1358996705" visible="true" version="1" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="288554159"/>
+  <nd ref="5109770748"/>
+  <nd ref="74156324"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="left"/>
+  <tag k="sidewalk:left:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

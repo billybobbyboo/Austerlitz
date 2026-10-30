@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3001402 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="969885819" visible="true" version="7" changeset="177425333" timestamp="2026-01-19T12:40:27Z" user="JBS21" uid="13953005">
+  <nd ref="3600473836"/>
+  <nd ref="11742250639"/>
+  <nd ref="8975302979"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="both"/>
+  <tag k="sidewalk:both:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1376679182" visible="true" version="2" changeset="177425007" timestamp="2026-01-19T12:41:30Z" user="JBS21" uid="13953005">
+  <nd ref="3600473834"/>
+  <nd ref="3600473835"/>
+  <nd ref="9043923794"/>
+  <nd ref="9043923795"/>
+  <nd ref="3600473836"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:maxspeed" v="CZ:urban"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1376679183" visible="true" version="2" changeset="177425007" timestamp="2026-01-19T12:41:39Z" user="JBS21" uid="13953005">
+  <nd ref="3600473836"/>
+  <nd ref="9043923793"/>
+  <nd ref="9043923796"/>
+  <nd ref="9043923797"/>
+  <nd ref="9043923798"/>
+  <nd ref="2951506998"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source:maxspeed" v="CZ:urban"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3001416 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74147804" visible="true" version="3" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1826091" lon="16.7207124">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74262424" visible="true" version="5" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1827302" lon="16.7212649">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="3859497821" visible="true" version="2" changeset="36122338" timestamp="2015-12-23T10:25:23Z" user="&lt;0174" uid="172147" lat="49.1824794" lon="16.7201311"/>
+ <node id="3859497824" visible="true" version="4" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1828136" lon="16.7216474"/>
+ <way id="608425212" visible="true" version="6" changeset="151776692" timestamp="2024-05-24T15:38:16Z" user="PizzaChips" uid="19627237">
+  <nd ref="3859497824"/>
+  <nd ref="74262424"/>
+  <nd ref="74147804"/>
+  <nd ref="3859497821"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed:backward" v="50"/>
+  <tag k="maxspeed:forward" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:left" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2976874 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="28230680" visible="true" version="5" changeset="171930023" timestamp="2025-09-14T17:40:23Z" user="MIGORMCZ" uid="10284764" lat="49.1842191" lon="16.8081685"/>
+ <node id="370827713" visible="true" version="4" changeset="172017108" timestamp="2025-09-16T14:01:34Z" user="mapperue" uid="4887311" lat="49.1842564" lon="16.8070497"/>
+ <way id="4539173" visible="true" version="14" changeset="154339868" timestamp="2024-07-24T09:17:04Z" user="JBS21" uid="13953005">
+  <nd ref="28230680"/>
+  <nd ref="370827713"/>
+  <tag k="destination:backward" v="Vyškov"/>
+  <tag k="destination:forward" v="Brno"/>
+  <tag k="destination:ref:forward" v="430"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="maxspeed" v="70"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source:maxspeed" v="sign"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

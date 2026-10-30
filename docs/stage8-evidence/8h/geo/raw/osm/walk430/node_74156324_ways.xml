@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713519 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="75638122" visible="true" version="9" changeset="152445285" timestamp="2024-06-09T09:23:49Z" user="JBS21" uid="13953005">
+  <nd ref="892959593"/>
+  <nd ref="8086095897"/>
+  <nd ref="288554097"/>
+  <nd ref="288554156"/>
+  <nd ref="288554150"/>
+  <nd ref="9729479324"/>
+  <nd ref="74156324"/>
+  <tag k="highway" v="residential"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="lit" v="yes"/>
+  <tag k="name" v="V Nové čtvrti"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="uhul:ortofoto;cuzk:km"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="94158474" visible="true" version="9" changeset="140399650" timestamp="2023-08-26T07:59:57Z" user="JBS21" uid="13953005">
+  <nd ref="74156324"/>
+  <nd ref="5395251565"/>
+  <nd ref="74270989"/>
+  <nd ref="876472639"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="left"/>
+  <tag k="sidewalk:left:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1358996705" visible="true" version="1" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="288554159"/>
+  <nd ref="5109770748"/>
+  <nd ref="74156324"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="left"/>
+  <tag k="sidewalk:left:surface" v="paving_stones"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

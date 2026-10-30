@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2725433 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1960817993" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1630462" lon="16.7850329"/>
+ <node id="1960818001" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1630566" lon="16.7849707"/>
+ <node id="1960818003" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1630502" lon="16.7849669"/>
+ <node id="1960818046" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1630689" lon="16.7850417"/>
+ <node id="1960818075" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1630772" lon="16.7850831"/>
+ <node id="1960818174" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1630902" lon="16.7847312"/>
+ <node id="1960818177" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1630904" lon="16.7850971"/>
+ <node id="1960818189" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1631009" lon="16.7850944"/>
+ <node id="1960818269" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1631142" lon="16.7847412"/>
+ <node id="1960818299" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1631294" lon="16.7846849"/>
+ <node id="1960818308" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:26:59Z" user="Mar4s" uid="461574" lat="49.1631221" lon="16.7850625"/>
+ <node id="1960818372" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1631440" lon="16.7850696"/>
+ <node id="1960818390" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1631529" lon="16.7846713"/>
+ <node id="1960818393" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1631546" lon="16.7850108"/>
+ <node id="1960818401" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1631616" lon="16.7850132"/>
+ <node id="1960818418" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1631711" lon="16.7846802"/>
+ <node id="1960818475" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1631826" lon="16.7847306"/>
+ <node id="1960818515" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1631912" lon="16.7848333"/>
+ <node id="1960818593" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1632161" lon="16.7848452"/>
+ <node id="1960818595" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1632193" lon="16.7848277"/>
+ <node id="1960818603" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1632276" lon="16.7848312"/>
+ <node id="1960818605" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1632299" lon="16.7847674"/>
+ <node id="1960818613" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1632331" lon="16.7847492"/>
+ <node id="1960818649" visible="true" version="2" changeset="38388029" timestamp="2016-04-07T18:27:00Z" user="Mar4s" uid="461574" lat="49.1632385" lon="16.7847712"/>
+ <node id="4105812284" visible="true" version="1" changeset="38388029" timestamp="2016-04-07T18:25:46Z" user="Mar4s" uid="461574" lat="49.1631178" lon="16.7850732"/>
+ <node id="4105812285" visible="true" version="1" changeset="38388029" timestamp="2016-04-07T18:25:46Z" user="Mar4s" uid="461574" lat="49.1631204" lon="16.7850719"/>
+ <node id="4105812286" visible="true" version="1" changeset="38388029" timestamp="2016-04-07T18:25:46Z" user="Mar4s" uid="461574" lat="49.1631205" lon="16.7847044"/>
+ <node id="4105812389" visible="true" version="1" changeset="38388029" timestamp="2016-04-07T18:25:46Z" user="Mar4s" uid="461574" lat="49.1631794" lon="16.7846960"/>
+ <way id="185482479" visible="true" version="6" changeset="143100380" timestamp="2023-10-25T07:51:36Z" user="JBS21" uid="13953005">
+  <nd ref="1960818605"/>
+  <nd ref="1960818649"/>
+  <nd ref="1960818603"/>
+  <nd ref="1960818595"/>
+  <nd ref="1960818593"/>
+  <nd ref="1960818515"/>
+  <nd ref="1960818401"/>
+  <nd ref="1960818393"/>
+  <nd ref="1960818372"/>
+  <nd ref="1960818308"/>
+  <nd ref="4105812285"/>
+  <nd ref="4105812284"/>
+  <nd ref="1960818189"/>
+  <nd ref="1960818177"/>
+  <nd ref="1960818075"/>
+  <nd ref="1960818046"/>
+  <nd ref="1960817993"/>
+  <nd ref="1960818001"/>
+  <nd ref="1960818003"/>
+  <nd ref="1960818174"/>
+  <nd ref="1960818269"/>
+  <nd ref="4105812286"/>
+  <nd ref="1960818299"/>
+  <nd ref="1960818390"/>
+  <nd ref="1960818418"/>
+  <nd ref="4105812389"/>
+  <nd ref="1960818475"/>
+  <nd ref="1960818613"/>
+  <nd ref="1960818605"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="church"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="check_date" v="2023-10-25"/>
+  <tag k="denomination" v="catholic"/>
+  <tag k="name" v="Nejsvětější srdce Páně"/>
+  <tag k="official_name" v="Kostel Nesvětějšího srdce Páně"/>
+  <tag k="ref:ruian:building" v="50432346"/>
+  <tag k="religion" v="christian"/>
+  <tag k="source" v="cuzk:ruian"/>
+ </way>
+</osm>

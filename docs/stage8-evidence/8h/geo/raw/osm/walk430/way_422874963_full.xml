@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2696428 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="370827713" visible="true" version="4" changeset="172017108" timestamp="2025-09-16T14:01:34Z" user="mapperue" uid="4887311" lat="49.1842564" lon="16.8070497"/>
+ <node id="4226010028" visible="true" version="2" changeset="188001210" timestamp="2026-08-25T16:56:32Z" user="MIGORMCZ" uid="10284764" lat="49.1843129" lon="16.8058954"/>
+ <node id="14123175952" visible="true" version="1" changeset="188001210" timestamp="2026-08-25T16:56:32Z" user="MIGORMCZ" uid="10284764" lat="49.1842763" lon="16.8065957"/>
+ <way id="422874963" visible="true" version="11" changeset="188001210" timestamp="2026-08-25T16:56:32Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="370827713"/>
+  <nd ref="14123175952"/>
+  <nd ref="4226010028"/>
+  <tag k="destination:lanes:backward" v="Vyškov|Zlín;Uherské Hradiště"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="3"/>
+  <tag k="lanes:backward" v="2"/>
+  <tag k="maxspeed" v="70"/>
+  <tag k="placement:forward" v="left_of:1"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source:maxspeed" v="sign"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="turn:lanes:backward" v="through|right"/>
+ </way>
+</osm>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713541 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1094082330" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:27Z" user="JandaM" uid="2169558" lat="49.1695617" lon="16.7267289"/>
+ <node id="1094082860" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:29Z" user="JandaM" uid="2169558" lat="49.1697409" lon="16.7266962"/>
+ <node id="1094083266" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:31Z" user="JandaM" uid="2169558" lat="49.1695589" lon="16.7265923"/>
+ <node id="1094083494" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:32Z" user="JandaM" uid="2169558" lat="49.1696374" lon="16.7263067"/>
+ <node id="1094083691" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:34Z" user="JandaM" uid="2169558" lat="49.1696180" lon="16.7264972"/>
+ <node id="1094084264" visible="true" version="2" changeset="53580960" timestamp="2017-11-07T12:57:36Z" user="JandaM" uid="2169558" lat="49.1697409" lon="16.7263322"/>
+ <node id="1094084867" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:39Z" user="JandaM" uid="2169558" lat="49.1695665" lon="16.7264884"/>
+ <node id="1094084921" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:39Z" user="JandaM" uid="2169558" lat="49.1697280" lon="16.7268190"/>
+ <node id="1094085244" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:40Z" user="JandaM" uid="2169558" lat="49.1697120" lon="16.7266899"/>
+ <node id="1094085586" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:57:41Z" user="JandaM" uid="2169558" lat="49.1696007" lon="16.7267932"/>
+ <node id="3838801321" visible="true" version="3" changeset="125175243" timestamp="2022-08-21T09:36:45Z" user="JBS21" uid="13953005" lat="49.1695649" lon="16.7265101">
+  <tag k="entrance" v="yes"/>
+ </node>
+ <node id="3838801322" visible="true" version="3" changeset="53580960" timestamp="2017-11-07T12:58:23Z" user="JandaM" uid="2169558" lat="49.1696055" lon="16.7267378"/>
+ <node id="4007730503" visible="true" version="2" changeset="53580960" timestamp="2017-11-07T12:58:23Z" user="JandaM" uid="2169558" lat="49.1695734" lon="16.7265952"/>
+ <node id="4007730504" visible="true" version="2" changeset="53580960" timestamp="2017-11-07T12:58:23Z" user="JandaM" uid="2169558" lat="49.1696317" lon="16.7263109"/>
+ <node id="4007730505" visible="true" version="2" changeset="53580960" timestamp="2017-11-07T12:58:23Z" user="JandaM" uid="2169558" lat="49.1696769" lon="16.7268087"/>
+ <node id="4007730506" visible="true" version="2" changeset="53580960" timestamp="2017-11-07T12:58:23Z" user="JandaM" uid="2169558" lat="49.1696812" lon="16.7268168"/>
+ <node id="4007730507" visible="true" version="2" changeset="53580960" timestamp="2017-11-07T12:58:23Z" user="JandaM" uid="2169558" lat="49.1697226" lon="16.7268252"/>
+ <node id="5216144809" visible="true" version="2" changeset="125175243" timestamp="2022-08-21T10:11:14Z" user="JBS21" uid="13953005" lat="49.1696031" lon="16.7267655">
+  <tag k="entrance" v="yes"/>
+ </node>
+ <way id="94121875" visible="true" version="9" changeset="178220270" timestamp="2026-02-07T09:44:05Z" user="Pete24" uid="20373864">
+  <nd ref="1094084264"/>
+  <nd ref="1094085244"/>
+  <nd ref="1094082860"/>
+  <nd ref="1094084921"/>
+  <nd ref="4007730507"/>
+  <nd ref="4007730506"/>
+  <nd ref="4007730505"/>
+  <nd ref="1094085586"/>
+  <nd ref="5216144809"/>
+  <nd ref="3838801322"/>
+  <nd ref="1094082330"/>
+  <nd ref="4007730503"/>
+  <nd ref="1094083266"/>
+  <nd ref="3838801321"/>
+  <nd ref="1094084867"/>
+  <nd ref="1094083691"/>
+  <nd ref="4007730504"/>
+  <nd ref="1094083494"/>
+  <nd ref="1094084264"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="civic"/>
+  <tag k="building:levels" v="1"/>
+  <tag k="building:ruian:type" v="5"/>
+  <tag k="check_date" v="2026-02-07"/>
+  <tag k="name" v="Nanebevzetí Panny Marie"/>
+  <tag k="ref:ruian:building" v="39847462"/>
+  <tag k="religion" v="christian"/>
+  <tag k="roof:levels" v="0"/>
+  <tag k="roof:shape" v="many"/>
+  <tag k="source" v="cuzk:ruian"/>
+  <tag k="wheelchair" v="no"/>
+  <tag k="wikidata" v="Q12030376"/>
+  <tag k="wikipedia" v="cs:Kostel Nanebevzetí Panny Marie (Šlapanice)"/>
+ </way>
+</osm>

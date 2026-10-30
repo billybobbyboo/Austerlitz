@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713538 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="44505152" visible="true" version="11" changeset="177370002" timestamp="2026-01-18T12:11:19Z" user="JBS21" uid="13953005">
+  <nd ref="565461873"/>
+  <nd ref="7387165261"/>
+  <nd ref="74132466"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="108723719" visible="true" version="10" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="74132466"/>
+  <nd ref="13736054492"/>
+  <nd ref="1246601990"/>
+  <nd ref="3816701230"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="982084598" visible="true" version="8" changeset="177370036" timestamp="2026-01-18T12:10:15Z" user="JBS21" uid="13953005">
+  <nd ref="9082789195"/>
+  <nd ref="11742250551"/>
+  <nd ref="74132466"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="tertiary"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="3834"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="source:maxspeed" v="CZ:urban"/>
+  <tag k="source:ref" v="rsd_cr"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

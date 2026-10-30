@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2696422 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="308975810" visible="true" version="6" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1821871" lon="16.6919836"/>
+ <node id="308975811" visible="true" version="6" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822663" lon="16.6919094"/>
+ <node id="392092111" visible="true" version="5" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822067" lon="16.6919440"/>
+ <node id="392092113" visible="true" version="5" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822343" lon="16.6919181"/>
+ <node id="12048133263" visible="true" version="1" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822733" lon="16.6919115"/>
+ <node id="12048133400" visible="true" version="1" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1821811" lon="16.6920134"/>
+ <way id="1056528349" visible="true" version="7" changeset="160322820" timestamp="2024-12-17T21:25:19Z" user="Mar4s" uid="461574">
+  <nd ref="12048133263"/>
+  <nd ref="308975811"/>
+  <nd ref="392092113"/>
+  <nd ref="392092111"/>
+  <nd ref="308975810"/>
+  <nd ref="12048133400"/>
+  <tag k="bus" v="yes"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="opening_date" v="2024-12-14"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

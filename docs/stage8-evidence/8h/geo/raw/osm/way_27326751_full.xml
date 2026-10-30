@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2696421 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="299973505" visible="true" version="2" changeset="53127731" timestamp="2017-10-21T13:06:17Z" user="hanoj" uid="4788" lat="49.1552374" lon="16.8653512"/>
+ <node id="299973506" visible="true" version="3" changeset="53157297" timestamp="2017-10-22T17:28:58Z" user="hanoj" uid="4788" lat="49.1532680" lon="16.8656148"/>
+ <node id="299973507" visible="true" version="1" changeset="702129" timestamp="2008-09-26T11:45:06Z" user="Ivan M" uid="57845" lat="49.1539097" lon="16.8754037"/>
+ <node id="299973508" visible="true" version="2" changeset="111141864" timestamp="2021-09-13T11:58:33Z" user="user_2061236" uid="2061236" lat="49.1541321" lon="16.8758880"/>
+ <node id="299973509" visible="true" version="3" changeset="111141864" timestamp="2021-09-13T11:58:33Z" user="user_2061236" uid="2061236" lat="49.1544143" lon="16.8761169"/>
+ <node id="299973511" visible="true" version="2" changeset="53127731" timestamp="2017-10-21T13:06:17Z" user="hanoj" uid="4788" lat="49.1550463" lon="16.8763071"/>
+ <node id="299973512" visible="true" version="3" changeset="53127731" timestamp="2017-10-21T13:06:17Z" user="hanoj" uid="4788" lat="49.1558675" lon="16.8758818"/>
+ <node id="299973513" visible="true" version="3" changeset="53157297" timestamp="2017-10-22T17:28:58Z" user="hanoj" uid="4788" lat="49.1558263" lon="16.8752528"/>
+ <node id="1124951281" visible="true" version="3" changeset="53157297" timestamp="2017-10-22T17:28:59Z" user="hanoj" uid="4788" lat="49.1536836" lon="16.8727195"/>
+ <node id="1124958340" visible="true" version="3" changeset="53157297" timestamp="2017-10-22T17:28:59Z" user="hanoj" uid="4788" lat="49.1536537" lon="16.8722025"/>
+ <node id="3348813476" visible="true" version="2" changeset="111141319" timestamp="2021-09-13T11:48:59Z" user="user_2061236" uid="2061236" lat="49.1540525" lon="16.8757394"/>
+ <node id="5179947006" visible="true" version="1" changeset="53127731" timestamp="2017-10-21T13:06:06Z" user="hanoj" uid="4788" lat="49.1553537" lon="16.8759656"/>
+ <node id="5179947007" visible="true" version="2" changeset="158512348" timestamp="2024-10-29T18:50:12Z" user="Jakuje" uid="1641564" lat="49.1540513" lon="16.8655097"/>
+ <node id="5179947008" visible="true" version="2" changeset="158512348" timestamp="2024-10-29T18:50:12Z" user="Jakuje" uid="1641564" lat="49.1544281" lon="16.8654582"/>
+ <node id="5179947010" visible="true" version="1" changeset="53127731" timestamp="2017-10-21T13:06:06Z" user="hanoj" uid="4788" lat="49.1553313" lon="16.8669206">
+  <tag k="barrier" v="gate"/>
+ </node>
+ <node id="5182125546" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:28Z" user="hanoj" uid="4788" lat="49.1536408" lon="16.8719807"/>
+ <node id="5182125547" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:28Z" user="hanoj" uid="4788" lat="49.1537365" lon="16.8728570"/>
+ <node id="5182125550" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:28Z" user="hanoj" uid="4788" lat="49.1537544" lon="16.8731148"/>
+ <node id="5182125554" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:29Z" user="hanoj" uid="4788" lat="49.1536501" lon="16.8721402"/>
+ <node id="5182125556" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:29Z" user="hanoj" uid="4788" lat="49.1537644" lon="16.8733004">
+  <tag k="barrier" v="gate"/>
+ </node>
+ <node id="5182125557" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:29Z" user="hanoj" uid="4788" lat="49.1536832" lon="16.8727582"/>
+ <node id="5182125558" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:29Z" user="hanoj" uid="4788" lat="49.1537318" lon="16.8727622"/>
+ <node id="5182125561" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:29Z" user="hanoj" uid="4788" lat="49.1538909" lon="16.8752949"/>
+ <node id="5182125564" visible="true" version="1" changeset="53157297" timestamp="2017-10-22T17:28:29Z" user="hanoj" uid="4788" lat="49.1539460" lon="16.8755106"/>
+ <node id="9087804062" visible="true" version="1" changeset="111141864" timestamp="2021-09-13T11:58:33Z" user="user_2061236" uid="2061236" lat="49.1547081" lon="16.8763612"/>
+ <node id="12374177585" visible="true" version="1" changeset="159584073" timestamp="2024-11-25T17:51:07Z" user="Hlav" uid="100163" lat="49.1557643" lon="16.8758986"/>
+ <node id="12615993800" visible="true" version="1" changeset="162897166" timestamp="2025-02-24T15:16:16Z" user="kiwichickenmusician" uid="442279" lat="49.1549014" lon="16.8763896"/>
+ <way id="27326751" visible="true" version="10" changeset="162897166" timestamp="2025-02-24T15:16:16Z" user="kiwichickenmusician" uid="442279">
+  <nd ref="299973505"/>
+  <nd ref="5179947008"/>
+  <nd ref="5179947007"/>
+  <nd ref="299973506"/>
+  <nd ref="5182125546"/>
+  <nd ref="5182125554"/>
+  <nd ref="1124958340"/>
+  <nd ref="1124951281"/>
+  <nd ref="5182125557"/>
+  <nd ref="5182125558"/>
+  <nd ref="5182125547"/>
+  <nd ref="5182125550"/>
+  <nd ref="5182125556"/>
+  <nd ref="5182125561"/>
+  <nd ref="299973507"/>
+  <nd ref="5182125564"/>
+  <nd ref="3348813476"/>
+  <nd ref="299973508"/>
+  <nd ref="299973509"/>
+  <nd ref="9087804062"/>
+  <nd ref="12615993800"/>
+  <nd ref="299973511"/>
+  <nd ref="5179947006"/>
+  <nd ref="12374177585"/>
+  <nd ref="299973512"/>
+  <nd ref="299973513"/>
+  <nd ref="5179947010"/>
+  <nd ref="299973505"/>
+  <tag k="leisure" v="park"/>
+  <tag k="name" v="Zámecká zahrada"/>
+  <tag k="name:cs" v="Zámecká zahrada"/>
+  <tag k="name:de" v="Schlossgarten"/>
+  <tag k="source" v="uhul:ortofoto"/>
+ </way>
+</osm>

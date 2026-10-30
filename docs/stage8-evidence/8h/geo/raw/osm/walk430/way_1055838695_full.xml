@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2608399 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="564683739" visible="true" version="4" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829936" lon="16.6724152"/>
+ <node id="5372064809" visible="true" version="3" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829793" lon="16.6726680"/>
+ <way id="1055838695" visible="true" version="2" changeset="140399566" timestamp="2023-08-26T09:15:53Z" user="JBS21" uid="13953005">
+  <nd ref="564683739"/>
+  <nd ref="5372064809"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="trolley_wire" v="yes"/>
+ </way>
+</osm>

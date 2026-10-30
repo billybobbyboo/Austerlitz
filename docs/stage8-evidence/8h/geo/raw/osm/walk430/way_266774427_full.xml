@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2970851 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74203422" visible="true" version="3" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1830902" lon="16.6708119">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74300097" visible="true" version="2" changeset="5575513" timestamp="2010-08-23T21:31:15Z" user="hanoj" uid="4788" lat="49.1831370" lon="16.6701603">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="564683739" visible="true" version="4" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829936" lon="16.6724152"/>
+ <node id="2293714216" visible="true" version="2" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1830153" lon="16.6720223"/>
+ <node id="3976790083" visible="true" version="2" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1831050" lon="16.6705822"/>
+ <node id="4029712583" visible="true" version="2" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1831206" lon="16.6703773"/>
+ <node id="4029712587" visible="true" version="2" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1829963" lon="16.6723506"/>
+ <node id="6199691568" visible="true" version="3" changeset="162381560" timestamp="2025-02-11T09:04:28Z" user="MIGORMCZ" uid="10284764" lat="49.1830276" lon="16.6718379">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Vozovna Slatina"/>
+  <tag k="public_transport" v="stop_position"/>
+  <tag k="trolleybus" v="yes"/>
+ </node>
+ <way id="266774427" visible="true" version="11" changeset="151776692" timestamp="2024-05-24T15:42:27Z" user="PizzaChips" uid="19627237">
+  <nd ref="74300097"/>
+  <nd ref="4029712583"/>
+  <nd ref="3976790083"/>
+  <nd ref="74203422"/>
+  <nd ref="6199691568"/>
+  <nd ref="2293714216"/>
+  <nd ref="4029712587"/>
+  <nd ref="564683739"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:right" v="yes"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="trolley_wire" v="yes"/>
+ </way>
+</osm>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3004695 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1094585003" visible="true" version="1" changeset="6917368" timestamp="2011-01-09T16:44:38Z" user="Tombo" uid="379917" lat="49.1688345" lon="16.7247583"/>
+ <node id="1094586307" visible="true" version="1" changeset="6917368" timestamp="2011-01-09T16:45:34Z" user="Tombo" uid="379917" lat="49.1688689" lon="16.7247357"/>
+ <node id="1094586992" visible="true" version="1" changeset="6917368" timestamp="2011-01-09T16:46:02Z" user="Tombo" uid="379917" lat="49.1689174" lon="16.7249084"/>
+ <node id="1094589741" visible="true" version="1" changeset="6917368" timestamp="2011-01-09T16:46:57Z" user="Tombo" uid="379917" lat="49.1688872" lon="16.7249282"/>
+ <node id="1094591744" visible="true" version="1" changeset="6917368" timestamp="2011-01-09T16:47:59Z" user="Tombo" uid="379917" lat="49.1688963" lon="16.7249604"/>
+ <node id="1094594633" visible="true" version="1" changeset="6917368" timestamp="2011-01-09T16:48:59Z" user="Tombo" uid="379917" lat="49.1689106" lon="16.7249510"/>
+ <node id="1094594828" visible="true" version="1" changeset="6917368" timestamp="2011-01-09T16:49:03Z" user="Tombo" uid="379917" lat="49.1688419" lon="16.7247160"/>
+ <node id="1094967211" visible="true" version="1" changeset="6919173" timestamp="2011-01-09T19:40:09Z" user="Tombo" uid="379917" lat="49.1686495" lon="16.7246689"/>
+ <node id="1094967840" visible="true" version="1" changeset="6919173" timestamp="2011-01-09T19:40:27Z" user="Tombo" uid="379917" lat="49.1688256" lon="16.7247267"/>
+ <node id="1094970207" visible="true" version="1" changeset="6919173" timestamp="2011-01-09T19:41:37Z" user="Tombo" uid="379917" lat="49.1689514" lon="16.7250960"/>
+ <node id="1094971043" visible="true" version="1" changeset="6919173" timestamp="2011-01-09T19:41:54Z" user="Tombo" uid="379917" lat="49.1687978" lon="16.7251969"/>
+ <node id="1094975158" visible="true" version="1" changeset="6919173" timestamp="2011-01-09T19:43:23Z" user="Tombo" uid="379917" lat="49.1688008" lon="16.7245695"/>
+ <way id="94173426" visible="true" version="6" changeset="96423772" timestamp="2020-12-25T14:08:21Z" user="Michal Špondr" uid="587067">
+  <nd ref="1094970207"/>
+  <nd ref="1094971043"/>
+  <nd ref="1094967211"/>
+  <nd ref="1094975158"/>
+  <nd ref="1094594828"/>
+  <nd ref="1094967840"/>
+  <nd ref="1094585003"/>
+  <nd ref="1094586307"/>
+  <nd ref="1094586992"/>
+  <nd ref="1094589741"/>
+  <nd ref="1094591744"/>
+  <nd ref="1094594633"/>
+  <nd ref="1094970207"/>
+  <tag k="building" v="school"/>
+  <tag k="building:levels" v="2"/>
+  <tag k="castle_type" v="stately"/>
+  <tag k="historic" v="castle"/>
+  <tag k="roof:levels" v="2"/>
+  <tag k="roof:shape" v="hipped"/>
+  <tag k="source" v="cuzk:km"/>
+  <tag k="wikidata" v="Q10407617"/>
+  <tag k="wikipedia" v="cs:Šlapanice (zámek)"/>
+ </way>
+</osm>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2641222 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="26338449" visible="true" version="21" changeset="179677093" timestamp="2026-03-11T07:03:50Z" user="hanoj" uid="4788">
+  <nd ref="74279843"/>
+  <nd ref="392093066"/>
+  <nd ref="377964674"/>
+  <nd ref="392093070"/>
+  <nd ref="9729479250"/>
+  <nd ref="388176181"/>
+  <nd ref="288553814"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="residential"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed:type" v="CZ:urban"/>
+  <tag k="maxweightrating:hgv" v="6.5"/>
+  <tag k="maxweightrating:hgv:conditional" v="none @ delivery"/>
+  <tag k="name" v="Mikulčická"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="26338450" visible="true" version="8" changeset="143152081" timestamp="2023-10-26T10:53:39Z" user="JBS21" uid="13953005">
+  <nd ref="74279843"/>
+  <nd ref="2484981726"/>
+  <nd ref="4461603841"/>
+  <tag k="highway" v="residential"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="240806174" visible="true" version="11" changeset="162428649" timestamp="2025-02-12T12:44:10Z" user="JBS21" uid="13953005">
+  <nd ref="2484981717"/>
+  <nd ref="4461601974"/>
+  <nd ref="74151749"/>
+  <nd ref="74292200"/>
+  <nd ref="2484981716"/>
+  <nd ref="74279843"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:right" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1056528348" visible="true" version="6" changeset="175361602" timestamp="2025-12-01T14:40:31Z" user="Zedna" uid="11995991">
+  <nd ref="74279843"/>
+  <nd ref="2518544839"/>
+  <nd ref="4243884091"/>
+  <nd ref="4461601973"/>
+  <nd ref="4243904490"/>
+  <nd ref="7344493333"/>
+  <nd ref="12048133394"/>
+  <nd ref="13344709279"/>
+  <nd ref="12048133263"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

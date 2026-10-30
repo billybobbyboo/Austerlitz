@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2992919 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="108723719" visible="true" version="10" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="74132466"/>
+  <nd ref="13736054492"/>
+  <nd ref="1246601990"/>
+  <nd ref="3816701230"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="608421015" visible="true" version="8" changeset="177468549" timestamp="2026-01-20T10:25:38Z" user="JBS21" uid="13953005">
+  <nd ref="3816701230"/>
+  <nd ref="252307204"/>
+  <nd ref="8140073112"/>
+  <nd ref="8140073114"/>
+  <nd ref="8140073111"/>
+  <nd ref="8140073113"/>
+  <nd ref="8140073110"/>
+  <nd ref="8140073108"/>
+  <nd ref="8140073107"/>
+  <nd ref="8140073106"/>
+  <nd ref="8140073109"/>
+  <nd ref="8140073105"/>
+  <nd ref="8140073104"/>
+  <nd ref="8140073103"/>
+  <nd ref="252307206"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

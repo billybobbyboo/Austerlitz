@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2544649 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="3859497824" visible="true" version="4" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1828136" lon="16.7216474"/>
+ <node id="3859497829" visible="true" version="6" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1829768" lon="16.7221967"/>
+ <node id="7733507037" visible="true" version="1" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1829508" lon="16.7221490"/>
+ <node id="7733507039" visible="true" version="1" changeset="88287344" timestamp="2020-07-21T09:39:38Z" user="vojtechzaboril" uid="8971394" lat="49.1829311" lon="16.7220926"/>
+ <way id="382732356" visible="true" version="10" changeset="153576231" timestamp="2024-07-05T08:04:29Z" user="JBS21" uid="13953005">
+  <nd ref="3859497829"/>
+  <nd ref="7733507037"/>
+  <nd ref="7733507039"/>
+  <nd ref="3859497824"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="destination" v="Brno"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="survey"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="4"/>
+ </way>
+</osm>

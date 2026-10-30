@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2720533 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74309824" visible="true" version="1" changeset="198243" timestamp="2007-10-16T01:16:45Z" user="pavel" uid="1066" lat="49.1824340" lon="16.7015440">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="5824992762" visible="true" version="2" changeset="162381815" timestamp="2025-02-11T09:11:36Z" user="MIGORMCZ" uid="10284764" lat="49.1824606" lon="16.7028272"/>
+ <node id="6235010655" visible="true" version="2" changeset="120783888" timestamp="2022-05-10T09:26:32Z" user="Jakuje" uid="1641564" lat="49.1824459" lon="16.7019111"/>
+ <way id="616072680" visible="true" version="6" changeset="162428634" timestamp="2025-02-12T12:53:56Z" user="JBS21" uid="13953005">
+  <nd ref="5824992762"/>
+  <nd ref="6235010655"/>
+  <nd ref="74309824"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:left" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

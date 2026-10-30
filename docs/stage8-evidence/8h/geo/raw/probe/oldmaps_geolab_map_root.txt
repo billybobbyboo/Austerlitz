@@ -1,0 +1,75 @@
+############################################################################################
+#																			map_root.pl
+use strict;
+use CGI qw(:all);
+use lib "/var/www/oldmaps.geolab.cz/libs";
+use Oldmaps;
+use Dictionary;
+my $dict = \&Dictionary::dict;
+
+	# buffer pro tisk ladicich hlasek
+	my $debug = '';
+	
+	# buffer pro tisk
+	my $to_print = '';
+	
+	# nastaveni map_rootu - 1vm | 2vm | ...?
+	my $map_root = param('map_root');
+
+############################################################################################
+
+## vytiskni hlavicku a nastav promenne prostredi
+# my $URL = &Oldmaps::print_header_and_set_environment('debug',$debug);
+my ( $URL, $URL_non_env ) = &Oldmaps::print_header_and_set_environment();
+
+print start_html(-title => $Oldmaps::g_title, -author => "j.d\@geolab.cz", -style => { -src => './style.css' }, -script => { -src => './images.js' });
+
+&Oldmaps::print_header_graphics();
+
+if( !exists $Oldmaps::map_roots{$map_root} ) {
+	print p('Neplatný parametr!');
+	print end_html;
+	exit;
+}
+
+&Oldmaps::print_menu( $URL, $URL_non_env );
+
+print "<div class='main_body' style='width: 500px;'>";
+
+for my $key ( sort keys %{ $Oldmaps::map_regions{$map_root} } ) {
+	$to_print .= a({-href=>Oldmaps::BASE_URL . "map_region.pl$URL&map_root=$map_root&" . 
+		$Oldmaps::map_regions{$map_root}{$key}{URL}}, $Oldmaps::map_regions{$map_root}{$key}{name}) . " | ";
+}
+$to_print = p({-align=>'center',-style=>'line-height: 3.0;'}, substr($to_print, 0 , -3));
+
+if($map_root eq "1vm") {
+
+	print &{$dict}('101', $Oldmaps::env{'lang'});
+	print $to_print;
+	print &{$dict}('102', $Oldmaps::env{'lang'});
+
+} elsif($map_root eq "2vm") {
+
+	print &{$dict}('103', $Oldmaps::env{'lang'});
+	print $to_print;
+	print &{$dict}('104', $Oldmaps::env{'lang'});
+
+} elsif($map_root eq "3vm") {
+
+	print &{$dict}('210', $Oldmaps::env{'lang'});
+	print $to_print;
+	print &{$dict}('211', $Oldmaps::env{'lang'});
+
+} elsif($map_root eq "mul") {
+
+	print &{$dict}('105', $Oldmaps::env{'lang'});
+	print $to_print;
+	print &{$dict}('106', $Oldmaps::env{'lang'});
+
+}
+
+
+print "</div>";
+
+print $debug;
+print end_html;

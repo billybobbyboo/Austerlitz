@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2905490 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74275307" visible="true" version="6" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826" lat="49.2007128" lon="16.8745921">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="1246581691" visible="true" version="7" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826" lat="49.2004581" lon="16.8739854">
+  <tag k="crossing:barrier" v="half"/>
+  <tag k="maxheight:signed" v="no"/>
+  <tag k="railway" v="level_crossing"/>
+  <tag k="ref" v="P7189"/>
+ </node>
+ <node id="11742250596" visible="true" version="2" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826" lat="49.2005401" lon="16.8741752"/>
+ <node id="13736054487" visible="true" version="1" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826" lat="49.2006354" lon="16.8744005"/>
+ <way id="1382099766" visible="true" version="3" changeset="181433977" timestamp="2026-04-16T22:36:07Z" user="LeoBardonaro" uid="573826">
+  <nd ref="74275307"/>
+  <nd ref="13736054487"/>
+  <nd ref="11742250596"/>
+  <nd ref="1246581691"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Rudé armády"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

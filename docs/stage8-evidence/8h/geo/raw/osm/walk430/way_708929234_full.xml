@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2713338 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="6459206125" visible="true" version="2" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1831177" lon="16.7445474"/>
+ <node id="6661379296" visible="true" version="2" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1832563" lon="16.7451513"/>
+ <node id="9872044293" visible="true" version="1" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1831385" lon="16.7446020"/>
+ <node id="9872044319" visible="true" version="1" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1832174" lon="16.7449792"/>
+ <node id="9872044320" visible="true" version="1" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1831866" lon="16.7447875"/>
+ <node id="9872044321" visible="true" version="1" changeset="123311153" timestamp="2022-07-07T10:00:31Z" user="MIGORMCZ" uid="10284764" lat="49.1831645" lon="16.7446907"/>
+ <way id="708929234" visible="true" version="7" changeset="148456005" timestamp="2024-03-10T10:54:57Z" user="d4d3" uid="20988814">
+  <nd ref="6459206125"/>
+  <nd ref="9872044293"/>
+  <nd ref="9872044321"/>
+  <nd ref="9872044320"/>
+  <nd ref="9872044319"/>
+  <nd ref="6661379296"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="1"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="noname" v="yes"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="source:maxspeed" v="CZ:rural"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

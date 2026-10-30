@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2970851 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="26338265" visible="true" version="11" changeset="151520224" timestamp="2024-05-19T06:55:47Z" user="JBS21" uid="13953005">
+  <nd ref="288553615"/>
+  <nd ref="5060516688"/>
+  <nd ref="388420387"/>
+  <nd ref="288553892"/>
+  <nd ref="288553895"/>
+  <nd ref="288553896"/>
+  <nd ref="5327992911"/>
+  <nd ref="74224375"/>
+  <tag k="highway" v="residential"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="30"/>
+  <tag k="maxspeed:type" v="zone30"/>
+  <tag k="name" v="Slavkovská"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="source:name" v="uir_adr"/>
+  <tag k="source:width" v="ARCore"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="7.3"/>
+ </way>
+ <way id="240806171" visible="true" version="9" changeset="162428634" timestamp="2025-02-12T12:41:41Z" user="JBS21" uid="13953005">
+  <nd ref="74224375"/>
+  <nd ref="7344493328"/>
+  <nd ref="2484981719"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="3"/>
+  <tag k="lanes:backward" v="2"/>
+  <tag k="lanes:forward" v="1"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="shoulder" v="no"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="turn:lanes:backward" v="left|through"/>
+ </way>
+ <way id="240806173" visible="true" version="9" changeset="140399566" timestamp="2023-08-26T08:33:16Z" user="JBS21" uid="13953005">
+  <nd ref="2484981724"/>
+  <nd ref="7344493324"/>
+  <nd ref="74224375"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="3"/>
+  <tag k="lanes:backward" v="1"/>
+  <tag k="lanes:forward" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="shoulder" v="no"/>
+  <tag k="sidewalk" v="no"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="turn:lanes:forward" v="through|right"/>
+ </way>
+</osm>

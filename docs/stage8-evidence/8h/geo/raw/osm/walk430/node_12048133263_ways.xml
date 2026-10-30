@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2544649 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="28131510" visible="true" version="18" changeset="160322820" timestamp="2024-12-17T21:25:19Z" user="Mar4s" uid="461574">
+  <nd ref="12048133265"/>
+  <nd ref="308975812"/>
+  <nd ref="392092107"/>
+  <nd ref="392092112"/>
+  <nd ref="392092106"/>
+  <nd ref="12048133263"/>
+  <tag k="bus" v="yes"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="opening_date" v="2024-12-14"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1056528348" visible="true" version="6" changeset="175361602" timestamp="2025-12-01T14:40:31Z" user="Zedna" uid="11995991">
+  <nd ref="74279843"/>
+  <nd ref="2518544839"/>
+  <nd ref="4243884091"/>
+  <nd ref="4461601973"/>
+  <nd ref="4243904490"/>
+  <nd ref="7344493333"/>
+  <nd ref="12048133394"/>
+  <nd ref="13344709279"/>
+  <nd ref="12048133263"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="1056528349" visible="true" version="7" changeset="160322820" timestamp="2024-12-17T21:25:19Z" user="Mar4s" uid="461574">
+  <nd ref="12048133263"/>
+  <nd ref="308975811"/>
+  <nd ref="392092113"/>
+  <nd ref="392092111"/>
+  <nd ref="308975810"/>
+  <nd ref="12048133400"/>
+  <tag k="bus" v="yes"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="junction" v="roundabout"/>
+  <tag k="lane_markings" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="opening_date" v="2024-12-14"/>
+  <tag k="source" v="uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

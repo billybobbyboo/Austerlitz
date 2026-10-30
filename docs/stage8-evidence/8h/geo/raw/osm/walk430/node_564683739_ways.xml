@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2934220 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="44422878" visible="true" version="9" changeset="167904519" timestamp="2025-06-21T09:28:51Z" user="JBS21" uid="13953005">
+  <nd ref="564683743"/>
+  <nd ref="9729479356"/>
+  <nd ref="5372064814"/>
+  <nd ref="9701718757"/>
+  <nd ref="5395251593"/>
+  <nd ref="564683739"/>
+  <tag k="highway" v="service"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+ <way id="266774427" visible="true" version="11" changeset="151776692" timestamp="2024-05-24T15:42:27Z" user="PizzaChips" uid="19627237">
+  <nd ref="74300097"/>
+  <nd ref="4029712583"/>
+  <nd ref="3976790083"/>
+  <nd ref="74203422"/>
+  <nd ref="6199691568"/>
+  <nd ref="2293714216"/>
+  <nd ref="4029712587"/>
+  <nd ref="564683739"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:right" v="yes"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="trolley_wire" v="yes"/>
+ </way>
+ <way id="1055838695" visible="true" version="2" changeset="140399566" timestamp="2023-08-26T09:15:53Z" user="JBS21" uid="13953005">
+  <nd ref="564683739"/>
+  <nd ref="5372064809"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="yes"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="trolley_wire" v="yes"/>
+ </way>
+</osm>

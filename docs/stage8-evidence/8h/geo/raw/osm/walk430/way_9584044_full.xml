@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3001393 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74106873" visible="true" version="3" changeset="175595915" timestamp="2025-12-06T18:04:07Z" user="Zedna" uid="11995991" lat="49.1840013" lon="16.7575441">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74138921" visible="true" version="1" changeset="190957" timestamp="2007-10-15T23:46:17Z" user="pavel" uid="1066" lat="49.1837120" lon="16.7600460">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74153823" visible="true" version="1" changeset="190957" timestamp="2007-10-15T23:53:26Z" user="pavel" uid="1066" lat="49.1840140" lon="16.7585600">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74175567" visible="true" version="2" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1835164" lon="16.7628420">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74185631" visible="true" version="3" changeset="38081775" timestamp="2016-03-26T12:44:22Z" user="Mar4s" uid="461574" lat="49.1834525" lon="16.7618116">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74230773" visible="true" version="1" changeset="198243" timestamp="2007-10-16T00:35:50Z" user="pavel" uid="1066" lat="49.1840280" lon="16.7582770">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74255658" visible="true" version="1" changeset="198243" timestamp="2007-10-16T00:48:41Z" user="pavel" uid="1066" lat="49.1835340" lon="16.7609220">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74268668" visible="true" version="2" changeset="46038745" timestamp="2017-02-13T07:44:54Z" user="jirislaby" uid="476713" lat="49.1839336" lon="16.7590437">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74273392" visible="true" version="1" changeset="198243" timestamp="2007-10-16T00:57:26Z" user="pavel" uid="1066" lat="49.1834620" lon="16.7623030">
+  <tag k="created_by" v="shpupload"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74285870" visible="true" version="2" changeset="38081775" timestamp="2016-03-26T12:44:22Z" user="Mar4s" uid="461574" lat="49.1834793" lon="16.7612786">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="250131989" visible="true" version="3" changeset="46038745" timestamp="2017-02-13T07:44:54Z" user="jirislaby" uid="476713" lat="49.1836585" lon="16.7635556"/>
+ <node id="252305959" visible="true" version="3" changeset="46038745" timestamp="2017-02-13T07:44:54Z" user="jirislaby" uid="476713" lat="49.1837699" lon="16.7639272"/>
+ <node id="1690471566" visible="true" version="1" changeset="11096385" timestamp="2012-03-25T15:39:15Z" user="Tombo" uid="379917" lat="49.1840259" lon="16.7582102"/>
+ <node id="4682937241" visible="true" version="1" changeset="46038745" timestamp="2017-02-13T07:44:53Z" user="jirislaby" uid="476713" lat="49.1836111" lon="16.7604822"/>
+ <node id="4682937242" visible="true" version="1" changeset="46038745" timestamp="2017-02-13T07:44:53Z" user="jirislaby" uid="476713" lat="49.1835870" lon="16.7632347"/>
+ <node id="9597503671" visible="true" version="1" changeset="118781010" timestamp="2022-03-22T14:21:00Z" user="z_suszca" uid="2298394" lat="49.1837192" lon="16.7637581"/>
+ <node id="12461346401" visible="true" version="2" changeset="181214776" timestamp="2026-04-12T05:45:46Z" user="Pavel_Š" uid="21958359" lat="49.1836055" lon="16.7605144">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Jiříkovice, motorest Rohlenka"/>
+  <tag k="public_transport" v="stop_position"/>
+ </node>
+ <node id="12461346411" visible="true" version="2" changeset="181214776" timestamp="2026-04-12T05:45:46Z" user="Pavel_Š" uid="21958359" lat="49.1835146" lon="16.7610486">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Jiříkovice, motorest Rohlenka"/>
+  <tag k="public_transport" v="stop_position"/>
+ </node>
+ <node id="13625611770" visible="true" version="1" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1834835" lon="16.7625765"/>
+ <node id="13625611771" visible="true" version="1" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1834982" lon="16.7627113"/>
+ <node id="13625611772" visible="true" version="1" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1834714" lon="16.7624398"/>
+ <node id="13625611773" visible="true" version="1" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1835504" lon="16.7630424"/>
+ <node id="13625611774" visible="true" version="1" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1834516" lon="16.7620586"/>
+ <node id="13625611775" visible="true" version="1" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1834559" lon="16.7621835"/>
+ <node id="13625611776" visible="true" version="1" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1834511" lon="16.7619365"/>
+ <way id="9584044" visible="true" version="21" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="74106873"/>
+  <nd ref="1690471566"/>
+  <nd ref="74230773"/>
+  <nd ref="74153823"/>
+  <nd ref="74268668"/>
+  <nd ref="74138921"/>
+  <nd ref="4682937241"/>
+  <nd ref="12461346401"/>
+  <nd ref="74255658"/>
+  <nd ref="12461346411"/>
+  <nd ref="74285870"/>
+  <nd ref="74185631"/>
+  <nd ref="13625611776"/>
+  <nd ref="13625611774"/>
+  <nd ref="13625611775"/>
+  <nd ref="74273392"/>
+  <nd ref="13625611772"/>
+  <nd ref="13625611770"/>
+  <nd ref="13625611771"/>
+  <nd ref="74175567"/>
+  <nd ref="13625611773"/>
+  <nd ref="4682937242"/>
+  <nd ref="250131989"/>
+  <nd ref="9597503671"/>
+  <nd ref="252305959"/>
+  <tag k="cycleway:both" v="no"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed:backward" v="70"/>
+  <tag k="maxspeed:forward" v="90"/>
+  <tag k="name" v="Rohlenka"/>
+  <tag k="ref" v="430"/>
+  <tag k="sidewalk:right" v="no"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="source:maxspeed:backward" v="sign"/>
+  <tag k="source:maxspeed:forward" v="CZ:rural"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>

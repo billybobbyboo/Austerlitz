@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2558810 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74125328" visible="true" version="3" changeset="5311308" timestamp="2010-07-25T12:17:02Z" user="Hansign" uid="208872" lat="49.1844760" lon="16.7662701">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74140078" visible="true" version="2" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1846047" lon="16.7680261">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74243109" visible="true" version="3" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1845137" lon="16.7665592">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="74256573" visible="true" version="2" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1851714" lon="16.7778116">
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+ </node>
+ <node id="250131990" visible="true" version="3" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1841154" lon="16.7649170"/>
+ <node id="250131991" visible="true" version="2" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1840037" lon="16.7645996"/>
+ <node id="297537004" visible="true" version="3" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1851378" lon="16.7811229"/>
+ <node id="4682937243" visible="true" version="2" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1843266" lon="16.7655978"/>
+ <node id="8140083841" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1851901" lon="16.7782199"/>
+ <node id="8140083842" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1852010" lon="16.7790949"/>
+ <node id="8140083843" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1852010" lon="16.7786551"/>
+ <node id="8140083844" visible="true" version="1" changeset="94396952" timestamp="2020-11-18T21:46:06Z" user="vojtechzaboril" uid="8971394" lat="49.1851931" lon="16.7795067"/>
+ <node id="10781715992" visible="true" version="1" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1842244" lon="16.7652439"/>
+ <node id="10781715997" visible="true" version="1" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1844087" lon="16.7659292"/>
+ <node id="10781715998" visible="true" version="1" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1843705" lon="16.7657635"/>
+ <node id="10781715999" visible="true" version="1" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1844972" lon="16.7664147"/>
+ <node id="10781716000" visible="true" version="1" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1845701" lon="16.7674444"/>
+ <node id="10781716001" visible="true" version="1" changeset="134452562" timestamp="2023-04-03T12:17:29Z" user="MIGORMCZ" uid="10284764" lat="49.1845328" lon="16.7668243"/>
+ <node id="13625611788" visible="true" version="1" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764" lat="49.1847256" lon="16.7701134"/>
+ <way id="23306774" visible="true" version="14" changeset="179508034" timestamp="2026-03-07T19:52:16Z" user="MIGORMCZ" uid="10284764">
+  <nd ref="297537004"/>
+  <nd ref="8140083844"/>
+  <nd ref="8140083842"/>
+  <nd ref="8140083843"/>
+  <nd ref="8140083841"/>
+  <nd ref="74256573"/>
+  <nd ref="13625611788"/>
+  <nd ref="74140078"/>
+  <nd ref="10781716000"/>
+  <nd ref="10781716001"/>
+  <nd ref="74243109"/>
+  <nd ref="10781715999"/>
+  <nd ref="74125328"/>
+  <nd ref="10781715997"/>
+  <nd ref="10781715998"/>
+  <nd ref="4682937243"/>
+  <nd ref="10781715992"/>
+  <nd ref="250131990"/>
+  <nd ref="250131991"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="90"/>
+  <tag k="ref" v="430"/>
+  <tag k="source" v="HELP SERVICE - REMOTE SENSING spol. s r.o. http://www.bnhelp.cz"/>
+  <tag k="source:maxspeed" v="CZ:rural"/>
+  <tag k="surface" v="concrete"/>
+ </way>
+</osm>

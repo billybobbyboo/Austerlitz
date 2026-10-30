@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2662872 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1348025140" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:10:52Z" user="Mar4s" uid="461574" lat="49.1180867" lon="16.7240580"/>
+ <node id="1348029482" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:13Z" user="Mar4s" uid="461574" lat="49.1180611" lon="16.7246309"/>
+ <node id="1348034231" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:24Z" user="Mar4s" uid="461574" lat="49.1179760" lon="16.7240998"/>
+ <node id="1348036371" visible="true" version="2" changeset="65103137" timestamp="2018-12-02T19:11:30Z" user="Mar4s" uid="461574" lat="49.1181721" lon="16.7245878"/>
+ <way id="120172453" visible="true" version="4" changeset="91894329" timestamp="2020-10-03T08:44:41Z" user="Michal Špondr" uid="587067">
+  <nd ref="1348025140"/>
+  <nd ref="1348036371"/>
+  <nd ref="1348029482"/>
+  <nd ref="1348034231"/>
+  <nd ref="1348025140"/>
+  <tag k="building" v="barn"/>
+  <tag k="building:levels" v="4"/>
+  <tag k="building:ruian:type" v="13"/>
+  <tag k="ref:ruian:building" v="46430121"/>
+  <tag k="roof:levels" v="1"/>
+  <tag k="roof:shape" v="half-hipped"/>
+  <tag k="source" v="cuzk:ruian"/>
+ </way>
+</osm>

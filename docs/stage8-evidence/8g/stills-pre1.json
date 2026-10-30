@@ -1,0 +1,300 @@
+{
+ "chromium": "153.0.8010.12",
+ "set": "pre1",
+ "before": {
+  "file": "8f.html",
+  "md5": "6ba949da17229530324add3c54dd94ff"
+ },
+ "after": {
+  "file": "pre1.html",
+  "md5": "1dbb7d85977f153fc7b75b6ba1e2acbe"
+ },
+ "views": {
+  "fields-low": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 11.318,
+    "meanDiff": 3.411
+   }
+  },
+  "fields-close": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 33,
+    "linked": 33,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 33,
+    "linked": 33,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 12.71,
+    "meanDiff": 3.927
+   }
+  },
+  "stream-low": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0.137,
+    "meanDiff": 0.268
+   }
+  },
+  "goldbach-noon": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 13.975,
+    "meanDiff": 2.845
+   }
+  },
+  "marsh-low": {
+   "before": {
+    "clock": "13:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "13:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 6.888,
+    "meanDiff": 1.478
+   }
+  },
+  "stream-bank": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 13.064,
+    "meanDiff": 3.547
+   }
+  },
+  "pratzen-low": {
+   "before": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 2.085,
+    "meanDiff": 1.254
+   }
+  },
+  "overview-field": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 1.34,
+    "meanDiff": 1.142
+   }
+  },
+  "going": {
+   "before": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": true,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": true,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 6.371,
+    "meanDiff": 1.908
+   }
+  },
+  "paper": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 42,
+    "linked": 42,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 42,
+    "linked": 42,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 0,
+    "meanDiff": 0.035
+   }
+  },
+  "phone-fields": {
+   "before": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "12:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": true,
+    "going": false,
+    "programs": 31,
+    "linked": 31,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 5.376,
+    "meanDiff": 2.155
+   }
+  }
+ }
+}

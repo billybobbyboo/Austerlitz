@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (2725557 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="74279843" visible="true" version="5" changeset="18692961" timestamp="2013-11-03T12:33:13Z" user="Petr Dlouhý" uid="17615" lat="49.1822452" lon="16.6894065"/>
+ <node id="2518544839" visible="true" version="5" changeset="170844650" timestamp="2025-08-22T17:29:48Z" user="DNL852" uid="4763461" lat="49.1822528" lon="16.6900786">
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="crossing:island" v="yes"/>
+  <tag k="crossing:markings" v="zebra"/>
+  <tag k="highway" v="crossing"/>
+  <tag k="tactile_paving" v="no"/>
+ </node>
+ <node id="4243884091" visible="true" version="5" changeset="160762914" timestamp="2024-12-29T18:21:38Z" user="Pavel_Š" uid="21958359" lat="49.1822525" lon="16.6901240">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Slatina, sídliště"/>
+  <tag k="public_transport" v="stop_position"/>
+ </node>
+ <node id="4243904490" visible="true" version="5" changeset="160762914" timestamp="2024-12-29T18:21:38Z" user="Pavel_Š" uid="21958359" lat="49.1822569" lon="16.6905744">
+  <tag k="bus" v="yes"/>
+  <tag k="name" v="Slatina, sídliště"/>
+  <tag k="public_transport" v="stop_position"/>
+ </node>
+ <node id="4461601973" visible="true" version="2" changeset="43119755" timestamp="2016-10-24T11:01:57Z" user="jirislaby" uid="476713" lat="49.1822565" lon="16.6905166"/>
+ <node id="7344493333" visible="true" version="2" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822641" lon="16.6914936"/>
+ <node id="12048133263" visible="true" version="1" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822733" lon="16.6919115"/>
+ <node id="12048133394" visible="true" version="1" changeset="153831226" timestamp="2024-07-11T22:05:41Z" user="mtrutman" uid="520014" lat="49.1822673" lon="16.6917454"/>
+ <node id="13344709279" visible="true" version="1" changeset="175361602" timestamp="2025-12-01T14:40:31Z" user="Zedna" uid="11995991" lat="49.1822681" lon="16.6917688">
+  <tag k="crossing" v="marked"/>
+  <tag k="crossing:island" v="yes"/>
+  <tag k="crossing:markings" v="yes"/>
+  <tag k="highway" v="crossing"/>
+  <tag k="tactile_paving" v="yes"/>
+ </node>
+ <way id="1056528348" visible="true" version="6" changeset="175361602" timestamp="2025-12-01T14:40:31Z" user="Zedna" uid="11995991">
+  <nd ref="74279843"/>
+  <nd ref="2518544839"/>
+  <nd ref="4243884091"/>
+  <nd ref="4461601973"/>
+  <nd ref="4243904490"/>
+  <nd ref="7344493333"/>
+  <nd ref="12048133394"/>
+  <nd ref="13344709279"/>
+  <nd ref="12048133263"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="lanes" v="2"/>
+  <tag k="lit" v="no"/>
+  <tag k="maxspeed" v="50"/>
+  <tag k="name" v="Hviezdoslavova"/>
+  <tag k="ref" v="430"/>
+  <tag k="smoothness" v="excellent"/>
+  <tag k="source" v="cuzk:km;uhul:ortofoto"/>
+  <tag k="surface" v="asphalt"/>
+ </way>
+</osm>
