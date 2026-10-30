@@ -16,7 +16,7 @@ const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?
 const BEFORE=path.resolve(opt("--before")), AFTER=path.resolve(opt("--after")||path.join(L.ROOT,"austerlitz-command-map.html")), OUT=path.resolve(opt("--out")||path.join(L.EVID8,"8h"));
 const SET="8h", ONLY=opt("--only")?opt("--only").split(","):null;
 const VP=[1600,900], PH=[390,844];
-const TOAST="flash(PHASES[3].flash); AUSTERLITZ_DEBUG.settle(2);";
+const TOAST="flash(PHASES[3].flash); clearTimeout(flash._t); AUSTERLITZ_DEBUG.settle(2);";   /* its 3.4 s hiding timer cleared (as toast-8h.js does): software WebGL takes longer than that to the capture */
 const SETS={
   "8h":{
     "austerlitz-town":{viewport:VP, t:840, presentation:"watch", mode:"terrain", aim:{map:[507,126], dir:[-0.55,0.40,0.73], r:36}},
