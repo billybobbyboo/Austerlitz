@@ -939,7 +939,8 @@ var BUILDINGS = {
   },
   /* the churches standing on 2 December 1805, one claim each (CHURCHES in world.js draws them by the village's point, as the build drew them at
      it: each moved the least step that clears the roads and streams drawn through the point, docs/STAGE8_SPEC.md section 19; the place each
-     source gives within or beside the village is in its scope, and its own place a geographic correction proposed, not made) */
+     source gives within or beside the village is in its scope. Since the follow-up 8J a church whose own site is read is drawn there:
+     Pratzen's, world.js LANDMARK_SITES.church) */
   churches: {
     Telnitz:{v:"die dem hl. Johann d. Täuf. geweihte Kirche mit 3 Altären wurde in ihrer dermaligen Gestalt [...] zwischen 1726 u. 1740 neu erbaut", en:"the church of St John the Baptist, rebuilt between 1726 and 1740",
       src:"wolny1837", at:"p. 467 (leaf n472)", gr:"B", lab:"fact", q:"zwischen 1726 u. 1740 neu erbaut",
@@ -947,7 +948,7 @@ var BUILDINGS = {
       note:"readings T1.5, T3.7, C1.2"},
     Pratzen:{v:"Pratzen [...] mit einer außer dem Orte stehenden Kirche", en:"a church standing outside the village",
       src:"schwoy1793", at:"p. 309 (leaf n317)", gr:"B", lab:"fact", q:"mit einer außer dem Orte stehenden Kirche",
-      scope:"the church of 1728-1730 (Wolny 1837, pp. 51-52), so standing in 1805; outside the village in 1793 and on the 1826 sketch (276 m south-south-west of the street's midpoint, south of the brook, on a north-facing slope): drawn by the village's point, as at it before 8G; its own place, about 400 m south of the village's point, a geographic correction proposed, not made",
+      scope:"the church of 1728-1730 (Wolny 1837, pp. 51-52), so standing in 1805; outside the village in 1793 and on the 1826 sketch (276 m south-south-west of the street's midpoint, south of the brook, on a north-facing slope): drawn at its own site, today's church (RÚIAN building 46052721), 399 m south-south-west of the village's point, moved only as far as the drawn roads and streams ask (since the follow-up 8J, decision 259 (a); by the village's point until then): B for 1826, for 1805 the 1826 site carried back with the 1793 text's 'outside the village'",
       note:"readings T2.3, T1.7, T3.10, C4"},
     Augezd:{v:"Die alte Pfarrkirche zu den hl. Fürsten-Aposteln Peter und Paul, mitten im D. etwas erhöhet stehend", en:"the old parish church, standing slightly raised in the middle of the village",
       src:"wolnykt2_1858", at:"p. 212 (leaf n231)", gr:"B", lab:"inference",
@@ -1000,15 +1001,16 @@ var BUILDINGS = {
       src:"schwoy1793", at:"p. 60 (leaf n68)", gr:"B", lab:"inference", q:"mit einem Schloße, Bräuhaus, und großen Mayerhof",
       scope:"no church named in 1793 or 1837; in Bosenitz parish, with a school and no chapel (1860): for 1805 the sources' silence before and after (its belfry dates from 1831-1832, places.md); drawn with a church until 8G, none since", note:"readings T2.10, T1.18, T3.12"}
   },
-  /* the Sokolnitz castle and its farm (drawn by the map's legacy place, moved off the drawn brook it stood on until 8G) */
+  /* the Sokolnitz castle and its farm (drawn at the castle's own site since the follow-up 8J, decision 259 (a); by the map's legacy place, 535 m
+     south-east, until then) */
   sokolnitz: {
     castle:{v:"Das obrgktl. Schloß steht auf einer Anhöhe und bildet ein regelmäßiges Viereck, dessen östl. Fronte 2 Stockwerke hoch ist [...] während die andern 3 Seiten nur 1 Stockwerk haben",
       en:"a regular quadrangle, its east front two storeys, the other three sides one", src:"wolny1837", at:"p. 465 (leaf n470)", gr:"B", lab:"inference", q:"bildet ein regelmäßiges Viereck",
-      scope:"the castle in 1837, and in 1825 a closed carmine quadrangle of 79.6 by 60.0 m round a court, its east range about 1.7 times as deep as the others (mza_sokolnitz1825, piece A04E); no rebuilding between 1805 and 1837 read: its form in 1805 an inference. Drawn at the map's legacy place, moved just far enough to clear the drawn brook it stood on (docs/STAGE8_SPEC.md section 19 gives the move); the castle's own place, about 535 m north-west of the legacy place across the drawn Goldbach, a geographic correction proposed, not made",
+      scope:"the castle in 1837, and in 1825 a closed carmine quadrangle of 79.6 by 60.0 m round a court, its east range about 1.7 times as deep as the others (mza_sokolnitz1825, piece A04E); no rebuilding between 1805 and 1837 read: its form in 1805 an inference. Drawn at its own site, today's castle and the 1825 quadrangle on one site (RÚIAN building 13158571; the sketch georeferenced on it, its far checks holding to 7-15 m: B for 1825), west of the corrected Goldbach as in 1825, its quadrangle covering its site; the drawn track and brook there (their widths a display convention) leave no room for it at the buildings' drawn size, so it and its farm are drawn smaller, at the largest size that stands clear (since the follow-up 8J, decision 259 (a); until then at the map's legacy place, 535 m south-east, across the drawn brook); its site in 1805 the 1825 site by the texts (Schwoy 1793; Mikhailovsky-Danilevsky 1844, the road crossing the brook beside it)",
       note:"readings T1.1, C3.1; Thiébault (1894) names its main house, stables, barns, outbuildings and avenues in the fight (T6.6)"},
     farm:{v:"Sokolnitz, Dorf von 75 Häusern, 574 Seelen, mit einem guten Schloße und Garten, auch einem Bräuhause und Mayerhof", en:"the manorial farm named with the castle in 1793",
       src:"schwoy1793", at:"p. 393 (leaf n401)", gr:"B", lab:"fact", q:"auch einem Bräuhause und Mayerhof",
-      scope:"the farm in 1793, standing in 1805 by inference; south of the castle in 1837 (Wolny, p. 466) and on the 1825 sketch (two yards on either side of a road, long carmine ranges); drawn as three ranges round one yard south of the castle (DESIGN), across the drawn brook from it",
+      scope:"the farm in 1793, standing in 1805 by inference; south of the castle in 1837 (Wolny, p. 466) and on the 1825 sketch (two yards on either side of a road, long carmine ranges); drawn as three ranges round one yard south of the castle (DESIGN), on the castle's side of the brook as corrected (since the follow-up 8J; across the drawn brook from it until then)",
       note:"readings T2.1, T1.2, C3.6"},
     orchardWall:{v:"the walled orchard west of the castle", lab:"disputed", gr:"C",
       scope:"the orchard west of the castle: walled in 1837 (Wolny), no wall drawn there on the 1825 sketch; for 1805 neither settles it, so no wall is drawn", sides:[
@@ -1049,8 +1051,15 @@ var BUILDINGS = {
       note:"readings T3.13, T1.12"},
     chateau:{v:"Mit der Hauptfronte, an die sich zu beiden Seiten Flügel anschließen, ist es gegen SW. gekehrt, und hat (mit Einschluß des untern), 3 Stockwerke",
       en:"its main front, with a wing at each end, facing south-west; three storeys", src:"wolny1836", at:"p. 152 (leaf n219)", gr:"B", lab:"inference", q:"ist es gegen SW. gekehrt",
-      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within 22.5 degrees of the bearing its own place has from the church's today (236 degrees, west-south-west, places.md), its centre in the town's place and no road or stream of this map's between them, where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point)",
-      note:"readings T1.13, T2.15"}
+      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within 22.5 degrees of the bearing its own place has from the church's today (236 degrees, west-south-west, places.md), its centre in the town's place and no road or stream of this map's between them, where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point). Its garden west of it (world.js GARDENS, since the follow-up 8J): drawn at the garden's own outline, the 1826 sketch's and the Second Survey's, as rows of trees west of the château as drawn, the rows a convention (DESIGN); no house of the town in it",
+      note:"readings T1.13, T2.15"},
+    /* Stage 8, the follow-up 8J (decision 259 (a); docs/stage8-evidence/8h/geo/proposal.md G6): the garden west of the château, drawn at its own
+       outline (world.js GARDENS) in place of the build's "Austerlitz park", a wood 1.6 km south-east of the town */
+    garden:{v:"Uebrigens ist dieses Schloß, an den w. ein herrlicher gegenwärtig aber etwas vernachlässigter Garten anstoßt",
+      en:"a splendid garden adjoining the château on the west, somewhat neglected in 1836", src:"wolny1836", at:"p. 153 (leaf n220)", gr:"B", lab:"fact",
+      q:"an den w. ein herrlicher gegenwärtig aber etwas vernachlässigter Garten anstoßt",
+      scope:"the garden west of the château in 1836, with the château 'eine Schöpfung des [...] Fürst. Wenzel' (p. 152): Kaunitz died in 1794, so it was laid out before 1805 (an inference); a formal garden of compartments with rows of trees on an east-west axis on the 1826 sketch (MOR243418260, read without a georeference: its side unambiguous) and on the Second Military Survey (1836-52), its outline there that of today's garden (OSM way 27326751, 16.9 ha): drawn at that outline as rows of trees west of the château as drawn, the rows' number and spacing a convention (DESIGN), the planting in 1805 not established. The 'Austerlitz park' drawn until the follow-up 8J, a wood 1.6 km south-east of the town, stood on fields and meadows in 1836-52: no support",
+      note:"readings T1.13; docs/stage8-evidence/8h/geo/README.md sections 6.2, 6.3 and 7.6"}
   },
   /* what the sources name and the map does not draw, each with why and the alternatives put to the owner (docs/STAGE8_SPEC.md section 19) */
   notDrawn: {

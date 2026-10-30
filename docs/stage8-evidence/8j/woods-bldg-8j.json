@@ -1,0 +1,60 @@
+{
+ "tool": "tools/stage8/woods-bldg-8j.js",
+ "builds": [
+  {
+   "file": "austerlitz-8i.html",
+   "md5": "697bbf34ec29fc4d05695dc8e1cd3c5e",
+   "woods": {
+    "wood": 634,
+    "village": 184,
+    "conifer": 376,
+    "edge": 354,
+    "stream": 202
+   },
+   "parts": 625,
+   "errors": []
+  },
+  {
+   "file": "austerlitz-8j-final.html",
+   "md5": "7d5594baf7468f943ab42f7d848608d1",
+   "woods": {
+    "wood": 409,
+    "village": 184,
+    "garden": 12,
+    "conifer": 287,
+    "edge": 244,
+    "stream": 229
+   },
+   "parts": 633,
+   "errors": []
+  }
+ ],
+ "diff1": {
+  "from": "austerlitz-8i.html",
+  "to": "austerlitz-8j-final.html",
+  "changed": [
+   "Austerlitz (64 to 59 parts)",
+   "Pratzen (29 to 30 parts)",
+   "Sokolnitz (177 to 181 parts)",
+   "Telnitz (120 to 128 parts)"
+  ],
+  "identical": [
+   "Augezd",
+   "Bellowitz",
+   "Blasowitz",
+   "Bosenitz",
+   "Girzikowitz",
+   "Holubitz",
+   "Hostieradek",
+   "Kobelnitz",
+   "Krug",
+   "Krzenowitz",
+   "Menitz",
+   "Posoritz post house",
+   "Puntowitz",
+   "Satschan",
+   "Schlapanitz",
+   "Turas"
+  ]
+ }
+}

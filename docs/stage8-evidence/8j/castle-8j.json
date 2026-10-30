@@ -1,0 +1,617 @@
+{
+ "tool": "tools/stage8/castle-8j.js",
+ "build": "austerlitz-8j-final.html",
+ "md5": "7d5594baf7468f943ab42f7d848608d1",
+ "errors": [],
+ "site": [
+  212.9,
+  344.3
+ ],
+ "metresPerWorldUnit": 63.19772037002967,
+ "ribbons": [
+  {
+   "kind": "road",
+   "name": "Kobelnitz-Sokolnitz track",
+   "fromSiteM": 118,
+   "drawnWidthM": 76,
+   "clearanceM": 16,
+   "freeM": 64
+  },
+  {
+   "kind": "stream",
+   "name": "Goldbach",
+   "fromSiteM": 146,
+   "drawnWidthM": 145,
+   "clearanceM": 22,
+   "freeM": 51
+  }
+ ],
+ "sizes": [
+  {
+   "size": 1,
+   "quadrangleM": [
+    480,
+    367
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.95,
+   "quadrangleM": [
+    456,
+    348
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.9,
+   "quadrangleM": [
+    432,
+    330
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.85,
+   "quadrangleM": [
+    408,
+    312
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.8,
+   "quadrangleM": [
+    384,
+    293
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.75,
+   "quadrangleM": [
+    360,
+    275
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.7,
+   "quadrangleM": [
+    336,
+    257
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.65,
+   "quadrangleM": [
+    312,
+    238
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.6,
+   "quadrangleM": [
+    288,
+    220
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.55,
+   "quadrangleM": [
+    264,
+    202
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.5,
+   "quadrangleM": [
+    240,
+    183
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.45,
+   "quadrangleM": [
+    216,
+    165
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.4,
+   "quadrangleM": [
+    192,
+    147
+   ],
+   "nearestClearOnItsSide": null,
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.35,
+   "quadrangleM": [
+    168,
+    128
+   ],
+   "nearestClearOnItsSide": {
+    "offUnits": 1.8,
+    "offM": 114,
+    "east": 0,
+    "north": -1.8
+   },
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.3,
+   "quadrangleM": [
+    144,
+    110
+   ],
+   "nearestClearOnItsSide": {
+    "offUnits": 1.4,
+    "offM": 89,
+    "east": -0.1,
+    "north": -1.4
+   },
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.25,
+   "quadrangleM": [
+    120,
+    92
+   ],
+   "nearestClearOnItsSide": {
+    "offUnits": 0.91,
+    "offM": 57,
+    "east": -0.1,
+    "north": -0.9
+   },
+   "nearestClearCovering": null,
+   "atSite": false
+  },
+  {
+   "size": 0.2,
+   "quadrangleM": [
+    96,
+    73
+   ],
+   "nearestClearOnItsSide": {
+    "offUnits": 0,
+    "offM": 0,
+    "east": 0,
+    "north": 0
+   },
+   "nearestClearCovering": {
+    "offUnits": 0.02,
+    "offM": 1,
+    "east": -0.01,
+    "north": 0.02
+   },
+   "atSite": true
+  },
+  {
+   "size": 0.15,
+   "quadrangleM": [
+    72,
+    55
+   ],
+   "nearestClearOnItsSide": {
+    "offUnits": 0,
+    "offM": 0,
+    "east": 0,
+    "north": 0
+   },
+   "nearestClearCovering": {
+    "offUnits": 0.02,
+    "offM": 2,
+    "east": -0.02,
+    "north": 0.01
+   },
+   "atSite": true
+  }
+ ],
+ "size1AnywhereWithin8": {
+  "offUnits": 7.3,
+  "offM": 461,
+  "east": -6.7,
+  "north": 2.9,
+  "acrossARibbon": true
+ },
+ "drawn": {
+  "castleRanges": 4,
+  "farmRanges": 3,
+  "sizes": [
+   0.2,
+   0.2,
+   0.2,
+   0.2,
+   0.2,
+   0.2,
+   0.2
+  ],
+  "centreFromSiteM": [
+   -2,
+   0
+  ],
+  "quadrangleM": [
+   96,
+   73
+  ],
+  "siteInside": true,
+  "farmCentreFromSiteM": [
+   -17,
+   -92
+  ],
+  "heights": [
+   "castle north range 1.15",
+   "castle south range 1.15",
+   "castle west range 1.15",
+   "castle east range 2.05"
+  ]
+ },
+ "sokolnitzFarmsteads": {
+  "drawn": 13,
+  "map": 13
+ },
+ "CASTLE8J": {
+  "step": 0.05,
+  "floor": 0.15
+ },
+ "thirdColumn": {
+  "within150m": {
+   "from": "08:00",
+   "to": "14:10"
+  },
+  "every10min": [
+   {
+    "t": "04:00",
+    "m": 3132
+   },
+   {
+    "t": "04:10",
+    "m": 3132
+   },
+   {
+    "t": "04:20",
+    "m": 3132
+   },
+   {
+    "t": "04:30",
+    "m": 3132
+   },
+   {
+    "t": "04:40",
+    "m": 3132
+   },
+   {
+    "t": "04:50",
+    "m": 3132
+   },
+   {
+    "t": "05:00",
+    "m": 3132
+   },
+   {
+    "t": "05:10",
+    "m": 3132
+   },
+   {
+    "t": "05:20",
+    "m": 3132
+   },
+   {
+    "t": "05:30",
+    "m": 3132
+   },
+   {
+    "t": "05:40",
+    "m": 3132
+   },
+   {
+    "t": "05:50",
+    "m": 3132
+   },
+   {
+    "t": "06:00",
+    "m": 3132
+   },
+   {
+    "t": "06:10",
+    "m": 3132
+   },
+   {
+    "t": "06:20",
+    "m": 3132
+   },
+   {
+    "t": "06:30",
+    "m": 3132
+   },
+   {
+    "t": "06:40",
+    "m": 3132
+   },
+   {
+    "t": "06:50",
+    "m": 3132
+   },
+   {
+    "t": "07:00",
+    "m": 3132
+   },
+   {
+    "t": "07:10",
+    "m": 2651
+   },
+   {
+    "t": "07:20",
+    "m": 2166
+   },
+   {
+    "t": "07:30",
+    "m": 1654
+   },
+   {
+    "t": "07:40",
+    "m": 1143
+   },
+   {
+    "t": "07:50",
+    "m": 631
+   },
+   {
+    "t": "08:00",
+    "m": 124
+   },
+   {
+    "t": "08:10",
+    "m": 124
+   },
+   {
+    "t": "08:20",
+    "m": 124
+   },
+   {
+    "t": "08:30",
+    "m": 124
+   },
+   {
+    "t": "08:40",
+    "m": 124
+   },
+   {
+    "t": "08:50",
+    "m": 124
+   },
+   {
+    "t": "09:00",
+    "m": 124
+   },
+   {
+    "t": "09:10",
+    "m": 124
+   },
+   {
+    "t": "09:20",
+    "m": 124
+   },
+   {
+    "t": "09:30",
+    "m": 124
+   },
+   {
+    "t": "09:40",
+    "m": 124
+   },
+   {
+    "t": "09:50",
+    "m": 124
+   },
+   {
+    "t": "10:00",
+    "m": 124
+   },
+   {
+    "t": "10:10",
+    "m": 124
+   },
+   {
+    "t": "10:20",
+    "m": 124
+   },
+   {
+    "t": "10:30",
+    "m": 124
+   },
+   {
+    "t": "10:40",
+    "m": 124
+   },
+   {
+    "t": "10:50",
+    "m": 124
+   },
+   {
+    "t": "11:00",
+    "m": 124
+   },
+   {
+    "t": "11:10",
+    "m": 124
+   },
+   {
+    "t": "11:20",
+    "m": 124
+   },
+   {
+    "t": "11:30",
+    "m": 124
+   },
+   {
+    "t": "11:40",
+    "m": 124
+   },
+   {
+    "t": "11:50",
+    "m": 124
+   },
+   {
+    "t": "12:00",
+    "m": 124
+   },
+   {
+    "t": "12:10",
+    "m": 124
+   },
+   {
+    "t": "12:20",
+    "m": 124
+   },
+   {
+    "t": "12:30",
+    "m": 124
+   },
+   {
+    "t": "12:40",
+    "m": 124
+   },
+   {
+    "t": "12:50",
+    "m": 124
+   },
+   {
+    "t": "13:00",
+    "m": 124
+   },
+   {
+    "t": "13:10",
+    "m": 124
+   },
+   {
+    "t": "13:20",
+    "m": 124
+   },
+   {
+    "t": "13:30",
+    "m": 124
+   },
+   {
+    "t": "13:40",
+    "m": 124
+   },
+   {
+    "t": "13:50",
+    "m": 124
+   },
+   {
+    "t": "14:00",
+    "m": 124
+   },
+   {
+    "t": "14:10",
+    "m": 124
+   },
+   {
+    "t": "14:20",
+    "m": 661
+   },
+   {
+    "t": "14:30",
+    "m": 1201
+   },
+   {
+    "t": "14:40",
+    "m": 1201
+   },
+   {
+    "t": "14:50",
+    "m": 1201
+   },
+   {
+    "t": "15:00",
+    "m": 1201
+   },
+   {
+    "t": "15:10",
+    "m": 1201
+   },
+   {
+    "t": "15:20",
+    "m": 1201
+   },
+   {
+    "t": "15:30",
+    "m": 1201
+   },
+   {
+    "t": "15:40",
+    "m": 1201
+   },
+   {
+    "t": "15:50",
+    "m": 1201
+   },
+   {
+    "t": "16:00",
+    "m": 1201
+   },
+   {
+    "t": "16:10",
+    "m": 1201
+   },
+   {
+    "t": "16:20",
+    "m": 1201
+   },
+   {
+    "t": "16:30",
+    "m": 1201
+   },
+   {
+    "t": "16:40",
+    "m": 1201
+   },
+   {
+    "t": "16:50",
+    "m": 1201
+   },
+   {
+    "t": "17:00",
+    "m": null
+   }
+  ]
+ }
+}
