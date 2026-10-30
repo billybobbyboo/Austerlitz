@@ -10,7 +10,7 @@
    (the render, then the GL finished: software WebGL, where the vertex and the fragment work are the CPU's), --frames frames (25) after 5
    unmeasured, median and 95th percentile, on --reps fresh pages of each build (2), alternating which build goes first.
    --toggle: on one build (AUSTERLITZ_HTML, else the repository's), in each view on one page, the hook's uniform at 1 and at 0 in alternate
-   frames (--frames pairs, 60; the order within a pair alternating; 5 frames unmeasured first), each frame drawn whole: what the faces grown near
+   frames (--frames pairs, 60; the order within a pair alternating; 12 frames unmeasured first), each frame drawn whole: what the faces grown near
    the eye cost (the hook's vertex arithmetic runs in both states, so this is the work its grown faces add), free of a page's or a load's
    spread; the pairs' differences' median with each state's median and 95th percentile.
    node tools/stage8/near-8h.js [--views trees-eye,woods-pheasantry,close-sokolnitz] [--protos t-near,t-nearvol | --uniform | --cost --builds a=..,b=.. [--reps 2] [--frames 25] | --toggle [--frames 60]] [--json out.json]
@@ -31,11 +31,12 @@ const COST=function(n){ var gl=renderer.getContext(), t=[]; for(var i=0;i<n+5;i+
   t.sort(function(x,y){ return x-y; }); return {median:+t[Math.floor(t.length/2)].toFixed(1), p95:+t[Math.floor(0.95*(t.length-1))].toFixed(1), frames:t.length}; };
 const TOGGLE=function(n){ var gl=renderer.getContext(), U=TREE8H.U.uTreeNear, on=[], off=[], d=[];
   function one(v){ U.value=v; var a=performance.now(); renderFrame(); gl.finish(); return performance.now()-a; }
-  for(var w=0;w<5;w++) one(w%2);
+  for(var w=0;w<12;w++) one(w%2);   /* the page's first frames after the case is applied take seconds each (programs and the shadow's first draw) */
   for(var i=0;i<n;i++){ var first=i%2?0:1, ta=one(first), tb=one(1-first), tOn=first?ta:tb, tOff=first?tb:ta; on.push(tOn); off.push(tOff); d.push(tOn-tOff); }
   U.value=1;
   function q(x,f){ x=x.slice().sort(function(p,r){ return p-r; }); return +x[Math.floor(f*(x.length-1))].toFixed(2); }
-  return {pairs:n, on:{median:q(on,0.5), p95:q(on,0.95)}, off:{median:q(off,0.5), p95:q(off,0.95)}, diffMedian:q(d,0.5), diffP25:q(d,0.25), diffP75:q(d,0.75)}; };
+  var slow=on.concat(off).filter(function(t){ return t>1000; }).length;   /* frames over a second: a page still settling, or a busy machine (reported, not hidden) */
+  return {pairs:n, on:{median:q(on,0.5), p95:q(on,0.95)}, off:{median:q(off,0.5), p95:q(off,0.95)}, diffMedian:q(d,0.5), diffP25:q(d,0.25), diffP75:q(d,0.75), slowFrames:slow}; };
 if(argv.includes("--toggle")) (async()=>{ const html=path.resolve(process.env.AUSTERLITZ_HTML||path.join(L.ROOT,"austerlitz-command-map.html")), NF=+(opt("--frames")||60);
   const browser=await L.launch(), out={tool:"tools/stage8/near-8h.js --toggle", chromium:browser.version(), build:path.basename(html), md5:require("crypto").createHash("md5").update(fs.readFileSync(html)).digest("hex"), pairs:NF, views:{}};
   for(const vn of VIEWS){ process.env.AUSTERLITZ_HTML=html; const p=await L.open(browser,V[vn].viewport,{}); await L.applyCase(p,V[vn]);
