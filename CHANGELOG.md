@@ -85,6 +85,43 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
   every other run's frames are as before. No limit changed.
 - **`dwellAdvance`** takes a dwell state set by other means without its speed (the self-test's own) as entered at the current speed, so the
   rescale of S-7 never divides by an absent speed.
+- **8G's records (section 19, written in 8H; section 20.2).** 8G's pull request was merged ahead of its record: section 19 was cited by its
+  commits, code comments, self-test checks and evidence README but never written, and the roadmap and `CLAUDE.md` stopped at 8F. Written from
+  the commits, CI's own runs (its self-test report and its `check:visual` reports and captures of 8F's and 8G's commits, runs 40665840278 and
+  40870570661, downloaded) and measures made again on the exact builds: `docs/STAGE8_SPEC.md` section 19; the evidence README saying what is
+  original, what was added from CI's runs (`selftest-ci-dddd4e4.json`: 313 of 313; `census-ci.json` and `.md`, by `tools/stage8/census-8g.js`:
+  +9 draw calls and +31,740 triangles on every desktop landscape view, +5 and +23,010 on a phone's; `ci-pairs/`, CI's own captures of seven
+  cases) and what is reconstructed (`stills-pre1.json`, `stills-pre2.json`, `stills-8g.json` and `pairs/`, made with 8G's own tool, unchanged, in
+  this container); `places.md` noting that its companion files were never committed, pointing to 8H's research.
+- **The geographic review (section 20.6; no correction made).** `docs/stage8-evidence/8h/geo/`: 8G's `places.md` research made again from fresh
+  fetches, every response kept with its URL, status and hash (783), and re-runnable (`fetch-places.js`, `krovak.js`, `period-trace.py`,
+  `compute-places.js`, `period-figures.py`); its Table A reproduced (28 positions to 0.1 m); the frame checked (sound: round trips exact,
+  distances within 0.3% of the ellipsoid's, bearings within 0.11°); the stable cadastre's sketches of 1825-26 and the Second Military Survey
+  read (the First not reached, so every site in 1805 is the 1825-52 site carried back by inference). Verdicts, each facet apart: the pheasantry
+  north of the castle (its 1825 wood not today's woodland), the castle on today's site, the Goldbach east of the castle, the post house at
+  Kovalovice No. 109, the highway east of the Santon on II/430's line, the Austerlitz garden west of the château, Pratzen's church outside the
+  village. `proposal.md` with the consequences traced (`consequences.js` from the repository's declarations): the Sokolnitz group and the two
+  small ones move no anchor and put the French line at Sokolnitz on its own bank; the highway and the post house move eleven anchors off the
+  drawn road and contradict the correction pass's recorded route (an established decision: stated, not changed). Questions 259 and 260; nothing
+  of the data changed.
+- **The crowns close to the eye (8F's item 4; section 20.10): they close up near the eye.** Two prototypes measured in the live page by 8F's own
+  tool (`tools/stage8/woods-8f.js --module woods8h`, `tools/stage8/protos/woods8h.js`): the crowns shaded as one volume (8F's suggestion: the
+  ellipsoid's normals, flat shading off) changed nothing measurable (the shimmer 2.12% to 2.07% among the crowns, 1.93% to 1.92% in the
+  pheasantry view, 2.57% to 2.55% close on Sokolnitz): the shimmer is the shells' gaps crossing pixels, not their light. The crowns closing near
+  the eye did: each kept face grown back about its own centre toward its full size by the eye's distance (8F's shrink beyond 16 units, full
+  size within 5, eased), in the vertex shader. Among the crowns (8F's own close view by the Satschan mere) the frame's pixels changed by half a
+  pixel's move fall from 10,616 to 7,663 of 360,000 (over the whole frame: 8F's tool counts them inside a mask of the woods drawn without the
+  hook, which would favour it), and close up a crown reads as a volume of facets
+  rather than separate shards; from afar not one pixel differs. The same triangles (348, 254, 348, 254 a tree, the bush 174), instances and draw
+  calls: 8F's savings kept; one attribute more a vertex (the face's centre); the shadows the built crowns' (three's own depth material). Built
+  (`world.js` `TREE8H`, `treeNearGeo`, `treeNear`): the self-test's new check (d') in the 8F block (the hook on every habit and the bush; among the
+  crowns at least 1,000 pixels differ with it off, 15,144 measured; from the Field vantage none), `css-test.js`'s rules, and the mutations of both
+  failing them. Not adopted, recorded: the volume shading.
+- **Decision 258 (b), measured, not adopted (section 20.8).** More places beside a counter's anchor while the view moves
+  (`tools/stage8/protos/counters.js`, four or eight), on the motion block's 26 runs on CI's browser: more formation-frames drawn (34,116 and
+  34,381 of 46,492, against 33,159) and fewer disappearances, but jumps 302 and 336 over decision 257's ceiling of 245 (each counter moved beside its
+  anchor is a jump), flickers 11 with four places, and three runs' longest disappearance over its baseline (to 3,033 and 4,033 ms). Adopting it
+  would need decision 257's ceilings raised: question 262.
 - **Maintenance (section 20.7): G-2, P-3, P-4, T-7; a second data task, no coordinate changed.**
   - *G-2, the map-to-world factor typed outside `geo.js`:* `GEOREF` exports `MAP_PER_WORLD` (2, its own value, unexported until now) and
     `WORLD_ORIGIN` (the map point at the world's origin, [340, 250], frozen); `world.js`'s `W` and `regionalH`'s inverse and `app.js`'s

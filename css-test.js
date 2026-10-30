@@ -627,6 +627,16 @@ if(cerrs) process.exitCode=1;
   if(/transparent|alphaTest|alphaMap|opacity/.test(bwd)) ferr.push("the woods drawn with alpha (8F's crowns are opaque: nothing sorted)");
   if(!/var k=0\.78\+0\.44\*hash2\(Math\.round\(pa\[i\]\*13\+seed\),Math\.round\(pa\[i\+1\]\*7\+pa\[i\+2\]\*11\)\); pa\[i\]\*=k; pa\[i\+1\]\*=k\*0\.92; pa\[i\+2\]\*=k;/.test(ts)||!/new THREE\.IcosahedronGeometry\(1,2\)/.test(ts)) ferr.push("the shells are not 8E's crowns (the icosahedron, detail 2, and its jitter)");
   if(!/mergeParts\(\[T\(0\.6\),\{geo:cone,p:\[0,2\.3,0\],s:\[0\.95,3\.4,0\.95\]\},\{geo:cone,p:\[0,1\.35,0\],s:\[1\.25,1\.4,1\.25\]\}\]\),\s*mergeParts\(\[T\(0\.9\),\{geo:cone,p:\[0,3\.0,0\],s:\[0\.8,4\.2,0\.8\]\}\]\)/.test(tk)) ferr.push("the conifers are not 8E's");
+  /* Stage 8, 8H (docs/STAGE8_SPEC.md section 20.10): the crowns closing near the eye: TREE8H's values; each deciduous habit and the bush made
+     with its faces' centres (treeNearGeo, from the shells' first float) and drawn with the near hook (treeNear), which grows a face about its own
+     centre by mix(1, 1/shrink, the eye's nearness) and chains the atmosphere's uniforms; its one uniform shared, 1 as built */
+  if(!/^var TREE8H=\{near:5, far:16, U:\{uTreeNear:\{value:1\}\}\};/m.test(wsrc)) ferr.push("TREE8H's values changed (near 5, far 16; its uniform 1 as built)");
+  { const tn=wfn("treeNear"), tg=wfn("treeNearGeo");
+    if(!/treeNear\(im\.material,1\/TREE8F\.shrink\);/.test(bwd)||!/treeNear\(scrubMesh\.material,1\/TREE8F\.scrubShrink\);/.test(bwd)) ferr.push("a crown drawn without the near hook (treeNear)");
+    if((tk.match(/treeNearGeo\(treeGeo\(P\),P,a\)/g)||[]).length!==2) ferr.push("a crown made without its faces' centres (treeNearGeo)");
+    if(!/C\[i\+k\]=c; C\[i\+3\+k\]=c; C\[i\+6\+k\]=c;/.test(tg)) ferr.push("the faces' centres not each triangle's own");
+    if(!/atmoUniforms\(sh\)/.test(tn)||!/distance\(tnW\.xyz,cameraPosition\)/.test(tn)||!/transformed=aFC\+\(transformed-aFC\)\*mix\(1\.0,"\+glslF\(\+inv\.toFixed\(6\)\)\+",tnG\*uTreeNear\);/.test(tn)||!/customProgramCacheKey/.test(tn))
+      ferr.push("the near hook not growing a face about its own centre by the eye's nearness (or not chaining the atmosphere's uniforms, or without its own program key)"); }
   /* the near ground */
   if(!/^var GDETAIL=\{amount:0\.55, near:14, far:60, k:7\.3, rot:0\.61, lo:0\.62, hi:1\.38,/m.test(wsrc)) ferr.push("GDETAIL's values changed");
   const gd=wvar("GROUND_FRAG_DETAIL");

@@ -14,13 +14,14 @@
      instance), the counts by kind unchanged;
    - a still (JPEG) of the view, beside the build's;
    - on a low-tier page (800 x 600: lowTier, no shadow pass) the Overview's and the low Pratzen view's calls and triangles.
-   node tools/stage8/woods-8f.js [--views a,b] [--protos t-open,t-airy,t-lace | ""] [--out dir] [--tag name]   (the build: AUSTERLITZ_HTML, else the
+   node tools/stage8/woods-8f.js [--module woods8h] [--views a,b] [--protos t-open,t-airy,t-lace | ""] [--out dir] [--tag name]   (the build: AUSTERLITZ_HTML, else the
    repository's; --tag names the JSON and the stills' "base", so that two builds' runs sit side by side)
    Writes <out>/woods-8f[-tag].json and <out>/woods/<view>-<id or tag>.jpg; measurement and prototype code only. */
 "use strict";
 const fs=require("fs"), path=require("path");
-const L=require("./lib.js"), VIEWS=require("./views.js"), PW=require("./protos/woods.js");
 const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; };
+/* --module: the prototypes' module in protos/ (8F's woods.js by default; 8H's woods8h.js, the crowns shaded as one volume) */
+const L=require("./lib.js"), VIEWS=require("./views.js"), PW=require("./protos/"+(opt("--module")||"woods")+".js");
 const ONLY=(opt("--views")||"woods-pheasantry,ice-sun,pratzen-low,close-sokolnitz,overview-field,ph8-overview-watch").split(",");
 const PROTOS=(opt("--protos")===null?"t-open,t-airy,t-lace":opt("--protos")).split(",").filter(Boolean);   /* --protos "" : the build's own trees alone */
 const OUT=path.resolve(opt("--out")||path.join(L.EVID8,"8f")), TAG=opt("--tag");

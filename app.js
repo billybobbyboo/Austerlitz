@@ -13806,6 +13806,24 @@ var AUSTERLITZ_DEBUG=(function(){
         if(ts>KIT8E.scrub) dBad.push("the bush: "+ts+" triangles, 8E's "+KIT8E.scrub);
         ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
           !dBad.length, JSON.stringify(K)+"; triangles a tree: deciduous "+tb.join(", ")+" (8E "+KIT8E.broad.join(", ")+"), conifers "+tc.join(", ")+", the bush "+ts+" (8E "+KIT8E.scrub+")"+(dBad.length?"; WRONG: "+dBad.join("; "):""));
+        /* (d') Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.10): the crowns closing near the eye. Each deciduous habit and the
+           bush drawn with the near hook (treeNear: its program's key, the faces' centres aFC on its geometry); in 8F's own close view of the
+           crowns (the copse by the Satschan mere, a free eye 16 units off at 15:00) the frame differs with the hook off (the uniform at 0, a frame
+           of the test's) on at least 1,000 of its pixels, the faces near the eye grown; from afar (the Field vantage) not one pixel differs: beyond
+           TREE8H.far every crown is 8F's */
+        var nBad=[], nNear=0, nFar=0;
+        world.trees.children.concat([world.scrub]).forEach(function(im,i){ var ok=im.geometry.attributes.aFC&&typeof im.material.customProgramCacheKey==="function"&&/^tree-near-/.test(im.material.customProgramCacheKey());
+          if(!ok) nBad.push((im===world.scrub?"the bush":"deciduous habit "+i)+" without the near hook"); });
+        setClock(900,{instant:true,force:true,camera:false}); finishTween(); aim([262,428],[0.22,0.075,0.97],16);
+        var n1=grab(); TREE8H.U.uTreeNear.value=0; var n0=grab(); TREE8H.U.uTreeNear.value=1;
+        for(var ni=0;ni<n1.length;ni+=4) if(n1[ni]!==n0[ni]||n1[ni+1]!==n0[ni+1]||n1[ni+2]!==n0[ni+2]) nNear++;
+        if(nNear<1000) nBad.push("among the crowns, "+nNear+" pixels differ with the hook off (at least 1,000: the near faces grown)");
+        placeCamera(VANTAGE.field); syncViewOffset(true); settle(6,true);
+        var m1=grab(); TREE8H.U.uTreeNear.value=0; var m0=grab(); TREE8H.U.uTreeNear.value=1;
+        for(var mi=0;mi<m1.length;mi+=4) if(m1[mi]!==m0[mi]||m1[mi+1]!==m0[mi+1]||m1[mi+2]!==m0[mi+2]) nFar++;
+        if(nFar) nBad.push("from the Field vantage "+nFar+" pixels differ with the hook off (none: beyond "+TREE8H.far+" units every crown 8F's)");
+        ck("the crowns closing near the eye (8H): each deciduous habit and the bush with the near hook; among the crowns the faces near the eye grown, from afar every crown as 8F drew it",
+          !nBad.length, "among the crowns "+nNear+" of "+(n1.length/4)+" pixels differ with the hook off; from the Field vantage "+nFar+(nBad.length?"; WRONG: "+nBad.join("; "):""));
         /* (e) the near ground */
         var eBad=[], U=groundMesh.material.userData.U;
         if(U.uDetail.value.x!==(lowTier?0:GDETAIL.amount)) eBad.push("the detail "+U.uDetail.value.x+" at this tier (lowTier "+lowTier+")");

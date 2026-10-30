@@ -1,0 +1,330 @@
+{
+ "tool": "tools/stage8/far-8h.js",
+ "build": "austerlitz-command-map.html",
+ "md5": "e8fed44b0884e48a277c68ef2f39598a",
+ "chromium": "153.0.8010.12",
+ "views": {
+  "horizon-east": {
+   "none": {
+    "names": 19,
+    "far": 16,
+    "near": 3,
+    "farMin": 12.4,
+    "farMedian": 12.54,
+    "nearMin": 12.4,
+    "nearMedian": 12.93,
+    "minPx": 12.5,
+    "mapTextMin": 8.54,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 3.3,
+    "stats": {
+     "variant": null,
+     "far": 0,
+     "near": 19
+    }
+   },
+   "d-plate": {
+    "names": 19,
+    "far": 16,
+    "near": 3,
+    "farMin": 6.64,
+    "farMedian": 6.8,
+    "nearMin": 12.4,
+    "nearMedian": 12.93,
+    "minPx": 12.5,
+    "mapTextMin": 6.64,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2,
+    "stats": {
+     "variant": "d-plate",
+     "far": 16,
+     "near": 3
+    }
+   },
+   "d-ink": {
+    "names": 19,
+    "far": 16,
+    "near": 3,
+    "farMin": 3.8,
+    "farMedian": 3.89,
+    "nearMin": 12.4,
+    "nearMedian": 12.93,
+    "minPx": 12.5,
+    "mapTextMin": 3.8,
+    "mapTextBelowAA": 14,
+    "belowAA": [
+     "n:ahq \"Allied Headquarters\" 3.82<4.5",
+     "n:lich \"Fifth Column (cavalry)\" 3.88<4.5",
+     "n:vandamme \"Vandamme\" 3.88<4.5",
+     "n:caffarelli \"Caffarelli\" 3.94<4.5",
+     "n:kellermann \"Kellermann's Light Cavalry\" 3.94<4.5",
+     "n:nansouty \"Nansouty's Cuirassiers\" 3.94<4.5"
+    ],
+    "passMs": 2.5,
+    "stats": {
+     "variant": "d-ink",
+     "far": 16,
+     "near": 3
+    }
+   },
+   "d-both": {
+    "names": 19,
+    "far": 16,
+    "near": 3,
+    "farMin": 6.51,
+    "farMedian": 6.63,
+    "nearMin": 12.4,
+    "nearMedian": 12.93,
+    "minPx": 12.5,
+    "mapTextMin": 6.5,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.6,
+    "stats": {
+     "variant": "d-both",
+     "far": 16,
+     "near": 3
+    }
+   }
+  },
+  "pratzen-low": {
+   "none": {
+    "names": 12,
+    "far": 2,
+    "near": 10,
+    "farMin": 12.66,
+    "farMedian": 13.91,
+    "nearMin": 12.22,
+    "nearMedian": 13.67,
+    "minPx": 12.5,
+    "mapTextMin": 11.56,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.4,
+    "stats": {
+     "variant": null,
+     "far": 0,
+     "near": 12
+    }
+   },
+   "d-plate": {
+    "names": 12,
+    "far": 2,
+    "near": 10,
+    "farMin": 7.33,
+    "farMedian": 10.98,
+    "nearMin": 12.22,
+    "nearMedian": 13.67,
+    "minPx": 12.5,
+    "mapTextMin": 10.73,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.9,
+    "stats": {
+     "variant": "d-plate",
+     "far": 2,
+     "near": 10
+    }
+   },
+   "d-ink": {
+    "names": 12,
+    "far": 2,
+    "near": 10,
+    "farMin": 4.47,
+    "farMedian": 6.3,
+    "nearMin": 12.22,
+    "nearMedian": 13.67,
+    "minPx": 12.5,
+    "mapTextMin": 6.14,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.2,
+    "stats": {
+     "variant": "d-ink",
+     "far": 2,
+     "near": 10
+    }
+   },
+   "d-both": {
+    "names": 12,
+    "far": 2,
+    "near": 10,
+    "farMin": 7.16,
+    "farMedian": 8.86,
+    "nearMin": 12.22,
+    "nearMedian": 13.67,
+    "minPx": 12.5,
+    "mapTextMin": 8.71,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2.4,
+    "stats": {
+     "variant": "d-both",
+     "far": 2,
+     "near": 10
+    }
+   }
+  },
+  "inf-front": {
+   "none": {
+    "names": 7,
+    "far": 5,
+    "near": 2,
+    "farMin": 12.33,
+    "farMedian": 12.92,
+    "nearMin": 12.66,
+    "nearMedian": 12.78,
+    "minPx": 12.5,
+    "mapTextMin": 8.34,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.1,
+    "stats": {
+     "variant": null,
+     "far": 0,
+     "near": 7
+    }
+   },
+   "d-plate": {
+    "names": 7,
+    "far": 5,
+    "near": 2,
+    "farMin": 6.59,
+    "farMedian": 7.91,
+    "nearMin": 12.66,
+    "nearMedian": 12.78,
+    "minPx": 12.5,
+    "mapTextMin": 6.2,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.3,
+    "stats": {
+     "variant": "d-plate",
+     "far": 5,
+     "near": 2
+    }
+   },
+   "d-ink": {
+    "names": 7,
+    "far": 5,
+    "near": 2,
+    "farMin": 4.09,
+    "farMedian": 4.53,
+    "nearMin": 12.66,
+    "nearMedian": 12.78,
+    "minPx": 12.5,
+    "mapTextMin": 3.55,
+    "mapTextBelowAA": 2,
+    "belowAA": [
+     "n:milo \"Miloradovich's Russians\" 3.79<4.5",
+     "n:kollo \"Kollowrat's Austrians\" 3.55<4.5"
+    ],
+    "passMs": 5.8,
+    "stats": {
+     "variant": "d-ink",
+     "far": 5,
+     "near": 2
+    }
+   },
+   "d-both": {
+    "names": 7,
+    "far": 5,
+    "near": 2,
+    "farMin": 6.71,
+    "farMedian": 7.25,
+    "nearMin": 12.66,
+    "nearMedian": 12.78,
+    "minPx": 12.5,
+    "mapTextMin": 6.2,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.6,
+    "stats": {
+     "variant": "d-both",
+     "far": 5,
+     "near": 2
+    }
+   }
+  },
+  "ph8-overview-watch": {
+   "none": {
+    "names": 5,
+    "far": 0,
+    "near": 5,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": 14.06,
+    "nearMedian": 14.21,
+    "minPx": 12.5,
+    "mapTextMin": 8.55,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.8,
+    "stats": {
+     "variant": null,
+     "far": 0,
+     "near": 5
+    }
+   },
+   "d-plate": {
+    "names": 5,
+    "far": 0,
+    "near": 5,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": 14.06,
+    "nearMedian": 14.21,
+    "minPx": 12.5,
+    "mapTextMin": 8.55,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2.1,
+    "stats": {
+     "variant": "d-plate",
+     "far": 0,
+     "near": 5
+    }
+   },
+   "d-ink": {
+    "names": 5,
+    "far": 0,
+    "near": 5,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": 14.06,
+    "nearMedian": 14.21,
+    "minPx": 12.5,
+    "mapTextMin": 8.55,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.5,
+    "stats": {
+     "variant": "d-ink",
+     "far": 0,
+     "near": 5
+    }
+   },
+   "d-both": {
+    "names": 5,
+    "far": 0,
+    "near": 5,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": 14.06,
+    "nearMedian": 14.21,
+    "minPx": 12.5,
+    "mapTextMin": 8.55,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.6,
+    "stats": {
+     "variant": "d-both",
+     "far": 0,
+     "near": 5
+    }
+   }
+  }
+ }
+}

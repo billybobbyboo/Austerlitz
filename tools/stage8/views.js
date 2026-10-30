@@ -65,6 +65,10 @@ const V={
     note:"Pratzen village on the plateau's western slope, 09:00."},
   "woods-pheasantry":{viewport:VP, t:500, presentation:"watch", mode:"terrain", aim:{map:[236,385], dir:[-0.55,0.36,0.75], r:44},
     note:"The pheasantry wood by Sokolnitz, 08:20."},
+  /* Stage 8, 8H (section 20.10): a low eye 8 units from the pheasantry wood's centre, among the crowns, where 8F saw them read as separate facets */
+  "tree-close":{viewport:VP, t:720, presentation:"watch", mode:"terrain", aim:{map:[236,385], dir:[0.62,0.18,0.76], r:8}, note:"Among the pheasantry wood's crowns, a few units from the eye, 12:00."},
+  /* 8F's own close view of the crowns (stills-8f.js "ice-eye": the copse by the Satschan mere, a free eye 16 units off at 15:00), where it saw them read as separate facets */
+  "trees-eye":{viewport:VP, t:900, presentation:"watch", mode:"terrain", aim:{map:[262,428], dir:[0.22,0.075,0.97], r:16}, note:"8F's ice-eye view: crowns a few units from a low eye by the Satschan mere, 15:00."},
   "horizon-east":{viewport:VP, t:720, presentation:"watch", mode:"terrain", aim:{map:[230,250], dir:[-0.97,0.10,0.21], r:60},
     note:"A low view east over the Goldbach toward the plateau and the horizon, 12:00."}
 };

@@ -184,3 +184,36 @@ or `build`, `md5`) and its browser. The scripts are in `tools/stage8/` (not bund
 | `8f/cost-8f.json` | `cost-8f.js --before <8E> --after <8F>` | section 18.7: the frame's calls, triangles and time as the app draws it, the near detail on and off (software WebGL: where the work went, not a device's time) |
 | `8f/stills-8f.json`, `8f/pairs/<view>.jpg` | `stills-8f.js --before <8E> --after <8F>` | section 18.8: each view on both builds, side by side (8E left), the state each reached |
 | `8f/clips/<clip>-8e-8f.mp4` | `stills-8f.js` | section 18.8: an orbit at the pheasantry's edge, a dolly toward the Satschan mere's ice, a slow pan low over the fields (8E above, 8F below) |
+
+## Implementation PR 8G (29 October 2026; `docs/STAGE8_SPEC.md` section 19, written in 8H)
+
+8G's own index is `8g/README.md`: the readings of the texts and the stable cadastre (`readings-texts.md`, `readings-cadastre.md`, `cadastre/`,
+`negatives.md`, `sources.md`, `quote-check.md`), the places note (`places.md`) and the prerequisites' measures, each as 8G committed them. What
+8G cited and did not commit is said there, with what 8H added from 8G's own CI runs and what it reconstructed:
+
+| path | made by | what |
+|---|---|---|
+| `8g/selftest-ci-dddd4e4.json` | CI's `check:selftest` artifact, run 40870570661 on `dddd4e4` (downloaded in 8H) | section 19.6: the self-test 313 of 313 on CI's browser, every live block passing |
+| `8g/census-ci.json`, `8g/census-ci.md` | `census-8g.js --before <8F's report> --after <8G's report>` (CI's `check:visual` reports, runs 40665840278 and 40870570661) | section 19.6: one frame by pass in each of the 39 cases, the buildings' calls and triangles, 8F's against 8G's |
+| `8g/ci-pairs/<case>.jpg` | CI's own captures of the two runs above, side by side (8F left) | section 19.7: seven cases as CI drew them |
+| `8g/stills-pre1.json`, `8g/stills-pre2.json`, `8g/stills-8g.json`, `8g/pairs/<set>-<view>.jpg` | `stills-8g.js --set pre1|pre2|8g` (8G's tool, unchanged), run in 8H on the exact builds (md5 in each file), Chromium 153 | section 19.7: **reconstructed**: the prerequisites' and the buildings' matched captures |
+
+## Implementation PR 8H (30 October 2026; `docs/STAGE8_SPEC.md` section 20)
+
+Made in Chromium 153.0.8010.12 here unless named; the motion block's runs in Chromium 141.0.7390.37 (Playwright 1.56's headless shell, the
+browser CI runs and decision 257 (b) pins), installed in this session's scratch space. Software WebGL, 1600 x 900 unless named. The builds: 8G's
+as merged (`508927e6f72e1b6f2f9186e954d61b59`, 2,740,873 bytes, `git show 636cc5d:austerlitz-command-map.html`), the "before" of every
+comparison; 8H's commits' builds, each named by its md5 in its file. The scripts are in `tools/stage8/` (not bundled).
+
+| path | made by | what |
+|---|---|---|
+| `8h/checklist.md` | by hand, from the measures below | section 20.1: every requirement, exception and finding with its status |
+| `8h/motion/motion-8g.json`, `motion-2f10a1f.json`, `motion-8h-driver.json` | `motion-8h.js <build> --json` on Chromium 141 | section 20.4: the motion block on 8G's build, on `2f10a1f`'s (the Play runs changed by the pose held at a seek) and with the driver's fix (every run 8G's) |
+| `8h/motion/frames-8g.log`, `frames-8h.log` | the block through a copy of `motion.js` counting the frames drawn (what `motion-8h.js --frames` makes; run before the driver's fix) | section 20.4: the eight pre frames drawn on 8G's build in the paper map's Play, two on 8H's |
+| `8h/motion/motion-258b-c4.json`, `motion-258b-c8.json` | `motion-8h.js --proto counters:c4|c8` on Chromium 141 | section 20.8: decision 258 (b)'s two prototypes on the motion block |
+| `8h/far/far-8h.json`, `8h/far/<view>-<variant>.jpg`, `<view>-sheet.jpg` | `far-8h.js` | section 20.9: decision 255 (d)'s prototype, the far names' contrast as rendered and every map text at AA |
+| `8h/woods-8f-8h.json`, `8h/woods/<view>-<variant>.jpg` | `woods-8f.js --module woods8h --protos t-vol,t-vol50` | section 20.10: the crowns shaded as one volume |
+| `8h/near/` | `woods-8f.js --module woods8h --protos t-near,t-nearvol` | section 20.10: the crowns closing near the eye |
+| `8h/mutate-css-8h.json` | `mutate-css-8h.js` | section 20.11: `css-test.js`'s and `geo-test.js`'s 8H rules on copies with one broken |
+| `8h/mutate-8h.json` | `mutate-8h.js` | section 20.11: the self-test's 8H checks on copies with one rule broken |
+| `8h/geo/` | `fetch-places.js`, `period-trace.py`, `compute-places.js`, `period-figures.py`, `consequences.js` (its `README.md`) | section 20.6: the landmarks' research made again (every response kept, `raw/manifest.json`), the frame checked, the period maps read; `proposal.md` and `consequences.json` |

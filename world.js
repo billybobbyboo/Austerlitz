@@ -2047,6 +2047,7 @@ function buildWoods(scene){
   var BARE=LAND_COL.bare;
   byVar.forEach(function(list,vi){
     var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,list.length));   /* 8F: both faces (the open shells) */
+    treeNear(im.material,1/TREE8F.shrink);   /* 8H: the crowns closing near the eye */
     im.castShadow=true; im.count=Math.max(1,list.length);
     list.forEach(function(t,k){
       d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -2096,6 +2097,7 @@ function buildWoods(scene){
     }
   });
   scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrub.length));   /* 8F: both faces */
+  treeNear(scrubMesh.material,1/TREE8F.scrubShrink);   /* 8H: the crowns closing near the eye */
   scrubMesh.castShadow=false; scrubMesh.receiveShadow=true;
   scrub.forEach(function(t,k){
     d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
@@ -2150,13 +2152,13 @@ function treeKit(){
            {T:0.8, cr:[[3,[0,1.6,0],[1.55,0.85,1.45]],[1,[0.8,1.7,0],[0.7,0.55,0.7]],[2,[-0.75,1.65,0.3],[0.65,0.5,0.65]]]}, /* squat, wide-spreading */
            {T:1.2, cr:[[2,[0,2.4,0],[0.62,1.5,0.62]],[3,[0,3.5,0],[0.45,0.8,0.45]]]}];                                     /* poplar-like, narrow and tall */
   _kit={
-    broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); h.cr.forEach(function(C){ treeShell(P,C[0],C[1],C[2],TREE8F.keep,TREE8F.shrink); }); return treeGeo(P); }),
+    broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); var a=P.length; h.cr.forEach(function(C){ treeShell(P,C[0],C[1],C[2],TREE8F.keep,TREE8F.shrink); }); return treeNearGeo(treeGeo(P),P,a); }),
     conifer:[
       mergeParts([T(0.6),{geo:cone,p:[0,2.3,0],s:[0.95,3.4,0.95]},{geo:cone,p:[0,1.35,0],s:[1.25,1.4,1.25]}]),
       mergeParts([T(0.9),{geo:cone,p:[0,3.0,0],s:[0.8,4.2,0.8]}])
     ],
-    scrub:(function(){ var P=[]; treePrism(P,[0,0,0],[0.05,0.55,0],0.05,0.02,3); treePrism(P,[0.1,0,0.05],[0.55,0.45,0.2],0.04,0.016,3);
-      treeShell(P,1,[0,0.5,0],[1,0.6,0.9],TREE8F.scrubKeep,TREE8F.scrubShrink); treeShell(P,1,[0.6,0.4,0.2],[0.6,0.45,0.55],TREE8F.scrubKeep,TREE8F.scrubShrink); return treeGeo(P); })()
+    scrub:(function(){ var P=[]; treePrism(P,[0,0,0],[0.05,0.55,0],0.05,0.02,3); treePrism(P,[0.1,0,0.05],[0.55,0.45,0.2],0.04,0.016,3); var a=P.length;
+      treeShell(P,1,[0,0.5,0],[1,0.6,0.9],TREE8F.scrubKeep,TREE8F.scrubShrink); treeShell(P,1,[0.6,0.4,0.2],[0.6,0.45,0.55],TREE8F.scrubKeep,TREE8F.scrubShrink); return treeNearGeo(treeGeo(P),P,a); })()
   };
   return _kit;
 }
@@ -2189,6 +2191,30 @@ function treeLimbs(P,h,vi){
         treePrism(P,tip,[c[0]+Math.cos(b)*s[0]*0.88*(ci===0?1:0.7), c[1]+up*s[1]*0.8, c[2]+Math.sin(b)*s[2]*0.88*(ci===0?1:0.7)],0.04,0.014,3,b); } } });
 }
 function treeGeo(P){ var g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferAttribute(P,3)); g.computeVertexNormals(); return g; }
+/* Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.10; 8F's item 4, the crowns close to the eye): near the eye each kept face of a
+   crown grows back toward its full size about its own centre, so that close up a crown reads as a volume of facets rather than separate shards
+   and shimmers less under a small move (the frame's pixels changed by half a pixel's move, 8F's measure taken over the whole frame, 10,616 to
+   7,663 in a view among the crowns, section 20.10): the face at 8F's shrink (TREE8F.shrink, scrubShrink) beyond TREE8H.far units from the eye,
+   at its full size within TREE8H.near, eased between; in the vertex shader, the same triangles, instances and draw calls (8F's triangles a tree
+   kept). The shadows are the built crowns' (the depth material is three's own: the sun's eye is never near). Design values */
+var TREE8H={near:5, far:16, U:{uTreeNear:{value:1}}};   /* U: the hook's one uniform, shared (1 as built; the self-test sets it to 0 for a frame to compare) */
+/* each crown triangle's centre (its face's: 8F's shrink about the face's own centre keeps it), the limbs' and the trunk's vertices their own
+   (from the shells' first float, a, on) */
+function treeNearGeo(g,P,a){ var C=new Float32Array(P.length); C.set(P);
+  for(var i=a;i+8<P.length;i+=9) for(var k=0;k<3;k++){ var c=(P[i+k]+P[i+3+k]+P[i+6+k])/3; C[i+k]=c; C[i+3+k]=c; C[i+6+k]=c; }
+  g.setAttribute("aFC",new THREE.Float32BufferAttribute(C,3)); return g; }
+/* the hook on a crown's material: the vertex moved from its face's centre by mix(1, 1/shrink, g), g the eye's nearness (0 beyond far, 1 within near) */
+function treeNear(mat,inv){
+  mat.onBeforeCompile=function(sh){
+    if(typeof atmoUniforms==="function") atmoUniforms(sh);   /* the atmosphere's uniforms (app.js), as every material gets them */
+    sh.uniforms.uTreeNear=TREE8H.U.uTreeNear;
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nattribute vec3 aFC; uniform float uTreeNear;")
+      .replace("#include <begin_vertex>","#include <begin_vertex>\n#ifdef USE_INSTANCING\nvec4 tnW=modelMatrix*instanceMatrix*vec4(aFC,1.0);\n#else\nvec4 tnW=modelMatrix*vec4(aFC,1.0);\n#endif\n"+
+        "float tnG=clamp(("+glslF(TREE8H.far)+"-distance(tnW.xyz,cameraPosition))/"+glslF(TREE8H.far-TREE8H.near)+",0.0,1.0); tnG=tnG*tnG*(3.0-2.0*tnG);\n"+
+        "transformed=aFC+(transformed-aFC)*mix(1.0,"+glslF(+inv.toFixed(6))+",tnG*uTreeNear);");
+  };
+  mat.customProgramCacheKey=function(){ return "tree-near-"+inv.toFixed(6); };
+  return mat; }
 
 var CONTOUR_INTERVAL=1.5, CONTOUR_INDEX=4;
 /* the ground continues beyond the field, coarsely, until the fog takes it */
