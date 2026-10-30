@@ -9,7 +9,11 @@
    --cost: instead, the frame's cost in each view on two builds (--builds a=<html>,b=<html>, interleaved, the same machine): each frame drawn whole
    (the render, then the GL finished: software WebGL, where the vertex and the fragment work are the CPU's), --frames frames (25) after 5
    unmeasured, median and 95th percentile, on --reps fresh pages of each build (2), alternating which build goes first.
-   node tools/stage8/near-8h.js [--views trees-eye,woods-pheasantry,close-sokolnitz] [--protos t-near,t-nearvol | --uniform | --cost --builds a=..,b=.. [--reps 2] [--frames 25]] [--json out.json]
+   --toggle: on one build (AUSTERLITZ_HTML, else the repository's), in each view on one page, the hook's uniform at 1 and at 0 in alternate
+   frames (--frames pairs, 60; the order within a pair alternating; 5 frames unmeasured first), each frame drawn whole: what the faces grown near
+   the eye cost (the hook's vertex arithmetic runs in both states, so this is the work its grown faces add), free of a page's or a load's
+   spread; the pairs' differences' median with each state's median and 95th percentile.
+   node tools/stage8/near-8h.js [--views trees-eye,woods-pheasantry,close-sokolnitz] [--protos t-near,t-nearvol | --uniform | --cost --builds a=..,b=.. [--reps 2] [--frames 25] | --toggle [--frames 60]] [--json out.json]
    Measurement and prototype code only. */
 "use strict";
 const fs=require("fs"), path=require("path");
@@ -25,7 +29,19 @@ const SHIM=function(){ var W0=800,H0=450, rt=new THREE.WebGLRenderTarget(W0,H0),
   landCam.position.copy(keepP); orbitTarget.copy(keepT); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(true); rt.dispose(); return {changed:ch, of:W0*H0}; };
 const COST=function(n){ var gl=renderer.getContext(), t=[]; for(var i=0;i<n+5;i++){ var a=performance.now(); renderFrame(); gl.finish(); if(i>=5) t.push(performance.now()-a); }
   t.sort(function(x,y){ return x-y; }); return {median:+t[Math.floor(t.length/2)].toFixed(1), p95:+t[Math.floor(0.95*(t.length-1))].toFixed(1), frames:t.length}; };
-if(argv.includes("--cost")) (async()=>{ const B=(opt("--builds")||"").split(",").map(x=>{ const i=x.indexOf("="); return {tag:x.slice(0,i), file:path.resolve(x.slice(i+1))}; });
+const TOGGLE=function(n){ var gl=renderer.getContext(), U=TREE8H.U.uTreeNear, on=[], off=[], d=[];
+  function one(v){ U.value=v; var a=performance.now(); renderFrame(); gl.finish(); return performance.now()-a; }
+  for(var w=0;w<5;w++) one(w%2);
+  for(var i=0;i<n;i++){ var first=i%2?0:1, ta=one(first), tb=one(1-first), tOn=first?ta:tb, tOff=first?tb:ta; on.push(tOn); off.push(tOff); d.push(tOn-tOff); }
+  U.value=1;
+  function q(x,f){ x=x.slice().sort(function(p,r){ return p-r; }); return +x[Math.floor(f*(x.length-1))].toFixed(2); }
+  return {pairs:n, on:{median:q(on,0.5), p95:q(on,0.95)}, off:{median:q(off,0.5), p95:q(off,0.95)}, diffMedian:q(d,0.5), diffP25:q(d,0.25), diffP75:q(d,0.75)}; };
+if(argv.includes("--toggle")) (async()=>{ const html=path.resolve(process.env.AUSTERLITZ_HTML||path.join(L.ROOT,"austerlitz-command-map.html")), NF=+(opt("--frames")||60);
+  const browser=await L.launch(), out={tool:"tools/stage8/near-8h.js --toggle", chromium:browser.version(), build:path.basename(html), md5:require("crypto").createHash("md5").update(fs.readFileSync(html)).digest("hex"), pairs:NF, views:{}};
+  for(const vn of VIEWS){ process.env.AUSTERLITZ_HTML=html; const p=await L.open(browser,V[vn].viewport,{}); await L.applyCase(p,V[vn]);
+    out.views[vn]=await p.evaluate(TOGGLE,NF); console.log(vn, JSON.stringify(out.views[vn])); await p.close(); }
+  await browser.close(); if(OUT){ fs.mkdirSync(path.dirname(path.resolve(OUT)),{recursive:true}); fs.writeFileSync(OUT,JSON.stringify(out,null,1)); } })().catch(e=>{ console.error(e); process.exit(1); });
+else if(argv.includes("--cost")) (async()=>{ const B=(opt("--builds")||"").split(",").map(x=>{ const i=x.indexOf("="); return {tag:x.slice(0,i), file:path.resolve(x.slice(i+1))}; });
   const browser=await L.launch(), out={tool:"tools/stage8/near-8h.js --cost", chromium:browser.version(), builds:B.map(b=>({tag:b.tag, file:path.basename(b.file), md5:require("crypto").createHash("md5").update(fs.readFileSync(b.file)).digest("hex")})), views:{}};
   const REPS=+(opt("--reps")||2), NF=+(opt("--frames")||25); out.reps=REPS; out.frames=NF;
   for(const vn of VIEWS){ out.views[vn]={}; for(let rep=0;rep<REPS;rep++) for(const b of (rep%2?B.slice().reverse():B)){ process.env.AUSTERLITZ_HTML=b.file; const p=await L.open(browser,V[vn].viewport,{}); await L.applyCase(p,V[vn]);
