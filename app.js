@@ -13876,10 +13876,10 @@ var AUSTERLITZ_DEBUG=(function(){
         /* 8E's woods: the trees and the scrub by kind, and each habit's triangles (its kit: four deciduous habits, two conifers, the bush), read
            on the 8E build (tools/stage8/woods-8f.js, docs/stage8-evidence/8f/woods-8f.json). The counts by kind since the follow-up's data tasks
            changed the woods (8J: the pheasantry traced, 46 trees for 190, the Austerlitz park dropped, the garden's rows added west of the château,
-           the bank scrub kept clear of the buildings): read on the build
-           (tools/stage8/woods-bldg-8j.js; docs/stage8-evidence/8j/woods-bldg-8j.json); until 8J 8E's {wood:634, village:184, conifer:376, edge:354,
-           stream:202}. The triangles a tree stay 8E's (KIT8E) */
-        var WOODS8E={wood:409, village:184, conifer:287, edge:244, stream:229, garden:12}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
+           the bank scrub kept clear of the buildings; 8K: the wood above Holubitz dropped): read on each build (tools/stage8/woods-bldg-8j.js;
+           docs/stage8-evidence/8j/woods-bldg-8j.json, 8k/woods-bldg-8k.json); until 8J 8E's {wood:634, village:184, conifer:376, edge:354,
+           stream:202}, in 8J {wood:409, village:184, conifer:287, edge:244, stream:229, garden:12}. The triangles a tree stay 8E's (KIT8E) */
+        var WOODS8E={wood:357, village:184, conifer:229, edge:205, stream:222, garden:12}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
         var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0,garden:0};
         world.trees.children.forEach(function(im){ (im.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(im.material.side!==THREE.DoubleSide) dBad.push("a deciduous habit not drawn on both faces"); if(!im.castShadow) dBad.push("a deciduous habit casts no shadow"); });
         world.conifers.children.forEach(function(im){ K.conifer+=(im.userData.kinds||[]).length; });

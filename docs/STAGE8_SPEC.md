@@ -4983,3 +4983,154 @@ re-taken on the delivered build (`7d5594ba...`). The device runs pending.
 castle's site on the model's road class (a track passes it); the castle's walls (not established); from 08:00 to 14:10 the III Column's place
 stands 124 m from the castle's site, so its figures stand over the castle's symbol while it holds the castle (as its acts have it; figures are
 drawn over buildings everywhere: `castle-8j.json`); the garden under the château's symbol at the Overview's scale; no garden sign on the paper map.
+
+### 21.8 The highway east of the Santon and the Posoritz post house (8K; decision 260 (a); a data task)
+
+*The decision superseded.* The correction pass (CHANGELOG, "Correction pass", Roads and Places; its script `tools/geo-anchor.js`, history, not run)
+routed the highway from the Santon's foot "through the post house" it constructed "where a straight Tvarožná-Rousínov highway line crosses
+Holubice's meridian" (open question 6, "±1 km"), and placed Suchet's and Bagration's anchors and both plans' columns along that line by one
+function, `along(km, dS)`. 8H's geographic review found the road of 1826-52 0.2-1.2 km south of it and the post 1.37 km south-east of the
+constructed one (proposal G4, G5); the owner authorised its correction with the anchors reviewed from their sources (question 260 (a)). This
+section and `docs/stage8-evidence/8k/register.md` record what replaced what; the evidence dossier the review rests on (every reading on place,
+every statement naming the road, the chronology ledger's entries) is summarised there.
+
+*The places.* The highway (`ROADS[0]`) east of the Santon's foot on II/430's line, the road of the 1826 sketches and the Second Military Survey
+(B for 1826-52, C for 1805); the post house (`GT.posthouse`, `FEATURES[#posthouse]`, `VILLAGES`) at Kovalovice No. 109 (B for 1826-52, C for 1805);
+the edge marker "To Rausnitz" and the road's label point moved with the road; the "Holubitz-Posoritz track" cut at the highway; the legacy "wood
+above Holubitz" not drawn (the road and the post run through it, the Second Survey has fields there). Measured: the Santon 465 m north of the road
+(276 m before), the post 26 m north of it, Holubitz 0.72 km south (1.7 km before), the road leaving the frame at 56 degrees true toward Rausnitz.
+
+*The anchors* (register sections A1-A9; the rule: B where a reading places the formation then relative to a named place, C where no reading does
+and the point is this map's sequence; no grade kept because it was there):
+
+| anchor | was | is | grade | basis |
+|---|---|---|---|---|
+| suchet@0 | [225,97] | [235,103] | A to B | the order of 1 December: right (south) of the road level with the Santon (C4.5) |
+| suchet@5 | [242,78] | [254,88] | B to C | this map's advance, 0.8 km along the road |
+| suchet@6 | [264,67] | [279,81] | (B) to C | 1.6 km along |
+| suchet@7 | [284,57] | [300,76] | (B) to C | 2.3 km along |
+| suchet@8 | [309,43] | [348,62] | (B) to C | west of the post: Schönhals's renewed attack on the height beyond it (C6.13) |
+| suchet@9 | [321,38] | [364,54] | (B) to B | at the post: Napoleon's order of 3 December dated there (C6.9) |
+| bag@0 | [319,49] | [352,64] | B to B | by the post, Krug and Holubitz held (C6.10, C6.12); the line not established |
+| bag@5 | [262,68] | [262,68] (kept) | B to B | the heights by Dwaroschna (C6.10), now north of the road; the identification this map's |
+| bag@6 | [284,57] | [300,76] | (B) to C | this map's falling back, 2.3 km along |
+| bag@7 | [304,46] | [321,70] | (B) to C | 3.0 km along |
+| bag@8 | [337,29] | [386,38] | B to B | Schönhals's height between Rausnitz and the post (C6.13), east of the post as corrected |
+| bag@9 | [366,14] | [414,13] | (B) to C | toward Rausnitz inside the frame; question 180 (c) kept |
+
+("(B)" an inherited grade.) Three acts rewritten, each with an attributed claim and a note naming this map's part (suchet@0's, bag@0's, bag@5's);
+the post house's sub-title and claim note, the edge marker's distance and `SOURCE_NOTE.body[5]`'s open question changed. Both plans' columns on
+the road moved with it, the Allied staging "Bagration on the highway" re-centred on Bagration's dawn.
+
+*What it does* (measured): 2,636 readings of "Whose eyes?" on 8J's and 8K's builds (`know-8k.json`): 11 differ, the Allied
+reading of Suchet at his corrected dawn place (seen to unknown, no line of sight, at ten of the clocks between 05:20 and 09:40) and Napoleon's of
+Bagration at 12:20 (unknown to seen), readings of the model; the viewsheds, the plateau's strength and the centres' separation identical. The
+Command tab's inference that from the Zuran "most of the Olmütz road sector, including the Santon, is in view" (`COMMAND.fr["5"][0]`) measured
+again (`roadview-8k.json`): the drawn road from the Santon's foot to the post 68.5% in sight before, 100% now, the Santon and the post in sight in
+both: it stands. Buildings (`woods-bldg-8k.json`): Bellowitz, Bosenitz, Holubitz and the post house re-planned, each by the road, the track or the
+wood beside it, the 16 other villages identical (without 8J's hold on the woods' sequence 15 would have changed, 11 for no change of their own,
+`woods-bldg-8k-nohold.json`). `check:chronology` unchanged in its verdicts: 66 consistent, the four named conflicts; bag@6's derived arrival
+11:31 to 11:40.
+
+*The map layer in motion* (decision 257 (b)'s benchmark; `docs/stage8-evidence/8k/motion/`). The self-test's motion block changes in 19
+of its 22 runs on 8K's build: the formation-frames drawn over all 72.90% (8J's 73.03%), the longest a formation stays hidden by the layout in
+Play 4,033 ms (3,100). The visibility baselines are re-measured on this build under 8J's rule. Not moved, and failing on 8K's build alone: the
+16's ceilings (jumps 248 against 245, pops 998 against 985) and the real input's tolerance in the paper map's zoom (jumps 26 against its driven
+twin's 10, formations drawn 732 against 795). Measured by the block with one of 8K's changes undone at a time: the road's label point and the
+post house leave it as it is; with both divisions' places of 8J everything is within its limit; with Suchet's of 8J alone too (244, 965); with
+Bagration's of 8J alone the pops (999) and the zoom's divergence remain. So the pops' excess and the divergence come with Suchet's re-plotted
+places (at 09:30, the benchmark's hour, still his dawn place south of the road level with the Santon), the jumps' with both divisions'
+together, Play's longest hidden with Bagration's. The places follow the readings and are not tuned to a benchmark; the map layer's code is
+unchanged; the ceilings and the tolerance are the owner's. *Put to the owner, question 267*: (a) re-baseline the 16's totals at this build's
+(248, 998) and accept the paper zoom's divergence as the benchmark's sensitivity at a crowded spot; (b) recommended: a bounded presentation
+follow-up first (the items at the tipping point in the paper map's zoom found, the real input brought within its twin), then re-baseline only
+what remains. Until the owner decides, `check:selftest` and `check:visual` fail on these three lines alone.
+
+*The checks.* `geo-test.js`'s two checks that held the correction pass's line and rule replaced by checks of the corrected geography and of
+the register's rules (each at least as strict); `redteam.js`'s march-rate acknowledgement (infantry 1.33 to 1.35); the self-test's woods pins;
+`check:chronology` unchanged in its verdicts (the cites of `body[5]` reviewed and rehashed); `check:data`'s reference moved.
+
+### 21.9 The settled baseline for the final audits
+
+The state the final audits start from: `main` at `b7fb67a` with the three follow-up pull requests merged in order (8I, 8J, 8K), whose final
+build is 8K's (`f10fe585c46aea576f436ed51ac46f83`, 2,810,630 bytes). Until they are merged, that build is on `claude/tender-einstein-gwrsij-highway`.
+
+**Fixed and verified in the follow-up** (each with its check; the evidence in `docs/stage8-evidence/8i/`, `8j/`, `8k/`):
+- the phase's message placed again under every layout's change while it shows (8H: 4 of 8 changes over a control; now 0 of 8, 24 reads), its
+  3.4 s timer untouched, nothing run while it is hidden (8I);
+- the far formation names on the lighter plate at AA as rendered, one size, the protected on the full plate (decision 263 (a), 8I);
+- section 20.12's census corrected to the complete frame and every build's census measured again in both frames (8I; the delivered build's in
+  section 21.6 and below);
+- the Goldbach at Sokolnitz, the pheasantry, the castle and the III Column's places, the Pratzen church, the Austerlitz garden, Legrand's act
+  (decision 259 (a), 8J; the woods' random sequence held so that no building moves but where the data changed; the motion block's visibility
+  baselines re-measured on each data task's build under the owner's rule for geographic baselines, the reason recorded);
+- the highway east of the Santon, the post house, the twelve anchors on and by the road, both plans' columns (decision 260 (a), 8K);
+- two faults the first local self-test of 8J found, fixed: the Austerlitz château undrawn under 8J's garden rule, and a bank bush on the
+  castle's farm (8J).
+
+**Open owner questions** (each with its measured options and a recommendation): 266, the castle's drawn size at its site (8J, section 21.7);
+267, the map layer's motion benchmark over its ceilings by Suchet's and Bagration's re-plotted places (8K, section 21.8: `check:selftest` and
+`check:visual` fail on its three lines alone until it is decided).
+
+**Accepted exceptions** (named, with their causes; not historical claims):
+- Satschan's five farmsteads of seven (decision 261 (a)): the drawn mere's outline (decision 27) leaves no room for seven;
+- the feet's remaining cases (decision 265 (a), provisional): 8F's chords with their bounds and counts (section 20.10), the original criterion
+  not satisfied, pending the device runs and the final audit;
+- the conventions labelled as such: the farmsteads' plan and the roofs (8G), the garden's rows and spacing (8J), the far plate's alpha by
+  sym.plate's rule (8I), the gait as a visual convention under compressed time (8E), the ribbons' widths (8A), the derived arrivals' rates
+  (design values, unsourced).
+
+**Provisional choices** (decided for now, to be confirmed): the Sokolnitz castle drawn at 20% of 8G's size at its own site, where the drawn
+track and brook leave no more room (8J; owner question 266, open); decision 265 (a); decision 264 (a)'s ice, with its low-sun appearance on the final
+visual-review checklist; the device acceptance of 8E-8K (pending: below); the identifications this map makes and says it makes (Stutterheim's
+heights by Dwaroschna as the ground east of Bosenitz, Schönhals's height as the rise east of the post, the 1825 sketch's places carried back
+to 1805, the 1826-52 road and post carried back to 1805).
+
+**Unresolved historical questions** (kept open in the data and the sources sheet; none is guessed): the places in 1805 of the highway and the
+post (the First Military Survey not reached); which of the 1825 sketch's two channels carried the Goldbach north of the Sokolnitz castle in 1805;
+the castle's walls and whether the bottom by Sokolnitz was marshy in December 1805; the garden's planting in 1805; Bagration's exact line at
+dawn and where he stood at 17:00 (Rausnitz, or already toward Austerlitz); which side of the road Schönhals's height lay; Krug's place (the Second
+Survey's "Kruch" beside Holubitz, against the drawn Krug's warped legacy place); and `SOURCE_NOTE`'s open questions as they stand (Russian infantry
+flags, the Grenz infantry's coats, the vines, the Russian Guard's attack, Kologrivov's command, the hours the accounts dispute, and the rest).
+
+**Remaining findings** (recorded, not acted on): kienmayer@7's and lang@2's offsets from the corrected brook (each on its own evidence, 8J);
+the castle's site on the model's road class, a track passing it (8J); the III Column's figures over the castle's symbol from 08:00 to 14:10, while it holds the castle (8J); the garden under the château's symbol at the Overview's scale and no garden sign on the paper
+map (8J); Caffarelli's anchors 2.5-2.9 km south of Bagration's from 14:30 (as before, 8K); the woods' habits, turns and scrub drawn again where a
+wood changed (presentation; the buildings and the kept woods' trees held, 8J).
+
+**Carried forward** (each where it was put): 8E's drivers on the guns on the heights (an inference from IV Corps' letter) and the gunners beside
+moving pieces (section 17); decision 245 (a)'s facings, to be reconsidered now that the troops can be judged; 8G's `BUILDINGS.notDrawn` (St
+Anthony's chapel, the Santon's chapel, the Sokolnitz granary, section 19.4).
+
+**The census of the three builds in both frames** (`tools/stage8/census-8i.js` on each build's own `check:visual` report on CI; the complete
+frame, the ground's depth drawn, is what section 8.3's budget judges; the still eye's frame, the depth reused, beside it; each maximum over the
+cases taken separately; geometry counts, not frame times):
+
+Pending: each build's own `check:visual` run on CI (8I: run 41048882622; 8J: run 41071549726; 8K: the run dispatched with its pull request),
+recorded here as each completes. Until then the last complete-frame census measured is 8H's (section 21.4: 864 calls and 2,352,049 triangles
+on the desktop, 1,398,127 triangles on the phone), which is not carried forward to these builds.
+
+**CI on each pushed head** (as recorded when this section was written; completed when the runs complete): 8I (`9d7a966`): the push's and
+the pull request's runs passing (41048791108, 41048869905: the checks job, `check:contrast`, `check:selftest`), the dispatched run's checks,
+`check:contrast` and `check:selftest` passing (41048882622), its `check:visual` running; 8J (`0ed98b9`): runs 41071486091, 41071525851 and
+41071549726, the checks job and `check:contrast` passing, `check:selftest` and `check:visual` running; 8K: the runs of its pull request, its
+self-test's motion block expected to fail on question 267's three lines alone.
+
+**Device acceptance: pending.** No owner hardware was reachable from this session; nothing here substitutes emulation or software-WebGL timing
+for a device. The routes are live on GitHub Pages for `main`'s build, each checked from this session (the page loads, its build boots in
+the frame, no console error): https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html (the desktop route) and the same page with
+`?route=phone`, `?route=fx`, `?route=cull` and `?route=gait`. Pages builds from `main`, so these links serve 8H's build until the follow-up is
+merged and the delivered build (8K's) after it. Before the merge a branch's build is measured as section 20.12 says: hosted where the owner
+chooses (an outward-facing act), or a checkout of the branch served at the repository's root (`python3 -m http.server 8000`) and opened at
+`http://<host>:8000/tools/step6/perf-run.html`, the iPhone on the same network; `?src=` names another build file beside it. The protocol is
+section 20.12's, unchanged: on the desktop the route twice, two minutes apart, on 8H's build and on the delivered build; on the iPhone the phone
+route twice per build; the three brackets once each on both devices on the delivered build; each report pasted back as text with the devices'
+models. They decide section 8.3's budgets on hardware; the geometry counts above are not frame times.
+
+**Stability.** What is settled: every regression suite, `check:data`, `check:chronology` and `check:baseline` pass on each of the three
+builds; the self-test passes all 317 of its checks on each; 8I and 8J pass every live block; the geographic corrections of decisions 259 (a)
+and 260 (a) are in the data with their evidence, grades and registers, and every derived reading, chronology verdict and sight line they move
+is measured and recorded. What is not: 8K's motion block fails on three lines (question 267) until the owner decides; the census and the
+`check:visual` runs of the three builds are pending on CI and are recorded here as they complete; the device runs are pending. The build is
+therefore stable for the final audits' reading of its data, records and code, with question 267 and the device acceptance named as the two
+open conditions; nothing in it is known to be broken but what this section names.

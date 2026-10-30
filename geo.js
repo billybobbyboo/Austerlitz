@@ -91,11 +91,11 @@ var GEOREF = (function(){
     zuran:       {n:"Zuran",       cz:"Žuráň",            lat:49.179365, lon:16.738880, kind:"s", elev:290},
     santon:      {n:"Santon",      cz:"Santon",           lat:49.188258, lon:16.763559, kind:"s", elev:296},
     vinocol:     {n:"col south of Stare Vinohrady", cz:"", lat:49.132778, lon:16.786944, kind:"x", note:"PeakVisor key col of Staré vinohrady"},
-    /* derived positions, not surveyed */
+    /* derived positions, not surveyed (the post house since Stage 8's follow-up 8K: a surveyed building, its identity in 1805 inferred) */
     chapel:      {n:"St Anthony chapel", cz:"kaple sv. Antonína", lat:49.10985, lon:16.757474, kind:"x", approx:true,
                   note:"On the hill at the northern edge of Újezd (cirkevnituristika.cz); placed ~0.6 km north of the village centre"},
-    posthouse:   {n:"Posoritz post house", cz:"Stará pošta", lat:49.19337, lon:16.812243, kind:"x", approx:true,
-                  note:"On the Olmütz highway north of Holubice: placed where a straight Tvarožná-Rousínov highway line crosses Holubice's meridian; uncertain by about 1 km"}
+    posthouse:   {n:"Posoritz post house", cz:"Stará pošta", lat:49.18519, lon:16.826263, kind:"x", approx:true,
+                  note:"Stará pošta, Kovalovice No. 109 (the Czech building register's point, RÚIAN 23571594): 'Posoritzer Post.' on the cadastral sketch of 1826 and 'Posoritzer Post' on the Second Military Survey (1836-52), north of the highway (B for 1826-52); that the post stood there in 1805 is a modern text's account (the post in No. 109 from 1785), no map of 1805 read (C). Until Stage 8's follow-up 8K (decision 260 (a)): lat 49.19337, lon 16.812243, where a straight Tvarožná-Rousínov highway line crosses Holubice's meridian, 1.37 km north-west, in fields on the Second Survey"}
   };
   Object.keys(GT).forEach(function(k){ var g=GT[k]; g.map=toMap(g.lat,g.lon); });
 

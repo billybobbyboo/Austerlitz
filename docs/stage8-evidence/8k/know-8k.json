@@ -1,0 +1,149 @@
+{
+ "tool": "tools/stage8/know-8j.js",
+ "builds": {
+  "before": {
+   "file": "austerlitz-8j-final.html",
+   "md5": "7d5594baf7468f943ab42f7d848608d1",
+   "readings": 2636,
+   "errors": []
+  },
+  "after": {
+   "file": "austerlitz-8k-final.html",
+   "md5": "f10fe585c46aea576f436ed51ac46f83",
+   "readings": 2636,
+   "errors": []
+  }
+ },
+ "diff": {
+  "know": [
+   {
+    "reading": "fr",
+    "clock": 740,
+    "id": "bag",
+    "before": "unknown (no line of sight)",
+    "after": "seen"
+   },
+   {
+    "reading": "al",
+    "clock": 320,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 330,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 340,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 460,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 500,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 510,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 550,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 560,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 570,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   },
+   {
+    "reading": "al",
+    "clock": 580,
+    "id": "suchet",
+    "before": "seen",
+    "after": "unknown (no line of sight)"
+   }
+  ],
+  "vs": {
+   "pratzeberg": {
+    "before": 73.42,
+    "after": 73.42,
+    "d": 0
+   },
+   "vinohrady": {
+    "before": 64.41,
+    "after": 64.41,
+    "d": 0
+   },
+   "santon": {
+    "before": 41.5,
+    "after": 41.5,
+    "d": 0
+   },
+   "zuran": {
+    "before": 38.41,
+    "after": 38.41,
+    "d": 0
+   },
+   "puntowitz": {
+    "before": 2.19,
+    "after": 2.19,
+    "d": 0
+   },
+   "sokolnitz": {
+    "before": 1.66,
+    "after": 1.66,
+    "d": 0
+   },
+   "augezd": {
+    "before": 4.8,
+    "after": 4.8,
+    "d": 0
+   }
+  },
+  "plateau": [],
+  "sep": []
+ },
+ "summary": {
+  "readings": 2636,
+  "differ": 11,
+  "byReading": {
+   "fr": 1,
+   "al": 10
+  },
+  "formations": [
+   "bag",
+   "suchet"
+  ]
+ }
+}
