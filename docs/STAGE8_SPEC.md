@@ -5106,13 +5106,20 @@ Anthony's chapel, the Santon's chapel, the Sokolnitz granary, section 19.4).
 frame, the ground's depth drawn, is what section 8.3's budget judges; the still eye's frame, the depth reused, beside it; each maximum over the
 cases taken separately; geometry counts, not frame times):
 
-Pending: each build's own `check:visual` run on CI (8I: run 41048882622; 8J: run 41071549726; 8K: the run dispatched with its pull request),
-recorded here as each completes. Until then the last complete-frame census measured is 8H's (section 21.4: 864 calls and 2,352,049 triangles
-on the desktop, 1,398,127 triangles on the phone), which is not carried forward to these builds.
+| build | the complete frame (the budget's): desktop calls, triangles | phone triangles | the still eye: desktop calls, triangles | phone triangles | its `check:visual` run |
+|---|---|---|---|---|---|
+| 8I (`697bbf34...`) | 864 (plans-overview), 2,352,049 (narrow-1024) | 1,398,127 (phone-390-first) | 862, 2,204,961 | 1,251,039 | 41048882622: all 39 cases, the self-test 317 of 317 and every live block passing (4 h 13 min) |
+| 8J (`7d5594ba...`) | pending | pending | pending | pending | 41071549726, running |
+| 8K (`f10fe585...`) | pending | pending | pending | pending | 41080693215, running |
+
+Section 8.3's budgets against the complete frame: 8I's desktop 36 calls (4%) and 447,951 triangles (16%) within 900 and 2.8 million, its phone
+221,873 triangles (13.7%) within 1.62 million; the same as 8H's to the triangle (section 21.4), as a change to the page's text and timers alone
+should be (`docs/stage8-evidence/8k/census/census-8i.json`, `.md`). The rows still pending are filled from their builds' own runs as they
+complete, never carried over.
 
 **CI on each pushed head** (as recorded when this section was written; completed when the runs complete): 8I (`9d7a966`): the push's and
-the pull request's runs passing (41048791108, 41048869905: the checks job, `check:contrast`, `check:selftest`), the dispatched run's checks,
-`check:contrast` and `check:selftest` passing (41048882622), its `check:visual` running; 8J (`0ed98b9`): runs 41071486091, 41071525851 and
+the pull request's runs passing (41048791108, 41048869905: the checks job, `check:contrast`, `check:selftest`), the dispatched run passing
+whole (41048882622: the checks job, `check:contrast`, `check:selftest` and `check:visual`); 8J (`0ed98b9`): runs 41071486091, 41071525851 and
 41071549726, the checks job and `check:contrast` passing, `check:selftest` and `check:visual` running; 8K: the runs of its pull request, its
 self-test's motion block expected to fail on question 267's three lines alone.
 
