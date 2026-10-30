@@ -83,7 +83,12 @@ register, not silently.
   267: (a) re-baseline the 16's totals at this build's (248, 998) and accept the paper zoom's divergence as the benchmark's sensitivity at a
   crowded spot; (b) recommended: a bounded presentation follow-up first, finding the items at the tipping point in the paper map's zoom and
   bringing the real input within its twin, then re-baselining only what remains. Until then `check:selftest` and `check:visual` fail on these
-  three lines alone.
+  three lines. 8K's `check:visual` on CI (run 41080693215) adds two lines of the same kind, each traced by a build with one of 8K's changes
+  undone and put to the owner under the same question: `plans-overview` drops 13 map items against its limit of 12, the Littawa's name, where
+  both plans' columns and the Allied staging now run along the corrected road (with 8J's `PLANS` 12 again; recommended: the limit 13, as
+  decisions 199 and 214 moved drop limits); and `ph8-overview-watch`'s caption has no derived reading at 14:40, the centre separation ending at
+  14:30 instead of 15:00 because Bagration's place on Schönhals's height east of the post moves the northern Allied group's centroid about 7
+  map units east (with his places of 8J it holds at 14:40; recommended: the case exempt in `CAP_DERIVED_NONE` with that reason). None moved.
 - **Chronology (no timing changed).** 70 moves with a timed statement: 66 consistent, 4 early (the four named conflicts), 0 late, as before;
   bag@6's derived arrival 11:31 to 11:40 (its leg 0.78 to 1.23 km at the tactical rate); no arrival at the ceiling added; `SOURCE_NOTE.body[5]`'s
   cites reviewed (only the post house's phrase changed) and rehashed (`chronology-text.json`, 14 cites); REVIEW's locators rewritten (59 rows).
@@ -102,8 +107,10 @@ movement audit 0 findings), `check:baseline` (this build), and `check:selftest` 
 every live block run, all passing but the motion block, which fails on three lines alone (the 16's jumps and pops over their ceilings, the
 paper map's zoom by real input against its twin: question 267, above), its visibility re-measured; the evidence taken on this build
 (`docs/stage8-evidence/8k/README.md`), the captures inspected. On CI after the push: the pull request's own checks and a `check:visual` run
-dispatched on its head (their motion blocks expected to fail on the same three lines); their results and this build's census in both frames
-in section 21.9. Not verified: the device runs (pending). Unresolved (register section 5): the road's and the post's places in 1805; Bagration's exact line at dawn; what the
+dispatched on its head: the checks job and `check:contrast` passing, `check:selftest` failing on the motion block alone (317 of 317 in-app
+checks), `check:visual` (run 41080693215, 4 h 11 min) on the motion block, `plans-overview`'s drop limit and `ph8-overview-watch`'s derived
+reading (question 267, above), its 37 other cases passing; this build's census in both frames 864 calls and 2,151,193 triangles on the
+desktop, 1,288,561 on the phone (section 21.9). Not verified: the device runs (pending). Unresolved (register section 5): the road's and the post's places in 1805; Bagration's exact line at dawn; what the
 heights by Dwaroschna were; which side of the road Schönhals's height lay; Krug's place (the Second Survey's "Kruch" beside Holubitz); Caffarelli's
 anchors 2.5-2.9 km south of Bagration's from 14:30 (not re-plotted).
 

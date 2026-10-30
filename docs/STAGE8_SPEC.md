@@ -5044,7 +5044,12 @@ together, Play's longest hidden with Bagration's. The places follow the readings
 unchanged; the ceilings and the tolerance are the owner's. *Put to the owner, question 267*: (a) re-baseline the 16's totals at this build's
 (248, 998) and accept the paper zoom's divergence as the benchmark's sensitivity at a crowded spot; (b) recommended: a bounded presentation
 follow-up first (the items at the tipping point in the paper map's zoom found, the real input brought within its twin), then re-baseline only
-what remains. Until the owner decides, `check:selftest` and `check:visual` fail on these three lines alone.
+what remains. Until the owner decides, `check:selftest` and `check:visual` fail on these three lines alone. 8K's `check:visual` on CI adds
+two lines of the same kind, each traced to one of 8K's data changes and put to the owner under the same question (section 21.9): the Plans
+view's drop limit (13 against 12, the Littawa's name, by both plans' columns on the corrected road: (c) the limit 13, recommended, as decisions
+199 and 214 moved drop limits, or (d) the plans' labels laid out again) and Watch's caption at 14:40 without a derived reading (the centre
+separation ending at 14:30 with Bagration's place on Schönhals's height: (e) the case exempt in `CAP_DERIVED_NONE` with that reason,
+recommended, the reading a spatial heuristic that the corrected place ends earlier, or (f) the reading's rule revisited).
 
 *The checks.* `geo-test.js`'s two checks that held the correction pass's line and rule replaced by checks of the corrected geography and of
 the register's rules (each at least as strict); `redteam.js`'s march-rate acknowledgement (infantry 1.33 to 1.35); the self-test's woods pins;
@@ -5069,8 +5074,9 @@ build is 8K's (`f10fe585c46aea576f436ed51ac46f83`, 2,810,630 bytes). Until they 
   castle's farm (8J).
 
 **Open owner questions** (each with its measured options and a recommendation): 266, the castle's drawn size at its site (8J, section 21.7);
-267, the map layer's motion benchmark over its ceilings by Suchet's and Bagration's re-plotted places (8K, section 21.8: `check:selftest` and
-`check:visual` fail on its three lines alone until it is decided).
+267, 8K's check lines moved by its re-plotted places and plans: the map layer's motion benchmark over its ceilings, the Plans view's drop
+limit and Watch's derived reading at 14:40 (8K, sections 21.8 and above: `check:selftest` and `check:visual` fail on these alone until it is
+decided).
 
 **Accepted exceptions** (named, with their causes; not historical claims):
 - Satschan's five farmsteads of seven (decision 261 (a)): the drawn mere's outline (decision 27) leaves no room for seven;
@@ -5110,13 +5116,15 @@ cases taken separately; geometry counts, not frame times):
 |---|---|---|---|---|---|
 | 8I (`697bbf34...`) | 864 (plans-overview), 2,352,049 (narrow-1024) | 1,398,127 (phone-390-first) | 862, 2,204,961 | 1,251,039 | 41048882622: all 39 cases, the self-test 317 of 317 and every live block passing (4 h 13 min) |
 | 8J (`7d5594ba...`) | 864 (plans-overview), 2,200,439 (narrow-1024) | 1,315,760 (phone-390-first) | 862, 2,053,351 | 1,168,672 | 41071549726: 38 of the 39 cases, the self-test 317 of 317 and every live block passing (the motion block with its re-measured baselines); one line failing, below (2 h 4 min) |
-| 8K (`f10fe585...`) | pending | pending | pending | pending | 41080693215, running |
+| 8K (`f10fe585...`) | 864 (plans-overview), 2,151,193 (narrow-1024) | 1,288,561 (phone-390-first) | 862, 2,004,105 | 1,141,473 | 41080693215: 37 of the 39 cases and the self-test 317 of 317 passing, every live block but the motion block; three lines failing, below (4 h 11 min) |
 
 Section 8.3's budgets against the complete frame: 8I's desktop 36 calls (4%) and 447,951 triangles (16%) within 900 and 2.8 million, its phone
 221,873 triangles (13.7%) within 1.62 million; the same as 8H's to the triangle (section 21.4), as a change to the page's text and timers alone
 should be (`docs/stage8-evidence/8k/census/census-8i.json`, `.md`). 8J's desktop 36 calls (4%) and 599,561 triangles (21.4%) within the
 budget, its phone 304,240 (18.8%): 151,610 triangles fewer than 8I's on the desktop and 82,367 on the phone, the pheasantry's 46 trees for
-190 and the park's 170 no longer drawn (`census-8j.json`, `.md`).
+190 and the park's 170 no longer drawn (`census-8j.json`, `.md`). 8K's desktop 36 calls (4%) and 648,807 triangles (23.2%), its phone 331,439
+(20.5%): 49,246 and 27,199 fewer than 8J's, the wood above Holubitz no longer drawn (`census-8k.json`, `.md`). The draw calls the same in all three
+builds' maxima (864 and 482): the follow-up changed what is drawn, not how.
 
 *8J's one failing line* (judged again by `check-report.js` with 8J's thresholds): `phone-844x390-explore`'s framing floor (decision 232
 (a)), 9 of the map layer's 11 items inside the free rectangle against the floor of 10, 8I's build standing at the floor. The case replayed as
@@ -5124,16 +5132,27 @@ the harness reaches it (a phone held landscape, Explore, 09:30): every item draw
 Cavalry's name, its first place 3 px from the Allied Headquarters' name, taking its next place, above the free rectangle; with the III Column
 put back at its 8I places the same, so the shift is the fitted view's over the corrected Goldbach's ground. 8K's build meets the floor again
 (10 of 12, its "To Rausnitz" marker now in the view). The floor is not moved: it holds on the stack's last build, and on 8J's alone it would be
-the owner's to move (as decisions 199 and 214 moved drop limits). The rows still pending are filled from their builds' own runs as they
+the owner's to move (as decisions 199 and 214 moved drop limits).
+
+*8K's three failing lines* (judged again by `check-report.js` with 8K's thresholds), each traced to one of 8K's data changes by its build with
+that change undone, all three put to the owner under question 267 (section 21.8): (1) the motion block, as on `check:selftest` (jumps 248, pops
+998, the paper map's zoom by real input against its twin): Suchet's and Bagration's re-plotted places; (2) `plans-overview`, 13 map items
+dropped against the limit of 12 (measured on the 5F build, decision 141): the Littawa's name newly dropped where both plans' columns and the
+Allied staging now run along the corrected road (with 8J's `PLANS` on 8K's build 12 again; with 8J's anchors and 8K's plans 13); (3)
+`ph8-overview-watch`, Watch's caption without a derived reading at 14:40: the centre separation (a French formation across the line joining
+the Allied groups north and south of the Pratzeberg, `centreSeparation`) ends at 14:30 instead of 15:00, because Bagration's place at 14:30, on
+Schönhals's height east of the post, moves the northern group's centroid about 7 map units east (with his places of 8J it holds at 14:40 as
+before; `CAP_DERIVED_NONE`, the case's exemption list, empty and not added to). The rows still pending are filled from their builds' own runs as they
 complete, never carried over.
 
 **CI on each pushed head** (as recorded when this section was written; completed when the runs complete): 8I (`9d7a966`): the push's and
 the pull request's runs passing (41048791108, 41048869905: the checks job, `check:contrast`, `check:selftest`), the dispatched run passing
 whole (41048882622: the checks job, `check:contrast`, `check:selftest` and `check:visual`); 8J (`0ed98b9`): runs 41071486091, 41071525851 and
 41071549726, the checks job, `check:contrast` and `check:selftest` passing on all three, the dispatched `check:visual` failing on the one line
-above; 8K (`5efb458`, then `58c6b3f` with these records): the checks job and `check:contrast` passing, `check:selftest` failing on question
-267's three lines alone (judged again here from the run's report: 317 of 317 in-app checks, the motion block's jumps 248, pops 998 and the
-paper map's zoom by real input; runs 41088292871, 41088300578), its dispatched `check:visual` (41080693215) running.
+above; 8K (`5efb458`, then `58c6b3f` and `9d11acb` with these records): the checks job and `check:contrast` passing, `check:selftest` failing
+on question 267's motion lines alone (judged again here from the run's report: 317 of 317 in-app checks, the motion block's jumps 248, pops
+998 and the paper map's zoom by real input; runs 41080693215, 41088292871, 41088300578), the dispatched `check:visual` (41080693215) failing on
+the three lines above.
 
 **Device acceptance: pending.** No owner hardware was reachable from this session; nothing here substitutes emulation or software-WebGL timing
 for a device. The routes are live on GitHub Pages for `main`'s build, each checked from this session (the page loads, its build boots in
@@ -5149,8 +5168,9 @@ models. They decide section 8.3's budgets on hardware; the geometry counts above
 **Stability.** What is settled: every regression suite, `check:data`, `check:chronology` and `check:baseline` pass on each of the three
 builds; the self-test passes all 317 of its checks on each; 8I and 8J pass every live block; the geographic corrections of decisions 259 (a)
 and 260 (a) are in the data with their evidence, grades and registers, and every derived reading, chronology verdict and sight line they move
-is measured and recorded. What is not: 8K's motion block fails on three lines (question 267) until the owner decides; 8J's `check:visual`, on its own build, fails
-one line (a phone framing floor, met again on 8K's build: above); the census and the
+is measured and recorded. What is not: 8K's `check:selftest` fails on its motion block and its `check:visual` on that block, the Plans view's drop limit and Watch's
+derived reading at 14:40, each traced to 8K's re-plotted places or plans (question 267) and not moved until the owner decides; 8J's
+`check:visual`, on its own build, fails one line (a phone framing floor, met again on 8K's build: above); the census and the
 `check:visual` runs of the three builds are pending on CI and are recorded here as they complete; the device runs are pending. The build is
 therefore stable for the final audits' reading of its data, records and code, with question 267 and the device acceptance named as the two
 open conditions; nothing in it is known to be broken but what this section names.
