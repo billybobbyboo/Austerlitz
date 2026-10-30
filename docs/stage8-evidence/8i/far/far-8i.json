@@ -1,0 +1,3388 @@
+{
+ "tool": "tools/stage8/far-8i.js",
+ "builds": [
+  {
+   "tag": "8i",
+   "file": "austerlitz-8i.html",
+   "md5": "697bbf34ec29fc4d05695dc8e1cd3c5e"
+  },
+  {
+   "tag": "8h",
+   "file": "austerlitz-8h.html",
+   "md5": "9fa50cb46a085ab4ea8f932cd405f1e8"
+  }
+ ],
+ "chromium": "141.0.7390.37",
+ "views": {
+  "the wall of names 09:00": {
+   "8i": {
+    "names": 12,
+    "far": 9,
+    "farMin": 7.13,
+    "farMedian": 7.16,
+    "nearMin": 12.49,
+    "nearMedian": 12.53,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 7.13,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.1,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far",
+      "ratio": 1.558,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.16
+     },
+     {
+      "id": "n:lich",
+      "plate": "far",
+      "ratio": 1.836,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.16
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.065,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.49
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "full",
+      "ratio": 1.371,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.53
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far",
+      "ratio": 1.786,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.36
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far",
+      "ratio": 1.665,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.36
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far",
+      "ratio": 1.532,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.84
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "full",
+      "ratio": 1.339,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.53
+     },
+     {
+      "id": "n:milo",
+      "plate": "far",
+      "ratio": 1.577,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.16
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far",
+      "ratio": 1.748,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.16
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 2.367,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.13
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far",
+      "ratio": 2.12,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 8.22
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 12,
+    "far": 9,
+    "farMin": 12.49,
+    "farMedian": 12.52,
+    "nearMin": 12.49,
+    "nearMedian": 12.53,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.23,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.2,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far (8I's test)",
+      "ratio": 1.558,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.49
+     },
+     {
+      "id": "n:lich",
+      "plate": "far (8I's test)",
+      "ratio": 1.836,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.52
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.065,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.49
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "full",
+      "ratio": 1.371,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.53
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far (8I's test)",
+      "ratio": 1.786,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.53
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far (8I's test)",
+      "ratio": 1.665,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.53
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far (8I's test)",
+      "ratio": 1.532,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.8
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "full",
+      "ratio": 1.339,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.53
+     },
+     {
+      "id": "n:milo",
+      "plate": "far (8I's test)",
+      "ratio": 1.577,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.52
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far (8I's test)",
+      "ratio": 1.748,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.49
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 2.367,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.49
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far (8I's test)",
+      "ratio": 2.12,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "the wall of names 12:00": {
+   "8i": {
+    "names": 19,
+    "far": 16,
+    "farMin": 6.97,
+    "farMedian": 7.21,
+    "nearMin": 12.51,
+    "nearMedian": 12.96,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 6.97,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.6,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far",
+      "ratio": 2.575,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.09
+     },
+     {
+      "id": "n:lich",
+      "plate": "far",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far",
+      "ratio": 1.936,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:walther",
+      "plate": "far",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.33
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.2
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.14
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far",
+      "ratio": 1.599,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.21
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.96
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 6.97
+     },
+     {
+      "id": "n:milo",
+      "plate": "far",
+      "ratio": 2.463,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 9.43
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far",
+      "ratio": 2.15,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.1
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far",
+      "ratio": 2.21,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.16
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 19,
+    "far": 16,
+    "farMin": 12.4,
+    "farMedian": 12.54,
+    "nearMin": 12.51,
+    "nearMedian": 12.96,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.54,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2.4,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far (8I's test)",
+      "ratio": 2.575,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:lich",
+      "plate": "far (8I's test)",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far (8I's test)",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far (8I's test)",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far (8I's test)",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far (8I's test)",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far (8I's test)",
+      "ratio": 1.936,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:walther",
+      "plate": "far (8I's test)",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far (8I's test)",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far (8I's test)",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.14
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far (8I's test)",
+      "ratio": 1.599,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.96
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far (8I's test)",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:milo",
+      "plate": "far (8I's test)",
+      "ratio": 2.463,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.26
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far (8I's test)",
+      "ratio": 2.15,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far (8I's test)",
+      "ratio": 2.21,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.17
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "the wall of names 15:00": {
+   "8i": {
+    "names": 17,
+    "far": 16,
+    "farMin": 7.08,
+    "farMedian": 7.35,
+    "nearMin": 12.65,
+    "nearMedian": 12.65,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 7.1,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.3,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far",
+      "ratio": 2.99,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.27
+     },
+     {
+      "id": "n:lich",
+      "plate": "far",
+      "ratio": 3.026,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.35
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far",
+      "ratio": 2.777,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.36
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far",
+      "ratio": 2.452,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.36
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far",
+      "ratio": 2.366,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.36
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far",
+      "ratio": 2.252,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 8
+     },
+     {
+      "id": "n:walther",
+      "plate": "far",
+      "ratio": 2.272,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.47
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far",
+      "ratio": 1.898,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.35
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far",
+      "ratio": 1.82,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.35
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "far",
+      "ratio": 1.502,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.35
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far",
+      "ratio": 1.616,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.35
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far",
+      "ratio": 2.41,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.35
+     },
+     {
+      "id": "n:prz",
+      "plate": "full",
+      "ratio": 0.99,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:milo",
+      "plate": "far",
+      "ratio": 2.89,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 11.26
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far",
+      "ratio": 2.975,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.08
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 2.962,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.35
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far",
+      "ratio": 3.038,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.44
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 17,
+    "far": 16,
+    "farMin": 12.38,
+    "farMedian": 12.51,
+    "nearMin": 12.65,
+    "nearMedian": 12.65,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.56,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.2,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far (8I's test)",
+      "ratio": 2.99,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:lich",
+      "plate": "far (8I's test)",
+      "ratio": 3.026,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far (8I's test)",
+      "ratio": 2.777,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far (8I's test)",
+      "ratio": 2.452,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far (8I's test)",
+      "ratio": 2.366,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far (8I's test)",
+      "ratio": 2.252,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.81
+     },
+     {
+      "id": "n:walther",
+      "plate": "far (8I's test)",
+      "ratio": 2.272,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far (8I's test)",
+      "ratio": 1.898,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far (8I's test)",
+      "ratio": 1.82,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "far (8I's test)",
+      "ratio": 1.502,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far (8I's test)",
+      "ratio": 1.616,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far (8I's test)",
+      "ratio": 2.41,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:prz",
+      "plate": "full",
+      "ratio": 0.99,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:milo",
+      "plate": "far (8I's test)",
+      "ratio": 2.89,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.9
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far (8I's test)",
+      "ratio": 2.975,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.38
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 2.962,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far (8I's test)",
+      "ratio": 3.038,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.64
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "the infantry's front": {
+   "8i": {
+    "names": 7,
+    "far": 5,
+    "farMin": 6.98,
+    "farMedian": 8.28,
+    "nearMin": 12.65,
+    "nearMedian": 12.79,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 6.6,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.1,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far",
+      "ratio": 1.548,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 8.82
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 0.944,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.79
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far",
+      "ratio": 1.764,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 8.28
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far",
+      "ratio": 2.372,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.2
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "full",
+      "ratio": 0.868,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:milo",
+      "plate": "far",
+      "ratio": 1.603,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.12
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far",
+      "ratio": 1.536,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 6.98
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 7,
+    "far": 5,
+    "farMin": 12.34,
+    "farMedian": 12.93,
+    "nearMin": 12.65,
+    "nearMedian": 12.79,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.34,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.8,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far (8I's test)",
+      "ratio": 1.548,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.08
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 0.944,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.79
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far (8I's test)",
+      "ratio": 1.764,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.93
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far (8I's test)",
+      "ratio": 2.372,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.19
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "full",
+      "ratio": 0.868,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:milo",
+      "plate": "far (8I's test)",
+      "ratio": 1.603,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.39
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far (8I's test)",
+      "ratio": 1.536,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.34
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "pratzen-low": {
+   "8i": {
+    "names": 12,
+    "far": 2,
+    "farMin": 7.78,
+    "farMedian": 11.26,
+    "nearMin": 12.22,
+    "nearMedian": 13.67,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 11.01,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.8,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 1.357,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.26
+     },
+     {
+      "id": "n:buxhowden",
+      "plate": "full",
+      "ratio": 0.938,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.16
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 0.983,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.76
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "full",
+      "ratio": 1.348,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.9
+     },
+     {
+      "id": "n:legrand",
+      "plate": "full",
+      "ratio": 0.555,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.07
+     },
+     {
+      "id": "n:lang",
+      "plate": "full",
+      "ratio": 0.731,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.92
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "full",
+      "ratio": 0.974,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.53
+     },
+     {
+      "id": "n:prz",
+      "plate": "full",
+      "ratio": 0.666,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.22
+     },
+     {
+      "id": "n:milo",
+      "plate": "full",
+      "ratio": 1.393,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.67
+     },
+     {
+      "id": "n:kollo",
+      "plate": "full",
+      "ratio": 1.17,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.1
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 1.84,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.78
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far",
+      "ratio": 1.617,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 11.26
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 12,
+    "far": 2,
+    "farMin": 12.66,
+    "farMedian": 13.91,
+    "nearMin": 12.22,
+    "nearMedian": 13.67,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 11.61,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.4,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 1.357,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.26
+     },
+     {
+      "id": "n:buxhowden",
+      "plate": "full",
+      "ratio": 0.938,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.16
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 0.983,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.76
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "full",
+      "ratio": 1.348,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.9
+     },
+     {
+      "id": "n:legrand",
+      "plate": "full",
+      "ratio": 0.555,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.07
+     },
+     {
+      "id": "n:lang",
+      "plate": "full",
+      "ratio": 0.731,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.92
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "full",
+      "ratio": 0.974,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.53
+     },
+     {
+      "id": "n:prz",
+      "plate": "full",
+      "ratio": 0.666,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.22
+     },
+     {
+      "id": "n:milo",
+      "plate": "full",
+      "ratio": 1.393,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.67
+     },
+     {
+      "id": "n:kollo",
+      "plate": "full",
+      "ratio": 1.17,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.1
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 1.84,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.66
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far (8I's test)",
+      "ratio": 1.617,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.91
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "overview-field 08:00 (fog)": {
+   "8i": {
+    "names": 25,
+    "far": 0,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": 12.74,
+    "nearMedian": 13.22,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 7.75,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.5,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:lich",
+      "plate": "full",
+      "ratio": 1.097,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.81
+     },
+     {
+      "id": "n:bag",
+      "plate": "full",
+      "ratio": 1.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.91
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 0.934,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "full",
+      "ratio": 1.025,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:legrand",
+      "plate": "full",
+      "ratio": 0.758,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.74
+     },
+     {
+      "id": "n:bourcier",
+      "plate": "full",
+      "ratio": 0.611,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.1
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "full",
+      "ratio": 1.151,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.92
+     },
+     {
+      "id": "n:suchet",
+      "plate": "full",
+      "ratio": 1.164,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.76
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "full",
+      "ratio": 1.151,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.64
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "full",
+      "ratio": 1.123,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.52
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "full",
+      "ratio": 1.094,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.51
+     },
+     {
+      "id": "n:walther",
+      "plate": "full",
+      "ratio": 1.121,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.92
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "full",
+      "ratio": 1.018,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:drouet",
+      "plate": "full",
+      "ratio": 0.985,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.11
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.041,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.01
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "full",
+      "ratio": 1.046,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.22
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.019,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.49
+     },
+     {
+      "id": "n:kienmayer",
+      "plate": "full",
+      "ratio": 0.745,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.92
+     },
+     {
+      "id": "n:dok",
+      "plate": "full",
+      "ratio": 0.764,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:lang",
+      "plate": "full",
+      "ratio": 0.815,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.96
+     },
+     {
+      "id": "n:prz",
+      "plate": "full",
+      "ratio": 0.839,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.67
+     },
+     {
+      "id": "n:milo",
+      "plate": "full",
+      "ratio": 1.041,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.48
+     },
+     {
+      "id": "n:kollo",
+      "plate": "full",
+      "ratio": 1.087,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.8
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "full",
+      "ratio": 1.229,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.8
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "full",
+      "ratio": 1.2,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.51
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 25,
+    "far": 0,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": 12.74,
+    "nearMedian": 13.22,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 7.75,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.1,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:lich",
+      "plate": "full",
+      "ratio": 1.097,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.81
+     },
+     {
+      "id": "n:bag",
+      "plate": "full",
+      "ratio": 1.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.91
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 0.934,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "full",
+      "ratio": 1.025,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:legrand",
+      "plate": "full",
+      "ratio": 0.758,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.74
+     },
+     {
+      "id": "n:bourcier",
+      "plate": "full",
+      "ratio": 0.611,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.1
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "full",
+      "ratio": 1.151,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.92
+     },
+     {
+      "id": "n:suchet",
+      "plate": "full",
+      "ratio": 1.164,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.76
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "full",
+      "ratio": 1.151,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.64
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "full",
+      "ratio": 1.123,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.52
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "full",
+      "ratio": 1.094,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.51
+     },
+     {
+      "id": "n:walther",
+      "plate": "full",
+      "ratio": 1.121,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.92
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "full",
+      "ratio": 1.018,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:drouet",
+      "plate": "full",
+      "ratio": 0.985,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.11
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.041,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.01
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "full",
+      "ratio": 1.046,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.22
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.019,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.49
+     },
+     {
+      "id": "n:kienmayer",
+      "plate": "full",
+      "ratio": 0.745,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.92
+     },
+     {
+      "id": "n:dok",
+      "plate": "full",
+      "ratio": 0.764,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:lang",
+      "plate": "full",
+      "ratio": 0.815,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.96
+     },
+     {
+      "id": "n:prz",
+      "plate": "full",
+      "ratio": 0.839,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.67
+     },
+     {
+      "id": "n:milo",
+      "plate": "full",
+      "ratio": 1.041,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.48
+     },
+     {
+      "id": "n:kollo",
+      "plate": "full",
+      "ratio": 1.087,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.8
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "full",
+      "ratio": 1.229,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.8
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "full",
+      "ratio": 1.2,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.51
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "pratzen-low 08:30 (fog)": {
+   "8i": {
+    "names": 10,
+    "far": 2,
+    "farMin": 7.24,
+    "farMedian": 7.25,
+    "nearMin": 12.21,
+    "nearMedian": 12.49,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 7.24,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.7,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 1.2,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.36
+     },
+     {
+      "id": "n:buxhowden",
+      "plate": "full",
+      "ratio": 0.94,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.66
+     },
+     {
+      "id": "n:lich",
+      "plate": "full",
+      "ratio": 1.443,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:lang",
+      "plate": "full",
+      "ratio": 0.707,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.21
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "full",
+      "ratio": 0.849,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.49
+     },
+     {
+      "id": "n:prz",
+      "plate": "full",
+      "ratio": 0.675,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.21
+     },
+     {
+      "id": "n:milo",
+      "plate": "full",
+      "ratio": 1.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.22
+     },
+     {
+      "id": "n:kollo",
+      "plate": "full",
+      "ratio": 1.371,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 1.882,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.24
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far",
+      "ratio": 1.725,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.25
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 10,
+    "far": 2,
+    "farMin": 12.52,
+    "farMedian": 12.52,
+    "nearMin": 12.21,
+    "nearMedian": 12.49,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 7.5,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.9,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 1.2,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.36
+     },
+     {
+      "id": "n:buxhowden",
+      "plate": "full",
+      "ratio": 0.94,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.66
+     },
+     {
+      "id": "n:lich",
+      "plate": "full",
+      "ratio": 1.443,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.65
+     },
+     {
+      "id": "n:lang",
+      "plate": "full",
+      "ratio": 0.707,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.21
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "full",
+      "ratio": 0.849,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.49
+     },
+     {
+      "id": "n:prz",
+      "plate": "full",
+      "ratio": 0.675,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.21
+     },
+     {
+      "id": "n:milo",
+      "plate": "full",
+      "ratio": 1.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.22
+     },
+     {
+      "id": "n:kollo",
+      "plate": "full",
+      "ratio": 1.371,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 1.882,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.52
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far (8I's test)",
+      "ratio": 1.725,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.52
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "ph8-overview-watch": {
+   "8i": {
+    "names": 5,
+    "far": 0,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": 14.06,
+    "nearMedian": 14.19,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.52,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.8,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:gqg",
+      "plate": "full",
+      "ratio": 0.987,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.19
+     },
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 1.03,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.06
+     },
+     {
+      "id": "n:buxhowden",
+      "plate": "full",
+      "ratio": 0.989,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.54
+     },
+     {
+      "id": "n:lich",
+      "plate": "full",
+      "ratio": 1.038,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.15
+     },
+     {
+      "id": "n:bag",
+      "plate": "full",
+      "ratio": 1.055,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.54
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 5,
+    "far": 0,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": 14.06,
+    "nearMedian": 14.19,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.52,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 0.5,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:gqg",
+      "plate": "full",
+      "ratio": 0.987,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.19
+     },
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 1.03,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.06
+     },
+     {
+      "id": "n:buxhowden",
+      "plate": "full",
+      "ratio": 0.989,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.54
+     },
+     {
+      "id": "n:lich",
+      "plate": "full",
+      "ratio": 1.038,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.15
+     },
+     {
+      "id": "n:bag",
+      "plate": "full",
+      "ratio": 1.055,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.54
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "the wall of names, a far name selected": {
+   "8i": {
+    "names": 19,
+    "far": 15,
+    "farMin": 7.1,
+    "farMedian": 7.22,
+    "nearMin": 12.4,
+    "nearMedian": 12.95,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 7.1,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.4,
+    "target": {
+     "id": "ahq"
+    },
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 2.575,
+      "prot": true,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:lich",
+      "plate": "far",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far",
+      "ratio": 1.936,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:walther",
+      "plate": "far",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.33
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.27
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far",
+      "ratio": 1.599,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.95
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.1
+     },
+     {
+      "id": "n:milo",
+      "plate": "far",
+      "ratio": 2.463,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 9.15
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far",
+      "ratio": 2.15,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.1
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.1
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far",
+      "ratio": 2.21,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.15
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 19,
+    "far": 15,
+    "farMin": 12.4,
+    "farMedian": 12.54,
+    "nearMin": 12.4,
+    "nearMedian": 12.95,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.54,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2,
+    "target": {
+     "id": "ahq"
+    },
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 2.575,
+      "prot": true,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:lich",
+      "plate": "far (8I's test)",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far (8I's test)",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far (8I's test)",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far (8I's test)",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far (8I's test)",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far (8I's test)",
+      "ratio": 1.936,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:walther",
+      "plate": "far (8I's test)",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far (8I's test)",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far (8I's test)",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.27
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far (8I's test)",
+      "ratio": 1.599,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.95
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far (8I's test)",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:milo",
+      "plate": "far (8I's test)",
+      "ratio": 2.463,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.25
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far (8I's test)",
+      "ratio": 2.15,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far (8I's test)",
+      "ratio": 2.21,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.17
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "the wall of names, a far name focused": {
+   "8i": {
+    "names": 19,
+    "far": 15,
+    "farMin": 6.97,
+    "farMedian": 7.21,
+    "nearMin": 12.4,
+    "nearMedian": 12.97,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 6.97,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2.3,
+    "target": {
+     "id": "ahq"
+    },
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 2.575,
+      "prot": true,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:lich",
+      "plate": "far",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far",
+      "ratio": 1.936,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:walther",
+      "plate": "far",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.33
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.2
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.14
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far",
+      "ratio": 1.599,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.21
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.97
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 6.97
+     },
+     {
+      "id": "n:milo",
+      "plate": "far",
+      "ratio": 2.463,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 9.43
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far",
+      "ratio": 2.15,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.1
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far",
+      "ratio": 2.21,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.16
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 19,
+    "far": 15,
+    "farMin": 12.4,
+    "farMedian": 12.54,
+    "nearMin": 12.4,
+    "nearMedian": 12.97,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.54,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.4,
+    "target": {
+     "id": "ahq"
+    },
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "full",
+      "ratio": 2.575,
+      "prot": true,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:lich",
+      "plate": "far (8I's test)",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far (8I's test)",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far (8I's test)",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far (8I's test)",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far (8I's test)",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far (8I's test)",
+      "ratio": 1.936,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:walther",
+      "plate": "far (8I's test)",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far (8I's test)",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far (8I's test)",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.14
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far (8I's test)",
+      "ratio": 1.599,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.97
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far (8I's test)",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:milo",
+      "plate": "far (8I's test)",
+      "ratio": 2.463,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.26
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far (8I's test)",
+      "ratio": 2.15,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far (8I's test)",
+      "ratio": 2.21,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.17
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "the wall of names, Napoleon's reading": {
+   "8i": {
+    "names": 16,
+    "far": 13,
+    "farMin": 6.97,
+    "farMedian": 7.22,
+    "nearMin": 12.51,
+    "nearMedian": 12.54,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 6.97,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 4.4,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:lich",
+      "plate": "far",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far",
+      "ratio": 1.936,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:walther",
+      "plate": "far",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.33
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.19
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.1
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far",
+      "ratio": 1.599,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.66
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 6.97
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.1
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far",
+      "ratio": 2.21,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 8.6
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 16,
+    "far": 13,
+    "farMin": 12.4,
+    "farMedian": 12.54,
+    "nearMin": 12.51,
+    "nearMedian": 12.54,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 8.18,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 5.3,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:lich",
+      "plate": "far (8I's test)",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far (8I's test)",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far (8I's test)",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far (8I's test)",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far (8I's test)",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:dhautpoul",
+      "plate": "far (8I's test)",
+      "ratio": 1.936,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:walther",
+      "plate": "far (8I's test)",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far (8I's test)",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far (8I's test)",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.51
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.1
+     },
+     {
+      "id": "n:guard_cav",
+      "plate": "far (8I's test)",
+      "ratio": 1.599,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.7
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far (8I's test)",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:rg_cav",
+      "plate": "far (8I's test)",
+      "ratio": 2.21,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 13.08
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "the wall of names at 844 x 390": {
+   "8i": {
+    "names": 17,
+    "far": 13,
+    "farMin": 7.1,
+    "farMedian": 8.03,
+    "nearMin": 12.54,
+    "nearMedian": 12.55,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 7.1,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2.2,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far",
+      "ratio": 2.575,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.1
+     },
+     {
+      "id": "n:lich",
+      "plate": "far",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.3
+     },
+     {
+      "id": "n:legrand",
+      "plate": "full",
+      "ratio": 0.969,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.42
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 8.03
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.28
+     },
+     {
+      "id": "n:walther",
+      "plate": "far",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.33
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.56
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.29
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.31
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 8.28
+     },
+     {
+      "id": "n:milo",
+      "plate": "far",
+      "ratio": 2.463,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 7.22
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far",
+      "ratio": 2.15,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 8.17
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.57
+     }
+    ],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 17,
+    "far": 13,
+    "farMin": 12.4,
+    "farMedian": 12.83,
+    "nearMin": 12.54,
+    "nearMedian": 12.55,
+    "sizes": [
+     12.5
+    ],
+    "mapTextMin": 11.52,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2.3,
+    "target": null,
+    "perName": [
+     {
+      "id": "n:ahq",
+      "plate": "far (8I's test)",
+      "ratio": 2.575,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.4
+     },
+     {
+      "id": "n:lich",
+      "plate": "far (8I's test)",
+      "ratio": 2.344,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:sthilaire",
+      "plate": "full",
+      "ratio": 1.459,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:vandamme",
+      "plate": "far (8I's test)",
+      "ratio": 1.631,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:legrand",
+      "plate": "full",
+      "ratio": 0.969,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:caffarelli",
+      "plate": "far (8I's test)",
+      "ratio": 2.266,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:kellermann",
+      "plate": "far (8I's test)",
+      "ratio": 2.165,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.83
+     },
+     {
+      "id": "n:nansouty",
+      "plate": "far (8I's test)",
+      "ratio": 2.08,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.19
+     },
+     {
+      "id": "n:walther",
+      "plate": "far (8I's test)",
+      "ratio": 2.006,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:rivaud",
+      "plate": "far (8I's test)",
+      "ratio": 1.704,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.3
+     },
+     {
+      "id": "n:drouet",
+      "plate": "far (8I's test)",
+      "ratio": 1.659,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.21
+     },
+     {
+      "id": "n:guard_inf",
+      "plate": "full",
+      "ratio": 1.454,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.31
+     },
+     {
+      "id": "n:c_gren",
+      "plate": "full",
+      "ratio": 1.253,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.55
+     },
+     {
+      "id": "n:kamensky",
+      "plate": "far (8I's test)",
+      "ratio": 1.877,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.94
+     },
+     {
+      "id": "n:milo",
+      "plate": "far (8I's test)",
+      "ratio": 2.463,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.54
+     },
+     {
+      "id": "n:kollo",
+      "plate": "far (8I's test)",
+      "ratio": 2.15,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 12.92
+     },
+     {
+      "id": "n:rg_inf",
+      "plate": "far (8I's test)",
+      "ratio": 2.181,
+      "prot": false,
+      "px": 12.5,
+      "contrast": 14.26
+     }
+    ],
+    "pageErrors": []
+   }
+  },
+  "the wall of names, with counters": {
+   "8i": {
+    "names": 0,
+    "far": 0,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": null,
+    "nearMedian": null,
+    "sizes": [],
+    "mapTextMin": 5.38,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 1.7,
+    "target": null,
+    "perName": [],
+    "pageErrors": []
+   },
+   "8h": {
+    "names": 0,
+    "far": 0,
+    "farMin": null,
+    "farMedian": null,
+    "nearMin": null,
+    "nearMedian": null,
+    "sizes": [],
+    "mapTextMin": 5.38,
+    "mapTextBelowAA": 0,
+    "belowAA": [],
+    "passMs": 2.6,
+    "target": null,
+    "perName": [],
+    "pageErrors": []
+   }
+  }
+ }
+}

@@ -6,6 +6,9 @@
    theme.dark is the landscape, theme.paper the paper map (body.mode-staff).
    sym.plate (Stage 2D) is the plate under every map-layer label: opaque enough that each map text colour below meets
    WCAG AA over black and over white ground (dark 0.88, worst 5.8:1, the road ink; paper 0.95, worst 4.6:1, the water ink).
+   sym.plate.far (Stage 8, the follow-up 8I; decision 263 (a), 255 (d)'s "d-plate"): the lighter plate of a formation's name standing far on the
+   landscape (app.js mlFarPlate), by the same rule for the one ink it carries, the label ink: the lightest alpha keeping it at AA over white
+   ground, 0.64 (4.55:1; over black 15.4:1); the prototype's 0.62 gave 4.23:1 over white.
    sym.paperMap (Stage 2E) is the paper map's own symbology: woods (a tint, the tree marks and the outline) and the flat
    village footprints. Symbols on the map, not text. Since Stage 4E also its ground (the cover classes' colours, in
    coverClass's order through COVER_KEYS), its contours and its marsh lines (owner decision 79; values unchanged).
@@ -66,7 +69,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
       "dark":  {"halo": "rgba(8,12,16,.72)", "ink": "#E8E2D3", "annotation": "#E3D9BE"},
       "paper": {"halo": "rgba(246,241,229,.9)", "ink": "#3A362C", "annotation": "#3A362C"}
     },
-    "plate": {"dark": "rgba(10,14,18,.88)", "paper": "rgba(246,241,229,.95)"},
+    "plate": {"dark": "rgba(10,14,18,.88)", "paper": "rgba(246,241,229,.95)", "far": "rgba(10,14,18,.64)"},
     "paperMap": {
       "wood":    {"fill": "#C9D3B2", "mark": "#566E43", "edge": "#566E43"},
       "village": {"fill": "#B8A58A", "edge": "#6B5B45"},

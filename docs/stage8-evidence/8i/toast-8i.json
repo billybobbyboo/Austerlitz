@@ -1,0 +1,626 @@
+{
+ "tool": "tools/stage8/toast-8i.js",
+ "build": "../../../tmp/claude-0/-home-user-Austerlitz/fcf8e9c8-a41e-55b7-be58-5d7ed618f08c/scratchpad/builds/austerlitz-8i.html",
+ "md5": "697bbf34ec29fc4d05695dc8e1cd3c5e",
+ "browser": "141.0.7390.37",
+ "transitions": true,
+ "cases": [
+  {
+   "name": "watch-study 1600x900",
+   "reads": [
+    {
+     "step": "shown",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "watch",
+     "mode": "terrain",
+     "box": [
+      660,
+      26,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 0
+    },
+    {
+     "step": "to Study",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      810,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 6
+    },
+    {
+     "step": "to Watch",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "watch",
+     "mode": "terrain",
+     "box": [
+      660,
+      26,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 12
+    }
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "study-watch 1600x900",
+   "reads": [
+    {
+     "step": "shown",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      810,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 0
+    },
+    {
+     "step": "to Watch",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "watch",
+     "mode": "terrain",
+     "box": [
+      660,
+      26,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 7
+    },
+    {
+     "step": "to Study",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      810,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 11
+    }
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "resize 1600x900-1024x768 study",
+   "reads": [
+    {
+     "step": "shown",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      810,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 0
+    },
+    {
+     "step": "to 1024x768",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1024,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      372,
+      92,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 6
+    },
+    {
+     "step": "to 1600x900",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      810,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 12
+    }
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "resize 1024x768-1600x900 study",
+   "reads": [
+    {
+     "step": "shown",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1024,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      372,
+      92,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 0
+    },
+    {
+     "step": "to 1600x900",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1600,
+     "vh": 900,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      810,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 6
+    },
+    {
+     "step": "to 1024x768",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1024,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      372,
+      92,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 11
+    }
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "panels 1024x768 study",
+   "reads": [
+    {
+     "step": "shown",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1024,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      372,
+      92,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 0
+    },
+    {
+     "step": "Panels open",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1024,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      372,
+      92,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 4
+    },
+    {
+     "step": "Panels closed",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1024,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      372,
+      92,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 7
+    }
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "paper map 1366x768 study",
+   "reads": [
+    {
+     "step": "shown",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1366,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      693,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 0
+    },
+    {
+     "step": "to the paper map",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1366,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "staff",
+     "box": [
+      693,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 4
+    },
+    {
+     "step": "to the landscape",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 1366,
+     "vh": 768,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      693,
+      55,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 9
+    }
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "phone turned 390x844",
+   "reads": [
+    {
+     "step": "shown",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 390,
+     "vh": 844,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      55,
+      62,
+      281,
+      34
+     ],
+     "switchShown": false,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 0
+    },
+    {
+     "step": "to 844x390",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 844,
+     "vh": 390,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      282,
+      127,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 8
+    },
+    {
+     "step": "to 390x844",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 390,
+     "vh": 844,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      55,
+      62,
+      281,
+      34
+     ],
+     "switchShown": false,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 14
+    }
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "phone menu 390x844",
+   "reads": [
+    {
+     "step": "shown",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 390,
+     "vh": 844,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      55,
+      62,
+      281,
+      34
+     ],
+     "switchShown": false,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 0
+    },
+    {
+     "step": "Menu open",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 390,
+     "vh": 844,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      55,
+      280,
+      281,
+      34
+     ],
+     "switchShown": true,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 4
+    },
+    {
+     "step": "Menu closed",
+     "on": true,
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "want": "The sun of Austerlitz, as memoirs call it",
+     "clock": 525,
+     "vw": 390,
+     "vh": 844,
+     "presentation": "study",
+     "mode": "terrain",
+     "box": [
+      55,
+      62,
+      281,
+      34
+     ],
+     "switchShown": false,
+     "overlapSwitch": 0,
+     "others": [],
+     "placed": 6
+    }
+   ],
+   "pageErrors": []
+  }
+ ],
+ "life": {
+  "reads": [
+   {
+    "step": "to Study",
+    "onAtChange": true,
+    "placedBefore": 0,
+    "on": true,
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "want": "The sun of Austerlitz, as memoirs call it",
+    "clock": 525,
+    "vw": 1600,
+    "vh": 900,
+    "presentation": "study",
+    "mode": "terrain",
+    "box": [
+     810,
+     55,
+     281,
+     34
+    ],
+    "switchShown": true,
+    "overlapSwitch": 0,
+    "others": [],
+    "placed": 3
+   },
+   {
+    "step": "to 1366x768",
+    "onAtChange": true,
+    "placedBefore": 3,
+    "on": false,
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "want": "The sun of Austerlitz, as memoirs call it",
+    "clock": 525,
+    "vw": 1366,
+    "vh": 768,
+    "presentation": "study",
+    "mode": "terrain",
+    "box": [
+     693,
+     55,
+     281,
+     34
+    ],
+    "switchShown": true,
+    "overlapSwitch": 0,
+    "others": [],
+    "placed": 6
+   }
+  ],
+  "set": 1,
+  "cleared": 0,
+  "off": true,
+  "lifeMs": 13037,
+  "timerKept": true,
+  "expected": 3400,
+  "placedOnChanges": [
+   3,
+   3
+  ],
+  "pageErrors": []
+ },
+ "summary": {
+  "reads": 24,
+  "over": 0
+ }
+}

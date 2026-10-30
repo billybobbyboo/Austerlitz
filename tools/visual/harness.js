@@ -627,6 +627,77 @@ async function interact(page,it,vp){
         await size(vp0.width,vp0.height); await first.evaluate(()=>{ if(window.__flash0){ flash=window.__flash0; delete window.__flash0; } setPresentation("study"); select(null,null); });
         LIVE.toast=TS; console.log("the phase's message: "+TS.map(c=>c.at+" "+(c.on?"shown":"NOT SHOWN")+" at "+c.box.join(",")+(c.overlapSwitch||c.others.length?" OVER "+c.overlapSwitch+" px of the switch, "+JSON.stringify(c.others):"")).join("; "));
       }
+      /* Stage 8, the follow-up 8I (the audit of 8H's build): the phase's message shown first, then the layout changed under it, each change in both
+         directions, by real clicks, real keys and real resizes: Watch to Study and back at 1600 x 900 (the audit's first two steps), 1600 x 900 to
+         1024 x 768 and back in Study (its third), the Panels opened and closed at 1024 x 768, the paper map entered and left through the Layers panel
+         at 1366 x 768, a phone turned (390 x 844 to 844 x 390 and back) and its Menu opened and closed. Each read: the message shown, its words
+         08:45's, 0 px over the presentation switch and over every shown control, and placed again since the change (TOAST.placed). The message is held
+         for these reads as the block above holds it; its own lifetime, unheld, is read after them */
+      if(await first.evaluate(()=>typeof flash==="function"&&typeof toastRelayout==="function"&&!!document.getElementById("timerail"))){
+        AT="toast layout";
+        const READ=()=>{ const t=document.getElementById("toast"), v=document.getElementById("viewmode"), a=t.getBoundingClientRect();
+          const shown=e=>{ if(!e) return false; const q=e.getBoundingClientRect(); if(!(q.width>0&&q.height>0)) return false; for(let n=e;n&&n.nodeType===1;n=n.parentElement){ const s=getComputedStyle(n); if(s.display==="none"||s.visibility==="hidden"||+s.opacity===0) return false; } return true; };
+          const ov=(p,q)=>Math.round(Math.max(0,Math.min(p.right,q.right)-Math.max(p.left,q.left))*Math.max(0,Math.min(p.bottom,q.bottom)-Math.max(p.top,q.top)));
+          const vs=shown(v), others=[];
+          document.querySelectorAll("button,a[href],input,select,[role=button],[role=tab],[role=slider]").forEach(e=>{ if(t.contains(e)||(v&&v.contains(e))||e.closest("#maplayer")||!shown(e)) return;
+            const o=ov(a,e.getBoundingClientRect()); if(o>0) others.push({el:e.id?"#"+e.id:(e.className?e.tagName.toLowerCase()+"."+String(e.className).split(" ")[0]:e.tagName.toLowerCase()), px:o}); });
+          return {on:t.classList.contains("on"), text:t.textContent, want:PHASES[3].flash, clock:Math.round(clock), vw:innerWidth, vh:innerHeight, presentation:presentation, mode:mode,
+            box:[Math.round(a.left),Math.round(a.top),Math.round(a.width),Math.round(a.height)], switchShown:vs, overlapSwitch:vs?ov(a,v.getBoundingClientRect()):0, others:others, placed:TOAST.placed}; };
+        const begin=async(w,h,pres,staff)=>{ await size(w,h);
+          await first.evaluate(a=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); if(typeof setMenu==="function") setMenu(false); if(typeof setLayerPop==="function") setLayerPop(false);
+            if(typeof setPanels==="function"&&innerWidth<1080) setPanels(false); setMode(a.staff?"staff":"terrain"); setPresentation(a.pres);
+            if(!window.__flash0){ const f0=flash; window.__flash0=f0; flash=function(m){ f0(m); clearTimeout(flash._t); }; }
+            setClock(520,{instant:true,force:true,camera:false}); clearTimeout(flash._t); document.getElementById("toast").classList.remove("on"); document.getElementById("timerail").focus(); },{pres:pres,staff:!!staff});
+          await first.waitForTimeout(300); await first.keyboard.press("PageDown"); await first.waitForTimeout(150); return first.evaluate(READ); };
+        const after=async ms=>{ await first.waitForTimeout(ms||800); return first.evaluate(READ); };
+        const TL=[];
+        const run=async(name,w,h,pres,staff,steps)=>{ const c={name:name, reads:[]}; c.reads.push(Object.assign({step:"shown"},await begin(w,h,pres,staff)));
+          for(const [label,act] of steps){ await act(); c.reads.push(Object.assign({step:label},await after())); } TL.push(c); };
+        const click=sel=>async()=>{ await first.click(sel); };
+        await run("watch-study 1600x900",1600,900,"watch",false,[["to Study",click('.vm-btn[data-vm="study"]')],["to Watch",click('.vm-btn[data-vm="watch"]')]]);
+        await run("study-watch 1600x900",1600,900,"study",false,[["to Watch",click('.vm-btn[data-vm="watch"]')],["to Study",click('.vm-btn[data-vm="study"]')]]);
+        await run("resize 1600x900-1024x768 study",1600,900,"study",false,[["to 1024x768",()=>size(1024,768)],["to 1600x900",()=>size(1600,900)]]);
+        await run("resize 1024x768-1600x900 study",1024,768,"study",false,[["to 1600x900",()=>size(1600,900)],["to 1024x768",()=>size(1024,768)]]);
+        await run("panels 1024x768 study",1024,768,"study",false,[["Panels open",click("#panelsbtn")],["Panels closed",click("#panelsbtn")]]);
+        /* the Layers panel slides in: a software frame can take seconds, so the clicks wait up to 120 s for it to stand still (Playwright's 30 s timed out
+           on a loaded machine here); the reads and their judgement are unchanged */
+        await run("paper map 1366x768 study",1366,768,"study",false,[["to the paper map",async()=>{ await first.click("#layersbtn",{timeout:120000}); await first.click('.mode-btn[data-m="staff"]',{timeout:120000}); await first.keyboard.press("Escape"); }],
+          ["to the landscape",async()=>{ await first.click("#layersbtn",{timeout:120000}); await first.click('.mode-btn[data-m="terrain"]',{timeout:120000}); await first.keyboard.press("Escape"); }]]);
+        await run("phone turned 390x844",390,844,"study",false,[["to 844x390",()=>size(844,390)],["to 390x844",()=>size(390,844)]]);
+        await run("phone menu 390x844",390,844,"study",false,[["Menu open",click("#menubtn")],["Menu closed",async()=>{ await first.keyboard.press("Escape"); }]]);
+        await first.evaluate(()=>{ if(window.__flash0){ flash=window.__flash0; delete window.__flash0; } clearTimeout(flash._t); document.getElementById("toast").classList.remove("on"); });
+        /* the lifetime, unheld (nothing held): setTimeout observed as it passes, each call made as asked, the one of flash()'s 3.4 s noted with its
+           time; 08:45's message by a real PageDown at 1600 x 900 in Watch and, as soon as it shows, two changes of the layout under it, each while it
+           shows (Study, then the window to 1366 x 768): flash()'s timer set once and neither set again nor cleared while it shows, the message hidden no
+           earlier than 3.4 s after the timer was set, and each change made while it showed placing it again (the held reads above judge the places) */
+        await size(1600,900);
+        await first.evaluate(()=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); setMode("terrain"); setPresentation("watch");
+          setClock(520,{instant:true,force:true,camera:false}); clearTimeout(flash._t); const t=document.getElementById("toast"); t.classList.remove("on");
+          const Lf=window.__toastLife={sched:[], cleared:0, off:null, timerAtOff:null}, st0=window.setTimeout, ct0=window.clearTimeout; window.__st0=st0; window.__ct0=ct0;
+          window.setTimeout=function(f,d){ const id=st0.apply(window,arguments); if(d===3400) Lf.sched.push({id:id, t:performance.now()}); return id; };
+          window.clearTimeout=function(id){ if(Lf.sched.some(q=>q.id===id)&&Lf.off===null&&t.classList.contains("on")) Lf.cleared++; return ct0.apply(window,arguments); };
+          if(window.__toastMO) window.__toastMO.disconnect();
+          window.__toastMO=new MutationObserver(()=>{ if(!t.classList.contains("on")&&Lf.sched.length&&Lf.off===null){ Lf.off=performance.now(); Lf.timerAtOff=flash._t; } });
+          window.__toastMO.observe(t,{attributes:true,attributeFilter:["class"]}); document.getElementById("timerail").focus(); });
+        await first.waitForTimeout(300);
+        await first.keyboard.press("PageDown");
+        const life={reads:[]};
+        const lchange=async(label,act)=>{ const b0=await first.evaluate(()=>({on:document.getElementById("toast").classList.contains("on"), placed:TOAST.placed}));
+          await act(); await first.waitForTimeout(250); life.reads.push(Object.assign({step:label, onAtChange:b0.on, placedBefore:b0.placed},await first.evaluate(READ))); };
+        { const tw=Date.now(); while(Date.now()-tw<60000&&await first.evaluate(()=>!document.getElementById("toast").classList.contains("on"))) await first.waitForTimeout(50); }
+        await lchange("to Study",()=>first.evaluate(()=>setPresentation("study")));
+        await lchange("to 1366x768",async()=>{ await first.setViewportSize({width:1366,height:768}); await first.evaluate(()=>window.dispatchEvent(new Event("resize"))); });
+        { const tw=Date.now(); while(Date.now()-tw<60000&&await first.evaluate(()=>window.__toastLife.off===null)) await first.waitForTimeout(100); }   /* patience only: the judgement is the timer's own time */
+        Object.assign(life,await first.evaluate(()=>{ const Lf=window.__toastLife; window.__toastMO.disconnect(); delete window.__toastMO; window.setTimeout=window.__st0; window.clearTimeout=window.__ct0;
+          const s0=Lf.sched[0]||null;
+          return {set:Lf.sched.length, cleared:Lf.cleared, off:Lf.off!==null, lifeMs:(s0&&Lf.off!==null)?Math.round(Lf.off-s0.t):null, timerKept:!!s0&&Lf.timerAtOff===s0.id, expected:3400,
+            text:document.getElementById("toast").textContent, want:PHASES[3].flash}; }));
+        await size(vp0.width,vp0.height); await first.evaluate(()=>{ setMode("terrain"); setPresentation("study"); select(null,null); });
+        LIVE.toastLayout={cases:TL, life:life};
+        console.log("the phase's message under a layout's change: "+TL.map(c=>c.name+": "+c.reads.map(r=>r.step+" "+(r.on?"shown":"NOT SHOWN")+(r.overlapSwitch||r.others.length?" OVER "+r.overlapSwitch+" px, "+JSON.stringify(r.others):"")+" (placed "+r.placed+")").join(", ")).join("; ")+
+          "; unheld: flash's timer set "+life.set+" time(s), cleared "+life.cleared+" while shown, hidden "+life.lifeMs+" ms after it was set (3400), the same timer "+life.timerKept+", reads "+
+          life.reads.map(r=>r.step+(r.onAtChange?" while shown":" after it hid")+" "+(r.on?(r.overlapSwitch||r.others.length?"OVER":"clear"):"hidden")+" (placed again "+(r.placed-r.placedBefore)+")").join(", "));
+      }
       /* Stage 8, implementation PR 8H (docs/FINAL_AUDIT.md A-6; docs/STAGE8_SPEC.md section 20.5): the focus ring as a keyboard user sees it. Play
          reached from the page's start by real Tab presses (Study, nothing open), then its ring read off a screenshot, not a style: from the middle
          of each of the button's four sides outward, the run of pixels within 60 of the ring's colour (its outline colour, the theme's accent) */
@@ -697,6 +768,34 @@ async function interact(page,it,vp){
         fw.push(tag+": solid "+(100*px.solidBlack).toFixed(3)+"%, below AA "+tc.belowAA.length+", drops "+st4.dropped+", "+st4.under+" formations drawn under the fog, fog at most "+st4.worst.toFixed(3)+" (cap "+st4.cap.toFixed(2)+")");
         LIVE.fog.push({name:name,t:t,tag:tag,solid:px.solidBlack,belowAA:tc.belowAA,minContrast:tc.min,dropped:st4.dropped,under:st4.under,worst:st4.worst,cap:st4.cap,samples:st4.samples}); }
       report.fogViews=fw; console.log("the valley fog: "+fw.join("; ")); }
+    /* Stage 8, the follow-up 8I (decision 263 (a); docs/STAGE8_SPEC.md section 21): the far names' lighter plate as rendered, in the views where far
+       battle information stands (thresholds.js FAR_PLATE_VIEWS: the wall of formation names at three hours, the infantry's front, the low Pratzen
+       view, the valley fog's two hours, the phase-8 Overview; a far name selected, one focused, Napoleon's reading, a phone held landscape, the
+       landscape with counters): every drawn formation name's plate, distance ratio, protection, size and contrast as rendered (measure.js farNames) */
+    AT="far plate";
+    if(!SELFTEST_ONLY&&await has(first,"mlFarPlate","the far names' plate")){
+      LIVE.farPlate=[]; const fpw=[], vpF=first.viewportSize();
+      const sizeF=async(w,h)=>{ await first.setViewportSize({width:w,height:h}); await first.evaluate(()=>window.dispatchEvent(new Event("resize"))); await first.waitForTimeout(700); };
+      for(const [tag,view,over,state,sz] of T.FAR_PLATE_VIEWS){
+        const base=typeof view==="string"?JSON.parse(JSON.stringify(require("./cases.js").find(x=>x.name===view))):JSON.parse(JSON.stringify(view));
+        const spec=Object.assign(base,over||{}); delete spec.viewport;
+        if(sz) await sizeF(sz[0],sz[1]);
+        await first.evaluate(s=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); setCommandView("none"); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); window.__aus.apply(s); },spec); await settle(first);
+        const target=state==="select"||state==="focus"?await first.evaluate(st=>{ mlLayout(); var tmp=document.createElement("i"); tmp.style.background=TOKENS.sym.plate.far; var FAR=tmp.style.background, id=null;
+            for(var k in ML.items){ var it=ML.items[k]; if(k.indexOf("n:")===0&&it.eFrame===ML.frame&&it.state==="on"&&it.el.style.background===FAR){ id=k.slice(2); break; } }
+            if(!id) return {id:null};
+            if(st==="select") select("f",id); else { var e=ML.items["n:"+id].el; if(e&&e.focus) e.focus(); }
+            AUSTERLITZ_DEBUG.settle(2,true); mlLayout(); var t=ML.items["n:"+id], tmp2=document.createElement("i"); tmp2.style.background=TOKENS.sym.plate.far;
+            return {id:id, plate:t&&t.el.style.background===tmp2.style.background?"far":"full", prot:!!(t&&(t.keep||t.forced||t.el===document.activeElement))}; },state):null;
+        if(state==="reading") await first.evaluate(()=>{ setCommandView("fr"); AUSTERLITZ_DEBUG.settle(2,true); });
+        if(state) await settle(first);
+        const b64=(await first.screenshot({timeout:180000})).toString("base64"), fn=await first.evaluate(b=>window.__aus.farNames(b),b64);
+        const N=(fn&&fn.names)||[], far=N.filter(n=>n.plate==="far"), cs=far.map(n=>n.contrast).filter(c=>c!=null);
+        LIVE.farPlate.push({tag:tag, state:state||null, size:sz||null, far:fn?fn.far:null, names:N, target:target});
+        fpw.push(tag+": "+N.length+" names, "+far.length+" far"+(cs.length?" (as rendered "+Math.min(...cs).toFixed(2)+" to "+Math.max(...cs).toFixed(2)+":1)":"")+(target?", the "+state+"ed name "+JSON.stringify(target):""));
+        await first.evaluate(()=>{ select(null,null); setCommandView("none"); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); setMode("terrain"); });
+        if(sz) await sizeF(vpF.width,vpF.height); }
+      report.farPlate=fpw; console.log("the far names' plate: "+fpw.join("; ")); }
     /* Stage 4E (docs/STAGE4_SPEC.md section F.2): in the low views the gap, if any, between the apron's far edge and the true
        horizon is drawn in the haze's colour (a pixel test along the horizon, in 32 columns of the free rectangle) */
     AT="horizon";

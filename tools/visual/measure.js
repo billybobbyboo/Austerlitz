@@ -111,7 +111,8 @@
       timelineRow:!!document.getElementById("tb-vm"), nowTab:!!document.getElementById("tab-now"), DWELL:typeof DWELL!=="undefined",
       KEYS:typeof KEYS!=="undefined", SUN_DAY:typeof SUN_DAY!=="undefined", ATMO:typeof ATMO!=="undefined", SMOKE:typeof SMOKE!=="undefined",
       settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest, SHORTCUTS:typeof SHORTCUTS!=="undefined", TIPS:typeof tipSync==="function",
-      MLS:typeof MLS!=="undefined"&&typeof mlStabBegin==="function", CULL:typeof CULL!=="undefined"&&typeof setCull==="function", ANIM:typeof ANIM!=="undefined"&&typeof animHook==="function"};
+      MLS:typeof MLS!=="undefined"&&typeof mlStabBegin==="function", CULL:typeof CULL!=="undefined"&&typeof setCull==="function", ANIM:typeof ANIM!=="undefined"&&typeof animHook==="function",
+      mlFarPlate:typeof mlFarPlate==="function"&&!!(TOKENS.sym.plate&&TOKENS.sym.plate.far), TOAST:typeof toastRelayout==="function"};   /* Stage 8, the follow-up 8I */
   }
 
   /* ---- roadmap step 1 (T-1): an app canvas's pixels are read through a canvas the harness owns ----
@@ -344,6 +345,31 @@
       };
       im.src="data:image/png;base64,"+b64;
     });
+  }
+
+  /* Stage 8, the follow-up 8I (decision 263 (a)): the landscape's formation names as rendered on the frame b64, each with its plate (the far plate,
+     TOKENS.sym.plate.far, or the full one, read off its style), its distance ratio (the eye's distance to it over the eye's distance to its target,
+     the far test's), whether the layer protects it (selected, hovered, highlighted, forced, focused), its size, and its contrast as rendered by
+     textContrast's method (the 10th percentile of the ground round its ink, the ink's 1 px fringe aside). A build without the far plate: null */
+  function farNames(b64){
+    if(typeof mlFarPlate!=="function"||!TOKENS.sym.plate.far) return Promise.resolve(null);
+    var tmp=document.createElement("i"); tmp.style.background=TOKENS.sym.plate.far; var FAR=tmp.style.background;
+    var dT=landCam.position.distanceTo(orbitTarget), foc=document.activeElement, N=[];
+    for(var k in ML.items){ var it=ML.items[k]; if(k.indexOf("n:")!==0||it.eFrame!==ML.frame||it.state!=="on"||!it.el) continue;
+      var r=it.el.getBoundingClientRect(), cs=getComputedStyle(it.el);
+      N.push({id:k, plate:it.el.style.background===FAR?"far":"full", ratio:+(camera.position.distanceTo(it.world)/dT).toFixed(3), prot:!!(it.keep||it.forced||it.el===foc),
+        px:parseFloat(cs.fontSize), bx:[r.left,r.top,r.right,r.bottom], color:cs.color}); }
+    return new Promise(function(res){ var im=new Image(); im.onload=function(){
+      var cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height; var x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); var d=x.getImageData(0,0,cv.width,cv.height).data;
+      function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); } function L(c){ return 0.2126*lin(c[0])+0.7152*lin(c[1])+0.0722*lin(c[2]); }
+      N.forEach(function(t){ var m=/rgba?\(([^)]+)\)/.exec(t.color); t.contrast=null; if(!m) return; var ink=m[1].split(",").map(parseFloat);
+        var x0=Math.max(0,Math.ceil(t.bx[0])), y0=Math.max(0,Math.ceil(t.bx[1])), x1=Math.min(cv.width,Math.floor(t.bx[2])), y1=Math.min(cv.height,Math.floor(t.bx[3])), w=x1-x0, h=y1-y0; if(w<2||h<2) return;
+        var px=[], dist=[], mx=0, i, j; for(j=0;j<h;j++) for(i=0;i<w;i++){ var o=((y0+j)*cv.width+x0+i)*4, q=[d[o],d[o+1],d[o+2]], dd=Math.hypot(q[0]-ink[0],q[1]-ink[1],q[2]-ink[2]); px.push(q); dist.push(dd); if(dd>mx) mx=dd; }
+        var near=new Uint8Array(w*h); for(j=0;j<h;j++) for(i=0;i<w;i++) if(dist[j*w+i]<0.5*mx) for(var b2=-1;b2<=1;b2++) for(var a2=-1;a2<=1;a2++){ var ii=i+a2, jj=j+b2; if(ii>=0&&jj>=0&&ii<w&&jj<h) near[jj*w+ii]=1; }
+        var li=L(ink), c2=[]; for(var q2=0;q2<px.length;q2++){ if(dist[q2]<0.5*mx||near[q2]) continue; var lq=L(px[q2]); c2.push((Math.max(li,lq)+0.05)/(Math.min(li,lq)+0.05)); }
+        if(c2.length){ c2.sort(function(a,b){ return a-b; }); t.contrast=+c2[Math.floor(c2.length*0.10)].toFixed(2); }
+        delete t.bx; delete t.color; });
+      res({far:MLS.FAR, names:N}); }; im.src="data:image/png;base64,"+b64; });
   }
 
   /* Stage 2E: the paper map's geometry, read from the page as drawn (docs/STAGE2_SPEC.md section J, 2E): the bearing of
@@ -648,7 +674,7 @@
   }
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures, census:census, cullEquiv:cullEquiv,
-                overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
+                overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, farNames:farNames, layerTexts:layerTexts,
                 legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare,
                 state:state, features:features, camState:camState, readCanvas:readCanvas};
 })();

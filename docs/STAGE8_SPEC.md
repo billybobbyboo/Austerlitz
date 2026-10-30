@@ -4744,3 +4744,145 @@ approved. Nothing in the build waits on them; each is drawn as recorded above un
 - **Carried, not new** (each recorded where it was put): 8E's drivers on the guns on the heights (an inference from IV Corps' letter) and the
   gunners beside moving pieces (section 17); decision 245 (a)'s facings, to be reconsidered now that the troops can be judged; 8G's
   `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary, section 19.4).
+
+## 21. The follow-up before the final audit (8I, 8J, 8K), as built (30 October 2026)
+
+**The brief** (the owner, 30 October 2026, after PR #73's merge, `b7fb67ab8c25a55915dea3da64ab4d79fe00ef51`, the audited merge): complete the
+bounded Stage 8 follow-up before the final combined audit, with the owner's decisions on questions 259-265:
+- **259 (a)**: authorise the geographic data task for the Sokolnitz castle, the pheasantry and the Goldbach group, the Pratzen church and the
+  Austerlitz garden, subject to the evidence's qualifications;
+- **260 (a)**: authorise the highway and post-house correction as a separate data task and pull request, reviewing and re-plotting the eleven
+  affected anchors from their sources, the road not moved without reviewing the reconstruction that depends on it;
+- **261 (a)**: Satschan's five farmsteads kept as an accepted symbolic-count exception (not a historical claim; the mere not distorted);
+- **262 (a)**: the counters' placement kept, decision 258 (b)'s prototype not adopted, its evidence kept;
+- **263 (a)**: the "d-plate", the lighter plate for distant formation names, adopted with production integration and rendered contrast checks,
+  text size, placement, protected-item behaviour and the accessibility floor preserved;
+- **264 (a)**: the ice kept, its low-sun appearance on the final visual-review checklist;
+- **265 (a)**: the troops' contact with the ground kept provisionally pending the device measurements and the final audit; the animation's budget
+  not raised; the original criterion not marked satisfied; the exceptions, bounds, counts and measured alternatives preserved.
+With them: the phase's message placed again after a layout's change (presentation, resize or orientation, panels), its duration preserved and no
+idle work; the performance reporting corrected (both frames, the audited maxima, measured again for each build, never carried forward); full
+verification on the final revisions; device acceptance left pending without owner hardware. No general redesign; the final audit not begun.
+
+**The plan as built**: three pull requests, stacked, each reviewable alone. **8I** (this branch, `claude/tender-einstein-gwrsij`, into `main`):
+presentation and records, no data. **8J** (`claude/tender-einstein-gwrsij-sokolnitz`, into 8I's branch): decision 259 (a), a data task.
+**8K** (`claude/tender-einstein-gwrsij-highway`, into 8J's branch): decision 260 (a), a data task. Each moves `check:baseline`; 8J and 8K each
+move `check:data`'s reference to their own build.
+
+### 21.1 The baseline
+
+`main` at `b7fb67a` (PR #73's merge; nothing newer on `main` when the work began). Its build `9fa50cb46a085ab4ea8f932cd405f1e8`, 2,772,772 bytes,
+the 8H build `check:baseline` names; `check:data`'s reference `archive/stage8h-24e29da7.html`; the self-test 316 checks.
+
+### 21.2 The phase's message under a layout's change (8I)
+
+*The fault* (the audit of 8H's build, item 3): `placeToast` (8H, section 20.5) ran only as `flash()` showed the message. `tools/stage8/toast-8i.js`
+shows the message at 08:45 by its own `flash()`, changes the layout while it shows (by real clicks and keys where the change has a control, by
+the app's own call and the viewport's resize otherwise), and reads it before and after: the message's box, whether it is shown with its text at
+the clock, and every control it covers (`docs/stage8-evidence/8i/toast-8h.json`). On 8H's build 4 of 8 changes left it over a control: Watch to
+Study at 1600 x 900 (1,716 px over the switch), 1600 x 900 to 1024 x 768 in Study (3,528 px over the opening's button, 182 over the tour's) and
+back (over two vantage buttons), a phone turned to 844 x 390 (over the opening's button and a vantage button), a phone's Menu opened (6,463 px over
+the switch); Study to Watch, the Panels opened and closed at 1024 x 768 and the paper map and back stayed clear.
+
+*The change* (`app.js`): `toastRelayout(slide)`, called by every writer of a layout that can move the controls in the screen's upper half while
+the message is seen (`toastSeen`: its class on, or its fade not finished): `setPresentation`, `setMode`, `syncInert` (the one writer of the
+panels' reasons: the drawer, the rail, the sheets, the first-run card), `syncVis`, `setDSheet`, `setMenu` (the phone's Menu is not one of
+syncInert's reasons; the first build of 8I missed it, and its own evidence run found the Menu case still over the switch), `onResize`, an
+`orientationchange` listener, and `transitionend` (a panel's slide ended). A change places it at once (the layout as the change left it: in
+software rendering the next frame came a second later, the message over the switch until then) and once more in the next frame, for what
+settles after; a slide's end, which comes in bursts, in the next frame only; once a frame at most (`TOAST.raf`). Unseen, it returns at once:
+nothing runs while the message is hidden. Its lifetime is `flash()`'s one 3.4 s timer (roadmap step 5's SW-13), which `toastRelayout` never
+touches; `placeToast` is unchanged.
+
+*Measured on the final build* (`docs/stage8-evidence/8i/toast-8i.json`, shots in `toast-8i/`): on the final build the self-test page's live block `toastLayout` (`docs/stage8-evidence/8i/selftest-8i.json`, `live.toastLayout`): **0 of the
+8 changes over a control in all 24 reads**, the message shown with 08:45's text at each and placed again after each change (`TOAST.placed` rising),
+the phone's Menu among them (on the first build of 8I, before `setMenu` called it, the Menu case still lay 6,463 px over the switch); unheld, flash()'s
+3.4 s timer set once, never cleared or replaced while the message showed, the message hidden 6.5 s after it was set (the timer's callback delayed by
+software frames, never earlier) by that same timer, and the change to Study made while it showed placing it again, clear. The evidence tool's run
+on the same build with every read's capture: the same 8 changes clear in all 24 reads (`docs/stage8-evidence/8i/toast-8i.json`, its captures in `toast-8i/`; the phone's Menu
+opened puts it below the Menu's controls, 55,280, and closed back at 55,62), and unheld one timer, never cleared, the message hidden 13.0 s after it was set
+(the resize's software frames holding the main thread; never sooner than 3.4 s), by that timer.
+
+*The checks*: `css-test.js` holds the hooks (each writer named, the listener and the slide's next-frame placement), the guard (nothing while
+unseen), the once-a-frame rule and the untouched timer; the harness's live block `toastLayout` (in `check:selftest` and `check:visual`) runs the
+eight changes on fresh pages, the message's timer held for the reads (so that a slow software frame cannot expire it between a change and its
+read) and then, separately, unheld: the timer set once, never cleared or replaced while shown, the message hidden no sooner than 3.4 s after it
+was set, and a layout changed while it showed placing it again (`thresholds.js` `checkLive`: 0 px over every control in all 24 reads).
+
+### 21.3 The far names' lighter plate (8I; decision 263 (a))
+
+*As built* (`app.js` `mlFarPlate`, `mlFarRatio`; `tokens.js` `sym.plate.far`): a formation's name on the landscape standing beyond the far step's
+distance, `MLS.FAR` (1.5) times the eye's distance to its target (`mlFar`'s test for the places' small names, section 15; the ratio held inside its
+band while the view moves, so that no name flickers at the boundary), is drawn on `TOKENS.sym.plate.far`, rgba(10,14,18,.64). The alpha is the
+lightest keeping the plate's one ink, the label ink, at AA over white ground, the rule `sym.plate` is built on: 4.55:1 there, 15.4:1 over black
+(Part A's prototype, 0.62, gave 4.23:1 over white and was only measured as rendered in its views). The name's words, size (t-ui, 12.5 px),
+marks, place and box are unchanged, so the layout is the same with or without it (the self-test lays the view out with the far step's distance
+set beyond reach and compares). Kept on the full plate: what the layer protects (the selection, the hovered, the highlighted family, the
+focus's forced place, the item with the focus), places, counters and events; the paper map draws no formation names. The plate is written only
+when an item's state changes, and `mlContent` resets it with new content.
+
+*Measured* (`tools/stage8/far-8i.js`, the 13 views of `FAR_PLATE_VIEWS` on 8H's build and 8I's, matched; `docs/stage8-evidence/8i/far/`):
+in the 13 views the far names, where any stand (11 views), read **6.97 to 7.78:1** at their least as rendered (medians 7.16 to 11.26), against
+12.34 to 12.66:1 for the same names on 8H's full plate and 12.21 to 14.06:1 for the near names on 8I; every formation name at one size (12.5 px);
+**no map text below AA** in any view on either build (8I's least 5.38:1, in the landscape with counters, where no formation name is drawn and
+8H's is the same); the selected and the focused far name (the Allied headquarters' in the low view) on the full plate; the phase-8 Overview and
+the fogged Overview at 08:00 with no name beyond the step (0 far); with counters no formation name. The layer's pass 0.7-4.4 ms a view (8H's
+0.5-5.3; software rendering, deciding nothing). Each view's two captures side by side in `far/*-sheet.jpg`.
+
+*The checks*: the self-test's "map layer (Stage 8, 8I; decision 263)" (the low view east over the Goldbach at 12:00: the far names on the far
+plate, the near and the protected on the full, one size, the layout identical with the step off, a far name selected and one focused on the
+full plate, the same under Napoleon's reading, none on the paper map); `css-test.js` (the token's AA and alpha, the rule's test, names only,
+the protected excepted, no class or size); the live block `farPlate` in `check:visual` (the 13 views: every name on the plate the rule gives it,
+the far ones at AA as rendered, one size, far names in the wall of names, none with counters).
+
+### 21.4 The census's two frames (8I; the correction of section 20.12)
+
+Section 20.12 gave the largest frames on 8H's CI run as 862 calls and 2,204,961 triangles (desktop) and 1,251,039 triangles (phone). Those are
+`renderer.info` over a frame that reuses the ground's depth (the eye still: `onWarm`); the budget's frame is the complete one, the depth drawn
+(`onCold`, 8D's definition, section 16: "the whole frame, every pass, the depth drawn"). Computed from 8H's `check:visual` report (CI run
+40995113422) by `tools/stage8/census-8i.js` (`docs/stage8-evidence/8i/census-8h-both.md`), each maximum over the cases separately:
+
+| 8H's build | complete frame (depth drawn) | still eye (depth reused) |
+|---|---|---|
+| desktop, calls | 864 (plans-overview) | 862 (plans-overview) |
+| desktop, triangles | 2,352,049 (narrow-1024) | 2,204,961 (narrow-1024) |
+| phone, calls | 482 (phone-390-first) | 480 (phone-390-first) |
+| phone, triangles | 1,398,127 (phone-390-first) | 1,251,039 (phone-390-first) |
+
+Against section 8.3's budgets (900 calls and 2.8 million triangles on a desktop, 1.62 million on a phone) the headroom is the complete frame's:
+36 calls and 447,951 triangles on the desktop, 221,873 triangles on the phone. From now on both frames are reported, and every build of this
+follow-up is measured again on its own `check:visual` run (section 21.6 and the 8J and 8K sections): nothing is carried forward after a
+geographic or visual change. These are geometry counts from software rendering; they decide nothing about a device's frame time, which only the
+owner's runs measure.
+
+### 21.5 Decisions recorded without a change to the build (8I)
+
+- **261 (a)**: Satschan's five farmsteads of seven are an accepted symbolic-count exception, named with its cause (the drawn mere's outline,
+  decision 27), not a historical claim; no convention changed for one village.
+- **262 (a)**: 8C's placement kept; decision 258 (b)'s prototype (section 20.8) not adopted, its evidence kept in `docs/stage8-evidence/8h/`.
+- **264 (a)**: the ice as built; its appearance under a low sun (section 20.10: the low views' glare at 15:00, 43.5% of the ice) goes on the final
+  visual-review checklist.
+- **265 (a), provisional**: 8F's chords with the proposed bounds and counts kept pending the device runs and the final audit; the animation's
+  budget (0.2 ms a frame) not raised; the original criterion (every foot on the ground) **not** marked satisfied; the exceptions, the bounds, the
+  counts and the measured alternatives ((b) each foot's own profile, 0.21-0.36 ms; (c) the profile from 48 px, over the budget in two views) kept
+  as recorded in section 20.10.
+
+### 21.6 Verification (8I)
+
+Here (Chromium 141 under Playwright 1.56, SwiftShader): `npm test`, all nine suites and the height guard; `check:data`, 134 data declarations
+identical to `archive/stage8h-24e29da7.html`; `check:chronology`, 0 errors (70 moves with a timed statement: 66 consistent, 4 early, the named
+conflicts bag@6, guard_cav@6, kamensky@3 and kamensky@4; REVIEW's locators 75 of 75 current); `check:baseline` on 8I's build (2,782,595 bytes, md5
+`697bbf34ec29fc4d05695dc8e1cd3c5e`); `check:selftest`, the self-test's 317 checks all passing and every live block judged and passing, the run's two
+failures the manifest's (316 names), which was then regenerated from this run (`check-report.js --write-manifest`: the far plate's check added,
+none removed); `css-test.js`, 0 errors; the far plate's 13 views (21.3); the phase's message (21.2).
+
+*On CI*: the checks job, `check:contrast` and `check:selftest` run on every push of this branch (the pull request's checks), and `check:visual` is
+dispatched on its head (`workflow_dispatch`, "visual" ticked): its census, in both frames, is this build's own, recorded with the other two builds'
+in section 21.9 when the runs land.
+
+*The device routes.* GitHub Pages serves `main` (checked from this session: the build there is 8H's, md5 `9fa50cb4...`): the route pages
+https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html (the desktop route), `?route=phone`, `?route=fx`, `?route=cull` and
+`?route=gait` each loaded, loaded the build in their frame and booted without an error or a console error here (`pages-smoke`, in this section's
+evidence note), so they are usable now for 8H's build and will serve this follow-up's build once it is merged (or at once if the owner points Pages
+at a branch: an outward-facing setting, the owner's). The protocol is section 20.12's, unchanged. No device was reachable from this session: the
+device acceptance of 8E-8K stays pending; nothing here is a device's time.

@@ -1126,3 +1126,49 @@ if(cerrs) process.exitCode=1;
   console.log("roads and streams: "+(rerr.length?rerr.length+" wrong":"wound facing up, drawn on both faces, at half the widths they were built with in both presentations (decision 253)"));
   if(rerr.length) process.exitCode=1;
 }
+/* Stage 8, the follow-up 8I (docs/STAGE8_SPEC.md section 21). (1) The phase's message placed again whenever the layout can change while it is
+   seen (the audit of 8H's build: placed only as flash() showed it): toastRelayout asked by a presentation's change (setPresentation), the landscape
+   or the paper map (setMode), the window (onResize, orientationchange), a panel (syncInert, syncVis, setDSheet) and a slide's end (transitionend);
+   nothing done while the message is not seen; at most once a frame; flash()'s timer, its 3.4 s lifetime, never touched there. Its behaviour is the
+   harness's live block toastLayout (shown first, then each change in both directions; the lifetime unheld).
+   (2) Decision 263 (a): a far formation name's lighter plate. TOKENS.sym.plate.far by sym.plate's rule (the label ink at AA over white ground) and
+   lighter than the full plate; the far test the far step's (MLS.FAR, the band); names alone; the protected names (keep, the focus's forced place,
+   the focus) on the full plate; the plate set again with an item's content; no size change (no class, no font). Its contrast as rendered is the
+   harness's (every map text at AA in every case; check:visual's farPlate block) */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), tsrc=fs.readFileSync('tokens.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), ierr=[];
+  const fnOf=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):""; };
+  const tr=fnOf("toastRelayout"), seen=fnOf("toastSeen"), fl=fnOf("flash");
+  if(!tr||!seen) ierr.push("app.js: toastRelayout or toastSeen missing");
+  else { if(!/if\(!toastSeen\(t\)\) return;/.test(tr)) ierr.push("toastRelayout works while the message is not seen (idle work)");
+    if(!/if\(TOAST\.raf\) return;/.test(tr)||!/requestAnimationFrame/.test(tr)) ierr.push("toastRelayout's next-frame placement not once a frame at most (TOAST.raf, requestAnimationFrame)");
+    if(!/if\(!slide\)\{ TOAST\.placed\+\+; placeToast\(t\); \}/.test(tr)) ierr.push("toastRelayout does not place the message at once on a change (only a slide's end waits for the next frame)");
+    if(/flash\._t|setTimeout\([^,]*,\s*3400|classList\.(add|remove)\("on"\)/.test(tr)) ierr.push("toastRelayout touches the message's lifetime or its showing (flash._t, the 3.4 s, its class)"); }
+  if(!/flash\._t=setTimeout\(function\(\)\{ t\.classList\.remove\("on"\); \},3400\);/.test(fl)) ierr.push("flash(): the message's lifetime is not its one 3.4 s timer");
+  [["setPresentation",fnOf("setPresentation")],["setMode",fnOf("setMode")],["syncInert",fnOf("syncInert")],["syncVis",fnOf("syncVis")],["setDSheet",fnOf("setDSheet")],["setMenu",fnOf("setMenu")]].forEach(([n,b])=>{
+    if(!/toastRelayout\(\);/.test(b)) ierr.push(n+" does not place the phase's message again"); });
+  if(!/function onResize\(\)\{[\s\S]*?toastRelayout\(\);[\s\S]*?\n  \}/.test(src)) ierr.push("onResize does not place the phase's message again");
+  if(!/window\.addEventListener\("orientationchange",function\(\)\{ toastRelayout\(\); \}\);/.test(src)) ierr.push("no orientationchange listener placing the phase's message");
+  if(!/document\.addEventListener\("transitionend",function\(\)\{ requestRender\(2\); toastRelayout\(true\); \}\);/.test(src)) ierr.push("a slide's end (transitionend) does not place the phase's message again (in the next frame)");
+  /* the far plate */
+  const TK=JSON.parse(/\/\*TOKENS:BEGIN\*\/([\s\S]*?)\/\*TOKENS:END\*\//.exec(tsrc)[1]), P=TK.sym.plate, ink=TK.sym.label.dark.ink;
+  const rgba=s=>{ const m=/^rgba\((\d+),(\d+),(\d+),(\.?\d*\.?\d+)\)$/.exec(s||""); return m?[+m[1],+m[2],+m[3],+m[4]]:null; };
+  const linC=c=>{ c/=255; return c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4); }, Lum=c=>0.2126*linC(c[0])+0.7152*linC(c[1])+0.0722*linC(c[2]);
+  const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)), over=(p,g)=>[0,1,2].map(i=>p[3]*p[i]+(1-p[3])*g), cr=(a,b)=>{ const x=Lum(a), y=Lum(b); return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05); };
+  const far=rgba(P.far), full=rgba(P.dark);
+  if(!far||!full) ierr.push("tokens.js: sym.plate.far or sym.plate.dark is not rgba(r,g,b,a): "+P.far+", "+P.dark);
+  else { const w=cr(hex(ink),over(far,255)), b=cr(hex(ink),over(far,0));
+    if(!(w>=4.5&&b>=4.5)) ierr.push("tokens.js: the far plate leaves the label ink "+ink+" at "+w.toFixed(2)+":1 over white and "+b.toFixed(2)+":1 over black (AA 4.5:1, sym.plate's rule)");
+    if(!(far[3]<full[3])) ierr.push("tokens.js: the far plate ("+far[3]+") not lighter than the full plate ("+full[3]+")");
+    if(far[3]!==0.64) ierr.push("tokens.js: sym.plate.far's alpha "+far[3]+", not 0.64 as decided and recorded (decision 263 (a); section 21)"); }
+  const fp=fnOf("mlFarPlate"), fr=fnOf("mlFarRatio"), mc=fnOf("mlContent"), lay=fnOf("mlLayout");
+  if(!/mlBandAt\(pre\+it\.key,r\)/.test(fr)||!/mlFarRatio\(it,"farp:"\)>MLS\.FAR/.test(fp)) ierr.push("the far plate's test is not the far step's (MLS.FAR, the band)");
+  if(!/camera\.isOrthographicCamera/.test(fp)||!/mode!=="staff"/.test(fp)) ierr.push("the far plate allowed on the paper map");
+  if(!/TOKENS\.sym\.plate\.far/.test(fp)||/rgba\(/.test(fp)) ierr.push("the far plate not TOKENS.sym.plate.far (a colour typed in app.js)");
+  if(!/if\(on&&it\.cat==="name"&&mlFarPlate\(it,!\(it\.keep\|\|it\.forced\|\|it\.el===foc\)\)\) nfp\+\+;/.test(lay)) ierr.push("the far plate not for names alone, or a protected name (keep, forced, the focus) given it");
+  if(!/it\.plate0=plate\[0\]; it\.farP=false;/.test(mc)) ierr.push("mlContent does not keep the plate and reset the far plate's state with an item's content");
+  if(/classList|fontSize|font-size|className/.test(fp)) ierr.push("the far plate changes more than the plate (a class or a size)");
+  ierr.forEach(e=>console.log("  ! "+e));
+  console.log("the phase's message under a layout's change and the far names' plate (8I): "+(ierr.length?ierr.length+" wrong":"placed again by every layout's change while seen, its 3.4 s untouched; the far plate 0.64 by sym.plate's rule, the far step's test, names alone, the protected ones on the full plate (decision 263)"));
+  if(ierr.length) process.exitCode=1;
+}

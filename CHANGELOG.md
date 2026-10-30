@@ -1,5 +1,67 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, the follow-up 8I: the phase's message under a layout's change, the far names' plate, the census's two frames
+
+**Status: built on `claude/tender-einstein-gwrsij` (a draft PR into `main`, for review; not merged), from `main` at
+`b7fb67ab8c25a55915dea3da64ab4d79fe00ef51` (PR #73's merge, 8H, the audited merge; no newer commit on `main` when the work began, 30 October
+2026). The first of three stacked pull requests of the bounded follow-up the owner asked for before the final combined audit (decisions
+259-265, 30 October 2026): 8I (this one: presentation and records, no data), 8J (decision 259 (a), a geographic data task, stacked on it) and
+8K (decision 260 (a), the highway and the post house, stacked on 8J).** The record is `docs/STAGE8_SPEC.md` section 21, the evidence
+`docs/stage8-evidence/8i/`. The build: `austerlitz-command-map.html` **2,782,595 bytes, md5 `697bbf34ec29fc4d05695dc8e1cd3c5e`** (8H's 2,772,772,
+`9fa50cb4...`); `check:baseline` moved to it; `check:data`'s reference unchanged (`archive/stage8h-24e29da7.html`: no data changed).
+
+- **The phase's message under a layout's change (the audit of 8H's build; section 21.2).** `placeToast` ran only as `flash()` showed the
+  message, so a layout changed while it showed left it where it was. Reproduced on 8H's build by `tools/stage8/toast-8i.js` (the message shown
+  at 08:45 by its own `flash()`, then the layout changed while it shows, each read before and after): placed for Watch at 1600 x 900 it lay
+  1,716 px over Study's switch once Study came back; placed for Study it lay over the opening's and the tour's buttons (3,528 and 182 px) after a
+  resize to 1024 x 768, and over two vantage buttons after the resize back; on a phone turned to 844 x 390 over the opening's button and a vantage
+  button; on a phone with the Menu opened 6,463 px over the switch: 4 of the 8 changes. Now `toastRelayout` places it again whenever the layout can
+  change while the message is seen (shown, or fading out): a presentation (`setPresentation`), the landscape or the paper map (`setMode`), the
+  window's size (`onResize`) or orientation (`orientationchange`), a panel opened or closed (`syncInert`, the one writer of the panels' reasons;
+  `syncVis`; `setDSheet`), the phone's Menu (`setMenu`, which is not one of syncInert's reasons: the case the first build of 8I missed and its own
+  evidence run found), and a panel's slide ended (`transitionend`). A change places it at once and once more in the next frame; a slide's end in
+  the next frame only, once a frame at most. Hidden, nothing runs (no idle work); its lifetime is `flash()`'s one 3.4 s timer, which nothing here
+  touches. Measured on the final build: 0 of the 8 changes over a control (24 reads), the message shown and its text kept at each; the unheld
+  lifetime (the self-test page's live block `toastLayout`): one timer set, never cleared or replaced while it showed, the message hidden 6.5 s after it
+  was set (its callback delayed by the software renderer's frames: never sooner than 3.4 s), and a change made while it showed placing it again.
+- **The far names' lighter plate (decision 263 (a), 255 (d)'s "d-plate"; section 21.3).** A formation's name on the landscape standing beyond the
+  far step's distance (`MLS.FAR`, 1.5 times the eye's distance to its target, `mlFar`'s test, held by its band while the view moves) is drawn on
+  `TOKENS.sym.plate.far`, rgba(10,14,18,.64): the lightest alpha keeping the label ink at AA over white ground, sym.plate's own rule (4.55:1;
+  over black 15.4:1; the prototype's 0.62 gave 4.23:1). Words, size (t-ui, 12.5 px), marks, place and box unchanged: the far names read below the
+  near ones by their plate, not their size. The protected keep the full plate (the selection, the hovered, the highlighted family, the focus's
+  forced place, the item with the focus); places, counters and events keep theirs; the paper map has no formation names. Written only when an
+  item's state changes (`mlFarPlate`, `mlContent` resetting it with the content). Measured in the 13 views of `FAR_PLATE_VIEWS` on 8H's build and this one (`tools/stage8/far-8i.js`, `docs/stage8-evidence/8i/far/`): the far names
+  at 6.97 to 7.78:1 at their least as rendered (the same names 12.34 to 12.66 on 8H's full plate; the near names 12.21 to 14.06), one size, no map
+  text below AA in any view on either build, the selected and the focused far name on the full plate, no formation name with counters.
+- **The census's two frames (the audit's correction of section 20.12).** Section 20.12 gave the largest frames as 862 calls and 2,204,961
+  triangles on the desktop and 1,251,039 triangles on a phone: those are the frame with the ground's depth reused (the eye still,
+  `renderer.info` over a frame that skips the depth pass). The budget's frame is the complete one, the depth drawn (8D's definition): on 8H's
+  `check:visual` report (CI run 40995113422) **the desktop's largest complete frame 864 calls (plans-overview) and 2,352,049 triangles
+  (narrow-1024), the phone's 482 calls and 1,398,127 triangles (phone-390-first)**, each maximum over the cases separately; the still eye's 862,
+  2,204,961 and 480, 1,251,039 (`tools/stage8/census-8i.js`, `docs/stage8-evidence/8i/census-8h-both.md`). Both frames are reported from now on,
+  and for every build of this follow-up they are measured again on its own `check:visual` run, never carried forward (section 21.4). These are
+  geometry counts; they decide nothing about a device's frame time.
+- **Checks.** The self-test's check "map layer (Stage 8, 8I; decision 263): ..." (the manifest 316 to 317); `css-test.js`'s 8I block (the
+  relayout's hooks, `setMenu` among them, its guards and its untouched lifetime; the far token's AA and alpha, the plate's rule, names only, the
+  protected on the full plate); the harness's live blocks `toastLayout` (`check:selftest` and `check:visual`: the eight changes by real input or
+  the app's own calls, each read before and after with the message's timer held for the reads, then the unheld lifetime measured separately) and
+  `farPlate` (`check:visual`: the 13 views of `FAR_PLATE_VIEWS`, every name on the plate the rule gives it, the far ones at AA as rendered, one
+  size, none with counters), judged in `thresholds.js` `checkLive`; their features registered (`measure.js` `features()`: `mlFarPlate`, `TOAST`; `thresholds.js` `REQUIRED_FEATURES`: without them the harness would have skipped `farPlate` and then failed it as not run, found by running the block's own code on this build before the push: 13 views, 0 failures); the Layers panel's clicks in `toastLayout` and the waits for the message given room for software frames (120 s and 60 s: patience only, the judgements unchanged).
+- **Owner decisions recorded (no change to the build):** 261 (a), Satschan's five farmsteads of seven an accepted symbolic-count exception, not a
+  historical claim, the mere's outline kept; 262 (a), counters placed as built, decision 258 (b)'s prototype not adopted, its evidence kept
+  (`docs/stage8-evidence/8h/`); 264 (a), the meres' ice kept, its low-sun appearance on the final visual-review checklist; 265 (a), the troops'
+  contact with the ground kept provisionally pending the device runs and the final audit, the animation's budget not raised, the original
+  criterion not marked satisfied, its exceptions, bounds, counts and measured alternatives kept (section 20.10).
+
+Verified: `npm test` (all nine suites and the height guard), `check:data` (134 data declarations identical to the reference), `check:chronology`
+(0 errors; 70 moves with a timed statement, 66 consistent, the four named conflicts; REVIEW's locators current), `check:baseline` (this build), and
+`check:selftest` here (Chromium 141, software WebGL): the self-test 317 of 317, every live block passing (slider, tips, motion, play, keys3E,
+shortcuts, narrow, phone, toast, toastLayout, ring, rmLive), the run's only failures the manifest's before it was regenerated from it; the far plate's
+13 views; the route pages live on GitHub Pages for `main`'s build, each loading and booting without an error (section 21.6). On CI after the push:
+the pull request's own checks (the checks job, `check:contrast` and `check:selftest`, on every push) and a `check:visual` run dispatched on
+this branch's head; their results, and this build's census in both frames from that run, are recorded in section 21.9 (the settled baseline, in
+8K's pull request) as they land, never carried over from another build. Not verified: the device runs (decision 250 (b); no owner hardware in the session: pending, as for 8E-8H).
+
 ## 2026-10 · Stage 8, implementation PR 8H: integration, polish and verification
 
 **Status: built on `claude/sharp-faraday-g2uy8o` (draft PR #73 into `main`, for review; not merged), from `main` at

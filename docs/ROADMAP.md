@@ -521,9 +521,29 @@ frame's half-pixel shimmer among them 10,616 to 7,663 pixels, the same triangles
 the ground measured against their rules and the original criterion, kept (questions 264, 265; §20.10). Device acceptance for 8E-8H pending: the
 builds, routes and protocol prepared (§20.12).
 
-**Still open in Stage 8** (none blocking the build): the owner's questions 259-265 (§20.14); the device runs for 8E-8H (§20.12); decision 245 (a)'s facings, to be
-reconsidered now that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
-`BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary).
+**The owner's decisions 259-265** (30 October 2026, with the brief for the bounded follow-up before the final combined audit; `docs/STAGE8_SPEC.md`
+§21): **259 (a)**, the geographic data task for the Sokolnitz castle, the pheasantry and the Goldbach group, the Pratzen church and the Austerlitz
+garden, subject to the evidence's qualifications; **260 (a)**, the highway and post-house correction as a separate data task and pull request, the
+eleven anchors on the road reviewed and re-plotted from their sources, the road not moved without reviewing what depends on it; **261 (a)**,
+Satschan's five farmsteads an accepted symbolic-count exception, not a historical claim; **262 (a)**, the counters' placement kept, 258 (b)'s
+prototype not adopted, its evidence kept; **263 (a)**, the "d-plate" for distant formation names adopted with production integration and rendered
+contrast checks; **264 (a)**, the ice kept, its low-sun appearance on the final visual-review checklist; **265 (a)**, the troops' contact with the
+ground kept provisionally pending the device runs and the final audit, the animation's budget not raised, the original criterion not marked
+satisfied.
+
+**The follow-up 8I, 8J, 8K** (30 October 2026; `docs/STAGE8_SPEC.md` §21; three stacked draft pull requests from `main` at `b7fb67a`, for
+review, not merged): **8I** (`claude/tender-einstein-gwrsij`): the phase's message placed again whenever the layout changes while it shows (8H's
+build left it over a control in 4 of 8 changes; the phone's Menu among them), its 3.4 s untouched and nothing run while it is hidden; the far
+formation names on the lighter plate (decision 263 (a), at AA by sym.plate's rule, size and places unchanged, the protected on the full plate);
+the census reported in both frames (section 20.12's maxima were the frame with the ground's depth reused: the complete frame on 8H's run 864
+calls and 2,352,049 triangles on the desktop, 1,398,127 triangles on the phone), measured again for every build; decisions 261, 262, 264 and 265
+recorded. **8J** (`claude/tender-einstein-gwrsij-sokolnitz`, decision 259 (a)) and **8K** (`claude/tender-einstein-gwrsij-highway`, decision 260
+(a)): the data tasks, each with its own section, register and `check:data` reference.
+
+**Still open in Stage 8** (none blocking the build): the device runs for 8E-8K (§20.12, §21); decision 245 (a)'s facings, to be reconsidered now
+that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
+`BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's
+remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist.
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**

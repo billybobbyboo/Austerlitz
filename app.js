@@ -4853,6 +4853,7 @@ function setMode(m){
      before (then it is as it was left); leaving it: the landscape eye where it was, or the phase's view */
   if(staff){ if(was!=="staff"){ if(MAPCAM.moved()) MAPCAM.apply(); else MAPCAM.frameField(true); } }
   else if(!freeCam) flyTo(PHASES[curPhase].cam);
+  toastRelayout();   /* Stage 8, 8I: the paper map's controls or the landscape's */
   requestRender(3);
 }
 
@@ -5072,7 +5073,7 @@ function mlItem(key,cls){
 function mlContent(it,ck,html,plate){
   if(it.ck===ck) return;
   it.ck=ck; it.el.innerHTML=html; it.dirty=true;
-  if(plate){ it.el.style.background=plate[0]; it.el.style.color=plate[1]; }
+  if(plate){ it.plate0=plate[0]; it.farP=false; it.el.style.background=plate[0]; it.el.style.color=plate[1]; }   /* Stage 8, 8I: the plate kept for mlFarPlate */
 }
 function mlAria(it,label){
   if(!label||it.aria===label) return;
@@ -5405,6 +5406,19 @@ function mlFar(it){
   var r=camera.position.distanceTo(it.world)/dt; if(!isFinite(r)) return false;
   return mlBandAt("far:"+it.key,r)>MLS.FAR;   /* while the view moves, the ratio held inside the band: no flicker at the boundary */
 }
+/* Stage 8, the follow-up 8I (decision 263 (a): 255 (d)'s "d-plate", the owner's choice; docs/STAGE8_SPEC.md sections 20.9 and 21): a formation's
+   name on the landscape standing beyond the far step's distance (FAR times the eye's distance to its target: mlFar's test, held by its band while the
+   view moves) is drawn on a lighter plate, TOKENS.sym.plate.far, so that the far names read below the near ones by their plate, not their size: words,
+   size (t-ui, 12.5 px; decision 16's 12 px floor), marks, place and box unchanged. The plate's alpha is the lightest that keeps the name's ink (the
+   label ink) at AA over white ground, the rule sym.plate is built on (tokens.js): 0.64, 4.55:1 there (the prototype's 0.62 gave 4.23:1). What the layer
+   protects keeps the full plate: the selection, the hovered, the highlighted family (it.keep), the focus's forced place and the item with the focus.
+   The paper map has no formation names; counters, events and places keep their plates. Written only when an item's state changes */
+function mlFarRatio(it,pre){ var dt=landCam.position.distanceTo(orbitTarget); if(!(dt>=1)) return 0; var r=camera.position.distanceTo(it.world)/dt; return isFinite(r)?mlBandAt(pre+it.key,r):0; }
+function mlFarPlate(it,may){
+  var far=!!may&&!camera.isOrthographicCamera&&mode!=="staff"&&mlFarRatio(it,"farp:")>MLS.FAR;
+  if(far!==!!it.farP){ it.farP=far; if(it.plate0) it.el.style.background=far?TOKENS.sym.plate.far:it.plate0; }
+  return far;
+}
 /* the far step's words inside the box the item has at its own size, on the side toward the anchor */
 function mlAlign(d,w,fw){ return d>=0?0:(d+w<=0?w-fw:(w-fw)/2); }
 /* the pass */
@@ -5513,9 +5527,10 @@ function mlLayout(){
   });
   MLS.stats.fading=fading;
   /* write: positions, visibility, the leader lines and markers */
-  var K=mode==="staff"?"paper":"dark", C={cs:TOKENS.sym.plate[K],co:TOKENS.sym.label[K].annotation}, s=[], nfar=0;
+  var K=mode==="staff"?"paper":"dark", C={cs:TOKENS.sym.plate[K],co:TOKENS.sym.label[K].annotation}, s=[], nfar=0, nfp=0;
   elig.forEach(function(it){
     var on=it.state==="on";
+    if(on&&it.cat==="name"&&mlFarPlate(it,!(it.keep||it.forced||it.el===foc))) nfp++;   /* Stage 8, 8I (decision 263): a far name's lighter plate; a remnant keeps its last */
     if(on){ var x=Math.round(it.rect[0]), y=Math.round(it.rect[1]), dw=it.w, dh=it.h;
       if(it.farC&&it.fw>0){ nfar++; x=Math.round(it.rect[0]+mlAlign(it.rect[0]-it.sx,it.w,it.fw)); y=Math.round(it.rect[1]+mlAlign(it.rect[1]-it.sy,it.h,it.fh)); dw=it.fw; dh=it.fh; }   /* Stage 8, 8C: the far step's words inside its box */
       var tx=x+","+y;
@@ -5534,7 +5549,7 @@ function mlLayout(){
     var op=on?(it.op<1?Math.max(0,it.op):1)*it.fa:(rm?it.fa:1), os=(on?op>=1:!rm)?"":String(op.toFixed(2));
     if(it.opS!==os){ it.el.style.opacity=os; it.opS=os; }
   });
-  MLS.stats.far=nfar;
+  MLS.stats.far=nfar; MLS.stats.farPlate=nfp;
   if(fading||MLS.moving) requestRender(1);   /* a fade under way; and one pass more after the last moving one, at rest (the band released) */
   var svg=s.join("");
   if(svg!==ML.svg){ ML.lines.innerHTML=svg; ML.svg=svg; }
@@ -6768,6 +6783,7 @@ function syncInert(){
     var want=(!!keep&&k!==keep&&!/^(live-phase|toast|glnotice)$/.test(k.id))||(k===dr&&!dOn)||
       (!!(k.classList&&k.classList.contains("rail"))&&((!!docked&&dOn)||(PHONE&&dOn)||document.body.classList.contains("rail-hidden")));   /* roadmap step 6 item 3: on a phone the dossier's sheet stands over the rail's */
     if(!!k.inert!==want) k.inert=want; }
+  toastRelayout();   /* Stage 8, 8I: a panel's change while the phase's message shows */
 }
 function helpOpen(){ return sheetIsOpen("help"); }
 /* the switch's button and its note (decision 134): the name constant, the state in aria-pressed, the visible on or off hidden from the name */
@@ -7082,7 +7098,7 @@ function buildUI(){
   window.addEventListener("pointermove",function(e){ if(e.buttons){ lastInput=performance.now(); requestRender(1); } },{capture:true,passive:true});
   /* a panel sliding in or out (the drawer, the rail, the legend): draw until it has stopped, and once more after */
   ["transitionrun","transitionstart"].forEach(function(ev){ document.addEventListener(ev,function(){ panelMoveUntil=performance.now()+450; }); });
-  document.addEventListener("transitionend",function(){ requestRender(2); });
+  document.addEventListener("transitionend",function(){ requestRender(2); toastRelayout(true); });   /* Stage 8, 8I: a panel's slide ended, its controls where they stay (in the next frame) */
   function onResize(){
     requestRender(3);
     mlReset("window");   /* Stage 8, 8C (MLS) */
@@ -7097,8 +7113,10 @@ function buildUI(){
     syncViewOffset(true);   /* Stage 3D: the focus at the new free rectangle's centre at once */
     /* the paper map: the field framed anew if that is what it shows, else the plan keeps its centre and scale */
     if(mode==="staff"){ if(MAPCAM.framed()) MAPCAM.frameField(true); else MAPCAM.apply(); }
+    toastRelayout();   /* Stage 8, 8I: the phase's message placed again in the new window */
   }
   window.addEventListener("resize",onResize);
+  window.addEventListener("orientationchange",function(){ toastRelayout(); });   /* Stage 8, 8I (a phone turned; the resize that follows places it too) */
   if(RM_MQ){ if(RM_MQ.addEventListener) RM_MQ.addEventListener("change",rmChange); else if(RM_MQ.addListener) RM_MQ.addListener(rmChange); }   /* roadmap step 3 (S-6) */
   /* the density can change without a resize (a window dragged to another screen): one query for the current density, made again each time */
   (function watchDensity(){ if(!window.matchMedia) return; var q=window.matchMedia("(resolution: "+(window.devicePixelRatio||1)+"dppx)");
@@ -8723,6 +8741,24 @@ function placeToast(t){
     for(var i=0;i<C.length;i++){ var q=C[i]; if(q.right>r.left&&q.left<r.right&&q.bottom>top&&q.top<top+H){ top=q.bottom+8; moved=true; } } }
   if(top!==r.top&&top+H<=innerHeight/2) t.style.top=Math.round(top)+"px";
 }
+/* Stage 8, the follow-up 8I (the audit of 8H's build): placeToast ran only as flash() showed the message, so a layout changed while it showed
+   left it where it was: placed for Watch at 1600 x 900 it lay over Study's switch once Study came back, and placed for Study it lay over the
+   opening's and the tour's buttons after a resize to 1024 x 768. Now it is placed again, once a frame at most and only while it is seen (shown,
+   or fading out), whenever the layout can change: a presentation (Study, Watch, Clean), the landscape or the paper map, the window's size or
+   orientation, a panel opened or closed (syncInert, the one writer of the panels' reasons), the phone's Menu (setMenu), a panel's slide ended. A change places it at once (the
+   layout as the change left it, before the next frame is drawn: in software rendering that frame came a second later, the message over the switch
+   until then) and once more in the next frame, for what settles after; a slide's end (transitionend, which comes in bursts) in the next frame only,
+   once. Hidden, nothing runs; its lifetime is flash()'s timer alone, which nothing here touches */
+var TOAST={raf:0, placed:0};
+function toastSeen(t){ return !!t&&!!t.classList&&(t.classList.contains("on")||(typeof getComputedStyle==="function"&&parseFloat(getComputedStyle(t).opacity)>0)); }
+function toastRelayout(slide){
+  if(typeof document==="undefined"||!document.getElementById) return;
+  var t=document.getElementById("toast"); if(!toastSeen(t)) return;
+  if(!slide){ TOAST.placed++; placeToast(t); }
+  if(TOAST.raf) return;
+  var later=typeof requestAnimationFrame==="function"?requestAnimationFrame:function(f){ return setTimeout(f,16); };
+  TOAST.raf=later(function(){ TOAST.raf=0; if(toastSeen(t)){ TOAST.placed++; placeToast(t); } });
+}
 function flash(msg){
   var t=document.getElementById("toast");
   t.textContent=msg; placeToast(t); t.classList.add("on");
@@ -8914,6 +8950,7 @@ function setPresentation(m){
   else if(a&&a!==focusedEl()) focusTo([a,"play","restore"]);
   else if(a&&!shown(a)) focusTo(["play","restore"]);
   syncInert();   /* roadmap step 3: the rail hidden or shown */
+  toastRelayout();   /* Stage 8, 8I: Study's switch at the top again, or Watch's in the control row (syncInert asks too; asked here whatever it decides) */
   if(typeof requestRender==="function") requestRender(2);
 }
 /* ---- Stage 3B: the docked layout (docs/STAGE3_SPEC.md section B.2; owner decisions 49, 54, 55, 58) ----
@@ -8982,6 +9019,7 @@ function dsheetOpen(){ return document.body.classList.contains("dsheet-open"); }
 function setDSheet(open){
   open=!!open&&PHONE;
   var b=document.getElementById("dgrip"); document.body.classList.toggle("dsheet-open",open); if(b) b.setAttribute("aria-expanded",String(open));
+  toastRelayout();   /* Stage 8, 8I: the dispatch sheet raised or folded on a phone */
   if(typeof requestRender==="function") requestRender(2);
 }
 function menuOpen(){ return document.body.classList.contains("menu-open"); }
@@ -8994,6 +9032,7 @@ function setMenu(open,keep){
   document.body.classList.toggle("menu-open",open); if(b) b.setAttribute("aria-expanded",String(open));
   if(open&&tl) focusTo([].slice.call(tl.querySelectorAll("button")));
   if(typeof requestRender==="function") requestRender(2);
+  toastRelayout();   /* Stage 8, 8I: the Menu's tools shown or hidden while the phase's message shows (not a reason of syncInert's) */
 }
 function bindPhone(){
   var mb=document.getElementById("menubtn"), tl=document.getElementById("tools"), g=document.getElementById("dgrip");
@@ -9017,6 +9056,7 @@ function syncVis(){
   /* roadmap step 3 (the 146453d review): the caption's order follows the presentation and the dispatch at once (paintSituation's key), and
      its room changed: fitted again, not left until the clock moves */
   if(typeof curPhase==="number"&&PHASES[curPhase]){ paintSituation(); fitCaption(); }
+  toastRelayout();   /* Stage 8, 8I: the dispatch shown or hidden (the tour, the opening), the timebar's height */
 }
 function setDispatchVisible(on){ hideDispatch=!on; syncVis(); }
 function showEverything(){
@@ -13664,6 +13704,38 @@ var AUSTERLITZ_DEBUG=(function(){
         for(var pk in ML.items){ if(ML.items[pk].eFrame===ML.frame&&ML.items[pk].el.classList.contains("ml-far")) farBad.push(pk+" stepped on the paper map"); }
         ck("map layer (section 7.2, decision 240): in the low views the place and terrain-study names beyond "+MLS.FAR+" times the eye's distance to its target a type step smaller (10.5 px), in the box their own size gives them, so no item is placed otherwise; battle information never (decision 16); none on the paper map",
           nF>0&&!farBad.length, nF+" of "+nSm+" place names drawn close on Sokolnitz at the step"+(farBad.length?"; WRONG: "+farBad.slice(0,5).join("; "):"; the layout identical without it; the paper map none"));
+        /* Stage 8, the follow-up 8I (decision 263 (a)): in the low view east over the Goldbach at 12:00 (Part A's wall of formation names, horizon-east)
+           every formation name drawn beyond FAR times the eye's distance to its target on the far plate, every nearer one on the full plate, all at the
+           same size and in the places they have without it; a far name selected, then focused, back on the full plate; under Napoleon's reading the
+           same rule for the names it draws; none on the paper map. The plates' contrast as rendered is the harness's (every map text at AA in every
+           case; check:visual's farPlate block in the low views, the fog and the light) */
+        var fpBad=[], fpN=0, fpNear=0, fpProt=[], PF=TOKENS.sym.plate.far;
+        var plateOf=function(it){ var p=document.createElement("i"); p.style.background=PF; var far=p.style.background; return it.el.style.background===far?"far":"full"; };
+        var fpCheck=function(tag){ var dT=landCam.position.distanceTo(orbitTarget), px0=null;
+          for(var nk2 in ML.items){ var nt=ML.items[nk2]; if(nk2.indexOf("n:")!==0||nt.eFrame!==ML.frame||nt.state!=="on") continue;
+            var rr=camera.position.distanceTo(nt.world)/dT, prot=nt.keep||nt.forced||nt.el===document.activeElement, want=(!prot&&rr>MLS.FAR)?"far":"full", got=plateOf(nt), fpx=parseFloat(getComputedStyle(nt.el).fontSize);
+            if(got!==want) fpBad.push(tag+": "+nk2+" ratio "+rr.toFixed(2)+(prot?" protected":"")+" on the "+got+" plate");
+            if(px0===null) px0=fpx; else if(Math.abs(fpx-px0)>0.01) fpBad.push(tag+": "+nk2+" at "+fpx+" px against "+px0);
+            if(want==="far") fpN++; else fpNear++; } };
+        stopPlay(); lastInput=-1e9; setMode("terrain"); setPresentation("watch"); setClock(720,{instant:true,force:true,camera:false}); finishTween();
+        var hw=W(230,250), hty=displayHeight(hw[0],hw[1]), hdv=new THREE.Vector3(-0.97,0.10,0.21).normalize().multiplyScalar(60);
+        placeCamera([hw[0]+hdv.x,hty+hdv.y,hw[1]+hdv.z,hw[0],hty,hw[1]]); syncViewOffset(true); settle(4,true); mlReset("test"); mlLayout();
+        var FPL={}; for(var fk0 in ML.items){ var ft0=ML.items[fk0]; if(ft0.eFrame===ML.frame) FPL[fk0]=[ft0.state,ft0.rect?ft0.rect.join(","):""]; }
+        fpCheck("12:00"); var fpFar0=fpN;
+        /* the places with no name far (and no far step, which 8C's check above shows changes no place): the layout is the same, the plate changes no box */
+        var far1=MLS.FAR; MLS.FAR=1e9; mlReset("test"); mlLayout(); MLS.FAR=far1;
+        for(var fk1 in FPL){ var ft1=ML.items[fk1]; if(ft1.eFrame!==ML.frame||ft1.state!==FPL[fk1][0]||(ft1.rect?ft1.rect.join(","):"")!==FPL[fk1][1]) fpBad.push(fk1+" placed otherwise with the full plate");
+          if(fk1.indexOf("n:")===0&&ft1.eFrame===ML.frame&&ft1.state==="on"&&plateOf(ft1)!=="full") fpBad.push(fk1+" on the far plate with no name far"); }
+        mlReset("test"); mlLayout();
+        var farOne=null; for(var fk2 in ML.items){ var ft2=ML.items[fk2]; if(fk2.indexOf("n:")===0&&ft2.eFrame===ML.frame&&ft2.state==="on"&&plateOf(ft2)==="far"){ farOne=fk2.slice(2); break; } }
+        if(farOne){ select("f",farOne); settle(2,true); mlLayout(); var sIt=ML.items["n:"+farOne]; fpProt.push("selected "+plateOf(sIt)); if(plateOf(sIt)!=="full") fpBad.push(farOne+" selected on the far plate"); fpCheck("selected");
+          select(null,null); settle(2,true); mlLayout(); var fIt=ML.items["n:"+farOne]; if(fIt&&fIt.el&&fIt.focusable){ fIt.el.focus(); mlLayout(); fpProt.push("focused "+plateOf(fIt)); if(plateOf(fIt)!=="full") fpBad.push(farOne+" focused on the far plate"); fpCheck("focused"); fIt.el.blur(); mlLayout(); } }
+        else fpBad.push("no far name to select in the view");
+        setCommandView("fr"); settle(2,true); mlReset("test"); mlLayout(); fpCheck("Napoleon's reading"); setCommandView("none"); settle(2,true);
+        setMode("staff"); settle(4,true); mlLayout(); for(var fk3 in ML.items){ var ft3=ML.items[fk3]; if(ft3.eFrame===ML.frame&&ft3.plate0&&plateOf(ft3)==="far") fpBad.push(fk3+" on the far plate on the paper map"); }
+        setMode("terrain");
+        ck("map layer (Stage 8, 8I; decision 263): in the low view east over the Goldbach the formation names beyond "+MLS.FAR+" times the eye's distance to its target on the lighter far plate (TOKENS.sym.plate.far), the nearer and the protected ones (selected, focused) on the full plate, all at one size and placed as without it; the same under a headquarters' reading; none on the paper map",
+          fpFar0>0&&!!farOne&&!fpBad.length, fpFar0+" far names at 12:00 ("+fpNear+" near or protected reads, "+fpN+" far reads in all); "+fpProt.join(", ")+(fpBad.length?"; WRONG: "+fpBad.slice(0,5).join("; "):"; the layout identical with the full plate; the paper map none"));
       } catch(err){ ck("map layer in motion (decision 240): the motion checks ran", false, "threw: "+err.message);
       } finally {
         if(hadNow) performance.now=realNow; else delete performance.now;
