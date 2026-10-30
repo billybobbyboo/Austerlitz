@@ -334,6 +334,24 @@ module.exports.SOLID_BLACK=SOLID_BLACK; module.exports.LIGHT_SWEEP=LIGHT_SWEEP;
 /* Stage 4C (docs/STAGE4_SPEC.md section C.6): the valley fog's hours, rendered by the harness at 4x [case, clock]. New */
 const FOG_VIEWS=[["overview-field",480],["pratzen-low",510]];
 module.exports.FOG_VIEWS=FOG_VIEWS;
+/* Stage 8, the follow-up 8I (decision 263 (a); docs/STAGE8_SPEC.md section 21): the views where far battle information stands, rendered with the
+   far names' lighter plate (check:visual's live block farPlate): Part A's low view east over the Goldbach (the wall of formation names; tools/stage8/
+   views.js horizon-east) at 09:00, 12:00 and 15:00 (the morning's haze, noon, a low sun), the infantry's front (inf-front), the low Pratzen view, the
+   valley fog's two hours (the FOG_VIEWS), the phase-8 Overview in Watch; then the low view at 12:00 with a far name selected, with one focused, under
+   Napoleon's reading, held as a phone held landscape (844 x 390) and in the landscape with counters (no names: no far plate). Each: [tag, the view
+   (a cases.js case's name or Part A's aim), overrides, the state to set: "select", "focus", "reading", "hybrid" or null, the size or null].
+   Judged in checkLive: every name on the plate the rule gives it (the far plate beyond MLS.FAR times the eye's distance to its target unless
+   protected), every name at one size, every far-plated name at AA as rendered; far names drawn in the wall of names */
+const FAR_LOW={t:720, presentation:"watch", mode:"terrain", aim:{map:[230,250], dir:[-0.97,0.10,0.21], r:60}};   /* tools/stage8/views.js horizon-east */
+const FAR_PLATE_VIEWS=[["the wall of names 09:00",Object.assign({},FAR_LOW,{t:540}),null,null],["the wall of names 12:00",FAR_LOW,null,null],
+  ["the wall of names 15:00",Object.assign({},FAR_LOW,{t:900}),null,null],
+  ["the infantry's front",{t:560, presentation:"watch", mode:"terrain", aim:{map:"sthilaire", dir:[-0.62,0.34,0.70], r:40}},null,null],
+  ["pratzen-low","pratzen-low",null,null],["overview-field 08:00 (fog)","overview-field",{t:480},null],["pratzen-low 08:30 (fog)","pratzen-low",{t:510},null],
+  ["ph8-overview-watch","ph8-overview-watch",null,null],
+  ["the wall of names, a far name selected",FAR_LOW,null,"select"],["the wall of names, a far name focused",FAR_LOW,null,"focus"],
+  ["the wall of names, Napoleon's reading",FAR_LOW,null,"reading"],["the wall of names at 844 x 390",FAR_LOW,null,null,[844,390]],
+  ["the wall of names, with counters",FAR_LOW,{mode:"hybrid"},"hybrid"]];
+module.exports.FAR_PLATE_VIEWS=FAR_PLATE_VIEWS;
 module.exports.PAPER_MIN_PXKM=PAPER_MIN_PXKM;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
 /* Stage 0 guarantees, checked on every baseline case (harness --test). The numbers are the
@@ -536,7 +554,9 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   TIPS:"Stage 8, implementation PR 8A: the timeline's tips dismissed on activation, never shown by a touch (decision 251)",
   MLS:"Stage 8, implementation PR 8C: the map layer in motion (decision 240 (a))",
   CULL:"Stage 8, implementation PR 8D: the blocks culled by their own bounds, the census (decision 249 (a))",
-  ANIM:"Stage 8, implementation PR 8D: the kit's animation hooks (decisions 244 (a), 250 (b))"};
+  ANIM:"Stage 8, implementation PR 8D: the kit's animation hooks (decisions 244 (a), 250 (b))",
+  mlFarPlate:"Stage 8, the follow-up 8I: the far formation names' lighter plate (decision 263 (a))",
+  TOAST:"Stage 8, the follow-up 8I: the phase's message placed again under a layout's change"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -669,6 +689,37 @@ function checkLive(live,opts){
     (Array.isArray(T)?T:[]).forEach(c=>{
       if(!c.on||c.text!==c.want||c.clock!==525) f.push("the phase's message at "+c.at+": "+(c.on?"":"not shown; ")+"text "+JSON.stringify(c.text)+" at "+c.clock+" (08:45's expected)");
       if(c.overlapSwitch>0||(c.others||[]).length) f.push("the phase's message at "+c.at+": over the presentation switch by "+c.overlapSwitch+" px"+((c.others||[]).length?", over "+c.others.map(o=>o.el+" by "+o.px+" px").join(", "):"")); }); }
+  /* Stage 8, the follow-up 8I (the audit of 8H's build): the phase's message shown first, then the layout changed under it in both directions
+     (Watch and Study, two window sizes, the Panels, the paper map, a phone turned and its Menu): at every read shown, 08:45's, 0 px over the
+     switch and every shown control, and placed again since the change; unheld, it hides on flash()'s own timer, set once (no change sets it
+     again or clears it) and never early, after being placed again for each change it lived through */
+  if(req("toastLayout","the phase's message placed again under a layout's change, both directions, and its own lifetime (Stage 8, 8I)")){ const T=live.toastLayout||{}, C=Array.isArray(T.cases)?T.cases:[];
+    if(C.length!==8) f.push("the phase's message under a layout's change: "+C.length+" of the 8 cases run");
+    C.forEach(c=>{ const R=c.reads||[]; if(R.length!==3) f.push("the phase's message, "+c.name+": "+R.length+" of 3 reads (shown, then two changes)");
+      R.forEach((r,i)=>{ const at=c.name+", "+r.step;
+        if(!r.on||r.text!==r.want||r.clock!==525) f.push("the phase's message, "+at+": "+(r.on?"":"not shown; ")+"text "+JSON.stringify(r.text)+" at "+r.clock+" (08:45's expected)");
+        if(r.overlapSwitch>0||(r.others||[]).length) f.push("the phase's message, "+at+": over the presentation switch by "+r.overlapSwitch+" px"+((r.others||[]).length?", over "+r.others.map(o=>o.el+" by "+o.px+" px").join(", "):""));
+        if(i>0&&!(r.placed>R[i-1].placed)) f.push("the phase's message, "+at+": not placed again after the change (TOAST.placed "+R[i-1].placed+" to "+r.placed+")"); }); });
+    const L=T.life||{};
+    if(L.set!==1) f.push("the phase's message's lifetime, unheld: flash()'s 3.4 s timer set "+(L.set||0)+" times (once expected: a layout's change must not set it again)");
+    if(L.cleared) f.push("the phase's message's lifetime, unheld: its timer cleared "+L.cleared+" times while it showed");
+    if(!L.off) f.push("the phase's message's lifetime, unheld: not hidden within 60 s of the changes");
+    else { if(!(L.lifeMs>=L.expected-2)) f.push("the phase's message's lifetime, unheld: hidden "+L.lifeMs+" ms after its timer was set, before flash()'s "+L.expected);
+      if(!L.timerKept) f.push("the phase's message's lifetime, unheld: hidden by another timer than the one set as it showed"); }
+    const R=L.reads||[]; if(!R.some(r=>r.onAtChange)) f.push("the phase's message's lifetime, unheld: no layout's change made while it showed (the case proves nothing)");
+    R.forEach(r=>{ if(r.onAtChange&&!(r.placed>r.placedBefore)) f.push("the phase's message, unheld, "+r.step+": changed while it showed and not placed again");
+      if(r.on&&(r.overlapSwitch>0||(r.others||[]).length)) f.push("the phase's message, unheld, "+r.step+": over the presentation switch by "+r.overlapSwitch+" px"+((r.others||[]).length?", over "+r.others.map(o=>o.el+" by "+o.px+" px").join(", "):"")); }); }
+  /* Stage 8, the follow-up 8I (decision 263 (a)): the far names' lighter plate as rendered, in check:visual (FAR_PLATE_VIEWS) */
+  if(!so&&req("farPlate","the far names' lighter plate as rendered in the low views, the fog, the light, selected, focused, a reading, a phone, with counters (Stage 8, 8I)")){ const V=Array.isArray(live.farPlate)?live.farPlate:[];
+    if(V.length!==FAR_PLATE_VIEWS.length) f.push("the far names' plate: "+V.length+" of the "+FAR_PLATE_VIEWS.length+" views measured");
+    V.forEach(v=>{ const N=v.names||[], far=N.filter(n=>n.plate==="far");
+      N.forEach(n=>{ const want=(!n.prot&&n.ratio>v.far)?"far":"full";
+        if(n.plate!==want) f.push("the far names' plate, "+v.tag+": "+n.id+" (ratio "+n.ratio+(n.prot?", protected":"")+") on the "+n.plate+" plate, the "+want+" expected");
+        if(n.plate==="far"&&!(n.contrast>=4.5)) f.push("the far names' plate, "+v.tag+": "+n.id+" at "+n.contrast+":1 as rendered, under AA"); });
+      const px=[...new Set(N.map(n=>n.px))]; if(px.length>1) f.push("the far names' plate, "+v.tag+": the names at "+px.join(", ")+" px (one size)");
+      if(/^the wall of names( 1[25]:00| 09:00)?$/.test(v.tag)&&!far.length) f.push("the far names' plate, "+v.tag+": no far name drawn in the wall of names");
+      if(v.state==="hybrid"&&N.length) f.push("the far names' plate, "+v.tag+": "+N.length+" names drawn with counters");
+      if((v.state==="select"||v.state==="focus")&&!(v.target&&v.target.plate==="full"&&v.target.prot)) f.push("the far names' plate, "+v.tag+": the "+(v.state==="select"?"selected":"focused")+" far name "+JSON.stringify(v.target)+" not on the full plate"); }); }
   /* Stage 8, 8H (docs/FINAL_AUDIT.md A-6): the focus ring as drawn, on Play reached by real Tab presses: focused and :focus-visible, a solid
      outline in the theme's accent, and on each of its four sides 2 or 3 pixels of the ring's colour in the screenshot (2 px drawn; a third where
      its edge falls between pixels) */
