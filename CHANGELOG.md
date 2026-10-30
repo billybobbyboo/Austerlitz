@@ -169,6 +169,46 @@ entry's end.
   - *T-7, wall-clock thresholds:* the self-test's pan budget (2 ms a move) is judged at the median of the run's moves, with the 95th percentile
     and the mean reported (it was the mean, which one move slowed by a busy machine could lift past the budget); the map layer's pass time was
     already the median of five passes (`measure.js`); the harness's 20 s waits are functional timeouts, not thresholds, and are kept.
+- **The verification's own faults, found and fixed on the way** (tools only; the build unchanged). The harness's `toast` block read the
+  phase's message 150 ms after its key, and on a slow runner after the message's own 3.4 s (CI on `ac2067a`: one case of 18 read hidden,
+  844 x 390 in Watch): it holds the message for its read now, as `tools/stage8/toast-8h.js` does (`91434fd`; reproduced here with the main
+  thread stalled 4 s after the key, the block as it was reading the message hidden, as it is reading it shown at its place). `mutate-8h.js`
+  told its controls by an id's prefix ("nonear" begins with "none") and looked for the château in `BLDG` as an object of arrays (`7b78265`);
+  `perf-local.js` ignored `AUSTERLITZ_CHROME` (`7b78265`); `stills-8h.js` captured the message after its timer at the desktop sizes
+  (`0cc3ec0`); `near-8h.js --toggle` warms up longer and counts its slow frames (`f2227f0`).
+- **Performance** (software WebGL here and on CI: none of it a device's frame rate; `docs/STAGE8_SPEC.md` section 20.12). The frame on CI's
+  runs as 8G's: the same draw calls in all 39 cases, 72 triangles fewer on the desktop landscape and 36 on a phone's (the buildings'), more in
+  none; the largest desktop frame 862 calls and 2,204,961 triangles (section 8.3's budget 900 and 2.8 million), the phone's 1,251,039 (1.62
+  million). The gait as built 0.104-0.131 ms a frame (the budget 0.2); 8F's profile option 0.206-0.362 ms on every block and 0.107-0.256 ms
+  where a man is drawn 48 px or more (question 265). The crowns' hook: no cost distinguishable from the spread of software WebGL's frames (from
+  9 ms to 6.6 s on one page, the hook on or off). The start as above. No per-frame JavaScript added; render on demand, `lowTier`, culling, the
+  shadows and reduced motion kept. The device routes run end to end here (the phone route, the effects bracket, the desktop route;
+  `route-*-local.json`): no console warning or error, the largest frames 532 calls and 1,452,827 triangles on the phone's low tier and 820
+  calls and 2,375,397 triangles on the desktop, within their budgets; their times this container's CPU (0.02 to 9 s a frame), deciding nothing.
+- **Verified** (here: Chromium 153.0.8010.12, the container's, and 141.0.7390.37, CI's, installed here; CI: 141.0.7390.37). `npm test` (all nine
+  suites and the height guard), `check:data` (134 of 134 identical to `archive/stage8h-24e29da7.html`), `check:chronology` (0 errors),
+  `check:baseline` on `9fa50cb4...`; `check:selftest` here in Chromium 141, 316 of 316 and every live block. On CI, on `8d05f2b`: the push run
+  40995027349 and the pull request's 40995106927 pass every job (the self-test 316 of 316 against the written manifest, the motion block's 16 at 245,
+  985, 130 and 10, `toast` 18 of 18 at 0 px, `ring` 2 px), and the dispatched 40995113422's four jobs, its `check:visual` passing in 198 minutes (its
+  39 cases; every census reconciled and every frame with culling its frame without, 0 pixels; the motion block's 26 runs at 8G's counts and
+  visibility, 33,159 of 46,492 formation-frames drawn; the culling block's 485 frames judged and 243 compared, 0 pixels differing); `check:contrast`
+  on every run; the later commits (records and tools, the build the same): every run of the later commits (records and tools; the build the same) that
+  had finished when this section was written passes every job but one: the push run on `ac2067a` (41010403258), whose `toast` block read the phase's
+  message hidden in one of its 18 cases (844 x 390, Watch) on a slow runner, the block's race (section 20.5; the same commit's pull-request run
+  passing); fixed in `91434fd`, and on `607bb22` (run 41014490595) the self-test with the block as fixed passes 316 of 316, `toast` 18 of 18 shown at
+  0 px (`selftest-ci-607bb22.json`). The mutations: `mutate-css-8h.js` (17 failing their rules, 4 controls passing); `mutate-8h.js` on `e8fed44b` (the
+  8G, 8E and A-6 blocks: nine failing their checks, the controls passing) and on the final build (the 8F block's two failing the crowns' check, the
+  château's two planner mutations reported equivalent). The matched captures (eleven views, `pairs/`) and the pause clip (`clips/pause-8g-8h.mp4`).
+  The evidence listed in `docs/stage8-evidence/README.md`.
+- **Uncertain or open** (none blocks the build; each drawn as recorded; the questions in section 20.14). *Historical:* the geographic
+  corrections proposed and not made (questions 259 and 260; every site in 1805 is the 1825-52 site carried back by inference, the First
+  Military Survey not reached; the highway's correction would supersede the correction pass's recorded route); the château's distance from its
+  church a convention, its bearing held within an octant of today's; Satschan's five farmsteads of seven (question 261). *Implementation:* the
+  device runs for 8E-8H (desktop, iPhone, an integrated-GPU laptop, the effects-off bracket) pending; decisions 258 (b) and 255 (d) prototyped,
+  not adopted (questions 262, 263); the ice under a low sun kept (question 264); the feet's remaining cases kept open with their bounds and
+  counts (question 265); a crown within a few units of the eye still large facets; four villages' buildings largely off the drawn village class
+  (8G's, a land-cover question); `GEOREF.GT`'s 13.5 m shift against the Czech survey (below the map's unit); 8G's uncommitted evidence
+  reconstructed or replaced, not recovered. Carried: 8E's drivers and gunners, decision 245 (a)'s facings, 8G's `notDrawn`.
 
 ## 2026-10 · Stage 8, implementation PR 8G: buildings and structures (decision 248 (a)), with its prerequisites
 
