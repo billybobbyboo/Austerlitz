@@ -1,0 +1,53 @@
+motion hybrid-pan                               jumps 5 pops 55 lod 23 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1378 of 2049 in view, longest hidden 2467 ms, pre drawn 2, rest drawn 20 (48.6 s)
+motion hybrid-zoom                              jumps 27 pops 116 lod 24 flicker 4 overlap 0 keep hidden 0 remnants out of rule 0 moving 70 of 91 frames, ends idle, formations drawn 1375 of 2254 in view, longest hidden 1533 ms, pre drawn 2, rest drawn 18 (4.1 s)
+motion hybrid-orbit                             jumps 7 pops 145 lod 0 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1489 of 2548 in view, longest hidden 2200 ms, pre drawn 2, rest drawn 19 (3.1 s)
+motion hybrid-glide                             jumps 16 pops 79 lod 12 flicker 1 overlap 0 keep hidden 0 remnants out of rule 0 moving 47 of 76 frames, ends idle, formations drawn 1221 of 1805 in view, longest hidden 2533 ms, pre drawn 2, rest drawn 8 (2.5 s)
+motion hybrid-play                              jumps 10 pops 109 lod 2 flicker 2 overlap 0 keep hidden 0 remnants out of rule 0 moving 90 of 121 frames, ends idle, formations drawn 2115 of 3388 in view, longest hidden 3100 ms, pre drawn 8, rest drawn 6 (11.5 s)
+motion paper-pan                                jumps 0 pops 5 lod 0 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1240 of 1274 in view, longest hidden 667 ms, pre drawn 2, rest drawn 19 (29.7 s)
+motion paper-zoom                               jumps 8 pops 92 lod 0 flicker 2 overlap 0 keep hidden 0 remnants out of rule 0 moving 70 of 91 frames, ends idle, formations drawn 850 of 1229 in view, longest hidden 667 ms, pre drawn 2, rest drawn 18 (2.2 s)
+motion paper-glide                              jumps 5 pops 43 lod 27 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 44 of 76 frames, ends idle, formations drawn 566 of 821 in view, longest hidden 633 ms, pre drawn 2, rest drawn 4 (1.6 s)
+motion paper-play                               jumps 4 pops 29 lod 2 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 90 of 121 frames, ends idle, formations drawn 1564 of 1694 in view, longest hidden 667 ms, pre drawn 2, rest drawn 6 (3.8 s)
+motion land-pan                                 jumps 12 pops 34 lod 2 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1869 of 2051 in view, longest hidden 1133 ms, pre drawn 2, rest drawn 20 (6.1 s)
+motion land-zoom                                jumps 32 pops 63 lod 30 flicker 1 overlap 0 keep hidden 0 remnants out of rule 0 moving 70 of 91 frames, ends idle, formations drawn 1730 of 2261 in view, longest hidden 667 ms, pre drawn 2, rest drawn 18 (2.3 s)
+motion land-orbit                               jumps 40 pops 78 lod 0 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1955 of 2366 in view, longest hidden 667 ms, pre drawn 2, rest drawn 19 (3 s)
+motion land-play                                jumps 22 pops 74 lod 2 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 90 of 121 frames, ends idle, formations drawn 2613 of 3146 in view, longest hidden 667 ms, pre drawn 8, rest drawn 6 (5.1 s)
+motion low-pan                                  jumps 6 pops 10 lod 0 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 820 of 885 in view, longest hidden 533 ms, pre drawn 2, rest drawn 19 (3 s)
+motion low-orbit                                jumps 16 pops 29 lod 0 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 691 of 887 in view, longest hidden 633 ms, pre drawn 2, rest drawn 19 (4.4 s)
+motion low-zoom                                 jumps 34 pops 23 lod 6 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 70 of 91 frames, ends idle, formations drawn 505 of 633 in view, longest hidden 633 ms, pre drawn 2, rest drawn 18 (2.5 s)
+motion hybrid-pan (real input)                  jumps 5 pops 55 lod 23 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1378 of 2049 in view, longest hidden 2467 ms, pre drawn undefined, rest drawn undefined (66.8 s)
+motion hybrid-orbit (real input)                jumps 7 pops 145 lod 0 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1489 of 2548 in view, longest hidden 2200 ms, pre drawn undefined, rest drawn undefined (52.5 s)
+motion hybrid-zoom (real input)                 jumps 27 pops 116 lod 24 flicker 4 overlap 0 keep hidden 0 remnants out of rule 0 moving 70 of 91 frames, ends idle, formations drawn 1375 of 2254 in view, longest hidden 1533 ms, pre drawn undefined, rest drawn undefined (37.2 s)
+motion paper-zoom (real input)                  jumps 8 pops 92 lod 0 flicker 2 overlap 0 keep hidden 0 remnants out of rule 0 moving 70 of 91 frames, ends idle, formations drawn 850 of 1229 in view, longest hidden 667 ms, pre drawn undefined, rest drawn undefined (37.4 s)
+motion hybrid-orbit (sthilaire selected)        jumps 10 pops 141 lod 0 flicker 4 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1494 of 2548 in view, longest hidden 2000 ms, pre drawn 8, rest drawn 19 (2.6 s)
+motion paper-zoom (sthilaire selected)          jumps 13 pops 106 lod 0 flicker 2 overlap 0 keep hidden 0 remnants out of rule 0 moving 70 of 91 frames, ends idle, formations drawn 823 of 1229 in view, longest hidden 667 ms, pre drawn 2, rest drawn 18 (1.6 s)
+motion hybrid-pan (the fr reading)              jumps 6 pops 48 lod 23 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 1308 of 1935 in view, longest hidden 2467 ms, pre drawn 2, rest drawn 20 (3.1 s)
+motion hybrid-pan (the al reading)              jumps 5 pops 48 lod 14 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 979 of 1346 in view, longest hidden 2467 ms, pre drawn 2, rest drawn 20 (2.7 s)
+motion paper-play (the al reading)              jumps 4 pops 32 lod 2 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 90 of 121 frames, ends idle, formations drawn 1178 of 1331 in view, longest hidden 667 ms, pre drawn 2, rest drawn 6 (4.6 s)
+motion phone-pan (a finger, 390 px)             jumps 1 pops 49 lod 0 flicker 0 overlap 0 keep hidden 0 remnants out of rule 0 moving 73 of 91 frames, ends idle, formations drawn 296 of 732 in view, longest hidden 1367 ms, pre drawn 2, rest drawn 19 (6.9 s)
+the 16: {"jumps":244,"pops":984,"lod":130,"flicker":10}; visibility {"inView":46492,"drawn":33151,"share":71.3,"longestMs":3100,"episodes":729}; 26 runs; console 0 (445 s)
+  hybrid-pan                   formations drawn 1378 of 2049 (67.3%), longest hidden 2467 ms, 26 disappearances
+  hybrid-zoom                  formations drawn 1375 of 2254 (61.0%), longest hidden 1533 ms, 53 disappearances
+  hybrid-orbit                 formations drawn 1489 of 2548 (58.4%), longest hidden 2200 ms, 51 disappearances
+  hybrid-glide                 formations drawn 1221 of 1805 (67.6%), longest hidden 2533 ms, 36 disappearances
+  hybrid-play                  formations drawn 2115 of 3388 (62.4%), longest hidden 3100 ms, 45 disappearances
+  paper-pan                    formations drawn 1240 of 1274 (97.3%), longest hidden 667 ms, 2 disappearances
+  paper-zoom                   formations drawn 850 of 1229 (69.2%), longest hidden 667 ms, 27 disappearances
+  paper-glide                  formations drawn 566 of 821 (68.9%), longest hidden 633 ms, 30 disappearances
+  paper-play                   formations drawn 1564 of 1694 (92.3%), longest hidden 667 ms, 8 disappearances
+  land-pan                     formations drawn 1869 of 2051 (91.1%), longest hidden 1133 ms, 14 disappearances
+  land-zoom                    formations drawn 1730 of 2261 (76.5%), longest hidden 667 ms, 37 disappearances
+  land-orbit                   formations drawn 1955 of 2366 (82.6%), longest hidden 667 ms, 27 disappearances
+  land-play                    formations drawn 2613 of 3146 (83.1%), longest hidden 667 ms, 32 disappearances
+  low-pan                      formations drawn 820 of 885 (92.7%), longest hidden 533 ms, 5 disappearances
+  low-orbit                    formations drawn 691 of 887 (77.9%), longest hidden 633 ms, 15 disappearances
+  low-zoom                     formations drawn 505 of 633 (79.8%), longest hidden 633 ms, 9 disappearances
+  hybrid-pan+real              formations drawn 1378 of 2049 (67.3%), longest hidden 2467 ms, 26 disappearances
+  hybrid-orbit+real            formations drawn 1489 of 2548 (58.4%), longest hidden 2200 ms, 51 disappearances
+  hybrid-zoom+real             formations drawn 1375 of 2254 (61.0%), longest hidden 1533 ms, 53 disappearances
+  paper-zoom+real              formations drawn 850 of 1229 (69.2%), longest hidden 667 ms, 27 disappearances
+  hybrid-orbit+sel             formations drawn 1494 of 2548 (58.6%), longest hidden 2000 ms, 53 disappearances
+  paper-zoom+sel               formations drawn 823 of 1229 (67.0%), longest hidden 667 ms, 29 disappearances
+  hybrid-pan+fr                formations drawn 1308 of 1935 (67.6%), longest hidden 2467 ms, 22 disappearances
+  hybrid-pan+al                formations drawn 979 of 1346 (72.7%), longest hidden 2467 ms, 17 disappearances
+  paper-play+al                formations drawn 1178 of 1331 (88.5%), longest hidden 667 ms, 9 disappearances
+  phone-pan+touch              formations drawn 296 of 732 (40.4%), longest hidden 1367 ms, 25 disappearances

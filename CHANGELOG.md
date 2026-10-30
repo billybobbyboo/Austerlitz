@@ -66,7 +66,25 @@ newer commit on `main` when the work began, 29 October 2026); not merged.** The 
     bodies and the event markers (a focused in-the-hour marker 2 px in the accent, apart from its 1 px ring); the map layer's group in the page's
     `main` landmark (its place in the tab order unchanged) and the timeline a named region (`section`, "Timeline"); the heading levels: the Now
     tab's "What changed" an `h3` under the dispatch's `h2` (an `h4`), the Plans tab's heads `h2` and `h3` under the rail's `h1` (`h3` and `h4`), an
-    Analysis theme's title an `h2` (an `h3`), each keeping its look by its own rule.
+    Analysis theme's title an `h2` (an `h3`), each keeping its look by its own rule. The self-test's new check, "A-6 (8H)" (the manifest 314 to
+    315), holds the one `main` landmark holding the map layer, the timeline a named region, no heading level skipped in the states a visitor reads
+    headings in (the Now tab at 09:00, the Plans tab with both plans, an Analysis theme, a formation's, an event's and a place's dossier, the
+    sources sheet, the keys overlay) and the 2 px ring; run on 8G's build it fails (no `main`, the timeline a `div`, skipped levels, a 1 px ring),
+    and it passes here. And the ring as a keyboard user sees it, not from a style: a live block of the harness, `ring` (in `check:selftest` and
+    `check:visual`, judged by `checkLive`), reaches Play by real Tab presses from the page's start and reads its ring off a screenshot (from the
+    middle of each side outward, the pixels of the ring's colour): 2 px on each of the four sides here (8G's build: 1 px each), focused and
+    `:focus-visible`, solid, in the theme's accent.
+- **The motion block (decision 257 (b)) kept at its own counts.** On CI's browser (Chromium 141, `tools/stage8/motion-8h.js`) 8H's pose held at a
+  seek changed two runs: the paper map's Play, 4 jumps, 29 pops and 1,564 formation-frames drawn where 8G's build measures 5, 30 and 1,570, and the
+  same under the Allied reading, 1,178 drawn where 1,180 (`MOTION.VIS` holds "drawn at least" 1,570 and 1,180: both would fail). The cause,
+  measured: a Play run sets its own clock (a seek) before its eight frames at rest; on 8G's build the blocks went on easing after that seek, which
+  kept all eight drawn, each laying the map layer out; on 8H's a seek shows the clock's pose at once and render on demand draws the two the driver
+  asks for, so the layer's re-placement passes during Play fall six frames earlier (the landscape's two Play runs draw all eight on both builds:
+  Follow keeps them drawn). With the eight frames drawn, 8H's build gives 8G's counts exactly (5, 30, 1,570). The driver
+  (`tools/visual/motion.js`, the Play run's set-up) now asks for its pre frames, so they are drawn on any build as the baselines were measured;
+  every other run's frames are as before. No limit changed.
+- **`dwellAdvance`** takes a dwell state set by other means without its speed (the self-test's own) as entered at the current speed, so the
+  rescale of S-7 never divides by an absent speed.
 - **Maintenance (section 20.7): G-2, P-3, P-4, T-7; a second data task, no coordinate changed.**
   - *G-2, the map-to-world factor typed outside `geo.js`:* `GEOREF` exports `MAP_PER_WORLD` (2, its own value, unexported until now) and
     `WORLD_ORIGIN` (the map point at the world's origin, [340, 250], frozen); `world.js`'s `W` and `regionalH`'s inverse and `app.js`'s

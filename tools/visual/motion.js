@@ -194,7 +194,12 @@ const RUN=function(a){
   if(a.reading) setCommandView(a.reading);
   if(sel){ select("f",sel); }
   requestRender(2);   /* the layer laid out before the first snap, as a visitor's view at rest has it (render on demand draws nothing at rest) */
-  if(kind==="play"){ stopPlay(); setClock(a.from||540,{instant:true,force:true,camera:false}); if(mode!=="staff"){ freeCam=false; curVantage=null; } setSpeed(amt); D.frame(a.pre||8); F.push(D.snap(opt)); togglePlay(); }   /* Follow on, as Part A's probe had it (no glide to the phase's view) */
+  /* a Play run sets its own clock (a seek) and draws its pre frames, each laying the layer out (Stage 8, 8H): until 8H the blocks went on easing
+     after a seek, which kept every one of these frames drawn, and the decision 257 (b) baselines' passes are phased by it; since 8H a seek shows
+     the clock's pose at once and render on demand would draw two of the eight, moving the re-placement passes by six frames (the paper map's
+     Play: 4 jumps, 29 pops and 1,564 formation-frames drawn where 8G's 5, 30 and 1,570, the same layer); asked for here, they are drawn on any
+     build, as the baselines were measured (docs/STAGE8_SPEC.md section 20.4) */
+  if(kind==="play"){ stopPlay(); setClock(a.from||540,{instant:true,force:true,camera:false}); if(mode!=="staff"){ freeCam=false; curVantage=null; } setSpeed(amt); requestRender(a.pre||8); D.frame(a.pre||8); F.push(D.snap(opt)); togglePlay(); }   /* Follow on, as Part A's probe had it (no glide to the phase's view) */
   else { D.frame(a.pre||8); F.push(D.snap(opt)); }
   if(kind==="glide"){ if(mode==="staff"){ var w0=W(210,362); MAPCAM.glideTo(w0[0],w0[1],0.09,1500); } else flyTo(VANTAGE[amt]); }
   if(kind==="pan") D.down(c[0],c[1],0);

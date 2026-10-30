@@ -8812,6 +8812,7 @@ function dwellAdvance(dt,v){
        second), then dropped to 1/2x's 5. Now the ease's remaining time is scaled by the speeds' ratio (its fraction and distance kept): the
        clock stays where it is, its rate changes by the ratio as a change of speed off the ease does, and the ease out ends at the new speed's
        rate; during the hold only the ease out to come is rescaled (the hold is time) */
+    if(st.v===undefined) st.v=v;   /* a state set by other means (the self-test's): entered at this speed */
     if(st.v!==v&&v>0){ var sf=st.v/v; st.te*=sf; if(st.stage!=="hold") st.tau*=sf; st.v=v; }
     var lim=st.stage==="hold"?DWELL.HOLD:st.te, step=Math.min(dt,lim-st.tau);
     st.tau+=step; dt-=step;
@@ -12198,6 +12199,49 @@ var AUSTERLITZ_DEBUG=(function(){
       select(null,null); setPresentation(K0.pres); if(K0.sel) select(K0.sel.kind,K0.sel.id);
       ck("events: every event has a pointer path, its own marker or the dossier of an event starting at the same minute whose marker a press reaches (docs/FINAL_AUDIT.md A-3)",
         !bad.length&&_evTicks.length>0, bad.length?bad.join("; "):_evTicks.length+" markers: "+(_evTicks.length-viaD)+" by their own marker, "+viaD+" through a coinciding event's dossier");
+    })();
+    /* Stage 8, implementation PR 8H (docs/FINAL_AUDIT.md A-6; docs/STAGE8_SPEC.md section 20.5): one main landmark, holding the map layer; the
+       timeline a named region; in each state a visitor reads headings in (the Now tab at 09:00, the Plans tab with both plans, an Analysis theme,
+       a formation's, an event's and a place's dossier, the sources sheet, the keys overlay) no heading level skipped: each visible heading in the
+       document's order at most one level below the one before it (until 8H the Now tab's "What changed" stood an h4 under the dispatch's h2,
+       the Plans tab's heads h3 under the rail's h1); and a focused control's ring 2 px, read on the control focused (or, where the browser does
+       not take a script's focus as visible, its rule). Self-contained: it keeps and restores what it changes */
+    (function(){
+      var bad=[], rep=[], K={clock:clock, tab:tabNow, ch:tabChosen, chap:chapter, plan:planSide, sel:selection, pres:presentation, act:document.activeElement};
+      try{
+        var mains=document.querySelectorAll("main,[role=main]"), ml=document.getElementById("maplayer"), tb=document.querySelector(".timebar");
+        if(mains.length!==1||!ml||!mains[0].contains(ml)) bad.push(mains.length+" main landmarks"+(ml&&mains.length===1&&!mains[0].contains(ml)?", the map layer outside it":""));
+        if(!tb||!((tb.tagName==="SECTION"&&tb.getAttribute("aria-label"))||(tb.getAttribute("role")==="region"&&tb.getAttribute("aria-label")))) bad.push("the timeline not a named region");
+        function shownH(e){ for(var n=e;n&&n.nodeType===1;n=n.parentElement){ if(n.hidden) return false; var s=getComputedStyle(n); if(s.display==="none"||s.visibility==="hidden") return false; } return true; }
+        function outline(label){ var H=[].filter.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6"),shownH), prev=0, lv=[];
+          H.forEach(function(h){ var l=+h.tagName[1]; lv.push(l); if(prev&&l>prev+1) bad.push(label+": "+h.tagName+" \""+(h.textContent||"").trim().slice(0,30)+"\" after an h"+prev); prev=l; });
+          rep.push(label+" "+lv.join("")); }
+        if(presentation!=="study") setPresentation("study"); select(null,null);
+        setClock(540,{instant:true,force:true,camera:false}); finishTween();
+        if(docked){ selectTab("now"); outline("the Now tab"); }
+        selectTab("plans"); if(!planSide) setPlan("both"); outline("the Plans tab"); if(!K.plan&&planSide==="both") setPlan("both");   /* setPlan toggles */
+        selectTab("analysis"); if(ANALYSIS.length){ setChapter(ANALYSIS[0].id); outline("an Analysis theme"); setChapter(null); }
+        selectTab(docked?"now":"oob");
+        select("f","sthilaire"); outline("a formation's dossier"); select(null,null);
+        if(EVENTS.length){ select("e",EVENTS[0].id); outline("an event's dossier"); select(null,null); }
+        var tl=FEATURES.filter(function(f){ return f.kind==="village"||f.kind==="town"; })[0]; if(tl){ select("t",tl.id); outline("a place's dossier"); select(null,null); }
+        openSources(); outline("the sources sheet"); closeSources();
+        setHelp(true); outline("the keys overlay"); setHelp(false);
+        /* the ring: on the Play button focused; Chrome takes a script's focus as visible when the last input was a key, else the rule is read */
+        var pb=document.getElementById("play"), w=null, how="";
+        if(pb){ pb.focus(); if(pb.matches(":focus-visible")){ w=getComputedStyle(pb).outlineWidth; how="the control focused"; } }
+        if(w===null){ [].forEach.call(document.styleSheets,function(ss){ var R; try{ R=ss.cssRules; }catch(e){ return; } [].forEach.call(R||[],function(r){ if(r.selectorText===":focus-visible") w=r.style.outlineWidth; }); }); how="the :focus-visible rule"; }
+        if(w!=="2px") bad.push("the focus ring "+w+" ("+how+"), not 2px");
+        rep.push("the focus ring "+w+" ("+how+")");
+      } catch(err){ bad.push("threw: "+err.message+" "+String(err.stack||"").split("\n")[1]);
+      } finally {
+        if(sheetIsOpen&&sheetIsOpen("help")) setHelp(false); closeSources(); select(K.sel?K.sel.kind:null,K.sel?K.sel.id:null);
+        if(chapter!==K.chap) setChapter(K.chap||null); if(planSide!==K.plan){ if(planSide) setPlan(planSide); if(K.plan) setPlan(K.plan); } selectTab(K.tab); tabChosen=K.ch;
+        if(presentation!==K.pres) setPresentation(K.pres); setClock(K.clock,{instant:true,force:true,camera:false}); finishTween();
+        if(K.act&&K.act.focus) K.act.focus(); else if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      }
+      ck("A-6 (8H): one main landmark holding the map layer and the timeline a named region; no heading level skipped in the rail's tabs, the dossiers and the sheets; a focused control's ring 2 px (docs/FINAL_AUDIT.md A-6)",
+        !bad.length, rep.join("; ")+(bad.length?"; WRONG: "+bad.slice(0,6).join("; "):""));
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),

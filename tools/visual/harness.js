@@ -623,6 +623,28 @@ async function interact(page,it,vp){
         await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
         LIVE.toast=TS; console.log("the phase's message: "+TS.map(c=>c.at+" "+(c.on?"shown":"NOT SHOWN")+" at "+c.box.join(",")+(c.overlapSwitch||c.others.length?" OVER "+c.overlapSwitch+" px of the switch, "+JSON.stringify(c.others):"")).join("; "));
       }
+      /* Stage 8, implementation PR 8H (docs/FINAL_AUDIT.md A-6; docs/STAGE8_SPEC.md section 20.5): the focus ring as a keyboard user sees it. Play
+         reached from the page's start by real Tab presses (Study, nothing open), then its ring read off a screenshot, not a style: from the middle
+         of each of the button's four sides outward, the run of pixels within 60 of the ring's colour (its outline colour, the theme's accent) */
+      if(await first.evaluate(()=>!!document.getElementById("play"))){
+        AT="ring";
+        await first.evaluate(()=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); if(typeof setMenu==="function") setMenu(false); setPresentation("study"); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+        let tabs=0; while(tabs<120&&await first.evaluate(()=>!(document.activeElement&&document.activeElement.id==="play"))){ await first.keyboard.press("Tab"); tabs++; }
+        const B=await first.evaluate(()=>{ const e=document.getElementById("play"), r=e.getBoundingClientRect(), cs=getComputedStyle(e);
+          return {x:r.left,y:r.top,w:r.width,h:r.height,focused:document.activeElement===e,fv:e.matches(":focus-visible"),color:cs.outlineColor,style:cs.outlineStyle,width:cs.outlineWidth,offset:cs.outlineOffset}; });
+        const pad=10, clip={x:Math.max(0,Math.floor(B.x)-pad),y:Math.max(0,Math.floor(B.y)-pad),width:Math.ceil(B.w)+2*pad,height:Math.ceil(B.h)+2*pad};
+        const b64=(await first.screenshot({clip:clip,timeout:180000,scale:"css"})).toString("base64");
+        const R=await first.evaluate(a=>new Promise(res=>{ const im=new Image(); im.onload=()=>{ const cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height;
+          const x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); const d=x.getImageData(0,0,cv.width,cv.height).data, m=/rgba?\(([^)]+)\)/.exec(a.color), c=m?m[1].split(",").map(parseFloat):[0,0,0];
+          const near=(i,j)=>{ const o=(j*cv.width+i)*4; return Math.hypot(d[o]-c[0],d[o+1]-c[1],d[o+2]-c[2])<=60; };
+          const L=Math.round(a.bx-a.cx), T=Math.round(a.by-a.cy), Rr=Math.round(a.bx-a.cx+a.bw)-1, Bb=Math.round(a.by-a.cy+a.bh)-1, mx=Math.round((L+Rr)/2), my=Math.round((T+Bb)/2);
+          const run=(i,j,di,dj)=>{ let k=0, seen=0; for(;i>=0&&j>=0&&i<cv.width&&j<cv.height&&k<a.pad+2;i+=di,j+=dj,k++){ if(near(i,j)) seen++; else if(seen) break; } return seen; };
+          res({top:run(mx,T-1,0,-1),bottom:run(mx,Bb+1,0,1),left:run(L-1,my,-1,0),right:run(Rr+1,my,1,0)}); }; im.src="data:image/png;base64,"+a.b64; }),
+          {b64:b64,color:B.color,bx:B.x,by:B.y,bw:B.w,bh:B.h,cx:clip.x,cy:clip.y,pad:pad});
+        const accent=await first.evaluate(()=>{ const p=document.createElement("div"); p.style.color=getComputedStyle(document.body).getPropertyValue("--accent")||""; document.body.appendChild(p); const c=getComputedStyle(p).color; p.remove(); return c; });
+        LIVE.ring=Object.assign({tabs:tabs,accent:accent},B,{runs:R}); console.log("the focus ring by real Tab presses: "+JSON.stringify(LIVE.ring));
+        await first.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      }
       /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): the reduced-motion preference turned on and off while the page is open (the audit's rm-live):
          the app follows it (RM) and the panels' slides stop (the rail's transition-duration) */
       AT="reduced motion";

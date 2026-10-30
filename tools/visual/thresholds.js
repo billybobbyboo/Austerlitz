@@ -669,6 +669,13 @@ function checkLive(live,opts){
     (Array.isArray(T)?T:[]).forEach(c=>{
       if(!c.on||c.text!==c.want||c.clock!==525) f.push("the phase's message at "+c.at+": "+(c.on?"":"not shown; ")+"text "+JSON.stringify(c.text)+" at "+c.clock+" (08:45's expected)");
       if(c.overlapSwitch>0||(c.others||[]).length) f.push("the phase's message at "+c.at+": over the presentation switch by "+c.overlapSwitch+" px"+((c.others||[]).length?", over "+c.others.map(o=>o.el+" by "+o.px+" px").join(", "):"")); }); }
+  /* Stage 8, 8H (docs/FINAL_AUDIT.md A-6): the focus ring as drawn, on Play reached by real Tab presses: focused and :focus-visible, a solid
+     outline in the theme's accent, and on each of its four sides 2 or 3 pixels of the ring's colour in the screenshot (2 px drawn; a third where
+     its edge falls between pixels) */
+  if(req("ring","the focus ring on a control reached by real Tab presses, read on a screenshot (Stage 8, 8H, A-6)")){ const G=live.ring, R=G.runs||{};
+    if(!G.focused||!G.fv) f.push("the focus ring: Play "+(G.focused?"focused but not :focus-visible":"not reached")+" after "+G.tabs+" Tab presses");
+    if(G.style!=="solid"||(G.accent&&G.color!==G.accent)) f.push("the focus ring: "+G.style+" "+G.color+", the accent "+G.accent+" expected");
+    ["top","right","bottom","left"].forEach(k=>{ if(!(R[k]>=2&&R[k]<=3)) f.push("the focus ring: "+(R[k]||0)+" px of its colour beside Play's "+k+" side (2 expected)"); }); }
   const hm=t=>String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.round(t%60)).padStart(2,"0");
   if(req("slider","the slider and an event marker by real key presses (Stage 3C)")){ const S=live.slider;
     if(!Array.isArray(S.keys)||S.keys.length!==8) f.push("the slider by real key presses: "+(S.keys?S.keys.length:0)+" of 8 keys recorded");
