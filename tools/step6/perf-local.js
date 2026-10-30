@@ -26,7 +26,8 @@ function serve(){ return new Promise(res=>{ const s=http.createServer((q,r)=>{
   r.writeHead(200,{"content-type":TYPES[path.extname(p)]||"application/octet-stream"}); fs.createReadStream(p).pipe(r); }).listen(0,"127.0.0.1",()=>res(s)); }); }
 (async()=>{
   const srv=await serve(), base="http://127.0.0.1:"+srv.address().port+"/";
-  const browser=await chromium.launch({args:["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
+  const browser=await chromium.launch({executablePath:process.env.AUSTERLITZ_CHROME||undefined,   /* as the harness launches it (Stage 8, 8H: a container whose Playwright has no browser of its own) */
+    args:["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
   const cfg=Object.assign({},DEVICES[DEV]); if(VPO){ const v=VPO.split("x").map(Number); cfg.viewport={width:v[0],height:v[1]}; }
   const ctx=await browser.newContext(cfg), page=await ctx.newPage();
   const errors=[]; page.on("pageerror",e=>errors.push(e.message)); page.on("console",m=>{ if(m.type()==="error"||m.type()==="warning") errors.push(m.type()+": "+m.text()); });

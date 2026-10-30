@@ -55,7 +55,7 @@ const BLOCK=function(m){
   try{ new Function("ck","settle","finishTween","placeCamera",src.slice(a,b))(ck,AUSTERLITZ_DEBUG.settle,fin,AUSTERLITZ_DEBUG.placeCamera); }
   catch(e){ out.push({name:"the block ran",ok:false,detail:"threw: "+e.message}); }
   /* what the planner drew for the château (its main range's centre), to tell a mutation that changes nothing drawn from one the check misses */
-  var drawn=null; try{ Object.keys(BLDG||{}).forEach(function(k){ var A=BLDG[k]; if(!Array.isArray(A)) return; A.forEach(function(r){ if(r&&r.part==="chateau main range"&&r.R) drawn=[+r.R.x.toFixed(4),+r.R.z.toFixed(4)]; }); }); }catch(e){}
+  var drawn=null; try{ (Array.isArray(BLDG)?BLDG:[]).forEach(function(r){ if(r&&r.part==="chateau main range"&&r.R) drawn=[+r.R.x.toFixed(4),+r.R.z.toFixed(4)]; }); }catch(e){}   /* BLDG: one record a building */
   return {checks:out, ms:Math.round(performance.now()-t0), chateau:drawn};
 };
 (async()=>{
@@ -73,7 +73,7 @@ const BLOCK=function(m){
     const page=await L.open(browser,[1366,768],{}); await page.evaluate(()=>closeFirst(null));
     const st=await page.evaluate(BLOCK,BLOCKS[blk]); const errs=page._errors.slice(); await page.close();
     const failed=(st.checks||[]).filter(c=>!c.ok).map(c=>c.name.slice(0,110)+" | "+String(c.detail).slice(0,+(process.env.MUT_DETAIL||600)));
-    const none=/^none/.test(id);
+    const none=!subs.length;   /* a control: nothing replaced (an id's prefix will not do: "nonear" begins with "none") */
     if(none&&blk==="8g") noneChateau=JSON.stringify(st.chateau);
     /* a mutation of the planner that leaves the château where it was drawn changes nothing the self-test reads (the place chosen already meets
        the rule): equivalent here, held by css-test.js on the code (tools/stage8/mutate-css-8h.js); reported as such, not as a pass */
