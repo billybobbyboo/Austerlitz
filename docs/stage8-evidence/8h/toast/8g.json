@@ -1,6 +1,6 @@
 {
  "tool": "tools/stage8/toast-8h.js",
- "build": "../../../tmp/claude-0/-home-user-Austerlitz/1ee4a9c8-902f-5b36-b09d-00231ca958cd/scratchpad/builds/8g.html",
+ "build": "builds/8g.html",
  "md5": "508927e6f72e1b6f2f9186e954d61b59",
  "browser": "153.0.8010.12",
  "cases": {

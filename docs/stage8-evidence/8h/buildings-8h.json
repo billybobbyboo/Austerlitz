@@ -1,0 +1,1205 @@
+{
+ "tool": "tools/stage8/buildings-8h.js",
+ "browser": "153.0.8010.12",
+ "builds": {
+  "8g": {
+   "villages": {
+    "Bosenitz": {
+     "n": 7,
+     "farms": 7,
+     "ell": 5,
+     "longOnly": 2,
+     "rear": 1,
+     "sizes": [
+      6,
+      0,
+      1
+     ],
+     "skipped": {
+      "road": 2,
+      "building": 26,
+      "outside the footprint": 1,
+      "tree": 3,
+      "plot: a building on it": 1,
+      "street range: tree": 1
+     },
+     "all": 14,
+     "onClass": 14,
+     "inPlace": 14,
+     "church": {
+      "kind": "spired",
+      "dx": 0,
+      "dz": -2.25,
+      "off": 2.25
+     }
+    },
+    "Girzikowitz": {
+     "n": 9,
+     "farms": 9,
+     "ell": 8,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      7,
+      1,
+      1
+     ],
+     "skipped": {
+      "building": 5,
+      "rear: narrow": 1
+     },
+     "all": 17,
+     "onClass": 17,
+     "inPlace": 17,
+     "church": null
+    },
+    "Puntowitz": {
+     "n": 8,
+     "farms": 8,
+     "ell": 7,
+     "longOnly": 1,
+     "rear": 4,
+     "sizes": [
+      6,
+      1,
+      1
+     ],
+     "skipped": {
+      "stream": 10,
+      "building": 5,
+      "rear: narrow": 1,
+      "rear: stream": 1
+     },
+     "all": 19,
+     "onClass": 14,
+     "inPlace": 19,
+     "church": null
+    },
+    "Kobelnitz": {
+     "n": 9,
+     "farms": 9,
+     "ell": 7,
+     "longOnly": 2,
+     "rear": 0,
+     "sizes": [
+      6,
+      2,
+      1
+     ],
+     "skipped": {
+      "stream": 37,
+      "building": 21,
+      "street range: stream": 1,
+      "rear: narrow": 1,
+      "tree": 2,
+      "outside the footprint": 1,
+      "plot: a building on it": 1,
+      "yard": 3,
+      "street range: yard": 1,
+      "road": 2
+     },
+     "all": 16,
+     "onClass": 3,
+     "inPlace": 16,
+     "church": null
+    },
+    "Sokolnitz": {
+     "n": 13,
+     "farms": 13,
+     "ell": 11,
+     "longOnly": 2,
+     "rear": 3,
+     "sizes": [
+      10,
+      0,
+      3
+     ],
+     "skipped": {
+      "stream": 40,
+      "street range: stream": 1,
+      "building": 19,
+      "rear: narrow": 1,
+      "road": 3
+     },
+     "all": 27,
+     "onClass": 0,
+     "inPlace": 27,
+     "church": null
+    },
+    "Telnitz": {
+     "n": 12,
+     "farms": 12,
+     "ell": 7,
+     "longOnly": 5,
+     "rear": 0,
+     "sizes": [
+      0,
+      8,
+      4
+     ],
+     "skipped": {
+      "building": 496,
+      "road": 136,
+      "stream": 120,
+      "plot: a building on it": 5,
+      "street range: stream": 1,
+      "mere": 49,
+      "outside the footprint": 28,
+      "yard": 13,
+      "tree": 1
+     },
+     "all": 20,
+     "onClass": 1,
+     "inPlace": 20,
+     "church": {
+      "kind": "spired",
+      "dx": -3.680607966083869,
+      "dz": -2.125,
+      "off": 4.25
+     }
+    },
+    "Augezd": {
+     "n": 9,
+     "farms": 9,
+     "ell": 6,
+     "longOnly": 3,
+     "rear": 1,
+     "sizes": [
+      6,
+      0,
+      3
+     ],
+     "skipped": {
+      "building": 464,
+      "road": 144,
+      "stream": 70,
+      "yard": 3,
+      "outside the footprint": 50,
+      "plot: a building on it": 4,
+      "tree": 7
+     },
+     "all": 17,
+     "onClass": 17,
+     "inPlace": 17,
+     "church": {
+      "kind": "spired",
+      "dx": -2.6516504294495533,
+      "dz": -2.6516504294495533,
+      "off": 3.75
+     }
+    },
+    "Blasowitz": {
+     "n": 10,
+     "farms": 10,
+     "ell": 10,
+     "longOnly": 0,
+     "rear": 1,
+     "sizes": [
+      10,
+      0,
+      0
+     ],
+     "skipped": {
+      "road": 1,
+      "building": 4,
+      "rear: narrow": 1,
+      "yard": 1
+     },
+     "all": 21,
+     "onClass": 21,
+     "inPlace": 21,
+     "church": null
+    },
+    "Krug": {
+     "n": 5,
+     "farms": 5,
+     "ell": 5,
+     "longOnly": 0,
+     "rear": 2,
+     "sizes": [
+      4,
+      1,
+      0
+     ],
+     "skipped": {
+      "road": 2
+     },
+     "all": 12,
+     "onClass": 12,
+     "inPlace": 12,
+     "church": null
+    },
+    "Holubitz": {
+     "n": 7,
+     "farms": 7,
+     "ell": 6,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      7,
+      0,
+      0
+     ],
+     "skipped": {
+      "outside the footprint": 1,
+      "tree": 1,
+      "building": 14,
+      "street range: building": 1,
+      "plot: a building on it": 1,
+      "rear: narrow": 1
+     },
+     "all": 14,
+     "onClass": 14,
+     "inPlace": 14,
+     "church": {
+      "kind": "chapel",
+      "dx": 9.184850993605148e-17,
+      "dz": 1.5,
+      "off": 1.5
+     }
+    },
+    "Pratzen": {
+     "n": 11,
+     "farms": 11,
+     "ell": 11,
+     "longOnly": 0,
+     "rear": 6,
+     "sizes": [
+      10,
+      1,
+      0
+     ],
+     "skipped": {
+      "building": 81,
+      "road": 18,
+      "plot: a building on it": 2,
+      "stream": 15,
+      "tree": 5,
+      "rear: narrow": 1
+     },
+     "all": 29,
+     "onClass": 29,
+     "inPlace": 29,
+     "church": {
+      "kind": "spired",
+      "dx": 3.247595264191645,
+      "dz": 1.8749999999999998,
+      "off": 3.75
+     }
+    },
+    "Bellowitz": {
+     "n": 7,
+     "farms": 7,
+     "ell": 7,
+     "longOnly": 0,
+     "rear": 1,
+     "sizes": [
+      7,
+      0,
+      0
+     ],
+     "skipped": {
+      "outside the footprint": 14,
+      "building": 11,
+      "plot: a building on it": 1,
+      "road": 1
+     },
+     "all": 15,
+     "onClass": 15,
+     "inPlace": 15,
+     "church": null
+    },
+    "Schlapanitz": {
+     "n": 9,
+     "farms": 9,
+     "ell": 8,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      8,
+      0,
+      1
+     ],
+     "skipped": {
+      "building": 24,
+      "plot: a building on it": 4,
+      "rear: narrow": 2,
+      "outside the footprint": 1
+     },
+     "all": 18,
+     "onClass": 18,
+     "inPlace": 18,
+     "church": {
+      "kind": "spired",
+      "dx": 0,
+      "dz": 2.25,
+      "off": 2.25
+     }
+    },
+    "Krzenowitz": {
+     "n": 10,
+     "farms": 10,
+     "ell": 9,
+     "longOnly": 1,
+     "rear": 2,
+     "sizes": [
+      8,
+      1,
+      1
+     ],
+     "skipped": {
+      "building": 34,
+      "road": 9,
+      "rear: road": 1,
+      "plot: a building on it": 1,
+      "stream": 10,
+      "yard": 2
+     },
+     "all": 22,
+     "onClass": 22,
+     "inPlace": 22,
+     "church": {
+      "kind": "spired",
+      "dx": -0.905866657858823,
+      "dz": 3.380740392011738,
+      "off": 3.5
+     }
+    },
+    "Austerlitz": {
+     "n": 24,
+     "farms": 24,
+     "ell": 23,
+     "longOnly": 1,
+     "rear": 5,
+     "sizes": [
+      21,
+      0,
+      3
+     ],
+     "skipped": {
+      "building": 16,
+      "stream": 2,
+      "yard": 1,
+      "tree": 3,
+      "plot: a building on it": 1,
+      "outside the footprint": 2
+     },
+     "all": 61,
+     "onClass": 61,
+     "inPlace": 61,
+     "church": {
+      "kind": "temple",
+      "dx": 2.414814565722665,
+      "dz": -0.6470476127563032,
+      "off": 2.5
+     }
+    },
+    "Menitz": {
+     "n": 7,
+     "farms": 7,
+     "ell": 5,
+     "longOnly": 2,
+     "rear": 1,
+     "sizes": [
+      5,
+      1,
+      1
+     ],
+     "skipped": {
+      "building": 27,
+      "plot: a building on it": 4,
+      "tree": 3,
+      "outside the footprint": 1,
+      "street range: yard": 1
+     },
+     "all": 14,
+     "onClass": 14,
+     "inPlace": 14,
+     "church": {
+      "kind": "spired",
+      "dx": 0,
+      "dz": 0,
+      "off": 0
+     }
+    },
+    "Satschan": {
+     "n": 7,
+     "farms": 5,
+     "ell": 2,
+     "longOnly": 3,
+     "rear": 0,
+     "sizes": [
+      2,
+      0,
+      3
+     ],
+     "skipped": {
+      "building": 567,
+      "stream": 169,
+      "outside the footprint": 199,
+      "mere": 109,
+      "rear: narrow": 1,
+      "road": 179,
+      "yard": 4
+     },
+     "all": 8,
+     "onClass": 8,
+     "inPlace": 8,
+     "church": {
+      "kind": "spired",
+      "dx": 4.1051847617285375,
+      "dz": 1.0999809416857147,
+      "off": 4.25
+     }
+    },
+    "Turas": {
+     "n": 5,
+     "farms": 5,
+     "ell": 5,
+     "longOnly": 0,
+     "rear": 0,
+     "sizes": [
+      5,
+      0,
+      0
+     ],
+     "skipped": {},
+     "all": 10,
+     "onClass": 10,
+     "inPlace": 10,
+     "church": null
+    },
+    "Hostieradek": {
+     "n": 7,
+     "farms": 7,
+     "ell": 6,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      6,
+      1,
+      0
+     ],
+     "skipped": {
+      "outside the footprint": 10,
+      "rear: narrow": 1,
+      "building": 31,
+      "street range: yard": 1,
+      "stream": 6,
+      "yard": 2
+     },
+     "all": 13,
+     "onClass": 13,
+     "inPlace": 13,
+     "church": null
+    },
+    "Posoritz post house": {
+     "n": 3,
+     "farms": 3,
+     "ell": 2,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      1,
+      2,
+      0
+     ],
+     "skipped": {
+      "street range: road": 1
+     },
+     "all": 5,
+     "onClass": 5,
+     "inPlace": 5,
+     "church": null
+    }
+   },
+   "chateau": {
+    "bearing": 322.5,
+    "want": 236,
+    "deviation": 86.5,
+    "dist_m": 379,
+    "dist_units": 6,
+    "tolerance": 90,
+    "church": {
+     "x": 85.91,
+     "z": -62.65
+    },
+    "chateau": {
+     "x": 81,
+     "z": -66.1
+    }
+   },
+   "errors": [],
+   "dossier": {
+    "Telnitz": "Farmsteads12 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Sokolnitz": "Farmsteads13 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Kobelnitz": "Farmsteads9 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Pratzen village": "Farmsteads11 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Puntowitz": "Farmsteads8 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Girzikowitz": "Farmsteads9 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Blasowitz": "Farmsteads10 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Augezd": "Farmsteads9 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Austerlitz": "Farmsteads24 drawn, each an L along its street: this map's symbol for the town, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Krzenowitz": "Farmsteads10 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference"
+   },
+   "totals": {
+    "buildings": 625
+   },
+   "file": "builds/8g.html",
+   "md5": "508927e6f72e1b6f2f9186e954d61b59",
+   "bytes": 2740873,
+   "pageErrors": []
+  },
+  "8h": {
+   "villages": {
+    "Bosenitz": {
+     "n": 7,
+     "farms": 7,
+     "ell": 5,
+     "longOnly": 2,
+     "rear": 1,
+     "sizes": [
+      6,
+      0,
+      1
+     ],
+     "skipped": {
+      "road": 2,
+      "building": 26,
+      "outside the footprint": 1,
+      "tree": 3,
+      "plot: a building on it": 1,
+      "street range: tree": 1
+     },
+     "all": 14,
+     "onClass": 14,
+     "inPlace": 14,
+     "church": {
+      "kind": "spired",
+      "dx": 0,
+      "dz": -2.25,
+      "off": 2.25
+     }
+    },
+    "Girzikowitz": {
+     "n": 9,
+     "farms": 9,
+     "ell": 8,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      7,
+      1,
+      1
+     ],
+     "skipped": {
+      "building": 5,
+      "rear: narrow": 1
+     },
+     "all": 17,
+     "onClass": 17,
+     "inPlace": 17,
+     "church": null
+    },
+    "Puntowitz": {
+     "n": 8,
+     "farms": 8,
+     "ell": 7,
+     "longOnly": 1,
+     "rear": 4,
+     "sizes": [
+      6,
+      1,
+      1
+     ],
+     "skipped": {
+      "stream": 10,
+      "building": 5,
+      "rear: narrow": 1,
+      "rear: stream": 1
+     },
+     "all": 19,
+     "onClass": 14,
+     "inPlace": 19,
+     "church": null
+    },
+    "Kobelnitz": {
+     "n": 9,
+     "farms": 9,
+     "ell": 7,
+     "longOnly": 2,
+     "rear": 0,
+     "sizes": [
+      6,
+      2,
+      1
+     ],
+     "skipped": {
+      "stream": 37,
+      "building": 21,
+      "street range: stream": 1,
+      "rear: narrow": 1,
+      "tree": 2,
+      "outside the footprint": 1,
+      "plot: a building on it": 1,
+      "yard": 3,
+      "street range: yard": 1,
+      "road": 2
+     },
+     "all": 16,
+     "onClass": 3,
+     "inPlace": 16,
+     "church": null
+    },
+    "Sokolnitz": {
+     "n": 13,
+     "farms": 13,
+     "ell": 11,
+     "longOnly": 2,
+     "rear": 3,
+     "sizes": [
+      10,
+      0,
+      3
+     ],
+     "skipped": {
+      "stream": 40,
+      "street range: stream": 1,
+      "building": 19,
+      "rear: narrow": 1,
+      "road": 3
+     },
+     "all": 27,
+     "onClass": 0,
+     "inPlace": 27,
+     "church": null
+    },
+    "Telnitz": {
+     "n": 12,
+     "farms": 12,
+     "ell": 7,
+     "longOnly": 5,
+     "rear": 0,
+     "sizes": [
+      0,
+      8,
+      4
+     ],
+     "skipped": {
+      "building": 496,
+      "road": 136,
+      "stream": 120,
+      "plot: a building on it": 5,
+      "street range: stream": 1,
+      "mere": 49,
+      "outside the footprint": 28,
+      "yard": 13,
+      "tree": 1
+     },
+     "all": 20,
+     "onClass": 1,
+     "inPlace": 20,
+     "church": {
+      "kind": "spired",
+      "dx": -3.680607966083869,
+      "dz": -2.125,
+      "off": 4.25
+     }
+    },
+    "Augezd": {
+     "n": 9,
+     "farms": 9,
+     "ell": 6,
+     "longOnly": 3,
+     "rear": 1,
+     "sizes": [
+      6,
+      0,
+      3
+     ],
+     "skipped": {
+      "building": 464,
+      "road": 144,
+      "stream": 70,
+      "yard": 3,
+      "outside the footprint": 50,
+      "plot: a building on it": 4,
+      "tree": 7
+     },
+     "all": 17,
+     "onClass": 17,
+     "inPlace": 17,
+     "church": {
+      "kind": "spired",
+      "dx": -2.6516504294495533,
+      "dz": -2.6516504294495533,
+      "off": 3.75
+     }
+    },
+    "Blasowitz": {
+     "n": 10,
+     "farms": 10,
+     "ell": 10,
+     "longOnly": 0,
+     "rear": 1,
+     "sizes": [
+      10,
+      0,
+      0
+     ],
+     "skipped": {
+      "road": 1,
+      "building": 4,
+      "rear: narrow": 1,
+      "yard": 1
+     },
+     "all": 21,
+     "onClass": 21,
+     "inPlace": 21,
+     "church": null
+    },
+    "Krug": {
+     "n": 5,
+     "farms": 5,
+     "ell": 5,
+     "longOnly": 0,
+     "rear": 2,
+     "sizes": [
+      4,
+      1,
+      0
+     ],
+     "skipped": {
+      "road": 2
+     },
+     "all": 12,
+     "onClass": 12,
+     "inPlace": 12,
+     "church": null
+    },
+    "Holubitz": {
+     "n": 7,
+     "farms": 7,
+     "ell": 6,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      7,
+      0,
+      0
+     ],
+     "skipped": {
+      "outside the footprint": 1,
+      "tree": 1,
+      "building": 14,
+      "street range: building": 1,
+      "plot: a building on it": 1,
+      "rear: narrow": 1
+     },
+     "all": 14,
+     "onClass": 14,
+     "inPlace": 14,
+     "church": {
+      "kind": "chapel",
+      "dx": 9.184850993605148e-17,
+      "dz": 1.5,
+      "off": 1.5
+     }
+    },
+    "Pratzen": {
+     "n": 11,
+     "farms": 11,
+     "ell": 11,
+     "longOnly": 0,
+     "rear": 6,
+     "sizes": [
+      10,
+      1,
+      0
+     ],
+     "skipped": {
+      "building": 81,
+      "road": 18,
+      "plot: a building on it": 2,
+      "stream": 15,
+      "tree": 5,
+      "rear: narrow": 1
+     },
+     "all": 29,
+     "onClass": 29,
+     "inPlace": 29,
+     "church": {
+      "kind": "spired",
+      "dx": 3.247595264191645,
+      "dz": 1.8749999999999998,
+      "off": 3.75
+     }
+    },
+    "Bellowitz": {
+     "n": 7,
+     "farms": 7,
+     "ell": 7,
+     "longOnly": 0,
+     "rear": 1,
+     "sizes": [
+      7,
+      0,
+      0
+     ],
+     "skipped": {
+      "outside the footprint": 14,
+      "building": 11,
+      "plot: a building on it": 1,
+      "road": 1
+     },
+     "all": 15,
+     "onClass": 15,
+     "inPlace": 15,
+     "church": null
+    },
+    "Schlapanitz": {
+     "n": 9,
+     "farms": 9,
+     "ell": 8,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      8,
+      0,
+      1
+     ],
+     "skipped": {
+      "building": 24,
+      "plot: a building on it": 4,
+      "rear: narrow": 2,
+      "outside the footprint": 1
+     },
+     "all": 18,
+     "onClass": 18,
+     "inPlace": 18,
+     "church": {
+      "kind": "spired",
+      "dx": 0,
+      "dz": 2.25,
+      "off": 2.25
+     }
+    },
+    "Krzenowitz": {
+     "n": 10,
+     "farms": 10,
+     "ell": 9,
+     "longOnly": 1,
+     "rear": 2,
+     "sizes": [
+      8,
+      1,
+      1
+     ],
+     "skipped": {
+      "building": 34,
+      "road": 9,
+      "rear: road": 1,
+      "plot: a building on it": 1,
+      "stream": 10,
+      "yard": 2
+     },
+     "all": 22,
+     "onClass": 22,
+     "inPlace": 22,
+     "church": {
+      "kind": "spired",
+      "dx": -0.905866657858823,
+      "dz": 3.380740392011738,
+      "off": 3.5
+     }
+    },
+    "Austerlitz": {
+     "n": 24,
+     "farms": 24,
+     "ell": 24,
+     "longOnly": 0,
+     "rear": 4,
+     "sizes": [
+      22,
+      1,
+      1
+     ],
+     "skipped": {
+      "building": 20,
+      "plot: a building on it": 1,
+      "rear: narrow": 2,
+      "stream": 2,
+      "yard": 1,
+      "tree": 2,
+      "outside the footprint": 1
+     },
+     "all": 61,
+     "onClass": 61,
+     "inPlace": 61,
+     "church": {
+      "kind": "temple",
+      "dx": -1.229390464236971,
+      "dz": -4.5881476748730705,
+      "off": 4.75
+     }
+    },
+    "Menitz": {
+     "n": 7,
+     "farms": 7,
+     "ell": 5,
+     "longOnly": 2,
+     "rear": 1,
+     "sizes": [
+      5,
+      1,
+      1
+     ],
+     "skipped": {
+      "building": 27,
+      "plot: a building on it": 4,
+      "tree": 3,
+      "outside the footprint": 1,
+      "street range: yard": 1
+     },
+     "all": 14,
+     "onClass": 14,
+     "inPlace": 14,
+     "church": {
+      "kind": "spired",
+      "dx": 0,
+      "dz": 0,
+      "off": 0
+     }
+    },
+    "Satschan": {
+     "n": 7,
+     "farms": 5,
+     "ell": 2,
+     "longOnly": 3,
+     "rear": 0,
+     "sizes": [
+      2,
+      0,
+      3
+     ],
+     "skipped": {
+      "building": 567,
+      "stream": 169,
+      "outside the footprint": 199,
+      "mere": 109,
+      "rear: narrow": 1,
+      "road": 179,
+      "yard": 4
+     },
+     "all": 8,
+     "onClass": 8,
+     "inPlace": 8,
+     "church": {
+      "kind": "spired",
+      "dx": 4.1051847617285375,
+      "dz": 1.0999809416857147,
+      "off": 4.25
+     }
+    },
+    "Turas": {
+     "n": 5,
+     "farms": 5,
+     "ell": 5,
+     "longOnly": 0,
+     "rear": 0,
+     "sizes": [
+      5,
+      0,
+      0
+     ],
+     "skipped": {},
+     "all": 10,
+     "onClass": 10,
+     "inPlace": 10,
+     "church": null
+    },
+    "Hostieradek": {
+     "n": 7,
+     "farms": 7,
+     "ell": 6,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      6,
+      1,
+      0
+     ],
+     "skipped": {
+      "outside the footprint": 10,
+      "rear: narrow": 1,
+      "building": 31,
+      "street range: yard": 1,
+      "stream": 6,
+      "yard": 2
+     },
+     "all": 13,
+     "onClass": 13,
+     "inPlace": 13,
+     "church": null
+    },
+    "Posoritz post house": {
+     "n": 3,
+     "farms": 3,
+     "ell": 2,
+     "longOnly": 1,
+     "rear": 0,
+     "sizes": [
+      1,
+      2,
+      0
+     ],
+     "skipped": {
+      "street range: road": 1
+     },
+     "all": 5,
+     "onClass": 5,
+     "inPlace": 5,
+     "church": null
+    }
+   },
+   "chateau": {
+    "bearing": 255,
+    "want": 236,
+    "deviation": 19,
+    "dist_m": 379,
+    "dist_units": 6,
+    "tolerance": 22.5,
+    "church": {
+     "x": 82.27,
+     "z": -66.59
+    },
+    "chateau": {
+     "x": 77.21,
+     "z": -63.37
+    }
+   },
+   "errors": [],
+   "dossier": {
+    "Telnitz": "Farmsteads12 drawn along its streets: 7 an L (a range along the street and a long range back along the plot) and 5 a long range alone, where the street left no room for the range along it: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Sokolnitz": "Farmsteads13 drawn along its streets: 11 an L (a range along the street and a long range back along the plot) and 2 a long range alone, where the street left no room for the range along it: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Kobelnitz": "Farmsteads9 drawn along its streets: 7 an L (a range along the street and a long range back along the plot) and 2 a long range alone, where the street left no room for the range along it: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Pratzen village": "Farmsteads11 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Puntowitz": "Farmsteads8 drawn along its streets: 7 an L (a range along the street and a long range back along the plot) and 1 a long range alone, where the street left no room for the range along it: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Girzikowitz": "Farmsteads9 drawn along its streets: 8 an L (a range along the street and a long range back along the plot) and 1 a long range alone, where the street left no room for the range along it: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Blasowitz": "Farmsteads10 drawn, each an L along its street: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Augezd": "Farmsteads9 drawn along its streets: 6 an L (a range along the street and a long range back along the plot) and 3 a long range alone, where the street left no room for the range along it: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Austerlitz": "Farmsteads24 drawn, each an L along its street: this map's symbol for the town, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference",
+    "Krzenowitz": "Farmsteads10 drawn along its streets: 9 an L (a range along the street and a long range back along the plot) and 1 a long range alone, where the street left no room for the range along it: this map's symbol for the village, not its count of houses, on the pattern the stable cadastre's sketches of 1825-1826 show, applied to 1805 as an inference"
+   },
+   "totals": {
+    "buildings": 625
+   },
+   "file": "builds/final.html",
+   "md5": "9fa50cb46a085ab4ea8f932cd405f1e8",
+   "bytes": 2772772,
+   "pageErrors": []
+  }
+ },
+ "coverage": {
+  "Bosenitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Girzikowitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Puntowitz": {
+   "8g": 73.7,
+   "8h": 73.7,
+   "kept": true
+  },
+  "Kobelnitz": {
+   "8g": 18.8,
+   "8h": 18.8,
+   "kept": true
+  },
+  "Sokolnitz": {
+   "8g": 0,
+   "8h": 0,
+   "kept": true
+  },
+  "Telnitz": {
+   "8g": 5,
+   "8h": 5,
+   "kept": true
+  },
+  "Augezd": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Blasowitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Krug": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Holubitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Pratzen": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Bellowitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Schlapanitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Krzenowitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Austerlitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Menitz": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Satschan": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Turas": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Hostieradek": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  },
+  "Posoritz post house": {
+   "8g": 100,
+   "8h": 100,
+   "kept": true
+  }
+ }
+}

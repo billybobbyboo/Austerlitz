@@ -4,7 +4,7 @@
  "loads": 7,
  "builds": {
   "8g": {
-   "file": "../../../tmp/claude-0/-home-user-Austerlitz/1ee4a9c8-902f-5b36-b09d-00231ca958cd/scratchpad/builds/8g.html",
+   "file": "builds/8g.html",
    "md5": "508927e6f72e1b6f2f9186e954d61b59",
    "runs": [
     {
@@ -88,7 +88,7 @@
    }
   },
   "8h": {
-   "file": "../../../tmp/claude-0/-home-user-Austerlitz/1ee4a9c8-902f-5b36-b09d-00231ca958cd/scratchpad/builds/final.html",
+   "file": "builds/final.html",
    "md5": "9fa50cb46a085ab4ea8f932cd405f1e8",
    "runs": [
     {

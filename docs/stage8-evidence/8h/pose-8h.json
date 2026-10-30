@@ -1,0 +1,82 @@
+{
+ "tool": "tools/stage8/pose-8h.js",
+ "browser": "153.0.8010.12",
+ "builds": {
+  "8g": {
+   "file": "builds/8g.html",
+   "md5": "508927e6f72e1b6f2f9186e954d61b59",
+   "turn": {
+    "id": "vandamme",
+    "d": 1.1808,
+    "frame": 4
+   },
+   "pause": {
+    "clock": 525.333,
+    "pausedFramesMoved": 60,
+    "of": 60,
+    "largestMove": 2.729618,
+    "turningBlockTurned": 1.178327,
+    "stateAfter": "idle",
+    "settlingAfter": false,
+    "unaskedFramesToIdle": 19,
+    "firstPausedAgainstLastPlayed": 0
+   },
+   "seek": {
+    "clock": 535.333,
+    "twoPathsLargestDifference": 1.14925605,
+    "at": "ahq",
+    "largestOffHeading": 1.182054
+   },
+   "resume": {
+    "offAtPause": 0.57571,
+    "offAfter5PausedFrames": 0.3447,
+    "offResumed": [
+     0.31109,
+     0.90007,
+     0.81232,
+     0.73312,
+     0.15203
+    ]
+   },
+   "pageErrors": []
+  },
+  "8h": {
+   "file": "builds/final.html",
+   "md5": "9fa50cb46a085ab4ea8f932cd405f1e8",
+   "turn": {
+    "id": "vandamme",
+    "d": 1.1808,
+    "frame": 4
+   },
+   "pause": {
+    "clock": 525.333,
+    "pausedFramesMoved": 0,
+    "of": 60,
+    "largestMove": 0,
+    "turningBlockTurned": 0,
+    "stateAfter": "idle",
+    "settlingAfter": false,
+    "unaskedFramesToIdle": 19,
+    "firstPausedAgainstLastPlayed": 0
+   },
+   "seek": {
+    "clock": 535.333,
+    "twoPathsLargestDifference": 0,
+    "at": null,
+    "largestOffHeading": 0
+   },
+   "resume": {
+    "offAtPause": 1.18526,
+    "offAfter5PausedFrames": 1.18526,
+    "offResumed": [
+     1.0697,
+     0.96541,
+     0.36167,
+     0.34604,
+     0.3123
+    ]
+   },
+   "pageErrors": []
+  }
+ }
+}

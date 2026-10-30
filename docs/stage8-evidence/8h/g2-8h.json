@@ -1,0 +1,50 @@
+{
+ "tool": "tools/stage8/g2-8h.js",
+ "ref": "636cc5d",
+ "compared": {
+  "W": 889220,
+  "regionalH": 455321,
+  "height": 455321,
+  "hAt": 455321,
+  "localHeight": 455321,
+  "coverClass": 65046,
+  "covWater": 24528,
+  "covMarsh": 24528,
+  "covWood": 24528,
+  "covVill": 24528,
+  "covRoad": 24528,
+  "covVine": 24528,
+  "gridH": 77959,
+  "gridCurv": 77959,
+  "SUN_DAY's place": 2,
+  "GEOREF's transform": 108
+ },
+ "differ": {
+  "W": 0,
+  "regionalH": 0,
+  "height": 0,
+  "hAt": 0,
+  "localHeight": 0,
+  "coverClass": 0,
+  "covWater": 0,
+  "covMarsh": 0,
+  "covWood": 0,
+  "covVill": 0,
+  "covRoad": 0,
+  "covVine": 0,
+  "gridH": 0,
+  "gridCurv": 0,
+  "SUN_DAY's place": 0,
+  "GEOREF's transform": 0
+ },
+ "factor": {
+  "MAP_PER_WORLD": 2,
+  "WORLD_ORIGIN": [
+   340,
+   250
+  ],
+  "frozen": true,
+  "consistent": true
+ },
+ "identical": true
+}

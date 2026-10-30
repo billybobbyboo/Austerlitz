@@ -1,0 +1,81 @@
+{
+ "tool": "tools/stage8/s7-8h.js",
+ "build": "builds/8g.html",
+ "md5": "508927e6f72e1b6f2f9186e954d61b59",
+ "browser": "153.0.8010.12",
+ "dwell": [
+  {
+   "changedIn": "in",
+   "E": 630,
+   "sw": {
+    "t": 50,
+    "clock": 628.6666666666666,
+    "stage": "in",
+    "frac": 0.333,
+    "d": 3,
+    "before": 28.889,
+    "after": 24.444
+   },
+   "toEndMs": 1750,
+   "toEndMin": 4.333,
+   "rateAtEnd": 37.778,
+   "newSpeedRate": 5,
+   "ratio": 0.846
+  },
+  {
+   "changedIn": "hold",
+   "E": 630,
+   "sw": {
+    "t": 649.9999999999999,
+    "clock": 630,
+    "stage": "hold",
+    "frac": 0.333,
+    "d": 3,
+    "before": 0,
+    "after": 0
+   },
+   "toEndMs": 1150,
+   "toEndMin": 3,
+   "rateAtEnd": 37.778,
+   "newSpeedRate": 5,
+   "ratio": null
+  },
+  {
+   "changedIn": "out",
+   "E": 630,
+   "sw": {
+    "t": 1700.000000000002,
+    "clock": 630.3333333333334,
+    "stage": "out",
+    "frac": 0.333,
+    "d": 3,
+    "before": 11.111,
+    "after": 15.556
+   },
+   "toEndMs": 100,
+   "toEndMin": 2.667,
+   "rateAtEnd": 37.778,
+   "newSpeedRate": 5,
+   "ratio": 1.4
+  }
+ ],
+ "relief": {
+  "midGlide": true,
+  "afterRelief": {
+   "tween": false,
+   "twCam": true,
+   "freeCam": false,
+   "camMovedXZ": 0
+  },
+  "followActive": false,
+  "targetMoved": 0
+ },
+ "know": {
+  "minutes": 242,
+  "differ": [],
+  "byView": {
+   "fr": 0,
+   "al": 0
+  }
+ }
+}
