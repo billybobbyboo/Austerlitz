@@ -7,7 +7,8 @@
 again on 30 October). Stage 8 is not complete: device acceptance for 8E-8H is pending, and the owner's questions 259-265 are open.** The record is
 `docs/STAGE8_SPEC.md` section 20 (and section 19, 8G as built, written here), the evidence `docs/stage8-evidence/8h/`. The build:
 `austerlitz-command-map.html` **2,772,772 bytes, md5 `9fa50cb46a085ab4ea8f932cd405f1e8`** (8G's 2,740,873, `508927e6...`); `check:baseline`
-moved to it; `check:data`'s reference `archive/stage8h-24e29da7.html` (two data tasks, below). The summary is at the entry's end.
+moved to it; `check:data`'s reference `archive/stage8h-24e29da7.html` (two data tasks, below). What was verified and what stays open are at the
+entry's end.
 
 - **The buildings' acceptance (section 20.3): the château, the farmsteads' words; a data task.** Reproduced on 8G's build
   (`tools/stage8/buildings-8h.js`): the Austerlitz château drawn at 322.5 degrees from its church, 86.5 degrees off the bearing its own place has
@@ -90,7 +91,8 @@ moved to it; `check:data`'s reference `archive/stage8h-24e29da7.html` (two data 
   rescale of S-7 never divides by an absent speed.
 - **The self-test's manifest: 313 to 316 checks** (`tools/visual/check-report.js --write-manifest` from a run on CI's browser, Playwright 1.56's
   headless shell, Chromium 141.0.7390.37, on this build: every one of the 316 checks and every live block passing, the motion block's 24 runs at
-  their baselines, `docs/stage8-evidence/8h/selftest-chromium141.json`). Added: "the blocks' pose at a pause (8H)", "A-6 (8H)", "the crowns closing
+  their baselines, `docs/stage8-evidence/8h/selftest-chromium141.json`, its only failures the old manifest's six: 313 checks against 316, three
+  new and one renamed; CI's runs since judge it against the written manifest: `selftest-ci-8d05f2b.json`, 316 of 316, no failure). Added: "the blocks' pose at a pause (8H)", "A-6 (8H)", "the crowns closing
   near the eye (8H)"; renamed: "the landmarks (8G)" (the château "within an octant of its bearing today ... no drawn road or stream between them",
   was "within a quarter-turn").
 - **8G's records (section 19, written in 8H; section 20.2).** 8G's pull request was merged ahead of its record: section 19 was cited by its
