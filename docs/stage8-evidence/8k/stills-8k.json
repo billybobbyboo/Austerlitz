@@ -1,0 +1,196 @@
+{
+ "chromium": "141.0.7390.37",
+ "set": "8k",
+ "before": {
+  "file": "austerlitz-8j-final.html",
+  "md5": "7d5594baf7468f943ab42f7d848608d1"
+ },
+ "after": {
+  "file": "austerlitz-8k-final.html",
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "views": {
+  "posthouse": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 41.685,
+    "meanDiff": 18.148
+   }
+  },
+  "highway-santon": {
+   "before": {
+    "clock": "07:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "07:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 34,
+    "linked": 34,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 17.343,
+    "meanDiff": 9.07
+   }
+  },
+  "bagration-dawn": {
+   "before": {
+    "clock": "06:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 33,
+    "linked": 33,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "06:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 33,
+    "linked": 33,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 17.16,
+    "meanDiff": 8.508
+   }
+  },
+  "north-1030": {
+   "before": {
+    "clock": "10:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "10:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 10.26,
+    "meanDiff": 6.001
+   }
+  },
+  "north-1430": {
+   "before": {
+    "clock": "14:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "14:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 17.626,
+    "meanDiff": 10.287
+   }
+  },
+  "paper-north": {
+   "before": {
+    "clock": "10:30",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 41,
+    "linked": 41,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "10:30",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 41,
+    "linked": 41,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 12.92,
+    "meanDiff": 4.646
+   }
+  },
+  "overview-field": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 42,
+    "linked": 42,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 42,
+    "linked": 42,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 3.111,
+    "meanDiff": 1.618
+   }
+  }
+ }
+}

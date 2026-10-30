@@ -1,0 +1,718 @@
+{
+ "tool": "tools/stage8/census-8i.js",
+ "states": {
+  "complete": "onCold: culling on, the ground's depth drawn again (the complete frame; what section 8.3's budget judges)",
+  "still": "onWarm: culling on, the ground's depth reused (the frame drawn while the eye stands still)"
+ },
+ "budgets": {
+  "desktop": {
+   "calls": 900,
+   "tris": 2800000
+  },
+  "phone": {
+   "tris": 1620000
+  }
+ },
+ "after": {
+  "md5": "697bbf34ec29fc4d05695dc8e1cd3c5e",
+  "chromium": "141.0.7390.37",
+  "when": "2026-10-30T11:33:49.740Z",
+  "cases": {
+   "first-run": {
+    "lowTier": false,
+    "cold": {
+     "calls": 750,
+     "tris": 2271205
+    },
+    "warm": {
+     "calls": 748,
+     "tris": 2124117
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "opening-1": {
+    "lowTier": false,
+    "cold": {
+     "calls": 721,
+     "tris": 2262065
+    },
+    "warm": {
+     "calls": 719,
+     "tris": 2114977
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "opening-2": {
+    "lowTier": false,
+    "cold": {
+     "calls": 625,
+     "tris": 2265339
+    },
+    "warm": {
+     "calls": 623,
+     "tris": 2118251
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "opening-3": {
+    "lowTier": false,
+    "cold": {
+     "calls": 494,
+     "tris": 1954801
+    },
+    "warm": {
+     "calls": 492,
+     "tris": 1807713
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "opening-4": {
+    "lowTier": false,
+    "cold": {
+     "calls": 552,
+     "tris": 2094583
+    },
+    "warm": {
+     "calls": 550,
+     "tris": 1947495
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "opening-end": {
+    "lowTier": false,
+    "cold": {
+     "calls": 750,
+     "tris": 2272297
+    },
+    "warm": {
+     "calls": 748,
+     "tris": 2125209
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "overview-field": {
+    "lowTier": false,
+    "cold": {
+     "calls": 839,
+     "tris": 2345505
+    },
+    "warm": {
+     "calls": 837,
+     "tris": 2198417
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "overview-plan": {
+    "lowTier": false,
+    "cold": {
+     "calls": 839,
+     "tris": 2324625
+    },
+    "warm": {
+     "calls": 837,
+     "tris": 2177537
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "close-sokolnitz": {
+    "lowTier": false,
+    "cold": {
+     "calls": 701,
+     "tris": 2279101
+    },
+    "warm": {
+     "calls": 699,
+     "tris": 2132013
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "staff-paper": {
+    "lowTier": false,
+    "cold": {
+     "calls": 148,
+     "tris": 238701
+    },
+    "warm": {
+     "calls": 148,
+     "tris": 238701
+    },
+    "depth": {
+     "calls": 0,
+     "tris": 0
+    },
+    "reconciled": true
+   },
+   "pratzen-low": {
+    "lowTier": false,
+    "cold": {
+     "calls": 559,
+     "tris": 1966685
+    },
+    "warm": {
+     "calls": 557,
+     "tris": 1819597
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "pratzen-orbit-min": {
+    "lowTier": false,
+    "cold": {
+     "calls": 622,
+     "tris": 2120703
+    },
+    "warm": {
+     "calls": 620,
+     "tris": 1973615
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "selected-formation": {
+    "lowTier": false,
+    "cold": {
+     "calls": 696,
+     "tris": 2269489
+    },
+    "warm": {
+     "calls": 694,
+     "tris": 2122401
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "watch-selected": {
+    "lowTier": false,
+    "cold": {
+     "calls": 635,
+     "tris": 2179969
+    },
+    "warm": {
+     "calls": 633,
+     "tris": 2032881
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "hybrid-dimmed": {
+    "lowTier": false,
+    "cold": {
+     "calls": 644,
+     "tris": 2200241
+    },
+    "warm": {
+     "calls": 642,
+     "tris": 2053153
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "pratzen-low-1x": {
+    "lowTier": false,
+    "cold": {
+     "calls": 162,
+     "tris": 374921
+    },
+    "warm": {
+     "calls": 160,
+     "tris": 227833
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "pratzen-low-10x": {
+    "lowTier": false,
+    "cold": {
+     "calls": 590,
+     "tris": 2035069
+    },
+    "warm": {
+     "calls": 588,
+     "tris": 1887981
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "paper-north-up": {
+    "lowTier": false,
+    "cold": {
+     "calls": 156,
+     "tris": 240915
+    },
+    "warm": {
+     "calls": 156,
+     "tris": 240915
+    },
+    "depth": {
+     "calls": 0,
+     "tris": 0
+    },
+    "reconciled": true
+   },
+   "paper-close": {
+    "lowTier": false,
+    "cold": {
+     "calls": 102,
+     "tris": 203431
+    },
+    "warm": {
+     "calls": 102,
+     "tris": 203431
+    },
+    "depth": {
+     "calls": 0,
+     "tris": 0
+    },
+    "reconciled": true
+   },
+   "paper-drawer": {
+    "lowTier": false,
+    "cold": {
+     "calls": 110,
+     "tris": 226499
+    },
+    "warm": {
+     "calls": 110,
+     "tris": 226499
+    },
+    "depth": {
+     "calls": 0,
+     "tris": 0
+    },
+    "reconciled": true
+   },
+   "paper-laptop": {
+    "lowTier": false,
+    "cold": {
+     "calls": 156,
+     "tris": 240915
+    },
+    "warm": {
+     "calls": 156,
+     "tris": 240915
+    },
+    "depth": {
+     "calls": 0,
+     "tris": 0
+    },
+    "reconciled": true
+   },
+   "narrow-1024": {
+    "lowTier": false,
+    "cold": {
+     "calls": 839,
+     "tris": 2352049
+    },
+    "warm": {
+     "calls": 837,
+     "tris": 2204961
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "ph8-overview-study": {
+    "lowTier": false,
+    "cold": {
+     "calls": 820,
+     "tris": 2315043
+    },
+    "warm": {
+     "calls": 818,
+     "tris": 2167955
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "ph8-overview-watch": {
+    "lowTier": false,
+    "cold": {
+     "calls": 820,
+     "tris": 2312615
+    },
+    "warm": {
+     "calls": 818,
+     "tris": 2165527
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "eye-zuran": {
+    "lowTier": false,
+    "cold": {
+     "calls": 177,
+     "tris": 560783
+    },
+    "warm": {
+     "calls": 175,
+     "tris": 413695
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "eye-zuran-1x": {
+    "lowTier": false,
+    "cold": {
+     "calls": 124,
+     "tris": 374193
+    },
+    "warm": {
+     "calls": 122,
+     "tris": 227105
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "plans-overview": {
+    "lowTier": false,
+    "cold": {
+     "calls": 864,
+     "tris": 2330631
+    },
+    "warm": {
+     "calls": 862,
+     "tris": 2183543
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "opening-1-laptop": {
+    "lowTier": false,
+    "cold": {
+     "calls": 726,
+     "tris": 2296793
+    },
+    "warm": {
+     "calls": 724,
+     "tris": 2149705
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-390-first": {
+    "lowTier": true,
+    "cold": {
+     "calls": 482,
+     "tris": 1398127
+    },
+    "warm": {
+     "calls": 480,
+     "tris": 1251039
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-390-explore": {
+    "lowTier": true,
+    "cold": {
+     "calls": 251,
+     "tris": 1045537
+    },
+    "warm": {
+     "calls": 249,
+     "tris": 898449
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-390-dossier": {
+    "lowTier": true,
+    "cold": {
+     "calls": 198,
+     "tris": 1019347
+    },
+    "warm": {
+     "calls": 196,
+     "tris": 872259
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-390-watch": {
+    "lowTier": true,
+    "cold": {
+     "calls": 251,
+     "tris": 1045537
+    },
+    "warm": {
+     "calls": 249,
+     "tris": 898449
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-390-layers": {
+    "lowTier": true,
+    "cold": {
+     "calls": 209,
+     "tris": 934639
+    },
+    "warm": {
+     "calls": 207,
+     "tris": 787551
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-360-explore": {
+    "lowTier": true,
+    "cold": {
+     "calls": 253,
+     "tris": 1042801
+    },
+    "warm": {
+     "calls": 251,
+     "tris": 895713
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-430-explore": {
+    "lowTier": true,
+    "cold": {
+     "calls": 251,
+     "tris": 1043205
+    },
+    "warm": {
+     "calls": 249,
+     "tris": 896117
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-844x390-explore": {
+    "lowTier": true,
+    "cold": {
+     "calls": 269,
+     "tris": 995997
+    },
+    "warm": {
+     "calls": 267,
+     "tris": 848909
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-402x714-explore": {
+    "lowTier": true,
+    "cold": {
+     "calls": 242,
+     "tris": 1038893
+    },
+    "warm": {
+     "calls": 240,
+     "tris": 891805
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   },
+   "phone-390-paper": {
+    "lowTier": true,
+    "cold": {
+     "calls": 156,
+     "tris": 240915
+    },
+    "warm": {
+     "calls": 156,
+     "tris": 240915
+    },
+    "depth": {
+     "calls": 0,
+     "tris": 0
+    },
+    "reconciled": true
+   },
+   "first-run-laptop": {
+    "lowTier": false,
+    "cold": {
+     "calls": 750,
+     "tris": 2273819
+    },
+    "warm": {
+     "calls": 748,
+     "tris": 2126731
+    },
+    "depth": {
+     "calls": 2,
+     "tris": 147088
+    },
+    "reconciled": true
+   }
+  },
+  "maxima": {
+   "desktop": {
+    "cases": 29,
+    "complete": {
+     "calls": {
+      "v": 864,
+      "at": "plans-overview"
+     },
+     "tris": {
+      "v": 2352049,
+      "at": "narrow-1024"
+     }
+    },
+    "still": {
+     "calls": {
+      "v": 862,
+      "at": "plans-overview"
+     },
+     "tris": {
+      "v": 2204961,
+      "at": "narrow-1024"
+     }
+    },
+    "headroom": {
+     "calls": {
+      "budget": 900,
+      "used": 864,
+      "left": 36,
+      "pct": 4
+     },
+     "tris": {
+      "budget": 2800000,
+      "used": 2352049,
+      "left": 447951,
+      "pct": 16
+     }
+    }
+   },
+   "phone": {
+    "cases": 10,
+    "complete": {
+     "calls": {
+      "v": 482,
+      "at": "phone-390-first"
+     },
+     "tris": {
+      "v": 1398127,
+      "at": "phone-390-first"
+     }
+    },
+    "still": {
+     "calls": {
+      "v": 480,
+      "at": "phone-390-first"
+     },
+     "tris": {
+      "v": 1251039,
+      "at": "phone-390-first"
+     }
+    },
+    "headroom": {
+     "tris": {
+      "budget": 1620000,
+      "used": 1398127,
+      "left": 221873,
+      "pct": 13.7
+     }
+    }
+   }
+  }
+ },
+ "before": null
+}

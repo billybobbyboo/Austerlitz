@@ -657,7 +657,7 @@ if(cerrs) process.exitCode=1;
   if(!/if\(uDebug>4\.5\) gDbgD=gDc; else \{/.test(gd)) ferr.push("the near detail's debug sample is not apart from the detail's scaling (uDebug 5)");
   /* the self-test's bounds */
   if(!/var ICE8F=\{SHORE:1\.10, MARGIN:1\.25\};/.test(src)) ferr.push("the self-test's ice bounds (ICE8F) are not 1.10 at the shore and 1.25 at the margin");
-  if(!/var WOODS8E=\{wood:409, village:184, conifer:287, edge:244, stream:229, garden:12\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's woods pins (WOODS8E: since the follow-up 8J the counts of the woods' data tasks; KIT8E, 8E's triangles a tree) are not as recorded");
+  if(!/var WOODS8E=\{wood:357, village:184, conifer:229, edge:205, stream:222, garden:12\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's woods pins (WOODS8E: since the follow-up 8J the counts of the woods' data tasks; KIT8E, 8E's triangles a tree) are not as recorded");
   ferr.forEach(e=>console.log("  ! "+e));
   console.log("water, woods and the near ground (decisions 246 (a), 247 (a)): "+(ferr.length?ferr.length+" wrong":"the water's colours in WATER_COL, the paper map's water 8E's materials, the meres' outlines, levels and ring 4E's, the ice writing no depth, the band without an offset and after its ice, nothing animated; TREE8F, the crowns opaque on both faces, 8E's jitter and conifers; GDETAIL on the natural ground only, faded, anchored, a grey ratio, off under lowTier; the self-test's bounds"));
   if(ferr.length) process.exitCode=1;

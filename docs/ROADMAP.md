@@ -544,7 +544,9 @@ drawn track and the drawn brook (their widths a display convention), stands clea
 (`CASTLE8J`), and put to the owner as **question 266** (§21.7: (a) keep it, recommended; (b) a middle size off its site; (c) the ribbons narrowed
 there; (d) 8G's size 461 m off across the track).
 
-**Still open in Stage 8** (none blocking the build): question 266 (the castle's drawn size at its site, §21.7); the device runs for 8E-8K (§20.12, §21); decision 245 (a)'s facings, to be reconsidered now
+**Still open in Stage 8**: question 267 (8K: the check lines its re-plotted places and plans move, the map layer's motion benchmark over its
+ceilings, the Plans view's drop limit and Watch's derived reading at 14:40, §21.8 and §21.9; `check:selftest` and `check:visual` fail on them
+alone until decided); question 266 (the castle's drawn size at its site, §21.7); the device runs for 8E-8K (§20.12, §21); decision 245 (a)'s facings, to be reconsidered now
 that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
 `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's
 remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist.

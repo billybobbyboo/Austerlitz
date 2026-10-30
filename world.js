@@ -63,7 +63,13 @@ var GOLDBACH=M2W(GOLDBACH_M), LITAVA=M2W(LITAVA_M), BROOKS=BROOKS_M.map(M2W);
 /* ---------------- roads and tracks ---------------- */
 var ROADS=[
  {n:"Brunn-Olmutz highway", cls:"highway", w:2.9,
-  p:[[30,154],[142,128],[225,97],[239,80],[324,36],[401,-4]]},   /* west: legacy course; east of the Santon: past Tvarožná to the Posoritz post house and on toward Rausnitz */
+  p:[[30,154],[142,128],[224,103.8],[232,97.7],[256,87.3],[336,66.5],[358,57.6],[364,54.3],[382,41.6],[412,15.3],[414,12.2],[422,4.7],[432,-8]]},
+  /* west: legacy course. From the Santon's foot east: II/430's line, the road of the cadastral sketches of 1826 and the Second Military Survey
+     (1836-52), south of Tvarožná, past the Holubitz inn and the post north of it at Kovalovice No. 109, leaving the frame toward Rausnitz (Stage 8,
+     the follow-up 8K, decision 260 (a): docs/stage8-evidence/8h/geo/consequences.json highway.rows, the line simplified to 0.6 map units; B for
+     1826-52, for 1805 an inference, C: no realignment between 1805 and 1826 is recorded and the First Survey, which would test it, was not
+     reached). The legacy western part now meets it at the Santon's foot, [224,103.8]. Until 8K [225,97],[239,80],[324,36],[401,-4]: the
+     correction pass's line through its constructed post house, 0.2 to 1.2 km north of this one */
  {n:"Pratzen-Austerlitz road", cls:"post", w:2.0, p:[[276,243],[360,199],[433,158],[507,126]]},   /* legacy shape re-anchored on its two villages; course unverified */
  {n:"Krzenowitz road", cls:"track", w:1.5, p:[[415,196],[348,217],[276,243]]},
  {n:"Sokolnitz-Telnitz track", cls:"track", w:1.5, p:[[208,365],[208,376],[212,408]]},
@@ -76,7 +82,8 @@ var ROADS=[
  {n:"Bosenitz-Blasowitz track", cls:"track", w:1.3, p:[[236,69],[261,114],[296,147]]},
  {n:"Pratzen-Sokolnitz track", cls:"track", w:1.4, p:[[276,243],[271,292],[238,334]]},
  {n:"Menitz track", cls:"track", w:1.3, p:[[212,408],[187,427],[182,464]]},
- {n:"Holubitz-Posoritz track", cls:"track", w:1.3, p:[[340,89],[332,62],[324,36]]},
+ {n:"Holubitz-Posoritz track", cls:"track", w:1.3, p:[[340,89],[333.5,67.1]]},   /* 8K: the legacy course to the highway as corrected; beyond it the
+   track ran on to the constructed post house, [332,62],[324,36], in fields on the Second Survey */
  {n:"Raigern-Telnitz road", cls:"track", w:1.2, p:[[18,500],[115,443],[212,408]]}   /* local road via Otmarov; Raigern itself is off the map */
 ];
 
@@ -96,7 +103,9 @@ var WOODS=[
    [212,337.9],[212,338.3],[209.5,338.9],[207.8,330.2],[207.4,321.9],[208.1,320.2],[208.2,318.2],[211.2,317.9],[211.3,321.2],[210.4,322.4],[210,324.6],
    [211.4,327],[211.7,328.9],[212.5,328.8],[212.4,327.3],[213.8,325.4],[213.8,324],[213.4,322.2],[212.3,320.6],[212.3,318],[217.3,317.5],[219.3,314.5]],
   c:[214.6,328.5], n:46, conifer:0.12},   /* Sokolnitz pheasantry: the 1825 Fasangarten */
- {c:[353,55],  rx:28, ry:13, rot:0.12, n:110, conifer:0.55},   /* wood above Holubitz */
+ /* the "wood above Holubitz" (c [353,55], rx 28, ry 13, 110 trees), a legacy wood, is not drawn since Stage 8's follow-up 8K (decision 260 (a)): the
+    highway and the post as corrected run through it, and the Second Military Survey (1836-52) has fields there, the road between its rows of trees,
+    the post's buildings north of it (docs/stage8-evidence/8h/geo/fig/ii_survey_posthouse.jpg); no source for the wood was found */
  {c:[76,396],  rx:27, ry:19, rot:0.2,  n:112, conifer:0.40},   /* Raigern woods */
  {c:[229,253], rx:13, ry:9,  rot:0.4,  n:48,  conifer:0.45},   /* copse west of the plateau */
  {c:[235,64],  rx:15, ry:9,  rot:0.0,  n:50,  conifer:0.50},   /* copse behind the Santon */
@@ -134,7 +143,7 @@ var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the 
  ["Holubitz",340,89,7],["Pratzen",276,243,11],["Bellowitz",164,113,7],
  ["Schlapanitz",163,177,9],["Krzenowitz",415,196,10],["Austerlitz",507,126,24],
  ["Menitz",181,489,7],["Satschan",262,444,7],["Turas",44,294,5],
- ["Hostieradek",342,309,7],["Posoritz post house",324,36,3]
+ ["Hostieradek",342,309,7],["Posoritz post house",363,54,3]
 ];
 /* the villages drawn with a church: where a source read names one standing on 2 December 1805 (Stage 8, implementation PR 8G's data task,
    decision 248 (a): appearance.js BUILDINGS.churches holds each one's claim). Until 8G Girzikowitz, Kobelnitz, Sokolnitz, Telnitz, Augezd,

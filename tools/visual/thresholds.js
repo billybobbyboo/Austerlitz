@@ -262,12 +262,28 @@ const MOTION={JUMPS:245, POPS:985, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.2
      "hybrid-orbit+sel" [1494,2548,2000] to [1454,2548,2000], "hybrid-pan+fr" [1308,1935,2467] to [1319,1970,2467], "hybrid-pan+al" [979,1346,2467]
      to [955,1350,2467]; the map layer's code unchanged since 8I, whose run gave the earlier values exactly; the paper map's runs, on flat ground,
      unchanged; the 16's totals within their ceilings (238, 985, 130, 9) */
-  VIS:{"hybrid-pan":[1376,2053,2467], "hybrid-zoom":[1371,2242,1533], "hybrid-orbit":[1487,2548,2200], "hybrid-glide":[1227,1804,2533],
-    "hybrid-play":[2153,3388,3100], "paper-pan":[1240,1274,667], "paper-zoom":[850,1229,667], "paper-glide":[566,821,633],
-    "paper-play":[1570,1694,667], "land-pan":[1879,2055,1133], "land-zoom":[1714,2252,667], "land-orbit":[1965,2366,667],
-    "land-play":[2630,3146,667], "low-pan":[820,885,533], "low-orbit":[681,876,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1454,2548,2000],
-    "paper-zoom+sel":[823,1229,667], "hybrid-pan+fr":[1319,1970,2467], "hybrid-pan+al":[955,1350,2467], "paper-play+al":[1180,1331,667],
-    "phone-pan+touch":[296,732,1367]}};
+  /* since the follow-up 8K (decision 260 (a), a geographic data task; the same rule as 8J's; docs/STAGE8_SPEC.md section 21.8): the runs whose
+     views 8K's data changes, Suchet's and Bagration's re-plotted places (with the road and the post house's labels and the Allied readings of
+     Suchet in the morning, 11 of 2,636), re-measured on 8K's build (check:selftest's block, repeated by tools/stage8/motion-8h.js on a page of its
+     own): "hybrid-pan" [1376,2053,2467] to [1427,2053,2467], "hybrid-zoom" [1371,2242,1533] to [1342,2248,2133], "hybrid-orbit" [1487,2548,2200] to
+     [1537,2548,1900], "hybrid-glide" [1227,1804,2533] to [1152,1795,2533], "hybrid-play" [2153,3388,3100] to [2033,3388,4033], "paper-pan"
+     [1240,1274,667] to [1274,1274,0], "paper-zoom" [850,1229,667] to [795,1232,667], "paper-glide" [566,821,633] to [554,822,633], "paper-play"
+     [1570,1694,667] to [1581,1694,667], "land-pan" [1879,2055,1133] to [1868,2055,1133], "land-zoom" [1714,2252,667] to [1641,2258,667],
+     "land-orbit" [1965,2366,667] to [1981,2366,667], "land-play" [2630,3146,667] to [2667,3146,667], "hybrid-orbit+sel" [1454,2548,2000] to
+     [1495,2548,3033], "paper-zoom+sel" [823,1229,667] to [835,1232,667], "hybrid-pan+fr" [1319,1970,2467] to [1370,1970,2467], "hybrid-pan+al"
+     [955,1350,2467] to [938,1276,2467], "paper-play+al" [1180,1331,667] to [1171,1331,667], "phone-pan+touch" [296,732,1367] to [275,698,1467]; the
+     map layer's code unchanged. Not moved: the 16's ceilings, which 8K's build exceeds (jumps 248 against 245, pops 998 against 985), and the real
+     input's tolerance, which its paper-map zoom exceeds against its twin (jumps 26 against 10, drawn 732 against 795): the block run with each
+     division's places of 8J (docs/stage8-evidence/8k/motion/) puts the pops' excess and the real input's divergence with Suchet's re-plotted places
+     (with Bagration's of 8J: pops 999, the zoom by real input 23 jumps against 4), the jumps' with both divisions' together (with Suchet's of 8J
+     244, with Bagration's 235) and the longest hidden in Play with Bagration's (4,033 ms; with his places of 8J 3,100); put to the owner, question
+     267 */
+  VIS:{"hybrid-pan":[1427,2053,2467], "hybrid-zoom":[1342,2248,2133], "hybrid-orbit":[1537,2548,1900], "hybrid-glide":[1152,1795,2533],
+    "hybrid-play":[2033,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[795,1232,667], "paper-glide":[554,822,633],
+    "paper-play":[1581,1694,667], "land-pan":[1868,2055,1133], "land-zoom":[1641,2258,667], "land-orbit":[1981,2366,667],
+    "land-play":[2667,3146,667], "low-pan":[820,885,533], "low-orbit":[681,876,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1495,2548,3033],
+    "paper-zoom+sel":[835,1232,667], "hybrid-pan+fr":[1370,1970,2467], "hybrid-pan+al":[938,1276,2467], "paper-play+al":[1171,1331,667],
+    "phone-pan+touch":[275,698,1467]}};
 module.exports.MOTION=MOTION;
 /* decision 257 (b)'s visibility rule for one run (r: a run of live.motion with its track; base: VIS's entry, or for a run by real input its twin's
    measures as [drawn, in view, longest]); the words of each failure, empty when it holds */

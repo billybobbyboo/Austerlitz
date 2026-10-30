@@ -1,5 +1,119 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, the follow-up 8K: the highway east of the Santon, the Posoritz post house, and twelve anchors re-plotted (decision 260 (a); a data task)
+
+**Status: built on `claude/tender-einstein-gwrsij-highway` (a draft PR stacked on 8J's, for review; not merged). Depends on 8J (decision 259
+(a)) and, through it, on 8I.** The record is `docs/STAGE8_SPEC.md` section 21.8 and the per-anchor register
+`docs/stage8-evidence/8k/register.md`, the evidence `docs/stage8-evidence/8k/`. The build: `austerlitz-command-map.html` **2,810,630 bytes,
+md5 `f10fe585c46aea576f436ed51ac46f83`**; `check:baseline` moved to it; `check:data`'s reference moved from 8J's archive to `archive/stage8k-f10fe585.html`.
+
+This data task supersedes the correction pass's route of the highway (CHANGELOG, "Correction pass", Roads: "passes the Santon's southern foot
+... and runs through the post house ... Holubitz now lies 1.7 km south of it") and its constructed post house (open question 6, "±1 km"): the
+established decision is replaced on the owner's word (question 260 (a)) with the evidence of 8H's geographic review, stated here and in the
+register, not silently.
+
+- **The highway (`world.js` `ROADS[0]`, guarded).** Was `[[30,154],[142,128],[225,97],[239,80],[324,36],[401,-4]]` (the correction pass's line
+  through its constructed post house); is the legacy western part to the Santon's foot, then II/430's line, the road of the 1826 cadastral
+  sketches and the Second Military Survey (1836-52): `[224,103.8],[232,97.7],[256,87.3],[336,66.5],[358,57.6],[364,54.3],[382,41.6],[412,15.3],
+  [414,12.2],[422,4.7],[432,-8]` (`docs/stage8-evidence/8h/geo/consequences.json` `highway.rows`, simplified to 0.6 map units). Why: on those maps
+  the road runs south of Tvarožná past the Holubitz inn and the post, 0.2-1.2 km south of the drawn line (B for 1826-52); for 1805 an inference
+  (C: no realignment recorded, the First Survey not reached). The Santon now 465 m north of it (was 276), Holubitz 0.72 km south (was 1.7 km).
+- **The post house (`geo.js` `GT.posthouse`, `data.js` `FEATURES[#posthouse]`, `world.js` `VILLAGES`, guarded).** Was lat 49.19337, lon 16.812243,
+  map (323.8, 36.0), "uncertain by about 1 km" (the error 1.37 km); is Stará pošta, Kovalovice No. 109 (RÚIAN 23571594), lat 49.18519, lon
+  16.826263, map (363.2, 53.8), 26 m north of the road; `FEATURES` p [324,36] to [363,54], `VILLAGES` [324,36,3] to [363,54,3]. Why: "Posoritzer
+  Post." on the 1826 sketch 32 m from it and "Posoritzer Post" on the Second Survey at it (B for 1826-52); for 1805 a modern text's (C).
+- **Dependent geography.** The "Holubitz-Posoritz track" cut at the highway (`[[340,89],[332,62],[324,36]]` to `[[340,89],[333.5,67.1]]`: beyond
+  it the track ran to the constructed post house, in fields on the Second Survey). The "wood above Holubitz" (`WOODS`, c [353,55], 110 trees, legacy
+  and unsourced) no longer drawn: the corrected road and post run through it, the Second Survey has fields there (`docs/stage8-evidence/8h/geo/fig/ii_survey_posthouse.jpg`).
+  With 8J's hold on the woods' random sequence (`WOODS_RS`) the removed wood's trees go and no other wood's or village's tree moves: measured
+  (`tools/stage8/woods-bldg-8j.js`, `docs/stage8-evidence/8k/woods-bldg-8k.json`), the buildings of Bellowitz (the road west of the Santon re-aimed
+  at its corrected junction, about 54 m further south beside the village), Bosenitz (the road now 0.78 km south of it, was 0.35 km), Holubitz (the
+  track cut, the wood beside it gone) and the post house changed, the 16 other villages identical part for part; without the hold (8J's and 8K's
+  sources with `WOODS_RS` unread, `woods-bldg-8k-nohold.json`) 15 villages would have changed, 11 of them for no change of their own.
+- **Twelve anchors** (`data.js` `FORMATIONS`, guarded; the owner's eleven on the road and Bagration's dawn, tied to the post): each re-plotted
+  from its readings, its grade assessed against its new basis (register sections A1-A9):
+  - suchet@0 [225,97] A to [235,103] **B**: right (south) of the road level with the Santon, the order of 1 December (C4.5); act rewritten, claim
+    attributed.
+  - suchet@5 [242,78] B to [254,88] **C**; @6 [264,67] to [279,81], @7 [284,57] to [300,76] (C): this map's advance, at its distances along the
+    road from the Santon's foot (0.8, 1.6, 2.3 km); no reading places the division then.
+  - suchet@8 [309,43] to [348,62] (C): west of the post, as Schönhals has Suchet attack Bagration on the height beyond it (C6.13).
+  - suchet@9 [321,38] to [364,54] **B**: at the post, where Napoleon's order of 3 December is dated (C6.9).
+  - bag@0 [319,49] to [352,64], B on a new basis: by the post, from which Stutterheim has him advance, Krug and Holubitz held (C6.10, C6.12); act
+    rewritten (its "about 2 km north of Holubitz" was the old road's), claim attributed.
+  - bag@5 [262,68] **kept**, B: the ground east of Bosenitz, now north of the road, taken for Stutterheim's "Anhöhen bey Dwaroschna" (C6.10); act
+    rewritten ("Attacks along the highway" no longer true), claim attributed.
+  - bag@6 [284,57] to [300,76] and bag@7 [304,46] to [321,70] **C**: this map's falling back along the road (2.3, 3.0 km along).
+  - bag@8 [337,29] to [386,38], B: astride the road on the rise east of the post, Schönhals's height "zwischen Rausnitz und dem Posoržitzer
+    Posthause" (the old point stood west of the post as corrected; that this is the height stays this map's inference, as its claim says).
+  - bag@9 [366,14] to [414,13] **C**: toward Rausnitz 0.4 km inside the frame (question 180 (c) kept).
+- **Plans (`analysis.js` `PLANS`, guarded).** The Allied column 7 (Bagration): obj [253,73] to [266,85], route to `[[351,60],[309,74],[288,79],
+  [266,85]]`; its staging "Bagration on the highway" c [377,95] to [352,64]. The French column 4 (Lannes): obj [304,46] to [321,70], route to
+  `[[231,98],[260,86],[291,78],[321,70]]`. Their orders unchanged.
+- **Places (`data.js` `FEATURES`).** `olmutzroad` p [249,64] to [264,75]; `posthouse` sub "north of Holubitz ... position approximate (about 1 km)"
+  to "north-east of Holubitz ... drawn where the maps of 1826-52 show the post", its claim's note rewritten (the post of 1826-52; 1805 an inference);
+  `rausnitz` p [393,6] to [423,4], its sub "about 2.7 km" to "about 2 km".
+- **`SOURCE_NOTE.body[5]`.** "the exact place of the Posoritz post house" to "whether the Posoritz post house stood in 1805 where the maps of 1826-52
+  show the post".
+- **Claims (`narrative.js`, guarded).** Added: `FORMATIONS.suchet.track["0"].act` (attributed, C4.5), `FORMATIONS.bag.track["0"].act` (attributed,
+  C6.10), `FORMATIONS.bag.track["5"].act` (attributed, C6.10), each with a note naming this map's part; changed: `FEATURES[#posthouse].sub` (its
+  hash and note). The inventory regenerated: 704 statements, 481 unchecked (484 in 8J), 148 with a claim of their own (145), 75 by class.
+- **Data declarations changed (`check:data` against 8J's reference, `archive/stage8j-7d5594ba.html`):** GEOREF (`GT.posthouse`), FORMATIONS
+  (the twelve anchors and three acts), FEATURES (`olmutzroad`, `posthouse`, `rausnitz`), SOURCE_NOTE (`body[5]`), PLANS (the two columns and the
+  staging), ROADS (the highway and the Holubitz track), WOODS (the wood above Holubitz), VILLAGES (the post house) and STATEMENT_CLAIMS (three
+  added, one changed). Every other data declaration identical: 130 of 139; against the new reference all 139 identical.
+- **Tests.** `geo-test.js`: "Holubitz lies well south of the highway (> 1.5 km)" and "Suchet and Bagration are plotted on the corrected highway"
+  held the correction pass's constructed line and rule; replaced by checks of the corrected geography (Holubitz 0.5-1.0 km south of the road) and
+  of the register's rules anchor by anchor (each at least as strict: Suchet at dawn 0.1-0.4 km south, within 1 km of the Santon; from phase 5 within
+  0.1 km of the road and at the post at nightfall; Bagration at dawn within 0.3 km of the road between the post and Holubitz, at 10:30 north of it
+  by Bosenitz, from phase 6 on the road, east of the post by phase 8). `redteam.js` `KNOWN_WARN`: the infantry's mean rate 1.33 to 1.35 (their
+  legs along the road longer in the same windows). The self-test's woods pins at 8K's counts, {wood:357, village:184, conifer:229, edge:205, stream:222, garden:12} (8J's {wood:409, village:184, conifer:287, edge:244, stream:229, garden:12}: the wood above Holubitz's trees and its edge's scrub gone; the bank scrub, drawn from the sequence's end and not held, drawn again).
+- **The map layer in motion (decision 257 (b)'s benchmark), moved by the re-plotted anchors: owner question 267.** On 8K's build the
+  self-test's motion block (repeated run for run by `tools/stage8/motion-8h.js` on a page of its own, `docs/stage8-evidence/8k/motion/`) changes
+  in 19 of its 22 runs: the formation-frames drawn over all 72.90% (8J's 73.03%), and the longest a formation stays hidden by the layout in Play
+  4,033 ms (3,100). Its visibility baselines (`MOTION.VIS`) are re-measured on this build under the rule 8J applied (geographic baselines moved
+  only where the authorized data change justifies it, the reason recorded; was and is in `thresholds.js`). Not moved, and failing: the 16's
+  ceilings (jumps 248 against 245, pops 998 against 985; 8J's build 238 and 985) and the real input's tolerance, which the paper map's zoom by
+  the wheel exceeds against its driven twin (jumps 26 against 10, formations drawn 732 against 795). The cause, measured by the block run with
+  one change of 8K's undone at a time: the road's label point and the post house undone, the same (248 and 998; 246 and 998); both divisions'
+  places of 8J, everything within its limit (237, 985, and the zoom by real input its twin's); Suchet's of 8J alone, within (244, 965), the
+  real input its twin's; Bagration's of 8J alone, pops 999 and the real input 23 jumps against 4. So the pops' excess and the zoom's divergence
+  come with Suchet's re-plotted places (at 09:30, the benchmark's hour, his dawn place south of the road level with the Santon), the jumps'
+  with both divisions' together, and Play's longest hidden with Bagration's. The places follow the readings (register sections A1-A9) and are
+  not tuned to a benchmark; the map layer's code is unchanged; the ceilings and the tolerance are the owner's (decision 257 (b)). Question
+  267: (a) re-baseline the 16's totals at this build's (248, 998) and accept the paper zoom's divergence as the benchmark's sensitivity at a
+  crowded spot; (b) recommended: a bounded presentation follow-up first, finding the items at the tipping point in the paper map's zoom and
+  bringing the real input within its twin, then re-baselining only what remains. Until then `check:selftest` and `check:visual` fail on these
+  three lines. 8K's `check:visual` on CI (run 41080693215) adds two lines of the same kind, each traced by a build with one of 8K's changes
+  undone and put to the owner under the same question: `plans-overview` drops 13 map items against its limit of 12, the Littawa's name, where
+  both plans' columns and the Allied staging now run along the corrected road (with 8J's `PLANS` 12 again; recommended: the limit 13, as
+  decisions 199 and 214 moved drop limits); and `ph8-overview-watch`'s caption has no derived reading at 14:40, the centre separation ending at
+  14:30 instead of 15:00 because Bagration's place on Schönhals's height east of the post moves the northern Allied group's centroid about 7
+  map units east (with his places of 8J it holds at 14:40; recommended: the case exempt in `CAP_DERIVED_NONE` with that reason). None moved.
+- **Chronology (no timing changed).** 70 moves with a timed statement: 66 consistent, 4 early (the four named conflicts), 0 late, as before;
+  bag@6's derived arrival 11:31 to 11:40 (its leg 0.78 to 1.23 km at the tactical rate); no arrival at the ceiling added; `SOURCE_NOTE.body[5]`'s
+  cites reviewed (only the post house's phrase changed) and rehashed (`chronology-text.json`, 14 cites); REVIEW's locators rewritten (59 rows).
+- **Sight lines and knowledge.** Measured on 8J's and 8K's builds (`tools/stage8/know-8j.js`, `docs/stage8-evidence/8k/know-8k.json`): of
+  2,636 readings of "Whose eyes?" (both headquarters, every ten minutes 04:00-17:00) 11 differ: the Allied headquarters' reading of Suchet at
+  05:20-05:40, 07:40, 08:20-08:30 and 09:10-09:40, seen until now, is unknown (no line of sight) with his corrected dawn place south of the road
+  level with the Santon; Napoleon's reading of Bagration at 12:20, unknown until now, is seen (his falling back now along the corrected road):
+  readings of the model, not of the sources. The seven observers' viewsheds, the plateau's strength and the centres' separation identical.
+  `COMMAND.fr["5"][0]`'s inference from the model's terrain ("most of the Olmütz road sector, including the Santon, is in view" from the Zuran)
+  measured again (`tools/stage8/roadview-8k.js`, `roadview-8k.json`): the drawn road from the Santon's foot to the post 68.5% in sight from the
+  Zuran before (its longest hidden stretch 1.0 km), 100% now, the Santon and the post in sight in both: the statement stands.
+
+Verified: `npm test` (all nine suites and the height guard), `check:data` (against 8J's reference the 9 changed declarations listed above; against
+the new reference all 139 identical), `check:chronology` (0 errors; 70 moves with a timed statement, 66 consistent, the four named conflicts; the
+movement audit 0 findings), `check:baseline` (this build), and `check:selftest` here (Chromium 141, software WebGL): the self-test 317 of 317 and
+every live block run, all passing but the motion block, which fails on three lines alone (the 16's jumps and pops over their ceilings, the
+paper map's zoom by real input against its twin: question 267, above), its visibility re-measured; the evidence taken on this build
+(`docs/stage8-evidence/8k/README.md`), the captures inspected. On CI after the push: the pull request's own checks and a `check:visual` run
+dispatched on its head: the checks job and `check:contrast` passing, `check:selftest` failing on the motion block alone (317 of 317 in-app
+checks), `check:visual` (run 41080693215, 4 h 11 min) on the motion block, `plans-overview`'s drop limit and `ph8-overview-watch`'s derived
+reading (question 267, above), its 37 other cases passing; this build's census in both frames 864 calls and 2,151,193 triangles on the
+desktop, 1,288,561 on the phone (section 21.9). Not verified: the device runs (pending). Unresolved (register section 5): the road's and the post's places in 1805; Bagration's exact line at dawn; what the
+heights by Dwaroschna were; which side of the road Schönhals's height lay; Krug's place (the Second Survey's "Kruch" beside Holubitz); Caffarelli's
+anchors 2.5-2.9 km south of Bagration's from 14:30 (not re-plotted).
+
 ## 2026-10 · Stage 8, the follow-up 8J: the Sokolnitz group, the Pratzen church and the Austerlitz garden (decision 259 (a); a data task)
 
 **Status: built on `claude/tender-einstein-gwrsij-sokolnitz` (a draft PR stacked on 8I's, for review; not merged). Depends on 8I.** The record
