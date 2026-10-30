@@ -45,7 +45,7 @@ var OVERLAYS = {
     arrows:[
      {pts:[[268,328],[249,338],[229,356]],kind:"attack",side:"al",label:"II Column → Sokolnitz",
       interp:"objective: the attack on Sokolnitz village; the model has the column at the village from 08:00"},
-     {pts:[[266,296],[254,316],[236,336]],kind:"attack",side:"al",label:"III Column → castle",
+     {pts:[[266,296],[243,320],[219,338]],kind:"attack",side:"al",label:"III Column → castle",   /* 8J: to the column's place at the castle and pheasantry as corrected ([254,316],[236,336] until 8J) */
       interp:"objective: the attack on the castle and pheasantry; the model has the column there from 08:00"},
      {leg:["lich",2,3],kind:"move",side:"al",label:"Liechtenstein crosses the front"},
      {pts:[[325,230],[301,237]],kind:"halt",side:"al",label:"IV Column halted",of:"col4",
@@ -2466,7 +2466,9 @@ function dayTrackEl(id){
   /* the ground, in world units under one transform: woods, villages, the meres, the streams */
   var mtx=[F.s*F.Ex,-F.s*F.Nx,F.s*F.Ez,-F.s*F.Nz,F.tx,F.ty].map(dtNum).join(" ");
   g+='<g transform="matrix('+mtx+')">';
-  WOODS.forEach(function(w){ var c=W(w.c[0],w.c[1]); g+='<ellipse cx="'+dtNum(c[0])+'" cy="'+dtNum(c[1])+'" rx="'+dtNum(w.rx*0.5)+'" ry="'+dtNum(w.ry*0.5)+'" transform="rotate('+dtNum(w.rot*180/Math.PI)+' '+dtNum(c[0])+' '+dtNum(c[1])+')" fill="'+P.wood.fill+'" stroke="'+P.wood.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; });
+  WOODS.forEach(function(w){ var c=W(w.c[0],w.c[1]);
+    if(w.poly){ g+='<polygon points="'+polyWorld(w).map(function(q){ return dtNum(q[0])+","+dtNum(q[1]); }).join(" ")+'" fill="'+P.wood.fill+'" stroke="'+P.wood.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; return; }   /* Stage 8, 8J: a wood traced from a period map, its outline */
+    g+='<ellipse cx="'+dtNum(c[0])+'" cy="'+dtNum(c[1])+'" rx="'+dtNum(w.rx*0.5)+'" ry="'+dtNum(w.ry*0.5)+'" transform="rotate('+dtNum(w.rot*180/Math.PI)+' '+dtNum(c[0])+' '+dtNum(c[1])+')" fill="'+P.wood.fill+'" stroke="'+P.wood.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; });
   VILLAGES.forEach(function(v){ var c=W(v[1],v[2]); g+='<circle cx="'+dtNum(c[0])+'" cy="'+dtNum(c[1])+'" r="'+dtNum(v[3]*0.5)+'" fill="'+P.village.fill+'" stroke="'+P.village.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; });
   [[SATS,28,10.5],[MENI,23,9]].forEach(function(m){ g+='<ellipse cx="'+dtNum(m[0][0])+'" cy="'+dtNum(m[0][1])+'" rx="'+m[1]+'" ry="'+m[2]+'" fill="'+P.ground.water+'"/>'; });
   [GOLDBACH,LITAVA].concat(BROOKS).forEach(function(l){ g+='<polyline points="'+l.map(function(q){ return dtNum(q[0])+","+dtNum(q[1]); }).join(" ")+'" fill="none" stroke="'+P.marsh+'" stroke-width="0.9" vector-effect="non-scaling-stroke"/>'; });
@@ -8462,6 +8464,13 @@ function artilleryNotes(){
    sources and years the table's (D-5 (b)'s rule for the standards' notes); each church and chapel with its claim as the dossiers give it
    (grade, label, source: ten of the villages have no dossier of their own), and each village drawn with fewer farmsteads than the map's
    symbol for it, read from the plan */
+/* the follow-up 8J (section 21.7): the castle's drawn size, read from what is drawn (castlePlan8g: smaller only where its site leaves no room) */
+function castleSizeText(){
+  var cs=(BLDG||[]).filter(function(b){ return /^castle /.test(b.part||""); }), sz=cs.length?cs[0].scale:null;
+  if(sz==null||!(sz<1)) return "";
+  var m=function(u){ return Math.round(u*GEOREF.M_PER_WORLD/5)*5; };
+  return " (there this map's track and brook, drawn wider than they ran, leave it no room at the size this map draws its buildings: the castle and its farm are drawn at "+
+    Math.round(sz*100)+"% of that size, the quadrangle about "+m(BLD8G.castle.w*sz)+" by "+m(BLD8G.castle.d*sz)+" m)"; }
 function buildingNotes(){
   var B=BUILDINGS, S=APPEARANCE_SOURCES, src=function(k){ var x=S[k]; return !x?k:/^\(/.test(x.au)?x.ti.split(" (")[0]:x.au.split(" (")[0]+", "+x.d; };
   var sk=Object.keys(S).filter(function(k){ return /^mza_/.test(k); }), yrs=sk.map(function(k){ return S[k].d; }).sort();
@@ -8485,13 +8494,13 @@ function buildingNotes(){
     "Roofs: no source read names the roofing of the villages' houses, so the roofs are a convention: thatch, with about one farmstead in "+["","one","two","three","four","five","six","seven","eight","nine","ten"][Math.round(1/BLD8G.tile)]+" tiled. "+
       (ar?"The town of Austerlitz is drawn tiled ("+ar.en+": "+src(ar.src)+"), and so are the manors and the churches. ":"")+"A building's walls (masonry or timber on the sketches) never decide its roof.",
     "Churches stand where a source names one standing in 1805, each with its claim: "+chs.join("; ")+(chap.length?"; and a smaller chapel at "+chap.join("; "):"")+". None at "+Object.keys(B.noChurch||{}).join(", ")+
-      ", where this map drew one until now. Each stands by its village's point, moved off the roads and streams drawn through it; where a source puts a church elsewhere (Pratzen's outside the village), its own place is not drawn.",
-    cas?"The Sokolnitz castle: "+cas.en+" ("+src(cas.src)+", and the sketch of "+S.mza_sokolnitz1825.d+"), its farm south of it, drawn near this map's place for it, not at its own. "+
+      ", where this map drew one until now. Each stands by its village's point, moved off the roads and streams drawn through it, but where a source puts a church elsewhere and its site is read: Pratzen's, drawn at its own site outside the village.",
+    cas?"The Sokolnitz castle: "+cas.en+" ("+src(cas.src)+", and the sketch of "+S.mza_sokolnitz1825.d+"), its farm south of it, drawn at the castle's own site, west of the Goldbach as that sketch has it"+castleSizeText()+"; its pheasantry north of it, drawn to the sketch's outline. "+
       (ow&&ow.lab==="disputed"?"Its walled orchard is not drawn, the sources disagreeing: "+ow.sides.map(function(s){ return s.en+" ("+src(s.src)+")"; }).join("; ")+". ":"")+"No wall round its pheasantry is drawn.":null,
     B.austerlitz&&B.austerlitz.chateau&&B.austerlitz.church?"Austerlitz: the church as the church topography describes it ("+B.austerlitz.church.en+", "+src(B.austerlitz.church.src)+") and the château ("+
       B.austerlitz.chateau.en+", "+src(B.austerlitz.chateau.src)+"), drawn by the church, the château within "+BLD8G.chateau.tol+"° of the bearing it has from the church today ("+
       BLD8G.chateau.bearing+"°, west-south-west"+(chAz!=null?"; drawn at "+Math.round(chAz)+"°":"")+"), with no road or stream of this map's between them, where its roads and stream through the town leave room; "+
-      "neither at its own place, their distance the symbols'.":null,
+      "neither at its own place, their distance the symbols'."+(B.austerlitz.garden?" Its garden ("+B.austerlitz.garden.en+", "+src(B.austerlitz.garden.src)+"): drawn at its outline on the 1826 and 1836-52 maps, as rows of trees west of the château as drawn, the rows a convention; no house of the town in it.":""):null,
     (cy?"Telnitz: "+cy.en+" (as "+src(cy.src)+" reports the parish's own record): its churchyard drawn walled. ":"")+(f0?"Fences round "+fences.join(" and ")+": "+f0.en+" ("+src(f0.src)+"); their course is not known, so they run along each village's edge, and the ditches are not drawn.":""),
     (function(){ var nd=Object.keys(B.notDrawn||{}).map(function(k){ return B.notDrawn[k].en; }).filter(Boolean); return nd.length?"Not drawn: "+nd.slice(0,-1).join(", ")+(nd.length>1?" and ":"")+nd[nd.length-1]+".":null; })(),
     "Every size, height, colour and spacing of the buildings is a design value at their symbol scale."
@@ -13865,9 +13874,13 @@ var AUSTERLITZ_DEBUG=(function(){
           !cBad.length, "the band's light from its inner edge to the shore "+prof.filter(function(v,i){ return i%4===0; }).map(function(v){ return v.toFixed(0); }).join(" ")+" (peak "+peak.toFixed(0)+"); the middle "+mid.toFixed(1)+", the margin "+mar.toFixed(1)+"; against the field, the shore band and the margin: "+ratios.join(", ")+(cBad.length?"; WRONG: "+cBad.join("; "):""));
         /* (d) the woods */
         /* 8E's woods: the trees and the scrub by kind, and each habit's triangles (its kit: four deciduous habits, two conifers, the bush), read
-           on the 8E build (tools/stage8/woods-8f.js, docs/stage8-evidence/8f/woods-8f.json) */
-        var WOODS8E={wood:634, village:184, conifer:376, edge:354, stream:202}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
-        var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0};
+           on the 8E build (tools/stage8/woods-8f.js, docs/stage8-evidence/8f/woods-8f.json). The counts by kind since the follow-up's data tasks
+           changed the woods (8J: the pheasantry traced, 46 trees for 190, the Austerlitz park dropped, the garden's rows added west of the château,
+           the bank scrub kept clear of the buildings): read on the build
+           (tools/stage8/woods-bldg-8j.js; docs/stage8-evidence/8j/woods-bldg-8j.json); until 8J 8E's {wood:634, village:184, conifer:376, edge:354,
+           stream:202}. The triangles a tree stay 8E's (KIT8E) */
+        var WOODS8E={wood:409, village:184, conifer:287, edge:244, stream:229, garden:12}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
+        var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0,garden:0};
         world.trees.children.forEach(function(im){ (im.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(im.material.side!==THREE.DoubleSide) dBad.push("a deciduous habit not drawn on both faces"); if(!im.castShadow) dBad.push("a deciduous habit casts no shadow"); });
         world.conifers.children.forEach(function(im){ K.conifer+=(im.userData.kinds||[]).length; });
         (world.scrub.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(world.scrub.material.side!==THREE.DoubleSide) dBad.push("the scrub not drawn on both faces");
@@ -13876,7 +13889,7 @@ var AUSTERLITZ_DEBUG=(function(){
         tb.forEach(function(n,i){ if(n>KIT8E.broad[i]) dBad.push("deciduous habit "+i+": "+n+" triangles, 8E's "+KIT8E.broad[i]); });
         tc.forEach(function(n,i){ if(n!==KIT8E.conifer[i]) dBad.push("conifer "+i+": "+n+" triangles, 8E's "+KIT8E.conifer[i]); });
         if(ts>KIT8E.scrub) dBad.push("the bush: "+ts+" triangles, 8E's "+KIT8E.scrub);
-        ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
+        ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as pinned (WOODS8E: 8E's counts, then those of the woods' data tasks), each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
           !dBad.length, JSON.stringify(K)+"; triangles a tree: deciduous "+tb.join(", ")+" (8E "+KIT8E.broad.join(", ")+"), conifers "+tc.join(", ")+", the bush "+ts+" (8E "+KIT8E.scrub+")"+(dBad.length?"; WRONG: "+dBad.join("; "):""));
         /* (d') Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.10): the crowns closing near the eye. Each deciduous habit and the
            bush drawn with the near hook (treeNear: its program's key, the faces' centres aFC on its geometry); in 8F's own close view of the
@@ -14131,14 +14144,16 @@ var AUSTERLITZ_DEBUG=(function(){
         var lBad=[], ch=B.filter(function(b){ return b.part==="church"||b.part==="chapel"||b.part==="church nave"; });
         ch.forEach(function(b){ var q=V[b.village], kind=b.part==="chapel"?"chapel":"church";
           if(kind==="church"&&CHURCHES.indexOf(b.village)<0) lBad.push("a church at "+b.village+", not in CHURCHES"); if(kind==="chapel"&&CHAPELS.indexOf(b.village)<0) lBad.push("a chapel at "+b.village+", not in CHAPELS");
-          var at=b.part==="church nave"?[b.R.x,b.R.z]:[b.x,b.z]; if(!q||Math.hypot(at[0]-q.cc[0],at[1]-q.cc[1])>5.0+1e-9) lBad.push(kind+" at "+b.village+" "+(q?Math.hypot(at[0]-q.cc[0],at[1]-q.cc[1]).toFixed(2):"?")+" units from its point"); });
+          /* since the follow-up 8J a church whose own site is read (LANDMARK_SITES.church: Pratzen's) within 5 units of that site, the others of their village's point */
+          var site=LANDMARK_SITES.church[b.village], ref=site?W(site[0],site[1]):(q&&q.cc), at=b.part==="church nave"?[b.R.x,b.R.z]:[b.x,b.z];
+          if(!q||!ref||Math.hypot(at[0]-ref[0],at[1]-ref[1])>5.0+1e-9) lBad.push(kind+" at "+b.village+" "+(ref?Math.hypot(at[0]-ref[0],at[1]-ref[1]).toFixed(2):"?")+" units from its "+(site?"own site":"point")); });
         CHURCHES.concat(CHAPELS).forEach(function(k){ if(ch.filter(function(b){ return b.village===k; }).length!==1) lBad.push(k+": "+ch.filter(function(b){ return b.village===k; }).length+" churches or chapels drawn"); });
         var chap=B.filter(function(b){ return b.part==="chapel"; }), spired=B.filter(function(b){ return b.part==="church"; });
         if(chap.some(function(b){ return !(b.scale<1); })||spired.some(function(b){ return b.scale!==1; })) lBad.push("the chapel not smaller than the churches");
         var cols=B.filter(function(b){ return b.part==="church column"; }), nave=B.filter(function(b){ return b.part==="church nave"; })[0], tower=B.filter(function(b){ return b.part==="church tower"; })[0];
         if(cols.length!==6||!nave||!tower) lBad.push("Austerlitz's temple: "+cols.length+" columns"+(nave?"":", no nave")+(tower?"":", no tower"));
         else { var ridge=nave.floor+nave.h+BLD8G.pitch.tile*Math.min(nave.R.a,nave.R.b)*BLD8G.over[0]; if(tower.floor+tower.h>ridge+1e-6) lBad.push("Austerlitz's tower above its roof's ridge"); }
-        var cr=B.filter(function(b){ return /^castle /.test(b.part||""); }), fm=B.filter(function(b){ return /^farm /.test(b.part||""); }), Nn=GEOREF.NORTH, En=[-Nn[1],Nn[0]];
+        var cr=B.filter(function(b){ return /^castle /.test(b.part||""); }), fm=B.filter(function(b){ return /^farm /.test(b.part||""); }), Nn=GEOREF.NORTH, En=[-Nn[1],Nn[0]], csz=null;
         if(cr.length!==4) lBad.push("the castle "+cr.length+" ranges"); else {
           var cx=cr.reduce(function(s,b){ return s+b.R.x; },0)/4, cz=cr.reduce(function(s,b){ return s+b.R.z; },0)/4, pr=function(b){ return (b.R.x-cx)*En[0]+(b.R.z-cz)*En[1]; };
           var east=cr.filter(function(b){ return /east/.test(b.part); })[0], west=cr.filter(function(b){ return /west/.test(b.part); })[0];
@@ -14146,7 +14161,14 @@ var AUSTERLITZ_DEBUG=(function(){
           else { if(!(Math.min(east.R.a,east.R.b)>Math.min(west.R.a,west.R.b)&&east.h>Math.max.apply(null,cr.filter(function(b){ return b!==east; }).map(function(b){ return b.h; })))) lBad.push("the castle's east range not the deepest and highest"); }
           for(var r1=0;r1<4;r1++) for(var r2=r1+1;r2<4;r2++) if(/north|south/.test(cr[r1].part)!==/north|south/.test(cr[r2].part)&&!v8Overlap(cr[r1].R,cr[r2].R,0.05)) lBad.push("the castle's "+cr[r1].part+" and "+cr[r2].part+" do not meet");
           var fx=fm.reduce(function(s,b){ return s+b.R.x; },0)/Math.max(1,fm.length), fz=fm.reduce(function(s,b){ return s+b.R.z; },0)/Math.max(1,fm.length);
-          if(fm.length!==3||((fx-cx)*Nn[0]+(fz-cz)*Nn[1])>=0) lBad.push("the castle's farm not south of it"); }
+          if(fm.length!==3||((fx-cx)*Nn[0]+(fz-cz)*Nn[1])>=0) lBad.push("the castle's farm not south of it");
+          /* since the follow-up 8J (section 21.7): at its own site, its quadrangle covering it; the castle and its farm at one size, not above
+             8G's or below CASTLE8J.floor */
+          var cs8=W(LANDMARK_SITES.castle[0],LANDMARK_SITES.castle[1]), ce8=[], cn8=[];
+          cr.forEach(function(b){ b.R.corners.forEach(function(q){ ce8.push((q[0]-cs8[0])*En[0]+(q[1]-cs8[1])*En[1]); cn8.push((q[0]-cs8[0])*Nn[0]+(q[1]-cs8[1])*Nn[1]); }); });
+          if(!(Math.min.apply(null,ce8)<=0&&Math.max.apply(null,ce8)>=0&&Math.min.apply(null,cn8)<=0&&Math.max.apply(null,cn8)>=0)) lBad.push("the castle's quadrangle not covering its own site");
+          var sc8=cr.concat(fm).map(function(b){ return b.scale; }); csz=sc8[0];
+          if(sc8.some(function(x){ return !(x===sc8[0]&&x<=1&&x>=CASTLE8J.floor-1e-9); })) lBad.push("the castle and its farm not at one size within 8G's and CASTLE8J.floor ("+sc8.join(", ")+")"); }
         var chat=B.filter(function(b){ return b.part==="chateau main range"; })[0];
         /* since 8H (section 20.3): within BLD8G.chateau.tol of its bearing today (an octant; css-test.js holds the value), its centre in the town's
            place, and no drawn road or stream between it and its church (8G's quarter-turn admitted it north-west of the church, 86.5 degrees off) */
@@ -14160,8 +14182,8 @@ var AUSTERLITZ_DEBUG=(function(){
         Object.keys(fv).forEach(function(k){ var c=BUILDINGS.fences&&BUILDINGS.fences[k]; if(!c||c.gen) lBad.push("a fence at "+k+", which BUILDINGS.fences does not name"); });
         Object.keys(BUILDINGS.fences||{}).forEach(function(k){ if(!BUILDINGS.fences[k].gen&&!fv[k]) lBad.push("no fence at "+k); });
         if(B.some(function(b){ return b.wall==="stone"&&b.part!=="churchyard wall"&&b.part!=="church column"; })) lBad.push("a wall drawn other than Telnitz's churchyard's");
-        ck("the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhere, each by its village's point; Austerlitz's the temple, its tower no higher than its roof; the castle a closed quadrangle, its east range the deepest and highest, its farm south of it; the château within an octant of its bearing today from its church, in the town's place, no drawn road or stream between them; Telnitz's churchyard walled with one gate; fences only where BUILDINGS.fences names them; no other wall",
-          !lBad.length, ch.length+" churches and chapels ("+CHURCHES.length+" in CHURCHES, "+CHAPELS.length+" in CHAPELS); "+cols.length+" columns; the castle "+cr.length+" ranges and its farm "+fm.length+"; the château "+(chAz==null?"-":chAz.toFixed(0)+" degrees from its church (today "+BLD8G.chateau.bearing+")")+"; "+cy.length+" runs of churchyard wall; fences at "+Object.keys(fv).map(function(k){ return k+" "+fv[k]; }).join(", ")+(lBad.length?"; WRONG: "+lBad.join("; "):""));
+        ck("the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhere, each by its village's point or, where its site is read, its own site; Austerlitz's the temple, its tower no higher than its roof; the castle a closed quadrangle covering its own site, its east range the deepest and highest, its farm south of it, both at one size; the château within an octant of its bearing today from its church, in the town's place, no drawn road or stream between them; Telnitz's churchyard walled with one gate; fences only where BUILDINGS.fences names them; no other wall",
+          !lBad.length, ch.length+" churches and chapels ("+CHURCHES.length+" in CHURCHES, "+CHAPELS.length+" in CHAPELS); "+cols.length+" columns; the castle "+cr.length+" ranges and its farm "+fm.length+(csz!=null?", at "+csz+" of 8G's size":"")+"; the château "+(chAz==null?"-":chAz.toFixed(0)+" degrees from its church (today "+BLD8G.chateau.bearing+")")+"; "+cy.length+" runs of churchyard wall; fences at "+Object.keys(fv).map(function(k){ return k+" "+fv[k]; }).join(", ")+(lBad.length?"; WRONG: "+lBad.join("; "):""));
 
         /* (e') the dossiers: each village's and the town's names the claims its buildings rest on, with their grades and sources (apValue), and
            its conventions as such (Part A's acceptance for 8G: each landmark "with its claim in the dossier") */

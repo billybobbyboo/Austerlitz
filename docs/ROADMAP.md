@@ -538,9 +538,13 @@ formation names on the lighter plate (decision 263 (a), at AA by sym.plate's rul
 the census reported in both frames (section 20.12's maxima were the frame with the ground's depth reused: the complete frame on 8H's run 864
 calls and 2,352,049 triangles on the desktop, 1,398,127 triangles on the phone), measured again for every build; decisions 261, 262, 264 and 265
 recorded. **8J** (`claude/tender-einstein-gwrsij-sokolnitz`, decision 259 (a)) and **8K** (`claude/tender-einstein-gwrsij-highway`, decision 260
-(a)): the data tasks, each with its own section, register and `check:data` reference.
+(a)): the data tasks, each with its own section, register and `check:data` reference. In 8J the Sokolnitz castle, at its own site between the
+drawn track and the drawn brook (their widths a display convention), stands clear only at 20% of 8G's size (96 by 73 m, near the 1825 quadrangle's
+79.6 by 60.0 m), so that it reads smaller than the farmhouses beside it, drawn at the buildings' convention: drawn so, a rule of the planner
+(`CASTLE8J`), and put to the owner as **question 266** (§21.7: (a) keep it, recommended; (b) a middle size off its site; (c) the ribbons narrowed
+there; (d) 8G's size 461 m off across the track).
 
-**Still open in Stage 8** (none blocking the build): the device runs for 8E-8K (§20.12, §21); decision 245 (a)'s facings, to be reconsidered now
+**Still open in Stage 8** (none blocking the build): question 266 (the castle's drawn size at its site, §21.7); the device runs for 8E-8K (§20.12, §21); decision 245 (a)'s facings, to be reconsidered now
 that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
 `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's
 remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist.
