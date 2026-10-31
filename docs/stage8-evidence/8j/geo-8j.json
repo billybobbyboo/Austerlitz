@@ -1,0 +1,85 @@
+{
+ "tool": "tools/stage8/geo-8j.js",
+ "after": {
+  "pheasantry": {
+   "samples": 1001,
+   "woodShare": 0.852,
+   "classesInside": {
+    "wood": 0.852,
+    "water": 0.092,
+    "road": 0.001,
+    "low wet": 0.055
+   },
+   "spillWithin3Units": 0.018
+  },
+  "sites": [
+   {
+    "name": "Sokolnitz (village point)",
+    "map": [
+     208.17153193379693,
+     364.7657768096703
+    ],
+    "cover": "village",
+    "drawn": "marsh",
+    "elevM": 210.4
+   },
+   {
+    "name": "the castle's site",
+    "map": [
+     212.9,
+     344.3
+    ],
+    "cover": "road",
+    "drawn": "road",
+    "elevM": 217.2
+   },
+   {
+    "name": "Pratzen's church site",
+    "map": [
+     277,
+     255.6
+    ],
+    "cover": "village",
+    "drawn": "village",
+    "elevM": 251
+   }
+  ],
+  "garden": {
+   "n": "the château's garden at Austerlitz",
+   "samples": 678,
+   "classes": {
+    "village": 1
+   }
+  },
+  "bed": {
+   "toVillageM": 203,
+   "toCastleSiteM": 146
+  }
+ },
+ "before": {
+  "pheasantry": {
+   "ellipse": [
+    236,
+    385
+   ],
+   "rx": 24,
+   "ry": 17
+  },
+  "sites": [
+   {
+    "name": "Sokolnitz (village point)",
+    "map": [
+     208.17153193379693,
+     364.7657768096703
+    ],
+    "cover": "village",
+    "drawn": "water",
+    "elevM": 206.7
+   }
+  ],
+  "bed": {
+   "toVillageM": 103,
+   "toCastleSiteM": null
+  }
+ }
+}

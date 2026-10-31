@@ -39,12 +39,22 @@ function M2W(pts){ return pts.map(function(p){ return W(p[0],p[1]); }); }
 var UNITS_PER_KM = GEOREF.UNITS_PER_KM;   /* from geo.js: the only scale */
 
 /* ---------------- hydrography ---------------- */
-var GOLDBACH_M=[[250,109],[240,160],[212,218],[208,256],[207,297],[204,362],[208,376],[214,410],[237,415],[276,415]];
+/* Stage 8, the follow-up 8J (decision 259 (a); docs/stage8-evidence/8h/geo/proposal.md G3, docs/stage8-evidence/8j/): at Sokolnitz the Goldbach's
+   bed from the boundary with Kobelnitz (y 309.8) to below the village (y 377.9) is today's channel of the Říčka ("Zlatý potok", OSM ways 102596825,
+   532819718, 884299950, 884299951, simplified within 0.5 units), which the stable cadastre's sketch of 1825 draws within about 10 m at the castle and
+   the village and 7-8 m along the pheasantry's avenue (B, georeferenced; for 1805 an inference, C, supported by Mikhailovsky-Danilevsky's road
+   crossing the brook beside the castle): east of the castle and the village, as the period map has them. Until 8J the bed ran here at x 204-205, 316-
+   515 m west of it, so that the village, the castle's site and the French line stood east of the drawn brook. North of y 309.8 (no period map read
+   there) the bed joins the build's vertex [207,297] straight; south of y 377.9 (not reviewed) it joins the build's [214,410]; its course to the
+   meres, decision 27's, unchanged. Which of the 1825 sketch's two channels north of the castle carried the brook in 1805 is not established: the
+   avenue's, today's, is drawn */
+var GOLDBACH_M=[[250,109],[240,160],[212,218],[208,256],[207,297],[211.8,309.8],[212.2,321.4],[213.4,321.9],[213.9,323.2],[213.6,325.4],[212.2,327.4],
+  [212.5,337.7],[213.4,338.5],[217.4,338.9],[217,342.2],[218.2,342.5],[219.8,344.6],[221,349.4],[216.9,357.6],[214,367.8],[212.4,377.9],[214,410],[237,415],[276,415]];
 var LITAVA_M  =[[552,128],[511,138],[351,313],[297,372],[262,444],[215,500],[209,508]];   /* Slavkov south edge -> Hostěrádky -> Újezd -> Žatčany -> toward Židlochovice */
 var BROOKS_M=[
   [[275,147],[256,185],[225,236]],
   [[283,237],[247,257],[208,275]],
-  [[277,318],[251,341],[212,367]],
+  [[277,318],[251,341],[214.8,365.2]],   /* 8J: its mouth on the corrected Goldbach (it ended at [212,367], beyond the bed as corrected), along its own line */
   [[199,205],[201,239],[201,260]],
   [[401,150],[415,196],[439,217]]   /* the Rakovec through Křenovice to the Litava (turistika.cz); course north of the village schematic */
 ];
@@ -53,7 +63,13 @@ var GOLDBACH=M2W(GOLDBACH_M), LITAVA=M2W(LITAVA_M), BROOKS=BROOKS_M.map(M2W);
 /* ---------------- roads and tracks ---------------- */
 var ROADS=[
  {n:"Brunn-Olmutz highway", cls:"highway", w:2.9,
-  p:[[30,154],[142,128],[225,97],[239,80],[324,36],[401,-4]]},   /* west: legacy course; east of the Santon: past Tvarožná to the Posoritz post house and on toward Rausnitz */
+  p:[[30,154],[142,128],[224,103.8],[232,97.7],[256,87.3],[336,66.5],[358,57.6],[364,54.3],[382,41.6],[412,15.3],[414,12.2],[422,4.7],[432,-8]]},
+  /* west: legacy course. From the Santon's foot east: II/430's line, the road of the cadastral sketches of 1826 and the Second Military Survey
+     (1836-52), south of Tvarožná, past the Holubitz inn and the post north of it at Kovalovice No. 109, leaving the frame toward Rausnitz (Stage 8,
+     the follow-up 8K, decision 260 (a): docs/stage8-evidence/8h/geo/consequences.json highway.rows, the line simplified to 0.6 map units; B for
+     1826-52, for 1805 an inference, C: no realignment between 1805 and 1826 is recorded and the First Survey, which would test it, was not
+     reached). The legacy western part now meets it at the Santon's foot, [224,103.8]. Until 8K [225,97],[239,80],[324,36],[401,-4]: the
+     correction pass's line through its constructed post house, 0.2 to 1.2 km north of this one */
  {n:"Pratzen-Austerlitz road", cls:"post", w:2.0, p:[[276,243],[360,199],[433,158],[507,126]]},   /* legacy shape re-anchored on its two villages; course unverified */
  {n:"Krzenowitz road", cls:"track", w:1.5, p:[[415,196],[348,217],[276,243]]},
  {n:"Sokolnitz-Telnitz track", cls:"track", w:1.5, p:[[208,365],[208,376],[212,408]]},
@@ -66,15 +82,30 @@ var ROADS=[
  {n:"Bosenitz-Blasowitz track", cls:"track", w:1.3, p:[[236,69],[261,114],[296,147]]},
  {n:"Pratzen-Sokolnitz track", cls:"track", w:1.4, p:[[276,243],[271,292],[238,334]]},
  {n:"Menitz track", cls:"track", w:1.3, p:[[212,408],[187,427],[182,464]]},
- {n:"Holubitz-Posoritz track", cls:"track", w:1.3, p:[[340,89],[332,62],[324,36]]},
+ {n:"Holubitz-Posoritz track", cls:"track", w:1.3, p:[[340,89],[333.5,67.1]]},   /* 8K: the legacy course to the highway as corrected; beyond it the
+   track ran on to the constructed post house, [332,62],[324,36], in fields on the Second Survey */
  {n:"Raigern-Telnitz road", cls:"track", w:1.2, p:[[18,500],[115,443],[212,408]]}   /* local road via Otmarov; Raigern itself is off the map */
 ];
 
 /* ---------------- woodland ---------------- */
 var WOODS=[
- {c:[236,385], rx:24, ry:17, rot:0.08, n:190, conifer:0.12},   /* Sokolnitz pheasantry: legacy offset from the village */
- {c:[551,151], rx:30, ry:22, rot:0.0,  n:170, conifer:0.30},   /* Austerlitz park: legacy offset from the town */
- {c:[353,55],  rx:28, ry:13, rot:0.12, n:110, conifer:0.55},   /* wood above Holubitz */
+/* Stage 8, the follow-up 8J (decision 259 (a); proposal G2): the Sokolnitz pheasantry, the "Fasangarten" of the stable cadastre's sketch of 1825
+   (MZA D9 MOR246318250, section III, parcels 366-378), traced on its pieces A03D-A05E and georeferenced (docs/stage8-evidence/8h/geo/README.md
+   section 6.1; places.json period1825.fasangarten_1825, simplified within 0.25 units, 8 m): 0.246 km2, from the castle's north side to 49.1275 N,
+   its avenue and the field in its oval loop left out as the sketch leaves them. B for 1825; for 1805 an inference (C): the garden is the castle's
+   of the 18th century and no change before 1825 is read. Not today's woodland, which lies 170-490 m further north over the 1825 meadow and strip
+   fields. A wood traced from a period map (poly) is drawn to its outline and stands over a stream's wet bottom and the marsh (coverClass). Until 8J
+   an ellipse 1.9 km south-south-east (c [236,385], rx 24, ry 17), on the 1825 fields of Sokolnitz and Telnitz: no support. Its trees at the build's
+   density for it (190 over its drawn 1.01 km2: 46). The Austerlitz park (c [551,151], rx 30, ry 22), 1.6 km south-east of the town on fields and
+   meadows in 1836-52, is no longer drawn (proposal G6): the château's garden is drawn as a garden (GARDENS) */
+ {poly:[[219.3,311.7],[220,311.7],[220.1,312.2],[220.1,331.6],[221,340.4],[219.2,340.9],[218.6,340.7],[218.5,340.4],[220.6,339.9],[220.2,338.4],[219,338.4],
+   [217.9,339],[218.1,340.3],[215.8,341.7],[215.8,342],[215.4,341.6],[214.3,341.9],[214.2,341.5],[215.4,339.3],[215.2,338.3],[213,338.3],[212.7,337.6],
+   [212,337.9],[212,338.3],[209.5,338.9],[207.8,330.2],[207.4,321.9],[208.1,320.2],[208.2,318.2],[211.2,317.9],[211.3,321.2],[210.4,322.4],[210,324.6],
+   [211.4,327],[211.7,328.9],[212.5,328.8],[212.4,327.3],[213.8,325.4],[213.8,324],[213.4,322.2],[212.3,320.6],[212.3,318],[217.3,317.5],[219.3,314.5]],
+  c:[214.6,328.5], n:46, conifer:0.12},   /* Sokolnitz pheasantry: the 1825 Fasangarten */
+ /* the "wood above Holubitz" (c [353,55], rx 28, ry 13, 110 trees), a legacy wood, is not drawn since Stage 8's follow-up 8K (decision 260 (a)): the
+    highway and the post as corrected run through it, and the Second Military Survey (1836-52) has fields there, the road between its rows of trees,
+    the post's buildings north of it (docs/stage8-evidence/8h/geo/fig/ii_survey_posthouse.jpg); no source for the wood was found */
  {c:[76,396],  rx:27, ry:19, rot:0.2,  n:112, conifer:0.40},   /* Raigern woods */
  {c:[229,253], rx:13, ry:9,  rot:0.4,  n:48,  conifer:0.45},   /* copse west of the plateau */
  {c:[235,64],  rx:15, ry:9,  rot:0.0,  n:50,  conifer:0.50},   /* copse behind the Santon */
@@ -86,7 +117,10 @@ var WOODS=[
 
 /* ---------------- marshy bottoms ---------------- */
 var MARSH=[
- {c:[207,372], rx:15, ry:58},   /* lower Goldbach, Sokolnitz down to Telnitz */
+ {c:[214,383], rx:15, ry:45},   /* lower Goldbach, Sokolnitz down to Telnitz. Stage 8, the follow-up 8J (decision 259 (a)): on the corrected bed, from the castle's row
+                                    down to Telnitz as before (its reach at the cover's 0.45 y 345-421 for 323-421): its label's reach, so that it no longer lies over the
+                                    pheasantry, the castle and its park, which the 1825 sketch draws as wood, buildings, park and meadow; [207,372], rx 15, ry 58 until 8J.
+                                    Whether the bottom was marshy in December 1805 rests on the Goldbach bottom's note, not re-examined */
  {c:[227,418], rx:38, ry:26},   /* confluence below Telnitz */
  {c:[272,418], rx:76, ry:26},   /* Satschan fringe */
  {c:[188,457], rx:62, ry:24},   /* Menitz fringe */
@@ -109,7 +143,7 @@ var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the 
  ["Holubitz",340,89,7],["Pratzen",276,243,11],["Bellowitz",164,113,7],
  ["Schlapanitz",163,177,9],["Krzenowitz",415,196,10],["Austerlitz",507,126,24],
  ["Menitz",181,489,7],["Satschan",262,444,7],["Turas",44,294,5],
- ["Hostieradek",342,309,7],["Posoritz post house",324,36,3]
+ ["Hostieradek",342,309,7],["Posoritz post house",363,54,3]
 ];
 /* the villages drawn with a church: where a source read names one standing on 2 December 1805 (Stage 8, implementation PR 8G's data task,
    decision 248 (a): appearance.js BUILDINGS.churches holds each one's claim). Until 8G Girzikowitz, Kobelnitz, Sokolnitz, Telnitz, Augezd,
@@ -118,6 +152,22 @@ var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the 
 var CHURCHES=["Telnitz","Augezd","Pratzen","Schlapanitz","Krzenowitz","Austerlitz","Bosenitz","Satschan","Menitz"];
 /* a chapel standing in 1805 where no church stood, drawn smaller than a church (BUILDINGS.chapels) */
 var CHAPELS=["Holubitz"];
+/* Stage 8, the follow-up 8J (decision 259 (a); docs/stage8-evidence/8h/geo/proposal.md G1, G7): the landmarks drawn at their own sites (map units).
+   castle: the Sokolnitz castle, today's (RÚIAN building 13158571) and the 1825 sketch's closed quadrangle on one site (B for 1825, the
+   georeference resting on it, its far checks holding to 7-15 m; for 1805 B by the texts: Schwoy 1793 names the castle, Mikhailovsky-Danilevsky
+   1844 has the road cross the brook beside it); the planner drew it until 8J by the build's legacy place [226,355], 535 m south-east, east of the
+   drawn brook. church.Pratzen: the church of 1728-1730 outside the village (Schwoy 1793, read on the page: A for "outside the village"), on the
+   1826 sketch in its round churchyard 276 m south-south-west of the street's midpoint, where today's church stands (RÚIAN building 46052721; B),
+   399 m at 193 degrees from the village's point, where the planner drew it until 8J */
+var LANDMARK_SITES={castle:[212.9,344.3], church:{Pratzen:[277.0,255.6]}};
+/* Stage 8, the follow-up 8J (decision 259 (a); proposal G6): the château's garden at Austerlitz, west of the château: Wolny (1836) "an den w. ein
+   herrlicher ... Garten anstoßt", Prince Wenzel Kaunitz's creation (he died in 1794: the garden predates 1805, an inference); a formal garden of
+   compartments with rows of trees on an east-west axis on the 1826 sketch and on the Second Military Survey (1836-52), its outline there today's
+   (OSM way 27326751, 16.9 ha; simplified within 0.15 units): B for 1826-52, for 1805 an inference (C). poly its outline, axis its long axis's two
+   ends, both in map units. Drawn as rows of trees along its axis west of the château as drawn (buildWoods, gardenTrees): the rows' number and the
+   trees' spacing a design convention, the planting in 1805 not established. Its ground the town's place, as the town's footprint covers it */
+var GARDENS=[{n:"the château's garden at Austerlitz", poly:[[480.7,127.3],[483.4,133.7],[498.7,127.4],[498.6,127.2],[504,125],[505.1,123.7],[505.5,121.5],
+  [505.4,120.8],[504,119.6],[503.2,117.9]], axis:[[482.05,130.5],[504.4,121.6]]}];
 
 /* The Pratzen crest: Stare Vinohrady -> the col between them -> the Pratzeberg (GEOREF ground truth;
    the col is PeakVisor's key col of Stare Vinohrady). Used by the relief and the terrain line. */
@@ -135,7 +185,7 @@ var TERRAIN_LINES=[
   note:"Napoleon's first command post. Low, but it looks straight down the French front."},
  {t:"scarp", n:"Western escarpment", p:[[273,188],[259,233],[245,280],[248,324],[258,349]],
   note:"The face Soult's divisions climbed. At true scale the plateau is a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km; on the morning of the battle it was the fog in the valley at its foot that hid his divisions."},
- {t:"valley", n:"Goldbach bottom", p:[[240,160],[213,222],[203,277],[206,365],[212,408],[239,413]],
+ {t:"valley", n:"Goldbach bottom", p:[[240,160],[213,222],[203,277],[214.8,365],[212,408],[239,413]],   /* 8J: by Sokolnitz on the corrected bed ([206,365] until 8J) */
   note:"Marshy in December: a small obstacle to infantry, a serious one to guns and formed cavalry, which cross it at the villages."},
  {t:"valley", n:"Litava bottom", p:[[511,138],[351,313],[297,372],[262,444]],
   note:"Frames the south-east of the field and funnels the Allied retreat toward the meres."},
@@ -189,6 +239,11 @@ function ell(x,z,cm,rx,ry){
   var a=(x-cm._w[0])/(rx*0.5), b=(z-cm._w[1])/(ry*0.5);
   return Math.sqrt(a*a+b*b);
 }
+/* Stage 8, the follow-up 8J: an outline given in map units (a wood traced from a period map, a garden), in world units once (kept on it, as ell
+   keeps a centre), with its box; whether a point lies inside it; its signed distance in world units (negative inside) */
+function polyWorld(o){ if(!o._pw){ var P=M2W(o.poly), b=[1e9,1e9,-1e9,-1e9]; P.forEach(function(q){ b[0]=Math.min(b[0],q[0]); b[1]=Math.min(b[1],q[1]); b[2]=Math.max(b[2],q[0]); b[3]=Math.max(b[3],q[1]); }); P.box=b; o._pw=P; } return o._pw; }
+function inPolyW(x,z,P){ var c=false; for(var i=0,j=P.length-1;i<P.length;j=i++){ var a=P[i], b=P[j]; if(((a[1]>z)!==(b[1]>z))&&(x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])) c=!c; } return c; }
+function polySd(x,z,P){ var d=1e9; for(var i=0,j=P.length-1;i<P.length;j=i++) d=Math.min(d,segDist(x,z,P[j][0],P[j][1],P[i][0],P[i][1])); return inPolyW(x,z,P)?-d:d; }
 
 var CREST=M2W(CREST_M);
 var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
@@ -248,10 +303,15 @@ function localHeight(x,z){
    0 field, 1 meadow, 2 marsh, 3 water, 4 wood, 5 village, 6 vineyard, 7 track */
 function coverClass(mx,mz,ml){
   var water=covAt(covWater,mx,mz), marsh=covAt(covMarsh,mx,mz), wood=covAt(covWood,mx,mz),
-      vill=covAt(covVill,mx,mz), road=covAt(covRoad,mx,mz), vine=covAt(covVine,mx,mz);
+      vill=covAt(covVill,mx,mz), road=covAt(covRoad,mx,mz), vine=covAt(covVine,mx,mz), woodP=covAt(covWoodP,mx,mz);
   var pondS=1-smoothstep(0.55,1.08,Math.sqrt(((mx-SATS[0])/28)*((mx-SATS[0])/28)+((mz-SATS[1])/10.5)*((mz-SATS[1])/10.5)));
   var pondM=1-smoothstep(0.55,1.08,Math.sqrt(((mx-MENI[0])/23)*((mx-MENI[0])/23)+((mz-MENI[1])/9)*((mz-MENI[1])/9)));
-  if(pondS>0.5||pondM>0.5||(water>0.55&&ml<-2.6)) return 3;
+  if(pondS>0.5||pondM>0.5) return 3;
+  /* Stage 8, the follow-up 8J: a wood traced from a period map (WOODS[].poly) is drawn to its outline over a stream's wet bottom and the marsh
+     (the Sokolnitz pheasantry, its brook along its avenue: the 1825 sketch's wood on both sides of it); a mere's water is the mere's. Elsewhere,
+     where no such wood lies (woodP 0), the classes are as before */
+  if(woodP>0.5) return 4;
+  if(water>0.55&&ml<-2.6) return 3;
   if(marsh>0.45&&ml<0.4) return 2;
   if(vill>0.55) return 5;
   if(wood>0.5) return 4;
@@ -264,24 +324,27 @@ function hAt(mx,my){ var w=W(mx,my); return height(w[0],w[1]); }
 
 /* ---------------- coarse land-cover raster ---------------- */
 var COV_NX=168, COV_NZ=146, COV_X0=-180, COV_Z0=-155, COV_DX=360/167, COV_DZ=310/145;
-var covWood, covMarsh, covVill, covRoad, covWater, covVine;
+var covWood, covMarsh, covVill, covRoad, covWater, covVine, covWoodP;   /* covWoodP (8J): the woods traced from a period map alone */
 
 function buildCover(){
   var n=COV_NX*COV_NZ;
   covWood=new Float32Array(n); covMarsh=new Float32Array(n); covVill=new Float32Array(n);
-  covRoad=new Float32Array(n); covWater=new Float32Array(n); covVine=new Float32Array(n);
+  covRoad=new Float32Array(n); covWater=new Float32Array(n); covVine=new Float32Array(n); covWoodP=new Float32Array(n);
   var roadPts=ROADS.map(function(r){ return {p:M2W(r.p), w:r.w}; });
   var villW=VILLAGES.map(function(v){ var c=W(v[1],v[2]); return [c[0],c[1],2.6+v[3]*0.46]; });
   for(var j=0;j<COV_NZ;j++){
     var z=COV_Z0+j*COV_DZ;
     for(var i=0;i<COV_NX;i++){
       var x=COV_X0+i*COV_DX, k=j*COV_NX+i, s, t;
-      s=0;
+      s=0; var sp=0;
       for(t=0;t<WOODS.length;t++){
         var wd=WOODS[t];
-        s=Math.max(s,1-smoothstep(0.62,1.16,ell(x,z,wd.c,wd.rx,wd.ry)));
+        if(wd.poly){   /* 8J: a wood traced from a period map, 0.5 on its outline, eased over 2 units either side (the raster's cell is 2.16) */
+          var pw=polyWorld(wd), bx=pw.box; if(x<bx[0]-2||x>bx[2]+2||z<bx[1]-2||z>bx[3]+2) continue;
+          var vp=1-smoothstep(-2,2,polySd(x,z,pw)); s=Math.max(s,vp); sp=Math.max(sp,vp); }
+        else s=Math.max(s,1-smoothstep(0.62,1.16,ell(x,z,wd.c,wd.rx,wd.ry)));
       }
-      covWood[k]=s;
+      covWood[k]=s; covWoodP[k]=sp;
       s=0;
       for(t=0;t<MARSH.length;t++){
         var mr=MARSH[t];
@@ -337,7 +400,7 @@ function gridAt(a,x,z){
    The classes are the model's own, coverClass on the cover rasters (buildCover, covAt) and the local relief: nothing here
    changes a class. Until 2F each 81 m triangle of the ground was drawn in the class of its centroid, so every edge was a
    saw-tooth of triangles, up to 156 m from the model's edge (tools/stage2/cover-2f.js). Now the ground shader evaluates the
-   same rule at every drawn point (atlasShader): the six rasters are uploaded as they are and interpolated as covAt does,
+   same rule at every drawn point (atlasShader): the six rasters (seven since 8J: covWoodP) are uploaded as they are and interpolated as covAt does,
    and the local relief is read from COVER_ML, the model's localHeight on a grid of 0.25 world units (16 m), interpolated
    bicubically (coverMlAt). The local relief matters only at coverClass's three thresholds (-2.6, 0.4, -1.2), and on a flat
    valley floor a small error there moves the edge far: from the 81 m vertices meadow would be 234 m out, bilinear on a 0.5
@@ -1045,9 +1108,11 @@ var GROUND_FRAG_HEAD=[
   "vec4 gBil(sampler2D t,vec2 n,vec4 g,vec2 p){ vec2 f=(p-g.xy)/g.zw, i=clamp(floor(f),vec2(0.0),n-2.0), u=clamp(f-i,0.0,1.0), c=(i+0.5)/n, d=1.0/n;",
   "  return mix(mix(texture2D(t,c),texture2D(t,c+vec2(d.x,0.0)),u.x),mix(texture2D(t,c+vec2(0.0,d.y)),texture2D(t,c+d),u.x),u.y); }",
   "float gPond(vec4 P,vec2 p){ return 1.0-smoothstep(0.55,1.08,length((p-P.xy)/P.zw)); }",
-  /* coverClass: A = water, marsh, wood, village; B = road, vineyard; ml the local relief */
+  /* coverClass: A = water, marsh, wood, village; B = road, vineyard, the woods traced from a period map (8J); ml the local relief */
   "float gClass(vec2 p,float ml,vec4 A,vec4 B){",
-  "  if(gPond(uPondS,p)>0.5||gPond(uPondM,p)>0.5||(A.x>0.55&&ml< -2.6)) return 3.0;",
+  "  if(gPond(uPondS,p)>0.5||gPond(uPondM,p)>0.5) return 3.0;",
+  "  if(B.z>0.5) return 4.0;",
+  "  if(A.x>0.55&&ml< -2.6) return 3.0;",
   "  if(A.y>0.45&&ml<0.4) return 2.0;",
   "  if(A.w>0.55) return 5.0;",
   "  if(A.z>0.5) return 4.0;",
@@ -1150,7 +1215,7 @@ function atlasLum(d,W){
 }
 /* the detail on or off (app.js: off under lowTier) */
 function groundDetail(on){ if(groundMesh&&groundMesh.material.userData.U) groundMesh.material.userData.U.uDetail.value.x=on?GDETAIL.amount:0; }
-/* the data the shader reads, made once: the six cover rasters (as covAt reads them), the local relief (COVER_ML), the
+/* the data the shader reads, made once: the seven cover rasters (as covAt reads them; covWoodP in B.z since 8J), the local relief (COVER_ML), the
    field-strip table, and the viewshed (refreshed when one is drawn) */
 var _gTex=null;
 function groundTextures(){
@@ -1158,7 +1223,7 @@ function groundTextures(){
   function tex(d,w,h,type){ var t=new THREE.DataTexture(d,w,h,THREE.RGBAFormat,type);
     t.magFilter=t.minFilter=THREE.NearestFilter; t.generateMipmaps=false; t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping; t.needsUpdate=true; return t; }
   var n=COV_NX*COV_NZ, A=new Float32Array(n*4), B=new Float32Array(n*4), k;
-  for(k=0;k<n;k++){ A[k*4]=covWater[k]; A[k*4+1]=covMarsh[k]; A[k*4+2]=covWood[k]; A[k*4+3]=covVill[k]; B[k*4]=covRoad[k]; B[k*4+1]=covVine[k]; }
+  for(k=0;k<n;k++){ A[k*4]=covWater[k]; A[k*4+1]=covMarsh[k]; A[k*4+2]=covWood[k]; A[k*4+3]=covVill[k]; B[k*4]=covRoad[k]; B[k*4+1]=covVine[k]; B[k*4+2]=covWoodP[k]; }
   var M=COVER_ML, MT=Math.ceil(M.nx/4), ml=new Float32Array(MT*M.nz*4);
   for(var j=0;j<M.nz;j++) for(var i=0;i<M.nx;i++) ml[(j*MT)*4+i]=M.a[j*M.nx+i];   /* texel (i/4, j), channel i%4 */
   var FX=128, FZ=32, fd=new Float32Array(FX*FZ*4);
@@ -1586,7 +1651,15 @@ function v8Why(R,ctx){
     if(v8SegBox(R,o.ax,o.az,o.bx,o.bz)<lim) return o.kind; }
   for(var j=0;j<ctx.trees.length;j++){ var t=ctx.trees[j], lt=VILL8G.clear.tree+0.45*t[3]; if(Math.abs(t[0]-R.x)<rr+lt&&Math.abs(t[2]-R.z)<rr+lt&&v8BoxPt(R,t[0],t[2])<lt) return "tree"; }
   for(i=0;i<R.pts.length;i++) if(v8Mere(R.pts[i][0],R.pts[i][1])) return "mere";
+  if(!ctx.landmark&&v8Garden(R)) return "garden";   /* Stage 8, 8J: no house of the town in the château's garden. The church and the château,
+     whose places are a layout of their symbols (their distance a convention, docs/STAGE8_SPEC.md section 20.3), may stand over its outline: the
+     garden's rows are drawn west of the château as drawn (gardenTrees), as the garden lies west of the château */
   return null; }
+/* Stage 8, the follow-up 8J: does a rectangle stand in a garden (GARDENS: its centre or a corner inside the outline)? */
+function v8Garden(R){ for(var g=0;g<GARDENS.length;g++){ var P=polyWorld(GARDENS[g]), b=P.box, rr=R.a+R.b;
+    if(R.x<b[0]-rr||R.x>b[2]+rr||R.z<b[1]-rr||R.z>b[3]+rr) continue;
+    if(inPolyW(R.x,R.z,P)) return true; for(var i=0;i<R.pts.length;i++) if(inPolyW(R.pts[i][0],R.pts[i][1],P)) return true; }
+  return false; }
 /* can two rectangles come within g of each other? (their centres' distance on each axis against their half-diagonals' bound: false only
    where they cannot) */
 function v8Near2(A,B,ra,g){ var r=ra+B.a+B.b+g; return Math.abs(A.x-B.x)<r&&Math.abs(A.z-B.z)<r; }
@@ -1641,9 +1714,11 @@ function v8NearAll(cc,mk,why,ctx,maxR,cap){ var out=[];
 var CHAPEL8G=0.5;
 var V8CANDS=24;   /* the church's places tried for its village's plan, the nearest first */
 function churchPlan8g(v,trees,extra){
-  var cc=W(v[1],v[2]), Rv=2.6+v[3]*0.46, kind=v[0]==="Austerlitz"?"temple":(CHAPELS.indexOf(v[0])>=0?"chapel":(CHURCHES.indexOf(v[0])>=0?"spired":null));
+  /* since 8J a church whose own site is read (LANDMARK_SITES.church: Pratzen's, outside the village) is sought round that site, else round its
+     village's point, as before */
+  var site=LANDMARK_SITES.church[v[0]], cc=site?W(site[0],site[1]):W(v[1],v[2]), Rv=2.6+v[3]*0.46, kind=v[0]==="Austerlitz"?"temple":(CHAPELS.indexOf(v[0])>=0?"chapel":(CHURCHES.indexOf(v[0])>=0?"spired":null));
   if(!kind) return null;
-  var ctx={placed:(extra||[]).slice(), segs:v8Village(v).segs, trees:trees.filter(function(t){ return Math.hypot(t[0]-cc[0],t[2]-cc[1])<Rv*1.6+3; }), skip:null};
+  var ctx={placed:(extra||[]).slice(), segs:site?v8NearSegs(cc,Rv*1.45):v8Village(v).segs, trees:trees.filter(function(t){ return Math.hypot(t[0]-cc[0],t[2]-cc[1])<Rv*1.6+3; }), skip:null, landmark:true};
   var C8=VILL8G.church, k=kind==="chapel"?CHAPEL8G:1, yard=v[0]==="Telnitz"?BLD8G.wall.margin+BLD8G.wall.th:0, n=v8North(), tN=Math.atan2(n[1],n[0]);
   var mk=kind==="temple"?function(x,z){ return v8Rect(x,z,tN,2.75,1.25); }   /* the temple whole (templeParts8g): its pediment's front 2.72 south of its point, its tower's back 2.70 north */
     :function(x,z){ return v8Rect(x+C8.dx*k*Math.cos(0.1),z-C8.dx*k*Math.sin(0.1),-0.1,C8.a*k+yard,C8.b*k+yard); };
@@ -1735,38 +1810,45 @@ function v8Settle(parts,ctx,maxR){
   return null; }
 /* the Sokolnitz castle as the 1825 sketch and Wolny (1837) give it: a closed quadrangle round a court, its east range the deepest and two
    storeys high, the other three one storey (BUILDINGS.sokolnitz.castle); south of it its farm, three ranges round a yard (the sketch's two
-   yards drawn as one, DESIGN). By the map's legacy place (W(226,355), the build's, about 535 m from the castle's own: that correction proposed,
-   not made, docs/STAGE8_SPEC.md section 19), moved the least step off the drawn brook it stood on until 8G */
+   yards drawn as one, DESIGN). Since 8J at the castle's own site (LANDMARK_SITES.castle; until 8J by the map's legacy place, W(226,355), about
+   535 m from it, moved the least step off the drawn brook it stood on). There the drawn track west of it and the drawn brook east of it (their
+   ribbons' widths a display convention, decision 253 (b)) leave its building-scale size no room: it is drawn at the largest of its sizes
+   (BLD8G.castle's, then smaller by CASTLE8J.step, not below CASTLE8J.floor: as a farmstead takes a smaller size in a tight spot) at which its
+   quadrangle stands clear of the drawn roads, streams and trees and covers its own site (moved the least step, v8Settle, at most half its
+   shorter side); its farm at the same size. The size is kept with each range (scale); the storeys' heights are not scaled */
+var CASTLE8J={step:0.05, floor:0.15};
 function castlePlan8g(trees){
-  var B=BLD8G.castle, n=v8North(), e=v8East(), c=W(226,355), tE=Math.atan2(e[1],e[0]), tN=Math.atan2(n[1],n[0]), parts=[];
-  function at(de,dn){ return [c[0]+e[0]*de+n[0]*dn, c[1]+e[1]*de+n[1]*dn]; }
-  function range(de,dn,t,a,b,h,part){ var p=at(de,dn); parts.push({R:v8Rect(p[0],p[1],t,a,b), h:h, part:part}); }
-  var inner=B.d-2*B.ns;
-  range(0, B.d/2-B.ns/2, tE, B.w/2, B.ns/2, B.h[0], "castle north range");
-  range(0,-B.d/2+B.ns/2, tE, B.w/2, B.ns/2, B.h[0], "castle south range");
-  range(-B.w/2+B.west/2, 0, tN, inner/2-0.02, B.west/2, B.h[0], "castle west range");
-  range( B.w/2-B.east/2, 0, tN, inner/2-0.02, B.east/2, B.h[1], "castle east range");
-  /* the farm: its north range 1.6 south of the castle, its west range and its south range round a yard open to the east */
-  var f0=-B.d/2-1.6-0.5;
-  range(-0.4, f0, tE, 3.0, 0.5, 0.95, "farm north range");
-  range(-3.0, f0-2.3, tN, 1.8, 0.5, 0.95, "farm west range");
-  range(-0.6, f0-4.6, tE, 2.7, 0.5, 0.95, "farm south range");
-  /* the castle moved the least step that clears the drawn brook, roads and trees at the legacy place (the build's castle stood on the brook
-     there), then its farm the least step from its place south of it; the ranges of each touch, so they are tested against the world and
-     the other group, not each other */
-  var c0=W(226,355), ctx={placed:[], segs:v8NearSegs(c0,14), trees:trees.filter(function(t){ return Math.hypot(t[0]-c0[0],t[2]-c0[1])<18; })};
-  var cas=parts.slice(0,4), farm=parts.slice(4), m1=v8Settle(cas,ctx,4);
-  if(m1) farm.forEach(function(p){ p.R=v8Rect(p.R.x+m1.dx,p.R.z+m1.dz,p.R.t,p.R.a,p.R.b); });
-  ctx.placed=cas.slice();
-  /* the farm stays south of the castle: moved the least step southward and sideways that clears it (the drawn wood beside the legacy place
-     and the brook leave its first place no room) */
-  var m2=null, steps=[];
-  for(var ds=0;ds<=8;ds+=0.5) for(var de=-8;de<=8;de+=0.5) steps.push([ds,de,Math.hypot(ds,de)]);
-  steps.sort(function(p,q){ return p[2]-q[2]; });
-  for(var si=0;si<steps.length&&m1&&!m2;si++){ var dx=-n[0]*steps[si][0]+e[0]*steps[si][1], dz=-n[1]*steps[si][0]+e[1]*steps[si][1], ok=true, mv=[];
-    for(var fi=0;fi<farm.length&&ok;fi++){ var Q=farm[fi].R, R2=v8Rect(Q.x+dx,Q.z+dz,Q.t,Q.a,Q.b); if(v8Clear(R2,ctx)) ok=false; else mv.push(R2); }
-    if(ok){ farm.forEach(function(p,fi){ p.R=mv[fi]; }); m2={dx:dx,dz:dz,off:steps[si][2]}; } }
-  return {parts:m1?cas.concat(m2?farm:[]):[], moved:m1, farmMoved:m2}; }
+  var B=BLD8G.castle, n=v8North(), e=v8East(), c=W(LANDMARK_SITES.castle[0],LANDMARK_SITES.castle[1]), tE=Math.atan2(e[1],e[0]), tN=Math.atan2(n[1],n[0]);
+  var ctx={placed:[], segs:v8NearSegs(c,14), trees:trees.filter(function(t){ return Math.hypot(t[0]-c[0],t[2]-c[1])<18; })};
+  for(var k=0;;k++){ var s=Math.round((1-k*CASTLE8J.step)*1000)/1000; if(s<CASTLE8J.floor-1e-9) break;
+    var parts=[];
+    var at=function(de,dn){ return [c[0]+e[0]*de+n[0]*dn, c[1]+e[1]*de+n[1]*dn]; };
+    var range=function(de,dn,t,a,b,h,part){ var p=at(de*s,dn*s); parts.push({R:v8Rect(p[0],p[1],t,a*s,b*s), h:h, part:part, scale:s}); };
+    var inner=B.d-2*B.ns;
+    range(0, B.d/2-B.ns/2, tE, B.w/2, B.ns/2, B.h[0], "castle north range");
+    range(0,-B.d/2+B.ns/2, tE, B.w/2, B.ns/2, B.h[0], "castle south range");
+    range(-B.w/2+B.west/2, 0, tN, inner/2-0.02/s, B.west/2, B.h[0], "castle west range");
+    range( B.w/2-B.east/2, 0, tN, inner/2-0.02/s, B.east/2, B.h[1], "castle east range");
+    /* the farm: its north range 1.6 south of the castle, its west range and its south range round a yard open to the east */
+    var f0=-B.d/2-1.6-0.5;
+    range(-0.4, f0, tE, 3.0, 0.5, 0.95, "farm north range");
+    range(-3.0, f0-2.3, tN, 1.8, 0.5, 0.95, "farm west range");
+    range(-0.6, f0-4.6, tE, 2.7, 0.5, 0.95, "farm south range");
+    /* the castle moved the least step that clears the drawn brook, roads and trees, its site still inside its quadrangle; the ranges of each
+       group touch, so they are tested against the world and the other group, not each other */
+    var cas=parts.slice(0,4), farm=parts.slice(4), m1=v8Settle(cas,ctx,Math.min(B.w,B.d)*s/2);
+    if(!m1) continue;
+    farm.forEach(function(p){ p.R=v8Rect(p.R.x+m1.dx,p.R.z+m1.dz,p.R.t,p.R.a,p.R.b); });
+    ctx.placed=cas.slice();
+    /* the farm stays south of the castle: moved the least step southward and sideways that clears it (at the castle's size) */
+    var m2=null, steps=[];
+    for(var ds=0;ds<=8;ds+=0.5) for(var de=-8;de<=8;de+=0.5) steps.push([ds*s,de*s,Math.hypot(ds,de)*s]);
+    steps.sort(function(p,q){ return p[2]-q[2]; });
+    for(var si=0;si<steps.length&&!m2;si++){ var dx=-n[0]*steps[si][0]+e[0]*steps[si][1], dz=-n[1]*steps[si][0]+e[1]*steps[si][1], ok=true, mv=[];
+      for(var fi=0;fi<farm.length&&ok;fi++){ var Q=farm[fi].R, R2=v8Rect(Q.x+dx,Q.z+dz,Q.t,Q.a,Q.b); if(v8Clear(R2,ctx)) ok=false; else mv.push(R2); }
+      if(ok){ farm.forEach(function(p,fi){ p.R=mv[fi]; }); m2={dx:dx,dz:dz,off:steps[si][2]}; } }
+    return {parts:cas.concat(m2?farm:[]), moved:m1, farmMoved:m2, scale:s}; }
+  return {parts:[], moved:null, farmMoved:null, scale:null}; }
 /* the château at Austerlitz as Wolny (1836) gives it: its main front to the south-west, a wing at each end (drawn running back from the
    front), three storeys; the church stands "nahe am Schloße" at the north side of the square (the church topography, 1860), the château today
    west-south-west of it (places.md, the modern cadastre: BLD8G.chateau.bearing). Drawn at the nearest place within BLD8G.chateau.tol of that
@@ -1840,7 +1922,7 @@ function planBuildings8g(trees){
   var L=[], landmark=[];
   _v8Ice=null; _v8H=null;   /* the meres' ice as drawn at the factor the plan is made at (the default, at boot) */
   var cas=castlePlan8g(trees);
-  cas.parts.forEach(function(p){ L.push({R:p.R, h:p.h, roof:"tile", wall:"plaster", part:p.part, village:"Sokolnitz", landmark:true}); landmark.push({R:p.R}); });
+  cas.parts.forEach(function(p){ L.push({R:p.R, h:p.h, roof:"tile", wall:"plaster", part:p.part, village:"Sokolnitz", landmark:true, scale:p.scale}); landmark.push({R:p.R}); });
   VILLAGES.forEach(function(v){
     var cc=W(v[1],v[2]), extra=v[0]==="Sokolnitz"?landmark.slice():[];
     /* the church at the least move that clears it and leaves the village its farmsteads (of its places clear, the nearest first; at
@@ -2003,6 +2085,17 @@ function layBuildings(){
 /* the woods' and the villages' trees, placed as 2F placed them: the seed's first draws (Stage 8, implementation PR 8G: taken out of
    buildWoods unchanged, so that the buildings' plan stands clear of the trees buildWoods draws; buildWoods draws on from the seed returned) */
 var _woodsPlan=null;
+/* Stage 8, the follow-up 8J: the woods' random sequence (seed 77, one sequence through every wood and then the villages' trees) as 8H drew it:
+   its state at the start of each wood 8H drew, keyed by the wood's centre (map units), and at the start of the villages' trees. A wood kept as 8H
+   had it starts from its own state again, a wood traced or added since draws on from where the sequence stands, and the villages' trees start
+   from theirs: so an edit of one wood (8J's pheasantry, 8J's park, 8K's wood above Holubitz) leaves every other wood's trees and the villages'
+   trees where they were, and with them the buildings' plans, which keep clear of those trees (planBuildings8g). Until 8J the sequence ran on
+   through the woods, so that a change to any one of them moved every later wood's trees, the villages' trees and, through them, the buildings
+   of villages far from it (measured: 10 villages re-planned by 8J's woods alone, 11 by 8K's). The trees' habits, turns and the scrub, drawn from
+   the sequence's end in buildWoods, are not held (a presentation only; the buildings do not read them). Read from 8H's world.js
+   (tools/stage8/woods-rs-8j.js) */
+var WOODS_RS={"236,385":77, "551,151":2241407629, "353,55":2344916145, "76,396":2762469959, "229,253":567140043, "235,64":2664461513, "461,151":1510807815,
+  "198,478":665407533, "611,305":1369736033, "394,423":3987622831, villages:698511017};
 function woodsPlan(){
   if(_woodsPlan) return _woodsPlan;
   var seed=77; function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
@@ -2012,14 +2105,18 @@ function woodsPlan(){
      unrotated ellipse, ending at about 0.89 of the wood's radii, less what a village, water or marsh takes from it (coverClass);
      before 2F the trees filled the ellipse turned by WOODS.rot, to its radii. The same number of trees per wood (WOODS.n). */
   WOODS.forEach(function(wd){
-    var c=W(wd.c[0],wd.c[1]), guard=0;
+    var rs=WOODS_RS[wd.c[0]+","+wd.c[1]]; if(rs!==undefined) seed=rs;   /* 8J: a wood kept as 8H drew it starts from its state in 8H's sequence */
+    var c=W(wd.c[0],wd.c[1]), guard=0, pw=wd.poly?polyWorld(wd):null;   /* 8J: a wood traced from a period map, inside its outline */
     for(var i=0;i<wd.n;i++){
-      var u=rnd()*2-1, v=rnd()*2-1, x=c[0]+u*wd.rx*0.5, z=c[1]+v*wd.ry*0.5;
-      if(u*u+v*v>1||drawnCover(x,z)!==4){ if(++guard<wd.n*20){ i--; } continue; }
+      var u=rnd()*2-1, v=rnd()*2-1, x, z;
+      if(pw){ x=(pw.box[0]+pw.box[2])/2+u*(pw.box[2]-pw.box[0])/2; z=(pw.box[1]+pw.box[3])/2+v*(pw.box[3]-pw.box[1])/2; }
+      else { x=c[0]+u*wd.rx*0.5; z=c[1]+v*wd.ry*0.5; }
+      if((pw?!inPolyW(x,z,pw):u*u+v*v>1)||drawnCover(x,z)!==4){ if(++guard<wd.n*20){ i--; } continue; }
       var s=0.7+rnd()*0.65;
       (rnd()<Math.max(0.28,wd.conifer)?conif:broad).push([x,displayHeight(x,z),z,s,"wood"]);
     }
   });
+  seed=WOODS_RS.villages;   /* 8J: the villages' trees from their state in 8H's sequence */
   VILLAGES.forEach(function(v){
     if(v[3]<7) return;
     var cc=W(v[1],v[2]), R=2.6+v[3]*0.46;
@@ -2031,9 +2128,30 @@ function woodsPlan(){
   });
   return (_woodsPlan={broad:broad, conif:conif, seed:seed});
 }
+/* Stage 8, the follow-up 8J (decision 259 (a); GARDENS): the château's garden at Austerlitz drawn as rows of trees on its long axis: four rows, two
+   along its long sides and two flanking its middle walk, a tree every 0.9 units, inside its outline, west of the château as the planner draws it
+   (its parts' farthest west along the axis, less 1 unit: the château stands at the garden's east end, its place a layout of the town's), clear of
+   every building and of the drawn roads and streams as a farmstead keeps clear of a tree (VILL8G.clear.tree). The rows, their number and the
+   spacing are a design convention (DESIGN): the 1826 sketch and the Second Survey draw rows of trees in compartments, not counted here, and the
+   planting in 1805 is not established. Kind "garden": not a wood's, not a village's */
+function gardenTrees(bldg){
+  var out=[], B=(bldg||[]).filter(function(b){ return b&&b.R; });
+  GARDENS.forEach(function(g){
+    var P=polyWorld(g), a=W(g.axis[0][0],g.axis[0][1]), b=W(g.axis[1][0],g.axis[1][1]), L=Math.hypot(b[0]-a[0],b[1]-a[1]), ux=(b[0]-a[0])/L, uz=(b[1]-a[1])/L, vx=-uz, vz=ux, hw=0;
+    P.forEach(function(q){ hw=Math.max(hw,Math.abs((q[0]-a[0])*vx+(q[1]-a[1])*vz)); });
+    var end=L; B.forEach(function(q){ if(!/^chateau/.test(q.part||"")) return; q.R.pts.forEach(function(p){ var u=(p[0]-a[0])*ux+(p[1]-a[1])*uz; if(u>0&&u<end) end=u; }); });
+    var segs=v8NearSegs([(a[0]+b[0])/2,(a[1]+b[1])/2],L/2+hw+2);
+    [-0.82,-0.28,0.28,0.82].forEach(function(f,row){ for(var u=0.6;u<=end-1;u+=0.9){
+      var x=a[0]+ux*u+vx*f*hw, z=a[1]+uz*u+vz*f*hw, sc=0.6+0.2*hash2(row*131+Math.round(u*10),977), lt=VILL8G.clear.tree+0.45*sc, ok=inPolyW(x,z,P);
+      for(var i=0;ok&&i<B.length;i++){ var R=B[i].R; if(Math.abs(R.x-x)<R.a+R.b+lt&&Math.abs(R.z-z)<R.a+R.b+lt&&v8BoxPt(R,x,z)<lt) ok=false; }
+      for(var k=0;ok&&k<segs.length;k++){ var o=segs[k]; if(segDist(x,z,o.ax,o.az,o.bx,o.bz)<o.h+o.c+0.45*sc) ok=false; }
+      if(ok) out.push([x,displayHeight(x,z),z,sc,"garden"]); } });
+  });
+  return out;
+}
 function buildWoods(scene){
   var P=woodsPlan(), seed=P.seed; function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
-  var broad=P.broad, conif=P.conif;
+  var broad=P.broad.concat(gardenTrees(BLDG)), conif=P.conif;   /* 8J: and the château's garden, after the buildings are planned (buildSettlements) */
   var d=new THREE.Object3D();
   /* ---- silhouettes: a small kit, merged so each variant is one draw call.
      Deciduous crowns in December are bare wood: a dense mass of twig, grey-brown,
@@ -2074,13 +2192,19 @@ function buildWoods(scene){
     if(list.length) coniferMesh.add(im);
   });
   /* scrub: low thorn and hazel along the water and at the wood edges */
-  var scrub=[];
+  var scrub=[], B8=(BLDG||[]).filter(function(b){ return b&&b.R; });
+  function nearBuilding(x,z,lt){ for(var i=0;i<B8.length;i++){ var R=B8[i].R; if(Math.abs(R.x-x)<R.a+R.b+lt&&Math.abs(R.z-z)<R.a+R.b+lt&&v8BoxPt(R,x,z)<lt) return true; } return false; }
   /* at the wood's edge, inside it (Stage 2F): in the outer band of its cover, 0.72 to 0.89 of the radii, where drawnCover is
      wood (before 2F: a ring just outside the turned ellipse, 1.02 to 1.24 of its radii) */
   WOODS.forEach(function(wd){
-    var c=W(wd.c[0],wd.c[1]), want=Math.round(wd.n*0.35), got=0, guard=0;
+    var c=W(wd.c[0],wd.c[1]), want=Math.round(wd.n*0.35), got=0, guard=0, pw=wd.poly?polyWorld(wd):null;
     while(got<want&&guard++<want*40){
-      var a=rnd()*6.28, r=0.72+rnd()*0.17, x=c[0]+Math.cos(a)*wd.rx*0.5*r, z=c[1]+Math.sin(a)*wd.ry*0.5*r;
+      var x, z;
+      if(pw){   /* 8J: a traced wood's edge, 0.25-0.85 units inside its outline */
+        var e=Math.floor(rnd()*pw.length), a2=pw[e], b2=pw[(e+1)%pw.length], f=rnd(), ex=a2[0]+(b2[0]-a2[0])*f, ez=a2[1]+(b2[1]-a2[1])*f,
+            L=Math.hypot(b2[0]-a2[0],b2[1]-a2[1])||1, nx=-(b2[1]-a2[1])/L, nz=(b2[0]-a2[0])/L, off=0.25+rnd()*0.6;
+        x=ex+nx*off; z=ez+nz*off; if(!inPolyW(x,z,pw)){ x=ex-nx*off; z=ez-nz*off; } if(!inPolyW(x,z,pw)) continue; }
+      else { var a=rnd()*6.28, r=0.72+rnd()*0.17; x=c[0]+Math.cos(a)*wd.rx*0.5*r; z=c[1]+Math.sin(a)*wd.ry*0.5*r; }
       if(drawnCover(x,z)!==4) continue;
       scrub.push([x,displayHeight(x,z),z,0.5+rnd()*0.5,"edge"]); got++;
     }
@@ -2093,7 +2217,9 @@ function buildWoods(scene){
       var dx=p1[0]-p0[0], dz=p1[1]-p0[1], L=Math.hypot(dx,dz)||1;
       x+=(-dz/L)*side*off; z+=(dx/L)*side*off;
       if(covAt(covVill,x,z)>0.3) continue;
-      scrub.push([x,displayHeight(x,z),z,0.45+rnd()*0.45,"stream"]);   /* bank scrub along the streams: not a wood */
+      var sc=0.45+rnd()*0.45;
+      if(nearBuilding(x,z,VILL8G.clear.tree+0.45*sc)) continue;   /* 8J: clear of the buildings as drawn (the castle's at its site by the corrected brook), as the garden's rows keep clear */
+      scrub.push([x,displayHeight(x,z),z,sc,"stream"]);   /* bank scrub along the streams: not a wood */
     }
   });
   scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrub.length));   /* 8F: both faces */

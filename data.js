@@ -226,8 +226,11 @@ legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
     1:{p:[211,379],st:"engaged",cf:"A",obj:"Hold Telnitz",act:"Contests Telnitz house by house against Kienmayer"},
     2:{p:[206,366],st:"engaged",obj:"Hold Sokolnitz",act:"Fights for Sokolnitz village and the castle wall"},
     4:{p:[220,321],st:"supporting",cf:"B",act:"Levasseur's brigade marches up onto the Pratzeberg: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right"},
-    7:{tm:{dep:780,at:840,gr:"C",basis:"app narrative, unsourced",ev:["Presses east across the stream as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"],note:"the act ties the move to the trap closing, dated 13:00-14:00"},
-       p:[213,371],st:"attacking",via:[[211,322],[208,365]],act:"Presses east across the stream as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march */,
+    7:{tm:{dep:780,at:840,gr:"C",basis:"app narrative, unsourced",ev:["Presses east to the stream at Sokolnitz as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"],note:"the act ties the move to the trap closing, dated 13:00-14:00"},
+       p:[213,371],st:"attacking",via:[[211,322],[208,365]],act:"Presses east to the stream at Sokolnitz as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march.
+       Stage 8, the follow-up 8J (decision 259 (a)): "across the stream" until 8J, when the drawn brook ran west of the village and this place stood
+       east of it; with the bed corrected the place stands at the stream's west bank (15 m from it) and the route on the west bank throughout: the act
+       says where the anchor is. No source read gives this move */,
     8:{tm:{at:900,gr:"C",basis:"app narrative, unsourced",ev:["Several times between 07:00 and 15:00","Retakes Telnitz for good"],note:"Telnitz changed hands until about 15:00; taking it for good is the last change"},
        p:[217,387],st:"attacking",via:[[206,372],[210,377]],act:"Retakes Telnitz for good"},
     9:{p:[228,393],st:"holding"}}},
@@ -293,13 +296,19 @@ suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., V Corps",
   strength:6000, strengthNote:"about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French situation of 28 October 1805 (Alombert and Colin, t. IV, p. 732)",
   children:["santon"],
   track:{
-    0:{p:[225,97],st:"holding",cf:"A",obj:"Hold the highway on the Santon's flank",act:"Formed astride the road under the fortified hill"},
+    0:{p:[235,103],st:"holding",cf:"B",obj:"Hold the highway on the Santon's flank",act:"Formed south of the road, on its right as ordered the evening before, level with the fortified hill"},
     5:{tm:{dep:570,gr:"B",basis:"app narrative, unsourced",ev:["Lannes advances along the highway. Bagration counter-attacks."],note:"Lannes's advance is dated c. 09:30; before it the division holds"},
-       p:[242,78],st:"attacking",cf:"B",act:"Advances astride the highway toward the post house"},
-    6:{p:[264,67],st:"advancing"},
-    7:{p:[284,57],st:"advancing"},
-    8:{p:[309,43],st:"pursuing"},
-    9:{p:[321,38],st:"holding"}}},
+       p:[254,88],st:"attacking",cf:"C",act:"Advances astride the highway toward the post house"},
+    6:{p:[279,81],st:"advancing"},
+    7:{p:[300,76],st:"advancing"},
+    8:{p:[348,62],st:"pursuing"},
+    9:{p:[364,54],st:"holding",cf:"B"}}   /* Stage 8, the follow-up 8K (decision 260 (a)): re-plotted from the readings with the highway and the post as
+       corrected (docs/stage8-evidence/8k/register.md). Phase 0 on the right (south) of the road level with the Santon, as the order of 1 December
+       puts Suchet's and Caffarelli's divisions (Correspondance, no. 9534), B: the order's sector, whether it was carried out by dawn not
+       established. Phases 5 to 7 this map's advance astride the road, at its distances along it from the Santon's foot (0.8, 1.6 and 2.3 km), C:
+       no reading places the division then. Phase 8 west of the post, as Schönhals has Suchet attack Bagration on the height beyond it, C: the
+       hour and the point this map's. Phase 9 at the post, B: Napoleon's order of 3 December is dated there, and Schönhals has Suchet beyond
+       it. Until 8K [225,97] (A), [242,78] (B), [264,67], [284,57], [309,43], [321,38]: by the correction pass's along(), on its constructed road */},
 
 santon:{ ech:"bde", nation:"fr", arm:"inf", desig:"17e Légère with the Santon battery", battery:18, guns:18,
   name:"The Santon detachment", commander:"Gen. de brigade Michel Claparède", parent:"suchet",
@@ -524,10 +533,16 @@ prz:{ ech:"div", nation:"ru", arm:"inf", desig:"III Column",
     0:{p:[290,282],st:"forming",cf:"A",obj:"Take the Sokolnitz castle and pheasantry"},
     1:{tm:{dep:420,gr:"B",basis:"source",ev:["the disposition ordered all the columns to march at 07:00","as did the III Column in Przybyszewski's report","the II and III Columns at 07:30"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)"},
        p:[266,296],st:"advancing"},
-    2:{p:[238,332],st:"attacking",cf:"A",obj:"Take the castle and pheasantry",act:"Storms the walled castle grounds and the pheasant enclosure"},
-    4:{p:[233,344],st:"engaged"},
-    7:{p:[227,338],st:"encircled",cf:"A",obj:"Break out toward Kobelnitz",act:"Cut off by Soult from the east and Davout from the west"},
-    8:{p:[227,309],st:"broken",cf:"A",moveMin:20,act:"Attempts to break out north toward Kobelnitz; the column disintegrates"}   /* timing inferred: holds at Sokolnitz until it is surrounded (~14:00, the file's own event), then breaks out */,
+    2:{p:[215,341],st:"attacking",cf:"B",obj:"Take the castle and pheasantry",act:"Storms the walled castle grounds and the pheasant enclosure"},
+    4:{p:[215,341],st:"engaged"},
+    7:{p:[215,341],st:"encircled",cf:"B",obj:"Break out toward Kobelnitz",act:"Cut off by Soult from the east and Davout from the west"},
+    8:{p:[227,309],st:"broken",cf:"A",moveMin:20,act:"Attempts to break out north toward Kobelnitz; the column disintegrates"}   /* timing inferred: holds at Sokolnitz until it is surrounded (~14:00, the file's own event), then breaks out */
+    /* Stage 8, the follow-up 8J (decision 259 (a)): phases 2, 4 and 7 re-plotted at the castle and the pheasantry as corrected (LANDMARK_SITES.castle,
+       WOODS[0]), where the acts put the column ("Storms the walled castle grounds and the pheasant enclosure", the objective arrow's words that the
+       model has the column there from phase 2 on, "Cut off by Soult from the east and Davout from the west"; Schönhals 1873, p. 160: its head "rückte
+       in Sokolnitz ein"): one place for the three, the column holding at Sokolnitz until it is surrounded (the correction pass's inference), graded B: the
+       sector documented, the frontage an approximation, the castle's and the pheasantry's sites in 1805 the 1825 sketch's carried back. Until 8J
+       [238,332] (A), [233,344] and [227,338] (A): by the build's castle, 535 m south-east of its site, east of the drawn brook */,
     9:{p:null,st:"captured",act:"Surrendered almost entire, near Kobelnitz by evening. Przybyszewski was later court-martialled."}}},
 
 col4:{ ech:"corps", nation:"at", arm:"inf", desig:"IV Column",
@@ -586,14 +601,22 @@ bag:{ ech:"corps", nation:"ru", arm:"inf", desig:"Advance Guard",
   strength:13700, strengthNote:"about 13,000 to 14,000 with 42 guns", guns:42,
   role:"Holds the Brünn–Olmütz highway. Driven back from Holubitz and Kruh, it re-forms on the height toward Rausnitz and withdraws toward Austerlitz in the evening (Stutterheim; Schönhals).",
   track:{
-    0:{p:[319,49],st:"holding",obj:"Hold the highway and cover the Allied right",cf:"B",act:"Astride the Olmütz highway, his line reaching south toward Holubitz. Re-plotted on the corrected road, which passes about 2 km north of Holubitz; the exact line is not established"},
+    0:{p:[352,64],st:"holding",obj:"Hold the highway and cover the Allied right",cf:"B",act:"Astride the Olmütz highway by the Posoritz post house, from which Stutterheim has him advance; his line reaches south toward Holubitz, held with Krug by Ulanius's jägers. The exact line is not established"},
     5:{tm:{dep:570,gr:"B",basis:"app narrative, unsourced",ev:["Lannes advances along the highway. Bagration counter-attacks."],note:"Bagration's counter-attack is dated c. 09:30; before it he holds"},
-       p:[262,68],st:"attacking",cf:"B",obj:"Drive Lannes back on Brünn",act:"Attacks along the highway; cannot get past the Santon battery"},
+       p:[262,68],st:"attacking",cf:"B",obj:"Drive Lannes back on Brünn",act:"Seeks to occupy the heights by Bosenitz, north of the highway (Stutterheim); cannot get past the Santon battery"},
     6:{tm:{dep:675,gr:"C",basis:"app narrative, unsourced",ev:["Blasowitz falls; no source read gives the hour"],note:"the falling back begins with Blasowitz's fall, c. 11:15 on this map; no source read gives either hour, and Schönhals has Bagration fight on toward noon before d'Hautpoul's charge throws his battalions back; the arrival is derived"},
-       p:[284,57],st:"holding",act:"Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later)"},
-    7:{p:[304,46],st:"withdrawing"},
-    8:{p:[337,29],st:"retreating",cf:"B",act:"On the height toward Rausnitz, covering the Allied right (Schönhals); he retreats on Austerlitz about six in Schönhals, and is behind it by six in Stutterheim"},
-    9:{p:[366,14],st:"retreating"}}},
+       p:[300,76],st:"holding",cf:"C",act:"Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later)"},
+    7:{p:[321,70],st:"withdrawing"},
+    8:{p:[386,38],st:"retreating",cf:"B",act:"On the height toward Rausnitz, covering the Allied right (Schönhals); he retreats on Austerlitz about six in Schönhals, and is behind it by six in Stutterheim"},
+    9:{p:[414,13],st:"retreating",cf:"C"}}   /* Stage 8, the follow-up 8K (decision 260 (a)): re-plotted from the readings with the highway and the post
+       as corrected (docs/stage8-evidence/8k/register.md). Phase 0 astride the road between the post and Holubitz, B: Stutterheim has him advance
+       from the post house with Krug and Holubitz held by Ulanius's jägers; the line itself not established. Phase 5 kept: the ground east of
+       Bosenitz, north of the road as corrected, taken for Stutterheim's "Anhöhen bey Dwaroschna", B (the identification this map's). Phases 6
+       and 7 this map's falling back along the road, at its distances from the Santon's foot (2.3 and 3.0 km), C. Phase 8 astride the road on the
+       rise east of the post, Schönhals's height between Rausnitz and the post house ("right of" the road read as neither side), B (that the
+       point is that height this map's inference). Phase 9 on the road toward Rausnitz, 0.4 km inside the frame, C: Mikhailovsky-Danilevsky has
+       him by Rausnitz at dusk, Schönhals and Stutterheim send him toward Austerlitz by six (question 180 (c) kept). Until 8K [319,49] (B),
+       [262,68] (B), [284,57], [304,46], [337,29] (B), [366,14]: by the correction pass's along(), on its constructed road */},
 
 constantine:{ ech:"corps", nation:"ru", arm:"guard", desig:"Imperial Guard",
   name:"Russian Imperial Guard", commander:"Grand Duke Constantine Pavlovich", parent:null,
@@ -742,7 +765,7 @@ var FEATURES = [
  why:["The Allied command centre and the Guard's assembly area"],
  story:"The orders were read in German to an audience of largely Russian commanders, late, and with no time to distribute copies."},
 
-{id:"olmutzroad", p:[249,64], kind:"road", name:"Brünn–Olmütz highway",
+{id:"olmutzroad", p:[264,75], kind:"road", name:"Brünn–Olmütz highway",
  sub:"The road across the northern battlefield: east-north-east from Brünn past the Santon to the Posoritz post house and Rausnitz",
  facts:[["Held by","Lannes' V Corps and Murat's cavalry against Bagration"]],
  why:["The Allied line of advance from Olmütz and the axis of the northern battle"], story:""},
@@ -756,12 +779,12 @@ var FEATURES = [
  sub:"On the hill at the northern edge of Augezd (Újezd u Brna); position approximate",
  facts:[["In 1805","Napoleon came here at the end from the Pratzen with the Guard cavalry and artillery, and artillery of IV Corps and the Guard fired from the height (Schönhals); a French officer's note of 1806 has him come down to the chapel with the Guard cavalry"],["The chapel","Completed in May 1703, closed in 1785, it lost its roof about the time of the battle and was in ruins by 1814, reconsecrated on 5 July 1863 (the town's account, a modern web text); a tourist website says it burned in 1805, and local tradition has the first cannon shot fired from it"]],
  why:["The view from here covers the defile and the meres the Allied left had to cross"], story:""},
-{id:"posthouse", p:[324,36], kind:"landmark", name:"Posoritz post house",
- sub:"Post station on the Olmütz highway north of Holubitz, named after Posoritz, whose parish included Holubitz and Kruh; position approximate (about 1 km)",
+{id:"posthouse", p:[363,54], kind:"landmark", name:"Posoritz post house",
+ sub:"Post station on the Olmütz highway north-east of Holubitz, named after Posoritz, whose parish included Holubitz and Kruh; drawn where the maps of 1826-52 show the post",
  facts:[["Role","The Allied right's line of retreat ran past it toward Rausnitz"]],
  why:["Marks where the highway leaves the field for Rausnitz and Olmütz"], story:""},
-{id:"rausnitz", p:[393,6], kind:"road", name:"To Rausnitz",
- sub:"Rousínov (Rausnitz) lies about 2.7 km beyond this edge of the map on the Olmütz highway",
+{id:"rausnitz", p:[423,4], kind:"road", name:"To Rausnitz",
+ sub:"Rousínov (Rausnitz) lies about 2 km beyond this edge of the map on the Olmütz highway",
  facts:[["Role","Bagration's line of withdrawal"]], why:[], story:""}
 ];
 
@@ -773,7 +796,7 @@ var SOURCE_NOTE = {
   "Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle disagree substantially — Dokhturov's I Column is given as anything from 7,750 to 14,200 men. Where sources conflict, the dossier shows a working figure and the range.",
   "Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scale fitted to surveyed elevations. At true scale the Pratzen plateau reads as a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km. The relief setting cannot be changed while the battle plays, because redrawing the ground can take longer than a frame; the ground switch (Landscape, Paper map, Landscape with counters) can, and a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed).",
   "Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps its historical frame, which lies about {ROT} degrees off true north. The compass rose shows true north for the current view. Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as markers at its edge.",
-  "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the positions of Krug and Bellowitz, which no source read fixes; Kologrivov's command on 2 December, which rests on Sokolov alone (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's; all three from 07:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; at 05:00 on the map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French hands at 09:30, then lost again, as in Davout's report), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Lejeune has Napoleon at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height.",
+  "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; whether the Posoritz post house stood in 1805 where the maps of 1826-52 show the post; the positions of Krug and Bellowitz, which no source read fixes; Kologrivov's command on 2 December, which rests on Sokolov alone (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's; all three from 07:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; at 05:00 on the map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French hands at 09:30, then lost again, as in Davout's report), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Lejeune has Napoleon at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height.",
   "Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights is the sum of the strengths of formations whose plotted positions fall inside the plateau outline; because the reconstruction plots formations and not losses, a figure that does not change does not mean the fighting there has stopped. Centre separation is a spatial test, not a historical statistic: it reports whether a French formation stands across the line joining the Allied groups north and south of the plateau. When it stops being reported the geometry no longer holds, which is not the same as the Allied army having reunited."],
  layers:[
   ["Historical record","What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an event's dossier."],

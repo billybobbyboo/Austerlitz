@@ -345,14 +345,14 @@ Object.keys(units).forEach(id=>{
    where that is recorded ({w, why, see}); an acknowledged warning that is no longer raised is a finding too, until its entry is removed.
    This block stays after every warn() and before the report. */
 const KNOWN_WARN=[
-  {w:"movement: cavalry mean rate 0.83 is not above infantry 1.28",
+  {w:"movement: cavalry mean rate 0.83 is not above infantry 1.35",
    why:"a model property kept on purpose since the chronology data task: the dated moves are shorter and faster, and the cavalry's slow "+
        "legs are the undated creeping moves of decision 45; a warning, not a finding, and not changed. The infantry mean was 1.23 until "+
        "roadmap step 2 dated drouet@3's departure at Soult's advance (08:45, H-2): its leg no longer creeps from 04:00, so it is faster; "+
        "1.26 until roadmap step 4 dated dok@1's departure at 07:00, as the disposition ordered (decision 125 (b)), and 1.30 until roadmap "+
        "step 4b dated lang@1's and prz@1's at 07:00 too (question 176 (b)), for the same reason; 1.37 until roadmap step 4b dropped bag@8's "+
        "dated departure (question 180 (b)), which had made Bagration's last leg a fast one at 16:30, and c_gren@7's dated arrival (question "+
-       "181 (b)), whose derived arrival makes the grenadiers' next leg slower: the opposite effect (1.29 from bag@8 alone); the cavalry mean 0.82 until question 202 (b) dated Bourcier's march from Raigern at 05:00, one of the cavalry's undated creeping legs (decision 45) no longer from 04:00",
+       "181 (b)), whose derived arrival makes the grenadiers' next leg slower: the opposite effect (1.29 from bag@8 alone); the cavalry mean 0.82 until question 202 (b) dated Bourcier's march from Raigern at 05:00, one of the cavalry's undated creeping legs (decision 45) no longer from 04:00; the infantry mean 1.28 until Stage 8's follow-up 8J re-plotted the III Column's places at the castle and the pheasantry as corrected (decision 259 (a)): its leg to them longer in the same time, so faster; 1.33 until Stage 8's follow-up 8K re-plotted Suchet's and Bagration's anchors with the highway and the post as corrected (decision 260 (a)): their legs along the road longer in the same windows, the post 1.4 km further east",
    see:"docs/STAGE2_SPEC.md §M.12 (:1303) and §M.13 (:1407), on the creeping moves of §M.10; CHANGELOG.md, the chronology data task and the Stage 2C "+
        "precondition (the march rates), roadmap step 2 (H-2, Drouet's departure), roadmap step 4 (K4, the I Column's departure) and roadmap step 4b (questions 176 and 180, the II and III Columns' departures and bag@8's)"},
   {w:"command: constantine declares 10500 but its children sum to 7330",

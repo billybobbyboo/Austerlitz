@@ -40,7 +40,7 @@ const MEASURE=fs.readFileSync(path.join(L.ROOT,"tools","visual","measure.js"),"u
   const R=await MO.runBlock(page,settle,{selftestOnly:SO, log:s=>console.log(s)}), ver=browser.version();
   if(proto) proto.stats=await page.evaluate(f=>window.__p8h[f].stats(),proto.file);
   await page.close(); await browser.close();
-  const base=R.runs.filter(r=>!r.real&&!r.select&&!r.reading&&!r.touch), S=k=>base.reduce((s,r)=>s+r[k],0), T=k=>R.runs.reduce((s,r)=>s+r.track[k],0);
+  const base=R.runs.filter(r=>!r.real&&!r.point&&!r.select&&!r.reading&&!r.touch), S=k=>base.reduce((s,r)=>s+r[k],0), T=k=>R.runs.reduce((s,r)=>s+r.track[k],0);
   R.totals={jumps:S("jumps"), pops:S("pops"), lod:S("lod"), flicker:S("flicker")};
   R.visibility={inView:T("inView"), drawn:T("on"), share:+(100*T("on")/Math.max(1,T("inView"))).toFixed(2), longestMs:Math.max(...R.runs.map(r=>r.track.longestMs)), episodes:T("episodes")};
   R.build=path.basename(html); R.md5=crypto.createHash("md5").update(fs.readFileSync(html)).digest("hex"); R.chromium=ver; R.proto=proto;

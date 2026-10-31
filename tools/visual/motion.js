@@ -59,6 +59,16 @@ const inPage=function(){
   D.move=function(x,y,btn){ el().dispatchEvent(pev("pointermove",x,y,btn===2?2:1,btn||0)); };
   D.up=function(x,y,btn){ window.dispatchEvent(pev("pointerup",x,y,0,btn||0)); };
   D.wheel=function(x,y,dy){ el().dispatchEvent(new WheelEvent("wheel",{deltaY:dy,clientX:x,clientY:y,bubbles:true,cancelable:true})); };
+  /* Stage 8, the integration pass (question 267; docs/STAGE8_SPEC.md section 22): the pointer's own arrival over the map and its departure,
+     no button pressed, as the browser sends them when real input's mouse comes to a motion's start and leaves the map after it (runReal's
+     page.mouse.move to the centre and to (2,2), over the rail: a move on the canvas, then its out and leave). A buttonless move over a
+     formation's counter or name hovers it (mlHoverAt), and the layer protects what is hovered (decision 39): the twin of a run by real input
+     must have it too. Returns what the move hovered */
+  function hev(t,x,y,bub){ return new PointerEvent(t,{pointerId:1,isPrimary:true,pointerType:"mouse",clientX:x,clientY:y,buttons:0,button:-1,bubbles:bub,cancelable:true}); }
+  D.hover=function(x,y){ el().dispatchEvent(hev("pointermove",x,y,true)); return ML.hover||null; };
+  D.leave=function(x,y){ var c=el(), e=document.elementFromPoint(x,y);
+    if(e===c){ c.dispatchEvent(hev("pointermove",x,y,true)); return; }
+    c.dispatchEvent(hev("pointerout",x,y,true)); c.dispatchEvent(hev("pointerleave",x,y,false)); if(e) e.dispatchEvent(hev("pointermove",x,y,true)); };
   D.centre=function(){ var fr=mode==="staff"?MAPCAM.freeRect():landFreeRect(); return [Math.round((fr[0]+fr[2])/2),Math.round((fr[1]+fr[3])/2)]; };
   /* could the full search place this dropped item now (against the frame's boxes, panels and symbols)? Tried and undone */
   function roomFor(it,VW,VH,panels,obst){
@@ -201,6 +211,7 @@ const RUN=function(a){
      build, as the baselines were measured (docs/STAGE8_SPEC.md section 20.4) */
   if(kind==="play"){ stopPlay(); setClock(a.from||540,{instant:true,force:true,camera:false}); if(mode!=="staff"){ freeCam=false; curVantage=null; } setSpeed(amt); requestRender(a.pre||8); D.frame(a.pre||8); F.push(D.snap(opt)); togglePlay(); }   /* Follow on, as Part A's probe had it (no glide to the phase's view) */
   else { D.frame(a.pre||8); F.push(D.snap(opt)); }
+  var hov=a.point?D.hover(c[0],c[1]):null;   /* the twin of a run by real input: its pointer arrives where the motion begins (the integration pass) */
   if(kind==="glide"){ if(mode==="staff"){ var w0=W(210,362); MAPCAM.glideTo(w0[0],w0[1],0.09,1500); } else flyTo(VANTAGE[amt]); }
   if(kind==="pan") D.down(c[0],c[1],0);
   if(kind==="orbit") D.down(c[0],c[1],2);
@@ -213,10 +224,11 @@ const RUN=function(a){
   if(kind==="pan") D.up(c[0]+amt*n,c[1],0);
   if(kind==="orbit") D.up(c[0]+amt*n,c[1],2);
   if(kind==="play") stopPlay();
+  if(a.point) D.leave(2,2);   /* and leaves the map, as runReal's pointer does before the frames at rest */
   var restFrom=F.length;
   for(var r=0;r<(a.rest||30);r++){ D.frame(); F.push(D.snap(opt)); }
   var lm=D.layerMs(); D.stop(); D.ptype="mouse"; if(a.reading) setCommandView("none");
-  return {F:F, restFrom:restFrom, ms:lm, mls:typeof MLS!=="undefined"?JSON.parse(JSON.stringify(MLS.stats)):null};
+  return {F:F, restFrom:restFrom, ms:lm, hover:hov, mls:typeof MLS!=="undefined"?JSON.parse(JSON.stringify(MLS.stats)):null};
 };
 /* the motions real input can drive (the pointer's drag, its right-button drag and the wheel): the same frames as RUN, the input sent by the
    browser's own input pipeline (Playwright's mouse: the events a visitor's mouse makes, trusted, with their pointer capture), one frame of
@@ -228,6 +240,7 @@ async function runReal(page,a){
     D.frame(a.pre||8); window.__mdF=[D.snap({room:!!a.room})]; return D.centre(); },a);
   const step=o=>page.evaluate(o=>{ var D=window.__md; D.frame(); window.__mdF.push(D.snap(o)); },o);
   await page.mouse.move(c[0],c[1]);
+  const hover=await page.evaluate(()=>ML.hover||null);   /* what the pointer hovers as it arrives (the integration pass: its twin's must be the same) */
   if(kind==="pan"||kind==="orbit") await page.mouse.down({button:btn});
   for(let i=1;i<=n;i++){
     if(kind==="pan"||kind==="orbit") await page.mouse.move(c[0]+amt*i,c[1]);
@@ -239,7 +252,7 @@ async function runReal(page,a){
   const restFrom=await page.evaluate(()=>window.__mdF.length);
   for(let r=0;r<(a.rest||30);r++) await step(opt);
   return page.evaluate(()=>{ var D=window.__md, F=window.__mdF; window.__mdF=null; var lm=D.layerMs(); D.stop();
-    return {F:F, ms:lm, mls:typeof MLS!=="undefined"?JSON.parse(JSON.stringify(MLS.stats)):null}; }).then(r=>Object.assign(r,{restFrom:restFrom}));
+    return {F:F, ms:lm, mls:typeof MLS!=="undefined"?JSON.parse(JSON.stringify(MLS.stats)):null}; }).then(r=>Object.assign(r,{restFrom:restFrom,hover:hover}));
 }
 /* the harness's motion block (tools/visual/harness.js, check:visual and check:selftest; Stage 8, 8C, moved here in 8D so that
    tools/stage8/motion-8d.js runs the same block): its runs in order (the 16; the four real input can drive by real input, two of them on the
@@ -250,12 +263,17 @@ async function runReal(page,a){
    formation-frames in view (drawn, behind the ground, or hidden by the layout: its denominator), those drawn, the longest disappearance by the
    layout (tracking above) */
 const SELFTEST_REAL=["hybrid-orbit","paper-zoom"];
+/* Stage 8, the integration pass (question 267; docs/STAGE8_SPEC.md section 22): each run by real input follows its twin with the pointer
+   ("+point"), the same driven motion with the real pointer's buttonless arrival at the motion's start and its departure (RUN's a.point): until
+   this pass a run by real input was held to the 16's run, which has no pointer, so where the motion's start lies on a formation's counter or name
+   the real pointer hovered it and the layer protected it (decision 39) while the 16's run did not (on 8K's build the paper map's zoom: the
+   Russian Imperial Guard's counter under the centre, 26 jumps against 10). The 16 and their totals are as before */
 function blockRuns(selftestOnly){
   const RR=selftestOnly?SELFTEST_REAL:REAL;
-  return MOTIONS.map(m=>({m:m})).concat(RR.map(id=>({m:MOTIONS.find(x=>x[0]===id),real:true})),
+  return MOTIONS.map(m=>({m:m})).concat([].concat.apply([],RR.map(id=>{ const m=MOTIONS.find(x=>x[0]===id); return [{m:m,point:true},{m:m,real:true}]; })),
     [["hybrid-orbit","sthilaire"],["paper-zoom","sthilaire"]].map(s=>({m:MOTIONS.find(x=>x[0]===s[0]),sel:s[1]})), EXTRA.map(m=>({m:m,extra:m[5]})));
 }
-function runKey(r){ return r.id+(r.real?"+real":"")+(r.select?"+sel":"")+(r.reading?"+"+r.reading:"")+(r.touch?"+touch":""); }
+function runKey(r){ return r.id+(r.real?"+real":"")+(r.point?"+point":"")+(r.select?"+sel":"")+(r.reading?"+"+r.reading:"")+(r.touch?"+touch":""); }
 async function runBlock(mp,settle,o){
   o=o||{}; const MV={runs:[]}, log=o.log||function(){};
   let vp=null;
@@ -273,17 +291,17 @@ async function runBlock(mp,settle,o){
        WebGL a drawn frame here cost seconds a run */
     await mp.evaluate(s=>window.__aus.apply(s),V); await mp.evaluate(()=>AUSTERLITZ_DEBUG.settle(90,true));
     await mp.evaluate(inPage);
-    const A={kind:kind,n:n,amt:amt,gl:false,room:false,select:R.sel||null,rest:30,pre:8,reading:X.reading||null,touch:!!X.touch};
+    const A={kind:kind,n:n,amt:amt,gl:false,room:false,select:R.sel||null,rest:30,pre:8,reading:X.reading||null,touch:!!X.touch,point:!!R.point};
     const r=R.real?await runReal(mp,A):await mp.evaluate(new Function("a","return ("+RUN.toString()+")(a);"),A);
     const M=measure(r.F,{restFrom:r.restFrom});
     const ms=r.ms.slice().sort((a,b)=>a-b), q=p=>ms.length?+ms[Math.min(ms.length-1,Math.floor(ms.length*p))].toFixed(2):null;
     const TA=M.track.all;
-    const L={id:id, view:view, kind:kind, real:!!R.real, select:R.sel||null, reading:X.reading||null, touch:!!X.touch, frames:M.frames, moving:M.moving, jumps:M.jumps, pops:M.pops, lod:M.lod, flicker:M.flicker,
+    const L={id:id, view:view, kind:kind, real:!!R.real, point:!!R.point, hover:(R.real||R.point)?(r.hover||null):undefined, select:R.sel||null, reading:X.reading||null, touch:!!X.touch, frames:M.frames, moving:M.moving, jumps:M.jumps, pops:M.pops, lod:M.lod, flicker:M.flicker,
       overlapFrames:M.overlapFrames, keepHidden:M.keepHidden, keepHiddenKeys:M.keepHiddenKeys, remnantBad:M.remnantBad, unknownDrawn:M.unknownDrawn, heldFrames:M.heldFrames, restJumps:M.restJumps, restPops:M.restPops,
       track:{on:TA.on, inView:TA.on+TA.terrain+TA.placement, terrain:TA.terrain, placement:TA.placement, episodes:TA.episodes, longestMs:TA.longestMs, formations:TA.formations},
       end:M.idle, msMed:q(0.5), msP95:q(0.95), secs:+((Date.now()-t0)/1000).toFixed(1)};
     L.key=runKey(L); MV.runs.push(L);
-    log("motion "+(id+(R.real?" (real input)":"")+(R.sel?" ("+R.sel+" selected)":"")+(X.reading?" (the "+X.reading+" reading)":"")+(X.touch?" (a finger, 390 px)":"")).padEnd(40)+" jumps "+L.jumps+" pops "+L.pops+" lod "+L.lod+" flicker "+L.flicker+
+    log("motion "+(id+(R.real?" (real input)":"")+(R.point?" (its pointer)":"")+((R.real||R.point)?" hovering "+(L.hover||"nothing"):"")+(R.sel?" ("+R.sel+" selected)":"")+(X.reading?" (the "+X.reading+" reading)":"")+(X.touch?" (a finger, 390 px)":"")).padEnd(40)+" jumps "+L.jumps+" pops "+L.pops+" lod "+L.lod+" flicker "+L.flicker+
       " overlap "+L.overlapFrames+" keep hidden "+L.keepHidden+" remnants out of rule "+L.remnantBad+" moving "+L.moving+" of "+L.frames+" frames, ends "+L.end+
       ", formations drawn "+L.track.on+" of "+L.track.inView+" in view, longest hidden "+L.track.longestMs+" ms, layer "+L.msMed+"/"+L.msP95+" ms ("+L.secs+" s)"); }
   return MV;

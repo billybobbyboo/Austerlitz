@@ -1,0 +1,2503 @@
+{
+ "html": "austerlitz-command-map.html",
+ "md5": "f10fe585c46aea576f436ed51ac46f83",
+ "when": "2026-10-31T00:25:38.714Z",
+ "run": "2026-10-31T00:25:38.714Z",
+ "cases": {
+  "ph8-overview-watch": {
+   "clock": "14:40",
+   "phase": 8,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -38.83,
+     424.89,
+     53.88
+    ],
+    "clearance": 426.378
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 5995,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kienmayer floats 0.00"
+   },
+   "standards": {
+    "count": 137,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 22,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 809,
+     "triangles": 1968810,
+     "points": 0,
+     "lines": 11155
+    },
+    "total": {
+     "calls": 818,
+     "triangles": 1968821,
+     "points": 0,
+     "lines": 11155
+    },
+    "layer": {
+     "items": 25,
+     "placed": 22,
+     "leaders": 6,
+     "dropped": 3,
+     "held": 0,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:telnitz",
+      "t:augezd",
+      "t:satschan"
+     ],
+     "ms": 0.8000000002793968,
+     "nodes": 63
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 96
+    },
+    "memory": {
+     "geometries": 397,
+     "textures": 31
+    }
+   },
+   "layer": {
+    "items": 25,
+    "placed": 22,
+    "leaders": 6,
+    "dropped": 3,
+    "droppedIds": [
+     "t:telnitz",
+     "t:augezd",
+     "t:satschan"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 63,
+    "ms": 0.6,
+    "texts": 26,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": null,
+    "capTag": true
+   },
+   "derived": {
+    "clock": 880,
+    "phase": 8,
+    "plateau": false,
+    "plateauAl": 0,
+    "separation": false,
+    "shown": []
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 21,
+    "share": 0.0077
+   },
+   "smokePuffs": true,
+   "state": {
+    "clock": 880,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": true,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.82501783593687,
+      424.8901104780978,
+      53.87576714684499
+     ],
+     "tgt": [
+      -38.82501783593687,
+      0.5465438859750221,
+      4.678143629356512
+     ]
+    },
+    "applied": {
+     "kind": "land",
+     "pos": [
+      -38.82501783593687,
+      424.8901104780978,
+      53.87576714684499
+     ],
+     "tgt": [
+      -38.82501783593687,
+      0.5465438859750221,
+      4.678143629356512
+     ]
+    },
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "groundLayout": true
+   },
+   "run": "2026-10-31T00:25:38.714Z",
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0.0005,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 44.7
+   },
+   "textContrast": {
+    "texts": 26,
+    "min": 8.51,
+    "belowAA": [],
+    "rawSectionE": 6.05
+   },
+   "confShare": {
+    "samples": 292205,
+    "share": 0.0091,
+    "layer": false
+   },
+   "routes": {
+    "routes": 13,
+    "items": [
+     25,
+     25
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.35,
+    "share": 0.0069
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     25,
+     25
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.01,
+    "share": 0.0275
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "census": {
+    "onWarm": {
+     "calls": 818,
+     "empty": 0,
+     "tris": 1968821,
+     "infoCalls": 818,
+     "infoTris": 1968821,
+     "byPass": {
+      "shadow": {
+       "calls": 288,
+       "tris": 818540
+      },
+      "world": {
+       "calls": 521,
+       "tris": 1150270
+      },
+      "post": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels": {
+       "calls": 2,
+       "tris": 4
+      }
+     },
+     "byWhat": {
+      "shadow | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "shadow | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "shadow | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "shadow | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "shadow | walls and fences": {
+       "calls": 1,
+       "tris": 132
+      },
+      "shadow | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "shadow | figures: guns and gear": {
+       "calls": 9,
+       "tris": 2556
+      },
+      "shadow | figures: men and horses": {
+       "calls": 221,
+       "tris": 620122
+      },
+      "shadow | figures: standards": {
+       "calls": 44,
+       "tris": 4036
+      },
+      "world | sky": {
+       "calls": 1,
+       "tris": 1216
+      },
+      "world | ground": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "world | draped: bank": {
+       "calls": 7,
+       "tris": 22020
+      },
+      "world | draped: stream": {
+       "calls": 7,
+       "tris": 14256
+      },
+      "world | draped: road": {
+       "calls": 15,
+       "tris": 14956
+      },
+      "world | draped: road edge": {
+       "calls": 15,
+       "tris": 23786
+      },
+      "world | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "world | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "world | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "world | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "world | walls and fences": {
+       "calls": 2,
+       "tris": 15312
+      },
+      "world | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "world | scrub": {
+       "calls": 1,
+       "tris": 74298
+      },
+      "world | figures: guns and gear": {
+       "calls": 9,
+       "tris": 2556
+      },
+      "world | figures: men and horses": {
+       "calls": 221,
+       "tris": 620122
+      },
+      "world | figures: standards": {
+       "calls": 71,
+       "tris": 6776
+      },
+      "world | contours": {
+       "calls": 2,
+       "tris": 0
+      },
+      "world | marsh": {
+       "calls": 1,
+       "tris": 0
+      },
+      "world | water and ice": {
+       "calls": 4,
+       "tris": 288
+      },
+      "world | formation pads": {
+       "calls": 32,
+       "tris": 64
+      },
+      "world | ground cues: outlines": {
+       "calls": 32,
+       "tris": 13880
+      },
+      "world | dust": {
+       "calls": 9,
+       "tris": 18
+      },
+      "world | smoke": {
+       "calls": 21,
+       "tris": 42
+      },
+      "world | overlays (arrows)": {
+       "calls": 28,
+       "tris": 1898
+      },
+      "world | trails": {
+       "calls": 28,
+       "tris": 0
+      },
+      "post | other: Mesh": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels | overlays (arrows)": {
+       "calls": 1,
+       "tris": 2
+      },
+      "labels | event glyphs": {
+       "calls": 1,
+       "tris": 2
+      }
+     },
+     "figures": {
+      "calls": 575,
+      "tris": 1256168
+     },
+     "figByPass": {
+      "shadow": {
+       "calls": 274,
+       "tris": 626714
+      },
+      "world": {
+       "calls": 301,
+       "tris": 629454
+      }
+     },
+     "depthDrawn": false,
+     "cull": {
+      "tests": 569,
+      "culled": 0,
+      "refresh": 0,
+      "inst": 0,
+      "ms": 0
+     },
+     "cullOn": true,
+     "cold": false,
+     "fx": true,
+     "lowTier": false,
+     "shadow": true,
+     "factor": 4,
+     "mode": "terrain",
+     "buffer": [
+      1600,
+      900
+     ],
+     "reconciled": true
+    },
+    "offWarm": {
+     "calls": 818,
+     "empty": 0,
+     "tris": 1968821,
+     "infoCalls": 818,
+     "infoTris": 1968821,
+     "byPass": {
+      "shadow": {
+       "calls": 288,
+       "tris": 818540
+      },
+      "world": {
+       "calls": 521,
+       "tris": 1150270
+      },
+      "post": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels": {
+       "calls": 2,
+       "tris": 4
+      }
+     },
+     "byWhat": {
+      "shadow | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "shadow | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "shadow | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "shadow | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "shadow | walls and fences": {
+       "calls": 1,
+       "tris": 132
+      },
+      "shadow | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "shadow | figures: guns and gear": {
+       "calls": 9,
+       "tris": 2556
+      },
+      "shadow | figures: men and horses": {
+       "calls": 221,
+       "tris": 620122
+      },
+      "shadow | figures: standards": {
+       "calls": 44,
+       "tris": 4036
+      },
+      "world | sky": {
+       "calls": 1,
+       "tris": 1216
+      },
+      "world | ground": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "world | draped: bank": {
+       "calls": 7,
+       "tris": 22020
+      },
+      "world | draped: stream": {
+       "calls": 7,
+       "tris": 14256
+      },
+      "world | draped: road": {
+       "calls": 15,
+       "tris": 14956
+      },
+      "world | draped: road edge": {
+       "calls": 15,
+       "tris": 23786
+      },
+      "world | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "world | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "world | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "world | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "world | walls and fences": {
+       "calls": 2,
+       "tris": 15312
+      },
+      "world | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "world | scrub": {
+       "calls": 1,
+       "tris": 74298
+      },
+      "world | figures: guns and gear": {
+       "calls": 9,
+       "tris": 2556
+      },
+      "world | figures: men and horses": {
+       "calls": 221,
+       "tris": 620122
+      },
+      "world | figures: standards": {
+       "calls": 71,
+       "tris": 6776
+      },
+      "world | contours": {
+       "calls": 2,
+       "tris": 0
+      },
+      "world | marsh": {
+       "calls": 1,
+       "tris": 0
+      },
+      "world | water and ice": {
+       "calls": 4,
+       "tris": 288
+      },
+      "world | formation pads": {
+       "calls": 32,
+       "tris": 64
+      },
+      "world | ground cues: outlines": {
+       "calls": 32,
+       "tris": 13880
+      },
+      "world | dust": {
+       "calls": 9,
+       "tris": 18
+      },
+      "world | smoke": {
+       "calls": 21,
+       "tris": 42
+      },
+      "world | overlays (arrows)": {
+       "calls": 28,
+       "tris": 1898
+      },
+      "world | trails": {
+       "calls": 28,
+       "tris": 0
+      },
+      "post | other: Mesh": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels | overlays (arrows)": {
+       "calls": 1,
+       "tris": 2
+      },
+      "labels | event glyphs": {
+       "calls": 1,
+       "tris": 2
+      }
+     },
+     "figures": {
+      "calls": 575,
+      "tris": 1256168
+     },
+     "figByPass": {
+      "shadow": {
+       "calls": 274,
+       "tris": 626714
+      },
+      "world": {
+       "calls": 301,
+       "tris": 629454
+      }
+     },
+     "depthDrawn": false,
+     "cull": {
+      "tests": 0,
+      "culled": 0,
+      "refresh": 0,
+      "inst": 0,
+      "ms": 0
+     },
+     "cullOn": false,
+     "cold": false,
+     "fx": true,
+     "lowTier": false,
+     "shadow": true,
+     "factor": 4,
+     "mode": "terrain",
+     "buffer": [
+      1600,
+      900
+     ],
+     "reconciled": true
+    },
+    "offCold": {
+     "calls": 820,
+     "empty": 0,
+     "tris": 2115909,
+     "infoCalls": 820,
+     "infoTris": 2115909,
+     "byPass": {
+      "depth": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "shadow": {
+       "calls": 288,
+       "tris": 818540
+      },
+      "world": {
+       "calls": 521,
+       "tris": 1150270
+      },
+      "post": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels": {
+       "calls": 2,
+       "tris": 4
+      }
+     },
+     "byWhat": {
+      "depth | other: Mesh": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "shadow | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "shadow | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "shadow | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "shadow | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "shadow | walls and fences": {
+       "calls": 1,
+       "tris": 132
+      },
+      "shadow | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "shadow | figures: guns and gear": {
+       "calls": 9,
+       "tris": 2556
+      },
+      "shadow | figures: men and horses": {
+       "calls": 221,
+       "tris": 620122
+      },
+      "shadow | figures: standards": {
+       "calls": 44,
+       "tris": 4036
+      },
+      "world | sky": {
+       "calls": 1,
+       "tris": 1216
+      },
+      "world | ground": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "world | draped: bank": {
+       "calls": 7,
+       "tris": 22020
+      },
+      "world | draped: stream": {
+       "calls": 7,
+       "tris": 14256
+      },
+      "world | draped: road": {
+       "calls": 15,
+       "tris": 14956
+      },
+      "world | draped: road edge": {
+       "calls": 15,
+       "tris": 23786
+      },
+      "world | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "world | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "world | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "world | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "world | walls and fences": {
+       "calls": 2,
+       "tris": 15312
+      },
+      "world | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "world | scrub": {
+       "calls": 1,
+       "tris": 74298
+      },
+      "world | figures: guns and gear": {
+       "calls": 9,
+       "tris": 2556
+      },
+      "world | figures: men and horses": {
+       "calls": 221,
+       "tris": 620122
+      },
+      "world | figures: standards": {
+       "calls": 71,
+       "tris": 6776
+      },
+      "world | contours": {
+       "calls": 2,
+       "tris": 0
+      },
+      "world | marsh": {
+       "calls": 1,
+       "tris": 0
+      },
+      "world | water and ice": {
+       "calls": 4,
+       "tris": 288
+      },
+      "world | formation pads": {
+       "calls": 32,
+       "tris": 64
+      },
+      "world | ground cues: outlines": {
+       "calls": 32,
+       "tris": 13880
+      },
+      "world | dust": {
+       "calls": 9,
+       "tris": 18
+      },
+      "world | smoke": {
+       "calls": 21,
+       "tris": 42
+      },
+      "world | overlays (arrows)": {
+       "calls": 28,
+       "tris": 1898
+      },
+      "world | trails": {
+       "calls": 28,
+       "tris": 0
+      },
+      "post | other: Mesh": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels | overlays (arrows)": {
+       "calls": 1,
+       "tris": 2
+      },
+      "labels | event glyphs": {
+       "calls": 1,
+       "tris": 2
+      }
+     },
+     "figures": {
+      "calls": 575,
+      "tris": 1256168
+     },
+     "figByPass": {
+      "shadow": {
+       "calls": 274,
+       "tris": 626714
+      },
+      "world": {
+       "calls": 301,
+       "tris": 629454
+      }
+     },
+     "depthDrawn": true,
+     "cull": {
+      "tests": 0,
+      "culled": 0,
+      "refresh": 0,
+      "inst": 0,
+      "ms": 0
+     },
+     "cullOn": false,
+     "cold": true,
+     "fx": true,
+     "lowTier": false,
+     "shadow": true,
+     "factor": 4,
+     "mode": "terrain",
+     "buffer": [
+      1600,
+      900
+     ],
+     "reconciled": true
+    },
+    "onCold": {
+     "calls": 820,
+     "empty": 0,
+     "tris": 2115909,
+     "infoCalls": 820,
+     "infoTris": 2115909,
+     "byPass": {
+      "depth": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "shadow": {
+       "calls": 288,
+       "tris": 818540
+      },
+      "world": {
+       "calls": 521,
+       "tris": 1150270
+      },
+      "post": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels": {
+       "calls": 2,
+       "tris": 4
+      }
+     },
+     "byWhat": {
+      "depth | other: Mesh": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "shadow | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "shadow | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "shadow | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "shadow | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "shadow | walls and fences": {
+       "calls": 1,
+       "tris": 132
+      },
+      "shadow | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "shadow | figures: guns and gear": {
+       "calls": 9,
+       "tris": 2556
+      },
+      "shadow | figures: men and horses": {
+       "calls": 221,
+       "tris": 620122
+      },
+      "shadow | figures: standards": {
+       "calls": 44,
+       "tris": 4036
+      },
+      "world | sky": {
+       "calls": 1,
+       "tris": 1216
+      },
+      "world | ground": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "world | draped: bank": {
+       "calls": 7,
+       "tris": 22020
+      },
+      "world | draped: stream": {
+       "calls": 7,
+       "tris": 14256
+      },
+      "world | draped: road": {
+       "calls": 15,
+       "tris": 14956
+      },
+      "world | draped: road edge": {
+       "calls": 15,
+       "tris": 23786
+      },
+      "world | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "world | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "world | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "world | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "world | walls and fences": {
+       "calls": 2,
+       "tris": 15312
+      },
+      "world | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "world | scrub": {
+       "calls": 1,
+       "tris": 74298
+      },
+      "world | figures: guns and gear": {
+       "calls": 9,
+       "tris": 2556
+      },
+      "world | figures: men and horses": {
+       "calls": 221,
+       "tris": 620122
+      },
+      "world | figures: standards": {
+       "calls": 71,
+       "tris": 6776
+      },
+      "world | contours": {
+       "calls": 2,
+       "tris": 0
+      },
+      "world | marsh": {
+       "calls": 1,
+       "tris": 0
+      },
+      "world | water and ice": {
+       "calls": 4,
+       "tris": 288
+      },
+      "world | formation pads": {
+       "calls": 32,
+       "tris": 64
+      },
+      "world | ground cues: outlines": {
+       "calls": 32,
+       "tris": 13880
+      },
+      "world | dust": {
+       "calls": 9,
+       "tris": 18
+      },
+      "world | smoke": {
+       "calls": 21,
+       "tris": 42
+      },
+      "world | overlays (arrows)": {
+       "calls": 28,
+       "tris": 1898
+      },
+      "world | trails": {
+       "calls": 28,
+       "tris": 0
+      },
+      "post | other: Mesh": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels | overlays (arrows)": {
+       "calls": 1,
+       "tris": 2
+      },
+      "labels | event glyphs": {
+       "calls": 1,
+       "tris": 2
+      }
+     },
+     "figures": {
+      "calls": 575,
+      "tris": 1256168
+     },
+     "figByPass": {
+      "shadow": {
+       "calls": 274,
+       "tris": 626714
+      },
+      "world": {
+       "calls": 301,
+       "tris": 629454
+      }
+     },
+     "depthDrawn": true,
+     "cull": {
+      "tests": 569,
+      "culled": 0,
+      "refresh": 0,
+      "inst": 0,
+      "ms": 0
+     },
+     "cullOn": true,
+     "cold": true,
+     "fx": true,
+     "lowTier": false,
+     "shadow": true,
+     "factor": 4,
+     "mode": "terrain",
+     "buffer": [
+      1600,
+      900
+     ],
+     "reconciled": true
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "outside": 0,
+    "shared": 0,
+    "worse": 0,
+    "firstOutside": [],
+    "firstRepeat": [],
+    "w": 1600,
+    "h": 900,
+    "culled": 0,
+    "tests": 569
+   },
+   "derivedPositive": {
+    "timeline": {
+     "height": 92,
+     "hasRow": true,
+     "switchInRow": true,
+     "switchOpacity": 1,
+     "capDerived": true,
+     "capTag": true
+    },
+    "derived": {
+     "clock": 860,
+     "phase": 7,
+     "plateau": false,
+     "plateauAl": 0,
+     "separation": true,
+     "shown": [
+      "separation"
+     ]
+    }
+   },
+   "derivedBack": {
+    "clock": 880,
+    "phase": 8,
+    "plateau": false,
+    "plateauAl": 0,
+    "separation": false,
+    "shown": []
+   },
+   "stateAfter": {
+    "clock": 880,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": true,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.82501783593687,
+      424.8901104780978,
+      53.87576714684499
+     ],
+     "tgt": [
+      -38.82501783593687,
+      0.5465438859750221,
+      4.678143629356512
+     ]
+    },
+    "applied": {
+     "kind": "land",
+     "pos": [
+      -38.82501783593687,
+      424.8901104780978,
+      53.87576714684499
+     ],
+     "tgt": [
+      -38.82501783593687,
+      0.5465438859750221,
+      4.678143629356512
+     ]
+    },
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "groundLayout": true
+   },
+   "ms": 151732,
+   "note": "Phase 8 (14:40), the Overview vantage, Watch.",
+   "console": [],
+   "skipped": []
+  },
+  "plans-overview": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -38.81,
+     535.3,
+     65.92
+    ],
+    "clearance": 537.005
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6059,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kamensky floats 0.00"
+   },
+   "standards": {
+    "count": 137,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 44,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": true,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    2149.078125
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 842,
+     "triangles": 1986668,
+     "points": 0,
+     "lines": 10756
+    },
+    "total": {
+     "calls": 862,
+     "triangles": 1986701,
+     "points": 0,
+     "lines": 10756
+    },
+    "layer": {
+     "items": 57,
+     "placed": 44,
+     "leaders": 31,
+     "dropped": 13,
+     "held": 0,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "pl:The concealed centre",
+      "n:ahq",
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:satschan"
+     ],
+     "ms": 1.3000000002793968,
+     "nodes": 162
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 204
+    },
+    "memory": {
+     "geometries": 524,
+     "textures": 51
+    }
+   },
+   "layer": {
+    "items": 57,
+    "placed": 44,
+    "leaders": 31,
+    "dropped": 13,
+    "droppedIds": [
+     "pl:The concealed centre",
+     "n:ahq",
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:litava",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:augezd",
+     "t:satschan"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 162,
+    "ms": 1.7,
+    "texts": 47,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.7038,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false,
+    "capTag": null
+   },
+   "derived": {
+    "clock": 570,
+    "phase": 4,
+    "plateau": true,
+    "plateauAl": 18150,
+    "separation": true,
+    "shown": [
+     "plateau",
+     "separation"
+    ]
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 0,
+    "share": 0
+   },
+   "smokePuffs": true,
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": "both",
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": true,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.80919175604274,
+      535.3040295026483,
+      65.91846663184778
+     ],
+     "tgt": [
+      -38.80919175604274,
+      0.5001794500326806,
+      3.914278181685546
+     ]
+    },
+    "applied": {
+     "kind": "land",
+     "pos": [
+      -38.80919175604274,
+      535.3040295026483,
+      65.91846663184778
+     ],
+     "tgt": [
+      -38.80919175604274,
+      0.5001794500326806,
+      3.914278181685546
+     ]
+    },
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "run": "2026-10-31T00:25:38.714Z",
+   "pixels": {
+    "samples": 253968,
+    "nearBlack": 0.0002,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 54.7
+   },
+   "textContrast": {
+    "texts": 47,
+    "min": 12.17,
+    "belowAA": [],
+    "rawSectionE": 5.72
+   },
+   "confShare": {
+    "samples": 173387,
+    "share": 0.0052,
+    "layer": false
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     57,
+     57
+    ],
+    "dropped": [
+     13,
+     13
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 12.17,
+    "share": 0
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     57,
+     57
+    ],
+    "dropped": [
+     13,
+     13
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 10.8,
+    "share": 0.0288
+   },
+   "unobstructed720": 0.6291,
+   "focus720": 0,
+   "census": {
+    "onWarm": {
+     "calls": 862,
+     "empty": 0,
+     "tris": 1986701,
+     "infoCalls": 862,
+     "infoTris": 1986701,
+     "byPass": {
+      "shadow": {
+       "calls": 291,
+       "tris": 824940
+      },
+      "world": {
+       "calls": 551,
+       "tris": 1161728
+      },
+      "post": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels": {
+       "calls": 13,
+       "tris": 26
+      }
+     },
+     "byWhat": {
+      "shadow | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "shadow | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "shadow | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "shadow | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "shadow | walls and fences": {
+       "calls": 1,
+       "tris": 132
+      },
+      "shadow | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "shadow | figures: guns and gear": {
+       "calls": 7,
+       "tris": 1020
+      },
+      "shadow | figures: men and horses": {
+       "calls": 226,
+       "tris": 628058
+      },
+      "shadow | figures: standards": {
+       "calls": 44,
+       "tris": 4036
+      },
+      "world | sky": {
+       "calls": 1,
+       "tris": 1216
+      },
+      "world | ground": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "world | draped: bank": {
+       "calls": 7,
+       "tris": 22020
+      },
+      "world | draped: stream": {
+       "calls": 7,
+       "tris": 14256
+      },
+      "world | draped: road": {
+       "calls": 15,
+       "tris": 14956
+      },
+      "world | draped: road edge": {
+       "calls": 15,
+       "tris": 23786
+      },
+      "world | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "world | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "world | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "world | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "world | walls and fences": {
+       "calls": 2,
+       "tris": 15312
+      },
+      "world | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "world | scrub": {
+       "calls": 1,
+       "tris": 74298
+      },
+      "world | figures: guns and gear": {
+       "calls": 7,
+       "tris": 1020
+      },
+      "world | figures: men and horses": {
+       "calls": 226,
+       "tris": 628058
+      },
+      "world | figures: standards": {
+       "calls": 71,
+       "tris": 6776
+      },
+      "world | contours": {
+       "calls": 2,
+       "tris": 0
+      },
+      "world | marsh": {
+       "calls": 1,
+       "tris": 0
+      },
+      "world | water and ice": {
+       "calls": 4,
+       "tris": 288
+      },
+      "world | formation pads": {
+       "calls": 31,
+       "tris": 62
+      },
+      "world | ground cues: outlines": {
+       "calls": 31,
+       "tris": 14862
+      },
+      "world | plans": {
+       "calls": 73,
+       "tris": 3564
+      },
+      "world | overlays (arrows)": {
+       "calls": 41,
+       "tris": 2472
+      },
+      "world | event glyphs": {
+       "calls": 1,
+       "tris": 0
+      },
+      "post | other: Mesh": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels | overlays (arrows)": {
+       "calls": 1,
+       "tris": 2
+      },
+      "labels | event glyphs": {
+       "calls": 4,
+       "tris": 8
+      },
+      "labels | plans": {
+       "calls": 8,
+       "tris": 16
+      }
+     },
+     "figures": {
+      "calls": 581,
+      "tris": 1268968
+     },
+     "figByPass": {
+      "shadow": {
+       "calls": 277,
+       "tris": 633114
+      },
+      "world": {
+       "calls": 304,
+       "tris": 635854
+      }
+     },
+     "depthDrawn": false,
+     "cull": {
+      "tests": 575,
+      "culled": 0,
+      "refresh": 0,
+      "inst": 0,
+      "ms": 0
+     },
+     "cullOn": true,
+     "cold": false,
+     "fx": true,
+     "lowTier": false,
+     "shadow": true,
+     "factor": 4,
+     "mode": "terrain",
+     "buffer": [
+      1600,
+      900
+     ],
+     "reconciled": true
+    },
+    "offWarm": {
+     "calls": 862,
+     "empty": 0,
+     "tris": 1986701,
+     "infoCalls": 862,
+     "infoTris": 1986701,
+     "byPass": {
+      "shadow": {
+       "calls": 291,
+       "tris": 824940
+      },
+      "world": {
+       "calls": 551,
+       "tris": 1161728
+      },
+      "post": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels": {
+       "calls": 13,
+       "tris": 26
+      }
+     },
+     "byWhat": {
+      "shadow | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "shadow | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "shadow | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "shadow | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "shadow | walls and fences": {
+       "calls": 1,
+       "tris": 132
+      },
+      "shadow | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "shadow | figures: guns and gear": {
+       "calls": 7,
+       "tris": 1020
+      },
+      "shadow | figures: men and horses": {
+       "calls": 226,
+       "tris": 628058
+      },
+      "shadow | figures: standards": {
+       "calls": 44,
+       "tris": 4036
+      },
+      "world | sky": {
+       "calls": 1,
+       "tris": 1216
+      },
+      "world | ground": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "world | draped: bank": {
+       "calls": 7,
+       "tris": 22020
+      },
+      "world | draped: stream": {
+       "calls": 7,
+       "tris": 14256
+      },
+      "world | draped: road": {
+       "calls": 15,
+       "tris": 14956
+      },
+      "world | draped: road edge": {
+       "calls": 15,
+       "tris": 23786
+      },
+      "world | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "world | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "world | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "world | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "world | walls and fences": {
+       "calls": 2,
+       "tris": 15312
+      },
+      "world | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "world | scrub": {
+       "calls": 1,
+       "tris": 74298
+      },
+      "world | figures: guns and gear": {
+       "calls": 7,
+       "tris": 1020
+      },
+      "world | figures: men and horses": {
+       "calls": 226,
+       "tris": 628058
+      },
+      "world | figures: standards": {
+       "calls": 71,
+       "tris": 6776
+      },
+      "world | contours": {
+       "calls": 2,
+       "tris": 0
+      },
+      "world | marsh": {
+       "calls": 1,
+       "tris": 0
+      },
+      "world | water and ice": {
+       "calls": 4,
+       "tris": 288
+      },
+      "world | formation pads": {
+       "calls": 31,
+       "tris": 62
+      },
+      "world | ground cues: outlines": {
+       "calls": 31,
+       "tris": 14862
+      },
+      "world | plans": {
+       "calls": 73,
+       "tris": 3564
+      },
+      "world | overlays (arrows)": {
+       "calls": 41,
+       "tris": 2472
+      },
+      "world | event glyphs": {
+       "calls": 1,
+       "tris": 0
+      },
+      "post | other: Mesh": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels | overlays (arrows)": {
+       "calls": 1,
+       "tris": 2
+      },
+      "labels | event glyphs": {
+       "calls": 4,
+       "tris": 8
+      },
+      "labels | plans": {
+       "calls": 8,
+       "tris": 16
+      }
+     },
+     "figures": {
+      "calls": 581,
+      "tris": 1268968
+     },
+     "figByPass": {
+      "shadow": {
+       "calls": 277,
+       "tris": 633114
+      },
+      "world": {
+       "calls": 304,
+       "tris": 635854
+      }
+     },
+     "depthDrawn": false,
+     "cull": {
+      "tests": 0,
+      "culled": 0,
+      "refresh": 0,
+      "inst": 0,
+      "ms": 0
+     },
+     "cullOn": false,
+     "cold": false,
+     "fx": true,
+     "lowTier": false,
+     "shadow": true,
+     "factor": 4,
+     "mode": "terrain",
+     "buffer": [
+      1600,
+      900
+     ],
+     "reconciled": true
+    },
+    "offCold": {
+     "calls": 864,
+     "empty": 0,
+     "tris": 2133789,
+     "infoCalls": 864,
+     "infoTris": 2133789,
+     "byPass": {
+      "depth": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "shadow": {
+       "calls": 291,
+       "tris": 824940
+      },
+      "world": {
+       "calls": 551,
+       "tris": 1161728
+      },
+      "post": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels": {
+       "calls": 13,
+       "tris": 26
+      }
+     },
+     "byWhat": {
+      "depth | other: Mesh": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "shadow | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "shadow | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "shadow | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "shadow | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "shadow | walls and fences": {
+       "calls": 1,
+       "tris": 132
+      },
+      "shadow | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "shadow | figures: guns and gear": {
+       "calls": 7,
+       "tris": 1020
+      },
+      "shadow | figures: men and horses": {
+       "calls": 226,
+       "tris": 628058
+      },
+      "shadow | figures: standards": {
+       "calls": 44,
+       "tris": 4036
+      },
+      "world | sky": {
+       "calls": 1,
+       "tris": 1216
+      },
+      "world | ground": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "world | draped: bank": {
+       "calls": 7,
+       "tris": 22020
+      },
+      "world | draped: stream": {
+       "calls": 7,
+       "tris": 14256
+      },
+      "world | draped: road": {
+       "calls": 15,
+       "tris": 14956
+      },
+      "world | draped: road edge": {
+       "calls": 15,
+       "tris": 23786
+      },
+      "world | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "world | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "world | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "world | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "world | walls and fences": {
+       "calls": 2,
+       "tris": 15312
+      },
+      "world | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "world | scrub": {
+       "calls": 1,
+       "tris": 74298
+      },
+      "world | figures: guns and gear": {
+       "calls": 7,
+       "tris": 1020
+      },
+      "world | figures: men and horses": {
+       "calls": 226,
+       "tris": 628058
+      },
+      "world | figures: standards": {
+       "calls": 71,
+       "tris": 6776
+      },
+      "world | contours": {
+       "calls": 2,
+       "tris": 0
+      },
+      "world | marsh": {
+       "calls": 1,
+       "tris": 0
+      },
+      "world | water and ice": {
+       "calls": 4,
+       "tris": 288
+      },
+      "world | formation pads": {
+       "calls": 31,
+       "tris": 62
+      },
+      "world | ground cues: outlines": {
+       "calls": 31,
+       "tris": 14862
+      },
+      "world | plans": {
+       "calls": 73,
+       "tris": 3564
+      },
+      "world | overlays (arrows)": {
+       "calls": 41,
+       "tris": 2472
+      },
+      "world | event glyphs": {
+       "calls": 1,
+       "tris": 0
+      },
+      "post | other: Mesh": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels | overlays (arrows)": {
+       "calls": 1,
+       "tris": 2
+      },
+      "labels | event glyphs": {
+       "calls": 4,
+       "tris": 8
+      },
+      "labels | plans": {
+       "calls": 8,
+       "tris": 16
+      }
+     },
+     "figures": {
+      "calls": 581,
+      "tris": 1268968
+     },
+     "figByPass": {
+      "shadow": {
+       "calls": 277,
+       "tris": 633114
+      },
+      "world": {
+       "calls": 304,
+       "tris": 635854
+      }
+     },
+     "depthDrawn": true,
+     "cull": {
+      "tests": 0,
+      "culled": 0,
+      "refresh": 0,
+      "inst": 0,
+      "ms": 0
+     },
+     "cullOn": false,
+     "cold": true,
+     "fx": true,
+     "lowTier": false,
+     "shadow": true,
+     "factor": 4,
+     "mode": "terrain",
+     "buffer": [
+      1600,
+      900
+     ],
+     "reconciled": true
+    },
+    "onCold": {
+     "calls": 864,
+     "empty": 0,
+     "tris": 2133789,
+     "infoCalls": 864,
+     "infoTris": 2133789,
+     "byPass": {
+      "depth": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "shadow": {
+       "calls": 291,
+       "tris": 824940
+      },
+      "world": {
+       "calls": 551,
+       "tris": 1161728
+      },
+      "post": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels": {
+       "calls": 13,
+       "tris": 26
+      }
+     },
+     "byWhat": {
+      "depth | other: Mesh": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "shadow | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "shadow | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "shadow | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "shadow | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "shadow | walls and fences": {
+       "calls": 1,
+       "tris": 132
+      },
+      "shadow | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "shadow | figures: guns and gear": {
+       "calls": 7,
+       "tris": 1020
+      },
+      "shadow | figures: men and horses": {
+       "calls": 226,
+       "tris": 628058
+      },
+      "shadow | figures: standards": {
+       "calls": 44,
+       "tris": 4036
+      },
+      "world | sky": {
+       "calls": 1,
+       "tris": 1216
+      },
+      "world | ground": {
+       "calls": 2,
+       "tris": 147088
+      },
+      "world | draped: bank": {
+       "calls": 7,
+       "tris": 22020
+      },
+      "world | draped: stream": {
+       "calls": 7,
+       "tris": 14256
+      },
+      "world | draped: road": {
+       "calls": 15,
+       "tris": 14956
+      },
+      "world | draped: road edge": {
+       "calls": 15,
+       "tris": 23786
+      },
+      "world | houses": {
+       "calls": 3,
+       "tris": 9000
+      },
+      "world | roofs": {
+       "calls": 2,
+       "tris": 2856
+      },
+      "world | chimneys": {
+       "calls": 1,
+       "tris": 1560
+      },
+      "world | spires": {
+       "calls": 1,
+       "tris": 162
+      },
+      "world | walls and fences": {
+       "calls": 2,
+       "tris": 15312
+      },
+      "world | trees": {
+       "calls": 6,
+       "tris": 178116
+      },
+      "world | scrub": {
+       "calls": 1,
+       "tris": 74298
+      },
+      "world | figures: guns and gear": {
+       "calls": 7,
+       "tris": 1020
+      },
+      "world | figures: men and horses": {
+       "calls": 226,
+       "tris": 628058
+      },
+      "world | figures: standards": {
+       "calls": 71,
+       "tris": 6776
+      },
+      "world | contours": {
+       "calls": 2,
+       "tris": 0
+      },
+      "world | marsh": {
+       "calls": 1,
+       "tris": 0
+      },
+      "world | water and ice": {
+       "calls": 4,
+       "tris": 288
+      },
+      "world | formation pads": {
+       "calls": 31,
+       "tris": 62
+      },
+      "world | ground cues: outlines": {
+       "calls": 31,
+       "tris": 14862
+      },
+      "world | plans": {
+       "calls": 73,
+       "tris": 3564
+      },
+      "world | overlays (arrows)": {
+       "calls": 41,
+       "tris": 2472
+      },
+      "world | event glyphs": {
+       "calls": 1,
+       "tris": 0
+      },
+      "post | other: Mesh": {
+       "calls": 7,
+       "tris": 7
+      },
+      "labels | overlays (arrows)": {
+       "calls": 1,
+       "tris": 2
+      },
+      "labels | event glyphs": {
+       "calls": 4,
+       "tris": 8
+      },
+      "labels | plans": {
+       "calls": 8,
+       "tris": 16
+      }
+     },
+     "figures": {
+      "calls": 581,
+      "tris": 1268968
+     },
+     "figByPass": {
+      "shadow": {
+       "calls": 277,
+       "tris": 633114
+      },
+      "world": {
+       "calls": 304,
+       "tris": 635854
+      }
+     },
+     "depthDrawn": true,
+     "cull": {
+      "tests": 575,
+      "culled": 0,
+      "refresh": 0,
+      "inst": 0,
+      "ms": 0
+     },
+     "cullOn": true,
+     "cold": true,
+     "fx": true,
+     "lowTier": false,
+     "shadow": true,
+     "factor": 4,
+     "mode": "terrain",
+     "buffer": [
+      1600,
+      900
+     ],
+     "reconciled": true
+    }
+   },
+   "cullEquiv": {
+    "px": 0,
+    "max": 0,
+    "repeatPx": 0,
+    "outside": 0,
+    "shared": 0,
+    "worse": 0,
+    "firstOutside": [],
+    "firstRepeat": [],
+    "w": 1600,
+    "h": 900,
+    "culled": 0,
+    "tests": 575
+   },
+   "stateAfter": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": "both",
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": true,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.80919175604274,
+      535.3040295026483,
+      65.91846663184778
+     ],
+     "tgt": [
+      -38.80919175604274,
+      0.5001794500326806,
+      3.914278181685546
+     ]
+    },
+    "applied": {
+     "kind": "land",
+     "pos": [
+      -38.80919175604274,
+      535.3040295026483,
+      65.91846663184778
+     ],
+     "tgt": [
+      -38.80919175604274,
+      0.5001794500326806,
+      3.914278181685546
+     ]
+    },
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "ms": 132906,
+   "note": "The Plans overlay with both plans (chosen in the Plans tab; the rail back on its Now tab), at the Overview vantage, Study, 09:30.",
+   "console": [],
+   "skipped": []
+  }
+ },
+ "failures": [],
+ "mode": {
+  "test": true,
+  "legacy": false,
+  "selftestOnly": false,
+  "only": [
+   "ph8-overview-watch",
+   "plans-overview"
+  ]
+ },
+ "env": {
+  "platform": "linux",
+  "arch": "x64",
+  "chromium": "141.0.7390.37",
+  "playwright": "1.56.0",
+  "executable": "playwright"
+ }
+}

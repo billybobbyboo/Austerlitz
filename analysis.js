@@ -163,7 +163,7 @@ al:{
    {n:"Columns I-III on the southern plateau", c:[288,308], rx:62, ry:70},
    {n:"IV Column at Pratzen", c:[327,231], rx:52, ry:44},
    {n:"Reserve behind Krzenowitz", c:[417,198], rx:46, ry:38},
-   {n:"Bagration on the highway", c:[377,95], rx:70, ry:30}],
+   {n:"Bagration on the highway", c:[352,64], rx:70, ry:30}],
   objectives:[
    {n:"Telnitz", p:[212,408]},{n:"Sokolnitz", p:[208,365]},
    {n:"Kobelnitz", p:[205,277]},{n:"Envelop toward Brünn", p:[138,334]}],
@@ -180,8 +180,9 @@ al:{
     route:[[335,229],[293,245],[256,265],[207,277]]},
    {n:"5th Column - Liechtenstein", forms:["lich"], obj:[288,145], ord:"Cavalry. Cover the right of the attacking columns between Blasowitz and the plateau.",
     route:[[296,243],[316,218],[308,177],[288,145]]},
-   {n:"Advance Guard of the Right - Bagration", forms:["bag"], obj:[253,73], ord:"Hold the Olmütz highway, pin the French left, and link to Liechtenstein.",
-    route:[[315,41],[292,52],[273,62],[253,73]]},
+   {n:"Advance Guard of the Right - Bagration", forms:["bag"], obj:[266,85], ord:"Hold the Olmütz highway, pin the French left, and link to Liechtenstein.",
+    route:[[351,60],[309,74],[288,79],[266,85]]},   /* Stage 8, the follow-up 8K: on the highway as corrected, from Bagration's place at dawn
+    to 1.2 km along it from the Santon's foot, as the correction pass's rule had it on its own road ([315,41] to [253,73] until 8K) */
    {n:"Reserve - Constantine", forms:["rg_inf", "rg_cav"], obj:[404,198], ord:"The Imperial Guard to remain behind Krzenowitz, in hand.",
     route:[[417,198],[380,195],[347,192]]}
   ]},
@@ -209,8 +210,9 @@ fr:{
     route:[[204,218],[228,236],[254,260],[271,274],[285,287]]},
    {n:"The second axis - Vandamme", forms:["vandamme"], obj:[309,207], ord:"Climb the northern shoulder of the plateau and take the Old Vineyards, linking the assault to Lannes.",
     route:[[221,179],[236,191],[267,200],[309,207]]},
-   {n:"The pivot - Lannes and Murat", forms:["suchet", "caffarelli", "santon"], obj:[304,46], ord:"Hold the Olmütz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
-    route:[[225,97],[247,75],[276,61],[304,46]]},
+   {n:"The pivot - Lannes and Murat", forms:["suchet", "caffarelli", "santon"], obj:[321,70], ord:"Hold the Olmütz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
+    route:[[231,98],[260,86],[291,78],[321,70]]},   /* Stage 8, the follow-up 8K: on the highway as corrected, 0, 1, 2 and 3 km along it from
+    the Santon's foot, as the correction pass's rule had it on its own road ([225,97] to [304,46] until 8K) */
    {n:"The reserve - the Guard and the grenadiers", forms:["guard_inf", "guard_cav", "c_gren"], obj:[300,211], ord:"The Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the dispositions of 1 December. The route drawn is this map's.",
     route:[[189,161],[230,185],[263,201],[300,211]]},
    {n:"The wheel", forms:["sthilaire", "vandamme"], obj:[294,369], ord:"Once the plateau is held from Pratzen to the highway, turn the centre ninety degrees and come down on the rear of the Allied left.",

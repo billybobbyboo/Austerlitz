@@ -103,7 +103,11 @@ const dS=segDistKm(G.GT.santon.map,HW);
 check('the Olmutz highway passes the Santon\'s southern foot (0.2-0.6 km from the summit)', dS>=0.2&&dS<=0.6, (dS*1000).toFixed(0)+' m');
 check('the highway runs through the Posoritz post house', segDistKm(G.GT.posthouse.map,HW)<0.05);
 check('the highway leaves the frame north-east, toward Rausnitz', HW[HW.length-1][1]<0 && G.bearingDeg(HW[HW.length-2],HW[HW.length-1])>45 && G.bearingDeg(HW[HW.length-2],HW[HW.length-1])<90, 'true bearing '+G.bearingDeg(HW[HW.length-2],HW[HW.length-1]).toFixed(0)+' deg');
-check('Holubitz lies well south of the highway (> 1.5 km)', segDistKm(G.GT.holubitz.map,HW)>1.5, (segDistKm(G.GT.holubitz.map,HW)).toFixed(2)+' km');
+/* Stage 8, the follow-up 8K (decision 260 (a)): the highway on II/430's line, the road of 1826 and 1836-52, passes Holubitz about 0.7 km to its
+   north, as those maps have it (docs/stage8-evidence/8h/geo/README.md 7.5). Until 8K this check held the correction pass's constructed line, which
+   ran through its constructed post house "about 2 km north of Holubitz": 'Holubitz lies well south of the highway (> 1.5 km)' */
+const hwY=x=>{ for(let i=0;i<HW.length-1;i++){ const a=HW[i], b=HW[i+1]; if(x>=a[0]&&x<=b[0]) return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0]); } return null; };
+check('Holubitz lies south of the highway, 0.5-1.0 km from it, as on the maps of 1826-52', segDistKm(G.GT.holubitz.map,HW)>0.5 && segDistKm(G.GT.holubitz.map,HW)<1.0 && hwY(G.GT.holubitz.map[0])<G.GT.holubitz.map[1], (segDistKm(G.GT.holubitz.map,HW)).toFixed(2)+' km');
 check('no "Vienna post road" inside the frame', !M.ROADS.some(r=>/Vienna/.test(r.n)));
 const RT=M.ROADS.find(r=>/Raigern-Telnitz/.test(r.n));
 check('the Raigern-Telnitz road runs from the frame edge to Telnitz', !!RT && onEdge(RT.p[0]) && km(RT.p[RT.p.length-1],G.GT.telnitz.map)<0.05);
@@ -123,8 +127,17 @@ check('Napoleon moves to Stare Vinohrady (no chapel there)', km(P('gqg',6),G.GT.
 check('Napoleon ends at the St Anthony chapel above Augezd', km(P('gqg',8),G.GT.chapel.map)<0.3, (km(P('gqg',8),G.GT.chapel.map)*1000).toFixed(0)+' m');
 check('the Allied HQ is at Krzenowitz at 04:00', km(P('ahq',0),G.GT.krzenowitz.map)<0.5, (km(P('ahq',0),G.GT.krzenowitz.map)*1000).toFixed(0)+' m');
 check('Friant starts at the frame edge on the road from Raigern', segDistKm(P('friant',0),RT.p)<0.1 && km(P('friant',0),RT.p[0])<0.5);
-const suchetOn=[0,5,6,7,8,9].every(ph=>segDistKm(P('suchet',ph),HW)<0.1), bagOn=[5,6,7,8,9].every(ph=>segDistKm(P('bag',ph),HW)<0.1);
-check('Suchet and Bagration are plotted on the corrected highway', suchetOn && bagOn && segDistKm(P('bag',0),HW)<0.4);
+/* Stage 8, the follow-up 8K (decision 260 (a); docs/stage8-evidence/8k/register.md): the anchors re-plotted from their readings with the highway and
+   the post as corrected. Until 8K one check held the correction pass's rule, every Suchet anchor and Bagration's from phase 5 within 0.1 km of
+   its road and Bagration's dawn within 0.4 km ('Suchet and Bagration are plotted on the corrected highway'); the readings put Suchet's dawn
+   right (south) of the road level with the Santon (the order of 1 December) and Bagration's attack on the heights by Bosenitz (Stutterheim), so
+   the rule is now the register's, anchor by anchor */
+const PHm=G.GT.posthouse.map, south=p=>hwY(p[0])!==null&&p[1]>hwY(p[0]), north=p=>hwY(p[0])!==null&&p[1]<hwY(p[0]);
+check('Suchet at dawn south of the highway (0.1-0.4 km), level with the Santon (within 1 km of it): the order of 1 December', south(P('suchet',0)) && segDistKm(P('suchet',0),HW)>=0.1 && segDistKm(P('suchet',0),HW)<=0.4 && km(P('suchet',0),G.GT.santon.map)<1, (segDistKm(P('suchet',0),HW)*1000).toFixed(0)+' m off the road, '+(km(P('suchet',0),G.GT.santon.map)*1000).toFixed(0)+' m from the Santon');
+check('Suchet from phase 5 astride the highway (within 0.1 km), at the post at nightfall (within 0.2 km of it)', [5,6,7,8,9].every(ph=>segDistKm(P('suchet',ph),HW)<0.1) && km(P('suchet',9),PHm)<0.2, (km(P('suchet',9),PHm)*1000).toFixed(0)+' m from the post');
+check('Bagration at dawn astride the highway (within 0.3 km) between the post and Holubitz (within 0.8 km of the post, 1.0 km of Holubitz)', segDistKm(P('bag',0),HW)<0.3 && km(P('bag',0),PHm)<0.8 && km(P('bag',0),G.GT.holubitz.map)<1.0, (km(P('bag',0),PHm)*1000).toFixed(0)+' m from the post, '+(km(P('bag',0),G.GT.holubitz.map)*1000).toFixed(0)+' m from Holubitz');
+check('Bagration at 10:30 north of the highway on the ground by Bosenitz (within 1.2 km of it): Stutterheim\'s heights by Dwaroschna', north(P('bag',5)) && km(P('bag',5),G.GT.bosenitz.map)<1.2, (km(P('bag',5),G.GT.bosenitz.map)*1000).toFixed(0)+' m from Bosenitz');
+check('Bagration from phase 6 astride the highway (within 0.1 km); on the rise east of the post by phase 8, toward Rausnitz after it', [6,7,8,9].every(ph=>segDistKm(P('bag',ph),HW)<0.1) && P('bag',8)[0]>PHm[0] && km(P('bag',9),G.GT.rausnitz.map)<km(P('bag',8),G.GT.rausnitz.map));
 check('no Allied formation stands in Pratzen village after the French cleared it (09:00)',
   Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].nation!=='fr'&&FORMATIONS[id].track).every(id=>Object.keys(FORMATIONS[id].track).map(Number).filter(ph=>ph>=4).every(ph=>{ const e=FORMATIONS[id].track[ph]; return !e.p||km(e.p,G.GT.pratzen.map)>0.3; })));
 

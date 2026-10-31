@@ -1886,11 +1886,11 @@ var GEOREF = (function(){
     zuran:       {n:"Zuran",       cz:"Žuráň",            lat:49.179365, lon:16.738880, kind:"s", elev:290},
     santon:      {n:"Santon",      cz:"Santon",           lat:49.188258, lon:16.763559, kind:"s", elev:296},
     vinocol:     {n:"col south of Stare Vinohrady", cz:"", lat:49.132778, lon:16.786944, kind:"x", note:"PeakVisor key col of Staré vinohrady"},
-    /* derived positions, not surveyed */
+    /* derived positions, not surveyed (the post house since Stage 8's follow-up 8K: a surveyed building, its identity in 1805 inferred) */
     chapel:      {n:"St Anthony chapel", cz:"kaple sv. Antonína", lat:49.10985, lon:16.757474, kind:"x", approx:true,
                   note:"On the hill at the northern edge of Újezd (cirkevnituristika.cz); placed ~0.6 km north of the village centre"},
-    posthouse:   {n:"Posoritz post house", cz:"Stará pošta", lat:49.19337, lon:16.812243, kind:"x", approx:true,
-                  note:"On the Olmütz highway north of Holubice: placed where a straight Tvarožná-Rousínov highway line crosses Holubice's meridian; uncertain by about 1 km"}
+    posthouse:   {n:"Posoritz post house", cz:"Stará pošta", lat:49.18519, lon:16.826263, kind:"x", approx:true,
+                  note:"Stará pošta, Kovalovice No. 109 (the Czech building register's point, RÚIAN 23571594): 'Posoritzer Post.' on the cadastral sketch of 1826 and 'Posoritzer Post' on the Second Military Survey (1836-52), north of the highway (B for 1826-52); that the post stood there in 1805 is a modern text's account (the post in No. 109 from 1785), no map of 1805 read (C). Until Stage 8's follow-up 8K (decision 260 (a)): lat 49.19337, lon 16.812243, where a straight Tvarožná-Rousínov highway line crosses Holubice's meridian, 1.37 km north-west, in fields on the Second Survey"}
   };
   Object.keys(GT).forEach(function(k){ var g=GT[k]; g.map=toMap(g.lat,g.lon); });
 
@@ -2150,8 +2150,11 @@ legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
     1:{p:[211,379],st:"engaged",cf:"A",obj:"Hold Telnitz",act:"Contests Telnitz house by house against Kienmayer"},
     2:{p:[206,366],st:"engaged",obj:"Hold Sokolnitz",act:"Fights for Sokolnitz village and the castle wall"},
     4:{p:[220,321],st:"supporting",cf:"B",act:"Levasseur's brigade marches up onto the Pratzeberg: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right"},
-    7:{tm:{dep:780,at:840,gr:"C",basis:"app narrative, unsourced",ev:["Presses east across the stream as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"],note:"the act ties the move to the trap closing, dated 13:00-14:00"},
-       p:[213,371],st:"attacking",via:[[211,322],[208,365]],act:"Presses east across the stream as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march */,
+    7:{tm:{dep:780,at:840,gr:"C",basis:"app narrative, unsourced",ev:["Presses east to the stream at Sokolnitz as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"],note:"the act ties the move to the trap closing, dated 13:00-14:00"},
+       p:[213,371],st:"attacking",via:[[211,322],[208,365]],act:"Presses east to the stream at Sokolnitz as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march.
+       Stage 8, the follow-up 8J (decision 259 (a)): "across the stream" until 8J, when the drawn brook ran west of the village and this place stood
+       east of it; with the bed corrected the place stands at the stream's west bank (15 m from it) and the route on the west bank throughout: the act
+       says where the anchor is. No source read gives this move */,
     8:{tm:{at:900,gr:"C",basis:"app narrative, unsourced",ev:["Several times between 07:00 and 15:00","Retakes Telnitz for good"],note:"Telnitz changed hands until about 15:00; taking it for good is the last change"},
        p:[217,387],st:"attacking",via:[[206,372],[210,377]],act:"Retakes Telnitz for good"},
     9:{p:[228,393],st:"holding"}}},
@@ -2217,13 +2220,19 @@ suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., V Corps",
   strength:6000, strengthNote:"about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French situation of 28 October 1805 (Alombert and Colin, t. IV, p. 732)",
   children:["santon"],
   track:{
-    0:{p:[225,97],st:"holding",cf:"A",obj:"Hold the highway on the Santon's flank",act:"Formed astride the road under the fortified hill"},
+    0:{p:[235,103],st:"holding",cf:"B",obj:"Hold the highway on the Santon's flank",act:"Formed south of the road, on its right as ordered the evening before, level with the fortified hill"},
     5:{tm:{dep:570,gr:"B",basis:"app narrative, unsourced",ev:["Lannes advances along the highway. Bagration counter-attacks."],note:"Lannes's advance is dated c. 09:30; before it the division holds"},
-       p:[242,78],st:"attacking",cf:"B",act:"Advances astride the highway toward the post house"},
-    6:{p:[264,67],st:"advancing"},
-    7:{p:[284,57],st:"advancing"},
-    8:{p:[309,43],st:"pursuing"},
-    9:{p:[321,38],st:"holding"}}},
+       p:[254,88],st:"attacking",cf:"C",act:"Advances astride the highway toward the post house"},
+    6:{p:[279,81],st:"advancing"},
+    7:{p:[300,76],st:"advancing"},
+    8:{p:[348,62],st:"pursuing"},
+    9:{p:[364,54],st:"holding",cf:"B"}}   /* Stage 8, the follow-up 8K (decision 260 (a)): re-plotted from the readings with the highway and the post as
+       corrected (docs/stage8-evidence/8k/register.md). Phase 0 on the right (south) of the road level with the Santon, as the order of 1 December
+       puts Suchet's and Caffarelli's divisions (Correspondance, no. 9534), B: the order's sector, whether it was carried out by dawn not
+       established. Phases 5 to 7 this map's advance astride the road, at its distances along it from the Santon's foot (0.8, 1.6 and 2.3 km), C:
+       no reading places the division then. Phase 8 west of the post, as Schönhals has Suchet attack Bagration on the height beyond it, C: the
+       hour and the point this map's. Phase 9 at the post, B: Napoleon's order of 3 December is dated there, and Schönhals has Suchet beyond
+       it. Until 8K [225,97] (A), [242,78] (B), [264,67], [284,57], [309,43], [321,38]: by the correction pass's along(), on its constructed road */},
 
 santon:{ ech:"bde", nation:"fr", arm:"inf", desig:"17e Légère with the Santon battery", battery:18, guns:18,
   name:"The Santon detachment", commander:"Gen. de brigade Michel Claparède", parent:"suchet",
@@ -2448,10 +2457,16 @@ prz:{ ech:"div", nation:"ru", arm:"inf", desig:"III Column",
     0:{p:[290,282],st:"forming",cf:"A",obj:"Take the Sokolnitz castle and pheasantry"},
     1:{tm:{dep:420,gr:"B",basis:"source",ev:["the disposition ordered all the columns to march at 07:00","as did the III Column in Przybyszewski's report","the II and III Columns at 07:30"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)"},
        p:[266,296],st:"advancing"},
-    2:{p:[238,332],st:"attacking",cf:"A",obj:"Take the castle and pheasantry",act:"Storms the walled castle grounds and the pheasant enclosure"},
-    4:{p:[233,344],st:"engaged"},
-    7:{p:[227,338],st:"encircled",cf:"A",obj:"Break out toward Kobelnitz",act:"Cut off by Soult from the east and Davout from the west"},
-    8:{p:[227,309],st:"broken",cf:"A",moveMin:20,act:"Attempts to break out north toward Kobelnitz; the column disintegrates"}   /* timing inferred: holds at Sokolnitz until it is surrounded (~14:00, the file's own event), then breaks out */,
+    2:{p:[215,341],st:"attacking",cf:"B",obj:"Take the castle and pheasantry",act:"Storms the walled castle grounds and the pheasant enclosure"},
+    4:{p:[215,341],st:"engaged"},
+    7:{p:[215,341],st:"encircled",cf:"B",obj:"Break out toward Kobelnitz",act:"Cut off by Soult from the east and Davout from the west"},
+    8:{p:[227,309],st:"broken",cf:"A",moveMin:20,act:"Attempts to break out north toward Kobelnitz; the column disintegrates"}   /* timing inferred: holds at Sokolnitz until it is surrounded (~14:00, the file's own event), then breaks out */
+    /* Stage 8, the follow-up 8J (decision 259 (a)): phases 2, 4 and 7 re-plotted at the castle and the pheasantry as corrected (LANDMARK_SITES.castle,
+       WOODS[0]), where the acts put the column ("Storms the walled castle grounds and the pheasant enclosure", the objective arrow's words that the
+       model has the column there from phase 2 on, "Cut off by Soult from the east and Davout from the west"; Schönhals 1873, p. 160: its head "rückte
+       in Sokolnitz ein"): one place for the three, the column holding at Sokolnitz until it is surrounded (the correction pass's inference), graded B: the
+       sector documented, the frontage an approximation, the castle's and the pheasantry's sites in 1805 the 1825 sketch's carried back. Until 8J
+       [238,332] (A), [233,344] and [227,338] (A): by the build's castle, 535 m south-east of its site, east of the drawn brook */,
     9:{p:null,st:"captured",act:"Surrendered almost entire, near Kobelnitz by evening. Przybyszewski was later court-martialled."}}},
 
 col4:{ ech:"corps", nation:"at", arm:"inf", desig:"IV Column",
@@ -2510,14 +2525,22 @@ bag:{ ech:"corps", nation:"ru", arm:"inf", desig:"Advance Guard",
   strength:13700, strengthNote:"about 13,000 to 14,000 with 42 guns", guns:42,
   role:"Holds the Brünn–Olmütz highway. Driven back from Holubitz and Kruh, it re-forms on the height toward Rausnitz and withdraws toward Austerlitz in the evening (Stutterheim; Schönhals).",
   track:{
-    0:{p:[319,49],st:"holding",obj:"Hold the highway and cover the Allied right",cf:"B",act:"Astride the Olmütz highway, his line reaching south toward Holubitz. Re-plotted on the corrected road, which passes about 2 km north of Holubitz; the exact line is not established"},
+    0:{p:[352,64],st:"holding",obj:"Hold the highway and cover the Allied right",cf:"B",act:"Astride the Olmütz highway by the Posoritz post house, from which Stutterheim has him advance; his line reaches south toward Holubitz, held with Krug by Ulanius's jägers. The exact line is not established"},
     5:{tm:{dep:570,gr:"B",basis:"app narrative, unsourced",ev:["Lannes advances along the highway. Bagration counter-attacks."],note:"Bagration's counter-attack is dated c. 09:30; before it he holds"},
-       p:[262,68],st:"attacking",cf:"B",obj:"Drive Lannes back on Brünn",act:"Attacks along the highway; cannot get past the Santon battery"},
+       p:[262,68],st:"attacking",cf:"B",obj:"Drive Lannes back on Brünn",act:"Seeks to occupy the heights by Bosenitz, north of the highway (Stutterheim); cannot get past the Santon battery"},
     6:{tm:{dep:675,gr:"C",basis:"app narrative, unsourced",ev:["Blasowitz falls; no source read gives the hour"],note:"the falling back begins with Blasowitz's fall, c. 11:15 on this map; no source read gives either hour, and Schönhals has Bagration fight on toward noon before d'Hautpoul's charge throws his battalions back; the arrival is derived"},
-       p:[284,57],st:"holding",act:"Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later)"},
-    7:{p:[304,46],st:"withdrawing"},
-    8:{p:[337,29],st:"retreating",cf:"B",act:"On the height toward Rausnitz, covering the Allied right (Schönhals); he retreats on Austerlitz about six in Schönhals, and is behind it by six in Stutterheim"},
-    9:{p:[366,14],st:"retreating"}}},
+       p:[300,76],st:"holding",cf:"C",act:"Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later)"},
+    7:{p:[321,70],st:"withdrawing"},
+    8:{p:[386,38],st:"retreating",cf:"B",act:"On the height toward Rausnitz, covering the Allied right (Schönhals); he retreats on Austerlitz about six in Schönhals, and is behind it by six in Stutterheim"},
+    9:{p:[414,13],st:"retreating",cf:"C"}}   /* Stage 8, the follow-up 8K (decision 260 (a)): re-plotted from the readings with the highway and the post
+       as corrected (docs/stage8-evidence/8k/register.md). Phase 0 astride the road between the post and Holubitz, B: Stutterheim has him advance
+       from the post house with Krug and Holubitz held by Ulanius's jägers; the line itself not established. Phase 5 kept: the ground east of
+       Bosenitz, north of the road as corrected, taken for Stutterheim's "Anhöhen bey Dwaroschna", B (the identification this map's). Phases 6
+       and 7 this map's falling back along the road, at its distances from the Santon's foot (2.3 and 3.0 km), C. Phase 8 astride the road on the
+       rise east of the post, Schönhals's height between Rausnitz and the post house ("right of" the road read as neither side), B (that the
+       point is that height this map's inference). Phase 9 on the road toward Rausnitz, 0.4 km inside the frame, C: Mikhailovsky-Danilevsky has
+       him by Rausnitz at dusk, Schönhals and Stutterheim send him toward Austerlitz by six (question 180 (c) kept). Until 8K [319,49] (B),
+       [262,68] (B), [284,57], [304,46], [337,29] (B), [366,14]: by the correction pass's along(), on its constructed road */},
 
 constantine:{ ech:"corps", nation:"ru", arm:"guard", desig:"Imperial Guard",
   name:"Russian Imperial Guard", commander:"Grand Duke Constantine Pavlovich", parent:null,
@@ -2666,7 +2689,7 @@ var FEATURES = [
  why:["The Allied command centre and the Guard's assembly area"],
  story:"The orders were read in German to an audience of largely Russian commanders, late, and with no time to distribute copies."},
 
-{id:"olmutzroad", p:[249,64], kind:"road", name:"Brünn–Olmütz highway",
+{id:"olmutzroad", p:[264,75], kind:"road", name:"Brünn–Olmütz highway",
  sub:"The road across the northern battlefield: east-north-east from Brünn past the Santon to the Posoritz post house and Rausnitz",
  facts:[["Held by","Lannes' V Corps and Murat's cavalry against Bagration"]],
  why:["The Allied line of advance from Olmütz and the axis of the northern battle"], story:""},
@@ -2680,12 +2703,12 @@ var FEATURES = [
  sub:"On the hill at the northern edge of Augezd (Újezd u Brna); position approximate",
  facts:[["In 1805","Napoleon came here at the end from the Pratzen with the Guard cavalry and artillery, and artillery of IV Corps and the Guard fired from the height (Schönhals); a French officer's note of 1806 has him come down to the chapel with the Guard cavalry"],["The chapel","Completed in May 1703, closed in 1785, it lost its roof about the time of the battle and was in ruins by 1814, reconsecrated on 5 July 1863 (the town's account, a modern web text); a tourist website says it burned in 1805, and local tradition has the first cannon shot fired from it"]],
  why:["The view from here covers the defile and the meres the Allied left had to cross"], story:""},
-{id:"posthouse", p:[324,36], kind:"landmark", name:"Posoritz post house",
- sub:"Post station on the Olmütz highway north of Holubitz, named after Posoritz, whose parish included Holubitz and Kruh; position approximate (about 1 km)",
+{id:"posthouse", p:[363,54], kind:"landmark", name:"Posoritz post house",
+ sub:"Post station on the Olmütz highway north-east of Holubitz, named after Posoritz, whose parish included Holubitz and Kruh; drawn where the maps of 1826-52 show the post",
  facts:[["Role","The Allied right's line of retreat ran past it toward Rausnitz"]],
  why:["Marks where the highway leaves the field for Rausnitz and Olmütz"], story:""},
-{id:"rausnitz", p:[393,6], kind:"road", name:"To Rausnitz",
- sub:"Rousínov (Rausnitz) lies about 2.7 km beyond this edge of the map on the Olmütz highway",
+{id:"rausnitz", p:[423,4], kind:"road", name:"To Rausnitz",
+ sub:"Rousínov (Rausnitz) lies about 2 km beyond this edge of the map on the Olmütz highway",
  facts:[["Role","Bagration's line of withdrawal"]], why:[], story:""}
 ];
 
@@ -2697,7 +2720,7 @@ var SOURCE_NOTE = {
   "Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle disagree substantially — Dokhturov's I Column is given as anything from 7,750 to 14,200 men. Where sources conflict, the dossier shows a working figure and the range.",
   "Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scale fitted to surveyed elevations. At true scale the Pratzen plateau reads as a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km. The relief setting cannot be changed while the battle plays, because redrawing the ground can take longer than a frame; the ground switch (Landscape, Paper map, Landscape with counters) can, and a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed).",
   "Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps its historical frame, which lies about {ROT} degrees off true north. The compass rose shows true north for the current view. Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as markers at its edge.",
-  "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the positions of Krug and Bellowitz, which no source read fixes; Kologrivov's command on 2 December, which rests on Sokolov alone (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's; all three from 07:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; at 05:00 on the map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French hands at 09:30, then lost again, as in Davout's report), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Lejeune has Napoleon at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height.",
+  "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; whether the Posoritz post house stood in 1805 where the maps of 1826-52 show the post; the positions of Krug and Bellowitz, which no source read fixes; Kologrivov's command on 2 December, which rests on Sokolov alone (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's; all three from 07:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; at 05:00 on the map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French hands at 09:30, then lost again, as in Davout's report), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Lejeune has Napoleon at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height.",
   "Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights is the sum of the strengths of formations whose plotted positions fall inside the plateau outline; because the reconstruction plots formations and not losses, a figure that does not change does not mean the fighting there has stopped. Centre separation is a spatial test, not a historical statistic: it reports whether a French formation stands across the line joining the Allied groups north and south of the plateau. When it stops being reported the geometry no longer holds, which is not the same as the Allied army having reunited."],
  layers:[
   ["Historical record","What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an event's dossier."],
@@ -3652,7 +3675,8 @@ var BUILDINGS = {
   },
   /* the churches standing on 2 December 1805, one claim each (CHURCHES in world.js draws them by the village's point, as the build drew them at
      it: each moved the least step that clears the roads and streams drawn through the point, docs/STAGE8_SPEC.md section 19; the place each
-     source gives within or beside the village is in its scope, and its own place a geographic correction proposed, not made) */
+     source gives within or beside the village is in its scope. Since the follow-up 8J a church whose own site is read is drawn there:
+     Pratzen's, world.js LANDMARK_SITES.church) */
   churches: {
     Telnitz:{v:"die dem hl. Johann d. Täuf. geweihte Kirche mit 3 Altären wurde in ihrer dermaligen Gestalt [...] zwischen 1726 u. 1740 neu erbaut", en:"the church of St John the Baptist, rebuilt between 1726 and 1740",
       src:"wolny1837", at:"p. 467 (leaf n472)", gr:"B", lab:"fact", q:"zwischen 1726 u. 1740 neu erbaut",
@@ -3660,7 +3684,7 @@ var BUILDINGS = {
       note:"readings T1.5, T3.7, C1.2"},
     Pratzen:{v:"Pratzen [...] mit einer außer dem Orte stehenden Kirche", en:"a church standing outside the village",
       src:"schwoy1793", at:"p. 309 (leaf n317)", gr:"B", lab:"fact", q:"mit einer außer dem Orte stehenden Kirche",
-      scope:"the church of 1728-1730 (Wolny 1837, pp. 51-52), so standing in 1805; outside the village in 1793 and on the 1826 sketch (276 m south-south-west of the street's midpoint, south of the brook, on a north-facing slope): drawn by the village's point, as at it before 8G; its own place, about 400 m south of the village's point, a geographic correction proposed, not made",
+      scope:"the church of 1728-1730 (Wolny 1837, pp. 51-52), so standing in 1805; outside the village in 1793 and on the 1826 sketch (276 m south-south-west of the street's midpoint, south of the brook, on a north-facing slope): drawn at its own site, today's church (RÚIAN building 46052721), 399 m south-south-west of the village's point, moved only as far as the drawn roads and streams ask (since the follow-up 8J, decision 259 (a); by the village's point until then): B for 1826, for 1805 the 1826 site carried back with the 1793 text's 'outside the village'",
       note:"readings T2.3, T1.7, T3.10, C4"},
     Augezd:{v:"Die alte Pfarrkirche zu den hl. Fürsten-Aposteln Peter und Paul, mitten im D. etwas erhöhet stehend", en:"the old parish church, standing slightly raised in the middle of the village",
       src:"wolnykt2_1858", at:"p. 212 (leaf n231)", gr:"B", lab:"inference",
@@ -3713,15 +3737,16 @@ var BUILDINGS = {
       src:"schwoy1793", at:"p. 60 (leaf n68)", gr:"B", lab:"inference", q:"mit einem Schloße, Bräuhaus, und großen Mayerhof",
       scope:"no church named in 1793 or 1837; in Bosenitz parish, with a school and no chapel (1860): for 1805 the sources' silence before and after (its belfry dates from 1831-1832, places.md); drawn with a church until 8G, none since", note:"readings T2.10, T1.18, T3.12"}
   },
-  /* the Sokolnitz castle and its farm (drawn by the map's legacy place, moved off the drawn brook it stood on until 8G) */
+  /* the Sokolnitz castle and its farm (drawn at the castle's own site since the follow-up 8J, decision 259 (a); by the map's legacy place, 535 m
+     south-east, until then) */
   sokolnitz: {
     castle:{v:"Das obrgktl. Schloß steht auf einer Anhöhe und bildet ein regelmäßiges Viereck, dessen östl. Fronte 2 Stockwerke hoch ist [...] während die andern 3 Seiten nur 1 Stockwerk haben",
       en:"a regular quadrangle, its east front two storeys, the other three sides one", src:"wolny1837", at:"p. 465 (leaf n470)", gr:"B", lab:"inference", q:"bildet ein regelmäßiges Viereck",
-      scope:"the castle in 1837, and in 1825 a closed carmine quadrangle of 79.6 by 60.0 m round a court, its east range about 1.7 times as deep as the others (mza_sokolnitz1825, piece A04E); no rebuilding between 1805 and 1837 read: its form in 1805 an inference. Drawn at the map's legacy place, moved just far enough to clear the drawn brook it stood on (docs/STAGE8_SPEC.md section 19 gives the move); the castle's own place, about 535 m north-west of the legacy place across the drawn Goldbach, a geographic correction proposed, not made",
+      scope:"the castle in 1837, and in 1825 a closed carmine quadrangle of 79.6 by 60.0 m round a court, its east range about 1.7 times as deep as the others (mza_sokolnitz1825, piece A04E); no rebuilding between 1805 and 1837 read: its form in 1805 an inference. Drawn at its own site, today's castle and the 1825 quadrangle on one site (RÚIAN building 13158571; the sketch georeferenced on it, its far checks holding to 7-15 m: B for 1825), west of the corrected Goldbach as in 1825, its quadrangle covering its site; the drawn track and brook there (their widths a display convention) leave no room for it at the buildings' drawn size, so it and its farm are drawn smaller, at the largest size that stands clear (since the follow-up 8J, decision 259 (a); until then at the map's legacy place, 535 m south-east, across the drawn brook); its site in 1805 the 1825 site by the texts (Schwoy 1793; Mikhailovsky-Danilevsky 1844, the road crossing the brook beside it)",
       note:"readings T1.1, C3.1; Thiébault (1894) names its main house, stables, barns, outbuildings and avenues in the fight (T6.6)"},
     farm:{v:"Sokolnitz, Dorf von 75 Häusern, 574 Seelen, mit einem guten Schloße und Garten, auch einem Bräuhause und Mayerhof", en:"the manorial farm named with the castle in 1793",
       src:"schwoy1793", at:"p. 393 (leaf n401)", gr:"B", lab:"fact", q:"auch einem Bräuhause und Mayerhof",
-      scope:"the farm in 1793, standing in 1805 by inference; south of the castle in 1837 (Wolny, p. 466) and on the 1825 sketch (two yards on either side of a road, long carmine ranges); drawn as three ranges round one yard south of the castle (DESIGN), across the drawn brook from it",
+      scope:"the farm in 1793, standing in 1805 by inference; south of the castle in 1837 (Wolny, p. 466) and on the 1825 sketch (two yards on either side of a road, long carmine ranges); drawn as three ranges round one yard south of the castle (DESIGN), on the castle's side of the brook as corrected (since the follow-up 8J; across the drawn brook from it until then)",
       note:"readings T2.1, T1.2, C3.6"},
     orchardWall:{v:"the walled orchard west of the castle", lab:"disputed", gr:"C",
       scope:"the orchard west of the castle: walled in 1837 (Wolny), no wall drawn there on the 1825 sketch; for 1805 neither settles it, so no wall is drawn", sides:[
@@ -3762,8 +3787,15 @@ var BUILDINGS = {
       note:"readings T3.13, T1.12"},
     chateau:{v:"Mit der Hauptfronte, an die sich zu beiden Seiten Flügel anschließen, ist es gegen SW. gekehrt, und hat (mit Einschluß des untern), 3 Stockwerke",
       en:"its main front, with a wing at each end, facing south-west; three storeys", src:"wolny1836", at:"p. 152 (leaf n219)", gr:"B", lab:"inference", q:"ist es gegen SW. gekehrt",
-      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within 22.5 degrees of the bearing its own place has from the church's today (236 degrees, west-south-west, places.md), its centre in the town's place and no road or stream of this map's between them, where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point)",
-      note:"readings T1.13, T2.15"}
+      scope:"the château built from about the 1750s (Schwoy 1793: laid out about forty years before), as Wolny describes it in 1836: standing so in 1805 by inference; drawn by the church, within 22.5 degrees of the bearing its own place has from the church's today (236 degrees, west-south-west, places.md), its centre in the town's place and no road or stream of this map's between them, where this map's road and stream through the town leave room: a layout (the sources place the two by the square, not to a point). Its garden west of it (world.js GARDENS, since the follow-up 8J): drawn at the garden's own outline, the 1826 sketch's and the Second Survey's, as rows of trees west of the château as drawn, the rows a convention (DESIGN); no house of the town in it",
+      note:"readings T1.13, T2.15"},
+    /* Stage 8, the follow-up 8J (decision 259 (a); docs/stage8-evidence/8h/geo/proposal.md G6): the garden west of the château, drawn at its own
+       outline (world.js GARDENS) in place of the build's "Austerlitz park", a wood 1.6 km south-east of the town */
+    garden:{v:"Uebrigens ist dieses Schloß, an den w. ein herrlicher gegenwärtig aber etwas vernachlässigter Garten anstoßt",
+      en:"a splendid garden adjoining the château on the west, somewhat neglected in 1836", src:"wolny1836", at:"p. 153 (leaf n220)", gr:"B", lab:"fact",
+      q:"an den w. ein herrlicher gegenwärtig aber etwas vernachlässigter Garten anstoßt",
+      scope:"the garden west of the château in 1836, with the château 'eine Schöpfung des [...] Fürst. Wenzel' (p. 152): Kaunitz died in 1794, so it was laid out before 1805 (an inference); a formal garden of compartments with rows of trees on an east-west axis on the 1826 sketch (MOR243418260, read without a georeference: its side unambiguous) and on the Second Military Survey (1836-52), its outline there that of today's garden (OSM way 27326751, 16.9 ha): drawn at that outline as rows of trees west of the château as drawn, the rows' number and spacing a convention (DESIGN), the planting in 1805 not established. The 'Austerlitz park' drawn until the follow-up 8J, a wood 1.6 km south-east of the town, stood on fields and meadows in 1836-52: no support",
+      note:"readings T1.13; docs/stage8-evidence/8h/geo/README.md sections 6.2, 6.3 and 7.6"}
   },
   /* what the sources name and the map does not draw, each with why and the alternatives put to the owner (docs/STAGE8_SPEC.md section 19) */
   notDrawn: {
@@ -3954,7 +3986,7 @@ al:{
    {n:"Columns I-III on the southern plateau", c:[288,308], rx:62, ry:70},
    {n:"IV Column at Pratzen", c:[327,231], rx:52, ry:44},
    {n:"Reserve behind Krzenowitz", c:[417,198], rx:46, ry:38},
-   {n:"Bagration on the highway", c:[377,95], rx:70, ry:30}],
+   {n:"Bagration on the highway", c:[352,64], rx:70, ry:30}],
   objectives:[
    {n:"Telnitz", p:[212,408]},{n:"Sokolnitz", p:[208,365]},
    {n:"Kobelnitz", p:[205,277]},{n:"Envelop toward Brünn", p:[138,334]}],
@@ -3971,8 +4003,9 @@ al:{
     route:[[335,229],[293,245],[256,265],[207,277]]},
    {n:"5th Column - Liechtenstein", forms:["lich"], obj:[288,145], ord:"Cavalry. Cover the right of the attacking columns between Blasowitz and the plateau.",
     route:[[296,243],[316,218],[308,177],[288,145]]},
-   {n:"Advance Guard of the Right - Bagration", forms:["bag"], obj:[253,73], ord:"Hold the Olmütz highway, pin the French left, and link to Liechtenstein.",
-    route:[[315,41],[292,52],[273,62],[253,73]]},
+   {n:"Advance Guard of the Right - Bagration", forms:["bag"], obj:[266,85], ord:"Hold the Olmütz highway, pin the French left, and link to Liechtenstein.",
+    route:[[351,60],[309,74],[288,79],[266,85]]},   /* Stage 8, the follow-up 8K: on the highway as corrected, from Bagration's place at dawn
+    to 1.2 km along it from the Santon's foot, as the correction pass's rule had it on its own road ([315,41] to [253,73] until 8K) */
    {n:"Reserve - Constantine", forms:["rg_inf", "rg_cav"], obj:[404,198], ord:"The Imperial Guard to remain behind Krzenowitz, in hand.",
     route:[[417,198],[380,195],[347,192]]}
   ]},
@@ -4000,8 +4033,9 @@ fr:{
     route:[[204,218],[228,236],[254,260],[271,274],[285,287]]},
    {n:"The second axis - Vandamme", forms:["vandamme"], obj:[309,207], ord:"Climb the northern shoulder of the plateau and take the Old Vineyards, linking the assault to Lannes.",
     route:[[221,179],[236,191],[267,200],[309,207]]},
-   {n:"The pivot - Lannes and Murat", forms:["suchet", "caffarelli", "santon"], obj:[304,46], ord:"Hold the Olmütz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
-    route:[[225,97],[247,75],[276,61],[304,46]]},
+   {n:"The pivot - Lannes and Murat", forms:["suchet", "caffarelli", "santon"], obj:[321,70], ord:"Hold the Olmütz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
+    route:[[231,98],[260,86],[291,78],[321,70]]},   /* Stage 8, the follow-up 8K: on the highway as corrected, 0, 1, 2 and 3 km along it from
+    the Santon's foot, as the correction pass's rule had it on its own road ([225,97] to [304,46] until 8K) */
    {n:"The reserve - the Guard and the grenadiers", forms:["guard_inf", "guard_cav", "c_gren"], obj:[300,211], ord:"The Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the dispositions of 1 December. The route drawn is this map's.",
     route:[[189,161],[230,185],[263,201],[300,211]]},
    {n:"The wheel", forms:["sthilaire", "vandamme"], obj:[294,369], ord:"Once the plateau is held from Pratzen to the highway, turn the centre ninety degrees and come down on the rear of the Allied left.",
@@ -4467,6 +4501,10 @@ var STATEMENT_CLAIMS = {
     note:"This map's end of organised resistance is its own reckoning after Sokolov's."},
   "FORMATIONS.bag.track[\"8\"].act": {h:"c9318f3f6754", cl:"attributed", by:[{src:"schoenhals1873", at:"pp. 165-166", rd:"schoenhals1873.p165-166.bagration"},
       {src:"stutterheim1806de", at:"p. 71", rd:"stut.p71.bagration-six"}]},
+  "FORMATIONS.bag.track[\"0\"].act": {h:"df3bbfcc711a", cl:"attributed", by:[{src:"stutterheim1806de", at:"pp. 58, 70", rd:"stutterheim1806de.p58.p70.posthaus"}],
+    note:"Where his line stood is this map's placing, between the post house as drawn and Holubitz: Stutterheim gives no distance or bearing."},
+  "FORMATIONS.bag.track[\"5\"].act": {h:"a037fd37410f", cl:"attributed", by:[{src:"stutterheim1806de", at:"p. 70", rd:"stutterheim1806de.p58.p70.posthaus"}],
+    note:"That these heights are the ground east of Bosenitz drawn here, and that the Santon's battery stopped him, are this map's readings."},
   "FORMATIONS.kollo.track[\"5\"].act": {h:"3603915de8f4", cl:"disputed", by:[{src:"schoenhals1873", at:"p. 162", rd:"schoenhals1873.p162.erstiegen", side:"the height climbed in a second attack"},
       {src:"thiebault3_1894", at:"t. III, pp. 469-472", rd:"thieb.p469-472.kollowrath", side:"dispersed by the French guns"}],
     note:"Where the brigades stood along the crest is this map's placing."},
@@ -4769,6 +4807,8 @@ var STATEMENT_CLAIMS = {
   "FORMATIONS.suchet.note": {h:"e0f4ee75a805", cl:"attributed", by:[{src:"alombert4_1908", at:"t. IV, p. 732", rd:"alo.p732.suchet"},
       {src:"sokolov2006", at:"t. II, pp. 183-185", rd:"sokolov2006.p183-185.v-and-i-corps"}],
     note:"None of the returns read is of 2 December."},
+  "FORMATIONS.suchet.track[\"0\"].act": {h:"53da914958b0", cl:"attributed", by:[{src:"corr11_1863", at:"no. 9534, p. 441", rd:"corr11.p441.butte-reread"}],
+    note:"That the order's right of the road is its south side, the army facing east, and that the division stood there at dawn are this map's readings."},
   "ANALYSIS[#collapse].text": {h:"b91cf3a6d1b5", cl:"disputed", by:[{src:"materialien1806", at:"p. 121", rd:"materialien1806.p121.zusatz15", side:"twenty thousand drowned (the 30th Bulletin, quoted)"},
       {src:"schoenhals1873", at:"pp. 169-170", rd:"schoen.p169-170.tellnitz-pfarrer", side:"sixty to at most a hundred"},
       {src:"schoenhals1873", at:"p. 169", rd:"schoenhals1873.p169.drowning-exaggeration"},
@@ -4777,10 +4817,10 @@ var STATEMENT_CLAIMS = {
   "FEATURES[#blasowitz].why[0]": {h:"5dd731fce66b", cl:"interpretation", by:[{src:"thiers1847", at:"t. VI, pp. 317-318", rd:"thiers1845.p317-318.blaziowitz-levered"},
       {src:"schoenhals1873", at:"pp. 165-166", rd:"schoenhals1873.p165-166.bagration"},
       {src:"schoenhals1873", at:"p. 166", rd:"schoenhals1873.p166.posthaus-suchet"}]},
-  "FEATURES[#posthouse].sub": {h:"bf6faa6f9d71", cl:"attributed", by:[{src:"corr11_1863", at:"no. 9536, p. 443", rd:"corr11_1863.p443.9536-pozoritzer-post"},
+  "FEATURES[#posthouse].sub": {h:"0e7f881efb03", cl:"attributed", by:[{src:"corr11_1863", at:"no. 9536, p. 443", rd:"corr11_1863.p443.9536-pozoritzer-post"},
       {src:"stutterheim1806de", at:"pp. 58, 70", rd:"stutterheim1806de.p58.p70.posthaus"},
       {src:"wolny1836", at:"Bd. II, Abth. 1, pp. 158-159", rd:"wolny1836.p158-159.holubitz-kruh"}],
-    note:"The place drawn is this map's, approximate; no survey map of 1805 was read."},
+    note:"The place drawn is the post of the cadastral sketch of 1826 and of the Second Military Survey, Kovalovice No. 109; that it stood there in 1805 is an inference: no map of 1805 was read."},
   "FORMATIONS.rg_cav.strengthNote": {h:"d80c177d7b15", cl:"attributed", by:[{src:"sokolov2006", at:"t. II, p. 199", rd:"sokolov2006.p199.kologrivov"},
       {src:"kavalergard1851", at:"pp. 56-57", rd:"kavalergard1851.p56-57.malutin-blazovits"},
       {src:"mikhailovsky1844", at:"pp. 144-145", rd:"mikhailovsky1844.p144-145.guard-commanders"},
@@ -4849,12 +4889,22 @@ function M2W(pts){ return pts.map(function(p){ return W(p[0],p[1]); }); }
 var UNITS_PER_KM = GEOREF.UNITS_PER_KM;   /* from geo.js: the only scale */
 
 /* ---------------- hydrography ---------------- */
-var GOLDBACH_M=[[250,109],[240,160],[212,218],[208,256],[207,297],[204,362],[208,376],[214,410],[237,415],[276,415]];
+/* Stage 8, the follow-up 8J (decision 259 (a); docs/stage8-evidence/8h/geo/proposal.md G3, docs/stage8-evidence/8j/): at Sokolnitz the Goldbach's
+   bed from the boundary with Kobelnitz (y 309.8) to below the village (y 377.9) is today's channel of the Říčka ("Zlatý potok", OSM ways 102596825,
+   532819718, 884299950, 884299951, simplified within 0.5 units), which the stable cadastre's sketch of 1825 draws within about 10 m at the castle and
+   the village and 7-8 m along the pheasantry's avenue (B, georeferenced; for 1805 an inference, C, supported by Mikhailovsky-Danilevsky's road
+   crossing the brook beside the castle): east of the castle and the village, as the period map has them. Until 8J the bed ran here at x 204-205, 316-
+   515 m west of it, so that the village, the castle's site and the French line stood east of the drawn brook. North of y 309.8 (no period map read
+   there) the bed joins the build's vertex [207,297] straight; south of y 377.9 (not reviewed) it joins the build's [214,410]; its course to the
+   meres, decision 27's, unchanged. Which of the 1825 sketch's two channels north of the castle carried the brook in 1805 is not established: the
+   avenue's, today's, is drawn */
+var GOLDBACH_M=[[250,109],[240,160],[212,218],[208,256],[207,297],[211.8,309.8],[212.2,321.4],[213.4,321.9],[213.9,323.2],[213.6,325.4],[212.2,327.4],
+  [212.5,337.7],[213.4,338.5],[217.4,338.9],[217,342.2],[218.2,342.5],[219.8,344.6],[221,349.4],[216.9,357.6],[214,367.8],[212.4,377.9],[214,410],[237,415],[276,415]];
 var LITAVA_M  =[[552,128],[511,138],[351,313],[297,372],[262,444],[215,500],[209,508]];   /* Slavkov south edge -> Hostěrádky -> Újezd -> Žatčany -> toward Židlochovice */
 var BROOKS_M=[
   [[275,147],[256,185],[225,236]],
   [[283,237],[247,257],[208,275]],
-  [[277,318],[251,341],[212,367]],
+  [[277,318],[251,341],[214.8,365.2]],   /* 8J: its mouth on the corrected Goldbach (it ended at [212,367], beyond the bed as corrected), along its own line */
   [[199,205],[201,239],[201,260]],
   [[401,150],[415,196],[439,217]]   /* the Rakovec through Křenovice to the Litava (turistika.cz); course north of the village schematic */
 ];
@@ -4863,7 +4913,13 @@ var GOLDBACH=M2W(GOLDBACH_M), LITAVA=M2W(LITAVA_M), BROOKS=BROOKS_M.map(M2W);
 /* ---------------- roads and tracks ---------------- */
 var ROADS=[
  {n:"Brunn-Olmutz highway", cls:"highway", w:2.9,
-  p:[[30,154],[142,128],[225,97],[239,80],[324,36],[401,-4]]},   /* west: legacy course; east of the Santon: past Tvarožná to the Posoritz post house and on toward Rausnitz */
+  p:[[30,154],[142,128],[224,103.8],[232,97.7],[256,87.3],[336,66.5],[358,57.6],[364,54.3],[382,41.6],[412,15.3],[414,12.2],[422,4.7],[432,-8]]},
+  /* west: legacy course. From the Santon's foot east: II/430's line, the road of the cadastral sketches of 1826 and the Second Military Survey
+     (1836-52), south of Tvarožná, past the Holubitz inn and the post north of it at Kovalovice No. 109, leaving the frame toward Rausnitz (Stage 8,
+     the follow-up 8K, decision 260 (a): docs/stage8-evidence/8h/geo/consequences.json highway.rows, the line simplified to 0.6 map units; B for
+     1826-52, for 1805 an inference, C: no realignment between 1805 and 1826 is recorded and the First Survey, which would test it, was not
+     reached). The legacy western part now meets it at the Santon's foot, [224,103.8]. Until 8K [225,97],[239,80],[324,36],[401,-4]: the
+     correction pass's line through its constructed post house, 0.2 to 1.2 km north of this one */
  {n:"Pratzen-Austerlitz road", cls:"post", w:2.0, p:[[276,243],[360,199],[433,158],[507,126]]},   /* legacy shape re-anchored on its two villages; course unverified */
  {n:"Krzenowitz road", cls:"track", w:1.5, p:[[415,196],[348,217],[276,243]]},
  {n:"Sokolnitz-Telnitz track", cls:"track", w:1.5, p:[[208,365],[208,376],[212,408]]},
@@ -4876,15 +4932,30 @@ var ROADS=[
  {n:"Bosenitz-Blasowitz track", cls:"track", w:1.3, p:[[236,69],[261,114],[296,147]]},
  {n:"Pratzen-Sokolnitz track", cls:"track", w:1.4, p:[[276,243],[271,292],[238,334]]},
  {n:"Menitz track", cls:"track", w:1.3, p:[[212,408],[187,427],[182,464]]},
- {n:"Holubitz-Posoritz track", cls:"track", w:1.3, p:[[340,89],[332,62],[324,36]]},
+ {n:"Holubitz-Posoritz track", cls:"track", w:1.3, p:[[340,89],[333.5,67.1]]},   /* 8K: the legacy course to the highway as corrected; beyond it the
+   track ran on to the constructed post house, [332,62],[324,36], in fields on the Second Survey */
  {n:"Raigern-Telnitz road", cls:"track", w:1.2, p:[[18,500],[115,443],[212,408]]}   /* local road via Otmarov; Raigern itself is off the map */
 ];
 
 /* ---------------- woodland ---------------- */
 var WOODS=[
- {c:[236,385], rx:24, ry:17, rot:0.08, n:190, conifer:0.12},   /* Sokolnitz pheasantry: legacy offset from the village */
- {c:[551,151], rx:30, ry:22, rot:0.0,  n:170, conifer:0.30},   /* Austerlitz park: legacy offset from the town */
- {c:[353,55],  rx:28, ry:13, rot:0.12, n:110, conifer:0.55},   /* wood above Holubitz */
+/* Stage 8, the follow-up 8J (decision 259 (a); proposal G2): the Sokolnitz pheasantry, the "Fasangarten" of the stable cadastre's sketch of 1825
+   (MZA D9 MOR246318250, section III, parcels 366-378), traced on its pieces A03D-A05E and georeferenced (docs/stage8-evidence/8h/geo/README.md
+   section 6.1; places.json period1825.fasangarten_1825, simplified within 0.25 units, 8 m): 0.246 km2, from the castle's north side to 49.1275 N,
+   its avenue and the field in its oval loop left out as the sketch leaves them. B for 1825; for 1805 an inference (C): the garden is the castle's
+   of the 18th century and no change before 1825 is read. Not today's woodland, which lies 170-490 m further north over the 1825 meadow and strip
+   fields. A wood traced from a period map (poly) is drawn to its outline and stands over a stream's wet bottom and the marsh (coverClass). Until 8J
+   an ellipse 1.9 km south-south-east (c [236,385], rx 24, ry 17), on the 1825 fields of Sokolnitz and Telnitz: no support. Its trees at the build's
+   density for it (190 over its drawn 1.01 km2: 46). The Austerlitz park (c [551,151], rx 30, ry 22), 1.6 km south-east of the town on fields and
+   meadows in 1836-52, is no longer drawn (proposal G6): the château's garden is drawn as a garden (GARDENS) */
+ {poly:[[219.3,311.7],[220,311.7],[220.1,312.2],[220.1,331.6],[221,340.4],[219.2,340.9],[218.6,340.7],[218.5,340.4],[220.6,339.9],[220.2,338.4],[219,338.4],
+   [217.9,339],[218.1,340.3],[215.8,341.7],[215.8,342],[215.4,341.6],[214.3,341.9],[214.2,341.5],[215.4,339.3],[215.2,338.3],[213,338.3],[212.7,337.6],
+   [212,337.9],[212,338.3],[209.5,338.9],[207.8,330.2],[207.4,321.9],[208.1,320.2],[208.2,318.2],[211.2,317.9],[211.3,321.2],[210.4,322.4],[210,324.6],
+   [211.4,327],[211.7,328.9],[212.5,328.8],[212.4,327.3],[213.8,325.4],[213.8,324],[213.4,322.2],[212.3,320.6],[212.3,318],[217.3,317.5],[219.3,314.5]],
+  c:[214.6,328.5], n:46, conifer:0.12},   /* Sokolnitz pheasantry: the 1825 Fasangarten */
+ /* the "wood above Holubitz" (c [353,55], rx 28, ry 13, 110 trees), a legacy wood, is not drawn since Stage 8's follow-up 8K (decision 260 (a)): the
+    highway and the post as corrected run through it, and the Second Military Survey (1836-52) has fields there, the road between its rows of trees,
+    the post's buildings north of it (docs/stage8-evidence/8h/geo/fig/ii_survey_posthouse.jpg); no source for the wood was found */
  {c:[76,396],  rx:27, ry:19, rot:0.2,  n:112, conifer:0.40},   /* Raigern woods */
  {c:[229,253], rx:13, ry:9,  rot:0.4,  n:48,  conifer:0.45},   /* copse west of the plateau */
  {c:[235,64],  rx:15, ry:9,  rot:0.0,  n:50,  conifer:0.50},   /* copse behind the Santon */
@@ -4896,7 +4967,10 @@ var WOODS=[
 
 /* ---------------- marshy bottoms ---------------- */
 var MARSH=[
- {c:[207,372], rx:15, ry:58},   /* lower Goldbach, Sokolnitz down to Telnitz */
+ {c:[214,383], rx:15, ry:45},   /* lower Goldbach, Sokolnitz down to Telnitz. Stage 8, the follow-up 8J (decision 259 (a)): on the corrected bed, from the castle's row
+                                    down to Telnitz as before (its reach at the cover's 0.45 y 345-421 for 323-421): its label's reach, so that it no longer lies over the
+                                    pheasantry, the castle and its park, which the 1825 sketch draws as wood, buildings, park and meadow; [207,372], rx 15, ry 58 until 8J.
+                                    Whether the bottom was marshy in December 1805 rests on the Goldbach bottom's note, not re-examined */
  {c:[227,418], rx:38, ry:26},   /* confluence below Telnitz */
  {c:[272,418], rx:76, ry:26},   /* Satschan fringe */
  {c:[188,457], rx:62, ry:24},   /* Menitz fringe */
@@ -4919,7 +4993,7 @@ var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the 
  ["Holubitz",340,89,7],["Pratzen",276,243,11],["Bellowitz",164,113,7],
  ["Schlapanitz",163,177,9],["Krzenowitz",415,196,10],["Austerlitz",507,126,24],
  ["Menitz",181,489,7],["Satschan",262,444,7],["Turas",44,294,5],
- ["Hostieradek",342,309,7],["Posoritz post house",324,36,3]
+ ["Hostieradek",342,309,7],["Posoritz post house",363,54,3]
 ];
 /* the villages drawn with a church: where a source read names one standing on 2 December 1805 (Stage 8, implementation PR 8G's data task,
    decision 248 (a): appearance.js BUILDINGS.churches holds each one's claim). Until 8G Girzikowitz, Kobelnitz, Sokolnitz, Telnitz, Augezd,
@@ -4928,6 +5002,22 @@ var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the 
 var CHURCHES=["Telnitz","Augezd","Pratzen","Schlapanitz","Krzenowitz","Austerlitz","Bosenitz","Satschan","Menitz"];
 /* a chapel standing in 1805 where no church stood, drawn smaller than a church (BUILDINGS.chapels) */
 var CHAPELS=["Holubitz"];
+/* Stage 8, the follow-up 8J (decision 259 (a); docs/stage8-evidence/8h/geo/proposal.md G1, G7): the landmarks drawn at their own sites (map units).
+   castle: the Sokolnitz castle, today's (RÚIAN building 13158571) and the 1825 sketch's closed quadrangle on one site (B for 1825, the
+   georeference resting on it, its far checks holding to 7-15 m; for 1805 B by the texts: Schwoy 1793 names the castle, Mikhailovsky-Danilevsky
+   1844 has the road cross the brook beside it); the planner drew it until 8J by the build's legacy place [226,355], 535 m south-east, east of the
+   drawn brook. church.Pratzen: the church of 1728-1730 outside the village (Schwoy 1793, read on the page: A for "outside the village"), on the
+   1826 sketch in its round churchyard 276 m south-south-west of the street's midpoint, where today's church stands (RÚIAN building 46052721; B),
+   399 m at 193 degrees from the village's point, where the planner drew it until 8J */
+var LANDMARK_SITES={castle:[212.9,344.3], church:{Pratzen:[277.0,255.6]}};
+/* Stage 8, the follow-up 8J (decision 259 (a); proposal G6): the château's garden at Austerlitz, west of the château: Wolny (1836) "an den w. ein
+   herrlicher ... Garten anstoßt", Prince Wenzel Kaunitz's creation (he died in 1794: the garden predates 1805, an inference); a formal garden of
+   compartments with rows of trees on an east-west axis on the 1826 sketch and on the Second Military Survey (1836-52), its outline there today's
+   (OSM way 27326751, 16.9 ha; simplified within 0.15 units): B for 1826-52, for 1805 an inference (C). poly its outline, axis its long axis's two
+   ends, both in map units. Drawn as rows of trees along its axis west of the château as drawn (buildWoods, gardenTrees): the rows' number and the
+   trees' spacing a design convention, the planting in 1805 not established. Its ground the town's place, as the town's footprint covers it */
+var GARDENS=[{n:"the château's garden at Austerlitz", poly:[[480.7,127.3],[483.4,133.7],[498.7,127.4],[498.6,127.2],[504,125],[505.1,123.7],[505.5,121.5],
+  [505.4,120.8],[504,119.6],[503.2,117.9]], axis:[[482.05,130.5],[504.4,121.6]]}];
 
 /* The Pratzen crest: Stare Vinohrady -> the col between them -> the Pratzeberg (GEOREF ground truth;
    the col is PeakVisor's key col of Stare Vinohrady). Used by the relief and the terrain line. */
@@ -4945,7 +5035,7 @@ var TERRAIN_LINES=[
   note:"Napoleon's first command post. Low, but it looks straight down the French front."},
  {t:"scarp", n:"Western escarpment", p:[[273,188],[259,233],[245,280],[248,324],[258,349]],
   note:"The face Soult's divisions climbed. At true scale the plateau is a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km; on the morning of the battle it was the fog in the valley at its foot that hid his divisions."},
- {t:"valley", n:"Goldbach bottom", p:[[240,160],[213,222],[203,277],[206,365],[212,408],[239,413]],
+ {t:"valley", n:"Goldbach bottom", p:[[240,160],[213,222],[203,277],[214.8,365],[212,408],[239,413]],   /* 8J: by Sokolnitz on the corrected bed ([206,365] until 8J) */
   note:"Marshy in December: a small obstacle to infantry, a serious one to guns and formed cavalry, which cross it at the villages."},
  {t:"valley", n:"Litava bottom", p:[[511,138],[351,313],[297,372],[262,444]],
   note:"Frames the south-east of the field and funnels the Allied retreat toward the meres."},
@@ -4999,6 +5089,11 @@ function ell(x,z,cm,rx,ry){
   var a=(x-cm._w[0])/(rx*0.5), b=(z-cm._w[1])/(ry*0.5);
   return Math.sqrt(a*a+b*b);
 }
+/* Stage 8, the follow-up 8J: an outline given in map units (a wood traced from a period map, a garden), in world units once (kept on it, as ell
+   keeps a centre), with its box; whether a point lies inside it; its signed distance in world units (negative inside) */
+function polyWorld(o){ if(!o._pw){ var P=M2W(o.poly), b=[1e9,1e9,-1e9,-1e9]; P.forEach(function(q){ b[0]=Math.min(b[0],q[0]); b[1]=Math.min(b[1],q[1]); b[2]=Math.max(b[2],q[0]); b[3]=Math.max(b[3],q[1]); }); P.box=b; o._pw=P; } return o._pw; }
+function inPolyW(x,z,P){ var c=false; for(var i=0,j=P.length-1;i<P.length;j=i++){ var a=P[i], b=P[j]; if(((a[1]>z)!==(b[1]>z))&&(x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])) c=!c; } return c; }
+function polySd(x,z,P){ var d=1e9; for(var i=0,j=P.length-1;i<P.length;j=i++) d=Math.min(d,segDist(x,z,P[j][0],P[j][1],P[i][0],P[i][1])); return inPolyW(x,z,P)?-d:d; }
 
 var CREST=M2W(CREST_M);
 var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
@@ -5058,10 +5153,15 @@ function localHeight(x,z){
    0 field, 1 meadow, 2 marsh, 3 water, 4 wood, 5 village, 6 vineyard, 7 track */
 function coverClass(mx,mz,ml){
   var water=covAt(covWater,mx,mz), marsh=covAt(covMarsh,mx,mz), wood=covAt(covWood,mx,mz),
-      vill=covAt(covVill,mx,mz), road=covAt(covRoad,mx,mz), vine=covAt(covVine,mx,mz);
+      vill=covAt(covVill,mx,mz), road=covAt(covRoad,mx,mz), vine=covAt(covVine,mx,mz), woodP=covAt(covWoodP,mx,mz);
   var pondS=1-smoothstep(0.55,1.08,Math.sqrt(((mx-SATS[0])/28)*((mx-SATS[0])/28)+((mz-SATS[1])/10.5)*((mz-SATS[1])/10.5)));
   var pondM=1-smoothstep(0.55,1.08,Math.sqrt(((mx-MENI[0])/23)*((mx-MENI[0])/23)+((mz-MENI[1])/9)*((mz-MENI[1])/9)));
-  if(pondS>0.5||pondM>0.5||(water>0.55&&ml<-2.6)) return 3;
+  if(pondS>0.5||pondM>0.5) return 3;
+  /* Stage 8, the follow-up 8J: a wood traced from a period map (WOODS[].poly) is drawn to its outline over a stream's wet bottom and the marsh
+     (the Sokolnitz pheasantry, its brook along its avenue: the 1825 sketch's wood on both sides of it); a mere's water is the mere's. Elsewhere,
+     where no such wood lies (woodP 0), the classes are as before */
+  if(woodP>0.5) return 4;
+  if(water>0.55&&ml<-2.6) return 3;
   if(marsh>0.45&&ml<0.4) return 2;
   if(vill>0.55) return 5;
   if(wood>0.5) return 4;
@@ -5074,24 +5174,27 @@ function hAt(mx,my){ var w=W(mx,my); return height(w[0],w[1]); }
 
 /* ---------------- coarse land-cover raster ---------------- */
 var COV_NX=168, COV_NZ=146, COV_X0=-180, COV_Z0=-155, COV_DX=360/167, COV_DZ=310/145;
-var covWood, covMarsh, covVill, covRoad, covWater, covVine;
+var covWood, covMarsh, covVill, covRoad, covWater, covVine, covWoodP;   /* covWoodP (8J): the woods traced from a period map alone */
 
 function buildCover(){
   var n=COV_NX*COV_NZ;
   covWood=new Float32Array(n); covMarsh=new Float32Array(n); covVill=new Float32Array(n);
-  covRoad=new Float32Array(n); covWater=new Float32Array(n); covVine=new Float32Array(n);
+  covRoad=new Float32Array(n); covWater=new Float32Array(n); covVine=new Float32Array(n); covWoodP=new Float32Array(n);
   var roadPts=ROADS.map(function(r){ return {p:M2W(r.p), w:r.w}; });
   var villW=VILLAGES.map(function(v){ var c=W(v[1],v[2]); return [c[0],c[1],2.6+v[3]*0.46]; });
   for(var j=0;j<COV_NZ;j++){
     var z=COV_Z0+j*COV_DZ;
     for(var i=0;i<COV_NX;i++){
       var x=COV_X0+i*COV_DX, k=j*COV_NX+i, s, t;
-      s=0;
+      s=0; var sp=0;
       for(t=0;t<WOODS.length;t++){
         var wd=WOODS[t];
-        s=Math.max(s,1-smoothstep(0.62,1.16,ell(x,z,wd.c,wd.rx,wd.ry)));
+        if(wd.poly){   /* 8J: a wood traced from a period map, 0.5 on its outline, eased over 2 units either side (the raster's cell is 2.16) */
+          var pw=polyWorld(wd), bx=pw.box; if(x<bx[0]-2||x>bx[2]+2||z<bx[1]-2||z>bx[3]+2) continue;
+          var vp=1-smoothstep(-2,2,polySd(x,z,pw)); s=Math.max(s,vp); sp=Math.max(sp,vp); }
+        else s=Math.max(s,1-smoothstep(0.62,1.16,ell(x,z,wd.c,wd.rx,wd.ry)));
       }
-      covWood[k]=s;
+      covWood[k]=s; covWoodP[k]=sp;
       s=0;
       for(t=0;t<MARSH.length;t++){
         var mr=MARSH[t];
@@ -5147,7 +5250,7 @@ function gridAt(a,x,z){
    The classes are the model's own, coverClass on the cover rasters (buildCover, covAt) and the local relief: nothing here
    changes a class. Until 2F each 81 m triangle of the ground was drawn in the class of its centroid, so every edge was a
    saw-tooth of triangles, up to 156 m from the model's edge (tools/stage2/cover-2f.js). Now the ground shader evaluates the
-   same rule at every drawn point (atlasShader): the six rasters are uploaded as they are and interpolated as covAt does,
+   same rule at every drawn point (atlasShader): the six rasters (seven since 8J: covWoodP) are uploaded as they are and interpolated as covAt does,
    and the local relief is read from COVER_ML, the model's localHeight on a grid of 0.25 world units (16 m), interpolated
    bicubically (coverMlAt). The local relief matters only at coverClass's three thresholds (-2.6, 0.4, -1.2), and on a flat
    valley floor a small error there moves the edge far: from the 81 m vertices meadow would be 234 m out, bilinear on a 0.5
@@ -5855,9 +5958,11 @@ var GROUND_FRAG_HEAD=[
   "vec4 gBil(sampler2D t,vec2 n,vec4 g,vec2 p){ vec2 f=(p-g.xy)/g.zw, i=clamp(floor(f),vec2(0.0),n-2.0), u=clamp(f-i,0.0,1.0), c=(i+0.5)/n, d=1.0/n;",
   "  return mix(mix(texture2D(t,c),texture2D(t,c+vec2(d.x,0.0)),u.x),mix(texture2D(t,c+vec2(0.0,d.y)),texture2D(t,c+d),u.x),u.y); }",
   "float gPond(vec4 P,vec2 p){ return 1.0-smoothstep(0.55,1.08,length((p-P.xy)/P.zw)); }",
-  /* coverClass: A = water, marsh, wood, village; B = road, vineyard; ml the local relief */
+  /* coverClass: A = water, marsh, wood, village; B = road, vineyard, the woods traced from a period map (8J); ml the local relief */
   "float gClass(vec2 p,float ml,vec4 A,vec4 B){",
-  "  if(gPond(uPondS,p)>0.5||gPond(uPondM,p)>0.5||(A.x>0.55&&ml< -2.6)) return 3.0;",
+  "  if(gPond(uPondS,p)>0.5||gPond(uPondM,p)>0.5) return 3.0;",
+  "  if(B.z>0.5) return 4.0;",
+  "  if(A.x>0.55&&ml< -2.6) return 3.0;",
   "  if(A.y>0.45&&ml<0.4) return 2.0;",
   "  if(A.w>0.55) return 5.0;",
   "  if(A.z>0.5) return 4.0;",
@@ -5960,7 +6065,7 @@ function atlasLum(d,W){
 }
 /* the detail on or off (app.js: off under lowTier) */
 function groundDetail(on){ if(groundMesh&&groundMesh.material.userData.U) groundMesh.material.userData.U.uDetail.value.x=on?GDETAIL.amount:0; }
-/* the data the shader reads, made once: the six cover rasters (as covAt reads them), the local relief (COVER_ML), the
+/* the data the shader reads, made once: the seven cover rasters (as covAt reads them; covWoodP in B.z since 8J), the local relief (COVER_ML), the
    field-strip table, and the viewshed (refreshed when one is drawn) */
 var _gTex=null;
 function groundTextures(){
@@ -5968,7 +6073,7 @@ function groundTextures(){
   function tex(d,w,h,type){ var t=new THREE.DataTexture(d,w,h,THREE.RGBAFormat,type);
     t.magFilter=t.minFilter=THREE.NearestFilter; t.generateMipmaps=false; t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping; t.needsUpdate=true; return t; }
   var n=COV_NX*COV_NZ, A=new Float32Array(n*4), B=new Float32Array(n*4), k;
-  for(k=0;k<n;k++){ A[k*4]=covWater[k]; A[k*4+1]=covMarsh[k]; A[k*4+2]=covWood[k]; A[k*4+3]=covVill[k]; B[k*4]=covRoad[k]; B[k*4+1]=covVine[k]; }
+  for(k=0;k<n;k++){ A[k*4]=covWater[k]; A[k*4+1]=covMarsh[k]; A[k*4+2]=covWood[k]; A[k*4+3]=covVill[k]; B[k*4]=covRoad[k]; B[k*4+1]=covVine[k]; B[k*4+2]=covWoodP[k]; }
   var M=COVER_ML, MT=Math.ceil(M.nx/4), ml=new Float32Array(MT*M.nz*4);
   for(var j=0;j<M.nz;j++) for(var i=0;i<M.nx;i++) ml[(j*MT)*4+i]=M.a[j*M.nx+i];   /* texel (i/4, j), channel i%4 */
   var FX=128, FZ=32, fd=new Float32Array(FX*FZ*4);
@@ -6396,7 +6501,15 @@ function v8Why(R,ctx){
     if(v8SegBox(R,o.ax,o.az,o.bx,o.bz)<lim) return o.kind; }
   for(var j=0;j<ctx.trees.length;j++){ var t=ctx.trees[j], lt=VILL8G.clear.tree+0.45*t[3]; if(Math.abs(t[0]-R.x)<rr+lt&&Math.abs(t[2]-R.z)<rr+lt&&v8BoxPt(R,t[0],t[2])<lt) return "tree"; }
   for(i=0;i<R.pts.length;i++) if(v8Mere(R.pts[i][0],R.pts[i][1])) return "mere";
+  if(!ctx.landmark&&v8Garden(R)) return "garden";   /* Stage 8, 8J: no house of the town in the château's garden. The church and the château,
+     whose places are a layout of their symbols (their distance a convention, docs/STAGE8_SPEC.md section 20.3), may stand over its outline: the
+     garden's rows are drawn west of the château as drawn (gardenTrees), as the garden lies west of the château */
   return null; }
+/* Stage 8, the follow-up 8J: does a rectangle stand in a garden (GARDENS: its centre or a corner inside the outline)? */
+function v8Garden(R){ for(var g=0;g<GARDENS.length;g++){ var P=polyWorld(GARDENS[g]), b=P.box, rr=R.a+R.b;
+    if(R.x<b[0]-rr||R.x>b[2]+rr||R.z<b[1]-rr||R.z>b[3]+rr) continue;
+    if(inPolyW(R.x,R.z,P)) return true; for(var i=0;i<R.pts.length;i++) if(inPolyW(R.pts[i][0],R.pts[i][1],P)) return true; }
+  return false; }
 /* can two rectangles come within g of each other? (their centres' distance on each axis against their half-diagonals' bound: false only
    where they cannot) */
 function v8Near2(A,B,ra,g){ var r=ra+B.a+B.b+g; return Math.abs(A.x-B.x)<r&&Math.abs(A.z-B.z)<r; }
@@ -6451,9 +6564,11 @@ function v8NearAll(cc,mk,why,ctx,maxR,cap){ var out=[];
 var CHAPEL8G=0.5;
 var V8CANDS=24;   /* the church's places tried for its village's plan, the nearest first */
 function churchPlan8g(v,trees,extra){
-  var cc=W(v[1],v[2]), Rv=2.6+v[3]*0.46, kind=v[0]==="Austerlitz"?"temple":(CHAPELS.indexOf(v[0])>=0?"chapel":(CHURCHES.indexOf(v[0])>=0?"spired":null));
+  /* since 8J a church whose own site is read (LANDMARK_SITES.church: Pratzen's, outside the village) is sought round that site, else round its
+     village's point, as before */
+  var site=LANDMARK_SITES.church[v[0]], cc=site?W(site[0],site[1]):W(v[1],v[2]), Rv=2.6+v[3]*0.46, kind=v[0]==="Austerlitz"?"temple":(CHAPELS.indexOf(v[0])>=0?"chapel":(CHURCHES.indexOf(v[0])>=0?"spired":null));
   if(!kind) return null;
-  var ctx={placed:(extra||[]).slice(), segs:v8Village(v).segs, trees:trees.filter(function(t){ return Math.hypot(t[0]-cc[0],t[2]-cc[1])<Rv*1.6+3; }), skip:null};
+  var ctx={placed:(extra||[]).slice(), segs:site?v8NearSegs(cc,Rv*1.45):v8Village(v).segs, trees:trees.filter(function(t){ return Math.hypot(t[0]-cc[0],t[2]-cc[1])<Rv*1.6+3; }), skip:null, landmark:true};
   var C8=VILL8G.church, k=kind==="chapel"?CHAPEL8G:1, yard=v[0]==="Telnitz"?BLD8G.wall.margin+BLD8G.wall.th:0, n=v8North(), tN=Math.atan2(n[1],n[0]);
   var mk=kind==="temple"?function(x,z){ return v8Rect(x,z,tN,2.75,1.25); }   /* the temple whole (templeParts8g): its pediment's front 2.72 south of its point, its tower's back 2.70 north */
     :function(x,z){ return v8Rect(x+C8.dx*k*Math.cos(0.1),z-C8.dx*k*Math.sin(0.1),-0.1,C8.a*k+yard,C8.b*k+yard); };
@@ -6545,38 +6660,45 @@ function v8Settle(parts,ctx,maxR){
   return null; }
 /* the Sokolnitz castle as the 1825 sketch and Wolny (1837) give it: a closed quadrangle round a court, its east range the deepest and two
    storeys high, the other three one storey (BUILDINGS.sokolnitz.castle); south of it its farm, three ranges round a yard (the sketch's two
-   yards drawn as one, DESIGN). By the map's legacy place (W(226,355), the build's, about 535 m from the castle's own: that correction proposed,
-   not made, docs/STAGE8_SPEC.md section 19), moved the least step off the drawn brook it stood on until 8G */
+   yards drawn as one, DESIGN). Since 8J at the castle's own site (LANDMARK_SITES.castle; until 8J by the map's legacy place, W(226,355), about
+   535 m from it, moved the least step off the drawn brook it stood on). There the drawn track west of it and the drawn brook east of it (their
+   ribbons' widths a display convention, decision 253 (b)) leave its building-scale size no room: it is drawn at the largest of its sizes
+   (BLD8G.castle's, then smaller by CASTLE8J.step, not below CASTLE8J.floor: as a farmstead takes a smaller size in a tight spot) at which its
+   quadrangle stands clear of the drawn roads, streams and trees and covers its own site (moved the least step, v8Settle, at most half its
+   shorter side); its farm at the same size. The size is kept with each range (scale); the storeys' heights are not scaled */
+var CASTLE8J={step:0.05, floor:0.15};
 function castlePlan8g(trees){
-  var B=BLD8G.castle, n=v8North(), e=v8East(), c=W(226,355), tE=Math.atan2(e[1],e[0]), tN=Math.atan2(n[1],n[0]), parts=[];
-  function at(de,dn){ return [c[0]+e[0]*de+n[0]*dn, c[1]+e[1]*de+n[1]*dn]; }
-  function range(de,dn,t,a,b,h,part){ var p=at(de,dn); parts.push({R:v8Rect(p[0],p[1],t,a,b), h:h, part:part}); }
-  var inner=B.d-2*B.ns;
-  range(0, B.d/2-B.ns/2, tE, B.w/2, B.ns/2, B.h[0], "castle north range");
-  range(0,-B.d/2+B.ns/2, tE, B.w/2, B.ns/2, B.h[0], "castle south range");
-  range(-B.w/2+B.west/2, 0, tN, inner/2-0.02, B.west/2, B.h[0], "castle west range");
-  range( B.w/2-B.east/2, 0, tN, inner/2-0.02, B.east/2, B.h[1], "castle east range");
-  /* the farm: its north range 1.6 south of the castle, its west range and its south range round a yard open to the east */
-  var f0=-B.d/2-1.6-0.5;
-  range(-0.4, f0, tE, 3.0, 0.5, 0.95, "farm north range");
-  range(-3.0, f0-2.3, tN, 1.8, 0.5, 0.95, "farm west range");
-  range(-0.6, f0-4.6, tE, 2.7, 0.5, 0.95, "farm south range");
-  /* the castle moved the least step that clears the drawn brook, roads and trees at the legacy place (the build's castle stood on the brook
-     there), then its farm the least step from its place south of it; the ranges of each touch, so they are tested against the world and
-     the other group, not each other */
-  var c0=W(226,355), ctx={placed:[], segs:v8NearSegs(c0,14), trees:trees.filter(function(t){ return Math.hypot(t[0]-c0[0],t[2]-c0[1])<18; })};
-  var cas=parts.slice(0,4), farm=parts.slice(4), m1=v8Settle(cas,ctx,4);
-  if(m1) farm.forEach(function(p){ p.R=v8Rect(p.R.x+m1.dx,p.R.z+m1.dz,p.R.t,p.R.a,p.R.b); });
-  ctx.placed=cas.slice();
-  /* the farm stays south of the castle: moved the least step southward and sideways that clears it (the drawn wood beside the legacy place
-     and the brook leave its first place no room) */
-  var m2=null, steps=[];
-  for(var ds=0;ds<=8;ds+=0.5) for(var de=-8;de<=8;de+=0.5) steps.push([ds,de,Math.hypot(ds,de)]);
-  steps.sort(function(p,q){ return p[2]-q[2]; });
-  for(var si=0;si<steps.length&&m1&&!m2;si++){ var dx=-n[0]*steps[si][0]+e[0]*steps[si][1], dz=-n[1]*steps[si][0]+e[1]*steps[si][1], ok=true, mv=[];
-    for(var fi=0;fi<farm.length&&ok;fi++){ var Q=farm[fi].R, R2=v8Rect(Q.x+dx,Q.z+dz,Q.t,Q.a,Q.b); if(v8Clear(R2,ctx)) ok=false; else mv.push(R2); }
-    if(ok){ farm.forEach(function(p,fi){ p.R=mv[fi]; }); m2={dx:dx,dz:dz,off:steps[si][2]}; } }
-  return {parts:m1?cas.concat(m2?farm:[]):[], moved:m1, farmMoved:m2}; }
+  var B=BLD8G.castle, n=v8North(), e=v8East(), c=W(LANDMARK_SITES.castle[0],LANDMARK_SITES.castle[1]), tE=Math.atan2(e[1],e[0]), tN=Math.atan2(n[1],n[0]);
+  var ctx={placed:[], segs:v8NearSegs(c,14), trees:trees.filter(function(t){ return Math.hypot(t[0]-c[0],t[2]-c[1])<18; })};
+  for(var k=0;;k++){ var s=Math.round((1-k*CASTLE8J.step)*1000)/1000; if(s<CASTLE8J.floor-1e-9) break;
+    var parts=[];
+    var at=function(de,dn){ return [c[0]+e[0]*de+n[0]*dn, c[1]+e[1]*de+n[1]*dn]; };
+    var range=function(de,dn,t,a,b,h,part){ var p=at(de*s,dn*s); parts.push({R:v8Rect(p[0],p[1],t,a*s,b*s), h:h, part:part, scale:s}); };
+    var inner=B.d-2*B.ns;
+    range(0, B.d/2-B.ns/2, tE, B.w/2, B.ns/2, B.h[0], "castle north range");
+    range(0,-B.d/2+B.ns/2, tE, B.w/2, B.ns/2, B.h[0], "castle south range");
+    range(-B.w/2+B.west/2, 0, tN, inner/2-0.02/s, B.west/2, B.h[0], "castle west range");
+    range( B.w/2-B.east/2, 0, tN, inner/2-0.02/s, B.east/2, B.h[1], "castle east range");
+    /* the farm: its north range 1.6 south of the castle, its west range and its south range round a yard open to the east */
+    var f0=-B.d/2-1.6-0.5;
+    range(-0.4, f0, tE, 3.0, 0.5, 0.95, "farm north range");
+    range(-3.0, f0-2.3, tN, 1.8, 0.5, 0.95, "farm west range");
+    range(-0.6, f0-4.6, tE, 2.7, 0.5, 0.95, "farm south range");
+    /* the castle moved the least step that clears the drawn brook, roads and trees, its site still inside its quadrangle; the ranges of each
+       group touch, so they are tested against the world and the other group, not each other */
+    var cas=parts.slice(0,4), farm=parts.slice(4), m1=v8Settle(cas,ctx,Math.min(B.w,B.d)*s/2);
+    if(!m1) continue;
+    farm.forEach(function(p){ p.R=v8Rect(p.R.x+m1.dx,p.R.z+m1.dz,p.R.t,p.R.a,p.R.b); });
+    ctx.placed=cas.slice();
+    /* the farm stays south of the castle: moved the least step southward and sideways that clears it (at the castle's size) */
+    var m2=null, steps=[];
+    for(var ds=0;ds<=8;ds+=0.5) for(var de=-8;de<=8;de+=0.5) steps.push([ds*s,de*s,Math.hypot(ds,de)*s]);
+    steps.sort(function(p,q){ return p[2]-q[2]; });
+    for(var si=0;si<steps.length&&!m2;si++){ var dx=-n[0]*steps[si][0]+e[0]*steps[si][1], dz=-n[1]*steps[si][0]+e[1]*steps[si][1], ok=true, mv=[];
+      for(var fi=0;fi<farm.length&&ok;fi++){ var Q=farm[fi].R, R2=v8Rect(Q.x+dx,Q.z+dz,Q.t,Q.a,Q.b); if(v8Clear(R2,ctx)) ok=false; else mv.push(R2); }
+      if(ok){ farm.forEach(function(p,fi){ p.R=mv[fi]; }); m2={dx:dx,dz:dz,off:steps[si][2]}; } }
+    return {parts:cas.concat(m2?farm:[]), moved:m1, farmMoved:m2, scale:s}; }
+  return {parts:[], moved:null, farmMoved:null, scale:null}; }
 /* the château at Austerlitz as Wolny (1836) gives it: its main front to the south-west, a wing at each end (drawn running back from the
    front), three storeys; the church stands "nahe am Schloße" at the north side of the square (the church topography, 1860), the château today
    west-south-west of it (places.md, the modern cadastre: BLD8G.chateau.bearing). Drawn at the nearest place within BLD8G.chateau.tol of that
@@ -6650,7 +6772,7 @@ function planBuildings8g(trees){
   var L=[], landmark=[];
   _v8Ice=null; _v8H=null;   /* the meres' ice as drawn at the factor the plan is made at (the default, at boot) */
   var cas=castlePlan8g(trees);
-  cas.parts.forEach(function(p){ L.push({R:p.R, h:p.h, roof:"tile", wall:"plaster", part:p.part, village:"Sokolnitz", landmark:true}); landmark.push({R:p.R}); });
+  cas.parts.forEach(function(p){ L.push({R:p.R, h:p.h, roof:"tile", wall:"plaster", part:p.part, village:"Sokolnitz", landmark:true, scale:p.scale}); landmark.push({R:p.R}); });
   VILLAGES.forEach(function(v){
     var cc=W(v[1],v[2]), extra=v[0]==="Sokolnitz"?landmark.slice():[];
     /* the church at the least move that clears it and leaves the village its farmsteads (of its places clear, the nearest first; at
@@ -6813,6 +6935,17 @@ function layBuildings(){
 /* the woods' and the villages' trees, placed as 2F placed them: the seed's first draws (Stage 8, implementation PR 8G: taken out of
    buildWoods unchanged, so that the buildings' plan stands clear of the trees buildWoods draws; buildWoods draws on from the seed returned) */
 var _woodsPlan=null;
+/* Stage 8, the follow-up 8J: the woods' random sequence (seed 77, one sequence through every wood and then the villages' trees) as 8H drew it:
+   its state at the start of each wood 8H drew, keyed by the wood's centre (map units), and at the start of the villages' trees. A wood kept as 8H
+   had it starts from its own state again, a wood traced or added since draws on from where the sequence stands, and the villages' trees start
+   from theirs: so an edit of one wood (8J's pheasantry, 8J's park, 8K's wood above Holubitz) leaves every other wood's trees and the villages'
+   trees where they were, and with them the buildings' plans, which keep clear of those trees (planBuildings8g). Until 8J the sequence ran on
+   through the woods, so that a change to any one of them moved every later wood's trees, the villages' trees and, through them, the buildings
+   of villages far from it (measured: 10 villages re-planned by 8J's woods alone, 11 by 8K's). The trees' habits, turns and the scrub, drawn from
+   the sequence's end in buildWoods, are not held (a presentation only; the buildings do not read them). Read from 8H's world.js
+   (tools/stage8/woods-rs-8j.js) */
+var WOODS_RS={"236,385":77, "551,151":2241407629, "353,55":2344916145, "76,396":2762469959, "229,253":567140043, "235,64":2664461513, "461,151":1510807815,
+  "198,478":665407533, "611,305":1369736033, "394,423":3987622831, villages:698511017};
 function woodsPlan(){
   if(_woodsPlan) return _woodsPlan;
   var seed=77; function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
@@ -6822,14 +6955,18 @@ function woodsPlan(){
      unrotated ellipse, ending at about 0.89 of the wood's radii, less what a village, water or marsh takes from it (coverClass);
      before 2F the trees filled the ellipse turned by WOODS.rot, to its radii. The same number of trees per wood (WOODS.n). */
   WOODS.forEach(function(wd){
-    var c=W(wd.c[0],wd.c[1]), guard=0;
+    var rs=WOODS_RS[wd.c[0]+","+wd.c[1]]; if(rs!==undefined) seed=rs;   /* 8J: a wood kept as 8H drew it starts from its state in 8H's sequence */
+    var c=W(wd.c[0],wd.c[1]), guard=0, pw=wd.poly?polyWorld(wd):null;   /* 8J: a wood traced from a period map, inside its outline */
     for(var i=0;i<wd.n;i++){
-      var u=rnd()*2-1, v=rnd()*2-1, x=c[0]+u*wd.rx*0.5, z=c[1]+v*wd.ry*0.5;
-      if(u*u+v*v>1||drawnCover(x,z)!==4){ if(++guard<wd.n*20){ i--; } continue; }
+      var u=rnd()*2-1, v=rnd()*2-1, x, z;
+      if(pw){ x=(pw.box[0]+pw.box[2])/2+u*(pw.box[2]-pw.box[0])/2; z=(pw.box[1]+pw.box[3])/2+v*(pw.box[3]-pw.box[1])/2; }
+      else { x=c[0]+u*wd.rx*0.5; z=c[1]+v*wd.ry*0.5; }
+      if((pw?!inPolyW(x,z,pw):u*u+v*v>1)||drawnCover(x,z)!==4){ if(++guard<wd.n*20){ i--; } continue; }
       var s=0.7+rnd()*0.65;
       (rnd()<Math.max(0.28,wd.conifer)?conif:broad).push([x,displayHeight(x,z),z,s,"wood"]);
     }
   });
+  seed=WOODS_RS.villages;   /* 8J: the villages' trees from their state in 8H's sequence */
   VILLAGES.forEach(function(v){
     if(v[3]<7) return;
     var cc=W(v[1],v[2]), R=2.6+v[3]*0.46;
@@ -6841,9 +6978,30 @@ function woodsPlan(){
   });
   return (_woodsPlan={broad:broad, conif:conif, seed:seed});
 }
+/* Stage 8, the follow-up 8J (decision 259 (a); GARDENS): the château's garden at Austerlitz drawn as rows of trees on its long axis: four rows, two
+   along its long sides and two flanking its middle walk, a tree every 0.9 units, inside its outline, west of the château as the planner draws it
+   (its parts' farthest west along the axis, less 1 unit: the château stands at the garden's east end, its place a layout of the town's), clear of
+   every building and of the drawn roads and streams as a farmstead keeps clear of a tree (VILL8G.clear.tree). The rows, their number and the
+   spacing are a design convention (DESIGN): the 1826 sketch and the Second Survey draw rows of trees in compartments, not counted here, and the
+   planting in 1805 is not established. Kind "garden": not a wood's, not a village's */
+function gardenTrees(bldg){
+  var out=[], B=(bldg||[]).filter(function(b){ return b&&b.R; });
+  GARDENS.forEach(function(g){
+    var P=polyWorld(g), a=W(g.axis[0][0],g.axis[0][1]), b=W(g.axis[1][0],g.axis[1][1]), L=Math.hypot(b[0]-a[0],b[1]-a[1]), ux=(b[0]-a[0])/L, uz=(b[1]-a[1])/L, vx=-uz, vz=ux, hw=0;
+    P.forEach(function(q){ hw=Math.max(hw,Math.abs((q[0]-a[0])*vx+(q[1]-a[1])*vz)); });
+    var end=L; B.forEach(function(q){ if(!/^chateau/.test(q.part||"")) return; q.R.pts.forEach(function(p){ var u=(p[0]-a[0])*ux+(p[1]-a[1])*uz; if(u>0&&u<end) end=u; }); });
+    var segs=v8NearSegs([(a[0]+b[0])/2,(a[1]+b[1])/2],L/2+hw+2);
+    [-0.82,-0.28,0.28,0.82].forEach(function(f,row){ for(var u=0.6;u<=end-1;u+=0.9){
+      var x=a[0]+ux*u+vx*f*hw, z=a[1]+uz*u+vz*f*hw, sc=0.6+0.2*hash2(row*131+Math.round(u*10),977), lt=VILL8G.clear.tree+0.45*sc, ok=inPolyW(x,z,P);
+      for(var i=0;ok&&i<B.length;i++){ var R=B[i].R; if(Math.abs(R.x-x)<R.a+R.b+lt&&Math.abs(R.z-z)<R.a+R.b+lt&&v8BoxPt(R,x,z)<lt) ok=false; }
+      for(var k=0;ok&&k<segs.length;k++){ var o=segs[k]; if(segDist(x,z,o.ax,o.az,o.bx,o.bz)<o.h+o.c+0.45*sc) ok=false; }
+      if(ok) out.push([x,displayHeight(x,z),z,sc,"garden"]); } });
+  });
+  return out;
+}
 function buildWoods(scene){
   var P=woodsPlan(), seed=P.seed; function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
-  var broad=P.broad, conif=P.conif;
+  var broad=P.broad.concat(gardenTrees(BLDG)), conif=P.conif;   /* 8J: and the château's garden, after the buildings are planned (buildSettlements) */
   var d=new THREE.Object3D();
   /* ---- silhouettes: a small kit, merged so each variant is one draw call.
      Deciduous crowns in December are bare wood: a dense mass of twig, grey-brown,
@@ -6884,13 +7042,19 @@ function buildWoods(scene){
     if(list.length) coniferMesh.add(im);
   });
   /* scrub: low thorn and hazel along the water and at the wood edges */
-  var scrub=[];
+  var scrub=[], B8=(BLDG||[]).filter(function(b){ return b&&b.R; });
+  function nearBuilding(x,z,lt){ for(var i=0;i<B8.length;i++){ var R=B8[i].R; if(Math.abs(R.x-x)<R.a+R.b+lt&&Math.abs(R.z-z)<R.a+R.b+lt&&v8BoxPt(R,x,z)<lt) return true; } return false; }
   /* at the wood's edge, inside it (Stage 2F): in the outer band of its cover, 0.72 to 0.89 of the radii, where drawnCover is
      wood (before 2F: a ring just outside the turned ellipse, 1.02 to 1.24 of its radii) */
   WOODS.forEach(function(wd){
-    var c=W(wd.c[0],wd.c[1]), want=Math.round(wd.n*0.35), got=0, guard=0;
+    var c=W(wd.c[0],wd.c[1]), want=Math.round(wd.n*0.35), got=0, guard=0, pw=wd.poly?polyWorld(wd):null;
     while(got<want&&guard++<want*40){
-      var a=rnd()*6.28, r=0.72+rnd()*0.17, x=c[0]+Math.cos(a)*wd.rx*0.5*r, z=c[1]+Math.sin(a)*wd.ry*0.5*r;
+      var x, z;
+      if(pw){   /* 8J: a traced wood's edge, 0.25-0.85 units inside its outline */
+        var e=Math.floor(rnd()*pw.length), a2=pw[e], b2=pw[(e+1)%pw.length], f=rnd(), ex=a2[0]+(b2[0]-a2[0])*f, ez=a2[1]+(b2[1]-a2[1])*f,
+            L=Math.hypot(b2[0]-a2[0],b2[1]-a2[1])||1, nx=-(b2[1]-a2[1])/L, nz=(b2[0]-a2[0])/L, off=0.25+rnd()*0.6;
+        x=ex+nx*off; z=ez+nz*off; if(!inPolyW(x,z,pw)){ x=ex-nx*off; z=ez-nz*off; } if(!inPolyW(x,z,pw)) continue; }
+      else { var a=rnd()*6.28, r=0.72+rnd()*0.17; x=c[0]+Math.cos(a)*wd.rx*0.5*r; z=c[1]+Math.sin(a)*wd.ry*0.5*r; }
       if(drawnCover(x,z)!==4) continue;
       scrub.push([x,displayHeight(x,z),z,0.5+rnd()*0.5,"edge"]); got++;
     }
@@ -6903,7 +7067,9 @@ function buildWoods(scene){
       var dx=p1[0]-p0[0], dz=p1[1]-p0[1], L=Math.hypot(dx,dz)||1;
       x+=(-dz/L)*side*off; z+=(dx/L)*side*off;
       if(covAt(covVill,x,z)>0.3) continue;
-      scrub.push([x,displayHeight(x,z),z,0.45+rnd()*0.45,"stream"]);   /* bank scrub along the streams: not a wood */
+      var sc=0.45+rnd()*0.45;
+      if(nearBuilding(x,z,VILL8G.clear.tree+0.45*sc)) continue;   /* 8J: clear of the buildings as drawn (the castle's at its site by the corrected brook), as the garden's rows keep clear */
+      scrub.push([x,displayHeight(x,z),z,sc,"stream"]);   /* bank scrub along the streams: not a wood */
     }
   });
   scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrub.length));   /* 8F: both faces */
@@ -7457,7 +7623,7 @@ var OVERLAYS = {
     arrows:[
      {pts:[[268,328],[249,338],[229,356]],kind:"attack",side:"al",label:"II Column → Sokolnitz",
       interp:"objective: the attack on Sokolnitz village; the model has the column at the village from 08:00"},
-     {pts:[[266,296],[254,316],[236,336]],kind:"attack",side:"al",label:"III Column → castle",
+     {pts:[[266,296],[243,320],[219,338]],kind:"attack",side:"al",label:"III Column → castle",   /* 8J: to the column's place at the castle and pheasantry as corrected ([254,316],[236,336] until 8J) */
       interp:"objective: the attack on the castle and pheasantry; the model has the column there from 08:00"},
      {leg:["lich",2,3],kind:"move",side:"al",label:"Liechtenstein crosses the front"},
      {pts:[[325,230],[301,237]],kind:"halt",side:"al",label:"IV Column halted",of:"col4",
@@ -9878,7 +10044,9 @@ function dayTrackEl(id){
   /* the ground, in world units under one transform: woods, villages, the meres, the streams */
   var mtx=[F.s*F.Ex,-F.s*F.Nx,F.s*F.Ez,-F.s*F.Nz,F.tx,F.ty].map(dtNum).join(" ");
   g+='<g transform="matrix('+mtx+')">';
-  WOODS.forEach(function(w){ var c=W(w.c[0],w.c[1]); g+='<ellipse cx="'+dtNum(c[0])+'" cy="'+dtNum(c[1])+'" rx="'+dtNum(w.rx*0.5)+'" ry="'+dtNum(w.ry*0.5)+'" transform="rotate('+dtNum(w.rot*180/Math.PI)+' '+dtNum(c[0])+' '+dtNum(c[1])+')" fill="'+P.wood.fill+'" stroke="'+P.wood.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; });
+  WOODS.forEach(function(w){ var c=W(w.c[0],w.c[1]);
+    if(w.poly){ g+='<polygon points="'+polyWorld(w).map(function(q){ return dtNum(q[0])+","+dtNum(q[1]); }).join(" ")+'" fill="'+P.wood.fill+'" stroke="'+P.wood.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; return; }   /* Stage 8, 8J: a wood traced from a period map, its outline */
+    g+='<ellipse cx="'+dtNum(c[0])+'" cy="'+dtNum(c[1])+'" rx="'+dtNum(w.rx*0.5)+'" ry="'+dtNum(w.ry*0.5)+'" transform="rotate('+dtNum(w.rot*180/Math.PI)+' '+dtNum(c[0])+' '+dtNum(c[1])+')" fill="'+P.wood.fill+'" stroke="'+P.wood.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; });
   VILLAGES.forEach(function(v){ var c=W(v[1],v[2]); g+='<circle cx="'+dtNum(c[0])+'" cy="'+dtNum(c[1])+'" r="'+dtNum(v[3]*0.5)+'" fill="'+P.village.fill+'" stroke="'+P.village.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; });
   [[SATS,28,10.5],[MENI,23,9]].forEach(function(m){ g+='<ellipse cx="'+dtNum(m[0][0])+'" cy="'+dtNum(m[0][1])+'" rx="'+m[1]+'" ry="'+m[2]+'" fill="'+P.ground.water+'"/>'; });
   [GOLDBACH,LITAVA].concat(BROOKS).forEach(function(l){ g+='<polyline points="'+l.map(function(q){ return dtNum(q[0])+","+dtNum(q[1]); }).join(" ")+'" fill="none" stroke="'+P.marsh+'" stroke-width="0.9" vector-effect="non-scaling-stroke"/>'; });
@@ -15874,6 +16042,13 @@ function artilleryNotes(){
    sources and years the table's (D-5 (b)'s rule for the standards' notes); each church and chapel with its claim as the dossiers give it
    (grade, label, source: ten of the villages have no dossier of their own), and each village drawn with fewer farmsteads than the map's
    symbol for it, read from the plan */
+/* the follow-up 8J (section 21.7): the castle's drawn size, read from what is drawn (castlePlan8g: smaller only where its site leaves no room) */
+function castleSizeText(){
+  var cs=(BLDG||[]).filter(function(b){ return /^castle /.test(b.part||""); }), sz=cs.length?cs[0].scale:null;
+  if(sz==null||!(sz<1)) return "";
+  var m=function(u){ return Math.round(u*GEOREF.M_PER_WORLD/5)*5; };
+  return " (there this map's track and brook, drawn wider than they ran, leave it no room at the size this map draws its buildings: the castle and its farm are drawn at "+
+    Math.round(sz*100)+"% of that size, the quadrangle about "+m(BLD8G.castle.w*sz)+" by "+m(BLD8G.castle.d*sz)+" m)"; }
 function buildingNotes(){
   var B=BUILDINGS, S=APPEARANCE_SOURCES, src=function(k){ var x=S[k]; return !x?k:/^\(/.test(x.au)?x.ti.split(" (")[0]:x.au.split(" (")[0]+", "+x.d; };
   var sk=Object.keys(S).filter(function(k){ return /^mza_/.test(k); }), yrs=sk.map(function(k){ return S[k].d; }).sort();
@@ -15897,13 +16072,13 @@ function buildingNotes(){
     "Roofs: no source read names the roofing of the villages' houses, so the roofs are a convention: thatch, with about one farmstead in "+["","one","two","three","four","five","six","seven","eight","nine","ten"][Math.round(1/BLD8G.tile)]+" tiled. "+
       (ar?"The town of Austerlitz is drawn tiled ("+ar.en+": "+src(ar.src)+"), and so are the manors and the churches. ":"")+"A building's walls (masonry or timber on the sketches) never decide its roof.",
     "Churches stand where a source names one standing in 1805, each with its claim: "+chs.join("; ")+(chap.length?"; and a smaller chapel at "+chap.join("; "):"")+". None at "+Object.keys(B.noChurch||{}).join(", ")+
-      ", where this map drew one until now. Each stands by its village's point, moved off the roads and streams drawn through it; where a source puts a church elsewhere (Pratzen's outside the village), its own place is not drawn.",
-    cas?"The Sokolnitz castle: "+cas.en+" ("+src(cas.src)+", and the sketch of "+S.mza_sokolnitz1825.d+"), its farm south of it, drawn near this map's place for it, not at its own. "+
+      ", where this map drew one until now. Each stands by its village's point, moved off the roads and streams drawn through it, but where a source puts a church elsewhere and its site is read: Pratzen's, drawn at its own site outside the village.",
+    cas?"The Sokolnitz castle: "+cas.en+" ("+src(cas.src)+", and the sketch of "+S.mza_sokolnitz1825.d+"), its farm south of it, drawn at the castle's own site, west of the Goldbach as that sketch has it"+castleSizeText()+"; its pheasantry north of it, drawn to the sketch's outline. "+
       (ow&&ow.lab==="disputed"?"Its walled orchard is not drawn, the sources disagreeing: "+ow.sides.map(function(s){ return s.en+" ("+src(s.src)+")"; }).join("; ")+". ":"")+"No wall round its pheasantry is drawn.":null,
     B.austerlitz&&B.austerlitz.chateau&&B.austerlitz.church?"Austerlitz: the church as the church topography describes it ("+B.austerlitz.church.en+", "+src(B.austerlitz.church.src)+") and the château ("+
       B.austerlitz.chateau.en+", "+src(B.austerlitz.chateau.src)+"), drawn by the church, the château within "+BLD8G.chateau.tol+"° of the bearing it has from the church today ("+
       BLD8G.chateau.bearing+"°, west-south-west"+(chAz!=null?"; drawn at "+Math.round(chAz)+"°":"")+"), with no road or stream of this map's between them, where its roads and stream through the town leave room; "+
-      "neither at its own place, their distance the symbols'.":null,
+      "neither at its own place, their distance the symbols'."+(B.austerlitz.garden?" Its garden ("+B.austerlitz.garden.en+", "+src(B.austerlitz.garden.src)+"): drawn at its outline on the 1826 and 1836-52 maps, as rows of trees west of the château as drawn, the rows a convention; no house of the town in it.":""):null,
     (cy?"Telnitz: "+cy.en+" (as "+src(cy.src)+" reports the parish's own record): its churchyard drawn walled. ":"")+(f0?"Fences round "+fences.join(" and ")+": "+f0.en+" ("+src(f0.src)+"); their course is not known, so they run along each village's edge, and the ditches are not drawn.":""),
     (function(){ var nd=Object.keys(B.notDrawn||{}).map(function(k){ return B.notDrawn[k].en; }).filter(Boolean); return nd.length?"Not drawn: "+nd.slice(0,-1).join(", ")+(nd.length>1?" and ":"")+nd[nd.length-1]+".":null; })(),
     "Every size, height, colour and spacing of the buildings is a design value at their symbol scale."
@@ -21277,9 +21452,13 @@ var AUSTERLITZ_DEBUG=(function(){
           !cBad.length, "the band's light from its inner edge to the shore "+prof.filter(function(v,i){ return i%4===0; }).map(function(v){ return v.toFixed(0); }).join(" ")+" (peak "+peak.toFixed(0)+"); the middle "+mid.toFixed(1)+", the margin "+mar.toFixed(1)+"; against the field, the shore band and the margin: "+ratios.join(", ")+(cBad.length?"; WRONG: "+cBad.join("; "):""));
         /* (d) the woods */
         /* 8E's woods: the trees and the scrub by kind, and each habit's triangles (its kit: four deciduous habits, two conifers, the bush), read
-           on the 8E build (tools/stage8/woods-8f.js, docs/stage8-evidence/8f/woods-8f.json) */
-        var WOODS8E={wood:634, village:184, conifer:376, edge:354, stream:202}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
-        var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0};
+           on the 8E build (tools/stage8/woods-8f.js, docs/stage8-evidence/8f/woods-8f.json). The counts by kind since the follow-up's data tasks
+           changed the woods (8J: the pheasantry traced, 46 trees for 190, the Austerlitz park dropped, the garden's rows added west of the château,
+           the bank scrub kept clear of the buildings; 8K: the wood above Holubitz dropped): read on each build (tools/stage8/woods-bldg-8j.js;
+           docs/stage8-evidence/8j/woods-bldg-8j.json, 8k/woods-bldg-8k.json); until 8J 8E's {wood:634, village:184, conifer:376, edge:354,
+           stream:202}, in 8J {wood:409, village:184, conifer:287, edge:244, stream:229, garden:12}. The triangles a tree stay 8E's (KIT8E) */
+        var WOODS8E={wood:357, village:184, conifer:229, edge:205, stream:222, garden:12}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
+        var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0,garden:0};
         world.trees.children.forEach(function(im){ (im.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(im.material.side!==THREE.DoubleSide) dBad.push("a deciduous habit not drawn on both faces"); if(!im.castShadow) dBad.push("a deciduous habit casts no shadow"); });
         world.conifers.children.forEach(function(im){ K.conifer+=(im.userData.kinds||[]).length; });
         (world.scrub.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(world.scrub.material.side!==THREE.DoubleSide) dBad.push("the scrub not drawn on both faces");
@@ -21288,7 +21467,7 @@ var AUSTERLITZ_DEBUG=(function(){
         tb.forEach(function(n,i){ if(n>KIT8E.broad[i]) dBad.push("deciduous habit "+i+": "+n+" triangles, 8E's "+KIT8E.broad[i]); });
         tc.forEach(function(n,i){ if(n!==KIT8E.conifer[i]) dBad.push("conifer "+i+": "+n+" triangles, 8E's "+KIT8E.conifer[i]); });
         if(ts>KIT8E.scrub) dBad.push("the bush: "+ts+" triangles, 8E's "+KIT8E.scrub);
-        ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as 8E drew them, each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
+        ck("the woods (8F, decision 247 (a)): the trees and the scrub by kind as pinned (WOODS8E: 8E's counts, then those of the woods' data tasks), each habit's triangles within 8E's (the conifers 8E's own), the open crowns drawn on both faces and casting shadows",
           !dBad.length, JSON.stringify(K)+"; triangles a tree: deciduous "+tb.join(", ")+" (8E "+KIT8E.broad.join(", ")+"), conifers "+tc.join(", ")+", the bush "+ts+" (8E "+KIT8E.scrub+")"+(dBad.length?"; WRONG: "+dBad.join("; "):""));
         /* (d') Stage 8, implementation PR 8H (docs/STAGE8_SPEC.md section 20.10): the crowns closing near the eye. Each deciduous habit and the
            bush drawn with the near hook (treeNear: its program's key, the faces' centres aFC on its geometry); in 8F's own close view of the
@@ -21543,14 +21722,16 @@ var AUSTERLITZ_DEBUG=(function(){
         var lBad=[], ch=B.filter(function(b){ return b.part==="church"||b.part==="chapel"||b.part==="church nave"; });
         ch.forEach(function(b){ var q=V[b.village], kind=b.part==="chapel"?"chapel":"church";
           if(kind==="church"&&CHURCHES.indexOf(b.village)<0) lBad.push("a church at "+b.village+", not in CHURCHES"); if(kind==="chapel"&&CHAPELS.indexOf(b.village)<0) lBad.push("a chapel at "+b.village+", not in CHAPELS");
-          var at=b.part==="church nave"?[b.R.x,b.R.z]:[b.x,b.z]; if(!q||Math.hypot(at[0]-q.cc[0],at[1]-q.cc[1])>5.0+1e-9) lBad.push(kind+" at "+b.village+" "+(q?Math.hypot(at[0]-q.cc[0],at[1]-q.cc[1]).toFixed(2):"?")+" units from its point"); });
+          /* since the follow-up 8J a church whose own site is read (LANDMARK_SITES.church: Pratzen's) within 5 units of that site, the others of their village's point */
+          var site=LANDMARK_SITES.church[b.village], ref=site?W(site[0],site[1]):(q&&q.cc), at=b.part==="church nave"?[b.R.x,b.R.z]:[b.x,b.z];
+          if(!q||!ref||Math.hypot(at[0]-ref[0],at[1]-ref[1])>5.0+1e-9) lBad.push(kind+" at "+b.village+" "+(ref?Math.hypot(at[0]-ref[0],at[1]-ref[1]).toFixed(2):"?")+" units from its "+(site?"own site":"point")); });
         CHURCHES.concat(CHAPELS).forEach(function(k){ if(ch.filter(function(b){ return b.village===k; }).length!==1) lBad.push(k+": "+ch.filter(function(b){ return b.village===k; }).length+" churches or chapels drawn"); });
         var chap=B.filter(function(b){ return b.part==="chapel"; }), spired=B.filter(function(b){ return b.part==="church"; });
         if(chap.some(function(b){ return !(b.scale<1); })||spired.some(function(b){ return b.scale!==1; })) lBad.push("the chapel not smaller than the churches");
         var cols=B.filter(function(b){ return b.part==="church column"; }), nave=B.filter(function(b){ return b.part==="church nave"; })[0], tower=B.filter(function(b){ return b.part==="church tower"; })[0];
         if(cols.length!==6||!nave||!tower) lBad.push("Austerlitz's temple: "+cols.length+" columns"+(nave?"":", no nave")+(tower?"":", no tower"));
         else { var ridge=nave.floor+nave.h+BLD8G.pitch.tile*Math.min(nave.R.a,nave.R.b)*BLD8G.over[0]; if(tower.floor+tower.h>ridge+1e-6) lBad.push("Austerlitz's tower above its roof's ridge"); }
-        var cr=B.filter(function(b){ return /^castle /.test(b.part||""); }), fm=B.filter(function(b){ return /^farm /.test(b.part||""); }), Nn=GEOREF.NORTH, En=[-Nn[1],Nn[0]];
+        var cr=B.filter(function(b){ return /^castle /.test(b.part||""); }), fm=B.filter(function(b){ return /^farm /.test(b.part||""); }), Nn=GEOREF.NORTH, En=[-Nn[1],Nn[0]], csz=null;
         if(cr.length!==4) lBad.push("the castle "+cr.length+" ranges"); else {
           var cx=cr.reduce(function(s,b){ return s+b.R.x; },0)/4, cz=cr.reduce(function(s,b){ return s+b.R.z; },0)/4, pr=function(b){ return (b.R.x-cx)*En[0]+(b.R.z-cz)*En[1]; };
           var east=cr.filter(function(b){ return /east/.test(b.part); })[0], west=cr.filter(function(b){ return /west/.test(b.part); })[0];
@@ -21558,7 +21739,14 @@ var AUSTERLITZ_DEBUG=(function(){
           else { if(!(Math.min(east.R.a,east.R.b)>Math.min(west.R.a,west.R.b)&&east.h>Math.max.apply(null,cr.filter(function(b){ return b!==east; }).map(function(b){ return b.h; })))) lBad.push("the castle's east range not the deepest and highest"); }
           for(var r1=0;r1<4;r1++) for(var r2=r1+1;r2<4;r2++) if(/north|south/.test(cr[r1].part)!==/north|south/.test(cr[r2].part)&&!v8Overlap(cr[r1].R,cr[r2].R,0.05)) lBad.push("the castle's "+cr[r1].part+" and "+cr[r2].part+" do not meet");
           var fx=fm.reduce(function(s,b){ return s+b.R.x; },0)/Math.max(1,fm.length), fz=fm.reduce(function(s,b){ return s+b.R.z; },0)/Math.max(1,fm.length);
-          if(fm.length!==3||((fx-cx)*Nn[0]+(fz-cz)*Nn[1])>=0) lBad.push("the castle's farm not south of it"); }
+          if(fm.length!==3||((fx-cx)*Nn[0]+(fz-cz)*Nn[1])>=0) lBad.push("the castle's farm not south of it");
+          /* since the follow-up 8J (section 21.7): at its own site, its quadrangle covering it; the castle and its farm at one size, not above
+             8G's or below CASTLE8J.floor */
+          var cs8=W(LANDMARK_SITES.castle[0],LANDMARK_SITES.castle[1]), ce8=[], cn8=[];
+          cr.forEach(function(b){ b.R.corners.forEach(function(q){ ce8.push((q[0]-cs8[0])*En[0]+(q[1]-cs8[1])*En[1]); cn8.push((q[0]-cs8[0])*Nn[0]+(q[1]-cs8[1])*Nn[1]); }); });
+          if(!(Math.min.apply(null,ce8)<=0&&Math.max.apply(null,ce8)>=0&&Math.min.apply(null,cn8)<=0&&Math.max.apply(null,cn8)>=0)) lBad.push("the castle's quadrangle not covering its own site");
+          var sc8=cr.concat(fm).map(function(b){ return b.scale; }); csz=sc8[0];
+          if(sc8.some(function(x){ return !(x===sc8[0]&&x<=1&&x>=CASTLE8J.floor-1e-9); })) lBad.push("the castle and its farm not at one size within 8G's and CASTLE8J.floor ("+sc8.join(", ")+")"); }
         var chat=B.filter(function(b){ return b.part==="chateau main range"; })[0];
         /* since 8H (section 20.3): within BLD8G.chateau.tol of its bearing today (an octant; css-test.js holds the value), its centre in the town's
            place, and no drawn road or stream between it and its church (8G's quarter-turn admitted it north-west of the church, 86.5 degrees off) */
@@ -21572,8 +21760,8 @@ var AUSTERLITZ_DEBUG=(function(){
         Object.keys(fv).forEach(function(k){ var c=BUILDINGS.fences&&BUILDINGS.fences[k]; if(!c||c.gen) lBad.push("a fence at "+k+", which BUILDINGS.fences does not name"); });
         Object.keys(BUILDINGS.fences||{}).forEach(function(k){ if(!BUILDINGS.fences[k].gen&&!fv[k]) lBad.push("no fence at "+k); });
         if(B.some(function(b){ return b.wall==="stone"&&b.part!=="churchyard wall"&&b.part!=="church column"; })) lBad.push("a wall drawn other than Telnitz's churchyard's");
-        ck("the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhere, each by its village's point; Austerlitz's the temple, its tower no higher than its roof; the castle a closed quadrangle, its east range the deepest and highest, its farm south of it; the château within an octant of its bearing today from its church, in the town's place, no drawn road or stream between them; Telnitz's churchyard walled with one gate; fences only where BUILDINGS.fences names them; no other wall",
-          !lBad.length, ch.length+" churches and chapels ("+CHURCHES.length+" in CHURCHES, "+CHAPELS.length+" in CHAPELS); "+cols.length+" columns; the castle "+cr.length+" ranges and its farm "+fm.length+"; the château "+(chAz==null?"-":chAz.toFixed(0)+" degrees from its church (today "+BLD8G.chateau.bearing+")")+"; "+cy.length+" runs of churchyard wall; fences at "+Object.keys(fv).map(function(k){ return k+" "+fv[k]; }).join(", ")+(lBad.length?"; WRONG: "+lBad.join("; "):""));
+        ck("the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhere, each by its village's point or, where its site is read, its own site; Austerlitz's the temple, its tower no higher than its roof; the castle a closed quadrangle covering its own site, its east range the deepest and highest, its farm south of it, both at one size; the château within an octant of its bearing today from its church, in the town's place, no drawn road or stream between them; Telnitz's churchyard walled with one gate; fences only where BUILDINGS.fences names them; no other wall",
+          !lBad.length, ch.length+" churches and chapels ("+CHURCHES.length+" in CHURCHES, "+CHAPELS.length+" in CHAPELS); "+cols.length+" columns; the castle "+cr.length+" ranges and its farm "+fm.length+(csz!=null?", at "+csz+" of 8G's size":"")+"; the château "+(chAz==null?"-":chAz.toFixed(0)+" degrees from its church (today "+BLD8G.chateau.bearing+")")+"; "+cy.length+" runs of churchyard wall; fences at "+Object.keys(fv).map(function(k){ return k+" "+fv[k]; }).join(", ")+(lBad.length?"; WRONG: "+lBad.join("; "):""));
 
         /* (e') the dossiers: each village's and the town's names the claims its buildings rest on, with their grades and sources (apValue), and
            its conventions as such (Part A's acceptance for 8G: each landmark "with its claim in the dossier") */

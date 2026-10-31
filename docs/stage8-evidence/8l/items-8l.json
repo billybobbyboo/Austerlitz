@@ -1,0 +1,4220 @@
+{
+ "builds": [
+  {
+   "build": "stage8j-7d5594ba.html",
+   "md5": "7d5594baf7468f943ab42f7d848608d1"
+  },
+  {
+   "build": "austerlitz-command-map.html",
+   "md5": "f10fe585c46aea576f436ed51ac46f83"
+  }
+ ],
+ "runs": {
+  "hybrid-pan": {
+   "before": {
+    "jumps": 5,
+    "pops": 55,
+    "drawn": 1376,
+    "inView": 2053,
+    "longestMs": 2467
+   },
+   "after": {
+    "jumps": 5,
+    "pops": 65,
+    "drawn": 1427,
+    "inView": 2053,
+    "longestMs": 2467
+   },
+   "items": {
+    "c:caffarelli": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "o:French hold the crest": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      4
+     ]
+    },
+    "c:rivaud": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "t:sokolnitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "c:suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "c:rg_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      0
+     ]
+    },
+    "t:litava": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "o:Kamensky turns about (disputed)": {
+     "jumps": [
+      2,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "c:c_gren": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:guard_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:nansouty": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:walther": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:rg_cav": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:drouet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "t:goldbach": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    }
+   }
+  },
+  "hybrid-zoom": {
+   "before": {
+    "jumps": 26,
+    "pops": 115,
+    "drawn": 1371,
+    "inView": 2242,
+    "longestMs": 1533
+   },
+   "after": {
+    "jumps": 28,
+    "pops": 116,
+    "drawn": 1342,
+    "inView": 2248,
+    "longestMs": 2133
+   },
+   "items": {
+    "t:litava": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "c:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      5
+     ]
+    },
+    "o:Suchet": {
+     "jumps": [
+      0,
+      2
+     ],
+     "pops": [
+      5,
+      4
+     ]
+    },
+    "c:kellermann": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      6,
+      5
+     ]
+    },
+    "c:rivaud": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      4,
+      1
+     ]
+    },
+    "c:c_gren": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "o:French hold the crest": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      5,
+      6
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      0,
+      2
+     ],
+     "pops": [
+      4,
+      4
+     ]
+    },
+    "t:goldbach": {
+     "jumps": [
+      2,
+      2
+     ],
+     "pops": [
+      1,
+      2
+     ]
+    },
+    "c:guard_inf": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "o:Jurczek's Austrians": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      4
+     ]
+    },
+    "c:caffarelli": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      3,
+      5
+     ]
+    },
+    "c:nansouty": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      6
+     ]
+    },
+    "c:dhautpoul": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      3
+     ]
+    },
+    "c:walther": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      4,
+      3
+     ]
+    },
+    "c:rg_cav": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      3,
+      1
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "t:blasowitz": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "c:kollo": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      3
+     ]
+    },
+    "c:rg_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      0
+     ]
+    },
+    "o:Kamensky turns about (disputed)": {
+     "jumps": [
+      1,
+      2
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "t:santon": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "c:gqg": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      1,
+      1
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      4
+     ]
+    },
+    "t:pratzenv": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "t:puntowitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  "hybrid-orbit": {
+   "before": {
+    "jumps": 8,
+    "pops": 148,
+    "drawn": 1487,
+    "inView": 2548,
+    "longestMs": 2200
+   },
+   "after": {
+    "jumps": 10,
+    "pops": 139,
+    "drawn": 1537,
+    "inView": 2548,
+    "longestMs": 1900
+   },
+   "items": {
+    "o:Jurczek's Austrians": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      5,
+      6
+     ]
+    },
+    "c:caffarelli": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      4
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      5,
+      3
+     ]
+    },
+    "t:sokolnitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "o:French hold the crest": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "o:Levasseur up the Goldbach": {
+     "jumps": [
+      3,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "t:litava": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      2
+     ]
+    },
+    "c:rg_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "o:Suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "o:Pratzeberg": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      6,
+      6
+     ]
+    },
+    "c:rivaud": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      3
+     ]
+    },
+    "c:guard_cav": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      5
+     ]
+    },
+    "c:c_gren": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      5,
+      0
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      2,
+      3
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "c:drouet": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "t:santon": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      0
+     ]
+    },
+    "c:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      5
+     ]
+    },
+    "c:bag": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "c:walther": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      5
+     ]
+    },
+    "c:milo": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    }
+   }
+  },
+  "hybrid-glide": {
+   "before": {
+    "jumps": 16,
+    "pops": 78,
+    "drawn": 1227,
+    "inView": 1804,
+    "longestMs": 2533
+   },
+   "after": {
+    "jumps": 14,
+    "pops": 77,
+    "drawn": 1157,
+    "inView": 1795,
+    "longestMs": 2533
+   },
+   "items": {
+    "c:kellermann": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      2,
+      0
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "c:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      3
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "o:Kamensky turns about (disputed)": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "o:Levasseur up the Goldbach": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      3
+     ]
+    },
+    "o:French hold the crest": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "c:rivaud": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      4
+     ]
+    },
+    "c:nansouty": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "c:milo": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      1
+     ]
+    },
+    "c:rg_cav": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      3,
+      3
+     ]
+    },
+    "t:goldbach": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "t:sokolnitz": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "c:guard_inf": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "c:bag": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "t:kobelnitz": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "c:c_gren": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "t:litava": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    }
+   }
+  },
+  "hybrid-play": {
+   "before": {
+    "jumps": 8,
+    "pops": 108,
+    "drawn": 2153,
+    "inView": 3388,
+    "longestMs": 3100
+   },
+   "after": {
+    "jumps": 8,
+    "pops": 98,
+    "drawn": 2033,
+    "inView": 3388,
+    "longestMs": 4033
+   },
+   "items": {
+    "c:rg_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      6,
+      3
+     ]
+    },
+    "o:Saint-Hilaire": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      6,
+      6
+     ]
+    },
+    "c:guard_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "c:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      6,
+      5
+     ]
+    },
+    "c:kellermann": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "c:nansouty": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      0
+     ]
+    },
+    "o:Vandamme": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      4,
+      4
+     ]
+    },
+    "o:Stare Vinohrady": {
+     "jumps": [
+      1,
+      3
+     ],
+     "pops": [
+      6,
+      2
+     ]
+    },
+    "t:litava": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "c:caffarelli": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "c:walther": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "c:suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "c:milo": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "t:pratzen": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      2
+     ]
+    },
+    "c:bag": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:c_gren": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  "paper-pan": {
+   "before": {
+    "jumps": 0,
+    "pops": 5,
+    "drawn": 1240,
+    "inView": 1274,
+    "longestMs": 667
+   },
+   "after": {
+    "jumps": 0,
+    "pops": 2,
+    "drawn": 1274,
+    "inView": 1274,
+    "longestMs": 0
+   },
+   "items": {
+    "c:c_cav": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "c:constantine": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  "paper-zoom": {
+   "before": {
+    "jumps": 8,
+    "pops": 92,
+    "drawn": 850,
+    "inView": 1229,
+    "longestMs": 667
+   },
+   "after": {
+    "jumps": 10,
+    "pops": 105,
+    "drawn": 795,
+    "inView": 1232,
+    "longestMs": 667
+   },
+   "items": {
+    "o:Jurczek's Austrians": {
+     "jumps": [
+      2,
+      1
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "c:col4": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      0
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "o:Pratzeberg": {
+     "jumps": [
+      0,
+      2
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "t:litava": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      3
+     ]
+    },
+    "c:c_gd": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "c:c_gren": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      3
+     ]
+    },
+    "o:French hold the crest": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      1,
+      2
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "c:gqg": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "c:bag": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "o:Levasseur up the Goldbach": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "c:constantine": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      6
+     ]
+    },
+    "t:goldbach": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "t:satschan": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "t:pratzen": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  "paper-glide": {
+   "before": {
+    "jumps": 5,
+    "pops": 43,
+    "drawn": 566,
+    "inView": 821,
+    "longestMs": 633
+   },
+   "after": {
+    "jumps": 11,
+    "pops": 46,
+    "drawn": 554,
+    "inView": 822,
+    "longestMs": 633
+   },
+   "items": {
+    "o:Jurczek's Austrians": {
+     "jumps": [
+      0,
+      2
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      3,
+      1
+     ]
+    },
+    "o:Pratzeberg": {
+     "jumps": [
+      1,
+      3
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "c:col4": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "t:litava": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      1,
+      1
+     ]
+    },
+    "o:Suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      1,
+      3
+     ],
+     "pops": [
+      0,
+      0
+     ]
+    },
+    "o:French hold the crest": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "c:bag": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      1,
+      1
+     ]
+    },
+    "o:Levasseur up the Goldbach": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      1,
+      1
+     ]
+    },
+    "c:constantine": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "c:c_i": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "t:pratzen": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "t:satschan": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  "paper-play": {
+   "before": {
+    "jumps": 5,
+    "pops": 30,
+    "drawn": 1570,
+    "inView": 1694,
+    "longestMs": 667
+   },
+   "after": {
+    "jumps": 5,
+    "pops": 30,
+    "drawn": 1581,
+    "inView": 1694,
+    "longestMs": 667
+   },
+   "items": {
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  "land-pan": {
+   "before": {
+    "jumps": 12,
+    "pops": 33,
+    "drawn": 1879,
+    "inView": 2055,
+    "longestMs": 1133
+   },
+   "after": {
+    "jumps": 12,
+    "pops": 36,
+    "drawn": 1868,
+    "inView": 2055,
+    "longestMs": 1133
+   },
+   "items": {
+    "n:suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "o:Suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "n:rivaud": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      0
+     ]
+    },
+    "n:caffarelli": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "t:zuran": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "n:walther": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  "land-zoom": {
+   "before": {
+    "jumps": 29,
+    "pops": 65,
+    "drawn": 1714,
+    "inView": 2252,
+    "longestMs": 667
+   },
+   "after": {
+    "jumps": 26,
+    "pops": 77,
+    "drawn": 1641,
+    "inView": 2258,
+    "longestMs": 667
+   },
+   "items": {
+    "n:walther": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "n:dhautpoul": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "t:zuran": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "n:nansouty": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      8
+     ]
+    },
+    "n:caffarelli": {
+     "jumps": [
+      3,
+      0
+     ],
+     "pops": [
+      3,
+      4
+     ]
+    },
+    "n:suchet": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      1,
+      2
+     ]
+    },
+    "n:guard_cav": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "o:Suchet": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "t:posthouse": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      1,
+      1
+     ]
+    },
+    "t:blasowitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "n:rivaud": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      0,
+      4
+     ]
+    }
+   }
+  },
+  "land-orbit": {
+   "before": {
+    "jumps": 39,
+    "pops": 77,
+    "drawn": 1965,
+    "inView": 2366,
+    "longestMs": 667
+   },
+   "after": {
+    "jumps": 42,
+    "pops": 77,
+    "drawn": 1981,
+    "inView": 2366,
+    "longestMs": 667
+   },
+   "items": {
+    "n:caffarelli": {
+     "jumps": [
+      2,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "n:suchet": {
+     "jumps": [
+      1,
+      2
+     ],
+     "pops": [
+      6,
+      6
+     ]
+    },
+    "n:nansouty": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      6,
+      2
+     ]
+    },
+    "n:rivaud": {
+     "jumps": [
+      1,
+      3
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "n:walther": {
+     "jumps": [
+      0,
+      2
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "n:guard_cav": {
+     "jumps": [
+      3,
+      2
+     ],
+     "pops": [
+      0,
+      0
+     ]
+    },
+    "n:dhautpoul": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "t:santon": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      2
+     ]
+    },
+    "n:kellermann": {
+     "jumps": [
+      2,
+      3
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "n:drouet": {
+     "jumps": [
+      1,
+      3
+     ],
+     "pops": [
+      0,
+      0
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      0,
+      0
+     ]
+    },
+    "t:zuran": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    }
+   }
+  },
+  "land-play": {
+   "before": {
+    "jumps": 21,
+    "pops": 74,
+    "drawn": 2630,
+    "inView": 3146,
+    "longestMs": 667
+   },
+   "after": {
+    "jumps": 21,
+    "pops": 68,
+    "drawn": 2667,
+    "inView": 3146,
+    "longestMs": 667
+   },
+   "items": {
+    "n:suchet": {
+     "jumps": [
+      2,
+      1
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "n:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      8
+     ]
+    },
+    "n:kellermann": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "n:walther": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      0
+     ]
+    },
+    "t:santon": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "n:milo": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      4,
+      0
+     ]
+    },
+    "n:rg_inf": {
+     "jumps": [
+      0,
+      2
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    }
+   }
+  },
+  "low-pan": {
+   "before": {
+    "jumps": 6,
+    "pops": 10,
+    "drawn": 820,
+    "inView": 885,
+    "longestMs": 533
+   },
+   "after": {
+    "jumps": 6,
+    "pops": 10,
+    "drawn": 820,
+    "inView": 885,
+    "longestMs": 533
+   },
+   "items": {}
+  },
+  "low-orbit": {
+   "before": {
+    "jumps": 16,
+    "pops": 29,
+    "drawn": 681,
+    "inView": 876,
+    "longestMs": 633
+   },
+   "after": {
+    "jumps": 16,
+    "pops": 29,
+    "drawn": 681,
+    "inView": 876,
+    "longestMs": 633
+   },
+   "items": {}
+  },
+  "low-zoom": {
+   "before": {
+    "jumps": 34,
+    "pops": 23,
+    "drawn": 505,
+    "inView": 633,
+    "longestMs": 633
+   },
+   "after": {
+    "jumps": 34,
+    "pops": 23,
+    "drawn": 505,
+    "inView": 633,
+    "longestMs": 633
+   },
+   "items": {}
+  },
+  "hybrid-orbit+sel": {
+   "before": {
+    "jumps": 9,
+    "pops": 145,
+    "drawn": 1454,
+    "inView": 2548,
+    "longestMs": 2000
+   },
+   "after": {
+    "jumps": 8,
+    "pops": 148,
+    "drawn": 1495,
+    "inView": 2548,
+    "longestMs": 3033
+   },
+   "items": {
+    "o:French hold the crest": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      8,
+      6
+     ]
+    },
+    "o:Jurczek's Austrians": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      5,
+      6
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "t:sokolnitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "o:Levasseur up the Goldbach": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "c:rg_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      6
+     ]
+    },
+    "c:suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "o:Suchet": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      6,
+      6
+     ]
+    },
+    "c:guard_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "c:rivaud": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      5,
+      4
+     ]
+    },
+    "c:kellermann": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "c:drouet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      5,
+      3
+     ]
+    },
+    "c:guard_cav": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      5
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      4,
+      0
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      3,
+      3
+     ],
+     "pops": [
+      3,
+      4
+     ]
+    },
+    "t:augezd": {
+     "jumps": [
+      0,
+      2
+     ],
+     "pops": [
+      1,
+      1
+     ]
+    },
+    "c:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      5
+     ]
+    },
+    "c:bag": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "c:nansouty": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      5
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      0,
+      4
+     ]
+    },
+    "c:dhautpoul": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "c:c_gren": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      5
+     ]
+    }
+   }
+  },
+  "paper-zoom+sel": {
+   "before": {
+    "jumps": 13,
+    "pops": 106,
+    "drawn": 823,
+    "inView": 1229,
+    "longestMs": 667
+   },
+   "after": {
+    "jumps": 15,
+    "pops": 98,
+    "drawn": 835,
+    "inView": 1232,
+    "longestMs": 667
+   },
+   "items": {
+    "p:plateau": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      8,
+      6
+     ]
+    },
+    "o:Jurczek's Austrians": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      6,
+      0
+     ]
+    },
+    "o:Levasseur up the Goldbach": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      2,
+      2
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "c:c_v": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      6,
+      4
+     ]
+    },
+    "c:c_i": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "o:Pratzeberg": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      4,
+      4
+     ]
+    },
+    "t:sokolnitz": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      1
+     ]
+    },
+    "c:c_gd": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      6
+     ]
+    },
+    "c:gqg": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "c:bag": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "t:goldbach": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    }
+   }
+  },
+  "hybrid-pan+fr": {
+   "before": {
+    "jumps": 8,
+    "pops": 52,
+    "drawn": 1319,
+    "inView": 1970,
+    "longestMs": 2467
+   },
+   "after": {
+    "jumps": 8,
+    "pops": 61,
+    "drawn": 1370,
+    "inView": 1970,
+    "longestMs": 2467
+   },
+   "items": {
+    "c:caffarelli": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "o:French hold the crest": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      4
+     ]
+    },
+    "c:rivaud": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "c:suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "c:rg_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      0
+     ]
+    },
+    "t:litava": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      2,
+      2
+     ]
+    },
+    "o:Kamensky turns about (disputed)": {
+     "jumps": [
+      2,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "c:c_gren": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    },
+    "t:goldbach": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      1
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:guard_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      3
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:nansouty": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:walther": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:rg_cav": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:drouet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    }
+   }
+  },
+  "hybrid-pan+al": {
+   "before": {
+    "jumps": 5,
+    "pops": 50,
+    "drawn": 955,
+    "inView": 1350,
+    "longestMs": 2467
+   },
+   "after": {
+    "jumps": 5,
+    "pops": 43,
+    "drawn": 938,
+    "inView": 1276,
+    "longestMs": 2467
+   },
+   "items": {
+    "o:French hold the crest": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "o:Suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      0
+     ]
+    },
+    "c:rivaud": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "c:rg_inf": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      0
+     ]
+    },
+    "t:litava": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      4,
+      2
+     ]
+    },
+    "c:suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      0
+     ]
+    },
+    "o:Kamensky turns about (disputed)": {
+     "jumps": [
+      2,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "t:austerlitz": {
+     "jumps": [
+      1,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "t:santon": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "o:Levasseur up the Goldbach": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      0
+     ]
+    },
+    "p:plateau": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      2
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      0,
+      1
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:vandamme": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:rg_cav": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:drouet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    }
+   }
+  },
+  "paper-play+al": {
+   "before": {
+    "jumps": 5,
+    "pops": 33,
+    "drawn": 1180,
+    "inView": 1331,
+    "longestMs": 667
+   },
+   "after": {
+    "jumps": 5,
+    "pops": 35,
+    "drawn": 1171,
+    "inView": 1331,
+    "longestMs": 667
+   },
+   "items": {
+    "c:lich": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      2,
+      4
+     ]
+    }
+   }
+  },
+  "phone-pan+touch": {
+   "before": {
+    "jumps": 1,
+    "pops": 49,
+    "drawn": 296,
+    "inView": 732,
+    "longestMs": 1367
+   },
+   "after": {
+    "jumps": 1,
+    "pops": 47,
+    "drawn": 275,
+    "inView": 698,
+    "longestMs": 1467
+   },
+   "items": {
+    "c:col4": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      2
+     ]
+    },
+    "o:Levasseur up the Goldbach": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      2
+     ]
+    },
+    "o:Caffarelli": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      1
+     ]
+    },
+    "o:Suchet": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      5
+     ]
+    },
+    "c:bag": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      6,
+      3
+     ]
+    },
+    "c:c_i": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      3,
+      1
+     ]
+    },
+    "c:constantine": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      1,
+      0
+     ]
+    },
+    "c:c_gd": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      4,
+      3
+     ]
+    },
+    "o:Bagration": {
+     "jumps": [
+      1,
+      1
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    },
+    "c:c_iv": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "t:santon": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      1
+     ]
+    },
+    "t:zuran": {
+     "jumps": [
+      0,
+      0
+     ],
+     "pops": [
+      0,
+      2
+     ]
+    }
+   }
+  }
+ },
+ "play": {
+  "hybrid-play": {
+   "before": {
+    "gqg": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "sthilaire": {
+     "longestFrames": 18,
+     "from": 22,
+     "frames": "####hrrrrrrrrrrrrrrr##rrrrrrrrrrrrrrrrrr######rrrrrrrrrrrrrr#############rrrrrrrrrrrrrrrrr###############################"
+    },
+    "vandamme": {
+     "longestFrames": 20,
+     "from": 40,
+     "frames": "###########rrrrrrrrrhhhhhhhhhh##########hhhhhhhhhhhhhhhhhhhh###rrrrrrrrrrrrrrrrr#########################################"
+    },
+    "legrand": {
+     "longestFrames": 20,
+     "from": 30,
+     "frames": "#####rrrrrrrrrrrrrrr##########rrrrrrrrrrrrrrrrrrrr#######################################################################"
+    },
+    "friant": {
+     "longestFrames": 20,
+     "from": 40,
+     "frames": "#rrrrrrrrrrrrrrrrrrr####################rrrrrrrrrrrrrrrrrrrr#############################################################"
+    },
+    "bourcier": {
+     "longestFrames": 18,
+     "from": 12,
+     "frames": "############rrrrrrrrrrrrrrrrrr###########################################################################################"
+    },
+    "caffarelli": {
+     "longestFrames": 20,
+     "from": 30,
+     "frames": "##############################hhhhhhhhhhhhhhhhhhhh#######################################################################"
+    },
+    "suchet": {
+     "longestFrames": 20,
+     "from": 50,
+     "frames": "##################################################rrrrrrrrrrrrrrrrrrrr###################################################"
+    },
+    "kellermann": {
+     "longestFrames": 51,
+     "from": 70,
+     "frames": "hrrrrrrrrrrrrrrrrrrr##################################################hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "nansouty": {
+     "longestFrames": 50,
+     "from": 30,
+     "frames": "hhhhrrrrrrrrrrrrrrrr##########rrrrrrrrrrhhhrrrrrhhhhhhhhhhhhhhhrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "dhautpoul": {
+     "longestFrames": 93,
+     "from": 28,
+     "frames": "hhhhrrrrrrrrrrhhhhhh########hhhhrrrrrrrrhhhhhhhhhhhhhhhhrrrrhhhrrrrrrrrrrrrrrrrrhhhhhrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "walther": {
+     "longestFrames": 78,
+     "from": 43,
+     "frames": "hhhhrrrrrrrrrrrrrrrrhhhhhhhhrrrrrrrrrrrr###hhhhhhhhhhhhhrrrrhhhrrrrrrrrrrrrrrrrrhhhhhrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "rivaud": {
+     "longestFrames": 20,
+     "from": 20,
+     "frames": "####################rrrrrrrrrrrrrrrrrrrr##############################rrrrrrrrrrrrrrrrrrrr###############################"
+    },
+    "drouet": {
+     "longestFrames": 14,
+     "from": 56,
+     "frames": "########################################################rrrrrrrrrrrrrr###############rrrrrr##############################"
+    },
+    "guard_inf": {
+     "longestFrames": 23,
+     "from": 7,
+     "frames": "#######hhhhhhhhhhhhhrrrrrrrrrr###########################################################################################"
+    },
+    "guard_cav": {
+     "longestFrames": 91,
+     "from": 30,
+     "frames": "hhhhrrrrrrrrrrrrrrrr##########hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrrrrrrrrrrrrrrrrrhhhhhhhrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "c_gren": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "ahq": {
+     "longestFrames": 17,
+     "from": 63,
+     "frames": "###############################################################rrrrrrrhhhhhhhhhh#########################################"
+    },
+    "kienmayer": {
+     "longestFrames": 19,
+     "from": 1,
+     "frames": "#hhhhhrrrrrrrrrrrrrr#####################################################################################################"
+    },
+    "dok": {
+     "longestFrames": 18,
+     "from": 62,
+     "frames": "##############################################################rrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "lang": {
+     "longestFrames": 16,
+     "from": 64,
+     "frames": "###############rrrrrrrrrrrrrrr##################################rrrrrrrrrrrrrrrr#########################################"
+    },
+    "prz": {
+     "longestFrames": 20,
+     "from": 10,
+     "frames": "##########rrrrrrrrrrrrrrrrrrrr####rrrrrrrrrrrrrrrr#######################################################################"
+    },
+    "milo": {
+     "longestFrames": 70,
+     "from": 0,
+     "frames": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrrhhhhhhhhhhhhrrrrrrrrrrrrrrrrrr##########hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "kollo": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "lich": {
+     "longestFrames": 41,
+     "from": 80,
+     "frames": "####################################################hhhhhhhhhhhrrrrrrr##########rrrrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "bag": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "rg_inf": {
+     "longestFrames": 19,
+     "from": 31,
+     "frames": "###rrrrrrrrrrrrrrrrr###########hhhhhhhhhhhhhhhhhhh######################rrrrrrrrrrrrrrrrrr###############################"
+    },
+    "rg_cav": {
+     "longestFrames": 71,
+     "from": 50,
+     "frames": "##################################################hhrrrrrrrrrrrrrrrrrrhhhhhhhhhhrrrrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    }
+   },
+   "after": {
+    "gqg": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "sthilaire": {
+     "longestFrames": 18,
+     "from": 22,
+     "frames": "####hrrrrrrrrrrrrrrr##rrrrrrrrrrrrrrrrrr######rrrrrrrrrrrrrr#############rrrrrrrrrrrrrrrrr###############################"
+    },
+    "vandamme": {
+     "longestFrames": 41,
+     "from": 80,
+     "frames": "############################rrrrrrrrrrrr##################rrrrrrrrrrrr##########hhhhhhhrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "legrand": {
+     "longestFrames": 20,
+     "from": 30,
+     "frames": "#####rrrrrrrrrrrrrrr##########rrrrrrrrrrrrrrrrrrrr#######################################################################"
+    },
+    "friant": {
+     "longestFrames": 20,
+     "from": 40,
+     "frames": "#rrrrrrrrrrrrrrrrrrr####################rrrrrrrrrrrrrrrrrrrr#############################################################"
+    },
+    "bourcier": {
+     "longestFrames": 18,
+     "from": 12,
+     "frames": "############rrrrrrrrrrrrrrrrrr###########################################################################################"
+    },
+    "caffarelli": {
+     "longestFrames": 18,
+     "from": 52,
+     "frames": "#############################rrrrrrrrrrr############hhhhrrrrrrrrrrrrrr###################################################"
+    },
+    "suchet": {
+     "longestFrames": 20,
+     "from": 20,
+     "frames": "####################rrrrrrrrrrrrrrrrrrrr##########################################rrrrrrrrr##############################"
+    },
+    "kellermann": {
+     "longestFrames": 101,
+     "from": 20,
+     "frames": "####################hhhhhhhhhrrrrrrrrrrrhhhhhhhhhhhhhhhhhhrrrrrrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "nansouty": {
+     "longestFrames": 121,
+     "from": 0,
+     "frames": "hrrrrrrrrrrrrrrrrrrrhhhhhhhhrrrrrrrrrrrrhhhhhhhhhhhhhhhhrrrrrrrrrrrrrrhhhhhhhhhhhhhhhrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "dhautpoul": {
+     "longestFrames": 93,
+     "from": 28,
+     "frames": "hrrrrrrrrrrrrrhhhhhh########rrrrrrrrrrrrhhhhhhhhhhhhhhhhrrrrrrrrrrrrrrhhhhhhhhhhhhhhhrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "walther": {
+     "longestFrames": 121,
+     "from": 0,
+     "frames": "hrrhhhrrrrrhhhhhhhhhhhhhhhhhrrrrrrrrrrrrhhhhhhhhhhhhrrrrrrrrrrrrrrrrrrhhhhhhhhhhhhhhhrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "rivaud": {
+     "longestFrames": 20,
+     "from": 20,
+     "frames": "####################rrrrrrrrrrrrrrrrrrrr##############################rrrrrrrrrrrrrrrrrrrr###############################"
+    },
+    "drouet": {
+     "longestFrames": 14,
+     "from": 56,
+     "frames": "########################################################rrrrrrrrrrrrrr###############rrrrrr##############################"
+    },
+    "guard_inf": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "guard_cav": {
+     "longestFrames": 70,
+     "from": 0,
+     "frames": "hhhhrrrrrrrrrrrrrrrrhhhhhhhhrrrrrrrrrrrrhhhhhhhhhhhhhhhhhhrrrrrrrrrrrr###############hhrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "c_gren": {
+     "longestFrames": 17,
+     "from": 3,
+     "frames": "###hhhhhhhhhhhhhhhhh#####################################################################################################"
+    },
+    "ahq": {
+     "longestFrames": 17,
+     "from": 63,
+     "frames": "###############################################################rrrrrrrhhhhhhhhhh#########################################"
+    },
+    "kienmayer": {
+     "longestFrames": 19,
+     "from": 1,
+     "frames": "#hhhhhrrrrrrrrrrrrrr#####################################################################################################"
+    },
+    "dok": {
+     "longestFrames": 18,
+     "from": 62,
+     "frames": "##############################################################rrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "lang": {
+     "longestFrames": 16,
+     "from": 64,
+     "frames": "###############rrrrrrrrrrrrrrr##################################rrrrrrrrrrrrrrrr#########################################"
+    },
+    "prz": {
+     "longestFrames": 20,
+     "from": 10,
+     "frames": "##########rrrrrrrrrrrrrrrrrrrr####rrrrrrrrrrrrrrrr#######################################################################"
+    },
+    "milo": {
+     "longestFrames": 121,
+     "from": 0,
+     "frames": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "kollo": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "lich": {
+     "longestFrames": 14,
+     "from": 6,
+     "frames": "######rrrhhhhhhhhhhh#####################################################################################################"
+    },
+    "bag": {
+     "longestFrames": 19,
+     "from": 1,
+     "frames": "#rrrrrrrrrrrrrrrrrrr#####################################################################################################"
+    },
+    "rg_inf": {
+     "longestFrames": 41,
+     "from": 80,
+     "frames": "#########################################rrrrrrrrrrrrrrrrrrr####################hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    },
+    "rg_cav": {
+     "longestFrames": 101,
+     "from": 20,
+     "frames": "####################hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrrrrrrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    }
+   },
+   "passes": [
+    {
+     "pass": 17,
+     "strategy": "hold",
+     "cameBack": [],
+     "left": [
+      "c:prz"
+     ]
+    },
+    {
+     "pass": 27,
+     "strategy": "hold",
+     "cameBack": [
+      "t:telnitz",
+      "c:sthilaire",
+      "c:legrand",
+      "c:friant",
+      "c:dhautpoul",
+      "c:c_gren",
+      "c:kienmayer",
+      "c:lich",
+      "c:bag",
+      "o:Saint-Hilaire"
+     ],
+     "left": [
+      "c:suchet",
+      "c:kellermann",
+      "c:rivaud",
+      "c:rg_cav",
+      "o:Vandamme",
+      "o:Friant retakes Telnitz"
+     ]
+    },
+    {
+     "pass": 37,
+     "strategy": "hold",
+     "cameBack": [
+      "t:pratzen",
+      "c:bourcier",
+      "c:lang",
+      "c:prz"
+     ],
+     "left": [
+      "t:telnitz",
+      "c:legrand"
+     ]
+    },
+    {
+     "pass": 47,
+     "strategy": "hold",
+     "cameBack": [
+      "p:plateau",
+      "c:sthilaire",
+      "c:vandamme",
+      "c:caffarelli",
+      "c:suchet",
+      "c:rivaud",
+      "o:Saint-Hilaire",
+      "o:Vandamme",
+      "o:Friant retakes Telnitz"
+     ],
+     "left": [
+      "c:friant",
+      "o:Stare Vinohrady"
+     ]
+    },
+    {
+     "pass": 57,
+     "strategy": "hold",
+     "cameBack": [
+      "c:legrand",
+      "c:prz"
+     ],
+     "left": []
+    },
+    {
+     "pass": 67,
+     "strategy": "hold",
+     "cameBack": [
+      "c:sthilaire",
+      "c:friant",
+      "c:rg_inf",
+      "o:Vandamme",
+      "o:Stare Vinohrady"
+     ],
+     "left": [
+      "o:Saint-Hilaire"
+     ]
+    },
+    {
+     "pass": 77,
+     "strategy": "hold",
+     "cameBack": [
+      "c:vandamme",
+      "c:caffarelli",
+      "c:drouet",
+      "c:guard_cav",
+      "o:Friant retakes Telnitz"
+     ],
+     "left": [
+      "c:rivaud"
+     ]
+    },
+    {
+     "pass": 87,
+     "strategy": "hold",
+     "cameBack": [
+      "t:pratzen",
+      "c:ahq",
+      "c:dok",
+      "c:lang",
+      "o:Saint-Hilaire"
+     ],
+     "left": [
+      "p:plateau",
+      "t:augezd",
+      "c:vandamme",
+      "c:rg_inf",
+      "o:Friant retakes Telnitz"
+     ]
+    },
+    {
+     "pass": 97,
+     "strategy": "hold",
+     "cameBack": [
+      "c:sthilaire",
+      "c:rivaud"
+     ],
+     "left": []
+    }
+   ]
+  },
+  "paper-play": {
+   "before": {
+    "c_iv": {
+     "longestFrames": 19,
+     "from": 61,
+     "frames": "############################################rrrrrrrrrrrrrrrr#rrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "c_iii": {
+     "longestFrames": 11,
+     "from": 80,
+     "frames": "################################################################################rrrrrrrrrrr##############################"
+    },
+    "c_v": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "c_cav": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "c_i": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "c_gd": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "col4": {
+     "longestFrames": 11,
+     "from": 80,
+     "frames": "################################################################################rrrrrrrrrrr##############################"
+    },
+    "constantine": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "gqg": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "c_gren": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "ahq": {
+     "longestFrames": 16,
+     "from": 44,
+     "frames": "############################################rrrrrrrrrrrrrrrr#############################################################"
+    },
+    "buxhowden": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "lich": {
+     "longestFrames": 11,
+     "from": 80,
+     "frames": "################################################################################rrrrrrrrrrr##############################"
+    },
+    "bag": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    }
+   },
+   "after": {
+    "c_iv": {
+     "longestFrames": 19,
+     "from": 61,
+     "frames": "############################################rrrrrrrrrrrrrrrr#rrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "c_iii": {
+     "longestFrames": 11,
+     "from": 80,
+     "frames": "################################################################################rrrrrrrrrrr##############################"
+    },
+    "c_v": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "c_cav": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "c_i": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "c_gd": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "col4": {
+     "longestFrames": 11,
+     "from": 80,
+     "frames": "################################################################################rrrrrrrrrrr##############################"
+    },
+    "constantine": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "gqg": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "c_gren": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "ahq": {
+     "longestFrames": 16,
+     "from": 44,
+     "frames": "############################################rrrrrrrrrrrrrrrr#############################################################"
+    },
+    "buxhowden": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "lich": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "bag": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    }
+   },
+   "passes": null
+  },
+  "land-play": {
+   "before": {
+    "sthilaire": {
+     "longestFrames": 20,
+     "from": 30,
+     "frames": "##############################rrrrrrrrrrrrrrrrrrrr##rrrrrrrrrrrrrrrrrr##rrrrrrrrrrrrrrrrrr###############################"
+    },
+    "vandamme": {
+     "longestFrames": 14,
+     "from": 6,
+     "frames": "######rrrrrrrrrrrrrr############################################################rrrrrrrrrrr##############################"
+    },
+    "legrand": {
+     "longestFrames": 16,
+     "from": 54,
+     "frames": "######################################################rrrrrrrrrrrrrrrr###################################################"
+    },
+    "friant": {
+     "longestFrames": 18,
+     "from": 22,
+     "frames": "#########rrrrrrrrrrr##rrrrrrrrrrrrrrrrrr#######rrrrrrrrrrrrr#############################################################"
+    },
+    "bourcier": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "caffarelli": {
+     "longestFrames": 13,
+     "from": 47,
+     "frames": "###############################################rrrrrrrrrrrrr#############################################################"
+    },
+    "suchet": {
+     "longestFrames": 17,
+     "from": 3,
+     "frames": "###rrrrrrrrrrrrrrrrr#####################################################################################################"
+    },
+    "kellermann": {
+     "longestFrames": 20,
+     "from": 20,
+     "frames": "####################rrrrrrrrrrrrrrrrrrrr########rrrrrrrrrrrr#############################################################"
+    },
+    "nansouty": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "dhautpoul": {
+     "longestFrames": 17,
+     "from": 63,
+     "frames": "###############################################################rrrrrrrrrrrrrrrrr#########################################"
+    },
+    "walther": {
+     "longestFrames": 20,
+     "from": 20,
+     "frames": "####################rrrrrrrrrrrrrrrrrrrr##########rrrrrrrrrrrrrrrrrrrr###################################################"
+    },
+    "rivaud": {
+     "longestFrames": 19,
+     "from": 11,
+     "frames": "###########rrrrrrrrrrrrrrrrrrr###########################################################################################"
+    },
+    "drouet": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "guard_inf": {
+     "longestFrames": 19,
+     "from": 21,
+     "frames": "##rrrrrrrrrrrrrrrrrr#rrrrrrrrrrrrrrrrrrr#################################################################################"
+    },
+    "guard_cav": {
+     "longestFrames": 20,
+     "from": 40,
+     "frames": "###########rrrrrrrrrrrrrrrrrrr##########rrrrrrrrrrrrrrrrrrrr####################rrrrrrrrrrr##############################"
+    },
+    "c_gren": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "kienmayer": {
+     "longestFrames": 13,
+     "from": 37,
+     "frames": "#####################################rrrrrrrrrrrrr#######################################################################"
+    },
+    "dok": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "lang": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "prz": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "milo": {
+     "longestFrames": 16,
+     "from": 44,
+     "frames": "############################################rrrrrrrrrrrrrrrr####################rrrrrrrrrrr##############################"
+    },
+    "kollo": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "lich": {
+     "longestFrames": 17,
+     "from": 63,
+     "frames": "###############################################################rrrrrrrrrrrrrrrrr#########################################"
+    },
+    "bag": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "rg_inf": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "rg_cav": {
+     "longestFrames": 19,
+     "from": 51,
+     "frames": "##################################rrrrrrrrrrrrrrrr#rrrrrrrrrrrrrrrrrrr###################################################"
+    }
+   },
+   "after": {
+    "sthilaire": {
+     "longestFrames": 20,
+     "from": 30,
+     "frames": "##############################rrrrrrrrrrrrrrrrrrrr##rrrrrrrrrrrrrrrrrr##rrrrrrrrrrrrrrrrrr###############################"
+    },
+    "vandamme": {
+     "longestFrames": 18,
+     "from": 42,
+     "frames": "######rrrrrrrrrrrrrr######rrrrrrrrrrrrrr##rrrrrrrrrrrrrrrrrr####################rrrrrrrrrrr##############################"
+    },
+    "legrand": {
+     "longestFrames": 16,
+     "from": 54,
+     "frames": "######################################################rrrrrrrrrrrrrrrr###################################################"
+    },
+    "friant": {
+     "longestFrames": 18,
+     "from": 22,
+     "frames": "#########rrrrrrrrrrr##rrrrrrrrrrrrrrrrrr#######rrrrrrrrrrrrr#############################################################"
+    },
+    "bourcier": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "caffarelli": {
+     "longestFrames": 13,
+     "from": 47,
+     "frames": "###############################################rrrrrrrrrrrrr#############################################################"
+    },
+    "suchet": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "kellermann": {
+     "longestFrames": 20,
+     "from": 20,
+     "frames": "####################rrrrrrrrrrrrrrrrrrrr#rrrrrrrrrrrrrrrrrrr####################rrrrrrrrrrr##############################"
+    },
+    "nansouty": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "dhautpoul": {
+     "longestFrames": 13,
+     "from": 67,
+     "frames": "###################################################################rrrrrrrrrrrrr#########################################"
+    },
+    "walther": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "rivaud": {
+     "longestFrames": 19,
+     "from": 11,
+     "frames": "###########rrrrrrrrrrrrrrrrrrr###########################################################################################"
+    },
+    "drouet": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "############################################################rrrrrrrrrrrrrrrrrrrr#########################################"
+    },
+    "guard_inf": {
+     "longestFrames": 19,
+     "from": 21,
+     "frames": "##rrrrrrrrrrrrrrrrrr#rrrrrrrrrrrrrrrrrrr#################################################################################"
+    },
+    "guard_cav": {
+     "longestFrames": 20,
+     "from": 40,
+     "frames": "###########rrrrrrrrrrrrrrrrrrr##########rrrrrrrrrrrrrrrrrrrr####################rrrrrrrrrrr##############################"
+    },
+    "c_gren": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "kienmayer": {
+     "longestFrames": 13,
+     "from": 37,
+     "frames": "#####################################rrrrrrrrrrrrr#######################################################################"
+    },
+    "dok": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "lang": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "prz": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "milo": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "kollo": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "lich": {
+     "longestFrames": 17,
+     "from": 63,
+     "frames": "###############################################################rrrrrrrrrrrrrrrrr#########################################"
+    },
+    "bag": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "rg_inf": {
+     "longestFrames": 0,
+     "from": -1,
+     "frames": "#########################################################################################################################"
+    },
+    "rg_cav": {
+     "longestFrames": 20,
+     "from": 60,
+     "frames": "##################################rrrrrrrrrrrrrrrr##########rrrrrrrrrrrrrrrrrrrr#########################################"
+    }
+   },
+   "passes": null
+  }
+ },
+ "chromium": "141.0.7390.37",
+ "totals": {
+  "before": {
+   "jumps": 238,
+   "pops": 985
+  },
+  "after": {
+   "jumps": 248,
+   "pops": 998
+  }
+ },
+ "netByItem": {
+  "c:rg_inf": {
+   "jumps": 0,
+   "pops": -12
+  },
+  "n:caffarelli": {
+   "jumps": -5,
+   "pops": 5
+  },
+  "o:Caffarelli": {
+   "jumps": -3,
+   "pops": 6
+  },
+  "o:Pratzeberg": {
+   "jumps": 5,
+   "pops": -4
+  },
+  "o:Bagration": {
+   "jumps": 2,
+   "pops": 6
+  },
+  "t:austerlitz": {
+   "jumps": -3,
+   "pops": -5
+  },
+  "c:rivaud": {
+   "jumps": 1,
+   "pops": -6
+  },
+  "c:lich": {
+   "jumps": -2,
+   "pops": 5
+  },
+  "o:Levasseur up the Goldbach": {
+   "jumps": -3,
+   "pops": 3
+  },
+  "o:Stare Vinohrady": {
+   "jumps": 2,
+   "pops": -4
+  },
+  "c:col4": {
+   "jumps": 0,
+   "pops": -6
+  },
+  "t:litava": {
+   "jumps": 3,
+   "pops": -2
+  },
+  "c:vandamme": {
+   "jumps": 0,
+   "pops": 5
+  },
+  "t:goldbach": {
+   "jumps": -1,
+   "pops": 4
+  },
+  "o:Suchet": {
+   "jumps": 2,
+   "pops": 3
+  },
+  "o:Jurczek's Austrians": {
+   "jumps": 2,
+   "pops": -3
+  },
+  "t:santon": {
+   "jumps": 0,
+   "pops": -5
+  },
+  "t:pratzen": {
+   "jumps": 0,
+   "pops": 5
+  },
+  "c:constantine": {
+   "jumps": 0,
+   "pops": 5
+  },
+  "n:milo": {
+   "jumps": -1,
+   "pops": -4
+  },
+  "c:walther": {
+   "jumps": -1,
+   "pops": 3
+  },
+  "t:satschan": {
+   "jumps": 0,
+   "pops": 4
+  },
+  "n:suchet": {
+   "jumps": -1,
+   "pops": 3
+  },
+  "n:vandamme": {
+   "jumps": 0,
+   "pops": 4
+  },
+  "n:rg_inf": {
+   "jumps": 2,
+   "pops": -2
+  },
+  "c:kellermann": {
+   "jumps": 0,
+   "pops": -3
+  },
+  "c:gqg": {
+   "jumps": 1,
+   "pops": 2
+  },
+  "c:guard_cav": {
+   "jumps": 0,
+   "pops": 3
+  },
+  "c:bag": {
+   "jumps": 2,
+   "pops": 1
+  },
+  "t:kobelnitz": {
+   "jumps": -1,
+   "pops": -2
+  },
+  "c:c_gd": {
+   "jumps": 1,
+   "pops": 2
+  },
+  "n:rivaud": {
+   "jumps": 3,
+   "pops": 0
+  },
+  "n:walther": {
+   "jumps": 1,
+   "pops": -2
+  },
+  "n:guard_cav": {
+   "jumps": -1,
+   "pops": 2
+  },
+  "c:caffarelli": {
+   "jumps": 0,
+   "pops": 2
+  },
+  "o:French hold the crest": {
+   "jumps": 1,
+   "pops": 1
+  },
+  "t:sokolnitz": {
+   "jumps": -1,
+   "pops": -1
+  },
+  "c:c_gren": {
+   "jumps": 2,
+   "pops": 0
+  },
+  "p:plateau": {
+   "jumps": 0,
+   "pops": -2
+  },
+  "c:nansouty": {
+   "jumps": 0,
+   "pops": 2
+  },
+  "c:rg_cav": {
+   "jumps": -1,
+   "pops": 1
+  },
+  "t:blasowitz": {
+   "jumps": 0,
+   "pops": -2
+  },
+  "t:pratzenv": {
+   "jumps": 0,
+   "pops": 2
+  },
+  "t:puntowitz": {
+   "jumps": 0,
+   "pops": 2
+  },
+  "c:milo": {
+   "jumps": 0,
+   "pops": -2
+  },
+  "c:c_cav": {
+   "jumps": 0,
+   "pops": -2
+  },
+  "c:c_i": {
+   "jumps": 1,
+   "pops": 1
+  },
+  "n:drouet": {
+   "jumps": 2,
+   "pops": 0
+  },
+  "c:suchet": {
+   "jumps": 0,
+   "pops": 1
+  },
+  "o:Kamensky turns about (disputed)": {
+   "jumps": 0,
+   "pops": -1
+  },
+  "c:guard_inf": {
+   "jumps": 0,
+   "pops": -1
+  },
+  "c:drouet": {
+   "jumps": 1,
+   "pops": 0
+  },
+  "c:dhautpoul": {
+   "jumps": 0,
+   "pops": -1
+  },
+  "c:kollo": {
+   "jumps": 0,
+   "pops": 1
+  },
+  "o:Saint-Hilaire": {
+   "jumps": -1,
+   "pops": 0
+  },
+  "o:Vandamme": {
+   "jumps": -1,
+   "pops": 0
+  },
+  "t:zuran": {
+   "jumps": 0,
+   "pops": 1
+  },
+  "t:posthouse": {
+   "jumps": 1,
+   "pops": 0
+  },
+  "n:kellermann": {
+   "jumps": 1,
+   "pops": 0
+  },
+  "n:dhautpoul": {
+   "jumps": 0,
+   "pops": 0
+  },
+  "n:nansouty": {
+   "jumps": 0,
+   "pops": 0
+  }
+ },
+ "itemsChanged": 61,
+ "runsChanged": 13,
+ "secs": 173
+}

@@ -1,0 +1,60 @@
+{
+ "tool": "tools/stage8/woods-bldg-8j.js",
+ "builds": [
+  {
+   "file": "austerlitz-8i.html",
+   "md5": "697bbf34ec29fc4d05695dc8e1cd3c5e",
+   "woods": {
+    "wood": 634,
+    "village": 184,
+    "conifer": 376,
+    "edge": 354,
+    "stream": 202
+   },
+   "parts": 625,
+   "errors": []
+  },
+  {
+   "file": "austerlitz-8j-final-nohold.html",
+   "md5": "b051f2dd0433750eb78195dc036c10da",
+   "woods": {
+    "wood": 420,
+    "village": 184,
+    "garden": 12,
+    "conifer": 276,
+    "edge": 244,
+    "stream": 219
+   },
+   "parts": 593,
+   "errors": []
+  }
+ ],
+ "diff1": {
+  "from": "austerlitz-8i.html",
+  "to": "austerlitz-8j-final-nohold.html",
+  "changed": [
+   "Augezd (17 to 15 parts)",
+   "Austerlitz (64 to 62 parts)",
+   "Bosenitz (14 to 14 parts)",
+   "Girzikowitz (17 to 15 parts)",
+   "Holubitz (14 to 13 parts)",
+   "Hostieradek (13 to 13 parts)",
+   "Kobelnitz (16 to 16 parts)",
+   "Krzenowitz (22 to 21 parts)",
+   "Menitz (14 to 14 parts)",
+   "Pratzen (29 to 25 parts)",
+   "Puntowitz (19 to 19 parts)",
+   "Schlapanitz (18 to 19 parts)",
+   "Sokolnitz (177 to 164 parts)",
+   "Telnitz (120 to 112 parts)"
+  ],
+  "identical": [
+   "Bellowitz",
+   "Blasowitz",
+   "Krug",
+   "Posoritz post house",
+   "Satschan",
+   "Turas"
+  ]
+ }
+}

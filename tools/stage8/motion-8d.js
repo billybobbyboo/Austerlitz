@@ -22,7 +22,7 @@ const MEASURE=fs.readFileSync(path.join(L.ROOT,"tools","visual","measure.js"),"u
   const settle=async p=>{ await p.evaluate(()=>AUSTERLITZ_DEBUG.settle(90)); await p.waitForTimeout(450); await p.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); };
   const R=await MO.runBlock(page,settle,{selftestOnly:SO, log:s=>console.log(s)}), ver=browser.version();
   await page.close(); await browser.close();
-  const base=R.runs.filter(r=>!r.real&&!r.select&&!r.reading&&!r.touch), S=k=>base.reduce((s,r)=>s+r[k],0);
+  const base=R.runs.filter(r=>!r.real&&!r.point&&!r.select&&!r.reading&&!r.touch), S=k=>base.reduce((s,r)=>s+r[k],0);
   R.totals={jumps:S("jumps"), pops:S("pops"), lod:S("lod"), flicker:S("flicker")};
   R.build=path.basename(html); R.md5=crypto.createHash("md5").update(fs.readFileSync(html)).digest("hex"); R.chromium=ver;
   R.selftestOnly=SO; R.console=errs; R.secs=Math.round((Date.now()-t0)/1000);

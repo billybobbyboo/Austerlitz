@@ -53,7 +53,7 @@ tryCase("a driven run's visibility not measured",R=>{ delete run(R,"low-pan").tr
     await page.evaluate(fs.readFileSync(path.join(ROOT,"tools","visual","measure.js"),"utf8")); await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
     const settle=async p=>{ await p.evaluate(()=>AUSTERLITZ_DEBUG.settle(90)); await p.waitForTimeout(450); await p.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); };
     const M=await MO.runBlock(page,settle,{selftestOnly:so, log:s=>console.log("  "+s)}); await browser.close(); fs.rmSync(dir,{recursive:true,force:true});
-    const base=M.runs.filter(r=>!r.real&&!r.select&&!r.reading&&!r.touch), S=k=>base.reduce((s,r)=>s+r[k],0), T={jumps:S("jumps"),pops:S("pops"),lod:S("lod"),flicker:S("flicker")};
+    const base=M.runs.filter(r=>!r.real&&!r.point&&!r.select&&!r.reading&&!r.touch), S=k=>base.reduce((s,r)=>s+r[k],0), T={jumps:S("jumps"),pops:S("pops"),lod:S("lod"),flicker:S("flicker")};
     const f=judge(M.runs), vis=f.join(" ").match(/formations drawn in|hidden by the layout for|formation-frames in view/g)||[];
     res.app={mutation:"the hold hides a formation whose held place is taken (no near search while moving)", totals:T, fails:f, visibilityFailures:vis.length, console:errs,
       runs:M.runs.map(r=>({key:r.key, jumps:r.jumps, pops:r.pops, on:r.track.on, inView:r.track.inView, longestMs:r.track.longestMs}))};

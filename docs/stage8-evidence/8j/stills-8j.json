@@ -1,0 +1,274 @@
+{
+ "chromium": "141.0.7390.37",
+ "set": "8j",
+ "before": {
+  "file": "austerlitz-8i.html",
+  "md5": "697bbf34ec29fc4d05695dc8e1cd3c5e"
+ },
+ "after": {
+  "file": "austerlitz-8j-final.html",
+  "md5": "7d5594baf7468f943ab42f7d848608d1"
+ },
+ "views": {
+  "sokolnitz-castle": {
+   "before": {
+    "clock": "10:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "10:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 60.06,
+    "meanDiff": 27.315
+   }
+  },
+  "sokolnitz-castle-afternoon": {
+   "before": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 32,
+    "linked": 32,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "15:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 32,
+    "linked": 32,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 69.234,
+    "meanDiff": 30.326
+   }
+  },
+  "sokolnitz-pheasantry": {
+   "before": {
+    "clock": "10:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "10:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 50.016,
+    "meanDiff": 24.863
+   }
+  },
+  "sokolnitz-brook": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 60.999,
+    "meanDiff": 53.783
+   }
+  },
+  "sokolnitz-column": {
+   "before": {
+    "clock": "10:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "10:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 36,
+    "linked": 36,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 37.192,
+    "meanDiff": 15.215
+   }
+  },
+  "pratzen-church": {
+   "before": {
+    "clock": "09:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 35,
+    "linked": 35,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 16.83,
+    "meanDiff": 6.994
+   }
+  },
+  "austerlitz-garden": {
+   "before": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 32,
+    "linked": 32,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "14:00",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 32,
+    "linked": 32,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 20.365,
+    "meanDiff": 6.584
+   }
+  },
+  "paper-sokolnitz": {
+   "before": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "08:20",
+    "factor": 4,
+    "mode": "staff",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 16.576,
+    "meanDiff": 7.04
+   }
+  },
+  "pratzen-low": {
+   "before": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:50",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 11.246,
+    "meanDiff": 4.012
+   }
+  },
+  "overview-field": {
+   "before": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "after": {
+    "clock": "09:30",
+    "factor": 4,
+    "mode": "terrain",
+    "lowTier": false,
+    "going": false,
+    "programs": 43,
+    "linked": 43,
+    "pageErrors": 0
+   },
+   "diff": {
+    "changed": 3.318,
+    "meanDiff": 1.168
+   }
+  }
+ }
+}

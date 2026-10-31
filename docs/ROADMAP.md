@@ -538,12 +538,36 @@ formation names on the lighter plate (decision 263 (a), at AA by sym.plate's rul
 the census reported in both frames (section 20.12's maxima were the frame with the ground's depth reused: the complete frame on 8H's run 864
 calls and 2,352,049 triangles on the desktop, 1,398,127 triangles on the phone), measured again for every build; decisions 261, 262, 264 and 265
 recorded. **8J** (`claude/tender-einstein-gwrsij-sokolnitz`, decision 259 (a)) and **8K** (`claude/tender-einstein-gwrsij-highway`, decision 260
-(a)): the data tasks, each with its own section, register and `check:data` reference.
+(a)): the data tasks, each with its own section, register and `check:data` reference. In 8J the Sokolnitz castle, at its own site between the
+drawn track and the drawn brook (their widths a display convention), stands clear only at 20% of 8G's size (96 by 73 m, near the 1825 quadrangle's
+79.6 by 60.0 m), so that it reads smaller than the farmhouses beside it, drawn at the buildings' convention: drawn so, a rule of the planner
+(`CASTLE8J`), and put to the owner as **question 266** (§21.7: (a) keep it, recommended; (b) a middle size off its site; (c) the ribbons narrowed
+there; (d) 8G's size 461 m off across the track).
 
-**Still open in Stage 8** (none blocking the build): the device runs for 8E-8K (§20.12, §21); decision 245 (a)'s facings, to be reconsidered now
+**The integration pass, 8L** (31 October 2026; `docs/STAGE8_SPEC.md` §22; draft PR #77 into `main` from `claude/charming-dijkstra-srj84w`,
+not merged): PR #74 (8I) had reached `main` (`72c7e1b`), but PR #75 (8J) and PR #76 (8K) had been merged into their stacked feature branches
+(`c7de7a2`, `c706c96`), not into `main`; both merged into the integration branch, its tree 8K's own and its build 8K's (`f10fe585...`). The
+owner's decisions of 31 October 2026: **266 (a)**, the Sokolnitz castle kept at its corrected site at about 96 by 73 m, the explanation of the
+symbol-scale compromise kept, its prominence and its obstruction by troop symbols on the final audit checklist; **267**, the bounded
+presentation-repair approach, the ceilings and visibility safeguards preserved: the paper map's zoom by real input was an invalid comparison
+(the real pointer hovered the Russian Imperial Guard's counter at the view's centre, which the layer protects; the 16's run has no pointer),
+repaired by a twin with the pointer (the real input within its tolerance of it, `REAL_TOL` unchanged); the 16's totals (248 jumps, 998 pops) are the map
+layer's response to the corrected places, and no bounded repair measured meets the ceilings and every run's visibility (the trade-off put to
+the owner, §22.3); `plans-overview`'s limit 13 for the Littawa's name (the owner's authorisation, its conditions met); `ph8-overview-watch` judged
+against the model (no derived reading at 14:40, the centre separation shown at 14:20). Verified here and on CI's pinned browser, line for line
+(§22.5): every required check passes but the motion block's one line, the 16's ceilings, in `check:selftest` and `check:visual`. Readiness
+(§22.7): the integration coherent; ready for the final combined audit once the owner settles question 267's remaining trade-off (the pass
+recommends (a), the two ceilings re-baselined at 248 and 998 under the owner's rule for geographic baselines).
+
+**Still open in Stage 8**: question 267's remaining trade-off (the 16's ceilings: re-baseline at 248 and 998, adopt "kept first while moving"
+with its visibility losses, or carry the two failures into the final audit; §22.3; `check:selftest` and `check:visual` fail on these two
+ceilings alone until decided); the device runs for 8E-8K (§20.12, §21, §22.6); decision 245 (a)'s facings, to be reconsidered now
 that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
 `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's
 remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist.
+All of these are on the final audit checklist, `docs/STAGE8_SPEC.md` §22.6 (real-device performance, the provisional foot contact, the low-sun ice,
+the troops' facings, the landmarks' legibility with the castle's prominence and its obstruction by troop symbols, the map layer in motion, the
+unresolved historical questions), none of them marked passed.
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**

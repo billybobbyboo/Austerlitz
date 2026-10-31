@@ -4886,3 +4886,564 @@ https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html (the deskto
 evidence note), so they are usable now for 8H's build and will serve this follow-up's build once it is merged (or at once if the owner points Pages
 at a branch: an outward-facing setting, the owner's). The protocol is section 20.12's, unchanged. No device was reachable from this session: the
 device acceptance of 8E-8K stays pending; nothing here is a device's time.
+
+### 21.7 The Sokolnitz group, the Pratzen church and the Austerlitz garden (8J; decision 259 (a); a data task)
+
+*What it implements.* 8H's proposal G1, G2, G3, G6 and G7 (`docs/stage8-evidence/8h/geo/proposal.md`), each validated again against its evidence
+before it was drawn, with the qualifications the owner set: the later map's position and the 1805 inference kept apart in the records and in what
+a visitor reads; the pheasantry drawn to its researched historical outline, not today's woodland; the garden by the evidence, its conventions
+labelled; every layer updated (the landscape, the ground's cover, the paper map, the day-track, the dossiers and the sources sheet); roads,
+crossings, positions, sight lines, knowledge, movement and the narrative checked; Legrand's "across the stream" and the castle's and the
+enclosure's anchor revisited explicitly; what no source supports kept uncertain.
+
+| place | was | is | the later map (grade) | 1805 |
+|---|---|---|---|---|
+| the Goldbach at Sokolnitz (`GOLDBACH_M`) | x 204-205, 316-515 m west of the stream | today's Říčka from y 309.8 to 377.9 | the 1825 sketch within about 10 m (B) | C; which of two channels north of the castle, not established |
+| the pheasantry (`WOODS[0]`) | an ellipse 1.9 km south-south-east, 190 trees | the 1825 "Fasangarten", 0.246 km², 46 trees | the 1825 sketch, traced (B) | C (the castle's garden of the 18th century) |
+| the castle (`LANDMARK_SITES.castle`) | the build's legacy place, 535 m south-east | its own site [212.9,344.3] | the 1825 quadrangle and today's castle on one site (B) | B by the texts (Schwoy 1793; Mikhailovsky-Danilevsky) |
+| the Pratzen church (`LANDMARK_SITES.church`) | the village's point | its own site [277.0,255.6], 399 m at 193 degrees | the 1826 sketch's round churchyard, today's church (B) | "outside the village" A (Schwoy 1793); the site B |
+| the Austerlitz garden (`GARDENS`; `WOODS[1]` dropped) | a wood 1.6 km south-east of the town | the garden west of the château, rows of trees | the 1826 sketch and the Second Survey, today's outline (B) | C (Kaunitz's, before 1794); the planting not established |
+
+*The III Column and Legrand.* The III Column's phases 2, 4 and 7 stood by the build's castle, east of the drawn brook; they are re-plotted to one
+place at the castle and the pheasantry as corrected, where their acts put the column, graded B (A until 8J: the sector documented, the frontage an
+approximation, the 1825 sites carried back). Legrand's phase 7 stays where it was; with the bed corrected it stands at the stream's west bank, so
+its act says "to the stream" where it said "across" (no source read gives this move). The III Column's arrow (`OVERLAYS[2]`) ends at the castle.
+
+*What it draws* (`tools/stage8/geo-8j.js`, `docs/stage8-evidence/8j/geo-8j.json`): the traced outline 85.2% drawn as wood (the rest the brook's water and wet bottom), 1.8% of the ground within 3 units
+outside it; the castle's site on the model's road class, the Pratzen church's on the village class, the garden 100% the town's village class; the
+corrected bed 203 m east of the village's point (the old bed 103 m west of it), 146 m from the castle's site.
+
+*The castle's size* (`tools/stage8/castle-8j.js`, `docs/stage8-evidence/8j/castle-8j.json`). At its site the drawn track (118 m west, drawn 76 m
+wide) and the drawn brook (146 m east, drawn 145 m wide: decision 253 (b)'s display widths) leave 8G's quadrangle (480 by 367 m) no room: down to
+40% of that size no clear place lies within 8 units on the castle's side of both (8G's size finds its nearest, 461 m off, across the track), and at
+35%, 30% and 25% the nearest clear places (114, 89 and 57 m off) leave the site outside the quadrangle. The planner now draws the castle and its
+farm at the largest of 8G's size and smaller ones, in steps of 5% down to 15% (`CASTLE8J`, design values; as a farmstead takes a smaller size in a
+tight spot), at which the quadrangle stands clear and covers its own site: 20%, 96 by 73 m, at the site (its centre 2 m from it), the farm unmoved
+south of it, Sokolnitz's 13 farmsteads all drawn. The storeys' heights are kept, so beside the villages' farmsteads (drawn at the buildings'
+convention, a plot's frontage 1.9-2.2 units, 120-139 m, against the sketches' about 22 m) the castle stands near its own size (the 1825 quadrangle 79.6 by 60.0 m). The self-test's landmarks check holds the
+quadrangle covering its site and the castle and farm at one size; `css-test.js` pins `CASTLE8J` and the rule; the sources sheet gives the drawn
+size, read from what is drawn; the castle's claim (`appearance.js`) says so. Seen close (`pairs/8j-sokolnitz-castle-afternoon.jpg`, 15:00, the
+III Column gone), the castle at about its own size reads smaller than the farmhouses beside it, which are drawn at the buildings' convention: a
+visitor sees its form (the closed quadrangle, the taller east range) but not its standing among the village's buildings. No size of 8G's
+convention can stand at the site: the drawn track and brook with their clearances leave 115 m clear across the site (64 m west of it, 51 m
+east: `castle-8j.json`), and the quadrangle at 8G's size, turned to the true north while the corridor runs about 20 degrees east of it, spans
+about 580 m across the corridor; narrowing the drawn ribbons there would admit about 30% (an estimate from the corridor's width, not built). *Put to the owner, question 266*: (a) keep it so (recommended,
+by the project's order of priorities: the site and its relations are geographic integrity, the size a visual convention, stated where it is
+drawn); (b) a middle size off its site, 25-35% of 8G's size with the quadrangle's centre 57-114 m south of the site and the site outside it
+(measured; not built); (c) narrow the drawn track's and brook's ribbons at Sokolnitz (decision 253 (b)'s convention changed at one place; about
+30% at most, estimated); (d) 8G's size at its nearest clear place, 461 m off across the track (its site and its side of the track lost).
+
+*The woods' random sequence.* The woods drew their trees from one continuing sequence and the buildings keep clear of the woods' and the
+villages' trees; replacing the pheasantry and dropping the park re-planned the buildings of ten villages far from either. Each kept wood and the
+villages' trees now restart from their state in 8H's sequence (`WOODS_RS`, read by `tools/stage8/woods-rs-8j.js`): the buildings' plans of Austerlitz, Pratzen, Sokolnitz and Telnitz changed, each by the data (no house in the garden, the church,
+the castle and the pheasantry, the old pheasantry on Telnitz's fields), the 16 other villages' identical part for part (without the hold 14
+villages were re-planned, 10 of them, Augezd, Bosenitz, Girzikowitz, Holubitz, Hostieradek, Kobelnitz, Krzenowitz, Menitz, Puntowitz and
+Schlapanitz, for no change of their own; `tools/stage8/woods-bldg-8j.js`, `docs/stage8-evidence/8j/woods-bldg-8j.json` and `-nohold.json`). The trees' habits, turns and the scrub, drawn from the sequence's end, are not held: a presentation only.
+
+*Consequences checked* (`tools/stage8/know-8j.js` against 8I's build; `check:chronology`; the movement audit; the narrative): 2,636 readings of "Whose eyes?" (both headquarters, every ten minutes): 15 differ, all Napoleon's, all of Kienmayer's
+advance guard and the I Column by Telnitz and Sokolnitz, unknown before (no line of sight), uncertain (valley fog) 05:10-08:40 and seen
+08:50-09:40 now: the relief's carve follows the corrected bed, so the trench that hid them from the Zuran runs elsewhere, a reading of the
+model; the Allied reading identical; the viewsheds within 0.4 points but Sokolnitz's own (0.74% to 1.66%); the plateau's strength and the
+centres' separation identical; `check:chronology`'s verdicts unchanged (66 consistent, the four named conflicts), the movement audit 0
+findings; the narrative's statements naming the brook at Sokolnitz true but Legrand's act, rewritten.
+
+*The captures* (`tools/stage8/stills-8j.js`, `pairs/`): 8I's build beside 8J's in ten matched views, among them the castle at 10:00 (under the
+III Column) and at 15:00 close, the pheasantry, the brook by the village, the column at the castle, the Pratzen church, the garden and the paper
+map on Sokolnitz; each inspected.
+
+*Two faults found by the first local self-test run, fixed.* The château was not drawn: 8J's garden rule kept the church as well as the town's
+houses off the garden's outline, and from no remaining place of the church did the château find one within its octant (section 20.3). The
+rule is now the houses' only (`ctx.landmark` in `churchPlan8g`): the church and the château, whose places are a layout of their symbols, may
+stand over the outline, the château at its 8I place and the garden's rows ending west of it (12 trees). And the bank scrub along the streams,
+set at random off their lines, kept clear of the villages' places only: with the brook corrected one bush stood on the castle's farm (the
+buildings check's nearest crown -0.194). It now keeps clear of every building as drawn, its scale drawn before the test so that no other bush
+moves (4 bushes not drawn). Austerlitz's plan without the garden rule is 8I's part for part; Telnitz's changed by the old pheasantry, whose 199
+trees bordered its buildings (the nearest 0.86 units off in 8I).
+
+*The motion block's visibility* (decision 257 (b)'s baselines, `MOTION.VIS`). 8J's data moves what each motion has in view: the III Column's
+places, the ground under the formations by the corrected Goldbach's carve, and Napoleon's readings in the morning. On 8J's build 13 of the 22
+runs differ from the baselines (the counts and the was and is in `CHANGELOG.md` and `thresholds.js`; repeated run for run on a page of its
+own, `motion-8j.json`): seven fell in their drawn (the most, Saint-Hilaire selected in the orbit, 1,494 to 1,454 drawn of the same 2,548 in view), six
+rose. The map layer's code is 8I's, whose run gave the earlier values exactly, and the paper map's
+runs, on flat ground, are unchanged; putting the III Column and its arrow back at their 8I places on 8J's build moves the counts part of the
+way back (`motion-8j-prz8i.json`), the ground's change remaining. Under the owner's rule for this follow-up (geographic baselines moved only
+where the authorized data change justifies it, the reason recorded) they are re-measured on 8J's build; the totals stay within their ceilings
+(238, 985, 130 and 9 against 245, 985, 130 and 10).
+
+*The checks.* `terrain-test.js`'s downstream check reads the corrected bed; the self-test's church check reads a church's own site, its landmarks
+check the castle covering its site at one size with its farm (its name and the manifest's entry with it); its woods
+pins at 8J's counts, the check named "as pinned" since (the manifest's entry renamed with it); `redteam.js`'s march-rate acknowledgement; the motion block's visibility baselines re-measured (above); `check:data`'s reference moved to
+8J's build.
+
+*Verification* (here; CI's runs and the census in section 21.9): `npm test`, `check:data`, `check:chronology` and `check:baseline` pass; the
+self-test 317 of 317 with every live block run, the motion block judged again with its re-measured baselines without a failure; the evidence
+re-taken on the delivered build (`7d5594ba...`). The device runs pending.
+
+*Found and recorded, not changed*: kienmayer@7's and lang@2's places beside the corrected brook (each on its own evidence, not re-plotted); the
+castle's site on the model's road class (a track passes it); the castle's walls (not established); from 08:00 to 14:10 the III Column's place
+stands 124 m from the castle's site, so its figures stand over the castle's symbol while it holds the castle (as its acts have it; figures are
+drawn over buildings everywhere: `castle-8j.json`); the garden under the château's symbol at the Overview's scale; no garden sign on the paper map.
+
+### 21.8 The highway east of the Santon and the Posoritz post house (8K; decision 260 (a); a data task)
+
+*The decision superseded.* The correction pass (CHANGELOG, "Correction pass", Roads and Places; its script `tools/geo-anchor.js`, history, not run)
+routed the highway from the Santon's foot "through the post house" it constructed "where a straight Tvarožná-Rousínov highway line crosses
+Holubice's meridian" (open question 6, "±1 km"), and placed Suchet's and Bagration's anchors and both plans' columns along that line by one
+function, `along(km, dS)`. 8H's geographic review found the road of 1826-52 0.2-1.2 km south of it and the post 1.37 km south-east of the
+constructed one (proposal G4, G5); the owner authorised its correction with the anchors reviewed from their sources (question 260 (a)). This
+section and `docs/stage8-evidence/8k/register.md` record what replaced what; the evidence dossier the review rests on (every reading on place,
+every statement naming the road, the chronology ledger's entries) is summarised there.
+
+*The places.* The highway (`ROADS[0]`) east of the Santon's foot on II/430's line, the road of the 1826 sketches and the Second Military Survey
+(B for 1826-52, C for 1805); the post house (`GT.posthouse`, `FEATURES[#posthouse]`, `VILLAGES`) at Kovalovice No. 109 (B for 1826-52, C for 1805);
+the edge marker "To Rausnitz" and the road's label point moved with the road; the "Holubitz-Posoritz track" cut at the highway; the legacy "wood
+above Holubitz" not drawn (the road and the post run through it, the Second Survey has fields there). Measured: the Santon 465 m north of the road
+(276 m before), the post 26 m north of it, Holubitz 0.72 km south (1.7 km before), the road leaving the frame at 56 degrees true toward Rausnitz.
+
+*The anchors* (register sections A1-A9; the rule: B where a reading places the formation then relative to a named place, C where no reading does
+and the point is this map's sequence; no grade kept because it was there):
+
+| anchor | was | is | grade | basis |
+|---|---|---|---|---|
+| suchet@0 | [225,97] | [235,103] | A to B | the order of 1 December: right (south) of the road level with the Santon (C4.5) |
+| suchet@5 | [242,78] | [254,88] | B to C | this map's advance, 0.8 km along the road |
+| suchet@6 | [264,67] | [279,81] | (B) to C | 1.6 km along |
+| suchet@7 | [284,57] | [300,76] | (B) to C | 2.3 km along |
+| suchet@8 | [309,43] | [348,62] | (B) to C | west of the post: Schönhals's renewed attack on the height beyond it (C6.13) |
+| suchet@9 | [321,38] | [364,54] | (B) to B | at the post: Napoleon's order of 3 December dated there (C6.9) |
+| bag@0 | [319,49] | [352,64] | B to B | by the post, Krug and Holubitz held (C6.10, C6.12); the line not established |
+| bag@5 | [262,68] | [262,68] (kept) | B to B | the heights by Dwaroschna (C6.10), now north of the road; the identification this map's |
+| bag@6 | [284,57] | [300,76] | (B) to C | this map's falling back, 2.3 km along |
+| bag@7 | [304,46] | [321,70] | (B) to C | 3.0 km along |
+| bag@8 | [337,29] | [386,38] | B to B | Schönhals's height between Rausnitz and the post (C6.13), east of the post as corrected |
+| bag@9 | [366,14] | [414,13] | (B) to C | toward Rausnitz inside the frame; question 180 (c) kept |
+
+("(B)" an inherited grade.) Three acts rewritten, each with an attributed claim and a note naming this map's part (suchet@0's, bag@0's, bag@5's);
+the post house's sub-title and claim note, the edge marker's distance and `SOURCE_NOTE.body[5]`'s open question changed. Both plans' columns on
+the road moved with it, the Allied staging "Bagration on the highway" re-centred on Bagration's dawn.
+
+*What it does* (measured): 2,636 readings of "Whose eyes?" on 8J's and 8K's builds (`know-8k.json`): 11 differ, the Allied
+reading of Suchet at his corrected dawn place (seen to unknown, no line of sight, at ten of the clocks between 05:20 and 09:40) and Napoleon's of
+Bagration at 12:20 (unknown to seen), readings of the model; the viewsheds, the plateau's strength and the centres' separation identical. The
+Command tab's inference that from the Zuran "most of the Olmütz road sector, including the Santon, is in view" (`COMMAND.fr["5"][0]`) measured
+again (`roadview-8k.json`): the drawn road from the Santon's foot to the post 68.5% in sight before, 100% now, the Santon and the post in sight in
+both: it stands. Buildings (`woods-bldg-8k.json`): Bellowitz, Bosenitz, Holubitz and the post house re-planned, each by the road, the track or the
+wood beside it, the 16 other villages identical (without 8J's hold on the woods' sequence 15 would have changed, 11 for no change of their own,
+`woods-bldg-8k-nohold.json`). `check:chronology` unchanged in its verdicts: 66 consistent, the four named conflicts; bag@6's derived arrival
+11:31 to 11:40.
+
+*The map layer in motion* (decision 257 (b)'s benchmark; `docs/stage8-evidence/8k/motion/`). The self-test's motion block changes in 19
+of its 22 runs on 8K's build: the formation-frames drawn over all 72.90% (8J's 73.03%), the longest a formation stays hidden by the layout in
+Play 4,033 ms (3,100). The visibility baselines are re-measured on this build under 8J's rule. Not moved, and failing on 8K's build alone: the
+16's ceilings (jumps 248 against 245, pops 998 against 985) and the real input's tolerance in the paper map's zoom (jumps 26 against its driven
+twin's 10, formations drawn 732 against 795). Measured by the block with one of 8K's changes undone at a time: the road's label point and the
+post house leave it as it is; with both divisions' places of 8J everything is within its limit; with Suchet's of 8J alone too (244, 965); with
+Bagration's of 8J alone the pops (999) and the zoom's divergence remain. So the pops' excess and the divergence come with Suchet's re-plotted
+places (at 09:30, the benchmark's hour, still his dawn place south of the road level with the Santon), the jumps' with both divisions'
+together, Play's longest hidden with Bagration's. The places follow the readings and are not tuned to a benchmark; the map layer's code is
+unchanged; the ceilings and the tolerance are the owner's. *Put to the owner, question 267*: (a) re-baseline the 16's totals at this build's
+(248, 998) and accept the paper zoom's divergence as the benchmark's sensitivity at a crowded spot; (b) recommended: a bounded presentation
+follow-up first (the items at the tipping point in the paper map's zoom found, the real input brought within its twin), then re-baseline only
+what remains. Until the owner decides, `check:selftest` and `check:visual` fail on these three lines alone. 8K's `check:visual` on CI adds
+two lines of the same kind, each traced to one of 8K's data changes and put to the owner under the same question (section 21.9): the Plans
+view's drop limit (13 against 12, the Littawa's name, by both plans' columns on the corrected road: (c) the limit 13, recommended, as decisions
+199 and 214 moved drop limits, or (d) the plans' labels laid out again) and Watch's caption at 14:40 without a derived reading (the centre
+separation ending at 14:30 with Bagration's place on Schönhals's height: (e) the case exempt in `CAP_DERIVED_NONE` with that reason,
+recommended, the reading a spatial heuristic that the corrected place ends earlier, or (f) the reading's rule revisited).
+
+*The checks.* `geo-test.js`'s two checks that held the correction pass's line and rule replaced by checks of the corrected geography and of
+the register's rules (each at least as strict); `redteam.js`'s march-rate acknowledgement (infantry 1.33 to 1.35); the self-test's woods pins;
+`check:chronology` unchanged in its verdicts (the cites of `body[5]` reviewed and rehashed); `check:data`'s reference moved.
+
+### 21.9 The settled baseline for the final audits
+
+*Superseded in part by section 22 (the integration pass, 31 October 2026).* PR #74 (8I) reached `main` (`72c7e1b`); PR #75 (8J) and PR #76 (8K)
+were merged by the owner into their stacked feature branches (`c7de7a2`, `c706c96`), not into `main`, and the integration pass brings both into
+`main` (section 22.1). Question 266 is decided (a), question 267 answered by the bounded presentation-repair approach (sections 22.2 to 22.4); the
+check lines this section lists as failing are resolved or remain as section 22 states.
+
+
+The state the final audits start from: `main` at `b7fb67a` with the three follow-up pull requests merged in order (8I, 8J, 8K), whose final
+build is 8K's (`f10fe585c46aea576f436ed51ac46f83`, 2,810,630 bytes). Until they are merged, that build is on `claude/tender-einstein-gwrsij-highway`.
+
+**Fixed and verified in the follow-up** (each with its check; the evidence in `docs/stage8-evidence/8i/`, `8j/`, `8k/`):
+- the phase's message placed again under every layout's change while it shows (8H: 4 of 8 changes over a control; now 0 of 8, 24 reads), its
+  3.4 s timer untouched, nothing run while it is hidden (8I);
+- the far formation names on the lighter plate at AA as rendered, one size, the protected on the full plate (decision 263 (a), 8I);
+- section 20.12's census corrected to the complete frame and every build's census measured again in both frames (8I; the delivered build's in
+  section 21.6 and below);
+- the Goldbach at Sokolnitz, the pheasantry, the castle and the III Column's places, the Pratzen church, the Austerlitz garden, Legrand's act
+  (decision 259 (a), 8J; the woods' random sequence held so that no building moves but where the data changed; the motion block's visibility
+  baselines re-measured on each data task's build under the owner's rule for geographic baselines, the reason recorded);
+- the highway east of the Santon, the post house, the twelve anchors on and by the road, both plans' columns (decision 260 (a), 8K);
+- two faults the first local self-test of 8J found, fixed: the Austerlitz château undrawn under 8J's garden rule, and a bank bush on the
+  castle's farm (8J).
+
+**Open owner questions** (each with its measured options and a recommendation): 266, the castle's drawn size at its site (8J, section 21.7);
+267, 8K's check lines moved by its re-plotted places and plans: the map layer's motion benchmark over its ceilings, the Plans view's drop
+limit and Watch's derived reading at 14:40 (8K, sections 21.8 and above: `check:selftest` and `check:visual` fail on these alone until it is
+decided).
+
+**Accepted exceptions** (named, with their causes; not historical claims):
+- Satschan's five farmsteads of seven (decision 261 (a)): the drawn mere's outline (decision 27) leaves no room for seven;
+- the feet's remaining cases (decision 265 (a), provisional): 8F's chords with their bounds and counts (section 20.10), the original criterion
+  not satisfied, pending the device runs and the final audit;
+- the conventions labelled as such: the farmsteads' plan and the roofs (8G), the garden's rows and spacing (8J), the far plate's alpha by
+  sym.plate's rule (8I), the gait as a visual convention under compressed time (8E), the ribbons' widths (8A), the derived arrivals' rates
+  (design values, unsourced).
+
+**Provisional choices** (decided for now, to be confirmed): the Sokolnitz castle drawn at 20% of 8G's size at its own site, where the drawn
+track and brook leave no more room (8J; owner question 266, open); decision 265 (a); decision 264 (a)'s ice, with its low-sun appearance on the final
+visual-review checklist; the device acceptance of 8E-8K (pending: below); the identifications this map makes and says it makes (Stutterheim's
+heights by Dwaroschna as the ground east of Bosenitz, Schönhals's height as the rise east of the post, the 1825 sketch's places carried back
+to 1805, the 1826-52 road and post carried back to 1805).
+
+**Unresolved historical questions** (kept open in the data and the sources sheet; none is guessed): the places in 1805 of the highway and the
+post (the First Military Survey not reached); which of the 1825 sketch's two channels carried the Goldbach north of the Sokolnitz castle in 1805;
+the castle's walls and whether the bottom by Sokolnitz was marshy in December 1805; the garden's planting in 1805; Bagration's exact line at
+dawn and where he stood at 17:00 (Rausnitz, or already toward Austerlitz); which side of the road Schönhals's height lay; Krug's place (the Second
+Survey's "Kruch" beside Holubitz, against the drawn Krug's warped legacy place); and `SOURCE_NOTE`'s open questions as they stand (Russian infantry
+flags, the Grenz infantry's coats, the vines, the Russian Guard's attack, Kologrivov's command, the hours the accounts dispute, and the rest).
+
+**Remaining findings** (recorded, not acted on): kienmayer@7's and lang@2's offsets from the corrected brook (each on its own evidence, 8J);
+the castle's site on the model's road class, a track passing it (8J); the III Column's figures over the castle's symbol from 08:00 to 14:10, while it holds the castle (8J); the garden under the château's symbol at the Overview's scale and no garden sign on the paper
+map (8J); Caffarelli's anchors 2.5-2.9 km south of Bagration's from 14:30 (as before, 8K); the woods' habits, turns and scrub drawn again where a
+wood changed (presentation; the buildings and the kept woods' trees held, 8J).
+
+**Carried forward** (each where it was put): 8E's drivers on the guns on the heights (an inference from IV Corps' letter) and the gunners beside
+moving pieces (section 17); decision 245 (a)'s facings, to be reconsidered now that the troops can be judged; 8G's `BUILDINGS.notDrawn` (St
+Anthony's chapel, the Santon's chapel, the Sokolnitz granary, section 19.4).
+
+**The census of the three builds in both frames** (`tools/stage8/census-8i.js` on each build's own `check:visual` report on CI; the complete
+frame, the ground's depth drawn, is what section 8.3's budget judges; the still eye's frame, the depth reused, beside it; each maximum over the
+cases taken separately; geometry counts, not frame times):
+
+| build | the complete frame (the budget's): desktop calls, triangles | phone triangles | the still eye: desktop calls, triangles | phone triangles | its `check:visual` run |
+|---|---|---|---|---|---|
+| 8I (`697bbf34...`) | 864 (plans-overview), 2,352,049 (narrow-1024) | 1,398,127 (phone-390-first) | 862, 2,204,961 | 1,251,039 | 41048882622: all 39 cases, the self-test 317 of 317 and every live block passing (4 h 13 min) |
+| 8J (`7d5594ba...`) | 864 (plans-overview), 2,200,439 (narrow-1024) | 1,315,760 (phone-390-first) | 862, 2,053,351 | 1,168,672 | 41071549726: 38 of the 39 cases, the self-test 317 of 317 and every live block passing (the motion block with its re-measured baselines); one line failing, below (2 h 4 min) |
+| 8K (`f10fe585...`) | 864 (plans-overview), 2,151,193 (narrow-1024) | 1,288,561 (phone-390-first) | 862, 2,004,105 | 1,141,473 | 41080693215: 37 of the 39 cases and the self-test 317 of 317 passing, every live block but the motion block; three lines failing, below (4 h 11 min) |
+
+Section 8.3's budgets against the complete frame: 8I's desktop 36 calls (4%) and 447,951 triangles (16%) within 900 and 2.8 million, its phone
+221,873 triangles (13.7%) within 1.62 million; the same as 8H's to the triangle (section 21.4), as a change to the page's text and timers alone
+should be (`docs/stage8-evidence/8k/census/census-8i.json`, `.md`). 8J's desktop 36 calls (4%) and 599,561 triangles (21.4%) within the
+budget, its phone 304,240 (18.8%): 151,610 triangles fewer than 8I's on the desktop and 82,367 on the phone, the pheasantry's 46 trees for
+190 and the park's 170 no longer drawn (`census-8j.json`, `.md`). 8K's desktop 36 calls (4%) and 648,807 triangles (23.2%), its phone 331,439
+(20.5%): 49,246 and 27,199 fewer than 8J's, the wood above Holubitz no longer drawn (`census-8k.json`, `.md`). The draw calls the same in all three
+builds' maxima (864 and 482): the follow-up changed what is drawn, not how.
+
+*8J's one failing line* (judged again by `check-report.js` with 8J's thresholds): `phone-844x390-explore`'s framing floor (decision 232
+(a)), 9 of the map layer's 11 items inside the free rectangle against the floor of 10, 8I's build standing at the floor. The case replayed as
+the harness reaches it (a phone held landscape, Explore, 09:30): every item drawn a pixel up and left of where 8I draws it, and the Guard
+Cavalry's name, its first place 3 px from the Allied Headquarters' name, taking its next place, above the free rectangle; with the III Column
+put back at its 8I places the same, so the shift is the fitted view's over the corrected Goldbach's ground. 8K's build meets the floor again
+(10 of 12, its "To Rausnitz" marker now in the view). The floor is not moved: it holds on the stack's last build, and on 8J's alone it would be
+the owner's to move (as decisions 199 and 214 moved drop limits).
+
+*8K's three failing lines* (judged again by `check-report.js` with 8K's thresholds), each traced to one of 8K's data changes by its build with
+that change undone, all three put to the owner under question 267 (section 21.8): (1) the motion block, as on `check:selftest` (jumps 248, pops
+998, the paper map's zoom by real input against its twin): Suchet's and Bagration's re-plotted places; (2) `plans-overview`, 13 map items
+dropped against the limit of 12 (measured on the 5F build, decision 141): the Littawa's name newly dropped where both plans' columns and the
+Allied staging now run along the corrected road (with 8J's `PLANS` on 8K's build 12 again; with 8J's anchors and 8K's plans 13); (3)
+`ph8-overview-watch`, Watch's caption without a derived reading at 14:40: the centre separation (a French formation across the line joining
+the Allied groups north and south of the Pratzeberg, `centreSeparation`) ends at 14:30 instead of 15:00, because Bagration's place at 14:30, on
+Schönhals's height east of the post, moves the northern group's centroid about 7 map units east (with his places of 8J it holds at 14:40 as
+before; `CAP_DERIVED_NONE`, the case's exemption list, empty and not added to). The rows still pending are filled from their builds' own runs as they
+complete, never carried over.
+
+**CI on each pushed head** (as recorded when this section was written; completed when the runs complete): 8I (`9d7a966`): the push's and
+the pull request's runs passing (41048791108, 41048869905: the checks job, `check:contrast`, `check:selftest`), the dispatched run passing
+whole (41048882622: the checks job, `check:contrast`, `check:selftest` and `check:visual`); 8J (`0ed98b9`): runs 41071486091, 41071525851 and
+41071549726, the checks job, `check:contrast` and `check:selftest` passing on all three, the dispatched `check:visual` failing on the one line
+above; 8K (`5efb458`, then `58c6b3f` and `9d11acb` with these records): the checks job and `check:contrast` passing, `check:selftest` failing
+on question 267's motion lines alone (judged again here from the run's report: 317 of 317 in-app checks, the motion block's jumps 248, pops
+998 and the paper map's zoom by real input; runs 41080693215, 41088292871, 41088300578), the dispatched `check:visual` (41080693215) failing on
+the three lines above.
+
+**Device acceptance: pending.** No owner hardware was reachable from this session; nothing here substitutes emulation or software-WebGL timing
+for a device. The routes are live on GitHub Pages for `main`'s build, each checked from this session (the page loads, its build boots in
+the frame, no console error): https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html (the desktop route) and the same page with
+`?route=phone`, `?route=fx`, `?route=cull` and `?route=gait`. Pages builds from `main`, so these links serve 8H's build until the follow-up is
+merged and the delivered build (8K's) after it. Before the merge a branch's build is measured as section 20.12 says: hosted where the owner
+chooses (an outward-facing act), or a checkout of the branch served at the repository's root (`python3 -m http.server 8000`) and opened at
+`http://<host>:8000/tools/step6/perf-run.html`, the iPhone on the same network; `?src=` names another build file beside it. The protocol is
+section 20.12's, unchanged: on the desktop the route twice, two minutes apart, on 8H's build and on the delivered build; on the iPhone the phone
+route twice per build; the three brackets once each on both devices on the delivered build; each report pasted back as text with the devices'
+models. They decide section 8.3's budgets on hardware; the geometry counts above are not frame times.
+
+**Stability.** What is settled: every regression suite, `check:data`, `check:chronology` and `check:baseline` pass on each of the three
+builds; the self-test passes all 317 of its checks on each; 8I and 8J pass every live block; the geographic corrections of decisions 259 (a)
+and 260 (a) are in the data with their evidence, grades and registers, and every derived reading, chronology verdict and sight line they move
+is measured and recorded. What is not: 8K's `check:selftest` fails on its motion block and its `check:visual` on that block, the Plans view's drop limit and Watch's
+derived reading at 14:40, each traced to 8K's re-plotted places or plans (question 267) and not moved until the owner decides; 8J's
+`check:visual`, on its own build, fails one line (a phone framing floor, met again on 8K's build: above); the census and the
+`check:visual` runs of the three builds are pending on CI and are recorded here as they complete; the device runs are pending. The build is
+therefore stable for the final audits' reading of its data, records and code, with question 267 and the device acceptance named as the two
+open conditions; nothing in it is known to be broken but what this section names.
+
+## 22. The integration and stabilisation pass before the final combined audit (8L), as built (31 October 2026)
+
+**The brief** (the owner, 31 October 2026): a bounded integration and stabilisation pass for Stage 8 before the final combined audit.
+(1) Resolve the integration gap: one integration branch from the current `main` bringing in the complete intended 8J and 8K, 8I and anything newer
+on `main` preserved, its source and generated build verified, its pull request targeted at `main` ("do not assume a PR's 'merged' status proves
+its changes reached main"). (2) **Decision 266 (a)**: the Sokolnitz castle retained at its corrected site and its present footprint of about
+96 × 73 m, the explanation of the symbol-scale compromise preserved, its visual prominence and its obstruction by troop symbols kept on the final
+audit checklist, no historical geography moved to make it larger. (3) **Question 267, the bounded presentation-repair approach**: the 16's 248
+jumps against 245 and 998 pops against 985, and the paper map's zoom by the real wheel (26 jumps against its scripted comparison's 10, 732
+formation-label appearances against 795) investigated; whether the divergence comes from the application's behaviour, the input's scheduling or
+an invalid comparison determined and demonstrated; the corrected geography, the motion ceilings and the visibility safeguards preserved; no pass
+obtained by hiding more information, weakening the input-equivalence checks or broadly raising thresholds; the longer hidden interval in Play
+inspected; where a bounded repair cannot satisfy the existing criteria, the precise remaining trade-off reported with measured alternatives.
+(4) The two visual expectations resolved narrowly: `plans-overview`'s further dropped Littawa label inspected and a small presentation correction
+tried if appropriate, a case-specific limit of 13 only if the corrected geography explains it and essential information stays readable and
+accessible, the reason recorded, no limit raised globally; `ph8-overview-watch` at 14:40: verified that neither derived reading applies, the case's
+expectation updated to the model with an explicit absence assertion and positive coverage at a time when a derived reading should appear, no
+caption fabricated and no model altered. (5) The final integration build verified (the regression suite, `check:baseline`, `check:data`,
+`check:chronology`, `check:contrast`, `check:selftest`, the full `check:visual`, on the pinned CI browser where required), the coverage of the
+message's placement, the far labels' contrast, the protected labels, the phone framing, the geography and the dependent troop positions kept;
+the commits, the build's identity, the CI links, the failures, the accepted exceptions and the pending hardware checks reported; the stale merge
+and completion records updated; real-device performance, the provisional foot contact, the low-sun ice, the troops' facings, the landmarks'
+legibility and the unresolved historical questions kept on the final audit checklist, none marked passed; one reviewable pull request into
+`main`, not merged; the post-merge checks; a readiness verdict.
+
+### 22.1 The integration gap and its resolution
+
+*What the remote held* (fetched at the start of the work, 31 October 2026, and again before each push): `main` at
+`72c7e1b58de93acc60f674aebac8c5370f9d85cf`, PR #74's merge of 8I's head `9d7a966` into `b7fb67a`, its tree 8I's own (`324b7727...`): `main`
+carried 8I alone. PR #75 (8J, head `0ed98b9`) was merged by the owner into 8I's branch `claude/tender-einstein-gwrsij` (merge
+`c7de7a29092edefc9eb180dd467abaee6b42dd95`, its tree 8J's own) and PR #76 (8K, head `c3e2f51`) into 8J's branch
+`claude/tender-einstein-gwrsij-sokolnitz` (merge `c706c969f9e2c649f1a8265c188d0b35872dd6aa`, its tree 8K's own, `bbfe4c31...`): each "merged",
+neither into `main`. Nothing newer on `main`; no other open pull request. The published page followed `main`: GitHub Pages served 8I's
+build (`austerlitz-command-map.html`, 2,782,595 bytes, md5 `697bbf34ec29fc4d05695dc8e1cd3c5e`, fetched 31 October 2026), so the map a visitor
+reached had neither 8J's nor 8K's corrections.
+
+*What was done*: `claude/charming-dijkstra-srj84w` from `main` at `72c7e1b`; PR #75's merge commit merged into it (`08f033c`), then PR #76's
+(`df8b135`), each `--no-ff`, neither with a conflict. The tree that results is 8K's head's, object for object (`bbfe4c317ad1f4c235c46acce9b7eeb78fe97bb9`),
+so nothing of 8I or of `main` is lost and nothing is added by the merges; after this pull request `main`'s history holds the three pull requests'
+merges (`72c7e1b`, `c7de7a2`, `c706c96`) and their heads (`9d7a966`, `0ed98b9`, `c3e2f51`). `npm run build` writes `austerlitz-command-map.html`,
+2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83`: the committed file, `archive/stage8k-f10fe585.html` and `check:baseline`'s value, byte for
+byte. This pass changes no source of the build (sections 22.3 and 22.4 change the harness and its thresholds; section 22.2 is a record): the
+delivered build is 8K's own, and `check:data`'s reference stays `archive/stage8k-f10fe585.html`.
+
+### 22.2 Decision 266 (a): the Sokolnitz castle
+
+The owner's decision (31 October 2026): (a). The castle stays at its corrected site (`LANDMARK_SITES.castle`, [212.9, 344.3]: the 1825 quadrangle
+and today's castle on one site, B for 1825), drawn at the largest of 8G's size and smaller ones that stands clear there: 20% of 8G's size, the
+quadrangle about 96 by 73 m (the 1825 quadrangle 79.6 by 60.0 m), its farm at that size south of it (`CASTLE8J`, design values; `css-test.js`'s pin
+and the self-test's landmarks check hold them). Nothing changes in the build. The explanation of the compromise stays where a visitor reads it:
+the sources sheet's "How the villages are drawn" (`castleSizeText`: the map's track and brook, drawn wider than they ran, leave it no room at the
+size the map draws its buildings, and the size drawn, read from what is drawn) and the castle's claim in `appearance.js` (its scope: drawn
+smaller, at the largest size that stands clear, since 8J). No geography moves to make it larger: section 21.7's options (b) to (d) are not taken.
+On the final audit checklist (section 22.6): its visual prominence (at about its own size it reads smaller than the farmhouses beside it, drawn
+at the buildings' convention) and its obstruction by the III Column's figures, which stand over its symbol from 08:00 to 14:10 while the column
+holds the castle (section 21.7).
+
+### 22.3 Question 267: the motion block
+
+*The paper map's zoom by real input: an invalid comparison* (`tools/stage8/twin-8l.js`, `docs/stage8-evidence/8l/twin-8l.json`). The block holds
+each run by real input within its tolerance (`REAL_TOL`: 6, or 25% of the twin's count) of a twin driven in the page. Until this pass the twin was
+the 16's own run, which has no pointer: its wheel events carry their place, but no pointer comes to the map. Real input's does: before it presses
+or wheels, `runReal` moves the mouse to the motion's start, and the browser sends the canvas a buttonless pointer move there; the app's hover
+(`mlHoverAt`) takes the formation whose counter or name lies under the pointer, and the layer protects what is hovered, placing it first and
+never dropping it (decision 39). On 8J's build the box at the paper view's centre (948, 428) was the Littawa's name, a place with no formation:
+nothing was hovered and the runs matched. On 8K's build, the layout moved by the corrected places, it is the Russian Imperial Guard's counter
+(`c:constantine`), hovered for the whole zoom in the real run only. Demonstrated: the same driven motion with the real pointer's buttonless
+arrival at its start and its departure (to (2, 2), over the rail: the canvas's out and leave), the *twin with the pointer*, hovers the same
+counter and gives 28 jumps, 126 pops, 9 flickers and 726 of 1,232 formation-frames drawn, against the 16's run's 10, 105, 3 and 795 (25 items
+count differently); the run by real input, three times on one page, gives 26/125/7/725, 26/123/7/732 and 26/123/7/732 (and 28/126/9/726, the
+twin's own numbers, where it follows its twin on the self-test's page),
+each hovering the Guard's counter, each with one buttonless move (its arrival: the browser adds none). The divergence is the hover: the input
+differed, not the application's handling of it. *Input scheduling* accounts for the rest: repeated real runs differ by up to 2 jumps, 3 pops,
+2 flickers and 7 formation-frames (three outcomes seen: real input yields to the event loop between its steps, which a driven run, one evaluation,
+never does), well within the tolerance. The three hybrid motions' pointers hover nothing: their twins are their 16's runs frame for frame, and
+their real runs the same in every count.
+
+*The comparison repaired* (`tools/visual/motion.js`, `thresholds.js`): each run by real input now follows its twin with the pointer (`+point`:
+`RUN`'s `a.point`, `blockRuns`), and the judge holds the run by real input to that twin: the same formation hovered as the pointer arrives,
+every count within `REAL_TOL` (unchanged), its formations' visibility within a frame of the twin's (unchanged). It holds each twin to the 16's
+run: where its pointer hovers nothing, equal in every count and in its formations' visibility (the pointer's coming and going change nothing
+else); where it hovers a formation, the hover named in the run. The twins are new runs, with visibility baselines of their own measured on this
+build (`MOTION.VIS`: the three hovering nothing their 16's runs' values; `paper-zoom+point` [726, 1,232, 667]). No existing baseline, ceiling or
+tolerance moved, and the 16 are as before. Each new rule fails on a copy of a measured record with that one thing broken
+(`tools/stage8/mutate-8l.js`: 15 mutations, all caught; the records as measured pass).
+
+*The 16's totals: the application's behaviour on corrected data* (`tools/stage8/items-8l.js`, `items-8l.json`, `items-8l.md`). The 16 are driven
+runs, frame for frame on the driver's clock, the same counts in every run (here, on CI and in 8K's evidence: 248 jumps, 998 pops, 130
+level-of-detail switches, 9 flickers): no input scheduling. They compare the same motions as the ceilings were set on (decision 257 (b)): a valid
+comparison. What moved them is the map layer's response to 8K's corrected places: between 8J's build (238, 985) and 8K's (248, 998) 61 items
+change their counts in 13 of the 16 runs (hybrid-pan's pops 55 to 65, the paper map's zoom's 92 to 105, its glide's jumps 5 to 11, the
+landscape's zoom's pops 65 to 77; others fall: hybrid-play's pops 108 to 98, hybrid-orbit's 148 to 139), no item at a tipping point (the largest
+net change one counter's 12 pops fewer); with both divisions' places of 8J on 8K's build the totals were 237 and 985 (`motion-8k-e3.json`). The
+mechanism in motion: a held item comes back only at a re-placement pass (every 333 ms) after two passes in a row with room, and the pass places
+in priority order (decision 240 (a)'s invariant, section 3.4), so an item coming back takes the place of a lower-priority item still drawn there,
+which leaves and in turn waits two passes (hybrid-play's pass at frame 27: 10 items back, 6 gone; `items-8l.md`). The corrected places (Suchet's
+dawn place south of the road level with the Santon, Bagration's by the post house) add items to those cycles in the views at 09:00-09:30.
+
+*The bounded repairs measured* (`tools/stage8/variants-8l.js`, `variants-8l.json`: the block as `check:selftest` runs it, on copies of the build
+with one rule changed, judged by `thresholds.js`'s own judge; none adopted):
+
+| variant | the 16: jumps, pops, flickers | formation-frames drawn (the baselines' 30,205) | failures (the judge's, one per criterion) |
+|---|---|---|---|
+| none (this build) | 248, 998, 9 | 30,205 | 2: the two ceilings |
+| kept first while moving: the items drawn in the last pass keep their places first, the held ones are looked for after them in the room left (persist's order at rest, applied in motion) | 238, 815, 4 | 30,997 (+2.6%) | 10: 7 runs below their visibility baselines (hybrid-pan 1,375 against 1,427; hybrid-zoom 1,288 against 1,342, a formation hidden 3,033 ms against 2,133; hybrid-orbit 3,033 ms against 1,900; hybrid-glide 1,105 against 1,152; land-orbit 1,944 against 1,981; hybrid-pan under the two readings 1,318 against 1,370 and 869 against 938), the orbit's twin, the real paper zoom 15 formation-frames from its twin |
+| a protected item drawn keeps its place (a label hovered where it stands stays there) | 221, 1,014, 8 | 29,943 | 9: pops over the ceiling, 8 runs below their baselines |
+| both | 209, 805, 2 | 30,775 (+1.9%) | 9: 7 runs below their baselines, the orbit's twin |
+
+The first is the rule that removes the cycle above: it meets the ceilings with a wide margin and draws more formation-frames in all, but it
+trades visibility between runs (in the Landscape-with-counters views the larger formations, coming back, find the smaller ones' kept places)
+and sets aside decision 240 (a)'s priority order in motion; decision 257 (b) forbids buying the totals with any run's visibility. The second,
+the one aimed at the hover alone, makes the totals worse (live events, also protected, keep their places too). No variant meets the existing
+criteria. Restoring 8J's places (237 and 985) is excluded by the brief.
+
+*The remaining trade-off* (for the owner; nothing decided here): this build exceeds the 16's ceilings by 3 jumps (1.2%) and 13 pops (1.3%), every
+run's formations' visibility at its baseline and every other line of the block passing. Measured options: (a) the ceilings re-baselined at this
+build's counts (248, 998), as the benchmark's sensitivity to the corrected places (8J's data moved them the other way, to 238 jumps; decision 257
+(b) calls them "ceilings of this benchmark, not a guarantee of what a device shows"); (b) kept-first while moving, which meets the ceilings by a
+wide margin but fails seven runs' visibility baselines and changes decision 240 (a)'s priority order: only with the owner's decision on both;
+(c) the two failures carried into the final audit as a named open condition. Until the owner decides, `check:selftest` and `check:visual` fail on
+these two ceilings alone (one line of the motion block's judgement).
+
+*Play's longer hidden interval* (inspected; `items-8l.md`). In the Landscape-with-counters Play (09:00, 90 frames at ½x) the longest a formation
+stays hidden by the layout went from 3,100 ms (8J) to 4,033 ms (8K; its baseline moved in 8K under 8J's rule): the counters of Nansouty's
+Cuirassiers, Walther's Dragoons and Miloradovich's Russians are hidden for the whole run, 121 frames (on 8J's build drawn in 51, 3 and 10). All
+three are dropped at rest in that view at 09:00 and again after the motion (frame 0, frames 91-120: the static layout has no room for them).
+While it plays the full search has room for them between passes (Nansouty's in 50 of the 121 frames, Walther's in 43, Miloradovich's in 7) but
+never at two passes in a row, because at each pass the higher-priority held items, coming back first, take it (the cycle above). With
+Bagration's places of 8J it was 3,100 ms (`motion-8k-e3b.json`): his corrected place by the post house adds his counter to that cycle. Each of
+the three stays reachable by hover and keyboard (decision 39), as every dropped item is; no variant measured shortens it (4,033 ms in each).
+
+### 22.4 The two visual expectations
+
+*plans-overview: the Littawa* (`tools/stage8/plans-8l.js`, `plans-8l.json`). On 8K's build 13 items are dropped against the case's limit of 12,
+the 13th the Littawa's name (`t:litava`). A place name is drawn only beside its own 10 px marker, which must be free first; it is covered (within
+the layer's padding) by Liechtenstein's name (`n:lich`), at a ring place below the one it held on 8J's build. The chain, in placement order: with
+decision 260 (a) both plans' columns on the highway and the Allied staging "Bagration on the highway" follow the corrected road, and their labels
+move with them (the staging's by 47.7 px, the Advance Guard of the Right's by 35.3, the pivot's by 22.3; the arrows' labels for Suchet and
+Bagration by 18.6 and 23.0); the plan label "Stare Vinohrady" moves onto Liechtenstein's name's place, and Liechtenstein's next free place covers
+the Littawa's marker. With 8J's `PLANS` restored on 8K's build: 12 dropped, the Littawa drawn. A small presentation correction was considered
+and not made: what drops the Littawa's name is the general placement (the priority order, the rings, a place's name only beside its marker), and
+any change to it moves every view's layout, the 39 cases' drop limits and the motion block's counts, for one tertiary name in one view. What
+stays drawn is what 8J's build draws there: every formation name but the Allied headquarters', every plan label but "The concealed centre" (both
+dropped on 8J's build too), the river itself; the Littawa's name stays in the layer's keyboard order and, focused, is drawn (forced, clear of the
+panels; dropped again when the focus leaves: A-2); the map text at AA as rendered (the case's own measure, its least 12.17:1). The owner's
+condition holds, so the case's limit is 13 (`thresholds.js`: a line below decision 141's, which it replaces for this case alone, its reason
+beside it); no other case's limit moved.
+
+*ph8-overview-watch at 14:40* (`tools/stage8/caption-8l.js`, `caption-8l.json`). Verified: at 14:40 (phase 8) the plateau reading cannot apply (it
+applies through `PLATEAU_LAST`, phase 6; the Allied strength on the heights is 0) and `centreSeparation()` finds no French formation across the
+line joining the Allied groups north and south of the Pratzeberg. On 8K's build it holds until 14:20 and ends at 14:30 (on 8J's until 14:40):
+Bagration's corrected place on Schönhals's height east of the post moves the northern group's centroid east (432.9, 160.4 at 14:40 against 425.9,
+159.3 on 8J's build). Every ten minutes from 04:00 to 17:00 the caption shows exactly the readings the model gives, on both builds (79 clocks each,
+no disagreement). The case's expectation is now the model's (`thresholds.js` `CAP_DERIVED_ABSENT`, not an exemption): `measure.js`'s
+`derivedModel` asks the model at the case's clock, and the case fails if the model gives a reading there or the caption shows one (the explicit
+absence); `harness.js` measures the same view once more at 14:20 (phase 7, the last ten-minute clock with the centre separation), where the
+caption must show the model's reading whole (the positive coverage), then sets the case's clock back (checked). Every other Watch case keeps the
+strict rule (its caption must show a derived reading). Measured on this build (`report-two-cases.json`): at 14:40 the model gives neither and the
+caption shows none; at 14:20 the centre separation, shown whole; the clock back at 14:40. The model and the caption are unchanged.
+
+### 22.5 Verification
+
+Here (Playwright 1.56's headless Chromium 141.0.7390.37 under SwiftShader, the browser CI pins; the build `f10fe585...`, unchanged):
+- `npm test`: all nine suites and the height guard passed on the integration build (5 min 31 s) and again on the final state (5 min 40 s).
+- `check:data`: all 139 data declarations byte-identical to `archive/stage8k-f10fe585.html`. `check:chronology`: 0 errors (the movement audit 0
+  findings; 118 statements cited by 73 of 75 REVIEW rows, 37 allowed by name; the four named conflicts). `check:baseline`: md5
+  `f10fe585c46aea576f436ed51ac46f83`, 2,810,630 bytes.
+- The motion block on a page of its own (`tools/stage8/motion-8h.js`, as `check:selftest` and as `check:visual` run it,
+  `docs/stage8-evidence/8l/motion/`): the 16 at 248 jumps, 998 pops, 130 level-of-detail switches, 9 flickers; every driven run at its visibility
+  baseline; every run by real input within its tolerance of its twin with the pointer (on the self-test's page identical to it); judged by
+  `thresholds.js`: the 16's two ceilings its only failures (section 22.3). `tools/stage8/mutate-8l.js`: 15 of 15 mutations caught.
+- The two cases judged anew (`report-two-cases.json`, `check-report.js`): both pass.
+- `check:contrast`: passing (23 min under load): 6,926 text elements in 45 states (10 of them at 390 x 844 as a phone), every state reached, 0 below
+  AA, 0 below 10.5 px, 0 font failures, 0 console messages; the eight start-up cases passing (the context's loss and restore with 193 of the
+  warnings `CTX_DELETES` allows, 248).
+- `check:selftest`: the in-app self-test 317 of 317 (the manifest's 317), every page's console messages 0, every live block run; one failing line:
+  the motion block's 16 at 248 jumps and 998 pops over their ceilings (section 22.3). The runs by real input within their twins' tolerance (the
+  orbit hovering nothing, identical to its twin; the paper map's zoom hovering the Guard's counter, 26 jumps, 125 pops, 725 drawn against its
+  twin's 28, 126, 726). `check-report.js` judges the report the same.
+- The full `check:visual` (2 h 41 min; a first run, lost at its 25th case to the container's restart, counted for nothing): all 39 cases passing,
+  among them `plans-overview` (13 dropped, the Littawa's name the 13th, against its limit of 13) and `ph8-overview-watch` (at 14:40 the model gives
+  neither derived reading and the caption shows none; at 14:20 the centre separation, shown whole; the clock set back to 14:40); the in-app
+  self-test 317 of 317; every page's console messages 0; every live block passing but the motion block, among them the phase's message at the nine
+  sizes and under the layout's changes (`toast`, `toastLayout`), the far names' plate in its 13 views (`farPlate`: the far names at AA as rendered,
+  the least 6.91:1), the focus ring, the narrow and phone layouts, the shortcuts, reduced motion, the tips and the fifteen culling sequences (0
+  pixels differing in every frame compared, none culled with an instance in view); the motion block's one failing line, the 16 at 248 jumps and
+  998 pops, its runs by real input within their twins' tolerance (the paper map's zoom 26/125/7/725 against its twin's 28/126/9/726, both hovering
+  the Guard's counter; the three hybrid motions equal to their twins in every count). `check-report.js` judges the report the same (FAILURES: 1).
+  The census in both frames (`tools/stage8/census-8i.js`): the complete frame's maxima 864 calls (`plans-overview`) and 2,151,193 triangles
+  (`narrow-1024`) on the desktop, 36 calls (4%) and 648,807 triangles (23.2%) within section 8.3's 900 and 2.8 million; the phone's 1,288,561
+  (`phone-390-first`), 331,439 (20.5%) within 1.62 million; the still eye's 862 calls and 2,004,105 triangles, the phone's 1,141,473; the low
+  Pratzen view's complete frame 17.8% fewer triangles with culling than without (1,798,057 of 2,188,177; the target 10%).
+
+On CI (the pinned browser): the push of `0b7b77c` (run 41156435794): the checks job passing (`npm test`, `check:data`, `check:chronology`, the
+committed file the sources' build), `check:contrast` passing, `check:selftest` failing on the one line above alone (STAGE0 FAILURES: 1; its real
+paper zoom 26/125/7/725 against its twin's 28/126/9/726). The `check:visual` run dispatched on the same head (41156439125, job 124404161313, 4 h
+11 min) the same as here line for line: all 39 cases, the self-test 317 of 317, console 0, every live block but the motion block's one line
+(STAGE0 FAILURES: 1), every count and visibility of the block's runs equal to the run here; its census identical case by case to the one here
+and to 8K's own run's (39 of 39 cases; `docs/stage8-evidence/8l/census/`); `check-report.js` judges its report the same. The tools and the build
+at `0b7b77c` are the head's (`git diff --stat 0b7b77c` to the head: records and evidence only), so that run judges the head. On `f86c1bf`, the
+head when this section was last recorded (runs 41160456267, the push's, and 41160460354, the pull request's): the checks job and
+`check:contrast` passing, `check:selftest` failing on the one line above alone (STAGE0 FAILURES: 1).
+
+### 22.6 The final audit checklist (carried; none of it marked passed)
+
+- **Real-device performance**: the device acceptance of 8E-8K, unchanged by this pass (section 20.12's protocol; the routes on GitHub Pages serve
+  `main`'s build, which after this pull request is this one, `f10fe585...`); no time measured here is a device's.
+- **The troops' contact with the ground**: decision 265 (a), provisional: 8F's chords with their bounds and counts; the original criterion (every
+  foot on the ground) not satisfied; the animation's budget not raised.
+- **The ice under a low sun**: decision 264 (a): the low views' glare at 15:00 (43.5% of the ice, section 20.10).
+- **The troops' facings**: decision 245 (a), to be reconsidered now that the troops can be judged; with them 8E's drivers on the guns on the
+  heights (an inference from IV Corps' letter) and the gunners beside moving pieces.
+- **The landmarks' legibility**: the Sokolnitz castle at about 96 by 73 m, reading smaller than the farmhouses beside it, and the III Column's
+  figures over its symbol from 08:00 to 14:10 (decision 266 (a)); the Austerlitz garden under the château's symbol at the Overview's scale and no
+  garden sign on the paper map (8J); Satschan's five farmsteads of seven (decision 261 (a)); 8G's `BUILDINGS.notDrawn` (St Anthony's chapel, the
+  Santon's chapel, the Sokolnitz granary); the Littawa's name dropped in the Plans view at the Overview (section 22.4).
+- **The map layer in motion**: the 16's totals over their ceilings, unless the owner decides before the audit (section 22.3); Play's longest hidden
+  formation, 4,033 ms (three counters dropped at rest in the hybrid view at 09:00).
+- **The unresolved historical questions** (kept open in the data and the sources sheet; none guessed): section 21.9's list (the places in 1805 of
+  the highway and the post; which of the 1825 sketch's two channels carried the Goldbach north of the castle; the castle's walls and the bottom's
+  marshiness in December 1805; the garden's planting in 1805; Bagration's line at dawn and his place at 17:00; which side of the road Schönhals's
+  height lay; Krug's place); kienmayer@7's and lang@2's offsets from the corrected brook; Caffarelli's anchors 2.5-2.9 km south of Bagration's
+  from 14:30; `SOURCE_NOTE`'s open questions as they stand.
+
+### 22.7 Readiness
+
+*The integration is coherent.* `main` at `72c7e1b` (8I) with 8J's and 8K's complete changes: the application, the data and the build are 8K's
+head's own (the build `f10fe585...`, byte for byte `archive/stage8k-f10fe585.html` and 8K's head's), nothing of 8I or of `main` is lost (`main`
+an ancestor of this branch's head, nothing newer on it), and what differs from 8K's head is the records, the evidence and the harness's tools
+alone (section 22.8, item 2).
+
+*The required checks* on this build, here and on CI's pinned browser, agree line for line: `npm test`, `check:data`, `check:chronology`,
+`check:baseline` and `check:contrast` pass; `check:selftest` and `check:visual` pass every case, every in-app check (317 of 317) and every live
+block but one line, the motion block's 16 at 248 jumps and 998 pops against their ceilings of 245 and 985. The coverage the brief names holds:
+the phase's message clear of every control under every layout's change (`toastLayout`, 8I), the far names' plate at AA (`farPlate`, 8I), the
+protected labels (the self-test's never-dropped items and focused item, the motion block's protected-item rules), the phone framing (the ten phone
+cases and the phone block), the corrected geography and the troops placed on it (`check:data` against 8K's reference, `check:chronology` and
+its movement audit, the self-test's landmarks, woods, buildings and figures on the drawn ground).
+
+*The verdict: ready for the final combined audit once the owner settles question 267's remaining trade-off.* The brief's condition for
+proceeding directly, the required checks passing, is met but for those two ceilings. They are not a fault of the integration: they are 8K's
+corrected places as the deterministic benchmark counts them, measured item by item, and no bounded repair measured meets them without losing
+a run's visibility (section 22.3). This pass recommends (a), the two ceilings re-baselined at 248 and 998 on the owner's word: it is the owner's
+rule for the follow-up's geographic baselines (moved only where the authorised data change justifies it, the reason recorded), which 8K
+applied to the visibility baselines but not to the ceilings, here with the cause shown (with both divisions' places of 8J the totals are 237
+and 985); the excess is 1.2% and 1.3% on a benchmark whose counts 8J's own corrected places moved by as much the other way; every run's
+formations' visibility stays at its baseline; and the real input is now held like for like. (c), the two failures carried into the audit, is
+the alternative if the owner prefers the audit to judge them, at the cost of a failing `check:selftest` on `main` until then, which hides any
+new failure in that job; (b) only with the owner's acceptance of its seven runs' visibility losses and of the change to decision 240 (a)'s
+order, which this pass does not recommend. With (a) or (c) the final combined audit can begin directly. Device acceptance for 8E-8K stays
+pending (section 22.6): it does not hold the audit back, but Stage 8 is not complete without it.
+
+### 22.8 After the merge: what to check
+
+1. The three pull requests in `main`: after `git fetch origin main`, `git merge-base --is-ancestor <commit> origin/main` succeeds for #74's merge
+   `72c7e1b58de93acc60f674aebac8c5370f9d85cf`, #75's `c7de7a29092edefc9eb180dd467abaee6b42dd95`, #76's `c706c969f9e2c649f1a8265c188d0b35872dd6aa`,
+   their heads `9d7a9663e257fa2bf7db74f69dff5c6143f53812`, `0ed98b991ca85f5d1c90bc78d41b667cb8cff8db` and `c3e2f51ca35e5311cbdbb2886fa3765b538a8246`,
+   and this pull request's head.
+2. Nothing of the build differs from 8K's head: `git diff --stat c3e2f51 origin/main` lists only `CHANGELOG.md`, `CLAUDE.md`, `docs/` and `tools/`
+   (no application source, data file, archive or build); `git diff c3e2f51 origin/main -- austerlitz-command-map.html` is empty.
+3. The published HTML is the accepted build: `npm run build` then `git diff --exit-code austerlitz-command-map.html` (the committed file is the
+   sources' build); `npm run check:baseline` (md5 `f10fe585c46aea576f436ed51ac46f83`, 2,810,630 bytes); `cmp austerlitz-command-map.html
+   archive/stage8k-f10fe585.html`; `npm run check:data` (139 data declarations identical). Once GitHub Pages has deployed `main`, the page it
+   serves is the same file: `curl -sL https://billybobbyboo.github.io/Austerlitz/austerlitz-command-map.html | md5sum` gives `f10fe585...`.
+4. CI on the merge commit: the checks job and `check:contrast` pass; `check:selftest` (and a dispatched `check:visual`) fail on no line but the
+   16's two ceilings, until the owner decides question 267's remaining trade-off (section 22.3).

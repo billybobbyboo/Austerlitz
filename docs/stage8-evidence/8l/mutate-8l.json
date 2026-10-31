@@ -1,0 +1,133 @@
+{
+ "records": {
+  "ph8-overview-watch": [],
+  "plans-overview": [],
+  "the self-test's block": [],
+  "check:visual's block": []
+ },
+ "mutations": [
+  {
+   "name": "a derived reading shown at 14:40",
+   "caught": true,
+   "failures": [
+    "Watch: the caption shows a derived reading (separation) where the model gives none"
+   ]
+  },
+  {
+   "name": "the model giving the centre separation at 14:40",
+   "caught": true,
+   "failures": [
+    "Watch: the model gives a derived reading at 880 (the plateau reading false, the centre separation true), where CAP_DERIVED_ABSENT expects none"
+   ]
+  },
+  {
+   "name": "the model not asked at the case's clock",
+   "caught": true,
+   "failures": [
+    "Watch: the model's derived readings not measured at the case's clock (CAP_DERIVED_ABSENT: 14:40: phase 8 is past the plateau reading's last phase, and the centre separation ends at 14:30 with Bagration's corrected place (decision 260 (a)))",
+    "Watch: the case's clock not set back after the positive case"
+   ]
+  },
+  {
+   "name": "no positive case",
+   "caught": true,
+   "failures": [
+    "Watch: the caption not measured at 860, where the model gives a derived reading (the positive case)"
+   ]
+  },
+  {
+   "name": "the reading not shown at 14:20",
+   "caught": true,
+   "failures": [
+    "Watch: at 860 the caption does not show the model's derived reading (separation; shown: none, null)"
+   ]
+  },
+  {
+   "name": "the positive case covering nothing",
+   "caught": true,
+   "failures": [
+    "Watch: at 860 the model gives no derived reading either: the positive case covers nothing"
+   ]
+  },
+  {
+   "name": "the clock not set back",
+   "caught": true,
+   "failures": [
+    "Watch: the case's clock not set back after the positive case"
+   ]
+  },
+  {
+   "name": "14 dropped in plans-overview",
+   "caught": true,
+   "failures": [
+    "14 items dropped, over the limit of 13 (what the canvas pass hid): pl:The concealed centre, n:ahq, t:pratzen, t:vinohrady, t:pratzeberg, t:santon, t:zuran, t:goldbach, t:litava, t:telnitz, t:sokolnitz, t:augezd, t:satschan"
+   ]
+  },
+  {
+   "name": "the twins with the pointer missing",
+   "caught": true,
+   "failures": [
+    "0 twins with the pointer for the 4 runs by real input",
+    "the visibility baseline hybrid-pan+point names no run of the block",
+    "the visibility baseline hybrid-orbit+point names no run of the block",
+    "the visibility baseline hybrid-zoom+point names no run of the block",
+    "the visibility baseline paper-zoom+point names no run of the block",
+    "hybrid-pan+real: no visibility baseline for it in thresholds.js MOTION.VIS: its visibility unchecked (decision 257 (b))",
+    "hybrid-orbit+real: no visibility baseline for it in thresholds.js MOTION.VIS: its visibility unchecked (decision 257 (b))",
+    "hybrid-zoom+real: no visibility baseline for it in thresholds.js MOTION.VIS: its visibility unchecked (decision 257 (b))",
+    "paper-zoom+real: no visibility baseline for it in thresholds.js MOTION.VIS: its visibility unchecked (decision 257 (b))",
+    "hybrid-pan by real input: no twin with the pointer",
+    "hybrid-orbit by real input: no twin with the pointer",
+    "hybrid-zoom by real input: no twin with the pointer",
+    "paper-zoom by real input: no twin with the pointer"
+   ]
+  },
+  {
+   "name": "a run by real input hovering other than its twin",
+   "caught": true,
+   "failures": [
+    "paper-zoom by real input: its pointer hovers nothing, its twin's constantine"
+   ]
+  },
+  {
+   "name": "a twin hovering nothing that differs from its 16's run",
+   "caught": true,
+   "failures": [
+    "hybrid-orbit with the pointer hovering nothing differs from the 16's run in pops"
+   ]
+  },
+  {
+   "name": "a twin hovering nothing drawing fewer than its 16's run",
+   "caught": true,
+   "failures": [
+    "hybrid-orbit+point: formations drawn in 1536 of 2548 formation-frames, the baseline 1537 of 2548 (fewer drawn)",
+    "hybrid-orbit with the pointer hovering nothing differs from the 16's run in formations' on"
+   ]
+  },
+  {
+   "name": "a run by real input 8 jumps from its twin (the tolerance 7)",
+   "caught": true,
+   "failures": [
+    "paper-zoom by real input: jumps 36, its twin with the pointer driven in the page 28 (tolerance 7)"
+   ]
+  },
+  {
+   "name": "the paper zoom's twin below its visibility baseline",
+   "caught": true,
+   "failures": [
+    "paper-zoom+point: formations drawn in 725 of 1232 formation-frames, the baseline 726 of 1232 (fewer drawn)"
+   ]
+  },
+  {
+   "name": "the self-test's paper zoom without its twin",
+   "caught": true,
+   "failures": [
+    "1 twins with the pointer for the 2 runs by real input",
+    "the visibility baseline paper-zoom+point names no run of the block",
+    "paper-zoom+real: no visibility baseline for it in thresholds.js MOTION.VIS: its visibility unchecked (decision 257 (b))",
+    "paper-zoom by real input: no twin with the pointer"
+   ]
+  }
+ ],
+ "all": true
+}

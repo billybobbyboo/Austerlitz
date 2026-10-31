@@ -657,7 +657,7 @@ if(cerrs) process.exitCode=1;
   if(!/if\(uDebug>4\.5\) gDbgD=gDc; else \{/.test(gd)) ferr.push("the near detail's debug sample is not apart from the detail's scaling (uDebug 5)");
   /* the self-test's bounds */
   if(!/var ICE8F=\{SHORE:1\.10, MARGIN:1\.25\};/.test(src)) ferr.push("the self-test's ice bounds (ICE8F) are not 1.10 at the shore and 1.25 at the margin");
-  if(!/var WOODS8E=\{wood:634, village:184, conifer:376, edge:354, stream:202\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's 8E woods (WOODS8E, KIT8E) are not 8E's");
+  if(!/var WOODS8E=\{wood:357, village:184, conifer:229, edge:205, stream:222, garden:12\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's woods pins (WOODS8E: since the follow-up 8J the counts of the woods' data tasks; KIT8E, 8E's triangles a tree) are not as recorded");
   ferr.forEach(e=>console.log("  ! "+e));
   console.log("water, woods and the near ground (decisions 246 (a), 247 (a)): "+(ferr.length?ferr.length+" wrong":"the water's colours in WATER_COL, the paper map's water 8E's materials, the meres' outlines, levels and ring 4E's, the ice writing no depth, the band without an offset and after its ice, nothing animated; TREE8F, the crowns opaque on both faces, 8E's jitter and conifers; GDETAIL on the natural ground only, faded, anchored, a grey ratio, off under lowTier; the self-test's bounds"));
   if(ferr.length) process.exitCode=1;
@@ -729,6 +729,14 @@ if(cerrs) process.exitCode=1;
      !/chateau:\{w:5\.6, d:1\.5, wing:\[1\.4,2\.6\], h:2\.0, near:10, bearing:236, tol:22\.5\}/.test(Bv))
     gerr.push("BLD8G's values changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 19; the château's tolerance, 22.5 degrees, with section 20.3)");
   if(!/var CHAPEL8G=0\.5;/.test(wsrc)) gerr.push("the chapel's size (CHAPEL8G) changed");
+  /* the follow-up 8J (decision 259 (a), docs/STAGE8_SPEC.md section 21.7): the castle at its own site, at the largest of its sizes (8G's, then
+     smaller by CASTLE8J.step, not below CASTLE8J.floor) at which its quadrangle stands clear covering its site, its farm at that size */
+  if(!/var CASTLE8J=\{step:0\.05, floor:0\.15\};/.test(wsrc)) gerr.push("the castle's sizes (CASTLE8J) changed (design values: change them on purpose, with docs/STAGE8_SPEC.md section 21.7)");
+  { const cp8=wfn("castlePlan8g");
+    if(!/c=W\(LANDMARK_SITES\.castle\[0\],LANDMARK_SITES\.castle\[1\]\)/.test(cp8)) gerr.push("the castle not planned at its own site (LANDMARK_SITES.castle)");
+    if(!/var s=Math\.round\(\(1-k\*CASTLE8J\.step\)\*1000\)\/1000; if\(s<CASTLE8J\.floor-1e-9\) break;/.test(cp8)) gerr.push("the castle's sizes not tried from 8G's down by CASTLE8J.step to CASTLE8J.floor");
+    if(!/m1=v8Settle\(cas,ctx,Math\.min\(B\.w,B\.d\)\*s\/2\)/.test(cp8)||!/if\(!m1\) continue;/.test(cp8)) gerr.push("the castle allowed off its own site (its move not held to half its shorter side, so that its quadrangle covers its site)");
+    if(!/v8Rect\(p\[0\],p\[1\],t,a\*s,b\*s\), h:h, part:part, scale:s\}/.test(cp8)) gerr.push("the castle's and its farm's ranges not drawn at one size (their storeys' heights unscaled), or their size not kept"); }
   if(!/var V8CANDS=24;/.test(wsrc)) gerr.push("the church's places tried for its village's plan (V8CANDS) changed");
   /* the claims read, not typed */
   const rear=wfn("v8Rear"), plan=wfn("planBuildings8g"), church=wfn("churchPlan8g");
