@@ -544,12 +544,27 @@ drawn track and the drawn brook (their widths a display convention), stands clea
 (`CASTLE8J`), and put to the owner as **question 266** (§21.7: (a) keep it, recommended; (b) a middle size off its site; (c) the ribbons narrowed
 there; (d) 8G's size 461 m off across the track).
 
-**Still open in Stage 8**: question 267 (8K: the check lines its re-plotted places and plans move, the map layer's motion benchmark over its
-ceilings, the Plans view's drop limit and Watch's derived reading at 14:40, §21.8 and §21.9; `check:selftest` and `check:visual` fail on them
-alone until decided); question 266 (the castle's drawn size at its site, §21.7); the device runs for 8E-8K (§20.12, §21); decision 245 (a)'s facings, to be reconsidered now
+**The integration pass, 8L** (31 October 2026; `docs/STAGE8_SPEC.md` §22; one draft pull request into `main` from `claude/charming-dijkstra-srj84w`,
+not merged): PR #74 (8I) had reached `main` (`72c7e1b`), but PR #75 (8J) and PR #76 (8K) had been merged into their stacked feature branches
+(`c7de7a2`, `c706c96`), not into `main`; both merged into the integration branch, its tree 8K's own and its build 8K's (`f10fe585...`). The
+owner's decisions of 31 October 2026: **266 (a)**, the Sokolnitz castle kept at its corrected site at about 96 by 73 m, the explanation of the
+symbol-scale compromise kept, its prominence and its obstruction by troop symbols on the final audit checklist; **267**, the bounded
+presentation-repair approach, the ceilings and visibility safeguards preserved: the paper map's zoom by real input was an invalid comparison
+(the real pointer hovered the Russian Imperial Guard's counter at the view's centre, which the layer protects; the 16's run has no pointer),
+repaired by a twin with the pointer (identical to the real input, `REAL_TOL` unchanged); the 16's totals (248 jumps, 998 pops) are the map
+layer's response to the corrected places, and no bounded repair measured meets the ceilings and every run's visibility (the trade-off put to
+the owner, §22.3); `plans-overview`'s limit 13 for the Littawa's name (the owner's authorisation, its conditions met); `ph8-overview-watch` judged
+against the model (no derived reading at 14:40, the centre separation shown at 14:20).
+
+**Still open in Stage 8**: question 267's remaining trade-off (the 16's ceilings: re-baseline at 248 and 998, adopt "kept first while moving"
+with its visibility losses, or carry the two lines into the final audit; §22.3; `check:selftest` and `check:visual` fail on these two lines
+alone until decided); the device runs for 8E-8K (§20.12, §21, §22.6); decision 245 (a)'s facings, to be reconsidered now
 that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
 `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's
 remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist.
+All of these are on the final audit checklist, `docs/STAGE8_SPEC.md` §22.6 (real-device performance, the provisional foot contact, the low-sun ice,
+the troops' facings, the landmarks' legibility with the castle's prominence and its obstruction by troop symbols, the map layer in motion, the
+unresolved historical questions), none of them marked passed.
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**

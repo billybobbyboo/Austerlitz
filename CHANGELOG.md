@@ -1,9 +1,64 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, the integration pass (8L): 8J and 8K brought into `main`; decision 266 (a); question 267's check lines
+
+**Status: built on `claude/charming-dijkstra-srj84w` (a draft pull request into `main`, for review; not merged), from `main` at
+`72c7e1b58de93acc60f674aebac8c5370f9d85cf` (PR #74's merge of 8I; nothing newer on `main`, 31 October 2026).** The record is
+`docs/STAGE8_SPEC.md` section 22, the evidence `docs/stage8-evidence/8l/` (its README lists each file and the tool that made it). The build is 8K's
+own, unchanged: `austerlitz-command-map.html` **2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83`** (`check:baseline` unchanged;
+`check:data`'s reference unchanged, `archive/stage8k-f10fe585.html`, all 139 data declarations identical). No application source, data file or
+build changed in this pass: the harness, its thresholds and the records did.
+
+- **The integration gap.** `main` at `72c7e1b` carried 8I alone: PR #75 (8J) had been merged into 8I's branch (`c7de7a29`) and PR #76 (8K) into
+  8J's (`c706c969`), neither into `main`. Both merge commits merged into this branch (`08f033c`, `df8b135`; no conflict): its tree is 8K's head's
+  object for object (`bbfe4c31...`), its build 8K's byte for byte; `main`'s history after this pull request holds the three pull requests'
+  merges and heads (section 22.8 lists the checks). The status lines of 8H-8K below corrected (each said "not merged").
+- **Decision 266 (a)** (the owner, 31 October 2026): the Sokolnitz castle kept at its corrected site and its present size, the quadrangle about
+  96 by 73 m (20% of 8G's size, the largest that stands clear between the drawn track and brook; `CASTLE8J`); the compromise's explanation kept
+  where a visitor reads it (the sources sheet's `castleSizeText`, the castle's claim in `appearance.js`); no geography moved to make it larger.
+  Its visual prominence and the III Column's figures over its symbol (08:00-14:10) are on the final audit checklist (section 22.6).
+- **Question 267, the paper map's zoom by real input: an invalid comparison, repaired.** The real pointer, parked at the view's centre before it
+  wheels, hovers the formation under it, and the layer protects what is hovered (decision 39); the 16's run it was compared with has no pointer.
+  On 8J's build nothing lay under the centre; on 8K's the Russian Imperial Guard's counter does. Demonstrated (`tools/stage8/twin-8l.js`): the
+  same driven motion with the pointer's buttonless arrival and departure hovers the same counter and gives 28 jumps, 126 pops and 726 of 1,232
+  formation-frames drawn, the real runs 28/126/726 and 26/123/732 (input scheduling: the event loop between real steps; one buttonless move
+  each), the 16's run 10/105/795. `tools/visual/motion.js`: each run by real input now follows its *twin with the pointer*; `thresholds.js`:
+  the real input judged against that twin (the same hover, `REAL_TOL` unchanged, visibility within a frame), each twin hovering nothing held
+  equal to its 16's run, the twins' visibility baselines added (new runs; the three hovering nothing their 16's values, `paper-zoom+point`
+  [726, 1232, 667]). No existing baseline, ceiling or tolerance moved; `tools/stage8/mutate-8l.js` catches all 16 mutations of the new rules.
+- **Question 267, the 16's totals: not resolved; the trade-off measured.** Driven and deterministic (no scheduling), compared with ceilings set
+  on the same motions (valid): the map layer's response to 8K's corrected places, 61 items changing their counts in 13 of the 16 runs between 8J's
+  build (238, 985) and 8K's (248, 998), no item at a tipping point (`tools/stage8/items-8l.js`). Bounded repairs measured on the exact benchmark
+  (`tools/stage8/variants-8l.js`), none adopted: "kept first while moving" 238 jumps and 815 pops with 2.6% more formation-frames drawn, but 7 runs
+  below their visibility baselines (and decision 240 (a)'s priority order in motion set aside); "a protected item keeps its drawn place" 1,014
+  pops; both 209 and 805, 7 runs below. The remaining trade-off for the owner (section 22.3): re-baseline the ceilings at 248 and 998 (+1.2%,
+  +1.3%), adopt kept-first with its visibility losses, or carry the two lines into the final audit. Until then `check:selftest` and
+  `check:visual` fail on these two lines alone.
+- **Play's longer hidden interval** (4,033 ms, 3,100 on 8J's build): the counters of Nansouty's Cuirassiers, Walther's Dragoons and Miloradovich's
+  Russians, dropped at rest in the hybrid view at 09:00, with room between the 333 ms re-placement passes but never at two in a row (higher-priority
+  held items come back first); Bagration's corrected place adds his counter to that cycle. Reachable by hover and keyboard; no variant shortens it.
+- **plans-overview: a case-specific limit of 13** (the owner's authorisation): the Littawa's name (`t:litava`) dropped because its marker is
+  covered by Liechtenstein's name, pushed there by the plan labels that follow the corrected road (`tools/stage8/plans-8l.js`; with 8J's `PLANS` 12).
+  Everything 8J's build draws there is drawn; the Littawa's name reachable by the keyboard and drawn when focused; the map text at AA. No small
+  presentation correction made (any change to the placement rules moves every view). No other limit moved.
+- **ph8-overview-watch: the model's expectation** (`thresholds.js` `CAP_DERIVED_ABSENT`): at 14:40 (phase 8) neither derived reading applies
+  (the plateau reading ends with phase 6; the centre separation holds until 14:20 with Bagration's corrected place, until 14:40 on 8J's build;
+  `tools/stage8/caption-8l.js`: the caption agrees with the model at all 79 ten-minute clocks on both builds). The case fails if the model gives a
+  reading at 14:40 or the caption shows one; `harness.js` measures the same view at 14:20, where the caption must show the centre separation, then
+  sets the clock back; `measure.js` `derivedModel`. Nothing fabricated; the model unchanged.
+
+Verified here (Chromium 141 under Playwright 1.56, the pinned browser): `npm test` on the integration build (all nine suites and the height
+guard), `check:data` (139 identical), `check:chronology` (0 errors), `check:baseline` (`f10fe585...`); the motion block on a page of its own (the
+two ceilings its only failing lines); the two cases judged anew (both pass); `mutate-8l.js` (16 of 16 caught). Pending when this entry was
+written, and recorded in section 22.5 when they complete: `npm test` on the final state, `check:selftest`, `check:contrast` and the full
+`check:visual` here, and CI's runs on the pushed head (41156435794; `check:visual` dispatched, 41156439125). Not verified: the device runs
+(pending, as for 8E-8K). Unresolved: question 267's remaining trade-off (the owner's); the historical questions of section 21.9, unchanged.
+
 ## 2026-10 · Stage 8, the follow-up 8K: the highway east of the Santon, the Posoritz post house, and twelve anchors re-plotted (decision 260 (a); a data task)
 
-**Status: built on `claude/tender-einstein-gwrsij-highway` (a draft PR stacked on 8J's, for review; not merged). Depends on 8J (decision 259
-(a)) and, through it, on 8I.** The record is `docs/STAGE8_SPEC.md` section 21.8 and the per-anchor register
+**Status: built on `claude/tender-einstein-gwrsij-highway` (PR #76, stacked on 8J's); merged by the owner into 8J's branch
+(`claude/tender-einstein-gwrsij-sokolnitz`, merge `c706c969`), not into `main`; brought into `main` by the integration pass (the entry above;
+`docs/STAGE8_SPEC.md` section 22). Depends on 8J (decision 259 (a)) and, through it, on 8I.** The record is `docs/STAGE8_SPEC.md` section 21.8 and the per-anchor register
 `docs/stage8-evidence/8k/register.md`, the evidence `docs/stage8-evidence/8k/`. The build: `austerlitz-command-map.html` **2,810,630 bytes,
 md5 `f10fe585c46aea576f436ed51ac46f83`**; `check:baseline` moved to it; `check:data`'s reference moved from 8J's archive to `archive/stage8k-f10fe585.html`.
 
@@ -116,7 +171,9 @@ anchors 2.5-2.9 km south of Bagration's from 14:30 (not re-plotted).
 
 ## 2026-10 · Stage 8, the follow-up 8J: the Sokolnitz group, the Pratzen church and the Austerlitz garden (decision 259 (a); a data task)
 
-**Status: built on `claude/tender-einstein-gwrsij-sokolnitz` (a draft PR stacked on 8I's, for review; not merged). Depends on 8I.** The record
+**Status: built on `claude/tender-einstein-gwrsij-sokolnitz` (PR #75, stacked on 8I's); merged by the owner into 8I's branch
+(`claude/tender-einstein-gwrsij`, merge `c7de7a29`), not into `main`; brought into `main` by the integration pass (`docs/STAGE8_SPEC.md` section
+22). Depends on 8I.** The record
 is `docs/STAGE8_SPEC.md` section 21.7, the evidence `docs/stage8-evidence/8j/` and 8H's geographic review it implements
 (`docs/stage8-evidence/8h/geo/proposal.md` G1, G2, G3, G6, G7; README sections 6-7). The build: `austerlitz-command-map.html` **2,804,797
 bytes, md5 `7d5594baf7468f943ab42f7d848608d1`**; `check:baseline` moved to it; `check:data`'s reference moved from `archive/stage8h-24e29da7.html` to
@@ -247,7 +304,7 @@ recorded in section 21.9 (8K's pull request) as they land, never carried over fr
 
 ## 2026-10 · Stage 8, the follow-up 8I: the phase's message under a layout's change, the far names' plate, the census's two frames
 
-**Status: built on `claude/tender-einstein-gwrsij` (a draft PR into `main`, for review; not merged), from `main` at
+**Status: built on `claude/tender-einstein-gwrsij` (PR #74 into `main`); merged into `main` by the owner (`72c7e1b5`), from `main` at
 `b7fb67ab8c25a55915dea3da64ab4d79fe00ef51` (PR #73's merge, 8H, the audited merge; no newer commit on `main` when the work began, 30 October
 2026). The first of three stacked pull requests of the bounded follow-up the owner asked for before the final combined audit (decisions
 259-265, 30 October 2026): 8I (this one: presentation and records, no data), 8J (decision 259 (a), a geographic data task, stacked on it) and
@@ -309,7 +366,7 @@ this branch's head; their results, and this build's census in both frames from t
 
 ## 2026-10 · Stage 8, implementation PR 8H: integration, polish and verification
 
-**Status: built on `claude/sharp-faraday-g2uy8o` (draft PR #73 into `main`, for review; not merged), from `main` at
+**Status: built on `claude/sharp-faraday-g2uy8o` (PR #73 into `main`); merged into `main` by the owner (`b7fb67ab`), from `main` at
 `636cc5ddba6c146ecabff01e6d7c86738add0e4b` (PR #72's merge, 8G; no newer commit on `main` when the work began, 29 October 2026, nor when fetched
 again on 30 October). Stage 8 is not complete: device acceptance for 8E-8H is pending, and the owner's questions 259-265 are open.** The record is
 `docs/STAGE8_SPEC.md` section 20 (and section 19, 8G as built, written here), the evidence `docs/stage8-evidence/8h/`. The build:
