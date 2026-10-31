@@ -5213,7 +5213,9 @@ legibility and the unresolved historical questions kept on the final audit check
 carried 8I alone. PR #75 (8J, head `0ed98b9`) was merged by the owner into 8I's branch `claude/tender-einstein-gwrsij` (merge
 `c7de7a29092edefc9eb180dd467abaee6b42dd95`, its tree 8J's own) and PR #76 (8K, head `c3e2f51`) into 8J's branch
 `claude/tender-einstein-gwrsij-sokolnitz` (merge `c706c969f9e2c649f1a8265c188d0b35872dd6aa`, its tree 8K's own, `bbfe4c31...`): each "merged",
-neither into `main`. Nothing newer on `main`; no other open pull request.
+neither into `main`. Nothing newer on `main`; no other open pull request. The published page followed `main`: GitHub Pages served 8I's
+build (`austerlitz-command-map.html`, 2,782,595 bytes, md5 `697bbf34ec29fc4d05695dc8e1cd3c5e`, fetched 31 October 2026), so the map a visitor
+reached had neither 8J's nor 8K's corrections.
 
 *What was done*: `claude/charming-dijkstra-srj84w` from `main` at `72c7e1b`; PR #75's merge commit merged into it (`08f033c`), then PR #76's
 (`df8b135`), each `--no-ff`, neither with a conflict. The tree that results is 8K's head's, object for object (`bbfe4c317ad1f4c235c46acce9b7eeb78fe97bb9`),
@@ -5248,10 +5250,11 @@ nothing was hovered and the runs matched. On 8K's build, the layout moved by the
 (`c:constantine`), hovered for the whole zoom in the real run only. Demonstrated: the same driven motion with the real pointer's buttonless
 arrival at its start and its departure (to (2, 2), over the rail: the canvas's out and leave), the *twin with the pointer*, hovers the same
 counter and gives 28 jumps, 126 pops, 9 flickers and 726 of 1,232 formation-frames drawn, against the 16's run's 10, 105, 3 and 795 (25 items
-count differently); the run by real input, three times on one page, gives 28/126/9/726 (the twin's own numbers), 26/123/7/732 and 26/123/7/732,
+count differently); the run by real input, three times on one page, gives 26/125/7/725, 26/123/7/732 and 26/123/7/732 (and 28/126/9/726, the
+twin's own numbers, where it follows its twin on the self-test's page),
 each hovering the Guard's counter, each with one buttonless move (its arrival: the browser adds none). The divergence is the hover: the input
 differed, not the application's handling of it. *Input scheduling* accounts for the rest: repeated real runs differ by up to 2 jumps, 3 pops,
-2 flickers and 6 formation-frames (two outcomes: real input yields to the event loop between its steps, which a driven run, one evaluation,
+2 flickers and 7 formation-frames (three outcomes seen: real input yields to the event loop between its steps, which a driven run, one evaluation,
 never does), well within the tolerance. The three hybrid motions' pointers hover nothing: their twins are their 16's runs frame for frame, and
 their real runs the same in every count.
 
@@ -5262,7 +5265,7 @@ run: where its pointer hovers nothing, equal in every count and in its formation
 else); where it hovers a formation, the hover named in the run. The twins are new runs, with visibility baselines of their own measured on this
 build (`MOTION.VIS`: the three hovering nothing their 16's runs' values; `paper-zoom+point` [726, 1,232, 667]). No existing baseline, ceiling or
 tolerance moved, and the 16 are as before. Each new rule fails on a copy of a measured record with that one thing broken
-(`tools/stage8/mutate-8l.js`: 16 mutations, all caught; the records as measured pass).
+(`tools/stage8/mutate-8l.js`: 15 mutations, all caught; the records as measured pass).
 
 *The 16's totals: the application's behaviour on corrected data* (`tools/stage8/items-8l.js`, `items-8l.json`, `items-8l.md`). The 16 are driven
 runs, frame for frame on the driver's clock, the same counts in every run (here, on CI and in 8K's evidence: 248 jumps, 998 pops, 130
@@ -5349,7 +5352,7 @@ Here (Playwright 1.56's headless Chromium 141.0.7390.37 under SwiftShader, the b
 - The motion block on a page of its own (`tools/stage8/motion-8h.js`, as `check:selftest` and as `check:visual` run it,
   `docs/stage8-evidence/8l/motion/`): the 16 at 248 jumps, 998 pops, 130 level-of-detail switches, 9 flickers; every driven run at its visibility
   baseline; every run by real input within its tolerance of its twin with the pointer (on the self-test's page identical to it); judged by
-  `thresholds.js`: two failing lines, the 16's two ceilings (section 22.3). `tools/stage8/mutate-8l.js`: 16 of 16 mutations caught.
+  `thresholds.js`: two failing lines, the 16's two ceilings (section 22.3). `tools/stage8/mutate-8l.js`: 15 of 15 mutations caught.
 - The two cases judged anew (`report-two-cases.json`, `check-report.js`): both pass.
 - `check:selftest`, `check:contrast` and the full `check:visual`: *pending, recorded when the runs complete*.
 

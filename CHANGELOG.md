@@ -21,11 +21,11 @@ build changed in this pass: the harness, its thresholds and the records did.
   wheels, hovers the formation under it, and the layer protects what is hovered (decision 39); the 16's run it was compared with has no pointer.
   On 8J's build nothing lay under the centre; on 8K's the Russian Imperial Guard's counter does. Demonstrated (`tools/stage8/twin-8l.js`): the
   same driven motion with the pointer's buttonless arrival and departure hovers the same counter and gives 28 jumps, 126 pops and 726 of 1,232
-  formation-frames drawn, the real runs 28/126/726 and 26/123/732 (input scheduling: the event loop between real steps; one buttonless move
+  formation-frames drawn, the real runs 26-28 jumps, 123-126 pops and 725-732 drawn (input scheduling: the event loop between real steps; one buttonless move
   each), the 16's run 10/105/795. `tools/visual/motion.js`: each run by real input now follows its *twin with the pointer*; `thresholds.js`:
   the real input judged against that twin (the same hover, `REAL_TOL` unchanged, visibility within a frame), each twin hovering nothing held
   equal to its 16's run, the twins' visibility baselines added (new runs; the three hovering nothing their 16's values, `paper-zoom+point`
-  [726, 1232, 667]). No existing baseline, ceiling or tolerance moved; `tools/stage8/mutate-8l.js` catches all 16 mutations of the new rules.
+  [726, 1232, 667]). No existing baseline, ceiling or tolerance moved; `tools/stage8/mutate-8l.js` catches all 15 mutations of the new rules.
 - **Question 267, the 16's totals: not resolved; the trade-off measured.** Driven and deterministic (no scheduling), compared with ceilings set
   on the same motions (valid): the map layer's response to 8K's corrected places, 61 items changing their counts in 13 of the 16 runs between 8J's
   build (238, 985) and 8K's (248, 998), no item at a tipping point (`tools/stage8/items-8l.js`). Bounded repairs measured on the exact benchmark
@@ -49,7 +49,7 @@ build changed in this pass: the harness, its thresholds and the records did.
 
 Verified here (Chromium 141 under Playwright 1.56, the pinned browser): `npm test` on the integration build (all nine suites and the height
 guard), `check:data` (139 identical), `check:chronology` (0 errors), `check:baseline` (`f10fe585...`); the motion block on a page of its own (the
-two ceilings its only failing lines); the two cases judged anew (both pass); `mutate-8l.js` (16 of 16 caught). Pending when this entry was
+two ceilings its only failing lines); the two cases judged anew (both pass); `mutate-8l.js` (15 of 15 caught). Pending when this entry was
 written, and recorded in section 22.5 when they complete: `npm test` on the final state, `check:selftest`, `check:contrast` and the full
 `check:visual` here, and CI's runs on the pushed head (41156435794; `check:visual` dispatched, 41156439125). Not verified: the device runs
 (pending, as for 8E-8K). Unresolved: question 267's remaining trade-off (the owner's); the historical questions of section 21.9, unchanged.
