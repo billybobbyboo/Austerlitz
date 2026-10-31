@@ -49,9 +49,10 @@ build changed in this pass: the harness, its thresholds and the records did.
 
 Verified here (Chromium 141 under Playwright 1.56, the pinned browser): `npm test` on the integration build (all nine suites and the height
 guard), `check:data` (139 identical), `check:chronology` (0 errors), `check:baseline` (`f10fe585...`); the motion block on a page of its own (the
-two ceilings its only failing lines); the two cases judged anew (both pass); `mutate-8l.js` (15 of 15 caught). Pending when this entry was
-written, and recorded in section 22.5 when they complete: `npm test` on the final state, `check:selftest`, `check:contrast` and the full
-`check:visual` here, and CI's runs on the pushed head (41156435794; `check:visual` dispatched, 41156439125). Not verified: the device runs
+two ceilings its only failing lines); the two cases judged anew (both pass); `mutate-8l.js` (15 of 15 caught). Since: `npm test` on the final state
+(all nine suites and the height guard); `check:contrast` here (passing: 0 below AA, every state reached, the eight start-up cases) and on CI
+(41156435794, passing); `check:selftest` here and on CI (41156435794): the in-app self-test 317 of 317, every live block run, one failing line, the
+16's ceilings (section 22.3). Pending when last recorded: the full `check:visual` here and on CI (dispatched, 41156439125); section 22.5 records it. Not verified: the device runs
 (pending, as for 8E-8K). Unresolved: question 267's remaining trade-off (the owner's); the historical questions of section 21.9, unchanged.
 
 ## 2026-10 · Stage 8, the follow-up 8K: the highway east of the Santon, the Posoritz post house, and twelve anchors re-plotted (decision 260 (a); a data task)

@@ -5344,8 +5344,7 @@ caption shows none; at 14:20 the centre separation, shown whole; the clock back 
 ### 22.5 Verification
 
 Here (Playwright 1.56's headless Chromium 141.0.7390.37 under SwiftShader, the browser CI pins; the build `f10fe585...`, unchanged):
-- `npm test`: all nine suites and the height guard passed on the integration build (5 min 31 s, before this pass's harness changes, which no
-  suite reads); on the final state: *pending, recorded when the run completes*.
+- `npm test`: all nine suites and the height guard passed on the integration build (5 min 31 s) and again on the final state (5 min 40 s).
 - `check:data`: all 139 data declarations byte-identical to `archive/stage8k-f10fe585.html`. `check:chronology`: 0 errors (the movement audit 0
   findings; 118 statements cited by 73 of 75 REVIEW rows, 37 allowed by name; the four named conflicts). `check:baseline`: md5
   `f10fe585c46aea576f436ed51ac46f83`, 2,810,630 bytes.
@@ -5354,10 +5353,19 @@ Here (Playwright 1.56's headless Chromium 141.0.7390.37 under SwiftShader, the b
   baseline; every run by real input within its tolerance of its twin with the pointer (on the self-test's page identical to it); judged by
   `thresholds.js`: two failing lines, the 16's two ceilings (section 22.3). `tools/stage8/mutate-8l.js`: 15 of 15 mutations caught.
 - The two cases judged anew (`report-two-cases.json`, `check-report.js`): both pass.
-- `check:selftest`, `check:contrast` and the full `check:visual`: *pending, recorded when the runs complete*.
+- `check:contrast`: passing (23 min under load): 6,926 text elements in 45 states (10 of them at 390 x 844 as a phone), every state reached, 0 below
+  AA, 0 below 10.5 px, 0 font failures, 0 console messages; the eight start-up cases passing (the context's loss and restore with 193 of the
+  warnings `CTX_DELETES` allows, 248).
+- `check:selftest`: the in-app self-test 317 of 317 (the manifest's 317), every page's console messages 0, every live block run; one failing line:
+  the motion block's 16 at 248 jumps and 998 pops over their ceilings (section 22.3). The runs by real input within their twins' tolerance (the
+  orbit hovering nothing, identical to its twin; the paper map's zoom hovering the Guard's counter, 26 jumps, 125 pops, 725 drawn against its
+  twin's 28, 126, 726). `check-report.js` judges the report the same.
+- The full `check:visual`: *running, recorded when it completes*.
 
-On CI (the pinned browser): the push of `0b7b77c` (run 41156435794: the checks job, `check:contrast`, `check:selftest`) and a `check:visual` run
-dispatched on it (41156439125): *pending, recorded when the runs complete*.
+On CI (the pinned browser): the push of `0b7b77c` (run 41156435794): the checks job passing (`npm test`, `check:data`, `check:chronology`, the
+committed file the sources' build), `check:contrast` passing, `check:selftest` failing on the one line above alone (STAGE0 FAILURES: 1; its real
+paper zoom 26/125/7/725 against its twin's 28/126/9/726). The `check:visual` run dispatched on the same head (41156439125): *running, recorded
+when it completes*; the pushes of the later heads, which change only records, run the same checks.
 
 ### 22.6 The final audit checklist (carried; none of it marked passed)
 
