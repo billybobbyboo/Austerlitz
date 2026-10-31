@@ -32,8 +32,8 @@ build changed in this pass: the harness, its thresholds and the records did.
   (`tools/stage8/variants-8l.js`), none adopted: "kept first while moving" 238 jumps and 815 pops with 2.6% more formation-frames drawn, but 7 runs
   below their visibility baselines (and decision 240 (a)'s priority order in motion set aside); "a protected item keeps its drawn place" 1,014
   pops; both 209 and 805, 7 runs below. The remaining trade-off for the owner (section 22.3): re-baseline the ceilings at 248 and 998 (+1.2%,
-  +1.3%), adopt kept-first with its visibility losses, or carry the two lines into the final audit. Until then `check:selftest` and
-  `check:visual` fail on these two lines alone.
+  +1.3%), adopt kept-first with its visibility losses, or carry the two failures into the final audit. Until then `check:selftest` and
+  `check:visual` fail on these two ceilings alone (one line of the motion block's judgement).
 - **Play's longer hidden interval** (4,033 ms, 3,100 on 8J's build): the counters of Nansouty's Cuirassiers, Walther's Dragoons and Miloradovich's
   Russians, dropped at rest in the hybrid view at 09:00, with room between the 333 ms re-placement passes but never at two in a row (higher-priority
   held items come back first); Bagration's corrected place adds his counter to that cycle. Reachable by hover and keyboard; no variant shortens it.
@@ -49,11 +49,19 @@ build changed in this pass: the harness, its thresholds and the records did.
 
 Verified here (Chromium 141 under Playwright 1.56, the pinned browser): `npm test` on the integration build (all nine suites and the height
 guard), `check:data` (139 identical), `check:chronology` (0 errors), `check:baseline` (`f10fe585...`); the motion block on a page of its own (the
-two ceilings its only failing lines); the two cases judged anew (both pass); `mutate-8l.js` (15 of 15 caught). Since: `npm test` on the final state
+two ceilings its only failures); the two cases judged anew (both pass); `mutate-8l.js` (15 of 15 caught). Since: `npm test` on the final state
 (all nine suites and the height guard); `check:contrast` here (passing: 0 below AA, every state reached, the eight start-up cases) and on CI
 (41156435794, passing); `check:selftest` here and on CI (41156435794): the in-app self-test 317 of 317, every live block run, one failing line, the
-16's ceilings (section 22.3). Pending when last recorded: the full `check:visual` here and on CI (dispatched, 41156439125); section 22.5 records it. Not verified: the device runs
-(pending, as for 8E-8K). Unresolved: question 267's remaining trade-off (the owner's); the historical questions of section 21.9, unchanged.
+16's ceilings (section 22.3). The full `check:visual` here (2 h 41 min) and on CI (41156439125, dispatched on `0b7b77c`, whose tools and build are
+the head's; 4 h 11 min), the same line for line: all 39 cases passing (`plans-overview` at its limit of 13; `ph8-overview-watch` with no derived
+reading at 14:40 by the model or the caption, the centre separation shown whole at 14:20), the self-test 317 of 317, console 0, every live block
+passing but the motion block's one line, the 16's ceilings (its runs by real input within their twins' tolerance); the census in both frames
+identical case by case to 8K's own run's (the complete frame's maxima 864 calls and 2,151,193 triangles on the desktop, 1,288,561 on the phone,
+within section 8.3's budgets by 4%, 23.2% and 20.5%; `docs/stage8-evidence/8l/census/`). On `f86c1bf` (41160456267, 41160460354): the checks job
+and `check:contrast` passing, `check:selftest` failing on that line alone. Readiness (section 22.7): the integration coherent; ready for the
+final combined audit once the owner settles question 267's remaining trade-off (this pass recommends (a), the two ceilings re-baselined at 248
+and 998 under the owner's rule for geographic baselines). Not verified: the device runs (pending, as for 8E-8K). Unresolved: question 267's
+remaining trade-off (the owner's); the historical questions of section 21.9, unchanged.
 
 ## 2026-10 · Stage 8, the follow-up 8K: the highway east of the Santon, the Posoritz post house, and twelve anchors re-plotted (decision 260 (a); a data task)
 

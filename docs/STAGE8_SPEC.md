@@ -5282,7 +5282,7 @@ dawn place south of the road level with the Santon, Bagration's by the post hous
 *The bounded repairs measured* (`tools/stage8/variants-8l.js`, `variants-8l.json`: the block as `check:selftest` runs it, on copies of the build
 with one rule changed, judged by `thresholds.js`'s own judge; none adopted):
 
-| variant | the 16: jumps, pops, flickers | formation-frames drawn (the baselines' 30,205) | failing lines |
+| variant | the 16: jumps, pops, flickers | formation-frames drawn (the baselines' 30,205) | failures (the judge's, one per criterion) |
 |---|---|---|---|
 | none (this build) | 248, 998, 9 | 30,205 | 2: the two ceilings |
 | kept first while moving: the items drawn in the last pass keep their places first, the held ones are looked for after them in the room left (persist's order at rest, applied in motion) | 238, 815, 4 | 30,997 (+2.6%) | 10: 7 runs below their visibility baselines (hybrid-pan 1,375 against 1,427; hybrid-zoom 1,288 against 1,342, a formation hidden 3,033 ms against 2,133; hybrid-orbit 3,033 ms against 1,900; hybrid-glide 1,105 against 1,152; land-orbit 1,944 against 1,981; hybrid-pan under the two readings 1,318 against 1,370 and 869 against 938), the orbit's twin, the real paper zoom 15 formation-frames from its twin |
@@ -5300,8 +5300,8 @@ run's formations' visibility at its baseline and every other line of the block p
 build's counts (248, 998), as the benchmark's sensitivity to the corrected places (8J's data moved them the other way, to 238 jumps; decision 257
 (b) calls them "ceilings of this benchmark, not a guarantee of what a device shows"); (b) kept-first while moving, which meets the ceilings by a
 wide margin but fails seven runs' visibility baselines and changes decision 240 (a)'s priority order: only with the owner's decision on both;
-(c) the two lines carried into the final audit as a named open condition. Until the owner decides, `check:selftest` and `check:visual` fail on
-these two lines alone.
+(c) the two failures carried into the final audit as a named open condition. Until the owner decides, `check:selftest` and `check:visual` fail on
+these two ceilings alone (one line of the motion block's judgement).
 
 *Play's longer hidden interval* (inspected; `items-8l.md`). In the Landscape-with-counters Play (09:00, 90 frames at ½x) the longest a formation
 stays hidden by the layout went from 3,100 ms (8J) to 4,033 ms (8K; its baseline moved in 8K under 8J's rule): the counters of Nansouty's
@@ -5351,7 +5351,7 @@ Here (Playwright 1.56's headless Chromium 141.0.7390.37 under SwiftShader, the b
 - The motion block on a page of its own (`tools/stage8/motion-8h.js`, as `check:selftest` and as `check:visual` run it,
   `docs/stage8-evidence/8l/motion/`): the 16 at 248 jumps, 998 pops, 130 level-of-detail switches, 9 flickers; every driven run at its visibility
   baseline; every run by real input within its tolerance of its twin with the pointer (on the self-test's page identical to it); judged by
-  `thresholds.js`: two failing lines, the 16's two ceilings (section 22.3). `tools/stage8/mutate-8l.js`: 15 of 15 mutations caught.
+  `thresholds.js`: the 16's two ceilings its only failures (section 22.3). `tools/stage8/mutate-8l.js`: 15 of 15 mutations caught.
 - The two cases judged anew (`report-two-cases.json`, `check-report.js`): both pass.
 - `check:contrast`: passing (23 min under load): 6,926 text elements in 45 states (10 of them at 390 x 844 as a phone), every state reached, 0 below
   AA, 0 below 10.5 px, 0 font failures, 0 console messages; the eight start-up cases passing (the context's loss and restore with 193 of the
@@ -5360,12 +5360,29 @@ Here (Playwright 1.56's headless Chromium 141.0.7390.37 under SwiftShader, the b
   the motion block's 16 at 248 jumps and 998 pops over their ceilings (section 22.3). The runs by real input within their twins' tolerance (the
   orbit hovering nothing, identical to its twin; the paper map's zoom hovering the Guard's counter, 26 jumps, 125 pops, 725 drawn against its
   twin's 28, 126, 726). `check-report.js` judges the report the same.
-- The full `check:visual`: *running, recorded when it completes*.
+- The full `check:visual` (2 h 41 min; a first run, lost at its 25th case to the container's restart, counted for nothing): all 39 cases passing,
+  among them `plans-overview` (13 dropped, the Littawa's name the 13th, against its limit of 13) and `ph8-overview-watch` (at 14:40 the model gives
+  neither derived reading and the caption shows none; at 14:20 the centre separation, shown whole; the clock set back to 14:40); the in-app
+  self-test 317 of 317; every page's console messages 0; every live block passing but the motion block, among them the phase's message at the nine
+  sizes and under the layout's changes (`toast`, `toastLayout`), the far names' plate in its 13 views (`farPlate`: the far names at AA as rendered,
+  the least 6.91:1), the focus ring, the narrow and phone layouts, the shortcuts, reduced motion, the tips and the fifteen culling sequences (0
+  pixels differing in every frame compared, none culled with an instance in view); the motion block's one failing line, the 16 at 248 jumps and
+  998 pops, its runs by real input within their twins' tolerance (the paper map's zoom 26/125/7/725 against its twin's 28/126/9/726, both hovering
+  the Guard's counter; the three hybrid motions equal to their twins in every count). `check-report.js` judges the report the same (FAILURES: 1).
+  The census in both frames (`tools/stage8/census-8i.js`): the complete frame's maxima 864 calls (`plans-overview`) and 2,151,193 triangles
+  (`narrow-1024`) on the desktop, 36 calls (4%) and 648,807 triangles (23.2%) within section 8.3's 900 and 2.8 million; the phone's 1,288,561
+  (`phone-390-first`), 331,439 (20.5%) within 1.62 million; the still eye's 862 calls and 2,004,105 triangles, the phone's 1,141,473; the low
+  Pratzen view's complete frame 17.8% fewer triangles with culling than without (1,798,057 of 2,188,177; the target 10%).
 
 On CI (the pinned browser): the push of `0b7b77c` (run 41156435794): the checks job passing (`npm test`, `check:data`, `check:chronology`, the
 committed file the sources' build), `check:contrast` passing, `check:selftest` failing on the one line above alone (STAGE0 FAILURES: 1; its real
-paper zoom 26/125/7/725 against its twin's 28/126/9/726). The `check:visual` run dispatched on the same head (41156439125): *running, recorded
-when it completes*; the pushes of the later heads, which change only records, run the same checks.
+paper zoom 26/125/7/725 against its twin's 28/126/9/726). The `check:visual` run dispatched on the same head (41156439125, job 124404161313, 4 h
+11 min) the same as here line for line: all 39 cases, the self-test 317 of 317, console 0, every live block but the motion block's one line
+(STAGE0 FAILURES: 1), every count and visibility of the block's runs equal to the run here; its census identical case by case to the one here
+and to 8K's own run's (39 of 39 cases; `docs/stage8-evidence/8l/census/`); `check-report.js` judges its report the same. The tools and the build
+at `0b7b77c` are the head's (`git diff --stat 0b7b77c` to the head: records and evidence only), so that run judges the head. On `f86c1bf`, the
+head when this section was last recorded (runs 41160456267, the push's, and 41160460354, the pull request's): the checks job and
+`check:contrast` passing, `check:selftest` failing on the one line above alone (STAGE0 FAILURES: 1).
 
 ### 22.6 The final audit checklist (carried; none of it marked passed)
 
@@ -5390,7 +5407,31 @@ when it completes*; the pushes of the later heads, which change only records, ru
 
 ### 22.7 Readiness
 
-*Pending the verification runs (section 22.5); written when they complete.*
+*The integration is coherent.* `main` at `72c7e1b` (8I) with 8J's and 8K's complete changes: the application, the data and the build are 8K's
+head's own (the build `f10fe585...`, byte for byte `archive/stage8k-f10fe585.html` and 8K's head's), nothing of 8I or of `main` is lost (`main`
+an ancestor of this branch's head, nothing newer on it), and what differs from 8K's head is the records, the evidence and the harness's tools
+alone (section 22.8, item 2).
+
+*The required checks* on this build, here and on CI's pinned browser, agree line for line: `npm test`, `check:data`, `check:chronology`,
+`check:baseline` and `check:contrast` pass; `check:selftest` and `check:visual` pass every case, every in-app check (317 of 317) and every live
+block but one line, the motion block's 16 at 248 jumps and 998 pops against their ceilings of 245 and 985. The coverage the brief names holds:
+the phase's message clear of every control under every layout's change (`toastLayout`, 8I), the far names' plate at AA (`farPlate`, 8I), the
+protected labels (the self-test's never-dropped items and focused item, the motion block's protected-item rules), the phone framing (the ten phone
+cases and the phone block), the corrected geography and the troops placed on it (`check:data` against 8K's reference, `check:chronology` and
+its movement audit, the self-test's landmarks, woods, buildings and figures on the drawn ground).
+
+*The verdict: ready for the final combined audit once the owner settles question 267's remaining trade-off.* The brief's condition for
+proceeding directly, the required checks passing, is met but for those two ceilings. They are not a fault of the integration: they are 8K's
+corrected places as the deterministic benchmark counts them, measured item by item, and no bounded repair measured meets them without losing
+a run's visibility (section 22.3). This pass recommends (a), the two ceilings re-baselined at 248 and 998 on the owner's word: it is the owner's
+rule for the follow-up's geographic baselines (moved only where the authorised data change justifies it, the reason recorded), which 8K
+applied to the visibility baselines but not to the ceilings, here with the cause shown (with both divisions' places of 8J the totals are 237
+and 985); the excess is 1.2% and 1.3% on a benchmark whose counts 8J's own corrected places moved by as much the other way; every run's
+formations' visibility stays at its baseline; and the real input is now held like for like. (c), the two failures carried into the audit, is
+the alternative if the owner prefers the audit to judge them, at the cost of a failing `check:selftest` on `main` until then, which hides any
+new failure in that job; (b) only with the owner's acceptance of its seven runs' visibility losses and of the change to decision 240 (a)'s
+order, which this pass does not recommend. With (a) or (c) the final combined audit can begin directly. Device acceptance for 8E-8K stays
+pending (section 22.6): it does not hold the audit back, but Stage 8 is not complete without it.
 
 ### 22.8 After the merge: what to check
 

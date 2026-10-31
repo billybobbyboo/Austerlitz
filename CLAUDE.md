@@ -722,10 +722,12 @@ phase's message placed again under a layout's change, the far names' lighter pla
 20.12's maxima corrected, decisions 261, 262, 264 and 265 recorded), **8J** (`claude/tender-einstein-gwrsij-sokolnitz`: decision 259 (a), a data
 task) and **8K** (`claude/tender-einstein-gwrsij-highway`: decision 260 (a), a data task). PR #74 (8I) was merged into `main` by the owner
 (`72c7e1b`); PR #75 (8J) and PR #76 (8K) were merged into their stacked feature branches (`c7de7a2`, `c706c96`), not into `main`. The integration
-pass **8L** (31 October 2026; `docs/STAGE8_SPEC.md` §22; `claude/charming-dijkstra-srj84w`, one draft pull request into `main`, for review, not
+pass **8L** (31 October 2026; `docs/STAGE8_SPEC.md` §22; `claude/charming-dijkstra-srj84w`, draft PR #77 into `main`, for review, not
 merged) brings both into `main` (its tree 8K's own, its build 8K's, `f10fe585...`), records decision 266 (a) (the Sokolnitz castle kept at its
 corrected site at about 96 by 73 m) and answers question 267 by the bounded presentation-repair approach: the paper map's zoom by real input was
 an invalid comparison (its pointer hovered a counter the 16's run never hovers), now held to a twin with the pointer; `plans-overview`'s limit 13
 on the owner's word; `ph8-overview-watch` judged against the model; the 16's totals over their ceilings remain, no bounded repair measured meeting
-the ceilings and every run's visibility (the trade-off put to the owner, §22.3). The final audit checklist is §22.6. Device acceptance for 8E-8K
-is pending.
+the ceilings and every run's visibility (the trade-off put to the owner, §22.3). Verified here and on CI's pinned browser, line for line: every
+required check passes but that one line in `check:selftest` and `check:visual`; the readiness verdict (§22.7): ready for the final combined
+audit once the owner settles question 267's remaining trade-off (the pass recommends re-baselining the two ceilings at 248 and 998). The final
+audit checklist is §22.6. Device acceptance for 8E-8K is pending.
