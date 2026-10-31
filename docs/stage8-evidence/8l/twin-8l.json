@@ -1,0 +1,541 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "f10fe585c46aea576f436ed51ac46f83",
+ "chromium": "141.0.7390.37",
+ "repeat": 3,
+ "motions": {
+  "hybrid-pan": {
+   "view": "hybrid-field",
+   "sixteen": {
+    "jumps": 5,
+    "pops": 65,
+    "lod": 23,
+    "flicker": 0,
+    "overlapFrames": 0,
+    "keepHidden": 0,
+    "drawn": 1427,
+    "inView": 2053,
+    "longestMs": 2467,
+    "hover": null
+   },
+   "point": {
+    "jumps": 5,
+    "pops": 65,
+    "lod": 23,
+    "flicker": 0,
+    "overlapFrames": 0,
+    "keepHidden": 0,
+    "drawn": 1427,
+    "inView": 2053,
+    "longestMs": 2467,
+    "hover": null
+   },
+   "real": [
+    {
+     "jumps": 5,
+     "pops": 65,
+     "lod": 23,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1427,
+     "inView": 2053,
+     "longestMs": 2467,
+     "hover": null,
+     "buttonlessMoves": 1
+    },
+    {
+     "jumps": 5,
+     "pops": 65,
+     "lod": 23,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1427,
+     "inView": 2053,
+     "longestMs": 2467,
+     "hover": null,
+     "buttonlessMoves": 1
+    },
+    {
+     "jumps": 5,
+     "pops": 65,
+     "lod": 23,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1427,
+     "inView": 2053,
+     "longestMs": 2467,
+     "hover": null,
+     "buttonlessMoves": 1
+    }
+   ],
+   "pointVsSixteen": {},
+   "identical": true
+  },
+  "hybrid-orbit": {
+   "view": "hybrid-field",
+   "sixteen": {
+    "jumps": 10,
+    "pops": 139,
+    "lod": 0,
+    "flicker": 0,
+    "overlapFrames": 0,
+    "keepHidden": 0,
+    "drawn": 1537,
+    "inView": 2548,
+    "longestMs": 1900,
+    "hover": null
+   },
+   "point": {
+    "jumps": 10,
+    "pops": 139,
+    "lod": 0,
+    "flicker": 0,
+    "overlapFrames": 0,
+    "keepHidden": 0,
+    "drawn": 1537,
+    "inView": 2548,
+    "longestMs": 1900,
+    "hover": null
+   },
+   "real": [
+    {
+     "jumps": 10,
+     "pops": 139,
+     "lod": 0,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1537,
+     "inView": 2548,
+     "longestMs": 1900,
+     "hover": null,
+     "buttonlessMoves": 1
+    },
+    {
+     "jumps": 10,
+     "pops": 139,
+     "lod": 0,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1537,
+     "inView": 2548,
+     "longestMs": 1900,
+     "hover": null,
+     "buttonlessMoves": 1
+    },
+    {
+     "jumps": 10,
+     "pops": 139,
+     "lod": 0,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1537,
+     "inView": 2548,
+     "longestMs": 1900,
+     "hover": null,
+     "buttonlessMoves": 1
+    }
+   ],
+   "pointVsSixteen": {},
+   "identical": true
+  },
+  "hybrid-zoom": {
+   "view": "hybrid-field",
+   "sixteen": {
+    "jumps": 28,
+    "pops": 116,
+    "lod": 24,
+    "flicker": 0,
+    "overlapFrames": 0,
+    "keepHidden": 0,
+    "drawn": 1342,
+    "inView": 2248,
+    "longestMs": 2133,
+    "hover": null
+   },
+   "point": {
+    "jumps": 28,
+    "pops": 116,
+    "lod": 24,
+    "flicker": 0,
+    "overlapFrames": 0,
+    "keepHidden": 0,
+    "drawn": 1342,
+    "inView": 2248,
+    "longestMs": 2133,
+    "hover": null
+   },
+   "real": [
+    {
+     "jumps": 28,
+     "pops": 116,
+     "lod": 24,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1342,
+     "inView": 2248,
+     "longestMs": 2133,
+     "hover": null,
+     "buttonlessMoves": 1
+    },
+    {
+     "jumps": 28,
+     "pops": 116,
+     "lod": 24,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1342,
+     "inView": 2248,
+     "longestMs": 2133,
+     "hover": null,
+     "buttonlessMoves": 1
+    },
+    {
+     "jumps": 28,
+     "pops": 116,
+     "lod": 24,
+     "flicker": 0,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 1342,
+     "inView": 2248,
+     "longestMs": 2133,
+     "hover": null,
+     "buttonlessMoves": 1
+    }
+   ],
+   "pointVsSixteen": {},
+   "identical": true
+  },
+  "paper-zoom": {
+   "view": "paper-frame",
+   "sixteen": {
+    "jumps": 10,
+    "pops": 105,
+    "lod": 0,
+    "flicker": 3,
+    "overlapFrames": 0,
+    "keepHidden": 0,
+    "drawn": 795,
+    "inView": 1232,
+    "longestMs": 667,
+    "hover": null
+   },
+   "point": {
+    "jumps": 28,
+    "pops": 126,
+    "lod": 0,
+    "flicker": 9,
+    "overlapFrames": 0,
+    "keepHidden": 0,
+    "drawn": 726,
+    "inView": 1232,
+    "longestMs": 667,
+    "hover": "constantine"
+   },
+   "real": [
+    {
+     "jumps": 26,
+     "pops": 125,
+     "lod": 0,
+     "flicker": 7,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 725,
+     "inView": 1232,
+     "longestMs": 667,
+     "hover": "constantine",
+     "buttonlessMoves": 1
+    },
+    {
+     "jumps": 26,
+     "pops": 123,
+     "lod": 0,
+     "flicker": 7,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 732,
+     "inView": 1232,
+     "longestMs": 667,
+     "hover": "constantine",
+     "buttonlessMoves": 1
+    },
+    {
+     "jumps": 26,
+     "pops": 123,
+     "lod": 0,
+     "flicker": 7,
+     "overlapFrames": 0,
+     "keepHidden": 0,
+     "drawn": 732,
+     "inView": 1232,
+     "longestMs": 667,
+     "hover": "constantine",
+     "buttonlessMoves": 1
+    }
+   ],
+   "pointVsSixteen": {
+    "c:c_gd": {
+     "sixteen": {
+      "jumps": 1,
+      "pops": 6
+     },
+     "point": {
+      "jumps": 2,
+      "pops": 6
+     }
+    },
+    "o:Levasseur up the Goldbach": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 4
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 2
+     }
+    },
+    "o:Suchet": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 6
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 8
+     }
+    },
+    "o:French hold the crest": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 6
+     },
+     "point": {
+      "jumps": 2,
+      "pops": 6
+     }
+    },
+    "c:c_i": {
+     "sixteen": {
+      "jumps": 1,
+      "pops": 2
+     },
+     "point": {
+      "jumps": 2,
+      "pops": 2
+     }
+    },
+    "c:constantine": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 6
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 2
+     }
+    },
+    "p:plateau": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 4
+     },
+     "point": {
+      "jumps": 3,
+      "pops": 6
+     }
+    },
+    "o:Caffarelli": {
+     "sixteen": {
+      "jumps": 1,
+      "pops": 4
+     },
+     "point": {
+      "jumps": 3,
+      "pops": 6
+     }
+    },
+    "o:Bagration": {
+     "sixteen": {
+      "jumps": 2,
+      "pops": 3
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 5
+     }
+    },
+    "c:c_iii": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 2
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 4
+     }
+    },
+    "c:c_gren": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 3
+     },
+     "point": {
+      "jumps": 0,
+      "pops": 4
+     }
+    },
+    "o:Kamensky turns about (disputed)": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 6
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 6
+     }
+    },
+    "o:Pratzeberg": {
+     "sixteen": {
+      "jumps": 2,
+      "pops": 4
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 6
+     }
+    },
+    "t:satschan": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 2
+     },
+     "point": {
+      "jumps": 0,
+      "pops": 0
+     }
+    },
+    "c:lich": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 6
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 6
+     }
+    },
+    "o:Jurczek's Austrians": {
+     "sixteen": {
+      "jumps": 1,
+      "pops": 2
+     },
+     "point": {
+      "jumps": 2,
+      "pops": 6
+     }
+    },
+    "c:bag": {
+     "sixteen": {
+      "jumps": 1,
+      "pops": 4
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 2
+     }
+    },
+    "c:c_v": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 4
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 6
+     }
+    },
+    "c:c_cav": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 6
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 6
+     }
+    },
+    "t:litava": {
+     "sixteen": {
+      "jumps": 1,
+      "pops": 3
+     },
+     "point": {
+      "jumps": 0,
+      "pops": 3
+     }
+    },
+    "t:augezd": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 2
+     },
+     "point": {
+      "jumps": 0,
+      "pops": 0
+     }
+    },
+    "t:austerlitz": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 1
+     },
+     "point": {
+      "jumps": 0,
+      "pops": 2
+     }
+    },
+    "t:sokolnitz": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 2
+     },
+     "point": {
+      "jumps": 0,
+      "pops": 3
+     }
+    },
+    "c:col4": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 0
+     },
+     "point": {
+      "jumps": 2,
+      "pops": 6
+     }
+    },
+    "c:ahq": {
+     "sixteen": {
+      "jumps": 0,
+      "pops": 0
+     },
+     "point": {
+      "jumps": 1,
+      "pops": 6
+     }
+    }
+   },
+   "identical": false
+  }
+ },
+ "console": [],
+ "secs": 179
+}

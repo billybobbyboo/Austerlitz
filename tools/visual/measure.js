@@ -300,6 +300,16 @@
         var cr=c.getBoundingClientRect(); return G.every(function(g){ var r=g.getBoundingClientRect(), e=g.parentNode.getBoundingClientRect();
           return r.left>=cr.left-0.5&&r.right<=cr.right+0.5&&r.right<=e.right+0.5; }); })()};
   }
+  /* Stage 8, the integration pass (question 267's caption line; docs/STAGE8_SPEC.md section 22): the caption's two derived readings as the
+     model gives them at the clock, beside what the caption shows. The plateau reading applies through PLATEAU_LAST's phase with an Allied
+     strength on the heights, the centre separation where centreSeparation() finds a French formation across the line joining the Allied
+     groups north and south of the Pratzeberg (paintSituation's own conditions); null on a build without them */
+  function derivedModel(){
+    if(typeof centreSeparation!=="function"||typeof plateauStrength!=="function"||typeof PLATEAU_LAST==="undefined") return null;
+    var onH=plateauStrength("al"), cap=document.getElementById("tb-cap"), D=cap?[].slice.call(cap.querySelectorAll(".der")):[];
+    return {clock:clock, phase:curPhase, plateau:curPhase<=PLATEAU_LAST&&onH>0, plateauAl:onH, separation:!!centreSeparation(),
+      shown:D.map(function(e){ return e.classList.contains("cut")?"separation":"plateau"; })};
+  }
   function phaseLabels(){
     if(!document.getElementById("tb-vm")||typeof setClock!=="function") return null;
     var t0=clock, cut=[], S=document.querySelectorAll("#phases .step");
@@ -506,7 +516,7 @@
       dispatchBox:(function(){ var d=document.querySelector(".dispatch"); if(!d||getComputedStyle(d).display==="none") return null; var r=d.getBoundingClientRect(); return [r.left,r.top,r.right,r.bottom]; })(),
       stats:(D()&&D().stats)?D().stats():null,
       layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch(), paper:paperMap(),
-      legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight], timeline:timeline(),
+      legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight], timeline:timeline(), derived:derivedModel(),
       heads:headsHidden(), focus:focusOffset(), smoke:smokeShare(), smokePuffs:(typeof SMOKE!=="undefined")
     };
   }
@@ -675,6 +685,6 @@
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures, census:census, cullEquiv:cullEquiv,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, farNames:farNames, layerTexts:layerTexts,
-                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare,
+                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, derivedModel:derivedModel, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare,
                 state:state, features:features, camState:camState, readCanvas:readCanvas};
 })();

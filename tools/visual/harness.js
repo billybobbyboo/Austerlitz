@@ -279,6 +279,15 @@ async function interact(page,it,vp){
     if(await has(page,"CULL","the census and culling's equivalence")){
       m.census=await page.evaluate(()=>{ var A=window.__aus; return {onWarm:A.census({cull:true}), offWarm:A.census({cull:false}), offCold:A.census({cull:false,cold:true}), onCold:A.census({cull:true,cold:true})}; });
       m.cullEquiv=await page.evaluate(()=>window.__aus.cullEquiv()); }
+    /* Stage 8, the integration pass (question 267's caption line; docs/STAGE8_SPEC.md section 22): a Watch case whose clock has no derived reading
+       by the model (thresholds.js CAP_DERIVED_ABSENT) is measured once more at the clock its entry names, where the model gives one, in the same
+       view: there the caption must show it (the expectation is not vacuous); then the case's clock is set back */
+    const DA=T.CAP_DERIVED_ABSENT&&T.CAP_DERIVED_ABSENT[c.name];
+    if(DA&&await page.evaluate(()=>typeof window.__aus.derivedModel==="function")){
+      await page.evaluate(t=>{ setClock(t,{instant:true,force:true,camera:false}); },DA.positive); await settle(page);
+      m.derivedPositive=await page.evaluate(()=>{ paintSituation(); return {timeline:window.__aus.timeline(), derived:window.__aus.derivedModel()}; });
+      await page.evaluate(t=>{ setClock(t,{instant:true,force:true,camera:false}); },c.t); await settle(page);
+      m.derivedBack=await page.evaluate(()=>{ paintSituation(); return window.__aus.derivedModel(); }); }
     /* roadmap step 1 (T-6): the page given back after the case's own measures (the layers at their defaults, the case's viewport) */
     m.stateAfter=await stateOf(page,c);
     /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, after every measure above, real key

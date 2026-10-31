@@ -1,0 +1,4446 @@
+{
+ "case": "plans-overview",
+ "layouts": [
+  {
+   "label": "stage8j-7d5594ba.html",
+   "md5": "7d5594baf7468f943ab42f7d848608d1",
+   "console": [],
+   "dropped": [
+    "n:ahq",
+    "pl:The concealed centre",
+    "t:augezd",
+    "t:goldbach",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:santon",
+    "t:satschan",
+    "t:sokolnitz",
+    "t:telnitz",
+    "t:vinohrady",
+    "t:zuran"
+   ],
+   "items": [
+    {
+     "key": "e:telnitz-retaken",
+     "pri": 4,
+     "keep": true,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      886.2,
+      614.4
+     ],
+     "rect": [
+      799,
+      673,
+      1029,
+      690
+     ]
+    },
+    {
+     "key": "p:plateau",
+     "pri": 5,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 4,
+     "anchor": [
+      992.6,
+      348.9
+     ],
+     "rect": [
+      655,
+      340,
+      986,
+      357
+     ]
+    },
+    {
+     "key": "o:French hold the crest",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      998.4,
+      379.9
+     ],
+     "rect": [
+      1000,
+      398,
+      1126,
+      415
+     ]
+    },
+    {
+     "key": "o:Kamensky turns about (disputed)",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      955.3,
+      481.8
+     ],
+     "rect": [
+      904,
+      523,
+      1105,
+      540
+     ]
+    },
+    {
+     "key": "o:Jurczek's Austrians",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      974.7,
+      399.2
+     ],
+     "rect": [
+      857,
+      376,
+      973,
+      393
+     ]
+    },
+    {
+     "key": "o:Levasseur up the Goldbach",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      905.7,
+      486.7
+     ],
+     "rect": [
+      691,
+      401,
+      854,
+      418
+     ]
+    },
+    {
+     "key": "o:Caffarelli",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      955,
+      254.5
+     ],
+     "rect": [
+      891,
+      232,
+      953,
+      249
+     ]
+    },
+    {
+     "key": "o:Suchet",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      912.2,
+      216.2
+     ],
+     "rect": [
+      888,
+      158,
+      936,
+      175
+     ]
+    },
+    {
+     "key": "o:Bagration",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      982.7,
+      181.4
+     ],
+     "rect": [
+      980,
+      190,
+      1044,
+      207
+     ]
+    },
+    {
+     "key": "pl:Columns I-III on the southern plateau",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 6,
+     "anchor": [
+      980.4,
+      489.3
+     ],
+     "rect": [
+      982,
+      493,
+      1200,
+      510
+     ]
+    },
+    {
+     "key": "pl:IV Column at Pratzen",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1029.2,
+      392.4
+     ],
+     "rect": [
+      1012,
+      432,
+      1142,
+      449
+     ]
+    },
+    {
+     "key": "pl:Reserve behind Krzenowitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 1,
+     "anchor": [
+      1140.3,
+      353.2
+     ],
+     "rect": [
+      1142,
+      332,
+      1304,
+      349
+     ]
+    },
+    {
+     "key": "pl:Bagration on the highway",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 1,
+     "anchor": [
+      1089.6,
+      226.6
+     ],
+     "rect": [
+      1092,
+      206,
+      1244,
+      223
+     ]
+    },
+    {
+     "key": "pl:Advance Guard",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 6,
+     "anchor": [
+      928.4,
+      602.7
+     ],
+     "rect": [
+      930,
+      609,
+      1030,
+      626
+     ]
+    },
+    {
+     "key": "pl:1st Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      956.4,
+      558
+     ],
+     "rect": [
+      890,
+      567,
+      964,
+      584
+     ]
+    },
+    {
+     "key": "pl:2nd Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      951.3,
+      511
+     ],
+     "rect": [
+      1024,
+      456,
+      1104,
+      473
+     ]
+    },
+    {
+     "key": "pl:3rd Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      950,
+      480.3
+     ],
+     "rect": [
+      911,
+      318,
+      989,
+      335
+     ]
+    },
+    {
+     "key": "pl:4th Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      986.5,
+      410.3
+     ],
+     "rect": [
+      898,
+      402,
+      974,
+      419
+     ]
+    },
+    {
+     "key": "pl:5th Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1015.5,
+      375.8
+     ],
+     "rect": [
+      1013,
+      280,
+      1089,
+      297
+     ]
+    },
+    {
+     "key": "pl:Advance Guard of the Right",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      984.5,
+      173.9
+     ],
+     "rect": [
+      901,
+      115,
+      1068,
+      132
+     ]
+    },
+    {
+     "key": "pl:Reserve",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      1140.5,
+      352.9
+     ],
+     "rect": [
+      1086,
+      330,
+      1139,
+      347
+     ]
+    },
+    {
+     "key": "pl:Telnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      883.7,
+      616.9
+     ],
+     "rect": [
+      893,
+      589,
+      941,
+      606
+     ]
+    },
+    {
+     "key": "pl:Sokolnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      878.8,
+      561.8
+     ],
+     "rect": [
+      758,
+      464,
+      821,
+      481
+     ]
+    },
+    {
+     "key": "pl:Kobelnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      875.7,
+      450.4
+     ],
+     "rect": [
+      769,
+      442,
+      833,
+      459
+     ]
+    },
+    {
+     "key": "pl:Envelop toward Brünn",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      789.7,
+      522
+     ],
+     "rect": [
+      650,
+      494,
+      788,
+      511
+     ]
+    },
+    {
+     "key": "pl:Soult concealed in the Goldbach valley",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      882.8,
+      361.7
+     ],
+     "rect": [
+      704,
+      288,
+      932,
+      305
+     ]
+    },
+    {
+     "key": "pl:Reserve behind the Zuran",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 7,
+     "anchor": [
+      856.8,
+      307
+     ],
+     "rect": [
+      703,
+      311,
+      855,
+      328
+     ]
+    },
+    {
+     "key": "pl:Lannes and Murat on the highway",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 7,
+     "anchor": [
+      904.2,
+      249.6
+     ],
+     "rect": [
+      703,
+      254,
+      902,
+      271
+     ]
+    },
+    {
+     "key": "pl:Davout coming up from Raigern",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      763.7,
+      634.9
+     ],
+     "rect": [
+      570,
+      614,
+      762,
+      631
+     ]
+    },
+    {
+     "key": "pl:The bait",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      877.8,
+      569.5
+     ],
+     "rect": [
+      728,
+      561,
+      783,
+      578
+     ]
+    },
+    {
+     "key": "pl:The concealed centre",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      904.9,
+      399.5
+     ],
+     "rect": null
+    },
+    {
+     "key": "pl:The second axis",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      915.1,
+      344
+     ],
+     "rect": [
+      790,
+      202,
+      887,
+      219
+     ]
+    },
+    {
+     "key": "pl:The pivot",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      929,
+      201.8
+     ],
+     "rect": [
+      962,
+      220,
+      1026,
+      237
+     ]
+    },
+    {
+     "key": "pl:The reserve",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      907.7,
+      336.8
+     ],
+     "rect": [
+      758,
+      375,
+      832,
+      392
+     ]
+    },
+    {
+     "key": "pl:The wheel",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      965.3,
+      469.6
+     ],
+     "rect": [
+      1041,
+      570,
+      1108,
+      587
+     ]
+    },
+    {
+     "key": "pl:Pratzeberg",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      976.9,
+      463.8
+     ],
+     "rect": [
+      1032,
+      545,
+      1102,
+      562
+     ]
+    },
+    {
+     "key": "pl:Stare Vinohrady",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1011.9,
+      358.6
+     ],
+     "rect": [
+      1051,
+      260,
+      1152,
+      277
+     ]
+    },
+    {
+     "key": "pl:Hold the Santon",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      897.7,
+      213.2
+     ],
+     "rect": [
+      876,
+      136,
+      976,
+      153
+     ]
+    },
+    {
+     "key": "pl:Close the Augezd defile",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      992,
+      570.7
+     ],
+     "rect": [
+      949,
+      631,
+      1092,
+      648
+     ]
+    },
+    {
+     "key": "n:gqg",
+     "pri": 7,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      840.6,
+      269.5
+     ],
+     "rect": [
+      721,
+      178,
+      892,
+      195
+     ]
+    },
+    {
+     "key": "n:ahq",
+     "pri": 7,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      999.4,
+      396.2
+     ],
+     "rect": null
+    },
+    {
+     "key": "n:buxhowden",
+     "pri": 7.096,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      958.4,
+      550.3
+     ],
+     "rect": [
+      922,
+      651,
+      1085,
+      668
+     ]
+    },
+    {
+     "key": "n:lich",
+     "pri": 7.099,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1006.5,
+      322.4
+     ],
+     "rect": [
+      1059,
+      239,
+      1213,
+      256
+     ]
+    },
+    {
+     "key": "n:bag",
+     "pri": 7.099,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1018.4,
+      166.8
+     ],
+     "rect": [
+      918,
+      92,
+      1119,
+      109
+     ]
+    },
+    {
+     "key": "t:pratzen",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      998.2,
+      414
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:vinohrady",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      1012.1,
+      357.7
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:pratzeberg",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      977,
+      463.4
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:santon",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      897.5,
+      211.9
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:zuran",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      840.7,
+      269.7
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:goldbach",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      870.8,
+      445.5
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:litava",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "on",
+     "cand": 0,
+     "anchor": [
+      1168.4,
+      376.2
+     ],
+     "rect": [
+      1175,
+      368,
+      1245,
+      384
+     ]
+    },
+    {
+     "key": "t:telnitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      883.8,
+      616.9
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:sokolnitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      878.9,
+      561.8
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:augezd",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      991.9,
+      570.8
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:satschan",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      955.1,
+      633.4
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:austerlitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "on",
+     "cand": 0,
+     "anchor": [
+      1251.4,
+      263.9
+     ],
+     "rect": [
+      1258,
+      256,
+      1321,
+      272
+     ]
+    },
+    {
+     "key": "o:Pratzeberg",
+     "pri": 10,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      976.9,
+      464
+     ],
+     "rect": [
+      1077,
+      378,
+      1147,
+      395
+     ]
+    }
+   ],
+   "litava": {
+    "state": "on",
+    "anchor": [
+     1168.4,
+     376.2
+    ],
+    "marker": [],
+    "places": [
+     {
+      "box": [
+       1175,
+       368,
+       1245,
+       384
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1133,
+       353,
+       1203,
+       369
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1091,
+       368,
+       1161,
+       384
+      ],
+      "covered": [
+       "o:Pratzeberg"
+      ]
+     },
+     {
+      "box": [
+       1133,
+       383,
+       1203,
+       399
+      ],
+      "covered": [
+       "o:Pratzeberg"
+      ]
+     },
+     {
+      "box": [
+       1173,
+       355,
+       1243,
+       371
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1173,
+       381,
+       1243,
+       397
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1093,
+       355,
+       1163,
+       371
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1093,
+       381,
+       1163,
+       397
+      ],
+      "covered": [
+       "o:French hold the crest",
+       "o:Pratzeberg"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "label": "austerlitz-command-map.html",
+   "md5": "f10fe585c46aea576f436ed51ac46f83",
+   "console": [],
+   "dropped": [
+    "n:ahq",
+    "pl:The concealed centre",
+    "t:augezd",
+    "t:goldbach",
+    "t:litava",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:santon",
+    "t:satschan",
+    "t:sokolnitz",
+    "t:telnitz",
+    "t:vinohrady",
+    "t:zuran"
+   ],
+   "items": [
+    {
+     "key": "e:telnitz-retaken",
+     "pri": 4,
+     "keep": true,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      886.5,
+      614.9
+     ],
+     "rect": [
+      799,
+      673,
+      1029,
+      690
+     ]
+    },
+    {
+     "key": "p:plateau",
+     "pri": 5,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 4,
+     "anchor": [
+      992.5,
+      350.4
+     ],
+     "rect": [
+      654,
+      342,
+      985,
+      359
+     ]
+    },
+    {
+     "key": "o:French hold the crest",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      998.2,
+      381.3
+     ],
+     "rect": [
+      1000,
+      400,
+      1126,
+      417
+     ]
+    },
+    {
+     "key": "o:Kamensky turns about (disputed)",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      955.2,
+      482.8
+     ],
+     "rect": [
+      904,
+      524,
+      1105,
+      541
+     ]
+    },
+    {
+     "key": "o:Jurczek's Austrians",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      974.6,
+      400.6
+     ],
+     "rect": [
+      857,
+      378,
+      973,
+      395
+     ]
+    },
+    {
+     "key": "o:Levasseur up the Goldbach",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      905.9,
+      487.7
+     ],
+     "rect": [
+      691,
+      402,
+      854,
+      419
+     ]
+    },
+    {
+     "key": "o:Caffarelli",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 4,
+     "anchor": [
+      954.9,
+      256.4
+     ],
+     "rect": [
+      885,
+      248,
+      947,
+      265
+     ]
+    },
+    {
+     "key": "o:Suchet",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      926,
+      228.6
+     ],
+     "rect": [
+      902,
+      270,
+      950,
+      287
+     ]
+    },
+    {
+     "key": "o:Bagration",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1002.9,
+      192.4
+     ],
+     "rect": [
+      971,
+      150,
+      1035,
+      167
+     ]
+    },
+    {
+     "key": "pl:Columns I-III on the southern plateau",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 6,
+     "anchor": [
+      980.3,
+      490.3
+     ],
+     "rect": [
+      982,
+      494,
+      1200,
+      511
+     ]
+    },
+    {
+     "key": "pl:IV Column at Pratzen",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1028.9,
+      393.8
+     ],
+     "rect": [
+      1012,
+      433,
+      1142,
+      450
+     ]
+    },
+    {
+     "key": "pl:Reserve behind Krzenowitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 1,
+     "anchor": [
+      1139.5,
+      354.7
+     ],
+     "rect": [
+      1142,
+      334,
+      1304,
+      351
+     ]
+    },
+    {
+     "key": "pl:Bagration on the highway",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 3,
+     "anchor": [
+      1058.1,
+      190.8
+     ],
+     "rect": [
+      1064,
+      182,
+      1216,
+      199
+     ]
+    },
+    {
+     "key": "pl:Advance Guard",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 6,
+     "anchor": [
+      928.5,
+      603.3
+     ],
+     "rect": [
+      931,
+      609,
+      1031,
+      626
+     ]
+    },
+    {
+     "key": "pl:1st Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      956.4,
+      558.7
+     ],
+     "rect": [
+      890,
+      567,
+      964,
+      584
+     ]
+    },
+    {
+     "key": "pl:2nd Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      951.3,
+      511.9
+     ],
+     "rect": [
+      1024,
+      457,
+      1104,
+      474
+     ]
+    },
+    {
+     "key": "pl:3rd Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      950,
+      481.4
+     ],
+     "rect": [
+      911,
+      319,
+      989,
+      336
+     ]
+    },
+    {
+     "key": "pl:4th Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      986.3,
+      411.6
+     ],
+     "rect": [
+      898,
+      403,
+      974,
+      420
+     ]
+    },
+    {
+     "key": "pl:5th Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1015.2,
+      377.3
+     ],
+     "rect": [
+      1013,
+      282,
+      1089,
+      299
+     ]
+    },
+    {
+     "key": "pl:Advance Guard of the Right",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1005.4,
+      202.4
+     ],
+     "rect": [
+      922,
+      124,
+      1089,
+      141
+     ]
+    },
+    {
+     "key": "pl:Reserve",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      1139.8,
+      354.4
+     ],
+     "rect": [
+      1085,
+      331,
+      1138,
+      348
+     ]
+    },
+    {
+     "key": "pl:Telnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      884,
+      617.4
+     ],
+     "rect": [
+      894,
+      589,
+      942,
+      606
+     ]
+    },
+    {
+     "key": "pl:Sokolnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      879.1,
+      562.5
+     ],
+     "rect": [
+      758,
+      464,
+      821,
+      481
+     ]
+    },
+    {
+     "key": "pl:Kobelnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      876,
+      451.5
+     ],
+     "rect": [
+      769,
+      443,
+      833,
+      460
+     ]
+    },
+    {
+     "key": "pl:Envelop toward Brünn",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      790.3,
+      522.9
+     ],
+     "rect": [
+      650,
+      495,
+      788,
+      512
+     ]
+    },
+    {
+     "key": "pl:Soult concealed in the Goldbach valley",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      883,
+      363.1
+     ],
+     "rect": [
+      704,
+      290,
+      932,
+      307
+     ]
+    },
+    {
+     "key": "pl:Reserve behind the Zuran",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 7,
+     "anchor": [
+      857.1,
+      308.7
+     ],
+     "rect": [
+      703,
+      313,
+      855,
+      330
+     ]
+    },
+    {
+     "key": "pl:Lannes and Murat on the highway",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      904.4,
+      251.5
+     ],
+     "rect": [
+      770,
+      158,
+      969,
+      175
+     ]
+    },
+    {
+     "key": "pl:Davout coming up from Raigern",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      764.4,
+      635.3
+     ],
+     "rect": [
+      570,
+      614,
+      762,
+      631
+     ]
+    },
+    {
+     "key": "pl:The bait",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      878.1,
+      570.2
+     ],
+     "rect": [
+      729,
+      562,
+      784,
+      579
+     ]
+    },
+    {
+     "key": "pl:The concealed centre",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      905.1,
+      400.8
+     ],
+     "rect": null
+    },
+    {
+     "key": "pl:The second axis",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      915.3,
+      345.6
+     ],
+     "rect": [
+      781,
+      251,
+      878,
+      268
+     ]
+    },
+    {
+     "key": "pl:The pivot",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      945.1,
+      217.2
+     ],
+     "rect": [
+      819,
+      209,
+      883,
+      226
+     ]
+    },
+    {
+     "key": "pl:The reserve",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      907.9,
+      338.4
+     ],
+     "rect": [
+      758,
+      377,
+      832,
+      394
+     ]
+    },
+    {
+     "key": "pl:The wheel",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      965.3,
+      470.6
+     ],
+     "rect": [
+      1041,
+      571,
+      1108,
+      588
+     ]
+    },
+    {
+     "key": "pl:Pratzeberg",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      976.8,
+      464.9
+     ],
+     "rect": [
+      1032,
+      546,
+      1102,
+      563
+     ]
+    },
+    {
+     "key": "pl:Stare Vinohrady",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1011.7,
+      360
+     ],
+     "rect": [
+      1010,
+      234,
+      1111,
+      251
+     ]
+    },
+    {
+     "key": "pl:Hold the Santon",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      897.8,
+      215.3
+     ],
+     "rect": [
+      796,
+      188,
+      896,
+      205
+     ]
+    },
+    {
+     "key": "pl:Close the Augezd defile",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      991.8,
+      571.4
+     ],
+     "rect": [
+      949,
+      632,
+      1092,
+      649
+     ]
+    },
+    {
+     "key": "n:gqg",
+     "pri": 7,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      841,
+      271.3
+     ],
+     "rect": [
+      672,
+      228,
+      843,
+      245
+     ]
+    },
+    {
+     "key": "n:ahq",
+     "pri": 7,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      999.2,
+      397.5
+     ],
+     "rect": null
+    },
+    {
+     "key": "n:buxhowden",
+     "pri": 7.096,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      958.4,
+      551
+     ],
+     "rect": [
+      922,
+      652,
+      1085,
+      669
+     ]
+    },
+    {
+     "key": "n:lich",
+     "pri": 7.099,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1006.3,
+      324
+     ],
+     "rect": [
+      1074,
+      354,
+      1228,
+      371
+     ]
+    },
+    {
+     "key": "n:bag",
+     "pri": 7.099,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1059.2,
+      187.1
+     ],
+     "rect": [
+      959,
+      89,
+      1160,
+      106
+     ]
+    },
+    {
+     "key": "t:pratzen",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      998,
+      415.3
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:vinohrady",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      1011.9,
+      359.2
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:pratzeberg",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      976.9,
+      464.5
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:santon",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      897.7,
+      213.9
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:zuran",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      841.1,
+      271.6
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:goldbach",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      871.1,
+      446.6
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:litava",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      1167.6,
+      377.6
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:telnitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      884.1,
+      617.3
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:sokolnitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      879.2,
+      562.5
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:augezd",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      991.7,
+      571.4
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:satschan",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      955.1,
+      633.8
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:austerlitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "on",
+     "cand": 0,
+     "anchor": [
+      1250.2,
+      265.7
+     ],
+     "rect": [
+      1257,
+      258,
+      1320,
+      274
+     ]
+    },
+    {
+     "key": "o:Pratzeberg",
+     "pri": 10,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      976.8,
+      465.1
+     ],
+     "rect": [
+      1076,
+      379,
+      1146,
+      396
+     ]
+    }
+   ],
+   "litava": {
+    "state": "dropped",
+    "anchor": [
+     1167.6,
+     377.6
+    ],
+    "marker": [
+     "n:lich"
+    ],
+    "places": [
+     {
+      "box": [
+       1175,
+       370,
+       1245,
+       386
+      ],
+      "covered": [
+       "n:lich"
+      ]
+     },
+     {
+      "box": [
+       1133,
+       355,
+       1203,
+       371
+      ],
+      "covered": [
+       "n:lich"
+      ]
+     },
+     {
+      "box": [
+       1091,
+       370,
+       1161,
+       386
+      ],
+      "covered": [
+       "n:lich",
+       "o:Pratzeberg"
+      ]
+     },
+     {
+      "box": [
+       1133,
+       385,
+       1203,
+       401
+      ],
+      "covered": [
+       "o:Pratzeberg"
+      ]
+     },
+     {
+      "box": [
+       1173,
+       357,
+       1243,
+       373
+      ],
+      "covered": [
+       "n:lich"
+      ]
+     },
+     {
+      "box": [
+       1173,
+       383,
+       1243,
+       399
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1093,
+       357,
+       1163,
+       373
+      ],
+      "covered": [
+       "n:lich"
+      ]
+     },
+     {
+      "box": [
+       1093,
+       383,
+       1163,
+       399
+      ],
+      "covered": [
+       "o:French hold the crest",
+       "o:Pratzeberg"
+      ]
+     }
+    ]
+   },
+   "focus": {
+    "focused": true,
+    "state": "on",
+    "forced": true,
+    "rect": [
+     1133,
+     352,
+     1203,
+     368
+    ],
+    "clear": true,
+    "after": "dropped"
+   }
+  },
+  {
+   "label": "austerlitz-command-map.html with stage8j-7d5594ba.html's PLANS",
+   "md5": "855d3266920166e108b7ee31877d1044",
+   "console": [],
+   "dropped": [
+    "n:ahq",
+    "pl:The concealed centre",
+    "t:augezd",
+    "t:goldbach",
+    "t:pratzeberg",
+    "t:pratzen",
+    "t:santon",
+    "t:satschan",
+    "t:sokolnitz",
+    "t:telnitz",
+    "t:vinohrady",
+    "t:zuran"
+   ],
+   "items": [
+    {
+     "key": "e:telnitz-retaken",
+     "pri": 4,
+     "keep": true,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      886.5,
+      614.9
+     ],
+     "rect": [
+      799,
+      673,
+      1029,
+      690
+     ]
+    },
+    {
+     "key": "p:plateau",
+     "pri": 5,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 4,
+     "anchor": [
+      992.5,
+      350.4
+     ],
+     "rect": [
+      654,
+      342,
+      985,
+      359
+     ]
+    },
+    {
+     "key": "o:French hold the crest",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      998.2,
+      381.3
+     ],
+     "rect": [
+      1000,
+      400,
+      1126,
+      417
+     ]
+    },
+    {
+     "key": "o:Kamensky turns about (disputed)",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      955.2,
+      482.8
+     ],
+     "rect": [
+      904,
+      524,
+      1105,
+      541
+     ]
+    },
+    {
+     "key": "o:Jurczek's Austrians",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      974.6,
+      400.6
+     ],
+     "rect": [
+      857,
+      378,
+      973,
+      395
+     ]
+    },
+    {
+     "key": "o:Levasseur up the Goldbach",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      905.9,
+      487.7
+     ],
+     "rect": [
+      691,
+      402,
+      854,
+      419
+     ]
+    },
+    {
+     "key": "o:Caffarelli",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 4,
+     "anchor": [
+      954.9,
+      256.4
+     ],
+     "rect": [
+      885,
+      248,
+      947,
+      265
+     ]
+    },
+    {
+     "key": "o:Suchet",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      926,
+      228.6
+     ],
+     "rect": [
+      902,
+      270,
+      950,
+      287
+     ]
+    },
+    {
+     "key": "o:Bagration",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 5,
+     "anchor": [
+      1002.9,
+      192.4
+     ],
+     "rect": [
+      971,
+      198,
+      1035,
+      215
+     ]
+    },
+    {
+     "key": "pl:Columns I-III on the southern plateau",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 6,
+     "anchor": [
+      980.3,
+      490.3
+     ],
+     "rect": [
+      982,
+      494,
+      1200,
+      511
+     ]
+    },
+    {
+     "key": "pl:IV Column at Pratzen",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1028.9,
+      393.8
+     ],
+     "rect": [
+      1012,
+      433,
+      1142,
+      450
+     ]
+    },
+    {
+     "key": "pl:Reserve behind Krzenowitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 1,
+     "anchor": [
+      1139.5,
+      354.7
+     ],
+     "rect": [
+      1142,
+      334,
+      1304,
+      351
+     ]
+    },
+    {
+     "key": "pl:Bagration on the highway",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 1,
+     "anchor": [
+      1089,
+      228.6
+     ],
+     "rect": [
+      1091,
+      208,
+      1243,
+      225
+     ]
+    },
+    {
+     "key": "pl:Advance Guard",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 6,
+     "anchor": [
+      928.5,
+      603.3
+     ],
+     "rect": [
+      931,
+      609,
+      1031,
+      626
+     ]
+    },
+    {
+     "key": "pl:1st Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      956.4,
+      558.7
+     ],
+     "rect": [
+      890,
+      567,
+      964,
+      584
+     ]
+    },
+    {
+     "key": "pl:2nd Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      951.3,
+      511.9
+     ],
+     "rect": [
+      1024,
+      457,
+      1104,
+      474
+     ]
+    },
+    {
+     "key": "pl:3rd Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      950,
+      481.4
+     ],
+     "rect": [
+      911,
+      319,
+      989,
+      336
+     ]
+    },
+    {
+     "key": "pl:4th Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      986.3,
+      411.6
+     ],
+     "rect": [
+      898,
+      403,
+      974,
+      420
+     ]
+    },
+    {
+     "key": "pl:5th Column",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1015.2,
+      377.3
+     ],
+     "rect": [
+      1013,
+      282,
+      1089,
+      299
+     ]
+    },
+    {
+     "key": "pl:Advance Guard of the Right",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      984.4,
+      176.1
+     ],
+     "rect": [
+      815,
+      153,
+      982,
+      170
+     ]
+    },
+    {
+     "key": "pl:Reserve",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      1139.8,
+      354.4
+     ],
+     "rect": [
+      1085,
+      331,
+      1138,
+      348
+     ]
+    },
+    {
+     "key": "pl:Telnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      884,
+      617.4
+     ],
+     "rect": [
+      894,
+      589,
+      942,
+      606
+     ]
+    },
+    {
+     "key": "pl:Sokolnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      879.1,
+      562.5
+     ],
+     "rect": [
+      758,
+      464,
+      821,
+      481
+     ]
+    },
+    {
+     "key": "pl:Kobelnitz",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      876,
+      451.5
+     ],
+     "rect": [
+      769,
+      443,
+      833,
+      460
+     ]
+    },
+    {
+     "key": "pl:Envelop toward Brünn",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      790.3,
+      522.9
+     ],
+     "rect": [
+      650,
+      495,
+      788,
+      512
+     ]
+    },
+    {
+     "key": "pl:Soult concealed in the Goldbach valley",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      883,
+      363.1
+     ],
+     "rect": [
+      704,
+      290,
+      932,
+      307
+     ]
+    },
+    {
+     "key": "pl:Reserve behind the Zuran",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 7,
+     "anchor": [
+      857.1,
+      308.7
+     ],
+     "rect": [
+      703,
+      313,
+      855,
+      330
+     ]
+    },
+    {
+     "key": "pl:Lannes and Murat on the highway",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      904.4,
+      251.5
+     ],
+     "rect": [
+      805,
+      123,
+      1004,
+      140
+     ]
+    },
+    {
+     "key": "pl:Davout coming up from Raigern",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      764.4,
+      635.3
+     ],
+     "rect": [
+      570,
+      614,
+      762,
+      631
+     ]
+    },
+    {
+     "key": "pl:The bait",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      878.1,
+      570.2
+     ],
+     "rect": [
+      729,
+      562,
+      784,
+      579
+     ]
+    },
+    {
+     "key": "pl:The concealed centre",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      905.1,
+      400.8
+     ],
+     "rect": null
+    },
+    {
+     "key": "pl:The second axis",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      915.3,
+      345.6
+     ],
+     "rect": [
+      781,
+      251,
+      878,
+      268
+     ]
+    },
+    {
+     "key": "pl:The pivot",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      929.1,
+      203.9
+     ],
+     "rect": [
+      962,
+      222,
+      1026,
+      239
+     ]
+    },
+    {
+     "key": "pl:The reserve",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      907.9,
+      338.4
+     ],
+     "rect": [
+      758,
+      377,
+      832,
+      394
+     ]
+    },
+    {
+     "key": "pl:The wheel",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      965.3,
+      470.6
+     ],
+     "rect": [
+      1041,
+      571,
+      1108,
+      588
+     ]
+    },
+    {
+     "key": "pl:Pratzeberg",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      976.8,
+      464.9
+     ],
+     "rect": [
+      1032,
+      546,
+      1102,
+      563
+     ]
+    },
+    {
+     "key": "pl:Stare Vinohrady",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1011.7,
+      360
+     ],
+     "rect": [
+      1051,
+      262,
+      1152,
+      279
+     ]
+    },
+    {
+     "key": "pl:Hold the Santon",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": 2,
+     "anchor": [
+      897.8,
+      215.3
+     ],
+     "rect": [
+      796,
+      188,
+      896,
+      205
+     ]
+    },
+    {
+     "key": "pl:Close the Augezd defile",
+     "pri": 6,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      991.8,
+      571.4
+     ],
+     "rect": [
+      949,
+      632,
+      1092,
+      649
+     ]
+    },
+    {
+     "key": "n:gqg",
+     "pri": 7,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      841,
+      271.3
+     ],
+     "rect": [
+      709,
+      216,
+      880,
+      233
+     ]
+    },
+    {
+     "key": "n:ahq",
+     "pri": 7,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      999.2,
+      397.5
+     ],
+     "rect": null
+    },
+    {
+     "key": "n:buxhowden",
+     "pri": 7.096,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      958.4,
+      551
+     ],
+     "rect": [
+      922,
+      652,
+      1085,
+      669
+     ]
+    },
+    {
+     "key": "n:lich",
+     "pri": 7.099,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      1006.3,
+      324
+     ],
+     "rect": [
+      1059,
+      241,
+      1213,
+      258
+     ]
+    },
+    {
+     "key": "n:bag",
+     "pri": 7.099,
+     "keep": false,
+     "mode": "label",
+     "focusable": true,
+     "state": "on",
+     "cand": 1,
+     "anchor": [
+      1059.2,
+      187.1
+     ],
+     "rect": [
+      1061,
+      168,
+      1262,
+      185
+     ]
+    },
+    {
+     "key": "t:pratzen",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      998,
+      415.3
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:vinohrady",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      1011.9,
+      359.2
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:pratzeberg",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      976.9,
+      464.5
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:santon",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      897.7,
+      213.9
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:zuran",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      841.1,
+      271.6
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:goldbach",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      871.1,
+      446.6
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:litava",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "on",
+     "cand": 0,
+     "anchor": [
+      1167.6,
+      377.6
+     ],
+     "rect": [
+      1175,
+      370,
+      1245,
+      386
+     ]
+    },
+    {
+     "key": "t:telnitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      884.1,
+      617.3
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:sokolnitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      879.2,
+      562.5
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:augezd",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      991.7,
+      571.4
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:satschan",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "dropped",
+     "cand": -1,
+     "anchor": [
+      955.1,
+      633.8
+     ],
+     "rect": null
+    },
+    {
+     "key": "t:austerlitz",
+     "pri": 8,
+     "keep": false,
+     "mode": "place",
+     "focusable": true,
+     "state": "on",
+     "cand": 0,
+     "anchor": [
+      1250.2,
+      265.7
+     ],
+     "rect": [
+      1257,
+      258,
+      1320,
+      274
+     ]
+    },
+    {
+     "key": "o:Pratzeberg",
+     "pri": 10,
+     "keep": false,
+     "mode": "label",
+     "focusable": false,
+     "state": "on",
+     "cand": -1,
+     "anchor": [
+      976.8,
+      465.1
+     ],
+     "rect": [
+      1076,
+      379,
+      1146,
+      396
+     ]
+    }
+   ],
+   "litava": {
+    "state": "on",
+    "anchor": [
+     1167.6,
+     377.6
+    ],
+    "marker": [],
+    "places": [
+     {
+      "box": [
+       1175,
+       370,
+       1245,
+       386
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1133,
+       355,
+       1203,
+       371
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1091,
+       370,
+       1161,
+       386
+      ],
+      "covered": [
+       "o:Pratzeberg"
+      ]
+     },
+     {
+      "box": [
+       1133,
+       385,
+       1203,
+       401
+      ],
+      "covered": [
+       "o:Pratzeberg"
+      ]
+     },
+     {
+      "box": [
+       1173,
+       357,
+       1243,
+       373
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1173,
+       383,
+       1243,
+       399
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1093,
+       357,
+       1163,
+       373
+      ],
+      "covered": []
+     },
+     {
+      "box": [
+       1093,
+       383,
+       1163,
+       399
+      ],
+      "covered": [
+       "o:French hold the crest",
+       "o:Pratzeberg"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "key": "p:plateau",
+   "pri": 5,
+   "before": {
+    "state": "on",
+    "cand": 4,
+    "rect": [
+     655,
+     340,
+     986,
+     357
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 4,
+    "rect": [
+     654,
+     342,
+     985,
+     359
+    ]
+   },
+   "anchorMovedPx": 1.5
+  },
+  {
+   "key": "o:French hold the crest",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1000,
+     398,
+     1126,
+     415
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1000,
+     400,
+     1126,
+     417
+    ]
+   },
+   "anchorMovedPx": 1.4
+  },
+  {
+   "key": "o:Kamensky turns about (disputed)",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     904,
+     523,
+     1105,
+     540
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     904,
+     524,
+     1105,
+     541
+    ]
+   },
+   "anchorMovedPx": 1
+  },
+  {
+   "key": "o:Jurczek's Austrians",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 2,
+    "rect": [
+     857,
+     376,
+     973,
+     393
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 2,
+    "rect": [
+     857,
+     378,
+     973,
+     395
+    ]
+   },
+   "anchorMovedPx": 1.4
+  },
+  {
+   "key": "o:Levasseur up the Goldbach",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     691,
+     401,
+     854,
+     418
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     691,
+     402,
+     854,
+     419
+    ]
+   },
+   "anchorMovedPx": 1
+  },
+  {
+   "key": "o:Caffarelli",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 2,
+    "rect": [
+     891,
+     232,
+     953,
+     249
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 4,
+    "rect": [
+     885,
+     248,
+     947,
+     265
+    ]
+   },
+   "anchorMovedPx": 1.9
+  },
+  {
+   "key": "o:Suchet",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     888,
+     158,
+     936,
+     175
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     902,
+     270,
+     950,
+     287
+    ]
+   },
+   "anchorMovedPx": 18.6
+  },
+  {
+   "key": "o:Bagration",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     980,
+     190,
+     1044,
+     207
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     971,
+     150,
+     1035,
+     167
+    ]
+   },
+   "anchorMovedPx": 23
+  },
+  {
+   "key": "pl:Columns I-III on the southern plateau",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 6,
+    "rect": [
+     982,
+     493,
+     1200,
+     510
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 6,
+    "rect": [
+     982,
+     494,
+     1200,
+     511
+    ]
+   },
+   "anchorMovedPx": 1
+  },
+  {
+   "key": "pl:IV Column at Pratzen",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1012,
+     432,
+     1142,
+     449
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1012,
+     433,
+     1142,
+     450
+    ]
+   },
+   "anchorMovedPx": 1.4
+  },
+  {
+   "key": "pl:Reserve behind Krzenowitz",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 1,
+    "rect": [
+     1142,
+     332,
+     1304,
+     349
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 1,
+    "rect": [
+     1142,
+     334,
+     1304,
+     351
+    ]
+   },
+   "anchorMovedPx": 1.7
+  },
+  {
+   "key": "pl:Bagration on the highway",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 1,
+    "rect": [
+     1092,
+     206,
+     1244,
+     223
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 3,
+    "rect": [
+     1064,
+     182,
+     1216,
+     199
+    ]
+   },
+   "anchorMovedPx": 47.7
+  },
+  {
+   "key": "pl:Advance Guard",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 6,
+    "rect": [
+     930,
+     609,
+     1030,
+     626
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 6,
+    "rect": [
+     931,
+     609,
+     1031,
+     626
+    ]
+   },
+   "anchorMovedPx": 0.6
+  },
+  {
+   "key": "pl:2nd Column",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1024,
+     456,
+     1104,
+     473
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1024,
+     457,
+     1104,
+     474
+    ]
+   },
+   "anchorMovedPx": 0.9
+  },
+  {
+   "key": "pl:3rd Column",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     911,
+     318,
+     989,
+     335
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     911,
+     319,
+     989,
+     336
+    ]
+   },
+   "anchorMovedPx": 1.1
+  },
+  {
+   "key": "pl:4th Column",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     898,
+     402,
+     974,
+     419
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     898,
+     403,
+     974,
+     420
+    ]
+   },
+   "anchorMovedPx": 1.3
+  },
+  {
+   "key": "pl:5th Column",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1013,
+     280,
+     1089,
+     297
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1013,
+     282,
+     1089,
+     299
+    ]
+   },
+   "anchorMovedPx": 1.5
+  },
+  {
+   "key": "pl:Advance Guard of the Right",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     901,
+     115,
+     1068,
+     132
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     922,
+     124,
+     1089,
+     141
+    ]
+   },
+   "anchorMovedPx": 35.3
+  },
+  {
+   "key": "pl:Reserve",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 2,
+    "rect": [
+     1086,
+     330,
+     1139,
+     347
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 2,
+    "rect": [
+     1085,
+     331,
+     1138,
+     348
+    ]
+   },
+   "anchorMovedPx": 1.7
+  },
+  {
+   "key": "pl:Telnitz",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     893,
+     589,
+     941,
+     606
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     894,
+     589,
+     942,
+     606
+    ]
+   },
+   "anchorMovedPx": 0.6
+  },
+  {
+   "key": "pl:Kobelnitz",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     769,
+     442,
+     833,
+     459
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     769,
+     443,
+     833,
+     460
+    ]
+   },
+   "anchorMovedPx": 1.1
+  },
+  {
+   "key": "pl:Envelop toward Brünn",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 2,
+    "rect": [
+     650,
+     494,
+     788,
+     511
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 2,
+    "rect": [
+     650,
+     495,
+     788,
+     512
+    ]
+   },
+   "anchorMovedPx": 1.1
+  },
+  {
+   "key": "pl:Soult concealed in the Goldbach valley",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     704,
+     288,
+     932,
+     305
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     704,
+     290,
+     932,
+     307
+    ]
+   },
+   "anchorMovedPx": 1.4
+  },
+  {
+   "key": "pl:Reserve behind the Zuran",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 7,
+    "rect": [
+     703,
+     311,
+     855,
+     328
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 7,
+    "rect": [
+     703,
+     313,
+     855,
+     330
+    ]
+   },
+   "anchorMovedPx": 1.7
+  },
+  {
+   "key": "pl:Lannes and Murat on the highway",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": 7,
+    "rect": [
+     703,
+     254,
+     902,
+     271
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     770,
+     158,
+     969,
+     175
+    ]
+   },
+   "anchorMovedPx": 1.9
+  },
+  {
+   "key": "pl:The bait",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     728,
+     561,
+     783,
+     578
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     729,
+     562,
+     784,
+     579
+    ]
+   },
+   "anchorMovedPx": 0.8
+  },
+  {
+   "key": "pl:The second axis",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     790,
+     202,
+     887,
+     219
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     781,
+     251,
+     878,
+     268
+    ]
+   },
+   "anchorMovedPx": 1.6
+  },
+  {
+   "key": "pl:The pivot",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     962,
+     220,
+     1026,
+     237
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     819,
+     209,
+     883,
+     226
+    ]
+   },
+   "anchorMovedPx": 22.3
+  },
+  {
+   "key": "pl:The reserve",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     758,
+     375,
+     832,
+     392
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     758,
+     377,
+     832,
+     394
+    ]
+   },
+   "anchorMovedPx": 1.6
+  },
+  {
+   "key": "pl:The wheel",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1041,
+     570,
+     1108,
+     587
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1041,
+     571,
+     1108,
+     588
+    ]
+   },
+   "anchorMovedPx": 1
+  },
+  {
+   "key": "pl:Pratzeberg",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1032,
+     545,
+     1102,
+     562
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1032,
+     546,
+     1102,
+     563
+    ]
+   },
+   "anchorMovedPx": 1.1
+  },
+  {
+   "key": "pl:Stare Vinohrady",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1051,
+     260,
+     1152,
+     277
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1010,
+     234,
+     1111,
+     251
+    ]
+   },
+   "anchorMovedPx": 1.4
+  },
+  {
+   "key": "pl:Hold the Santon",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     876,
+     136,
+     976,
+     153
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 2,
+    "rect": [
+     796,
+     188,
+     896,
+     205
+    ]
+   },
+   "anchorMovedPx": 2.1
+  },
+  {
+   "key": "pl:Close the Augezd defile",
+   "pri": 6,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     949,
+     631,
+     1092,
+     648
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     949,
+     632,
+     1092,
+     649
+    ]
+   },
+   "anchorMovedPx": 0.7
+  },
+  {
+   "key": "n:gqg",
+   "pri": 7,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     721,
+     178,
+     892,
+     195
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     672,
+     228,
+     843,
+     245
+    ]
+   },
+   "anchorMovedPx": 1.8
+  },
+  {
+   "key": "n:buxhowden",
+   "pri": 7.096,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     922,
+     651,
+     1085,
+     668
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     922,
+     652,
+     1085,
+     669
+    ]
+   },
+   "anchorMovedPx": 0.7
+  },
+  {
+   "key": "n:lich",
+   "pri": 7.099,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1059,
+     239,
+     1213,
+     256
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1074,
+     354,
+     1228,
+     371
+    ]
+   },
+   "anchorMovedPx": 1.6
+  },
+  {
+   "key": "n:bag",
+   "pri": 7.099,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     918,
+     92,
+     1119,
+     109
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     959,
+     89,
+     1160,
+     106
+    ]
+   },
+   "anchorMovedPx": 45.6
+  },
+  {
+   "key": "t:litava",
+   "pri": 8,
+   "before": {
+    "state": "on",
+    "cand": 0,
+    "rect": [
+     1175,
+     368,
+     1245,
+     384
+    ]
+   },
+   "after": {
+    "state": "dropped",
+    "cand": -1,
+    "rect": null
+   },
+   "anchorMovedPx": 1.6
+  },
+  {
+   "key": "t:austerlitz",
+   "pri": 8,
+   "before": {
+    "state": "on",
+    "cand": 0,
+    "rect": [
+     1258,
+     256,
+     1321,
+     272
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": 0,
+    "rect": [
+     1257,
+     258,
+     1320,
+     274
+    ]
+   },
+   "anchorMovedPx": 2.2
+  },
+  {
+   "key": "o:Pratzeberg",
+   "pri": 10,
+   "before": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1077,
+     378,
+     1147,
+     395
+    ]
+   },
+   "after": {
+    "state": "on",
+    "cand": -1,
+    "rect": [
+     1076,
+     379,
+     1146,
+     396
+    ]
+   },
+   "anchorMovedPx": 1.1
+  }
+ ]
+}

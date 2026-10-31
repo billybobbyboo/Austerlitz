@@ -104,6 +104,17 @@ UNOBSTRUCTED["narrow-390"]=[0.46,0.507];   /* was [0.468,0.52]; loosened (decisi
 UNOBSTRUCTED["first-run-laptop"]=[0.546,0.507];   /* was [0.558,0.52]; loosened (decision 141) */
 DROP_LIMIT["eye-zuran"]=6;   /* was 5; loosened (decision 141) */
 DROP_LIMIT["plans-overview"]=12;   /* was 11; loosened (decision 141) */
+/* Stage 8, the integration pass (the owner's authorisation of 31 October 2026 on question 267's Plans line: "a case-specific limit of 13 only if
+   the corrected geography explains it and essential information remains readable and accessible"; docs/STAGE8_SPEC.md section 22):
+   plans-overview's limit 12 -> 13 (this line replaces the 12 above, kept as decision 141's record), for one cause only: with decision 260 (a)
+   both plans' columns on the highway and the Allied staging "Bagration on the highway" follow the corrected road, and the plan labels moved
+   with them (the staging's by 47.7 px, the Advance Guard of the Right's by 35.3, the pivot's by 22.3) push the plan label "Stare Vinohrady"
+   onto Liechtenstein's name's place, whose next free place covers the marker of the Littawa's name (t:litava: a place name is drawn only
+   beside its own marker): 13 dropped. With 8J's PLANS on 8K's build 12, the Littawa drawn (tools/stage8/plans-8l.js,
+   docs/stage8-evidence/8l/plans-8l.json). What remains drawn is what 8J's build draws there: every formation name but the Allied
+   headquarters', every plan label but "The concealed centre"; the Littawa's name reachable by the keyboard (a focused item is always drawn,
+   A-2) and the river drawn; the map text at AA as rendered (the case's own measure). No other case's limit changes */
+DROP_LIMIT["plans-overview"]=13;
 /* Decision 146 (roadmap step 2, the owner's answer (a)): narrow-390 re-measured once under decision 127 (b)'s words (the first-run key's
    plateau sentence labelled "which this map reads as deciding the battle", one line taller at 390 px), by decision 62's method as
    tools/visual/remeasure.js applies it with --bounds keep: two identical --only runs of the b6da3d47b18c4b9ea40fed7e7a18f96d build (linux,
@@ -278,12 +289,19 @@ const MOTION={JUMPS:245, POPS:985, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.2
      (with Bagration's of 8J: pops 999, the zoom by real input 23 jumps against 4), the jumps' with both divisions' together (with Suchet's of 8J
      244, with Bagration's 235) and the longest hidden in Play with Bagration's (4,033 ms; with his places of 8J 3,100); put to the owner, question
      267 */
+  /* since the integration pass (question 267, owner's choice: the bounded presentation repair; docs/STAGE8_SPEC.md section 22): the twins with the
+     pointer, new runs (motion.js blockRuns: the driven motion with the real pointer's buttonless arrival at its start and its departure), each
+     measured on 8K's build, the build this pass delivers (f10fe585...): three hover nothing and equal their 16's runs in every count and visibility
+     (held by the judge above), "paper-zoom+point" hovers the Russian Imperial Guard's counter, which the layer protects (decision 39), and equals
+     its run by real input frame for frame where that run follows it on the self-test's page (28 jumps, 126 pops, 726 of 1,232 formation-frames
+     drawn). No existing baseline moved, and the 16's ceilings not moved */
   VIS:{"hybrid-pan":[1427,2053,2467], "hybrid-zoom":[1342,2248,2133], "hybrid-orbit":[1537,2548,1900], "hybrid-glide":[1152,1795,2533],
     "hybrid-play":[2033,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[795,1232,667], "paper-glide":[554,822,633],
     "paper-play":[1581,1694,667], "land-pan":[1868,2055,1133], "land-zoom":[1641,2258,667], "land-orbit":[1981,2366,667],
     "land-play":[2667,3146,667], "low-pan":[820,885,533], "low-orbit":[681,876,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1495,2548,3033],
     "paper-zoom+sel":[835,1232,667], "hybrid-pan+fr":[1370,1970,2467], "hybrid-pan+al":[938,1276,2467], "paper-play+al":[1171,1331,667],
-    "phone-pan+touch":[275,698,1467]}};
+    "phone-pan+touch":[275,698,1467],
+    "hybrid-pan+point":[1427,2053,2467], "hybrid-orbit+point":[1537,2548,1900], "hybrid-zoom+point":[1342,2248,2133], "paper-zoom+point":[726,1232,667]}};
 module.exports.MOTION=MOTION;
 /* decision 257 (b)'s visibility rule for one run (r: a run of live.motion with its track; base: VIS's entry, or for a run by real input its twin's
    measures as [drawn, in view, longest]); the words of each failure, empty when it holds */
@@ -480,7 +498,22 @@ module.exports.check=function(name,m,spec,opts){
     if(m.presentation==="watch"&&!(TL.switchInRow&&TL.switchOpacity===1)) f.push("Watch: the presentation switch is not in the timeline's control row at full opacity ("+TL.switchOpacity+")");
     /* roadmap step 1 (T-6): strict, the reading must be shown (true); before step 1 only false failed, and a caption with no derived reading
        at all (null) passed. CAP_DERIVED_NONE names a case exempt, with its reason (none) */
-    if(m.presentation==="watch"&&(strict?(TL.capDerived!==true&&!CAP_DERIVED_NONE.includes(name)):TL.capDerived===false)) f.push("Watch: the caption's derived reading is not shown ("+TL.capDerived+")");
+    /* Stage 8, the integration pass (question 267's caption line; docs/STAGE8_SPEC.md section 22): a case named in CAP_DERIVED_ABSENT stands at a
+       clock where the model gives neither derived reading. Its expectation is the model's: the model asked at the case's clock (neither the
+       plateau reading nor the centre separation applies) and the caption showing none (absence asserted, nothing exempted); and, measured at
+       the entry's positive clock in the same view, where the model gives one, the caption showing it; the case's clock set back after */
+    const DA=CAP_DERIVED_ABSENT[name];
+    if(m.presentation==="watch"&&DA&&strict){ const D=m.derived, P=m.derivedPositive;
+      if(!D) f.push("Watch: the model's derived readings not measured at the case's clock (CAP_DERIVED_ABSENT: "+DA.why+")");
+      else { if(D.plateau||D.separation) f.push("Watch: the model gives a derived reading at "+D.clock+" (the plateau reading "+D.plateau+", the centre separation "+D.separation+"), where CAP_DERIVED_ABSENT expects none");
+        if(TL.capDerived!==null||D.shown.length) f.push("Watch: the caption shows a derived reading ("+(D.shown.join(", ")||TL.capDerived)+") where the model gives none"); }
+      if(!P||!P.derived) f.push("Watch: the caption not measured at "+DA.positive+", where the model gives a derived reading (the positive case)");
+      else { const want=[P.derived.plateau?"plateau":null,P.derived.separation?"separation":null].filter(Boolean);
+        if(P.derived.clock!==DA.positive) f.push("Watch: the positive case measured at "+P.derived.clock+", not "+DA.positive);
+        if(!want.length) f.push("Watch: at "+DA.positive+" the model gives no derived reading either: the positive case covers nothing");
+        else if(P.timeline.capDerived!==true||want.some(k=>!P.derived.shown.includes(k))) f.push("Watch: at "+DA.positive+" the caption does not show the model's derived reading ("+want.join(", ")+"; shown: "+(P.derived.shown.join(", ")||"none")+", "+P.timeline.capDerived+")"); }
+      if(!m.derivedBack||!D||m.derivedBack.clock!==D.clock) f.push("Watch: the case's clock not set back after the positive case"); }
+    else if(m.presentation==="watch"&&(strict?(TL.capDerived!==true&&!CAP_DERIVED_NONE.includes(name)):TL.capDerived===false)) f.push("Watch: the caption's derived reading is not shown ("+TL.capDerived+")");
     if(TL.capTag===false) f.push("the caption: an event's tag drawn cut (roadmap step 3, the narrow layout's event tag)");
     if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }
   /* Stage 4E (docs/STAGE4_SPEC.md section E.3): the smoke covers at most a quarter of the free rectangle; new, on a build with puffs */
@@ -591,6 +624,18 @@ module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
    case but one named here with its reason. Empty: no case is exempt */
 const CAP_DERIVED_NONE=[], ROUTES_NONE=[];
 module.exports.CAP_DERIVED_NONE=CAP_DERIVED_NONE; module.exports.ROUTES_NONE=ROUTES_NONE;
+/* Stage 8, the integration pass (the owner's brief of 31 October 2026 on question 267; docs/STAGE8_SPEC.md section 22): a Watch case whose clock
+   has no derived reading by the model, with its reason and the positive clock in the same view where the model gives one (the judge above:
+   the absence asserted against the model, the reading shown at the positive clock). Not an exemption: the case fails if the model gives a
+   reading at its clock, if the caption shows one there, or if the caption does not show the model's reading at the positive clock.
+   "ph8-overview-watch" (14:40, phase 8): the plateau reading applies through phase 6 (PLATEAU_LAST) and phase 8 is past it; the centre
+   separation (centreSeparation, a spatial heuristic: a French formation across the line joining the Allied groups north and south of the
+   Pratzeberg) holds until 14:20 on the build of decision 260 (a) and ends at 14:30: Bagration's corrected place at 14:30, on Schönhals's height
+   east of the Posoritz post house (register section A8), moves the northern group's centroid east (431.3, 162.3 at 14:30, against 424.3, 161.0
+   with 8J's places, which held it until 14:40); the caption agrees with the model at every ten minutes 04:00-17:00 on both builds
+   (tools/stage8/derived-8l.js). The positive case: 14:20 (phase 7), the last ten-minute clock with the centre separation */
+const CAP_DERIVED_ABSENT={"ph8-overview-watch":{positive:860, why:"14:40: phase 8 is past the plateau reading's last phase, and the centre separation ends at 14:30 with Bagration's corrected place (decision 260 (a))"}};
+module.exports.CAP_DERIVED_ABSENT=CAP_DERIVED_ABSENT;
 
 /* T-6: the state a case asks for. CAM_TOL (world units; 0.63 m across the ground at 63.2 m per unit): the camera after the harness's own
    settling against the snapshot measure.js takes right after applyCase (a glide, Follow or a fly-to moves it whole units); on the paper map
@@ -837,9 +882,11 @@ function checkLive(live,opts){
     if(!(none(T.tap1)&&T.tap1.drawer===true&&none(T.tap3))) b.push("a tap on a phone showed a tip or opened no dossier");
     if(b.length) f.push("the timeline's tips by real input: "+b.join("; ")+" "+JSON.stringify(T).slice(0,700)); }
   if(req("motion","the map layer in motion: the 16 motions, the four by real input and two with a selection (Stage 8, implementation PR 8C, decision 240 (a))")){
-    const R=live.motion.runs||[], base=R.filter(r=>!r.real&&!r.select&&!r.reading&&!r.touch), real=R.filter(r=>r.real), b=[], sum=k=>base.reduce((s,r)=>s+r[k],0);
+    const R=live.motion.runs||[], base=R.filter(r=>!r.real&&!r.point&&!r.select&&!r.reading&&!r.touch), real=R.filter(r=>r.real), point=R.filter(r=>r.point), b=[], sum=k=>base.reduce((s,r)=>s+r[k],0);
     if(base.length!==16) b.push(base.length+" of the 16 motions run");
     if(real.length!==(so?2:4)) b.push(real.length+" of the "+(so?"two":"four")+" motions by real input run"+(so?" (the self-test's page: the right-button drag and the paper map's wheel)":""));
+    /* Stage 8, the integration pass (question 267): each run by real input beside its twin with the pointer (motion.js blockRuns) */
+    if(point.length!==real.length||real.some(r=>!point.some(p=>p.id===r.id))) b.push(point.length+" twins with the pointer for the "+real.length+" runs by real input");
     if(R.filter(r=>r.select).length!==2) b.push(R.filter(r=>r.select).length+" of the two motions with a selection run");
     if(R.filter(r=>r.reading).length!==3||R.filter(r=>r.touch).length!==1) b.push(R.filter(r=>r.reading).length+" of the three motions under a reading and "+R.filter(r=>r.touch).length+" of the one by a finger run");
     const T={jumps:sum("jumps"), pops:sum("pops"), flicker:sum("flicker"), lod:sum("lod")};
@@ -847,23 +894,35 @@ function checkLive(live,opts){
     if(!(T.pops<=MOTION.POPS)) b.push("pops "+T.pops+" (limit "+MOTION.POPS+")");
     if(!(T.flicker<=MOTION.FLICKER)) b.push("flickers "+T.flicker+" (limit "+MOTION.FLICKER+")");
     if(!(T.lod<=MOTION.LOD)) b.push("level-of-detail switches "+T.lod+" (limit "+MOTION.LOD+")");
-    /* decision 257 (b): every driven run's formations' visibility at least the baseline's; a run by real input within a frame of its twin's */
-    const keyOf=r=>r.key||(r.id+(r.real?"+real":"")+(r.select?"+sel":"")+(r.reading?"+"+r.reading:"")+(r.touch?"+touch":""));
+    /* decision 257 (b): every driven run's formations' visibility at least the baseline's; a run by real input within a frame of its twin's
+       (since the integration pass its twin with the pointer: the same input) */
+    const keyOf=r=>r.key||(r.id+(r.real?"+real":"")+(r.point?"+point":"")+(r.select?"+sel":"")+(r.reading?"+"+r.reading:"")+(r.touch?"+touch":""));
     const driven=R.filter(r=>!r.real), seen=new Set(driven.map(keyOf));
-    Object.keys(MOTION.VIS).forEach(k=>{ if(!seen.has(k)) b.push("the visibility baseline "+k+" names no run of the block"); });
-    R.forEach(r=>{ const k=keyOf(r), tw=r.real?base.find(x=>x.id===r.id):null;
+    /* a twin with the pointer runs only beside its run by real input: two of the four on the self-test's page */
+    Object.keys(MOTION.VIS).forEach(k=>{ if(seen.has(k)||(/\+point$/.test(k)&&!real.some(r=>r.id+"+point"===k))) return; b.push("the visibility baseline "+k+" names no run of the block"); });
+    R.forEach(r=>{ const k=keyOf(r), tw=r.real?point.find(x=>x.id===r.id):null;
       const vb=r.real?(tw&&tw.track?[tw.track.on,tw.track.inView,tw.track.longestMs]:null):MOTION.VIS[k];
       motionVis(r,vb,r.real?(tw||{}):null).forEach(x=>b.push(k+": "+x)); });
-    R.forEach(r=>{ const nm=r.id+(r.real?" by real input":"")+(r.select?" with "+r.select+" selected":"")+(r.reading?" under the "+r.reading+" reading":"")+(r.touch?" by a finger":"");
+    R.forEach(r=>{ const nm=r.id+(r.real?" by real input":"")+(r.point?" with the pointer":"")+(r.select?" with "+r.select+" selected":"")+(r.reading?" under the "+r.reading+" reading":"")+(r.touch?" by a finger":"");
       if(r.unknownDrawn) b.push(nm+": "+r.unknownDrawn+" item-frames drawn whose formation the reading does not know");
       if(r.overlapFrames) b.push(nm+": "+r.overlapFrames+" frames with drawn items overlapping");
       if(r.keepHidden) b.push(nm+": a never-dropped item hidden in view "+r.keepHidden+" times ("+(r.keepHiddenKeys||[]).join(", ")+")");
       if(r.remnantBad) b.push(nm+": "+r.remnantBad+" remnants out of rule");
       if(!(r.moving>0)) b.push(nm+": no frame read as moving");
       if(r.kind!=="play"&&r.end!=="idle") b.push(nm+": the view not idle at rest after the motion ("+r.end+")"); });
-    real.forEach(r=>{ const t=base.find(x=>x.id===r.id); if(!t){ b.push(r.id+" by real input: no twin"); return; }
+    /* each run by real input against its twin with the pointer (the integration pass; until then the 16's run, which has no pointer): the same
+       formation hovered as the pointer arrives, and every count within REAL_TOL of the twin's (unchanged) */
+    real.forEach(r=>{ const t=point.find(x=>x.id===r.id); if(!t){ b.push(r.id+" by real input: no twin with the pointer"); return; }
+      if((r.hover||null)!==(t.hover||null)) b.push(r.id+" by real input: its pointer hovers "+(r.hover||"nothing")+", its twin's "+(t.hover||"nothing"));
       ["jumps","pops","flicker","lod"].forEach(k=>{ const tol=Math.max(MOTION.REAL_TOL.abs,MOTION.REAL_TOL.rel*t[k]);
-        if(Math.abs(r[k]-t[k])>tol) b.push(r.id+" by real input: "+k+" "+r[k]+", driven in the page "+t[k]+" (tolerance "+tol+")"); }); });
+        if(Math.abs(r[k]-t[k])>tol) b.push(r.id+" by real input: "+k+" "+r[k]+", its twin with the pointer driven in the page "+t[k]+" (tolerance "+tol+")"); }); });
+    /* each twin with the pointer against the 16's run: where its pointer hovers nothing, the same run in every count and in its formations'
+       visibility (the pointer's arrival and departure change nothing else); where it hovers a formation, the hover (decision 39) is named in
+       the run and the difference is the protected formation's */
+    point.forEach(p=>{ const s=base.find(x=>x.id===p.id); if(!s){ b.push(p.id+" with the pointer: no run of the 16"); return; }
+      if(p.hover===undefined) b.push(p.id+" with the pointer: what its pointer hovers not recorded");
+      else if(p.hover===null){ const d=["jumps","pops","flicker","lod","overlapFrames","heldFrames"].filter(k=>p[k]!==s[k]).concat(["on","inView","longestMs"].filter(k=>!p.track||!s.track||p.track[k]!==s.track[k]).map(k=>"formations' "+k));
+        if(d.length) b.push(p.id+" with the pointer hovering nothing differs from the 16's run in "+d.join(", ")); } });
     if(b.length) f.push("the map layer in motion (decision 240 (a)): "+b.join("; ")+" "+JSON.stringify(T)); }
   if(so) return f;
   /* Stage 8, implementation PR 8D (CULLMOTION above) */
