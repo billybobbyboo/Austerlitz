@@ -5594,7 +5594,7 @@ comparison with L3 spans the whole of Stage 8 instead.
   milliseconds."): the desktop's script above section 8.3's CPU line is accepted as measured (Play at half speed +1.5 ms, the Overview's orbit
   +1.1 ms) and carried into the final audit's performance item; nothing is changed or attributed before it. The phone's runs: section 25.
 
-## 25. Device acceptance: the phone runs (1 November 2026); question 269
+## 25. Device acceptance: the phone runs (1 November 2026); decision 269 (a)
 
 **The runs** (the owner, 1 November 2026, after the desktop's): five reports from the iPhone 17 Pro of step 6 (the owner's word; Safari 26.6.1,
 held upright, the viewport 402 x 714, density 3, `lowTier`, drawn at density 1, the sun casting no shadow, in the wrapper page from GitHub
@@ -5651,7 +5651,7 @@ of the build before Stage 8. Two readings, neither the rule's:
 - **The gait** (`?route=gait`, Play at half speed): "not shown", 12 of 12 "neither": 43.0 frames a second with the gait, 43.3 at rest, p50 23 ms
   in every block, the same calls and triangles: its cost is below what the phone route can resolve.
 
-### 25.3 Question 269 (for the owner; nothing changed here)
+### 25.3 Question 269, and decision 269 (a)
 
 The phone holds section 8.3's budget; section 8.5's comparison is not available like for like, and the two readings above disagree. In absolute
 terms, after warming, the phone draws phase 8's Overview at about 41 frames a second and Play at half speed at about 43, with 9-18% long frames;
@@ -5666,9 +5666,20 @@ Recommended: **(b)**. Section 8.5 names the ordinary route for exactly this befo
 Stage 8; one short run turns two disagreeing readings into the rule's own verdict. If it holds, the phone is accepted as the rule says; if not,
 the final audit knows the size of the regression and (c) is the owner's to weigh there.
 
+**Decision 269 (a)** (the owner, 1 November 2026: "Go with A for 269"): the phone is accepted as measured. Section 8.3's phone budget is met;
+section 8.5's rule stays not evaluable like for like, and its two readings (across routes against P5, the long-frame clause failing; on the same
+route against P3/P4's proxy, the build the better) are recorded as they stand, neither taken as the rule's verdict; the ordinary route is not run
+again on the phone. The phone's long frames after warming (phase 8's Overview about 41 frames a second with 18.1% long, Play at half speed about
+43 with 8.6%) are carried into the final audit's performance item, with the figures as their measured cost. Nothing in the application changes.
+
 ### 25.4 The final audit checklist (section 22.6, as carried in section 23.4)
 
 Its **real-device performance** item now reads: the desktop recorded and decided (section 24, decision 268 (a): the CPU line exceeded, accepted
-as measured); the phone recorded (this section; section 8.3 met; section 8.5 open on question 269; the Overview and Play dropping after the phone
-warms); the effects off not faster on the phone in a bracketed run (5 of 14 blocks slower); an integrated GPU unmeasured. Every other item
-unchanged; none marked passed.
+as measured); the phone recorded and decided (this section, decision 269 (a): section 8.3 met, section 8.5 not evaluable like for like, accepted
+as measured; the Overview and Play dropping after the phone warms, the figures their cost); the effects off not faster on the phone in a bracketed
+run (5 of 14 blocks slower); an integrated GPU unmeasured. Every other item unchanged; none marked passed.
+
+**What this leaves.** The device runs the protocol asked for (section 20.12) are recorded, on the desktop and the phone, and both are accepted as
+measured on the owner's decisions 268 (a) and 269 (a), their excesses carried into the final audit rather than passed; an integrated GPU was not
+measured. No question of Stage 8 is open. The next step is the final combined audit, its checklist section 22.6 as carried in sections 23.4,
+24.3 and 25.4; nothing of it is begun here.

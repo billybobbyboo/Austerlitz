@@ -573,9 +573,10 @@ audit, no application change).
 **Decision 268 (a)** (the owner, 1 November 2026): the desktop's excess accepted as measured, carried into the final audit. **The phone runs**
 (the same day; §25): section 8.3's phone budget holds; section 8.5's rule not evaluable like for like (no ordinary-route run of this build on the
 phone; the two readings across routes disagree); after warming, phase 8's Overview at about 41 frames a second and Play at half speed at about 43,
-with 9-18% long frames; **question 269** (recommended: the ordinary route twice on the phone, judged against P5, before the final audit).
+with 9-18% long frames; question 269, decided **(a)** by the owner the same day: the phone accepted as measured, its long frames carried into the
+final audit (the ordinary route not run again).
 
-**Still open in Stage 8**: question 269 (the phone's like-for-like run, §25.3); decision 245 (a)'s facings, to be reconsidered now
+**Still open in Stage 8** (no owner question open; all on the final audit checklist): the device runs' accepted excesses (decisions 268 (a), 269 (a); an integrated GPU unmeasured); decision 245 (a)'s facings, to be reconsidered now
 that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
 `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's
 remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist.

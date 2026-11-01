@@ -740,5 +740,6 @@ the owner (`c2adefe`). The owner's desktop runs (1 November 2026, the accepted b
 `docs/stage8-evidence/device/`) are recorded: against step 6's L3, section 8.5's rule and section 8.3's frame budget hold; section 8.3's CPU line
 is exceeded in Play at half speed (+1.5 ms) and the Overview's orbit (+1.1 ms), put to the owner as question 268 and decided (a), accepted as
 measured and carried into the final audit. The owner's phone runs (the same day, the iPhone 17 Pro; §25) are recorded: section 8.3's phone budget
-holds; section 8.5's rule is not evaluable like for like (no ordinary-route run of this build on the phone), put to the owner as question 269
-(recommended: the ordinary route twice on the phone, judged against P5, before the final audit). Draft PR #79 holds both records.
+holds; section 8.5's rule is not evaluable like for like (no ordinary-route run of this build on the phone), put to the owner as question 269 and
+decided (a), the phone accepted as measured, its long frames after warming carried into the final audit. Draft PR #79 holds both records. No
+Stage 8 question is open; next, the final combined audit (its checklist §22.6, as carried in §23.4, §24.3 and §25.4).

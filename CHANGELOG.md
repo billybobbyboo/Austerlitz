@@ -1,5 +1,18 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Stage 8, device acceptance: decision 269 (a), the phone accepted as measured
+
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (draft PR #79 into `main`, with the two device records below; not merged).** The record is
+`docs/STAGE8_SPEC.md` section 25.3-25.4. No application source, data, threshold or build changed: `austerlitz-command-map.html` 2,810,630 bytes, md5
+`f10fe585c46aea576f436ed51ac46f83`.
+
+- **Decision 269 (a)** (the owner, 1 November 2026: "Go with A for 269"): the phone accepted as measured. Section 8.3's phone budget met; section
+  8.5's rule not evaluable like for like, its two readings recorded as they stand; the ordinary route not run again on the phone. The phone's long
+  frames after warming (phase 8's Overview about 41 frames a second, 18.1% long; Play at half speed about 43, 8.6%) carried into the final audit's
+  performance item, the figures their measured cost.
+- **What remains**: no Stage 8 question is open; an integrated GPU unmeasured; the final combined audit next (its checklist section 22.6, as carried
+  in sections 23.4, 24.3 and 25.4; none of it marked passed).
+
 ## 2026-11 · Stage 8, device acceptance: the phone runs recorded; decision 268 (a); question 269
 
 **Status: records only, on `claude/optimistic-cori-p5dh4e` (draft PR #79 into `main`, with the desktop's record below; not merged).** The record is
