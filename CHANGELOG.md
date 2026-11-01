@@ -19,6 +19,12 @@ the harness's thresholds and the records did.
 - **Kept**: `FLICKER` 10, `LOD` 130, `REAL_TOL`, `VIS_REAL_FRAMES`, every `MOTION.VIS` baseline (the 16's, the selection's, the readings', the
   finger's, 8L's twins with the pointer), the twin and hover-equivalence rules, the protected-item and remnant rules, every other visual and
   performance threshold.
+- **Verified** (fresh, on `d3f7026`; `docs/STAGE8_SPEC.md` section 23.3): here on the pinned Chromium 141, `npm test` (nine suites and the height
+  guard), `check:baseline` (`f10fe585...`, 2,810,630 bytes; the committed file the sources' build and `cmp`-identical to
+  `archive/stage8k-f10fe585.html`), `check:data` (139 identical), `check:chronology` (0 errors), `check:selftest` (317 of 317; the 16 at 248,
+  998, 130, 9; STAGE0 all passed), `check:contrast` (0 below AA in 45 states; 8 start-up cases) and the full `check:visual` (39 cases, 317 of 317,
+  every live block, STAGE0 all passed; `check:report` the same), all passing. On CI: runs 41259063225 (push), 41259091243 (pull request) and
+  41259079904 (dispatched, with `check:visual`), every job passing.
 - **Pending**: device acceptance for 8E-8K (the owner's phone and desktop runs, section 20.12), then the final combined audit (its checklist,
   section 22.6, carried in section 23.4; none of it marked passed).
 

@@ -5489,7 +5489,25 @@ total under them bought by hiding formations fails each run's visibility baselin
 
 ### 23.3 Verification
 
-Recorded in section 23.5 once run.
+Every check run afresh on `d3f7026` (the threshold change and the decision's records; the commit after it adds this record alone), the build
+`f10fe585...` unchanged. Here (Playwright 1.56's headless Chromium 141.0.7390.37 under SwiftShader, the browser CI pins), in sequence:
+- `npm run build` then `git diff --exit-code austerlitz-command-map.html`: no difference; `cmp` with `archive/stage8k-f10fe585.html`: identical.
+- `npm test`: all nine suites and the height guard passed (9 min 26 s).
+- `check:baseline`: md5 `f10fe585c46aea576f436ed51ac46f83`, 2,810,630 bytes. `check:data`: all 139 data declarations byte-identical to
+  `archive/stage8k-f10fe585.html`. `check:chronology`: 0 errors (the movement audit 0 findings).
+- `check:selftest` (40 min): STAGE0 all checks passed; the in-app self-test 317 of 317; the motion block's 16 at **248 jumps, 998 pops, 130
+  level-of-detail switches, 9 flickers** (within 248, 998, 130 and 10), every run's visibility at its baseline, the runs by real input within
+  their twins' tolerance (the orbit's identical to its twin), no overlap, no never-dropped item hidden, no remnant out of rule.
+- `check:contrast` (13 min): 6,926 text elements in 45 states (10 as a phone), every state reached, 0 below AA, 0 below 10.5 px, 0 font
+  failures, 0 console messages; the eight start-up cases passing (197 of the 248 warnings `CTX_DELETES` allows).
+- `check:visual` (about 3 h; a first run, stopped by this session's two-hour limit on a background command in its culling block, counted for
+  nothing): STAGE0 all checks passed: all 39 cases (`plans-overview` within its limit of 13, `ph8-overview-watch` judged against the model), the
+  in-app self-test 317 of 317, console 0, every live block passing, the motion block's 16 at 248, 998, 130 and 9; `check:report` judges its
+  report the same ("all checks pass for this report").
+
+On CI (the pinned browser), all on `d3f7026`: the push's run 41259063225 and the pull request's run 41259091243 (the checks job, `check:contrast`,
+`check:selftest`: all passing); the dispatched run with the full visual harness, 41259079904 (the checks job, `check:contrast`, `check:selftest`
+and `check:visual`, job 124708389924, 2 h 2 min: all passing).
 
 ### 23.4 The final audit checklist (section 22.6, carried; none of it marked passed)
 
