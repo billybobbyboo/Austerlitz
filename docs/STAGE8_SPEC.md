@@ -5447,3 +5447,77 @@ pending (section 22.6): it does not hold the audit back, but Stage 8 is not comp
    serves is the same file: `curl -sL https://billybobbyboo.github.io/Austerlitz/austerlitz-command-map.html | md5sum` gives `f10fe585...`.
 4. CI on the merge commit: the checks job and `check:contrast` pass; `check:selftest` (and a dispatched `check:visual`) fail on no line but the
    16's two ceilings, until the owner decides question 267's remaining trade-off (section 22.3).
+
+## 23. Decision 267 (a): the motion block's ceilings re-baselined (the benchmark closure, 1 November 2026)
+
+**The owner's decision** (1 November 2026, on section 22.3's remaining trade-off): **(a)**, "accept the corrected geography's benchmark totals
+of 248 jumps and 998 pops". The brief: a branch from the current `main` (`141f890`, PR #77's merge of 8L); `thresholds.js`'s `MOTION.JUMPS` 245
+to 248 and `MOTION.POPS` 985 to 998; the decision recorded; every other safeguard kept; the application, the data, the rendering and the build
+unchanged; the required checks run afresh on the pinned browser; device acceptance and the final audit checklist kept; one pull request into
+`main`, not merged.
+
+### 23.1 What changed
+
+- `tools/visual/thresholds.js` `MOTION`: **`JUMPS` 245 to 248, `POPS` 985 to 998** (+3 and +13, 1.2% and 1.3%), the decision's reason in the comment
+  above it. These are the 16 driven motions' totals on 8K's build, the same in every run here, on CI and in 8K's and 8L's evidence (section 22.3).
+- Nothing else in the harness or its judge: `FLICKER` 10, `LOD` 130, `REAL_TOL` {abs 6, rel 0.25}, `VIS_REAL_FRAMES` 1, every `MOTION.VIS` baseline
+  (the 16's, the selection's, the readings', the finger's and 8L's twins with the pointer), the rule holding each run by real input to its twin
+  with the pointer and the same hovered formation, the rule holding a twin that hovers nothing equal to its 16's run, the protected-item rules
+  (no never-dropped item hidden in view, a focused or hovered item placed first and never dropped), the remnant rule, every case's drop limit,
+  unobstructed baseline and other visual limit, `CENSUS`, `CONF_SHARE`, `CTX_DELETES` and `CONSOLE_ALLOW`: all unchanged.
+- The records: this section, `CHANGELOG.md`, `docs/ROADMAP.md`, `CLAUDE.md`.
+- No application source, data file, archive or build: `austerlitz-command-map.html` stays 8K's build, **2,810,630 bytes, md5
+  `f10fe585c46aea576f436ed51ac46f83`** (`check:baseline` and `check:data`'s reference, `archive/stage8k-f10fe585.html`, unchanged).
+
+### 23.2 Why, and what it does not show
+
+*Previous limits*: 245 jumps and 985 pops over the 16 (decision 257 (b): the deterministic benchmark's own counts on 8D's build, confirmed on every
+build from 8D to 8I). *New limits*: 248 and 998, 8K's build's own counts. *The cause is geographic*: decision 260 (a)'s corrected places (Suchet's
+dawn place south of the road level with the Santon, Bagration's by the post house) change 61 items' counts in 13 of the 16 runs, no item at a
+tipping point (`tools/stage8/items-8l.js`); with both divisions' places of 8J on 8K's build the totals are 237 and 985, and 8J's own corrections
+had moved the jumps the other way, to 238 (section 22.3). *The alternatives measured* in 8L on the exact benchmark (`tools/stage8/variants-8l.js`,
+`docs/stage8-evidence/8l/variants-8l.json`; section 22.3's table): "kept first while moving" (238, 815: seven runs below their visibility
+baselines, decision 240 (a)'s priority order set aside), "a protected item drawn keeps its place" (pops 1,014, eight runs below), both (209, 805,
+seven runs below); none adopted, as none meets the earlier ceilings with every run's visibility at its baseline. Restoring 8J's places was excluded.
+
+*What it does not show.* The decision accepts the current benchmark's results as the ceilings of this benchmark (decision 257 (b): "ceilings of
+this benchmark, not a guarantee of what a device shows"). It does not demonstrate that every label-visibility issue in motion is resolved:
+Play's longest hidden formation in the Landscape-with-counters view at 09:00, 4,033 ms (Nansouty's Cuirassiers', Walther's Dragoons' and
+Miloradovich's counters, dropped at rest there and never back for two passes in a row while it plays; section 22.3), and the counters' visibility
+over longer playback than the benchmark's 90 frames, stay on the final audit checklist. Any total over the new ceilings fails as before, and a
+total under them bought by hiding formations fails each run's visibility baseline as before.
+
+### 23.3 Verification
+
+Every check run afresh on `d3f7026` (the threshold change and the decision's records; the commit after it adds this record alone), the build
+`f10fe585...` unchanged. Here (Playwright 1.56's headless Chromium 141.0.7390.37 under SwiftShader, the browser CI pins), in sequence:
+- `npm run build` then `git diff --exit-code austerlitz-command-map.html`: no difference; `cmp` with `archive/stage8k-f10fe585.html`: identical.
+- `npm test`: all nine suites and the height guard passed (9 min 26 s).
+- `check:baseline`: md5 `f10fe585c46aea576f436ed51ac46f83`, 2,810,630 bytes. `check:data`: all 139 data declarations byte-identical to
+  `archive/stage8k-f10fe585.html`. `check:chronology`: 0 errors (the movement audit 0 findings).
+- `check:selftest` (40 min): STAGE0 all checks passed; the in-app self-test 317 of 317; the motion block's 16 at **248 jumps, 998 pops, 130
+  level-of-detail switches, 9 flickers** (within 248, 998, 130 and 10), every run's visibility at its baseline, the runs by real input within
+  their twins' tolerance (the orbit's identical to its twin), no overlap, no never-dropped item hidden, no remnant out of rule.
+- `check:contrast` (13 min): 6,926 text elements in 45 states (10 as a phone), every state reached, 0 below AA, 0 below 10.5 px, 0 font
+  failures, 0 console messages; the eight start-up cases passing (197 of the 248 warnings `CTX_DELETES` allows).
+- `check:visual` (about 3 h; a first run, stopped by this session's two-hour limit on a background command in its culling block, counted for
+  nothing): STAGE0 all checks passed: all 39 cases (`plans-overview` within its limit of 13, `ph8-overview-watch` judged against the model), the
+  in-app self-test 317 of 317, console 0, every live block passing, the motion block's 16 at 248, 998, 130 and 9; `check:report` judges its
+  report the same ("all checks pass for this report").
+
+On CI (the pinned browser), all on `d3f7026`: the push's run 41259063225 and the pull request's run 41259091243 (the checks job, `check:contrast`,
+`check:selftest`: all passing); the dispatched run with the full visual harness, 41259079904 (the checks job, `check:contrast`, `check:selftest`
+and `check:visual`, job 124708389924, 2 h 2 min: all passing).
+
+### 23.4 The final audit checklist (section 22.6, carried; none of it marked passed)
+
+Section 22.6 stands, with its item on the map layer in motion now read: the 16's totals within their ceilings of 248 and 998 by decision 267 (a);
+**still open for the audit**: the counters' visibility during extended playback (Play's longest hidden formation, 4,033 ms, and anything longer
+than the benchmark's runs), judged on the screen. The other items unchanged: **real-device performance** (the device acceptance of 8E-8K,
+section 20.12's protocol, pending; no time measured here is a device's); **the troops' contact with the ground** (decision 265 (a), provisional);
+**the ice under a low sun** (decision 264 (a)); **the troops' facings** (decision 245 (a), with 8E's drivers on the guns on the heights and the
+gunners beside moving pieces); **the landmarks' legibility** (the Sokolnitz castle's prominence and the III Column's figures over it, decision
+266 (a); the Austerlitz garden; Satschan's farmsteads; `BUILDINGS.notDrawn`; the Littawa's name in the Plans view); **the unresolved historical
+questions** (section 21.9's list and section 22.6's, `SOURCE_NOTE`'s open questions).
+
+*Next*: the owner's phone and desktop runs (device acceptance, section 20.12), then the final combined audit. Neither is begun here.

@@ -412,8 +412,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   Since Stage 8 implementation PR 8C (decision 240 (a)): the self-test's motion checks (above); the harness's live block `motion` (feature `MLS`
   required) on a page of its own: the 16 motions of `label-motion.js` driven through the app's own input and frame (`tools/visual/motion.js`), the
   four real input can drive by real input (two on `check:selftest`'s page), two with Saint-Hilaire's division selected, three under a
-  headquarters' reading and a finger's pan with the page 390 px wide, judged in `thresholds.js` `MOTION`: over the 16 jumps at most 245, pops at most
-  985, level-of-detail switches at most 130 and flickers at most 10 (since 8D's prerequisite, decision 257 (b): the deterministic benchmark's own
+  headquarters' reading and a finger's pan with the page 390 px wide, judged in `thresholds.js` `MOTION`: over the 16 jumps at most 248, pops at most
+  998 (since decision 267 (a), 1 November 2026, 8K's build's own counts; 245 and 985 until then), level-of-detail switches at most 130 and flickers at most 10 (since 8D's prerequisite, decision 257 (b): the deterministic benchmark's own
   counts on the pinned browser, not a device guarantee; were the owner's starting targets 300, 1,300 and 200, `docs/STAGE8_SPEC.md` §3.5, and 8B's
   130), and every driven run's formations' visibility at its baseline (`MOTION.VIS`, 22 runs: the formation-frames in view exactly, the drawn at
   least, the longest disappearance by the layout at most; a real-input run within a frame of its twin), so that fewer jumps bought by hiding
@@ -424,7 +424,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   visibility baselines re-measured on the builds of the follow-up's data tasks 8J and 8K under the owner's rule for geographic baselines (the
   reason and every was and is in `thresholds.js`), the totals' ceilings and the real input's tolerance unchanged: 8J's build within them (238,
   985, 130, 9), 8K's not (jumps 248, pops 998, the paper map's zoom by real input beyond its twin), its re-plotted Suchet and Bagration the cause,
-  owner question 267 (`docs/STAGE8_SPEC.md` §21.8). Every view
+  owner question 267 (`docs/STAGE8_SPEC.md` §21.8); decision 267 (a) re-baselined the jumps' and pops' ceilings at 248 and 998 (§23), every other
+  ceiling, tolerance and visibility baseline kept. Every view
   reached without motion is laid out as before 8C (`tools/stage8/fresh-8c.js`: the 20 cases applied by their spec identical to 8B's, item by item and
   box by box).
   Since Stage 8 implementation PR 8D (decisions 249 (a), 250 (b)): in every case the render census (`measure.js` `census`: every draw call of one
@@ -730,4 +731,8 @@ on the owner's word; `ph8-overview-watch` judged against the model; the 16's tot
 the ceilings and every run's visibility (the trade-off put to the owner, §22.3). Verified here and on CI's pinned browser, line for line: every
 required check passes but that one line in `check:selftest` and `check:visual`; the readiness verdict (§22.7): ready for the final combined
 audit once the owner settles question 267's remaining trade-off (the pass recommends re-baselining the two ceilings at 248 and 998). The final
-audit checklist is §22.6. Device acceptance for 8E-8K is pending.
+audit checklist is §22.6. PR #77 was merged into `main` by the owner (`141f890`). The owner decided question 267 (a) on 1 November 2026
+(`docs/STAGE8_SPEC.md` §23): the corrected geography's benchmark totals accepted, `MOTION.JUMPS` 245 to 248 and `MOTION.POPS` 985 to 998, every
+other safeguard kept, the build unchanged (`f10fe585...`); built on `claude/optimistic-cori-p5dh4e` (a draft PR into `main`, for review, not
+merged). It accepts the benchmark's results, not every label-visibility issue in motion as resolved. Next: the owner's phone and desktop runs
+(device acceptance for 8E-8K, pending), then the final combined audit (its checklist §22.6, carried in §23.4).

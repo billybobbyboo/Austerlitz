@@ -257,8 +257,17 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    made absent; the drawn, at least the baseline's; the longest a formation stays hidden by the layout, at most the baseline's, in ms at the
    driver's 30 frames a second). A run by real input is held to its twin's visibility within one frame of it (VIS_REAL_FRAMES: its denominator
    and its drawn within one frame's formations in view, its longest within one frame's time). The baselines move only with a recorded owner
-   decision, as the totals do */
-const MOTION={JUMPS:245, POPS:985, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:1, FRAME_MS:1000/30,
+   decision, as the totals do.
+   Decision 267 (a) (the owner, 1 November 2026; docs/STAGE8_SPEC.md section 23): the jumps' and pops' ceilings re-baselined at the follow-up 8K's
+   build's own counts, JUMPS 245 to 248 and POPS 985 to 998 (+3, +13; 1.2% and 1.3%). The cause is geographic: decision 260 (a)'s corrected places
+   (Suchet's dawn place south of the road level with the Santon, Bagration's by the post house) move 61 items' counts in 13 of the 16 runs, no item
+   at a tipping point (tools/stage8/items-8l.js; with both divisions' places of 8J on 8K's build the totals are 237 and 985); the 16 are driven and
+   deterministic, the same counts in every run here and on CI. The bounded repairs 8L measured on the exact benchmark (tools/stage8/variants-8l.js,
+   section 22.3: "kept first while moving", "a protected item drawn keeps its place", both) were not adopted: none meets the earlier ceilings with
+   every run's visibility at its baseline. This accepts the current benchmark's results; it does not show that every label-visibility issue is
+   resolved (Play's longest hidden formation, 4,033 ms, stays on the final audit checklist). FLICKER, LOD, REAL_TOL, VIS_REAL_FRAMES, every VIS
+   baseline, the twins' rules and the protected-item rules are unchanged */
+const MOTION={JUMPS:248, POPS:998, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:1, FRAME_MS:1000/30,
   /* VIS[run key] = [drawn, in view, longest hidden ms]: the prerequisite's build (the 8C build with the protected items' fade fixed, section
      16.1), Chromium 141, check:selftest's block; a key is the motion's id, "+sel" with Saint-Hilaire's division selected, "+fr"/"+al" under a
      headquarters' reading, "+touch" for the finger's pan at 390 px (tools/visual/motion.js runKey) */

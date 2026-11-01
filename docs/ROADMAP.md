@@ -559,9 +559,13 @@ against the model (no derived reading at 14:40, the centre separation shown at 1
 (§22.7): the integration coherent; ready for the final combined audit once the owner settles question 267's remaining trade-off (the pass
 recommends (a), the two ceilings re-baselined at 248 and 998 under the owner's rule for geographic baselines).
 
-**Still open in Stage 8**: question 267's remaining trade-off (the 16's ceilings: re-baseline at 248 and 998, adopt "kept first while moving"
-with its visibility losses, or carry the two failures into the final audit; §22.3; `check:selftest` and `check:visual` fail on these two
-ceilings alone until decided); the device runs for 8E-8K (§20.12, §21, §22.6); decision 245 (a)'s facings, to be reconsidered now
+**Decision 267 (a)** (the owner, 1 November 2026; `docs/STAGE8_SPEC.md` §23): the corrected geography's benchmark totals accepted, the
+motion block's ceilings re-baselined from 245 jumps and 985 pops to 248 and 998 (8K's build's own counts; the cause decision 260 (a)'s
+corrected places for Suchet and Bagration; 8L's bounded repairs measured and not adopted, §22.3); every other safeguard kept. It accepts the
+benchmark's results; it does not show every label-visibility issue in motion resolved (Play's longest hidden formation, 4,033 ms, and the
+counters during extended playback stay on the final audit checklist).
+
+**Still open in Stage 8**: the device runs for 8E-8K (§20.12, §21, §22.6); decision 245 (a)'s facings, to be reconsidered now
 that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
 `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's
 remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist.
