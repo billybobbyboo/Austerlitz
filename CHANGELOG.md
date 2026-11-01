@@ -1,5 +1,27 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Stage 8, the benchmark closure: decision 267 (a), the motion block's ceilings at 248 jumps and 998 pops
+
+**Status: built on `claude/optimistic-cori-p5dh4e` (a draft pull request into `main`, for review; not merged), from `main` at
+`141f8907` (PR #77's merge of 8L; nothing newer on `main`, 1 November 2026).** The record is `docs/STAGE8_SPEC.md` section 23. The build is
+8K's own, unchanged: `austerlitz-command-map.html` **2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83`** (`check:baseline` unchanged;
+`check:data`'s reference unchanged, `archive/stage8k-f10fe585.html`). No application source, data file, archive or build changed: one line of
+the harness's thresholds and the records did.
+
+- **Decision 267 (a)** (the owner, 1 November 2026: "accept the corrected geography's benchmark totals of 248 jumps and 998 pops"):
+  `tools/visual/thresholds.js` `MOTION.JUMPS` **245 to 248** and `MOTION.POPS` **985 to 998** (+1.2%, +1.3%). Was: decision 257 (b)'s counts on
+  8D's build. Is: 8K's build's own, deterministic, the same in every run here and on CI. Why: geographic: decision 260 (a)'s corrected places for
+  Suchet and Bagration change 61 items' counts in 13 of the 16 runs, none at a tipping point (with 8J's places of the two on 8K's build, 237 and
+  985); the bounded repairs 8L measured on the exact benchmark (section 22.3, `tools/stage8/variants-8l.js`: "kept first while moving", "a
+  protected item drawn keeps its place", both) were not adopted, none meeting the earlier ceilings with every run's visibility at its baseline.
+- **What it does not show**: it accepts the current benchmark's results; it does not demonstrate that every label-visibility issue in motion is
+  resolved. Play's longest hidden formation (4,033 ms) and the counters' visibility during extended playback stay on the final audit checklist.
+- **Kept**: `FLICKER` 10, `LOD` 130, `REAL_TOL`, `VIS_REAL_FRAMES`, every `MOTION.VIS` baseline (the 16's, the selection's, the readings', the
+  finger's, 8L's twins with the pointer), the twin and hover-equivalence rules, the protected-item and remnant rules, every other visual and
+  performance threshold.
+- **Pending**: device acceptance for 8E-8K (the owner's phone and desktop runs, section 20.12), then the final combined audit (its checklist,
+  section 22.6, carried in section 23.4; none of it marked passed).
+
 ## 2026-10 · Stage 8, the integration pass (8L): 8J and 8K brought into `main`; decision 266 (a); question 267's check lines
 
 **Status: built on `claude/charming-dijkstra-srj84w` (a draft pull request into `main`, for review; not merged), from `main` at
