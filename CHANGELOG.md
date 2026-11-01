@@ -1,5 +1,58 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Stage 8, device acceptance: decision 269 (a), the phone accepted as measured
+
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (draft PR #79 into `main`, with the two device records below; not merged).** The record is
+`docs/STAGE8_SPEC.md` section 25.3-25.4. No application source, data, threshold or build changed: `austerlitz-command-map.html` 2,810,630 bytes, md5
+`f10fe585c46aea576f436ed51ac46f83`.
+
+- **Decision 269 (a)** (the owner, 1 November 2026: "Go with A for 269"): the phone accepted as measured. Section 8.3's phone budget met; section
+  8.5's rule not evaluable like for like, its two readings recorded as they stand; the ordinary route not run again on the phone. The phone's long
+  frames after warming (phase 8's Overview about 41 frames a second, 18.1% long; Play at half speed about 43, 8.6%) carried into the final audit's
+  performance item, the figures their measured cost.
+- **What remains**: no Stage 8 question is open; an integrated GPU unmeasured; the final combined audit next (its checklist section 22.6, as carried
+  in sections 23.4, 24.3 and 25.4; none of it marked passed).
+
+## 2026-11 · Stage 8, device acceptance: the phone runs recorded; decision 268 (a); question 269
+
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (draft PR #79 into `main`, with the desktop's record below; not merged).** The record is
+`docs/STAGE8_SPEC.md` sections 24.3 and 25, the reports `docs/stage8-evidence/device/phone-*`. No application source, data, threshold or build
+changed: `austerlitz-command-map.html` 2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83`.
+
+- **Decision 268 (a)** (the owner, 1 November 2026): the desktop's script above section 8.3's CPU line (Play at half speed +1.5 ms, the Overview's
+  orbit +1.1 ms) accepted as measured and carried into the final audit.
+- **The phone runs** (the owner's iPhone 17 Pro, 1 November 2026, all on the accepted build): the phone route twice and the three brackets, kept
+  verbatim, each table checked against its JSON (184 of 184 rows). After the phone warms, phase 8's Overview orbiting at about 41 frames a second
+  (18.1% long frames at the median) and Play at half speed at about 43 (8.6%); the low view at 4x at 60; with the figures hidden Play holds 59.
+  Section 14.1's rule: nothing to build (on this build its candidates change nothing).
+- **Section 8.3's phone budget holds** (at most 1,364,901 triangles against 1.62 million; calls within 1.8% of P5's, the low view 52% fewer).
+- **Section 8.5's rule on the phone is not evaluable like for like**: no ordinary-route run of this build on the phone. Across routes against P5
+  the long-frame clause reads as failing (the Overview 2.7% to 18.1%, Play 1.6% to 8.6%); on the same route against P3/P4's nearest proxy the build
+  reads as better (29.4 to 40.8 and 40.0 to 43.3 frames a second). **Question 269** (recommended (b): the ordinary route twice on the phone,
+  about ten minutes, judged against P5 by the rule as written, before the final audit).
+- **The brackets**: culling faster in 7 of 12 comparisons, slower in none (-53% calls, -35% triangles in the low view); effects off slower in 4 of
+  12, faster in none (5 of 14 effects-off blocks at 35-47 frames a second); the gait's cost below the route's resolution. Each "not shown" by the
+  rule's all-agree margin.
+
+## 2026-11 · Stage 8, device acceptance: the desktop runs recorded (the phone's pending); question 268
+
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (restarted from `main` at `c2adefe`, PR #78's merge; a draft pull request into
+`main`, for review; not merged).** The record is `docs/STAGE8_SPEC.md` section 24, the reports `docs/stage8-evidence/device/`. No application
+source, data, threshold or build changed: `austerlitz-command-map.html` 2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83` (SHA-256
+`bf27887c...db07`, the hash every report names).
+
+- **The runs**: the owner's desktop (RTX 4070, 144 Hz, 2,560 x 1,305), 1 November 2026: the route twice and the effects, culling and gait
+  brackets, all on the accepted build; kept verbatim, each table checked against its JSON (165 of 165 rows).
+- **Judged against L3** (step 6, the same desktop, before Stage 8): section 8.5's rule holds (medians 6.9 ms but Play's 7.0; the largest
+  long-frame share 0.2%); section 8.3's desktop frame budget holds (at most 839 calls and 2,289,649 triangles; the heavy views 8-31% fewer
+  triangles than L3); the gait's cost not measurable; the three brackets "not shown" (the frame is at the display's refresh), culling saving
+  about 0.9 ms of script and 15% of the triangles at 4x.
+- **Not met as written**: section 8.3's CPU line (`js50` at most 1 ms above the build before): Play at half speed +1.5 ms (6.1 to 7.6), the
+  Overview's orbit +1.0/+1.1, its orbit with the effects off +1.1; Play now shows about one frame in five or six for two refreshes at 144 Hz (120-124 frames a
+  second against L3's 139-140; no long frame). Which part of Stage 8 added the script is not shown by these runs. Put to the owner as
+  **question 268** (recommended: attribute it within the final audit, no application change).
+- **Pending**: the phone's runs (device acceptance stays pending); an integrated GPU unmeasured; the final audit checklist unchanged.
+
 ## 2026-11 · Stage 8, the benchmark closure: decision 267 (a), the motion block's ceilings at 248 jumps and 998 pops
 
 **Status: built on `claude/optimistic-cori-p5dh4e` (a draft pull request into `main`, for review; not merged), from `main` at

@@ -565,7 +565,18 @@ corrected places for Suchet and Bagration; 8L's bounded repairs measured and not
 benchmark's results; it does not show every label-visibility issue in motion resolved (Play's longest hidden formation, 4,033 ms, and the
 counters during extended playback stay on the final audit checklist).
 
-**Still open in Stage 8**: the device runs for 8E-8K (§20.12, §21, §22.6); decision 245 (a)'s facings, to be reconsidered now
+**The desktop runs** (the owner, 1 November 2026; `docs/STAGE8_SPEC.md` §24): the accepted build on the RTX 4070 desktop, judged against
+step 6's L3: section 8.5's rule and section 8.3's frame budget hold; section 8.3's CPU line is exceeded in Play at half speed (+1.5 ms) and the
+Overview's orbit (+1.1 ms), Play showing about one frame in five or six for two refreshes at 144 Hz: **question 268** (recommended: attribute it within the final
+audit, no application change).
+
+**Decision 268 (a)** (the owner, 1 November 2026): the desktop's excess accepted as measured, carried into the final audit. **The phone runs**
+(the same day; §25): section 8.3's phone budget holds; section 8.5's rule not evaluable like for like (no ordinary-route run of this build on the
+phone; the two readings across routes disagree); after warming, phase 8's Overview at about 41 frames a second and Play at half speed at about 43,
+with 9-18% long frames; question 269, decided **(a)** by the owner the same day: the phone accepted as measured, its long frames carried into the
+final audit (the ordinary route not run again).
+
+**Still open in Stage 8** (no owner question open; all on the final audit checklist): the device runs' accepted excesses (decisions 268 (a), 269 (a); an integrated GPU unmeasured); decision 245 (a)'s facings, to be reconsidered now
 that the troops can be judged; 8E's drivers on the guns on the heights (an inference) and the gunners beside moving pieces; 8G's
 `BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's
 remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist.

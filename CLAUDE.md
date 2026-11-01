@@ -735,4 +735,11 @@ audit checklist is §22.6. PR #77 was merged into `main` by the owner (`141f890`
 (`docs/STAGE8_SPEC.md` §23): the corrected geography's benchmark totals accepted, `MOTION.JUMPS` 245 to 248 and `MOTION.POPS` 985 to 998, every
 other safeguard kept, the build unchanged (`f10fe585...`); built on `claude/optimistic-cori-p5dh4e` (a draft PR into `main`, for review, not
 merged). It accepts the benchmark's results, not every label-visibility issue in motion as resolved. Next: the owner's phone and desktop runs
-(device acceptance for 8E-8K, pending), then the final combined audit (its checklist §22.6, carried in §23.4).
+(device acceptance for 8E-8K, pending), then the final combined audit (its checklist §22.6, carried in §23.4). PR #78 was merged into `main` by
+the owner (`c2adefe`). The owner's desktop runs (1 November 2026, the accepted build; `docs/STAGE8_SPEC.md` §24, the reports in
+`docs/stage8-evidence/device/`) are recorded: against step 6's L3, section 8.5's rule and section 8.3's frame budget hold; section 8.3's CPU line
+is exceeded in Play at half speed (+1.5 ms) and the Overview's orbit (+1.1 ms), put to the owner as question 268 and decided (a), accepted as
+measured and carried into the final audit. The owner's phone runs (the same day, the iPhone 17 Pro; §25) are recorded: section 8.3's phone budget
+holds; section 8.5's rule is not evaluable like for like (no ordinary-route run of this build on the phone), put to the owner as question 269 and
+decided (a), the phone accepted as measured, its long frames after warming carried into the final audit. Draft PR #79 holds both records. No
+Stage 8 question is open; next, the final combined audit (its checklist §22.6, as carried in §23.4, §24.3 and §25.4).

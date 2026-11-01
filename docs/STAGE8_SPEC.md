@@ -5521,3 +5521,165 @@ gunners beside moving pieces); **the landmarks' legibility** (the Sokolnitz cast
 questions** (section 21.9's list and section 22.6's, `SOURCE_NOTE`'s open questions).
 
 *Next*: the owner's phone and desktop runs (device acceptance, section 20.12), then the final combined audit. Neither is begun here.
+
+## 24. Device acceptance: the desktop runs (1 November 2026)
+
+**The runs** (the owner, 1 November 2026, after PR #78's merge, `c2adefe`): five reports from the same desktop as step 6's L1-L3: Chrome 156 on
+Windows, an **NVIDIA GeForce RTX 4070** through ANGLE and Direct3D 11, 32 cores, 32 GB, a 2,560 x 1,440 screen at 144 Hz (the measured refresh
+6.9 ms), the page drawn at 2,560 x 1,305 at density 1, effects on at scale 1.3, not `lowTier`, in the wrapper page (`tools/step6/perf-run.html`
+from GitHub Pages). The route twice (D1 07:01, D2 07:08 UTC; `step6-perf-route 3`), then the three brackets of decision 250 (b) as corrected
+(`?route=fx` 07:11, `?route=cull` 07:16, `?route=gait` 07:25). **Every report names the build it measured: 2,810,630 bytes, SHA-256
+`bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07`**, `main`'s build after PR #78 (md5 `f10fe585...`; the same hash computed
+here from `austerlitz-command-map.html` at `c2adefe`): the accepted build. The reports, verbatim: `docs/stage8-evidence/device/desk-*.txt`, their
+JSON lines as `desk-*.json`; each file's printed table, header and verdict lines agree with its JSON, 165 rows of 165 (checked by script).
+
+**The "before"** is L3 (`docs/step6-evidence/perf-L3-desktop.json`, 22 October 2026): the same desktop, the same page size and the wrapper page,
+on the build of step 6 item 3 Part B (2,218,404 bytes, md5 `c9d29c14...`). It is the nearest desktop run before Stage 8, not Stage 8's own
+starting build (`c4793156...`, `main` at `9eb7abb`): the two builds between them changed the paper map's framing on a panel's change and the
+`lowTier` drawing, neither of which a desktop draws in these segments (inference, not measured). §20.12's 8G-against-8H pair was not run; this
+comparison with L3 spans the whole of Stage 8 instead.
+
+### 24.1 Judged by the rules stated before the runs
+
+- **Section 8.5's rule ("a PR holds when no heavy segment's long-frame share rises above 5% where it was under, and no median moves by more
+  than one refresh interval"): holds**, both runs. Every median 6.9 ms as in L3 but the two Play segments, 7.0 against 6.9 (0.1 ms, against a
+  refresh of 6.9); the largest long-frame share 0.2% (one frame of 34.7 ms in D2's `pratzen-low-10x` held; D1 none); across the five reports
+  nine frames over 25 ms in all, the longest 41.6 ms, none in a decisive orbit.
+- **Section 8.3, desktop (discrete GPU): within.** The heaviest frame 839 draw calls (the Overview's orbit) and 2,289,649 triangles (Play at 4x)
+  against 900 and 2.8 million. Against L3 the heavy views draw fewer triangles (the Overview 2,523,605 to 1,978,147 held and 2,125,343 in orbit,
+  -21.6% and -15.8%; the low Pratzen view at 4x 2,480,187 to 1,714,213 held, -30.9%; Play at 4x 2,496,647 to 2,289,649, -8.3%) and the low views
+  fewer calls (761 to 592 held at 4x); the Overview's calls 832 to 837-839 (+0.8%).
+- **Section 8.3, integrated GPU: not measured.** No integrated-GPU laptop was run (as in step 6; decision 235). Measured on this desktop, no
+  4x frame of the route rose by more than 10% in triangles or calls against L3 (the largest rise +0.8% in calls), so Stage 8 as a whole does
+  not trip that condition; what an integrated GPU does with the frame is unknown.
+- **Section 8.3, animation: within.** The gait bracket's two sides are the same frame (802 calls each; triangles within 68 of each other); the
+  script's median 7.2-7.4 ms with the gait and 7.2-7.3 ms at rest, the GPU's 4.5-4.6 ms on both: the gait's cost is not measurable on the
+  desktop, as the line asks (and its CPU within its 0.2 ms).
+- **Section 8.3, CPU (the row "the map layer": "on the desktop's own run, js50 not above today's by more than 1 ms"): not met as written in three
+  segments.** The app's script per frame at the median, L3 to D1/D2: the Overview's orbit 4.8 to 5.8/5.9 ms (+1.0/+1.1), its orbit with the
+  effects off 4.0 to 5.1/5.1 (+1.1), **Play at half speed 6.1 to 7.6/7.6 (+1.5)**; Play at 4x 6.0 to 6.9/7.0 (+0.9/+1.0); every other segment
+  -0.2 to +0.9 ms. `js50` is all of the app's script in a frame, not the map layer's alone, so these runs cannot say which part of Stage 8 added
+  it. What they do say: the gait adds none (its bracket), and culling removes about 0.9 ms (its bracket: 5.1-5.2 ms with culling, 6.0-6.1
+  without, in both low views), so without 8D the rise would be larger.
+
+### 24.2 What else the runs show (fact, from the reports; one desktop, one session)
+
+- **Play at a 144 Hz refresh.** In L3 Play held 139-140 frames a second with its 95th-percentile interval at one refresh (7.1 ms); now 120-124
+  frames a second with its 95th percentile at two (13.9 ms): about one frame in five or six held for two refreshes. The script's 95th percentile is 8.4-9.0 ms
+  in Play (L3 6.6-6.8), past the 6.9 ms a 144 Hz frame allows, while the GPU's median stays 4.5-4.6 ms: Play is limited by the script on this
+  machine. A 60 Hz display allows 16.7 ms a frame, so the same script would not drop frames there (inference, not measured). No long frame.
+- **The three brackets: "not shown", each 12 comparisons of 12 "neither".** Every block's median interval is the display's 6.9 ms (7.0 in
+  Play), so on this desktop frame time cannot tell either side apart; the per-frame costs differ: effects off saves about 0.5 ms of script
+  (4.6-4.7 against 5.1-5.2 ms; 5-10 calls fewer, the same triangles within 10); culling, at 4x 597-600 calls and 1,872,779-1,875,699 triangles against
+  784-786 and 2,208,415 (-24% and -15%), at 10.33x 624-625 and about 1.90 million against 786-787 and about 2.21 million, and about 0.9 ms of script
+  fewer; the gait nothing measurable. The GPU's medians fall near 2.2-2.6 or near 3.8-4.6 ms in blocks of either side alike (as step 6 saw on
+  this machine, §11 of `docs/STEP6_SPEC.md`: inference, the GPU's clock states).
+- **The loading**: the first report fetched the page from GitHub Pages (1,219,603 bytes transferred, the compressed page; DOM ready 5.9 s); the
+  others from the browser's cache (2.6-2.8 s).
+
+### 24.3 What remains, and the question put
+
+- **The phone**: the phone route twice and the three brackets on the iPhone (§20.12, `perf-run.html?route=phone`), judged by section 8.3's
+  phone line and section 8.5's rule against P5 (`docs/STEP6_SPEC.md` §16). **Device acceptance stays pending until they are recorded.**
+- **Question 268** (for the owner; nothing changed here): the desktop holds by section 8.5's rule and section 8.3's frame budget, but section 8.3's
+  CPU line is exceeded in Play at half speed (+1.5 ms) and in the Overview's orbit (+1.1 ms), and Play now shows about one frame in five or six for two refreshes
+  at 144 Hz. Options: **(a)** accept it as measured, the excess recorded and carried into the final audit's performance item; **(b)** before or
+  within the final audit, attribute it without changing the application: the same Play and orbit motions profiled on L3's build and this one in
+  this container (software rendering, so the script's share only, not a device's time), then decide whether any part warrants a fix; **(c)** treat
+  the line as failed and fix before Stage 8 closes. Recommended: **(b) within the final audit**: it does not hold the phone runs back, it costs
+  no application change, and it tells the audit which of 8C-8K added the script before anyone decides to change it.
+- The final audit checklist (section 22.6, carried in section 23.4) stands; its **real-device performance** item now reads: the desktop recorded
+  (this section; question 268 open), the phone pending, an integrated GPU unmeasured.
+- **Decision 268 (a)** (the owner, 1 November 2026: "let's go with (a), accept it as measured and carry it into the final audit. Only a few
+  milliseconds."): the desktop's script above section 8.3's CPU line is accepted as measured (Play at half speed +1.5 ms, the Overview's orbit
+  +1.1 ms) and carried into the final audit's performance item; nothing is changed or attributed before it. The phone's runs: section 25.
+
+## 25. Device acceptance: the phone runs (1 November 2026); decision 269 (a)
+
+**The runs** (the owner, 1 November 2026, after the desktop's): five reports from the iPhone 17 Pro of step 6 (the owner's word; Safari 26.6.1,
+held upright, the viewport 402 x 714, density 3, `lowTier`, drawn at density 1, the sun casting no shadow, in the wrapper page from GitHub
+Pages): the phone route twice (R1 07:50, R2 08:00 UTC; `step6-phone-route 1`, decision 236's route, as section 20.12 asks), then the three
+brackets (`?route=fx` 08:10, `?route=cull` 08:22, `?route=gait` 08:35). **Every report names the accepted build: 2,810,630 bytes, SHA-256
+`bf27887c...db07`.** The reports, verbatim: `docs/stage8-evidence/device/phone-*.txt`, their JSON lines as `phone-*.json`; every table row
+(with each block's printed settings), header and verdict line agrees with its JSON, 184 rows of 184 (checked by script).
+
+**What the route measures.** The phone route draws each kind for 45 s first (the warm-up, "until the phone slows", not compared), then the blocks
+A C1 A C2 A C3 A C4 A C5 A twice, 6 s each (`docs/STEP6_SPEC.md` §14.1). On this build four of its five candidates set what a phone already
+draws (`pxRatio` 1 and `sun.castShadow` false under `lowTier`, decision 236; `app.js` lines 602 and 646): their draw calls and triangles are the
+As' own, so the differences between blocks are the phone's own state as it warms (inference from the code and the equal counts). The fifth, the
+figures hidden, is the route's reference.
+
+### 25.1 What the runs show (fact, from the reports; one phone, one session)
+
+| kind (both runs) | the As: frames a second, median (range) | p50 | long frames, median (range) | As dropping (over 5%) | the first 45 s (warm-up) | the figures hidden |
+|---|---|---|---|---|---|---|
+| phase 8's Overview, orbiting | **40.8** (27.2-42.8) | 24 ms (23-37) | **18.1%** (9.6-100) | 24 of 24 | 49.5 and 49.9, 6.8% and 5.4% long | 48.5 (47.4-54.4) |
+| Play at half speed | **43.3** (42.8-43.8) | 23 ms (22-23) | **8.6%** (5.3-14.2) | 24 of 24 | 45.2 and 45.7, 2.6% and 2.0% long | **59.2** (58.5-59.6), 0% long |
+| the low Pratzen view at 4x (the brackets' A blocks) | 60.0 and 59.8 | 17 ms | 0% (at most 0.3%) | 0 of 28 | 60, 0% | |
+
+In each run the Overview fell for two blocks to 27.2-32.0 frames a second (p50 34-37 ms, 66-100% long) and recovered: the phone's own state
+(in R1 a candidate and the A after it, in R2 two As). Section 14.1's rule, applied as written (`node tools/step6/phone-rule.js` over R1 and R2): both runs stand and both
+test both kinds; no candidate cures; **rule 4: nothing is built** (as expected when the candidates change nothing). The reference cures Play in
+both runs (gain 1.353): **the figures and standards are what a phone's frame waits on**; hiding them in the Overview gains 1.38 and 1.43
+without curing it.
+
+**Section 8.3, phone: holds.** The heaviest frame 1,364,901 triangles (Play) against 1.62 million; the Overview's 1,309,505 (P5's 1,469,251,
+-10.9%). Draw calls against P5's: the Overview 532 against 525 (+1.3%), Play 517 against 508 (+1.8%), the low view at 4x 211 against 442 (culling;
+with culling off 446-448, P5's own).
+
+**Section 8.5's rule on the phone: not evaluable like for like.** Its "before" for the phone is P5 (`docs/STEP6_SPEC.md` §16: the build of decision
+236, before Stage 8, measured by the ordinary route of §2); this build has not been run on the phone by that route, and no phone-route run exists
+of the build before Stage 8. Two readings, neither the rule's:
+- *Across routes, against P5* (the ordinary route; its segments short and in another order, no 45 s warm-up): the Overview's orbit 47 frames a
+  second and 2.7% long, now 40.8 and 18.1%; Play at half speed 53 and 1.6%, now 43.3 and 8.6%. Read so, the long-frame clause fails in both
+  (under 5% before, over it now); the median clause holds (22 to 24 ms and 17 to 23 ms, each under one 17 ms refresh). The routes' warm-ups,
+  the first 45 s of each kind, are nearer P5's (49.5-49.9 and 45.2-45.7 frames a second).
+- *On the same route, against its nearest proxy* (P3 and P4, 22 October: the build before decision 236 at density 1.5 with shadows; their
+  `density1Pass` blocks, density 1 with the shadow map not redrawn, the configuration decision 236 then built, approximately): the Overview 29.4
+  frames a second and 86.2% long, now 40.8 and 18.1%; Play 40.0 and 38.7%, now 43.3 and 8.6% (their As, the build as it then was, 21.0 and 27.1,
+  100% long). Read so, Stage 8's build is the better on the phone, by its culling and its fewer triangles (inference).
+
+### 25.2 The three brackets on the phone
+
+- **Culling** (`?route=cull`, the low view at 4x): "not shown" by the rule (every comparison must agree), but **7 of 12 comparisons culling the
+  faster, none the slower**: with culling 59.8 frames a second at the median (59.3-60), without 54.1 (52.8-60); 211 draw calls and about 857,000
+  triangles against 446-448 and about 1,312,000 (-53% and -35%).
+- **Visual effects** (`?route=fx`): "not shown", **4 of 12 comparisons the effects on the faster, none the slower**; 5 of the 14 effects-off blocks
+  fell to 35-47 frames a second (19-95% long; the script's median 11-12 ms in four of them), none of the 14 effects-on blocks (58.4-60). Step 6
+  handed on that the effects off were never faster on this phone (`docs/STEP6_SPEC.md` §16); this bracketed measure, built to settle it, finds the
+  same direction, not by the rule's margin. A visitor who turns the effects off on a phone may get a slower map (inference; not decided).
+- **The gait** (`?route=gait`, Play at half speed): "not shown", 12 of 12 "neither": 43.0 frames a second with the gait, 43.3 at rest, p50 23 ms
+  in every block, the same calls and triangles: its cost is below what the phone route can resolve.
+
+### 25.3 Question 269, and decision 269 (a)
+
+The phone holds section 8.3's budget; section 8.5's comparison is not available like for like, and the two readings above disagree. In absolute
+terms, after warming, the phone draws phase 8's Overview at about 41 frames a second and Play at half speed at about 43, with 9-18% long frames;
+the low view at 60. Options:
+- **(a)** accept the phone as measured: section 8.3 met, the two readings recorded, carried into the final audit's performance item;
+- **(b)** before the final audit, one more phone run: the ordinary route (`tools/step6/perf-run.html` with no `?route=`) twice, two minutes apart,
+  judged against P5 by section 8.5's rule as written (about ten minutes of the owner's time; nothing in the application changes);
+- **(c)** treat the phone's long frames in the Overview and Play as a failure to fix before Stage 8 closes (the figures are the cost: hidden,
+  Play holds 59 frames a second): a performance task of its own, outside this record.
+
+Recommended: **(b)**. Section 8.5 names the ordinary route for exactly this before-and-after, and P5 is the only phone run of the build before
+Stage 8; one short run turns two disagreeing readings into the rule's own verdict. If it holds, the phone is accepted as the rule says; if not,
+the final audit knows the size of the regression and (c) is the owner's to weigh there.
+
+**Decision 269 (a)** (the owner, 1 November 2026: "Go with A for 269"): the phone is accepted as measured. Section 8.3's phone budget is met;
+section 8.5's rule stays not evaluable like for like, and its two readings (across routes against P5, the long-frame clause failing; on the same
+route against P3/P4's proxy, the build the better) are recorded as they stand, neither taken as the rule's verdict; the ordinary route is not run
+again on the phone. The phone's long frames after warming (phase 8's Overview about 41 frames a second with 18.1% long, Play at half speed about
+43 with 8.6%) are carried into the final audit's performance item, with the figures as their measured cost. Nothing in the application changes.
+
+### 25.4 The final audit checklist (section 22.6, as carried in section 23.4)
+
+Its **real-device performance** item now reads: the desktop recorded and decided (section 24, decision 268 (a): the CPU line exceeded, accepted
+as measured); the phone recorded and decided (this section, decision 269 (a): section 8.3 met, section 8.5 not evaluable like for like, accepted
+as measured; the Overview and Play dropping after the phone warms, the figures their cost); the effects off not faster on the phone in a bracketed
+run (5 of 14 blocks slower); an integrated GPU unmeasured. Every other item unchanged; none marked passed.
+
+**What this leaves.** The device runs the protocol asked for (section 20.12) are recorded, on the desktop and the phone, and both are accepted as
+measured on the owner's decisions 268 (a) and 269 (a), their excesses carried into the final audit rather than passed; an integrated GPU was not
+measured. No question of Stage 8 is open. The next step is the final combined audit, its checklist section 22.6 as carried in sections 23.4,
+24.3 and 25.4; nothing of it is begun here.
