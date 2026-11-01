@@ -1,5 +1,26 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Stage 8, device acceptance: the phone runs recorded; decision 268 (a); question 269
+
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (draft PR #79 into `main`, with the desktop's record below; not merged).** The record is
+`docs/STAGE8_SPEC.md` sections 24.3 and 25, the reports `docs/stage8-evidence/device/phone-*`. No application source, data, threshold or build
+changed: `austerlitz-command-map.html` 2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83`.
+
+- **Decision 268 (a)** (the owner, 1 November 2026): the desktop's script above section 8.3's CPU line (Play at half speed +1.5 ms, the Overview's
+  orbit +1.1 ms) accepted as measured and carried into the final audit.
+- **The phone runs** (the owner's iPhone 17 Pro, 1 November 2026, all on the accepted build): the phone route twice and the three brackets, kept
+  verbatim, each table checked against its JSON (184 of 184 rows). After the phone warms, phase 8's Overview orbiting at about 41 frames a second
+  (18.1% long frames at the median) and Play at half speed at about 43 (8.6%); the low view at 4x at 60; with the figures hidden Play holds 59.
+  Section 14.1's rule: nothing to build (on this build its candidates change nothing).
+- **Section 8.3's phone budget holds** (at most 1,364,901 triangles against 1.62 million; calls within 1.8% of P5's, the low view 52% fewer).
+- **Section 8.5's rule on the phone is not evaluable like for like**: no ordinary-route run of this build on the phone. Across routes against P5
+  the long-frame clause reads as failing (the Overview 2.7% to 18.1%, Play 1.6% to 8.6%); on the same route against P3/P4's nearest proxy the build
+  reads as better (29.4 to 40.8 and 40.0 to 43.3 frames a second). **Question 269** (recommended (b): the ordinary route twice on the phone,
+  about ten minutes, judged against P5 by the rule as written, before the final audit).
+- **The brackets**: culling faster in 7 of 12 comparisons, slower in none (-53% calls, -35% triangles in the low view); effects off slower in 4 of
+  12, faster in none (5 of 14 effects-off blocks at 35-47 frames a second); the gait's cost below the route's resolution. Each "not shown" by the
+  rule's all-agree margin.
+
 ## 2026-11 · Stage 8, device acceptance: the desktop runs recorded (the phone's pending); question 268
 
 **Status: records only, on `claude/optimistic-cori-p5dh4e` (restarted from `main` at `c2adefe`, PR #78's merge; a draft pull request into
