@@ -1,5 +1,24 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Stage 8, device acceptance: the desktop runs recorded (the phone's pending); question 268
+
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (restarted from `main` at `c2adefe`, PR #78's merge; a draft pull request into
+`main`, for review; not merged).** The record is `docs/STAGE8_SPEC.md` section 24, the reports `docs/stage8-evidence/device/`. No application
+source, data, threshold or build changed: `austerlitz-command-map.html` 2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83` (SHA-256
+`bf27887c...db07`, the hash every report names).
+
+- **The runs**: the owner's desktop (RTX 4070, 144 Hz, 2,560 x 1,305), 1 November 2026: the route twice and the effects, culling and gait
+  brackets, all on the accepted build; kept verbatim, each table checked against its JSON (165 of 165 rows).
+- **Judged against L3** (step 6, the same desktop, before Stage 8): section 8.5's rule holds (medians 6.9 ms but Play's 7.0; the largest
+  long-frame share 0.2%); section 8.3's desktop frame budget holds (at most 839 calls and 2,289,649 triangles; the heavy views 8-31% fewer
+  triangles than L3); the gait's cost not measurable; the three brackets "not shown" (the frame is at the display's refresh), culling saving
+  about 0.9 ms of script and 15% of the triangles at 4x.
+- **Not met as written**: section 8.3's CPU line (`js50` at most 1 ms above the build before): Play at half speed +1.5 ms (6.1 to 7.6), the
+  Overview's orbit +1.0/+1.1, its orbit with the effects off +1.1; Play now shows about one frame in five or six for two refreshes at 144 Hz (120-124 frames a
+  second against L3's 139-140; no long frame). Which part of Stage 8 added the script is not shown by these runs. Put to the owner as
+  **question 268** (recommended: attribute it within the final audit, no application change).
+- **Pending**: the phone's runs (device acceptance stays pending); an integrated GPU unmeasured; the final audit checklist unchanged.
+
 ## 2026-11 · Stage 8, the benchmark closure: decision 267 (a), the motion block's ceilings at 248 jumps and 998 pops
 
 **Status: built on `claude/optimistic-cori-p5dh4e` (a draft pull request into `main`, for review; not merged), from `main` at
