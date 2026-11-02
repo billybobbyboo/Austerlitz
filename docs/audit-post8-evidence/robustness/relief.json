@@ -17,6 +17,22 @@
    "wallMs": 76413,
    "factor": 1,
    "pressed": "true"
+  },
+  {
+   "i": 1,
+   "want": 10.32642489706367,
+   "box": [
+    1183,
+    493,
+    60,
+    30
+   ],
+   "hit": true,
+   "disabled": false,
+   "settleMs": 69551,
+   "wallMs": 70234,
+   "factor": 10.32642489706367,
+   "pressed": "true"
   }
  ],
  "firstRunAtLoad": true,

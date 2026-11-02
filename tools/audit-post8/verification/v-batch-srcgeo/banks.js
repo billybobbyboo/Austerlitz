@@ -9,7 +9,7 @@ const fs=require("fs"),path=require("path"),vm=require("vm");
 const ROOT=path.resolve(process.argv[2]||".");
 const ctx={};vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(ROOT,"geo.js"),"utf8")+"\nthis.G=GEOREF;",ctx);
-const G=ctx.G, U=1000/G.UNITS_PER_KM;   /* metres per map unit */
+const G=ctx.G, U=1000*G.kmBetween([0,0],[1,0]);   /* metres per map unit (GEOREF.kmBetween; UNITS_PER_KM is per world unit, MAP_PER_WORLD 2) */
 const wsrc=fs.readFileSync(path.join(ROOT,"world.js"),"utf8");
 const GB=JSON.parse(/var GOLDBACH_M=(\[[\s\S]*?\]\]);/.exec(wsrc)[1]);
 function lines(file){ const d=JSON.parse(fs.readFileSync(file,"utf8")); const r=Array.isArray(d)?d[0]:d; const g=r.geojson;
@@ -31,7 +31,7 @@ for(const [k,p] of Object.entries(PTS)){
 }
 /* the Roketnice's southernmost point (its mouth) and the drawn bed's largest gap to today's channel (Roketnice then Říčka) over y 160-309.8 */
 let mouth=null; rok.forEach(pl=>pl.forEach(q=>{ if(!mouth||q[1]>mouth[1]) mouth=q; })); out.roketniceMouth=mouth.map(v=>+v.toFixed(1));
-let worst={m:0}; for(let y=160;y<=309.8;y+=1){ const x=xAtY(y,[GB],[0,0]); if(x==null) continue; const p=[x,y];
-  const d=Math.min(near(p,rok).d, y>mouth[1]?near(p,ric).d:1e9, near(p,ric).d); const m=Math.round(d*U); if(m>worst.m) worst={m,at:[+x.toFixed(1),y]}; }
-out.drawnBedWorstGapY160to309={...worst};
+function worstGap(y0,y1){ let worst={m:0}; for(let y=y0;y<=y1;y+=1){ const x=xAtY(y,[GB],[0,0]); if(x==null) continue; const p=[x,y];
+  const d=Math.min(near(p,rok).d, y>mouth[1]?near(p,ric).d:1e9, near(p,ric).d); const m=Math.round(d*U); if(m>worst.m) worst={m,at:[+x.toFixed(1),y]}; } return worst; }
+out.drawnBedWorstGap={"y160-309":worstGap(160,309),"y176-309":worstGap(176,309),"y212-300":worstGap(212,300)};
 console.log(JSON.stringify(out,null,1));

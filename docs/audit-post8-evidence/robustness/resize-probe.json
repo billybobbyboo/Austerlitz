@@ -1,7 +1,0 @@
-{
- "what": "the renderer and camera after window resizes, a visitor's page",
- "started": "2026-11-02T11:19:47.242Z",
- "steps": [],
- "error": "page.waitForFunction: Target page, context or browser has been closed\n    at Object.waitBoot (/home/user/Austerlitz/tools/visual/three-route.js:34:22)\n    at Object.open (/home/user/Austerlitz/tools/stage7/lib.js:25:12)\n    at async Object.open (/home/user/Austerlitz/tools/audit-post8/lib.js:30:56)\n    at async /home/user/Austerlitz/tools/audit-post8/robustness/resize-probe.js:19:16",
- "finished": "2026-11-02T11:20:19.903Z"
-}

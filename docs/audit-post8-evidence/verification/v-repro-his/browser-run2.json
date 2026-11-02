@@ -130,6 +130,33 @@
    "arrowLabel": [
     "Russian Imperial Guard"
    ]
+  },
+  "f0_rg_cav_720": {
+   "facing": {
+    "clock": 720,
+    "yaw": -4.70062481723493,
+    "headingAt": 1.582560489944656,
+    "yawMinusHeading": 0,
+    "forward": [
+     1,
+     -0.011
+    ],
+    "compassDeg": 89,
+    "toOpponentDeg": 255,
+    "angleToOpponent": 166,
+    "km": 2.2,
+    "moving": true,
+    "kmh": 1.79
+   },
+   "pills": [
+    "Charging",
+    "Position: interpolated",
+    "Position A · interpolated"
+   ],
+   "drawer": "Guard Cavalry · Russia | Guard Cavalry | Lt.-Gen. Andrei Kologrivov | Charging | Position: interpolated | Position A · interpolated | How this is sourced | Strength | ≈ 2,900 men | Under | Constantine Pavlovich · Russian Imperial Guard | Doing now | The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by Marbot). The Chevalier Guard's charge is then broken by Bessières and Rapp; Prince Repnin captured  | Claim: | The sources disagree | Objective | Break the French line on the plateau  | Claim: | This map's reading | Where | 1.6 km north-west of Krzenowitz | Full dossier: role, movement, sources | How this is sourced",
+   "arrowLabel": [
+    "Russian Imperial Guard"
+   ]
   }
  }
 }

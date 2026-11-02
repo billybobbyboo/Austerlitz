@@ -145,6 +145,78 @@
    "log": 0,
    "settleMs": 21507,
    "mode": "terrain"
+  },
+  {
+   "label": "after switch 3 (paper map)",
+   "t": "2026-11-02T11:20:41.633Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 449,
+    "Nodes": 2169,
+    "LayoutCount": 90,
+    "RecalcStyleCount": 124,
+    "LayoutDuration": 0.046,
+    "RecalcStyleDuration": 0.119,
+    "ScriptDuration": 109.182,
+    "TaskDuration": 120.552,
+    "JSHeapUsedSize": 24952496,
+    "JSHeapTotalSize": 27451392,
+    "heapUsed": 24952496,
+    "backingStorage": 92174077,
+    "embedderHeap": 6824856
+   },
+   "page": {
+    "geometries": 414,
+    "textures": 34,
+    "programs": 42,
+    "calls": 156,
+    "triangles": 238361,
+    "frames": 26,
+    "skipped": 0,
+    "devState": "active",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 510,
+     "listeners": 402,
+     "max": 1
+    },
+    "tex": {
+     "n": 46,
+     "listeners": 19,
+     "max": 1
+    },
+    "mat": {
+     "n": 999,
+     "listeners": 674,
+     "max": 1
+    },
+    "dom": 1115,
+    "mlItems": 45,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 19,
+     "rafCb": 18,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "settleMs": 45410,
+   "mode": "staff"
   }
  ],
  "settleBoot": 132759,

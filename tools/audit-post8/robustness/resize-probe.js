@@ -7,7 +7,8 @@
    setViewportSize calls (Playwright: the window resized), each followed by 1.5 s and the page settled: the resize events seen, the window, the
    renderer's drawing buffer, the canvas's CSS box, the camera's aspect, the phone layout flag; a JPEG of the window where the buffer and the
    window disagree. Sequences: 1600x900 -> 700x900 -> 390x844 (the storm's), 390x844 -> 844x390 -> 390x844 (a phone turned twice),
-   1600x900 -> 390x844 (direct), 700x900 -> 400x844 -> 390x844. */
+   1600x900 -> 390x844 (direct), 700x900 -> 400x844 -> 390x844. The storm also found the rail off the window at 1600 x 900 after the phone
+   sizes (x -301; before them x 0): each step records the rail's and the dispatch's boxes, classes, hidden, inert and transform too. */
 "use strict";
 const path=require("path"), fs=require("fs");
 const R=require("./rlib.js"), A=R.A;
@@ -23,12 +24,15 @@ const OUT=path.join(A.EVID,"robustness","resize-probe.json"), save=R.writer(OUT)
     await page.evaluate(()=>{ window.__rz=[]; window.addEventListener("resize",()=>window.__rz.push([innerWidth,innerHeight]),true); });
     const read=()=>page.evaluate(()=>{ const v=new THREE.Vector2(); renderer.getDrawingBufferSize(v); const c=renderer.domElement.getBoundingClientRect();
       const ev=window.__rz.splice(0);
-      return {win:[innerWidth,innerHeight],buffer:[v.x,v.y],canvasCss:[Math.round(c.width),Math.round(c.height)],aspect:+landCam.aspect.toFixed(4),aspectWant:+(innerWidth/innerHeight).toFixed(4),phone:PHONE,resizeEvents:ev}; });
+      const box=sel=>{ const e=document.querySelector(sel); if(!e) return null; const r=e.getBoundingClientRect(), cs=getComputedStyle(e);
+        return {rect:[Math.round(r.x),Math.round(r.y),Math.round(r.width),Math.round(r.height)],cls:e.className,hidden:!!e.hidden,inert:!!e.inert,display:cs.display,visibility:cs.visibility,transform:cs.transform}; };
+      return {win:[innerWidth,innerHeight],buffer:[v.x,v.y],canvasCss:[Math.round(c.width),Math.round(c.height)],aspect:+landCam.aspect.toFixed(4),aspectWant:+(innerWidth/innerHeight).toFixed(4),phone:PHONE,
+        body:[...document.body.classList].sort().join(" "),presentation:presentation,rail:box(".rail"),dispatch:box(".dispatch"),resizeEvents:ev}; });
     const SEQ=[[1600,900],[700,900],[390,844],[844,390],[390,844],[1600,900],[390,844],[700,900],[400,844],[390,844]];
     for(let i=0;i<SEQ.length;i++){
       const [w,h]=SEQ[i]; await page.setViewportSize({width:w,height:h}); await R.sleep(1500); const st=await settle(60000);
       const r=await read(); r.step=i; r.to=w+"x"+h; r.settleMs=st; r.agree=r.buffer[0]===w&&r.buffer[1]===h&&Math.abs(r.aspect-r.aspectWant)<1e-3;
-      if(!r.agree){ const f="resize-probe-"+i+"-"+w+"x"+h+".jpg"; await page.screenshot({path:path.join(A.EVID,"robustness",f),type:"jpeg",quality:60}); r.shot=f; }
+      r.railOff=!!(w>=1080&&r.rail&&r.rail.rect[0]<0); if(!r.agree||r.railOff){ const f="resize-probe-"+i+"-"+w+"x"+h+".jpg"; await page.screenshot({path:path.join(A.EVID,"robustness",f),type:"jpeg",quality:60}); r.shot=f; }
       res.steps.push(r); save(res);
     }
     res.log=(page._log||[]).reduce((o,x)=>{ const k=x.type+": "+x.text.replace(/\d+/g,"#").slice(0,140); o[k]=(o[k]||0)+1; return o; },{});
