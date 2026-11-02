@@ -1,0 +1,124 @@
+{
+ "label": "v-batch-a11y",
+ "verdicts": [
+  {
+   "area": "a11y",
+   "index": 1,
+   "verdict": "WEAKENED",
+   "method": "code reading at HEAD (application files = origin/main 43e3e5b; build md5 f10fe585)",
+   "evidence": "Title-only on the primary screen, confirmed: FLAT_NOTE/SEP_NOTE only in title= of non-focusable span.der (app.js:7347-7348, 7368-7370; Now tab app.js:7380); the vantages' 'a preset view, not what he saw' only in title= (shell.html:129, 131; grep finds the words nowhere else in app.js/data.js/analysis.js/narrative.js); relief's disabled reason (app.js:2581) and the squeezed key's reason (app.js:5639) only in title. Overstated: the derived readings' caveats ARE visible text, keyboard- and touch-reachable, in the sources sheet: SOURCE_NOTE.body[6] (data.js:800: 'plots formations and not losses ... a figure that does not change does not mean the fighting there has stopped. Centre separation is a spatial test, not a historical statistic'), rendered at app.js:8680. The cut caption's act and phase are drawn whole on the timeline's act and phase rows (style.css:363's comment) and the cut is decision 159's fitting (docs/ROADMAP.md:69); skeleton anchors' clock and grade are also the day-track's keyboard group (5G).",
+   "notes": "'Keyboard and touch visitors never see that the derived figures are spatial readings' is wrong: one press away in Accuracy and sources. What stands: on the screen where the figure is shown, its qualifier and the vantages' integrity caveat need a pointer (or a screen reader's description). Origin inherited (git log -S: 99733eb step 3, 0a19964 step 4).",
+   "corrected": {
+    "title": "On the main screen the derived readings' qualifiers (FLAT_NOTE, SEP_NOTE), the Zuran and Allied vantages' 'not what he saw' and the relief's and key's disabled reasons are title-only; the derived caveats are visible in the sources sheet (SOURCE_NOTE.body[6]), the vantages' caveat nowhere else",
+    "severity": "S3",
+    "priority": "P3"
+   }
+  },
+  {
+   "area": "a11y",
+   "index": 2,
+   "verdict": "CONFIRMED",
+   "method": "code and data reading at HEAD; evidence file checked",
+   "evidence": "app.js:8553 'Height, owner decision 106: ...' (standardNotes); narrative.js:545 'roadmap step 6B (docs/stage6-evidence/readings-composition.md)'; narrative.js:617, 624, 632 '(S5.7)'; narrative.js:41 'in the register (read partly on the text layer)'; every claim note rendered by claimDetail (app.js:8640); data.js:158 '(moveMin)', :252/:254 'Until roadmap step 4b ... (question 177)', :267 'question 202', :434 '(question 181)', :506/:534 '(question 176)'; the dossier's Dated-by row renders tt.note (app.js:7990); app.js:8004 day-track note. leaks.json lists the five claim ids. git log -S: 'owner decision 106' 0a19964 (step 4), 'Until roadmap step 4b' 714226f, '(S5.7)' d8cac0a (PR 57), the docs path 69031df (step 4): all before Stage 8.",
+   "notes": "Remedy feasible as a guarded data task (narrative.js, data.js: check:data reference moved, statement hashes and chronology L9 hashes rechecked); app.js standardNotes is presentation. Severity S3 P2 agreed."
+  },
+  {
+   "area": "a11y",
+   "index": 3,
+   "verdict": "CONFIRMED",
+   "method": "code reading plus a computation from EVENTS and the CSS geometry (tools/audit-post8/verification/v-batch-a11y/rail-cover.js)",
+   "evidence": "style.css:379-382: .evmarks top 31px height 24px like .timerail (style.css:344), .ev-mark 8px rotated 45deg, ::after inset -6px, pointer-events:auto; phone style.css:794 both top 12px. #evmarks is a sibling of #timerail (shell.html:315-321), so a pointerdown on a marker never reaches the rail's handler (app.js:7528); the marker's click sets the clock and selects the event (app.js:7523). Computed at the rail's centre line: a plain marker's hit band 16.3 px, a decision marker's 23.1 px; 25 markers, 21 distinct starts; phone rail 374 px covered 63.2% (88.5% from 07:00 to 15:00); desktop 1,572 px 22.5% (33.1%). docs/audit-post8-evidence/verification/v-batch-a11y-rail-cover.jsonl. Origin: .timerail,.evmarks{top:12px} 1613575 (step 6 item 3 Part B), the hit area 0a19964: inherited.",
+   "notes": "The auditor's 66%/91% (phone) and 24%/34% (desktop) are within 3 points of mine; the difference does not change the finding. A drag in the rail's bottom ~4 px between markers still scrubs."
+  },
+  {
+   "area": "a11y",
+   "index": 4,
+   "verdict": "WEAKENED",
+   "method": "evidence re-read (phone2.json, phone2-05 screenshot, phone2.js) plus a control run: the same CDP pinch on a minimal page in the same emulation (tools/audit-post8/verification/v-batch-a11y/pinch-control.js)",
+   "evidence": "True: no repository check drives the map's pinch with browser-level touch: the self-test's pinch is synthetic PointerEvents (app.js:9262-9266); outside tools/audit-post8 the tools use page.touchscreen.tap only (tools/visual/harness.js:422, tools/stage8/carried.js:111), no Input.dispatchTouchEvent. Invalid: phone2.js step 4's 'pinch on the map alone' did not start on the map: step 2's tap at 30% of the rail hit button.ev-mark.dec (phone2.json step 2, clock 240->505), whose click selects the event (app.js:7523) and opens its dossier, on a phone a sheet 464 px high above the timeline (style.css:817-819: y 259-723); the pinch points (160,360) and (230,430) lie inside it; phone2-05-after-timeline-pinch.jpg shows the dossier ('Command decision...') from y~260. phone.js's pinch had a finger on the timeline. Both are pinches on the interface, which the finding itself expects to zoom the page. Control (Chromium 141, phone context as openPhone, ids/radius/force and the spread as phone2.js:18-20): canvas touch-action:none: visualViewport 1->1, both pointers delivered (20 moves, 0 cancels), also with the main thread busy 600 ms a frame; touch-action:auto: 1->3.53 with 2 pointercancels. docs/audit-post8-evidence/verification/v-batch-a11y-pinch-control.json",
+   "notes": "The emulation honours touch-action:none for a CDP pinch, and no element of #maplayer takes pointer events (style.css:697; only .ev-mark, style.css:381), so the audit's runs show no fault in the map's pinch. What remains is the untested status: a real-device pinch on the map (and, if wanted, a CDP pinch on the map with no panel open). Origin inherited.",
+   "corrected": {
+    "title": "The map's two-finger pinch has never been driven by browser-level touch input (the self-test's is synthetic); the audit's emulation runs pinched on the open event dossier and on the timeline, not the map, so they show no fault",
+    "severity": "S4",
+    "priority": "P3",
+    "category": "untested"
+   }
+  },
+  {
+   "area": "a11y",
+   "index": 5,
+   "verdict": "CONFIRMED",
+   "method": "code reading (grep) plus the auditor's emulation screenshots re-read",
+   "evidence": "grep 'forced-colors|forced-color-adjust|-ms-high-contrast' in style.css, shell.html, app.js, fonts.css: 0. States drawn by background alone: button.t[aria-pressed=true] (style.css:112), .vm-btn (:439), .mode-btn (:43), .lp-row by border-left-color and an 8% tint (:511). .ev-mark border:0 with background var(--side-fr|al) (style.css:380-386); only .ev-mark.dec has a 2px border (:387); EVENTS has 3 kind:'decision' of 25 (analysis.js), so 22 markers have nothing a forced palette keeps: the auditor's '22 of 25 vanish'. fc.json: forcedColors true, fcaNone 0, swatches rgb(255,255,255).",
+   "notes": "Emulation only (Chromium's forced-colors emulation, light palette); Windows High Contrast not run. Not a WCAG 2.2 A/AA criterion by itself; S3 P3 and probable-problem agreed. Origin inherited."
+  },
+  {
+   "area": "a11y",
+   "index": 6,
+   "verdict": "CONFIRMED",
+   "method": "code and DOM-order reading",
+   "evidence": "setPop (app.js:7071-7076) sets hidden and aria-expanded, moves focus only on close; #layersbtn (shell.html:122) is followed in the DOM by #panelsbtn (hidden from 1080 px) and the five visible vantage buttons (shell.html:128-132) before #layerpop (shell.html:137): its close button is the sixth Tab at 1600x900. select() moves focus into the dossier only when the opener is no longer shown (app.js:6262: if(a&&!inDr&&!shown(a)) focusTo(drawer-back...)); a map item stays shown, so focus stays on it; the drawer (shell.html:325) precedes main/#maplayer (shell.html:384).",
+   "notes": "No owner decision found that keeps focus on the opener (grep docs/ROADMAP.md, docs/FINAL_AUDIT.md). WCAG 2.4.3 is arguable for non-modal content; S3 P3 agreed. Origin inherited (step 3)."
+  },
+  {
+   "area": "a11y",
+   "index": 7,
+   "verdict": "CONFIRMED",
+   "method": "code and data reading",
+   "evidence": "The card (shell.html:366-374) says only the colours and 'the Pratzen plateau, which this map reads as deciding the battle'; OPENING.stops [0,5,6,7] (app.js:4710); TOUR[0], [5], [6], [7] (analysis.js) say nothing of reconstruction or grades; TOUR[8] (stop 9) carries 'Everything you have watched today is a reconstruction: positions are graded A, B or C...' and is not in the opening; ML.legendOpen false (app.js:5016).",
+   "notes": "Accepted-compromise is right: decision 114 chose stops 1, 6, 7, 8 (docs/STAGE7_SPEC.md:161), decision 49 the closed key (docs/STAGE3_SPEC.md:107), decision 108 the card's words. The finding brings a comprehension argument, not new evidence against those premises; it is correctly framed as needing an owner decision. S3 P3 agreed."
+  },
+  {
+   "area": "a11y",
+   "index": 8,
+   "verdict": "CONFIRMED",
+   "method": "code reading",
+   "evidence": "shell.html:58 'press D to show it. During the guided tour, its text is in the tour bar.'; shown only when docked and hidden (style.css:92-93); hideDispatch is set true only by the tour (app.js:4650) and the opening (app.js:4725); setDispatchVisible is called only by KEYS row d (app.js:6679, 9070); with SHORTCUTS.on false a single character key is muted (app.js:6720-6721); Esc's showEverything (app.js:9071-9072) and leaving the tour or opening (app.js:4662, 4803) restore it, none named by the hint.",
+   "notes": "S4 agreed; P3 or P4 (a wording change). Origin inherited."
+  },
+  {
+   "area": "a11y",
+   "index": 9,
+   "verdict": "CONFIRMED",
+   "method": "code reading plus the auditor's accessibility tree re-read",
+   "evidence": "tablist aria-label 'The rail' (shell.html:48); the nav landmark 'Army and map controls' holds the h1 and the Now tab (shell.html:38-104); main holds only #maplayer (shell.html:384); .lg-head::after '−'/'+' (style.css:689-690) enters the computed name ('button Key +' in kbd-h-1600x900-axtree.json); Play's text 'Pause' with aria-pressed true (app.js:8793); sect() puts the layer tag span inside the h3 (app.js:8131), so 'How many record' (fc.json); the only h1 (shell.html:42) is inside .rail, visibility:hidden below 1080 px unless the Panels are open (style.css:35, app.js:6777).",
+   "notes": "None is a WCAG A/AA failure by itself; S4 P4 agreed. Origin inherited."
+  },
+  {
+   "area": "a11y",
+   "index": 10,
+   "verdict": "CONFIRMED",
+   "method": "code and data reading",
+   "evidence": "CONF_INTERP 'between two plotted anchors ... interpolated' (app.js:7730, guarded); LABELS.reading.leg 'Plotted leg' (app.js:6578); day-track note 'anchors graded A/B/C as in the data' (app.js:8004); 'Position B · interpolated' pills (app.js:7805, 7951); desig 'G.Q.G.' (data.js:148).",
+   "notes": "Optional-improvement S4 P4 agreed; CONF_INTERP and the designation are guarded data (a data task)."
+  },
+  {
+   "area": "a11y",
+   "index": 11,
+   "verdict": "CONFIRMED",
+   "method": "evidence re-read; tokens read",
+   "evidence": "tokens.js:51 t-micro 10.5px, t-small 11.5px. fu-1600x900.json 'small': 44/105 (41.9%), 67/135 (49.6%), 68/153 (44.4%), 66/140 (47.1%) across its steps; zoom.json 1280x720 42/95 (44.2%), 45/100 (45%); phone.json 16/49 (32.7%).",
+   "notes": "The range over the desktop states is 42-50%, not 42-47%; the phone 33%. Nothing under the 10.5 px floor. Optional-improvement S4 P4 agreed."
+  },
+  {
+   "area": "a11y",
+   "index": 12,
+   "verdict": "WEAKENED",
+   "method": "code reading plus the auditor's screenshots re-read and cropped",
+   "evidence": "(a) contradicted by the code: openingStretch calls setSpeed(OPENING.SPEED) (app.js:4765), and setSpeed sets aria-pressed true on the button whose data-s equals 4 and false on the others (app.js:8797-8802); nothing else writes the group while the stretch plays (its only other writers: openingHalt app.js:4789-4791, the buttons' click app.js:6953, speedNext app.js:8812, the self-test); the self-test holds speed===OPENING.SPEED during the stretch (app.js:12410). The screenshot fu-1600x900-03-opening-playing.jpg does show ½× styled pressed beside 'Pause'; button.t has transition:all .18s (style.css:110), so a frame caught at the transition's start under SwiftShader's multi-second frames would look so (not reproduced). (b) confirmed: separators flex:none while .act and .cap-ph shrink to min-width 0 (style.css:361-363, app.js:7371); phone-03-explore.jpg shows '· · interval Friant's...'. (c) partly: at 800x450 (1600x900 at 200%) in the explore state the 319 px² is the .tools box's empty corner (box 427-786 x 56-119 against the card's 16-456 x 108-347; the Field button starts at x~467, zoom-800x450-at2-2-explore.jpg); with the Panels open (3,069 px²) the vantage buttons visibly overlap the card's top edge by ~10 px, no text covered (zoom-800x450-at2-4-panels.jpg). (d) confirmed: #dgrip is a button toggled by click only (shell.html:62, app.js:9028-9030), styled as a 40x4 bar (style.css:804); phone.json: a 300 px CDP drag left the sheet closed.",
+   "notes": "Origins inherited (phone caption and grip 1613575, step 6 item 3 Part B). Item (a) should be dropped unless reproduced on a device; the other three stand as polish.",
+   "corrected": {
+    "title": "Polish: the phone caption shows two orphan separators when the act and phase shrink to 0 px; at 800x450 CSS px with the Panels open the vantage row overlaps the dispatch card's top edge (~10 px); the dispatch sheet's grip looks like a drag handle but only a tap works (the speed-group item is contradicted by the code)",
+    "severity": "S4",
+    "priority": "P4"
+   }
+  }
+ ],
+ "extra_issues": [],
+ "not_done": [
+  "No browser reproduction of 12(a) (the speed group's pressed state during the opening's stretch): the code is decisive on the state; the screenshot's look not explained beyond a likely transition frame.",
+  "No real device (iPhone, Android) for a11y #3 and #4; no CDP pinch on the app's map with no panel open (the control run was on a minimal page).",
+  "No screen reader, no Windows High Contrast (a11y #5, #6, #9 judged from code and the auditor's emulation and accessibility-tree files).",
+  "Coverage numbers in a11y #3 computed from data and CSS, not measured with elementFromPoint on a page."
+ ]
+}
