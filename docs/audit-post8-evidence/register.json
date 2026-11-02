@@ -93,6 +93,7 @@
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
    },
    "override": {
+    "observed": "Legrand's marker crosses the III Column at the castle 08:40-09:00 (37 m at 08:51) and stands 0.4-0.77 km beyond it at 09:15-09:30 with phase 2's act; contact at the castle wall is recorded by both acts, the pass-through is not. Whether the opening's 08:45 frame shows it is not established (history/README.md:112; castle about 30 degrees off the stop's camera axis).",
     "work_package": "WP-03"
    }
   },
@@ -872,6 +873,7 @@
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
    },
    "override": {
+    "title": "On the landscape, a pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination (the paper map's MAPCAM already stops its glide)",
     "work_package": "WP-06"
    }
   },
@@ -899,7 +901,7 @@
     "note": "Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does. [lenses: DUPLICATE (premise); CONFIRMED (repro); CONFIRMED (batch); CONFIRMED (batch)]"
    },
    "override": {
-    "title": "Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start",
+    "observed": "On a phone (390 x 844): markers take 64.2% of the rail's middle line (the area: 65.8%) and 4.5% 4 px above its foot (the area: 9.4%); a finger's drag that starts on a marker does not scrub, and a tap jumps to the event. A real touch drag from (121.5, 840), where elementFromPoint returns the rail, did not scrub either (run twice), so the rail's bottom 4 px is no reliable escape. On a desktop, at an event start the marker's hit area covers the playhead: a drag that starts there goes to the marker and the rail never sees it. Markers take 24-34% of the desktop rail (a11y area). [verifier's measurement, merged with the interaction area's] Markers take 64.2% of the rail's middle line (the area: 65.8%) and 4.5% 4 px above its foot (the area: 9.4%). But a real touch drag from (121.5, 840), where elementFromPoint returns the rail, did not scrub either (run twice). So 'the rail's bottom 4 px' is no reliable escape under a marker, which makes the defect slightly worse than stated.",
     "work_package": "WP-06"
    }
   },
@@ -2022,6 +2024,7 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
+    "observed": "41 inventoried statements (31 own-claim, 10 unchecked) carry 59 word-form hours timesIn does not read; the 45/33/12 count includes 4 statements whose only matches are 'half past N' or quantities.",
     "work_package": "WP-11"
    }
   },

@@ -173,8 +173,8 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 71, S4 59; by kind confirmed d
 | [CL-SIM-01](#cl-sim-01) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | The open dossier goes stale while the clock moves within a phase: 'Position at 12:03' still shown at 12:37, a place's 'Formations nearby now' wrong in 86 of 240 place-phases |
 | [CL-SIM-02](#cl-sim-02) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | 'Whose eyes?' still draws the movement arrows, arrow labels and plateau count of formations the reading does not know |
 | [CL-UX-01](#cl-ux-01) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | At 400% browser zoom and at WCAG's 320 px reflow width the interface loses content and functions (the card's start, the phase text, the caption, the key, the panels, the sources) |
-| [CL-UX-02](#cl-ux-02) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | A pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination |
-| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start |
+| [CL-UX-02](#cl-ux-02) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | On the landscape, a pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination (the paper map's MAPCAM already stops its glide) |
+| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | On a phone, two thirds of the timeline's rail belong to event markers: a finger's drag there does nothing and a tap jumps to an event |
 | [CL-VIS-01](#cl-vis-01) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | Figure blocks are drawn sunk into the frozen Satschan mere: in the ponds phase, and wherever a leg's path crosses the drawn disc (at 06:30, 136 of Kienmayer's 222 instances on his phase-1 via are below the ice) |
 | [CL-HIS-02](#cl-his-02) | S2 | P3 | probable problem | confirmed | WEAKENED | 44 of 88 A position grades are carried forward unreviewed from an earlier anchor: on moved anchors with no act (Caffarelli @6-@9 among them) a visitor reads 'Position documented in the sources' with nothing in the data placing the formation there, where 8K graded the adjacent Suchet pursuit C |
 | [CL-GEO-02](#cl-geo-02) | S3 | P2 | unresolved historical question | confirmed | CONFIRMED | 'Walled castle' and 'pheasantry enclosure' are stated as fact in the 08:00 dispatch, against the project's own records |
@@ -398,7 +398,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 71, S4 59; by kind confirmed d
 | User impact | 08:30-09:10 the French division that the act says 'Fights for Sokolnitz village and the castle wall' is drawn passing over the castle (25 m at 08:45) and through the Allied III Column storming it (37 m at 08:51): two opposing blocks stand in one another at the opening's 08:45 moment. |
 | Status / origin | confirmed / new-regression |
 | Expected | Opposing formations' interpolated legs do not pass through each other except in a recorded melee; a data task's consequences include its neighbours' legs. |
-| Observed | Legrand's single-division marker moves 08:00-09:30 from Sokolnitz [206,366] straight to [220,321] (to represent Levasseur's brigade marching up), crossing the III Column's new place. |
+| Observed | Legrand's marker crosses the III Column at the castle 08:40-09:00 (37 m at 08:51) and stands 0.4-0.77 km beyond it at 09:15-09:30 with phase 2's act; contact at the castle wall is recorded by both acts, the pass-through is not. Whether the opening's 08:45 frame shows it is not established (history/README.md:112; castle about 30 degrees off the stop's camera axis). |
 | Evidence | legrand-through-castle.txt (probes.js): legrand [213.0,343.5] at 08:45, 25 m from LANDMARK_SITES.castle; 37 m from prz at 08:51 (closest.js); status 'engaged' throughout. Archive diff: Legrand's anchors identical in 8H, 8J and now; prz@2/@4/@7 moved by 8J from [238,332]/[233,344]/[227,338] to [215,341]; before 8J the leg passed about 0.67 km from the III Column. 8J's consequences (CHANGELOG 8J entry) measured knowledge, plateau and chronology, not proximity. |
 | Reproduction | node tools/audit-post8/history/probes.js legrand-through-castle; node tools/audit-post8/history/closest.js |
 | References | data.js:227-228; data.js:536; world.js:162; archive/stage8h-24e29da7.html; archive/stage8j-7d5594ba.html |
@@ -1295,7 +1295,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 71, S4 59; by kind confirmed d
 
 <a id="cl-ux-02"></a>
 
-**CL-UX-02 · S2 · P2 · confirmed defect.** A pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination
+**CL-UX-02 · S2 · P2 · confirmed defect.** On the landscape, a pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination (the paper map's MAPCAM already stops its glide)
 
 | field | |
 |---|---|
@@ -1317,7 +1317,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 71, S4 59; by kind confirmed d
 
 <a id="cl-ux-03"></a>
 
-**CL-UX-03 · S2 · P2 · confirmed defect.** Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start
+**CL-UX-03 · S2 · P2 · confirmed defect.** On a phone, two thirds of the timeline's rail belong to event markers: a finger's drag there does nothing and a tap jumps to an event
 
 | field | |
 |---|---|
@@ -1325,7 +1325,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 71, S4 59; by kind confirmed d
 | User impact | On a phone the rail is the clock's slider. A visitor who puts a finger on the middle of the rail to scrub lands on an event marker's hit area about two times in three: the drag is ignored, and a plain tap instead jumps the clock to that event and opens its dossier over the map. Scrubbing works only from the remaining gaps or from the rail's bottom 4 px. |
 | Status / origin | confirmed / inherited |
 | Expected | A drag that starts anywhere on the rail scrubs the clock (the rail is the slider, decision 53/3C); a marker's tap target need not swallow the rail's drags. |
-| Observed | The marker buttons (8 px diamonds with a 6 px ::after hit area, pointer-events:auto) sit over the rail's middle; the rail's pointerdown handler (app.js:7529) never sees a touch that starts on one; markers are 2.5.8's essential exception (decision 167), so their density on a 374 px rail is not checked. |
+| Observed | On a phone (390 x 844): markers take 64.2% of the rail's middle line (the area: 65.8%) and 4.5% 4 px above its foot (the area: 9.4%); a finger's drag that starts on a marker does not scrub, and a tap jumps to the event. A real touch drag from (121.5, 840), where elementFromPoint returns the rail, did not scrub either (run twice), so the rail's bottom 4 px is no reliable escape. On a desktop, at an event start the marker's hit area covers the playhead: a drag that starts there goes to the marker and the rail never sees it. Markers take 24-34% of the desktop rail (a11y area). [verifier's measurement, merged with the interaction area's] Markers take 64.2% of the rail's middle line (the area: 65.8%) and 4.5% 4 px above its foot (the area: 9.4%). But a real touch drag from (121.5, 840), where elementFromPoint returns the rail, did not scrub either (run twice). So 'the rail's bottom 4 px' is no reliable escape under a marker, which makes the defect slightly worse than stated. |
 | Evidence | rail-probe.js on the phone page (390x844, density 3, touch): document.elementFromPoint along the rail's middle line (y 832) reaches an event marker over 65.8% of the rail's 374 px (20 of 25 markers), the rail over 34.2%; 4 px above its foot 9.4% and 90.6%. A real CDP touch drag of 80 px starting on the rail (x 51) moved the clock 09:30 to 08:36 and followed the finger; the same drag starting on a marker's hit area (x 121, 'Napoleon releases Soult against the heights') left the clock at 09:30 with nothing selected; a real tap there set 08:25, selected e:decision and opened its dossier. At 1280 and 1600 the markers take 28.5% and 22.7% of the middle line (a mouse can aim). |
 | Reproduction | node tools/audit-post8/visual-maps/rail-probe.js |
 | References | style.css:344; style.css:379-382; style.css:794; app.js:7529-7531; docs/audit-post8-evidence/visual-maps/phone-390x844/rail-probe.json; docs/audit-post8-evidence/visual-maps/phone-390x844/rail-tap-marker.jpg |
@@ -2514,7 +2514,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 71, S4 59; by kind confirmed d
 | User impact | A retimed 'about nine' or 'at seven' is not compared with the movement model; for 33 statements the claim's hash forces a review of the reword, for 12 unchecked ones only the inventory's freshness fails, which regenerating the inventory clears. |
 | Status / origin | confirmed / inherited |
 | Expected | Every timed statement judged, as check:chronology's L-rules claim, or the word forms listed as unjudged by name. |
-| Observed | Recorded in CLAUDE.md as handed on (its check:chronology paragraph since roadmap step 4); still open. M32 retimed an unchecked timing note from seven to nine and check:chronology passed. |
+| Observed | 41 inventoried statements (31 own-claim, 10 unchecked) carry 59 word-form hours timesIn does not read; the 45/33/12 count includes 4 statements whose only matches are 'half past N' or quantities. |
 | Evidence | M32: failed test (inventory), data (data identity). timesIn (chronology.js:98-109) reads 'HH:MM', ranges, 'after HH:MM', 'a quarter to/past', 'half past', 'N o'clock' and 'noon'/'midday'; it does not read 'at seven', 'about nine', 'past two', 'after three', 'toward eight'. tools/audit-post8/tests/word-hours.js over tools/step4/statements.js's 704 statements finds 45 with such a word-form hour (13 with no clock-shaped hour besides); 33 have a claim of their own (hashed), 12 are unchecked (timing notes, SOURCE_NOTE.body). |
 | References | tools/stage2/chronology.js:96-109; tools/audit-post8/tests/word-hours.js; CLAUDE.md (check:chronology: 'its extractor reads only clock-shaped hours (a bare "about eight" goes unjudged; handed on)'); docs/audit-post8-evidence/tests/mutations.json M32 |
 | Remedy | Extend timesIn to 'at\|about\|by\|before\|after\|past\|toward\|near <number word>' (the day runs 04:00-18:00, so the hour maps as hr() already does) and review the new cites; or list the word-form statements in ALLOW_TIMED with reasons. |

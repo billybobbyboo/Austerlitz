@@ -583,8 +583,8 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
-| [CL-UX-02](#cl-ux-02) | S2 | P2 | confirmed defect | 1-3 h | A pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination |
-| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | 0.5-2 days | Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start |
+| [CL-UX-02](#cl-ux-02) | S2 | P2 | confirmed defect | 1-3 h | On the landscape, a pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination (the paper map's MAPCAM already stops its glide) |
+| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | 0.5-2 days | On a phone, two thirds of the timeline's rail belong to event markers: a finger's drag there does nothing and a tap jumps to an event |
 | [CL-UX-04](#cl-ux-04) | S3 | P2 | confirmed defect | 1-2 h | The timeline's tooltip covers the control row and swallows a press on Play reached from the timeline |
 | [CL-UX-13](#cl-ux-13) | S4 | P4 | probable problem | minutes | The time rail seeks on any mouse button and has no cancel path: a right or middle press on the rail moves the clock and stops Play; where a context menu swallows the release (platform-dependent, unverified), hovering the rail then scrubs until the next click |
 | [CL-UX-19](#cl-ux-19) | S4 | P4 | probable problem | 0.5 h | A modal sheet opened mid-drag does not end the drag: the map pans under the '?' sheet |
