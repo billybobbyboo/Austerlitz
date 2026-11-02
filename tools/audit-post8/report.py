@@ -152,6 +152,21 @@ def main():
     # C: coverage
     out.append("## C. Coverage matrix\n")
     out.append(part("C-intro.md"))
+    # C.4 (placed before C.2 in the text): the carried issues
+    cf = os.path.join(EV, "records", "carried.json")
+    if os.path.exists(cf):
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from resolution import CARRIED_REFS
+        C = json.load(open(cf, encoding="utf-8"))["register"]
+        out.append("### C.4 The carried issues, one by one\n")
+        out.append("Every item carried to this audit (`docs/STAGE8_SPEC.md` 20.13, 20.14, 21.9, 22.6, 23.4, 24.3, 25.4, and `docs/ROADMAP.md`'s handed-on "
+                   "notes), as the records area registered it (`docs/audit-post8-evidence/records/carried.md`, %d items), with its governing decision, its status "
+                   "now and this audit's findings or questions on it. A status says what the evidence shows; an accepted item stays accepted unless a "
+                   "finding says what new evidence bears on it.\n" % len(C))
+        out.append("| id | item | decision | status now | this audit |\n|---|---|---|---|---|")
+        for x in C:
+            out.append("| %s | %s | %s | %s | %s |" % (x.get("id"), esc(x.get("item")), esc(x.get("decision")), esc(x.get("status")), esc(CARRIED_REFS.get(x.get("id"), ""))))
+        out.append("")
     out.append("### C.2 What each area examined, by method\n")
     out.append("The per-area coverage tables (%d rows) are in the companion file `docs/FINAL_AUDIT_POST_STAGE8_LEDGERS.md`, section L.1.\n" % sum(len(r.get("coverage", [])) for r in areas.values()))
     comp.append("## L.1 What each area examined, by method\n")
@@ -228,18 +243,20 @@ def main():
     out.append(part("F-quality.md"))
     out.append(part("G-roadmap.md"))
     out.append("### G.3 Each package's findings\n")
+    out.append("Each package's findings with their severity, priority, kind and effort are tabled in the companion file, section L.4; the register's CSV (`register-export.csv`) carries each finding's package.\n")
+    comp.append("## L.4 Each package's findings\n")
     wps = OrderedDict()
     for r in rows:
         wps.setdefault(r.get("work_package") or "unassigned", []).append(r)
     for w in sorted(wps):
         rs = sorted(wps[w], key=key)
         sv = Counter(r.get("severity") for r in rs)
-        out.append("**%s** (%d findings: %s)\n" % (w, len(rs), ", ".join("%s %d" % (k, sv[k]) for k in ("S1", "S2", "S3", "S4") if sv[k])))
-        out.append("| ID | sev | pri | kind | effort | title |\n|---|---|---|---|---|---|")
+        comp.append("**%s** (%d findings: %s)\n" % (w, len(rs), ", ".join("%s %d" % (k, sv[k]) for k in ("S1", "S2", "S3", "S4") if sv[k])))
+        comp.append("| ID | sev | pri | kind | effort | title |\n|---|---|---|---|---|---|")
         for r in rs:
-            out.append("| [%s](#%s) | %s | %s | %s | %s | %s |" % (r["_id"], r["_id"].lower(), r.get("severity", ""), r.get("priority", ""),
+            comp.append("| [%s](#%s) | %s | %s | %s | %s | %s |" % (r["_id"], r["_id"].lower(), r.get("severity", ""), r.get("priority", ""),
                        KIND.get(r.get("category"), r.get("category", "")), esc(r.get("effort")), esc(r.get("title"))))
-        out.append("")
+        comp.append("")
     out.append(part("H-merge.md"))
     out.append(part("I-owner.md"))
     out.append(part("J-response.md"))

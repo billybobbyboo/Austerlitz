@@ -169,3 +169,20 @@ WP = {
     "WP-13": ["CL-REC-01", "CL-REC-02", "CL-REC-03", "CL-REC-04", "CL-REC-08", "CL-ROB-03", "CL-ROB-08", "CL-ROB-09"],
     "WP-14": ["CL-ROB-02", "CL-ROB-04", "CL-ROB-05", "CL-ROB-10", "CL-ROB-11", "CL-ROB-12"],
 }
+
+# the carried issues (docs/audit-post8-evidence/records/carried.json) cross-referenced to this audit's findings and questions (section C.4)
+CARRIED_REFS = {
+    "C-01": "CL-PERF-12, CL-PERF-04", "C-02": "CL-PERF-06, CL-PERF-01, CL-PERF-03", "C-03": "CL-PERF-02; question 278",
+    "C-04": "CL-PERF-07, CL-PERF-11", "C-05": "CL-PERF-10", "C-06": "CL-MAP-01, CL-MAP-02, CL-TEST-02; question 274",
+    "C-07": "CL-MAP-01, CL-MAP-07, CL-MAP-17", "C-08": "CL-TEST-14 (decision 267 (a), not re-required)", "C-09": "CL-VIS-01 (outside the check's scope)",
+    "C-10": "none (accepted, confirmed visually)", "C-11": "question 280", "C-12": "question 281", "C-13": "CL-HIS-04 (the III Column's neighbour); accepted",
+    "C-14": "none", "C-15": "question 282", "C-16": "CL-VIS-02 (trees on the mere beside it); accepted", "C-17": "CL-VIS-06; question 282",
+    "C-18": "CL-MAP-18", "C-19": "CL-MAP-15", "C-20": "none (kept by decision 92)", "C-21": "CL-VIS-08", "C-22": "CL-GEO-05",
+    "C-23": "none (below the map's unit)", "C-24": "none", "C-25": "CL-PERF-02", "C-26": "CL-HIS-04, CL-GEO-08, CL-GEO-10", "C-27": "CL-GEO-10",
+    "C-28": "none (settled, not adopted)", "C-29": "none", "C-30": "none", "C-31": "CL-GEO-10", "C-32": "CL-GEO-10, CL-GEO-04", "C-33": "CL-GEO-02",
+    "C-34": "CL-GEO-06", "C-35": "question 282", "C-36": "CL-HIS-17", "C-37": "none (moot in the drawing)", "C-38": "CL-GEO-07, CL-HIS-14",
+    "C-39": "CL-SRC-03, CL-SRC-04", "C-40": "CL-HIS-08", "C-41": "CL-HIS-09", "C-42": "none", "C-43": "none (done)", "C-44": "CL-MAP-01, CL-MAP-17",
+    "C-45": "CL-VIS-03, CL-VIS-04; questions 280, 281", "C-46": "CL-VIS-01, CL-VIS-02, CL-VIS-05", "C-47": "CL-VIS-04, CL-VIS-06", "C-48": "CL-TEST-12",
+    "C-49": "CL-TEST-13", "C-50": "CL-SRC-01; question 271", "C-51": "CL-HIS-15", "C-52": "CL-UX-05", "C-53": "CL-HIS-16", "C-54": "CL-REC-05",
+    "C-55": "CL-REC-05", "C-56": "none (unchanged)", "C-57": "CL-UX-06",
+}

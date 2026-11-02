@@ -35,3 +35,15 @@ elif what == "carried":
     for a, r in areas.items():
         for c in r.get("carried_status", []) or []:
             print(a, "|", c.get("item", "")[:120], "|", c.get("status", "")[:60], "|", (c.get("evidence") or "")[:150])
+if what == "map":
+    m = {}
+    for e in reg["findings"]:
+        for a, i in e.get("from", []):
+            m.setdefault((a, i), []).append(e["id"])
+        for a, i in e.get("also", []):
+            m.setdefault((a, i), []).append(e["id"] + "(also)")
+    for a in reg.get("set_aside", []):
+        m.setdefault(tuple(a), []).append("SET_ASIDE")
+    for a, r in areas.items():
+        for i, f in enumerate(r.get("findings", [])):
+            print("%s #%d (idx %d) -> %s | %s/%s | %s" % (a, i + 1, i, ",".join(m.get((a, i), ["UNPLACED"])), f.get("severity"), f.get("priority"), f.get("title", "")[:90]))

@@ -497,3 +497,226 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | 3 | No map text below AA (21.3, 22.4) |  |  | confirmed in 74 captures | window.__aus.textContrast on each frame's PNG |  |
 | 4 | Decision 159: no reading drawn cut |  |  | confirmed; but readings give way entirely in Watch at 1280 | caption read-backs (V-M6) |  |
 | 5 | Decision 251: no place of an unknown formation drawn under a reading |  |  | holds for its listed surfaces; not for arrows, arrow labels or the plateau count | code read and capture (V-M4) |  |
+
+## L.4 Each package's findings
+
+**WP-00** (2 findings: S1 1, S4 1)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-ROB-01](#cl-rob-01) | S1 | P1 | confirmed defect | minutes | The device route's ?src= runs a visitor-supplied URL in the public site's origin (DOM XSS on GitHub Pages) |
+| [CL-ROB-06](#cl-rob-06) | S4 | P4 | probable problem | small | Seven archived builds on the same Pages origin load three.js without integrity |
+
+**WP-01** (12 findings: S2 1, S3 5, S4 6)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-HIS-01](#cl-his-01) | S2 | P2 | confirmed defect | 1-3 h | The face-about event contradicts itself and the sources: its pill says Fact ('Attested in the standard accounts'), its own text calls the order 'this map's reading' because 'no account read gives the order', yet the project's own reading of Schonhals p. 162 gives Kutuzov's order, and Stutterheim pp. 63-64 a competing account of who gave it |
+| [CL-GEO-02](#cl-geo-02) | S3 | P2 | unresolved historical question | 0.5 day | 'Walled castle' and 'pheasantry enclosure' are stated as fact in the 08:00 dispatch, against the project's own records |
+| [CL-HIS-06](#cl-his-06) | S3 | P2 | confirmed defect | 2-4 h | Four events whose hours the sources dispute are not labelled disputed: three whose own texts say so, and the Pratzen climb, shown as Fact at 08:45-09:15 while the accounts read put it from about 08:00 to about 09:00 |
+| [CL-GEO-06](#cl-geo-06) | S3 | P3 | unresolved historical question | text 0.5-1 day; audit rule 1 day | The Goldbach bottom's marshiness, an open question, is drawn and told as settled, the opening's first step included; the movement audit never tests stream crossings and exempts marsh within 695 m of any village |
+| [CL-HIS-12](#cl-his-12) | S3 | P3 | probable problem | 2-4 h | Command tab: DOCUMENTED on 31 rows the claims register calls 'Not yet checked'; a phase-5 row anticipates Blasowitz's fall; a 'Could see' row holds a historiographical dispute |
+| [CL-SRC-03](#cl-src-03) | S3 | P3 | confirmed defect | 1-3 h | 'Kologrivov's command on 2 December is in Sokolov alone' is contradicted by Schönhals p. 178 and by the project's own stage 6B reading |
+| [CL-SRC-09](#cl-src-09) | S4 | P3 | unresolved historical question | S | A January 1806 letter by Buxhowden naming Langeron as having sent Kamensky back is missing from the Kamensky dispute and the registers |
+| [CL-GEO-08](#cl-geo-08) | S4 | P4 | confirmed defect | 0.5-1 day | The Pratzen church is drawn 161 m from its read site while the sources sheet says it is drawn at its own site |
+| [CL-GEO-09](#cl-geo-09) | S4 | P4 | confirmed defect | under 1 hour | The sources sheet reads 'Terrain relief is exaggerated about 1 times' at 1x |
+| [CL-GEO-10](#cl-geo-10) | S4 | P4 | unresolved historical question | under 0.5 day | Two carried geographic questions are not visible to a visitor: the Goldbach's channel north of the castle and the highway's course in 1805 |
+| [CL-HIS-14](#cl-his-14) | S4 | P4 | unresolved historical question | 1-4 h | Krug and Bellowitz are drawn at their legacy places with the open question only in SOURCE_NOTE (Krug's place is CL-GEO-07), and the Russian Guard cavalry's commander is shown without a claim tag (the note behind it is CL-SRC-03) |
+| [CL-HIS-15](#cl-his-15) | S4 | P4 | confirmed defect | 2-4 h | Smaller internal inconsistencies in texts and fields |
+
+**WP-02** (7 findings: S2 1, S3 4, S4 2)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-SRC-01](#cl-src-01) | S2 | P1 | confirmed defect | 2-4 h to reword and rehash the claims; 1-2 days for the page reading and the data task | Order-of-battle figures attributed to Duffy (1977) that Duffy does not print |
+| [CL-SRC-02](#cl-src-02) | S3 | P3 | probable problem | 1-2 days (with the first finding's data task) | The III Corps detachment and the IV Column are drawn below every figure in the sources read; the notes of the detachment, Friant, Bourcier and the IV Column omit Sokolov's and Schonhals's figures (Miloradovich's note gives Schonhals's 6,965) |
+| [CL-SRC-04](#cl-src-04) | S3 | P3 | confirmed defect | 1 h | SOURCE_NOTE illustrates disagreement among 'reputable orders of battle' with an I Column range whose low end (7,750) no source read gives (the three read give 12,730-14,000); the figure's origin is not established |
+| [CL-SRC-05](#cl-src-05) | S3 | P3 | probable problem | 3-6 h | Seven formations show a working strength with no note; six exceed the 22 November returns the project reads elsewhere |
+| [CL-SRC-06](#cl-src-06) | S3 | P3 | probable problem | 2-4 h (presentation, with css/runtime tests) | Headline strength and gun figures carry no claim tag; the compact card shows strength with neither note nor tag |
+| [CL-SRC-07](#cl-src-07) | S4 | P3 | confirmed defect | 1 h | Army-total notes omit figures the project read and credit Duffy with a total he does not give |
+| [CL-SRC-08](#cl-src-08) | S4 | P4 | optional improvement | 1-2 h | Stronger or earlier sources uncredited, and two locator slips (Kamensky's 'about 2,000 each' is printed by Schonhals p. 177, which also braces Kursk into the brigade, not by Sokolov p. 195, which gives battalions only) |
+
+**WP-03** (13 findings: S2 4, S3 6, S4 3)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-HIS-03](#cl-his-03) | S2 | P2 | confirmed defect | 1-2 days | The Russian Guard's plotted approach takes one side of a divided register without saying so: its morning positions are graded A though the project's readings contest them (the disposition and Stutterheim against the official report's 'ordered height of Krzenowitz'); the plan text misstates the disposition; nobody is drawn at Blasowitz when it falls 'from the Russian Guard' |
+| [CL-HIS-04](#cl-his-04) | S2 | P2 | confirmed defect | 2-6 h (data task protocol, check:data reference, motion baselines re-measured) | New in 8J: Legrand's division marker walks through the Sokolnitz castle and the III Column holding it |
+| [CL-HIS-05](#cl-his-05) | S2 | P2 | confirmed defect | 4 h-2 days (decision first) | Russian Guard, Liechtenstein and Miloradovich drawn walking away from the enemy while shown Counter-attacking/Charging |
+| [CL-HIS-02](#cl-his-02) | S2 | P3 | probable problem | 1-2 days | 44 of 88 A position grades are carried forward unreviewed from an earlier anchor: on moved anchors with no act (Caffarelli @6-@9 among them) a visitor reads 'Position documented in the sources' with nothing in the data placing the formation there, where 8K graded the adjacent Suchet pursuit C |
+| [CL-HIS-07](#cl-his-07) | S3 | P3 | confirmed defect | 1-3 h | Kamensky's named conflict: the turn is drawn from 08:00, before the French climb, not 'in the 08:45 phase' as disclosed; it lifts the derived plateau reading |
+| [CL-HIS-08](#cl-his-08) | S3 | P3 | confirmed defect | 0.5-2 h | Kienmayer 'Holding west of the Goldbach' is drawn 0.9 km east of the brook (since Stage 0) |
+| [CL-HIS-09](#cl-his-09) | S3 | P3 | probable problem | 2-6 h | Caffarelli's objective 'Push Bagration off the highway' shown 12:45-17:00 while 1.5-2.2 km from the highway and moving away; separation misstated in records |
+| [CL-HIS-10](#cl-his-10) | S3 | P3 | probable problem | 0.5-1 day | Interpolated legs pass through enemies and across the Litava; the movement audit tests neither |
+| [CL-HIS-11](#cl-his-11) | S3 | P3 | probable problem | 0.5-1 day | Sokolnitz village drawn empty 09:00-13:15 although the texts have it taken and retaken and defended by Legrand, then Friant |
+| [CL-HIS-13](#cl-his-13) | S3 | P3 | probable problem | 1-2 h | Dossier says 'Marching' beside 'In reserve'/'Concealed' on 63 slow drift legs |
+| [CL-REC-06](#cl-rec-06) | S4 | P3 | unresolved historical question |  | G-3 (Miloradovich at dawn) is the one finding of the prior audit never taken up: no step, no decision, no record since |
+| [CL-HIS-16](#cl-his-16) | S4 | P4 | accepted compromise | 0.5 h | Accepted: the Russian Guard corps shown at 10,500 above its drawn 7,330 |
+| [CL-HIS-17](#cl-his-17) | S4 | P4 | accepted compromise |  | Accepted: Bagration drawn toward Rausnitz at nightfall while his role says toward Austerlitz |
+
+**WP-04** (5 findings: S2 1, S3 4)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-GEO-01](#cl-geo-01) | S2 | P1 | confirmed defect | disclosure 0.5 day; refit 3-8 days with consequences; DEM grid 1-3 weeks | The relief model is 30-80 m too low over the southern Pratzen plateau and the chapel knoll and about 45 m too high at Slapanice, while the visitor is told it is fitted to surveyed elevations |
+| [CL-GEO-03](#cl-geo-03) | S3 | P2 | probable problem | label 0.5 day; drawing 2-4 days | Outside Sokolnitz the hydrography is schematic and unlabelled: the Bosenitz brook and the Ricka through Slapanice are not drawn, and the upper Goldbach runs where no stream runs today |
+| [CL-GEO-04](#cl-geo-04) | S3 | P3 | probable problem | 2-5 days | Between Girzikowitz and Sokolnitz the drawn Goldbach departs up to about 300 m from today's channel and puts Girzikowitz and Kobelnitz on the opposite bank |
+| [CL-GEO-05](#cl-geo-05) | S3 | P3 | confirmed defect | 1-2 days | Sokolnitz, Telnitz and Kobelnitz are drawn standing in marsh: marsh ellipses cover their centres and the cover classifier ranks marsh above village |
+| [CL-GEO-07](#cl-geo-07) | S3 | P3 | unresolved historical question | note 0.5 day; data task 1-2 days | Krug is drawn 1.67 km south of where the 1836-52 survey and today's map put it, and the visitor is told no source read fixes it |
+
+**WP-05** (10 findings: S2 2, S3 4, S4 4)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-SIM-01](#cl-sim-01) | S2 | P2 | confirmed defect | hours to 1 day | The open dossier goes stale while the clock moves within a phase: 'Position at 12:03' still shown at 12:37, a place's 'Formations nearby now' wrong in 86 of 240 place-phases |
+| [CL-SIM-02](#cl-sim-02) | S2 | P2 | confirmed defect | 0.5-2 days | 'Whose eyes?' still draws the movement arrows, arrow labels and plateau count of formations the reading does not know |
+| [CL-SIM-03](#cl-sim-03) | S3 | P2 | confirmed defect | minutes | A theme chosen while the clock plays does not stop it: the clock runs on and Follow takes the camera from the theme's view within seconds |
+| [CL-SIM-04](#cl-sim-04) | S3 | P2 | confirmed defect | hours | The overlays' fade draws the outgoing phase's arrows when it should not: with the Movement layer off every phase change flashes them at about 0.87 opacity, and a phase change that interrupts a fade pops them back to 0.9 (stepping through phases quickly flashes each skipped phase's arrows) |
+| [CL-UX-07](#cl-ux-07) | S3 | P2 | confirmed defect | 0.5 day | On a phone a 'Whose eyes?' reading leaves no sign on screen once the Panels close |
+| [CL-SIM-05](#cl-sim-05) | S3 | P3 | confirmed defect | 1-2 h plus the decision | Under a reading that does not know a formation, its card's 'Doing now' still names where it is |
+| [CL-SIM-06](#cl-sim-06) | S4 | P3 | confirmed defect | minutes | The reading ('Whose eyes?') is cached for the clock's minute at the first instant asked, so it depends on the path: 29 and 38 formation-minutes differ by route |
+| [CL-SIM-07](#cl-sim-07) | S4 | P4 | confirmed defect | minutes | The first Play frame after the page went idle advances 120 ms of play (0.6 clock min at 1/2x, 3.6 at 4x) |
+| [CL-SIM-08](#cl-sim-08) | S4 | P4 | confirmed defect | 0.5 h | Pausing in a dwell's hold leaves the caption naming the dwell's events; the same clock reached by a seek names one |
+| [CL-UX-14](#cl-ux-14) | S4 | P4 | confirmed defect | minutes | The event jumps' 1.5-minute margin skips a start the clock stands just before (20 of 21 starts from one minute before) |
+
+**WP-06** (6 findings: S2 2, S3 1, S4 3)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-UX-02](#cl-ux-02) | S2 | P2 | confirmed defect | 1-3 h | A pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination |
+| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | 0.5-2 days | Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start |
+| [CL-UX-04](#cl-ux-04) | S3 | P2 | confirmed defect | 1-2 h | The timeline's tooltip covers the control row and swallows a press on Play reached from the timeline |
+| [CL-UX-13](#cl-ux-13) | S4 | P4 | probable problem | minutes | The time rail seeks on any mouse button and has no cancel path: a right or middle press on the rail moves the clock and stops Play; where a context menu swallows the release (platform-dependent, unverified), hovering the rail then scrubs until the next click |
+| [CL-UX-19](#cl-ux-19) | S4 | P4 | probable problem | 0.5 h | A modal sheet opened mid-drag does not end the drag: the map pans under the '?' sheet |
+| [CL-UX-20](#cl-ux-20) | S4 | P4 | optional improvement | 0.5-1 h | Focus falls to the page when a resize hides the focused control |
+
+**WP-07** (8 findings: S2 1, S3 5, S4 2)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-MAP-01](#cl-map-01) | S2 | P2 | confirmed defect | 1-3 days (code change, re-measurement, owner decision) | Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28 s (about 100 clock minutes) at a stretch; the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window |
+| [CL-TEST-02](#cl-test-02) | S3 | P2 | confirmed defect | 0.5-1 day | No check can see long gaps: the motion benchmark's longest-hidden measure saturates at its own 121-frame window, and the one check that plays the whole day counts drops, not how long a formation stays hidden |
+| [CL-MAP-02](#cl-map-02) | S3 | P3 | probable problem | 0.5-2 days | The formations a live event names are hidden while their event's label is drawn (the Guard cavalry clash 0-16%; Miloradovich at the face-about 0-40%) |
+| [CL-MAP-07](#cl-map-07) | S3 | P3 | confirmed defect | 0.5-2 days | Phone in Landscape with counters: half the formation-frames drawn; Liechtenstein's Fifth Column never drawn from 09:00 to 12:00 |
+| [CL-MAP-12](#cl-map-12) | S3 | P3 | confirmed defect | 0.5-2 days | In Landscape with counters the Field vantage sits 3% inside the corps threshold, so a short pan ends with every division counter replaced |
+| [CL-TEST-14](#cl-test-14) | S3 | P3 | accepted compromise | hours (once the bar is decided) | The motion benchmark's ceilings and visibility baselines equal the build's own counts: they detect change, not quality; Play now accepts a formation hidden for 4,033 ms |
+| [CL-MAP-14](#cl-map-14) | S4 | P4 | accepted compromise | 0.5 day | At rest after Play the kept places leave up to three formations hidden that a fresh view would draw, until the next discontinuity |
+| [CL-MAP-17](#cl-map-17) | S4 | P4 | accepted compromise | 0.5 day | The Landscape's formation names blink during Play: 10.6% of in-view frames hidden in 0.6 s episodes, about one per name every 6 s |
+
+**WP-08** (14 findings: S2 1, S3 9, S4 4)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-MAP-03](#cl-map-03) | S2 | P2 | confirmed defect | 1-3 days | No symbol key at all between 720 and 1079 px wide or on a phone held upright, so the integrity encodings (the B and C grades, '?', the dashed intended routes) go unexplained there; Watch, Clean and a phone held landscape hide it by recorded design or decision |
+| [CL-MAP-06](#cl-map-06) | S3 | P2 | confirmed defect | 0.5-1 day | The caption shrinks the act and phase to a letter or nothing with orphan separators, and in Watch at 1280 px its readings and event give way entirely |
+| [CL-MAP-04](#cl-map-04) | S3 | P3 | probable problem | 0.5-1.5 days | The only north indicator is the rose inside the legend's toggle, so phones, layouts below 1080 px, Watch and Clean show no compass |
+| [CL-MAP-05](#cl-map-05) | S3 | P3 | optional improvement | 1-3 days (plus re-baselining) | The paper map as entered draws none of the 12 place names at 1600, 1280 and 1024 px |
+| [CL-MAP-08](#cl-map-08) | S3 | P3 | confirmed defect | 1-2 days | The legend omits several encodings it draws, against its own one-row-per-encoding rule |
+| [CL-MAP-09](#cl-map-09) | S3 | P3 | probable problem | 1-2 days | Arrow labels repeat formation names in the same plate style as the formations' own names |
+| [CL-MAP-10](#cl-map-10) | S3 | P3 | probable problem | 0.5-1.5 days | On the landscape the selection is barely distinguished on the map |
+| [CL-MAP-11](#cl-map-11) | S3 | P3 | probable problem | 1-3 days | The Plans view mixes about 40 serif labels of the plans and the current phase, and at 1280 px drops plan labels |
+| [CL-MAP-13](#cl-map-13) | S3 | P3 | probable problem | 0.5-1 day | Between 720 and 1079 px a selection leaves a 209 px strip of map between the dispatch card and the dossier |
+| [CL-MAP-15](#cl-map-15) | S3 | P3 | accepted compromise | 2-5 days | The low views' wall of formation names remains (decision 255 left it open) |
+| [CL-MAP-16](#cl-map-16) | S4 | P3 | probable problem | 0.5 day | The default event glyph reads as a north arrow on the paper map, and the 'capture' glyph as the objective marker |
+| [CL-MAP-18](#cl-map-18) | S4 | P4 | accepted compromise | none separately | The Littawa's name is dropped in the Plans view (section 22.4), and at 1280 px too |
+| [CL-MAP-19](#cl-map-19) | S4 | P4 | accepted compromise | 1-2 days | Paper-map arrows grow without a cap when zoomed in |
+| [CL-MAP-20](#cl-map-20) | S4 | P4 | optional improvement | 0.5 day with the data task's records | The map's place names mix German period forms with Czech forms (Stare Vinohrady, Zuran, Litava) under no stated convention |
+
+**WP-09** (13 findings: S2 1, S3 7, S4 5)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-UX-01](#cl-ux-01) | S2 | P2 | confirmed defect | 1-3 days (layout, then the visual harness's limits re-measured) | At 400% browser zoom and at WCAG's 320 px reflow width the interface loses content and functions (the card's start, the phase text, the caption, the key, the panels, the sources) |
+| [CL-UX-05](#cl-ux-05) | S3 | P2 | confirmed defect | 2-4 h | Internal project references are shown to visitors: 'owner decision 106', register ids '(S5.7)', 'roadmap step 6B (docs/stage6-evidence/readings-composition.md)', 'the register (read partly on the text layer)', and in the full dossier's 'Dated by' rows 'Until roadmap step 4b ... (question 177)', '(moveMin)' |
+| [CL-UX-06](#cl-ux-06) | S3 | P2 | untested area | 1 h on devices; fix unknown | Two-finger gestures on the phone: in Chromium's touch emulation a pinch zoomed the whole page (visual viewport x3.3 to x5) and never the map; no check has ever driven the map's pinch with browser-level touch input |
+| [CL-REC-05](#cl-rec-05) | S3 | P3 | untested area |  | Two items "recorded complete on the owner's word" carry no results: the screen-reader session (decision 175) and the human second reading (decision 189) |
+| [CL-UX-08](#cl-ux-08) | S3 | P3 | confirmed defect | 2-6 h | Caveats a reader needs are given only in hover tooltips (title attributes): the derived readings' warnings, the vantages' 'not what he saw', the cut caption's full text, why relief is disabled |
+| [CL-UX-09](#cl-ux-09) | S3 | P3 | probable problem | 2-4 h | Forced colours (high contrast): the app has no forced-colors handling; the Layers panel's on/off rows and ground buttons, the speed, Follow and the current phase lose their state, 22 of 25 event markers vanish, and the key's swatches and the side marks before names become identical white squares |
+| [CL-UX-10](#cl-ux-10) | S3 | P3 | confirmed defect | 1-3 h | Panels opened from the keyboard do not take the focus or announce themselves: Layers (role=dialog) is reached only on the sixth Tab after its button, and a dossier opened by Enter on a map item leaves focus on the item, about 30 Tabs from the dossier (or Shift+Tab back past the earlier map items and the map group) |
+| [CL-UX-11](#cl-ux-11) | S3 | P3 | accepted compromise | 1-2 h after a decision | First use: neither the card nor the opening says the map is a reconstruction or what the A/B/C letters beside names mean; the key starts closed |
+| [CL-UX-12](#cl-ux-12) | S4 | P3 | confirmed defect | 1 h | The Now tab's hint 'The phase text is hidden: press D to show it. During the guided tour...' names a key that does nothing with the single-key shortcuts off, offers no pointer or touch way, and says 'guided tour' during the opening |
+| [CL-UX-15](#cl-ux-15) | S4 | P4 | confirmed defect | 1-3 h | Accessible names and structure: the tablist is named 'The rail', the key's toggle is read 'Key plus/minus', Play becomes 'Pause' while also pressed, the full dossier's headings carry their tag word ('How many record', 'Where reconstruction'), the narrative sits inside the navigation landmark and the tools outside any landmark, and below 1080 px the page has no h1 |
+| [CL-UX-16](#cl-ux-16) | S4 | P4 | optional improvement | 1-2 h | Visitor-facing jargon and overloaded letters: 'anchors', 'Plotted leg', 'interpolated', 'G.Q.G.', and three different A/B/C scales (position, timing, appearance) shown side by side ('Position B · Timing B') |
+| [CL-UX-17](#cl-ux-17) | S4 | P4 | optional improvement | hours, with the visual limits re-measured | Small type: 42-47% of visible texts on the main screens are 10.5-11.5 px (controls, tabs, timeline labels, tags), all at or above the project's 10.5 px floor |
+| [CL-UX-18](#cl-ux-18) | S4 | P4 | optional improvement | 1-3 h | Polish seen on the way: the speed group shows ½× pressed while the opening plays at 4×; the phone caption starts with two orphan separators ('· ·') because the act and phase names shrink to 0 px; the vantage row overlaps the dispatch card's top at 800x450; the grip looks like a drag handle but a swipe does nothing |
+
+**WP-10** (9 findings: S2 1, S3 3, S4 5)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-VIS-01](#cl-vis-01) | S2 | P2 | confirmed defect | 0.5-1.5 days | Figure blocks are drawn sunk into the frozen Satschan mere: in the ponds phase, and wherever a leg's path crosses the drawn disc (at 06:30, 136 of Kienmayer's 222 instances on his phase-1 via are below the ice) |
+| [CL-VIS-02](#cl-vis-02) | S3 | P3 | confirmed defect | 0.5-1 day | Trees and bushes stand on the frozen Satschan mere |
+| [CL-VIS-03](#cl-vis-03) | S3 | P3 | probable problem | 0.5-2 days | Blocks face along slow drifts and keep stale facings, so some face away from an adjacent enemy |
+| [CL-VIS-04](#cl-vis-04) | S3 | P3 | confirmed defect | 1-3 days | Formation blocks interpenetrate buildings and each other |
+| [CL-VIS-05](#cl-vis-05) | S4 | P4 | probable problem | 0.25-0.5 day | Streams saturate to white in grazing and low-sun views |
+| [CL-VIS-06](#cl-vis-06) | S4 | P4 | unresolved historical question | 0.25-1 day | Omitted chapels invite a misreading: Bosenitz's church appears to crown the Santon; St Anthony's name stands beside Augezd's church |
+| [CL-VIS-07](#cl-vis-07) | S4 | P4 | optional improvement | 0.5 day | Headquarters drawn as a pitched camp at every status |
+| [CL-VIS-08](#cl-vis-08) | S4 | P4 | confirmed defect | 2-5 days | Deciduous crowns near the eye show large faceted shards |
+| [CL-VIS-09](#cl-vis-09) | S4 | P4 | optional improvement | hours | The low tier is decided once at start: a desktop page opened in a small window keeps density 1, no shadows and no near detail when enlarged |
+
+**WP-11** (19 findings: S3 11, S4 8)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-TEST-01](#cl-test-01) | S3 | P3 | probable problem | minutes (a ruleset setting) | Only the node job is a required check on main: the browser checks run on every push but gate no merge, and check:visual runs only on dispatch (the one red merge, #77, was the owner's knowing merge over question 267's line) |
+| [CL-TEST-03](#cl-test-03) | S3 | P3 | untested area | days | Historical values a data task may change are held only by change detectors that the task itself resets: a strength, a later anchor's grade, a position, a village, the order of battle's hierarchy and a claim's reading fail no check of the property |
+| [CL-TEST-04](#cl-test-04) | S3 | P3 | untested area | 0.5-1 day | No check covers interpenetration, rivers, motion vs status, act sides of the stream, event pill vs statement claim, or carried-forward grades |
+| [CL-TEST-05](#cl-test-05) | S3 | P3 | confirmed defect | hours | Presentation code can rewrite a guarded datum at run time and every check passes, check:data included |
+| [CL-TEST-06](#cl-test-06) | S3 | P3 | confirmed defect | hours | No check reads the formation dossier's strength against the data |
+| [CL-TEST-08](#cl-test-08) | S3 | P3 | untested area | a day | The gait's drawn shader and its JavaScript mirror are never compared: the feet-on-ground, contact and culling-envelope checks verify the mirror |
+| [CL-TEST-10](#cl-test-10) | S3 | P3 | untested area | hours | Interface colours typed into style.css are read by no check |
+| [CL-TEST-11](#cl-test-11) | S3 | P3 | optional improvement | minutes | geo-test.js holds the surveyed villages to 0.5 km of ground truth while the worst is 20 m |
+| [CL-TEST-12](#cl-test-12) | S3 | P3 | probable problem | hours | The statement inventory is a whitelist with no completeness check: timing bases and plan labels a visitor reads are outside it and outside its own exclusion note |
+| [CL-TEST-13](#cl-test-13) | S3 | P3 | probable problem | hours to a day (the new cites need review) | check:chronology judges clock-shaped hours only; 45 inventoried statements give hours in words it does not read |
+| [CL-TEST-16](#cl-test-16) | S3 | P4 | confirmed defect | minutes | test.js's 'objective off map' reads the objective's x only |
+| [CL-ROB-07](#cl-rob-07) | S4 | P4 | optional improvement | small | Assurance tools CI never runs have started to rot: 5 of Stage 8's 189 mutations no longer apply; check:visual runs only on dispatch |
+| [CL-TEST-07](#cl-test-07) | S4 | P4 | optional improvement | minutes | The harness's figure-on-ground and standard-foot checks pass when nothing is measured |
+| [CL-TEST-09](#cl-test-09) | S4 | P4 | confirmed defect | hours | Checks take their bounds from the code under test: a 20% looser infantry march-rate ceiling passes every movement check, and the self-test checks decided values against the code's own constants |
+| [CL-TEST-15](#cl-test-15) | S4 | P4 | optional improvement | hours per pin | css-test.js holds source text, not behaviour: its march-row pin passed a march row stripped of its 'derived' tag |
+| [CL-TEST-17](#cl-test-17) | S4 | P4 | optional improvement | minutes | CTX_DELETES allows 248 context warnings where the case has measured 193 since 8C |
+| [CL-TEST-18](#cl-test-18) | S4 | P4 | optional improvement | hours | The self-test manifest holds names and a count, not conditions |
+| [CL-TEST-19](#cl-test-19) | S4 | P4 | optional improvement | hours | Several 'caught' results come from change detectors that a mechanical regeneration clears: the suites' semantic coverage is narrower than their failure count |
+| [CL-TEST-20](#cl-test-20) | S4 | P4 | probable problem | an hour | Wall-clock limits make the suites load-sensitive: runtime-test.js's 30 s font watchdog fired under load in this audit, and run-all.sh kills a suite at 600 s |
+
+**WP-12** (14 findings: S3 7, S4 7)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-PERF-01](#cl-perf-01) | S3 | P2 | probable problem | 0.5-1 h | 'After the phone warms' is asserted without temperature or throttling evidence, and the reports contradict a warming trend for Play |
+| [CL-PERF-02](#cl-perf-02) | S3 | P2 | untested area | About 15 min of owner time plus 1 h of analysis | No integrated-GPU run: performance on the machine decision 138 and section 8.3 name is unknown |
+| [CL-PERF-03](#cl-perf-03) | S3 | P3 | probable problem | 0.5-1 h (records); 2-4 h (route change and a local run) | The long-frame share, the device acceptance metric, is not a dropped-frame measure and is unstable at the phone's operating point |
+| [CL-PERF-04](#cl-perf-04) | S3 | P3 | probable problem | 0.25 h (record); 1-3 h (optional profile) | The desktop before/after spans a browser update (Chrome 155 to 156) that section 24 does not record; the accepted CPU excess cannot be attributed to Stage 8 alone |
+| [CL-PERF-05](#cl-perf-05) | S3 | P3 | probable problem | 0.25 h (records); 1-2 h (route); 2-4 h (census cases) | The 'heaviest frame' figures in sections 24-25 are segment medians, and the census maxima are below what the route drew in Play and in phase 8's Overview |
+| [CL-PERF-06](#cl-perf-06) | S3 | P3 | accepted compromise | n/a (about 10-15 min of owner time if ever run) | The two phone readings are not equally strong: P5 (Stage 8's own starting build) points to a Play slowdown from 53 to 43 fps; the P3/P4 proxy is dominated by device state |
+| [CL-PERF-12](#cl-perf-12) | S3 | P4 | accepted compromise |  | Decision 268 (a)'s desktop script excess is mostly three.js re-binding 8D/8E's three extra kit attributes on every instanced draw, plus Stage 8's own per-frame app work |
+| [CL-PERF-13](#cl-perf-13) | S4 | P2 | optional improvement |  | freeRect, the free-rectangle search, runs three times a frame over the whole viewport and is the largest app function in every profile (inherited) |
+| [CL-PERF-07](#cl-perf-07) | S4 | P3 | optional improvement | 2-4 h | Instrument limits of the device route: no raw intervals, median counts, flags rather than effects, no clock for played blocks, one refresh measurement |
+| [CL-PERF-08](#cl-perf-08) | S4 | P4 | probable problem | 0.25 h | Over-readings in the records: 'the figures and standards are what a phone's frame waits on' and 'the gait adds none' |
+| [CL-PERF-09](#cl-perf-09) | S4 | P4 | confirmed defect | 0.25-0.5 h | Small numeric and wording inaccuracies in sections 24-25 |
+| [CL-PERF-10](#cl-perf-10) | S4 | P4 | untested area | 1-2 h (diagnosis) | A 329 ms frame in the phone's first effects-off block: counted, unexplained, and not in section 25.2 |
+| [CL-PERF-11](#cl-perf-11) | S4 | P4 | accepted compromise | n/a | Section 8.5's acceptance rule is weak at both refresh rates, and the per-PR before/after was replaced by one end-of-stage comparison |
+| [CL-PERF-14](#cl-perf-14) | S4 | P4 | untested area |  | three r128 recomputes getProgramCacheKey every frame (2.1-2.8 ms profiled self a frame, both builds); cause not investigated |
+
+**WP-13** (8 findings: S3 3, S4 5)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-REC-02](#cl-rec-02) | S3 | P2 | confirmed defect |  | README.md describes the checks wrongly again and calls the file self-contained (the prior audit's R-1 recurred) |
+| [CL-REC-03](#cl-rec-03) | S3 | P2 | confirmed defect |  | Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred) |
+| [CL-ROB-03](#cl-rob-03) | S3 | P3 | probable problem | an afternoon (records only) | The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes |
+| [CL-REC-01](#cl-rec-01) | S4 | P3 | optional improvement |  | The published site's root page is the developer README: no link to the map and nothing for a visitor on evidence and reconstruction |
+| [CL-REC-04](#cl-rec-04) | S4 | P4 | confirmed defect |  | The carried checklist misstates three of its own items (the records' view of other areas' findings) |
+| [CL-REC-08](#cl-rec-08) | S4 | P4 | confirmed defect |  | CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and "Current state (October 2026)" |
+| [CL-ROB-08](#cl-rob-08) | S4 | P4 | optional improvement | minutes | The project has no licence |
+| [CL-ROB-09](#cl-rob-09) | S4 | P4 | accepted compromise |  | Decision 140's premise has moved: the self-test is 21.7% of the file (12.8% when decided), +277,502 bytes in Stage 8 |
+
+**WP-14** (6 findings: S3 3, S4 3)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-ROB-02](#cl-rob-02) | S3 | P3 | confirmed defect | one line | A context loss while the clock plays can throw an uncaught TypeError from three r128 ("reading 'trim'") |
+| [CL-ROB-04](#cl-rob-04) | S3 | P4 | confirmed defect | n/a (record) | Each context restore keeps about 2.6-4 MB of heap and one more dispose listener per geometry and texture (three r128) |
+| [CL-ROB-05](#cl-rob-05) | S3 | P4 | accepted compromise |  | The single file needs cdnjs: offline, or where cdnjs is blocked, the map cannot start |
+| [CL-ROB-10](#cl-rob-10) | S4 | P4 | optional improvement | minutes | Small dead code: gaitDist is never called though the gait's comment and CLAUDE.md name it |
+| [CL-ROB-11](#cl-rob-11) | S4 | P4 | optional improvement | minutes | esc() leaves quotes, and double-quoted attributes take its output |
+| [CL-ROB-12](#cl-rob-12) | S4 | P4 | optional improvement | small, with care | The frame loop requests an animation frame at the display's rate while nothing is drawn |
