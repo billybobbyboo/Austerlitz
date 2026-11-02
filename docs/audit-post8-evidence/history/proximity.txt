@@ -1,0 +1,7 @@
+== opposing formations closer than 0.35 km (5-minute samples) ==
+legrand x prz: 13 samples, first 08:30 344m legrand:engaged(moving) prz:attacking(moving), last 13:35 284m legrand:attacking(moving) prz:encircled
+sthilaire x kamensky: 18 samples, first 09:25 221m sthilaire:attacking(moving) kamensky:countermarch(moving), last 10:50 312m sthilaire:holding(moving) kamensky:engaged(moving)
+suchet x bag: 3 samples, first 11:25 320m suchet:advancing(moving) bag:holding(moving), last 11:35 326m suchet:advancing(moving) bag:holding(moving)
+bourcier x dok: 13 samples, first 13:20 284m bourcier:advancing(moving) dok:engaged, last 15:05 305m bourcier:pursuing(moving) dok:retreating(moving)
+bourcier x kienmayer: 10 samples, first 13:50 288m bourcier:advancing(moving) kienmayer:holding, last 14:40 130m bourcier:pursuing(moving) kienmayer:retreating(moving)
+bourcier x lang: 22 samples, first 14:55 321m bourcier:pursuing(moving) lang:retreating(moving), last 16:40 349m bourcier:pursuing(moving) lang:retreating(moving)

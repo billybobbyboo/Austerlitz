@@ -1,0 +1,310 @@
+== legs crossing the Goldbach, a brook or the Litava (map units; road/marsh = the cover rasters at the crossing) ==
+gqg 0->6 (12:00-12:40)
+    Goldbach x1: [237.2,165.7] 178 m from Girzikowitz road 0.18 marsh 0.00
+    brook x1: [259.3,178.4] 979 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: Moves forward from the Zuran to Stare Vinohrady
+sthilaire 2->3 (08:45-09:15)
+    Goldbach x1: [210.7,230.6] 282 m from Puntowitz road 0.61 marsh 0.00
+    brook x1: [247.2,256.9] 1009 m from Pratzen road 0.00 marsh 0.00
+    act at arrival: Climbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit
+vandamme 2->3 (08:45-09:14)
+    Goldbach x1: [233.3,173.9] 377 m from Girzikowitz road 0.00 marsh 0.00
+    brook x1: [253.8,188.7] 1068 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: Climbs toward Stare Vinohrady, the 'old vineyards' (whether vines stood there in 1805 is not established)
+vandamme 7->8 (13:24-14:30)
+    brook x1: [275.0,319.8] 1790 m from Augezd road 0.00 marsh 0.00
+    act at arrival: Seizes the ground commanding the causeway between the meres
+legrand 2->4 (08:00-09:30)
+    Goldbach x1: [214.5,338.6] 859 m from Sokolnitz road 0.49 marsh 0.05
+    act at arrival: Levasseur's brigade marches up onto the Pratzeberg: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right
+legrand 4->7 (13:00-14:00)
+    Goldbach x1: [213.1,321.8] 1375 m from Sokolnitz road 0.93 marsh 0.00
+    act at arrival: Presses east to the stream at Sokolnitz as the trap closes
+legrand 7->8 (14:00-15:00)
+    Goldbach x1: [212.5,380.6] 514 m from Sokolnitz road 0.63 marsh 1.00
+    act at arrival: Retakes Telnitz for good
+friant 7->8 (12:45-14:30)
+    Goldbach x1: [214.0,410.0] 89 m from Telnitz road 0.93 marsh 1.00
+    act at arrival: (none)
+friant 8->9 (14:30-17:00)
+    Goldbach x2: [214.0,410.0] 89 m from Telnitz road 0.93 marsh 1.00; [214.0,410.0] 89 m from Telnitz road 0.93 marsh 1.00
+    act at arrival: (none)
+bourcier 7->8 (12:45-14:30)
+    Goldbach x1: [213.9,407.4] 62 m from Telnitz road 0.98 marsh 1.00
+    act at arrival: Pursues along the Telnitz to Augezd track
+bourcier 8->9 (14:30-17:00)
+    Litava x1: [295.9,374.2] 76 m from Augezd road 0.99 marsh 0.00
+    act at arrival: (none)
+caffarelli 0->5 (09:30-10:30)
+    Goldbach x1: [248.6,116.1] 1533 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: Advances against Bagration's left as the northern battle opens
+kellermann 0->5 (04:00-10:30)
+    Goldbach x1: [244.9,134.9] 935 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: First into the cavalry melee; falls back through the infantry to reform
+nansouty 0->5 (04:00-10:30)
+    Goldbach x1: [243.6,141.4] 733 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: Charges Liechtenstein's and Uvarov's cavalry; the collision was said to be audible across the field
+dhautpoul 0->5 (04:00-10:30)
+    Goldbach x1: [241.6,151.7] 424 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: Supports Nansouty against the Allied cavalry
+dhautpoul 5->7 (10:30-12:45)
+    brook x1: [271.2,154.5] 818 m from Blasowitz road 0.00 marsh 0.00
+    act at arrival: (none)
+walther 0->5 (04:00-10:30)
+    Goldbach x1: [246.4,127.6] 1166 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: (none)
+rivaud 0->3 (08:45-09:25)
+    Goldbach x1: [236.6,167.1] 196 m from Girzikowitz road 0.16 marsh 0.00
+    act at arrival: Crosses the brook by Girzikowitz with Soult's attack, toward the heights by Blasowitz (Stutterheim); Mikhailovsky-Danilevsky has part of the
+rivaud 3->6 (09:25-11:15)
+    brook x1: [258.3,180.5] 989 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: Near Blasowitz the Russian Guard runs at once into its skirmishers and Kellermann's light cavalry (Stutterheim); Schönhals has the Guard's f
+drouet 0->3 (08:45-09:26)
+    Goldbach x1: [224.3,192.6] 995 m from Puntowitz road 0.00 marsh 0.00
+    act at arrival: (none)
+drouet 3->6 (09:26-11:15)
+    brook x1: [248.5,197.4] 1221 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: Meets the Russian Guard: Drouet's own memoir, as Sokolov quotes it, has his division called up to support the centre; Thiébault counts I Cor
+guard_inf 0->6 (10:15-11:15)
+    Goldbach x1: [225.0,191.1] 953 m from Girzikowitz road 0.00 marsh 0.00
+    brook x1: [245.2,202.7] 1186 m from Puntowitz road 0.00 marsh 0.00
+    act at arrival: Moves up onto the plateau behind the Guard cavalry; not engaged in the 30th Bulletin, Schönhals and Thiébault; Coignet, a grenadier of the f
+guard_cav 0->6 (10:30-11:15)
+    Goldbach x1: [232.6,175.2] 419 m from Girzikowitz road 0.00 marsh 0.00
+    brook x1: [250.5,194.0] 1154 m from Girzikowitz road 0.00 marsh 0.00
+    act at arrival: Rapp's counter-charge shatters the Chevalier Guard; Prince Repnin taken prisoner (the hour is disputed: about 13:00 or after in Rapp's own m
+c_gren 0->6 (10:05-11:15)
+    Goldbach x2: [212.0,218.0] 130 m from Puntowitz road 0.48 marsh 0.00; [212.0,218.0] 130 m from Puntowitz road 0.48 marsh 0.00
+    brook x1: [233.8,221.6] 657 m from Puntowitz road 0.00 marsh 0.00
+    act at arrival: Moves up behind the plateau
+c_gren 6->7 (13:00-13:29)
+    brook x1: [258.3,250.7] 610 m from Pratzen road 0.00 marsh 0.00
+    act at arrival: Comes down off the heights behind Saint-Hilaire
+c_gren 7->8 (13:29-14:30)
+    brook x1: [248.4,342.8] 1457 m from Sokolnitz road 0.00 marsh 0.00
+    act at arrival: Comes down toward the meres in support; whether the grenadiers fought is disputed: Schönhals has a brigade bar the Kobelnitz pond, but also 
+ahq 6->8 (11:15-14:30)
+    brook x1: [426.8,206.3] 495 m from Krzenowitz road 0.00 marsh 0.00
+    act at arrival: (none)
+buxhowden 7->8 (12:45-14:30)
+    Litava x1: [299.7,369.1] 126 m from Augezd road 0.52 marsh 0.00
+    act at arrival: Escapes south over the Augezd defile
+kienmayer 7->8 (14:30-15:00)
+    Litava x1: [294.5,377.1] 178 m from Augezd road 1.00 marsh 0.00
+    act at arrival: Falls back over the neck of land between the meres under artillery fire
+dok 8->9 (15:00-17:00, ice)
+    Goldbach x1: [272.3,415.0] 972 m from Satschan road 0.04 marsh 1.00
+    act at arrival: Part of the column breaks south over the ice rather than queue for the defile
+lang 1->2 (07:20-08:00)
+    brook x1: [258.6,334.2] 1701 m from Augezd road 0.00 marsh 0.00
+    act at arrival: Storms Sokolnitz; Kamensky's brigade marches at the rear of the column
+lang 4->7 (10:30-12:45)
+    brook x1: [237.8,349.8] 1056 m from Sokolnitz road 0.00 marsh 0.00
+    act at arrival: Driven back toward Sokolnitz by Davout at about 12:30 (this map's reading; no account read gives it)
+prz 1->2 (07:18-08:00)
+    Goldbach x1: [217.4,338.9] 876 m from Sokolnitz road 0.00 marsh 0.05
+    act at arrival: Storms the walled castle grounds and the pheasant enclosure
+prz 7->8 (14:10-14:30)
+    Goldbach x1: [215.8,338.7] 866 m from Sokolnitz road 0.24 marsh 0.05
+    act at arrival: Attempts to break out north toward Kobelnitz; the column disintegrates
+milo 6->8 (11:15-14:30)
+    brook x1: [435.8,214.2] 872 m from Krzenowitz road 0.00 marsh 0.00
+    Litava x1: [444.7,210.5] 1044 m from Krzenowitz road 0.00 marsh 0.00
+    act at arrival: (none)
+milo 8->9 (14:30-17:00)
+    Litava x1: [449.2,205.6] 1122 m from Krzenowitz road 0.00 marsh 0.00
+    act at arrival: (none)
+kollo 6->8 (11:15-14:30)
+    brook x1: [416.4,197.2] 59 m from Krzenowitz road 0.78 marsh 0.00
+    act at arrival: (none)
+rg_inf 7->8 (12:45-14:30)
+    brook x1: [413.2,190.2] 193 m from Krzenowitz road 0.63 marsh 0.00
+    act at arrival: (none)
+rg_cav 0->6 (04:00-11:15)
+    brook x1: [414.0,192.6] 111 m from Krzenowitz road 0.91 marsh 0.00
+    act at arrival: The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by
+rg_cav 7->8 (12:45-14:30)
+    brook x1: [411.7,185.0] 362 m from Krzenowitz road 0.16 marsh 0.00
+    act at arrival: (none)
+
+== every anchor: its side of the Goldbach at its northing, and an act naming a side or a crossing ==
+gqg@0 [177,134] west 2152 m
+gqg@6 [309,207] east 2897 m
+gqg@7 [307,227] east 3032 m
+gqg@8 [294,352] east 2348 m
+heightguns@7 [275,283] east 2138 m
+heightguns@8 [288,357] east 2237 m
+heightguns@9 [288,357] east 2237 m
+sthilaire@0 [201,221] west 338 m
+sthilaire@2 [206,231] west 146 m  act: "Crosses the Goldbach"
+sthilaire@3 [267,275] east 1879 m
+sthilaire@4 [283,287] east 2394 m
+sthilaire@5 [287,282] east 2516 m
+sthilaire@6 [288,272] east 2540 m
+sthilaire@7 [285,324] east 2250 m
+sthilaire@8 [236,352] east 515 m
+sthilaire@9 [255,390] east 1327 m
+vandamme@0 [217,171] west 559 m
+vandamme@2 [221,182] west 265 m  act: "Crosses the Goldbach"
+vandamme@3 [282,209] east 2075 m
+vandamme@4 [309,207] east 2897 m
+vandamme@6 [296,206] east 2471 m
+vandamme@7 [289,243] east 2516 m
+vandamme@8 [270,347] east 1567 m
+vandamme@9 [287,365] east 2282 m
+legrand@0 [208,312] west 122 m
+legrand@1 [211,379] west 46 m
+legrand@2 [206,366] west 269 m
+legrand@4 [220,321] east 247 m
+legrand@7 [213,371] west 16 m  act: "to the stream"
+legrand@8 [217,387] east 131 m
+legrand@9 [228,393] east 469 m
+friant@0 [26,495] (beyond the stream's span)
+friant@1 [167,410] west 1485 m
+friant@3 [198,402] west 493 m
+friant@5 [200,398] west 423 m
+friant@7 [204,390] west 284 m  act: "across the Goldbach"
+friant@8 [214,410] west 0 m
+friant@9 [222,412] west 38 m
+bourcier@0 [22,489] (beyond the stream's span)
+bourcier@3 [184,420] (beyond the stream's span)
+bourcier@7 [201,416] (beyond the stream's span)
+bourcier@8 [253,393] east 1259 m
+bourcier@9 [297,374] east 2654 m
+caffarelli@0 [240,115] west 279 m
+caffarelli@5 [296,122] east 1534 m
+caffarelli@6 [321,120] east 2312 m
+caffarelli@7 [347,114] east 3096 m
+caffarelli@8 [392,105] (beyond the stream's span)
+caffarelli@9 [423,96] (beyond the stream's span)
+suchet@0 [235,103] (beyond the stream's span)
+suchet@5 [254,88] (beyond the stream's span)
+suchet@6 [279,81] (beyond the stream's span)
+suchet@7 [300,76] (beyond the stream's span)
+suchet@8 [348,62] (beyond the stream's span)
+suchet@9 [364,54] (beyond the stream's span)
+santon@0 [222,87] (beyond the stream's span)
+kellermann@0 [242,135] west 92 m
+kellermann@5 [284,134] east 1229 m
+kellermann@6 [312,131] east 2095 m
+kellermann@7 [343,127] east 3050 m
+kellermann@9 [383,118] east 4258 m
+nansouty@0 [219,138] west 800 m
+nansouty@5 [277,146] east 1082 m
+nansouty@6 [307,142] east 2006 m
+nansouty@7 [339,139] east 2998 m
+nansouty@9 [376,128] east 4099 m
+dhautpoul@0 [201,146] west 1319 m
+dhautpoul@5 [265,155] east 759 m
+dhautpoul@7 [332,150] east 2845 m
+dhautpoul@9 [364,138] east 3782 m
+walther@0 [189,125] west 1828 m
+walther@5 [255,128] east 276 m
+walther@7 [321,120] east 2312 m
+walther@9 [344,110] east 2976 m
+rivaud@0 [189,164] west 1551 m
+rivaud@3 [243,179] east 385 m  act: "Crosses the brook"
+rivaud@6 [284,183] east 1741 m
+rivaud@7 [317,205] east 3120 m
+rivaud@9 [334,186] east 3367 m
+drouet@0 [179,177] west 1668 m
+drouet@3 [232,194] east 266 m
+drouet@6 [290,206] east 2282 m
+drouet@7 [313,217] east 3176 m
+drouet@9 [329,205] east 3499 m
+guard_inf@0 [187,149] west 1743 m
+guard_inf@6 [276,213] east 1946 m
+guard_inf@7 [291,232] east 2543 m
+guard_inf@9 [286,249] east 2441 m
+guard_cav@0 [201,154] west 1270 m
+guard_cav@6 [289,209] east 2296 m
+guard_cav@7 [303,226] east 2902 m
+guard_cav@9 [301,237] east 2875 m
+c_gren@0 [175,155] west 2085 m
+c_gren@6 [254,223] east 1344 m
+c_gren@7 [261,268] east 1684 m
+c_gren@8 [248,345] east 888 m
+c_gren@9 [248,363] east 1031 m
+ahq@0 [408,198] east 5888 m
+ahq@3 [293,240] east 2633 m
+ahq@4 [303,235] east 2932 m
+ahq@6 [404,220] east 6074 m
+ahq@8 [454,190] east 7220 m
+ahq@9 [480,148] east 7509 m
+buxhowden@0 [305,323] east 2881 m
+buxhowden@2 [274,347] east 1694 m
+buxhowden@7 [263,376] east 1589 m
+buxhowden@8 [300,369] east 2724 m
+buxhowden@9 [280,429] (beyond the stream's span)
+kienmayer@0 [291,367] east 2426 m
+kienmayer@1 [236,398] east 714 m
+kienmayer@2 [222,402] east 265 m
+kienmayer@7 [242,400] east 901 m  act: "west of the Goldbach"
+kienmayer@8 [296,377] east 2637 m
+kienmayer@9 [269,436] (beyond the stream's span)
+dok@0 [291,332] east 2486 m
+dok@1 [258,371] east 1406 m
+dok@2 [232,397] east 589 m
+dok@7 [226,404] east 389 m
+dok@8 [268,384] east 1747 m
+dok@9 [265,429] (beyond the stream's span)
+lang@0 [291,308] east 2524 m
+lang@1 [268,328] east 1763 m
+lang@2 [235,350] east 452 m
+lang@4 [247,336] east 1092 m
+lang@7 [233,357] east 499 m
+lang@8 [253,378] east 1283 m
+lang@9 [284,378] east 2262 m
+kamensky@2 [259,316] east 1485 m
+kamensky@3 [269,298] east 1947 m
+kamensky@4 [279,289] east 2269 m
+kamensky@5 [291,279] east 2640 m
+kamensky@6 [305,279] east 3083 m
+kamensky@7 [371,254] east 5144 m
+kamensky@8 [397,221] east 5856 m
+prz@0 [290,282] east 2611 m
+prz@1 [266,296] east 1864 m
+prz@2 [215,341] west 68 m
+prz@4 [215,341] west 68 m
+prz@7 [215,341] west 68 m
+prz@8 [227,309] east 490 m
+milo@0 [325,230] east 3611 m
+milo@2 [299,238] east 2816 m
+milo@3 [290,237] east 2528 m
+milo@4 [315,237] east 3318 m
+milo@6 [392,232] east 5734 m
+milo@8 [446,210] east 7272 m
+milo@9 [475,170] east 7578 m
+kollo@0 [355,226] east 4545 m
+kollo@2 [325,229] east 3607 m
+kollo@3 [324,233] east 3589 m
+kollo@4 [298,275] east 2859 m
+kollo@5 [332,257] east 3919 m
+kollo@6 [331,200] east 3486 m
+kollo@8 [454,196] east 7311 m
+kollo@9 [478,153] east 7477 m
+lich@0 [296,243] east 2737 m
+lich@2 [319,214] east 3320 m
+lich@3 [317,191] east 2906 m
+lich@5 [298,156] east 1808 m
+lich@6 [341,152] east 3142 m
+lich@7 [387,145] east 4552 m
+lich@8 [437,129] east 6033 m
+lich@9 [469,110] east 6926 m
+bag@0 [352,64] (beyond the stream's span)
+bag@5 [262,68] (beyond the stream's span)
+bag@6 [300,76] (beyond the stream's span)
+bag@7 [321,70] (beyond the stream's span)
+bag@8 [386,38] (beyond the stream's span)
+bag@9 [414,13] (beyond the stream's span)
+rg_inf@0 [413,202] east 6107 m
+rg_inf@5 [378,196] east 4910 m
+rg_inf@6 [327,194] east 3268 m
+rg_inf@7 [397,196] east 5510 m
+rg_inf@8 [447,178] east 6816 m
+rg_inf@9 [475,144] east 7327 m
+rg_cav@0 [423,193] east 6286 m
+rg_cav@6 [321,189] east 3002 m
+rg_cav@7 [406,188] east 5673 m
+rg_cav@8 [452,164] east 6760 m
+rg_cav@9 [481,132] east 7442 m

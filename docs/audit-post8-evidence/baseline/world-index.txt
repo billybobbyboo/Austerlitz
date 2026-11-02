@@ -1,0 +1,221 @@
+10:function matte(o){
+21:function lin(c){ return (typeof c==="number") ? new THREE.Color(c).convertSRGBToLinear() : c; }
+24:function ctexS(cv){
+30:function ctex(cv){
+36:function W(mx,my){ var o=GEOREF.WORLD_ORIGIN, k=GEOREF.MAP_PER_WORLD; return [(mx-o[0])/k, (my-o[1])/k]; } 
+37:function M2W(pts){ return pts.map(function(p){ return W(p[0],p[1]); }); }
+39:var UNITS_PER_KM = GEOREF.UNITS_PER_KM;   /* from geo.js: the only scale */
+51:var GOLDBACH_M=[[250,109],[240,160],[212,218],[208,256],[207,297],[211.8,309.8],[212.2,321.4],[213.4,321.9]
+53:var LITAVA_M  =[[552,128],[511,138],[351,313],[297,372],[262,444],[215,500],[209,508]];   /* Slavkov south 
+54:var BROOKS_M=[
+61:var GOLDBACH=M2W(GOLDBACH_M), LITAVA=M2W(LITAVA_M), BROOKS=BROOKS_M.map(M2W);
+64:var ROADS=[
+91:var WOODS=[
+119:var MARSH=[
+134:var VINEYARD={c:[313,205], rx:23, ry:16};
+137:var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the register and keep their wa
+152:var CHURCHES=["Telnitz","Augezd","Pratzen","Schlapanitz","Krzenowitz","Austerlitz","Bosenitz","Satschan","
+154:var CHAPELS=["Holubitz"];
+162:var LANDMARK_SITES={castle:[212.9,344.3], church:{Pratzen:[277.0,255.6]}};
+169:var GARDENS=[{n:"the château's garden at Austerlitz", poly:[[480.7,127.3],[483.4,133.7],[498.7,127.4],[49
+174:var CREST_M=[[309,193],[313,205],[323,231],[332,257],[309,273],[285,289],[281,302]];
+177:var TERRAIN_LINES=[
+199:function hash2(i,j){
+204:function vnoise(x,z){
+210:function dist2(ax,az,bx,bz){ var dx=ax-bx, dz=az-bz; return Math.sqrt(dx*dx+dz*dz); }
+211:function pnoise(x,z,P){
+218:function segDist(px,pz,ax,az,bx,bz){
+224:function polyDist(px,pz,pts){
+232:function smoothstep(a,b,x){ var t=Math.min(1,Math.max(0,(x-a)/(b-a))); return t*t*(3-2*t); }
+233:function bump(x,z,c,rx,rz,h,edge){
+237:function ell(x,z,cm,rx,ry){
+244:function polyWorld(o){ if(!o._pw){ var P=M2W(o.poly), b=[1e9,1e9,-1e9,-1e9]; P.forEach(function(q){ b[0]=M
+245:function inPolyW(x,z,P){ var c=false; for(var i=0,j=P.length-1;i<P.length;j=i++){ var a=P[i], b=P[j]; if((
+246:function polySd(x,z,P){ var d=1e9; for(var i=0,j=P.length-1;i<P.length;j=i++) d=Math.min(d,segDist(x,z,P[j
+248:var CREST=M2W(CREST_M);
+249:var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
+256:function regionalH(x,z){
+264:var _RS=null, _RM=null;
+265:function pondHold(x,z,c,rx,rz){ var d=Math.sqrt(((x-c[0])/rx)*((x-c[0])/rx)+((z-c[1])/rz)*((z-c[1])/rz)); 
+266:function regionalLevel(x,z){
+273:function height(x,z){ return localHeight(x,z) + 1.2*regionalLevel(x,z); }
+274:function localHeight(x,z){
+304:function coverClass(mx,mz,ml){
+323:function hAt(mx,my){ var w=W(mx,my); return height(w[0],w[1]); }
+326:var COV_NX=168, COV_NZ=146, COV_X0=-180, COV_Z0=-155, COV_DX=360/167, COV_DZ=310/145;
+329:function buildCover(){
+370:function covAt(a,x,z){
+379:var G_NX=301, G_NZ=259, G_X0=-180, G_Z0=-155, G_DX=360/300, G_DZ=310/258;
+381:function buildGrid(){
+392:function gridAt(a,x,z){
+414:var COVER_ML={step:0.25, nx:1449, nz:1249, x0:-181, z0:-156, near:[0.5,0.2], a:null, exact:0};   /* one no
+415:function buildCoverMl(){
+428:function crWeights(t){ var t2=t*t, t3=t2*t; return [0.5*(-t3+2*t2-t),0.5*(3*t3-5*t2+2),0.5*(-3*t3+4*t2+t),
+429:function coverMlAt(x,z){
+436:function drawnCover(x,z){ return coverClass(x,z,coverMlAt(x,z)); }
+443:var GROUND_W=360, GROUND_D=310, GROUND_NX=280, GROUND_NZ=240;
+455:var DISPLAY={factor:4, defaultFactor:4, settings:[1,4,GEOREF.EXAG], flat:false};
+459:function displayScale(){ return DISPLAY.flat ? 0 : DISPLAY.factor/GEOREF.EXAG; }
+460:function displayY(h){ return h*displayScale(); }
+461:function displayHeight(x,z){ return displayY(height(x,z)); }
+465:function authoredLift(x,z){ var h=height(x,z); return displayY(h)-h; }
+466:function reframe(c){ return [c[0],c[1]+authoredLift(c[0],c[2]),c[2], c[3],c[4]+authoredLift(c[3],c[5]),c[5
+469:function seatGeometry(o){   /* a mesh or line whose vertices are in world space */
+474:function reseatGeometry(o){
+482:function seatScratch(){ if(!_seatM){ _seatM=new THREE.Matrix4(); _seatP=new THREE.Vector3(); _seatQ=new TH
+483:function seatInstances(im){
+489:function reseatInstances(im){
+498:var SEATED=[], SEATED_GEO=[];
+500:function groundY(x,z){
+517:var GHEIGHTS={h:null, arr:null, ver:-1};
+518:function groundHeights(){
+526:function groundYFast(H,x,z){
+539:var FACE={n:0,x:null,z:null,h:null,slope:null,shade:null,cover:null,ao:null,nz:null};
+545:var PAPER_HILLSHADE=6;
+546:function paperShade(){
+559:function groundGeometry(){
+585:var WORLDMS={};
+586:function buildWorld(scene){
+643:function groundVertexFacts(geo){
+653:function scaleGround(geo){
+678:function rescaleWorld(){
+693:function buildFaceFacts(geo){
+740:function fieldStrip(strip,block){
+753:var COVER_KEYS=["field","meadow","marsh","water","wood","village","vineyard","track"];
+754:var COVER_COL={
+761:var LAND_COL={
+793:function glslV3(a){ return "vec3("+a.map(function(v){ var t=String(v); return /[.e]/.test(t)?t:t+".0"; }).
+794:function hexNumW(h){ return parseInt(String(h).replace("#",""),16); }
+795:function hexCss(n){ return "#"+("000000"+n.toString(16)).slice(-6).toUpperCase(); }
+801:function makePalette(kind){
+810:var GOING_TRUE_DEG=[9,17].map(function(d){ return Math.atan(Math.tan(d*Math.PI/180)/GEOREF.EXAG)*180/Math.
+811:function makeGoingPalette(){
+833:function applyGround(){
+864:function setGround(name){
+877:function coverPatterns(){
+924:var ATLAS_PHOTO={colour:false, normal:false};   /* 8G's prerequisite 1: the photographs painted into each 
+932:function paintAtlasCells(d,CW){
+943:function coverAtlas(){
+963:function photoAtlas(){
+1008:function photoNormal(){
+1051:function paintNormalCells(d,CW){
+1065:function coverNormalAtlas(){
+1093:var GROUND_VERT_HEAD="\nattribute float cover;\nvarying float vCover;\nattribute vec4 gnd;\nvarying vec4 
+1094:var GROUND_FRAG_HEAD=[
+1126:var GROUND_FRAG_ATLAS=[
+1142:var GROUND_FRAG_DETAIL=[
+1155:var GROUND_FRAG_MAIN=[
+1202:var GDETAIL={amount:0.55, near:14, far:60, k:7.3, rot:0.61, lo:0.62, hi:1.38, lum:[0.5,0.5,0.5,0.5,0.5,0.
+1208:function atlasLum(d,W){
+1217:function groundDetail(on){ if(groundMesh&&groundMesh.material.userData.U) groundMesh.material.userData.U.
+1221:function groundTextures(){
+1235:function viewshedTexture(){
+1241:function groundPal(kind){ return _gPal[kind]||(_gPal[kind]=COVER_COL[kind].map(function(h){ var c=new THR
+1242:function groundUniforms(){
+1253:function atlasShader(mat){
+1292:function sampleVS(x,z){
+1301:function computeViewshed(mapPt,eyeM){
+1322:function clearViewshed(){ vsMask=null; vsOrigin=null; applyGround(); }
+1337:var DRAPED=[], RIBBON_STEP=0.5;
+1338:var RIBBON_W={land:{stream:0.5, road:0.5}, paper:{stream:0.5, road:0.5}};
+1339:function ribbonWidth(D){ return D.base*RIBBON_W[DISPLAY.flat?"paper":"land"][D.group]; }
+1340:function ribbon(scene,pts,width,yoff,mat,store,kind,group){
+1363:function drape(o){
+1368:function resample(pts,step){
+1380:function mereLevel(cc,rx,rz,base){
+1400:var WATER_COL={ice:0x4E5C66, iceRim:0x75838B, bank:0x4E5A4C, stream:0x587A8E,   /* the paper map's (and t
+1402:var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02,
+1409:var STREAM={rough:0.30, env:0.40, tone:0.10, scale:1.3, sky:2.0};   /* since 8F: the landscape's streams 
+1412:var WATER_GLSL=["float wHash(vec2 p){ vec3 q=fract(vec3(p.xyx)*0.1031); q+=dot(q,q.yzx+33.33); return fra
+1415:function glslF(v){ var t=String(v); return /[.e]/.test(t)?t:t+".0"; }
+1417:function iceHook(mat,band){
+1438:function streamHook(mat){
+1451:var WATER_MATS=null;   /* {land, paper}: the landscape's materials (8F's) and the paper map's (8E's, as b
+1452:function buildWater(scene){
+1491:function waterKind(m){ return m.userData.mere?"ice":(m.userData.drape&&m.userData.drape.kind); }
+1492:function waterPresentation(staff){
+1497:function buildRoads(scene){
+1510:function wallTexture(){
+1527:function roofTexture(){
+1557:var VILL8G={
+1576:var BLD8G={
+1593:var BLDG=null;   /* the buildings drawn (buildSettlements): one record each, read by layBuildings and the
+1594:function v8Rnd(seed){ var s=seed>>>0; return function(){ s=(s*1664525+1013904223)%4294967296; return s/42
+1595:function v8Corners(x,z,t,a,b){ var c=Math.cos(t), s=Math.sin(t); return [[x+c*a-s*b,z+s*a+c*b],[x-c*a-s*b
+1598:function v8Rect(x,z,t,a,b){ var C=v8Corners(x,z,t,a,b), P=C.slice(); for(var i=0;i<4;i++){ var q=C[(i+1)%
+1600:function v8BoxPt(R,x,z){ var c=Math.cos(R.t), s=Math.sin(R.t), dx=x-R.x, dz=z-R.z, u=Math.abs(dx*c+dz*s)-
+1602:function v8Cross(ax,az,bx,bz,cx,cz,dx,dz){ var d1=(bx-ax)*(cz-az)-(bz-az)*(cx-ax), d2=(bx-ax)*(dz-az)-(bz
+1606:function v8SegBox(R,ax,az,bx,bz){ var d=Math.min(v8BoxPt(R,ax,az),v8BoxPt(R,bx,bz)); if(d===0) return 0;
+1611:function v8Overlap(A,B,g){ var ax=[A.t,A.t+Math.PI/2,B.t,B.t+Math.PI/2];
+1619:function v8Obstacles(){ if(_v8Obs) return _v8Obs;
+1626:function v8NearSegs(cc,R){ var L=[];
+1635:function v8Mere(x,z){
+1639:function v8Foot(x,z){ return covAt(covVill,x,z)>PAPER_SYM.village.level; }
+1642:function v8Why(R,ctx){
+1659:function v8Garden(R){ for(var g=0;g<GARDENS.length;g++){ var P=polyWorld(GARDENS[g]), b=P.box, rr=R.a+R.b
+1665:function v8Near2(A,B,ra,g){ var r=ra+B.a+B.b+g; return Math.abs(A.x-B.x)<r&&Math.abs(A.z-B.z)<r; }
+1669:function v8Fronts(cc,R,laneDir){
+1682:function v8At(F,a){ var P=F.pts; a=Math.max(0,Math.min(F.len,a)); var k=1; while(k<P.length-1&&F.cum[k]<a
+1684:function v8Tan(F,a,w){ var p=v8At(F,a-w/2), q=v8At(F,a+w/2), dx=q[0]-p[0], dz=q[1]-p[1], L=Math.hypot(dx,
+1685:function v8Nearest(F,x,z){ var best=1e9, at=0; for(var i=0;i<F.pts.length;i++){ var d=Math.hypot(F.pts[i]
+1688:function v8LaneDir(cc){ var best=1e9, dir=0.3;
+1693:function v8Rear(name){ var B=(typeof BUILDINGS!=="undefined"&&BUILDINGS.villages)||{}, c=B[name]&&B[name]
+1696:function v8Margin(R,ctx){ var m=Infinity, O=ctx.segs;
+1703:function v8Near(cc,mk,why,ctx,maxR){ var all=v8NearAll(cc,mk,why,ctx,maxR,1); return all.length?all[0]:nu
+1706:function v8NearAll(cc,mk,why,ctx,maxR,cap){ var out=[];
+1714:var CHAPEL8G=0.5;
+1715:var V8CANDS=24;   /* the church's places tried for its village's plan, the nearest first */
+1716:function churchPlan8g(v,trees,extra){
+1732:function v8Village(v){ var k=v.join("|"); if(_v8VC[k]) return _v8VC[k]; var cc=W(v[1],v[2]), Rv=2.6+v[3]*
+1739:function v8PlanAt(v,trees,extra,opt){
+1787:function v8Sizes(){ var T=VILL8G.small, U=VILL8G.tiny;
+1789:function villagePlan8g(v,trees,extra,church,size){ var P=v8PlanAt(v,trees,extra,{church:church, size:size
+1791:function v8North(){ return [GEOREF.NORTH[0],GEOREF.NORTH[1]]; }
+1792:function v8East(){ var n=v8North(); return [-n[1],n[0]]; }
+1794:function v8Clear(R,ctx){
+1804:function v8Settle(parts,ctx,maxR){
+1819:var CASTLE8J={step:0.05, floor:0.15};
+1820:function castlePlan8g(trees){
+1859:function chateauPlan8g(ch,trees){
+1878:function v8Between(ax,az,bx,bz,segs){ for(var k=0;k<segs.length;k++){ var s=segs[k]; if(v8Cross(ax,az,bx,
+1882:function templeParts8g(x,z){
+1892:function churchyard8g(ch,cc){
+1903:function fences8g(name,cc,placed,trees){
+1921:function planBuildings8g(trees){
+1960:function timberTexture(){
+1971:function thatchTexture(){
+1980:function buildSettlements(scene){
+2036:function bldGround(R){
+2048:function layBuildings(){
+2097:var WOODS_RS={"236,385":77, "551,151":2241407629, "353,55":2344916145, "76,396":2762469959, "229,253":567
+2099:function woodsPlan(){
+2137:function gardenTrees(bldg){
+2152:function buildWoods(scene){
+2251:var TREE8F={keep:0.42, shrink:0.7, scrubKeep:0.45, scrubShrink:0.72};
+2252:function mergeParts(parts){
+2271:function treeKit(){
+2292:function treePrism(P,p0,p1,r0,r1,n,tw){
+2301:function treeShell(P,seed,c,s,keep,shrink){
+2310:function treeLimbs(P,h,vi){
+2319:function treeGeo(P){ var g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferA
+2326:var TREE8H={near:5, far:16, U:{uTreeNear:{value:1}}};   /* U: the hook's one uniform, shared (1 as built;
+2329:function treeNearGeo(g,P,a){ var C=new Float32Array(P.length); C.set(P);
+2333:function treeNear(mat,inv){
+2345:var CONTOUR_INTERVAL=1.5, CONTOUR_INDEX=4;
+2347:function buildApron(scene){
+2358:function apronGeometry(){
+2395:function buildContours(scene){
+2418:function rebuildContours(){
+2426:function marchLevel(L,out){
+2455:function setContourStyle(paper){
+2466:function buildMarshSymbols(scene){
+2489:var ANALYSIS_STYLE={
+2496:function analysisCol(t,paper){ var a=TOKENS.sym.analysis[t]; return parseInt((paper?a.paper:a.line).slice
+2497:function buildAnalysis(scene){
+2549:function coverRings(field,level,inside){
+2577:function ringInside(p,R){ var c=false; for(var i=0,j=R.length-1;i<R.length;j=i++){ var a=R[i], b=R[j];
+2580:function ringMeshes(rings,lift,fill,edge,uvOf){
+2599:function woodMarkTexture(){
+2607:function buildPaperSymbols(scene){
+2627:function paperMarkScale(wpp){ var m=paperGroup&&paperGroup.userData.marks; if(!m||!m.material.map) return
+2633:function buildMist(scene){

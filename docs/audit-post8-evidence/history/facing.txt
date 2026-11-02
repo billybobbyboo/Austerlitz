@@ -1,0 +1,129 @@
+== flags ==
+FAR ph0 05:30 caffarelli (holding) faces bag at 3.89 km
+FAR ph0 05:30 suchet (holding) faces bag at 3.90 km
+FAR ph0 05:30 bag (holding) faces caffarelli at 3.89 km
+FAR ph1 07:30 caffarelli (holding) faces bag at 3.89 km
+FAR ph1 07:30 suchet (holding) faces bag at 3.90 km
+FAR ph1 07:30 santon (holding) faces bag at 4.17 km
+FAR ph1 07:30 bag (holding) faces kellermann at 3.63 km
+FAR ph2 08:23 caffarelli (holding) faces bag at 3.89 km
+FAR ph2 08:23 suchet (holding) faces bag at 3.90 km
+FAR ph2 08:23 santon (holding) faces bag at 4.17 km
+FAR ph2 08:23 bag (holding) faces kellermann at 3.47 km
+FAR ph3 09:08 caffarelli (holding) faces lich at 3.42 km
+FAR ph3 09:08 suchet (holding) faces lich at 3.80 km
+FAR ph3 09:08 santon (holding) faces bag at 4.17 km
+FAR ph3 09:08 bag (holding) faces kellermann at 3.35 km
+FAR ph4 10:00 santon (holding) faces lich at 3.93 km
+FAR ph7 13:38 heightguns (holding) faces prz at 2.64 km; act names buxhowden: best buxhowden 50 deg off
+FAR ph7 13:38 santon (holding) faces bag at 3.17 km; act names bag: best bag 4 deg off
+FAR ph8 15:45 santon (holding) faces bag at 5.41 km; act names bag: best bag 2 deg off
+OFF-OPPONENT ph8 15:45 kamensky (retreating) faces rivaud at 2.43 km; act names sthilaire: best sthilaire 63 deg off
+OFF-OPPONENT ph9 17:30 sthilaire (pursuing) faces lang at 0.99 km; act names buxhowden: best buxhowden 80 deg off
+OFF-OPPONENT ph9 17:30 caffarelli (holding) faces lich at 1.52 km; act names bag: best bag 113 deg off
+FAR ph9 17:30 santon (holding) faces bag at 6.50 km
+FAR ph9 17:30 kellermann (holding) faces lich at 2.73 km
+FAR ph9 17:30 nansouty (holding) faces lich at 2.99 km; act names lich: best lich 0 deg off
+FAR ph9 17:30 dhautpoul (holding) faces kamensky at 2.82 km
+FAR ph9 17:30 walther (holding) faces bag at 3.78 km
+FAR ph9 17:30 guard_inf (holding) faces kamensky at 3.62 km; act names rg_inf,rg_cav: best rg_inf 15 deg off
+FAR ph9 17:30 guard_cav (holding) faces kamensky at 3.08 km; act names rg_inf,rg_cav: best rg_inf 19 deg off
+OFF-OPPONENT ph9 17:30 kamensky (retreating) faces drouet at 2.21 km; act names sthilaire: best sthilaire 63 deg off
+OFF-OPPONENT ph9 17:30 rg_cav (retreating) faces caffarelli at 2.16 km; act names vandamme,guard_cav: best guard_cav 62 deg off
+
+== every halted formation at each phase middle ==
+ph0 05:30 caffarelli (holding) faces bag at 3.89 km
+ph0 05:30 suchet (holding) faces bag at 3.90 km
+ph0 05:30 santon (fortifying) faces bag at 4.17 km
+ph0 05:30 rivaud (reserve) faces lich at 4.20 km
+ph0 05:30 drouet (reserve) faces lich at 4.24 km
+ph0 05:30 guard_inf (reserve) faces lich at 4.55 km
+ph0 05:30 guard_cav (reserve) faces lich at 4.11 km
+ph0 05:30 c_gren (reserve) faces lich at 4.73 km
+ph0 05:30 dok (forming) faces legrand at 2.70 km
+ph0 05:30 lang (forming) faces legrand at 2.63 km
+ph0 05:30 prz (forming) faces legrand at 2.76 km
+ph0 05:30 bag (holding) faces caffarelli at 3.89 km
+ph1 07:30 caffarelli (holding) faces bag at 3.89 km
+ph1 07:30 suchet (holding) faces bag at 3.90 km
+ph1 07:30 santon (holding) faces bag at 4.17 km
+ph1 07:30 rivaud (reserve) faces lich at 4.32 km
+ph1 07:30 drouet (reserve) faces milo at 4.41 km
+ph1 07:30 guard_inf (reserve) faces lich at 4.60 km
+ph1 07:30 guard_cav (reserve) faces lich at 4.13 km
+ph1 07:30 c_gren (reserve) faces lich at 4.84 km
+ph1 07:30 bag (holding) faces kellermann at 3.63 km
+ph2 08:23 sthilaire (forming) faces milo at 2.95 km
+ph2 08:23 vandamme (forming) faces milo at 3.03 km
+ph2 08:23 caffarelli (holding) faces bag at 3.89 km
+ph2 08:23 suchet (holding) faces bag at 3.90 km
+ph2 08:23 santon (holding) faces bag at 4.17 km
+ph2 08:23 rivaud (reserve) faces milo at 4.19 km
+ph2 08:23 drouet (reserve) faces milo at 4.25 km
+ph2 08:23 guard_inf (reserve) faces milo at 4.52 km
+ph2 08:23 guard_cav (reserve) faces milo at 4.08 km
+ph2 08:23 c_gren (reserve) faces milo at 4.72 km
+ph2 08:23 prz (attacking) faces legrand at 0.84 km
+ph2 08:23 bag (holding) faces kellermann at 3.47 km
+ph3 09:08 caffarelli (holding) faces lich at 3.42 km
+ph3 09:08 suchet (holding) faces lich at 3.80 km
+ph3 09:08 santon (holding) faces bag at 4.17 km
+ph3 09:08 guard_inf (reserve) faces milo at 4.28 km
+ph3 09:08 guard_cav (reserve) faces milo at 3.85 km
+ph3 09:08 c_gren (reserve) faces milo at 4.46 km
+ph3 09:08 prz (attacking) faces legrand at 0.10 km
+ph3 09:08 bag (holding) faces kellermann at 3.35 km
+ph4 10:00 legrand (supporting) faces prz at 0.65 km
+ph4 10:00 santon (holding) faces lich at 3.93 km
+ph4 10:00 guard_inf (reserve) faces lich at 3.94 km
+ph4 10:00 guard_cav (reserve) faces lich at 3.48 km
+ph4 10:00 c_gren (reserve) faces lich at 4.28 km
+ph4 10:00 prz (engaged) faces legrand at 0.65 km
+ph5 10:53 legrand (supporting) faces prz at 0.65 km
+ph5 10:53 santon (holding) faces bag at 1.40 km; act names bag: best bag 0 deg off
+ph5 10:53 prz (engaged) faces legrand at 0.65 km
+ph5 10:53 bag (attacking) faces suchet at 0.68 km; act names caffarelli,suchet,santon: best suchet 38 deg off
+ph6 12:00 sthilaire (holding) faces kamensky at 0.58 km
+ph6 12:00 vandamme (engaged) faces rg_cav at 0.96 km; act names rg_inf,rg_cav: best rg_cav 20 deg off
+ph6 12:00 legrand (supporting) faces prz at 0.65 km
+ph6 12:00 santon (holding) faces bag at 1.40 km; act names bag: best bag 17 deg off
+ph6 12:00 guard_inf (advancing) faces rg_cav at 1.61 km; act names rg_inf,rg_cav: best rg_cav 12 deg off
+ph6 12:00 c_gren (advancing) faces rg_cav at 2.37 km
+ph6 12:00 prz (engaged) faces legrand at 0.65 km
+ph7 13:38 heightguns (holding) faces prz at 2.64 km; act names buxhowden: best buxhowden 50 deg off
+ph7 13:38 santon (holding) faces bag at 3.17 km; act names bag: best bag 4 deg off
+ph7 13:38 kienmayer (holding) faces friant at 1.24 km
+ph7 13:38 dok (engaged) faces friant at 0.82 km; act names friant: best friant 20 deg off
+ph7 13:38 prz (encircled) faces legrand at 0.65 km; act names friant,bourcier,sthilaire,vandamme: best vandamme 29 deg off
+ph8 15:45 heightguns (attacking) faces lang at 1.29 km
+ph8 15:45 santon (holding) faces bag at 5.41 km; act names bag: best bag 2 deg off
+ph8 15:45 kamensky (retreating) faces rivaud at 2.43 km; act names sthilaire: best sthilaire 63 deg off
+ph8 15:45 prz (broken) faces c_gren at 1.32 km
+ph9 17:30 heightguns (holding) faces lang at 0.68 km
+ph9 17:30 sthilaire (pursuing) faces lang at 0.99 km; act names buxhowden: best buxhowden 80 deg off
+ph9 17:30 vandamme (pursuing) faces lang at 0.42 km
+ph9 17:30 legrand (holding) faces dok at 1.63 km
+ph9 17:30 friant (holding) faces dok at 1.46 km
+ph9 17:30 bourcier (pursuing) faces lang at 0.43 km
+ph9 17:30 caffarelli (holding) faces lich at 1.52 km; act names bag: best bag 113 deg off
+ph9 17:30 suchet (holding) faces bag at 2.04 km
+ph9 17:30 santon (holding) faces bag at 6.50 km
+ph9 17:30 kellermann (holding) faces lich at 2.73 km
+ph9 17:30 nansouty (holding) faces lich at 2.99 km; act names lich: best lich 0 deg off
+ph9 17:30 dhautpoul (holding) faces kamensky at 2.82 km
+ph9 17:30 walther (holding) faces bag at 3.78 km
+ph9 17:30 rivaud (holding) faces kamensky at 2.28 km; act names rg_inf,rg_cav: best rg_inf 46 deg off
+ph9 17:30 drouet (holding) faces kamensky at 2.21 km; act names rg_inf,rg_cav: best rg_inf 36 deg off
+ph9 17:30 guard_inf (holding) faces kamensky at 3.62 km; act names rg_inf,rg_cav: best rg_inf 15 deg off
+ph9 17:30 guard_cav (holding) faces kamensky at 3.08 km; act names rg_inf,rg_cav: best rg_inf 19 deg off
+ph9 17:30 c_gren (holding) faces lang at 1.23 km
+ph9 17:30 kienmayer (retreating) faces sthilaire at 1.52 km
+ph9 17:30 dok (retreating) faces sthilaire at 1.27 km
+ph9 17:30 lang (retreating) faces vandamme at 0.42 km; act names friant,bourcier: best bourcier 60 deg off
+ph9 17:30 kamensky (retreating) faces drouet at 2.21 km; act names sthilaire: best sthilaire 63 deg off
+ph9 17:30 milo (retreating) faces caffarelli at 2.86 km
+ph9 17:30 kollo (retreating) faces caffarelli at 2.50 km
+ph9 17:30 lich (retreating) faces caffarelli at 1.52 km; act names kellermann,nansouty: best kellermann 22 deg off
+ph9 17:30 bag (retreating) faces suchet at 2.04 km; act names caffarelli,suchet: best suchet 0 deg off
+ph9 17:30 rg_inf (retreating) faces caffarelli at 2.24 km; act names rivaud,drouet,guard_inf,guard_cav: best rivaud 59 deg off
+ph9 17:30 rg_cav (retreating) faces caffarelli at 2.16 km; act names vandamme,guard_cav: best guard_cav 62 deg off

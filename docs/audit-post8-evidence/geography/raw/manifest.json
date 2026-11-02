@@ -1,0 +1,301 @@
+{
+ "entries": [
+  {
+   "file": "cswiki-coords-0.json",
+   "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=coordinates%7Cpageprops&ppprop=wikibase_item&colimit=max&titles=Telnice%20(okres%20Brno-venkov)|Sokolnice|Kobylnice%20(okres%20Brno-venkov)|Pon%C4%9Btovice|%C5%A0lapanice|Ji%C5%99%C3%ADkovice|Tvaro%C5%BEn%C3%A1|Bla%C5%BEovice|Holubice%20(okres%20Vy%C5%A1kov)|Prace|K%C5%99enovice%20(okres%20Vy%C5%A1kov)|Slavkov%20u%20Brna|%C3%9Ajezd%20u%20Brna|%C5%BDat%C4%8Dany|M%C4%9Bn%C3%ADn|Host%C4%9Br%C3%A1dky-Re%C5%A1ov|Tu%C5%99any%20(Brno)|Rajhrad|Rous%C3%ADnov|Kovalovice%20(okres%20Brno-venkov)|Kruh%20(Holubice)|Bed%C5%99ichovice%20(%C5%A0lapanice)|Prack%C3%BD%20kopec|Star%C3%A9%20vinohrady|%C5%BDur%C3%A1%C5%88|Santon%20(vrch)|Sokolnice%20(z%C3%A1mek)|Slavkov%20u%20Brna%20(z%C3%A1mek)|Kostel%20Pov%C3%BD%C5%A1en%C3%AD%20svat%C3%A9ho%20K%C5%99%C3%AD%C5%BEe%20(Prace)|Star%C3%A1%20Po%C5%A1ta%20(Kovalovice)|Mohyla%20m%C3%ADru",
+   "status": "200",
+   "bytes": 5699,
+   "sha256": "c956bcd006e671157bcc09b876688c04239085f9e6ee9ac089b3719fce43e544",
+   "time": "2026-11-02T00:59:15.825Z",
+   "error": null
+  },
+  {
+   "file": "wikidata-0.json",
+   "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=claims%7Clabels&languages=cs%7Cen&ids=Q193724%7CQ1279557%7CQ371321%7CQ330055%7CQ1818241%7CQ1639245%7CQ968141%7CQ1689853%7CQ393429%7CQ476519%7CQ1785639%7CQ2116416%7CQ883280%7CQ1789630%7CQ749807%7CQ1778044%7CQ175558%7CQ11823400%7CQ1789694%7CQ1625289%7CQ3304392%7CQ4879487%7CQ12055280%7CQ12056169%7CQ1418278%7CQ12056223%7CQ12030519%7CQ1790108%7CQ2107301",
+   "status": "200",
+   "bytes": 2149318,
+   "sha256": "e43aeaa0f028b0bdce746fdd268c551e7f35870a523cf78a8256a4ec42ce3014",
+   "time": "2026-11-02T00:59:17.501Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-telnitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Telnice%2C%20okres%20Brno-venkov",
+   "status": "200",
+   "bytes": 678,
+   "sha256": "75ba62d42c08f7372c7ae2e56476fa9b84b9539faa9eb18a941c3abeb9590656",
+   "time": "2026-11-02T00:59:43.261Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-sokolnitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Sokolnice",
+   "status": "200",
+   "bytes": 656,
+   "sha256": "e8e9ab25e5dae08a00108009e8a643eb945f6c43b6d249ff876bb3c6b70124aa",
+   "time": "2026-11-02T00:59:45.095Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-kobelnitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Kobylnice%2C%20okres%20Brno-venkov",
+   "status": "200",
+   "bytes": 656,
+   "sha256": "338d1b4880e3047dacc57122345f9566e05d37a067534b69817c1e17ca3f8f95",
+   "time": "2026-11-02T00:59:46.932Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-puntowitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Pon%C4%9Btovice",
+   "status": "200",
+   "bytes": 662,
+   "sha256": "475c924265ace73aef805d773f032e376a08295c68e791302b9a5436ea36b1dd",
+   "time": "2026-11-02T00:59:48.576Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-schlapanitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=%C5%A0lapanice",
+   "status": "200",
+   "bytes": 2722,
+   "sha256": "b417c687266fe3b48fa8c16ed2339752ede8a2fe2a136927ea0309055fadba0e",
+   "time": "2026-11-02T00:59:50.659Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-girzikowitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Ji%C5%99%C3%ADkovice",
+   "status": "200",
+   "bytes": 1391,
+   "sha256": "2670c019c2ed65d34a08ce6f56dea2a131618bf6645ebad9b2d1b051748b3e94",
+   "time": "2026-11-02T00:59:52.497Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-bosenitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Tvaro%C5%BEn%C3%A1",
+   "status": "200",
+   "bytes": 687,
+   "sha256": "eb0ba96a892730bb3d4c571323cec4515cafebc16df58a8b37235a7a195ef56b",
+   "time": "2026-11-02T00:59:54.315Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-blasowitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Bla%C5%BEovice",
+   "status": "200",
+   "bytes": 687,
+   "sha256": "e044147b88b227ac3d819b7aa5d8a33c0a37ff42b915092eea0bee4219656320",
+   "time": "2026-11-02T00:59:56.128Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-holubitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Holubice%2C%20okres%20Vy%C5%A1kov",
+   "status": "200",
+   "bytes": 1352,
+   "sha256": "0a293d939a19a84ac12625ae070bba99e64c4a258b0dcd84b206ea3c191a106b",
+   "time": "2026-11-02T00:59:58.036Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-pratzen.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Prace%2C%20okres%20Brno-venkov",
+   "status": "200",
+   "bytes": 672,
+   "sha256": "eed27c773cf1597c0792df5ca35e7dd69bf7d0c85449a9532998987216253ce2",
+   "time": "2026-11-02T00:59:59.856Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-krzenowitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=K%C5%99enovice%2C%20okres%20Vy%C5%A1kov",
+   "status": "200",
+   "bytes": 651,
+   "sha256": "0187086d7e3df787850253e45d2efe506fec2531dabae1094e49c1b3651a8ef5",
+   "time": "2026-11-02T01:00:01.723Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-austerlitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Slavkov%20u%20Brna",
+   "status": "200",
+   "bytes": 2056,
+   "sha256": "13242bf93d9f45a7add8f7716e5b7618c906fa3ec74ecdc49dbe07ef1b36d836",
+   "time": "2026-11-02T01:00:03.426Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-augezd.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=%C3%9Ajezd%20u%20Brna",
+   "status": "200",
+   "bytes": 680,
+   "sha256": "88cf6e0ff5b284be2903c5c13c5127b40087be80557ccc9208aeaa768407be51",
+   "time": "2026-11-02T01:00:05.407Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-satschan.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=%C5%BDat%C4%8Dany",
+   "status": "200",
+   "bytes": 656,
+   "sha256": "ca4debdf9d7b14d2b4534464b9dd913394986f67ce7b50e055dcbf00c5141747",
+   "time": "2026-11-02T01:00:07.312Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-menitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=M%C4%9Bn%C3%ADn",
+   "status": "200",
+   "bytes": 678,
+   "sha256": "2f6b9cb38fc874f9bc0922ba3338d0021b8f9b4b81f75fe76ae82a095233711d",
+   "time": "2026-11-02T01:00:09.502Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-hostieradek.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Host%C4%9Br%C3%A1dky-Re%C5%A1ov",
+   "status": "200",
+   "bytes": 679,
+   "sha256": "cf693308372071a260d475702904a31d96896a9f52b0cc7a1b3aa3735bc9caa4",
+   "time": "2026-11-02T01:00:11.226Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-turas.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Tu%C5%99any%2C%20Brno",
+   "status": "200",
+   "bytes": 1421,
+   "sha256": "fc0cd2c32693a8eadd20de32f63996d5cf14842fad2fa9d60ecdb4b82df28958",
+   "time": "2026-11-02T01:00:13.010Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-raigern.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Rajhrad",
+   "status": "200",
+   "bytes": 662,
+   "sha256": "f7281e894992f33fff1ae5ed2260640a071edc896c8b01685c3e54a1fbb8ab80",
+   "time": "2026-11-02T01:00:14.813Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-rausnitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Rous%C3%ADnov",
+   "status": "200",
+   "bytes": 2746,
+   "sha256": "dcc287030996db8cdc865a03c8ce2c426d66d9c9db2024296e1de2697769f8ba",
+   "time": "2026-11-02T01:00:16.575Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-kowalowitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Kovalovice%2C%20okres%20Brno-venkov",
+   "status": "200",
+   "bytes": 686,
+   "sha256": "45a1505608578b3eaa148ef105c1b64ff428628a6697b1f49cf4f37585979a1f",
+   "time": "2026-11-02T01:00:18.754Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-krug.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Kruh%2C%20Holubice",
+   "status": "200",
+   "bytes": 767,
+   "sha256": "ac1bf4388ac53a5d254825244659639524498680a83f3c6b8309dd8a9f4a01eb",
+   "time": "2026-11-02T01:00:20.889Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-bellowitz.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Bed%C5%99ichovice%2C%20%C5%A0lapanice",
+   "status": "200",
+   "bytes": 1441,
+   "sha256": "5e3e3767d6b40ce55e12f7fedd8a13f2ba049e74aedb531bf660d04ee8d26caa",
+   "time": "2026-11-02T01:00:22.540Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-pratzeberg.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Prack%C3%BD%20kopec",
+   "status": "200",
+   "bytes": 693,
+   "sha256": "639e77bd8b30726e2ee5c63014dd8c12f6c6380bc6530e0eb4f205fd3010572a",
+   "time": "2026-11-02T01:00:24.375Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-vinohrady.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Star%C3%A9%20vinohrady",
+   "status": "200",
+   "bytes": 3857,
+   "sha256": "f7684a5fd57f41fce342703302e3e5f26770439b8f55c46dff5543de4713f329",
+   "time": "2026-11-02T01:00:26.357Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-zuran.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=%C5%BDur%C3%A1%C5%88",
+   "status": "200",
+   "bytes": 775,
+   "sha256": "fe37406a78386d79fa14337d1cc39032201f90aafbdbd3340201e7bbdd6a6a0a",
+   "time": "2026-11-02T01:00:28.191Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-santon.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Santon%2C%20Tvaro%C5%BEn%C3%A1",
+   "status": "200",
+   "bytes": 1365,
+   "sha256": "5d2c91a43d9742314871662c4cc14437c8a9b7dc7b68f76b3f557dc6d03d07a4",
+   "time": "2026-11-02T01:00:30.524Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-castle.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=z%C3%A1mek%20Sokolnice",
+   "status": "200",
+   "bytes": 757,
+   "sha256": "4fd84b136eba962740ebf3f16e7aa09e0e09cada1d082a0c73d07ea76ce0c153",
+   "time": "2026-11-02T01:00:32.158Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-chateau.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=z%C3%A1mek%20Slavkov",
+   "status": "200",
+   "bytes": 1522,
+   "sha256": "ee65662cbfc1b1a97a74659d73c816d1f35ce433fabccd46788ee690a699bf84",
+   "time": "2026-11-02T01:00:33.996Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-prace_church.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=kostel%20Pov%C3%BD%C5%A1en%C3%AD%20svat%C3%A9ho%20K%C5%99%C3%AD%C5%BEe%2C%20Prace",
+   "status": "200",
+   "bytes": 808,
+   "sha256": "b479a62bd7d295f162d59bb2d8d25bd276c4f367d3f5cf319a0d9aa6d73f67a1",
+   "time": "2026-11-02T01:00:35.743Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-posthouse.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Star%C3%A1%20po%C5%A1ta%2C%20Kovalovice",
+   "status": "200",
+   "bytes": 1487,
+   "sha256": "74f602743c1b5e30fc55de70de748969b42c5d3da32fe2498d2fb9064fce0adc",
+   "time": "2026-11-02T01:00:37.648Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-mohyla.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cz&addressdetails=1&q=Mohyla%20m%C3%ADru%2C%20Prace",
+   "status": "200",
+   "bytes": 3674,
+   "sha256": "39db39288957233a6aa75ef8452f006c10037e59f908c9afa5365f1d904436ce",
+   "time": "2026-11-02T01:00:39.454Z",
+   "error": null
+  }
+ ]
+}

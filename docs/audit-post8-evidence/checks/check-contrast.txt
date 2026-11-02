@@ -1,0 +1,7 @@
+
+> check:contrast
+> node tools/visual/contrast.js austerlitz-command-map.html
+
+text elements 6926, distinct text/background pairs 120, below AA 0, text below 10.5 px 0
+font failures: 0 (672 characters in 15 computed fonts, from the 6926 text elements read, asked which faces drew them; decision 141: only the embedded faces)
+states 45 (10 at 390 x 844 as a phone): 45 reached; console messages 0, failing 0
