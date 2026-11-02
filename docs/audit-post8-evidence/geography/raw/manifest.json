@@ -296,6 +296,105 @@
    "sha256": "39db39288957233a6aa75ef8452f006c10037e59f908c9afa5365f1d904436ce",
    "time": "2026-11-02T01:00:39.454Z",
    "error": null
+  },
+  {
+   "file": "nominatim-water-ricka.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=%C5%98%C3%AD%C4%8Dka",
+   "status": "200",
+   "bytes": 32803,
+   "sha256": "0e0a7597437fa8eee1793f2a056111d30de07328453926c20f3683719075afae",
+   "time": "2026-11-02T01:03:21.657Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-zlaty.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=Zlat%C3%BD%20potok",
+   "status": "200",
+   "bytes": 32212,
+   "sha256": "ad0fd8e44ff472f19c2c295357f740e01f66f4b49a1a0500792599ae9df63903",
+   "time": "2026-11-02T01:03:23.740Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-litava.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=Litava",
+   "status": "200",
+   "bytes": 27923,
+   "sha256": "45e7cab4abf0f3940d76c0f49714fde3a8fd615ed0a6f8e9bbd8037ee629774b",
+   "time": "2026-11-02T01:03:25.800Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-rakovec.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=Rakovec",
+   "status": "200",
+   "bytes": 26438,
+   "sha256": "5a268c75a18be452c30ee925a06e1fccb0e5f2432cd965dbe2eb57c45067e372",
+   "time": "2026-11-02T01:03:27.628Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-roketnice.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=Roketnice",
+   "status": "200",
+   "bytes": 6856,
+   "sha256": "41f48d57aeabfc568967df5b813e28bb8ccdfb342d8767caab9152ce3357acb9",
+   "time": "2026-11-02T01:03:29.895Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-tvarozensky.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=Tvaro%C5%BEensk%C3%BD%20potok",
+   "status": "200",
+   "bytes": 2218,
+   "sha256": "dd3cd1a99ff4f2b3f2e15789a54402d6283638dbf32eb48973baf1bb34395dfc",
+   "time": "2026-11-02T01:03:31.780Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-drevnovice.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=D%C5%99evnovice",
+   "status": "200",
+   "bytes": 2,
+   "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "time": "2026-11-02T01:03:33.621Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-dunajovicky.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=Dunajovick%C3%BD%20potok",
+   "status": "200",
+   "bytes": 2,
+   "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "time": "2026-11-02T01:03:35.787Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-prace_potok.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=Prack%C3%BD%20potok",
+   "status": "200",
+   "bytes": 1760,
+   "sha256": "1fbf97413e8994318b9a1b7e6f0e15e4b42c6e058df3836661df9966f180bf60",
+   "time": "2026-11-02T01:03:37.945Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-holubicky.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=Holubick%C3%BD%20potok",
+   "status": "200",
+   "bytes": 918,
+   "sha256": "4900e86d0b606c805b807aa219ed93a2458cda3271f0c21c4c3bfd34648e66ed",
+   "time": "2026-11-02T01:03:40.089Z",
+   "error": null
+  },
+  {
+   "file": "nominatim-water-slapanicky.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&polygon_geojson=1&viewbox=16.55,49.26,16.95,49.04&bounded=1&q=%C5%A0lapanick%C3%BD%20potok",
+   "status": "200",
+   "bytes": 2,
+   "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "time": "2026-11-02T01:03:41.859Z",
+   "error": null
   }
  ]
 }

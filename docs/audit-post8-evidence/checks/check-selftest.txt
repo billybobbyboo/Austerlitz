@@ -1,0 +1,4 @@
+
+> check:selftest
+> node tools/visual/harness.js austerlitz-command-map.html tools/visual/out-selftest --test --selftest-only
+
