@@ -4,7 +4,7 @@
         PA_MOTIONS (default play-half,overview-held,overview-route,overview-drag,ph8-drag), PA_VP (default 2560x1305: the device page),
         PA_BOOTPROF (rounds whose start-up is profiled, default "2"), PA_PLAY_N (default 1656: the device's 12 s at 144 Hz less its 0.5 s warm-up),
         PA_ORBIT_N (default 792: the device's 6 s less 0.5), PA_HELD_N (default 504: the device's 4 s less 0.5), PA_WARM (default 72: the device
-        route's first 0.5 s, excluded), PA_PASSES (default timing,profile), PA_STUB (default 1)
+        route's first 0.5 s, excluded), PA_PASSES (default timing,profile; "count": every GL and listed app call counted over PA_COUNT_N frames, default 144), PA_STUB (default 1)
    Per page: the start-up (and its profile in PA_BOOTPROF rounds); per motion, from the same set-up each time, a timing pass (no profiler: each
    frame's real time, its named steps, the main thread's CPU and wait from schedstat) and a profile pass (the CDP sampling profiler at 200 us
    over the same frames). Writes <outdir>/page-<round>-<label>.json (statistics) and <rawdir>/{frames,prof,boot}-<round>-<label>[-<motion>-<pass>].json.gz. */
@@ -39,18 +39,21 @@ const r3=x=>Math.round(x*1000)/1000;
         const rec={note:M.note, kind:M.kind, n, warm:WARM};
         for(const pass of PASSES){
           rec.setup=await P.setup(page,key);
-          const r=await P.runMotion(browser,page,Object.assign({},o,{profile:pass==="profile",sampleUs:200}));
+          const nn=pass==="count"?Math.min(n,+(process.env.PA_COUNT_N||144)):n;
+          const r=await P.runMotion(browser,page,Object.assign({},o,{n:nn, profile:pass==="profile", count:pass==="count", sampleUs:200}));
           const col=j=>r.t.map(x=>x[j]);
           const R={err:r.err||r.begin.err||null, clock0:r.clock0, clock1:r.clock1, wallS:r.wallS, load:r.load, drainMs:r.begin.drainMs,
-            cpuMsPerFrame:r3(r.cpu.runMs/n), cpuWaitMsPerFrame:r3(r.cpu.waitMs/n), cpuWallMs:r.cpu.wallMs, gpuCpuMsPerFrame:r3(r.cpu.gpuRunMs/n), thread:r.cpu.thread,
+            cpuMsPerFrame:r3(r.cpu.runMs/nn), cpuWaitMsPerFrame:r3(r.cpu.waitMs/nn), cpuWallMs:r.cpu.wallMs, gpuCpuMsPerFrame:r3(r.cpu.gpuRunMs/nn), thread:r.cpu.thread,
             input:P.stats(col(0)), loop:P.stats(col(1)), flush:P.stats(col(2)), sync:P.stats(col(3)),
             calls:P.stats(r.info.map(x=>x[0])), tris:P.stats(r.info.map(x=>x[1])), ncalls:r.ncalls, mls:r.mls||null,
             ml:r.ml.length?{placed:P.stats(r.ml.map(x=>x[0])), dropped:P.stats(r.ml.map(x=>x[1])), held:P.stats(r.ml.map(x=>x[2]))}:null,
             cull:r.cull.length?{tests:P.stats(r.cull.map(x=>x[0])), culled:P.stats(r.cull.map(x=>x[1])), refresh:P.stats(r.cull.map(x=>x[2])), inst:P.stats(r.cull.map(x=>x[3]))}:null,
-            steps:{}};
+            steps:{}, n:nn};
+          if(r.counts){ const pf=x=>+(x/nn).toFixed(2); R.counts={frames:nn, glTotalPerFrame:pf(r.counts.glTotal), bytesPerFrame:Math.round(r.counts.bytes/nn), gl:{}, app:{}};
+            Object.keys(r.counts.gl).sort((a,b)=>r.counts.gl[b]-r.counts.gl[a]).forEach(k=>R.counts.gl[k]=pf(r.counts.gl[k])); Object.keys(r.counts.app).sort((a,b)=>r.counts.app[b]-r.counts.app[a]).forEach(k=>R.counts.app[k]=pf(r.counts.app[k])); }
           Object.keys(r.steps).forEach(k=>{ R.steps[k]=P.stats(r.steps[k]); });
           fs.writeFileSync(path.join(rawdir,"frames-"+tag+"-"+key+"-"+pass+".json.gz"),zlib.gzipSync(JSON.stringify({t:r.t, info:r.info, steps:r.steps, ml:r.ml, cull:r.cull})));
-          if(r.profile){ R.agg=P.aggregate(r.profile,n,{steps:P.STEPS,top:80}); fs.writeFileSync(path.join(rawdir,"prof-"+tag+"-"+key+".json.gz"),zlib.gzipSync(JSON.stringify(r.profile))); }
+          if(r.profile){ R.agg=P.aggregate(r.profile,nn,{steps:P.STEPS,top:80}); fs.writeFileSync(path.join(rawdir,"prof-"+tag+"-"+key+".json.gz"),zlib.gzipSync(JSON.stringify(r.profile))); }
           rec[pass]=R;
           log(tag+" "+key+" "+pass+": loop p50 "+R.loop.p50+" mean "+R.loop.mean+" p90 "+R.loop.p90+" max "+R.loop.max+" | cpu "+R.cpuMsPerFrame+" wait "+R.cpuWaitMsPerFrame+" gpu "+R.gpuCpuMsPerFrame+
             " ms/frame | flush p50 "+R.flush.p50+" sync p50 "+R.sync.p50+" | upd p50 "+(R.steps.updateVisibility||{}).p50+" ml p50 "+(R.steps.mlLayout||{}).p50+" three p50 "+(R.steps["three.render"]||{}).p50+

@@ -89,37 +89,41 @@ The fields follow the brief: subsystem, user impact, status and origin, expected
 cause (hypothesis, and whether verified), remedy, effort, dependencies, risk of the remedy, validation, prior records and verification. A
 field the area did not fill is omitted, never invented.
 
-Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed defect 55, probable problem 31, optional improvement 13, accepted compromise 11, untested area 7, unresolved historical question 6; by adversarial verification not re-verified 123.
+Counts: 143 findings; by severity S1 1, S2 19, S3 74, S4 49; by kind confirmed defect 63, probable problem 33, optional improvement 18, accepted compromise 14, unresolved historical question 8, untested area 7; by adversarial verification not re-verified 111, CONFIRMED 22, WEAKENED 9, DUPLICATE 1.
 
 ### B.1 Index (most severe first)
 
 | ID | sev | pri | kind | status | verification | title |
 |---|---|---|---|---|---|---|
-| [CL-GEO-01](#cl-geo-01) | S2 | P1 | confirmed defect | confirmed |  | The relief model is 30-80 m too low over the southern Pratzen plateau and the chapel knoll and about 45 m too high at Slapanice, while the visitor is told it is fitted to surveyed elevations |
-| [CL-HIS-01](#cl-his-01) | S2 | P2 | confirmed defect | confirmed |  | The face-about event is labelled Fact ('Attested in the standard accounts') beside its own why claimed 'This map's reading' |
-| [CL-HIS-02](#cl-his-02) | S2 | P2 | confirmed defect | confirmed |  | 44 of 88 A grades are carried forward from earlier anchors, against the grading rule 8K applied to Suchet |
-| [CL-HIS-03](#cl-his-03) | S2 | P2 | confirmed defect | confirmed |  | The Russian Guard's A-graded approach contradicts the project's own A-graded readings; nobody holds Blasowitz when it falls 'from the Russian Guard' |
-| [CL-HIS-04](#cl-his-04) | S2 | P2 | confirmed defect | confirmed |  | New in 8J: Legrand's division marker walks through the Sokolnitz castle and the III Column holding it |
-| [CL-HIS-05](#cl-his-05) | S2 | P2 | confirmed defect | confirmed |  | Russian Guard, Liechtenstein and Miloradovich drawn walking away from the enemy while shown Counter-attacking/Charging |
-| [CL-MAP-01](#cl-map-01) | S2 | P2 | confirmed defect | confirmed |  | Landscape with counters: during Play the same five to eight formations' counters are hidden most of the time, up to 28 s (100 clock minutes) at a stretch; the benchmark's 4,033 ms is only its window |
-| [CL-MAP-02](#cl-map-02) | S2 | P2 | confirmed defect | confirmed |  | The formations a live event names are hidden while their event's label is drawn (the Guard cavalry clash 0-16%; Miloradovich at the face-about 0-40%) |
-| [CL-MAP-03](#cl-map-03) | S2 | P2 | confirmed defect | confirmed |  | V-M2: No symbol key at all below 1080 px wide, below 430 px tall, or in Watch and Clean |
-| [CL-MAP-04](#cl-map-04) | S2 | P2 | confirmed defect | confirmed |  | V-M3: The only north indicator is the rose inside the legend's toggle, so phones, layouts below 1080 px, Watch and Clean show no compass |
-| [CL-MAP-05](#cl-map-05) | S2 | P2 | confirmed defect | confirmed |  | V-M5: The paper map as entered draws none of the 12 place names at 1600, 1280 and 1024 px |
-| [CL-SIM-01](#cl-sim-01) | S2 | P2 | confirmed defect | confirmed |  | The open dossier goes stale while the clock moves within a phase: 'Position at 12:03' still shown at 12:37, a place's 'Formations nearby now' wrong in 86 of 240 place-phases |
-| [CL-SIM-02](#cl-sim-02) | S2 | P2 | confirmed defect | confirmed |  | V-M4: 'Whose eyes?' still draws the movement arrows, arrow labels and plateau count of formations the reading does not know |
-| [CL-SRC-01](#cl-src-01) | S2 | P2 | confirmed defect | confirmed (on Duffy's OCR text layer, via archive.org full-text search; the lending item's page images cannot be opened here; the same search reproduces exactly the Guard rows that S5.7 read on the owner's photograph) |  | Order-of-battle figures attributed to Duffy (1977) that Duffy does not print |
-| [CL-TEST-01](#cl-test-01) | S2 | P2 | probable problem | confirmed |  | TS-1: The merge gate requires only the node job: check:selftest and check:contrast are not required checks, check:visual gates nothing, and main carried a failing self-test for a day |
-| [CL-UX-01](#cl-ux-01) | S2 | P2 | confirmed defect | confirmed |  | At 400% browser zoom and at WCAG's 320 px reflow width the interface loses content and functions (the card's start, the phase text, the caption, the key, the panels, the sources) |
-| [CL-UX-02](#cl-ux-02) | S2 | P2 | confirmed defect | confirmed |  | A pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination |
-| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | confirmed |  | V-M1: On a phone, two thirds of the timeline's rail belong to event markers: a finger's drag there does nothing and a tap jumps to an event |
-| [CL-VIS-01](#cl-vis-01) | S2 | P2 | confirmed defect | confirmed |  | Figures on the frozen Satschan mere are drawn sunk into the ice in the ponds phase |
+| [CL-ROB-01](#cl-rob-01) | S1 | P1 | confirmed defect | open |  | The device route's ?src= runs a visitor-supplied URL in the public site's origin (DOM XSS on GitHub Pages) |
+| [CL-GEO-01](#cl-geo-01) | S2 | P1 | confirmed defect | confirmed | CONFIRMED | The relief model is 30-80 m too low over the southern Pratzen plateau and the chapel knoll and about 45 m too high at Slapanice, while the visitor is told it is fitted to surveyed elevations |
+| [CL-HIS-01](#cl-his-01) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | The face-about event is labelled Fact ('Attested in the standard accounts') beside its own why claimed 'This map's reading' |
+| [CL-HIS-02](#cl-his-02) | S2 | P2 | confirmed defect | confirmed | WEAKENED | 44 of 88 A grades are carried forward from earlier anchors, against the grading rule 8K applied to Suchet |
+| [CL-HIS-03](#cl-his-03) | S2 | P2 | confirmed defect | confirmed | WEAKENED | The Russian Guard's A-graded approach contradicts the project's own A-graded readings; nobody holds Blasowitz when it falls 'from the Russian Guard' |
+| [CL-HIS-04](#cl-his-04) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | New in 8J: Legrand's division marker walks through the Sokolnitz castle and the III Column holding it |
+| [CL-HIS-05](#cl-his-05) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | Russian Guard, Liechtenstein and Miloradovich drawn walking away from the enemy while shown Counter-attacking/Charging |
+| [CL-MAP-01](#cl-map-01) | S2 | P2 | confirmed defect | confirmed | WEAKENED | Landscape with counters: during Play the same five to eight formations' counters are hidden most of the time, up to 28 s (100 clock minutes) at a stretch; the benchmark's 4,033 ms is only its window |
+| [CL-MAP-02](#cl-map-02) | S2 | P2 | confirmed defect | confirmed | WEAKENED | The formations a live event names are hidden while their event's label is drawn (the Guard cavalry clash 0-16%; Miloradovich at the face-about 0-40%) |
+| [CL-MAP-03](#cl-map-03) | S2 | P2 | confirmed defect | confirmed | WEAKENED | V-M2: No symbol key at all below 1080 px wide, below 430 px tall, or in Watch and Clean |
+| [CL-MAP-04](#cl-map-04) | S2 | P2 | confirmed defect | confirmed | WEAKENED | V-M3: The only north indicator is the rose inside the legend's toggle, so phones, layouts below 1080 px, Watch and Clean show no compass |
+| [CL-MAP-05](#cl-map-05) | S2 | P2 | confirmed defect | confirmed | WEAKENED | V-M5: The paper map as entered draws none of the 12 place names at 1600, 1280 and 1024 px |
+| [CL-SIM-01](#cl-sim-01) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | The open dossier goes stale while the clock moves within a phase: 'Position at 12:03' still shown at 12:37, a place's 'Formations nearby now' wrong in 86 of 240 place-phases |
+| [CL-SIM-02](#cl-sim-02) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | V-M4: 'Whose eyes?' still draws the movement arrows, arrow labels and plateau count of formations the reading does not know |
+| [CL-SRC-01](#cl-src-01) | S2 | P2 | confirmed defect | confirmed (on Duffy's OCR text layer, via archive.org full-text search; the lending item's page images cannot be opened here; the same search reproduces exactly the Guard rows that S5.7 read on the owner's photograph) | CONFIRMED | Order-of-battle figures attributed to Duffy (1977) that Duffy does not print |
+| [CL-TEST-01](#cl-test-01) | S2 | P2 | probable problem | confirmed | WEAKENED | TS-1: The merge gate requires only the node job: check:selftest and check:contrast are not required checks, check:visual gates nothing, and main carried a failing self-test for a day |
+| [CL-UX-01](#cl-ux-01) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | At 400% browser zoom and at WCAG's 320 px reflow width the interface loses content and functions (the card's start, the phase text, the caption, the key, the panels, the sources) |
+| [CL-UX-02](#cl-ux-02) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | A pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination |
+| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | confirmed | DUPLICATE | V-M1: On a phone, two thirds of the timeline's rail belong to event markers: a finger's drag there does nothing and a tap jumps to an event |
+| [CL-VIS-01](#cl-vis-01) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | Figures on the frozen Satschan mere are drawn sunk into the ice in the ponds phase |
 | [CL-GEO-02](#cl-geo-02) | S3 | P2 | unresolved historical question | confirmed |  | 'Walled castle' and 'pheasantry enclosure' are stated as fact in the 08:00 dispatch, against the project's own records |
 | [CL-GEO-03](#cl-geo-03) | S3 | P2 | probable problem | confirmed |  | Outside Sokolnitz the hydrography is schematic and unlabelled: the Bosenitz brook and the Ricka through Slapanice are not drawn, and the upper Goldbach runs where no stream runs today |
-| [CL-HIS-06](#cl-his-06) | S3 | P2 | confirmed defect | confirmed |  | Three events whose own texts say the hour is disputed are not labelled disputed |
+| [CL-HIS-06](#cl-his-06) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | Three events whose own texts say the hour is disputed are not labelled disputed |
 | [CL-MAP-06](#cl-map-06) | S3 | P2 | confirmed defect | confirmed |  | V-M6: The caption shrinks the act and phase to a letter or nothing with orphan separators, and in Watch at 1280 px its readings and event give way entirely |
 | [CL-PERF-01](#cl-perf-01) | S3 | P2 | probable problem | confirmed (no thermal evidence exists; Play's series is flat); the cause of the Overview's dips is unverified |  | 'After the phone warms' is asserted without temperature or throttling evidence, and the reports contradict a warming trend for Play |
 | [CL-PERF-02](#cl-perf-02) | S3 | P2 | untested area | unverified |  | No integrated-GPU run: performance on the machine decision 138 and section 8.3 name is unknown |
+| [CL-REC-01](#cl-rec-01) | S3 | P2 | confirmed defect | open |  | The published site's root page is the developer README: no link to the map and nothing for a visitor on evidence and reconstruction |
+| [CL-REC-02](#cl-rec-02) | S3 | P2 | confirmed defect | open |  | README.md describes the checks wrongly again and calls the file self-contained (the prior audit's R-1 recurred) |
+| [CL-REC-03](#cl-rec-03) | S3 | P2 | confirmed defect | open |  | Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred) |
 | [CL-SIM-03](#cl-sim-03) | S3 | P2 | confirmed defect | confirmed |  | A theme chosen while the clock plays does not stop it: the clock runs on and Follow takes the camera from the theme's view within seconds |
 | [CL-SIM-04](#cl-sim-04) | S3 | P2 | confirmed defect | confirmed |  | A phase change that interrupts the overlays' fade makes the outgoing phase's arrows pop back to 0.9 opacity (stepping through phases quickly flashes each skipped phase's arrows) |
 | [CL-SRC-02](#cl-src-02) | S3 | P2 | probable problem | confirmed |  | The III Corps detachment and the IV Column are drawn below every figure in the sources the project can read, and their notes omit those figures |
@@ -133,14 +137,14 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | [CL-GEO-05](#cl-geo-05) | S3 | P3 | confirmed defect | confirmed |  | Sokolnitz, Telnitz and Kobelnitz are drawn standing in marsh: marsh ellipses cover their centres and the cover classifier ranks marsh above village |
 | [CL-GEO-06](#cl-geo-06) | S3 | P3 | unresolved historical question | confirmed |  | The Goldbach bottom's marshiness, an open question, is drawn and told as settled, and no check can fail a stream or marsh crossing |
 | [CL-GEO-07](#cl-geo-07) | S3 | P3 | unresolved historical question | confirmed |  | Krug is drawn 1.67 km south of where the 1836-52 survey and today's map put it, and the visitor is told no source read fixes it |
-| [CL-HIS-07](#cl-his-07) | S3 | P3 | confirmed defect | confirmed |  | Kamensky's named conflict: the turn is drawn from 08:00, before the French climb, not 'in the 08:45 phase' as disclosed; it lifts the derived plateau reading |
-| [CL-HIS-08](#cl-his-08) | S3 | P3 | confirmed defect | confirmed |  | Kienmayer 'Holding west of the Goldbach' is drawn 0.9 km east of the brook (since Stage 0) |
-| [CL-HIS-09](#cl-his-09) | S3 | P3 | probable problem | confirmed |  | Caffarelli's objective 'Push Bagration off the highway' shown 12:45-17:00 while 1.5-2.2 km from the highway and moving away; separation misstated in records |
-| [CL-HIS-10](#cl-his-10) | S3 | P3 | probable problem | confirmed |  | Interpolated legs pass through enemies and across the Litava; the movement audit tests neither |
-| [CL-HIS-11](#cl-his-11) | S3 | P3 | probable problem | confirmed |  | Sokolnitz village drawn empty 09:00-13:15 although the texts have it taken and retaken and defended by Legrand, then Friant |
-| [CL-HIS-12](#cl-his-12) | S3 | P3 | probable problem | confirmed |  | Command tab: DOCUMENTED on 31 rows the claims register calls 'Not yet checked'; a phase-5 row anticipates Blasowitz's fall; a 'Could see' row holds a historiographical dispute |
-| [CL-HIS-13](#cl-his-13) | S3 | P3 | probable problem | confirmed |  | Dossier says 'Marching' beside 'In reserve'/'Concealed' on 63 slow drift legs |
-| [CL-HIS-14](#cl-his-14) | S3 | P3 | unresolved historical question | confirmed |  | Open questions drawn or shown without qualification: Krug and Bellowitz villages, Kologrivov's command |
+| [CL-HIS-07](#cl-his-07) | S3 | P3 | confirmed defect | confirmed | CONFIRMED | Kamensky's named conflict: the turn is drawn from 08:00, before the French climb, not 'in the 08:45 phase' as disclosed; it lifts the derived plateau reading |
+| [CL-HIS-08](#cl-his-08) | S3 | P3 | confirmed defect | confirmed | CONFIRMED | Kienmayer 'Holding west of the Goldbach' is drawn 0.9 km east of the brook (since Stage 0) |
+| [CL-HIS-09](#cl-his-09) | S3 | P3 | probable problem | confirmed | CONFIRMED | Caffarelli's objective 'Push Bagration off the highway' shown 12:45-17:00 while 1.5-2.2 km from the highway and moving away; separation misstated in records |
+| [CL-HIS-10](#cl-his-10) | S3 | P3 | probable problem | confirmed | CONFIRMED | Interpolated legs pass through enemies and across the Litava; the movement audit tests neither |
+| [CL-HIS-11](#cl-his-11) | S3 | P3 | probable problem | confirmed | CONFIRMED | Sokolnitz village drawn empty 09:00-13:15 although the texts have it taken and retaken and defended by Legrand, then Friant |
+| [CL-HIS-12](#cl-his-12) | S3 | P3 | probable problem | confirmed | CONFIRMED | Command tab: DOCUMENTED on 31 rows the claims register calls 'Not yet checked'; a phase-5 row anticipates Blasowitz's fall; a 'Could see' row holds a historiographical dispute |
+| [CL-HIS-13](#cl-his-13) | S3 | P3 | probable problem | confirmed | CONFIRMED | Dossier says 'Marching' beside 'In reserve'/'Concealed' on 63 slow drift legs |
+| [CL-HIS-14](#cl-his-14) | S3 | P3 | unresolved historical question | confirmed | WEAKENED | Open questions drawn or shown without qualification: Krug and Bellowitz villages, Kologrivov's command |
 | [CL-MAP-07](#cl-map-07) | S3 | P3 | confirmed defect | confirmed |  | Phone in Landscape with counters: half the formation-frames drawn; Liechtenstein's Fifth Column never drawn from 09:00 to 12:00 |
 | [CL-MAP-08](#cl-map-08) | S3 | P3 | confirmed defect | confirmed |  | V-M8: The legend omits several encodings it draws, against its own one-row-per-encoding rule |
 | [CL-MAP-09](#cl-map-09) | S3 | P3 | probable problem | confirmed |  | V-M9: Arrow labels repeat formation names in the same plate style as the formations' own names |
@@ -154,12 +158,16 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | [CL-PERF-04](#cl-perf-04) | S3 | P3 | probable problem | confirmed |  | The desktop before/after spans a browser update (Chrome 155 to 156) that section 24 does not record; the accepted CPU excess cannot be attributed to Stage 8 alone |
 | [CL-PERF-05](#cl-perf-05) | S3 | P3 | probable problem | confirmed |  | The 'heaviest frame' figures in sections 24-25 are segment medians, and the census maxima are below what the route drew in Play and in phase 8's Overview |
 | [CL-PERF-06](#cl-perf-06) | S3 | P3 | accepted compromise | inferred |  | The two phone readings are not equally strong: P5 (Stage 8's own starting build) points to a Play slowdown from 53 to 43 fps; the P3/P4 proxy is dominated by device state |
+| [CL-REC-04](#cl-rec-04) | S3 | P3 | confirmed defect | open |  | The carried checklist misstates three of its own items (the records' view of other areas' findings) |
+| [CL-REC-05](#cl-rec-05) | S3 | P3 | accepted compromise | accepted by decisions 175 and 189 |  | Two items "recorded complete on the owner's word" carry no results: the screen-reader session (decision 175) and the human second reading (decision 189) |
+| [CL-ROB-02](#cl-rob-02) | S3 | P3 | confirmed defect | open |  | A context loss while the clock plays can throw an uncaught TypeError from three r128 ("reading 'trim'") |
+| [CL-ROB-03](#cl-rob-03) | S3 | P3 | probable problem | open |  | The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes |
 | [CL-SIM-05](#cl-sim-05) | S3 | P3 | probable problem | confirmed |  | Under a reading that does not know a formation, its card's 'Doing now' still names where it is |
 | [CL-SRC-03](#cl-src-03) | S3 | P3 | confirmed defect | confirmed |  | 'Kologrivov's command on 2 December is in Sokolov alone' is contradicted by Schönhals p. 178 and by the project's own stage 6B reading |
 | [CL-SRC-04](#cl-src-04) | S3 | P3 | confirmed defect | confirmed (no source read gives 7,750; its web origin is known only from a search result's summary) |  | SOURCE_NOTE illustrates disagreement among 'reputable orders of battle' with an I Column range whose low end appears only on a popular website |
 | [CL-SRC-05](#cl-src-05) | S3 | P3 | probable problem | confirmed |  | Seven formations show a working strength with no note; six exceed the 22 November returns the project reads elsewhere |
 | [CL-SRC-06](#cl-src-06) | S3 | P3 | probable problem | confirmed (code read) |  | Headline strength and gun figures carry no claim tag; the compact card shows strength with neither note nor tag |
-| [CL-TEST-04](#cl-test-04) | S3 | P3 | untested area | confirmed |  | No check covers interpenetration, rivers, motion vs status, act sides of the stream, event pill vs statement claim, or carried-forward grades |
+| [CL-TEST-04](#cl-test-04) | S3 | P3 | untested area | confirmed | CONFIRMED | No check covers interpenetration, rivers, motion vs status, act sides of the stream, event pill vs statement claim, or carried-forward grades |
 | [CL-TEST-05](#cl-test-05) | S3 | P3 | confirmed defect | confirmed |  | TS-3: Presentation code can rewrite a guarded datum at run time and every check passes, check:data included |
 | [CL-TEST-06](#cl-test-06) | S3 | P3 | confirmed defect | confirmed |  | TS-4: No check reads the formation dossier's strength against the data |
 | [CL-TEST-07](#cl-test-07) | S3 | P3 | confirmed defect | confirmed |  | TS-5: The harness's figure-on-ground and standard-foot checks pass when nothing is measured |
@@ -177,21 +185,26 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | [CL-VIS-02](#cl-vis-02) | S3 | P3 | confirmed defect | confirmed |  | Trees and bushes stand on the frozen Satschan mere |
 | [CL-VIS-03](#cl-vis-03) | S3 | P3 | probable problem | confirmed |  | Blocks face along slow drifts and keep stale facings, so some face away from an adjacent enemy |
 | [CL-VIS-04](#cl-vis-04) | S3 | P3 | confirmed defect | confirmed |  | Formation blocks interpenetrate buildings and each other |
+| [CL-ROB-04](#cl-rob-04) | S3 | P4 | confirmed defect | open |  | Each context restore keeps about 2.6-4 MB of heap and one more dispose listener per geometry and texture (three r128) |
+| [CL-ROB-05](#cl-rob-05) | S3 | P4 | accepted compromise | accepted |  | The single file needs cdnjs: offline, or where cdnjs is blocked, the map cannot start |
 | [CL-TEST-15](#cl-test-15) | S3 | P4 | confirmed defect | confirmed |  | TS-7: css-test.js holds source text, not behaviour: its march-row pin passed a march row stripped of its 'derived' tag |
 | [CL-TEST-16](#cl-test-16) | S3 | P4 | confirmed defect | confirmed |  | TS-10: test.js's 'objective off map' reads the objective's x only |
 | [CL-MAP-16](#cl-map-16) | S4 | P3 | probable problem | confirmed |  | V-M15: The default event glyph reads as a north arrow on the paper map, and the 'capture' glyph as the objective marker |
 | [CL-PERF-07](#cl-perf-07) | S4 | P3 | optional improvement | confirmed |  | Instrument limits of the device route: no raw intervals, median counts, flags rather than effects, no clock for played blocks, one refresh measurement |
+| [CL-REC-06](#cl-rec-06) | S4 | P3 | unresolved historical question | open |  | G-3 (Miloradovich at dawn) is the one finding of the prior audit never taken up: no step, no decision, no record since |
+| [CL-ROB-09](#cl-rob-09) | S4 | P3 | accepted compromise | accepted by decision 140 on a premise of 12.8% |  | Decision 140's premise has moved: the self-test is 21.7% of the file (12.8% when decided), +277,502 bytes in Stage 8 |
 | [CL-SIM-06](#cl-sim-06) | S4 | P3 | confirmed defect | confirmed |  | The reading ('Whose eyes?') is cached for the clock's minute at the first instant asked, so it depends on the path: 29 and 38 formation-minutes differ by route |
 | [CL-SRC-07](#cl-src-07) | S4 | P3 | confirmed defect | confirmed (register readings; Duffy on the text layer) |  | Army-total notes omit figures the project read and credit Duffy with a total he does not give |
+| [CL-SRC-09](#cl-src-09) | S4 | P3 | unresolved historical question | open |  | A January 1806 letter by Buxhowden naming Langeron as having sent Kamensky back is missing from the Kamensky dispute and the registers |
 | [CL-UX-12](#cl-ux-12) | S4 | P3 | confirmed defect | confirmed |  | The Now tab's hint 'The phase text is hidden: press D to show it. During the guided tour...' names a key that does nothing with the single-key shortcuts off, offers no pointer or touch way, and says 'guided tour' during the opening |
 | [CL-UX-13](#cl-ux-13) | S4 | P3 | probable problem | inferred |  | The time rail's drag has no button test and no pointercancel: a lost pointerup (context menu, cancelled touch) would leave hover scrubbing the clock |
 | [CL-VIS-05](#cl-vis-05) | S4 | P3 | probable problem | confirmed |  | Streams saturate to white in grazing and low-sun views |
 | [CL-GEO-08](#cl-geo-08) | S4 | P4 | confirmed defect | confirmed |  | The Pratzen church is drawn 161 m from its read site while the sources sheet says it is drawn at its own site |
 | [CL-GEO-09](#cl-geo-09) | S4 | P4 | confirmed defect | confirmed |  | The sources sheet reads 'Terrain relief is exaggerated about 1 times' at 1x |
 | [CL-GEO-10](#cl-geo-10) | S4 | P4 | unresolved historical question | confirmed |  | Two carried geographic questions are not visible to a visitor: the Goldbach's channel north of the castle and the highway's course in 1805 |
-| [CL-HIS-15](#cl-his-15) | S4 | P4 | confirmed defect | confirmed |  | Smaller internal inconsistencies in texts and fields |
-| [CL-HIS-16](#cl-his-16) | S4 | P4 | accepted compromise | confirmed |  | Accepted: the Russian Guard corps shown at 10,500 above its drawn 7,330 |
-| [CL-HIS-17](#cl-his-17) | S4 | P4 | accepted compromise | confirmed |  | Accepted: Bagration drawn toward Rausnitz at nightfall while his role says toward Austerlitz |
+| [CL-HIS-15](#cl-his-15) | S4 | P4 | confirmed defect | confirmed | CONFIRMED | Smaller internal inconsistencies in texts and fields |
+| [CL-HIS-16](#cl-his-16) | S4 | P4 | accepted compromise | confirmed | CONFIRMED | Accepted: the Russian Guard corps shown at 10,500 above its drawn 7,330 |
+| [CL-HIS-17](#cl-his-17) | S4 | P4 | accepted compromise | confirmed | CONFIRMED | Accepted: Bagration drawn toward Rausnitz at nightfall while his role says toward Austerlitz |
 | [CL-MAP-17](#cl-map-17) | S4 | P4 | accepted compromise | confirmed |  | The Landscape's formation names blink during Play: 10.6% of in-view frames hidden in 0.6 s episodes, about one per name every 6 s |
 | [CL-MAP-18](#cl-map-18) | S4 | P4 | accepted compromise | confirmed |  | V-M16: The Littawa's name is dropped in the Plans view (section 22.4), and at 1280 px too |
 | [CL-MAP-19](#cl-map-19) | S4 | P4 | accepted compromise | confirmed |  | V-M17: Paper-map arrows grow without a cap when zoomed in |
@@ -200,6 +213,13 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | [CL-PERF-09](#cl-perf-09) | S4 | P4 | confirmed defect | confirmed |  | Small numeric and wording inaccuracies in sections 24-25 |
 | [CL-PERF-10](#cl-perf-10) | S4 | P4 | untested area | confirmed (data); cause unverified |  | A 329 ms frame in the phone's first effects-off block: counted, unexplained, and not in section 25.2 |
 | [CL-PERF-11](#cl-perf-11) | S4 | P4 | accepted compromise | confirmed |  | Section 8.5's acceptance rule is weak at both refresh rates, and the per-PR before/after was replaced by one end-of-stage comparison |
+| [CL-REC-08](#cl-rec-08) | S4 | P4 | confirmed defect | open |  | CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and "Current state (October 2026)" |
+| [CL-ROB-06](#cl-rob-06) | S4 | P4 | probable problem | open |  | Seven archived builds on the same Pages origin load three.js without integrity |
+| [CL-ROB-07](#cl-rob-07) | S4 | P4 | optional improvement | open |  | Assurance tools CI never runs have started to rot: 5 of Stage 8's 189 mutations no longer apply; check:visual runs only on dispatch |
+| [CL-ROB-08](#cl-rob-08) | S4 | P4 | optional improvement | open |  | The project has no licence |
+| [CL-ROB-10](#cl-rob-10) | S4 | P4 | optional improvement | open |  | Small dead code: gaitDist is never called though the gait's comment and CLAUDE.md name it |
+| [CL-ROB-11](#cl-rob-11) | S4 | P4 | optional improvement | open |  | esc() leaves quotes, and double-quoted attributes take its output |
+| [CL-ROB-12](#cl-rob-12) | S4 | P4 | optional improvement | open |  | The frame loop requests an animation frame at the display's rate while nothing is drawn |
 | [CL-SIM-07](#cl-sim-07) | S4 | P4 | confirmed defect | confirmed |  | The first Play frame after the page went idle advances 120 ms of play (0.6 clock min at 1/2x, 3.6 at 4x) |
 | [CL-SIM-08](#cl-sim-08) | S4 | P4 | confirmed defect | confirmed |  | Pausing in a dwell's hold leaves the caption naming the dwell's events; the same clock reached by a seek names one |
 | [CL-SRC-08](#cl-src-08) | S4 | P4 | optional improvement | confirmed |  | Stronger or earlier sources uncredited, and two locator slips |
@@ -244,9 +264,9 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Label length may move a drop limit at 09:15 views. |
 | Validation | event-claims.js flags nothing; check:visual within limits. |
 | Prior records | H-1; decision 201 (b); decision 193 |
-| Adversarial verification | not re-verified (see B intro) |
-| Auditor's note | The auditor read analysis.js:292-294: the event 'face-about' carries claim:"fact" while its own why says 'That he ordered the column to face about is this map's reading': confirmed. |
-| Area finding | history #3 |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise)] |
+| Auditor's note | Merged: the history area found the pill contradicting the event's own text; the chronology area found which side the sources support (the order is given by Schonhals p. 162 and Stutterheim pp. 63-64, which the project has read). The auditor read analysis.js:292-294: the event 'face-about' carries claim:"fact" while its own why says 'That he ordered the column to face about is this map's reading': confirmed. |
+| Area finding | history #3; also reported as sources-chronology #3 |
 
 <a id="cl-his-02"></a>
 
@@ -270,7 +290,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Confidence outlines and check:visual confidence shares change. |
 | Validation | grades.js: no A carried past a move without review. |
 | Prior records | H-5; decision 260 (a) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (premise)] |
 | Auditor's note | The auditor traced the grade inheritance: an anchor without cf takes the previous anchor's grade (data.js tracks; stateAt), shown as 'Position documented in the sources' (app.js:7731 CONF_TEXT.A); 44 of 88 A grades are so carried: confirmed. |
 | Area finding | history #5 |
 
@@ -296,7 +316,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Moves the plateau reading (rg_inf/rg_cav enter the outline), motion baselines, sim-test event agreement. |
 | Validation | blasowitz-guard probe; sim-test event agreement; check:chronology. |
 | Prior records | step 4 C6.p12; decision 213 (b) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (premise)] |
 | Area finding | history #4 |
 
 <a id="cl-his-04"></a>
@@ -320,7 +340,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Moves the motion block's visibility baselines (owner rule for geographic baselines). |
 | Validation | closest.js shows legrand x prz above 0.5 km; check:chronology unchanged. |
 | Prior records | decision 259 (a); docs/STAGE8_SPEC.md 21.7 |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise)] |
 | Auditor's note | The auditor reproduced the distance: Legrand's interpolated position at 08:50 is about 39 m from the III Column's re-plotted place (data.js:227-228; LANDMARK_SITES.castle, world.js:162): confirmed. |
 | Area finding | history #2 |
 
@@ -346,7 +366,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Changing leg timing moves chronology verdicts and motion-block baselines; a presentation rule is lower risk. |
 | Validation | Re-run motion-vs-status.js: zero offensive-status samples moving away; check:chronology unchanged. |
 | Prior records | decision 45 (docs/STAGE2_SPEC.md M.10); decision 46; decision 181 (kollo@4/@5 forced leg) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise)] |
 | Auditor's note | Related, not the same issue: CL-VIS-03 (the facing rule on slow drifts). |
 | Area finding | history #1 |
 
@@ -371,8 +391,9 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Label lengths at 08:25, 11:00, 15:00 views. |
 | Validation | No event why/phase line says 'disputed' while its claim is not. |
 | Prior records | decision 201 (b); H-7 |
-| Adversarial verification | not re-verified (see B intro) |
-| Area finding | history #6 |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
+| Auditor's note | Merged: one labelling rule, three events found by the history area and a fourth, the Pratzen climb, by the chronology area. |
+| Area finding | history #6; also reported as sources-chronology #2 |
 
 <a id="cl-his-07"></a>
 
@@ -395,7 +416,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | check:chronology verdict text and the plateau reading's recorded figures. |
 | Validation | plateau-day probe; check:chronology. |
 | Prior records | H-1; decision 42; CONFLICTS kamensky@3 |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #7 |
 
 <a id="cl-his-08"></a>
@@ -419,7 +440,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Statement hash rehash (unchecked claim). |
 | Validation | legs-water.js side list. |
 | Prior records | 8J carried item |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #8 |
 
 <a id="cl-his-09"></a>
@@ -444,7 +465,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Motion baselines. |
 | Validation | caffarelli.js |
 | Prior records | 8K carried item |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #9 |
 
 <a id="cl-his-10"></a>
@@ -467,7 +488,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Effort | 0.5-1 day |
 | Risk of the remedy | Motion baselines. |
 | Validation | closest.js and legs-water.js clean. |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Auditor's note | CL-HIS-04 is its one new instance; CL-TEST-04 is the missing check. |
 | Area finding | history #10 |
 
@@ -493,7 +514,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | Motion baselines; sim-test event agreement. |
 | Validation | sokolnitz-defence probe. |
 | Prior records | 8J carried lang@2 |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #11 |
 
 <a id="cl-his-12"></a>
@@ -517,7 +538,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | check:contrast states with the Command tab. |
 | Validation | command-claims.js |
 | Prior records | H-6; decision 187 |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #12 |
 
 <a id="cl-his-13"></a>
@@ -541,7 +562,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | runtime-test dry runs of the march row. |
 | Validation | drift.js plus a dossier read. |
 | Prior records | decision 45; D-6; decision 244 (a) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #13 |
 
 <a id="cl-his-14"></a>
@@ -562,7 +583,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Effort | 1-4 h |
 | Dependencies | Source agents for Krug |
 | Prior records | decision 210 (c); FINAL_AUDIT 2.1 open-questions table |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (batch)] |
 | Auditor's note | Overlaps CL-GEO-07 (Krug's place) and CL-SRC-03 (Kologrivov's command); this entry is the qualification a visitor is not shown. |
 | Area finding | history #14 |
 
@@ -584,7 +605,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Effort | 2-4 h |
 | Risk of the remedy | Statement hashes; label widths. |
 | Prior records | G-3; H-19; decision 209 (a); H-14 |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #15 |
 
 <a id="cl-his-16"></a>
@@ -603,7 +624,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Remedy | Optional: one sentence in the strengthNote naming the undrawn 3,170. |
 | Effort | 0.5 h |
 | Prior records | decision 213 (b) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #17 |
 
 <a id="cl-his-17"></a>
@@ -621,7 +642,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | References | data.js:597; data.js:609; app.js:100 |
 | Remedy | None unless the owner revisits 180 (c). |
 | Prior records | decision 180 (c) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #18 |
 
 #### CL-SRC: sources: forces, timings and places traced to what the sources print
@@ -647,7 +668,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | A data change moves check:data's reference and the claims' hashes. Counter ranks and map-layer drop limits may move, as may sim-test's tour stop 4 figures. |
 | Validation | test.js (claims); check:data; re-run tools/audit-post8/sources-oob/ia-fts.py; a person reads Duffy's pages |
 | Prior records | docs/ROADMAP.md:236 (Duffy and Smith cited for strengths, not read); docs/step5-evidence/questions.md:86-127 (Duffy's text layer searched for the Guard only) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise); CONFIRMED (repro)] |
 | Area finding | sources-oob #1 |
 
 <a id="cl-src-02"></a>
@@ -786,6 +807,27 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Adversarial verification | not re-verified (see B intro) |
 | Area finding | sources-oob #8 |
 
+<a id="cl-src-09"></a>
+
+**CL-SRC-09 · S4 · P3 · unresolved historical question.** A January 1806 letter by Buxhowden naming Langeron as having sent Kamensky back is missing from the Kamensky dispute and the registers
+
+| field | |
+|---|---|
+| Subsystem | historical data: analysis.js EVENTS[#kamensky].why, narrative.js sides, docs/step4-evidence/readings.md C1 |
+| User impact | The 'who turned the brigade' dispute shows the 'Langeron sent it' side as Schönhals's alone (an official history published 1873); a contemporary document by Langeron's superior supports it. The disagreement is kept, so only the weight of one side is understated. |
+| Status / origin | open / inherited |
+| Expected | CLAUDE.md: 'Where sources disagree, keep the disagreement. Prefer primary and specialist sources': a dated 1806 document in an edition the project reads, bearing on a named dispute, registered and weighed. |
+| Observed | EVENTS[#kamensky].why names five sides (Mikhailovsky-Danilevsky, Schönhals, Kutuzov's official and private relations, Stutterheim); the step-4 cluster read pp. 241-242, 255-258 and 265-270 of the same volume but not no. 250 (pp. 260-262). |
+| Evidence | Kutuzov documents t. II (1951) no. 250, '1806 г. января 21. — ПИСЬМО Ф. Ф. БУКСГЕВДЕНА М. И. КУТУЗОВУ', p. 262 (archive.org 20250102_20250102_1833 page n290), read on the page image: 'Не должно ли приписать в вину графа Ланжерона, что он пошел на деревню Сокольниц? [...] А притом генерал-майора графа Каменского 1-го с полком его и другими рассеянными несколькими командами послав назад, тем храброго сего генерала с его отрядом подвергал крайней опасности' ('and moreover, by sending Major-General Count Kamensky 1st back with his regiment and several scattered detachments, he exposed this brave general and his detachment to extreme danger'). No hit for 'Dubno\|no. 250\|послав назад\|kutuzov1951 pp. 260-262' in the step-4 and step-2 registers or narrative.js. Ledger L10. |
+| References | analysis.js:296-298; data.js:521; docs/step4-evidence/readings.md:281-291; docs/step4-evidence/readings.md:509-519; docs/audit-post8-evidence/sources-chronology/pages/kutuzov1951-p262-n290-buxhowden-letter-kamensky.png |
+| Cause (hypothesis) | Step 4's C1 cluster read the Kutuzov documents by targeted pages (the relations and reports) and did not page through no. 250, Buxhowden's answer to Kutuzov's letter of 16 January. |
+| Remedy | Register the reading (page image n290; grade by the register's rule: a letter of January 1806 by the left wing's commander, at second hand for the II Column; label fact; disputed) and add it to the 'Langeron sent the brigade' side of EVENTS[#kamensky].why's narrative.js entry; a data task under CLAUDE.md's rule (check:data reference moves). |
+| Effort | S |
+| Risk of the remedy | low |
+| Validation | Re-read p. 262 on the image; test.js's narrative checks (registered reading, sides from two sources) pass with the new side. |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | sources-chronology #1 |
+
 #### CL-GEO: geography: relief, water, settlements and landmarks
 
 <a id="cl-geo-01"></a>
@@ -807,7 +849,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Effort | disclosure 0.5 day; refit 3-8 days with consequences; DEM grid 1-3 weeks |
 | Risk of the remedy | moves fog, knowledge, viewsheds, going, cover thresholds and dependent baselines |
 | Validation | re-run dem.js --analyse, plateau.js, extra.js: southern box mean within 10 m, profiles' worst within 20 m, Slapanice within 10 m |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise); CONFIRMED (repro)] |
 | Area finding | geography #1 |
 
 <a id="cl-geo-02"></a>
@@ -997,7 +1039,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Dependencies | none |
 | Risk of the remedy | repaint cost each minute; focus must be kept |
 | Validation | the C1-C4 checks re-run: 0 stale rows |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise); CONFIRMED (repro)] |
 | Auditor's note | The auditor read app.js:3498 and 7720-7728: within a phase the dossier is repainted only when drawerKey changes, and the key holds each leaf's text phase, moving or standing, and hidden state, not its place or the clock: confirmed by reading. |
 | Area finding | state #1 |
 
@@ -1017,7 +1059,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Cause verified | yes (code read; capture) |
 | Remedy | Skip (or ghost) arrows and arrow labels bound by a.leg or a.of to a formation readHidden reports; mark the plateau and centre readings 'everyone's' under a reading or compute them over known formations; add a self-test check under both readings every 10 minutes. |
 | Effort | 0.5-2 days |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise)] |
 | Auditor's note | The same family as CL-SIM-05 (decision 251 (a)'s reach): drawn overlays here, a card's text there. |
 | Area finding | visual-maps #4 |
 
@@ -1174,7 +1216,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Effort | 1-3 days (layout, then the visual harness's limits re-measured) |
 | Risk of the remedy | medium: the phone and held-landscape layouts share these rules (decisions 223-226, 232); their cases must hold |
 | Validation | zoom.js again: card fully on screen or scrollable, narr.lede reachable in one press, every control on screen and pressable at 400x225 and 320x256; check:visual's phone cases unchanged |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise)] |
 | Area finding | a11y #1 |
 
 <a id="cl-ux-02"></a>
@@ -1195,7 +1237,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Remedy | Stop the camera slot when the visitor takes the camera: in LANDCAM.free() (and the paper map's MAPCAM moves) call setTween('cam',null) and clear camArc, as redrawGround does since 8H; add a self-test check (drag, wheel, keys during each kind of glide leave the camera where the input left it) and a css-test rule. |
 | Effort | 1-3 h |
 | Validation | re-run s14 and s10/s10b: moved after input < 0.05 |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise); CONFIRMED (repro)] |
 | Auditor's note | The auditor read app.js:6309-6322 and 6479-6530: the glide runs in the tween's 'cam' slot to its end; a pan, zoom or key move calls free() (freeCam=true) but never clears _tw.cam, so the next frames apply the glide's arc again: confirmed by reading. |
 | Area finding | interaction #1 |
 
@@ -1217,7 +1259,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Cause verified | yes: hit map and the two drags |
 | Remedy | Let a pointer that starts on a marker and moves more than a few px hand the gesture to the rail (or let the rail own pointerdown and resolve a tap near a marker to that marker); alternatively move the markers to a strip above the rail on phones. Add a phone touch-drag check to the harness's phone block. |
 | Effort | 0.5-2 days |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | DUPLICATE: [lenses: DUPLICATE (premise)] |
 | Auditor's note | Merged: one hit-area rule, measured on a phone by two areas and at the playhead on a desktop by a third. |
 | Area finding | visual-maps #1; also reported as a11y #4, interaction #3 |
 
@@ -1581,7 +1623,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | room given to one formation is taken from another (a selection shows it: Saint-Hilaire 80.6% to 51.1% when Nansouty is selected) |
 | Validation | the long runs here re-run: no formation under 50% over 08:30-11:30; gaps bounded in clock minutes; the 16 motions within their ceilings |
 | Prior records | docs/STAGE8_SPEC.md 22.3 'Play's longer hidden interval'; docs/STAGE8_SPEC.md 23.2 'What it does not show' |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (premise)] |
 | Area finding | visibility #1 |
 
 <a id="cl-map-02"></a>
@@ -1605,7 +1647,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Dependencies | owner decision if MOTION.VIS baselines move |
 | Risk of the remedy | more protected items crowd others out near the action |
 | Validation | each named formation drawn >=80% of its event's frames in the long runs |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (premise)] |
 | Area finding | visibility #2 |
 
 <a id="cl-map-03"></a>
@@ -1624,7 +1666,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Cause verified | yes (CSS read; captures) |
 | Remedy | Offer the legend's rows in the phone Menu (or the Layers sheet) and as a collapsed Key button in Watch and below 1080 px; add the key to phone-measure's reach features. |
 | Effort | 1-3 days |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (premise)] |
 | Area finding | visual-maps #2 |
 
 <a id="cl-map-04"></a>
@@ -1643,7 +1685,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Cause verified | yes |
 | Remedy | Draw the rose as its own small control (e.g. beside the scale bar) in every presentation and layout, outside the legend. |
 | Effort | 0.5-1.5 days |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (premise)] |
 | Auditor's note | The auditor read shell.html:206-215 and style.css: the only rose is inside the legend's toggle button; style.css hides .legend below 430 px tall and .legend .rose below 700 px tall: confirmed in part by reading (the width and Watch/Clean conditions left to the verifiers). |
 | Area finding | visual-maps #3 |
 
@@ -1663,7 +1705,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Cause verified | yes (priority order read; read-backs) |
 | Remedy | On the paper map draw village and terrain names as base-map lettering beneath the layer (not competing for its slots), or raise place names above overlay labels there; re-measure the paper cases' drop limits and the motion baselines on the owner's word. |
 | Effort | 1-3 days (plus re-baselining) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (premise)] |
 | Area finding | visual-maps #5 |
 
 <a id="cl-map-06"></a>
@@ -1977,7 +2019,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Cause verified | yes: probe.json reads the disc level (-4.14) against groundY at the blocks' places |
 | Remedy | Seat figures, horses, guns and the HQ camp at max(groundY, the disc's ice level) inside a mere's disc (presentation only), or flatten the drawn bed to the ice level under the disc; add a self-test check that every figure inside a disc stands at the ice surface; re-run the contact check. |
 | Effort | 0.5-1.5 days |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (premise)] |
 | Area finding | visual-landscape #1 |
 
 <a id="cl-vis-02"></a>
@@ -2160,7 +2202,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Remedy | Add 'browser (contrast)' and 'browser (selftest)' to the ruleset's required status checks (a settings change; no code). Keep check:visual on demand (decision 132's cost: two to six hours a run), but record in CHANGELOG.md the dispatched run that measured each merged build, or require it on pull requests that touch app.js, world.js, style.css, tokens.js or tools/visual/. |
 | Effort | minutes (a ruleset setting) |
 | Validation | a draft PR with one self-test check made to fail shows the merge blocked |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (premise); WEAKENED (repro)] |
 | Area finding | tests #1 |
 
 <a id="cl-test-02"></a>
@@ -2226,7 +2268,7 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Risk of the remedy | New KNOWN_WARN entries needed for accepted cases. |
 | Validation | Mutations: re-insert the 8J Legrand case; it fails. |
 | Prior records | T-6; D-1 |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | history #16 |
 
 <a id="cl-test-05"></a>
@@ -2303,7 +2345,8 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Effort | a day |
 | Validation | the GLSL-only swing change then fails it |
 | Adversarial verification | not re-verified (see B intro) |
-| Area finding | tests #6 |
+| Auditor's note | Merged: the robustness area found the hook and its mirror equal today; the finding is that nothing holds them so. |
+| Area finding | tests #6; also reported as robustness #6 |
 
 <a id="cl-test-09"></a>
 
@@ -2523,6 +2566,365 @@ Counts: 123 findings; by severity S1 0, S2 19, S3 65, S4 39; by kind confirmed d
 | Effort | an hour |
 | Adversarial verification | not re-verified (see B intro) |
 | Area finding | tests #18 |
+
+#### CL-REC: the records and documentation
+
+<a id="cl-rec-01"></a>
+
+**CL-REC-01 · S3 · P2 · confirmed defect.** The published site's root page is the developer README: no link to the map and nothing for a visitor on evidence and reconstruction
+
+| field | |
+|---|---|
+| Subsystem | publishing (GitHub Pages root) |
+| User impact | A visitor who opens https://billybobbyboo.github.io/Austerlitz/ reads build instructions and suite descriptions; the map file is named twice in code formatting and is not linked; nothing says what the map documents and what it reconstructs. |
+| Status / origin | open / inherited |
+| Expected | A visitor arriving at the site root finds a link to austerlitz-command-map.html and one paragraph on the reconstruction (claims, grades, design conventions). |
+| Observed | Developer documentation only; the stale statements of the README finding repeated to the public. |
+| Evidence | pages-root.html (fetched 2 November 2026 01:41 GMT; last-modified 1 November 10:57:40 GMT): the rendered README; its only <a href> is to the site itself. |
+| References | README.md:1-37; docs/audit-post8-evidence/records/pages-root.html; docs/audit-post8-evidence/records/pages-root-headers.txt |
+| Remedy | Records/publishing only: a short visitor paragraph and a link at the top of README.md, or a small index.html; no application change. |
+| Validation | curl the Pages root after deployment and check for the link. |
+| Adversarial verification | not re-verified (see B intro) |
+| Auditor's note | Related, not the same surface: CL-UX-11 (the app's own first screen). |
+| Area finding | records #2 |
+
+<a id="cl-rec-02"></a>
+
+**CL-REC-02 · S3 · P2 · confirmed defect.** README.md describes the checks wrongly again and calls the file self-contained (the prior audit's R-1 recurred)
+
+| field | |
+|---|---|
+| Subsystem | records: README.md, .github/workflows/checks.yml |
+| User impact | A contributor or reviewer reading README.md is told check:data compares against step 5c's build, check:contrast reads 35 states and six start-up cases, the self-test has 242 checks in about 15 minutes, check:visual 30 views in about 100 minutes, audit.js only prints, and that the HTML is self-contained although three.js comes from cdnjs. |
+| Status / origin | open / inherited (step 6 item 3 made the states and views stale) / new-regression (Stage 8 PRs 8A-8K moved the reference, the counts and the times) |
+| Expected | README's table matches package.json and the checks as they run (archive/stage8k-f10fe585.html; 45 states; 8 start-up cases; 317 checks; 39 views), and says three.js loads from cdnjs. |
+| Observed | 9 stale statements in README.md (lines 4, 27, 28, 30 twice, 31 twice, 32 twice) and one in checks.yml:5 ("each about 8-15 minutes"; the self-test alone takes 21-43 minutes on CI). README.md last changed at 15b2dcc (decision 214). |
+| Evidence | docs/audit-post8-evidence/records/doc-consistency.md (every quoted phrase re-read on its line by doc-consistency.py); docs/audit-post8-evidence/checks/check-contrast.txt ("states 45 (10 at 390 x 844 as a phone)", "boot cases: 8 of 8 pass"); CHANGELOG.md:1936 (audit.js asserts since step 5) |
+| References | README.md:4; README.md:27; README.md:28; README.md:30; README.md:31; README.md:32; .github/workflows/checks.yml:5; package.json:9; shell.html:437; tools/visual/selftest-manifest.json; tools/visual/cases.js |
+| Remedy | A records-only commit: point README's table at CLAUDE.md's Checks section instead of copying counts and times, or update them; write "one HTML file; three.js r128 is loaded from cdnjs with its integrity hash". |
+| Validation | python3 -I tools/audit-post8/records/doc-consistency.py then reads the corrected lines (its quotes would no longer be found). |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | records #1 |
+
+<a id="cl-rec-03"></a>
+
+**CL-REC-03 · S3 · P2 · confirmed defect.** Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred)
+
+| field | |
+|---|---|
+| Subsystem | records: CHANGELOG.md, docs/ROADMAP.md, CLAUDE.md |
+| User impact | The next agent or the owner reading the status lines is told 8H, 8I-8K, 8L, decision 267 (a) and the device records are unmerged drafts; CLAUDE.md:744 says "Draft PR #79 holds both records". |
+| Status / origin | open / new-regression (Stage 8 records: 8H to the device acceptance) |
+| Expected | Each merged part's status line says "merged (#n, commit)", as step 5 made them (CHANGELOG.md:1854). |
+| Observed | Five CHANGELOG heads say "not merged" or "draft"; three ROADMAP paragraphs say "not merged"; CLAUDE.md:744 says draft while CLAUDE.md:734 and :738 record #77 and #78 merged; ROADMAP records none of PRs #73-#79's merges. |
+| Evidence | git log --merges origin/main: b7fb67a #73 (30 Oct), 72c7e1b #74, c706c96 #76, c7de7a2 #75 (31 Oct), 141f890 #77 (31 Oct), c2adefe #78 and 43e3e5b #79 (1 Nov); docs/audit-post8-evidence/records/doc-consistency.json |
+| References | CHANGELOG.md:5; CHANGELOG.md:18; CHANGELOG.md:40; CHANGELOG.md:58; CHANGELOG.md:86; docs/ROADMAP.md:510; docs/ROADMAP.md:535; docs/ROADMAP.md:548; CLAUDE.md:744; CLAUDE.md:734; CLAUDE.md:738 |
+| Remedy | A records-only commit updating the nine status lines with their merge commits. |
+| Validation | grep -n "not merged" CHANGELOG.md docs/ROADMAP.md against git log --merges. |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | records #3 |
+
+<a id="cl-rec-04"></a>
+
+**CL-REC-04 · S3 · P3 · confirmed defect.** The carried checklist misstates three of its own items (the records' view of other areas' findings)
+
+| field | |
+|---|---|
+| Subsystem | records: docs/STAGE8_SPEC.md 21.9, 22.6, 23.4 |
+| User impact | The checklist the final audit was to start from understates three items: a reader would take them as small offsets and a 4-second gap. |
+| Status / origin | open / new-regression (Stage 8 records, 8J-8L) |
+| Expected | The checklist states each item as measured. |
+| Observed | An offset since Stage 0 filed as 8J's; a separation overstated; a saturated measure read as a duration. |
+| Evidence | history finding 8 (kienmayer@7 "Holding west of the Goldbach" drawn 901 m east of the brook since Stage 0, filed by 8J as an offset from the corrected brook); history finding 9 (Caffarelli 1.61-2.64 km from Bagration, the records say 2.5-2.9 km); visibility carried and findings 1, 3 (the 4,033 ms is the benchmark's whole 121-frame window; over 08:30-11:30 counters hidden 12-28 s); docs/audit-post8-evidence/records/carried.md C-06, C-40, C-41 |
+| References | docs/STAGE8_SPEC.md:5108; docs/STAGE8_SPEC.md:5111-5112; docs/STAGE8_SPEC.md:5400-5401; docs/STAGE8_SPEC.md:5513-5516; data.js:476; data.js:508 |
+| Remedy | Let this register (carried.md) supersede section 22.6's wording; correct the three lines when the records are next touched. |
+| Validation | The history and visibility areas' probes. |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | records #6 |
+
+<a id="cl-rec-05"></a>
+
+**CL-REC-05 · S3 · P3 · accepted compromise.** Two items "recorded complete on the owner's word" carry no results: the screen-reader session (decision 175) and the human second reading (decision 189)
+
+| field | |
+|---|---|
+| Subsystem | records / accessibility and sources evidence |
+| User impact | No screen-reader result exists for any build, Stage 8's landmark and heading changes (8H, A-6) included; the A grades of the drawn coats rest on machine readings only. The records otherwise read as if both were done. |
+| Status / origin | accepted by decisions 175 and 189 / accepted-compromise |
+| Expected | An owner attestation is labelled as one wherever the work is counted as done. |
+| Observed | Counted as done (CLAUDE.md: "step 3 is done"; decision 189 "complete"). |
+| Evidence | ROADMAP:156-159 ("no item results ... none of its 24 items is recorded here as passed or failed"); ROADMAP:196 ("no item results given, none recorded"); second-reading.md:6-7 ("Both readers were machine readers") |
+| References | docs/ROADMAP.md:156-159; docs/ROADMAP.md:196; docs/step3-evidence/sr-session.md; docs/stage6-evidence/second-reading.md:6-7 |
+| Remedy | Either run the 24-item script once on the final build and read the 15 quotes once, or label both as attestations without results in CLAUDE.md and ROADMAP (no app change). |
+| Validation | The script's result column filled, or the label present. |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | records #7 |
+
+<a id="cl-rec-06"></a>
+
+**CL-REC-06 · S4 · P3 · unresolved historical question.** G-3 (Miloradovich at dawn) is the one finding of the prior audit never taken up: no step, no decision, no record since
+
+| field | |
+|---|---|
+| Subsystem | data (FORMATIONS.milo track 0) |
+| User impact | milo@0 is graded A ("Position documented in the sources") with the act "Formed on the plateau near Pratzen village" while plotted about 1.6 km from the village; a visitor reads the strongest grade on an unchecked placement. |
+| Status / origin | open / inherited |
+| Expected | Every prior finding assigned to a step, decided, or recorded as left. |
+| Observed | Neither ROADMAP's step table nor Stage 8's list of unassigned findings (docs/STAGE8_SPEC.md:1327-1339) names G-3. |
+| Evidence | id-mentions.json: G-3 has 0 mentions in CHANGELOG.md, docs/ROADMAP.md and docs/STAGE8_SPEC.md (with H-10 and T-8, the only ids never written; those two were done under decisions 135 and 132); docs/audit-post8-evidence/history/result.json: "(d) G-3 still open" |
+| References | docs/FINAL_AUDIT.md:348; data.js:561; world.js:143; docs/audit-post8-evidence/records/id-mentions.json |
+| Remedy | Put it in the next data task: a source check of the IV Column's place at dawn, or the grade lowered with the act qualified; record it in docs/ROADMAP.md. |
+| Validation | check:data on the data task; the history area's grade probe. |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | records #5 |
+
+<a id="cl-rec-08"></a>
+
+**CL-REC-08 · S4 · P4 · confirmed defect.** CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and "Current state (October 2026)"
+
+| field | |
+|---|---|
+| Subsystem | records: CLAUDE.md |
+| User impact | An agent reading CLAUDE.md is given 484 unchecked statements and 145 own claims (now 481 and 148) and an October heading over November state. |
+| Status / origin | open / new-regression (8K; 1 November records) |
+| Expected | CLAUDE.md states the current counts (it is the agents' map). |
+| Observed | "484 after decision 210 (c), 145"; "## Current state (October 2026)". |
+| Evidence | docs/audit-post8-evidence/records/claims-count.json (704 statements, 148 own, 75 by class, 481 unchecked, 0 stale entries); CHANGELOG.md:204 records the same |
+| References | CLAUDE.md:24; CLAUDE.md:497; CHANGELOG.md:204 |
+| Remedy | Two words in a records-only commit. |
+| Validation | node tools/audit-post8/records/claims-count.js |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | records #4 |
+
+#### CL-ROB: robustness, security, dependencies and maintainability
+
+<a id="cl-rob-01"></a>
+
+**CL-ROB-01 · S1 · P1 · confirmed defect.** The device route's ?src= runs a visitor-supplied URL in the public site's origin (DOM XSS on GitHub Pages)
+
+| field | |
+|---|---|
+| Subsystem | tools/step6/perf-run.html (published by GitHub Pages) |
+| User impact | Anyone can send a link to https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=javascript:... that runs the sender's script in the origin https://billybobbyboo.github.io (every Pages site of that account shares it): arbitrary content or script under the owner's address (phishing, defacement), and the origin's storage. Bounded: the map itself stores nothing and the origin holds no credentials; the S1 class follows the audit's rule for a real, reachable security exposure. |
+| Status / origin | open / inherited |
+| Expected | The route frames only a build on its own host: a relative same-origin http(s) path. |
+| Observed | Any URL, javascript: included, is assigned to the frame's src. |
+| Evidence | perf-run.html:40 reads src=q.get("src") unchecked and :44 sets the frame's src to it. Pages serves the page (HTTP 200, md5 3f57a5bf... equal to the repository's, pages-tools-headers.txt). On a byte-identical local copy served over HTTP on 127.0.0.1 in Chromium 141, ?src=javascript:parent.document.title='RBX '+parent.location.origin;void 0 set the page's title to 'RBX http://127.0.0.1:<port>' (script in the page's origin, reaching the parent); a data: URL could not reach the parent; the control loaded the default path (perfrun-src.json). ?route=, ?quick= and ?only= are only compared or split (perf-route.js:92, :220). The live site was not attacked. |
+| Reproduction | node tools/audit-post8/robustness/perfrun-src.js (local copy; never the live site) |
+| References | tools/step6/perf-run.html:40; tools/step6/perf-run.html:44; docs/audit-post8-evidence/robustness/pages-tools-headers.txt; docs/audit-post8-evidence/robustness/perfrun-src.json; tools/audit-post8/robustness/perfrun-src.js |
+| Cause verified | yes: the assignment executes the javascript: URL in the parent's origin (measured) |
+| Remedy | Accept src only when new URL(src, location.href) has location's origin and an http(s) protocol (else keep the default and say so in #msg); or publish only the product on Pages (a Pages workflow with an explicit artifact), which also removes R-6. A tool change, not a data or build change. |
+| Effort | minutes |
+| Dependencies | none |
+| Risk of the remedy | none for the product; the owner's device runs use the default src |
+| Validation | perfrun-src.js again: the javascript: case leaves the title 'Frame-time route' and the frame on the default; ?src=../../austerlitz-command-map.html still runs the route. |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #1 |
+
+<a id="cl-rob-02"></a>
+
+**CL-ROB-02 · S3 · P3 · confirmed defect.** A context loss while the clock plays can throw an uncaught TypeError from three r128 ("reading 'trim'")
+
+| field | |
+|---|---|
+| Subsystem | app.js loop / context-loss handling (three r128) |
+| User impact | On a real GPU reset or a mobile browser dropping the context mid-play, the console shows an uncaught exception from the frame loop; frames resume after the restore and nothing visible breaks. The context checks never lose the context while playing, so the path is untested. |
+| Status / origin | open / inherited |
+| Expected | No uncaught error on a context loss. |
+| Observed | One uncaught TypeError in one or two of three losses while playing. |
+| Evidence | ctx-error.json: 1 page error in 3 losses while playing (TypeError: Cannot read properties of null (reading 'trim') at new WebGLProgram < acquireProgram < renderBufferDirect), 0 in the paused control; ctx-cycles.json: 2 in 3 playing cycles, 0 in 5 idle. r128 calls .trim() on getProgramInfoLog/getShaderInfoLog, null on a lost context; three's guard (_isContextLost) and the app's (GL.lost) are both set by the webglcontextlost event, which is dispatched after the context is already lost, so a frame that compiles a program in between throws. |
+| Reproduction | node tools/audit-post8/robustness/ctx-error.js |
+| References | app.js:567-571; app.js:9117-9120; node_modules/three/src/renderers/webgl/WebGLProgram.js:736-738; node_modules/three/src/renderers/WebGLRenderer.js:600-608; node_modules/three/src/renderers/WebGLRenderer.js:1002; docs/audit-post8-evidence/robustness/ctx-error.json; docs/audit-post8-evidence/robustness/ctx-cycles.json |
+| Cause verified | yes (three's source and the stack) |
+| Remedy | In loop() skip the frame also when renderer.getContext().isContextLost() (synchronous), as for GL.lost; optionally add a playing case to check:contrast's context cases. |
+| Effort | one line |
+| Dependencies | none |
+| Risk of the remedy | low |
+| Validation | ctx-error.js: 0 page errors over its three playing cycles (repeat a few times: the window is a race). |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #2 |
+
+<a id="cl-rob-03"></a>
+
+**CL-ROB-03 · S3 · P3 · probable problem.** The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes
+
+| field | |
+|---|---|
+| Subsystem | CLAUDE.md, CHANGELOG.md, docs/ |
+| User impact | Maintainers (human or agent) cannot follow 'Read CHANGELOG.md (current state)' as written (about 320k tokens); CLAUDE.md costs about 33k tokens in every session, much of it history; decisions are found by search rather than read. |
+| Status / origin | open / inherited |
+| Expected | An entry point that fits a session with room to work. |
+| Observed | 130 KB of rules and history; a 1.28 MB log to read first. |
+| Evidence | Measured 2026-11-02: CLAUDE.md 130,902 bytes, 745 lines (its 'Current state' about 35 KB); CHANGELOG.md 1,283,488 bytes, 9,387 lines; docs/STAGE8_SPEC.md 665,797 bytes; the branch 2,478 files, 342.9 MB (docs/ 294.5 MB, archive/ 38.4 MB), all published by Pages. |
+| References | CLAUDE.md; CHANGELOG.md; docs/STAGE8_SPEC.md |
+| Remedy | Move CLAUDE.md's stage-by-stage history to a linked file and keep its rules and current state; give CHANGELOG.md a current-state head and split it by stage. |
+| Effort | an afternoon (records only) |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #3 |
+
+<a id="cl-rob-04"></a>
+
+**CL-ROB-04 · S3 · P4 · confirmed defect.** Each context restore keeps about 2.6-4 MB of heap and one more dispose listener per geometry and texture (three r128)
+
+| field | |
+|---|---|
+| Subsystem | three r128 restore path (inherited by the app) |
+| User impact | A page that loses and regains its context many times (a phone backgrounding the tab under memory pressure) grows by about 3 MB per loss; nothing else degrades in the cycles measured. |
+| Status / origin | open / inherited |
+| Expected | A restore leaves the heap where it was. |
+| Observed | +2.56 to +2.76 MB per idle restore, +3.6 to +4.0 MB per playing restore, retained. |
+| Evidence | After forced GC (two HeapProfiler.collectGarbage), JSHeapUsedSize 15.73 MB at the control step, then 18.29, 20.98, 23.65, 26.41, 29.13 after the five idle restores and 33.12, 36.67, 40.37 after the three playing ones; dispose listeners on the scene's geometries 348 -> 1869 (the most on one geometry 1 -> 9), textures 18 -> 162; materials' unchanged; CDP DOM listeners 566/579, nodes 1,859-1,927 and programs 31-35 not growing. initGLContext() makes new WebGLGeometries/WebGLTextures whose dispose closures are added again to every object used; EventDispatcher drops only an identical function. |
+| Reproduction | node tools/audit-post8/robustness/ctx-cycles.js |
+| References | docs/audit-post8-evidence/robustness/ctx-cycles.json; node_modules/three/src/renderers/WebGLRenderer.js:266-288; node_modules/three/src/renderers/webgl/WebGLGeometries.js:56; node_modules/three/src/renderers/webgl/WebGLTextures.js:481 |
+| Cause verified | yes (source read; counts rise by exactly one per restore) |
+| Remedy | Accept and record (rare event; three.js stays r128 unless agreed, CLAUDE.md). An app-side cure would reach into three's internals. |
+| Effort | n/a (record) |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #4 |
+
+<a id="cl-rob-05"></a>
+
+**CL-ROB-05 · S3 · P4 · accepted compromise.** The single file needs cdnjs: offline, or where cdnjs is blocked, the map cannot start
+
+| field | |
+|---|---|
+| Subsystem | shell.html three.js tag (decision 133 (a)) |
+| User impact | Offline or behind a filter that blocks cdnjs.cloudflare.com, a visitor sees the failure dialog: 'The map cannot start ... could not be loaded from cdnjs.cloudflare.com ... The map needs a network connection that can reach that address.' |
+| Status / origin | accepted / accepted-compromise |
+| Expected | As decided. |
+| Observed | As decided. |
+| Evidence | Decision 133 (a) keeps three.js on cdnjs with integrity and crossorigin and a plain failure message; check:contrast's three.js-aborted case holds the dialog (lead-verified). |
+| References | shell.html:26-28; shell.html:437; docs/FINAL_AUDIT.md:835; docs/FINAL_AUDIT.md:880 |
+| Remedy | None required; inlining three.js (option (b), about 600 KB) would make the file work offline. |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #5 |
+
+<a id="cl-rob-06"></a>
+
+**CL-ROB-06 · S4 · P4 · probable problem.** Seven archived builds on the same Pages origin load three.js without integrity
+
+| field | |
+|---|---|
+| Subsystem | archive/ (published by Pages) |
+| User impact | Only on a cdnjs compromise: a tampered three.js would run in the owner's origin through those pages, which the product's SRI otherwise prevents. |
+| Status / origin | open / inherited |
+| Expected | No page on the origin trusts a CDN copy unchecked. |
+| Observed | 7 frozen pages do. |
+| Evidence | grep of each archive's script tag: 7 of 19 without integrity (the builds before roadmap step 3's SW-1); Pages publishes archive/ with the rest of the branch. |
+| References | archive/correction-pass-672aff9f.html; archive/stage0-c09c4b23.html; archive/stage2c-68ac7721.html; archive/spine-6b2cccd4.html; archive/stage4d-9b13adbf.html; archive/stage6b-7fc0f6c3.html; archive/step2-af98f586.html |
+| Remedy | Publish only the product on Pages (see R-1); the archives stay frozen in git. |
+| Effort | small |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #8 |
+
+<a id="cl-rob-07"></a>
+
+**CL-ROB-07 · S4 · P4 · optional improvement.** Assurance tools CI never runs have started to rot: 5 of Stage 8's 189 mutations no longer apply; check:visual runs only on dispatch
+
+| field | |
+|---|---|
+| Subsystem | tools/, .github/workflows/checks.yml |
+| User impact | None to visitors. The evidence that Stage 8's checks can fail is a snapshot: for five checks it can no longer be reproduced as recorded. |
+| Status / origin | open / optional-improvement |
+| Expected | Mutation evidence reproducible. |
+| Observed | 97% applicable; 5 stale. |
+| Evidence | CI runs 24 of 248 tools files on every push; check:visual and its live blocks only on workflow_dispatch with inputs.visual. The 224 others all parse and their requires resolve (tools-rot.json). Read without running, 184 of 189 mutations in tools/stage8/mutate-*.js still find the code they break; not: 8D 'stale', 8F 'treetris', css-8F 'woods8e', css-8G 'shape' and 'tilt' (changed since by 8E's prerequisite, 8H and 8J). |
+| References | docs/audit-post8-evidence/robustness/ci-reach.json; docs/audit-post8-evidence/robustness/tools-rot.json; docs/audit-post8-evidence/robustness/mutate-rot.json; .github/workflows/checks.yml |
+| Remedy | Refresh the five mutations' search strings; optionally run the css-test mutations (node only) in CI. |
+| Effort | small |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #7 |
+
+<a id="cl-rob-08"></a>
+
+**CL-ROB-08 · S4 · P4 · optional improvement.** The project has no licence
+
+| field | |
+|---|---|
+| Subsystem | repository |
+| User impact | Visitors and contributors have no stated right to reuse the code or the dataset; third-party parts are licensed correctly. |
+| Status / origin | open / inherited |
+| Expected | An owner decision recorded. |
+| Observed | None. |
+| Evidence | No LICENSE or COPYING file in git ls-files; package.json private:true with no license field. The fonts' licences are embedded in full in the build; three.js is not redistributed (MIT notice not owed); the textures are CC0 from Poly Haven, named at assets.js:1-2. |
+| References | package.json |
+| Remedy | The owner chooses a licence (code and data may differ) or states all rights reserved. |
+| Effort | minutes |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #9 |
+
+<a id="cl-rob-09"></a>
+
+**CL-ROB-09 · S4 · P3 · accepted compromise.** Decision 140's premise has moved: the self-test is 21.7% of the file (12.8% when decided), +277,502 bytes in Stage 8
+
+| field | |
+|---|---|
+| Subsystem | build size |
+| User impact | Every visitor downloads 611,113 bytes of self-test and debug API (and 437,848 bytes of comments, partly inside it) that no visitor runs; the desktop report transferred 1,219,603 bytes compressed for the page. |
+| Status / origin | accepted by decision 140 on a premise of 12.8% / new-regression (Stage 8 growth of an accepted compromise) |
+| Expected | An accepted trade-off re-put when its measure changes materially. |
+| Observed | Not re-put since Stage 8 Part A recorded "present, larger". |
+| Evidence | size.json (tools/audit/size.js on f10fe585): AUSTERLITZ_DEBUG 611,113 bytes, shareOfHtml 0.217; comments 437,848 bytes (15.6%); 225,445 bytes (12.8%) at the audit, 333,611 (15.0%) at Stage 8 Part A by the same tool |
+| References | docs/audit-post8-evidence/records/size.json; docs/FINAL_AUDIT.md:842; docs/STAGE8_SPEC.md:1336; docs/STAGE8_SPEC.md:5577 |
+| Remedy | Put decision 140 to the owner again with these numbers; no change without the owner (the harness testing the shipped file is the reason it stands). |
+| Validation | node tools/audit/size.js --json |
+| Adversarial verification | not re-verified (see B intro) |
+| Auditor's note | Merged: the records area read decision 140's premise, the robustness area the payload; one issue, the self-test shipped in the product. |
+| Area finding | records #8; also reported as robustness #10 |
+
+<a id="cl-rob-10"></a>
+
+**CL-ROB-10 · S4 · P4 · optional improvement.** Small dead code: gaitDist is never called though the gait's comment and CLAUDE.md name it
+
+| field | |
+|---|---|
+| Subsystem | app.js, world.js |
+| User impact | None; misleads a reader about how the gait's phase is computed. |
+| Status / origin | open / optional-improvement |
+| Expected | Named functions in use. |
+| Observed | 99 bytes dead. |
+| Evidence | Of 791 top-level functions, gaitDist (app.js:5827) has no reference but the comment at app.js:5780; v8Near (world.js:1703) only a comment and the generated _world_mod.js; posOf (app.js:712) is test-only and held by check:data's model list. |
+| References | app.js:5827; app.js:5780; world.js:1703; app.js:712; tools/visual/data-invariance.js:26 |
+| Remedy | Remove gaitDist and v8Near, or name gaitDistOf in the comment. |
+| Effort | minutes |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #11 |
+
+<a id="cl-rob-11"></a>
+
+**CL-ROB-11 · S4 · P4 · optional improvement.** esc() leaves quotes, and double-quoted attributes take its output
+
+| field | |
+|---|---|
+| Subsystem | app.js:6910 |
+| User impact | None today: no string in the dataset or LABELS holds a double quote, '<' or '&'. A future data edit with a double quote in a name would break an attribute (aria-label, title). |
+| Status / origin | open / inherited |
+| Expected | Attribute text escaped for quotes. |
+| Observed | Relies on the data. |
+| Evidence | esc escapes & < > only; app.js:2496 aria-label="'+esc(f.name)+'..."; the day-track's aria-label="'+esc(lab)+'"; dataset-chars.json: 0 such characters in data.js, analysis.js, appearance.js, geo.js and LABELS; narrative.js's refs with " go to a single-quoted data-ref. |
+| References | app.js:6910; app.js:2496; app.js:8117-8118; docs/audit-post8-evidence/robustness/dataset-chars.json; docs/audit-post8-evidence/robustness/sink-judgement.json |
+| Remedy | Escape " and ' in esc() (a no-op on today's text), or a test that no data string holds them. |
+| Effort | minutes |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #12 |
+
+<a id="cl-rob-12"></a>
+
+**CL-ROB-12 · S4 · P4 · optional improvement.** The frame loop requests an animation frame at the display's rate while nothing is drawn
+
+| field | |
+|---|---|
+| Subsystem | app.js:9117-9125 |
+| User impact | An idle page wakes the main thread about 57 times a second (measured under SwiftShader); no frame is drawn and no timer runs. Battery cost on a phone not measured. |
+| Status / origin | open / optional-improvement |
+| Expected | n/a (design: idle frames touch nothing, 8H) |
+| Observed | as stated |
+| Evidence | visitor.json idle.at0400: 120 s at 04:00, 0 frames drawn, 6,825 animation-frame callbacks, 0 timers or intervals fired, CDP TaskDuration +1.135 s, no layout. |
+| References | app.js:9117-9125; docs/audit-post8-evidence/robustness/visitor.json |
+| Remedy | Optional: stop requesting frames when idle and restart on input, a tween, Play or a panel's transition. |
+| Effort | small, with care |
+| Adversarial verification | not re-verified (see B intro) |
+| Area finding | robustness #13 |
 
 #### CL-PERF: performance and the device evidence
 
@@ -2774,7 +3176,7 @@ without running them. **Sampled** means part of the space measured. **Not covere
 
 ### C.2 What each area examined, by method
 
-The per-area coverage tables (121 rows) are in the companion file `docs/FINAL_AUDIT_POST_STAGE8_LEDGERS.md`, section L.1.
+The per-area coverage tables (134 rows) are in the companion file `docs/FINAL_AUDIT_POST_STAGE8_LEDGERS.md`, section L.1.
 
 ### C.3 What was not checked, by area
 
@@ -2783,6 +3185,8 @@ The per-area coverage tables (121 rows) are in the companion file `docs/FINAL_AU
 - **history**: Truth of any historical claim against external sources (assigned to the two source-tracing agents); register quotations read only for C6.21 and C6.c6 · Anything as drawn in a browser: headings, block overlaps, labels and pills are computed from the model and presentation code, not observed (no browser in this phase) · Drawn width of the Litava ribbon and block frontages at the overlaps (centres compared only) · Whether the opening's 08:45 camera shows Legrand's walk-through · appearance.js claims beyond those the dossier strength/composition rows quote · The terrain-dependent tour stop 5 shares (held by terrain-test.js, not re-run here) · KNOW_OVERRIDE's knowledge readings over the day (only id/side coherence checked) · The sources sheet's full text (only searched for totals and the villages note)
 - **interaction**: Real hardware and real-time behaviour: every run used the frame driver's 30 fps clock under SwiftShader; wall-clock figures here are not device timings. · The native context menu (headless shows none): the right-button path of state finding 7 is confirmed up to the seek and the unprevented contextmenu event; that the menu swallows the release is inferred. · State finding 5 (the reading cached at the first instant of a minute) in the browser: not re-tested (node-confirmed by the state area). · A drag during a phase glide on the desktop (s14's case ran with Follow already off); the phone's equivalent is confirmed. · Paper-map glides (MAPCAM.glideTo) interrupted by input. · Reduced motion during these sequences; Firefox and WebKit engines; screen readers; pinch during a glide; sessions longer than two rounds of cycles. · CSS-transition timing as a visitor sees it (transitions were finished as a set-up where needed: an environment workaround, recorded).
 - **perf**: Any measurement on a device or in a browser (this phase has none). · GPU time on the phone: Safari offers no timer query. · Raw frame intervals behind any fps, percentile, max or long count: the route keeps summaries only, so they cannot be independently recomputed. · Temperature, throttling, background load, charging state and whether the wake lock was granted: not recorded by the route and not readable by a page. · What the owner observed during the runs (notifications, dimming): the owner's words were removed from the pasted reports. · Behavioural differences between Chrome 155 and 156, and the GPU driver version: not in the reports. · The culling-off frame of 2,188,177 triangles in section 22.5: no committed evidence file holds it. · Whether the phone's 23 ms Play frame is GPU-, compositor- or script-bound: no GPU timer, and js50 (7-8 ms) covers only part of it. · The clock windows of the phone route's and the brackets' played blocks: not recorded. · The device model ('iPhone 17 Pro') and iOS version: the owner's word; the user agent's OS token is frozen at 18_7. · The per-frame maximum draw calls and triangles on either device: not recorded.
+- **records**: No browser run in this area: on-screen wording of the stale records was not rendered (the visual and accessibility areas did that). · 37 prior findings rest on the records alone (not re-read in code); their status follows the step sections of CHANGELOG.md. · Steps 1-3's hand-ons were followed only as far as later steps' lists carry them; each was not re-verified on its own. · C-05 (whether the Layers panel says anything about the effects on a phone), C-42 (the woods redrawn where a wood changed) and most of C-51 (step 4's review records) not re-examined. · The perf-attribution, robustness and sources-chronology areas had left no result.json when this was written; their items cite the perf area or nothing. · Pull-request states read from merge commits on origin/main, not from the GitHub API. · STAGE8_SPEC.md's sections other than 20.13-25.4 and 9.4 not audited for internal consistency.
+- **sources-chronology**: Mikhailovsky-Danilevsky's 1844 Russian edition (only the 1846 French translation read; it says 'à huit heures' where the register reads 'въ 8-мъ часу') · Copyrighted modern works: Sokolov 2006 (Suchet's drain report, the 16:30 end, the 115 km march), Duffy 1977, Goetz 2005: inaccessible · Kutuzov's private relation (no. 252, p. 265) and Buxhowden's report's 'II Column at eight' not re-read; the Allied report's 'quiet from 15:00' (Materialien pp. 118-119) not re-read · Mikhailovsky-Danilevsky's 'last shots between five and six' and Thiébault's 'three hours' on the plateau not located on the text layers · The other Blasowitz attackers (Stutterheim p. 68, Thiébault p. 462, Sokolov p. 49, the Chevalier Guard's history, Marbot) not re-read · All quotations but three pages rest on the OCR text layer (the registers' own readings were on page images) · 9 of 25 events, 13 of 26 clocked phase lines and 18 of 25 timed anchors outside the ledger; check:chronology's 75 REVIEW rows not audited one by one · Geography of the castle, pheasantry, post house and highway (geography area) and forces (sources-oob area) · Gallica, HathiTrust, Google Books not tried (archive.org scans sufficed); no browser run
 - **sources-oob**: Duffy 1977's pages: a lending item, so only its OCR text layer was searched. A person should read pp. 179-185 on the page before any data change. · Smith 1998 is not readable (as register S5.8 found). Some figures jointly attributed to 'Duffy and Smith' may be Smith's alone. · The 1805 Schematismus (Szekler hussars, grade A): Hungaricana answered 403; the browser-user-agent retry was refused by the permission classifier and not pursued. The record rests on one machine reading. · Teuber 1895 (the Austrian white coat): the Innsbruck digital library timed out. · Chandler 1966, Goetz, Castle, Bowden: in copyright, not tried. Also not fetched: WarHistory's 'about 12,000' (part II), Napoleon-Empire's 17,000, and the Tvarožná municipal history's 1,600 at the Santon. · 34 of 40 commanders (including first names), 10 of 14 composition fields, 170 of 174 dress claims, and 7 of 11 ORDNANCE claims. · The losses, and the 'twenty minutes' and drowning figures (outside the forces area). · How sensitive the derived readings are to the strengths questioned here: the holding on the heights, and tour stop 4's 39,000 and 19,000. Not recomputed. · Whether Schönhals's misprinted lines (Salzburg 6000, Kaiser 100, the Guards' Summa 4380) affected any data. Only noted as derivations.
 - **state**: Nothing in a real browser in this phase (layout, focus, real pointer/key events, the context-menu case, what a visitor sees of the pop and the stale dossier) · The stubbed DOM answers querySelectorAll with nothing; DOM state not read · Real-time behaviour under slow frame rates · Phone resizing and orientation reviewed by reading only
 - **tests**: The browser checks were not run by this area: check:contrast, check:selftest, check:visual, check:report and the start-up cases were read statically; the browser candidates (docs/audit-post8-evidence/tests/browser-candidates.json: the arrow cap's constant, the derived tag in the self-test, a hover colour's contrast, a lowered text token, figures unlisted, the presentation override and the dossier strength in the browser, the band removed from MLS, animEnv returning 0, the GLSL-only gait change, the timing budgets under load) are listed for a browser phase. The audit's runner passed check:contrast (6,926 text elements, 45 states, 8 of 8 start-up cases) and check:selftest (317 checks, 5,422 s). · The in-app self-test's 317 checks were not read one by one; a check weakened by logic under an unchanged name, with no literal moved, would not be found by the literal comparison. · Named constants the self-test reads from app.js were not traced through history. · Mutations of the test tooling itself (statements.js dropping a class, lang-scan.js skipping a file, run-all.sh's FAILS pattern) were not run. · Timing-sensitive checks were not exercised under controlled load. · CI runs before PR #70 were not inspected; the 27 most recent dispatched check:visual runs were listed (9 passed, 13 failed, 5 cancelled, most during development), not read. · Whether the owner intends the browser checks to be non-required (TS-1) was not asked; the facts are the ruleset's and the check runs'.
@@ -2834,7 +3238,7 @@ What no check here can show:
 
 ### D.3 The areas' experiments
 
-Every experiment the areas ran (87), with its command, environment, outcome, evidence and limitations, is in the companion file, section L.2.
+Every experiment the areas ran (101), with its command, environment, outcome, evidence and limitations, is in the companion file, section L.2.
 
 ### D.4 Negative controls: mutations of an isolated copy
 

@@ -185,6 +185,31 @@ const END=function(){
   return {clock:clock, playing:playing};
 };
 
+/* the count pass (load-independent): every method of the WebGL context counted per call (own-property wrappers over the prototype's methods and
+   over the draw stubs; bufferSubData's and bufferData's bytes summed), and a list of the app's globals counted per call; restored after */
+const COUNT_APP=["poseBlock","settleBlock","kitLod","kitLodSet","gaitStep","outlinePlace","confPlace","layoutFigs","placeStandards","cullRefresh","cullStale","cullTest","cullBlock","cullGeo",
+  "mlCollect","mlFar","mlFarPlate","mlFarRatio","mlHoldTry","mlPlaceItem","mlOccluded","mlBand","mlBandAt","mlFree","mlTake","mlPanels","mlObstacles","mlLegendFit","groundY","groundYFast","displayHeight","height",
+  "posNow","stateAt","confAt","liveStatus","marchRate","worldPerPx","landFreeRect","landPanels","viewH","freeCentre","smokePlace","smokeWant","drawnKnow","aggReading","capPts","capRows","arrowCap",
+  "ribbonRelayout","faceClock","enemyFacing","updateTrail","spriteFloor","onScreen","eyeOwnNear","leavesOf","viewDist","groundPatch","drawOnArrows","toastRelayout","placeToast","tipSync","syncInert"];
+const COUNT_ON=function(appNames){
+  var glc=renderer.getContext(), C=window.__paC={gl:{}, app:{}, bytes:0, wrapped:[], own:{}, appW:{}};
+  var proto=Object.getPrototypeOf(glc);
+  Object.getOwnPropertyNames(proto).forEach(function(k){ var d=Object.getOwnPropertyDescriptor(proto,k); if(!d||typeof d.value!=="function"||k==="constructor") return;
+    var own=Object.prototype.hasOwnProperty.call(glc,k), f=own?glc[k]:d.value; C.own[k]=own?glc[k]:null; C.gl[k]=0;
+    glc[k]=(k==="bufferSubData"||k==="bufferData")?function(){ C.gl[k]++; var a=arguments[2]!==undefined&&k==="bufferSubData"?arguments[2]:arguments[1]; if(a&&a.byteLength) C.bytes+=a.byteLength; return f.apply(glc,arguments); }
+      :function(){ C.gl[k]++; return f.apply(glc,arguments); }; C.wrapped.push(k); });
+  appNames.forEach(function(k){ var f=window[k]; if(typeof f!=="function") return; C.appW[k]=f; C.app[k]=0; window[k]=function(){ C.app[k]++; return f.apply(this,arguments); }; });
+  return {gl:C.wrapped.length, app:Object.keys(C.appW).length};
+};
+const COUNT_OFF=function(){
+  var glc=renderer.getContext(), C=window.__paC; window.__paC=null;
+  C.wrapped.forEach(function(k){ if(C.own[k]) glc[k]=C.own[k]; else delete glc[k]; });
+  Object.keys(C.appW).forEach(function(k){ window[k]=C.appW[k]; });
+  var gl={}; Object.keys(C.gl).forEach(function(k){ if(C.gl[k]) gl[k]=C.gl[k]; });
+  var app={}; Object.keys(C.app).forEach(function(k){ if(C.app[k]) app[k]=C.app[k]; });
+  return {gl:gl, app:app, bytes:C.bytes, glTotal:Object.keys(gl).reduce(function(s,k){ return s+gl[k]; },0)};
+};
+
 /* the browser's processes (CDP SystemInfo): the renderers' main threads (a process's main thread has its pid as tid; headless_shell names it
    after the binary, not CrRendererMain) and the GPU process's threads; their CPU time from schedstat (nanoseconds on the CPU, nanoseconds
    runnable but waiting for a CPU): the main thread's own CPU, blind to time spent blocked (a GL call waiting for the GPU process) */
@@ -203,12 +228,14 @@ async function runMotion(browser,page,o){
   const P=await procs(browser);
   const t0=Date.now(), la0=loadavg();
   const b=await page.evaluate(BEGIN,{kind:o.kind, warm:o.warm, frameMs:o.frameMs, pxPerFrame:o.pxPerFrame||0, steps:STEP_WRAP});
+  if(o.count) b.count=await page.evaluate(COUNT_ON,COUNT_APP);
   let cdp=null;
   if(o.profile){ cdp=await page.context().newCDPSession(page); await cdp.send("Profiler.enable"); await cdp.send("Profiler.setSamplingInterval",{interval:o.sampleUs||200}); await cdp.send("Profiler.start"); }
   const s0=sched(P.ren), g0=sched(P.gpu), t1=Date.now();
   const r=await page.evaluate(TIMED,o.n);
   const s1=sched(P.ren), g1=sched(P.gpu), t2=Date.now();
   if(cdp){ const {profile}=await cdp.send("Profiler.stop"); await cdp.send("Profiler.disable"); await cdp.detach(); r.profile=profile; }
+  if(o.count) r.counts=await page.evaluate(COUNT_OFF);
   const e=await page.evaluate(END);
   /* the page's main thread: the renderer whose main thread's CPU moved most over the timed frames */
   let k=0, best=-1; s0.forEach((x,i)=>{ const d=s1[i].run-x.run; if(d>best){ best=d; k=i; } });
@@ -308,4 +335,4 @@ const STEPS=["loop","syncFollow","openingWatch","paintDevStats","frameState","_r
   "renderBufferDirect","setProgram","updateMatrixWorld","intersectsObject","onPointerMove","dispatchEvent"];
 function stats(a){ const s=a.slice().sort((x,y)=>x-y), n=s.length; if(!n) return {n:0}; const q=p=>s[Math.min(n-1,Math.floor(p*(n-1)+0.5))];
   return {n, mean:+(s.reduce((x,y)=>x+y,0)/n).toFixed(3), p10:+q(0.1).toFixed(3), p50:+q(0.5).toFixed(3), p90:+q(0.9).toFixed(3), p95:+q(0.95).toFixed(3), max:+s[n-1].toFixed(3)}; }
-module.exports={A, MD, MOTIONS, OV, FIELD, openVisitor, setup, runMotion, aggregate, STEPS, STEP_WRAP, stats, classify, SUBSYS, procs, sched, loadavg};
+module.exports={COUNT_APP, A, MD, MOTIONS, OV, FIELD, openVisitor, setup, runMotion, aggregate, STEPS, STEP_WRAP, stats, classify, SUBSYS, procs, sched, loadavg};

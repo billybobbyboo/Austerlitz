@@ -793,6 +793,18 @@
      }
     ]
    }
+  },
+  {
+   "what": "reading back to everyone",
+   "click": {
+    "sel": "#eyesbtn",
+    "at": [
+     1199,
+     829
+    ],
+    "hitTestOk": true
+   },
+   "commandView": "none"
   }
  ]
 }

@@ -21,8 +21,17 @@
      2
     ]
    ],
-   "also": [],
-   "note": "The auditor read analysis.js:292-294: the event 'face-about' carries claim:\"fact\" while its own why says 'That he ordered the column to face about is this map's reading': confirmed."
+   "also": [
+    [
+     "sources-chronology",
+     2
+    ]
+   ],
+   "note": "Merged: the history area found the pill contradicting the event's own text; the chronology area found which side the sources support (the order is given by Schonhals p. 162 and Stutterheim pp. 63-64, which the project has read). The auditor read analysis.js:292-294: the event 'face-about' carries claim:\"fact\" while its own why says 'That he ordered the column to face about is this map's reading': confirmed.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise)]"
+   }
   },
   {
    "id": "CL-HIS-02",
@@ -33,7 +42,11 @@
     ]
    ],
    "also": [],
-   "note": "The auditor traced the grade inheritance: an anchor without cf takes the previous anchor's grade (data.js tracks; stateAt), shown as 'Position documented in the sources' (app.js:7731 CONF_TEXT.A); 44 of 88 A grades are so carried: confirmed."
+   "note": "The auditor traced the grade inheritance: an anchor without cf takes the previous anchor's grade (data.js tracks; stateAt), shown as 'Position documented in the sources' (app.js:7731 CONF_TEXT.A); 44 of 88 A grades are so carried: confirmed.",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (premise)]"
+   }
   },
   {
    "id": "CL-HIS-03",
@@ -44,7 +57,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (premise)]"
+   }
   },
   {
    "id": "CL-HIS-04",
@@ -55,7 +72,11 @@
     ]
    ],
    "also": [],
-   "note": "The auditor reproduced the distance: Legrand's interpolated position at 08:50 is about 39 m from the III Column's re-plotted place (data.js:227-228; LANDMARK_SITES.castle, world.js:162): confirmed."
+   "note": "The auditor reproduced the distance: Legrand's interpolated position at 08:50 is about 39 m from the III Column's re-plotted place (data.js:227-228; LANDMARK_SITES.castle, world.js:162): confirmed.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise)]"
+   }
   },
   {
    "id": "CL-HIS-05",
@@ -66,7 +87,11 @@
     ]
    ],
    "also": [],
-   "note": "Related, not the same issue: CL-VIS-03 (the facing rule on slow drifts)."
+   "note": "Related, not the same issue: CL-VIS-03 (the facing rule on slow drifts).",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise)]"
+   }
   },
   {
    "id": "CL-HIS-06",
@@ -76,8 +101,17 @@
      5
     ]
    ],
-   "also": [],
-   "note": ""
+   "also": [
+    [
+     "sources-chronology",
+     1
+    ]
+   ],
+   "note": "Merged: one labelling rule, three events found by the history area and a fourth, the Pratzen climb, by the chronology area.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-07",
@@ -88,7 +122,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-08",
@@ -99,7 +137,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-09",
@@ -110,7 +152,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-10",
@@ -121,7 +167,11 @@
     ]
    ],
    "also": [],
-   "note": "CL-HIS-04 is its one new instance; CL-TEST-04 is the missing check."
+   "note": "CL-HIS-04 is its one new instance; CL-TEST-04 is the missing check.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-11",
@@ -132,7 +182,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-12",
@@ -143,7 +197,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-13",
@@ -154,7 +212,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-14",
@@ -165,7 +227,11 @@
     ]
    ],
    "also": [],
-   "note": "Overlaps CL-GEO-07 (Krug's place) and CL-SRC-03 (Kologrivov's command); this entry is the qualification a visitor is not shown."
+   "note": "Overlaps CL-GEO-07 (Krug's place) and CL-SRC-03 (Kologrivov's command); this entry is the qualification a visitor is not shown.",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-15",
@@ -176,7 +242,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-16",
@@ -187,7 +257,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-HIS-17",
@@ -198,7 +272,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-SRC-01",
@@ -209,7 +287,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   }
   },
   {
    "id": "CL-SRC-02",
@@ -289,6 +371,17 @@
    "note": ""
   },
   {
+   "id": "CL-SRC-09",
+   "from": [
+    [
+     "sources-chronology",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
    "id": "CL-GEO-01",
    "from": [
     [
@@ -297,7 +390,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   }
   },
   {
    "id": "CL-GEO-02",
@@ -407,7 +504,11 @@
     ]
    ],
    "also": [],
-   "note": "The auditor read app.js:3498 and 7720-7728: within a phase the dossier is repainted only when drawerKey changes, and the key holds each leaf's text phase, moving or standing, and hidden state, not its place or the clock: confirmed by reading."
+   "note": "The auditor read app.js:3498 and 7720-7728: within a phase the dossier is repainted only when drawerKey changes, and the key holds each leaf's text phase, moving or standing, and hidden state, not its place or the clock: confirmed by reading.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   }
   },
   {
    "id": "CL-SIM-02",
@@ -418,7 +519,11 @@
     ]
    ],
    "also": [],
-   "note": "The same family as CL-SIM-05 (decision 251 (a)'s reach): drawn overlays here, a card's text there."
+   "note": "The same family as CL-SIM-05 (decision 251 (a)'s reach): drawn overlays here, a card's text there.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise)]"
+   }
   },
   {
    "id": "CL-SIM-03",
@@ -500,7 +605,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise)]"
+   }
   },
   {
    "id": "CL-UX-02",
@@ -511,7 +620,11 @@
     ]
    ],
    "also": [],
-   "note": "The auditor read app.js:6309-6322 and 6479-6530: the glide runs in the tween's 'cam' slot to its end; a pan, zoom or key move calls free() (freeCam=true) but never clears _tw.cam, so the next frames apply the glide's arc again: confirmed by reading."
+   "note": "The auditor read app.js:6309-6322 and 6479-6530: the glide runs in the tween's 'cam' slot to its end; a pan, zoom or key move calls free() (freeCam=true) but never clears _tw.cam, so the next frames apply the glide's arc again: confirmed by reading.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   }
   },
   {
    "id": "CL-UX-03",
@@ -531,7 +644,11 @@
      2
     ]
    ],
-   "note": "Merged: one hit-area rule, measured on a phone by two areas and at the playhead on a desktop by a third."
+   "note": "Merged: one hit-area rule, measured on a phone by two areas and at the playhead on a desktop by a third.",
+   "verify": {
+    "verdict": "DUPLICATE",
+    "note": " [lenses: DUPLICATE (premise)]"
+   }
   },
   {
    "id": "CL-UX-04",
@@ -729,7 +846,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (premise)]"
+   }
   },
   {
    "id": "CL-MAP-02",
@@ -740,7 +861,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (premise)]"
+   }
   },
   {
    "id": "CL-MAP-03",
@@ -751,7 +876,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (premise)]"
+   }
   },
   {
    "id": "CL-MAP-04",
@@ -762,7 +891,11 @@
     ]
    ],
    "also": [],
-   "note": "The auditor read shell.html:206-215 and style.css: the only rose is inside the legend's toggle button; style.css hides .legend below 430 px tall and .legend .rose below 700 px tall: confirmed in part by reading (the width and Watch/Clean conditions left to the verifiers)."
+   "note": "The auditor read shell.html:206-215 and style.css: the only rose is inside the legend's toggle button; style.css hides .legend below 430 px tall and .legend .rose below 700 px tall: confirmed in part by reading (the width and Watch/Clean conditions left to the verifiers).",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (premise)]"
+   }
   },
   {
    "id": "CL-MAP-05",
@@ -773,7 +906,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (premise)]"
+   }
   },
   {
    "id": "CL-MAP-06",
@@ -949,7 +1086,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (premise)]"
+   }
   },
   {
    "id": "CL-VIS-02",
@@ -1048,7 +1189,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (premise); WEAKENED (repro)]"
+   }
   },
   {
    "id": "CL-TEST-02",
@@ -1081,7 +1226,11 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   }
   },
   {
    "id": "CL-TEST-05",
@@ -1124,8 +1273,13 @@
      5
     ]
    ],
-   "also": [],
-   "note": ""
+   "also": [
+    [
+     "robustness",
+     5
+    ]
+   ],
+   "note": "Merged: the robustness area found the hook and its mirror equal today; the finding is that nothing holds them so."
   },
   {
    "id": "CL-TEST-09",
@@ -1254,6 +1408,220 @@
     [
      "tests",
      17
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-REC-01",
+   "from": [
+    [
+     "records",
+     1
+    ]
+   ],
+   "also": [],
+   "note": "Related, not the same surface: CL-UX-11 (the app's own first screen)."
+  },
+  {
+   "id": "CL-REC-02",
+   "from": [
+    [
+     "records",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-REC-03",
+   "from": [
+    [
+     "records",
+     2
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-REC-04",
+   "from": [
+    [
+     "records",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-REC-05",
+   "from": [
+    [
+     "records",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-REC-06",
+   "from": [
+    [
+     "records",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-REC-08",
+   "from": [
+    [
+     "records",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-01",
+   "from": [
+    [
+     "robustness",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-02",
+   "from": [
+    [
+     "robustness",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-03",
+   "from": [
+    [
+     "robustness",
+     2
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-04",
+   "from": [
+    [
+     "robustness",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-05",
+   "from": [
+    [
+     "robustness",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-06",
+   "from": [
+    [
+     "robustness",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-07",
+   "from": [
+    [
+     "robustness",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-08",
+   "from": [
+    [
+     "robustness",
+     8
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-09",
+   "from": [
+    [
+     "records",
+     7
+    ]
+   ],
+   "also": [
+    [
+     "robustness",
+     9
+    ]
+   ],
+   "note": "Merged: the records area read decision 140's premise, the robustness area the payload; one issue, the self-test shipped in the product."
+  },
+  {
+   "id": "CL-ROB-10",
+   "from": [
+    [
+     "robustness",
+     10
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-11",
+   "from": [
+    [
+     "robustness",
+     11
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-ROB-12",
+   "from": [
+    [
+     "robustness",
+     12
     ]
    ],
    "also": [],

@@ -1,0 +1,131 @@
+{
+ "label": "v-batch-his",
+ "verdicts": [
+  {
+   "area": "history",
+   "index": 5,
+   "verdict": "CONFIRMED",
+   "method": "code and data reading at HEAD; git log -S for origin",
+   "evidence": "analysis.js:280-282 decision claim est, why 'The hour is disputed: about eight in Segur, ... half past eight in Thiebault, ... about nine in the Austrian accounts'; analysis.js:314-316 guard-attack est, 'The hour is disputed: Rapp and Segur ... about 13:00, Schonhals ... by about noon'; analysis.js:350-352 ice fact (its why is about the drowned, not the hour) and data.js:122 its phase line 'The accounts differ on the hour: Schonhals ... half past two; Thiebault ... last half hour of the firing'. CLAIM.disputed data.js:20 fits all three. evNoteParts app.js:3886-3888 gives 'hour disputed' only for claim 'disputed': decision and guard-attack are labelled '(interval)', ice nothing; the dossier says CLAIM[e.claim].note (app.js:8328), e.g. 'the figure or frontage shown is an estimate'. Decision 201 (b) (docs/step4-evidence/questions.md:240-252) was applied to the seven events from question 193; these texts date from step 4 (aa561af, 69031df, 14 Oct), before 201: inherited.",
+   "notes": "Agree S3. P2 or P3: a guarded data task (analysis.js), 'dispute' with both hours (test.js:194 requires the hours in it), labels measured as 201 (b) did. Consistent with decision 201 (b); no decision covers the gap."
+  },
+  {
+   "area": "history",
+   "index": 6,
+   "verdict": "CONFIRMED",
+   "method": "own probe on an isolated copy (model's posAtClock, plateauStrength, anchorList); code and records reading",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-his/kamensky.txt: kamensky 08:00 [259,316] -> 08:44 [268.78,298.4], true bearing 46.5 deg (NE), 0.636 km, Pratzeberg 1.19 -> 0.60 km; Langeron's own leg 0.171 km; enters PLATEAU_POLY at 08:29, Allied reading 19,300 -> 23,550, French 0 until 09:15; sthilaire at [206,231] through 08:45. anchorList: ph2 arr 480, ph3 arr 525, so the leg runs 08:00-08:45. Disclosures: data.js:799 'in the 08:45 phase in his brigade's record'; analysis.js:299 'turns it in the 08:45 phase'; app.js:64 'his own record and the track in phase 3'; chronology.js:259 'the engine arrives 08:45'; docs/STAGE2_SPEC.md:1172 records the leg as 08:00-08:45.",
+   "notes": "The leg's timing is decision 42's 'today's behaviour' for the named conflict (CONFLICTS kamensky@3, chronology.js:446) and is accepted as such. The defect is that the disclosures name the arrival, not the walk drawn from 08:00, plus the lift in the derived reading. The record fix is consistent with decision 42. A moveMin hold would be a timing that no source dates, so it is the owner's choice under decisions 40-42. The area's 'heading 151 deg' is not a compass bearing: the true bearing is 46.5 deg (its 'north-east' is right). Inherited: the texts came in 56501de (step 4 K4). S3 P3 agreed."
+  },
+  {
+   "area": "history",
+   "index": 7,
+   "verdict": "CONFIRMED",
+   "method": "own probe (brook polyline parsed from world.js, true km via GEOREF); archive/stage0 read",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-his/kienmayer.txt: @7 [242,400] is 0.901 km east of the Goldbach's N-S reach (x 213.50 at y 400). The nearest brook point is 0.474 km to its south, on the reach running east to the meres. @1 is 0.714 km east, @2 0.265 km east. Of 146 five-minute samples, 0 stand west of the reach. archive/stage0-c09c4b23.html has the same anchor and act, and its brook (x 212.24 at y 400) puts @7 0.941 km east.",
+   "notes": "On neither reach is the block west of the brook: it stands east of the N-S reach and north of the E-W reach. A small correction to the area: 8J moved that segment's north vertex ([208,376] -> [212.4,377.9]), shifting the brook about 40 m east at y 400. The offset is still Stage 0's, not 8J's, so STAGE8_SPEC.md:4982/5108 and CHANGELOG.md:379 misfile it. The record part overlaps records #5. S3 P3 agreed; inherited."
+  },
+  {
+   "area": "history",
+   "index": 8,
+   "verdict": "CONFIRMED",
+   "method": "own probe (ROADS[0] from the world module, posNow, stateAt); archive anchors compared",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-his/caffarelli.txt: from 12:45 to 17:00 the division is 1.54 -> 2.15 km from the highway and 1.61 -> 2.64 km from Bagration (northing 1.57 -> 2.59). The nearest enemy is lich at 1.52-1.61 km. obj 'Push Bagration off the highway' is carried from @7 (stateAt app.js:691-704) and cf A from @5 (data.js:286-292). The records say 2.5-2.9 km (8k/register.md:235, CHANGELOG.md:260); measured at the same clock it is 2.13 km at 14:30 and 2.64 km at 17:00. docs/audit-post8-evidence/verification/v-batch-his/anchor-pairs.txt and the pre-8K anchors (archive/stage8j: bag@8 [337,29], bag@9 [366,14]) give 2.96/3.16 km true and 2.81/3.01 km northing: the figure was not re-measured after 8K re-plotted Bagration.",
+   "notes": "Nuance: between anchors the pill reads 'Position: interpolated' (posClaimOf app.js:8098-8103); 'documented' shows only at the anchor minutes. Origin: the drawn separation is inherited (it was larger before 8K); the misstated record is 8K's and overlaps records #5. S3 P3 probable-problem agreed."
+  },
+  {
+   "area": "history",
+   "index": 9,
+   "verdict": "CONFIRMED",
+   "method": "own probe (minute-by-minute closest approach; segment intersection with LITAVA_M; covWater via the world module)",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-his/bourcier.txt: Bourcier comes within 26 m of Kienmayer at 14:38 and 12 m of Dokhturov at 14:54, all on the same vias ([247,397], [272,378]: data.js:270, 477-478). docs/audit-post8-evidence/verification/v-batch-his/milo.txt: milo@8 [446,210] is 19 m from LITAVA_M with covWater 0.96; the track crosses the river line at 14:26 [444.7,210.5] and 14:47 [449.2,205.6], 1.04 and 1.12 km from the nearest ROADS line. crossingProblem/wetAt (app.js:3378-3400) tests ponds (the SATS/MENI ellipses) and marsh only. The anchors are identical in archive/stage0, step2 and step5c: inherited.",
+   "notes": "Same class as history #1 and visual-landscape #3 (opposing blocks sharing ground), but a different case and a data-track cause: not a duplicate. The river-check part overlaps geography #4 and history #15. S3 P3 agreed."
+  },
+  {
+   "area": "history",
+   "index": 10,
+   "verdict": "CONFIRMED",
+   "method": "own probe (nearest formation centre of each side to [208,365], 15-min steps); code reading of the block extents; visual-landscape capture re-read",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-his/sokolnitz.txt: from 09:00 to 13:15 the nearest French centre is legrand at 0.95-1.19 km, then friant at 0.80-1.21 km; the nearest Allied is prz at 0.79 km throughout. friant's closest all day is 0.80 km at 12:45. legrand stands 0.07 km off at 08:00 and is back to 0.23 km at 13:45. lang@2 [235,350] (A, 'Storms Sokolnitz', data.js:508) is 0.976 km from the village and 0.452 km east of the brook. FEATURES (data.js:707) says 'Defended by: Legrand, then Friant'; the arrow note at app.js:47 says 'the model has the column at the village from 08:00'.",
+   "notes": "'Drawn empty' holds for centres. But blocks have width: up to 7 subunits (app.js:833-838), an infantry front of up to about 1.1 km (app.js:1630-1636). In visual-landscape/shots/sok-village-1200-west.jpg the III Column's block abuts the castle group's farmsteads at 12:00. So no block occupies the village, but figures stand beside it. Inherited. S3 P3 agreed."
+  },
+  {
+   "area": "history",
+   "index": 11,
+   "verdict": "CONFIRMED",
+   "method": "own script (COMMAND rows x stmtClaim's lookup); code reading of paintCommand and claimsIndex",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-his/command.txt: 35 DOCUMENTED rows, 31 with no claim (STATEMENT_CLAIMS/CLAIM_BY_CLASS, as app.js:8109-8114). The sources sheet's index files every such statement under 'Not yet checked ... Every other statement.' (app.js:8648-8673, narrative.js:27). paintCommand (app.js:4237-4256) shows one book for the whole phase. al@5[0] (analysis.js:106) says 'Blasowitz had fallen' from 10:30, though the event is at 11:15 (phase 6 t0); phase 5's own line (data.js:98) puts the fall at its end, so the row runs up to 45 min early within its phase. al@4[0] (analysis.js:104) is kind 'saw', so it renders 'Could see: The accounts differ on who turned Kamensky's brigade about'.",
+   "notes": "Decision 187 (i) asked for one vocabulary (questions.md:102-110), but only SRC_LABEL.inf changed. No decision covers 'DOCUMENTED' beside 'unchecked'. Inherited. S3 P3 agreed."
+  },
+  {
+   "area": "history",
+   "index": 12,
+   "verdict": "CONFIRMED",
+   "method": "code reading (marchRow, marchRate, GAIT); own probe over the day",
+   "evidence": "app.js:7917-7930 labels the row 'Marching' whenever marchRate.moving (app.js:3347-3354: u in (0,1), at any rate). GAIT.KMH=1 (app.js:5812, 5863) treats a leg under 1 km/h as a drift. docs/audit-post8-evidence/verification/v-batch-his/drift.txt: rg_cav at 07:37 is 3.23 km in 435 min, 0.44 km/h, moving, with status 'In reserve'. Over the day 14,021 formation-minutes show 'Marching' under 1 km/h, 5,443 of them with status reserve, concealed, holding or forming. docs/audit-post8-evidence/verification/v-batch-his/rgcav-plateau.txt: rg_cav enters PLATEAU_POLY at 10:05 and the Allied reading goes 18,150 -> 21,050.",
+   "notes": "Inherited (the row predates Stage 8: 0a19964). Related, not duplicates: visual-landscape #2 (facing along drifts) and tests #6 (the march-row pin). Decision 45 keeps the drift; it does not cover the row's word. S3 P3 agreed."
+  },
+  {
+   "area": "history",
+   "index": 13,
+   "verdict": "WEAKENED",
+   "method": "data, world and register reading; the project's own 6B reading of Schonhals p. 178; other areas' results",
+   "evidence": "Krug: VILLAGES Krug [339,139] and Holubitz [340,89] (world.js:142-143) lie 1.58 km apart, while the acts pair 'Krug and Holubitz' (data.js:613). The Second Survey's 'Kruch' is beside Holubitz at docs/stage8-evidence/8k/register.md:36 (the cited :43-45 is the post-house entry). SOURCE_NOTE (data.js:798-799) discloses both places as open; there is no qualifier on the label. Kologrivov: docs/stage6-evidence/readings-composition.md:540-548 (al.rg.oob.schoenhals) reads 'GL. Kollowrizow' in Schonhals 1873 p. 178's order of battle, 'a second source for that name'. So data.js:640 'in Sokolov alone' and SOURCE_NOTE are the error (sources-oob #4), not an unqualified label.",
+   "notes": "The Krug/Bellowitz part is substantively geography #6. The Kologrivov premise fails, and the proposed remedy ('Sokolov alone' in the field) would entrench the error.",
+   "corrected": {
+    "title": "Krug and Bellowitz drawn at their legacy places, the open question only in SOURCE_NOTE (= geography #6); Kologrivov's commander lacks a claim tag, while SOURCE_NOTE wrongly calls his command single-source",
+    "severity": "S3 (Krug, via geography #6); S4 for the commander tag",
+    "category": "unresolved-historical (Krug); confirmed-defect in records for the Kologrivov note (sources-oob #4)",
+    "observed": "The commander is attested by Sokolov, Schonhals p. 178 and Duffy p. 184: tag it 'attributed' and fix the note, rather than qualifying the name"
+   },
+   "duplicate_of": "geography #6 (Krug/Bellowitz part)"
+  },
+  {
+   "area": "history",
+   "index": 14,
+   "verdict": "CONFIRMED",
+   "method": "data and code reading; true km via GEOREF",
+   "evidence": "(a) sthilaire@2 [206,231] is 0.146 km and vandamme@2 [221,182] 0.265 km west of the brook (x 210.6 and 229.4), act 'Crosses the Goldbach' (data.js:191, 209); sthilaire holds [206,231] to 08:45 (kamensky.txt). (b) ahq@4 (data.js:450) vs kamensky@5/@6 (data.js:523-524). (c) app.js:7969-7970 maps arm 'guard' to 'Guard infantry' for c_gd and constantine (data.js:399, 621), both with cavalry children. (d) milo@0 is 1.60 km from Pratzen [276,243]: G-3 (docs/FINAL_AUDIT.md:348), also records #4. (e) data.js:323, 360, 399, 406, 418, 500 are unaccented; guard_inf.commander is a composition (data.js:406). (f) data.js:3 says ~13 x ~10 km, but 680 x 500 x KM_PER_MAP 0.0316 = 21.5 x 15.8 km. (g) lang's note (data.js:501) has no 'including Kamensky'; ownStrengthAt subtracts tracked children (app.js:742-748); Buxhowden's note gives 33,000-40,000 (data.js:457). (h) rg_cav@0 is A from 04:00 (data.js:642) while its note has the Chevalier Guard come up later (data.js:640).",
+   "notes": "The card's '≈ 40,000' in (g) was not rendered here. S4 P4 agreed; inherited."
+  },
+  {
+   "area": "history",
+   "index": 15,
+   "verdict": "CONFIRMED",
+   "method": "code reading of the rules",
+   "evidence": "crossingProblem (app.js:3391-3400): ponds and marsh only. sim-test.js:30-162: continuity, rate ceiling, event-marker distance, counts, the plateau rules, decision 196; no proximity, river, side-of-stream or motion-vs-status rule. test.js:191-194: the event claim's class and the dispute's hours, not the event claim against its why's statement claim. audit.js: auditMovement, continuity, coverage.",
+   "notes": "The river/stream part overlaps geography #4 ('no check can fail a stream or marsh crossing'). 'Carried-forward grades' was not enumerated independently. New rules need KNOWN_WARN entries with reasons for accepted cases, which is allowed. S3 P3 untested agreed."
+  },
+  {
+   "area": "history",
+   "index": 16,
+   "verdict": "CONFIRMED",
+   "method": "data and test reading",
+   "evidence": "data.js:621-626: strength 10,500. The note gives Duffy's rows (6,730 including the 2,300 Life Grenadiers 'in reserve', 2,900 horse, 100 pioneers; 9,730; 800 in no row) and 'This map draws the 4,430 infantry ... and the 2,900 horse'. The 3,170 (10,500 - 7,330) can be derived from it but is not named. test.js:477-478 KNOWN_WARN 'constantine: declared 10500 vs children 7330' cites decision 213 (b).",
+   "notes": "Accepted compromise under decision 213 (b). S4 P4."
+  },
+  {
+   "area": "history",
+   "index": 17,
+   "verdict": "CONFIRMED",
+   "method": "data and decision reading",
+   "evidence": "bag.role (data.js:602) says it 're-forms on the height toward Rausnitz and withdraws toward Austerlitz in the evening'; bag@8's act is at data.js:610; bag@9 [414,13] (data.js:611) lies NE; the arrow at app.js:100 reads 'Bagration withdraws on Rausnitz'. Decision 180 (c), 'Redraw bag@9 toward Austerlitz', is 'not now' (docs/step4-evidence/questions.md, question 180).",
+   "notes": "Accepted compromise under decision 180 (c). 8K re-plotted bag@9 (from [366,14]) and kept its direction. S4 P4."
+  }
+ ],
+ "not_done": [
+  "No browser reproduction: for #5, #11 and #12 the label and dossier strings were established from code (evNoteParts, paintCommand, marchRow), not read off a page",
+  "#14 (g): Buxhowden's card text '≈ 40,000' was not rendered",
+  "Historical correctness of the acts was not judged (Kienmayer's side, Caffarelli's afternoon route, who held Sokolnitz); that is source work",
+  "#15 'carried-forward grades' was not enumerated independently",
+  "#10: the figures' actual extent around the village was not measured in a browser (one existing capture was re-read)"
+ ],
+ "extra_issues": [
+  {
+   "title": "The II Column, 'Storms Sokolnitz' (A, attacking), is drawn receding from the village 08:00-10:30",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-his/sokolnitz.txt: lang's distance to [208,365] grows 0.98 -> 1.54 km from 08:00 to 10:30; docs/audit-post8-evidence/verification/v-batch-his/kamensky.txt: the 08:00-08:44 bearing is 58 deg (NE); docs/audit-post8-evidence/history/drift-legs.txt:44 gives lang 2->4 as 0.58 km in 150 min (0.23 km/h); data.js:508.",
+   "severity": "S4",
+   "notes": "Missed by history #0's motion-vs-status list (its samples are at or above walking pace), and only partly named in #10 and #12. The fix is the same as theirs (an anchor or presentation rule). Inherited."
+  }
+ ]
+}

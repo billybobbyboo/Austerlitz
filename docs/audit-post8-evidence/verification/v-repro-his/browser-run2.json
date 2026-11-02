@@ -73,6 +73,63 @@
     "engaged",
     "attacking"
    ]
+  },
+  "f1_531": {
+   "clock": 531,
+   "overlap": {
+    "clock": 531,
+    "figs": [
+     174,
+     211
+    ],
+    "aInsideB": 111,
+    "bInsideA": 101,
+    "minFigGap_m": 1.8
+   },
+   "castleFigs": {
+    "figs": 174,
+    "insideCastleOrFarm": 7,
+    "parts": [
+     "castle north range",
+     "castle south range",
+     "castle west range",
+     "castle east range",
+     "farm north range",
+     "farm west range",
+     "farm south range"
+    ]
+   },
+   "sts": [
+    "engaged",
+    "attacking"
+   ]
+  },
+  "f0_rg_inf_720": {
+   "facing": {
+    "clock": 720,
+    "yaw": -4.74095263822345,
+    "headingAt": 1.5422326689561359,
+    "yawMinusHeading": 0,
+    "forward": [
+     1,
+     0.029
+    ],
+    "compassDeg": 92,
+    "toOpponentDeg": 261,
+    "angleToOpponent": 169,
+    "km": 2.11,
+    "moving": true,
+    "kmh": 1.48
+   },
+   "pills": [
+    "Counter-attacking",
+    "Position: interpolated",
+    "Position A · interpolated"
+   ],
+   "drawer": "Guard Infantry · Russia | Guard Infantry | Not established on the day | Counter-attacking | Position: interpolated | Position A · interpolated | How this is sourced | Strength | ≈ 4,430 men | Under | Constantine Pavlovich · Russian Imperial Guard | Doing now | Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a battalion of the 4th Line and one of the 24th Light and takes the 4th's eagle (Schönhals)  | Claim: | As a source tells it | Objective | Retake Stare Vinohrady  | Claim: | This map's reading | Where | 1.6 km east of Stare Vinohrady | Full dossier: role, movement, sources | How this is sourced",
+   "arrowLabel": [
+    "Russian Imperial Guard"
+   ]
   }
  }
 }
