@@ -1,0 +1,49 @@
+11:31:11 L3 booted: firstFrame 29705 ms, bootGone 120861, init - ms; held
+11:33:21 8E booted: firstFrame 31830 ms, bootGone 112448, init - ms; held
+11:35:10 now booted: firstFrame 22280 ms, bootGone 94945, init 14867.2 ms; held
+11:35:40 play-half #0 L3: cpu 19.518 wait 14.376 | loop p50 20.2 | upd 3.5 ml 1.3 three 10.8 | calls 791 | clock 513.1-525.0 | load 30.74 36.19 34.7
+11:36:12 play-half #1 8E: cpu 24.161 wait 12.541 | loop p50 26.7 | upd 4.3 ml 1.5 three 15.2 | calls 789 | clock 513.1-525.0 | load 30.04 35.54 34.53
+11:36:48 play-half #2 now: cpu 23.994 wait 22.702 | loop p50 29.4 | upd 4.2 ml 1.6 three 16.6 | calls 802 | clock 513.1-525.0 | load 27.61 34.35 34.17
+11:37:20 play-half #3 now: cpu 24.066 wait 15.897 | loop p50 29.4 | upd 4.1 ml 1.5 three 17.5 | calls 802 | clock 513.1-525.0 | load 28.95 33.96 34.05
+11:37:53 play-half #4 8E: cpu 23.593 wait 16.439 | loop p50 27.7 | upd 4.3 ml 1.4 three 15.6 | calls 789 | clock 513.1-525.0 | load 30.21 33.81 34
+11:38:25 play-half #5 L3: cpu 19.592 wait 19.148 | loop p50 22.1 | upd 3.7 ml 1.3 three 12 | calls 791 | clock 513.1-525.0 | load 32.22 33.94 34.04
+11:38:43 play-half count L3: GL calls/frame 10326.78, bytes/frame 281868, draws 791
+11:39:00 play-half count 8E: GL calls/frame 13226.95, bytes/frame 388656, draws 789
+11:39:17 play-half count now: GL calls/frame 13502.35, bytes/frame 348124, draws 802
+11:39:26 overview-held #0 L3: cpu 14.485 wait 9.283 | loop p50 15.3 | upd 2.7 ml 0.6 three 10.1 | calls 832 | clock 570.0-570.0 | load 31.08 33.33 33.82
+11:39:38 overview-held #1 8E: cpu 16.011 wait 16.147 | loop p50 18.3 | upd 2.9 ml 0.7 three 12.4 | calls 828 | clock 570.0-570.0 | load 29.37 32.89 33.67
+11:39:49 overview-held #2 now: cpu 18.885 wait 15.104 | loop p50 25.1 | upd 3.4 ml 0.8 three 16.2 | calls 837 | clock 570.0-570.0 | load 29.16 32.68 33.59
+11:39:55 overview-held #3 now: cpu 15.09 wait 3.032 | loop p50 17.2 | upd 2.5 ml 0.6 three 11.9 | calls 837 | clock 570.0-570.0 | load 28.75 32.54 33.54
+11:40:02 overview-held #4 8E: cpu 17.534 wait 4.342 | loop p50 19.9 | upd 2.9 ml 0.7 three 13.9 | calls 828 | clock 570.0-570.0 | load 27.97 32.31 33.46
+11:40:09 overview-held #5 L3: cpu 14.249 wait 4.107 | loop p50 15.9 | upd 2.6 ml 0.6 three 10.5 | calls 832 | clock 570.0-570.0 | load 27.85 32.14 33.39
+11:40:16 overview-held count L3: GL calls/frame 10217, bytes/frame 0, draws 832
+11:40:22 overview-held count 8E: GL calls/frame 13255, bytes/frame 0, draws 828
+11:40:30 overview-held count now: GL calls/frame 13394, bytes/frame 0, draws 837
+11:40:41 overview-route #0 L3: cpu 16.145 wait 5.969 | loop p50 17.3 | upd 2.5 ml 0.7 three 10.3 | calls 832 | clock 570.0-570.0 | load 26.26 31.36 33.09
+11:40:54 overview-route #1 8E: cpu 19.841 wait 11.495 | loop p50 22.3 | upd 2.8 ml 0.9 three 14 | calls 830 | clock 570.0-570.0 | load 26.08 31.15 33
+11:41:11 overview-route #2 now: cpu 20.224 wait 21.658 | loop p50 24.5 | upd 3 ml 1 three 15.1 | calls 839 | clock 570.0-570.0 | load 26.92 31.03 32.93
+11:41:28 overview-route #3 now: cpu 21.57 wait 16.961 | loop p50 23.7 | upd 3.1 ml 1 three 14.8 | calls 839 | clock 570.0-570.0 | load 25.95 30.62 32.76
+11:41:44 overview-route #4 8E: cpu 19.561 wait 10.486 | loop p50 20.9 | upd 2.9 ml 0.9 three 12.8 | calls 830 | clock 570.0-570.0 | load 25.12 30.21 32.59
+11:41:54 overview-route #5 L3: cpu 15.271 wait 9.318 | loop p50 16.2 | upd 2.2 ml 0.7 three 9.5 | calls 832 | clock 570.0-570.0 | load 24.72 29.89 32.45
+11:42:01 overview-route count L3: GL calls/frame 10289.86, bytes/frame 0, draws 832
+11:42:13 overview-route count 8E: GL calls/frame 13358.14, bytes/frame 712, draws 830
+11:42:21 overview-route count now: GL calls/frame 13525.93, bytes/frame 802, draws 839
+11:42:34 overview-drag #0 L3: cpu 18.261 wait 11.758 | loop p50 21.8 | upd 2.8 ml 0.8 three 12.9 | calls 832 | clock 570.0-570.0 | load 21.76 28.51 31.88
+11:42:45 overview-drag #1 8E: cpu 19.554 wait 4.715 | loop p50 21.8 | upd 2.9 ml 0.8 three 12.9 | calls 830 | clock 570.0-570.0 | load 20.19 27.95 31.66
+11:42:56 overview-drag #2 now: cpu 21.963 wait 5.622 | loop p50 24.8 | upd 3.2 ml 1 three 15.6 | calls 839 | clock 570.0-570.0 | load 18.39 27.31 31.41
+11:43:06 overview-drag #3 now: cpu 21.077 wait 3.964 | loop p50 22.7 | upd 3 ml 0.9 three 14.5 | calls 839 | clock 570.0-570.0 | load 17.25 26.77 31.19
+11:43:16 overview-drag #4 8E: cpu 20.64 wait 4.224 | loop p50 22.4 | upd 3 ml 0.9 three 13.9 | calls 830 | clock 570.0-570.0 | load 16.11 26.22 30.97
+11:43:23 overview-drag #5 L3: cpu 16.41 wait 3.073 | loop p50 17 | upd 2.5 ml 0.7 three 9.3 | calls 832 | clock 570.0-570.0 | load 15.54 25.93 30.85
+11:43:29 overview-drag count L3: GL calls/frame 10289.92, bytes/frame 0, draws 832
+11:43:36 overview-drag count 8E: GL calls/frame 13358.16, bytes/frame 712, draws 830
+11:43:44 overview-drag count now: GL calls/frame 13525.91, bytes/frame 802, draws 839
+11:43:53 ph8-drag #0 L3: cpu 16.319 wait 2.426 | loop p50 16.2 | upd 3 ml 0.7 three 9.2 | calls 809 | clock 880.0-880.0 | load 14.49 24.67 30.27
+11:44:04 ph8-drag #1 8E: cpu 22.435 wait 5.342 | loop p50 24 | upd 4.1 ml 0.9 three 14.2 | calls 811 | clock 880.0-880.0 | load 14.1 24.25 30.07
+11:44:15 ph8-drag #2 now: cpu 20.535 wait 4.332 | loop p50 22.1 | upd 3.2 ml 0.9 three 14 | calls 819 | clock 880.0-880.0 | load 14.28 23.8 29.83
+11:44:26 ph8-drag #3 now: cpu 20.334 wait 4.177 | loop p50 22.2 | upd 3 ml 0.9 three 14.1 | calls 819 | clock 880.0-880.0 | load 13.99 23.42 29.64
+11:44:37 ph8-drag #4 8E: cpu 20.766 wait 5.593 | loop p50 22.6 | upd 4.1 ml 0.8 three 13.2 | calls 811 | clock 880.0-880.0 | load 13.37 22.98 29.43
+11:44:47 ph8-drag #5 L3: cpu 19.005 wait 5.989 | loop p50 20.3 | upd 3.6 ml 0.8 three 11.1 | calls 809 | clock 880.0-880.0 | load 12.64 22.5 29.21
+11:44:53 ph8-drag count L3: GL calls/frame 10409.24, bytes/frame 246142, draws 809
+11:45:01 ph8-drag count 8E: GL calls/frame 13494.79, bytes/frame 339777, draws 811
+11:45:07 ph8-drag count now: GL calls/frame 13330.81, bytes/frame 221, draws 819
+11:45:08 wrote /home/user/Austerlitz/docs/audit-post8-evidence/perf-attribution/paired.json

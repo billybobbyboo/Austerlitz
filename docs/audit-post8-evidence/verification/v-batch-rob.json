@@ -1,0 +1,112 @@
+{
+ "label": "v-batch-rob",
+ "verdicts": [
+  {
+   "area": "robustness",
+   "index": 1,
+   "verdict": "CONFIRMED",
+   "method": "code reading at HEAD + own repro on three r128 alone (ctx-race.js)",
+   "evidence": "app.js:567-571 GL.lost set only in the webglcontextlost handler; app.js:9116-9119 loop skips only on GL.lost; three r128 WebGLRenderer.js:600-608 _isContextLost likewise; WebGLProgram.js:736-738 .trim() on info logs. docs/audit-post8-evidence/verification/v-batch-rob/ctx-race.json: 3/3 trials isContextLost() true synchronously, event not fired by the next rAF, render compiling a new program threw \"Cannot read properties of null (reading 'trim')\". No check loses the context while playing: boot-check.js:171,239,285; cullmotion.js:131-134 calls stopPlay() first. Loop head identical at 9eb7abb:app.js:7600 (inherited).",
+   "notes": "Remedy feasible (isContextLost() is synchronous); a loss detected mid-frame would also need a try/catch around render to be complete."
+  },
+  {
+   "area": "robustness",
+   "index": 2,
+   "verdict": "CONFIRMED",
+   "method": "wc -c, git ls-tree -r -l origin/main, git show of earlier commits",
+   "evidence": "CLAUDE.md 130,902 B / 745 lines; CHANGELOG.md 1,283,488 B / 9,387 lines; STAGE8_SPEC 665,797; origin/main 2,478 files 342.9 MB (docs 294.5, archive 38.4): all exact. CLAUDE.md 79,060 B at 9eb7abb (Stage 8 start) -> 130,902 (+66%); CHANGELOG 1,098,907 -> 1,283,488 (+17%).",
+   "notes": "Origin inherited stands (1.1 MB log before Stage 8) but Stage 8 grew CLAUDE.md by two thirds."
+  },
+  {
+   "area": "robustness",
+   "index": 3,
+   "verdict": "CONFIRMED",
+   "method": "three r128 source reading + own repro on three alone with forced GC (ctx-leak.js)",
+   "evidence": "WebGLRenderer.js:266-288 initGLContext makes new WebGLTextures/WebGLGeometries; WebGLGeometries.js:50-58 and WebGLTextures.js:476-483 add a new closure as dispose listener. docs/audit-post8-evidence/verification/v-batch-rob/ctx-leak.json: 400 meshes/40 textures, geometry listeners 400->2,800, texture 40->280 over 6 restores (+1 per object per restore, max 1->7), heap 5.50->15.29 MB (+1.6-1.7 MB per restore) after two collectGarbage.",
+   "notes": "S3 (edge path) accepted; S4 equally defensible (about 30 restores per 100 MB). Accept-and-record consistent with three r128 rule."
+  },
+  {
+   "area": "robustness",
+   "index": 4,
+   "verdict": "CONFIRMED",
+   "method": "code + decision record",
+   "evidence": "shell.html:437 r128 tag with integrity/crossorigin; shell.html:28 failure text naming cdnjs; docs/FINAL_AUDIT.md:835,:880 decision 133 (a). three.min.js r128 603,445 B.",
+   "notes": "accepted-compromise under decision 133 (a); no new evidence against its premise."
+  },
+  {
+   "area": "robustness",
+   "index": 5,
+   "verdict": "CONFIRMED",
+   "method": "code reading of every use of animAt/animGLSL in app.js and the suites",
+   "evidence": "ANIM.body=animGLSL() app.js:1081,1882; animAt app.js:1020; self-test (f) app.js:12819-12850 asserts only movement at amp 1 and return to rest; bounds 12858-12905, contact 13385-13430 and runtime-test.js:1265-1448 read animAt alone; css-test.js:484,587 textual only. No suite compares compiled hook output with animAt.",
+   "notes": "Area's transform-feedback agreement (mirror-check.json, max 0.0007729) not re-measured."
+  },
+  {
+   "area": "robustness",
+   "index": 6,
+   "verdict": "CONFIRMED",
+   "method": "own re-test of the five mutations' from-strings against the build/app.js; checks.yml",
+   "evidence": "stale, treetris, woods8e absent; css-8G shape and tilt absent as full strings (first line present, the else line now indented 4 spaces in app.js). checks.yml:13-15,75-76 visual only on workflow_dispatch with inputs.visual.",
+   "notes": "mutate-rot.json's missing field truncates multi-line strings (a naive substring test of it finds shape/tilt). origin/main has 257 tracked files under tools/ (the area's 248 is its selection); CI reach 24 not recounted."
+  },
+  {
+   "area": "robustness",
+   "index": 7,
+   "verdict": "CONFIRMED",
+   "method": "grep of 19 archive builds; one passive HEAD request to Pages",
+   "evidence": "7/19 without integrity: correction-pass-672aff9f, spine-6b2cccd4, stage0-c09c4b23, stage2c-68ac7721, stage4d-9b13adbf, stage6b-7fc0f6c3, step2-af98f586. HEAD https://billybobbyboo.github.io/Austerlitz/archive/stage0-c09c4b23.html 2026-11-02 15:35 UTC: HTTP/2 200, content-length 1,097,610 = local file.",
+   "notes": "Remedy caution: publishing only the product must keep tools/step6/perf-run.html (the owner's device route on Pages), with R-1's fix."
+  },
+  {
+   "area": "robustness",
+   "index": 8,
+   "verdict": "CONFIRMED",
+   "method": "git ls-tree origin/main; package.json",
+   "evidence": "0 tracked files matching licen|copying on origin/main; package.json:3 private:true, no license key; three.js loaded from cdnjs (shell.html:437), not redistributed."
+  },
+  {
+   "area": "robustness",
+   "index": 9,
+   "verdict": "CONFIRMED",
+   "method": "character and byte count of app.js:9154-14253",
+   "evidence": "611,017 characters of app.js's 1,300,537 (47.0%); 611,113 of 1,300,743 bytes; 611,113/2,810,630 = 21.7% of the build.",
+   "notes": "A consequence of decision 132 (check:selftest runs it in the built page); a lazily built body keeps that."
+  },
+  {
+   "area": "robustness",
+   "index": 10,
+   "verdict": "CONFIRMED",
+   "method": "grep over all repo .js; git log -S",
+   "evidence": "gaitDist defined app.js:5827, only other mention the comment at :5780; no other .js names it (bundle aside); CLAUDE.md names it once. Introduced unreferenced in 62f5cd2 (8E). v8Near world.js:1703 from dddd4e4 (8G), named only in the comment world.js:1712 and _world_mod.js.",
+   "corrected": {
+    "origin": "new-regression"
+   },
+   "notes": "Stage 8 code (8E, 8G) by the rubric's dating; no behavioural effect; S4 P4 unchanged."
+  },
+  {
+   "area": "robustness",
+   "index": 11,
+   "verdict": "CONFIRMED",
+   "method": "code reading; dataset counts from the area's dataset-chars.json",
+   "evidence": "app.js:6910 esc escapes & < > only; double-quoted sinks app.js:2486 aria-label=\"'+esc(lab)+'\", :2495-2496 name=esc(f.name) into aria-label=\"'+name+'...; 6 occurrences of =\"'+esc( in app.js; :8118 data-ref single-quoted. esc() in 0a19964 (14 Oct 2026, before Stage 8).",
+   "notes": "Character counts not recomputed."
+  },
+  {
+   "area": "robustness",
+   "index": 12,
+   "verdict": "CONFIRMED",
+   "method": "code reading; area's idle measure; git show 9eb7abb:app.js",
+   "evidence": "app.js:9116-9125 requestAnimationFrame(loop) before every state test; identical loop head at 9eb7abb:app.js:7600. visitor.json idle.at0400: 6,825 callbacks/120 s (56.9/s), 0 frames drawn, 0 timers, TaskDuration +1.135 s (SwiftShader).",
+   "corrected": {
+    "origin": "inherited"
+   },
+   "notes": "The idle-polling loop predates Stage 8."
+  }
+ ],
+ "extra_issues": [],
+ "not_done": [
+  "No app-level browser run in this attempt: #1's in-app rate and #3's app-level MB per restore are the area's numbers (my repros are on three r128 alone)",
+  "#5 GPU-vs-JS difference not re-measured",
+  "#11 dataset character counts and #6 CI-reach count not recomputed"
+ ]
+}

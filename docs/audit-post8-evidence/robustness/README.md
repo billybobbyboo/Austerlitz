@@ -123,7 +123,20 @@ forced before each snapshot.
   and returns, `app.js:9117-9125`), CDP TaskDuration +1.135 s, no layout; 60 s at a moment with smoke: 11 ambient frames.
 - 20 presentation switches by real keys 2, 3, 1 (`visitor.json`): heap 15.81 -> 15.99 MB, DOM listeners 384 -> 384, nodes 1,721 -> 1,720,
   geometries 396 -> 396, programs 36 -> 36: no growth.
-- RUNTIME_PENDING
+- *(Completed by the audit lead from the saved files after the area's agent was stopped by a usage limit; the numbers below are read from
+  them, not re-measured.)* 12 relief switches by real clicks (`relief.json`; `visitor-growth-storm.json` growth block): heap after forced GC
+  15.34 -> 16.28 MB, DOM listeners 380 -> 393, nodes 1,708 -> 1,726, geometries 379 -> 379 (409 in `relief.json`'s own run), programs 35-36,
+  0 errors. 10 paper map / landscape switches (`paper-series.json`): the first entry builds the paper map's layer once (listeners 393 -> 449,
+  nodes about 1,730 -> 2,074, geometries 414, programs 42); across the ten switches the counts stay flat (heap 17.46 -> 17.14 MB, listeners
+  449 -> 449, nodes 2,074 -> 2,018). 30 dossiers opened and closed (29 of 30 reached): heap 17.23 -> 17.60 MB, listeners 449 -> 449, nodes
+  2,034 -> 2,031, 0 errors. Resize storm (9.2 s of size changes, then settled): 0 errors, heap 17.62 -> 17.61 MB, listeners and nodes
+  unchanged, the layout at 844 x 390 consistent (the rail and dispatch hidden by the phone's landscape rules, the canvas the window's size).
+  **Not growing**: no leak in prolonged use beyond each mode's one-time construction. **Not measured**: the whole day at 4x (`visitor-day.json`
+  holds only the boot snapshot; the run was stopped), so a played day's growth is not reported.
+- `resize-probe.json`: in 2 of 10 steps (700 x 900 after 390 x 844; 390 x 844 after 400 x 844) the drawing buffer and the camera's aspect kept
+  the previous size; in both steps the page received no `resize` event within the probe's wait (its own listener recorded none; the late event
+  arrived during the next step). This is consistent with headless Chromium's emulated resizes delivering the event late, not with a defect in
+  `onResize`, which is resize-driven; it is not reported as a finding. A real browser's window resize was not tested.
 
 ## Commands
 ```

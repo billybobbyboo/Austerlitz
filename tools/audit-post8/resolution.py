@@ -49,6 +49,15 @@ OVERRIDE = {
     "CL-GEO-06": {
         "title": "The Goldbach bottom's marshiness, an open question, is drawn and told as settled, the opening's first step included; the movement audit never tests stream crossings and exempts marsh within 695 m of any village",
     },
+    # rendered picture
+    "CL-VIS-02": {"severity": "S3", "priority": "P3", "observed": "6 objects visibly rise out of the Satschan ice (4 village trees, 2 bush tops); 14 more bank bushes are planted on the bed under the ice, hidden (world.js: neither the village trees nor the bank scrub test for water)."},
+    "CL-VIS-05": {"severity": "S4", "priority": "P4", "category": "probable-problem", "origin": "new-regression",
+                  "observed": "Toward-sun low views show a white glint on the brooks (218 px at 245 or brighter, 250 at most, in the area's box); STREAM.sky is not the cause (setting it to 0 removes 3 of 218 px); likely the sun's direct specular on 8F's sharper surface plus bloom (inferred, not toggled).",
+                  "remedy": "Establish the cause first (toggle the stream's roughness and the bloom in the toward-sun views), then tune the material; lowering STREAM.sky would not cure it."},
+    "CL-MAP-12": {"category": "confirmed-defect"},
+    "CL-MAP-20": {"severity": "S4", "priority": "P4", "category": "optional-improvement",
+                  "title": "The map's place names mix German period forms with Czech forms (Stare Vinohrady, Zuran, Litava) under no stated convention",
+                  "observed": "German period forms (Sokolnitz, Telnitz, Augezd, Satschan) beside Czech ones (Stare Vinohrady, Zuran, Litava); no single 1805 German convention exists to break; only the records' 'Littawa' differs from the screen name."},
     # map layer and furniture
     "CL-MAP-01": {"origin": "mixed: new-regression for the long gaps (8C's hold of the map layer through Play, lengthened by decision 260 (a)'s places) on an inherited starvation share (2D's priority order under decision 24)"},
     "CL-MAP-02": {"severity": "S3", "priority": "P3", "category": "probable-problem"},
@@ -82,6 +91,7 @@ OVERRIDE = {
 }
 
 VERDICT = {
+    "CL-VIS-05": {"verdict": "WEAKENED", "note": "The glint is real in toward-sun views; the stated cause (STREAM.sky) is refuted by toggling it, and its remedy would not cure it: the cause and remedy rewritten."},
     "CL-HIS-02": {"verdict": "WEAKENED", "note": "Both lenses: the premise holds through CONF_TEXT.A, not through 8K's rule; 44 counts unreviewed carried grades, not wrong ones (21 are 1-5.6 km from the anchor that declared the A, 29 have no act). Applied: probable problem, P3."},
     "CL-HIS-03": {"verdict": "WEAKENED", "note": "Both lenses: the register is divided (the disposition and Stutterheim against the official report), so the defect is taking one side without saying so; title corrected; S2 kept."},
     "CL-TEST-01": {"verdict": "WEAKENED", "note": "Both lenses: the facts hold; no rule requires the browser checks to gate (decision 132 asked that they run); S3. The lenses differ on P2 or P3 and on probable problem or optional improvement: the auditor takes P3, probable problem (a process risk the project's reliance on the self-test makes real)."},
@@ -92,6 +102,11 @@ VERDICT = {
 }
 
 NOTES = {
+    "CL-MAP-12": "Verifier: the cause is not the pan's travel but the target re-seated at the pan's end (about +10 units, the picture unchanged), so distance-keyed map-layer levels can flip at rest after any landscape pan; the remedy moves owner-held motion counts (decisions 257 (b), 267 (a)).",
+    "CL-MAP-06": "Verifier: decision 159 is met to the letter but its purpose is lost at 1280 px in Watch; every desktop Watch case of the harness is 1600 x 900, so 1280 is unmeasured.",
+    "CL-MAP-09": "Verifier: also two names on screen for one formation (Bagration / Advance Guard of the Right), against decision 205's one-name rule.",
+    "CL-VIS-03": "Verifier: inherited (enemyFacing cached per phase before 8E); the bearing is centre to centre and blocks overlap at 20-110 m (CL-VIS-04).",
+    "CL-VIS-06": "Verifier: the sources sheet says 'Not drawn', but the Santon's and the chapel's place dossiers do not (buildingsSection returns nothing for a landmark): the dossier line is the cheap remedy.",
     "CL-HIS-05": "Verifiers: the scope is wider than the title (12 formation-intervals, French ones among them: Legrand, Bourcier, the grenadiers, Suchet); the II Column, 'Storms Sokolnitz' (A, attacking), is drawn receding from the village 08:00-10:30. moveMin holds on the four named legs would only shorten the mismatch.",
     "CL-HIS-04": "Verifier's corrections: the minimum to the castle is 4 m at 08:44; before 8J the leg passed 0.62 km from the III Column; in the opening's own 08:45 frame the overlap sits under the time bar, but the phase-2 camera and Play show it.",
     "CL-SRC-01": "Verifiers: the attributions fail on positive evidence (in each case Duffy prints a different figure in the same row of his text layer); Duffy's page images (a lending item) and Smith (1998) remain unread, so the page reading is the remedy's first step, before the data task.",

@@ -1,0 +1,42 @@
+{
+ "label": "v-repro-vis",
+ "verdicts": [
+  {
+   "area": "visibility", "index": 0, "verdict": "WEAKENED",
+   "method": "Own probe (tools/audit-post8/verification/v-repro-vis/vis-probe.js + vis-analyse.js): motion.js RUN's Play set-up (VIEWS.hybrid 1600x900, Study, Landscape with counters, Field vantage; seek 08:30 or 12:00, Follow on, 1/2x, 8 frames at rest, Play to +3 h, 30 at rest), drawn = the counter's DOM computed opacity >= 0.5, in view = anchor projected by the probe inside the canvas, canvas topmost, not occluded. Run on the audited build f10fe585 and on the pre-Stage-8 build c4793156 (9eb7abb), identical settings; code read at HEAD.",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-vis/vis-summary.json. Audited 08:30-11:30 (1,560 Play frames): total 67.5% drawn; d'Hautpoul 9.8%, Russian Guard cav 15.7%, Walther 15.9%, French Guard cav 16.2%, Miloradovich 17.3%, Kellermann 36.6%, Nansouty 46.4%; longest gaps Miloradovich 27,667 ms (100.2 clock min from 09:15), rg_cav 17,667, Walther 15,333, guard_cav 13,300, d'Hautpoul 12,667, Kellermann 12,333 ms. 12:00-15:00: 72.3%, d'Hautpoul 11,367 ms, guard_cav 18,033 ms. Default Landscape 09:00-12:00: 89.3%, longest 2,000 ms. App state per cell identical to the area's raw recording in 43,708/43,708 cells (08:30). Pre-Stage-8 c4793156, same runs: 78.4% / 85.6%; d'Hautpoul 5.4%, rg_cav 8.1%, guard_cav 23.8%, Kellermann 38.8% (gap 16,967 ms), Nansouty 44.9%, Walther 39.0%, Miloradovich 33.3% (gap 11,233 ms). Code: app.js:5114 rank, 5126 pri base 3+rank with no event or motion term, 5340 mlMotionSource includes playing, 5474-5482 hold strategy (room at MLS.PASSES=2 passes, every 333 ms). STAGE8_SPEC.md:5308 (121 frames = 4,033 ms window) and 5485-5488 (longer playback left on the final audit checklist).",
+   "notes": "Every number in 'observed' reproduced within 0.4 points / 70 ms but 12:00-15:00 d'Hautpoul (mine 11,367 ms vs 15,300; the longest there is guard_cav 18,033 ms). Not an accepted compromise: section 23.2 leaves longer playback on the final audit checklist. Origin is wrong as stated: the cavalry starvation is inherited (worse before Stage 8 for d'Hautpoul and rg_cav); Stage 8 lowered the totals and tripled Miloradovich's gap. Remedy feasible; needs the owner (decision 240 (a), MOTION.VIS). Closely related to visibility #1 (same mechanism), not a duplicate.",
+   "corrected": {
+    "title": "Landscape with counters: during Play five to eight formations' counters are hidden most of the time (inherited for the cavalry; Stage 8 lowered the share drawn from 78% to 68% and lengthened gaps, Miloradovich to 28 s); the benchmark's 4,033 ms is only its window",
+    "origin": "inherited, aggravated in Stage 8 (8C stabiliser and later data/layout)",
+    "observed": "Audited: 67.5% (08:30-11:30), 72.3% (12:00-15:00) of in-view formation-frames drawn; pre-Stage-8 build 78.4% / 85.6%. d'Hautpoul 9.8% (pre 5.4%), rg_cav 15.7% (8.1%), guard_cav 16.2% (23.8%), Walther 15.9% (39.0%), Miloradovich 17.3% (33.3%), longest 27,667 ms (11,233)."
+   }
+  },
+  {
+   "area": "visibility", "index": 1, "verdict": "CONFIRMED",
+   "method": "Same probe and runs as visibility #0; per event, the share of in-view frames each EVENTS[].forms formation's counter is drawn over the Play frames its label is drawn; audited and pre-Stage-8 builds; app.js read at HEAD.",
+   "evidence": "vis-summary.json events. Audited 08:30 run: guard-broken guard_cav 0.0%, rg_cav 0.5%; face-about Miloradovich 10.4% (area 10.9%); guard-attack rg_cav 3.2%, rg_inf 34.6%; blasowitz rg_inf 25.0%, Rivaud 47.9%, Caffarelli 70.8%. 12:00 run: guard-broken guard_cav 10.5%, rg_cav 10.8%; guard-attack rg_cav 9.0%, rg_inf 20.0%; hq-forward gqg 77.4%. All named: 58.9% / 65.1% (Landscape 80.1%; there guard_cav 91.0%, Miloradovich 91.2%). Pre-Stage-8: guard-broken guard_cav 0%, rg_cav 2.0%; face-about Miloradovich 0%; guard-attack rg_inf 0.9%, rg_cav 1.2%. Code: app.js:5126 (counter pri sel 0 / hover 0.5 / family 1 / else 3+rank, no live-event term), 5144 (event label keep:true, decision 39), 5476 (keep items placed first).",
+   "notes": "Reproduced within a few points (rg_cav 12:00 10.8% vs 16.0%; blasowitz rg_inf 25.0% vs the area's 0-24%). Origin inherited confirmed for the headline cases; Stage 8 worsened Rivaud (100% to 47.9%), Caffarelli (100% to 70.8%) and the Allied HQ at face-about (100% to 85.5%) and improved the Russian Guard infantry. Event labels' 100% rests on keep:true (code), not measured by me. Remedy feasible; it adds protected items, so the motion block's MOTION.VIS baselines may move (owner)."
+  },
+  {
+   "area": "visual-landscape", "index": 0, "verdict": "CONFIRMED",
+   "method": "Own probe (tools/audit-post8/verification/v-repro-vis/ice-probe.js): harness page 1600x900, Watch, aim dok dir [0.55,0.45,0.70] r16 (and r40), clocks 06:30-17:00, factors 4 and 10.33; every visible InstancedMesh instance of every block, its world bottom/top against each mere disc's plane (waterMeshes userData.mere); captures with the ice shown and hidden in the same frame; same probe on pre-Stage-8 c4793156; world.js, app.js, data.js read at HEAD.",
+   "evidence": "Scratch ice-current.json / ice-current-scope.json / ice-pre8.json (logs beside them); captures docs/audit-post8-evidence/verification/v-repro-vis/current-dok-1640-r16.jpg vs -r16-noice.jpg (men cut at the thigh, legs whole without the ice) and -r40.jpg vs -r40-noice.jpg (Buxhowden's tents sunk to their tips, horses' legs cut). Satschan disc y -4.14, bed below it 69.2%, max 0.875; Menitz 77.5%, max 1.143. 16:40 at 4x: Dokhturov 350 of 378 instances below the ice, Kienmayer 289/328, Buxhowden 28/40 (its 4 tents up to 59% of their height under), Friant 24/99, Legrand 2/13; at 10.33x up to 2.338 units. Pre-Stage-8 at 16:40: Dokhturov 349/378, max 0.875 (inherited). world.js:1381-1384 mereLevel (min(level, lowest edge ground - 0.05)), 1453-1454 depthWrite false; data.js:465, 480, 495 ice:true; app.js:4838 sets the landscape water's opacity to 0.94.",
+   "notes": "Area numbers reproduced (69%/0.874, 78%/1.142). Minor corrections: the ice's live opacity on the landscape is 0.94 (app.js:4838), 0.96 only in the declaration; the '62% of a man' divides the depth by the kit's head top 1.415 (app.js:890), which my per-mesh fractions do not confirm exactly, though the captures show men cut at the thigh. Scope is wider than the ponds phase: blocks overlapping the disc are sunk at 06:30 (Kienmayer 136 of 222), 12:00 (Kienmayer 64/95, Dokhturov 114/172) and 14:00 (Kienmayer 100/154, Dokhturov 35/92); see extra issue. S2/P2 kept: the battle's best-known moment, visible from r40, against the disputed drowning story (data.js:749). Remedy feasible, presentation only; seating must stay consistent with groundYFast (the gait's contact check) and the height guard."
+  }
+ ],
+ "extra_issues": [
+  {
+   "title": "Figure blocks stand on (and sink into) the Satschan ice outside the ice legs: Kienmayer's phase-1 via [228,409] lies inside the drawn disc",
+   "severity": "S3",
+   "evidence": "W(228,409) = (-56,79.5), normalised radius 0.92 in the Satschan disc (world.js:250 SATS=W(268,421), rx 28, rz 10.5; data.js kienmayer track 1 via). ice-current-scope.json: 06:30 Kienmayer ('forming') 222 instances inside the disc, 136 below the ice; 12:00 and 14:00 anchors just outside (radius 1.10-1.13) but the blocks overlap it (Kienmayer 95 and 154, Dokhturov 172 and 92 inside). No ice:true on those legs.",
+   "notes": "Inherited; the disc outline is schematic (decision 27), so this may be outline versus route rather than data. Category probable-problem; fixing visual-landscape #0's seating hides the sinking but not the placement."
+  }
+ ],
+ "not_done": [
+  "visibility #0: the Follow-off (6.9%, 21,967 ms), 60 fps (67.1%), hybrid-4x-day, fixed, Watch, fr/al runs, the fresh-layout shares and the 'room in that frame' 26-56% were not re-run",
+  "visibility #1: the phone-with-counters 40.2% and paper-map 96.7% not re-run; the event labels' own share taken from code (keep:true), not measured",
+  "visual-landscape #0: no 10.33x captures (10.33x numbers only); the per-figure share under the ice not confirmed against the kit's head top; the self-test's contact check not re-read",
+  "No device run (SwiftShader only; the layout results are deterministic, the visuals are not device-timed)"
+ ]
+}

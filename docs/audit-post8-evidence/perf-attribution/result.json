@@ -1,0 +1,98 @@
+{
+  "area": "perf-attribution",
+  "scope_summary": "Main-thread script attribution of decision 268 (a)'s accepted desktop CPU excess: the audited build (f10fe585) against step 6's L3 build (c9d29c14, commit a8afeec, md5 verified) and 8E's (d73d0115), on the device route's own motions (Play at half speed 08:30-09:10 under Follow at the Field vantage; the 09:30 Overview orbited by the route's camera writes and by a real right-drag through the app's handler; phase 8's Overview right-dragged; the Overview held), run by the motion driver on Chromium 141 / SwiftShader at 2560x1305 with the native draws stubbed. Two sessions (measure.js: L3, now, now, L3 with profiles; paired.js: L3, 8E, now in palindrome blocks plus load-independent GL and app call counts). Evidence reused from the previous attempt; no re-measurement in this attempt beyond the analysis of the saved paired session. Detail: docs/audit-post8-evidence/perf-attribution/README.md.",
+  "coverage": [
+    {"item": "per-frame script CPU per build and motion", "method": "schedstat CPU of the renderer main thread over 1,656/792/504 frames (session 1) and 552/264/168 (session 2), palindrome order", "result": "Play +22-23% L3->now in both sessions (adjacent pairs +22.8/+22.9%); orbits +15% to +33%, held +9% to +18%, ph8 drag +8% to +16% (spread wide under load)", "evidence": "summary.md, paired.md, pages/page-*.json, paired.json"},
+    {"item": "CDP profile by function and subsystem", "method": "Profiler sampling 200 us over the same frames, 2 rounds per build (session 1), analyse.js", "result": "rise mostly three.js JS + WebGL native (57% Play, 69% drag, ~all route); Stage 8 app work ~32% (Play), ~20% (drag)", "evidence": "summary.md (profile tables, top functions)"},
+    {"item": "load-independent call counts", "method": "every GL call by method and listed app functions per frame, 144 frames per build per motion", "result": "GL calls +30% at equal draws; vertexAttribPointer and bindBuffer +1,341-1,400 each, useProgram +220, all present at 8E", "evidence": "paired.md count tables"},
+    {"item": "intermediate build to locate the step", "method": "8E (d73d0115) in session 2", "result": "8E already carries the rise in every motion; 8E->now within the spread (-5% to +7%), GL counts +1-2%", "evidence": "paired.md"},
+    {"item": "mechanism of the GL growth", "method": "code reading: three r128 binding states; app.js attribute sites; git log -S", "result": "r128 re-sets every attribute of an InstancedMesh at every draw (three.js:10682-10691); 8D added aPart (4cb72b1; app.js:1108, 12866), 8E aPh and aSl (62f5cd2; app.js:1243-1249)", "evidence": "node_modules/three/build/three.js:10660-10691; app.js"},
+    {"item": "start-up to interactive", "method": "init script timing (pa-lib.js:42-52), 2 rounds + paired session", "result": "equal within a round (-0.2%, +2.5% boot overlay gone); load moves rounds by 25%; no difference detectable", "evidence": "summary.md start-up table; logs/run-main.log"},
+    {"item": "L3 build identity", "method": "git show a8afeec:austerlitz-command-map.html | md5sum", "result": "c9d29c149b613bff059598e4fe8c8d03, 2,218,404 B: verified", "evidence": "this attempt's shell"}
+  ],
+  "findings": [
+    {
+      "title": "Decision 268 (a)'s desktop script excess is mostly three.js re-binding 8D/8E's three extra kit attributes on every instanced draw, plus Stage 8's own per-frame app work",
+      "category": "accepted-compromise",
+      "severity": "S3",
+      "priority": "P4",
+      "subsystem": "renderer / kit (8D, 8E)",
+      "user_impact": "On the owner's 144 Hz desktop Play's script passes the 6.9 ms frame (section 24.2: about one frame in five or six held two refreshes); accepted as measured by decision 268 (a); not re-required.",
+      "status": "attributed",
+      "origin": "accepted-compromise",
+      "refs": ["docs/STAGE8_SPEC.md:5558-5563", "docs/STAGE8_SPEC.md:5594-5595", "node_modules/three/build/three.js:10682-10691", "app.js:1108", "app.js:1243-1249", "app.js:12866", "git 4cb72b1 (8D)", "git 62f5cd2 (8E)"],
+      "evidence": "paired.md: Play CPU/frame L3 19.55, 8E 23.88, now 24.03 ms (+22.9%, adjacent pairs +22.8/+22.9%; session 1 +22%); GL calls 10,327 -> 13,227 -> 13,502 a frame at 791/789/802 draws; vertexAttribPointer +1,353, bindBuffer +1,330, useProgram +218 (Play), the same +1,341-1,400 on every Overview motion. summary.md: of the profiled rise (+9.69 ms Play, +8.74 drag) three.js JS + WebGL native +5.54 (57%) / +6.06 (69%), within it three's setup 0.68->1.17, bindBuffer 0.68->1.25, vertexAttribPointer 0.75->1.22 ms; Stage 8 app subsystems about +3.1 (Play: render path/gdepth +0.69, map layer +0.51, culling +0.47, outlines +0.36, updateVisibility +0.33, ground queries +0.23, confidence +0.18, arrows +0.17, gait +0.08, kitLod +0.04).",
+      "expected": "Section 8.3's CPU line: js50 not above L3's by more than 1 ms on the desktop.",
+      "observed": "Reproduced on one fixed browser (Chromium 141 for both builds) at the device's ratio (+22-23% here, +25% on the desktop), so the Chrome 155->156 update is not needed to explain it; located between L3 and 8E (8E->now within the spread). Mechanism: three attributes x about 450 instanced kit draws a frame ~ 1,350 extra vertexAttribPointer/bindBuffer pairs (inference from counts and code; no build with the attributes removed measured; 8D's build not measured).",
+      "remedy": "None required (decision 268 (a)). If the margin is wanted back: measure packing the per-instance aPh and aSl into one attribute and aPart into a spare component of an existing one (GL counts and the device route's js50), and the inherited freeRect memo (next finding), which is larger and independent.",
+      "cause_hypothesis": "three r128 binding-state re-setup for InstancedMesh multiplied by the kit's added attributes; useProgram +220 from the hooked materials' programs (not isolated)",
+      "cause_verified": "partly: mechanism verified in three r128 source and by the exact per-frame call counts; per-attribute shares and useProgram's cause not isolated",
+      "judgement_kind": "measured attribution (container ratios, not device numbers)",
+      "validation": "two sessions, two rounds each, palindrome order; counts load-independent"
+    },
+    {
+      "title": "freeRect, the free-rectangle search, runs three times a frame over the whole viewport and is the largest app function in every profile (inherited)",
+      "category": "optional-improvement",
+      "severity": "S4",
+      "priority": "P2",
+      "subsystem": "camera / free rectangle (Stage 3B-3D, 4B, 4E)",
+      "user_impact": "About 13-25% of the profiled main-thread script a frame in both builds at the desktop page size; a memo could plausibly recover more than decision 268's excess (inference; device effect not measured).",
+      "status": "open",
+      "origin": "inherited",
+      "refs": ["app.js:4925-4943", "app.js:6359", "app.js:321", "app.js:347", "app.js:6075"],
+      "evidence": "summary.md top functions: freeRect 3.8-6.5 ms profiled self a frame now, 2.5-8.0 in L3 (+ 'viewport' 2.5-4.4 in L3's drags, plausibly inlined, unverified); subsystem share 12.8-17.7% now, 15.7-25.3% L3. paired.md: landFreeRect 3 calls a frame, landPanels 4. Code: 320 x 163 = 52,160 cells at 2560x1305 each tested against every panel, one array allocated per cell (S.push([s0,hh])); callers shadowReceivers (321), placeLights' SHADOW_FIT key (347), smokePlace (6075).",
+      "expected": "A function of the viewport and the panel rectangles computed when they change.",
+      "observed": "Recomputed three times in every drawn frame although neither input changes in Play or an orbit.",
+      "remedy": "Memoize landFreeRect on the viewport and the rounded panel rectangles (MAPCAM already forms such a key, panelsKey), then measure with the same counts and the device route.",
+      "cause_verified": "by code reading and call counts",
+      "judgement_kind": "measured share (container), device effect inferred"
+    },
+    {
+      "title": "three r128 recomputes getProgramCacheKey every frame (2.1-2.8 ms profiled self a frame, both builds); cause not investigated",
+      "category": "untested",
+      "severity": "S4",
+      "priority": "P4",
+      "subsystem": "renderer (three r128 setProgram)",
+      "user_impact": "A constant share of every frame's script (about 6-9% profiled); not part of Stage 8's rise.",
+      "status": "open",
+      "origin": "inherited",
+      "refs": ["node_modules/three/build/three.js:18075-18083", "node_modules/three/build/three.js:18184-18215"],
+      "evidence": "summary.md top functions: getProgramCacheKey 2.28 -> 2.23 (Play), 2.77 -> 2.12 (held), 2.77 -> 2.47 (route); getParameters 0.62 (L3 route).",
+      "expected": "getProgram runs only when a material's version, lights state version, fog, encoding or clipping changes (three.js:18186-18215).",
+      "observed": "It runs in every frame for some materials; which condition fires was not checked.",
+      "remedy": "Find which needsProgramChange condition fires per frame (lights.state.version, a material.version bump, fog) before any change; optional.",
+      "cause_verified": "no"
+    }
+  ],
+  "experiments": [
+    {"command": "node tools/audit-post8/perf-attribution/measure.js docs/audit-post8-evidence/perf-attribution/pages <scratch>/perf-attribution/raw L3=<scratch>/perf-attribution/build-c9d29c14.html now=<scratch>/perf-attribution/build-f10fe585.html (2 rounds, order L3, now, now, L3); then analyse.js -> summary.md", "environment": "Chromium 141.0.7390.37, SwiftShader, 2560x1305, native draws stubbed after the first frame, load 30-38 on 4 shared cores, 11:02-11:29", "outcome": "start-up, timing and profile passes for 5 motions per page", "evidence_path": "docs/audit-post8-evidence/perf-attribution/summary.md, pages/, raw/, logs/run-main.log", "limitations": "software WebGL; contention; 2 rounds; previous attempt's run"},
+    {"command": "node tools/audit-post8/perf-attribution/paired.js docs/audit-post8-evidence/perf-attribution/paired.json <scratch>/perf-attribution/raw-paired L3=... 8E=<scratch>/perf-attribution/build-d73d0115.html now=... (552/264/168 frames, warm-up 72, palindrome, count blocks 144 frames)", "environment": "as above, load 43 -> 12, 11:29-11:45", "outcome": "CPU per frame per block for 3 builds; GL and app call counts per frame", "evidence_path": "docs/audit-post8-evidence/perf-attribution/paired.json, raw-paired/, logs/run-paired.log", "limitations": "one palindrome per motion; serial start-ups under load"},
+    {"command": "node tools/audit-post8/perf-attribution/analyse-paired.js docs/audit-post8-evidence/perf-attribution/paired.json L3 > paired.md (this attempt)", "environment": "node only", "outcome": "paired.md written", "evidence_path": "docs/audit-post8-evidence/perf-attribution/paired.md"},
+    {"command": "git show a8afeec:austerlitz-command-map.html | md5sum; git log -S'setAttribute(\"aPart\"' / -S'w.setAttribute(\"aPh\",ph)' -- app.js; sed three.js r128 10660-10691, 18075-18215", "environment": "repository", "outcome": "L3 = c9d29c14 verified; aPart from 4cb72b1 (8D), aPh/aSl from 62f5cd2 (8E); r128 instanced re-setup confirmed"}
+  ],
+  "carried_status": [
+    {"item": "the accepted desktop CPU excess (decision 268 (a))", "status": "attributed, accepted, not re-required: reproduced on one browser at the device's ratio (Play +22-23% here, +25% desktop; Chrome update not needed to explain it); located L3 -> 8E (8A-8E); about 57-69% of the profiled rise is three.js JS and GL state calls (GL calls +30% at equal draws: +1,350 vertexAttribPointer/bindBuffer a frame, matching r128's per-draw re-binding of 8D's aPart and 8E's aPh/aSl on every instanced kit mesh) and about 20-32% Stage 8's own app work (render path/ground depth, map layer, culling, outlines; gait and kitLod negligible); the map layer is not the cause; an inherited freeRect memo is the largest available saving", "evidence": "docs/audit-post8-evidence/perf-attribution/README.md, paired.md, summary.md"}
+  ],
+  "ledger": [
+    {"claim": "Section 24.1: Play at half speed js50 6.1 -> 7.6 ms, orbit 4.8 -> 5.8/5.9", "cited_source": "docs/STAGE8_SPEC.md:5558-5560", "verification": "cited, not re-measured (device numbers)", "where_shown": "README results table"},
+    {"claim": "Section 24.1: these runs cannot say which part of Stage 8 added it", "cited_source": "docs/STAGE8_SPEC.md:5561", "verification": "now attributed (container ratios)", "method": "profiles and counts"},
+    {"claim": "Section 24.1: the gait adds none", "cited_source": "docs/STAGE8_SPEC.md:5562", "verification": "consistent: gait/anim 0.08-0.16 ms profiled a frame here"},
+    {"claim": "L3 build is a8afeec, md5 c9d29c14", "cited_source": "docs/audit-post8-evidence/perf/README.md:36", "verification": "verified by git show | md5sum"},
+    {"claim": "Section 8.3's map-layer CPU line", "cited_source": "docs/STAGE8_SPEC.md:1237", "verification": "mlLayout step +0.1 to +0.3 ms in this container: within (relative)"}
+  ],
+  "not_checked": [
+    "8D's build (ae7f16b8): 8D's and 8E's shares separated only by code reading",
+    "a build with the kit attributes removed or packed (the per-attribute cost not isolated)",
+    "the low views and Play at 4x (+0.9-1.0 ms on the desktop)",
+    "the phone",
+    "GPU-side time (SwiftShader, draws stubbed)",
+    "garbage collection per frame (freeRect's per-cell allocations not measured as GC)",
+    "which condition makes three r128 recompute getProgramCacheKey every frame",
+    "the desktop's Chrome 155 -> 156 effect on the device (here one browser for both builds)"
+  ],
+  "strengths": [
+    "Stage 8's own per-frame subsystems are small: gait 0.08-0.16 ms, kitLod 0.03-0.04, culling 0.10-0.47, outlines 0.18-0.36 ms profiled a frame in this container (about 3x slower than the desktop)",
+    "8C's map layer replaced most of the old search (mlFree 475 -> 60 calls a frame in Play) at +0.1 to +0.3 ms of mlLayout",
+    "8F-8K added almost nothing to the frame's script: 8E -> now within the spread, GL calls +1-2%"
+  ]
+}

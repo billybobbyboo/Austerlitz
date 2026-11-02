@@ -929,6 +929,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-05"
    }
@@ -1226,7 +1230,11 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: decision 159 is met to the letter but its purpose is lost at 1280 px in Watch; every desktop Watch case of the harness is 1600 x 900, so 1280 is unmeasured.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1255,6 +1263,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1268,7 +1280,11 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: also two names on screen for one formation (Bagration / Advance Guard of the Right), against decision 205's one-name rule.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1283,6 +1299,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1297,6 +1317,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1310,8 +1334,13 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: the cause is not the pan's travel but the target re-seated at the pan's end (about +10 units, the picture unchanged), so distance-keyed map-layer levels can flip at rest after any landscape pan; the remedy moves owner-held motion counts (decisions 257 (b), 267 (a)).",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
+    "category": "confirmed-defect",
     "work_package": "WP-07"
    }
   },
@@ -1325,6 +1354,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1353,6 +1386,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1367,6 +1404,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1395,6 +1436,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1409,6 +1454,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-08"
    }
@@ -1423,7 +1472,16 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (batch)]"
+   },
    "override": {
+    "severity": "S4",
+    "priority": "P4",
+    "category": "optional-improvement",
+    "title": "The map's place names mix German period forms with Czech forms (Stare Vinohrady, Zuran, Litava) under no stated convention",
+    "observed": "German period forms (Sokolnitz, Telnitz, Augezd, Satschan) beside Czech ones (Stare Vinohrady, Zuran, Litava); no single 1805 German convention exists to break; only the records' 'Littawa' differs from the screen name.",
     "work_package": "WP-08"
    }
   },
@@ -1455,7 +1513,14 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (batch)]"
+   },
    "override": {
+    "severity": "S3",
+    "priority": "P3",
+    "observed": "6 objects visibly rise out of the Satschan ice (4 village trees, 2 bush tops); 14 more bank bushes are planted on the bed under the ice, hidden (world.js: neither the village trees nor the bank scrub test for water).",
     "work_package": "WP-10"
    }
   },
@@ -1468,7 +1533,11 @@
     ]
    ],
    "also": [],
-   "note": "Related, not the same issue: CL-HIS-05 (legs whose direction contradicts the status).",
+   "note": "Related, not the same issue: CL-HIS-05 (legs whose direction contradicts the status). Verifier: inherited (enemyFacing cached per phase before 8E); the bearing is centre to centre and blocks overlap at 20-110 m (CL-VIS-04).",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-10"
    }
@@ -1483,6 +1552,10 @@
    ],
    "also": [],
    "note": "CL-HIS-04 is the one between opposing formations that Stage 8 introduced.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-10"
    }
@@ -1497,7 +1570,17 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": "The glint is real in toward-sun views; the stated cause (STREAM.sky) is refuted by toggling it, and its remedy would not cure it: the cause and remedy rewritten. [lenses: WEAKENED (batch)]"
+   },
    "override": {
+    "severity": "S4",
+    "priority": "P4",
+    "category": "probable-problem",
+    "origin": "new-regression",
+    "observed": "Toward-sun low views show a white glint on the brooks (218 px at 245 or brighter, 250 at most, in the area's box); STREAM.sky is not the cause (setting it to 0 removes 3 of 218 px); likely the sun's direct specular on 8F's sharper surface plus bloom (inferred, not toggled).",
+    "remedy": "Establish the cause first (toggle the stream's roughness and the bloom in the toward-sun views), then tune the material; lowering STREAM.sky would not cure it.",
     "work_package": "WP-10"
    }
   },
@@ -1510,7 +1593,11 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: the sources sheet says 'Not drawn', but the Santon's and the chapel's place dossiers do not (buildingsSection returns nothing for a landmark): the dossier line is the cheap remedy.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-10"
    }
@@ -1525,6 +1612,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-10"
    }
@@ -1539,6 +1630,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-10"
    }
@@ -1704,7 +1799,7 @@
    "note": "Merged: the robustness area found the hook and its mirror equal today; the finding is that nothing holds them so.",
    "verify": {
     "verdict": "CONFIRMED",
-    "note": " [lenses: CONFIRMED (batch)]"
+    "note": " [lenses: CONFIRMED (batch); CONFIRMED (batch)]"
    },
    "override": {
     "origin": "new-regression (animAt and animGLSL came with 8D and 8E)",
@@ -2100,6 +2195,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-14"
    }
@@ -2114,6 +2213,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-13"
    }
@@ -2128,6 +2231,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-14"
    }
@@ -2142,6 +2249,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-14"
    }
@@ -2156,6 +2267,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-00"
    }
@@ -2170,6 +2285,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-11"
    }
@@ -2184,6 +2303,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-13"
    }
@@ -2205,7 +2328,7 @@
    "note": "Merged: the records area read decision 140's premise, the robustness area the payload; one issue, the self-test shipped in the product.",
    "verify": {
     "verdict": "CONFIRMED",
-    "note": " [lenses: CONFIRMED (batch)]"
+    "note": " [lenses: CONFIRMED (batch); CONFIRMED (batch)]"
    },
    "override": {
     "priority": "P4",
@@ -2222,6 +2345,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-14"
    }
@@ -2236,6 +2363,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-14"
    }
@@ -2250,6 +2381,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-14"
    }
