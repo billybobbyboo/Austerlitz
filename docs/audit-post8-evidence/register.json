@@ -720,6 +720,7 @@
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
    },
    "override": {
+    "observed": "Under a headquarters' reading the movement arrows and their labels of formations it does not know are drawn (at 09:30 the Suchet and Caffarelli arrows, faint, with their labels), and the plateau count leaks: under the Allied reading 31,500 against 25,800 known (11:30-12:30); under Napoleon's 38,700 against 17,900 (04:30-07:00); the Now tab's and the caption's 'on the heights' reading leaks the same way.",
     "work_package": "WP-05"
    }
   },
@@ -755,7 +756,7 @@
      3
     ]
    ],
-   "note": "Merged: the interrupted fade (state) and the Movement layer off (interaction) are two scenarios of one opacity rule in applyOverlayOpacity.",
+   "note": "Merged: the interrupted fade (state) and the Movement layer off (interaction) are two scenarios of one opacity rule in applyOverlayOpacity. Verifier: one fix covers both scenarios: start the outgoing group from the opacity it had reached, the layer's factor included (app.js:3185).",
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch); CONFIRMED (batch)]"
@@ -774,12 +775,13 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: 8A's review kept act texts as 'orders, not places', but several are positions and the row is labelled 'Doing now', so the implementation contradicts decision 251's stated scope ('hidden from every place a visitor could read its position from'); the replacement row's wording is the owner's.",
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
+    "category": "confirmed-defect",
     "work_package": "WP-05"
    }
   },
@@ -846,7 +848,7 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Reproduction lens: confirmed; the 844 x 390 part (no dispatch) is today's layout kept by decision 226 (a), accepted; no decision record mentions browser zoom or reflow, so the 400% and 320 px parts stand.",
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
@@ -893,8 +895,8 @@
    ],
    "note": "Merged: one hit-area rule, measured on a phone by two areas and at the playhead on a desktop by a third.",
    "verify": {
-    "verdict": "DUPLICATE",
-    "note": " [lenses: DUPLICATE (premise); CONFIRMED (repro); CONFIRMED (batch)]"
+    "verdict": "CONFIRMED",
+    "note": "Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does. [lenses: DUPLICATE (premise); CONFIRMED (repro); CONFIRMED (batch)]"
    },
    "override": {
     "title": "Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start",
@@ -1050,6 +1052,9 @@
     "note": " [lenses: WEAKENED (batch)]"
    },
    "override": {
+    "title": "The time rail seeks on any mouse button and has no cancel path: a right or middle press on the rail moves the clock and stops Play; where a context menu swallows the release (platform-dependent, unverified), hovering the rail then scrubs until the next click",
+    "severity": "S4",
+    "priority": "P4",
     "work_package": "WP-06"
    }
   },
@@ -1175,10 +1180,12 @@
    "note": "",
    "verify": {
     "verdict": "WEAKENED",
-    "note": "Premise lens: real for Landscape with counters; the origin is mixed (corrected). Severity S2 kept. [lenses: WEAKENED (premise); WEAKENED (repro)]"
+    "note": "Both lenses: real and reproduced in Landscape with counters; the origin as stated was wrong (the cavalry's starvation is inherited, worse before Stage 8 for d'Hautpoul and the Russian Guard cavalry; Stage 8 lowered the totals and lengthened the gaps): corrected. Not an accepted compromise: section 23.2 leaves longer playback to this audit. S2 kept. [lenses: WEAKENED (premise); WEAKENED (repro)]"
    },
    "override": {
-    "origin": "mixed: new-regression for the long gaps (8C's hold of the map layer through Play, lengthened by decision 260 (a)'s places) on an inherited starvation share (2D's priority order under decision 24)",
+    "title": "Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28 s (about 100 clock minutes) at a stretch; the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window",
+    "origin": "inherited, aggravated in Stage 8 (8C's hold through Play and the later data and layout)",
+    "observed": "Reproduced by the verifier: 67.5% (08:30-11:30) and 72.3% (12:00-15:00) of in-view formation-frames drawn, against 78.4% and 85.6% on the pre-Stage-8 build; d'Hautpoul 9.8% (pre-Stage-8 5.4%), the Russian Guard cavalry 15.7% (8.1%), the French Guard cavalry 16.2% (23.8%), Walther 15.9% (39.0%); Miloradovich's longest gap 27.7 s, about three times the pre-Stage-8 build's; every number within 0.4 points or 70 ms of the area's but one (12:00-15:00's longest gap is the French Guard cavalry's 18.0 s, not d'Hautpoul's 15.3 s).",
     "work_package": "WP-07"
    }
   },
@@ -1240,7 +1247,7 @@
     "severity": "S3",
     "priority": "P3",
     "category": "probable-problem",
-    "observed": "North is shown only in Study at 1080 px or wider and more than 700 px tall (style.css hides the rose at 700 px or less); the Field vantage faces 63 degrees from north, the Zuran 135, the Allied 85; the paper map is north-up by construction.",
+    "observed": "North is shown only in Study at 1080 px or wider and more than 700 px tall (style.css hides the rose at 700 px or less), so a 1366 x 768 laptop's browser viewport (about 650 px tall) shows none even in Study; the Field vantage faces 63 degrees from north, the Zuran 135, the Allied 85, the default 09:30 view about 87 (east up); the paper map is north-up by construction.",
     "work_package": "WP-08"
    }
   },
@@ -1298,6 +1305,7 @@
     "note": " [lenses: WEAKENED (batch)]"
    },
    "override": {
+    "origin": "mixed: inherited crowding (a fresh layout draws 60.1%, Liechtenstein 0.15%) plus new-regression (8C's stabiliser, -8.4 points)",
     "work_package": "WP-07"
    }
   },
@@ -1425,6 +1433,9 @@
     "note": " [lenses: WEAKENED (batch)]"
    },
    "override": {
+    "severity": "S4",
+    "priority": "P4",
+    "observed": "After Play, 0-3 more formations hidden at rest than a fresh view of the same moment would hide (net -1 to +3; the fresh view would hide others instead); persists until the next discontinuity, by decision 240 (a)'s no-reshuffle rule.",
     "work_package": "WP-07"
    }
   },
@@ -1556,6 +1567,7 @@
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
    },
    "override": {
+    "title": "Figure blocks are drawn sunk into the frozen Satschan mere: in the ponds phase, and wherever a leg's path crosses the drawn disc (at 06:30, 136 of Kienmayer's 222 instances on his phase-1 via are below the ice)",
     "work_package": "WP-10"
    }
   },
@@ -1743,7 +1755,7 @@
     ]
    ],
    "also": [],
-   "note": "Related, not the same issue: CL-TEST-14 (what the motion ceilings mean).",
+   "note": "Related, not the same issue: CL-TEST-14 (what the motion ceilings mean). Verifier: wider than stated: the hybrid-glide (2,533 ms, 76 frames) and hybrid-orbit with a selection (3,033 ms, 91 frames) baselines are also at their windows, so three of MOTION.VIS's 'longest' baselines cannot fail.",
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
@@ -2348,7 +2360,7 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: publishing only the product must keep tools/step6/perf-run.html (the owner's device route on Pages), with CL-ROB-01's fix.",
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
@@ -2414,6 +2426,7 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
+    "origin": "new-regression",
     "work_package": "WP-14"
    }
   },
@@ -2450,6 +2463,7 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
+    "origin": "inherited",
     "work_package": "WP-14"
    }
   },
@@ -2498,7 +2512,7 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: STAGE8_SPEC.md:1259 states the threshold max(1.5 R, 25 ms); STEP6_SPEC.md:179 and the perf-route.js:157 comment call it 'a missed refresh', which is wrong at 144 Hz.",
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"

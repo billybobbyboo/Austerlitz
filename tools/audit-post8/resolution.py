@@ -58,15 +58,35 @@ OVERRIDE = {
     "CL-MAP-20": {"severity": "S4", "priority": "P4", "category": "optional-improvement",
                   "title": "The map's place names mix German period forms with Czech forms (Stare Vinohrady, Zuran, Litava) under no stated convention",
                   "observed": "German period forms (Sokolnitz, Telnitz, Augezd, Satschan) beside Czech ones (Stare Vinohrady, Zuran, Litava); no single 1805 German convention exists to break; only the records' 'Littawa' differs from the screen name."},
+    "CL-MAP-01": {
+        "title": "Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28 s (about 100 clock minutes) at a stretch; the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window",
+        "origin": "inherited, aggravated in Stage 8 (8C's hold through Play and the later data and layout)",
+        "observed": "Reproduced by the verifier: 67.5% (08:30-11:30) and 72.3% (12:00-15:00) of in-view formation-frames drawn, against 78.4% and 85.6% on the pre-Stage-8 build; d'Hautpoul 9.8% (pre-Stage-8 5.4%), the Russian Guard cavalry 15.7% (8.1%), the French Guard cavalry 16.2% (23.8%), Walther 15.9% (39.0%); Miloradovich's longest gap 27.7 s, about three times the pre-Stage-8 build's; every number within 0.4 points or 70 ms of the area's but one (12:00-15:00's longest gap is the French Guard cavalry's 18.0 s, not d'Hautpoul's 15.3 s).",
+    },
+    "CL-VIS-01": {
+        "title": "Figure blocks are drawn sunk into the frozen Satschan mere: in the ponds phase, and wherever a leg's path crosses the drawn disc (at 06:30, 136 of Kienmayer's 222 instances on his phase-1 via are below the ice)",
+    },
+    "CL-SIM-02": {
+        "observed": "Under a headquarters' reading the movement arrows and their labels of formations it does not know are drawn (at 09:30 the Suchet and Caffarelli arrows, faint, with their labels), and the plateau count leaks: under the Allied reading 31,500 against 25,800 known (11:30-12:30); under Napoleon's 38,700 against 17,900 (04:30-07:00); the Now tab's and the caption's 'on the heights' reading leaks the same way.",
+    },
+    "CL-UX-13": {
+        "title": "The time rail seeks on any mouse button and has no cancel path: a right or middle press on the rail moves the clock and stops Play; where a context menu swallows the release (platform-dependent, unverified), hovering the rail then scrubs until the next click",
+        "severity": "S4", "priority": "P4",
+    },
+    "CL-SIM-05": {"category": "confirmed-defect"},
+    "CL-ROB-10": {"origin": "new-regression"},
+    "CL-ROB-12": {"origin": "inherited"},
+    "CL-MAP-07": {"origin": "mixed: inherited crowding (a fresh layout draws 60.1%, Liechtenstein 0.15%) plus new-regression (8C's stabiliser, -8.4 points)"},
+    "CL-MAP-14": {"severity": "S4", "priority": "P4",
+                  "observed": "After Play, 0-3 more formations hidden at rest than a fresh view of the same moment would hide (net -1 to +3; the fresh view would hide others instead); persists until the next discontinuity, by decision 240 (a)'s no-reshuffle rule."},
     # map layer and furniture
-    "CL-MAP-01": {"origin": "mixed: new-regression for the long gaps (8C's hold of the map layer through Play, lengthened by decision 260 (a)'s places) on an inherited starvation share (2D's priority order under decision 24)"},
     "CL-MAP-02": {"severity": "S3", "priority": "P3", "category": "probable-problem"},
     "CL-MAP-03": {
         "title": "No symbol key at all between 720 and 1079 px wide or on a phone held upright, so the integrity encodings (the B and C grades, '?', the dashed intended routes) go unexplained there; Watch, Clean and a phone held landscape hide it by recorded design or decision",
     },
     "CL-MAP-04": {
         "severity": "S3", "priority": "P3", "category": "probable-problem",
-        "observed": "North is shown only in Study at 1080 px or wider and more than 700 px tall (style.css hides the rose at 700 px or less); the Field vantage faces 63 degrees from north, the Zuran 135, the Allied 85; the paper map is north-up by construction.",
+        "observed": "North is shown only in Study at 1080 px or wider and more than 700 px tall (style.css hides the rose at 700 px or less), so a 1366 x 768 laptop's browser viewport (about 650 px tall) shows none even in Study; the Field vantage faces 63 degrees from north, the Zuran 135, the Allied 85, the default 09:30 view about 87 (east up); the paper map is north-up by construction.",
     },
     "CL-MAP-05": {"severity": "S3", "priority": "P3", "category": "optional-improvement"},
     # tests
@@ -91,17 +111,24 @@ OVERRIDE = {
 }
 
 VERDICT = {
+    "CL-UX-03": {"verdict": "CONFIRMED", "note": "Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does."},
     "CL-VIS-05": {"verdict": "WEAKENED", "note": "The glint is real in toward-sun views; the stated cause (STREAM.sky) is refuted by toggling it, and its remedy would not cure it: the cause and remedy rewritten."},
     "CL-HIS-02": {"verdict": "WEAKENED", "note": "Both lenses: the premise holds through CONF_TEXT.A, not through 8K's rule; 44 counts unreviewed carried grades, not wrong ones (21 are 1-5.6 km from the anchor that declared the A, 29 have no act). Applied: probable problem, P3."},
     "CL-HIS-03": {"verdict": "WEAKENED", "note": "Both lenses: the register is divided (the disposition and Stutterheim against the official report), so the defect is taking one side without saying so; title corrected; S2 kept."},
     "CL-TEST-01": {"verdict": "WEAKENED", "note": "Both lenses: the facts hold; no rule requires the browser checks to gate (decision 132 asked that they run); S3. The lenses differ on P2 or P3 and on probable problem or optional improvement: the auditor takes P3, probable problem (a process risk the project's reliance on the self-test makes real)."},
-    "CL-MAP-01": {"verdict": "WEAKENED", "note": "Premise lens: real for Landscape with counters; the origin is mixed (corrected). Severity S2 kept."},
+    "CL-MAP-01": {"verdict": "WEAKENED", "note": "Both lenses: real and reproduced in Landscape with counters; the origin as stated was wrong (the cavalry's starvation is inherited, worse before Stage 8 for d'Hautpoul and the Russian Guard cavalry; Stage 8 lowered the totals and lengthened the gaps): corrected. Not an accepted compromise: section 23.2 leaves longer playback to this audit. S2 kept."},
     "CL-MAP-02": {"verdict": "WEAKENED", "note": "Premise lens: protecting event-named formations extends decision 39's never-dropped list, so it needs an owner decision; S3, probable problem."},
     "CL-MAP-04": {"verdict": "WEAKENED", "note": "Premise lens: the premise is cartographic convention, not a project rule; the absence of an orientation aid, S3."},
     "CL-MAP-05": {"verdict": "WEAKENED", "note": "Premise lens: within decisions 24 and 39 and their limits; missing reference lettering, an optional improvement."},
 }
 
 NOTES = {
+    "CL-TEST-02": "Verifier: wider than stated: the hybrid-glide (2,533 ms, 76 frames) and hybrid-orbit with a selection (3,033 ms, 91 frames) baselines are also at their windows, so three of MOTION.VIS's 'longest' baselines cannot fail.",
+    "CL-PERF-03": "Verifier: STAGE8_SPEC.md:1259 states the threshold max(1.5 R, 25 ms); STEP6_SPEC.md:179 and the perf-route.js:157 comment call it 'a missed refresh', which is wrong at 144 Hz.",
+    "CL-UX-01": "Reproduction lens: confirmed; the 844 x 390 part (no dispatch) is today's layout kept by decision 226 (a), accepted; no decision record mentions browser zoom or reflow, so the 400% and 320 px parts stand.",
+    "CL-SIM-04": "Verifier: one fix covers both scenarios: start the outgoing group from the opacity it had reached, the layer's factor included (app.js:3185).",
+    "CL-SIM-05": "Verifier: 8A's review kept act texts as 'orders, not places', but several are positions and the row is labelled 'Doing now', so the implementation contradicts decision 251's stated scope ('hidden from every place a visitor could read its position from'); the replacement row's wording is the owner's.",
+    "CL-ROB-07": "Verifier: publishing only the product must keep tools/step6/perf-run.html (the owner's device route on Pages), with CL-ROB-01's fix.",
     "CL-PERF-04": "The perf-attribution area (CL-PERF-12) reproduced the excess on one fixed browser (Chromium 141 for both builds) at the device's ratio and located it between step 6's build and 8E: the unrecorded browser update remains a records defect, but it is not needed to explain the excess.",
     "CL-MAP-12": "Verifier: the cause is not the pan's travel but the target re-seated at the pan's end (about +10 units, the picture unchanged), so distance-keyed map-layer levels can flip at rest after any landscape pan; the remedy moves owner-held motion counts (decisions 257 (b), 267 (a)).",
     "CL-MAP-06": "Verifier: decision 159 is met to the letter but its purpose is lost at 1280 px in Watch; every desktop Watch case of the harness is 1600 x 900, so 1280 is unmeasured.",
