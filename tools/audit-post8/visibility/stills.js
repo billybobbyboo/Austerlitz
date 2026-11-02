@@ -28,11 +28,15 @@ const ANNOT=function(info){
 };
 (async()=>{
   const [spec,o]=RUNS[RUN]; fs.mkdirSync(OUT,{recursive:true});
-  const b=await A.launch(), rec=[];
-  const page=await A.open(b,spec.viewport); page.setDefaultTimeout(0);
+  const rec=[];
   const settle=async p=>{ await p.evaluate(()=>AUSTERLITZ_DEBUG.settle(90)); await p.waitForTimeout(450); await p.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); };
-  await settle(page); await page.evaluate(()=>closeFirst(null));
+  /* each still on a browser of its own: on this shared machine a page's WebGL context was lost after its first still (the canvas black in the
+     next captures, the layer still laid out): an environment failure, avoided by a fresh browser per still */
+  let b=null, page=null;
   for(const N of FR){
+    if(b) await b.close();
+    b=await A.launch(); page=await A.open(b,spec.viewport); page.setDefaultTimeout(0);
+    await settle(page); await page.evaluate(()=>closeFirst(null));
     await page.evaluate(()=>{ select(null,null); stopPlay(); var a=document.getElementById("audit-annot"); if(a) a.remove(); });
     await page.evaluate(s=>window.__aus.apply(s),spec);
     await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(90,true));
@@ -43,8 +47,10 @@ const ANNOT=function(info){
     if(!r.paused) throw new Error("run ended before frame "+N);
     /* the next frame drawn by the app with WebGL, still playing; then the annotation */
     const info=await page.evaluate(x=>{ var stub=renderer.render; renderer.render=window.__rr; window.__md.frame(); renderer.render=stub;
-      var h=Math.floor(clock/60), m=Math.floor(clock%60); return {clock:(h<10?"0":"")+h+":"+(m<10?"0":"")+m, speed:x.speed, frame:x.n+1, run:x.run}; },{speed:a.speed,n:r.n,run:RUN});
+      var h=Math.floor(clock/60), m=Math.floor(clock%60), gl=renderer.getContext();
+      return {clock:(h<10?"0":"")+h+":"+(m<10?"0":"")+m, speed:x.speed, frame:x.n+1, run:x.run, glLost:!!(GL&&GL.lost), ctxLost:!!(gl&&gl.isContextLost&&gl.isContextLost()), calls:renderer.info.render.calls}; },{speed:a.speed,n:r.n,run:RUN});
     await page.waitForTimeout(300);
+    if(info.glLost||info.ctxLost||!info.calls) console.log("  frame "+(N+1)+": the WebGL frame was not drawn (context lost "+info.ctxLost+", GL.lost "+info.glLost+", draw calls "+info.calls+"): an environment failure; console "+JSON.stringify(A.errors(page).slice(-3)));
     let plain=null;
     if(PLAIN){ plain=path.join(OUT,RUN+"-f"+(N+1)+"-plain.jpg"); await A.jpeg(page,plain,82); }
     const det=await page.evaluate(ANNOT,info);
@@ -55,5 +61,5 @@ const ANNOT=function(info){
   }
   const jf=path.join(OUT,RUN+"-stills.json"); let prev=[]; if(fs.existsSync(jf)) prev=JSON.parse(fs.readFileSync(jf,"utf8")).filter(x=>!rec.some(y=>y.frame===x.frame));
   fs.writeFileSync(jf,JSON.stringify(prev.concat(rec).sort((p,q)=>p.frame-q.frame),null,1));
-  await b.close();
+  if(b) await b.close();
 })().catch(e=>{ console.error(e); process.exit(1); });

@@ -1,0 +1,934 @@
+{
+ "shot": "land-field",
+ "set": "d1024",
+ "viewport": [
+  1024,
+  768
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1024,
+   768
+  ],
+  "t": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "cam": [
+   -195,
+   92,
+   156,
+   -33,
+   4,
+   -2
+  ]
+ },
+ "steps": [],
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -195,
+    94.10852215492369,
+    156
+   ],
+   "tgt": [
+    -33,
+    3.724891828834621,
+    -2
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -195,
+    94.10852215492369,
+    156
+   ],
+   "tgt": [
+    -33,
+    3.724891828834621,
+    -2
+   ]
+  },
+  "aimErr": 0,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1024,
+   768
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 48,
+  "placed": 34,
+  "dropped": 8,
+  "droppedIds": [
+   "n:bourcier",
+   "t:pratzen",
+   "t:vinohrady",
+   "t:pratzeberg",
+   "t:goldbach",
+   "t:telnitz",
+   "t:sokolnitz",
+   "t:austerlitz"
+  ],
+  "occluded": 0,
+  "offscreen": 2,
+  "underPanel": 4,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The crisis on the Pratzeberg",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "Friant retakes Telnitz, then loses it again",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 18,150",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   689,
+   304,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "1 km",
+ "bodyClass": "rail-hidden pm-study",
+ "textContrast": {
+  "texts": 49,
+  "min": 8.32,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:lich",
+    "plate": "full",
+    "ratio": 1.138,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.5
+   },
+   {
+    "id": "n:bag",
+    "plate": "full",
+    "ratio": 1.36,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.91
+   },
+   {
+    "id": "n:sthilaire",
+    "plate": "full",
+    "ratio": 0.949,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.09
+   },
+   {
+    "id": "n:vandamme",
+    "plate": "full",
+    "ratio": 1.093,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.91
+   },
+   {
+    "id": "n:legrand",
+    "plate": "full",
+    "ratio": 0.828,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.22
+   },
+   {
+    "id": "n:friant",
+    "plate": "full",
+    "ratio": 0.708,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.5
+   },
+   {
+    "id": "n:caffarelli",
+    "plate": "full",
+    "ratio": 1.151,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.05
+   },
+   {
+    "id": "n:suchet",
+    "plate": "full",
+    "ratio": 1.165,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.8
+   },
+   {
+    "id": "n:kellermann",
+    "plate": "full",
+    "ratio": 1.163,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.66
+   },
+   {
+    "id": "n:nansouty",
+    "plate": "full",
+    "ratio": 1.135,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.76
+   },
+   {
+    "id": "n:dhautpoul",
+    "plate": "full",
+    "ratio": 1.107,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.68
+   },
+   {
+    "id": "n:walther",
+    "plate": "full",
+    "ratio": 1.137,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.31
+   },
+   {
+    "id": "n:rivaud",
+    "plate": "full",
+    "ratio": 1.056,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.05
+   },
+   {
+    "id": "n:drouet",
+    "plate": "full",
+    "ratio": 1.021,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.31
+   },
+   {
+    "id": "n:guard_cav",
+    "plate": "full",
+    "ratio": 1.046,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.66
+   },
+   {
+    "id": "n:kienmayer",
+    "plate": "full",
+    "ratio": 0.756,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.01
+   },
+   {
+    "id": "n:dok",
+    "plate": "full",
+    "ratio": 0.76,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.17
+   },
+   {
+    "id": "n:lang",
+    "plate": "full",
+    "ratio": 0.835,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.92
+   },
+   {
+    "id": "n:prz",
+    "plate": "full",
+    "ratio": 0.798,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.25
+   },
+   {
+    "id": "n:milo",
+    "plate": "full",
+    "ratio": 1.063,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.5
+   },
+   {
+    "id": "n:kollo",
+    "plate": "full",
+    "ratio": 1.037,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.51
+   },
+   {
+    "id": "n:rg_inf",
+    "plate": "full",
+    "ratio": 1.218,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.4
+   },
+   {
+    "id": "n:rg_cav",
+    "plate": "full",
+    "ratio": 1.171,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.9
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "on",
+   "text": "Fifth Column (cavalry)",
+   "box": [
+    610,
+    310,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bag",
+   "cat": "name",
+   "state": "on",
+   "text": "Advance Guard of the RightB",
+   "box": [
+    506,
+    248,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "p:plateau",
+   "cat": "plateau",
+   "state": "on",
+   "text": "THE PRATZEN · derived: Allied ≈ 18,150 French ≈ ",
+   "box": [
+    567,
+    350,
+    331,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen Heights",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Goldbach stream",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "on",
+   "text": "Litava river",
+   "box": [
+    922,
+    308,
+    70,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:telnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Telnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Sokolnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Austerlitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:sthilaire",
+   "cat": "name",
+   "state": "on",
+   "text": "Saint-Hilaire",
+   "box": [
+    782,
+    310,
+    94,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:vandamme",
+   "cat": "name",
+   "state": "on",
+   "text": "Vandamme",
+   "box": [
+    689,
+    281,
+    86,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:legrand",
+   "cat": "name",
+   "state": "on",
+   "text": "LegrandB",
+   "box": [
+    650,
+    482,
+    91,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:friant",
+   "cat": "name",
+   "state": "on",
+   "text": "Friant",
+   "box": [
+    867,
+    592,
+    56,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bourcier",
+   "cat": "name",
+   "state": "dropped",
+   "text": "Bourcier's DragoonsC",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:caffarelli",
+   "cat": "name",
+   "state": "on",
+   "text": "Caffarelli",
+   "box": [
+    479,
+    370,
+    75,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:suchet",
+   "cat": "name",
+   "state": "on",
+   "text": "SuchetB",
+   "box": [
+    475,
+    215,
+    82,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kellermann",
+   "cat": "name",
+   "state": "on",
+   "text": "Kellermann's Light CavalryB",
+   "box": [
+    483,
+    169,
+    197,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:nansouty",
+   "cat": "name",
+   "state": "on",
+   "text": "Nansouty's CuirassiersB",
+   "box": [
+    569,
+    200,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:dhautpoul",
+   "cat": "name",
+   "state": "on",
+   "text": "d'Hautpoul's CuirassiersB",
+   "box": [
+    478,
+    459,
+    183,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:walther",
+   "cat": "name",
+   "state": "on",
+   "text": "Walther's DragoonsC",
+   "box": [
+    480,
+    481,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:rivaud",
+   "cat": "name",
+   "state": "on",
+   "text": "RivaudB",
+   "box": [
+    591,
+    409,
+    85,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:drouet",
+   "cat": "name",
+   "state": "on",
+   "text": "Drouet d'ErlonB",
+   "box": [
+    458,
+    389,
+    129,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:guard_cav",
+   "cat": "name",
+   "state": "on",
+   "text": "Guard CavalryB",
+   "box": [
+    470,
+    433,
+    128,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kienmayer",
+   "cat": "name",
+   "state": "on",
+   "text": "Kienmayer's Advance GuardB",
+   "box": [
+    809,
+    642,
+    206,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:dok",
+   "cat": "name",
+   "state": "on",
+   "text": "First Column",
+   "box": [
+    894,
+    541,
+    97,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:lang",
+   "cat": "name",
+   "state": "on",
+   "text": "Second ColumnC",
+   "box": [
+    874,
+    469,
+    135,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:prz",
+   "cat": "name",
+   "state": "on",
+   "text": "Third ColumnB",
+   "box": [
+    742,
+    532,
+    125,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:milo",
+   "cat": "name",
+   "state": "on",
+   "text": "Miloradovich's RussiansB",
+   "box": [
+    734,
+    261,
+    180,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kollo",
+   "cat": "name",
+   "state": "on",
+   "text": "Kollowrat's AustriansB",
+   "box": [
+    814,
+    369,
+    164,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:rg_inf",
+   "cat": "name",
+   "state": "on",
+   "text": "Guard Infantry",
+   "box": [
+    793,
+    288,
+    107,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:rg_cav",
+   "cat": "name",
+   "state": "on",
+   "text": "Guard Cavalry",
+   "box": [
+    706,
+    223,
+    107,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "e:telnitz-retaken",
+   "cat": "event",
+   "state": "on",
+   "text": "Friant retakes Telnitz, then loses it again",
+   "box": [
+    749,
+    571,
+    230,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "o:French hold the crest",
+   "cat": "overlay",
+   "state": "on",
+   "text": "French hold the crest",
+   "box": [
+    681,
+    330,
+    126,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Kamensky turns about (disputed)",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Kamensky turns about (disputed)",
+   "box": [
+    732,
+    447,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Jurczek's Austrians",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Jurczek's Austrians",
+   "box": [
+    621,
+    371,
+    116,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Levasseur up the Goldbach",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Levasseur up the Goldbach",
+   "box": [
+    707,
+    506,
+    163,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Caffarelli",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Caffarelli",
+   "box": [
+    533,
+    303,
+    62,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Suchet",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Suchet",
+   "box": [
+    485,
+    349,
+    48,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Bagration",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Bagration",
+   "box": [
+    514,
+    275,
+    64,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Pratzeberg",
+   "cat": "objective",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    876,
+    392,
+    70,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 99957,
+ "msSettle": 52102,
+ "msShot": 47368,
+ "msMeasure": 487,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

@@ -1,0 +1,538 @@
+{
+ "shot": "paper",
+ "viewport": [
+  390,
+  844
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real tap #menubtn; real tap #layersbtn",
+  "real tap .mode-btn[data-m=\"staff\"]",
+  "real tap #layerclose"
+ ],
+ "note": "the paper map entered by its taps (decision 238)",
+ "state": {
+  "clock": 329.997493315508,
+  "presentation": "study",
+  "mode": "staff",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "map",
+   "x": 46.01856357232293,
+   "z": 150.68871279995903,
+   "wpp": 1.2119554233073286
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   390,
+   844
+  ],
+  "phone": {
+   "on": true,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 40,
+   "placed": 23,
+   "dropped": 17,
+   "droppedIds": [
+    "c:c_cav",
+    "c:lich",
+    "c:c_iii",
+    "c:c_gren",
+    "o:IV Column → Kobelnitz",
+    "o:V Column counter-marches north",
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:austerlitz"
+   ],
+   "underPanel": 0
+  },
+  "drawn": [
+   {
+    "id": "p:plateau",
+    "text": "THE PRATZEN · derived: Allied ≈ 38,700",
+    "box": [
+     65,
+     12,
+     242,
+     17
+    ]
+   },
+   {
+    "id": "o:French line on the Goldbach",
+    "text": "French line on the Goldbach",
+    "box": [
+     198,
+     274,
+     167,
+     17
+    ]
+   },
+   {
+    "id": "o:Allied columns on the plateau",
+    "text": "Allied columns on the plateau",
+    "box": [
+     4,
+     437,
+     179,
+     17
+    ]
+   },
+   {
+    "id": "o:V Corps · IV Corps",
+    "text": "V Corps · IV Corps",
+    "box": [
+     257,
+     208,
+     116,
+     17
+    ]
+   },
+   {
+    "id": "o:Soult's assault · Legrand",
+    "text": "Soult's assault · Legrand",
+    "box": [
+     60,
+     418,
+     146,
+     17
+    ]
+   },
+   {
+    "id": "o:I Column → Telnitz",
+    "text": "I Column → Telnitz",
+    "box": [
+     4,
+     321,
+     119,
+     17
+    ]
+   },
+   {
+    "id": "o:II Column → Sokolnitz",
+    "text": "II Column → Sokolnitz",
+    "box": [
+     6,
+     506,
+     138,
+     17
+    ]
+   },
+   {
+    "id": "o:III Column → the castle",
+    "text": "III Column → the castle",
+    "box": [
+     49,
+     146,
+     140,
+     17
+    ]
+   },
+   {
+    "id": "o:Telnitz",
+    "text": "Telnitz",
+    "box": [
+     290,
+     380,
+     48,
+     17
+    ]
+   },
+   {
+    "id": "o:Sokolnitz",
+    "text": "Sokolnitz",
+    "box": [
+     314,
+     97,
+     63,
+     17
+    ]
+   },
+   {
+    "id": "o:Kobelnitz",
+    "text": "Kobelnitz",
+    "box": [
+     10,
+     109,
+     64,
+     17
+    ]
+   },
+   {
+    "id": "t:satschan",
+    "text": "Satschan mere",
+    "box": [
+     45,
+     342,
+     95,
+     16
+    ]
+   },
+   {
+    "id": "c:gqg",
+    "text": "XXXXFRBImperial Headquarters",
+    "box": [
+     38,
+     166,
+     216,
+     53
+    ]
+   },
+   {
+    "id": "c:ahq",
+    "text": "XXXXRUBAllied Headquarters",
+    "box": [
+     161,
+     304,
+     202,
+     53
+    ]
+   },
+   {
+    "id": "c:bag",
+    "text": "XXXRUBAdvance Guard of the Right",
+    "box": [
+     60,
+     49,
+     246,
+     46
+    ]
+   },
+   {
+    "id": "e:counter-march",
+    "text": "Liechtenstein counter-marches across the",
+    "box": [
+     36,
+     230,
+     302,
+     33
+    ]
+   },
+   {
+    "id": "c:c_iv",
+    "text": "XXXFRBIV Corps",
+    "box": [
+     78,
+     98,
+     134,
+     46
+    ]
+   },
+   {
+    "id": "c:c_v",
+    "text": "XXXFRBV Corps",
+    "box": [
+     4,
+     269,
+     131,
+     46
+    ]
+   },
+   {
+    "id": "c:c_i",
+    "text": "XXXFRBI Corps",
+    "box": [
+     18,
+     456,
+     125,
+     46
+    ]
+   },
+   {
+    "id": "c:c_gd",
+    "text": "XXXFRBImperial Guard",
+    "box": [
+     215,
+     116,
+     170,
+     46
+    ]
+   },
+   {
+    "id": "c:col4",
+    "text": "XXXATFourth Column",
+    "box": [
+     208,
+     430,
+     168,
+     46
+    ]
+   },
+   {
+    "id": "c:constantine",
+    "text": "XXXRURussian Imperial Guard",
+    "box": [
+     146,
+     480,
+     219,
+     46
+    ]
+   },
+   {
+    "id": "c:buxhowden",
+    "text": "XXXRUCLeft Wing Command",
+    "box": [
+     65,
+     362,
+     204,
+     53
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+   "box": [
+    110,
+    783,
+    226,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE DECEPTION",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "Dispositions in the dark",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "hour disputedLiechtenstein counter-marches across the 4th Column",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     723,
+     390,
+     121
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     0,
+     844,
+     390,
+     506
+    ]
+   },
+   ".dispatch": {
+    "shown": true,
+    "box": [
+     0,
+     534,
+     390,
+     189
+    ]
+   },
+   "#tools": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#viewmode": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#firstrun": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".drawer": {
+    "shown": false,
+    "box": [
+     0,
+     844,
+     390,
+     464
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": true,
+    "box": [
+     320,
+     10,
+     60,
+     44
+    ]
+   },
+   "#dgrip": {
+    "shown": true,
+    "box": [
+     14,
+     536,
+     362,
+     28
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": true,
+    "box": [
+     8,
+     780,
+     96,
+     21
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study mode-staff",
+  "clock": 329.997493315508,
+  "cam": {
+   "pos": [
+    -124.49,
+    59.06,
+    41.47
+   ],
+   "tgt": [
+    55.35,
+    0,
+    -24.32
+   ]
+  },
+  "map": {
+   "x": 46.02,
+   "z": 150.69,
+   "wpp": 1.212
+  },
+  "focus": "play"
+ },
+ "textContrast": {
+  "texts": 51,
+  "min": 4.89,
+  "belowAA": []
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "id": "v-plan-1500",
+ "group": "vantage",
+ "note": "The Overview (fitted to the battle's extent) at 1500.",
+ "spec": {
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   -27,
+   272,
+   41,
+   -27,
+   0,
+   9
+  ]
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "15:00",
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -38.825,
+   424.89,
+   53.876
+  ],
+  "target": [
+   -38.825,
+   0.547,
+   4.678
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 427.19,
+  "sunAlt": 8.5,
+  "sunGeo": 8.4,
+  "sunAz": 221.5,
+  "mist": 0.22
+ },
+ "ms": 16128,
+ "timing": {
+  "apply": 40,
+  "settle": 164,
+  "settle2": 107,
+  "shot": 15268
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

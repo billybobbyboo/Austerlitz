@@ -1,0 +1,74 @@
+{
+ "id": "l-field-0900",
+ "group": "laptop",
+ "note": "The Field vantage at 1280 x 720, 09:00.",
+ "spec": {
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   -195,
+   92,
+   156,
+   -33,
+   4,
+   -2
+  ]
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "09:00",
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -195,
+   94.109,
+   156
+  ],
+  "target": [
+   -33,
+   3.725,
+   -2
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1280,
+   720
+  ],
+  "fx": true,
+  "dist": 243.67,
+  "sunAlt": 8.54,
+  "sunGeo": 8.43,
+  "sunAz": 138.5,
+  "mist": 0.276
+ },
+ "ms": 29403,
+ "timing": {
+  "apply": 71,
+  "settle": 266,
+  "settle2": 22618,
+  "shot": 5976
+ },
+ "page": "harness page (?harness=1), 1280x720, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

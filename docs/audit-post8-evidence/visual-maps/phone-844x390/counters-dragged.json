@@ -1,0 +1,314 @@
+{
+ "shot": "counters-dragged",
+ "viewport": [
+  844,
+  390
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real touch drag (CDP) 422,136.5,542,176.5 in 12 moves"
+ ],
+ "note": "after a one-finger drag on the map: did the view pan, did the clock move? before {\"clock\":570,\"tgt\":[7,10.004364185661881,12]} after {\"clock\":570,\"tgt\":[88.56267355109628,-2.6044157618437973,-52.43548002621837]}",
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -30.437189963910782,
+    37.948297900998455,
+    -8.898944593898726
+   ],
+   "tgt": [
+    88.56267355109628,
+    -2.6044157618437973,
+    -52.43548002621837
+   ]
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   844,
+   390
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 64,
+   "placed": 1,
+   "dropped": 1,
+   "droppedIds": [
+    "t:litava"
+   ],
+   "underPanel": 2
+  },
+  "drawn": [
+   {
+    "id": "t:austerlitz",
+    "text": "Austerlitz",
+    "box": [
+     383,
+     186,
+     63,
+     16
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+   "box": [
+    362,
+    311,
+    426,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE PRATZEN STRIKE",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "The crisis on the Pratzeberg",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "Friant retakes Telnitz, then loses it again",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 18,150",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "cut der",
+     "text": "derived centre separation detected",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     300,
+     844,
+     91
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     -275,
+     0,
+     272,
+     299
+    ]
+   },
+   ".dispatch": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tools": {
+    "shown": true,
+    "box": [
+     471,
+     56,
+     359,
+     63
+    ]
+   },
+   "#viewmode": {
+    "shown": true,
+    "box": [
+     335,
+     14,
+     175,
+     34
+    ]
+   },
+   "#firstrun": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".drawer": {
+    "shown": false,
+    "box": [
+     844,
+     0,
+     360,
+     299
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#dgrip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study",
+  "clock": 570,
+  "cam": {
+   "pos": [
+    -30.44,
+    37.95,
+    -8.9
+   ],
+   "tgt": [
+    88.56,
+    -2.6,
+    -52.44
+   ]
+  },
+  "focus": "layersbtn"
+ },
+ "textContrast": {
+  "texts": 1,
+  "min": 13.64,
+  "belowAA": []
+ }
+}

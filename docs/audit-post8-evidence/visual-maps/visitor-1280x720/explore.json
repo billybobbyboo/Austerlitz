@@ -1,0 +1,150 @@
+{
+ "shot": "explore",
+ "viewport": [
+  1280,
+  720
+ ],
+ "page": "visitor page (no ?harness=1, transitions kept)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real click #fr-close (Explore on my own)"
+ ],
+ "caption": {
+  "clock": 240,
+  "box": [
+   388,
+   641,
+   456,
+   15
+  ],
+  "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+  "parts": [
+   {
+    "cls": "act",
+    "text": "THE DECEPTION",
+    "shown": true,
+    "ellipsized": true,
+    "w": 98,
+    "kids": []
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "ellipsized": false,
+    "w": 17,
+    "kids": []
+   },
+   {
+    "cls": "cap-ph",
+    "text": "Dispositions in the dark",
+    "shown": true,
+    "ellipsized": true,
+    "w": 13,
+    "kids": []
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "ellipsized": false,
+    "w": 17,
+    "kids": []
+   },
+   {
+    "cls": "ev",
+    "text": "intervalFriant's division at Raigern since the night",
+    "shown": true,
+    "ellipsized": false,
+    "w": 311,
+    "kids": [
+     {
+      "cls": "evn",
+      "text": "interval",
+      "ellipsized": false,
+      "w": 54
+     },
+     {
+      "cls": "evt",
+      "text": "Friant's division at Raigern since the night",
+      "ellipsized": false,
+      "w": 250
+     }
+    ]
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "ellipsized": false,
+    "w": 0,
+    "kids": []
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 38,700",
+    "shown": false,
+    "ellipsized": false,
+    "w": 0,
+    "kids": [
+     {
+      "cls": "",
+      "text": "derived",
+      "ellipsized": false,
+      "w": 0
+     }
+    ]
+   }
+  ],
+  "row": [
+   {
+    "id": "tb-ctrl",
+    "w": 297,
+    "shown": true
+   },
+   {
+    "id": "clockbox",
+    "w": 57,
+    "shown": true
+   },
+   {
+    "id": "speedbtn",
+    "w": 0,
+    "shown": false
+   },
+   {
+    "id": "tb-cap",
+    "w": 456,
+    "shown": true
+   },
+   {
+    "id": "eyesbtn",
+    "w": 105,
+    "shown": true
+   },
+   {
+    "id": "helpbtn",
+    "w": 32,
+    "shown": true
+   },
+   {
+    "id": "tb-vm",
+    "w": 0,
+    "shown": false
+   },
+   {
+    "id": "grp speeds",
+    "w": 149,
+    "shown": true
+   },
+   {
+    "id": "scalebar",
+    "w": 96,
+    "shown": true
+   }
+  ],
+  "firstRun": false,
+  "nowTop": "derived on the heights: Allied ≈ 38,700\nFriant's division at Raigern since the night (an interval, not a timestamp)\nDavout and Friant reached Raigern on the night of 1 December: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers. Davout's reports send the division on from Raigern at 05:00 (his report of 2 December) or between 05:30 and 06:00 (h",
+  "body": "docked pm-study"
+ }
+}

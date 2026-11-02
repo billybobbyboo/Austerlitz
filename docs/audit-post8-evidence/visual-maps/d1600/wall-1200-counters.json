@@ -1,0 +1,692 @@
+{
+ "shot": "wall-1200-counters",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 720,
+  "presentation": "watch",
+  "mode": "hybrid",
+  "aim": {
+   "map": [
+    230,
+    250
+   ],
+   "dir": [
+    -0.97,
+    0.1,
+    0.21
+   ],
+   "r": 60
+  }
+ },
+ "steps": [],
+ "state": {
+  "clock": 720,
+  "presentation": "watch",
+  "mode": "hybrid",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -113.34604790842874,
+    4.968570573160822,
+    12.631618619350554
+   ],
+   "tgt": [
+    -55,
+    -0.14566601050962874,
+    0
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -113.34604790842874,
+    4.968570573160822,
+    12.631618619350554
+   ],
+   "tgt": [
+    -55,
+    -0.14566601050962874,
+    0
+   ]
+  },
+  "aimErr": 0,
+  "paperFocus": null,
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 64,
+  "placed": 23,
+  "dropped": 11,
+  "droppedIds": [
+   "p:plateau",
+   "t:pratzen",
+   "t:vinohrady",
+   "t:austerlitz",
+   "t:kobelnitz",
+   "t:pratzenv",
+   "t:puntowitz",
+   "t:blasowitz",
+   "t:krzenowitz",
+   "t:posthouse",
+   "t:rausnitz"
+  ],
+  "occluded": 7,
+  "offscreen": 23,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · derived on the heights: Allied ≈ 4,250 · derived centre separation detected · interval The Russian Guard takes the eagle of the 4th Line",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE ARMY DIVIDED",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The Russian Guard at Stare Vinohrady",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 4,250",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "intervalThe Russian Guard takes the eagle of the 4th Line",
+    "shown": true,
+    "cut": true
+   }
+  ],
+  "box": [
+   389,
+   821,
+   590,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "250 m",
+ "bodyClass": "docked pm-watch rail-hidden",
+ "textContrast": {
+  "texts": 58,
+  "min": 5.38,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": []
+ },
+ "items": [
+  {
+   "id": "p:plateau",
+   "cat": "plateau",
+   "state": "dropped",
+   "text": "THE PRATZEN · derived: Allied ≈ 4,250 French ≈ 3",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen Heights",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    1217,
+    179,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "on",
+   "text": "Goldbach stream",
+   "box": [
+    1061,
+    394,
+    108,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "occluded",
+   "text": "Litava river",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Austerlitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "c:sthilaire",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRSaint-Hilaire",
+   "box": [
+    1022,
+    282,
+    155,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:vandamme",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRVandamme",
+   "box": [
+    522,
+    380,
+    149,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:rivaud",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRBRivaud",
+   "box": [
+    376,
+    270,
+    122,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:drouet",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRBDrouet d'Erlon",
+   "box": [
+    587,
+    324,
+    168,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:ahq",
+   "cat": "counter",
+   "state": "occluded",
+   "text": "XXXXRUBAllied Headquarters",
+   "box": null,
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:milo",
+   "cat": "counter",
+   "state": "occluded",
+   "text": "XXRUBMiloradovich's Russians",
+   "box": null,
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:kollo",
+   "cat": "counter",
+   "state": "occluded",
+   "text": "XXATBKollowrat's Austrians",
+   "box": null,
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:lich",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXXRUFifth Column (cavalry)",
+   "box": [
+    360,
+    326,
+    210,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:rg_inf",
+   "cat": "counter",
+   "state": "occluded",
+   "text": "XXRUGuard Infantry",
+   "box": null,
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:rg_cav",
+   "cat": "counter",
+   "state": "occluded",
+   "text": "XXRUGuard Cavalry",
+   "box": null,
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:c_gren",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRBGrenadier Division",
+   "box": [
+    510,
+    428,
+    193,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "t:kobelnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Kobelnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzenv",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen village",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:puntowitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Puntowitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:blasowitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Blasowitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:krzenowitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Krzenowitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:posthouse",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Posoritz post house",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:rausnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "To Rausnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "c:caffarelli",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRCaffarelli",
+   "box": [
+    191,
+    270,
+    137,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:kellermann",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRKellermann's Light Cavalry",
+   "box": [
+    115,
+    325,
+    240,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:nansouty",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRNansouty",
+   "box": [
+    262,
+    384,
+    138,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:dhautpoul",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRBd'Hautpoul",
+   "box": [
+    236,
+    177,
+    147,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:walther",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRCWalther",
+   "box": [
+    43,
+    262,
+    128,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:guard_inf",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRBGuard Infantry",
+   "box": [
+    509,
+    144,
+    167,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:guard_cav",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRGuard Cavalry",
+   "box": [
+    724,
+    372,
+    167,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:kamensky",
+   "cat": "counter",
+   "state": "on",
+   "text": "XRUCKamensky's Brigade",
+   "box": [
+    959,
+    335,
+    205,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "e:guard-attack",
+   "cat": "event",
+   "state": "on",
+   "text": "The Russian Guard takes the eagle of the 4th Lin",
+   "box": [
+    460,
+    210,
+    340,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "e:guard-broken",
+   "cat": "event",
+   "state": "on",
+   "text": "Rapp's counter-charge breaks the Chevalier Guard",
+   "box": [
+    683,
+    254,
+    387,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "e:hq-forward",
+   "cat": "event",
+   "state": "on",
+   "text": "Napoleon moves forward to Stare Vinohrady (inter",
+   "box": [
+    283,
+    251,
+    318,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "o:French on the plateau",
+   "cat": "overlay",
+   "state": "on",
+   "text": "French on the plateau",
+   "box": [
+    296,
+    226,
+    130,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Russian Imperial Guard",
+   "cat": "overlay",
+   "state": "occluded",
+   "text": "Russian Imperial Guard",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Bessières and Rapp",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Bessières and Rapp",
+   "box": [
+    137,
+    374,
+    117,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Drouet forms line",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Drouet forms line",
+   "box": [
+    714,
+    292,
+    109,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Stare Vinohrady",
+   "cat": "objective",
+   "state": "on",
+   "text": "Stare Vinohrady",
+   "box": [
+    496,
+    229,
+    101,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 143702,
+ "msSettle": 1643,
+ "msShot": 140171,
+ "msMeasure": 1888,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

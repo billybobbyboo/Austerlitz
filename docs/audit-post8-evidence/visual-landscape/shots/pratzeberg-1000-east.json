@@ -1,0 +1,78 @@
+{
+ "id": "pratzeberg-1000-east",
+ "group": "landmarks",
+ "note": "The Pratzeberg from the east at 10:00, the crisis.",
+ "spec": {
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    0.75,
+    0.4,
+    0.53
+   ],
+   "r": 55
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "10:00",
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   13.68,
+   37.32,
+   48.601
+  ],
+  "target": [
+   -27.5,
+   5.127,
+   19.5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 59.83,
+  "sunAlt": 14.13,
+  "sunGeo": 14.06,
+  "sunAz": 151.4,
+  "mist": 0.05
+ },
+ "ms": 22838,
+ "timing": {
+  "apply": 37,
+  "settle": 207,
+  "settle2": 101,
+  "shot": 22024
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

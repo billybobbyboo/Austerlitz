@@ -1,0 +1,78 @@
+{
+ "id": "sok-castle-1500-close",
+ "group": "landmarks",
+ "note": "The castle close at 15:00, the III Column gone (stills-8j 'sokolnitz-castle-afternoon').",
+ "spec": {
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    212.9,
+    344.3
+   ],
+   "dir": [
+    -0.55,
+    0.42,
+    0.72
+   ],
+   "r": 14
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "15:00",
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -71.26,
+   3.047,
+   57.244
+  ],
+  "target": [
+   -63.55,
+   -1.64,
+   47.15
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 13.54,
+  "sunAlt": 8.5,
+  "sunGeo": 8.4,
+  "sunAz": 221.5,
+  "mist": 0.22
+ },
+ "ms": 45170,
+ "timing": {
+  "apply": 53,
+  "settle": 693,
+  "settle2": 50,
+  "shot": 43919
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

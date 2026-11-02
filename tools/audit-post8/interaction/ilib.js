@@ -250,9 +250,10 @@ async function clickEl(page,sel,o){
     return {x:x,y:y,hit:!!(h&&(h===e||e.contains(h))),top:h?(h.id?"#"+h.id:h.tagName+"."+String(h.className).split(" ")[0]):null}; },[sel,o.index||0]);
   if(r.err) throw new Error("clickEl: "+r.err);
   if(!r.hit&&!o.force) throw new Error("clickEl: "+sel+" is covered by "+r.top);
-  if(o.dbl) await page.mouse.dblclick(r.x,r.y); else await page.mouse.click(r.x,r.y);
+  if(o.tap) await page.touchscreen.tap(r.x,r.y); else if(o.dbl) await page.mouse.dblclick(r.x,r.y); else await page.mouse.click(r.x,r.y);
   return r;
 }
+const tapEl=(page,sel,o)=>clickEl(page,sel,Object.assign({},o||{},{tap:true}));
 async function focusEl(page,sel){ return page.evaluate(s=>{ const e=document.querySelector(s); if(e) e.focus(); return document.activeElement===e; },sel); }
 function log(...a){ console.log(new Date().toISOString().slice(11,19),...a); }
-module.exports={trace,clickEl,focusEl,A,ROOT,EV,INSTR,SNAP,DRV,F,play,until,drawShot,openV,openP,snap,fp,fpDiff,counts,shot,wait,idle,frames,loopN,inject,log,MEASURE};
+module.exports={tapEl,trace,clickEl,focusEl,A,ROOT,EV,INSTR,SNAP,DRV,F,play,until,drawShot,openV,openP,snap,fp,fpDiff,counts,shot,wait,idle,frames,loopN,inject,log,MEASURE};

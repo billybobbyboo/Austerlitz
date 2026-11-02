@@ -90,7 +90,9 @@ node /home/user/Austerlitz/tools/audit-post8/state/listeners.js /home/user/Auste
    6944) sets the clock (4204) and glides (4205) but never calls `stopPlay`, unlike the tour (`applyTour` 4674) and the phase and act buttons
    (7487, 7554); app.js's own description of the dwell says "the tour and the themes stop the clock" (8827). B4: playing at 05:00, the theme
    "plan" put the clock at 04:00 and Play went on (04:10 two seconds later). `setChapter` and `glide` set `freeCam=false` (4203, 6311), so once
-   the 1.6 s glide ends Follow takes the camera (`followActive`, 8906): D2 measures it (`props-bundle3.txt`).
+   the 1.6 s glide ends Follow takes the camera (`followActive`, 8906). D2 (`props-bundle3.txt`), with the frame's own order (tween, tickClock,
+   followStep): 1.7 s after the theme was chosen the camera's target is 7 units from the theme's authored target, at 3.7 s 63 units and at 7.7 s
+   76 units, the clock at 04:28 and still playing: the theme's view is held only while its glide runs.
 2. **The open dossier goes stale while the clock moves within a phase** (confirmed; S2, P2; inherited). `setClock` repaints the dossier within
    a phase only when `drawerKey` changes (3498); the key (7720-7728) holds each formation's text phase, moving or standing, and hidden by the
    reading; for a place under everyone's reading it is "" (7721). Rows that state the clock or "now" are not in it: the card's "Where"
@@ -102,14 +104,18 @@ node /home/user/Austerlitz/tools/audit-post8/state/listeners.js /home/user/Auste
    Napoleon's headquarters, Saint-Hilaire, Drouet and the Guard cavalry; the model has the Guard infantry and cavalry); under Napoleon's
    headquarters 0 (8A's key). C4: 49 aggregate-phases keep a midpoint the model has left. The suite builds dossiers fresh at each clock
    (`runtime-test.js` 1058-1110), so an open dossier's repaint is never tested.
-3. **A phase change that interrupts the overlays' fade makes the outgoing phase's arrows pop back to 0.9** (confirmed; S3, P3; inherited).
+3. **A phase change that interrupts the overlays' fade makes the outgoing phase's arrows pop back to 0.9** (confirmed; S3, P2; inherited).
    `rebuildOverlays` resets `ovFadeIn=0, ovFadeOut=1` (3114) and `applyOverlayOpacity` draws the outgoing group at `0.9*ovFadeOut` (3185),
    whatever opacity it had reached; the fade takes `TRANS_MS` 2,600 ms (3194, 3473-3478). B5: at 4x with the dwell off, 5 of 9 boundaries pop
    (the 08:00 phase's 41 materials from 0.13 to 0.90 as 08:45 begins); with the dwell on, 0 (every phase lasts 3.5 s or more). B13: in the
-   opening, Next pressed at once after a step: 1 pop (11:00 to 14:30). D1: two phase steps half a second apart (`props-bundle3.txt`).
+   opening, Next pressed at once after a step: 1 pop (11:00 to 14:30). D1 (`props-bundle3.txt`), the clock stopped, a phase step (PageDown's
+   own call) and another 0.5 s later: the incoming group only starts to fade in at 0.34 x 2.6 s = 0.88 s, so the stepped-through phase's arrows,
+   never yet visible (opacity 0.00), are drawn at 0.90 as the next phase begins and fade out over 1.09 s (07:00, 08:00, 08:45 and 09:30 alike):
+   stepping through phases quickly by key or button flashes each skipped phase's arrows as it is left.
 4. **The first Play frame after the page went idle advances 120 ms of play** (confirmed; S4, P4; inherited). `loop` returns on idle frames before
    `lastFrame=now` (9126-9130), so the next active frame's `dt` is the 120 ms cap: B9, 0.600 clock min at 1/2x (a 60 Hz frame is 0.083), 3.648
-   at 4x (0.667). Reached by Space or Enter on Play (the key acts on keydown, before any frame); a mouse press wakes the loop first.
+   at 4x (0.667). Reached when Play starts on a keydown, before any frame has run: Space with no button focused (the window's "play" row) or
+   Enter on the focused Play button; a mouse press (pointerdown) or Space on a button (its click comes on keyup) wakes the loop first.
 5. **The reading is cached for the clock's minute at the first instant asked, so it depends on the path** (confirmed; S4, P3; inherited).
    `knowAtClock` (4288) clears `knowledgeOf`'s cache (4133-4152) at each new minute; the cache then keeps the reading computed at whatever clock
    first asked in that minute. B6: the reading at m+0.9 reached through m+0.1 differs from the same clock sought directly in 29

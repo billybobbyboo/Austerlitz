@@ -1,0 +1,75 @@
+{
+ "id": "bat-limbered-1410",
+ "group": "troops",
+ "note": "The same battery limbered and moving at 14:10 (views.js bat-limbered): no gunners drawn.",
+ "spec": {
+  "t": 850,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": "heightguns",
+   "dir": [
+    -0.7,
+    0.34,
+    0.62
+   ],
+   "r": 20
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "14:10",
+  "t": 850,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -42.959,
+   6.773,
+   49.518
+  ],
+  "target": [
+   -28.889,
+   -0.93,
+   37.056
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 20.31,
+  "sunAlt": 13.3,
+  "sunGeo": 13.23,
+  "sunAz": 210.8,
+  "mist": 0
+ },
+ "ms": 26930,
+ "timing": {
+  "apply": 32,
+  "settle": 205,
+  "settle2": 119,
+  "shot": 25902
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

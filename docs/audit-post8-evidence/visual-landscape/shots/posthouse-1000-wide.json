@@ -1,0 +1,78 @@
+{
+ "id": "posthouse-1000-wide",
+ "group": "landmarks",
+ "note": "The post house and the highway at 10:00 (Bagration's front), 60 units off.",
+ "spec": {
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    355,
+    60
+   ],
+   "dir": [
+    -0.6,
+    0.5,
+    0.62
+   ],
+   "r": 60
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "10:00",
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -28.601,
+   33.912,
+   -57.695
+  ],
+  "target": [
+   7.5,
+   1.575,
+   -95
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 61.16,
+  "sunAlt": 14.13,
+  "sunGeo": 14.06,
+  "sunAz": 151.4,
+  "mist": 0.05
+ },
+ "ms": 30627,
+ "timing": {
+  "apply": 47,
+  "settle": 191,
+  "settle2": 66,
+  "shot": 29856
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

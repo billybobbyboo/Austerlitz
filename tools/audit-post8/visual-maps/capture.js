@@ -50,7 +50,9 @@ const SETS={
     {n:"eyes-al-counters", spec:{t:570, presentation:"study", mode:"hybrid", eyes:"al", cam:FIELD}},
     {n:"eyes-fr-paper", spec:{t:510, presentation:"study", mode:"staff", eyes:"fr", paper:"frame", cam:OVER}},
     {n:"eye-zuran", spec:{t:510, presentation:"watch", mode:"terrain", eyes:"fr", eye:true, cam:FIELD}},
-    {n:"clean-field", spec:{t:570, presentation:"map", mode:"terrain", cam:FIELD}}
+    {n:"clean-field", spec:{t:570, presentation:"map", mode:"terrain", cam:FIELD}},
+    {n:"eye-zuran-noarrows", spec:{t:510, presentation:"watch", mode:"terrain", eyes:"fr", eye:true, cam:FIELD}, steps:["layerOff:arrows"]},
+    {n:"wall-0900-arrows-on", spec:Object.assign({},FAR_LOW,{t:540}), steps:["layer:arrows"]}
   ]},
   d1280:{vp:[1280,720], shots:[
     {n:"paper-entered", spec:{t:570, presentation:"study", mode:"staff", paper:"frame", cam:OVER}},
@@ -68,12 +70,6 @@ const SETS={
     {n:"watch-1200", spec:{t:720, presentation:"watch", mode:"terrain", cam:OVER}},
     {n:"selected-sthilaire", spec:{t:570, presentation:"study", mode:"terrain", select:["f","sthilaire"], aim:{map:"sthilaire", dir:[-0.55,0.62,0.56], r:86}}},
     {n:"counters-overview", spec:{t:570, presentation:"study", mode:"hybrid", cam:OVER}}
-  ]},
-  extra:{vp:[1600,900], shots:[
-    {n:"eye-zuran-noarrows", spec:{t:510, presentation:"watch", mode:"terrain", eyes:"fr", eye:true, cam:FIELD}, steps:["layerOff:arrows"]},
-    {n:"wall-0900", spec:Object.assign({},FAR_LOW,{t:540}), steps:["layer:arrows"]},
-    {n:"eyes-al-overview", spec:{t:570, presentation:"study", mode:"terrain", eyes:"al", cam:OVER}},
-    {n:"clean-field", spec:{t:570, presentation:"map", mode:"terrain", cam:FIELD}}
   ]}
 };
 /* in-page readers */
@@ -95,7 +91,7 @@ const READ=function(){
 };
 async function step(page,s){
   if(s==="legendOpen"){ const ex=await page.evaluate(()=>{ const b=document.getElementById("lg-toggle"); return b&&getComputedStyle(b).display!=="none"?b.getAttribute("aria-expanded"):"none"; });
-    if(ex==="false"){ await page.click("#lg-toggle",{timeout:30000}); return "real click #lg-toggle (was closed)"; } return "legend already "+ex; }
+    if(ex==="false"){ await page.click("#lg-toggle",{timeout:180000,force:true}); return "real click #lg-toggle (was closed)"; } return "legend already "+ex; }
   if(s==="tabPlans"){ await page.evaluate(()=>selectTab("plans")); return "selectTab('plans') (the app's own tab function)"; }
   if(s.startsWith("layerOff:")){ const l=s.slice(9); const r=await page.evaluate(l=>{ const b=document.querySelector('.layer-btn[data-l="'+l+'"]'); if(!b) return "no button"; if(b.getAttribute("aria-pressed")==="true") b.click(); return b.getAttribute("aria-pressed"); },l);
     return "DOM click .layer-btn[data-l="+l+"] (the app's own handler) -> pressed "+r; }

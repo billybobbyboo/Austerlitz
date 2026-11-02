@@ -1,0 +1,528 @@
+{
+ "shot": "watch-1420",
+ "set": "d1280",
+ "viewport": [
+  1280,
+  720
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "t": 860,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   -27,
+   272,
+   41,
+   -27,
+   0,
+   9
+  ]
+ },
+ "steps": [],
+ "state": {
+  "clock": 860,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -38.82243314755666,
+    439.6292120079145,
+    55.461335957556685
+   ],
+   "tgt": [
+    -38.82243314755666,
+    0.5388728428459966,
+    4.553998372836546
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -38.82243314755666,
+    439.6292120079145,
+    55.461335957556685
+   ],
+   "tgt": [
+    -38.82243314755666,
+    0.5388728428459966,
+    4.553998372836546
+   ]
+  },
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1280,
+   720
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 23,
+  "placed": 19,
+  "dropped": 4,
+  "droppedIds": [
+   "t:pratzeberg",
+   "t:telnitz",
+   "t:sokolnitz",
+   "t:augezd"
+  ],
+  "occluded": 0,
+  "offscreen": 0,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE COLLAPSE · The centre turns south · derived centre separation detected · hour disputed Vandamme takes the height above the Augezd defile",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE COLLAPSE",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The centre turns south",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep fit-off",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "ev fit-off",
+    "text": "hour disputedVandamme takes the height above the Augezd defile",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   389,
+   641,
+   270,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "2 km",
+ "bodyClass": "docked rail-hidden pm-watch",
+ "textContrast": {
+  "texts": 23,
+  "min": 8.35,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:gqg",
+    "plate": "full",
+    "ratio": 0.986,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.52
+   },
+   {
+    "id": "n:ahq",
+    "plate": "full",
+    "ratio": 1.026,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.62
+   },
+   {
+    "id": "n:buxhowden",
+    "plate": "full",
+    "ratio": 0.989,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.18
+   },
+   {
+    "id": "n:lich",
+    "plate": "full",
+    "ratio": 1.033,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.05
+   },
+   {
+    "id": "n:bag",
+    "plate": "full",
+    "ratio": 1.05,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.46
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:gqg",
+   "cat": "name",
+   "state": "on",
+   "text": "Imperial HeadquartersB",
+   "box": [
+    685,
+    406,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:ahq",
+   "cat": "name",
+   "state": "on",
+   "text": "Allied HeadquartersB",
+   "box": [
+    791,
+    214,
+    159,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:buxhowden",
+   "cat": "name",
+   "state": "on",
+   "text": "Left Wing CommandC",
+   "box": [
+    627,
+    428,
+    163,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "on",
+   "text": "Fifth Column (cavalry)",
+   "box": [
+    769,
+    141,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bag",
+   "cat": "name",
+   "state": "on",
+   "text": "Advance Guard of the RightC",
+   "box": [
+    680,
+    34,
+    202,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Sokolnitz",
+   "cat": "objective",
+   "state": "on",
+   "text": "Sokolnitz",
+   "box": [
+    508,
+    421,
+    63,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen Heights",
+   "box": [
+    696,
+    294,
+    100,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "on",
+   "text": "Stare Vinohrady",
+   "box": [
+    709,
+    239,
+    100,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:santon",
+   "cat": "place",
+   "state": "on",
+   "text": "The Santon",
+   "box": [
+    598,
+    98,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:zuran",
+   "cat": "place",
+   "state": "on",
+   "text": "Zuran mound",
+   "box": [
+    543,
+    154,
+    86,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "on",
+   "text": "Goldbach stream",
+   "box": [
+    450,
+    325,
+    108,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "on",
+   "text": "Litava river",
+   "box": [
+    861,
+    257,
+    70,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:telnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Telnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Sokolnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:augezd",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Augezd",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:satschan",
+   "cat": "place",
+   "state": "on",
+   "text": "Satschan mere",
+   "box": [
+    654,
+    508,
+    95,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Austerlitz",
+   "box": [
+    941,
+    149,
+    63,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Buxhowden's columns, now cut off",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Buxhowden's columns, now cut off",
+   "box": [
+    362,
+    462,
+    205,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Saint-Hilaire wheels south",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Saint-Hilaire wheels south",
+   "box": [
+    592,
+    339,
+    156,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Vandamme wheels south",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Vandamme wheels south",
+   "box": [
+    591,
+    313,
+    148,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Davout resumes the offensive",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Davout resumes the offensive",
+   "box": [
+    404,
+    481,
+    174,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Przybyszewski's breakout",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Przybyszewski's breakout",
+   "box": [
+    433,
+    402,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 86816,
+ "msSettle": 1904,
+ "msShot": 83252,
+ "msMeasure": 1660,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

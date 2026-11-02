@@ -1,0 +1,78 @@
+{
+ "id": "telnitz-0800",
+ "group": "landmarks",
+ "note": "Telnitz at 08:00 (views.js village-telnitz at 07:50).",
+ "spec": {
+  "t": 480,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    212,
+    408
+   ],
+   "dir": [
+    -0.55,
+    0.3,
+    0.78
+   ],
+   "r": 26
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "08:00",
+  "t": 480,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -78.294,
+   6.844,
+   99.271
+  ],
+  "target": [
+   -64,
+   -2.926,
+   79
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 26.66,
+  "sunAlt": 1.55,
+  "sunGeo": 1.2,
+  "sunAz": 126.5,
+  "mist": 0.98
+ },
+ "ms": 38604,
+ "timing": {
+  "apply": 129,
+  "settle": 758,
+  "settle2": 133,
+  "shot": 37131
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

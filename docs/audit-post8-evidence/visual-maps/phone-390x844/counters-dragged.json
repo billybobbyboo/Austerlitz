@@ -1,0 +1,408 @@
+{
+ "shot": "counters-dragged",
+ "viewport": [
+  390,
+  844
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real touch drag (CDP) 195,295.4,315,335.4 in 12 moves"
+ ],
+ "note": "after a one-finger drag on the map: did the view pan, did the clock move? before {\"clock\":570,\"tgt\":[7,10.004364185661881,12]} after {\"clock\":570,\"tgt\":[55.35477894450747,-2.3330024878105675,-24.323887138525166]}",
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -124.48817595402426,
+    58.95379379240113,
+    41.4723158731327
+   ],
+   "tgt": [
+    55.35477894450747,
+    -2.3330024878105675,
+    -24.323887138525166
+   ]
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   390,
+   844
+  ],
+  "phone": {
+   "on": true,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 62,
+   "placed": 10,
+   "dropped": 5,
+   "droppedIds": [
+    "c:sthilaire",
+    "c:rg_cav",
+    "t:pratzen",
+    "t:pratzeberg",
+    "t:krzenowitz"
+   ],
+   "underPanel": 1
+  },
+  "drawn": [
+   {
+    "id": "t:litava",
+    "text": "Litava river",
+    "box": [
+     238,
+     292,
+     70,
+     16
+    ]
+   },
+   {
+    "id": "t:austerlitz",
+    "text": "Austerlitz",
+    "box": [
+     66,
+     205,
+     63,
+     16
+    ]
+   },
+   {
+    "id": "o:French hold the crest",
+    "text": "French hold the crest",
+    "box": [
+     40,
+     444,
+     126,
+     17
+    ]
+   },
+   {
+    "id": "o:Jurczek's Austrians",
+    "text": "Jurczek's Austrians",
+    "box": [
+     7,
+     422,
+     116,
+     17
+    ]
+   },
+   {
+    "id": "o:Pratzeberg",
+    "text": "Pratzeberg",
+    "box": [
+     307,
+     392,
+     70,
+     17
+    ]
+   },
+   {
+    "id": "t:pratzenv",
+    "text": "Pratzen village",
+    "box": [
+     34,
+     517,
+     94,
+     16
+    ]
+   },
+   {
+    "id": "c:ahq",
+    "text": "XXXXRUBAllied Headquarters",
+    "box": [
+     86,
+     365,
+     202,
+     53
+    ]
+   },
+   {
+    "id": "c:milo",
+    "text": "XXRUBMiloradovich's Russians",
+    "box": [
+     67,
+     311,
+     226,
+     46
+    ]
+   },
+   {
+    "id": "c:kollo",
+    "text": "XXATBKollowrat's Austrians",
+    "box": [
+     178,
+     426,
+     208,
+     46
+    ]
+   },
+   {
+    "id": "c:rg_inf",
+    "text": "XXRUGuard Infantry",
+    "box": [
+     97,
+     232,
+     167,
+     46
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+   "box": [
+    8,
+    783,
+    328,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE PRATZEN STRIKE",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "The crisis on the Pratzeberg",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "Friant retakes Telnitz, then loses it again",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 18,150",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "cut der",
+     "text": "derived centre separation detected",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     723,
+     390,
+     121
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     0,
+     844,
+     390,
+     506
+    ]
+   },
+   ".dispatch": {
+    "shown": true,
+    "box": [
+     0,
+     548,
+     390,
+     175
+    ]
+   },
+   "#tools": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#viewmode": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#firstrun": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".drawer": {
+    "shown": false,
+    "box": [
+     0,
+     844,
+     390,
+     464
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": true,
+    "box": [
+     320,
+     10,
+     60,
+     44
+    ]
+   },
+   "#dgrip": {
+    "shown": true,
+    "box": [
+     14,
+     550,
+     362,
+     28
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study",
+  "clock": 570,
+  "cam": {
+   "pos": [
+    -124.49,
+    58.95,
+    41.47
+   ],
+   "tgt": [
+    55.35,
+    -2.33,
+    -24.32
+   ]
+  },
+  "focus": "play"
+ },
+ "textContrast": {
+  "texts": 21,
+  "min": 5.38,
+  "belowAA": []
+ }
+}

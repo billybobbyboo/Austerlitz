@@ -22,7 +22,10 @@ async function run(name,opts,body){
     async step(p,label,fn,o){ o=o||{}; const r={page:p._idx,label,at:Date.now()-t0};
       try{ if(fn) r.ret=await fn(p); }catch(e){ r.error=String(e&&e.message||e).slice(0,500); I.log("STEP ERROR",label,r.error); }
       if(o.snap!==false){ try{ r.s=compact(await I.snap(p)); }catch(e){ r.snapError=String(e.message).slice(0,300); } }
-      if(o.shot){ try{ r.shot=await I.drawShot(p,name+"-"+o.shot); out.shots.push(r.shot); }catch(e){ r.shotError=String(e.message).slice(0,300); } }
+      /* o.shot: the page as it stands with the 3D canvas blanked (not shown: it would be the last frame drawn (its draw skipped by the driver: under this machine's software WebGL a 1600 x 900
+         frame takes minutes under load; the panels, the map layer's names and counters, the caption and the clock are the page's own DOM); o.draw:
+         one real frame of the 3D view drawn first */
+      if(o.shot||o.draw){ try{ const nm=name+"-"+(o.draw||o.shot)+(o.draw?"":"-dom"); if(o.draw) r.shot=await I.drawShot(p,nm); else { await p.evaluate(()=>{ renderer.domElement.style.visibility="hidden"; }); try{ r.shot=await I.shot(p,nm); } finally{ await p.evaluate(()=>{ renderer.domElement.style.visibility=""; }); } } out.shots.push(r.shot); }catch(e){ r.shotError=String(e.message).slice(0,300); } }
       r.log=p._log.splice(0); r.ms=Date.now()-t0-r.at;
       out.steps.push(r); I.log(name,"|",label,"|",r.s?("clock "+r.s.clockText+" play "+r.s.playing+" "+r.s.presentation+"/"+r.s.mode+" sel "+r.s.selection+" focus "+r.s.focus):"", r.error?"ERR":"", r.log.length?("LOG "+JSON.stringify(r.log).slice(0,300)):"");
       return r; },

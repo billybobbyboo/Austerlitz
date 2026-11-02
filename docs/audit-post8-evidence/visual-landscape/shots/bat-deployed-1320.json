@@ -1,0 +1,75 @@
+{
+ "id": "bat-deployed-1320",
+ "group": "troops",
+ "note": "The guns on the heights deployed at 13:20 (views.js bat-deployed): drivers on the limbers' horses.",
+ "spec": {
+  "t": 800,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": "heightguns",
+   "dir": [
+    -0.7,
+    0.34,
+    0.62
+   ],
+   "r": 20
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "13:20",
+  "t": 800,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -46.571,
+   15.831,
+   28.962
+  ],
+  "target": [
+   -32.5,
+   3.483,
+   16.5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 22.49,
+  "sunAlt": 16.75,
+  "sunGeo": 16.7,
+  "sunAz": 199.3,
+  "mist": 0
+ },
+ "ms": 20939,
+ "timing": {
+  "apply": 28,
+  "settle": 137,
+  "settle2": 37,
+  "shot": 20269
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

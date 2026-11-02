@@ -1,0 +1,548 @@
+{
+ "shot": "watch-1440",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 880,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   -27,
+   272,
+   41,
+   -27,
+   0,
+   9
+  ]
+ },
+ "steps": [],
+ "state": {
+  "clock": 880,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -38.82501783593687,
+    424.8901104780978,
+    53.87576714684499
+   ],
+   "tgt": [
+    -38.82501783593687,
+    0.5465438859750221,
+    4.678143629356512
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -38.82501783593687,
+    424.8901104780978,
+    53.87576714684499
+   ],
+   "tgt": [
+    -38.82501783593687,
+    0.5465438859750221,
+    4.678143629356512
+   ]
+  },
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 25,
+  "placed": 22,
+  "dropped": 3,
+  "droppedIds": [
+   "t:telnitz",
+   "t:augezd",
+   "t:satschan"
+  ],
+  "occluded": 0,
+  "offscreen": 0,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE COLLAPSE · Augezd, the ponds and the ice · hour disputed Vandamme takes the height above the Augezd defile",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE COLLAPSE",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "Augezd, the ponds and the ice",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "hour disputedVandamme takes the height above the Augezd defile",
+    "shown": true,
+    "cut": false
+   }
+  ],
+  "box": [
+   388,
+   821,
+   580,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "2 km",
+ "bodyClass": "docked rail-hidden pm-watch",
+ "textContrast": {
+  "texts": 26,
+  "min": 8.51,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:gqg",
+    "plate": "full",
+    "ratio": 0.987,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.19
+   },
+   {
+    "id": "n:ahq",
+    "plate": "full",
+    "ratio": 1.03,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.02
+   },
+   {
+    "id": "n:buxhowden",
+    "plate": "full",
+    "ratio": 0.989,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.53
+   },
+   {
+    "id": "n:lich",
+    "plate": "full",
+    "ratio": 1.037,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.12
+   },
+   {
+    "id": "n:bag",
+    "plate": "full",
+    "ratio": 1.056,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.54
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:gqg",
+   "cat": "name",
+   "state": "on",
+   "text": "Imperial HeadquartersB",
+   "box": [
+    765,
+    476,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:ahq",
+   "cat": "name",
+   "state": "on",
+   "text": "Allied HeadquartersB",
+   "box": [
+    1025,
+    271,
+    159,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:buxhowden",
+   "cat": "name",
+   "state": "on",
+   "text": "Left Wing CommandB",
+   "box": [
+    868,
+    576,
+    162,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "on",
+   "text": "Fifth Column (cavalry)",
+   "box": [
+    1000,
+    178,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bag",
+   "cat": "name",
+   "state": "on",
+   "text": "Advance Guard of the RightC",
+   "box": [
+    791,
+    38,
+    202,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen Heights",
+   "box": [
+    870,
+    378,
+    100,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "on",
+   "text": "Stare Vinohrady",
+   "box": [
+    888,
+    307,
+    100,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    844,
+    440,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:santon",
+   "cat": "place",
+   "state": "on",
+   "text": "The Santon",
+   "box": [
+    744,
+    124,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:zuran",
+   "cat": "place",
+   "state": "on",
+   "text": "Zuran mound",
+   "box": [
+    672,
+    196,
+    86,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "on",
+   "text": "Goldbach stream",
+   "box": [
+    710,
+    417,
+    108,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "on",
+   "text": "Litava river",
+   "box": [
+    1083,
+    330,
+    70,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:telnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Telnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Sokolnitz",
+   "box": [
+    720,
+    564,
+    62,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:augezd",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Augezd",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:satschan",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Satschan mere",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Austerlitz",
+   "box": [
+    1187,
+    190,
+    63,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "e:augezd",
+   "cat": "event",
+   "state": "on",
+   "text": "Vandamme takes the height above the Augezd defil",
+   "box": [
+    857,
+    556,
+    396,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "o:I Column to the defile",
+   "cat": "overlay",
+   "state": "on",
+   "text": "I Column to the defile",
+   "box": [
+    745,
+    626,
+    132,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Over the Satschan mere",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Over the Satschan mere",
+   "box": [
+    837,
+    647,
+    140,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Across the Menitz mere",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Across the Menitz mere",
+   "box": [
+    599,
+    641,
+    141,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Vandamme takes the height",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Vandamme takes the height",
+   "box": [
+    745,
+    515,
+    162,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Legrand and Friant",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Legrand and Friant",
+   "box": [
+    657,
+    585,
+    117,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Bagration withdraws on Rausnitz",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Bagration withdraws on Rausnitz",
+   "box": [
+    915,
+    3,
+    194,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:The Augezd defile",
+   "cat": "objective",
+   "state": "on",
+   "text": "The Augezd defile",
+   "box": [
+    866,
+    602,
+    113,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 138709,
+ "msSettle": 3346,
+ "msShot": 134078,
+ "msMeasure": 1285,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

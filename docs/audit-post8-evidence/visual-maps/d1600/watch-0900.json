@@ -1,0 +1,562 @@
+{
+ "shot": "watch-0900",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   -27,
+   272,
+   41,
+   -27,
+   0,
+   9
+  ]
+ },
+ "steps": [],
+ "state": {
+  "clock": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -38.82501783593687,
+    424.8901104780978,
+    53.87576714684499
+   ],
+   "tgt": [
+    -38.82501783593687,
+    0.5465438859750221,
+    4.678143629356512
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -38.82501783593687,
+    424.8901104780978,
+    53.87576714684499
+   ],
+   "tgt": [
+    -38.82501783593687,
+    0.5465438859750221,
+    4.678143629356512
+   ]
+  },
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 26,
+  "placed": 20,
+  "dropped": 6,
+  "droppedIds": [
+   "t:pratzen",
+   "t:vinohrady",
+   "t:pratzeberg",
+   "t:zuran",
+   "t:goldbach",
+   "t:telnitz"
+  ],
+  "occluded": 0,
+  "offscreen": 0,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · Soult storms the heights · derived on the heights: Allied ≈ 23,550 · interval Friant's leading brigade reaches the Goldbach",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "Soult storms the heights",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 23,550",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "intervalFriant's leading brigade reaches the Goldbach",
+    "shown": true,
+    "cut": false
+   }
+  ],
+  "box": [
+   389,
+   821,
+   579,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "2 km",
+ "bodyClass": "docked pm-watch rail-hidden",
+ "textContrast": {
+  "texts": 24,
+  "min": 7.84,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:gqg",
+    "plate": "full",
+    "ratio": 1.012,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.01
+   },
+   {
+    "id": "n:ahq",
+    "plate": "full",
+    "ratio": 0.99,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.39
+   },
+   {
+    "id": "n:buxhowden",
+    "plate": "full",
+    "ratio": 0.984,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.42
+   },
+   {
+    "id": "n:lich",
+    "plate": "full",
+    "ratio": 0.997,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.42
+   },
+   {
+    "id": "n:bag",
+    "plate": "full",
+    "ratio": 1.04,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.01
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:gqg",
+   "cat": "name",
+   "state": "on",
+   "text": "Imperial HeadquartersB",
+   "box": [
+    580,
+    166,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:ahq",
+   "cat": "name",
+   "state": "on",
+   "text": "Allied HeadquartersB",
+   "box": [
+    856,
+    371,
+    159,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:buxhowden",
+   "cat": "name",
+   "state": "on",
+   "text": "Left Wing CommandC",
+   "box": [
+    734,
+    533,
+    163,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "on",
+   "text": "Fifth Column (cavalry)",
+   "box": [
+    805,
+    247,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bag",
+   "cat": "name",
+   "state": "on",
+   "text": "Advance Guard of the RightB",
+   "box": [
+    839,
+    80,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "p:plateau",
+   "cat": "plateau",
+   "state": "on",
+   "text": "THE PRATZEN · derived: Allied ≈ 23,550",
+   "box": [
+    858,
+    282,
+    242,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen Heights",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:santon",
+   "cat": "place",
+   "state": "on",
+   "text": "The Santon",
+   "box": [
+    744,
+    124,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:zuran",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Zuran mound",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Goldbach stream",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "on",
+   "text": "Litava river",
+   "box": [
+    1083,
+    330,
+    70,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:telnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Telnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Sokolnitz",
+   "box": [
+    720,
+    564,
+    62,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:augezd",
+   "cat": "place",
+   "state": "on",
+   "text": "Augezd",
+   "box": [
+    862,
+    575,
+    55,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:satschan",
+   "cat": "place",
+   "state": "on",
+   "text": "Satschan mere",
+   "box": [
+    816,
+    654,
+    95,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Austerlitz",
+   "box": [
+    1187,
+    190,
+    63,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Pratzeberg",
+   "cat": "objective",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    838,
+    423,
+    70,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "e:davout",
+   "cat": "event",
+   "state": "on",
+   "text": "Friant's leading brigade reaches the Goldbach (i",
+   "box": [
+    708,
+    623,
+    322,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "e:soult",
+   "cat": "event",
+   "state": "on",
+   "text": "Saint-Hilaire and Vandamme climb the slope (inte",
+   "box": [
+    480,
+    380,
+    317,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "e:pratzen-village",
+   "cat": "event",
+   "state": "on",
+   "text": "Thiébault's brigade clears Pratzen village",
+   "box": [
+    702,
+    350,
+    239,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "o:Saint-Hilaire",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Saint-Hilaire",
+   "box": [
+    678,
+    403,
+    81,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Vandamme",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Vandamme",
+   "box": [
+    746,
+    268,
+    73,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Friant retakes Telnitz",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Friant retakes Telnitz",
+   "box": [
+    537,
+    630,
+    126,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Stare Vinohrady",
+   "cat": "objective",
+   "state": "on",
+   "text": "Stare Vinohrady",
+   "box": [
+    891,
+    308,
+    101,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 114286,
+ "msSettle": 1733,
+ "msShot": 111167,
+ "msMeasure": 1386,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

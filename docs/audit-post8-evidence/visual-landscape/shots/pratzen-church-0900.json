@@ -1,0 +1,78 @@
+{
+ "id": "pratzen-church-0900",
+ "group": "landmarks",
+ "note": "The Pratzen church at its own site (8J) at 09:00 (stills-8j 'pratzen-church').",
+ "spec": {
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    277,
+    252
+   ],
+   "dir": [
+    -0.65,
+    0.38,
+    0.66
+   ],
+   "r": 22
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "09:00",
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -45.782,
+   8.782,
+   15.502
+  ],
+  "target": [
+   -31.5,
+   0.377,
+   1
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 22.02,
+  "sunAlt": 8.54,
+  "sunGeo": 8.43,
+  "sunAz": 138.5,
+  "mist": 0.276
+ },
+ "ms": 20843,
+ "timing": {
+  "apply": 37,
+  "settle": 444,
+  "settle2": 1564,
+  "shot": 18346
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

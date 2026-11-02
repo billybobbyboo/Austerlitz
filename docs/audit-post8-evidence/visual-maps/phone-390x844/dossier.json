@@ -1,0 +1,364 @@
+{
+ "shot": "dossier",
+ "viewport": [
+  390,
+  844
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real tap .vm-btn[data-vm=\"study\"]",
+  "select('f','sthilaire') as the harness's phone dossier case"
+ ],
+ "note": "Saint-Hilaire's dossier as a sheet",
+ "state": {
+  "clock": 329.997493315508,
+  "presentation": "study",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": "f:sthilaire",
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -124.48817595402426,
+    58.95379379240113,
+    41.4723158731327
+   ],
+   "tgt": [
+    55.35477894450747,
+    -2.3330024878105675,
+    -24.323887138525166
+   ]
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   390,
+   844
+  ],
+  "phone": {
+   "on": true,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": true,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 67,
+   "placed": 7,
+   "dropped": 2,
+   "droppedIds": [
+    "t:austerlitz",
+    "t:krzenowitz"
+   ],
+   "underPanel": 12
+  },
+  "drawn": [
+   {
+    "id": "n:ahq",
+    "text": "Allied HeadquartersB",
+    "box": [
+     11,
+     141,
+     159,
+     17
+    ]
+   },
+   {
+    "id": "o:Allied columns on the plateau",
+    "text": "Allied columns on the plateau",
+    "box": [
+     6,
+     208,
+     179,
+     17
+    ]
+   },
+   {
+    "id": "t:litava",
+    "text": "Litava river",
+    "box": [
+     202,
+     124,
+     70,
+     16
+    ]
+   },
+   {
+    "id": "n:milo",
+    "text": "Miloradovich's Russians",
+    "box": [
+     84,
+     228,
+     159,
+     17
+    ]
+   },
+   {
+    "id": "n:kollo",
+    "text": "Kollowrat's Austrians",
+    "box": [
+     34,
+     102,
+     143,
+     17
+    ]
+   },
+   {
+    "id": "n:rg_inf",
+    "text": "Guard Infantry",
+    "box": [
+     48,
+     74,
+     107,
+     17
+    ]
+   },
+   {
+    "id": "n:rg_cav",
+    "text": "Guard Cavalry",
+    "box": [
+     17,
+     54,
+     107,
+     17
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+   "box": [
+    8,
+    783,
+    328,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE DECEPTION",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "Dispositions in the dark",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "hour disputedLiechtenstein counter-marches across the 4th Column",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     723,
+     390,
+     121
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     0,
+     844,
+     390,
+     506
+    ]
+   },
+   ".dispatch": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tools": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#viewmode": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#firstrun": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".drawer": {
+    "shown": true,
+    "box": [
+     0,
+     259,
+     390,
+     464
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": true,
+    "box": [
+     320,
+     10,
+     60,
+     44
+    ]
+   },
+   "#dgrip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study drawer-open",
+  "clock": 329.997493315508,
+  "cam": {
+   "pos": [
+    -124.49,
+    58.95,
+    41.47
+   ],
+   "tgt": [
+    55.35,
+    -2.33,
+    -24.32
+   ]
+  },
+  "focus": "play"
+ },
+ "textContrast": {
+  "texts": 8,
+  "min": 8.64,
+  "belowAA": []
+ }
+}

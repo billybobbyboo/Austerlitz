@@ -1,0 +1,588 @@
+{
+ "shot": "watch-1200",
+ "set": "d1280",
+ "viewport": [
+  1280,
+  720
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "t": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   -27,
+   272,
+   41,
+   -27,
+   0,
+   9
+  ]
+ },
+ "steps": [],
+ "state": {
+  "clock": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -38.82243314755666,
+    439.6292120079145,
+    55.461335957556685
+   ],
+   "tgt": [
+    -38.82243314755666,
+    0.5388728428459966,
+    4.553998372836546
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -38.82243314755666,
+    439.6292120079145,
+    55.461335957556685
+   ],
+   "tgt": [
+    -38.82243314755666,
+    0.5388728428459966,
+    4.553998372836546
+   ]
+  },
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1280,
+   720
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 27,
+  "placed": 21,
+  "dropped": 6,
+  "droppedIds": [
+   "t:pratzen",
+   "t:vinohrady",
+   "t:zuran",
+   "t:litava",
+   "t:sokolnitz",
+   "t:augezd"
+  ],
+  "occluded": 0,
+  "offscreen": 0,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · derived on the heights: Allied ≈ 4,250 · derived centre separation detected · interval The Russian Guard takes the eagle of the 4th Line",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE ARMY DIVIDED",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The Russian Guard at Stare Vinohrady",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep der-sep fit-off",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der fit-off",
+    "text": "derived on the heights: Allied ≈ 4,250",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep fit-off",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "cut der fit-off",
+    "text": "derived centre separation detected",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep fit-off",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "ev fit-off",
+    "text": "intervalThe Russian Guard takes the eagle of the 4th Line",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   389,
+   641,
+   270,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "2 km",
+ "bodyClass": "docked pm-watch rail-hidden",
+ "textContrast": {
+  "texts": 25,
+  "min": 8.11,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:gqg",
+    "plate": "full",
+    "ratio": 1.011,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.16
+   },
+   {
+    "id": "n:ahq",
+    "plate": "full",
+    "ratio": 1.013,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.97
+   },
+   {
+    "id": "n:buxhowden",
+    "plate": "full",
+    "ratio": 0.984,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.46
+   },
+   {
+    "id": "n:lich",
+    "plate": "full",
+    "ratio": 1.016,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.01
+   },
+   {
+    "id": "n:bag",
+    "plate": "full",
+    "ratio": 1.031,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.75
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:gqg",
+   "cat": "name",
+   "state": "on",
+   "text": "Imperial HeadquartersB",
+   "box": [
+    450,
+    123,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:ahq",
+   "cat": "name",
+   "state": "on",
+   "text": "Allied HeadquartersB",
+   "box": [
+    831,
+    251,
+    159,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:buxhowden",
+   "cat": "name",
+   "state": "on",
+   "text": "Left Wing CommandC",
+   "box": [
+    576,
+    471,
+    163,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "on",
+   "text": "Fifth Column (cavalry)",
+   "box": [
+    686,
+    107,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bag",
+   "cat": "name",
+   "state": "on",
+   "text": "Advance Guard of the RightC",
+   "box": [
+    592,
+    73,
+    202,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "p:plateau",
+   "cat": "plateau",
+   "state": "on",
+   "text": "THE PRATZEN · derived: Allied ≈ 4,250 French ≈ 3",
+   "box": [
+    521,
+    161,
+    325,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen Heights",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    675,
+    342,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:santon",
+   "cat": "place",
+   "state": "on",
+   "text": "The Santon",
+   "box": [
+    598,
+    98,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:zuran",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Zuran mound",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "on",
+   "text": "Goldbach stream",
+   "box": [
+    450,
+    325,
+    108,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Litava river",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:telnitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Telnitz",
+   "box": [
+    585,
+    492,
+    47,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Sokolnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:augezd",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Augezd",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:satschan",
+   "cat": "place",
+   "state": "on",
+   "text": "Satschan mere",
+   "box": [
+    654,
+    508,
+    95,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Austerlitz",
+   "box": [
+    941,
+    149,
+    63,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "e:guard-attack",
+   "cat": "event",
+   "state": "on",
+   "text": "The Russian Guard takes the eagle of the 4th Lin",
+   "box": [
+    550,
+    271,
+    340,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "e:guard-broken",
+   "cat": "event",
+   "state": "on",
+   "text": "Rapp's counter-charge breaks the Chevalier Guard",
+   "box": [
+    502,
+    194,
+    387,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "e:hq-forward",
+   "cat": "event",
+   "state": "on",
+   "text": "Napoleon moves forward to Stare Vinohrady (inter",
+   "box": [
+    538,
+    294,
+    318,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "e:buxhowden-blind",
+   "cat": "event",
+   "state": "on",
+   "text": "Buxhowden does not yet know the centre is gone (",
+   "box": [
+    472,
+    434,
+    338,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "o:French on the plateau",
+   "cat": "overlay",
+   "state": "on",
+   "text": "French on the plateau",
+   "box": [
+    624,
+    131,
+    130,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Russian Imperial Guard",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Russian Imperial Guard",
+   "box": [
+    781,
+    223,
+    144,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Bessières and Rapp",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Bessières and Rapp",
+   "box": [
+    491,
+    215,
+    117,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Drouet forms line",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Drouet forms line",
+   "box": [
+    660,
+    314,
+    109,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Stare Vinohrady",
+   "cat": "objective",
+   "state": "on",
+   "text": "Stare Vinohrady",
+   "box": [
+    528,
+    240,
+    101,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 117689,
+ "msSettle": 54610,
+ "msShot": 62105,
+ "msMeasure": 974,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

@@ -1,0 +1,78 @@
+{
+ "id": "stanthony-1300",
+ "group": "landmarks",
+ "note": "Above Augezd at 13:00: the chapel of St Anthony's site (not drawn; its name on the ground).",
+ "spec": {
+  "t": 780,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    291,
+    354
+   ],
+   "dir": [
+    -0.55,
+    0.45,
+    0.7
+   ],
+   "r": 30
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "13:00",
+  "t": 780,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -41.041,
+   10.38,
+   73.053
+  ],
+  "target": [
+   -24.5,
+   -2.677,
+   52
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 29.79,
+  "sunAlt": 17.71,
+  "sunGeo": 17.66,
+  "sunAz": 194.6,
+  "mist": 0
+ },
+ "ms": 19891,
+ "timing": {
+  "apply": 25,
+  "settle": 1185,
+  "settle2": 65,
+  "shot": 18158
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

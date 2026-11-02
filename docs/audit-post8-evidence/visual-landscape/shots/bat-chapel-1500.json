@@ -1,0 +1,75 @@
+{
+ "id": "bat-chapel-1500",
+ "group": "troops",
+ "note": "The battery at 15:00 from the south (views.js bat-chapel).",
+ "spec": {
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": "heightguns",
+   "dir": [
+    0.1,
+    0.3,
+    -0.95
+   ],
+   "r": 34
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "15:00",
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -22.604,
+   6.039,
+   21.24
+  ],
+  "target": [
+   -26,
+   -2.69,
+   53.5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 33.59,
+  "sunAlt": 8.5,
+  "sunGeo": 8.4,
+  "sunAz": 221.5,
+  "mist": 0.22
+ },
+ "ms": 28617,
+ "timing": {
+  "apply": 27,
+  "settle": 473,
+  "settle2": 214,
+  "shot": 27319
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

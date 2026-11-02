@@ -1,0 +1,75 @@
+{
+ "id": "cav-close-1055",
+ "group": "troops",
+ "note": "Nansouty's cuirassiers at 10:55, 24 units off (views.js cav-close).",
+ "spec": {
+  "t": 655,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": "nansouty",
+   "dir": [
+    0.55,
+    0.32,
+    0.77
+   ],
+   "r": 24
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "10:55",
+  "t": 655,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -9.952,
+   6.574,
+   -34.611
+  ],
+  "target": [
+   -23.167,
+   0.2,
+   -53.111
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 23.61,
+  "sunAlt": 17.51,
+  "sunGeo": 17.45,
+  "sunAz": 164.2,
+  "mist": 0
+ },
+ "ms": 23492,
+ "timing": {
+  "apply": 43,
+  "settle": 216,
+  "settle2": 264,
+  "shot": 22516
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

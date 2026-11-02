@@ -1,0 +1,966 @@
+{
+ "shot": "plans-overview",
+ "set": "d1280",
+ "viewport": [
+  1280,
+  720
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "t": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "plan": "both",
+  "cam": [
+   -27,
+   272,
+   41,
+   -27,
+   0,
+   9
+  ]
+ },
+ "steps": [],
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": "both",
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -38.803697300522686,
+    588.8430689966025,
+    71.86021366781806
+   ],
+   "tgt": [
+    -38.803697300522686,
+    0.4834133409556122,
+    3.6468622453176494
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -38.803697300522686,
+    588.8430689966025,
+    71.86021366781806
+   ],
+   "tgt": [
+    -38.803697300522686,
+    0.4834133409556122,
+    3.6468622453176494
+   ]
+  },
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1280,
+   720
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": true
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 57,
+  "placed": 40,
+  "dropped": 17,
+  "droppedIds": [
+   "pl:Soult concealed in the Goldbach valley",
+   "pl:The second axis",
+   "pl:Stare Vinohrady",
+   "n:ahq",
+   "n:lich",
+   "t:pratzen",
+   "t:vinohrady",
+   "t:pratzeberg",
+   "t:santon",
+   "t:zuran",
+   "t:goldbach",
+   "t:litava",
+   "t:telnitz",
+   "t:sokolnitz",
+   "t:augezd",
+   "t:satschan",
+   "o:Pratzeberg"
+  ],
+  "occluded": 0,
+  "offscreen": 0,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The crisis on the Pratzeberg",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "Friant retakes Telnitz, then loses it again",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 18,150",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   641,
+   399,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": [
+   "figures: dress as sourced (source and grade in the dossier), else the nation's symbol colo",
+   "standards: painted where the pattern is sourced (French eagles, Austrian colours), else pl",
+   "marching figures step: a visual convention for symbols under compressed time, not their fo",
+   "beside a name: its side, French or Allied",
+   "French formation, outlined on the ground",
+   "Allied formation, outlined on the ground",
+   "French movement",
+   "Allied movement",
+   "dashed outline: a plan's staging area",
+   "meres: pond outlines schematic",
+   "vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not establishe",
+   "valley fog: the narrative's; depth (238 m) and lifting modelled; drawn see-through",
+   "position approximate (B, C) · reported only (?)B?",
+   "contour interval≈ 9 m",
+   "relief drawn 4× vertically (1× is true scale)",
+   "symbols: figures and standards about 45–70× life, buildings and trees about 10–15×"
+  ]
+ },
+ "scaleBar": "5 km",
+ "bodyClass": "docked pm-study",
+ "textContrast": {
+  "texts": 43,
+  "min": 12.19,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:gqg",
+    "plate": "full",
+    "ratio": 1.005,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.42
+   },
+   {
+    "id": "n:buxhowden",
+    "plate": "full",
+    "ratio": 0.987,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.41
+   },
+   {
+    "id": "n:bag",
+    "plate": "full",
+    "ratio": 1.022,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.5
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:gqg",
+   "cat": "name",
+   "state": "on",
+   "text": "Imperial HeadquartersB",
+   "box": [
+    550,
+    84,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:ahq",
+   "cat": "name",
+   "state": "dropped",
+   "text": "Allied HeadquartersB",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:buxhowden",
+   "cat": "name",
+   "state": "on",
+   "text": "Left Wing CommandC",
+   "box": [
+    844,
+    492,
+    163,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "dropped",
+   "text": "Fifth Column (cavalry)",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bag",
+   "cat": "name",
+   "state": "on",
+   "text": "Advance Guard of the RightB",
+   "box": [
+    730,
+    8,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "p:plateau",
+   "cat": "plateau",
+   "state": "on",
+   "text": "THE PRATZEN · derived: Allied ≈ 18,150 French ≈ ",
+   "box": [
+    482,
+    272,
+    331,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen Heights",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:santon",
+   "cat": "place",
+   "state": "dropped",
+   "text": "The Santon",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:zuran",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Zuran mound",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Goldbach stream",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Litava river",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:telnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Telnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Sokolnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:augezd",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Augezd",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:satschan",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Satschan mere",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Austerlitz",
+   "box": [
+    1015,
+    210,
+    63,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "e:telnitz-retaken",
+   "cat": "event",
+   "state": "on",
+   "text": "Friant retakes Telnitz, then loses it again",
+   "box": [
+    628,
+    515,
+    230,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "o:French hold the crest",
+   "cat": "overlay",
+   "state": "on",
+   "text": "French hold the crest",
+   "box": [
+    826,
+    321,
+    126,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Kamensky turns about (disputed)",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Kamensky turns about (disputed)",
+   "box": [
+    757,
+    395,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Jurczek's Austrians",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Jurczek's Austrians",
+   "box": [
+    689,
+    294,
+    116,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Levasseur up the Goldbach",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Levasseur up the Goldbach",
+   "box": [
+    599,
+    238,
+    163,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Caffarelli",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Caffarelli",
+   "box": [
+    723,
+    203,
+    62,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Suchet",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Suchet",
+   "box": [
+    748,
+    133,
+    48,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Bagration",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Bagration",
+   "box": [
+    813,
+    127,
+    64,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Pratzeberg",
+   "cat": "objective",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Columns I-III on the southern plateau",
+   "cat": "plan",
+   "state": "on",
+   "text": "Columns I-III on the southern plateau",
+   "box": [
+    854,
+    373,
+    218,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:IV Column at Pratzen",
+   "cat": "plan",
+   "state": "on",
+   "text": "IV Column at Pratzen",
+   "box": [
+    847,
+    238,
+    130,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Reserve behind Krzenowitz",
+   "cat": "plan",
+   "state": "on",
+   "text": "Reserve behind Krzenowitz",
+   "box": [
+    929,
+    262,
+    162,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Bagration on the highway",
+   "cat": "plan",
+   "state": "on",
+   "text": "Bagration on the highway",
+   "box": [
+    874,
+    155,
+    152,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Advance Guard",
+   "cat": "plan",
+   "state": "on",
+   "text": "Advance Guard",
+   "box": [
+    776,
+    470,
+    100,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:1st Column",
+   "cat": "plan",
+   "state": "on",
+   "text": "1st Column",
+   "box": [
+    851,
+    423,
+    74,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:2nd Column",
+   "cat": "plan",
+   "state": "on",
+   "text": "2nd Column",
+   "box": [
+    837,
+    353,
+    80,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:3rd Column",
+   "cat": "plan",
+   "state": "on",
+   "text": "3rd Column",
+   "box": [
+    701,
+    317,
+    78,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:4th Column",
+   "cat": "plan",
+   "state": "on",
+   "text": "4th Column",
+   "box": [
+    887,
+    207,
+    76,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:5th Column",
+   "cat": "plan",
+   "state": "on",
+   "text": "5th Column",
+   "box": [
+    893,
+    291,
+    76,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Advance Guard of the Right",
+   "cat": "plan",
+   "state": "on",
+   "text": "Advance Guard of the Right",
+   "box": [
+    746,
+    94,
+    167,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Reserve",
+   "cat": "plan",
+   "state": "on",
+   "text": "Reserve",
+   "box": [
+    901,
+    180,
+    53,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Telnitz",
+   "cat": "plan",
+   "state": "on",
+   "text": "Telnitz",
+   "box": [
+    749,
+    447,
+    48,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Sokolnitz",
+   "cat": "plan",
+   "state": "on",
+   "text": "Sokolnitz",
+   "box": [
+    638,
+    357,
+    63,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Kobelnitz",
+   "cat": "plan",
+   "state": "on",
+   "text": "Kobelnitz",
+   "box": [
+    614,
+    308,
+    64,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Envelop toward Brünn",
+   "cat": "plan",
+   "state": "on",
+   "text": "Envelop toward Brünn",
+   "box": [
+    533,
+    380,
+    138,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Soult concealed in the Goldbach valley",
+   "cat": "plan",
+   "state": "dropped",
+   "text": "Soult concealed in the Goldbach valley",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Reserve behind the Zuran",
+   "cat": "plan",
+   "state": "on",
+   "text": "Reserve behind the Zuran",
+   "box": [
+    581,
+    176,
+    152,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Lannes and Murat on the highway",
+   "cat": "plan",
+   "state": "on",
+   "text": "Lannes and Murat on the highway",
+   "box": [
+    546,
+    154,
+    199,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Davout coming up from Raigern",
+   "cat": "plan",
+   "state": "on",
+   "text": "Davout coming up from Raigern",
+   "box": [
+    461,
+    466,
+    192,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:The bait",
+   "cat": "plan",
+   "state": "on",
+   "text": "The bait",
+   "box": [
+    616,
+    431,
+    55,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:The concealed centre",
+   "cat": "plan",
+   "state": "on",
+   "text": "The concealed centre",
+   "box": [
+    584,
+    199,
+    127,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:The second axis",
+   "cat": "plan",
+   "state": "dropped",
+   "text": "The second axis",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:The pivot",
+   "cat": "plan",
+   "state": "on",
+   "text": "The pivot",
+   "box": [
+    754,
+    52,
+    64,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:The reserve",
+   "cat": "plan",
+   "state": "on",
+   "text": "The reserve",
+   "box": [
+    645,
+    129,
+    74,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:The wheel",
+   "cat": "plan",
+   "state": "on",
+   "text": "The wheel",
+   "box": [
+    853,
+    445,
+    67,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Pratzeberg",
+   "cat": "plan",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    885,
+    466,
+    70,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Stare Vinohrady",
+   "cat": "plan",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Hold the Santon",
+   "cat": "plan",
+   "state": "on",
+   "text": "Hold the Santon",
+   "box": [
+    633,
+    105,
+    100,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "pl:Close the Augezd defile",
+   "cat": "plan",
+   "state": "on",
+   "text": "Close the Augezd defile",
+   "box": [
+    796,
+    547,
+    143,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 86120,
+ "msSettle": 21349,
+ "msShot": 62401,
+ "msMeasure": 2370,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

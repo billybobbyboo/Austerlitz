@@ -1,0 +1,449 @@
+{
+ "shot": "dossier",
+ "viewport": [
+  844,
+  390
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real tap .vm-btn[data-vm=\"study\"]",
+  "select('f','sthilaire') as the harness's phone dossier case"
+ ],
+ "note": "Saint-Hilaire's dossier as a sheet",
+ "state": {
+  "clock": 240,
+  "presentation": "study",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": "f:sthilaire",
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": false,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -230.00000000000006,
+    134.78483747935664,
+    211.00000000000003
+   ],
+   "tgt": [
+    -28,
+    -0.6124032519929037,
+    1
+   ]
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   844,
+   390
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": true,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 32,
+   "placed": 14,
+   "dropped": 17,
+   "droppedIds": [
+    "p:plateau",
+    "o:V Column counter-marches north",
+    "n:ahq",
+    "n:bag",
+    "n:lich",
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:austerlitz",
+    "o:Sokolnitz"
+   ],
+   "underPanel": 0
+  },
+  "drawn": [
+   {
+    "id": "n:gqg",
+    "text": "Imperial HeadquartersB",
+    "box": [
+     15,
+     137,
+     171,
+     17
+    ]
+   },
+   {
+    "id": "n:buxhowden",
+    "text": "Left Wing CommandC",
+    "box": [
+     285,
+     184,
+     163,
+     17
+    ]
+   },
+   {
+    "id": "o:French line on the Goldbach",
+    "text": "French line on the Goldbach",
+    "box": [
+     65,
+     169,
+     167,
+     17
+    ]
+   },
+   {
+    "id": "o:Allied columns on the plateau",
+    "text": "Allied columns on the plateau",
+    "box": [
+     245,
+     163,
+     179,
+     17
+    ]
+   },
+   {
+    "id": "o:V Corps · IV Corps",
+    "text": "V Corps · IV Corps",
+    "box": [
+     51,
+     220,
+     116,
+     17
+    ]
+   },
+   {
+    "id": "o:Soult's assault · Legrand",
+    "text": "Soult's assault · Legrand",
+    "box": [
+     27,
+     243,
+     146,
+     17
+    ]
+   },
+   {
+    "id": "o:I Column → Telnitz",
+    "text": "I Column → Telnitz",
+    "box": [
+     317,
+     229,
+     119,
+     17
+    ]
+   },
+   {
+    "id": "o:II Column → Sokolnitz",
+    "text": "II Column → Sokolnitz",
+    "box": [
+     259,
+     205,
+     138,
+     17
+    ]
+   },
+   {
+    "id": "o:III Column → the castle",
+    "text": "III Column → the castle",
+    "box": [
+     231,
+     131,
+     140,
+     17
+    ]
+   },
+   {
+    "id": "o:IV Column → Kobelnitz",
+    "text": "IV Column → Kobelnitz",
+    "box": [
+     101,
+     268,
+     144,
+     17
+    ]
+   },
+   {
+    "id": "o:Telnitz",
+    "text": "Telnitz",
+    "box": [
+     198,
+     246,
+     48,
+     17
+    ]
+   },
+   {
+    "id": "o:Kobelnitz",
+    "text": "Kobelnitz",
+    "box": [
+     23,
+     272,
+     64,
+     17
+    ]
+   },
+   {
+    "id": "t:satschan",
+    "text": "Satschan mere",
+    "box": [
+     369,
+     269,
+     95,
+     16
+    ]
+   },
+   {
+    "id": "n:sthilaire",
+    "text": "Saint-Hilaire",
+    "box": [
+     119,
+     198,
+     94,
+     17
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+   "box": [
+    360,
+    311,
+    428,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE DECEPTION",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "Dispositions in the dark",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "intervalFriant's division at Raigern since the night",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 38,700",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     300,
+     844,
+     91
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     -275,
+     0,
+     272,
+     299
+    ]
+   },
+   ".dispatch": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tools": {
+    "shown": true,
+    "box": [
+     111,
+     56,
+     359,
+     63
+    ]
+   },
+   "#viewmode": {
+    "shown": true,
+    "box": [
+     155,
+     14,
+     175,
+     34
+    ]
+   },
+   "#firstrun": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".drawer": {
+    "shown": true,
+    "box": [
+     484,
+     0,
+     360,
+     299
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#dgrip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study drawer-open",
+  "clock": 240,
+  "cam": {
+   "pos": [
+    -230,
+    134.78,
+    211
+   ],
+   "tgt": [
+    -28,
+    -0.61,
+    1
+   ]
+  },
+  "focus": "vm-btn"
+ },
+ "textContrast": {
+  "texts": 16,
+  "min": 8.57,
+  "belowAA": []
+ }
+}

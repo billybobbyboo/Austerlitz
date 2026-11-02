@@ -1,0 +1,75 @@
+{
+ "id": "kollo-0920",
+ "group": "troops",
+ "note": "Kollowrat's Austrians at 09:20 (standards, the white coats).",
+ "spec": {
+  "t": 560,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": "kollo",
+   "dir": [
+    0.6,
+    0.35,
+    0.72
+   ],
+   "r": 24
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "09:20",
+  "t": 560,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   1.338,
+   12.376,
+   16.939
+  ],
+  "target": [
+   -13.056,
+   0.84,
+   -0.333
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 25.27,
+  "sunAlt": 10.59,
+  "sunGeo": 10.51,
+  "sunAz": 142.7,
+  "mist": 0.16
+ },
+ "ms": 16883,
+ "timing": {
+  "apply": 29,
+  "settle": 606,
+  "settle2": 214,
+  "shot": 15404
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

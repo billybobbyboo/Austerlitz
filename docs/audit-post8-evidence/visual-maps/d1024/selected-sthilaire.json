@@ -1,0 +1,453 @@
+{
+ "shot": "selected-sthilaire",
+ "set": "d1024",
+ "viewport": [
+  1024,
+  768
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1024,
+   768
+  ],
+  "t": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "select": [
+   "f",
+   "sthilaire"
+  ],
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    -0.55,
+    0.62,
+    0.56
+   ],
+   "r": 86
+  }
+ },
+ "steps": [],
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": "f:sthilaire",
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -75.78817943252815,
+    67.95948122924739,
+    66.64796451311958
+   ],
+   "tgt": [
+    -28.5,
+    5.182661349189747,
+    18.5
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -75.78817943252815,
+    67.95948122924739,
+    66.64796451311958
+   ],
+   "tgt": [
+    -28.5,
+    5.182661349189747,
+    18.5
+   ]
+  },
+  "aimErr": 0,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1024,
+   768
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": true,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 65,
+  "placed": 12,
+  "dropped": 3,
+  "droppedIds": [
+   "n:drouet",
+   "n:dhautpoul",
+   "t:pratzeberg"
+  ],
+  "occluded": 0,
+  "offscreen": 33,
+  "underPanel": 17,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The crisis on the Pratzeberg",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "Friant retakes Telnitz, then loses it again",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 18,150",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   689,
+   304,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "500 m",
+ "bodyClass": "rail-hidden pm-study drawer-open",
+ "textContrast": {
+  "texts": 16,
+  "min": 12.48,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:lich",
+    "plate": "full",
+    "ratio": 1.457,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.76
+   },
+   {
+    "id": "n:sthilaire",
+    "plate": "full",
+    "ratio": 0.954,
+    "prot": true,
+    "px": 12.5,
+    "contrast": 14.31
+   },
+   {
+    "id": "n:kellermann",
+    "plate": "far",
+    "ratio": 1.582,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.49
+   },
+   {
+    "id": "n:nansouty",
+    "plate": "far",
+    "ratio": 1.519,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.49
+   },
+   {
+    "id": "n:milo",
+    "plate": "full",
+    "ratio": 1.234,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.38
+   },
+   {
+    "id": "n:kollo",
+    "plate": "full",
+    "ratio": 1.17,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.82
+   },
+   {
+    "id": "n:kamensky",
+    "plate": "full",
+    "ratio": 0.938,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.36
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "on",
+   "text": "Fifth Column (cavalry)",
+   "box": [
+    134,
+    64,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen Heights",
+   "box": [
+    496,
+    235,
+    100,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:sthilaire",
+   "cat": "name",
+   "state": "on",
+   "text": "Saint-Hilaire",
+   "box": [
+    562,
+    320,
+    94,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "n:kellermann",
+   "cat": "name",
+   "state": "on",
+   "text": "Kellermann's Light CavalryB",
+   "box": [
+    34,
+    2,
+    197,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:nansouty",
+   "cat": "name",
+   "state": "on",
+   "text": "Nansouty's CuirassiersB",
+   "box": [
+    97,
+    24,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:dhautpoul",
+   "cat": "name",
+   "state": "dropped",
+   "text": "d'Hautpoul's CuirassiersB",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:drouet",
+   "cat": "name",
+   "state": "dropped",
+   "text": "Drouet d'ErlonB",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:milo",
+   "cat": "name",
+   "state": "on",
+   "text": "Miloradovich's RussiansB",
+   "box": [
+    468,
+    141,
+    180,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kollo",
+   "cat": "name",
+   "state": "on",
+   "text": "Kollowrat's AustriansB",
+   "box": [
+    461,
+    206,
+    164,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Kamensky turns about (disputed)",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Kamensky turns about (disputed)",
+   "box": [
+    460,
+    489,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Caffarelli",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Caffarelli",
+   "box": [
+    5,
+    23,
+    62,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Pratzeberg",
+   "cat": "objective",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    543,
+    294,
+    70,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kamensky",
+   "cat": "name",
+   "state": "on",
+   "text": "Kamensky",
+   "box": [
+    470,
+    373,
+    81,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:blasowitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Blasowitz",
+   "box": [
+    185,
+    84,
+    60,
+    15
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 57215,
+ "msSettle": 1539,
+ "msShot": 55369,
+ "msMeasure": 307,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

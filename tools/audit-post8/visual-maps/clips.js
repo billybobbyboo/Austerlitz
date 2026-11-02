@@ -12,10 +12,10 @@ const MO=require(path.join(A.ROOT,"tools","visual","motion.js"));
 const AREA="visual-maps";
 const CLIP=process.argv[2]||"counters-pan", VP=(process.argv[3]||"1600x900").split("x").map(Number);
 const CLIPS={
-  "counters-pan":{view:{t:570, presentation:"study", mode:"hybrid", cam:[-195,92,156,-33,4,-2]}, kind:"pan", n:60, amt:8, rest:30, every:3, fps:10,
-    note:"Landscape with counters from the Field vantage at 09:30 (Study), a left-button drag of 8 px a frame for 60 frames (2 s at 30 fps), then 30 frames at rest; the layer logged every frame, every 3rd frame captured (the clip at 10 fps = the visitor's speed)."},
-  "watch-play":{view:{t:540, presentation:"watch", mode:"terrain", cam:[-195,92,156,-33,4,-2]}, kind:"play", from:540, amt:0.5, n:180, rest:12, every:6, fps:5,
-    note:"Watch on the landscape from 09:00, Play at 1/2x with Follow on (the app's own togglePlay; freeCam off as the motion block's Play runs), 180 frames (6 s at 30 fps) then 12 at rest; the layer logged every frame, every 6th frame captured (the clip at 5 fps = the visitor's speed)."}
+  "counters-pan":{view:{t:570, presentation:"study", mode:"hybrid", cam:[-195,92,156,-33,4,-2]}, kind:"pan", n:60, amt:8, rest:30, every:6, fps:5,
+    note:"Landscape with counters from the Field vantage at 09:30 (Study), a left-button drag of 8 px a frame for 60 frames (2 s at 30 fps), then 30 frames at rest; the layer logged every frame, every 6th frame captured (the clip at 5 fps = the visitor's speed)."},
+  "watch-play":{view:{t:540, presentation:"watch", mode:"terrain", cam:[-195,92,156,-33,4,-2]}, kind:"play", from:540, amt:0.5, n:180, rest:12, every:12, fps:2.5,
+    note:"Watch on the landscape from 09:00, Play at 1/2x with Follow on (the app's own togglePlay; freeCam off as the motion block's Play runs), 180 frames (6 s at 30 fps) then 12 at rest; the layer logged every frame, every 12th frame captured (the clip at 2.5 fps = the visitor's speed)."}
 };
 const SNAP=function(){ var on=0,dr=0,held=0,F=[]; for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame) continue;
     if(it.state==="on") on++; else if(it.state==="dropped") dr++; if(it.held) held++;
@@ -33,7 +33,7 @@ const SNAP=function(){ var on=0,dr=0,held=0,F=[]; for(var k in ML.items){ var it
   console.log(CLIP,"page ready",((Date.now()-t0)/1000).toFixed(0),"s");
   let k=0, fr=0; const log=[], tiles=[];
   const snap=async()=>{ const s=await page.evaluate(SNAP); s.frame=fr; log.push(s); return s; };
-  const shot=async()=>{ const f=path.join(fdir,"f"+String(k).padStart(5,"0")+".jpg"); await A.jpeg(page,f,80); const s=log[log.length-1]; s.captured=k; if(k%3===0) tiles.push({png:fs.readFileSync(f),cap:"#"+k+" (frame "+fr+") "+String(Math.floor(s.clock/60)).padStart(2,"0")+":"+String(Math.floor(s.clock%60)).padStart(2,"0")+" on "+s.on+" drop "+s.dropped+" held "+s.held}); k++; };
+  const shot=async()=>{ const f=path.join(fdir,"f"+String(k).padStart(5,"0")+".jpg"); await A.jpeg(page,f,80); const s=log[log.length-1]; s.captured=k; tiles.push({png:fs.readFileSync(f),cap:"#"+k+" (frame "+fr+") "+String(Math.floor(s.clock/60)).padStart(2,"0")+":"+String(Math.floor(s.clock%60)).padStart(2,"0")+" on "+s.on+" drop "+s.dropped+" held "+s.held}); k++; };
   await page.evaluate(a=>{ var D=window.__md; D.start({gl:true}); requestRender(2);
     if(a.kind==="play"){ stopPlay(); setClock(a.from,{instant:true,force:true,camera:false}); freeCam=false; curVantage=null; setSpeed(a.amt); requestRender(8); D.frame(8); togglePlay(); }
     else D.frame(8);
@@ -51,6 +51,6 @@ const SNAP=function(){ var on=0,dr=0,held=0,F=[]; for(var k in ML.items){ var it
   const enc=A.encode(fdir,path.join(out,CLIP),C.fps,640);
   fs.writeFileSync(path.join(out,CLIP+".json"),JSON.stringify({clip:CLIP,viewport:VP,note:C.note,build:"md5 f10fe585c46aea576f436ed51ac46f83",page:"harness page (?harness=1), first-run card closed by Esc",view:C.view,
     driver:"tools/visual/motion.js inPage (30 fps driver clock, WebGL draw kept)",captured:k,frames:log,errors:A.errors(page)},null,1));
-  for(let i=0;i<tiles.length;i+=12) await A.sheet(page,tiles.slice(i,i+12),3,640,360,CLIP+" ("+VP.join("x")+") frames, sheet "+(i/12+1),path.join(out,CLIP+"-sheet-"+(i/12+1)+".jpg"));
+  for(let i=0;i<tiles.length;i+=12) await A.sheet(page,tiles.slice(i,i+12),3,640,Math.round(640*VP[1]/VP[0]),CLIP+" ("+VP.join("x")+") frames, sheet "+(i/12+1),path.join(out,CLIP+"-sheet-"+(i/12+1)+".jpg"));
   await b.close(); console.log(CLIP,"done",k,"frames",((Date.now()-t0)/1000).toFixed(0),"s",enc.mp4);
 })().catch(e=>{ console.error("FAILED",e); process.exit(1); });

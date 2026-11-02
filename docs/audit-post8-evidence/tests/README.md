@@ -61,7 +61,21 @@ Decision 132 chose this split; a pull request can merge without `check:visual`.
 
 ## 6. What could not be checked, and why
 
-NOTCHECKED
+- The browser checks were not run by this area (no browser in this phase): `check:contrast`, `check:selftest`, `check:visual`, `check:report`
+  and the six (eight) start-up cases were reviewed statically; their candidate mutations are listed for the browser phase. The audit's own
+  runner ran `check:contrast` on the audited build (passed: 6,926 text elements in 45 states, 0 below AA, 8 of 8 start-up cases,
+  `../checks/check-contrast.txt`); `check:selftest` and `check:visual` were still running there when this area finished.
+- The in-app self-test's 317 checks were not read one by one: the review sampled the frame (`ck`, the per-block try/catch, the manifest),
+  the derived-tag, arrow, symbol, culling and gait checks, and compared every literal tolerance before and after Stage 8 by script. A
+  self-test check whose logic was weakened under an unchanged name would not be found by that comparison unless a literal moved.
+- Named constants the self-test reads from `app.js` (for example `CAM_CLEAR`, `ARROW_CAP`, `MLS`, `KLOD`, `GAIT`) were not traced through history;
+  `css-test.js` pins most of them by source text, and a name that interpolates one pins it in the manifest.
+- Mutations of the test tooling itself (for example `tools/step4/statements.js` dropping a class, or `tools/lang-scan.js` skipping a file) were
+  not run: the task asked for mutations of application behaviour or data; their consequences are reasoned from the code (findings on the
+  inventory's reach) and the suites' own canaries (redteam.js 6a's reach canaries).
+- Timing-sensitive checks were not exercised under controlled load; this audit's machine ran at load averages of 20 to 37 on 4 cores while
+  the area's suites ran (they were run at nice 19 where the command allowed; a suite killed by its timeout is recorded as inconclusive).
+- CI runs before PR #79 other than 41259079904 were not inspected; the claims of earlier runs rest on `CHANGELOG.md`.
 
 ## 7. Files
 

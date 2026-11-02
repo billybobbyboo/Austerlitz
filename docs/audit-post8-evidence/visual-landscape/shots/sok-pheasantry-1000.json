@@ -1,0 +1,78 @@
+{
+ "id": "sok-pheasantry-1000",
+ "group": "landmarks",
+ "note": "The pheasantry (8J's traced 1825 outline) at 10:00 (stills-8j 'sokolnitz-pheasantry').",
+ "spec": {
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    214.6,
+    328.5
+   ],
+   "dir": [
+    0.62,
+    0.4,
+    0.68
+   ],
+   "r": 34
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "10:00",
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -41.691,
+   11.67,
+   62.292
+  ],
+  "target": [
+   -62.7,
+   -1.64,
+   39.25
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 33.9,
+  "sunAlt": 14.13,
+  "sunGeo": 14.06,
+  "sunAz": 151.4,
+  "mist": 0.05
+ },
+ "ms": 55114,
+ "timing": {
+  "apply": 378,
+  "settle": 319,
+  "settle2": 61,
+  "shot": 53837
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

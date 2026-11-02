@@ -1,0 +1,78 @@
+{
+ "id": "ice-mid-1500",
+ "group": "ice",
+ "note": "The meres obliquely at 15:00 (views.js ice-mid).",
+ "spec": {
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    262,
+    444
+   ],
+   "dir": [
+    0.45,
+    0.5,
+    -0.74
+   ],
+   "r": 58
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "15:00",
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -12.901,
+   24.967,
+   54.082
+  ],
+  "target": [
+   -39,
+   -3.695,
+   97
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 57.83,
+  "sunAlt": 8.5,
+  "sunGeo": 8.4,
+  "sunAz": 221.5,
+  "mist": 0.22
+ },
+ "ms": 22448,
+ "timing": {
+  "apply": 49,
+  "settle": 310,
+  "settle2": 333,
+  "shot": 21291
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}
