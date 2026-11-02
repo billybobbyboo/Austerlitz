@@ -1,5 +1,5 @@
-Every finding here rests on an area finding in `docs/audit-post8-evidence/<area>/result.json`, cited at the end of its entry as
-"area #n", counting from 1. The area's README and evidence files sit beside it, and its scripts are in `tools/audit-post8/<area>/`. Area
+Every finding here but two rests on an area finding in `docs/audit-post8-evidence/<area>/result.json`, cited at the end of its entry as
+"area #n", counting from 1; the two (`CL-GEO-11`, `CL-UX-22`) the auditor registered from the records area's evidence, as said below. The area's README and evidence files sit beside it, and its scripts are in `tools/audit-post8/<area>/`. Area
 findings were merged only when they named the same subsystem and the same failure scenario. Each merge is named in its entry. Related but
 distinct issues are cross-referenced instead. Two area results that are not findings were set aside and reported in section C. They confirm
 that a decision is implemented as decided: geography #11 (the meres' outlines, decision 27; the castle's size, decision 266 (a)) and

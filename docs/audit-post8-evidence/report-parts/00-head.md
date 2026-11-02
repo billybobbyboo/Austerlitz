@@ -45,7 +45,8 @@ records. The evidence registers: `docs/step2-evidence/`, `docs/step4-evidence/`,
   three audits can see it. It is not reopened unless new evidence changes its premise, and the finding says so where it does. An *optional
   improvement* is not a defect. An *unresolved historical question* is one the sources leave open. An *untested area* is one no check covers.
 - **Origin.** *New* means Stage 8 or later (8A-8L, decisions 239-269). *Inherited* means before Stage 8.
-- **Status** says how the area auditor established the finding (confirmed, inferred, unverified). **Verification** gives the adversarial
+- **Status** says how the area auditor established the finding (confirmed, inferred, unverified). Some areas wrote "open" instead
+  (established and not yet fixed), and an accepted item names its decision. **Verification** gives the adversarial
   re-check's verdict, made independently afterwards (section B's introduction).
 - **Owner acceptance is not a technical pass, and a technical pass is not a good experience.** Where a check passes and the experience still
   fails, the finding says both.

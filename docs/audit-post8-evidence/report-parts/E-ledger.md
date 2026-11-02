@@ -20,12 +20,14 @@ prints what the map says. It does not mean the map's reading of the battle is th
 
 ### E.2 What the ledgers found
 
-- **Forces.** Seven figures are contradicted by the source they cite. The largest group is attributed to Duffy (1977), who does not print them
-  (`CL-SRC-01`). Friant's division "about 3,470 in Duffy and Smith": Duffy has 3,800 with 9 guns. The theme "weakness" says "some 4,300 men by
-  Duffy's and Smith's count". The IV Column is "13,900 (Duffy 1977; Smith 1998)" while Duffy gives 23,900. One claim is not supported by any
-  read source: Bourcier "about 830 sabres present". Seven formations show a working strength with no note, and six of them exceed the 22
+- **Forces.** Seven claims are contradicted by the sources read: four Duffy attributions (below), the French army's range of 'other accounts' (which
+  omits Mikhailovsky-Danilevsky's and Duffy's figures), the cavalry divisions' working strengths against Sokolov's 22 November returns,
+  and Kologrivov's command. The largest group is attributed to Duffy (1977), who does not print them (`CL-SRC-01`; three more Duffy rows,
+  Kienmayer, the I Column and the Russian wing, hold only in part). Friant's division "about 3,470 in Duffy and Smith": Duffy has 3,800 with 9 guns. The theme "weakness" says "some 4,300 men by
+  Duffy's and Smith's count". The IV Column is "13,900 (Duffy 1977; Smith 1998)" while Duffy gives 23,900. Two claims are supported by no
+  source read: Bourcier "about 830 sabres present", and the I Column range's low end (below). Seven formations show a working strength with no note, and six of them exceed the 22
   November returns the project reads elsewhere (`CL-SRC-05`). `SOURCE_NOTE` illustrates honest disagreement with an I Column range whose low
-  end, 7,750, appears in no source read, only on a popular website (`CL-SRC-04`). "Kologrivov's command is in Sokolov alone" is contradicted by
+  end, 7,750, appears in no source read; its origin is not established (`CL-SRC-04`). "Kologrivov's command is in Sokolov alone" is contradicted by
   Schönhals p. 178 and by the project's own stage 6B reading (`CL-SRC-03`). The Duffy rows rest on his OCR text layer. The same search
   reproduces exactly the Guard rows the owner photographed (register entry S5.7), which supports the method, but a page-image reading
   remains the standard the project sets (`docs/step4-evidence/readings.md`) and is the remedy's first step.
@@ -36,7 +38,10 @@ prints what the map says. It does not mean the map's reading of the battle is th
   - the grades do not follow one rule (`CL-HIS-02`);
   - opposing formations' legs pass through one another (`CL-HIS-04`, `CL-HIS-10`), and legs cross the Litava (`CL-HIS-10`);
   - formations with an offensive status walk away from the enemy (`CL-HIS-05`);
-  - the Russian Guard's plotted approach contradicts the register's A readings, and nobody holds Blasowitz when it falls (`CL-HIS-03`);
+  - the Russian Guard's plotted approach takes one side of a divided register (the disposition and Stutterheim against the official report)
+    without saying so, and nobody holds Blasowitz when it falls (`CL-HIS-03`);
+  - an act's side of the Goldbach disagrees with its anchors: Kienmayer's 'Holding west of the Goldbach' is drawn 0.9 km east of the brook
+    (`CL-HIS-08`);
   - Caffarelli is not where the records say (`CL-HIS-09`);
   - Miloradovich at dawn, the prior audit's G-3, was never taken up: an open prior finding (`CL-REC-06`), not a failed fix.
 
@@ -44,7 +49,8 @@ prints what the map says. It does not mean the map's reading of the battle is th
 - **Geography.** The frame is sound: one scale authority, a similarity transform of true geography, the 17-degree rotation from true north
   disclosed, the villages from the Czech municipality register, the 8J and 8K corrections in the data where their sources put them. In the drawing, though, the Pratzen church stands 161 m from its read site (`CL-GEO-08`) and Legrand's leg crosses the re-plotted castle (`CL-HIS-04`). Three claims are
   contradicted:
-  - the relief is not fitted to surveyed elevations where a visitor reads it most (`CL-GEO-01`);
+  - the Pratzen place's 'Extent: runs north-south between Blasowitz and the Litava', which the drawn relief contradicts (its high ground ends
+    about 1 km south of the Pratzeberg); the sheet's 'fitted to surveyed elevations' holds only in part (`CL-GEO-01`);
   - Krug lies 1.67 km from where the 1836-52 survey puts it, while the visitor is told no source fixes it (`CL-GEO-07`);
   - three villages stand on marsh rather than on the village class (`CL-GEO-05`).
 

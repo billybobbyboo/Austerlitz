@@ -631,7 +631,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
 | [CL-UX-02](#cl-ux-02) | S2 | P2 | confirmed defect | 1-3 h | On the landscape, a pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination (the paper map's MAPCAM already stops its glide) |
-| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | 0.5-2 days | On a phone, two thirds of the timeline's rail belong to event markers: a finger's drag there does nothing and a tap jumps to an event |
+| [CL-UX-03](#cl-ux-03) | S2 | P2 | confirmed defect | 0.5-2 days | Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start |
 | [CL-UX-04](#cl-ux-04) | S3 | P2 | confirmed defect | 1-2 h | The timeline's tooltip covers the control row and swallows a press on Play reached from the timeline |
 | [CL-UX-13](#cl-ux-13) | S4 | P4 | probable problem | minutes | The time rail seeks on any mouse button and has no cancel path: a right or middle press on the rail moves the clock and stops Play; where a context menu swallows the release (platform-dependent, unverified), hovering the rail then scrubs until the next click |
 | [CL-UX-19](#cl-ux-19) | S4 | P4 | probable problem | 0.5 h | A modal sheet opened mid-drag does not end the drag: the map pans under the '?' sheet |
@@ -755,8 +755,8 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-REC-03](#cl-rec-03) | S3 | P2 | confirmed defect |  | Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred) |
 | [CL-ROB-03](#cl-rob-03) | S3 | P3 | probable problem | an afternoon (records only) | The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes |
 | [CL-REC-01](#cl-rec-01) | S4 | P3 | optional improvement |  | The published site's root page is the developer README: no link to the map and nothing for a visitor on evidence and reconstruction |
-| [CL-ROB-13](#cl-rob-13) | S4 | P3 | untested area |  | The terms of use of about 460 third-party archive images that Pages publishes (the Moravian Land Archive's cadastre tiles and 8G's cadastre sheets) were not checked, and the gap reaches no section of the report |
-| [CL-REC-04](#cl-rec-04) | S4 | P4 | confirmed defect |  | The carried checklist misstates three of its own items (the records' view of other areas' findings) |
+| [CL-ROB-13](#cl-rob-13) | S4 | P3 | untested area |  | The terms of use of about 460 third-party archive images that Pages publishes (the Moravian Land Archive's cadastre tiles and 8G's cadastre sheets) were not checked; before this entry the gap was recorded only in the robustness README |
+| [CL-REC-04](#cl-rec-04) | S4 | P4 | confirmed defect |  | The carried checklist misstates two of its own items: kienmayer@7's contradiction of its own act since Stage 0 filed as an 8J offset, and Caffarelli's separation given as 2.5-2.9 km where the build draws 2.13-2.64 km |
 | [CL-REC-08](#cl-rec-08) | S4 | P4 | confirmed defect |  | CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and "Current state (October 2026)" |
 | [CL-ROB-08](#cl-rob-08) | S4 | P4 | optional improvement | minutes | The project has no licence |
 | [CL-ROB-09](#cl-rob-09) | S4 | P4 | accepted compromise |  | Decision 140's premise has moved: the self-test is 21.7% of the file (12.8% when decided), +277,502 bytes in Stage 8 |

@@ -5,12 +5,13 @@ rules to apply, which accepted trade-offs to revisit. They are numbered from 270
 last is 269). Each gives the evidence, the options and a recommendation. Decisions 267 (a), 268 (a) and 269 (a) are not reopened.
 Questions 274 and 278 concern what those decisions left open, not their acceptance.
 
-**Question 270: what GitHub Pages publishes** (`CL-ROB-01`, `CL-ROB-06`). The device route's page on the public site runs any URL passed in
-`?src=`, `javascript:` included, in the site's origin (reproduced on a local copy only). Seven archived builds on the same origin load
+**Question 270: what GitHub Pages publishes** (`CL-ROB-01`, `CL-ROB-06`, `CL-ROB-13`). The device route's page on the public site puts any URL passed in
+`?src=` into its frame, and a `javascript:` URL there runs in the site's origin (reproduced on a local copy only). About 460 third-party
+archive images (the Moravian Land Archive's cadastre) are published with the repository, their terms of use unread. Seven archived builds on the same origin load
 three.js without SRI.
 - (a) Pages publishes only the product, through an explicit artifact. The device route is then served from somewhere the owner chooses.
-- (b) The tools stay on Pages. `?src=` accepts only same-origin http(s) paths, and the archived builds are dropped from the published
-  artifact or given the integrity attribute.
+- (b) The tools stay on Pages and `?src=` accepts only same-origin http(s) paths. The archived builds stay as they are (frozen reference
+  builds, `CLAUDE.md`), so their exposure (`CL-ROB-06`) and the archive images' (`CL-ROB-13`) remain until (a).
 - (c) As now.
 
 *Recommended: (b) at once (hours), because it keeps decision 217's device route working; consider (a) later.*
@@ -44,7 +45,8 @@ follow a scale "fitted to surveyed elevations".
 *Recommended: (a).*
 
 **Question 274: the map layer's order during Play** (`CL-MAP-01`, `CL-MAP-02`, `CL-TEST-02`). Decision 267 (a) accepted the benchmark's
-totals and its 4,033 ms. This audit shows the 4,033 ms is the benchmark's whole window. Over the morning at half speed, in Landscape with
+totals and kept its visibility baselines, the 4,033 ms among them, but left the counters' visibility over longer playback to this audit
+(section 23.2). This audit shows the 4,033 ms is the benchmark's whole window. Over the morning at half speed, in Landscape with
 counters, five to eight formations are labelled less than half the time, Miloradovich's counter is hidden for 28 s at a stretch, and the
 formations a live event names are among the hidden.
 - (a) Let event-named formations and a fresh layout's higher-priority items take room from held places during Play, add a long-gap measure
@@ -62,7 +64,7 @@ formations a live event names are among the hidden.
 *Recommended: (a), measured; it is an optional improvement, not a defect.*
 
 **Question 276: the first-run card's words** (`CL-UX-11`). Neither the card nor the opening says the map is a reconstruction, or what the
-A/B/C letters beside names mean; the key starts closed. Decisions 113-118 set the card's words.
+A/B/C letters beside names mean; the key starts closed. Decisions 108 (the card's words), 49 (the key closed at first) and 114 (the opening's stops) set them.
 - (a) One sentence on the card ("a reconstruction from the sources, its certainty graded A to C") and the key's grade rows reachable from
   it.
 - (b) The same sentence in the opening's first step only.
@@ -121,7 +123,7 @@ Options:
 *Recommended: (a) for the chapels, (b) for the garden.*
 
 **Question 283: the self-test shipped to every visitor** (decision 140; `CL-ROB-09`). Decision 140 kept the in-app self-test in the product
-when it was 12.8% of the file. It is now 21.7% (611,017 bytes, 277,502 more in Stage 8).
+when it was 12.8% of the file. It is now 21.7% (611,113 bytes, 277,502 more in Stage 8).
 - (a) Keep it shipped (the single-file principle; the harness and CI need it).
 - (b) Build a visitor file without it and a test file with it, both single files, the visitor file the one published.
 

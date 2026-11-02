@@ -19,7 +19,7 @@ CI's own runs on the audit branch (the push workflow: the checks job, `check:con
 those commits changes only audit files (section D.2). Earlier CI evidence is cited as earlier evidence, never as a run of this audit. The last
 `check:visual` before the audit was run 41259079904 on `d3f7026` (success). `git diff --stat d3f7026 43e3e5b` changes no code, tool or threshold.
 
-**The audit branch changes no application file.** `git diff --stat 43e3e5b HEAD` lists only `docs/FINAL_AUDIT_POST_STAGE8.md`,
+**The audit branch changes no application file.** `git diff --stat 43e3e5b HEAD` lists only `docs/FINAL_AUDIT_POST_STAGE8.md`, its companion `docs/FINAL_AUDIT_POST_STAGE8_LEDGERS.md`,
 `docs/audit-post8-evidence/` and `tools/audit-post8/`. The build on the branch is still md5 `f10fe585...` (`npm run check:baseline` passes there).
 
 ### D.2 How the audit was run
@@ -52,7 +52,7 @@ is shallow. Each revision is compared with its parent, key by key.
 
 Three points matter for this audit:
 - The 8J and 8K re-baselines of `MOTION.VIS` were made by the implementer under a general rule in the owner's brief. Decision 267 (a) kept
-  them. The largest raised Play's longest-hidden ceiling from 3,100 to 4,033 ms, which is the benchmark's whole window (`CL-TEST-02`).
+  them. One raised Play's longest-hidden ceiling from 3,100 to 4,033 ms, which is the benchmark's whole window; the largest raised the orbit with a selection's from 2,000 to 3,033 ms, also its window (`CL-TEST-02`).
 - `JUMPS` 248 and `POPS` 998 are exactly the build's own counts. They are pins, not quality bars (`CL-TEST-14`).
 - `CTX_DELETES` keeps 248 where the case has measured 193 since 8C (`CL-TEST-17`).
 

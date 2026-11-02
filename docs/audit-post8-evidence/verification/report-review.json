@@ -1,0 +1,366 @@
+{
+ "corrections": [
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "The published device-route page runs any URL given in `?src=` in the site's origin\n  (`CL-ROB-01`).",
+   "new": "The published device-route page puts any URL given in `?src=` into its frame, and a\n  `javascript:` URL there runs in the site's origin (`CL-ROB-01`).",
+   "why": "Precision on the S1. An ordinary cross-origin URL loads in the frame under its own origin; only the javascript: case runs in the site's origin. The entry's own Observed and Evidence say: 'Any URL, javascript: included, is assigned to the frame's src'; 'a data: URL could not reach the parent'.",
+   "evidence": "CL-ROB-01 Observed/Evidence; docs/audit-post8-evidence/robustness/perfrun-src.json"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "Prolonged use grows\n  nothing.",
+   "new": "Prolonged use grows\n  nothing, but across context restores (`CL-ROB-04`), and only the readings' minute cache depends on the path taken (`CL-SIM-06`).",
+   "why": "A states this without exception. F row 5 qualifies it ('except across context restores (CL-ROB-04)'), and CL-SIM-06 contradicts 'deterministic' (29 and 38 formation-minutes differ by route). F row 4 already says 'the reading excepted'.",
+   "evidence": "F-quality.md rows 4-5; CL-ROB-04 (+2.6-4 MB a restore, confirmed); CL-SIM-06 (confirmed)"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "Keyboard paths and dialogs are sound, and\n  contrast is AA throughout.",
+   "new": "Keyboard paths and dialogs are sound, but for panels opened\n  from the keyboard, which do not take the focus (`CL-UX-10`), and contrast is AA throughout.",
+   "why": "Softening. CL-UX-10 is a confirmed defect on exactly this keyboard path (Layers reached on the sixth Tab, a dossier about 30 Tabs away), and F's interaction row lists it as a gap.",
+   "evidence": "CL-UX-10 (confirmed defect, CONFIRMED by the batch verifier); a11y/mapfocus.json"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "- *Stage 8.* Its work (8A-8L) is implemented as the owner decided. Of this audit's {{N}} findings, {{NEW}} are new in Stage 8 or later,\n  {{MIXED}} mixed and {{INHERITED}} inherited from before it.",
+   "new": "- *Stage 8.* Its work (8A-8L) is implemented as the owner decided, as far as examined (most decisions by content; 252-254, 256 and 258 only\n  through the passing checks and the records, C.1), with residuals (`CL-HIS-04`, `CL-GEO-08`). Of this audit's {{N}}\n  findings, {{NEW}} are new in Stage 8 or later, {{MIXED}} mixed and {{INHERITED}} inherited from before it; the rest give no origin:\n  {{ACCEPTEDORIG}} name an owner's acceptance instead, two say \"optional improvement\" and one \"unknown\".",
+   "why": "(1) Overclaim. C.1 and F say 252-254, 256 and 258 were examined only through the passing checks and records, and the completeness critic lists 'whether each owner decision 239-269 is implemented' as not checked. 8J's own residuals are findings. (2) The three counts add up to 132 of 151, and a reader takes them as the whole register. report.py's org() puts 16 entries in 'accepted', 2 in 'optional' and 1 in 'unknown' (CL-PERF-10). The wording avoids 'accepted compromises' because the kind count in the same section is 14.",
+   "evidence": "C-intro.md C.1 row 'the owner's decisions 239-269'; F-quality.md 'Overall'; completeness/result.json not_checked; register origin counts: inherited 111, new 18, mixed 3, accepted 16, optional 2, unknown 1"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "  - 44 A position grades carried without a reading of their own (`CL-HIS-02`);",
+   "new": "  - 44 A position grades carried without a reading of their own: unreviewed, not shown wrong (`CL-HIS-02`, a probable problem);",
+   "why": "The bullet sits under 'things the sources do not support', which is stronger than the entry's verified state. Both lenses WEAKENED it ('44 counts unreviewed carried grades, not wrong ones'), and it is now a probable problem at P3.",
+   "evidence": "CL-HIS-02 verification note; resolution.py VERDICT['CL-HIS-02']"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "benchmark's accepted 4,033 ms is only its window (`CL-MAP-01`).",
+   "new": "benchmark's 4,033 ms, a baseline decision 267 (a) kept while leaving longer playback to this audit, is only its window (`CL-MAP-01`).",
+   "why": "'Accepted' misreads decision 267 (a). Section 23.2 says the decision 'does not demonstrate that every label-visibility issue in motion is resolved' and puts Play's 4,033 ms on the final-audit checklist. CL-MAP-01's verifiers say: 'Not an accepted compromise: section 23.2 leaves longer playback to this audit'. C-06 says: '267 (a) (accepts the benchmark's totals, not the visibility)'.",
+   "evidence": "docs/STAGE8_SPEC.md:5483-5489, 5515; CL-MAP-01 verification; C.4 C-06"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "It reproduces on one browser at the device's ratio, so it is not the unrecorded\n  Chrome update. Its +30% GL calls are three.js re-binding",
+   "new": "It reproduces on one browser at the device's ratio, so the unrecorded Chrome update\n  is not needed to explain it. Most (81%) of its +30% GL calls are three.js re-binding",
+   "why": "Two overclaims. The entry says only that the update 'is not needed to explain it'; it was not excluded on the device. The verifier found the re-binding is 81% of the +3,175 GL calls (2 x 1,290), not all of them.",
+   "evidence": "CL-PERF-12 Observed and Auditor's note; verification/v-batch-perfattr.json"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "Every area finding went to a skeptic told to refute it; each S1 and S2\nto two, one reproducing and one attacking its premise. Five entries registered last, from the completeness critic and the records' evidence, did not.",
+   "new": "Every finding but five went to a skeptic told to refute it; each S1 and S2\nto two, one reproducing and one attacking its premise. The five, registered last (the completeness critic's three area findings and two carried items from the records' evidence), did not.",
+   "why": "Contradiction. The completeness critic's three entries are area findings (completeness #1-#3 in completeness/result.json), so 'every area finding went to a skeptic' is false as written.",
+   "evidence": "register.json: CL-TEST-21, CL-UX-21, CL-ROB-13 from ['completeness', 0..2], no verify; CL-GEO-11, CL-UX-22 'own'"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "Where a skeptic weakened a finding, its correction is applied,\nand the entry shows both the area's claim and the correction. Weakened findings were mostly the severities of map furniture and of the test\ngate, and origins.",
+   "new": "Where a skeptic weakened a finding, its correction is applied\nto the entry's fields; the area's original claim stays in its `result.json` and the verifier's in `verification/`, and the verification row\nsays what changed where the auditor recorded it. Weakened findings were mostly the severities of map furniture and of the tests, origins,\nand the wording of six history and source findings, two of them cited above (`CL-HIS-02`, now unreviewed rather than wrong grades;\n`CL-HIS-03`, one side of a divided register rather than a contradiction).",
+   "why": "(1) False as written. report.py renders only the merged fields (base.update(override)), so no entry shows the area's original claim, and 19 of the 30 WEAKENED entries carry no explanation at all ('WEAKENED: [lenses: WEAKENED (batch)]'). (2) Softening. The summary leaves out that two of A's own integrity bullets (CL-HIS-02, CL-HIS-03) were weakened, along with CL-HIS-14, CL-SRC-02, -04 and -08.",
+   "evidence": "tools/audit-post8/report.py, row build and entry fields; register.json verify notes of CL-HIS-14, CL-SRC-02, -04, -08, CL-GEO-06, CL-UX-08, -13, CL-MAP-03, -07, -14, -20, CL-VIS-02, CL-TEST-07, -09, -12, -15, CL-REC-01, -04, -05"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/A-verdict.md",
+   "old": "They contain every P1 finding ({{P1}}) and most of the S2s.",
+   "new": "They contain every P1 finding ({{P1}}; `CL-GEO-01` by its disclosure only) and seven of the 15 S2s; the other eight (`CL-HIS-02` to\n`-05`, `CL-MAP-01`, `CL-MAP-03`, `CL-UX-01`, `CL-VIS-01`) are in WP-03 and WP-07 to WP-10.",
+   "why": "False. The six packages hold CL-GEO-01 (disclosure only), CL-SRC-01, CL-HIS-01, CL-SIM-01, CL-SIM-02, CL-UX-02 and CL-UX-03: 7 of the 15 S2s, fewer than half.",
+   "evidence": "register work packages: S2s in WP-03 (CL-HIS-02, -03, -04, -05), WP-07 (CL-MAP-01), WP-08 (CL-MAP-03), WP-09 (CL-UX-01), WP-10 (CL-VIS-01)"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/J-response.md",
+   "old": "runs any URL passed in its `?src=` parameter in the site's origin.",
+   "new": "puts any URL passed in its `?src=` parameter into its frame, and a `javascript:` URL there runs in the site's origin.",
+   "why": "As in A: only the javascript: case runs in the site's origin.",
+   "evidence": "CL-ROB-01 Observed/Evidence"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/J-response.md",
+   "old": "every area finding verified adversarially ({{VER}}; the five not re-verified were registered last, from the completeness critic and the records' evidence).",
+   "new": "every finding but five verified adversarially ({{VER}}; the five were registered last: the completeness critic's three area findings and two carried items from the records' evidence).",
+   "why": "As rendered the line contradicts itself ('every area finding verified ... not re-verified 5'), and three of the five are area findings (completeness #1-#3).",
+   "evidence": "rendered report line 4020; register.json"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/J-response.md",
+   "old": "- **Most findings are older than Stage 8:** {{INHERITED}} inherited, {{NEW}} new, {{MIXED}} mixed.",
+   "new": "- **Most findings are older than Stage 8:** {{INHERITED}} inherited, {{NEW}} new, {{MIXED}} mixed; the rest give no origin: {{ACCEPTEDORIG}} name an owner's acceptance instead, two say \"optional improvement\" and one \"unknown\".",
+   "why": "111 + 18 + 3 = 132 of 151, so 19 findings are uncounted. Some of the accepted compromises are Stage 8 decisions (CL-PERF-12, CL-MAP-14, CL-MAP-17).",
+   "evidence": "register origin counts (report.py org())"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/B-intro.md",
+   "old": "Every finding here rests on an area finding in `docs/audit-post8-evidence/<area>/result.json`, cited at the end of its entry as\n\"area #n\", counting from 1.",
+   "new": "Every finding here but two rests on an area finding in `docs/audit-post8-evidence/<area>/result.json`, cited at the end of its entry as\n\"area #n\", counting from 1; the two (`CL-GEO-11`, `CL-UX-22`) the auditor registered from the records area's evidence, as said below.",
+   "why": "The same section's last paragraph and the entries contradict it. CL-GEO-11 and CL-UX-22 are 'own' entries with no area finding and no 'Area finding' row.",
+   "evidence": "register.json entries CL-GEO-11, CL-UX-22 ('from': [], 'own'); their rendered entries end with 'Auditor's note' and have no 'Area finding'"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/00-head.md",
+   "old": "- **Status** says how the area auditor established the finding (confirmed, inferred, unverified).",
+   "new": "- **Status** says how the area auditor established the finding (confirmed, inferred, unverified). Some areas wrote \"open\" instead\n  (established and not yet fixed), and an accepted item names its decision.",
+   "why": "19 entries show the status 'open', the S1 CL-ROB-01 among them, and several name an acceptance. A reader who knows only the three stated values would read 'open' as 'not established'.",
+   "evidence": "register status values: confirmed 111, open 19, inferred 4, unverified 2, plus accepted/attributed and qualified forms"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/D-intro.md",
+   "old": "`git diff --stat 43e3e5b HEAD` lists only `docs/FINAL_AUDIT_POST_STAGE8.md`,",
+   "new": "`git diff --stat 43e3e5b HEAD` lists only `docs/FINAL_AUDIT_POST_STAGE8.md`, its companion `docs/FINAL_AUDIT_POST_STAGE8_LEDGERS.md`,",
+   "why": "Incomplete: the diff also adds the companion ledgers file.",
+   "evidence": "git diff --name-only 43e3e5b HEAD | grep ^docs/FINAL lists both files"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/D-intro.md",
+   "old": "The largest raised Play's longest-hidden ceiling from 3,100 to 4,033 ms, which is the benchmark's whole window (`CL-TEST-02`).",
+   "new": "One raised Play's longest-hidden ceiling from 3,100 to 4,033 ms, which is the benchmark's whole window; the largest raised the orbit with a selection's from 2,000 to 3,033 ms, also its window (`CL-TEST-02`).",
+   "why": "Wrong. hybrid-orbit+sel rose from 2,000 to 3,033 ms (+1,033 ms, +52%), more than hybrid-play's 3,100 to 4,033 (+933 ms, +30%), and the CL-TEST-02 verifier found that it also sits at its window.",
+   "evidence": "tests/thresholds-history.md:35 (5efb458); resolution.py NOTES['CL-TEST-02']"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/E-ledger.md",
+   "old": "Seven figures are contradicted by the source they cite. The largest group is attributed to Duffy (1977), who does not print them\n  (`CL-SRC-01`).",
+   "new": "Seven claims are contradicted by the sources read: four Duffy attributions (below), the French army's range of 'other accounts' (which\n  omits Mikhailovsky-Danilevsky's and Duffy's figures), the cavalry divisions' working strengths against Sokolov's 22 November returns,\n  and Kologrivov's command. The largest group is attributed to Duffy (1977), who does not print them (`CL-SRC-01`; three more Duffy rows,\n  Kienmayer, the I Column and the Russian wing, hold only in part).",
+   "why": "The seven contradicted rows are L02, L07, L08, L10, L15, L26 and L32. L32 (Kologrivov) is not a figure, and L02 and L15 are not contradicted by a source they cite (L15 has no note).",
+   "evidence": "docs/audit-post8-evidence/sources-oob/result.json ledger ('contradicted': L02, L07, L08, L10, L15, L26, L32; 'partly': L20, L22, L27)"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/E-ledger.md",
+   "old": "One claim is not supported by any\n  read source: Bourcier \"about 830 sabres present\".",
+   "new": "Two claims are supported by no\n  source read: Bourcier \"about 830 sabres present\", and the I Column range's low end (below).",
+   "why": "The ledger has two 'not-supported' rows: L09 (Bourcier) and L23 (the I Column's 7,750).",
+   "evidence": "sources-oob/result.json ledger L09, L23"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/E-ledger.md",
+   "old": "end, 7,750, appears in no source read, only on a popular website (`CL-SRC-04`).",
+   "new": "end, 7,750, appears in no source read; its origin is not established (`CL-SRC-04`).",
+   "why": "This restates what the verifier refuted: \"'Appears only on a popular website' is not established: Smith 1998, Goetz, Castle, Bowden and Chandler were not searched\". The entry's corrected title says 'the figure's origin is not established'.",
+   "evidence": "verification batch note on sources-oob #6 (CL-SRC-04); CL-SRC-04 title"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/E-ledger.md",
+   "old": "  - the Russian Guard's plotted approach contradicts the register's A readings, and nobody holds Blasowitz when it falls (`CL-HIS-03`);",
+   "new": "  - the Russian Guard's plotted approach takes one side of a divided register (the disposition and Stutterheim against the official report)\n    without saying so, and nobody holds Blasowitz when it falls (`CL-HIS-03`);",
+   "why": "This restates the area's claim that both lenses weakened: 'the register is divided ..., so the defect is taking one side without saying so; title corrected'.",
+   "evidence": "CL-HIS-03 verification; resolution.py VERDICT['CL-HIS-03']"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/E-ledger.md",
+   "old": "  - Caffarelli is not where the records say (`CL-HIS-09`);",
+   "new": "  - an act's side of the Goldbach disagrees with its anchors: Kienmayer's 'Holding west of the Goldbach' is drawn 0.9 km east of the brook\n    (`CL-HIS-08`);\n  - Caffarelli is not where the records say (`CL-HIS-09`);",
+   "why": "The text says 'Twelve of 26 consistency claims fail', but the bullets cover only eleven. The contradicted row 'Acts' sides of the Goldbach agree with anchors' is missing.",
+   "evidence": "history/result.json ledger (12 'contradicted' rows); CL-HIS-08"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/E-ledger.md",
+   "old": "  - the relief is not fitted to surveyed elevations where a visitor reads it most (`CL-GEO-01`);",
+   "new": "  - the Pratzen place's 'Extent: runs north-south between Blasowitz and the Litava', which the drawn relief contradicts (its high ground ends\n    about 1 km south of the Pratzeberg); the sheet's 'fitted to surveyed elevations' holds only in part (`CL-GEO-01`);",
+   "why": "This mislabels the ledger. The contradicted geography row is the Pratzen extent. 'Heights follow a vertical scale fitted to surveyed elevations' is graded 'partly' (the anchored summits are within 0-5 m).",
+   "evidence": "geography/result.json ledger: 'contradicted by the drawn relief' (the extent), 'partly' (fitted to surveyed elevations); CL-GEO-01 Observed"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/F-quality.md",
+   "old": "Every statement has a claim or is honestly \"unchecked\".",
+   "new": "Every inventoried statement has a claim or is honestly \"unchecked\" (10 plan labels drawn on the map lie outside the inventory, `CL-TEST-12`).",
+   "why": "Overclaim against CL-TEST-12's corrected observed: '10 plan labels drawn on the map ... are narrative statements outside the inventory and its exclusion note'.",
+   "evidence": "CL-TEST-12 observed (resolution.py OVERRIDE)"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/F-quality.md",
+   "old": "Play, the dwell, speed changes and pauses behave exactly.",
+   "new": "Play, the dwell, speed changes and pauses behave as specified, but for small edges (`CL-SIM-07`, `CL-SIM-08`, `CL-UX-14`).",
+   "why": "Three confirmed defects on these paths contradict it. Play's first frame after idle advances 120 ms (CL-SIM-07). A pause in a dwell's hold leaves a stale caption (CL-SIM-08). The event jumps' margin skips a start (CL-UX-14).",
+   "evidence": "CL-SIM-07, CL-SIM-08, CL-UX-14 (confirmed defects, CONFIRMED)"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/F-quality.md",
+   "old": "The start-up guard holds in all 8 failure cases.",
+   "new": "The start-up guard holds in all 8 start-up cases (four failures, a slow start and three context losses).",
+   "why": "Four of the eight cases are not failures: the slow start, context-loss, context-depth and context-gait.",
+   "evidence": "CLAUDE.md check:contrast; checks/check-contrast.txt"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/F-quality.md",
+   "old": "No north indicator outside wide desktop Study (`CL-MAP-04`).",
+   "new": "No north indicator outside Study in windows at least 1080 px wide and more than 700 px tall, so none on a 1366 x 768 laptop's browser (`CL-MAP-04`).",
+   "why": "It leaves out the verifier's correction that the rose is also hidden at 700 px tall or less, which excludes the common laptop viewport.",
+   "evidence": "CL-MAP-04 observed (resolution.py OVERRIDE) and NOTES"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/F-quality.md",
+   "old": "`ledger.json`; 53 record claims, 43 verified, 10 partly, none contradicted).",
+   "new": "`ledger.json`; 53 record claims in the area's `result.json`, 43 verified, 10 partly, none contradicted; `ledger.json` and the area's own\nsummary count 51, 41 verified).",
+   "why": "The cited file, ledger.json, holds 51 claims (41 verified, 10 partly), and perf/README.md:207 and the result's scope_summary say the same. Only result.json's ledger has 53/43.",
+   "evidence": "docs/audit-post8-evidence/perf/ledger.json (51 rows); perf/result.json ledger (53 rows); perf/README.md:207"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/G-roadmap.md",
+   "old": "and Krug at the 1836-52 survey's place or labelled | `CL-GEO-01` (P1), `-03`, `-04`, `-05`, `-07` | hours for the disclosure; 3-5 days for the refit and its re-measurement |",
+   "new": "Krug at the 1836-52 survey's place or labelled, and the Sokolnitz castle on ground of its own rather than the track class | `CL-GEO-01` (P1), `-03`, `-04`, `-05`, `-07`, `-11` | hours for the disclosure; 3-8 days for the refit and its re-measurement (a DEM-derived grid 1-3 weeks) |",
+   "why": "(1) The package list omits CL-GEO-11, which the register puts in WP-04. (2) The effort understates CL-GEO-01's own figure: 'refit 3-8 days with consequences; DEM grid 1-3 weeks'.",
+   "evidence": "resolution.py WP['WP-04']; CL-GEO-01 Effort"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/G-roadmap.md",
+   "old": "`CL-UX-01`, `-05`, `-06`, `-08`, `-09`, `-10`, `-11`, `-12`, `-15`, `-16`, `-17`, `-18`, `CL-REC-05`",
+   "new": "`CL-UX-01`, `-05`, `-06`, `-08`, `-09`, `-10`, `-11`, `-12`, `-15`, `-16`, `-17`, `-18`, `-21`, `-22`, `CL-REC-05`",
+   "why": "The register puts CL-UX-21 and CL-UX-22 in WP-09; G.2 omits them.",
+   "evidence": "resolution.py WP['WP-09']"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/G-roadmap.md",
+   "old": "`CL-TEST-01`, `-03` to `-13`, `-15` to `-20`, `CL-ROB-07`",
+   "new": "`CL-TEST-01`, `-03` to `-13`, `-15` to `-21`, `CL-ROB-07`",
+   "why": "The register puts CL-TEST-21 (the parts no area examined) in WP-11; G.2 omits it.",
+   "evidence": "resolution.py WP['WP-11']"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/G-roadmap.md",
+   "old": "`CL-REC-01`, `-02`, `-03`, `-04`, `-08`, `CL-ROB-03`, `-08`, `-09`",
+   "new": "`CL-REC-01`, `-02`, `-03`, `-04`, `-08`, `CL-ROB-03`, `-08`, `-09`, `-13`",
+   "why": "The register puts CL-ROB-13 (the archive images' terms) in WP-13; G.2 omits it.",
+   "evidence": "resolution.py WP['WP-13']"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/G-roadmap.md",
+   "old": "| 1-2 days | none (the readings exist) |",
+   "new": "| 1-2 days | none (the readings exist); the owner's word if a drop limit moves (G.1) |",
+   "why": "WP-01 breaks G.1's rule ('where a package needs a decided value changed, it names the owner question'). Its done-when re-measures the 09:15 views' drop limits, and drop limits move only on the owner's word (CLAUDE.md, decisions 199, 214).",
+   "evidence": "G-roadmap.md G.1 and the WP-01 row; CL-HIS-01 remedy"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/H-merge.md",
+   "old": "are different issues with one cause.",
+   "new": "are different issues: the second is why no check saw the first.",
+   "why": "Wrong. CL-MAP-01's cause is crowding, the priority rule and the stabiliser; CL-TEST-02's is the benchmark's 121-frame window. Their own notes call them 'Related, not the same issue'.",
+   "evidence": "CL-MAP-01 Cause; CL-TEST-02 title and note"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/I-owner.md",
+   "old": "(`CL-ROB-01`, `CL-ROB-06`). The device route's page on the public site runs any URL passed in\n`?src=`, `javascript:` included, in the site's origin (reproduced on a local copy only).",
+   "new": "(`CL-ROB-01`, `CL-ROB-06`, `CL-ROB-13`). The device route's page on the public site puts any URL passed in\n`?src=` into its frame, and a `javascript:` URL there runs in the site's origin (reproduced on a local copy only). About 460 third-party\narchive images (the Moravian Land Archive's cadastre) are published with the repository, their terms of use unread.",
+   "why": "(1) Precision, as in A. (2) CL-ROB-13's remedy says 'the owner's question 270 on what Pages publishes covers the remedy', but the question does not mention it.",
+   "evidence": "CL-ROB-01 Observed; CL-ROB-13 Remedy"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/I-owner.md",
+   "old": "- (b) The tools stay on Pages. `?src=` accepts only same-origin http(s) paths, and the archived builds are dropped from the published\n  artifact or given the integrity attribute.",
+   "new": "- (b) The tools stay on Pages and `?src=` accepts only same-origin http(s) paths. The archived builds stay as they are (frozen reference\n  builds, `CLAUDE.md`), so their exposure (`CL-ROB-06`) and the archive images' (`CL-ROB-13`) remain until (a).",
+   "why": "Option (b) contradicts CL-ROB-06's remedy ('the archives stay frozen in git') and CLAUDE.md: archive/ holds frozen reference builds, and stage8k-f10fe585.html is check:data's reference and byte-identical to the build. Also, dropping files 'from the published artifact' needs (a)'s explicit artifact.",
+   "evidence": "CL-ROB-06 Remedy; CLAUDE.md archive/ row and check:data"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/I-owner.md",
+   "old": "Decision 267 (a) accepted the benchmark's\ntotals and its 4,033 ms.",
+   "new": "Decision 267 (a) accepted the benchmark's\ntotals and kept its visibility baselines, the 4,033 ms among them, but left the counters' visibility over longer playback to this audit\n(section 23.2).",
+   "why": "As in A: the decision did not accept the visibility. Sections 23.2 and 23.4 call it 'still open for the audit'.",
+   "evidence": "docs/STAGE8_SPEC.md:5483-5489, 5515; C.4 C-06"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/I-owner.md",
+   "old": "Decisions 113-118 set the card's words.",
+   "new": "Decisions 108 (the card's words), 49 (the key closed at first) and 114 (the opening's stops) set them.",
+   "why": "Wrong decisions. CL-UX-11's verifier says 'decisions 114, 49 and 108 chose the stops, the closed key and the card's words'. Decision 113 is the docked dispatch beside the card, and 118 the opening's end state.",
+   "evidence": "CL-UX-11 Auditor's note; CLAUDE.md Stage 7 decisions"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/I-owner.md",
+   "old": "611,017 bytes",
+   "new": "611,113 bytes",
+   "why": "The evidence gives 611,113, and 611,113 - 333,611 = 277,502, the sentence's own Stage 8 growth.",
+   "evidence": "CL-ROB-09 Evidence (records/size.json: AUSTERLITZ_DEBUG 611,113 bytes)"
+  },
+  {
+   "file": "docs/audit-post8-evidence/report-parts/C-intro.md",
+   "old": "| measured and read | penetration testing beyond the page's own inputs |",
+   "new": "| measured and read | penetration testing beyond the page's own inputs; the terms of use of about 460 third-party archive images Pages publishes (`CL-ROB-13`) |",
+   "why": "The coverage matrix is missing the gap CL-ROB-13 registers. Robustness's not_checked is empty, so C.3 omits it too.",
+   "evidence": "CL-ROB-13 Evidence; robustness/README.md:53-54"
+  }
+ ],
+ "register_issues": [
+  {
+   "id": "CL-MAP-03",
+   "issue": "The user impact still says 'and in Watch and Clean at any size, a visitor has no way to learn what ... mean'. The corrected title calls Watch and Clean recorded design, and the reproduction lens found the key 'two presses away (1, then Key)' from there. The verification row is just 'WEAKENED: [lenses: ...]' with no reason.",
+   "proposal": "OVERRIDE['CL-MAP-03']['user_impact'] = \"On phones held upright, small tablets and 1024 px laptops (below 1080 px wide, over 430 px tall) a visitor has no way to learn what the B/C/? badges, status icons, echelon marks, dashed arrows, outlines, grade extents, event glyphs or the eye level's blue sheets mean; only the first-run card's two colours remain. In Watch and Clean the key is two presses away (1, then Key) by 2D's recorded choice; at 430 px tall or less it is hidden under decision 226 (a).\"; VERDICT['CL-MAP-03'] = {'verdict': 'WEAKENED', 'note': \"Premise lens: Watch and Clean hide the key by 2D's recorded choice (STAGE2_SPEC.md:866-867) and 430 px or less by decision 226 (a); the gap below 1080 px wide and over 430 px tall stands at S2/P2. Reproduction lens: confirmed; from Watch or Clean the key is two presses away.\"}",
+   "evidence": "verification/v-premise-b.json and v-repro-ux-maps.json on visual-maps #2"
+  },
+  {
+   "id": "CL-UX-02",
+   "issue": "The remedy says to call setTween('cam',null) 'in LANDCAM.free() (and the paper map's MAPCAM moves)'. Both the title and the verifiers' caveat in the same entry contradict this: MAPCAM already ends its glide on input, and clearing the tween inside free() would cancel the double-click focus glide.",
+   "proposal": "OVERRIDE['CL-UX-02']['remedy'] = \"Stop the camera slot when the visitor takes the camera: in the landscape's pan, zoom and key handlers (not inside LANDCAM.free(), which the double-click focus glide also calls) call setTween('cam',null) and clear camArc, as redrawGround does since 8H; the paper map's MAPCAM already ends its glide on input. Add a self-test check (drag, wheel, keys during each kind of glide leave the camera where the input left it) and a css-test rule.\"",
+   "evidence": "CL-UX-02 Auditor's note (NOTES['CL-UX-02']); app.js:4915-4953 as cited there"
+  },
+  {
+   "id": "CL-HIS-14",
+   "issue": "The remedy still proposes 'Sokolov alone' in the commander's field or note. The verifier said 'The Kologrivov premise fails, and the proposed remedy (Sokolov alone in the field) would entrench the error': the commander is attested by Sokolov, Schonhals p. 178 and Duffy p. 184. CL-SRC-03 corrects the same 'Sokolov alone'. The verification row gives no reason.",
+   "proposal": "OVERRIDE['CL-HIS-14']['remedy'] = \"Data task: tag rg_cav.commander 'attributed' to the sources that give it (Sokolov; Schonhals p. 178; Duffy p. 184) and correct SOURCE_NOTE's 'rests on Sokolov alone' (CL-SRC-03); a qualifier on Bellowitz's label, or a Bellowitz data task (Krug: CL-GEO-07).\"; VERDICT['CL-HIS-14'] = {'verdict': 'WEAKENED', 'note': 'Verifier: the Krug part is geography #6 (CL-GEO-07); the Kologrivov premise fails (three sources give the command): title, severity S4 and remedy corrected.'}",
+   "evidence": "verification/v-batch-his.json, history #14"
+  },
+  {
+   "id": "CL-REC-04",
+   "issue": "The title and user impact say the checklist 'misstates three of its own items' and 'understates three items'. The verifier found two of three misstated, one of them overstated (Caffarelli 2.5-2.9 km against the 2.13-2.64 km drawn), and 'the 4,033 ms item is stated with its limit'. Only severity and priority were applied, and the verification row gives no reason.",
+   "proposal": "OVERRIDE['CL-REC-04'] add: title = \"The carried checklist misstates two of its own items: kienmayer@7's contradiction of its own act since Stage 0 filed as an 8J offset, and Caffarelli's separation given as 2.5-2.9 km where the build draws 2.13-2.64 km\"; user_impact = \"A reader of the checklist takes Kienmayer's error for 8J's small offset and Caffarelli's separation as larger than drawn; the 4,033 ms item is stated with its limit.\"; observed = the verifier's corrected observed; VERDICT note = 'Verifier: two of three items misstated; the substance is carried by history #7, #8 and visibility #0, #2; S4/P4.'",
+   "evidence": "verification/v-batch-rec-chron.json, records #6 (index 5)"
+  },
+  {
+   "id": "CL-REC-05",
+   "issue": "The entry contradicts itself after the partial override. The observed now says 'Both attestations are labelled as such', but the user impact still says 'The records otherwise read as if both were done', and the remedy offers 'or label both as attestations without results', which is already the case.",
+   "proposal": "OVERRIDE['CL-REC-05']['user_impact'] = \"No screen-reader result exists for any build, Stage 8's landmark and heading changes (8H, A-6) included, and the A grades of the drawn coats rest on machine readings only; the records label both as attestations without results.\"; OVERRIDE['CL-REC-05']['remedy'] = \"Run the 24-item screen-reader script once on the final build and read the 15 quotes once; meanwhile correct docs/stage6-evidence/second-reading.md's stale 'stays open for the owner' (no app change).\"",
+   "evidence": "CL-REC-05 observed (resolution.py OVERRIDE) against its user_impact and remedy; verification/v-batch-rec-chron.json"
+  },
+  {
+   "id": "CL-UX-08",
+   "issue": "The user impact still says 'Keyboard and touch visitors never see that the derived figures are spatial readings'. The verifier called this wrong ('one press away in Accuracy and sources'), and only the title was corrected. The verification row gives no reason.",
+   "proposal": "OVERRIDE['CL-UX-08']['user_impact'] = \"On the screen where the figure is shown, keyboard and touch visitors do not see that the 'derived' figures are spatial readings, not casualty figures (the sources sheet says so, one press away), and nowhere that the Zuran and Allied vantages are not what the commanders saw; screen-reader users get both as descriptions, mouse users only by resting the pointer.\"; VERDICT note = 'Verifier: the derived caveats are visible in the sources sheet (SOURCE_NOTE.body[6]); what stands is the main screen's title-only qualifiers and the vantages' caveat; S3/P3; origin inherited.'",
+   "evidence": "verification batch note on a11y #2 (CL-UX-08)"
+  },
+  {
+   "id": "CL-TEST-07",
+   "issue": "The user impact says the 'figure is N units off the drawn ground' check 'would pass silently in all 39 cases'. The verifier's corrected observed, which was not applied, shows that the self-test's own checks (n>0, nStd>0) fail the named regression in check:selftest and check:visual. The harness check is redundant, and only a view-specific absence would go unnoticed.",
+   "proposal": "OVERRIDE['CL-TEST-07']['observed'] = the verifier's corrected observed (\"The harness's per-case figure and standard measures are skipped at count 0 (a redundant second check); the named regression ... fails the self-test's 'figures: every visible man, horse and standard stands on the drawn ground' (n>0 required) and its standards count (nStd>0) ... Residual: a view-specific absence (one case drawing no figures) would not fail.\"); user_impact = \"Small: a case that drew no figures in one view would not fail the harness's own measure; a regression that drops every figure fails the self-test.\"",
+   "evidence": "verification/v-batch-tests.json, tests #5 (index 4)"
+  },
+  {
+   "id": "CL-UX-10",
+   "issue": "The Expected cites WCAG 2.4.3 (Level A), and 00-head's rubric makes a WCAG A or AA failure S2, yet the entry is S3 with no explanation. The verifier's resolution ('WCAG 2.4.3 is arguable for non-modal content; S3 P3 agreed') was not carried into the entry.",
+   "proposal": "NOTES['CL-UX-10'] = \"Verifier: no owner decision keeps focus on the opener; WCAG 2.4.3 is arguable for non-modal content (the order follows the DOM), so not counted as an A failure: S3/P3 agreed. Origin inherited (step 3).\"",
+   "evidence": "verification/v-batch-a11y.json, a11y #7 (index 6)"
+  },
+  {
+   "id": "CL-UX-01",
+   "issue": "The premise lens found new evidence on decision 226 (a)'s premise. The held-landscape layout (844 x 390) shows no phase text; the question put to the owner (STEP6_SPEC.md:735-741) did not say so; and Stage 0's premise for that layout ('the situation strip keeps the narrative', style.css:615-618) has been void since 3C. The audit's own rule (00-head: an accepted compromise is not reopened 'unless new evidence changes its premise, and the finding says so where it does') requires the entry to say this. It says only 'accepted', and section I has no question on it.",
+   "proposal": "NOTES['CL-UX-01'] append: \"Premise lens: the 844 x 390 layout's lack of phase text was not stated to the owner when decision 226 (a) kept today's layout there, and its Stage 0 premise has been void since 3C: new evidence on that decision's premise, for the owner (with question 276 or a question of its own).\"",
+   "evidence": "verification/v-premise-b.json, a11y #1 (index 0)"
+  },
+  {
+   "id": "CL-REC-02, CL-PERF-05, CL-PERF-07",
+   "issue": "These origins are mixed but count as 'inherited' because report.py's org() keys on the leading word. CL-REC-02 reads 'inherited (...) / new-regression (Stage 8 PRs 8A-8K ...)', CL-PERF-05 'inherited (...) / new-regression (the census maxima used as Stage 8's settled baseline)', and CL-PERF-07 'inherited (step 6), with Stage 8 additions'. The counts in A and J (111 inherited, 3 mixed) are therefore overstated on one side and understated on the other.",
+   "proposal": "OVERRIDE['CL-REC-02']['origin'] = 'mixed: inherited (step 6 item 3 made the states and views stale) and new-regression (Stage 8 PRs 8A-8K moved the reference, the counts and the times)'; OVERRIDE['CL-PERF-05']['origin'] = \"mixed: inherited (median counts since step 6) and new-regression (the census maxima used as Stage 8's 'settled baseline')\"; OVERRIDE['CL-PERF-07']['origin'] = 'mixed: inherited (step 6) with Stage 8 additions (the brackets)'",
+   "evidence": "register origin strings; tools/audit-post8/report.py org()"
+  },
+  {
+   "id": "19 WEAKENED entries without a reason (CL-HIS-14, CL-SRC-02, CL-SRC-04, CL-SRC-08, CL-GEO-06, CL-UX-08, CL-UX-13, CL-MAP-03, CL-MAP-07, CL-MAP-14, CL-MAP-20, CL-VIS-02, CL-TEST-07, CL-TEST-09, CL-TEST-12, CL-TEST-15, CL-REC-01, CL-REC-04, CL-REC-05)",
+   "issue": "Each verification row reads only 'WEAKENED: [lenses: WEAKENED (batch)]', so the reader cannot tell what was weakened. Section A's claim that the entry shows the correction does not hold for these 19.",
+   "proposal": "Add VERDICT notes from the verifiers' notes and corrections, for example: CL-SRC-02 'Verifier: Friant's 3,470 is 30 under Sokolov's lower bound; the gap is Bourcier's (830 against 1,200-1,500) and the detachment's; title corrected, P3'; CL-SRC-04 \"Verifier: 'only on a popular website' not established (Smith, Goetz, Castle, Bowden, Chandler not searched); title corrected; S3/P3 kept\"; CL-SRC-08 'Verifier: locator corrected (Schonhals p. 177, not Sokolov p. 195); Duffy's working figures and Viskovatov not re-checked'; CL-GEO-06 \"Verifier: the movement audit can fail a marsh crossing away from villages, so 'no check can fail' was overstated; title corrected\"; CL-UX-13 'Verifier: the certain part is a right or middle press seeking and stopping Play; the context-menu release unverified; S4/P4'; CL-MAP-07 'Verifier: origin corrected; S3/P3 kept (a secondary path)'; CL-MAP-14 'Verifier: net -1 to +3 against a fresh view; accepted under decision 240 (a); S4/P4'; CL-MAP-20 'Verifier: no single 1805 German convention to break; an owner choice; optional, S4/P4'; CL-VIS-02 'Verifier: 6 objects visible above the ice, 14 hidden; S3/P3'; CL-TEST-07 'Verifier: the self-test catches the regression; the harness check is redundant; optional, S4/P4'; CL-TEST-09 'Verifier: SPEED_CEIL is guarded by check:data, ARROW_CAP by a source pin naming decision 241; overlaps CL-TEST-03; S4/P4'; CL-TEST-12 \"Verifier: the 19 timing bases are an enum the note's 'enums' plausibly covers; 10 plan labels remain outside\"; CL-TEST-15 'Verifier: the behaviour check holds the property; the pin is redundant, its blind spot opened by 8C; optional, S4/P4'; CL-REC-01 'Verifier: a missed convenience, not a defect against a stated requirement; optional, S4/P3', and also OVERRIDE observed with the verifier's corrected observed; CL-REC-05 'Verifier: both attestations labelled; untested is any screen reader on the current build; S3/P3'. CL-HIS-14, CL-UX-08, CL-MAP-03, CL-TEST-07 and CL-REC-04 are covered by the issues above.",
+   "evidence": "register.json verify notes; verification/v-batch-*.json and v-premise-b.json"
+  },
+  {
+   "id": "CL-ROB-13",
+   "issue": "The title ends 'and the gap reaches no section of the report', and the evidence says 'no CL entry names it'. Both are now false, since this entry itself is in section B (and, once the C.1 correction is applied, in C.1).",
+   "proposal": "OVERRIDE['CL-ROB-13']['title'] = \"The terms of use of about 460 third-party archive images that Pages publishes (the Moravian Land Archive's cadastre tiles and 8G's cadastre sheets) were not checked; before this entry the gap was recorded only in the robustness README\"",
+   "evidence": "CL-ROB-13 title and Evidence; register.json"
+  },
+  {
+   "id": "CL-SRC-04",
+   "issue": "The user impact says the statement 'gives a web figure the authority of reputable and returns'. The verifier found the web origin not established (other works were not searched), and the corrected title says 'the figure's origin is not established'.",
+   "proposal": "OVERRIDE['CL-SRC-04']['user_impact'] = \"The method statement says reputable orders of battle give the I Column anything from 7,750 to 14,200 men. The sources read here agree within about 10% (12,730-14,000). The statement overstates the uncertainty and gives a figure of unestablished origin the authority of 'reputable' and 'returns'.\"",
+   "evidence": "verification batch note on sources-oob #6"
+  }
+ ],
+ "verdict_ok": false,
+ "notes": "The report is not ready as it stands. I found 40 concrete errors in the hand-written parts, all with exact replacements, and 13 groups of problems in the generated entries. Every replacement text occurs exactly once in its file. I also applied all 40 to a copy of the parts and inputs in the scratchpad and ran report.py there: it renders without unknown tokens (151 findings). I modified no repository file.\n\nThe problems that matter most:\n- Section A says the six 'before finished' packages hold 'most of the S2s'. They hold 7 of the 15.\n- G.2's package lists leave out the five late entries: CL-GEO-11, CL-UX-21, CL-UX-22, CL-TEST-21, CL-ROB-13.\n- WP-04's refit effort is given as 3-5 days; CL-GEO-01's own entry says 3-8 days.\n- A and J say every area finding was verified. Three of the five unverified entries are area findings (the completeness critic's).\n- A says each entry 'shows both the area's claim and the correction'. report.py shows only the merged fields, and 19 of the 30 weakened entries record no reason.\n- The origin counts in A and J (111 + 18 + 3) leave out 19 of the 151 findings.\n- 'Accepted 4,033 ms' (in A and question 274) misreads decision 267 (a). Section 23.2 left that visibility issue open for this audit.\n- E.2 repeats three claims the verifiers weakened or refuted: 'only on a popular website', 'contradicts the register's A readings', and 'Seven figures contradicted'. It also drops one of the twelve failed consistency claims.\n- Question 270 (b) proposes giving the frozen archive builds the integrity attribute. That contradicts CL-ROB-06's remedy and CLAUDE.md.\n- Question 283 has 611,017 bytes; the evidence says 611,113.\n- Question 276 cites the wrong decisions (113-118).\n- D.2a's 'the largest' ceiling raise is wrong: the orbit-with-selection ceiling rose more than Play's.\n- F.1's 53/43 claims count does not match the ledger.json it cites, which holds 51/41.\n\nChecked and correct:\n- A's 6-11 days, the P1 list, and the 13-21% / 20-32% / 'about a third' shares (the verifier's three motions).\n- F.1's fps, the 10.6-14.0% slowdown, and the 27.8% and 32% missed-refresh figures.\n- E.1's ledger tallies, all four rows.\n- The D.1 log numbers (chronology 70/66/4, 155/118/73/75/37; contrast 6,926/120/45; self-test 317; npm test 67/400).\n- C.0's line counts at 43e3e5b.\n- D.2a's totals and its 253/131 comparisons.\n- C.1's 766, 215,072, 100/74 captures, 21 runs, 33/30/3 mutations, 38 prior findings re-read, and 64/6/2/2/1.\n- The inventory's 704/148/75/481.\n- The prior findings H-1 to S-5.\n- The 15 questions, 270-284.\n- That every S1 and S2 had two lenses, and that no verdict was REFUTED or PLAUSIBLE.\n\nNot checked: C.4's cross-references one by one; the B.2 entries at S3 and S4 beyond those named; the Pages fetch and its times; the 180 positioned anchors; and the check:visual CI artifact itself."
+}

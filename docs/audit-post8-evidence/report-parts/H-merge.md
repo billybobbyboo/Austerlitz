@@ -38,7 +38,7 @@ from a table, not from prose.
 ### H.3 Matching rules
 
 1. Two findings are the same issue when they name the same subsystem and the same failure scenario. A shared title or symptom is not enough.
-   Example: "labels hidden during Play" (`CL-MAP-01`) and "a test cannot see long gaps" (`CL-TEST-` entries) are different issues with one cause.
+   Example: "labels hidden during Play" (`CL-MAP-01`) and "a test cannot see long gaps" (`CL-TEST-` entries) are different issues: the second is why no check saw the first.
 2. If one finding contains another, keep the larger as the row and record the smaller as its source.
 3. A finding that one audit calls an accepted compromise and another a defect is a disagreement. The row keeps the owner's decision number,
    the new evidence and the question whether that evidence changes the decision's premise (this audit's rule; section I).

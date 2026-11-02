@@ -36,7 +36,7 @@ without running them. **Sampled** means part of the space measured. **Not covere
 | the prior audit's 75 findings | each one's status now, 38 re-read against the code (`docs/audit-post8-evidence/records/prior-findings.md`) | read | 64 resolved, 6 partly, 2 accepted by decision, 2 superseded, 1 open (G-3, `CL-REC-06`) |
 | the owner's decisions 239-269 | implemented as decided: examined by content for most (the areas' carried status and findings); 252-254, 256 and 258 only through the passing checks and the records | read and measured, per decision | no per-decision ledger |
 | tests and evidence (9) | the required checks run; the gate; threshold history; 33 mutations as negative controls (30 caught, 3 missed); the self-test manifest; the benchmark's meaning | measured | the 317 self-test checks were not read one by one |
-| robustness, security, maintainability (10) | HTML sinks, URL parameters, advisories, licences, offline dependence, context loss cycles, resize storms, prolonged use, idle behaviour, dead code, the tools never run by CI | measured and read | penetration testing beyond the page's own inputs |
+| robustness, security, maintainability (10) | HTML sinks, URL parameters, advisories, licences, offline dependence, context loss cycles, resize storms, prolonged use, idle behaviour, dead code, the tools never run by CI | measured and read | penetration testing beyond the page's own inputs; the terms of use of about 460 third-party archive images Pages publishes (`CL-ROB-13`) |
 
 ### C.1a Set aside: decisions verified as implemented
 
