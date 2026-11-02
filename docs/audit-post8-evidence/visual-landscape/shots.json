@@ -1,0 +1,1789 @@
+[
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "sok-castle-1000",
+  "group": "landmarks",
+  "t": 600,
+  "aim": {
+   "map": [
+    212.9,
+    344.3
+   ],
+   "dir": [
+    -0.55,
+    0.42,
+    0.72
+   ],
+   "r": 26
+  },
+  "note": "The Sokolnitz castle's site at 10:00, the III Column holding it (stills-8j 'sokolnitz-castle')."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "sok-castle-1500-close",
+  "group": "landmarks",
+  "t": 900,
+  "aim": {
+   "map": [
+    212.9,
+    344.3
+   ],
+   "dir": [
+    -0.55,
+    0.42,
+    0.72
+   ],
+   "r": 14
+  },
+  "note": "The castle close at 15:00, the III Column gone (stills-8j 'sokolnitz-castle-afternoon')."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "map",
+  "mode": "terrain",
+  "id": "sok-castle-1500-clean",
+  "group": "landmarks",
+  "t": 900,
+  "aim": {
+   "map": [
+    212.9,
+    344.3
+   ],
+   "dir": [
+    -0.55,
+    0.42,
+    0.72
+   ],
+   "r": 26
+  },
+  "note": "The castle and the village at 15:00 in Clean (no map text): its size against the farmhouses."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "map",
+  "mode": "terrain",
+  "id": "sok-village-1200-west",
+  "group": "landmarks",
+  "t": 720,
+  "aim": {
+   "map": [
+    210,
+    352
+   ],
+   "dir": [
+    -0.8,
+    0.45,
+    0.4
+   ],
+   "r": 45
+  },
+  "note": "Sokolnitz from the west at 12:00 in Clean: the castle among the village's farmsteads, the brook, the pheasantry."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "sok-pheasantry-1000",
+  "group": "landmarks",
+  "t": 600,
+  "aim": {
+   "map": [
+    214.6,
+    328.5
+   ],
+   "dir": [
+    0.62,
+    0.4,
+    0.68
+   ],
+   "r": 34
+  },
+  "note": "The pheasantry (8J's traced 1825 outline) at 10:00 (stills-8j 'sokolnitz-pheasantry')."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "sok-brook-0820",
+  "group": "landmarks",
+  "t": 500,
+  "aim": {
+   "map": [
+    211,
+    360
+   ],
+   "dir": [
+    0.7,
+    0.34,
+    0.62
+   ],
+   "r": 30
+  },
+  "note": "The Goldbach by Sokolnitz at 08:20 (stills-8j 'sokolnitz-brook')."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "ice-low-1500",
+  "group": "ice",
+  "t": 900,
+  "aim": {
+   "map": [
+    262,
+    428
+   ],
+   "dir": [
+    0.25,
+    0.22,
+    0.94
+   ],
+   "r": 46
+  },
+  "note": "The Satschan mere low, 15:00 (views.js ice-low)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "ice-low8h-1500",
+  "group": "ice",
+  "t": 900,
+  "aim": {
+   "map": [
+    262,
+    440
+   ],
+   "dir": [
+    0.45,
+    0.18,
+    -0.74
+   ],
+   "r": 50
+  },
+  "note": "8H's low view of the meres at 15:00 (ice-8h.js 'low': the glare measured 43.5%)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "ice-low8h-0900",
+  "group": "ice",
+  "t": 540,
+  "aim": {
+   "map": [
+    262,
+    440
+   ],
+   "dir": [
+    0.45,
+    0.18,
+    -0.74
+   ],
+   "r": 50
+  },
+  "note": "The same low view at 09:00 (glare 18.2% in 8H)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "ice-low8h-1200",
+  "group": "ice",
+  "t": 720,
+  "aim": {
+   "map": [
+    262,
+    440
+   ],
+   "dir": [
+    0.45,
+    0.18,
+    -0.74
+   ],
+   "r": 50
+  },
+  "note": "The same low view at 12:00 (glare 21.2% in 8H)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "ice-mid-1500",
+  "group": "ice",
+  "t": 900,
+  "aim": {
+   "map": [
+    262,
+    444
+   ],
+   "dir": [
+    0.45,
+    0.5,
+    -0.74
+   ],
+   "r": 58
+  },
+  "note": "The meres obliquely at 15:00 (views.js ice-mid)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "ice-high-1500",
+  "group": "ice",
+  "t": 900,
+  "aim": {
+   "map": [
+    250,
+    440
+   ],
+   "dir": [
+    0.1,
+    0.8,
+    0.59
+   ],
+   "r": 90
+  },
+  "note": "The meres from above at 15:00 (views.js ice-high)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "ice-sun-1400",
+  "group": "ice",
+  "t": 840,
+  "aim": {
+   "map": [
+    262,
+    444
+   ],
+   "dir": [
+    -0.35,
+    0.3,
+    -0.89
+   ],
+   "r": 52
+  },
+  "note": "The meres toward the sun at 14:00 (views.js ice-sun)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "ice-low8h-1630",
+  "group": "ice",
+  "t": 990,
+  "aim": {
+   "map": [
+    262,
+    440
+   ],
+   "dir": [
+    0.45,
+    0.18,
+    -0.74
+   ],
+   "r": 50
+  },
+  "note": "The low view at 16:30 (the sun setting)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "satschan-1200",
+  "group": "landmarks",
+  "t": 720,
+  "aim": {
+   "map": [
+    262.4,
+    443.7
+   ],
+   "dir": [
+    -0.45,
+    0.55,
+    0.7
+   ],
+   "r": 28
+  },
+  "note": "Satschan village at 12:00: five farmsteads of seven drawn (decision 261 (a))."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "austerlitz-garden-1400",
+  "group": "landmarks",
+  "t": 840,
+  "aim": {
+   "map": [
+    496,
+    125
+   ],
+   "dir": [
+    -0.4,
+    0.55,
+    0.73
+   ],
+   "r": 30
+  },
+  "note": "The Austerlitz château and its garden at 14:00 (stills-8j 'austerlitz-garden')."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "austerlitz-town-1400",
+  "group": "landmarks",
+  "t": 840,
+  "aim": {
+   "map": [
+    500,
+    126
+   ],
+   "dir": [
+    -0.55,
+    0.62,
+    0.56
+   ],
+   "r": 80
+  },
+  "note": "Austerlitz from the west-north-west at 14:00, 80 units off: the town, the château's symbol, the garden."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "posthouse-1500",
+  "group": "landmarks",
+  "t": 900,
+  "aim": {
+   "map": [
+    363.2,
+    53.8
+   ],
+   "dir": [
+    -0.55,
+    0.4,
+    0.73
+   ],
+   "r": 24
+  },
+  "note": "The Posoritz post house at 15:00 (stills-8j 8k 'posthouse')."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "posthouse-1000-wide",
+  "group": "landmarks",
+  "t": 600,
+  "aim": {
+   "map": [
+    355,
+    60
+   ],
+   "dir": [
+    -0.6,
+    0.5,
+    0.62
+   ],
+   "r": 60
+  },
+  "note": "The post house and the highway at 10:00 (Bagration's front), 60 units off."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "santon-1000",
+  "group": "landmarks",
+  "t": 600,
+  "aim": {
+   "map": [
+    222,
+    87
+   ],
+   "dir": [
+    -0.62,
+    0.4,
+    0.68
+   ],
+   "r": 34
+  },
+  "note": "The Santon at 10:00: the hill, its battery; the chapel not drawn (BUILDINGS.notDrawn.santon)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "santon-1300-close",
+  "group": "landmarks",
+  "t": 780,
+  "aim": {
+   "map": [
+    222,
+    87
+   ],
+   "dir": [
+    0.5,
+    0.35,
+    0.79
+   ],
+   "r": 18
+  },
+  "note": "The Santon's top close at 13:00 from the north-east."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "stanthony-1300",
+  "group": "landmarks",
+  "t": 780,
+  "aim": {
+   "map": [
+    291,
+    354
+   ],
+   "dir": [
+    -0.55,
+    0.45,
+    0.7
+   ],
+   "r": 30
+  },
+  "note": "Above Augezd at 13:00: the chapel of St Anthony's site (not drawn; its name on the ground)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "pratzen-church-0900",
+  "group": "landmarks",
+  "t": 540,
+  "aim": {
+   "map": [
+    277,
+    252
+   ],
+   "dir": [
+    -0.65,
+    0.38,
+    0.66
+   ],
+   "r": 22
+  },
+  "note": "The Pratzen church at its own site (8J) at 09:00 (stills-8j 'pratzen-church')."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "telnitz-0800",
+  "group": "landmarks",
+  "t": 480,
+  "aim": {
+   "map": [
+    212,
+    408
+   ],
+   "dir": [
+    -0.55,
+    0.3,
+    0.78
+   ],
+   "r": 26
+  },
+  "note": "Telnitz at 08:00 (views.js village-telnitz at 07:50)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "telnitz-0930-wide",
+  "group": "landmarks",
+  "t": 570,
+  "aim": {
+   "map": [
+    215,
+    405
+   ],
+   "dir": [
+    -0.7,
+    0.45,
+    0.55
+   ],
+   "r": 50
+  },
+  "note": "Telnitz at 09:30, Friant retaking it, 50 units off."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "pratzeberg-0930",
+  "group": "landmarks",
+  "t": 570,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -0.55,
+    0.45,
+    -0.7
+   ],
+   "r": 60
+  },
+  "note": "The Pratzeberg from the north-west at 09:30."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "pratzeberg-1000-east",
+  "group": "landmarks",
+  "t": 600,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    0.75,
+    0.4,
+    0.53
+   ],
+   "r": 55
+  },
+  "note": "The Pratzeberg from the east at 10:00, the crisis."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "inf-close-0920",
+  "group": "troops",
+  "t": 560,
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    -0.62,
+    0.34,
+    0.7
+   ],
+   "r": 24
+  },
+  "note": "Saint-Hilaire's division at 09:20, 24 units off (views.js inf-close)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "inf-east-0900",
+  "group": "troops",
+  "t": 540,
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    0.7,
+    0.35,
+    0.2
+   ],
+   "r": 26
+  },
+  "note": "Saint-Hilaire's division climbing at 09:00 from ahead of its march (clips-8e 'infantry')."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "cav-close-1055",
+  "group": "troops",
+  "t": 655,
+  "aim": {
+   "map": "nansouty",
+   "dir": [
+    0.55,
+    0.32,
+    0.77
+   ],
+   "r": 24
+  },
+  "note": "Nansouty's cuirassiers at 10:55, 24 units off (views.js cav-close)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "bat-deployed-1320",
+  "group": "troops",
+  "t": 800,
+  "aim": {
+   "map": "heightguns",
+   "dir": [
+    -0.7,
+    0.34,
+    0.62
+   ],
+   "r": 20
+  },
+  "note": "The guns on the heights deployed at 13:20 (views.js bat-deployed): drivers on the limbers' horses."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "bat-limbered-1410",
+  "group": "troops",
+  "t": 850,
+  "aim": {
+   "map": "heightguns",
+   "dir": [
+    -0.7,
+    0.34,
+    0.62
+   ],
+   "r": 20
+  },
+  "note": "The same battery limbered and moving at 14:10 (views.js bat-limbered): no gunners drawn."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "bat-chapel-1500",
+  "group": "troops",
+  "t": 900,
+  "aim": {
+   "map": "heightguns",
+   "dir": [
+    0.1,
+    0.3,
+    -0.95
+   ],
+   "r": 34
+  },
+  "note": "The battery at 15:00 from the south (views.js bat-chapel)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "slope-10x-0900",
+  "group": "troops",
+  "t": 540,
+  "factor": "model",
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    0.3,
+    0.15,
+    -0.95
+   ],
+   "r": 16
+  },
+  "note": "At 10.33x on the slope, low from the side (clips-8e 'slope-10x'): feet on the drawn ground."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "slope-4x-0900-r10",
+  "group": "troops",
+  "t": 540,
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    0.3,
+    0.15,
+    -0.95
+   ],
+   "r": 10
+  },
+  "note": "At 4x on the slope, low from the side, 10 units off: the rich kit at its closest."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "slope-10x-0900-r8",
+  "group": "troops",
+  "t": 540,
+  "factor": "model",
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    0.3,
+    0.12,
+    -0.95
+   ],
+   "r": 8
+  },
+  "note": "At 10.33x, 8 units off, low: the closest figure view."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "santon-guns-1300",
+  "group": "troops",
+  "t": 780,
+  "aim": {
+   "map": "santon",
+   "dir": [
+    -0.4,
+    0.35,
+    0.85
+   ],
+   "r": 16
+  },
+  "note": "The Santon's battery and detachment at 13:00, close."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "rg-inf-1045",
+  "group": "troops",
+  "t": 645,
+  "aim": {
+   "map": "rg_inf",
+   "dir": [
+    0.6,
+    0.35,
+    0.72
+   ],
+   "r": 24
+  },
+  "note": "The Russian Guard infantry at 10:45 (standards)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "kollo-0920",
+  "group": "troops",
+  "t": 560,
+  "aim": {
+   "map": "kollo",
+   "dir": [
+    0.6,
+    0.35,
+    0.72
+   ],
+   "r": 24
+  },
+  "note": "Kollowrat's Austrians at 09:20 (standards, the white coats)."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-field-0900",
+  "group": "vantage",
+  "t": 540,
+  "vantage": "field",
+  "note": "The Field vantage at 0900."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plateau-0900",
+  "group": "vantage",
+  "t": 540,
+  "vantage": "plateau",
+  "note": "The Pratzen vantage at 0900."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plan-0900",
+  "group": "vantage",
+  "t": 540,
+  "vantage": "plan",
+  "note": "The Overview (fitted to the battle's extent) at 0900."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-low-0900",
+  "group": "vantage",
+  "t": 540,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "The low Pratzen view (cases.js pratzen-low) at 0900."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-allied-0900",
+  "group": "vantage",
+  "t": 540,
+  "vantage": "allied",
+  "note": "The Allied vantage at 0900."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-field-1500",
+  "group": "vantage",
+  "t": 900,
+  "vantage": "field",
+  "note": "The Field vantage at 1500."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plateau-1500",
+  "group": "vantage",
+  "t": 900,
+  "vantage": "plateau",
+  "note": "The Pratzen vantage at 1500."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plan-1500",
+  "group": "vantage",
+  "t": 900,
+  "vantage": "plan",
+  "note": "The Overview (fitted to the battle's extent) at 1500."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-low-1500",
+  "group": "vantage",
+  "t": 900,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "The low Pratzen view (cases.js pratzen-low) at 1500."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-zuran-1500",
+  "group": "vantage",
+  "t": 900,
+  "vantage": "zuran",
+  "note": "The Zuran vantage at 1500."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-field-0600",
+  "group": "vantage",
+  "t": 360,
+  "vantage": "field",
+  "note": "The Field vantage at 0600."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plateau-0600",
+  "group": "vantage",
+  "t": 360,
+  "vantage": "plateau",
+  "note": "The Pratzen vantage at 0600."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plan-0600",
+  "group": "vantage",
+  "t": 360,
+  "vantage": "plan",
+  "note": "The Overview (fitted to the battle's extent) at 0600."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-low-0600",
+  "group": "vantage",
+  "t": 360,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "The low Pratzen view (cases.js pratzen-low) at 0600."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-zuran-0600",
+  "group": "vantage",
+  "t": 360,
+  "vantage": "zuran",
+  "note": "The Zuran vantage at 0600."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-allied-0600",
+  "group": "vantage",
+  "t": 360,
+  "vantage": "allied",
+  "note": "The Allied vantage at 0600."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-field-1200",
+  "group": "vantage",
+  "t": 720,
+  "vantage": "field",
+  "note": "The Field vantage at 1200."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plateau-1200",
+  "group": "vantage",
+  "t": 720,
+  "vantage": "plateau",
+  "note": "The Pratzen vantage at 1200."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plan-1200",
+  "group": "vantage",
+  "t": 720,
+  "vantage": "plan",
+  "note": "The Overview (fitted to the battle's extent) at 1200."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-low-1200",
+  "group": "vantage",
+  "t": 720,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "The low Pratzen view (cases.js pratzen-low) at 1200."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-allied-1200",
+  "group": "vantage",
+  "t": 720,
+  "vantage": "allied",
+  "note": "The Allied vantage at 1200."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-field-0800",
+  "group": "vantage",
+  "t": 480,
+  "vantage": "field",
+  "note": "The Field vantage at 0800."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plateau-0800",
+  "group": "vantage",
+  "t": 480,
+  "vantage": "plateau",
+  "note": "The Pratzen vantage at 0800."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plan-0800",
+  "group": "vantage",
+  "t": 480,
+  "vantage": "plan",
+  "note": "The Overview (fitted to the battle's extent) at 0800."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-low-0800",
+  "group": "vantage",
+  "t": 480,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "The low Pratzen view (cases.js pratzen-low) at 0800."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-zuran-0800",
+  "group": "vantage",
+  "t": 480,
+  "vantage": "zuran",
+  "note": "The Zuran vantage at 0800."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-field-1000",
+  "group": "vantage",
+  "t": 600,
+  "vantage": "field",
+  "note": "The Field vantage at 1000."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plateau-1000",
+  "group": "vantage",
+  "t": 600,
+  "vantage": "plateau",
+  "note": "The Pratzen vantage at 1000."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plan-1000",
+  "group": "vantage",
+  "t": 600,
+  "vantage": "plan",
+  "note": "The Overview (fitted to the battle's extent) at 1000."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-low-1000",
+  "group": "vantage",
+  "t": 600,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "The low Pratzen view (cases.js pratzen-low) at 1000."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-zuran-1000",
+  "group": "vantage",
+  "t": 600,
+  "vantage": "zuran",
+  "note": "The Zuran vantage at 1000."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-field-1400",
+  "group": "vantage",
+  "t": 840,
+  "vantage": "field",
+  "note": "The Field vantage at 1400."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plateau-1400",
+  "group": "vantage",
+  "t": 840,
+  "vantage": "plateau",
+  "note": "The Pratzen vantage at 1400."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plan-1400",
+  "group": "vantage",
+  "t": 840,
+  "vantage": "plan",
+  "note": "The Overview (fitted to the battle's extent) at 1400."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-low-1400",
+  "group": "vantage",
+  "t": 840,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "The low Pratzen view (cases.js pratzen-low) at 1400."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-field-1630",
+  "group": "vantage",
+  "t": 990,
+  "vantage": "field",
+  "note": "The Field vantage at 1630."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plateau-1630",
+  "group": "vantage",
+  "t": 990,
+  "vantage": "plateau",
+  "note": "The Pratzen vantage at 1630."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-plan-1630",
+  "group": "vantage",
+  "t": 990,
+  "vantage": "plan",
+  "note": "The Overview (fitted to the battle's extent) at 1630."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-low-1630",
+  "group": "vantage",
+  "t": 990,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "The low Pratzen view (cases.js pratzen-low) at 1630."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "v-allied-1630",
+  "group": "vantage",
+  "t": 990,
+  "vantage": "allied",
+  "note": "The Allied vantage at 1630."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-low-1x-0900",
+  "group": "factor",
+  "t": 540,
+  "factor": 1,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "pratzen-low at 1x, 09:00."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-low-10x-0900",
+  "group": "factor",
+  "t": 540,
+  "factor": "model",
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "pratzen-low at 10.33x, 09:00."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-low-1x-1500",
+  "group": "factor",
+  "t": 900,
+  "factor": 1,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "pratzen-low at 1x, 15:00."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-low-10x-1500",
+  "group": "factor",
+  "t": 900,
+  "factor": "model",
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "pratzen-low at 10.33x, 15:00."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-field-1x-1000",
+  "group": "factor",
+  "t": 600,
+  "factor": 1,
+  "vantage": "field",
+  "note": "The Field vantage at 1x, 10:00."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-field-10x-1000",
+  "group": "factor",
+  "t": 600,
+  "factor": "model",
+  "vantage": "field",
+  "note": "The Field vantage at 10.33x, 10:00."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-sok-1x-1000",
+  "group": "factor",
+  "t": 600,
+  "factor": 1,
+  "aim": {
+   "map": [
+    212.9,
+    344.3
+   ],
+   "dir": [
+    -0.55,
+    0.42,
+    0.72
+   ],
+   "r": 26
+  },
+  "note": "The castle view at 1x, 10:00."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-sok-10x-1000",
+  "group": "factor",
+  "t": 600,
+  "factor": "model",
+  "aim": {
+   "map": [
+    212.9,
+    344.3
+   ],
+   "dir": [
+    -0.55,
+    0.42,
+    0.72
+   ],
+   "r": 26
+  },
+  "note": "The castle view at 10.33x, 10:00."
+ },
+ {
+  "vp": [
+   1600,
+   900
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "f-santon-10x-1000",
+  "group": "factor",
+  "t": 600,
+  "factor": "model",
+  "aim": {
+   "map": [
+    222,
+    87
+   ],
+   "dir": [
+    -0.62,
+    0.4,
+    0.68
+   ],
+   "r": 34
+  },
+  "note": "The Santon at 10.33x, 10:00."
+ },
+ {
+  "vp": [
+   1280,
+   720
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "l-field-0900",
+  "group": "laptop",
+  "t": 540,
+  "vantage": "field",
+  "note": "The Field vantage at 1280 x 720, 09:00."
+ },
+ {
+  "vp": [
+   1280,
+   720
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "l-low-1500",
+  "group": "laptop",
+  "t": 900,
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  },
+  "note": "pratzen-low at 1280 x 720, 15:00."
+ },
+ {
+  "vp": [
+   1280,
+   720
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "l-plan-1200",
+  "group": "laptop",
+  "t": 720,
+  "vantage": "plan",
+  "note": "The Overview at 1280 x 720, 12:00."
+ },
+ {
+  "vp": [
+   1280,
+   720
+  ],
+  "presentation": "watch",
+  "mode": "terrain",
+  "id": "l-sok-1000",
+  "group": "laptop",
+  "t": 600,
+  "aim": {
+   "map": [
+    212.9,
+    344.3
+   ],
+   "dir": [
+    -0.55,
+    0.42,
+    0.72
+   ],
+   "r": 26
+  },
+  "note": "The castle view at 1280 x 720, 10:00."
+ }
+]
