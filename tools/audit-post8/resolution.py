@@ -79,6 +79,11 @@ OVERRIDE = {
     "CL-MAP-07": {"origin": "mixed: inherited crowding (a fresh layout draws 60.1%, Liechtenstein 0.15%) plus new-regression (8C's stabiliser, -8.4 points)"},
     "CL-MAP-14": {"severity": "S4", "priority": "P4",
                   "observed": "After Play, 0-3 more formations hidden at rest than a fresh view of the same moment would hide (net -1 to +3; the fresh view would hide others instead); persists until the next discontinuity, by decision 240 (a)'s no-reshuffle rule."},
+    # interaction, accessibility
+    "CL-UX-08": {"title": "On the main screen the derived readings' qualifiers, the Zuran and Allied vantages' 'not what he saw' and the relief's and key's disabled reasons are given only in hover tooltips; the derived caveats are also in the sources sheet, the vantages' caveat nowhere else"},
+    "CL-UX-06": {"title": "The map's two-finger pinch has never been driven by browser-level touch input (the self-test's pinch is synthetic); the audit's emulated pinches landed on the open event dossier and the timeline, not the map, so they show no fault",
+                 "severity": "S4", "priority": "P3", "category": "untested"},
+    "CL-UX-18": {"title": "Polish: the phone caption shows two orphan separators when the act and phase shrink to 0 px; at 800 x 450 with the Panels open the vantage row overlaps the dispatch card's top edge by about 10 px; the dispatch sheet's grip looks like a drag handle but only a tap works"},
     # map layer and furniture
     "CL-MAP-02": {"severity": "S3", "priority": "P3", "category": "probable-problem"},
     "CL-MAP-03": {
@@ -111,6 +116,8 @@ OVERRIDE = {
 }
 
 VERDICT = {
+    "CL-UX-06": {"verdict": "WEAKENED", "note": "Verifier: the emulation honours touch-action:none for a CDP pinch and no element of the map layer takes pointer events, so the area's runs show no fault in the map's pinch; what remains is untested: a real device's pinch on the map."},
+    "CL-UX-18": {"verdict": "WEAKENED", "note": "Verifier: the speed-group item (1/2x shown pressed during the opening's 4x) is contradicted by the code and dropped; the other three stand as polish."},
     "CL-UX-03": {"verdict": "CONFIRMED", "note": "Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does."},
     "CL-VIS-05": {"verdict": "WEAKENED", "note": "The glint is real in toward-sun views; the stated cause (STREAM.sky) is refuted by toggling it, and its remedy would not cure it: the cause and remedy rewritten."},
     "CL-HIS-02": {"verdict": "WEAKENED", "note": "Both lenses: the premise holds through CONF_TEXT.A, not through 8K's rule; 44 counts unreviewed carried grades, not wrong ones (21 are 1-5.6 km from the anchor that declared the A, 29 have no act). Applied: probable problem, P3."},
@@ -123,6 +130,8 @@ VERDICT = {
 }
 
 NOTES = {
+    "CL-UX-17": "Verifier: the share is 42-50% over the desktop states and 33% on the phone; nothing under the 10.5 px floor.",
+    "CL-UX-11": "Verifier: accepted compromise is right (decisions 114, 49 and 108 chose the stops, the closed key and the card's words); the finding brings a comprehension argument, not new evidence against their premises: owner question 276.",
     "CL-TEST-02": "Verifier: wider than stated: the hybrid-glide (2,533 ms, 76 frames) and hybrid-orbit with a selection (3,033 ms, 91 frames) baselines are also at their windows, so three of MOTION.VIS's 'longest' baselines cannot fail.",
     "CL-PERF-03": "Verifier: STAGE8_SPEC.md:1259 states the threshold max(1.5 R, 25 ms); STEP6_SPEC.md:179 and the perf-route.js:157 comment call it 'a missed refresh', which is wrong at 144 Hz.",
     "CL-UX-01": "Reproduction lens: confirmed; the 844 x 390 part (no dispatch) is today's layout kept by decision 226 (a), accepted; no decision record mentions browser zoom or reflow, so the 400% and 320 px parts stand.",

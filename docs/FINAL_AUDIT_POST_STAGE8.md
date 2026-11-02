@@ -104,8 +104,8 @@ Stage 8 device report names it (2,810,630 bytes, md5 `f10fe585...`, SHA-256 `bf2
   delivered frames, not missed refreshes: beside 8.6% and 18.15% long, 28-32% of 60 Hz refreshes bring no new frame (`CL-PERF-03`).
 - *Not measured.* No integrated-GPU run exists (`CL-PERF-02`). Nothing measured on the RTX desktop speaks for a weaker machine.
 
-**The register.** 146 findings. By severity: S1 1, S2 15, S3 72, S4 58. By kind: 58 confirmed defects, 34 probable problems, 23 optional improvements, 14 accepted compromises, 9 untested areas, 8 unresolved historical questions. Every finding went to a skeptic told to refute it; each S1 and S2
-to two, one reproducing and one attacking its premise. Verification: confirmed 106, weakened 26, not re-verified 14. Where a skeptic weakened a finding, its correction is applied,
+**The register.** 146 findings. By severity: S1 1, S2 15, S3 71, S4 59. By kind: 58 confirmed defects, 34 probable problems, 23 optional improvements, 14 accepted compromises, 9 untested areas, 8 unresolved historical questions. Every finding went to a skeptic told to refute it; each S1 and S2
+to two, one reproducing and one attacking its premise. Verification: confirmed 114, weakened 29, not re-verified 3. Where a skeptic weakened a finding, its correction is applied,
 and the entry shows both the area's claim and the correction. Weakened findings were mostly the severities of map furniture and of the test
 gate, and origins.
 
@@ -155,7 +155,7 @@ The fields follow the brief: subsystem, user impact, status and origin, expected
 cause (hypothesis, and whether verified), remedy, effort, dependencies, risk of the remedy, validation, prior records and verification. A
 field the area did not fill is omitted, never invented.
 
-Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed defect 58, probable problem 34, optional improvement 23, accepted compromise 14, untested area 9, unresolved historical question 8; by adversarial verification CONFIRMED 106, WEAKENED 26, not re-verified 14.
+Counts: 146 findings; by severity S1 1, S2 15, S3 71, S4 59; by kind confirmed defect 58, probable problem 34, optional improvement 23, accepted compromise 14, untested area 9, unresolved historical question 8; by adversarial verification CONFIRMED 114, WEAKENED 29, not re-verified 3.
 
 ### B.1 Index (most severe first)
 
@@ -189,8 +189,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | [CL-SIM-04](#cl-sim-04) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | The overlays' fade draws the outgoing phase's arrows when it should not: with the Movement layer off every phase change flashes them at about 0.87 opacity, and a phase change that interrupts a fade pops them back to 0.9 (stepping through phases quickly flashes each skipped phase's arrows) |
 | [CL-TEST-02](#cl-test-02) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | No check can see long gaps: the motion benchmark's longest-hidden measure saturates at its own 121-frame window, and the one check that plays the whole day counts drops, not how long a formation stays hidden |
 | [CL-UX-04](#cl-ux-04) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | The timeline's tooltip covers the control row and swallows a press on Play reached from the timeline |
-| [CL-UX-05](#cl-ux-05) | S3 | P2 | confirmed defect | confirmed |  | Internal project references are shown to visitors: 'owner decision 106', register ids '(S5.7)', 'roadmap step 6B (docs/stage6-evidence/readings-composition.md)', 'the register (read partly on the text layer)', and in the full dossier's 'Dated by' rows 'Until roadmap step 4b ... (question 177)', '(moveMin)' |
-| [CL-UX-06](#cl-ux-06) | S3 | P2 | untested area | unverified |  | Two-finger gestures on the phone: in Chromium's touch emulation a pinch zoomed the whole page (visual viewport x3.3 to x5) and never the map; no check has ever driven the map's pinch with browser-level touch input |
+| [CL-UX-05](#cl-ux-05) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | Internal project references are shown to visitors: 'owner decision 106', register ids '(S5.7)', 'roadmap step 6B (docs/stage6-evidence/readings-composition.md)', 'the register (read partly on the text layer)', and in the full dossier's 'Dated by' rows 'Until roadmap step 4b ... (question 177)', '(moveMin)' |
 | [CL-UX-07](#cl-ux-07) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | On a phone a 'Whose eyes?' reading leaves no sign on screen once the Panels close |
 | [CL-GEO-04](#cl-geo-04) | S3 | P3 | probable problem | inferred | CONFIRMED | Between Girzikowitz and Sokolnitz the drawn Goldbach departs up to about 300 m from today's channel and puts Girzikowitz and Kobelnitz on the opposite bank |
 | [CL-GEO-05](#cl-geo-05) | S3 | P3 | confirmed defect | confirmed | CONFIRMED | Sokolnitz, Telnitz and Kobelnitz are drawn standing in marsh: marsh ellipses cover their centres and the cover classifier ranks marsh above village |
@@ -238,10 +237,10 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | [CL-TEST-12](#cl-test-12) | S3 | P3 | probable problem | confirmed | WEAKENED | The statement inventory is a whitelist with no completeness check: timing bases and plan labels a visitor reads are outside it and outside its own exclusion note |
 | [CL-TEST-13](#cl-test-13) | S3 | P3 | probable problem | confirmed | CONFIRMED | check:chronology judges clock-shaped hours only; 45 inventoried statements give hours in words it does not read |
 | [CL-TEST-14](#cl-test-14) | S3 | P3 | accepted compromise | confirmed | CONFIRMED | The motion benchmark's ceilings and visibility baselines equal the build's own counts: they detect change, not quality; Play now accepts a formation hidden for 4,033 ms |
-| [CL-UX-08](#cl-ux-08) | S3 | P3 | confirmed defect | confirmed |  | Caveats a reader needs are given only in hover tooltips (title attributes): the derived readings' warnings, the vantages' 'not what he saw', the cut caption's full text, why relief is disabled |
-| [CL-UX-09](#cl-ux-09) | S3 | P3 | probable problem | confirmed |  | Forced colours (high contrast): the app has no forced-colors handling; the Layers panel's on/off rows and ground buttons, the speed, Follow and the current phase lose their state, 22 of 25 event markers vanish, and the key's swatches and the side marks before names become identical white squares |
-| [CL-UX-10](#cl-ux-10) | S3 | P3 | confirmed defect | confirmed |  | Panels opened from the keyboard do not take the focus or announce themselves: Layers (role=dialog) is reached only on the sixth Tab after its button, and a dossier opened by Enter on a map item leaves focus on the item, about 30 Tabs from the dossier (or Shift+Tab back past the earlier map items and the map group) |
-| [CL-UX-11](#cl-ux-11) | S3 | P3 | accepted compromise | confirmed |  | First use: neither the card nor the opening says the map is a reconstruction or what the A/B/C letters beside names mean; the key starts closed |
+| [CL-UX-08](#cl-ux-08) | S3 | P3 | confirmed defect | confirmed | WEAKENED | On the main screen the derived readings' qualifiers, the Zuran and Allied vantages' 'not what he saw' and the relief's and key's disabled reasons are given only in hover tooltips; the derived caveats are also in the sources sheet, the vantages' caveat nowhere else |
+| [CL-UX-09](#cl-ux-09) | S3 | P3 | probable problem | confirmed | CONFIRMED | Forced colours (high contrast): the app has no forced-colors handling; the Layers panel's on/off rows and ground buttons, the speed, Follow and the current phase lose their state, 22 of 25 event markers vanish, and the key's swatches and the side marks before names become identical white squares |
+| [CL-UX-10](#cl-ux-10) | S3 | P3 | confirmed defect | confirmed | CONFIRMED | Panels opened from the keyboard do not take the focus or announce themselves: Layers (role=dialog) is reached only on the sixth Tab after its button, and a dossier opened by Enter on a map item leaves focus on the item, about 30 Tabs from the dossier (or Shift+Tab back past the earlier map items and the map group) |
+| [CL-UX-11](#cl-ux-11) | S3 | P3 | accepted compromise | confirmed | CONFIRMED | First use: neither the card nor the opening says the map is a reconstruction or what the A/B/C letters beside names mean; the key starts closed |
 | [CL-VIS-02](#cl-vis-02) | S3 | P3 | confirmed defect | confirmed | WEAKENED | Trees and bushes stand on the frozen Satschan mere |
 | [CL-VIS-03](#cl-vis-03) | S3 | P3 | probable problem | confirmed | CONFIRMED | Blocks face along slow drifts and keep stale facings, so some face away from an adjacent enemy |
 | [CL-VIS-04](#cl-vis-04) | S3 | P3 | confirmed defect | confirmed | CONFIRMED | Formation blocks interpenetrate buildings and each other |
@@ -257,7 +256,8 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | [CL-SIM-06](#cl-sim-06) | S4 | P3 | confirmed defect | confirmed | CONFIRMED | The reading ('Whose eyes?') is cached for the clock's minute at the first instant asked, so it depends on the path: 29 and 38 formation-minutes differ by route |
 | [CL-SRC-07](#cl-src-07) | S4 | P3 | confirmed defect | confirmed (register readings; Duffy on the text layer) | CONFIRMED | Army-total notes omit figures the project read and credit Duffy with a total he does not give |
 | [CL-SRC-09](#cl-src-09) | S4 | P3 | unresolved historical question | open | CONFIRMED | A January 1806 letter by Buxhowden naming Langeron as having sent Kamensky back is missing from the Kamensky dispute and the registers |
-| [CL-UX-12](#cl-ux-12) | S4 | P3 | confirmed defect | confirmed |  | The Now tab's hint 'The phase text is hidden: press D to show it. During the guided tour...' names a key that does nothing with the single-key shortcuts off, offers no pointer or touch way, and says 'guided tour' during the opening |
+| [CL-UX-06](#cl-ux-06) | S4 | P3 | untested area | unverified | WEAKENED | The map's two-finger pinch has never been driven by browser-level touch input (the self-test's pinch is synthetic); the audit's emulated pinches landed on the open event dossier and the timeline, not the map, so they show no fault |
+| [CL-UX-12](#cl-ux-12) | S4 | P3 | confirmed defect | confirmed | CONFIRMED | The Now tab's hint 'The phase text is hidden: press D to show it. During the guided tour...' names a key that does nothing with the single-key shortcuts off, offers no pointer or touch way, and says 'guided tour' during the opening |
 | [CL-GEO-08](#cl-geo-08) | S4 | P4 | confirmed defect | confirmed | CONFIRMED | The Pratzen church is drawn 161 m from its read site while the sources sheet says it is drawn at its own site |
 | [CL-GEO-09](#cl-geo-09) | S4 | P4 | confirmed defect | confirmed | CONFIRMED | The sources sheet reads 'Terrain relief is exaggerated about 1 times' at 1x |
 | [CL-GEO-10](#cl-geo-10) | S4 | P4 | unresolved historical question | confirmed | CONFIRMED | Two carried geographic questions are not visible to a visitor: the Goldbach's channel north of the castle and the highway's course in 1805 |
@@ -296,10 +296,10 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | [CL-TEST-20](#cl-test-20) | S4 | P4 | probable problem | confirmed | CONFIRMED | Wall-clock limits make the suites load-sensitive: runtime-test.js's 30 s font watchdog fired under load in this audit, and run-all.sh kills a suite at 600 s |
 | [CL-UX-13](#cl-ux-13) | S4 | P4 | probable problem | inferred | WEAKENED | The time rail seeks on any mouse button and has no cancel path: a right or middle press on the rail moves the clock and stops Play; where a context menu swallows the release (platform-dependent, unverified), hovering the rail then scrubs until the next click |
 | [CL-UX-14](#cl-ux-14) | S4 | P4 | confirmed defect | confirmed | CONFIRMED | The event jumps' 1.5-minute margin skips a start the clock stands just before (20 of 21 starts from one minute before) |
-| [CL-UX-15](#cl-ux-15) | S4 | P4 | confirmed defect | confirmed |  | Accessible names and structure: the tablist is named 'The rail', the key's toggle is read 'Key plus/minus', Play becomes 'Pause' while also pressed, the full dossier's headings carry their tag word ('How many record', 'Where reconstruction'), the narrative sits inside the navigation landmark and the tools outside any landmark, and below 1080 px the page has no h1 |
-| [CL-UX-16](#cl-ux-16) | S4 | P4 | optional improvement | confirmed |  | Visitor-facing jargon and overloaded letters: 'anchors', 'Plotted leg', 'interpolated', 'G.Q.G.', and three different A/B/C scales (position, timing, appearance) shown side by side ('Position B · Timing B') |
-| [CL-UX-17](#cl-ux-17) | S4 | P4 | optional improvement | confirmed |  | Small type: 42-47% of visible texts on the main screens are 10.5-11.5 px (controls, tabs, timeline labels, tags), all at or above the project's 10.5 px floor |
-| [CL-UX-18](#cl-ux-18) | S4 | P4 | optional improvement | confirmed |  | Polish seen on the way: the speed group shows ½× pressed while the opening plays at 4×; the phone caption starts with two orphan separators ('· ·') because the act and phase names shrink to 0 px; the vantage row overlaps the dispatch card's top at 800x450; the grip looks like a drag handle but a swipe does nothing |
+| [CL-UX-15](#cl-ux-15) | S4 | P4 | confirmed defect | confirmed | CONFIRMED | Accessible names and structure: the tablist is named 'The rail', the key's toggle is read 'Key plus/minus', Play becomes 'Pause' while also pressed, the full dossier's headings carry their tag word ('How many record', 'Where reconstruction'), the narrative sits inside the navigation landmark and the tools outside any landmark, and below 1080 px the page has no h1 |
+| [CL-UX-16](#cl-ux-16) | S4 | P4 | optional improvement | confirmed | CONFIRMED | Visitor-facing jargon and overloaded letters: 'anchors', 'Plotted leg', 'interpolated', 'G.Q.G.', and three different A/B/C scales (position, timing, appearance) shown side by side ('Position B · Timing B') |
+| [CL-UX-17](#cl-ux-17) | S4 | P4 | optional improvement | confirmed | CONFIRMED | Small type: 42-47% of visible texts on the main screens are 10.5-11.5 px (controls, tabs, timeline labels, tags), all at or above the project's 10.5 px floor |
+| [CL-UX-18](#cl-ux-18) | S4 | P4 | optional improvement | confirmed | WEAKENED | Polish: the phone caption shows two orphan separators when the act and phase shrink to 0 px; at 800 x 450 with the Panels open the vantage row overlaps the dispatch card's top edge by about 10 px; the dispatch sheet's grip looks like a drag handle but only a tap works |
 | [CL-UX-19](#cl-ux-19) | S4 | P4 | probable problem | confirmed | CONFIRMED | A modal sheet opened mid-drag does not end the drag: the map pans under the '?' sheet |
 | [CL-UX-20](#cl-ux-20) | S4 | P4 | optional improvement | confirmed | CONFIRMED | Focus falls to the page when a resize hides the focused control |
 | [CL-VIS-05](#cl-vis-05) | S4 | P4 | probable problem | confirmed | WEAKENED | Streams saturate to white in grazing and low-sun views |
@@ -1333,7 +1333,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Cause verified | yes: hit map and the two drags |
 | Remedy | Let a pointer that starts on a marker and moves more than a few px hand the gesture to the rail (or let the rail own pointerdown and resolve a tap near a marker to that marker); alternatively move the markers to a strip above the rail on phones. Add a phone touch-drag check to the harness's phone block. |
 | Effort | 0.5-2 days |
-| Adversarial verification | CONFIRMED: Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does. [lenses: DUPLICATE (premise); CONFIRMED (repro); CONFIRMED (batch)] |
+| Adversarial verification | CONFIRMED: Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does. [lenses: DUPLICATE (premise); CONFIRMED (repro); CONFIRMED (batch); CONFIRMED (batch)] |
 | Auditor's note | Merged: one hit-area rule, measured on a phone by two areas and at the playhead on a desktop by a third. |
 | Area finding | visual-maps #1; also reported as a11y #4, interaction #3 |
 
@@ -1374,12 +1374,12 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Effort | 2-4 h |
 | Risk of the remedy | low; guarded data: check:data and check:chronology must be moved on deliberately |
 | Validation | leaks.js finds no internal reference in the sheet or the full dossiers |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | a11y #3 |
 
 <a id="cl-ux-06"></a>
 
-**CL-UX-06 · S3 · P2 · untested area.** Two-finger gestures on the phone: in Chromium's touch emulation a pinch zoomed the whole page (visual viewport x3.3 to x5) and never the map; no check has ever driven the map's pinch with browser-level touch input
+**CL-UX-06 · S4 · P3 · untested area.** The map's two-finger pinch has never been driven by browser-level touch input (the self-test's pinch is synthetic); the audit's emulated pinches landed on the open event dossier and the timeline, not the map, so they show no fault
 
 | field | |
 |---|---|
@@ -1394,7 +1394,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Remedy | Test pinch-to-zoom on a real iPhone and Android phone (the owner's devices); if confirmed, check that the canvas receives both pointers (no element between), and that the page's own zoom stays possible from the panels. |
 | Effort | 1 h on devices; fix unknown |
 | Risk of the remedy | unknown until reproduced on a device |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: Verifier: the emulation honours touch-action:none for a CDP pinch and no element of the map layer takes pointer events, so the area's runs show no fault in the map's pinch; what remains is untested: a real device's pinch on the map. [lenses: WEAKENED (batch)] |
 | Area finding | a11y #5 |
 
 <a id="cl-ux-07"></a>
@@ -1418,7 +1418,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 
 <a id="cl-ux-08"></a>
 
-**CL-UX-08 · S3 · P3 · confirmed defect.** Caveats a reader needs are given only in hover tooltips (title attributes): the derived readings' warnings, the vantages' 'not what he saw', the cut caption's full text, why relief is disabled
+**CL-UX-08 · S3 · P3 · confirmed defect.** On the main screen the derived readings' qualifiers, the Zuran and Allied vantages' 'not what he saw' and the relief's and key's disabled reasons are given only in hover tooltips; the derived caveats are also in the sources sheet, the vantages' caveat nowhere else
 
 | field | |
 |---|---|
@@ -1433,7 +1433,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Effort | 2-6 h |
 | Risk of the remedy | low (presentation; the notes' words exist) |
 | Validation | keyboard-only and touch walk-through finds each caveat without a pointer |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: [lenses: WEAKENED (batch)] |
 | Area finding | a11y #2 |
 
 <a id="cl-ux-09"></a>
@@ -1453,7 +1453,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Effort | 2-4 h |
 | Risk of the remedy | low |
 | Validation | fc.js again; on Windows with a contrast theme |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | a11y #6 |
 
 <a id="cl-ux-10"></a>
@@ -1473,7 +1473,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Remedy | On opening by keyboard, focus the panel's first control (Layers) and the dossier's heading (a map item's Enter), giving focus back on close as setPop and the dossier already do from inside; or move #layerpop to follow #layersbtn in the DOM. |
 | Effort | 1-3 h |
 | Risk of the remedy | low (the self-test's SW-5 focus rules must still hold) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | a11y #7 |
 
 <a id="cl-ux-11"></a>
@@ -1492,7 +1492,8 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Remedy | Owner decision needed (decisions 49, 108, 111-115 set the card, the key and the opening): add one sentence to the card or the opening's last step, or open the key's grade rows on the first screen. |
 | Effort | 1-2 h after a decision |
 | Risk of the remedy | low |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
+| Auditor's note | Verifier: accepted compromise is right (decisions 114, 49 and 108 chose the stops, the closed key and the card's words); the finding brings a comprehension argument, not new evidence against their premises: owner question 276. |
 | Area finding | a11y #8 |
 
 <a id="cl-ux-12"></a>
@@ -1511,7 +1512,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Remedy | Replace the sentence with a button that calls setDispatchVisible(true), or word it from SHORTCUTS.on; distinguish the opening from the tour. |
 | Effort | 1 h |
 | Risk of the remedy | low |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | a11y #9 |
 
 <a id="cl-ux-13"></a>
@@ -1576,7 +1577,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Remedy | aria-label 'Panels'; the +/− in an aria-hidden span; drop aria-pressed from Play or keep its label constant; a role=region with a name for the rail's tab panel (or move main); a visually hidden h1 outside the rail. |
 | Effort | 1-3 h |
 | Risk of the remedy | low (the self-test's A-6 check may need its landmark rule updated) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | a11y #10 |
 
 <a id="cl-ux-16"></a>
@@ -1595,7 +1596,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Remedy | Reword in the next data/presentation pass (CONF_INTERP is guarded: a data task). |
 | Effort | 1-2 h |
 | Risk of the remedy | low |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | a11y #11 |
 
 <a id="cl-ux-17"></a>
@@ -1614,12 +1615,13 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Remedy | Consider t-small 12 px for controls when the layout is next revisited. |
 | Effort | hours, with the visual limits re-measured |
 | Risk of the remedy | medium (the harness's drop limits and unobstructed baselines move) |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
+| Auditor's note | Verifier: the share is 42-50% over the desktop states and 33% on the phone; nothing under the 10.5 px floor. |
 | Area finding | a11y #12 |
 
 <a id="cl-ux-18"></a>
 
-**CL-UX-18 · S4 · P4 · optional improvement.** Polish seen on the way: the speed group shows ½× pressed while the opening plays at 4×; the phone caption starts with two orphan separators ('· ·') because the act and phase names shrink to 0 px; the vantage row overlaps the dispatch card's top at 800x450; the grip looks like a drag handle but a swipe does nothing
+**CL-UX-18 · S4 · P4 · optional improvement.** Polish: the phone caption shows two orphan separators when the act and phase shrink to 0 px; at 800 x 450 with the Panels open the vantage row overlaps the dispatch card's top edge by about 10 px; the dispatch sheet's grip looks like a drag handle but only a tap works
 
 | field | |
 |---|---|
@@ -1633,7 +1635,7 @@ Counts: 146 findings; by severity S1 1, S2 15, S3 72, S4 58; by kind confirmed d
 | Remedy | Small CSS/JS fixes. |
 | Effort | 1-3 h |
 | Risk of the remedy | low |
-| Adversarial verification | not re-verified (see B intro) |
+| Adversarial verification | WEAKENED: Verifier: the speed-group item (1/2x shown pressed during the opening's 4x) is contradicted by the code and dropped; the other three stand as polish. [lenses: WEAKENED (batch)] |
 | Auditor's note | Overlaps CL-MAP-06 on the phone caption's orphan separators. |
 | Area finding | a11y #13 |
 
@@ -3893,7 +3895,7 @@ when it was 12.8% of the file. It is now 21.7% (611,017 bytes, 277,502 more in S
     hidden for long stretches of Play.
 - **The build and the checks.** One build everywhere (md5 `f10fe585...`). Every required check passes on it: here, and `check:visual` on
   CI's runner in this audit.
-- **The register.** 146 findings (S1 1, S2 15, S3 72, S4 58), each verified adversarially (confirmed 106, weakened 26, not re-verified 14).
+- **The register.** 146 findings (S1 1, S2 15, S3 71, S4 59), each verified adversarially (confirmed 114, weakened 29, not re-verified 3).
 - **Most findings are older than Stage 8:** 108 inherited, 16 new, 3 mixed.
 - **Before calling it finished:** WP-00, WP-01, WP-02, WP-04's disclosure, WP-05 and WP-06, about 6-11 working days. They contain every P1
   (`CL-ROB-01`, `CL-GEO-01`, `CL-SRC-01`).

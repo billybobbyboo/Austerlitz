@@ -896,7 +896,7 @@
    "note": "Merged: one hit-area rule, measured on a phone by two areas and at the playhead on a desktop by a third.",
    "verify": {
     "verdict": "CONFIRMED",
-    "note": "Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does. [lenses: DUPLICATE (premise); CONFIRMED (repro); CONFIRMED (batch)]"
+    "note": "Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does. [lenses: DUPLICATE (premise); CONFIRMED (repro); CONFIRMED (batch); CONFIRMED (batch)]"
    },
    "override": {
     "title": "Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start",
@@ -931,6 +931,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-09"
    }
@@ -945,7 +949,15 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": "Verifier: the emulation honours touch-action:none for a CDP pinch and no element of the map layer takes pointer events, so the area's runs show no fault in the map's pinch; what remains is untested: a real device's pinch on the map. [lenses: WEAKENED (batch)]"
+   },
    "override": {
+    "title": "The map's two-finger pinch has never been driven by browser-level touch input (the self-test's pinch is synthetic); the audit's emulated pinches landed on the open event dossier and the timeline, not the map, so they show no fault",
+    "severity": "S4",
+    "priority": "P3",
+    "category": "untested",
     "work_package": "WP-09"
    }
   },
@@ -977,7 +989,12 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (batch)]"
+   },
    "override": {
+    "title": "On the main screen the derived readings' qualifiers, the Zuran and Allied vantages' 'not what he saw' and the relief's and key's disabled reasons are given only in hover tooltips; the derived caveats are also in the sources sheet, the vantages' caveat nowhere else",
     "work_package": "WP-09"
    }
   },
@@ -991,6 +1008,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-09"
    }
@@ -1005,6 +1026,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-09"
    }
@@ -1018,7 +1043,11 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: accepted compromise is right (decisions 114, 49 and 108 chose the stops, the closed key and the card's words); the finding brings a comprehension argument, not new evidence against their premises: owner question 276.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-09"
    }
@@ -1033,6 +1062,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-09"
    }
@@ -1086,6 +1119,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-09"
    }
@@ -1100,6 +1137,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-09"
    }
@@ -1113,7 +1154,11 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: the share is 42-50% over the desktop states and 33% on the phone; nothing under the 10.5 px floor.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-09"
    }
@@ -1128,7 +1173,12 @@
    ],
    "also": [],
    "note": "Overlaps CL-MAP-06 on the phone caption's orphan separators.",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": "Verifier: the speed-group item (1/2x shown pressed during the opening's 4x) is contradicted by the code and dropped; the other three stand as polish. [lenses: WEAKENED (batch)]"
+   },
    "override": {
+    "title": "Polish: the phone caption shows two orphan separators when the act and phase shrink to 0 px; at 800 x 450 with the Panels open the vantage row overlaps the dispatch card's top edge by about 10 px; the dispatch sheet's grip looks like a drag handle but only a tap works",
     "work_package": "WP-09"
    }
   },
