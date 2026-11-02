@@ -1,0 +1,139 @@
+loaded the bundle in 401 s; init errors 0 ; warnings 0
+dwell starts (21): 04:00 04:15 07:00 08:00 08:25 08:45 09:00 09:15 09:30 09:45 10:30 11:00 11:15 11:40 12:00 12:30 13:00 14:00 14:30 15:00 16:30; HOLD 1.5 s, EASE 0.5 s; T_MIN 240 T_MAX 1080
+
+=== B1 Play over the whole day, the dwell on
+  0.5x: 12481 frames, 208.02 s real (dwellDayLength 208.00 s, diff 0.017 s); clock ends 1080 playing false; backwards 0; NaN 0; phase changes 9
+      holds 20 of 20 starts; missed none; repeated none; hold lengths 1.500-1.500 s; off-length or moving 0; largest rate change between frames 0.033 x the speed
+  1x: 7440 frames, 124.00 s real (dwellDayLength 124.00 s, diff 0.000 s); clock ends 1080 playing false; backwards 0; NaN 0; phase changes 9
+      holds 20 of 20 starts; missed none; repeated none; hold lengths 1.500-1.500 s; off-length or moving 0; largest rate change between frames 0.033 x the speed
+  2x: 4921 frames, 82.02 s real (dwellDayLength 82.00 s, diff 0.017 s); clock ends 1080 playing false; backwards 0; NaN 0; phase changes 9
+      holds 20 of 20 starts; missed none; repeated none; hold lengths 1.500-1.500 s; off-length or moving 0; largest rate change between frames 0.033 x the speed
+  4x: 3600 frames, 60.00 s real (dwellDayLength 60.00 s, diff 0.000 s); clock ends 1080 playing false; backwards 0; NaN 0; phase changes 9
+      holds 20 of 20 starts; missed none; repeated none; hold lengths 1.500-1.500 s; off-length or moving 0; largest rate change between frames 0.044 x the speed
+(35.9 s)
+
+=== B2 a change of speed inside a dwell
+  in 4x->0.5x at clock 626.7889 (tau 0.217 of 0.500 s): largest clock step after 0.0832 min (a frame at 0.5x is 0.0833, at 4x 0.6667); hold after the change 1.500 s; rate after the dwell 5.000 min/s (the new speed 5)
+  in 0.5x->4x at clock 629.5986 (tau 0.217 of 0.500 s): largest clock step after 0.5986 min (a frame at 4x is 0.6667, at 0.5x 0.0833); hold after the change 1.500 s; rate after the dwell 40.000 min/s (the new speed 40)
+  in 4x->1x at clock 626.7889 (tau 0.217 of 0.500 s): largest clock step after 0.1660 min (a frame at 1x is 0.1667, at 4x 0.6667); hold after the change 1.500 s; rate after the dwell 10.000 min/s (the new speed 10)
+  in 1x->4x at clock 629.1972 (tau 0.217 of 0.500 s): largest clock step after 0.6417 min (a frame at 4x is 0.6667, at 1x 0.1667); hold after the change 1.500 s; rate after the dwell 40.000 min/s (the new speed 40)
+  hold 4x->0.5x at clock 630.0000 (tau 0.600 of 1.500 s): largest clock step after 0.0832 min (a frame at 0.5x is 0.0833, at 4x 0.6667); hold after the change -; rate after the dwell 5.000 min/s (the new speed 5)
+  hold 0.5x->4x at clock 630.0000 (tau 0.600 of 1.500 s): largest clock step after 0.6167 min (a frame at 4x is 0.6667, at 0.5x 0.0833); hold after the change -; rate after the dwell 40.000 min/s (the new speed 40)
+  hold 4x->1x at clock 630.0000 (tau 0.600 of 1.500 s): largest clock step after 0.1660 min (a frame at 1x is 0.1667, at 4x 0.6667); hold after the change -; rate after the dwell 10.000 min/s (the new speed 10)
+  hold 1x->4x at clock 630.0000 (tau 0.600 of 1.500 s): largest clock step after 0.6556 min (a frame at 4x is 0.6667, at 1x 0.1667); hold after the change -; rate after the dwell 40.000 min/s (the new speed 40)
+  out 4x->0.5x at clock 631.8778 (tau 0.217 of 0.500 s): largest clock step after 0.0832 min (a frame at 0.5x is 0.0833, at 4x 0.6667); hold after the change -; rate after the dwell 5.000 min/s (the new speed 5)
+  out 0.5x->4x at clock 630.2347 (tau 0.217 of 0.500 s): largest clock step after 0.6653 min (a frame at 4x is 0.6667, at 0.5x 0.0833); hold after the change -; rate after the dwell 40.000 min/s (the new speed 40)
+  out 4x->1x at clock 631.8778 (tau 0.217 of 0.500 s): largest clock step after 0.1660 min (a frame at 1x is 0.1667, at 4x 0.6667); hold after the change -; rate after the dwell 10.000 min/s (the new speed 10)
+  out 1x->4x at clock 630.4694 (tau 0.217 of 0.500 s): largest clock step after 0.6639 min (a frame at 4x is 0.6667, at 1x 0.1667); hold after the change -; rate after the dwell 40.000 min/s (the new speed 40)
+(4.1 s)
+
+=== B3 pause and resume inside a dwell
+  paused in the in at 629.7278 (E 630): paused true; first rate after resume 4.617 min/s; hold at E after resume 1.500 s
+  paused in the hold at 630.0000 (E 630): paused true; first rate after resume 5.000 min/s; hold at E after resume 0.000 s
+  paused in the out at 630.3556 (E 630): paused true; first rate after resume 5.000 min/s; hold at E after resume 0.000 s
+(0.8 s)
+
+=== B4 a theme chosen while the clock plays
+  playing true at 300.83; theme "plan" chosen: clock 240.00 (its moment 240), playing after true; two seconds later the clock is 250.00, chapter still plan, freeCam false, Follow target none
+  for comparison: a tour stop (applyTour) and a phase button call stopPlay() first (app.js applyTour, buildTimeline)
+(0.3 s)
+
+=== B5 the overlays' fade at 4x across phase boundaries (dwell off and on)
+  dwell off: TRANS_MS 2600 ms; 9 phase changes, 6 with the incoming fade cut short, 5 with the outgoing group popping up by more than 0.2
+    04:00->07:00 4.50 s; outgoing fade-in had reached 1.00; its 63 materials' largest opacity 0.95 -> 0.90
+    07:00->08:00 1.50 s; outgoing fade-in had reached 0.36; its 36 materials' largest opacity 0.33 -> 0.90  POP
+    08:00->08:45 1.13 s; outgoing fade-in had reached 0.15; its 41 materials' largest opacity 0.13 -> 0.90  POP
+    08:45->09:30 1.12 s; outgoing fade-in had reached 0.14; its 20 materials' largest opacity 0.12 -> 0.90  POP
+    09:30->10:30 1.50 s; outgoing fade-in had reached 0.36; its 48 materials' largest opacity 0.33 -> 0.90  POP
+    10:30->11:15 1.13 s; outgoing fade-in had reached 0.15; its 12 materials' largest opacity 0.13 -> 0.90  POP
+    11:15->12:45 2.25 s; outgoing fade-in had reached 0.80; its 32 materials' largest opacity 0.75 -> 0.90
+    12:45->14:30 2.63 s; outgoing fade-in had reached 1.00; its 40 materials' largest opacity 0.95 -> 0.90
+    14:30->17:00 3.75 s; outgoing fade-in had reached 1.00; its 29 materials' largest opacity 0.95 -> 0.90
+  dwell on: TRANS_MS 2600 ms; 9 phase changes, 0 with the incoming fade cut short, 0 with the outgoing group popping up by more than 0.2
+    04:00->07:00 6.63 s; outgoing fade-in had reached 1.00; its 63 materials' largest opacity 0.95 -> 0.90
+    07:00->08:00 3.50 s; outgoing fade-in had reached 1.00; its 36 materials' largest opacity 0.95 -> 0.90
+    08:00->08:45 5.07 s; outgoing fade-in had reached 1.00; its 41 materials' largest opacity 0.95 -> 0.90
+    08:45->09:30 6.75 s; outgoing fade-in had reached 1.00; its 20 materials' largest opacity 0.95 -> 0.90
+    09:30->10:30 5.30 s; outgoing fade-in had reached 1.00; its 48 materials' largest opacity 0.95 -> 0.90
+    10:30->11:15 4.95 s; outgoing fade-in had reached 1.00; its 12 materials' largest opacity 0.95 -> 0.90
+    11:15->12:45 9.93 s; outgoing fade-in had reached 1.00; its 32 materials' largest opacity 0.95 -> 0.90
+    12:45->14:30 6.87 s; outgoing fade-in had reached 1.00; its 40 materials' largest opacity 0.95 -> 0.90
+    14:30->17:00 9.52 s; outgoing fade-in had reached 1.00; its 29 materials' largest opacity 0.95 -> 0.90
+(6.5 s)
+
+=== B6 the reading within a clock minute
+  fr: 838 minutes, 29 formation-minutes whose reading at m+0.9 depends on the path
+    kienmayer at 05:08+0.9: unknown through 05:08+0.1, uncertain sought directly
+    col4 at 05:43+0.9: unknown through 05:43+0.1, seen sought directly
+    kienmayer at 07:31+0.9: unknown through 07:31+0.1, uncertain sought directly
+    dok at 07:31+0.9: unknown through 07:31+0.1, uncertain sought directly
+    lich at 07:55+0.9: seen through 07:55+0.1, unknown sought directly
+    lich at 08:07+0.9: unknown through 08:07+0.1, seen sought directly
+    lich at 08:08+0.9: seen through 08:08+0.1, unknown sought directly
+    kienmayer at 08:41+0.9: uncertain through 08:41+0.1, unknown sought directly
+    milo at 08:46+0.9: unknown through 08:46+0.1, seen sought directly
+    lich at 08:49+0.9: unknown through 08:49+0.1, seen sought directly
+    dok at 09:47+0.9: seen through 09:47+0.1, unknown sought directly
+    milo at 09:49+0.9: seen through 09:49+0.1, unknown sought directly
+  al: 838 minutes, 38 formation-minutes whose reading at m+0.9 depends on the path
+    c_v at 05:26+0.9: seen through 05:26+0.1, unknown sought directly
+    santon at 06:07+0.9: seen through 06:07+0.1, unknown sought directly
+    gqg at 07:20+0.9: unknown through 07:20+0.1, seen sought directly
+    c_i at 07:22+0.9: unknown through 07:22+0.1, seen sought directly
+    dhautpoul at 07:33+0.9: unknown through 07:33+0.1, uncertain sought directly
+    santon at 07:34+0.9: unknown through 07:34+0.1, seen sought directly
+    c_v at 07:46+0.9: unknown through 07:46+0.1, seen sought directly
+    suchet at 07:49+0.9: unknown through 07:49+0.1, seen sought directly
+    dhautpoul at 07:50+0.9: uncertain through 07:50+0.1, unknown sought directly
+    walther at 08:13+0.9: seen through 08:13+0.1, unknown sought directly
+    c_gd at 08:16+0.9: seen through 08:16+0.1, unknown sought directly
+    c_v at 08:17+0.9: seen through 08:17+0.1, unknown sought directly
+(129.2 s)
+
+=== B7 Play to the end, then Play again
+  ran to 1080 (T_MAX 1080) in 5 frames, playing false, phase 9; Play again: clock 240, phase 0, playing true
+  a frame later the clock is 240.667
+  from T_MAX-0.49: Play puts the clock at 240
+  from T_MAX-0.51: Play runs 1 frames to 1080, playing false
+(0.2 s)
+
+=== B8 the phone speed button
+  from 0.5: 0.5 -> 1 -> 2 -> 4 -> 0.5 -> 1
+  from a speed not among the buttons (3): 0.5
+(0.0 s)
+
+=== B9 the first frame after the page went idle
+  0.5x: the first frame after 30 s idle advances 0.600 clock min (dt held at 120 ms; a 60 Hz frame is 0.083); the second 0.083
+  4x: the first frame after 30 s idle advances 3.648 clock min (dt held at 120 ms; a 60 Hz frame is 0.667); the second 0.324
+(0.8 s)
+
+=== B10 overlays after many phase changes
+  overlay groups: 1 before, at most 2 during 300 random seeks, 1 after the tweens ended
+(8.6 s)
+
+=== B11 the clock at its edges
+  setClock(NaN) -> clock NaN, phase 0, posNow(sthilaire) [null,null]
+  setClock(Infinity) -> clock 1080, phase 9, posNow(sthilaire) [255,390]
+  setClock(-Infinity) -> clock 240, phase 0, posNow(sthilaire) [201,221]
+  setClock(140) -> clock 240, phase 0, posNow(sthilaire) [201,221]
+  setClock(1180) -> clock 1080, phase 9, posNow(sthilaire) [255,390]
+  toClock with a zero-width rail: 240, 660, 1080 (any x>left+1 gives T_MAX)
+(0.1 s)
+
+=== B12 seeks counted
+  a seek +1; Play's own advance +0; an event jump +1
+(0.0 s)
+
+=== B13 the opening's played stretches
+  step 1->2: from 04:00 to the stop at 08:45: stretch started true at 4x; 15.20 s; arrived at clock 525 (target 525); OPENING.k 1; speed now 0.5; playing false; outgoing overlay pops 0
+  step 2->3: from 08:45 to the stop at 11:00: stretch started true at 4x; 13.07 s; arrived at clock 660 (target 660); OPENING.k 2; speed now 0.5; playing false; outgoing overlay pops 0
+  step 3->4: from 11:00 to the stop at 14:30: stretch started true at 4x; 17.38 s; arrived at clock 870 (target 870); OPENING.k 3; speed now 0.5; playing false; outgoing overlay pops 1
+  after Skip: clock 240, opening on false, tourStep -1, speed 0.5
+(4.6 s)
+
+=== B14 plateauFlatFor at fractional clocks
+  29 fractional clocks where the look-back is negative (the minute's sample differs from the holding at the clock): 424.875: -0.125 (onH 27000, minute sample 38700); 508.375: -0.625 (onH 23550, minute sample 19300); 508.500: -0.500 (onH 23550, minute sample 19300); 508.625: -0.375 (onH 23550, minute sample 19300); 508.750: -0.250 (onH 23550, minute sample 19300); 508.875: -0.125 (onH 23550, minute sample 19300)
+(0.6 s)
+
+warnings during the checks: 0; errors 0
+total 592 s

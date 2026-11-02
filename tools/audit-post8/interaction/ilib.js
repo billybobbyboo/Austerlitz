@@ -137,6 +137,37 @@ const SNAP=function(){
   };
   window.__ia=S; return true;
 };
+
+/* in the page: a frame driver (after tools/visual/motion.js inPage): the app's own animation loop stopped and run one frame at a time on a
+   clock of its own (performance.now answers the driver's time, advanced a frame's length at each step), the WebGL draw skipped unless asked
+   (draw(): one real frame of what the app shows, the clock frozen), so that under this machine's software WebGL a played stretch costs
+   milliseconds a frame. Every rule that reads the clock (Play, the dwell, Follow, the tweens and glides, the input hold) runs as it would at
+   30 frames a second. Nothing of the app is changed: its loop() is called as requestAnimationFrame would call it. */
+const DRV=function(){
+  if(window.__drv) return true;
+  var realNow=performance.now.bind(performance), realRaf=window.requestAnimationFrame, realRender=renderer.render, T=0, on=false, broken=false, gl=false;
+  var D={frameMs:1000/30, frames:0};
+  D.start=function(o){ o=o||{}; if(on) return D; on=true; D.frameMs=o.frameMs||1000/30; T=realNow()+(o.gap||0);
+    window.requestAnimationFrame=function(cb){ if(cb===window.loop){ broken=true; return 0; } return realRaf.call(window,cb); };
+    performance.now=function(){ return T; };
+    renderer.render=function(){ if(gl) return realRender.apply(renderer,arguments); };
+    return D; };
+  D.frame=function(n){ for(var i=0;i<(n||1);i++){ T+=D.frameMs; D.frames++; window.loop(); } return D.frames; };
+  /* frames until a condition (a string evaluated in the page) holds, at most n */
+  D.until=function(cond,n){ var f=new Function("return ("+cond+");"); for(var i=0;i<(n||1);i++){ if(f()) return i; T+=D.frameMs; D.frames++; window.loop(); } return f()?n:-1; };
+  /* n frames, each followed by [clock, the dwell's stage, speed, playing] */
+  D.trace=function(n){ var r=[]; for(var i=0;i<(n||1);i++){ T+=D.frameMs; D.frames++; window.loop(); r.push([+clock.toFixed(4), DWELL.st?DWELL.st.stage:"-", speed, playing?1:0]); } return r; };
+  D.draw=function(){ gl=true; try{ renderFrame(); } finally{ gl=false; } return true; };
+  /* one real frame drawn inside an animation frame, then one more animation frame, so that the compositor has taken the canvas before a
+     screenshot (with the app's loop stopped nothing else asks the browser for a frame) */
+  D.drawFrame=function(){ return new Promise(function(res){ realRaf.call(window,function(){ gl=true; try{ renderFrame(); } finally{ gl=false; }
+    realRaf.call(window,function(){ realRaf.call(window,function(){ res(true); }); }); }); }); };
+  D.now=function(){ return T; };
+  D.advance=function(ms){ T+=ms; return T; };
+  D.on=function(){ return on; };
+  D.stop=function(){ if(!on) return; on=false; performance.now=realNow; window.requestAnimationFrame=realRaf; renderer.render=realRender; requestRender(3); if(broken) realRaf.call(window,window.loop); broken=false; };
+  window.__drv=D; return true;
+};
 function inject(page,fn){ return page.evaluate("("+fn.toString()+")()"); }
 
 function track(page){
@@ -156,6 +187,8 @@ async function finishOpen(page,o){
   await page.evaluate(MEASURE);
   if(o.noTransitions) await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
   await inject(page,SNAP);
+  await inject(page,DRV);
+  if(o.drive!==false) await page.evaluate(()=>window.__drv.start());
   return page;
 }
 async function openV(browser,vp,o){
@@ -200,5 +233,26 @@ function fpDiff(a,b){
   if(md.length) d.push({k:"ml",n:md.length,first:md.slice(0,12)});
   return d;
 }
+/* the driver from node */
+const F=(page,n)=>page.evaluate(k=>window.__drv.frame(k),n||1);
+async function play(page,frames,chunk){ chunk=chunk||150; let done=0; while(done<frames){ const k=Math.min(chunk,frames-done); await F(page,k); done+=k; } return done; }
+const trace=(page,n)=>page.evaluate(k=>window.__drv.trace(k),n||1);
+const until=(page,cond,n)=>page.evaluate(([c,k])=>window.__drv.until(c,k),[cond,n||300]);
+async function drawShot(page,name,q){ await page.evaluate(()=>window.__drv.drawFrame()); return shot(page,name,q); }
+/* a real click (page.mouse: a press and a release from the browser's input pipeline) at an element's centre, after checking that the
+   element is what a pointer there would hit (Playwright's own actionability waits for animation frames, which this machine's software
+   compositor starves under load) */
+async function clickEl(page,sel,o){
+  o=o||{};
+  const r=await page.evaluate(([s,i])=>{ const L=typeof s==="string"?document.querySelectorAll(s):null; const e=L?L[i||0]:null; if(!e) return {err:"no element "+s};
+    const b=e.getBoundingClientRect(); if(!(b.width>0&&b.height>0)) return {err:"not laid out "+s};
+    const x=b.left+b.width/2, y=b.top+b.height/2, h=document.elementFromPoint(x,y);
+    return {x:x,y:y,hit:!!(h&&(h===e||e.contains(h))),top:h?(h.id?"#"+h.id:h.tagName+"."+String(h.className).split(" ")[0]):null}; },[sel,o.index||0]);
+  if(r.err) throw new Error("clickEl: "+r.err);
+  if(!r.hit&&!o.force) throw new Error("clickEl: "+sel+" is covered by "+r.top);
+  if(o.dbl) await page.mouse.dblclick(r.x,r.y); else await page.mouse.click(r.x,r.y);
+  return r;
+}
+async function focusEl(page,sel){ return page.evaluate(s=>{ const e=document.querySelector(s); if(e) e.focus(); return document.activeElement===e; },sel); }
 function log(...a){ console.log(new Date().toISOString().slice(11,19),...a); }
-module.exports={A,ROOT,EV,INSTR,SNAP,openV,openP,snap,fp,fpDiff,counts,shot,wait,idle,frames,loopN,inject,log,MEASURE};
+module.exports={trace,clickEl,focusEl,A,ROOT,EV,INSTR,SNAP,DRV,F,play,until,drawShot,openV,openP,snap,fp,fpDiff,counts,shot,wait,idle,frames,loopN,inject,log,MEASURE};

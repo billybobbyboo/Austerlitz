@@ -1,0 +1,27 @@
+bag@6: drawn leg 5->6 11:15-11:40 from [262,68] to [300,76]; arrival derived (tactical); timing grade C (app narrative, unsourced)
+   act: Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later)
+   act claim: unchecked; position grade C
+   event "The French take Blasowitz from the Russian Guard" 11:15, claim est
+   phase 4 line "c. 09:30": Lannes advances along the highway. Bagration counter-attacks. The two battles now run in parallel.
+   phase 5 line "c. 10:40": The cavalry collision west of Blasowitz. Kellermann falls back through his infantry and reforms.
+   phase 5 line "c. 11:15": Blasowitz falls; no source read gives the hour, and the accounts differ on its order: the Allied report printed in 1806 has it fall before L
+   phase 8 line "c. 16:30": Organised resistance ends, by this map's reckoning after Sokolov's end of the firing in the north; the accounts end the fighting from the Bu
+guard_cav@6: drawn leg 0->6 10:30-11:15 from [201,154] to [289,209]; arrival the phase start; no timing row (no tm)
+   act: Rapp's counter-charge shatters the Chevalier Guard; Prince Repnin taken prisoner (the hour is disputed: about 13:00 or after in Rapp's own memoirs, before one by the order of the Bulletin's narrative; the map draws it from 11:15)
+   act claim: disputed; position grade A
+   event "Rapp's counter-charge breaks the Chevalier Guard" 11:15-13:15, claim disputed (dispute: When Rapp's charge went in: before one by the order of the narrative in the 30th Bulletin and in Mikhailovsky-Danilevsky (an inference: neither dates the charge...)
+   phase 6 line "after 11:00": The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is disputed: before one by the order of the 30th Bulletin's and M
+   phase 6 line "after 11:15": Bessières and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed: the map draws the charge fro
+kamensky@3: drawn leg 2->3 08:00-08:45 from [259,316] to [269,298]; arrival the phase start; no timing row (no tm)
+   act: Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)
+   act claim: disputed; position grade A
+   event "Kamensky turns his brigade about and drives the French off the crest" 09:45, claim disputed (dispute: When Kamensky turned his brigade about: no account read gives the hour, only a sequence, after the French began to climb the heights and before or with Jurczek'...)
+   phase 4 line "c. 09:45": Kamensky turns his brigade about and drives the 10e Légère off the crest. No account read gives the hour of the turn, only its sequence; his
+   phase 4 line "c. 10:15": Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity. No source read gives the hour; Schönh
+kamensky@4: drawn leg 3->4 08:45-09:30 from [269,298] to [279,289]; arrival the phase start; no timing row (no tm)
+   act: Pushes the 10e Légère back off the summit before Thiébault stabilises the French line
+   act claim: unchecked; position grade A
+   event "Kamensky turns his brigade about and drives the French off the crest" 09:45, claim disputed (dispute: When Kamensky turned his brigade about: no account read gives the hour, only a sequence, after the French began to climb the heights and before or with Jurczek'...)
+   phase 4 line "c. 09:45": Kamensky turns his brigade about and drives the 10e Légère off the crest. No account read gives the hour of the turn, only its sequence; his
+   phase 4 line "c. 10:15": Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity. No source read gives the hour; Schönh
+kamensky drawn 08:00 [259,316] -> 08:44 [268.8,298.4] (north-east, back toward the Pratzeberg) while Saint-Hilaire waits at [206,231] until 08:45; it enters the plateau outline at 08:29 (plateauStrength Allied 19,300 -> 23,550).

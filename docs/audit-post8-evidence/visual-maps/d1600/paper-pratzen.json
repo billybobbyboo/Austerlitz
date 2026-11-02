@@ -1,0 +1,292 @@
+{
+ "shot": "paper-pratzen",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -0.62,
+    0.46,
+    0.64
+   ],
+   "r": 58
+  }
+ },
+ "steps": [],
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "map",
+   "x": -26.392979515993723,
+   "z": 20.14698195746506,
+   "wpp": 0.04312561895804499
+  },
+  "applied": {
+   "kind": "map",
+   "x": -26.392979515993723,
+   "z": 20.14698195746506,
+   "wpp": 0.04312561895804499
+  },
+  "aimErr": null,
+  "paperFocus": 0,
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": true
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 64,
+  "placed": 6,
+  "dropped": 1,
+  "droppedIds": [
+   "t:pratzeberg"
+  ],
+  "occluded": 0,
+  "offscreen": 55,
+  "underPanel": 2,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The crisis on the Pratzeberg",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "Friant retakes Telnitz, then loses it again",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 18,150",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   821,
+   771,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "true",
+  "rows": [
+   "counters: French",
+   "counters: Russian",
+   "counters: Austrian",
+   "French movement",
+   "Allied movement",
+   "wood (its extent in the model)",
+   "village (its extent in the model)",
+   "meres: pond outlines schematic",
+   "vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not establishe",
+   "position approximate (B, C) · reported only (?)B?",
+   "A: position documented (its footprint)",
+   "B: sector documented, frontage approximate",
+   "C: reconstructed, position indicative",
+   "grade sizes are drawn, not measured errors",
+   "contour interval≈ 9 m",
+   "paper map: the ground drawn flat, in plan; hillshade exaggerated 6× (1× is true scale)",
+   "villages and woods at their extent in the model; counters and names at symbol scale"
+  ]
+ },
+ "scaleBar": "250 m",
+ "bodyClass": "docked mode-staff pm-study",
+ "textContrast": {
+  "texts": 19,
+  "min": 5.1,
+  "belowAA": []
+ },
+ "farNames": null,
+ "items": [
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen Heights",
+   "box": [
+    1114,
+    37,
+    100,
+    16
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "o:Kamensky turns about (disputed)",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Kamensky turns about (disputed)",
+   "box": [
+    493,
+    621,
+    201,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "o:Pratzeberg",
+   "cat": "objective",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    827,
+    419,
+    70,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "c:sthilaire",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRSaint-HilaireHeavily engaged≈6,600 · Louis V",
+   "box": [
+    615,
+    323,
+    299,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:kamensky",
+   "cat": "counter",
+   "state": "on",
+   "text": "XRUKamensky's BrigadeCounter-attacking≈4,250 · S",
+   "box": [
+    414,
+    243,
+    321,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:kollo",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXATBKollowrat's AustriansCounter-attacking≈9,10",
+   "box": [
+    1050,
+    122,
+    337,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  }
+ ],
+ "ms": 75400,
+ "msSettle": 1256,
+ "msShot": 73789,
+ "msMeasure": 355,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

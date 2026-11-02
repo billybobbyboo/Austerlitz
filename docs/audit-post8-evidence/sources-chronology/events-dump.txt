@@ -1,0 +1,192 @@
+EV0 [columns-move] t=NaN:NaN claim=disputed cf=B | undefined
+    n: "The Allied columns begin to leave the plateau"
+    side: "al"
+    kind: "movement"
+    p: [291,276]
+    forms: ["kienmayer","dok","lang","prz"]
+    why: "Every column that goes down into the valley is a column no longer holding the centre."
+    dispute: "When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as did the III Column in Przybyszewski's report; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Buxhowden's report the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map moves the three columns from 07:00, the disposition's hour."
+EV1 [counter-march] t=NaN:NaN claim=disputed cf=B | undefined
+    n: "Liechtenstein counter-marches across the 4th Column"
+    side: "al"
+    kind: "movement"
+    p: [311,227]
+    forms: ["lich","milo","kollo"]
+    why: "The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour, and Kutuzov then stood still, though the disposition ordered him forward. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three."
+    dispute: "When the cavalry column crossed: from 04:15 on this map, its own reckoning; the Materialien's editor has it ordered off only at dawn, Mikhailovsky-Danilevsky has its crossing hold up the 4th Column at the set hour, and Stutterheim has the 4th Column ordered off only toward 08:00, and Miloradovich's report has him set out at 08:00; Ermolov has the army set out before dawn, the columns crossing in the dark, which may be the night move into the disposition's places rather than the columns' departure."
+EV2 [telnitz] t=07:00 claim=disputed cf=B | undefined
+    n: "Kienmayer attacks Telnitz"
+    side: "al"
+    kind: "attack"
+    p: [212,408]
+    forms: ["kienmayer","legrand"]
+    why: "The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted."
+    dispute: "When Kienmayer attacked Telnitz: 07:00 on this map, with Savary's Russians beginning to debouch on Legrand about seven and attacking soon after; the other readings bound the hour rather than give it: Schönhals has the left wing set off at 06:30, Stutterheim the hussars sent forward to reconnoitre between seven and eight, and Davout's report Telnitz under vigorous attack by about 08:00."
+EV3 [raigern] t=NaN:NaN claim=est cf=B | undefined
+    n: "Friant's division at Raigern since the night"
+    side: "fr"
+    kind: "arrival"
+    p: [18,500]
+    forms: ["friant","bourcier"]
+    why: "Davout and Friant reached Raigern on the night of 1 December: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers. Davout's reports send the division on from Raigern at 05:00 (his report of 2 December) or between 05:30 and 06:00 (his report of 26 December), Sokolov about six; this map moves it from 05:00. Raigern lies just beyond this corner of the map."
+EV4 [davout] t=NaN:NaN claim=fact cf=B | undefined
+    n: "Friant's leading brigade reaches the Goldbach"
+    side: "fr"
+    kind: "arrival"
+    p: [198,402]
+    forms: ["friant"]
+    why: "About nine near Telnitz in Stutterheim and in the Moniteur's remarks of 1806, attacking about nine in Schönhals, after Telnitz had fallen in Mikhailovsky-Danilevsky. Davout's report has word of the attack reach him on the march about eight and gives no hour for the arrival. In this map's interpretation, a counterfactual: without it the French right does not survive the morning."
+EV5 [sokolnitz] t=08:00 claim=disputed cf=B | undefined
+    n: "Langeron and Przybyszewski attack Sokolnitz"
+    side: "al"
+    kind: "attack"
+    p: [208,365]
+    forms: ["lang","prz","legrand"]
+    why: "The fight for the village, the castle and the pheasantry absorbs two columns; Davout reported the village taken and retaken several times."
+    dispute: "When the attack on Sokolnitz began: 08:00 on this map, with Przybyszewski's report (his column in action from eight) and Buxhowden's (the II Column coming down at eight); Davout's report has Sokolnitz not yet attacked about 08:00, Mikhailovsky-Danilevsky Langeron engaging at 08:30, and Schönhals the III Column at Sokolnitz only after the attack on the Pratzen began, about 09:00."
+EV6 [telnitz-retaken] t=09:30 claim=fact cf=A | undefined
+    n: "Friant retakes Telnitz, then loses it again"
+    side: "fr"
+    kind: "attack"
+    p: [214,406]
+    forms: ["friant"]
+    why: "Heudelet's brigade throws itself into the village straight off the march. Davout's report has it in French hands at 09:30, then lost again when a French regiment, not recognising the brigade in the fog, fired on it and the Russians came back with fresh troops; Schönhals has Friant attack the village anew about nine, and Stutterheim Davout's reinforcement up about nine."
+EV7 [decision] t=NaN:NaN claim=est cf=B | undefined
+    n: "Napoleon releases Soult against the heights"
+    side: "fr"
+    kind: "decision"
+    p: [177,134]
+    forms: ["gqg","c_iv","sthilaire","vandamme"]
+    why: "Asked how long his troops needed to crown the plateau, Soult is reported to have answered twenty minutes at most (Thiébault) or ten (Ségur), and Napoleon to have waited a further quarter of an hour, giving the signal only once an aide reported the heights abandoned (a little prematurely, Thiébault adds). A memoir anecdote. The hour is disputed: about eight in Ségur, the aide's report at half past eight in Thiébault, the French columns moving about nine in the Austrian accounts."
+EV8 [soult] t=NaN:NaN claim=fact cf=C | undefined
+    n: "Saint-Hilaire and Vandamme climb the slope"
+    side: "fr"
+    kind: "attack"
+    p: [262,262]
+    forms: ["sthilaire","vandamme"]
+    why: "Two divisions that had been standing in fog, invisible from the crest, climb onto a plateau the 4th Column has not yet left (Stutterheim; Schönhals; Thiébault)."
+EV9 [pratzen-village] t=09:00 claim=est cf=C | undefined
+    n: "Thiébault's brigade clears Pratzen village"
+    side: "fr"
+    kind: "capture"
+    p: [276,243]
+    forms: ["sthilaire"]
+    tolKm: 1.5
+    tolWhy: "Thiébault’s brigade is not plotted separately: the marker is the village it cleared, and at about 09:00 the division’s plotted centre is still climbing the western slope below it"
+    why: "Opens the way to the Pratzeberg. No source read gives its hour: the Allied accounts have the 4th Column's advance guard occupy the village as the French moved off, and Thiébault expected only posts there."
+EV10 [face-about] t=09:15 claim=fact cf=C | undefined
+    n: "Kutuzov orders the 4th Column to face about"
+    side: "al"
+    kind: "decision"
+    p: [290,237]
+    forms: ["ahq","milo","kollo"]
+    why: "The Allied commander-in-chief, riding with the column, sees what has happened. That he ordered the column to face about is this map's reading: in Mikhailovsky-Danilevsky he rides to the left wing and Kamensky turns his brigade on his own; in his own public report he orders Kamensky's regiments onto the ridge; his private relation names no order."
+EV11 [kamensky] t=09:45 claim=disputed cf=B | undefined
+    n: "Kamensky turns his brigade about and drives the French off the crest"
+    side: "al"
+    kind: "engagement"
+    p: [285,289]
+    forms: ["kamensky","sthilaire","lang"]
+    why: "Allied initiative on the plateau, but whose is disputed: Mikhailovsky-Danilevsky, citing Langeron's report, has Kamensky see the French climbing, warn Langeron and turn his brigade against them; Schönhals has Langeron send the brigade; Kutuzov's official report has Kutuzov order Kamensky to occupy the ridge, and Stutterheim has the two regiments come on the commander-in-chief's order; Kutuzov's private relation of March 1806 has them turn from the column and names no order of his."
+    dispute: "When Kamensky turned his brigade about: no account read gives the hour, only a sequence, after the French began to climb the heights and before or with Jurczek's attack. This event puts the turn at 09:45; his brigade's record on this map turns it in the 08:45 phase, whose timing the map keeps."
+EV12 [kursk] t=10:30 claim=est cf=C | undefined
+    n: "Langeron's reinforcements arrive as the crest is lost"
+    side: "al"
+    kind: "engagement"
+    p: [290,282]
+    forms: ["lang","kamensky"]
+    why: "Langeron rode back and sent troops up toward Kamensky. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there. The hour is this map's."
+EV13 [pratzeberg] t=11:00 claim=disputed cf=B | undefined
+    n: "The Pratzeberg is firmly in French hands"
+    side: "fr"
+    kind: "capture"
+    p: [285,289]
+    forms: ["sthilaire","legrand"]
+    why: "From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it."
+    dispute: "When the Pratzeberg was firmly French: 11:00 on this map, Ségur's 'towards eleven'; Stutterheim and Schönhals have the plateau fight last about two hours from about 09:00, Thiébault three, with no start given."
+EV14 [blasowitz] t=11:15 claim=est cf=C | undefined
+    n: "The French take Blasowitz from the Russian Guard"
+    side: "fr"
+    kind: "capture"
+    p: [296,147]
+    forms: ["caffarelli","rivaud","rg_inf"]
+    tolKm: 1.3
+    tolWhy: "division-level: the marker is the village; Caffarelli’s plotted centre lies about 1.2 km from it, within the division’s frontage"
+    why: "The Russian Guard's jägers held the village in Stutterheim, Schönhals and Mikhailovsky-Danilevsky; the Chevalier Guard's history instead has the French occupy it without hindrance. Its attackers are disputed: Bernadotte's corps, Rivaud on the left and Drouet on the right, in Stutterheim; the 1st division of Lannes's V Corps in Thiébault; part of Rivaud's division ordered onto it with Caffarelli and Kellermann in Mikhailovsky-Danilevsky; Caffarelli's 13e Légère in Sokolov; Marbot has Lannes throw the Russians back from the Santon as far as Blasowitz. Bagration's separation is a later action: Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."
+EV15 [guard-attack] t=NaN:NaN claim=est cf=B | undefined
+    n: "The Russian Guard takes the eagle of the 4th Line"
+    side: "al"
+    kind: "attack"
+    p: [313,205]
+    forms: ["rg_inf","rg_cav","constantine","vandamme"]
+    why: "The Guard, which Stutterheim calls the reserve of the Allied right, takes the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day. The hour is disputed: Rapp and Ségur put the Guard's last effort about 13:00, Schönhals has the fight over by about noon; the window is this map's."
+EV16 [guard-broken] t=NaN:NaN claim=disputed cf=B | undefined
+    n: "Rapp's counter-charge breaks the Chevalier Guard"
+    side: "fr"
+    kind: "engagement"
+    p: [308,210]
+    forms: ["guard_cav","drouet","rg_cav"]
+    why: "Prince Repnin is taken prisoner, by Rapp's charge in the 30th Bulletin. With the reserve spent, nothing remains to retake the plateau."
+    dispute: "When Rapp's charge went in: before one by the order of the narrative in the 30th Bulletin and in Mikhailovsky-Danilevsky (an inference: neither dates the charge itself), by about noon in Schönhals, about 13:00 or after in Rapp's own memoirs and Ségur's; the map draws it from 11:15, a timing it has kept."
+EV17 [hq-forward] t=NaN:NaN claim=est cf=B | undefined
+    n: "Napoleon moves forward to Stare Vinohrady"
+    side: "fr"
+    kind: "decision"
+    p: [309,207]
+    forms: ["gqg"]
+    why: "From Stare Vinohrady he directs the centre while the Allied left is still fighting westward on the Goldbach with its rear open. Later he moves again, to the chapel of St Anthony above Augezd (Schönhals); Lejeune has him at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height."
+EV18 [buxhowden-blind] t=NaN:NaN claim=est cf=B | undefined
+    n: "Buxhowden does not yet know the centre is gone"
+    side: "al"
+    kind: "movement"
+    p: [263,376]
+    forms: ["buxhowden","dok","lang"]
+    why: "Contemporaries put it about noon. Three columns go on attacking westward while the army behind them is being taken apart."
+EV19 [davout-resumes] t=12:30 claim=disputed cf=B | undefined
+    n: "Davout resumes the offensive"
+    side: "fr"
+    kind: "attack"
+    p: [204,392]
+    forms: ["friant","bourcier"]
+    why: "The anvil becomes a hammer. That Langeron is pushed back onto Sokolnitz from the west is this map's reading; no account read says so."
+    dispute: "When Davout resumed the offensive: 12:30 on this map; Mikhailovsky-Danilevsky has Napoleon order Davout against the first three columns at 13:00."
+EV20 [wheel] t=NaN:NaN claim=est cf=B | undefined
+    n: "The French centre turns south"
+    side: "fr"
+    kind: "movement"
+    p: [277,303]
+    forms: ["sthilaire","vandamme","c_gren","guard_inf"]
+    why: "Ninety degrees, off the heights, into the rear of Buxhowden's three columns."
+EV21 [sokolnitz-falls] t=14:00 claim=disputed cf=B | undefined
+    n: "Sokolnitz falls; Przybyszewski's column is surrounded"
+    side: "fr"
+    kind: "capture"
+    p: [217,352]
+    forms: ["prz","friant","sthilaire"]
+    why: "The column tries to break out toward Kobelnitz, comes apart, and surrenders almost entire."
+    dispute: "When Sokolnitz fell: 14:00 on this map, which no account read dates; Przybyszewski's report has his men fighting until 16:00, Thiébault is wounded beyond the castle about 15:00, and Stutterheim has the fight decided about two."
+EV22 [augezd] t=14:30 claim=disputed cf=B | undefined
+    n: "Vandamme takes the height above the Augezd defile"
+    side: "fr"
+    kind: "capture"
+    p: [297,372]
+    forms: ["vandamme","heightguns"]
+    why: "A way out for the Allied left over the Augezd defile now lies under French guns; this map reads the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held."
+    dispute: "When Vandamme took the height above Augezd: 14:30 on this map; his division was entering Augezd towards 14:00 by his aide Vincent, as Thiébault reports him, and Stutterheim has the fight decided about two when Vandamme's division finished it."
+EV23 [ice] t=15:00 claim=fact cf=B | undefined
+    n: "French artillery fires on the ice of the Satschan mere"
+    side: "fr"
+    kind: "collapse"
+    p: [268,421]
+    forms: ["heightguns","dok","kienmayer"]
+    tolKm: 1.5
+    tolWhy: "the marker is the target of a bombardment: the guns fire from the chapel height about 2 km away, and the retreating columns are converging on the ice"
+    why: "The 30th Bulletin claimed twenty thousand drowned; Schönhals calls the mass drowning a French exaggeration and, on the Telnitz priest's word, puts it at sixty to at most a hundred. General Suchet's report of 16 December 1805, as Sokolov quotes it, has thirty-six guns, 138 horses and three bodies taken from the pond near Augezd when it was drained, by inference a lower bound, not the toll; the figures usually given, thirty-eight guns, about a hundred and thirty horses and two men, were not traced to a source in this reading. This map reads the catastrophe as encirclement rather than drowning, an interpretation."
+EV24 [end] t=16:30 claim=disputed cf=B | undefined
+    n: "Organised resistance ends"
+    side: "fr"
+    kind: "collapse"
+    p: [290,366]
+    forms: []
+    why: "Bagration holds the height toward Rausnitz, then withdraws on Austerlitz, the Guard on Austerlitz, and the Allied left has ceased to exist as a formation."
+    dispute: "When the fighting ended: this map puts the end of organised resistance at 16:30, after Sokolov's end of the firing in the north; an Allied report printed in 1806 has the northern front quiet from 15:00, Thiébault the firing over about half an hour after three, and Mikhailovsky-Danilevsky the last shots between five and six; the 30th Bulletin has the victory decided at one. Schönhals has Bagration, no longer attacked, retreat on Austerlitz about 18:00, and Stutterheim behind Austerlitz at 18:00."

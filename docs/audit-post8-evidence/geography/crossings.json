@@ -1,0 +1,4985 @@
+{
+ "tool": "tools/audit-post8/geography/crossings.js",
+ "root": "/tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/geography-iso",
+ "roadCrossings": [
+  {
+   "stream": "Goldbach",
+   "road": "Telnitz-Augezd track",
+   "cls": "track",
+   "at": [
+    213.9,
+    407.4
+   ],
+   "village": "Telnitz",
+   "villageM": 62,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Goldbach",
+   "road": "Kobelnitz-Sokolnitz track",
+   "cls": "track",
+   "at": [
+    207.2,
+    289.7
+   ],
+   "village": "Kobelnitz",
+   "villageM": 407,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Goldbach",
+   "road": "Kobelnitz-Sokolnitz track",
+   "cls": "track",
+   "at": [
+    209.6,
+    304
+   ],
+   "village": "Kobelnitz",
+   "villageM": 866,
+   "inVillagePlace": false
+  },
+  {
+   "stream": "Goldbach",
+   "road": "Puntowitz-Kobelnitz track",
+   "cls": "track",
+   "at": [
+    207.7,
+    268.9
+   ],
+   "village": "Kobelnitz",
+   "villageM": 268,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Rakovec (BROOKS[4])",
+   "road": "Pratzen-Austerlitz road",
+   "cls": "post",
+   "at": [
+    407.8,
+    172.2
+   ],
+   "village": "Krzenowitz",
+   "villageM": 787,
+   "inVillagePlace": false
+  },
+  {
+   "stream": "Rakovec (BROOKS[4])",
+   "road": "Krzenowitz road",
+   "cls": "track",
+   "at": [
+    415,
+    196
+   ],
+   "village": "Krzenowitz",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Rakovec (BROOKS[4])",
+   "road": "Krzenowitz road",
+   "cls": "track",
+   "at": [
+    415,
+    196
+   ],
+   "village": "Krzenowitz",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Rakovec (BROOKS[4])",
+   "road": "Blasowitz-Krzenowitz track",
+   "cls": "track",
+   "at": [
+    415,
+    196
+   ],
+   "village": "Krzenowitz",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Rakovec (BROOKS[4])",
+   "road": "Blasowitz-Krzenowitz track",
+   "cls": "track",
+   "at": [
+    415,
+    196
+   ],
+   "village": "Krzenowitz",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Litava",
+   "road": "Telnitz-Augezd track",
+   "cls": "track",
+   "at": [
+    297,
+    372
+   ],
+   "village": "Augezd",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Litava",
+   "road": "Telnitz-Augezd track",
+   "cls": "track",
+   "at": [
+    297,
+    372
+   ],
+   "village": "Augezd",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Litava",
+   "road": "Augezd causeway",
+   "cls": "track",
+   "at": [
+    297,
+    372
+   ],
+   "village": "Augezd",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Litava",
+   "road": "Augezd causeway",
+   "cls": "track",
+   "at": [
+    297,
+    372
+   ],
+   "village": "Augezd",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Litava",
+   "road": "Augezd causeway",
+   "cls": "track",
+   "at": [
+    262,
+    444
+   ],
+   "village": "Satschan",
+   "villageM": 0,
+   "inVillagePlace": true
+  },
+  {
+   "stream": "Litava",
+   "road": "Augezd causeway",
+   "cls": "track",
+   "at": [
+    262,
+    444
+   ],
+   "village": "Satschan",
+   "villageM": 0,
+   "inVillagePlace": true
+  }
+ ],
+ "legCrossings": [
+  {
+   "id": "gqg",
+   "name": "Imperial Headquarters",
+   "arm": "hq",
+   "leg": "0->6",
+   "window": [
+    "12:00",
+    "12:40"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    237.2,
+    165.7
+   ],
+   "village": "Girzikowitz",
+   "villageM": 178,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 3392
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "gqg",
+   "name": "Imperial Headquarters",
+   "arm": "hq",
+   "leg": "0->6",
+   "window": [
+    "12:00",
+    "12:40"
+   ],
+   "ice": false,
+   "stream": "brook from Blasowitz (BROOKS[0])",
+   "at": [
+    259.3,
+    178.4
+   ],
+   "village": "Girzikowitz",
+   "villageM": 979,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "sthilaire",
+   "name": "Saint-Hilaire's Division",
+   "arm": "inf",
+   "leg": "2->3",
+   "window": [
+    "08:45",
+    "09:15"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    210.7,
+    230.6
+   ],
+   "village": "Puntowitz",
+   "villageM": 282,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 1214
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "sthilaire",
+   "name": "Saint-Hilaire's Division",
+   "arm": "inf",
+   "leg": "2->3",
+   "window": [
+    "08:45",
+    "09:15"
+   ],
+   "ice": false,
+   "stream": "Pratzen brook (BROOKS[1])",
+   "at": [
+    247.2,
+    256.9
+   ],
+   "village": "Pratzen",
+   "villageM": 1009,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "vandamme",
+   "name": "Vandamme's Division",
+   "arm": "inf",
+   "leg": "2->3",
+   "window": [
+    "08:45",
+    "09:14"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    233.3,
+    173.9
+   ],
+   "village": "Girzikowitz",
+   "villageM": 377,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 3108
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "vandamme",
+   "name": "Vandamme's Division",
+   "arm": "inf",
+   "leg": "2->3",
+   "window": [
+    "08:45",
+    "09:14"
+   ],
+   "ice": false,
+   "stream": "brook from Blasowitz (BROOKS[0])",
+   "at": [
+    253.8,
+    188.7
+   ],
+   "village": "Girzikowitz",
+   "villageM": 1068,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "vandamme",
+   "name": "Vandamme's Division",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "13:24",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "brook south of the Pratzeberg (BROOKS[2])",
+   "at": [
+    275,
+    319.8
+   ],
+   "village": "Augezd",
+   "villageM": 1790,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "legrand",
+   "name": "Legrand's Division",
+   "arm": "inf",
+   "leg": "2->4",
+   "window": [
+    "08:00",
+    "09:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    214.5,
+    338.6
+   ],
+   "village": "Sokolnitz",
+   "villageM": 859,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Kobelnitz-Sokolnitz track",
+    "m": 1105
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "legrand",
+   "name": "Legrand's Division",
+   "arm": "inf",
+   "leg": "4->7",
+   "window": [
+    "13:00",
+    "14:00"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    213.1,
+    321.8
+   ],
+   "village": "Sokolnitz",
+   "villageM": 1375,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Kobelnitz-Sokolnitz track",
+    "m": 572
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "legrand",
+   "name": "Legrand's Division",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "14:00",
+    "15:00"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    212.5,
+    380.6
+   ],
+   "village": "Sokolnitz",
+   "villageM": 514,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 847
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "friant",
+   "name": "Friant's Division",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    214,
+    410
+   ],
+   "village": "Telnitz",
+   "villageM": 89,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 82
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "friant",
+   "name": "Friant's Division",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    214,
+    410
+   ],
+   "village": "Telnitz",
+   "villageM": 89,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 82
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "friant",
+   "name": "Friant's Division",
+   "arm": "inf",
+   "leg": "8->9",
+   "window": [
+    "14:30",
+    "17:00"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    214,
+    410
+   ],
+   "village": "Telnitz",
+   "villageM": 89,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 82
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "friant",
+   "name": "Friant's Division",
+   "arm": "inf",
+   "leg": "8->9",
+   "window": [
+    "14:30",
+    "17:00"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    214,
+    410
+   ],
+   "village": "Telnitz",
+   "villageM": 89,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 82
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "bourcier",
+   "name": "Bourcier's Dragoons",
+   "arm": "cav",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    213.9,
+    407.4
+   ],
+   "village": "Telnitz",
+   "villageM": 62,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 1
+   },
+   "atRoadCrossing": true,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "bourcier",
+   "name": "Bourcier's Dragoons",
+   "arm": "cav",
+   "leg": "8->9",
+   "window": [
+    "14:30",
+    "17:00"
+   ],
+   "ice": false,
+   "stream": "Litava",
+   "at": [
+    295.9,
+    374.2
+   ],
+   "village": "Augezd",
+   "villageM": 76,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 76
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "caffarelli",
+   "name": "Caffarelli's Division",
+   "arm": "inf",
+   "leg": "0->5",
+   "window": [
+    "09:30",
+    "10:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    248.6,
+    116.1
+   ],
+   "village": "Girzikowitz",
+   "villageM": 1533,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 4999
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "kellermann",
+   "name": "Kellermann's Light Cavalry",
+   "arm": "cav",
+   "leg": "0->5",
+   "window": [
+    "04:00",
+    "10:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    244.9,
+    134.9
+   ],
+   "village": "Girzikowitz",
+   "villageM": 935,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 4394
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "nansouty",
+   "name": "Nansouty's Cuirassiers",
+   "arm": "cav",
+   "leg": "0->5",
+   "window": [
+    "04:00",
+    "10:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    243.6,
+    141.4
+   ],
+   "village": "Girzikowitz",
+   "villageM": 733,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 4186
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "dhautpoul",
+   "name": "d'Hautpoul's Cuirassiers",
+   "arm": "cav",
+   "leg": "0->5",
+   "window": [
+    "04:00",
+    "10:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    241.6,
+    151.7
+   ],
+   "village": "Girzikowitz",
+   "villageM": 424,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 3855
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "dhautpoul",
+   "name": "d'Hautpoul's Cuirassiers",
+   "arm": "cav",
+   "leg": "5->7",
+   "window": [
+    "10:30",
+    "12:45"
+   ],
+   "ice": false,
+   "stream": "brook from Blasowitz (BROOKS[0])",
+   "at": [
+    271.2,
+    154.5
+   ],
+   "village": "Blasowitz",
+   "villageM": 818,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "walther",
+   "name": "Walther's Dragoons",
+   "arm": "cav",
+   "leg": "0->5",
+   "window": [
+    "04:00",
+    "10:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    246.4,
+    127.6
+   ],
+   "village": "Girzikowitz",
+   "villageM": 1166,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 4629
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "rivaud",
+   "name": "Rivaud's Division",
+   "arm": "inf",
+   "leg": "0->3",
+   "window": [
+    "08:45",
+    "09:25"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    236.6,
+    167.1
+   ],
+   "village": "Girzikowitz",
+   "villageM": 196,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 3344
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "rivaud",
+   "name": "Rivaud's Division",
+   "arm": "inf",
+   "leg": "3->6",
+   "window": [
+    "09:25",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "brook from Blasowitz (BROOKS[0])",
+   "at": [
+    258.3,
+    180.5
+   ],
+   "village": "Girzikowitz",
+   "villageM": 989,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "drouet",
+   "name": "Drouet d'Erlon's Division",
+   "arm": "inf",
+   "leg": "0->3",
+   "window": [
+    "08:45",
+    "09:26"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    224.3,
+    192.6
+   ],
+   "village": "Puntowitz",
+   "villageM": 995,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 2467
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "drouet",
+   "name": "Drouet d'Erlon's Division",
+   "arm": "inf",
+   "leg": "3->6",
+   "window": [
+    "09:26",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "brook from Blasowitz (BROOKS[0])",
+   "at": [
+    248.5,
+    197.4
+   ],
+   "village": "Girzikowitz",
+   "villageM": 1221,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "guard_inf",
+   "name": "Guard Infantry",
+   "arm": "guard",
+   "leg": "0->6",
+   "window": [
+    "10:15",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    225,
+    191.1
+   ],
+   "village": "Girzikowitz",
+   "villageM": 953,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 2519
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "guard_inf",
+   "name": "Guard Infantry",
+   "arm": "guard",
+   "leg": "0->6",
+   "window": [
+    "10:15",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "brook from Blasowitz (BROOKS[0])",
+   "at": [
+    245.2,
+    202.7
+   ],
+   "village": "Puntowitz",
+   "villageM": 1186,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "guard_cav",
+   "name": "Guard Cavalry",
+   "arm": "cav",
+   "leg": "0->6",
+   "window": [
+    "10:30",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    232.6,
+    175.2
+   ],
+   "village": "Girzikowitz",
+   "villageM": 419,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 3062
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "guard_cav",
+   "name": "Guard Cavalry",
+   "arm": "cav",
+   "leg": "0->6",
+   "window": [
+    "10:30",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "brook from Blasowitz (BROOKS[0])",
+   "at": [
+    250.5,
+    194
+   ],
+   "village": "Girzikowitz",
+   "villageM": 1154,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "c_gren",
+   "name": "Grenadier Division",
+   "arm": "inf",
+   "leg": "0->6",
+   "window": [
+    "10:05",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    212,
+    218
+   ],
+   "village": "Puntowitz",
+   "villageM": 130,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 1614
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "c_gren",
+   "name": "Grenadier Division",
+   "arm": "inf",
+   "leg": "0->6",
+   "window": [
+    "10:05",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    212,
+    218
+   ],
+   "village": "Puntowitz",
+   "villageM": 130,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Puntowitz-Kobelnitz track",
+    "m": 1614
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "c_gren",
+   "name": "Grenadier Division",
+   "arm": "inf",
+   "leg": "0->6",
+   "window": [
+    "10:05",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "brook from Blasowitz (BROOKS[0])",
+   "at": [
+    233.8,
+    221.6
+   ],
+   "village": "Puntowitz",
+   "villageM": 657,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "c_gren",
+   "name": "Grenadier Division",
+   "arm": "inf",
+   "leg": "6->7",
+   "window": [
+    "13:00",
+    "13:29"
+   ],
+   "ice": false,
+   "stream": "Pratzen brook (BROOKS[1])",
+   "at": [
+    258.3,
+    250.7
+   ],
+   "village": "Pratzen",
+   "villageM": 610,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "c_gren",
+   "name": "Grenadier Division",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "13:29",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "brook south of the Pratzeberg (BROOKS[2])",
+   "at": [
+    248.4,
+    342.8
+   ],
+   "village": "Sokolnitz",
+   "villageM": 1457,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "ahq",
+   "name": "Allied Headquarters",
+   "arm": "hq",
+   "leg": "6->8",
+   "window": [
+    "11:15",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Rakovec (BROOKS[4])",
+   "at": [
+    426.8,
+    206.3
+   ],
+   "village": "Krzenowitz",
+   "villageM": 495,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Krzenowitz road",
+    "m": 495
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "buxhowden",
+   "name": "Left Wing Command",
+   "arm": "hq",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Litava",
+   "at": [
+    299.7,
+    369.1
+   ],
+   "village": "Augezd",
+   "villageM": 126,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 126
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "kienmayer",
+   "name": "Kienmayer's Advance Guard",
+   "arm": "mixed",
+   "leg": "7->8",
+   "window": [
+    "14:30",
+    "15:00"
+   ],
+   "ice": false,
+   "stream": "Litava",
+   "at": [
+    294.5,
+    377.1
+   ],
+   "village": "Augezd",
+   "villageM": 178,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 178
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "dok",
+   "name": "First Column",
+   "arm": "inf",
+   "leg": "8->9",
+   "window": [
+    "15:00",
+    "17:00"
+   ],
+   "ice": true,
+   "stream": "Goldbach",
+   "at": [
+    272.3,
+    415
+   ],
+   "village": "Satschan",
+   "villageM": 972,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 1860
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "lang",
+   "name": "Second Column",
+   "arm": "inf",
+   "leg": "1->2",
+   "window": [
+    "07:20",
+    "08:00"
+   ],
+   "ice": false,
+   "stream": "brook south of the Pratzeberg (BROOKS[2])",
+   "at": [
+    258.6,
+    334.2
+   ],
+   "village": "Augezd",
+   "villageM": 1701,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "lang",
+   "name": "Second Column",
+   "arm": "inf",
+   "leg": "4->7",
+   "window": [
+    "10:30",
+    "12:45"
+   ],
+   "ice": false,
+   "stream": "brook south of the Pratzeberg (BROOKS[2])",
+   "at": [
+    237.8,
+    349.8
+   ],
+   "village": "Sokolnitz",
+   "villageM": 1056,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": null,
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "prz",
+   "name": "Third Column",
+   "arm": "inf",
+   "leg": "1->2",
+   "window": [
+    "07:18",
+    "08:00"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    217.4,
+    338.9
+   ],
+   "village": "Sokolnitz",
+   "villageM": 876,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Kobelnitz-Sokolnitz track",
+    "m": 1130
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "prz",
+   "name": "Third Column",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "14:10",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Goldbach",
+   "at": [
+    215.8,
+    338.7
+   ],
+   "village": "Sokolnitz",
+   "villageM": 866,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Kobelnitz-Sokolnitz track",
+    "m": 1115
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "milo",
+   "name": "Miloradovich's Russians",
+   "arm": "inf",
+   "leg": "6->8",
+   "window": [
+    "11:15",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Rakovec (BROOKS[4])",
+   "at": [
+    435.8,
+    214.2
+   ],
+   "village": "Krzenowitz",
+   "villageM": 872,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Krzenowitz road",
+    "m": 872
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "milo",
+   "name": "Miloradovich's Russians",
+   "arm": "inf",
+   "leg": "6->8",
+   "window": [
+    "11:15",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Litava",
+   "at": [
+    444.7,
+    210.5
+   ],
+   "village": "Krzenowitz",
+   "villageM": 1044,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 6914
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "milo",
+   "name": "Miloradovich's Russians",
+   "arm": "inf",
+   "leg": "8->9",
+   "window": [
+    "14:30",
+    "17:00"
+   ],
+   "ice": false,
+   "stream": "Litava",
+   "at": [
+    449.2,
+    205.6
+   ],
+   "village": "Krzenowitz",
+   "villageM": 1122,
+   "inVillagePlace": false,
+   "nearestRoadCrossing": {
+    "road": "Telnitz-Augezd track",
+    "m": 7125
+   },
+   "atRoadCrossing": false,
+   "kind": "open"
+  },
+  {
+   "id": "kollo",
+   "name": "Kollowrat's Austrians",
+   "arm": "inf",
+   "leg": "6->8",
+   "window": [
+    "11:15",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Rakovec (BROOKS[4])",
+   "at": [
+    416.4,
+    197.2
+   ],
+   "village": "Krzenowitz",
+   "villageM": 59,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Krzenowitz road",
+    "m": 59
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "rg_inf",
+   "name": "Guard Infantry",
+   "arm": "guard",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Rakovec (BROOKS[4])",
+   "at": [
+    413.2,
+    190.2
+   ],
+   "village": "Krzenowitz",
+   "villageM": 193,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Krzenowitz road",
+    "m": 193
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "rg_cav",
+   "name": "Guard Cavalry",
+   "arm": "cav",
+   "leg": "0->6",
+   "window": [
+    "04:00",
+    "11:15"
+   ],
+   "ice": false,
+   "stream": "Rakovec (BROOKS[4])",
+   "at": [
+    414,
+    192.6
+   ],
+   "village": "Krzenowitz",
+   "villageM": 111,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Krzenowitz road",
+    "m": 111
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  },
+  {
+   "id": "rg_cav",
+   "name": "Guard Cavalry",
+   "arm": "cav",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "stream": "Rakovec (BROOKS[4])",
+   "at": [
+    411.7,
+    185
+   ],
+   "village": "Krzenowitz",
+   "villageM": 362,
+   "inVillagePlace": true,
+   "nearestRoadCrossing": {
+    "road": "Krzenowitz road",
+    "m": 362
+   },
+   "atRoadCrossing": false,
+   "kind": "in a village's place"
+  }
+ ],
+ "legWet": [
+  {
+   "id": "gqg",
+   "arm": "hq",
+   "leg": "0->6",
+   "window": [
+    "12:00",
+    "12:40"
+   ],
+   "ice": false,
+   "km": 4.77,
+   "marsh": 0,
+   "water": 0.05,
+   "longestWetM": 237,
+   "longestWetAt": [
+    240.2,
+    167.4
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "sthilaire",
+   "arm": "inf",
+   "leg": "0->2",
+   "window": [
+    "04:00",
+    "08:00"
+   ],
+   "ice": false,
+   "km": 0.35,
+   "marsh": 0,
+   "water": 1,
+   "longestWetM": 379,
+   "longestWetAt": [
+    206,
+    231
+   ],
+   "nearVillage": "Puntowitz"
+  },
+  {
+   "id": "sthilaire",
+   "arm": "inf",
+   "leg": "2->3",
+   "window": [
+    "08:45",
+    "09:15"
+   ],
+   "ice": false,
+   "km": 2.48,
+   "marsh": 0,
+   "water": 0.189,
+   "longestWetM": 284,
+   "longestWetAt": [
+    214.4,
+    230.3
+   ],
+   "nearVillage": "Puntowitz"
+  },
+  {
+   "id": "sthilaire",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "14:00",
+    "14:30"
+   ],
+   "ice": false,
+   "km": 1.78,
+   "marsh": 0,
+   "water": 0.053,
+   "longestWetM": 95,
+   "longestWetAt": [
+    236,
+    352
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "sthilaire",
+   "arm": "inf",
+   "leg": "8->9",
+   "window": [
+    "14:30",
+    "17:00"
+   ],
+   "ice": false,
+   "km": 1.34,
+   "marsh": 0,
+   "water": 0.058,
+   "longestWetM": 79,
+   "longestWetAt": [
+    236.9,
+    353.8
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "vandamme",
+   "arm": "inf",
+   "leg": "2->3",
+   "window": [
+    "08:45",
+    "09:14"
+   ],
+   "ice": false,
+   "km": 2.4,
+   "marsh": 0,
+   "water": 0.137,
+   "longestWetM": 332,
+   "longestWetAt": [
+    236.3,
+    176.1
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "leg": "0->1",
+   "window": [
+    "04:00",
+    "07:00"
+   ],
+   "ice": false,
+   "km": 2.12,
+   "marsh": 0.324,
+   "water": 0.301,
+   "longestWetM": 995,
+   "longestWetAt": [
+    211,
+    379
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "leg": "1->2",
+   "window": [
+    "07:00",
+    "08:00"
+   ],
+   "ice": false,
+   "km": 0.44,
+   "marsh": 0.69,
+   "water": 0.31,
+   "longestWetM": 458,
+   "longestWetAt": [
+    206,
+    366
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "leg": "2->4",
+   "window": [
+    "08:00",
+    "09:30"
+   ],
+   "ice": false,
+   "km": 1.49,
+   "marsh": 0.448,
+   "water": 0.083,
+   "longestWetM": 679,
+   "longestWetAt": [
+    212.2,
+    346.1
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "leg": "4->7",
+   "window": [
+    "13:00",
+    "14:00"
+   ],
+   "ice": false,
+   "km": 1.89,
+   "marsh": 0.339,
+   "water": 0.124,
+   "longestWetM": 774,
+   "longestWetAt": [
+    213,
+    371
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "14:00",
+    "15:00"
+   ],
+   "ice": false,
+   "km": 0.81,
+   "marsh": 0.434,
+   "water": 0.566,
+   "longestWetM": 837,
+   "longestWetAt": [
+    217,
+    387
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "leg": "8->9",
+   "window": [
+    "15:00",
+    "17:00"
+   ],
+   "ice": false,
+   "km": 0.4,
+   "marsh": 0.852,
+   "water": 0,
+   "longestWetM": 363,
+   "longestWetAt": [
+    226.3,
+    392.1
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "friant",
+   "arm": "inf",
+   "leg": "5->7",
+   "window": [
+    "10:30",
+    "12:45"
+   ],
+   "ice": false,
+   "km": 0.28,
+   "marsh": 0.526,
+   "water": 0,
+   "longestWetM": 158,
+   "longestWetAt": [
+    204,
+    390
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "friant",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "km": 0.71,
+   "marsh": 0.652,
+   "water": 0.348,
+   "longestWetM": 727,
+   "longestWetAt": [
+    214,
+    410
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "friant",
+   "arm": "inf",
+   "leg": "8->9",
+   "window": [
+    "14:30",
+    "17:00"
+   ],
+   "ice": false,
+   "km": 0.26,
+   "marsh": 0,
+   "water": 1,
+   "longestWetM": 284,
+   "longestWetAt": [
+    222,
+    412
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "bourcier",
+   "arm": "cav",
+   "leg": "3->7",
+   "window": [
+    "08:45",
+    "12:45"
+   ],
+   "ice": false,
+   "km": 0.55,
+   "marsh": 0.333,
+   "water": 0,
+   "longestWetM": 190,
+   "longestWetAt": [
+    201,
+    416
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "bourcier",
+   "arm": "cav",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "km": 1.82,
+   "marsh": 0.65,
+   "water": 0.137,
+   "longestWetM": 1454,
+   "longestWetAt": [
+    242.1,
+    398.6
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "bourcier",
+   "arm": "cav",
+   "leg": "8->9",
+   "window": [
+    "14:30",
+    "17:00"
+   ],
+   "ice": false,
+   "km": 1.56,
+   "marsh": 0,
+   "water": 0.11,
+   "longestWetM": 174,
+   "longestWetAt": [
+    297,
+    374
+   ],
+   "nearVillage": "Augezd"
+  },
+  {
+   "id": "caffarelli",
+   "arm": "inf",
+   "leg": "0->5",
+   "window": [
+    "09:30",
+    "10:30"
+   ],
+   "ice": false,
+   "km": 1.78,
+   "marsh": 0,
+   "water": 0.14,
+   "longestWetM": 253,
+   "longestWetAt": [
+    252.9,
+    116.6
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "kellermann",
+   "arm": "cav",
+   "leg": "0->5",
+   "window": [
+    "04:00",
+    "10:30"
+   ],
+   "ice": false,
+   "km": 1.33,
+   "marsh": 0,
+   "water": 0.174,
+   "longestWetM": 237,
+   "longestWetAt": [
+    248.9,
+    134.8
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "nansouty",
+   "arm": "cav",
+   "leg": "0->5",
+   "window": [
+    "04:00",
+    "10:30"
+   ],
+   "ice": false,
+   "km": 1.85,
+   "marsh": 0,
+   "water": 0.118,
+   "longestWetM": 221,
+   "longestWetAt": [
+    247.5,
+    141.9
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "dhautpoul",
+   "arm": "cav",
+   "leg": "0->5",
+   "window": [
+    "04:00",
+    "10:30"
+   ],
+   "ice": false,
+   "km": 2.04,
+   "marsh": 0,
+   "water": 0.122,
+   "longestWetM": 253,
+   "longestWetAt": [
+    244.8,
+    152.2
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "walther",
+   "arm": "cav",
+   "leg": "0->5",
+   "window": [
+    "04:00",
+    "10:30"
+   ],
+   "ice": false,
+   "km": 2.09,
+   "marsh": 0,
+   "water": 0.112,
+   "longestWetM": 237,
+   "longestWetAt": [
+    249,
+    127.7
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "rivaud",
+   "arm": "inf",
+   "leg": "0->3",
+   "window": [
+    "08:45",
+    "09:25"
+   ],
+   "ice": false,
+   "km": 1.97,
+   "marsh": 0,
+   "water": 0.143,
+   "longestWetM": 284,
+   "longestWetAt": [
+    238.7,
+    171.1
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "drouet",
+   "arm": "inf",
+   "leg": "0->3",
+   "window": [
+    "08:45",
+    "09:26"
+   ],
+   "ice": false,
+   "km": 2,
+   "marsh": 0,
+   "water": 0.133,
+   "longestWetM": 269,
+   "longestWetAt": [
+    227.6,
+    193.2
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "guard_inf",
+   "arm": "guard",
+   "leg": "0->6",
+   "window": [
+    "10:15",
+    "11:15"
+   ],
+   "ice": false,
+   "km": 4.02,
+   "marsh": 0,
+   "water": 0.129,
+   "longestWetM": 521,
+   "longestWetAt": [
+    226.8,
+    196.6
+   ],
+   "nearVillage": "Puntowitz"
+  },
+  {
+   "id": "guard_cav",
+   "arm": "cav",
+   "leg": "0->6",
+   "window": [
+    "10:30",
+    "11:15"
+   ],
+   "ice": false,
+   "km": 3.64,
+   "marsh": 0,
+   "water": 0.103,
+   "longestWetM": 363,
+   "longestWetAt": [
+    233.7,
+    180.7
+   ],
+   "nearVillage": "Girzikowitz"
+  },
+  {
+   "id": "c_gren",
+   "arm": "inf",
+   "leg": "0->6",
+   "window": [
+    "10:05",
+    "11:15"
+   ],
+   "ice": false,
+   "km": 3.98,
+   "marsh": 0,
+   "water": 0.138,
+   "longestWetM": 458,
+   "longestWetAt": [
+    214.6,
+    220.2
+   ],
+   "nearVillage": "Puntowitz"
+  },
+  {
+   "id": "buxhowden",
+   "arm": "hq",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "km": 1.19,
+   "marsh": 0,
+   "water": 0.182,
+   "longestWetM": 221,
+   "longestWetAt": [
+    300,
+    369
+   ],
+   "nearVillage": "Augezd"
+  },
+  {
+   "id": "buxhowden",
+   "arm": "hq",
+   "leg": "8->9",
+   "window": [
+    "14:30",
+    "17:00"
+   ],
+   "ice": true,
+   "km": 2,
+   "marsh": 0.141,
+   "water": 0.547,
+   "longestWetM": 1090,
+   "longestWetAt": [
+    280,
+    429
+   ],
+   "nearVillage": "Satschan"
+  },
+  {
+   "id": "kienmayer",
+   "arm": "mixed",
+   "leg": "0->1",
+   "window": [
+    "04:00",
+    "07:00"
+   ],
+   "ice": false,
+   "km": 2.83,
+   "marsh": 0.367,
+   "water": 0.011,
+   "longestWetM": 1074,
+   "longestWetAt": [
+    236,
+    398
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "kienmayer",
+   "arm": "mixed",
+   "leg": "1->2",
+   "window": [
+    "07:00",
+    "08:00"
+   ],
+   "ice": false,
+   "km": 0.46,
+   "marsh": 1,
+   "water": 0,
+   "longestWetM": 490,
+   "longestWetAt": [
+    222,
+    402
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "kienmayer",
+   "arm": "mixed",
+   "leg": "2->7",
+   "window": [
+    "08:00",
+    "12:45"
+   ],
+   "ice": false,
+   "km": 0.64,
+   "marsh": 1,
+   "water": 0,
+   "longestWetM": 664,
+   "longestWetAt": [
+    242,
+    400
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "kienmayer",
+   "arm": "mixed",
+   "leg": "7->8",
+   "window": [
+    "14:30",
+    "15:00"
+   ],
+   "ice": false,
+   "km": 1.94,
+   "marsh": 0.056,
+   "water": 0.097,
+   "longestWetM": 190,
+   "longestWetAt": [
+    296,
+    377
+   ],
+   "nearVillage": "Augezd"
+  },
+  {
+   "id": "kienmayer",
+   "arm": "mixed",
+   "leg": "8->9",
+   "window": [
+    "15:00",
+    "17:00"
+   ],
+   "ice": true,
+   "km": 2.12,
+   "marsh": 0.14,
+   "water": 0.588,
+   "longestWetM": 1438,
+   "longestWetAt": [
+    269,
+    436
+   ],
+   "nearVillage": "Satschan"
+  },
+  {
+   "id": "dok",
+   "arm": "inf",
+   "leg": "1->2",
+   "window": [
+    "07:33",
+    "08:00"
+   ],
+   "ice": false,
+   "km": 1.16,
+   "marsh": 0.027,
+   "water": 0,
+   "longestWetM": 32,
+   "longestWetAt": [
+    232,
+    397
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "dok",
+   "arm": "inf",
+   "leg": "2->7",
+   "window": [
+    "08:00",
+    "12:45"
+   ],
+   "ice": false,
+   "km": 0.29,
+   "marsh": 1,
+   "water": 0,
+   "longestWetM": 316,
+   "longestWetAt": [
+    226,
+    404
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "dok",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "14:30",
+    "15:00"
+   ],
+   "ice": false,
+   "km": 1.47,
+   "marsh": 0.316,
+   "water": 0,
+   "longestWetM": 474,
+   "longestWetAt": [
+    239,
+    397.8
+   ],
+   "nearVillage": "Telnitz"
+  },
+  {
+   "id": "dok",
+   "arm": "inf",
+   "leg": "8->9",
+   "window": [
+    "15:00",
+    "17:00"
+   ],
+   "ice": true,
+   "km": 2.64,
+   "marsh": 0,
+   "water": 0.728,
+   "longestWetM": 1943,
+   "longestWetAt": [
+    265,
+    429
+   ],
+   "nearVillage": "Satschan"
+  },
+  {
+   "id": "lang",
+   "arm": "inf",
+   "leg": "1->2",
+   "window": [
+    "07:20",
+    "08:00"
+   ],
+   "ice": false,
+   "km": 1.25,
+   "marsh": 0,
+   "water": 0.111,
+   "longestWetM": 142,
+   "longestWetAt": [
+    235,
+    350
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "lang",
+   "arm": "inf",
+   "leg": "2->4",
+   "window": [
+    "08:00",
+    "10:30"
+   ],
+   "ice": false,
+   "km": 0.58,
+   "marsh": 0,
+   "water": 0.263,
+   "longestWetM": 158,
+   "longestWetAt": [
+    237.9,
+    346.6
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "lang",
+   "arm": "inf",
+   "leg": "4->7",
+   "window": [
+    "10:30",
+    "12:45"
+   ],
+   "ice": false,
+   "km": 0.8,
+   "marsh": 0,
+   "water": 0.404,
+   "longestWetM": 332,
+   "longestWetAt": [
+    233,
+    357
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "lang",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "12:45",
+    "14:30"
+   ],
+   "ice": false,
+   "km": 0.92,
+   "marsh": 0,
+   "water": 0.017,
+   "longestWetM": 16,
+   "longestWetAt": [
+    233,
+    357
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "prz",
+   "arm": "inf",
+   "leg": "1->2",
+   "window": [
+    "07:18",
+    "08:00"
+   ],
+   "ice": false,
+   "km": 2.15,
+   "marsh": 0,
+   "water": 0.029,
+   "longestWetM": 63,
+   "longestWetAt": [
+    215,
+    341
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "prz",
+   "arm": "inf",
+   "leg": "7->8",
+   "window": [
+    "14:10",
+    "14:30"
+   ],
+   "ice": false,
+   "km": 1.08,
+   "marsh": 0,
+   "water": 0.043,
+   "longestWetM": 47,
+   "longestWetAt": [
+    215.3,
+    340.1
+   ],
+   "nearVillage": "Sokolnitz"
+  },
+  {
+   "id": "milo",
+   "arm": "inf",
+   "leg": "6->8",
+   "window": [
+    "11:15",
+    "14:30"
+   ],
+   "ice": false,
+   "km": 1.84,
+   "marsh": 0,
+   "water": 0.263,
+   "longestWetM": 490,
+   "longestWetAt": [
+    445.5,
+    210.2
+   ],
+   "nearVillage": "Krzenowitz"
+  }
+ ],
+ "anchors": [
+  {
+   "id": "gqg",
+   "ph": 0,
+   "side": "fr",
+   "arm": "hq",
+   "p": [
+    177,
+    134
+   ],
+   "cover": "field",
+   "nearestStream": "Goldbach",
+   "streamM": 2112,
+   "goldbachSide": null,
+   "goldbachM": 2112
+  },
+  {
+   "id": "gqg",
+   "ph": 6,
+   "side": "fr",
+   "arm": "hq",
+   "p": [
+    309,
+    207
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1254,
+   "goldbachSide": null,
+   "goldbachM": 2609
+  },
+  {
+   "id": "gqg",
+   "ph": 7,
+   "side": "fr",
+   "arm": "hq",
+   "p": [
+    307,
+    227
+   ],
+   "cover": "track",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 822,
+   "goldbachSide": null,
+   "goldbachM": 2827
+  },
+  {
+   "id": "gqg",
+   "ph": 8,
+   "side": "fr",
+   "arm": "hq",
+   "p": [
+    294,
+    352
+   ],
+   "cover": "meadow",
+   "nearestStream": "Litava",
+   "streamM": 497,
+   "goldbachSide": null,
+   "goldbachM": 2070
+  },
+  {
+   "id": "heightguns",
+   "ph": 7,
+   "side": "fr",
+   "arm": "art",
+   "p": [
+    275,
+    283
+   ],
+   "cover": "track",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 1108,
+   "goldbachSide": null,
+   "goldbachM": 2137
+  },
+  {
+   "id": "heightguns",
+   "ph": 8,
+   "side": "fr",
+   "arm": "art",
+   "p": [
+    288,
+    357
+   ],
+   "cover": "meadow",
+   "nearestStream": "Litava",
+   "streamM": 530,
+   "goldbachSide": null,
+   "goldbachM": 1872
+  },
+  {
+   "id": "heightguns",
+   "ph": 9,
+   "side": "fr",
+   "arm": "art",
+   "p": [
+    288,
+    357
+   ],
+   "cover": "meadow",
+   "nearestStream": "Litava",
+   "streamM": 530,
+   "goldbachSide": null,
+   "goldbachM": 1872
+  },
+  {
+   "id": "sthilaire",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    201,
+    221
+   ],
+   "cover": "water",
+   "nearestStream": "brook west of Puntowitz-Kobelnitz (BROOKS[3])",
+   "streamM": 33,
+   "goldbachSide": "west",
+   "goldbachM": 336
+  },
+  {
+   "id": "sthilaire",
+   "ph": 2,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    206,
+    231
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 146,
+   "goldbachSide": "west",
+   "goldbachM": 146
+  },
+  {
+   "id": "sthilaire",
+   "ph": 3,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    267,
+    275
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 804,
+   "goldbachSide": null,
+   "goldbachM": 1878
+  },
+  {
+   "id": "sthilaire",
+   "ph": 4,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    283,
+    287
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 998,
+   "goldbachSide": null,
+   "goldbachM": 2362
+  },
+  {
+   "id": "sthilaire",
+   "ph": 5,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    287,
+    282
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 1181,
+   "goldbachSide": null,
+   "goldbachM": 2516
+  },
+  {
+   "id": "sthilaire",
+   "ph": 6,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    288,
+    272
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1044,
+   "goldbachSide": null,
+   "goldbachM": 2539
+  },
+  {
+   "id": "sthilaire",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    285,
+    324
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 316,
+   "goldbachSide": null,
+   "goldbachM": 2161
+  },
+  {
+   "id": "sthilaire",
+   "ph": 8,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    236,
+    352
+   ],
+   "cover": "water",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 26,
+   "goldbachSide": "east",
+   "goldbachM": 481
+  },
+  {
+   "id": "sthilaire",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    255,
+    390
+   ],
+   "cover": "track",
+   "nearestStream": "Goldbach",
+   "streamM": 790,
+   "goldbachSide": "east",
+   "goldbachM": 790
+  },
+  {
+   "id": "vandamme",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    217,
+    171
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 503,
+   "goldbachSide": "west",
+   "goldbachM": 503
+  },
+  {
+   "id": "vandamme",
+   "ph": 2,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    221,
+    182
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 238,
+   "goldbachSide": "west",
+   "goldbachM": 238
+  },
+  {
+   "id": "vandamme",
+   "ph": 3,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    282,
+    209
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 885,
+   "goldbachSide": null,
+   "goldbachM": 1868
+  },
+  {
+   "id": "vandamme",
+   "ph": 4,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    309,
+    207
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1254,
+   "goldbachSide": null,
+   "goldbachM": 2609
+  },
+  {
+   "id": "vandamme",
+   "ph": 6,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    296,
+    206
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1062,
+   "goldbachSide": null,
+   "goldbachM": 2225
+  },
+  {
+   "id": "vandamme",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    289,
+    243
+   ],
+   "cover": "village",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 268,
+   "goldbachSide": null,
+   "goldbachM": 2502
+  },
+  {
+   "id": "vandamme",
+   "ph": 8,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    270,
+    347
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 540,
+   "goldbachSide": null,
+   "goldbachM": 1550
+  },
+  {
+   "id": "vandamme",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    287,
+    365
+   ],
+   "cover": "village",
+   "nearestStream": "Litava",
+   "streamM": 386,
+   "goldbachSide": null,
+   "goldbachM": 1618
+  },
+  {
+   "id": "legrand",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    208,
+    312
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 122,
+   "goldbachSide": "west",
+   "goldbachM": 122
+  },
+  {
+   "id": "legrand",
+   "ph": 1,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    211,
+    379
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 46,
+   "goldbachSide": "west",
+   "goldbachM": 46
+  },
+  {
+   "id": "legrand",
+   "ph": 2,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    206,
+    366
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 259,
+   "goldbachSide": "west",
+   "goldbachM": 259
+  },
+  {
+   "id": "legrand",
+   "ph": 4,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    220,
+    321
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 205,
+   "goldbachSide": "east",
+   "goldbachM": 205
+  },
+  {
+   "id": "legrand",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    213,
+    371
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 15,
+   "goldbachSide": "west",
+   "goldbachM": 15
+  },
+  {
+   "id": "legrand",
+   "ph": 8,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    217,
+    387
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 131,
+   "goldbachSide": "east",
+   "goldbachM": 131
+  },
+  {
+   "id": "legrand",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    228,
+    393
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 469,
+   "goldbachSide": "east",
+   "goldbachM": 469
+  },
+  {
+   "id": "friant",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    26,
+    495
+   ],
+   "cover": "track",
+   "nearestStream": "Litava",
+   "streamM": 5797,
+   "goldbachSide": null,
+   "goldbachM": 6520
+  },
+  {
+   "id": "friant",
+   "ph": 1,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    167,
+    410
+   ],
+   "cover": "field",
+   "nearestStream": "Goldbach",
+   "streamM": 1483,
+   "goldbachSide": null,
+   "goldbachM": 1483
+  },
+  {
+   "id": "friant",
+   "ph": 3,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    198,
+    402
+   ],
+   "cover": "village",
+   "nearestStream": "Goldbach",
+   "streamM": 492,
+   "goldbachSide": "west",
+   "goldbachM": 492
+  },
+  {
+   "id": "friant",
+   "ph": 5,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    200,
+    398
+   ],
+   "cover": "village",
+   "nearestStream": "Goldbach",
+   "streamM": 423,
+   "goldbachSide": "west",
+   "goldbachM": 423
+  },
+  {
+   "id": "friant",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    204,
+    390
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 284,
+   "goldbachSide": "west",
+   "goldbachM": 284
+  },
+  {
+   "id": "friant",
+   "ph": 8,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    214,
+    410
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 0,
+   "goldbachSide": "east",
+   "goldbachM": 0
+  },
+  {
+   "id": "friant",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    222,
+    412
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 8,
+   "goldbachSide": null,
+   "goldbachM": 8
+  },
+  {
+   "id": "bourcier",
+   "ph": 0,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    22,
+    489
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 5939,
+   "goldbachSide": null,
+   "goldbachM": 6560
+  },
+  {
+   "id": "bourcier",
+   "ph": 3,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    184,
+    420
+   ],
+   "cover": "track",
+   "nearestStream": "Goldbach",
+   "streamM": 999,
+   "goldbachSide": null,
+   "goldbachM": 999
+  },
+  {
+   "id": "bourcier",
+   "ph": 7,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    201,
+    416
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 452,
+   "goldbachSide": null,
+   "goldbachM": 452
+  },
+  {
+   "id": "bourcier",
+   "ph": 8,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    253,
+    393
+   ],
+   "cover": "track",
+   "nearestStream": "Goldbach",
+   "streamM": 695,
+   "goldbachSide": "east",
+   "goldbachM": 695
+  },
+  {
+   "id": "bourcier",
+   "ph": 9,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    297,
+    374
+   ],
+   "cover": "water",
+   "nearestStream": "Litava",
+   "streamM": 28,
+   "goldbachSide": null,
+   "goldbachM": 1456
+  },
+  {
+   "id": "caffarelli",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    240,
+    115
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 274,
+   "goldbachSide": "west",
+   "goldbachM": 274
+  },
+  {
+   "id": "caffarelli",
+   "ph": 5,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    296,
+    122
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 1032,
+   "goldbachSide": null,
+   "goldbachM": 1505
+  },
+  {
+   "id": "caffarelli",
+   "ph": 6,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    321,
+    120
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 1685,
+   "goldbachSide": null,
+   "goldbachM": 2270
+  },
+  {
+   "id": "caffarelli",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    347,
+    114
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 2051,
+   "goldbachSide": null,
+   "goldbachM": 3069
+  },
+  {
+   "id": "caffarelli",
+   "ph": 8,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    392,
+    105
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1450,
+   "goldbachSide": null,
+   "goldbachM": 4489
+  },
+  {
+   "id": "caffarelli",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    423,
+    96
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1843,
+   "goldbachSide": null,
+   "goldbachM": 5482
+  },
+  {
+   "id": "suchet",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    235,
+    103
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 510,
+   "goldbachSide": null,
+   "goldbachM": 510
+  },
+  {
+   "id": "suchet",
+   "ph": 5,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    254,
+    88
+   ],
+   "cover": "track",
+   "nearestStream": "Goldbach",
+   "streamM": 676,
+   "goldbachSide": null,
+   "goldbachM": 676
+  },
+  {
+   "id": "suchet",
+   "ph": 6,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    279,
+    81
+   ],
+   "cover": "track",
+   "nearestStream": "Goldbach",
+   "streamM": 1274,
+   "goldbachSide": null,
+   "goldbachM": 1274
+  },
+  {
+   "id": "suchet",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    300,
+    76
+   ],
+   "cover": "track",
+   "nearestStream": "Goldbach",
+   "streamM": 1893,
+   "goldbachSide": null,
+   "goldbachM": 1893
+  },
+  {
+   "id": "suchet",
+   "ph": 8,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    348,
+    62
+   ],
+   "cover": "track",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 3246,
+   "goldbachSide": null,
+   "goldbachM": 3434
+  },
+  {
+   "id": "suchet",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    364,
+    54
+   ],
+   "cover": "village",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 3251,
+   "goldbachSide": null,
+   "goldbachM": 4000
+  },
+  {
+   "id": "santon",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    222,
+    87
+   ],
+   "cover": "field",
+   "nearestStream": "Goldbach",
+   "streamM": 1125,
+   "goldbachSide": null,
+   "goldbachM": 1125
+  },
+  {
+   "id": "kellermann",
+   "ph": 0,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    242,
+    135
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 90,
+   "goldbachSide": "west",
+   "goldbachM": 90
+  },
+  {
+   "id": "kellermann",
+   "ph": 5,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    284,
+    134
+   ],
+   "cover": "track",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 500,
+   "goldbachSide": "east",
+   "goldbachM": 1206
+  },
+  {
+   "id": "kellermann",
+   "ph": 6,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    312,
+    131
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 1274,
+   "goldbachSide": null,
+   "goldbachM": 2056
+  },
+  {
+   "id": "kellermann",
+   "ph": 7,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    343,
+    127
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1972,
+   "goldbachSide": null,
+   "goldbachM": 2993
+  },
+  {
+   "id": "kellermann",
+   "ph": 9,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    383,
+    118
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1160,
+   "goldbachSide": null,
+   "goldbachM": 4212
+  },
+  {
+   "id": "nansouty",
+   "ph": 0,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    219,
+    138
+   ],
+   "cover": "field",
+   "nearestStream": "Goldbach",
+   "streamM": 785,
+   "goldbachSide": "west",
+   "goldbachM": 785
+  },
+  {
+   "id": "nansouty",
+   "ph": 5,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    277,
+    146
+   ],
+   "cover": "meadow",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 71,
+   "goldbachSide": "east",
+   "goldbachM": 1062
+  },
+  {
+   "id": "nansouty",
+   "ph": 6,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    307,
+    142
+   ],
+   "cover": "village",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 1023,
+   "goldbachSide": null,
+   "goldbachM": 1968
+  },
+  {
+   "id": "nansouty",
+   "ph": 7,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    339,
+    139
+   ],
+   "cover": "village",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1990,
+   "goldbachSide": null,
+   "goldbachM": 2942
+  },
+  {
+   "id": "nansouty",
+   "ph": 9,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    376,
+    128
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1052,
+   "goldbachSide": null,
+   "goldbachM": 4026
+  },
+  {
+   "id": "dhautpoul",
+   "ph": 0,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    201,
+    146
+   ],
+   "cover": "field",
+   "nearestStream": "Goldbach",
+   "streamM": 1294,
+   "goldbachSide": null,
+   "goldbachM": 1294
+  },
+  {
+   "id": "dhautpoul",
+   "ph": 5,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    265,
+    155
+   ],
+   "cover": "meadow",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 170,
+   "goldbachSide": "east",
+   "goldbachM": 745
+  },
+  {
+   "id": "dhautpoul",
+   "ph": 7,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    332,
+    150
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 1804,
+   "goldbachSide": null,
+   "goldbachM": 2792
+  },
+  {
+   "id": "dhautpoul",
+   "ph": 9,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    364,
+    138
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1229,
+   "goldbachSide": null,
+   "goldbachM": 3711
+  },
+  {
+   "id": "walther",
+   "ph": 0,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    189,
+    125
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 1794,
+   "goldbachSide": null,
+   "goldbachM": 1794
+  },
+  {
+   "id": "walther",
+   "ph": 5,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    255,
+    128
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 271,
+   "goldbachSide": "east",
+   "goldbachM": 271
+  },
+  {
+   "id": "walther",
+   "ph": 7,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    321,
+    120
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 1685,
+   "goldbachSide": null,
+   "goldbachM": 2270
+  },
+  {
+   "id": "walther",
+   "ph": 9,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    344,
+    110
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 2200,
+   "goldbachSide": null,
+   "goldbachM": 2970
+  },
+  {
+   "id": "rivaud",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    189,
+    164
+   ],
+   "cover": "track",
+   "nearestStream": "brook west of Puntowitz-Kobelnitz (BROOKS[3])",
+   "streamM": 1334,
+   "goldbachSide": null,
+   "goldbachM": 1396
+  },
+  {
+   "id": "rivaud",
+   "ph": 3,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    243,
+    179
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 346,
+   "goldbachSide": "east",
+   "goldbachM": 346
+  },
+  {
+   "id": "rivaud",
+   "ph": 6,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    284,
+    183
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 763,
+   "goldbachSide": null,
+   "goldbachM": 1568
+  },
+  {
+   "id": "rivaud",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    317,
+    205
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1475,
+   "goldbachSide": null,
+   "goldbachM": 2809
+  },
+  {
+   "id": "rivaud",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    334,
+    186
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 2219,
+   "goldbachSide": null,
+   "goldbachM": 3082
+  },
+  {
+   "id": "drouet",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    179,
+    177
+   ],
+   "cover": "field",
+   "nearestStream": "brook west of Puntowitz-Kobelnitz (BROOKS[3])",
+   "streamM": 1087,
+   "goldbachSide": null,
+   "goldbachM": 1502
+  },
+  {
+   "id": "drouet",
+   "ph": 3,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    232,
+    194
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 239,
+   "goldbachSide": "east",
+   "goldbachM": 239
+  },
+  {
+   "id": "drouet",
+   "ph": 6,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    290,
+    206
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1004,
+   "goldbachSide": null,
+   "goldbachM": 2055
+  },
+  {
+   "id": "drouet",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    313,
+    217
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1139,
+   "goldbachSide": null,
+   "goldbachM": 2860
+  },
+  {
+   "id": "drouet",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    329,
+    205
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1771,
+   "goldbachSide": null,
+   "goldbachM": 3151
+  },
+  {
+   "id": "guard_inf",
+   "ph": 0,
+   "side": "fr",
+   "arm": "guard",
+   "p": [
+    187,
+    149
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 1659,
+   "goldbachSide": null,
+   "goldbachM": 1659
+  },
+  {
+   "id": "guard_inf",
+   "ph": 6,
+   "side": "fr",
+   "arm": "guard",
+   "p": [
+    276,
+    213
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 790,
+   "goldbachSide": null,
+   "goldbachM": 1753
+  },
+  {
+   "id": "guard_inf",
+   "ph": 7,
+   "side": "fr",
+   "arm": "guard",
+   "p": [
+    291,
+    232
+   ],
+   "cover": "track",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 298,
+   "goldbachSide": null,
+   "goldbachM": 2440
+  },
+  {
+   "id": "guard_inf",
+   "ph": 9,
+   "side": "fr",
+   "arm": "guard",
+   "p": [
+    286,
+    249
+   ],
+   "cover": "village",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 378,
+   "goldbachSide": null,
+   "goldbachM": 2428
+  },
+  {
+   "id": "guard_cav",
+   "ph": 0,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    201,
+    154
+   ],
+   "cover": "field",
+   "nearestStream": "Goldbach",
+   "streamM": 1192,
+   "goldbachSide": "west",
+   "goldbachM": 1192
+  },
+  {
+   "id": "guard_cav",
+   "ph": 6,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    289,
+    209
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 905,
+   "goldbachSide": null,
+   "goldbachM": 2068
+  },
+  {
+   "id": "guard_cav",
+   "ph": 7,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    303,
+    226
+   ],
+   "cover": "track",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 721,
+   "goldbachSide": null,
+   "goldbachM": 2699
+  },
+  {
+   "id": "guard_cav",
+   "ph": 9,
+   "side": "fr",
+   "arm": "cav",
+   "p": [
+    301,
+    237
+   ],
+   "cover": "track",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 569,
+   "goldbachSide": null,
+   "goldbachM": 2794
+  },
+  {
+   "id": "c_gren",
+   "ph": 0,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    175,
+    155
+   ],
+   "cover": "field",
+   "nearestStream": "brook west of Puntowitz-Kobelnitz (BROOKS[3])",
+   "streamM": 1753,
+   "goldbachSide": null,
+   "goldbachM": 1918
+  },
+  {
+   "id": "c_gren",
+   "ph": 6,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    254,
+    223
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 570,
+   "goldbachSide": "east",
+   "goldbachM": 1264
+  },
+  {
+   "id": "c_gren",
+   "ph": 7,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    261,
+    268
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 519,
+   "goldbachSide": null,
+   "goldbachM": 1683
+  },
+  {
+   "id": "c_gren",
+   "ph": 8,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    248,
+    345
+   ],
+   "cover": "meadow",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 52,
+   "goldbachSide": "east",
+   "goldbachM": 864
+  },
+  {
+   "id": "c_gren",
+   "ph": 9,
+   "side": "fr",
+   "arm": "inf",
+   "p": [
+    248,
+    363
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 525,
+   "goldbachSide": "east",
+   "goldbachM": 955
+  },
+  {
+   "id": "ahq",
+   "ph": 0,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    408,
+    198
+   ],
+   "cover": "village",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 230,
+   "goldbachSide": null,
+   "goldbachM": 5443
+  },
+  {
+   "id": "ahq",
+   "ph": 3,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    293,
+    240
+   ],
+   "cover": "track",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 330,
+   "goldbachSide": null,
+   "goldbachM": 2607
+  },
+  {
+   "id": "ahq",
+   "ph": 4,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    303,
+    235
+   ],
+   "cover": "track",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 635,
+   "goldbachSide": null,
+   "goldbachM": 2823
+  },
+  {
+   "id": "ahq",
+   "ph": 6,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    404,
+    220
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 747,
+   "goldbachSide": null,
+   "goldbachM": 5518
+  },
+  {
+   "id": "ahq",
+   "ph": 8,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    454,
+    190
+   ],
+   "cover": "meadow",
+   "nearestStream": "Litava",
+   "streamM": 221,
+   "goldbachSide": null,
+   "goldbachM": 6818
+  },
+  {
+   "id": "ahq",
+   "ph": 9,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    480,
+    148
+   ],
+   "cover": "wood",
+   "nearestStream": "Litava",
+   "streamM": 510,
+   "goldbachSide": null,
+   "goldbachM": 7371
+  },
+  {
+   "id": "buxhowden",
+   "ph": 0,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    305,
+    323
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 859,
+   "goldbachSide": null,
+   "goldbachM": 2777
+  },
+  {
+   "id": "buxhowden",
+   "ph": 2,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    274,
+    347
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 624,
+   "goldbachSide": null,
+   "goldbachM": 1676
+  },
+  {
+   "id": "buxhowden",
+   "ph": 7,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    263,
+    376
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 911,
+   "goldbachSide": "east",
+   "goldbachM": 1232
+  },
+  {
+   "id": "buxhowden",
+   "ph": 8,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    300,
+    369
+   ],
+   "cover": "water",
+   "nearestStream": "Litava",
+   "streamM": 6,
+   "goldbachSide": null,
+   "goldbachM": 1639
+  },
+  {
+   "id": "buxhowden",
+   "ph": 9,
+   "side": "al",
+   "arm": "hq",
+   "p": [
+    280,
+    429
+   ],
+   "cover": "water",
+   "nearestStream": "Litava",
+   "streamM": 304,
+   "goldbachSide": null,
+   "goldbachM": 460
+  },
+  {
+   "id": "kienmayer",
+   "ph": 0,
+   "side": "al",
+   "arm": "mixed",
+   "p": [
+    291,
+    367
+   ],
+   "cover": "village",
+   "nearestStream": "Litava",
+   "streamM": 247,
+   "goldbachSide": null,
+   "goldbachM": 1589
+  },
+  {
+   "id": "kienmayer",
+   "ph": 1,
+   "side": "al",
+   "arm": "mixed",
+   "p": [
+    236,
+    398
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 518,
+   "goldbachSide": "east",
+   "goldbachM": 518
+  },
+  {
+   "id": "kienmayer",
+   "ph": 2,
+   "side": "al",
+   "arm": "mixed",
+   "p": [
+    222,
+    402
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 265,
+   "goldbachSide": "east",
+   "goldbachM": 265
+  },
+  {
+   "id": "kienmayer",
+   "ph": 7,
+   "side": "al",
+   "arm": "mixed",
+   "p": [
+    242,
+    400
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 474,
+   "goldbachSide": "east",
+   "goldbachM": 474
+  },
+  {
+   "id": "kienmayer",
+   "ph": 8,
+   "side": "al",
+   "arm": "mixed",
+   "p": [
+    296,
+    377
+   ],
+   "cover": "water",
+   "nearestStream": "Litava",
+   "streamM": 41,
+   "goldbachSide": null,
+   "goldbachM": 1357
+  },
+  {
+   "id": "kienmayer",
+   "ph": 9,
+   "side": "al",
+   "arm": "mixed",
+   "p": [
+    269,
+    436
+   ],
+   "cover": "water",
+   "nearestStream": "Litava",
+   "streamM": 88,
+   "goldbachSide": null,
+   "goldbachM": 664
+  },
+  {
+   "id": "dok",
+   "ph": 0,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    291,
+    332
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 626,
+   "goldbachSide": null,
+   "goldbachM": 2279
+  },
+  {
+   "id": "dok",
+   "ph": 1,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    258,
+    371
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 911,
+   "goldbachSide": null,
+   "goldbachM": 1351
+  },
+  {
+   "id": "dok",
+   "ph": 2,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    232,
+    397
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 522,
+   "goldbachSide": "east",
+   "goldbachM": 522
+  },
+  {
+   "id": "dok",
+   "ph": 7,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    226,
+    404
+   ],
+   "cover": "marsh",
+   "nearestStream": "Goldbach",
+   "streamM": 266,
+   "goldbachSide": "east",
+   "goldbachM": 266
+  },
+  {
+   "id": "dok",
+   "ph": 8,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    268,
+    384
+   ],
+   "cover": "track",
+   "nearestStream": "Litava",
+   "streamM": 658,
+   "goldbachSide": "east",
+   "goldbachM": 980
+  },
+  {
+   "id": "dok",
+   "ph": 9,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    265,
+    429
+   ],
+   "cover": "water",
+   "nearestStream": "Litava",
+   "streamM": 122,
+   "goldbachSide": null,
+   "goldbachM": 442
+  },
+  {
+   "id": "lang",
+   "ph": 0,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    291,
+    308
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 544,
+   "goldbachSide": null,
+   "goldbachM": 2483
+  },
+  {
+   "id": "lang",
+   "ph": 1,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    268,
+    328
+   ],
+   "cover": "meadow",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 48,
+   "goldbachSide": null,
+   "goldbachM": 1611
+  },
+  {
+   "id": "lang",
+   "ph": 2,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    235,
+    350
+   ],
+   "cover": "water",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 45,
+   "goldbachSide": "east",
+   "goldbachM": 443
+  },
+  {
+   "id": "lang",
+   "ph": 4,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    247,
+    336
+   ],
+   "cover": "meadow",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 202,
+   "goldbachSide": "east",
+   "goldbachM": 901
+  },
+  {
+   "id": "lang",
+   "ph": 7,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    233,
+    357
+   ],
+   "cover": "water",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 104,
+   "goldbachSide": "east",
+   "goldbachM": 447
+  },
+  {
+   "id": "lang",
+   "ph": 8,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    253,
+    378
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 1007,
+   "goldbachSide": "east",
+   "goldbachM": 1169
+  },
+  {
+   "id": "lang",
+   "ph": 9,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    284,
+    378
+   ],
+   "cover": "track",
+   "nearestStream": "Litava",
+   "streamM": 287,
+   "goldbachSide": "east",
+   "goldbachM": 1196
+  },
+  {
+   "id": "kamensky",
+   "ph": 2,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    259,
+    316
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 424,
+   "goldbachSide": null,
+   "goldbachM": 1443
+  },
+  {
+   "id": "kamensky",
+   "ph": 3,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    269,
+    298
+   ],
+   "cover": "track",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 681,
+   "goldbachSide": null,
+   "goldbachM": 1846
+  },
+  {
+   "id": "kamensky",
+   "ph": 4,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    279,
+    289
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 919,
+   "goldbachSide": null,
+   "goldbachM": 2223
+  },
+  {
+   "id": "kamensky",
+   "ph": 5,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    291,
+    279
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1283,
+   "goldbachSide": null,
+   "goldbachM": 2640
+  },
+  {
+   "id": "kamensky",
+   "ph": 6,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    305,
+    279
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1498,
+   "goldbachSide": null,
+   "goldbachM": 3082
+  },
+  {
+   "id": "kamensky",
+   "ph": 7,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    371,
+    254
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 792,
+   "goldbachSide": null,
+   "goldbachM": 5019
+  },
+  {
+   "id": "kamensky",
+   "ph": 8,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    397,
+    221
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 889,
+   "goldbachSide": null,
+   "goldbachM": 5322
+  },
+  {
+   "id": "prz",
+   "ph": 0,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    290,
+    282
+   ],
+   "cover": "field",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 1209,
+   "goldbachSide": null,
+   "goldbachM": 2610
+  },
+  {
+   "id": "prz",
+   "ph": 1,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    266,
+    296
+   ],
+   "cover": "track",
+   "nearestStream": "brook south of the Pratzeberg (BROOKS[2])",
+   "streamM": 777,
+   "goldbachSide": null,
+   "goldbachM": 1767
+  },
+  {
+   "id": "prz",
+   "ph": 2,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    215,
+    341
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 67,
+   "goldbachSide": "west",
+   "goldbachM": 67
+  },
+  {
+   "id": "prz",
+   "ph": 4,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    215,
+    341
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 67,
+   "goldbachSide": "west",
+   "goldbachM": 67
+  },
+  {
+   "id": "prz",
+   "ph": 7,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    215,
+    341
+   ],
+   "cover": "water",
+   "nearestStream": "Goldbach",
+   "streamM": 67,
+   "goldbachSide": "west",
+   "goldbachM": 67
+  },
+  {
+   "id": "prz",
+   "ph": 8,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    227,
+    309
+   ],
+   "cover": "meadow",
+   "nearestStream": "Goldbach",
+   "streamM": 481,
+   "goldbachSide": "east",
+   "goldbachM": 481
+  },
+  {
+   "id": "milo",
+   "ph": 0,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    325,
+    230
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1345,
+   "goldbachSide": null,
+   "goldbachM": 3380
+  },
+  {
+   "id": "milo",
+   "ph": 2,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    299,
+    238
+   ],
+   "cover": "track",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 507,
+   "goldbachSide": null,
+   "goldbachM": 2750
+  },
+  {
+   "id": "milo",
+   "ph": 3,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    290,
+    237
+   ],
+   "cover": "village",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 221,
+   "goldbachSide": null,
+   "goldbachM": 2481
+  },
+  {
+   "id": "milo",
+   "ph": 4,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    315,
+    237
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1011,
+   "goldbachSide": null,
+   "goldbachM": 3192
+  },
+  {
+   "id": "milo",
+   "ph": 6,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    392,
+    232
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 771,
+   "goldbachSide": null,
+   "goldbachM": 5315
+  },
+  {
+   "id": "milo",
+   "ph": 8,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    446,
+    210
+   ],
+   "cover": "meadow",
+   "nearestStream": "Litava",
+   "streamM": 19,
+   "goldbachSide": null,
+   "goldbachM": 6698
+  },
+  {
+   "id": "milo",
+   "ph": 9,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    475,
+    170
+   ],
+   "cover": "meadow",
+   "nearestStream": "Litava",
+   "streamM": 157,
+   "goldbachSide": null,
+   "goldbachM": 7348
+  },
+  {
+   "id": "kollo",
+   "ph": 0,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    355,
+    226
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 1762,
+   "goldbachSide": null,
+   "goldbachM": 4179
+  },
+  {
+   "id": "kollo",
+   "ph": 2,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    325,
+    229
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1351,
+   "goldbachSide": null,
+   "goldbachM": 3367
+  },
+  {
+   "id": "kollo",
+   "ph": 3,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    324,
+    233
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1302,
+   "goldbachSide": null,
+   "goldbachM": 3393
+  },
+  {
+   "id": "kollo",
+   "ph": 4,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    298,
+    275
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1280,
+   "goldbachSide": null,
+   "goldbachM": 2858
+  },
+  {
+   "id": "kollo",
+   "ph": 5,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    332,
+    257
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 1637,
+   "goldbachSide": null,
+   "goldbachM": 3900
+  },
+  {
+   "id": "kollo",
+   "ph": 6,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    331,
+    200
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1915,
+   "goldbachSide": null,
+   "goldbachM": 3141
+  },
+  {
+   "id": "kollo",
+   "ph": 8,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    454,
+    196
+   ],
+   "cover": "meadow",
+   "nearestStream": "Litava",
+   "streamM": 93,
+   "goldbachSide": null,
+   "goldbachM": 6855
+  },
+  {
+   "id": "kollo",
+   "ph": 9,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    478,
+    153
+   ],
+   "cover": "wood",
+   "nearestStream": "Litava",
+   "streamM": 450,
+   "goldbachSide": null,
+   "goldbachM": 7337
+  },
+  {
+   "id": "lich",
+   "ph": 0,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    296,
+    243
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 452,
+   "goldbachSide": null,
+   "goldbachM": 2722
+  },
+  {
+   "id": "lich",
+   "ph": 2,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    319,
+    214
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1350,
+   "goldbachSide": null,
+   "goldbachM": 2990
+  },
+  {
+   "id": "lich",
+   "ph": 3,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    317,
+    191
+   ],
+   "cover": "vineyard",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1807,
+   "goldbachSide": null,
+   "goldbachM": 2623
+  },
+  {
+   "id": "lich",
+   "ph": 5,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    298,
+    156
+   ],
+   "cover": "village",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 780,
+   "goldbachSide": null,
+   "goldbachM": 1774
+  },
+  {
+   "id": "lich",
+   "ph": 6,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    341,
+    152
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1897,
+   "goldbachSide": null,
+   "goldbachM": 3083
+  },
+  {
+   "id": "lich",
+   "ph": 7,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    387,
+    145
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 470,
+   "goldbachSide": null,
+   "goldbachM": 4467
+  },
+  {
+   "id": "lich",
+   "ph": 8,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    437,
+    129
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1317,
+   "goldbachSide": null,
+   "goldbachM": 5943
+  },
+  {
+   "id": "lich",
+   "ph": 9,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    469,
+    110
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 1576,
+   "goldbachSide": null,
+   "goldbachM": 6920
+  },
+  {
+   "id": "bag",
+   "ph": 0,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    352,
+    64
+   ],
+   "cover": "track",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 3128,
+   "goldbachSide": null,
+   "goldbachM": 3523
+  },
+  {
+   "id": "bag",
+   "ph": 5,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    262,
+    68
+   ],
+   "cover": "field",
+   "nearestStream": "Goldbach",
+   "streamM": 1350,
+   "goldbachSide": null,
+   "goldbachM": 1350
+  },
+  {
+   "id": "bag",
+   "ph": 6,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    300,
+    76
+   ],
+   "cover": "track",
+   "nearestStream": "Goldbach",
+   "streamM": 1893,
+   "goldbachSide": null,
+   "goldbachM": 1893
+  },
+  {
+   "id": "bag",
+   "ph": 7,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    321,
+    70
+   ],
+   "cover": "track",
+   "nearestStream": "Goldbach",
+   "streamM": 2560,
+   "goldbachSide": null,
+   "goldbachM": 2560
+  },
+  {
+   "id": "bag",
+   "ph": 8,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    386,
+    38
+   ],
+   "cover": "track",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 3571,
+   "goldbachSide": null,
+   "goldbachM": 4848
+  },
+  {
+   "id": "bag",
+   "ph": 9,
+   "side": "al",
+   "arm": "inf",
+   "p": [
+    414,
+    13
+   ],
+   "cover": "track",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 4348,
+   "goldbachSide": null,
+   "goldbachM": 6005
+  },
+  {
+   "id": "rg_inf",
+   "ph": 0,
+   "side": "al",
+   "arm": "guard",
+   "p": [
+    413,
+    202
+   ],
+   "cover": "village",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 184,
+   "goldbachSide": null,
+   "goldbachM": 5625
+  },
+  {
+   "id": "rg_inf",
+   "ph": 5,
+   "side": "al",
+   "arm": "guard",
+   "p": [
+    378,
+    196
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 1119,
+   "goldbachSide": null,
+   "goldbachM": 4507
+  },
+  {
+   "id": "rg_inf",
+   "ph": 6,
+   "side": "al",
+   "arm": "guard",
+   "p": [
+    327,
+    194
+   ],
+   "cover": "field",
+   "nearestStream": "Pratzen brook (BROOKS[1])",
+   "streamM": 1944,
+   "goldbachSide": null,
+   "goldbachM": 2952
+  },
+  {
+   "id": "rg_inf",
+   "ph": 7,
+   "side": "al",
+   "arm": "guard",
+   "p": [
+    397,
+    196
+   ],
+   "cover": "field",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 544,
+   "goldbachSide": null,
+   "goldbachM": 5090
+  },
+  {
+   "id": "rg_inf",
+   "ph": 8,
+   "side": "al",
+   "arm": "guard",
+   "p": [
+    447,
+    178
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 640,
+   "goldbachSide": null,
+   "goldbachM": 6528
+  },
+  {
+   "id": "rg_inf",
+   "ph": 9,
+   "side": "al",
+   "arm": "guard",
+   "p": [
+    475,
+    144
+   ],
+   "cover": "wood",
+   "nearestStream": "Litava",
+   "streamM": 712,
+   "goldbachSide": null,
+   "goldbachM": 7195
+  },
+  {
+   "id": "rg_cav",
+   "ph": 0,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    423,
+    193
+   ],
+   "cover": "village",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 238,
+   "goldbachSide": null,
+   "goldbachM": 5875
+  },
+  {
+   "id": "rg_cav",
+   "ph": 6,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    321,
+    189
+   ],
+   "cover": "field",
+   "nearestStream": "brook from Blasowitz (BROOKS[0])",
+   "streamM": 1894,
+   "goldbachSide": null,
+   "goldbachM": 2719
+  },
+  {
+   "id": "rg_cav",
+   "ph": 7,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    406,
+    188
+   ],
+   "cover": "village",
+   "nearestStream": "Rakovec (BROOKS[4])",
+   "streamM": 198,
+   "goldbachSide": null,
+   "goldbachM": 5318
+  },
+  {
+   "id": "rg_cav",
+   "ph": 8,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    452,
+    164
+   ],
+   "cover": "field",
+   "nearestStream": "Litava",
+   "streamM": 822,
+   "goldbachSide": null,
+   "goldbachM": 6598
+  },
+  {
+   "id": "rg_cav",
+   "ph": 9,
+   "side": "al",
+   "arm": "cav",
+   "p": [
+    481,
+    132
+   ],
+   "cover": "village",
+   "nearestStream": "Litava",
+   "streamM": 828,
+   "goldbachSide": null,
+   "goldbachM": 7335
+  }
+ ],
+ "summary": {
+  "legCrossings": 50,
+  "inVillage": 20,
+  "atRoad": 0,
+  "open": 30,
+  "openNotInfantry": 8,
+  "legsOnWetCover": 46,
+  "anchorsOnWater": 20,
+  "anchorsOnMarsh": 9,
+  "auditMovement": 0
+ }
+}

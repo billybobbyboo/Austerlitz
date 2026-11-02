@@ -1,0 +1,281 @@
+{
+ "shot": "paper-sokolnitz",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 500,
+  "presentation": "study",
+  "mode": "staff",
+  "aim": {
+   "map": [
+    210,
+    362
+   ],
+   "dir": [
+    -0.62,
+    0.46,
+    0.64
+   ],
+   "r": 58
+  }
+ },
+ "steps": [],
+ "state": {
+  "clock": 500,
+  "presentation": "study",
+  "mode": "staff",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "map",
+   "x": -63.892979515993716,
+   "z": 56.64698195746505,
+   "wpp": 0.04312561895804498
+  },
+  "applied": {
+   "kind": "map",
+   "x": -63.892979515993716,
+   "z": 56.64698195746505,
+   "wpp": 0.04312561895804498
+  },
+  "aimErr": null,
+  "paperFocus": 0,
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": true
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 64,
+  "placed": 6,
+  "dropped": 1,
+  "droppedIds": [
+   "t:sokolnitz"
+  ],
+  "occluded": 0,
+  "offscreen": 55,
+  "underPanel": 2,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · interval Napoleon releases Soult against the heights · derived on the heights: Allied ≈ 19,300",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE ALLIED ADVANCE",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "Sokolnitz, the castle and the pheasantry",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "intervalNapoleon releases Soult against the heights",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 19,300",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   821,
+   771,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "true",
+  "rows": [
+   "counters: French",
+   "counters: Russian",
+   "counters: Austrian",
+   "French movement",
+   "Allied movement",
+   "halt: a column stopped short of its objective",
+   "wood (its extent in the model)",
+   "village (its extent in the model)",
+   "meres: pond outlines schematic",
+   "vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not establishe",
+   "position approximate (B, C) · reported only (?)B?",
+   "A: position documented (its footprint)",
+   "B: sector documented, frontage approximate",
+   "C: reconstructed, position indicative",
+   "grade sizes are drawn, not measured errors",
+   "contour interval≈ 9 m",
+   "paper map: the ground drawn flat, in plan; hillshade exaggerated 6× (1× is true scale)",
+   "villages and woods at their extent in the model; counters and names at symbol scale"
+  ]
+ },
+ "scaleBar": "250 m",
+ "bodyClass": "docked mode-staff pm-study",
+ "textContrast": {
+  "texts": 26,
+  "min": 5.1,
+  "belowAA": []
+ },
+ "farNames": null,
+ "items": [
+  {
+   "id": "o:II Column → Sokolnitz",
+   "cat": "overlay",
+   "state": "on",
+   "text": "II Column → Sokolnitz",
+   "box": [
+    1196,
+    206,
+    138,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "o:Sokolnitz",
+   "cat": "objective",
+   "state": "on",
+   "text": "Sokolnitz",
+   "box": [
+    716,
+    373,
+    63,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Sokolnitz",
+   "box": null,
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "c:legrand",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRBLegrandHeavily engaged≈7,000 · Claude Legra",
+   "box": [
+    670,
+    299,
+    241,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:lang",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXRUCSecond ColumnAttacking≈11,700 · Louis de La",
+   "box": [
+    1002,
+    463,
+    240,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:kamensky",
+   "cat": "counter",
+   "state": "on",
+   "text": "XRUBKamensky's BrigadeOn the march≈4,250 · Serge",
+   "box": [
+    1273,
+    129,
+    294,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:prz",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXRUBThird ColumnAttacking≈7,700 · Ignacy Przyby",
+   "box": [
+    688,
+    187,
+    253,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  }
+ ],
+ "ms": 73972,
+ "msSettle": 928,
+ "msShot": 71927,
+ "msMeasure": 1117,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

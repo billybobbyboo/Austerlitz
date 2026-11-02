@@ -1,0 +1,60 @@
+# tools/step6/perf-route.js: commits (the VERSION strings were never bumped for the ordinary route: 'step6-perf-route 3')
+a99eb7b 2026-10-27 14:49:14 +0000 Stage 8, 8E: the self-test holds the level of detail's hysteresis; the measuring tools' faults fixed
+62f5cd2 2026-10-27 10:27:23 +0000 Stage 8, implementation PR 8E: the troops (the kit, the artillery, the gait), each rule held
+4cb72b1 2026-10-26 05:52:21 +0000 Stage 8, implementation PR 8D: every figure block culled by its own bounds, the kit's hooks for 8E, the render census held
+9e04718 2026-10-22 11:09:18 +0000 Decision 236's phone route reports each block's drawing; records for 236-238; baseline moved
+49ee5ac 2026-10-22 08:46:10 +0000 Decisions 236-238: the paper map framed again on a panel's change; two phone cases; the phone route
+bb6bbb4 2026-10-21 10:45:14 +0000 Step 6 Part A: the review's findings addressed (first part)
+a0a478c 2026-10-21 10:22:57 +0000 Step 6 Part A: the route's frame chains one per segment (no frame counted twice) and wider columns; the phone probe counts a phase's press area with its ::before (decision 166 (a)); the phone report script
+1b46001 2026-10-21 07:40:42 +0000 Roadmap step 6 Part A: the measurement probes (work in progress)
+
+# main at each device run (merge commits; UTC = +1100 minus 11 h)
+43e3e5b 2026-11-01 21:56:22 +1100 Merge pull request #79 from billybobbyboo/claude/optimistic-cori-p5dh4e
+c2adefe 2026-11-01 17:55:07 +1100 Merge pull request #78 from billybobbyboo/claude/optimistic-cori-p5dh4e
+b04e150 2026-10-23 11:47:55 +1100 Merge pull request #62 from billybobbyboo/claude/upbeat-hamilton-y9utq8
+f8d0949 2026-10-23 08:56:13 +1100 Merge pull request #61 from billybobbyboo/claude/upbeat-hamilton-y9utq8
+a8afeec 2026-10-22 16:01:52 +1100 Merge pull request #60 from billybobbyboo/claude/upbeat-hamilton-y9utq8
+# L1/L2/L3 (22 Oct 06:37-07:46 UTC) after #60 (a8afeec, 05:01 UTC); P3/P4 (22 Oct 22:30-22:40 UTC) after #61 (f8d0949, 21:56 UTC);
+# P5 (23 Oct 01:00 UTC) after #62 (b04e150, 00:47 UTC); the Stage 8 runs (1 Nov 07:01-08:42 UTC) after #78 (c2adefe, 06:55 UTC)
+
+# the route's file at each of those commits (the last commit touching it), and the measurement code's changes
+a8afeec: perf-route.js last changed in bb6bbb4
+f8d0949: perf-route.js last changed in 9e04718
+b04e150: perf-route.js last changed in 9e04718
+c2adefe: perf-route.js last changed in a99eb7b
+
+## the ordinary route's measurement code (pct, longMs, summarise, sample, tick, VIEWS, PLAYED, SECS, the moves) a8afeec -> HEAD:
+  function pct           identical
+  function longMs        identical
+  function summarise     identical
+  function sample        identical
+  function tick          identical
+  function orbitStep     identical
+  function lookStep      identical
+  function panStep       identical
+  function kitMeshes     identical
+  function figuresHidden identical
+  var VIEWS              identical
+  var PLAYED             identical
+  var SECS               identical
+  var OV=                identical
+  var PRATZEN            identical
+  var DIAG               identical
+  (the whole diff a8afeec -> HEAD adds the phone route, the brackets and their report lines; nothing in the shared measurement code)
+
+## the phone route (function phoneRoute) 9e04718 (P3/P4's) -> HEAD:
+  identical
+
+# the builds the reports name, against git (md5, sha256, bytes)
+a8afeec  md5 c9d29c149b613bff059598e4fe8c8d03  sha256 0c64a52d2eeb7218e2b17714da18f682d87fcce7c882065676c73cbb17c667ac  bytes 2218404
+f8d0949  md5 fffc4fdab06476b028c4e8ad0f74680c  sha256 695e1f941ac337942dc89bb9ba3f1d665abf00f781c3185009f3703f8326eea7  bytes 2220267
+b04e150  md5 c4793156103b60bb74151c7d13dbdd9d  sha256 136e1e98424ecc537c3a7d64aedad8758fedb03c030d768be0ae32b6fb763ab4  bytes 2220714
+c2adefe  md5 f10fe585c46aea576f436ed51ac46f83  sha256 bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07  bytes 2810630
+working tree  md5 f10fe585c46aea576f436ed51ac46f83  sha256 bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07  bytes 2810630
+
+# the device reports' commits (records only)
+e29be9a 2026-11-01 09:01:33 +0000 Stage 8, device acceptance: the phone runs recorded (section 25); decision 268 (a); question 269
+b2e7149 2026-11-01 07:46:07 +0000 Stage 8, device acceptance: the owner's desktop runs recorded (section 24); question 268
+
+# the scripts that 'checked each table against its JSON' (docs/stage8-evidence/device/README.md): committed anywhere?
+  none committed (reproduced here by tools/audit-post8/perf/reconcile.js)

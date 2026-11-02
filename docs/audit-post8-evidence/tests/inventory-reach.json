@@ -1,0 +1,133 @@
+{
+ "statements": 704,
+ "prose": 765,
+ "outside": 115,
+ "groups": [
+  {
+   "path": "FORMATIONS.<id>.track[\"n\"].tm.ev[n]",
+   "n": 44,
+   "example": "FORMATIONS.gqg.track[\"6\"].tm.ev[0]",
+   "text": "Napoleon moves forward from the Zuran to Stare Vinohrady.",
+   "where": "data.js:158"
+  },
+  {
+   "path": "FORMATIONS.<id>.track[\"n\"].tm.basis",
+   "n": 19,
+   "example": "FORMATIONS.gqg.track[\"6\"].tm.basis",
+   "text": "app narrative, unsourced",
+   "where": "data.js:158"
+  },
+  {
+   "path": "FORMATIONS.<id>.name",
+   "n": 9,
+   "example": "FORMATIONS.gqg.name",
+   "text": "Imperial Headquarters",
+   "where": "data.js:149"
+  },
+  {
+   "path": "ANALYSIS[#id].n",
+   "n": 8,
+   "example": "ANALYSIS[#deception].n",
+   "text": "The French deception",
+   "where": "analysis.js:17"
+  },
+  {
+   "path": "PLANS.al.cols[n].n",
+   "n": 7,
+   "example": "PLANS.al.cols[0].n",
+   "text": "Advance Guard - Kienmayer",
+   "where": "analysis.js:171"
+  },
+  {
+   "path": "PLANS.fr.cols[n].n",
+   "n": 5,
+   "example": "PLANS.fr.cols[0].n",
+   "text": "The bait - Legrand, then Davout",
+   "where": "analysis.js:207"
+  },
+  {
+   "path": "PLANS.al.staging[n].n",
+   "n": 4,
+   "example": "PLANS.al.staging[0].n",
+   "text": "Columns I-III on the southern plateau",
+   "where": "analysis.js:163"
+  },
+  {
+   "path": "PLANS.fr.staging[n].n",
+   "n": 4,
+   "example": "PLANS.fr.staging[0].n",
+   "text": "Soult concealed in the Goldbach valley",
+   "where": "analysis.js:199"
+  },
+  {
+   "path": "FEATURES[#id].name",
+   "n": 3,
+   "example": "FEATURES[#olmutzroad].name",
+   "text": "Brünn–Olmütz highway",
+   "where": "data.js:768"
+  },
+  {
+   "path": "EVENTS[#id].tolWhy",
+   "n": 3,
+   "example": "EVENTS[#pratzen-village].tolWhy",
+   "text": "Thiébault’s brigade is not plotted separately: the marker is the village it cleared, and at about 09:00 the division’s plotted centre is sti",
+   "where": "analysis.js:289"
+  },
+  {
+   "path": "TOUR[n].n",
+   "n": 2,
+   "example": "TOUR[2].n",
+   "text": "The French deception",
+   "where": "analysis.js:374"
+  },
+  {
+   "path": "CLAIM.fact.note",
+   "n": 1,
+   "example": "CLAIM.fact.note",
+   "text": "Attested in the standard accounts of the battle.",
+   "where": "data.js:17"
+  },
+  {
+   "path": "CLAIM.est.note",
+   "n": 1,
+   "example": "CLAIM.est.note",
+   "text": "The event is attested; the figure or frontage shown is an estimate.",
+   "where": "data.js:18"
+  },
+  {
+   "path": "CLAIM.recon.note",
+   "n": 1,
+   "example": "CLAIM.recon.note",
+   "text": "Inferred from the narrative. Treat as indicative, not as evidence.",
+   "where": "data.js:19"
+  },
+  {
+   "path": "CLAIM.disputed.note",
+   "n": 1,
+   "example": "CLAIM.disputed.note",
+   "text": "The event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's t",
+   "where": "data.js:20"
+  },
+  {
+   "path": "SOURCE_NOTE.title",
+   "n": 1,
+   "example": "SOURCE_NOTE.title",
+   "text": "On accuracy and uncertainty",
+   "where": "data.js:792"
+  },
+  {
+   "path": "PLANS.al.objectives[n].n",
+   "n": 1,
+   "example": "PLANS.al.objectives[3].n",
+   "text": "Envelop toward Brünn",
+   "where": "analysis.js:169"
+  },
+  {
+   "path": "PLANS.fr.objectives[n].n",
+   "n": 1,
+   "example": "PLANS.fr.objectives[3].n",
+   "text": "Close the Augezd defile",
+   "where": "analysis.js:205"
+  }
+ ]
+}

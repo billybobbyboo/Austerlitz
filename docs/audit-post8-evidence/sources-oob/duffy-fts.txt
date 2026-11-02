@@ -1,0 +1,103 @@
+# archive.org full-text search (OCR text layer) inside austerlitz18050000duff (Duffy, Austerlitz 1805, 1977; a lending item, page images not viewable here)
+# run: python3 -I tools/audit-post8/sources-oob/ia-fts.py austerlitz18050000duff <queries>   (2026-11-02T01:26Z)
+# {{{...}}} marks the matched phrase; each line is an OCR snippet, not a page image.
+== IV Corps (Soult | hits: 1
+    along  the  Goldbach  was  positioned  the  {{{IV  Corps (Soult}}};  23,600  men  and  35  guns).  Arriving 
+    88,  92,  109-13,  142, 144,  154,  (180) {{{IV  Corps  (Soult}}}),  13,  40,  41,  45, 47,  60,  70,  71, 
+== Imperial Guard (Bessieres | hits: 1
+    (Lannes;  12,700  men  and  20  guns) {{{Imperial  Guard  (Bessieres}}};  5,500  men  and  24  guns) Grenadier
+== 12,700 | hits: 1
+    the  highway,  we  encounter: V  Corps  (Lannes;  {{{12,700}}}  men  and  20  guns) Imperial  Guard  (Bessieres;
+     Dr.R. 21st  Dr.R. V  Corps,  MARSHAL  LANNES ({{{12,700}}}  and  20  guns) Div.  Gen.  Caffarelli Brigs. 
+== 7,400 | hits: 1
+    and  24  guns) Cavalry  Reserve  Corps  (Murat;  {{{7,400}}}  men) ✓ Further  south  along  the  Goldbach  was
+    Sebastiani,  Roget,  Boussard ,  MARSHAL  MURAT ({{{7,400}}}) 1st  Carab.R.  (Carabinier  Regiment) 2nd  Carab
+== Oudinot ( | hits: 1
+    500  men  and  24  guns) Grenadier  division  ({{{Oudinot}}};  5,700  men) I  Corps  (Bemadotte;  13,000  men
+      k  C.R. 21st  C.  k  C.R. Gr.  Div.,  GEN.  {{{OUDINOT}}} (5,700) Brigs.  Mortieres,  Dupas,  Ruffin Elite
+    152-3,  161,  (179) Combined  Grenadier  Division ({{{Oudinot}}}),  59,  63,  67,  78,  87,  89, 107,  122,  141
+== MARSHAL BERNADOTTE | hits: 1
+    southern flank. Behind  the  Briinn  position  {{{Marshal  Bernadotte}}}  faced  Ferdinand with  a  combined  force
+    finally  the  freshly-arrived  I  Corps  under {{{Marshal  Bernadotte}}}  stood  to  the  rear  in  the  upper  Goldbach
+    Guard  Mamelukes Advance  guard I  Corps,  {{{MARSHAL  BERNADOTTE}}} (13,000  and  24  guns) 27th  L.I.R.  (Light
+== MARSHAL DAVOUT | hits: 1
+    were  scarce,  and  even  the  meticulous  {{{Marshal Davout}}}  was  unable  to  procure  waggons  to  transport
+    set  order  of  battle. N 179 Ill  Corps,  {{{MARSHAL  DAVOUT}}} 2nd  Div.  (3,800  and  9  guns) Gen.  Friant
+== 3,800 and 9 guns | hits: 1
+    Ill  Corps,  MARSHAL  DAVOUT 2nd  Div.  ({{{3,800  and  9  guns}}}) Gen.  Friant 1st  Bde.,  Brig.  Heudelet
+== 2,500 and 3 guns | hits: 1
+    48th  I.R. 111th  I.R. 4th  Dr.  Div.  ({{{2,500  and  3  guns}}}) Gen.  Bourcier Brigs.  Laplanche,  Sahuc
+== 2,500 men and 3 guns | hits: 1
+    supporting  dragoon  division  of  Bourcier  ({{{2,500  men  and  3  guns}}}). Napoleon’s  ideas  about  the  coming
+== 4,300 | hits: 0
+== 830 | hits: 0
+== 3,470 | hits: 0
+== 6,780 | hits: 1
+    Austrians  and  two  small regiments  of  cossacks  ({{{6,780}}}  men— this  figure,  like  the  following figures
+     Guard  of  1st  Column,  lt.-gen.  kienmayer ({{{6,780}}}  and  12  light  pieces) Bde.  Maj.-Gen.  Cameville
+== like the following figures | hits: 1
+    cossacks  (6,780  men— this  figure,  {{{like  the  following figures}}},  presents  the  over-optimistic  nominal
+== 3,440 | hits: 0
+== 13,650 | hits: 1
+    main  army  consisted  of  a  powerful  force of  {{{13,650}}}  Russian  infantry  commanded  by  Lieutenant-General
+    5  sqs.  500 1st  Column,  lt.-gen.  dokhturov ({{{13,650}}},  40  light  and  24  heavy  pieces) Bde.  Maj
+== 13,240 | hits: 0
+== Denisov | hits: 1
+    3  bns.  1,400  (468) 3  bns.  1,000  (70) 182 {{{Denisov}}}  Cossack  R. pioneers 2\  sqs.  250  (4) 1  coy
+    Isayev  Cossack  R. 4  sqs.  400  (see  above) {{{Denisov}}}  Cossack  R. 2\  sqs.  250  (4) Bde.  Gen.-Adj
+== Column, Lt.-Gen | hits: 1
+    -gen.  buxhowden Advance  Guard  of  1st  {{{Column,  lt.-gen}}}.  kienmayer (6,780  and  12  light  pieces)
+     sqs.  800 5  sqs.  500 5  sqs.  500 1st  {{{Column,  lt.-gen}}}.  dokhturov (13,650,  40  light  and  24 
+    pioneers 2\  sqs.  250  (4) 1  coy.  240 2nd  {{{Column,  lt.-gen}}}.  langeron (11,700,  30  light  pieces) Bde
+      200 1  sq.  100  (47) 1  coy.  150 3rd  {{{Column,  lt.-gen}}}.  prebyshevsky (7,770,  30  light  pieces)
+    coys.  300 pioneers 2  coys.  340 • 5th  {{{Column ,  lt.-gen}}}.  johann  Liechtenstein (5,375,  24 light
+== 7,770 | hits: 1
+    coy.  150 3rd  Column,  lt.-gen.  prebyshevsky ({{{7,770}}},  30  light  pieces) Lt.-Gen.  Wimpfen,  Maj.-Gens
+== 5,375 | hits: 1
+    of the  allied  cavalry  in  a  fifth  column  ({{{5,375}}}),  and  deploy  in  the neighbourhood  of  Blasowitz
+    5th  Column ,  lt.-gen.  johann  Liechtenstein ({{{5,375}}},  24 light  pieces) Lt.-Gen.  Hohenlohe Bde.  Maj
+== Miloradovich and Kollowrath | hits: 1
+    succession  with  the little  battles  of  {{{Miloradovich  and  Kollowrath}}}.  He  ended  the  day with  Kamensky’s
+    170  (140) 4th  Column,  lt.-gens.  {{{miloradovich  and  kollowrath}}} (23,900,  52  light  and  24  heavy
+== fourth column of 23,900 | hits: 1
+    jointly  com¬ manded  an  Austro-Russian  {{{fourth  column  of  23,900}}}  infantry, which  was  to  pass  the
+== 13,900 | hits: 0
+== 9,100 | hits: 0
+== see below | hits: 1
+    Ingermanland  I.R. Yaroslav  I.R. 1  bn.  650  ({{{see  below}}}) 3  bns.  2,000  (230) 3  bns.  2,000  (283)
+    330  (97  sic ) Apsheron  I.R.  1  bn.  500  ({{{see  below}}}) Erzherzog  Johann  Dr.R.  2  sqs.  125 Bde.
+== 3 bns. 1,500 | hits: 1
+    (see  above) 2  bns.  1,000  (199) {{{3  bns.  1,500}}}  (274) {{{3  bns.  1,500}}}  (253) 6  bns.  3,000 1  bn. 900
+    pioneers 2  bns.  1,250  (801) 1  bn.  500  (155) {{{3  bns.  1,500}}}  (1,271) 3  bns.  2,000  (1,902) 3  bns.  900
+== 1 bn. 600 1 bn. 600 | hits: 1
+    000 1  bn. 900 1  bn.  600 1  bn.  1,000 {{{1  bn.  600 1  bn.  600}}} 1  bn.  500 1  bn.  500 183 Kerpen  I.R
+== 6 bns. | hits: 1
+    (199) 3  bns.  1,500  (274) 3  bns.  1,500  (253) {{{6  bns}}}.  3,000 1  bn. 900 1  bn.  600 1  bn.  1,000 1
+== Lindenau | hits: 1
+     500 1  bn.  500 183 Kerpen  I.R. 1  bn.  700 {{{Lindenau}}}  I.R. 1  bn.  400 Vienna  Jaeger 2  coys.  300
+== Advance Guard, lt.-gen | hits: 1
+    Elisabetgrad  Hus.R. 10  sqs.  1,000  (134) {{{Advance  Guard,  lt.-gen}}}.  Bagration (13,700,  42  pieces) Maj
+== 10,530 | hits: 1
+    to 96 draw  up  the  Russian  Imperial  Guard  ({{{10,530}}})  behind  Blasowitz and  Krug,  ‘and  act  as 
+    Russian  Imperial  Guard,  grand  duke  Constantine ({{{10,530}}},  40  pieces) Lt.-Gen.  of  Cavalry  Kologrivov
+== 139 | hits: 1
+    St  Anthony  Chapel  83 between  pages  138  and  {{{139}}} 15  A  barn  at  Sokolnitz  castle 16  The  charge
+    sentries,  came to  no  less  than  96  animals,  with  {{{139}}}  attendant  personnel.’10 The  best  of  the  Russian
+     2  December  Napoleon  had  at  his  disposal  {{{139}}} pieces  of  artillery  and  a  nominal  73-75,000
+    young  and  unfortunate  Chevalier  Garde,  who  had {{{139}}} been  struck  down  from  in  front  and  were  now
+    104,  182 Caulaincourt,  A.  F.,  General,  89, {{{139}}} Charles,  Archduke,  4,  25,  26,  27, 37-9,  54
+== stood at as little | hits: 1
+    effective force,  however,  may  well  have  {{{stood  at  as  little}}}  as  60,000,  for  a sizeable  proportion
+== 73,000 | hits: 0
+== 85,400 | hits: 0
+== 278 | hits: 1
+    of  between  80,000  and  87,000  troops,  with  {{{278}}}  pieces of  ordnance.  At  full  establishment  the
+== 89,000 | hits: 1
+    the  following  terms.  The  united  force  of {{{89,000}}}  men  was  to  be  kept  together  in  a  block
+    another  day  was lost’.19 The  combined  mass  of  {{{89,000}}}  men  finally  began  its  westward march  at 
+== Gladkov | hits: 1
+    Cuir.R. 8  sqs.  500 Bde.  Lt.-Gens.  Essen  II,  {{{Gladkov}}} Grand  Dk.  Constantine 10  sqs.  1,000 Uhlan 
+== Claparede | hits: 1
+     tactical  worth, and  he  ordered  General  {{{Claparede}}}  to  take  up  position  there  with the  17th
+    Div.  Gen.  Suchet Brigs.  Beker,  Valhubert,  {{{Claparede}}} On  Santon, 17th  L.I.R. 1st  line. 34th  I.R
+      4,  25,  26,  27, 37-9,  54,  55,  64,  69 {{{Claparede}}},  M.  M.,  Brigadier, commander  17th  Light,

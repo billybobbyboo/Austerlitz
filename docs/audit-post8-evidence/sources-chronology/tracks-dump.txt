@@ -1,0 +1,449 @@
+=== gqg | Imperial Headquarters | Emperor Napoleon I | str null | parent -
+  @0 p=[177,134] st=observing cf=B
+     act: On the height of his bivouac, taken here to be the Zuran: 'la butte' of the orders of 1 December, 'the barrow by Schlapanitz' in Mikhailovsky-Danilevsky. The dispositions call his marshals to his bivouac for the morning's orders
+     obj: Hold the right; break the Allied centre once it has committed
+  @3 p=- st=observing cf=-
+     act: Releases Soult against the heights; a memoir anecdote, as Thiébault tells it, has him wait a further quarter of an hour first
+  @6 p=[309,207] st=- cf=A tm{at - dep 12:00 gr B basis app narrative, unsourced} moveMin=40
+     act: Moves forward from the Zuran to Stare Vinohrady
+     tm.ev: ["Napoleon moves forward from the Zuran to Stare Vinohrady.","About noon, for Stare Vinohrady"]
+     tm.note: dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows the existing 40-minute march (moveMin)
+  @7 p=[307,227] st=- cf=-
+     act: Orders the centre to wheel south onto Buxhowden's rear
+  @8 p=[294,352] st=- cf=B
+     act: At the chapel of St Anthony above Augezd, having come from the Pratzen with the Guard cavalry and artillery (Schönhals; a French officer's note of 1806 has him come down to the chapel with the Guard cavalry); Mikhailovsky-Danilevsky has him place the Guard artillery on the Augezd heights in person
+=== c_iv | IV Corps | Marshal Nicolas Soult | str 23600 | parent -
+=== heightguns | French guns on the heights | Corps and Guard artillery | str null | parent c_iv
+  @7 p=[275,283] st=holding cf=C
+     act: Unlimbers on the southern shoulder of the plateau as the centre wheels
+     obj: Beat the ground behind Buxhowden's columns
+  @8 p=[288,357] st=attacking cf=B moveMin=45
+     act: Artillery of IV Corps and of the Guard, brought onto the height above Augezd (Schönhals), fires down onto the causeway and the frozen mere; Mikhailovsky-Danilevsky has the Guard artillery placed on the Augezd heights by Napoleon in person. That it stood by the chapel of St Anthony is this map's inference
+     obj: Command the Augezd defile and the meres
+  @9 p=[288,357] st=holding cf=-
+     act: Ceases fire at nightfall
+=== sthilaire | Saint-Hilaire's Division | Gen. de division Louis Vincent de Saint-Hilaire | str 6600 | parent c_iv
+  @0 p=[201,221] st=concealed cf=A
+     act: Standing in fog behind Puntowitz, hidden from the plateau
+     obj: Await the signal in the Goldbach valley
+  @2 p=[206,231] st=forming cf=-
+     act: Crosses the Goldbach and forms for the attack
+  @3 p=[267,275] st=attacking cf=A tm{at - dep 08:45 gr C basis app narrative, unsourced}
+     act: Climbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit
+     obj: Seize the Pratzeberg
+     tm.ev: ["Soult's divisions advance. The mist lifts off the heights.","At about 08:45 they climbed the western slope","Thiébault's brigade clears Pratzen village; the 10e Légère pushes on for the Pratzeberg."]
+     tm.note: the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals), and passes Pratzen village c. 09:00; no source read dates its end, so the arrival is derived
+  @4 p=[283,287] st=engaged cf=A
+     act: Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiébault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried their part of the heights
+     obj: Hold the Pratzeberg
+  @5 p=[287,282] st=holding cf=-
+     act: Consolidating on the summit with Levasseur's brigade attached
+  @6 p=[288,272] st=holding cf=-
+     act: Faces east while Vandamme is attacked to the north
+     obj: Cover the right of the plateau
+  @7 p=[285,324] st=advancing cf=A tm{at 14:00 dep 13:00 gr B basis app narrative, unsourced}
+     act: Wheels south off the heights toward Sokolnitz and Telnitz
+     obj: Take Buxhowden's columns in the rear
+     tm.ev: ["Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau","Soult and Davout launch the converging assault on the Allied left."]
+     tm.note: the wheel is dated as a range, and the move is shown across all of it
+  @8 p=[236,352] st=attacking cf=B
+     act: Closes on Sokolnitz from the east while Davout presses from the west
+  @9 p=[255,390] st=pursuing cf=-
+     act: Holds the ground between Telnitz and Augezd
+=== vandamme | Vandamme's Division | Gen. de division Dominique Vandamme | str 6700 | parent c_iv
+  @0 p=[217,171] st=concealed cf=A
+     act: Concealed in the valley behind Girzikowitz
+     obj: Await the signal
+  @2 p=[221,182] st=forming cf=-
+     act: Crosses the Goldbach
+  @3 p=[282,209] st=attacking cf=A tm{at - dep 08:45 gr C basis app narrative, unsourced}
+     act: Climbs toward Stare Vinohrady, the 'old vineyards' (whether vines stood there in 1805 is not established)
+     obj: Seize Stare Vinohrady
+     tm.ev: ["Soult's divisions advance. The mist lifts off the heights.","At about 08:45 they climbed the western slope"]
+     tm.note: the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals); no source read dates its end, so the arrival is derived
+  @4 p=[309,207] st=holding cf=-
+     act: Consolidates on the Old Vineyards, facing east
+  @6 p=[296,206] st=engaged cf=A
+     act: Struck by the Russian Imperial Guard; two battalions broken, and the eagle of the 4th Line taken by the Guard cavalry
+     obj: Hold Stare Vinohrady
+  @7 p=[289,243] st=advancing cf=- tm{at - dep 13:00 gr B basis app narrative, unsourced}
+     act: Turns south with Saint-Hilaire toward the Allied rear
+     obj: Wheel south along the plateau
+     tm.ev: ["Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau","Soult and Davout launch the converging assault on the Allied left."]
+     tm.note: the wheel begins c. 13:00. Its end, c. 14:00, cannot be the arrival here: the next anchor, the height above Augezd c. 14:30, is 3.3 km on, 40 minutes at the ceiling; so the arrival is derived
+  @8 p=[270,347] st=attacking cf=A
+     act: Seizes the ground commanding the causeway between the meres
+     obj: Take the height above Augezd
+  @9 p=[287,365] st=pursuing cf=-
+     act: Holds the Augezd defile
+=== legrand | Legrand's Division | Gen. de division Claude Legrand | str 7000 | parent c_iv
+  @0 p=[208,312] st=holding cf=A
+     act: Strung out along the stream; skirmishing through the night
+     obj: Hold the lower Goldbach from Kobelnitz to Telnitz
+  @1 p=[211,379] st=engaged cf=A
+     act: Contests Telnitz house by house against Kienmayer
+     obj: Hold Telnitz
+  @2 p=[206,366] st=engaged cf=-
+     act: Fights for Sokolnitz village and the castle wall
+     obj: Hold Sokolnitz
+  @4 p=[220,321] st=supporting cf=B
+     act: Levasseur's brigade marches up onto the Pratzeberg: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right
+  @7 p=[213,371] st=attacking cf=- tm{at 14:00 dep 13:00 gr C basis app narrative, unsourced}
+     act: Presses east to the stream at Sokolnitz as the trap closes
+     tm.ev: ["Presses east to the stream at Sokolnitz as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"]
+     tm.note: the act ties the move to the trap closing, dated 13:00-14:00
+  @8 p=[217,387] st=attacking cf=- tm{at 15:00 gr C basis app narrative, unsourced}
+     act: Retakes Telnitz for good
+     tm.ev: ["Several times between 07:00 and 15:00","Retakes Telnitz for good"]
+     tm.note: Telnitz changed hands until about 15:00; taking it for good is the last change
+  @9 p=[228,393] st=holding cf=-
+=== c_iii | III Corps (detachment) | Marshal Louis-Nicolas Davout | str 4300 | parent -
+=== friant | Friant's Division | Gen. de division Louis Friant | str 3470 | parent c_iii
+  @0 p=[26,495] st=march cf=B
+     act: At Raigern since the night of 1 December, 8 km south-west of Telnitz and just beyond the map edge, after about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers, a march whose figures vary between the sources
+     obj: Reach the lower Goldbach
+  @1 p=[167,410] st=march cf=- tm{at 09:00 dep 05:00 gr B basis source}
+     act: Marching from Raigern toward Telnitz
+     tm.ev: ["Davout's reports send the division on from Raigern at 05:00","Friant's leading brigade comes up to the Goldbach near Telnitz: about nine in Stutterheim"]
+     tm.note: the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127), about six in Sokolov; the leading brigade up to the Goldbach near Telnitz about nine in Stutterheim (1806, p. 52) and the Moniteur's remarks (Materialien 1806, pp. 109-110), attacking about nine in Schönhals: the anchor, short of the stream, is reached then. Until roadmap step 4b the map moved the division from 04:00 and had the brigade at the Goldbach c. 08:00 (question 177)
+  @3 p=[198,402] st=counterattack cf=A tm{at 09:30 gr A basis source}
+     act: Heudelet's brigade retakes Telnitz, then loses it again: in Davout's report a French regiment, not recognising it in the fog, fired on it, and the Russians took the village again with fresh troops
+     obj: Retake Telnitz
+     tm.ev: ["Friant's leading troops retake Telnitz, then lose it again in the fog: Davout's report has the village in French hands at 09:30."]
+     tm.note: Telnitz in French hands at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again. Until roadmap step 4b this anchor was the phase-2 entry, reached at 08:30 on this map (question 177)
+  @5 p=[200,398] st=engaged cf=-
+     act: Holds against Dokhturov and Kienmayer with a fraction of their strength
+     obj: Hold the stream line
+  @7 p=[204,390] st=attacking cf=A
+     act: Resumes the offensive at about 12:30 as the trap closes
+     obj: Press east across the Goldbach
+  @8 p=[214,410] st=attacking cf=-
+  @9 p=[222,412] st=holding cf=-
+=== bourcier | Bourcier's Dragoons | Gen. de division François Bourcier | str 830 | parent c_iii
+  @0 p=[22,489] st=march cf=C
+  @3 p=[184,420] st=holding cf=- tm{at - dep 05:00 gr B basis source}
+     act: Up from Raigern with Friant's division, as Mikhailovsky-Danilevsky has Davout come; the screen south of Telnitz is this map's
+     obj: Cover the right of the Goldbach line
+     tm.ev: ["Davout's reports send the division on from Raigern at 05:00","Up from Raigern with Friant's division"]
+     tm.note: Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place. Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)
+  @7 p=[201,416] st=advancing cf=-
+  @8 p=[253,393] st=pursuing cf=-
+     act: Pursues along the Telnitz to Augezd track
+  @9 p=[297,374] st=pursuing cf=-
+=== c_v | V Corps | Marshal Jean Lannes | str 12700 | parent -
+=== caffarelli | Caffarelli's Division | Gen. de division Marie-François de Caffarelli du Falga | str 6700 | parent c_v
+  @0 p=[240,115] st=holding cf=A
+     act: Formed on the right of V Corps, linking toward Bernadotte
+     obj: Hold south of the highway; do not press
+  @5 p=[296,122] st=attacking cf=A tm{at - dep 09:30 gr B basis app narrative, unsourced}
+     act: Advances against Bagration's left as the northern battle opens
+     obj: Advance on Blasowitz
+     tm.ev: ["Lannes advances along the highway. Bagration counter-attacks."]
+     tm.note: Lannes's advance is dated c. 09:30; before it the division holds
+  @6 p=[321,120] st=advancing cf=-
+  @7 p=[347,114] st=advancing cf=-
+     obj: Push Bagration off the highway
+  @8 p=[392,105] st=pursuing cf=-
+  @9 p=[423,96] st=holding cf=-
+=== suchet | Suchet's Division | Gen. de division Louis-Gabriel Suchet | str 6000 | parent c_v
+  @0 p=[235,103] st=holding cf=B
+     act: Formed south of the road, on its right as ordered the evening before, level with the fortified hill
+     obj: Hold the highway on the Santon's flank
+  @5 p=[254,88] st=attacking cf=C tm{at - dep 09:30 gr B basis app narrative, unsourced}
+     act: Advances astride the highway toward the post house
+     tm.ev: ["Lannes advances along the highway. Bagration counter-attacks."]
+     tm.note: Lannes's advance is dated c. 09:30; before it the division holds
+  @6 p=[279,81] st=advancing cf=-
+  @7 p=[300,76] st=advancing cf=-
+  @8 p=[348,62] st=pursuing cf=-
+  @9 p=[364,54] st=holding cf=B
+=== santon | The Santon detachment | Gen. de brigade Michel Claparède | str 1600 | parent suchet
+  @0 p=[222,87] st=fortifying cf=A
+     act: Holding the fortified hill north of the highway with eighteen guns
+     obj: Anchor the army's left; the position is not to be given up
+  @1 p=- st=holding cf=-
+  @5 p=- st=holding cf=-
+     act: Its battery enfilades Bagration's attacks along the road
+  @9 p=- st=holding cf=-
+     act: Held the hill from first light to last without being taken
+=== c_cav | Cavalry Reserve | Marshal Joachim Murat | str 7400 | parent -
+=== kellermann | Kellermann's Light Cavalry | Gen. de division François Étienne Kellermann | str 2400 | parent c_cav
+  @0 p=[242,135] st=holding cf=B
+     act: Forward of the infantry on the open ground
+     obj: Screen the front between Lannes and Soult
+  @5 p=[284,134] st=engaged cf=A
+     act: First into the cavalry melee; falls back through the infantry to reform
+  @6 p=[312,131] st=advancing cf=-
+  @7 p=[343,127] st=pursuing cf=-
+  @9 p=[383,118] st=holding cf=-
+=== nansouty | Nansouty's Cuirassiers | Gen. de division Étienne de Nansouty | str 1600 | parent c_cav
+  @0 p=[219,138] st=reserve cf=B
+  @5 p=[277,146] st=charging cf=A
+     act: Charges Liechtenstein's and Uvarov's cavalry; the collision was said to be audible across the field
+     obj: Break the Allied horse
+  @6 p=[307,142] st=advancing cf=-
+  @7 p=[339,139] st=pursuing cf=-
+  @9 p=[376,128] st=holding cf=-
+=== dhautpoul | d'Hautpoul's Cuirassiers | Gen. de division Jean-Joseph d'Hautpoul | str 1300 | parent c_cav
+  @0 p=[201,146] st=reserve cf=B
+  @5 p=[265,155] st=charging cf=B
+     act: Supports Nansouty against the Allied cavalry
+  @7 p=[332,150] st=pursuing cf=-
+  @9 p=[364,138] st=holding cf=-
+=== walther | Walther's Dragoons | Gen. de division Frederic Walther | str 1500 | parent c_cav
+  @0 p=[189,125] st=reserve cf=C
+  @5 p=[255,128] st=advancing cf=C
+  @7 p=[321,120] st=pursuing cf=-
+  @9 p=[344,110] st=holding cf=-
+=== c_i | I Corps | Marshal Jean-Baptiste Bernadotte | str 13000 | parent -
+=== rivaud | Rivaud's Division | Gen. de division Olivier Rivaud | str 6000 | parent c_i
+  @0 p=[189,164] st=reserve cf=B
+     act: Behind Girzikowitz on I Corps' left (Stutterheim; the 30th Bulletin for the left); the place drawn, west of the village, is this map's
+     obj: Close up behind Vandamme
+  @3 p=[243,179] st=advancing cf=- tm{at - dep 08:45 gr C basis app narrative, unsourced}
+     act: Crosses the brook by Girzikowitz with Soult's attack, toward the heights by Blasowitz (Stutterheim); Mikhailovsky-Danilevsky has part of the division sent ahead to Pratzen
+     tm.ev: ["Crosses the brook by Girzikowitz with Soult's attack","Soult's divisions advance. The mist lifts off the heights."]
+     tm.note: with Soult's attack (Stutterheim), c. 08:45 on this map; the arrival is derived
+  @6 p=[284,183] st=supporting cf=-
+     act: Near Blasowitz the Russian Guard runs at once into its skirmishers and Kellermann's light cavalry (Stutterheim); Schönhals has the Guard's fight against French infantry near Blasowitz, unnamed; Thiébault counts I Corps' 2nd division, perhaps this one, among the troops that took no part
+  @7 p=[317,205] st=holding cf=-
+  @9 p=[334,186] st=holding cf=-
+=== drouet | Drouet d'Erlon's Division | Gen. de division Jean-Baptiste Drouet d'Erlon | str 7000 | parent c_i
+  @0 p=[179,177] st=reserve cf=B
+     act: Where I Corps stood at dawn is disputed: in the second line behind Soult on 1 December (Savary), behind Girzikowitz (Stutterheim), in the Goldbach ravine with Soult's troops (Marbot), across the brook since the evening before (Mikhailovsky-Danilevsky); the place drawn is this map's
+  @3 p=[232,194] st=advancing cf=- tm{at - dep 08:45 gr C basis app narrative, unsourced}
+     tm.ev: ["Soult's divisions advance. The mist lifts off the heights."]
+     tm.note: this map holds the division at its dawn position until Soult's advance. Stutterheim (1806), an Austrian officer present at the battle, has Bernadotte cross the brook at Girzikowitz at the same time as Soult's attack, Rivaud on the left and Drouet on the right, and has the corps take its direction toward the heights by Blasowitz; Mikhailovsky-Danilevsky (1846) instead has Soult and Bernadotte across the brook from the evening before. The hour is this map's for Soult's advance, c. 08:45, the arrival is derived and the route drawn, toward Stare Vinohrady, is this reconstruction's. The 30th Bulletin has Bernadotte's centre advance at the moment the Russian Guard was routed; the accounts are not reconciled here
+  @6 p=[290,206] st=engaged cf=B
+     act: Meets the Russian Guard: Drouet's own memoir, as Sokolov quotes it, has his division called up to support the centre; Thiébault counts I Corps' 2nd division among the troops that took no part
+     obj: Restore the line at Stare Vinohrady
+  @7 p=[313,217] st=holding cf=-
+     act: Takes Vandamme's place on the plateau as Vandamme wheels toward Augezd (Schönhals; Ségur has Bernadotte left on the plateau); Savary has one of Bernadotte's divisions, unnamed, break the Russian Guard infantry, then go back to its morning place
+  @9 p=[329,205] st=holding cf=-
+=== c_gd | Imperial Guard | Marshal Jean-Baptiste Bessières | str 5500 | parent -
+=== guard_inf | Guard Infantry | Grenadiers and Chasseurs a Pied | str 3000 | parent c_gd
+  @0 p=[187,149] st=reserve cf=B
+     act: Formed in reserve around Napoleon's command post
+     obj: Remain in hand near the Zuran
+  @6 p=[276,213] st=advancing cf=- moveMin=60
+     act: Moves up onto the plateau behind the Guard cavalry; not engaged in the 30th Bulletin, Schönhals and Thiébault; Coignet, a grenadier of the foot Guard, claims it helped break the Russian second line in the attack on the Pratzen, but of the Russian Guard's attack writes that they thought their turn had come, and the enemy fell back
+  @7 p=[291,232] st=supporting cf=- tm{at 14:00 dep 13:00 gr B basis app narrative, unsourced}
+     tm.ev: ["Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau","Soult and Davout launch the converging assault on the Allied left."]
+     tm.note: the wheel names the Guard in support; shown across the range. Savary has the grenadiers and the Guard's foot division support the wheel; Ségur has the Guard on foot left on the plateau with Bernadotte
+  @9 p=[286,249] st=holding cf=-
+=== guard_cav | Guard Cavalry | Marshal Bessières; charge led by Gen. Rapp | str 2500 | parent c_gd
+  @0 p=[201,154] st=reserve cf=B
+  @6 p=[289,209] st=charging cf=A moveMin=45
+     act: Rapp's counter-charge shatters the Chevalier Guard; Prince Repnin taken prisoner (the hour is disputed: about 13:00 or after in Rapp's own memoirs, before one by the order of the Bulletin's narrative; the map draws it from 11:15)
+     obj: Break the Russian Guard
+  @7 p=[303,226] st=holding cf=-
+  @9 p=[301,237] st=holding cf=-
+=== c_gren | Grenadier Division | Gen. de division Nicolas Oudinot | str 5700 | parent -
+  @0 p=[175,155] st=reserve cf=B
+     act: Formed near the Zuran with the Guard
+     obj: Remain in general reserve
+  @6 p=[254,223] st=advancing cf=- moveMin=70
+     act: Moves up behind the plateau
+  @7 p=[261,268] st=advancing cf=- tm{at - dep 13:00 gr B basis app narrative, unsourced}
+     act: Comes down off the heights behind Saint-Hilaire
+     obj: Support the wheel south
+     tm.ev: ["Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau","Soult and Davout launch the converging assault on the Allied left."]
+     tm.note: the wheel names the grenadier division in support. Ségur and Mikhailovsky-Danilevsky set the grenadiers moving toward the lakes about one; the arrival is derived. Until roadmap step 4b the map dated the arrival at 14:00, its own, which forced the next leg toward the ceiling (question 181)
+  @8 p=[248,345] st=attacking cf=-
+     act: Comes down toward the meres in support; whether the grenadiers fought is disputed: Schönhals has a brigade bar the Kobelnitz pond, but also has them not in action, as the 30th Bulletin and Thiébault do
+  @9 p=[248,363] st=holding cf=-
+=== ahq | Allied Headquarters | Gen. Mikhail Kutuzov (commander-in-chief in name) | str null | parent -
+  @0 p=[408,198] st=observing cf=B
+     act: Kutuzov's headquarters at Krzenowitz, where the dispositions were read overnight. The emperors join the 4th Column on the plateau about 08:30-09:00
+     obj: Execute Weyrother's dispositions
+  @3 p=[293,240] st=surprised cf=A
+     act: The Tsar has just ridden up and ordered the 4th Column forward (about 08:45; Russian Biographical Dictionary, 1903). Soult appears on the heights; in this map's reading, which no account read gives, Kutuzov orders the column to face about; part of the II Column is recalled
+  @4 p=[303,235] st=engaged cf=B
+     act: Kutuzov wounded in the cheek; orders Kamensky to retire
+  @6 p=[404,220] st=withdrawing cf=-
+     act: Headquarters falls back toward Krzenowitz
+  @8 p=[454,190] st=withdrawing cf=-
+  @9 p=[480,148] st=withdrawing cf=-
+=== buxhowden | Left Wing Command | Gen. Friedrich Wilhelm von Buxhowden | str 40000 | parent -
+  @0 p=[305,323] st=forming cf=C
+  @2 p=[274,347] st=attacking cf=C
+     act: Feeding all three columns into the Goldbach villages
+     obj: Turn the French right and cut the Vienna road
+  @7 p=[263,376] st=engaged cf=-
+     act: Only now learns the plateau is lost
+  @8 p=[300,369] st=withdrawing cf=B
+     act: Escapes south over the Augezd defile
+  @9 p=[280,429] st=retreating cf=-
+=== kienmayer | Kienmayer's Advance Guard | Feldmarschall-Leutnant Michael von Kienmayer | str 6340 | parent buxhowden
+  @0 p=[291,367] st=forming cf=A
+     act: Formed near Augezd before first light
+     obj: Take Telnitz and turn the French right
+  @1 p=[236,398] st=attacking cf=A
+     act: Attacks Telnitz; the village changes hands several times
+     obj: Take Telnitz
+  @2 p=[222,402] st=engaged cf=-
+  @7 p=[242,400] st=holding cf=B
+     act: Holding west of the Goldbach as the trap closes behind it
+  @8 p=[296,377] st=retreating cf=A tm{at 15:00 dep 14:30 gr C basis app narrative, unsourced}
+     act: Falls back over the neck of land between the meres under artillery fire
+     obj: Escape by the Augezd defile
+     tm.ev: ["Vandamme takes the height above Augezd; the causeway comes under fire.","French artillery fires on the ice of the Satschan mere."]
+     tm.note: falls back under fire: not before the causeway is under fire, c. 14:30, and over the neck before the ice is fired on, c. 15:00; shown across that range
+  @9 p=[269,436] st=retreating cf=-
+     act: Falls back across the frozen Satschan mere under artillery fire
+=== dok | First Column | Lt.-Gen. Dmitry Dokhturov | str 13490 | parent buxhowden
+  @0 p=[291,332] st=forming cf=A
+     act: At the southern end of the Pratzen plateau
+     obj: Follow Kienmayer through Telnitz and wheel north
+  @1 p=[258,371] st=advancing cf=A tm{at - dep 07:00 gr A basis source}
+     act: Leaves its camp at seven, as the disposition ordered, and descends toward the Goldbach (Buxhowden's and Kutuzov's reports)
+     tm.ev: ["Dokhturov's I Column leaves its camp as the disposition ordered"]
+     tm.note: the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Buxhowden's and Kutuzov's reports give it (Kutuzov, documents, 1951, pp. 241-242, 255-258); the arrival is derived
+  @2 p=[232,397] st=attacking cf=A
+     act: Pushes into Telnitz behind Kienmayer
+     obj: Force the crossing at Telnitz
+  @7 p=[226,404] st=engaged cf=-
+     act: Attacked from the west by Friant and from the rear off the heights
+  @8 p=[268,384] st=retreating cf=A tm{at 15:00 dep 14:30 gr C basis app narrative, unsourced}
+     act: Retreats south-east; part of the column crosses the frozen meres
+     tm.ev: ["Vandamme takes the height above Augezd; the causeway comes under fire.","French artillery fires on the ice of the Satschan mere."]
+     tm.note: as Kienmayer: the retreat under fire runs from c. 14:30 to c. 15:00
+  @9 p=[265,429] st=retreating cf=-
+     act: Part of the column breaks south over the ice rather than queue for the defile
+=== lang | Second Column | Lt.-Gen. Louis de Langeron | str 11700 | parent buxhowden
+  @0 p=[291,308] st=forming cf=A
+     act: Formed on the plateau behind Dokhturov
+     obj: Take Sokolnitz
+  @1 p=[268,328] st=advancing cf=- tm{at - dep 07:00 gr B basis source}
+     tm.ev: ["the disposition ordered all the columns to march at 07:00","the II and III Columns at 07:30","the II Column coming down at 08:00"]
+     tm.note: the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past seven (1873, p. 160), Buxhowden's report the II Column come down at eight (Kutuzov, documents, 1951, pp. 241-242), Mikhailovsky-Danilevsky the first three columns between seven and eight (1844, p. 177): grade B, the map's choice among them; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)
+  @2 p=[235,350] st=attacking cf=A
+     act: Storms Sokolnitz; Kamensky's brigade marches at the rear of the column
+     obj: Take Sokolnitz village
+  @4 p=[247,336] st=engaged cf=C tm{at 10:30 gr C basis app narrative, unsourced}
+     act: Langeron rides back and sends reinforcements up the slope toward Kamensky. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there
+     tm.ev: ["Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost."]
+     tm.note: c. 10:30 on this map; no source read gives the hour (the Kursk regiment's episode in Mikhailovsky-Danilevsky, Langeron's journal and Schönhals)
+  @7 p=[233,357] st=engaged cf=-
+     act: Driven back toward Sokolnitz by Davout at about 12:30 (this map's reading; no account read gives it)
+  @8 p=[253,378] st=retreating cf=-
+  @9 p=[284,378] st=retreating cf=-
+=== kamensky | Kamensky's Brigade | Maj.-Gen. Sergey Kamensky | str 4250 | parent lang
+  @2 p=[259,316] st=march cf=B
+     act: Marching at the rear of Langeron's column
+     obj: Follow the II Column to Sokolnitz
+  @3 p=[269,298] st=countermarch cf=A
+     act: Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)
+     obj: Retake the Pratzeberg
+  @4 p=[279,289] st=counterattack cf=A
+     act: Pushes the 10e Légère back off the summit before Thiébault stabilises the French line
+     obj: Drive Saint-Hilaire off the crest
+  @5 p=[291,279] st=engaged cf=-
+     act: Fights on the crest alongside Jurczek's Austrians
+  @6 p=[305,279] st=broken cf=B
+     act: Broken and ordered to retire by Kutuzov
+  @7 p=[371,254] st=retreating cf=C
+     act: Ordered to retire by Kutuzov, it falls back east off the plateau behind the 4th Column. Its route after 11:15 is not documented: this track is a reconstruction
+  @8 p=[397,221] st=retreating cf=C
+=== prz | Third Column | Lt.-Gen. Ignacy Przybyszewski | str 7700 | parent buxhowden
+  @0 p=[290,282] st=forming cf=A
+     obj: Take the Sokolnitz castle and pheasantry
+  @1 p=[266,296] st=advancing cf=- tm{at - dep 07:00 gr B basis source}
+     tm.ev: ["the disposition ordered all the columns to march at 07:00","as did the III Column in Przybyszewski's report","the II and III Columns at 07:30"]
+     tm.note: the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)
+  @2 p=[215,341] st=attacking cf=B
+     act: Storms the walled castle grounds and the pheasant enclosure
+     obj: Take the castle and pheasantry
+  @4 p=[215,341] st=engaged cf=-
+  @7 p=[215,341] st=encircled cf=B
+     act: Cut off by Soult from the east and Davout from the west
+     obj: Break out toward Kobelnitz
+  @8 p=[227,309] st=broken cf=A moveMin=20
+     act: Attempts to break out north toward Kobelnitz; the column disintegrates
+  @9 p=- st=captured cf=-
+     act: Surrendered almost entire, near Kobelnitz by evening. Przybyszewski was later court-martialled.
+=== col4 | Fourth Column | FZM Johann Kollowrat and Lt.-Gen. Mikhail Miloradovich | str 13900 | parent -
+=== milo | Miloradovich's Russians | Lt.-Gen. Mikhail Miloradovich | str 4800 | parent col4
+  @0 p=[325,230] st=forming cf=A
+     act: Formed on the plateau near Pratzen village
+     obj: Advance on Kobelnitz
+  @2 p=[299,238] st=delayed cf=A
+     act: Held up while Liechtenstein's cavalry crosses its front from left to right
+     obj: Advance on Kobelnitz
+  @3 p=[290,237] st=surprised cf=A
+     act: Caught filing off the plateau as Soult appears on the crest
+  @4 p=[315,237] st=counterattack cf=B
+     act: Rallied by Kutuzov for a counterattack up the southern slope
+  @6 p=[392,232] st=withdrawing cf=-
+  @8 p=[446,210] st=retreating cf=-
+  @9 p=[475,170] st=retreating cf=-
+=== kollo | Kollowrat's Austrians | FZM Johann Karl Graf Kollowrat-Krakowsky | str 9100 | parent col4
+  @0 p=[355,226] st=forming cf=A
+     obj: Follow the Russian wing toward Kobelnitz
+  @2 p=[325,229] st=delayed cf=A
+     act: Waiting for Liechtenstein's cavalry to clear its front
+  @3 p=[324,233] st=surprised cf=-
+  @4 p=[298,275] st=counterattack cf=B tm{at 10:15 gr C basis app narrative, unsourced}
+     act: Jurczek attacks the summit with Rottermund in support; the two sides briefly mistake each other's nationality
+     obj: Retake the Pratzeberg
+     tm.ev: ["Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity."]
+     tm.note: the attack on the summit, c. 10:15 on this map, is the arrival at this anchor; no source read gives the hour, and the sources tie the attack to Kamensky's
+  @5 p=[332,257] st=engaged cf=B
+     act: Spread along the crest from the Pratzeberg to Stare Vinohrady: Jurczek on the summit, Rottermund on the Old Vineyards. The accounts differ: Schönhals has the Austrians and Kamensky climb the height in a second bayonet attack before Boyer's dragoons drive them off; Thiébault has them dispersed by his guns
+  @6 p=[331,200] st=withdrawing cf=B
+     act: Rottermund's brigade falls back on Stare Vinohrady, then east
+  @8 p=[454,196] st=retreating cf=-
+  @9 p=[478,153] st=retreating cf=-
+=== lich | Fifth Column (cavalry) | FML Prince Johann von Liechtenstein | str 5400 | parent -
+  @0 p=[296,243] st=forming cf=B
+     act: Formed on the left by mistake; must ride north-west across the army's line of march
+     obj: Join the Allied right beyond Blasowitz
+  @2 p=[319,214] st=countermarch cf=A
+     act: Crossing the front of the 4th Column and holding it up
+     obj: Reach the right wing
+  @3 p=[317,191] st=march cf=-
+  @5 p=[298,156] st=charging cf=A
+     act: Charges with Uvarov's Russians against Kellermann; met by Nansouty's cuirassiers
+     obj: Break the French cavalry screen
+  @6 p=[341,152] st=repulsed cf=-
+  @7 p=[387,145] st=withdrawing cf=-
+  @8 p=[437,129] st=retreating cf=-
+  @9 p=[469,110] st=retreating cf=-
+=== bag | Advance Guard of the Right | Lt.-Gen. Prince Pyotr Bagration | str 13700 | parent -
+  @0 p=[352,64] st=holding cf=B
+     act: Astride the Olmütz highway by the Posoritz post house, from which Stutterheim has him advance; his line reaches south toward Holubitz, held with Krug by Ulanius's jägers. The exact line is not established
+     obj: Hold the highway and cover the Allied right
+  @5 p=[262,68] st=attacking cf=B tm{at - dep 09:30 gr B basis app narrative, unsourced}
+     act: Seeks to occupy the heights by Bosenitz, north of the highway (Stutterheim); cannot get past the Santon battery
+     obj: Drive Lannes back on Brünn
+     tm.ev: ["Lannes advances along the highway. Bagration counter-attacks."]
+     tm.note: Bagration's counter-attack is dated c. 09:30; before it he holds
+  @6 p=[300,76] st=holding cf=C tm{at - dep 11:15 gr C basis app narrative, unsourced}
+     act: Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later)
+     tm.ev: ["Blasowitz falls; no source read gives the hour"]
+     tm.note: the falling back begins with Blasowitz's fall, c. 11:15 on this map; no source read gives either hour, and Schönhals has Bagration fight on toward noon before d'Hautpoul's charge throws his battalions back; the arrival is derived
+  @7 p=[321,70] st=withdrawing cf=-
+  @8 p=[386,38] st=retreating cf=B
+     act: On the height toward Rausnitz, covering the Allied right (Schönhals); he retreats on Austerlitz about six in Schönhals, and is behind it by six in Stutterheim
+  @9 p=[414,13] st=retreating cf=C
+=== constantine | Russian Imperial Guard | Grand Duke Constantine Pavlovich | str 10500 | parent -
+=== rg_inf | Guard Infantry | Not established on the day | str 4430 | parent constantine
+  @0 p=[413,202] st=reserve cf=A
+     act: On the high ground near Allied headquarters
+     obj: Remain in reserve near Krzenowitz
+  @5 p=[378,196] st=advancing cf=-
+  @6 p=[327,194] st=counterattack cf=A
+     act: Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a battalion of the 4th Line and one of the 24th Light and takes the 4th's eagle (Schönhals)
+     obj: Retake Stare Vinohrady
+  @7 p=[397,196] st=repulsed cf=-
+     act: Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions break the Guard infantry
+  @8 p=[447,178] st=retreating cf=-
+  @9 p=[475,144] st=retreating cf=-
+=== rg_cav | Guard Cavalry | Lt.-Gen. Andrei Kologrivov | str 2900 | parent constantine
+  @0 p=[423,193] st=reserve cf=A
+  @6 p=[321,189] st=charging cf=A
+     act: The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by Marbot). The Chevalier Guard's charge is then broken by Bessières and Rapp; Prince Repnin captured
+     obj: Break the French line on the plateau
+  @7 p=[406,188] st=repulsed cf=-
+  @8 p=[452,164] st=retreating cf=-
+  @9 p=[481,132] st=retreating cf=-

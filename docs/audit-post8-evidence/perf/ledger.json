@@ -1,0 +1,410 @@
+[
+ {
+  "claim": "every desktop report names the build 2,810,630 bytes, SHA-256 bf27887c...db07",
+  "where_shown": "§24 intro (docs/STAGE8_SPEC.md:5527-5540)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: read build.bytes/sha256 from each JSON; computed: desk-D1: 2810630 bf27887c; desk-D2: 2810630 bf27887c; desk-fx: 2810630 bf27887c; desk-cull: 2810630 bf27887c; desk-gait: 2810630 bf27887c",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "Chrome 156, RTX 4070 (ANGLE D3D11), 32 cores, 32 GB, 2560x1440, refresh 6.9 ms, page 2560x1305 at density 1, effects on at 1.3, not lowTier, wrapper page",
+  "where_shown": "§24 intro (docs/STAGE8_SPEC.md:5527-5540)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: device fields of each JSON; computed: all five",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "starts D1 07:01, D2 07:08, fx 07:11, cull 07:16, gait 07:25 UTC",
+  "where_shown": "§24 intro (docs/STAGE8_SPEC.md:5527-5540)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: started; computed: 07:01, 07:08, 07:11, 07:16, 07:25",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "165 rows of 165",
+  "where_shown": "§24 intro (docs/STAGE8_SPEC.md:5527-5540)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: count segments; regenerate the text with perf-route.js format(); computed: 165 segments; every row reproduced by format(): true",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "L3: same desktop, same page size, the wrapper page, build 2,218,404 bytes (md5 c9d29c14...)",
+  "where_shown": "§24 intro (docs/STAGE8_SPEC.md:5527-5540)",
+  "verification": "partly",
+  "method": "tools/audit-post8/perf/reconcile.js: device fields of L3 against D1/D2; computed: L3: Chrome/155.0.0.0 (D1/D2: Chrome/156.0.0.0), 2218404 bytes sha256 0c64a52d; started 2026-10-22T07:45:59.806Z",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "the GPU, screen, viewport, density, effects scale and wrapper match; the browser does not: L3 ran Chrome 155, D1/D2 Chrome 156 (not stated in §24)"
+ },
+ {
+  "claim": "every median 6.9 ms as in L3 but the two Play segments, 7.0 against 6.9",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: segment p50, D1/D2 against L3; computed: non-Play p50 now 6.9 (L3 6.9); Play now 7 (L3 6.9)",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": ""
+ },
+ {
+  "claim": "the largest long-frame share 0.2% (one frame of 34.7 ms in D2's pratzen-low-10x held; D1 none)",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: rows; computed: max longPct 0.2 at desk-D2 pratzen-low-10x held (1 of 514, max 34.7); D1 long total 0",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "across the five reports nine frames over 25 ms in all, the longest 41.6 ms, none in a decisive orbit",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "partly",
+  "method": "tools/audit-post8/perf/reconcile.js: sum of long; max of max; max of warmMax; computed: long (after each segment's first 0.5 s) 9; longest after 0.5 s 41.6 ms (desk-cull pratzen-low-4x cull B BA 1.4, desk-gait play-half gait A BA 2.5); in the first 0.5 s (warm column, not counted) 4 segments over 25 ms, the longest 76.5 ms (desk-cull pratzen-low-4x warm-up); long frames in the decisive views' bracket/warm-up blocks: desk-cull pratzen-low-4x cull B BA 1.4 1",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "true of the counted intervals (each segment after its first 0.5 s); the excluded first 0.5 s holds longer frames (warm column) and the statement 'in all' does not say so"
+ },
+ {
+  "claim": "8.3 desktop: the heaviest frame 839 draw calls (the Overview's orbit) and 2,289,649 triangles (Play at 4x), against 900 and 2.8 million",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "partly",
+  "method": "tools/audit-post8/perf/reconcile.js: max of per-segment medians (the route records calls/tris as each segment's median drawn frame: pct(...,0.5)); computed: max over the segments' MEDIAN calls 839 (desk-D1 overview orbit, desk-D2 overview orbit), median tris 2289649 (desk-D1 play-4x played, desk-D2 play-4x played); over every measured row incl. culling-off B blocks: calls 839, tris 2289649",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "the numbers are right as segment medians; 'the heaviest frame' is not measured by the route (no per-frame maximum is kept)"
+ },
+ {
+  "claim": "against L3: the Overview 2,523,605 to 1,978,147 held and 2,125,343 in orbit (-21.6%, -15.8%); the low view at 4x 2,480,187 to 1,714,213 held (-30.9%); Play at 4x 2,496,647 to 2,289,649 (-8.3%)",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: segment median tris, D1 against L3; computed: D1: -21.6%, -15.8%, -30.9%, -8.3% (L3 orbit tris 2523605 = its held); D2: overview held 1978147, orbit 2125343, low 4x held 1714213, play-4x 2289649",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "D1's figures; the held comparison mixes frames: since 8B a held view reuses the ground's depth (147,088 triangles fewer), L3's held drew it; the orbit (-15.8%) is the like-for-like one"
+ },
+ {
+  "claim": "the low views fewer calls (761 to 592 held at 4x); the Overview's calls 832 to 837-839 (+0.8%)",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: segment median calls; computed: L3 761 -> D1 592/D2 592; Overview L3 832 -> D1 837/839, D2 837/839",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "no 4x frame of the route rose by more than 10% in triangles or calls against L3 (the largest rise +0.8% in calls)",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "partly",
+  "method": "tools/audit-post8/perf/reconcile.js: every D1/D2 segment's median calls/tris against L3's same segment; computed: 4x, the build's own segments: largest rise in calls 1.4% (D1 ph8-overview orbit, D1 play-half played, D2 ph8-overview orbit, D2 play-half played), in triangles 0.3% (D1 paper held, D1 paper pan, D2 paper held, D2 paper pan); 4x diagnostics (figures hidden, effects off): calls up to 5.7% (D1 pratzen-low-4x orbit -figures), triangles up to -15.5%; outside the condition (1x, 10.33x): calls up to 1.2%, triangles up to 64.1% (D1 pratzen-low-1x orbit, D2 pratzen-low-1x orbit)",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "holds as worded (4x); the 1x view's moving frame rose 64.1% in triangles (231,985 to 380,601: the ground's depth pass of 8B drawn while the eye moves), outside the condition"
+ },
+ {
+  "claim": "the gait bracket's two sides the same frame (802 calls each; triangles within 68); script median 7.2-7.4 ms with the gait, 7.2-7.3 at rest; GPU 4.5-4.6 on both",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: desk-gait bracket blocks; computed: calls A 802 B 802; tris spread 68; js50 A 7.2-7.4 (median 7.2) B 7.2-7.3 (median 7.2); gpu50 A 4.5-4.6 B 4.5-4.6",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "the numbers hold; the reading 'the gait adds none' (§24.1, CPU) over-reads them: block B runs gaitStep's checks and the shader hook at amplitude 0, and the blocks' js50 resolve 0.1 ms with a 0.2 ms spread"
+ },
+ {
+  "claim": "js50 L3 to D1/D2: Overview orbit 4.8 to 5.8/5.9 (+1.0/+1.1), orbit -effects 4.0 to 5.1/5.1 (+1.1), Play half 6.1 to 7.6/7.6 (+1.5), Play 4x 6.0 to 6.9/7.0 (+0.9/+1.0); every other segment -0.2 to +0.9",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: segment js50, D1/D2 against L3; computed: overview orbit: 4.8 -> 5.8/5.9 (1/1.1); overview orbit -effects: 4 -> 5.1/5.1 (1.1/1.1); play-half played: 6.1 -> 7.6/7.6 (1.5/1.5); play-4x played: 6 -> 6.9/7 (0.9/1); others -0.2 to 0.9",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "L3 ran Chrome 155, D1/D2 Chrome 156: the rise is Stage 8's and the browser's together, not separable from these runs"
+ },
+ {
+  "claim": "culling removes about 0.9 ms (5.1-5.2 ms with culling, 6.0-6.1 without, both low views)",
+  "where_shown": "§24.1 (docs/STAGE8_SPEC.md:5542-5563)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: desk-cull bracket blocks' js50; computed: pratzen-low-4x: A 5.1-5.2 B 6-6.1 (medians 5.1/6.1); pratzen-low-10x: A 5.1-5.2 B 6-6.1 (medians 5.2/6)",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "L3 Play 139-140 fps with p95 at 7.1; now 120-124 with p95 13.9",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: played segments; computed: L3 fps 139-139.7 p95 7.1; D1/D2 fps 124.3, 120.8, 123, 120.2 p95 13.9",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": ""
+ },
+ {
+  "claim": "about one frame in five or six held for two refreshes",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "partly",
+  "method": "tools/audit-post8/perf/reconcile.js: derived from fps; the route keeps no interval histogram; computed: if every interval is one or two refreshes (6.94/13.9 ms): share of frames held two = 144/fps-1 = 15.8, 19.2, 17.1, 19.8% (one in 6.3, 5.2, 5.8, 5.1); the missed-refresh share 1-fps/144 = 13.7, 16.1, 14.6, 16.5%; p90 13.9 and max 20.9 (three refreshes occur)",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "an estimate under a one-or-two-refresh assumption, consistent with p50 7.0/p90 13.9; not a count"
+ },
+ {
+  "claim": "the script's p95 8.4-9.0 ms in Play (L3 6.6-6.8), GPU median 4.5-4.6",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: played segments; computed: js95 8.9, 8.4, 9, 8.5 (L3 6.8, 6.6); js50 6.9, 7.6, 7, 7.6 (L3 6, 6.1); gpu50 4.6, 4.5, 4.6, 4.5",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "js50 itself (6.9-7.6 ms) is at or above the 6.94 ms refresh in Play, which supports 'limited by the script' more directly than js95"
+ },
+ {
+  "claim": "the three brackets 'not shown', each 12 comparisons of 12 'neither'",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: bracketVerdict() of perf-route.js re-run on the segments; computed: desk-fx pratzen-low-4x: 0/0/12/0; desk-cull pratzen-low-4x: 0/0/12/0; desk-cull pratzen-low-10x: 0/0/12/0; desk-gait play-half: 0/0/12/0",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "every block's median interval 6.9 ms (7.0 in Play)",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: bracket blocks; computed: orbit blocks p50 6.9; Play blocks 7",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "effects off saves about 0.5 ms of script (4.6-4.7 against 5.1-5.2); 5-10 calls fewer; the same triangles within 10",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: desk-fx blocks; computed: js50 A 5.1-5.2 B 4.6-4.7; calls A 597-600 B 590-592; triangles take two orbit states on each side, A 1872779/1875699, B 1872772/1875692 (A-B 7, 7)",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "culling at 4x 597-600 calls and 1,872,779-1,875,699 triangles against 784-786 and 2,208,415 (-24%, -15%); at 10.33x 624-625 and about 1.90 million against 786-787 and about 2.21 million; about 0.9 ms of script fewer",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: desk-cull blocks; computed: 4x A calls 597-600 tris 1872779-1875699; B calls 784-786 tris 2208415 (-23.8%, -15.2%); 10x A calls 624-625 tris 1898129-1899015; B calls 786-787 tris 2209633-2209643",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "the GPU's medians fall near 2.2-2.6 or near 3.8-4.6 ms in blocks of either side alike",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "partly",
+  "method": "tools/audit-post8/perf/reconcile.js: histogram of gpu50 over the desktop bracket blocks; computed: bracket blocks' gpu50: {\"4\":6,\"4.1\":16,\"2.2\":7,\"2.6\":14,\"2.3\":8,\"3.8\":7,\"3.7\":1,\"3.9\":6,\"2.9\":2,\"4.2\":9,\"2.8\":2,\"3.3\":1,\"2.4\":5,\"4.5\":22,\"4.6\":6}",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "inference about GPU clock states is the record's own; the values are bimodal as stated (see histogram)"
+ },
+ {
+  "claim": "the first report fetched 1,219,603 bytes, DOM ready 5.9 s; the others from cache (2.6-2.8 s)",
+  "where_shown": "§24.2 (docs/STAGE8_SPEC.md:5565-5578)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: device.load; computed: desk-D1 1219603 B, 5934 ms; desk-D2 0 B, 2703 ms; desk-fx 300 B, 2782 ms; desk-cull 0 B, 2616 ms; desk-gait 300 B, 2823 ms",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "two of the four cached loads transferred 300 bytes (a revalidation, the body from the cache)"
+ },
+ {
+  "claim": "every phone report names 2,810,630 bytes, SHA-256 bf27887c...db07",
+  "where_shown": "§25 intro (docs/STAGE8_SPEC.md:5599-5610)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: build fields; computed: 2810630 bf27887c; 2810630 bf27887c; 2810630 bf27887c; 2810630 bf27887c; 2810630 bf27887c",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "Safari 26.6.1, viewport 402x714, density 3, lowTier, drawn at density 1",
+  "where_shown": "§25 intro (docs/STAGE8_SPEC.md:5599-5610)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: device fields; computed: all five",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "'the sun casting no shadow' is not recorded by the route (it reads renderer.shadowMap.enabled, true on every phone report); it follows from app.js:646 (sun.castShadow=!lowTier)"
+ },
+ {
+  "claim": "starts R1 07:50, R2 08:00, fx 08:10, cull 08:22, gait 08:35",
+  "where_shown": "§25 intro (docs/STAGE8_SPEC.md:5599-5610)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: started; computed: 07:50, 08:00, 08:10, 08:22, 08:35",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "184 rows of 184",
+  "where_shown": "§25 intro (docs/STAGE8_SPEC.md:5599-5610)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: count; format(); computed: 184; every row reproduced by format(): true",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "Overview As: fps median 40.8 (27.2-42.8), p50 24 ms (23-37), long median 18.1% (9.6-100), 24 of 24 dropping",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: median over the 24 A blocks of R1 and R2 (2 runs x 2 rounds x 6 As; the 45 s warm-up excluded), each block's own fps/p50/long%; computed: n 24; fps median 40.8 (route's nearest-rank 40.9), range 27.2-42.8, pooled 39.4; p50 median 24 (23-37); long median 18.15 (nearest-rank 19.6) range 9.6-100; 24 of 24",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "the long median is 18.15 (printed 18.1)"
+ },
+ {
+  "claim": "Play As: fps median 43.3 (42.8-43.8), p50 23 (22-23), long median 8.6% (5.3-14.2), 24 of 24 dropping",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: as above; computed: n 24; fps median 43.349999999999994 (nearest-rank 43.4), range 42.8-43.8, pooled 43.3; p50 23 (22-23); long median 8.6 range 5.3-14.2; 24 of 24",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "the fps median is 43.349999999999994 (printed 43.3)"
+ },
+ {
+  "claim": "the warm-ups: Overview 49.5 and 49.9, 6.8% and 5.4% long; Play 45.2 and 45.7, 2.6% and 2.0% long",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: warm-up segments; computed: Overview 49.5 fps, 6.8% long, calls 532, tris 1308987; 49.9 fps, 5.4% long, calls 532, tris 1308987 | Play 45.2 fps, 2.6% long, calls 428, tris 1203643; 45.7 fps, 2% long, calls 428, tris 1203479",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "the warm-ups are not the blocks' content: Play's warm-up plays 45 s from 08:30 (its end clock not recorded; the blocks 6 s each from 08:30), its median frame 428 calls/1203643, 428 calls/1203479 against the As' 517 calls/1363585-1364239; the Overview's warm-up orbits 2.5 turns, each block the first 120 degrees"
+ },
+ {
+  "claim": "figures hidden: Overview 48.5 (47.4-54.4); Play 59.2 (58.5-59.6), 0% long",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: figures blocks; computed: Overview 47.4, 48.8, 48.2, 54.4 (median 48.5); Play 58.5, 59.1, 59.3, 59.6 (median 59.2), long 0, 0, 0, 0",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "the low view at 4x (the brackets' A blocks): 60.0 and 59.8 fps, 17 ms, 0% (at most 0.3%), 0 of 28; warm-up 60, 0%",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: phone-fx and phone-cull A blocks; computed: fx A median 60, cull A median 59.8; p50 17; long max 0.3; blocks 28; warm-ups 60/0, 59.9/0",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "in each run the Overview fell for two blocks to 27.2-32.0 fps (p50 34-37 ms, 66-100% long) and recovered (R1 a candidate and the A after it; R2 two As)",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: Overview blocks under 33 fps; computed: R1 density1Pass 1 27.5 fps p50 37 long 100%; R1 A 1 27.5 fps p50 37 long 100%; R2 A 1 27.2 fps p50 37 long 100%; R2 A 1 32 fps p50 34 long 65.9%",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": "numbers as stated; 'the phone's own state' is an attribution: in these blocks js50 is 17-18 ms against 6-7 ms elsewhere (a CPU-side event), and they recover within one or two blocks"
+ },
+ {
+  "claim": "section 14.1's rule: both runs stand, both test both kinds, no candidate cures, rule 4; the reference cures Play in both runs (gain 1.353); the Overview gains 1.38 and 1.43 without curing",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: tools/step6/phone-rule.js over R1 and R2 (reads only); computed: VERDICT: rule 4: nothing is built | figures (reference)      ph8-overview  run 1 cures false gain 1.375 |  | figures (reference)      ph8-overview  run 2 cures false gain 1.431 |  | figures (reference)      play-half     run 1 cures true  gain 1.353 |  | figures (reference)      play-half     run 2 cures true  gain 1.353 | ",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "8.3 phone: heaviest frame 1,364,901 triangles (Play) against 1.62 million; the Overview 1,309,505 (P5's 1,469,251, -10.9%)",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "partly",
+  "method": "tools/audit-post8/perf/reconcile.js: per-segment medians (the route keeps no per-frame maximum); computed: max of the phone segments' MEDIAN tris 1364901 (play-half gait B BA 1.0); the Overview As' median tris 1309393-1309505; P5 ph8-overview held 1469251, orbit 1469185",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "numbers right as medians; 'heaviest frame' is not measured; the CI census's phone maximum (1,288,561, phone-390-first) is below what the phone drew at the median in Play (1.36 M) and phase 8's Overview (1.31 M)"
+ },
+ {
+  "claim": "draw calls against P5's: Overview 532 vs 525 (+1.3%), Play 517 vs 508 (+1.8%), low view at 4x 211 vs 442 (culling; with culling off 446-448)",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: medians; computed: Overview As 532 vs P5 525 (1.3%); Play As 517 vs P5 508 (1.8%); low 4x cull A 211 vs P5 orbit 442; cull B 446-448",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "P5's Play covered 08:30-09:10.6 in 12 s (its recorded clock), the blocks 6 s each from 08:30 (their end clock not recorded): the medians are of different stretches of the clock"
+ },
+ {
+  "claim": "across routes against P5: Overview orbit 47 fps, 2.7% long -> 40.8, 18.1%; Play half 53, 1.6% -> 43.3, 8.6%; medians 22 -> 24 ms and 17 -> 23 ms",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: P5 segments; computed: P5 ph8 orbit 47/2.7%/p50 22; P5 play-half 53/1.6%/p50 17",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "the record labels it across routes; also across clock windows and the phone's state; P5's own segments were not 'held' at 60 (47 fps, p50 22 ms; 53 fps, p95 24 ms)"
+ },
+ {
+  "claim": "P3/P4's density1Pass: Overview 29.4 fps and 86.2% long; Play 40.0 and 38.7%; their As 21.0 and 27.1, 100% long",
+  "where_shown": "§25.1 (docs/STAGE8_SPEC.md:5612-5640)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: median over the 4 density1Pass blocks and the 24 A blocks of P3+P4; computed: Overview d1p 26.1/100, 33.6/72.3, 25.5/100, 32.7/72.1 (medians 29.400000000000002/86.15); Play d1p 40.1/38.8, 39.5/43, 39.8/38.6, 40.2/34.5 (medians 39.95/38.7); As medians 21 / 27.1, long 100",
+  "cited_source": "docs/stage8-evidence/device/*.json and docs/step6-evidence/perf-*.json",
+  "notes": "numbers right; the inference drawn from them (Stage 8's build the better, by culling and fewer triangles) rests on a session whose As ran 21-27 fps (100% long) and on a proxy configuration (the stale shadow map still sampled); in phase 8's Overview culling saves nothing (532 calls against about 525) and 11% fewer triangles cannot by themselves give +39% fps: the phone's state dominates this reading"
+ },
+ {
+  "claim": "culling: not shown, 7 of 12 faster, none slower; 59.8 fps median (59.3-60) with, 54.1 (52.8-60) without; 211 calls and ~857,000 tris against 446-448 and ~1,312,000 (-53%, -35%)",
+  "where_shown": "§25.2 (docs/STAGE8_SPEC.md:5642-5652)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: phone-cull blocks; computed: faster 7, slower 0; A fps 59.3-60 median 59.8; B fps 52.8-60 median 54.1; tris A 857312-857416 B 1312293-1312608 (-52.8% calls, -34.7% tris)",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "effects: not shown, 4 of 12 effects-on faster, none slower; 5 of 14 effects-off blocks at 35-47 fps (19-95% long; js50 11-12 in four of them); none of the 14 effects-on blocks (58.4-60)",
+  "where_shown": "§25.2 (docs/STAGE8_SPEC.md:5642-5652)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: phone-fx blocks; computed: faster 4; slow B blocks fx B AB 1.5: 39.7 fps, 57.7%, js50 11; fx B AB 2.5: 35.2 fps, 94.9%, js50 12; fx B BA 2.2: 35.2 fps, 95.4%, js50 12; fx B BA 2.4: 46.5 fps, 19.2%, js50 5; fx B BA 2.6: 38.6 fps, 68.4%, js50 12; A fps 58.4-60",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "gait: not shown, 12 of 12 neither; 43.0 fps with the gait, 43.3 at rest; p50 23 in every block; the same calls and triangles",
+  "where_shown": "§25.2 (docs/STAGE8_SPEC.md:5642-5652)",
+  "verification": "verified",
+  "method": "tools/audit-post8/perf/reconcile.js: phone-gait blocks; computed: neither 12; A median 43.05 (42.6-43.3), B median 43.3 (43-43.4); p50 23; calls A 517 B 517; tris A 1363585-1364249 B 1363623-1364901; js50 A 7-8 B 8; long A 7.5-15.1 B 6.6-11.7",
+  "cited_source": "docs/stage8-evidence/device/*.json",
+  "notes": ""
+ },
+ {
+  "claim": "§21.9 table: complete-frame maxima 8I 864 / 2,352,049 / phone 1,398,127; 8J 864 / 2,200,439 / 1,315,760; 8K 864 / 2,151,193 / 1,288,561; still eye 862 / 2,204,961 / 1,251,039; 862 / 2,053,351 / 1,168,672; 862 / 2,004,105 / 1,141,473",
+  "where_shown": "§21.9 (docs/STAGE8_SPEC.md:5117-5125)",
+  "verification": "verified",
+  "method": "read after.maxima of docs/stage8-evidence/8k/census/census-8i.json, -8j.json, -8k.json",
+  "cited_source": "census-8i/8j/8k.json",
+  "notes": "every number equal"
+ },
+ {
+  "claim": "§22.5: the complete frame's maxima 864 calls (plans-overview) and 2,151,193 triangles (narrow-1024), 36 calls (4%) and 648,807 (23.2%) within 900 and 2.8 million; the phone's 1,288,561 (phone-390-first), 331,439 (20.5%); the still eye's 862 / 2,004,105, the phone's 1,141,473",
+  "where_shown": "§22.5 (docs/STAGE8_SPEC.md:5372-5375)",
+  "verification": "verified",
+  "method": "census-8l.json after.maxima; census-8l cases identical to census-8k (JSON compared)",
+  "cited_source": "docs/stage8-evidence/8l/census/census-8l.json",
+  "notes": ""
+ },
+ {
+  "claim": "§22.5: the low Pratzen view's complete frame 17.8% fewer triangles with culling than without (1,798,057 of 2,188,177)",
+  "where_shown": "§22.5 (docs/STAGE8_SPEC.md:5375)",
+  "verification": "partly",
+  "method": "1,798,057 = census-8l pratzen-low complete; 2,188,177 searched in docs/ and tools/: found only in STAGE8_SPEC.md",
+  "cited_source": "census-8l.json",
+  "notes": "the arithmetic holds (17.83%); the without-culling number has no committed evidence file"
+ },
+ {
+  "claim": "census maxima as the build's heaviest frames (the settled baseline's headroom 23.2% desktop, 20.5% phone)",
+  "where_shown": "§21.9, §22.5",
+  "verification": "partly",
+  "method": "route medians vs census maxima (reconcile.md §9)",
+  "cited_source": "census-8l.json; desk-D1/D2.json; phone-*.json",
+  "notes": "the route drew more at the median: desktop Play 4x 2289649 (headroom 18.2%), phone Play 1364249 (headroom 15.8%), phone phase-8 Overview 1309505; maxima over the harness's cases only"
+ },
+ {
+  "claim": "349 measurement rows (165 desktop + 184 phone), each table row agreeing with its JSON",
+  "where_shown": "docs/stage8-evidence/device/README.md:5, :20; §24 intro; §25 intro",
+  "verification": "verified",
+  "method": "segments counted; every .txt regenerated byte for byte by perf-route.js format() from its .json",
+  "cited_source": "docs/stage8-evidence/device/",
+  "notes": "the original checking script was not committed"
+ },
+ {
+  "claim": "CHANGELOG: at most 1,364,901 triangles against 1.62 million; calls within 1.8% of P5's, the low view 52% fewer",
+  "where_shown": "CHANGELOG.md:28",
+  "verification": "verified",
+  "method": "phone medians; 211 vs P5's 442 = -52.3%",
+  "cited_source": "phone-*.json; perf-P5-iphone.json",
+  "notes": "1,364,901 is a gait-at-rest block's median"
+ },
+ {
+  "claim": "ROADMAP / §25.3: after warming, the Overview about 41 fps and Play about 43, with 9-18% long frames",
+  "where_shown": "docs/ROADMAP.md:575-576; docs/STAGE8_SPEC.md:5656-5658",
+  "verification": "partly",
+  "method": "A-block medians 40.8 / 43.35 fps, long 18.15 / 8.6%",
+  "cited_source": "phone-R1/R2.json",
+  "notes": "numbers right; 'after warming' unsupported (no thermal evidence; Play flat over 13 minutes)"
+ },
+ {
+  "claim": "L3's build: 2,218,404 bytes, md5 c9d29c14 (main after #60); P5 the build of decision 236 (c4793156, Stage 8's starting build); P3/P4 695e1f94",
+  "where_shown": "§24 intro (5536-5538); docs/STEP6_SPEC.md:997-999, :1224-1225, :1275-1276",
+  "verification": "verified",
+  "method": "git show <merge>:austerlitz-command-map.html | md5sum/sha256sum (route-history.txt)",
+  "cited_source": "git a8afeec, f8d0949, b04e150",
+  "notes": ""
+ },
+ {
+  "claim": "the ordinary route ran unchanged between L3 (22 Oct) and D1/D2 (1 Nov) ('the route of §2 ... unchanged', §8.5)",
+  "where_shown": "§8.5 (docs/STAGE8_SPEC.md:1257); §24 intro",
+  "verification": "verified",
+  "method": "git: perf-route.js at a8afeec (bb6bbb4) vs c2adefe/HEAD; the shared measurement functions and declarations compared (route-history.txt)",
+  "cited_source": "tools/step6/perf-route.js history",
+  "notes": "the VERSION string was not bumped across 4 later edits, all outside the ordinary route's measurement code"
+ }
+]

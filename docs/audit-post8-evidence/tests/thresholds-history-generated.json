@@ -1,0 +1,4636 @@
+{
+ "generated": "2026-11-02T01:15:55.419Z",
+ "head": "43e3e5bcc5ab0cbbcb604a22a5b8c29f801649c8",
+ "gitDir": "a full clone of origin/main (HISTORY_GIT_DIR)",
+ "thresholds": {
+  "file": "tools/visual/thresholds.js",
+  "revisions": 68,
+  "rows": [
+   {
+    "rev": {
+     "h": "4156ee76db217a130b524def2250bae0a3be7f90",
+     "p": "20a19bf8fc60bc78501526bcf7dce0512bab8886",
+     "d": "2026-09-25",
+     "s": "Restore repository structure flattened by the web upload"
+    },
+    "first": true,
+    "keys": 1
+   },
+   {
+    "rev": {
+     "h": "4d631bf64bd65603e0991e3897b5bbe318b818c6",
+     "p": "06dc0df70161d06ac4b775ad30c277dca21317db",
+     "d": "2026-09-26",
+     "s": "Chronology data task (owner decisions 40-46): explicit anchor times"
+    },
+    "changes": [
+     {
+      "key": "KNOWN.hybrid-dimmed",
+      "was": "[\"counter:nansouty / counter:walther\"]",
+      "dir": "removed",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "4f6f00bd2f1e226f4c874afa60dd46c3c014f22b",
+     "p": "cc2ffd52dcc4d9e74c4e0d84b6540ed5d927dfd6",
+     "d": "2026-09-27",
+     "s": "Stage 2D (work in progress): DOM map layer and contextual legend, canvas path still behind ?labels=canvas"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.first-run",
+      "is": 12,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.first-run-laptop",
+      "is": 16,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.overview-field",
+      "is": 11,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.overview-plan",
+      "is": 12,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.close-sokolnitz",
+      "is": 18,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.staff-paper",
+      "is": 13,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.pratzen-low",
+      "is": 13,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.pratzen-orbit-min",
+      "is": 27,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.selected-formation",
+      "is": 5,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.watch-selected",
+      "is": 8,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.hybrid-dimmed",
+      "is": 13,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.pratzen-low-1x",
+      "is": 12,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.pratzen-low-10x",
+      "is": 8,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.first-run",
+      "is": "[0.5442,0.4391]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.first-run-laptop",
+      "is": "[0.4831,0.4391]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.overview-field",
+      "is": "[0.3028,0.1511]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.overview-plan",
+      "is": "[0.8045,0.7987]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.close-sokolnitz",
+      "is": "[0.8045,0.7987]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.staff-paper",
+      "is": "[0.3028,0.1511]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.pratzen-low",
+      "is": "[0.8045,0.7709]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.pratzen-orbit-min",
+      "is": "[0.8045,0.7709]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.selected-formation",
+      "is": "[0.1477,0.0697]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.watch-selected",
+      "is": "[0.7844,0.732]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.hybrid-dimmed",
+      "is": "[0.7869,0.7434]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.pratzen-low-1x",
+      "is": "[0.8045,0.7709]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.pratzen-low-10x",
+      "is": "[0.8045,0.7709]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LAYER_MS",
+      "is": 8,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "1ed79b4ab356774d6d433e304c9572d1a8b94a65",
+     "p": "f46e80a8baa4911a39b79c93a8db3969eab91c0d",
+     "d": "2026-09-27",
+     "s": "Stage 2D: retire the canvas label path; finish the map layer; checks, report, CHANGELOG, baseline"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.selected-formation",
+      "was": 5,
+      "is": 3,
+      "dir": "tightened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "d5600bd8a795d1e06a07fba7ef3203d30f50a9a5",
+     "p": "29f1ff26f55499b1d88808f0b26a1d8cf2f3e5ff",
+     "d": "2026-09-28",
+     "s": "Stage 2E (work in progress): the true north-up paper map"
+    },
+    "changes": [
+     {
+      "key": "PAPER.north",
+      "is": 0.5,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PAPER.spread",
+      "is": 0.01,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PAPER.scaleBar",
+      "is": 0.01,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FRAMED",
+      "is": "[\"paper-north-up\",\"paper-laptop\"]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.paper-north-up",
+      "is": 20,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.paper-close",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.paper-drawer",
+      "is": 5,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.paper-laptop",
+      "is": 21,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-north-up",
+      "is": "[0.3028,0.1511]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-close",
+      "is": "[0.3028,0.1626]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-drawer",
+      "is": "[0.1477,0.0697]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-laptop",
+      "is": "[0.1511,0.1511]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "4b156df660eb06d85f6f45d66a3a86a06d1a2df5",
+     "p": "e9c4fbec90f56d3578f4340713fd94c06b18ad3f",
+     "d": "2026-09-30",
+     "s": "Stage 3B: docked panels (the Now tab, the dossier in the rail, the legend closed, fit framing)"
+    },
+    "changes": [
+     {
+      "key": "UNOBSTRUCTED.overview-field",
+      "was": "[0.3028,0.1511]",
+      "is": "[0.631,0.577]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.staff-paper",
+      "was": "[0.3028,0.1511]",
+      "is": "[0.631,0.577]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.selected-formation",
+      "was": "[0.1477,0.0697]",
+      "is": "[0.631,0.577]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-north-up",
+      "was": "[0.3028,0.1511]",
+      "is": "[0.631,0.577]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-close",
+      "was": "[0.3028,0.1626]",
+      "is": "[0.631,0.577]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-drawer",
+      "was": "[0.1477,0.0697]",
+      "is": "[0.631,0.577]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-laptop",
+      "was": "[0.1511,0.1511]",
+      "is": "[0.577,0.577]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "PAPER_MIN_PXKM.paper-north-up",
+      "is": 25,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PAPER_MIN_PXKM.paper-laptop",
+      "is": 19,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.narrow-1024",
+      "is": 5,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.narrow-1024",
+      "is": "[0.4845,0.577]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "dbd8ea272d941b328a5d7752b205a8cfcad4f543",
+     "p": "f4eb8bb6c3dde4a72ce8e51e53102d73d2709b0c",
+     "d": "2026-10-01",
+     "s": "Stage 3C (work in progress): one timeline, the slider, the event markers, the spine index"
+    },
+    "changes": [
+     {
+      "key": "TIMELINE_MAX",
+      "is": 92,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "07ab456b26bed4ace6ca2091c92a9d66c9c32230",
+     "p": "dbd8ea272d941b328a5d7752b205a8cfcad4f543",
+     "d": "2026-10-01",
+     "s": "Stage 3C (work in progress): thresholds, the hour numerals clear of the markers, the records"
+    },
+    "changes": [
+     {
+      "key": "PAPER_MIN_PXKM.paper-north-up",
+      "was": 25,
+      "is": 28,
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "PAPER_MIN_PXKM.paper-laptop",
+      "was": 19,
+      "is": 21,
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.first-run",
+      "was": "[0.5442,0.4391]",
+      "is": "[0.614,0.49]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.first-run-laptop",
+      "was": "[0.4831,0.4391]",
+      "is": "[0.531,0.49]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.overview-field",
+      "was": "[0.631,0.577]",
+      "is": "[0.703,0.628]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.overview-plan",
+      "was": "[0.8045,0.7987]",
+      "is": "[0.897,0.872]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.close-sokolnitz",
+      "was": "[0.8045,0.7987]",
+      "is": "[0.897,0.872]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.staff-paper",
+      "was": "[0.631,0.577]",
+      "is": "[0.703,0.628]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.pratzen-low",
+      "was": "[0.8045,0.7709]",
+      "is": "[0.897,0.872]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.pratzen-orbit-min",
+      "was": "[0.8045,0.7709]",
+      "is": "[0.897,0.872]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.selected-formation",
+      "was": "[0.631,0.577]",
+      "is": "[0.703,0.628]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.watch-selected",
+      "was": "[0.7844,0.732]",
+      "is": "[0.879,0.833]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.hybrid-dimmed",
+      "was": "[0.7869,0.7434]",
+      "is": "[0.881,0.847]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.pratzen-low-1x",
+      "was": "[0.8045,0.7709]",
+      "is": "[0.897,0.872]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.pratzen-low-10x",
+      "was": "[0.8045,0.7709]",
+      "is": "[0.897,0.872]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-north-up",
+      "was": "[0.631,0.577]",
+      "is": "[0.703,0.628]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-close",
+      "was": "[0.631,0.577]",
+      "is": "[0.703,0.628]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-drawer",
+      "was": "[0.631,0.577]",
+      "is": "[0.703,0.628]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.paper-laptop",
+      "was": "[0.577,0.577]",
+      "is": "[0.628,0.628]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.narrow-1024",
+      "was": "[0.4845,0.577]",
+      "is": "[0.535,0.628]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.ph8-overview-study",
+      "is": 7,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.ph8-overview-watch",
+      "is": 7,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.ph8-overview-study",
+      "is": "[0.703,0.628]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.ph8-overview-watch",
+      "is": "[0.897,0.872]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "922e18e908c209c3165be804975d5aeb2e2aad65",
+     "p": "e432d17b9097d2966de36adf44b830729d4cfd85",
+     "d": "2026-10-01",
+     "s": "Stage 3D (work in progress): the landscape camera, the view offset, Follow, one tween chain"
+    },
+    "changes": [
+     {
+      "key": "HEADS_SHOWN",
+      "is": "[\"ph8-overview-study\",\"ph8-overview-watch\"]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FOCUS_PX",
+      "is": 1,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "7b3222e5464ca1b9419ca706e0818c6339b194fd",
+     "p": "922e18e908c209c3165be804975d5aeb2e2aad65",
+     "d": "2026-10-01",
+     "s": "Stage 3D (work in progress): the Overview fits the day's battle; drop limits; corps and army names far"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.selected-formation",
+      "was": 3,
+      "is": 4,
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.narrow-1024",
+      "was": 5,
+      "is": 6,
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "3f4ef492aa202e1514434e605a96624cf63f14dc",
+     "p": "4af216de8cff4ce564c2bf7a7b80579e61bacd7b",
+     "d": "2026-10-02",
+     "s": "Stage 4B: the light"
+    },
+    "changes": [
+     {
+      "key": "SOLID_BLACK",
+      "is": 0.0005,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.0",
+      "is": "[\"overview-field\",480,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.1",
+      "is": "[\"overview-field\",540,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.2",
+      "is": "[\"overview-field\",600,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.3",
+      "is": "[\"overview-field\",660,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.4",
+      "is": "[\"overview-field\",720,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.5",
+      "is": "[\"overview-field\",780,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.6",
+      "is": "[\"overview-field\",840,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.7",
+      "is": "[\"overview-field\",900,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.8",
+      "is": "[\"overview-field\",960,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.9",
+      "is": "[\"pratzen-low\",480,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.10",
+      "is": "[\"pratzen-low\",540,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.11",
+      "is": "[\"pratzen-low\",600,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.12",
+      "is": "[\"pratzen-low\",660,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.13",
+      "is": "[\"pratzen-low\",720,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.14",
+      "is": "[\"pratzen-low\",780,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.15",
+      "is": "[\"pratzen-low\",840,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.16",
+      "is": "[\"pratzen-low\",900,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.17",
+      "is": "[\"pratzen-low\",960,4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.18",
+      "is": "[\"overview-field\",null,1]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.19",
+      "is": "[\"overview-field\",null,\"model\"]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.20",
+      "is": "[\"close-sokolnitz\",null,1]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.21",
+      "is": "[\"close-sokolnitz\",null,\"model\"]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.22",
+      "is": "[\"ph8-overview-study\",null,1]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "LIGHT_SWEEP.23",
+      "is": "[\"ph8-overview-study\",null,\"model\"]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "02311c83e879f1b86d6b2b086182afc89b4eec8e",
+     "p": "b6051da39188e987606b33be328097a42559c964",
+     "d": "2026-10-03",
+     "s": "Stage 4C: the atmosphere (haze beyond the focus, valley fog at the knowledge model's top)"
+    },
+    "changes": [
+     {
+      "key": "FOG_VIEWS.0",
+      "is": "[\"overview-field\",480]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FOG_VIEWS.1",
+      "is": "[\"pratzen-low\",510]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "f322d47b8e1bb4a2c1f42072c911989f15be921a",
+     "p": "4fba007ddc29c0e4020dd3c761c2bac969a0a7e3",
+     "d": "2026-10-03",
+     "s": "Stage 4E: smoke in puffs by the naming events with a cap on screen; ice; the horizon the haze's (work in progress)"
+    },
+    "changes": [
+     {
+      "key": "SMOKE_SHARE",
+      "is": 0.25,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "HORIZON_VIEWS.0",
+      "is": "[\"pratzen-low\",1]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "HORIZON_VIEWS.1",
+      "is": "[\"pratzen-low\",4]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "HORIZON_VIEWS.2",
+      "is": "[\"pratzen-low\",\"model\"]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "HORIZON_DE",
+      "is": 10,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "21c204fde03e43524ac9eb640a796492474d95af",
+     "p": "9b969e165e9898fee438b0e293def762b2807d9f",
+     "d": "2026-10-04",
+     "s": "Stage 5B: spatial confidence (docs/STAGE5_SPEC.md §A; owner decisions 85-88)"
+    },
+    "changes": [
+     {
+      "key": "CONF_SHARE.land",
+      "is": 0.2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CONF_SHARE.paper",
+      "is": 0.16,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "af6dc6acde7b9116686a4e6874c2b1bd47a37f33",
+     "p": "2f8ea257173cbc5b712f1f892e81b92f5c76f0dc",
+     "d": "2026-10-04",
+     "s": "Stage 5E: \"Whose eyes?\" and the eye-level vantage"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.eye-zuran",
+      "is": 5,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.eye-zuran-1x",
+      "is": 6,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "73afeb7e539df0f77b071195bf7784d99d667ea5",
+     "p": "c9062c1be0d045366097a16ad5a89f0175f58d1a",
+     "d": "2026-10-04",
+     "s": "Stage 5F: the ordered routes, and the Plans tab's harness case"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.plans-overview",
+      "is": 11,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "f46bf53c2c98c94d4e1f28e5767c4263642540a4",
+     "p": "bc4519ee15b5bf697873e6e3a9eeae41af2a29f8",
+     "d": "2026-10-06",
+     "s": "Stage 7B: narrow-390's limits and the first-run baselines raised to the 7B build's; check:baseline moved; the 7B measurements"
+    },
+    "changes": [
+     {
+      "key": "UNOBSTRUCTED.first-run",
+      "was": "[0.614,0.49]",
+      "is": "[0.634,0.52]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.first-run-laptop",
+      "was": "[0.531,0.49]",
+      "is": "[0.558,0.52]",
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.narrow-390",
+      "is": 6,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.narrow-390",
+      "is": "[0.468,0.52]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "c1ad12da191436c16c3e47635de502e3d1635466",
+     "p": "4787b28e7d02842a1a8c1e996bf1f705ce5e4725",
+     "d": "2026-10-06",
+     "s": "Stage 7C: the card's primary reads \"Begin (a minute)\"; the opening cases' limits from this build"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.opening-1",
+      "is": 8,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.opening-2",
+      "is": 7,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.opening-3",
+      "is": 3,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.opening-4",
+      "is": 4,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.opening-end",
+      "is": 7,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.opening-1-laptop",
+      "is": 10,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.opening-1",
+      "is": "[0.632,0.516]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.opening-2",
+      "is": "[0.639,0.529]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.opening-3",
+      "is": "[0.639,0.529]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.opening-4",
+      "is": "[0.639,0.529]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.opening-end",
+      "is": "[0.703,0.628]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.opening-1-laptop",
+      "is": "[0.516,0.516]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "4e670e699a02a16d1a50b511fd2080c77746323d",
+     "p": "65ce0d14bdd4b8e1a0f6283476244e64defdbd4b",
+     "d": "2026-10-07",
+     "s": "Step 1 (9/12): the harness asserts what it measures: every page's console, its features, each case's state, the self-test manifest (T-1, T-4, T-5, T-6); remeasure.js"
+    },
+    "changes": [
+     {
+      "key": "TIMELINE_RECORDED",
+      "is": "[\"narrow-390\"]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.eye-zuran",
+      "is": "[0.897,0.872]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.eye-zuran-1x",
+      "is": "[0.897,0.872]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.plans-overview",
+      "is": "[0.703,0.628]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.id",
+      "is": "eye-leave-floor",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.type",
+      "is": "warning",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.max",
+      "is": 1,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.why",
+      "is": "the render-time guard corrected the eye before the frame (nothing drawn below the floor); it warns that eyeLeave clamped before the eye's own formations were shown again",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.until",
+      "is": "the app fix in roadmap step 3 (eyeLeave clamps after the blocks near the eye are drawn again)",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.LANDCAM",
+      "is": "Stage 3D: the landscape camera, the real-input orbit case",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.syncViewOffset",
+      "is": "Stage 3D: the view offset",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.displayHeight",
+      "is": "Stage 2B: the display height",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.ML",
+      "is": "Stage 2D: the map layer",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.MAPCAM",
+      "is": "Stage 2E: the paper map's plan camera",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.OPENING",
+      "is": "Stage 7C: the opening",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.CONF",
+      "is": "Stage 5B: position confidence",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.ROUTES",
+      "is": "Stage 5F: the ordered routes",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.SKEL",
+      "is": "Stage 5D: the evidence skeleton",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.EYE",
+      "is": "Stage 5E: the eye-level vantage",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.frButtons",
+      "is": "Stage 7B: the first-run dialog",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.timelineRow",
+      "is": "Stage 3C: the timeline's control row",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.nowTab",
+      "is": "Stage 3B: the rail's Now tab",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.DWELL",
+      "is": "Stage 4D: the dwell",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.KEYS",
+      "is": "Stage 3E: the key table",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.SUN_DAY",
+      "is": "Stage 4B: the computed sun",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.ATMO",
+      "is": "Stage 4C: the atmosphere",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.SMOKE",
+      "is": "Stage 4E: smoke in puffs",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.settle",
+      "is": "Stage 0: AUSTERLITZ_DEBUG.settle",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.applyCase",
+      "is": "Stage 0: AUSTERLITZ_DEBUG.applyCase",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.selfTest",
+      "is": "Stage 0: AUSTERLITZ_DEBUG.selfTest",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CAP_DERIVED_NONE",
+      "is": "[]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "ROUTES_NONE",
+      "is": "[]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CAM_TOL",
+      "is": 0.01,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MAP_WPP_TOL",
+      "is": 0.001,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "GROUND_SELF_TOL",
+      "is": 0.0001,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "9e56e1d8d081f408bef983b7fac00a4f438c80b5",
+     "p": "8dcf36887ddf492fde11832e95b8c067fff157ee",
+     "d": "2026-10-07",
+     "s": "Step 1 (10/12): the one re-measure after the embedded fonts (decision 141): six limits loosened, every other kept"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.eye-zuran",
+      "was": 5,
+      "is": 6,
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.plans-overview",
+      "was": 11,
+      "is": 12,
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.narrow-390",
+      "was": 6,
+      "is": 7,
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.first-run",
+      "was": "[0.634,0.52]",
+      "is": "[0.626,0.507]",
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.first-run-laptop",
+      "was": "[0.558,0.52]",
+      "is": "[0.546,0.507]",
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.narrow-390",
+      "was": "[0.468,0.52]",
+      "is": "[0.46,0.507]",
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "83a7e45ab4f1c2ac0c9c9ff86ce3fd7e457982ad",
+     "p": "574f3721e4e6063ec09025d0ad57c217f994d639",
+     "d": "2026-10-08",
+     "s": "Step 2 (C27): 127 (b): the first-run key labelled; narrow-390 re-measured once (decision 146)"
+    },
+    "changes": [
+     {
+      "key": "UNOBSTRUCTED.narrow-390",
+      "was": "[0.46,0.507]",
+      "is": "[0.438,0.507]",
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "f96fc6d24aae028055aeda381f9f54fbeb7964b8",
+     "p": "390bfbcecbbccd064c1f9b1f0e32236188bb649c",
+     "d": "2026-10-10",
+     "s": "Step 3 (C4): S-3 and the eye-level floor: a phase leaves the eye level; CONSOLE_ALLOW emptied"
+    },
+    "changes": [
+     {
+      "key": "CONSOLE_ALLOW.0.id",
+      "was": "eye-leave-floor",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.type",
+      "was": "warning",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.max",
+      "was": 1,
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.why",
+      "was": "the render-time guard corrected the eye before the frame (nothing drawn below the floor); it warns that eyeLeave clamped before the eye's own formations were shown again",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW.0.until",
+      "was": "the app fix in roadmap step 3 (eyeLeave clamps after the blocks near the eye are drawn again)",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "CONSOLE_ALLOW",
+      "is": "[]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "a491fca1b7dd781c3ee5794f54f2f40c2fa6527b",
+     "p": "e6d313b5c3dc572ed01d8983ca86178f06158bdb",
+     "d": "2026-10-10",
+     "s": "Step 3 (C10): A-1, decision 134 (a): the single-key shortcuts switch"
+    },
+    "changes": [
+     {
+      "key": "REQUIRED_FEATURES.SHORTCUTS",
+      "is": "roadmap step 3: the single-key shortcuts switch (decision 134)",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "3be049163a7488523999ff4792a0430e7705a65b",
+     "p": "b7543ff783cde7b7b168617cf4c84c8cc2647c61",
+     "d": "2026-10-11",
+     "s": "Step 3 (D6): narrow-1024's unobstructed baseline re-measured once for the Panels button (decision 164, the owner's word)"
+    },
+    "changes": [
+     {
+      "key": "UNOBSTRUCTED.narrow-1024",
+      "was": "[0.535,0.628]",
+      "is": "[0.533,0.628]",
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "3d2d133336ba2b346de4b7db3a66924aa53dc80b",
+     "p": "24de9a8b6d02170cab87b04d9274d06aefbff527",
+     "d": "2026-10-17",
+     "s": "Step 4b (199, 177 (b)): narrow-1024's drop limit 7 on the owner's word; Friant retimed to Davout's hours"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.narrow-1024",
+      "was": 6,
+      "is": 7,
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "15b2dccb5f0a19eca9e5b326d145489c63d871a6",
+     "p": "b607a7b825dcadc1811caadbdc74a5db892c7eb4",
+     "d": "2026-10-21",
+     "s": "Decision 214: narrow-1024's drop limit 7 -> 8 (the owner's word); check:data's reference and the baseline moved to PR #58's build"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.narrow-1024",
+      "was": 7,
+      "is": 8,
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "ec0790f77ea419b7e4e28a1ae911edad7ab20538",
+     "p": "6ad18d3f5a5c1c292cfe5cb5d149c5d8df54d1b0",
+     "d": "2026-10-21",
+     "s": "Step 6 item 3 Part B (work in progress): the phone cases' measured limits (proposed), the act headings in the phase list, the reach chain"
+    },
+    "changes": [
+     {
+      "key": "PHONE.timeline.phone-390-first",
+      "is": 121,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.timeline.phone-390-explore",
+      "is": 121,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.timeline.phone-390-dossier",
+      "is": 121,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.timeline.phone-390-layers",
+      "is": 121,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.timeline.phone-360-explore",
+      "is": 121,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.timeline.phone-430-explore",
+      "is": 121,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.timeline.phone-390-watch",
+      "is": 155,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.timeline.phone-844x390-explore",
+      "is": 91,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-390-first",
+      "is": 17,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-390-explore",
+      "is": 6,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-390-dossier",
+      "is": 5,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-390-watch",
+      "is": 9,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-390-layers",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-360-explore",
+      "is": 4,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-430-explore",
+      "is": 7,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-844x390-explore",
+      "is": 10,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.2.el",
+      "is": "span.cap-ph",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.2.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.2.reason",
+      "is": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.2.el",
+      "is": "span.cap-ph",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.2.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.2.reason",
+      "is": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.2.el",
+      "is": "span.cap-ph",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.2.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.2.reason",
+      "is": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.2.el",
+      "is": "span.cap-ph",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.2.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.2.reason",
+      "is": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.2.el",
+      "is": "span.cap-ph",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.2.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.2.reason",
+      "is": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.2.el",
+      "is": "span.cap-ph",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.2.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.2.reason",
+      "is": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.2.el",
+      "is": "span.cap-ph",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.2.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.2.reason",
+      "is": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.2.el",
+      "is": "span.cap-ph",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.2.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.2.reason",
+      "is": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.3.el",
+      "is": "button.act-btn",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.3.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.3.reason",
+      "is": "an act band's name on the proportional track, narrower than its name (decision 53)",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.4.el",
+      "is": "span.step-l",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.4.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.4.reason",
+      "is": "a phase's name on the proportional track, narrower than its name; the current one whole (decision 53)",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-first.sources.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-first.sources.reason",
+      "is": "in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-first.eyes.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-first.eyes.reason",
+      "is": "the Command tab, in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-first.phases.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-first.phases.reason",
+      "is": "the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-explore.sources.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-explore.sources.reason",
+      "is": "in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-explore.eyes.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-explore.eyes.reason",
+      "is": "the Command tab, in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-dossier.sources.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-dossier.sources.reason",
+      "is": "in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-dossier.eyes.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-dossier.eyes.reason",
+      "is": "the Command tab, in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-dossier.phases.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-dossier.phases.reason",
+      "is": "the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-layers.sources.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-layers.sources.reason",
+      "is": "in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-layers.eyes.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-layers.eyes.reason",
+      "is": "the Command tab, in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-layers.phases.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-layers.phases.reason",
+      "is": "the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-360-explore.sources.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-360-explore.sources.reason",
+      "is": "in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-360-explore.eyes.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-360-explore.eyes.reason",
+      "is": "the Command tab, in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-430-explore.sources.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-430-explore.sources.reason",
+      "is": "in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-430-explore.eyes.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-430-explore.eyes.reason",
+      "is": "the Command tab, in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.layers.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.layers.reason",
+      "is": "Watch shows no tools: Study, then the Menu",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.paperMap.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.paperMap.reason",
+      "is": "Study, then the Menu",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.panels.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.panels.reason",
+      "is": "Study, then the Menu",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.vantages.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.vantages.reason",
+      "is": "Study, then the Menu",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.tour.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.tour.reason",
+      "is": "Study, then the Menu",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.phases.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.phases.reason",
+      "is": "Study, then the dispatch sheet's grip",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.sources.depth",
+      "is": 3,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.sources.reason",
+      "is": "Study, the Menu, the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.eyes.depth",
+      "is": 3,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.eyes.reason",
+      "is": "Study, the Menu, the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-390-first",
+      "is": 9,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-390-explore",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-390-dossier",
+      "is": 1,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-390-watch",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-390-layers",
+      "is": 0,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-360-explore",
+      "is": 3,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-430-explore",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-844x390-explore",
+      "is": 3,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-390-first",
+      "is": "[0.591,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-390-explore",
+      "is": "[0.652,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-390-dossier",
+      "is": "[0.315,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-390-watch",
+      "is": "[0.817,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-390-layers",
+      "is": "[0.31,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-360-explore",
+      "is": "[0.625,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-430-explore",
+      "is": "[0.685,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-844x390-explore",
+      "is": "[0.69,null]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "1b5a5e44e0037f92083b9382650c694b28ac57bb",
+     "p": "ec0790f77ea419b7e4e28a1ae911edad7ab20538",
+     "d": "2026-10-22",
+     "s": "Step 6 item 3 Part B: the review's fixes, the records"
+    },
+    "changes": [
+     {
+      "key": "PHONE.cutAllow.phone-390-first.2.el",
+      "was": "span.cap-ph",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.2.why",
+      "was": "ellipsis",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-first.2.reason",
+      "was": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.2.el",
+      "was": "span.cap-ph",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.2.why",
+      "was": "ellipsis",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-explore.2.reason",
+      "was": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.2.el",
+      "was": "span.cap-ph",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.2.why",
+      "was": "ellipsis",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-dossier.2.reason",
+      "was": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.2.el",
+      "was": "span.cap-ph",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.2.why",
+      "was": "ellipsis",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-watch.2.reason",
+      "was": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.2.el",
+      "was": "span.cap-ph",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.2.why",
+      "was": "ellipsis",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-layers.2.reason",
+      "was": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.2.el",
+      "was": "span.cap-ph",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.2.why",
+      "was": "ellipsis",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-360-explore.2.reason",
+      "was": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.2.el",
+      "was": "span.cap-ph",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.2.why",
+      "was": "ellipsis",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-430-explore.2.reason",
+      "was": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-844x390-explore.2.reason",
+      "was": "the caption's phase title gives way first (decision 159); whole as the dispatch's title",
+      "is": "the caption's phase title gives way first (decision 159); the current phase whole on its plate on the track",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-first.eyes.depth",
+      "was": 2,
+      "is": 3,
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-first.eyes.reason",
+      "was": "the Command tab, in the rail: the Menu, then the Panels",
+      "is": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-explore.eyes.depth",
+      "was": 2,
+      "is": 3,
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-explore.eyes.reason",
+      "was": "the Command tab, in the rail: the Menu, then the Panels",
+      "is": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-dossier.eyes.depth",
+      "was": 2,
+      "is": 3,
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-dossier.eyes.reason",
+      "was": "the Command tab, in the rail: the Menu, then the Panels",
+      "is": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-layers.eyes.depth",
+      "was": 2,
+      "is": 3,
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-layers.eyes.reason",
+      "was": "the Command tab, in the rail: the Menu, then the Panels",
+      "is": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-360-explore.eyes.depth",
+      "was": 2,
+      "is": 3,
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-360-explore.eyes.reason",
+      "was": "the Command tab, in the rail: the Menu, then the Panels",
+      "is": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-430-explore.eyes.depth",
+      "was": 2,
+      "is": 3,
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-430-explore.eyes.reason",
+      "was": "the Command tab, in the rail: the Menu, then the Panels",
+      "is": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.eyes.depth",
+      "was": 3,
+      "is": 4,
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-watch.eyes.reason",
+      "was": "Study, the Menu, the Panels",
+      "is": "Study, the Menu, the Panels, the Command tab",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-844x390-explore.eyes.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-844x390-explore.eyes.reason",
+      "is": "the Command tab, in the rail: the Panels, then the tab (as on any window under 1,080 px)",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "afd9ce075615e6b2a9c82d82a4af849ac7d0f926",
+     "p": "0f8f9ac78695b41c681be8756672d021ad735950",
+     "d": "2026-10-22",
+     "s": "Roadmap step 6 item 3: owner decisions 231-234 applied (all as recommended)"
+    },
+    "changes": [
+     {
+      "key": "TIMELINE_RECORDED",
+      "was": "[\"narrow-390\"]",
+      "is": "[]",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.narrow-390",
+      "was": 7,
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.narrow-390",
+      "was": "[0.438,0.507]",
+      "dir": "removed",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "49ee5ac12d6900e1ff6b2c002daacbdbe300bef7",
+     "p": "43b62008c63912787a28ea8258936127933ee15c",
+     "d": "2026-10-22",
+     "s": "Decisions 236-238: the paper map framed again on a panel's change; two phone cases; the phone route"
+    },
+    "changes": [
+     {
+      "key": "FRAMED",
+      "was": "[\"paper-north-up\",\"paper-laptop\"]",
+      "is": "[\"paper-north-up\",\"paper-laptop\",\"phone-390-paper\"]",
+      "dir": "changed",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-402x714-explore.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-402x714-explore.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-402x714-explore.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-402x714-explore.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-402x714-explore.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-402x714-explore.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-paper.0.el",
+      "is": "span.evt",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-paper.0.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-paper.0.reason",
+      "is": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-paper.1.el",
+      "is": "span.act",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-paper.1.why",
+      "is": "ellipsis",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.cutAllow.phone-390-paper.1.reason",
+      "is": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-402x714-explore.sources.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-402x714-explore.sources.reason",
+      "is": "in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-402x714-explore.eyes.depth",
+      "is": 3,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-402x714-explore.eyes.reason",
+      "is": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-paper.sources.depth",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-paper.sources.reason",
+      "is": "in the rail: the Menu, then the Panels",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-paper.eyes.depth",
+      "is": 3,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.reachAllow.phone-390-paper.eyes.reason",
+      "is": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "c244746a93e455abd9894c841d79459c4b26517e",
+     "p": "5cc8ddce5eee393306639aabba8c6266dfdd352c",
+     "d": "2026-10-22",
+     "s": "The phone paper map's scale bar in the caption's row; the two phone cases' limits as measured"
+    },
+    "changes": [
+     {
+      "key": "PHONE.timeline.phone-402x714-explore",
+      "is": 121,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.timeline.phone-390-paper",
+      "is": 121,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-402x714-explore",
+      "is": 6,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "PHONE.framing.phone-390-paper",
+      "is": 11,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-402x714-explore",
+      "is": 2,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "DROP_LIMIT.phone-390-paper",
+      "is": 17,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-402x714-explore",
+      "is": "[0.585,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-390-paper",
+      "is": "[0.652,null]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "abab3f31caf06283dc79de33b2b26bbfa3911645",
+     "p": "d86835ebbf9dd28c65ba879a7aec3447c1722d7d",
+     "d": "2026-10-24",
+     "s": "Stage 8, implementation PR 8A (in progress): decisions 239-253 recorded; the carried fixes and the roads' and streams' ribbons wound facing up"
+    },
+    "changes": [
+     {
+      "key": "REQUIRED_FEATURES.TIPS",
+      "is": "Stage 8, implementation PR 8A: the timeline's tips dismissed on activation, never shown by a touch (decision 251)",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "b42e500aef987906c6c5b25342084f9fa1b5e261",
+     "p": "d636319d778bf881fb9fae00282424728f2210aa",
+     "d": "2026-10-24",
+     "s": "Stage 8, implementation PR 8B: the records, the manifest, the landscape's confidence limit (question 254)"
+    },
+    "changes": [
+     {
+      "key": "CONF_SHARE.land",
+      "was": 0.2,
+      "is": 0.07,
+      "dir": "tightened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "76802b11819c9d34fb411ddfe54862bb9a4a00ce",
+     "p": "6fd80ea5b469f8c31ca8869e2b43ec06d014c313",
+     "d": "2026-10-25",
+     "s": "Stage 8, implementation PR 8C: the map layer in motion (decision 240 (a))"
+    },
+    "changes": [
+     {
+      "key": "MOTION.JUMPS",
+      "is": 300,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.POPS",
+      "is": 1300,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.FLICKER",
+      "is": 200,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.LOD_8B",
+      "is": 130,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.REAL_TOL.abs",
+      "is": 6,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.REAL_TOL.rel",
+      "is": 0.25,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.MLS",
+      "is": "Stage 8, implementation PR 8C: the map layer in motion (decision 240 (a))",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "3c9e2ebd3c81c13288038432eba14ee7516e1945",
+     "p": "314bb2fca39aac0b4c06c316a81f00c165bc1958",
+     "d": "2026-10-26",
+     "s": "Stage 8, 8D prerequisite: the motion block at its own counts, and the formations' visibility held (decision 257 (b))"
+    },
+    "changes": [
+     {
+      "key": "MOTION.JUMPS",
+      "was": 300,
+      "is": 245,
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "MOTION.POPS",
+      "was": 1300,
+      "is": 985,
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "MOTION.FLICKER",
+      "was": 200,
+      "is": 10,
+      "dir": "tightened",
+      "dup": false
+     },
+     {
+      "key": "MOTION.LOD_8B",
+      "was": 130,
+      "dir": "removed",
+      "dup": false
+     },
+     {
+      "key": "MOTION.LOD",
+      "is": 130,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS_REAL_FRAMES",
+      "is": 1,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.FRAME_MS",
+      "is": 33.333333333333336,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-pan",
+      "is": "[1378,2049,2467]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-zoom",
+      "is": "[1375,2254,1533]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-orbit",
+      "is": "[1489,2548,2200]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-glide",
+      "is": "[1218,1805,2533]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-play",
+      "is": "[2115,3388,3100]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-pan",
+      "is": "[1240,1274,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-zoom",
+      "is": "[850,1229,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-glide",
+      "is": "[566,821,633]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-play",
+      "is": "[1570,1694,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-pan",
+      "is": "[1869,2051,1133]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-zoom",
+      "is": "[1730,2261,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-orbit",
+      "is": "[1955,2366,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-play",
+      "is": "[2613,3146,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.low-pan",
+      "is": "[820,885,533]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.low-orbit",
+      "is": "[691,887,633]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.low-zoom",
+      "is": "[505,633,633]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-orbit+sel",
+      "is": "[1494,2548,2000]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-zoom+sel",
+      "is": "[823,1229,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-pan+fr",
+      "is": "[1308,1935,2467]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-pan+al",
+      "is": "[979,1346,2467]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-play+al",
+      "is": "[1180,1331,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.phone-pan+touch",
+      "is": "[296,732,1367]",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "e008825eb604cfe00a8e53d539785ffe907c0f79",
+     "p": "067bb8387efbcbdee178a27011da3d9b8876a0d8",
+     "d": "2026-10-26",
+     "s": "Stage 8, 8D prerequisite: the inherited unobstructed baselines re-measured on CI's browser (decision 256 (a))"
+    },
+    "changes": [
+     {
+      "key": "UNOBSTRUCTED.first-run",
+      "was": "[0.626,0.507]",
+      "is": "[0.625,0.506]",
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.first-run-laptop",
+      "was": "[0.546,0.507]",
+      "is": "[0.546,0.506]",
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.narrow-1024",
+      "was": "[0.533,0.628]",
+      "is": "[0.532,0.628]",
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "UNOBSTRUCTED.phone-844x390-explore",
+      "was": "[0.69,null]",
+      "is": "[0.687,null]",
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "4cb72b158e70b0d2ea855abcf5c87c78f8d6e6e1",
+     "p": "e008825eb604cfe00a8e53d539785ffe907c0f79",
+     "d": "2026-10-26",
+     "s": "Stage 8, implementation PR 8D: every figure block culled by its own bounds, the kit's hooks for 8E, the render census held"
+    },
+    "changes": [
+     {
+      "key": "CENSUS.EQUIV_PX",
+      "is": 0,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CENSUS.DESK.tris",
+      "is": 2800000,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CENSUS.DESK.calls",
+      "is": 900,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CENSUS.PHONE.tris",
+      "is": 1620000,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CENSUS.LOW.name",
+      "is": "pratzen-low",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CENSUS.LOW.cut",
+      "is": 0.1,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CULLMOTION.SEQS",
+      "is": 14,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CULLMOTION.PHONE",
+      "is": 1,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.CULL",
+      "is": "Stage 8, implementation PR 8D: the blocks culled by their own bounds, the census (decision 249 (a))",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.ANIM",
+      "is": "Stage 8, implementation PR 8D: the kit's animation hooks (decisions 244 (a), 250 (b))",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "9d7a9663e257fa2bf7db74f69dff5c6143f53812",
+     "p": "b7fb67ab8c25a55915dea3da64ab4d79fe00ef51",
+     "d": "2026-10-30",
+     "s": "Stage 8, the follow-up 8I: the phase's message under a layout's change, the far names' plate, the census's two frames"
+    },
+    "changes": [
+     {
+      "key": "FAR_PLATE_VIEWS.0.0",
+      "is": "the wall of names 09:00",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.0.1.t",
+      "is": 540,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.0.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.0.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.0.1.aim.map",
+      "is": "[230,250]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.0.1.aim.dir",
+      "is": "[-0.97,0.1,0.21]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.0.1.aim.r",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.0.2",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.0.3",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.0",
+      "is": "the wall of names 12:00",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.1.t",
+      "is": 720,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.1.aim.map",
+      "is": "[230,250]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.1.aim.dir",
+      "is": "[-0.97,0.1,0.21]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.1.aim.r",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.2",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.1.3",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.0",
+      "is": "the wall of names 15:00",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.1.t",
+      "is": 900,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.1.aim.map",
+      "is": "[230,250]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.1.aim.dir",
+      "is": "[-0.97,0.1,0.21]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.1.aim.r",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.2",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.2.3",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.0",
+      "is": "the infantry's front",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.1.t",
+      "is": 560,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.1.aim.map",
+      "is": "sthilaire",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.1.aim.dir",
+      "is": "[-0.62,0.34,0.7]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.1.aim.r",
+      "is": 40,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.2",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.3.3",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.4",
+      "is": "[\"pratzen-low\",\"pratzen-low\",null,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.5.0",
+      "is": "overview-field 08:00 (fog)",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.5.1",
+      "is": "overview-field",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.5.2.t",
+      "is": 480,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.5.3",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.6.0",
+      "is": "pratzen-low 08:30 (fog)",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.6.1",
+      "is": "pratzen-low",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.6.2.t",
+      "is": 510,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.6.3",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.7",
+      "is": "[\"ph8-overview-watch\",\"ph8-overview-watch\",null,null]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.0",
+      "is": "the wall of names, a far name selected",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.1.t",
+      "is": 720,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.1.aim.map",
+      "is": "[230,250]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.1.aim.dir",
+      "is": "[-0.97,0.1,0.21]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.1.aim.r",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.2",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.8.3",
+      "is": "select",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.0",
+      "is": "the wall of names, a far name focused",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.1.t",
+      "is": 720,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.1.aim.map",
+      "is": "[230,250]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.1.aim.dir",
+      "is": "[-0.97,0.1,0.21]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.1.aim.r",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.2",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.9.3",
+      "is": "focus",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.0",
+      "is": "the wall of names, Napoleon's reading",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.1.t",
+      "is": 720,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.1.aim.map",
+      "is": "[230,250]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.1.aim.dir",
+      "is": "[-0.97,0.1,0.21]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.1.aim.r",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.2",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.10.3",
+      "is": "reading",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.0",
+      "is": "the wall of names at 844 x 390",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.1.t",
+      "is": 720,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.1.aim.map",
+      "is": "[230,250]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.1.aim.dir",
+      "is": "[-0.97,0.1,0.21]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.1.aim.r",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.2",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.3",
+      "is": null,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.11.4",
+      "is": "[844,390]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.0",
+      "is": "the wall of names, with counters",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.1.t",
+      "is": 720,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.1.presentation",
+      "is": "watch",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.1.mode",
+      "is": "terrain",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.1.aim.map",
+      "is": "[230,250]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.1.aim.dir",
+      "is": "[-0.97,0.1,0.21]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.1.aim.r",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.2.mode",
+      "is": "hybrid",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "FAR_PLATE_VIEWS.12.3",
+      "is": "hybrid",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.mlFarPlate",
+      "is": "Stage 8, the follow-up 8I: the far formation names' lighter plate (decision 263 (a))",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "REQUIRED_FEATURES.TOAST",
+      "is": "Stage 8, the follow-up 8I: the phase's message placed again under a layout's change",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "0ed98b991ca85f5d1c90bc78d41b667cb8cff8db",
+     "p": "9d7a9663e257fa2bf7db74f69dff5c6143f53812",
+     "d": "2026-10-30",
+     "s": "Stage 8, the follow-up 8J: the Sokolnitz group, the Pratzen church and the Austerlitz garden (decision 259 (a); a data task)"
+    },
+    "changes": [
+     {
+      "key": "MOTION.VIS.hybrid-pan",
+      "was": "[1378,2049,2467]",
+      "is": "[1376,2053,2467]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-zoom",
+      "was": "[1375,2254,1533]",
+      "is": "[1371,2242,1533]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-orbit",
+      "was": "[1489,2548,2200]",
+      "is": "[1487,2548,2200]",
+      "dir": "loosened (drawn floor lowered (looser))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-glide",
+      "was": "[1218,1805,2533]",
+      "is": "[1227,1804,2533]",
+      "dir": "tightened (drawn floor raised (tighter); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-play",
+      "was": "[2115,3388,3100]",
+      "is": "[2153,3388,3100]",
+      "dir": "tightened (drawn floor raised (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-pan",
+      "was": "[1869,2051,1133]",
+      "is": "[1879,2055,1133]",
+      "dir": "tightened (drawn floor raised (tighter); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-zoom",
+      "was": "[1730,2261,667]",
+      "is": "[1714,2252,667]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-orbit",
+      "was": "[1955,2366,667]",
+      "is": "[1965,2366,667]",
+      "dir": "tightened (drawn floor raised (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-play",
+      "was": "[2613,3146,667]",
+      "is": "[2630,3146,667]",
+      "dir": "tightened (drawn floor raised (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.low-orbit",
+      "was": "[691,887,633]",
+      "is": "[681,876,633]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-orbit+sel",
+      "was": "[1494,2548,2000]",
+      "is": "[1454,2548,2000]",
+      "dir": "loosened (drawn floor lowered (looser))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-pan+fr",
+      "was": "[1308,1935,2467]",
+      "is": "[1319,1970,2467]",
+      "dir": "tightened (drawn floor raised (tighter); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-pan+al",
+      "was": "[979,1346,2467]",
+      "is": "[955,1350,2467]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "5efb458d18ed8eb9c45b3304237ef429fdf5fd22",
+     "p": "0ed98b991ca85f5d1c90bc78d41b667cb8cff8db",
+     "d": "2026-10-30",
+     "s": "Stage 8, the follow-up 8K: the highway east of the Santon, the Posoritz post house, twelve anchors re-plotted (decision 260 (a); a data task)"
+    },
+    "changes": [
+     {
+      "key": "MOTION.VIS.hybrid-pan",
+      "was": "[1376,2053,2467]",
+      "is": "[1427,2053,2467]",
+      "dir": "tightened (drawn floor raised (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-zoom",
+      "was": "[1371,2242,1533]",
+      "is": "[1342,2248,2133]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed; longest-hidden ceiling raised (looser))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-orbit",
+      "was": "[1487,2548,2200]",
+      "is": "[1537,2548,1900]",
+      "dir": "tightened (drawn floor raised (tighter); longest-hidden ceiling lowered (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-glide",
+      "was": "[1227,1804,2533]",
+      "is": "[1152,1795,2533]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-play",
+      "was": "[2153,3388,3100]",
+      "is": "[2033,3388,4033]",
+      "dir": "loosened (drawn floor lowered (looser); longest-hidden ceiling raised (looser))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-pan",
+      "was": "[1240,1274,667]",
+      "is": "[1274,1274,0]",
+      "dir": "tightened (drawn floor raised (tighter); longest-hidden ceiling lowered (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-zoom",
+      "was": "[850,1229,667]",
+      "is": "[795,1232,667]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-glide",
+      "was": "[566,821,633]",
+      "is": "[554,822,633]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-play",
+      "was": "[1570,1694,667]",
+      "is": "[1581,1694,667]",
+      "dir": "tightened (drawn floor raised (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-pan",
+      "was": "[1879,2055,1133]",
+      "is": "[1868,2055,1133]",
+      "dir": "loosened (drawn floor lowered (looser))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-zoom",
+      "was": "[1714,2252,667]",
+      "is": "[1641,2258,667]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-orbit",
+      "was": "[1965,2366,667]",
+      "is": "[1981,2366,667]",
+      "dir": "tightened (drawn floor raised (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.land-play",
+      "was": "[2630,3146,667]",
+      "is": "[2667,3146,667]",
+      "dir": "tightened (drawn floor raised (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-orbit+sel",
+      "was": "[1454,2548,2000]",
+      "is": "[1495,2548,3033]",
+      "dir": "mixed (drawn floor raised (tighter); longest-hidden ceiling raised (looser))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-zoom+sel",
+      "was": "[823,1229,667]",
+      "is": "[835,1232,667]",
+      "dir": "tightened (drawn floor raised (tighter); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-pan+fr",
+      "was": "[1319,1970,2467]",
+      "is": "[1370,1970,2467]",
+      "dir": "tightened (drawn floor raised (tighter))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-pan+al",
+      "was": "[955,1350,2467]",
+      "is": "[938,1276,2467]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed)",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-play+al",
+      "was": "[1180,1331,667]",
+      "is": "[1171,1331,667]",
+      "dir": "loosened (drawn floor lowered (looser))",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.phone-pan+touch",
+      "was": "[296,732,1367]",
+      "is": "[275,698,1467]",
+      "dir": "loosened (drawn floor lowered (looser); denominator changed; longest-hidden ceiling raised (looser))",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "0b7b77c5dd57b9f4564cf17d15b6cc88d4f6adbf",
+     "p": "df8b13569866560e00414816b880e97e19755bc9",
+     "d": "2026-10-31",
+     "s": "Stage 8, the integration pass: real input held to a like-for-like twin; Watch at 14:40; the Plans view's limit (question 267)"
+    },
+    "changes": [
+     {
+      "key": "DROP_LIMIT.plans-overview",
+      "was": 12,
+      "is": 13,
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-pan+point",
+      "is": "[1427,2053,2467]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-orbit+point",
+      "is": "[1537,2548,1900]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.hybrid-zoom+point",
+      "is": "[1342,2248,2133]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "MOTION.VIS.paper-zoom+point",
+      "is": "[726,1232,667]",
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CAP_DERIVED_ABSENT.ph8-overview-watch.positive",
+      "is": 860,
+      "dir": "added",
+      "dup": false
+     },
+     {
+      "key": "CAP_DERIVED_ABSENT.ph8-overview-watch.why",
+      "is": "14:40: phase 8 is past the plateau reading's last phase, and the centre separation ends at 14:30 with Bagration's corrected place (decision 260 (a))",
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "d3f70266e275541fbcd0f1b15e8257896a500423",
+     "p": "141f890790bfae5164c040de09aa123bdcbd957c",
+     "d": "2026-11-01",
+     "s": "Stage 8, the benchmark closure: decision 267 (a), the motion block's ceilings at 248 jumps and 998 pops"
+    },
+    "changes": [
+     {
+      "key": "MOTION.JUMPS",
+      "was": 245,
+      "is": 248,
+      "dir": "loosened",
+      "dup": false
+     },
+     {
+      "key": "MOTION.POPS",
+      "was": 985,
+      "is": 998,
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   }
+  ],
+  "final": {
+   "PAPER.north": 0.5,
+   "PAPER.spread": 0.01,
+   "PAPER.scaleBar": 0.01,
+   "FRAMED": "[\"paper-north-up\",\"paper-laptop\",\"phone-390-paper\"]",
+   "HEADS_SHOWN": "[\"ph8-overview-study\",\"ph8-overview-watch\"]",
+   "FOCUS_PX": 1,
+   "TIMELINE_MAX": 92,
+   "TIMELINE_RECORDED": "[]",
+   "PHONE.timeline.phone-390-first": 121,
+   "PHONE.timeline.phone-390-explore": 121,
+   "PHONE.timeline.phone-390-dossier": 121,
+   "PHONE.timeline.phone-390-layers": 121,
+   "PHONE.timeline.phone-360-explore": 121,
+   "PHONE.timeline.phone-430-explore": 121,
+   "PHONE.timeline.phone-402x714-explore": 121,
+   "PHONE.timeline.phone-390-paper": 121,
+   "PHONE.timeline.phone-390-watch": 155,
+   "PHONE.timeline.phone-844x390-explore": 91,
+   "PHONE.framing.phone-402x714-explore": 6,
+   "PHONE.framing.phone-390-paper": 11,
+   "PHONE.framing.phone-390-first": 17,
+   "PHONE.framing.phone-390-explore": 6,
+   "PHONE.framing.phone-390-dossier": 5,
+   "PHONE.framing.phone-390-watch": 9,
+   "PHONE.framing.phone-390-layers": 2,
+   "PHONE.framing.phone-360-explore": 4,
+   "PHONE.framing.phone-430-explore": 7,
+   "PHONE.framing.phone-844x390-explore": 10,
+   "PHONE.cutAllow.phone-390-first.0.el": "span.evt",
+   "PHONE.cutAllow.phone-390-first.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-first.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-390-first.1.el": "span.act",
+   "PHONE.cutAllow.phone-390-first.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-first.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-390-explore.0.el": "span.evt",
+   "PHONE.cutAllow.phone-390-explore.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-explore.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-390-explore.1.el": "span.act",
+   "PHONE.cutAllow.phone-390-explore.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-explore.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-390-dossier.0.el": "span.evt",
+   "PHONE.cutAllow.phone-390-dossier.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-dossier.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-390-dossier.1.el": "span.act",
+   "PHONE.cutAllow.phone-390-dossier.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-dossier.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-390-watch.0.el": "span.evt",
+   "PHONE.cutAllow.phone-390-watch.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-watch.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-390-watch.1.el": "span.act",
+   "PHONE.cutAllow.phone-390-watch.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-watch.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-390-layers.0.el": "span.evt",
+   "PHONE.cutAllow.phone-390-layers.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-layers.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-390-layers.1.el": "span.act",
+   "PHONE.cutAllow.phone-390-layers.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-layers.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-360-explore.0.el": "span.evt",
+   "PHONE.cutAllow.phone-360-explore.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-360-explore.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-360-explore.1.el": "span.act",
+   "PHONE.cutAllow.phone-360-explore.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-360-explore.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-430-explore.0.el": "span.evt",
+   "PHONE.cutAllow.phone-430-explore.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-430-explore.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-430-explore.1.el": "span.act",
+   "PHONE.cutAllow.phone-430-explore.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-430-explore.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-402x714-explore.0.el": "span.evt",
+   "PHONE.cutAllow.phone-402x714-explore.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-402x714-explore.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-402x714-explore.1.el": "span.act",
+   "PHONE.cutAllow.phone-402x714-explore.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-402x714-explore.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-390-paper.0.el": "span.evt",
+   "PHONE.cutAllow.phone-390-paper.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-paper.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-390-paper.1.el": "span.act",
+   "PHONE.cutAllow.phone-390-paper.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-390-paper.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-844x390-explore.0.el": "span.evt",
+   "PHONE.cutAllow.phone-844x390-explore.0.why": "ellipsis",
+   "PHONE.cutAllow.phone-844x390-explore.0.reason": "the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier",
+   "PHONE.cutAllow.phone-844x390-explore.1.el": "span.act",
+   "PHONE.cutAllow.phone-844x390-explore.1.why": "ellipsis",
+   "PHONE.cutAllow.phone-844x390-explore.1.reason": "the caption's act gives way after the phase (decision 159); whole as a heading of the phase list",
+   "PHONE.cutAllow.phone-844x390-explore.2.el": "span.cap-ph",
+   "PHONE.cutAllow.phone-844x390-explore.2.why": "ellipsis",
+   "PHONE.cutAllow.phone-844x390-explore.2.reason": "the caption's phase title gives way first (decision 159); the current phase whole on its plate on the track",
+   "PHONE.cutAllow.phone-844x390-explore.3.el": "button.act-btn",
+   "PHONE.cutAllow.phone-844x390-explore.3.why": "ellipsis",
+   "PHONE.cutAllow.phone-844x390-explore.3.reason": "an act band's name on the proportional track, narrower than its name (decision 53)",
+   "PHONE.cutAllow.phone-844x390-explore.4.el": "span.step-l",
+   "PHONE.cutAllow.phone-844x390-explore.4.why": "ellipsis",
+   "PHONE.cutAllow.phone-844x390-explore.4.reason": "a phase's name on the proportional track, narrower than its name; the current one whole (decision 53)",
+   "PHONE.reachAllow.phone-390-first.sources.depth": 2,
+   "PHONE.reachAllow.phone-390-first.sources.reason": "in the rail: the Menu, then the Panels",
+   "PHONE.reachAllow.phone-390-first.eyes.depth": 3,
+   "PHONE.reachAllow.phone-390-first.eyes.reason": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+   "PHONE.reachAllow.phone-390-first.phases.depth": 2,
+   "PHONE.reachAllow.phone-390-first.phases.reason": "the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip",
+   "PHONE.reachAllow.phone-390-explore.sources.depth": 2,
+   "PHONE.reachAllow.phone-390-explore.sources.reason": "in the rail: the Menu, then the Panels",
+   "PHONE.reachAllow.phone-390-explore.eyes.depth": 3,
+   "PHONE.reachAllow.phone-390-explore.eyes.reason": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+   "PHONE.reachAllow.phone-390-dossier.sources.depth": 2,
+   "PHONE.reachAllow.phone-390-dossier.sources.reason": "in the rail: the Menu, then the Panels",
+   "PHONE.reachAllow.phone-390-dossier.eyes.depth": 3,
+   "PHONE.reachAllow.phone-390-dossier.eyes.reason": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+   "PHONE.reachAllow.phone-390-dossier.phases.depth": 2,
+   "PHONE.reachAllow.phone-390-dossier.phases.reason": "the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip",
+   "PHONE.reachAllow.phone-390-layers.sources.depth": 2,
+   "PHONE.reachAllow.phone-390-layers.sources.reason": "in the rail: the Menu, then the Panels",
+   "PHONE.reachAllow.phone-390-layers.eyes.depth": 3,
+   "PHONE.reachAllow.phone-390-layers.eyes.reason": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+   "PHONE.reachAllow.phone-390-layers.phases.depth": 2,
+   "PHONE.reachAllow.phone-390-layers.phases.reason": "the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip",
+   "PHONE.reachAllow.phone-360-explore.sources.depth": 2,
+   "PHONE.reachAllow.phone-360-explore.sources.reason": "in the rail: the Menu, then the Panels",
+   "PHONE.reachAllow.phone-360-explore.eyes.depth": 3,
+   "PHONE.reachAllow.phone-360-explore.eyes.reason": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+   "PHONE.reachAllow.phone-430-explore.sources.depth": 2,
+   "PHONE.reachAllow.phone-430-explore.sources.reason": "in the rail: the Menu, then the Panels",
+   "PHONE.reachAllow.phone-430-explore.eyes.depth": 3,
+   "PHONE.reachAllow.phone-430-explore.eyes.reason": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+   "PHONE.reachAllow.phone-402x714-explore.sources.depth": 2,
+   "PHONE.reachAllow.phone-402x714-explore.sources.reason": "in the rail: the Menu, then the Panels",
+   "PHONE.reachAllow.phone-402x714-explore.eyes.depth": 3,
+   "PHONE.reachAllow.phone-402x714-explore.eyes.reason": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+   "PHONE.reachAllow.phone-390-paper.sources.depth": 2,
+   "PHONE.reachAllow.phone-390-paper.sources.reason": "in the rail: the Menu, then the Panels",
+   "PHONE.reachAllow.phone-390-paper.eyes.depth": 3,
+   "PHONE.reachAllow.phone-390-paper.eyes.reason": "the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)",
+   "PHONE.reachAllow.phone-390-watch.layers.depth": 2,
+   "PHONE.reachAllow.phone-390-watch.layers.reason": "Watch shows no tools: Study, then the Menu",
+   "PHONE.reachAllow.phone-390-watch.paperMap.depth": 2,
+   "PHONE.reachAllow.phone-390-watch.paperMap.reason": "Study, then the Menu",
+   "PHONE.reachAllow.phone-390-watch.panels.depth": 2,
+   "PHONE.reachAllow.phone-390-watch.panels.reason": "Study, then the Menu",
+   "PHONE.reachAllow.phone-390-watch.vantages.depth": 2,
+   "PHONE.reachAllow.phone-390-watch.vantages.reason": "Study, then the Menu",
+   "PHONE.reachAllow.phone-390-watch.tour.depth": 2,
+   "PHONE.reachAllow.phone-390-watch.tour.reason": "Study, then the Menu",
+   "PHONE.reachAllow.phone-390-watch.phases.depth": 2,
+   "PHONE.reachAllow.phone-390-watch.phases.reason": "Study, then the dispatch sheet's grip",
+   "PHONE.reachAllow.phone-390-watch.sources.depth": 3,
+   "PHONE.reachAllow.phone-390-watch.sources.reason": "Study, the Menu, the Panels",
+   "PHONE.reachAllow.phone-390-watch.eyes.depth": 4,
+   "PHONE.reachAllow.phone-390-watch.eyes.reason": "Study, the Menu, the Panels, the Command tab",
+   "PHONE.reachAllow.phone-844x390-explore.eyes.depth": 2,
+   "PHONE.reachAllow.phone-844x390-explore.eyes.reason": "the Command tab, in the rail: the Panels, then the tab (as on any window under 1,080 px)",
+   "SMOKE_SHARE": 0.25,
+   "CONF_SHARE.land": 0.07,
+   "CONF_SHARE.paper": 0.16,
+   "MOTION.JUMPS": 248,
+   "MOTION.POPS": 998,
+   "MOTION.FLICKER": 10,
+   "MOTION.LOD": 130,
+   "MOTION.REAL_TOL.abs": 6,
+   "MOTION.REAL_TOL.rel": 0.25,
+   "MOTION.VIS_REAL_FRAMES": 1,
+   "MOTION.FRAME_MS": 33.333333333333336,
+   "MOTION.VIS.hybrid-pan": "[1427,2053,2467]",
+   "MOTION.VIS.hybrid-zoom": "[1342,2248,2133]",
+   "MOTION.VIS.hybrid-orbit": "[1537,2548,1900]",
+   "MOTION.VIS.hybrid-glide": "[1152,1795,2533]",
+   "MOTION.VIS.hybrid-play": "[2033,3388,4033]",
+   "MOTION.VIS.paper-pan": "[1274,1274,0]",
+   "MOTION.VIS.paper-zoom": "[795,1232,667]",
+   "MOTION.VIS.paper-glide": "[554,822,633]",
+   "MOTION.VIS.paper-play": "[1581,1694,667]",
+   "MOTION.VIS.land-pan": "[1868,2055,1133]",
+   "MOTION.VIS.land-zoom": "[1641,2258,667]",
+   "MOTION.VIS.land-orbit": "[1981,2366,667]",
+   "MOTION.VIS.land-play": "[2667,3146,667]",
+   "MOTION.VIS.low-pan": "[820,885,533]",
+   "MOTION.VIS.low-orbit": "[681,876,633]",
+   "MOTION.VIS.low-zoom": "[505,633,633]",
+   "MOTION.VIS.hybrid-orbit+sel": "[1495,2548,3033]",
+   "MOTION.VIS.paper-zoom+sel": "[835,1232,667]",
+   "MOTION.VIS.hybrid-pan+fr": "[1370,1970,2467]",
+   "MOTION.VIS.hybrid-pan+al": "[938,1276,2467]",
+   "MOTION.VIS.paper-play+al": "[1171,1331,667]",
+   "MOTION.VIS.phone-pan+touch": "[275,698,1467]",
+   "MOTION.VIS.hybrid-pan+point": "[1427,2053,2467]",
+   "MOTION.VIS.hybrid-orbit+point": "[1537,2548,1900]",
+   "MOTION.VIS.hybrid-zoom+point": "[1342,2248,2133]",
+   "MOTION.VIS.paper-zoom+point": "[726,1232,667]",
+   "CENSUS.EQUIV_PX": 0,
+   "CENSUS.DESK.tris": 2800000,
+   "CENSUS.DESK.calls": 900,
+   "CENSUS.PHONE.tris": 1620000,
+   "CENSUS.LOW.name": "pratzen-low",
+   "CENSUS.LOW.cut": 0.1,
+   "CULLMOTION.SEQS": 14,
+   "CULLMOTION.PHONE": 1,
+   "HORIZON_VIEWS.0": "[\"pratzen-low\",1]",
+   "HORIZON_VIEWS.1": "[\"pratzen-low\",4]",
+   "HORIZON_VIEWS.2": "[\"pratzen-low\",\"model\"]",
+   "HORIZON_DE": 10,
+   "SOLID_BLACK": 0.0005,
+   "LIGHT_SWEEP.0": "[\"overview-field\",480,4]",
+   "LIGHT_SWEEP.1": "[\"overview-field\",540,4]",
+   "LIGHT_SWEEP.2": "[\"overview-field\",600,4]",
+   "LIGHT_SWEEP.3": "[\"overview-field\",660,4]",
+   "LIGHT_SWEEP.4": "[\"overview-field\",720,4]",
+   "LIGHT_SWEEP.5": "[\"overview-field\",780,4]",
+   "LIGHT_SWEEP.6": "[\"overview-field\",840,4]",
+   "LIGHT_SWEEP.7": "[\"overview-field\",900,4]",
+   "LIGHT_SWEEP.8": "[\"overview-field\",960,4]",
+   "LIGHT_SWEEP.9": "[\"pratzen-low\",480,4]",
+   "LIGHT_SWEEP.10": "[\"pratzen-low\",540,4]",
+   "LIGHT_SWEEP.11": "[\"pratzen-low\",600,4]",
+   "LIGHT_SWEEP.12": "[\"pratzen-low\",660,4]",
+   "LIGHT_SWEEP.13": "[\"pratzen-low\",720,4]",
+   "LIGHT_SWEEP.14": "[\"pratzen-low\",780,4]",
+   "LIGHT_SWEEP.15": "[\"pratzen-low\",840,4]",
+   "LIGHT_SWEEP.16": "[\"pratzen-low\",900,4]",
+   "LIGHT_SWEEP.17": "[\"pratzen-low\",960,4]",
+   "LIGHT_SWEEP.18": "[\"overview-field\",null,1]",
+   "LIGHT_SWEEP.19": "[\"overview-field\",null,\"model\"]",
+   "LIGHT_SWEEP.20": "[\"close-sokolnitz\",null,1]",
+   "LIGHT_SWEEP.21": "[\"close-sokolnitz\",null,\"model\"]",
+   "LIGHT_SWEEP.22": "[\"ph8-overview-study\",null,1]",
+   "LIGHT_SWEEP.23": "[\"ph8-overview-study\",null,\"model\"]",
+   "FOG_VIEWS.0": "[\"overview-field\",480]",
+   "FOG_VIEWS.1": "[\"pratzen-low\",510]",
+   "FAR_PLATE_VIEWS.0.0": "the wall of names 09:00",
+   "FAR_PLATE_VIEWS.0.1.t": 540,
+   "FAR_PLATE_VIEWS.0.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.0.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.0.1.aim.map": "[230,250]",
+   "FAR_PLATE_VIEWS.0.1.aim.dir": "[-0.97,0.1,0.21]",
+   "FAR_PLATE_VIEWS.0.1.aim.r": 60,
+   "FAR_PLATE_VIEWS.0.2": null,
+   "FAR_PLATE_VIEWS.0.3": null,
+   "FAR_PLATE_VIEWS.1.0": "the wall of names 12:00",
+   "FAR_PLATE_VIEWS.1.1.t": 720,
+   "FAR_PLATE_VIEWS.1.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.1.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.1.1.aim.map": "[230,250]",
+   "FAR_PLATE_VIEWS.1.1.aim.dir": "[-0.97,0.1,0.21]",
+   "FAR_PLATE_VIEWS.1.1.aim.r": 60,
+   "FAR_PLATE_VIEWS.1.2": null,
+   "FAR_PLATE_VIEWS.1.3": null,
+   "FAR_PLATE_VIEWS.2.0": "the wall of names 15:00",
+   "FAR_PLATE_VIEWS.2.1.t": 900,
+   "FAR_PLATE_VIEWS.2.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.2.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.2.1.aim.map": "[230,250]",
+   "FAR_PLATE_VIEWS.2.1.aim.dir": "[-0.97,0.1,0.21]",
+   "FAR_PLATE_VIEWS.2.1.aim.r": 60,
+   "FAR_PLATE_VIEWS.2.2": null,
+   "FAR_PLATE_VIEWS.2.3": null,
+   "FAR_PLATE_VIEWS.3.0": "the infantry's front",
+   "FAR_PLATE_VIEWS.3.1.t": 560,
+   "FAR_PLATE_VIEWS.3.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.3.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.3.1.aim.map": "sthilaire",
+   "FAR_PLATE_VIEWS.3.1.aim.dir": "[-0.62,0.34,0.7]",
+   "FAR_PLATE_VIEWS.3.1.aim.r": 40,
+   "FAR_PLATE_VIEWS.3.2": null,
+   "FAR_PLATE_VIEWS.3.3": null,
+   "FAR_PLATE_VIEWS.4": "[\"pratzen-low\",\"pratzen-low\",null,null]",
+   "FAR_PLATE_VIEWS.5.0": "overview-field 08:00 (fog)",
+   "FAR_PLATE_VIEWS.5.1": "overview-field",
+   "FAR_PLATE_VIEWS.5.2.t": 480,
+   "FAR_PLATE_VIEWS.5.3": null,
+   "FAR_PLATE_VIEWS.6.0": "pratzen-low 08:30 (fog)",
+   "FAR_PLATE_VIEWS.6.1": "pratzen-low",
+   "FAR_PLATE_VIEWS.6.2.t": 510,
+   "FAR_PLATE_VIEWS.6.3": null,
+   "FAR_PLATE_VIEWS.7": "[\"ph8-overview-watch\",\"ph8-overview-watch\",null,null]",
+   "FAR_PLATE_VIEWS.8.0": "the wall of names, a far name selected",
+   "FAR_PLATE_VIEWS.8.1.t": 720,
+   "FAR_PLATE_VIEWS.8.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.8.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.8.1.aim.map": "[230,250]",
+   "FAR_PLATE_VIEWS.8.1.aim.dir": "[-0.97,0.1,0.21]",
+   "FAR_PLATE_VIEWS.8.1.aim.r": 60,
+   "FAR_PLATE_VIEWS.8.2": null,
+   "FAR_PLATE_VIEWS.8.3": "select",
+   "FAR_PLATE_VIEWS.9.0": "the wall of names, a far name focused",
+   "FAR_PLATE_VIEWS.9.1.t": 720,
+   "FAR_PLATE_VIEWS.9.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.9.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.9.1.aim.map": "[230,250]",
+   "FAR_PLATE_VIEWS.9.1.aim.dir": "[-0.97,0.1,0.21]",
+   "FAR_PLATE_VIEWS.9.1.aim.r": 60,
+   "FAR_PLATE_VIEWS.9.2": null,
+   "FAR_PLATE_VIEWS.9.3": "focus",
+   "FAR_PLATE_VIEWS.10.0": "the wall of names, Napoleon's reading",
+   "FAR_PLATE_VIEWS.10.1.t": 720,
+   "FAR_PLATE_VIEWS.10.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.10.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.10.1.aim.map": "[230,250]",
+   "FAR_PLATE_VIEWS.10.1.aim.dir": "[-0.97,0.1,0.21]",
+   "FAR_PLATE_VIEWS.10.1.aim.r": 60,
+   "FAR_PLATE_VIEWS.10.2": null,
+   "FAR_PLATE_VIEWS.10.3": "reading",
+   "FAR_PLATE_VIEWS.11.0": "the wall of names at 844 x 390",
+   "FAR_PLATE_VIEWS.11.1.t": 720,
+   "FAR_PLATE_VIEWS.11.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.11.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.11.1.aim.map": "[230,250]",
+   "FAR_PLATE_VIEWS.11.1.aim.dir": "[-0.97,0.1,0.21]",
+   "FAR_PLATE_VIEWS.11.1.aim.r": 60,
+   "FAR_PLATE_VIEWS.11.2": null,
+   "FAR_PLATE_VIEWS.11.3": null,
+   "FAR_PLATE_VIEWS.11.4": "[844,390]",
+   "FAR_PLATE_VIEWS.12.0": "the wall of names, with counters",
+   "FAR_PLATE_VIEWS.12.1.t": 720,
+   "FAR_PLATE_VIEWS.12.1.presentation": "watch",
+   "FAR_PLATE_VIEWS.12.1.mode": "terrain",
+   "FAR_PLATE_VIEWS.12.1.aim.map": "[230,250]",
+   "FAR_PLATE_VIEWS.12.1.aim.dir": "[-0.97,0.1,0.21]",
+   "FAR_PLATE_VIEWS.12.1.aim.r": 60,
+   "FAR_PLATE_VIEWS.12.2.mode": "hybrid",
+   "FAR_PLATE_VIEWS.12.3": "hybrid",
+   "PAPER_MIN_PXKM.paper-north-up": 28,
+   "PAPER_MIN_PXKM.paper-laptop": 21,
+   "DROP_LIMIT.first-run": 12,
+   "DROP_LIMIT.first-run-laptop": 16,
+   "DROP_LIMIT.overview-field": 11,
+   "DROP_LIMIT.overview-plan": 12,
+   "DROP_LIMIT.close-sokolnitz": 18,
+   "DROP_LIMIT.staff-paper": 13,
+   "DROP_LIMIT.pratzen-low": 13,
+   "DROP_LIMIT.pratzen-orbit-min": 27,
+   "DROP_LIMIT.selected-formation": 4,
+   "DROP_LIMIT.watch-selected": 8,
+   "DROP_LIMIT.hybrid-dimmed": 13,
+   "DROP_LIMIT.pratzen-low-1x": 12,
+   "DROP_LIMIT.pratzen-low-10x": 8,
+   "DROP_LIMIT.paper-north-up": 20,
+   "DROP_LIMIT.paper-close": 2,
+   "DROP_LIMIT.paper-drawer": 5,
+   "DROP_LIMIT.paper-laptop": 21,
+   "DROP_LIMIT.narrow-1024": 8,
+   "DROP_LIMIT.ph8-overview-study": 7,
+   "DROP_LIMIT.ph8-overview-watch": 7,
+   "DROP_LIMIT.eye-zuran": 6,
+   "DROP_LIMIT.eye-zuran-1x": 6,
+   "DROP_LIMIT.plans-overview": 13,
+   "DROP_LIMIT.opening-1": 8,
+   "DROP_LIMIT.opening-2": 7,
+   "DROP_LIMIT.opening-3": 3,
+   "DROP_LIMIT.opening-4": 4,
+   "DROP_LIMIT.opening-end": 7,
+   "DROP_LIMIT.opening-1-laptop": 10,
+   "DROP_LIMIT.phone-390-first": 9,
+   "DROP_LIMIT.phone-390-explore": 2,
+   "DROP_LIMIT.phone-390-dossier": 1,
+   "DROP_LIMIT.phone-390-watch": 2,
+   "DROP_LIMIT.phone-390-layers": 0,
+   "DROP_LIMIT.phone-360-explore": 3,
+   "DROP_LIMIT.phone-430-explore": 2,
+   "DROP_LIMIT.phone-844x390-explore": 3,
+   "DROP_LIMIT.phone-402x714-explore": 2,
+   "DROP_LIMIT.phone-390-paper": 17,
+   "UNOBSTRUCTED.first-run": "[0.625,0.506]",
+   "UNOBSTRUCTED.first-run-laptop": "[0.546,0.506]",
+   "UNOBSTRUCTED.overview-field": "[0.703,0.628]",
+   "UNOBSTRUCTED.overview-plan": "[0.897,0.872]",
+   "UNOBSTRUCTED.close-sokolnitz": "[0.897,0.872]",
+   "UNOBSTRUCTED.staff-paper": "[0.703,0.628]",
+   "UNOBSTRUCTED.pratzen-low": "[0.897,0.872]",
+   "UNOBSTRUCTED.pratzen-orbit-min": "[0.897,0.872]",
+   "UNOBSTRUCTED.selected-formation": "[0.703,0.628]",
+   "UNOBSTRUCTED.watch-selected": "[0.879,0.833]",
+   "UNOBSTRUCTED.hybrid-dimmed": "[0.881,0.847]",
+   "UNOBSTRUCTED.pratzen-low-1x": "[0.897,0.872]",
+   "UNOBSTRUCTED.pratzen-low-10x": "[0.897,0.872]",
+   "UNOBSTRUCTED.paper-north-up": "[0.703,0.628]",
+   "UNOBSTRUCTED.paper-close": "[0.703,0.628]",
+   "UNOBSTRUCTED.paper-drawer": "[0.703,0.628]",
+   "UNOBSTRUCTED.paper-laptop": "[0.628,0.628]",
+   "UNOBSTRUCTED.narrow-1024": "[0.532,0.628]",
+   "UNOBSTRUCTED.ph8-overview-study": "[0.703,0.628]",
+   "UNOBSTRUCTED.ph8-overview-watch": "[0.897,0.872]",
+   "UNOBSTRUCTED.opening-1": "[0.632,0.516]",
+   "UNOBSTRUCTED.opening-2": "[0.639,0.529]",
+   "UNOBSTRUCTED.opening-3": "[0.639,0.529]",
+   "UNOBSTRUCTED.opening-4": "[0.639,0.529]",
+   "UNOBSTRUCTED.opening-end": "[0.703,0.628]",
+   "UNOBSTRUCTED.opening-1-laptop": "[0.516,0.516]",
+   "UNOBSTRUCTED.eye-zuran": "[0.897,0.872]",
+   "UNOBSTRUCTED.eye-zuran-1x": "[0.897,0.872]",
+   "UNOBSTRUCTED.plans-overview": "[0.703,0.628]",
+   "UNOBSTRUCTED.phone-390-first": "[0.591,null]",
+   "UNOBSTRUCTED.phone-390-explore": "[0.652,null]",
+   "UNOBSTRUCTED.phone-390-dossier": "[0.315,null]",
+   "UNOBSTRUCTED.phone-390-watch": "[0.817,null]",
+   "UNOBSTRUCTED.phone-390-layers": "[0.31,null]",
+   "UNOBSTRUCTED.phone-360-explore": "[0.625,null]",
+   "UNOBSTRUCTED.phone-430-explore": "[0.685,null]",
+   "UNOBSTRUCTED.phone-844x390-explore": "[0.687,null]",
+   "UNOBSTRUCTED.phone-402x714-explore": "[0.585,null]",
+   "UNOBSTRUCTED.phone-390-paper": "[0.652,null]",
+   "LAYER_MS": 8,
+   "CONSOLE_ALLOW": "[]",
+   "REQUIRED_FEATURES.LANDCAM": "Stage 3D: the landscape camera, the real-input orbit case",
+   "REQUIRED_FEATURES.syncViewOffset": "Stage 3D: the view offset",
+   "REQUIRED_FEATURES.displayHeight": "Stage 2B: the display height",
+   "REQUIRED_FEATURES.ML": "Stage 2D: the map layer",
+   "REQUIRED_FEATURES.MAPCAM": "Stage 2E: the paper map's plan camera",
+   "REQUIRED_FEATURES.OPENING": "Stage 7C: the opening",
+   "REQUIRED_FEATURES.CONF": "Stage 5B: position confidence",
+   "REQUIRED_FEATURES.ROUTES": "Stage 5F: the ordered routes",
+   "REQUIRED_FEATURES.SKEL": "Stage 5D: the evidence skeleton",
+   "REQUIRED_FEATURES.EYE": "Stage 5E: the eye-level vantage",
+   "REQUIRED_FEATURES.frButtons": "Stage 7B: the first-run dialog",
+   "REQUIRED_FEATURES.timelineRow": "Stage 3C: the timeline's control row",
+   "REQUIRED_FEATURES.nowTab": "Stage 3B: the rail's Now tab",
+   "REQUIRED_FEATURES.DWELL": "Stage 4D: the dwell",
+   "REQUIRED_FEATURES.KEYS": "Stage 3E: the key table",
+   "REQUIRED_FEATURES.SUN_DAY": "Stage 4B: the computed sun",
+   "REQUIRED_FEATURES.ATMO": "Stage 4C: the atmosphere",
+   "REQUIRED_FEATURES.SMOKE": "Stage 4E: smoke in puffs",
+   "REQUIRED_FEATURES.settle": "Stage 0: AUSTERLITZ_DEBUG.settle",
+   "REQUIRED_FEATURES.applyCase": "Stage 0: AUSTERLITZ_DEBUG.applyCase",
+   "REQUIRED_FEATURES.selfTest": "Stage 0: AUSTERLITZ_DEBUG.selfTest",
+   "REQUIRED_FEATURES.SHORTCUTS": "roadmap step 3: the single-key shortcuts switch (decision 134)",
+   "REQUIRED_FEATURES.TIPS": "Stage 8, implementation PR 8A: the timeline's tips dismissed on activation, never shown by a touch (decision 251)",
+   "REQUIRED_FEATURES.MLS": "Stage 8, implementation PR 8C: the map layer in motion (decision 240 (a))",
+   "REQUIRED_FEATURES.CULL": "Stage 8, implementation PR 8D: the blocks culled by their own bounds, the census (decision 249 (a))",
+   "REQUIRED_FEATURES.ANIM": "Stage 8, implementation PR 8D: the kit's animation hooks (decisions 244 (a), 250 (b))",
+   "REQUIRED_FEATURES.mlFarPlate": "Stage 8, the follow-up 8I: the far formation names' lighter plate (decision 263 (a))",
+   "REQUIRED_FEATURES.TOAST": "Stage 8, the follow-up 8I: the phase's message placed again under a layout's change",
+   "CAP_DERIVED_NONE": "[]",
+   "ROUTES_NONE": "[]",
+   "CAP_DERIVED_ABSENT.ph8-overview-watch.positive": 860,
+   "CAP_DERIVED_ABSENT.ph8-overview-watch.why": "14:40: phase 8 is past the plateau reading's last phase, and the centre separation ends at 14:30 with Bagration's corrected place (decision 260 (a))",
+   "CAM_TOL": 0.01,
+   "MAP_WPP_TOL": 0.001,
+   "GROUND_SELF_TOL": 0.0001
+  }
+ },
+ "bootCheck": {
+  "file": "tools/visual/boot-check.js",
+  "revisions": 10,
+  "rows": [
+   {
+    "rev": {
+     "h": "6e5f5714db4a11fc6a447f2e6cb683dfa4bb4d08",
+     "p": "cdb932da526fdcaa78f7928733d91472dac6a4ea",
+     "d": "2026-10-10",
+     "s": "Step 3 (C6): SW-1, decision 133 (a): three.js with its integrity; the start never hangs silently"
+    },
+    "first": true,
+    "keys": 0
+   },
+   {
+    "rev": {
+     "h": "656cf7d9fdd93a5960a5a261922b170a46d0ed09",
+     "p": "443b657d3e244a28bc6957dce68f5b8ec3d23086",
+     "d": "2026-10-10",
+     "s": "Step 3 (C4-C6, review fixes): the start-up guard's keys, the boot cases made strict, the tools' waits"
+    },
+    "changes": [
+     {
+      "key": "CTX_DELETES",
+      "is": 60,
+      "dir": "added",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "5593cebef2b4eff696b05300fa0d134cd747ec4f",
+     "p": "60612c2aa5044b7d91487affd2c6f7ea351e1256",
+     "d": "2026-10-10",
+     "s": "Step 3 (C7-C14, review fixes): focus, inert and the self-test's checks made exact"
+    },
+    "changes": [
+     {
+      "key": "CTX_DELETES",
+      "was": 60,
+      "is": 40,
+      "dir": "tightened",
+      "dup": false
+     }
+    ]
+   },
+   {
+    "rev": {
+     "h": "81405339441cd16d2c738f384d5863efd5f9709e",
+     "p": "92460d4e0cac507836b737c895d3e4a3e4e6b995",
+     "d": "2026-10-20",
+     "s": "Decisions 205-212: the accents (209 a), the Guard infantry's commander (210 c), Duffy read (211 b), the context-loss clock step (212 b)"
+    },
+    "changes": [
+     {
+      "key": "CTX_DELETES",
+      "was": 40,
+      "is": 248,
+      "dir": "loosened",
+      "dup": false
+     }
+    ]
+   }
+  ],
+  "final": {
+   "CTX_DELETES": 248
+  }
+ }
+}

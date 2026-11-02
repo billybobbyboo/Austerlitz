@@ -64,7 +64,8 @@ if(want("dem")){
   /* the GT points and a profile along the Goldbach's drawn bed are asked in dem.js, which writes its own request list (dem-request.json) */
   const f=path.join(OUT,"..","dem-request.json"); if(fs.existsSync(f)){
     const R=JSON.parse(fs.readFileSync(f,"utf8"));
-    for(let i=0;i<R.length;i+=100){ const S=R.slice(i,i+100);
+    for(let i=0;i<R.length;i+=100){ const S=R.slice(i,i+100), fn=path.join(OUT,"openmeteo-dem-"+(i/100)+".json");
+      if(fs.existsSync(fn)&&/"elevation"/.test(fs.readFileSync(fn,"utf8"))) continue;   /* kept from an earlier run (the service resets some connections) */
       get("https://api.open-meteo.com/v1/elevation?latitude="+S.map(r=>r.lat.toFixed(6)).join(",")+"&longitude="+S.map(r=>r.lon.toFixed(6)).join(","),"openmeteo-dem-"+(i/100)+".json"); sleep(400); }
   } else console.log("no dem-request.json yet (run dem.js --request first)");
 }

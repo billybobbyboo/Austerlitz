@@ -1,0 +1,2137 @@
+{
+ "tool": "tools/audit-post8/geography/waterways.js",
+ "note": "today's channels are regulated: a gap measures the drawn line against today's, not against 1805's",
+ "drawn": {
+  "goldbach": {
+   "points": 774,
+   "medianM": 131,
+   "maxM": 1153,
+   "reaches": [
+    {
+     "from": [
+      250,
+      109
+     ],
+     "to": [
+      248,
+      118
+     ],
+     "meanM": 1109,
+     "maxM": 1153,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      248,
+      119
+     ],
+     "to": [
+      246,
+      128
+     ],
+     "meanM": 1056,
+     "maxM": 1074,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      246,
+      129
+     ],
+     "to": [
+      244,
+      138
+     ],
+     "meanM": 887,
+     "maxM": 991,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      244,
+      138
+     ],
+     "to": [
+      242,
+      148
+     ],
+     "meanM": 669,
+     "maxM": 771,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      242,
+      148
+     ],
+     "to": [
+      240,
+      158
+     ],
+     "meanM": 489,
+     "maxM": 560,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      240,
+      158
+     ],
+     "to": [
+      237,
+      167
+     ],
+     "meanM": 357,
+     "maxM": 418,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      237,
+      167
+     ],
+     "to": [
+      232,
+      176
+     ],
+     "meanM": 275,
+     "maxM": 297,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      232,
+      176
+     ],
+     "to": [
+      228,
+      185
+     ],
+     "meanM": 167,
+     "maxM": 247,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      228,
+      185
+     ],
+     "to": [
+      224,
+      194
+     ],
+     "meanM": 32,
+     "maxM": 80,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      224,
+      194
+     ],
+     "to": [
+      219,
+      203
+     ],
+     "meanM": 29,
+     "maxM": 46,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      219,
+      203
+     ],
+     "to": [
+      215,
+      212
+     ],
+     "meanM": 31,
+     "maxM": 48,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      215,
+      212
+     ],
+     "to": [
+      212,
+      221
+     ],
+     "meanM": 118,
+     "maxM": 185,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      212,
+      221
+     ],
+     "to": [
+      211,
+      231
+     ],
+     "meanM": 222,
+     "maxM": 248,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      211,
+      231
+     ],
+     "to": [
+      210,
+      241
+     ],
+     "meanM": 165,
+     "maxM": 205,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      210,
+      241
+     ],
+     "to": [
+      209,
+      251
+     ],
+     "meanM": 81,
+     "maxM": 132,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      209,
+      251
+     ],
+     "to": [
+      208,
+      260
+     ],
+     "meanM": 220,
+     "maxM": 325,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      208,
+      261
+     ],
+     "to": [
+      208,
+      270
+     ],
+     "meanM": 295,
+     "maxM": 338,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      208,
+      271
+     ],
+     "to": [
+      207,
+      280
+     ],
+     "meanM": 185,
+     "maxM": 263,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      207,
+      281
+     ],
+     "to": [
+      207,
+      290
+     ],
+     "meanM": 54,
+     "maxM": 111,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      207,
+      291
+     ],
+     "to": [
+      208,
+      300
+     ],
+     "meanM": 51,
+     "maxM": 122,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      208,
+      300
+     ],
+     "to": [
+      211,
+      309
+     ],
+     "meanM": 68,
+     "maxM": 98,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      212,
+      309
+     ],
+     "to": [
+      212,
+      319
+     ],
+     "meanM": 1,
+     "maxM": 5,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      212,
+      319
+     ],
+     "to": [
+      213,
+      327
+     ],
+     "meanM": 1,
+     "maxM": 3,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      212,
+      327
+     ],
+     "to": [
+      212,
+      336
+     ],
+     "meanM": 2,
+     "maxM": 5,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      212,
+      337
+     ],
+     "to": [
+      217,
+      341
+     ],
+     "meanM": 3,
+     "maxM": 10,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      217,
+      342
+     ],
+     "to": [
+      221,
+      349
+     ],
+     "meanM": 2,
+     "maxM": 7,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      221,
+      349
+     ],
+     "to": [
+      217,
+      358
+     ],
+     "meanM": 6,
+     "maxM": 14,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      217,
+      358
+     ],
+     "to": [
+      214,
+      367
+     ],
+     "meanM": 5,
+     "maxM": 10,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      214,
+      367
+     ],
+     "to": [
+      213,
+      376
+     ],
+     "meanM": 1,
+     "maxM": 1,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      213,
+      377
+     ],
+     "to": [
+      213,
+      386
+     ],
+     "meanM": 4,
+     "maxM": 5,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      213,
+      387
+     ],
+     "to": [
+      213,
+      396
+     ],
+     "meanM": 37,
+     "maxM": 90,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      213,
+      397
+     ],
+     "to": [
+      214,
+      406
+     ],
+     "meanM": 123,
+     "maxM": 133,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      214,
+      407
+     ],
+     "to": [
+      220,
+      411
+     ],
+     "meanM": 236,
+     "maxM": 369,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      220,
+      411
+     ],
+     "to": [
+      229,
+      413
+     ],
+     "meanM": 528,
+     "maxM": 673,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      230,
+      413
+     ],
+     "to": [
+      239,
+      415
+     ],
+     "meanM": 730,
+     "maxM": 792,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      240,
+      415
+     ],
+     "to": [
+      249,
+      415
+     ],
+     "meanM": 587,
+     "maxM": 663,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      250,
+      415
+     ],
+     "to": [
+      259,
+      415
+     ],
+     "meanM": 428,
+     "maxM": 505,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      260,
+      415
+     ],
+     "to": [
+      269,
+      415
+     ],
+     "meanM": 269,
+     "maxM": 344,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      270,
+      415
+     ],
+     "to": [
+      276,
+      415
+     ],
+     "meanM": 118,
+     "maxM": 188,
+     "nearestToday": "litava"
+    }
+   ]
+  },
+  "litava": {
+   "points": 1029,
+   "medianM": 233,
+   "maxM": 716,
+   "reaches": [
+    {
+     "from": [
+      552,
+      128
+     ],
+     "to": [
+      543,
+      130
+     ],
+     "meanM": 212,
+     "maxM": 243,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      542,
+      130
+     ],
+     "to": [
+      533,
+      133
+     ],
+     "meanM": 149,
+     "maxM": 177,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      533,
+      133
+     ],
+     "to": [
+      524,
+      135
+     ],
+     "meanM": 102,
+     "maxM": 121,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      523,
+      135
+     ],
+     "to": [
+      514,
+      137
+     ],
+     "meanM": 143,
+     "maxM": 188,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      513,
+      137
+     ],
+     "to": [
+      506,
+      143
+     ],
+     "meanM": 186,
+     "maxM": 214,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      506,
+      144
+     ],
+     "to": [
+      500,
+      151
+     ],
+     "meanM": 102,
+     "maxM": 146,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      499,
+      151
+     ],
+     "to": [
+      493,
+      158
+     ],
+     "meanM": 24,
+     "maxM": 54,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      492,
+      158
+     ],
+     "to": [
+      486,
+      165
+     ],
+     "meanM": 56,
+     "maxM": 72,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      486,
+      166
+     ],
+     "to": [
+      479,
+      173
+     ],
+     "meanM": 17,
+     "maxM": 38,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      479,
+      173
+     ],
+     "to": [
+      473,
+      180
+     ],
+     "meanM": 44,
+     "maxM": 70,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      472,
+      180
+     ],
+     "to": [
+      466,
+      187
+     ],
+     "meanM": 105,
+     "maxM": 142,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      466,
+      188
+     ],
+     "to": [
+      459,
+      195
+     ],
+     "meanM": 213,
+     "maxM": 301,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      459,
+      195
+     ],
+     "to": [
+      452,
+      202
+     ],
+     "meanM": 418,
+     "maxM": 522,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      452,
+      202
+     ],
+     "to": [
+      446,
+      209
+     ],
+     "meanM": 351,
+     "maxM": 501,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      445,
+      210
+     ],
+     "to": [
+      439,
+      217
+     ],
+     "meanM": 83,
+     "maxM": 186,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      439,
+      217
+     ],
+     "to": [
+      432,
+      224
+     ],
+     "meanM": 277,
+     "maxM": 426,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      432,
+      225
+     ],
+     "to": [
+      425,
+      232
+     ],
+     "meanM": 478,
+     "maxM": 552,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      425,
+      232
+     ],
+     "to": [
+      419,
+      239
+     ],
+     "meanM": 269,
+     "maxM": 381,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      418,
+      239
+     ],
+     "to": [
+      412,
+      246
+     ],
+     "meanM": 112,
+     "maxM": 166,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      412,
+      247
+     ],
+     "to": [
+      405,
+      254
+     ],
+     "meanM": 30,
+     "maxM": 63,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      405,
+      254
+     ],
+     "to": [
+      398,
+      261
+     ],
+     "meanM": 71,
+     "maxM": 87,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      398,
+      261
+     ],
+     "to": [
+      392,
+      268
+     ],
+     "meanM": 18,
+     "maxM": 41,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      391,
+      269
+     ],
+     "to": [
+      385,
+      276
+     ],
+     "meanM": 61,
+     "maxM": 94,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      385,
+      276
+     ],
+     "to": [
+      378,
+      283
+     ],
+     "meanM": 132,
+     "maxM": 177,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      378,
+      284
+     ],
+     "to": [
+      372,
+      291
+     ],
+     "meanM": 212,
+     "maxM": 219,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      371,
+      291
+     ],
+     "to": [
+      365,
+      298
+     ],
+     "meanM": 224,
+     "maxM": 229,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      364,
+      298
+     ],
+     "to": [
+      358,
+      305
+     ],
+     "meanM": 232,
+     "maxM": 236,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      358,
+      306
+     ],
+     "to": [
+      351,
+      313
+     ],
+     "meanM": 267,
+     "maxM": 323,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      351,
+      313
+     ],
+     "to": [
+      345,
+      320
+     ],
+     "meanM": 397,
+     "maxM": 463,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      344,
+      320
+     ],
+     "to": [
+      338,
+      327
+     ],
+     "meanM": 541,
+     "maxM": 608,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      338,
+      328
+     ],
+     "to": [
+      331,
+      335
+     ],
+     "meanM": 645,
+     "maxM": 690,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      331,
+      335
+     ],
+     "to": [
+      324,
+      342
+     ],
+     "meanM": 656,
+     "maxM": 716,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      324,
+      343
+     ],
+     "to": [
+      318,
+      350
+     ],
+     "meanM": 482,
+     "maxM": 564,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      317,
+      350
+     ],
+     "to": [
+      311,
+      357
+     ],
+     "meanM": 314,
+     "maxM": 391,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      311,
+      357
+     ],
+     "to": [
+      304,
+      364
+     ],
+     "meanM": 243,
+     "maxM": 261,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      304,
+      365
+     ],
+     "to": [
+      297,
+      372
+     ],
+     "meanM": 289,
+     "maxM": 317,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      297,
+      372
+     ],
+     "to": [
+      293,
+      380
+     ],
+     "meanM": 293,
+     "maxM": 320,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      293,
+      381
+     ],
+     "to": [
+      289,
+      389
+     ],
+     "meanM": 286,
+     "maxM": 310,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      288,
+      390
+     ],
+     "to": [
+      284,
+      398
+     ],
+     "meanM": 281,
+     "maxM": 310,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      284,
+      399
+     ],
+     "to": [
+      280,
+      407
+     ],
+     "meanM": 163,
+     "maxM": 211,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      280,
+      408
+     ],
+     "to": [
+      275,
+      416
+     ],
+     "meanM": 71,
+     "maxM": 115,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      275,
+      417
+     ],
+     "to": [
+      271,
+      425
+     ],
+     "meanM": 46,
+     "maxM": 119,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      271,
+      426
+     ],
+     "to": [
+      267,
+      434
+     ],
+     "meanM": 211,
+     "maxM": 294,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      267,
+      435
+     ],
+     "to": [
+      262,
+      443
+     ],
+     "meanM": 385,
+     "maxM": 469,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      262,
+      444
+     ],
+     "to": [
+      256,
+      451
+     ],
+     "meanM": 528,
+     "maxM": 559,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      256,
+      451
+     ],
+     "to": [
+      250,
+      458
+     ],
+     "meanM": 573,
+     "maxM": 587,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      250,
+      459
+     ],
+     "to": [
+      243,
+      466
+     ],
+     "meanM": 586,
+     "maxM": 602,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      243,
+      466
+     ],
+     "to": [
+      237,
+      474
+     ],
+     "meanM": 539,
+     "maxM": 555,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      237,
+      474
+     ],
+     "to": [
+      231,
+      481
+     ],
+     "meanM": 509,
+     "maxM": 523,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      230,
+      482
+     ],
+     "to": [
+      224,
+      489
+     ],
+     "meanM": 473,
+     "maxM": 492,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      224,
+      489
+     ],
+     "to": [
+      218,
+      497
+     ],
+     "meanM": 407,
+     "maxM": 442,
+     "nearestToday": "litava"
+    },
+    {
+     "from": [
+      218,
+      497
+     ],
+     "to": [
+      215,
+      500
+     ],
+     "meanM": 354,
+     "maxM": 369,
+     "nearestToday": "litava"
+    }
+   ]
+  },
+  "brooks0 (from Blasowitz)": {
+   "points": 206,
+   "medianM": 829,
+   "maxM": 1563,
+   "reaches": [
+    {
+     "from": [
+      275,
+      147
+     ],
+     "to": [
+      271,
+      155
+     ],
+     "meanM": 1468,
+     "maxM": 1563,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      271,
+      156
+     ],
+     "to": [
+      266,
+      164
+     ],
+     "meanM": 1292,
+     "maxM": 1368,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      266,
+      165
+     ],
+     "to": [
+      262,
+      173
+     ],
+     "meanM": 1164,
+     "maxM": 1218,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      262,
+      174
+     ],
+     "to": [
+      257,
+      182
+     ],
+     "meanM": 1075,
+     "maxM": 1112,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      257,
+      183
+     ],
+     "to": [
+      252,
+      191
+     ],
+     "meanM": 927,
+     "maxM": 1008,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      252,
+      191
+     ],
+     "to": [
+      247,
+      199
+     ],
+     "meanM": 793,
+     "maxM": 842,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      247,
+      200
+     ],
+     "to": [
+      242,
+      208
+     ],
+     "meanM": 736,
+     "maxM": 759,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      242,
+      208
+     ],
+     "to": [
+      237,
+      216
+     ],
+     "meanM": 658,
+     "maxM": 686,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      237,
+      217
+     ],
+     "to": [
+      232,
+      225
+     ],
+     "meanM": 653,
+     "maxM": 668,
+     "nearestToday": "roketnice"
+    },
+    {
+     "from": [
+      231,
+      225
+     ],
+     "to": [
+      227,
+      233
+     ],
+     "meanM": 617,
+     "maxM": 675,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      226,
+      234
+     ],
+     "to": [
+      225,
+      236
+     ],
+     "meanM": 484,
+     "maxM": 518,
+     "nearestToday": "pracky"
+    }
+   ]
+  },
+  "brooks1 (Pratzen brook)": {
+   "points": 170,
+   "medianM": 346,
+   "maxM": 606,
+   "reaches": [
+    {
+     "from": [
+      283,
+      237
+     ],
+     "to": [
+      275,
+      242
+     ],
+     "meanM": 304,
+     "maxM": 346,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      274,
+      242
+     ],
+     "to": [
+      266,
+      246
+     ],
+     "meanM": 227,
+     "maxM": 294,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      266,
+      247
+     ],
+     "to": [
+      257,
+      251
+     ],
+     "meanM": 66,
+     "maxM": 138,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      257,
+      251
+     ],
+     "to": [
+      249,
+      256
+     ],
+     "meanM": 273,
+     "maxM": 386,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      248,
+      256
+     ],
+     "to": [
+      240,
+      260
+     ],
+     "meanM": 373,
+     "maxM": 408,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      239,
+      261
+     ],
+     "to": [
+      231,
+      265
+     ],
+     "meanM": 387,
+     "maxM": 434,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      230,
+      265
+     ],
+     "to": [
+      222,
+      269
+     ],
+     "meanM": 517,
+     "maxM": 588,
+     "nearestToday": "pracky"
+    },
+    {
+     "from": [
+      221,
+      269
+     ],
+     "to": [
+      213,
+      273
+     ],
+     "meanM": 502,
+     "maxM": 606,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      212,
+      273
+     ],
+     "to": [
+      208,
+      275
+     ],
+     "meanM": 275,
+     "maxM": 345,
+     "nearestToday": "ricka"
+    }
+   ]
+  },
+  "brooks2 (south of the Pratzeberg)": {
+   "points": 159,
+   "medianM": 851,
+   "maxM": 1874,
+   "reaches": [
+    {
+     "from": [
+      277,
+      318
+     ],
+     "to": [
+      270,
+      324
+     ],
+     "meanM": 1824,
+     "maxM": 1874,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      270,
+      325
+     ],
+     "to": [
+      263,
+      331
+     ],
+     "meanM": 1556,
+     "maxM": 1695,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      262,
+      331
+     ],
+     "to": [
+      255,
+      337
+     ],
+     "meanM": 1266,
+     "maxM": 1402,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      255,
+      338
+     ],
+     "to": [
+      247,
+      343
+     ],
+     "meanM": 986,
+     "maxM": 1119,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      247,
+      344
+     ],
+     "to": [
+      239,
+      349
+     ],
+     "meanM": 702,
+     "maxM": 837,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      239,
+      349
+     ],
+     "to": [
+      231,
+      354
+     ],
+     "meanM": 445,
+     "maxM": 558,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      230,
+      355
+     ],
+     "to": [
+      223,
+      360
+     ],
+     "meanM": 261,
+     "maxM": 335,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      222,
+      360
+     ],
+     "to": [
+      215,
+      365
+     ],
+     "meanM": 86,
+     "maxM": 180,
+     "nearestToday": "ricka"
+    }
+   ]
+  },
+  "brooks3 (west of Puntowitz-Kobelnitz)": {
+   "points": 112,
+   "medianM": 112,
+   "maxM": 427,
+   "reaches": [
+    {
+     "from": [
+      199,
+      205
+     ],
+     "to": [
+      200,
+      214
+     ],
+     "meanM": 319,
+     "maxM": 427,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      200,
+      215
+     ],
+     "to": [
+      200,
+      224
+     ],
+     "meanM": 90,
+     "maxM": 198,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      200,
+      225
+     ],
+     "to": [
+      201,
+      234
+     ],
+     "meanM": 97,
+     "maxM": 119,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      201,
+      235
+     ],
+     "to": [
+      201,
+      244
+     ],
+     "meanM": 128,
+     "maxM": 139,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      201,
+      245
+     ],
+     "to": [
+      201,
+      254
+     ],
+     "meanM": 41,
+     "maxM": 104,
+     "nearestToday": "ricka"
+    },
+    {
+     "from": [
+      201,
+      255
+     ],
+     "to": [
+      201,
+      260
+     ],
+     "meanM": 101,
+     "maxM": 157,
+     "nearestToday": "ricka"
+    }
+   ]
+  },
+  "brooks4 (Rakovec)": {
+   "points": 162,
+   "medianM": 67,
+   "maxM": 500,
+   "reaches": [
+    {
+     "from": [
+      401,
+      150
+     ],
+     "to": [
+      404,
+      159
+     ],
+     "meanM": 411,
+     "maxM": 500,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      404,
+      159
+     ],
+     "to": [
+      407,
+      168
+     ],
+     "meanM": 163,
+     "maxM": 273,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      407,
+      169
+     ],
+     "to": [
+      410,
+      178
+     ],
+     "meanM": 68,
+     "maxM": 78,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      410,
+      178
+     ],
+     "to": [
+      412,
+      187
+     ],
+     "meanM": 45,
+     "maxM": 79,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      413,
+      188
+     ],
+     "to": [
+      416,
+      197
+     ],
+     "meanM": 46,
+     "maxM": 111,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      416,
+      197
+     ],
+     "to": [
+      423,
+      203
+     ],
+     "meanM": 19,
+     "maxM": 43,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      424,
+      204
+     ],
+     "to": [
+      431,
+      210
+     ],
+     "meanM": 64,
+     "maxM": 68,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      431,
+      210
+     ],
+     "to": [
+      438,
+      216
+     ],
+     "meanM": 88,
+     "maxM": 112,
+     "nearestToday": "rakovec"
+    },
+    {
+     "from": [
+      439,
+      217
+     ],
+     "to": [
+      439,
+      217
+     ],
+     "meanM": 114,
+     "maxM": 114,
+     "nearestToday": "rakovec"
+    }
+   ]
+  }
+ },
+ "today": {
+  "ricka": {
+   "points": 1506,
+   "lengthKmInFrame": 23.79,
+   "medianM": 1380,
+   "over300mKm": 15.44,
+   "over300mSpans": [
+    {
+     "from": [
+      81,
+      0
+     ],
+     "to": [
+      190,
+      215
+     ],
+     "km": 12.21,
+     "maxM": 6363
+    },
+    {
+     "from": [
+      205,
+      412
+     ],
+     "to": [
+      178,
+      500
+     ],
+     "km": 3.22,
+     "maxM": 1558
+    }
+   ]
+  },
+  "litava": {
+   "points": 1586,
+   "lengthKmInFrame": 25.06,
+   "medianM": 383,
+   "over300mKm": 14.41,
+   "over300mSpans": [
+    {
+     "from": [
+      203,
+      500
+     ],
+     "to": [
+      259,
+      428
+     ],
+     "km": 3.4,
+     "maxM": 611
+    },
+    {
+     "from": [
+      294,
+      400
+     ],
+     "to": [
+      298,
+      391
+     ],
+     "km": 0.36,
+     "maxM": 311
+    },
+    {
+     "from": [
+      303,
+      380
+     ],
+     "to": [
+      307,
+      376
+     ],
+     "km": 0.22,
+     "maxM": 316
+    },
+    {
+     "from": [
+      319,
+      362
+     ],
+     "to": [
+      361,
+      317
+     ],
+     "km": 2.45,
+     "maxM": 806
+    },
+    {
+     "from": [
+      427,
+      244
+     ],
+     "to": [
+      469,
+      198
+     ],
+     "km": 3.11,
+     "maxM": 1020
+    },
+    {
+     "from": [
+      558,
+      136
+     ],
+     "to": [
+      680,
+      104
+     ],
+     "km": 4.87,
+     "maxM": 4105
+    }
+   ]
+  },
+  "rakovec": {
+   "points": 697,
+   "lengthKmInFrame": 11.01,
+   "medianM": 1249,
+   "over300mKm": 8.04,
+   "over300mSpans": [
+    {
+     "from": [
+      446,
+      0
+     ],
+     "to": [
+      396,
+      167
+     ],
+     "km": 7.32,
+     "maxM": 4854
+    },
+    {
+     "from": [
+      449,
+      220
+     ],
+     "to": [
+      454,
+      240
+     ],
+     "km": 0.73,
+     "maxM": 838
+    }
+   ]
+  },
+  "roketnice": {
+   "points": 625,
+   "lengthKmInFrame": 9.87,
+   "medianM": 1337,
+   "over300mKm": 7.36,
+   "over300mSpans": [
+    {
+     "from": [
+      201,
+      0
+     ],
+     "to": [
+      227,
+      164
+     ],
+     "km": 7.36,
+     "maxM": 3779
+    }
+   ]
+  },
+  "tvarozensky": {
+   "points": 294,
+   "lengthKmInFrame": 4.65,
+   "medianM": 1471,
+   "over300mKm": 4.65,
+   "over300mSpans": [
+    {
+     "from": [
+      297,
+      25
+     ],
+     "to": [
+      205,
+      99
+     ],
+     "km": 4.65,
+     "maxM": 3029
+    }
+   ]
+  },
+  "pracky": {
+   "points": 235,
+   "lengthKmInFrame": 3.71,
+   "medianM": 313,
+   "over300mKm": 1.99,
+   "over300mSpans": [
+    {
+     "from": [
+      298,
+      252
+     ],
+     "to": [
+      283,
+      248
+     ],
+     "km": 0.57,
+     "maxM": 659
+    },
+    {
+     "from": [
+      280,
+      249
+     ],
+     "to": [
+      277,
+      251
+     ],
+     "km": 0.19,
+     "maxM": 338
+    },
+    {
+     "from": [
+      251,
+      244
+     ],
+     "to": [
+      218,
+      250
+     ],
+     "km": 1.23,
+     "maxM": 455
+    }
+   ]
+  }
+ },
+ "places": {
+  "santon": {
+   "drawnGoldbach": {
+    "m": 1127,
+    "side": "west/right bank"
+   },
+   "todayRoketnice": {
+    "m": 651,
+    "side": "east/left bank"
+   },
+   "todayRicka": {
+    "m": 2753,
+    "side": "east/left bank"
+   },
+   "todayTvarozensky": {
+    "m": 131,
+    "side": "east/left bank"
+   }
+  },
+  "girzikowitz": {
+   "drawnGoldbach": {
+    "m": 174,
+    "side": "west/right bank"
+   },
+   "todayRoketnice": {
+    "m": 161,
+    "side": "east/left bank"
+   },
+   "todayRicka": {
+    "m": 2024,
+    "side": "east/left bank"
+   },
+   "todayTvarozensky": {
+    "m": 2199,
+    "side": "east/left bank"
+   }
+  },
+  "bosenitz": {
+   "drawnGoldbach": {
+    "m": 1337,
+    "side": "west/right bank"
+   },
+   "todayRoketnice": {
+    "m": 1189,
+    "side": "east/left bank"
+   },
+   "todayRicka": {
+    "m": 3333,
+    "side": "east/left bank"
+   },
+   "todayTvarozensky": {
+    "m": 51,
+    "side": "west/right bank"
+   }
+  },
+  "puntowitz": {
+   "drawnGoldbach": {
+    "m": 60,
+    "side": "east/left bank"
+   },
+   "todayRoketnice": {
+    "m": 253,
+    "side": "east/left bank"
+   },
+   "todayRicka": {
+    "m": 349,
+    "side": "east/left bank"
+   },
+   "todayTvarozensky": {
+    "m": 3915,
+    "side": "east/left bank"
+   }
+  },
+  "kobelnitz": {
+   "drawnGoldbach": {
+    "m": 68,
+    "side": "west/right bank"
+   },
+   "todayRoketnice": {
+    "m": 1630,
+    "side": "east/left bank"
+   },
+   "todayRicka": {
+    "m": 104,
+    "side": "east/left bank"
+   },
+   "todayTvarozensky": {
+    "m": 5632,
+    "side": "east/left bank"
+   }
+  },
+  "schlapanitz": {
+   "drawnGoldbach": {
+    "m": 1949,
+    "side": "west/right bank"
+   },
+   "todayRoketnice": {
+    "m": 1865,
+    "side": "west/right bank"
+   },
+   "todayRicka": {
+    "m": 98,
+    "side": "east/left bank"
+   },
+   "todayTvarozensky": {
+    "m": 2819,
+    "side": "east/left bank"
+   }
+  }
+ }
+}
