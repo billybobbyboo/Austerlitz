@@ -1,0 +1,82 @@
+{
+ "buildings": 637,
+ "pratzenChurch": {
+  "part": "church",
+  "map": [
+   281.33,
+   252.89
+  ],
+  "toSiteM": 161,
+  "toSiteWorldUnits": 2.55,
+  "selfTestToleranceWorldUnits": 5
+ },
+ "buildingsOnClass": {
+  "Puntowitz": {
+   "all": 19,
+   "village": 14,
+   "marsh": 0,
+   "water": 5,
+   "other": 0
+  },
+  "Kobelnitz": {
+   "all": 16,
+   "village": 3,
+   "marsh": 9,
+   "water": 4,
+   "other": 0
+  },
+  "Sokolnitz": {
+   "all": 27,
+   "village": 4,
+   "marsh": 21,
+   "water": 2,
+   "other": 0
+  },
+  "Telnitz": {
+   "all": 25,
+   "village": 2,
+   "marsh": 20,
+   "water": 3,
+   "other": 0
+  },
+  "Satschan": {
+   "all": 14,
+   "village": 10,
+   "marsh": 2,
+   "water": 2,
+   "other": 0
+  }
+ },
+ "villageCentreInMarsh": {
+  "Kobelnitz": [
+   [
+    4,
+    0.248
+   ],
+   [
+    6,
+    0.285
+   ]
+  ],
+  "Sokolnitz": [
+   [
+    0,
+    0.566
+   ]
+  ],
+  "Telnitz": [
+   [
+    0,
+    0.571
+   ],
+   [
+    1,
+    0.551
+   ],
+   [
+    2,
+    0.878
+   ]
+  ]
+ }
+}

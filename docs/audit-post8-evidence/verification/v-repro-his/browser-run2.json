@@ -157,6 +157,174 @@
    "arrowLabel": [
     "Russian Imperial Guard"
    ]
+  },
+  "f0_lich_660": {
+   "facing": {
+    "clock": 660,
+    "yaw": -4.619632660196542,
+    "headingAt": 1.6635526469830446,
+    "yawMinusHeading": 0,
+    "forward": [
+     0.996,
+     -0.093
+    ],
+    "compassDeg": 85,
+    "toOpponentDeg": 312,
+    "angleToOpponent": 133,
+    "km": 1.01,
+    "moving": true,
+    "kmh": 1.82
+   },
+   "pills": [
+    "Charging",
+    "Position: interpolated",
+    "Position A · interpolated"
+   ],
+   "drawer": "V Column · Russia | Fifth Column (cavalry) | FML Prince Johann von Liechtenstein | Charging | Position: interpolated | Position A · interpolated | How this is sourced | Strength | ≈ 5,400 men, 24 guns | Doing now | Charges with Uvarov's Russians against Kellermann; met by Nansouty's cuirassiers  | Claim: | Not yet checked | Objective | Break the French cavalry screen  | Claim: | This map's reading | Where | 1.0 km south-east of Blasowitz | Full dossier: role, movement, sources | How this is sourced",
+   "arrowLabel": [
+    "Russian Imperial Guard"
+   ]
+  },
+  "f0_milo_630": {
+   "facing": {
+    "clock": 630,
+    "yaw": -4.64754495283148,
+    "headingAt": 1.6356403543481057,
+    "yawMinusHeading": 0,
+    "forward": [
+     0.998,
+     -0.066
+    ],
+    "compassDeg": 86,
+    "toOpponentDeg": 236,
+    "angleToOpponent": 150,
+    "km": 2.73,
+    "moving": true,
+    "kmh": 1.39
+   },
+   "pills": [
+    "Counter-attacking",
+    "Position: estimated",
+    "Position B · interpolated"
+   ],
+   "drawer": "Russian wing, IV Column · Russia | Miloradovich's Russians | Lt.-Gen. Mikhail Miloradovich | Counter-attacking | Position: estimated | Position B · interpolated | How this is sourced | Strength | ≈ 4,800–7,000 men (working figure 4,800) | Under | FZM Johann Kollowrat and Lt.-Gen.… · Fourth Column | Doing now | Rallied by Kutuzov for a counterattack up the southern slope  | Claim: | Not yet checked | Objective | Advance on Kobelnitz  | Claim: | This map's reading | Where | 1.7 km south-east of Stare Vinohrady | Full dossier: role, movement, sources | How this is sourced",
+   "arrowLabel": [
+    "Russian Imperial Guard"
+   ]
+  },
+  "f2_marker": {
+   "x": 483.5,
+   "y": 702,
+   "w": 14.14215087890625,
+   "h": 14.14208984375,
+   "aria": "09:15, Kutuzov orders the 4th Column to face about",
+   "tip": "09:15: Kutuzov orders the 4th Column to face about"
+  },
+  "f2_dossier": {
+   "clock": 555,
+   "selection": "e:face-about",
+   "pills": [
+    "Fact",
+    "Timing C"
+   ],
+   "tags": [
+    {
+     "ref": "EVENTS[#face-about].why",
+     "claim": "interpretation",
+     "text": "Claim: This map's reading"
+    }
+   ],
+   "conf": [
+    "Attested in the standard accounts of the battle."
+   ],
+   "drawer": "Command decision · Allied | Kutuzov orders the 4th Column to face about | about 09:15 | Fact | Timing C | How this is sourced | Why it matters | The Allied commander-in-chief, riding with the column, sees what has happened. That he ordered the column to face about is this map's reading: in Mikhailovsky-Danilevsky he rides to the left wing and Kamensky turns his brigade on his own; in his own public report he orders Kamensky's regiments onto the ridge; his private relation names no order.  | Claim: | This map's reading | Formations concerned | Allied Headquarters | Miloradovich's Russians | Kollowrat's Austrians | Attested in the standard accounts of the battle. | Go to this moment | How this is sourced",
+   "mapLabel": [
+    "Kutuzov orders the 4th Column to face about [aria] Event, 09:15: Kutuzov orders the 4th Column to face about"
+   ],
+   "phaseLine": [
+    [
+     "c. 09:15",
+     "Kutuzov orders the 4th Column to face about, in this map's reading, which no account read gives, nor its hour; part of the II Column is recalled up the slope."
+    ]
+   ]
+  },
+  "f3_1115": {
+   "clock": 675,
+   "nearestAllied": [
+    [
+     "lich",
+     1.43
+    ],
+    [
+     "rg_cav",
+     1.54
+    ],
+    [
+     "rg_inf",
+     1.78
+    ],
+    [
+     "kollo",
+     2.01
+    ],
+    [
+     "bag",
+     2.72
+    ]
+   ],
+   "eventLabel": [
+    "Blasowitz",
+    "The French take Blasowitz from the Russian Guard [aria] Event, 11:15: The French take Blasowitz from the Russian Guard",
+    "Blasowitz [aria] Place: Blasowitz"
+   ],
+   "screen": {
+    "Blasowitz": [
+     719,
+     211,
+     0.976
+    ],
+    "rg_inf": [
+     898,
+     499,
+     0.97
+    ],
+    "rg_cav": [
+     854,
+     453,
+     0.971
+    ],
+    "lich": [
+     1018,
+     272,
+     0.975
+    ]
+   }
+  },
+  "f4_caffarelli_840": {
+   "clock": 840,
+   "conf": {
+    "cf": "A",
+    "interp": true
+   },
+   "pills": [
+    "Advancing",
+    "Position: interpolated",
+    "Position A · interpolated"
+   ],
+   "confText": []
+  },
+  "f4_caffarelli_870": {
+   "clock": 870,
+   "conf": {
+    "cf": "A",
+    "interp": false
+   },
+   "pills": [
+    "Pursuing",
+    "Position: documented",
+    "Position A"
+   ],
+   "confText": []
   }
  }
 }

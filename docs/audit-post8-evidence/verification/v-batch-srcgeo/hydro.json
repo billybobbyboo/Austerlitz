@@ -1,0 +1,21 @@
+{
+ "tvarozensky": {
+  "kmInFrame": 4.1,
+  "kmOver300m": 4.1,
+  "maxM": 3029
+ },
+ "ricka": {
+  "kmInFrame": 20.24,
+  "kmOver300m": 13.08,
+  "maxM": 6363
+ },
+ "roketnice": {
+  "kmInFrame": 8.86,
+  "kmOver300m": 6.31,
+  "maxM": 3779
+ },
+ "drawnUpperGoldbach_y109_176": {
+  "minM": 255,
+  "maxM": 1153
+ }
+}

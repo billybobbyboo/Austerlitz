@@ -1,0 +1,26 @@
+{
+ "label": "v-premise-rob",
+ "verdicts": [
+  {
+   "area": "robustness",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "Premise lens plus an independent local reproduction (never the live site): code read at the audited commit (tools/step6/perf-run.html:40, :44, :45); git history of the sink (git log -S); the owner's hosting decision and the documented uses of ?src= read; my own script tools/audit-post8/verification/v-premise-rob/src-premise.js on a byte-identical copy (md5 3f57a5bf..., perf-route.js c1323fa7...) served on 127.0.0.1 under /Austerlitz/tools/step6/ beside a stand-in second Pages site /other-site/ on the same origin, Chromium 141.0.7390.37; then the area's remedy on a patched scratch copy against the documented uses and seven bypass spellings.",
+   "evidence": "perf-run.html:40 src=q.get(\"src\")||default, :44 fr.src=src, no check (sink unchanged since 1b46001, 2026-10-21, roadmap step 6 Part A; 8D/8E only added ?route= tests to line 40). Reproduced (docs/audit-post8-evidence/verification/v-premise-rob-src.json part1): ?src=javascript:... read localStorage written by /other-site/ on the same origin and replaced the whole document (title 'DEFACED SECRET-of-other-site', body 'OWNED') with the address still .../Austerlitz/tools/step6/perf-run.html?src=...; a cross-origin http page was framed at 1280x720 under the tool's address; the control loaded the default build. The expectation stands on the tool's own contract, not on taste: ?src= is documented only as 'the build's path' (perf-run.html:9), 'names another path' (STEP6_SPEC.md:211), 'names another build file beside it' (STAGE8_SPEC.md:5169), used only with relative paths (STAGE8_SPEC.md:4672, :4677; STEP6_SPEC.md:1275), and the route can only work same-origin (perf-run.html:45 reads fr.contentWindow.AUSTERLITZ_DEBUG; STEP6_SPEC.md:203-204). No owner decision covers it: question 217 (STEP6_SPEC.md:115, :677-682) accepted that every file on main has a public address (confidentiality), not that a published page runs visitor-supplied script. Reachable: Pages serves the page (robustness/pages-tools-headers.txt, HTTP 200, no CSP) and the owner's device runs use it (STAGE8_SPEC.md:5164-5165, :5528-5530). Remedy tested (part2): 3 of 3 documented or same-origin uses kept (../../austerlitz-8h.html, ../../austerlitz-command-map.html?v=5, /Austerlitz/austerlitz-8h.html), 7 of 7 bypasses rejected to the default (javascript:, JAVASCRIPT:, ' java\\tscript:', data:, cross-origin http, protocol-relative //host, blob: of the same origin, whose URL origin equals the page's, so the http(s) protocol test is needed besides the origin test). The only URL-driven sink in the 29 published HTML files (git ls-files; the product and all archived builds test location.search with .test() only, app.js:9, :3824).",
+   "notes": "Severity S1/P1 kept by the audit's rubric ('a real, reachable security exposure' has no primary-path qualifier and no lower security tier); for calibration, a conventional score is medium (CVSS 3.1 about 6.1, AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N): one click on a crafted link, no session or credentials on the origin, the product stores nothing (robustness/README.md A1); the asset is the owner's address (phishing or defacement under billybobbyboo.github.io) and any storage of other Pages sites of the account, which share the origin by GitHub's URL scheme (their existence not checked: the GitHub API refused account-wide listing from this session). Category confirmed-defect and origin inherited are right. Remedy: the first alternative is sound and sufficient (assign the parsed u.href, not the raw string); the second ('publish only the product on Pages') does not fix R-1 while the device route must stay on Pages for the owner's runs (question 217 (b)'s set, the build and tools/step6/, keeps the sink), is an owner's outward-facing choice under question 217, and its cross-reference 'removes R-6' should read R-8 (the archived builds without integrity; R-6 is the gait's GLSL mirror)."
+  }
+ ],
+ "extra_issues": [
+  {
+   "title": "The robustness README names findings by ids that do not match result.json",
+   "severity": "S4",
+   "evidence": "docs/audit-post8-evidence/robustness/README.md:34 calls the archived builds without integrity 'finding R-6' (result.json R-8, index 7; R-6 is the GLSL mirror), :52 the missing licence 'R-7' (result.json R-9), :26 esc() 'R-11' (result.json R-12), :60 the cdnjs dependence 'R-12' (result.json R-5); R-1's remedy repeats the slip ('also removes R-6').",
+   "notes": "Records only; the final report should cite result.json's ids."
+  }
+ ],
+ "not_done": [
+  "The live site was not touched with any crafted URL (by instruction); reachability rests on the published bytes' md5 equality and the area's passive header fetch.",
+  "Whether other Pages sites of the account share the origin was not enumerated (gh api users/... and repos/.../pages refused by the session's proxy).",
+  "Only Chromium 141 run; Safari and Firefox behaviour for javascript: iframe src not measured here (standard behaviour: the frame's initial about:blank inherits the parent's origin)."
+ ]
+}

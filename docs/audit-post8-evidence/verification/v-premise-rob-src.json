@@ -1,0 +1,268 @@
+{
+ "what": "R-1 premise checks on a local imitation of a Pages user origin",
+ "started": "2026-11-02T11:23:40.615Z",
+ "md5": [
+  "3f57a5bf8135326d51099d87144d0e83  /tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/v-premise-rob/pages-sim/Austerlitz/tools/step6/perf-run.html",
+  "c1323fa79e59ff143e709eca00b6e643  /tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/v-premise-rob/pages-sim/Austerlitz/tools/step6/perf-route.js",
+  "3f57a5bf8135326d51099d87144d0e83  /home/user/Austerlitz/tools/step6/perf-run.html",
+  "c1323fa79e59ff143e709eca00b6e643  /home/user/Austerlitz/tools/step6/perf-route.js",
+  "d954e1bcfad494d7bf8805b9175ea038  /tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/v-premise-rob/pages-sim/Austerlitz/tools/step6p/perf-run.html"
+ ],
+ "part1": [
+  {
+   "address": "<origin>/Austerlitz/tools/step6/perf-run.html?src=javascript%3Avar%20s%3Dparent.localStorage.getItem(%27probe%27)%3Bparent.document.documentElement.innerHTML%3D%27%3Ctitle%3EDEFACED%20%27%2Bs%2B%27%3C%2Ftitle%3E%3Cbody%3EOWNED%3C%2Fbody%3E%27%3Bvoid%200",
+   "title": "DEFACED SECRET-of-other-site",
+   "bodyText": "OWNED",
+   "frameAttr": null,
+   "frameTitle": null,
+   "frameURL": null,
+   "msg": null,
+   "frameRect": null,
+   "frames": [],
+   "log": [],
+   "id": "javascript: reads the sibling site's storage and replaces the page"
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6/perf-run.html?src=http%3A%2F%2Flocalhost%3A42007%2Fx.html",
+   "title": "Frame-time route",
+   "bodyText": "Loading the build…\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone: Settings, Display & Brightness, Auto-Lock: ",
+   "frameAttr": "http://localhost:42007/x.html",
+   "frameTitle": "(cross-origin)",
+   "frameURL": null,
+   "msg": "Loading the build…",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<evil>/x.html"
+   ],
+   "log": [],
+   "id": "cross-origin http page framed full-window"
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6/perf-run.html",
+   "title": "Frame-time route",
+   "bodyText": "Loading the build…\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone: Settings, Display & Brightness, Auto-Lock: ",
+   "frameAttr": "../../austerlitz-command-map.html",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "msg": "Loading the build…",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html"
+   ],
+   "log": [],
+   "id": "control: no src"
+  }
+ ],
+ "part2": [
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=..%2F..%2Fausterlitz-8h.html",
+   "title": "Frame-time route",
+   "bodyText": "Loading the build…\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone: Settings, Display & Brightness, Auto-Lock: ",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-8h.html",
+   "frameTitle": "STUB 8h build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-8h.html",
+   "msg": "Loading the build…",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-8h.html"
+   ],
+   "log": [],
+   "id": "documented: ../../austerlitz-8h.html (STAGE8_SPEC.md:4672)",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=..%2F..%2Fausterlitz-command-map.html%3Fv%3D5",
+   "title": "Frame-time route",
+   "bodyText": "Loading the build…\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone: Settings, Display & Brightness, Auto-Lock: ",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html?v=5",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html?v=5",
+   "msg": "Loading the build…",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html?v=5"
+   ],
+   "log": [],
+   "id": "documented: ../../austerlitz-command-map.html?v=5 (STEP6_SPEC.md:1275)",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=%2FAusterlitz%2Fausterlitz-8h.html",
+   "title": "Frame-time route",
+   "bodyText": "Loading the build…\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone: Settings, Display & Brightness, Auto-Lock: ",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-8h.html",
+   "frameTitle": "STUB 8h build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-8h.html",
+   "msg": "Loading the build…",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-8h.html"
+   ],
+   "log": [],
+   "id": "absolute same-origin path",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=javascript%3Aparent.document.title%3D%27XSS%27%3Bvoid%200",
+   "title": "Frame-time route",
+   "bodyText": "?src= must name a page on this host; the default build is used.\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "msg": "?src= must name a page on this host; the default build is used.",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html"
+   ],
+   "log": [],
+   "id": "javascript:",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=JAVASCRIPT%3Aparent.document.title%3D%27XSS%27%3Bvoid%200",
+   "title": "Frame-time route",
+   "bodyText": "?src= must name a page on this host; the default build is used.\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "msg": "?src= must name a page on this host; the default build is used.",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html"
+   ],
+   "log": [],
+   "id": "JAVASCRIPT: upper case",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=%20java%09script%3Aparent.document.title%3D%27XSS%27%3Bvoid%200",
+   "title": "Frame-time route",
+   "bodyText": "?src= must name a page on this host; the default build is used.\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "msg": "?src= must name a page on this host; the default build is used.",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html"
+   ],
+   "log": [],
+   "id": "leading space and tab inside",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=data%3Atext%2Fhtml%2C%3Cp%3Ex",
+   "title": "Frame-time route",
+   "bodyText": "?src= must name a page on this host; the default build is used.\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "msg": "?src= must name a page on this host; the default build is used.",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html"
+   ],
+   "log": [],
+   "id": "data:",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=http%3A%2F%2Flocalhost%3A42007%2Fx.html",
+   "title": "Frame-time route",
+   "bodyText": "?src= must name a page on this host; the default build is used.\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "msg": "?src= must name a page on this host; the default build is used.",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html"
+   ],
+   "log": [],
+   "id": "cross-origin http",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=%2F%2Flocalhost%3A42007%2Fx.html",
+   "title": "Frame-time route",
+   "bodyText": "?src= must name a page on this host; the default build is used.\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "msg": "?src= must name a page on this host; the default build is used.",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html"
+   ],
+   "log": [],
+   "id": "protocol-relative cross-origin",
+   "pass": true
+  },
+  {
+   "address": "<origin>/Austerlitz/tools/step6p/perf-run.html?src=blob%3Ahttp%3A%2F%2F127.0.0.1%3A39713%2F00000000-0000-0000-0000-000000000000",
+   "title": "Frame-time route",
+   "bodyText": "?src= must name a page on this host; the default build is used.\n\nStart (about 3 minutes)\n\nBefore you start, on an iPhone",
+   "frameAttr": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "frameTitle": "STUB default build",
+   "frameURL": "http://127.0.0.1:39713/Austerlitz/austerlitz-command-map.html",
+   "msg": "?src= must name a page on this host; the default build is used.",
+   "frameRect": [
+    1280,
+    720
+   ],
+   "go": true,
+   "frames": [
+    "<origin>/Austerlitz/austerlitz-command-map.html"
+   ],
+   "log": [],
+   "id": "blob: of the same origin",
+   "pass": true
+  }
+ ],
+ "browser": "141.0.7390.37",
+ "finished": "2026-11-02T11:24:27.608Z"
+}

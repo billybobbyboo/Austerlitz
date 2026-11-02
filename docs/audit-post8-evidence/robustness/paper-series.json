@@ -217,6 +217,510 @@
    "log": 0,
    "settleMs": 45410,
    "mode": "staff"
+  },
+  {
+   "label": "after switch 4 (landscape)",
+   "t": "2026-11-02T11:22:34.291Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 449,
+    "Nodes": 2018,
+    "LayoutCount": 105,
+    "RecalcStyleCount": 144,
+    "LayoutDuration": 0.061,
+    "RecalcStyleDuration": 0.163,
+    "ScriptDuration": 152.132,
+    "TaskDuration": 164.713,
+    "JSHeapUsedSize": 16736524,
+    "JSHeapTotalSize": 17641472,
+    "heapUsed": 16736524,
+    "backingStorage": 89328870,
+    "embedderHeap": 3246928
+   },
+   "page": {
+    "geometries": 414,
+    "textures": 34,
+    "programs": 42,
+    "calls": 729,
+    "triangles": 1950669,
+    "frames": 30,
+    "skipped": 1,
+    "devState": "idle",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 510,
+     "listeners": 402,
+     "max": 1
+    },
+    "tex": {
+     "n": 47,
+     "listeners": 20,
+     "max": 1
+    },
+    "mat": {
+     "n": 999,
+     "listeners": 674,
+     "max": 1
+    },
+    "dom": 1056,
+    "mlItems": 45,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 24,
+     "rafCb": 23,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "settleMs": 109952,
+   "mode": "terrain"
+  },
+  {
+   "label": "after switch 5 (paper map)",
+   "t": "2026-11-02T11:23:36.929Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 449,
+    "Nodes": 2169,
+    "LayoutCount": 131,
+    "RecalcStyleCount": 175,
+    "LayoutDuration": 0.072,
+    "RecalcStyleDuration": 0.181,
+    "ScriptDuration": 188.503,
+    "TaskDuration": 201.246,
+    "JSHeapUsedSize": 27294416,
+    "JSHeapTotalSize": 29708288,
+    "heapUsed": 27294416,
+    "backingStorage": 92174077,
+    "embedderHeap": 6882224
+   },
+   "page": {
+    "geometries": 414,
+    "textures": 34,
+    "programs": 42,
+    "calls": 156,
+    "triangles": 238361,
+    "frames": 34,
+    "skipped": 1,
+    "devState": "active",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 510,
+     "listeners": 402,
+     "max": 1
+    },
+    "tex": {
+     "n": 46,
+     "listeners": 19,
+     "max": 1
+    },
+    "mat": {
+     "n": 999,
+     "listeners": 674,
+     "max": 1
+    },
+    "dom": 1115,
+    "mlItems": 45,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 28,
+     "rafCb": 27,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "settleMs": 60879,
+   "mode": "staff"
+  },
+  {
+   "label": "after switch 6 (landscape)",
+   "t": "2026-11-02T11:25:40.411Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 449,
+    "Nodes": 2018,
+    "LayoutCount": 144,
+    "RecalcStyleCount": 193,
+    "LayoutDuration": 0.077,
+    "RecalcStyleDuration": 0.212,
+    "ScriptDuration": 242.195,
+    "TaskDuration": 257.061,
+    "JSHeapUsedSize": 16854908,
+    "JSHeapTotalSize": 17641472,
+    "heapUsed": 16854908,
+    "backingStorage": 89328870,
+    "embedderHeap": 3232968
+   },
+   "page": {
+    "geometries": 414,
+    "textures": 34,
+    "programs": 42,
+    "calls": 729,
+    "triangles": 1950669,
+    "frames": 36,
+    "skipped": 1,
+    "devState": "active",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 510,
+     "listeners": 402,
+     "max": 1
+    },
+    "tex": {
+     "n": 47,
+     "listeners": 20,
+     "max": 1
+    },
+    "mat": {
+     "n": 999,
+     "listeners": 674,
+     "max": 1
+    },
+    "dom": 1056,
+    "mlItems": 45,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 30,
+     "rafCb": 29,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "settleMs": -1,
+   "mode": "terrain"
+  },
+  {
+   "label": "after switch 7 (paper map)",
+   "t": "2026-11-02T11:26:53.949Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 449,
+    "Nodes": 2078,
+    "LayoutCount": 170,
+    "RecalcStyleCount": 224,
+    "LayoutDuration": 0.085,
+    "RecalcStyleDuration": 0.272,
+    "ScriptDuration": 285.837,
+    "TaskDuration": 301.327,
+    "JSHeapUsedSize": 18043200,
+    "JSHeapTotalSize": 21835776,
+    "heapUsed": 18043200,
+    "backingStorage": 91765732,
+    "embedderHeap": 4364352
+   },
+   "page": {
+    "geometries": 414,
+    "textures": 34,
+    "programs": 42,
+    "calls": 156,
+    "triangles": 238361,
+    "frames": 40,
+    "skipped": 1,
+    "devState": "active",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 510,
+     "listeners": 402,
+     "max": 1
+    },
+    "tex": {
+     "n": 46,
+     "listeners": 19,
+     "max": 1
+    },
+    "mat": {
+     "n": 999,
+     "listeners": 674,
+     "max": 1
+    },
+    "dom": 1115,
+    "mlItems": 45,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 34,
+     "rafCb": 33,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "settleMs": 70971,
+   "mode": "staff"
+  },
+  {
+   "label": "after switch 8 (landscape)",
+   "t": "2026-11-02T11:28:25.774Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 449,
+    "Nodes": 2018,
+    "LayoutCount": 185,
+    "RecalcStyleCount": 244,
+    "LayoutDuration": 0.092,
+    "RecalcStyleDuration": 0.286,
+    "ScriptDuration": 304.257,
+    "TaskDuration": 321.245,
+    "JSHeapUsedSize": 16986244,
+    "JSHeapTotalSize": 17903616,
+    "heapUsed": 16986244,
+    "backingStorage": 89328870,
+    "embedderHeap": 3245712
+   },
+   "page": {
+    "geometries": 414,
+    "textures": 34,
+    "programs": 42,
+    "calls": 729,
+    "triangles": 1950669,
+    "frames": 44,
+    "skipped": 1,
+    "devState": "active",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 510,
+     "listeners": 402,
+     "max": 1
+    },
+    "tex": {
+     "n": 47,
+     "listeners": 20,
+     "max": 1
+    },
+    "mat": {
+     "n": 999,
+     "listeners": 674,
+     "max": 1
+    },
+    "dom": 1056,
+    "mlItems": 45,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 38,
+     "rafCb": 37,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "settleMs": 88646,
+   "mode": "terrain"
+  },
+  {
+   "label": "after switch 9 (paper map)",
+   "t": "2026-11-02T11:29:26.797Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 449,
+    "Nodes": 2169,
+    "LayoutCount": 211,
+    "RecalcStyleCount": 275,
+    "LayoutDuration": 0.097,
+    "RecalcStyleDuration": 0.299,
+    "ScriptDuration": 337.58,
+    "TaskDuration": 354.677,
+    "JSHeapUsedSize": 23452152,
+    "JSHeapTotalSize": 25440256,
+    "heapUsed": 23452152,
+    "backingStorage": 92176797,
+    "embedderHeap": 6832024
+   },
+   "page": {
+    "geometries": 414,
+    "textures": 34,
+    "programs": 42,
+    "calls": 156,
+    "triangles": 238361,
+    "frames": 48,
+    "skipped": 1,
+    "devState": "active",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 510,
+     "listeners": 402,
+     "max": 1
+    },
+    "tex": {
+     "n": 46,
+     "listeners": 19,
+     "max": 1
+    },
+    "mat": {
+     "n": 999,
+     "listeners": 674,
+     "max": 1
+    },
+    "dom": 1115,
+    "mlItems": 45,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 42,
+     "rafCb": 41,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "settleMs": 59124,
+   "mode": "staff"
+  },
+  {
+   "label": "after switch 10 (landscape)",
+   "t": "2026-11-02T11:30:59.434Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 449,
+    "Nodes": 2018,
+    "LayoutCount": 226,
+    "RecalcStyleCount": 295,
+    "LayoutDuration": 0.133,
+    "RecalcStyleDuration": 0.321,
+    "ScriptDuration": 388.274,
+    "TaskDuration": 406.145,
+    "JSHeapUsedSize": 17138128,
+    "JSHeapTotalSize": 18427904,
+    "heapUsed": 17138128,
+    "backingStorage": 89328870,
+    "embedderHeap": 3283192
+   },
+   "page": {
+    "geometries": 414,
+    "textures": 34,
+    "programs": 42,
+    "calls": 729,
+    "triangles": 1950669,
+    "frames": 52,
+    "skipped": 1,
+    "devState": "active",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 510,
+     "listeners": 402,
+     "max": 1
+    },
+    "tex": {
+     "n": 47,
+     "listeners": 20,
+     "max": 1
+    },
+    "mat": {
+     "n": 999,
+     "listeners": 674,
+     "max": 1
+    },
+    "dom": 1056,
+    "mlItems": 45,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 46,
+     "rafCb": 45,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "settleMs": 89829,
+   "mode": "terrain"
   }
  ],
  "settleBoot": 132759,
@@ -289,5 +793,7 @@
    }
   },
   "log": 0
- }
+ },
+ "log": {},
+ "finished": "2026-11-02T11:31:29.805Z"
 }

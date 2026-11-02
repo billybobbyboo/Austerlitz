@@ -32,8 +32,8 @@ const OUT=path.join(A.EVID,"robustness","resize-probe.json"), save=R.writer(OUT)
     for(let i=0;i<SEQ.length;i++){
       const [w,h]=SEQ[i]; await page.setViewportSize({width:w,height:h}); await R.sleep(1500); const st=await settle(60000);
       const r=await read(); r.step=i; r.to=w+"x"+h; r.settleMs=st; r.agree=r.buffer[0]===w&&r.buffer[1]===h&&Math.abs(r.aspect-r.aspectWant)<1e-3;
-      r.railOff=!!(w>=1080&&r.rail&&r.rail.rect[0]<0); if(!r.agree||r.railOff){ const f="resize-probe-"+i+"-"+w+"x"+h+".jpg"; await page.screenshot({path:path.join(A.EVID,"robustness",f),type:"jpeg",quality:60}); r.shot=f; }
-      res.steps.push(r); save(res);
+      r.railOff=!!(w>=1080&&r.rail&&r.rail.rect[0]<0); res.steps.push(r); save(res);
+      if(!r.agree||r.railOff){ const f="resize-probe-"+i+"-"+w+"x"+h+".jpg"; try{ await page.screenshot({path:path.join(A.EVID,"robustness",f),type:"jpeg",quality:60,timeout:180000}); r.shot=f; }catch(e){ r.shotError=String(e.message).slice(0,80); } save(res); }
     }
     res.log=(page._log||[]).reduce((o,x)=>{ const k=x.type+": "+x.text.replace(/\d+/g,"#").slice(0,140); o[k]=(o[k]||0)+1; return o; },{});
   }catch(e){ res.error=String(e&&e.stack||e); process.exitCode=1; }

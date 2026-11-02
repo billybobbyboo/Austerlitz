@@ -1,0 +1,140 @@
+{
+ "metresPerUnit": 31.599,
+ "rows": [
+  {
+   "id": "Girzikowitz",
+   "p": [
+    233,
+    162
+   ],
+   "drawn": {
+    "m": 172,
+    "bedX": 239,
+    "bedIs": "east"
+   },
+   "today": {
+    "channel": "Roketnice",
+    "m": 170,
+    "bedX": 227.6,
+    "bedIs": "west"
+   }
+  },
+  {
+   "id": "Puntowitz",
+   "p": [
+    213,
+    222
+   ],
+   "drawn": {
+    "m": 45,
+    "bedX": 211.6,
+    "bedIs": "west"
+   },
+   "today": {
+    "channel": "Roketnice",
+    "m": 238,
+    "bedX": 204,
+    "bedIs": "west"
+   }
+  },
+  {
+   "id": "Kobelnitz",
+   "p": [
+    205,
+    277
+   ],
+   "drawn": {
+    "m": 79,
+    "bedX": 207.5,
+    "bedIs": "east"
+   },
+   "today": {
+    "channel": "Říčka",
+    "m": 91,
+    "bedX": 201.6,
+    "bedIs": "west"
+   }
+  },
+  {
+   "id": "Sokolnitz",
+   "p": [
+    208,
+    365
+   ],
+   "drawn": {
+    "m": 207,
+    "bedX": 214.8,
+    "bedIs": "east"
+   },
+   "today": {
+    "channel": "Říčka",
+    "m": 206,
+    "bedX": 214.9,
+    "bedIs": "east"
+   }
+  },
+  {
+   "id": "sthilaire@2",
+   "p": [
+    206,
+    231
+   ],
+   "drawn": {
+    "m": 146,
+    "bedX": 210.6,
+    "bedIs": "east"
+   },
+   "today": {
+    "channel": "Říčka",
+    "m": 62,
+    "bedX": 204,
+    "bedIs": "west"
+   }
+  },
+  {
+   "id": "vandamme@2",
+   "p": [
+    221,
+    182
+   ],
+   "drawn": {
+    "m": 238,
+    "bedX": 229.4,
+    "bedIs": "east"
+   },
+   "today": {
+    "channel": "Roketnice",
+    "m": 125,
+    "bedX": 225,
+    "bedIs": "east"
+   }
+  }
+ ],
+ "roketniceMouth": [
+  202.6,
+  225.3
+ ],
+ "drawnBedWorstGap": {
+  "y160-309": {
+   "m": 394,
+   "at": [
+    240,
+    160
+   ]
+  },
+  "y176-309": {
+   "m": 336,
+   "at": [
+    207.9,
+    261
+   ]
+  },
+  "y212-300": {
+   "m": 336,
+   "at": [
+    207.9,
+    261
+   ]
+  }
+ }
+}

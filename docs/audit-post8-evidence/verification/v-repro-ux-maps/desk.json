@@ -805,6 +805,305 @@
     "hitTestOk": true
    },
    "commandView": "none"
+  },
+  {
+   "what": "V-M2/V-M3 1600x900: the key and the rose in Study, Watch, Clean",
+   "study": {
+    "viewport": [
+     1600,
+     900
+    ],
+    "body": "docked pm-study",
+    "legend": {
+     "display": "block",
+     "visibility": "visible",
+     "box": [
+      1489,
+      753,
+      93,
+      42
+     ]
+    },
+    "toggleShown": true,
+    "rose": {
+     "display": "block",
+     "box": [
+      1500,
+      760,
+      26,
+      26
+     ]
+    },
+    "roseShown": true,
+    "keyButtons": [
+     "vm-btn: Study | Everything: panels, dossiers, sources (key 1)",
+     "vm-btn: Watch | Battlefield and timeline only (key 2)",
+     "vm-btn: Clean | The battlefield alone: no panels (key 3)",
+     "lg-toggle: N\n      \n    Key | Show or hide the key"
+    ],
+    "otherNorth": [
+     "span.cut Derived from the plotted formations: a French formation stands across the line joining the"
+    ]
+   },
+   "watch": {
+    "click": {
+     "sel": ".vm-btn[data-vm=\"watch\"]",
+     "at": [
+      802,
+      31
+     ],
+     "hitTestOk": true
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "body": "docked pm-watch rail-hidden",
+    "legend": {
+     "display": "none",
+     "visibility": "visible",
+     "box": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "toggleShown": false,
+    "rose": {
+     "display": "block",
+     "box": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "roseShown": false,
+    "keyButtons": [
+     "vm-btn: Study | Everything: panels, dossiers, sources (key 1)",
+     "vm-btn: Watch | Battlefield and timeline only (key 2)",
+     "vm-btn: Clean | The battlefield alone: no panels (key 3)"
+    ],
+    "otherNorth": [
+     "span.cut Derived from the plotted formations: a French formation stands across the line joining the"
+    ]
+   },
+   "clean": {
+    "click": {
+     "sel": "#tb-vm .vm-btn[data-vm=\"map\"], .vm-btn[data-vm=\"map\"]",
+     "at": [
+      1266,
+      828
+     ],
+     "hitTestOk": true
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "body": "docked rail-hidden pm-map",
+    "legend": {
+     "display": "none",
+     "visibility": "visible",
+     "box": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "toggleShown": false,
+    "rose": {
+     "display": "block",
+     "box": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "roseShown": false,
+    "keyButtons": [
+     "vm-btn: Study | Everything: panels, dossiers, sources (key 1)",
+     "vm-btn: Watch | Battlefield and timeline only (key 2)",
+     "vm-btn: Clean | The battlefield alone: no panels (key 3)"
+    ],
+    "otherNorth": []
+   },
+   "afterKey1": "study"
+  },
+  {
+   "what": "V-M5: the paper map entered by real clicks at 1600x900 (09:30, Study, everyone)",
+   "clicks": [
+    {
+     "sel": "#layersbtn",
+     "at": [
+      1544,
+      34
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": ".mode-btn[data-m=\"staff\"]",
+     "at": [
+      1435,
+      202
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": "#layerclose",
+     "at": [
+      1551,
+      128
+     ],
+     "hitTestOk": true
+    }
+   ],
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "map",
+     "x": 14.230056491427284,
+     "z": 8.316548732995047,
+     "wpp": 0.5543528804271592
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "n": 36,
+   "byCat": {
+    "counter": {
+     "on": 14
+    },
+    "event": {
+     "on": 1
+    },
+    "plateau": {
+     "on": 1
+    },
+    "overlay": {
+     "on": 7
+    },
+    "objective": {
+     "on": 1
+    },
+    "place": {
+     "dropped": 12
+    }
+   },
+   "places": [
+    {
+     "id": "t:pratzen",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzen Heights"
+    },
+    {
+     "id": "t:vinohrady",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Stare Vinohrady"
+    },
+    {
+     "id": "t:pratzeberg",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzeberg"
+    },
+    {
+     "id": "t:santon",
+     "cat": "place",
+     "state": "dropped",
+     "text": "The Santon"
+    },
+    {
+     "id": "t:zuran",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Zuran mound"
+    },
+    {
+     "id": "t:goldbach",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Goldbach stream"
+    },
+    {
+     "id": "t:litava",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Litava river"
+    },
+    {
+     "id": "t:telnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Telnitz"
+    },
+    {
+     "id": "t:sokolnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Sokolnitz"
+    },
+    {
+     "id": "t:augezd",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Augezd"
+    },
+    {
+     "id": "t:satschan",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Satschan mere"
+    },
+    {
+     "id": "t:austerlitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Austerlitz"
+    }
+   ]
   }
  ]
 }

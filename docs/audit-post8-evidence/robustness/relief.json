@@ -33,6 +33,118 @@
    "wallMs": 70234,
    "factor": 10.32642489706367,
    "pressed": "true"
+  },
+  {
+   "i": 2,
+   "want": 4,
+   "box": [
+    1144,
+    493,
+    35,
+    30
+   ],
+   "hit": true,
+   "disabled": false,
+   "settleMs": 65540,
+   "wallMs": 66234,
+   "factor": 4,
+   "pressed": "true"
+  },
+  {
+   "i": 3,
+   "want": 1,
+   "box": [
+    1080,
+    493,
+    60,
+    30
+   ],
+   "hit": true,
+   "disabled": false,
+   "settleMs": 93472,
+   "wallMs": 94515,
+   "factor": 1,
+   "pressed": "true"
+  },
+  {
+   "i": 4,
+   "want": 10.32642489706367,
+   "box": [
+    1183,
+    493,
+    60,
+    30
+   ],
+   "hit": true,
+   "disabled": false,
+   "settleMs": -1,
+   "wallMs": 120668,
+   "factor": 10.32642489706367,
+   "pressed": "true"
+  },
+  {
+   "i": 5,
+   "want": 4,
+   "box": [
+    1144,
+    493,
+    35,
+    30
+   ],
+   "hit": true,
+   "disabled": false,
+   "settleMs": 68816,
+   "wallMs": 70012,
+   "factor": 4,
+   "pressed": "true"
+  },
+  {
+   "i": 6,
+   "want": 1,
+   "box": [
+    1080,
+    493,
+    60,
+    30
+   ],
+   "hit": true,
+   "disabled": false,
+   "settleMs": 106148,
+   "wallMs": 108695,
+   "factor": 1,
+   "pressed": "true"
+  },
+  {
+   "i": 7,
+   "want": 10.32642489706367,
+   "box": [
+    1183,
+    493,
+    60,
+    30
+   ],
+   "hit": true,
+   "disabled": false,
+   "settleMs": -1,
+   "wallMs": 121319,
+   "factor": 10.32642489706367,
+   "pressed": "true"
+  },
+  {
+   "i": 8,
+   "want": 4,
+   "box": [
+    1144,
+    493,
+    35,
+    30
+   ],
+   "hit": true,
+   "disabled": false,
+   "settleMs": 29344,
+   "wallMs": 31452,
+   "factor": 4,
+   "pressed": "true"
   }
  ],
  "firstRunAtLoad": true,
@@ -112,5 +224,75 @@
   1,
   4,
   10.32642489706367
- ]
+ ],
+ "afterRound1": {
+  "label": "after the first round of three",
+  "t": "2026-11-02T11:21:51.823Z",
+  "cdp": {
+   "Documents": 1,
+   "Frames": 1,
+   "JSEventListeners": 393,
+   "Nodes": 1729,
+   "LayoutCount": 46,
+   "RecalcStyleCount": 66,
+   "LayoutDuration": 0.013,
+   "RecalcStyleDuration": 0.015,
+   "ScriptDuration": 160.361,
+   "TaskDuration": 163.411,
+   "JSHeapUsedSize": 16586304,
+   "JSHeapTotalSize": 17641472,
+   "heapUsed": 16586304,
+   "backingStorage": 93566696,
+   "embedderHeap": 2862960
+  },
+  "page": {
+   "geometries": 409,
+   "textures": 33,
+   "programs": 36,
+   "calls": 748,
+   "triangles": 1929775,
+   "frames": 28,
+   "skipped": 0,
+   "devState": "active",
+   "lost": false,
+   "built": 206,
+   "depth": 206,
+   "geo": {
+    "n": 510,
+    "listeners": 397,
+    "max": 1
+   },
+   "tex": {
+    "n": 47,
+    "listeners": 19,
+    "max": 1
+   },
+   "mat": {
+    "n": 999,
+    "listeners": 669,
+    "max": 1
+   },
+   "dom": 814,
+   "mlItems": 31,
+   "clock": 240,
+   "playing": false,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "speed": 0.5,
+   "fx": true,
+   "heap": 103000000,
+   "counts": {
+    "raf": 21,
+    "rafCb": 20,
+    "to": 0,
+    "toCb": 0,
+    "iv": 0,
+    "ivCb": 0,
+    "toBy": {},
+    "ivBy": {}
+   }
+  },
+  "log": 0
+ }
 }
