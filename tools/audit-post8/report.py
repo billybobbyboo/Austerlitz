@@ -78,6 +78,8 @@ def main():
             base = dict(areas[a]["findings"][i])
         base.update(e.get("own") or {})
         base.update(e.get("override") or {})
+        if base.get("title"):
+            base["title"] = re.sub(r"^(V-M\d+|TS-\d+|A11Y-\d+|IA-\d+|V-\d+): ", "", base["title"])
         base["_id"] = e["id"]
         base["_from"] = srcs
         base["_also"] = e.get("also", [])
@@ -225,6 +227,19 @@ def main():
         comp.append("")
     out.append(part("F-quality.md"))
     out.append(part("G-roadmap.md"))
+    out.append("### G.3 Each package's findings\n")
+    wps = OrderedDict()
+    for r in rows:
+        wps.setdefault(r.get("work_package") or "unassigned", []).append(r)
+    for w in sorted(wps):
+        rs = sorted(wps[w], key=key)
+        sv = Counter(r.get("severity") for r in rs)
+        out.append("**%s** (%d findings: %s)\n" % (w, len(rs), ", ".join("%s %d" % (k, sv[k]) for k in ("S1", "S2", "S3", "S4") if sv[k])))
+        out.append("| ID | sev | pri | kind | effort | title |\n|---|---|---|---|---|---|")
+        for r in rs:
+            out.append("| [%s](#%s) | %s | %s | %s | %s | %s |" % (r["_id"], r["_id"].lower(), r.get("severity", ""), r.get("priority", ""),
+                       KIND.get(r.get("category"), r.get("category", "")), esc(r.get("effort")), esc(r.get("title"))))
+        out.append("")
     out.append(part("H-merge.md"))
     out.append(part("I-owner.md"))
     out.append(part("J-response.md"))

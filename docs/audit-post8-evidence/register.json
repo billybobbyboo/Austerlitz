@@ -34,7 +34,8 @@
    },
    "override": {
     "title": "The face-about event contradicts itself and the sources: its pill says Fact ('Attested in the standard accounts'), its own text calls the order 'this map's reading' because 'no account read gives the order', yet the project's own reading of Schonhals p. 162 gives Kutuzov's order, and Stutterheim pp. 63-64 a competing account of who gave it",
-    "remedy": "A data task (analysis.js EVENTS, narrative.js): label the event disputed with both sides, as CLAUDE.md requires where sources disagree (Schonhals p. 162: Kutuzov's order to the 4th Column; Stutterheim pp. 63-64: the Emperor's order to the Russian battalions and an unnamed order to Kollowrath); remove 'no account read gives the order'; re-measure the 09:15 views' drop limits, since the label's words change."
+    "remedy": "A data task (analysis.js EVENTS, narrative.js): label the event disputed with both sides, as CLAUDE.md requires where sources disagree (Schonhals p. 162: Kutuzov's order to the 4th Column; Stutterheim pp. 63-64: the Emperor's order to the Russian battalions and an unnamed order to Kollowrath); remove 'no account read gives the order'; re-measure the 09:15 views' drop limits, since the label's words change.",
+    "work_package": "WP-01"
    }
   },
   {
@@ -54,7 +55,8 @@
    "override": {
     "title": "44 of 88 A position grades are carried forward unreviewed from an earlier anchor: on moved anchors with no act (Caffarelli @6-@9 among them) a visitor reads 'Position documented in the sources' with nothing in the data placing the formation there, where 8K graded the adjacent Suchet pursuit C",
     "category": "probable-problem",
-    "priority": "P3"
+    "priority": "P3",
+    "work_package": "WP-03"
    }
   },
   {
@@ -72,7 +74,8 @@
     "note": "Both lenses: the register is divided (the disposition and Stutterheim against the official report), so the defect is taking one side without saying so; title corrected; S2 kept. [lenses: WEAKENED (premise); WEAKENED (repro)]"
    },
    "override": {
-    "title": "The Russian Guard's plotted approach takes one side of a divided register without saying so: its morning positions are graded A though the project's readings contest them (the disposition and Stutterheim against the official report's 'ordered height of Krzenowitz'); the plan text misstates the disposition; nobody is drawn at Blasowitz when it falls 'from the Russian Guard'"
+    "title": "The Russian Guard's plotted approach takes one side of a divided register without saying so: its morning positions are graded A though the project's readings contest them (the disposition and Stutterheim against the official report's 'ordered height of Krzenowitz'); the plan text misstates the disposition; nobody is drawn at Blasowitz when it falls 'from the Russian Guard'",
+    "work_package": "WP-03"
    }
   },
   {
@@ -88,6 +91,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -103,6 +109,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -123,6 +132,10 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch); CONFIRMED (batch)]"
+   },
+   "override": {
+    "title": "Four events whose hours the sources dispute are not labelled disputed: three whose own texts say so, and the Pratzen climb, shown as Fact at 08:45-09:15 while the accounts read put it from about 08:00 to about 09:00",
+    "work_package": "WP-01"
    }
   },
   {
@@ -138,6 +151,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -153,6 +169,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -168,6 +187,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -183,6 +205,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -198,6 +223,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -213,6 +241,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-01"
    }
   },
   {
@@ -228,6 +259,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -247,7 +281,8 @@
    "override": {
     "title": "Krug and Bellowitz are drawn at their legacy places with the open question only in SOURCE_NOTE (Krug's place is CL-GEO-07), and the Russian Guard cavalry's commander is shown without a claim tag (the note behind it is CL-SRC-03)",
     "severity": "S4",
-    "priority": "P4"
+    "priority": "P4",
+    "work_package": "WP-01"
    }
   },
   {
@@ -263,6 +298,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-01"
    }
   },
   {
@@ -278,6 +316,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -293,6 +334,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -310,7 +354,8 @@
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
    },
    "override": {
-    "priority": "P1"
+    "priority": "P1",
+    "work_package": "WP-02"
    }
   },
   {
@@ -329,7 +374,8 @@
    },
    "override": {
     "title": "The III Corps detachment and the IV Column are drawn below every figure in the sources read; the notes of the detachment, Friant, Bourcier and the IV Column omit Sokolov's and Schonhals's figures (Miloradovich's note gives Schonhals's 6,965)",
-    "priority": "P3"
+    "priority": "P3",
+    "work_package": "WP-02"
    }
   },
   {
@@ -345,6 +391,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-01"
    }
   },
   {
@@ -362,7 +411,8 @@
     "note": " [lenses: WEAKENED (batch)]"
    },
    "override": {
-    "title": "SOURCE_NOTE illustrates disagreement among 'reputable orders of battle' with an I Column range whose low end (7,750) no source read gives (the three read give 12,730-14,000); the figure's origin is not established"
+    "title": "SOURCE_NOTE illustrates disagreement among 'reputable orders of battle' with an I Column range whose low end (7,750) no source read gives (the three read give 12,730-14,000); the figure's origin is not established",
+    "work_package": "WP-02"
    }
   },
   {
@@ -378,6 +428,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-02"
    }
   },
   {
@@ -393,6 +446,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-02"
    }
   },
   {
@@ -408,6 +464,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-02"
    }
   },
   {
@@ -425,7 +484,8 @@
     "note": " [lenses: WEAKENED (batch)]"
    },
    "override": {
-    "title": "Stronger or earlier sources uncredited, and two locator slips (Kamensky's 'about 2,000 each' is printed by Schonhals p. 177, which also braces Kursk into the brigade, not by Sokolov p. 195, which gives battalions only)"
+    "title": "Stronger or earlier sources uncredited, and two locator slips (Kamensky's 'about 2,000 each' is printed by Schonhals p. 177, which also braces Kursk into the brigade, not by Sokolov p. 195, which gives battalions only)",
+    "work_package": "WP-02"
    }
   },
   {
@@ -441,6 +501,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-01"
    }
   },
   {
@@ -456,6 +519,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   },
+   "override": {
+    "work_package": "WP-04"
    }
   },
   {
@@ -471,6 +537,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-01"
    }
   },
   {
@@ -486,6 +555,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-04"
    }
   },
   {
@@ -501,6 +573,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-04"
    }
   },
   {
@@ -516,6 +591,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-04"
    }
   },
   {
@@ -533,7 +611,8 @@
     "note": " [lenses: WEAKENED (batch)]"
    },
    "override": {
-    "title": "The Goldbach bottom's marshiness, an open question, is drawn and told as settled, the opening's first step included; the movement audit never tests stream crossings and exempts marsh within 695 m of any village"
+    "title": "The Goldbach bottom's marshiness, an open question, is drawn and told as settled, the opening's first step included; the movement audit never tests stream crossings and exempts marsh within 695 m of any village",
+    "work_package": "WP-01"
    }
   },
   {
@@ -549,6 +628,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-04"
    }
   },
   {
@@ -564,6 +646,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-01"
    }
   },
   {
@@ -579,6 +664,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-01"
    }
   },
   {
@@ -594,6 +682,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-01"
    }
   },
   {
@@ -609,6 +700,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   },
+   "override": {
+    "work_package": "WP-05"
    }
   },
   {
@@ -624,6 +718,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise)]"
+   },
+   "override": {
+    "work_package": "WP-05"
    }
   },
   {
@@ -635,7 +732,10 @@
     ]
    ],
    "also": [],
-   "note": "The auditor read app.js:4193-4207: setChapter sets the clock and flies the camera but never calls stopPlay: confirmed by reading."
+   "note": "The auditor read app.js:4193-4207: setChapter sets the clock and flies the camera but never calls stopPlay: confirmed by reading.",
+   "override": {
+    "work_package": "WP-05"
+   }
   },
   {
    "id": "CL-SIM-04",
@@ -651,7 +751,11 @@
      3
     ]
    ],
-   "note": "Merged: the interrupted fade (state) and the Movement layer off (interaction) are two scenarios of one opacity rule in applyOverlayOpacity."
+   "note": "Merged: the interrupted fade (state) and the Movement layer off (interaction) are two scenarios of one opacity rule in applyOverlayOpacity.",
+   "override": {
+    "title": "The overlays' fade draws the outgoing phase's arrows when it should not: with the Movement layer off every phase change flashes them at about 0.87 opacity, and a phase change that interrupts a fade pops them back to 0.9 (stepping through phases quickly flashes each skipped phase's arrows)",
+    "work_package": "WP-05"
+   }
   },
   {
    "id": "CL-SIM-05",
@@ -662,7 +766,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-05"
+   }
   },
   {
    "id": "CL-SIM-06",
@@ -673,7 +780,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-05"
+   }
   },
   {
    "id": "CL-SIM-07",
@@ -684,7 +794,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-05"
+   }
   },
   {
    "id": "CL-SIM-08",
@@ -695,7 +808,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-05"
+   }
   },
   {
    "id": "CL-UX-01",
@@ -710,6 +826,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise)]"
+   },
+   "override": {
+    "work_package": "WP-09"
    }
   },
   {
@@ -725,6 +844,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   },
+   "override": {
+    "work_package": "WP-06"
    }
   },
   {
@@ -749,6 +871,10 @@
    "verify": {
     "verdict": "DUPLICATE",
     "note": " [lenses: DUPLICATE (premise)]"
+   },
+   "override": {
+    "title": "Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start",
+    "work_package": "WP-06"
    }
   },
   {
@@ -760,7 +886,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-06"
+   }
   },
   {
    "id": "CL-UX-05",
@@ -771,7 +900,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-06",
@@ -782,7 +914,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-07",
@@ -793,7 +928,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-05"
+   }
   },
   {
    "id": "CL-UX-08",
@@ -804,7 +942,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-09",
@@ -815,7 +956,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-10",
@@ -826,7 +970,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-11",
@@ -837,7 +984,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-12",
@@ -848,7 +998,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-13",
@@ -859,7 +1012,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-06"
+   }
   },
   {
    "id": "CL-UX-14",
@@ -870,7 +1026,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-05"
+   }
   },
   {
    "id": "CL-UX-15",
@@ -881,7 +1040,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-16",
@@ -892,7 +1054,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-17",
@@ -903,7 +1068,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-18",
@@ -914,7 +1082,10 @@
     ]
    ],
    "also": [],
-   "note": "Overlaps CL-MAP-06 on the phone caption's orphan separators."
+   "note": "Overlaps CL-MAP-06 on the phone caption's orphan separators.",
+   "override": {
+    "work_package": "WP-09"
+   }
   },
   {
    "id": "CL-UX-19",
@@ -925,7 +1096,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-06"
+   }
   },
   {
    "id": "CL-UX-20",
@@ -936,7 +1110,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-06"
+   }
   },
   {
    "id": "CL-MAP-01",
@@ -953,7 +1130,8 @@
     "note": "Premise lens: real for Landscape with counters; the origin is mixed (corrected). Severity S2 kept. [lenses: WEAKENED (premise)]"
    },
    "override": {
-    "origin": "mixed: new-regression for the long gaps (8C's hold of the map layer through Play, lengthened by decision 260 (a)'s places) on an inherited starvation share (2D's priority order under decision 24)"
+    "origin": "mixed: new-regression for the long gaps (8C's hold of the map layer through Play, lengthened by decision 260 (a)'s places) on an inherited starvation share (2D's priority order under decision 24)",
+    "work_package": "WP-07"
    }
   },
   {
@@ -973,7 +1151,8 @@
    "override": {
     "severity": "S3",
     "priority": "P3",
-    "category": "probable-problem"
+    "category": "probable-problem",
+    "work_package": "WP-07"
    }
   },
   {
@@ -991,7 +1170,8 @@
     "note": " [lenses: WEAKENED (premise)]"
    },
    "override": {
-    "title": "No symbol key at all between 720 and 1079 px wide or on a phone held upright, so the integrity encodings (the B and C grades, '?', the dashed intended routes) go unexplained there; Watch, Clean and a phone held landscape hide it by recorded design or decision"
+    "title": "No symbol key at all between 720 and 1079 px wide or on a phone held upright, so the integrity encodings (the B and C grades, '?', the dashed intended routes) go unexplained there; Watch, Clean and a phone held landscape hide it by recorded design or decision",
+    "work_package": "WP-08"
    }
   },
   {
@@ -1012,7 +1192,8 @@
     "severity": "S3",
     "priority": "P3",
     "category": "probable-problem",
-    "observed": "North is shown only in Study at 1080 px or wider and more than 700 px tall (style.css hides the rose at 700 px or less); the Field vantage faces 63 degrees from north, the Zuran 135, the Allied 85; the paper map is north-up by construction."
+    "observed": "North is shown only in Study at 1080 px or wider and more than 700 px tall (style.css hides the rose at 700 px or less); the Field vantage faces 63 degrees from north, the Zuran 135, the Allied 85; the paper map is north-up by construction.",
+    "work_package": "WP-08"
    }
   },
   {
@@ -1032,7 +1213,8 @@
    "override": {
     "severity": "S3",
     "priority": "P3",
-    "category": "optional-improvement"
+    "category": "optional-improvement",
+    "work_package": "WP-08"
    }
   },
   {
@@ -1044,7 +1226,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-07",
@@ -1055,7 +1240,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-07"
+   }
   },
   {
    "id": "CL-MAP-08",
@@ -1066,7 +1254,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-09",
@@ -1077,7 +1268,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-10",
@@ -1088,7 +1282,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-11",
@@ -1099,7 +1296,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-12",
@@ -1110,7 +1310,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-07"
+   }
   },
   {
    "id": "CL-MAP-13",
@@ -1121,7 +1324,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-14",
@@ -1132,7 +1338,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-07"
+   }
   },
   {
    "id": "CL-MAP-15",
@@ -1143,7 +1352,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-16",
@@ -1154,7 +1366,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-17",
@@ -1165,7 +1380,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-07"
+   }
   },
   {
    "id": "CL-MAP-18",
@@ -1176,7 +1394,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-19",
@@ -1187,7 +1408,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-MAP-20",
@@ -1198,7 +1422,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-08"
+   }
   },
   {
    "id": "CL-VIS-01",
@@ -1213,6 +1440,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise)]"
+   },
+   "override": {
+    "work_package": "WP-10"
    }
   },
   {
@@ -1224,7 +1454,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-10"
+   }
   },
   {
    "id": "CL-VIS-03",
@@ -1235,7 +1468,10 @@
     ]
    ],
    "also": [],
-   "note": "Related, not the same issue: CL-HIS-05 (legs whose direction contradicts the status)."
+   "note": "Related, not the same issue: CL-HIS-05 (legs whose direction contradicts the status).",
+   "override": {
+    "work_package": "WP-10"
+   }
   },
   {
    "id": "CL-VIS-04",
@@ -1246,7 +1482,10 @@
     ]
    ],
    "also": [],
-   "note": "CL-HIS-04 is the one between opposing formations that Stage 8 introduced."
+   "note": "CL-HIS-04 is the one between opposing formations that Stage 8 introduced.",
+   "override": {
+    "work_package": "WP-10"
+   }
   },
   {
    "id": "CL-VIS-05",
@@ -1257,7 +1496,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-10"
+   }
   },
   {
    "id": "CL-VIS-06",
@@ -1268,7 +1510,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-10"
+   }
   },
   {
    "id": "CL-VIS-07",
@@ -1279,7 +1524,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-10"
+   }
   },
   {
    "id": "CL-VIS-08",
@@ -1290,7 +1538,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-10"
+   }
   },
   {
    "id": "CL-VIS-09",
@@ -1301,7 +1552,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-10"
+   }
   },
   {
    "id": "CL-TEST-01",
@@ -1321,7 +1575,8 @@
     "title": "Only the node job is a required check on main: the browser checks run on every push but gate no merge, and check:visual runs only on dispatch (the one red merge, #77, was the owner's knowing merge over question 267's line)",
     "severity": "S3",
     "priority": "P3",
-    "category": "probable-problem"
+    "category": "probable-problem",
+    "work_package": "WP-11"
    }
   },
   {
@@ -1333,7 +1588,10 @@
     ]
    ],
    "also": [],
-   "note": "Related, not the same issue: CL-TEST-14 (what the motion ceilings mean)."
+   "note": "Related, not the same issue: CL-TEST-14 (what the motion ceilings mean).",
+   "override": {
+    "work_package": "WP-07"
+   }
   },
   {
    "id": "CL-TEST-03",
@@ -1350,7 +1608,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "priority": "P3"
+    "priority": "P3",
+    "work_package": "WP-11"
    }
   },
   {
@@ -1366,6 +1625,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1381,6 +1643,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1396,6 +1661,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1415,7 +1683,8 @@
    "override": {
     "severity": "S4",
     "priority": "P4",
-    "category": "optional-improvement"
+    "category": "optional-improvement",
+    "work_package": "WP-11"
    }
   },
   {
@@ -1438,7 +1707,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "origin": "new-regression (animAt and animGLSL came with 8D and 8E)"
+    "origin": "new-regression (animAt and animGLSL came with 8D and 8E)",
+    "work_package": "WP-11"
    }
   },
   {
@@ -1457,7 +1727,8 @@
    },
    "override": {
     "severity": "S4",
-    "priority": "P4"
+    "priority": "P4",
+    "work_package": "WP-11"
    }
   },
   {
@@ -1473,6 +1744,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1488,6 +1762,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1505,7 +1782,8 @@
     "note": " [lenses: WEAKENED (batch)]"
    },
    "override": {
-    "observed": "10 plan labels drawn on the map (8 staging, 2 objectives) are narrative statements outside the inventory and its exclusion note; 12 column names are arguable (names, a few interpretive); the 19 timing bases are a two-valued enum the note's 'enums' plausibly covers. No completeness check exists."
+    "observed": "10 plan labels drawn on the map (8 staging, 2 objectives) are narrative statements outside the inventory and its exclusion note; 12 column names are arguable (names, a few interpretive); the 19 timing bases are a two-valued enum the note's 'enums' plausibly covers. No completeness check exists.",
+    "work_package": "WP-11"
    }
   },
   {
@@ -1521,6 +1799,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1536,6 +1817,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-07"
    }
   },
   {
@@ -1556,7 +1840,8 @@
     "severity": "S4",
     "priority": "P4",
     "category": "optional-improvement",
-    "origin": "new-regression (8C's second derivedTag in marchRow opened the pin's blind spot)"
+    "origin": "new-regression (8C's second derivedTag in marchRow opened the pin's blind spot)",
+    "work_package": "WP-11"
    }
   },
   {
@@ -1572,6 +1857,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1589,7 +1877,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "origin": "inherited"
+    "origin": "inherited",
+    "work_package": "WP-11"
    }
   },
   {
@@ -1605,6 +1894,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1620,6 +1912,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1635,6 +1930,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-11"
    }
   },
   {
@@ -1655,7 +1953,8 @@
     "severity": "S4",
     "priority": "P3",
     "category": "optional-improvement",
-    "origin": "inherited (Pages enabled for decision 217's device runs, roadmap step 6)"
+    "origin": "inherited (Pages enabled for decision 217's device runs, roadmap step 6)",
+    "work_package": "WP-13"
    }
   },
   {
@@ -1671,6 +1970,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-13"
    }
   },
   {
@@ -1688,7 +1990,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "origin": "mixed: inherited (R-2 recurred from PR #58) and new-regression (#64, #73-#79)"
+    "origin": "mixed: inherited (R-2 recurred from PR #58) and new-regression (#64, #73-#79)",
+    "work_package": "WP-13"
    }
   },
   {
@@ -1707,7 +2010,8 @@
    },
    "override": {
     "severity": "S4",
-    "priority": "P4"
+    "priority": "P4",
+    "work_package": "WP-13"
    }
   },
   {
@@ -1728,7 +2032,8 @@
     "severity": "S3",
     "priority": "P3",
     "category": "untested",
-    "observed": "Both attestations are labelled as such (CLAUDE.md, docs/ROADMAP.md, docs/step3-evidence/sr-session.md). Untested: any screen reader on the current build, including 8H's A-6 changes; one stale line in docs/stage6-evidence/second-reading.md."
+    "observed": "Both attestations are labelled as such (CLAUDE.md, docs/ROADMAP.md, docs/step3-evidence/sr-session.md). Untested: any screen reader on the current build, including 8H's A-6 changes; one stale line in docs/stage6-evidence/second-reading.md.",
+    "work_package": "WP-09"
    }
   },
   {
@@ -1744,6 +2049,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-03"
    }
   },
   {
@@ -1759,6 +2067,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-13"
    }
   },
   {
@@ -1774,6 +2085,9 @@
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
+   },
+   "override": {
+    "work_package": "WP-00"
    }
   },
   {
@@ -1785,7 +2099,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-14"
+   }
   },
   {
    "id": "CL-ROB-03",
@@ -1796,7 +2113,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-13"
+   }
   },
   {
    "id": "CL-ROB-04",
@@ -1807,7 +2127,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-14"
+   }
   },
   {
    "id": "CL-ROB-05",
@@ -1818,7 +2141,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-14"
+   }
   },
   {
    "id": "CL-ROB-06",
@@ -1829,7 +2155,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-00"
+   }
   },
   {
    "id": "CL-ROB-07",
@@ -1840,7 +2169,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-11"
+   }
   },
   {
    "id": "CL-ROB-08",
@@ -1851,7 +2183,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-13"
+   }
   },
   {
    "id": "CL-ROB-09",
@@ -1873,7 +2208,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "priority": "P4"
+    "priority": "P4",
+    "work_package": "WP-13"
    }
   },
   {
@@ -1885,7 +2221,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-14"
+   }
   },
   {
    "id": "CL-ROB-11",
@@ -1896,7 +2235,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-14"
+   }
   },
   {
    "id": "CL-ROB-12",
@@ -1907,7 +2249,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-14"
+   }
   },
   {
    "id": "CL-PERF-01",
@@ -1918,7 +2263,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-02",
@@ -1929,7 +2277,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-03",
@@ -1940,7 +2291,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-04",
@@ -1951,7 +2305,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-05",
@@ -1962,7 +2319,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-06",
@@ -1973,7 +2333,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-07",
@@ -1984,7 +2347,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-08",
@@ -1995,7 +2361,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-09",
@@ -2006,7 +2375,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-10",
@@ -2017,7 +2389,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   },
   {
    "id": "CL-PERF-11",
@@ -2028,7 +2403,10 @@
     ]
    ],
    "also": [],
-   "note": ""
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
   }
  ],
  "set_aside": [

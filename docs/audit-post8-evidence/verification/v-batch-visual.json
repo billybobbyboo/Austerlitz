@@ -1,0 +1,200 @@
+{
+ "label": "v-batch-visual",
+ "verdicts": [
+  {
+   "area": "visual-landscape",
+   "index": 1,
+   "verdict": "WEAKENED",
+   "method": "code read + in-page measure of every tree/bush in the mere discs (ice-tops.js)",
+   "evidence": "world.js:2119-2127 (village trees, no water test), 2212-2223 (bank scrub tests covVill/nearBuilding only); docs/audit-post8-evidence/verification/v-batch-visual/ice-tops.json: 21 instances in the Satschan disc reproduced, but 14 bank bushes have tops 0.14-0.50 units below the ice (base -5.014, ice -4.140; ice opacity 0.94-0.96), 1 stands on the shore; 6 visibly rise out of the ice (4 village trees 1.4-2.5 above, 2 bush tops 0.37 and 0.09).",
+   "notes": "Defect (no water test in either planner) stands; origin inherited (present at 0a19964). Remedy feasible if it consumes the same draws (WOODS_RS hold).",
+   "corrected": {
+    "observed": "6 objects visibly rise out of the Satschan ice (4 village trees, 2 bush tops); 14 more bank bushes are planted on the bed under the ice, hidden",
+    "severity": "S3",
+    "priority": "P3"
+   }
+  },
+  {
+   "area": "visual-landscape",
+   "index": 2,
+   "verdict": "CONFIRMED",
+   "method": "code read at HEAD + the area's read-backs re-checked",
+   "evidence": "app.js:6001-6002 (headingAt else enemyFacing), app.js:3336-3345 (no rate floor; gait floor 1 km/h, decision 244 (a)), app.js:5740-5774 (faceClock cache); visual-landscape/shots/x-face-*.json: Kamensky 10:10 174.8 deg off Saint-Hilaire at 0.06 km; facings-summary.json 1,146/1,440 moving rows <1 km/h, 37 contact rows.",
+   "notes": "Inherited: pre-8E enemyFacing cached per phase (git show 62f5cd2^:app.js ~5376). Bearing is centre-to-centre and blocks overlap at 20-110 m (#3); 3 of 37 rows are retreating. Related to, not duplicate of, history #0."
+  },
+  {
+   "area": "visual-landscape",
+   "index": 3,
+   "verdict": "CONFIRMED",
+   "method": "code search + crop viewed",
+   "evidence": "No placement in app.js reads BLDG/nearBuilding (only dossiers/notes/self-test, app.js:8168-8484, 10797, 14070); docs/STAGE8_SPEC.md:4982-4986 records figures drawn over buildings (8J), not decided; visual-landscape/crops/cav-close-1055-250-150.jpg Nansouty inside Blasowitz.",
+   "notes": "Inherited mechanism, aggravated by 8G's farmsteads; castle case is decision 266 (a). Remedy needs an owner decision."
+  },
+  {
+   "area": "visual-landscape",
+   "index": 4,
+   "verdict": "WEAKENED",
+   "method": "bounded in-page toggle of STREAM.sky (pan-and-stream.js part B) + code read + git show of 8E's material",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-visual/pan-and-stream.json: the area's v-low-1630 view (t 990, aim map [285,289] dir [-1,0.13,0.18] r 70, 1600x900), region (1000,350)-(1300,480): 218 px >=245 as built, 215 with STREAM.sky 0 (stream material recompiled), 218 restored; captures stream-asbuilt.png and stream-sky0.png indistinguishable. world.js:1446 the term scales only environment radiance. 8F changed roughness 0.48->0.30, envMapIntensity 0.18->0.40 (git show 94d6e46:world.js:1225 vs world.js:1474).",
+   "notes": "The white glint is real in toward-sun views but the stated cause (STREAM.sky 2.0) is refuted and the remedy (lower STREAM.sky) would not cure it. Likely the sun's direct specular on 8F's sharper surface plus bloom (inferred, not toggled); a glint toward a low sun is physically plausible, so how strong it should be is aesthetic.",
+   "corrected": {
+    "observed": "Toward-sun low views show a white glint on the brooks (218 px >=245, max 250 in the area's box); not caused by STREAM.sky (0 removes 3 of 218 px); cause unestablished, likely direct sun specular at 8F's roughness 0.30 plus bloom",
+    "severity": "S4",
+    "priority": "P4",
+    "category": "probable-problem",
+    "origin": "new-regression"
+   }
+  },
+  {
+   "area": "visual-landscape",
+   "index": 5,
+   "verdict": "CONFIRMED",
+   "method": "code read",
+   "evidence": "app.js:811 GEO.tent ConeGeometry(1.75,2.3,4); app.js:1542-1552 marquee and four tents added unconditionally; nothing hides them by status (marq only at 1544-1545).",
+   "notes": "S4 P4 optional-improvement inherited, as stated."
+  },
+  {
+   "area": "visual-landscape",
+   "index": 6,
+   "verdict": "CONFIRMED",
+   "method": "code and data read, distances computed (KM_PER_MAP 0.031599), crops viewed",
+   "evidence": "appearance.js:1065-1067 notDrawn stAnthony/santon/granary, alternatives open (docs/STAGE8_SPEC.md:4319); Bosenitz [236,69] 0.721 km from the Santon [222,87] (world.js:249, church world.js:152); chapel [291,354] (data.js:778) 0.60 km from Augezd [297,372] (world.js:142).",
+   "notes": "Sources sheet says 'Not drawn' (app.js:8505) but the Santon's/chapel's place dossiers do not (buildingsSection returns null for a landmark, app.js:8180): the dossier line is the cheap remedy. Inherited (Bosenitz church in archive/step5c-45f8f662.html)."
+  },
+  {
+   "area": "visual-landscape",
+   "index": 7,
+   "verdict": "CONFIRMED",
+   "method": "project record read + crops viewed",
+   "evidence": "docs/STAGE8_SPEC.md:4547-4549, 4699-4700 (8H: near crowns still show facets, recorded, not built); crops/santon-1000-200-50.jpg.",
+   "notes": "S4 P4 new-regression (8F shells; 8H near hook did not cure), as stated."
+  },
+  {
+   "area": "visual-maps",
+   "index": 5,
+   "verdict": "CONFIRMED",
+   "method": "CSS and code read + read-backs and crops/caption-rows.jpg re-read",
+   "evidence": "style.css:361-363 (.cap-ph flex 0 1000, .act flex 0 100, min-width 0; separators flex none); fitCaption app.js:7395-7413 gives way only readings/event; visitor-1280x720/next-event-1.json act and phase 0 px, separators 17 px each; d1280/watch-1200.json both readings and event fit-off.",
+   "notes": "Decision 159 met to the letter, purpose lost at 1280 in Watch; every desktop Watch harness case is 1600x900 (tools/visual/cases.js:56-108), so 1280 is unmeasured. S3 P2 inherited."
+  },
+  {
+   "area": "visual-maps",
+   "index": 6,
+   "verdict": "CONFIRMED",
+   "method": "CSS and code read + the area's tap-driven capture viewed",
+   "evidence": "style.css:772, 851 (#eyesbtn display none on phones); tag only in the Command tab (shell.html:87, eyesSync app.js:4352-4363); phone-390x844/eyes-al-route.jpg, rail-probe.json commandView 'al': no indicator on screen.",
+   "notes": "Decisions 225 (a) and 234 (a) (docs/STEP6_SPEC.md:123, 943-947) moved the control but never weighed the lost on-map sign; a remedy should be a non-interactive tag. S3 P2 inherited."
+  },
+  {
+   "area": "visual-maps",
+   "index": 7,
+   "verdict": "CONFIRMED",
+   "method": "shell.html legend and paintLegend read; buildArrow/eventGlyph read",
+   "evidence": "shell.html:219-269, app.js:5579-5608; no row for dashed axis arrows (app.js:3034, phase-0 axis arrows app.js:30-33), 5 event glyph kinds (app.js:3914-3927), objective marker (app.js:3084-3097), place diamond, status/echelon/arm marks, widths by kind (app.js:3032); rule docs/STAGE2_SPEC.md:522, app.js:5577.",
+   "notes": "S3 P3 inherited. Look-alike sentence overlaps visual-maps #14 (not a duplicate)."
+  },
+  {
+   "area": "visual-maps",
+   "index": 8,
+   "verdict": "CONFIRMED",
+   "method": "code read + d1600/land-field.json items",
+   "evidence": "app.js:3040 adds a.label as overlay label; OVERLAYS phase 5 labels 'Caffarelli','Suchet','Bagration' (app.js:67-69); land-field.json: n:suchet and o:Suchet, n:caffarelli and o:Caffarelli, n:bag ('Advance Guard of the Right') and o:Bagration, all plate rgba(10,14,18,0.88).",
+   "notes": "Also two names on screen for one formation (Bagration / Advance Guard of the Right) against decision 205's one-name rule. Restyling/dropping at render is presentation; renaming OVERLAYS is a data task. S3 P3 inherited."
+  },
+  {
+   "area": "visual-maps",
+   "index": 9,
+   "verdict": "CONFIRMED",
+   "method": "code read + 1280/1024 read-backs + capture viewed",
+   "evidence": "selRing a 1 px THREE.Line, accent #EFE4C8 at 0.62 (app.js:3960-3988, tokens.js:30); plateau ring a Line in #E3D9BE (app.js:3946, tokens.js:69); OUTLINE.SEL_LINE 2.2 vs 1.7 px (app.js:2147); d1280/selected-sthilaire.json selected name on the same plate as neighbours.",
+   "notes": "Dossier names the selection; S3 P3 inherited (outline accent is decision 239's)."
+  },
+  {
+   "area": "visual-maps",
+   "index": 10,
+   "verdict": "CONFIRMED",
+   "method": "code read + d1600/d1280 plans-overview.json tabulated",
+   "evidence": "app.js:5157, 5159 overlay and plan labels both mlt-serif, annotation colour, same plate; 1600: 44 drawn (29 plan, 8 overlay), 13 dropped incl. pl:The concealed centre; 1280: 40 drawn (27 plan, 7 overlay), 17 dropped incl. pl:Soult concealed in the Goldbach valley, pl:The second axis, pl:Stare Vinohrady.",
+   "notes": "'About 40 serif labels' is 37 (1600) and 34 (1280); at 1600 one plan label is dropped too (also on 8J's build, docs/STAGE8_SPEC.md:5326-5327). S3 P3 inherited."
+  },
+  {
+   "area": "visual-maps",
+   "index": 11,
+   "verdict": "CONFIRMED",
+   "method": "bounded re-make of counters-pan10 with distances logged (pan-and-stream.js part A) + code read",
+   "evidence": "docs/audit-post8-evidence/verification/v-batch-visual/pan-and-stream.json: Field vantage viewDist 243.67 (2.5% inside 250); 243.67 held in drag frames 0-45 (target y 3.72); at release panEnd->anchor() (app.js:6498, 6481-6482) slides the target along its view ray onto the ground (y 0.04): viewDist 253.6; MLS.bandD holds 243.67 to rest; frame 59 corps/army counters 4->12, others 14->1. wantCorps=dist>250 (app.js:6092-6093). Both present at 0a19964.",
+   "notes": "Cause measured and refined: not the pan's travel but the target re-seat at pan end (+~10 units, picture unchanged). Remedy feasible; it moves owner-held motion counts (decisions 257 (b), 267 (a)), so re-measure on the owner's word. Inherited.",
+   "corrected": {
+    "category": "confirmed-defect"
+   }
+  },
+  {
+   "area": "visual-maps",
+   "index": 12,
+   "verdict": "CONFIRMED",
+   "method": "CSS read + capture viewed",
+   "evidence": "style.css:575-582 (card left 16px width min(420px,...); hidden under an open dossier only when the rail shows); --draw min(360px,90vw); d1024/selected-sthilaire.jpg card to x~456, dossier from ~665: ~209 px strip.",
+   "notes": "Not covered by decision 165 or SW-2. S3 P3 inherited."
+  },
+  {
+   "area": "visual-maps",
+   "index": 13,
+   "verdict": "CONFIRMED",
+   "method": "decision record + read-back",
+   "evidence": "docs/STAGE8_SPEC.md:2509-2513 (decision 255 (a): not fully resolved, (d) a separate prototype); d1280/wall-1200.json 31 items drawn, tops y 41-340, label area 8.51%.",
+   "notes": "Accepted-compromise under 255 (a). Detail: the 16 far plates 7.06-12.39:1, the 3 full plates 12.51-13.09:1."
+  },
+  {
+   "area": "visual-maps",
+   "index": 14,
+   "verdict": "CONFIRMED",
+   "method": "code read + crop of d1600/paper-pratzen.jpg",
+   "evidence": "eventGlyph app.js:3913-3927 (default: ring r38 + vertical shaft + up head on a screen-aligned sprite; capture: ring + full cross); buildObjective app.js:3084-3090 (ring r40 + full cross); no north arrow on the paper map (grep).",
+   "notes": "S4 P3 inherited. Overlaps visual-maps #7's look-alike sentence."
+  },
+  {
+   "area": "visual-maps",
+   "index": 15,
+   "verdict": "CONFIRMED",
+   "method": "decision record + read-backs",
+   "evidence": "docs/STAGE8_SPEC.md:5317-5330 (section 22.4: limit 13 on the owner's word, the Littawa the 13th); t:litava dropped at 1600 and 1280.",
+   "notes": "Accepted-compromise (section 22.4). S4 P4."
+  },
+  {
+   "area": "visual-maps",
+   "index": 16,
+   "verdict": "CONFIRMED",
+   "method": "decision record + crop",
+   "evidence": "Decision 241 (a) 'keep paper-map arrow widths unchanged' (docs/STAGE8_SPEC.md:170-175, 252-255, 1883; app.js:2835).",
+   "notes": "Accepted-compromise under 241 (a). S4 P4."
+  },
+  {
+   "area": "visual-maps",
+   "index": 17,
+   "verdict": "WEAKENED",
+   "method": "data and code read",
+   "evidence": "data.js:692-693 one name on screen 'Litava river' with 'Also Littawa' (decision 205's one-name rule met; docs/step5-evidence/questions.md:12); world.js:1622 'Littawa' an internal planner label; 'Stare Vinohrady', 'Zuran mound' are Czech forms too beside Pratzeberg/Telnitz/Augezd.",
+   "notes": "No single 1805-German convention exists to break; a toponymy convention would be an owner choice and a data task.",
+   "corrected": {
+    "observed": "The map's place names mix German period forms with Czech forms (Stare Vinohrady, Zuran, Litava) under no stated convention; only the records (section 22.4's 'Littawa') differ from the screen name",
+    "severity": "S4",
+    "priority": "P4",
+    "category": "optional-improvement"
+   }
+  }
+ ],
+ "extra_issues": [
+  {
+   "title": "Distance-keyed map-layer levels can flip at rest after any landscape pan: panEnd's anchor() changes viewDist without moving the picture",
+   "severity": "S3",
+   "evidence": "app.js:6498 panEnd -> anchor() app.js:6481-6482 slides the orbit target along its view ray to the drawn ground; measured +9.9 units (243.67 -> 253.6) after a 270 px pan from the Field vantage (docs/audit-post8-evidence/verification/v-batch-visual/pan-and-stream.json). viewDist also keys showBde (dist<165, app.js:6094), so the brigade level can flip the same way.",
+   "notes": "Generalises visual-maps #11 beyond the Field preset; the brigade case is inferred from the code, not measured. Inherited (0a19964)."
+  }
+ ],
+ "not_done": [
+  "visual-landscape #4: stream roughness and bloom not toggled; the glint's cause is inferred, only the STREAM.sky cause refuted",
+  "visual-landscape #2: yaw numbers re-read from the area's read-backs, not re-measured",
+  "visual-maps findings: no captures retaken except #11; read-backs and images re-read, code read at HEAD",
+  "the 1280 Watch caption (visual-maps #5) not run on a pre-Stage 8 build"
+ ]
+}

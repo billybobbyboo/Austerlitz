@@ -9,6 +9,15 @@ NOTES: id -> text appended to the entry's note (verifiers' extra issues folded i
 
 OVERRIDE = {
     # history
+    "CL-HIS-06": {
+        "title": "Four events whose hours the sources dispute are not labelled disputed: three whose own texts say so, and the Pratzen climb, shown as Fact at 08:45-09:15 while the accounts read put it from about 08:00 to about 09:00",
+    },
+    "CL-UX-03": {
+        "title": "Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start",
+    },
+    "CL-SIM-04": {
+        "title": "The overlays' fade draws the outgoing phase's arrows when it should not: with the Movement layer off every phase change flashes them at about 0.87 opacity, and a phase change that interrupts a fade pops them back to 0.9 (stepping through phases quickly flashes each skipped phase's arrows)",
+    },
     "CL-HIS-01": {
         "title": "The face-about event contradicts itself and the sources: its pill says Fact ('Attested in the standard accounts'), its own text calls the order 'this map's reading' because 'no account read gives the order', yet the project's own reading of Schonhals p. 162 gives Kutuzov's order, and Stutterheim pp. 63-64 a competing account of who gave it",
         "remedy": "A data task (analysis.js EVENTS, narrative.js): label the event disputed with both sides, as CLAUDE.md requires where sources disagree (Schonhals p. 162: Kutuzov's order to the 4th Column; Stutterheim pp. 63-64: the Emperor's order to the Russian battalions and an unnamed order to Kollowrath); remove 'no account read gives the order'; re-measure the 09:15 views' drop limits, since the label's words change.",
@@ -97,4 +106,23 @@ NOTES = {
     "CL-REC-03": "Verifier: four more CHANGELOG status heads record merged PRs as drafts or for review (#58, #59, #60, #64).",
     "CL-REC-05": "Verifier: docs/stage6-evidence/second-reading.md still says the human second reading 'stays open for the owner' after decision 189.",
     "CL-ROB-01": "Verifiers (both lenses): reproduced on a local copy only; the live site was compared by a plain GET. S1 kept by the audit's rubric (a real, reachable security exposure); for calibration a conventional score is medium (CVSS 3.1 about 6.1: one click on a crafted link, no session or credentials on the origin, the product stores nothing).",
+}
+
+# the roadmap's work packages (section G): id -> package; every finding in exactly one
+WP = {
+    "WP-00": ["CL-ROB-01", "CL-ROB-06"],
+    "WP-01": ["CL-HIS-01", "CL-HIS-06", "CL-HIS-12", "CL-HIS-14", "CL-HIS-15", "CL-GEO-02", "CL-GEO-06", "CL-GEO-08", "CL-GEO-09", "CL-GEO-10", "CL-SRC-03", "CL-SRC-09"],
+    "WP-02": ["CL-SRC-01", "CL-SRC-02", "CL-SRC-04", "CL-SRC-05", "CL-SRC-06", "CL-SRC-07", "CL-SRC-08"],
+    "WP-03": ["CL-HIS-02", "CL-HIS-03", "CL-HIS-04", "CL-HIS-05", "CL-HIS-07", "CL-HIS-08", "CL-HIS-09", "CL-HIS-10", "CL-HIS-11", "CL-HIS-13", "CL-REC-06", "CL-HIS-16", "CL-HIS-17"],
+    "WP-04": ["CL-GEO-01", "CL-GEO-03", "CL-GEO-04", "CL-GEO-05", "CL-GEO-07"],
+    "WP-05": ["CL-SIM-01", "CL-SIM-02", "CL-SIM-05", "CL-UX-07", "CL-SIM-03", "CL-SIM-04", "CL-SIM-06", "CL-SIM-07", "CL-SIM-08", "CL-UX-14"],
+    "WP-06": ["CL-UX-02", "CL-UX-03", "CL-UX-04", "CL-UX-13", "CL-UX-19", "CL-UX-20"],
+    "WP-07": ["CL-MAP-01", "CL-MAP-02", "CL-MAP-07", "CL-MAP-12", "CL-MAP-14", "CL-MAP-17", "CL-TEST-02", "CL-TEST-14"],
+    "WP-08": ["CL-MAP-03", "CL-MAP-04", "CL-MAP-05", "CL-MAP-06", "CL-MAP-08", "CL-MAP-09", "CL-MAP-10", "CL-MAP-11", "CL-MAP-13", "CL-MAP-15", "CL-MAP-16", "CL-MAP-18", "CL-MAP-19", "CL-MAP-20"],
+    "WP-09": ["CL-UX-01", "CL-UX-05", "CL-UX-06", "CL-UX-08", "CL-UX-09", "CL-UX-10", "CL-UX-11", "CL-UX-12", "CL-UX-15", "CL-UX-16", "CL-UX-17", "CL-UX-18", "CL-REC-05"],
+    "WP-10": ["CL-VIS-01", "CL-VIS-02", "CL-VIS-03", "CL-VIS-04", "CL-VIS-05", "CL-VIS-06", "CL-VIS-07", "CL-VIS-08", "CL-VIS-09"],
+    "WP-11": ["CL-TEST-01", "CL-TEST-03", "CL-TEST-04", "CL-TEST-05", "CL-TEST-06", "CL-TEST-07", "CL-TEST-08", "CL-TEST-09", "CL-TEST-10", "CL-TEST-11", "CL-TEST-12", "CL-TEST-13", "CL-TEST-15", "CL-TEST-16", "CL-TEST-17", "CL-TEST-18", "CL-TEST-19", "CL-TEST-20", "CL-ROB-07"],
+    "WP-12": ["CL-PERF-01", "CL-PERF-02", "CL-PERF-03", "CL-PERF-04", "CL-PERF-05", "CL-PERF-06", "CL-PERF-07", "CL-PERF-08", "CL-PERF-09", "CL-PERF-10", "CL-PERF-11"],
+    "WP-13": ["CL-REC-01", "CL-REC-02", "CL-REC-03", "CL-REC-04", "CL-REC-08", "CL-ROB-03", "CL-ROB-08", "CL-ROB-09"],
+    "WP-14": ["CL-ROB-02", "CL-ROB-04", "CL-ROB-05", "CL-ROB-10", "CL-ROB-11", "CL-ROB-12"],
 }

@@ -190,7 +190,8 @@ SET_ASIDE = [("geography", 10), ("sources-oob", 8)]
 # the auditor's resolution of the verification: tools/audit-post8/resolution.py
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from resolution import OVERRIDE, VERDICT, NOTES
+from resolution import OVERRIDE, VERDICT, NOTES, WP
+WP_OF = {i: w for w, ids in WP.items() for i in ids}
 # the auditor's own checks (read or reproduced personally, independently of the areas and the verifiers): id -> text
 AUDITOR = {
     "CL-HIS-01": "The auditor read analysis.js:292-294: the event 'face-about' carries claim:\"fact\" while its own why says 'That he ordered the column to face about is this map's reading': confirmed.",
@@ -253,9 +254,15 @@ def main():
             lens_txt = "; ".join(c.get("lenses", []))
             e["verify"] = {"verdict": c.get("verdict"), "note": (c.get("note") or "") + ((" [lenses: " + lens_txt + "]") if lens_txt else "")}
         if cid in OVERRIDE:
-            e["override"] = OVERRIDE[cid]
+            e["override"] = dict(OVERRIDE[cid])
+        e.setdefault("override", {})["work_package"] = WP_OF.get(cid, "")
         entries.append(e)
     ids = [e["id"] for e in entries]
+    miss = [i for i in ids if i not in WP_OF]
+    extra = [i for i in WP_OF if i not in ids]
+    dup = [i for w, l in WP.items() for i in l if sum(i in l2 for l2 in WP.values()) > 1]
+    if miss or extra or dup:
+        print("WP problems: missing", miss, "unknown", extra, "in two packages", sorted(set(dup)))
     assert len(ids) == len(set(ids)), "duplicate ids"
     reg = {"groups": GROUPS, "findings": entries, "set_aside": [list(x) for x in SET_ASIDE]}
     json.dump(reg, open(os.path.join(EV, "register.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)

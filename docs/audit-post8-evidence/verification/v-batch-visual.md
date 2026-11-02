@@ -6,7 +6,8 @@ Nothing of the application, data, tests, thresholds, archive or build was change
 Chromium 141 headless shell on SwiftShader (`tools/audit-post8/lib.js`), the harness page; the machine's load was 33-43 (other agents),
 so no timing here means anything. Line numbers are at HEAD (application files identical to `origin/main` 43e3e5b).
 
-Summary: 16 CONFIRMED, 2 WEAKENED (visual-landscape #1, visual-maps #17), PLACEHOLDER_SUMMARY.
+Summary: 17 CONFIRMED, 3 WEAKENED (visual-landscape #1, visual-landscape #4, visual-maps #17), none refuted. Corrections of rating: visual-landscape #4 to
+S4 P4 (its stated cause refuted, its remedy ineffective); visual-maps #11 to confirmed-defect (its cause now measured).
 
 ---
 
@@ -56,7 +57,26 @@ confirmed-defect; origin inherited. Remedy feasible as written (skip without cha
 - Origin: inherited mechanism (houses were drawn before 8G: `git show dddd4e4^:world.js`, `houses.push`), aggravated in degree by 8G's
   plot-scale farmsteads. The castle case is decision 266 (a). Severity S3 P3 kept; the remedy needs an owner decision first, as the finding says.
 
-## visual-landscape #4: streams saturate to white in grazing and low-sun views: PLACEHOLDER_4
+## visual-landscape #4: streams saturate to white in grazing and low-sun views: **Method.** A bounded in-page toggle (`pan-and-stream.js` part B, output `v-batch-visual/pan-and-stream.json`, captures `stream-asbuilt.png`,
+`stream-sky0.png`, `stream-back.png`): the area's own view (`t:990`, Watch, landscape, `aim:{map:[285,289],dir:[-1,0.13,0.18],r:70}`, 1600 x 900, the
+harness page), its region box (1000,350)-(1300,480); the stream material recompiled with `STREAM.sky` 0 (its program cache key changed so that three
+compiles the hook again: 1 material recompiled), then put back; near-white pixels (every channel >= 245) counted in each frame.
+
+- Code: `STREAM.sky` 2.0 (`world.js:1409`) is baked into the fragment source by `streamHook` (`world.js:1446`: `radiance*=1.0+2.0*sG*sG*sG`), and
+  `radiance` there is the environment's specular radiance only (it is multiplied after `lights_fragment_maps`, before the indirect specular), not
+  the sun's direct light.
+- Numbers: as built **218** px >= 245 (max channel 250) of 39,000; with `STREAM.sky` 0 **215** px (max 250); restored 218. The two captures are
+  indistinguishable: the white streak along the brook toward Augezd is there in both. **The grazing term is not the cause.**
+- The view looks west (`dir` x -1) at 16:30, toward the low sun; the other cases the area names are toward-sun views too (east at 09:00, 15:00 by
+  the castle). What 8F did change: the streams' roughness 0.48 to **0.30** and their environment weight 0.18 to **0.40** (`git show
+  94d6e46:world.js` line 1225 against `world.js:1474`, `STREAM.rough`, `STREAM.env`). The likely cause is the sun's direct specular glint on the
+  sharper 8F surface, clipped by the bloom: an inference; roughness and bloom were not toggled.
+
+**Corrected statement.** In views toward a low sun the brooks show a white glint (218 px at >= 245 in the area's box of v-low-1630, max 250, not
+255 in this frame). It is not caused by `STREAM.sky` (setting it to 0 removes 3 of 218 px), so the remedy as written (lower `STREAM.sky`) would not
+cure it; a sun glint on still water toward a low sun is physically plausible, and whether it is too strong is an aesthetic call. If wanted, the
+candidates are the stream's roughness (8F's 0.30) or a clamp of its specular, measured across the low views. Rating S4 **P4** (was P3),
+probable-problem, origin new-regression (8F's material), cause unestablished beyond the refutation.
 
 ## visual-landscape #5: the headquarters drawn as a pitched camp at every status: CONFIRMED
 
@@ -150,7 +170,26 @@ shows its facets as large planes ... recorded, not built"); crops viewed (the sh
   the Goldbach valley`, `pl:The second axis`, `pl:Stare Vinohrady`. As stated, but "about 40 serif labels" is 37 (1600) and 34 (1280), and at 1600
   one plan label is dropped too (`pl:The concealed centre`, also dropped on 8J's build: `docs/STAGE8_SPEC.md:5326-5327`). S3 P3, inherited.
 
-## visual-maps #11 (V-M12): the Field vantage sits 3% inside the corps threshold: PLACEHOLDER_V12
+## visual-maps #11 (V-M12): the Field vantage sits 3% inside the corps threshold: **Method.** A bounded re-make of the area's clip with the distances logged (`pan-and-stream.js` part A, output `v-batch-visual/pan-and-stream.json`):
+the harness page at 1600 x 900, Landscape with counters, Study, 09:30, the Field vantage's camera (`VANTAGE.field`, `app.js:6334`), a left-button
+drag of 6 px a frame for 45 frames then 15 at rest, through the motion driver (`tools/visual/motion.js`); each frame `viewDist()`, `MLS.bandD`,
+the orbit target and the counters drawn. Code read: `app.js:6092-6093` (`dist=mlBand(viewDist())`, `wantCorps=dist>250`), `app.js:6481-6482`
+(`anchor`), `app.js:6498` (`panEnd` calls `anchor`).
+
+- The Field vantage measures **243.67** units here (the area's 242.8: 2.5% inside 250, not 3%).
+- During the drag the distance does **not** change: 243.67 in frames 0-45 (the pan moves eye and target together on the grab's plane; the target's
+  y stays 3.72). At release (frame 46) `panEnd` calls `anchor()`, which slides the target along its own view ray onto the drawn ground (y 3.72 to
+  0.04): the picture does not move, but the eye-target distance becomes **253.6**, past 250. `MLS.bandD` holds 243.67 until rest; at frame 59 the
+  band is released and the level flips: corps and army counters drawn 4 to **12** (8 corps counters added: c_cav, c_gd, c_i, c_iv, c_v, col4,
+  constantine, buxhowden), other counters 14 to **1**. The area's swap (8 corps in, the divisions out, at its frame 59) is reproduced frame for frame.
+- Origin: `wantCorps = dist>250` and `panEnd`'s `anchor()` both present at `0a19964` (step 4; `git log -S`); 8C's band (decision 240 (a)) only defers
+  the flip to rest. Inherited.
+
+**Judgement.** CONFIRMED, with the cause now measured and refined: not the pan's travel but the target's re-seat onto lower ground at the pan's end,
+which adds about 10 units to the distance without moving the picture; any pan from the Field vantage that ends where the ground under the centre
+lies about 3 units or more below the preset's target can flip the level. Category probable-problem to **confirmed-defect**; S3 P3 kept. The remedy
+(hysteresis on `wantCorps`, or the preset moved clear of 250) is feasible; keying the level on a distance the re-seat does not change is a third
+option; any of them would move the motion block's counts, which are owner-held (decision 257 (b), 267 (a)): to be re-measured on the owner's word.
 
 ## visual-maps #12 (V-M13): between 720 and 1079 px a selection leaves a 209 px strip: CONFIRMED
 
@@ -202,8 +241,16 @@ differ from the screen's name. S4 P4, optional-improvement.
 
 ---
 
+## Extra issue
+
+**The map layer's distance-keyed levels can flip at rest after any landscape pan** (S3; inherited, `0a19964`). `panEnd` (`app.js:6498`) calls
+`anchor()` (`app.js:6481-6482`), which slides the orbit target along its own view ray onto the drawn ground: the picture does not move, but `viewDist()`
+changes (measured +9.9 units, 243.67 to 253.6, after the 270 px pan above). `viewDist` keys `wantCorps` (>250) and `showBde` (<165, `app.js:6094`),
+so the brigade level can flip the same way (inferred from the code, not measured). This generalises visual-maps #11 beyond the Field preset.
+
 ## What was not checked
 
+- Visual-landscape #4: the stream's roughness and the bloom were not toggled, so the glint's cause is inferred; only the sky term is refuted.
 - Visual-landscape #2's yaw numbers were re-read from the area's read-backs, not re-measured in a page; the mechanism was established from code.
 - No capture was retaken for the visual-maps findings: their read-backs and images were re-read and the code behind each was read at HEAD.
 - Origins were checked by `git log -S`/`git show` and the archived builds where named; the 1280 Watch caption on a pre-Stage 8 build was not run.
