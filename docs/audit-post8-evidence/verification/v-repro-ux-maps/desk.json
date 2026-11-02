@@ -1447,6 +1447,12 @@
      "text": "Austerlitz"
     }
    ]
+  },
+  {
+   "what": "FAILED",
+   "err": "page.evaluate: Target page, context or browser has been closed\n    at settle (/home/user/Austerlitz/tools/audit-post8/verification/v-repro-ux-maps/desk.js:37:41)\n    at /home/user/Austerlitz/tools/audit-post8/verification/v-repro-ux-maps/desk.js:96:69"
   }
- ]
+ ],
+ "errors": [],
+ "seconds": 1800
 }

@@ -1,0 +1,1213 @@
+{
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "viewport": [
+  1600,
+  900
+ ],
+ "pan": {
+  "what": "counters-pan10 re-made with distances logged",
+  "frames": [
+   {
+    "frame": 0,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -33,
+     3.72,
+     -2
+    ],
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 18,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 1,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -33.79,
+     3.72,
+     -2.81
+    ],
+    "eye": [
+     -195.79,
+     94.11,
+     155.19
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 18,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 2,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -34.58,
+     3.72,
+     -3.62
+    ],
+    "eye": [
+     -196.58,
+     94.11,
+     154.38
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 18,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 3,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -35.37,
+     3.72,
+     -4.43
+    ],
+    "eye": [
+     -197.37,
+     94.11,
+     153.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 18,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 4,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -36.16,
+     3.72,
+     -5.24
+    ],
+    "eye": [
+     -198.16,
+     94.11,
+     152.76
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 18,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 5,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -36.95,
+     3.72,
+     -6.05
+    ],
+    "eye": [
+     -198.95,
+     94.11,
+     151.95
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 18,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 6,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -37.74,
+     3.72,
+     -6.86
+    ],
+    "eye": [
+     -199.74,
+     94.11,
+     151.14
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 7,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -38.53,
+     3.72,
+     -7.67
+    ],
+    "eye": [
+     -200.53,
+     94.11,
+     150.33
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 8,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -39.32,
+     3.72,
+     -8.48
+    ],
+    "eye": [
+     -201.32,
+     94.11,
+     149.52
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 9,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -40.11,
+     3.72,
+     -9.29
+    ],
+    "eye": [
+     -202.11,
+     94.11,
+     148.71
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 10,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -40.9,
+     3.72,
+     -10.1
+    ],
+    "eye": [
+     -202.9,
+     94.11,
+     147.9
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 11,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -41.69,
+     3.72,
+     -10.91
+    ],
+    "eye": [
+     -203.69,
+     94.11,
+     147.09
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 12,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -42.48,
+     3.72,
+     -11.72
+    ],
+    "eye": [
+     -204.48,
+     94.11,
+     146.28
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 13,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -43.26,
+     3.72,
+     -12.52
+    ],
+    "eye": [
+     -205.26,
+     94.11,
+     145.48
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 14,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -44.05,
+     3.72,
+     -13.33
+    ],
+    "eye": [
+     -206.05,
+     94.11,
+     144.67
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 15,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -44.84,
+     3.72,
+     -14.14
+    ],
+    "eye": [
+     -206.84,
+     94.11,
+     143.86
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 16,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -45.63,
+     3.72,
+     -14.95
+    ],
+    "eye": [
+     -207.63,
+     94.11,
+     143.05
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 17,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -46.42,
+     3.72,
+     -15.76
+    ],
+    "eye": [
+     -208.42,
+     94.11,
+     142.24
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 18,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -47.21,
+     3.72,
+     -16.57
+    ],
+    "eye": [
+     -209.21,
+     94.11,
+     141.43
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 19,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -48,
+     3.72,
+     -17.38
+    ],
+    "eye": [
+     -210,
+     94.11,
+     140.62
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 20,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -48.79,
+     3.72,
+     -18.19
+    ],
+    "eye": [
+     -210.79,
+     94.11,
+     139.81
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 21,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -49.58,
+     3.72,
+     -19
+    ],
+    "eye": [
+     -211.58,
+     94.11,
+     139
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 22,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -50.37,
+     3.72,
+     -19.81
+    ],
+    "eye": [
+     -212.37,
+     94.11,
+     138.19
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 23,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -51.16,
+     3.72,
+     -20.62
+    ],
+    "eye": [
+     -213.16,
+     94.11,
+     137.38
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 17,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 24,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -51.95,
+     3.72,
+     -21.43
+    ],
+    "eye": [
+     -213.95,
+     94.11,
+     136.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 16,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 25,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -52.74,
+     3.72,
+     -22.24
+    ],
+    "eye": [
+     -214.74,
+     94.11,
+     135.76
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 16,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 26,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -53.53,
+     3.72,
+     -23.05
+    ],
+    "eye": [
+     -215.53,
+     94.11,
+     134.95
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 16,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 27,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -54.32,
+     3.72,
+     -23.86
+    ],
+    "eye": [
+     -216.32,
+     94.11,
+     134.14
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 15,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 28,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -55.11,
+     3.72,
+     -24.67
+    ],
+    "eye": [
+     -217.11,
+     94.11,
+     133.33
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 15,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 29,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -55.9,
+     3.72,
+     -25.48
+    ],
+    "eye": [
+     -217.9,
+     94.11,
+     132.52
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 15,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 30,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -56.69,
+     3.72,
+     -26.29
+    ],
+    "eye": [
+     -218.69,
+     94.11,
+     131.71
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 16,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 31,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -57.48,
+     3.72,
+     -27.1
+    ],
+    "eye": [
+     -219.48,
+     94.11,
+     130.9
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 16,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 32,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -58.27,
+     3.72,
+     -27.91
+    ],
+    "eye": [
+     -220.27,
+     94.11,
+     130.09
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 16,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 33,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -59.06,
+     3.72,
+     -28.72
+    ],
+    "eye": [
+     -221.06,
+     94.11,
+     129.28
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 15,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 34,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -59.85,
+     3.72,
+     -29.53
+    ],
+    "eye": [
+     -221.85,
+     94.11,
+     128.47
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 15,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 35,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -60.64,
+     3.72,
+     -30.34
+    ],
+    "eye": [
+     -222.64,
+     94.11,
+     127.66
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 15,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 36,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -61.43,
+     3.72,
+     -31.15
+    ],
+    "eye": [
+     -223.43,
+     94.11,
+     126.85
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 15,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 37,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -62.22,
+     3.72,
+     -31.95
+    ],
+    "eye": [
+     -224.22,
+     94.11,
+     126.05
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 15,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 38,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -63,
+     3.72,
+     -32.76
+    ],
+    "eye": [
+     -225,
+     94.11,
+     125.24
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 39,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -63.79,
+     3.72,
+     -33.57
+    ],
+    "eye": [
+     -225.79,
+     94.11,
+     124.43
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 40,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -64.58,
+     3.72,
+     -34.38
+    ],
+    "eye": [
+     -226.58,
+     94.11,
+     123.62
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 13,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 41,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -65.37,
+     3.72,
+     -35.19
+    ],
+    "eye": [
+     -227.37,
+     94.11,
+     122.81
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 13,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 42,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -66.16,
+     3.72,
+     -36
+    ],
+    "eye": [
+     -228.16,
+     94.11,
+     122
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 12,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 43,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -66.95,
+     3.72,
+     -36.81
+    ],
+    "eye": [
+     -228.95,
+     94.11,
+     121.19
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 12,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 44,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -67.74,
+     3.72,
+     -37.62
+    ],
+    "eye": [
+     -229.74,
+     94.11,
+     120.38
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 12,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 45,
+    "viewDist": 243.67,
+    "bandD": 243.67,
+    "target": [
+     -68.53,
+     3.72,
+     -38.43
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 12,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 46,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 12,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 47,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 12,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 48,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 12,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 49,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 12,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 50,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 51,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 52,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 53,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 54,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 55,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 56,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 57,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 58,
+    "viewDist": 253.6,
+    "bandD": 243.67,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 4,
+    "nonCorpsCountersOn": 14,
+    "corps": "ahq,bag,gqg,lich"
+   },
+   {
+    "frame": 59,
+    "viewDist": 253.6,
+    "bandD": null,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 12,
+    "nonCorpsCountersOn": 1,
+    "corps": "ahq,bag,buxhowden,c_cav,c_gd,c_i,c_iv,c_v,col4,constantine,gqg,lich"
+   },
+   {
+    "frame": 60,
+    "viewDist": 253.6,
+    "bandD": null,
+    "target": [
+     -61.93,
+     0.04,
+     -44.87
+    ],
+    "eye": [
+     -230.53,
+     94.11,
+     119.57
+    ],
+    "corpsOn": 12,
+    "nonCorpsCountersOn": 1,
+    "corps": "ahq,bag,buxhowden,c_cav,c_gd,c_i,c_iv,c_v,col4,constantine,gqg,lich"
+   }
+  ],
+  "first": {
+   "frame": 0,
+   "viewDist": 243.67,
+   "bandD": 243.67,
+   "target": [
+    -33,
+    3.72,
+    -2
+   ],
+   "eye": [
+    -195,
+    94.11,
+    156
+   ],
+   "corpsOn": 4,
+   "nonCorpsCountersOn": 18,
+   "corps": "ahq,bag,gqg,lich"
+  },
+  "lastMoving": {
+   "frame": 45,
+   "viewDist": 243.67,
+   "bandD": 243.67,
+   "target": [
+    -68.53,
+    3.72,
+    -38.43
+   ],
+   "eye": [
+    -230.53,
+    94.11,
+    119.57
+   ],
+   "corpsOn": 4,
+   "nonCorpsCountersOn": 12,
+   "corps": "ahq,bag,gqg,lich"
+  },
+  "atRest": {
+   "frame": 60,
+   "viewDist": 253.6,
+   "bandD": null,
+   "target": [
+    -61.93,
+    0.04,
+    -44.87
+   ],
+   "eye": [
+    -230.53,
+    94.11,
+    119.57
+   ],
+   "corpsOn": 12,
+   "nonCorpsCountersOn": 1,
+   "corps": "ahq,bag,buxhowden,c_cav,c_gd,c_i,c_iv,c_v,col4,constantine,gqg,lich"
+  },
+  "swapFrame": 0,
+  "maxViewDist": 253.6,
+  "minViewDist": 243.67
+ },
+ "stream": {
+  "spec": {
+   "viewport": [
+    1600,
+    900
+   ],
+   "t": 990,
+   "presentation": "watch",
+   "mode": "terrain",
+   "aim": {
+    "map": [
+     285,
+     289
+    ],
+    "dir": [
+     -1,
+     0.13,
+     0.18
+    ],
+    "r": 70
+   }
+  },
+  "region": [
+   1000,
+   350,
+   300,
+   130
+  ],
+  "streamMaterialsRecompiled": 1,
+  "asBuilt": {
+   "ge245": 218,
+   "max": 250,
+   "px": 39000
+  },
+  "sky0": {
+   "ge245": 215,
+   "max": 250,
+   "px": 39000
+  },
+  "restored": {
+   "ge245": 218,
+   "max": 250,
+   "px": 39000
+  }
+ },
+ "errors": []
+}
