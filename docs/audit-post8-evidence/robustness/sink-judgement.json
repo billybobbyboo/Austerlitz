@@ -1,0 +1,708 @@
+{
+ "generated": "2026-11-02",
+ "what": "each HTML sink of static-scan.json judged for reachability by input from outside the bundle",
+ "externalSourcesInTheProduct": [
+  "app.js:9 location.search tested by /[?&]harness=1\\b/ (a boolean)",
+  "app.js:3824 location.search tested by /[?&]stats\\b/ (a boolean)",
+  "app.js:573 and shell.html:432 location.reload()"
+ ],
+ "noneFound": "no storage, cookie, window.name, referrer, hash, history.state, postMessage or message listener, input or textarea, contenteditable, clipboard, drag and drop, file, fetch, XMLHttpRequest, WebSocket, worker, import() or window.open in app.js, world.js, symbols.js or shell.html (grep, 2026-11-02); world.js:976 and 1014 load images from the embedded ASSETS data: URIs",
+ "datasetMarkupChars": "no double quote, '<' or '&' in any string of data.js, analysis.js, appearance.js, geo.js, nor in LABELS; narrative.js's 38 strings with a double quote are statement refs (track[\"3\"]), placed by claimTag in a single-quoted data-ref attribute (app.js:8117-8118); dataset-chars.json",
+ "verdict": "no sink can receive input from outside the bundle: 0 reachable of 57 (13 clears, 13 wholly escaped or literal, 31 with non-escaped parts that are bundle constants, numbers or markup built from escaped bundle strings)",
+ "sinks": [
+  {
+   "at": "app.js:572",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:575",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:2463",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:2496",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "P.ground.field",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    },
+    {
+     "part": "DT.W",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    },
+    {
+     "part": "DT.H",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    },
+    {
+     "part": "ink",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    },
+    {
+     "part": "name",
+     "inAttr": true,
+     "judged": "esc(f.name) in a double-quoted attribute (esc leaves quotes; no name holds one: dataset-chars.json)"
+    },
+    {
+     "part": "M.bar.km",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    },
+    {
+     "part": "g",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "leaf?'Plotted positions (filled A, ring B, small ring C; a tick: an ex",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:2568",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "DISPLAY.settings.map(function(x){\n    return '<button class=\"t exag-bt",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4217",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4223",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "feats",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4241",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4255",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "h",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4354",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "iconSVG(TOKENS.sym.layer.derived)",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4433",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4440",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "h",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4613",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:4617",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "sides.map(function(sd){\n    var P=PLANS[sd];\n    return '<div class=\"p",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:5026",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:5077",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "html",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:5557",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "svg",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:6743",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "html",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:6909",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "html",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:6943",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7159",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "TOKENS.sym.going.map(function(g){\n    var lab=g.label+(GT[g.key]!==und",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7168",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "sw(\"side-fr\")",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "K[\"side-fr\"].word",
+     "inAttr": false,
+     "judged": "a colour, number or token from the bundle"
+    },
+    {
+     "part": "sw(\"side-al\")",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "K[\"side-al\"].word",
+     "inAttr": false,
+     "judged": "a colour, number or token from the bundle"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7268",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7278",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "NATION[f.nation].fill",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    },
+    {
+     "part": "aggStrength(id)?aggStrength(id).toLocaleString(\"en-GB\"):\"\u2014\"",
+     "inAttr": false,
+     "judged": "a number formatted"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7287",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "cf.strength?cf.strength.toLocaleString(\"en-GB\"):\"\u2014\"",
+     "inAttr": false,
+     "judged": "a number formatted"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7295",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "gf.strength?gf.strength.toLocaleString(\"en-GB\"):\"\u2014\"",
+     "inAttr": false,
+     "judged": "a number formatted"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7379",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "c",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7380",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "der",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "cutH",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "top?'<span class=\"ev\">'+esc(top.n+evNote(top))+'</span>':''",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7481",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7493",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7497",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7507",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "html",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7508",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7546",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7657",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7660",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "items.map(function(it){\n      return '<li><i style=\"background:'+NATIO",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7672",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7743",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7744",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7759",
+   "kind": "innerHTML",
+   "class": "clear (empty string)",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7798",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "nat.fill",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:7940",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "nat.fill",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8036",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8131",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "layer?' <span class=\"ltag '+layer+'\">'+iconSVG(TOKENS.sym.layer[layer]",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "isDl?'<dl class=\"kvs\">'+html+'</dl>':html",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8206",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8222",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "ft.why.map(function(x,i){return '<li>'+esc(x)+claimTag(\"FEATURES[#\"+ft",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8228",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "claimTag(\"FEATURES[#\"+ft.id+\"].story\")",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8235",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8294",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "col",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8305",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "claimTag(\"EVENTS[#\"+e.id+\"].why\")",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8308",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "claimTag(\"EVENTS[#\"+e.id+\"].dispute\")",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8311",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8325",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8347",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "col",
+     "inAttr": true,
+     "judged": "a colour, number or token from the bundle"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8360",
+   "kind": "innerHTML",
+   "class": "every interpolated part escaped by esc() or literal",
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8376",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "geoText(\"{CONTOUR_M}\")",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  },
+  {
+   "at": "app.js:8679",
+   "kind": "innerHTML",
+   "class": "non-escaped parts, all from the bundle",
+   "parts": [
+    {
+     "part": "refs?dossierClaims(refs):''",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "SOURCE_NOTE.body.map(function(p){return '<p>'+esc(geoText(p))+'</p>';}",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "SOURCE_NOTE.layers.map(function(l){\n      return '<div class=\"kv\"><dt>",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join(",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "derivedArrivals().map(function(r){ var f=FORMATIONS[r.id];\n      retur",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join(''",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "troopNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join(''",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "standardNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "artilleryNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).joi",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "gaitNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "buildingNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOUR",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "claimsIndex()",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    },
+    {
+     "part": "lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join(''",
+     "inAttr": false,
+     "judged": "markup built in the same function from esc()-escaped bundle strings and numbers"
+    }
+   ],
+   "externalInput": false
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "started": "2026-11-02T10:54:01.429Z",
+ "build": {
+  "len": 2847647,
+  "title": "Austerlitz — command map, 2 December 1805"
+ },
+ "steps": {
+  "f1_opening_step2": {
+   "on": true,
+   "k": 1,
+   "stop": 5,
+   "clock": 525,
+   "legrand": [
+    1532,
+    822,
+    0.975
+   ],
+   "prz": [
+    1506,
+    810,
+    0.976
+   ],
+   "castle": [
+    1540,
+    823,
+    0.975
+   ],
+   "vp": [
+    1600,
+    900
+   ],
+   "overlap": {
+    "clock": 525,
+    "figs": [
+     174,
+     207
+    ],
+    "aInsideB": 127,
+    "bInsideA": 149,
+    "minFigGap_m": 2.2
+   },
+   "castleFigs": {
+    "figs": 174,
+    "insideCastleOrFarm": 3,
+    "parts": [
+     "castle north range",
+     "castle south range",
+     "castle west range",
+     "castle east range",
+     "farm north range",
+     "farm west range",
+     "farm south range"
+    ]
+   },
+   "visible": {
+    "legrand": true,
+    "prz": true
+   }
+  },
+  "after_escape": {
+   "opening": false,
+   "clock": 240
+  },
+  "f1_524": {
+   "clock": 524,
+   "overlap": {
+    "clock": 524,
+    "figs": [
+     174,
+     213
+    ],
+    "aInsideB": 147,
+    "bInsideA": 127,
+    "minFigGap_m": 3.4
+   },
+   "castleFigs": {
+    "figs": 174,
+    "insideCastleOrFarm": 2,
+    "parts": [
+     "castle north range",
+     "castle south range",
+     "castle west range",
+     "castle east range",
+     "farm north range",
+     "farm west range",
+     "farm south range"
+    ]
+   },
+   "sts": [
+    "engaged",
+    "attacking"
+   ]
+  }
+ },
+ "finished": "2026-11-02T11:09:30.576Z",
+ "error": "page.screenshot: Timeout 180000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\n    at Object.jpeg (/home/user/Austerlitz/tools/stage8/lib.js:13:133)\n    at /home/user/Austerlitz/tools/audit-post8/verification/v-repro-his/browser.js:65:27"
+}

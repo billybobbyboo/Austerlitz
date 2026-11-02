@@ -145,7 +145,367 @@
      }
     },
     "log": 0
-   }
+   },
+   "modeSeen": "staff,terrain,staff,terrain,staff,terrain,staff,terrain,staff,terrain",
+   "afterPaper": {
+    "label": "after 10 paper map/landscape switches",
+    "t": "2026-11-02T10:49:41.088Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 449,
+     "Nodes": 2034,
+     "LayoutCount": 297,
+     "RecalcStyleCount": 433,
+     "LayoutDuration": 0.083,
+     "RecalcStyleDuration": 0.201,
+     "ScriptDuration": 58.353,
+     "TaskDuration": 60.822,
+     "JSHeapUsedSize": 17229964,
+     "JSHeapTotalSize": 18165760,
+     "heapUsed": 17229964,
+     "backingStorage": 89517057,
+     "embedderHeap": 3260624
+    },
+    "page": {
+     "geometries": 414,
+     "textures": 34,
+     "programs": 42,
+     "calls": 726,
+     "triangles": 2096877,
+     "frames": 86,
+     "skipped": 5,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 510,
+      "listeners": 402,
+      "max": 1
+     },
+     "tex": {
+      "n": 47,
+      "listeners": 20,
+      "max": 1
+     },
+     "mat": {
+      "n": 999,
+      "listeners": 674,
+      "max": 1
+     },
+     "dom": 1057,
+     "mlItems": 45,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 103000000,
+     "counts": {
+      "raf": 84,
+      "rafCb": 83,
+      "to": 0,
+      "toCb": 0,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {},
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   },
+   "dossiers": {
+    "ok": 29,
+    "of": 30,
+    "list": [
+     {
+      "i": 0,
+      "id": "gqg",
+      "selected": "t:santon",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 1,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 2,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 3,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 4,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 5,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 6,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 7,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 8,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 9,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 10,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 11,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 12,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 13,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 14,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 15,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 16,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 17,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 18,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 19,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 20,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 21,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 22,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 23,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 24,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 25,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 26,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 27,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 28,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 29,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     }
+    ]
+   },
+   "afterDossiers": {
+    "label": "after 30 dossiers opened and closed",
+    "t": "2026-11-02T11:12:03.236Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 449,
+     "Nodes": 2031,
+     "LayoutCount": 475,
+     "RecalcStyleCount": 716,
+     "LayoutDuration": 0.191,
+     "RecalcStyleDuration": 0.298,
+     "ScriptDuration": 61.563,
+     "TaskDuration": 69.21,
+     "JSHeapUsedSize": 17598436,
+     "JSHeapTotalSize": 18690048,
+     "heapUsed": 17598436,
+     "backingStorage": 89538077,
+     "embedderHeap": 3337416
+    },
+    "page": {
+     "geometries": 415,
+     "textures": 34,
+     "programs": 42,
+     "calls": 724,
+     "triangles": 1949789,
+     "frames": 155,
+     "skipped": 5,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 510,
+      "listeners": 403,
+      "max": 1
+     },
+     "tex": {
+      "n": 47,
+      "listeners": 20,
+      "max": 1
+     },
+     "mat": {
+      "n": 999,
+      "listeners": 675,
+      "max": 1
+     },
+     "dom": 1054,
+     "mlItems": 45,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 109000000,
+     "counts": {
+      "raf": 153,
+      "rafCb": 152,
+      "to": 30,
+      "toCb": 30,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {
+       "anon@360": 30
+      },
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   },
+   "errors": 0
   }
  },
  "firstRunAtLoad": true,

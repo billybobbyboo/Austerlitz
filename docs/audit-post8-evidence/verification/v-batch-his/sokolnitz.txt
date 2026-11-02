@@ -1,0 +1,28 @@
+08:00 nearest fr legrand 0.07 | nearest al prz 0.79 | legrand 0.07 friant 3.19 lang 0.98
+08:15 nearest fr legrand 0.21 | nearest al prz 0.79 | legrand 0.21 friant 2.87 lang 1.03
+08:30 nearest fr legrand 0.45 | nearest al prz 0.79 | legrand 0.45 friant 2.55 lang 1.09
+08:45 nearest fr legrand 0.70 | nearest al prz 0.79 | legrand 0.70 friant 2.24 lang 1.14
+09:00 nearest fr legrand 0.95 | nearest al prz 0.79 | legrand 0.95 friant 1.92 lang 1.20
+09:15 nearest fr legrand 1.19 | nearest al prz 0.79 | legrand 1.19 friant 1.53 lang 1.25
+09:30 nearest fr friant 1.21 | nearest al prz 0.79 | legrand 1.44 friant 1.21 lang 1.31
+09:45 nearest fr friant 1.18 | nearest al prz 0.79 | legrand 1.44 friant 1.18 lang 1.37
+10:00 nearest fr friant 1.14 | nearest al prz 0.79 | legrand 1.44 friant 1.14 lang 1.42
+10:15 nearest fr friant 1.11 | nearest al prz 0.79 | legrand 1.44 friant 1.11 lang 1.48
+10:30 nearest fr friant 1.07 | nearest al prz 0.79 | legrand 1.44 friant 1.07 lang 1.54
+10:45 nearest fr friant 1.04 | nearest al prz 0.79 | legrand 1.44 friant 1.04 lang 1.45
+11:00 nearest fr friant 1.01 | nearest al prz 0.79 | legrand 1.44 friant 1.01 lang 1.37
+11:15 nearest fr friant 0.98 | nearest al prz 0.79 | legrand 1.44 friant 0.98 lang 1.29
+11:30 nearest fr friant 0.95 | nearest al prz 0.79 | legrand 1.44 friant 0.95 lang 1.21
+11:45 nearest fr friant 0.92 | nearest al prz 0.79 | legrand 1.44 friant 0.92 lang 1.13
+12:00 nearest fr friant 0.89 | nearest al prz 0.79 | legrand 1.44 friant 0.89 lang 1.05
+12:15 nearest fr friant 0.86 | nearest al prz 0.79 | legrand 1.44 friant 0.86 lang 0.97
+12:30 nearest fr friant 0.83 | nearest al prz 0.79 | legrand 1.44 friant 0.83 lang 0.90
+12:45 nearest fr friant 0.80 | nearest al prz 0.79 | legrand 1.44 friant 0.80 lang 0.83
+13:00 nearest fr friant 0.88 | nearest al prz 0.79 | legrand 1.44 friant 0.88 lang 0.89
+13:15 nearest fr friant 0.97 | nearest al prz 0.79 | legrand 1.17 friant 0.97 lang 0.97
+13:30 nearest fr legrand 0.70 | nearest al prz 0.79 | legrand 0.70 friant 1.06 lang 1.06
+13:45 nearest fr legrand 0.23 | nearest al prz 0.79 | legrand 0.23 friant 1.15 lang 1.16
+14:00 nearest fr legrand 0.25 | nearest al prz 0.79 | legrand 0.25 friant 1.25 lang 1.26
+lang@2 [235,350] to village km 0.976 brook x at its y 220.70 east of the brook by km 0.452 cf A
+friant min distance to village all day: 0.80 km at 12:45
+legrand anchors ["0:[208,312]","1:[211,379]","2:[206,366]","4:[220,321]","7:[213,371]","8:[217,387]","9:[228,393]"]

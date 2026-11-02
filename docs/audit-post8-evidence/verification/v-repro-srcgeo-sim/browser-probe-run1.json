@@ -1,0 +1,598 @@
+{
+ "started": "2026-11-02T10:57:58.956Z",
+ "steps": [
+  {
+   "k": "boot",
+   "v": {
+    "ms": 109696
+   }
+  },
+  {
+   "k": "after Esc",
+   "v": {
+    "card": false,
+    "clock": "04:00",
+    "freeCam": false
+   }
+  },
+  {
+   "k": "free-rect centre",
+   "v": [
+    788,
+    336
+   ]
+  },
+  {
+   "k": "destinations (each vantage's glide run to its end, no input)",
+   "v": {
+    "zuran": {
+     "pos": [
+      -83,
+      25.078,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.558,
+      -5
+     ],
+     "freeCam": false,
+     "camSlot": false,
+     "tween": false,
+     "vantage": "zuran",
+     "moves": 0,
+     "vnow": 114980,
+     "clock": "04:00"
+    },
+    "plateau": {
+     "pos": [
+      23,
+      27.126,
+      55
+     ],
+     "tgt": [
+      -31,
+      9.079,
+      -13
+     ],
+     "freeCam": false,
+     "camSlot": false,
+     "tween": false,
+     "vantage": "plateau",
+     "moves": 0,
+     "vnow": 117980,
+     "clock": "04:00"
+    },
+    "allied": {
+     "pos": [
+      135,
+      45.306,
+      -22
+     ],
+     "tgt": [
+      -25,
+      2.49,
+      12
+     ],
+     "freeCam": false,
+     "camSlot": false,
+     "tween": false,
+     "vantage": "allied",
+     "moves": 0,
+     "vnow": 120980,
+     "clock": "04:00"
+    }
+   }
+  },
+  {
+   "k": "control: a drag with no glide running",
+   "v": {
+    "before": {
+     "pos": [
+      -195,
+      94.109,
+      156
+     ],
+     "tgt": [
+      -33,
+      3.725,
+      -2
+     ],
+     "freeCam": false,
+     "camSlot": false,
+     "tween": false,
+     "vantage": "field",
+     "moves": 0,
+     "vnow": 123980,
+     "clock": "04:00"
+    },
+    "rel": {
+     "pos": [
+      -197.042,
+      94.109,
+      106.01
+     ],
+     "tgt": [
+      -28.674,
+      0.172,
+      -58.2
+     ],
+     "freeCam": true,
+     "camSlot": false,
+     "tween": false,
+     "vantage": null,
+     "moves": 6,
+     "vnow": 124180,
+     "clock": "04:00"
+    },
+    "end": {
+     "pos": [
+      -197.042,
+      94.109,
+      106.01
+     ],
+     "tgt": [
+      -28.674,
+      0.172,
+      -58.2
+     ],
+     "freeCam": true,
+     "camSlot": false,
+     "tween": false,
+     "vantage": null,
+     "moves": 6,
+     "vnow": 127180,
+     "clock": "04:00"
+    },
+    "movedByDrag": 106.51,
+    "movedAfterRelease": 0
+   }
+  },
+  {
+   "k": "case zuran+drag",
+   "v": {
+    "start": {
+     "pos": [
+      -195,
+      94.109,
+      156
+     ],
+     "tgt": [
+      -33,
+      3.725,
+      -2
+     ],
+     "freeCam": false,
+     "camSlot": false,
+     "tween": false,
+     "vantage": "field",
+     "moves": 6,
+     "vnow": 130180,
+     "clock": "04:00"
+    },
+    "mid": {
+     "pos": [
+      -199.749,
+      91.906,
+      147.737
+     ],
+     "tgt": [
+      -31.481,
+      3.827,
+      -2.109
+     ],
+     "freeCam": false,
+     "camSlot": true,
+     "tween": true,
+     "vantage": "zuran",
+     "moves": 6,
+     "vnow": 130514,
+     "clock": "04:00"
+    },
+    "beforeUp": {
+     "pos": [
+      -210.733,
+      84.769,
+      119.966
+     ],
+     "tgt": [
+      -26.778,
+      4.145,
+      -2.444
+     ],
+     "freeCam": true,
+     "camSlot": true,
+     "tween": true,
+     "vantage": null,
+     "moves": 12,
+     "vnow": 130714,
+     "clock": "04:00"
+    },
+    "rel": {
+     "pos": [
+      -210.733,
+      84.769,
+      119.966
+     ],
+     "tgt": [
+      -18.605,
+      0.563,
+      -7.883
+     ],
+     "freeCam": true,
+     "camSlot": true,
+     "tween": true,
+     "vantage": null,
+     "moves": 12,
+     "vnow": 130714,
+     "clock": "04:00"
+    },
+    "end": {
+     "pos": [
+      -83,
+      25.078,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.558,
+      -5
+     ],
+     "freeCam": true,
+     "camSlot": false,
+     "tween": false,
+     "vantage": null,
+     "moves": 12,
+     "vnow": 133714,
+     "clock": "04:00"
+    },
+    "glideSlotAtRelease": true,
+    "panMovesDuringInput": 6,
+    "startToDestination": 289.164,
+    "releaseToDestination": 251.545,
+    "endToDestination": 0,
+    "endToRelease": 251.545,
+    "freeCamAtEnd": true,
+    "trailToDest": [
+     126.177,
+     19.388,
+     0.088,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "k": "case plateau+wheel",
+   "v": {
+    "start": {
+     "pos": [
+      -195,
+      94.109,
+      156
+     ],
+     "tgt": [
+      -33,
+      3.725,
+      -2
+     ],
+     "freeCam": false,
+     "camSlot": false,
+     "tween": false,
+     "vantage": "field",
+     "moves": 12,
+     "vnow": 136714,
+     "clock": "04:00"
+    },
+    "mid": {
+     "pos": [
+      -185.199,
+      92.004,
+      162.78
+     ],
+     "tgt": [
+      -32.928,
+      3.919,
+      -2.398
+     ],
+     "freeCam": false,
+     "camSlot": true,
+     "tween": true,
+     "vantage": "plateau",
+     "moves": 12,
+     "vnow": 137047,
+     "clock": "04:00"
+    },
+    "beforeUp": {
+     "pos": [
+      -172.906,
+      89.424,
+      169.92
+     ],
+     "tgt": [
+      -32.841,
+      4.15,
+      -2.874
+     ],
+     "freeCam": true,
+     "camSlot": true,
+     "tween": true,
+     "vantage": null,
+     "moves": 12,
+     "vnow": 137147,
+     "clock": "04:00"
+    },
+    "rel": {
+     "pos": [
+      -172.906,
+      89.424,
+      169.92
+     ],
+     "tgt": [
+      -32.841,
+      4.15,
+      -2.874
+     ],
+     "freeCam": true,
+     "camSlot": true,
+     "tween": true,
+     "vantage": null,
+     "moves": 12,
+     "vnow": 137147,
+     "clock": "04:00"
+    },
+    "end": {
+     "pos": [
+      23,
+      27.126,
+      55
+     ],
+     "tgt": [
+      -31,
+      9.079,
+      -13
+     ],
+     "freeCam": true,
+     "camSlot": false,
+     "tween": false,
+     "vantage": null,
+     "moves": 12,
+     "vnow": 140147,
+     "clock": "04:00"
+    },
+    "glideSlotAtRelease": true,
+    "panMovesDuringInput": 0,
+    "startToDestination": 261.819,
+    "releaseToDestination": 246.925,
+    "endToDestination": 0,
+    "endToRelease": 246.925,
+    "freeCamAtEnd": true,
+    "trailToDest": [
+     160.373,
+     32.248,
+     1.133,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "k": "case allied+drag",
+   "v": {
+    "start": {
+     "pos": [
+      -195,
+      94.109,
+      156
+     ],
+     "tgt": [
+      -33,
+      3.725,
+      -2
+     ],
+     "freeCam": false,
+     "camSlot": false,
+     "tween": false,
+     "vantage": "field",
+     "moves": 12,
+     "vnow": 143147,
+     "clock": "04:00"
+    },
+    "mid": {
+     "pos": [
+      -179.906,
+      93.261,
+      171.623
+     ],
+     "tgt": [
+      -32.711,
+      3.68,
+      -1.494
+     ],
+     "freeCam": false,
+     "camSlot": true,
+     "tween": true,
+     "vantage": "allied",
+     "moves": 12,
+     "vnow": 143480,
+     "clock": "04:00"
+    },
+    "beforeUp": {
+     "pos": [
+      -124.466,
+      90.277,
+      209.818
+     ],
+     "tgt": [
+      -31.815,
+      3.542,
+      0.074
+     ],
+     "freeCam": true,
+     "camSlot": true,
+     "tween": true,
+     "vantage": null,
+     "moves": 18,
+     "vnow": 143680,
+     "clock": "04:00"
+    },
+    "rel": {
+     "pos": [
+      -124.466,
+      90.277,
+      209.818
+     ],
+     "tgt": [
+      -28.135,
+      0.097,
+      -8.256
+     ],
+     "freeCam": true,
+     "camSlot": true,
+     "tween": true,
+     "vantage": null,
+     "moves": 18,
+     "vnow": 143680,
+     "clock": "04:00"
+    },
+    "end": {
+     "pos": [
+      135,
+      45.306,
+      -22
+     ],
+     "tgt": [
+      -25,
+      2.49,
+      12
+     ],
+     "freeCam": true,
+     "camSlot": false,
+     "tween": false,
+     "vantage": null,
+     "moves": 18,
+     "vnow": 146680,
+     "clock": "04:00"
+    },
+    "glideSlotAtRelease": true,
+    "panMovesDuringInput": 6,
+    "startToDestination": 394.28,
+    "releaseToDestination": 371.471,
+    "endToDestination": 0,
+    "endToRelease": 371.471,
+    "freeCamAtEnd": true,
+    "trailToDest": [
+     185.137,
+     28.407,
+     0.129,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "k": "case phase arc (PageDown)+drag",
+   "v": {
+    "mid": {
+     "pos": [
+      -195.428,
+      94.209,
+      156.659
+     ],
+     "tgt": [
+      -33.185,
+      3.746,
+      -1.461
+     ],
+     "freeCam": false,
+     "camSlot": true,
+     "tween": true,
+     "vantage": null,
+     "moves": 18,
+     "vnow": 150014,
+     "clock": "07:00"
+    },
+    "rel": {
+     "pos": [
+      -196.727,
+      94.506,
+      158.67
+     ],
+     "tgt": [
+      -26.934,
+      0.013,
+      -6.427
+     ],
+     "freeCam": true,
+     "camSlot": true,
+     "tween": true,
+     "vantage": null,
+     "moves": 24,
+     "vnow": 150214,
+     "clock": "07:00"
+    },
+    "end": {
+     "pos": [
+      -167,
+      64.403,
+      162
+     ],
+     "tgt": [
+      -55,
+      6.229,
+      62
+     ],
+     "freeCam": true,
+     "camSlot": false,
+     "tween": false,
+     "vantage": null,
+     "moves": 24,
+     "vnow": 154214,
+     "clock": "07:00"
+    },
+    "glideSlotAtRelease": true,
+    "panMovesDuringInput": 6,
+    "endToRelease": 116.658,
+    "phasePreset": {
+     "pos": [
+      -167,
+      64.403,
+      162
+     ],
+     "tgt": [
+      -55,
+      6.229,
+      62
+     ]
+    },
+    "endToPhasePreset": 0,
+    "freeCamAtEnd": true
+   }
+  },
+  {
+   "k": "rail click for 12:03",
+   "v": {
+    "clock": 720,
+    "text": "12:00",
+    "phase": 6
+   }
+  }
+ ],
+ "build": {
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "fatal": "Error: no box .oob-row[data-id=\"gqg\"]\n    at realClick (/home/user/Austerlitz/tools/audit-post8/verification/v-repro-srcgeo-sim/browser-probe.js:28:19)\n    at async /home/user/Austerlitz/tools/audit-post8/verification/v-repro-srcgeo-sim/browser-probe.js:84:23"
+}

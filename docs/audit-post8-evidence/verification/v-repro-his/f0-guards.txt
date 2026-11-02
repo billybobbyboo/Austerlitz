@@ -1,0 +1,5 @@
+rg_inf x guard_cav closest 1.29 km at 11:15
+rg_cav x guard_cav closest 1.19 km at 11:15
+rg_inf x vandamme closest 1.05 km at 11:15
+rg_cav x vandamme closest 0.96 km at 11:15
+rg_inf x drouet closest 1.23 km at 11:15

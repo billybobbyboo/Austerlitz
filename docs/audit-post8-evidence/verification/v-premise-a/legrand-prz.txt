@@ -1,0 +1,10 @@
+legrand@2 [206,366] -> @4 [220,321] over 08:00-09:30; prz@2=@4=@7 [215,341] (no move 08:00-12:45); castle [212.9,344.3]; 31.6 m per map unit
+08:00 legrand [206.0,366.0] to prz 840 m, to castle 720 m
+08:15 legrand [208.3,358.5] to prz 592 m, to castle 471 m
+08:30 legrand [210.7,351.0] to prz 344 m, to castle 223 m
+08:45 legrand [213.0,343.5] to prz 101 m, to castle 25 m
+08:51 legrand [213.9,340.5] to prz 37 m, to castle 124 m
+09:00 legrand [215.3,336.0] to prz 158 m, to castle 273 m
+09:15 legrand [217.7,328.5] to prz 404 m, to castle 521 m
+09:30 legrand [220.0,321.0] to prz 651 m, to castle 770 m
+closest to prz: 37 m at 08:51

@@ -1,0 +1,14 @@
+bourcier vs kienmayer closest 26 m at 14:38 [255.1,391.42] [255.36,390.64]
+bourcier vs dok closest 12 m at 14:54 [259.31,388.26] [259.6,388]
+bourcier vs lang closest 130 m at 15:40 [271.42,379.19] [267.47,378]
+bourcier vs prz closest 1996 m at 14:00 [238.21,399.76] [215,341]
+bourcier vs buxhowden closest 861 m at 15:34 [269.84,380.37] [292.81,395.05]
+14:30 bourcier [253,393] kien [242,400] dok [226,404] st kien retreating st dok retreating
+14:38 bourcier [255.1,391.42] kien [255.36,390.64] dok [237.2,398.67] st kien retreating st dok retreating
+14:45 bourcier [256.95,390.04] kien [266.74,382] dok [247,394] st kien retreating st dok retreating
+14:50 bourcier [258.26,389.05] kien [275.6,377.85] dok [254,390.67] st kien retreating st dok retreating
+14:54 bourcier [259.31,388.26] kien [283.76,377.51] dok [259.6,388] st kien retreating st dok retreating
+15:00 bourcier [260.89,387.08] kien [296,377] dok [268,384] st kien retreating st dok retreating
+15:15 bourcier [264.84,384.12] kien [297.65,385.23] dok [278.03,381.07] st kien retreating st dok retreating
+15:30 bourcier [268.79,381.16] kien [294.65,392.67] dok [288.06,378.15] st kien retreating st dok retreating
+16:00 bourcier [277.54,377.24] kien [286.1,407.11] dok [284.26,391.91] st kien retreating st dok retreating

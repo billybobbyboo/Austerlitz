@@ -1,0 +1,78 @@
+{
+ "started": "2026-11-02T11:10:32.481Z",
+ "run": "run2",
+ "viewport": [
+  1280,
+  720
+ ],
+ "build": {
+  "len": 2847609,
+  "title": "Austerlitz — command map, 2 December 1805"
+ },
+ "steps": {
+  "card_closed_by_escape": {
+   "firstRun": false,
+   "clock": 240
+  },
+  "f1_524": {
+   "clock": 524,
+   "overlap": {
+    "clock": 524,
+    "figs": [
+     174,
+     213
+    ],
+    "aInsideB": 147,
+    "bInsideA": 127,
+    "minFigGap_m": 3.4
+   },
+   "castleFigs": {
+    "figs": 174,
+    "insideCastleOrFarm": 2,
+    "parts": [
+     "castle north range",
+     "castle south range",
+     "castle west range",
+     "castle east range",
+     "farm north range",
+     "farm west range",
+     "farm south range"
+    ]
+   },
+   "sts": [
+    "engaged",
+    "attacking"
+   ]
+  },
+  "f1_525": {
+   "clock": 525,
+   "overlap": {
+    "clock": 525,
+    "figs": [
+     174,
+     211
+    ],
+    "aInsideB": 133,
+    "bInsideA": 126,
+    "minFigGap_m": 2.4
+   },
+   "castleFigs": {
+    "figs": 174,
+    "insideCastleOrFarm": 3,
+    "parts": [
+     "castle north range",
+     "castle south range",
+     "castle west range",
+     "castle east range",
+     "farm north range",
+     "farm west range",
+     "farm south range"
+    ]
+   },
+   "sts": [
+    "engaged",
+    "attacking"
+   ]
+  }
+ }
+}

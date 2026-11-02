@@ -12,6 +12,9 @@
    storm  : layout signatures at 1600x900, 700x900, 390x844 and 844x390 (one resize each, settled), then 100 setViewportSize calls cycling those
             sizes at 0-120 ms intervals, then the signatures again at each size; differences, console errors, the heap. */
 "use strict";
+const stableBox=async(page,sel)=>{ /* the button brought into view by element.scrollIntoView (set-up) only if outside the viewport, then its box read until two reads 300 ms apart agree (the panel's transition over) */
+  let prev=null; for(let k=0;k<40;k++){ const bb=await page.locator(sel).first().boundingBox(); if(bb&&(bb.y<0||bb.y+bb.height>page.viewportSize().height)) await page.locator(sel).first().evaluate(e=>e.scrollIntoView({block:"center"}));
+    const b2=await page.locator(sel).first().boundingBox(); if(b2&&prev&&Math.abs(b2.x-prev.x)<0.5&&Math.abs(b2.y-prev.y)<0.5) return b2; prev=b2; await new Promise(r=>setTimeout(r,300)); } return prev; };
 const path=require("path");
 const R=require("./rlib.js"), A=R.A;
 /* RB_OUT names another output file in the same folder (a later run of some blocks keeps the earlier file); RB_SKIP_PRES=1 skips the 20
@@ -109,6 +112,11 @@ const want=(process.argv[2]||"idle,growth,day,storm").split(",");
       try{
         D.before=await R.snap(page,s,"before the day at 4x");
         await click('.spd-btn[data-s="4"]'); D.speed=await page.evaluate(()=>speed);
+        /* RB_DWELL_OFF=1: the dwell turned off by a real click on its toggle in the Layers panel (a visitor's control), so that the day needs
+           about 160 frames rather than about a thousand under software WebGL; the holds at the event starts are then skipped (stated) */
+        if(process.env.RB_DWELL_OFF){ if(await page.evaluate(()=>document.getElementById("layerpop").hidden)) await click("#layersbtn"); await R.sleep(600);
+          const dl=page.locator("#dwell"); const db=await stableBox(page,"#dwell"); if(db&&await dl.getAttribute("aria-pressed")==="true") await page.mouse.click(db.x+db.width/2,db.y+db.height/2);
+          D.dwellOn=await page.evaluate(()=>DWELL.on); await page.keyboard.press("Escape"); await settle(20000); }
         /* focus off the buttons: a real click on empty ground (a selection, if any, closed by Escape) */
         await page.mouse.click(160,300); await settle(10000); if((await st()).selection){ await page.keyboard.press("Escape"); await settle(10000); }
         D.focusAfterClick=await page.evaluate(()=>document.activeElement&&(document.activeElement.id||document.activeElement.tagName));

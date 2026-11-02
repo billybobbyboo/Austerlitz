@@ -1,0 +1,270 @@
+{
+ "stale": [
+  {
+   "file": "README.md",
+   "line": 4,
+   "says": "one self-contained HTML file",
+   "instead": "three.js r128 loads from cdnjs.cloudflare.com at start-up; without that host the map shows its failure dialog (\"The map needs a network connection ...\")",
+   "evidence": "shell.html:437 (the script tag, integrity sha512, crossorigin); shell.html:28; CLAUDE.md:3 states it with the qualification (\"three.js r128 from cdnjs\")",
+   "kind": "stale / overclaim",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 27,
+   "says": "continuity and coverage are printed only",
+   "instead": "audit.js asserts both since roadmap step 5 (T-9 (b))",
+   "evidence": "CHANGELOG.md:1936; CLAUDE.md (Checks: \"since roadmap step 5 audit.js asserts its continuity ... and coverage\")",
+   "kind": "stale",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 28,
+   "says": "archive/step5c-45f8f662.html",
+   "instead": "check:data compares against archive/stage8k-f10fe585.html (moved in 8E, 8G, 8H, 8J and 8K)",
+   "evidence": "package.json:9",
+   "kind": "stale",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 30,
+   "says": "35 interface states",
+   "instead": "45 states (10 at 390 x 844 as a phone)",
+   "evidence": "docs/audit-post8-evidence/checks/check-contrast.txt: states 45 (10 at 390 x 844 as a phone): 45 reached; console messages 0, failing 0 / boot cases: 8 of 8 pass",
+   "kind": "stale",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 30,
+   "says": "the six start-up cases",
+   "instead": "eight start-up cases (context-depth since 8C, context-gait since 8E)",
+   "evidence": "docs/audit-post8-evidence/checks/check-contrast.txt (\"boot cases: 8 of 8 pass\"); tools/visual/boot-check.js",
+   "kind": "stale",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 31,
+   "says": "242 checks",
+   "instead": "317 checks",
+   "evidence": "tools/visual/selftest-manifest.json (count)",
+   "kind": "stale",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 31,
+   "says": "about 15 minutes",
+   "instead": "about 21-43 minutes on CI since 8C-8G (CLAUDE.md); 5,422 s on this audit's shared machine",
+   "evidence": "CLAUDE.md (check:selftest); docs/audit-post8-evidence/checks/summary.txt",
+   "kind": "stale",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 32,
+   "says": "30 fixed views",
+   "instead": "39 fixed views",
+   "evidence": "tools/visual/cases.js",
+   "kind": "stale",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 32,
+   "says": "about 100 minutes",
+   "instead": "two to four hours (CI run 41394859313: 2 h 1 min; 169-250 minutes on 8E and 8F)",
+   "evidence": ".github/workflows/checks.yml:6 (\"about three to four hours\"); CLAUDE.md (check:visual)",
+   "kind": "stale",
+   "quote_found": true
+  },
+  {
+   "file": "README.md",
+   "line": 3,
+   "says": "A historically grounded, interactive reconstruction",
+   "instead": "The README is the page GitHub Pages serves at the site's root, and it says nothing to a visitor of what is evidence and what is reconstruction, and does not link the map (the file is named in code formatting; the page's only link is to itself)",
+   "evidence": "docs/audit-post8-evidence/records/pages-root.html and pages-root-headers.txt (fetched 2 Nov 2026 01:41 GMT, last-modified 1 Nov 10:57:40 GMT)",
+   "kind": "missing (visitor)",
+   "quote_found": true
+  },
+  {
+   "file": "CLAUDE.md",
+   "line": 744,
+   "says": "Draft PR #79 holds both records",
+   "instead": "PR #79 was merged into main on 1 November 2026 (43e3e5b)",
+   "evidence": "git log --merges origin/main",
+   "kind": "stale status",
+   "quote_found": true
+  },
+  {
+   "file": "CLAUDE.md",
+   "line": 497,
+   "says": "## Current state (October 2026)",
+   "instead": "the section runs to 1 November 2026 (decisions 267-269)",
+   "evidence": "CLAUDE.md:734-745",
+   "kind": "stale heading",
+   "quote_found": true
+  },
+  {
+   "file": "CLAUDE.md",
+   "line": 24,
+   "says": "484 after decision 210 (c), 145",
+   "instead": "since 8K: 704 statements, 481 unchecked, 148 with a claim of their own, 75 by class",
+   "evidence": "CHANGELOG.md:204; counted in this audit (narrative.js, tools/step4/statements.js)",
+   "kind": "stale count",
+   "quote_found": true
+  },
+  {
+   "file": "CHANGELOG.md",
+   "line": 5,
+   "says": "draft PR #79 into `main`",
+   "instead": "merged (43e3e5b)",
+   "evidence": "git log --merges origin/main",
+   "kind": "stale status",
+   "quote_found": true
+  },
+  {
+   "file": "CHANGELOG.md",
+   "line": 18,
+   "says": "draft PR #79 into `main`",
+   "instead": "merged (43e3e5b)",
+   "evidence": "git log --merges origin/main",
+   "kind": "stale status",
+   "quote_found": true
+  },
+  {
+   "file": "CHANGELOG.md",
+   "line": 40,
+   "says": "not merged",
+   "instead": "merged (43e3e5b, PR #79)",
+   "evidence": "git log --merges origin/main",
+   "kind": "stale status",
+   "quote_found": true
+  },
+  {
+   "file": "CHANGELOG.md",
+   "line": 58,
+   "says": "a draft pull request into `main`, for review; not merged",
+   "instead": "merged (c2adefe, PR #78)",
+   "evidence": "git log --merges origin/main; CLAUDE.md:738 says merged",
+   "kind": "stale status (contradicts CLAUDE.md)",
+   "quote_found": true
+  },
+  {
+   "file": "CHANGELOG.md",
+   "line": 86,
+   "says": "a draft pull request into `main`, for review; not merged",
+   "instead": "merged (141f890, PR #77)",
+   "evidence": "git log --merges origin/main; CLAUDE.md:734 says merged",
+   "kind": "stale status (contradicts CLAUDE.md)",
+   "quote_found": true
+  },
+  {
+   "file": "docs/ROADMAP.md",
+   "line": 510,
+   "says": "pull request for review, not merged",
+   "instead": "PR #73 merged (b7fb67a)",
+   "evidence": "git log --merges origin/main",
+   "kind": "stale status",
+   "quote_found": true
+  },
+  {
+   "file": "docs/ROADMAP.md",
+   "line": 535,
+   "says": "review, not merged",
+   "instead": "PR #74 merged into main (72c7e1b); #75 and #76 merged into their stacked branches and brought into main by 8L",
+   "evidence": "git log --merges origin/main",
+   "kind": "stale status",
+   "quote_found": true
+  },
+  {
+   "file": "docs/ROADMAP.md",
+   "line": 548,
+   "says": "not merged",
+   "instead": "PR #77 merged (141f890)",
+   "evidence": "git log --merges origin/main; CLAUDE.md:734 says merged",
+   "kind": "stale status (contradicts CLAUDE.md)",
+   "quote_found": true
+  },
+  {
+   "file": ".github/workflows/checks.yml",
+   "line": 5,
+   "says": "each about 8-15 minutes",
+   "instead": "the self-test alone takes 21-43 minutes on CI since 8C-8G",
+   "evidence": "CLAUDE.md (check:selftest)",
+   "kind": "stale comment",
+   "quote_found": true
+  }
+ ],
+ "numbers": [
+  {
+   "what": "self-test manifest",
+   "claude_md": 317,
+   "code": 317,
+   "where": "tools/visual/selftest-manifest.json",
+   "agree": true
+  },
+  {
+   "what": "check:visual cases",
+   "claude_md": 39,
+   "code": 39,
+   "where": "tools/visual/cases.js",
+   "agree": true
+  },
+  {
+   "what": "MOTION.JUMPS / POPS",
+   "claude_md": "248 / 998",
+   "code": "JUMPS:248, POPS:998",
+   "where": "tools/visual/thresholds.js:270",
+   "agree": true
+  },
+  {
+   "what": "CTX_DELETES",
+   "claude_md": 248,
+   "code": 248,
+   "where": "tools/visual/boot-check.js:30",
+   "agree": true
+  },
+  {
+   "what": "LANG_ALLOW entries",
+   "claude_md": 2,
+   "code": 2,
+   "where": "redteam.js:228-240",
+   "agree": true
+  },
+  {
+   "what": "CONF_SHARE.land",
+   "claude_md": 0.07,
+   "code": 0.07,
+   "where": "tools/visual/thresholds.js:238",
+   "agree": true
+  },
+  {
+   "what": "plans-overview drop limit",
+   "claude_md": 13,
+   "code": 13,
+   "where": "tools/visual/thresholds.js:117",
+   "agree": true
+  },
+  {
+   "what": "check:baseline md5",
+   "claude_md": "f10fe585c46aea576f436ed51ac46f83",
+   "code": "f10fe585c46aea576f436ed51ac46f83",
+   "where": "package.json:8",
+   "agree": true
+  }
+ ],
+ "facts": {
+  "pr77": true,
+  "pr78": true,
+  "pr79": true,
+  "pr73": true,
+  "pr74": true,
+  "manifest": 317,
+  "cases": 39,
+  "checkdata_ref": "archive/stage8k-f10fe585.html"
+ }
+}

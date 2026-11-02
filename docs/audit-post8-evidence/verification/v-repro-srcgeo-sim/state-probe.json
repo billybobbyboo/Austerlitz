@@ -1,0 +1,126 @@
+{
+ "started": "2026-11-02T11:02:33.837Z",
+ "steps": [
+  {
+   "k": "boot",
+   "v": {
+    "ms": 82299
+   }
+  },
+  {
+   "k": "after Esc",
+   "v": {
+    "card": false,
+    "clock": "04:00",
+    "freeCam": false
+   }
+  },
+  {
+   "k": "free-rect centre",
+   "v": [
+    788,
+    336
+   ]
+  },
+  {
+   "k": "rail click for 12:03",
+   "v": {
+    "clock": 720,
+    "text": "12:00",
+    "phase": 6
+   }
+  },
+  {
+   "k": "tab click",
+   "v": {
+    "x": 88.5,
+    "y": 96.46875,
+    "box": "51,73,75,47",
+    "hit": false,
+    "top": "CANVAS",
+    "forced": true
+   }
+  },
+  {
+   "k": "tab state",
+   "v": {
+    "sel": "false",
+    "hidden": true,
+    "rows": 40,
+    "pres": "study",
+    "body": "docked pm-study"
+   }
+  },
+  {
+   "k": "oob row click",
+   "v": {
+    "err": "no box .oob-row[data-id=\"gqg\"]",
+    "fallback": "the row's own click handler through element.click() (not real input)"
+   }
+  },
+  {
+   "k": "gqg card at 12:03",
+   "v": {
+    "clock": "12:00",
+    "phase": 6,
+    "sel": "f:gqg",
+    "drawer": "G.Q.G. · France Imperial Headquarters Emperor Napoleon I Observing Position: estimated Position B Timing B How this is sourced Army total about 73,000 Claim: Not yet checked, 139 guns (Duffy 1977; Smith 1998) Claim: Not yet checked Doing now Moves forward from the Zuran to Stare Vinohrady Claim: Not yet checked Objective Hold the right; break the Allied centre once it has committed Claim: This map's reading Where Zuran mound Full dossier: role, movement, sources How this is sourced",
+    "model": "Zuran mound",
+    "keyNow": "6s|none",
+    "keyPainted": "6s|none"
+   }
+  },
+  {
+   "k": "more click",
+   "v": {
+    "x": -153.5,
+    "y": 611.140625,
+    "box": "-281,594,255,35",
+    "hit": false,
+    "top": null,
+    "forced": true
+   }
+  },
+  {
+   "k": "gqg full dossier at 12:03",
+   "v": {
+    "clock": "12:00",
+    "phase": 6,
+    "sel": "f:gqg",
+    "drawer": "G.Q.G. · France Imperial Headquarters Emperor Napoleon I Observing Position: estimated Position B Timing B How this is sourced Army total about 73,000 Claim: Not yet checked, 139 guns (Duffy 1977; Smith 1998) Claim: Not yet checked Doing now Moves forward from the Zuran to Stare Vinohrady Claim: Not yet checked Objective Hold the right; break the Allied centre once it has committed Claim: This map's reading Where Zuran mound Full dossier: role, movement, sources How this is sourced",
+    "model": "Zuran mound",
+    "keyNow": "6s|none",
+    "keyPainted": "6s|none"
+   }
+  },
+  {
+   "k": "gqg full dossier after 3 x ArrowRight on the rail",
+   "v": {
+    "clock": "12:30",
+    "phase": 6,
+    "sel": "f:gqg",
+    "drawer": "G.Q.G. · France Imperial Headquarters Emperor Napoleon I Observing Position: estimated Position B · interpolated Timing B How this is sourced Army total about 73,000 Claim: Not yet checked, 139 guns (Duffy 1977; Smith 1998) Claim: Not yet checked Doing now Moves forward from the Zuran to Stare Vinohrady Claim: Not yet checked Objective Hold the right; break the Allied centre once it has committed Claim: This map's reading Where 0.8 km north-west of Girzikowitz Full dossier: role, movement, sources How this is sourced",
+    "model": "1.3 km north-west of Stare Vinohrady",
+    "keyNow": "6m|none",
+    "keyPainted": "6m|none"
+   }
+  },
+  {
+   "k": "gqg full dossier after a rail click for 12:37",
+   "v": {
+    "clock": "12:37",
+    "phase": 6,
+    "sel": "f:gqg",
+    "drawer": "G.Q.G. · France Imperial Headquarters Emperor Napoleon I Observing Position: estimated Position B · interpolated Timing B How this is sourced Army total about 73,000 Claim: Not yet checked, 139 guns (Duffy 1977; Smith 1998) Claim: Not yet checked Doing now Moves forward from the Zuran to Stare Vinohrady Claim: Not yet checked Objective Hold the right; break the Allied centre once it has committed Claim: This map's reading Where 0.8 km north-west of Girzikowitz Full dossier: role, movement, sources How this is sourced",
+    "model": "Stare Vinohrady",
+    "keyNow": "6m|none",
+    "keyPainted": "6m|none"
+   }
+  }
+ ],
+ "build": {
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "fatal": "Error: no box #chapters button.chap[data-c=\"pratzen\"]\n    at realClick (/home/user/Austerlitz/tools/audit-post8/verification/v-repro-srcgeo-sim/state-probe.js:28:19)\n    at async /home/user/Austerlitz/tools/audit-post8/verification/v-repro-srcgeo-sim/state-probe.js:68:3"
+}

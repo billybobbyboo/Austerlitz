@@ -1,0 +1,11 @@
+GOLDBACH_M points (world.js): 24 last [276,415]
+kienmayer@0 [291,367] act: "Formed near Augezd before first light" | nearest Goldbach km 1.589 at [276,415] seg 22 | N-S reach x at its y 214.23 side EAST by km 2.426
+kienmayer@1 [236,398] act: "Attacks Telnitz; the village changes hands several times" | nearest Goldbach km 0.518 at [232.5,414] seg 21 | N-S reach x at its y 213.40 side EAST by km 0.714
+kienmayer@2 [222,402] act: "" | nearest Goldbach km 0.265 at [213.6,402.4] seg 20 | N-S reach x at its y 213.60 side EAST by km 0.265
+kienmayer@7 [242,400] act: "Holding west of the Goldbach as the trap closes behind it" | nearest Goldbach km 0.474 at [242,415] seg 22 | N-S reach x at its y 213.50 side EAST by km 0.901
+kienmayer@8 [296,377] act: "Falls back over the neck of land between the meres under artillery fire" | nearest Goldbach km 1.357 at [276,415] seg 22 | N-S reach x at its y 212.54 side EAST by km 2.637
+kienmayer@9 [269,436] act: "Falls back across the frozen Satschan mere under artillery fire" | nearest Goldbach km 0.664 at [269,415] seg 22 | N-S reach x at its y - side - by km -
+samples every 5 min with a N-S reach at their y: 146 west of it: 0
+Stage 0 GOLDBACH_M x at y 400: 212.24 kienmayer@7 east by km 0.941
+true bearing from brook point at y400 to kienmayer@7: 107.4
+narrative claim of kienmayer act@7: ["FORMATIONS.kienmayer.strengthNote:undefined"]

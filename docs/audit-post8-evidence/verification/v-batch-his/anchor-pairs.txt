@@ -1,0 +1,30 @@
+bag@0 [352,64] caff@5 [296,122] 2.55 
+bag@0 [352,64] caff@6 [321,120] 2.02 
+bag@0 [352,64] caff@7 [347,114] 1.59 
+bag@0 [352,64] caff@8 [392,105] 1.81 
+bag@0 [352,64] caff@9 [423,96] 2.46 
+bag@5 [262,68] caff@5 [296,122] 2.02 {"dep":570,"gr":"B","basis":"app narrative, unsourced","ev":["Lannes advances al
+bag@5 [262,68] caff@6 [321,120] 2.49 {"dep":570,"gr":"B","basis":"app narrative, unsourced","ev":["Lannes advances al
+bag@5 [262,68] caff@7 [347,114] 3.05 {"dep":570,"gr":"B","basis":"app narrative, unsourced","ev":["Lannes advances al
+bag@5 [262,68] caff@8 [392,105] 4.27 {"dep":570,"gr":"B","basis":"app narrative, unsourced","ev":["Lannes advances al
+bag@5 [262,68] caff@9 [423,96] 5.16 {"dep":570,"gr":"B","basis":"app narrative, unsourced","ev":["Lannes advances al
+bag@6 [300,76] caff@5 [296,122] 1.46 {"dep":675,"gr":"C","basis":"app narrative, unsourced","ev":["Blasowitz falls; n
+bag@6 [300,76] caff@6 [321,120] 1.54 {"dep":675,"gr":"C","basis":"app narrative, unsourced","ev":["Blasowitz falls; n
+bag@6 [300,76] caff@7 [347,114] 1.91 {"dep":675,"gr":"C","basis":"app narrative, unsourced","ev":["Blasowitz falls; n
+bag@6 [300,76] caff@8 [392,105] 3.05 {"dep":675,"gr":"C","basis":"app narrative, unsourced","ev":["Blasowitz falls; n
+bag@6 [300,76] caff@9 [423,96] 3.94 {"dep":675,"gr":"C","basis":"app narrative, unsourced","ev":["Blasowitz falls; n
+bag@7 [321,70] caff@5 [296,122] 1.82 
+bag@7 [321,70] caff@6 [321,120] 1.58 
+bag@7 [321,70] caff@7 [347,114] 1.61 
+bag@7 [321,70] caff@8 [392,105] 2.50 
+bag@7 [321,70] caff@9 [423,96] 3.33 
+bag@8 [386,38] caff@5 [296,122] 3.89 
+bag@8 [386,38] caff@6 [321,120] 3.31 
+bag@8 [386,38] caff@7 [347,114] 2.70 
+bag@8 [386,38] caff@8 [392,105] 2.13 
+bag@8 [386,38] caff@9 [423,96] 2.17 
+bag@9 [414,13] caff@5 [296,122] 5.08 
+bag@9 [414,13] caff@6 [321,120] 4.48 
+bag@9 [414,13] caff@7 [347,114] 3.83 
+bag@9 [414,13] caff@8 [392,105] 2.99 
+bag@9 [414,13] caff@9 [423,96] 2.64 

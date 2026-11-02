@@ -1,0 +1,2 @@
+721:2026-10-31T08:44:37.5026807Z FAIL the map layer in motion (decision 240 (a)): jumps 248 over the 16 motions (limit 245); pops 998 (limit 985) {"jumps":248,"pops":998,"flicker":9,"lod":130}
+722:2026-10-31T08:44:37.5040453Z STAGE0 FAILURES: 1

@@ -1,0 +1,93 @@
+== rg_inf (opponent named here: vandamme); anchors: @0[413,202] arr 04:00; @5[378,196] arr 10:30 w 04:00-10:30; @6[327,194] arr 11:15 w 10:30-11:15; @7[397,196] arr 12:45 w 11:15-12:45; @8[447,178] arr 14:30 w 12:45-14:30; @9[475,144] arr 17:00 w 14:30-17:00
+11:15 shown "Counter-attacking" (counterattack) moving 0.34 km/h toward -86 deg (compass, map north up) | vandamme 1.05 km (-0.20 km/h) angle 25 | vandamme 1.05 km (-0.20 km/h) angle 25
+11:20 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 1.16 km (1.38 km/h) angle 160 | vandamme 1.16 km (1.38 km/h) angle 160
+11:25 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 1.28 km (1.40 km/h) angle 161 | vandamme 1.28 km (1.40 km/h) angle 161
+11:30 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 1.40 km (1.41 km/h) angle 163 | vandamme 1.40 km (1.41 km/h) angle 163
+11:35 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 1.52 km (1.42 km/h) angle 164 | vandamme 1.52 km (1.42 km/h) angle 164
+11:40 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 1.63 km (1.43 km/h) angle 166 | vandamme 1.63 km (1.43 km/h) angle 166
+11:45 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 1.75 km (1.43 km/h) angle 167 | drouet 1.73 km (1.00 km/h) angle 162
+11:50 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 1.87 km (1.44 km/h) angle 167 | drouet 1.81 km (1.00 km/h) angle 163
+11:55 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 1.99 km (1.44 km/h) angle 168 | rivaud 1.88 km (0.76 km/h) angle 180
+12:00 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 2.11 km (1.45 km/h) angle 169 | rivaud 1.94 km (0.77 km/h) angle 179
+12:05 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 2.24 km (1.45 km/h) angle 170 | rivaud 2.01 km (0.78 km/h) angle 178
+12:10 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 2.36 km (1.45 km/h) angle 170 | rivaud 2.07 km (0.79 km/h) angle 177
+12:15 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 2.48 km (1.46 km/h) angle 171 | rivaud 2.14 km (0.79 km/h) angle 176
+12:20 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 2.60 km (1.46 km/h) angle 171 | rivaud 2.21 km (0.80 km/h) angle 176
+12:25 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 2.72 km (1.46 km/h) angle 171 | rivaud 2.27 km (0.80 km/h) angle 175
+12:30 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 2.84 km (1.46 km/h) angle 172 | rivaud 2.34 km (0.81 km/h) angle 174
+12:35 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 2.96 km (1.46 km/h) angle 172 | rivaud 2.41 km (0.81 km/h) angle 173
+12:40 shown "Counter-attacking" (counterattack) moving 1.48 km/h toward 92 deg (compass, map north up) | vandamme 3.09 km (1.46 km/h) angle 172 | dhautpoul 2.47 km (0.50 km/h) angle 146
+12:45 shown "Repulsed" (repulsed) moving 1.20 km/h toward 83 deg (compass, map north up) | vandamme 3.21 km (1.20 km/h) angle 179 | dhautpoul 2.52 km (0.45 km/h) angle 138
+12:50 shown "Repulsed" (repulsed) moving 0.96 km/h toward 70 deg (compass, map north up) | vandamme 3.28 km (0.93 km/h) angle 166 | dhautpoul 2.55 km (0.42 km/h) angle 126
+-> rg_inf: 18 moving samples with an offensive status, 17 of them more than 120 deg off the bearing to vandamme (11:20-12:40)
+== rg_cav (opponent named here: vandamme); anchors: @0[423,193] arr 04:00; @6[321,189] arr 11:15 w 04:00-11:15; @7[406,188] arr 12:45 w 11:15-12:45; @8[452,164] arr 14:30 w 12:45-14:30; @9[481,132] arr 17:00 w 14:30-17:00
+11:15 shown "Charging" (charging) moving 0.67 km/h toward 88 deg (compass, map north up) | vandamme 0.96 km (0.67 km/h) angle 147 | vandamme 0.96 km (0.67 km/h) angle 147
+11:20 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 1.08 km (1.56 km/h) angle 151 | vandamme 1.08 km (1.56 km/h) angle 151
+11:25 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 1.22 km (1.61 km/h) angle 154 | vandamme 1.22 km (1.61 km/h) angle 154
+11:30 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 1.35 km (1.65 km/h) angle 157 | vandamme 1.35 km (1.65 km/h) angle 157
+11:35 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 1.49 km (1.67 km/h) angle 159 | vandamme 1.49 km (1.67 km/h) angle 159
+11:40 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 1.63 km (1.69 km/h) angle 161 | rivaud 1.63 km (1.10 km/h) angle 180
+11:45 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 1.77 km (1.71 km/h) angle 163 | rivaud 1.72 km (1.11 km/h) angle 179
+11:50 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 1.92 km (1.72 km/h) angle 164 | rivaud 1.81 km (1.12 km/h) angle 178
+11:55 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 2.06 km (1.73 km/h) angle 165 | rivaud 1.90 km (1.13 km/h) angle 177
+12:00 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 2.20 km (1.74 km/h) angle 166 | nansouty 1.98 km (0.75 km/h) angle 129
+12:05 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 2.35 km (1.74 km/h) angle 167 | nansouty 2.05 km (0.78 km/h) angle 131
+12:10 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 2.49 km (1.75 km/h) angle 168 | nansouty 2.11 km (0.80 km/h) angle 133
+12:15 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 2.64 km (1.75 km/h) angle 168 | nansouty 2.18 km (0.83 km/h) angle 135
+12:20 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 2.79 km (1.76 km/h) angle 169 | nansouty 2.25 km (0.85 km/h) angle 137
+12:25 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 2.93 km (1.76 km/h) angle 170 | nansouty 2.32 km (0.87 km/h) angle 138
+12:30 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 3.08 km (1.76 km/h) angle 170 | nansouty 2.40 km (0.88 km/h) angle 139
+12:35 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 3.23 km (1.77 km/h) angle 171 | nansouty 2.47 km (0.90 km/h) angle 141
+12:40 shown "Charging" (charging) moving 1.79 km/h toward 89 deg (compass, map north up) | vandamme 3.37 km (1.77 km/h) angle 171 | nansouty 2.55 km (0.91 km/h) angle 142
+12:45 shown "Repulsed" (repulsed) moving 1.33 km/h toward 80 deg (compass, map north up) | vandamme 3.52 km (1.33 km/h) angle 179 | nansouty 2.62 km (0.58 km/h) angle 134
+12:50 shown "Repulsed" (repulsed) moving 0.94 km/h toward 62 deg (compass, map north up) | vandamme 3.60 km (0.89 km/h) angle 162 | nansouty 2.64 km (0.25 km/h) angle 117
+-> rg_cav: 18 moving samples with an offensive status, 18 of them more than 120 deg off the bearing to vandamme (11:15-12:40)
+== lich (opponent named here: kellermann); anchors: @0[296,243] arr 04:00; @2[319,214] arr 08:00 w 04:00-08:00; @3[317,191] arr 08:45 w 08:00-08:45; @5[298,156] arr 10:30 w 08:45-10:30; @6[341,152] arr 11:15 w 10:30-11:15; @7[387,145] arr 12:45 w 11:15-12:45; @8[437,129] arr 14:30 w 12:45-14:30; @9[469,110] arr 17:00 w 14:30-17:00
+10:30 shown "Charging" (charging) moving 0.84 km/h toward 61 deg (compass, map north up) | kellermann 0.82 km (-0.26 km/h) angle 94 | nansouty 0.73 km (-0.18 km/h) angle 126
+10:35 shown "Charging" (charging) moving 1.82 km/h toward 85 deg (compass, map north up) | kellermann 0.85 km (0.33 km/h) angle 120 | nansouty 0.78 km (0.50 km/h) angle 151
+10:40 shown "Charging" (charging) moving 1.82 km/h toward 85 deg (compass, map north up) | kellermann 0.88 km (0.36 km/h) angle 123 | nansouty 0.82 km (0.51 km/h) angle 152
+10:45 shown "Charging" (charging) moving 1.82 km/h toward 85 deg (compass, map north up) | kellermann 0.91 km (0.38 km/h) angle 126 | nansouty 0.86 km (0.51 km/h) angle 153
+10:50 shown "Charging" (charging) moving 1.82 km/h toward 85 deg (compass, map north up) | kellermann 0.94 km (0.41 km/h) angle 128 | nansouty 0.90 km (0.51 km/h) angle 154
+10:55 shown "Charging" (charging) moving 1.82 km/h toward 85 deg (compass, map north up) | kellermann 0.98 km (0.43 km/h) angle 131 | nansouty 0.95 km (0.52 km/h) angle 155
+11:00 shown "Charging" (charging) moving 1.82 km/h toward 85 deg (compass, map north up) | kellermann 1.01 km (0.44 km/h) angle 133 | nansouty 0.99 km (0.52 km/h) angle 156
+11:05 shown "Charging" (charging) moving 1.82 km/h toward 85 deg (compass, map north up) | kellermann 1.05 km (0.46 km/h) angle 135 | nansouty 1.03 km (0.52 km/h) angle 157
+11:10 shown "Charging" (charging) moving 1.82 km/h toward 85 deg (compass, map north up) | kellermann 1.09 km (0.47 km/h) angle 137 | nansouty 1.08 km (0.52 km/h) angle 158
+11:15 shown "Repulsed" (repulsed) moving 1.40 km/h toward 84 deg (compass, map north up) | kellermann 1.13 km (0.35 km/h) angle 138 | nansouty 1.12 km (0.39 km/h) angle 157
+11:20 shown "Repulsed" (repulsed) moving 0.98 km/h toward 81 deg (compass, map north up) | kellermann 1.15 km (0.22 km/h) angle 136 | nansouty 1.14 km (0.26 km/h) angle 156
+-> lich: 9 moving samples with an offensive status, 8 of them more than 120 deg off the bearing to kellermann (10:35-11:10)
+== milo (opponent named here: sthilaire); anchors: @0[325,230] arr 04:00; @2[299,238] arr 08:00 w 04:00-08:00; @3[290,237] arr 08:45 w 08:00-08:45; @4[315,237] arr 09:30 w 08:45-09:30; @6[392,232] arr 11:15 w 09:30-11:15; @8[446,210] arr 14:30 w 11:15-14:30; @9[475,170] arr 17:00 w 14:30-17:00
+09:30 shown "Counter-attacking" (counterattack) moving 1.22 km/h toward 88 deg (compass, map north up) | sthilaire 1.88 km (0.68 km/h) angle 125 | vandamme 0.97 km (0.01 km/h) angle 99
+09:35 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 1.93 km (0.68 km/h) angle 129 | vandamme 1.00 km (0.46 km/h) angle 105
+09:40 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 1.99 km (0.72 km/h) angle 132 | vandamme 1.04 km (0.65 km/h) angle 112
+09:45 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.05 km (0.77 km/h) angle 134 | vandamme 1.10 km (0.81 km/h) angle 119
+09:50 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.12 km (0.81 km/h) angle 136 | vandamme 1.18 km (0.95 km/h) angle 125
+09:55 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.18 km (0.84 km/h) angle 138 | vandamme 1.26 km (1.06 km/h) angle 130
+10:00 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.26 km (0.87 km/h) angle 140 | vandamme 1.35 km (1.15 km/h) angle 134
+10:05 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.33 km (0.90 km/h) angle 142 | vandamme 1.45 km (1.23 km/h) angle 138
+10:10 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.41 km (0.93 km/h) angle 144 | vandamme 1.56 km (1.28 km/h) angle 141
+10:15 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.49 km (0.95 km/h) angle 146 | vandamme 1.67 km (1.33 km/h) angle 144
+10:20 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.57 km (0.98 km/h) angle 147 | vandamme 1.78 km (1.37 km/h) angle 146
+10:25 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.65 km (1.00 km/h) angle 149 | vandamme 1.90 km (1.40 km/h) angle 149
+10:30 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.73 km (0.98 km/h) angle 150 | vandamme 2.01 km (1.43 km/h) angle 151
+10:35 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.81 km (0.97 km/h) angle 152 | vandamme 2.14 km (1.45 km/h) angle 152
+10:40 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.89 km (1.00 km/h) angle 153 | vandamme 2.26 km (1.47 km/h) angle 154
+10:45 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 2.98 km (1.02 km/h) angle 155 | vandamme 2.38 km (1.49 km/h) angle 155
+10:50 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 3.06 km (1.05 km/h) angle 156 | vandamme 2.51 km (1.50 km/h) angle 156
+10:55 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 3.15 km (1.07 km/h) angle 158 | vandamme 2.63 km (1.52 km/h) angle 158
+11:00 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 3.24 km (1.09 km/h) angle 159 | vandamme 2.76 km (1.53 km/h) angle 159
+11:05 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 3.33 km (1.11 km/h) angle 160 | vandamme 2.89 km (1.53 km/h) angle 159
+11:10 shown "Counter-attacking" (counterattack) moving 1.39 km/h toward 86 deg (compass, map north up) | sthilaire 3.43 km (1.12 km/h) angle 162 | vandamme 3.01 km (1.54 km/h) angle 160
+11:15 shown "Withdrawing" (withdrawing) moving 0.97 km/h toward 81 deg (compass, map north up) | sthilaire 3.52 km (0.85 km/h) angle 168 | vandamme 3.14 km (1.00 km/h) angle 156
+11:20 shown "Withdrawing" (withdrawing) moving 0.57 km/h toward 68 deg (compass, map north up) | sthilaire 3.57 km (0.57 km/h) angle 179 | vandamme 3.18 km (0.45 km/h) angle 143
+-> milo: 21 moving samples with an offensive status, 21 of them more than 120 deg off the bearing to sthilaire (09:30-11:10)
+== kollo (opponent named here: sthilaire); anchors: @0[355,226] arr 04:00; @2[325,229] arr 08:00 w 04:00-08:00; @3[324,233] arr 08:45 w 08:00-08:45; @4[298,275] arr 10:15 w 08:45-10:15; @5[332,257] arr 10:30 w 10:15-10:30; @6[331,200] arr 11:15 w 10:30-11:15; @8[454,196] arr 14:30 w 11:15-14:30; @9[478,153] arr 17:00 w 14:30-17:00
+10:00 shown "Counter-attacking" (counterattack) moving 1.04 km/h toward -148 deg (compass, map north up) | sthilaire 0.76 km (-1.21 km/h) angle 15 | sthilaire 0.76 km (-1.21 km/h) angle 15
+10:05 shown "Counter-attacking" (counterattack) moving 1.04 km/h toward -148 deg (compass, map north up) | sthilaire 0.66 km (-1.20 km/h) angle 17 | sthilaire 0.66 km (-1.20 km/h) angle 17
+10:10 shown "Counter-attacking" (counterattack) moving 1.04 km/h toward -148 deg (compass, map north up) | sthilaire 0.56 km (-1.18 km/h) angle 20 | sthilaire 0.56 km (-1.18 km/h) angle 20
+10:15 shown "Counter-attacking" (counterattack) moving 2.00 km/h toward 70 deg (compass, map north up) | sthilaire 0.46 km (1.75 km/h) angle 166 | sthilaire 0.46 km (1.75 km/h) angle 166
+10:20 shown "Counter-attacking" (counterattack) moving 4.86 km/h toward 62 deg (compass, map north up) | sthilaire 0.85 km (4.66 km/h) angle 177 | sthilaire 0.85 km (4.66 km/h) angle 177
+10:25 shown "Counter-attacking" (counterattack) moving 4.86 km/h toward 62 deg (compass, map north up) | sthilaire 1.24 km (4.67 km/h) angle 178 | sthilaire 1.24 km (4.67 km/h) angle 178
+10:30 shown "Heavily engaged" (engaged) moving 3.16 km/h toward 42 deg (compass, map north up) | sthilaire 1.63 km (2.80 km/h) angle 161 | sthilaire 1.63 km (2.80 km/h) angle 161
+10:35 shown "Heavily engaged" (engaged) moving 2.40 km/h toward -1 deg (compass, map north up) | sthilaire 1.71 km (1.04 km/h) angle 123 | vandamme 1.71 km (-1.84 km/h) angle 34
+10:40 shown "Heavily engaged" (engaged) moving 2.40 km/h toward -1 deg (compass, map north up) | sthilaire 1.80 km (1.17 km/h) angle 127 | vandamme 1.56 km (-1.71 km/h) angle 39
+-> kollo: 6 moving samples with an offensive status, 3 of them more than 120 deg off the bearing to sthilaire (10:15-10:25)

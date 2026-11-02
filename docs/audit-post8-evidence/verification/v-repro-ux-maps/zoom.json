@@ -1,0 +1,1102 @@
+{
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "browser": "Chromium 141.0.7390.37 headless shell, SwiftShader",
+ "cases": {
+  "400x225@4": {
+   "steps": [
+    {
+     "what": "first screen: the card",
+     "bootS": 69,
+     "card": {
+      "shown": true,
+      "box": [
+       16,
+       -112,
+       368,
+       228
+      ],
+      "scrollH": 226,
+      "clientH": 226,
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "heading": {
+       "text": "The Battle of Austerlitz",
+       "top": -93,
+       "bottom": -73
+      },
+      "firstPara": {
+       "top": -65,
+       "bottom": 50
+      }
+     },
+     "text": {
+      "clock": "04:00",
+      "phaseTitle": "Dispositions in the dark",
+      "dispatchDisplay": "none",
+      "titleShown": false,
+      "ledeShown": false,
+      "nowTab": {
+       "hidden": true,
+       "display": "none"
+      },
+      "docked": false,
+      "railHidden": true,
+      "caption": {
+       "w": 0,
+       "h": 15,
+       "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+       "shown": false
+      },
+      "legendDisplay": "none",
+      "timebar": {
+       "top": 135,
+       "h": 91,
+       "frac": 0.4
+      },
+      "pageScroll": {
+       "docSH": 225,
+       "docSW": 400,
+       "ih": 225,
+       "iw": 400,
+       "htmlOverflow": "hidden",
+       "bodyOverflow": "hidden"
+      }
+     },
+     "reach": {
+      "#play": {
+       "box": [
+        59,
+        138,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#timerail": {
+       "box": [
+        14,
+        201,
+        372,
+        24
+       ],
+       "onScreen": "whole",
+       "centreHits": "button.ev-mark"
+      },
+      "#helpbtn": {
+       "box": [
+        370,
+        138,
+        32,
+        32
+       ],
+       "onScreen": "partly",
+       "centreHits": "itself"
+      },
+      "#eyesbtn": "not shown",
+      "#menubtn": "not shown",
+      "#panelsbtn": "not shown",
+      "#layersbtn": "not shown",
+      "#tourbtn": "not shown",
+      "#openingbtn": "not shown",
+      "#srcbtn": "not shown",
+      "#fr-tour": {
+       "box": [
+        37,
+        66,
+        123,
+        34
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#fr-close": {
+       "box": [
+        167,
+        66,
+        146,
+        34
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#lg-toggle": "not shown",
+      ".vm-btn": {
+       "box": [
+        116,
+        11,
+        56,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "#fr-key"
+      },
+      "#follow": {
+       "box": [
+        171,
+        138,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#speedbtn": {
+       "box": [
+        306,
+        139,
+        44,
+        29
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      }
+     },
+     "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom-400x225-at4-1-card.jpg"
+    },
+    {
+     "what": "after a wheel up over the card (desktop) or nothing (phone)",
+     "card": {
+      "shown": true,
+      "box": [
+       16,
+       -112,
+       368,
+       228
+      ],
+      "scrollH": 226,
+      "clientH": 226,
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "heading": {
+       "text": "The Battle of Austerlitz",
+       "top": -93,
+       "bottom": -73
+      },
+      "firstPara": {
+       "top": -65,
+       "bottom": 50
+      }
+     }
+    },
+    {
+     "what": "Esc (real key): the screen to explore",
+     "text": {
+      "clock": "04:00",
+      "phaseTitle": "Dispositions in the dark",
+      "dispatchDisplay": "none",
+      "titleShown": false,
+      "ledeShown": false,
+      "nowTab": {
+       "hidden": true,
+       "display": "none"
+      },
+      "docked": false,
+      "railHidden": true,
+      "caption": {
+       "w": 0,
+       "h": 15,
+       "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+       "shown": false
+      },
+      "legendDisplay": "none",
+      "timebar": {
+       "top": 135,
+       "h": 91,
+       "frac": 0.4
+      },
+      "pageScroll": {
+       "docSH": 225,
+       "docSW": 400,
+       "ih": 225,
+       "iw": 400,
+       "htmlOverflow": "hidden",
+       "bodyOverflow": "hidden"
+      }
+     },
+     "reach": {
+      "#play": {
+       "box": [
+        59,
+        138,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#timerail": {
+       "box": [
+        14,
+        201,
+        372,
+        24
+       ],
+       "onScreen": "whole",
+       "centreHits": "button.ev-mark"
+      },
+      "#helpbtn": {
+       "box": [
+        370,
+        138,
+        32,
+        32
+       ],
+       "onScreen": "partly",
+       "centreHits": "itself"
+      },
+      "#eyesbtn": "not shown",
+      "#menubtn": "not shown",
+      "#panelsbtn": {
+       "box": [
+        326,
+        122,
+        60,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "div.tb-top"
+      },
+      "#layersbtn": {
+       "box": [
+        317,
+        89,
+        69,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#tourbtn": {
+       "box": [
+        223,
+        89,
+        89,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#openingbtn": {
+       "box": [
+        260,
+        56,
+        126,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#srcbtn": "not shown",
+      "#fr-tour": "not shown",
+      "#fr-close": "not shown",
+      "#lg-toggle": "not shown",
+      ".vm-btn": {
+       "box": [
+        116,
+        11,
+        56,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#follow": {
+       "box": [
+        171,
+        138,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#speedbtn": {
+       "box": [
+        306,
+        139,
+        44,
+        29
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      }
+     },
+     "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom-400x225-at4-2-explore.jpg"
+    },
+    {
+     "what": "a real click at the Panels button's centre",
+     "press": {
+      "sel": "#panelsbtn",
+      "pressed": true,
+      "at": [
+       356,
+       136
+      ]
+     },
+     "rail": {
+      "railHidden": true,
+      "box": [
+       -275,
+       0,
+       272,
+       134
+      ],
+      "scroll": {
+       "top": 137,
+       "clientH": 0,
+       "scrollH": 2081,
+       "oy": "auto"
+      },
+      "activeTab": "tab-oob"
+     },
+     "reach": {
+      "srcbtn": [
+       -257,
+       156,
+       125,
+       24
+      ],
+      "centreHits": "div.tb-top"
+     }
+    },
+    {
+     "what": "the keyboard route: Tab to the Panels button (37 presses, reached: true), Enter",
+     "reached": true,
+     "rail": {
+      "railHidden": false,
+      "box": [
+       -275,
+       0,
+       272,
+       134
+      ],
+      "scroll": {
+       "top": 137,
+       "clientH": 0,
+       "scrollH": 2081,
+       "oy": "auto"
+      },
+      "activeTab": "tab-oob"
+     }
+    },
+    {
+     "what": "a real click at 'Accuracy and sources''s centre",
+     "press": {
+      "sel": "#srcbtn",
+      "pressed": true,
+      "at": [
+       81,
+       168
+      ]
+     },
+     "modalOpen": false,
+     "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom-400x225-at4-3-panels.jpg"
+    }
+   ],
+   "errors": [],
+   "seconds": 109
+  },
+  "320x256@4": {
+   "steps": [
+    {
+     "what": "first screen: the card",
+     "bootS": 71,
+     "card": {
+      "shown": true,
+      "box": [
+       16,
+       -140,
+       288,
+       287
+      ],
+      "scrollH": 285,
+      "clientH": 285,
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "heading": {
+       "text": "The Battle of Austerlitz",
+       "top": -121,
+       "bottom": -101
+      },
+      "firstPara": {
+       "top": -93,
+       "bottom": 69
+      }
+     },
+     "text": {
+      "clock": "04:00",
+      "phaseTitle": "Dispositions in the dark",
+      "dispatchDisplay": "none",
+      "titleShown": false,
+      "ledeShown": false,
+      "nowTab": {
+       "hidden": true,
+       "display": "none"
+      },
+      "docked": false,
+      "railHidden": true,
+      "caption": {
+       "w": 0,
+       "h": 15,
+       "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+       "shown": false
+      },
+      "legendDisplay": "none",
+      "timebar": {
+       "top": 166,
+       "h": 91,
+       "frac": 0.35
+      },
+      "pageScroll": {
+       "docSH": 256,
+       "docSW": 320,
+       "ih": 256,
+       "iw": 320,
+       "htmlOverflow": "hidden",
+       "bodyOverflow": "hidden"
+      }
+     },
+     "reach": {
+      "#play": {
+       "box": [
+        59,
+        169,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#timerail": {
+       "box": [
+        14,
+        232,
+        292,
+        24
+       ],
+       "onScreen": "whole",
+       "centreHits": "button.ev-mark"
+      },
+      "#helpbtn": {
+       "box": [
+        370,
+        169,
+        32,
+        32
+       ],
+       "onScreen": "off",
+       "centreHits": "#speedbtn"
+      },
+      "#eyesbtn": "not shown",
+      "#menubtn": "not shown",
+      "#panelsbtn": "not shown",
+      "#layersbtn": "not shown",
+      "#tourbtn": "not shown",
+      "#openingbtn": "not shown",
+      "#srcbtn": "not shown",
+      "#fr-tour": {
+       "box": [
+        37,
+        85,
+        110,
+        46
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#fr-close": {
+       "box": [
+        154,
+        85,
+        129,
+        46
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#lg-toggle": "not shown",
+      ".vm-btn": {
+       "box": [
+        76,
+        11,
+        56,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "#fr-key"
+      },
+      "#follow": {
+       "box": [
+        171,
+        169,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#speedbtn": {
+       "box": [
+        306,
+        170,
+        44,
+        29
+       ],
+       "onScreen": "partly",
+       "centreHits": "itself"
+      }
+     },
+     "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom-320x256-at4-1-card.jpg"
+    },
+    {
+     "what": "after a wheel up over the card (desktop) or nothing (phone)",
+     "card": {
+      "shown": true,
+      "box": [
+       16,
+       -140,
+       288,
+       287
+      ],
+      "scrollH": 285,
+      "clientH": 285,
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "heading": {
+       "text": "The Battle of Austerlitz",
+       "top": -121,
+       "bottom": -101
+      },
+      "firstPara": {
+       "top": -93,
+       "bottom": 69
+      }
+     }
+    },
+    {
+     "what": "Esc (real key): the screen to explore",
+     "text": {
+      "clock": "04:00",
+      "phaseTitle": "Dispositions in the dark",
+      "dispatchDisplay": "none",
+      "titleShown": false,
+      "ledeShown": false,
+      "nowTab": {
+       "hidden": true,
+       "display": "none"
+      },
+      "docked": false,
+      "railHidden": true,
+      "caption": {
+       "w": 0,
+       "h": 15,
+       "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+       "shown": false
+      },
+      "legendDisplay": "none",
+      "timebar": {
+       "top": 166,
+       "h": 91,
+       "frac": 0.35
+      },
+      "pageScroll": {
+       "docSH": 256,
+       "docSW": 320,
+       "ih": 256,
+       "iw": 320,
+       "htmlOverflow": "hidden",
+       "bodyOverflow": "hidden"
+      }
+     },
+     "reach": {
+      "#play": {
+       "box": [
+        59,
+        169,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#timerail": {
+       "box": [
+        14,
+        232,
+        292,
+        24
+       ],
+       "onScreen": "whole",
+       "centreHits": "button.ev-mark"
+      },
+      "#helpbtn": {
+       "box": [
+        370,
+        169,
+        32,
+        32
+       ],
+       "onScreen": "off",
+       "centreHits": "#speedbtn"
+      },
+      "#eyesbtn": "not shown",
+      "#menubtn": "not shown",
+      "#panelsbtn": {
+       "box": [
+        246,
+        122,
+        60,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#layersbtn": {
+       "box": [
+        237,
+        89,
+        69,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#tourbtn": {
+       "box": [
+        143,
+        89,
+        89,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#openingbtn": {
+       "box": [
+        180,
+        56,
+        126,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#srcbtn": "not shown",
+      "#fr-tour": "not shown",
+      "#fr-close": "not shown",
+      "#lg-toggle": "not shown",
+      ".vm-btn": {
+       "box": [
+        76,
+        11,
+        56,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#follow": {
+       "box": [
+        171,
+        169,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#speedbtn": {
+       "box": [
+        306,
+        170,
+        44,
+        29
+       ],
+       "onScreen": "partly",
+       "centreHits": "itself"
+      }
+     },
+     "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom-320x256-at4-2-explore.jpg"
+    },
+    {
+     "what": "a real click at the Panels button's centre",
+     "press": {
+      "sel": "#panelsbtn",
+      "pressed": true,
+      "at": [
+       276,
+       136
+      ]
+     },
+     "rail": {
+      "railHidden": false,
+      "box": [
+       0,
+       0,
+       272,
+       165
+      ],
+      "scroll": {
+       "top": 137,
+       "clientH": 0,
+       "scrollH": 2081,
+       "oy": "auto"
+      },
+      "activeTab": "tab-oob"
+     },
+     "reach": {
+      "srcbtn": [
+       18,
+       156,
+       125,
+       24
+      ],
+      "centreHits": "div.tb-ctrl"
+     }
+    },
+    {
+     "what": "a real click at 'Accuracy and sources''s centre",
+     "press": {
+      "sel": "#srcbtn",
+      "pressed": true,
+      "at": [
+       81,
+       168
+      ]
+     },
+     "modalOpen": false,
+     "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom-320x256-at4-3-panels.jpg"
+    }
+   ],
+   "errors": [],
+   "seconds": 109
+  },
+  "844x390-phone": {
+   "steps": [
+    {
+     "what": "first screen: the card",
+     "bootS": 99,
+     "card": {
+      "shown": true,
+      "box": [
+       152,
+       76,
+       540,
+       205
+      ],
+      "scrollH": 203,
+      "clientH": 203,
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "heading": {
+       "text": "The Battle of Austerlitz",
+       "top": 95,
+       "bottom": 115
+      },
+      "firstPara": {
+       "top": 123,
+       "bottom": 215
+      }
+     },
+     "text": {
+      "clock": "04:00",
+      "phaseTitle": "Dispositions in the dark",
+      "dispatchDisplay": "none",
+      "titleShown": false,
+      "ledeShown": false,
+      "nowTab": {
+       "hidden": true,
+       "display": "none"
+      },
+      "docked": false,
+      "railHidden": true,
+      "caption": {
+       "w": 428,
+       "h": 15,
+       "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+       "shown": true
+      },
+      "legendDisplay": "none",
+      "timebar": {
+       "top": 300,
+       "h": 91,
+       "frac": 0.23
+      },
+      "pageScroll": {
+       "docSH": 390,
+       "docSW": 844,
+       "ih": 390,
+       "iw": 844,
+       "htmlOverflow": "hidden",
+       "bodyOverflow": "hidden"
+      }
+     },
+     "reach": {
+      "#play": {
+       "box": [
+        59,
+        303,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#timerail": {
+       "box": [
+        14,
+        366,
+        816,
+        24
+       ],
+       "onScreen": "whole",
+       "centreHits": "button.ev-mark"
+      },
+      "#helpbtn": {
+       "box": [
+        798,
+        303,
+        32,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#eyesbtn": "not shown",
+      "#menubtn": "not shown",
+      "#panelsbtn": "not shown",
+      "#layersbtn": "not shown",
+      "#tourbtn": "not shown",
+      "#openingbtn": "not shown",
+      "#srcbtn": "not shown",
+      "#fr-tour": {
+       "box": [
+        173,
+        231,
+        123,
+        34
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#fr-close": {
+       "box": [
+        303,
+        231,
+        146,
+        34
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#lg-toggle": "not shown",
+      ".vm-btn": {
+       "box": [
+        336,
+        15,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#follow": {
+       "box": [
+        171,
+        303,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#speedbtn": {
+       "box": [
+        306,
+        304,
+        44,
+        29
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      }
+     },
+     "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom-844x390-phone-1-card.jpg"
+    },
+    {
+     "what": "after a wheel up over the card (desktop) or nothing (phone)",
+     "card": {
+      "shown": true,
+      "box": [
+       152,
+       76,
+       540,
+       205
+      ],
+      "scrollH": 203,
+      "clientH": 203,
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "heading": {
+       "text": "The Battle of Austerlitz",
+       "top": 95,
+       "bottom": 115
+      },
+      "firstPara": {
+       "top": 123,
+       "bottom": 215
+      }
+     }
+    },
+    {
+     "what": "Explore on my own (real tap): the screen to explore",
+     "text": {
+      "clock": "04:00",
+      "phaseTitle": "Dispositions in the dark",
+      "dispatchDisplay": "none",
+      "titleShown": false,
+      "ledeShown": false,
+      "nowTab": {
+       "hidden": true,
+       "display": "none"
+      },
+      "docked": false,
+      "railHidden": true,
+      "caption": {
+       "w": 428,
+       "h": 15,
+       "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+       "shown": true
+      },
+      "legendDisplay": "none",
+      "timebar": {
+       "top": 300,
+       "h": 91,
+       "frac": 0.23
+      },
+      "pageScroll": {
+       "docSH": 390,
+       "docSW": 844,
+       "ih": 390,
+       "iw": 844,
+       "htmlOverflow": "hidden",
+       "bodyOverflow": "hidden"
+      }
+     },
+     "reach": {
+      "#play": {
+       "box": [
+        59,
+        303,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#timerail": {
+       "box": [
+        14,
+        366,
+        816,
+        24
+       ],
+       "onScreen": "whole",
+       "centreHits": "button.ev-mark"
+      },
+      "#helpbtn": {
+       "box": [
+        798,
+        303,
+        32,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#eyesbtn": "not shown",
+      "#menubtn": "not shown",
+      "#panelsbtn": {
+       "box": [
+        770,
+        56,
+        60,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#layersbtn": {
+       "box": [
+        696,
+        56,
+        69,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#tourbtn": {
+       "box": [
+        602,
+        56,
+        89,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#openingbtn": {
+       "box": [
+        471,
+        56,
+        126,
+        28
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#srcbtn": "not shown",
+      "#fr-tour": "not shown",
+      "#fr-close": "not shown",
+      "#lg-toggle": "not shown",
+      ".vm-btn": {
+       "box": [
+        336,
+        15,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#follow": {
+       "box": [
+        171,
+        303,
+        58,
+        32
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      },
+      "#speedbtn": {
+       "box": [
+        306,
+        304,
+        44,
+        29
+       ],
+       "onScreen": "whole",
+       "centreHits": "itself"
+      }
+     },
+     "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom-844x390-phone-2-explore.jpg"
+    }
+   ],
+   "errors": [],
+   "seconds": 128
+  }
+ }
+}

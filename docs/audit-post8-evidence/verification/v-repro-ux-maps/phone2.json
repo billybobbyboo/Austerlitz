@@ -1,0 +1,41 @@
+{
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  {
+   "what": "elementFromPoint at phone.js's foot point and a point whose foot reaches the rail under a marker's middle-line hit area",
+   "probe": {
+    "rail": [
+     8,
+     820,
+     374,
+     24
+    ],
+    "mid": 832,
+    "foot": 840,
+    "atPhoneJsFootPoint": "rail",
+    "pick": {
+     "x": 121.5,
+     "middle": "marker: 08:25 to 08:45, Napoleon releases Soult against the heights ",
+     "foot": "rail"
+    }
+   }
+  },
+  {
+   "what": "real touch drag 60 px right from (121.5, 840), 4 px above the rail's foot",
+   "before": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false
+   },
+   "after": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false
+   }
+  }
+ ],
+ "errors": [],
+ "seconds": 219
+}

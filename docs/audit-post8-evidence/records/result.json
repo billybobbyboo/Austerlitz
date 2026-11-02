@@ -1,0 +1,622 @@
+{
+ "area": "records",
+ "scope_summary": "Records area of the final audit after Stage 8 (third attempt; reused size.json, pages-root.html and id-mentions.py from the earlier ones). (1) The 75 findings of docs/FINAL_AUDIT.md: accepted-by-decision 2, open 1, partly 6, resolved 64, superseded 2; 38 read in this audit (34 in code, including the blocker and every major). (2) The carried-issue register: 57 items from STAGE8_SPEC 20.13-25.4 and ROADMAP, each with source lines, decision, status and the other areas' evidence (accepted 13, done-with-residuals 8, not-measured 2, open 29, provisional 2, recorded 3). (3) Documentation: 22 stale statements (README 10 incl. the Pages root, CHANGELOG 5, ROADMAP 3, CLAUDE.md 3, checks.yml 1); CLAUDE.md's suite numbers 8 of 8 correct; no contradiction on decisions 255-269 but merge status. No application source, data, threshold, test, archive or build changed.",
+ "coverage": [
+  {
+   "item": "docs/FINAL_AUDIT.md's 75 findings: status",
+   "method": "tools/audit-post8/records/id-mentions.py (every id's mentions in CHANGELOG.md, ROADMAP.md, STAGE8_SPEC.md) + the step sections read + code read",
+   "result": "accepted-by-decision 2, open 1, partly 6, resolved 64, superseded 2",
+   "evidence": "docs/audit-post8-evidence/records/prior-findings.md, prior-findings.json"
+  },
+  {
+   "item": "prior findings verified against the code",
+   "method": "grep and read at file:line on origin/main 43e3e5b",
+   "result": "38 read in this audit (34 in code, among them H-1 to H-8, D-1, D-2, S-1, S-2, SW-1 to SW-4, T-0 to T-2, A-1 to A-3; H-17, P-2, R-1, R-2 in records or measures)",
+   "evidence": "docs/audit-post8-evidence/records/prior-findings.json (verified_in_code per row)"
+  },
+  {
+   "item": "the carried-issue register",
+   "method": "STAGE8_SPEC 20.13, 20.14, 21.9, 22.6, 23.4, 24.1-24.3, 25.2-25.4 and ROADMAP's hand-ons and L1-L5 read; each item's status from the records, code read here and the other areas' result.json",
+   "result": "57 items: accepted 13, done-with-residuals 8, not-measured 2, open 29, provisional 2, recorded 3",
+   "evidence": "docs/audit-post8-evidence/records/carried.md, carried.json"
+  },
+  {
+   "item": "README.md against the code and the checks",
+   "method": "doc-consistency.py (quotes re-read on their lines; counts from package.json, the manifest, cases.js and the contrast log)",
+   "result": "9 stale statements in README.md, 1 in checks.yml; the Pages root is the README with no link to the map",
+   "evidence": "docs/audit-post8-evidence/records/doc-consistency.md, pages-root.html"
+  },
+  {
+   "item": "CLAUDE.md's numbers",
+   "method": "doc-consistency.py against thresholds.js, boot-check.js, redteam.js, the manifest, cases.js, package.json",
+   "result": "8 of 8 agree (317, 39, 248/998, CTX_DELETES 248, LANG_ALLOW 2, CONF_SHARE.land 0.07, plans-overview 13, f10fe585)",
+   "evidence": "docs/audit-post8-evidence/records/doc-consistency.json (numbers)"
+  },
+  {
+   "item": "CLAUDE.md's Current state and the merge records against git",
+   "method": "git log --merges origin/main",
+   "result": "9 status lines stale (CHANGELOG 5, ROADMAP 3, CLAUDE.md 1); ROADMAP and two CHANGELOG heads contradict CLAUDE.md for #77 and #78",
+   "evidence": "docs/audit-post8-evidence/records/doc-consistency.md"
+  },
+  {
+   "item": "decisions 255-269 across CLAUDE.md, ROADMAP.md, STAGE8_SPEC.md, CHANGELOG.md",
+   "method": "tools/audit-post8/records/decision-letters.py (every \"2xx (x)\" citation tallied by letter and record) + the decision paragraphs read",
+   "result": "no contradiction in letter or content; 255 and 258 carry two letters each by their own terms ((a) and (d); (a) and (b))",
+   "evidence": "docs/audit-post8-evidence/records/decision-letters.json"
+  }
+ ],
+ "findings": [
+  {
+   "title": "README.md describes the checks wrongly again and calls the file self-contained (the prior audit's R-1 recurred)",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "records: README.md, .github/workflows/checks.yml",
+   "user_impact": "A contributor or reviewer reading README.md is told check:data compares against step 5c's build, check:contrast reads 35 states and six start-up cases, the self-test has 242 checks in about 15 minutes, check:visual 30 views in about 100 minutes, audit.js only prints, and that the HTML is self-contained although three.js comes from cdnjs.",
+   "status": "open",
+   "origin": "inherited (step 6 item 3 made the states and views stale) / new-regression (Stage 8 PRs 8A-8K moved the reference, the counts and the times)",
+   "refs": [
+    "README.md:4",
+    "README.md:27",
+    "README.md:28",
+    "README.md:30",
+    "README.md:31",
+    "README.md:32",
+    ".github/workflows/checks.yml:5",
+    "package.json:9",
+    "shell.html:437",
+    "tools/visual/selftest-manifest.json",
+    "tools/visual/cases.js"
+   ],
+   "evidence": "docs/audit-post8-evidence/records/doc-consistency.md (every quoted phrase re-read on its line by doc-consistency.py); docs/audit-post8-evidence/checks/check-contrast.txt (\"states 45 (10 at 390 x 844 as a phone)\", \"boot cases: 8 of 8 pass\"); CHANGELOG.md:1936 (audit.js asserts since step 5)",
+   "expected": "README's table matches package.json and the checks as they run (archive/stage8k-f10fe585.html; 45 states; 8 start-up cases; 317 checks; 39 views), and says three.js loads from cdnjs.",
+   "observed": "9 stale statements in README.md (lines 4, 27, 28, 30 twice, 31 twice, 32 twice) and one in checks.yml:5 (\"each about 8-15 minutes\"; the self-test alone takes 21-43 minutes on CI). README.md last changed at 15b2dcc (decision 214).",
+   "remedy": "A records-only commit: point README's table at CLAUDE.md's Checks section instead of copying counts and times, or update them; write \"one HTML file; three.js r128 is loaded from cdnjs with its integrity hash\".",
+   "validation": "python3 -I tools/audit-post8/records/doc-consistency.py then reads the corrected lines (its quotes would no longer be found)."
+  },
+  {
+   "title": "The published site's root page is the developer README: no link to the map and nothing for a visitor on evidence and reconstruction",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "publishing (GitHub Pages root)",
+   "user_impact": "A visitor who opens https://billybobbyboo.github.io/Austerlitz/ reads build instructions and suite descriptions; the map file is named twice in code formatting and is not linked; nothing says what the map documents and what it reconstructs.",
+   "status": "open",
+   "origin": "inherited",
+   "refs": [
+    "README.md:1-37",
+    "docs/audit-post8-evidence/records/pages-root.html",
+    "docs/audit-post8-evidence/records/pages-root-headers.txt"
+   ],
+   "evidence": "pages-root.html (fetched 2 November 2026 01:41 GMT; last-modified 1 November 10:57:40 GMT): the rendered README; its only <a href> is to the site itself.",
+   "expected": "A visitor arriving at the site root finds a link to austerlitz-command-map.html and one paragraph on the reconstruction (claims, grades, design conventions).",
+   "observed": "Developer documentation only; the stale statements of the README finding repeated to the public.",
+   "remedy": "Records/publishing only: a short visitor paragraph and a link at the top of README.md, or a small index.html; no application change.",
+   "validation": "curl the Pages root after deployment and check for the link."
+  },
+  {
+   "title": "Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred)",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "records: CHANGELOG.md, docs/ROADMAP.md, CLAUDE.md",
+   "user_impact": "The next agent or the owner reading the status lines is told 8H, 8I-8K, 8L, decision 267 (a) and the device records are unmerged drafts; CLAUDE.md:744 says \"Draft PR #79 holds both records\".",
+   "status": "open",
+   "origin": "new-regression (Stage 8 records: 8H to the device acceptance)",
+   "refs": [
+    "CHANGELOG.md:5",
+    "CHANGELOG.md:18",
+    "CHANGELOG.md:40",
+    "CHANGELOG.md:58",
+    "CHANGELOG.md:86",
+    "docs/ROADMAP.md:510",
+    "docs/ROADMAP.md:535",
+    "docs/ROADMAP.md:548",
+    "CLAUDE.md:744",
+    "CLAUDE.md:734",
+    "CLAUDE.md:738"
+   ],
+   "evidence": "git log --merges origin/main: b7fb67a #73 (30 Oct), 72c7e1b #74, c706c96 #76, c7de7a2 #75 (31 Oct), 141f890 #77 (31 Oct), c2adefe #78 and 43e3e5b #79 (1 Nov); docs/audit-post8-evidence/records/doc-consistency.json",
+   "expected": "Each merged part's status line says \"merged (#n, commit)\", as step 5 made them (CHANGELOG.md:1854).",
+   "observed": "Five CHANGELOG heads say \"not merged\" or \"draft\"; three ROADMAP paragraphs say \"not merged\"; CLAUDE.md:744 says draft while CLAUDE.md:734 and :738 record #77 and #78 merged; ROADMAP records none of PRs #73-#79's merges.",
+   "remedy": "A records-only commit updating the nine status lines with their merge commits.",
+   "validation": "grep -n \"not merged\" CHANGELOG.md docs/ROADMAP.md against git log --merges."
+  },
+  {
+   "title": "CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and \"Current state (October 2026)\"",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "records: CLAUDE.md",
+   "user_impact": "An agent reading CLAUDE.md is given 484 unchecked statements and 145 own claims (now 481 and 148) and an October heading over November state.",
+   "status": "open",
+   "origin": "new-regression (8K; 1 November records)",
+   "refs": [
+    "CLAUDE.md:24",
+    "CLAUDE.md:497",
+    "CHANGELOG.md:204"
+   ],
+   "evidence": "docs/audit-post8-evidence/records/claims-count.json (704 statements, 148 own, 75 by class, 481 unchecked, 0 stale entries); CHANGELOG.md:204 records the same",
+   "expected": "CLAUDE.md states the current counts (it is the agents' map).",
+   "observed": "\"484 after decision 210 (c), 145\"; \"## Current state (October 2026)\".",
+   "remedy": "Two words in a records-only commit.",
+   "validation": "node tools/audit-post8/records/claims-count.js"
+  },
+  {
+   "title": "G-3 (Miloradovich at dawn) is the one finding of the prior audit never taken up: no step, no decision, no record since",
+   "category": "unresolved-historical",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "data (FORMATIONS.milo track 0)",
+   "user_impact": "milo@0 is graded A (\"Position documented in the sources\") with the act \"Formed on the plateau near Pratzen village\" while plotted about 1.6 km from the village; a visitor reads the strongest grade on an unchecked placement.",
+   "status": "open",
+   "origin": "inherited",
+   "refs": [
+    "docs/FINAL_AUDIT.md:348",
+    "data.js:561",
+    "world.js:143",
+    "docs/audit-post8-evidence/records/id-mentions.json"
+   ],
+   "evidence": "id-mentions.json: G-3 has 0 mentions in CHANGELOG.md, docs/ROADMAP.md and docs/STAGE8_SPEC.md (with H-10 and T-8, the only ids never written; those two were done under decisions 135 and 132); docs/audit-post8-evidence/history/result.json: \"(d) G-3 still open\"",
+   "expected": "Every prior finding assigned to a step, decided, or recorded as left.",
+   "observed": "Neither ROADMAP's step table nor Stage 8's list of unassigned findings (docs/STAGE8_SPEC.md:1327-1339) names G-3.",
+   "remedy": "Put it in the next data task: a source check of the IV Column's place at dawn, or the grade lowered with the act qualified; record it in docs/ROADMAP.md.",
+   "validation": "check:data on the data task; the history area's grade probe."
+  },
+  {
+   "title": "The carried checklist misstates three of its own items (the records' view of other areas' findings)",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "records: docs/STAGE8_SPEC.md 21.9, 22.6, 23.4",
+   "user_impact": "The checklist the final audit was to start from understates three items: a reader would take them as small offsets and a 4-second gap.",
+   "status": "open",
+   "origin": "new-regression (Stage 8 records, 8J-8L)",
+   "refs": [
+    "docs/STAGE8_SPEC.md:5108",
+    "docs/STAGE8_SPEC.md:5111-5112",
+    "docs/STAGE8_SPEC.md:5400-5401",
+    "docs/STAGE8_SPEC.md:5513-5516",
+    "data.js:476",
+    "data.js:508"
+   ],
+   "evidence": "history finding 8 (kienmayer@7 \"Holding west of the Goldbach\" drawn 901 m east of the brook since Stage 0, filed by 8J as an offset from the corrected brook); history finding 9 (Caffarelli 1.61-2.64 km from Bagration, the records say 2.5-2.9 km); visibility carried and findings 1, 3 (the 4,033 ms is the benchmark's whole 121-frame window; over 08:30-11:30 counters hidden 12-28 s); docs/audit-post8-evidence/records/carried.md C-06, C-40, C-41",
+   "expected": "The checklist states each item as measured.",
+   "observed": "An offset since Stage 0 filed as 8J's; a separation overstated; a saturated measure read as a duration.",
+   "remedy": "Let this register (carried.md) supersede section 22.6's wording; correct the three lines when the records are next touched.",
+   "validation": "The history and visibility areas' probes."
+  },
+  {
+   "title": "Two items \"recorded complete on the owner's word\" carry no results: the screen-reader session (decision 175) and the human second reading (decision 189)",
+   "category": "accepted-compromise",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "records / accessibility and sources evidence",
+   "user_impact": "No screen-reader result exists for any build, Stage 8's landmark and heading changes (8H, A-6) included; the A grades of the drawn coats rest on machine readings only. The records otherwise read as if both were done.",
+   "status": "accepted by decisions 175 and 189",
+   "origin": "accepted-compromise",
+   "refs": [
+    "docs/ROADMAP.md:156-159",
+    "docs/ROADMAP.md:196",
+    "docs/step3-evidence/sr-session.md",
+    "docs/stage6-evidence/second-reading.md:6-7"
+   ],
+   "evidence": "ROADMAP:156-159 (\"no item results ... none of its 24 items is recorded here as passed or failed\"); ROADMAP:196 (\"no item results given, none recorded\"); second-reading.md:6-7 (\"Both readers were machine readers\")",
+   "expected": "An owner attestation is labelled as one wherever the work is counted as done.",
+   "observed": "Counted as done (CLAUDE.md: \"step 3 is done\"; decision 189 \"complete\").",
+   "remedy": "Either run the 24-item script once on the final build and read the 15 quotes once, or label both as attestations without results in CLAUDE.md and ROADMAP (no app change).",
+   "validation": "The script's result column filled, or the label present."
+  },
+  {
+   "title": "Decision 140's premise has moved: the self-test is 21.7% of the file (12.8% when decided), +277,502 bytes in Stage 8",
+   "category": "accepted-compromise",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "build size",
+   "user_impact": "Every visitor downloads 611,113 bytes of self-test and debug API (and 437,848 bytes of comments, partly inside it) that no visitor runs; the desktop report transferred 1,219,603 bytes compressed for the page.",
+   "status": "accepted by decision 140 on a premise of 12.8%",
+   "origin": "new-regression (Stage 8 growth of an accepted compromise)",
+   "refs": [
+    "docs/audit-post8-evidence/records/size.json",
+    "docs/FINAL_AUDIT.md:842",
+    "docs/STAGE8_SPEC.md:1336",
+    "docs/STAGE8_SPEC.md:5577"
+   ],
+   "evidence": "size.json (tools/audit/size.js on f10fe585): AUSTERLITZ_DEBUG 611,113 bytes, shareOfHtml 0.217; comments 437,848 bytes (15.6%); 225,445 bytes (12.8%) at the audit, 333,611 (15.0%) at Stage 8 Part A by the same tool",
+   "expected": "An accepted trade-off re-put when its measure changes materially.",
+   "observed": "Not re-put since Stage 8 Part A recorded \"present, larger\".",
+   "remedy": "Put decision 140 to the owner again with these numbers; no change without the owner (the harness testing the shipped file is the reason it stands).",
+   "validation": "node tools/audit/size.js --json"
+  }
+ ],
+ "experiments": [
+  {
+   "command": "python3 -I tools/audit-post8/records/id-mentions.py /home/user/Austerlitz docs/audit-post8-evidence/records/id-mentions.json",
+   "outcome": "75 ids; H-10, G-3, T-8 never mentioned by id",
+   "environment": "node/python on the audited tree",
+   "evidence_path": "docs/audit-post8-evidence/records/id-mentions.json"
+  },
+  {
+   "command": "python3 -I tools/audit-post8/records/prior-findings.py /home/user/Austerlitz docs/audit-post8-evidence/records",
+   "outcome": "{\"resolved\": 64, \"partly\": 6, \"accepted-by-decision\": 2, \"open\": 1, \"superseded\": 2}",
+   "evidence_path": "docs/audit-post8-evidence/records/prior-findings.json"
+  },
+  {
+   "command": "python3 -I tools/audit-post8/records/carried.py /home/user/Austerlitz docs/audit-post8-evidence/records",
+   "outcome": "57 items; every cited area finding exists",
+   "evidence_path": "docs/audit-post8-evidence/records/carried.json"
+  },
+  {
+   "command": "python3 -I tools/audit-post8/records/doc-consistency.py /home/user/Austerlitz docs/audit-post8-evidence/records",
+   "outcome": "22 stale statements (all quotes found on their lines); 8 of 8 numbers agree",
+   "evidence_path": "docs/audit-post8-evidence/records/doc-consistency.json"
+  },
+  {
+   "command": "python3 -I tools/audit-post8/records/decision-letters.py /home/user/Austerlitz docs/audit-post8-evidence/records/decision-letters.json",
+   "outcome": "no letter contradiction for 255-269",
+   "evidence_path": "docs/audit-post8-evidence/records/decision-letters.json"
+  },
+  {
+   "command": "node tools/audit-post8/records/castle-site.js /home/user/Austerlitz",
+   "outcome": "the castle's site on the drawn \"track\" class (13 of 16 points at 25 m)",
+   "environment": "node, the geography area's loader, no page",
+   "evidence_path": "docs/audit-post8-evidence/records/castle-site.json",
+   "limitations": "the nearest road vertex (672 m) is not the nearest segment; not used"
+  },
+  {
+   "command": "node tools/audit-post8/records/claims-count.js /home/user/Austerlitz",
+   "outcome": "704 statements, 148 own, 75 by class, 481 unchecked, 0 stale",
+   "evidence_path": "docs/audit-post8-evidence/records/claims-count.json"
+  },
+  {
+   "command": "node tools/audit/size.js --json (an earlier attempt of this area; reused)",
+   "outcome": "self-test 611,113 bytes (21.7%); comments 437,848 bytes",
+   "evidence_path": "docs/audit-post8-evidence/records/size.json"
+  },
+  {
+   "command": "curl the GitHub Pages root (an earlier attempt of this area; reused)",
+   "outcome": "the README rendered; one link, to itself",
+   "evidence_path": "docs/audit-post8-evidence/records/pages-root.html"
+  }
+ ],
+ "not_checked": [
+  "No browser run in this area: on-screen wording of the stale records was not rendered (the visual and accessibility areas did that).",
+  "37 prior findings rest on the records alone (not re-read in code); their status follows the step sections of CHANGELOG.md.",
+  "Steps 1-3's hand-ons were followed only as far as later steps' lists carry them; each was not re-verified on its own.",
+  "C-05 (whether the Layers panel says anything about the effects on a phone), C-42 (the woods redrawn where a wood changed) and most of C-51 (step 4's review records) not re-examined.",
+  "The perf-attribution, robustness and sources-chronology areas had left no result.json when this was written; their items cite the perf area or nothing.",
+  "Pull-request states read from merge commits on origin/main, not from the GitHub API.",
+  "STAGE8_SPEC.md's sections other than 20.13-25.4 and 9.4 not audited for internal consistency."
+ ],
+ "carried_status": [
+  {
+   "item": "C-01 Desktop performance: section 8.3's CPU line exceeded in Play at half speed (+1.5 ms) and the Overview's orbit (+1.1 ms); Play at 144 Hz holds about on",
+   "status": "accepted: accepted as measured (decision 268 (a)); not attributed",
+   "evidence": "Decision 268 (a) chose not to attribute it before the audit; this audit's perf-attribution area has left no result (docs/audit-post8-evidence/perf-attribution/ is empty). ... [carried.md C-01; source docs/STAGE8_SPEC.md:4695-4696 (20.13), :5389-5390 (22.6), :5517 (23.4)]"
+  },
+  {
+   "item": "C-02 Phone performance: section 8.3's phone budget met; section 8.5 not evaluable like for like; after warming phase 8's Overview about 41 frames a second ",
+   "status": "accepted: accepted as measured (decision 269 (a))",
+   "evidence": "perf finding 1: the long-frame share is not a dropped-frame measure and is unstable at the phone's operating point; perf finding 2: \"after the phone warms\" asserted witho ... [carried.md C-02; source docs/STAGE8_SPEC.md:5582-5583 (24.3), :5612-5641 (25.1), :5654-5674 (2]"
+  },
+  {
+   "item": "C-03 An integrated GPU never measured (section 8.3's integrated-GPU condition; the machine decision 138 named)",
+   "status": "not-measured: not measured",
+   "evidence": "perf finding 6 (S3/P2, untested): performance on the machine decision 138 and section 8.3 name is unknown; the largest 4x rise against L3 +1.4% in calls by the perf area' ... [carried.md C-03; source docs/STAGE8_SPEC.md:4695-4696 (20.13), :5552-5557 (24.1), :5590-5591 (]"
+  },
+  {
+   "item": "C-04 The inconclusive brackets: desktop culling, effects off and gait each 12 of 12 \"neither\"; phone culling 7 of 12 faster with it, effects 4 of 12 faster",
+   "status": "recorded: recorded; \"not shown\" by the rule on both devices",
+   "evidence": "perf finding 9: the device route's instrument limits (no raw intervals, median counts, flags rather than effects); perf finding 10: a 329 ms frame in the phone's first ef ... [carried.md C-04; source docs/STAGE8_SPEC.md:5571-5576 (24.2), :5642-5653 (25.2), :5677-5681 (2]"
+  },
+  {
+   "item": "C-05 Visual effects off not faster on the phone (5 of 14 effects-off blocks fell to 35-47 frames a second): a visitor who turns them off may get a slower m",
+   "status": "open: open; undecided",
+   "evidence": "No decision; whether the Layers panel says anything of it was not checked here. [carried.md C-05; source docs/STAGE8_SPEC.md:5647-5650 (25.2), :5679-5680 (25.4); docs/ROADMAP.]"
+  },
+  {
+   "item": "C-06 Counters hidden during playback: Play's longest hidden formation 4,033 ms; three counters dropped at rest in the hybrid view at 09:00",
+   "status": "open: open; confirmed, and understated by the benchmark",
+   "evidence": "visibility carried and finding 1 (S2/P2): the 4,033 ms is the benchmark's whole 121-frame window (Nansouty, Walther, Miloradovich hidden in 121 of 121); over 08:30-11:30  ... [carried.md C-06; source docs/STAGE8_SPEC.md:5400-5401 (22.6), :5513-5516 (23.4), :2308, :5307;]"
+  },
+  {
+   "item": "C-07 Visibility over longer playback than the benchmark's runs, judged on the screen",
+   "status": "open: measured in this audit: acceptable in three presentations, not in Landscape with counters",
+   "evidence": "visibility carried: the default Landscape 83-89% drawn (gaps up to 2.5 s), the paper map 93.2% (up to 0.7 s), the phone's Landscape 79.6% (up to 2.3 s); Landscape with co ... [carried.md C-07; source docs/STAGE8_SPEC.md:5513-5516 (23.4)]"
+  },
+  {
+   "item": "C-08 The motion block's 16 totals over their ceilings (248 jumps, 998 pops against 245 and 985)",
+   "status": "accepted: settled (decision 267 (a); not re-required)",
+   "evidence": "tools/visual/thresholds.js:270 MOTION {JUMPS:248, POPS:998, FLICKER:10, LOD:130} (read in this audit). tests finding TS-14 (accepted-compromise): the ceilings and baselin ... [carried.md C-08; source docs/STAGE8_SPEC.md:5400 (22.6), :5451-5516 (23); docs/ROADMAP.md:563-]"
+  },
+  {
+   "item": "C-09 The troops' contact with the ground: 8F's chords with their bounds and counts, the original criterion (every foot on the ground) not satisfied, the an",
+   "status": "provisional: provisional, unchanged (the device runs it waited on are recorded; the decision not revisited)",
+   "evidence": "visual-landscape carried and finding 1 (S2/P2): no gross floating at the default views, but figures on the frozen Satschan mere are drawn up to 0.874 units below the ice  ... [carried.md C-09; source docs/STAGE8_SPEC.md:4738-4743 (20.14), :4866-4869 (21.5), :5090-5092 a]"
+  },
+  {
+   "item": "C-10 The ice under a low sun: the low views' glare at 15:00, 43.5% of the ice",
+   "status": "accepted: accepted, unchanged",
+   "evidence": "visual-landscape carried: visually confirmed (shots/ice-low8h-1500.jpg a broad white sheen with the sun in frame; 09:00 and 12:00 mild; 16:30 none); related new: visual-l ... [carried.md C-10; source docs/STAGE8_SPEC.md:4734-4737 (20.14), :4864-4865 (21.5), :5096-5097 (]"
+  },
+  {
+   "item": "C-11 The troops' uniform facings (decision 245 (a): none drawn), to be reconsidered now that the troops can be judged",
+   "status": "open: unchanged; the owner's reconsideration open",
+   "evidence": "visual-landscape carried: invisible at the default distances (a man under 17.6 px), absent in the closest views (French infantry plain blue, no white lapels); orientation ... [carried.md C-11; source docs/STAGE8_SPEC.md:4698 (20.13), :4744-4747 (20.14), :5113-5115 (21.9]"
+  },
+  {
+   "item": "C-12 Artillery: the drivers on the guns on the heights (an inference from IV Corps' letter) and the gunners beside moving pieces",
+   "status": "open: unchanged; the owner has not decided",
+   "evidence": "visual-landscape carried: a driver on each team of the guns on the heights; the limbered battery has no gunners (Gassendi has them march beside); at 14:10 it overlaps an  ... [carried.md C-12; source docs/STAGE8_SPEC.md:4744-4746 (20.14), :5113-5114 (21.9), :5394-5395 (]"
+  },
+  {
+   "item": "C-13 The Sokolnitz castle's prominence (about 96 by 73 m, reading smaller than the farmhouses beside it) and the III Column's figures over its symbol from ",
+   "status": "accepted: accepted, confirmed",
+   "evidence": "visual-landscape carried: in 11 of Sokolnitz's 13 farmsteads the long range alone (up to 176 x 71 m) covers more ground than the whole quadrangle (96 x 73 m); at 10:00 th ... [carried.md C-13; source docs/STAGE8_SPEC.md:5095-5096 and :5109-5110 (21.9), :5228-5240 (22.2)]"
+  },
+  {
+   "item": "C-14 The castle's site on the model's road class, a track passing it (8J)",
+   "status": "open: present",
+   "evidence": "This audit (tools/audit-post8/records/castle-site.js, docs/audit-post8-evidence/records/castle-site.json): the drawn class (drawnCover) at LANDMARK_SITES.castle is \"track ... [carried.md C-14; source docs/STAGE8_SPEC.md:5109 (21.9)]"
+  },
+  {
+   "item": "C-15 The Austerlitz garden under the château's symbol at the Overview's scale, and no garden sign on the paper map",
+   "status": "open: unchanged; not decided",
+   "evidence": "visual-landscape carried: at r 30 a few scattered trees on plain field ground west of the château, no compartments or walks, not discernible at the Overview; the paper ma ... [carried.md C-15; source docs/STAGE8_SPEC.md:5110-5111 (21.9), :5397-5398 (22.6), :5520 (23.4)]"
+  },
+  {
+   "item": "C-16 Satschan's farmsteads: five of seven drawn (the drawn mere's outline, decision 27, leaves no room)",
+   "status": "accepted: accepted, confirmed",
+   "evidence": "visual-landscape carried: the church and 5 farmsteads of 7; visual-landscape finding 2 (S3/P3): 21 trees and bushes stand on the frozen mere beside it. [carried.md C-16; source docs/STAGE8_SPEC.md:4723-4725 (20.14), :4860-4861 (21.5), :5088-5089 (]"
+  },
+  {
+   "item": "C-17 The omitted landmark symbols (BUILDINGS.notDrawn: St Anthony's chapel, the Santon's chapel, the Sokolnitz granary)",
+   "status": "open: unchanged; not decided",
+   "evidence": "visual-landscape carried and finding 7 (S4/P4): St Anthony's chapel a name on the ground only; Bosenitz's church appears to crown the Santon; geography carried and findin ... [carried.md C-17; source docs/STAGE8_SPEC.md:4698 (20.13), :4746-4747 (20.14), :5114-5115 (21.9]"
+  },
+  {
+   "item": "C-18 The Littawa's name dropped in the Plans view at the Overview",
+   "status": "accepted: accepted; still dropped",
+   "evidence": "visual-maps carried and V-M16: 13 dropped at 1600 px, the Littawa among them; at 1280 px 17, with three plan labels (V-M11). [carried.md C-18; source docs/STAGE8_SPEC.md:5315-5343 (22.4), :5399 (22.6), :5520 (23.4); docs]"
+  },
+  {
+   "item": "C-19 The low views' wall of formation names (decision 255 left it open; 255 (d) prototyped, 263 (a) the far names' lighter plate)",
+   "status": "open: the plate built (8I); the wall present and open",
+   "evidence": "visual-maps carried and V-M14: 31 labels in the top 47% of the view at 1280 px, 19 formation names, 16 far at 7.06-7.30:1 against 12.5:1 near. [carried.md C-19; source docs/STAGE8_SPEC.md:4702 (20.13), :4730-4733 (20.14), :5068-5069 (21.9]"
+  },
+  {
+   "item": "C-20 The knowledge rule against the drawn fog's ease (\"Whose eyes?\" read at the phase's mist while the fog eases over twenty minutes)",
+   "status": "accepted: kept by decision 92 (explained)",
+   "evidence": "state finding 5 (S4/P3): the reading is cached for the clock's minute at the first instant asked, so it depends on the path (a different seam of the same reading). [carried.md C-20; source docs/STAGE8_SPEC.md:4701-4702 (20.13), :4358-4390 (20.4)]"
+  },
+  {
+   "item": "C-21 A crown within a few units of the eye shows its facets as large planes",
+   "status": "open: open; confirmed",
+   "evidence": "visual-landscape finding 8 (S4/P4, new-regression): deciduous crowns near the eye show large faceted shards. [carried.md C-21; source docs/STAGE8_SPEC.md:4699-4700 (20.13)]"
+  },
+  {
+   "item": "C-22 Four villages' buildings largely off the drawn village class (Sokolnitz 0%, Telnitz 5%, Kobelnitz 19%, Puntowitz 74% in 8G's count)",
+   "status": "open: open; confirmed",
+   "evidence": "geography carried and finding 4 (S3/P3): on the class Sokolnitz 4 of 27, Telnitz 2 of 25, Kobelnitz 3 of 16, Puntowitz 14 of 19; Sokolnitz, Telnitz and Kobelnitz drawn st ... [carried.md C-22; source docs/STAGE8_SPEC.md:4700-4701 (20.13), :4332-4357 (20.3)]"
+  },
+  {
+   "item": "C-23 GEOREF.GT's 13.5 m shift against the Czech survey",
+   "status": "accepted: recorded; no action needed",
+   "evidence": "geography carried: confirmed in kind, 10.7-11.1 m north-east of Wikidata's points, below the 31.6 m map unit. [carried.md C-23; source docs/STAGE8_SPEC.md:4703 (20.13), :4415-4446 (20.6)]"
+  },
+  {
+   "item": "C-24 8G's evidence made and not committed: reconstructed or replaced in 8H, not recovered",
+   "status": "recorded: unchanged (not recoverable)",
+   "evidence": "Records only: selftest-pre2-local.json was never reconstructed; 8G's own build passed 313 of 313 on CI (STAGE8:4330-4331). [carried.md C-24; source docs/STAGE8_SPEC.md:4703-4704 (20.13), :4321-4331 (20.2)]"
+  },
+  {
+   "item": "C-25 Not measured in Stage 8: a GPU's frame time (the crowns' hook's cost among them), Safari, memory on a device, a visitor's judgement of the gait, the b",
+   "status": "not-measured: partly measured since",
+   "evidence": "GPU frame time and Safari measured on the owner's desktop (RTX 4070, Chrome) and iPhone (Safari 26.6.1) in sections 24-25; the crowns' hook's own cost not isolated; memor ... [carried.md C-25; source docs/STAGE8_SPEC.md:4705-4707 (20.13)]"
+  },
+  {
+   "item": "C-26 The geographic corrections of question 259 (the Sokolnitz group, the Pratzen church, the Austerlitz garden)",
+   "status": "done-with-residuals: done (8J), with residuals",
+   "evidence": "geography finding 8 (S4/P4, new-regression): the Pratzen church drawn 161 m from its read site while the sources sheet says it is drawn at its own site; history finding 2 ... [carried.md C-26; source docs/STAGE8_SPEC.md:4714-4718 (20.14), :4890-4986 (21.7), :5068-5072 (]"
+  },
+  {
+   "item": "C-27 The highway east of the Santon and the post house (question 260)",
+   "status": "done-with-residuals: done (8K), with residuals",
+   "evidence": "geography carried and finding 10 (S4/P4): the highway's 1805 course is not in SOURCE_NOTE's open questions (only the post's place is), ROADS[0]'s \"C for 1805\" a code comm ... [carried.md C-27; source docs/STAGE8_SPEC.md:4719-4722 (20.14), :4987-5057 (21.8)]"
+  },
+  {
+   "item": "C-28 More places beside a counter's anchor in motion (decision 258 (b), question 262)",
+   "status": "accepted: settled (not adopted)",
+   "evidence": "The trade-off it settled bears on C-06 and C-07 (visibility findings 1, 3, 5). [carried.md C-28; source docs/STAGE8_SPEC.md:4472-4491 (20.8), :4726-4729 (20.14), :4862-4863 (]"
+  },
+  {
+   "item": "C-29 The conventions labelled as such: the farmsteads' plan and the roofs (8G), the garden's rows (8J), the far plate's alpha (8I), the gait under compress",
+   "status": "accepted: accepted; labelled",
+   "evidence": "app.js:8509-8512 gaitNotes (\"a visual convention for symbols under compressed time\"), :8474 buildingNotes, :8468 castleSizeText (read in this audit); a11y finding A11Y-02 ... [carried.md C-29; source docs/STAGE8_SPEC.md:5092-5094 (21.9)]"
+  },
+  {
+   "item": "C-30 The identifications this map makes and says it makes: Stutterheim's heights by Dwaroschna as the ground east of Bosenitz, Schönhals's height as the ri",
+   "status": "provisional: provisional, unchanged",
+   "evidence": "geography finding 10: the channel and the highway's 1805 course not visible to a visitor; C-31, C-32, C-37. [carried.md C-30; source docs/STAGE8_SPEC.md:5098-5100 (21.9)]"
+  },
+  {
+   "item": "C-31 Historical question: the places in 1805 of the highway and the post (the First Military Survey not reached)",
+   "status": "open: open",
+   "evidence": "geography carried: the post open and visible; the highway's 1805 course not in the sources sheet (finding 10). [carried.md C-31; source docs/STAGE8_SPEC.md:5101-5102 (21.9), :5403 (22.6)]"
+  },
+  {
+   "item": "C-32 Historical question: which of the 1825 sketch's two channels carried the Goldbach north of the Sokolnitz castle in 1805",
+   "status": "open: open; not visible to a visitor",
+   "evidence": "geography carried and finding 10. [carried.md C-32; source docs/STAGE8_SPEC.md:5102-5103 (21.9), :5403-5404 (22.6)]"
+  },
+  {
+   "item": "C-33 Historical question: the castle's walls",
+   "status": "open: open in the records; stated as settled on screen",
+   "evidence": "geography carried and finding 6 (S3/P2): \"walled castle\" and \"pheasantry enclosure\" stated as fact in the 08:00 dispatch (data.js:68, PHASES[2].lede untagged). [carried.md C-33; source docs/STAGE8_SPEC.md:5103 (21.9), :5404 (22.6)]"
+  },
+  {
+   "item": "C-34 Historical question: whether the bottom by Sokolnitz was marshy in December 1805",
+   "status": "open: open in the records; drawn and told as settled",
+   "evidence": "geography carried and finding 5 (S3/P3): settled wording on the primary path (TOUR[0].x, FEATURES goldbach), the question absent from SOURCE_NOTE's list; no check can fai ... [carried.md C-34; source docs/STAGE8_SPEC.md:5103 (21.9), :5404 (22.6)]"
+  },
+  {
+   "item": "C-35 Historical question: the garden's planting in 1805",
+   "status": "open: open and visible",
+   "evidence": "geography carried (the sources sheet: the rows a convention). [carried.md C-35; source docs/STAGE8_SPEC.md:5104 (21.9), :5404 (22.6)]"
+  },
+  {
+   "item": "C-36 Historical question: Bagration's exact line at dawn and where he stood at 17:00 (Rausnitz, or already toward Austerlitz)",
+   "status": "open: open and visible",
+   "evidence": "geography carried; history finding 18 (accepted: Bagration drawn toward Rausnitz while his role says toward Austerlitz, decision 180 (c)). [carried.md C-36; source docs/STAGE8_SPEC.md:5104-5105 (21.9), :5404 (22.6)]"
+  },
+  {
+   "item": "C-37 Historical question: which side of the road Schönhals's height lay",
+   "status": "open: open; not visible (moot in the drawing)",
+   "evidence": "geography carried: bag@8 drawn on the road. [carried.md C-37; source docs/STAGE8_SPEC.md:5105 (21.9), :5404-5405 (22.6)]"
+  },
+  {
+   "item": "C-38 Historical question: Krug's place (the Second Survey's \"Kruch\" beside Holubitz, against the drawn Krug's warped legacy place)",
+   "status": "open: open; its stated reason inaccurate",
+   "evidence": "geography finding 7 (S3/P3): Krug drawn 1.67 km south of the 1836-52 survey's and today's place while the visitor is told no source read fixes it; history finding 14: Kru ... [carried.md C-38; source docs/STAGE8_SPEC.md:5105-5106 (21.9), :5405 (22.6)]"
+  },
+  {
+   "item": "C-39 SOURCE_NOTE's open questions as they stand (Russian infantry flags, the Grenz coats, the vines, the Russian Guard's attack, Bagration's line, the post",
+   "status": "open: kept open in the data, with exceptions",
+   "evidence": "sources-oob finding 5 (S3/P3): \"Kologrivov's command ... rests on Sokolov alone\" is contradicted by Schönhals p. 178; sources-oob finding 1 (S2/P2): order-of-battle figur ... [carried.md C-39; source docs/STAGE8_SPEC.md:5106-5107 (21.9), :5406 (22.6), :5520-5521 (23.4)]"
+  },
+  {
+   "item": "C-40 kienmayer@7's and lang@2's offsets from the corrected brook (each on its own evidence, 8J)",
+   "status": "open: open; larger than recorded",
+   "evidence": "history finding 8 (S3/P3): kienmayer@7 drawn 901 m east of the brook it holds \"west of\", since Stage 0 (the same anchor and act with the brook at x 212), misattributed in ... [carried.md C-40; source docs/STAGE8_SPEC.md:4982 (21.7), :5108 (21.9), :5405 (22.6); CHANGELOG]"
+  },
+  {
+   "item": "C-41 Caffarelli's anchors 2.5-2.9 km south of Bagration's from 14:30 (8K)",
+   "status": "open: open; the records' numbers high",
+   "evidence": "history finding 9 (S3/P3): 12:45-17:00 Caffarelli 1.54-2.15 km from the highway and 1.61-2.64 km from Bagration (the records say 2.5-2.9), its objective \"Push Bagration o ... [carried.md C-41; source docs/STAGE8_SPEC.md:5111-5112 (21.9), :5405-5406 (22.6)]"
+  },
+  {
+   "item": "C-42 The woods' habits, turns and scrub drawn again where a wood changed (8J; presentation)",
+   "status": "recorded: recorded",
+   "evidence": "Not re-examined in this audit. [carried.md C-42; source docs/STAGE8_SPEC.md:5112 (21.9)]"
+  },
+  {
+   "item": "C-43 Owner's note L1 (7 October 2026): the coloured glow under the troops",
+   "status": "done-with-residuals: done (8B): outlines; \"Position confidence\" off at first on the landscape",
+   "evidence": "Related: visual-maps V-M8 (the legend omits encodings it draws), V-M10 (the selection barely distinguished on the landscape). [carried.md C-43; source docs/ROADMAP.md:587-601]"
+  },
+  {
+   "item": "C-44 Owner's note L2: the counters dart about while the view moves",
+   "status": "done-with-residuals: done (8C), with residuals",
+   "evidence": "C-06, C-07 (visibility findings 1-6). [carried.md C-44; source docs/ROADMAP.md:603-611]"
+  },
+  {
+   "item": "C-45 Owner's note L3: depth and detail in the troops; movement that does not look like floating",
+   "status": "done-with-residuals: done (8E), with residuals",
+   "evidence": "C-09, C-11, C-12; history finding 1 (S2/P2): the Russian Guard, Liechtenstein and Miloradovich drawn walking away from the enemy while shown counter-attacking or charging ... [carried.md C-45; source docs/ROADMAP.md:613-624]"
+  },
+  {
+   "item": "C-46 Owner's note L4: the ponds and water (the meres frozen)",
+   "status": "done-with-residuals: done (8F), with residuals",
+   "evidence": "C-10; visual-landscape finding 1 (figures sunk into the ice), finding 5 (streams clip to white). [carried.md C-46; source docs/ROADMAP.md:626-633]"
+  },
+  {
+   "item": "C-47 Owner's note L5: buildings and structures",
+   "status": "done-with-residuals: done (8G, 8J), with residuals",
+   "evidence": "C-13 to C-17, C-22; visual-landscape finding 4. [carried.md C-47; source docs/ROADMAP.md:635-641]"
+  },
+  {
+   "item": "C-48 Step 4 handed on: the claims' reach (statements without a claim)",
+   "status": "done-with-residuals: partly (481 of 704 unchecked)",
+   "evidence": "Counted in this audit (narrative.js, tools/step4/statements.js): 148 own claims, 75 by class, 481 unchecked, 0 stale entries; history finding 12 (DOCUMENTED on 31 Command ... [carried.md C-48; source docs/ROADMAP.md:230-233]"
+  },
+  {
+   "item": "C-49 Step 4 handed on: the chronology's extractor reads only clock-shaped hours",
+   "status": "open: open",
+   "evidence": "tests finding TS-13 (S3/P3): 45 inventoried statements give hours in words it does not read. [carried.md C-49; source docs/ROADMAP.md:234-235]"
+  },
+  {
+   "item": "C-50 Step 4 and PR #57 handed on: readings not made (Duffy 1977 beyond pp. 184-185, Smith 1998, the Russian Biographical Dictionary 1903, Suchet's report a",
+   "status": "open: open (Duffy's two pages read since, decision 213 (b))",
+   "evidence": "sources-oob finding 1 (S2/P2): figures attributed to Duffy that Duffy does not print; C-55 for the human reading. [carried.md C-50; source docs/ROADMAP.md:236-239, :289-290]"
+  },
+  {
+   "item": "C-51 Step 4 handed on: the records the reviews left (the guns above Augezd's further sources, TOUR[5].x, TOUR[6].x \"With the plateau gone\", Caffarelli's ar",
+   "status": "open: mostly open; one settled",
+   "evidence": "Maliutin settled by decision 210 (c) (\"Not established on the day\"); TOUR[6].x still \"With the plateau gone\" (analysis.js:383, read in this audit); history finding 6 (S3/ ... [carried.md C-51; source docs/ROADMAP.md:240-248]"
+  },
+  {
+   "item": "C-52 Step 5 handed on to a later data task: the Dress notes' internal words, CONF_TEXT.C's em dash, the armistice's own text, the Santon story's second sen",
+   "status": "open: open",
+   "evidence": "CONF_TEXT.C still \"Reconstructed from the narrative — treat as indicative only.\" (app.js:7733, read in this audit); a11y finding A11Y-03 (S3/P2): internal project referen ... [carried.md C-52; source docs/ROADMAP.md:261-264]"
+  },
+  {
+   "item": "C-53 PR #57 handed on: the corps-versus-formations warning, the spellings outside decision 209's six, the overclaim scan's attribution pattern",
+   "status": "open: open, each confirmed in code",
+   "evidence": "test.js:476-482 KNOWN_WARN \"constantine: declared 10500 vs children 7330\" (history finding 17, accepted); data.js:323 \"Reserve de Cavalerie\", :399 \"Garde Imperiale\", :406 ... [carried.md C-53; source docs/ROADMAP.md:289-298]"
+  },
+  {
+   "item": "C-54 Step 3 handed on: the screen-reader session recorded complete on the owner's word with no item results; the automated checks Chromium only",
+   "status": "accepted: accepted by decision 175; no results exist",
+   "evidence": "No screen-reader result exists for any build; this audit's a11y area worked from the DOM and Chromium (a11y findings A11Y-01 to A11Y-13). [carried.md C-54; source docs/ROADMAP.md:156-159]"
+  },
+  {
+   "item": "C-55 Decision 136's human second reading of the 15 A-graded appearance quotes, recorded complete on the owner's word (decision 189) with no item results",
+   "status": "accepted: accepted by decision 189; no results exist",
+   "evidence": "The A grades of the drawn coats rest on a machine first and second reading; no human reading is recorded (FINAL_AUDIT H-17, prior-findings.json). [carried.md C-55; source docs/ROADMAP.md:196, :236-239; docs/stage6-evidence/second-reading.md:]"
+  },
+  {
+   "item": "C-56 Step 1 handed on: Safari believed to ignore the faces' metric overrides; no italic face embedded",
+   "status": "open: unchanged",
+   "evidence": "fonts.css: three faces, all font-style normal (read in this audit), so every italic is synthesized; the Safari inference untested (the iPhone runs measured frames, not te ... [carried.md C-56; source docs/ROADMAP.md:41-43]"
+  },
+  {
+   "item": "C-57 Step 6 Part A handed on: the probes' own limits (Chromium only, taps not fingers, software WebGL, screenshots at CSS scale)",
+   "status": "open: unchanged for the suite",
+   "evidence": "a11y finding A11Y-05 (S3/P2, untested): two-finger gestures on the phone (Chromium's emulation zoomed the whole page); C-25. [carried.md C-57; source docs/ROADMAP.md:383-385]"
+  }
+ ],
+ "strengths": [
+  "Every decision 255-269 carries the same letter in CLAUDE.md, ROADMAP.md, STAGE8_SPEC.md and CHANGELOG.md (decision-letters.json).",
+  "Every suite number CLAUDE.md states matches the code (8 of 8).",
+  "The prior audit's blocker and every major are fixed in the code as recorded (22 read at file:line).",
+  "The Stage 8 records carry their open items explicitly and mark none passed; each carried item has a source line, so the register could be built."
+ ],
+ "ledger": [
+  {
+   "claim": "CLAUDE.md: self-test 317 checks",
+   "verification": "confirmed",
+   "method": "selftest-manifest.json count",
+   "where_shown": "CLAUDE.md (check:selftest)"
+  },
+  {
+   "claim": "CLAUDE.md: check:visual 39 views",
+   "verification": "confirmed",
+   "method": "tools/visual/cases.js",
+   "where_shown": "CLAUDE.md (check:visual)"
+  },
+  {
+   "claim": "README: check:data against archive/step5c-45f8f662.html",
+   "verification": "refuted",
+   "method": "package.json:9 (archive/stage8k-f10fe585.html)",
+   "where_shown": "README.md:28"
+  },
+  {
+   "claim": "CLAUDE.md: Draft PR #79 holds both records",
+   "verification": "refuted",
+   "method": "git log --merges (43e3e5b)",
+   "where_shown": "CLAUDE.md:744"
+  },
+  {
+   "claim": "H-1 fixed: the three hours shown disputed",
+   "verification": "confirmed",
+   "method": "analysis.js:248-321",
+   "where_shown": "events, dossiers"
+  },
+  {
+   "claim": "H-17 / decision 136: a human second reading",
+   "verification": "refuted (machine readers; decision 189 records it complete without results)",
+   "method": "docs/stage6-evidence/second-reading.md:6-7",
+   "where_shown": "ROADMAP.md:196"
+  }
+ ]
+}

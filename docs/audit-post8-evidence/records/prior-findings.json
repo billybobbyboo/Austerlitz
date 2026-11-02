@@ -1,0 +1,1412 @@
+{
+ "source": "docs/FINAL_AUDIT.md (75 findings)",
+ "audited_tree": "origin/main 43e3e5b, build f10fe585c46aea576f436ed51ac46f83",
+ "counts": {
+  "resolved": 64,
+  "partly": 6,
+  "accepted-by-decision": 2,
+  "open": 1,
+  "superseded": 2
+ },
+ "verified_in_this_audit": {
+  "n": 38,
+  "ids": [
+   "H-1",
+   "H-2",
+   "H-3",
+   "H-4",
+   "H-5",
+   "H-6",
+   "H-7",
+   "H-8",
+   "H-10",
+   "H-14",
+   "H-17",
+   "D-1",
+   "D-2",
+   "D-4",
+   "G-2",
+   "G-3",
+   "S-1",
+   "S-2",
+   "S-3",
+   "S-5",
+   "S-6",
+   "SW-1",
+   "SW-2",
+   "SW-3",
+   "SW-4",
+   "SW-7",
+   "SW-10",
+   "T-0",
+   "T-1",
+   "T-2",
+   "T-8",
+   "A-1",
+   "A-2",
+   "A-3",
+   "A-6",
+   "P-2",
+   "R-1",
+   "R-2"
+  ],
+  "of_which_records_or_measures_not_code": [
+   "H-17",
+   "P-2",
+   "R-1",
+   "R-2"
+  ]
+ },
+ "findings": [
+  {
+   "id": "H-1",
+   "severity_2026_10": "blocker",
+   "title": "The three hours the sources sheet calls unresolved are shown as settled; two are graded fact and A",
+   "final_audit_line": 121,
+   "step": "2, 4, 4b",
+   "decisions": "125 (a), (b)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4433 (step 2, C3, C5, C6); CHANGELOG.md:2934 ff. (step 4, decision 125 (b)); docs/ROADMAP.md:13",
+   "verified_in_code": "analysis.js:248-252 (columns-move), :295-299 (kamensky), :317-321 (guard-broken): each claim \"disputed\", cf B, with a dispute naming both hours; tools/stage2/chronology.js:446 CONFLICTS (bag@6, guard_cav@6, kamensky@3, kamensky@4)",
+   "related_current_findings": "history finding 6 (three other events whose why says the hour is disputed are not labelled disputed); history finding 7 (kamensky drawn from 08:00)",
+   "note": "The three hours are shown disputed with both readings; four named conflicts stay disputed by design (keep the disagreement). The class (hours disputed in a text but not labelled) recurs elsewhere: history 6.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 4,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-2",
+   "severity_2026_10": "major",
+   "title": "Drouet's reserve division is drawn ahead of the assault at 08:45, the opening's second step",
+   "final_audit_line": 146,
+   "step": "2",
+   "decisions": "129",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4454 (C7)",
+   "verified_in_code": "data.js:393 drouet@3 tm dep 525 (08:45), grade C, basis \"app narrative, unsourced\", the division held at its dawn position until Soult's advance",
+   "related_current_findings": null,
+   "note": "The fix labels the timing as the app's own (grade C, unsourced) rather than sourcing it.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-3",
+   "severity_2026_10": "major",
+   "title": "The plateau's figure is a derived reading with no \"derived\" mark on the map, and in phase 7 none anywhere",
+   "final_audit_line": 154,
+   "step": "2",
+   "decisions": "126",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4405 ff. (step 2); CHANGELOG.md:3017 (step 4 hand-on)",
+   "verified_in_code": "app.js:3935 PLATEAU_LAST=6; app.js:5178 the label's spoken name \"The Pratzen plateau, a derived reading\"",
+   "related_current_findings": "docs/ROADMAP.md:243 (TOUR[6].x \"With the plateau gone\" beside the label's 17,050 at 11:00, handed on by step 2 and step 4, not taken up)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-4",
+   "severity_2026_10": "major",
+   "title": "An interpretation is the first claim a visitor reads, and others are tagged \"record\"",
+   "final_audit_line": 163,
+   "step": "2",
+   "decisions": "127 (b)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4548 (C15); docs/ROADMAP.md:57",
+   "verified_in_code": "shell.html:370 and app.js:7170: \"...the Pratzen plateau, which this map reads as deciding the battle.\"",
+   "related_current_findings": "a11y A11Y-08 (accepted-compromise: first use does not say the map is a reconstruction or what A/B/C mean)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-5",
+   "severity_2026_10": "major (systemic)",
+   "title": "The dossier's Fact/Estimate/Reconstruction pill is the position grade, and it covers everything under it",
+   "final_audit_line": 170,
+   "step": "2, 4",
+   "decisions": "128 (a), (b)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4405 ff. (step 2, 128 (a)); CHANGELOG.md:3012 (step 4, \"Position: interpolated\")",
+   "verified_in_code": "app.js:8092 POS_CLAIM {fact:\"Position: documented\", est:\"Position: estimated\", recon:\"Position: reconstructed\", interp:\"Position: interpolated\"}; app.js:8094-8102",
+   "related_current_findings": "history finding 5 (44 of 88 A grades carried forward from earlier anchors)",
+   "note": "The pill is the position's; per-statement claims are H-6.",
+   "mentions": {
+    "CHANGELOG.md": 10,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-6",
+   "severity_2026_10": "major (systemic)",
+   "title": "The narrative carries no per-statement source",
+   "final_audit_line": 177,
+   "step": "4, 4b",
+   "decisions": "128 (b), 130, 187",
+   "status": "partly",
+   "records": "CHANGELOG.md:2934 (step 4); CHANGELOG.md:204 (8K: 704 statements, 481 unchecked, 148 with a claim of their own, 75 by class); docs/ROADMAP.md:227-231",
+   "verified_in_code": "narrative.js STATEMENT_CLAIMS: 148 entries (attributed 63, disputed 65, interpretation 12, uncertain 6, derived 2), 0 stale; CLAIM_BY_CLASS 3 classes; tools/step4/statements.js: 704 statements, 75 by class, 481 unchecked (counted in this audit)",
+   "related_current_findings": "history finding 12 (Command tab DOCUMENTED on 31 rows the register calls \"Not yet checked\"); tests TS-12 (the inventory a whitelist with no completeness check)",
+   "note": "Decision 130's sourcing stage is done as scoped; 481 of 704 visitor statements still carry no claim (\"Not yet checked\" on screen).",
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-7",
+   "severity_2026_10": "major",
+   "title": "Soult's \"twenty minutes\" is graded three ways",
+   "final_audit_line": 185,
+   "step": "2",
+   "decisions": "129",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4459 (C8)",
+   "verified_in_code": "data.js:71 (\"Twenty minutes at most, Soult answers in Thiébault's memoirs (ten in Ségur's)\"); analysis.js:282 (\"Soult is reported to have answered ...\")",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-8",
+   "severity_2026_10": "major",
+   "title": "The overclaim scan reads 7% of the prose a visitor can be shown; two live hits sit outside it",
+   "final_audit_line": 190,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4866 (commit 5)",
+   "verified_in_code": "redteam.js:193 (section 6a, every visitor string, tools/lang-scan.js); redteam.js:228-240 LANG_ALLOW, 2 entries, both permanent",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-9",
+   "severity_2026_10": "minor",
+   "title": "\"The sun of Austerlitz\" toast",
+   "final_audit_line": 200,
+   "step": "2",
+   "decisions": "(step 2)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4557 (C22)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-10",
+   "severity_2026_10": "minor",
+   "title": "An open question drawn as settled: vines",
+   "final_audit_line": 205,
+   "step": "2",
+   "decisions": "135",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4619 (\"135, C21\"; the id itself is never written in the records)",
+   "verified_in_code": "tokens.js:96 \"vineyards (presumed)\"; shell.html:250 the legend row \"presumed (whether vines stood there in 1805 is not established)\"",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 0,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-11",
+   "severity_2026_10": "minor",
+   "title": "`data.js` and `appearance.js` contradict each other inside the same dossier",
+   "final_audit_line": 210,
+   "step": "2, 4",
+   "decisions": "129",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4465, :4571 (step 2); CHANGELOG.md:3021 (step 4, the 6B questions)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 5,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-12",
+   "severity_2026_10": "minor",
+   "title": "Other silent internal contradictions",
+   "final_audit_line": 216,
+   "step": "2",
+   "decisions": "129",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4505 (C10)",
+   "verified_in_code": null,
+   "related_current_findings": "history finding 15 (smaller internal inconsistencies in texts and fields: new instances of the class)",
+   "note": "Records only for the listed items.",
+   "mentions": {
+    "CHANGELOG.md": 6,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-13",
+   "severity_2026_10": "minor",
+   "title": "The ice: the debunking told as fact",
+   "final_audit_line": 229,
+   "step": "2",
+   "decisions": "129",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4529 (C11)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-14",
+   "severity_2026_10": "minor",
+   "title": "Unlabelled superlatives, counterfactuals and rounded figures",
+   "final_audit_line": 235,
+   "step": "2, 4",
+   "decisions": "129, 130",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4535 (step 2); CHANGELOG.md:3126 (step 4 K3: the seven superlatives attributed or dropped)",
+   "verified_in_code": "redteam.js:228-240 (the superlative entries removed; 2 permanent entries left)",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 3,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-15",
+   "severity_2026_10": "minor",
+   "title": "The opening's played stretch names events without their grade",
+   "final_audit_line": 240,
+   "step": "2",
+   "decisions": "(step 2)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4623 (C23: evNote)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-16",
+   "severity_2026_10": "minor",
+   "title": "The eye-level vantage's two neighbours claim sight",
+   "final_audit_line": 246,
+   "step": "2",
+   "decisions": "(step 2)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4616 (C20: the vantages retitled)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 1,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-17",
+   "severity_2026_10": "minor",
+   "title": "131 of the appearance table's 311 quotes rest on one reading of a page image",
+   "final_audit_line": 250,
+   "step": "4",
+   "decisions": "136, 189",
+   "status": "accepted-by-decision",
+   "records": "CHANGELOG.md:2934 ff.; docs/stage6-evidence/second-reading.md:6-7 (\"Both readers were machine readers ... not the human second reading ... decision 136 asks for\"); docs/ROADMAP.md:196 (189 \"recorded complete on the owner's word ... no item results given, none recorded\")",
+   "verified_in_code": "docs/stage6-evidence/second-reading.md:6-7",
+   "related_current_findings": null,
+   "note": "The second reading was made by machine readers; decision 136's human reading of the 15 A-graded quotes is recorded complete on the owner's word with no results. The evidence behind the A grades is one machine pair of readings.",
+   "mentions": {
+    "CHANGELOG.md": 8,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-18",
+   "severity_2026_10": "polish (INFERENCE)",
+   "title": "Two place stories",
+   "final_audit_line": 256,
+   "step": "5",
+   "decisions": "(step 5 group 4)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1995 (group 4)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "H-19",
+   "severity_2026_10": "polish",
+   "title": "Spelling and jargon",
+   "final_audit_line": 260,
+   "step": "5, PR #57",
+   "decisions": "209 (a)",
+   "status": "partly",
+   "records": "CHANGELOG.md:1995, :2028 (step 5); docs/ROADMAP.md:290-293 (spellings outside decision 209's six handed on)",
+   "verified_in_code": null,
+   "related_current_findings": "history result (d)-(e): unaccented \"Chasseurs a Pied/a Cheval\", \"Garde Imperiale\", \"Reserve de Cavalerie\", \"emigre\", \"Frederic Walther\" outside decision 209's six names",
+   "note": "Decision 209 (a) took six names; the rest are handed on to a later data task (docs/ROADMAP.md:290-293), not done.",
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 6,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "D-1",
+   "severity_2026_10": "major",
+   "title": "`check:chronology` judges a frozen, hand-written table, not the live text",
+   "final_audit_line": 293,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4857 (commit 6)",
+   "verified_in_code": "tools/stage2/chronology.js:64 (acorn), :293 REVIEW_CITES, :382 ALLOW_TIMED, :426 EXCLUDED_PATHS",
+   "related_current_findings": "tests TS-13 (clock-shaped hours only; 45 statements give hours in words)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "D-2",
+   "severity_2026_10": "major",
+   "title": "The grade check skips 30 of the 32 formations; a missing grade is drawn as B without a word",
+   "final_audit_line": 303,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4864 (commit 2)",
+   "verified_in_code": "test.js:51-57 and redteam.js:335-341 (every tracked formation's first positioned anchor declares its grade)",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "D-3",
+   "severity_2026_10": "minor",
+   "title": "The V Corps counts the Santon's 1,600 twice",
+   "final_audit_line": 309,
+   "step": "2",
+   "decisions": "129",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4541 (C13)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "D-4",
+   "severity_2026_10": "minor",
+   "title": "A duplicate key and a dead field in the guarded data",
+   "final_audit_line": 315,
+   "step": "2",
+   "decisions": "129",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4545 (C14)",
+   "verified_in_code": "data.js:179-181 heightguns@8: one cf (\"B\") and claim \"est\" in the object",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 1,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "D-5",
+   "severity_2026_10": "minor",
+   "title": "Data that lives outside the guard",
+   "final_audit_line": 319,
+   "step": "2",
+   "decisions": "(D-5 (b))",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4629, :4680, :4706 (step 2: seven app.js declarations in check:data's group \"data in app.js\")",
+   "verified_in_code": null,
+   "related_current_findings": "tests TS-3 (presentation code can rewrite a guarded datum at run time and every check passes)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "D-6",
+   "severity_2026_10": "minor",
+   "title": "Derived readings without the tag",
+   "final_audit_line": 325,
+   "step": "2",
+   "decisions": "(step 2)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4637, :4674, :4676 (step 2)",
+   "verified_in_code": null,
+   "related_current_findings": "history finding 13 (\"Marching\" beside \"In reserve\"/\"Concealed\" on 63 slow drift legs); tests TS-7 (the march row's pin passed a row stripped of its \"derived\" tag)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 6,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "G-1",
+   "severity_2026_10": "minor",
+   "title": "The landscape's scale bar is true only at the orbit target, and does not say so",
+   "final_audit_line": 339,
+   "step": "5",
+   "decisions": "(step 5)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1841 ff. (step 5)",
+   "verified_in_code": null,
+   "related_current_findings": "geography finding 9 (the sources sheet reads \"exaggerated about 1 times\" at 1x)",
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "G-2",
+   "severity_2026_10": "polish",
+   "title": "The map-to-world factor is typed outside `geo.js`",
+   "final_audit_line": 343,
+   "step": "8H",
+   "decisions": "(8H section 20.7)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:597-605 (8H maintenance)",
+   "verified_in_code": "geo.js:38-41 MAP_PER_WORLD, WORLD_ORIGIN; geo.js:122 exported",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 7
+   }
+  },
+  {
+   "id": "G-3",
+   "severity_2026_10": "polish (INFERENCE)",
+   "title": "Miloradovich at dawn",
+   "final_audit_line": 348,
+   "step": "none",
+   "decisions": "-",
+   "status": "open",
+   "records": "never named after docs/FINAL_AUDIT.md:348 (id-mentions.json: 0 mentions in CHANGELOG.md, docs/ROADMAP.md, docs/STAGE8_SPEC.md)",
+   "verified_in_code": "data.js:561 milo@0 p [325,230] cf \"A\", act \"Formed on the plateau near Pratzen village\"; world.js:143 Pratzen at [276,243] (about 50 map units, about 1.6 km, away)",
+   "related_current_findings": "history result (d): \"G-3 still open\"",
+   "note": "A source check (a data task) the audit asked for; never scheduled.",
+   "mentions": {
+    "CHANGELOG.md": 0,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "S-1",
+   "severity_2026_10": "major",
+   "title": "\"Whose eyes?\" hides the enemy's formations but not their corps' counters",
+   "final_audit_line": 364,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4209, :4258 (step 3)",
+   "verified_in_code": "app.js:4296-4310 aggReading (a corps counter is its known formations' reading; none known, not drawn)",
+   "related_current_findings": "visual-maps V-M4 (\"Whose eyes?\" still draws the arrows, arrow labels and plateau count of unknown formations); interaction finding 5 (a card's \"Doing now\" under a reading)",
+   "note": "The counters are fixed; other channels of the same leak are open (V-M4).",
+   "mentions": {
+    "CHANGELOG.md": 6,
+    "docs/ROADMAP.md": 4,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "S-2",
+   "severity_2026_10": "major",
+   "title": "Turning \"Pause briefly at events\" off and on while the clock plays sends the clock back",
+   "final_audit_line": 373,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4212 (C1)",
+   "verified_in_code": "app.js:8836 dwellReset, :8839 dwellSet",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "S-3",
+   "severity_2026_10": "minor",
+   "title": "A phase's camera leaves the eye level on",
+   "final_audit_line": 379,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4213, :4312-4314",
+   "verified_in_code": "app.js:3465 (\"a phase's camera leaves the eye level\"); the self-test's eye-level way-out check app.js:10647-10666",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 5,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 1
+   }
+  },
+  {
+   "id": "S-4",
+   "severity_2026_10": "minor",
+   "title": "At eye level the dossier and the drawing disagree",
+   "final_audit_line": 384,
+   "step": "5",
+   "decisions": "170 (c)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1922 (question 170 (c))",
+   "verified_in_code": null,
+   "related_current_findings": "interaction finding 5",
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 4,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "S-5",
+   "severity_2026_10": "minor",
+   "title": "State that depends on the path to the clock",
+   "final_audit_line": 389,
+   "step": "8E",
+   "decisions": "(8E S-5)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:974 (faceClock); docs/STAGE8_SPEC.md:1332",
+   "verified_in_code": "app.js:5740 faceClock",
+   "related_current_findings": "visual-landscape finding 3 (blocks face along slow drifts and keep stale facings)",
+   "note": "Path dependence removed; facing quality is a new finding.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 9
+   }
+  },
+  {
+   "id": "S-6",
+   "severity_2026_10": "minor",
+   "title": "Reduced motion is read once",
+   "final_audit_line": 394,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4216, :4324",
+   "verified_in_code": "app.js:592 rmChange; style.css:700 @media (prefers-reduced-motion:reduce)",
+   "related_current_findings": "a11y carried S-6: fixed",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 2
+   }
+  },
+  {
+   "id": "S-7",
+   "severity_2026_10": "polish",
+   "title": "Smaller timing seams",
+   "final_audit_line": 398,
+   "step": "8H",
+   "decisions": "(8H section 20.4)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:492-509 (two seams fixed, the third measured 0 of 242 minutes and kept under decision 92)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "The knowledge rule against the eased fog is kept by decision 92 (explained, not changed).",
+   "mentions": {
+    "CHANGELOG.md": 5,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 10
+   }
+  },
+  {
+   "id": "SW-1",
+   "severity_2026_10": "major",
+   "title": "If three.js cannot load, or WebGL cannot start, the page stays on its boot line for ever",
+   "final_audit_line": 412,
+   "step": "3",
+   "decisions": "133 (a)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4181",
+   "verified_in_code": "shell.html:23-28 (#boot-fail alertdialog), :388-393 (AUS_BOOT), :437 (three.js r128 from cdnjs with integrity sha512 and crossorigin)",
+   "related_current_findings": "docs/audit-post8-evidence/checks/check-contrast.txt (8 of 8 start-up cases)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-2",
+   "severity_2026_10": "major",
+   "title": "Below 1080 px the rail can stand over the dispatch card",
+   "final_audit_line": 420,
+   "step": "3",
+   "decisions": "164, 165",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4189 (C11, C12)",
+   "verified_in_code": "style.css:575 @media (max-width:1079.98px), :663 #panelsbtn",
+   "related_current_findings": "visual-maps V-M13 (720-1079 px: a 209 px strip between the card and the dossier)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-3",
+   "severity_2026_10": "major (accessibility)",
+   "title": "Panels moved off screen stay in the Tab order and the accessibility tree",
+   "final_audit_line": 427,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4189, :4323",
+   "verified_in_code": "app.js:6780 syncInert",
+   "related_current_findings": "a11y carried SW-3: fixed (47 stops, none in the closed dossier)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-4",
+   "severity_2026_10": "major (accessibility)",
+   "title": "The sources sheet is a modal without a modal's focus, and Esc does the wrong thing on it",
+   "final_audit_line": 435,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4194 (C9)",
+   "verified_in_code": "app.js:6752 SHEETS",
+   "related_current_findings": "a11y carried SW-4: fixed",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-5",
+   "severity_2026_10": "minor",
+   "title": "Focus left on elements that disappear",
+   "final_audit_line": 443,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4197",
+   "verified_in_code": null,
+   "related_current_findings": "interaction finding 8 (focus falls to the page when a resize hides the focused control)",
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-6",
+   "severity_2026_10": "minor",
+   "title": "The \"?\" overlay loses its Esc and its Tab trap after a click on its text",
+   "final_audit_line": 450,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4194, :4196",
+   "verified_in_code": null,
+   "related_current_findings": "a11y carried SW-6: fixed (verified)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-7",
+   "severity_2026_10": "minor",
+   "title": "Visual effects off and on again leaks the post-processing targets",
+   "final_audit_line": 455,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4201 (C2)",
+   "verified_in_code": "app.js:3545, :3683 FX.built",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 5,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-8",
+   "severity_2026_10": "minor",
+   "title": "Pointer edge cases",
+   "final_audit_line": 459,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4203 (C3)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-9",
+   "severity_2026_10": "minor",
+   "title": "The Layers panel stays open in Watch and Clean",
+   "final_audit_line": 463,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4197, :4199",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-10",
+   "severity_2026_10": "minor",
+   "title": "Layout seams",
+   "final_audit_line": 466,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4204 (C13)",
+   "verified_in_code": "style.css:575 (max-width:1079.98px, the complement of DOCK_MIN)",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 1,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-11",
+   "severity_2026_10": "minor",
+   "title": "The opening and the tour keep the \"Whose eyes?\" reading",
+   "final_audit_line": 472,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4207 (C21)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-12",
+   "severity_2026_10": "minor",
+   "title": "The \"Guided tour\" button ends the tour during the opening",
+   "final_audit_line": 476,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4197, :4200",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 5,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "SW-13",
+   "severity_2026_10": "polish",
+   "title": "Dead code and leftovers",
+   "final_audit_line": 481,
+   "step": "5",
+   "decisions": "(step 5)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1879 (step 5)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 2
+   }
+  },
+  {
+   "id": "T-0",
+   "severity_2026_10": "major",
+   "title": "`check:visual` fails on the unchanged 7D build in a fresh machine, because of the fonts installed",
+   "final_audit_line": 494,
+   "step": "1",
+   "decisions": "141 (a)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4803 (commit 1)",
+   "verified_in_code": "fonts.css (96,643 bytes); build.py:17-19, :50 (/*FONTS*/)",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "T-1",
+   "severity_2026_10": "major",
+   "title": "A page error or a console error never fails a check",
+   "final_audit_line": 509,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4814 (commits 3, 8, 9)",
+   "verified_in_code": "tools/visual/thresholds.js:604 CONSOLE_ALLOW=[] (empty), :607 judgeConsole",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 5,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "T-2",
+   "severity_2026_10": "major",
+   "title": "The meres' \"floats\" check is a tautology",
+   "final_audit_line": 518,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4821 (commits 7, 8)",
+   "verified_in_code": "terrain-test.js:95-143 (live ground, 12 surfaces, lifted 0.05 more, at least one must float)",
+   "related_current_findings": null,
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "T-3",
+   "severity_2026_10": "minor",
+   "title": "Warnings never fail",
+   "final_audit_line": 525,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4825 (commit 2)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "T-4",
+   "severity_2026_10": "minor",
+   "title": "The self-test's size and the harness's other failures are asserted nowhere outside the run",
+   "final_audit_line": 530,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4828 (commit 9)",
+   "verified_in_code": null,
+   "related_current_findings": "tests TS-16 (the manifest holds names and a count, not conditions)",
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "T-5",
+   "severity_2026_10": "minor",
+   "title": "Checks that skip without a word",
+   "final_audit_line": 536,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4832 (commit 9)",
+   "verified_in_code": null,
+   "related_current_findings": "tests TS-5 (figure-on-ground and standard-foot checks pass when nothing is measured)",
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "T-6",
+   "severity_2026_10": "minor",
+   "title": "Checks weaker than their claim",
+   "final_audit_line": 543,
+   "step": "1",
+   "decisions": "131",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4836",
+   "verified_in_code": null,
+   "related_current_findings": "tests TS-8 (checks take their bounds from the code under test)",
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "T-7",
+   "severity_2026_10": "minor",
+   "title": "Wall-clock thresholds",
+   "final_audit_line": 562,
+   "step": "8H",
+   "decisions": "(8H section 20.7)",
+   "status": "partly",
+   "records": "CHANGELOG.md:619-621 (the pan budget at the median; the 20 s waits kept as timeouts)",
+   "verified_in_code": null,
+   "related_current_findings": "tests TS-18 (wall-clock limits make the suites load-sensitive: a 30 s font watchdog fired under load)",
+   "note": "The thresholds remain wall-clock (medians now); load sensitivity remains (TS-18).",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 6
+   }
+  },
+  {
+   "id": "T-8",
+   "severity_2026_10": "minor",
+   "title": "CI runs neither `check:visual` nor `check:contrast`",
+   "final_audit_line": 567,
+   "step": "1",
+   "decisions": "132",
+   "status": "resolved",
+   "records": "decision 132 (docs/FINAL_AUDIT.md:834); CHANGELOG.md:4780 ff. (commit 11 fd6e537); the id itself is never written in the records",
+   "verified_in_code": ".github/workflows/checks.yml:4-6, :45-47 (browser job: check:contrast and check:selftest on every push), :75-78, :92 (check:visual on dispatch)",
+   "related_current_findings": "tests TS-1 (only the node job is a required check)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 0,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "T-9",
+   "severity_2026_10": "polish",
+   "title": "**T-9 · polish.** FACT: the relief anchors are checked twice with different margins (`geo-test.js:74-78`, `terrain-test.",
+   "final_audit_line": 571,
+   "step": "1, 5",
+   "decisions": "(steps 1 and 5)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4817, :4855-4856 (step 1: a, f, g); CHANGELOG.md:1936-1941 (step 5: b, d, e)",
+   "verified_in_code": null,
+   "related_current_findings": "README.md:27 still says audit.js's continuity and coverage \"are printed only\"",
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 7,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "A-1",
+   "severity_2026_10": "major",
+   "title": "Single-key shortcuts act anywhere, and nothing turns them off (WCAG 2.1.4, level A)",
+   "final_audit_line": 601,
+   "step": "3",
+   "decisions": "134 (a)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4218",
+   "verified_in_code": "app.js:6719 SHORTCUTS={on:true}; :6720 charKey",
+   "related_current_findings": "a11y carried A-1: fixed",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "A-2",
+   "severity_2026_10": "major",
+   "title": "Keyboard focus lands on map items that are not drawn (WCAG 2.4.7, 2.4.11)",
+   "final_audit_line": 606,
+   "step": "3",
+   "decisions": "(step 3)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4221 (C19)",
+   "verified_in_code": "app.js:5096, :5315, :5453 (focus takes no part in the layout; a focused item drawn; focus handed on)",
+   "related_current_findings": "a11y carried A-2: fixed (18 map stops at opacity 1 after frames)",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 6
+   }
+  },
+  {
+   "id": "A-3",
+   "severity_2026_10": "major",
+   "title": "The timeline's targets are below 24 px (WCAG 2.5.8)",
+   "final_audit_line": 614,
+   "step": "3",
+   "decisions": "166 (a), 167",
+   "status": "resolved",
+   "records": "CHANGELOG.md:4225, :4254",
+   "verified_in_code": "style.css:263, :344 (.timerail 24 px); app.js:12146-12187 (the self-test's target-size check)",
+   "related_current_findings": "a11y carried A-3: fixed / accepted; visual-maps V-M1 and a11y A11Y-04 (on a phone the event markers cover most of the rail)",
+   "note": "The event markers are 2.5.8's essential exception (decision 167).",
+   "mentions": {
+    "CHANGELOG.md": 8,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "A-4",
+   "severity_2026_10": "minor",
+   "title": "The first screen at 390 x 844 (decision 122: recorded, not a layout)",
+   "final_audit_line": 630,
+   "step": "6",
+   "decisions": "137; 223-229, 231-234",
+   "status": "superseded",
+   "records": "docs/ROADMAP.md:17 (step 6); CHANGELOG.md:1572 (the phone layout)",
+   "verified_in_code": null,
+   "related_current_findings": "a11y carried A-4: superseded (the phone layout)",
+   "note": "Replaced by the phone layout below 720 px.",
+   "mentions": {
+    "CHANGELOG.md": 0,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "A-5",
+   "severity_2026_10": "minor",
+   "title": "Close views read as a toy",
+   "final_audit_line": 634,
+   "step": "8B, 8E, 8F",
+   "decisions": "241 (a), 242 (a), 247 (a)",
+   "status": "partly",
+   "records": "docs/STAGE8_SPEC.md:1331 (9.4: routed to 8B and 8E); CHANGELOG.md:1229 (8B: the arrows hidden by the ground at eye level)",
+   "verified_in_code": null,
+   "related_current_findings": "visual-landscape finding 8 (deciduous crowns near the eye show large faceted shards); docs/STAGE8_SPEC.md:4698 (20.13: crowns within a few units of the eye)",
+   "note": "The arrows through the hills are fixed; the close views' faceting of crowns is recorded open.",
+   "mentions": {
+    "CHANGELOG.md": 1,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 9
+   }
+  },
+  {
+   "id": "A-6",
+   "severity_2026_10": "polish",
+   "title": "**A-6 · polish.** FACT: the focus ring is 1 px (`style.css:12`; meets 2.4.7, under 2.4.13's 2 px, AAA); no `main` landma",
+   "final_audit_line": 639,
+   "step": "8H",
+   "decisions": "(8H section 20.5)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:515-530",
+   "verified_in_code": "shell.html:384 <main id=\"map-main\">; style.css:12 :focus-visible outline 2px",
+   "related_current_findings": "a11y carried A-6: fixed",
+   "note": null,
+   "mentions": {
+    "CHANGELOG.md": 5,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 10
+   }
+  },
+  {
+   "id": "P-1",
+   "severity_2026_10": "minor",
+   "title": "The figures are about 91% of a landscape frame's triangles",
+   "final_audit_line": 663,
+   "step": "6",
+   "decisions": "138, 230, 235",
+   "status": "superseded",
+   "records": "CHANGELOG.md:1535 (decision 230's records-only note: 49.7%, not about 91%); CHANGELOG.md:1521 (decision 235: question 138 retired)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "The premise was corrected (about half, not 91%); the level of detail retired by decision 235 was then built in 8E under decision 242 (a) (two kit levels).",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 5,
+    "docs/STAGE8_SPEC.md": 1
+   }
+  },
+  {
+   "id": "P-2",
+   "severity_2026_10": "minor",
+   "title": "About a quarter of the file is never run by a visitor",
+   "final_audit_line": 672,
+   "step": "none",
+   "decisions": "140",
+   "status": "accepted-by-decision",
+   "records": "docs/FINAL_AUDIT.md:842 (decision 140: the self-test kept in the file); docs/STAGE8_SPEC.md:1336 (\"present, larger\": 15.0%)",
+   "verified_in_code": "docs/audit-post8-evidence/records/size.json (tools/audit/size.js on f10fe585): AUSTERLITZ_DEBUG 611,113 bytes, 21.7% of the 2,810,630-byte file (12.8% at the audit, 15.0% at Stage 8 Part A); comments 437,848 bytes, 15.6% (10.1%, 11.1%)",
+   "related_current_findings": null,
+   "note": "Accepted by decision 140 on a premise of 12.8%; the share has grown to 21.7% (the self-test) and 15.6% (comments, overlapping it). The decision stands; its premise has moved.",
+   "mentions": {
+    "CHANGELOG.md": 0,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 2
+   }
+  },
+  {
+   "id": "P-3",
+   "severity_2026_10": "polish",
+   "title": "Idle work per animation frame",
+   "final_audit_line": 676,
+   "step": "8H",
+   "decisions": "(8H section 20.7)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:611-613",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 6
+   }
+  },
+  {
+   "id": "P-4",
+   "severity_2026_10": "polish",
+   "title": "The start-up cost of the relief grid",
+   "final_audit_line": 679,
+   "step": "8H",
+   "decisions": "(8H section 20.7)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:614-618 (measured; nothing cut on software timings)",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Measured, not changed.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 5
+   }
+  },
+  {
+   "id": "R-1",
+   "severity_2026_10": "minor",
+   "title": "Two READMEs describe the checks wrongly",
+   "final_audit_line": 684,
+   "step": "5",
+   "decisions": "(step 5)",
+   "status": "partly",
+   "records": "CHANGELOG.md:1849 (step 5 fixed it)",
+   "verified_in_code": "README.md:27, :28, :30, :31, :32 (stale again: see docs/audit-post8-evidence/records/README.md, doc consistency)",
+   "related_current_findings": null,
+   "note": "Recurred: README.md describes the checks wrongly again (check:data's reference, the states, the start-up cases, the self-test's count and time, the views' count and time).",
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "R-2",
+   "severity_2026_10": "minor",
+   "title": "Status lines that no longer hold",
+   "final_audit_line": 691,
+   "step": "5",
+   "decisions": "(step 5)",
+   "status": "partly",
+   "records": "CHANGELOG.md:1854 (step 5 fixed it)",
+   "verified_in_code": "CHANGELOG.md:5, :18, :39, :58, :86 (\"not merged\"); docs/ROADMAP.md:547-548 (\"draft PR #77 ... not merged\"); CLAUDE.md:744 (\"Draft PR #79 holds both records\"); git log: 141f890 (#77), c2adefe (#78), 43e3e5b (#79) merged",
+   "related_current_findings": null,
+   "note": "Recurred: five CHANGELOG heads, a ROADMAP paragraph and CLAUDE.md's last line call merged pull requests drafts.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "R-3",
+   "severity_2026_10": "minor",
+   "title": "One thing, several names, on screen",
+   "final_audit_line": 700,
+   "step": "5",
+   "decisions": "205",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1892",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 1,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "R-4",
+   "severity_2026_10": "minor",
+   "title": "Records of the keys out of date",
+   "final_audit_line": 709,
+   "step": "5",
+   "decisions": "(step 5)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1868, :1898",
+   "verified_in_code": null,
+   "related_current_findings": "a11y A11Y-09 (the Now tab's hint names a key that does nothing)",
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 3,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "R-5",
+   "severity_2026_10": "minor",
+   "title": "\"Last recorded at After dark\"",
+   "final_audit_line": 715,
+   "step": "5",
+   "decisions": "(step 5)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1902",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 1,
+    "docs/ROADMAP.md": 0,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "R-6",
+   "severity_2026_10": "polish",
+   "title": "Formats",
+   "final_audit_line": 719,
+   "step": "5",
+   "decisions": "206",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1904, :1978",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 2,
+    "docs/ROADMAP.md": 1,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  },
+  {
+   "id": "R-7",
+   "severity_2026_10": "polish",
+   "title": "Stale comments",
+   "final_audit_line": 726,
+   "step": "5",
+   "decisions": "(step 5)",
+   "status": "resolved",
+   "records": "CHANGELOG.md:1863, :1889, :1958",
+   "verified_in_code": null,
+   "related_current_findings": null,
+   "note": "Records only.",
+   "mentions": {
+    "CHANGELOG.md": 4,
+    "docs/ROADMAP.md": 2,
+    "docs/STAGE8_SPEC.md": 0
+   }
+  }
+ ]
+}

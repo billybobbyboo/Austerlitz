@@ -1,0 +1,9 @@
+{
+ "queried": "2026-11-02, https://api.osv.dev/v1/query, ecosystem npm, each pinned version",
+ "results": {
+  "acorn-8.18.0": {},
+  "playwright-1.56.0": {},
+  "playwright-core-1.56.0": {}
+ },
+ "note": "{} = no advisory for that version. playwright's only advisory, GHSA-7mvr-c777-76hp (CVE-2025-59288), is fixed in 1.55.1"
+}
