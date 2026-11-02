@@ -1,4 +1,4 @@
-# Audit checkpoint (working file; superseded by docs/FINAL_AUDIT_POST_STAGE8.md when written)
+# Audit checkpoint (working notes, superseded by docs/FINAL_AUDIT_POST_STAGE8.md and this directory's README.md; kept as a record)
 
 ## Baseline (done)
 - `main` = `43e3e5b` (PR #79 merge); build `f10fe585...` / SHA-256 `bf27887c...db07`, 2,810,630 bytes, identical from `0b7b77c` to `43e3e5b`,
