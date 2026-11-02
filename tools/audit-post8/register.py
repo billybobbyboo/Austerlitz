@@ -187,10 +187,10 @@ MAP = [
 ]
 SET_ASIDE = [("geography", 10), ("sources-oob", 8)]
 
-# the auditor's corrections after verification: id -> {field: value}; filled from docs/audit-post8-evidence/verification/ (section B intro)
-OVERRIDE = {}
-# the auditor's verdict where the verifiers disagree or the auditor checked it personally: id -> {"verdict":..., "note":...}
-VERDICT = {}
+# the auditor's resolution of the verification: tools/audit-post8/resolution.py
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from resolution import OVERRIDE, VERDICT, NOTES
 # the auditor's own checks (read or reproduced personally, independently of the areas and the verifiers): id -> text
 AUDITOR = {
     "CL-HIS-01": "The auditor read analysis.js:292-294: the event 'face-about' carries claim:\"fact\" while its own why says 'That he ordered the column to face about is this map's reading': confirmed.",
@@ -242,7 +242,7 @@ def main():
     V = load_verdicts()
     entries = []
     for cid, a, i, also, note in MAP + EXTRA:
-        e = {"id": cid, "from": [[a, i]], "also": [list(x) for x in also], "note": " ".join(x for x in (note, AUDITOR.get(cid, "")) if x)}
+        e = {"id": cid, "from": [[a, i]], "also": [list(x) for x in also], "note": " ".join(x for x in (note, AUDITOR.get(cid, ""), NOTES.get(cid, "")) if x)}
         vs = list(V.get((a, i), []))
         for x in also:
             vs += V.get(tuple(x), [])
