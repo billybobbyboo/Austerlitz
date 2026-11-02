@@ -11,3 +11,5 @@
 === check-selftest start 2026-11-02T01:04:38Z commit 296f9d5 chrome /tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/pw141/x/chrome-linux/headless_shell
 === check-selftest exit=0 seconds=5422 end 2026-11-02T02:35:00Z
 === done 2026-11-02T02:35:00Z
+=== check-report start 2026-11-02T10:33:32Z commit 81e087f on CI run 41394859313's report (artifact 13123743106, zip sha256 a184325a...)
+=== check-report exit=0 seconds=1 end 2026-11-02T10:33:33Z

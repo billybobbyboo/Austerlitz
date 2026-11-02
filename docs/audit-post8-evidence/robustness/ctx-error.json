@@ -1,0 +1,61 @@
+{
+ "what": "page errors on a context loss while playing",
+ "started": "2026-11-02T10:43:07.633Z",
+ "cycles": [
+  {
+   "during": {
+    "lostFlag": true,
+    "isContextLost": true,
+    "framesAfterLossCall": 0,
+    "clockAdvanced": 0.6
+   },
+   "firstFrameAfterRestoreMs": 3635,
+   "framesIn5s": 2,
+   "clockIn5s": 1.199,
+   "playing": true,
+   "notice": "",
+   "lost": false,
+   "label": "playing 1",
+   "newPageErrors": 1
+  },
+  {
+   "during": {
+    "lostFlag": true,
+    "isContextLost": true,
+    "framesAfterLossCall": 1,
+    "clockAdvanced": 0.6
+   },
+   "firstFrameAfterRestoreMs": 2868,
+   "framesIn5s": 1,
+   "clockIn5s": 0.42,
+   "playing": true,
+   "notice": "",
+   "lost": false,
+   "label": "playing 2",
+   "newPageErrors": 0
+  },
+  {
+   "during": {
+    "lostFlag": true,
+    "isContextLost": true,
+    "framesAfterLossCall": 1,
+    "clockAdvanced": 0.6
+   },
+   "firstFrameAfterRestoreMs": 2681,
+   "framesIn5s": 2,
+   "clockIn5s": 0.392,
+   "playing": true,
+   "notice": "",
+   "lost": false,
+   "label": "playing 3",
+   "newPageErrors": 0
+  }
+ ],
+ "errors": [
+  {
+   "at": "2026-11-02T10:45:08.088Z",
+   "message": "Cannot read properties of null (reading 'trim')",
+   "stack": "TypeError: Cannot read properties of null (reading 'trim')\n    at new Jr (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:275361)\n    at Object.acquireProgram (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:282928)\n    at Pt (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:346658)\n    at It (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:348981)\n    at ws.renderBufferDirect (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:342875)\n    at Ct (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:346047)\n    at Rt (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:345695)"
+  }
+ ]
+}

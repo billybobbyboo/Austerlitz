@@ -14,7 +14,10 @@
 "use strict";
 const path=require("path");
 const R=require("./rlib.js"), A=R.A;
-const OUT=path.join(A.EVID,"robustness","visitor.json"), save=R.writer(OUT);
+/* RB_OUT names another output file in the same folder (a later run of some blocks keeps the earlier file); RB_SKIP_PRES=1 skips the 20
+   presentation switches (measured in visitor.json); RB_DAY_CAP_MIN bounds the day's real time (default 50 minutes) */
+const OUT=path.join(A.EVID,"robustness",process.env.RB_OUT||"visitor.json"), save=R.writer(OUT);
+const DAY_CAP_MS=(+process.env.RB_DAY_CAP_MIN||50)*60000;
 const want=(process.argv[2]||"idle,growth,day,storm").split(",");
 (async()=>{
   const res={what:"visitor's page, prolonged use",started:new Date().toISOString(),blocks:{}};
@@ -57,10 +60,12 @@ const want=(process.argv[2]||"idle,growth,day,storm").split(",");
         G.before=await R.snap(page,s,"before growth");
         /* 20 presentation switches by real keys */
         const keys=[]; for(let i=0;i<20;i++) keys.push(["2","3","1"][i%3]);
+        if(!process.env.RB_SKIP_PRES){
         G.presKeys=keys.join(""); const seen=[];
         for(const k of keys){ await page.keyboard.press(k); await settle(30000); seen.push((await st()).presentation); }
         G.presSeen=seen.join(","); if((await st()).presentation!=="study"){ await page.keyboard.press("1"); await settle(30000); }
         G.afterPresentations=await R.snap(page,s,"after 20 presentation switches"); save(res);
+        } else G.presentations="skipped (RB_SKIP_PRES): measured in visitor.json";
         /* 12 relief switches by real clicks in the Layers panel */
         const settings=await page.evaluate(()=>DISPLAY.settings.slice());
         const order=[]; const seq=[1,settings[settings.length-1],4].filter(x=>settings.includes(x)); for(let i=0;i<12;i++) order.push(seq[i%seq.length]);
@@ -113,15 +118,16 @@ const want=(process.argv[2]||"idle,growth,day,storm").split(",");
         await settle(60000);
         const t0=Date.now(); await click("#play"); D.playingAfterClick=(await st()).playing;
         const samples=[]; let lastHeap=Date.now();
-        while(Date.now()-t0<50*60000){
+        while(Date.now()-t0<DAY_CAP_MS){
           await R.sleep(5000);
           const p=await page.evaluate(()=>({clock:+clock.toFixed(2),playing:playing,frames:DEV.frames,dom:document.getElementsByTagName("*").length,geo:renderer.info.memory.geometries,tex:renderer.info.memory.textures,prog:renderer.info.programs.length}));
           if(Date.now()-lastHeap>60000){ p.cdp=await R.metrics(s); lastHeap=Date.now(); }
           p.s=Math.round((Date.now()-t0)/1000); samples.push(p);
           if(!p.playing) break;
         }
-        D.realSeconds=Math.round((Date.now()-t0)/1000); D.samples=samples; D.end=samples.length?samples[samples.length-1]:null;
+        D.capMinutes=DAY_CAP_MS/60000; D.realSeconds=Math.round((Date.now()-t0)/1000); D.samples=samples; D.end=samples.length?samples[samples.length-1]:null;
         D.endedAtTMax=await page.evaluate(()=>Math.abs(clock-T_MAX)<1e-6&&!playing);
+        if((await st()).playing){ D.clockAtCap=await page.evaluate(()=>clock); await click("#play"); D.pausedAtCapByClick=!(await st()).playing; }
         await settle(60000);
         D.after=await R.snap(page,s,"after the day at 4x"); D.errors=errs();
       }catch(e){ D.error=String(e&&e.stack||e); }

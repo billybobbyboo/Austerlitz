@@ -1,0 +1,1394 @@
+{
+ "groups": {
+  "CL-HIS": "history: the reconstruction against its own sources and readings",
+  "CL-SRC": "sources: forces, timings and places traced to what the sources print",
+  "CL-GEO": "geography: relief, water, settlements and landmarks",
+  "CL-SIM": "simulation, state and the readings",
+  "CL-UX": "interaction, accessibility and first use",
+  "CL-MAP": "the map layer, labels, map furniture and the paper map",
+  "CL-VIS": "the rendered picture",
+  "CL-TEST": "tests, benchmarks and CI",
+  "CL-PERF": "performance and the device evidence",
+  "CL-ROB": "robustness, security, dependencies and maintainability",
+  "CL-REC": "the records and documentation"
+ },
+ "findings": [
+  {
+   "id": "CL-HIS-01",
+   "from": [
+    [
+     "history",
+     2
+    ]
+   ],
+   "also": [],
+   "note": "The auditor read analysis.js:292-294: the event 'face-about' carries claim:\"fact\" while its own why says 'That he ordered the column to face about is this map's reading': confirmed."
+  },
+  {
+   "id": "CL-HIS-02",
+   "from": [
+    [
+     "history",
+     4
+    ]
+   ],
+   "also": [],
+   "note": "The auditor traced the grade inheritance: an anchor without cf takes the previous anchor's grade (data.js tracks; stateAt), shown as 'Position documented in the sources' (app.js:7731 CONF_TEXT.A); 44 of 88 A grades are so carried: confirmed."
+  },
+  {
+   "id": "CL-HIS-03",
+   "from": [
+    [
+     "history",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-04",
+   "from": [
+    [
+     "history",
+     1
+    ]
+   ],
+   "also": [],
+   "note": "The auditor reproduced the distance: Legrand's interpolated position at 08:50 is about 39 m from the III Column's re-plotted place (data.js:227-228; LANDMARK_SITES.castle, world.js:162): confirmed."
+  },
+  {
+   "id": "CL-HIS-05",
+   "from": [
+    [
+     "history",
+     0
+    ]
+   ],
+   "also": [],
+   "note": "Related, not the same issue: CL-VIS-03 (the facing rule on slow drifts)."
+  },
+  {
+   "id": "CL-HIS-06",
+   "from": [
+    [
+     "history",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-07",
+   "from": [
+    [
+     "history",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-08",
+   "from": [
+    [
+     "history",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-09",
+   "from": [
+    [
+     "history",
+     8
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-10",
+   "from": [
+    [
+     "history",
+     9
+    ]
+   ],
+   "also": [],
+   "note": "CL-HIS-04 is its one new instance; CL-TEST-04 is the missing check."
+  },
+  {
+   "id": "CL-HIS-11",
+   "from": [
+    [
+     "history",
+     10
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-12",
+   "from": [
+    [
+     "history",
+     11
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-13",
+   "from": [
+    [
+     "history",
+     12
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-14",
+   "from": [
+    [
+     "history",
+     13
+    ]
+   ],
+   "also": [],
+   "note": "Overlaps CL-GEO-07 (Krug's place) and CL-SRC-03 (Kologrivov's command); this entry is the qualification a visitor is not shown."
+  },
+  {
+   "id": "CL-HIS-15",
+   "from": [
+    [
+     "history",
+     14
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-16",
+   "from": [
+    [
+     "history",
+     16
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-HIS-17",
+   "from": [
+    [
+     "history",
+     17
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SRC-01",
+   "from": [
+    [
+     "sources-oob",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SRC-02",
+   "from": [
+    [
+     "sources-oob",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SRC-03",
+   "from": [
+    [
+     "sources-oob",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SRC-04",
+   "from": [
+    [
+     "sources-oob",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SRC-05",
+   "from": [
+    [
+     "sources-oob",
+     2
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SRC-06",
+   "from": [
+    [
+     "sources-oob",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SRC-07",
+   "from": [
+    [
+     "sources-oob",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SRC-08",
+   "from": [
+    [
+     "sources-oob",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-01",
+   "from": [
+    [
+     "geography",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-02",
+   "from": [
+    [
+     "geography",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-03",
+   "from": [
+    [
+     "geography",
+     2
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-04",
+   "from": [
+    [
+     "geography",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-05",
+   "from": [
+    [
+     "geography",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-06",
+   "from": [
+    [
+     "geography",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-07",
+   "from": [
+    [
+     "geography",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-08",
+   "from": [
+    [
+     "geography",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-09",
+   "from": [
+    [
+     "geography",
+     8
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-GEO-10",
+   "from": [
+    [
+     "geography",
+     9
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SIM-01",
+   "from": [
+    [
+     "state",
+     0
+    ]
+   ],
+   "also": [],
+   "note": "The auditor read app.js:3498 and 7720-7728: within a phase the dossier is repainted only when drawerKey changes, and the key holds each leaf's text phase, moving or standing, and hidden state, not its place or the clock: confirmed by reading."
+  },
+  {
+   "id": "CL-SIM-02",
+   "from": [
+    [
+     "visual-maps",
+     3
+    ]
+   ],
+   "also": [],
+   "note": "The same family as CL-SIM-05 (decision 251 (a)'s reach): drawn overlays here, a card's text there."
+  },
+  {
+   "id": "CL-SIM-03",
+   "from": [
+    [
+     "state",
+     1
+    ]
+   ],
+   "also": [],
+   "note": "The auditor read app.js:4193-4207: setChapter sets the clock and flies the camera but never calls stopPlay: confirmed by reading."
+  },
+  {
+   "id": "CL-SIM-04",
+   "from": [
+    [
+     "state",
+     2
+    ]
+   ],
+   "also": [
+    [
+     "interaction",
+     3
+    ]
+   ],
+   "note": "Merged: the interrupted fade (state) and the Movement layer off (interaction) are two scenarios of one opacity rule in applyOverlayOpacity."
+  },
+  {
+   "id": "CL-SIM-05",
+   "from": [
+    [
+     "interaction",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SIM-06",
+   "from": [
+    [
+     "state",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SIM-07",
+   "from": [
+    [
+     "state",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-SIM-08",
+   "from": [
+    [
+     "interaction",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-01",
+   "from": [
+    [
+     "a11y",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-02",
+   "from": [
+    [
+     "interaction",
+     0
+    ]
+   ],
+   "also": [],
+   "note": "The auditor read app.js:6309-6322 and 6479-6530: the glide runs in the tween's 'cam' slot to its end; a pan, zoom or key move calls free() (freeCam=true) but never clears _tw.cam, so the next frames apply the glide's arc again: confirmed by reading."
+  },
+  {
+   "id": "CL-UX-03",
+   "from": [
+    [
+     "visual-maps",
+     0
+    ]
+   ],
+   "also": [
+    [
+     "a11y",
+     3
+    ],
+    [
+     "interaction",
+     2
+    ]
+   ],
+   "note": "Merged: one hit-area rule, measured on a phone by two areas and at the playhead on a desktop by a third."
+  },
+  {
+   "id": "CL-UX-04",
+   "from": [
+    [
+     "interaction",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-05",
+   "from": [
+    [
+     "a11y",
+     2
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-06",
+   "from": [
+    [
+     "a11y",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-07",
+   "from": [
+    [
+     "visual-maps",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-08",
+   "from": [
+    [
+     "a11y",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-09",
+   "from": [
+    [
+     "a11y",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-10",
+   "from": [
+    [
+     "a11y",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-11",
+   "from": [
+    [
+     "a11y",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-12",
+   "from": [
+    [
+     "a11y",
+     8
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-13",
+   "from": [
+    [
+     "state",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-14",
+   "from": [
+    [
+     "state",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-15",
+   "from": [
+    [
+     "a11y",
+     9
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-16",
+   "from": [
+    [
+     "a11y",
+     10
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-17",
+   "from": [
+    [
+     "a11y",
+     11
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-18",
+   "from": [
+    [
+     "a11y",
+     12
+    ]
+   ],
+   "also": [],
+   "note": "Overlaps CL-MAP-06 on the phone caption's orphan separators."
+  },
+  {
+   "id": "CL-UX-19",
+   "from": [
+    [
+     "interaction",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-UX-20",
+   "from": [
+    [
+     "interaction",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-01",
+   "from": [
+    [
+     "visibility",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-02",
+   "from": [
+    [
+     "visibility",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-03",
+   "from": [
+    [
+     "visual-maps",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-04",
+   "from": [
+    [
+     "visual-maps",
+     2
+    ]
+   ],
+   "also": [],
+   "note": "The auditor read shell.html:206-215 and style.css: the only rose is inside the legend's toggle button; style.css hides .legend below 430 px tall and .legend .rose below 700 px tall: confirmed in part by reading (the width and Watch/Clean conditions left to the verifiers)."
+  },
+  {
+   "id": "CL-MAP-05",
+   "from": [
+    [
+     "visual-maps",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-06",
+   "from": [
+    [
+     "visual-maps",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-07",
+   "from": [
+    [
+     "visibility",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-08",
+   "from": [
+    [
+     "visual-maps",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-09",
+   "from": [
+    [
+     "visual-maps",
+     8
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-10",
+   "from": [
+    [
+     "visual-maps",
+     9
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-11",
+   "from": [
+    [
+     "visual-maps",
+     10
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-12",
+   "from": [
+    [
+     "visual-maps",
+     11
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-13",
+   "from": [
+    [
+     "visual-maps",
+     12
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-14",
+   "from": [
+    [
+     "visibility",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-15",
+   "from": [
+    [
+     "visual-maps",
+     13
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-16",
+   "from": [
+    [
+     "visual-maps",
+     14
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-17",
+   "from": [
+    [
+     "visibility",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-18",
+   "from": [
+    [
+     "visual-maps",
+     15
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-19",
+   "from": [
+    [
+     "visual-maps",
+     16
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-MAP-20",
+   "from": [
+    [
+     "visual-maps",
+     17
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-VIS-01",
+   "from": [
+    [
+     "visual-landscape",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-VIS-02",
+   "from": [
+    [
+     "visual-landscape",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-VIS-03",
+   "from": [
+    [
+     "visual-landscape",
+     2
+    ]
+   ],
+   "also": [],
+   "note": "Related, not the same issue: CL-HIS-05 (legs whose direction contradicts the status)."
+  },
+  {
+   "id": "CL-VIS-04",
+   "from": [
+    [
+     "visual-landscape",
+     3
+    ]
+   ],
+   "also": [],
+   "note": "CL-HIS-04 is the one between opposing formations that Stage 8 introduced."
+  },
+  {
+   "id": "CL-VIS-05",
+   "from": [
+    [
+     "visual-landscape",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-VIS-06",
+   "from": [
+    [
+     "visual-landscape",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-VIS-07",
+   "from": [
+    [
+     "visual-landscape",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-VIS-08",
+   "from": [
+    [
+     "visual-landscape",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-VIS-09",
+   "from": [
+    [
+     "state",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-01",
+   "from": [
+    [
+     "tests",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-02",
+   "from": [
+    [
+     "visibility",
+     2
+    ]
+   ],
+   "also": [],
+   "note": "Related, not the same issue: CL-TEST-14 (what the motion ceilings mean)."
+  },
+  {
+   "id": "CL-TEST-03",
+   "from": [
+    [
+     "tests",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-04",
+   "from": [
+    [
+     "history",
+     15
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-05",
+   "from": [
+    [
+     "tests",
+     2
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-06",
+   "from": [
+    [
+     "tests",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-07",
+   "from": [
+    [
+     "tests",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-08",
+   "from": [
+    [
+     "tests",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-09",
+   "from": [
+    [
+     "tests",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-10",
+   "from": [
+    [
+     "tests",
+     8
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-11",
+   "from": [
+    [
+     "tests",
+     10
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-12",
+   "from": [
+    [
+     "tests",
+     11
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-13",
+   "from": [
+    [
+     "tests",
+     12
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-14",
+   "from": [
+    [
+     "tests",
+     13
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-15",
+   "from": [
+    [
+     "tests",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-16",
+   "from": [
+    [
+     "tests",
+     9
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-17",
+   "from": [
+    [
+     "tests",
+     14
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-18",
+   "from": [
+    [
+     "tests",
+     15
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-19",
+   "from": [
+    [
+     "tests",
+     16
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-TEST-20",
+   "from": [
+    [
+     "tests",
+     17
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-01",
+   "from": [
+    [
+     "perf",
+     1
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-02",
+   "from": [
+    [
+     "perf",
+     5
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-03",
+   "from": [
+    [
+     "perf",
+     0
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-04",
+   "from": [
+    [
+     "perf",
+     2
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-05",
+   "from": [
+    [
+     "perf",
+     3
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-06",
+   "from": [
+    [
+     "perf",
+     4
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-07",
+   "from": [
+    [
+     "perf",
+     8
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-08",
+   "from": [
+    [
+     "perf",
+     6
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-09",
+   "from": [
+    [
+     "perf",
+     7
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-10",
+   "from": [
+    [
+     "perf",
+     9
+    ]
+   ],
+   "also": [],
+   "note": ""
+  },
+  {
+   "id": "CL-PERF-11",
+   "from": [
+    [
+     "perf",
+     10
+    ]
+   ],
+   "also": [],
+   "note": ""
+  }
+ ],
+ "set_aside": [
+  [
+   "geography",
+   10
+  ],
+  [
+   "sources-oob",
+   8
+  ]
+ ]
+}

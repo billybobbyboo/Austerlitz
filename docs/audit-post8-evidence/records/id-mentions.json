@@ -1,0 +1,2967 @@
+{
+ "count": 75,
+ "findings": [
+  {
+   "id": "H-1",
+   "severity": "blocker",
+   "title": "The three hours the sources sheet calls unresolved are shown as settled; two are graded fact and A",
+   "line": 121,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4433,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **125 (a), H-1: the three disputed hours (C3, C5, C6).**"
+     },
+     {
+      "line": 4672,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  disputed event's dossier its pill and both hours; an unsettled arrow's label its mark (decision 125, H-1, H-15)\"; C25 \"derived readings"
+     },
+     {
+      "line": 5064,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "- **The blocker (H-1).** `SOURCE_NOTE` keeps three hours unresolved: Dokhturov's descent, Kamensky's turn and Rapp's counter-charge. On the"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 13,
+      "section": "Planned (decided)",
+      "ctx": "ogether: the disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |"
+     },
+     {
+      "line": 52,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "| 142 | Kamensky's event: keep `t:585` with both hours in `dispute`, or the interval 08:45-09:45 that H-1's fix sentence names? | keep 585 with both hours in its `dispute` (decision 42's timing kept); the departure from H-1's fix sentence recorded | step 2 (C3) |"
+     },
+     {
+      "line": 52,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "ispute`, or the interval 08:45-09:45 that H-1's fix sentence names? | keep 585 with both hours in its `dispute` (decision 42's timing kept); the departure from H-1's fix sentence recorded | step 2 (C3) |"
+     },
+     {
+      "line": 120,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "    back \"jusqu'à Blasiowitz\"); H-1's tour stop 4 sentence (its reason for standing recorded in `tools/stage2/chronology.js`: it dates the"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-2",
+   "severity": "major",
+   "title": "Drouet's reserve division is drawn ahead of the assault at 08:45, the opening's second step",
+   "line": 146,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4454,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-2: Drouet's departure (C7).** `FORMATIONS` drouet@3: was undated, creeping from 04:00 to stand 0.5 km ahead of Vandamme at 08:45;"
+     },
+     {
+      "line": 5068,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - Drouet's reserve is drawn ahead of the assault at 08:45 (H-2)."
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-3",
+   "severity": "major",
+   "title": "The plateau's figure is a derived reading with no \"derived\" mark on the map, and in phase 7 none anywhere",
+   "line": 154,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 3017,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "  among it `TOUR[6].x`'s \"With the plateau gone\", H-3, and Caffarelli's artillery on the day): Drouet and I Corps (the centre, not the"
+     },
+     {
+      "line": 3050,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "  `TOUR[6].x`'s \"With the plateau gone\" (H-3) and Caffarelli's artillery were not taken up: both handed on, the sentence softened. (4) The"
+     },
+     {
+      "line": 5025,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  now see historical-text problems (H-3, H-4, H-12, H-13, c_cav's role) and allow them by name until step 2; none is fixed here."
+     },
+     {
+      "line": 5069,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The plateau label has no \"derived\" mark, and in phase 7 there is none anywhere (H-3, decision 119 (b))."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 118,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "    stop 7's \"With the plateau gone\" against the label's 17,050 at 11:00 (H-3); whether vines stood at Telnitz and Stare Vinohrady."
+     },
+     {
+      "line": 243,
+      "section": "What step 4 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "  11:00 (H-3, handed on by step 2, not taken up); Caffarelli's artillery on 2 December (handed on by step 2; only the grenadiers' was read);"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-4",
+   "severity": "major",
+   "title": "An interpretation is the first claim a visitor reads, and others are tagged \"record\"",
+   "line": 163,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4548,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-4's roles (C15, question 147: record-only).** c_iv \"The decisive centre assault.\" -> \"The centre assault.\"; c_gd \"..., then decides"
+     },
+     {
+      "line": 5025,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  now see historical-text problems (H-3, H-4, H-12, H-13, c_cav's role) and allow them by name until step 2; none is fixed here."
+     },
+     {
+      "line": 5070,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The first claim a visitor reads is an unlabelled interpretation (H-4)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 28,
+      "section": "What step 1 handed on (fact, from its commits; `CHANGELOG.md`)",
+      "ctx": "  (`data.js:311`), is a verdict of H-4's class; H-14's superlatives (\"the single most consequential mistake\", \"The most famous thing\") match"
+     },
+     {
+      "line": 57,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "| 147 | H-4's roles (c_iv, c_gd, c_cav): only what the record says, or the verdicts labelled as this map's reading? | record-only; the map's reading is stated once, labelled, in the first-run key | step 2 (C15) "
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-5",
+   "severity": "major (systemic)",
+   "title": "The dossier's Fact/Estimate/Reconstruction pill is the position grade, and it covers everything under it",
+   "line": 170,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 3012,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "cked (38 of them rewritten in this step without a claim); an interpolated position between documented anchors reads \"Position: interpolated\" (decision 128 (b), H-5). The disputed"
+     },
+     {
+      "line": 4084,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "**The interpolated position's pill (decision 128 (b); `docs/FINAL_AUDIT.md` H-5; the C7 design skeptic's I5).** A formation's claim pill"
+     },
+     {
+      "line": 4086,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "anchors are documented, the point between them is not (H-5 counted 825 of 2,605 formation-samples; re-counted here on the app's own"
+     },
+     {
+      "line": 4089,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "  is the same with `interp:\"Position: interpolated\"`. Why: decision 128 (b), H-5. The rule (the smallest, the design skeptic's): the word"
+     },
+     {
+      "line": 4107,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "  anchors, else its grade's words (roadmap step 4; decision 128 (b), H-5)\"; removed: none); check:contrast, run after the commit on its build: 35 states"
+     },
+     {
+      "line": 4110,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "  \"Position documented in the sources.\" (`CONF_TEXT.A`), H-5's overclaim in prose: under \"Position: interpolated\" the paragraph now gives"
+     },
+     {
+      "line": 4115,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "  \"Position: interpolated\"\"). (3) The count's attribution corrected above (H-5 counted 2,605 samples, not 2,636). (4) The self-test check settles"
+     },
+     {
+      "line": 4767,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  (H-5 counts 31.7% of formation-samples; 128 (b)). guard-broken's caption tag is \"interval\" beside the phase line's \"The hour is"
+     },
+     {
+      "line": 4776,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "heightguns@8 (154), the ice, the seven superlatives, H-11's open numbers and names, the claims per statement and H-5's interpolated"
+     },
+     {
+      "line": 5071,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The claim pill is the position's grade (H-5)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 13,
+      "section": "Planned (decided)",
+      "ctx": ": the disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |"
+     },
+     {
+      "line": 115,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "  - Claims per statement (128 (b), H-6): an interpolated position between two A anchors reads \"Position: documented\" (H-5 counts 31.7% of"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-6",
+   "severity": "major (systemic)",
+   "title": "The narrative carries no per-statement source",
+   "line": 177,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 2934,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "## 2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)"
+     },
+     {
+      "line": 3089,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "**The register of readings (`docs/step4-evidence/readings.md`, with `proposals.md`; H-6, decision 130).** 273 entries: 210 readings by"
+     },
+     {
+      "line": 4121,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "**The claim model (`narrative.js`; H-6, decision 128 (b)).** A new guarded file after `analysis.js` in `build.py`'s list, as the C7 design"
+     },
+     {
+      "line": 5072,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The narrative has no per-statement sources (H-6)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 15,
+      "section": "Planned (decided)",
+      "ctx": "-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done (#52); decisions 176-197 taken as recommended on 15 October 2026; step 4b part A applied 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 "
+     },
+     {
+      "line": 115,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "  - Claims per statement (128 (b), H-6): an interpolated position between two A anchors reads \"Position: documented\" (H-5 counts 31.7% of"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-7",
+   "severity": "major",
+   "title": "Soult's \"twenty minutes\" is graded three ways",
+   "line": 185,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4459,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-7: Soult's \"twenty minutes\", one grade (C8).** `PHASES[2]`'s c. 08:30 line, `EVENTS` decision.why, `COMMAND.fr[2]` (two rows),"
+     },
+     {
+      "line": 4605,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-7, C8.** A third Command-tab source tag, ANECDOTE (`SRC_LABEL`, `TOKENS.sym.source.anec` \"half\", `.src.anec`; question 148)."
+     },
+     {
+      "line": 5073,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - Soult's \"twenty minutes\" is graded three ways (H-7)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 13,
+      "section": "Planned (decided)",
+      "ctx": " disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-8",
+   "severity": "major",
+   "title": "The overclaim scan reads 7% of the prose a visitor can be shown; two live hits sit outside it",
+   "line": 190,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4792,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "questions.\" Decisions 125-141 are each as their question recommended; this step takes 141 (the fonts, first), 131 (T-1, T-2, D-1, D-2, H-8,"
+     },
+     {
+      "line": 4866,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **H-8, the overclaim scan reads every visitor string (commit 5).** `tools/lang-scan.js` (new) collects every string a visitor can be"
+     },
+     {
+      "line": 5014,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- H-8: 23 mutations as designed; `LANG_ALLOW` emptied gives exactly its 9 findings; the old scan caught 1 of the 17 expected findings."
+     },
+     {
+      "line": 5074,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The overclaim scan reads 124 of 1,764 prose strings, and two of its own banned words are live outside it (H-8)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "bedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-9",
+   "severity": "minor",
+   "title": "\"The sun of Austerlitz\" toast",
+   "line": 200,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4557,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-9: the sun of Austerlitz (C22, the review fixes of C19-C23).** `PHASES[3].flash`: \"The sun of Austerlitz\" -> \"The sun of Austerlitz,"
+     },
+     {
+      "line": 4621,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-9, C22, the review fixes of C19-C23.** `lightNotes` attributes the fog and the sun on the climb to the two memoirs and gives"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 13,
+      "section": "Planned (decided)",
+      "ctx": "uted hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |"
+     },
+     {
+      "line": 59,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "| 149 | H-9: attribute the \"sun of Austerlitz\" flash or drop it? | attribute it (\"as memoirs call it\") | step 2 (C22) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-10",
+   "severity": "minor",
+   "title": "An open question drawn as settled: vines",
+   "line": 205,
+   "mentions": {
+    "CHANGELOG.md": [],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-11",
+   "severity": "minor",
+   "title": "`data.js` and `appearance.js` contradict each other inside the same dossier",
+   "line": 210,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 3021,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "  `LANG_ALLOW` down to its two permanent entries), H-11 and the 6B questions (Gladkov found in no work read; Suchet's division the 3rd of V"
+     },
+     {
+      "line": 3461,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "The division numbers (question 155, H-11): Suchet's division is the 3rd of V Corps in both French returns of October read and in Sokolov's"
+     },
+     {
+      "line": 4465,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-11: data.js against appearance.js (C9, its review fixes, C14a).**"
+     },
+     {
+      "line": 4571,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  each from the records above: H-12's hours, the chapel battery, H-13, H-11 and questions 153 and 155). No clock time, so"
+     },
+     {
+      "line": 4776,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "heightguns@8 (154), the ice, the seven superlatives, H-11's open numbers and names, the claims per statement and H-5's interpolated"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 63,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "| 153 | H-11: settle Kamensky's musketeer regiment as Ryazhsk, keeping Ryazan as the Materialien's and Duffy's reading? | yes, after a second reading of the Mikhailovsky-Danilevsky 1844 page images (register §6.8"
+     },
+     {
+      "line": 108,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "  - H-11 and the 6B data questions: Gladkov (Duffy, Smith); Suchet's division number on 2 December (\"3e or 2e\": the returns of 26 and 28"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-12",
+   "severity": "minor",
+   "title": "Other silent internal contradictions",
+   "line": 216,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4505,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-12: the other silent contradictions (C10, its review fixes).**"
+     },
+     {
+      "line": 4571,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  each from the records above: H-12's hours, the chapel battery, H-13, H-11 and questions 153 and 155). No clock time, so"
+     },
+     {
+      "line": 4657,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- `tools/stage2/chronology.js`: the extractor reads `dispute`; `ALLOW_TIMED` 12 -> 15 (C3 +5 for the other sides, C10 -3 for H-12's and"
+     },
+     {
+      "line": 4859,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  REVIEW's evidence, 36 added) or allowed with a reason (`ALLOW_TIMED`: 12, three of them H-12's, for question 129), never both; a cite that"
+     },
+     {
+      "line": 4910,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  `tools/stage2/chronology.js` (entries two to four of `ALLOW_TIMED` are H-12's, not the first four); `redteam.js` `KNOWN_WARN`'s"
+     },
+     {
+      "line": 5025,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  now see historical-text problems (H-3, H-4, H-12, H-13, c_cav's role) and allow them by name until step 2; none is fixed here."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 25,
+      "section": "What step 1 handed on (fact, from its commits; `CHANGELOG.md`)",
+      "ctx": "  `tools/stage2/chronology.js` `ALLOW_TIMED` (12 entries, among them H-12's) and `REVIEW_CITES` follow any retimed or reworded sentence; a"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-13",
+   "severity": "minor",
+   "title": "The ice: the debunking told as fact",
+   "line": 229,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4529,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-13: the ice (C11).** `FEATURES.satschan.story`, `EVENTS.ice.why`, `ANALYSIS` collapse: was \"some men certainly died\", \"The most"
+     },
+     {
+      "line": 4571,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  each from the records above: H-12's hours, the chapel battery, H-13, H-11 and questions 153 and 155). No clock time, so"
+     },
+     {
+      "line": 5025,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  now see historical-text problems (H-3, H-4, H-12, H-13, c_cav's role) and allow them by name until step 2; none is fixed here."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 60,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "| 150 | H-13: keep the other side on screen (Marbot's and Thiébault's thousands drowned)? | keep it | step 2 (C11) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-14",
+   "severity": "minor",
+   "title": "Unlabelled superlatives, counterfactuals and rounded figures",
+   "line": 235,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 3126,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "**The language left for step 4 (the plan's K3; `docs/FINAL_AUDIT.md` H-14's class; question 130; register C6).** The seven superlatives"
+     },
+     {
+      "line": 4535,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-14: superlatives, counterfactuals, rounded figures (C12).** `FORMATIONS.col4.note`: \"— the single most consequential mistake of the"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 28,
+      "section": "What step 1 handed on (fact, from its commits; `CHANGELOG.md`)",
+      "ctx": "  (`data.js:311`), is a verdict of H-4's class; H-14's superlatives (\"the single most consequential mistake\", \"The most famous thing\") match"
+     },
+     {
+      "line": 61,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "| 151 | H-14: remove \"roughly 60,000\" and \"about 50,000 by the Allied estimate\", which no record gives? | remove both; the second restored in step 4 if a source gives the Allied staff's estimate | step 2 (C12) |"
+     },
+     {
+      "line": 62,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "| 152 | H-14: allow the SUPERLATIVE pattern's seven other hits by name until step 4, and SOURCE_NOTE's \"the hardest figures of all\" permanently, as \"a statement of method\"? | yes | step 2 (C12) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-15",
+   "severity": "minor",
+   "title": "The opening's played stretch names events without their grade",
+   "line": 240,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4623,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-15, C23, the review fixes of C19-C23.** One helper (`evNote`) gives an event's note wherever it is named outside its dossier: \"the"
+     },
+     {
+      "line": 4627,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  departure from H-15's fix sentence (\"an interval: the hour is not fixed\"), recorded: decision 44 makes soult and counter-march fact-A"
+     },
+     {
+      "line": 4672,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  disputed event's dossier its pill and both hours; an unsettled arrow's label its mark (decision 125, H-1, H-15)\"; C25 \"derived readings"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-16",
+   "severity": "minor",
+   "title": "The eye-level vantage's two neighbours claim sight",
+   "line": 246,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4616,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-16, C20.** The Zuran and Allied vantages' titles (`shell.html`): \"Napoleon's command post: what he could see\" -> \"Towards the plateau from near the Zuran"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 13,
+      "section": "Planned (decided)",
+      "ctx": "urs marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-17",
+   "severity": "minor",
+   "title": "131 of the appearance table's 311 quotes rest on one reading of a page image",
+   "line": 250,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 2934,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "## 2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)"
+     },
+     {
+      "line": 2945,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "C7 the claims' design, challenged by a design skeptic; the second reading of the appearance quotes and of the step-2 register (H-17); then"
+     },
+     {
+      "line": 3010,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": " read on the text layer checked on it; 63 counter-readings, checked by no other reader), with the step-2 register and the appearance quotes read a second time (H-17, by"
+     },
+     {
+      "line": 3116,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "**The step-2 register read a second time (`docs/step2-evidence/second-reading.md`; H-17's practice, the step-2 hand-on).** Every entry of"
+     },
+     {
+      "line": 3985,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "**The appearance table read a second time (`docs/stage6-evidence/second-reading.md`; H-17; decision 136's place).** The 131 quotes H-17"
+     },
+     {
+      "line": 3985,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "**The appearance table read a second time (`docs/stage6-evidence/second-reading.md`; H-17; decision 136's place).** The 131 quotes H-17"
+     },
+     {
+      "line": 4589,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "(H-17)\" (but §6.8, the second reading for question 153). Sources: the Correspondance t. XI (nos. 9534, 9535, the 30th Bulletin),"
+     },
+     {
+      "line": 4756,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- Historical: every reading is one reader's, \"not yet second-read (H-17)\" (but §6.8); Duffy 1977 and Smith 1998 could not be read, so the"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 15,
+      "section": "Planned (decided)",
+      "ctx": "ement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done (#52); decisions 176-197 taken as recommended on 15 October 2026; step 4b part A applied 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 19"
+     },
+     {
+      "line": 114,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "    `docs/step2-evidence/readings.md` (H-17's practice), the Mikhailovsky-Danilevsky 1844 and Alombert page images first."
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-18",
+   "severity": "polish (INFERENCE)",
+   "title": "Two place stories",
+   "line": 256,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1995,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "**Group 4: a small data task, with evidence (H-18, H-19's one spelling, the Guard infantry's commander; the light notes, the order of"
+     },
+     {
+      "line": 2000,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- `FEATURES[#austerlitz].story` (H-18): was \"Napoleon signed the armistice with Francis at the castle here on 6 December.\"; is \"On 4 December"
+     },
+     {
+      "line": 2009,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- `FEATURES[#santon].story` (H-18): was \"Named by French soldiers after a chapel in Egypt. Bagration could not get past it, …\"; is \"Veterans of"
+     },
+     {
+      "line": 4778,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "climbs. Step 5: H-19's spelling, H-18, the labels' cost to `pickFormation`, `buildOOB`'s commander, `REVIEW`'s locators)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": ", R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in PR #57 (`docs/step5-evidence/questi"
+     },
+     {
+      "line": 126,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "  chronology statement keys, so regenerate them together); H-18 (the Santon's chapel tradition, the armistice); the arrow labels' and the"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "H-19",
+   "severity": "polish",
+   "title": "Spelling and jargon",
+   "line": 260,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1995,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "**Group 4: a small data task, with evidence (H-18, H-19's one spelling, the Guard infantry's commander; the light notes, the order of"
+     },
+     {
+      "line": 2028,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- `PHASES[#3].lede` (H-19): \"St-Hilaire\" -> \"Saint-Hilaire\" (the one place the name was abbreviated). No other spelling changed: the accents"
+     },
+     {
+      "line": 4551,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **H-19, taken early (C16, question 156).** Six `COMPOSITION` Dress notes no longer name the project's files or ids (sthilaire, legrand,"
+     },
+     {
+      "line": 4778,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "climbs. Step 5: H-19's spelling, H-18, the labels' cost to `pickFormation`, `buildOOB`'s commander, `REVIEW`'s locators)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in PR #57 (`docs/step5-evidence/questions.md"
+     },
+     {
+      "line": 66,
+      "section": "Step 2: the owner decisions 142-161 (the answers)",
+      "ctx": "| 156 | take H-19's six Dress-note rewordings and the note assertion in step 2? | yes | step 2 (C16) |"
+     },
+     {
+      "line": 125,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "- **To step 5 (records and polish):** H-19's spelling (\"Thiebault\"/\"Thiébault\", \"Legere\", \"Bessieres\", \"St-Hilaire\"; accents change"
+     },
+     {
+      "line": 251,
+      "section": "What step 4 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "- **To step 5 (records and polish):** H-19's spellings stay (data.js \"Thiebault\", \"Vare\", \"Bessieres\"; appearance.js \"Thiébault\", \"Varé\"; settled by decision 209 (a), PR #57);"
+     },
+     {
+      "line": 261,
+      "section": "What step 5 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "- **To a later data task:** the accents if 209 (a) is chosen; the Dress notes' internal words (H-19's jargon, `appearance.js`); `CONF_TEXT.C`'s"
+     },
+     {
+      "line": 276,
+      "section": "Decisions 205-212 (20 October 2026; the owner: \"Go with your recommendations for all questions\"; applied in PR",
+      "ctx": "| 209 | accents in names (H-19) | (a): Thiébault, Varé, Bessières, Légère, Olmütz, Grande Armée outside quotations, a data task, measured | PR #57 |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "D-1",
+   "severity": "major",
+   "title": "`check:chronology` judges a frozen, hand-written table, not the live text",
+   "line": 293,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4792,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "questions.\" Decisions 125-141 are each as their question recommended; this step takes 141 (the fonts, first), 131 (T-1, T-2, D-1, D-2, H-8,"
+     },
+     {
+      "line": 4857,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **D-1, `check:chronology` reads the live text (commit 6).** An acorn inventory of every timed string and comment in `data.js` and"
+     },
+     {
+      "line": 5015,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- D-1: 10 faults in memory, 10 in the text and 12 wrong table edits, each failing; the old check failed none of the 10 in memory and 1 of"
+     },
+     {
+      "line": 5076,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - `check:chronology` judges a hand-typed table (D-1)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "e fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "D-2",
+   "severity": "major",
+   "title": "The grade check skips 30 of the 32 formations; a missing grade is drawn as B without a word",
+   "line": 303,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4792,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "questions.\" Decisions 125-141 are each as their question recommended; this step takes 141 (the fonts, first), 131 (T-1, T-2, D-1, D-2, H-8,"
+     },
+     {
+      "line": 4864,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **D-2, every first anchor graded (commit 2).** `test.js` and `redteam.js`, each with its own code, require a grade on every tracked"
+     },
+     {
+      "line": 5006,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- D-2 and the events: the grade deleted from each of the 32 first anchors in turn: 32 caught by `test.js`, 32 by `redteam.js` (before: 0 and"
+     },
+     {
+      "line": 5077,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The grade check skips 30 of 32 formations (D-2)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "ts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "D-3",
+   "severity": "minor",
+   "title": "The V Corps counts the Santon's 1,600 twice",
+   "line": 309,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4541,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **D-3: the Santon under Suchet (C13).** `FORMATIONS.c_v.children`, `suchet` (strengthNote, children), `santon.parent`: was the Santon a"
+     },
+     {
+      "line": 4606,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **D-3, C13.** The order-of-battle list shows the Santon detachment at the third level, under Suchet's Division, with its strength but"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 13,
+      "section": "Planned (decided)",
+      "ctx": "rked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |"
+     },
+     {
+      "line": 128,
+      "section": "What step 2 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "  Division since D-3); `tools/stage2/chronology.js`'s `REVIEW` file:line locators written before C3 may point one or more lines off"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "D-4",
+   "severity": "minor",
+   "title": "A duplicate key and a dead field in the guarded data",
+   "line": 315,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4545,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **D-4: the duplicate key, the dead field, the light keys (C14).** heightguns track[8]: cf \"C\" then \"B\" in one object, the later winning;"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "D-5",
+   "severity": "minor",
+   "title": "Data that lives outside the guard",
+   "line": 319,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4104,
+      "section": "2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)",
+      "ctx": "- Checks: npm test, all 9 suites and the height guard; check:chronology 0 errors; check:data \"CHANGED data in app.js (roadmap step 2, D-5):"
+     },
+     {
+      "line": 4629,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **D-5 (b), C24, the review fixes of C24-C26.** The sources sheet's notes read the table: the measures, the Austrian count and model (with"
+     },
+     {
+      "line": 4680,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- `tools/visual/data-invariance.js`: a sixth group, \"data in app.js (roadmap step 2, D-5)\" (C1: `SUN_DAY`, `FEATURE_GT`, `TIMING_TEXT`,"
+     },
+     {
+      "line": 4706,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "comment on the app.js group (\"the values once typed into standardNotes and troopNotes are read from the table since D-5 (b)\"); issue 8"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "D-6",
+   "severity": "minor",
+   "title": "Derived readings without the tag",
+   "line": 325,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 2361,
+      "section": "2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 ta",
+      "ctx": "- `704e6f2`: the strengths-and-grades measurement recorded; the self-test's D-6 plateau check given a run to test after 176."
+     },
+     {
+      "line": 2650,
+      "section": "2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 ta",
+      "ctx": "  build drew for \"In hand\" (182 (c)); the self-test's D-6 check taking the run from 04:00 when no later one is long enough; Friant's holding"
+     },
+     {
+      "line": 2694,
+      "section": "2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 ta",
+      "ctx": "follows the plotted holding alone ...\" (D-6) picks the day's first run of the plotted holding of 70 minutes or more that begins after 04:00"
+     },
+     {
+      "line": 4637,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "- **D-6, C25, C26, the review fixes of C24-C26.** The march row tagged derived (\"the plotted leg's length over its time window\"); an"
+     },
+     {
+      "line": 4674,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  number named) carry the derived tag, in the full dossier and the card; no aggregate named as a position (docs/FINAL_AUDIT.md D-6)\"; C26"
+     },
+     {
+      "line": 4676,
+      "section": "2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decis",
+      "ctx": "  the clock), the same after a jump from 04:00, a jump from 18:00 or played (docs/FINAL_AUDIT.md D-6)\". None removed or renamed. Also: the"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 13,
+      "section": "Planned (decided)",
+      "ctx": "he plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "G-1",
+   "severity": "minor",
+   "title": "The landscape's scale bar is true only at the orbit target, and does not say so",
+   "line": 339,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1841,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "## 2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 170 (b), (c) and 172)"
+     },
+     {
+      "line": 1916,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *G-1.* The scale bar is an image named, with a title, \"Scale: 1 km, at the centre of the view (in perspective, nearer ground is larger"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in "
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "G-2",
+   "severity": "polish",
+   "title": "The map-to-world factor is typed outside `geo.js`",
+   "line": 343,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 597,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "- **Maintenance (section 20.7): G-2, P-3, P-4, T-7; a second data task, no coordinate changed.**"
+     },
+     {
+      "line": 598,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  - *G-2, the map-to-world factor typed outside `geo.js`:* `GEOREF` exports `MAP_PER_WORLD` (2, its own value, unexported until now) and"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 517,
+      "section": "Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)",
+      "ctx": "18 cases); A-6 (a 2 px ring, read on a screenshot after real Tab presses; a main landmark; the heading levels). G-2 (one authority, 3,078,746"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 107,
+      "section": "In short",
+      "ctx": "  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road"
+     },
+     {
+      "line": 1335,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **G-2** (polish) | the map-to-world factor typed outside `geo.js` | **present** (`app.js:6986` types `len*0.5/UNITS_PER_KM`; `world.js:36`'s `W` types 0.5, guarded) | a records-and-polish commit; `KM_PER_M"
+     },
+     {
+      "line": 4265,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "maintenance findings G-2, P-3, P-4 and T-7; and the verification of the final build, with the device runs prepared. Each change in a commit of its"
+     },
+     {
+      "line": 4266,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "own: `f869d17` (the buildings' acceptance; a data task), `bab9f30` (S-7; the pose at a pause), `a22edd2` (the phase's message; A-6), `2f10a1f` (G-2,"
+     },
+     {
+      "line": 4278,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "heading level skipped. 3,078,746 numbers of the geography unchanged by G-2. The crowns near the eye: the frame's half-pixel shimmer among them"
+     },
+     {
+      "line": 4312,
+      "section": "20.1 The completion checklist",
+      "ctx": "| 20 | G-2: the map-to-world factor typed outside `geo.js` | `W`'s 0.5 and origin, `regionalH`'s inverse, `SUN_DAY`, a theme's length, the atmosphere's first uniforms | one authority, no coordinate changed | `G"
+     },
+     {
+      "line": 4449,
+      "section": "20.7 Maintenance (commit `2f10a1f`; a data task that changes no coordinate)",
+      "ctx": "- **G-2, the map-to-world factor typed outside `geo.js`.** `GEOREF` exports `MAP_PER_WORLD` (2, its own value, unexported until now) and"
+     }
+    ]
+   }
+  },
+  {
+   "id": "G-3",
+   "severity": "polish (INFERENCE)",
+   "title": "Miloradovich at dawn",
+   "line": 348,
+   "mentions": {
+    "CHANGELOG.md": [],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "S-1",
+   "severity": "major",
+   "title": "\"Whose eyes?\" hides the enemy's formations but not their corps' counters",
+   "line": 364,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4160,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)"
+     },
+     {
+      "line": 4209,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **S-1: corps counters under \"Whose eyes?\" (C20; handed on by step 1).** A corps or column counter is its formations' reading"
+     },
+     {
+      "line": 4258,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "| 170 | S-1's details: (a) a corps' strength is not drawn while only some of its formations are known (as built); (b) the plan links and the selection ring still draw true positions under a reading (the same cla"
+     },
+     {
+      "line": 4316,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "own, else at the mean of those known, reported only exactly when none is seen, its grade theirs, and no strength while only some are known (docs/FINAL_AUDIT.md S-1)"
+     },
+     {
+      "line": 5043,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "warning, the hover's cost and the S-1 check; for step 5, the T-9 items not taken and the polish found here."
+     },
+     {
+      "line": 5078,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - \"Whose eyes?\" leaves enemy corps counters drawn (S-1)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 14,
+      "section": "Planned (decided)",
+      "ctx": "ver corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |"
+     },
+     {
+      "line": 32,
+      "section": "What step 1 handed on (fact, from its commits; `CHANGELOG.md`)",
+      "ctx": "  (its frame cost not measured; a click selects what that hover shows); the S-1 check (no enemy corps counter drawn when all its formations are unknown) is to be added to the"
+     },
+     {
+      "line": 33,
+      "section": "What step 1 handed on (fact, from its commits; `CHANGELOG.md`)",
+      "ctx": "  self-test with S-1's fix (it fails today)."
+     },
+     {
+      "line": 147,
+      "section": "Step 3: the owner decisions 162-175 (the answers)",
+      "ctx": "| 170 | S-1's details, S-4 | (a) as built; (b) the plan links and the selection ring under a reading, and (c) S-4, in step 5 | step 3 (C20); step 5 |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "S-2",
+   "severity": "major",
+   "title": "Turning \"Pause briefly at events\" off and on while the clock plays sends the clock back",
+   "line": 373,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4212,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **S-2: the dwell toggle (C1).** Off and on while the clock plays never sends it back (`dwellSet`, `dwellReset`)."
+     },
+     {
+      "line": 4315,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  - dwell: its toggle while the clock plays never sends the clock back; off, no dwell; on again, the next start ahead dwells (docs/FINAL_AUDIT.md S-2)"
+     },
+     {
+      "line": 5079,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - Turning the dwell off and on while playing sends the clock back: 07:22 to 07:00, measured (S-2)."
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "S-3",
+   "severity": "minor",
+   "title": "A phase's camera leaves the eye level on",
+   "line": 379,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4160,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)"
+     },
+     {
+      "line": 4213,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **S-3 and the eye-level floor (C4; handed on by step 1).** A phase's camera leaves the eye level; leaving it lifts the eye with the floor"
+     },
+     {
+      "line": 4312,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "ck, with the clock moved) leaves it, the near plane restored and the eye at or above its floor before any frame; no render-time correction (docs/FINAL_AUDIT.md S-3) (at 1×)"
+     },
+     {
+      "line": 4313,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "ck, with the clock moved) leaves it, the near plane restored and the eye at or above its floor before any frame; no render-time correction (docs/FINAL_AUDIT.md S-3) (at 4×)"
+     },
+     {
+      "line": 4314,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "ck, with the clock moved) leaves it, the near plane restored and the eye at or above its floor before any frame; no render-time correction (docs/FINAL_AUDIT.md S-3) (at 10.33×)"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 14,
+      "section": "Planned (decided)",
+      "ctx": "ps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |"
+     },
+     {
+      "line": 31,
+      "section": "What step 1 handed on (fact, from its commits; `CHANGELOG.md`)",
+      "ctx": "  `CONSOLE_ALLOW` as `eye-leave-floor` until the fix; it sits with S-3); the hover fix of step 1 runs `pickFormation` on every pointer move"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 1292,
+      "section": "9.1 The headquarters view: the dossier and the centring",
+      "ctx": "rectangle's centre (0 px) and the reading kept: correct (S-3's fix, step 3)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "S-4",
+   "severity": "minor",
+   "title": "At eye level the dossier and the drawing disagree",
+   "line": 384,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1922,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *Question 170 (c), S-4.* The dossier's reading pill is the drawing's (`drawnKnow`; a corps or column, `aggReading`), with the reason \"no"
+     },
+     {
+      "line": 4258,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": " some of its formations are known (as built); (b) the plan links and the selection ring still draw true positions under a reading (the same class of leak); (c) S-4 (at eye level the dossier's pill says \"In sight\" where the drawing shows \"reported only\") | (a) as built; (b) and (c) in step 5, recorded | (a) as built; (b), (c) unchanged (C20) |"
+     },
+     {
+      "line": 4400,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- Not in step 3 (recorded, with the owner's decisions): the plan links and the selection ring under a reading, and S-4 (170 (b), (c), step"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "ords-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in PR #5"
+     },
+     {
+      "line": 147,
+      "section": "Step 3: the owner decisions 162-175 (the answers)",
+      "ctx": "| 170 | S-1's details, S-4 | (a) as built; (b) the plan links and the selection ring under a reading, and (c) S-4, in step 5 | step 3 (C20); step 5 |"
+     },
+     {
+      "line": 147,
+      "section": "Step 3: the owner decisions 162-175 (the answers)",
+      "ctx": "| 170 | S-1's details, S-4 | (a) as built; (b) the plan links and the selection ring under a reading, and (c) S-4, in step 5 | step 3 (C20); step 5 |"
+     },
+     {
+      "line": 164,
+      "section": "What step 3 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "- **To step 5:** S-4 and the plan links and the selection ring drawn at true positions under a reading (question 170 (b), (c)); the map"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "S-5",
+   "severity": "minor",
+   "title": "State that depends on the path to the clock",
+   "line": 389,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 974,
+      "section": "2026-10 · Stage 8, implementation PR 8E: the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)), with the a",
+      "ctx": "- **S-5: the facing, a function of the clock** (`faceClock`): a formation not marching faces the nearest enemy as placed at the start of its"
+     },
+     {
+      "line": 998,
+      "section": "2026-10 · Stage 8, implementation PR 8E: the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)), with the a",
+      "ctx": "  determinism and its slopes after Play, the amplitude, S-5, the ground contact, the step described, the drape; the 8D block's checks adapted to a"
+     },
+     {
+      "line": 1000,
+      "section": "2026-10 · Stage 8, implementation PR 8E: the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)), with the a",
+      "ctx": "  runs of the gait, the amplitude, S-5, the notes and the level of detail; the height guard classifies the slopes' ground reads; `boot-check.js` a"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 469,
+      "section": "Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)",
+      "ctx": "drawn ground's slopes; S-5's facing a function of the clock; the standards' still drape. Measured here: per figure the rich kit at most 1.21 times 8D's (section 8.2's limit 1.3); the frame's triangles at most +8.0% (close on"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 107,
+      "section": "In short",
+      "ctx": "  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road"
+     },
+     {
+      "line": 1332,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **S-5** (minor) state that depends on the path to the clock | a stationary formation's facing is cached per phase (`faceCache`), so it is the facing at the first clock visited in the phase | **present** (`"
+     },
+     {
+      "line": 1405,
+      "section": "10. The implementation plan: PRs in order",
+      "ctx": "| **8E** | the troops: the kit for every class, the artillery, the gait; the facing per leg (S-5) | L3; S-5 | questions 242-245; 8D |"
+     },
+     {
+      "line": 1405,
+      "section": "10. The implementation plan: PRs in order",
+      "ctx": "| **8E** | the troops: the kit for every class, the artillery, the gait; the facing per leg (S-5) | L3; S-5 | questions 242-245; 8D |"
+     },
+     {
+      "line": 1479,
+      "section": "8E: the troops",
+      "ctx": "  `enemyFacing` per leg, S-5); the self-test's 6C, 6D and seating checks (shapes change, colours and claims do not), `css-test.js`;"
+     },
+     {
+      "line": 3275,
+      "section": "17.9 S-5: the facing, a function of the clock (`faceClock`, `enemyFacing`)",
+      "ctx": "### 17.9 S-5: the facing, a function of the clock (`faceClock`, `enemyFacing`)"
+     },
+     {
+      "line": 3320,
+      "section": "17.12 The checks, and each made to fail",
+      "ctx": "  S-5; (h) the feet on the ground; (j) the step described; (i) the drape. The 8D block's checks adapted to a gait that writes its uniforms (the"
+     },
+     {
+      "line": 3329,
+      "section": "17.12 The checks, and each made to fail",
+      "ctx": "  reduced motion), S-5 (960 facings, three paths each), the sources sheet's notes (the table's values as read) and `kitLod`'s decision along a"
+     },
+     {
+      "line": 3366,
+      "section": "17.12 The checks, and each made to fail",
+      "ctx": "| `s5` | 8D's facing: cached per phase at the first clock visited | 8e | the facing (S-5; 8E); the gait (decision 244 (a)) |"
+     }
+    ]
+   }
+  },
+  {
+   "id": "S-6",
+   "severity": "minor",
+   "title": "Reduced motion is read once",
+   "line": 394,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4160,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)"
+     },
+     {
+      "line": 4216,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **S-6: reduced motion (C14).** `RM` follows its media query live (what moves stops where it would end); the stylesheet turns every"
+     },
+     {
+      "line": 4324,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "e: turned on mid-stretch the opening is at its step, nothing playing, ½× back; mid-glide the glide is at its end; turned off, motion again (docs/FINAL_AUDIT.md S-6)"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 14,
+      "section": "Planned (decided)",
+      "ctx": "unters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 3225,
+      "section": "17.7 The gait (decision 244 (a); `GAIT`, `clockRate`, `gaitDist`, `gaitLeg`, `gaitRoll`, `gaitStep`, `gaitFast",
+      "ctx": "- **The amplitude**: none under reduced motion (at once: S-6, \"what moves stops\"), on a halted formation, or on a leg under 1 km/h (a drift"
+     },
+     {
+      "line": 3382,
+      "section": "17.12 The checks, and each made to fail",
+      "ctx": "  amplitude faded: now whole until it ends; (4) reduced motion easing the gait out over half a second: now at once (S-6), a mutation of it"
+     }
+    ]
+   }
+  },
+  {
+   "id": "S-7",
+   "severity": "polish",
+   "title": "Smaller timing seams",
+   "line": 398,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 492,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "- **Timing and the pause (section 20.4): S-7's two seams; the block wheeling on after a pause.** Reproduced on 8G's build by"
+     },
+     {
+      "line": 494,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  - *A change of speed inside a dwell* (S-7): the ease kept the speed it was entered at; from 4x to 1/2x a third of the way into the ease in,"
+     },
+     {
+      "line": 498,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  - *A relief change during a glide* (S-7): `redrawGround` stopped the tween but left the camera's slot set, so `followActive` stayed false and"
+     },
+     {
+      "line": 502,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  - *The knowledge rule against the eased fog* (S-7's third seam): measured every minute 08:00-10:00 for both headquarters, no formation's"
+     },
+     {
+      "line": 545,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  rescale of S-7 never divides by an absent speed."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 514,
+      "section": "Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)",
+      "ctx": "a correction proposal with its consequences traced, nothing changed (questions 259, 260). S-7's two timing seams fixed and its third explained; a"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 107,
+      "section": "In short",
+      "ctx": "  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road"
+     },
+     {
+      "line": 1333,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **S-7** (polish) smaller timing seams | a speed change inside a dwell's ease keeps the old ease; a relief change during a glide leaves Follow idle (`_tw.cam` kept); the knowledge rule steps with the phase'"
+     },
+     {
+      "line": 1408,
+      "section": "10. The implementation plan: PRs in order",
+      "ctx": "| **8H** | integration: accessibility, the device runs after, the effects-off bracket, S-7, the open polish findings | all; 8.5; 9.4; 9.6 | everything above |"
+     },
+     {
+      "line": 4266,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "own: `f869d17` (the buildings' acceptance; a data task), `bab9f30` (S-7; the pose at a pause), `a22edd2` (the phase's message; A-6), `2f10a1f` (G-2,"
+     },
+     {
+      "line": 4299,
+      "section": "20.1 The completion checklist",
+      "ctx": "| 7 | S-7: a change of speed in a dwell | the ease kept the old speed: left the dwell at 37.8 clock min/s, then 5 | the remaining ease at the new speed | the ease rescaled by the speeds' ratio | `s7-8h.js` | f"
+     },
+     {
+      "line": 4300,
+      "section": "20.1 The completion checklist",
+      "ctx": "| 8 | S-7: a relief change during a glide | Follow idle under Play (`_tw.cam` left set) | Follow follows | `stopTweens` clears both slots | `s7-8h.js` | fixed |"
+     },
+     {
+      "line": 4301,
+      "section": "20.1 The completion checklist",
+      "ctx": "| 9 | S-7: the knowledge rule against the eased fog | not re-measured since the audit's 5-minute sample | the historical rule kept; the difference explained | every minute 08:00-10:00, both readings: 0 differe"
+     },
+     {
+      "line": 4360,
+      "section": "20.4 Timing and the pause (commits `bab9f30`, `f08b58c`)",
+      "ctx": "- **S-7, a change of speed inside a dwell.** The ease kept the speed it was entered at: from 4x to 1/2x a third of the way into the ease in, out"
+     },
+     {
+      "line": 4364,
+      "section": "20.4 Timing and the pause (commits `bab9f30`, `f08b58c`)",
+      "ctx": "- **S-7, a relief change during a glide.** `redrawGround` stopped the tween but left the camera's slot set, so Follow stayed idle under Play until"
+     },
+     {
+      "line": 4367,
+      "section": "20.4 Timing and the pause (commits `bab9f30`, `f08b58c`)",
+      "ctx": "- **S-7, the knowledge rule against the eased fog.** Kept: decision 92 reads the knowledge at the phase's record of the mist; the drawn fog's"
+     }
+    ]
+   }
+  },
+  {
+   "id": "SW-1",
+   "severity": "major",
+   "title": "If three.js cannot load, or WebGL cannot start, the page stays on its boot line for ever",
+   "line": 412,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4160,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)"
+     },
+     {
+      "line": 4181,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-1, decision 133 (a): three.js and the start (C5, C6).** three.js stays on cdnjs r128; its tag carries"
+     },
+     {
+      "line": 5081,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - No message when three.js or WebGL fails, and no integrity attribute on the CDN script (SW-1)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 14,
+      "section": "Planned (decided)",
+      "ctx": "\"Whose eyes?\" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-2",
+   "severity": "major",
+   "title": "Below 1080 px the rail can stand over the dispatch card",
+   "line": 420,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4189,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-2, SW-3: the narrow layout and the hidden panels (C11, C12).** The closed dossier is `visibility:hidden` after its slide and inert;"
+     },
+     {
+      "line": 5082,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - Below 1080 px the rail can stand over the dispatch card (SW-2)."
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-3",
+   "severity": "major (accessibility)",
+   "title": "Panels moved off screen stay in the Tab order and the accessibility tree",
+   "line": 427,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4189,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-2, SW-3: the narrow layout and the hidden panels (C11, C12).** The closed dossier is `visibility:hidden` after its slide and inert;"
+     },
+     {
+      "line": 4323,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "sier; docked and opened from the rail, focus on its Back with the rail inert, given back before focus returns; a rebuild keeps focus in it (docs/FINAL_AUDIT.md SW-3, SW-5)"
+     },
+     {
+      "line": 5083,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - Off-screen panels stay in the Tab order: 42 tab stops in the hidden rail at 1024 px (SW-3)."
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-4",
+   "severity": "major (accessibility)",
+   "title": "The sources sheet is a modal without a modal's focus, and Esc does the wrong thing on it",
+   "line": 435,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4194,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-4, SW-6: the two sheets as modal dialogs (C9).** The sources sheet and the \"?\" overlay (`SHEETS`): focus moved in, kept in by Tab,"
+     },
+     {
+      "line": 4322,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": " sheet keeps Esc, “?”, Tab and its modality; Esc closes the topmost sheet first, the tour, the opening, the chapter and the selection kept (docs/FINAL_AUDIT.md SW-4, SW-6)"
+     },
+     {
+      "line": 5084,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The sources sheet is a modal without a modal's focus, and Esc ends the tour first (SW-4)."
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-5",
+   "severity": "minor",
+   "title": "Focus left on elements that disappear",
+   "line": 443,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4197,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-5, SW-9, SW-12: focus where a control disappears (C7, C8, C11, C19).** `shown()` and `focusTo()`: the tour's ways out, the Layers"
+     },
+     {
+      "line": 4320,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "ch moved and Clean's (the pressed button), 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)"
+     },
+     {
+      "line": 4323,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "docked and opened from the rail, focus on its Back with the rail inert, given back before focus returns; a rebuild keeps focus in it (docs/FINAL_AUDIT.md SW-3, SW-5)"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-6",
+   "severity": "minor",
+   "title": "The \"?\" overlay loses its Esc and its Tab trap after a click on its text",
+   "line": 450,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4194,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-4, SW-6: the two sheets as modal dialogs (C9).** The sources sheet and the \"?\" overlay (`SHEETS`): focus moved in, kept in by Tab,"
+     },
+     {
+      "line": 4196,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  the chapter and the selection; the scrim closes the sources sheet; a click on the text keeps the keys (SW-6)."
+     },
+     {
+      "line": 4322,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": " keeps Esc, “?”, Tab and its modality; Esc closes the topmost sheet first, the tour, the opening, the chapter and the selection kept (docs/FINAL_AUDIT.md SW-4, SW-6)"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-7",
+   "severity": "minor",
+   "title": "Visual effects off and on again leaks the post-processing targets",
+   "line": 455,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4201,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-7: the effects (C2).** `initFX` builds its targets and materials once (`FX.built`); off and on again reuses them (the audit measured"
+     },
+     {
+      "line": 4308,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  C2's name, \"visual effects: off and on again reuses their render targets, materials and quad; no texture or geometry added (docs/FINAL_AUDIT.md SW-7)\", was renamed when the check stopped"
+     },
+     {
+      "line": 4331,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  - visual effects: off and on again builds nothing: the same render targets, materials and quad (docs/FINAL_AUDIT.md SW-7)"
+     },
+     {
+      "line": 4341,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "shader at the next frame and the frames after it slow to about 9 s each; the same happens on the step-2 build. The first SW-7 check drew a"
+     },
+     {
+      "line": 4384,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  the review also found) and 18 names not in the manifest (the 17 new checks and SW-7's check, renamed in `5593ceb`), with its old name missing."
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-8",
+   "severity": "minor",
+   "title": "Pointer edge cases",
+   "line": 459,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4203,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-8: the wheel (C3).** A mostly sideways wheel changes nothing; a wheel over the map closes the first card, then zooms."
+     },
+     {
+      "line": 4319,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "aves the camera, Follow, the opening and the paper map as they are; a wheel over the map closes the first card where it stands, then zooms (docs/FINAL_AUDIT.md SW-8)"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-9",
+   "severity": "minor",
+   "title": "The Layers panel stays open in Watch and Clean",
+   "line": 463,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4197,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-5, SW-9, SW-12: focus where a control disappears (C7, C8, C11, C19).** `shown()` and `focusTo()`: the tour's ways out, the Layers"
+     },
+     {
+      "line": 4199,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  leaves the map (the next stop, else the layer). The Layers panel closes with Watch and Clean (SW-9). A click alone (a screen reader's,"
+     },
+     {
+      "line": 4320,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "ed and Clean's (the pressed button), 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-10",
+   "severity": "minor",
+   "title": "Layout seams",
+   "line": 466,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4204,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-10: layout seams (C13).** The narrow layout at `max-width:1079.98px` (exactly 1080 px was both); the pixel ratio followed on"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-11",
+   "severity": "minor",
+   "title": "The opening and the tour keep the \"Whose eyes?\" reading",
+   "line": 472,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4207,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-11: the reading during the opening and the tour (C21).** Both set the visitor's \"Whose eyes?\" reading aside (everyone's) and give it"
+     },
+     {
+      "line": 4259,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "| 171 | SW-11: the visitor's reading is given back silently when the opening or the tour ends. Say so in the end message (new words in `LABELS`, decision 115)? | yes | silent (C21) |"
+     },
+     {
+      "line": 4299,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  readings are due (09:05), the caption's each whole or given way whole; the self-test's focus, SW-11, Eyes, phase-label (with a negative control) and target-size checks"
+     },
+     {
+      "line": 4325,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "ing given back on every way out (skip, finish, the camera, a key, a press, leaving the tour), unless the visitor chose a reading meanwhile (docs/FINAL_AUDIT.md SW-11)"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-12",
+   "severity": "minor",
+   "title": "The \"Guided tour\" button ends the tour during the opening",
+   "line": 476,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4160,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)"
+     },
+     {
+      "line": 4197,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **SW-5, SW-9, SW-12: focus where a control disappears (C7, C8, C11, C19).** `shown()` and `focusTo()`: the tour's ways out, the Layers"
+     },
+     {
+      "line": 4200,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  speech input's) ends the opening and closes the first card as a press does (SW-12, generalised)."
+     },
+     {
+      "line": 4320,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": " Clean's (the pressed button), 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)"
+     },
+     {
+      "line": 4321,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "it) on a control outside them ends the opening or closes the card where it stands, as a press does; Play during a played stretch pauses it (docs/FINAL_AUDIT.md SW-12)"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 14,
+      "section": "Planned (decided)",
+      "ctx": "yes?\" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "SW-13",
+   "severity": "polish",
+   "title": "Dead code and leftovers",
+   "line": 481,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1841,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "## 2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 170 (b), (c) and 172)"
+     },
+     {
+      "line": 1879,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *SW-13 (dead code and leftovers).* Removed, never referenced: `shade`, `subUnitsFig`, `frameClock` (app.js), `grainTexture` and `_grain`"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CH"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 1337,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "olish) idle work per animation frame | `loop()` runs `syncFollow`'s `querySelectorAll`, `openingWatch`, `paintDevStats` every frame | **partly fixed**: step 5 (SW-13) finds the buttons once; the three calls still run before the idle test (`app.js:7600-7608`) | 8H: the gait's per-frame uniform update must run after the idle test, or the page would wake to animate "
+     },
+     {
+      "line": 4794,
+      "section": "21.2 The phase's message under a layout's change (8I)",
+      "ctx": "nothing runs while the message is hidden. Its lifetime is `flash()`'s one 3.4 s timer (roadmap step 5's SW-13), which `toastRelayout` never"
+     }
+    ]
+   }
+  },
+  {
+   "id": "T-0",
+   "severity": "major",
+   "title": "`check:visual` fails on the unchanged 7D build in a fresh machine, because of the fonts installed",
+   "line": 494,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4803,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **T-0, the type (commit 1).** `fonts.css` (new; generated by `tools/fonts/build-fonts.py` from seven sources pinned by sha256 in"
+     },
+     {
+      "line": 5087,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "    draw the timeline 2 px taller (Inter here; DejaVu Sans gives 46.89%) (T-0)."
+     },
+     {
+      "line": 5109,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  46.8%\", and it reproduces alone at 46.03% (T-0)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "hardening**: the fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "T-1",
+   "severity": "major",
+   "title": "A page error or a console error never fails a check",
+   "line": 509,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1887,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "  check under `?stats`): they are the runtime checks the harness judges (T-1) and never fire on a correct build; a visitor sees them only in"
+     },
+     {
+      "line": 4792,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "questions.\" Decisions 125-141 are each as their question recommended; this step takes 141 (the fonts, first), 131 (T-1, T-2, D-1, D-2, H-8,"
+     },
+     {
+      "line": 4814,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **T-1, warnings and page errors fail (commits 3, 8, 9).** `runtime-test.js` builds the real three r128 material behind each stub, so"
+     },
+     {
+      "line": 5088,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - Page errors never fail a check (T-1)."
+     },
+     {
+      "line": 5103,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  \"console.warn unique: 1\" (its stub's false positive, T-1)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "ning**: the fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "T-2",
+   "severity": "major",
+   "title": "The meres' \"floats\" check is a tautology",
+   "line": 518,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4792,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "questions.\" Decisions 125-141 are each as their question recommended; this step takes 141 (the fonts, first), 131 (T-1, T-2, D-1, D-2, H-8,"
+     },
+     {
+      "line": 4821,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **T-2, the meres (commits 7, 8).** `terrain-test.js` runs on real r128 with the live ground (`groundGeometry()`), `buildWater` and"
+     },
+     {
+      "line": 5017,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- T-2: `mereLevel` 0.05 higher: 8 surfaces \"FLOATS\" (before: both meres OK); the self-test's ice code fails on it, on a missing ring and on"
+     },
+     {
+      "line": 5089,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The meres' check is a tautology (T-2)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "*: the fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "T-3",
+   "severity": "minor",
+   "title": "Warnings never fail",
+   "line": 525,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4793,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "T-4, T-5, with T-3 and T-6, before any data task) and 132 (CI). Choices made within decision 141, stated for the owner: the sans is Inter"
+     },
+     {
+      "line": 4825,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **T-3, warnings (commit 2).** `KNOWN_WARN` in `test.js`, `redteam.js`, `sim-test.js`: a warning fails unless acknowledged by its exact"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "d first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "T-4",
+   "severity": "minor",
+   "title": "The self-test's size and the harness's other failures are asserted nowhere outside the run",
+   "line": 530,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4793,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "T-4, T-5, with T-3 and T-6, before any data task) and 132 (CI). Choices made within decision 141, stated for the owner: the sans is Inter"
+     },
+     {
+      "line": 4828,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **T-4, the report judged again (commit 9).** Every failure is decided by `thresholds.js` `judgeReport` from numbers kept in the report"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "st (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "T-5",
+   "severity": "minor",
+   "title": "Checks that skip without a word",
+   "line": 536,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4793,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "T-4, T-5, with T-3 and T-6, before any data task) and 132 (CI). Choices made within decision 141, stated for the owner: the sans is Inter"
+     },
+     {
+      "line": 4832,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **T-5, no silent skip (commit 9).** `REQUIRED_FEATURES` (21 names), read from the page, replace the `typeof` gates: a missing feature is"
+     },
+     {
+      "line": 4935,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "limit allows and measures its 7C share or more (the convention's 11 raises there are refused, \"never raised\"). The three T-5 baselines"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "o `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "T-6",
+   "severity": "minor",
+   "title": "Checks weaker than their claim",
+   "line": 543,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4793,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "T-4, T-5, with T-3 and T-6, before any data task) and 132 (CI). Choices made within decision 141, stated for the owner: the sans is Inter"
+     },
+     {
+      "line": 4836,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- **T-6, checks as strong as their claim (commits 2-4, 7-9).**"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 12,
+      "section": "Planned (decided)",
+      "ctx": "eck:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "T-7",
+   "severity": "minor",
+   "title": "Wall-clock thresholds",
+   "line": 562,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 597,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "- **Maintenance (section 20.7): G-2, P-3, P-4, T-7; a second data task, no coordinate changed.**"
+     },
+     {
+      "line": 623,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  - *T-7, wall-clock thresholds:* the self-test's pan budget (2 ms a move) is judged at the median of the run's moves, with the 95th percentile"
+     },
+     {
+      "line": 5038,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- Software WebGL on a CI runner (T-7): on GitHub's runners the self-test and `check:contrast` passed on every head they ran on (7-14 min;"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 518,
+      "section": "Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)",
+      "ctx": "numbers unchanged), P-3, P-4 and T-7. Decision 258 (b) measured (more formations drawn, but jumps over decision 257's ceiling: not adopted, question"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 107,
+      "section": "In short",
+      "ctx": "  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road"
+     },
+     {
+      "line": 1339,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **T-7** (minor) wall-clock thresholds | the map layer's 8 ms, the self-test's 2 ms pan budget, the harness's 20 s wait | **present** (`app.js:9409-9414`, `tools/visual/thresholds.js`) | Stage 8's own timin"
+     },
+     {
+      "line": 4265,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "maintenance findings G-2, P-3, P-4 and T-7; and the verification of the final build, with the device runs prepared. Each change in a commit of its"
+     },
+     {
+      "line": 4267,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "P-3, P-4, T-7; a data task that changes no coordinate), `f08b58c` (the motion block's Play runs as measured; A-6 held by the self-test and on a"
+     },
+     {
+      "line": 4315,
+      "section": "20.1 The completion checklist",
+      "ctx": "| 23 | T-7: wall-clock thresholds | the pan budget judged on the mean | medians and 95th percentiles | the pan's median judged, p95 and mean reported | self-test | fixed |"
+     },
+     {
+      "line": 4468,
+      "section": "20.7 Maintenance (commit `2f10a1f`; a data task that changes no coordinate)",
+      "ctx": "- **T-7, wall-clock thresholds.** The self-test's pan budget (2 ms a move) is judged at the median of the run's moves, the 95th percentile and the"
+     }
+    ]
+   }
+  },
+  {
+   "id": "T-8",
+   "severity": "minor",
+   "title": "CI runs neither `check:visual` nor `check:contrast`",
+   "line": 567,
+   "mentions": {
+    "CHANGELOG.md": [],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "T-9",
+   "severity": "polish",
+   "title": "",
+   "line": 571,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1936,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *T-9 (b), `audit.js`.* Continuity and coverage are assertions (they only printed): no formation moves faster in any 5-minute step than"
+     },
+     {
+      "line": 1939,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *T-9 (d), model code typed again in the tests.* `redteam.js`'s `wet()` is the model's own `wetAt` (from `_clock.js`); `terrain-test.js`'s crop"
+     },
+     {
+      "line": 1941,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *T-9 (e), map constants typed by hand.* `tools/map-frame.js` reads the map frame and its inverse from world.js's `W` (guarded): `test.js`,"
+     },
+     {
+      "line": 4817,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  \"console.warn unique: [1-9]\" and keeps its outputs in a private temporary directory, named on a failure (T-9 (f)). The harness and"
+     },
+     {
+      "line": 4855,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  - The suites regenerate the modules they read (`tools/fresh.js`); `runtime-test.js` refuses a stale `bundle.js` (T-9 (g));"
+     },
+     {
+      "line": 4856,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "    `terrain-test.js`'s Pratzeberg margin is geo-test's 25 m (T-9 (a))."
+     },
+     {
+      "line": 5043,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "warning, the hover's cost and the S-1 check; for step 5, the T-9 items not taken and the polish found here."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 34,
+      "section": "What step 1 handed on (fact, from its commits; `CHANGELOG.md`)",
+      "ctx": "- **To step 5:** T-9's (b) `audit.js` continuity and coverage only print, (d) re-implementations of model code (`terrain-test.js`'s crops,"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "A-1",
+   "severity": "major",
+   "title": "Single-key shortcuts act anywhere, and nothing turns them off (WCAG 2.1.4, level A)",
+   "line": 601,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4160,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)"
+     },
+     {
+      "line": 4218,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **A-1, decision 134 (a): single-key shortcuts (C10).** A \"Single-key shortcuts\" switch in the \"?\" overlay, on by default, for the session"
+     },
+     {
+      "line": 5091,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - Single-key shortcuts with no off switch (A-1, WCAG 2.1.4)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 14,
+      "section": "Planned (decided)",
+      "ctx": " integrity; \"Whose eyes?\" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "A-2",
+   "severity": "major",
+   "title": "Keyboard focus lands on map items that are not drawn (WCAG 2.4.7, 2.4.11)",
+   "line": 606,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 4221,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **A-2: a focused map item always drawn (C19).** The keyboard focus takes no part in the layout: the focused item keeps its place, or,"
+     },
+     {
+      "line": 4329,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": " other item keeps its place, and the layout is as before when it leaves; an item leaving the map hands the focus on; a click alone selects (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11)"
+     },
+     {
+      "line": 5092,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - Focus lands on 6 invisible map items in the first view (A-2, 2.4.7)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 611,
+      "section": "Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)",
+      "ctx": "  rendered, keyboard reach (and the audit's A-2, focused items not drawn)."
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 1457,
+      "section": "8C: the map layer in motion",
+      "ctx": "  reachable by hover and keyboard (decision 39), a focused item never hidden (step 3's A-2); the limits put to the owner as measured on the 8C"
+     },
+     {
+      "line": 2167,
+      "section": "15.2 The map layer in motion (decision 240 (a))",
+      "ctx": "  over the others when it has no room (step 3's A-2), as before."
+     },
+     {
+      "line": 2274,
+      "section": "15.4 The checks, and each made to fail",
+      "ctx": "  to fail (`339143c`): the focus held (A-2's fallback still drew it, so \"drawn in every frame\" held: the check now focuses the most crowded"
+     },
+     {
+      "line": 2532,
+      "section": "16.2 The prerequisite correction: a protected item drawn at full opacity at once (the audit of 8C; commit `314",
+      "ctx": "  stabiliser held hidden, given the keyboard's focus, was placed at once (decision 39 and A-2: what is never dropped, and the focus, are placed by"
+     },
+     {
+      "line": 2541,
+      "section": "16.2 The prerequisite correction: a protected item drawn at full opacity at once (the audit of 8C; commit `314",
+      "ctx": "  the selection, the hovered, the highlighted family, live events), the item with the keyboard's focus and its forced place (A-2). Its own"
+     },
+     {
+      "line": 5328,
+      "section": "22.4 The two visual expectations",
+      "ctx": "panels; dropped again when the focus leaves: A-2); the map text at AA as rendered (the case's own measure, its least 12.17:1). The owner's"
+     }
+    ]
+   }
+  },
+  {
+   "id": "A-3",
+   "severity": "major",
+   "title": "The timeline's targets are below 24 px (WCAG 2.5.8)",
+   "line": 614,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 2157,
+      "section": "2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied",
+      "ctx": "  it). (10) The A-3 comment back on its line. (11) `CLAUDE.md` at the part's end. (12) Most of the listed statements read \"Not yet checked\":"
+     },
+     {
+      "line": 4160,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)"
+     },
+     {
+      "line": 4225,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "- **A-3: target sizes (C15, C16).** The time rail and the event markers' row 24 px (the track 53 to 55 px; the timeline's height"
+     },
+     {
+      "line": 4254,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "| 166 | A-3, the acts (15 px) and phases (16 px): (a) the act bands stop taking clicks, so the phase under the pointer takes them (a 31 px target; an act stays a keyboard button, its click made its first phase's"
+     },
+     {
+      "line": 4287,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "  A-3 is now complete but for the event markers, 2.5.8's essential exception (decision 167). Recorded: at 390 px the narrowest phases are"
+     },
+     {
+      "line": 4328,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": " px and topmost at its centre; not yet: the acts and the phases (question 166) and the event markers (question 167), held at their heights (docs/FINAL_AUDIT.md A-3)"
+     },
+     {
+      "line": 4330,
+      "section": "2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to ",
+      "ctx": "events: every event has a pointer path, its own marker or the dossier of an event starting at the same minute whose marker a press reaches (docs/FINAL_AUDIT.md A-3)"
+     },
+     {
+      "line": 5093,
+      "section": "2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build",
+      "ctx": "  - The timeline's targets are 11-22 px (A-3, 2.5.8)."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 14,
+      "section": "Planned (decided)",
+      "ctx": "ity; \"Whose eyes?\" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |"
+     },
+     {
+      "line": 160,
+      "section": "What step 3 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)",
+      "ctx": "- **A-3:** done but for the event markers, 2.5.8's essential exception (decision 167); at 390 px the narrowest phases are 20 px wide, as before."
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "A-4",
+   "severity": "minor",
+   "title": "The first screen at 390 x 844 (decision 122: recorded, not a layout)",
+   "line": 630,
+   "mentions": {
+    "CHANGELOG.md": [],
+    "docs/ROADMAP.md": [
+     {
+      "line": 17,
+      "section": "Planned (decided)",
+      "ctx": "| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230; 231-238 | Part A merged (#59, `docs/STEP6_SPEC.md`); decisions 215-230 taken as recommended on 21 October 2026; item 3's Part B, the phone layout, built and merged (§9;"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "A-5",
+   "severity": "minor",
+   "title": "Close views read as a toy",
+   "line": 634,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1229,
+      "section": "2026-10 · Stage 8, implementation PR 8B: the ground under the troops, the arrows and the event glyphs calmed (",
+      "ctx": "  figures, the woods and the buildings; at the eye level the arrows no longer show through the hills (A-5). The lines of battle, the boundaries"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 107,
+      "section": "In short",
+      "ctx": "  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road"
+     },
+     {
+      "line": 349,
+      "section": "1.3 The assessment, view by view (direct captures; the photographs did not arrive, see the head of this docume",
+      "ctx": "  audit's A-5 (\"close views read as a toy\"), still present."
+     },
+     {
+      "line": 860,
+      "section": "4.5 The close views: standards and symbology over the troops",
+      "ctx": "whole formations and houses (`cav-close-base.jpg`), and the glyphs' rings float over them. The audit's A-5 named the standards and the arrows;"
+     },
+     {
+      "line": 1069,
+      "section": "7.1 Arrows: width, opacity and hierarchy",
+      "ctx": "level, the arrows show through the hills (the audit's A-5, recorded in 5E and still present)."
+     },
+     {
+      "line": 1102,
+      "section": "7.1 Arrows: width, opacity and hierarchy",
+      "ctx": "eye level's arrows stop showing through the hills (A-5). The cap must follow the camera: a width uniform per ribbon, the half-width scaled"
+     },
+     {
+      "line": 1331,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **A-5** (minor) close views read as a toy | the closest views filled by standards and arrow ribbons; at the eye level the arrows show through the hills | **present** (`pratzen-low-base.jpg`, `inf-front-bas"
+     },
+     {
+      "line": 1402,
+      "section": "10. The implementation plan: PRs in order",
+      "ctx": "| **8B** | the ground under the troops; the arrows and the event glyphs calmed | L1; A-5; 7.1, 7.6 | questions 239, 241 |"
+     },
+     {
+      "line": 1540,
+      "section": "11. Questions for the owner (239-253)",
+      "ctx": "| **241** | The arrows and the event glyphs (section 7.1, 7.6; A-5) | (a) **each arrow's width capped at 16 px on screen in the two perspective presentations, the arrows depth-tested against the drawn ground alone, their fill at 0.62 of today's opacity, the glyphs c"
+     },
+     {
+      "line": 1895,
+      "section": "14.2 The arrows and the glyphs (decision 241 (a); section 7.1)",
+      "ctx": "  through the hills (the audit's A-5). The lines of battle, the boundaries and the halt bars keep their widths and opacity."
+     }
+    ]
+   }
+  },
+  {
+   "id": "A-6",
+   "severity": "polish",
+   "title": "",
+   "line": 639,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 515,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "- **The interface (section 20.5): the phase's message clear of the controls; A-6.**"
+     },
+     {
+      "line": 523,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  - *A-6*: the focus ring 2 px (it was 1 px: WCAG 2.4.7 met, under 2.4.13's 2 px), in the theme's accent, on the base rule, the two sheets'"
+     },
+     {
+      "line": 527,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "    Analysis theme's title an `h2` (an `h3`), each keeping its look by its own rule. The self-test's new check, \"A-6 (8H)\" (the manifest 314 to"
+     },
+     {
+      "line": 549,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "enamed; CI's runs since judge it against the written manifest: `selftest-ci-8d05f2b.json`, 316 of 316, no failure). Added: \"the blocks' pose at a pause (8H)\", \"A-6 (8H)\", \"the crowns closing"
+     },
+     {
+      "line": 654,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  8G, 8E and A-6 blocks: nine failing their checks, the controls passing) and on the final build (the 8F block's two failing the crowns' check, the"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 517,
+      "section": "Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)",
+      "ctx": "18 cases); A-6 (a 2 px ring, read on a screenshot after real Tab presses; a main landmark; the heading levels). G-2 (one authority, 3,078,746"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 107,
+      "section": "In short",
+      "ctx": "  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road"
+     },
+     {
+      "line": 1334,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **A-6** (polish) | the focus ring 1 px; no `main` landmark; \"What changed\" an `h4` under an `h2` | **present** (`style.css:12`, `shell.html` has no `main`, `app.js:6372`) | 8H (outside Stage 8's subject; l"
+     },
+     {
+      "line": 4266,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "own: `f869d17` (the buildings' acceptance; a data task), `bab9f30` (S-7; the pose at a pause), `a22edd2` (the phase's message; A-6), `2f10a1f` (G-2,"
+     },
+     {
+      "line": 4267,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "P-3, P-4, T-7; a data task that changes no coordinate), `f08b58c` (the motion block's Play runs as measured; A-6 held by the self-test and on a"
+     },
+     {
+      "line": 4305,
+      "section": "20.1 The completion checklist",
+      "ctx": "| 13 | A-6: the focus ring, a main landmark, the heading levels | a 1 px ring; no `main`; \"What changed\" h4 under h2; the Plans tab's h3 under h1 | 2 px; a main landmark; no skipped level | 2 px ring; `main` ro"
+     },
+     {
+      "line": 4305,
+      "section": "20.1 The completion checklist",
+      "ctx": "Plans tab's h3 under h1 | 2 px; a main landmark; no skipped level | 2 px ring; `main` round the map layer; the timeline a region; levels corrected | self-test \"A-6 (8H)\"; the live block `ring` (a screenshot after real Tabs: 2 px; 8G 1 px); `mutate-8h.js` | fixed |"
+     },
+     {
+      "line": 4404,
+      "section": "20.5 The interface (commits `a22edd2`, `f08b58c`)",
+      "ctx": "- **A-6** (`docs/FINAL_AUDIT.md`). The focus ring 2 px (1 px until 8H: WCAG 2.4.7 met, under 2.4.13's 2 px) in the theme's accent; the map layer's"
+     },
+     {
+      "line": 4407,
+      "section": "20.5 The interface (commits `a22edd2`, `f08b58c`)",
+      "ctx": "  Analysis theme's title an `h2` (an `h3`), each keeping its look by its own rule. Held twice: the self-test's check \"A-6 (8H)\" (the landmark, the"
+     },
+     {
+      "line": 4615,
+      "section": "20.11 Verification on the final build",
+      "ctx": "  313 checks against 316, three checks new and one renamed). The manifest written from that report (313 to 316: the pose at a pause, A-6 and the"
+     },
+     {
+      "line": 4619,
+      "section": "20.11 Verification on the final build",
+      "ctx": "  copies with their rule broken (`mutate-8h.js`: on `e8fed44b`'s build the 8G block's, the 8E block's and A-6's nine, each failing its check, the"
+     }
+    ]
+   }
+  },
+  {
+   "id": "P-1",
+   "severity": "minor",
+   "title": "The figures are about 91% of a landscape frame's triangles",
+   "line": 663,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1535,
+      "section": "2026-10 · Roadmap step 6 item 1: the owner's desktop runs (L1-L3); decision 235 (question 138 retired)",
+      "ctx": "Decision 230 applied: `docs/FINAL_AUDIT.md`'s P-1 carries a records-only note (49.7%, 1.23 million triangles, not about 91%; 138 retired)."
+     },
+     {
+      "line": 1643,
+      "section": "2026-10 · Roadmap step 6: owner decisions 215-230 recorded",
+      "ctx": "138 by §3.4's rule (218), the phone's to 222, the iPhone's viewport to 229, and its records commit carries P-1's note (230). Item 3's Part B"
+     },
+     {
+      "line": 1667,
+      "section": "2026-10 · Roadmap step 6 Part A: the specification (real hardware, figure level of detail, a phone layout)",
+      "ctx": "standards are 49.7% of the low Pratzen view (P-1 inferred about 91%: the 1x frame it subtracted also lacks the trees, the scrub, the buildings"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 17,
+      "section": "Planned (decided)",
+      "ctx": "| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230; 231-238 | Part A merged (#59, `docs/STEP6_SPEC.md`); decisions 215-230 taken as recommended on 21 October 2026; item 3's Part B, the phone layout, built and merged (§9; #60)"
+     },
+     {
+      "line": 322,
+      "section": "Step 6: the owner decisions 215-230 (the answers)",
+      "ctx": "| 230 | P-1's number | a records-only note in `docs/FINAL_AUDIT.md`, in item 1's records commit |"
+     },
+     {
+      "line": 340,
+      "section": "Step 6 item 1: the desktop runs, and decision 235 (`docs/STEP6_SPEC.md` §11)",
+      "ctx": "the departure recorded (a fast discrete GPU decided what decision 138 asked of an integrated one). `docs/FINAL_AUDIT.md`'s P-1 carries decision"
+     },
+     {
+      "line": 376,
+      "section": "What step 6 Part A hands on (fact, from its commits and its review; `docs/STEP6_SPEC.md`, `CHANGELOG.md`)",
+      "ctx": "  decision 222; the iPhone's viewport line to decision 229; a records-only commit with the reports and, under decision 230, a note on P-1."
+     },
+     {
+      "line": 379,
+      "section": "What step 6 Part A hands on (fact, from its commits and its review; `docs/STEP6_SPEC.md`, `CHANGELOG.md`)",
+      "ctx": "  `InstancedMesh` sets `frustumCulled` false); the shadow pass is 41% of a 4x frame; P-1's \"about 91%\" is about half (49.7%)."
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 1188,
+      "section": "8.1 What step 6 measured and decided, and what it did not",
+      "ctx": "  buildings 0.4%, the standards 0.3%, the guns and gear 0.1%; the shadow pass is 41% of the frame. The audit's P-1 (\"about 91%\") is about half."
+     }
+    ]
+   }
+  },
+  {
+   "id": "P-2",
+   "severity": "minor",
+   "title": "About a quarter of the file is never run by a visitor",
+   "line": 672,
+   "mentions": {
+    "CHANGELOG.md": [],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 107,
+      "section": "In short",
+      "ctx": "  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road"
+     },
+     {
+      "line": 1336,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **P-2** (minor) about a quarter of the file never run by a visitor | the self-test 12.8%, comments 10.1% | **present, larger**: the self-test 15.0% (333,611 bytes), comments 11.1% (`tools/audit/size.js`, r"
+     }
+    ]
+   }
+  },
+  {
+   "id": "P-3",
+   "severity": "polish",
+   "title": "Idle work per animation frame",
+   "line": 676,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 597,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "- **Maintenance (section 20.7): G-2, P-3, P-4, T-7; a second data task, no coordinate changed.**"
+     },
+     {
+      "line": 611,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  - *P-3, idle work per animation frame:* `syncFollow` (eight buttons' attributes read in every frame, idle ones too) touches the document only"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 518,
+      "section": "Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)",
+      "ctx": "numbers unchanged), P-3, P-4 and T-7. Decision 258 (b) measured (more formations drawn, but jumps over decision 257's ceiling: not adopted, question"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 107,
+      "section": "In short",
+      "ctx": "  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road"
+     },
+     {
+      "line": 1337,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **P-3** (polish) idle work per animation frame | `loop()` runs `syncFollow`'s `querySelectorAll`, `openingWatch`, `paintDevStats` every frame | **partly fixed**: step 5 (SW-13) finds the buttons once; the "
+     },
+     {
+      "line": 4265,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "maintenance findings G-2, P-3, P-4 and T-7; and the verification of the final build, with the device runs prepared. Each change in a commit of its"
+     },
+     {
+      "line": 4267,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "P-3, P-4, T-7; a data task that changes no coordinate), `f08b58c` (the motion block's Play runs as measured; A-6 held by the self-test and on a"
+     },
+     {
+      "line": 4313,
+      "section": "20.1 The completion checklist",
+      "ctx": "| 21 | P-3: idle work per animation frame | `syncFollow`, `paintDevStats` each frame | idle work avoided | each touches the document only on a change | code; self-test (render on demand) | fixed |"
+     },
+     {
+      "line": 4456,
+      "section": "20.7 Maintenance (commit `2f10a1f`; a data task that changes no coordinate)",
+      "ctx": "- **P-3, idle work per animation frame.** `syncFollow` (eight buttons' attributes read in every frame, idle ones too) touches the document only when"
+     }
+    ]
+   }
+  },
+  {
+   "id": "P-4",
+   "severity": "polish",
+   "title": "The start-up cost of the relief grid",
+   "line": 679,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 597,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "- **Maintenance (section 20.7): G-2, P-3, P-4, T-7; a second data task, no coordinate changed.**"
+     },
+     {
+      "line": 614,
+      "section": "2026-10 · Stage 8, implementation PR 8H: integration, polish and verification",
+      "ctx": "  - *P-4, the start's cost:* the start's phases timed once (`BOOTMS`: the renderer, the world, the formations, the interface, the state, init;"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 518,
+      "section": "Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)",
+      "ctx": "numbers unchanged), P-3, P-4 and T-7. Decision 258 (b) measured (more formations drawn, but jumps over decision 257's ceiling: not adopted, question"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": [
+     {
+      "line": 1338,
+      "section": "9.4 The audit's findings no step took up (`docs/FINAL_AUDIT.md`; status at `9eb7abb`)",
+      "ctx": "| **P-4** (polish) start-up cost of the relief grid | +0.45 s, recorded in 2E, not re-measured | not re-measured here | 8H, with the device route's load time |"
+     },
+     {
+      "line": 4265,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "maintenance findings G-2, P-3, P-4 and T-7; and the verification of the final build, with the device runs prepared. Each change in a commit of its"
+     },
+     {
+      "line": 4267,
+      "section": "20. Implementation PR 8H as built (30 October 2026): integration, polish and verification",
+      "ctx": "P-3, P-4, T-7; a data task that changes no coordinate), `f08b58c` (the motion block's Play runs as measured; A-6 held by the self-test and on a"
+     },
+     {
+      "line": 4314,
+      "section": "20.1 The completion checklist",
+      "ctx": "| 22 | P-4: the start and the relief grid's cost | recorded in 2E (+0.45 s), never re-measured | measured, repeated | phases timed in the build (`BOOTMS`, `WORLDMS`); seven loads of each build interleaved: the "
+     },
+     {
+      "line": 4458,
+      "section": "20.7 Maintenance (commit `2f10a1f`; a data task that changes no coordinate)",
+      "ctx": "- **P-4, the start's cost.** The start's phases timed in the build (`BOOTMS`, `WORLDMS`, the first frame) and measured over repeated loads, medians"
+     }
+    ]
+   }
+  },
+  {
+   "id": "R-1",
+   "severity": "minor",
+   "title": "Two READMEs describe the checks wrongly",
+   "line": 684,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1841,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "## 2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 170 (b), (c) and 172)"
+     },
+     {
+      "line": 1849,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-1 (the two READMEs).* Step 1 had already rewritten both; what still did not hold: `README.md` named `archive/step2-af98f586.html` as"
+     },
+     {
+      "line": 4947,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "- `README.md`'s checks table (R-1) named the Stage 0 reference for `check:data` and `check:baseline` and 11 views for `check:visual`, and"
+     },
+     {
+      "line": 4948,
+      "section": "2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)",
+      "ctx": "  left out `check:chronology`, `check:contrast`, `check:report` and three source files; it and `tools/visual/README.md` (R-1) are rewritten."
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c)"
+     },
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | me"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "R-2",
+   "severity": "minor",
+   "title": "Status lines that no longer hold",
+   "line": 691,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1854,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-2 (status lines).* `CHANGELOG.md`: every merged part headed \"for review\" or \"awaits the owner's review\" now says \"merged (#n)\" (4b C #55,"
+     },
+     {
+      "line": 5801,
+      "section": "2026-10 · Stage 6B: the historical appearance read and tabled (docs/STAGE6_SPEC.md §6.1, §6.6; owner decisions",
+      "ctx": "table, `docs/FINAL_AUDIT.md` R-2: this record was likely written before the table's last edit, an inference):"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "R-3",
+   "severity": "minor",
+   "title": "One thing, several names, on screen",
+   "line": 700,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1892,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-3 (one name per thing; question 205, the default).* `LABELS.names`: the themes \"themes\" (\"The battle in ten themes\", \"Pick one of the"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 272,
+      "section": "Decisions 205-212 (20 October 2026; the owner: \"Go with your recommendations for all questions\"; applied in PR",
+      "ctx": "| 205 | one name per thing on screen (R-3) | (a): \"theme\", the phase text, \"Accuracy and sources\", \"Napoleon's HQ\" | step 5 group 2, as built |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "R-4",
+   "severity": "minor",
+   "title": "Records of the keys out of date",
+   "line": 709,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1868,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-4's records.* Every out-of-date record of the keys R-4 names is in the build (the \"?\" overlay's opening row, the legend's hint,"
+     },
+     {
+      "line": 1868,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-4's records.* Every out-of-date record of the keys R-4 names is in the build (the \"?\" overlay's opening row, the legend's hint,"
+     },
+     {
+      "line": 1898,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-4 (the keys).* The \"?\" overlay's opening row adds 7D's pause (\"while the clock plays between steps, Space off a button and Play/Pause"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "R-5",
+   "severity": "minor",
+   "title": "\"Last recorded at After dark\"",
+   "line": 715,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1902,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-5.* The dossier's last record reads \"Last recorded in “The ponds”, 14:30 - 17:00\", and for the 30 formations last recorded in phase 9"
+     }
+    ],
+    "docs/ROADMAP.md": [],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "R-6",
+   "severity": "polish",
+   "title": "Formats",
+   "line": 719,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1904,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-6 (formats; question 206, the default; the tour's own words are question 207, unchanged).* A clock range shown on screen is written as"
+     },
+     {
+      "line": 1978,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- (3) R-6 was incomplete: `symbols.js`'s two `toLocaleString()` (the counter's strength line and its accessible name) and runtime-test.js's"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 273,
+      "section": "Decisions 205-212 (20 October 2026; the owner: \"Go with your recommendations for all questions\"; applied in PR",
+      "ctx": "| 206 | the formats (R-6) | (a): \" - \" in a span, \"4×\", \"Stop 1 of 9\", en-GB grouping, colons | step 5 group 2, as built |"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  },
+  {
+   "id": "R-7",
+   "severity": "polish",
+   "title": "Stale comments",
+   "line": 726,
+   "mentions": {
+    "CHANGELOG.md": [
+     {
+      "line": 1841,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "## 2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 170 (b), (c) and 172)"
+     },
+     {
+      "line": 1863,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-7 (stale comments), the files outside the build:* `css-test.js` (`formationAtlas`, removed in 6C), `tools/visual/cases.js` (its header,"
+     },
+     {
+      "line": 1889,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-7, the comments in the build:* `analysis.js` (ten themes; the nine tour texts read in about 2 min 17 s), `world.js` (the relief drawn at"
+     },
+     {
+      "line": 1958,
+      "section": "2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 17",
+      "ctx": "- *R-7's mist measure* (`measure.js`, `thresholds.js`) is kept: it still measures the archived pre-4C builds a `--legacy` run reads; its"
+     }
+    ],
+    "docs/ROADMAP.md": [
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-21"
+     },
+     {
+      "line": 16,
+      "section": "Planned (decided)",
+      "ctx": "| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#"
+     }
+    ],
+    "docs/STAGE8_SPEC.md": []
+   }
+  }
+ ]
+}
