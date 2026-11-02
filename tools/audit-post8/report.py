@@ -246,7 +246,7 @@ def main():
                        esc(", ".join(x.get("caughtSemantically") or []) or "no")))
         out.append("")
     out.append(part("E-ledger.md"))
-    out.append("### E.9 The ledgers in full\n")
+    out.append("### E.4 The ledgers in full\n")
     out.append("Every row of every area's verification ledger is in the companion file, section L.3.\n")
     comp.append("## L.3 The areas' verification ledgers in full\n")
     comp.append("Each row is one claim the area checked: the claim, where a visitor meets it, the source it cites, how it was checked and the verdict. "

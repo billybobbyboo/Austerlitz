@@ -3693,7 +3693,7 @@ prints what the map says. It does not mean the map's reading of the battle is th
 | Kologrivov's command | `SOURCE_NOTE` | yes, with a contradicted note (`CL-SRC-03`, `CL-HIS-14`) | two sources read give it |
 | the retreat over the Satschan meres and the ice casualties | `SOURCE_NOTE`, `PHASES` | yes: shown as disputed (the 30th Bulletin's twenty thousand drowned against the much lower figures of later counts) | verified as labelled (sources-chronology L18) |
 
-### E.9 The ledgers in full
+### E.4 The ledgers in full
 
 Every row of every area's verification ledger is in the companion file, section L.3.
 
