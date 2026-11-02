@@ -184,6 +184,9 @@ MAP = [
     ("CL-PERF-09", "perf", 7, [], ""),
     ("CL-PERF-10", "perf", 9, [], ""),
     ("CL-PERF-11", "perf", 10, [], ""),
+    ("CL-PERF-12", "perf-attribution", 0, [], "Refines CL-PERF-04: the excess reproduces on one fixed browser, so the unrecorded Chrome update does not explain it."),
+    ("CL-PERF-13", "perf-attribution", 1, [], ""),
+    ("CL-PERF-14", "perf-attribution", 2, [], ""),
 ]
 SET_ASIDE = [("geography", 10), ("sources-oob", 8)]
 

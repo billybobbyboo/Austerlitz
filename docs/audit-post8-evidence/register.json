@@ -717,7 +717,7 @@
    "note": "The same family as CL-SIM-05 (decision 251 (a)'s reach): drawn overlays here, a card's text there.",
    "verify": {
     "verdict": "CONFIRMED",
-    "note": " [lenses: CONFIRMED (premise)]"
+    "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
    },
    "override": {
     "work_package": "WP-05"
@@ -733,6 +733,10 @@
    ],
    "also": [],
    "note": "The auditor read app.js:4193-4207: setChapter sets the clock and flies the camera but never calls stopPlay: confirmed by reading.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-05"
    }
@@ -752,6 +756,10 @@
     ]
    ],
    "note": "Merged: the interrupted fade (state) and the Movement layer off (interaction) are two scenarios of one opacity rule in applyOverlayOpacity.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch); CONFIRMED (batch)]"
+   },
    "override": {
     "title": "The overlays' fade draws the outgoing phase's arrows when it should not: with the Movement layer off every phase change flashes them at about 0.87 opacity, and a phase change that interrupts a fade pops them back to 0.9 (stepping through phases quickly flashes each skipped phase's arrows)",
     "work_package": "WP-05"
@@ -767,6 +775,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-05"
    }
@@ -781,6 +793,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-05"
    }
@@ -795,6 +811,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-05"
    }
@@ -809,6 +829,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-05"
    }
@@ -825,7 +849,7 @@
    "note": "",
    "verify": {
     "verdict": "CONFIRMED",
-    "note": " [lenses: CONFIRMED (premise)]"
+    "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
    },
    "override": {
     "work_package": "WP-09"
@@ -870,7 +894,7 @@
    "note": "Merged: one hit-area rule, measured on a phone by two areas and at the playhead on a desktop by a third.",
    "verify": {
     "verdict": "DUPLICATE",
-    "note": " [lenses: DUPLICATE (premise)]"
+    "note": " [lenses: DUPLICATE (premise); CONFIRMED (repro); CONFIRMED (batch)]"
    },
    "override": {
     "title": "Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start",
@@ -887,6 +911,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-06"
    }
@@ -1017,6 +1045,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (batch)]"
+   },
    "override": {
     "work_package": "WP-06"
    }
@@ -1031,6 +1063,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-05"
    }
@@ -1101,6 +1137,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-06"
    }
@@ -1115,6 +1155,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-06"
    }
@@ -1131,7 +1175,7 @@
    "note": "",
    "verify": {
     "verdict": "WEAKENED",
-    "note": "Premise lens: real for Landscape with counters; the origin is mixed (corrected). Severity S2 kept. [lenses: WEAKENED (premise)]"
+    "note": "Premise lens: real for Landscape with counters; the origin is mixed (corrected). Severity S2 kept. [lenses: WEAKENED (premise); WEAKENED (repro)]"
    },
    "override": {
     "origin": "mixed: new-regression for the long gaps (8C's hold of the map layer through Play, lengthened by decision 260 (a)'s places) on an inherited starvation share (2D's priority order under decision 24)",
@@ -1150,7 +1194,7 @@
    "note": "",
    "verify": {
     "verdict": "WEAKENED",
-    "note": "Premise lens: protecting event-named formations extends decision 39's never-dropped list, so it needs an owner decision; S3, probable problem. [lenses: WEAKENED (premise)]"
+    "note": "Premise lens: protecting event-named formations extends decision 39's never-dropped list, so it needs an owner decision; S3, probable problem. [lenses: WEAKENED (premise); CONFIRMED (repro)]"
    },
    "override": {
     "severity": "S3",
@@ -1171,7 +1215,7 @@
    "note": "",
    "verify": {
     "verdict": "WEAKENED",
-    "note": " [lenses: WEAKENED (premise)]"
+    "note": " [lenses: WEAKENED (premise); CONFIRMED (repro)]"
    },
    "override": {
     "title": "No symbol key at all between 720 and 1079 px wide or on a phone held upright, so the integrity encodings (the B and C grades, '?', the dashed intended routes) go unexplained there; Watch, Clean and a phone held landscape hide it by recorded design or decision",
@@ -1190,7 +1234,7 @@
    "note": "The auditor read shell.html:206-215 and style.css: the only rose is inside the legend's toggle button; style.css hides .legend below 430 px tall and .legend .rose below 700 px tall: confirmed in part by reading (the width and Watch/Clean conditions left to the verifiers). Verifier: the rose is also hidden in Study whenever the window is 700 px tall or less.",
    "verify": {
     "verdict": "WEAKENED",
-    "note": "Premise lens: the premise is cartographic convention, not a project rule; the absence of an orientation aid, S3. [lenses: WEAKENED (premise)]"
+    "note": "Premise lens: the premise is cartographic convention, not a project rule; the absence of an orientation aid, S3. [lenses: WEAKENED (premise); CONFIRMED (repro)]"
    },
    "override": {
     "severity": "S3",
@@ -1212,7 +1256,7 @@
    "note": "",
    "verify": {
     "verdict": "WEAKENED",
-    "note": "Premise lens: within decisions 24 and 39 and their limits; missing reference lettering, an optional improvement. [lenses: WEAKENED (premise)]"
+    "note": "Premise lens: within decisions 24 and 39 and their limits; missing reference lettering, an optional improvement. [lenses: WEAKENED (premise); CONFIRMED (repro)]"
    },
    "override": {
     "severity": "S3",
@@ -1249,6 +1293,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (batch)]"
+   },
    "override": {
     "work_package": "WP-07"
    }
@@ -1372,6 +1420,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": " [lenses: WEAKENED (batch)]"
+   },
    "override": {
     "work_package": "WP-07"
    }
@@ -1422,6 +1474,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-07"
    }
@@ -1497,7 +1553,7 @@
    "note": "",
    "verify": {
     "verdict": "CONFIRMED",
-    "note": " [lenses: CONFIRMED (premise)]"
+    "note": " [lenses: CONFIRMED (premise); CONFIRMED (repro)]"
    },
    "override": {
     "work_package": "WP-10"
@@ -1648,6 +1704,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-10"
    }
@@ -1684,6 +1744,10 @@
    ],
    "also": [],
    "note": "Related, not the same issue: CL-TEST-14 (what the motion ceilings mean).",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-07"
    }
@@ -2399,6 +2463,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2413,6 +2481,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2427,6 +2499,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2440,7 +2516,11 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "The perf-attribution area (CL-PERF-12) reproduced the excess on one fixed browser (Chromium 141 for both builds) at the device's ratio and located it between step 6's build and 8E: the unrecorded browser update remains a records defect, but it is not needed to explain the excess.",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2455,6 +2535,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2469,6 +2553,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2483,6 +2571,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2497,6 +2589,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2511,6 +2607,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2525,6 +2625,10 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2535,6 +2639,52 @@
     [
      "perf",
      10
+    ]
+   ],
+   "also": [],
+   "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
+   "override": {
+    "work_package": "WP-12"
+   }
+  },
+  {
+   "id": "CL-PERF-12",
+   "from": [
+    [
+     "perf-attribution",
+     0
+    ]
+   ],
+   "also": [],
+   "note": "Refines CL-PERF-04: the excess reproduces on one fixed browser, so the unrecorded Chrome update does not explain it.",
+   "override": {
+    "work_package": "WP-12"
+   }
+  },
+  {
+   "id": "CL-PERF-13",
+   "from": [
+    [
+     "perf-attribution",
+     1
+    ]
+   ],
+   "also": [],
+   "note": "",
+   "override": {
+    "work_package": "WP-12"
+   }
+  },
+  {
+   "id": "CL-PERF-14",
+   "from": [
+    [
+     "perf-attribution",
+     2
     ]
    ],
    "also": [],

@@ -102,6 +102,7 @@ VERDICT = {
 }
 
 NOTES = {
+    "CL-PERF-04": "The perf-attribution area (CL-PERF-12) reproduced the excess on one fixed browser (Chromium 141 for both builds) at the device's ratio and located it between step 6's build and 8E: the unrecorded browser update remains a records defect, but it is not needed to explain the excess.",
     "CL-MAP-12": "Verifier: the cause is not the pan's travel but the target re-seated at the pan's end (about +10 units, the picture unchanged), so distance-keyed map-layer levels can flip at rest after any landscape pan; the remedy moves owner-held motion counts (decisions 257 (b), 267 (a)).",
     "CL-MAP-06": "Verifier: decision 159 is met to the letter but its purpose is lost at 1280 px in Watch; every desktop Watch case of the harness is 1600 x 900, so 1280 is unmeasured.",
     "CL-MAP-09": "Verifier: also two names on screen for one formation (Bagration / Advance Guard of the Right), against decision 205's one-name rule.",
@@ -137,7 +138,7 @@ WP = {
     "WP-09": ["CL-UX-01", "CL-UX-05", "CL-UX-06", "CL-UX-08", "CL-UX-09", "CL-UX-10", "CL-UX-11", "CL-UX-12", "CL-UX-15", "CL-UX-16", "CL-UX-17", "CL-UX-18", "CL-REC-05"],
     "WP-10": ["CL-VIS-01", "CL-VIS-02", "CL-VIS-03", "CL-VIS-04", "CL-VIS-05", "CL-VIS-06", "CL-VIS-07", "CL-VIS-08", "CL-VIS-09"],
     "WP-11": ["CL-TEST-01", "CL-TEST-03", "CL-TEST-04", "CL-TEST-05", "CL-TEST-06", "CL-TEST-07", "CL-TEST-08", "CL-TEST-09", "CL-TEST-10", "CL-TEST-11", "CL-TEST-12", "CL-TEST-13", "CL-TEST-15", "CL-TEST-16", "CL-TEST-17", "CL-TEST-18", "CL-TEST-19", "CL-TEST-20", "CL-ROB-07"],
-    "WP-12": ["CL-PERF-01", "CL-PERF-02", "CL-PERF-03", "CL-PERF-04", "CL-PERF-05", "CL-PERF-06", "CL-PERF-07", "CL-PERF-08", "CL-PERF-09", "CL-PERF-10", "CL-PERF-11"],
+    "WP-12": ["CL-PERF-01", "CL-PERF-02", "CL-PERF-03", "CL-PERF-04", "CL-PERF-05", "CL-PERF-06", "CL-PERF-07", "CL-PERF-08", "CL-PERF-09", "CL-PERF-10", "CL-PERF-11", "CL-PERF-12", "CL-PERF-13", "CL-PERF-14"],
     "WP-13": ["CL-REC-01", "CL-REC-02", "CL-REC-03", "CL-REC-04", "CL-REC-08", "CL-ROB-03", "CL-ROB-08", "CL-ROB-09"],
     "WP-14": ["CL-ROB-02", "CL-ROB-04", "CL-ROB-05", "CL-ROB-10", "CL-ROB-11", "CL-ROB-12"],
 }

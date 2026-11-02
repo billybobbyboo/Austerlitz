@@ -10,7 +10,7 @@ This section says which of the map's claims were traced to what a source prints,
 | forces: strengths, guns, commanders, the army totals (`data.js` notes, `SOURCE_NOTE`, the theme "weakness") | 42 | 14 | 17 | 7 | 2 | 2 | page images where the project's registers read them (Sokolov, Schönhals, the *Correspondance*); Duffy (1977) on archive.org's OCR text layer, by full-text search, because the lending item's page images could not be opened from this container | `sources-oob/ledger.md`, `ledger.json` |
 | the reconstruction against itself: totals, names, grades, events' claims, sides of the stream, opposing formations' legs, the Russian Guard's approach, prior fixes | 26 | 10 | 4 | 12 | 0 | 0 | node probes over the data (`tools/audit-post8/history/`), the registers of readings | `history/README.md`, `result.json` |
 | geography: the frame, relief, water, roads, settlements, landmarks, the garden, the crossings | 29 | 17 | 5 | 3 | 4 | 0 | open data (OpenStreetMap ways, Wikidata points, terrain models), the 1825-52 maps as 8H read them, the project's own transform | `geography/README.md`, `raw/` |
-| timings, events and places | SC_ROWS | SC_VERIFIED | SC_PARTLY | SC_CONTRA | SC_NOT | SC_INACC | public-domain texts (Stutterheim 1807, the 30th Bulletin, memoirs), the registers of readings, the project's tracks and events | `sources-chronology/ledger.md`, `ledger.json` |
+| timings, events and places | 20 | 14 | 5 | 1 | 0 | 0 | public-domain texts (Stutterheim 1807, the 30th Bulletin, memoirs), the registers of readings, the project's tracks and events | `sources-chronology/ledger.md`, `ledger.json` |
 
 **Coverage, stated plainly.** Most of the map's statements were not traced to a source by this audit. The project's own sourcing stage did
 that work (`narrative.js` and its inventory, `docs/step4-evidence/inventory.json`, current: of 704 statements, 148 carry a claim of their own (63 attributed, 65 disputed, 12 interpretation, 6 uncertain, 2 derived), 75 one by class, and 481 none; `docs/step4-evidence/readings.md`, 273
@@ -50,7 +50,7 @@ prints what the map says. It does not mean the map's reading of the battle is th
 
   Four claims cannot be verified from what is read: the Pratzen-Austerlitz road, the upper Goldbach and the brooks (`CL-GEO-03`), the bottom's
   marshiness (`CL-GEO-06`), and the castle's walls and the pheasantry's enclosure in 1805 (`CL-GEO-02`).
-- **Timings and places.** SC_SUMMARY
+- **Timings and places.** Of the 20 most consequential timed or placed claims (the fog and the release, the climb, Dokhturov's descent, Telnitz at 07:00, Friant's march and arrival, Telnitz retaken at 09:30, Sokolnitz, Kamensky's turn and the face-about, the Pratzeberg at 11:00, Blasowitz, the Guard's eagle, Rapp's charge, Bagration by the Posoritz post house, the Satschan ice, the castle and the pheasantry, the end), 14 are verified on the sources' own text layers, quoted with their locators (for example Davout's report of 26 December, pp. 203-204, for Telnitz retaken at 09:30, the day's one A-graded event). Five hold in part: the climb's 08:45 is the map's choice inside the sources' range of about 08:00-09:00, while it is labelled Fact (`CL-HIS-06`); the castle is in the accounts but 'walled' and the pheasantry in none of the 1805-1806 texts read (`CL-GEO-02`). One is contradicted: the face-about's 'no account read gives the order', against Schonhals p. 162 (`CL-HIS-01`). A January 1806 letter by Buxhowden naming Langeron as having sent Kamensky back is missing from that named conflict's sides (`CL-SRC-09`). Coverage: 20 of the 155 timed statements and of the 180 positioned anchors, chosen for consequence; the rest are as the project's own sourcing stage left them.
 
 ### E.3 The unresolved historical questions
 
@@ -65,4 +65,4 @@ prints what the map says. It does not mean the map's reading of the battle is th
 | which side of the road Schönhals's height lay | 21.9 | no; moot in the drawing | open |
 | Krug's place | 21.9 | yes, with a reason the 1836-52 survey contradicts (`CL-GEO-07`) | the survey's place is available |
 | Kologrivov's command | `SOURCE_NOTE` | yes, with a contradicted note (`CL-SRC-03`, `CL-HIS-14`) | two sources read give it |
-| the retreat over the Satschan meres and the ice casualties | `SOURCE_NOTE`, `PHASES` | SC_ICE | SC_ICE_AUDIT |
+| the retreat over the Satschan meres and the ice casualties | `SOURCE_NOTE`, `PHASES` | yes: shown as disputed (the 30th Bulletin's twenty thousand drowned against the much lower figures of later counts) | verified as labelled (sources-chronology L18) |
