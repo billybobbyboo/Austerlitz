@@ -1,0 +1,55 @@
+== 1. aggregates and parents: declared strength vs the sum of their children ==
+c_iv         declared  23600  children sthilaire=6600 + vandamme=6700 + legrand=7000 + heightguns=0 = 20300  diff 3300  (aggregate)
+     note: 23,600 is Sokolov's estimate for 2 December from the returns of 22 November, when he counts 24,690 present: Saint-Hilaire 8,128 (Varé's brigade within it), Vandamme 7,913, Legrand 7,361, Margaron's light cavalry 953, the park 307 and the staff 28. The three di
+c_iii        declared   4300  children friant=3470 + bourcier=830 = 4300  diff 0  (aggregate)
+     note: Duffy and Smith give 4,300 men present, including 830 cavalry, with 12 guns. Other accounts put Friant's division alone at about 6,400, so the figure is genuinely disputed
+c_v          declared  12700  children caffarelli=6700 + suchet=6000 = 12700  diff 0  (aggregate)
+     note: about 12,700 with 20 guns
+suchet       declared   6000  children santon=1600 = 1600  diff 4400  (tracked: the leaf rule subtracts active children)
+     note: about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French situation of 28 October 1805 (Alombert and Colin, t. IV, p. 732)
+c_cav        declared   7400  children kellermann=2400 + nansouty=1600 + dhautpoul=1300 + walther=1500 = 6800  diff 600  (aggregate)
+     note: 7,400 sabres and 36 guns (Duffy 1977; Smith 1998). Beaumont's dragoons and Milhaud's light brigade are not plotted: the four plotted divisions account for 6,800 of the 7,400
+c_i          declared  13000  children rivaud=6000 + drouet=7000 = 13000  diff 0  (aggregate)
+     note: about 11,000 to 13,000
+c_gd         declared   5500  children guard_inf=3000 + guard_cav=2500 = 5500  diff 0  (aggregate)
+     note: about 5,500, Sokolov's estimate for 2 December from the returns of 22 November. No return read gives its guns on the day: the 30th Bulletin puts forty guns served by the Guard's gunners in the reserve, Schönhals forty with the grenadiers, and Sokolov has 24 gu
+buxhowden    declared  40000  children kienmayer=6340 + dok=13490 + lang=11700 + prz=7700 = 39230  diff 770  (tracked: the leaf rule subtracts active children)
+     note: Columns I–III with Kienmayer's advance guard: roughly 33,000–40,000
+lang         declared  11700  children kamensky=4250 = 4250  diff 7450  (tracked: the leaf rule subtracts active children)
+     note: about 9,900–12,000 with 30 guns
+col4         declared  13900  children milo=4800 + kollo=9100 = 13900  diff 0  (aggregate)
+     note: 13,900 infantry with 52 light and 24 heavy guns (Duffy 1977; Smith 1998), used here. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler, and an
+constantine  declared  10500  children rg_inf=4430 + rg_cav=2900 = 7330  diff 3170  (aggregate)
+     note: Duffy gives the Guard 10,530 men and 40 pieces; his rows give 6,730 infantry, the Guard grenadier regiment's 2,300 'in reserve' among them, 2,900 horse and 100 pioneers, 9,730 in all, so 800 of his total is in no row (1977, pp. 184-185). This map draws the 4,4
+
+== 2. the leaf rule: totals on the field over the day (sideOnFieldAt, every 5 min) ==
+fr: max 68300 at 04:00, min 68300 at 04:00
+al: max 79560 at 04:00, min 71860 at 17:00
+army totals shown in the HQ dossiers: French "about 73,000" (Duffy 1977; Smith 1998), Allied "about 85,400" (Duffy 1977; Smith 1998)
+fr: naive sum of tracked formations' declared strengths 69900; leaf-rule sum at 10:00 68300
+al: naive sum of tracked formations' declared strengths 83810; leaf-rule sum at 10:00 79560
+
+== 3. the plateau reading (plateauStrength, Allied) against the tour stop 4 text ==
+tour: falls from about 39,000 at 04:00 to about 19,000 by 07:25, half of it gone before a shot is fired at the plateau.
+04:00: Allied 38700  French 0   [lang=11700, prz=7700, milo=4800, kollo=9100, lich=5400]
+07:00: Allied 38700  French 0   [lang=11700, prz=7700, milo=4800, kollo=9100, lich=5400]
+07:25: Allied 19300  French 0   [milo=4800, kollo=9100, lich=5400]
+08:00: Allied 19300  French 0   [milo=4800, kollo=9100, lich=5400]
+08:45: Allied 23550  French 0   [kamensky=4250, milo=4800, kollo=9100, lich=5400]
+09:15: Allied 18150  French 13300   [kamensky=4250, milo=4800, kollo=9100]
+09:30: Allied 18150  French 13300   [kamensky=4250, milo=4800, kollo=9100]
+10:00: Allied 18150  French 13300   [kamensky=4250, milo=4800, kollo=9100]
+10:30: Allied 16250  French 20300   [kamensky=4250, kollo=9100, rg_cav=2900]
+11:00: Allied 16250  French 20300   [kamensky=4250, kollo=9100, rg_cav=2900]
+11:15: Allied 20680  French 31500   [kamensky=4250, kollo=9100, rg_inf=4430, rg_cav=2900]
+
+== 4. counters: a tracked parent and its tracked child drawn at once, each with its declared strength ==
+suchet counter shows 6000, its child santon 1600; both on the field from 04:00 (845 min); the parent's own troops by the leaf rule 4400; parent note says "including": true
+buxhowden counter shows 40000, its child kienmayer 6340; both on the field from 04:00 (845 min); the parent's own troops by the leaf rule 0; parent note says "including": false
+buxhowden counter shows 40000, its child dok 13490; both on the field from 04:00 (845 min); the parent's own troops by the leaf rule 0; parent note says "including": false
+buxhowden counter shows 40000, its child lang 11700; both on the field from 04:00 (845 min); the parent's own troops by the leaf rule 0; parent note says "including": false
+buxhowden counter shows 40000, its child prz 7700; both on the field from 04:00 (780 min); the parent's own troops by the leaf rule 0; parent note says "including": false
+lang counter shows 11700, its child kamensky 4250; both on the field from 08:00 (605 min); the parent's own troops by the leaf rule 7450; parent note says "including": false
+
+== 5. HQ formations with a strength (shown on their counter and dossier) ==
+buxhowden arm hq, strength 40000, tracked true; children sum 39230; note: Columns I–III with Kienmayer's advance guard: roughly 33,000–40,000

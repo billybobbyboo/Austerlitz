@@ -1,0 +1,74 @@
+{
+ "id": "v-allied-1200",
+ "group": "vantage",
+ "note": "The Allied vantage at 1200.",
+ "spec": {
+  "t": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   135,
+   44,
+   -22,
+   -25,
+   6,
+   12
+  ]
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "12:00",
+  "t": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   135,
+   45.306,
+   -22
+  ],
+  "target": [
+   -25,
+   2.49,
+   12
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 169.08,
+  "sunAlt": 18.96,
+  "sunGeo": 18.91,
+  "sunAz": 180,
+  "mist": 0
+ },
+ "ms": 13346,
+ "timing": {
+  "apply": 14,
+  "settle": 145,
+  "settle2": 361,
+  "shot": 12372
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

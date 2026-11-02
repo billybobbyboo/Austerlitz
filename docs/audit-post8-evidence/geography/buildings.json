@@ -1,0 +1,208 @@
+{
+ "tool": "tools/audit-post8/geography/buildings.js",
+ "records": 637,
+ "totals": {
+  "all": 377,
+  "onClass": 309,
+  "inPlace": 377
+ },
+ "villages": {
+  "Bosenitz": {
+   "n": 7,
+   "all": 14,
+   "onClass": 14,
+   "inPlace": 14,
+   "under": {}
+  },
+  "Girzikowitz": {
+   "n": 9,
+   "all": 17,
+   "onClass": 17,
+   "inPlace": 17,
+   "under": {}
+  },
+  "Puntowitz": {
+   "n": 8,
+   "all": 19,
+   "onClass": 14,
+   "inPlace": 19,
+   "under": {
+    "water": 5
+   }
+  },
+  "Kobelnitz": {
+   "n": 9,
+   "all": 16,
+   "onClass": 3,
+   "inPlace": 16,
+   "under": {
+    "marsh": 9,
+    "water": 4
+   }
+  },
+  "Sokolnitz": {
+   "n": 13,
+   "all": 27,
+   "onClass": 4,
+   "inPlace": 27,
+   "under": {
+    "marsh": 21,
+    "water": 2
+   }
+  },
+  "Telnitz": {
+   "n": 12,
+   "all": 25,
+   "onClass": 2,
+   "inPlace": 25,
+   "under": {
+    "marsh": 20,
+    "water": 3
+   }
+  },
+  "Augezd": {
+   "n": 9,
+   "all": 17,
+   "onClass": 17,
+   "inPlace": 17,
+   "under": {}
+  },
+  "Blasowitz": {
+   "n": 10,
+   "all": 21,
+   "onClass": 21,
+   "inPlace": 21,
+   "under": {}
+  },
+  "Krug": {
+   "n": 5,
+   "all": 12,
+   "onClass": 12,
+   "inPlace": 12,
+   "under": {}
+  },
+  "Holubitz": {
+   "n": 7,
+   "all": 14,
+   "onClass": 14,
+   "inPlace": 14,
+   "under": {}
+  },
+  "Pratzen": {
+   "n": 11,
+   "all": 30,
+   "onClass": 30,
+   "inPlace": 30,
+   "under": {}
+  },
+  "Bellowitz": {
+   "n": 7,
+   "all": 12,
+   "onClass": 12,
+   "inPlace": 12,
+   "under": {}
+  },
+  "Schlapanitz": {
+   "n": 9,
+   "all": 18,
+   "onClass": 18,
+   "inPlace": 18,
+   "under": {}
+  },
+  "Krzenowitz": {
+   "n": 10,
+   "all": 22,
+   "onClass": 22,
+   "inPlace": 22,
+   "under": {}
+  },
+  "Austerlitz": {
+   "n": 24,
+   "all": 56,
+   "onClass": 56,
+   "inPlace": 56,
+   "under": {}
+  },
+  "Menitz": {
+   "n": 7,
+   "all": 14,
+   "onClass": 14,
+   "inPlace": 14,
+   "under": {}
+  },
+  "Satschan": {
+   "n": 7,
+   "all": 14,
+   "onClass": 10,
+   "inPlace": 14,
+   "under": {
+    "water": 2,
+    "marsh": 2
+   }
+  },
+  "Turas": {
+   "n": 5,
+   "all": 10,
+   "onClass": 10,
+   "inPlace": 10,
+   "under": {}
+  },
+  "Hostieradek": {
+   "n": 7,
+   "all": 13,
+   "onClass": 13,
+   "inPlace": 13,
+   "under": {}
+  },
+  "Posoritz post house": {
+   "n": 3,
+   "all": 6,
+   "onClass": 6,
+   "inPlace": 6,
+   "under": {}
+  }
+ },
+ "castle": {
+  "parts": [
+   "castle north range",
+   "castle south range",
+   "castle west range",
+   "castle east range",
+   "farm north range",
+   "farm west range",
+   "farm south range"
+  ],
+  "centreMap": [
+   213.03,
+   345.57
+  ],
+  "toSiteM": 40,
+  "scale": 0.2
+ },
+ "pratzenChurch": {
+  "map": [
+   281.33,
+   252.89
+  ],
+  "toSiteM": 161
+ },
+ "chateau": {
+  "drawnMap": [
+   494.41,
+   123.26
+  ],
+  "realMap": [
+   501.52,
+   122.68
+  ],
+  "drawnToRealM": 225,
+  "bearingFromRealDeg": 283,
+  "churchDrawnMap": [
+   504.54,
+   116.82
+  ],
+  "churchToRealM": 61,
+  "drawnChurchToChateauM": 379,
+  "realChurchToChateauM": 167
+ }
+}

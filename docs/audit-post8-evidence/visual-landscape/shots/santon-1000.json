@@ -1,0 +1,78 @@
+{
+ "id": "santon-1000",
+ "group": "landmarks",
+ "note": "The Santon at 10:00: the hill, its battery; the chapel not drawn (BUILDINGS.notDrawn.santon).",
+ "spec": {
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    222,
+    87
+   ],
+   "dir": [
+    -0.62,
+    0.4,
+    0.68
+   ],
+   "r": 34
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "10:00",
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -80.009,
+   17.562,
+   -58.458
+  ],
+  "target": [
+   -59,
+   3.338,
+   -81.5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 34.27,
+  "sunAlt": 14.13,
+  "sunGeo": 14.06,
+  "sunAz": 151.4,
+  "mist": 0.05
+ },
+ "ms": 15996,
+ "timing": {
+  "apply": 17,
+  "settle": 239,
+  "settle2": 85,
+  "shot": 15202
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

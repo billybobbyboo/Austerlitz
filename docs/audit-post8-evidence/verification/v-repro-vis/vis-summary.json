@@ -1,0 +1,1315 @@
+{
+ "note": "v-repro-vis: vis-probe.js + vis-analyse.js (tools/audit-post8/verification/v-repro-vis/). Play frames only; share = drawn (DOM: computed opacity >= 0.5) over in view (anchor projected inside the canvas, the canvas topmost there, not behind the ground); longest = consecutive in-view frames not drawn, ms at 33.333 ms a frame.",
+ "runs": {
+  "audited f10fe585 hybrid-0830": {
+   "md5": "f10fe585c46aea576f436ed51ac46f83",
+   "chromium": "141.0.7390.37",
+   "frames": 1591,
+   "playFrames": 1560,
+   "clock": [
+    "08:30.2",
+    "11:30.0"
+   ],
+   "total": {
+    "inView": 43003,
+    "drawn": 29046,
+    "share": 67.5
+   },
+   "eventsNamedTotal": {
+    "inView": 6322,
+    "drawn": 3724,
+    "share": 58.9
+   },
+   "projectionDisagreements": [
+    0,
+    43753
+   ],
+   "formationsUnder60": {
+    "kellermann": {
+     "share": 36.6,
+     "inView": 1560,
+     "longestMs": 12333,
+     "clockMin": 40.2,
+     "from": "08:45.0",
+     "to": "09:25.2"
+    },
+    "nansouty": {
+     "share": 46.4,
+     "inView": 1560,
+     "longestMs": 3133,
+     "clockMin": 7,
+     "from": "08:38.0",
+     "to": "08:45.0"
+    },
+    "dhautpoul": {
+     "share": 9.8,
+     "inView": 1560,
+     "longestMs": 12667,
+     "clockMin": 46.3,
+     "from": "09:43.7",
+     "to": "10:30.0"
+    },
+    "walther": {
+     "share": 15.9,
+     "inView": 1560,
+     "longestMs": 15333,
+     "clockMin": 56.5,
+     "from": "09:27.0",
+     "to": "10:23.5"
+    },
+    "guard_inf": {
+     "share": 64.7,
+     "inView": 1560,
+     "longestMs": 3667,
+     "clockMin": 18.2,
+     "from": "09:57.0",
+     "to": "10:15.2"
+    },
+    "guard_cav": {
+     "share": 16.2,
+     "inView": 1560,
+     "longestMs": 13300,
+     "clockMin": 48.5,
+     "from": "09:30.0",
+     "to": "10:18.5"
+    },
+    "milo": {
+     "share": 17.3,
+     "inView": 1560,
+     "longestMs": 27667,
+     "clockMin": 100.2,
+     "from": "09:15.0",
+     "to": "10:55.2"
+    },
+    "rg_inf": {
+     "share": 75.3,
+     "inView": 1560,
+     "longestMs": 4967,
+     "clockMin": 15.2,
+     "from": "11:14.8",
+     "to": "11:30.0"
+    },
+    "rg_cav": {
+     "share": 15.7,
+     "inView": 1560,
+     "longestMs": 17667,
+     "clockMin": 55.2,
+     "from": "08:45.0",
+     "to": "09:40.2"
+    }
+   },
+   "events": {
+    "pratzen-village": {
+     "labelFrames": 193,
+     "labelClock": [
+      "08:52.3",
+      "09:14.3"
+     ],
+     "forms": {
+      "sthilaire": {
+       "share": 74.1,
+       "inView": 193,
+       "maxHiddenS": 0.5
+      }
+     }
+    },
+    "face-about": {
+     "labelFrames": 193,
+     "labelClock": [
+      "09:07.3",
+      "09:29.3"
+     ],
+     "forms": {
+      "ahq": {
+       "share": 85.5,
+       "inView": 193,
+       "maxHiddenS": 0.5
+      },
+      "milo": {
+       "share": 10.4,
+       "inView": 193,
+       "maxHiddenS": 4.5
+      },
+      "kollo": {
+       "share": 83.4,
+       "inView": 193,
+       "maxHiddenS": 0.7
+      }
+     }
+    },
+    "guard-attack": {
+     "labelFrames": 347,
+     "labelClock": [
+      "10:52.3",
+      "11:30.0"
+     ],
+     "forms": {
+      "rg_inf": {
+       "share": 34.6,
+       "inView": 347,
+       "maxHiddenS": 5
+      },
+      "rg_cav": {
+       "share": 3.2,
+       "inView": 347,
+       "maxHiddenS": 4.6
+      },
+      "constantine": "not in the layer",
+      "vandamme": {
+       "share": 54.8,
+       "inView": 347,
+       "maxHiddenS": 1
+      }
+     }
+    },
+    "blasowitz": {
+     "labelFrames": 192,
+     "labelClock": [
+      "11:07.3",
+      "11:29.2"
+     ],
+     "forms": {
+      "caffarelli": {
+       "share": 70.8,
+       "inView": 192,
+       "maxHiddenS": 0.7
+      },
+      "rivaud": {
+       "share": 47.9,
+       "inView": 192,
+       "maxHiddenS": 2
+      },
+      "rg_inf": {
+       "share": 25,
+       "inView": 192,
+       "maxHiddenS": 4.8
+      }
+     }
+    },
+    "guard-broken": {
+     "labelFrames": 197,
+     "labelClock": [
+      "11:07.3",
+      "11:30.0"
+     ],
+     "forms": {
+      "guard_cav": {
+       "share": 0,
+       "inView": 197,
+       "maxHiddenS": 6.6
+      },
+      "drouet": {
+       "share": 59.4,
+       "inView": 197,
+       "maxHiddenS": 0.7
+      },
+      "rg_cav": {
+       "share": 0.5,
+       "inView": 197,
+       "maxHiddenS": 4.6
+      }
+     }
+    }
+   },
+   "vsArea": {
+    "file": "docs/audit-post8-evidence/visibility/runs/raw-hybrid-0830.json",
+    "framesCompared": 1561,
+    "clockIdentical": 1561,
+    "domCells": 43708,
+    "domIdentical": 42270,
+    "domDrawnAgree": 42272,
+    "domDifferences": {
+     "x>#": 710,
+     "#>x": 725,
+     "#>p": 1,
+     "x>p": 2
+    },
+    "stateCells": 43708,
+    "stateIdentical": 43708,
+    "stateDifferences": {}
+   }
+  },
+  "audited f10fe585 hybrid-1200": {
+   "md5": "f10fe585c46aea576f436ed51ac46f83",
+   "chromium": "141.0.7390.37",
+   "frames": 1359,
+   "playFrames": 1328,
+   "clock": [
+    "12:00.2",
+    "15:00.0"
+   ],
+   "total": {
+    "inView": 31626,
+    "drawn": 22864,
+    "share": 72.3
+   },
+   "eventsNamedTotal": {
+    "inView": 8525,
+    "drawn": 5552,
+    "share": 65.1
+   },
+   "projectionDisagreements": [
+    0,
+    32044
+   ],
+   "formationsUnder60": {
+    "kellermann": {
+     "share": 40,
+     "inView": 815,
+     "longestMs": 4667,
+     "clockMin": 13.2,
+     "from": "12:25.3",
+     "to": "12:38.5"
+    },
+    "nansouty": {
+     "share": 55.5,
+     "inView": 854,
+     "longestMs": 2600,
+     "clockMin": 7.7,
+     "from": "12:52.3",
+     "to": "13:00.0"
+    },
+    "dhautpoul": {
+     "share": 25.5,
+     "inView": 1014,
+     "longestMs": 11367,
+     "clockMin": 46.7,
+     "from": "12:00.2",
+     "to": "12:46.8"
+    },
+    "guard_inf": {
+     "share": 63.8,
+     "inView": 1328,
+     "longestMs": 5700,
+     "clockMin": 28.3,
+     "from": "12:00.2",
+     "to": "12:28.5"
+    },
+    "guard_cav": {
+     "share": 47.7,
+     "inView": 1328,
+     "longestMs": 18033,
+     "clockMin": 70,
+     "from": "12:00.2",
+     "to": "13:10.2"
+    },
+    "rg_inf": {
+     "share": 40.9,
+     "inView": 1033,
+     "longestMs": 9333,
+     "clockMin": 36.5,
+     "from": "12:10.3",
+     "to": "12:46.8"
+    },
+    "rg_cav": {
+     "share": 20.2,
+     "inView": 918,
+     "longestMs": 16667,
+     "clockMin": 63.2,
+     "from": "12:03.7",
+     "to": "13:06.8"
+    }
+   },
+   "events": {
+    "guard-attack": {
+     "labelFrames": 565,
+     "labelClock": [
+      "12:00.2",
+      "13:14.2"
+     ],
+     "forms": {
+      "rg_inf": {
+       "share": 20,
+       "inView": 565,
+       "maxHiddenS": 9.3
+      },
+      "rg_cav": {
+       "share": 9,
+       "inView": 565,
+       "maxHiddenS": 16.7
+      },
+      "constantine": "not in the layer",
+      "vandamme": {
+       "share": 76.1,
+       "inView": 565,
+       "maxHiddenS": 0.7
+      }
+     }
+    },
+    "guard-broken": {
+     "labelFrames": 655,
+     "labelClock": [
+      "12:00.2",
+      "13:29.2"
+     ],
+     "forms": {
+      "guard_cav": {
+       "share": 10.5,
+       "inView": 655,
+       "maxHiddenS": 18
+      },
+      "drouet": {
+       "share": 97.6,
+       "inView": 655,
+       "maxHiddenS": 0.5
+      },
+      "rg_cav": {
+       "share": 10.8,
+       "inView": 655,
+       "maxHiddenS": 16.7
+      }
+     }
+    },
+    "hq-forward": {
+     "labelFrames": 385,
+     "labelClock": [
+      "12:00.2",
+      "12:54.2"
+     ],
+     "forms": {
+      "gqg": {
+       "share": 77.4,
+       "inView": 385,
+       "maxHiddenS": 0.6
+      }
+     }
+    }
+   },
+   "vsArea": {
+    "file": "docs/audit-post8-evidence/visibility/runs/raw-hybrid-1200.json",
+    "framesCompared": 1329,
+    "clockIdentical": 1284,
+    "domCells": 37212,
+    "domIdentical": 35562,
+    "domDrawnAgree": 35562,
+    "domDifferences": {
+     "x>#": 770,
+     "#>x": 880
+    },
+    "stateCells": 37212,
+    "stateIdentical": 36460,
+    "stateDifferences": {
+     "#>h": 391,
+     "h>#": 318,
+     "d>h": 17,
+     "#>d": 11,
+     "h>d": 11,
+     "d>#": 4
+    }
+   }
+  },
+  "audited f10fe585 land-0900": {
+   "md5": "f10fe585c46aea576f436ed51ac46f83",
+   "chromium": "141.0.7390.37",
+   "frames": 1539,
+   "playFrames": 1508,
+   "clock": [
+    "09:00.2",
+    "12:00.0"
+   ],
+   "total": {
+    "inView": 38415,
+    "drawn": 34307,
+    "share": 89.3
+   },
+   "eventsNamedTotal": {
+    "inView": 6493,
+    "drawn": 5199,
+    "share": 80.1
+   },
+   "projectionDisagreements": [
+    0,
+    39223
+   ],
+   "formationsUnder60": {
+    "nansouty": {
+     "share": 75.1,
+     "inView": 1508,
+     "longestMs": 2000,
+     "clockMin": 0.6,
+     "from": "10:29.8",
+     "to": "10:30.4"
+    },
+    "guard_inf": {
+     "share": 86.3,
+     "inView": 1508,
+     "longestMs": 1267,
+     "clockMin": 6.2,
+     "from": "09:00.7",
+     "to": "09:06.8"
+    },
+    "rg_inf": {
+     "share": 82.6,
+     "inView": 1508,
+     "longestMs": 667,
+     "clockMin": 0,
+     "from": "09:15.0",
+     "to": "09:15.0"
+    }
+   },
+   "events": {
+    "pratzen-village": {
+     "labelFrames": 86,
+     "labelClock": [
+      "09:00.2",
+      "09:14.3"
+     ],
+     "forms": {
+      "sthilaire": {
+       "share": 36,
+       "inView": 86,
+       "maxHiddenS": 1.8
+      }
+     }
+    },
+    "face-about": {
+     "labelFrames": 193,
+     "labelClock": [
+      "09:07.3",
+      "09:29.3"
+     ],
+     "forms": {
+      "ahq": "not in the layer",
+      "milo": {
+       "share": 91.2,
+       "inView": 193,
+       "maxHiddenS": 0.6
+      },
+      "kollo": {
+       "share": 100,
+       "inView": 193,
+       "maxHiddenS": 0
+      }
+     }
+    },
+    "guard-attack": {
+     "labelFrames": 595,
+     "labelClock": [
+      "10:52.3",
+      "12:00.0"
+     ],
+     "forms": {
+      "rg_inf": {
+       "share": 80.2,
+       "inView": 595,
+       "maxHiddenS": 0.7
+      },
+      "rg_cav": {
+       "share": 62.2,
+       "inView": 595,
+       "maxHiddenS": 1.7
+      },
+      "constantine": "not in the layer",
+      "vandamme": {
+       "share": 82.9,
+       "inView": 595,
+       "maxHiddenS": 0.7
+      }
+     }
+    },
+    "blasowitz": {
+     "labelFrames": 192,
+     "labelClock": [
+      "11:07.3",
+      "11:29.2"
+     ],
+     "forms": {
+      "caffarelli": {
+       "share": 81.3,
+       "inView": 192,
+       "maxHiddenS": 0.7
+      },
+      "rivaud": {
+       "share": 81.3,
+       "inView": 192,
+       "maxHiddenS": 0.7
+      },
+      "rg_inf": {
+       "share": 57.8,
+       "inView": 192,
+       "maxHiddenS": 0.7
+      }
+     }
+    },
+    "guard-broken": {
+     "labelFrames": 445,
+     "labelClock": [
+      "11:07.3",
+      "12:00.0"
+     ],
+     "forms": {
+      "guard_cav": {
+       "share": 91,
+       "inView": 445,
+       "maxHiddenS": 0.7
+      },
+      "drouet": {
+       "share": 80,
+       "inView": 445,
+       "maxHiddenS": 0.7
+      },
+      "rg_cav": {
+       "share": 61.8,
+       "inView": 445,
+       "maxHiddenS": 1.7
+      }
+     }
+    },
+    "hq-forward": {
+     "labelFrames": 55,
+     "labelClock": [
+      "11:52.3",
+      "12:00.0"
+     ],
+     "forms": {
+      "gqg": "not in the layer"
+     }
+    }
+   },
+   "vsArea": {
+    "file": "docs/audit-post8-evidence/visibility/runs/raw-land-0900.json",
+    "framesCompared": 1509,
+    "clockIdentical": 1434,
+    "domCells": 39234,
+    "domIdentical": 38355,
+    "domDrawnAgree": 38355,
+    "domDifferences": {
+     "x>#": 428,
+     "#>x": 449,
+     "#>p": 2
+    },
+    "stateCells": 39234,
+    "stateIdentical": 39234,
+    "stateDifferences": {}
+   }
+  },
+  "pre-Stage-8 c4793156 (9eb7abb) hybrid-0830": {
+   "md5": "c4793156103b60bb74151c7d13dbdd9d",
+   "chromium": "141.0.7390.37",
+   "frames": 1591,
+   "playFrames": 1560,
+   "clock": [
+    "08:30.2",
+    "11:30.0"
+   ],
+   "total": {
+    "inView": 40780,
+    "drawn": 31957,
+    "share": 78.4
+   },
+   "eventsNamedTotal": {
+    "inView": 5713,
+    "drawn": 4019,
+    "share": 70.3
+   },
+   "projectionDisagreements": [
+    0,
+    41529
+   ],
+   "formationsUnder60": {
+    "kellermann": {
+     "share": 38.8,
+     "inView": 1412,
+     "longestMs": 16967,
+     "clockMin": 63.5,
+     "from": "09:26.5",
+     "to": "10:30.0"
+    },
+    "nansouty": {
+     "share": 44.9,
+     "inView": 1412,
+     "longestMs": 6200,
+     "clockMin": 20.8,
+     "from": "09:37.3",
+     "to": "09:58.2"
+    },
+    "dhautpoul": {
+     "share": 5.4,
+     "inView": 1412,
+     "longestMs": 12533,
+     "clockMin": 42.6,
+     "from": "09:29.4",
+     "to": "10:12.0"
+    },
+    "walther": {
+     "share": 39,
+     "inView": 1412,
+     "longestMs": 10767,
+     "clockMin": 37.8,
+     "from": "09:30.0",
+     "to": "10:07.8"
+    },
+    "guard_inf": {
+     "share": 69.4,
+     "inView": 1412,
+     "longestMs": 5267,
+     "clockMin": 16.2,
+     "from": "11:13.8",
+     "to": "11:30.0"
+    },
+    "guard_cav": {
+     "share": 23.8,
+     "inView": 1412,
+     "longestMs": 16233,
+     "clockMin": 61,
+     "from": "09:22.5",
+     "to": "10:23.5"
+    },
+    "milo": {
+     "share": 33.3,
+     "inView": 1412,
+     "longestMs": 11233,
+     "clockMin": 34.8,
+     "from": "08:55.2",
+     "to": "09:30.0"
+    },
+    "constantine": {
+     "share": 52.7,
+     "inView": 148,
+     "longestMs": 1400,
+     "clockMin": 3.5,
+     "from": "08:45.0",
+     "to": "08:48.5"
+    },
+    "rg_inf": {
+     "share": 55,
+     "inView": 1412,
+     "longestMs": 8800,
+     "clockMin": 23.8,
+     "from": "10:52.3",
+     "to": "11:16.2"
+    },
+    "rg_cav": {
+     "share": 8.1,
+     "inView": 1412,
+     "longestMs": 13500,
+     "clockMin": 47.6,
+     "from": "09:29.6",
+     "to": "10:17.2"
+    }
+   },
+   "events": {
+    "pratzen-village": {
+     "labelFrames": 193,
+     "labelClock": [
+      "08:52.3",
+      "09:14.3"
+     ],
+     "forms": {
+      "sthilaire": {
+       "share": 84.7,
+       "inView": 176,
+       "maxHiddenS": 0.9
+      }
+     }
+    },
+    "face-about": {
+     "labelFrames": 193,
+     "labelClock": [
+      "09:07.3",
+      "09:29.3"
+     ],
+     "forms": {
+      "ahq": {
+       "share": 100,
+       "inView": 193,
+       "maxHiddenS": 0
+      },
+      "milo": {
+       "share": 0,
+       "inView": 193,
+       "maxHiddenS": 6.4
+      },
+      "kollo": {
+       "share": 85.5,
+       "inView": 193,
+       "maxHiddenS": 0.9
+      }
+     }
+    },
+    "guard-attack": {
+     "labelFrames": 347,
+     "labelClock": [
+      "10:52.3",
+      "11:30.0"
+     ],
+     "forms": {
+      "rg_inf": {
+       "share": 0.9,
+       "inView": 347,
+       "maxHiddenS": 8.8
+      },
+      "rg_cav": {
+       "share": 1.2,
+       "inView": 347,
+       "maxHiddenS": 8.6
+      },
+      "constantine": {
+       "share": null,
+       "inView": 0,
+       "maxHiddenS": 0
+      },
+      "vandamme": {
+       "share": 88.5,
+       "inView": 347,
+       "maxHiddenS": 0.5
+      }
+     }
+    },
+    "blasowitz": {
+     "labelFrames": 192,
+     "labelClock": [
+      "11:07.3",
+      "11:29.2"
+     ],
+     "forms": {
+      "caffarelli": {
+       "share": 100,
+       "inView": 192,
+       "maxHiddenS": 0
+      },
+      "rivaud": {
+       "share": 100,
+       "inView": 192,
+       "maxHiddenS": 0
+      },
+      "rg_inf": {
+       "share": 1.6,
+       "inView": 192,
+       "maxHiddenS": 3.8
+      }
+     }
+    },
+    "guard-broken": {
+     "labelFrames": 197,
+     "labelClock": [
+      "11:07.3",
+      "11:30.0"
+     ],
+     "forms": {
+      "guard_cav": {
+       "share": 0,
+       "inView": 197,
+       "maxHiddenS": 6.6
+      },
+      "drouet": {
+       "share": 96.4,
+       "inView": 197,
+       "maxHiddenS": 0.1
+      },
+      "rg_cav": {
+       "share": 2,
+       "inView": 197,
+       "maxHiddenS": 3.6
+      }
+     }
+    }
+   },
+   "vsArea": null
+  },
+  "pre-Stage-8 c4793156 (9eb7abb) hybrid-1200": {
+   "md5": "c4793156103b60bb74151c7d13dbdd9d",
+   "chromium": "141.0.7390.37",
+   "frames": 1359,
+   "playFrames": 1328,
+   "clock": [
+    "12:00.2",
+    "15:00.0"
+   ],
+   "total": {
+    "inView": 31460,
+    "drawn": 26917,
+    "share": 85.6
+   },
+   "eventsNamedTotal": {
+    "inView": 8525,
+    "drawn": 6333,
+    "share": 74.3
+   },
+   "projectionDisagreements": [
+    0,
+    31878
+   ],
+   "formationsUnder60": {
+    "nansouty": {
+     "share": 78,
+     "inView": 854,
+     "longestMs": 1367,
+     "clockMin": 6.7,
+     "from": "12:11.7",
+     "to": "12:18.3"
+    },
+    "dhautpoul": {
+     "share": 27.4,
+     "inView": 1014,
+     "longestMs": 4767,
+     "clockMin": 23.7,
+     "from": "12:00.2",
+     "to": "12:23.8"
+    },
+    "guard_inf": {
+     "share": 67.1,
+     "inView": 1328,
+     "longestMs": 3500,
+     "clockMin": 7.3,
+     "from": "12:27.3",
+     "to": "12:34.7"
+    },
+    "guard_cav": {
+     "share": 54.1,
+     "inView": 1328,
+     "longestMs": 12833,
+     "clockMin": 54,
+     "from": "12:00.2",
+     "to": "12:54.2"
+    },
+    "rg_inf": {
+     "share": 52.6,
+     "inView": 1033,
+     "longestMs": 12767,
+     "clockMin": 53.7,
+     "from": "12:05.0",
+     "to": "12:58.7"
+    },
+    "rg_cav": {
+     "share": 37.1,
+     "inView": 918,
+     "longestMs": 10967,
+     "clockMin": 44.7,
+     "from": "12:10.5",
+     "to": "12:55.2"
+    }
+   },
+   "events": {
+    "guard-attack": {
+     "labelFrames": 565,
+     "labelClock": [
+      "12:00.2",
+      "13:14.2"
+     ],
+     "forms": {
+      "rg_inf": {
+       "share": 29.7,
+       "inView": 565,
+       "maxHiddenS": 12.8
+      },
+      "rg_cav": {
+       "share": 9.4,
+       "inView": 565,
+       "maxHiddenS": 11
+      },
+      "constantine": "not in the layer",
+      "vandamme": {
+       "share": 89.9,
+       "inView": 565,
+       "maxHiddenS": 0.9
+      }
+     }
+    },
+    "guard-broken": {
+     "labelFrames": 655,
+     "labelClock": [
+      "12:00.2",
+      "13:29.2"
+     ],
+     "forms": {
+      "guard_cav": {
+       "share": 7,
+       "inView": 655,
+       "maxHiddenS": 12.8
+      },
+      "drouet": {
+       "share": 100,
+       "inView": 655,
+       "maxHiddenS": 0
+      },
+      "rg_cav": {
+       "share": 21.1,
+       "inView": 655,
+       "maxHiddenS": 11
+      }
+     }
+    },
+    "hq-forward": {
+     "labelFrames": 385,
+     "labelClock": [
+      "12:00.2",
+      "12:54.2"
+     ],
+     "forms": {
+      "gqg": {
+       "share": 100,
+       "inView": 385,
+       "maxHiddenS": 0
+      }
+     }
+    }
+   },
+   "vsArea": null
+  },
+  "step5c 45f8f662 hybrid-0830": {
+   "md5": "45f8f662ef828d2e1ab593a3b87b6ff7",
+   "chromium": "141.0.7390.37",
+   "frames": 1591,
+   "playFrames": 1560,
+   "clock": [
+    "08:30.2",
+    "11:30.0"
+   ],
+   "total": {
+    "inView": 40780,
+    "drawn": 31957,
+    "share": 78.4
+   },
+   "eventsNamedTotal": {
+    "inView": 5713,
+    "drawn": 4019,
+    "share": 70.3
+   },
+   "projectionDisagreements": [
+    0,
+    41529
+   ],
+   "formationsUnder60": {
+    "kellermann": {
+     "share": 38.8,
+     "inView": 1412,
+     "longestMs": 16967,
+     "clockMin": 63.5,
+     "from": "09:26.5",
+     "to": "10:30.0"
+    },
+    "nansouty": {
+     "share": 44.9,
+     "inView": 1412,
+     "longestMs": 6200,
+     "clockMin": 20.8,
+     "from": "09:37.3",
+     "to": "09:58.2"
+    },
+    "dhautpoul": {
+     "share": 5.4,
+     "inView": 1412,
+     "longestMs": 12533,
+     "clockMin": 42.6,
+     "from": "09:29.4",
+     "to": "10:12.0"
+    },
+    "walther": {
+     "share": 39,
+     "inView": 1412,
+     "longestMs": 10767,
+     "clockMin": 37.8,
+     "from": "09:30.0",
+     "to": "10:07.8"
+    },
+    "guard_inf": {
+     "share": 69.4,
+     "inView": 1412,
+     "longestMs": 5267,
+     "clockMin": 16.2,
+     "from": "11:13.8",
+     "to": "11:30.0"
+    },
+    "guard_cav": {
+     "share": 23.8,
+     "inView": 1412,
+     "longestMs": 16233,
+     "clockMin": 61,
+     "from": "09:22.5",
+     "to": "10:23.5"
+    },
+    "milo": {
+     "share": 33.3,
+     "inView": 1412,
+     "longestMs": 11233,
+     "clockMin": 34.8,
+     "from": "08:55.2",
+     "to": "09:30.0"
+    },
+    "constantine": {
+     "share": 52.7,
+     "inView": 148,
+     "longestMs": 1400,
+     "clockMin": 3.5,
+     "from": "08:45.0",
+     "to": "08:48.5"
+    },
+    "rg_inf": {
+     "share": 55,
+     "inView": 1412,
+     "longestMs": 8800,
+     "clockMin": 23.8,
+     "from": "10:52.3",
+     "to": "11:16.2"
+    },
+    "rg_cav": {
+     "share": 8.1,
+     "inView": 1412,
+     "longestMs": 13500,
+     "clockMin": 47.6,
+     "from": "09:29.6",
+     "to": "10:17.2"
+    }
+   },
+   "events": {
+    "pratzen-village": {
+     "labelFrames": 193,
+     "labelClock": [
+      "08:52.3",
+      "09:14.3"
+     ],
+     "forms": {
+      "sthilaire": {
+       "share": 84.7,
+       "inView": 176,
+       "maxHiddenS": 0.9
+      }
+     }
+    },
+    "face-about": {
+     "labelFrames": 193,
+     "labelClock": [
+      "09:07.3",
+      "09:29.3"
+     ],
+     "forms": {
+      "ahq": {
+       "share": 100,
+       "inView": 193,
+       "maxHiddenS": 0
+      },
+      "milo": {
+       "share": 0,
+       "inView": 193,
+       "maxHiddenS": 6.4
+      },
+      "kollo": {
+       "share": 85.5,
+       "inView": 193,
+       "maxHiddenS": 0.9
+      }
+     }
+    },
+    "guard-attack": {
+     "labelFrames": 347,
+     "labelClock": [
+      "10:52.3",
+      "11:30.0"
+     ],
+     "forms": {
+      "rg_inf": {
+       "share": 0.9,
+       "inView": 347,
+       "maxHiddenS": 8.8
+      },
+      "rg_cav": {
+       "share": 1.2,
+       "inView": 347,
+       "maxHiddenS": 8.6
+      },
+      "constantine": {
+       "share": null,
+       "inView": 0,
+       "maxHiddenS": 0
+      },
+      "vandamme": {
+       "share": 88.5,
+       "inView": 347,
+       "maxHiddenS": 0.5
+      }
+     }
+    },
+    "blasowitz": {
+     "labelFrames": 192,
+     "labelClock": [
+      "11:07.3",
+      "11:29.2"
+     ],
+     "forms": {
+      "caffarelli": {
+       "share": 100,
+       "inView": 192,
+       "maxHiddenS": 0
+      },
+      "rivaud": {
+       "share": 100,
+       "inView": 192,
+       "maxHiddenS": 0
+      },
+      "rg_inf": {
+       "share": 1.6,
+       "inView": 192,
+       "maxHiddenS": 3.8
+      }
+     }
+    },
+    "guard-broken": {
+     "labelFrames": 197,
+     "labelClock": [
+      "11:07.3",
+      "11:30.0"
+     ],
+     "forms": {
+      "guard_cav": {
+       "share": 0,
+       "inView": 197,
+       "maxHiddenS": 6.6
+      },
+      "drouet": {
+       "share": 96.4,
+       "inView": 197,
+       "maxHiddenS": 0.1
+      },
+      "rg_cav": {
+       "share": 2,
+       "inView": 197,
+       "maxHiddenS": 3.6
+      }
+     }
+    }
+   },
+   "vsArea": null
+  },
+  "step5c 45f8f662 hybrid-1200": {
+   "md5": "45f8f662ef828d2e1ab593a3b87b6ff7",
+   "chromium": "141.0.7390.37",
+   "frames": 1359,
+   "playFrames": 1328,
+   "clock": [
+    "12:00.2",
+    "15:00.0"
+   ],
+   "total": {
+    "inView": 31460,
+    "drawn": 26917,
+    "share": 85.6
+   },
+   "eventsNamedTotal": {
+    "inView": 8525,
+    "drawn": 6333,
+    "share": 74.3
+   },
+   "projectionDisagreements": [
+    0,
+    31878
+   ],
+   "formationsUnder60": {
+    "nansouty": {
+     "share": 78,
+     "inView": 854,
+     "longestMs": 1367,
+     "clockMin": 6.7,
+     "from": "12:11.7",
+     "to": "12:18.3"
+    },
+    "dhautpoul": {
+     "share": 27.4,
+     "inView": 1014,
+     "longestMs": 4767,
+     "clockMin": 23.7,
+     "from": "12:00.2",
+     "to": "12:23.8"
+    },
+    "guard_inf": {
+     "share": 67.1,
+     "inView": 1328,
+     "longestMs": 3500,
+     "clockMin": 7.3,
+     "from": "12:27.3",
+     "to": "12:34.7"
+    },
+    "guard_cav": {
+     "share": 54.1,
+     "inView": 1328,
+     "longestMs": 12833,
+     "clockMin": 54,
+     "from": "12:00.2",
+     "to": "12:54.2"
+    },
+    "rg_inf": {
+     "share": 52.6,
+     "inView": 1033,
+     "longestMs": 12767,
+     "clockMin": 53.7,
+     "from": "12:05.0",
+     "to": "12:58.7"
+    },
+    "rg_cav": {
+     "share": 37.1,
+     "inView": 918,
+     "longestMs": 10967,
+     "clockMin": 44.7,
+     "from": "12:10.5",
+     "to": "12:55.2"
+    }
+   },
+   "events": {
+    "guard-attack": {
+     "labelFrames": 565,
+     "labelClock": [
+      "12:00.2",
+      "13:14.2"
+     ],
+     "forms": {
+      "rg_inf": {
+       "share": 29.7,
+       "inView": 565,
+       "maxHiddenS": 12.8
+      },
+      "rg_cav": {
+       "share": 9.4,
+       "inView": 565,
+       "maxHiddenS": 11
+      },
+      "constantine": "not in the layer",
+      "vandamme": {
+       "share": 89.9,
+       "inView": 565,
+       "maxHiddenS": 0.9
+      }
+     }
+    },
+    "guard-broken": {
+     "labelFrames": 655,
+     "labelClock": [
+      "12:00.2",
+      "13:29.2"
+     ],
+     "forms": {
+      "guard_cav": {
+       "share": 7,
+       "inView": 655,
+       "maxHiddenS": 12.8
+      },
+      "drouet": {
+       "share": 100,
+       "inView": 655,
+       "maxHiddenS": 0
+      },
+      "rg_cav": {
+       "share": 21.1,
+       "inView": 655,
+       "maxHiddenS": 11
+      }
+     }
+    },
+    "hq-forward": {
+     "labelFrames": 385,
+     "labelClock": [
+      "12:00.2",
+      "12:54.2"
+     ],
+     "forms": {
+      "gqg": {
+       "share": 100,
+       "inView": 385,
+       "maxHiddenS": 0
+      }
+     }
+    }
+   },
+   "vsArea": null
+  }
+ }
+}

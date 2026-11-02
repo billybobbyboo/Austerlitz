@@ -1,0 +1,62 @@
+[
+ {
+  "run": "phone-0900",
+  "frame": 1196,
+  "file": "docs/audit-post8-evidence/visibility/stills/phone-0900-f1196.jpg",
+  "plain": "docs/audit-post8-evidence/visibility/stills/phone-0900-f1196-plain.jpg",
+  "clock": 679.3333333332967,
+  "speed": 0.5,
+  "glLost": false,
+  "ctxLost": false,
+  "calls": 461,
+  "hidden": [
+   {
+    "id": "c_cav",
+    "x": 95.53093835328104,
+    "y": 286.9054048479465,
+    "held": true
+   },
+   {
+    "id": "c_gd",
+    "x": 206.1138150504256,
+    "y": 296.6908558785124,
+    "held": true
+   },
+   {
+    "id": "col4",
+    "x": 228.44661658765085,
+    "y": 265.6902650972057,
+    "held": true
+   },
+   {
+    "id": "constantine",
+    "x": 185.48887049513894,
+    "y": 275.6269261543274,
+    "held": true
+   },
+   {
+    "id": "c_gren",
+    "x": 218.71112323172252,
+    "y": 311.10960454656225,
+    "held": true
+   },
+   {
+    "id": "lich",
+    "x": 130.60424237471972,
+    "y": 270.9390716074207,
+    "held": true
+   }
+  ],
+  "drawn": [
+   "c_iv",
+   "c_v",
+   "c_i",
+   "gqg",
+   "ahq"
+  ],
+  "occluded": [],
+  "playing": true,
+  "moving": true,
+  "pass": false
+ }
+]

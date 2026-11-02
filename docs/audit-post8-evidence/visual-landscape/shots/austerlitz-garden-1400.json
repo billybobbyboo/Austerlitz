@@ -1,0 +1,78 @@
+{
+ "id": "austerlitz-garden-1400",
+ "group": "landmarks",
+ "note": "The Austerlitz château and its garden at 14:00 (stills-8j 'austerlitz-garden').",
+ "spec": {
+  "t": 840,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    496,
+    125
+   ],
+   "dir": [
+    -0.4,
+    0.55,
+    0.73
+   ],
+   "r": 30
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "14:00",
+  "t": 840,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   65.972,
+   19.11,
+   -40.549
+  ],
+  "target": [
+   78,
+   -0.312,
+   -62.5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 31.68,
+  "sunAlt": 14.1,
+  "sunGeo": 14.04,
+  "sunAz": 208.6,
+  "mist": 0
+ },
+ "ms": 31679,
+ "timing": {
+  "apply": 52,
+  "settle": 308,
+  "settle2": 81,
+  "shot": 30761
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

@@ -1,0 +1,35 @@
+{
+ "rev": "128",
+ "trials": [
+  {
+   "checkShaderErrors": true,
+   "lostSync": true,
+   "eventFiredSync": false,
+   "infoLogOnLost": "null",
+   "eventFiredBeforeRaf": false,
+   "render": "threw: Cannot read properties of null (reading 'trim')",
+   "eventFiredLater": true
+  },
+  {
+   "checkShaderErrors": true,
+   "lostSync": true,
+   "eventFiredSync": false,
+   "infoLogOnLost": "null",
+   "eventFiredBeforeRaf": false,
+   "render": "threw: Cannot read properties of null (reading 'trim')",
+   "eventFiredLater": true
+  },
+  {
+   "checkShaderErrors": true,
+   "lostSync": true,
+   "eventFiredSync": false,
+   "infoLogOnLost": "null",
+   "eventFiredBeforeRaf": false,
+   "render": "threw: Cannot read properties of null (reading 'trim')",
+   "eventFiredLater": true
+  }
+ ],
+ "pageErrors": [],
+ "browser": "141.0.7390.37",
+ "when": "2026-11-02T11:31:18.499Z"
+}

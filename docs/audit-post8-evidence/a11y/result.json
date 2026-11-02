@@ -1,0 +1,535 @@
+{
+ "area": "a11y",
+ "scope_summary": "Accessibility, first use and visitor-facing content of the audited build (f10fe585..., 43e3e5b), by real input on visitor pages at 1600x900, 1280x720, browser zoom 200% (800x450 at density 2), 400% (400x225 at 4), WCAG's reflow width (320x256 at 4) and an emulated phone (390x844, 844x390); the whole Tab cycle with Chromium's computed names; hover-only information; target sizes; small and clipped text; touch gestures near the timeline; forced colours and reduced motion; the words a visitor reads, confirmed as drawn. Headless Chromium 141 on SwiftShader, on a heavily shared 4-core container: no time is a device's; the phone is desktop emulation, not a mobile browser; no screen reader or other assistive technology was available. Earlier automated coverage (check:contrast 45 states, the self-test's A-1..A-6/SW checks) was not repeated.",
+ "coverage": [
+  {
+   "item": "(1) first use at 1600x900 by real input: card, opening, Play, a dossier, How this is sourced, Esc and the ways back, ?, evidence vs reconstruction",
+   "method": "fu.js on a visitor page; 13 screenshots; words read in context",
+   "result": "works end to end; wording issues A11Y-03, A11Y-08, A11Y-11; hover-only caveats A11Y-02; the press-D hint A11Y-09",
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json"
+  },
+  {
+   "item": "(1) first use at 1280x720",
+   "method": "zoom.js case 1280x720 at density 1 (card, Esc, ?, Panels, sources, dossier); the opening at 1280 is the harness's opening-1-laptop case",
+   "result": "works; caption cut to 'THE DECEPT… · D. ·', its full text a tooltip (A11Y-02); both sheets scroll from the keyboard (sheetkeys.json)",
+   "evidence": "docs/audit-post8-evidence/a11y/zoom.json"
+  },
+  {
+   "item": "(1) first use on a phone (390x844 emulated)",
+   "method": "phone.js, phone2.js: card, opening, Skip, grip, Menu, drags, pinches, held landscape",
+   "result": "phone layout sound (targets 44 px, no cut text but the caption's event); rail drags blocked by markers (A11Y-04); pinch results unverified (A11Y-05); held landscape loses the phase text (A11Y-01); orphan separators and the grip (A11Y-13)",
+   "evidence": "docs/audit-post8-evidence/a11y/phone.json, phone2.json"
+  },
+  {
+   "item": "(2) keyboard: Tab order, names, roles, indicators, traps, focus after closing",
+   "method": "kbd.js (harness page): 47-stop cycle with CDP names; Watch and Clean cycles; Esc, the dossier's x and Back by Enter; Layers, tour, map item, eyes, key toggle by keys",
+   "result": "no trap; every control stop named; order follows the DOM (switch, rail, tools, key, timeline, map); focus never lost to body after closing (it goes to the Now tab or Play); opened panels do not take the focus (A11Y-07); both sheets scroll from the keyboard (sheetkeys.json)",
+   "evidence": "docs/audit-post8-evidence/a11y/kbd-h-1600x900.json, kbd-h-1600x900-stops.json, mapfocus.json"
+  },
+  {
+   "item": "(3) names, roles, live regions, modals, shortcuts switch",
+   "method": "CDP accessibility tree; the card, the sources sheet and ? by real keys; the switch then '2'",
+   "result": "modals contain focus and return it; the switch works (2.1.4); naming polish A11Y-10",
+   "evidence": "docs/audit-post8-evidence/a11y/kbd-h-1600x900-axtree.json, fu-1600x900.json"
+  },
+  {
+   "item": "(4) hover-only information",
+   "method": "every [title] whose words are not in the element's name or text (25 at the first screen); title= written by app.js; data-tip tooltips",
+   "result": "A11Y-02; the timeline's own tips show on focus too (8A)",
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json step 1 'titles'"
+  },
+  {
+   "item": "(5) target sizes (2.5.8)",
+   "method": "every visible target's box with the spacing test at 1600x900, 1280x720, 800x450, 400x225, 320x256, 390x844, 844x390",
+   "result": "no failing target but the phases (31 px hit area through ::before) and the event markers (decision 167)",
+   "untested": "the day-track anchors judged by their positions only (14.8 px, centres 24.5 px or more apart: they pass the spacing test; fc.json)",
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json, zoom.json, phone2.json"
+  },
+  {
+   "item": "(6) text under 12 px, cut text, horizontal scroll",
+   "method": "text nodes by computed size; clipped boxes; document scroll sizes at every size",
+   "result": "no horizontal scroll at any size (body overflow hidden); 42-47% of texts at 10.5-11.5 px (A11Y-12); cut caption and timeline labels (by design, ellipsis); at 400%/320 px content lost (A11Y-01)",
+   "evidence": "docs/audit-post8-evidence/a11y/zoom.json, fu-1600x900.json"
+  },
+  {
+   "item": "(7) reduced motion",
+   "method": "fc.js: emulateMedia reduce on the open page; computed transitions; a vantage's glide sampled at 150 ms and 2.5 s",
+   "result": "the stylesheet rule applied at once (transitions 0s on the rail and the dossier); the camera samples are inconclusive (no frame drawn within 3 s here, with or without reduced motion); the live JS switch is the self-test's rmLive block (passed)",
+   "untested": "the 3D motion under reduced motion on this machine",
+   "evidence": "docs/audit-post8-evidence/a11y/fc.json"
+  },
+  {
+   "item": "(8) zoom and reflow (1.4.4, 1.4.10)",
+   "method": "zoom.js: 800x450@2, 400x225@4, 320x256@4 by real keys and clicks",
+   "result": "200% passes; 400% and 320 px fail (A11Y-01)",
+   "evidence": "docs/audit-post8-evidence/a11y/zoom.json and its screenshots"
+  },
+  {
+   "item": "(9) phone portrait and landscape, gestures near the timeline, the grip",
+   "method": "phone.js, phone2.js with CDP touch",
+   "result": "A11Y-04 (rail), A11Y-05 (pinch), A11Y-13 (grip, caption), A11Y-01 (landscape phase text)",
+   "evidence": "docs/audit-post8-evidence/a11y/phone.json, phone2.json"
+  },
+  {
+   "item": "(10) forced-colors: active",
+   "method": "fc.js: computed styles and crops under Chromium's emulation",
+   "result": "A11Y-06",
+   "evidence": "docs/audit-post8-evidence/a11y/fc.json, fc-*.jpg"
+  }
+ ],
+ "findings": [
+  {
+   "id": "A11Y-01",
+   "title": "At 400% browser zoom and at WCAG's 320 px reflow width the interface loses content and functions (the card's start, the phase text, the caption, the key, the panels, the sources)",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "layout (style.css short-viewport rules, app.js syncDock), first-run card, timeline control row, tools",
+   "user_impact": "A low-vision visitor who zooms a desktop browser to 400% cannot read the first card's heading and opening lines, never sees the phase's narrative, the caption or the key, and cannot open the panels (order of battle, analysis, command, plans) or 'Accuracy and sources' with the pointer: most of the map's explanation is gone.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "style.css:619-625 (max-height:430px: .dispatch and .legend display:none)",
+    "style.css:645-648 (#firstrun anchored to the timeline's top, no max-height or overflow below 431 px tall)",
+    "style.css:851-862 (held-landscape block: the query is the height's alone, so a zoomed desktop window takes it; #eyesbtn hidden)",
+    "app.js:8971-8984 (syncDock: below 1080 px the Now tab is hidden and the dispatch is the card)",
+    "shell.html:116-134 (the tools column, which wraps under the timeline)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/zoom.json (steps 400x225-at4:* and 320x256-at4:*); docs/audit-post8-evidence/a11y/zoom-400x225-at4-1-first.jpg, zoom-400x225-at4-2-explore.jpg, zoom-320x256-at4-2-explore.jpg; 200% for comparison: zoom-800x450-at2-*.jpg",
+   "repro": "Visitor page (no ?harness=1), Chromium context viewport 400x225 at deviceScaleFactor 4 (a 1600x900 screen at 400%) and 320x256 at 4 (1280x1024 at 400%); wait for the card; screenshot; press Esc (real key); then a real click on the Panels button's centre and on 'Accuracy and sources'.",
+   "expected": "WCAG 1.4.10 (AA): at 320 CSS px wide nothing but the two-dimensional map itself may need two-dimensional scrolling or be lost: the card scrolls inside itself, the phase text stays reachable (the phone layout's grip sheet does this at 390 px), every control stays on screen and pressable.",
+   "observed": "400x225 (400%): the card's box starts at y=-112 (height 228, not scrollable; the page has overflow hidden), so its heading and first lines are off screen; after Esc no phase text, situation or events anywhere (.dispatch display:none, no Now tab); caption 0 px wide; no key; the Panels button under the timeline (hit-test div.tb-top at 3 of 3 points; a real click opened nothing); '?' partly off screen; the timeline 40% of the height. 320x256: the card starts at y=-140; '?' off screen (x=370); Panels opens a rail whose scrolling area is 0 px tall and 'Accuracy and sources' sits under the timeline (a real click opened nothing). The phone held landscape (844x390) also shows no phase text. 200% (800x450) passes: everything reachable (1.4.4 met).",
+   "remedy": "By size, not by device: give #firstrun a max-height with overflow:auto at heights of 430 px or less; keep the phase text reachable there (the phone's grip sheet, or the Now tab in the rail); below 720 px wide put the tools, '?' and 'Whose eyes?' behind the Menu whatever the height, or let the timeline's control row wrap; keep the rail's scrolling area a usable height (or take the brand and tabs out of it at small heights). Add a 320x256 and a 400x225 case to check:visual.",
+   "effort": "1-3 days (layout, then the visual harness's limits re-measured)",
+   "risk": "medium: the phone and held-landscape layouts share these rules (decisions 223-226, 232); their cases must hold",
+   "validation": "zoom.js again: card fully on screen or scrollable, narr.lede reachable in one press, every control on screen and pressable at 400x225 and 320x256; check:visual's phone cases unchanged",
+   "cause_hypothesis": "The short-viewport rules (Stage 0, kept by decision 226 for a phone held landscape) hide the dispatch and the key on any window 430 px tall or less, and Stage 3C moved the situation strip into the dispatch, so the Stage 0 comment's premise ('the situation strip keeps the narrative') no longer holds; the phone layout that solves this is gated on min-height 431 px.",
+   "cause_verified": "partly: the rules and the gate read in style.css and app.js; the outcome measured"
+  },
+  {
+   "id": "A11Y-02",
+   "title": "Caveats a reader needs are given only in hover tooltips (title attributes): the derived readings' warnings, the vantages' 'not what he saw', the cut caption's full text, why relief is disabled",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "interface text (app.js paintSituation, shell.html tools, fitCaption)",
+   "user_impact": "Keyboard and touch visitors never see that the 'derived' figures are spatial readings, not casualty figures, nor that the Zuran and Allied vantages are not what the commanders saw; screen-reader users get them as descriptions, mouse users only by resting the pointer.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:7347-7348 (SEP_NOTE, FLAT_NOTE)",
+    "app.js:7368-7370 (written only into title= on span.der, not focusable)",
+    "app.js:7380 (the same spans in the Now tab's situation line)",
+    "shell.html:129-131 (van-btn titles: 'a preset view, not what he saw', 'not what the Allied staff saw')",
+    "app.js:2581 (relief buttons disabled with the reason in title)",
+    "app.js:5639 (the squeezed key's reason in title)",
+    "app.js:5724 (an evidence-skeleton anchor's clock and grade as the canvas's title)",
+    "app.js:7378 (cap.title=capTitle(cap): the full caption)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json step 1 'titles' (25 elements whose title adds words not in their name or visible text); docs/audit-post8-evidence/a11y/zoom-1280x720-at1-caption-crop.jpg (caption cut to 'THE DECEPT… · D. ·')",
+   "expected": "Information that qualifies a figure or a view is visible text, or reachable by focus and by touch (a toggletip button, or the sentence in the Now tab and the eye-level caption); native title tooltips are a supplement only.",
+   "observed": "span.der carries FLAT_NOTE ('The reconstruction plots formations, not losses. A holding that does not change does not mean the fighting there has stopped.') and SEP_NOTE ('...A spatial reading, not a casualty figure.') in title only; the spans take no focus; on a phone no tooltip exists. The vantage buttons' integrity caveats are titles (Chromium exposes them as accessible descriptions). At 1280x720 the caption reads 'THE DECEPT… · D. · interval Friant's division at Raigern since the ni…'; its full text is the title.",
+   "remedy": "Show FLAT_NOTE/SEP_NOTE as visible text in the Now tab (or a focusable 'what is this?' toggletip); put the vantages' caveat into the camera's own caption when a preset is chosen; give disabled relief buttons a visible hint or keep them enabled with a message.",
+   "effort": "2-6 h",
+   "risk": "low (presentation; the notes' words exist)",
+   "validation": "keyboard-only and touch walk-through finds each caveat without a pointer"
+  },
+  {
+   "id": "A11Y-03",
+   "title": "Internal project references are shown to visitors: 'owner decision 106', register ids '(S5.7)', 'roadmap step 6B (docs/stage6-evidence/readings-composition.md)', 'the register (read partly on the text layer)', and in the full dossier's 'Dated by' rows 'Until roadmap step 4b ... (question 177)', '(moveMin)'",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "data notes shown as text (narrative.js claim notes, data.js timing notes, app.js standardNotes)",
+   "user_impact": "The sources sheet and the dossiers speak the project's working language (decision numbers, register ids, roadmap steps, a repository path, a code variable) to a visitor, which reads as unfinished and obscures the sentence's point.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:8553 ('Height, owner decision 106: ...', the sources sheet's standards notes)",
+    "narrative.js:545 (FORMATIONS.legrand.staff note with the docs path)",
+    "narrative.js:617, 624, 632 ('(S5.7)')",
+    "narrative.js:41 (EVENTS[#counter-march].dispute note: 'in the register (read partly on the text layer)')",
+    "app.js:8640 (claimDetail renders every claim's note)",
+    "data.js:158, 252, 254, 267, 434, 506, 534 (timing notes with 'Until roadmap step 4b' / '(question 17x)' / '(moveMin)')",
+    "app.js:7990 (the full dossier's 'Dated by' row renders tm.note)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/leaks.json step 'the whole sources sheet' (89,703 characters as drawn; 6 internal references quoted in context); docs/audit-post8-evidence/a11y/leaks-timing.json (the seven full dossiers as drawn, clock and selection set by script, the full dossier opened by its own button); docs/audit-post8-evidence/a11y/jargon.json (lang-scan's 69 visitor strings with such references, most in data never drawn)",
+   "expected": "Visitor text names sources and reasons in plain words; decision numbers, register ids, roadmap steps, file paths and code names stay in CHANGELOG.md and the evidence registers.",
+   "observed": "As drawn in 'Accuracy and sources' (89,703 characters): 'Height, owner decision 106: ...'; '... read on the page (S5.7)' (twice) and 'Duffy's order of battle (S5.7)'; 'The situation of 28 October is a reading of roadmap step 6B (docs/stage6-evidence/readings-composition.md) ...'; 'in the register (read partly on the text layer)'. As drawn in the full dossiers' 'Dated by' rows at a clock inside each move: '(moveMin)' (Imperial Headquarters, 12:10), 'Until roadmap step 4b ... (question 177)' and '... was the phase-2 entry ...' (Friant, 07:00 and 09:20), 'Until roadmap step 4b's question 202 ... (phase 2)' (Bourcier), '(question 181)' (grenadiers), '(question 176)' (Langeron's and Przybyszewski's columns); the day-track adds 'anchors graded A/B/C as in the data'.",
+   "remedy": "A small data task: reword the five claim notes and the seven timing notes for visitors (keep the history in CHANGELOG.md), drop 'owner decision 106' from standardNotes; check:data's reference, narrative.js's hashes and check:chronology's L9 hashes move with it.",
+   "effort": "2-4 h",
+   "risk": "low; guarded data: check:data and check:chronology must be moved on deliberately",
+   "validation": "leaks.js finds no internal reference in the sheet or the full dossiers"
+  },
+  {
+   "id": "A11Y-04",
+   "title": "On a phone the event markers' hit areas cover most of the time rail, so a finger dragged along the rail does not scrub the clock and a tap on it jumps to an event instead",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "timeline (style.css .ev-mark hit area, app.js time rail pointer handlers)",
+   "user_impact": "The phone's time rail cannot be dragged over most of the day; visitors fall back on Play, the event steps and the phase list.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "style.css:379-382 (.evmarks over the rail; .ev-mark 8 px rotated, its ::after inset -6px, pointer-events auto)",
+    "style.css:794 (phone: rail and markers at the same top)",
+    "app.js:7528-7530 (the rail scrubs only from its own pointerdown)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/phone2.json steps 2-3; docs/audit-post8-evidence/a11y/phone.json step 'horizontal drag 200 px on the time rail' (before the zoom); coverage computed from the 21 distinct event starts and the markers' hit geometry (README, Phone)",
+   "repro": "Phone page (390x844, density 3, touch); close the card; CDP touch drag along the rail from 22% to 72% of its width at its vertical centre; then a page.touchscreen tap at 30%.",
+   "expected": "A drag anywhere on the rail scrubs (markers yield to a moving finger, or take presses only on a tap), as on desktop between markers.",
+   "observed": "Two real touch drags along the rail (phone.js, phone2.js) left the clock unchanged; a tap at 30% hit button.ev-mark.dec and set 08:25. At the rail's centre line the markers' hit areas (16 px wide there) cover 66% of the 374 px phone rail and 91% of it between 07:00 and 15:00 (24% and 34% of the 1,572 px desktop rail).",
+   "remedy": "Let a drag that starts on a marker scrub (handle pointerdown on .evmarks, decide tap or drag by movement), or raise the markers above the rail band on touch layouts.",
+   "effort": "2-4 h",
+   "risk": "low-medium (the markers' keyboard group and 2.5.8 essential exception unchanged)",
+   "validation": "phone touch drag scrubs from any point; a tap on a marker still opens its event"
+  },
+  {
+   "id": "A11Y-05",
+   "title": "Two-finger gestures on the phone: in Chromium's touch emulation a pinch zoomed the whole page (visual viewport x3.3 to x5) and never the map; no check has ever driven the map's pinch with browser-level touch input",
+   "category": "untested",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "touch input (app.js bindCanvas pinch, style.css touch-action)",
+   "user_impact": "If a real phone behaves as the emulation did, a visitor who pinches to zoom the map zooms the interface instead and must pinch back; the map's own zoom by pinch would be unreachable.",
+   "status": "unverified",
+   "origin": "inherited",
+   "refs": [
+    "style.css:8 (canvas touch-action:none)",
+    "style.css:344 (the rail touch-action:none; the rest of the timeline default)",
+    "app.js:6854-6890 (bindCanvas: the pinch from two tracked touch pointers)",
+    "app.js:9258-9266 (the self-test's pinch: synthetic PointerEvents dispatched in the page, not browser input)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/phone2.json steps 1 and 4-5 (one-finger drag on the map panned the camera: CDP touches reach the app; a pinch on the map alone: camera unchanged, visualViewport.scale 1 -> 3.259; a pinch with one finger starting on the timeline: 3.259 -> 3.918); docs/audit-post8-evidence/a11y/phone.json step 'pinch out: one finger on the timeline' (1 -> 5, the following taps then missed); docs/audit-post8-evidence/a11y/phone2-05-after-timeline-pinch.jpg",
+   "repro": "Phone context (390x844, density 3, isMobile, hasTouch, iPhone user agent), visitor page, card closed; CDP Input.dispatchTouchEvent touchStart with two points (160,360) and (230,430), ten touchMove steps spreading them 50 px, touchEnd; read landCam.position and visualViewport.scale.",
+   "expected": "A pinch on the map zooms the map (touch-action:none on the canvas keeps the browser out); a pinch beginning on the interface may zoom the page (that is the visitor's zoom, which should stay available).",
+   "observed": "Map-only pinch: camera position unchanged, page zoomed x3.26. One finger on the timeline: page zoomed further. The emulation's handling of multi-touch touch-action is itself uncertain, so this is not a device result.",
+   "remedy": "Test pinch-to-zoom on a real iPhone and Android phone (the owner's devices); if confirmed, check that the canvas receives both pointers (no element between), and that the page's own zoom stays possible from the panels.",
+   "effort": "1 h on devices; fix unknown",
+   "risk": "unknown until reproduced on a device"
+  },
+  {
+   "id": "A11Y-06",
+   "title": "Forced colours (high contrast): the app has no forced-colors handling; the Layers panel's on/off rows and ground buttons, the speed, Follow and the current phase lose their state, 22 of 25 event markers vanish, and the key's swatches and the side marks before names become identical white squares",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "style.css (no @media (forced-colors) rule; colour carried by backgrounds)",
+   "user_impact": "A Windows High Contrast user cannot tell which layers are on, which ground is drawn, which speed is set or whether Follow is on, loses the timeline's event markers, and loses the French/Allied cue on labels and in the key (the map canvas keeps its own colours).",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "style.css:380-388 (.ev-mark drawn by background:var(--side-fr|al))",
+    "shell.html:369 (the card's swatches)",
+    "style.css (no forced-colors rule; no forced-color-adjust anywhere: fc.json fcaNone 0)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/fc.json (forced: true; no element with forced-color-adjust:none; swatches rgb(255,255,255) with black borders; pressed backgrounds opaque against translucent ones); docs/audit-post8-evidence/a11y/fc-01-first.jpg (key and side marks as white squares), fc-05-timebar.jpg (3 of 25 event diamonds; ½× and Follow like their neighbours), fc-09-layers.jpg (on and off rows alike), fc-08-legend.jpg, fc-03-viewmode.jpg, fc-04-tools.jpg",
+   "expected": "Under forced-colors: active, markers and swatches keep a visible, distinct form (system colours for borders, forced-color-adjust:none for the nation swatches and side marks, or text glyphs).",
+   "observed": "Chromium's emulation, light palette, no forced-color-adjust anywhere: the key's and the card's nation swatches and the side squares before formation names are all rgb(255,255,255); 22 of 25 event markers vanish (only the bordered decision diamonds remain); on the timeline the pressed ½×, Follow and the current phase look like their neighbours; in the Layers panel on and off rows look alike and Landscape like Paper map. Over the map a pressed button stays distinguishable (opaque against translucent neighbours over the dark canvas); tabs keep a weight difference; the focus ring stays (2 px, forced highlight).",
+   "remedy": "An @media (forced-colors: active) block: pressed and selected states by a system-colour border or outline (Highlight) or a glyph, not by background alone (the layer rows, the mode, speed and vantage buttons, Follow, the current phase); borders on .ev-mark; forced-color-adjust:none on the nation swatches and side marks (their colours are content).",
+   "effort": "2-4 h",
+   "risk": "low",
+   "validation": "fc.js again; on Windows with a contrast theme"
+  },
+  {
+   "id": "A11Y-07",
+   "title": "Panels opened from the keyboard do not take the focus or announce themselves: Layers (role=dialog) is reached only on the sixth Tab after its button, and a dossier opened by Enter on a map item leaves focus on the item, about 30 Tabs from the dossier (or Shift+Tab back past the earlier map items and the map group)",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "tools and the Layers panel (app.js setPop, shell.html order)",
+   "user_impact": "A keyboard or screen-reader user who opens Layers, or selects a formation on the map with Enter, is not taken to what opened and hears nothing about it; the dossier sits before the map layer in the DOM, so Tab goes on through the map items and round the whole page first.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:7070-7075 (setPop: hidden and aria-expanded set, no focus move)",
+    "shell.html:116-134 (#tools with the vantage group) and shell.html:137 (#layerpop after them in the DOM)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/mapfocus.json step 'Layers by keyboard' (open: hidden false, expanded true, focus on #layersbtn; Tab x7: Field, Zuran, Pratzen, Allied, Overview, then the panel's x and Landscape) and step 'a formation's map item ... Enter' (selection f:gqg, drawer on, focus still on the map item); docs/audit-post8-evidence/a11y/kbd-h-1600x900.json step 'Layers: open, Tab, Esc'; DOM order shell.html:325 (aside.drawer) before shell.html:384 (main, the map layer)",
+   "repro": "Harness page 1600x900, card closed by Esc; focus #layersbtn (set-up), press Enter, then Tab seven times (real keys).",
+   "expected": "The opened panel next in the focus order (focus moved to its first control, or the panel placed right after its button), as a disclosure or non-modal dialog does (WCAG 2.4.3).",
+   "observed": "As in the title.",
+   "remedy": "On opening by keyboard, focus the panel's first control (Layers) and the dossier's heading (a map item's Enter), giving focus back on close as setPop and the dossier already do from inside; or move #layerpop to follow #layersbtn in the DOM.",
+   "effort": "1-3 h",
+   "risk": "low (the self-test's SW-5 focus rules must still hold)"
+  },
+  {
+   "id": "A11Y-08",
+   "title": "First use: neither the card nor the opening says the map is a reconstruction or what the A/B/C letters beside names mean; the key starts closed",
+   "category": "accepted-compromise",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "first-run card, opening (TOUR stops 0,5,6,7), legend",
+   "user_impact": "A first-time visitor sees grade letters (B, C) on the names and 'derived' tags from the first screen with no explanation until they open the key, the sources sheet or reach the guided tour's ninth stop.",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "shell.html:366-374 (the card and its words)",
+    "app.js:4710 (OPENING.stops [0,5,6,7])",
+    "analysis.js:387 (TOUR stop 9: 'Everything you have watched today is a reconstruction: positions are graded A, B or C...')",
+    "app.js:5016 (ML.legendOpen false: the key opens closed, decision 49)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json steps 1-6 (card and opening texts); fu-1600x900-01-first-screen.jpg, -02-opening-1.jpg",
+   "expected": "One sentence on the primary path (card or opening's first step): positions are reconstructed and graded A/B/C (the letters by the names), and where the sources are.",
+   "observed": "Card: colour key and the Pratzen plateau 'which this map reads as deciding the battle'. Opening steps 1-4: battlefield, the French strike, the army divided, the collapse; none mentions reconstruction or grades. The key is collapsed ('Key +'); the grades are explained in it, in the sources sheet's second paragraph and in tour stop 9, which the opening does not include.",
+   "remedy": "Owner decision needed (decisions 49, 108, 111-115 set the card, the key and the opening): add one sentence to the card or the opening's last step, or open the key's grade rows on the first screen.",
+   "effort": "1-2 h after a decision",
+   "risk": "low"
+  },
+  {
+   "id": "A11Y-09",
+   "title": "The Now tab's hint 'The phase text is hidden: press D to show it. During the guided tour...' names a key that does nothing with the single-key shortcuts off, offers no pointer or touch way, and says 'guided tour' during the opening",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "Now tab (shell.html .now-off), KEYS d row",
+   "user_impact": "A visitor who turned the shortcuts off (as WCAG 2.1.4 lets them) is told to press a key that is now inert; a mouse or touch user is told to press a key at all.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "shell.html:58 (p.now-off: the hint)",
+    "app.js:6679 (KEYS row d: the only toggle of the phase text)",
+    "app.js:6720-6721 (charKey, shortcutMuted: D muted when the switch is off)",
+    "app.js:4725 (the opening hides the phase text)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/fc.json last step (switch off by Space, the guided tour by a real click, D by a real key with nothing focused: hideDispatch stayed true, the hint unchanged); docs/audit-post8-evidence/a11y/fu-1600x900-02-opening-1.jpg (the hint during the opening)",
+   "expected": "A hint that is true in every state: a 'Show the phase text' button (or 'Esc shows everything'), its words from LABELS according to SHORTCUTS.on, naming the opening when the opening runs.",
+   "observed": "As in the title; Esc (showEverything) does bring the text back, but the hint does not say so.",
+   "remedy": "Replace the sentence with a button that calls setDispatchVisible(true), or word it from SHORTCUTS.on; distinguish the opening from the tour.",
+   "effort": "1 h",
+   "risk": "low"
+  },
+  {
+   "id": "A11Y-10",
+   "title": "Accessible names and structure: the tablist is named 'The rail', the key's toggle is read 'Key plus/minus', Play becomes 'Pause' while also pressed, the full dossier's headings carry their tag word ('How many record', 'Where reconstruction'), the narrative sits inside the navigation landmark and the tools outside any landmark, and below 1080 px the page has no h1",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "shell.html semantics, style.css generated content",
+   "user_impact": "Screen-reader users hear internal jargon ('The rail, tab list'), a stray 'plus', 'Pause, toggle button, pressed', and find the phase text under 'Army and map controls' navigation rather than the main landmark (which holds only the map layer).",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "shell.html:48 (aria-label=\"The rail\")",
+    "style.css:689-690 (.lg-head::after '−'/'+' joins the name)",
+    "app.js:8793 (textContent 'Pause' with aria-pressed true)",
+    "shell.html:38-104 (nav.rail holds the h1, the tabs and the Now tab's narrative)",
+    "shell.html:384 (main holds only #maplayer)",
+    "app.js:7065, 8979 (rail-hidden below 1080 px: the rail, with the h1, leaves the tree)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/kbd-h-1600x900-axtree.json and kbd-1600x900-axtree.json (Chromium's tree: 'tablist The rail', 'button Key +', landmarks navigation/region/main); docs/audit-post8-evidence/a11y/fu-1600x900.json step 'Play (real click)' (name 'Pause', aria-pressed true); docs/audit-post8-evidence/a11y/fc.json full-dossier step (headings 'H3 Who record', 'H3 How many record', 'H3 Where reconstruction', 'H3 Its day derived')",
+   "expected": "Plain names ('Panels' or 'Map panels'); the key's state by aria-expanded alone; Play/Pause either a changing label or a pressed state, not both; the narrative in main or a named region; one h1 at every width.",
+   "observed": "As in the title. Not a WCAG A/AA failure on its own (names exist; states are exposed); no screen reader was run.",
+   "remedy": "aria-label 'Panels'; the +/− in an aria-hidden span; drop aria-pressed from Play or keep its label constant; a role=region with a name for the rail's tab panel (or move main); a visually hidden h1 outside the rail.",
+   "effort": "1-3 h",
+   "risk": "low (the self-test's A-6 check may need its landmark rule updated)"
+  },
+  {
+   "id": "A11Y-11",
+   "title": "Visitor-facing jargon and overloaded letters: 'anchors', 'Plotted leg', 'interpolated', 'G.Q.G.', and three different A/B/C scales (position, timing, appearance) shown side by side ('Position B · Timing B')",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "dossier wording",
+   "user_impact": "Readers meet modelling vocabulary without definition and may read a timing grade as a position grade.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:7730 (CONF_INTERP: 'between two plotted anchors', guarded)",
+    "app.js:8004 (day-track note: 'anchors graded A/B/C as in the data')",
+    "app.js:6578 (LABELS.reading.leg 'Plotted leg')",
+    "app.js:7925-7928 (march row 'the plotted leg's length')",
+    "app.js:7987 (timing row '· grade B ·')"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/jargon.json (anchor 15, leg 7, interpolat 11 visitor strings); docs/audit-post8-evidence/a11y/fu-1600x900.json dossier step ('Position: estimated Position B Timing B ...')",
+   "expected": "One word per idea in visitor text ('plotted position', 'move'), and grade letters always with their scale named ('timing grade B').",
+   "observed": "As in the title; the sources sheet defines 'anchors' only indirectly ('a route between anchors').",
+   "remedy": "Reword in the next data/presentation pass (CONF_INTERP is guarded: a data task).",
+   "effort": "1-2 h",
+   "risk": "low"
+  },
+  {
+   "id": "A11Y-12",
+   "title": "Small type: 42-47% of visible texts on the main screens are 10.5-11.5 px (controls, tabs, timeline labels, tags), all at or above the project's 10.5 px floor",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "type scale (tokens.js t-micro 10.5 px, t-small 11.5 px)",
+   "user_impact": "Harder reading for older or low-vision visitors at 100% zoom; browser zoom helps up to 200% (A11Y-01 above it).",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "tokens.js:51 (t-micro 10.5px, t-small 11.5px)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json step 1 small (44 of 105 texts under 12 px; 0 under 10.5); zoom.json 1280x720 (42/95); phone.json (16/49)",
+   "expected": "No WCAG minimum; 12 px is a common floor for interface text.",
+   "observed": "As in the title.",
+   "remedy": "Consider t-small 12 px for controls when the layout is next revisited.",
+   "effort": "hours, with the visual limits re-measured",
+   "risk": "medium (the harness's drop limits and unobstructed baselines move)"
+  },
+  {
+   "id": "A11Y-13",
+   "title": "Polish seen on the way: the speed group shows ½× pressed while the opening plays at 4×; the phone caption starts with two orphan separators ('· ·') because the act and phase names shrink to 0 px; the vantage row overlaps the dispatch card's top at 800x450; the grip looks like a drag handle but a swipe does nothing",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "timeline, phone caption, tools",
+   "user_impact": "Small mismatches between what is shown and what is happening.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "style.css:362-363 (.cap-ph, .act shrink to min-width 0)",
+    "app.js:7371 (caption markup with its separators)",
+    "shell.html:62 (the grip)"
+   ],
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900-03-opening-playing.jpg (½× pressed while 'the clock plays'); docs/audit-post8-evidence/a11y/phone-03-explore.jpg (caption '· · interval Friant's...'); docs/audit-post8-evidence/a11y/zoom.json 800x450 explore (.tools x .dispatch overlap 319-3069 px²) and zoom-800x450-at2-2-explore.jpg; docs/audit-post8-evidence/a11y/phone.json step 'drag up 300 px from the grip' (sheet stayed closed)",
+   "expected": "The indicator shows the speed in force; no orphan separators; no overlap; a handle that can be dragged or does not look like one.",
+   "observed": "As in the title.",
+   "remedy": "Small CSS/JS fixes.",
+   "effort": "1-3 h",
+   "risk": "low"
+  }
+ ],
+ "experiments": [
+  {
+   "command": "node tools/audit-post8/a11y/fu.js 1600x900",
+   "outcome": "complete (1,318 s); 13 screenshots",
+   "environment": "visitor page, transitions kept, load average 20-37",
+   "evidence_path": "docs/audit-post8-evidence/a11y/fu-1600x900.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/kbd.js 1600x900",
+   "outcome": "stopped by me after 12 stops (about 40 s a stop: each waited for a frame of the starved GPU process); card steps, tree and 4 ring clips kept",
+   "environment": "visitor page",
+   "evidence_path": "docs/audit-post8-evidence/a11y/kbd-1600x900.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/kbd.js 1600x900 harness",
+   "outcome": "complete: 47-stop cycle, operability steps, Watch and Clean cycles",
+   "environment": "?harness=1 page (no drift), transitions kept",
+   "evidence_path": "docs/audit-post8-evidence/a11y/kbd-h-1600x900.json",
+   "limitations": "rings read 120 ms after each key show 0 px: the .t buttons' 0.18 s outline transition only advances when a frame is drawn (the clip mapfocus-ring-layersbtn.jpg, which forces a frame, shows the 2 px ring)"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/mapfocus.js",
+   "outcome": "18 map stops all drawn after frames (7 forced forward); Layers reached on the sixth Tab; a .t ring read 0 px at 1.2 s (no frame drawn) but drawn in the clip; the key toggles; sheets read as not scrolling (smooth-scroll timing: see sheetkeys); a map item's Enter leaves focus on the item",
+   "environment": "harness page",
+   "evidence_path": "docs/audit-post8-evidence/a11y/mapfocus.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/ctl-scroll.js tools/audit-post8/a11y/ctl-scroll.html",
+   "outcome": "a plain page with the sheet's structure scrolls from the keyboard in this browser (PageDown 63->628, ArrowDown +40, Space +565, End to 11,925)",
+   "environment": "no app script",
+   "evidence_path": "docs/audit-post8-evidence/a11y/ctl-scroll.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/zoom.js",
+   "outcome": "complete (4 cases, 21 screenshots)",
+   "environment": "visitor pages at densities 1, 2, 4; desktop (no touch)",
+   "evidence_path": "docs/audit-post8-evidence/a11y/zoom.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/phone.js",
+   "outcome": "stopped after its timeline pinch zoomed the page 5x (the following taps missed); steps before it are valid",
+   "environment": "phone emulation",
+   "evidence_path": "docs/audit-post8-evidence/a11y/phone.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/phone2.js",
+   "outcome": "complete: gestures with the zooming pinch last, the rest unzoomed",
+   "environment": "phone emulation",
+   "evidence_path": "docs/audit-post8-evidence/a11y/phone2.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/fc.js",
+   "outcome": "complete: forced-colours states and crops, the full dossier's targets (none failing), reduced motion (CSS verified, camera samples inconclusive), the press-D hint with the switch off",
+   "environment": "visitor page, forced-colors: active, then reduced motion",
+   "evidence_path": "docs/audit-post8-evidence/a11y/fc.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/sheetkeys.js",
+   "outcome": "with --disable-smooth-scrolling both sheets scroll from their text regions by PageDown, ArrowDown, Space, End and Home: the earlier zero readings were smooth-scroll animations starved of frames",
+   "environment": "its own browser with --disable-smooth-scrolling; harness page; the control page first",
+   "evidence_path": "docs/audit-post8-evidence/a11y/sheetkeys.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/jargon.js",
+   "outcome": "lang-scan's visitor strings: anchor 15, leg 7, interpolat 11, internal references 69 (most in data never drawn)",
+   "environment": "node, no page",
+   "evidence_path": "docs/audit-post8-evidence/a11y/jargon.json"
+  },
+  {
+   "command": "node tools/audit-post8/a11y/leaks.js; node tools/audit-post8/a11y/leaks.js timing",
+   "outcome": "the sources sheet as drawn: 6 internal references in context; the seven full dossiers' 'Dated by' rows as drawn: every one carries an internal reference",
+   "environment": "harness page; clock and selection set by script",
+   "evidence_path": "docs/audit-post8-evidence/a11y/leaks.json, leaks-timing.json",
+   "limitations": "the first timing pass read the compact card (no 'Dated by' row); the second opens the full dossier"
+  }
+ ],
+ "not_checked": [
+  "No screen reader or other assistive technology (NVDA, JAWS, VoiceOver, TalkBack, speech input, switch access) was available: names, roles and live regions were read from Chromium's tree, not heard; docs/step3-evidence/sr-session.md holds no item results.",
+  "No real mobile browser: the phone is desktop Chromium emulating an iPhone; Safari/WebKit's touch-action, pinch and VoiceOver behaviour unverified (A11Y-05).",
+  "Forced colours only in Chromium's emulation (its default light palette), not Windows contrast themes or Firefox.",
+  "Firefox and Safari not run; no GPU; every time here is SwiftShader on a container shared by other jobs (load average 18-37).",
+  "Text-only zoom (1.4.4 by text size alone) not emulated; page zoom stands in for it.",
+  "The opening's played stretches were cut short by 'Next again' (each would take many real minutes here); the self-test holds them.",
+  "Live-region announcements were read as DOM text, not heard; their timing and duplication by a screen reader unverified.",
+  "Cognitive load, plain-language reading level and colour-vision simulations were not measured beyond the words read here."
+ ],
+ "strengths": [
+  "Every control stop named; no keyboard trap; the two sheets and the card are real modal dialogs that contain focus and give it back; closing a dossier by Esc, x or Back hands focus to a shown control, never to the body.",
+  "The single-key shortcuts switch works as WCAG 2.1.4 asks (verified by real keys: '2' did nothing with it off).",
+  "Desktop targets all 24 px or spaced but the decided exceptions; the phone layout's targets 44 px; no horizontal scroll at any size; 200% zoom fully usable.",
+  "Claim words are plain and honest ('Read in a source', 'This map's reading', 'Not yet checked'); every dossier has 'How this is sourced' at its head; the sources sheet explains the grades in its second paragraph.",
+  "The map layer's 18 keyboard stops are drawn on screen and topmost once a frame is drawn (A-2 fixed); the timeline's tips appear on focus as well as hover."
+ ],
+ "carried_status": [
+  {
+   "item": "A-1 single-key shortcuts (WCAG 2.1.4)",
+   "status": "fixed",
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json steps 'set-up: the switch ... Space' and 'Esc, then 2 with the shortcuts off' (presentation stayed 'study'); the switch's state in aria-pressed, its words in the overlay"
+  },
+  {
+   "item": "A-2 focus on undrawn map items (2.4.7, 2.4.11)",
+   "status": "fixed (drawn at the next frame)",
+   "evidence": "docs/audit-post8-evidence/a11y/mapfocus.json: 18 map stops by real Tab, all at opacity 1 on screen after frames (7 forced forward: 'ml-forced'); at 120 ms on this starved machine 7 were still at (0,0), opacity 0: the gap is one frame of the app, seconds here, about 16 ms on a device"
+  },
+  {
+   "item": "A-3 timeline targets (2.5.8)",
+   "status": "fixed / accepted",
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json and zoom.json targets: every desktop target 24 px or more or spaced, but the phases (16 px boxes, their ::before extends the hit area to 31 px, style.css:276) and the 25 event markers (11.3-14.1 px: decision 167's essential exception); phone: every target 44 px but the markers (phone2.json Menu step)"
+  },
+  {
+   "item": "A-4 first screen at 390 px",
+   "status": "superseded (the phone layout, decisions 223-232)",
+   "evidence": "docs/audit-post8-evidence/a11y/phone.json first screen and explore: no cut text but the caption's event, no overlaps, no failing target"
+  },
+  {
+   "item": "A-6 ring 1 px, no main, skipped heading",
+   "status": "fixed",
+   "evidence": "docs/audit-post8-evidence/a11y/kbd-h-1600x900-stops.json and mapfocus-ring-layersbtn.jpg (2 px rings once the .18 s transition has had a frame; the stops read here at 120 ms, and one at 1.2 s, show 0 px because no frame was drawn in between), kbd-h-1600x900-axtree.json (main landmark; h1, h2, h3 in order)"
+  },
+  {
+   "item": "SW-3 hidden panels in the Tab order",
+   "status": "fixed",
+   "evidence": "docs/audit-post8-evidence/a11y/kbd-h-1600x900-stops.json: 47 stops, none in the closed dossier, the hidden layers panel or the tour bar"
+  },
+  {
+   "item": "SW-4 the sources sheet a modal dialog",
+   "status": "fixed",
+   "evidence": "docs/audit-post8-evidence/a11y/fu-1600x900.json: focus to its close, every other body child inert but the live regions, Esc back to the opener"
+  },
+  {
+   "item": "SW-6 'the sources' text is a focusable region, so the keyboard can scroll it'",
+   "status": "fixed (verified)",
+   "evidence": "docs/audit-post8-evidence/a11y/sheetkeys.json: with smooth scrolling off, PageDown, ArrowDown, Space, End and Home scroll the sources sheet and the ? overlay from their text regions (0->644->684->1,328->32,122->0); the zero readings in mapfocus.json and zoom.json were smooth-scroll animations waiting for frames on the starved machine (the control page scrolls either way: ctl-scroll.json)"
+  },
+  {
+   "item": "S-6 reduced motion in the stylesheet and live",
+   "status": "fixed (CSS verified here; the live JS switch held by the self-test's rmLive block)",
+   "evidence": "style.css:700-702; docs/audit-post8-evidence/a11y/fc.json: transitions 0s once reduce was emulated; the camera tests there are inconclusive (no frame was drawn in 3 s on the starved machine, with reduced motion on or off)"
+  }
+ ]
+}

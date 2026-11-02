@@ -1,0 +1,371 @@
+{
+ "shot": "counters",
+ "viewport": [
+  844,
+  390
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real tap .mode-btn[data-m=\"hybrid\"]",
+  "real tap #layerclose"
+ ],
+ "note": "Landscape with counters chosen in Layers, the panel closed",
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": false,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -75,
+    37.948297900998455,
+    42.00000000000001
+   ],
+   "tgt": [
+    7,
+    10.004364185661881,
+    12
+   ]
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   844,
+   390
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 64,
+   "placed": 6,
+   "dropped": 7,
+   "droppedIds": [
+    "o:French hold the crest",
+    "t:pratzen",
+    "t:vinohrady",
+    "t:litava",
+    "t:austerlitz",
+    "t:krzenowitz",
+    "t:rausnitz"
+   ],
+   "underPanel": 8
+  },
+  "drawn": [
+   {
+    "id": "p:plateau",
+    "text": "THE PRATZEN · derived: Allied ≈ 18,150 F",
+    "box": [
+     100,
+     275,
+     331,
+     17
+    ]
+   },
+   {
+    "id": "c:vandamme",
+    "text": "XXFRVandamme",
+    "box": [
+     41,
+     154,
+     149,
+     46
+    ]
+   },
+   {
+    "id": "c:milo",
+    "text": "XXRUBMiloradovich's Russians",
+    "box": [
+     289,
+     217,
+     226,
+     46
+    ]
+   },
+   {
+    "id": "c:lich",
+    "text": "XXXRUFifth Column (cavalry)",
+    "box": [
+     49,
+     215,
+     210,
+     46
+    ]
+   },
+   {
+    "id": "c:rg_inf",
+    "text": "XXRUGuard Infantry",
+    "box": [
+     189,
+     94,
+     167,
+     46
+    ]
+   },
+   {
+    "id": "c:rg_cav",
+    "text": "XXRUGuard Cavalry",
+    "box": [
+     224,
+     165,
+     167,
+     46
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+   "box": [
+    362,
+    311,
+    426,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE PRATZEN STRIKE",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "The crisis on the Pratzeberg",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "Friant retakes Telnitz, then loses it again",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 18,150",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "cut der",
+     "text": "derived centre separation detected",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     300,
+     844,
+     91
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     -275,
+     0,
+     272,
+     299
+    ]
+   },
+   ".dispatch": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tools": {
+    "shown": true,
+    "box": [
+     471,
+     56,
+     359,
+     63
+    ]
+   },
+   "#viewmode": {
+    "shown": true,
+    "box": [
+     335,
+     14,
+     175,
+     34
+    ]
+   },
+   "#firstrun": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".drawer": {
+    "shown": false,
+    "box": [
+     844,
+     0,
+     360,
+     299
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#dgrip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study",
+  "clock": 570,
+  "cam": {
+   "pos": [
+    -75,
+    37.95,
+    42
+   ],
+   "tgt": [
+    7,
+    10,
+    12
+   ]
+  },
+  "focus": "layersbtn"
+ },
+ "textContrast": {
+  "texts": 17,
+  "min": 5.38,
+  "belowAA": []
+ }
+}

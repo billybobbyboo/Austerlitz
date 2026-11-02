@@ -1,0 +1,1613 @@
+[
+ {
+  "file": "s1-seek-dwell-speed.json",
+  "name": "s1-seek-dwell-speed",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T01:33:11.804Z",
+  "ms": 686570,
+  "pages": [
+   "desk 1600x900 boot 281 s"
+  ],
+  "checks": [
+   {
+    "id": "play-starts",
+    "ok": true,
+    "expected": "Play pressed: playing, the button says Pause",
+    "observed": "{\"playing\":true,\"btn\":\"Pause/true\"}"
+   },
+   {
+    "id": "first-hold",
+    "ok": true,
+    "expected": "the clock holds at an event start",
+    "observed": "{\"clock\":255,\"dwell\":\"hold@255\"}"
+   },
+   {
+    "id": "pagedown-in-hold",
+    "ok": true,
+    "expected": "PageDown in a hold: playback stops, the clock at the next phase's start, no dwell state",
+    "observed": "{\"clock\":420,\"expected\":420,\"playing\":false,\"dwell\":null,\"btn\":\"Play/false\",\"toast\":{\"text\":\"\",\"on\":false,\"op\":0,\"box\":[931,26,969,44],\"timer\":false},\"livePhase\":\"07:00 - 08:00. The Allied Advance: The Allied left opens the battle.\"}"
+   },
+   {
+    "id": "replay-monotonic",
+    "ok": true,
+    "expected": "after the seek, Play runs forward and dwells at the first start ahead",
+    "observed": "{\"backSteps\":0,\"firstHold\":480,\"expectedNextStart\":480,\"clockStart\":420.1667,\"clockEnd\":480.3125}"
+   },
+   {
+    "id": "drag-while-playing",
+    "ok": false,
+    "expected": "a drag on the rail stops playback and puts the clock under the pointer",
+    "observed": "{\"clock\":480.312,\"playing\":true}"
+   },
+   {
+    "id": "home-during-play",
+    "ok": true,
+    "expected": "Home during Play: stopped at 04:00, phase 0",
+    "observed": "{\"clock\":240,\"playing\":false,\"phase\":0}"
+   },
+   {
+    "id": "end-during-play",
+    "ok": true,
+    "expected": "End during Play: stopped at 18:00",
+    "observed": "{\"clock\":1080,\"playing\":false,\"phase\":9,\"caption\":\"THE COLLAPSE · The reckoning\"}"
+   },
+   {
+    "id": "end-then-play",
+    "ok": true,
+    "expected": "Play at the day's end starts the day again at 04:00 (togglePlay's rule)",
+    "observed": "{\"clock\":240,\"playing\":true}"
+   },
+   {
+    "id": "evmark-enter-during-play",
+    "ok": true,
+    "expected": "Enter on an event marker during Play: stopped, the clock at its start, its dossier open",
+    "observed": "{\"marker\":\"07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)\",\"playingBefore\":true,\"clock\":420,\"playing\":false,\"selection\":\"e:columns-move\",\"drawer\":{\"on\":true,\"visible\":false,\"head\":\"Movement · AlliedThe Allied columns begin to leave the plateau07:00 - 08:00 (the "
+   },
+   {
+    "id": "theme-stops-play",
+    "ok": false,
+    "expected": "a theme stops the clock (app.js's dwell comment; the spine data task: a theme opens on its principal moment)",
+    "observed": "{\"theme\":{\"id\":\"weakness\",\"clock\":420,\"name\":\"07:00The apparent weakness on the right\"},\"clockAfterClick\":420,\"playing\":true,\"chapter\":\"weakness\"}"
+   },
+   {
+    "id": "theme-moment-held",
+    "ok": false,
+    "expected": "3 s after choosing a theme the clock is still at its moment",
+    "observed": "{\"themeClock\":420,\"clock\":435,\"playing\":true,\"chapter\":\"weakness\",\"camTween\":{\"any\":false,\"cam\":false,\"scene\":false},\"follow\":\"true\"}"
+   },
+   {
+    "id": "dwell-off",
+    "ok": false,
+    "expected": "the dwell off, its button not pressed, the panel closed",
+    "observed": "{\"dwellOn\":true,\"layers\":true}"
+   },
+   {
+    "id": "dwell-off-play",
+    "ok": false,
+    "expected": "with the dwell off, Play runs at ½× (5 clock min a second) through the starts without a stop",
+    "observed": "{\"framesInDwell\":75,\"backSteps\":0,\"rate\":3.997,\"from\":240.1667,\"to\":280,\"startsCrossed\":[255]}"
+   },
+   {
+    "id": "pagedown-dwell-off",
+    "ok": true,
+    "expected": "PageDown during Play stops at a phase start (dwell off)",
+    "observed": "{\"clock\":420,\"playing\":false}"
+   },
+   {
+    "id": "dwell-on-during-play",
+    "ok": true,
+    "expected": "the dwell turned on while playing: the clock never goes back; the first start ahead dwells (S-2 fixed)",
+    "observed": "{\"clockAtToggle\":430,\"backSteps\":0,\"firstHold\":480,\"expected\":480}"
+   },
+   {
+    "id": "dwell-off-in-hold",
+    "ok": false,
+    "expected": "the dwell turned off in a hold: the clock leaves the start at once at ½×",
+    "observed": "{\"after1s\":525,\"states\":[\"hold\"]}"
+   },
+   {
+    "id": "speed-in-hold",
+    "ok": false,
+    "expected": "4× pressed 10 frames into a hold: the hold keeps its 1.5 s (45 frames in all), the ease out and the run after it at 4× (40 clock min a second)",
+    "observed": "{\"holdFramesAfterPress\":4,\"easeOutFrames\":2,\"rateAfter1s\":12.916699999999992,\"speedPressed\":\"4\"}"
+   },
+   {
+    "id": "speed-in-ease",
+    "ok": true,
+    "expected": "½× pressed in an ease in at 4×: the clock's step drops at once by the ratio and eases on into the hold (8H)",
+    "observed": "{\"stepBefore\":0.5704,\"stepAfter\":0.063,\"nextStep\":0.0611,\"reachedHold\":true}"
+   },
+   {
+    "id": "speed-in-ease-out",
+    "ok": false,
+    "expected": "2× pressed in an ease out: no backward step; after it, 2× (20 clock min a second)",
+    "observed": "{\"backSteps\":0,\"rateAfter\":null,\"easeEndsAfterFrames\":21}"
+   },
+   {
+    "id": "speed-stands",
+    "ok": true,
+    "expected": "the last speed pressed stands",
+    "observed": "{\"speed\":2,\"pressed\":\"2\"}"
+   }
+  ],
+  "stepErrors": [
+   {
+    "step": "click the first 'Formations concerned' link in the event's dossier",
+    "error": "clickEl: #drawer-body ul.links li button is covered by null"
+   },
+   {
+    "step": "click the card's full-dossier button",
+    "error": "no full-dossier button"
+   },
+   {
+    "step": "click Layers; click 'Pause briefly at events' (off); Esc",
+    "error": "clickEl: #dwell is covered by null"
+   },
+   {
+    "step": "click Play; 60 frames; click Layers; click the dwell (on) while playing; Esc",
+    "error": "clickEl: #dwell is covered by null"
+   },
+   {
+    "step": "frames until a hold; click Layers; click the dwell (off) in the hold; Esc",
+    "error": "clickEl: not laid out #dwell"
+   },
+   {
+    "step": "click Layers; dwell on again; Esc",
+    "error": "clickEl: #dwell is covered by null"
+   }
+  ],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s1b-recheck.json",
+  "name": "s1b-recheck",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T05:49:30.659Z",
+  "ms": 134743,
+  "pages": [
+   "desk 1600x900 boot 75 s"
+  ],
+  "checks": [
+   {
+    "id": "playhead-in-hold-drag",
+    "ok": false,
+    "expected": "a drag that starts on the playhead while the clock holds at an event start scrubs the clock (expected of a slider's thumb)",
+    "observed": "{\"atPlayhead\":{\"x\":42,\"y\":888,\"hit\":\"button.ev-mark.al.on.dw\",\"label\":\"04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)\",\"railTakes\":false},\"before\":{\"clock\":255,\"playing\":true},\"after\":{\"clock\":255,\"playing\":true,\"sel\":null,\"focus\":\"ev-mark al on dw\"}}"
+   },
+   {
+    "id": "drag-while-playing",
+    "ok": true,
+    "expected": "a drag on the rail stops playback and puts the clock under the pointer",
+    "observed": "{\"clock\":600,\"playing\":false,\"start\":{\"x\":88.85714285712349,\"y\":888,\"dx\":0,\"fy\":0.5,\"atCentre\":\"#timerail\"}}"
+   },
+   {
+    "id": "daytrack-anchor-during-play",
+    "ok": true,
+    "expected": "a day-track anchor during Play: stopped, the clock at the anchor, the selection kept",
+    "observed": "{\"anchor\":{\"t\":630,\"playingBefore\":true},\"clock\":630,\"playing\":false,\"selection\":\"f:rg_inf\",\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"Guard Infantry · RussiaGuard InfantryNot established on the day\",\"len\":20577,\"inert\":false}}"
+   },
+   {
+    "id": "dwell-off",
+    "ok": false,
+    "expected": "the dwell off, its button not pressed, the panel closed",
+    "observed": "{\"dwellOn\":false,\"layers\":false,\"click\":{\"x\":1434,\"y\":752.4375,\"box\":\"1303,722.8,262,59.4\",\"hit\":true,\"top\":\"I.\",\"waitedMs\":110}}"
+   },
+   {
+    "id": "dwell-off-play",
+    "ok": true,
+    "expected": "with the dwell off, Play runs at ½× (5 clock min a second) through the starts without a stop",
+    "observed": "{\"framesInDwell\":0,\"backSteps\":0,\"rate\":5,\"from\":240.1667,\"to\":290}"
+   },
+   {
+    "id": "pagedown-dwell-off",
+    "ok": true,
+    "expected": "PageDown during Play stops at the next phase's start (dwell off)",
+    "observed": "{\"clock\":420,\"playing\":false}"
+   },
+   {
+    "id": "dwell-on-during-play",
+    "ok": true,
+    "expected": "the dwell turned on while playing: the clock never goes back; the first start ahead dwells (S-2 fixed)",
+    "observed": "{\"atToggle\":{\"clock\":429.9999999999977,\"on\":true,\"next\":3},\"backSteps\":0,\"firstHold\":480,\"expected\":480}"
+   },
+   {
+    "id": "dwell-off-in-hold",
+    "ok": true,
+    "expected": "the dwell turned off in a hold: the clock leaves the start at once at ½×",
+    "observed": "{\"holdAt\":525,\"after1s\":530,\"states\":[\"-\"]}"
+   },
+   {
+    "id": "speed-in-hold",
+    "ok": true,
+    "expected": "4× pressed 10 frames into a hold: the hold keeps its 1.5 s (45 frames in all), then the ease out and the run after it at 4× (40 clock min a second)",
+    "observed": "{\"atPress\":{\"clock\":255,\"stage\":\"hold\",\"tau\":0.34999999999925263},\"holdFramesAfterPress\":34,\"easeOutFrames\":2,\"rateOver30FreeFrames\":40,\"backSteps\":0}"
+   },
+   {
+    "id": "speed-in-ease-out",
+    "ok": true,
+    "expected": "2× pressed in an ease out: no backward step; after it, 2× (20 clock min a second)",
+    "observed": "{\"backSteps\":0,\"stepBefore\":0.0222,\"stepAfter\":0.2,\"easeEndsAfterFrames\":3,\"rateOver30FreeFrames\":20}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s2-modes-during-play.json",
+  "name": "s2-modes-during-play",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T05:47:07.508Z",
+  "ms": 108312,
+  "pages": [
+   "desk 1280x720 boot 55 s"
+  ],
+  "checks": [
+   {
+    "id": "watch-keeps-play",
+    "ok": true,
+    "expected": "Watch during Play: still playing, Follow still on, the clock moving",
+    "observed": "{\"playing\":true,\"clock\":295.433,\"from\":280.433,\"follow\":\"true\",\"freeCam\":false}"
+   },
+   {
+    "id": "watch-caption",
+    "ok": true,
+    "expected": "Watch shows the caption with its derived reading",
+    "observed": "{\"caption\":\"THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · hour disputed Liechtenstein counter-marches across the 4th Column\",\"visible\":true}"
+   },
+   {
+    "id": "clean-keeps-play",
+    "ok": true,
+    "expected": "Clean during Play: still playing (the timeline hidden)",
+    "observed": "{\"playing\":true,\"clock\":305.433,\"restore\":true,\"focus\":\"#restore\",\"focusVisible\":true}"
+   },
+   {
+    "id": "clean-space-focused",
+    "ok": true,
+    "expected": "in Clean the focus is on the shown Restore button (SW-5), so Space presses it (the key table: on a focused button, Space presses the button): Study again, the clock still playing",
+    "observed": "{\"presentation\":\"study\",\"playing\":true,\"focus\":\"#play\"}"
+   },
+   {
+    "id": "clean-space-unfocused",
+    "ok": true,
+    "expected": "in Clean with no control focused Space pauses (the window's play row)",
+    "observed": "{\"playing\":false,\"presentation\":\"map\",\"focus\":\"body\"}"
+   },
+   {
+    "id": "clean-space-plays",
+    "ok": true,
+    "expected": "Space again plays",
+    "observed": "{\"playing\":true,\"focus\":\"body\"}"
+   },
+   {
+    "id": "study-back",
+    "ok": true,
+    "expected": "Study again during Play: playing, the rail shown",
+    "observed": "{\"playing\":true,\"rail\":true,\"dispatch\":true,\"focus\":\"body\"}"
+   },
+   {
+    "id": "paper-keeps-play",
+    "ok": true,
+    "expected": "the paper map during Play: still playing, the plan camera",
+    "observed": "{\"playing\":true,\"mode\":\"staff\",\"cam\":{\"map\":[18.33,9.57,0.7311]},\"ml\":{\"items\":40,\"placed\":27,\"dropped\":13},\"clock\":337.1,\"from\":322.1}"
+   },
+   {
+    "id": "hybrid-follow",
+    "ok": true,
+    "expected": "Landscape with counters during Play: playing, Follow on",
+    "observed": "{\"playing\":true,\"mode\":\"hybrid\",\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false},\"cam\":{\"pos\":[-173.41,105.53,153.4],\"tgt\":[-17.23,0.84,-8.98]}}"
+   },
+   {
+    "id": "land-follow",
+    "ok": true,
+    "expected": "the landscape again: playing, Follow on and following (no camera tween left)",
+    "observed": "{\"playing\":true,\"mode\":\"terrain\",\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false},\"cam\":{\"pos\":[-173.41,105.53,153.4],\"tgt\":[-17.23,0.84,-8.98]}}"
+   },
+   {
+    "id": "relief-disabled-in-play",
+    "ok": true,
+    "expected": "while playing the relief buttons are disabled with a reason, and a click changes nothing",
+    "observed": "{\"playing\":true,\"factor\":4,\"buttons\":[{\"x\":\"1\",\"disabled\":true,\"title\":\"Pause to change the relief (a change takes about 215 ms)\",\"pressed\":\"false\"},{\"x\":\"4\",\"disabled\":true,\"title\":\"Pause to change the relief (a change takes about 215 ms)\",\"pressed\":\"true\"},{\"x\":\"10.32642489706367\",\"disabled\":true,"
+   },
+   {
+    "id": "relief-1x",
+    "ok": true,
+    "expected": "paused: 1× applied, the camera never under the ground",
+    "observed": "{\"factor\":1,\"figureError\":{\"worst\":0,\"where\":\"\",\"violations\":0,\"camY\":106.48362679035401,\"floor\":2.690394450880987}}"
+   },
+   {
+    "id": "1x-follow",
+    "ok": true,
+    "expected": "at 1× Play follows",
+    "observed": "{\"playing\":true,\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false},\"cam\":{\"pos\":[-159.76,98.82,139.5],\"tgt\":[-14.68,0.4,-11.33]}}"
+   },
+   {
+    "id": "relief-mid-glide",
+    "ok": true,
+    "expected": "a relief change mid-glide stops the glide and both tween slots (8H)",
+    "observed": "{\"ret\":{\"mid\":{\"tween\":true,\"cam\":true,\"vantage\":\"zuran\"},\"top\":10.32642489706367,\"after\":{\"tween\":false,\"cam\":false,\"scene\":false,\"factor\":10.32642489706367}},\"tween\":{\"any\":false,\"cam\":false,\"scene\":false},\"factor\":10.32642489706367,\"vantage\":\"zuran\"}"
+   },
+   {
+    "id": "follow-after-relief",
+    "ok": true,
+    "expected": "Play after it: Follow takes up (S-7)",
+    "observed": "{\"playing\":true,\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false},\"cam\":{\"pos\":[-166.16,94.71,149.4],\"tgt\":[-20.02,0.62,-0.61]}}"
+   },
+   {
+    "id": "rapid-switches",
+    "ok": true,
+    "expected": "after ten switches ending on Study: playing, the rail shown and not inert, focus on a visible control",
+    "observed": "{\"playing\":true,\"presentation\":\"study\",\"rail\":{\"railHidden\":false,\"railVisible\":true,\"railInert\":false,\"dispatchVisible\":true,\"legendOpen\":false,\"layers\":false,\"help\":false,\"modal\":false,\"tourbar\":false,\"firstrun\":false,\"menu\":false,\"dsheet\":false,\"hideDispatch\":false,\"docked\":true,\"tab\":\"now\",\"eyec"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s2-modes-during-play.run1.json",
+  "name": "s2-modes-during-play",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T01:41:50.145Z",
+  "ms": 280449,
+  "pages": [
+   "desk 1280x720 boot 153 s"
+  ],
+  "checks": [
+   {
+    "id": "watch-keeps-play",
+    "ok": true,
+    "expected": "Watch during Play: still playing, Follow still on, the clock moving",
+    "observed": "{\"playing\":true,\"clock\":295.433,\"from\":280.433,\"follow\":\"true\",\"freeCam\":false}"
+   },
+   {
+    "id": "watch-caption",
+    "ok": true,
+    "expected": "Watch shows the caption with its derived reading",
+    "observed": "{\"caption\":\"THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · hour disputed Liechtenstein counter-marches across the 4th Column\",\"visible\":true}"
+   },
+   {
+    "id": "clean-keeps-play",
+    "ok": true,
+    "expected": "Clean during Play: still playing (the timeline hidden)",
+    "observed": "{\"playing\":true,\"clock\":305.433,\"restore\":true,\"focus\":\"#restore\",\"focusVisible\":true}"
+   },
+   {
+    "id": "clean-space",
+    "ok": false,
+    "expected": "Space pauses in Clean (focus on a hidden control would press it instead)",
+    "observed": "{\"playing\":true,\"focus\":\"#play\",\"focusVisible\":true}"
+   },
+   {
+    "id": "study-back",
+    "ok": false,
+    "expected": "Study again during Play: playing, the rail shown",
+    "observed": "{\"playing\":false,\"rail\":true,\"dispatch\":true}"
+   },
+   {
+    "id": "paper-keeps-play",
+    "ok": false,
+    "expected": "the paper map during Play: still playing, the plan camera",
+    "observed": "{\"playing\":false,\"mode\":\"staff\",\"cam\":{\"map\":[18.33,9.57,0.7311]},\"ml\":{\"items\":40,\"placed\":28,\"dropped\":12}}"
+   },
+   {
+    "id": "hybrid-follow",
+    "ok": false,
+    "expected": "Landscape with counters during Play: playing, Follow on",
+    "observed": "{\"playing\":false,\"mode\":\"hybrid\",\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false}}"
+   },
+   {
+    "id": "land-follow",
+    "ok": false,
+    "expected": "the landscape again: playing, Follow on and following (no camera tween left)",
+    "observed": "{\"playing\":false,\"mode\":\"terrain\",\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false}}"
+   },
+   {
+    "id": "relief-disabled-in-play",
+    "ok": false,
+    "expected": "while playing the relief buttons are disabled with a reason, and a click changes nothing",
+    "observed": "{\"factor\":4,\"buttons\":[{\"x\":\"1\",\"disabled\":false,\"title\":\"\",\"pressed\":\"false\"},{\"x\":\"4\",\"disabled\":false,\"title\":\"\",\"pressed\":\"true\"},{\"x\":\"10.32642489706367\",\"disabled\":false,\"title\":\"\",\"pressed\":\"false\"}]}"
+   },
+   {
+    "id": "relief-1x",
+    "ok": false,
+    "expected": "paused: 1× applied, the camera never under the ground",
+    "observed": "{\"factor\":4,\"figureError\":{\"worst\":3.092334051046919e-7,\"where\":\"prz\",\"violations\":0}}"
+   },
+   {
+    "id": "1x-follow",
+    "ok": false,
+    "expected": "at 1× Play follows",
+    "observed": "{\"playing\":false,\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false},\"cam\":{\"pos\":[-230,134.78,211],\"tgt\":[-28,-0.61,1]}}"
+   },
+   {
+    "id": "relief-mid-glide",
+    "ok": false,
+    "expected": "a relief change mid-glide stops the glide and both tween slots",
+    "observed": "{\"tween\":{\"any\":true,\"cam\":true,\"scene\":false},\"factor\":4,\"vantage\":\"zuran\"}"
+   },
+   {
+    "id": "follow-after-relief",
+    "ok": false,
+    "expected": "Play after it: Follow takes up (S-7)",
+    "observed": "{\"playing\":false,\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false},\"cam\":{\"pos\":[-83,25.08,-53],\"tgt\":[9,6.56,-5]}}"
+   },
+   {
+    "id": "rapid-switches",
+    "ok": false,
+    "expected": "after ten switches ending on Study: playing, the rail shown and not inert, focus on a visible control",
+    "observed": "{\"playing\":false,\"presentation\":\"study\",\"rail\":{\"railHidden\":false,\"railVisible\":true,\"railInert\":false,\"dispatchVisible\":true,\"legendOpen\":false,\"layers\":false,\"help\":false,\"modal\":false,\"tourbar\":false,\"firstrun\":false,\"menu\":false,\"dsheet\":false,\"hideDispatch\":false,\"docked\":true,\"tab\":\"now\",\"eye"
+   }
+  ],
+  "stepErrors": [
+   {
+    "step": "Esc (Layers closed); click Pause; click Layers; click 1× true; Esc; 30 frames",
+    "error": "clickEl: .exag-btn[data-x=\"1\"] is covered by null"
+   },
+   {
+    "step": "click Pause; click the Zuran vantage; 10 frames (mid-glide); Layers; 10.33×; Esc",
+    "error": "clickEl: .exag-btn[data-x=\"10.32642489706367\"] is covered by null"
+   }
+  ],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s3-selection-reading.json",
+  "name": "s3-selection-reading",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T05:54:24.955Z",
+  "ms": 241593,
+  "pages": [
+   "desk 1600x900 boot 122 s"
+  ],
+  "checks": [
+   {
+    "id": "select",
+    "ok": true,
+    "expected": "Saint-Hilaire selected, its card open",
+    "observed": "{\"selection\":\"f:sthilaire\",\"drawer\":{\"on\":true,\"visible\":false,\"head\":\"1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire\",\"len\":1659,\"inert\":false},\"follow\":\"true\"}"
+   },
+   {
+    "id": "across-boundary",
+    "ok": true,
+    "expected": "across 07:00 under Play: the selection and its card kept, Follow on",
+    "observed": "{\"clock\":421.333,\"phase\":1,\"selection\":\"f:sthilaire\",\"drawer\":{\"on\":true,\"visible\":false,\"head\":\"1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire\",\"len\":1757,\"inert\":false},\"freeCam\":false,\"cardChanged\":true}"
+   },
+   {
+    "id": "across-boundary-2",
+    "ok": true,
+    "expected": "across the next boundary: kept",
+    "observed": "{\"clock\":480,\"phase\":2,\"selection\":\"f:sthilaire\",\"highlight\":{\"lit\":0,\"dim\":0,\"chapter\":false}}"
+   },
+   {
+    "id": "reading-hides",
+    "ok": true,
+    "expected": "under the Allied reading at 07:30: the selection kept; if the reading does not know Saint-Hilaire, the card says so and shows no place",
+    "observed": "{\"commandView\":\"al\",\"hidden\":true,\"know\":\"unknown\",\"items\":[{\"k\":\"n:sthilaire\",\"on\":false,\"disp\":\"none\"},null],\"block\":false,\"cardHead\":\"1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireConcealedPosition: interpolatedPosition A · interpolatedHow this "
+   },
+   {
+    "id": "no-centre-unknown",
+    "ok": true,
+    "expected": "the map does not centre on a formation the reading does not know",
+    "observed": "{\"button\":null,\"moved\":false}"
+   },
+   {
+    "id": "reading-follows-clock",
+    "ok": true,
+    "expected": "when the reading comes to know it, the card shows it again (the dossier follows the reading, decision 251)",
+    "observed": "{\"clock\":525,\"hidden\":false,\"know\":\"seen\",\"card\":\"1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireAttackingPosition: documentedPosition ATiming CHow this is sourcedStrength≈ 6,600 menUnderNicolas Soult · IV CorpsDoing nowClimbs the western slope; Thi"
+   },
+   {
+    "id": "reading-off",
+    "ok": true,
+    "expected": "everyone's reading again; selection kept",
+    "observed": "{\"commandView\":\"none\",\"selection\":\"f:sthilaire\"}"
+   },
+   {
+    "id": "gone-selection",
+    "ok": true,
+    "expected": "a formation that has left the field is not drawn; its card (if kept) says it has left",
+    "observed": "{\"formation\":\"prz\",\"clock\":1040,\"selection\":\"f:prz\",\"after\":{\"gone\":true,\"sel\":\"prz\",\"block\":false,\"card\":\"III Column · RussiaThird ColumnLt.-Gen. Ignacy PrzybyszewskiCapturedPosition: documentedPosition AHow this is sourcedStrength≈ 7,700 menUnderFriedrich Wilhelm von Buxhowden · Left Wing CommandD"
+   },
+   {
+    "id": "eye-with-selection",
+    "ok": true,
+    "expected": "the eye level entered with a selection",
+    "observed": "{\"eye\":true,\"selection\":\"f:prz\",\"eyecap\":true,\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"III Column · RussiaThird ColumnLt.-Gen. Ignacy Przybyszewski\",\"len\":1693,\"inert\":false}}"
+   },
+   {
+    "id": "eye-play",
+    "ok": true,
+    "expected": "Play at the eye level keeps the eye (Follow does not move it)",
+    "observed": "{\"eye\":true,\"playing\":true,\"freeCam\":true,\"cam\":{\"pos\":[-23,-2.53,51],\"tgt\":[-28,0.69,6]}}"
+   },
+   {
+    "id": "esc-after-eye",
+    "ok": true,
+    "expected": "Esc clears the selection; the eye level and the reading as left",
+    "observed": "{\"eye\":true,\"commandView\":\"fr\",\"selection\":null,\"playing\":true}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s3-selection-reading.run1.json",
+  "name": "s3-selection-reading",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T05:49:30.903Z",
+  "ms": 165857,
+  "pages": [
+   "desk 1600x900 boot 92 s"
+  ],
+  "checks": [
+   {
+    "id": "select",
+    "ok": true,
+    "expected": "Saint-Hilaire selected, its card open",
+    "observed": "{\"selection\":\"f:sthilaire\",\"drawer\":{\"on\":true,\"visible\":false,\"head\":\"1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire\",\"len\":1659,\"inert\":false},\"follow\":\"true\"}"
+   },
+   {
+    "id": "across-boundary",
+    "ok": true,
+    "expected": "across 07:00 under Play: the selection and its card kept, Follow on",
+    "observed": "{\"clock\":421.333,\"phase\":1,\"selection\":\"f:sthilaire\",\"drawer\":{\"on\":true,\"visible\":false,\"head\":\"1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire\",\"len\":1757,\"inert\":false},\"freeCam\":false,\"cardChanged\":true}"
+   },
+   {
+    "id": "across-boundary-2",
+    "ok": true,
+    "expected": "across the next boundary: kept",
+    "observed": "{\"clock\":480,\"phase\":2,\"selection\":\"f:sthilaire\",\"highlight\":{\"lit\":0,\"dim\":0,\"chapter\":false}}"
+   },
+   {
+    "id": "reading-hides",
+    "ok": true,
+    "expected": "under the Allied reading at 07:30: the selection kept; if the reading does not know Saint-Hilaire, the card says so and shows no place",
+    "observed": "{\"commandView\":\"al\",\"hidden\":true,\"know\":\"unknown\",\"items\":[{\"k\":\"n:sthilaire\",\"on\":false,\"disp\":\"none\"},null],\"block\":false,\"cardHead\":\"1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireConcealedPosition: interpolatedPosition A · interpolatedHow this "
+   },
+   {
+    "id": "no-centre-unknown",
+    "ok": true,
+    "expected": "the map does not centre on a formation the reading does not know",
+    "observed": "{\"button\":null,\"moved\":false}"
+   },
+   {
+    "id": "reading-follows-clock",
+    "ok": true,
+    "expected": "when the reading comes to know it, the card shows it again (the dossier follows the reading, decision 251)",
+    "observed": "{\"clock\":525,\"hidden\":false,\"know\":\"seen\",\"card\":\"1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireAttackingPosition: documentedPosition ATiming CHow this is sourcedStrength≈ 6,600 menUnderNicolas Soult · IV CorpsDoing nowClimbs the western slope; Thi"
+   },
+   {
+    "id": "reading-off",
+    "ok": true,
+    "expected": "everyone's reading again; selection kept",
+    "observed": "{\"commandView\":\"none\",\"selection\":\"f:sthilaire\"}"
+   },
+   {
+    "id": "gone-selection",
+    "ok": true,
+    "expected": "a formation that has left the field is not drawn; its card (if kept) says it has left",
+    "observed": "{\"formation\":\"prz\",\"clock\":1040,\"selection\":\"f:prz\",\"after\":{\"gone\":true,\"sel\":\"prz\",\"block\":false,\"card\":\"III Column · RussiaThird ColumnLt.-Gen. Ignacy PrzybyszewskiCapturedPosition: documentedPosition AHow this is sourcedStrength≈ 7,700 menUnderFriedrich Wilhelm von Buxhowden · Left Wing CommandD"
+   },
+   {
+    "id": "eye-with-selection",
+    "ok": false,
+    "expected": "the eye level entered with a selection",
+    "observed": "{\"eye\":false,\"selection\":\"f:prz\",\"eyecap\":false,\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"III Column · RussiaThird ColumnLt.-Gen. Ignacy Przybyszewski\",\"len\":1693,\"inert\":false}}"
+   },
+   {
+    "id": "eye-play",
+    "ok": false,
+    "expected": "Play at the eye level keeps the eye (Follow does not move it)",
+    "observed": "{\"eye\":false,\"playing\":true,\"freeCam\":true,\"cam\":{\"pos\":[-109.79,51.57,93.65],\"tgt\":[-62.5,-1.74,45.5]}}"
+   },
+   {
+    "id": "esc-after-eye",
+    "ok": true,
+    "expected": "Esc clears the selection; the eye level and the reading as left",
+    "observed": "{\"eye\":false,\"commandView\":\"none\",\"selection\":null,\"playing\":true}"
+   }
+  ],
+  "stepErrors": [
+   {
+    "step": "click Pause; click the Command tab; choose Napoleon's headquarters; click the eye level",
+    "error": "clickEl: #tab-command is covered by P.dh-cmd"
+   }
+  ],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s4-tour-opening-reset.json",
+  "name": "s4-tour-opening-reset",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T05:52:25.682Z",
+  "ms": 169811,
+  "pages": [
+   "desk 1600x900 boot 65 s"
+  ],
+  "checks": [
+   {
+    "id": "opening-begins",
+    "ok": true,
+    "expected": "the opening at its first step",
+    "observed": "{\"opening\":true,\"openingPlay\":null,\"tourStep\":0,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":true,\"hideDispatch\":true,\"dispatch\":false,\"tab\":\"now\",\"layers\":false}"
+   },
+   {
+    "id": "opening-esc",
+    "ok": true,
+    "expected": "Esc: the end state (04:00, Study, ½×, Play focused, the bar hidden, the dispatch shown)",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":-1,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":false,\"hideDispatch\":false,\"dispatch\":true,\"tab\":\"now\",\"layers\":false}"
+   },
+   {
+    "id": "opening-again-1",
+    "ok": true,
+    "expected": "begun again: the same first step",
+    "observed": "{\"again\":{\"opening\":true,\"openingPlay\":null,\"tourStep\":0,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":true,\"hideDispatch\":true,\"dispatch\":false,\"tab\":\"now\",\"layers\":"
+   },
+   {
+    "id": "stretch-plays",
+    "ok": true,
+    "expected": "Next plays the stretch at 4×",
+    "observed": "{\"openingPlay\":{\"to\":1,\"target\":525,\"speed0\":0.5},\"playing\":true,\"speed\":4,\"clock\":255}"
+   },
+   {
+    "id": "stretch-pointer",
+    "ok": true,
+    "expected": "a press on the map ends the opening where it is: stopped, ½× back, the bar hidden, the dispatch back",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":-1,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":\"f:legrand\",\"factor\":4,\"tourbar\":false,\"hideDispatch\":false,\"dispatch\":true,\"tab\":\"now\",\"layers\""
+   },
+   {
+    "id": "opening-again-2",
+    "ok": false,
+    "expected": "begun again after the press: first step, its clock",
+    "observed": "{\"clock\":240,\"k\":0}"
+   },
+   {
+    "id": "stretch-key",
+    "ok": true,
+    "expected": "a key ends it in place and does its own action (Watch); speed back; focus on a visible control",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":-1,\"playing\":false,\"speed\":0.5,\"presentation\":\"watch\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":false,\"hideDispatch\":false,\"dispatch\":false,\"tab\":\"now\",\"layers\":false"
+   },
+   {
+    "id": "opening-again-3",
+    "ok": true,
+    "expected": "begun again from Study",
+    "observed": "{\"k\":0,\"clock\":240}"
+   },
+   {
+    "id": "step-drag",
+    "ok": true,
+    "expected": "a drag ends the opening where it is (camera taken), Follow off",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":-1,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":false,\"hideDispatch\":false,\"dispatch\":true,\"tab\":\"now\",\"layers\":false}"
+   },
+   {
+    "id": "step-wheel",
+    "ok": true,
+    "expected": "the wheel ends it (camera taken)",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":-1,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":false,\"hideDispatch\":false,\"dispatch\":true,\"tab\":\"now\",\"layers\":false}"
+   },
+   {
+    "id": "help-over-opening",
+    "ok": true,
+    "expected": "? opens over the opening; the first Esc closes the overlay only; the second skips to the start",
+    "observed": "{\"r\":{\"a\":{\"help\":true,\"opening\":true},\"b\":{\"help\":false,\"opening\":true}},\"end\":{\"opening\":false,\"openingPlay\":null,\"tourStep\":-1,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,"
+   },
+   {
+    "id": "opening-finish",
+    "ok": true,
+    "expected": "Finish: the end state",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":-1,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":false,\"hideDispatch\":false,\"dispatch\":true,\"tab\":\"now\",\"layers\":false}"
+   },
+   {
+    "id": "tour-begins",
+    "ok": true,
+    "expected": "the tour at stop 1, the dispatch hidden",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":0,\"playing\":false,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":true,\"hideDispatch\":true,\"dispatch\":false,\"tab\":\"now\",\"layers\":false}"
+   },
+   {
+    "id": "tour-next-in-watch",
+    "ok": true,
+    "expected": "the tour steps on in Watch",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":1,\"playing\":false,\"speed\":0.5,\"presentation\":\"watch\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":\"al\",\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":true,\"hideDispatch\":true,\"dispatch\":false,\"tab\":\"now\",\"layers\":false}"
+   },
+   {
+    "id": "tour-esc",
+    "ok": true,
+    "expected": "Esc ends the tour: the bar hidden, the dispatch back",
+    "observed": "{\"opening\":false,\"openingPlay\":null,\"tourStep\":-1,\"playing\":true,\"speed\":0.5,\"presentation\":\"study\",\"mode\":\"terrain\",\"commandView\":\"none\",\"TOURCV\":null,\"eye\":false,\"plan\":null,\"chapter\":null,\"selection\":null,\"factor\":4,\"tourbar\":false,\"hideDispatch\":false,\"dispatch\":true,\"tab\":\"now\",\"layers\":false}"
+   },
+   {
+    "id": "tour-again",
+    "ok": false,
+    "expected": "begun again: stop 1 at its clock",
+    "observed": "{\"clock\":240,\"tour\":0}"
+   },
+   {
+    "id": "paper-leaves-eye",
+    "ok": true,
+    "expected": "the paper map is not at the eye level",
+    "observed": "{\"mode\":\"staff\",\"eye\":false,\"eyecap\":false}"
+   },
+   {
+    "id": "reset-matches-fresh",
+    "ok": false,
+    "expected": "after the ways back, every reading of the state as on a fresh page (the clock aside)",
+    "observed": "{\"differs\":[{\"k\":\"dispatch\",\"fresh\":true,\"now\":false}]}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s5-revisit-determinism.json",
+  "name": "s5-revisit-determinism",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:02:15.800Z",
+  "ms": 192769,
+  "pages": [
+   "desk 1280x720 boot 99 s"
+  ],
+  "checks": [
+   {
+    "id": "same-A0700-B0700",
+    "ok": true,
+    "expected": "07:00 fresh vs after 18:00 and 16:00 (Home, PageDown): the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[],\"camDiffers\":false,\"fogDiffers\":false,\"mlDiffers\":24,\"detail\":[]}"
+   },
+   {
+    "id": "same-A0700-C0700",
+    "ok": true,
+    "expected": "07:00 fresh vs straight back from 16:00 by Shift+ArrowLeft: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[],\"camDiffers\":false,\"fogDiffers\":false,\"mlDiffers\":26,\"detail\":[]}"
+   },
+   {
+    "id": "same-A0700-D0700",
+    "ok": true,
+    "expected": "07:00 fresh vs after a drag to 17:00 and back: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[],\"camDiffers\":false,\"fogDiffers\":false,\"mlDiffers\":26,\"detail\":[]}"
+   },
+   {
+    "id": "same-A0700-E0700",
+    "ok": true,
+    "expected": "07:00 fresh vs back by the event keys: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[],\"camDiffers\":true,\"fogDiffers\":true,\"mlDiffers\":44,\"detail\":[]}"
+   },
+   {
+    "id": "same-A0700-F0700",
+    "ok": false,
+    "expected": "07:00 by a seek vs by Play (paused in the dwell): the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[\"caption\",\"light\",\"units\"],\"camDiffers\":true,\"fogDiffers\":true,\"mlDiffers\":44,\"detail\":[{\"k\":\"caption\",\"a\":\"THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 38,700 plo"
+   },
+   {
+    "id": "same-fresh0400-G0400",
+    "ok": true,
+    "expected": "04:00 fresh vs Home after the later states: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[240,240],\"differs\":[],\"camDiffers\":true,\"fogDiffers\":true,\"mlDiffers\":38,\"detail\":[]}"
+   },
+   {
+    "id": "same-H0920a-H0920b",
+    "ok": true,
+    "expected": "09:20 from before vs from after: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[560,560],\"differs\":[],\"camDiffers\":false,\"fogDiffers\":false,\"mlDiffers\":0,\"detail\":[]}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s5-revisit-determinism.run1.json",
+  "name": "s5-revisit-determinism",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T05:56:02.169Z",
+  "ms": 156466,
+  "pages": [
+   "desk 1280x720 boot 88 s"
+  ],
+  "checks": [
+   {
+    "id": "same-A0700-B0700",
+    "ok": false,
+    "expected": "07:00 fresh vs after 18:00 and 16:00 (Home, PageDown): the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[\"units\"],\"camDiffers\":true,\"mlDiffers\":24,\"detail\":[{\"k\":\"units\",\"n\":2,\"first\":[{\"id\":\"heightguns\",\"a\":\"0,0,0,0,0,1.25,0,0\",\"b\":\"0,-26,-2.69,53.5,-1.03,1.25,0,0\"},{\"id\":\"kamensky\",\"a\":\"0,0,0,0,0,1.25,0,0\",\"b\":\"0,28.5,-1.08,-14.5,-1.24,1.25,0,0\"}]}]}"
+   },
+   {
+    "id": "same-A0700-C0700",
+    "ok": false,
+    "expected": "07:00 fresh vs straight back from 16:00 by Shift+ArrowLeft: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[\"units\"],\"camDiffers\":true,\"mlDiffers\":26,\"detail\":[{\"k\":\"units\",\"n\":2,\"first\":[{\"id\":\"heightguns\",\"a\":\"0,0,0,0,0,1.25,0,0\",\"b\":\"0,-26,-2.69,53.5,-1.03,1.25,0,0\"},{\"id\":\"kamensky\",\"a\":\"0,0,0,0,0,1.25,0,0\",\"b\":\"0,28.5,-1.08,-14.5,-1.24,1.25,0,0\"}]}]}"
+   },
+   {
+    "id": "same-A0700-D0700",
+    "ok": false,
+    "expected": "07:00 fresh vs after a drag to 17:00 and back: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[\"units\"],\"camDiffers\":true,\"mlDiffers\":26,\"detail\":[{\"k\":\"units\",\"n\":2,\"first\":[{\"id\":\"heightguns\",\"a\":\"0,0,0,0,0,1.25,0,0\",\"b\":\"0,-26,-2.69,53.5,-1.03,1.25,0,0\"},{\"id\":\"kamensky\",\"a\":\"0,0,0,0,0,1.25,0,0\",\"b\":\"0,28.5,-1.08,-14.5,-1.24,1.25,0,0\"}]}]}"
+   },
+   {
+    "id": "same-A0700-E0700",
+    "ok": false,
+    "expected": "07:00 fresh vs back by the event keys: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,420],\"differs\":[\"fog\",\"units\"],\"camDiffers\":true,\"mlDiffers\":44,\"detail\":[{\"k\":\"fog\",\"a\":{\"uAtmoA\":\"4,243.1,63.1977,161.0226\",\"uAtmoB\":\"0.0062,400,200,1\",\"uAtmoC\":\"238.204,6,1.2361,0.55\",\"uAtmoV\":\"0.1965,0.1954,0.1898\"},\"b\":{\"uAtmoA\":\"4,243.1,63.1977,112\",\"uAtmoB\":\"0.0062,400,200,1\",\""
+   },
+   {
+    "id": "same-A0700-F0700",
+    "ok": false,
+    "expected": "07:00 by a seek vs by Play (paused in the dwell): the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[420,240],\"differs\":[\"clock\",\"phase\",\"caption\",\"situation\",\"dispatch\",\"clockText\",\"light\",\"drawon\",\"overlays\",\"fog\",\"units\"],\"camDiffers\":true,\"mlDiffers\":44,\"detail\":[{\"k\":\"clock\",\"a\":420,\"b\":240},{\"k\":\"phase\",\"a\":1,\"b\":0},{\"k\":\"caption\",\"a\":\"THE ALLIED ADVANCE · The Allied left opens the"
+   },
+   {
+    "id": "same-fresh0400-G0400",
+    "ok": false,
+    "expected": "04:00 fresh vs Home after the later states: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[240,240],\"differs\":[\"fog\",\"units\"],\"camDiffers\":true,\"mlDiffers\":38,\"detail\":[{\"k\":\"fog\",\"a\":{\"uAtmoA\":\"4,243.1,63.1977,526.4042\",\"uAtmoB\":\"0.0062,400,200,1\",\"uAtmoC\":\"238.204,6,1.2361,0.55\",\"uAtmoV\":\"0.0482,0.0648,0.0844\"},\"b\":{\"uAtmoA\":\"4,243.1,63.1977,112\",\"uAtmoB\":\"0.0062,400,200,1\",\""
+   },
+   {
+    "id": "same-H0920a-H0920b",
+    "ok": true,
+    "expected": "09:20 from before vs from after: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+    "observed": "{\"clocks\":[560,560],\"differs\":[],\"camDiffers\":false,\"mlDiffers\":0,\"detail\":[]}"
+   }
+  ],
+  "stepErrors": [
+   {
+    "step": "path F: Home; click Play; frames until the 07:00 dwell's hold; click Pause",
+    "error": "clickEl: #play is covered by #tltip"
+   }
+  ],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s6-panels-while-dragging.json",
+  "name": "s6-panels-while-dragging",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T05:59:06.716Z",
+  "ms": 169609,
+  "pages": [
+   "desk 1600x900 boot 94 s"
+  ],
+  "checks": [
+   {
+    "id": "help-mid-drag",
+    "ok": false,
+    "expected": "? mid-drag: the map does not move under the overlay; after release a move with no button pans nothing (no drag left held)",
+    "observed": "{\"helpOpened\":true,\"movedUnderOverlay\":true,\"movedAfterEscHeld\":true,\"movedAfterRelease\":false,\"focus\":\"body\"}"
+   },
+   {
+    "id": "sheet-wheel",
+    "ok": true,
+    "expected": "the wheel over the sources sheet and its scrim does not zoom the map behind",
+    "observed": "{\"moved\":false,\"scrolled\":0,\"openDuringWheel\":true}"
+   },
+   {
+    "id": "drag-with-card",
+    "ok": true,
+    "expected": "a drag with the card open pans and keeps the card",
+    "observed": "{\"ret\":{\"sel\":\"gqg\",\"moved\":true},\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2158,\"inert\":false}}"
+   },
+   {
+    "id": "wheel-over-card",
+    "ok": true,
+    "expected": "the wheel over the card does not zoom the map",
+    "observed": "{\"moved\":false}"
+   },
+   {
+    "id": "esc-mid-drag",
+    "ok": true,
+    "expected": "Esc mid-drag clears the selection; the drag goes on until the release; nothing after",
+    "observed": "{\"selAfterEsc\":null,\"pannedAfterEsc\":true,\"movedAfterRelease\":false}"
+   },
+   {
+    "id": "layers-drag",
+    "ok": true,
+    "expected": "a drag pans with the Layers panel open",
+    "observed": "{\"ret\":{\"moved\":true},\"layersOpen\":false}"
+   },
+   {
+    "id": "legend-wheel",
+    "ok": true,
+    "expected": "with the legend open, the wheel over it zooms nothing and over the map zooms",
+    "observed": "{\"legend\":true,\"overLegend\":false,\"overMap\":true}"
+   },
+   {
+    "id": "follow-on-playing",
+    "ok": true,
+    "expected": "playing with Follow on",
+    "observed": "{\"freeCam\":false,\"playing\":true}"
+   },
+   {
+    "id": "drag-turns-follow-off",
+    "ok": true,
+    "expected": "a drag during Play turns Follow off; the eye stays where the visitor left it while the clock plays on",
+    "observed": "{\"freeCam\":true,\"follow\":\"false\",\"playing\":true,\"camMovedAfterRelease\":false}"
+   },
+   {
+    "id": "follow-again",
+    "ok": true,
+    "expected": "Follow pressed again: on, the glide done, following",
+    "observed": "{\"freeCam\":false,\"tween\":{\"any\":false,\"cam\":false,\"scene\":false},\"cam\":{\"pos\":[-265.6,128.18,243.08],\"tgt\":[-74.29,-0.05,44.19]}}"
+   },
+   {
+    "id": "wheel-follow-off",
+    "ok": true,
+    "expected": "the wheel turns Follow off",
+    "observed": "{\"freeCam\":true}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s7-resize-rotate.json",
+  "name": "s7-resize-rotate",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:10:36.441Z",
+  "ms": 319350,
+  "pages": [
+   "desk 1600x900 boot 126 s",
+   "phone 390x844 boot 43 s"
+  ],
+  "checks": [
+   {
+    "id": "dossier-at-1600",
+    "ok": false,
+    "expected": "at 1600 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[\"rail/drawer\"],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2198,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":true},\"to"
+   },
+   {
+    "id": "dossier-at-1024",
+    "ok": true,
+    "expected": "at 1024 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2198,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":false},\"toast\":{\"text\""
+   },
+   {
+    "id": "dossier-at-700",
+    "ok": true,
+    "expected": "at 700 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2089,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":false},\"toast\":{\"text\":"
+   },
+   {
+    "id": "dossier-at-390",
+    "ok": true,
+    "expected": "at 390 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2089,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":false},\"toast\":{\"text\":"
+   },
+   {
+    "id": "dossier-at-1024",
+    "ok": true,
+    "expected": "at 1024 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2089,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":false},\"toast\":{\"text\""
+   },
+   {
+    "id": "dossier-at-1600",
+    "ok": false,
+    "expected": "at 1600 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[\"rail/drawer\"],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2344,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":true},\"to"
+   },
+   {
+    "id": "sources-at-1024",
+    "ok": true,
+    "expected": "at 1024 px: the sheet open and inside the window, focus inside it and visible",
+    "observed": "{\"modal\":true,\"box\":[202,81,822,819],\"offscreen\":[],\"focus\":\"#modal-close\",\"focusVisible\":true,\"inert\":24}"
+   },
+   {
+    "id": "sources-at-700",
+    "ok": true,
+    "expected": "at 700 px: the sheet open and inside the window, focus inside it and visible",
+    "observed": "{\"modal\":true,\"box\":[40,81,660,819],\"offscreen\":[],\"focus\":\"#modal-close\",\"focusVisible\":true,\"inert\":23}"
+   },
+   {
+    "id": "sources-at-390",
+    "ok": true,
+    "expected": "at 390 px: the sheet open and inside the window, focus inside it and visible",
+    "observed": "{\"modal\":true,\"box\":[24,81,366,819],\"offscreen\":[],\"focus\":\"#modal-close\",\"focusVisible\":true,\"inert\":23}"
+   },
+   {
+    "id": "sources-at-1600",
+    "ok": true,
+    "expected": "at 1600 px: the sheet open and inside the window, focus inside it and visible",
+    "observed": "{\"modal\":true,\"box\":[490,81,1110,819],\"offscreen\":[],\"focus\":\"#modal-close\",\"focusVisible\":true,\"inert\":23}"
+   },
+   {
+    "id": "help-at-700",
+    "ok": true,
+    "expected": "at 700 px: the overlay inside the window, focus inside",
+    "observed": "{\"help\":true,\"box\":[24,81,676,819],\"focus\":\"#help-close\",\"focusVisible\":true}"
+   },
+   {
+    "id": "help-at-390",
+    "ok": true,
+    "expected": "at 390 px: the overlay inside the window, focus inside",
+    "observed": "{\"help\":true,\"box\":[24,81,366,819],\"focus\":\"#help-close\",\"focusVisible\":true}"
+   },
+   {
+    "id": "help-at-1600",
+    "ok": true,
+    "expected": "at 1600 px: the overlay inside the window, focus inside",
+    "observed": "{\"help\":true,\"box\":[440,81,1160,819],\"focus\":\"#help-close\",\"focusVisible\":true}"
+   },
+   {
+    "id": "layers-at-1024",
+    "ok": true,
+    "expected": "at 1024 px: the Layers panel inside the window if still open; focus visible",
+    "observed": "{\"layers\":true,\"box\":[714,104,1002,783],\"offscreen\":[],\"focus\":\"#layersbtn\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":true,\"drawer\":false,\"rail\":false}}"
+   },
+   {
+    "id": "layers-at-700",
+    "ok": true,
+    "expected": "at 700 px: the Layers panel inside the window if still open; focus visible",
+    "observed": "{\"layers\":true,\"box\":[10,96,690,618],\"offscreen\":[],\"focus\":\"body\",\"focusVisible\":null,\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":true,\"drawer\":false,\"rail\":false}}"
+   },
+   {
+    "id": "layers-at-390",
+    "ok": true,
+    "expected": "at 390 px: the Layers panel inside the window if still open; focus visible",
+    "observed": "{\"layers\":true,\"box\":[10,96,380,618],\"offscreen\":[],\"focus\":\"body\",\"focusVisible\":null,\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":true,\"drawer\":false,\"rail\":false}}"
+   },
+   {
+    "id": "layers-at-1600",
+    "ok": true,
+    "expected": "at 1600 px: the Layers panel inside the window if still open; focus visible",
+    "observed": "{\"layers\":true,\"box\":[1290,104,1578,783],\"offscreen\":[],\"focus\":\"body\",\"focusVisible\":null,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":true,\"drawer\":false,\"rail\":true}}"
+   },
+   {
+    "id": "phone-menu",
+    "ok": true,
+    "expected": "the Menu open",
+    "observed": "{\"on\":true,\"menu\":true,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false}"
+   },
+   {
+    "id": "phone-turn-menu",
+    "ok": true,
+    "expected": "turned: the landscape layout, the Menu closed, nothing off screen, focus visible",
+    "observed": "{\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"offscreen\":[],\"focus\":\"body\",\"focusVisible\":null}"
+   },
+   {
+    "id": "phone-turn-back",
+    "ok": true,
+    "expected": "turned back: the phone layout",
+    "observed": "{\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"offscreen\":[],\"focus\":\"body\"}"
+   },
+   {
+    "id": "phone-sheet-turn",
+    "ok": true,
+    "expected": "the dispatch sheet across a turn: nothing off screen",
+    "observed": "{\"landscape\":{\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"focus\":\"body\",\"focusVisible\":null},\"back\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"offA\":[],\"offB\":[]}"
+   },
+   {
+    "id": "phone-dossier-turn",
+    "ok": true,
+    "expected": "the dossier across a turn: kept, inside the window",
+    "observed": "{\"landscape\":{\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2158,\"inert\":false},\"focus\":\"body\",\"focusVisible\":null,\"sel\":\"f:gqg\"},\"back\":{\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s7-resize-rotate.run1.json",
+  "name": "s7-resize-rotate",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:02:15.650Z",
+  "ms": 284658,
+  "pages": [
+   "desk 1600x900 boot 117 s",
+   "phone 390x844 boot 43 s"
+  ],
+  "checks": [
+   {
+    "id": "dossier-at-1600",
+    "ok": false,
+    "expected": "at 1600 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[\"dispatch\",\"drawer\"],\"overlaps\":[\"rail/dispatch\"],\"drawer\":{\"on\":true,\"visible\":false,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2198,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\""
+   },
+   {
+    "id": "dossier-at-1024",
+    "ok": false,
+    "expected": "at 1024 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[\"dispatch\",\"drawer\"],\"overlaps\":[\"rail/dispatch\"],\"drawer\":{\"on\":true,\"visible\":false,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2198,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\""
+   },
+   {
+    "id": "dossier-at-700",
+    "ok": true,
+    "expected": "at 700 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2089,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":false},\"toast\":{\"text\":"
+   },
+   {
+    "id": "dossier-at-390",
+    "ok": true,
+    "expected": "at 390 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2089,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":false},\"toast\":{\"text\":"
+   },
+   {
+    "id": "dossier-at-1024",
+    "ok": true,
+    "expected": "at 1024 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[],\"overlaps\":[],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2089,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":true,\"rail\":false},\"toast\":{\"text\""
+   },
+   {
+    "id": "dossier-at-1600",
+    "ok": false,
+    "expected": "at 1600 px: the card open, nothing off screen, no panel over another, focus visible",
+    "observed": "{\"offscreen\":[\"rail\",\"dispatch\"],\"overlaps\":[\"rail/dispatch\"],\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2344,\"inert\":false},\"focus\":\"#timerail\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":tr"
+   },
+   {
+    "id": "sources-at-1024",
+    "ok": true,
+    "expected": "at 1024 px: the sheet open and inside the window, focus inside it and visible",
+    "observed": "{\"modal\":true,\"box\":[202,81,822,819],\"offscreen\":[],\"focus\":\"#modal-close\",\"focusVisible\":true,\"inert\":24}"
+   },
+   {
+    "id": "sources-at-700",
+    "ok": true,
+    "expected": "at 700 px: the sheet open and inside the window, focus inside it and visible",
+    "observed": "{\"modal\":true,\"box\":[40,81,660,819],\"offscreen\":[],\"focus\":\"#modal-close\",\"focusVisible\":true,\"inert\":24}"
+   },
+   {
+    "id": "sources-at-390",
+    "ok": true,
+    "expected": "at 390 px: the sheet open and inside the window, focus inside it and visible",
+    "observed": "{\"modal\":true,\"box\":[24,81,366,819],\"offscreen\":[],\"focus\":\"#modal-close\",\"focusVisible\":true,\"inert\":23}"
+   },
+   {
+    "id": "sources-at-1600",
+    "ok": true,
+    "expected": "at 1600 px: the sheet open and inside the window, focus inside it and visible",
+    "observed": "{\"modal\":true,\"box\":[490,81,1110,819],\"offscreen\":[\"dispatch\"],\"focus\":\"#modal-close\",\"focusVisible\":true,\"inert\":23}"
+   },
+   {
+    "id": "help-at-700",
+    "ok": true,
+    "expected": "at 700 px: the overlay inside the window, focus inside",
+    "observed": "{\"help\":true,\"box\":[24,81,676,819],\"focus\":\"#help-close\",\"focusVisible\":true}"
+   },
+   {
+    "id": "help-at-390",
+    "ok": true,
+    "expected": "at 390 px: the overlay inside the window, focus inside",
+    "observed": "{\"help\":true,\"box\":[24,81,366,819],\"focus\":\"#help-close\",\"focusVisible\":true}"
+   },
+   {
+    "id": "help-at-1600",
+    "ok": true,
+    "expected": "at 1600 px: the overlay inside the window, focus inside",
+    "observed": "{\"help\":true,\"box\":[440,81,1160,819],\"focus\":\"#help-close\",\"focusVisible\":true}"
+   },
+   {
+    "id": "layers-at-1024",
+    "ok": true,
+    "expected": "at 1024 px: the Layers panel inside the window if still open; focus visible",
+    "observed": "{\"layers\":true,\"box\":[714,104,1002,783],\"offscreen\":[],\"focus\":\"#layersbtn\",\"focusVisible\":true,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":true,\"drawer\":false,\"rail\":false}}"
+   },
+   {
+    "id": "layers-at-700",
+    "ok": true,
+    "expected": "at 700 px: the Layers panel inside the window if still open; focus visible",
+    "observed": "{\"layers\":true,\"box\":[10,96,690,618],\"offscreen\":[],\"focus\":\"body\",\"focusVisible\":null,\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":true,\"drawer\":false,\"rail\":false}}"
+   },
+   {
+    "id": "layers-at-390",
+    "ok": true,
+    "expected": "at 390 px: the Layers panel inside the window if still open; focus visible",
+    "observed": "{\"layers\":true,\"box\":[10,96,380,618],\"offscreen\":[],\"focus\":\"body\",\"focusVisible\":null,\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":true,\"drawer\":false,\"rail\":false}}"
+   },
+   {
+    "id": "layers-at-1600",
+    "ok": true,
+    "expected": "at 1600 px: the Layers panel inside the window if still open; focus visible",
+    "observed": "{\"layers\":true,\"box\":[1290,104,1578,772],\"offscreen\":[\"rail\",\"dispatch\"],\"focus\":\"body\",\"focusVisible\":null,\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":true,\"drawer\":false,\"rail\":true}}"
+   },
+   {
+    "id": "phone-menu",
+    "ok": true,
+    "expected": "the Menu open",
+    "observed": "{\"on\":true,\"menu\":true,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false}"
+   },
+   {
+    "id": "phone-turn-menu",
+    "ok": false,
+    "expected": "turned: the landscape layout, the Menu closed, nothing off screen, focus visible",
+    "observed": "{\"phone\":{\"on\":true,\"menu\":true,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"offscreen\":[],\"focus\":\"body\",\"focusVisible\":null}"
+   },
+   {
+    "id": "phone-turn-back",
+    "ok": true,
+    "expected": "turned back: the phone layout",
+    "observed": "{\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"offscreen\":[],\"focus\":\"body\"}"
+   },
+   {
+    "id": "phone-sheet-turn",
+    "ok": true,
+    "expected": "the dispatch sheet across a turn: nothing off screen",
+    "observed": "{\"landscape\":{\"phone\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"focus\":\"body\",\"focusVisible\":null},\"back\":{\"on\":false,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"offA\":[],\"offB\":[]}"
+   },
+   {
+    "id": "phone-dossier-turn",
+    "ok": true,
+    "expected": "the dossier across a turn: kept, inside the window",
+    "observed": "{\"landscape\":{\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len\":2158,\"inert\":false},\"focus\":\"body\",\"focusVisible\":null,\"sel\":\"f:gqg\"},\"back\":{\"drawer\":{\"on\":true,\"visible\":true,\"head\":\"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I\",\"len"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s8-rapid-dayend.json",
+  "name": "s8-rapid-dayend",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:10:36.419Z",
+  "ms": 189077,
+  "pages": [
+   "desk 1280x720 boot 97 s"
+  ],
+  "checks": [
+   {
+    "id": "dblclick-play",
+    "ok": true,
+    "expected": "after a double-click the Play button says what the clock does (two presses: paused again)",
+    "observed": "{\"playing\":false,\"btn\":\"Play/false\",\"clock\":240}"
+   },
+   {
+    "id": "pagedown-fast-slow",
+    "ok": false,
+    "expected": "20 PageDowns end at 18:00 whether pressed in a row or slowly, with the same frame state",
+    "observed": "{\"fast\":{\"clock\":1080,\"phase\":9,\"toast\":{\"text\":\"The sun of Austerlitz, as memoirs call it\",\"on\":true,\"op\":0,\"box\":[650,55,931,89],\"timer\":true},\"livePhase\":\"After dark. The Collapse: The reckoning.\",\"caption\":\"THE COLLAPSE · The reckoning\"},\"slow\":{\"clock\":1080,\"phase\":9,\"toast\":{\"text\":\"The sun of"
+   },
+   {
+    "id": "speed-rapid",
+    "ok": true,
+    "expected": "after twenty speed presses the last (4×) stands, pressed, and the clock runs at it",
+    "observed": "{\"speed\":4,\"pressed\":\"4\",\"rate\":10.55,\"dwell\":[\"-\",\"in\",\"hold\"]}"
+   },
+   {
+    "id": "day-end",
+    "ok": true,
+    "expected": "Play runs to 18:00 and stops there, the button says Play",
+    "observed": "{\"clock\":1080,\"playing\":false,\"btn\":\"Play/false\",\"caption\":\"THE COLLAPSE · The reckoning\",\"toast\":{\"text\":\"The sun of Austerlitz, as memoirs call it\",\"on\":true,\"op\":0,\"box\":[650,55,931,89],\"timer\":true},\"focus\":\"button.t[4×]\"}"
+   },
+   {
+    "id": "play-after-end",
+    "ok": true,
+    "expected": "Play at the day's end starts from 04:00 again",
+    "observed": "{\"clock\":255,\"playing\":true}"
+   },
+   {
+    "id": "home-play",
+    "ok": true,
+    "expected": "Home during Play: stopped at 04:00",
+    "observed": "{\"clock\":240,\"playing\":false}"
+   },
+   {
+    "id": "same-twice",
+    "ok": true,
+    "expected": "the same sequence twice gives the same state and frame",
+    "observed": "{\"stateDiffers\":[],\"frameDiffers\":[],\"detail\":[],\"mlDiffers\":0}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s9-leaks.json",
+  "name": "s9-leaks",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:31:43.516Z",
+  "ms": 340797,
+  "pages": [
+   "desk 1280x720 boot 82 s"
+  ],
+  "checks": [
+   {
+    "id": "no-growth",
+    "ok": false,
+    "expected": "a second identical round of every cycle adds no listener, timer, frame request, observer, GPU object or scene node",
+    "observed": "{\"growing\":[{\"block\":\"dossier\",\"live\":308,\"timeouts\":0,\"rafs\":0,\"intervals\":0,\"observers\":0,\"geometries\":-88,\"textures\":-3,\"dom\":1157,\"mlItems\":77,\"scene\":2,\"overlayRoot\":0},{\"block\":\"sources\",\"live\":308,\"timeouts\":0,\"rafs\":0,\"intervals\":0,\"observers\":0,\"geometries\":-88,\"textures\":-3,\"dom\":253,\"mlIt"
+   },
+   {
+    "id": "timers-settle",
+    "ok": true,
+    "expected": "after the cycles, once the toast's and the drawer's timers have run out, no timeout or interval is pending",
+    "observed": "{\"timeouts\":0,\"timeoutsBy\":{},\"intervals\":0}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s10-phone.json",
+  "name": "s10-phone",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:16:23.957Z",
+  "ms": 85826,
+  "pages": [
+   "phone 390x844 boot 47 s"
+  ],
+  "checks": [
+   {
+    "id": "phone-layout",
+    "ok": true,
+    "expected": "the phone layout",
+    "observed": "{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false}"
+   },
+   {
+    "id": "phone-speed-cycle",
+    "ok": true,
+    "expected": "the speed button steps ½× 1× 2× 4× and round again, its label and name the speed",
+    "observed": "[{\"speed\":1,\"label\":\"1×\",\"aria\":\"Playback speed 1×\"},{\"speed\":2,\"label\":\"2×\",\"aria\":\"Playback speed 2×\"},{\"speed\":4,\"label\":\"4×\",\"aria\":\"Playback speed 4×\"},{\"speed\":0.5,\"label\":\"½×\",\"aria\":\"Playback speed ½×\"}]"
+   },
+   {
+    "id": "phone-speed-hold",
+    "ok": true,
+    "expected": "the speed tapped in a hold: the hold keeps its 1.5 s, no backward step",
+    "observed": "{\"holdFramesAfterTap\":39,\"backSteps\":0,\"speed\":1}"
+   },
+   {
+    "id": "phone-phase-tap",
+    "ok": true,
+    "expected": "a phase tapped during Play: stopped at its start, the sheet folded",
+    "observed": "{\"clock\":570,\"expected\":570,\"playing\":false,\"sheet\":false,\"toast\":{\"text\":\"\",\"on\":false,\"op\":0,\"box\":[176,26,214,44],\"timer\":false}}"
+   },
+   {
+    "id": "phone-toast-clear",
+    "ok": true,
+    "expected": "the phase's message over no control",
+    "observed": "{\"on\":false}"
+   },
+   {
+    "id": "phone-watch-play",
+    "ok": true,
+    "expected": "Watch from the Menu during Play: playing, the Menu closed",
+    "observed": "{\"playing\":true,\"presentation\":\"watch\",\"phone\":{\"on\":true,\"menu\":false,\"sheet\":false,\"layers\":false,\"drawer\":false,\"rail\":false},\"focus\":\"button.vm-btn[Watch]\",\"focusVisible\":true}"
+   },
+   {
+    "id": "phone-drag-follow",
+    "ok": false,
+    "expected": "a finger's pan during Play turns Follow off; the eye stays where the finger left it",
+    "observed": "{\"ret\":{\"moved\":true,\"heldAfter\":false},\"freeCam\":true,\"playing\":true}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s10b-phone-drag.json",
+  "name": "s10b-phone-drag",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:28:51.596Z",
+  "ms": 66841,
+  "pages": [
+   "phone 390x844 boot 45 s"
+  ],
+  "checks": [
+   {
+    "id": "held-after-lift-paused",
+    "ok": true,
+    "expected": "after the finger lifts (paused), the eye stays where it left it (Follow off)",
+    "observed": "{\"moved\":0,\"panned\":59.836,\"lift\":{\"pos\":[-79.958,863.446,59.402],\"tgt\":[-79.958,0.703,-40.623],\"clock\":240,\"phase\":0,\"freeCam\":true,\"playing\":false,\"tween\":false,\"twCam\":false,\"twScene\":false,\"vantage\":null,\"off\":null},\"last\":{\"f\":60,\"pos\":[-79.958,863.446,59.402],\"tgt\":[-79.958,0.703,-40.623],\"clo"
+   },
+   {
+    "id": "held-after-lift-playing",
+    "ok": true,
+    "expected": "after the finger lifts (playing), the eye stays where it left it (Follow off)",
+    "observed": "{\"moved\":0,\"panned\":49.526,\"lift\":{\"pos\":[-121.124,863.446,31.773],\"tgt\":[-121.124,1.498,-68.159],\"clock\":246.43,\"phase\":0,\"freeCam\":true,\"playing\":true,\"tween\":false,\"twCam\":false,\"twScene\":false,\"vantage\":null,\"off\":null},\"last\":{\"f\":60,\"pos\":[-121.124,863.446,31.773],\"tgt\":[-121.124,1.498,-68.159"
+   },
+   {
+    "id": "held-after-lift-playing-in-Watch",
+    "ok": true,
+    "expected": "after the finger lifts (playing in Watch), the eye stays where it left it (Follow off)",
+    "observed": "{\"moved\":0,\"panned\":49.515,\"lift\":{\"pos\":[-162.253,863.446,4.171],\"tgt\":[-162.253,1.776,-95.73],\"clock\":255.14,\"phase\":0,\"freeCam\":true,\"playing\":true,\"tween\":false,\"twCam\":false,\"twScene\":false,\"vantage\":null,\"off\":null},\"last\":{\"f\":60,\"pos\":[-162.253,863.446,4.171],\"tgt\":[-162.253,1.776,-95.73],\"c"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s11-state-hypotheses.json",
+  "name": "s11-state-hypotheses",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:38:07.862Z",
+  "ms": 388456,
+  "pages": [
+   "desk 1600x900 boot 113 s",
+   "touch 1280x720 boot 50 s",
+   "desk-small 880x660 boot 25 s"
+  ],
+  "checks": [
+   {
+    "id": "dwell-toggle-pressed",
+    "ok": true,
+    "expected": "the dwell's button announces its state (aria-pressed) as it toggles",
+    "observed": "{\"a\":{\"on\":false,\"pressed\":\"false\"},\"b\":{\"on\":true,\"pressed\":\"true\"}}"
+   },
+   {
+    "id": "idle-first-frame-space",
+    "ok": false,
+    "expected": "Space after idle: the first frame advances the clock as much as the next ones (one frame: 33.3 ms at the driver's 30 fps, 0.167 clock min at ½×)",
+    "observed": "{\"steps\":[0.6,0.1667,0.1666,0.1667],\"trace\":[[240.6,\"-\",0.5,1],[240.7667,\"-\",0.5,1],[240.9333,\"-\",0.5,1],[241.1,\"-\",0.5,1]]}"
+   },
+   {
+    "id": "idle-first-frame-enter",
+    "ok": true,
+    "expected": "Enter on the focused Play button after idle: the first frame advances as the next ones",
+    "observed": "{\"steps\":[0.1667,0.1666,0.1667,0.1667]}"
+   },
+   {
+    "id": "idle-first-frame-4x",
+    "ok": true,
+    "expected": "the same at 4×",
+    "observed": "{\"steps\":[1.3333,1.3333,1.3334,1.3333],\"dwell\":[\"-\",\"-\",\"-\",\"-\"]}"
+   },
+   {
+    "id": "next-event-from-ease",
+    "ok": false,
+    "expected": "paused in the ease in before the 04:15 start, '.' (the next event) goes to 04:15, the event the clock was approaching",
+    "observed": "{\"pausedAt\":254.3875000000029,\"after\":{\"clock\":420,\"sel\":null}}"
+   },
+   {
+    "id": "card-current-at-1237",
+    "ok": false,
+    "expected": "the open card at 12:37 (same phase) reads as the app paints it at 12:37",
+    "observed": "{\"same\":false,\"firstDifference\":{\"at\":55,\"shown\":\"it has committed Claim: This map's readingWhereZuran moundFull dossier: role, movement, sourcesHow this is sourced\",\"fresh\":\"it has committed Claim: This map's readingWhereStare VinohradyFull dossier: role, movement, sourcesHow this is sourced\"}}"
+   },
+   {
+    "id": "no-pop",
+    "ok": false,
+    "expected": "the 07:00 phase's arrows, at 0 when 08:00 is stepped to, are not drawn brighter as they are left",
+    "observed": "{\"curBeforeSecond\":0,\"oldAfterSecond\":0.873,\"oldTrace\":[0.845,0.708,0.57,0.433,0.296,0.158,0.021,0]}"
+   },
+   {
+    "id": "arrows-off-stay-off",
+    "ok": false,
+    "expected": "with the Movement layer off, a phase change draws no arrow: the outgoing phase's included",
+    "observed": "{\"before\":{\"old\":null,\"cur\":0,\"oldN\":0,\"curN\":41,\"oldVisible\":false,\"fadeOut\":0,\"fadeIn\":1,\"phase\":2,\"clock\":480,\"arrowsLayer\":false},\"first\":{\"old\":null,\"cur\":0,\"oldN\":0,\"curN\":41,\"oldVisible\":false,\"fadeOut\":0,\"fadeIn\":1,\"phase\":2,\"clock\":480,\"arrowsLayer\":false},\"maxOldOver40\":0,\"framesAbove0_1\":"
+   },
+   {
+    "id": "rail-right-button",
+    "ok": false,
+    "expected": "a right press on the rail does not seek (a slider takes the primary button)",
+    "observed": "{\"c0\":480,\"start\":{\"x\":687.7142857142857,\"y\":888,\"dx\":0,\"fy\":0.5,\"atCentre\":\"b.\"},\"clock\":600.0000046591722,\"ctx\":[{\"target\":\"timerail\",\"prevented\":false}]}"
+   },
+   {
+    "id": "touch-cancel-no-hover-scrub",
+    "ok": false,
+    "expected": "after a touch on the rail ends or is cancelled, a buttonless mouse over the rail does not move the clock",
+    "observed": "{\"ended\":{\"c0\":240,\"afterTouch\":389.99999853749625,\"afterHover\":389.99999853749625},\"cancelled\":{\"c0\":389.99999853749625,\"afterTouch\":389.99999853749625,\"afterHover\":599.99998829997}}"
+   },
+   {
+    "id": "tier-follows-window",
+    "ok": false,
+    "expected": "enlarged to 1600 x 900 on a density-2 screen: the full tier (pixel ratio 2, the sun's shadow), as a page opened at that size has",
+    "observed": "{\"small\":{\"lowTier\":true,\"pixelRatio\":1,\"castShadow\":false,\"dpr\":2,\"vw\":[880,660],\"drawBuffer\":[880,660]},\"enlarged\":{\"lowTier\":true,\"pixelRatio\":1,\"castShadow\":false,\"dpr\":2,\"vw\":[1600,900],\"drawBuffer\":[880,660]}}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s11b-arrows-tier.json",
+  "name": "s11b-arrows-tier",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:45:40.250Z",
+  "ms": 170641,
+  "pages": [
+   "desk 1280x720 boot 46 s",
+   "desk-small 880x660 boot 20 s",
+   "desk-large 1600x900 boot 69 s"
+  ],
+  "checks": [
+   {
+    "id": "arrows-off-stay-off",
+    "ok": false,
+    "expected": "with the Movement layer off, a phase change draws no arrow: the outgoing phase's included",
+    "observed": "{\"before\":{\"old\":null,\"cur\":0,\"oldN\":0,\"curN\":41,\"oldVisible\":false,\"fadeOut\":0,\"fadeIn\":1,\"phase\":2,\"clock\":480,\"arrowsLayer\":false},\"first\":{\"old\":0.873,\"cur\":0,\"oldN\":41,\"curN\":20,\"oldVisible\":true,\"fadeOut\":0.969,\"fadeIn\":0,\"phase\":3,\"clock\":525,\"arrowsLayer\":false},\"maxOld\":0.845,\"framesAbove0_"
+   },
+   {
+    "id": "tier-follows-window",
+    "ok": false,
+    "expected": "enlarged to 1600 x 900 on a density-2 screen: the full tier (pixel ratio 2, the sun's shadow), as a page opened at that size has",
+    "observed": "{\"small\":{\"lowTier\":true,\"pixelRatio\":1,\"castShadow\":false,\"dpr\":2,\"vw\":[880,660],\"drawBuffer\":[880,660],\"aspect\":1.3333},\"enlarged\":{\"r\":{\"handled\":true,\"ms\":6792},\"tier\":{\"lowTier\":true,\"pixelRatio\":1,\"castShadow\":false,\"dpr\":2,\"vw\":[1600,900],\"drawBuffer\":[1600,900],\"aspect\":1.7778}}}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s13-tip-covers.json",
+  "name": "s13-tip-covers",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:38:08.260Z",
+  "ms": 289744,
+  "pages": [
+   "desk 1280x720 boot 86 s",
+   "desk 1600x900 boot 94 s"
+  ],
+  "checks": [
+   {
+    "id": "play-under-tip-1280",
+    "ok": false,
+    "expected": "a press on Play reached from a hovered marker toggles Play",
+    "observed": "{\"marker\":\"07:00, Kienmayer attacks Telnitz (the hour is disputed)\",\"tipWhileHovering\":{\"shown\":true,\"text\":\"07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)\",\"box\":[92,641,472,688],\"overlapping\":[\"prev\",\"play\",\"next\",\"nextEv\",\"follow\",\"The Deception\",\"The Allied A"
+   },
+   {
+    "id": "play-control-1280",
+    "ok": true,
+    "expected": "the same press after the pointer has left the timeline toggles Play",
+    "observed": "{\"before\":false,\"after\":true}"
+   },
+   {
+    "id": "play-under-tip-1600",
+    "ok": false,
+    "expected": "a press on Play reached from a hovered marker toggles Play",
+    "observed": "{\"marker\":\"07:00, Kienmayer attacks Telnitz (the hour is disputed)\",\"tipWhileHovering\":{\"shown\":true,\"text\":\"07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)\",\"box\":[161,821,541,868],\"overlapping\":[\"next\",\"nextEv\",\"follow\",\"The Deception\",\"The Allied Adv\",\"Deployme"
+   },
+   {
+    "id": "play-control-1600",
+    "ok": true,
+    "expected": "the same press after the pointer has left the timeline toggles Play",
+    "observed": "{\"before\":false,\"after\":true}"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ },
+ {
+  "file": "s14-glide-input.json",
+  "name": "s14-glide-input",
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "started": "2026-11-02T06:33:22.848Z",
+  "ms": 185775,
+  "pages": [
+   "desk 1280x720 boot 98 s"
+  ],
+  "checks": [
+   {
+    "id": "held-vantage-glide-drag",
+    "ok": false,
+    "expected": "a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+    "observed": "{\"glideRunningAtInput\":true,\"movedAfterInput\":525.481,\"atRelease\":{\"pos\":[-75.66,467.88,142.71],\"tgt\":[-31.64,0.47,2.37],\"freeCam\":true,\"twCam\":true,\"vantage\":null},\"end\":{\"pos\":[-83,25.08,-53],\"tgt\":[9,6.56,-5],\"freeCam\":true,\"twCam\":false,\"vantage\":null},\"freeCamAtEnd\":true,\"glideSlotAtRelease\":tr"
+   },
+   {
+    "id": "held-vantage-glide-wheel",
+    "ok": false,
+    "expected": "a wheel during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+    "observed": "{\"glideRunningAtInput\":true,\"movedAfterInput\":185.658,\"atRelease\":{\"pos\":[-95.97,25.82,-33.21],\"tgt\":[5.82,6.76,-5.64],\"freeCam\":true,\"twCam\":true,\"vantage\":null},\"end\":{\"pos\":[23,27.13,55],\"tgt\":[-31,9.08,-13],\"freeCam\":true,\"twCam\":false,\"vantage\":null},\"freeCamAtEnd\":true,\"glideSlotAtRelease\":tru"
+   },
+   {
+    "id": "held-phase-glide-PageDown-drag",
+    "ok": false,
+    "expected": "a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+    "observed": "{\"glideRunningAtInput\":false,\"movedAfterInput\":0,\"atRelease\":{\"pos\":[-4.02,27.13,45.65],\"tgt\":[-82.58,0.87,-53.28],\"freeCam\":true,\"twCam\":false,\"vantage\":null},\"end\":{\"pos\":[-4.02,27.13,45.65],\"tgt\":[-82.58,0.87,-53.28],\"freeCam\":true,\"twCam\":false,\"vantage\":null},\"freeCamAtEnd\":true,\"glideSlotAtRel"
+   },
+   {
+    "id": "held-dossier-centring-drag",
+    "ok": false,
+    "expected": "a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+    "observed": "{\"glideRunningAtInput\":true,\"movedAfterInput\":185.878,\"atRelease\":{\"pos\":[-30.4,36.63,80.21],\"tgt\":[-79.06,0.5,-31.49],\"freeCam\":true,\"twCam\":true,\"vantage\":null},\"end\":{\"pos\":[-111.79,51.02,112.65],\"tgt\":[-64.5,-2.28,64.5],\"freeCam\":true,\"twCam\":false,\"vantage\":null},\"freeCamAtEnd\":true,\"glideSlotA"
+   },
+   {
+    "id": "held-vantage-glide-map-arrow-keys",
+    "ok": false,
+    "expected": "a map arrow keys during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+    "observed": "{\"glideRunningAtInput\":true,\"movedAfterInput\":335.424,\"atRelease\":{\"pos\":[-96.34,56.52,131.29],\"tgt\":[-59.68,-1.7,58.09],\"freeCam\":true,\"twCam\":true,\"vantage\":null},\"end\":{\"pos\":[135,45.31,-22],\"tgt\":[-25,2.49,12],\"freeCam\":true,\"twCam\":false,\"vantage\":null},\"freeCamAtEnd\":true,\"glideSlotAtRelease\":"
+   }
+  ],
+  "stepErrors": [],
+  "console": [],
+  "fatal": null
+ }
+]

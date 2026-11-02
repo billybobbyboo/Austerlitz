@@ -1,0 +1,6378 @@
+{
+ "name": "s7-resize-rotate",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-02T06:02:15.650Z",
+ "opts": {
+  "viewports": [
+   [
+    1600,
+    900
+   ],
+   [
+    1024,
+    900
+   ],
+   [
+    700,
+    900
+   ],
+   [
+    390,
+    900
+   ],
+   "phone 390x844<->844x390"
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1600,
+    900
+   ],
+   "o": {},
+   "bootMs": 117176
+  },
+  {
+   "kind": "phone",
+   "size": [
+    390,
+    844
+   ],
+   "o": {},
+   "bootMs": 42602
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 117889,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.68,
+      61.01
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.18
+     ]
+    }
+   },
+   "log": [],
+   "ms": 79
+  },
+  {
+   "page": 0,
+   "label": "click a formation's name (its card opens)",
+   "at": 117971,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2158,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.68,
+      61.01
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.18
+     ]
+    }
+   },
+   "log": [],
+   "ms": 179
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; PageDown (the phase's message); resize to 1600 x 900; 10 frames",
+   "at": 118150,
+   "ret": {
+    "boxes": {
+     "rail": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "dispatch": [
+      18,
+      137,
+      277,
+      1340
+     ],
+     "drawer": [
+      -303,
+      0,
+      -3,
+      809
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      1260,
+      20,
+      1578,
+      106
+     ],
+     "timebar": [
+      0,
+      810,
+      1600,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": [
+      1489,
+      753,
+      1582,
+      795
+     ],
+     "selchip": null
+    },
+    "offscreen": [
+     "dispatch",
+     "drawer"
+    ],
+    "vw": [
+     1600,
+     900
+    ]
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2198,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 20,
+     "dropped": 6
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -39.39,
+      489.34,
+      65.87
+     ],
+     "tgt": [
+      -38.95,
+      0.56,
+      4.67
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1060
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; PageDown (the phase's message); resize to 1024 x 900; 10 frames",
+   "at": 119210,
+   "ret": {
+    "boxes": {
+     "rail": [
+      0,
+      0,
+      272,
+      809
+     ],
+     "dispatch": [
+      18,
+      151,
+      249,
+      1478
+     ],
+     "drawer": [
+      -275,
+      0,
+      -3,
+      809
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      651,
+      56,
+      1010,
+      117
+     ],
+     "timebar": [
+      0,
+      810,
+      1024,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [
+     "dispatch",
+     "drawer"
+    ],
+    "vw": [
+     1024,
+     900
+    ]
+   },
+   "s": {
+    "clock": 480,
+    "clockText": "08:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 19,300",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      629,
+      26,
+      667,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2198,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 29,
+     "placed": 23,
+     "dropped": 6
+    },
+    "overlays": 41,
+    "drawon": [
+     0,
+     0.75
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1024,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -40,
+      487.72,
+      70.52
+     ],
+     "tgt": [
+      -39.09,
+      0.62,
+      5.02
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s7-resize-rotate-dossier-1024-a-dom.jpg",
+   "log": [],
+   "ms": 83699
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; PageDown (the phase's message); resize to 700 x 900; 10 frames",
+   "at": 202909,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": [
+      0,
+      284,
+      700,
+      779
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      779,
+      700,
+      900
+     ],
+     "toast": [
+      210,
+      26,
+      491,
+      60
+     ],
+     "tourbar": null,
+     "menu": [
+      630,
+      10,
+      690,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     700,
+     900
+    ]
+   },
+   "s": {
+    "clock": 525,
+    "clockText": "08:45",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 4,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach · derived on the heights: Allied ≈ 23,550",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      210,
+      26,
+      491,
+      60
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2089,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 12,
+     "dropped": 3
+    },
+    "overlays": 20,
+    "drawon": [
+     0,
+     0,
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     700,
+     900
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -40.55,
+      486.1,
+      74.96
+     ],
+     "tgt": [
+      -38.82,
+      0.65,
+      4.95
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2178
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; PageDown (the phase's message); resize to 390 x 900; 10 frames",
+   "at": 205088,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": [
+      0,
+      284,
+      390,
+      779
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      779,
+      390,
+      900
+     ],
+     "toast": [
+      55,
+      62,
+      336,
+      96
+     ],
+     "tourbar": null,
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     390,
+     900
+    ]
+   },
+   "s": {
+    "clock": 570,
+    "clockText": "09:30",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 6,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 4,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      55,
+      62,
+      336,
+      96
+     ],
+     "timer": true
+    },
+    "livePhase": "09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2089,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 27,
+     "placed": 12,
+     "dropped": 13
+    },
+    "overlays": 48,
+    "drawon": [
+     0,
+     0,
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     900
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "The crisis on the Pratzeberg",
+    "cam": {
+     "pos": [
+      -41.03,
+      484.17,
+      79.36
+     ],
+     "tgt": [
+      -38.43,
+      0.73,
+      5.01
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s7-resize-rotate-dossier-390-a-dom.jpg",
+   "log": [],
+   "ms": 741
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; PageDown (the phase's message); resize to 1024 x 900; 10 frames",
+   "at": 205829,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": [
+      16,
+      138,
+      456,
+      797
+     ],
+     "drawer": [
+      664,
+      0,
+      1024,
+      809
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      291,
+      56,
+      650,
+      117
+     ],
+     "timebar": [
+      0,
+      810,
+      1024,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     1024,
+     900
+    ]
+   },
+   "s": {
+    "clock": 630,
+    "clockText": "10:30",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 9,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 5,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The northern battle decided · Langeron's reinforcements arrive as the crest is lost · derived on the heights: Allied ≈ 16,250 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 1,
+     "box": [
+      372,
+      125,
+      653,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "10:30 - 11:15. The Army Divided: The northern battle decided.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2089,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 23,
+     "placed": 12,
+     "dropped": 6
+    },
+    "overlays": 12,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1024,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "The northern battle decided",
+    "cam": {
+     "pos": [
+      -41.94,
+      484.15,
+      83.51
+     ],
+     "tgt": [
+      -37.82,
+      0.78,
+      4.41
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s7-resize-rotate-dossier-1024-a-dom.jpg",
+   "log": [],
+   "ms": 2212
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; PageDown (the phase's message); resize to 1600 x 900; 10 frames",
+   "at": 208041,
+   "ret": {
+    "boxes": {
+     "rail": [
+      -303,
+      0,
+      -3,
+      809
+     ],
+     "dispatch": [
+      -285,
+      137,
+      -26,
+      2906
+     ],
+     "drawer": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      900,
+      20,
+      1218,
+      106
+     ],
+     "timebar": [
+      0,
+      810,
+      1600,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": [
+      1113,
+      753,
+      1206,
+      795
+     ],
+     "selchip": null
+    },
+    "offscreen": [
+     "rail",
+     "dispatch"
+    ],
+    "vw": [
+     1600,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 11,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2344,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 17,
+     "dropped": 8
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -42.5,
+      482.17,
+      87.59
+     ],
+     "tgt": [
+      -37.28,
+      0.84,
+      4.11
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1038
+  },
+  {
+   "page": 0,
+   "label": "click 'Accuracy and sources' (the card's 'How this is sourced' or the rail's)",
+   "at": 209080,
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": true,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode",
+     "viewmode-home",
+     "rail",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "help",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 17,
+     "dropped": 8
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -42.5,
+      482.17,
+      87.59
+     ],
+     "tgt": [
+      -37.28,
+      0.84,
+      4.11
+     ]
+    }
+   },
+   "log": [],
+   "ms": 247
+  },
+  {
+   "page": 0,
+   "label": "resize to 1024 x 900 with the sources sheet open; 5 frames",
+   "at": 209327,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": [
+      16,
+      138,
+      456,
+      797
+     ],
+     "drawer": [
+      664,
+      0,
+      1024,
+      809
+     ],
+     "modal": [
+      202,
+      81,
+      822,
+      819
+     ],
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      651,
+      56,
+      1010,
+      117
+     ],
+     "timebar": [
+      0,
+      810,
+      1024,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     1024,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      372,
+      125,
+      653,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": true,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode",
+     "viewmode-home",
+     "rail",
+     "dispatch",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "help",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 20,
+     "dropped": 6
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1024,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -44.19,
+      477.21,
+      97.08
+     ],
+     "tgt": [
+      -36,
+      0.97,
+      3.4
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1168
+  },
+  {
+   "page": 0,
+   "label": "resize to 700 x 900 with the sources sheet open; 5 frames",
+   "at": 210495,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": [
+      0,
+      314,
+      700,
+      809
+     ],
+     "modal": [
+      40,
+      81,
+      660,
+      819
+     ],
+     "help": null,
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      800,
+      700,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": [
+      630,
+      10,
+      690,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     700,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      210,
+      125,
+      491,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": true,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode",
+     "viewmode-home",
+     "rail",
+     "dispatch",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "help",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 11,
+     "dropped": 13
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     700,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -48.82,
+      466.42,
+      114.58
+     ],
+     "tgt": [
+      -33.52,
+      1.24,
+      2.02
+     ]
+    }
+   },
+   "log": [],
+   "ms": 490
+  },
+  {
+   "page": 0,
+   "label": "resize to 390 x 900 with the sources sheet open; 5 frames",
+   "at": 210985,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": [
+      0,
+      305,
+      390,
+      800
+     ],
+     "modal": [
+      24,
+      81,
+      366,
+      819
+     ],
+     "help": null,
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      800,
+      390,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     390,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      55,
+      125,
+      336,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": true,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode-home",
+     "rail",
+     "dispatch",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "help",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 8,
+     "dropped": 18
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     900
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -59.96,
+      445.36,
+      140.04
+     ],
+     "tgt": [
+      -29.41,
+      1.68,
+      -0.25
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s7-resize-rotate-sources-390-dom.jpg",
+   "log": [],
+   "ms": 2811
+  },
+  {
+   "page": 0,
+   "label": "resize to 1600 x 900 with the sources sheet open; 5 frames",
+   "at": 213796,
+   "ret": {
+    "boxes": {
+     "rail": [
+      0,
+      7,
+      300,
+      816
+     ],
+     "dispatch": [
+      18,
+      144,
+      277,
+      2913
+     ],
+     "drawer": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "modal": [
+      490,
+      81,
+      1110,
+      819
+     ],
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      1257,
+      20,
+      1575,
+      106
+     ],
+     "timebar": [
+      0,
+      810,
+      1600,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": [
+      1486,
+      753,
+      1579,
+      795
+     ],
+     "selchip": null
+    },
+    "offscreen": [
+     "dispatch"
+    ],
+    "vw": [
+     1600,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": true,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode",
+     "viewmode-home",
+     "rail",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "help",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 16,
+     "dropped": 10
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -82.62,
+      406.44,
+      168.11
+     ],
+     "tgt": [
+      -23.3,
+      2.33,
+      -3.65
+     ]
+    }
+   },
+   "log": [],
+   "ms": 630
+  },
+  {
+   "page": 0,
+   "label": "Esc (sheet closed); key ? (overlay open)",
+   "at": 214426,
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": true,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#help-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode",
+     "viewmode-home",
+     "rail",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "modal",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 16,
+     "dropped": 10
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -82.62,
+      406.44,
+      168.11
+     ],
+     "tgt": [
+      -23.3,
+      2.33,
+      -3.65
+     ]
+    }
+   },
+   "log": [],
+   "ms": 19
+  },
+  {
+   "page": 0,
+   "label": "resize to 700 x 900 with the ? overlay open",
+   "at": 214445,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": [
+      0,
+      305,
+      700,
+      800
+     ],
+     "modal": null,
+     "help": [
+      24,
+      81,
+      676,
+      819
+     ],
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      800,
+      700,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": [
+      630,
+      10,
+      690,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     700,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      210,
+      125,
+      491,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": true,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#help-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode-home",
+     "rail",
+     "dispatch",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "modal",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 15,
+     "dropped": 11
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     700,
+     900
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -118.81,
+      339.28,
+      183.21
+     ],
+     "tgt": [
+      -14.76,
+      3.24,
+      -8.39
+     ]
+    }
+   },
+   "log": [],
+   "ms": 810
+  },
+  {
+   "page": 0,
+   "label": "resize to 390 x 900 with the ? overlay open",
+   "at": 215255,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": [
+      0,
+      284,
+      390,
+      779
+     ],
+     "modal": null,
+     "help": [
+      24,
+      81,
+      366,
+      819
+     ],
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      779,
+      390,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     390,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      55,
+      125,
+      336,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": true,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#help-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode-home",
+     "rail",
+     "dispatch",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "modal",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 26,
+     "placed": 4,
+     "dropped": 10
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     900
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -154.35,
+      238.58,
+      159.24
+     ],
+     "tgt": [
+      -3.52,
+      4.44,
+      -14.62
+     ]
+    }
+   },
+   "log": [],
+   "ms": 909
+  },
+  {
+   "page": 0,
+   "label": "resize to 1600 x 900 with the ? overlay open",
+   "at": 216164,
+   "ret": {
+    "boxes": {
+     "rail": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "dispatch": [
+      18,
+      137,
+      277,
+      2906
+     ],
+     "drawer": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "modal": null,
+     "help": [
+      440,
+      81,
+      1160,
+      819
+     ],
+     "layerpop": null,
+     "tools": [
+      1260,
+      20,
+      1578,
+      106
+     ],
+     "timebar": [
+      0,
+      810,
+      1600,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": [
+      1489,
+      753,
+      1582,
+      795
+     ],
+     "selchip": null
+    },
+    "offscreen": [
+     "dispatch"
+    ],
+    "vw": [
+     1600,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": true,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#help-close",
+    "focusVisible": true,
+    "inertKids": [
+     "stage",
+     "vignette",
+     "viewmode",
+     "viewmode-home",
+     "rail",
+     "dispatch-home",
+     "live-map",
+     "menubtn",
+     "tools",
+     "layerpop",
+     "vsbadge",
+     "selchip",
+     "devstats",
+     "legend collapsed",
+     "timebar",
+     "drawer",
+     "modal",
+     "restore",
+     "tourbar",
+     "firstrun",
+     "tltip",
+     "map-main",
+     "eyecap"
+    ],
+    "ml": {
+     "items": 50,
+     "placed": 13,
+     "dropped": 28
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -156.84,
+      150.59,
+      106.48
+     ],
+     "tgt": [
+      6.67,
+      5.53,
+      -20.27
+     ]
+    }
+   },
+   "log": [],
+   "ms": 650
+  },
+  {
+   "page": 0,
+   "label": "Esc (overlay closed); Esc (card closed); click Layers",
+   "at": 216814,
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2358,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": true,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 50,
+     "placed": 13,
+     "dropped": 28
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -156.84,
+      150.59,
+      106.48
+     ],
+     "tgt": [
+      6.67,
+      5.53,
+      -20.27
+     ]
+    }
+   },
+   "log": [],
+   "ms": 128
+  },
+  {
+   "page": 0,
+   "label": "resize to 1024 x 900 with the Layers panel open",
+   "at": 216942,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": [
+      16,
+      138,
+      456,
+      797
+     ],
+     "drawer": null,
+     "modal": null,
+     "help": null,
+     "layerpop": [
+      714,
+      104,
+      1002,
+      783
+     ],
+     "tools": [
+      651,
+      56,
+      1010,
+      117
+     ],
+     "timebar": [
+      0,
+      810,
+      1024,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     1024,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      372,
+      125,
+      653,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": true,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 62,
+     "placed": 4,
+     "dropped": 28
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 14,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1024,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -136.88,
+      95.94,
+      60.88
+     ],
+     "tgt": [
+      14.19,
+      6.33,
+      -24.45
+     ]
+    }
+   },
+   "log": [],
+   "ms": 498
+  },
+  {
+   "page": 0,
+   "label": "resize to 700 x 900 with the Layers panel open",
+   "at": 217440,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": null,
+     "modal": null,
+     "help": null,
+     "layerpop": [
+      10,
+      96,
+      690,
+      618
+     ],
+     "tools": null,
+     "timebar": [
+      0,
+      800,
+      700,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": [
+      630,
+      10,
+      690,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     700,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      210,
+      125,
+      491,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": true,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 64,
+     "placed": 7,
+     "dropped": 17
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 14,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     700,
+     900
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -113.3,
+      65.18,
+      30.72
+     ],
+     "tgt": [
+      19.45,
+      6.89,
+      -27.37
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s7-resize-rotate-layers-700-dom.jpg",
+   "log": [],
+   "ms": 2443
+  },
+  {
+   "page": 0,
+   "label": "resize to 390 x 900 with the Layers panel open",
+   "at": 219884,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": null,
+     "modal": null,
+     "help": null,
+     "layerpop": [
+      10,
+      96,
+      380,
+      618
+     ],
+     "tools": null,
+     "timebar": [
+      0,
+      779,
+      390,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     390,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      55,
+      125,
+      336,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": true,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 64,
+     "placed": 8,
+     "dropped": 13
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 14,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     900
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -94.76,
+      48.9,
+      13.23
+     ],
+     "tgt": [
+      22.86,
+      7.26,
+      -29.26
+     ]
+    }
+   },
+   "log": [],
+   "ms": 399
+  },
+  {
+   "page": 0,
+   "label": "resize to 1600 x 900 with the Layers panel open",
+   "at": 220284,
+   "ret": {
+    "boxes": {
+     "rail": [
+      0,
+      919,
+      300,
+      1717
+     ],
+     "dispatch": [
+      18,
+      1056,
+      277,
+      3825
+     ],
+     "drawer": null,
+     "modal": null,
+     "help": null,
+     "layerpop": [
+      1290,
+      104,
+      1578,
+      772
+     ],
+     "tools": [
+      1260,
+      20,
+      1578,
+      106
+     ],
+     "timebar": [
+      0,
+      798,
+      1600,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": [
+      1489,
+      742,
+      1582,
+      784
+     ],
+     "selchip": null
+    },
+    "offscreen": [
+     "rail",
+     "dispatch"
+    ],
+    "vw": [
+     1600,
+     900
+    ]
+   },
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": false,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": true,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 64,
+     "placed": 26,
+     "dropped": 5
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 14,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -83.22,
+      40.86,
+      4.13
+     ],
+     "tgt": [
+      24.82,
+      7.47,
+      -30.34
+     ]
+    }
+   },
+   "log": [],
+   "ms": 593
+  },
+  {
+   "page": 0,
+   "label": "Esc",
+   "at": 220877,
+   "s": {
+    "clock": 675,
+    "clockText": "11:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 13,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · The French take Blasowitz from the Russian Guard · derived on the heights: Allied ≈ 20,680 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": false,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 64,
+     "placed": 26,
+     "dropped": 5
+    },
+    "overlays": 32,
+    "drawon": [
+     0
+    ],
+    "smoke": 14,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -83.22,
+      40.86,
+      4.13
+     ],
+     "tgt": [
+      24.82,
+      7.47,
+      -30.34
+     ]
+    }
+   },
+   "log": [],
+   "ms": 5
+  },
+  {
+   "page": 1,
+   "label": "phone: tap the card's 'Explore on my own'",
+   "at": 263877,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 4412
+  },
+  {
+   "page": 1,
+   "label": "tap the Menu",
+   "at": 268289,
+   "ret": {
+    "x": 350,
+    "y": 32,
+    "box": "320,10,60,44",
+    "hit": true,
+    "top": "#menubtn",
+    "waitedMs": 536
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": true,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.vm-btn[Study]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": true,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 539
+  },
+  {
+   "page": 1,
+   "label": "turn the phone (844 x 390)",
+   "at": 268828,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": null,
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      453,
+      56,
+      830,
+      121
+     ],
+     "timebar": [
+      0,
+      288,
+      844,
+      390
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     844,
+     390
+    ]
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      403,
+      26,
+      441,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": true,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 12,
+     "dropped": 19
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     844,
+     390
+    ],
+    "phone": {
+     "on": true,
+     "menu": true,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s7-resize-rotate-phone-turned-menu-dom.jpg",
+   "log": [],
+   "ms": 9070
+  },
+  {
+   "page": 1,
+   "label": "turn back (390 x 844)",
+   "at": 277898,
+   "ret": {
+    "boxes": {
+     "rail": null,
+     "dispatch": [
+      0,
+      552,
+      390,
+      723
+     ],
+     "drawer": null,
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      723,
+      390,
+      844
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    },
+    "offscreen": [],
+    "vw": [
+     390,
+     844
+    ]
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 10
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 566
+  },
+  {
+   "page": 1,
+   "label": "tap the dispatch sheet's grip (open)",
+   "at": 278464,
+   "ret": {
+    "x": 195,
+    "y": 568.375,
+    "box": "14,554.4,362,28",
+    "hit": true,
+    "top": "SPAN.",
+    "waitedMs": 227
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": true,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#dgrip",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 10
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": true,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 422
+  },
+  {
+   "page": 1,
+   "label": "turn (844 x 390) and back (390 x 844) with the dispatch sheet open",
+   "at": 278886,
+   "ret": {
+    "a": {
+     "boxes": {
+      "rail": null,
+      "dispatch": null,
+      "drawer": null,
+      "modal": null,
+      "help": null,
+      "layerpop": null,
+      "tools": [
+       471,
+       56,
+       830,
+       119
+      ],
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ],
+      "toast": null,
+      "tourbar": null,
+      "menu": null,
+      "legend": null,
+      "selchip": null
+     },
+     "offscreen": [],
+     "vw": [
+      844,
+      390
+     ]
+    },
+    "sa": {
+     "phone": {
+      "on": false,
+      "menu": false,
+      "sheet": false,
+      "layers": false,
+      "drawer": false,
+      "rail": false
+     },
+     "focus": "body",
+     "focusVisible": null
+    },
+    "b": {
+     "boxes": {
+      "rail": null,
+      "dispatch": [
+       0,
+       579,
+       390,
+       750
+      ],
+      "drawer": null,
+      "modal": null,
+      "help": null,
+      "layerpop": null,
+      "tools": null,
+      "timebar": [
+       0,
+       744,
+       390,
+       844
+      ],
+      "toast": null,
+      "tourbar": null,
+      "menu": [
+       320,
+       10,
+       380,
+       54
+      ],
+      "legend": null,
+      "selchip": null
+     },
+     "offscreen": [],
+     "vw": [
+      390,
+      844
+     ]
+    }
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 891
+  },
+  {
+   "page": 1,
+   "label": "tap a formation on the map (its sheet opens)",
+   "at": 279785,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2158,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 10
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1847
+  },
+  {
+   "page": 1,
+   "label": "turn (844 x 390) with the dossier open; then back",
+   "at": 281632,
+   "ret": {
+    "a": {
+     "boxes": {
+      "rail": null,
+      "dispatch": null,
+      "drawer": [
+       484,
+       0,
+       844,
+       299
+      ],
+      "modal": null,
+      "help": null,
+      "layerpop": null,
+      "tools": [
+       111,
+       56,
+       470,
+       119
+      ],
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ],
+      "toast": null,
+      "tourbar": null,
+      "menu": null,
+      "legend": null,
+      "selchip": null
+     },
+     "offscreen": [],
+     "vw": [
+      844,
+      390
+     ]
+    },
+    "sa": {
+     "drawer": {
+      "on": true,
+      "visible": true,
+      "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+      "len": 2158,
+      "inert": false
+     },
+     "focus": "body",
+     "focusVisible": null,
+     "sel": "f:gqg"
+    },
+    "b": {
+     "boxes": {
+      "rail": null,
+      "dispatch": null,
+      "drawer": [
+       0,
+       280,
+       390,
+       744
+      ],
+      "modal": null,
+      "help": null,
+      "layerpop": null,
+      "tools": null,
+      "timebar": [
+       0,
+       724,
+       390,
+       844
+      ],
+      "toast": null,
+      "tourbar": null,
+      "menu": [
+       320,
+       10,
+       380,
+       54
+      ],
+      "legend": null,
+      "selchip": null
+     },
+     "offscreen": [],
+     "vw": [
+      390,
+      844
+     ]
+    }
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2158,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 13,
+     "dropped": 18
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s7-resize-rotate-phone-dossier-back-dom.jpg",
+   "log": [],
+   "ms": 3009
+  }
+ ],
+ "checks": [
+  {
+   "id": "dossier-at-1600",
+   "ok": false,
+   "expected": "at 1600 px: the card open, nothing off screen, no panel over another, focus visible",
+   "observed": {
+    "offscreen": [
+     "dispatch",
+     "drawer"
+    ],
+    "overlaps": [
+     "rail/dispatch"
+    ],
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2198,
+     "inert": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "boxes": {
+     "rail": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "dispatch": [
+      18,
+      137,
+      277,
+      1340
+     ],
+     "drawer": [
+      -303,
+      0,
+      -3,
+      809
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      1260,
+      20,
+      1578,
+      106
+     ],
+     "timebar": [
+      0,
+      810,
+      1600,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": [
+      1489,
+      753,
+      1582,
+      795
+     ],
+     "selchip": null
+    }
+   }
+  },
+  {
+   "id": "dossier-at-1024",
+   "ok": false,
+   "expected": "at 1024 px: the card open, nothing off screen, no panel over another, focus visible",
+   "observed": {
+    "offscreen": [
+     "dispatch",
+     "drawer"
+    ],
+    "overlaps": [
+     "rail/dispatch"
+    ],
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2198,
+     "inert": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      629,
+      26,
+      667,
+      44
+     ],
+     "timer": false
+    },
+    "boxes": {
+     "rail": [
+      0,
+      0,
+      272,
+      809
+     ],
+     "dispatch": [
+      18,
+      151,
+      249,
+      1478
+     ],
+     "drawer": [
+      -275,
+      0,
+      -3,
+      809
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      651,
+      56,
+      1010,
+      117
+     ],
+     "timebar": [
+      0,
+      810,
+      1024,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": null,
+     "selchip": null
+    }
+   }
+  },
+  {
+   "id": "dossier-at-700",
+   "ok": true,
+   "expected": "at 700 px: the card open, nothing off screen, no panel over another, focus visible",
+   "observed": {
+    "offscreen": [],
+    "overlaps": [],
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2089,
+     "inert": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      210,
+      26,
+      491,
+      60
+     ],
+     "timer": true
+    },
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": [
+      0,
+      284,
+      700,
+      779
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      779,
+      700,
+      900
+     ],
+     "toast": [
+      210,
+      26,
+      491,
+      60
+     ],
+     "tourbar": null,
+     "menu": [
+      630,
+      10,
+      690,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    }
+   }
+  },
+  {
+   "id": "dossier-at-390",
+   "ok": true,
+   "expected": "at 390 px: the card open, nothing off screen, no panel over another, focus visible",
+   "observed": {
+    "offscreen": [],
+    "overlaps": [],
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2089,
+     "inert": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      55,
+      62,
+      336,
+      96
+     ],
+     "timer": true
+    },
+    "boxes": {
+     "rail": null,
+     "dispatch": null,
+     "drawer": [
+      0,
+      284,
+      390,
+      779
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": null,
+     "timebar": [
+      0,
+      779,
+      390,
+      900
+     ],
+     "toast": [
+      55,
+      62,
+      336,
+      96
+     ],
+     "tourbar": null,
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ],
+     "legend": null,
+     "selchip": null
+    }
+   }
+  },
+  {
+   "id": "dossier-at-1024",
+   "ok": true,
+   "expected": "at 1024 px: the card open, nothing off screen, no panel over another, focus visible",
+   "observed": {
+    "offscreen": [],
+    "overlaps": [],
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2089,
+     "inert": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": false
+    },
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 1,
+     "box": [
+      372,
+      125,
+      653,
+      159
+     ],
+     "timer": true
+    },
+    "boxes": {
+     "rail": null,
+     "dispatch": [
+      16,
+      138,
+      456,
+      797
+     ],
+     "drawer": [
+      664,
+      0,
+      1024,
+      809
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      291,
+      56,
+      650,
+      117
+     ],
+     "timebar": [
+      0,
+      810,
+      1024,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": null,
+     "selchip": null
+    }
+   }
+  },
+  {
+   "id": "dossier-at-1600",
+   "ok": false,
+   "expected": "at 1600 px: the card open, nothing off screen, no panel over another, focus visible",
+   "observed": {
+    "offscreen": [
+     "rail",
+     "dispatch"
+    ],
+    "overlaps": [
+     "rail/dispatch"
+    ],
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2344,
+     "inert": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      125,
+      1091,
+      159
+     ],
+     "timer": true
+    },
+    "boxes": {
+     "rail": [
+      -303,
+      0,
+      -3,
+      809
+     ],
+     "dispatch": [
+      -285,
+      137,
+      -26,
+      2906
+     ],
+     "drawer": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "modal": null,
+     "help": null,
+     "layerpop": null,
+     "tools": [
+      900,
+      20,
+      1218,
+      106
+     ],
+     "timebar": [
+      0,
+      810,
+      1600,
+      900
+     ],
+     "toast": null,
+     "tourbar": null,
+     "menu": null,
+     "legend": [
+      1113,
+      753,
+      1206,
+      795
+     ],
+     "selchip": null
+    }
+   }
+  },
+  {
+   "id": "sources-at-1024",
+   "ok": true,
+   "expected": "at 1024 px: the sheet open and inside the window, focus inside it and visible",
+   "observed": {
+    "modal": true,
+    "box": [
+     202,
+     81,
+     822,
+     819
+    ],
+    "offscreen": [],
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inert": 24
+   }
+  },
+  {
+   "id": "sources-at-700",
+   "ok": true,
+   "expected": "at 700 px: the sheet open and inside the window, focus inside it and visible",
+   "observed": {
+    "modal": true,
+    "box": [
+     40,
+     81,
+     660,
+     819
+    ],
+    "offscreen": [],
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inert": 24
+   }
+  },
+  {
+   "id": "sources-at-390",
+   "ok": true,
+   "expected": "at 390 px: the sheet open and inside the window, focus inside it and visible",
+   "observed": {
+    "modal": true,
+    "box": [
+     24,
+     81,
+     366,
+     819
+    ],
+    "offscreen": [],
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inert": 23
+   }
+  },
+  {
+   "id": "sources-at-1600",
+   "ok": true,
+   "expected": "at 1600 px: the sheet open and inside the window, focus inside it and visible",
+   "observed": {
+    "modal": true,
+    "box": [
+     490,
+     81,
+     1110,
+     819
+    ],
+    "offscreen": [
+     "dispatch"
+    ],
+    "focus": "#modal-close",
+    "focusVisible": true,
+    "inert": 23
+   }
+  },
+  {
+   "id": "help-at-700",
+   "ok": true,
+   "expected": "at 700 px: the overlay inside the window, focus inside",
+   "observed": {
+    "help": true,
+    "box": [
+     24,
+     81,
+     676,
+     819
+    ],
+    "focus": "#help-close",
+    "focusVisible": true
+   }
+  },
+  {
+   "id": "help-at-390",
+   "ok": true,
+   "expected": "at 390 px: the overlay inside the window, focus inside",
+   "observed": {
+    "help": true,
+    "box": [
+     24,
+     81,
+     366,
+     819
+    ],
+    "focus": "#help-close",
+    "focusVisible": true
+   }
+  },
+  {
+   "id": "help-at-1600",
+   "ok": true,
+   "expected": "at 1600 px: the overlay inside the window, focus inside",
+   "observed": {
+    "help": true,
+    "box": [
+     440,
+     81,
+     1160,
+     819
+    ],
+    "focus": "#help-close",
+    "focusVisible": true
+   }
+  },
+  {
+   "id": "layers-at-1024",
+   "ok": true,
+   "expected": "at 1024 px: the Layers panel inside the window if still open; focus visible",
+   "observed": {
+    "layers": true,
+    "box": [
+     714,
+     104,
+     1002,
+     783
+    ],
+    "offscreen": [],
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": false
+    }
+   }
+  },
+  {
+   "id": "layers-at-700",
+   "ok": true,
+   "expected": "at 700 px: the Layers panel inside the window if still open; focus visible",
+   "observed": {
+    "layers": true,
+    "box": [
+     10,
+     96,
+     690,
+     618
+    ],
+    "offscreen": [],
+    "focus": "body",
+    "focusVisible": null,
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": false
+    }
+   }
+  },
+  {
+   "id": "layers-at-390",
+   "ok": true,
+   "expected": "at 390 px: the Layers panel inside the window if still open; focus visible",
+   "observed": {
+    "layers": true,
+    "box": [
+     10,
+     96,
+     380,
+     618
+    ],
+    "offscreen": [],
+    "focus": "body",
+    "focusVisible": null,
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": false
+    }
+   }
+  },
+  {
+   "id": "layers-at-1600",
+   "ok": true,
+   "expected": "at 1600 px: the Layers panel inside the window if still open; focus visible",
+   "observed": {
+    "layers": true,
+    "box": [
+     1290,
+     104,
+     1578,
+     772
+    ],
+    "offscreen": [
+     "rail",
+     "dispatch"
+    ],
+    "focus": "body",
+    "focusVisible": null,
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": true
+    }
+   }
+  },
+  {
+   "id": "phone-menu",
+   "ok": true,
+   "expected": "the Menu open",
+   "observed": {
+    "on": true,
+    "menu": true,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  {
+   "id": "phone-turn-menu",
+   "ok": false,
+   "expected": "turned: the landscape layout, the Menu closed, nothing off screen, focus visible",
+   "observed": {
+    "phone": {
+     "on": true,
+     "menu": true,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "offscreen": [],
+    "focus": "body",
+    "focusVisible": null
+   }
+  },
+  {
+   "id": "phone-turn-back",
+   "ok": true,
+   "expected": "turned back: the phone layout",
+   "observed": {
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "offscreen": [],
+    "focus": "body"
+   }
+  },
+  {
+   "id": "phone-sheet-turn",
+   "ok": true,
+   "expected": "the dispatch sheet across a turn: nothing off screen",
+   "observed": {
+    "landscape": {
+     "phone": {
+      "on": false,
+      "menu": false,
+      "sheet": false,
+      "layers": false,
+      "drawer": false,
+      "rail": false
+     },
+     "focus": "body",
+     "focusVisible": null
+    },
+    "back": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "offA": [],
+    "offB": []
+   }
+  },
+  {
+   "id": "phone-dossier-turn",
+   "ok": true,
+   "expected": "the dossier across a turn: kept, inside the window",
+   "observed": {
+    "landscape": {
+     "drawer": {
+      "on": true,
+      "visible": true,
+      "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+      "len": 2158,
+      "inert": false
+     },
+     "focus": "body",
+     "focusVisible": null,
+     "sel": "f:gqg"
+    },
+    "back": {
+     "drawer": {
+      "on": true,
+      "visible": true,
+      "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+      "len": 2158,
+      "inert": false
+     },
+     "sel": "f:gqg"
+    },
+    "offA": [],
+    "offB": []
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s7-resize-rotate-dossier-1024-a-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s7-resize-rotate-dossier-390-a-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s7-resize-rotate-dossier-1024-a-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s7-resize-rotate-sources-390-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s7-resize-rotate-layers-700-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s7-resize-rotate-phone-turned-menu-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s7-resize-rotate-phone-dossier-back-dom.jpg"
+ ],
+ "notes": [],
+ "listeners": {
+  "live": 383,
+  "removed": 0,
+  "onDetached": 1,
+  "total": 384,
+  "addCalls": 384,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 1,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 21,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 2,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip click": 1,
+   "#railclose click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 3dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 31,
+   "div.ml-item blur": 31,
+   "div.ml-item keydown": 31,
+   "div.ml-item click": 31,
+   "button.more-btn click": 1
+  },
+  "timeouts": 0,
+  "timeoutsBy": {},
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 1,
+  "tSet": 5,
+  "tFired": 3,
+  "tCleared": 2,
+  "rSet": 7,
+  "rFired": 7,
+  "rCancel": 0
+ },
+ "ms": 284658,
+ "ended": "2026-11-02T06:07:00.308Z"
+}

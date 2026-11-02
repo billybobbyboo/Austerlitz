@@ -1,0 +1,75 @@
+{
+ "label": "v-repro-srcgeo-sim",
+ "verdicts": [
+  {
+   "area": "sources-oob",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "Re-ran the finding's repro (tools/audit-post8/sources-oob/ia-fts.py on archive.org item austerlitz18050000duff, 2026-11-02 ~10:43Z) and read the raw output; ran my own queries (controls 10,530 and 23,900; OCR variants 4 300, 4.300, 3 470, 3.470, 13 900, 13.900; 4,800, 9,100, 6,880, '830 cavalry'); read every cited line at HEAD; grep of archived builds for origin.",
+   "evidence": "Duffy's text layer prints Friant '2nd Div. (3,800 and 9 guns)' and '(3,800 men and 9 guns)', Bourcier '(2,500 and 3 guns)', Kienmayer '(6,780 and 12 light pieces)', Dokhturov '(13,650, 40 light and 24 heavy pieces)', the 4th Column '(23,900, 52 light and 24 heavy pieces)' and 'fourth column of 23,900 infantry'; 0 hits for 4,300, 830, 3,470, 3,440, 13,240, 13,900, 4,800, 9,100, 6,880 and every OCR variant; control 10,530 (S5.7's page-read heading) found, so the layer carries the appendix. The map: data.js:240 (c_iii 4300 'Duffy and Smith give 4,300 ... 830 cavalry'), :248 (friant 3470), :470 (kienmayer '3,440 foot and 3,440 horse, which make 6,880'), :485 (dok 13,240+250), :550-551 (col4 13900 'Duffy 1977; Smith 1998', 23,900 given to Chandler), :558-559 (milo 4800 'implied'), analysis.js:25, appearance.js:547, narrative.js:537-539; shown in the dossier's 'On the figures' row (app.js:7978); only kienmayer has a claim, the rest are 'Not yet checked'. All strings present in archive/stage0-c09c4b23.html and correction-pass-672aff9f.html: inherited. Files: docs/audit-post8-evidence/verification/v-repro-srcgeo-sim/fts-repro.txt, fts-mine.txt.",
+   "notes": "OCR text layer, not page images; but for each formation Duffy prints a different figure in the same row, so the attributions fail on positive evidence. Not re-derived: 'IV Column rows add to about 16,065'. Smith (1998) unread (S5.8). The rewording is itself a data task (data.js, analysis.js, appearance.js, narrative.js guarded).",
+   "corrected": {
+    "priority": "P1"
+   }
+  },
+  {
+   "area": "geography",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "Own node probe (tools/audit-post8/verification/v-repro-srcgeo-sim/relief-probe.js) evaluating GEOREF.elevM(hAt(map)) on HEAD's geo.js/world.js at 60 points of my choosing (all on-map GT points, a 4x4 grid over the finding's box, its two proposed anchors, two 9-point profiles); DEMs queried by me from three datasets other than the area's GLO-90: ASTER 30 m, EU-DEM 25 m, SRTM 30 m (api.opentopodata.org, 2026-11-02 ~10:46Z); code and visitor text read.",
+   "evidence": "Controls: the 9 GT points with a sourced elevation, DEM vs GT mean abs 4.0 m (EU-DEM), 4.6 m (SRTM); model there 0-5 m. Southern box (map x 270-330, y 295-350, 16 cells): model mean 223.8 m vs EU-DEM 269.3, SRTM 266.9, ASTER 260.1; above the fog top 238.2 m: model 4/16, each DEM 13/16. (288,311): 255.3 vs 308.7/307/304; (297,328): 218.8 vs 296.0/289/285. Profiles model-EU-DEM: Pratzeberg-Augezd mean -34.4, worst -78.3 (1.0 km S of the summit 233.5 vs 311.8); Sokolnitz-Hostieradek mean -23.4, worst -77.5. GT.chapel 200.5 vs 242.7/242/235; GT.schlapanitz 273.0 vs 224.2/222/224. relief-fit.js:4-9: 12 anchors, none there. Fog reads the model's height (app.js:373, 4368, 10741). data.js:797 'fitted to surveyed elevations', :799 two limits only, :653 'Runs north-south between Blasowitz and the Litava'. relief-fit.js from 2026-10-02 (18e014b): inherited. Files: docs/audit-post8-evidence/verification/v-repro-srcgeo-sim/relief-compare.txt, model-pts.json, dem-mine.json.",
+   "notes": "Not re-done: the area's 300 m and 600 m grids, occupancy counts, fog-area sums, the OSM chapel point. Cause refinement: an unfitted Slapanice bump (extra issue 1) gives 22 of the +49 m there."
+  },
+  {
+   "area": "state",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "Two browser runs of my own (state-probe.js, state-probe2.js; browser-probe.js run 1 for the interaction) on a visitor's page at 1280x720, the audited build, the app's loop stepped on my own virtual clock (load 28-35 on 4 cores starved real frames: 5.5 s a frame), draw skipped; clock moved inside the phase by real input (rail clicks, ArrowRight on the focused rail); selection set up through the app's own handlers (element.click() on the OOB row and 'Full dossier', select('t','pratzen')) because the docked panels never settled under load; dossier innerText read against nearestFeature(posNow()) and placeNearby at the same clock; code read at HEAD and in archive/step5c-45f8f662.html.",
+   "evidence": "C1 Napoleon's HQ card: at 12:30 and 12:37 'Where 0.8 km north-west of Girzikowitz' while the model has '1.3 km north-west of Stare Vinohrady' and 'Stare Vinohrady' (drawerKey 6m|none painted and now). C2 full dossier: 'Position at 04:05 | Zuran mound' and day-track 'at 04:05' still shown at 04:45 (key 0s|none). C3 Pratzen Heights, everyone's reading: 'Formations nearby now' Saint-Hilaire's Division, Kamensky's Brigade at 11:15 and still at 12:44, the model then Imperial Headquarters, Saint-Hilaire's Division, Drouet d'Erlon's Division, Guard Cavalry (key ''). Code: app.js:3495, 3498 (repaint inside a phase only when drawerKey changes), 7720-7728 (key: textPhase, moving/standing, hidden, reading; '' for a place under no reading), 7908-7913, 8235, 8266-8273; same gate in the step-5c archive build: inherited. Files: docs/audit-post8-evidence/verification/v-repro-srcgeo-sim/state-probe.json, state-probe2.json.",
+   "notes": "Not reproduced: C4 and the counts (86/240, 49). Play not run (tickClock goes through setClock(...,{play:true}), the same gate)."
+  },
+  {
+   "area": "interaction",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "Own browser probe (browser-probe.js run 1): visitor's page 1280x720, audited build, the app's loop stepped on my own virtual clock (30 steps/s, draw skipped); real mouse clicks on hit-tested vantage buttons, a real 6-step drag or 3 wheel notches 10 steps (333 ms) into the glide, then 90 steps; destinations from the same glides run with no input; a no-glide drag as control; code read at HEAD and in the step-5c archive.",
+   "evidence": "Control drag without a glide: moved 106.5, then 0.000 after release (holds). Zuran+drag: glide slot running at release, 6 pans handled, release 251.5 from the destination, end 0.000 (trail 126.2, 19.4, 0.09, 0); Pratzen+wheel: 246.9 -> 0.000; Allied+drag: 371.5 -> 0.000; phase arc (PageDown 04:00->07:00)+drag: 116.7 from the end, which is exactly presetFrame(PHASES[1].cam); freeCam true (Follow off) at every end. Code: glide app.js:6309-6322 (absolute applyArc each frame), free() 6479 (no slot stop), panTo 6489-6497, loop 9132, bindCanvas 6854-, startPhaseTransition 3460/3472, only redrawGround stops it (2548). File: docs/audit-post8-evidence/verification/v-repro-srcgeo-sim/browser-probe-run1.json.",
+   "notes": "Scope: the landscape only; the paper map's MAPCAM already ends its glide on input (stop() app.js:4915, called by pan 4917 and zoomAt 4919; glide step 4952-4953), so the remedy's MAPCAM part is unneeded. Remedy correction: setTween('cam',null) inside free() would cancel the double-click focus glide, because focusAt calls glide() then free() (app.js:6517-6520); stop the slot at the input entry points instead. Map arrow keys and the phone pan not re-run (code: LANDCAM.key 6524-6532 uses panStart/panTo)."
+  },
+  {
+   "area": "tests",
+   "index": 0,
+   "verdict": "WEAKENED",
+   "method": "Read checks.yml at HEAD; ruleset, branch, check runs and the failing job log through the GitHub API myself (gh api, 2026-11-02); every Stage 8 merge into main checked.",
+   "evidence": "One ruleset 'protect main.' (24036909, active, created 2026-09-26T09:06:15Z) requiring a PR (0 approvals) and one status check, context 'checks'; classic protection disabled. checks.yml:22-40 node job, 45-65 browser matrix, 75-76 visual on dispatch only. ec911c9 (PR #77 head): browser (selftest) failure; merge 141f890: selftest failure 08:44:41Z, Pages deploy success 07:57:18Z; its only failure line 'jumps 248 over the 16 motions (limit 245); pops 998 (limit 985)' (the question-267 line); c2adefe all green; no commit between (23 h red); the other nine Stage 8 merges green; dispatch 41259079904 all four jobs green. Inherited (fd6e537 2026-10-07). File: docs/audit-post8-evidence/verification/v-repro-srcgeo-sim/selftest-141f890-failures.txt.",
+   "notes": "Every fact holds; the severity does not. Decision 132 (docs/FINAL_AUDIT.md:834, 877-879) asked only that the two checks run in checks.yml, which they do; no CLAUDE.md rule requires them to gate; the one red merge was the owner's, knowingly, over the line put as question 267 and accepted next day as 267 (a); nothing a visitor saw was wrong. A process risk: S3. The remedy should add that required checks gate merges only, not the Pages deployment (extra issue 2). Not checked: the visual outcomes on PRs #70-#79.",
+   "corrected": {
+    "severity": "S3",
+    "priority": "P2",
+    "category": "probable-problem",
+    "title": "TS-1: only the node job is a required check: the browser checks and check:visual gate no merge (the one red merge, #77, was the owner's knowing merge over the question-267 line)"
+   }
+  }
+ ],
+ "not_done": [
+  "sources-oob #0: Duffy's page images not read (lending item); 'IV Column rows ~16,065' not re-derived; Smith 1998 not readable",
+  "geography #0: the area's 300 m/600 m grids, occupancy and fog-area sums, and the OSM chapel point not re-done (my own 60-point sample and three other DEMs instead)",
+  "state #0: C4 and the 86/240 and 49 counts not re-counted; Play not run; selection made through the app's handlers (panels never settled under load)",
+  "interaction #0: map arrow keys and the phone finger pan not re-run; real-time (non-virtual-clock) runs impossible at this load (5.5 s a frame)",
+  "tests #0: visual job outcomes on PRs #70-#79 not re-read"
+ ],
+ "extra_issues": [
+  {
+   "title": "The Slapanice relief bump is not fitted to any source",
+   "severity": "S4",
+   "evidence": "world.js:289 bump(x,z,SCHLAP,15,9,3.0,0.36) with SCHLAP=W(163,177) (world.js:250), GT.schlapanitz's own point; worth 3.0 units, 22 m after the x1.2 (computed); tools/relief-fit.js has no term or anchor for it; no rationale in CHANGELOG or docs. It is 22 of the model's +49 m at the village (273.0 m vs EU-DEM 224.2, SRTM 222, ASTER 224).",
+   "notes": "Part of geography #0's cause; a refit should drop or fit it."
+  },
+  {
+   "title": "The Pages deployment of main waits for no check",
+   "severity": "S4",
+   "evidence": "141f890 check runs: Pages deploy completed 2026-10-31T07:57:18Z, before the required node job 'checks' (08:01:18Z) and both browser jobs (08:04:28Z, 08:44:41Z).",
+   "notes": "Required status checks gate a PR's merge only; tests #0's remedy should say so."
+  }
+ ]
+}

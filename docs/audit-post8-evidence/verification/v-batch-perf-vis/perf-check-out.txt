@@ -1,0 +1,503 @@
+== perf-L3-desktop.json v step6-perf-route 3 build {"bytes": 2218404, "sha256": "0c64a52d2eeb7218e2b17714da18f682d87fcce7c882065676c73cbb17c667ac"} R 6.9 longMs 25 Chrome/155.0.0.0
+  idle                   idle     fr  374 fps    144 p50   6.9 p95   7.1 max    7.3 long   0     0% warm    7.1 js50  None js95  None gpu50  None calls  None tris      None miss 0.006  
+  overview               held     fr  517 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm   13.8 js50   4.2 js95   4.5 gpu50   2.3 calls   832 tris   2523605 miss 0.006  
+  overview               orbit    fr  803 fps  143.5 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.1 js50   4.8 js95   5.1 gpu50   4.9 calls   832 tris   2523605 miss 0.010  
+  overview               orbit -figures fr  807 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm      7 js50     3 js95   3.2 gpu50   4.4 calls   247 tris   1256911 miss 0.006  
+  overview               orbit -effects fr  805 fps    144 p50   6.9 p95   7.1 max    7.3 long   0     0% warm   13.8 js50     4 js95   4.2 gpu50   2.2 calls   825 tris   2523598 miss 0.006  
+  pratzen-low-4x         held     fr  516 fps  143.5 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.2 js50   4.5 js95   4.7 gpu50   4.5 calls   761 tris   2480187 miss 0.010  
+  pratzen-low-4x         orbit    fr  800 fps  142.9 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50   5.1 js95   5.4 gpu50   4.6 calls   775 tris   2484387 miss 0.014  
+  pratzen-low-4x         orbit -figures fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   3.3 js95   3.6 gpu50   2.4 calls   211 tris   1250867 miss 0.006  
+  pratzen-low-4x         orbit -effects fr  803 fps  143.5 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50   4.3 js95   4.5 gpu50   2.3 calls   768 tris   2484380 miss 0.010  
+  pratzen-low-1x         held     fr  519 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50   2.5 js95   2.8 gpu50   3.2 calls   161 tris    227789 miss 0.006  
+  pratzen-low-1x         orbit    fr  805 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm      7 js50   3.1 js95   3.3 gpu50     2 calls   173 tris    231985 miss 0.006  
+  pratzen-low-10x        held     fr  516 fps  143.5 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.1 js50   4.5 js95   4.8 gpu50   4.6 calls   760 tris   2480185 miss 0.010  
+  pratzen-low-10x        orbit    fr  802 fps  143.3 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.4 gpu50   4.5 calls   776 tris   2484393 miss 0.011  
+  ph8-overview           held     fr  517 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm   13.7 js50   4.6 js95   4.8 gpu50   5.2 calls   809 tris   2501153 miss 0.006  
+  ph8-overview           orbit    fr  804 fps  143.5 p50   6.9 p95     7 max     14 long   0     0% warm   13.9 js50   5.3 js95   5.5 gpu50   3.1 calls   809 tris   2501213 miss 0.010  
+  ph8-overview           orbit -figures fr  807 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   3.4 js95   3.6 gpu50   3.1 calls   234 tris   1255669 miss 0.006  
+  ph8-overview           orbit -effects fr  802 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   4.4 js95   4.6 gpu50   2.7 calls   802 tris   2501206 miss 0.010  
+  paper                  held     fr  518 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50     2 js95   2.2 gpu50   3.7 calls   156 tris    240915 miss 0.006  
+  paper                  pan      fr  804 fps  143.8 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.2 js50   2.1 js95   2.3 gpu50   1.8 calls   156 tris    240915 miss 0.008  
+  eye                    held     fr  517 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50   2.8 js95   2.9 gpu50   1.9 calls   208 tris    494017 miss 0.006  
+  eye                    look     fr  806 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50   3.1 js95   3.4 gpu50   2.1 calls   128 tris    470067 miss 0.006  
+  play-4x                played   fr 1622 fps    139 p50   6.9 p95   7.1 max   27.8 long   1   0.1% warm     14 js50     6 js95   6.8 gpu50   3.6 calls   825 tris   2496647 miss 0.041 (510, 621.9) 
+  play-half              played   fr 1633 fps  139.7 p50   6.9 p95   7.1 max   27.8 long   1   0.1% warm   13.9 js50   6.1 js95   6.6 gpu50     4 calls   794 tris   2490765 miss 0.036 (510, 550.9) 
+== desk-D1.json v step6-perf-route 3 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 6.9 longMs 25 Chrome/156.0.0.0
+  idle                   idle     fr  376 fps    144 p50   6.9 p95   7.1 max    7.3 long   0     0% warm    7.1 js50  None js95  None gpu50  None calls  None tris      None miss 0.006  
+  overview               held     fr  514 fps  142.9 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50     5 js95   5.4 gpu50   5.1 calls   837 tris   1978147 miss 0.014  
+  overview               orbit    fr  804 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.8 js95   6.1 gpu50   4.4 calls   839 tris   2125343 miss 0.010  
+  overview               orbit -figures fr  804 fps  143.7 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   3.5 js95   3.8 gpu50   2.2 calls   258 tris    856375 miss 0.008  
+  overview               orbit -effects fr  804 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.1 js95   5.4 gpu50   3.1 calls   832 tris   2125336 miss 0.010  
+  pratzen-low-4x         held     fr  515 fps  143.2 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.1 js50   4.3 js95   4.6 gpu50   4.1 calls   592 tris   1714213 miss 0.012  
+  pratzen-low-4x         orbit    fr  802 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.3 js95   5.7 gpu50     4 calls   600 tris   1875699 miss 0.010  
+  pratzen-low-4x         orbit -figures fr  806 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm   13.8 js50   3.9 js95   4.2 gpu50   4.7 calls   223 tris    849089 miss 0.006  
+  pratzen-low-4x         orbit -effects fr  804 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   4.7 js95   5.1 gpu50   3.7 calls   590 tris   1872772 miss 0.010  
+  pratzen-low-1x         held     fr  518 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50   2.6 js95   2.8 gpu50   2.2 calls   160 tris    229315 miss 0.006  
+  pratzen-low-1x         orbit    fr  807 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50   3.4 js95   3.7 gpu50   3.2 calls   175 tris    380601 miss 0.006  
+  pratzen-low-10x        held     fr  518 fps    144 p50   6.9 p95   7.1 max    7.1 long   0     0% warm    7.1 js50   4.3 js95   4.6 gpu50   2.3 calls   607 tris   1741879 miss 0.006  
+  pratzen-low-10x        orbit    fr  799 fps  142.9 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.6 gpu50   4.1 calls   624 tris   1898129 miss 0.014  
+  ph8-overview           held     fr  517 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50     5 js95   5.2 gpu50   2.3 calls   818 tris   1965785 miss 0.006  
+  ph8-overview           orbit    fr  799 fps  142.8 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50   5.8 js95   6.1 gpu50   4.4 calls   820 tris   2113029 miss 0.015  
+  ph8-overview           orbit -figures fr  804 fps  143.7 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   3.5 js95   3.7 gpu50   4.5 calls   245 tris    856861 miss 0.008  
+  ph8-overview           orbit -effects fr  803 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50     5 js95   5.3 gpu50   3.7 calls   813 tris   2113022 miss 0.010  
+  paper                  held     fr  518 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm    7.1 js50   2.1 js95   2.3 gpu50   3.9 calls   156 tris    241659 miss 0.006  
+  paper                  pan      fr  805 fps  143.8 p50   6.9 p95   7.1 max   13.9 long   0     0% warm   13.8 js50   2.3 js95   2.7 gpu50   1.6 calls   156 tris    241659 miss 0.008  
+  eye                    held     fr  518 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm      7 js50     3 js95   3.1 gpu50   4.6 calls   199 tris    428301 miss 0.006  
+  eye                    look     fr  806 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm   13.8 js50   3.2 js95   3.7 gpu50   2.2 calls    86 tris    457681 miss 0.006  
+  play-4x                played   fr 1453 fps  124.3 p50     7 p95  13.9 max   20.9 long   0     0% warm   13.9 js50   6.9 js95   8.9 gpu50   4.6 calls   833 tris   2289649 miss 0.142 (510, 622.4) 
+  play-half              played   fr 1413 fps  120.8 p50     7 p95  13.9 max   20.9 long   0     0% warm     14 js50   7.6 js95   8.4 gpu50   4.5 calls   805 tris   2244119 miss 0.166 (510, 551) 
+== desk-D2.json v step6-perf-route 3 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 6.9 longMs 25 Chrome/156.0.0.0
+  idle                   idle     fr  374 fps    144 p50   6.9 p95     7 max    7.3 long   0     0% warm    7.1 js50  None js95  None gpu50  None calls  None tris      None miss 0.006  
+  overview               held     fr  513 fps  142.9 p50   6.9 p95   7.1 max   13.9 long   0     0% warm   34.9 js50   5.1 js95   5.5 gpu50   2.5 calls   837 tris   1978147 miss 0.014  
+  overview               orbit    fr  800 fps  142.9 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50   5.9 js95   6.2 gpu50   2.6 calls   839 tris   2125343 miss 0.014  
+  overview               orbit -figures fr  806 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.2 js50   3.6 js95   3.8 gpu50   3.1 calls   258 tris    856375 miss 0.006  
+  overview               orbit -effects fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   5.1 js95   5.4 gpu50   2.2 calls   832 tris   2125336 miss 0.010  
+  pratzen-low-4x         held     fr  517 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm     14 js50   4.3 js95   4.5 gpu50   2.4 calls   592 tris   1714213 miss 0.006  
+  pratzen-low-4x         orbit    fr  799 fps  142.9 p50   6.9 p95     7 max     14 long   0     0% warm    7.2 js50   5.2 js95   5.6 gpu50   4.1 calls   598 tris   1875699 miss 0.014  
+  pratzen-low-4x         orbit -figures fr  807 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   3.9 js95   4.2 gpu50   4.8 calls   222 tris    849089 miss 0.006  
+  pratzen-low-4x         orbit -effects fr  803 fps  143.5 p50   6.9 p95   7.1 max   20.8 long   0     0% warm    7.2 js50   4.7 js95   5.1 gpu50   3.7 calls   592 tris   1875692 miss 0.010  
+  pratzen-low-1x         held     fr  518 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm      7 js50   2.6 js95   2.8 gpu50   2.2 calls   161 tris    229317 miss 0.006  
+  pratzen-low-1x         orbit    fr  804 fps  143.7 p50   6.9 p95   7.1 max   13.9 long   0     0% warm   13.9 js50   3.4 js95   3.7 gpu50   3.3 calls   175 tris    380601 miss 0.008  
+  pratzen-low-10x        held     fr  514 fps  142.9 p50   6.9 p95   7.1 max   34.7 long   1   0.2% warm   13.8 js50   4.4 js95   4.6 gpu50   2.2 calls   607 tris   1741879 miss 0.014  
+  pratzen-low-10x        orbit    fr  802 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm      7 js50   5.3 js95   5.6 gpu50   4.1 calls   624 tris   1898971 miss 0.010  
+  ph8-overview           held     fr  517 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm   13.8 js50     5 js95   5.2 gpu50   5.1 calls   818 tris   1965785 miss 0.006  
+  ph8-overview           orbit    fr  799 fps  142.9 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50   5.8 js95   6.2 gpu50   4.4 calls   820 tris   2113029 miss 0.014  
+  ph8-overview           orbit -figures fr  804 fps  143.7 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.2 js50   3.6 js95   3.8 gpu50   2.2 calls   245 tris    856861 miss 0.008  
+  ph8-overview           orbit -effects fr  804 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm      7 js50     5 js95   5.2 gpu50   2.4 calls   813 tris   2113022 miss 0.010  
+  paper                  held     fr  518 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm    7.1 js50   2.1 js95   2.3 gpu50   1.7 calls   156 tris    241659 miss 0.006  
+  paper                  pan      fr  805 fps  143.8 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.2 js50   2.4 js95   2.7 gpu50   1.6 calls   156 tris    241659 miss 0.008  
+  eye                    held     fr  518 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50     3 js95   3.2 gpu50     2 calls   199 tris    428301 miss 0.006  
+  eye                    look     fr  807 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50   3.2 js95   3.8 gpu50   2.2 calls    86 tris    457679 miss 0.006  
+  play-4x                played   fr 1437 fps    123 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50     7 js95     9 gpu50   4.6 calls   833 tris   2289649 miss 0.151 (510, 622.7) 
+  play-half              played   fr 1406 fps  120.2 p50     7 p95  13.9 max   20.9 long   0     0% warm     14 js50   7.6 js95   8.5 gpu50   4.5 calls   805 tris   2244119 miss 0.171 (510, 551) 
+== desk-cull.json v stage8-cull-route 1 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 6.9 longMs 25 Chrome/156.0.0.0
+  idle                   idle     fr  375 fps    144 p50   6.9 p95   7.1 max    7.3 long   0     0% warm    7.1 js50  None js95  None gpu50  None calls  None tris      None miss 0.006  
+  pratzen-low-4x         warm-up  fr 1390 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm   76.5 js50   5.3 js95   5.8 gpu50   2.6 calls   624 tris   1899915 miss 0.006  
+  pratzen-low-4x         cull A AB 1.0 fr  801 fps  143.3 p50   6.9 p95   7.1 max   20.9 long   0     0% warm    7.1 js50   5.1 js95   5.5 gpu50   2.6 calls   600 tris   1875699 miss 0.011  
+  pratzen-low-4x         cull B AB 1.1 fr  799 fps  142.9 p50   6.9 p95     7 max   20.9 long   0     0% warm    7.1 js50     6 js95   6.4 gpu50   4.1 calls   786 tris   2208415 miss 0.014  1
+  pratzen-low-4x         cull A AB 1.2 fr  803 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.2 js50   5.1 js95   5.5 gpu50     4 calls   599 tris   1875699 miss 0.010  2
+  pratzen-low-4x         cull B AB 1.3 fr  802 fps  143.3 p50   6.9 p95     7 max   20.8 long   0     0% warm    7.1 js50     6 js95   6.4 gpu50   2.9 calls   786 tris   2208415 miss 0.011  3
+  pratzen-low-4x         cull A AB 1.4 fr  802 fps  143.5 p50   6.9 p95     7 max     14 long   0     0% warm    7.2 js50   5.1 js95   5.4 gpu50   4.2 calls   600 tris   1875699 miss 0.010  4
+  pratzen-low-4x         cull B AB 1.5 fr  802 fps  143.3 p50   6.9 p95     7 max   20.8 long   0     0% warm    7.1 js50     6 js95   6.4 gpu50   3.8 calls   785 tris   2208415 miss 0.011  5
+  pratzen-low-4x         cull A AB 1.6 fr  803 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm   13.8 js50   5.1 js95   5.5 gpu50   3.9 calls   597 tris   1872779 miss 0.010  6
+  pratzen-low-4x         cull A AB 2.0 fr  803 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm   13.9 js50   5.1 js95   5.5 gpu50   4.1 calls   597 tris   1872779 miss 0.010  
+  pratzen-low-4x         cull B AB 2.1 fr  802 fps  143.1 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50     6 js95   6.4 gpu50   4.1 calls   784 tris   2208415 miss 0.013  1
+  pratzen-low-4x         cull A AB 2.2 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm   13.7 js50   5.1 js95   5.5 gpu50   2.6 calls   597 tris   1872779 miss 0.006  2
+  pratzen-low-4x         cull B AB 2.3 fr  804 fps  143.8 p50   6.9 p95     7 max   13.9 long   0     0% warm   13.9 js50     6 js95   6.4 gpu50   4.1 calls   785 tris   2208415 miss 0.008  3
+  pratzen-low-4x         cull A AB 2.4 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm     14 js50   5.2 js95   5.5 gpu50   2.6 calls   597 tris   1872779 miss 0.006  4
+  pratzen-low-4x         cull B AB 2.5 fr  801 fps  142.9 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   6.1 js95   6.5 gpu50   4.2 calls   786 tris   2208415 miss 0.014  5
+  pratzen-low-4x         cull A AB 2.6 fr  802 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.2 js50   5.2 js95   5.5 gpu50   2.6 calls   600 tris   1875699 miss 0.010  6
+  pratzen-low-4x         cull B BA 1.0 fr  799 fps  142.9 p50   6.9 p95     7 max   20.8 long   0     0% warm    7.1 js50   6.1 js95   6.5 gpu50   4.1 calls   786 tris   2208415 miss 0.014  
+  pratzen-low-4x         cull A BA 1.1 fr  803 fps  143.5 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50   5.1 js95   5.5 gpu50   4.1 calls   599 tris   1875699 miss 0.010  1
+  pratzen-low-4x         cull B BA 1.2 fr  800 fps  143.1 p50   6.9 p95     7 max   13.9 long   0     0% warm      7 js50   6.1 js95   6.5 gpu50   4.1 calls   785 tris   2208415 miss 0.013  2
+  pratzen-low-4x         cull A BA 1.3 fr  802 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   2.8 calls   600 tris   1875699 miss 0.010  3
+  pratzen-low-4x         cull B BA 1.4 fr  795 fps  142.2 p50   6.9 p95     7 max   41.6 long   1   0.1% warm    7.1 js50   6.1 js95   6.5 gpu50   4.2 calls   785 tris   2208415 miss 0.019  4
+  pratzen-low-4x         cull A BA 1.5 fr  802 fps  143.5 p50   6.9 p95     7 max     14 long   0     0% warm      7 js50   5.2 js95   5.5 gpu50   2.6 calls   597 tris   1872779 miss 0.010  5
+  pratzen-low-4x         cull B BA 1.6 fr  803 fps  143.3 p50   6.9 p95     7 max   20.8 long   0     0% warm      7 js50   6.1 js95   6.4 gpu50     4 calls   784 tris   2208415 miss 0.011  6
+  pratzen-low-4x         cull B BA 2.0 fr  800 fps  143.1 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50   6.1 js95   6.4 gpu50   2.9 calls   784 tris   2208415 miss 0.013  
+  pratzen-low-4x         cull A BA 2.1 fr  802 fps  143.3 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.1 js95   5.5 gpu50   4.2 calls   598 tris   1872779 miss 0.011  1
+  pratzen-low-4x         cull B BA 2.2 fr  802 fps  143.1 p50   6.9 p95     7 max   20.7 long   0     0% warm    7.1 js50   6.1 js95   6.5 gpu50   4.1 calls   784 tris   2208415 miss 0.013  2
+  pratzen-low-4x         cull A BA 2.3 fr  805 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   3.3 calls   597 tris   1872779 miss 0.006  3
+  pratzen-low-4x         cull B BA 2.4 fr  805 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm   20.7 js50   6.1 js95   6.5 gpu50   4.1 calls   784 tris   2208415 miss 0.006  4
+  pratzen-low-4x         cull A BA 2.5 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm     14 js50   5.2 js95   5.5 gpu50   2.6 calls   598 tris   1872779 miss 0.006  5
+  pratzen-low-4x         cull B BA 2.6 fr  802 fps  143.1 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   6.1 js95   6.5 gpu50   2.8 calls   786 tris   2208415 miss 0.013  6
+  pratzen-low-10x        warm-up  fr 1396 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm     14 js50   5.3 js95   5.8 gpu50   4.2 calls   633 tris   1912023 miss 0.006  
+  pratzen-low-10x        cull A AB 1.0 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm   13.8 js50   5.2 js95   5.6 gpu50   4.2 calls   624 tris   1898971 miss 0.006  
+  pratzen-low-10x        cull B AB 1.1 fr  797 fps  142.6 p50   6.9 p95     7 max   20.9 long   0     0% warm      7 js50   6.1 js95   6.4 gpu50     4 calls   787 tris   2209643 miss 0.016  1
+  pratzen-low-10x        cull A AB 1.2 fr  803 fps  143.3 p50   6.9 p95   7.1 max   20.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   4.2 calls   625 tris   1898129 miss 0.011  2
+  pratzen-low-10x        cull B AB 1.3 fr  801 fps  143.1 p50   6.9 p95     7 max   20.8 long   0     0% warm      7 js50   6.1 js95   6.5 gpu50   4.1 calls   787 tris   2209637 miss 0.013  3
+  pratzen-low-10x        cull A AB 1.4 fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   2.3 calls   624 tris   1898129 miss 0.010  4
+  pratzen-low-10x        cull B AB 1.5 fr  801 fps  143.3 p50   6.9 p95     7 max   20.8 long   0     0% warm   13.7 js50   6.1 js95   6.4 gpu50   3.9 calls   786 tris   2209633 miss 0.011  5
+  pratzen-low-10x        cull A AB 1.6 fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   2.3 calls   624 tris   1898969 miss 0.010  6
+  pratzen-low-10x        cull A AB 2.0 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   4.2 calls   624 tris   1898971 miss 0.006  
+  pratzen-low-10x        cull B AB 2.1 fr  801 fps  143.3 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50     6 js95   6.4 gpu50   2.4 calls   787 tris   2209635 miss 0.011  1
+  pratzen-low-10x        cull A AB 2.2 fr  802 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.2 js50   5.2 js95   5.5 gpu50   4.2 calls   625 tris   1899013 miss 0.010  2
+  pratzen-low-10x        cull B AB 2.3 fr  802 fps  143.3 p50   6.9 p95     7 max   20.8 long   0     0% warm    7.1 js50     6 js95   6.4 gpu50   2.4 calls   786 tris   2209641 miss 0.011  3
+  pratzen-low-10x        cull A AB 2.4 fr  803 fps  143.5 p50   6.9 p95   7.1 max   20.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50     4 calls   625 tris   1899013 miss 0.010  4
+  pratzen-low-10x        cull B AB 2.5 fr  802 fps  143.1 p50   6.9 p95     7 max   13.9 long   0     0% warm      7 js50   6.1 js95   6.4 gpu50   3.9 calls   787 tris   2209635 miss 0.013  5
+  pratzen-low-10x        cull A AB 2.6 fr  802 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   3.9 calls   624 tris   1899015 miss 0.010  6
+  pratzen-low-10x        cull B BA 1.0 fr  801 fps  143.3 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50     6 js95   6.3 gpu50   3.9 calls   786 tris   2209633 miss 0.011  
+  pratzen-low-10x        cull A BA 1.1 fr  802 fps  143.5 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.2 js50   5.1 js95   5.5 gpu50   4.1 calls   624 tris   1899015 miss 0.010  1
+  pratzen-low-10x        cull B BA 1.2 fr  800 fps  143.1 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50     6 js95   6.3 gpu50   2.4 calls   786 tris   2209633 miss 0.013  2
+  pratzen-low-10x        cull A BA 1.3 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   5.2 js95   5.4 gpu50   2.3 calls   624 tris   1898971 miss 0.006  3
+  pratzen-low-10x        cull B BA 1.4 fr  805 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm     14 js50     6 js95   6.4 gpu50   2.4 calls   786 tris   2209633 miss 0.006  4
+  pratzen-low-10x        cull A BA 1.5 fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.2 js50   5.1 js95   5.5 gpu50   2.3 calls   625 tris   1899013 miss 0.010  5
+  pratzen-low-10x        cull B BA 1.6 fr  801 fps  143.1 p50   6.9 p95     7 max   13.9 long   0     0% warm      7 js50     6 js95   6.3 gpu50   4.1 calls   787 tris   2209641 miss 0.013  6
+  pratzen-low-10x        cull B BA 2.0 fr  802 fps  143.3 p50   6.9 p95     7 max   13.9 long   0     0% warm   13.8 js50     6 js95   6.4 gpu50   2.6 calls   787 tris   2209643 miss 0.011  
+  pratzen-low-10x        cull A BA 2.1 fr  802 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm   13.7 js50   5.1 js95   5.5 gpu50   4.2 calls   625 tris   1899015 miss 0.010  1
+  pratzen-low-10x        cull B BA 2.2 fr  802 fps  143.3 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50     6 js95   6.4 gpu50   3.8 calls   786 tris   2209633 miss 0.011  2
+  pratzen-low-10x        cull A BA 2.3 fr  802 fps  143.5 p50   6.9 p95   7.1 max     14 long   0     0% warm   13.8 js50   5.2 js95   5.5 gpu50   4.1 calls   624 tris   1899013 miss 0.010  3
+  pratzen-low-10x        cull B BA 2.4 fr  801 fps  143.1 p50   6.9 p95     7 max     14 long   0     0% warm    7.1 js50   6.1 js95   6.4 gpu50     4 calls   786 tris   2209633 miss 0.013  4
+  pratzen-low-10x        cull A BA 2.5 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   2.3 calls   624 tris   1898971 miss 0.006  5
+  pratzen-low-10x        cull B BA 2.6 fr  805 fps    144 p50   6.9 p95     7 max    7.1 long   0     0% warm   13.9 js50   6.1 js95   6.4 gpu50   2.4 calls   786 tris   2209633 miss 0.006  6
+== desk-fx.json v stage8-fx-route 1 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 6.9 longMs 25 Chrome/156.0.0.0
+  idle                   idle     fr  375 fps    144 p50   6.9 p95   7.1 max    7.4 long   0     0% warm    7.1 js50  None js95  None gpu50  None calls  None tris      None miss 0.006  
+  pratzen-low-4x         warm-up  fr 1388 fps  143.7 p50   6.9 p95     7 max     14 long   0     0% warm   34.7 js50   5.3 js95   5.9 gpu50   2.6 calls   624 tris   1900181 miss 0.008  
+  pratzen-low-4x         fx A AB 1.0 fr  805 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   4.1 calls   597 tris   1872779 miss 0.006  
+  pratzen-low-4x         fx B AB 1.1 fr  807 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm   13.9 js50   4.7 js95     5 gpu50   2.2 calls   590 tris   1872772 miss 0.006  1
+  pratzen-low-4x         fx A AB 1.2 fr  803 fps  143.5 p50   6.9 p95   7.1 max     14 long   0     0% warm   13.9 js50   5.2 js95   5.5 gpu50   2.6 calls   600 tris   1875699 miss 0.010  2
+  pratzen-low-4x         fx B AB 1.3 fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.2 js50   4.7 js95     5 gpu50   2.3 calls   591 tris   1872772 miss 0.010  3
+  pratzen-low-4x         fx A AB 1.4 fr  801 fps  143.3 p50   6.9 p95   7.1 max   20.8 long   0     0% warm    7.2 js50   5.2 js95   5.6 gpu50   2.6 calls   597 tris   1872779 miss 0.011  4
+  pratzen-low-4x         fx B AB 1.5 fr  806 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   4.7 js95     5 gpu50   3.8 calls   591 tris   1872772 miss 0.006  5
+  pratzen-low-4x         fx A AB 1.6 fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   2.6 calls   600 tris   1875699 miss 0.010  6
+  pratzen-low-4x         fx A AB 2.0 fr  802 fps  143.5 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   4.1 calls   600 tris   1875699 miss 0.010  
+  pratzen-low-4x         fx B AB 2.1 fr  802 fps  143.3 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.2 js50   4.7 js95     5 gpu50   2.3 calls   590 tris   1872772 miss 0.011  1
+  pratzen-low-4x         fx A AB 2.2 fr  802 fps  143.3 p50   6.9 p95     7 max   20.8 long   0     0% warm    7.1 js50   5.2 js95   5.6 gpu50   3.7 calls   597 tris   1872779 miss 0.011  2
+  pratzen-low-4x         fx B AB 2.3 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   4.7 js95     5 gpu50   2.2 calls   590 tris   1872772 miss 0.006  3
+  pratzen-low-4x         fx A AB 2.4 fr  802 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   2.6 calls   600 tris   1875699 miss 0.010  4
+  pratzen-low-4x         fx B AB 2.5 fr  803 fps  143.7 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   4.7 js95     5 gpu50   2.3 calls   592 tris   1872772 miss 0.008  5
+  pratzen-low-4x         fx A AB 2.6 fr  802 fps  143.5 p50   6.9 p95     7 max     14 long   0     0% warm   13.8 js50   5.2 js95   5.5 gpu50     4 calls   597 tris   1872779 miss 0.010  6
+  pratzen-low-4x         fx B BA 1.0 fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.2 js50   4.7 js95     5 gpu50   2.2 calls   590 tris   1875692 miss 0.010  
+  pratzen-low-4x         fx A BA 1.1 fr  802 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.6 gpu50   3.9 calls   597 tris   1872779 miss 0.010  1
+  pratzen-low-4x         fx B BA 1.2 fr  804 fps  143.8 p50   6.9 p95   7.1 max   13.8 long   0     0% warm    7.1 js50   4.7 js95     5 gpu50   2.2 calls   592 tris   1872772 miss 0.008  2
+  pratzen-low-4x         fx A BA 1.3 fr  802 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm   13.9 js50   5.2 js95   5.6 gpu50   2.6 calls   600 tris   1875699 miss 0.010  3
+  pratzen-low-4x         fx B BA 1.4 fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.9 long   0     0% warm    7.1 js50   4.6 js95     5 gpu50   3.8 calls   592 tris   1875692 miss 0.010  4
+  pratzen-low-4x         fx A BA 1.5 fr  803 fps  143.5 p50   6.9 p95   7.1 max     14 long   0     0% warm    7.2 js50   5.2 js95   5.5 gpu50   2.6 calls   597 tris   1875699 miss 0.010  5
+  pratzen-low-4x         fx B BA 1.6 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50   4.6 js95     5 gpu50   2.2 calls   590 tris   1872772 miss 0.006  6
+  pratzen-low-4x         fx B BA 2.0 fr  807 fps    144 p50   6.9 p95     7 max    7.2 long   0     0% warm    7.2 js50   4.6 js95   4.9 gpu50   3.8 calls   591 tris   1872772 miss 0.006  
+  pratzen-low-4x         fx A BA 2.1 fr  803 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm   13.9 js50   5.1 js95   5.5 gpu50   4.1 calls   600 tris   1875699 miss 0.010  1
+  pratzen-low-4x         fx B BA 2.2 fr  802 fps  143.5 p50   6.9 p95   7.1 max   20.8 long   0     0% warm    7.2 js50   4.6 js95     5 gpu50   2.2 calls   592 tris   1872772 miss 0.010  2
+  pratzen-low-4x         fx A BA 2.3 fr  802 fps  143.5 p50   6.9 p95     7 max   13.9 long   0     0% warm    7.1 js50   5.2 js95   5.5 gpu50   3.8 calls   597 tris   1872779 miss 0.010  3
+  pratzen-low-4x         fx B BA 2.4 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm   13.9 js50   4.6 js95     5 gpu50   3.8 calls   591 tris   1872772 miss 0.006  4
+  pratzen-low-4x         fx A BA 2.5 fr  805 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm     14 js50   5.1 js95   5.4 gpu50   2.6 calls   597 tris   1872779 miss 0.006  5
+  pratzen-low-4x         fx B BA 2.6 fr  803 fps  143.5 p50   6.9 p95   7.1 max   13.8 long   0     0% warm    7.2 js50   4.6 js95     5 gpu50   2.2 calls   591 tris   1872772 miss 0.010  6
+== desk-gait.json v stage8-gait-route 1 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 6.9 longMs 25 Chrome/156.0.0.0
+  idle                   idle     fr  373 fps    144 p50   6.9 p95   7.1 max    7.2 long   0     0% warm    7.1 js50  None js95  None gpu50  None calls  None tris      None miss 0.006  
+  play-half              warm-up  fr 1206 fps  124.3 p50     7 p95  13.9 max   27.8 long   1   0.1% warm   41.7 js50   7.4 js95   8.3 gpu50   4.5 calls   802 tris   2247625 miss 0.142  
+  play-half              gait A AB 1.0 fr  695 fps  123.9 p50     7 p95  13.9 max   20.9 long   0     0% warm   13.9 js50   7.3 js95   8.3 gpu50   4.5 calls   802 tris   2248209 miss 0.145  
+  play-half              gait B AB 1.1 fr  699 fps  124.4 p50     7 p95  13.9 max   27.7 long   1   0.1% warm     14 js50   7.3 js95   8.2 gpu50   4.5 calls   802 tris   2248225 miss 0.142  1
+  play-half              gait A AB 1.2 fr  696 fps  124.2 p50     7 p95  13.9 max     21 long   0     0% warm     14 js50   7.3 js95   8.4 gpu50   4.5 calls   802 tris   2248263 miss 0.143  2
+  play-half              gait B AB 1.3 fr  696 fps    124 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50   7.3 js95   8.3 gpu50   4.5 calls   802 tris   2248209 miss 0.144  3
+  play-half              gait A AB 1.4 fr  699 fps  124.7 p50     7 p95  13.9 max     14 long   0     0% warm     14 js50   7.3 js95   8.3 gpu50   4.6 calls   802 tris   2248225 miss 0.140  4
+  play-half              gait B AB 1.5 fr  694 fps    124 p50     7 p95  13.9 max   27.9 long   1   0.1% warm     14 js50   7.3 js95   8.3 gpu50   4.5 calls   802 tris   2248263 miss 0.144  5
+  play-half              gait A AB 1.6 fr  697 fps  124.2 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50   7.3 js95   8.3 gpu50   4.6 calls   802 tris   2248263 miss 0.143  6
+  play-half              gait A AB 2.0 fr  694 fps  123.7 p50     7 p95  13.9 max   14.1 long   0     0% warm     14 js50   7.3 js95   8.4 gpu50   4.5 calls   802 tris   2248241 miss 0.146  
+  play-half              gait B AB 2.1 fr  700 fps  124.8 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50   7.3 js95   8.1 gpu50   4.6 calls   802 tris   2248263 miss 0.139  1
+  play-half              gait A AB 2.2 fr  694 fps  123.7 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50   7.2 js95   8.4 gpu50   4.6 calls   802 tris   2248195 miss 0.146  2
+  play-half              gait B AB 2.3 fr  705 fps  125.8 p50     7 p95  13.9 max     14 long   0     0% warm   13.9 js50   7.3 js95   8.2 gpu50   4.5 calls   802 tris   2248195 miss 0.132  3
+  play-half              gait A AB 2.4 fr  697 fps  124.2 p50     7 p95  13.9 max     14 long   0     0% warm     14 js50   7.4 js95   8.3 gpu50   4.6 calls   802 tris   2248263 miss 0.143  4
+  play-half              gait B AB 2.5 fr  708 fps    126 p50     7 p95  13.9 max   14.1 long   0     0% warm   13.9 js50   7.2 js95   8.1 gpu50   4.5 calls   802 tris   2248263 miss 0.131  5
+  play-half              gait A AB 2.6 fr  706 fps    126 p50     7 p95  13.9 max     14 long   0     0% warm     14 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248263 miss 0.131  6
+  play-half              gait B BA 1.0 fr  702 fps  125.1 p50     7 p95  13.9 max   20.8 long   0     0% warm   13.9 js50   7.3 js95   8.2 gpu50   4.5 calls   802 tris   2248195 miss 0.137  
+  play-half              gait A BA 1.1 fr  704 fps  125.5 p50     7 p95  13.9 max   20.9 long   0     0% warm   13.9 js50   7.2 js95   8.3 gpu50   4.5 calls   802 tris   2248263 miss 0.134  1
+  play-half              gait B BA 1.2 fr  707 fps    126 p50     7 p95  13.9 max   20.9 long   0     0% warm     14 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248209 miss 0.131  2
+  play-half              gait A BA 1.3 fr  708 fps  126.2 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50   7.2 js95   8.2 gpu50   4.6 calls   802 tris   2248239 miss 0.129  3
+  play-half              gait B BA 1.4 fr  711 fps  126.7 p50     7 p95  13.9 max     14 long   0     0% warm   13.9 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248263 miss 0.126  4
+  play-half              gait A BA 1.5 fr  706 fps  125.8 p50     7 p95  13.9 max   34.7 long   1   0.1% warm     14 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248263 miss 0.132  5
+  play-half              gait B BA 1.6 fr  710 fps  126.7 p50     7 p95  13.9 max   27.7 long   1   0.1% warm     14 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248263 miss 0.126  6
+  play-half              gait B BA 2.0 fr  709 fps  126.5 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50   7.2 js95   8.1 gpu50   4.5 calls   802 tris   2248263 miss 0.127  
+  play-half              gait A BA 2.1 fr  702 fps  125.3 p50     7 p95  13.9 max   27.8 long   1   0.1% warm     14 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248263 miss 0.135  1
+  play-half              gait B BA 2.2 fr  706 fps  125.8 p50     7 p95  13.9 max     14 long   0     0% warm     14 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248263 miss 0.132  2
+  play-half              gait A BA 2.3 fr  703 fps  125.3 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248195 miss 0.135  3
+  play-half              gait B BA 2.4 fr  706 fps  125.8 p50     7 p95  13.9 max   20.9 long   0     0% warm     14 js50   7.2 js95   8.1 gpu50   4.5 calls   802 tris   2248263 miss 0.132  4
+  play-half              gait A BA 2.5 fr  704 fps  125.5 p50     7 p95  13.9 max   41.6 long   1   0.1% warm   13.9 js50   7.2 js95   8.2 gpu50   4.5 calls   802 tris   2248263 miss 0.134  5
+  play-half              gait B BA 2.6 fr  715 fps  127.3 p50     7 p95  13.9 max   20.8 long   0     0% warm     14 js50   7.2 js95   8.1 gpu50   4.5 calls   802 tris   2248263 miss 0.122  6
+== perf-P3-iphone.json v step6-phone-route 1 build {"bytes": 2220267, "sha256": "695e1f941ac337942dc89bb9ba3f1d665abf00f781c3185009f3703f8326eea7"} R 17 longMs 25.5 Version/26.6.1 Mobile/15E148 Safari/604.1
+  idle                   idle     fr  156 fps     60 p50    17 p95    17 max     17 long   0     0% warm     17 js50  None js95  None gpu50  None calls  None tris      None miss -0.020  
+  ph8-overview           warm-up  fr 1651 fps     37 p50    17 p95    50 max     58 long 558  33.8% warm     17 js50     5 js95    18 gpu50  None calls   809 tris   2501187 miss 0.371  
+  ph8-overview           A 1      fr  119 fps   21.2 p50    49 p95    52 max     55 long 119   100% warm     53 js50    18 js95    20 gpu50  None calls   809 tris   2501213 miss 0.640  
+  ph8-overview           figShadow 1 fr  151 fps   27.1 p50    35 p95    48 max     50 long 151   100% warm     49 js50     8 js95    18 gpu50  None calls   535 tris   1878529 miss 0.539  
+  ph8-overview           A 1      fr  129 fps   23.1 p50    48 p95    51 max     57 long 129   100% warm     54 js50    17 js95    20 gpu50  None calls   809 tris   2501213 miss 0.607  
+  ph8-overview           shadowPass 1 fr  160 fps   28.6 p50    33 p95    45 max     47 long 160   100% warm     48 js50     7 js95    17 gpu50  None calls   525 tris   1469185 miss 0.514  
+  ph8-overview           A 1      fr  116 fps   20.9 p50    48 p95    52 max     52 long 116   100% warm     48 js50    17 js95    19 gpu50  None calls   809 tris   2501213 miss 0.645  
+  ph8-overview           density1 1 fr  126 fps   22.4 p50    44 p95    48 max     56 long 126   100% warm     45 js50    17 js95    20 gpu50  None calls   809 tris   2501139 miss 0.619  
+  ph8-overview           A 1      fr  123 fps   22.1 p50    48 p95    50 max     52 long 123   100% warm     49 js50    17 js95    19 gpu50  None calls   809 tris   2501213 miss 0.624  
+  ph8-overview           density1Pass 1 fr  147 fps   26.1 p50    38 p95    40 max     42 long 147   100% warm     40 js50    16 js95    18 gpu50  None calls   525 tris   1469185 miss 0.556  
+  ph8-overview           A 1      fr  114 fps   20.6 p50    48 p95    51 max     52 long 114   100% warm     50 js50    17 js95    19 gpu50  None calls   809 tris   2501213 miss 0.650  
+  ph8-overview           figures 1 fr  166 fps   29.5 p50    34 p95    36 max     40 long 166   100% warm     38 js50     9 js95    11 gpu50  None calls   234 tris   1255645 miss 0.499  
+  ph8-overview           A 1      fr  115 fps   20.6 p50    48 p95    50 max     53 long 115   100% warm     50 js50    17 js95    19 gpu50  None calls   809 tris   2501213 miss 0.650  
+  ph8-overview           A 2      fr  120 fps   21.6 p50    48 p95    51 max     55 long 120   100% warm     52 js50    17 js95    19 gpu50  None calls   809 tris   2501139 miss 0.633  
+  ph8-overview           figShadow 2 fr  117 fps   21.1 p50    47 p95    51 max     52 long 117   100% warm     47 js50    17 js95    20 gpu50  None calls   535 tris   1878603 miss 0.641  
+  ph8-overview           A 2      fr  114 fps   20.6 p50    49 p95    52 max     54 long 114   100% warm     52 js50    18 js95    20 gpu50  None calls   809 tris   2501155 miss 0.650  
+  ph8-overview           shadowPass 2 fr  145 fps   25.9 p50    43 p95    46 max     49 long 145   100% warm     47 js50    11 js95    18 gpu50  None calls   525 tris   1469255 miss 0.560  
+  ph8-overview           A 2      fr  129 fps   23.1 p50    41 p95    50 max     54 long 129   100% warm     50 js50    11 js95    20 gpu50  None calls   809 tris   2501155 miss 0.607  
+  ph8-overview           density1 2 fr  134 fps   24.1 p50    44 p95    47 max     50 long 134   100% warm     45 js50    17 js95    20 gpu50  None calls   809 tris   2501205 miss 0.590  
+  ph8-overview           A 2      fr  114 fps   20.5 p50    49 p95    50 max     52 long 114   100% warm     52 js50    17 js95    19 gpu50  None calls   809 tris   2501189 miss 0.651  
+  ph8-overview           density1Pass 2 fr  188 fps   33.6 p50    27 p95    39 max     41 long 136  72.3% warm     41 js50     7 js95    16 gpu50  None calls   525 tris   1469247 miss 0.429  
+  ph8-overview           A 2      fr  112 fps   20.1 p50    50 p95    52 max     54 long 112   100% warm     52 js50    18 js95    21 gpu50  None calls   809 tris   2501189 miss 0.658  
+  ph8-overview           figures 2 fr  157 fps   28.1 p50    36 p95    38 max     41 long 157   100% warm     43 js50    10 js95    12 gpu50  None calls   234 tris   1255693 miss 0.522  
+  ph8-overview           A 2      fr  117 fps     21 p50    49 p95    51 max     52 long 117   100% warm     50 js50    17 js95    20 gpu50  None calls   809 tris   2501189 miss 0.643  
+  play-half              warm-up  fr 1248 fps     28 p50    35 p95    41 max     53 long 1248   100% warm     38 js50     9 js95    13 gpu50  None calls   785 tris   2490069 miss 0.524  
+  play-half              A 1      fr  154 fps   27.5 p50    37 p95    40 max     42 long 154   100% warm     42 js50    10 js95    12 gpu50  None calls   789 tris   2490253 miss 0.532  
+  play-half              figShadow 1 fr  167 fps   29.8 p50    33 p95    37 max     43 long 167   100% warm     39 js50     9 js95    11 gpu50  None calls   524 tris   1873591 miss 0.493  
+  play-half              A 1      fr  153 fps   27.3 p50    37 p95    41 max     43 long 153   100% warm     42 js50     9 js95    12 gpu50  None calls   789 tris   2490239 miss 0.536  
+  play-half              shadowPass 1 fr  177 fps   31.6 p50    32 p95    35 max     37 long 177   100% warm     38 js50     8 js95    10 gpu50  None calls   514 tris   1464259 miss 0.463  
+  play-half              A 1      fr  153 fps   27.4 p50    37 p95    40 max     46 long 153   100% warm     42 js50     9 js95    12 gpu50  None calls   789 tris   2490239 miss 0.534  
+  play-half              density1 1 fr  187 fps   33.4 p50    30 p95    33 max     37 long 187   100% warm     35 js50     8 js95    10 gpu50  None calls   789 tris   2490235 miss 0.432  
+  play-half              A 1      fr  154 fps   27.6 p50    36 p95    40 max     44 long 154   100% warm     43 js50     9 js95    12 gpu50  None calls   789 tris   2490245 miss 0.531  
+  play-half              density1Pass 1 fr  224 fps   40.1 p50    25 p95    28 max     34 long  87  38.8% warm     29 js50     7 js95     9 gpu50  None calls   514 tris   1464271 miss 0.318  
+  play-half              A 1      fr  153 fps   27.3 p50    37 p95    40 max     45 long 153   100% warm     41 js50    10 js95    12 gpu50  None calls   789 tris   2490239 miss 0.536  
+  play-half              figures 1 fr  194 fps   34.6 p50    28 p95    36 max     47 long 176  90.7% warm     34 js50     7 js95    12 gpu50  None calls   232 tris   1257707 miss 0.412  
+  play-half              A 1      fr  151 fps     27 p50    37 p95    41 max     44 long 151   100% warm     42 js50    10 js95    12 gpu50  None calls   789 tris   2490227 miss 0.541  
+  play-half              A 2      fr  155 fps   27.8 p50    36 p95    40 max     42 long 155   100% warm     44 js50     9 js95    12 gpu50  None calls   789 tris   2490229 miss 0.527  
+  play-half              figShadow 2 fr  168 fps     30 p50    33 p95    36 max     40 long 168   100% warm     39 js50     9 js95    11 gpu50  None calls   524 tris   1873591 miss 0.490  
+  play-half              A 2      fr  153 fps   27.5 p50    36 p95    40 max     43 long 153   100% warm     43 js50    10 js95    12 gpu50  None calls   789 tris   2490229 miss 0.532  
+  play-half              shadowPass 2 fr  176 fps   31.6 p50    32 p95    35 max     39 long 176   100% warm     40 js50     8 js95    11 gpu50  None calls   514 tris   1464261 miss 0.463  
+  play-half              A 2      fr  154 fps   27.5 p50    36 p95    40 max     45 long 154   100% warm     42 js50     9 js95    12 gpu50  None calls   789 tris   2490235 miss 0.532  
+  play-half              density1 2 fr  188 fps   33.6 p50    30 p95    33 max     36 long 188   100% warm     35 js50     8 js95    10 gpu50  None calls   789 tris   2490229 miss 0.429  
+  play-half              A 2      fr  151 fps     27 p50    37 p95    41 max     44 long 151   100% warm     42 js50    10 js95    12 gpu50  None calls   789 tris   2490239 miss 0.541  
+  play-half              density1Pass 2 fr  221 fps   39.5 p50    25 p95    29 max     31 long  95    43% warm     29 js50     7 js95     9 gpu50  None calls   514 tris   1464257 miss 0.329  
+  play-half              A 2      fr  153 fps   27.3 p50    37 p95    40 max     47 long 153   100% warm     43 js50    10 js95    12 gpu50  None calls   789 tris   2490239 miss 0.536  
+  play-half              figures 2 fr  202 fps   36.4 p50    27 p95    31 max     36 long 163  80.7% warm     34 js50     6 js95     9 gpu50  None calls   232 tris   1257709 miss 0.381  
+  play-half              A 2      fr  154 fps   27.5 p50    36 p95    40 max     47 long 154   100% warm     42 js50     9 js95    12 gpu50  None calls   789 tris   2490235 miss 0.532  
+== perf-P4-iphone.json v step6-phone-route 1 build {"bytes": 2220267, "sha256": "695e1f941ac337942dc89bb9ba3f1d665abf00f781c3185009f3703f8326eea7"} R 17 longMs 25.5 Version/26.6.1 Mobile/15E148 Safari/604.1
+  idle                   idle     fr  155 fps     60 p50    17 p95    17 max     17 long   0     0% warm     17 js50  None js95  None gpu50  None calls  None tris      None miss -0.020  
+  ph8-overview           warm-up  fr 1651 fps     37 p50    17 p95    50 max     55 long 547  33.1% warm     17 js50     5 js95    18 gpu50  None calls   809 tris   2501195 miss 0.371  
+  ph8-overview           A 1      fr  128 fps   22.9 p50    48 p95    51 max     52 long 128   100% warm     51 js50    17 js95    20 gpu50  None calls   809 tris   2501189 miss 0.611  
+  ph8-overview           figShadow 1 fr  157 fps   28.2 p50    34 p95    47 max     50 long 157   100% warm     49 js50     8 js95    18 gpu50  None calls   535 tris   1878575 miss 0.521  
+  ph8-overview           A 1      fr  117 fps     21 p50    50 p95    52 max     55 long 117   100% warm     54 js50    18 js95    21 gpu50  None calls   809 tris   2501213 miss 0.643  
+  ph8-overview           shadowPass 1 fr  149 fps   26.6 p50    35 p95    46 max     48 long 149   100% warm     47 js50     9 js95    18 gpu50  None calls   525 tris   1469209 miss 0.548  
+  ph8-overview           A 1      fr  115 fps   20.6 p50    50 p95    52 max     53 long 115   100% warm     52 js50    18 js95    20 gpu50  None calls   809 tris   2501213 miss 0.650  
+  ph8-overview           density1 1 fr  127 fps   22.7 p50    44 p95    46 max     48 long 127   100% warm     45 js50    18 js95    20 gpu50  None calls   809 tris   2501163 miss 0.614  
+  ph8-overview           A 1      fr  132 fps   23.6 p50    40 p95    51 max     53 long 132   100% warm     50 js50    10 js95    19 gpu50  None calls   809 tris   2501211 miss 0.599  
+  ph8-overview           density1Pass 1 fr  142 fps   25.5 p50    39 p95    42 max     43 long 142   100% warm     40 js50    16 js95    19 gpu50  None calls   525 tris   1469199 miss 0.567  
+  ph8-overview           A 1      fr  122 fps   21.7 p50    49 p95    51 max     52 long 122   100% warm     50 js50    18 js95    20 gpu50  None calls   809 tris   2501213 miss 0.631  
+  ph8-overview           figures 1 fr  162 fps     29 p50    35 p95    37 max     39 long 162   100% warm     37 js50    10 js95    11 gpu50  None calls   234 tris   1255659 miss 0.507  
+  ph8-overview           A 1      fr  112 fps   20.2 p50    49 p95    51 max     54 long 112   100% warm     51 js50    18 js95    20 gpu50  None calls   809 tris   2501213 miss 0.657  
+  ph8-overview           A 2      fr  116 fps   20.9 p50    49 p95    52 max     52 long 116   100% warm     50 js50    18 js95    20 gpu50  None calls   809 tris   2501153 miss 0.645  
+  ph8-overview           figShadow 2 fr  117 fps     21 p50    48 p95    49 max     52 long 117   100% warm     53 js50    19 js95    21 gpu50  None calls   535 tris   1878603 miss 0.643  
+  ph8-overview           A 2      fr  139 fps   24.9 p50    39 p95    51 max     54 long 139   100% warm     54 js50     9 js95    20 gpu50  None calls   809 tris   2501141 miss 0.577  
+  ph8-overview           shadowPass 2 fr  123 fps   22.1 p50    45 p95    48 max     49 long 123   100% warm     48 js50    17 js95    20 gpu50  None calls   525 tris   1469259 miss 0.624  
+  ph8-overview           A 2      fr  118 fps   21.3 p50    49 p95    52 max     54 long 118   100% warm     54 js50    18 js95    20 gpu50  None calls   809 tris   2501139 miss 0.638  
+  ph8-overview           density1 2 fr  126 fps   22.7 p50    44 p95    46 max     48 long 126   100% warm     45 js50    18 js95    20 gpu50  None calls   809 tris   2501213 miss 0.614  
+  ph8-overview           A 2      fr  117 fps   21.1 p50    49 p95    52 max     53 long 117   100% warm     52 js50    18 js95    20 gpu50  None calls   809 tris   2501139 miss 0.641  
+  ph8-overview           density1Pass 2 fr  183 fps   32.7 p50    27 p95    40 max     42 long 132  72.1% warm     40 js50     7 js95    17 gpu50  None calls   525 tris   1469257 miss 0.444  
+  ph8-overview           A 2      fr  114 fps   20.4 p50    49 p95    52 max     53 long 114   100% warm     53 js50    18 js95    21 gpu50  None calls   809 tris   2501139 miss 0.653  
+  ph8-overview           figures 2 fr  163 fps   29.1 p50    34 p95    37 max     39 long 163   100% warm     38 js50    10 js95    12 gpu50  None calls   234 tris   1255719 miss 0.505  
+  ph8-overview           A 2      fr  112 fps   20.1 p50    50 p95    52 max     54 long 112   100% warm     50 js50    18 js95    20 gpu50  None calls   809 tris   2501139 miss 0.658  
+  play-half              warm-up  fr 1234 fps   27.7 p50    36 p95    41 max     49 long 1234   100% warm     40 js50    10 js95    12 gpu50  None calls   785 tris   2490101 miss 0.529  
+  play-half              A 1      fr  151 fps   27.1 p50    37 p95    41 max     46 long 151   100% warm     41 js50     9 js95    13 gpu50  None calls   789 tris   2490239 miss 0.539  
+  play-half              figShadow 1 fr  166 fps   29.7 p50    34 p95    37 max     39 long 166   100% warm     39 js50     9 js95    11 gpu50  None calls   524 tris   1873605 miss 0.495  
+  play-half              A 1      fr  148 fps   26.5 p50    38 p95    41 max     45 long 148   100% warm     42 js50    10 js95    12 gpu50  None calls   789 tris   2490239 miss 0.549  
+  play-half              shadowPass 1 fr  173 fps   30.9 p50    32 p95    35 max     44 long 173   100% warm     38 js50     8 js95    11 gpu50  None calls   514 tris   1464239 miss 0.475  
+  play-half              A 1      fr  150 fps     27 p50    37 p95    41 max     44 long 150   100% warm     44 js50    10 js95    13 gpu50  None calls   789 tris   2490239 miss 0.541  
+  play-half              density1 1 fr  186 fps   33.2 p50    30 p95    33 max     37 long 186   100% warm     36 js50     8 js95    11 gpu50  None calls   789 tris   2490229 miss 0.436  
+  play-half              A 1      fr  150 fps   26.8 p50    37 p95    42 max     44 long 150   100% warm     42 js50    10 js95    13 gpu50  None calls   790 tris   2490253 miss 0.544  
+  play-half              density1Pass 1 fr  223 fps   39.8 p50    25 p95    29 max     32 long  86  38.6% warm     30 js50     7 js95    10 gpu50  None calls   514 tris   1464261 miss 0.323  
+  play-half              A 1      fr  151 fps   26.9 p50    37 p95    41 max     44 long 151   100% warm     41 js50    10 js95    12 gpu50  None calls   789 tris   2490235 miss 0.543  
+  play-half              figures 1 fr  188 fps   33.7 p50    29 p95    38 max     44 long 167  88.8% warm     33 js50     7 js95    15 gpu50  None calls   232 tris   1257707 miss 0.427  
+  play-half              A 1      fr  151 fps   27.1 p50    37 p95    42 max     44 long 151   100% warm     43 js50     9 js95    13 gpu50  None calls   789 tris   2490239 miss 0.539  
+  play-half              A 2      fr  152 fps   27.1 p50    37 p95    41 max     43 long 152   100% warm     42 js50    10 js95    12 gpu50  None calls   789 tris   2490239 miss 0.539  
+  play-half              figShadow 2 fr  165 fps   29.6 p50    34 p95    36 max     41 long 165   100% warm     38 js50     9 js95    11 gpu50  None calls   524 tris   1873595 miss 0.497  
+  play-half              A 2      fr  149 fps   26.5 p50    38 p95    41 max     47 long 149   100% warm     43 js50    10 js95    12 gpu50  None calls   789 tris   2490227 miss 0.549  
+  play-half              shadowPass 2 fr  176 fps   31.6 p50    32 p95    35 max     39 long 176   100% warm     37 js50     8 js95    11 gpu50  None calls   515 tris   1464279 miss 0.463  
+  play-half              A 2      fr  149 fps   26.7 p50    38 p95    41 max     44 long 149   100% warm     42 js50    10 js95    13 gpu50  None calls   789 tris   2490239 miss 0.546  
+  play-half              density1 2 fr  184 fps   33.1 p50    30 p95    33 max     37 long 184   100% warm     35 js50     9 js95    10 gpu50  None calls   789 tris   2490235 miss 0.437  
+  play-half              A 2      fr  151 fps   26.9 p50    37 p95    41 max     49 long 151   100% warm     43 js50    10 js95    13 gpu50  None calls   789 tris   2490229 miss 0.543  
+  play-half              density1Pass 2 fr  226 fps   40.2 p50    25 p95    28 max     31 long  78  34.5% warm     30 js50     7 js95     9 gpu50  None calls   514 tris   1464261 miss 0.317  
+  play-half              A 2      fr  150 fps   26.9 p50    37 p95    40 max     44 long 150   100% warm     41 js50    10 js95    12 gpu50  None calls   789 tris   2490237 miss 0.543  
+  play-half              figures 2 fr  200 fps   35.7 p50    28 p95    33 max     38 long 169  84.5% warm     35 js50     7 js95     9 gpu50  None calls   232 tris   1257707 miss 0.393  
+  play-half              A 2      fr  151 fps     27 p50    37 p95    41 max     44 long 151   100% warm     42 js50    10 js95    12 gpu50  None calls   789 tris   2490227 miss 0.541  
+== perf-P5-iphone.json v step6-perf-route 3 build {"bytes": 2220714, "sha256": "136e1e98424ecc537c3a7d64aedad8758fedb03c030d768be0ae32b6fb763ab4"} R 17 longMs 25.5 Version/26.6.1 Mobile/15E148 Safari/604.1
+  idle                   idle     fr  156 fps     60 p50    17 p95    17 max     17 long   0     0% warm     17 js50  None js95  None gpu50  None calls  None tris      None miss -0.020  
+  overview               held     fr  216 fps     60 p50    17 p95    17 max     18 long   0     0% warm     28 js50     5 js95     6 gpu50  None calls   543 tris   1481051 miss -0.020  
+  overview               orbit    fr  336 fps     60 p50    17 p95    17 max     18 long   0     0% warm     33 js50     5 js95     6 gpu50  None calls   543 tris   1481051 miss -0.020  
+  overview               orbit -figures fr  335 fps     60 p50    17 p95    17 max     19 long   0     0% warm     23 js50     3 js95     4 gpu50  None calls   237 tris    847567 miss -0.020  
+  overview               orbit -effects fr  336 fps     60 p50    17 p95    17 max     22 long   0     0% warm     18 js50     4 js95     5 gpu50  None calls   536 tris   1481044 miss -0.020  
+  pratzen-low-4x         held     fr  216 fps     60 p50    17 p95    17 max     18 long   0     0% warm     24 js50     5 js95     7 gpu50  None calls   447 tris   1448223 miss -0.020  
+  pratzen-low-4x         orbit    fr  336 fps     60 p50    17 p95    17 max     20 long   0     0% warm     28 js50     5 js95     6 gpu50  None calls   442 tris   1450322 miss -0.020  
+  pratzen-low-4x         orbit -figures fr  336 fps     60 p50    17 p95    17 max     17 long   0     0% warm     18 js50     4 js95     5 gpu50  None calls   148 tris    833438 miss -0.020  
+  pratzen-low-4x         orbit -effects fr  336 fps     60 p50    17 p95    17 max     18 long   0     0% warm     30 js50     4 js95     5 gpu50  None calls   435 tris   1450317 miss -0.020  
+  pratzen-low-1x         held     fr  216 fps     60 p50    17 p95    17 max     17 long   0     0% warm     24 js50     4 js95     6 gpu50  None calls   133 tris    221817 miss -0.020  
+  pratzen-low-1x         orbit    fr  336 fps     60 p50    17 p95    17 max     17 long   0     0% warm     22 js50     4 js95     5 gpu50  None calls   129 tris    223918 miss -0.020  
+  pratzen-low-10x        held     fr  216 fps     60 p50    17 p95    17 max     17 long   0     0% warm     30 js50     5 js95     6 gpu50  None calls   447 tris   1448223 miss -0.020  
+  pratzen-low-10x        orbit    fr  336 fps     60 p50    17 p95    17 max     18 long   0     0% warm     27 js50     4 js95     6 gpu50  None calls   443 tris   1450312 miss -0.020  
+  ph8-overview           held     fr  216 fps     60 p50    17 p95    17 max     19 long   0     0% warm     34 js50     5 js95     7 gpu50  None calls   525 tris   1469251 miss -0.020  
+  ph8-overview           orbit    fr  263 fps     47 p50    22 p95    25 max     28 long   7   2.7% warm     33 js50     5 js95     7 gpu50  None calls   525 tris   1469185 miss 0.201  
+  ph8-overview           orbit -figures fr  257 fps   45.9 p50    20 p95    26 max     29 long  26  10.1% warm     30 js50     4 js95    10 gpu50  None calls   224 tris    846371 miss 0.220  
+  ph8-overview           orbit -effects fr  157 fps   28.1 p50    36 p95    38 max     39 long 157   100% warm     39 js50    12 js95    12 gpu50  None calls   518 tris   1469194 miss 0.522  
+  paper                  held     fr  216 fps     60 p50    17 p95    17 max     17 long   0     0% warm     20 js50     4 js95     5 gpu50  None calls   156 tris    240915 miss -0.020  
+  paper                  pan      fr  336 fps     60 p50    17 p95    17 max     17 long   0     0% warm     27 js50     3 js95     5 gpu50  None calls   156 tris    240915 miss -0.020  
+  eye                    held     fr  216 fps     60 p50    17 p95    17 max     20 long   0     0% warm     19 js50     8 js95     9 gpu50  None calls   154 tris    350589 miss -0.020  
+  eye                    look     fr  336 fps     60 p50    17 p95    17 max     19 long   0     0% warm     19 js50     7 js95     8 gpu50  None calls    83 tris    329849 miss -0.020  
+  play-4x                played   fr  696 fps     60 p50    17 p95    17 max     20 long   0     0% warm     17 js50     5 js95     8 gpu50  None calls   506 tris   1466559 miss -0.020 (510, 621.7) 
+  play-half              played   fr  614 fps     53 p50    17 p95    24 max     30 long  10   1.6% warm     18 js50     6 js95     9 gpu50  None calls   508 tris   1464345 miss 0.099 (510, 550.6) 
+== phone-R1.json v step6-phone-route 1 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 17 longMs 25.5 Version/26.6.1 Mobile/15E148 Safari/604.1
+  idle                   idle     fr  156 fps     60 p50    17 p95    17 max     17 long   0     0% warm     17 js50  None js95  None gpu50  None calls  None tris      None miss -0.020  
+  ph8-overview           warm-up  fr 2205 fps   49.5 p50    21 p95    26 max     28 long 149   6.8% warm     17 js50     5 js95     7 gpu50  None calls   532 tris   1308987 miss 0.158  
+  ph8-overview           A 1      fr  233 fps   41.6 p50    24 p95    27 max     38 long  39  16.7% warm     40 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.293  
+  ph8-overview           figShadow 1 fr  240 fps   42.7 p50    23 p95    26 max     28 long  16   6.7% warm     43 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.274  
+  ph8-overview           A 1      fr  237 fps   42.4 p50    24 p95    26 max     28 long  28  11.8% warm     43 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.279  
+  ph8-overview           shadowPass 1 fr  237 fps   42.2 p50    24 p95    26 max     28 long  29  12.2% warm     41 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.283  
+  ph8-overview           A 1      fr  237 fps   42.3 p50    24 p95    26 max     28 long  26    11% warm     40 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.281  
+  ph8-overview           density1 1 fr  237 fps   42.4 p50    24 p95    26 max     28 long  20   8.4% warm     40 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.279  
+  ph8-overview           A 1      fr  236 fps     42 p50    24 p95    26 max     27 long  28  11.9% warm     40 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.286  
+  ph8-overview           density1Pass 1 fr  154 fps   27.5 p50    37 p95    39 max     39 long 154   100% warm     40 js50    17 js95    19 gpu50  None calls   532 tris   1309393 miss 0.532  
+  ph8-overview           A 1      fr  154 fps   27.5 p50    37 p95    39 max     40 long 154   100% warm     41 js50    17 js95    20 gpu50  None calls   532 tris   1309409 miss 0.532  
+  ph8-overview           figures 1 fr  265 fps   47.4 p50    20 p95    26 max     28 long  22   8.3% warm     29 js50     4 js95    10 gpu50  None calls   231 tris    679955 miss 0.194  
+  ph8-overview           A 1      fr  211 fps   37.8 p50    25 p95    37 max     39 long  78    37% warm     41 js50     7 js95    18 gpu50  None calls   532 tris   1309409 miss 0.357  
+  ph8-overview           A 2      fr  219 fps   39.2 p50    24 p95    36 max     38 long  55  25.1% warm     41 js50     6 js95    17 gpu50  None calls   532 tris   1309409 miss 0.334  
+  ph8-overview           figShadow 2 fr  236 fps   42.2 p50    24 p95    26 max     28 long  29  12.3% warm     42 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.283  
+  ph8-overview           A 2      fr  237 fps   42.3 p50    23 p95    26 max     28 long  27  11.4% warm     43 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.281  
+  ph8-overview           shadowPass 2 fr  234 fps   41.8 p50    24 p95    26 max     27 long  36  15.4% warm     41 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.289  
+  ph8-overview           A 2      fr  222 fps   39.6 p50    24 p95    36 max     39 long  59  26.6% warm     40 js50     6 js95    17 gpu50  None calls   532 tris   1309409 miss 0.327  
+  ph8-overview           density1 2 fr  210 fps   37.3 p50    25 p95    38 max     40 long  74  35.2% warm     42 js50     7 js95    18 gpu50  None calls   532 tris   1309409 miss 0.366  
+  ph8-overview           A 2      fr  208 fps   37.1 p50    25 p95    37 max     39 long  83  39.9% warm     39 js50     7 js95    18 gpu50  None calls   532 tris   1309409 miss 0.369  
+  ph8-overview           density1Pass 2 fr  236 fps     42 p50    24 p95    26 max     28 long  25  10.6% warm     42 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.286  
+  ph8-overview           A 2      fr  227 fps   40.4 p50    24 p95    35 max     39 long  54  23.8% warm     40 js50     6 js95    16 gpu50  None calls   532 tris   1309409 miss 0.313  
+  ph8-overview           figures 2 fr  273 fps   48.8 p50    20 p95    26 max     30 long  15   5.5% warm     29 js50     4 js95    10 gpu50  None calls   231 tris    679955 miss 0.170  
+  ph8-overview           A 2      fr  228 fps   40.7 p50    24 p95    34 max     38 long  38  16.7% warm     41 js50     6 js95    16 gpu50  None calls   532 tris   1309409 miss 0.308  
+  play-half              warm-up  fr 2018 fps   45.2 p50    22 p95    25 max     32 long  52   2.6% warm     27 js50     7 js95     9 gpu50  None calls   428 tris   1203643 miss 0.232  
+  play-half              A 1      fr  243 fps   43.4 p50    23 p95    26 max     27 long  21   8.6% warm     25 js50     8 js95     9 gpu50  None calls   517 tris   1363983 miss 0.262  
+  play-half              figShadow 1 fr  243 fps   43.4 p50    23 p95    26 max     29 long  16   6.6% warm     26 js50     7 js95     9 gpu50  None calls   517 tris   1363963 miss 0.262  
+  play-half              A 1      fr  243 fps   43.5 p50    23 p95    26 max     27 long  20   8.2% warm     27 js50     7 js95     9 gpu50  None calls   517 tris   1363963 miss 0.260  
+  play-half              shadowPass 1 fr  243 fps   43.3 p50    23 p95    26 max     27 long  16   6.6% warm     25 js50     7 js95    10 gpu50  None calls   517 tris   1363963 miss 0.264  
+  play-half              A 1      fr  242 fps   43.3 p50    23 p95    26 max     29 long  21   8.7% warm     26 js50     8 js95     9 gpu50  None calls   517 tris   1363963 miss 0.264  
+  play-half              density1 1 fr  244 fps   43.6 p50    23 p95    26 max     28 long  14   5.7% warm     25 js50     7 js95     9 gpu50  None calls   517 tris   1363623 miss 0.259  
+  play-half              A 1      fr  240 fps     43 p50    23 p95    26 max     29 long  22   9.2% warm     27 js50     7 js95    10 gpu50  None calls   517 tris   1363963 miss 0.269  
+  play-half              density1Pass 1 fr  242 fps   43.3 p50    23 p95    26 max     28 long  22   9.1% warm     27 js50     8 js95     9 gpu50  None calls   517 tris   1363585 miss 0.264  
+  play-half              A 1      fr  242 fps   43.3 p50    23 p95    26 max     29 long  25  10.3% warm     27 js50     7 js95     9 gpu50  None calls   517 tris   1363585 miss 0.264  
+  play-half              figures 1 fr  327 fps   58.5 p50    17 p95    20 max     25 long   0     0% warm     26 js50     5 js95     7 gpu50  None calls   229 tris    743999 miss 0.005  
+  play-half              A 1      fr  240 fps   42.8 p50    23 p95    27 max     28 long  34  14.2% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.272  
+  play-half              A 2      fr  240 fps   42.8 p50    23 p95    26 max     29 long  28  11.7% warm     28 js50     8 js95    10 gpu50  None calls   517 tris   1364113 miss 0.272  
+  play-half              figShadow 2 fr  242 fps   43.1 p50    23 p95    26 max     29 long  24   9.9% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363585 miss 0.267  
+  play-half              A 2      fr  242 fps   43.2 p50    23 p95    26 max     31 long  21   8.7% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363585 miss 0.266  
+  play-half              shadowPass 2 fr  242 fps   43.3 p50    23 p95    26 max     28 long  17     7% warm     26 js50     7 js95     9 gpu50  None calls   517 tris   1363585 miss 0.264  
+  play-half              A 2      fr  242 fps   43.2 p50    23 p95    26 max     28 long  25  10.3% warm     26 js50     7 js95     9 gpu50  None calls   517 tris   1363963 miss 0.266  
+  play-half              density1 2 fr  244 fps   43.6 p50    23 p95    26 max     27 long  14   5.7% warm     26 js50     7 js95     9 gpu50  None calls   517 tris   1363623 miss 0.259  
+  play-half              A 2      fr  239 fps   42.9 p50    23 p95    27 max     31 long  30  12.6% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363585 miss 0.271  
+  play-half              density1Pass 2 fr  241 fps   43.2 p50    23 p95    26 max     33 long  20   8.3% warm     25 js50     7 js95    10 gpu50  None calls   517 tris   1363623 miss 0.266  
+  play-half              A 2      fr  242 fps   43.2 p50    23 p95    26 max     30 long  23   9.5% warm     26 js50     8 js95     9 gpu50  None calls   517 tris   1363963 miss 0.266  
+  play-half              figures 2 fr  331 fps   59.1 p50    17 p95    19 max     24 long   0     0% warm     21 js50     5 js95     7 gpu50  None calls   229 tris    743999 miss -0.005  
+  play-half              A 2      fr  242 fps   43.2 p50    23 p95    26 max     27 long  21   8.7% warm     26 js50     8 js95     9 gpu50  None calls   517 tris   1363585 miss 0.266  
+== phone-R2.json v step6-phone-route 1 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 17 longMs 25.5 Version/26.6.1 Mobile/15E148 Safari/604.1
+  idle                   idle     fr  156 fps     60 p50    17 p95    17 max     18 long   0     0% warm     17 js50  None js95  None gpu50  None calls  None tris      None miss -0.020  
+  ph8-overview           warm-up  fr 2223 fps   49.9 p50    20 p95    26 max     30 long 120   5.4% warm     17 js50     5 js95     7 gpu50  None calls   532 tris   1308987 miss 0.152  
+  ph8-overview           A 1      fr  215 fps   38.4 p50    24 p95    37 max     38 long  61  28.4% warm     41 js50     6 js95    17 gpu50  None calls   532 tris   1309409 miss 0.347  
+  ph8-overview           figShadow 1 fr  239 fps   42.6 p50    23 p95    26 max     28 long  35  14.6% warm     43 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.276  
+  ph8-overview           A 1      fr  239 fps   42.8 p50    23 p95    26 max     32 long  23   9.6% warm     48 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.272  
+  ph8-overview           shadowPass 1 fr  210 fps   37.4 p50    25 p95    38 max     41 long  75  35.7% warm     41 js50     6 js95    18 gpu50  None calls   532 tris   1309409 miss 0.364  
+  ph8-overview           A 1      fr  227 fps   40.6 p50    24 p95    35 max     39 long  49  21.6% warm     41 js50     6 js95    12 gpu50  None calls   532 tris   1309409 miss 0.310  
+  ph8-overview           density1 1 fr  224 fps   39.9 p50    24 p95    37 max     39 long  56    25% warm     41 js50     6 js95    18 gpu50  None calls   532 tris   1309409 miss 0.322  
+  ph8-overview           A 1      fr  152 fps   27.2 p50    37 p95    39 max     42 long 152   100% warm     47 js50    18 js95    19 gpu50  None calls   532 tris   1309409 miss 0.538  
+  ph8-overview           density1Pass 1 fr  206 fps   36.7 p50    25 p95    38 max     40 long  84  40.8% warm     41 js50     7 js95    18 gpu50  None calls   532 tris   1309409 miss 0.376  
+  ph8-overview           A 1      fr  179 fps     32 p50    34 p95    39 max     41 long 118  65.9% warm     41 js50    17 js95    18 gpu50  None calls   532 tris   1309505 miss 0.456  
+  ph8-overview           figures 1 fr  270 fps   48.2 p50    20 p95    27 max     31 long  30  11.1% warm     34 js50     4 js95    11 gpu50  None calls   231 tris    679955 miss 0.181  
+  ph8-overview           A 1      fr  222 fps   39.6 p50    24 p95    37 max     42 long  56  25.2% warm     41 js50     6 js95    18 gpu50  None calls   532 tris   1309409 miss 0.327  
+  ph8-overview           A 2      fr  230 fps   40.9 p50    24 p95    33 max     39 long  45  19.6% warm     41 js50     6 js95    11 gpu50  None calls   532 tris   1309409 miss 0.305  
+  ph8-overview           figShadow 2 fr  236 fps   42.3 p50    24 p95    26 max     30 long  30  12.7% warm     42 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.281  
+  ph8-overview           A 2      fr  238 fps   42.5 p50    24 p95    26 max     28 long  23   9.7% warm     42 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.277  
+  ph8-overview           shadowPass 2 fr  237 fps   42.3 p50    23 p95    26 max     29 long  31  13.1% warm     41 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.281  
+  ph8-overview           A 2      fr  236 fps   42.2 p50    24 p95    26 max     29 long  26    11% warm     42 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.283  
+  ph8-overview           density1 2 fr  232 fps   41.5 p50    23 p95    30 max     39 long  35  15.1% warm     40 js50     6 js95    11 gpu50  None calls   532 tris   1309409 miss 0.294  
+  ph8-overview           A 2      fr  238 fps   42.5 p50    23 p95    26 max     28 long  27  11.3% warm     48 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.277  
+  ph8-overview           density1Pass 2 fr  229 fps   40.6 p50    24 p95    35 max     39 long  49  21.4% warm     40 js50     6 js95    17 gpu50  None calls   532 tris   1309409 miss 0.310  
+  ph8-overview           A 2      fr  236 fps   42.2 p50    24 p95    26 max     28 long  32  13.6% warm     41 js50     6 js95     8 gpu50  None calls   532 tris   1309393 miss 0.283  
+  ph8-overview           figures 2 fr  304 fps   54.4 p50    17 p95    24 max     27 long   4   1.3% warm     30 js50     4 js95    10 gpu50  None calls   231 tris    679939 miss 0.075  
+  ph8-overview           A 2      fr  238 fps   42.5 p50    24 p95    26 max     28 long  23   9.7% warm     46 js50     6 js95     8 gpu50  None calls   532 tris   1309409 miss 0.277  
+  play-half              warm-up  fr 2038 fps   45.7 p50    22 p95    25 max     28 long  41     2% warm     28 js50     7 js95     9 gpu50  None calls   428 tris   1203479 miss 0.223  
+  play-half              A 1      fr  244 fps   43.5 p50    23 p95    26 max     29 long  13   5.3% warm     27 js50     7 js95    10 gpu50  None calls   517 tris   1363605 miss 0.260  
+  play-half              figShadow 1 fr  244 fps   43.5 p50    23 p95    26 max     28 long  20   8.2% warm     27 js50     7 js95    10 gpu50  None calls   517 tris   1363963 miss 0.260  
+  play-half              A 1      fr  243 fps   43.3 p50    23 p95    26 max     28 long  21   8.6% warm     25 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.264  
+  play-half              shadowPass 1 fr  244 fps   43.6 p50    23 p95    26 max     28 long  16   6.6% warm     26 js50     7 js95    10 gpu50  None calls   517 tris   1363963 miss 0.259  
+  play-half              A 1      fr  242 fps   43.3 p50    23 p95    26 max     28 long  16   6.6% warm     26 js50     7 js95    10 gpu50  None calls   517 tris   1363837 miss 0.264  
+  play-half              density1 1 fr  243 fps   43.4 p50    23 p95    26 max     29 long  14   5.8% warm     25 js50     7 js95    10 gpu50  None calls   517 tris   1363623 miss 0.262  
+  play-half              A 1      fr  244 fps   43.5 p50    23 p95    26 max     29 long  20   8.2% warm     26 js50     7 js95     9 gpu50  None calls   517 tris   1363585 miss 0.260  
+  play-half              density1Pass 1 fr  244 fps   43.5 p50    23 p95    26 max     29 long  17     7% warm     25 js50     7 js95     9 gpu50  None calls   517 tris   1363625 miss 0.260  
+  play-half              A 1      fr  243 fps   43.4 p50    23 p95    26 max     27 long  16   6.6% warm     27 js50     7 js95     9 gpu50  None calls   517 tris   1363963 miss 0.262  
+  play-half              figures 1 fr  332 fps   59.3 p50    17 p95    19 max     23 long   0     0% warm     19 js50     6 js95     7 gpu50  None calls   229 tris    743999 miss -0.008  
+  play-half              A 1      fr  243 fps   43.6 p50    23 p95    26 max     28 long  15   6.2% warm     26 js50     7 js95     9 gpu50  None calls   517 tris   1364239 miss 0.259  
+  play-half              A 2      fr  243 fps   43.5 p50    23 p95    26 max     29 long  25  10.3% warm     27 js50     7 js95     9 gpu50  None calls   517 tris   1363585 miss 0.260  
+  play-half              figShadow 2 fr  245 fps   43.7 p50    22 p95    26 max     31 long  23   9.4% warm     25 js50     7 js95    10 gpu50  None calls   517 tris   1363585 miss 0.257  
+  play-half              A 2      fr  243 fps   43.4 p50    23 p95    26 max     28 long  17     7% warm     26 js50     7 js95    10 gpu50  None calls   517 tris   1364239 miss 0.262  
+  play-half              shadowPass 2 fr  242 fps   43.1 p50    23 p95    26 max     29 long  22   9.1% warm     25 js50     8 js95     9 gpu50  None calls   517 tris   1363963 miss 0.267  
+  play-half              A 2      fr  244 fps   43.6 p50    23 p95    26 max     28 long  17     7% warm     26 js50     7 js95    10 gpu50  None calls   517 tris   1363963 miss 0.259  
+  play-half              density1 2 fr  244 fps   43.7 p50    23 p95    26 max     27 long  13   5.3% warm     27 js50     7 js95    10 gpu50  None calls   517 tris   1363963 miss 0.257  
+  play-half              A 2      fr  246 fps   43.8 p50    22 p95    26 max     30 long  21   8.5% warm     25 js50     7 js95    10 gpu50  None calls   517 tris   1363623 miss 0.255  
+  play-half              density1Pass 2 fr  245 fps   43.8 p50    23 p95    25 max     28 long  11   4.5% warm     29 js50     7 js95     9 gpu50  None calls   517 tris   1364239 miss 0.255  
+  play-half              A 2      fr  243 fps   43.4 p50    23 p95    26 max     30 long  21   8.6% warm     26 js50     7 js95    10 gpu50  None calls   517 tris   1363963 miss 0.262  
+  play-half              figures 2 fr  334 fps   59.6 p50    17 p95    19 max     21 long   0     0% warm     19 js50     6 js95     7 gpu50  None calls   229 tris    743999 miss -0.013  
+  play-half              A 2      fr  244 fps   43.6 p50    23 p95    26 max     31 long  18   7.4% warm     25 js50     7 js95    10 gpu50  None calls   517 tris   1363585 miss 0.259  
+== phone-cull.json v stage8-cull-route 1 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 17 longMs 25.5 Version/26.6.1 Mobile/15E148 Safari/604.1
+  idle                   idle     fr  156 fps     60 p50    17 p95    17 max     25 long   0     0% warm     17 js50  None js95  None gpu50  None calls  None tris      None miss -0.020  
+  pratzen-low-4x         warm-up  fr 2673 fps   59.9 p50    17 p95    17 max     22 long   0     0% warm     17 js50     5 js95     6 gpu50  None calls   266 tris    951157 miss -0.018  
+  pratzen-low-4x         cull A AB 1.0 fr  335 fps   59.8 p50    17 p95    18 max     21 long   0     0% warm     32 js50     4 js95     6 gpu50  None calls   211 tris    857314 miss -0.017  
+  pratzen-low-4x         cull B AB 1.1 fr  302 fps   54.1 p50    18 p95    21 max     23 long   0     0% warm     40 js50     5 js95     7 gpu50  None calls   446 tris   1312578 miss 0.080  1
+  pratzen-low-4x         cull A AB 1.2 fr  332 fps   59.3 p50    17 p95    19 max     24 long   0     0% warm     33 js50     5 js95     6 gpu50  None calls   211 tris    857314 miss -0.008  2
+  pratzen-low-4x         cull B AB 1.3 fr  303 fps   54.1 p50    18 p95    21 max     23 long   0     0% warm     41 js50     5 js95     7 gpu50  None calls   447 tris   1312580 miss 0.080  3
+  pratzen-low-4x         cull A AB 1.4 fr  335 fps   59.8 p50    17 p95    18 max     21 long   0     0% warm     32 js50     4 js95     6 gpu50  None calls   211 tris    857312 miss -0.017  4
+  pratzen-low-4x         cull B AB 1.5 fr  304 fps   54.2 p50    18 p95    21 max     23 long   0     0% warm     39 js50     5 js95     7 gpu50  None calls   447 tris   1312565 miss 0.079  5
+  pratzen-low-4x         cull A AB 1.6 fr  336 fps   59.9 p50    17 p95    18 max     20 long   0     0% warm     32 js50     4 js95     6 gpu50  None calls   211 tris    857414 miss -0.018  6
+  pratzen-low-4x         cull A AB 2.0 fr  336 fps   59.9 p50    17 p95    18 max     20 long   0     0% warm     35 js50     4 js95     6 gpu50  None calls   211 tris    857416 miss -0.018  
+  pratzen-low-4x         cull B AB 2.1 fr  301 fps   53.8 p50    19 p95    21 max     23 long   0     0% warm     40 js50     5 js95     7 gpu50  None calls   447 tris   1312529 miss 0.085  1
+  pratzen-low-4x         cull A AB 2.2 fr  334 fps   59.6 p50    17 p95    18 max     23 long   0     0% warm     36 js50     4 js95     6 gpu50  None calls   211 tris    857414 miss -0.013  2
+  pratzen-low-4x         cull B AB 2.3 fr  303 fps   54.1 p50    18 p95    21 max     23 long   0     0% warm     41 js50     5 js95     7 gpu50  None calls   447 tris   1312582 miss 0.080  3
+  pratzen-low-4x         cull A AB 2.4 fr  333 fps   59.5 p50    17 p95    18 max     23 long   0     0% warm     34 js50     5 js95     6 gpu50  None calls   211 tris    857312 miss -0.012  4
+  pratzen-low-4x         cull B AB 2.5 fr  295 fps   52.8 p50    19 p95    21 max     23 long   0     0% warm     46 js50     5 js95     7 gpu50  None calls   447 tris   1312578 miss 0.102  5
+  pratzen-low-4x         cull A AB 2.6 fr  335 fps   59.8 p50    17 p95    18 max     26 long   1   0.3% warm     32 js50     5 js95     6 gpu50  None calls   211 tris    857314 miss -0.017  6
+  pratzen-low-4x         cull B BA 1.0 fr  336 fps     60 p50    17 p95    17 max     19 long   0     0% warm     27 js50     5 js95     7 gpu50  None calls   448 tris   1312580 miss -0.020  
+  pratzen-low-4x         cull A BA 1.1 fr  336 fps     60 p50    17 p95    17 max     19 long   0     0% warm     24 js50     5 js95     6 gpu50  None calls   211 tris    857414 miss -0.020  1
+  pratzen-low-4x         cull B BA 1.2 fr  316 fps   56.4 p50    17 p95    21 max     23 long   0     0% warm     35 js50     5 js95     7 gpu50  None calls   446 tris   1312293 miss 0.041  2
+  pratzen-low-4x         cull A BA 1.3 fr  333 fps   59.4 p50    17 p95    19 max     22 long   0     0% warm     34 js50     4 js95     6 gpu50  None calls   211 tris    857312 miss -0.010  3
+  pratzen-low-4x         cull B BA 1.4 fr  300 fps   53.7 p50    19 p95    21 max     22 long   0     0% warm     38 js50     5 js95     6 gpu50  None calls   447 tris   1312572 miss 0.087  4
+  pratzen-low-4x         cull A BA 1.5 fr  337 fps     60 p50    17 p95    17 max     18 long   0     0% warm     23 js50     5 js95     6 gpu50  None calls   211 tris    857414 miss -0.020  5
+  pratzen-low-4x         cull B BA 1.6 fr  336 fps     60 p50    17 p95    17 max     19 long   0     0% warm     30 js50     5 js95     7 gpu50  None calls   448 tris   1312606 miss -0.020  6
+  pratzen-low-4x         cull B BA 2.0 fr  336 fps     60 p50    17 p95    17 max     19 long   0     0% warm     42 js50     5 js95     7 gpu50  None calls   448 tris   1312608 miss -0.020  
+  pratzen-low-4x         cull A BA 2.1 fr  337 fps     60 p50    17 p95    17 max     19 long   0     0% warm     28 js50     5 js95     6 gpu50  None calls   211 tris    857414 miss -0.020  1
+  pratzen-low-4x         cull B BA 2.2 fr  336 fps     60 p50    17 p95    17 max     17 long   0     0% warm     29 js50     5 js95     7 gpu50  None calls   448 tris   1312606 miss -0.020  2
+  pratzen-low-4x         cull A BA 2.3 fr  335 fps   59.8 p50    17 p95    18 max     21 long   0     0% warm     25 js50     5 js95     6 gpu50  None calls   211 tris    857314 miss -0.017  3
+  pratzen-low-4x         cull B BA 2.4 fr  300 fps   53.7 p50    19 p95    21 max     23 long   0     0% warm     39 js50     5 js95     7 gpu50  None calls   447 tris   1312580 miss 0.087  4
+  pratzen-low-4x         cull A BA 2.5 fr  336 fps     60 p50    17 p95    18 max     21 long   0     0% warm     32 js50     4 js95     6 gpu50  None calls   211 tris    857416 miss -0.020  5
+  pratzen-low-4x         cull B BA 2.6 fr  298 fps   53.2 p50    19 p95    21 max     23 long   0     0% warm     37 js50     5 js95     7 gpu50  None calls   447 tris   1312580 miss 0.096  6
+== phone-fx.json v stage8-fx-route 1 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 17 longMs 25.5 Version/26.6.1 Mobile/15E148 Safari/604.1
+  idle                   idle     fr  155 fps     60 p50    17 p95    17 max     17 long   0     0% warm     22 js50  None js95  None gpu50  None calls  None tris      None miss -0.020  
+  pratzen-low-4x         warm-up  fr 2676 fps     60 p50    17 p95    17 max     26 long   1     0% warm     17 js50     5 js95     6 gpu50  None calls   266 tris    951157 miss -0.020  
+  pratzen-low-4x         fx A AB 1.0 fr  335 fps     60 p50    17 p95    17 max     17 long   0     0% warm     27 js50     5 js95     6 gpu50  None calls   211 tris    857416 miss -0.020  
+  pratzen-low-4x         fx B AB 1.1 fr  318 fps   56.7 p50    17 p95    17 max    329 long   1   0.3% warm     24 js50     5 js95     6 gpu50  None calls   207 tris    857837 miss 0.036  1
+  pratzen-low-4x         fx A AB 1.2 fr  336 fps     60 p50    17 p95    17 max     20 long   0     0% warm     30 js50     5 js95     6 gpu50  None calls   211 tris    857416 miss -0.020  2
+  pratzen-low-4x         fx B AB 1.3 fr  336 fps     60 p50    17 p95    17 max     18 long   0     0% warm     28 js50     5 js95     6 gpu50  None calls   204 tris    857647 miss -0.020  3
+  pratzen-low-4x         fx A AB 1.4 fr  330 fps   58.9 p50    17 p95    19 max     24 long   0     0% warm     30 js50     5 js95     6 gpu50  None calls   211 tris    857072 miss -0.001  4
+  pratzen-low-4x         fx B AB 1.5 fr  222 fps   39.7 p50    26 p95    30 max     33 long 128  57.7% warm     34 js50    11 js95    13 gpu50  None calls   207 tris    859505 miss 0.325  5
+  pratzen-low-4x         fx A AB 1.6 fr  336 fps     60 p50    17 p95    17 max     18 long   0     0% warm     21 js50     5 js95     6 gpu50  None calls   211 tris    857414 miss -0.020  6
+  pratzen-low-4x         fx A AB 2.0 fr  337 fps     60 p50    17 p95    17 max     17 long   0     0% warm     28 js50     5 js95     6 gpu50  None calls   211 tris    857416 miss -0.020  
+  pratzen-low-4x         fx B AB 2.1 fr  336 fps     60 p50    17 p95    17 max     19 long   0     0% warm     29 js50     5 js95     6 gpu50  None calls   204 tris    857409 miss -0.020  1
+  pratzen-low-4x         fx A AB 2.2 fr  336 fps     60 p50    17 p95    17 max     17 long   0     0% warm     25 js50     5 js95     6 gpu50  None calls   211 tris    857414 miss -0.020  2
+  pratzen-low-4x         fx B AB 2.3 fr  336 fps     60 p50    17 p95    17 max     17 long   0     0% warm     35 js50     5 js95     6 gpu50  None calls   204 tris    857409 miss -0.020  3
+  pratzen-low-4x         fx A AB 2.4 fr  335 fps   59.8 p50    17 p95    18 max     23 long   0     0% warm     25 js50     5 js95     6 gpu50  None calls   211 tris    857312 miss -0.017  4
+  pratzen-low-4x         fx B AB 2.5 fr  196 fps   35.2 p50    28 p95    34 max     36 long 186  94.9% warm     35 js50    12 js95    16 gpu50  None calls   202 tris    853589 miss 0.402  5
+  pratzen-low-4x         fx A AB 2.6 fr  327 fps   58.4 p50    17 p95    20 max     23 long   0     0% warm     32 js50     5 js95     7 gpu50  None calls   211 tris    857020 miss 0.007  6
+  pratzen-low-4x         fx B BA 1.0 fr  336 fps     60 p50    17 p95    17 max     18 long   0     0% warm     27 js50     5 js95     6 gpu50  None calls   204 tris    857407 miss -0.020  
+  pratzen-low-4x         fx A BA 1.1 fr  336 fps     60 p50    17 p95    17 max     20 long   0     0% warm     20 js50     5 js95     6 gpu50  None calls   211 tris    857414 miss -0.020  1
+  pratzen-low-4x         fx B BA 1.2 fr  336 fps     60 p50    17 p95    17 max     19 long   0     0% warm     25 js50     5 js95     6 gpu50  None calls   204 tris    857409 miss -0.020  2
+  pratzen-low-4x         fx A BA 1.3 fr  335 fps     60 p50    17 p95    17 max     20 long   0     0% warm     26 js50     5 js95     6 gpu50  None calls   211 tris    857312 miss -0.020  3
+  pratzen-low-4x         fx B BA 1.4 fr  336 fps     60 p50    17 p95    17 max     20 long   0     0% warm     26 js50     5 js95     6 gpu50  None calls   204 tris    857409 miss -0.020  4
+  pratzen-low-4x         fx A BA 1.5 fr  336 fps     60 p50    17 p95    17 max     19 long   0     0% warm     22 js50     5 js95     6 gpu50  None calls   211 tris    857416 miss -0.020  5
+  pratzen-low-4x         fx B BA 1.6 fr  336 fps     60 p50    17 p95    17 max     25 long   0     0% warm     26 js50     5 js95     6 gpu50  None calls   204 tris    857407 miss -0.020  6
+  pratzen-low-4x         fx B BA 2.0 fr  319 fps   56.9 p50    17 p95    22 max     26 long   1   0.3% warm     31 js50     5 js95     6 gpu50  None calls   202 tris    856941 miss 0.033  
+  pratzen-low-4x         fx A BA 2.1 fr  334 fps   59.8 p50    17 p95    18 max     20 long   0     0% warm     32 js50     5 js95     6 gpu50  None calls   211 tris    857312 miss -0.017  1
+  pratzen-low-4x         fx B BA 2.2 fr  196 fps   35.2 p50    28 p95    34 max     36 long 187  95.4% warm     35 js50    12 js95    16 gpu50  None calls   202 tris    856959 miss 0.402  2
+  pratzen-low-4x         fx A BA 2.3 fr  331 fps   59.2 p50    17 p95    19 max     23 long   0     0% warm     32 js50     5 js95     6 gpu50  None calls   211 tris    857140 miss -0.006  3
+  pratzen-low-4x         fx B BA 2.4 fr  260 fps   46.5 p50    21 p95    28 max     34 long  50  19.2% warm     34 js50     5 js95    12 gpu50  None calls   205 tris    857407 miss 0.210  4
+  pratzen-low-4x         fx A BA 2.5 fr  332 fps   59.4 p50    17 p95    19 max     22 long   0     0% warm     31 js50     5 js95     6 gpu50  None calls   211 tris    857314 miss -0.010  5
+  pratzen-low-4x         fx B BA 2.6 fr  215 fps   38.6 p50    26 p95    30 max     34 long 147  68.4% warm     35 js50    12 js95    13 gpu50  None calls   205 tris    857743 miss 0.344  6
+== phone-gait.json v stage8-gait-route 1 build {"bytes": 2810630, "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"} R 17 longMs 25.5 Version/26.6.1 Mobile/15E148 Safari/604.1
+  idle                   idle     fr  156 fps     60 p50    17 p95    17 max     17 long   0     0% warm     17 js50  None js95  None gpu50  None calls  None tris      None miss -0.020  
+  play-half              warm-up  fr 2291 fps   51.4 p50    19 p95    24 max     29 long  31   1.4% warm     17 js50     7 js95     9 gpu50  None calls   430 tris   1207197 miss 0.126  
+  play-half              gait A AB 1.0 fr  242 fps   43.2 p50    23 p95    26 max     29 long  25  10.3% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363983 miss 0.266  
+  play-half              gait B AB 1.1 fr  242 fps   43.3 p50    23 p95    26 max     29 long  19   7.9% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363837 miss 0.264  1
+  play-half              gait A AB 1.2 fr  240 fps     43 p50    23 p95    26 max     30 long  25  10.4% warm     28 js50     8 js95    10 gpu50  None calls   517 tris   1364249 miss 0.269  2
+  play-half              gait B AB 1.3 fr  243 fps   43.3 p50    23 p95    26 max     30 long  18   7.4% warm     28 js50     8 js95    10 gpu50  None calls   517 tris   1363851 miss 0.264  3
+  play-half              gait A AB 1.4 fr  240 fps   42.9 p50    23 p95    27 max     29 long  29  12.1% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.271  4
+  play-half              gait B AB 1.5 fr  242 fps   43.2 p50    23 p95    26 max     28 long  22   9.1% warm     29 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.266  5
+  play-half              gait A AB 1.6 fr  240 fps   43.1 p50    23 p95    26 max     29 long  20   8.3% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363585 miss 0.267  6
+  play-half              gait A AB 2.0 fr  240 fps   42.9 p50    23 p95    26 max     30 long  28  11.7% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363585 miss 0.271  
+  play-half              gait B AB 2.1 fr  242 fps   43.4 p50    23 p95    26 max     29 long  17     7% warm     26 js50     8 js95     9 gpu50  None calls   517 tris   1363623 miss 0.262  1
+  play-half              gait A AB 2.2 fr  242 fps   43.2 p50    23 p95    26 max     29 long  24   9.9% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.266  2
+  play-half              gait B AB 2.3 fr  241 fps     43 p50    23 p95    26 max     29 long  23   9.5% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.269  3
+  play-half              gait A AB 2.4 fr  240 fps   42.9 p50    23 p95    26 max     28 long  26  10.8% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1364099 miss 0.271  4
+  play-half              gait B AB 2.5 fr  242 fps   43.2 p50    23 p95    26 max     30 long  25  10.3% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363625 miss 0.266  5
+  play-half              gait A AB 2.6 fr  241 fps   43.1 p50    23 p95    26 max     29 long  26  10.8% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.267  6
+  play-half              gait B BA 1.0 fr  242 fps   43.3 p50    23 p95    26 max     29 long  19   7.9% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1364901 miss 0.264  
+  play-half              gait A BA 1.1 fr  241 fps   43.1 p50    23 p95    26 max     29 long  26  10.8% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.267  1
+  play-half              gait B BA 1.2 fr  242 fps   43.2 p50    23 p95    26 max     30 long  22   9.1% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.266  2
+  play-half              gait A BA 1.3 fr  242 fps   43.3 p50    23 p95    26 max     28 long  23   9.5% warm     26 js50     7 js95     9 gpu50  None calls   517 tris   1363963 miss 0.264  3
+  play-half              gait B BA 1.4 fr  243 fps   43.4 p50    23 p95    26 max     30 long  24   9.9% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363625 miss 0.262  4
+  play-half              gait A BA 1.5 fr  241 fps   43.1 p50    23 p95    26 max     29 long  25  10.4% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363623 miss 0.267  5
+  play-half              gait B BA 1.6 fr  240 fps     43 p50    23 p95    26 max     32 long  28  11.7% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363851 miss 0.269  6
+  play-half              gait B BA 2.0 fr  242 fps   43.3 p50    23 p95    26 max     28 long  16   6.6% warm     28 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.264  
+  play-half              gait A BA 2.1 fr  240 fps   42.8 p50    23 p95    26 max     30 long  34  14.2% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363585 miss 0.272  1
+  play-half              gait B BA 2.2 fr  243 fps   43.4 p50    23 p95    26 max     28 long  19   7.8% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.262  2
+  play-half              gait A BA 2.3 fr  241 fps     43 p50    23 p95    26 max     29 long  18   7.5% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.269  3
+  play-half              gait B BA 2.4 fr  243 fps   43.3 p50    23 p95    26 max     29 long  24   9.9% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.264  4
+  play-half              gait A BA 2.5 fr  238 fps   42.6 p50    23 p95    27 max     30 long  36  15.1% warm     26 js50     8 js95    10 gpu50  None calls   517 tris   1363851 miss 0.276  5
+  play-half              gait B BA 2.6 fr  241 fps   43.1 p50    23 p95    26 max     28 long  24    10% warm     27 js50     8 js95    10 gpu50  None calls   517 tris   1363963 miss 0.267  6

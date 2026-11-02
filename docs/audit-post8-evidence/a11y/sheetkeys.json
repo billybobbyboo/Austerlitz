@@ -1,0 +1,164 @@
+{
+ "tag": "sheetkeys",
+ "started": "2026-11-02T06:44:30.644Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "control page (no app script), --disable-smooth-scrolling: Tab to the region, then keys",
+   "t": 2.1,
+   "res": [
+    {
+     "key": "PageDown",
+     "before": 63,
+     "after": 628,
+     "focus": "div#body"
+    },
+    {
+     "key": "ArrowDown",
+     "before": 628,
+     "after": 668,
+     "focus": "div#body"
+    },
+    {
+     "key": "Space",
+     "before": 668,
+     "after": 1233,
+     "focus": "div#body"
+    },
+    {
+     "key": "End",
+     "before": 1233,
+     "after": 11925,
+     "focus": "div#body"
+    },
+    {
+     "key": "Home",
+     "before": 11925,
+     "after": 0,
+     "focus": "div#body"
+    }
+   ]
+  },
+  {
+   "step": "app: the sources sheet by a real click, Tab (real) to its text region, then keys (real)",
+   "t": 76.4,
+   "geo": {
+    "sh": 32858,
+    "ch": 736,
+    "oy": "auto",
+    "focus": "modal-body"
+   },
+   "res": [
+    {
+     "key": "PageDown",
+     "before": 0,
+     "after": 644,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "ArrowDown",
+     "before": 644,
+     "after": 684,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "Space",
+     "before": 684,
+     "after": 1328,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "End",
+     "before": 1328,
+     "after": 32122,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "Home",
+     "before": 32122,
+     "after": 0,
+     "focus": "div#modal-body"
+    }
+   ]
+  },
+  {
+   "step": "app: a real click on the sheet's text, then keys (real)",
+   "t": 78.6,
+   "focus": "DIV#modal-body.",
+   "res": [
+    {
+     "key": "PageDown",
+     "before": 0,
+     "after": 644,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "ArrowDown",
+     "before": 644,
+     "after": 684,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "Space",
+     "before": 684,
+     "after": 1328,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "End",
+     "before": 1328,
+     "after": 32122,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "Home",
+     "before": 32122,
+     "after": 0,
+     "focus": "div#modal-body"
+    }
+   ]
+  },
+  {
+   "step": "app: the ? overlay, Tab Tab to its list region (real), then keys (real)",
+   "t": 86.8,
+   "focus": "help-body",
+   "res": [
+    {
+     "key": "PageDown",
+     "before": 0,
+     "after": 644,
+     "focus": "div#help-body"
+    },
+    {
+     "key": "ArrowDown",
+     "before": 644,
+     "after": 684,
+     "focus": "div#help-body"
+    },
+    {
+     "key": "Space",
+     "before": 684,
+     "after": 922,
+     "focus": "div#help-body"
+    },
+    {
+     "key": "End",
+     "before": 922,
+     "after": 922,
+     "focus": "div#help-body"
+    },
+    {
+     "key": "Home",
+     "before": 922,
+     "after": 0,
+     "focus": "div#help-body"
+    }
+   ]
+  }
+ ],
+ "shots": [],
+ "ok": true,
+ "ended": "2026-11-02T06:46:10.888Z",
+ "seconds": 100
+}

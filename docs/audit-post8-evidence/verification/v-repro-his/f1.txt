@@ -1,0 +1,6 @@
+castle site (world.js LANDMARK_SITES.castle): [ 212.9, 344.3 ]
+closest legrand-prz on this build: 37 m at 08:51 (530.75 min), legrand [213.9,340.6], prz [215,341]
+closest legrand-castle on this build: 4 m at 08:44 (523.5 min)
+08:45 legrand [ '213.0', '343.5' ] engaged | prz [ 215, 341 ] attacking | 101 m apart | 25 m from the castle site
+08:51 legrand [ '213.9', '340.5' ] engaged | prz [ 215, 341 ] attacking | 37 m apart | 124 m from the castle site
+8H's prz@2 [238,332] @4 [233,344]: closest legrand-prz then 620 m at 09:04

@@ -1,0 +1,3 @@
+rows by source kind / claim: {"doc/attributed":3,"doc/unchecked":31,"inf/unchecked":5,"anec/disputed":1,"anec/unchecked":1,"inf/interpretation":2,"inf/disputed":1,"inf/attributed":1,"doc/disputed":1}
+DOCUMENTED rows 35 of which unchecked 31
+al@5[0]: [["knew","doc","That Bagration could not force the Santon and that Blasowitz had fallen."],["ordered","doc","A withdrawal on Rausnitz, covering the Allied right."]] | al@4[0] kind: saw

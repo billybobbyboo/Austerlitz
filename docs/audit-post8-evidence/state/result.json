@@ -1,0 +1,291 @@
+{
+ "area": "state",
+ "scope_summary": "Simulation, state and application correctness: static review of app.js's clock, phases, seeking, selection, panels, reading, derived readings, timers and listeners, shared data, units and determinism; node property checks on the generated helper modules and on the built bundle in runtime-test.js's stubbed THREE+DOM (B1-B14, C1-C4, D1-D2), in an isolated copy reproducing md5 f10fe585.",
+ "coverage": [
+  {
+   "item": "positions continuity",
+   "method": "766 critical-time checks; 1/8-minute sweep 215,072 samples",
+   "result": "0 discontinuities, no NaN, none outside the map frame",
+   "evidence": "docs/audit-post8-evidence/state/props-helpers.txt"
+  },
+  {
+   "item": "phases",
+   "method": "phaseAt at every boundary +-1e-9",
+   "result": "contiguous, exact",
+   "evidence": "docs/audit-post8-evidence/state/props-helpers.txt"
+  },
+  {
+   "item": "derived readings",
+   "method": "plateau holding and centre separation swept",
+   "result": "10/11 changes, 2 switches, no flicker",
+   "evidence": "docs/audit-post8-evidence/state/props-helpers.txt, plateau-changes.txt"
+  },
+  {
+   "item": "grades",
+   "method": "confAt every quarter minute",
+   "result": "A/B/C always (104,251 samples)",
+   "evidence": "docs/audit-post8-evidence/state/props-helpers.txt"
+  },
+  {
+   "item": "Play, dwell, speed changes, pause/resume, end of day",
+   "method": "bundle driven with a fake 60 fps clock (B1-B3, B7)",
+   "result": "holds; day length within one frame of dwellDayLength",
+   "evidence": "docs/audit-post8-evidence/state/props-bundle.txt"
+  },
+  {
+   "item": "timers and listeners",
+   "method": "every setTimeout/setInterval/rAF/addEventListener with callers",
+   "result": "8 timers, no duplicate listener, no leak found",
+   "evidence": "docs/audit-post8-evidence/state/listeners.txt"
+  },
+  {
+   "item": "shared data immutability, units, determinism",
+   "method": "static search",
+   "result": "no run-time mutation of data arrays; one scale; no Math.random outside the self-test",
+   "evidence": "docs/audit-post8-evidence/state/README.md"
+  }
+ ],
+ "findings": [
+  {
+   "title": "The open dossier goes stale while the clock moves within a phase: 'Position at 12:03' still shown at 12:37, a place's 'Formations nearby now' wrong in 86 of 240 place-phases",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "dossier / drawer (app.js drawerKey, paintDrawerBody)",
+   "user_impact": "A visitor who opens a formation's or place's dossier and plays or scrubs within a phase reads a stale position, time and 'nearby now' list stated as current; the dossier contradicts the map beside it.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:3498",
+    "app.js:7720-7728",
+    "app.js:7908-7913",
+    "app.js:2488",
+    "app.js:2498",
+    "app.js:8232-8243",
+    "runtime-test.js:1058-1110"
+   ],
+   "evidence": "docs/audit-post8-evidence/state/props-bundle2.txt (C1-C4); README.md finding 2",
+   "expected": "An open dossier's rows that state the clock or 'now' (Where, Position at HH:MM, Midpoint at HH:MM, the day-track's dot, Formations nearby now) follow the clock.",
+   "observed": "setClock repaints the dossier within a phase only when drawerKey changes; the key holds each formation's text phase and hidden state, not its place. C1: Napoleon's headquarters' card painted at 12:03 ('Zuran mound') unchanged at 12:37 when the model has it at 'Stare Vinohrady', 4.8 km on; the full dossier still says 'Position at 12:03'. C2: a standing formation's dossier says 'Position at 04:05' at 04:45. C3: 86 of 240 place-phases end with a 'Formations nearby now' list the model no longer has (under everyone's reading; 0 under Napoleon's headquarters). C4: 49 aggregate-phases keep a midpoint the model has left.",
+   "repro": "node tools/audit-post8/state/props-bundle2.js <isolated copy root> (python3 build.py && node tools/mk-world-mod.js && node tools/mk-helpers.js first)",
+   "cause_hypothesis": "drawerKey omits the clock-dependent rows' inputs",
+   "cause_verified": "yes (paintDrawerBody wrapped; repaint inputs read)",
+   "remedy": "Repaint the open dossier's clock-dependent rows when their values change (e.g. include a rounded clock or the computed place in drawerKey for those rows, or repaint those rows each minute); add a runtime test that opens a dossier and moves the clock within a phase.",
+   "effort": "hours to 1 day",
+   "dependencies": "none",
+   "risk": "repaint cost each minute; focus must be kept",
+   "validation": "the C1-C4 checks re-run: 0 stale rows",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "A theme chosen while the clock plays does not stop it: the clock runs on and Follow takes the camera from the theme's view within seconds",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "themes (app.js setChapter)",
+   "user_impact": "A visitor who picks an analysis theme while Play runs loses the theme's moment and view within seconds; the explanation then describes a different moment from the one shown.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:4193-4207",
+    "app.js:6944",
+    "app.js:4674",
+    "app.js:7487",
+    "app.js:7554",
+    "app.js:8827",
+    "app.js:8906"
+   ],
+   "evidence": "docs/audit-post8-evidence/state/props-bundle.txt (B4), props-bundle3.txt (D2); README.md finding 1",
+   "expected": "As app.js's own comment says (8827: 'the tour and the themes stop the clock'), choosing a theme stops Play and holds the theme's moment and view.",
+   "observed": "B4: playing at 05:00, the theme 'plan' put the clock at 04:00 and Play went on (04:10 two seconds later). D2: 1.7 s after the theme was chosen the camera target is 7 units from the theme's authored target, at 3.7 s 63 units, at 7.7 s 76 units; clock 04:28, still playing.",
+   "repro": "node tools/audit-post8/state/props-bundle.js / props-bundle3.js <isolated copy root> (python3 build.py && node tools/mk-world-mod.js && node tools/mk-helpers.js first)",
+   "cause_hypothesis": "setChapter never calls stopPlay (the tour and the phase and act buttons do)",
+   "cause_verified": "yes (code read + driven)",
+   "remedy": "Call stopPlay in setChapter as applyTour does; add a test.",
+   "effort": "minutes",
+   "dependencies": "none",
+   "risk": "low",
+   "validation": "",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "A phase change that interrupts the overlays' fade makes the outgoing phase's arrows pop back to 0.9 opacity (stepping through phases quickly flashes each skipped phase's arrows)",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "overlays (app.js rebuildOverlays, applyOverlayOpacity)",
+   "user_impact": "Arrows of a phase the visitor stepped past flash on screen for about a second: a misleading glimpse of movements not belonging to the moment shown.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:3114",
+    "app.js:3185",
+    "app.js:3194",
+    "app.js:3473-3478"
+   ],
+   "evidence": "docs/audit-post8-evidence/state/props-bundle.txt (B5, B13), props-bundle3.txt (D1); README.md finding 3",
+   "expected": "An interrupted fade continues from the opacity reached; a skipped phase's never-shown arrows stay hidden.",
+   "observed": "rebuildOverlays resets ovFadeIn=0, ovFadeOut=1; the outgoing group is drawn at 0.9*ovFadeOut whatever it had reached. At 4x with the dwell off 5 of 9 boundaries pop (the 08:00 phase's 41 materials 0.13 to 0.90 as 08:45 begins); dwell on: 0. Opening: 1 pop when Next is pressed at once. Clock stopped, two phase steps 0.5 s apart: the stepped-through phase's arrows (never visible, 0.00) drawn at 0.90 and fade over 1.09 s.",
+   "repro": "node tools/audit-post8/state/props-bundle.js / props-bundle3.js <isolated copy root> (python3 build.py && node tools/mk-world-mod.js && node tools/mk-helpers.js first)",
+   "cause_hypothesis": "fade state reset on rebuild",
+   "cause_verified": "yes",
+   "remedy": "Carry the outgoing group's current opacity into the new fade (start ovFadeOut from the reached value), or skip drawing a group that never became visible.",
+   "effort": "hours",
+   "dependencies": "none",
+   "risk": "low",
+   "validation": "",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "The first Play frame after the page went idle advances 120 ms of play (0.6 clock min at 1/2x, 3.6 at 4x)",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "clock loop (app.js loop)",
+   "user_impact": "A small jump of the clock when Play starts from the keyboard; not noticeable at 1/2x.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:9126-9130"
+   ],
+   "evidence": "docs/audit-post8-evidence/state/props-bundle.txt (B9); README.md finding 4",
+   "expected": "Play's first frame advances one frame's worth.",
+   "observed": "loop returns on idle frames before lastFrame=now, so the next active frame's dt is the 120 ms cap: 0.600 clock min at 1/2x (a 60 Hz frame is 0.083), 3.648 at 4x. Reached when Play starts on a keydown before any frame has run.",
+   "repro": "node tools/audit-post8/state/props-bundle.js <isolated copy root> (python3 build.py && node tools/mk-world-mod.js && node tools/mk-helpers.js first)",
+   "cause_hypothesis": "lastFrame not updated on idle frames",
+   "cause_verified": "yes",
+   "remedy": "Set lastFrame=now on idle frames.",
+   "effort": "minutes",
+   "dependencies": "none",
+   "risk": "low",
+   "validation": "",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "The reading ('Whose eyes?') is cached for the clock's minute at the first instant asked, so it depends on the path: 29 and 38 formation-minutes differ by route",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "the reading (app.js knowAtClock)",
+   "user_impact": "Under a headquarters' reading the same moment can show a formation as known or unknown depending on how the visitor got there.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:4288",
+    "app.js:4133-4152"
+   ],
+   "evidence": "docs/audit-post8-evidence/state/props-bundle.txt (B6); README.md finding 5",
+   "expected": "Decision 92: the reading at the clock's minute, the same however the clock got there.",
+   "observed": "B6: the reading at m+0.9 reached through m+0.1 differs from the same clock sought directly in 29 formation-minutes (Napoleon's HQ) and 38 (Allied); Liechtenstein's cavalry at 08:07:54 'unknown' one way, 'seen' the other.",
+   "repro": "node tools/audit-post8/state/props-bundle.js <isolated copy root> (python3 build.py && node tools/mk-world-mod.js && node tools/mk-helpers.js first)",
+   "cause_hypothesis": "cache keyed by minute, filled at first instant",
+   "cause_verified": "yes",
+   "remedy": "Compute the reading at the minute's start (floor the clock) when filling the cache.",
+   "effort": "minutes",
+   "dependencies": "none",
+   "risk": "low",
+   "validation": "",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "The event jumps' 1.5-minute margin skips a start the clock stands just before (20 of 21 starts from one minute before)",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "event keys (app.js jumpEvent)",
+   "user_impact": "Occasional skipped event when stepping events after a pause or a drag.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:7596-7605"
+   ],
+   "evidence": "docs/audit-post8-evidence/state/props-helpers.txt (P4); README.md finding 6",
+   "expected": "'Next event' from just before a start goes to that start.",
+   "observed": "jumpEvent takes the first start more than 1.5 min ahead; from one minute before, 'next event' skips it for 20 of 21 starts; a pause in a dwell's ease in leaves the clock under 1.25 min before the start.",
+   "repro": "node tools/audit-post8/state/props-helpers.js <isolated copy root> (python3 build.py && node tools/mk-world-mod.js && node tools/mk-helpers.js first)",
+   "cause_hypothesis": "margin larger than the dwell's ease",
+   "cause_verified": "yes",
+   "remedy": "Use a margin below the smallest step that can leave the clock before a start (or test strictly greater than the current clock).",
+   "effort": "minutes",
+   "dependencies": "none",
+   "risk": "low",
+   "validation": "",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "The time rail's drag has no button test and no pointercancel: a lost pointerup (context menu, cancelled touch) would leave hover scrubbing the clock",
+   "category": "probable-problem",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "timeline rail (app.js)",
+   "user_impact": "After a right-press on the rail or a cancelled touch, moving the pointer may scrub the clock unexpectedly.",
+   "status": "inferred",
+   "origin": "inherited",
+   "refs": [
+    "app.js:7527-7531"
+   ],
+   "evidence": "docs/audit-post8-evidence/state/README.md finding 7 (code read)",
+   "expected": "A drag ends on pointerup, pointercancel or lostpointercapture, and moves only with a button held.",
+   "observed": "pointerdown seeks with any button; pointermove seeks while dragging without reading e.buttons; only a window pointerup clears it; no pointercancel or lostpointercapture handler.",
+   "repro": "read app.js:7527-7531",
+   "cause_hypothesis": "missing cancel paths",
+   "cause_verified": "no (needs a real browser)",
+   "remedy": "Handle pointercancel/lostpointercapture and test e.buttons in pointermove.",
+   "effort": "minutes",
+   "dependencies": "none",
+   "risk": "low",
+   "validation": "",
+   "prior_refs": [],
+   "judgement_kind": "inferred"
+  },
+  {
+   "title": "The low tier is decided once at start: a desktop page opened in a small window keeps density 1, no shadows and no near detail when enlarged",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "renderer tiering (app.js init)",
+   "user_impact": "A desktop visitor who starts in a small window sees a lower-quality picture until reload.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:621-622",
+    "app.js:661",
+    "app.js:7104-7118"
+   ],
+   "evidence": "docs/audit-post8-evidence/state/README.md finding 8 (code read)",
+   "expected": "Quality tier follows the window, or the choice is stated.",
+   "observed": "lowTier evaluated once (window area under 900x700 or a mobile UA); onResize never re-evaluates; groundDetail chosen once.",
+   "repro": "read app.js:621-622, 661, 7104-7118",
+   "cause_hypothesis": "by design (one decision at start)",
+   "cause_verified": "yes (read)",
+   "remedy": "Re-evaluate lowTier on a large resize, or document it.",
+   "effort": "hours",
+   "dependencies": "none",
+   "risk": "low",
+   "validation": "",
+   "prior_refs": [],
+   "judgement_kind": "read"
+  }
+ ],
+ "experiments": [
+  {
+   "command": "node tools/audit-post8/state/props-helpers.js|props-bundle.js|props-bundle2.js|props-bundle3.js <isolated copy>",
+   "environment": "node, isolated copy (scratchpad/state-iso) at HEAD, md5 f10fe585 reproduced",
+   "outcome": "B1-B14, C1-C4, D1-D2 as in README.md",
+   "evidence_path": "docs/audit-post8-evidence/state/",
+   "limitations": "stubbed DOM (no layout, focus or real events); fake clock frames"
+  }
+ ],
+ "not_checked": [
+  "Nothing in a real browser in this phase (layout, focus, real pointer/key events, the context-menu case, what a visitor sees of the pop and the stale dossier)",
+  "The stubbed DOM answers querySelectorAll with nothing; DOM state not read",
+  "Real-time behaviour under slow frame rates",
+  "Phone resizing and orientation reviewed by reading only"
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "id": "l-plan-1200",
+ "group": "laptop",
+ "note": "The Overview at 1280 x 720, 12:00.",
+ "spec": {
+  "t": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   -27,
+   272,
+   41,
+   -27,
+   0,
+   9
+  ]
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "12:00",
+  "t": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -38.822,
+   439.629,
+   55.461
+  ],
+  "target": [
+   -38.822,
+   0.539,
+   4.554
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1280,
+   720
+  ],
+  "fx": true,
+  "dist": 442.03,
+  "sunAlt": 18.96,
+  "sunGeo": 18.91,
+  "sunAz": 180,
+  "mist": 0
+ },
+ "ms": 5235,
+ "timing": {
+  "apply": 42,
+  "settle": 147,
+  "settle2": 89,
+  "shot": 4497
+ },
+ "page": "harness page (?harness=1), 1280x720, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

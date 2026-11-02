@@ -1,0 +1,580 @@
+{
+ "what": "the renderer and camera after window resizes, a visitor's page",
+ "started": "2026-11-02T11:30:07.468Z",
+ "steps": [
+  {
+   "win": [
+    1600,
+    900
+   ],
+   "buffer": [
+    1600,
+    900
+   ],
+   "canvasCss": [
+    1600,
+    900
+   ],
+   "aspect": 1.7778,
+   "aspectWant": 1.7778,
+   "phone": false,
+   "body": "docked pm-study",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": false,
+    "display": "flex",
+    "visibility": "visible",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+   },
+   "dispatch": {
+    "rect": [
+     18,
+     137,
+     259,
+     1947
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [],
+   "step": 0,
+   "to": "1600x900",
+   "settleMs": 2317,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    700,
+    900
+   ],
+   "buffer": [
+    700,
+    900
+   ],
+   "canvasCss": [
+    700,
+    900
+   ],
+   "aspect": 0.7778,
+   "aspectWant": 0.7778,
+   "phone": true,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     260,
+     700,
+     540
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "visible",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     648,
+     700,
+     152
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [
+    [
+     700,
+     900
+    ]
+   ],
+   "step": 1,
+   "to": "700x900",
+   "settleMs": 39204,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    390,
+    844
+   ],
+   "buffer": [
+    390,
+    844
+   ],
+   "canvasCss": [
+    390,
+    844
+   ],
+   "aspect": 0.4621,
+   "aspectWant": 0.4621,
+   "phone": true,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     844,
+     390,
+     506
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "hidden",
+    "transform": "matrix(1, 0, 0, 1, 0, 627.391)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     552,
+     390,
+     171
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [
+    [
+     390,
+     844
+    ]
+   ],
+   "step": 2,
+   "to": "390x844",
+   "settleMs": 6126,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    844,
+    390
+   ],
+   "buffer": [
+    844,
+    390
+   ],
+   "canvasCss": [
+    844,
+    390
+   ],
+   "aspect": 2.1641,
+   "aspectWant": 2.1641,
+   "phone": false,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     -275,
+     0,
+     272,
+     299
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "hidden",
+    "transform": "matrix(1, 0, 0, 1, -274.72, 0)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "none",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [
+    [
+     844,
+     390
+    ]
+   ],
+   "step": 3,
+   "to": "844x390",
+   "settleMs": 40544,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    390,
+    844
+   ],
+   "buffer": [
+    390,
+    844
+   ],
+   "canvasCss": [
+    390,
+    844
+   ],
+   "aspect": 0.4621,
+   "aspectWant": 0.4621,
+   "phone": true,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     844,
+     390,
+     506
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "hidden",
+    "transform": "matrix(1, 0, 0, 1, 0, 627.391)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     552,
+     390,
+     171
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [
+    [
+     390,
+     844
+    ]
+   ],
+   "step": 4,
+   "to": "390x844",
+   "settleMs": 32611,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    1600,
+    900
+   ],
+   "buffer": [
+    1600,
+    900
+   ],
+   "canvasCss": [
+    1600,
+    900
+   ],
+   "aspect": 1.7778,
+   "aspectWant": 1.7778,
+   "phone": false,
+   "body": "docked pm-study",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": false,
+    "display": "flex",
+    "visibility": "visible",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+   },
+   "dispatch": {
+    "rect": [
+     18,
+     137,
+     259,
+     1947
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [
+    [
+     1600,
+     900
+    ]
+   ],
+   "step": 5,
+   "to": "1600x900",
+   "settleMs": -1,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    390,
+    844
+   ],
+   "buffer": [
+    390,
+    844
+   ],
+   "canvasCss": [
+    390,
+    844
+   ],
+   "aspect": 0.4621,
+   "aspectWant": 0.4621,
+   "phone": true,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     238,
+     390,
+     506
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "visible",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     573,
+     390,
+     171
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [
+    [
+     390,
+     844
+    ]
+   ],
+   "step": 6,
+   "to": "390x844",
+   "settleMs": 9370,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    700,
+    900
+   ],
+   "buffer": [
+    390,
+    844
+   ],
+   "canvasCss": [
+    390,
+    844
+   ],
+   "aspect": 0.4621,
+   "aspectWant": 0.7778,
+   "phone": true,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     260,
+     700,
+     540
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "visible",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     648,
+     700,
+     152
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [],
+   "step": 7,
+   "to": "700x900",
+   "settleMs": 645,
+   "agree": false,
+   "railOff": false,
+   "shot": "resize-probe-7-700x900.jpg"
+  },
+  {
+   "win": [
+    400,
+    844
+   ],
+   "buffer": [
+    400,
+    844
+   ],
+   "canvasCss": [
+    400,
+    844
+   ],
+   "aspect": 0.4739,
+   "aspectWant": 0.4739,
+   "phone": true,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     844,
+     400,
+     506
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "hidden",
+    "transform": "matrix(1, 0, 0, 1, 0, 627.391)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     552,
+     400,
+     171
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [
+    [
+     700,
+     900
+    ],
+    [
+     400,
+     844
+    ]
+   ],
+   "step": 8,
+   "to": "400x844",
+   "settleMs": 601,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    390,
+    844
+   ],
+   "buffer": [
+    400,
+    844
+   ],
+   "canvasCss": [
+    400,
+    844
+   ],
+   "aspect": 0.4739,
+   "aspectWant": 0.4621,
+   "phone": true,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     844,
+     390,
+     506
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "hidden",
+    "transform": "matrix(1, 0, 0, 1, 0, 627.391)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     552,
+     390,
+     171
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [],
+   "step": 9,
+   "to": "390x844",
+   "settleMs": 623,
+   "agree": false,
+   "railOff": false,
+   "shot": "resize-probe-9-390x844.jpg"
+  }
+ ],
+ "settleBoot": -1,
+ "log": {},
+ "finished": "2026-11-02T11:42:31.341Z"
+}

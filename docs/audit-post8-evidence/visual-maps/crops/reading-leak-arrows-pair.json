@@ -1,0 +1,4 @@
+{"what":"Left: counters-field.jpg (1600x900, 09:30, Study, Landscape with counters, Field vantage cam [-195,92,156,-33,4,-2], 4x, Whose eyes: everyone), crop x300-820 y200-500. Right: eyes-al-counters.jpg (the same view and clock, Whose eyes: the Allied headquarters), the same crop.",
+ "made":"ffmpeg crop=520:300:300:200 of each, hstack",
+ "observed":"Under the Allied reading the counters (and figures, outlines) of Suchet and Caffarelli are removed (not in the map layer: eyes-al-counters.json has no c:suchet / c:caffarelli item), while the derived movement arrows bound to their legs and the labels 'Suchet' and 'Caffarelli' (o:Suchet, o:Caffarelli, state on) are drawn.",
+ "cause":"app.js rebuildOverlays (line ~3101) builds every arrow of OVERLAYS[phase] with no reading filter; OVERLAYS[4] arrows {leg:['caffarelli',0,5]}, {leg:['suchet',0,5]} (app.js ~68-69); derived arrows draw on to the formation's place on its path (drawOnArrows, app.js ~3117)."}

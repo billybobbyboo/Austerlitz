@@ -1,0 +1,481 @@
+{
+ "shot": "eye-zuran-noarrows",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 510,
+  "presentation": "watch",
+  "mode": "terrain",
+  "eyes": "fr",
+  "eye": true,
+  "cam": [
+   -195,
+   92,
+   156,
+   -33,
+   4,
+   -2
+  ]
+ },
+ "steps": [
+  "DOM click .layer-btn[data-l=arrows] (the app's own handler) -> pressed false"
+ ],
+ "state": {
+  "clock": 510,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "fr",
+  "plan": null,
+  "eye": true,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -81.5,
+    3.134658418130278,
+    -58
+   ],
+   "tgt": [
+    -56,
+    -1.8074842323966325,
+    46
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -81.5,
+    3.134658418130278,
+    -58
+   ],
+   "tgt": [
+    -56,
+    -1.8074842323966325,
+    46
+   ]
+  },
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 42,
+  "placed": 15,
+  "dropped": 2,
+  "droppedIds": [
+   "t:telnitz",
+   "t:sokolnitz"
+  ],
+  "occluded": 1,
+  "offscreen": 24,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · derived on the heights: Allied ≈ 23,550 · interval Napoleon releases Soult against the heights",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE ALLIED ADVANCE",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "Sokolnitz, the castle and the pheasantry",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 23,550",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "intervalNapoleon releases Soult against the heights",
+    "shown": true,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   821,
+   546,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "true",
+  "rows": []
+ },
+ "scaleBar": "500 m",
+ "bodyClass": "docked rail-hidden pm-watch",
+ "textContrast": {
+  "texts": 21,
+  "min": 7.41,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:sthilaire",
+    "plate": "full",
+    "ratio": 0.472,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.64
+   },
+   {
+    "id": "n:legrand",
+    "plate": "full",
+    "ratio": 1.024,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.64
+   },
+   {
+    "id": "n:friant",
+    "plate": "full",
+    "ratio": 1.343,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.68
+   },
+   {
+    "id": "n:bourcier",
+    "plate": "full",
+    "ratio": 1.356,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.68
+   },
+   {
+    "id": "n:kienmayer",
+    "plate": "full",
+    "ratio": 1.268,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.51
+   },
+   {
+    "id": "n:dok",
+    "plate": "full",
+    "ratio": 1.256,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.64
+   },
+   {
+    "id": "n:prz",
+    "plate": "full",
+    "ratio": 0.982,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.64
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    286,
+    211,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "on",
+   "text": "Goldbach stream",
+   "box": [
+    901,
+    368,
+    108,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:telnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Telnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Sokolnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:augezd",
+   "cat": "place",
+   "state": "occluded",
+   "text": "Augezd",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:satschan",
+   "cat": "place",
+   "state": "on",
+   "text": "Satschan mere",
+   "box": [
+    717,
+    378,
+    95,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:sthilaire",
+   "cat": "name",
+   "state": "on",
+   "text": "Saint-Hilaire",
+   "box": [
+    685,
+    286,
+    94,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:legrand",
+   "cat": "name",
+   "state": "on",
+   "text": "LegrandB",
+   "box": [
+    921,
+    311,
+    91,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:friant",
+   "cat": "name",
+   "state": "on",
+   "text": "FriantB",
+   "box": [
+    1233,
+    300,
+    77,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bourcier",
+   "cat": "name",
+   "state": "on",
+   "text": "Bourcier's DragoonsC",
+   "box": [
+    1070,
+    303,
+    159,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kienmayer",
+   "cat": "name",
+   "state": "on",
+   "text": "Kienmayer's Advance Guard?",
+   "box": [
+    786,
+    335,
+    206,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:dok",
+   "cat": "name",
+   "state": "on",
+   "text": "First Column?",
+   "box": [
+    791,
+    308,
+    118,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:prz",
+   "cat": "name",
+   "state": "on",
+   "text": "Third ColumnB",
+   "box": [
+    817,
+    284,
+    125,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:kobelnitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Kobelnitz",
+   "box": [
+    831,
+    386,
+    64,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzenv",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen village",
+   "box": [
+    77,
+    330,
+    94,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:puntowitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Puntowitz",
+   "box": [
+    607,
+    385,
+    66,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:menitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Menitz mere",
+   "box": [
+    1093,
+    369,
+    71,
+    15
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:chapel",
+   "cat": "place",
+   "state": "on",
+   "text": "Chapel of St Anthony",
+   "box": [
+    481,
+    363,
+    129,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 59982,
+ "msSettle": 940,
+ "msShot": 58671,
+ "msMeasure": 371,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

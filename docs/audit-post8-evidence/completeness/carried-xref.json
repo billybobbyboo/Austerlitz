@@ -1,0 +1,775 @@
+[
+ {
+  "id": "C-01",
+  "status_class": "accepted",
+  "status": "accepted as measured (decision 268 (a)); not attributed",
+  "item": "Desktop performance: section 8.3's CPU line exceeded in Play at half speed (+1.5 ms) and the Overview's orbit (+1.1 ms); Play at 144 Hz holds about one frame in",
+  "area_refs": [
+   "perf #3",
+   "perf #4",
+   "perf #7",
+   "perf #8",
+   "perf #11"
+  ],
+  "cl": [
+   "CL-PERF-04",
+   "CL-PERF-05",
+   "CL-PERF-08",
+   "CL-PERF-09",
+   "CL-PERF-11"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-02",
+  "status_class": "accepted",
+  "status": "accepted as measured (decision 269 (a))",
+  "item": "Phone performance: section 8.3's phone budget met; section 8.5 not evaluable like for like; after warming phase 8's Overview about 41 frames a second (18.1% lon",
+  "area_refs": [
+   "perf #1",
+   "perf #2",
+   "perf #5"
+  ],
+  "cl": [
+   "CL-PERF-01",
+   "CL-PERF-03",
+   "CL-PERF-06"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-03",
+  "status_class": "not-measured",
+  "status": "not measured",
+  "item": "An integrated GPU never measured (section 8.3's integrated-GPU condition; the machine decision 138 named)",
+  "area_refs": [
+   "perf #6"
+  ],
+  "cl": [
+   "CL-PERF-02"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-04",
+  "status_class": "recorded",
+  "status": "recorded; \"not shown\" by the rule on both devices",
+  "item": "The inconclusive brackets: desktop culling, effects off and gait each 12 of 12 \"neither\"; phone culling 7 of 12 faster with it, effects 4 of 12 faster with them",
+  "area_refs": [
+   "perf #9",
+   "perf #10"
+  ],
+  "cl": [
+   "CL-PERF-07",
+   "CL-PERF-10"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-05",
+  "status_class": "open",
+  "status": "open; undecided",
+  "item": "Visual effects off not faster on the phone (5 of 14 effects-off blocks fell to 35-47 frames a second): a visitor who turns them off may get a slower map (infere",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-06",
+  "status_class": "open",
+  "status": "open; confirmed, and understated by the benchmark",
+  "item": "Counters hidden during playback: Play's longest hidden formation 4,033 ms; three counters dropped at rest in the hybrid view at 09:00",
+  "area_refs": [
+   "visibility #1",
+   "visibility #3",
+   "visibility #5"
+  ],
+  "cl": [
+   "CL-MAP-01",
+   "CL-MAP-14",
+   "CL-TEST-02"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-07",
+  "status_class": "open",
+  "status": "measured in this audit: acceptable in three presentations, not in Landscape with counters",
+  "item": "Visibility over longer playback than the benchmark's runs, judged on the screen",
+  "area_refs": [
+   "visibility #1",
+   "visibility #2"
+  ],
+  "cl": [
+   "CL-MAP-01",
+   "CL-MAP-02"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-08",
+  "status_class": "accepted",
+  "status": "settled (decision 267 (a); not re-required)",
+  "item": "The motion block's 16 totals over their ceilings (248 jumps, 998 pops against 245 and 985)",
+  "area_refs": [
+   "tests #14"
+  ],
+  "cl": [
+   "CL-TEST-14"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-09",
+  "status_class": "provisional",
+  "status": "provisional, unchanged (the device runs it waited on are recorded; the decision not revisited)",
+  "item": "The troops' contact with the ground: 8F's chords with their bounds and counts, the original criterion (every foot on the ground) not satisfied, the animation's ",
+  "area_refs": [
+   "tests #6",
+   "visual-landscape #1"
+  ],
+  "cl": [
+   "CL-TEST-08",
+   "CL-VIS-01"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-10",
+  "status_class": "accepted",
+  "status": "accepted, unchanged",
+  "item": "The ice under a low sun: the low views' glare at 15:00, 43.5% of the ice",
+  "area_refs": [
+   "visual-landscape #5"
+  ],
+  "cl": [
+   "CL-VIS-05"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-11",
+  "status_class": "open",
+  "status": "unchanged; the owner's reconsideration open",
+  "item": "The troops' uniform facings (decision 245 (a): none drawn), to be reconsidered now that the troops can be judged",
+  "area_refs": [
+   "visual-landscape #3"
+  ],
+  "cl": [
+   "CL-VIS-03"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-12",
+  "status_class": "open",
+  "status": "unchanged; the owner has not decided",
+  "item": "Artillery: the drivers on the guns on the heights (an inference from IV Corps' letter) and the gunners beside moving pieces",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-13",
+  "status_class": "accepted",
+  "status": "accepted, confirmed",
+  "item": "The Sokolnitz castle's prominence (about 96 by 73 m, reading smaller than the farmhouses beside it) and the III Column's figures over its symbol from 08:00 to 1",
+  "area_refs": [
+   "geography #11",
+   "history #2"
+  ],
+  "cl": [
+   "?geography#11",
+   "CL-HIS-04"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-14",
+  "status_class": "open",
+  "status": "present",
+  "item": "The castle's site on the model's road class, a track passing it (8J)",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-15",
+  "status_class": "open",
+  "status": "unchanged; not decided",
+  "item": "The Austerlitz garden under the château's symbol at the Overview's scale, and no garden sign on the paper map",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-16",
+  "status_class": "accepted",
+  "status": "accepted, confirmed",
+  "item": "Satschan's farmsteads: five of seven drawn (the drawn mere's outline, decision 27, leaves no room)",
+  "area_refs": [
+   "visual-landscape #2"
+  ],
+  "cl": [
+   "CL-VIS-02"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-17",
+  "status_class": "open",
+  "status": "unchanged; not decided",
+  "item": "The omitted landmark symbols (BUILDINGS.notDrawn: St Anthony's chapel, the Santon's chapel, the Sokolnitz granary)",
+  "area_refs": [
+   "geography #1",
+   "visual-landscape #7"
+  ],
+  "cl": [
+   "CL-GEO-01",
+   "CL-VIS-06"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-18",
+  "status_class": "accepted",
+  "status": "accepted; still dropped",
+  "item": "The Littawa's name dropped in the Plans view at the Overview",
+  "area_refs": [
+   "visual-maps #11",
+   "visual-maps #16"
+  ],
+  "cl": [
+   "CL-MAP-11",
+   "CL-MAP-18"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-19",
+  "status_class": "open",
+  "status": "the plate built (8I); the wall present and open",
+  "item": "The low views' wall of formation names (decision 255 left it open; 255 (d) prototyped, 263 (a) the far names' lighter plate)",
+  "area_refs": [
+   "visual-maps #14"
+  ],
+  "cl": [
+   "CL-MAP-15"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-20",
+  "status_class": "accepted",
+  "status": "kept by decision 92 (explained)",
+  "item": "The knowledge rule against the drawn fog's ease (\"Whose eyes?\" read at the phase's mist while the fog eases over twenty minutes)",
+  "area_refs": [
+   "state #5"
+  ],
+  "cl": [
+   "CL-SIM-06"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-21",
+  "status_class": "open",
+  "status": "open; confirmed",
+  "item": "A crown within a few units of the eye shows its facets as large planes",
+  "area_refs": [
+   "visual-landscape #8"
+  ],
+  "cl": [
+   "CL-VIS-08"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-22",
+  "status_class": "open",
+  "status": "open; confirmed",
+  "item": "Four villages' buildings largely off the drawn village class (Sokolnitz 0%, Telnitz 5%, Kobelnitz 19%, Puntowitz 74% in 8G's count)",
+  "area_refs": [
+   "geography #4"
+  ],
+  "cl": [
+   "CL-GEO-05"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-23",
+  "status_class": "accepted",
+  "status": "recorded; no action needed",
+  "item": "GEOREF.GT's 13.5 m shift against the Czech survey",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-24",
+  "status_class": "recorded",
+  "status": "unchanged (not recoverable)",
+  "item": "8G's evidence made and not committed: reconstructed or replaced in 8H, not recovered",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-25",
+  "status_class": "not-measured",
+  "status": "partly measured since",
+  "item": "Not measured in Stage 8: a GPU's frame time (the crowns' hook's cost among them), Safari, memory on a device, a visitor's judgement of the gait, the buildings a",
+  "area_refs": [
+   "visual-landscape #1",
+   "visual-landscape #2",
+   "visual-landscape #3",
+   "visual-landscape #4",
+   "visual-landscape #5",
+   "visual-landscape #6",
+   "visual-landscape #7",
+   "visual-landscape #8"
+  ],
+  "cl": [
+   "CL-VIS-01",
+   "CL-VIS-02",
+   "CL-VIS-03",
+   "CL-VIS-04",
+   "CL-VIS-05",
+   "CL-VIS-06",
+   "CL-VIS-07",
+   "CL-VIS-08"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-26",
+  "status_class": "done-with-residuals",
+  "status": "done (8J), with residuals",
+  "item": "The geographic corrections of question 259 (the Sokolnitz group, the Pratzen church, the Austerlitz garden)",
+  "area_refs": [
+   "geography #8",
+   "history #2"
+  ],
+  "cl": [
+   "CL-GEO-08",
+   "CL-HIS-04"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-27",
+  "status_class": "done-with-residuals",
+  "status": "done (8K), with residuals",
+  "item": "The highway east of the Santon and the post house (question 260)",
+  "area_refs": [
+   "geography #10"
+  ],
+  "cl": [
+   "CL-GEO-10"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-28",
+  "status_class": "accepted",
+  "status": "settled (not adopted)",
+  "item": "More places beside a counter's anchor in motion (decision 258 (b), question 262)",
+  "area_refs": [
+   "visibility #1",
+   "visibility #3",
+   "visibility #5"
+  ],
+  "cl": [
+   "CL-MAP-01",
+   "CL-MAP-14",
+   "CL-TEST-02"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-29",
+  "status_class": "accepted",
+  "status": "accepted; labelled",
+  "item": "The conventions labelled as such: the farmsteads' plan and the roofs (8G), the garden's rows (8J), the far plate's alpha (8I), the gait under compressed time (8",
+  "area_refs": [
+   "a11y #2"
+  ],
+  "cl": [
+   "CL-UX-08"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-30",
+  "status_class": "provisional",
+  "status": "provisional, unchanged",
+  "item": "The identifications this map makes and says it makes: Stutterheim's heights by Dwaroschna as the ground east of Bosenitz, Schönhals's height as the rise east of",
+  "area_refs": [
+   "geography #10"
+  ],
+  "cl": [
+   "CL-GEO-10"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-31",
+  "status_class": "open",
+  "status": "open",
+  "item": "Historical question: the places in 1805 of the highway and the post (the First Military Survey not reached)",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-32",
+  "status_class": "open",
+  "status": "open; not visible to a visitor",
+  "item": "Historical question: which of the 1825 sketch's two channels carried the Goldbach north of the Sokolnitz castle in 1805",
+  "area_refs": [
+   "geography #10"
+  ],
+  "cl": [
+   "CL-GEO-10"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-33",
+  "status_class": "open",
+  "status": "open in the records; stated as settled on screen",
+  "item": "Historical question: the castle's walls",
+  "area_refs": [
+   "geography #6"
+  ],
+  "cl": [
+   "CL-GEO-02"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-34",
+  "status_class": "open",
+  "status": "open in the records; drawn and told as settled",
+  "item": "Historical question: whether the bottom by Sokolnitz was marshy in December 1805",
+  "area_refs": [
+   "geography #5"
+  ],
+  "cl": [
+   "CL-GEO-06"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-35",
+  "status_class": "open",
+  "status": "open and visible",
+  "item": "Historical question: the garden's planting in 1805",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-36",
+  "status_class": "open",
+  "status": "open and visible",
+  "item": "Historical question: Bagration's exact line at dawn and where he stood at 17:00 (Rausnitz, or already toward Austerlitz)",
+  "area_refs": [
+   "history #18"
+  ],
+  "cl": [
+   "CL-HIS-17"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-37",
+  "status_class": "open",
+  "status": "open; not visible (moot in the drawing)",
+  "item": "Historical question: which side of the road Schönhals's height lay",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-38",
+  "status_class": "open",
+  "status": "open; its stated reason inaccurate",
+  "item": "Historical question: Krug's place (the Second Survey's \"Kruch\" beside Holubitz, against the drawn Krug's warped legacy place)",
+  "area_refs": [
+   "geography #7",
+   "history #14"
+  ],
+  "cl": [
+   "CL-GEO-07",
+   "CL-HIS-14"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-39",
+  "status_class": "open",
+  "status": "kept open in the data, with exceptions",
+  "item": "SOURCE_NOTE's open questions as they stand (Russian infantry flags, the Grenz coats, the vines, the Russian Guard's attack, Bagration's line, the post, Krug and",
+  "area_refs": [
+   "geography #5",
+   "geography #10",
+   "history #14",
+   "sources-oob #1",
+   "sources-oob #5"
+  ],
+  "cl": [
+   "CL-GEO-06",
+   "CL-GEO-10",
+   "CL-HIS-14",
+   "CL-SRC-01",
+   "CL-SRC-03"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-40",
+  "status_class": "open",
+  "status": "open; larger than recorded",
+  "item": "kienmayer@7's and lang@2's offsets from the corrected brook (each on its own evidence, 8J)",
+  "area_refs": [
+   "history #8",
+   "history #11"
+  ],
+  "cl": [
+   "CL-HIS-08",
+   "CL-HIS-11"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-41",
+  "status_class": "open",
+  "status": "open; the records' numbers high",
+  "item": "Caffarelli's anchors 2.5-2.9 km south of Bagration's from 14:30 (8K)",
+  "area_refs": [
+   "history #9"
+  ],
+  "cl": [
+   "CL-HIS-09"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-42",
+  "status_class": "recorded",
+  "status": "recorded",
+  "item": "The woods' habits, turns and scrub drawn again where a wood changed (8J; presentation)",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-43",
+  "status_class": "done-with-residuals",
+  "status": "done (8B): outlines; \"Position confidence\" off at first on the landscape",
+  "item": "Owner's note L1 (7 October 2026): the coloured glow under the troops",
+  "area_refs": [
+   "visual-maps #8",
+   "visual-maps #10"
+  ],
+  "cl": [
+   "CL-MAP-08",
+   "CL-MAP-10"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-44",
+  "status_class": "done-with-residuals",
+  "status": "done (8C), with residuals",
+  "item": "Owner's note L2: the counters dart about while the view moves",
+  "area_refs": [
+   "visibility #1",
+   "visibility #2",
+   "visibility #3",
+   "visibility #4",
+   "visibility #5",
+   "visibility #6"
+  ],
+  "cl": [
+   "CL-MAP-01",
+   "CL-MAP-02",
+   "CL-MAP-07",
+   "CL-MAP-14",
+   "CL-MAP-17",
+   "CL-TEST-02"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-45",
+  "status_class": "done-with-residuals",
+  "status": "done (8E), with residuals",
+  "item": "Owner's note L3: depth and detail in the troops; movement that does not look like floating",
+  "area_refs": [
+   "history #1",
+   "visual-landscape #3",
+   "visual-landscape #4"
+  ],
+  "cl": [
+   "CL-HIS-05",
+   "CL-VIS-03",
+   "CL-VIS-04"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-46",
+  "status_class": "done-with-residuals",
+  "status": "done (8F), with residuals",
+  "item": "Owner's note L4: the ponds and water (the meres frozen)",
+  "area_refs": [
+   "visual-landscape #1"
+  ],
+  "cl": [
+   "CL-VIS-01"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-47",
+  "status_class": "done-with-residuals",
+  "status": "done (8G, 8J), with residuals",
+  "item": "Owner's note L5: buildings and structures",
+  "area_refs": [
+   "visual-landscape #4"
+  ],
+  "cl": [
+   "CL-VIS-04"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-48",
+  "status_class": "done-with-residuals",
+  "status": "partly (481 of 704 unchecked)",
+  "item": "Step 4 handed on: the claims' reach (statements without a claim)",
+  "area_refs": [
+   "history #12",
+   "tests #12"
+  ],
+  "cl": [
+   "CL-HIS-12",
+   "CL-TEST-12"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-49",
+  "status_class": "open",
+  "status": "open",
+  "item": "Step 4 handed on: the chronology's extractor reads only clock-shaped hours",
+  "area_refs": [
+   "tests #13"
+  ],
+  "cl": [
+   "CL-TEST-13"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-50",
+  "status_class": "open",
+  "status": "open (Duffy's two pages read since, decision 213 (b))",
+  "item": "Step 4 and PR #57 handed on: readings not made (Duffy 1977 beyond pp. 184-185, Smith 1998, the Russian Biographical Dictionary 1903, Suchet's report and the Fre",
+  "area_refs": [
+   "sources-oob #1"
+  ],
+  "cl": [
+   "CL-SRC-01"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-51",
+  "status_class": "open",
+  "status": "mostly open; one settled",
+  "item": "Step 4 handed on: the records the reviews left (the guns above Augezd's further sources, TOUR[5].x, TOUR[6].x \"With the plateau gone\", Caffarelli's artillery, t",
+  "area_refs": [
+   "history #6"
+  ],
+  "cl": [
+   "CL-HIS-06"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-52",
+  "status_class": "open",
+  "status": "open",
+  "item": "Step 5 handed on to a later data task: the Dress notes' internal words, CONF_TEXT.C's em dash, the armistice's own text, the Santon story's second sentence, the",
+  "area_refs": [
+   "a11y #3"
+  ],
+  "cl": [
+   "CL-UX-05"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-53",
+  "status_class": "open",
+  "status": "open, each confirmed in code",
+  "item": "PR #57 handed on: the corps-versus-formations warning, the spellings outside decision 209's six, the overclaim scan's attribution pattern",
+  "area_refs": [
+   "history #17"
+  ],
+  "cl": [
+   "CL-HIS-16"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-54",
+  "status_class": "accepted",
+  "status": "accepted by decision 175; no results exist",
+  "item": "Step 3 handed on: the screen-reader session recorded complete on the owner's word with no item results; the automated checks Chromium only",
+  "area_refs": [
+   "a11y #1",
+   "a11y #13"
+  ],
+  "cl": [
+   "CL-UX-01",
+   "CL-UX-18"
+  ],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-55",
+  "status_class": "accepted",
+  "status": "accepted by decision 189; no results exist",
+  "item": "Decision 136's human second reading of the 15 A-graded appearance quotes, recorded complete on the owner's word (decision 189) with no item results",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-56",
+  "status_class": "open",
+  "status": "unchanged",
+  "item": "Step 1 handed on: Safari believed to ignore the faces' metric overrides; no italic face embedded",
+  "area_refs": [],
+  "cl": [],
+  "cl_in_record": []
+ },
+ {
+  "id": "C-57",
+  "status_class": "open",
+  "status": "unchanged for the suite",
+  "item": "Step 6 Part A handed on: the probes' own limits (Chromium only, taps not fingers, software WebGL, screenshots at CSS scale)",
+  "area_refs": [
+   "a11y #5"
+  ],
+  "cl": [
+   "CL-UX-06"
+  ],
+  "cl_in_record": []
+ }
+]

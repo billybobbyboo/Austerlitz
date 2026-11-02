@@ -1,0 +1,11 @@
+Blasowitz [ 296, 147 ] Krug [ 339, 139 ]
+10:30 nearest Allied (non-hq) to Blasowitz: lich 0.29 km, rg_cav 1.75 km, bag 2.72 km, rg_inf 3.02 km, milo 3.40 km, kollo 3.66 km
+11:00 nearest Allied (non-hq) to Blasowitz: lich 0.99 km, rg_cav 1.61 km, rg_inf 2.14 km, kollo 2.53 km, bag 2.72 km, milo 3.81 km
+11:15 nearest Allied (non-hq) to Blasowitz: lich 1.43 km, rg_cav 1.54 km, rg_inf 1.78 km, kollo 2.01 km, bag 2.72 km, milo 4.05 km
+11:30 nearest Allied (non-hq) to Blasowitz: lich 1.67 km, rg_cav 1.81 km, rg_inf 2.01 km, kollo 2.18 km, bag 2.37 km, kamensky 4.09 km
+rg_inf: closest to Blasowitz 1.78 km at 11:15; to Krug 1.75 km at 11:28; @0 [413,202] 0.20 km from Krzenowitz, cf A
+rg_cav: closest to Blasowitz 1.54 km at 11:15; to Krug 1.57 km at 11:35; @0 [423,193] 0.27 km from Krzenowitz, cf A
+event blasowitz: t 675 forms [ 'caffarelli', 'rivaud', 'rg_inf' ] tolKm 1.3 claim est cf C
+  named caffarelli 1.16 km from the marker at 11:15
+  named rivaud 1.20 km from the marker at 11:15
+  named rg_inf 1.78 km from the marker at 11:15

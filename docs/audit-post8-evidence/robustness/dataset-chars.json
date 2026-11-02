@@ -1,0 +1,87 @@
+{
+ "generated": "2026-11-02",
+ "what": "markup-significant characters in the bundled data and in LABELS (dataset-chars.js, labels-chars.js)",
+ "dataset": {
+  "data.js": {
+   "doubleQuote": 0,
+   "lt": 0,
+   "amp": 0,
+   "doubleQuoteKeys": [],
+   "sample": []
+  },
+  "analysis.js": {
+   "doubleQuote": 0,
+   "lt": 0,
+   "amp": 0,
+   "doubleQuoteKeys": [],
+   "sample": []
+  },
+  "appearance.js": {
+   "doubleQuote": 0,
+   "lt": 0,
+   "amp": 0,
+   "doubleQuoteKeys": [],
+   "sample": []
+  },
+  "narrative.js": {
+   "doubleQuote": 38,
+   "lt": 0,
+   "amp": 0,
+   "doubleQuoteKeys": [
+    "re",
+    null
+   ],
+   "sample": [
+    [
+     32,
+     "re",
+     "^FORMATIONS\\.\\w+\\.track\\[\"\\d+\"\\]\\.obj$"
+    ],
+    [
+     46,
+     null,
+     "FORMATIONS.bourcier.track[\"3\"].act"
+    ],
+    [
+     80,
+     null,
+     "FORMATIONS.sthilaire.track[\"4\"].act"
+    ],
+    [
+     82,
+     null,
+     "FORMATIONS.legrand.track[\"4\"].act"
+    ]
+   ]
+  },
+  "geo.js": {
+   "doubleQuote": 0,
+   "lt": 0,
+   "amp": 0,
+   "doubleQuoteKeys": [],
+   "sample": []
+  },
+  "tokens.js": {
+   "doubleQuote": 2,
+   "lt": 0,
+   "amp": 0,
+   "doubleQuoteKeys": [
+    "serif",
+    "sans"
+   ],
+   "sample": [
+    [
+     53,
+     "serif",
+     "\"Austerlitz Serif\",\"Iowan Old Style\",\"Palatino Linotype\",Palatino,\"Book Antiqua\",Georgia,s"
+    ],
+    [
+     54,
+     "sans",
+     "\"Austerlitz Sans\",ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,sans-s"
+    ]
+   ]
+  }
+ },
+ "labels": "LABELS at line 6543 strings with \" < or &: 0"
+}

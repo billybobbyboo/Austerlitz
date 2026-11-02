@@ -1,0 +1,19 @@
+{
+ "label": "v-repro-rob",
+ "verdicts": [
+  {
+   "area": "robustness",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "Read tools/step6/perf-run.html at HEAD (md5 3f57a5bf...); plain GET of the live page and perf-route.js (no parameters) and md5 compared; own probe tools/audit-post8/verification/v-repro-rob/repro-src.js on byte copies in a Pages-like layout (/Austerlitz/tools/step6/, the audited build f10fe585 beside it, a second path /Other/ holding a localStorage secret) served from 127.0.0.1, a second 127.0.0.1 port as a foreign origin, Chromium 141.0.7390.37, 1280x720; the finding's remedy applied to a scratch copy and tested; git log -S / blame for origin. The live site was never sent a crafted URL.",
+   "evidence": "perf-run.html:40 src=q.get(\"src\")||default, unchecked; :44 fr.src=src; :28 the iframe has no sandbox. Live GET 2026-11-02 11:21 UTC: perf-run.html md5 3f57a5bf8135326d51099d87144d0e83 and perf-route.js c1323fa7... equal to the repository's; the live product 200, 2,810,630 bytes. Probe (docs/audit-post8-evidence/verification/v-repro-rob/repro-src-part1.json): (1) ?src=javascript: writing parent.localStorage and title -> title 'VRR1 http://127.0.0.1:<A> /Austerlitz/tools/step6/perf-run.html', localStorage vrr set in the page's origin; (2) ?src=javascript: reading another path's secret -> title 'VRR2 s3cr3t-1793618617884' (the /Other/ page's localStorage read: the origin's storage is shared across paths); (3) ?src=javascript: replacing parent.document.body -> #app and #msg gone, body '<h1 id=\"vrr-phish\">replaced by the link</h1>' (js-dom.jpg); (4) ?src=http://127.0.0.1:<B>/evil.html -> the foreign page framed at 0,0,1280x720 under the page's address, 'FOREIGN CONTENT' visible below the 206 px panel (foreign.jpg). Remedy on a copy (repro-src-part2.json): javascript: and the foreign URL rejected, frame on the default, title unchanged; ?src=../../austerlitz-command-map.html booted to 'The build has started (32 s). Press Start.' Origin: the src line since 1b46001 (21 Oct 2026, roadmap step 6 Part A), before Stage 8 Part A (23 Oct): inherited.",
+   "notes": "Severity S1/P1 kept: the rubric puts any real, reachable security exposure at S1, and this one is a public link away (Pages 'Deploy from a branch', main, root: docs/STEP6_SPEC.md:206-208; the route documented live at docs/STAGE8_SPEC.md:4882-4884, 5165). Its practical impact is bounded (one click by the victim; the map stores nothing: no localStorage/sessionStorage/indexedDB/cookie in app.js; whether other Pages sites of the account share the origin now was not checked, the GitHub API being closed to this session). Two corrections to the record, not to the verdict: the remedy's 'also removes R-6' should read R-8 (R-6 is the gait hook's test; R-8 is the archived builds on Pages); and the remedy's second option, publishing only the product on Pages, would take the device route off the host the owner's device protocol uses (STAGE8_SPEC.md:4882-4884, 5165) unless the artifact also carries tools/step6/: the first option (same origin, http(s), assign the parsed u.href) keeps every documented use, all relative same-origin paths (STAGE8_SPEC.md:4672, STEP6_SPEC.md:1275). Not checked: WebKit/Gecko (not installed; the HTML spec runs a same-origin initiator's javascript: navigation in the frame's initial about:blank, which inherits the parent's origin, so the same is expected); data: not re-tested (the area's case shows it blocked)."
+  }
+ ],
+ "not_done": [
+  "No WebKit (iPhone Safari) or Firefox run: only Chromium 141 is installed; expected the same by the HTML spec, not measured.",
+  "Whether any other GitHub Pages site of the account shares the origin today: the GitHub API's user endpoints are closed to this session, and no other live URL was fetched.",
+  "No crafted request to the live site (by the verifier note); the live page compared by a plain GET only."
+ ],
+ "extra_issues": []
+}

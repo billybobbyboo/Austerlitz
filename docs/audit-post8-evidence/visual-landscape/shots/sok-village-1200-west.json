@@ -1,0 +1,78 @@
+{
+ "id": "sok-village-1200-west",
+ "group": "landmarks",
+ "note": "Sokolnitz from the west at 12:00 in Clean: the castle among the village's farmsteads, the brook, the pheasantry.",
+ "spec": {
+  "t": 720,
+  "presentation": "map",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    210,
+    352
+   ],
+   "dir": [
+    -0.8,
+    0.45,
+    0.4
+   ],
+   "r": 45
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "12:00",
+  "t": 720,
+  "presentation": "map",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -100.955,
+   17.422,
+   68.978
+  ],
+  "target": [
+   -65,
+   -1.462,
+   51
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": true,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 44.41,
+  "sunAlt": 18.96,
+  "sunGeo": 18.91,
+  "sunAz": 180,
+  "mist": 0
+ },
+ "ms": 38086,
+ "timing": {
+  "apply": 75,
+  "settle": 581,
+  "settle2": 608,
+  "shot": 36369
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

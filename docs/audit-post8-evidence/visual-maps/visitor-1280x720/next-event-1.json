@@ -1,0 +1,150 @@
+{
+ "shot": "next-event-1",
+ "viewport": [
+  1280,
+  720
+ ],
+ "page": "visitor page (no ?harness=1, transitions kept)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real click #nextEv x1"
+ ],
+ "caption": {
+  "clock": 255,
+  "box": [
+   389,
+   641,
+   455,
+   15
+  ],
+  "title": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+  "parts": [
+   {
+    "cls": "act",
+    "text": "THE DECEPTION",
+    "shown": true,
+    "ellipsized": true,
+    "w": 0,
+    "kids": []
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "ellipsized": false,
+    "w": 17,
+    "kids": []
+   },
+   {
+    "cls": "cap-ph",
+    "text": "Dispositions in the dark",
+    "shown": true,
+    "ellipsized": true,
+    "w": 0,
+    "kids": []
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "ellipsized": false,
+    "w": 17,
+    "kids": []
+   },
+   {
+    "cls": "ev",
+    "text": "hour disputedLiechtenstein counter-marches across the 4th Column",
+    "shown": true,
+    "ellipsized": false,
+    "w": 421,
+    "kids": [
+     {
+      "cls": "evn",
+      "text": "hour disputed",
+      "ellipsized": false,
+      "w": 91
+     },
+     {
+      "cls": "evt",
+      "text": "Liechtenstein counter-marches across the 4th Column",
+      "ellipsized": true,
+      "w": 323
+     }
+    ]
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "ellipsized": false,
+    "w": 0,
+    "kids": []
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 38,700",
+    "shown": false,
+    "ellipsized": false,
+    "w": 0,
+    "kids": [
+     {
+      "cls": "",
+      "text": "derived",
+      "ellipsized": false,
+      "w": 0
+     }
+    ]
+   }
+  ],
+  "row": [
+   {
+    "id": "tb-ctrl",
+    "w": 297,
+    "shown": true
+   },
+   {
+    "id": "clockbox",
+    "w": 58,
+    "shown": true
+   },
+   {
+    "id": "speedbtn",
+    "w": 0,
+    "shown": false
+   },
+   {
+    "id": "tb-cap",
+    "w": 455,
+    "shown": true
+   },
+   {
+    "id": "eyesbtn",
+    "w": 105,
+    "shown": true
+   },
+   {
+    "id": "helpbtn",
+    "w": 32,
+    "shown": true
+   },
+   {
+    "id": "tb-vm",
+    "w": 0,
+    "shown": false
+   },
+   {
+    "id": "grp speeds",
+    "w": 149,
+    "shown": true
+   },
+   {
+    "id": "scalebar",
+    "w": 96,
+    "shown": true
+   }
+  ],
+  "firstRun": false,
+  "nowTop": "derived on the heights: Allied ≈ 38,700\nLiechtenstein counter-marches across the 4th Column (the hour is disputed)\nThe cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour, and Kutuzov then stood still, though the disposition ordered him forward. Stutterheim has the 4th Column ordered off on",
+  "body": "docked pm-study"
+ }
+}

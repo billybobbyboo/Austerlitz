@@ -1,0 +1,1092 @@
+{
+ "summary": {
+  "255": {
+   "d": 20,
+   "a": 4
+  },
+  "256": {
+   "a": 11
+  },
+  "257": {
+   "b": 32
+  },
+  "258": {
+   "b": 24,
+   "a": 4
+  },
+  "259": {
+   "a": 15
+  },
+  "260": {
+   "a": 19
+  },
+  "261": {
+   "a": 6
+  },
+  "262": {
+   "a": 4
+  },
+  "263": {
+   "a": 8
+  },
+  "264": {
+   "a": 8
+  },
+  "265": {
+   "a": 9
+  },
+  "266": {
+   "a": 8
+  },
+  "267": {
+   "a": 8
+  },
+  "268": {
+   "a": 7
+  },
+  "269": {
+   "a": 8
+  }
+ },
+ "hits": {
+  "259": {
+   "a": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 25,
+     "ctx": "thin an octant of its bearing (`BLD8G.chateau.tol`, `v8Between`), since the follow-up 8J (decision 259 (a)) the Goldbach at Sokolnitz on its 1825 channel, the traced pheasantry (`WOODS[0].poly`, drawn by `polyWorld`,"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 62,
+     "ctx": "), `stage8j-7d5594ba.html` (the `check:data` reference from the follow-up 8J's data task, decision 259 (a): the Sokolnitz group, the Pratzen church, the Austerlitz garden, to 8K), `stage8h-24e29da7.html` (the `check:"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 138,
+     "ctx": "8J's data task, decision 259 (a): GOLDBACH_M, BROOKS_M, WOODS, MARSH, TERRAIN_LINES, coverClass, buildCover and the cover rasters' declaration"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 467,
+     "ctx": "1.8; re-baselined from the build of the follow-up 8J, md5 `7d5594ba...`, 2,804,797 bytes: decision 259 (a)'s data"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 723,
+     "ctx": "sions 261, 262, 264 and 265 recorded), **8J** (`claude/tender-einstein-gwrsij-sokolnitz`: decision 259 (a), a data"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 151,
+     "ctx": "`docs/STAGE8_SPEC.md` section 22). Depends on 8J (decision 259 (a)) and, through it, on 8I.** The record is `docs/STAGE8_SPEC.md` section 21.8 and the per-anchor register"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 262,
+     "ctx": "e 8, the follow-up 8J: the Sokolnitz group, the Pratzen church and the Austerlitz garden (decision 259 (a); a data task)"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 400,
+     "ctx": "259-265, 30 October 2026): 8I (this one: presentation and records, no data), 8J (decision 259 (a), a geographic data task, stacked on it) and"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 525,
+     "ctx": "§21): **259 (a)**, the geographic data task for the Sokolnitz castle, the pheasantry and the Goldbach group, the Pratzen chur"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 540,
+     "ctx": "recorded. **8J** (`claude/tender-einstein-gwrsij-sokolnitz`, decision 259 (a)) and **8K** (`claude/tender-einstein-gwrsij-highway`, decision 260"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4752,
+     "ctx": "- **259 (a)**: authorise the geographic data task for the Sokolnitz castle, the pheasantry and the Goldbach group, the Pr"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4768,
+     "ctx": "d records, no data. **8J** (`claude/tender-einstein-gwrsij-sokolnitz`, into 8I's branch): decision 259 (a), a data task."
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4890,
+     "ctx": "### 21.7 The Sokolnitz group, the Pratzen church and the Austerlitz garden (8J; decision 259 (a); a data task)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5076,
+     "ctx": "(decision 259 (a), 8J; the woods' random sequence held so that no building moves but where the data changed; the motion block's"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5175,
+     "ctx": "317 of its checks on each; 8I and 8J pass every live block; the geographic corrections of decisions 259 (a)"
+    }
+   ]
+  },
+  "260": {
+   "a": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 25,
+     "ctx": "'s states (`WOODS_RS`, so that a wood's edit re-plans no building far from it); since 8K (decision 260 (a)) the highway east of the Santon on the road of 1826-52 (`ROADS[0]`), the post house where those maps show it"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 62,
+     "ctx": ", `stage8k-f10fe585.html` (the `check:data` reference since the follow-up 8K's data task, decision 260 (a): the highway east of the Santon, the Posoritz post house, twelve anchors re-plotted), `stage8j-7d5594ba.html`"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 136,
+     "ctx": "8K's data task, decision 260 (a): GEOREF (`GT.posthouse`), FORMATIONS, FEATURES, SOURCE_NOTE, PLANS, ROADS, WOODS, VILLAGES and STATEMENT_CLAI"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 466,
+     "ctx": "ses only on the unmodified build of the follow-up 8K (md5 `f10fe585...`, 2,810,630 bytes: decision 260 (a)'s data"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 724,
+     "ctx": "task) and **8K** (`claude/tender-einstein-gwrsij-highway`: decision 260 (a), a data task). PR #74 (8I) was merged into `main` by the owner"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 66,
+     "ctx": ": 8K's build's own, deterministic, the same in every run here and on CI. Why: geographic: decision 260 (a)'s corrected places for"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 147,
+     "ctx": ": the highway east of the Santon, the Posoritz post house, and twelve anchors re-plotted (decision 260 (a); a data task)"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 157,
+     "ctx": "established decision is replaced on the owner's word (question 260 (a)) with the evidence of 8H's geographic review, stated here and in the"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 401,
+     "ctx": "8K (decision 260 (a), the highway and the post house, stacked on 8J).** The record is `docs/STAGE8_SPEC.md` section 21, the eviden"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 526,
+     "ctx": "garden, subject to the evidence's qualifications; **260 (a)**, the highway and post-house correction as a separate data task and pull request, the"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 563,
+     "ctx": "-baselined from 245 jumps and 985 pops to 248 and 998 (8K's build's own counts; the cause decision 260 (a)'s"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4754,
+     "ctx": "- **260 (a)**: authorise the highway and post-house correction as a separate data task and pull request, reviewing and re"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4769,
+     "ctx": "**8K** (`claude/tender-einstein-gwrsij-highway`, into 8J's branch): decision 260 (a), a data task. Each moves `check:baseline`; 8J and 8K each"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4987,
+     "ctx": "### 21.8 The highway east of the Santon and the Posoritz post house (8K; decision 260 (a); a data task)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4993,
+     "ctx": "4, G5); the owner authorised its correction with the anchors reviewed from their sources (question 260 (a)). This"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5078,
+     "ctx": "f the Santon, the post house, the twelve anchors on and by the road, both plans' columns (decision 260 (a), 8K);"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5176,
+     "ctx": "and 260 (a) are in the data with their evidence, grades and registers, and every derived reading, chronology verdict and"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5320,
+     "ctx": "decision 260 (a) both plans' columns on the highway and the Allied staging \"Bagration on the highway\" follow the corrected roa"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5475,
+     "ctx": "8D to 8I). *New limits*: 248 and 998, 8K's build's own counts. *The cause is geographic*: decision 260 (a)'s corrected places (Suchet's"
+    }
+   ]
+  },
+  "263": {
+   "a": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 52,
+     "ctx": "TOAST`, `toastSeen`, its 3.4 s `flash()`'s alone; the far formation names' lighter plate, decision 263 (a), `mlFarPlate`, `mlFarRatio`, `TOKENS.sym.plate.far`), runtime checks |"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 722,
+     "ctx": "phase's message placed again under a layout's change, the far names' lighter plate of decision 263 (a), the census in both frames with section"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 419,
+     "ctx": "- **The far names' lighter plate (decision 263 (a), 255 (d)'s \"d-plate\"; section 21.3).** A formation's name on the landscape standing beyond the"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 529,
+     "ctx": "prototype not adopted, its evidence kept; **263 (a)**, the \"d-plate\" for distant formation names adopted with production integration and rendered"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 537,
+     "ctx": "formation names on the lighter plate (decision 263 (a), at AA by sym.plate's rule, size and places unchanged, the protected on the full plate);"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4758,
+     "ctx": "- **263 (a)**: the \"d-plate\", the lighter plate for distant formation names, adopted with production integration and rend"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4812,
+     "ctx": "### 21.3 The far names' lighter plate (8I; decision 263 (a))"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5072,
+     "ctx": "names on the lighter plate at AA as rendered, one size, the protected on the full plate (decision 263 (a), 8I);"
+    }
+   ]
+  },
+  "258": {
+   "b": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 61,
+     "ctx": "s-8h.js`, `mutate-8h.js` and `mutate-css-8h.js`, and the prototypes `protos/counters.js` (decision 258 (b)), `protos/farnames.js` (decision 255 (d)) and `protos/woods8h.js` (the crowns close up); since the follow-up"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 675,
+     "ctx": "g (the route and both builds prepared for the owner). Follow-ups commissioned, not built: decision 258 (b) and decision 255 (d)."
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 717,
+     "ctx": "crowns closing near the eye; decisions 258 (b) and 255 (d) prototyped and measured, not adopted; the ice under a low sun and the troops' contact"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 443,
+     "ctx": "historical claim, the mere's outline kept; 262 (a), counters placed as built, decision 258 (b)'s prototype not adopted, its evidence kept"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 592,
+     "ctx": "- **Decision 258 (b), measured, not adopted (section 20.8).** More places beside a counter's anchor while the view moves"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 661,
+     "ctx": "s for 8E-8H (desktop, iPhone, an integrated-GPU laptop, the effects-off bracket) pending; decisions 258 (b) and 255 (d) prototyped,"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 893,
+     "ctx": "no visible effect; a one-line change for a later build, §18.5). Kept outside this PR: 8G, decision 258 (b)'s counter placement, decision 255"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 1130,
+     "ctx": "decisions 258 (b) and 255 (d) commissioned, not built; the low views' wall of formation names open (decision 255); the visibili"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 455,
+     "ctx": "**Follow-ups commissioned with 8D, not built:** (1) decision 258 (b), more placements close to a counter's anchor while the view moves, measured"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 518,
+     "ctx": "numbers unchanged), P-3, P-4 and T-7. Decision 258 (b) measured (more formations drawn, but jumps over decision 257's ceiling: not adopted, question"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 528,
+     "ctx": "bolic-count exception, not a historical claim; **262 (a)**, the counters' placement kept, 258 (b)'s"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2968,
+     "ctx": "- **Decision 258 (b), commissioned, not built:** more placements close to a counter's anchor while the view moves, in a PR of its"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 3023,
+     "ctx": "the checks and the measuring tools, section 17.12), then the records. Nothing of decision 258 (b)'s"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 3607,
+     "ctx": "- **Kept outside this PR**, as the brief asks: decision 258 (b)'s counter placement and decision 255 (d)'s far-label prototype (both"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 3617,
+     "ctx": "8G, of decision 258 (b)'s counter placement or of decision 255 (d)'s far-label prototype is in it; decision 245 (a) is kept (no facin"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4074,
+     "ctx": "decision 258 (b)'s counter placement in motion and decision 255 (d)'s far-label prototype (both commissioned with 8D, section"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4264,
+     "ctx": "t open (the trees close up, the ice under a low sun, the troops' contact with the ground, decisions 258 (b) and 255 (d)); the audit's"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4279,
+     "ctx": "10,616 to 7,663 pixels, the same triangles and calls. Decisions 258 (b) and 255 (d) prototyped and measured, not adopted. The self-test 313 to"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4310,
+     "ctx": "| 18 | decision 258 (b): places near a counter's anchor | commissioned, not built | built and measured against 257's baselines | prot"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4472,
+     "ctx": "### 20.8 Decision 258 (b): more places beside a counter's anchor in motion (measured; not adopted)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4697,
+     "ctx": "- **Open: owner** (section 20.14): the geographic corrections (259, 260), Satschan (261), decision 258 (b) (262), decision 255 (d) (263), the ice"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4726,
+     "ctx": "- **Question 262: decision 258 (b), more places beside a counter's anchor in motion** (section 20.8). (a) **Keep 8C's placement**, the"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4757,
+     "ctx": "- **262 (a)**: the counters' placement kept, decision 258 (b)'s prototype not adopted, its evidence kept;"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4862,
+     "ctx": "- **262 (a)**: 8C's placement kept; decision 258 (b)'s prototype (section 20.8) not adopted, its evidence kept in `docs/stage8-evidence/8h/`."
+    }
+   ],
+   "a": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 669,
+     "ctx": "held; 258 (a) provisionally, (b) commissioned as a measured follow-up, the two-pass rule kept. Implementation PR 8D (`docs/"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 1035,
+     "ctx": "with the formations' visibility held; 258 (a) provisionally, with (b) commissioned as a measured follow-up and the two-pass rule kept."
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 438,
+     "ctx": "ck's ceilings at the benchmark's own counts, with each run's formations' visibility held; 258 (a)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2468,
+     "ctx": "*Decided by the owner with 8D's brief on 26 October 2026: 255 (a), 256 (a), 257 (b) and 258 (a) provisionally with (b) commissioned (section 16.1, with the owner's words). The questions are kept below as t"
+    }
+   ]
+  },
+  "255": {
+   "d": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 61,
+     "ctx": "8h.js`, and the prototypes `protos/counters.js` (decision 258 (b)), `protos/farnames.js` (decision 255 (d)) and `protos/woods8h.js` (the crowns close up); since the follow-up 8I in `stage8/` `toast-8i.js` (the phase'"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 675,
+     "ctx": "builds prepared for the owner). Follow-ups commissioned, not built: decision 258 (b) and decision 255 (d)."
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 717,
+     "ctx": "crowns closing near the eye; decisions 258 (b) and 255 (d) prototyped and measured, not adopted; the ice under a low sun and the troops' contact"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 419,
+     "ctx": "- **The far names' lighter plate (decision 263 (a), 255 (d)'s \"d-plate\"; section 21.3).** A formation's name on the landscape standing beyond the"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 661,
+     "ctx": "iPhone, an integrated-GPU laptop, the effects-off bracket) pending; decisions 258 (b) and 255 (d) prototyped,"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 1130,
+     "ctx": "decisions 258 (b) and 255 (d) commissioned, not built; the low views' wall of formation names open (decision 255); the visibility loss in m"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 457,
+     "ctx": "change; (2) decision 255 (d), a hierarchy for far battle information by another means than size (a lighter plate or ink for far names, sti"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 519,
+     "ctx": "262) and decision 255 (d) prototyped (a lighter plate for far names, at AA; not adopted, question 263). The crowns close up near the ey"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2971,
+     "ctx": "- **Decision 255 (d), commissioned as a prototype, not built:** a hierarchy for far battle information by another means than size"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 3024,
+     "ctx": "counter-placement work or of decision 255 (d)'s far-label prototype is in it (both commissioned separately, section 16.12). **Device acceptance"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 3607,
+     "ctx": "- **Kept outside this PR**, as the brief asks: decision 258 (b)'s counter placement and decision 255 (d)'s far-label prototype (both"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 3617,
+     "ctx": "8G, of decision 258 (b)'s counter placement or of decision 255 (d)'s far-label prototype is in it; decision 245 (a) is kept (no facings), and the"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4074,
+     "ctx": "decision 258 (b)'s counter placement in motion and decision 255 (d)'s far-label prototype (both commissioned with 8D, section 16.12, not begun);"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4264,
+     "ctx": "e up, the ice under a low sun, the troops' contact with the ground, decisions 258 (b) and 255 (d)); the audit's"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4279,
+     "ctx": "10,616 to 7,663 pixels, the same triangles and calls. Decisions 258 (b) and 255 (d) prototyped and measured, not adopted. The self-test 313 to"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4311,
+     "ctx": "| 19 | decision 255 (d): far battle information | commissioned, not built | a prototype with contrast, size and performance | prototy"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4492,
+     "ctx": "### 20.9 Decision 255 (d): a hierarchy for far battle information (a prototype; not adopted)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4512,
+     "ctx": "while a dimmer ink alone is not (below AA in two views). Not adopted: decision 255 (d) commissioned a prototype, and the wall of names in the low"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4697,
+     "ctx": "on 20.14): the geographic corrections (259, 260), Satschan (261), decision 258 (b) (262), decision 255 (d) (263), the ice"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4730,
+     "ctx": "- **Question 263: decision 255 (d), far battle information** (section 20.9). (a) **Adopt the lighter plate for far formation names** (\"d-plate\":"
+    }
+   ],
+   "a": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 667,
+     "ctx": "§16.1): 255 (a), the far step as built, (d) a prototype task of its own, the low views' wall of formation names left open; 25"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 1032,
+     "ctx": "er's decisions 255-258** (26 October 2026, with 8D's brief; `docs/STAGE8_SPEC.md` §16.1): 255 (a), the far step on place and"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 435,
+     "ctx": "er's decisions 255-258** (26 October 2026, with 8D's brief; `docs/STAGE8_SPEC.md` §16.1): 255 (a), the far step as built (place and"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2468,
+     "ctx": "*Decided by the owner with 8D's brief on 26 October 2026: 255 (a), 256 (a), 257 (b) and 258 (a) provisionally with (b) commissioned (section 16.1, with the owner's words). The"
+    }
+   ]
+  },
+  "267": {
+   "a": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 416,
+     "ctx": "998 (since decision 267 (a), 1 November 2026, 8K's build's own counts; 245 and 985 until then), level-of-detail switches at most 130 and"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 427,
+     "ctx": "owner question 267 (`docs/STAGE8_SPEC.md` §21.8); decision 267 (a) re-baselined the jumps' and pops' ceilings at 248 and 998 (§23), every other"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 734,
+     "ctx": "klist is §22.6. PR #77 was merged into `main` by the owner (`141f890`). The owner decided question 267 (a) on 1 November 2026"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 56,
+     "ctx": "## 2026-11 · Stage 8, the benchmark closure: decision 267 (a), the motion block's ceilings at 248 jumps and 998 pops"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 64,
+     "ctx": "- **Decision 267 (a)** (the owner, 1 November 2026: \"accept the corrected geography's benchmark totals of 248 jumps and 998 pops\")"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 562,
+     "ctx": "**Decision 267 (a)** (the owner, 1 November 2026; `docs/STAGE8_SPEC.md` §23): the corrected geography's benchmark totals accepte"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5451,
+     "ctx": "## 23. Decision 267 (a): the motion block's ceilings re-baselined (the benchmark closure, 1 November 2026)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5514,
+     "ctx": "the map layer in motion now read: the 16's totals within their ceilings of 248 and 998 by decision 267 (a);"
+    }
+   ]
+  },
+  "257": {
+   "b": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 416,
+     "ctx": "), level-of-detail switches at most 130 and flickers at most 10 (since 8D's prerequisite, decision 257 (b): the deterministic benchmark's own"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 447,
+     "ctx": "run's own seek once kept them drawn by the blocks' easing, which 8H holds at a seek; the decision 257 (b)"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 668,
+     "ctx": "unobstructed baselines re-measured on CI's browser; 257 (b), the motion block's ceilings at its own counts with each run's formations' visibility"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 671,
+     "ctx": "map item drawn at full opacity at once, the audit of 8C's finding; decision 257 (b); the motion driver's wait after a resize; decision 256 (a)),"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 65,
+     "ctx": "s.js` `MOTION.JUMPS` **245 to 248** and `MOTION.POPS` **985 to 998** (+1.2%, +1.3%). Was: decision 257 (b)'s counts on"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 215,
+     "ctx": "- **The map layer in motion (decision 257 (b)'s benchmark), moved by the re-plotted anchors: owner question 267.** On 8K's build the"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 227,
+     "ctx": "hmark; the map layer's code is unchanged; the ceilings and the tolerance are the owner's (decision 257 (b)). Question"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 351,
+     "ctx": "- **The motion block's visibility baselines (`tools/visual/thresholds.js` `MOTION.VIS`, decision 257 (b)), moved by the data.** The block's 16"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 388,
+     "ctx": "hortcuts, narrow, phone, toast, toastLayout, ring, rmLive), the motion block failing only decision 257 (b)'s visibility baselines, which 8J's"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 535,
+     "ctx": "- **The motion block (decision 257 (b)) kept at its own counts.** On CI's browser (Chromium 141, `tools/stage8/motion-8h.js`) 8H's pose held at a"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 1034,
+     "ctx": "not resolved; 256 (a), the inherited unobstructed baselines re-measured on CI's browser; 257 (b), the motion block's ceilings at its own counts,"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 1047,
+     "ctx": "- **Prerequisite 2 (`3c9e2eb`): decision 257 (b).** `thresholds.js` `MOTION`: jumps 245, pops 985, level-of-detail switches 130, flickers 10 over"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 438,
+     "ctx": "CI's browser; 257 (b), the motion block's ceilings at the benchmark's own counts, with each run's formations' visibility held; 258"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 443,
+     "ctx": "it of 8C, reproduced by real input: 0.19 a frame after a real Tab at 30 frames a second); decision 257 (b); decision"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 456,
+     "ctx": "against the visibility baselines of decision 257 (b) as §15.6 measured 8C, with the two-pass rule kept until a measured comparison justifies a"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 516,
+     "ctx": "baselines were measured (decision 257 (b) kept at its counts on every run). The phase's message clear of every control at the nine sizes (0 px in"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2468,
+     "ctx": "*Decided by the owner with 8D's brief on 26 October 2026: 255 (a), 256 (a), 257 (b) and 258 (a) provisionally with (b) commissioned (section 16.1, with the owner's words). The questions are kep"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2502,
+     "ctx": "in commits of its own: the prerequisite correction the audit of 8C found (section 16.2), decision 257 (b) (16.3),"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2553,
+     "ctx": "### 16.3 Decision 257 (b): the motion block at its own counts, and the formations' visibility held (commit `3c9e2eb`)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2999,
+     "ctx": "- **On CI:** on `3c9e2eb` (decision 257 (b)): the push run 40256828983 (the checks job and `check:contrast` pass; `check:selftest` fails the"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4025,
+     "ctx": "the motion block's counts are pinned to by decision 257 (b), which this container does not have), software WebGL, the container's CPU shared with"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4303,
+     "ctx": "| 11 | the motion block (decision 257 (b)) on 8H's build | 245, 985, 130, 10 on 8G's build | the same counts and visibility | the Play runs' pre frames"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4380,
+     "ctx": "- **The motion block (decision 257 (b)) at its own counts.** On CI's browser 8H's pose held at a seek changed two runs: the paper map's Play (4"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4476,
+     "ctx": "orners. A fresh view and the rest after motion untouched. Measured on the exact benchmark decision 257 (b) pins (the motion block's"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4612,
+     "ctx": "live block passing: the motion block's 24 runs at decision 257 (b)'s ceilings and visibility baselines (the paper map's Play 5, 30 and 1,570 again),"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4628,
+     "ctx": "block's 16 motions at 245 jumps, 985 pops, 130 level-of-detail switches and 10 flickers, decision 257 (b)'s"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4963,
+     "ctx": "*The motion block's visibility* (decision 257 (b)'s baselines, `MOTION.VIS`). 8J's data moves what each motion has in view: the III Column's"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5035,
+     "ctx": "*The map layer in motion* (decision 257 (b)'s benchmark; `docs/stage8-evidence/8k/motion/`). The self-test's motion block changes in 19"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5272,
+     "ctx": "lickers): no input scheduling. They compare the same motions as the ceilings were set on (decision 257 (b)): a valid"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5294,
+     "ctx": "and sets aside decision 240 (a)'s priority order in motion; decision 257 (b) forbids buying the totals with any run's visibility. The second,"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5474,
+     "ctx": "*Previous limits*: 245 jumps and 985 pops over the 16 (decision 257 (b): the deterministic benchmark's own counts on 8D's build, confirmed on every"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5483,
+     "ctx": "* The decision accepts the current benchmark's results as the ceilings of this benchmark (decision 257 (b): \"ceilings of"
+    }
+   ]
+  },
+  "256": {
+   "a": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 439,
+     "ctx": "Since 8D's prerequisite (decision 256 (a)): the unobstructed baselines CI's browser had measured under since roadmap step 1 re-measured on it over"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 667,
+     "ctx": "built, (d) a prototype task of its own, the low views' wall of formation names left open; 256 (a), the inherited"
+    },
+    {
+     "doc": "CLAUDE.md",
+     "line": 671,
+     "ctx": "ce, the audit of 8C's finding; decision 257 (b); the motion driver's wait after a resize; decision 256 (a)),"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 1034,
+     "ctx": "not resolved; 256 (a), the inherited unobstructed baselines re-measured on CI's browser; 257 (b), the motion block's ceilings at it"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 1060,
+     "ctx": "- **Prerequisite 4 (`e008825`): decision 256 (a), the inherited unobstructed baselines re-measured on CI's browser.** Two full `check:visual`"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 437,
+     "ctx": "prototype task of its own, and the low views' wall of formation names left open; 256 (a), the inherited unobstructed baselines re-measured on"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 444,
+     "ctx": "256 (a). Then decisions 249 (a) and 250 (b): every instanced mesh of every figure block culled by bounds of its own i"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2468,
+     "ctx": "*Decided by the owner with 8D's brief on 26 October 2026: 255 (a), 256 (a), 257 (b) and 258 (a) provisionally with (b) commissioned (section 16.1, with the owner's words). The question"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2503,
+     "ctx": "decision 256 (a) (16.4), then 8D (16.5-16.11) and the records. Nothing of 8E: no richer kit, no gait drawn, no model detail ad"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2622,
+     "ctx": "### 16.4 Decision 256 (a): the inherited unobstructed baselines re-measured on CI's browser (commit `e008825`)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 2627,
+     "ctx": "regression; decision 256 (a) re-measures them on CI's browser."
+    }
+   ]
+  },
+  "266": {
+   "a": [
+    {
+     "doc": "CLAUDE.md",
+     "line": 727,
+     "ctx": "rged) brings both into `main` (its tree 8K's own, its build 8K's, `f10fe585...`), records decision 266 (a) (the Sokolnitz castle kept at its"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 84,
+     "ctx": "## 2026-10 · Stage 8, the integration pass (8L): 8J and 8K brought into `main`; decision 266 (a); question 267's check lines"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 97,
+     "ctx": "- **Decision 266 (a)** (the owner, 31 October 2026): the Sokolnitz castle kept at its corrected site and its present size, the qua"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 550,
+     "ctx": "owner's decisions of 31 October 2026: **266 (a)**, the Sokolnitz castle kept at its corrected site at about 96 by 73 m, the explanation of the"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5189,
+     "ctx": "its changes reached main\"). (2) **Decision 266 (a)**: the Sokolnitz castle retained at its corrected site and its present footprint of about"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5228,
+     "ctx": "### 22.2 Decision 266 (a): the Sokolnitz castle"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5397,
+     "ctx": "figures over its symbol from 08:00 to 14:10 (decision 266 (a)); the Austerlitz garden under the château's symbol at the Overview's scale and no"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5520,
+     "ctx": "266 (a); the Austerlitz garden; Satschan's farmsteads; `BUILDINGS.notDrawn`; the Littawa's name in the Plans view); *"
+    }
+   ]
+  },
+  "269": {
+   "a": [
+    {
+     "doc": "CHANGELOG.md",
+     "line": 3,
+     "ctx": "## 2026-11 · Stage 8, device acceptance: decision 269 (a), the phone accepted as measured"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 9,
+     "ctx": "- **Decision 269 (a)** (the owner, 1 November 2026: \"Go with A for 269\"): the phone accepted as measured. Section 8.3's phone budg"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 579,
+     "ctx": "all on the final audit checklist): the device runs' accepted excesses (decisions 268 (a), 269 (a); an integrated GPU unmeasured); decision 245 (a)'s facings, to be reconsidered now"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5597,
+     "ctx": "## 25. Device acceptance: the phone runs (1 November 2026); decision 269 (a)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5654,
+     "ctx": "### 25.3 Question 269, and decision 269 (a)"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5669,
+     "ctx": "**Decision 269 (a)** (the owner, 1 November 2026: \"Go with A for 269\"): the phone is accepted as measured. Section 8.3's phone b"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5678,
+     "ctx": "as measured); the phone recorded and decided (this section, decision 269 (a): section 8.3 met, section 8.5 not evaluable like for like, accepted"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5683,
+     "ctx": "measured on the owner's decisions 268 (a) and 269 (a), their excesses carried into the final audit rather than passed; an integrated GPU was not"
+    }
+   ]
+  },
+  "268": {
+   "a": [
+    {
+     "doc": "CHANGELOG.md",
+     "line": 16,
+     "ctx": "## 2026-11 · Stage 8, device acceptance: the phone runs recorded; decision 268 (a); question 269"
+    },
+    {
+     "doc": "CHANGELOG.md",
+     "line": 22,
+     "ctx": "- **Decision 268 (a)** (the owner, 1 November 2026): the desktop's script above section 8.3's CPU line (Play at half speed +1.5 ms"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 573,
+     "ctx": "**Decision 268 (a)** (the owner, 1 November 2026): the desktop's excess accepted as measured, carried into the final audit. **Th"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 579,
+     "ctx": "ner question open; all on the final audit checklist): the device runs' accepted excesses (decisions 268 (a), 269 (a); an integrated GPU unmeasured); decision 245 (a)'s facings, to be reconsidered now"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5593,
+     "ctx": "- **Decision 268 (a)** (the owner, 1 November 2026: \"let's go with (a), accept it as measured and carry it into the final audit. O"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5677,
+     "ctx": "**real-device performance** item now reads: the desktop recorded and decided (section 24, decision 268 (a): the CPU line exceeded, accepted"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5683,
+     "ctx": "measured on the owner's decisions 268 (a) and 269 (a), their excesses carried into the final audit rather than passed; an integrated GPU was not"
+    }
+   ]
+  },
+  "261": {
+   "a": [
+    {
+     "doc": "CHANGELOG.md",
+     "line": 442,
+     "ctx": "- **Owner decisions recorded (no change to the build):** 261 (a), Satschan's five farmsteads of seven an accepted symbolic-count exception, not a"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 527,
+     "ctx": "re-plotted from their sources, the road not moved without reviewing what depends on it; **261 (a)**,"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4756,
+     "ctx": "- **261 (a)**: Satschan's five farmsteads kept as an accepted symbolic-count exception (not a historical claim; the mere"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4860,
+     "ctx": "- **261 (a)**: Satschan's five farmsteads of seven are an accepted symbolic-count exception, named with its cause (the dr"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5088,
+     "ctx": "- Satschan's five farmsteads of seven (decision 261 (a)): the drawn mere's outline (decision 27) leaves no room for seven;"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5398,
+     "ctx": "garden sign on the paper map (8J); Satschan's five farmsteads of seven (decision 261 (a)); 8G's `BUILDINGS.notDrawn` (St Anthony's chapel, the"
+    }
+   ]
+  },
+  "262": {
+   "a": [
+    {
+     "doc": "CHANGELOG.md",
+     "line": 443,
+     "ctx": "historical claim, the mere's outline kept; 262 (a), counters placed as built, decision 258 (b)'s prototype not adopted, its evidence kept"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 528,
+     "ctx": "atschan's five farmsteads an accepted symbolic-count exception, not a historical claim; **262 (a)**, the counters' placement kept, 258 (b)'s"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4757,
+     "ctx": "- **262 (a)**: the counters' placement kept, decision 258 (b)'s prototype not adopted, its evidence kept;"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4862,
+     "ctx": "- **262 (a)**: 8C's placement kept; decision 258 (b)'s prototype (section 20.8) not adopted, its evidence kept in `docs/s"
+    }
+   ]
+  },
+  "264": {
+   "a": [
+    {
+     "doc": "CHANGELOG.md",
+     "line": 444,
+     "ctx": "(`docs/stage8-evidence/8h/`); 264 (a), the meres' ice kept, its low-sun appearance on the final visual-review checklist; 265 (a), the troops'"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 530,
+     "ctx": "contrast checks; **264 (a)**, the ice kept, its low-sun appearance on the final visual-review checklist; **265 (a)**, the troops' contac"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 582,
+     "ctx": "remaining cases) until the device runs and the final audit; decision 264 (a)'s low-sun appearance of the ice on the final visual-review checklist."
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4760,
+     "ctx": "- **264 (a)**: the ice kept, its low-sun appearance on the final visual-review checklist;"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4863,
+     "ctx": "- **264 (a)**: the ice as built; its appearance under a low sun (section 20.10: the low views' glare at 15:00, 43.5% of t"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5096,
+     "ctx": "track and brook leave no more room (8J; owner question 266, open); decision 265 (a); decision 264 (a)'s ice, with its low-sun appearance on the final"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5393,
+     "ctx": "- **The ice under a low sun**: decision 264 (a): the low views' glare at 15:00 (43.5% of the ice, section 20.10)."
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5518,
+     "ctx": "**the ice under a low sun** (decision 264 (a)); **the troops' facings** (decision 245 (a), with 8E's drivers on the guns on the heights and the"
+    }
+   ]
+  },
+  "265": {
+   "a": [
+    {
+     "doc": "CHANGELOG.md",
+     "line": 444,
+     "ctx": "64 (a), the meres' ice kept, its low-sun appearance on the final visual-review checklist; 265 (a), the troops'"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 530,
+     "ctx": "**264 (a)**, the ice kept, its low-sun appearance on the final visual-review checklist; **265 (a)**, the troops' contact with the"
+    },
+    {
+     "doc": "docs/ROADMAP.md",
+     "line": 581,
+     "ctx": "`BUILDINGS.notDrawn` (St Anthony's chapel, the Santon's chapel, the Sokolnitz granary); decision 265 (a)'s provisional acceptance (the feet's"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4761,
+     "ctx": "- **265 (a)**: the troops' contact with the ground kept provisionally pending the device measurements and the final audit"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 4865,
+     "ctx": "- **265 (a), provisional**: 8F's chords with the proposed bounds and counts kept pending the device runs and the final au"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5089,
+     "ctx": "- the feet's remaining cases (decision 265 (a), provisional): 8F's chords with their bounds and counts (section 20.10), the original criterion"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5096,
+     "ctx": "track and brook leave no more room (8J; owner question 266, open); decision 265 (a); decision 264 (a)'s ice, with its low-sun appearance on the final"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5391,
+     "ctx": "- **The troops' contact with the ground**: decision 265 (a), provisional: 8F's chords with their bounds and counts; the original criterion (every"
+    },
+    {
+     "doc": "docs/STAGE8_SPEC.md",
+     "line": 5517,
+     "ctx": ", pending; no time measured here is a device's); **the troops' contact with the ground** (decision 265 (a), provisional);"
+    }
+   ]
+  }
+ }
+}

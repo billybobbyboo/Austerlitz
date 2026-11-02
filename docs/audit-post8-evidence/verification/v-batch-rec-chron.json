@@ -1,0 +1,94 @@
+{
+  "label": "v-batch-rec-chron",
+  "verdicts": [
+    {
+      "area": "records", "index": 0, "verdict": "CONFIRMED",
+      "method": "code/records reading at HEAD + counts from the live files (no browser)",
+      "evidence": "README.md:28 names archive/step5c-45f8f662.html, package.json:9 archive/stage8k-f10fe585.html; README.md:30 '35 states', 'six start-up cases' vs check-contrast.txt:7,16 '45 states', '8 of 8' and boot-check.js EXPECT's 8 keys; README.md:31 '242 checks' vs selftest-manifest.json count 317 (names 317); README.md:32 '30 fixed views' vs cases.js 39; README.md:27 'printed only' vs audit.js:64 process.exitCode=1 (asserting since step 5, CHANGELOG.md:1936); times (15 min, 100 min) vs CLAUDE.md's 21-43 min and 169-250 min; checks.yml:5 'each about 8-15 minutes' with the selftest job's 60-minute limit (checks.yml:47). README.md last changed 15b2dcc (21 Oct 2026, decision 214): stale since PR #60 (phone cases) and Stage 8.",
+      "notes": "'Self-contained' is the project's own term (CLAUDE.md:3 'one self-contained HTML (three.js r128 from cdnjs)'; package.json:4): the README's fault is the missing cdnjs qualifier, not the word. Severity S3 P2 and mixed origin agreed."
+    },
+    {
+      "area": "records", "index": 1, "verdict": "WEAKENED",
+      "method": "fetched the Pages root and the map with curl (2 Nov 2026); read docs/STEP6_SPEC.md:200-210 and docs/ROADMAP.md:309 (decision 217)",
+      "evidence": "Root 200, last-modified 1 Nov 10:57:40 GMT, body md5 23b523bb... identical to records/pages-root.html; its only <a href> is the site itself; no index.html in the tree. The map at /austerlitz-command-map.html: 2,810,630 bytes, md5 f10fe585 (served correctly). The site exists for the device runs (STEP6_SPEC.md:200-210; decision 217 'GitHub Pages (all public) ... the owner's choice'); no decision or spec makes the root a visitor entry.",
+      "corrected": {"category": "optional-improvement", "severity": "S4", "priority": "P3", "origin": "inherited (Pages enabled for decision 217's device runs, roadmap step 6)", "observed": "The root renders README.md (developer text, no link to the map); the map itself is served correctly. A public root without a link is a missed convenience for anyone given the bare site address, not a defect against any stated requirement."}
+    },
+    {
+      "area": "records", "index": 2, "verdict": "CONFIRMED",
+      "method": "read the cited lines; git log --merges origin/main; grep of every CHANGELOG '**Status' head",
+      "evidence": "CHANGELOG.md:5,18,39-40 (#79), :58 (#78), :86 (#77) say draft/not merged; merges 43e3e5b #79, c2adefe #78, 141f890 #77 (1 Nov, 31 Oct). ROADMAP.md:510 (#73) and :548 (#77) say not merged; CLAUDE.md:734 and :738 record #77 and #78 merged; CLAUDE.md:744 'Draft PR #79 holds both records'.",
+      "corrected": {"observed": "Wider than stated in CHANGELOG: four older heads are also unrevised: :1698 (PR #58, 'for review'; merged 7437dcc), :1650 (#59 draft; a107472), :1574 (#60 draft; a8afeec), :1339 (#64 draft; d86835e). Narrower in ROADMAP: :548 does record #74's merge into main (72c7e1b) and #75/#76 into their stacked branches; it lacks #73, #77, #78 and #79.", "origin": "mixed: inherited (R-2 recurred from PR #58, before Stage 8) and new-regression (#64, #73-#79)"},
+      "notes": "S3 P2 agreed; a records-only commit."
+    },
+    {
+      "area": "records", "index": 3, "verdict": "CONFIRMED",
+      "method": "re-ran node tools/audit-post8/records/claims-count.js; read CLAUDE.md:24, :497, CHANGELOG.md:204",
+      "evidence": "Output: 704 statements, 148 own, 75 by class, 481 unchecked, 0 stale entries (byClaim disputed 65, attributed 63, interpretation 12, uncertain 6, derived 2). CLAUDE.md:24 '484 after decision 210 (c), 145'; CHANGELOG.md:204 '481 unchecked (484 in 8J), 148 ... (145)'; CLAUDE.md:497 '## Current state (October 2026)' over text to 1 November.",
+      "notes": "Stale since 8K. S4 P4 agreed."
+    },
+    {
+      "area": "records", "index": 4, "verdict": "CONFIRMED",
+      "method": "data and records reading; distance computed with geo.js KM_PER_MAP 0.03160",
+      "evidence": "data.js:561 milo@0 p [325,230] cf A act 'Formed on the plateau near Pratzen village'; world.js:143 Pratzen [276,243] r 11: 1.60 km from the village's centre (about 1.25 km from its drawn edge). id-mentions.json: G-3 0 mentions in CHANGELOG, ROADMAP, STAGE8_SPEC; ROADMAP.md:16 step 5 names G-1, not G-3; STAGE8_SPEC.md:1327-1339 (9.4) omits it; inventory.md:456 the act 'unchecked'; no reading of milo's dawn place in the step-2/step-4 registers. Unchanged since the prior audit (archive builds).",
+      "notes": "S4 P3 unresolved-historical agreed; the remedy is a data task under CLAUDE.md's rule."
+    },
+    {
+      "area": "records", "index": 5, "verdict": "WEAKENED",
+      "method": "read STAGE8_SPEC.md:4982, 5108-5110, 5305-5313, 5398-5405, 5483-5488, 5511-5516; reused v-batch-his kienmayer.txt, caffarelli.txt, anchor-pairs.txt",
+      "evidence": "Kienmayer: the checklist's 'offsets from the corrected brook' (5108, 5405) for an anchor whose act says 'west of the Goldbach' while 0.901 km east of it, and 0.941 km east on Stage 0's brook (v-batch-his): understated, holds. Caffarelli: '2.5-2.9 km south of Bagration's from 14:30' (5110) against 2.13 km (14:30) to 2.64 km (17:00) at the same clocks (caffarelli.txt; bag@8/caff@8 2.13, bag@9/caff@9 2.64 in anchor-pairs.txt): wrong, but an overstatement, not the understatement the finding claims. 4,033 ms: not misread: section 22.3 says the three counters are 'hidden for the whole run, 121 frames' (5307-5308) and 23.4 carries 'Play's longest hidden formation, 4,033 ms, and anything longer than the benchmark's runs' (5515-5516); visibility's 12-28 s are new measurements, not a misstatement.",
+      "corrected": {"severity": "S4", "priority": "P4", "observed": "Two of three items misstated: kienmayer@7's contradiction of its own act since Stage 0 filed as an 8J offset (understated); Caffarelli's separation given as 2.5-2.9 km where the build draws 2.13-2.64 km (overstated). The 4,033 ms item is stated with its limit. The substance is carried by history #7, #8 and visibility #0, #2."}
+    },
+    {
+      "area": "records", "index": 6, "verdict": "WEAKENED",
+      "method": "read CLAUDE.md:589, ROADMAP.md:154-159, :196, sr-session.md:1-11, second-reading.md:1-10; git log -S'<main' shell.html",
+      "evidence": "The attestations are labelled where counted done: CLAUDE.md:589 'recorded complete on the owner's word (decision 175; 14 October 2026; no item results were given, so none is recorded), and step 3 is done'; ROADMAP.md:156-159 'none of its 24 items is recorded here as passed or failed'; :196 'no item results given, none recorded'; sr-session.md:3-7 the same. So the remedy's labelling already exists. What remains: no screen-reader result exists for any build, and 8H's A-6 (a22edd2, 29 Oct 2026: shell.html:384 <main>, heading levels) changed the accessibility tree after the 14 Oct attestation; the script's expectations are the step-3 DOM's (sr-session.md:11). Also second-reading.md:6-7 still says the human second reading 'stays open for the owner' though decision 189 recorded it complete (ROADMAP.md:196).",
+      "corrected": {"category": "untested", "severity": "S3", "priority": "P3", "origin": "accepted-compromise (decisions 175, 189) for the attestation; new-regression for the gap: 8H's landmark and heading changes post-date it", "observed": "Both attestations are labelled as such (CLAUDE.md:589, ROADMAP.md:156-159, 196). Untested: any screen reader on the current build, including 8H's A-6 changes; one stale line, second-reading.md:6-7."}
+    },
+    {
+      "area": "records", "index": 7, "verdict": "CONFIRMED",
+      "method": "re-ran node tools/audit/size.js; new tools/audit-post8/verification/v-batch-rec-chron/selftest-gzip.js; read FINAL_AUDIT.md:842, :903-905, STAGE8_SPEC.md:1336",
+      "evidence": "AUSTERLITZ_DEBUG 611,113 bytes, 21.7% of 2,810,630 (app.js:9154); comments 437,848 (15.6%). Decision 140 was put on 225,445 bytes (12.8%), Stage 8 Part A recorded 333,611 (15.0%): +277,502 in Stage 8. Compressed (gzip -9): the self-test adds 184,127 bytes, 15.2% of a 1,210,658-byte page (the desktop report transferred 1,219,603). Decision 140: 'keep it ... unless the file's size becomes a goal' (FINAL_AUDIT.md:903-905): its reason stands, its stated cost has grown 2.7x.",
+      "corrected": {"priority": "P4"},
+      "notes": "Accepted-compromise S4 agreed; re-putting the decision is optional (no visitor cost measured beyond the transfer above)."
+    },
+    {
+      "area": "sources-chronology", "index": 0, "verdict": "CONFIRMED",
+      "method": "read both page images by eye; the saved text layer's heading; grep of the registers and narrative.js",
+      "evidence": "Page image p. 262: 'Не нахожу, как бы оправдать его ... А притом генерал-майора графа Каменского 1-го с полком его и другими рассеянными несколькими командами послав назад, тем храброго сего генерала с его отрядом подвергал крайней опасности' (the subject Langeron, named above: 'Не должно ли приписать в вину графа Ланжерона'). p. 261: the answer to Kutuzov's letter 'сего января от 16', the writer the 1st Column's commander. Text layer: '№ 250 / 1806 г. января 21. — ПИСЬМО Ф. Ф. БУКСГЕВДЕНА М. И. КУТУЗОВУ ... Дубно'. Registers: kutuzov1951 readings are pp. 226, 230, 241-242, 255-258, 265, 266-267, 269-270; none of pp. 260-262. narrative.js:182-186: the 'Langeron sent the brigade' side is Schönhals p. 161 alone.",
+      "notes": "Buxhowden commanded the 1st Column at Telnitz, so his letter is second-hand for the plateau and partisan (it blames Langeron): it weights the side, it does not settle the dispute. S4 P3 unresolved-historical, inherited, agreed."
+    },
+    {
+      "area": "sources-chronology", "index": 1, "verdict": "CONFIRMED",
+      "method": "code/data reading; the saved text layers re-read; decision 201's scope read; archive builds grepped for the claim",
+      "evidence": "analysis.js:284-286 EVENTS[#soult] t [525,555], cf C, claim 'fact', no dispute. data.js:20 CLAIM.disputed: 'its hour ... is disputed: the accounts read disagree with each other or with this map's timing'. data.js:192, :210 (sthilaire@3, vandamme@3 notes): 'about eight in Ségur, ... half past eight in Thiébault, about nine in Stutterheim and Schönhals'. Ségur text layer line 18151-18153: 'les divisions Vandamme et Saint-Hilaire, s'élançant hors du brouillard qui les enveloppait, apparurent soudainement. Il était huit heures.' Stutterheim 'Es war ungefähr 9 Uhr'; Schönhals 'es mochte 9 Uhr Früh sein'. dossierEvent (app.js:8296-8302, 8328-8329) shows the Fact pill, 'Timing C', 'Interval, not a timestamp' and CLAIM.fact's note. Decision 201 (b) covered the seven events question 193 lowered (questions.md:240-251); soult was not among them, so no owner decision covers its label. claim 'fact' since Stage 0 (archive/stage0-c09c4b23.html through stage8k).",
+      "notes": "Not a duplicate of history #5 (a different event, whose own text names no dispute); merge as its fourth instance. S3 P2 inherited agreed."
+    },
+    {
+      "area": "sources-chronology", "index": 2, "verdict": "CONFIRMED",
+      "method": "read the Schönhals page image by eye; the register's C1.20 and C2.18; data.js:80, :569-571; analysis.js:292-294; narrative.js:42-44; archive builds",
+      "evidence": "Page image p. 162: 'Kutusow befahl den österreichischen Brigaden Jurschek und Rottermund, die Höhe zu nehmen.' Those brigades are the IV Column's Austrian wing (data.js:569-571 kollo 'Austrian wing, IV Column', 'Brigades: Jurczek · Rottermund'). The project registered this sentence (readings.md:292-302, C1.20, grade B, fact) and Stutterheim's 'Der General Kollowrath erhielt Befehl, den Feind auf dem linken Flügel aufzuhalten' (readings.md:801-808, C2.18, grade A), yet data.js:80 says 'in this map's reading, which no account read gives' and narrative.js:42 classes the why 'interpretation' citing only Mikhailovsky-Danilevsky and Kutuzov's two relations. Wording unchanged since step 5c (archive/step5c-45f8f662.html), claim 'fact' since Stage 0.",
+      "notes": "Schönhals alone contradicts 'no account read gives' an order by Kutuzov to the 4th Column. Stutterheim pp. 63-64 gives the Emperor's order to the Russian battalions and an unnamed order to Kollowrath: a competing side on who ordered, not a contradiction of 'no account gives Kutuzov's order' (the title's 'and by Stutterheim' is slightly overstated). Related to history #2, whose remedy ('recon') it changes to 'disputed' with sides; not a duplicate. S3 P2 inherited agreed."
+    }
+  ],
+  "extra_issues": [
+    {
+      "title": "Four more CHANGELOG status heads record merged PRs as drafts or for review (#58, #59, #60, #64)",
+      "severity": "S4",
+      "evidence": "CHANGELOG.md:1698 '(PR #58), for review' (merged 7437dcc, 21 Oct); :1650 '(draft PR #59)' (a107472); :1574 '(draft PR #60 ...), for review' (a8afeec); :1339 '(draft PR #64), for review' (d86835e, 23 Oct); git log --merges origin/main.",
+      "notes": "Widens records #2 (which counts five heads, all from #77-#79); the same records-only commit fixes them."
+    },
+    {
+      "title": "docs/stage6-evidence/second-reading.md still says the human second reading 'stays open for the owner' after decision 189 recorded it complete",
+      "severity": "S4",
+      "evidence": "second-reading.md:6-7 against ROADMAP.md:196 (decision 189, 17 October 2026: 'recorded complete on the owner's word ... no item results given').",
+      "notes": "Stale in the cautious direction; part of records #6's residue."
+    }
+  ],
+  "not_done": [
+    "No browser run: every finding here was decidable from code, data, records, the page images and the saved text layers.",
+    "Stutterheim pp. 63-64 not re-read on the page image (text layer and the register's C2.18, read on the image by step 4).",
+    "CI durations not re-read from CI logs; README's and checks.yml's times judged against CLAUDE.md's recorded figures.",
+    "Not established where the records' 2.5-2.9 km for Caffarelli came from (possibly Bagration's pre-8K anchors); the build's 2.13-2.64 km is v-batch-his's measurement, re-read, not re-run.",
+    "The 1844 Russian edition of Mikhailovsky-Danilevsky and the modern copyrighted works were not consulted."
+  ]
+}

@@ -1,0 +1,364 @@
+{
+ "tag": "fc",
+ "started": "2026-11-02T06:31:48.793Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "forced colours: media",
+   "t": 104.5,
+   "forced": true,
+   "fcaNone": 0
+  },
+  {
+   "step": "first screen (the card), forced colours",
+   "t": 197.3,
+   "swatches": [
+    {
+     "bg": "rgb(255, 255, 255)",
+     "border": "rgb(0, 0, 0)",
+     "fca": "auto"
+    },
+    {
+     "bg": "rgb(255, 255, 255)",
+     "border": "rgb(0, 0, 0)",
+     "fca": "auto"
+    }
+   ],
+   "primary": {
+    "primary": [
+     "rgb(255, 255, 255)",
+     "rgb(0, 0, 0)",
+     "rgba(5, 0, 73, 0.8)",
+     "1px",
+     "400"
+    ],
+    "other": [
+     "rgba(255, 255, 255, 0.82)",
+     "rgb(0, 0, 0)",
+     "rgb(0, 0, 0)",
+     "1px",
+     "400"
+    ]
+   }
+  },
+  {
+   "step": "pressed and selected states under forced colours (computed)",
+   "t": 324.6,
+   "groups": [
+    {
+     "group": ".vm-btn",
+     "on": "Study",
+     "off": "Watch",
+     "nonColourDiff": {},
+     "colourDiff": {
+      "backgroundColor": [
+       "rgb(255, 255, 255)",
+       "rgba(255, 255, 255, 0)"
+      ]
+     },
+     "markLeft": true
+    },
+    {
+     "group": ".van-btn",
+     "on": "Overview",
+     "off": "Field",
+     "nonColourDiff": {},
+     "colourDiff": {
+      "backgroundColor": [
+       "rgb(255, 255, 255)",
+       "rgba(255, 255, 255, 0.82)"
+      ]
+     },
+     "markLeft": true
+    },
+    {
+     "group": ".spd-btn",
+     "on": "½×",
+     "off": "1×",
+     "nonColourDiff": {},
+     "colourDiff": {
+      "backgroundColor": [
+       "rgb(255, 255, 255)",
+       "rgba(255, 255, 255, 0.82)"
+      ]
+     },
+     "markLeft": true
+    },
+    {
+     "group": ".tab-btn",
+     "on": "Now",
+     "off": "Order of battle",
+     "nonColourDiff": {
+      "fontWeight": [
+       "500",
+       "400"
+      ]
+     },
+     "colourDiff": {},
+     "markLeft": true
+    },
+    {
+     "group": ".cmd-btn",
+     "on": "Everyone",
+     "off": "Napoleon's headquart",
+     "nonColourDiff": {},
+     "colourDiff": {
+      "backgroundColor": [
+       "rgb(255, 255, 255)",
+       "rgba(255, 255, 255, 0.82)"
+      ]
+     },
+     "markLeft": true
+    },
+    {
+     "group": "#phases button",
+     "on": "Deployment",
+     "off": "Telnitz",
+     "nonColourDiff": {},
+     "colourDiff": {
+      "backgroundColor": [
+       "rgb(255, 255, 255)",
+       "rgba(255, 255, 255, 0)"
+      ]
+     },
+     "markLeft": true
+    },
+    {
+     "group": ".act-btn",
+     "on": "The Deception",
+     "off": "The Allied Advance",
+     "nonColourDiff": {
+      "fontWeight": [
+       "500",
+       "400"
+      ]
+     },
+     "colourDiff": {
+      "backgroundColor": [
+       "rgba(255, 255, 255, 0.1)",
+       "rgba(255, 255, 255, 0.05)"
+      ]
+     },
+     "markLeft": true
+    }
+   ]
+  },
+  {
+   "step": "Tab (real key): the focused control's ring under forced colours",
+   "t": 355.7,
+   "fi": {
+    "el": "button#next.t.tb-icon",
+    "text": "►",
+    "aria": "Forward ten minutes",
+    "role": null,
+    "box": [
+     163,
+     813,
+     36,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgba(5, 0, 73, 0.8)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   }
+  },
+  {
+   "step": "legend and layers opened (real clicks)",
+   "t": 601.2,
+   "legendSw": [
+    "rgb(255, 255, 255)",
+    "rgb(255, 255, 255)",
+    "rgb(255, 255, 255)",
+    "rgb(255, 255, 255)"
+   ],
+   "layerPressed": {
+    "on": [
+     "rgba(255, 255, 255, 0.08)",
+     "rgb(0, 0, 0)",
+     "rgb(0, 0, 0)",
+     "2px",
+     "400"
+    ],
+    "off": [
+     "rgba(255, 255, 255, 0)",
+     "rgb(0, 0, 0)",
+     "rgb(0, 0, 0)",
+     "2px",
+     "400"
+    ]
+   }
+  },
+  {
+   "step": "a formation clicked (real mouse): Fifth Column (cavalry); its full dossier (real click)",
+   "t": {
+    "x": 872.5,
+    "y": 451.5,
+    "id": "lich",
+    "name": "Fifth Column (cavalry)",
+    "key": "n:lich",
+    "w": 175,
+    "h": 17
+   },
+   "targets": {
+    "n": 63,
+    "failing": []
+   },
+   "dtAnchors": [
+    [
+     30,
+     9023,
+     14.8,
+     14.8
+    ],
+    [
+     64,
+     9000,
+     14.8,
+     14.8
+    ],
+    [
+     69,
+     8976,
+     14.8,
+     14.8
+    ],
+    [
+     61,
+     8933,
+     14.8,
+     14.8
+    ],
+    [
+     107,
+     8943,
+     14.8,
+     14.8
+    ],
+    [
+     157,
+     8951,
+     14.8,
+     14.8
+    ],
+    [
+     214,
+     8951,
+     14.8,
+     14.8
+    ],
+    [
+     254,
+     8941,
+     14.8,
+     14.8
+    ]
+   ],
+   "headings": [
+    "H2 Fifth Column (cavalry)",
+    "H3 Who record",
+    "H3 How many record",
+    "H3 Dress record",
+    "H3 Where reconstruction",
+    "H3 Its day derived",
+    "H3 What it was doing",
+    "H3 Why it was there",
+    "H3 What became of it"
+   ]
+  },
+  {
+   "step": "reduced motion on (live); the Pratzen vantage pressed (real click): the camera at 150 ms and at 2.5 s",
+   "t": 753.8,
+   "rmState": {
+    "RM": false,
+    "drawerTr": "0s",
+    "railTr": "0s",
+    "anims": 0
+   },
+   "c0": [
+    -38.8,
+    490.7,
+    61
+   ],
+   "c150": [
+    -38.8,
+    490.7,
+    61
+   ],
+   "c2500": [
+    -38.8,
+    490.7,
+    61
+   ],
+   "cutAt150": true
+  },
+  {
+   "step": "reduced motion off again; the Overview pressed: the camera at 150 ms and at 3 s (a glide for comparison)",
+   "t": 810.9,
+   "c150": [
+    23,
+    27.1,
+    55
+   ],
+   "c3000": [
+    23,
+    27.1,
+    55
+   ],
+   "gliding": false
+  },
+  {
+   "step": "shortcuts off (the ? button by real click, the switch by Space, Esc); the guided tour (real click); D (real key) with nothing focused",
+   "t": 858.3,
+   "switchPressed": "false",
+   "before": {
+    "now": "The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.",
+    "hide": true,
+    "tour": 0
+   },
+   "afterD": {
+    "now": "The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.",
+    "hide": true,
+    "tour": 0
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/fc-01-first.jpg",
+  "docs/audit-post8-evidence/a11y/fc-02-explore.jpg",
+  "docs/audit-post8-evidence/a11y/fc-03-viewmode.jpg",
+  "docs/audit-post8-evidence/a11y/fc-04-tools.jpg",
+  "docs/audit-post8-evidence/a11y/fc-05-timebar.jpg",
+  "docs/audit-post8-evidence/a11y/fc-06-tabs.jpg",
+  "docs/audit-post8-evidence/a11y/fc-07-focus.jpg",
+  "docs/audit-post8-evidence/a11y/fc-08-legend.jpg",
+  "docs/audit-post8-evidence/a11y/fc-09-layers.jpg",
+  "docs/audit-post8-evidence/a11y/fc-10-dossier.jpg",
+  "docs/audit-post8-evidence/a11y/fc-10b-full-dossier.jpg",
+  "docs/audit-post8-evidence/a11y/fc-11-rm-pratzen.jpg",
+  "docs/audit-post8-evidence/a11y/fc-12-tour-hint.jpg"
+ ],
+ "console": [],
+ "ok": true,
+ "ended": "2026-11-02T06:46:07.044Z",
+ "seconds": 858
+}

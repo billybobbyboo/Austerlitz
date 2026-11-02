@@ -1,0 +1,278 @@
+{
+ "shot": "paper-santon",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 660,
+  "presentation": "study",
+  "mode": "staff",
+  "aim": {
+   "map": [
+    228,
+    88
+   ],
+   "dir": [
+    -0.62,
+    0.46,
+    0.64
+   ],
+   "r": 58
+  }
+ },
+ "steps": [],
+ "state": {
+  "clock": 660,
+  "presentation": "study",
+  "mode": "staff",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "map",
+   "x": -54.89297951599372,
+   "z": -80.35301804253494,
+   "wpp": 0.04312561895804499
+  },
+  "applied": {
+   "kind": "map",
+   "x": -54.89297951599372,
+   "z": -80.35301804253494,
+   "wpp": 0.04312561895804499
+  },
+  "aimErr": null,
+  "paperFocus": 0,
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": true
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 61,
+  "placed": 5,
+  "dropped": 1,
+  "droppedIds": [
+   "t:santon"
+  ],
+  "occluded": 0,
+  "offscreen": 53,
+  "underPanel": 2,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE ARMY DIVIDED · The northern battle decided · hour disputed The Pratzeberg is firmly in French hands · derived on the heights: Allied ≈ 16,250 · derived centre separation detected",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE ARMY DIVIDED",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The northern battle decided",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "hour disputedThe Pratzeberg is firmly in French hands",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 16,250",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   388,
+   821,
+   773,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "true",
+  "rows": [
+   "counters: French",
+   "counters: Russian",
+   "counters: Austrian",
+   "French movement",
+   "Allied movement",
+   "wood (its extent in the model)",
+   "village (its extent in the model)",
+   "meres: pond outlines schematic",
+   "vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not establishe",
+   "position approximate (B, C) · reported only (?)B?",
+   "A: position documented (its footprint)",
+   "B: sector documented, frontage approximate",
+   "C: reconstructed, position indicative",
+   "grade sizes are drawn, not measured errors",
+   "contour interval≈ 9 m",
+   "paper map: the ground drawn flat, in plan; hillshade exaggerated 6× (1× is true scale)",
+   "villages and woods at their extent in the model; counters and names at symbol scale"
+  ]
+ },
+ "scaleBar": "250 m",
+ "bodyClass": "docked mode-staff pm-study",
+ "textContrast": {
+  "texts": 19,
+  "min": 5.1,
+  "belowAA": []
+ },
+ "farNames": null,
+ "items": [
+  {
+   "id": "t:santon",
+   "cat": "place",
+   "state": "dropped",
+   "text": "The Santon",
+   "box": null,
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "c:bag",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXXRUBAdvance Guard of the RightAttacking≈13,700",
+   "box": [
+    1070,
+    205,
+    310,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:suchet",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRCSuchetAttacking≈6,000 · Louis-Gabriel Suche",
+   "box": [
+    1031,
+    452,
+    248,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:santon",
+   "cat": "counter",
+   "state": "on",
+   "text": "XFRThe Santon detachmentHolding≈1,600 · Michel C",
+   "box": [
+    578,
+    300,
+    278,
+    52
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "t:olmutzroad",
+   "cat": "place",
+   "state": "on",
+   "text": "Brünn–Olmütz highway",
+   "box": [
+    1076,
+    401,
+    140,
+    16
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "o:The Santon holds",
+   "cat": "objective",
+   "state": "on",
+   "text": "The Santon holds",
+   "box": [
+    764,
+    388,
+    106,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  }
+ ],
+ "ms": 61943,
+ "msSettle": 1076,
+ "msShot": 60235,
+ "msMeasure": 632,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

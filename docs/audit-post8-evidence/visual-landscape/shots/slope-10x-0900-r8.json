@@ -1,0 +1,76 @@
+{
+ "id": "slope-10x-0900-r8",
+ "group": "troops",
+ "note": "At 10.33x, 8 units off, low: the closest figure view.",
+ "spec": {
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": "model",
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    0.3,
+    0.12,
+    -0.95
+   ],
+   "r": 8
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "09:00",
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 10.3264,
+  "lowTier": false,
+  "eye": [
+   -48.575,
+   5.026,
+   -8.36
+  ],
+  "target": [
+   -50.967,
+   0.76,
+   -0.786
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 9.02,
+  "sunAlt": 8.54,
+  "sunGeo": 8.43,
+  "sunAz": 138.5,
+  "mist": 0.276
+ },
+ "ms": 22672,
+ "timing": {
+  "apply": 307,
+  "settle": 185,
+  "settle2": 199,
+  "shot": 21489
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

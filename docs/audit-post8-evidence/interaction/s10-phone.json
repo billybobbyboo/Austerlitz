@@ -1,0 +1,1869 @@
+{
+ "name": "s10-phone",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-02T06:16:23.957Z",
+ "opts": {
+  "viewport": [
+   390,
+   844
+  ],
+  "page": "phone"
+ },
+ "pages": [
+  {
+   "kind": "phone",
+   "size": [
+    390,
+    844
+   ],
+   "o": {},
+   "bootMs": 47302
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "tap the card's 'Explore on my own'; 2 frames",
+   "at": 47851,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.45,
+      102.85
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 3795
+  },
+  {
+   "page": 0,
+   "label": "tap Play; 30 frames; tap the speed button 4 times with 30 frames between (½× 1× 2× 4× ½×)",
+   "at": 51647,
+   "ret": [
+    {
+     "label": "1×",
+     "aria": "Playback speed 1×",
+     "speed": 1,
+     "d": 9.042,
+     "dwell": [
+      "-",
+      "in"
+     ]
+    },
+    {
+     "label": "2×",
+     "aria": "Playback speed 2×",
+     "speed": 2,
+     "d": 0.336,
+     "dwell": [
+      "in",
+      "hold"
+     ]
+    },
+    {
+     "label": "4×",
+     "aria": "Playback speed 4×",
+     "speed": 4,
+     "d": 12.5,
+     "dwell": [
+      "hold",
+      "out",
+      "-"
+     ]
+    },
+    {
+     "label": "½×",
+     "aria": "Playback speed ½×",
+     "speed": 0.5,
+     "d": 4.833,
+     "dwell": [
+      "-"
+     ]
+    }
+   ],
+   "s": {
+    "clock": 272.5,
+    "clockText": "04:32",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#speedbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 18,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0.135
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -416.89,
+      245.07,
+      401.44
+     ],
+     "tgt": [
+      -88.84,
+      -0.09,
+      57.47
+     ]
+    }
+   },
+   "log": [],
+   "ms": 13735
+  },
+  {
+   "page": 0,
+   "label": "frames until a hold; tap the speed button (½× to 1×) in the hold",
+   "at": 65382,
+   "ret": [
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420,
+     "hold",
+     1,
+     1
+    ],
+    [
+     420.0056,
+     "out",
+     1,
+     1
+    ],
+    [
+     420.05,
+     "out",
+     1,
+     1
+    ],
+    [
+     420.1389,
+     "out",
+     1,
+     1
+    ],
+    [
+     420.2722,
+     "out",
+     1,
+     1
+    ],
+    [
+     420.45,
+     "out",
+     1,
+     1
+    ],
+    [
+     420.6722,
+     "out",
+     1,
+     1
+    ],
+    [
+     420.9389,
+     "out",
+     1,
+     1
+    ],
+    [
+     421.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     421.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     421.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     422.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     422.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     422.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     423.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     423.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     423.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     424.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     424.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     424.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     425.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     425.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     425.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     426.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     426.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     426.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     427.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     427.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     427.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     428.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     428.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     428.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     429.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     429.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     429.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     430.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     430.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     430.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     431.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     431.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     431.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     432.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     432.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     432.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     433.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     433.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     433.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     434.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     434.5833,
+     "-",
+     1,
+     1
+    ],
+    [
+     434.9167,
+     "-",
+     1,
+     1
+    ],
+    [
+     435.25,
+     "-",
+     1,
+     1
+    ],
+    [
+     435.5833,
+     "-",
+     1,
+     1
+    ]
+   ],
+   "s": {
+    "clock": 435.583,
+    "clockText": "07:15",
+    "playing": true,
+    "speed": 1,
+    "speedPressed": "1",
+    "speedBtn": "1×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 27,000",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#speedbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 25,
+     "placed": 13,
+     "dropped": 8
+    },
+    "overlays": 36,
+    "drawon": [
+     0.26,
+     0.472,
+     0.565
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -308.18,
+      153.3,
+      272.75
+     ],
+     "tgt": [
+      -31.01,
+      4.8,
+      20.87
+     ]
+    }
+   },
+   "log": [],
+   "ms": 11100
+  },
+  {
+   "page": 0,
+   "label": "tap the dispatch sheet's grip (open); tap the fifth phase in its list during Play",
+   "at": 76483,
+   "ret": 570,
+   "s": {
+    "clock": 570,
+    "clockText": "09:30",
+    "playing": false,
+    "speed": 1,
+    "speedPressed": "1",
+    "speedBtn": "1×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 4,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 27,
+     "placed": 11,
+     "dropped": 12
+    },
+    "overlays": 48,
+    "drawon": [
+     0,
+     0,
+     0
+    ],
+    "smoke": 11,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "The crisis on the Pratzeberg",
+    "cam": {
+     "pos": [
+      -316.63,
+      157.7,
+      279.01
+     ],
+     "tgt": [
+      -30.26,
+      5.03,
+      19.63
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s10-phone-phone-phase-list-dom.jpg",
+   "log": [],
+   "ms": 5359
+  },
+  {
+   "page": 0,
+   "label": "tap Play; 30 frames; tap the Menu; tap Watch in it; 30 frames",
+   "at": 81855,
+   "s": {
+    "clock": 585,
+    "clockText": "09:45",
+    "playing": true,
+    "speed": 1,
+    "speedPressed": "1",
+    "speedBtn": "1×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@585",
+    "dwellNext": 9,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 4,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · derived on the heights: Allied ≈ 18,150 · derived centre separation detected · hour disputed Kamensky turns his brigade about and drives the French off the crest",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.vm-btn[Watch]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 9,
+     "dropped": 9
+    },
+    "overlays": 48,
+    "drawon": [
+     0.25,
+     0.25,
+     0.25
+    ],
+    "smoke": 11,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "The crisis on the Pratzeberg",
+    "cam": {
+     "pos": [
+      -174.95,
+      72.05,
+      79.19
+     ],
+     "tgt": [
+      6.69,
+      9.96,
+      12.06
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2405
+  },
+  {
+   "page": 0,
+   "label": "a finger's drag on the map during Play; 60 frames",
+   "at": 84260,
+   "ret": {
+    "moved": true,
+    "heldAfter": false
+   },
+   "s": {
+    "clock": 593,
+    "clockText": "09:52",
+    "playing": true,
+    "speed": 1,
+    "speedPressed": "1",
+    "speedBtn": "1×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 10,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/true",
+    "curPhase": 4,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · derived on the heights: Allied ≈ 18,150 · derived centre separation detected · hour disputed Kamensky turns his brigade about and drives the French off the crest",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.vm-btn[Watch]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 12,
+     "dropped": 5
+    },
+    "overlays": 48,
+    "drawon": [
+     0.383,
+     0.383,
+     0.383
+    ],
+    "smoke": 11,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "The crisis on the Pratzeberg",
+    "cam": {
+     "pos": [
+      -172.55,
+      71.19,
+      77.69
+     ],
+     "tgt": [
+      7,
+      10,
+      12
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1365
+  },
+  {
+   "page": 0,
+   "label": "tap Pause",
+   "at": 85625,
+   "ret": {
+    "x": 86,
+    "y": 716,
+    "box": "56,694,60,44",
+    "hit": true,
+    "top": "#play",
+    "waitedMs": 193
+   },
+   "s": {
+    "clock": 593,
+    "clockText": "09:52",
+    "playing": false,
+    "speed": 1,
+    "speedPressed": "1",
+    "speedBtn": "1×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 10,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 4,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · derived on the heights: Allied ≈ 18,150 · derived centre separation detected · hour disputed Kamensky turns his brigade about and drives the French off the crest",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 12,
+     "dropped": 5
+    },
+    "overlays": 48,
+    "drawon": [
+     0.383,
+     0.383,
+     0.383
+    ],
+    "smoke": 11,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "The crisis on the Pratzeberg",
+    "cam": {
+     "pos": [
+      -172.55,
+      71.19,
+      77.69
+     ],
+     "tgt": [
+      7,
+      10,
+      12
+     ]
+    }
+   },
+   "log": [],
+   "ms": 196
+  }
+ ],
+ "checks": [
+  {
+   "id": "phone-layout",
+   "ok": true,
+   "expected": "the phone layout",
+   "observed": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  {
+   "id": "phone-speed-cycle",
+   "ok": true,
+   "expected": "the speed button steps ½× 1× 2× 4× and round again, its label and name the speed",
+   "observed": [
+    {
+     "speed": 1,
+     "label": "1×",
+     "aria": "Playback speed 1×"
+    },
+    {
+     "speed": 2,
+     "label": "2×",
+     "aria": "Playback speed 2×"
+    },
+    {
+     "speed": 4,
+     "label": "4×",
+     "aria": "Playback speed 4×"
+    },
+    {
+     "speed": 0.5,
+     "label": "½×",
+     "aria": "Playback speed ½×"
+    }
+   ]
+  },
+  {
+   "id": "phone-speed-hold",
+   "ok": true,
+   "expected": "the speed tapped in a hold: the hold keeps its 1.5 s, no backward step",
+   "observed": {
+    "holdFramesAfterTap": 39,
+    "backSteps": 0,
+    "speed": 1
+   }
+  },
+  {
+   "id": "phone-phase-tap",
+   "ok": true,
+   "expected": "a phase tapped during Play: stopped at its start, the sheet folded",
+   "observed": {
+    "clock": 570,
+    "expected": 570,
+    "playing": false,
+    "sheet": false,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    }
+   }
+  },
+  {
+   "id": "phone-toast-clear",
+   "ok": true,
+   "expected": "the phase's message over no control",
+   "observed": {
+    "on": false
+   }
+  },
+  {
+   "id": "phone-watch-play",
+   "ok": true,
+   "expected": "Watch from the Menu during Play: playing, the Menu closed",
+   "observed": {
+    "playing": true,
+    "presentation": "watch",
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "focus": "button.vm-btn[Watch]",
+    "focusVisible": true
+   }
+  },
+  {
+   "id": "phone-drag-follow",
+   "ok": false,
+   "expected": "a finger's pan during Play turns Follow off; the eye stays where the finger left it",
+   "observed": {
+    "ret": {
+     "moved": true,
+     "heldAfter": false
+    },
+    "freeCam": true,
+    "playing": true
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s10-phone-phone-phase-list-dom.jpg"
+ ],
+ "notes": [],
+ "speedCycle": [
+  {
+   "label": "1×",
+   "aria": "Playback speed 1×",
+   "speed": 1,
+   "d": 9.042,
+   "dwell": [
+    "-",
+    "in"
+   ]
+  },
+  {
+   "label": "2×",
+   "aria": "Playback speed 2×",
+   "speed": 2,
+   "d": 0.336,
+   "dwell": [
+    "in",
+    "hold"
+   ]
+  },
+  {
+   "label": "4×",
+   "aria": "Playback speed 4×",
+   "speed": 4,
+   "d": 12.5,
+   "dwell": [
+    "hold",
+    "out",
+    "-"
+   ]
+  },
+  {
+   "label": "½×",
+   "aria": "Playback speed ½×",
+   "speed": 0.5,
+   "d": 4.833,
+   "dwell": [
+    "-"
+   ]
+  }
+ ],
+ "listeners": {
+  "live": 588,
+  "removed": 0,
+  "onDetached": 1,
+  "total": 589,
+  "addCalls": 589,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 1,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 19,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 2,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip click": 1,
+   "#railclose click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 3dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 83,
+   "div.ml-item blur": 83,
+   "div.ml-item keydown": 83,
+   "div.ml-item click": 83
+  },
+  "timeouts": 0,
+  "timeoutsBy": {},
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 1,
+  "tSet": 7,
+  "tFired": 5,
+  "tCleared": 2,
+  "rSet": 55,
+  "rFired": 55,
+  "rCancel": 0
+ },
+ "ms": 85826,
+ "ended": "2026-11-02T06:17:49.783Z"
+}

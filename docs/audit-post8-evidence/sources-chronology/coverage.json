@@ -1,0 +1,27 @@
+{
+ "formations": 40,
+ "anchors": 185,
+ "positioned": 180,
+ "explicitPosGrades": {
+  "B": 34,
+  "A": 44,
+  "C": 12
+ },
+ "withAct": 113,
+ "timedAnchors": 25,
+ "timedByGrade": {
+  "B": 12,
+  "C": 11,
+  "A": 2
+ },
+ "phases": 10,
+ "phaseLines": 32,
+ "phaseLinesWithClock": 26,
+ "events": 25,
+ "eventsWithT": 14,
+ "eventClaimPills": {
+  "disputed": 11,
+  "est": 9,
+  "fact": 5
+ }
+}

@@ -1,0 +1,7 @@
+10:00 distance to Blasowitz: rg_inf 3.10km, rg_cav 1.91km, lich 0.64km, bag 2.58km, caffarelli 1.26km, rivaud 1.64km, drouet 2.16km, kellermann 0.63km
+10:30 distance to Blasowitz: rg_inf 3.02km, rg_cav 1.75km, lich 0.29km, bag 2.72km, caffarelli 0.79km, rivaud 1.42km, drouet 1.95km, kellermann 0.56km
+11:00 distance to Blasowitz: rg_inf 2.14km, rg_cav 1.61km, lich 0.99km, bag 2.72km, caffarelli 0.98km, rivaud 1.25km, drouet 1.87km, kellermann 0.52km
+11:15 distance to Blasowitz: rg_inf 1.78km, rg_cav 1.54km, lich 1.43km, bag 2.72km, caffarelli 1.16km, rivaud 1.20km, drouet 1.87km, kellermann 0.72km
+11:30 distance to Blasowitz: rg_inf 2.01km, rg_cav 1.81km, lich 1.67km, bag 2.37km, caffarelli 1.28km, rivaud 1.27km, drouet 1.92km, kellermann 0.85km
+11:45 distance to Blasowitz: rg_inf 2.28km, rg_cav 2.14km, lich 1.91km, bag 2.27km, caffarelli 1.40km, rivaud 1.37km, drouet 1.98km, kellermann 1.00km
+constantine role: The reserve of the Allied right (Stutterheim); the disposition posts it at daybreak behind Blasowitz and Kruh, to reinforce Liechtenstein's cavalry and the left of Bagration's advance guard. Committed against Vandamme after 11:00; the hour is not established.

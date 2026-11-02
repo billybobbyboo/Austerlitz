@@ -1,0 +1,380 @@
+{
+ "tool": "tools/audit-post8/geography/plateau.js",
+ "fogTopM": 238.2,
+ "core": {
+  "n": 897,
+  "rmsM": 20.1,
+  "meanM": -0.6,
+  "absOver30": 106,
+  "absOver50": 18
+ },
+ "southernPlateau": {
+  "box": "map x 270-330, y 295-350",
+  "n": 36,
+  "modelMean": 228.1,
+  "demMean": 273.4,
+  "demOverTop": 32,
+  "modelOverTop": 9
+ },
+ "fogMisclass": {
+  "underInModelOnly": {
+   "cells": 27,
+   "km2": 2.43
+  },
+  "underOnSurveyOnly": {
+   "cells": 53,
+   "km2": 4.77
+  }
+ },
+ "worst": [
+  {
+   "map": [
+    302,
+    326
+   ],
+   "model": 217,
+   "dem": 309,
+   "d": -92
+  },
+  {
+   "map": [
+    311,
+    326
+   ],
+   "model": 210,
+   "dem": 299,
+   "d": -89
+  },
+  {
+   "map": [
+    311,
+    335
+   ],
+   "model": 200,
+   "dem": 284,
+   "d": -84
+  },
+  {
+   "map": [
+    292,
+    316
+   ],
+   "model": 238,
+   "dem": 317,
+   "d": -79
+  },
+  {
+   "map": [
+    292,
+    326
+   ],
+   "model": 224,
+   "dem": 296,
+   "d": -72
+  },
+  {
+   "map": [
+    302,
+    316
+   ],
+   "model": 226,
+   "dem": 296,
+   "d": -70
+  },
+  {
+   "map": [
+    321,
+    326
+   ],
+   "model": 202,
+   "dem": 270,
+   "d": -68
+  },
+  {
+   "map": [
+    283,
+    326
+   ],
+   "model": 226,
+   "dem": 291,
+   "d": -65
+  },
+  {
+   "map": [
+    292,
+    307
+   ],
+   "model": 255,
+   "dem": 314,
+   "d": -59
+  },
+  {
+   "map": [
+    302,
+    307
+   ],
+   "model": 235,
+   "dem": 294,
+   "d": -59
+  },
+  {
+   "map": [
+    283,
+    316
+   ],
+   "model": 244,
+   "dem": 302,
+   "d": -58
+  },
+  {
+   "map": [
+    330,
+    326
+   ],
+   "model": 194,
+   "dem": 249,
+   "d": -55
+  },
+  {
+   "map": [
+    302,
+    297
+   ],
+   "model": 244,
+   "dem": 298,
+   "d": -54
+  },
+  {
+   "map": [
+    302,
+    335
+   ],
+   "model": 208,
+   "dem": 261,
+   "d": -53
+  },
+  {
+   "map": [
+    321,
+    335
+   ],
+   "model": 193,
+   "dem": 246,
+   "d": -53
+  },
+  {
+   "map": [
+    273,
+    326
+   ],
+   "model": 224,
+   "dem": 276,
+   "d": -52
+  },
+  {
+   "map": [
+    159,
+    183
+   ],
+   "model": 273,
+   "dem": 222,
+   "d": 51
+  },
+  {
+   "map": [
+    169,
+    183
+   ],
+   "model": 271,
+   "dem": 220,
+   "d": 51
+  },
+  {
+   "map": [
+    330,
+    335
+   ],
+   "model": 190,
+   "dem": 240,
+   "d": -50
+  },
+  {
+   "map": [
+    311,
+    316
+   ],
+   "model": 219,
+   "dem": 268,
+   "d": -49
+  }
+ ],
+ "fog": [
+  {
+   "id": "buxhowden",
+   "name": "Left Wing Command",
+   "nation": "ru",
+   "clocks": 20,
+   "from": "04:00",
+   "to": "07:10",
+   "modelM": [
+    215,
+    218
+   ],
+   "demM": [
+    249,
+    307
+   ]
+  },
+  {
+   "id": "dok",
+   "name": "First Column",
+   "nation": "ru",
+   "clocks": 19,
+   "from": "04:00",
+   "to": "07:00",
+   "modelM": [
+    219,
+    219
+   ],
+   "demM": [
+    271,
+    271
+   ]
+  },
+  {
+   "id": "lang",
+   "name": "Second Column",
+   "nation": "ru",
+   "clocks": 1,
+   "from": "07:20",
+   "to": "07:20",
+   "modelM": [
+    222,
+    222
+   ],
+   "demM": [
+    259,
+    259
+   ]
+  }
+ ],
+ "hq": [
+  {
+   "id": "gqg",
+   "anchors": [
+    {
+     "ph": 0,
+     "p": [
+      177,
+      134
+     ],
+     "model": 290,
+     "dem": 279
+    },
+    {
+     "ph": 6,
+     "p": [
+      309,
+      207
+     ],
+     "model": 291,
+     "dem": 282
+    },
+    {
+     "ph": 7,
+     "p": [
+      307,
+      227
+     ],
+     "model": 262,
+     "dem": 274
+    },
+    {
+     "ph": 8,
+     "p": [
+      294,
+      352
+     ],
+     "model": 200,
+     "dem": 240
+    }
+   ]
+  },
+  {
+   "id": "ahq",
+   "anchors": [
+    {
+     "ph": 0,
+     "p": [
+      408,
+      198
+     ],
+     "model": 219,
+     "dem": null
+    },
+    {
+     "ph": 3,
+     "p": [
+      293,
+      240
+     ],
+     "model": 245,
+     "dem": 257
+    },
+    {
+     "ph": 4,
+     "p": [
+      303,
+      235
+     ],
+     "model": 252,
+     "dem": 267
+    },
+    {
+     "ph": 6,
+     "p": [
+      404,
+      220
+     ],
+     "model": 222,
+     "dem": null
+    },
+    {
+     "ph": 8,
+     "p": [
+      454,
+      190
+     ],
+     "model": 210,
+     "dem": null
+    },
+    {
+     "ph": 9,
+     "p": [
+      480,
+      148
+     ],
+     "model": 218,
+     "dem": null
+    }
+   ]
+  }
+ ],
+ "texts": {
+  "pratzenExtent": [
+   [
+    "Relief",
+    "Summit about 115 m above the Goldbach (324 m against 207-211 m); Pratzen village lies in a hollow at 245 m"
+   ],
+   [
+    "Extent",
+    "Runs north–south between Blasowitz and the Litava"
+   ],
+   [
+    "Held at dawn by",
+    "Allied 4th Column and the departing I–III Columns"
+   ]
+  ],
+  "pratzenSub": "Dominant central plateau: a crest about 3 km long from Stare Vinohrady to the Pratzeberg"
+ }
+}

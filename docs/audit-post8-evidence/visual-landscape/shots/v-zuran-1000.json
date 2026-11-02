@@ -1,0 +1,74 @@
+{
+ "id": "v-zuran-1000",
+ "group": "vantage",
+ "note": "The Zuran vantage at 1000.",
+ "spec": {
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   -83,
+   26,
+   -53,
+   9,
+   6,
+   -5
+  ]
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "10:00",
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -83,
+   25.078,
+   -53
+  ],
+  "target": [
+   9,
+   6.558,
+   -5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 105.41,
+  "sunAlt": 14.13,
+  "sunGeo": 14.06,
+  "sunAz": 151.4,
+  "mist": 0.05
+ },
+ "ms": 14304,
+ "timing": {
+  "apply": 16,
+  "settle": 155,
+  "settle2": 109,
+  "shot": 13505
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

@@ -1,0 +1,79 @@
+{
+ "id": "f-low-10x-0900",
+ "group": "factor",
+ "note": "pratzen-low at 10.33x, 09:00.",
+ "spec": {
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": "model",
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "09:00",
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 10.3264,
+  "lowTier": false,
+  "eye": [
+   -95.836,
+   22.12,
+   31.8
+  ],
+  "target": [
+   -27.5,
+   13.237,
+   19.5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 70,
+  "sunAlt": 8.54,
+  "sunGeo": 8.43,
+  "sunAz": 138.5,
+  "mist": 0.276
+ },
+ "ms": 10061,
+ "timing": {
+  "apply": 302,
+  "settle": 378,
+  "settle2": 259,
+  "shot": 8664
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

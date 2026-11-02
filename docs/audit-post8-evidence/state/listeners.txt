@@ -1,0 +1,168 @@
+# listeners and timers by enclosing chain (line kind event chain)
+535	setTimeout		fontsReady > <anon@534>
+557	requestAnimationFrame		liftBoot
+558	setTimeout		liftBoot
+570	listen	webglcontextlost	bindContextLoss
+573	listen	click	bindContextLoss > <anon@570>
+574	listen	webglcontextrestored	bindContextLoss
+2503	listen	click	dayTrackEl > <anon@2501>
+2503	listen	keydown	dayTrackEl > <anon@2501>
+2571	listen	click	bindExaggeration > <anon@2570>
+4227	listen	click	paintChapterText > <anon@4226>
+5032	listen	keydown	mlInit
+5042	listen	loadingdone	mlInit
+5063	listen	focus	mlItem
+5064	listen	blur	mlItem
+5065	listen	keydown	mlItem
+5069	listen	click	mlItem
+6813	listen	click	bindHelp > <anon@6813>
+6814	listen	click	bindHelp
+6815	listen	click	bindHelp
+6816	listen	click	bindHelp
+6818	listen	click	bindHelp
+6819	listen	click	bindHelp
+6822	listen	keydown	bindSheetKeys
+6856	listen	contextmenu	bindCanvas
+6860	listen	pointerdown	bindCanvas
+6868	listen	pointermove	bindCanvas
+6882	listen	pointerup	bindCanvas
+6892	listen	pointercancel	bindCanvas
+6893	listen	pointerleave	bindCanvas
+6894	listen	dblclick	bindCanvas
+6895	listen	wheel	bindCanvas
+6920	listen	click	buildUI > <anon@6919>
+6925	listen	click	buildUI > <anon@6924>
+6928	listen	keydown	buildUI
+6944	listen	click	buildUI > <anon@6940>
+6950	listen	click	buildUI > <anon@6949>
+6953	listen	click	buildUI > <anon@6952>
+6955	listen	click	buildUI
+6958	listen	click	buildUI > <anon@6957>
+6966	listen	click	buildUI > <anon@6965>
+6974	listen	click	buildUI
+6975	listen	click	buildUI
+6978	listen	click	buildUI
+6982	listen	click	buildUI
+6984	listen	click	buildUI
+6986	listen	click	buildUI
+6987	listen	click	buildUI
+6988	listen	click	buildUI
+6989	listen	click	buildUI
+6991	listen	click	buildUI
+6992	listen	click	buildUI
+6993	listen	click	buildUI
+6995	listen	click	buildUI > <anon@6994>
+6998	listen	click	buildUI
+6999	listen	click	buildUI
+7004	listen	click	buildUI
+7005	listen	click	buildUI
+7006	listen	click	buildUI
+7007	listen	click	buildUI
+7008	listen	click	buildUI
+7009	listen	keydown	buildUI
+7015	listen	keydown	buildUI
+7025	listen	pointerdown	buildUI
+7033	listen	click	buildUI
+7039	listen	click	buildUI
+7042	listen	click	buildUI
+7043	listen	click	buildUI
+7045	listen	keydown	buildUI
+7051	listen	pointerdown	buildUI
+7053	listen	click	buildUI
+7054	listen	click	buildUI
+7056	listen	click	buildUI > <anon@7055>
+7062	listen	resize	buildUI > <anon@7059>
+7068	listen	click	buildUI
+7077	listen	click	buildUI
+7078	listen	click	buildUI
+7079	listen	click	buildUI
+7080	listen	click	buildUI
+7082	listen	click	buildUI
+7088	listen	click	buildUI
+7092	listen	click	buildUI
+7093	listen	click	buildUI
+7095	listen	keydown	buildUI
+7099	listen	<expr>	buildUI > <anon@7098>
+7100	listen	pointermove	buildUI
+7102	listen	<expr>	buildUI > <anon@7102>
+7103	listen	transitionend	buildUI
+7120	listen	resize	buildUI
+7121	listen	orientationchange	buildUI
+7122	listen	change	buildUI
+7126	listen	change	buildUI > watchDensity
+7281	listen	click	buildOOB > <anon@7271> > <anon@7274>
+7289	listen	click	buildOOB > <anon@7271> > <anon@7274> > <anon@7283>
+7297	listen	click	buildOOB > <anon@7271> > <anon@7274> > <anon@7283> > <anon@7291>
+7424	listen	keydown	rovingGroup
+7448	setTimeout		tipHide
+7461	listen	pointerover	bindTimeTips
+7462	listen	pointerout	bindTimeTips
+7466	listen	pointerdown	bindTimeTips
+7467	listen	focusin	bindTimeTips
+7469	listen	focusout	bindTimeTips
+7472	listen	click	bindTimeTips
+7473	listen	pointerover	bindTimeTips
+7474	listen	pointerout	bindTimeTips
+7476	listen	keydown	bindTimeTips
+7487	listen	click	buildTimeline > <anon@7482>
+7499	listen	click	buildTimeline > <anon@7494>
+7523	listen	click	buildTimeline > <anon@7519>
+7529	listen	pointerdown	buildTimeline
+7530	listen	pointermove	buildTimeline
+7531	listen	pointerup	buildTimeline
+7532	listen	keydown	buildTimeline
+7554	listen	click	buildActs > <anon@7547>
+7744	setTimeout		paintDrawerBody
+7824	listen	click	compactCard
+8041	listen	click	dossierFormation > <anon@8038>
+8058	listen	click	dossierFormation > <anon@8055>
+8073	listen	click	dossierFormation
+8080	listen	click	dossierFormation > <anon@8079>
+8126	listen	click	srcButton
+8240	listen	click	dossierFeature > <anon@8237>
+8247	listen	click	dossierFeature
+8251	listen	click	dossierFeature
+8317	listen	click	dossierEvent > <anon@8313>
+8326	listen	click	dossierEvent > <anon@8326>
+8332	listen	click	dossierEvent
+8364	listen	click	dossierAnalysis
+8768	setTimeout		toastRelayout > <anon@8768>
+8775	setTimeout		flash
+9048	listen	click	bindPhone
+9050	listen	click	bindPhone
+9053	setTimeout		bindPhone > <anon@9050>
+9055	listen	pointerdown	bindPhone
+9057	listen	click	bindPhone
+9058	listen	click	bindPhone
+9119	requestAnimationFrame		loop
+
+# callers of each enclosing top-level function (call lines)
+bindCanvas	6914
+bindContextLoss	631
+bindExaggeration	7037
+bindHelp	7096
+bindPhone	7067
+bindSheetKeys	7012
+bindTimeTips	6917
+buildActs	7501
+buildOOB	7127
+buildTimeline	6917
+buildUI	668
+compactCard	7755,11080
+dayTrackEl	8002
+dossierAnalysis	7756,12524
+dossierEvent	7755
+dossierFeature	7756,9552,12521,14195
+dossierFormation	7755,11080,11653
+flash	3496
+fontsReady	686
+liftBoot	687
+loop	683,13219,13332,13463,13545,13840
+mlInit	669
+mlItem	5106,5122,5134
+paintChapterText	4195,4207,6947
+paintDrawerBody	7735
+rovingGroup	2504,7489,7525,7557
+srcButton	7808,7827,7962,8077,8210,8261,8303,8336,8351,8367
+tipHide	7455,7476,11710,11716,11721
+toastRelayout	4858,6788,7103,7118,7121,8962,9031,9044,9068

@@ -1,0 +1,78 @@
+{
+ "id": "ice-low-1500",
+ "group": "ice",
+ "note": "The Satschan mere low, 15:00 (views.js ice-low).",
+ "spec": {
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    262,
+    428
+   ],
+   "dir": [
+    0.25,
+    0.22,
+    0.94
+   ],
+   "r": 46
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "15:00",
+  "t": 900,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -27.468,
+   0.218,
+   132.359
+  ],
+  "target": [
+   -39,
+   -5.014,
+   89
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 45.17,
+  "sunAlt": 8.5,
+  "sunGeo": 8.4,
+  "sunAz": 221.5,
+  "mist": 0.22
+ },
+ "ms": 47129,
+ "timing": {
+  "apply": 42,
+  "settle": 159,
+  "settle2": 213,
+  "shot": 46071
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

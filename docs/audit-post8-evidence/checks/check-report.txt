@@ -1,0 +1,43 @@
+report ../../../tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/ci-visual-41394859313/x/report.json: austerlitz-command-map.html  md5 f10fe585c46aea576f436ed51ac46f83  cases 39  mode {"test":true,"legacy":false,"selftestOnly":false,"only":null}  env {"platform":"linux","arch":"x64","chromium":"141.0.7390.37","playwright":"1.56.0","executable":"playwright"}
+PASS first-run             figures 0  camera 492.268  overlaps 0  solid-black 0  near-black 0.0017
+PASS opening-1             figures 0  camera 136.487  overlaps 0  solid-black 0  near-black 0.0002
+PASS opening-2             figures 0  camera 46.196  overlaps 0  solid-black 0  near-black 0.0002
+PASS opening-3             figures 0  camera 37.791  overlaps 0  solid-black 0  near-black 0.0002
+PASS opening-4             figures 0  camera 94.489  overlaps 0  solid-black 0  near-black 0.0025
+PASS opening-end           figures 0  camera 537.005  overlaps 0  solid-black 0  near-black 0.0013
+PASS opening-1-laptop      figures 0  camera 136.487  overlaps 0  solid-black 0  near-black 0.0002
+PASS phone-390-first       figures 0  camera 866.864  overlaps 0  solid-black 0  near-black 0.0031
+PASS phone-390-explore     figures 0  camera 58.866  overlaps 0  solid-black 0  near-black 0.0004
+PASS phone-390-dossier     figures 0  camera 58.866  overlaps 0  solid-black 0  near-black 0.0001
+PASS phone-390-watch       figures 0  camera 58.866  overlaps 0  solid-black 0  near-black 0.0004
+PASS phone-390-layers      figures 0  camera 58.866  overlaps 0  solid-black 0  near-black 0.0001
+PASS phone-360-explore     figures 0  camera 60.846  overlaps 0  solid-black 0  near-black 0.0009
+PASS phone-430-explore     figures 0  camera 58.58  overlaps 0  solid-black 0  near-black 0.0006
+PASS phone-844x390-explore  figures 0  camera 37.791  overlaps 0  solid-black 0  near-black 0
+PASS phone-402x714-explore  figures 0  camera 49.893  overlaps 0  solid-black 0  near-black 0.0007
+PASS phone-390-paper       figures 0  camera 400  overlaps 0  solid-black 0  near-black 0
+PASS first-run-laptop      figures 0  camera 511.382  overlaps 0  solid-black 0  near-black 0.0014
+PASS overview-field        figures 0  camera 95.413  overlaps 0  solid-black 0  near-black 0
+PASS overview-plan         figures 0  camera 426.378  overlaps 0  solid-black 0  near-black 0.0004
+PASS close-sokolnitz       figures 0  camera 23.579  overlaps 0  solid-black 0  near-black 0
+PASS staff-paper           figures 0  camera 400  overlaps 0  solid-black 0  near-black 0
+PASS pratzen-low           figures 0  camera 21.802  overlaps 0  solid-black 6  near-black 0.0038
+PASS pratzen-orbit-min     figures 0  camera 4.235  overlaps 0  solid-black 3  near-black 0.002
+PASS selected-formation    figures 0  camera 68.685  overlaps 0  solid-black 0  near-black 0.0006
+PASS watch-selected        figures 0  camera 65.324  overlaps 0  solid-black 0  near-black 0.0013
+PASS hybrid-dimmed         figures 0  camera 57.511  overlaps 0  solid-black 0  near-black 0.0015
+PASS pratzen-low-1x        figures 0  camera 21.81  overlaps 0  solid-black 0  near-black 0.0077
+PASS pratzen-low-10x       figures 0  camera 21.785  overlaps 0  solid-black 0  near-black 0.0009
+PASS paper-north-up        figures 0  camera 400  overlaps 0  solid-black 0  near-black 0
+PASS paper-close           figures 0  camera 400  overlaps 0  solid-black 0  near-black 0
+PASS paper-drawer          figures 0  camera 400  overlaps 0  solid-black 0  near-black 0
+PASS paper-laptop          figures 0  camera 400  overlaps 0  solid-black 0  near-black 0
+PASS narrow-1024           figures 0  camera 95.413  overlaps 0  solid-black 0  near-black 0.0001
+PASS ph8-overview-study    figures 0  camera 537.005  overlaps 0  solid-black 0  near-black 0.0004
+PASS ph8-overview-watch    figures 0  camera 426.378  overlaps 0  solid-black 0  near-black 0.0005
+PASS eye-zuran             figures 0  camera 0.136  overlaps 0  solid-black 0  near-black 0
+PASS eye-zuran-1x          figures 0  camera 0.034  overlaps 0  solid-black 0  near-black 0
+PASS plans-overview        figures 0  camera 537.005  overlaps 0  solid-black 0  near-black 0.0002
+in-app self-test (843112 ms): 317 of 317 pass; the manifest has 317 checks
+console messages judged: 0
+all checks pass for this report

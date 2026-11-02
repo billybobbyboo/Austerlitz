@@ -1,0 +1,363 @@
+{
+ "area": "visual-landscape",
+ "scope_summary": "The rendered 3D landscape of the audited build (f10fe585..., Chromium 141 headless shell, SwiftShader software WebGL, the harness page ?harness=1 at 1600x900 and 1280x720): 100 fixed captures (92 by the first attempt, 8 added here) across the six vantages x eight clocks, the three display factors, the ice, the landmarks and the troops at close range, inspected as 18 contact sheets and 14 full-resolution crops; one recorded glide (26 frames, 10 fps virtual clock); in-page numbers for the meres, the trees, the formations on the ice and the buildings (probe.json); the drawn facing of every block every 10 minutes 05:00-17:00 (facings.json, 2,051 rows) summarised. Judged separately for technical correctness, historical correctness and aesthetics. No source, data, test, threshold or build changed.",
+ "coverage": [
+  {
+   "item": "Composition and hierarchy",
+   "method": "6 vantage sheets (Field, Zuran, Pratzen, Allied, Overview, low Pratzen) at 06:00-16:30, the 1280x720 sheet",
+   "result": "The 3D ground is restrained and legible; spires, the chateau and the meres give orientation. At the Field vantage the action fills the central ~40% of the frame and map text dominates; the low views keep the wall of formation names (decisions 255/263 (a), accepted; not re-judged here).",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/sheets/sheet-vantage-*.jpg, sheets/sheet-laptop-1.jpg"
+  },
+  {
+   "item": "Terrain and display factors",
+   "method": "factor sheets (1x, 4x, 10.33x) at the low Pratzen view, the Field vantage, Sokolnitz and the Santon",
+   "result": "4x (default) reads naturally; 10.33x turns the Pratzeberg into a spike (by design of the factor); 1x shows the formations as footprints (decision 2B), large saturated patches in the low views. No finding.",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/sheets/sheet-factor-1.jpg, sheet-factor-2.jpg"
+  },
+  {
+   "item": "Light and atmosphere",
+   "method": "the vantage matrix with the computed sun read back per capture (sunAlt, mist in shots/*.json)",
+   "result": "Coherent through the day: 06:00 pre-dawn (sun -16.4 deg), 08:00 valley fog (mist 0.98), lifted by 10:00 (0.05), noon sun 19.0 deg, 15:00 evening mist (0.22), 16:30 twilight (sun -2.9 deg). No finding.",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/shots/v-low-*.json, sheets/sheet-vantage-low.jpg"
+  },
+  {
+   "item": "Water and ice, the low-sun glare",
+   "method": "8 ice views (8F/8H's) at 09:00-16:30, crops; probe.json (the ground under each disc); whites.json (saturated pixels)",
+   "result": "Ice reads as frozen water from above and obliquely; the 15:00 low view's broad sheen as 8H measured (not re-measured). New: figures and trees on the Satschan ice (F1, F2); the streams' grazing reflection saturates (F5).",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/sheets/sheet-ice-1.jpg, sheet-ice-2.jpg, probe.json, whites.json"
+  },
+  {
+   "item": "Troop silhouettes, formations, ground contact",
+   "method": "12 troop views incl. the closest figure views at 4x (r 10) and 10.33x (r 8, 16); crops",
+   "result": "Clear national identity and formation shapes; the rich kit reads close up. Contact on dry ground: no gross floating visible at capture resolution (not re-measured). On the meres the figures stand up to 0.874 units (62% of a man) below the ice (F1).",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/sheets/sheet-troops-1.jpg, sheet-troops-2.jpg, crops/slope-4x-0900-r10-500-400.jpg"
+  },
+  {
+   "item": "Troop orientation (S-5 rule) and uniform facings (decision 245 (a))",
+   "method": "facings.json analysed (facings-summary.json); 6 read-back captures (yaw, heading, rule, nearest enemy) in shots/x-face-*.json",
+   "result": "84.5% of halted blocks within 1.5 km of an enemy face it within 45 deg; drifts set the facing (F3). Uniform facings not drawn, as decided.",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/facings-summary.json, shots/x-face-kamensky-1010.json"
+  },
+  {
+   "item": "Standards",
+   "method": "close troop views",
+   "result": "The 1804 lozenge on French battalions, the Austrian yellow ordinary colour with the eagle, plain green Russian cloths (decision 98); at close range the cloths dominate the frame (sourced measures; 6D's ratio checks not re-run). No finding.",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/shots/kollo-0920.jpg, shots/x-ice-bux-1620.jpg"
+  },
+  {
+   "item": "Artillery",
+   "method": "bat-deployed-1320, bat-limbered-1410, bat-chapel-1500, santon-guns-1300, crops",
+   "result": "Spoked wheels, bracket trails, limbers, teams and a driver per team as 8E built; the limbered battery has no gunners (as recorded); the Santon's pieces alone. Carried items unchanged.",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/bat-deployed-1320-300-250.jpg, crops/bat-limbered-1410-800-150.jpg"
+  },
+  {
+   "item": "Buildings and landmarks",
+   "method": "19 landmark views, crops, probe.json's building records (BLDG)",
+   "result": "Castle at 96x73 m smaller in plan than 11 of Sokolnitz's 13 farmstead long ranges (accepted, 266 (a)); Satschan church + 5 farmsteads (261 (a)); the garden barely legible; notDrawn landmarks absent with a misreading risk (F7); blocks interpenetrate buildings (F4).",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/sheets/sheet-landmarks-*.jpg, probe.json"
+  },
+  {
+   "item": "Clipping, depth artefacts, culling pops",
+   "method": "one recorded glide (Field to Pratzen vantage, 10:00, 26 frames, 10 fps virtual clock, the app's own loop), frame diffs",
+   "result": "Smooth glide, culling 0 to 76 blocks with no visible pop; at rest the frame's triangles fell 1,151,029 to 1,003,941 with no 3D pixel change (2,830 px changed, all label fades). Depth artefacts: figures sunk in the ice (F1); crown facets near the eye (F8).",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/sequence/glide-sheet.jpg, sequence/glide.json, crops/glide-15-16.jpg"
+  },
+  {
+   "item": "Console",
+   "method": "every capture's page errors",
+   "result": "0 warnings or errors in 100 captures; desktop tier (lowTier false) throughout.",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/shots/*.json"
+  }
+ ],
+ "findings": [
+  {
+   "title": "Figures on the frozen Satschan mere are drawn sunk into the ice in the ponds phase",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "world.js meres (mereLevel, buildWater) / app.js figure seating",
+   "user_impact": "At the battle's best-known moment (phase 9, 16:00-17:00) Dokhturov's men, Kienmayer's riders and Buxhowden's camp on the ice look as if they are breaking through it: horses legless, men cut at the thigh. That is a visual claim of the mass-drowning story the narrative keeps disputed (data.js:119, 749; analysis.js:60). Seen when a visitor zooms to the meres (about r 20 units or closer); invisible at the Overview.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "world.js:1380-1385 (mereLevel: the ice at or below the lowest shore ground minus 0.05)",
+    "world.js:1454 (8F: depthWrite false, 'nothing visible lies under the ice')",
+    "world.js:1469-1470",
+    "data.js:465, 480, 495 (phase-9 legs ice:true: buxhowden, kienmayer, dok)"
+   ],
+   "evidence": "docs/audit-post8-evidence/visual-landscape/probe.json (under: Satschan 69% of the disc's ground below the ice, mean 0.266, max 0.874 units; Menitz 78%, max 1.142; formationsInside: kienmayer, dok, buxhowden, friant 16:00-17:00 at depths up to 0.874; kitArt headTop 1.415); docs/audit-post8-evidence/visual-landscape/shots/x-ice-dok-1640.jpg, x-ice-dok-1640-low.jpg, x-ice-bux-1620.jpg; crops/satschan-1200-0-0.jpg (a rider on the ice at 12:00, horse legs hidden)",
+   "expected": "A formation the data puts on the ice stands on the ice surface.",
+   "observed": "Blocks are seated on groundY, the carved bed under the disc, up to 0.874 units (62% of a man's 1.415) below the ice plane; the ice (transparent 0.96, depth-tested) covers the sunk parts. The self-test's contact check judges the drawn ground, so it passes.",
+   "remedy": "Seat figures, horses, guns and the HQ camp at max(groundY, the disc's ice level) inside a mere's disc (presentation only), or flatten the drawn bed to the ice level under the disc; add a self-test check that every figure inside a disc stands at the ice surface; re-run the contact check.",
+   "effort": "0.5-1.5 days",
+   "repro": "Harness page 1600x900, Watch, 4x; __aus.apply({t:1000, aim:{map:'dok', dir:[0.55,0.45,0.70], r:16}}) (16:40); or node tools/audit-post8/visual-landscape/probe.js out.json",
+   "cause_verified": "yes: probe.json reads the disc level (-4.14) against groundY at the blocks' places",
+   "judgement_kind": "technical + historical"
+  },
+  {
+   "title": "Trees and bushes stand on the frozen Satschan mere",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "world.js woodsPlan (village trees), buildWoods (bank scrub)",
+   "user_impact": "21 deciduous trees and bushes appear to grow out of the ice next to Satschan and Telnitz, in every view of the meres (the ponds' finale, the Telnitz fighting); a visible geography error.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "world.js:2119-2127 (village trees on a ring round each village, no water test)",
+    "world.js:2212-2223 (bank scrub along GOLDBACH and LITAVA: tests village cover and buildings only)",
+    "world.js:53 (LITAVA_M through Satschan, crossing the mere)"
+   ],
+   "evidence": "docs/audit-post8-evidence/visual-landscape/probe.json (trees.onIceCount 21 inside the drawn disc, 17 on the water class: 4 village trees, 17 'stream' scrub; none on the Menitz mere); docs/audit-post8-evidence/visual-landscape/village-trees.json (the planner's own arithmetic: 3 of 184 village trees on the water class, Telnitz 1, Satschan 2); crops/satschan-1200-0-0.jpg; shots/telnitz-0930-wide.jpg",
+   "expected": "No tree or scrub inside a mere's drawn ice (decision 246 (a): nothing added on the ice).",
+   "observed": "4 village trees and 17 bank-scrub bushes inside the Satschan disc.",
+   "remedy": "Skip a village tree or bank bush inside a disc (or where coverClass is water) without changing the draws consumed, then re-pin the woods counts and confirm no building plan moves (the WOODS_RS hold).",
+   "effort": "0.5-1 day",
+   "repro": "node tools/audit-post8/visual-landscape/probe.js out.json; view shots/satschan-1200.jpg",
+   "cause_verified": "yes (code read and positions computed in the page)",
+   "judgement_kind": "technical + geographic"
+  },
+  {
+   "title": "Blocks face along slow drifts and keep stale facings, so some face away from an adjacent enemy",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "app.js facing rule (headingAt / enemyFacing / faceClock)",
+   "user_impact": "Close up, formations in contact show their backs to the enemy: Kamensky's brigade ('counterattack', then 'engaged') faces 130-180 deg away from Saint-Hilaire at 10:00-11:00, 20-420 m off (within 110 m at 10:00-10:20) at the moment the event reads 'Kamensky turns his brigade about'; Saint-Hilaire faces 143-152 deg away from Kamensky (40-90 m) at 09:40-09:50. The rich kit (8E) makes facing legible.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:6001-6002 (want=headingAt(id,clock); else enemyFacing)",
+    "app.js:3336-3345 (headingAt: any leg in progress, whatever its rate)",
+    "app.js:5740-5774 (faceClock, enemyFacing: nearest enemy at the phase start or arrival)",
+    "docs/STAGE8_SPEC.md:826-834 (drifts under 1 km/h: no gait swing, decision 244 (a))"
+   ],
+   "evidence": "docs/audit-post8-evidence/visual-landscape/facings-summary.json (2,051 rows; drifts under 1 km/h 1,146 of 1,440 moving rows, 79.6%; 37 rows with an enemy within 0.5 km and the yaw >120 deg off it, 17 with a fighting status, 29 of them moving; convention check 136/161 = 84.5% halted-near within 45 deg); docs/audit-post8-evidence/visual-landscape/shots/x-face-kamensky-1010.json (yaw 174.8 deg off Saint-Hilaire 0.06 km, moving 0.49 km/h), x-face-sthilaire-0950.json (-142.7 deg, 0.043 km), x-face-prz-0910.json (halted, 152 deg off Legrand 0.322 km), x-face-dok-1350.json (halted, 127.1 deg off Bourcier 0.235 km)",
+   "expected": "A formation in contact faces its opponent unless the data says it turned away; a drift the gait does not animate does not turn the block.",
+   "observed": "The yaw follows the drift's heading at any rate; a halted block keeps the facing taken toward the nearest enemy at the phase start or on arrival, however the enemy moves.",
+   "remedy": "Below the gait's 1 km/h floor use the enemy rule (or the leg's start facing) instead of the drift's heading; re-take a halted block's facing when its nearest enemy changes materially within a phase; keep S-5 (a function of the clock) and its self-test check (g).",
+   "effort": "0.5-2 days",
+   "repro": "node tools/audit-post8/visual-landscape/facings.js <iso-root> out.json (~14 min load); capture shots-extra.json",
+   "cause_verified": "yes (read-backs of yaw, heading and rule)",
+   "judgement_kind": "design + historical; the 'nearest enemy' reference and thresholds are this audit's design values",
+   "risk": "A wholesale change could make blocks spin under scrubbing; keep the WHEEL easing and S-5."
+  },
+  {
+   "title": "Formation blocks interpenetrate buildings and each other",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "app.js block placement vs world.js BLDG (8G buildings at plot scale)",
+   "user_impact": "Horses and men stand inside houses (Nansouty's cuirassiers in Blasowitz at 10:55; Telnitz at 08:00; the Posoritz post house at 15:00), opposing blocks share ground (Kamensky and Saint-Hilaire at 10:10). Reads as clipping rather than occupation; worst in the villages that carry the narrative (Sokolnitz, Telnitz).",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "docs/STAGE8_SPEC.md:4982-4986 ('figures are drawn over buildings everywhere', recorded in 8J, not decided)",
+    "world.js BLDG / planBuildings8g (world.js:1921)"
+   ],
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/cav-close-1055-250-150.jpg; shots/telnitz-0800.jpg, posthouse-1500.jpg, sok-castle-1000.jpg, x-face-kamensky-1010.jpg",
+   "expected": "Either figures kept clear of drawn buildings or buildings under an occupying block visibly subordinated.",
+   "observed": "No separation; farmsteads drawn at the building convention (a long range up to 176 x 71 m, probe.json) enlarge the overlap.",
+   "remedy": "An owner decision first: hide or fade building parts under a block's footprint, or offset figure rows clear of them; the castle case stays under decision 266 (a).",
+   "effort": "1-3 days",
+   "repro": "__aus.apply({t:655, aim:{map:'nansouty', dir:[0.55,0.32,0.77], r:24}})",
+   "cause_verified": "yes (visual; no placement rule exists)",
+   "judgement_kind": "technical + aesthetic"
+  },
+  {
+   "title": "Streams saturate to white in grazing and low-sun views",
+   "category": "probable-problem",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "world.js streamHook (8F)",
+   "user_impact": "In the low views (the Pratzen vantage at 10:00, the low Pratzen view at 16:30, the climb at 09:00) the brooks become glowing white lines, the brightest thing in the frame, drawing the eye from the troops and readable as roads or highlights; toward the sun at 15:00 the Litava's channel reads as a white wall.",
+   "status": "confirmed",
+   "origin": "new-regression",
+   "refs": [
+    "world.js:1409 (STREAM.sky 2.0)",
+    "world.js:1446 (radiance *= 1 + 2.0*sG^3 at a grazing view)"
+   ],
+   "evidence": "docs/audit-post8-evidence/visual-landscape/whites.json (236 px at 255 in the brook toward Augezd, v-low-1630; 32 in the Goldbach by Puntowitz, inf-east-0900; 41 behind the castle at 15:00; the Litava channel up to 236 in ice-mid-1500); crops/v-low-1630-900-250.jpg, inf-east-0900-1000-0.jpg, ice-mid-1500-250-80.jpg, sok-castle-1500-close-300-0.jpg",
+   "expected": "Streams 'still, darker and less blue' (decision 246 (a)).",
+   "observed": "A grazing gain of up to 3x on the environment radiance plus the bloom clips the ribbons to white.",
+   "remedy": "Lower STREAM.sky (e.g. 0.7) or clamp the stream's radiance, measured as 8H measured ICE.sky (ice-8h.js) across the low views.",
+   "effort": "0.25-0.5 day",
+   "repro": "__aus.apply({t:990, aim:{map:[285,289], dir:[-1.0,0.13,0.18], r:70}})",
+   "cause_verified": "inferred from the shader term; not toggled here",
+   "judgement_kind": "aesthetic"
+  },
+  {
+   "title": "Headquarters drawn as a pitched camp at every status",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "app.js HQ block (GEO.tent marquee + four tents)",
+   "user_impact": "A white pyramid 2.3 units high (1.6x a man) appears among moving guns (14:10) and on the Satschan ice during the rout (16:20-16:40); close up it reads as an unexplained object rather than a staff.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:811 (GEO.tent ConeGeometry(1.75,2.3,4))",
+    "app.js:1542-1546"
+   ],
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/bat-limbered-1410-800-150.jpg, crops/ice-low8h-1500-300-520.jpg; shots/x-ice-dok-1640-low.jpg",
+   "expected": "A moving or withdrawing headquarters drawn as a mounted group.",
+   "observed": "The camp is drawn wherever the HQ is, whatever its status.",
+   "remedy": "Show the marquee only while the HQ is halted (or never at close range); the riders alone while it moves.",
+   "effort": "0.5 day",
+   "judgement_kind": "aesthetic + historical"
+  },
+  {
+   "title": "Omitted chapels invite a misreading: Bosenitz's church appears to crown the Santon; St Anthony's name stands beside Augezd's church",
+   "category": "unresolved-historical",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "appearance.js BUILDINGS.notDrawn; world.js CHURCHES",
+   "user_impact": "From the south-west views the Bosenitz church, about 720 m beyond the Santon, sits behind the hill's top next to the label 'The Santon'; above Augezd the label 'Chapel of St Anthony' floats over an empty patch with Augezd's drawn church beside it. A visitor can take either church for the chapel the map deliberately omits.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "appearance.js:1065-1068 (notDrawn: stAnthony, santon, granary)",
+    "world.js:140, 152 (Bosenitz [236,69] with a church), world.js:249 (SANTON=W(222,87))"
+   ],
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/santon-1000-200-50.jpg, crops/stanthony-1300-250-200.jpg; shots/santon-guns-1300.jpg, pratzeberg-0930.jpg",
+   "expected": "An omitted landmark is not visually substituted by another building.",
+   "observed": "As described; the omission itself is reasoned (form, destruction hour and date not read).",
+   "remedy": "Owner choice among notDrawn's alternatives; at least a site marker or a dossier line saying the chapel is not drawn and why.",
+   "effort": "0.25-1 day",
+   "judgement_kind": "historical + presentation"
+  },
+  {
+   "title": "Deciduous crowns near the eye show large faceted shards",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "world.js TREE8F/TREE8H crowns",
+   "user_impact": "In the closest figure views next to woods (Saint-Hilaire's climb at 4x r 10 and 10.33x r 8, the castle close) the crowns break into large brown triangles like broken glass.",
+   "status": "confirmed",
+   "origin": "new-regression",
+   "refs": [
+    "docs/STAGE8_SPEC.md:4547-4549 (8H: still open, twigs would need another representation)",
+    "docs/STAGE8_SPEC.md:4699-4700 (listed open)"
+   ],
+   "evidence": "docs/audit-post8-evidence/visual-landscape/sheets/sheet-troops-2.jpg (slope-10x-0900-r8, slope-4x-0900-r10), crops/sok-castle-1500-close-300-0.jpg",
+   "expected": "Crowns read as bare twig masses at every distance.",
+   "observed": "As recorded open by 8H; unchanged.",
+   "remedy": "As 8H recorded: an alpha-tested twig representation within a few units of the eye, measured for overdraw; or keep and accept.",
+   "effort": "2-5 days",
+   "judgement_kind": "aesthetic"
+  }
+ ],
+ "experiments": [
+  {
+   "command": "node tools/audit-post8/visual-landscape/shots.js > docs/audit-post8-evidence/visual-landscape/shots.json; node tools/audit-post8/visual-landscape/capture.js docs/audit-post8-evidence/visual-landscape/shots.json docs/audit-post8-evidence/visual-landscape/shots",
+   "outcome": "92 captures in 2,308 s (first attempt), 0 page errors",
+   "environment": "Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader, harness page, 1600x900 and 1280x720",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/shots/",
+   "limitations": "harness page: drift and smoke motion off, transitions off; software WebGL"
+  },
+  {
+   "command": "node tools/audit-post8/visual-landscape/facings.js <iso-copy> docs/audit-post8-evidence/visual-landscape/facings.json",
+   "outcome": "2,051 rows; flags A 13, B 123, C 90, D 17 (first attempt; 818 s load)",
+   "environment": "runtime-test.js's stubbed THREE + DOM in node, the isolated copy's bundle",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/facings.json",
+   "limitations": "the nearest enemy and the 1.5 km / 90-120 deg thresholds are this audit's design values"
+  },
+  {
+   "command": "python3 tools/audit-post8/visual-landscape/sheets.py docs/audit-post8-evidence/visual-landscape/shots docs/audit-post8-evidence/visual-landscape/sheets 480 800 6",
+   "outcome": "17 sheets (+1 for the extra shots, per-sheet 8)",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/sheets/"
+  },
+  {
+   "command": "node tools/audit-post8/visual-landscape/sequence.js <scratch>/seq --only glide --vp 960x540; python3 tools/audit-post8/visual-landscape/seqsheet.py <scratch>/seq glide docs/audit-post8-evidence/visual-landscape/sequence/glide-sheet.jpg 0 17 3 533",
+   "outcome": "26 frames at 10 fps virtual clock, the tween 15 frames; culled blocks 0 to 76; no visible pop; at rest 2,830 px changed (labels only)",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/sequence/",
+   "limitations": "one sequence at 960x540; Play, dolly and orbit sequences defined but not run"
+  },
+  {
+   "command": "node tools/audit-post8/visual-landscape/village-trees.js /home/user/Austerlitz docs/audit-post8-evidence/visual-landscape/village-trees.json",
+   "outcome": "3 of 184 village trees on the meres' water class (Telnitz 1, Satschan 2)",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/village-trees.json"
+  },
+  {
+   "command": "node tools/audit-post8/visual-landscape/probe.js docs/audit-post8-evidence/visual-landscape/probe.json",
+   "outcome": "21 trees/scrub inside the Satschan disc (17 on water); the ground below the ice on 69%/78% of the discs (max 0.874/1.142 units); 4 formations inside the Satschan disc 16:00-17:00; Satschan church + 5 farmsteads; Sokolnitz castle quadrangle 1.52x1.15 units (ranges 0.24-0.46 deep) vs farmstead long ranges 1.8-2.8x0.9-1.1, 11 of 13 larger in plan than the quadrangle",
+   "environment": "harness page 1600x900, loop held",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/probe.json"
+  },
+  {
+   "command": "node tools/audit-post8/visual-landscape/shots-extra.js > docs/audit-post8-evidence/visual-landscape/shots-extra.json; node tools/audit-post8/visual-landscape/capture.js docs/audit-post8-evidence/visual-landscape/shots-extra.json docs/audit-post8-evidence/visual-landscape/shots",
+   "outcome": "8 captures in 788 s with in-page read-backs (afterResult)",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/shots/x-*.json, sheets/sheet-extra-1.jpg"
+  },
+  {
+   "command": "python3 tools/audit-post8/visual-landscape/facings-analysis.py docs/audit-post8-evidence/visual-landscape/facings.json docs/audit-post8-evidence/visual-landscape/facings-summary.json",
+   "outcome": "drifts 79.6% of moving rows; 37 contact rows >120 deg; 84.5% halted-near within 45 deg",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/facings-summary.json"
+  },
+  {
+   "command": "python3 tools/audit-post8/visual-landscape/whites.py docs/audit-post8-evidence/visual-landscape/shots docs/audit-post8-evidence/visual-landscape/whites.json",
+   "outcome": "stream regions clip at 255 (236, 32, 41 px)",
+   "evidence_path": "docs/audit-post8-evidence/visual-landscape/whites.json"
+  }
+ ],
+ "not_checked": [
+  "Device GPUs, Safari, the phone: software WebGL only; no frame time, colour or shimmer judgement on hardware",
+  "The visitor's page (no ?harness=1): drift and smoke motion and CSS transitions were off in every capture",
+  "Ground contact on dry ground not re-measured (8H's contact-8f.js not re-run); judged only visually at capture resolution",
+  "The ice glare share (43.5% at 15:00) not re-measured (ice-8h.js not re-run); the build's ice is unchanged since 8H",
+  "Play, dolly (level-of-detail switching) and orbit sequences: defined in sequence.js, not run (one glide only)",
+  "The eye-level views (eye-zuran), the paper map, the phone layouts and the label hierarchy (other areas)",
+  "The historical claims behind uniforms, standards and ordnance (appearance.js) not re-read; 6D's flag-ratio checks not re-run",
+  "Whether the bank scrub stands inside drawn stream ribbons elsewhere (one bush seen in the Satschan outflow, not counted)",
+  "Shadows' correctness at every clock beyond what the captures show"
+ ],
+ "carried_status": [
+  {
+   "item": "Low-sun ice glare (decision 264 (a))",
+   "status": "unchanged, accepted; visually confirmed",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/shots/ice-low8h-1500.jpg (broad white sheen, sun in frame), ice-low8h-0900/1200 mild sheen, ice-low8h-1630 none (sun -2.9 deg); not re-measured. Related new item: the streams' grazing reflection clips to white (finding 5)."
+  },
+  {
+   "item": "Ground contact (decision 265 (a))",
+   "status": "unchanged, provisional; original criterion still not met (not re-measured); a larger contact failure found outside the check",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/slope-4x-0900-r10-500-400.jpg, sheets/sheet-troops-2.jpg (no gross floating visible); the figures on the meres stand up to 0.874 units below the ice, a case the contact check (drawn ground) cannot see (finding 1, probe.json)."
+  },
+  {
+   "item": "Troop facings",
+   "status": "two senses. Uniform facings (decision 245 (a), decision 104): still not drawn, as decided; now judgeable: invisible at the default distances (a man under 17.6 px), absent in the closest views (French infantry plain blue, no white lapels); the owner's reconsideration remains open. Orientation (S-5 rule): finding 3.",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/slope-4x-0900-r10-500-400.jpg; facings-summary.json; shots/x-face-*.json"
+  },
+  {
+   "item": "Artillery drivers and moving gunners (decision 243 (a), carried)",
+   "status": "unchanged: a driver on each team of the guns on the heights (an inference from IV Corps' letter); the limbered battery has no gunners (Gassendi has them march beside); at 14:10 it overlaps an infantry block and an HQ camp, so the absence is not noticeable; the owner has not decided",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/bat-deployed-1320-300-250.jpg, crops/bat-limbered-1410-800-150.jpg"
+  },
+  {
+   "item": "The Sokolnitz castle's prominence, relative scale and the III Column over it (decision 266 (a))",
+   "status": "confirmed as accepted: in 11 of Sokolnitz's 13 farmsteads the long range alone (up to 2.8 x 1.1 units, 176 x 71 m) covers more ground than the whole quadrangle (1.52 x 1.15 units, 96 x 73 m; its ranges 0.24-0.46 units deep, the east range 2.05 high); close up it reads smaller than the farmhouses; at 10:00 the III Column's figures hide it entirely",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/probe.json (buildings.Sokolnitz), crops/sok-castle-1500-close-300-0.jpg, shots/sok-castle-1000.jpg, sok-castle-1500-clean.jpg"
+  },
+  {
+   "item": "The Austerlitz garden",
+   "status": "unchanged (found and recorded in 8J, not decided): at r 30 a few scattered trees on plain field ground west of the chateau, no compartments or walks; not discernible at the Overview; paper map not checked here",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/austerlitz-garden-1400-0-0.jpg, shots/austerlitz-town-1400.jpg, sheets/sheet-vantage-plan.jpg"
+  },
+  {
+   "item": "Satschan's farmsteads (decision 261 (a))",
+   "status": "confirmed as accepted: the church and 5 farmsteads of 7; 21 trees and bushes stand on the mere beside it (finding 2)",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/probe.json (buildings.Satschan), shots/satschan-1200.jpg"
+  },
+  {
+   "item": "The omitted landmark symbols (BUILDINGS.notDrawn)",
+   "status": "unchanged, owner alternatives not decided: St Anthony's chapel a name on the ground only, the Santon's chapel and the Sokolnitz granary absent; misreading risk added (finding 7)",
+   "evidence": "docs/audit-post8-evidence/visual-landscape/crops/stanthony-1300-250-200.jpg, crops/santon-1000-200-50.jpg"
+  }
+ ],
+ "strengths": [
+  "Light and atmosphere computed and coherent through the day: pre-dawn, the valley fog lifting by 10:00, a low winter sun, evening mist and twilight (sun -2.9 deg at 16:30)",
+  "A restrained December palette: olive-brown fields, bare grey-brown woods with green conifers, grey haze; the meres read as frozen water from above and obliquely, the rimed margin lighter",
+  "Villages read as villages on the 1825 street-and-yard pattern; spires, the chateau and the castle's quadrangle (close up) give a landmark hierarchy",
+  "Troops identifiable at a glance by side and nation (French blue and white with the 1804 lozenge, Russian green, Austrian white with the yellow ordinary colour); formations legible as columns and lines; the rich kit and the artillery (spoked wheels, trails, limbers, teams) convincing close up",
+  "No visible culling or level-of-detail pop in the recorded glide; 0 console warnings or errors in 100 captures"
+ ]
+}

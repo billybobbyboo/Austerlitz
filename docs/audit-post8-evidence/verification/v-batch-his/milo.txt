@@ -1,0 +1,10 @@
+LITAVA_M [[552,128],[511,138],[351,313],[297,372],[262,444],[215,500],[209,508]]
+milo@0 [325,230] to Litava line m 2376 covWater 0
+milo@2 [299,238] to Litava line m 2812 covWater 0
+milo@3 [290,237] to Litava line m 3043 covWater 0.06
+milo@4 [315,237] to Litava line m 2460 covWater 0
+milo@6 [392,232] to Litava line m 771 covWater 0
+milo@8 [446,210] to Litava line m 19 covWater 0.96
+milo@9 [475,170] to Litava line m 157 covWater 0.38
+milo crosses the Litava line at 14:26 [444.7,210.5] nearest road Krzenowitz road 1044 m
+milo crosses the Litava line at 14:47 [449.2,205.6] nearest road Krzenowitz road 1122 m

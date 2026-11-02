@@ -1,0 +1,71 @@
+{
+ "note": "Candidate browser mutations of the area tests (final audit after Stage 8), written by its first session and not run: no browser in this phase. Each: the hypothesis, the reproduction in an isolated copy, the expected outcome and why it matters.",
+ "candidates": [
+  {
+   "hypothesis": "The in-app self-test checks the decided arrow cap against the code's own constant (ARROW_CAP.PX), so changing the decision's value is caught only by css-test.js's source pin, not by the self-test.",
+   "repro": "In an isolated copy: app.js:2838 `var ARROW_CAP={PX:16, Q:1.1, OP:0.62, M:0.97}` -> `{PX:24, ...}`; python3 build.py; npm run check:selftest (and node css-test.js).",
+   "expected": "css-test.js fails (\"ARROW_CAP is not {PX:16, ...}\"); the self-test check \"arrows (decision 241): ... at most 24 px\" passes (its name changes with the constant, so the manifest check fails on the name only).",
+   "why": "Shows which layer actually holds an owner-decided value: the self-test verifies behaviour against the code, css-test.js pins the number."
+  },
+  {
+   "hypothesis": "The self-test's derived-reading check catches a march row without its derived tag (node: runtime-test.js catches it; css-test.js's pin does not, M08).",
+   "repro": "app.js:7929: remove `+\" \"+derivedTag()` from marchRow's last return; build; npm run check:selftest.",
+   "expected": "FAIL \"derived readings tagged: every formation's march row ...\" (derivedTagChecks, app.js:11075).",
+   "why": "Confirms the browser layer of decision 125/D-6's labelling, already confirmed in node."
+  },
+  {
+   "hypothesis": "check:contrast reads computed colours of visible text in its 45 states but no :hover/:focus/:active rule, and css-test.js reads no colour literal in style.css outside the 5G inset (M13): a low-contrast hover colour typed into style.css passes every check.",
+   "repro": "style.css: `#sc-clear:hover{color:var(--text)}` -> `#sc-clear:hover{color:#3a3f44}` (about 1.8:1 on --panel #131A21); build; npm run check:contrast; node css-test.js.",
+   "expected": "Both pass (missed).",
+   "why": "Tests the claim that tokens.js is the only source of interface colours and the reach of the contrast check."
+  },
+  {
+   "hypothesis": "A lowered text token is caught by check:contrast.",
+   "repro": "tokens.js theme.dark \"text-muted\": \"#9BA3A9\" -> \"#5A6268\"; python3 build.py --tokens; python3 build.py; npm run check:contrast.",
+   "expected": "CONTRAST fails with text below AA in several states.",
+   "why": "Positive control for the contrast check (the node suites only check the tokens' copy)."
+  },
+  {
+   "hypothesis": "The harness's figure-on-ground check passes when no figure is measured: requirements() does not demand figures.count>0 in a landscape case (thresholds.js:429-430).",
+   "repro": "app.js:1249 kitWrap: delete `(gear?GEAR_ALL:KIT_ALL).push(w);` (the meshes' own geometries no longer listed by kitGeos); build; npm run check:visual -- or harness --only pratzen-low.",
+   "expected": "The case's figures.count drops (to the shared geometries' instances only, possibly 0) and \"a figure is N units off the drawn ground\" is not evaluated; whether some other check fails (the self-test's kit checks, culling) tells how exposed the gap is.",
+   "why": "On this build the count is 5,995-6,059 per landscape case (docs/stage8-evidence/8l/report-two-cases.json), so the gap is theoretical unless a refactor breaks the listing."
+  },
+  {
+   "hypothesis": "Presentation code that overrides a guarded datum at start-up passes the self-test and check:visual as it passes every node check (M29).",
+   "repro": "app.js:613 init(): insert `FORMATIONS.sthilaire.track[5].p=[287,295];` as its first statement; build; npm run check:selftest; npm run check:data.",
+   "expected": "All pass; check:data lists init among the changed interface declarations and exits 0.",
+   "why": "The screen is not held to the declared data by any check; a deep freeze of the guarded declarations before init (in the self-test or runtime-test) would catch it."
+  },
+  {
+   "hypothesis": "No check reads the formation dossier's strength row against the data (M30).",
+   "repro": "app.js:7975: `var str=f.strength||aggStrength(id);` (dossierFormation) -> `var str=Math.round((f.strength||aggStrength(id))*1.25);`; build; npm run check:selftest; npm run check:contrast.",
+   "expected": "All pass (missed).",
+   "why": "The visitor reads strengths in the dossier; a display error there would be materially misleading."
+  },
+  {
+   "hypothesis": "The motion block holds the map layer's band: removing it raises jumps and pops over the 248/998 ceilings.",
+   "repro": "app.js:5339 MLS `BAND:0.08` -> `BAND:0`; build; npm run check:selftest.",
+   "expected": "css-test.js fails on its MLS pin; check:selftest fails on the motion block's totals (jumps/pops over 248/998) or visibility.",
+   "why": "Positive control that the benchmark ceilings, pinned at the build's own counts, are live."
+  },
+  {
+   "hypothesis": "Culling's widening by the animation's envelope is held by the self-test and the cull motion block.",
+   "repro": "app.js:1059 animEnv(g): return 0 at its start; build; npm run check:selftest; check:visual's cull block.",
+   "expected": "FAIL \"culling (8E's prerequisite, the audit of 8D): the bounds follow the geometry drawn and the animation's definition\"; possibly pixel differences in the cull block.",
+   "why": "The oracle there is animAt (the JS mirror), so this also shows how far the mirror-based checks reach."
+  },
+  {
+   "hypothesis": "The gait's GLSL and its JavaScript mirror (animAt) can diverge without a failing check except at the few source-pinned lines.",
+   "repro": "In animGLSL (app.js near 1865), scale the thigh swing (parts 1, 2) by 1.5 in the GLSL only, leaving animAt unchanged; build; npm run check:selftest; check:contrast's context-gait case.",
+   "expected": "Most likely all pass (the contact check (h) and the culling oracle use animAt); a pixel-level check of a posed mesh against animAt would catch it.",
+   "why": "Measures the independence of the gait checks from the code under test."
+  },
+  {
+   "hypothesis": "Wall-clock budgets fail under load without a defect (T-7, inherited): the self-test's pan move (msMove<=2 ms at the median, app.js:11322) and the harness's layer pass (LAYER_MS 8 ms).",
+   "repro": "Run npm run check:selftest twice on the unchanged build: once alone, once beside a CPU load of 4 busy processes on 4 cores; compare the pan-move median and the layer pass times.",
+   "expected": "Medians rise with load; a failure under load alone would be a flake to record, not a defect.",
+   "why": "This audit's own checks ran at load averages of 20-37 on 4 cores."
+  }
+ ]
+}

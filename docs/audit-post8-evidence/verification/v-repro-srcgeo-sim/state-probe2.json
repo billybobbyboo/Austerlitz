@@ -1,0 +1,123 @@
+{
+ "started": "2026-11-02T11:05:30.050Z",
+ "steps": [
+  {
+   "k": "boot",
+   "v": {
+    "ms": 116746
+   }
+  },
+  {
+   "k": "rail click for about 04:05",
+   "v": "04:05"
+  },
+  {
+   "k": "gqg full dossier (set up by the app's own handlers)",
+   "v": {
+    "clock": "04:05",
+    "phase": 0,
+    "sel": "f:gqg",
+    "expanded": true,
+    "positionRow": "Position at 04:05 | Zuran mound Next move 4.8 km in 40 min · 7.2 km/h derived (the plotted leg’s len",
+    "dayTrackCaption": "04:05",
+    "model": "Zuran mound",
+    "keyNow": "0s|none",
+    "keyPainted": "0s|none"
+   }
+  },
+  {
+   "k": "gqg full dossier after 4 x ArrowRight",
+   "v": {
+    "clock": "04:45",
+    "phase": 0,
+    "sel": "f:gqg",
+    "expanded": true,
+    "positionRow": "Position at 04:05 | Zuran mound Next move 4.8 km in 40 min · 7.2 km/h derived (the plotted leg’s len",
+    "dayTrackCaption": "04:05",
+    "model": "Zuran mound",
+    "keyNow": "0s|none",
+    "keyPainted": "0s|none"
+   }
+  },
+  {
+   "k": "after a rail click for 12:00",
+   "v": {
+    "clock": "12:00",
+    "phase": 6,
+    "sel": "e:hq-forward",
+    "expanded": false,
+    "positionRow": null,
+    "dayTrackCaption": null,
+    "model": "Zuran mound",
+    "keyNow": "",
+    "keyPainted": ""
+   }
+  },
+  {
+   "k": "after 3 x ArrowRight",
+   "v": {
+    "clock": "12:30",
+    "phase": 6,
+    "sel": "e:hq-forward",
+    "expanded": false,
+    "positionRow": null,
+    "dayTrackCaption": null,
+    "model": "1.3 km north-west of Stare Vinohrady",
+    "keyNow": "",
+    "keyPainted": ""
+   }
+  },
+  {
+   "k": "after a rail click for about 12:37",
+   "v": {
+    "clock": "12:37",
+    "phase": 6,
+    "sel": "e:hq-forward",
+    "expanded": false,
+    "positionRow": null,
+    "dayTrackCaption": null,
+    "model": "Stare Vinohrady",
+    "keyNow": "",
+    "keyPainted": ""
+   }
+  },
+  {
+   "k": "pratzen place (select set up through the app's select) at about 11:16",
+   "v": {
+    "clock": "11:15",
+    "phase": 6,
+    "sel": "t:pratzen",
+    "commandView": "none",
+    "nearbyShown": " Saint-Hilaire's Division Kamensky's Brigade Centre the map hereWhat can be seen from here Sightlines are computed from this model's elevations, not the real survey, and take no account of woods, buildings or smoke. How this is sourced",
+    "model": [
+     "Saint-Hilaire's Division",
+     "Kamensky's Brigade"
+    ],
+    "keyNow": ""
+   }
+  },
+  {
+   "k": "pratzen place after a rail click for about 12:44",
+   "v": {
+    "clock": "12:44",
+    "phase": 6,
+    "sel": "t:pratzen",
+    "commandView": "none",
+    "nearbyShown": " Saint-Hilaire's Division Kamensky's Brigade Centre the map hereWhat can be seen from here Sightlines are computed from this model's elevations, not the real survey, and take no account of woods, buildings or smoke. How this is sourced",
+    "model": [
+     "Imperial Headquarters",
+     "Saint-Hilaire's Division",
+     "Drouet d'Erlon's Division",
+     "Guard Cavalry"
+    ],
+    "keyNow": ""
+   }
+  }
+ ],
+ "build": {
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "errors": [],
+ "ended": "2026-11-02T11:08:06.143Z"
+}

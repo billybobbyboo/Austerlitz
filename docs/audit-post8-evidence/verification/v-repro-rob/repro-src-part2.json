@@ -1,0 +1,131 @@
+{
+ "what": "v-repro-rob: perf-run.html ?src= reproduced on a local copy",
+ "started": "2026-11-02T11:25:56.905Z",
+ "files": {
+  "perf-run.html (repo)": "3f57a5bf8135326d51099d87144d0e83",
+  "perf-run.html (copy)": "3f57a5bf8135326d51099d87144d0e83",
+  "perf-route.js (repo)": "c1323fa79e59ff143e709eca00b6e643",
+  "perf-route.js (copy)": "c1323fa79e59ff143e709eca00b6e643",
+  "build (copy)": "f10fe585c46aea576f436ed51ac46f83",
+  "perf-run-fixed.html": "762e7c2dfce0850c7f1c2315896d1904"
+ },
+ "cases": [
+  {
+   "id": "5 fixed-js",
+   "url": "http://127.0.0.1:<A>/Austerlitz/tools/step6/perf-run-fixed.html?src=javascript%3Aparent.document.title%3D'VRR5%20'%2Bparent.location.origin%3Bvoid%200",
+   "src": "javascript:parent.document.title='VRR5 '+parent.location.origin;void 0",
+   "origin": "http://127.0.0.1:<A>",
+   "title": "Frame-time route",
+   "ls": {
+    "vrr": null,
+    "otherSecret": "s3cr3t-1793618756925"
+   },
+   "frameSrcAttr": "../../austerlitz-command-map.html",
+   "frameHref": "http://127.0.0.1:<A>/Austerlitz/austerlitz-command-map.html",
+   "frameRect": [
+    0,
+    0,
+    1280,
+    720
+   ],
+   "panelRect": [
+    0,
+    0,
+    1280,
+    205.5625
+   ],
+   "msg": "The build has started (115 s). Press Start.",
+   "goDisabled": false,
+   "phish": false,
+   "srcRejected": "javascript:parent.document.title='VRR5 '+parent.location.origin;void 0",
+   "bodyStart": "\n<iframe id=\"app\" title=\"The built page under measurement\" src=\"../../austerlitz",
+   "frames": [
+    {
+     "url": "http://127.0.0.1:<A>/Austerlitz/austerlitz-command-map.html"
+    }
+   ],
+   "foreignText": null,
+   "seconds": 115,
+   "log": []
+  },
+  {
+   "id": "5b fixed-foreign",
+   "url": "http://127.0.0.1:<A>/Austerlitz/tools/step6/perf-run-fixed.html?src=http%3A%2F%2F127.0.0.1%3A33759%2Fevil.html",
+   "src": "http://127.0.0.1:<B>/evil.html",
+   "origin": "http://127.0.0.1:<A>",
+   "title": "Frame-time route",
+   "ls": {
+    "vrr": null,
+    "otherSecret": "s3cr3t-1793618756925"
+   },
+   "frameSrcAttr": "../../austerlitz-command-map.html",
+   "frameHref": "http://127.0.0.1:<A>/Austerlitz/austerlitz-command-map.html",
+   "frameRect": [
+    0,
+    0,
+    1280,
+    720
+   ],
+   "panelRect": [
+    0,
+    0,
+    1280,
+    205.5625
+   ],
+   "msg": "The build has started (35 s). Press Start.",
+   "goDisabled": false,
+   "phish": false,
+   "srcRejected": "http://127.0.0.1:<B>/evil.html",
+   "bodyStart": "\n<iframe id=\"app\" title=\"The built page under measurement\" src=\"../../austerlitz",
+   "frames": [
+    {
+     "url": "http://127.0.0.1:<A>/Austerlitz/austerlitz-command-map.html"
+    }
+   ],
+   "foreignText": null,
+   "seconds": 96,
+   "log": []
+  },
+  {
+   "id": "6 fixed-legit",
+   "url": "http://127.0.0.1:<A>/Austerlitz/tools/step6/perf-run-fixed.html?src=..%2F..%2Fausterlitz-command-map.html",
+   "src": "../../austerlitz-command-map.html",
+   "origin": "http://127.0.0.1:<A>",
+   "title": "Frame-time route",
+   "ls": {
+    "vrr": null,
+    "otherSecret": "s3cr3t-1793618756925"
+   },
+   "frameSrcAttr": "http://127.0.0.1:<A>/Austerlitz/austerlitz-command-map.html",
+   "frameHref": "http://127.0.0.1:<A>/Austerlitz/austerlitz-command-map.html",
+   "frameRect": [
+    0,
+    0,
+    1280,
+    720
+   ],
+   "panelRect": [
+    0,
+    0,
+    1280,
+    205.5625
+   ],
+   "msg": "The build has started (32 s). Press Start.",
+   "goDisabled": false,
+   "phish": false,
+   "srcRejected": null,
+   "bodyStart": "\n<iframe id=\"app\" title=\"The built page under measurement\" src=\"http://127.0.0.1",
+   "frames": [
+    {
+     "url": "http://127.0.0.1:<A>/Austerlitz/austerlitz-command-map.html"
+    }
+   ],
+   "foreignText": null,
+   "seconds": 112,
+   "log": []
+  }
+ ],
+ "seeded": "s3cr3t-1793618756925",
+ "browser": "141.0.7390.37",
+ "finished": "2026-11-02T11:32:48.349Z"
+}

@@ -1,0 +1,437 @@
+{
+ "shot": "phase-tapped",
+ "viewport": [
+  844,
+  390
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real touchscreen tap at 101,343 on act-btn (Napoleon has given up the plateau and left his right thin. The Allies form to attack it.)"
+ ],
+ "note": "tip shown after the tap: false",
+ "state": {
+  "clock": 240,
+  "presentation": "study",
+  "mode": "hybrid",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": false,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -230.00000000000006,
+    134.78483747935664,
+    211.00000000000003
+   ],
+   "tgt": [
+    -28,
+    -0.6124032519929037,
+    1
+   ]
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   844,
+   390
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 40,
+   "placed": 12,
+   "dropped": 26,
+   "droppedIds": [
+    "c:bag",
+    "c:constantine",
+    "c:c_cav",
+    "c:c_gd",
+    "c:lich",
+    "c:c_gren",
+    "p:plateau",
+    "o:V Corps · IV Corps",
+    "o:Soult's assault · Legrand",
+    "o:III Column → the castle",
+    "o:IV Column → Kobelnitz",
+    "o:V Column counter-marches north",
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:satschan",
+    "t:austerlitz",
+    "o:Telnitz",
+    "o:Kobelnitz"
+   ],
+   "underPanel": 0
+  },
+  "drawn": [
+   {
+    "id": "o:French line on the Goldbach",
+    "text": "French line on the Goldbach",
+    "box": [
+     245,
+     114,
+     167,
+     17
+    ]
+   },
+   {
+    "id": "o:Allied columns on the plateau",
+    "text": "Allied columns on the plateau",
+    "box": [
+     247,
+     264,
+     179,
+     17
+    ]
+   },
+   {
+    "id": "o:I Column → Telnitz",
+    "text": "I Column → Telnitz",
+    "box": [
+     503,
+     243,
+     119,
+     17
+    ]
+   },
+   {
+    "id": "o:II Column → Sokolnitz",
+    "text": "II Column → Sokolnitz",
+    "box": [
+     509,
+     277,
+     138,
+     17
+    ]
+   },
+   {
+    "id": "o:Sokolnitz",
+    "text": "Sokolnitz",
+    "box": [
+     392,
+     198,
+     63,
+     17
+    ]
+   },
+   {
+    "id": "c:gqg",
+    "text": "XXXXFRBImperial Headquarters",
+    "box": [
+     172,
+     138,
+     216,
+     53
+    ]
+   },
+   {
+    "id": "c:ahq",
+    "text": "XXXXRUBAllied Headquarters",
+    "box": [
+     439,
+     123,
+     202,
+     53
+    ]
+   },
+   {
+    "id": "c:c_iv",
+    "text": "XXXFRBIV Corps",
+    "box": [
+     243,
+     204,
+     134,
+     46
+    ]
+   },
+   {
+    "id": "c:c_v",
+    "text": "XXXFRBV Corps",
+    "box": [
+     108,
+     82,
+     131,
+     46
+    ]
+   },
+   {
+    "id": "c:c_i",
+    "text": "XXXFRBI Corps",
+    "box": [
+     93,
+     227,
+     125,
+     46
+    ]
+   },
+   {
+    "id": "c:col4",
+    "text": "XXXATFourth Column",
+    "box": [
+     251,
+     55,
+     168,
+     46
+    ]
+   },
+   {
+    "id": "c:buxhowden",
+    "text": "XXXRUCLeft Wing Command",
+    "box": [
+     461,
+     178,
+     204,
+     53
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+   "box": [
+    360,
+    311,
+    428,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE DECEPTION",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "Dispositions in the dark",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "intervalFriant's division at Raigern since the night",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 38,700",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     300,
+     844,
+     91
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     -275,
+     0,
+     272,
+     299
+    ]
+   },
+   ".dispatch": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tools": {
+    "shown": true,
+    "box": [
+     471,
+     56,
+     359,
+     63
+    ]
+   },
+   "#viewmode": {
+    "shown": true,
+    "box": [
+     335,
+     14,
+     175,
+     34
+    ]
+   },
+   "#firstrun": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".drawer": {
+    "shown": false,
+    "box": [
+     844,
+     0,
+     360,
+     299
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#dgrip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study",
+  "clock": 240,
+  "cam": {
+   "pos": [
+    -230,
+    134.78,
+    211
+   ],
+   "tgt": [
+    -28,
+    -0.61,
+    1
+   ]
+  },
+  "focus": "step"
+ },
+ "textContrast": {
+  "texts": 32,
+  "min": 5.38,
+  "belowAA": []
+ }
+}

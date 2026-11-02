@@ -1,0 +1,558 @@
+{
+ "shot": "eyes-fr-overview",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 510,
+  "presentation": "study",
+  "mode": "terrain",
+  "eyes": "fr",
+  "cam": [
+   -27,
+   272,
+   41,
+   -27,
+   0,
+   9
+  ]
+ },
+ "steps": [
+  "real click #lg-toggle (was closed)"
+ ],
+ "state": {
+  "clock": 510,
+  "presentation": "study",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "fr",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -38.80919175604274,
+    535.3040295026483,
+    65.91846663184778
+   ],
+   "tgt": [
+    -38.80919175604274,
+    0.5001794500326806,
+    3.914278181685546
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -38.80919175604274,
+    535.3040295026483,
+    65.91846663184778
+   ],
+   "tgt": [
+    -38.80919175604274,
+    0.5001794500326806,
+    3.914278181685546
+   ]
+  },
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": true
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 25,
+  "placed": 20,
+  "dropped": 5,
+  "droppedIds": [
+   "t:pratzen",
+   "t:vinohrady",
+   "t:zuran",
+   "t:goldbach",
+   "t:sokolnitz"
+  ],
+  "occluded": 0,
+  "offscreen": 0,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · interval Napoleon releases Soult against the heights · derived on the heights: Allied ≈ 23,550",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE ALLIED ADVANCE",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "Sokolnitz, the castle and the pheasantry",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "intervalNapoleon releases Soult against the heights",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 23,550",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   821,
+   741,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "true",
+  "rows": [
+   "figures: dress as sourced (source and grade in the dossier), else the nation's symbol colo",
+   "standards: painted where the pattern is sourced (French eagles, Austrian colours), else pl",
+   "marching figures step: a visual convention for symbols under compressed time, not their fo",
+   "beside a name: its side, French or Allied",
+   "French formation, outlined on the ground",
+   "Allied formation, outlined on the ground",
+   "French movement",
+   "Allied movement",
+   "halt: a column stopped short of its objective",
+   "meres: pond outlines schematic",
+   "vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not establishe",
+   "valley fog: the narrative's; depth (238 m) and lifting modelled; drawn see-through",
+   "position approximate (B, C) · reported only (?)B?",
+   "C: reconstructed, position indicative",
+   "grade sizes are drawn, not measured errors",
+   "contour interval≈ 9 m",
+   "relief drawn 4× vertically (1× is true scale)",
+   "symbols: figures and standards about 45–70× life, buildings and trees about 10–15×"
+  ]
+ },
+ "scaleBar": "2 km",
+ "bodyClass": "docked pm-study",
+ "textContrast": {
+  "texts": 23,
+  "min": 7.58,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:gqg",
+    "plate": "full",
+    "ratio": 1.007,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.23
+   },
+   {
+    "id": "n:ahq",
+    "plate": "full",
+    "ratio": 0.992,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.66
+   },
+   {
+    "id": "n:bag",
+    "plate": "full",
+    "ratio": 1.026,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.96
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:gqg",
+   "cat": "name",
+   "state": "on",
+   "text": "Imperial HeadquartersB",
+   "box": [
+    615,
+    317,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:ahq",
+   "cat": "name",
+   "state": "on",
+   "text": "Allied HeadquartersB",
+   "box": [
+    759,
+    451,
+    159,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:bag",
+   "cat": "name",
+   "state": "on",
+   "text": "Advance Guard of the RightB",
+   "box": [
+    803,
+    196,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "p:plateau",
+   "cat": "plateau",
+   "state": "on",
+   "text": "THE PRATZEN · derived: Allied ≈ 23,550",
+   "box": [
+    592,
+    356,
+    242,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:II Column → Sokolnitz",
+   "cat": "overlay",
+   "state": "on",
+   "text": "II Column → Sokolnitz",
+   "box": [
+    774,
+    535,
+    138,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Sokolnitz",
+   "cat": "objective",
+   "state": "on",
+   "text": "Sokolnitz",
+   "box": [
+    658,
+    566,
+    63,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen Heights",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    828,
+    484,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:santon",
+   "cat": "place",
+   "state": "on",
+   "text": "The Santon",
+   "box": [
+    749,
+    234,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:zuran",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Zuran mound",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Goldbach stream",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "on",
+   "text": "Litava river",
+   "box": [
+    1019,
+    398,
+    70,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:telnitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Telnitz",
+   "box": [
+    735,
+    637,
+    47,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:sokolnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Sokolnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:augezd",
+   "cat": "place",
+   "state": "on",
+   "text": "Augezd",
+   "box": [
+    843,
+    591,
+    55,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:satschan",
+   "cat": "place",
+   "state": "on",
+   "text": "Satschan mere",
+   "box": [
+    806,
+    654,
+    95,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Austerlitz",
+   "box": [
+    1101,
+    286,
+    63,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "e:decision",
+   "cat": "event",
+   "state": "on",
+   "text": "Napoleon releases Soult against the heights (int",
+   "box": [
+    532,
+    275,
+    307,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "o:Legrand on the stream",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Legrand on the stream",
+   "box": [
+    656,
+    430,
+    134,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:III Column → castle",
+   "cat": "overlay",
+   "state": "on",
+   "text": "III Column → castle",
+   "box": [
+    709,
+    509,
+    120,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Liechtenstein crosses the front",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Liechtenstein crosses the front",
+   "box": [
+    803,
+    394,
+    176,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:IV Column halted",
+   "cat": "overlay",
+   "state": "on",
+   "text": "IV Column halted",
+   "box": [
+    848,
+    421,
+    110,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Friant's approach march",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Friant's approach march",
+   "box": [
+    507,
+    680,
+    145,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Kobelnitz — never reached",
+   "cat": "objective",
+   "state": "on",
+   "text": "Kobelnitz — never reached",
+   "box": [
+    557,
+    455,
+    161,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 106384,
+ "msSettle": 61130,
+ "msShot": 44714,
+ "msMeasure": 540,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

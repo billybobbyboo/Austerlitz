@@ -1,0 +1,10 @@
+bourcier@9 [ 297, 374 ] to the Litava 28 m, covWater 0.90
+ahq@8 [ 454, 190 ] to the Litava 221 m, covWater 0.04
+buxhowden@8 [ 300, 369 ] to the Litava 6 m, covWater 0.95
+kienmayer@0 [ 291, 367 ] to the Litava 247 m, covWater 0.03
+kienmayer@8 [ 296, 377 ] to the Litava 41 m, covWater 0.86
+kienmayer@9 [ 269, 436 ] to the Litava 88 m, covWater 0.89
+dok@9 [ 265, 429 ] to the Litava 122 m, covWater 0.47
+milo@8 [ 446, 210 ] to the Litava 19 m, covWater 0.96
+milo@9 [ 475, 170 ] to the Litava 157 m, covWater 0.38
+kollo@8 [ 454, 196 ] to the Litava 93 m, covWater 0.81

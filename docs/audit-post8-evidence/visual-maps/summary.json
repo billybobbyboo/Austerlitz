@@ -1,0 +1,1699 @@
+[
+ {
+  "file": "d1024/counters-overview.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 36,
+  "placed": 20,
+  "dropped": 16,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 50,
+  "drawnByCat": {
+   "place": 2,
+   "event": 1,
+   "overlay": 6,
+   "objective": 1,
+   "counter": 10
+  }
+ },
+ {
+  "file": "d1024/land-field.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 48,
+  "placed": 34,
+  "dropped": 8,
+  "aaMin": 8.32,
+  "belowAA": 0,
+  "texts": 49,
+  "drawnByCat": {
+   "name": 23,
+   "plateau": 1,
+   "place": 1,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1024/paper-entered.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 36,
+  "placed": 24,
+  "dropped": 12,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 64,
+  "drawnByCat": {
+   "plateau": 1,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1,
+   "counter": 14
+  }
+ },
+ {
+  "file": "d1024/selected-sthilaire.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 12,
+  "dropped": 3,
+  "aaMin": 12.48,
+  "belowAA": 0,
+  "texts": 16,
+  "drawnByCat": {
+   "name": 7,
+   "place": 2,
+   "overlay": 2,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1024/watch-1200.json",
+  "clock": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 27,
+  "placed": 21,
+  "dropped": 6,
+  "aaMin": 8.04,
+  "belowAA": 0,
+  "texts": 25,
+  "drawnByCat": {
+   "name": 5,
+   "plateau": 1,
+   "place": 6,
+   "event": 4,
+   "overlay": 4,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1280/counters-overview.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 36,
+  "placed": 20,
+  "dropped": 16,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 58,
+  "drawnByCat": {
+   "counter": 13,
+   "event": 1,
+   "overlay": 5,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1280/land-field.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 48,
+  "placed": 40,
+  "dropped": 8,
+  "aaMin": 8.19,
+  "belowAA": 0,
+  "texts": 58,
+  "drawnByCat": {
+   "name": 26,
+   "plateau": 1,
+   "place": 4,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1280/paper-entered.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 36,
+  "placed": 24,
+  "dropped": 12,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 64,
+  "drawnByCat": {
+   "plateau": 1,
+   "counter": 14,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1280/plans-overview.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 57,
+  "placed": 40,
+  "dropped": 17,
+  "aaMin": 12.19,
+  "belowAA": 0,
+  "texts": 43,
+  "drawnByCat": {
+   "name": 3,
+   "plateau": 1,
+   "place": 1,
+   "event": 1,
+   "overlay": 7,
+   "plan": 27
+  }
+ },
+ {
+  "file": "d1280/selected-sthilaire.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 20,
+  "dropped": 3,
+  "aaMin": 7.82,
+  "belowAA": 0,
+  "texts": 25,
+  "drawnByCat": {
+   "name": 9,
+   "plateau": 1,
+   "place": 5,
+   "overlay": 4,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1280/wall-1200.json",
+  "clock": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 31,
+  "dropped": 8,
+  "aaMin": 6.59,
+  "belowAA": 0,
+  "texts": 41,
+  "drawnByCat": {
+   "name": 19,
+   "plateau": 1,
+   "place": 4,
+   "event": 3,
+   "overlay": 3,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1280/watch-1200.json",
+  "clock": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 27,
+  "placed": 21,
+  "dropped": 6,
+  "aaMin": 8.11,
+  "belowAA": 0,
+  "texts": 25,
+  "drawnByCat": {
+   "name": 5,
+   "plateau": 1,
+   "place": 6,
+   "event": 4,
+   "overlay": 4,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1280/watch-1420.json",
+  "clock": 860,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 23,
+  "placed": 19,
+  "dropped": 4,
+  "aaMin": 8.35,
+  "belowAA": 0,
+  "texts": 23,
+  "drawnByCat": {
+   "name": 5,
+   "objective": 1,
+   "place": 8,
+   "overlay": 5
+  }
+ },
+ {
+  "file": "d1600/clean-field.json",
+  "clock": 570,
+  "presentation": "map",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 0,
+  "placed": 0,
+  "dropped": 0,
+  "aaMin": null,
+  "belowAA": 0,
+  "texts": 0,
+  "drawnByCat": {}
+ },
+ {
+  "file": "d1600/counters-field-key.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 50,
+  "placed": 34,
+  "dropped": 16,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 94,
+  "drawnByCat": {
+   "place": 3,
+   "counter": 22,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/counters-field.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 50,
+  "placed": 34,
+  "dropped": 16,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 94,
+  "drawnByCat": {
+   "place": 3,
+   "counter": 22,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/counters-overview.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 36,
+  "placed": 25,
+  "dropped": 11,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 63,
+  "drawnByCat": {
+   "place": 3,
+   "counter": 13,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/eye-zuran-noarrows.json",
+  "clock": 510,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "fr",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 42,
+  "placed": 15,
+  "dropped": 2,
+  "aaMin": 7.41,
+  "belowAA": 0,
+  "texts": 21,
+  "drawnByCat": {
+   "place": 8,
+   "name": 7
+  }
+ },
+ {
+  "file": "d1600/eye-zuran.json",
+  "clock": 510,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "fr",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 50,
+  "placed": 18,
+  "dropped": 5,
+  "aaMin": 7.41,
+  "belowAA": 0,
+  "texts": 24,
+  "drawnByCat": {
+   "overlay": 4,
+   "objective": 2,
+   "place": 5,
+   "name": 7
+  }
+ },
+ {
+  "file": "d1600/eyes-al-counters.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "al",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 40,
+  "placed": 30,
+  "dropped": 10,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 70,
+  "drawnByCat": {
+   "plateau": 1,
+   "place": 5,
+   "counter": 15,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/eyes-al-overview.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "al",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 27,
+  "placed": 22,
+  "dropped": 5,
+  "aaMin": 7.93,
+  "belowAA": 0,
+  "texts": 26,
+  "drawnByCat": {
+   "name": 5,
+   "plateau": 1,
+   "place": 7,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/eyes-fr-overview.json",
+  "clock": 510,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "fr",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 25,
+  "placed": 20,
+  "dropped": 5,
+  "aaMin": 7.58,
+  "belowAA": 0,
+  "texts": 23,
+  "drawnByCat": {
+   "name": 3,
+   "plateau": 1,
+   "overlay": 6,
+   "objective": 2,
+   "place": 7,
+   "event": 1
+  }
+ },
+ {
+  "file": "d1600/eyes-fr-paper.json",
+  "clock": 510,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "fr",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 34,
+  "placed": 22,
+  "dropped": 12,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 57,
+  "drawnByCat": {
+   "plateau": 1,
+   "overlay": 6,
+   "objective": 2,
+   "event": 1,
+   "counter": 12
+  }
+ },
+ {
+  "file": "d1600/land-field-key.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 48,
+  "placed": 42,
+  "dropped": 6,
+  "aaMin": 7.99,
+  "belowAA": 0,
+  "texts": 60,
+  "drawnByCat": {
+   "name": 26,
+   "plateau": 1,
+   "place": 6,
+   "objective": 1,
+   "event": 1,
+   "overlay": 7
+  }
+ },
+ {
+  "file": "d1600/land-field.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 48,
+  "placed": 43,
+  "dropped": 5,
+  "aaMin": 7.99,
+  "belowAA": 0,
+  "texts": 61,
+  "drawnByCat": {
+   "name": 26,
+   "plateau": 1,
+   "place": 7,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/layers-confidence-field.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 48,
+  "placed": 42,
+  "dropped": 6,
+  "aaMin": 7.99,
+  "belowAA": 0,
+  "texts": 60,
+  "drawnByCat": {
+   "name": 26,
+   "plateau": 1,
+   "place": 6,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/layers-skel-routes-overview.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 27,
+  "placed": 22,
+  "dropped": 5,
+  "aaMin": 7.93,
+  "belowAA": 0,
+  "texts": 26,
+  "drawnByCat": {
+   "name": 5,
+   "plateau": 1,
+   "place": 7,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/layers-skel-routes-paper.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 36,
+  "placed": 24,
+  "dropped": 12,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 64,
+  "drawnByCat": {
+   "plateau": 1,
+   "counter": 14,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/layers-skel-routes-selected.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 65,
+  "placed": 24,
+  "dropped": 4,
+  "aaMin": 7.84,
+  "belowAA": 0,
+  "texts": 32,
+  "drawnByCat": {
+   "name": 12,
+   "plateau": 1,
+   "place": 5,
+   "overlay": 5,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/paper-entered-key.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 36,
+  "placed": 24,
+  "dropped": 12,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 64,
+  "drawnByCat": {
+   "plateau": 1,
+   "counter": 14,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/paper-entered.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 36,
+  "placed": 24,
+  "dropped": 12,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 64,
+  "drawnByCat": {
+   "plateau": 1,
+   "counter": 14,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/paper-pratzen.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 64,
+  "placed": 6,
+  "dropped": 1,
+  "aaMin": 5.1,
+  "belowAA": 0,
+  "texts": 19,
+  "drawnByCat": {
+   "place": 1,
+   "overlay": 1,
+   "objective": 1,
+   "counter": 3
+  }
+ },
+ {
+  "file": "d1600/paper-santon.json",
+  "clock": 660,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 61,
+  "placed": 5,
+  "dropped": 1,
+  "aaMin": 5.1,
+  "belowAA": 0,
+  "texts": 19,
+  "drawnByCat": {
+   "counter": 3,
+   "place": 1,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/paper-sokolnitz.json",
+  "clock": 500,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 64,
+  "placed": 6,
+  "dropped": 1,
+  "aaMin": 5.1,
+  "belowAA": 0,
+  "texts": 26,
+  "drawnByCat": {
+   "overlay": 1,
+   "objective": 1,
+   "counter": 4
+  }
+ },
+ {
+  "file": "d1600/plans-overview.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 57,
+  "placed": 44,
+  "dropped": 13,
+  "aaMin": 12.17,
+  "belowAA": 0,
+  "texts": 47,
+  "drawnByCat": {
+   "name": 4,
+   "plateau": 1,
+   "place": 1,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1,
+   "plan": 29
+  }
+ },
+ {
+  "file": "d1600/plans-tab.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 57,
+  "placed": 44,
+  "dropped": 13,
+  "aaMin": 12.17,
+  "belowAA": 0,
+  "texts": 47,
+  "drawnByCat": {
+   "name": 4,
+   "plateau": 1,
+   "place": 1,
+   "event": 1,
+   "overlay": 7,
+   "objective": 1,
+   "plan": 29
+  }
+ },
+ {
+  "file": "d1600/pratzen-low.json",
+  "clock": 590,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 65,
+  "placed": 24,
+  "dropped": 4,
+  "aaMin": 11.01,
+  "belowAA": 0,
+  "texts": 31,
+  "drawnByCat": {
+   "name": 12,
+   "plateau": 1,
+   "place": 5,
+   "overlay": 4,
+   "objective": 1,
+   "event": 1
+  }
+ },
+ {
+  "file": "d1600/selected-soult-counters.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 50,
+  "placed": 31,
+  "dropped": 19,
+  "aaMin": 6.49,
+  "belowAA": 0,
+  "texts": 93,
+  "drawnByCat": {
+   "place": 2,
+   "counter": 21,
+   "event": 1,
+   "overlay": 6,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/selected-sthilaire-paper.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 64,
+  "placed": 16,
+  "dropped": 1,
+  "aaMin": 4.84,
+  "belowAA": 0,
+  "texts": 40,
+  "drawnByCat": {
+   "place": 4,
+   "counter": 8,
+   "overlay": 3,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/selected-sthilaire.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 65,
+  "placed": 24,
+  "dropped": 4,
+  "aaMin": 7.84,
+  "belowAA": 0,
+  "texts": 32,
+  "drawnByCat": {
+   "name": 12,
+   "plateau": 1,
+   "place": 5,
+   "overlay": 5,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/wall-0900-arrows-on.json",
+  "clock": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 64,
+  "placed": 24,
+  "dropped": 8,
+  "aaMin": 7.13,
+  "belowAA": 0,
+  "texts": 31,
+  "drawnByCat": {
+   "name": 13,
+   "plateau": 1,
+   "place": 4,
+   "objective": 2,
+   "event": 2,
+   "overlay": 2
+  }
+ },
+ {
+  "file": "d1600/wall-0900.json",
+  "clock": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 64,
+  "placed": 24,
+  "dropped": 8,
+  "aaMin": 7.13,
+  "belowAA": 0,
+  "texts": 31,
+  "drawnByCat": {
+   "name": 13,
+   "plateau": 1,
+   "place": 4,
+   "event": 2,
+   "overlay": 2,
+   "objective": 2
+  }
+ },
+ {
+  "file": "d1600/wall-1200-counters.json",
+  "clock": 720,
+  "presentation": "watch",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 64,
+  "placed": 23,
+  "dropped": 11,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 58,
+  "drawnByCat": {
+   "place": 2,
+   "counter": 14,
+   "event": 3,
+   "overlay": 3,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/wall-1200.json",
+  "clock": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "items": 65,
+  "placed": 31,
+  "dropped": 8,
+  "aaMin": 6.97,
+  "belowAA": 0,
+  "texts": 41,
+  "drawnByCat": {
+   "name": 19,
+   "plateau": 1,
+   "place": 4,
+   "event": 3,
+   "overlay": 3,
+   "objective": 1
+  }
+ },
+ {
+  "file": "d1600/watch-0900.json",
+  "clock": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 26,
+  "placed": 20,
+  "dropped": 6,
+  "aaMin": 7.84,
+  "belowAA": 0,
+  "texts": 24,
+  "drawnByCat": {
+   "name": 5,
+   "plateau": 1,
+   "place": 6,
+   "objective": 2,
+   "event": 3,
+   "overlay": 3
+  }
+ },
+ {
+  "file": "d1600/watch-1200.json",
+  "clock": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 27,
+  "placed": 22,
+  "dropped": 5,
+  "aaMin": 7.77,
+  "belowAA": 0,
+  "texts": 26,
+  "drawnByCat": {
+   "name": 5,
+   "plateau": 1,
+   "place": 7,
+   "objective": 1,
+   "event": 4,
+   "overlay": 4
+  }
+ },
+ {
+  "file": "d1600/watch-1420.json",
+  "clock": 860,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 23,
+  "placed": 20,
+  "dropped": 3,
+  "aaMin": 8.04,
+  "belowAA": 0,
+  "texts": 24,
+  "drawnByCat": {
+   "name": 5,
+   "objective": 1,
+   "place": 9,
+   "overlay": 5
+  }
+ },
+ {
+  "file": "d1600/watch-1440.json",
+  "clock": 880,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 25,
+  "placed": 22,
+  "dropped": 3,
+  "aaMin": 8.51,
+  "belowAA": 0,
+  "texts": 26,
+  "drawnByCat": {
+   "name": 5,
+   "place": 9,
+   "event": 1,
+   "overlay": 6,
+   "objective": 1
+  }
+ },
+ {
+  "file": "phone-390x844/counters-dragged.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 62,
+  "placed": 10,
+  "dropped": 5,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 21,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/counters.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 64,
+  "placed": 6,
+  "dropped": 3,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 13,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/dossier.json",
+  "clock": 329.997493315508,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 67,
+  "placed": 7,
+  "dropped": 2,
+  "aaMin": 8.64,
+  "belowAA": 0,
+  "texts": 8,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/dsheet.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 3,
+  "dropped": 1,
+  "aaMin": 8.33,
+  "belowAA": 0,
+  "texts": 4,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/explore.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 7,
+  "dropped": 2,
+  "aaMin": 8.32,
+  "belowAA": 0,
+  "texts": 8,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/eyes-al.json",
+  "clock": 329.997493315508,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 67,
+  "placed": 13,
+  "dropped": 3,
+  "aaMin": 8.64,
+  "belowAA": 0,
+  "texts": 15,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/eyes-fr.json",
+  "clock": 329.997493315508,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 67,
+  "placed": 8,
+  "dropped": 1,
+  "aaMin": 8.64,
+  "belowAA": 0,
+  "texts": 9,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/first.json",
+  "clock": 240,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 31,
+  "placed": 18,
+  "dropped": 9,
+  "aaMin": 8.38,
+  "belowAA": 0,
+  "texts": 22,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/layers.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 3,
+  "dropped": 0,
+  "aaMin": 8.41,
+  "belowAA": 0,
+  "texts": 4,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/menu.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 6,
+  "dropped": 2,
+  "aaMin": 8.26,
+  "belowAA": 0,
+  "texts": 7,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/paper.json",
+  "clock": 329.997493315508,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 40,
+  "placed": 23,
+  "dropped": 17,
+  "aaMin": 4.89,
+  "belowAA": 0,
+  "texts": 51,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/phase-tapped.json",
+  "clock": 329.997493315508,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 66,
+  "placed": 9,
+  "dropped": 7,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 21,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/rail-dragged.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 62,
+  "placed": 10,
+  "dropped": 5,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 21,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-390x844/watch.json",
+  "clock": 329.997493315508,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 67,
+  "placed": 14,
+  "dropped": 3,
+  "aaMin": 8.64,
+  "belowAA": 0,
+  "texts": 16,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/counters-dragged.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 64,
+  "placed": 1,
+  "dropped": 1,
+  "aaMin": 13.64,
+  "belowAA": 0,
+  "texts": 1,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/counters.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 64,
+  "placed": 6,
+  "dropped": 7,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 17,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/dossier.json",
+  "clock": 240,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 32,
+  "placed": 14,
+  "dropped": 17,
+  "aaMin": 8.57,
+  "belowAA": 0,
+  "texts": 16,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/explore.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 12,
+  "dropped": 3,
+  "aaMin": 7.24,
+  "belowAA": 0,
+  "texts": 15,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/eyes-al.json",
+  "clock": 240,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 31,
+  "placed": 16,
+  "dropped": 14,
+  "aaMin": 8.57,
+  "belowAA": 0,
+  "texts": 19,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/eyes-fr.json",
+  "clock": 240,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 31,
+  "placed": 16,
+  "dropped": 14,
+  "aaMin": 8.57,
+  "belowAA": 0,
+  "texts": 19,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/first.json",
+  "clock": 240,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 31,
+  "placed": 1,
+  "dropped": 0,
+  "aaMin": 13.57,
+  "belowAA": 0,
+  "texts": 1,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/layers.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 65,
+  "placed": 10,
+  "dropped": 4,
+  "aaMin": 8.32,
+  "belowAA": 0,
+  "texts": 13,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/paper.json",
+  "clock": 240,
+  "presentation": "study",
+  "mode": "staff",
+  "reading": "none",
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 40,
+  "placed": 18,
+  "dropped": 22,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 49,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/phase-tapped.json",
+  "clock": 240,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 40,
+  "placed": 12,
+  "dropped": 26,
+  "aaMin": 5.38,
+  "belowAA": 0,
+  "texts": 32,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/rail-dragged.json",
+  "clock": 570,
+  "presentation": "study",
+  "mode": "hybrid",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 64,
+  "placed": 1,
+  "dropped": 1,
+  "aaMin": 13.64,
+  "belowAA": 0,
+  "texts": 1,
+  "drawnByCat": {}
+ },
+ {
+  "file": "phone-844x390/watch.json",
+  "clock": 240,
+  "presentation": "watch",
+  "mode": "terrain",
+  "reading": "none",
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "items": 31,
+  "placed": 19,
+  "dropped": 11,
+  "aaMin": 8.57,
+  "belowAA": 0,
+  "texts": 24,
+  "drawnByCat": {}
+ }
+]

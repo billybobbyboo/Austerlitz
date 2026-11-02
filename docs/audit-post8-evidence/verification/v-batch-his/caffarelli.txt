@@ -1,0 +1,22 @@
+highway Brunn-Olmutz highway points 13
+12:00 caff [334,117] | to highway km 1.53 | to bag km 1.61 | northing diff km 1.55 | nearest enemy lich 1.37 | obj "Advance on Blasowitz" cf A st advancing
+12:15 caff [338.33,116] | to highway km 1.53 | to bag km 1.61 | northing diff km 1.56 | nearest enemy lich 1.45 | obj "Advance on Blasowitz" cf A st advancing
+12:30 caff [342.67,115] | to highway km 1.54 | to bag km 1.61 | northing diff km 1.57 | nearest enemy lich 1.52 | obj "Advance on Blasowitz" cf A st advancing
+12:45 caff [347,114] | to highway km 1.54 | to bag km 1.61 | northing diff km 1.57 | nearest enemy lich 1.60 | obj "Push Bagration off the highway" cf A st advancing
+13:00 caff [353.43,112.71] | to highway km 1.56 | to bag km 1.66 | northing diff km 1.64 | nearest enemy lich 1.60 | obj "Push Bagration off the highway" cf A st advancing
+13:15 caff [359.86,111.43] | to highway km 1.60 | to bag km 1.72 | northing diff km 1.72 | nearest enemy lich 1.60 | obj "Push Bagration off the highway" cf A st advancing
+13:30 caff [366.29,110.14] | to highway km 1.64 | to bag km 1.79 | northing diff km 1.79 | nearest enemy lich 1.60 | obj "Push Bagration off the highway" cf A st advancing
+13:45 caff [372.71,108.86] | to highway km 1.68 | to bag km 1.86 | northing diff km 1.86 | nearest enemy lich 1.60 | obj "Push Bagration off the highway" cf A st advancing
+14:00 caff [379.14,107.57] | to highway km 1.71 | to bag km 1.95 | northing diff km 1.93 | nearest enemy lich 1.60 | obj "Push Bagration off the highway" cf A st advancing
+14:15 caff [385.57,106.29] | to highway km 1.77 | to bag km 2.03 | northing diff km 2.00 | nearest enemy lich 1.61 | obj "Push Bagration off the highway" cf A st advancing
+14:30 caff [392,105] | to highway km 1.83 | to bag km 2.13 | northing diff km 2.08 | nearest enemy lich 1.61 | obj "Push Bagration off the highway" cf A st pursuing
+14:45 caff [395.1,104.1] | to highway km 1.86 | to bag km 2.18 | northing diff km 2.13 | nearest enemy lich 1.60 | obj "Push Bagration off the highway" cf A st pursuing
+15:00 caff [398.2,103.2] | to highway km 1.89 | to bag km 2.23 | northing diff km 2.18 | nearest enemy lich 1.59 | obj "Push Bagration off the highway" cf A st pursuing
+15:15 caff [401.3,102.3] | to highway km 1.92 | to bag km 2.28 | northing diff km 2.23 | nearest enemy lich 1.58 | obj "Push Bagration off the highway" cf A st pursuing
+15:30 caff [404.4,101.4] | to highway km 1.95 | to bag km 2.33 | northing diff km 2.28 | nearest enemy lich 1.57 | obj "Push Bagration off the highway" cf A st pursuing
+15:45 caff [407.5,100.5] | to highway km 1.99 | to bag km 2.38 | northing diff km 2.33 | nearest enemy lich 1.56 | obj "Push Bagration off the highway" cf A st pursuing
+16:00 caff [410.6,99.6] | to highway km 2.02 | to bag km 2.43 | northing diff km 2.38 | nearest enemy lich 1.55 | obj "Push Bagration off the highway" cf A st pursuing
+16:15 caff [413.7,98.7] | to highway km 2.05 | to bag km 2.48 | northing diff km 2.43 | nearest enemy lich 1.54 | obj "Push Bagration off the highway" cf A st pursuing
+16:30 caff [416.8,97.8] | to highway km 2.08 | to bag km 2.54 | northing diff km 2.49 | nearest enemy lich 1.53 | obj "Push Bagration off the highway" cf A st pursuing
+16:45 caff [419.9,96.9] | to highway km 2.12 | to bag km 2.59 | northing diff km 2.54 | nearest enemy lich 1.53 | obj "Push Bagration off the highway" cf A st pursuing
+17:00 caff [423,96] | to highway km 2.15 | to bag km 2.64 | northing diff km 2.59 | nearest enemy lich 1.52 | obj "Push Bagration off the highway" cf A st holding

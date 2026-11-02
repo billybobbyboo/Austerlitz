@@ -1,0 +1,96 @@
+{
+ "label": "v-premise-a",
+ "verdicts": [
+  {
+   "area": "history",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "code read (anchorList/legWindow app.js:3235-3304, liveStatus app.js:7696-7700, waitingFor app.js:7689-7694, poser app.js:6001-6003); data read (data.js:593-594, 631-644); positions by arithmetic; archive extraction (stage0, stage2c, step5c, stage8h); decision records",
+   "evidence": "rg_inf@6 [327,194] counterattack reached 11:15, @7 [397,196] repulsed 12:45: at 12:00 [362,195] walking east, status Counter-attacking, as history/guard-attack-motion.txt. guard-attack 11:00-13:00 and guard-broken 11:15-13:15 (analysis.js:314-320) span the walk. Anchors identical since archive/stage0-c09c4b23.html; headingAt already in the Stage 0 build. Decisions 40/45/125(b) accept the timing (STAGE2_SPEC.md:1112, 1116, 1243-1253); decision 46 requires coherence only for dated delays (STAGE2_SPEC.md:1117), so no decision covers the status/facing shown during an undated leg.",
+   "notes": "Scope wider than the title: motion-vs-status.txt lists 12 formation-intervals incl. French (legrand, bourcier, c_gren, suchet). Origin inherited; 8E's gait only makes the walk visible (1.48/1.79 km/h above decision 244's 1 km/h floor). Remedy: a presentation-only rule risks CLAUDE.md 'Never fix a data problem by changing only the display' where the cause is the 11:15 arrival; an in-rules data option: date rg_inf@7/rg_cav@7's departure from the map's own event windows (decision 43's method, 41's grade and basis)."
+  },
+  {
+   "area": "history",
+   "index": 1,
+   "verdict": "CONFIRMED",
+   "method": "own script tools/audit-post8/verification/v-premise-a/legrand-prz.js (data.js anchors, legWindow's linear rule, LANDMARK_SITES from world.js:162); block size from app.js:1625-1636 and geo.js:37-42; archive comparison 8H/8J/8K; 8J record (STAGE8_SPEC §21.7)",
+   "evidence": "08:45 legrand [213.0,343.5] 25 m from the castle; closest to prz 37 m at 08:51; 651 m at 09:30 (verification/v-premise-a/legrand-prz.txt). A division's front >1 km (battalion 2.7 world units x 63.2 m), so the blocks overlap fully. prz@2/@4/@7 [238,332]/[233,344]/[227,338] in archive/stage8h-24e29da7.html, [215,341] in stage8j/stage8k; Legrand unchanged. 8J's consequences: knowledge, chronology, movement audit, narrative; captures at 10:00 and 15:00 only.",
+   "notes": "No rule names interpenetration (the Walther/Nansouty precedent is map-label overlap, CHANGELOG.md:8484-8529); both acts record a fight at the castle wall (data.js:227, :536), so contact is recorded; the pass-through and Legrand standing 0.4-0.77 km beyond the III Column at 09:15-09:30 while still showing phase 2's act (no @3) is not. Remedy (a via or a hold) is within the rules as a data task.",
+   "corrected": {
+    "observed": "Legrand's marker crosses the III Column at the castle 08:40-09:00 (37 m at 08:51) and stands 0.4-0.77 km beyond it at 09:15-09:30 with phase 2's act; contact at the castle wall is recorded by both acts, the pass-through is not. Whether the opening's 08:45 frame shows it is not established (history/README.md:112; castle about 30 degrees off the stop's camera axis)."
+   }
+  },
+  {
+   "area": "history",
+   "index": 2,
+   "verdict": "CONFIRMED",
+   "method": "data and code read; archive extraction; decision 201 record",
+   "evidence": "analysis.js:292-294 claim fact, why 'That he ordered the column to face about is this map's reading'; narrative.js:42-45 claim interpretation, note 'No account read has Kutuzov order the 4th Column to face about'; data.js:16-17 CLAIM.fact 'Attested in the standard accounts of the battle.'; dossierEvent renders claimPill and CLAIM[e.claim].note (app.js:8297-8300, 8328); evNoteParts/evMapText add nothing for fact (app.js:3886-3893). claim fact in stage0, step4b-02a46c50 and stage8k archives.",
+   "notes": "Required by CLAUDE.md's labelling rule and by decision 201 (b) as applied: the step 4b review labelled this order this map's reading in the why, both phase lines, the act and the Command row (INFERRED) (CHANGELOG.md:2583-2597; questions.md:240-252), but not the pill; no decision covers the pill. The scan's other flag (pratzen-village est vs uncertain) is an uncertain hour graded C, not a contradiction."
+  },
+  {
+   "area": "history",
+   "index": 3,
+   "verdict": "WEAKENED",
+   "method": "register entries read (readings.md C6.21, C6.c6, C1.3, C2.29, C6.22), proposals.md C6.p12, decisions 45, 158, 197; data and plan text read; archive extraction",
+   "evidence": "PLANS.al order 'The Imperial Guard to remain behind Krzenowitz, in hand.' (analysis.js:186), zone 'Reserve behind Krzenowitz' (:165), theme 'stands in reserve behind Krzenowitz' (:15) against the disposition read on its page image 'hinter Blasowitz und Kruh' (C6.21 A, readings.md:3103-3110); C6.p12 changed the role only. Decision 158 (ROADMAP.md:68) accepts the Russian Guard as Blasowitz's defenders; none drawn within 1.78 km at 11:15; tolWhy covers Caffarelli only (analysis.js:310-311). But the register also holds the official report's 'auf der anbefohlnen Anhöhe von Krzenowitz' (C1.3 B fact readings.md:100-110; C6.22 B fact :3113-3125; C2.29 B disputed :925-935); C6.c6 (Stutterheim, A) is labelled disputed and starts the Guard from 'the heights in front of Austerlitz'; rg_inf@0 at 04:00 precedes daybreak. Decision 197 concerned the French Guard.",
+   "notes": "Inherited (plan text and anchors in archive/stage0). Decision 45's 'its start is not dated' (STAGE2_SPEC.md:1248-1250) predates the step-4 readings that name a departure and destination: new evidence changing its premise. Remedy: regrade with the disagreement kept (CLAUDE.md 'keep the disagreement'); re-plotting onto the Blasowitz-Krug heights would pick Stutterheim's side unless the source agents settle it; reword PLANS.al/ANALYSIS[#plan] to the disposition with the report's order attributed.",
+   "corrected": {
+    "title": "The Russian Guard's morning positions are graded A though the project's readings contest them (the disposition and Stutterheim against the official report's 'ordered height of Krzenowitz'); the plan text misstates the disposition; nobody is drawn at Blasowitz when it falls 'from the Russian Guard' (decision 158's defenders)",
+    "observed": "A ('Position documented in the sources') on rg_inf@0, rg_cav@0 and the carried rg_inf@5 where the readings disagree; PLANS.al.cols[7].ord, its zone and ANALYSIS[#plan] say 'behind Krzenowitz' where the disposition read at A says 'behind Blasowitz and Kruh'; the Guard 1.78 km from Blasowitz at its fall."
+   }
+  },
+  {
+   "area": "history",
+   "index": 4,
+   "verdict": "WEAKENED",
+   "method": "own recount tools/audit-post8/verification/v-premise-a/grades-recount.js (vm load of geo.js/data.js); 8K register and data.js header read; decision records searched",
+   "evidence": "180 positioned anchors, 88 A, 90 carried, 44 carried A (verification/v-premise-a/grades-recount.txt), as the finding; 29 of the 44 carry no act; 19 moved >=1 km. 8K register scopes its rule: 'The rule applied here, anchor by anchor' (stage8-evidence/8k/register.md:8-11). Carrying is the documented design (data.js:135; STAGE5_SPEC.md:188), used deliberately (questions.md:86, drouet@7 inheriting B). CONF_TEXT.A 'Position documented in the sources.' (app.js:7731, guarded) and data.js:3-4 are the operative definitions; caffarelli@6-@9 (data.js:288-291) no act, no note, 0.8-1.5 km legs, where 8K graded the adjacent Suchet pursuit C (register.md:100-112).",
+   "notes": "The premise holds through CONF_TEXT.A, not through 8K's rule. 44 is an upper bound of unreviewed carried grades, not of wrong ones (15 carry an act and may be documented). No owner decision accepts carried grades. Remedy within the rules (a reviewed data task; an optional test.js rule).",
+   "corrected": {
+    "title": "44 of 88 A grades are carried forward unreviewed; on moved anchors with no act (e.g. Caffarelli @6-@9) the visitor reads 'Position documented in the sources' with nothing in the data placing them there, where 8K graded the adjacent Suchet pursuit C",
+    "observed": "Carried grades are the documented design (data.js:135) and were never reviewed after moves; 29 of the 44 carried A anchors have no act, 19 moved at least 1 km. The expectation follows from CONF_TEXT.A (app.js:7731) and data.js:3-4; 8K's register applies its rule to its own anchors only."
+   }
+  },
+  {
+   "area": "sources-oob",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "reproduced archive.org full-text queries on 2 Nov (ia-fts.py, 6 queries); item metadata checked; notes read in data.js/analysis.js; ROADMAP record",
+   "evidence": "Text layer: 'Ill Corps, MARSHAL DAVOUT 2nd Div. (3,800 and 9 guns) Gen. Friant'; '4th Column, Lt.-Gens. Miloradovich and Kollowrath (23,900, 52 light and 24 heavy pieces)' and in the narrative 'an Austro-Russian fourth column of 23,900 infantry'; 0 hits for 4,300, 3,470, 13,900, 6,880 (verification/v-premise-a/duffy-fts-repro.txt). Item = Duffy 1977 Seeley Service ISBN 085422128X, the one appearance.js:96 cites. Notes as quoted at data.js:240, 248, 470, 485, 551, 559, analysis.js:25; only Kienmayer's says '(cited, not read)'. ROADMAP.md:236 records Duffy and Smith as not read.",
+   "notes": "Premise: CLAUDE.md 'Never invent ... strengths ... or sources'; no owner decision accepts it. Caveat: text layer, not page images (the project's standard for fact); a page reading is needed before the data task, not before rewording. Inherited (correction pass)."
+  },
+  {
+   "area": "geography",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "own model computation in a fresh isolated copy (relief-points.js, validated at the fit anchors) and on 9eb7abb's sources; independent DEM (EU-DEM 25 m via OpenTopoData) at the area's 8 points; visitor text and decision records read",
+   "evidence": "Model minus EU-DEM: -54, -70, -81, -50, -79, -54 m at the six southern-plateau points; chapel -37 m (201 vs 238); Schlapanitz +49 m (273 vs 224) (verification/v-premise-a/relief-vs-eudem.txt). Anchors check: Pratzeberg 323.9/324, Vinohrady 294.4/294, Augezd 189.9/195. Identical on 9eb7abb: inherited. Visitor text data.js:797 'fitted to surveyed elevations'; dossiers quote survey only at GT places (app.js:8212-8216, 8259). Meres declared schematic (decision 27), relief not; 8H's geography review has no relief item; relief-fit.js:5-8 lists 12 anchors.",
+   "notes": "Open-Meteo (the area's GLO-90 route) refused: daily quota exceeded, an environment limit. 50-80 m on farmland and a +49 m town excess are not surface-model artefacts. P1 holds for the disclosure (CLAUDE.md 'label the uncertainty'); the refit is a P2 data task."
+  },
+  {
+   "area": "tests",
+   "index": 0,
+   "verdict": "WEAKENED",
+   "method": "GitHub API (rules/branches/main, rulesets, check-runs of 141f890); workflow read; decision 132 and 8L readiness record read",
+   "evidence": "Ruleset 24036909 requires only context 'checks'; 141f890: browser (selftest) failure 08:44:41, deploy success. Decision 132: 'add check:contrast and a one-page self-test run to .github/workflows/checks.yml; keep the full check:visual on demand' (FINAL_AUDIT.md:834, 877-879): run, not gate. The red merge was over the failing line recorded before the merge (STAGE8_SPEC.md §22.7 'every required check passes but that one line'; CLAUDE.md) and settled by decision 267 (a) next day: the finding's own alternative expectation was met.",
+   "notes": "No visitor-facing behaviour, WCAG criterion or CLAUDE.md rule is involved, so S2 does not apply. Fact confirmed; remedy sound (a ruleset setting, the owner's call; holds merges 20-45 min).",
+   "corrected": {
+    "title": "TS-1: Only the node job is a required check on main; the browser jobs of decision 132 run on every push but gate no merge (a hardening option; the one red merge, #77, was a recorded owner decision)",
+    "severity": "S3",
+    "priority": "P3",
+    "category": "optional-improvement"
+   }
+  }
+ ],
+ "not_done": [
+  "history #1: the opening's 08:45 frame and the rendered block overlap (no browser run; geometry from code)",
+  "history #0: the on-screen gait and facing (from code and the area's numbers)",
+  "sources-oob #0: Duffy's page images (lending item) and Smith (1998)",
+  "geography #0: GLO-90 grid, profiles and fog-cell counts not re-run (Open-Meteo quota exceeded); only 8 EU-DEM points",
+  "history #4: each of the 44 carried A anchors against the readings (counted; Caffarelli read)",
+  "history #3: the page images behind C1.3, C2.29, C6.21, C6.22, C6.c6 (register entries read)",
+  "tests #0: repository settings beyond branch rules and rulesets (bypass actors); check runs of other PR heads"
+ ],
+ "extra_issues": []
+}

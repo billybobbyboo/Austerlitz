@@ -1,0 +1,43 @@
+id | ech | nation | arm | parent | children | strength | guns | commander | anchors:cf
+gqg | army | fr | hq |  |  | null |  | Emperor Napoleon I | 0:B 6:A 7:- 8:B
+c_iv | corps | fr | inf |  | sthilaire,vandamme,legrand,heightguns | 23600 |  | Marshal Nicolas Soult | 
+heightguns | bde | fr | art | c_iv |  | null |  | Corps and Guard artillery | 7:C 8:B 9:-
+sthilaire | div | fr | inf | c_iv |  | 6600 |  | Gen. de division Louis Vincent de Saint-Hilaire | 0:A 2:- 3:A 4:A 5:- 6:- 7:A 8:B 9:-
+vandamme | div | fr | inf | c_iv |  | 6700 |  | Gen. de division Dominique Vandamme | 0:A 2:- 3:A 4:- 6:A 7:- 8:A 9:-
+legrand | div | fr | inf | c_iv |  | 7000 |  | Gen. de division Claude Legrand | 0:A 1:A 2:- 4:B 7:- 8:- 9:-
+c_iii | corps | fr | inf |  | friant,bourcier | 4300 | 12 | Marshal Louis-Nicolas Davout | 
+friant | div | fr | inf | c_iii |  | 3470 |  | Gen. de division Louis Friant | 0:B 1:- 3:A 5:- 7:A 8:- 9:-
+bourcier | div | fr | cav | c_iii |  | 830 |  | Gen. de division François Bourcier | 0:C 3:- 7:- 8:- 9:-
+c_v | corps | fr | inf |  | caffarelli,suchet | 12700 |  | Marshal Jean Lannes | 
+caffarelli | div | fr | inf | c_v |  | 6700 |  | Gen. de division Marie-François de Caffarelli du F | 0:A 5:A 6:- 7:- 8:- 9:-
+suchet | div | fr | inf | c_v | santon | 6000 |  | Gen. de division Louis-Gabriel Suchet | 0:B 5:C 6:- 7:- 8:- 9:B
+santon | bde | fr | inf | suchet |  | 1600 | 18 | Gen. de brigade Michel Claparède | 0:A
+c_cav | corps | fr | cav |  | kellermann,nansouty,dhautpoul,walther | 7400 | 36 | Marshal Joachim Murat | 
+kellermann | div | fr | cav | c_cav |  | 2400 |  | Gen. de division François Étienne Kellermann | 0:B 5:A 6:- 7:- 9:-
+nansouty | div | fr | cav | c_cav |  | 1600 |  | Gen. de division Étienne de Nansouty | 0:B 5:A 6:- 7:- 9:-
+dhautpoul | div | fr | cav | c_cav |  | 1300 |  | Gen. de division Jean-Joseph d'Hautpoul | 0:B 5:B 7:- 9:-
+walther | div | fr | cav | c_cav |  | 1500 |  | Gen. de division Frederic Walther | 0:C 5:C 7:- 9:-
+c_i | corps | fr | inf |  | rivaud,drouet | 13000 |  | Marshal Jean-Baptiste Bernadotte | 
+rivaud | div | fr | inf | c_i |  | 6000 |  | Gen. de division Olivier Rivaud | 0:B 3:- 6:- 7:- 9:-
+drouet | div | fr | inf | c_i |  | 7000 |  | Gen. de division Jean-Baptiste Drouet d'Erlon | 0:B 3:- 6:B 7:- 9:-
+c_gd | corps | fr | guard |  | guard_inf,guard_cav | 5500 |  | Marshal Jean-Baptiste Bessières | 
+guard_inf | div | fr | guard | c_gd |  | 3000 |  | Grenadiers and Chasseurs a Pied | 0:B 6:- 7:- 9:-
+guard_cav | div | fr | cav | c_gd |  | 2500 |  | Marshal Bessières; charge led by Gen. Rapp | 0:B 6:A 7:- 9:-
+c_gren | div | fr | inf |  |  | 5700 |  | Gen. de division Nicolas Oudinot | 0:B 6:- 7:- 8:- 9:-
+ahq | army | ru | hq |  |  | null |  | Gen. Mikhail Kutuzov (commander-in-chief in name) | 0:B 3:A 4:B 6:- 8:- 9:-
+buxhowden | corps | ru | hq |  | kienmayer,dok,lang,prz | 40000 |  | Gen. Friedrich Wilhelm von Buxhowden | 0:C 2:C 7:- 8:B 9:-
+kienmayer | div | at | mixed | buxhowden |  | 6340 | 12 | Feldmarschall-Leutnant Michael von Kienmayer | 0:A 1:A 2:- 7:B 8:A 9:-
+dok | div | ru | inf | buxhowden |  | 13490 | 64 | Lt.-Gen. Dmitry Dokhturov | 0:A 1:A 2:A 7:- 8:A 9:-
+lang | div | ru | inf | buxhowden | kamensky | 11700 |  | Lt.-Gen. Louis de Langeron | 0:A 1:- 2:A 4:C 7:- 8:- 9:-
+kamensky | bde | ru | inf | lang |  | 4250 |  | Maj.-Gen. Sergey Kamensky | 2:B 3:A 4:A 5:- 6:B 7:C 8:C
+prz | div | ru | inf | buxhowden |  | 7700 |  | Lt.-Gen. Ignacy Przybyszewski | 0:A 1:- 2:B 4:- 7:B 8:A
+col4 | corps | at | inf |  | milo,kollo | 13900 |  | FZM Johann Kollowrat and Lt.-Gen. Mikhail Milorado | 
+milo | div | ru | inf | col4 |  | 4800 |  | Lt.-Gen. Mikhail Miloradovich | 0:A 2:A 3:A 4:B 6:- 8:- 9:-
+kollo | div | at | inf | col4 |  | 9100 |  | FZM Johann Karl Graf Kollowrat-Krakowsky | 0:A 2:A 3:- 4:B 5:B 6:B 8:- 9:-
+lich | corps | ru | cav |  |  | 5400 | 24 | FML Prince Johann von Liechtenstein | 0:B 2:A 3:- 5:A 6:- 7:- 8:- 9:-
+bag | corps | ru | inf |  |  | 13700 | 42 | Lt.-Gen. Prince Pyotr Bagration | 0:B 5:B 6:C 7:- 8:B 9:C
+constantine | corps | ru | guard |  | rg_inf,rg_cav | 10500 | 40 | Grand Duke Constantine Pavlovich | 
+rg_inf | div | ru | guard | constantine |  | 4430 |  | Not established on the day | 0:A 5:- 6:A 7:- 8:- 9:-
+rg_cav | div | ru | cav | constantine |  | 2900 |  | Lt.-Gen. Andrei Kologrivov | 0:A 6:A 7:- 8:- 9:-
+
+40 formations; with track: 32

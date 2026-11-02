@@ -1,0 +1,930 @@
+{
+ "area": "history",
+ "scope_summary": "Internal consistency and labelling of the historical dataset (data.js, analysis.js, narrative.js, the parts of appearance.js the dossier quotes) and of what app.js shows from it (leaf rule and totals, plateau and centre-separation readings, card/dossier rows and pills, event dossier and labels, Command tab, OOB list, counters, facing, overlays), on the audited build f10fe585 (origin/main 43e3e5b). Method: node scripts in an isolated copy (history-iso) loading the world module, the five data files and the generated helpers as sim-test.js does, plus functions extracted from the live app.js by name; archived builds read for history. Scripts: /home/user/Austerlitz/tools/audit-post8/history/*.js; outputs and README: /home/user/Austerlitz/docs/audit-post8-evidence/history/. Verified sound: no total double-counts (leaf rule; Santon now Suchet's child, D-3 fixed), references 0 errors, tour stop 4 figures, notes' arithmetic, prior fixes H-1/H-2/H-3/H-4/H-12/H-13/H-14/H-18/D-3/D-4/S-5, the 8K register's grades as shown, halted formations' facing. Main problems: (1) the Russian Guard, Liechtenstein and Miloradovich drawn walking away from the enemy for 40-85 min under \"Counter-attacking\"/\"Charging\"; (2) NEW in 8J: Legrand's division marker walks through the Sokolnitz castle and the III Column holding it (37 m at 08:51); (3) the face-about event shows \"Fact\"/\"Attested in the standard accounts\" beside its own why claimed \"This map's reading\"; (4) the Russian Guard's A-graded approach contradicts the project's own A-graded readings (disposition: behind Blasowitz and Kruh; Stutterheim: onto the Blasowitz-Krug heights, Blasowitz garrisoned) and no Allied formation is within 1.4 km of Blasowitz when the event says the French take it from the Guard; (5) 44 of 88 A grades carried forward from earlier anchors, against the rule 8K applied to Suchet; plus a set of S3/S4 text-position, labelling and record inconsistencies. No source tracing (other agents), no browser.",
+ "coverage": [
+  {
+   "item": "(1) Double counting: parent/child formations, aggregates vs children, totals (army, plateau reading, counters, sources sheet), detachments",
+   "method": "strengths.js (aggregate vs children; sideOnFieldAt every 5 min; naive vs leaf-rule sums; plateauStrength at 11 clocks with contributors; parent and child counters drawn at once); code read of ownStrengthAt/aggStrength/buildOOB/fstate/compactCard/dossierFormation (app.js:713-756, 5110-5113, 7266-7300, 7809-7811, 7975-7979); grep for other totals",
+   "result": "No total counts a parent and its child twice: sideOnFieldAt peaks at 68,300 French / 79,560 Allied (army figures 73,000 / 85,400), plateau 38,700 at 04:00, 19,300 from 07:21. Santon is Suchet's child (D-3 fixed). Displayed (not summed) overlaps remain: Langeron's counter 11,700 includes Kamensky's 4,250 drawn separately from 08:00 (no note says so); Buxhowden's HQ shows 40,000. Detachments: Levasseur's brigade is represented by moving the whole Legrand marker (see findings).",
+   "evidence": "docs/audit-post8-evidence/history/strengths.txt, sim-test-iso.txt"
+  },
+  {
+   "item": "(2) Strengths vs SOURCE_NOTE totals and labels; the Russian Guard gap (decision 213 (b))",
+   "method": "strengths.js; every strengthNote's arithmetic checked by hand against the figure; dossier/card code read for how ranges and notes show",
+   "result": "All note arithmetic checks (Kienmayer 3,400+2,940; Guard rows 4,430 and 2,900; Sokolov's IV Corps 24,690; III Corps odds 3.2-3.6 and 4.4-5). Gaps explained in notes except Buxhowden 40,000 vs 39,230 (inside '33,000-40,000'). The Guard's 10,500 vs drawn 7,330 is shown in the OOB and the corps counter; explained only indirectly in the constantine dossier's 'On the figures' (Duffy's rows listed; the 3,170 not named): accepted compromise. The full dossier never shows strengthRange (only the card does).",
+   "evidence": "strengths.txt; data.js:621-645"
+  },
+  {
+   "item": "(3) Affiliations and hierarchy; commander names and spellings across tables",
+   "method": "refs.js (parents/children, EVENTS/ANALYSIS/PLANS/KNOW_OVERRIDE/TOUR ids and moments); names.js (edit-distance-1 spelling pairs over 16,788 visitor-string records); commander claims listed",
+   "result": "0 reference errors; mixed nations noted (Kienmayer AT under Buxhowden, Miloradovich RU under the IV Column). Names consistent; variants only in quotations of sources. Remaining unaccented forms outside decision 209's six names; guard_inf's commander field holds a composition; Kologrivov unqualified.",
+   "evidence": "refs.txt, name-variants.txt"
+  },
+  {
+   "item": "(4) Chronology: phase clocks vs event times vs anchor times vs narrative; open questions and disputed hours (H-1 class); the four named conflicts",
+   "method": "phase-lines.js (lines vs phases; events vs their phase's lines); event-claims.js; conflicts.js; plateau-day probe; reading of chronology.js rules and check:chronology output",
+   "result": "Phase clocks match t0-t1; boundary placements minor (Blasowitz and Kursk lines in the phase before their event). Three events whose texts say the hour is disputed are not 'disputed'. Named conflicts are disclosed in act/event/phase line; Kamensky's turn is drawn from 08:00, not '08:45' as disclosed, and lifts the derived plateau reading at 08:29.",
+   "evidence": "phase-lines.txt, event-claims.txt, named-conflicts.txt, plateau-day.txt"
+  },
+  {
+   "item": "(5) Inferred/derived values shown as facts; grades vs claims; derived tags",
+   "method": "event-claims.js, command-claims.js, claim-text-scan.js, grades.js; code read of claimPill/posClaimPill/claimTag/marchRow/posRow/plateauText/paintSituation",
+   "result": "Derived numbers are tagged (plateau label and caption, centre separation, march row, midpoint, ordered route; tour stops say derived in words). No statement is claimed 'fact'. Contradictions: face-about pill 'Fact'; 31 DOCUMENTED Command rows 'unchecked'; 44 carried-forward A grades.",
+   "evidence": "event-claims.txt, command-claims.txt, claim-text-scan.txt, grades.txt"
+  },
+  {
+   "item": "(6) Contradictory descriptions between dossier, events, tour, phase lines, Command tab, themes",
+   "method": "full read of data.js/analysis.js narrative; cross-checks of acts against positions (legs-water.js sides), of the Command rows against event times, of plan/theme against roles and readings",
+   "result": "Found: the Guard's disposition (role vs plan order/theme), Kienmayer 'west of the Goldbach', 'Crosses the Goldbach' in phase 2, the II Column arrow's 'at the village', Command al@5 Blasowitz anachronism, ahq@4 vs kamensky@6, Caffarelli's objective, Sokolnitz 'Defended by Legrand, then Friant'.",
+   "evidence": "legs-water.txt, command-claims.txt, caffarelli-bagration.txt, sokolnitz-defence.txt"
+  },
+  {
+   "item": "(7) Interpolation implying unsupported movement (through enemies, across the Goldbach/meres/Litava, movement where the record has a halt); gaps in check:chronology's movement audit and audit.js",
+   "method": "legs-water.js (crossings of GOLDBACH_M, BROOKS_M, LITAVA_M with road/marsh rasters); proximity.js and closest.js (opposing centres, 1-minute samples); drift.js; motion-vs-status.js; reading of auditMovement/crossingProblem and audit.js",
+   "result": "The movement audit tests rate, ponds and marsh away from villages/roads only; not interpenetration, rivers, Goldbach crossings, motion direction vs status, or text sides. Found: Legrand through the III Column (new, 8J), Bourcier through Kienmayer and Dokhturov, Miloradovich on and across the Litava, 63 drift legs, offensive statuses moving away.",
+   "evidence": "legs-water.txt, closest-approach.txt, legrand-through-castle.txt, litava-anchors.txt, drift-legs.txt, motion-vs-status.txt"
+  },
+  {
+   "item": "(8) Facing and combat relationships (faceClock, enemyFacing)",
+   "method": "facing.js with faceClock/posAtT/enemyFacing extracted from live app.js; halted formations at each phase middle vs opponents named in acts; motion-vs-status.js for moving formations (which face their heading, app.js:6001-6003)",
+   "result": "Halted formations face their recorded opponents (no fighting formation >60 degrees off; only end-of-day cases). Moving formations face their heading, which reverses the Guard's, Liechtenstein's and Miloradovich's apparent action (finding).",
+   "evidence": "facing.txt, motion-vs-status.txt, guard-attack-motion.txt"
+  },
+  {
+   "item": "(9) 8J/8K re-plotted anchors vs register (suchet, bag, III Column, Legrand); Caffarelli's separation; kienmayer@7 and lang@2 offsets",
+   "method": "register.md read; grades.js; archive diff (stage8h vs stage8j vs current) for Legrand/prz/bourcier/dok/kienmayer tracks; caffarelli.js; legs-water.js sides",
+   "result": "8K grades as the register states; prz at the castle B. Caffarelli 2.1-2.6 km from Bagration (records say 2.5-2.9), objective 'Push Bagration off the highway' unexplained, A carried. kienmayer@7 0.9 km east of the brook since Stage 0 (not an 8J effect); lang@2 (A) 0.98 km from Sokolnitz across the brook. 8J's prz move created the Legrand walk-through.",
+   "evidence": "caffarelli-bagration.txt, legs-water.txt, legrand-through-castle.txt, grades.txt"
+  },
+  {
+   "item": "Prior audit fixes (H-*, D-*, G-*, S-*) on this build",
+   "method": "targeted reads and probes (drouet at 08:45, plateau label text, grep of removed wordings, D-3/D-4 data, faceClock code)",
+   "result": "Hold: H-1 (events disputed), H-2, H-3, H-4, H-12, H-13, H-14, H-18, D-3, D-4, S-5. Partial: H-7 (event pill 'Estimate' vs Command 'ANECDOTE'), H-19 (accents for six names only). Open: G-3 (Miloradovich A 'near Pratzen village' 1.6 km away).",
+   "evidence": "README.md 'What was found'"
+  }
+ ],
+ "findings": [
+  {
+   "title": "Russian Guard, Liechtenstein and Miloradovich drawn walking away from the enemy while shown Counter-attacking/Charging",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "simulation: leg timing and status/heading presentation",
+   "user_impact": "In 'The Guard' phase (a theme, the dwell's events, the eagle) the Russian Guard reaches its attack place at 11:15 and at once walks east, facing east, for 85 minutes with the pills 'Counter-attacking'/'Charging', never meeting the French Guard; the phase-6 arrow draws a westward attack over the eastward movement. The gait (8E) animates the walk (1.5-1.8 km/h).",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:633-634",
+    "data.js:643-644",
+    "data.js:593-594",
+    "data.js:564-565",
+    "data.js:577-579",
+    "app.js:3235",
+    "app.js:6001-6003",
+    "app.js:7689",
+    "docs/STAGE2_SPEC.md:1243"
+   ],
+   "evidence": "motion-vs-status.txt: rg_inf 'counterattack' moving away 11:20-12:40 at 1.48 km/h, 160 deg off the bearing to Vandamme; rg_cav 'charging' moving away 11:20-12:40 at 1.79 km/h; lich 'charging' moving away 10:35-11:10; milo 'counterattack' moving away 09:50-11:05; kollo 'counterattack' at 4.86 km/h 10:20-10:25. guard-attack-motion.txt: rg_inf [327,194] at 11:15 to [393,196] at 12:40, heading 88 deg (east); status 'counterattack' until 12:45. OVERLAYS phase 6 'Russian Imperial Guard' attack arrow [[413,202],[359,187],[330,192]].",
+   "expected": "While a formation's status is offensive, it is not drawn moving away from its opponent; or the status and heading shown during a leg match the leg (e.g. the destination's status, or a hold before the retreat).",
+   "observed": "anchorList's default (an undated leg runs from the previous anchor's arrival to the next phase start) starts the retreat leg the moment the attack anchor is reached; stateAt shows the phase's status; the poser faces the heading. waitingFor (decision 46) handles only dated departures.",
+   "remedy": "Owner decision (decision 45 keeps undated legs spread over their interval): either a presentation rule (while a leg moves away from the nearest enemy, show the destination anchor's status and keep facing the enemy), or a data task adding holds (moveMin) on rg_inf@7, rg_cav@7, lich@6, milo@6 with the timing basis recorded; add a motion-vs-status check to sim-test.js.",
+   "repro": "node tools/audit-post8/history/motion-vs-status.js; node tools/audit-post8/history/probes.js guard-attack-motion (ISO=isolated copy). In the page: 11:30-12:40, select the Russian Guard.",
+   "effort": "4 h-2 days (decision first)",
+   "cause_hypothesis": "Phase-granular status plus the default leg window.",
+   "cause_verified": "yes (anchorList/legWindow read; positions and headings computed)",
+   "risk": "Changing leg timing moves chronology verdicts and motion-block baselines; a presentation rule is lower risk.",
+   "validation": "Re-run motion-vs-status.js: zero offensive-status samples moving away; check:chronology unchanged.",
+   "dependencies": "Owner decision on decision 45's scope",
+   "prior_refs": [
+    "decision 45 (docs/STAGE2_SPEC.md M.10)",
+    "decision 46",
+    "decision 181 (kollo@4/@5 forced leg)"
+   ]
+  },
+  {
+   "title": "New in 8J: Legrand's division marker walks through the Sokolnitz castle and the III Column holding it",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "data: tracks (legrand@2->@4 against prz@2/@4)",
+   "user_impact": "08:30-09:10 the French division that the act says 'Fights for Sokolnitz village and the castle wall' is drawn passing over the castle (25 m at 08:45) and through the Allied III Column storming it (37 m at 08:51): two opposing blocks stand in one another at the opening's 08:45 moment.",
+   "status": "confirmed",
+   "origin": "new-regression",
+   "refs": [
+    "data.js:227-228",
+    "data.js:536",
+    "world.js:162",
+    "archive/stage8h-24e29da7.html",
+    "archive/stage8j-7d5594ba.html"
+   ],
+   "evidence": "legrand-through-castle.txt (probes.js): legrand [213.0,343.5] at 08:45, 25 m from LANDMARK_SITES.castle; 37 m from prz at 08:51 (closest.js); status 'engaged' throughout. Archive diff: Legrand's anchors identical in 8H, 8J and now; prz@2/@4/@7 moved by 8J from [238,332]/[233,344]/[227,338] to [215,341]; before 8J the leg passed about 0.67 km from the III Column. 8J's consequences (CHANGELOG 8J entry) measured knowledge, plateau and chronology, not proximity.",
+   "expected": "Opposing formations' interpolated legs do not pass through each other except in a recorded melee; a data task's consequences include its neighbours' legs.",
+   "observed": "Legrand's single-division marker moves 08:00-09:30 from Sokolnitz [206,366] straight to [220,321] (to represent Levasseur's brigade marching up), crossing the III Column's new place.",
+   "remedy": "Data task: route legrand@4 with a via west of the castle and pheasantry, or hold the division at Sokolnitz (only Levasseur's brigade moved, per its own act); add an opposing-proximity check (sim-test.js or audit.js) and run it in every data task.",
+   "repro": "node tools/audit-post8/history/probes.js legrand-through-castle; node tools/audit-post8/history/closest.js",
+   "effort": "2-6 h (data task protocol, check:data reference, motion baselines re-measured)",
+   "cause_hypothesis": "8J re-plotted prz onto the castle site without checking neighbouring legs.",
+   "cause_verified": "yes (archive comparison)",
+   "risk": "Moves the motion block's visibility baselines (owner rule for geographic baselines).",
+   "validation": "closest.js shows legrand x prz above 0.5 km; check:chronology unchanged.",
+   "dependencies": "",
+   "prior_refs": [
+    "decision 259 (a)",
+    "docs/STAGE8_SPEC.md 21.7"
+   ]
+  },
+  {
+   "title": "The face-about event is labelled Fact ('Attested in the standard accounts') beside its own why claimed 'This map's reading'",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "data/presentation: event claim (analysis.js EVENTS) and dossierEvent",
+   "user_impact": "The event dossier for 'Kutuzov orders the 4th Column to face about' (09:15; a moment of the Pratzen theme) shows the pill 'Fact' and the footer 'Attested in the standard accounts of the battle.' while the same dossier's why says the order is this map's reading and narrative.js notes 'No account read has Kutuzov order the 4th Column to face about'. The map label and caption carry no qualifier (evNote has none for 'fact').",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "analysis.js:292-294",
+    "narrative.js:42",
+    "data.js:16-17",
+    "app.js:8297-8300",
+    "app.js:8328",
+    "app.js:3886-3893",
+    "data.js:79"
+   ],
+   "evidence": "event-claims.txt: face-about pill:fact, why:interpretation. dossierEvent renders claimPill(e.claim) and CLAIM[e.claim].note; claimTag after the why renders CLAIM_WORDS.interpretation ('This map's reading'). Decision 201 (b) labelled the why and the phase line but did not change the pill (CHANGELOG step 4b, finding (2)).",
+   "expected": "The event's claim matches what the project's evidence supports: CLAIM.recon ('Reconstruction: Inferred from the narrative'), which also adds 'reconstruction' to its label via evNote.",
+   "observed": "claim:\"fact\" kept.",
+   "remedy": "Data task: EVENTS[#face-about].claim 'recon' (one word); measure the label change in check:visual; consider a test.js rule that an event's pill is not fact/est when its own why is claimed interpretation or uncertain.",
+   "repro": "node tools/audit-post8/history/event-claims.js; in the page, press the 09:15 marker.",
+   "effort": "1-3 h",
+   "cause_hypothesis": "Decision 201 (b) addressed hours and whys, not the pill.",
+   "cause_verified": "yes",
+   "risk": "Label length may move a drop limit at 09:15 views.",
+   "validation": "event-claims.js flags nothing; check:visual within limits.",
+   "dependencies": "",
+   "prior_refs": [
+    "H-1",
+    "decision 201 (b)",
+    "decision 193"
+   ]
+  },
+  {
+   "title": "The Russian Guard's A-graded approach contradicts the project's own A-graded readings; nobody holds Blasowitz when it falls 'from the Russian Guard'",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "data: rg_inf/rg_cav tracks, PLANS.al reserve column, ANALYSIS plan, EVENTS blasowitz",
+   "user_impact": "The Guard is drawn at Krzenowitz from 04:00 (A) and creeping to [378,196] by 10:30 (A carried), then straight onto Stare Vinohrady; it never stands on the heights by Blasowitz and Krug or in Blasowitz. At 11:15 the event 'The French take Blasowitz from the Russian Guard' fires with no Allied formation within 1.4 km (Guard infantry 1.78 km). The plan tab and the plan theme say the Guard was to remain 'behind Krzenowitz'.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:624",
+    "data.js:631-633",
+    "data.js:642-643",
+    "analysis.js:15",
+    "analysis.js:165",
+    "analysis.js:186",
+    "analysis.js:310-312",
+    "data.js:735",
+    "narrative.js:113",
+    "docs/step4-evidence/readings.md:3103",
+    "docs/step4-evidence/readings.md:3260"
+   ],
+   "evidence": "blasowitz-guard.txt (probes.js): at 11:15 rg_inf 1.78 km, rg_cav 1.54 km, lich 1.43 km from Blasowitz. Register C6.21 (A, fact): the disposition 'besetzt bei Tages-Anbruche die Position hinter Blasowitz und Kruh'. C6.c6 (A): Stutterheim has the Guard leave the heights before Austerlitz at the appointed hour 'auf die Anhöhen bey Blasowitz und Krug', engage Rivaud's skirmishers and Kellermann, and put the jäger battalion into Blasowitz. constantine.role (claimed attributed on these) says the disposition posts it behind Blasowitz and Kruh; PLANS.al.cols[7].ord 'remain behind Krzenowitz, in hand' and ANALYSIS[#plan] 'stands in reserve behind Krzenowitz' are unchecked. Step 4's proposal C6.p12 changed the role text only ('Text only').",
+   "expected": "Positions graded A agree with the A-graded readings the project holds, or are regraded; plan text agrees with the disposition as read; a capture event's named defender is drawn near the place.",
+   "observed": "Two A grades and their carried A (rg_inf@5) contradict the register; plan order and theme contradict the role.",
+   "remedy": "Data task with the source agents: re-plot rg_inf/rg_cav 07:00-11:00 onto the Blasowitz-Krug heights or regrade to B/C with a note; reword PLANS.al.cols[7].ord and ANALYSIS[#plan] to the disposition; give the Blasowitz event a written tolerance reason or the Guard a nearby anchor.",
+   "repro": "node tools/audit-post8/history/probes.js blasowitz-guard",
+   "effort": "1-2 days",
+   "cause_hypothesis": "Step 4 corrected the role from the readings but not the positions or the plan.",
+   "cause_verified": "yes (proposals.md C6.p12)",
+   "risk": "Moves the plateau reading (rg_inf/rg_cav enter the outline), motion baselines, sim-test event agreement.",
+   "validation": "blasowitz-guard probe; sim-test event agreement; check:chronology.",
+   "dependencies": "Source agents' reading of the Guard's route",
+   "prior_refs": [
+    "step 4 C6.p12",
+    "decision 213 (b)"
+   ]
+  },
+  {
+   "title": "44 of 88 A grades are carried forward from earlier anchors, against the grading rule 8K applied to Suchet",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "data: track grades (cf carried by stateAt) and their display (POS_CLAIM, CONF_TEXT, confidence outline)",
+   "user_impact": "Pursuits and retreats 1-2.7 km past the last documented anchor show 'Position: documented' / 'Position documented in the sources' (e.g. Caffarelli 11:15-17:00, Kellermann and Nansouty's pursuit, Liechtenstein's and the Russian Guard's retreats, Kienmayer and Dokhturov on the ice), while Suchet's neighbouring pursuit anchors at the same hours were set to C in 8K because 'no reading places' them.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:286-292",
+    "data.js:302-304",
+    "app.js:7731-7733",
+    "app.js:8092",
+    "docs/stage8-evidence/8k/register.md:10",
+    "docs/stage8-evidence/8k/register.md:103-112",
+    "docs/stage8-evidence/8k/register.md:235"
+   ],
+   "evidence": "grades.txt: 180 positioned anchors, 88 graded A, 90 grades carried forward, 44 of them A; e.g. caffarelli@6-@9 A from @5 (moved 0.79-1.45 km each, no act), lich@6-@9, rg_inf@7-@9, rg_cav@7-@9, kellermann@6/7/9, nansouty@6/7/9. 8K register: 'B where a reading places the formation at that time relative to a named place; C where no reading places it then ... No grade was kept because it was there'; Suchet @6-@8 'B (inherited) to C for all three'; 'Caffarelli's anchors (not on the road, not re-plotted)'.",
+   "expected": "One grading rule across the dataset; a carried-forward grade reassessed where the formation has moved.",
+   "observed": "The rule was applied to the twelve 8K anchors only.",
+   "remedy": "Data task: review each carried-forward A (list in grades.txt) against the readings and declare its grade; optionally a test.js rule requiring a declared cf on any anchor that moves more than a set distance.",
+   "repro": "node tools/audit-post8/history/grades.js",
+   "effort": "1-2 days",
+   "cause_hypothesis": "stateAt carries cf forward by design (data.js header); never revisited.",
+   "cause_verified": "yes",
+   "risk": "Confidence outlines and check:visual confidence shares change.",
+   "validation": "grades.js: no A carried past a move without review.",
+   "dependencies": "Source agents",
+   "prior_refs": [
+    "H-5",
+    "decision 260 (a)"
+   ]
+  },
+  {
+   "title": "Three events whose own texts say the hour is disputed are not labelled disputed",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "data: EVENTS claim",
+   "user_impact": "'Napoleon releases Soult' and 'The Russian Guard takes the eagle' show 'Estimate' and the ice event 'Fact' with no 'hour disputed' on their labels, caption tags or dossier header, though their whys (or, for the ice, its phase line) say the hour is disputed.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "analysis.js:280-282",
+    "analysis.js:314-316",
+    "analysis.js:350-352",
+    "data.js:16-21",
+    "data.js:121"
+   ],
+   "evidence": "Probe in event-claims context: decision (est) 'The hour is disputed: about eight in Ségur...'; guard-attack (est) 'The hour is disputed: Rapp and Ségur put the Guard's last effort about 13:00, Schönhals has the fight over by about noon'; PHASES[8] line c. 15:00 'The accounts differ on the hour'. CLAIM.disputed's definition (data.js:20) fits each.",
+   "expected": "By CLAIM.disputed's definition and decision 201 (b)'s principle, an event whose accounts give different hours carries claim 'disputed' with a dispute text.",
+   "observed": "claim est/est/fact.",
+   "remedy": "Data task: claim 'disputed' with dispute texts for decision, guard-attack and ice; measure labels.",
+   "repro": "node tools/audit-post8/history/event-claims.js",
+   "effort": "2-4 h",
+   "cause_hypothesis": "Decision 201 covered the seven events lowered by question 193 only.",
+   "cause_verified": "yes",
+   "risk": "Label lengths at 08:25, 11:00, 15:00 views.",
+   "validation": "No event why/phase line says 'disputed' while its claim is not.",
+   "dependencies": "",
+   "prior_refs": [
+    "decision 201 (b)",
+    "H-7"
+   ]
+  },
+  {
+   "title": "Kamensky's named conflict: the turn is drawn from 08:00, before the French climb, not 'in the 08:45 phase' as disclosed; it lifts the derived plateau reading",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "data/records: kamensky@2->@3 leg, SOURCE_NOTE open question, event dispute, arrow note",
+   "user_impact": "From 08:00 the brigade, shown 'On the march ... at the rear of Langeron's column', walks back north-east toward the Pratzeberg while Saint-Hilaire still waits in the valley; at 08:29 the caption's 'derived on the heights: Allied' rises 19,300 to 23,550 with no French on the plateau. The disclosures understate the drawn conflict by 45 minutes.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:520-521",
+    "data.js:799",
+    "analysis.js:297-299",
+    "app.js:42-43"
+   ],
+   "evidence": "named-conflicts.txt and plateau-day.txt: kamensky [259,316] at 08:00 to [268.8,298.4] at 08:44, heading 151 deg; enters PLATEAU_POLY at 08:29; sthilaire at [206,231] until 08:45. SOURCE_NOTE: 'in the 08:45 phase in his brigade's record'; the event dispute 'turns it in the 08:45 phase'; arrow interp 'the track in phase 3'. sim-test prints '08:45 Soult attacks on the heights: Allied 23550'.",
+   "expected": "The disclosure names what is drawn (from 08:00), or the leg holds until 08:45 (the act's own sequence: he turns on seeing the French).",
+   "observed": "Leg window 08:00-08:45 by the default rule.",
+   "remedy": "Record fix (SOURCE_NOTE, event dispute, arrow note: 'from 08:00') or, under decision 42, a moveMin hold on kamensky@3 so the turn starts at 08:45; owner to choose.",
+   "repro": "node tools/audit-post8/history/probes.js plateau-day",
+   "effort": "1-3 h",
+   "cause_hypothesis": "Default leg window from kamensky@2's arrival.",
+   "cause_verified": "yes",
+   "risk": "check:chronology verdict text and the plateau reading's recorded figures.",
+   "validation": "plateau-day probe; check:chronology.",
+   "dependencies": "",
+   "prior_refs": [
+    "H-1",
+    "decision 42",
+    "CONFLICTS kamensky@3"
+   ]
+  },
+  {
+   "title": "Kienmayer 'Holding west of the Goldbach' is drawn 0.9 km east of the brook (since Stage 0)",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "data: kienmayer@7 act vs position",
+   "user_impact": "From 12:45 Kienmayer's dossier says 'Holding west of the Goldbach as the trap closes behind it' while its block stands 901 m east of the drawn stream; its marker never crosses the stream all day.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:476",
+    "world.js:51-52",
+    "archive/stage0-c09c4b23.html",
+    "docs/STAGE8_SPEC.md:4982",
+    "CHANGELOG.md:379"
+   ],
+   "evidence": "legs-water.txt: kienmayer@7 [242,400] east 901 m; @1 east 714 m, @2 east 265 m. Stage 0's build has the same anchor and act with the brook at x 212 there; 8J's records file it as an 'offset from the corrected brook' although the brook south of y 377.9 was not changed.",
+   "expected": "An act's side of the stream agrees with its anchor.",
+   "observed": "Contradiction since Stage 0; misattributed in 8J's record.",
+   "remedy": "Data task: reword the act (e.g. 'Holding east of the Goldbach before Telnitz') or re-plot with evidence; correct the 8J record.",
+   "repro": "node tools/audit-post8/history/legs-water.js",
+   "effort": "0.5-2 h",
+   "cause_hypothesis": "Original text never checked against the drawn brook.",
+   "cause_verified": "yes",
+   "risk": "Statement hash rehash (unchecked claim).",
+   "validation": "legs-water.js side list.",
+   "dependencies": "",
+   "prior_refs": [
+    "8J carried item"
+   ]
+  },
+  {
+   "title": "Caffarelli's objective 'Push Bagration off the highway' shown 12:45-17:00 while 1.5-2.2 km from the highway and moving away; separation misstated in records",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "data: caffarelli@6-@9 (no acts, A carried)",
+   "user_impact": "The dossier's objective and the phase-5 narrative (Bagration broken by Caffarelli's, Suchet's and d'Hautpoul's attacks) do not match the drawn route east toward Krzenowitz, graded 'Position: documented'.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:286-292",
+    "data.js:94",
+    "docs/stage8-evidence/8k/register.md:235",
+    "CHANGELOG.md:260"
+   ],
+   "evidence": "caffarelli-bagration.txt: 12:45-17:00 to the highway 1.54-2.15 km, to Bagration 1.61-2.64 km, nearest enemy Liechtenstein; objective carried from @7; cf A from @5. Records say 2.5-2.9 km; measured 2.13 km at 14:30 and 2.64 km at 17:00 (true distance and northing alike).",
+   "expected": "Objective and route agree, or the act says the route is this map's; records quote measured figures.",
+   "observed": "Unexplained separation, A grade, records' numbers 0.3-0.4 km high.",
+   "remedy": "Data task with the source agents (Caffarelli's afternoon route); correct the 8K/CHANGELOG figure.",
+   "repro": "node tools/audit-post8/history/caffarelli.js",
+   "effort": "2-6 h",
+   "cause_hypothesis": "Not re-plotted in 8K (off the road).",
+   "cause_verified": "partly",
+   "risk": "Motion baselines.",
+   "validation": "caffarelli.js",
+   "dependencies": "Source agents",
+   "prior_refs": [
+    "8K carried item"
+   ]
+  },
+  {
+   "title": "Interpolated legs pass through enemies and across the Litava; the movement audit tests neither",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "data tracks; tools (auditMovement, audit.js)",
+   "user_impact": "Bourcier's dragoons are drawn running through Kienmayer (26 m at 14:38) and Dokhturov (12 m at 14:54) to reach Augezd ahead of the retreating columns; Miloradovich's 14:30 anchor stands on the Litava (19 m from its line, covWater 0.96) and its legs cross the river twice with no road.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:270-271",
+    "data.js:565-567",
+    "world.js:52",
+    "app.js:auditMovement (generated _clock.js crossingProblem)",
+    "audit.js"
+   ],
+   "evidence": "closest-approach.txt; legs-water.txt (milo 6->8 Litava crossing [444.7,210.5] road 0.00; 8->9 back at [449.2,205.6]); litava-anchors.txt. Tracks unchanged since step 2 (archive comparison). auditMovement checks rate, ponds and marsh only.",
+   "expected": "No opposing blocks drawn in one another outside a melee; no river crossing without a road or a recorded crossing.",
+   "observed": "As above.",
+   "remedy": "Data task (Bourcier via points behind the columns or later; milo@8 off the river); add proximity and river-crossing rules to audit.js/sim-test.js.",
+   "repro": "node tools/audit-post8/history/closest.js; node tools/audit-post8/history/probes.js milo-litava",
+   "effort": "0.5-1 day",
+   "cause_hypothesis": "Routes drawn by hand on a schematic road/river.",
+   "cause_verified": "partly",
+   "risk": "Motion baselines.",
+   "validation": "closest.js and legs-water.js clean.",
+   "dependencies": "",
+   "prior_refs": []
+  },
+  {
+   "title": "Sokolnitz village drawn empty 09:00-13:15 although the texts have it taken and retaken and defended by Legrand, then Friant",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "data: legrand, friant, lang tracks; FEATURES sokolnitz",
+   "user_impact": "After Legrand's marker leaves at 08:00 no formation of either side is nearer the village than the III Column at the castle (0.79 km); Friant is never drawn there; Langeron 'storms Sokolnitz' (graded A) from 0.98 km across the brook. The II Column arrow says 'the model has the column at the village from 08:00'.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:227-228",
+    "data.js:508",
+    "data.js:705-709",
+    "app.js:47"
+   ],
+   "evidence": "sokolnitz-defence.txt: 09:00-13:00 nearest French friant 0.83-1.21 km, nearest Allied prz 0.79 km; lang@2 [235,350] 976 m from [208,365], 452 m east of the brook (legs-water.txt).",
+   "expected": "The village fight the narrative describes has formations drawn at it, or the texts say the markers are division centres far from it.",
+   "observed": "Empty village; arrow note inaccurate.",
+   "remedy": "Data task with source agents (who held the village; Legrand's brigade-only move; lang@2's grade); correct the arrow note.",
+   "repro": "node tools/audit-post8/history/probes.js sokolnitz-defence",
+   "effort": "0.5-1 day",
+   "cause_hypothesis": "One marker per division; Legrand's marker used for Levasseur's brigade.",
+   "cause_verified": "partly",
+   "risk": "Motion baselines; sim-test event agreement.",
+   "validation": "sokolnitz-defence probe.",
+   "dependencies": "Source agents",
+   "prior_refs": [
+    "8J carried lang@2"
+   ]
+  },
+  {
+   "title": "Command tab: DOCUMENTED on 31 rows the claims register calls 'Not yet checked'; a phase-5 row anticipates Blasowitz's fall; a 'Could see' row holds a historiographical dispute",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "data/presentation: COMMAND, paintCommand, SRC_LABEL",
+   "user_impact": "One statement is 'DOCUMENTED' in the Command tab and 'Not yet checked' in the sources sheet's index; from 10:30 the Allied reading says it 'knew ... that Blasowitz had fallen' (the map's fall is 11:15); 'Could see: The accounts differ on who turned Kamensky's brigade about'.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "analysis.js:104",
+    "analysis.js:106",
+    "app.js:4235-4258"
+   ],
+   "evidence": "command-claims.txt: 35 DOCUMENTED rows, 31 unchecked; paintCommand shows book[curPhase] for the whole phase; KIND saw -> 'Could see'. No claimTag in the Command tab.",
+   "expected": "One label per statement across screens; rows timed within their phase; row kinds that fit their content.",
+   "observed": "As above.",
+   "remedy": "Presentation: the claim tag in the Command tab (or DOCUMENTED only where the claim is attributed/disputed); data: move al@5's Blasowitz row to phase 6, change al@4[0]'s kind.",
+   "repro": "node tools/audit-post8/history/command-claims.js",
+   "effort": "2-4 h",
+   "cause_hypothesis": "Labels predate the sourcing stage.",
+   "cause_verified": "yes",
+   "risk": "check:contrast states with the Command tab.",
+   "validation": "command-claims.js",
+   "dependencies": "",
+   "prior_refs": [
+    "H-6",
+    "decision 187"
+   ]
+  },
+  {
+   "title": "Dossier says 'Marching' beside 'In reserve'/'Concealed' on 63 slow drift legs",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "presentation: marchRow",
+   "user_impact": "E.g. the Russian Guard cavalry at 07:37: pill 'In reserve', row 'Marching 3.2 km in 435 min · 0.4 km/h derived'; Saint-Hilaire 'Concealed' and 'Marching'. The gait (decision 244) treats under 1 km/h as not a march; the dossier does not. rg_cav's drift also adds 2,900 to the derived plateau reading at 10:05.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:7917-7930",
+    "docs/STAGE2_SPEC.md:1243",
+    "docs/STAGE8_SPEC.md:826-833"
+   ],
+   "evidence": "drift-legs.txt (63 legs over 90 min under 1 km/h); plateau-day.txt (10:05 Al 18,150 -> 21,050).",
+   "expected": "Decision 45 keeps the drift with the 'interpolated' marker; the row's word should not contradict the status (e.g. 'Plotted leg' under the gait's 1 km/h floor).",
+   "observed": "marchRow labels any u in (0,1) 'Marching'.",
+   "remedy": "Presentation: use the gait's KMH floor for the row's word.",
+   "repro": "node tools/audit-post8/history/drift.js",
+   "effort": "1-2 h",
+   "cause_hypothesis": "D-6's row added after decision 45 without the drift case.",
+   "cause_verified": "yes",
+   "risk": "runtime-test dry runs of the march row.",
+   "validation": "drift.js plus a dossier read.",
+   "dependencies": "",
+   "prior_refs": [
+    "decision 45",
+    "D-6",
+    "decision 244 (a)"
+   ]
+  },
+  {
+   "title": "Open questions drawn or shown without qualification: Krug and Bellowitz villages, Kologrivov's command",
+   "category": "unresolved-historical",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "world.js VILLAGES; data.js rg_cav.commander",
+   "user_impact": "Krug (with drawn farmsteads) sits 1.6 km south of Holubitz although the acts pair 'Krug and Holubitz' and the 8K register's Second Survey has 'Kruch' beside Holubitz; SOURCE_NOTE lists both villages' positions as open. 'Lt.-Gen. Andrei Kologrivov' heads the Guard cavalry dossier and counter, tagged 'Not yet checked', though SOURCE_NOTE lists his command as single-source and the Guard infantry's commander reads 'Not established on the day'.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "world.js:142-143",
+    "data.js:604",
+    "data.js:639-640",
+    "data.js:799",
+    "docs/stage8-evidence/8k/register.md:43-45"
+   ],
+   "evidence": "VILLAGES Krug [339,139], Holubitz [340,89]; commander claim 'unchecked' (names list); SOURCE_NOTE.body[5].",
+   "expected": "An open question is marked where it is shown, as decision 210 (c) did for rg_inf.",
+   "observed": "Unmarked.",
+   "remedy": "Data task: rg_cav.commander claimed attributed/uncertain with 'Sokolov alone' in the field or note; a qualifier on Krug/Bellowitz labels or the candidate Krug data task.",
+   "repro": "read world.js:142-143, data.js:639",
+   "effort": "1-4 h",
+   "cause_hypothesis": "",
+   "cause_verified": "",
+   "risk": "",
+   "validation": "",
+   "dependencies": "Source agents for Krug",
+   "prior_refs": [
+    "decision 210 (c)",
+    "FINAL_AUDIT 2.1 open-questions table"
+   ]
+  },
+  {
+   "title": "Smaller internal inconsistencies in texts and fields",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "data.js / analysis.js / app.js labels",
+   "user_impact": "Limited comprehension cost.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "data.js:191",
+    "data.js:209",
+    "data.js:450",
+    "data.js:561",
+    "data.js:323",
+    "data.js:399",
+    "data.js:410",
+    "data.js:500",
+    "data.js:3",
+    "app.js:7970"
+   ],
+   "evidence": "(a) sthilaire@2/vandamme@2 'Crosses the Goldbach' in phase 2 while 146 m/265 m west of the drawn stream (legs-water.txt). (b) ahq@4 'orders Kamensky to retire' at 09:30-10:30 vs kamensky@5 fighting and @6 'ordered to retire by Kutuzov' at 11:15. (c) 'Arm: Guard infantry' for both Guard corps (c_gd, constantine include cavalry): app.js:7970 maps guard to 'Guard infantry'. (d) G-3 still open: milo@0 A 'near Pratzen village' 1.6 km from it. (e) Unaccented 'Chasseurs a Pied/a Cheval', 'Garde Imperiale', 'Reserve de Cavalerie', 'emigre', 'Frederic Walther' (outside decision 209's six names); guard_inf.commander holds a composition. (f) data.js header gives the frame as ~13 x ~10 km; KM_PER_MAP gives 21.5 x 15.8 km (comment only). (g) Langeron's counter 11,700 includes Kamensky's 4,250, drawn separately from 08:00, with no 'including' in its note; Buxhowden's card/counter '≈ 40,000' without its '33,000-40,000' range. (h) The Chevalier Guard (800 of rg_cav's 2,900) drawn with the Guard from 04:00 at A though the data has it come up late in Maliutin's column.",
+   "expected": "Texts, fields and labels agree with positions and with each other.",
+   "observed": "As listed.",
+   "remedy": "One small data task for (a), (b), (d), (e), (f), (g) notes; presentation for (c) ('Guard' for corps); (h) with the source agents.",
+   "repro": "see evidence files",
+   "effort": "2-4 h",
+   "cause_hypothesis": "",
+   "cause_verified": "",
+   "risk": "Statement hashes; label widths.",
+   "validation": "",
+   "dependencies": "",
+   "prior_refs": [
+    "G-3",
+    "H-19",
+    "decision 209 (a)",
+    "H-14"
+   ]
+  },
+  {
+   "title": "No check covers interpenetration, rivers, motion vs status, act sides of the stream, event pill vs statement claim, or carried-forward grades",
+   "category": "untested",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "tests: audit.js, sim-test.js, test.js, check:chronology",
+   "user_impact": "The findings above (two of them S2, one a Stage 8 regression) pass every suite; a data task can introduce more without a failure.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "audit.js",
+    "sim-test.js",
+    "tools/stage2/chronology.js:1-60"
+   ],
+   "evidence": "Rules read: auditMovement (rate, ponds, marsh), audit.js (continuity, coverage), sim-test (event agreement, continuity), check:chronology (timed statements). sim-test-iso.txt and audit-js-iso.txt: 0 errors on this build.",
+   "expected": "Data tasks are guarded against these classes.",
+   "observed": "Unguarded.",
+   "remedy": "Add to sim-test.js or audit.js: opposing-centre proximity outside named melees, Goldbach/Litava crossings away from roads, offensive status moving away, act side vs anchor side; to test.js: event pill vs its why's claim, and a declared cf on anchors that move.",
+   "repro": "",
+   "effort": "0.5-1 day",
+   "cause_hypothesis": "",
+   "cause_verified": "",
+   "risk": "New KNOWN_WARN entries needed for accepted cases.",
+   "validation": "Mutations: re-insert the 8J Legrand case; it fails.",
+   "dependencies": "",
+   "prior_refs": [
+    "T-6",
+    "D-1"
+   ]
+  },
+  {
+   "title": "Accepted: the Russian Guard corps shown at 10,500 above its drawn 7,330",
+   "category": "accepted-compromise",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "data: constantine strength",
+   "user_impact": "OOB and the corps counter show 10,500 beside 4,430 and 2,900; the 3,170 (Life Grenadiers 2,300, pioneers 100, 800 in no row) is explained only indirectly in the dossier's note.",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "data.js:621-626",
+    "app.js:7280"
+   ],
+   "evidence": "strengths.txt; decision 213 (b).",
+   "expected": "As decided.",
+   "observed": "As decided; the note does not name the 3,170.",
+   "remedy": "Optional: one sentence in the strengthNote naming the undrawn 3,170.",
+   "repro": "",
+   "effort": "0.5 h",
+   "cause_hypothesis": "",
+   "cause_verified": "",
+   "risk": "",
+   "validation": "",
+   "dependencies": "",
+   "prior_refs": [
+    "decision 213 (b)"
+   ]
+  },
+  {
+   "title": "Accepted: Bagration drawn toward Rausnitz at nightfall while his role says toward Austerlitz",
+   "category": "accepted-compromise",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "data: bag@9, phase-8 arrow",
+   "user_impact": "The arrow 'Bagration withdraws on Rausnitz' and the role 'withdraws toward Austerlitz in the evening (Stutterheim; Schönhals)' differ.",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "data.js:597",
+    "data.js:609",
+    "app.js:100"
+   ],
+   "evidence": "Decision 180 (c) 'not now'.",
+   "expected": "As decided.",
+   "observed": "As decided.",
+   "remedy": "None unless the owner revisits 180 (c).",
+   "repro": "",
+   "effort": "",
+   "cause_hypothesis": "",
+   "cause_verified": "",
+   "risk": "",
+   "validation": "",
+   "dependencies": "",
+   "prior_refs": [
+    "decision 180 (c)"
+   ]
+  }
+ ],
+ "experiments": [
+  {
+   "command": "cp -r iso-template history-iso; node tools/mk-world-mod.js; node tools/mk-helpers.js (in the isolated copy)",
+   "outcome": "Generated _world_mod.js and the five helper modules from the audited sources",
+   "environment": "isolated copy, Node 22"
+  },
+  {
+   "command": "node tools/audit-post8/history/strengths.js",
+   "outcome": "No double count; French max 68,300, Allied max 79,560; plateau 38,700/19,300/23,550; parent-child counter overlaps listed",
+   "evidence_path": "docs/audit-post8-evidence/history/strengths.txt"
+  },
+  {
+   "command": "node tools/audit-post8/history/refs.js",
+   "outcome": "0 reference errors",
+   "evidence_path": "docs/audit-post8-evidence/history/refs.txt"
+  },
+  {
+   "command": "node tools/audit-post8/history/event-claims.js; command-claims.js; claim-text-scan.js",
+   "outcome": "face-about pill fact vs why interpretation; 31 DOCUMENTED rows unchecked; 704 statements, 484 unchecked, none claimed fact",
+   "evidence_path": "docs/audit-post8-evidence/history/event-claims.txt"
+  },
+  {
+   "command": "node tools/audit-post8/history/grades.js",
+   "outcome": "88 A grades, 44 carried forward",
+   "evidence_path": "docs/audit-post8-evidence/history/grades.txt"
+  },
+  {
+   "command": "node tools/audit-post8/history/legs-water.js",
+   "outcome": "Leg crossings of the Goldbach/brooks/Litava listed; kienmayer@7 901 m east; milo's double Litava crossing",
+   "evidence_path": "docs/audit-post8-evidence/history/legs-water.txt"
+  },
+  {
+   "command": "node tools/audit-post8/history/closest.js; proximity.js",
+   "outcome": "bourcier x dok 12 m, bourcier x kienmayer 26 m, legrand x prz 37 m (new in 8J), sthilaire x kamensky 13 m (melee)",
+   "evidence_path": "docs/audit-post8-evidence/history/closest-approach.txt"
+  },
+  {
+   "command": "node tools/audit-post8/history/motion-vs-status.js; facing.js",
+   "outcome": "Offensive statuses moving away: rg_inf, rg_cav, lich, milo, kollo, legrand, bourcier; halted facing sound",
+   "evidence_path": "docs/audit-post8-evidence/history/motion-vs-status.txt"
+  },
+  {
+   "command": "node tools/audit-post8/history/probes.js {plateau-day|guard-attack-motion|legrand-through-castle|blasowitz-guard|sokolnitz-defence|milo-litava}",
+   "outcome": "Kamensky enters the plateau at 08:29; Guard heading east 11:15-12:45; Legrand 25 m from the castle at 08:45; nobody within 1.4 km of Blasowitz at 11:15; Sokolnitz empty 09:00-13:15; milo@8 19 m from the Litava",
+   "evidence_path": "docs/audit-post8-evidence/history/"
+  },
+  {
+   "command": "python3 extraction of legrand/prz/bourcier/dok/kienmayer anchors from archive/stage8h-24e29da7.html, stage8j-7d5594ba.html, step2-af98f586.html and the audited build",
+   "outcome": "Legrand unchanged 8H->8J->now; prz moved by 8J onto Legrand's leg; Bourcier/Dokhturov/Kienmayer tracks unchanged since step 2; kienmayer@7 unchanged since Stage 0",
+   "evidence_path": "docs/audit-post8-evidence/history/README.md",
+   "limitations": "regex extraction of anchors (p fields), checked against the live data for the current build"
+  },
+  {
+   "command": "node sim-test.js; node audit.js (isolated copy)",
+   "outcome": "Both 0 errors on this build",
+   "evidence_path": "docs/audit-post8-evidence/history/sim-test-iso.txt",
+   "environment": "isolated copy"
+  },
+  {
+   "command": "node tools/audit-post8/history/caffarelli.js; centre-sep.js; drift.js; phase-lines.js; conflicts.js; names.js; overview.js",
+   "outcome": "Caffarelli 2.1-2.6 km from Bagration; centre separation 09:05-14:30; 63 drift legs; phase-line placements; conflict summaries; no stray name variants",
+   "evidence_path": "docs/audit-post8-evidence/history/"
+  }
+ ],
+ "ledger": [
+  {
+   "claim": "No displayed total counts a parent and its child twice",
+   "verification": "verified",
+   "method": "strengths.js: sideOnFieldAt, plateauStrength, buildOOB/aggStrength code read",
+   "notes": "Displayed overlaps on counters remain (Langeron/Kamensky, Suchet/Santon, Buxhowden HQ)"
+  },
+  {
+   "claim": "Aggregate strengths equal their children or the gap is explained",
+   "verification": "partly",
+   "method": "strengths.js section 1 with notes",
+   "notes": "Buxhowden 40,000 vs 39,230 unexplained but inside its range"
+  },
+  {
+   "claim": "Notes' arithmetic (Kienmayer, Guard rows, Sokolov IV Corps, III Corps odds, Dokhturov)",
+   "verification": "verified",
+   "method": "hand arithmetic against data.js notes"
+  },
+  {
+   "claim": "Tour stop 4: about 39,000 at 04:00 to about 19,000 by 07:25",
+   "verification": "verified",
+   "method": "plateau-day probe: 38,700 and 19,300 from 07:21"
+  },
+  {
+   "claim": "Tour stop 9 loss ranges match PHASES[9].lede",
+   "verification": "verified",
+   "method": "arithmetic: 11,000-14,000 to 26,922; French 8,818"
+  },
+  {
+   "claim": "Every parent exists and lists its child; every referenced id and moment resolves",
+   "verification": "verified",
+   "method": "refs.js"
+  },
+  {
+   "claim": "Commander and place names spelled consistently",
+   "verification": "partly",
+   "method": "names.js",
+   "notes": "Accents outside decision 209's six names"
+  },
+  {
+   "claim": "Phase clocks equal t0-t1 and lines fall in their phases",
+   "verification": "partly",
+   "method": "phase-lines.js",
+   "notes": "Blasowitz and Kursk lines one phase early relative to their event starts"
+  },
+  {
+   "claim": "Events whose hours are disputed carry claim 'disputed'",
+   "verification": "contradicted",
+   "method": "event-claims.js and why/phase-line scan",
+   "notes": "decision, guard-attack, ice"
+  },
+  {
+   "claim": "An event's pill agrees with its own why's claim",
+   "verification": "contradicted",
+   "method": "event-claims.js",
+   "notes": "face-about: Fact vs This map's reading"
+  },
+  {
+   "claim": "Command tab labels agree with the claims register",
+   "verification": "contradicted",
+   "method": "command-claims.js",
+   "notes": "31 DOCUMENTED rows unchecked"
+  },
+  {
+   "claim": "Derived figures carry a derived tag",
+   "verification": "verified",
+   "method": "code read: plateauText, paintSituation, posRow, marchRow, routeDeviation; tour texts"
+  },
+  {
+   "claim": "Anchor grades follow one rule (8K: B if a reading places it, C if none)",
+   "verification": "contradicted",
+   "method": "grades.js against register.md",
+   "notes": "44 carried-forward A grades"
+  },
+  {
+   "claim": "8K re-plotted anchors show the register's grades",
+   "verification": "verified",
+   "method": "grades.js vs register.md A1-A9"
+  },
+  {
+   "claim": "Acts' sides of the Goldbach agree with anchors",
+   "verification": "contradicted",
+   "method": "legs-water.js side list",
+   "notes": "kienmayer@7; sthilaire@2, vandamme@2 'Crosses'"
+  },
+  {
+   "claim": "No opposing formations drawn in one another outside a melee",
+   "verification": "contradicted",
+   "method": "closest.js, proximity.js",
+   "notes": "legrand x prz (8J), bourcier x dok/kienmayer"
+  },
+  {
+   "claim": "No leg crosses a river without a road or record",
+   "verification": "contradicted",
+   "method": "legs-water.js",
+   "notes": "milo 6->8, 8->9 across the Litava"
+  },
+  {
+   "claim": "Formations with offensive statuses do not move away from the enemy",
+   "verification": "contradicted",
+   "method": "motion-vs-status.js",
+   "notes": "Russian Guard, Liechtenstein, Miloradovich, Kollowrat"
+  },
+  {
+   "claim": "Halted formations face their recorded opponents (S-5)",
+   "verification": "verified",
+   "method": "facing.js with extracted faceClock/enemyFacing"
+  },
+  {
+   "claim": "The four named conflicts are disclosed where shown",
+   "verification": "partly",
+   "method": "conflicts.js",
+   "notes": "Kamensky's drawn hour understated (08:00 not 08:45)"
+  },
+  {
+   "claim": "The Russian Guard's plotted approach agrees with the register's A readings",
+   "verification": "contradicted",
+   "method": "probes.js blasowitz-guard; register C6.21, C6.c6"
+  },
+  {
+   "claim": "The capture of Blasowitz has its named defender nearby",
+   "verification": "contradicted",
+   "method": "blasowitz-guard probe",
+   "notes": "nearest Allied 1.43 km"
+  },
+  {
+   "claim": "Caffarelli's anchors 2.5-2.9 km from Bagration from 14:30 (records)",
+   "verification": "contradicted",
+   "method": "caffarelli.js",
+   "notes": "measured 2.13-2.64 km"
+  },
+  {
+   "claim": "Prior fixes H-1, H-2, H-3, H-4, H-12, H-13, H-14, H-18, D-3, D-4, S-5 hold",
+   "verification": "verified",
+   "method": "targeted probes and greps"
+  },
+  {
+   "claim": "G-3 (Miloradovich at dawn) resolved",
+   "verification": "contradicted",
+   "method": "distance milo@0 to Pratzen village: 1.6 km, still A"
+  },
+  {
+   "claim": "Centre separation reported only while the geometry holds",
+   "verification": "verified",
+   "method": "centre-sep.js: 09:05-14:30, French cutters named"
+  }
+ ],
+ "not_checked": [
+  "Truth of any historical claim against external sources (assigned to the two source-tracing agents); register quotations read only for C6.21 and C6.c6",
+  "Anything as drawn in a browser: headings, block overlaps, labels and pills are computed from the model and presentation code, not observed (no browser in this phase)",
+  "Drawn width of the Litava ribbon and block frontages at the overlaps (centres compared only)",
+  "Whether the opening's 08:45 camera shows Legrand's walk-through",
+  "appearance.js claims beyond those the dossier strength/composition rows quote",
+  "The terrain-dependent tour stop 5 shares (held by terrain-test.js, not re-run here)",
+  "KNOW_OVERRIDE's knowledge readings over the day (only id/side coherence checked)",
+  "The sources sheet's full text (only searched for totals and the villages note)"
+ ],
+ "notes_for_browser_phase": [
+  {
+   "hypothesis": "The Russian Guard's blocks face and walk east (away from Vandamme) under 'Counter-attacking'/'Charging' 11:20-12:40, the gait animating them",
+   "repro": "Seek to 11:30, landscape 4x, select Guard Infantry and Guard Cavalry; play at 1x to 12:40; read pills and watch facing",
+   "expected": "Blocks facing east, moving east; pills offensive",
+   "why": "Finding 1 (motion-vs-status.txt)"
+  },
+  {
+   "hypothesis": "Legrand's division figures overlap the Sokolnitz castle and the III Column's figures at 08:45-08:52",
+   "repro": "Seek to 08:45 and 08:51, landscape 4x, camera on Sokolnitz; also the opening's step 2",
+   "expected": "Two opposing blocks in one another over the castle",
+   "why": "Finding 2 (legrand-through-castle.txt)"
+  },
+  {
+   "hypothesis": "The face-about dossier shows 'Fact', the why tagged 'This map's reading', footer 'Attested in the standard accounts of the battle'",
+   "repro": "Press the 09:15 event marker",
+   "expected": "Contradictory labels on one screen",
+   "why": "Finding 3"
+  },
+  {
+   "hypothesis": "At 11:15 the Blasowitz event fires with no Allied block near the village",
+   "repro": "Seek to 11:15, paper map, look at Blasowitz",
+   "expected": "Nearest Allied block about 1.4-1.8 km away",
+   "why": "Finding 4"
+  },
+  {
+   "hypothesis": "The caption's derived plateau reading rises from 19,300 to 23,550 at 08:29 while no French are on the plateau; Kamensky's block walks north-east from 08:00 with 'On the march'",
+   "repro": "Seek 08:20 then 08:30 in Watch; select Kamensky's Brigade",
+   "expected": "Rise at 08:29; block heading north-east",
+   "why": "Finding 7"
+  },
+  {
+   "hypothesis": "Miloradovich's block stands on the Litava ribbon at 14:30; Bourcier's block overlaps Kienmayer's at 14:38 and Dokhturov's at 14:54",
+   "repro": "Seek to 14:30, 14:38, 14:54; landscape 4x",
+   "expected": "Blocks on the river and in one another",
+   "why": "Finding 10"
+  },
+  {
+   "hypothesis": "Command tab (Allied HQ) at 10:30 says 'Knew ... Blasowitz had fallen' DOCUMENTED; at 09:30 'Could see: The accounts differ...'",
+   "repro": "Eyes: Allied HQ, Command tab, seek 10:30 and 09:30",
+   "expected": "Anachronistic row; odd row kind",
+   "why": "Finding 12"
+  },
+  {
+   "hypothesis": "Guard Cavalry dossier at 07:37 shows 'In reserve' and 'Marching 3.2 km in 435 min · 0.4 km/h derived'",
+   "repro": "Seek 07:37, open the full dossier",
+   "expected": "Contradictory status and row word",
+   "why": "Finding 13"
+  },
+  {
+   "hypothesis": "Kienmayer's dossier at 13:00 reads 'Holding west of the Goldbach' while its block is east of the drawn brook; Caffarelli's at 15:00 shows 'Push Bagration off the highway' with 'Position: documented'",
+   "repro": "Seek 13:00 and 15:00, select each",
+   "expected": "Text-position mismatch",
+   "why": "Findings 8 and 9"
+  },
+  {
+   "hypothesis": "Russian Imperial Guard and Imperial Guard corps dossiers show 'Arm: Guard infantry'",
+   "repro": "Select either corps from the OOB list",
+   "expected": "Mislabel",
+   "why": "Finding 15 (c)"
+  }
+ ]
+}

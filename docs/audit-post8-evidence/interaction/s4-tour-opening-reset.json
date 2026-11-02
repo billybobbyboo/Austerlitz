@@ -1,0 +1,4533 @@
+{
+ "name": "s4-tour-opening-reset",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-02T05:52:25.682Z",
+ "opts": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1600,
+    900
+   ],
+   "o": {},
+   "bootMs": 64657
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 65277,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.68,
+      61.01
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.18
+     ]
+    }
+   },
+   "log": [],
+   "ms": 145
+  },
+  {
+   "page": 0,
+   "label": "click 'Begin the opening'; 70 frames",
+   "at": 65622,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": true,
+    "openingK": 0,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "Step 1 of 4: The battlefield, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tour-next",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 22,
+     "dropped": 8
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 575
+  },
+  {
+   "page": 0,
+   "label": "Esc (the opening skipped to the day's start)",
+   "at": 66198,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "The opening has ended. Play runs the day from 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 23,
+     "dropped": 8
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      535.3,
+      65.92
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.91
+     ]
+    }
+   },
+   "log": [],
+   "ms": 540
+  },
+  {
+   "page": 0,
+   "label": "click 'Begin the opening' again; 70 frames",
+   "at": 66738,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": true,
+    "openingK": 0,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "Step 1 of 4: The battlefield, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tour-next",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 22,
+     "dropped": 8
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 782
+  },
+  {
+   "page": 0,
+   "label": "click Next (the stretch plays at 4×); 60 frames",
+   "at": 67520,
+   "s": {
+    "clock": 255,
+    "clockText": "04:15",
+    "playing": true,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@255",
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": true,
+    "openingK": 0,
+    "openingPlay": {
+     "to": 1,
+     "target": 525,
+     "speed0": 0.5
+    },
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tour-next",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 20,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.063
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -261.59,
+      127.62,
+      239.35
+     ],
+     "tgt": [
+      -70.1,
+      -0.74,
+      40.28
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1061
+  },
+  {
+   "page": 0,
+   "label": "press on the map (real mouse click at the free centre)",
+   "at": 68581,
+   "s": {
+    "clock": 255,
+    "clockText": "04:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:legrand",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "The opening has ended here.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "3e Div., IV Corps · FranceLegrand's DivisionGen. de division Claude Legrand",
+     "len": 1750,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 33,
+     "placed": 22,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.063
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -261.59,
+      127.62,
+      239.35
+     ],
+     "tgt": [
+      -70.1,
+      -0.74,
+      40.28
+     ]
+    }
+   },
+   "log": [],
+   "ms": 135
+  },
+  {
+   "page": 0,
+   "label": "click 'Begin the opening' again; 70 frames",
+   "at": 68716,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": true,
+    "openingK": 0,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "Step 1 of 4: The battlefield, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tour-next",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 552
+  },
+  {
+   "page": 0,
+   "label": "click Next; 40 frames; key 2",
+   "at": 69268,
+   "s": {
+    "clock": 255,
+    "clockText": "04:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      781,
+      26,
+      819,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "The opening has ended here.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 23,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0.063
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -253.32,
+      127.98,
+      231.81
+     ],
+     "tgt": [
+      -60.22,
+      -1.45,
+      31.06
+     ]
+    }
+   },
+   "log": [],
+   "ms": 594
+  },
+  {
+   "page": 0,
+   "label": "key 1 (Study); click 'Begin the opening'; 70 frames",
+   "at": 69862,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": true,
+    "openingK": 0,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "Step 1 of 4: The battlefield, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tour-next",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 561
+  },
+  {
+   "page": 0,
+   "label": "click Next twice (straight to step 2); 70 frames; drag the map 120 px (real mouse)",
+   "at": 70424,
+   "s": {
+    "clock": 525,
+    "clockText": "08:45",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach · derived on the heights: Allied ≈ 23,550",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "The opening has ended here.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 64,
+     "placed": 21,
+     "dropped": 10
+    },
+    "overlays": 20,
+    "drawon": [
+     0,
+     0,
+     0
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -128.62,
+      46.15,
+      15.57
+     ],
+     "tgt": [
+      15.73,
+      -0.03,
+      -22.18
+     ]
+    }
+   },
+   "log": [],
+   "ms": 31625
+  },
+  {
+   "page": 0,
+   "label": "click 'Begin the opening'; 70 frames; wheel over the map",
+   "at": 102050,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 6,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "The opening has ended here.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 20,
+     "dropped": 10
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -211.97,
+      122.7,
+      192.25
+     ],
+     "tgt": [
+      -29.65,
+      0.49,
+      2.71
+     ]
+    }
+   },
+   "log": [],
+   "ms": 8093
+  },
+  {
+   "page": 0,
+   "label": "click 'Begin the opening'; 70 frames; key ? ; Esc ; Esc",
+   "at": 110143,
+   "ret": {
+    "a": {
+     "help": true,
+     "opening": true
+    },
+    "b": {
+     "help": false,
+     "opening": true
+    }
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "The opening has ended. Play runs the day from 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 23,
+     "dropped": 8
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      535.3,
+      65.92
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.91
+     ]
+    }
+   },
+   "log": [],
+   "ms": 864
+  },
+  {
+   "page": 0,
+   "label": "click 'Begin the opening'; Next x8 with 70 frames after each pair",
+   "at": 111007,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 19,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "The opening has ended. Play runs the day from 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 24,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      535.3,
+      65.92
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.91
+     ]
+    }
+   },
+   "log": [],
+   "ms": 6876
+  },
+  {
+   "page": 0,
+   "label": "click 'Guided tour'; 70 frames",
+   "at": 117883,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 1 of 9: The battlefield, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tour-next",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 22,
+     "dropped": 8
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 447
+  },
+  {
+   "page": 0,
+   "label": "press on the map; 10 frames",
+   "at": 118330,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:lich",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 1 of 9: The battlefield, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "V Column · RussiaFifth Column (cavalry)FML Prince Johann von Liechtenstein",
+     "len": 1674,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 20,
+     "dropped": 10
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 45
+  },
+  {
+   "page": 0,
+   "label": "key 2 (Watch) during the tour; 10 frames",
+   "at": 118375,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      660,
+      55,
+      941,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 1 of 9: The battlefield, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": "V Column · RussiaFifth Column (cavalry)FML Prince Johann von Liechtenstein",
+     "len": 1674,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s4-tour-opening-reset-tour-in-watch-dom.jpg",
+   "log": [],
+   "ms": 3205
+  },
+  {
+   "page": 0,
+   "label": "click Next in the tour bar (in Watch); 70 frames",
+   "at": 121581,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": "al",
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      660,
+      55,
+      941,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 2 of 9: The Allied plan, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tour-next",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 71,
+     "placed": 41,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -27,
+      264.22,
+      41
+     ],
+     "tgt": [
+      -27,
+      -1.79,
+      9
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1513
+  },
+  {
+   "page": 0,
+   "label": "key 1; drag the map; 10 frames",
+   "at": 123094,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": "al",
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 2 of 9: The Allied plan, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 71,
+     "placed": 41,
+     "dropped": 10
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -3.23,
+      264.22,
+      41
+     ],
+     "tgt": [
+      -3.23,
+      0.84,
+      9.32
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1631
+  },
+  {
+   "page": 0,
+   "label": "click Play during the tour; 150 frames",
+   "at": 124725,
+   "s": {
+    "clock": 255.312,
+    "clockText": "04:15",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "out@255",
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": "al",
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 2 of 9: The Allied plan, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 72,
+     "placed": 44,
+     "dropped": 8
+    },
+    "overlays": 63,
+    "drawon": [
+     0.064
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -3.23,
+      264.22,
+      41
+     ],
+     "tgt": [
+      -3.23,
+      0.84,
+      9.32
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s4-tour-opening-reset-tour-playing.jpg",
+   "log": [],
+   "ms": 31171
+  },
+  {
+   "page": 0,
+   "label": "Esc (ends the tour)",
+   "at": 155902,
+   "s": {
+    "clock": 256.667,
+    "clockText": "04:16",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "The tour has ended.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 56,
+     "placed": 32,
+     "dropped": 16
+    },
+    "overlays": 63,
+    "drawon": [
+     0.069
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -3.23,
+      264.22,
+      41
+     ],
+     "tgt": [
+      -3.23,
+      0.84,
+      9.32
+     ]
+    }
+   },
+   "log": [],
+   "ms": 141
+  },
+  {
+   "page": 0,
+   "label": "click Pause if playing; click 'Guided tour' again; 70 frames",
+   "at": 156043,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 0,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 1 of 9: The battlefield, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tour-next",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 3597
+  },
+  {
+   "page": 0,
+   "label": "tour: Next; the Eyes button (Napoleon's); Command tab; eye level; 60 frames",
+   "at": 159640,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "fr",
+    "TOURCV": null,
+    "eye": true,
+    "tourStep": 1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": "eye",
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": "al",
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 2 of 9: The Allied plan, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "command",
+     "eyecap": true,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#eyego",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 64,
+     "placed": 19,
+     "dropped": 5
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 3,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -81.5,
+      3.13,
+      -58
+     ],
+     "tgt": [
+      -28,
+      0.39,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1788
+  },
+  {
+   "page": 0,
+   "label": "Plans tab; click 'both plans'; key M (paper map); 60 frames",
+   "at": 161428,
+   "ret": [
+    "al",
+    "fr",
+    "both"
+   ],
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "selection": null,
+    "commandView": "fr",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": "both",
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 2 of 9: The Allied plan, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "plans",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[Both]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 68,
+     "placed": 56,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 0,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "map": [
+      71.68,
+      75.24,
+      0.7643
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s4-tour-opening-reset-complex-paper-dom.jpg",
+   "log": [],
+   "ms": 5617
+  },
+  {
+   "page": 0,
+   "label": "click the Overview vantage; 70 frames",
+   "at": 167045,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "selection": null,
+    "commandView": "fr",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": 1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": "both",
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "Tour, stop 2 of 9: The Allied plan, 04:00.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": true,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": true,
+     "docked": true,
+     "tab": "plans",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[Overview]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 68,
+     "placed": 56,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 0,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "map": [
+      71.68,
+      75.24,
+      0.7643
+     ]
+    }
+   },
+   "log": [],
+   "ms": 630
+  },
+  {
+   "page": 0,
+   "label": "Esc x4 (one at a time, 10 frames after each)",
+   "at": 167675,
+   "ret": [
+    {
+     "tour": -1,
+     "sel": null,
+     "chapter": null,
+     "plan": null,
+     "mode": "staff",
+     "cv": "fr",
+     "eye": false,
+     "pres": "study",
+     "hide": false
+    },
+    {
+     "tour": -1,
+     "sel": null,
+     "chapter": null,
+     "plan": null,
+     "mode": "staff",
+     "cv": "fr",
+     "eye": false,
+     "pres": "study",
+     "hide": false
+    },
+    {
+     "tour": -1,
+     "sel": null,
+     "chapter": null,
+     "plan": null,
+     "mode": "staff",
+     "cv": "fr",
+     "eye": false,
+     "pres": "study",
+     "hide": false
+    },
+    {
+     "tour": -1,
+     "sel": null,
+     "chapter": null,
+     "plan": null,
+     "mode": "staff",
+     "cv": "fr",
+     "eye": false,
+     "pres": "study",
+     "hide": false
+    }
+   ],
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "selection": null,
+    "commandView": "fr",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "The tour has ended.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "plans",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[Overview]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 38,
+     "placed": 24,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 0,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "map": [
+      35.39,
+      1.68,
+      0.5544
+     ]
+    }
+   },
+   "log": [],
+   "ms": 177
+  },
+  {
+   "page": 0,
+   "label": "key M twice (back to the landscape); click the Eyes button until everyone; click the plan button off",
+   "at": 167852,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "The tour has ended.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "plans",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#eyesbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 22,
+     "dropped": 8
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1941
+  }
+ ],
+ "checks": [
+  {
+   "id": "opening-begins",
+   "ok": true,
+   "expected": "the opening at its first step",
+   "observed": {
+    "opening": true,
+    "openingPlay": null,
+    "tourStep": 0,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": true,
+    "hideDispatch": true,
+    "dispatch": false,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "opening-esc",
+   "ok": true,
+   "expected": "Esc: the end state (04:00, Study, ½×, Play focused, the bar hidden, the dispatch shown)",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": -1,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": false,
+    "hideDispatch": false,
+    "dispatch": true,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "opening-again-1",
+   "ok": true,
+   "expected": "begun again: the same first step",
+   "observed": {
+    "again": {
+     "opening": true,
+     "openingPlay": null,
+     "tourStep": 0,
+     "playing": false,
+     "speed": 0.5,
+     "presentation": "study",
+     "mode": "terrain",
+     "commandView": "none",
+     "TOURCV": null,
+     "eye": false,
+     "plan": null,
+     "chapter": null,
+     "selection": null,
+     "factor": 4,
+     "tourbar": true,
+     "hideDispatch": true,
+     "dispatch": false,
+     "tab": "now",
+     "layers": false
+    },
+    "first": {
+     "opening": true,
+     "openingPlay": null,
+     "tourStep": 0,
+     "playing": false,
+     "speed": 0.5,
+     "presentation": "study",
+     "mode": "terrain",
+     "commandView": "none",
+     "TOURCV": null,
+     "eye": false,
+     "plan": null,
+     "chapter": null,
+     "selection": null,
+     "factor": 4,
+     "tourbar": true,
+     "hideDispatch": true,
+     "dispatch": false,
+     "tab": "now",
+     "layers": false
+    }
+   }
+  },
+  {
+   "id": "stretch-plays",
+   "ok": true,
+   "expected": "Next plays the stretch at 4×",
+   "observed": {
+    "openingPlay": {
+     "to": 1,
+     "target": 525,
+     "speed0": 0.5
+    },
+    "playing": true,
+    "speed": 4,
+    "clock": 255
+   }
+  },
+  {
+   "id": "stretch-pointer",
+   "ok": true,
+   "expected": "a press on the map ends the opening where it is: stopped, ½× back, the bar hidden, the dispatch back",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": -1,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": "f:legrand",
+    "factor": 4,
+    "tourbar": false,
+    "hideDispatch": false,
+    "dispatch": true,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "opening-again-2",
+   "ok": false,
+   "expected": "begun again after the press: first step, its clock",
+   "observed": {
+    "clock": 240,
+    "k": 0
+   }
+  },
+  {
+   "id": "stretch-key",
+   "ok": true,
+   "expected": "a key ends it in place and does its own action (Watch); speed back; focus on a visible control",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": -1,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "watch",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": false,
+    "hideDispatch": false,
+    "dispatch": false,
+    "tab": "now",
+    "layers": false,
+    "focus": "#play",
+    "focusVisible": true
+   }
+  },
+  {
+   "id": "opening-again-3",
+   "ok": true,
+   "expected": "begun again from Study",
+   "observed": {
+    "k": 0,
+    "clock": 240
+   }
+  },
+  {
+   "id": "step-drag",
+   "ok": true,
+   "expected": "a drag ends the opening where it is (camera taken), Follow off",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": -1,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": false,
+    "hideDispatch": false,
+    "dispatch": true,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "step-wheel",
+   "ok": true,
+   "expected": "the wheel ends it (camera taken)",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": -1,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": false,
+    "hideDispatch": false,
+    "dispatch": true,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "help-over-opening",
+   "ok": true,
+   "expected": "? opens over the opening; the first Esc closes the overlay only; the second skips to the start",
+   "observed": {
+    "r": {
+     "a": {
+      "help": true,
+      "opening": true
+     },
+     "b": {
+      "help": false,
+      "opening": true
+     }
+    },
+    "end": {
+     "opening": false,
+     "openingPlay": null,
+     "tourStep": -1,
+     "playing": false,
+     "speed": 0.5,
+     "presentation": "study",
+     "mode": "terrain",
+     "commandView": "none",
+     "TOURCV": null,
+     "eye": false,
+     "plan": null,
+     "chapter": null,
+     "selection": null,
+     "factor": 4,
+     "tourbar": false,
+     "hideDispatch": false,
+     "dispatch": true,
+     "tab": "now",
+     "layers": false
+    }
+   }
+  },
+  {
+   "id": "opening-finish",
+   "ok": true,
+   "expected": "Finish: the end state",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": -1,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": false,
+    "hideDispatch": false,
+    "dispatch": true,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "tour-begins",
+   "ok": true,
+   "expected": "the tour at stop 1, the dispatch hidden",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": 0,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": true,
+    "hideDispatch": true,
+    "dispatch": false,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "tour-next-in-watch",
+   "ok": true,
+   "expected": "the tour steps on in Watch",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": 1,
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "watch",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": "al",
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": true,
+    "hideDispatch": true,
+    "dispatch": false,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "tour-esc",
+   "ok": true,
+   "expected": "Esc ends the tour: the bar hidden, the dispatch back",
+   "observed": {
+    "opening": false,
+    "openingPlay": null,
+    "tourStep": -1,
+    "playing": true,
+    "speed": 0.5,
+    "presentation": "study",
+    "mode": "terrain",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "plan": null,
+    "chapter": null,
+    "selection": null,
+    "factor": 4,
+    "tourbar": false,
+    "hideDispatch": false,
+    "dispatch": true,
+    "tab": "now",
+    "layers": false
+   }
+  },
+  {
+   "id": "tour-again",
+   "ok": false,
+   "expected": "begun again: stop 1 at its clock",
+   "observed": {
+    "clock": 240,
+    "tour": 0
+   }
+  },
+  {
+   "id": "paper-leaves-eye",
+   "ok": true,
+   "expected": "the paper map is not at the eye level",
+   "observed": {
+    "mode": "staff",
+    "eye": false,
+    "eyecap": false
+   }
+  },
+  {
+   "id": "reset-matches-fresh",
+   "ok": false,
+   "expected": "after the ways back, every reading of the state as on a fresh page (the clock aside)",
+   "observed": {
+    "differs": [
+     {
+      "k": "dispatch",
+      "fresh": true,
+      "now": false
+     }
+    ]
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s4-tour-opening-reset-tour-in-watch-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s4-tour-opening-reset-tour-playing.jpg",
+  "docs/audit-post8-evidence/interaction/s4-tour-opening-reset-complex-paper-dom.jpg"
+ ],
+ "notes": [
+  "the tour bar while the clock plays away from its stop: {\"bar\":{\"n\":\"Stop 2 of 9\",\"t\":\"The Allied plan\",\"stopClock\":\"04:00\"},\"clock\":\"04:15\"}"
+ ],
+ "fresh": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": -1,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "terrain",
+  "commandView": "none",
+  "TOURCV": null,
+  "eye": false,
+  "plan": null,
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": false,
+  "hideDispatch": false,
+  "dispatch": true,
+  "tab": "now",
+  "layers": false
+ },
+ "freshListeners": {
+  "live": 380,
+  "removed": 0,
+  "onDetached": 1,
+  "total": 381,
+  "addCalls": 381,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 1,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 19,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 2,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip click": 1,
+   "#railclose click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 31,
+   "div.ml-item blur": 31,
+   "div.ml-item keydown": 31,
+   "div.ml-item click": 31
+  },
+  "timeouts": 0,
+  "timeoutsBy": {},
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 1,
+  "tSet": 5,
+  "tFired": 3,
+  "tCleared": 2,
+  "rSet": 7,
+  "rFired": 7,
+  "rCancel": 0
+ },
+ "openingStep1": {
+  "opening": true,
+  "openingPlay": null,
+  "tourStep": 0,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "terrain",
+  "commandView": "none",
+  "TOURCV": null,
+  "eye": false,
+  "plan": null,
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": true,
+  "hideDispatch": true,
+  "dispatch": false,
+  "tab": "now",
+  "layers": false
+ },
+ "tour1": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": 0,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "terrain",
+  "commandView": "none",
+  "TOURCV": null,
+  "eye": false,
+  "plan": null,
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": true,
+  "hideDispatch": true,
+  "dispatch": false,
+  "tab": "now",
+  "layers": false
+ },
+ "tourAfterPress": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": 0,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "terrain",
+  "commandView": "none",
+  "TOURCV": null,
+  "eye": false,
+  "plan": null,
+  "chapter": null,
+  "selection": "f:lich",
+  "factor": 4,
+  "tourbar": true,
+  "hideDispatch": true,
+  "dispatch": false,
+  "tab": "now",
+  "layers": false
+ },
+ "tourInWatch": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": 0,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "watch",
+  "mode": "terrain",
+  "commandView": "none",
+  "TOURCV": null,
+  "eye": false,
+  "plan": null,
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": true,
+  "hideDispatch": true,
+  "dispatch": false,
+  "tab": "now",
+  "layers": false,
+  "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · interval Friant's division at Raigern since the night",
+  "capVisible": true
+ },
+ "tourAfterDrag": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": 1,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "terrain",
+  "commandView": "none",
+  "TOURCV": null,
+  "eye": false,
+  "plan": "al",
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": true,
+  "hideDispatch": true,
+  "dispatch": false,
+  "tab": "now",
+  "layers": false
+ },
+ "tourPlaying": {
+  "state": {
+   "opening": false,
+   "openingPlay": null,
+   "tourStep": 1,
+   "playing": true,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "terrain",
+   "commandView": "none",
+   "TOURCV": null,
+   "eye": false,
+   "plan": "al",
+   "chapter": null,
+   "selection": null,
+   "factor": 4,
+   "tourbar": true,
+   "hideDispatch": true,
+   "dispatch": false,
+   "tab": "now",
+   "layers": false
+  },
+  "bar": {
+   "n": "Stop 2 of 9",
+   "t": "The Allied plan",
+   "stopClock": "04:00"
+  },
+  "clockText": "04:15",
+  "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · hour disputed Liechtenstein counter-marches across the 4th Column"
+ },
+ "complex1": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": 1,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "terrain",
+  "commandView": "fr",
+  "TOURCV": null,
+  "eye": true,
+  "plan": "al",
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": true,
+  "hideDispatch": true,
+  "dispatch": false,
+  "tab": "command",
+  "layers": false
+ },
+ "complex2": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": 1,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "staff",
+  "commandView": "fr",
+  "TOURCV": null,
+  "eye": false,
+  "plan": "both",
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": true,
+  "hideDispatch": true,
+  "dispatch": false,
+  "tab": "plans",
+  "layers": false,
+  "eyecap": false
+ },
+ "back1": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": 1,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "staff",
+  "commandView": "fr",
+  "TOURCV": null,
+  "eye": false,
+  "plan": "both",
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": true,
+  "hideDispatch": true,
+  "dispatch": false,
+  "tab": "plans",
+  "layers": false
+ },
+ "back2": {
+  "state": {
+   "opening": false,
+   "openingPlay": null,
+   "tourStep": -1,
+   "playing": false,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "staff",
+   "commandView": "fr",
+   "TOURCV": null,
+   "eye": false,
+   "plan": null,
+   "chapter": null,
+   "selection": null,
+   "factor": 4,
+   "tourbar": false,
+   "hideDispatch": false,
+   "dispatch": false,
+   "tab": "plans",
+   "layers": false
+  },
+  "escs": [
+   {
+    "tour": -1,
+    "sel": null,
+    "chapter": null,
+    "plan": null,
+    "mode": "staff",
+    "cv": "fr",
+    "eye": false,
+    "pres": "study",
+    "hide": false
+   },
+   {
+    "tour": -1,
+    "sel": null,
+    "chapter": null,
+    "plan": null,
+    "mode": "staff",
+    "cv": "fr",
+    "eye": false,
+    "pres": "study",
+    "hide": false
+   },
+   {
+    "tour": -1,
+    "sel": null,
+    "chapter": null,
+    "plan": null,
+    "mode": "staff",
+    "cv": "fr",
+    "eye": false,
+    "pres": "study",
+    "hide": false
+   },
+   {
+    "tour": -1,
+    "sel": null,
+    "chapter": null,
+    "plan": null,
+    "mode": "staff",
+    "cv": "fr",
+    "eye": false,
+    "pres": "study",
+    "hide": false
+   }
+  ]
+ },
+ "final": {
+  "opening": false,
+  "openingPlay": null,
+  "tourStep": -1,
+  "playing": false,
+  "speed": 0.5,
+  "presentation": "study",
+  "mode": "terrain",
+  "commandView": "none",
+  "TOURCV": null,
+  "eye": false,
+  "plan": null,
+  "chapter": null,
+  "selection": null,
+  "factor": 4,
+  "tourbar": false,
+  "hideDispatch": false,
+  "dispatch": false,
+  "tab": "plans",
+  "layers": false
+ },
+ "listeners": {
+  "live": 796,
+  "removed": 0,
+  "onDetached": 27,
+  "total": 823,
+  "addCalls": 823,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 1,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 19,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 2,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip click": 1,
+   "#railclose click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 135,
+   "div.ml-item blur": 135,
+   "div.ml-item keydown": 135,
+   "div.ml-item click": 135
+  },
+  "timeouts": 0,
+  "timeoutsBy": {},
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 1,
+  "tSet": 40,
+  "tFired": 25,
+  "tCleared": 15,
+  "rSet": 18,
+  "rFired": 18,
+  "rCancel": 0
+ },
+ "ms": 169811,
+ "ended": "2026-11-02T05:55:15.493Z"
+}

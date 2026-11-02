@@ -1,0 +1,1458 @@
+{
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "browser": "Chromium 141.0.7390.37 headless shell, SwiftShader",
+ "page": "harness page (?harness=1: render on demand, no drift; the first visitor-page run timed out on its first 1600x900 screenshot under a load average of 25), first-run card closed by a real Esc, deviceScaleFactor 1",
+ "steps": [
+  {
+   "what": "open 1600x900",
+   "bootS": 104,
+   "state": {
+    "clock": 240,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": true,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.81470930746164,
+      490.683105364721,
+      61.010668780199154
+     ],
+     "tgt": [
+      -38.81470930746164,
+      0.5158591190135614,
+      4.1815672220749605
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   }
+  },
+  {
+   "what": "Esc (real key); clock set to 09:30 by setClock (set-up)",
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -75,
+      37.948297900998455,
+      42.00000000000001
+     ],
+     "tgt": [
+      7,
+      10.004364185661881,
+      12
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "leg": {
+    "viewport": [
+     1600,
+     900
+    ],
+    "body": "docked pm-study",
+    "legend": {
+     "display": "block",
+     "visibility": "visible",
+     "box": [
+      1489,
+      753,
+      93,
+      42
+     ]
+    },
+    "toggleShown": true,
+    "rose": {
+     "display": "block",
+     "box": [
+      1500,
+      760,
+      26,
+      26
+     ]
+    },
+    "roseShown": true,
+    "keyButtons": [
+     "vm-btn: Study | Everything: panels, dossiers, sources (key 1)",
+     "vm-btn: Watch | Battlefield and timeline only (key 2)",
+     "vm-btn: Clean | The battlefield alone: no panels (key 3)",
+     "lg-toggle: N\n      \n    Key | Show or hide the key"
+    ],
+    "otherNorth": [
+     "span.cut Derived from the plotted formations: a French formation stands across the line joining the"
+    ]
+   }
+  },
+  {
+   "what": "V-M4: Allied reading (2 real clicks on #eyesbtn), Landscape with counters (real clicks), Field vantage, 09:30",
+   "clicks": [
+    {
+     "sel": "#eyesbtn",
+     "at": [
+      1200,
+      829
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": "#eyesbtn",
+     "at": [
+      1183,
+      829
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": "#layersbtn",
+     "at": [
+      1544,
+      34
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": ".mode-btn[data-m=\"hybrid\"]",
+     "at": [
+      1521,
+      202
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": "#layerclose",
+     "at": [
+      1551,
+      128
+     ],
+     "hitTestOk": true
+    }
+   ],
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "hybrid",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "al",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -75,
+      37.948297900998455,
+      42.00000000000001
+     ],
+     "tgt": [
+      7,
+      10.004364185661881,
+      12
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "counters": [
+    {
+     "id": "c:sthilaire",
+     "cat": "counter",
+     "state": "on",
+     "text": "XXFRSaint-HilaireHeavily engaged≈6,600 · Louis Vincent de Saint-Hilair"
+    },
+    {
+     "id": "c:vandamme",
+     "cat": "counter",
+     "state": "on",
+     "text": "XXFRVandamme"
+    },
+    {
+     "id": "c:bag",
+     "cat": "counter",
+     "state": "offscreen",
+     "text": "XXXRUBAdvance Guard of the Right"
+    }
+   ],
+   "arrowLabels": [
+    {
+     "id": "o:French hold the crest",
+     "cat": "overlay",
+     "state": "on",
+     "text": "French hold the crest"
+    },
+    {
+     "id": "o:Kamensky turns about (disputed)",
+     "cat": "overlay",
+     "state": "offscreen",
+     "text": "Kamensky turns about (disputed)"
+    },
+    {
+     "id": "o:Jurczek's Austrians",
+     "cat": "overlay",
+     "state": "on",
+     "text": "Jurczek's Austrians"
+    },
+    {
+     "id": "o:Levasseur up the Goldbach",
+     "cat": "overlay",
+     "state": "offscreen",
+     "text": "Levasseur up the Goldbach"
+    },
+    {
+     "id": "o:Caffarelli",
+     "cat": "overlay",
+     "state": "offscreen",
+     "text": "Caffarelli"
+    },
+    {
+     "id": "o:Suchet",
+     "cat": "overlay",
+     "state": "offscreen",
+     "text": "Suchet"
+    },
+    {
+     "id": "o:Bagration",
+     "cat": "overlay",
+     "state": "offscreen",
+     "text": "Bagration"
+    }
+   ],
+   "plateau": [
+    {
+     "id": "p:plateau",
+     "cat": "plateau",
+     "state": "panel",
+     "text": "THE PRATZEN · derived: Allied ≈ 18,150 French ≈ 13,300"
+    }
+   ],
+   "arrows": {
+    "commandView": "al",
+    "phase": 4,
+    "clock": 570,
+    "layerArrows": true,
+    "ovFadeIn": 1,
+    "drawon": [
+     {
+      "label": "Caffarelli",
+      "id": "caffarelli",
+      "readHidden": true,
+      "drawnKnow": "unknown",
+      "drawnOnFraction": 0,
+      "ghostShaftVisible": [
+       true,
+       true
+      ],
+      "ghostOpacities": [
+       0.19,
+       0.19,
+       0.236,
+       0.236
+      ],
+      "tipToFormation": null
+     },
+     {
+      "label": "Suchet",
+      "id": "suchet",
+      "readHidden": true,
+      "drawnKnow": "unknown",
+      "drawnOnFraction": 0,
+      "ghostShaftVisible": [
+       true,
+       true
+      ],
+      "ghostOpacities": [
+       0.19,
+       0.19,
+       0.236,
+       0.236
+      ],
+      "tipToFormation": null
+     },
+     {
+      "label": "Bagration",
+      "id": "bag",
+      "readHidden": false,
+      "drawnKnow": "own",
+      "drawnOnFraction": 0,
+      "ghostShaftVisible": [
+       true,
+       true
+      ],
+      "ghostOpacities": [
+       0.19,
+       0.19,
+       0.236,
+       0.236
+      ],
+      "tipToFormation": null
+     }
+    ],
+    "plateauText": "THE PRATZEN  ·  derived: Allied ≈ 18,150   French ≈ 13,300",
+    "plateauKnownOnly": 13300,
+    "plateauFrAll": 13300
+   }
+  },
+  {
+   "what": "V-M4 capture",
+   "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/eyes-al-counters-0930.jpg"
+  },
+  {
+   "what": "V-M4 sweep: arrows drawn for formations the reading hides, and the plateau figures all vs known, every 30 min 04:30-18:00 (set-up by script)",
+   "sweep": {
+    "al": [
+     {
+      "t": "07:00",
+      "phase": 1,
+      "arrowsOfUnknown": [
+       "Friant's approach march [friant, drawn on 0.50]"
+      ],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 38700,
+       "alKnown": 38700,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "07:30",
+      "phase": 1,
+      "arrowsOfUnknown": [
+       "Friant's approach march [friant, drawn on 0.63]"
+      ],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 19300,
+       "alKnown": 19300,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "08:00",
+      "phase": 2,
+      "arrowsOfUnknown": [
+       "Friant's approach march [friant, drawn on 0.75]"
+      ],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 19300,
+       "alKnown": 19300,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "08:30",
+      "phase": 2,
+      "arrowsOfUnknown": [
+       "Friant's approach march [friant, drawn on 0.87]"
+      ],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 23550,
+       "alKnown": 23550,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "09:30",
+      "phase": 4,
+      "arrowsOfUnknown": [
+       "Caffarelli [caffarelli, drawn on 0.00]",
+       "Suchet [suchet, drawn on 0.00]"
+      ],
+      "plateau": {
+       "frAll": 13300,
+       "frKnown": 13300,
+       "alAll": 18150,
+       "alKnown": 18150,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "10:00",
+      "phase": 4,
+      "arrowsOfUnknown": [
+       "Caffarelli [caffarelli, drawn on 0.50]",
+       "Suchet [suchet, drawn on 0.50]"
+      ],
+      "plateau": {
+       "frAll": 13300,
+       "frKnown": 13300,
+       "alAll": 18150,
+       "alKnown": 18150,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "10:30",
+      "phase": 5,
+      "arrowsOfUnknown": [
+       "Nansouty's cuirassiers [nansouty, drawn on 0.00]"
+      ],
+      "plateau": {
+       "frAll": 20300,
+       "frKnown": 20300,
+       "alAll": 16250,
+       "alKnown": 16250,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "11:00",
+      "phase": 5,
+      "arrowsOfUnknown": [
+       "Nansouty's cuirassiers [nansouty, drawn on 0.67]"
+      ],
+      "plateau": {
+       "frAll": 20300,
+       "frKnown": 20300,
+       "alAll": 16250,
+       "alKnown": 16250,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "11:30",
+      "phase": 6,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 31500,
+       "frKnown": 25800,
+       "alAll": 20680,
+       "alKnown": 20680,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "12:00",
+      "phase": 6,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 37500,
+       "frKnown": 31800,
+       "alAll": 4250,
+       "alKnown": 4250,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "12:30",
+      "phase": 6,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 37500,
+       "frKnown": 31800,
+       "alAll": 0,
+       "alKnown": 0,
+       "labelShown": true
+      }
+     }
+    ],
+    "fr": [
+     {
+      "t": "04:30",
+      "phase": 0,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 38700,
+       "alKnown": 17900,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "05:00",
+      "phase": 0,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 38700,
+       "alKnown": 17900,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "05:30",
+      "phase": 0,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 38700,
+       "alKnown": 17900,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "06:00",
+      "phase": 0,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 38700,
+       "alKnown": 17900,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "06:30",
+      "phase": 0,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 38700,
+       "alKnown": 17900,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "07:00",
+      "phase": 1,
+      "arrowsOfUnknown": [
+       "Kienmayer [kienmayer, drawn on 0.00]",
+       "I Column descends [dok, drawn on 0.00]"
+      ],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 38700,
+       "alKnown": 17900,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "07:30",
+      "phase": 1,
+      "arrowsOfUnknown": [
+       "Kienmayer [kienmayer, drawn on 0.50]",
+       "I Column descends [dok, drawn on 0.91]"
+      ],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 19300,
+       "alKnown": 10200,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "08:00",
+      "phase": 2,
+      "arrowsOfUnknown": [
+       "Liechtenstein crosses the front [lich, drawn on 0.00]"
+      ],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 19300,
+       "alKnown": 13900,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "08:30",
+      "phase": 2,
+      "arrowsOfUnknown": [
+       "Liechtenstein crosses the front [lich, drawn on 0.67]"
+      ],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 23550,
+       "alKnown": 13900,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "09:00",
+      "phase": 3,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 0,
+       "frKnown": 0,
+       "alAll": 23550,
+       "alKnown": 19300,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "10:00",
+      "phase": 4,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 13300,
+       "frKnown": 13300,
+       "alAll": 18150,
+       "alKnown": 13350,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "11:00",
+      "phase": 5,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 20300,
+       "frKnown": 20300,
+       "alAll": 16250,
+       "alKnown": 7150,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "11:30",
+      "phase": 6,
+      "arrowsOfUnknown": [],
+      "plateau": {
+       "frAll": 31500,
+       "frKnown": 31500,
+       "alAll": 20680,
+       "alKnown": 11580,
+       "labelShown": true
+      }
+     },
+     {
+      "t": "14:30",
+      "phase": 8,
+      "arrowsOfUnknown": [
+       "Bagration withdraws on Rausnitz [bag, drawn on 0.00]"
+      ],
+      "plateau": {
+       "frAll": 18500,
+       "frKnown": 18500,
+       "alAll": 0,
+       "alKnown": 0,
+       "labelShown": false
+      }
+     },
+     {
+      "t": "15:00",
+      "phase": 8,
+      "arrowsOfUnknown": [
+       "Bagration withdraws on Rausnitz [bag, drawn on 0.20]"
+      ],
+      "plateau": {
+       "frAll": 18500,
+       "frKnown": 18500,
+       "alAll": 0,
+       "alKnown": 0,
+       "labelShown": false
+      }
+     },
+     {
+      "t": "15:30",
+      "phase": 8,
+      "arrowsOfUnknown": [
+       "Bagration withdraws on Rausnitz [bag, drawn on 0.40]"
+      ],
+      "plateau": {
+       "frAll": 18500,
+       "frKnown": 18500,
+       "alAll": 0,
+       "alKnown": 0,
+       "labelShown": false
+      }
+     },
+     {
+      "t": "16:00",
+      "phase": 8,
+      "arrowsOfUnknown": [
+       "Bagration withdraws on Rausnitz [bag, drawn on 0.60]"
+      ],
+      "plateau": {
+       "frAll": 18500,
+       "frKnown": 18500,
+       "alAll": 0,
+       "alKnown": 0,
+       "labelShown": false
+      }
+     },
+     {
+      "t": "16:30",
+      "phase": 8,
+      "arrowsOfUnknown": [
+       "Bagration withdraws on Rausnitz [bag, drawn on 0.80]"
+      ],
+      "plateau": {
+       "frAll": 18500,
+       "frKnown": 18500,
+       "alAll": 0,
+       "alKnown": 0,
+       "labelShown": false
+      }
+     }
+    ]
+   }
+  },
+  {
+   "what": "reading back to everyone",
+   "click": {
+    "sel": "#eyesbtn",
+    "at": [
+     1199,
+     829
+    ],
+    "hitTestOk": true
+   },
+   "commandView": "none"
+  },
+  {
+   "what": "V-M2/V-M3 1600x900: the key and the rose in Study, Watch, Clean",
+   "study": {
+    "viewport": [
+     1600,
+     900
+    ],
+    "body": "docked pm-study",
+    "legend": {
+     "display": "block",
+     "visibility": "visible",
+     "box": [
+      1489,
+      753,
+      93,
+      42
+     ]
+    },
+    "toggleShown": true,
+    "rose": {
+     "display": "block",
+     "box": [
+      1500,
+      760,
+      26,
+      26
+     ]
+    },
+    "roseShown": true,
+    "keyButtons": [
+     "vm-btn: Study | Everything: panels, dossiers, sources (key 1)",
+     "vm-btn: Watch | Battlefield and timeline only (key 2)",
+     "vm-btn: Clean | The battlefield alone: no panels (key 3)",
+     "lg-toggle: N\n      \n    Key | Show or hide the key"
+    ],
+    "otherNorth": [
+     "span.cut Derived from the plotted formations: a French formation stands across the line joining the"
+    ]
+   },
+   "watch": {
+    "click": {
+     "sel": ".vm-btn[data-vm=\"watch\"]",
+     "at": [
+      802,
+      31
+     ],
+     "hitTestOk": true
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "body": "docked pm-watch rail-hidden",
+    "legend": {
+     "display": "none",
+     "visibility": "visible",
+     "box": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "toggleShown": false,
+    "rose": {
+     "display": "block",
+     "box": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "roseShown": false,
+    "keyButtons": [
+     "vm-btn: Study | Everything: panels, dossiers, sources (key 1)",
+     "vm-btn: Watch | Battlefield and timeline only (key 2)",
+     "vm-btn: Clean | The battlefield alone: no panels (key 3)"
+    ],
+    "otherNorth": [
+     "span.cut Derived from the plotted formations: a French formation stands across the line joining the"
+    ]
+   },
+   "clean": {
+    "click": {
+     "sel": "#tb-vm .vm-btn[data-vm=\"map\"], .vm-btn[data-vm=\"map\"]",
+     "at": [
+      1266,
+      828
+     ],
+     "hitTestOk": true
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "body": "docked rail-hidden pm-map",
+    "legend": {
+     "display": "none",
+     "visibility": "visible",
+     "box": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "toggleShown": false,
+    "rose": {
+     "display": "block",
+     "box": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "roseShown": false,
+    "keyButtons": [
+     "vm-btn: Study | Everything: panels, dossiers, sources (key 1)",
+     "vm-btn: Watch | Battlefield and timeline only (key 2)",
+     "vm-btn: Clean | The battlefield alone: no panels (key 3)"
+    ],
+    "otherNorth": []
+   },
+   "afterKey1": "study"
+  },
+  {
+   "what": "V-M5: the paper map entered by real clicks at 1600x900 (09:30, Study, everyone)",
+   "clicks": [
+    {
+     "sel": "#layersbtn",
+     "at": [
+      1544,
+      34
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": ".mode-btn[data-m=\"staff\"]",
+     "at": [
+      1435,
+      202
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": "#layerclose",
+     "at": [
+      1551,
+      128
+     ],
+     "hitTestOk": true
+    }
+   ],
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "map",
+     "x": 14.230056491427284,
+     "z": 8.316548732995047,
+     "wpp": 0.5543528804271592
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "n": 36,
+   "byCat": {
+    "counter": {
+     "on": 14
+    },
+    "event": {
+     "on": 1
+    },
+    "plateau": {
+     "on": 1
+    },
+    "overlay": {
+     "on": 7
+    },
+    "objective": {
+     "on": 1
+    },
+    "place": {
+     "dropped": 12
+    }
+   },
+   "places": [
+    {
+     "id": "t:pratzen",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzen Heights"
+    },
+    {
+     "id": "t:vinohrady",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Stare Vinohrady"
+    },
+    {
+     "id": "t:pratzeberg",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzeberg"
+    },
+    {
+     "id": "t:santon",
+     "cat": "place",
+     "state": "dropped",
+     "text": "The Santon"
+    },
+    {
+     "id": "t:zuran",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Zuran mound"
+    },
+    {
+     "id": "t:goldbach",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Goldbach stream"
+    },
+    {
+     "id": "t:litava",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Litava river"
+    },
+    {
+     "id": "t:telnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Telnitz"
+    },
+    {
+     "id": "t:sokolnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Sokolnitz"
+    },
+    {
+     "id": "t:augezd",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Augezd"
+    },
+    {
+     "id": "t:satschan",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Satschan mere"
+    },
+    {
+     "id": "t:austerlitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Austerlitz"
+    }
+   ]
+  },
+  {
+   "what": "V-M5 capture 1600x900",
+   "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/paper-entered-1600x900.jpg"
+  },
+  {
+   "what": "V-M5: the paper map entered by real clicks at 1280x720 (09:30, Study, everyone)",
+   "clicks": [
+    {
+     "sel": "#layersbtn",
+     "at": [
+      1224,
+      34
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": ".mode-btn[data-m=\"staff\"]",
+     "at": [
+      1115,
+      194
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": "#layerclose",
+     "at": [
+      1231,
+      120
+     ],
+     "hitTestOk": true
+    }
+   ],
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "map",
+     "x": 18.329361853118293,
+     "z": 9.573079866242802,
+     "wpp": 0.7311030741865433
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "n": 36,
+   "byCat": {
+    "counter": {
+     "on": 14
+    },
+    "event": {
+     "on": 1
+    },
+    "plateau": {
+     "on": 1
+    },
+    "overlay": {
+     "on": 7
+    },
+    "objective": {
+     "on": 1
+    },
+    "place": {
+     "dropped": 12
+    }
+   },
+   "places": [
+    {
+     "id": "t:pratzen",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzen Heights"
+    },
+    {
+     "id": "t:vinohrady",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Stare Vinohrady"
+    },
+    {
+     "id": "t:pratzeberg",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzeberg"
+    },
+    {
+     "id": "t:santon",
+     "cat": "place",
+     "state": "dropped",
+     "text": "The Santon"
+    },
+    {
+     "id": "t:zuran",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Zuran mound"
+    },
+    {
+     "id": "t:goldbach",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Goldbach stream"
+    },
+    {
+     "id": "t:litava",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Litava river"
+    },
+    {
+     "id": "t:telnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Telnitz"
+    },
+    {
+     "id": "t:sokolnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Sokolnitz"
+    },
+    {
+     "id": "t:augezd",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Augezd"
+    },
+    {
+     "id": "t:satschan",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Satschan mere"
+    },
+    {
+     "id": "t:austerlitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Austerlitz"
+    }
+   ]
+  },
+  {
+   "what": "V-M5 capture 1280x720",
+   "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/paper-entered-1280x720.jpg"
+  },
+  {
+   "what": "V-M5: Landscape with counters at the Overview (real clicks) 1280x720",
+   "click": {
+    "sel": ".van-btn[data-v=\"plan\"]",
+    "at": [
+     1222,
+     88
+    ],
+    "hitTestOk": true
+   },
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "hybrid",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.803697300522686,
+      588.8430689966025,
+      71.86021366781839
+     ],
+     "tgt": [
+      -38.803697300522686,
+      0.4834133409556127,
+      3.6468622453176494
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "n": 36,
+   "byCat": {
+    "counter": {
+     "on": 13,
+     "dropped": 1
+    },
+    "event": {
+     "on": 1
+    },
+    "plateau": {
+     "dropped": 1
+    },
+    "overlay": {
+     "on": 5,
+     "dropped": 2
+    },
+    "objective": {
+     "on": 1
+    },
+    "place": {
+     "dropped": 12
+    }
+   },
+   "places": [
+    {
+     "id": "t:pratzen",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzen Heights"
+    },
+    {
+     "id": "t:vinohrady",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Stare Vinohrady"
+    },
+    {
+     "id": "t:pratzeberg",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzeberg"
+    },
+    {
+     "id": "t:santon",
+     "cat": "place",
+     "state": "dropped",
+     "text": "The Santon"
+    },
+    {
+     "id": "t:zuran",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Zuran mound"
+    },
+    {
+     "id": "t:goldbach",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Goldbach stream"
+    },
+    {
+     "id": "t:litava",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Litava river"
+    },
+    {
+     "id": "t:telnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Telnitz"
+    },
+    {
+     "id": "t:sokolnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Sokolnitz"
+    },
+    {
+     "id": "t:augezd",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Augezd"
+    },
+    {
+     "id": "t:satschan",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Satschan mere"
+    },
+    {
+     "id": "t:austerlitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Austerlitz"
+    }
+   ]
+  },
+  {
+   "what": "FAILED",
+   "err": "page.evaluate: Target page, context or browser has been closed\n    at settle (/home/user/Austerlitz/tools/audit-post8/verification/v-repro-ux-maps/desk.js:37:41)\n    at /home/user/Austerlitz/tools/audit-post8/verification/v-repro-ux-maps/desk.js:96:69"
+  }
+ ],
+ "errors": [],
+ "seconds": 1800
+}

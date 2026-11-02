@@ -1,0 +1,259 @@
+{
+ "html": "/tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/perf-attribution/build-f10fe585.html",
+ "vp": [
+  2560,
+  1305
+ ],
+ "boot": {
+  "firstFrame": 10841,
+  "bootGone": 24232,
+  "stub": {
+   "at": 10841,
+   "stubbed": [
+    "drawElements",
+    "drawArrays",
+    "drawElementsInstanced",
+    "drawArraysInstanced",
+    "drawRangeElements",
+    "clear",
+    "blitFramebuffer"
+   ],
+   "webgl2": true,
+   "drainMs": 205.2,
+   "drain2": 76.9
+  }
+ },
+ "openS": 29.537,
+ "runs": [
+  {
+   "label": "A1",
+   "err": null,
+   "clock": [
+    510.77361111111117,
+    511.60694444444465
+   ],
+   "per": {
+    "frames": 24,
+    "draws": 800,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 318,
+    "gpByPerFrame": {
+     "MeshStandardMaterial": 103,
+     "MeshStandardMaterial+anim": 215,
+     "SpriteMaterial": 0.08
+    }
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.6,
+    "bindBuffer": 3435.5,
+    "useProgram": 501,
+    "total": 13506.3,
+    "uniform": 1970.3
+   },
+   "ms": {
+    "loop": 26.3,
+    "threeRender": 14,
+    "renderFX": 14.7
+   },
+   "cpuMsPerFrame": 27.007,
+   "load": [
+    [
+     1.34,
+     0.56,
+     0.33
+    ],
+    [
+     1.34,
+     0.56,
+     0.33
+    ]
+   ]
+  },
+  {
+   "label": "B1",
+   "err": null,
+   "clock": [
+    512.3805555555555,
+    513.2138888888876
+   ],
+   "per": {
+    "frames": 24,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 0,
+    "gpByPerFrame": {
+     "MeshStandardMaterial": 4.29,
+     "MeshStandardMaterial+anim": 8.96
+    }
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.2,
+    "bindBuffer": 3432.1,
+    "useProgram": 501.2,
+    "total": 13541.5,
+    "uniform": 1984.5
+   },
+   "ms": {
+    "loop": 21.8,
+    "threeRender": 10.2,
+    "renderFX": 10.7
+   },
+   "cpuMsPerFrame": 22.827,
+   "load": [
+    [
+     1.34,
+     0.56,
+     0.33
+    ],
+    [
+     1.34,
+     0.56,
+     0.33
+    ]
+   ]
+  },
+  {
+   "label": "A2",
+   "err": null,
+   "clock": [
+    513.9874999999985,
+    514.8208333333306
+   ],
+   "per": {
+    "frames": 24,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 318,
+    "gpByPerFrame": {
+     "MeshStandardMaterial": 103,
+     "MeshStandardMaterial+anim": 215
+    }
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.3,
+    "bindBuffer": 3432,
+    "useProgram": 501,
+    "total": 13504.7,
+    "uniform": 1975.2
+   },
+   "ms": {
+    "loop": 34.9,
+    "threeRender": 18.3,
+    "renderFX": 19.1
+   },
+   "cpuMsPerFrame": 34.506,
+   "load": [
+    [
+     1.34,
+     0.56,
+     0.33
+    ],
+    [
+     1.34,
+     0.56,
+     0.33
+    ]
+   ]
+  },
+  {
+   "label": "B2",
+   "err": null,
+   "clock": [
+    515.5944444444415,
+    516.4277777777736
+   ],
+   "per": {
+    "frames": 24,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 0,
+    "gpByPerFrame": {}
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.3,
+    "bindBuffer": 3428.9,
+    "useProgram": 501,
+    "total": 13509.2,
+    "uniform": 1977.3
+   },
+   "ms": {
+    "loop": 20.5,
+    "threeRender": 9.6,
+    "renderFX": 10.1
+   },
+   "cpuMsPerFrame": 21.331,
+   "load": [
+    [
+     1.34,
+     0.56,
+     0.33
+    ],
+    [
+     1.79,
+     0.67,
+     0.36
+    ]
+   ]
+  }
+ ],
+ "setup": {
+  "clock": 510,
+  "mode": "terrain",
+  "presentation": "watch",
+  "follow": true,
+  "fx": true,
+  "fxScale": 1.3,
+  "lowTier": false,
+  "shadow": true,
+  "factor": 4,
+  "px": 1,
+  "playing": false,
+  "vw": 2560,
+  "vh": 1305,
+  "cull": true
+ },
+ "install": {
+  "ownWrapped": 538,
+  "materialsSeen": 948,
+  "lights": [
+   "HemisphereLight layers=1",
+   "DirectionalLight layers=1",
+   "DirectionalLight(shadow) layers=1"
+  ],
+  "fx": true,
+  "renderFX": "function",
+  "labelLayer": 1
+ },
+ "lights_B1": 3,
+ "lights_A2": 3,
+ "lights_B2": 3,
+ "log": []
+}

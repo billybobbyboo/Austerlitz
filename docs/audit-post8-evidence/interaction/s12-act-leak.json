@@ -1,0 +1,380 @@
+{
+ "names": 34,
+ "byReading": {
+  "fr": {
+   "formationClocksHidden": 527,
+   "withDoingNow": 480,
+   "namingAPlace": 320,
+   "distinctTexts": 18
+  },
+  "al": {
+   "formationClocksHidden": 1027,
+   "withDoingNow": 798,
+   "namingAPlace": 304,
+   "distinctTexts": 17
+  }
+ },
+ "examples": [
+  {
+   "id": "ahq",
+   "reading": "fr",
+   "first": "04:00",
+   "act": "Kutuzov's headquarters at Krzenowitz, where the dispositions were read overnight. The emperors join the 4th Column on the plateau about 08:30-09:00",
+   "names": [
+    "Krzenowitz"
+   ],
+   "last": "07:20"
+  },
+  {
+   "id": "kienmayer",
+   "reading": "fr",
+   "first": "04:00",
+   "act": "Formed near Augezd before first light",
+   "names": [
+    "Augezd"
+   ],
+   "last": "06:50"
+  },
+  {
+   "id": "dok",
+   "reading": "fr",
+   "first": "04:00",
+   "act": "At the southern end of the Pratzen plateau",
+   "names": [
+    "Pratzen"
+   ],
+   "last": "06:50"
+  },
+  {
+   "id": "kienmayer",
+   "reading": "fr",
+   "first": "07:00",
+   "act": "Attacks Telnitz; the village changes hands several times",
+   "names": [
+    "Telnitz"
+   ],
+   "last": "12:40"
+  },
+  {
+   "id": "dok",
+   "reading": "fr",
+   "first": "07:00",
+   "act": "Leaves its camp at seven, as the disposition ordered, and descends toward the Goldbach (Buxhowden's and Kutuzov's reports)",
+   "names": [
+    "Goldbach"
+   ],
+   "last": "07:30"
+  },
+  {
+   "id": "buxhowden",
+   "reading": "fr",
+   "first": "08:00",
+   "act": "Feeding all three columns into the Goldbach villages",
+   "names": [
+    "Goldbach"
+   ],
+   "last": "12:40"
+  },
+  {
+   "id": "lang",
+   "reading": "fr",
+   "first": "08:00",
+   "act": "Storms Sokolnitz; Kamensky's brigade marches at the rear of the column",
+   "names": [
+    "Sokolnitz"
+   ],
+   "last": "09:20"
+  },
+  {
+   "id": "lang",
+   "reading": "fr",
+   "first": "09:30",
+   "act": "Langeron rides back and sends reinforcements up the slope toward Kamensky. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there",
+   "names": [
+    "Sokolnitz"
+   ],
+   "last": "12:40"
+  },
+  {
+   "id": "dok",
+   "reading": "fr",
+   "first": "09:50",
+   "act": "Pushes into Telnitz behind Kienmayer",
+   "names": [
+    "Telnitz"
+   ],
+   "last": "12:40"
+  },
+  {
+   "id": "kollo",
+   "reading": "fr",
+   "first": "10:40",
+   "act": "Spread along the crest from the Pratzeberg to Stare Vinohrady: Jurczek on the summit, Rottermund on the Old Vineyards. The accounts differ: Schönhals has the Austrians and Kamensky climb the height in a second bayonet attack before Boyer's dragoons drive them off; Thiébault has them dispersed by his guns",
+   "names": [
+    "Stare Vinohrady",
+    "Stare",
+    "Pratzeberg"
+   ],
+   "last": "11:10"
+  },
+  {
+   "id": "ahq",
+   "reading": "fr",
+   "first": "11:20",
+   "act": "Headquarters falls back toward Krzenowitz",
+   "names": [
+    "Krzenowitz"
+   ],
+   "last": "18:00"
+  },
+  {
+   "id": "kollo",
+   "reading": "fr",
+   "first": "11:20",
+   "act": "Rottermund's brigade falls back on Stare Vinohrady, then east",
+   "names": [
+    "Stare Vinohrady",
+    "Stare"
+   ],
+   "last": "18:00"
+  },
+  {
+   "id": "bag",
+   "reading": "fr",
+   "first": "12:40",
+   "act": "Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later)",
+   "names": [
+    "Blasowitz"
+   ],
+   "last": "14:20"
+  },
+  {
+   "id": "kienmayer",
+   "reading": "fr",
+   "first": "12:50",
+   "act": "Holding west of the Goldbach as the trap closes behind it",
+   "names": [
+    "Goldbach"
+   ],
+   "last": "14:20"
+  },
+  {
+   "id": "lang",
+   "reading": "fr",
+   "first": "12:50",
+   "act": "Driven back toward Sokolnitz by Davout at about 12:30 (this map's reading; no account read gives it)",
+   "names": [
+    "Sokolnitz"
+   ],
+   "last": "13:50"
+  },
+  {
+   "id": "bag",
+   "reading": "fr",
+   "first": "14:30",
+   "act": "On the height toward Rausnitz, covering the Allied right (Schönhals); he retreats on Austerlitz about six in Schönhals, and is behind it by six in Stutterheim",
+   "names": [
+    "Austerlitz"
+   ],
+   "last": "18:00"
+  },
+  {
+   "id": "buxhowden",
+   "reading": "fr",
+   "first": "15:50",
+   "act": "Escapes south over the Augezd defile",
+   "names": [
+    "Augezd"
+   ],
+   "last": "18:00"
+  },
+  {
+   "id": "kienmayer",
+   "reading": "fr",
+   "first": "17:00",
+   "act": "Falls back across the frozen Satschan mere under artillery fire",
+   "names": [
+    "Satschan mere",
+    "Satschan"
+   ],
+   "last": "18:00"
+  },
+  {
+   "id": "gqg",
+   "reading": "al",
+   "first": "04:00",
+   "act": "On the height of his bivouac, taken here to be the Zuran: 'la butte' of the orders of 1 December, 'the barrow by Schlapanitz' in Mikhailovsky-Danilevsky. The dispositions call his marshals to his bivouac for the morning's orders",
+   "names": [
+    "Zuran"
+   ],
+   "last": "07:20"
+  },
+  {
+   "id": "sthilaire",
+   "reading": "al",
+   "first": "04:00",
+   "act": "Standing in fog behind Puntowitz, hidden from the plateau",
+   "names": [
+    "Puntowitz"
+   ],
+   "last": "07:50"
+  },
+  {
+   "id": "vandamme",
+   "reading": "al",
+   "first": "04:00",
+   "act": "Concealed in the valley behind Girzikowitz",
+   "names": [
+    "Girzikowitz"
+   ],
+   "last": "07:50"
+  },
+  {
+   "id": "friant",
+   "reading": "al",
+   "first": "04:00",
+   "act": "At Raigern since the night of 1 December, 8 km south-west of Telnitz and just beyond the map edge, after about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers, a march whose figures vary between the sources",
+   "names": [
+    "Telnitz"
+   ],
+   "last": "06:50"
+  },
+  {
+   "id": "rivaud",
+   "reading": "al",
+   "first": "04:00",
+   "act": "Behind Girzikowitz on I Corps' left (Stutterheim; the 30th Bulletin for the left); the place drawn, west of the village, is this map's",
+   "names": [
+    "Girzikowitz"
+   ],
+   "last": "08:40"
+  },
+  {
+   "id": "drouet",
+   "reading": "al",
+   "first": "04:00",
+   "act": "Where I Corps stood at dawn is disputed: in the second line behind Soult on 1 December (Savary), behind Girzikowitz (Stutterheim), in the Goldbach ravine with Soult's troops (Marbot), across the brook since the evening before (Mikhailovsky-Danilevsky); the place drawn is this map's",
+   "names": [
+    "Goldbach",
+    "Girzikowitz"
+   ],
+   "last": "08:40"
+  },
+  {
+   "id": "c_gren",
+   "reading": "al",
+   "first": "04:00",
+   "act": "Formed near the Zuran with the Guard",
+   "names": [
+    "Zuran"
+   ],
+   "last": "11:10"
+  },
+  {
+   "id": "legrand",
+   "reading": "al",
+   "first": "07:00",
+   "act": "Contests Telnitz house by house against Kienmayer",
+   "names": [
+    "Telnitz"
+   ],
+   "last": "07:50"
+  },
+  {
+   "id": "friant",
+   "reading": "al",
+   "first": "07:00",
+   "act": "Marching from Raigern toward Telnitz",
+   "names": [
+    "Telnitz"
+   ],
+   "last": "08:40"
+  },
+  {
+   "id": "sthilaire",
+   "reading": "al",
+   "first": "08:00",
+   "act": "Crosses the Goldbach and forms for the attack",
+   "names": [
+    "Goldbach"
+   ],
+   "last": "08:40"
+  },
+  {
+   "id": "vandamme",
+   "reading": "al",
+   "first": "08:00",
+   "act": "Crosses the Goldbach",
+   "names": [
+    "Goldbach"
+   ],
+   "last": "08:40"
+  },
+  {
+   "id": "legrand",
+   "reading": "al",
+   "first": "08:00",
+   "act": "Fights for Sokolnitz village and the castle wall",
+   "names": [
+    "Sokolnitz"
+   ],
+   "last": "09:20"
+  },
+  {
+   "id": "legrand",
+   "reading": "al",
+   "first": "09:30",
+   "act": "Levasseur's brigade marches up onto the Pratzeberg: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right",
+   "names": [
+    "Pratzeberg"
+   ],
+   "last": "12:50"
+  },
+  {
+   "id": "gqg",
+   "reading": "al",
+   "first": "12:00",
+   "act": "Moves forward from the Zuran to Stare Vinohrady",
+   "names": [
+    "Stare Vinohrady",
+    "Stare",
+    "Zuran"
+   ],
+   "last": "12:40"
+  },
+  {
+   "id": "legrand",
+   "reading": "al",
+   "first": "13:00",
+   "act": "Presses east to the stream at Sokolnitz as the trap closes",
+   "names": [
+    "Sokolnitz"
+   ],
+   "last": "14:20"
+  },
+  {
+   "id": "gqg",
+   "reading": "al",
+   "first": "14:30",
+   "act": "At the chapel of St Anthony above Augezd, having come from the Pratzen with the Guard cavalry and artillery (Schönhals; a French officer's note of 1806 has him come down to the chapel with the Guard cavalry); Mikhailovsky-Danilevsky has him place the Guard artillery on the Augezd heights in person",
+   "names": [
+    "Pratzen",
+    "Augezd"
+   ],
+   "last": "18:00"
+  },
+  {
+   "id": "legrand",
+   "reading": "al",
+   "first": "14:30",
+   "act": "Retakes Telnitz for good",
+   "names": [
+    "Telnitz"
+   ],
+   "last": "18:00"
+  }
+ ],
+ "build": {
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ }
+}

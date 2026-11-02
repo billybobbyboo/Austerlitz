@@ -1,0 +1,69 @@
+{
+ "label": "v-repro-ux-maps",
+ "verdicts": [
+  {
+   "area": "a11y",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "reproduced: own zoom.js on the audited build (visitor page, viewport 400x225 and 320x256 at deviceScaleFactor 4, phone 844x390; real Esc, clicks, Tab route) + code reading at HEAD",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-ux-maps/zoom.json, zoom-400x225-at4-*.jpg, zoom-320x256-at4-*.jpg. 400x225: card y -112..116 (heading -93..-73), not scrollable; after Esc dispatch none, Now tab hidden, caption 0 px, no legend, '?' x 370-402; Panels centre hits div.tb-top, rail stays hidden; keyboard (37 Tabs, Enter) opens the rail at x -275 with a 0 px scroll area; 'Accuracy and sources' opens nothing. 320x256: card y -140; '?' x 370 off screen; rail scroll area 0 px, srcbtn centre hits div.tb-ctrl, no sheet. Code: style.css:619-625, 645-646, 851-862 (comment 849-850 admits desktop windows <=430 px tall take it), 477-479 (#situation inside the dispatch, so the 430 px rule's premise fails), app.js:8971-8984.",
+   "notes": "The 844x390 part (no dispatch) is today's layout kept by decision 226 (a): accepted; the caption still names the phase and the live event there. No decision record mentions browser zoom or reflow, so the 400% / 320 px part (WCAG 1.4.10 AA) stands at S2/P2. Origin inherited (0a19964, 1613575). Remedy feasible; the phone cases of decisions 223-226 and 232 must hold."
+  },
+  {
+   "area": "visual-maps",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "reproduced: own phone.js/phone2.js, visitor phone page 390x844 (density 3, touch), elementFromPoint hit map per px, CDP touch drags, touchscreen.tap; code reading",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-ux-maps/phone.json, phone2.json, phone-rail-tap-marker.jpg. Middle line (y 832): markers 64.2% (20 of 25), rail 35.8%. Drag 60 px right from the rail (x 51.5): 09:30 to 07:52 (follows the finger). The same drag from a marker (x 121.5) or 60 px left from another (x 233.5): clock unchanged, nothing selected. Tap on the marker: 08:25, e:decision selected, dossier open. Code: style.css:344, 379-382, 794; app.js:7529-7531.",
+   "notes": "Decision 167 covers the markers' target size only. Origin inherited (0a19964; step 6 Part B's phone timeline).",
+   "corrected": {
+    "observed": "Markers take 64.2% of the rail's middle line (the area: 65.8%) and 4.5% 4 px above its foot (the area: 9.4%). But a real touch drag from (121.5, 840), where elementFromPoint returns the rail, did not scrub either (run twice). So 'the rail's bottom 4 px' is no reliable escape under a marker, which makes the defect slightly worse than stated."
+   }
+  },
+  {
+   "area": "visual-maps",
+   "index": 1,
+   "verdict": "CONFIRMED",
+   "method": "code reading at HEAD + own read-backs (desk.json 1600x900 Study/Watch/Clean by real clicks; phone.json Menu, Layers and sources sheet by real taps)",
+   "evidence": "style.css:584 (<1080 px), 624 (<=430 px), 415/422 (Watch, Clean); shell.html:206 (the only .legend); tools/visual/phone-measure.js:85-87 (no key in FEAT). docs/audit-post8-evidence/verification/v-repro-ux-maps/desk.json: Study legend at [1489,753,93,42]; Watch and Clean legend none, no Key button. phone.json: legend none; the Menu's 12 buttons have no key; Layers explains only the grades and dashed routes; the sources sheet has no hit for status, echelon, XXX, glyph or viewshed.",
+   "notes": "Scope: Watch and Clean hide the key by their stated purpose; from there the key is two presses away (1, then Key, closed by default under decision 49). The real gap is below 1080 px wide or <=430 px tall, where no presentation offers it. STAGE3_SPEC.md:694-695 is a record, not a decision. S2 kept: the integrity marks are largely unexplained on phones. Origin inherited."
+  },
+  {
+   "area": "visual-maps",
+   "index": 2,
+   "verdict": "CONFIRMED",
+   "method": "code reading at HEAD (grep for any other north indicator) + own read-backs (desk.json, phone.json) + bearing computed from GEOREF.NORTH",
+   "evidence": "shell.html:209-217 (the rose inside #lg-toggle); app.js:8371-8381 (updateRose); no other compass in shell.html, app.js or style.css (#scalebar shell.html:308 carries no north); style.css:640 (.legend .rose hidden under max-height:700px). docs/audit-post8-evidence/verification/v-repro-ux-maps/desk.json: Study 1600x900 rose at [1500,760,26,26]; Watch and Clean box 0. phone.json: rose box 0 after Explore and on the paper map. The 09:30 view (camera (-75,37.9,42) to (7,10,12)) faces a bearing of about 87°: up is east.",
+   "notes": "Not a duplicate of V-M2: same cause, separate remedy. Origin inherited.",
+   "corrected": {
+    "observed": "Wider than stated: north shows only in Study at >=1080 px wide AND >700 px tall (style.css:640). A 1366x768 laptop's browser viewport (about 650 px tall; computed, not measured) shows no rose even in Study. The default 09:30 view faces about 87° (east up)."
+   }
+  },
+  {
+   "area": "visual-maps",
+   "index": 3,
+   "verdict": "CONFIRMED",
+   "method": "code reading at HEAD (all readHidden/drawnKnow call sites) + own run: real clicks to reading 'al' at 09:30 and a sweep of both readings every 30 min (reading and clock set by script, read-only)",
+   "evidence": "app.js:3101-3116, 3153-3160, 4061-4071, 5176-5180, 7357 (the Now tab and caption reading also use plateauStrength), 4325-4329; S-1's rule at app.js:4296-4299 contradicts the plateau figure. docs/audit-post8-evidence/verification/v-repro-ux-maps/desk.json: under 'al' at 09:30 there is no c:suchet or c:caffarelli; the o:Suchet and o:Caffarelli labels are registered; their ghost shafts are visible (opacity 0.19-0.236) with readHidden true. Sweep 'al': Friant 07:00-08:30, Caffarelli and Suchet 09:30-10:00, Nansouty 10:30-11:00. Sweep 'fr': Kienmayer and I Column 07:00-07:30, Liechtenstein 08:00-08:30, Bagration's withdrawal 14:30-16:30.",
+   "notes": "Origin inherited (0a19964; 4D, 5E). Decision 251 (8A) enumerates the dossier, centring, place rows, midpoint, day-track and placeNearby, not the arrows. S2/P2 agreed.",
+   "corrected": {
+    "observed": "At 09:30 the Suchet and Caffarelli arrows are drawn on 0.00 (the faint whole arrow and its label); the full-strength part reaches the formation at 10:00. The plateau example shows no leak (French 13,300 both over all and over the known ones at 09:30). Real plateau leaks: under 'al' at 11:30-12:30, 31,500 vs 25,800 known and 37,500 vs 31,800. Under 'fr', the Allied 38,700 vs 17,900 known (04:30-07:00), 23,550 vs 13,900 (08:30) and 16,250 vs 7,150 (11:00); the Now tab's and the caption's 'on the heights' reading leaks the same way. Arrow leaks occur under both readings."
+   }
+  },
+  {
+   "area": "visual-maps",
+   "index": 4,
+   "verdict": "CONFIRMED",
+   "method": "own desk.js read-backs, the paper map entered by real clicks at 1600x900 and 1280x720 plus Landscape with counters at the Overview 1280x720; capture; code reading; 1024 from the area's raw JSON (inspected, not re-run)",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-ux-maps/desk.json and paper-entered-1600x900.jpg, paper-entered-1280x720.jpg: 36 items (counters 14, event 1, plateau 1, overlay 7, objective 1 on), all 12 places dropped at both sizes and at the Overview with counters; no village, stream or hill name visible. docs/audit-post8-evidence/visual-maps/d1024/paper-entered.json: 12 dropped. Code: app.js:5163 (places pri 8/8.5), 5157 (overlay labels pri 6), 5259-5264 (a place needs its marker point and a hugging slot free), 5267-5270 (on the paper map other labels may roam to far rings with leaders), 5298 (leaders reserve no space); thresholds.js:22 (paper-north-up 20, paper-laptop 21).",
+   "notes": "The cause is more specific than 'priority': counters and labels take each place's own slot first, while a place may never move away from its marker. Both remedies are feasible; re-baselining needs the owner's word. Origin inherited (2D, 2E), not checked on an archive build. 1024 not re-run by me."
+  }
+ ],
+ "extra_issues": [],
+ "not_done": [
+  "V-M5 at 1024x768 not re-run (only the area's raw read-back inspected)",
+  "No real finger touch radius (CDP touch points only) on the phone rail",
+  "400% simulated as a viewport at deviceScaleFactor 4, not real browser zoom (equivalent CSS layout)",
+  "Origins by code history (git log -S), not by archive-build runs"
+ ]
+}

@@ -1,0 +1,300 @@
+{
+ "shot": "first",
+ "viewport": [
+  844,
+  390
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "fresh page untouched (?harness=1)"
+ ],
+ "note": "the first screen with the first-run card",
+ "state": {
+  "clock": 240,
+  "presentation": "study",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": true,
+  "playing": false,
+  "freeCam": false,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -38.799486456040555,
+    637.9160442163743,
+    77.34543608826885
+   ],
+   "tgt": [
+    -38.799486456040555,
+    0.4703372261212022,
+    3.441136896926025
+   ]
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   844,
+   390
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 31,
+   "placed": 1,
+   "dropped": 0,
+   "droppedIds": [],
+   "underPanel": 30
+  },
+  "drawn": [
+   {
+    "id": "e:raigern",
+    "text": "Friant's division at Raigern since the n",
+    "box": [
+     8,
+     16,
+     300,
+     17
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+   "box": [
+    360,
+    311,
+    428,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE DECEPTION",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "Dispositions in the dark",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "intervalFriant's division at Raigern since the night",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 38,700",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     300,
+     844,
+     91
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     -275,
+     0,
+     272,
+     299
+    ]
+   },
+   ".dispatch": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tools": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#viewmode": {
+    "shown": true,
+    "box": [
+     335,
+     14,
+     175,
+     34
+    ]
+   },
+   "#firstrun": {
+    "shown": true,
+    "box": [
+     152,
+     76,
+     540,
+     205
+    ]
+   },
+   ".drawer": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#dgrip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study firstrun-on",
+  "clock": 240,
+  "cam": {
+   "pos": [
+    -38.8,
+    637.92,
+    77.35
+   ],
+   "tgt": [
+    -38.8,
+    0.47,
+    3.44
+   ]
+  },
+  "focus": "fr-tour"
+ },
+ "textContrast": {
+  "texts": 1,
+  "min": 13.57,
+  "belowAA": []
+ }
+}

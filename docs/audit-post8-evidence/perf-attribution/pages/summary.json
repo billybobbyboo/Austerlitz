@@ -1,0 +1,4105 @@
+{
+ "builds": {
+  "L3": {
+   "md5": "c9d29c149b613bff059598e4fe8c8d03",
+   "bytes": 2218404,
+   "boot": {
+    "domReady": 77915.5,
+    "firstFrame": 20913.5,
+    "bootGone": 79644.5,
+    "quiet": 80493,
+    "longest": 55217.5,
+    "longMs": 79493,
+    "ranges": {
+     "firstFrame": "20241.00-21586.00",
+     "bootGone": "67519.00-91770.00",
+     "quiet": "68331.00-92655.00"
+    }
+   },
+   "motions": {
+    "play-half": {
+     "rounds": 2,
+     "loopP50": 21.65,
+     "loopP50r": "21.10-22.20",
+     "loopMean": 35.1915,
+     "cpu": 19.060000000000002,
+     "cpur": "18.16-19.96",
+     "wait": 17.1965,
+     "gpu": 3.9145,
+     "flush": 0.5,
+     "calls": 794,
+     "tris": 2490763,
+     "clock": "513.1-550.6 513.1-550.6",
+     "mls": "(before 8C)",
+     "steps": {
+      "updateVisibility": {
+       "p50": 3.55,
+       "range": "3.50-3.60",
+       "mean": 6.0995
+      },
+      "mlLayout": {
+       "p50": 1.25,
+       "range": "1.20-1.30",
+       "mean": 2.6435
+      },
+      "renderFrame": {
+       "p50": 16.85,
+       "range": "16.20-17.50",
+       "mean": 27.8575
+      },
+      "three.render": {
+       "p50": 11.5,
+       "range": "11.00-12.00",
+       "mean": 18.863500000000002
+      },
+      "renderFX": {
+       "p50": 11.5,
+       "range": "11.00-12.00",
+       "mean": 19.0105
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0675
+      },
+      "placeLights": {
+       "p50": 3.4,
+       "range": "3.40-3.40",
+       "mean": 6.077
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.011
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.32899999999999996
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0215
+      },
+      "tickClock": {
+       "p50": 0.4,
+       "range": "0.40-0.40",
+       "mean": 0.5435
+      },
+      "followStep": {
+       "p50": 0.25,
+       "range": "0.20-0.30",
+       "mean": 0.2905
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 28.31435,
+      "runr": "26.54-30.09",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 14.0558,
+        "msr": "13.14-14.97",
+        "share": 0.49634999999999996
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 5.97215,
+        "msr": "5.68-6.27",
+        "share": 0.2111
+       },
+       "WebGL calls (native)": {
+        "ms": 3.6220499999999998,
+        "msr": "3.05-4.20",
+        "share": 0.12715
+       },
+       "map layer (ml*)": {
+        "ms": 1.4539,
+        "msr": "1.36-1.54",
+        "share": 0.051750000000000004
+       },
+       "native/builtin (other)": {
+        "ms": 0.7273499999999999,
+        "msr": "0.70-0.75",
+        "share": 0.025750000000000002
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.52875,
+        "msr": "0.49-0.57",
+        "share": 0.01865
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.47965,
+        "msr": "0.48-0.48",
+        "share": 0.017
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.41390000000000005,
+        "msr": "0.40-0.43",
+        "share": 0.01465
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.25734999999999997,
+        "msr": "0.14-0.37",
+        "share": 0.0094
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.22999999999999998,
+        "msr": "0.20-0.26",
+        "share": 0.0081
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.2058,
+        "msr": "0.16-0.25",
+        "share": 0.00715
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.10189999999999999,
+        "msr": "0.10-0.10",
+        "share": 0.0036
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.08460000000000001,
+        "msr": "0.08-0.09",
+        "share": 0.003
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.0774,
+        "msr": "0.07-0.08",
+        "share": 0.00275
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.05265,
+        "msr": "0.03-0.07",
+        "share": 0.0018499999999999999
+       },
+       "app (other)": {
+        "ms": 0.018349999999999998,
+        "msr": "0.01-0.02",
+        "share": 0.00065
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.00805,
+        "msr": "0.01-0.01",
+        "share": 0.00030000000000000003
+       },
+       "arrows (arrow*, capPts, ribbon*, drawOn*)": {
+        "ms": 0.013500000000000002,
+        "msr": "0.01-0.02",
+        "share": 0.00045
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.00715,
+        "msr": "0.01-0.01",
+        "share": 0.00025
+       },
+       "timeline/DOM UI (tl*, caption*, fitCaption, syncDock, syncInert)": {
+        "ms": 0.0036499999999999996,
+        "msr": "0.00-0.01",
+        "share": 0.00015000000000000001
+       },
+       "skeleton/routes (skel*, route*)": {
+        "ms": 0.00045,
+        "msr": "0.00-0.00",
+        "share": 0
+       }
+      },
+      "top": [
+       [
+        "freeRect app:10472",
+        5.83985
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.2777000000000003
+       ],
+       [
+        "Pt three:6",
+        1.69215
+       ],
+       [
+        "(anonymous) three:6",
+        1.6012499999999998
+       ],
+       [
+        "renderBufferDirect three:6",
+        0.8955500000000001
+       ],
+       [
+        "vertexAttribPointer native:0",
+        0.7512000000000001
+       ],
+       [
+        "setup three:6",
+        0.6829000000000001
+       ],
+       [
+        "bindBuffer native:0",
+        0.67835
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.54535
+       ],
+       [
+        "At three:6",
+        0.5204
+       ],
+       [
+        "mlLayout app:10833",
+        0.49205
+       ],
+       [
+        "bufferSubData native:0",
+        0.47409999999999997
+       ],
+       [
+        "It three:6",
+        0.45945
+       ],
+       [
+        "bindVertexArray native:0",
+        0.404
+       ],
+       [
+        "querySelector native:0",
+        0.38439999999999996
+       ],
+       [
+        "uniformMatrix4fv native:0",
+        0.358
+       ],
+       [
+        "Oi three:6",
+        0.30735
+       ],
+       [
+        "(anonymous) app:7521",
+        0.29395
+       ],
+       [
+        "Cr.upload three:6",
+        0.28959999999999997
+       ],
+       [
+        "M three:6",
+        0.2702
+       ],
+       [
+        "worldPerPx app:10422",
+        0.258
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.25515
+       ],
+       [
+        "viewH app:10421",
+        0.2395
+       ],
+       [
+        "e three:6",
+        0.23655
+       ],
+       [
+        "Er.setValue three:6",
+        0.2355
+       ]
+      ],
+      "incl": {
+       "loop": 28.2791,
+       "syncFollow": 0.01715,
+       "openingWatch": 0,
+       "paintDevStats": 0.0017000000000000001,
+       "frameState": 0.0003,
+       "_runTween": 0.00075,
+       "tickClock": 0.41335,
+       "followStep": 0.31595,
+       "dwellAdvance": 0.00075,
+       "openingPlayWatch": 0.0005,
+       "setProg": 0.01855,
+       "updateVisibility": 4.1854499999999994,
+       "syncViewOffset": 0.1612,
+       "renderFrame": 23.13175,
+       "applyLight": 0.0372,
+       "placeLights": 4.33275,
+       "applyAtmo": 0.0039,
+       "domeFollow": 0.00045,
+       "renderFrameNow": 18.787100000000002,
+       "arrowCap": 0,
+       "mlLayout": 1.6480000000000001,
+       "mlCollect": 0.5528,
+       "mlStabBegin": 0,
+       "renderFX": 17.0699,
+       "renderStandard": 0,
+       "gdepthPass": 0,
+       "render": 16.980249999999998,
+       "gaitStep": 0,
+       "poseBlock": 0.07915,
+       "kitLodFrame": 0,
+       "kitLod": 0,
+       "kitLodSet": 0,
+       "layoutFigs": 0.3192,
+       "placeStandards": 0.08954999999999999,
+       "outlinePlace": 0,
+       "confPlace": 0.4002,
+       "smokePlace": 2.0894,
+       "cullTest": 0,
+       "cullRefresh": 0,
+       "cullStale": 0,
+       "drawOnArrows": 0.06775,
+       "skelUpdate": 0.00045,
+       "routeScope": 0,
+       "knowAtClock": 0.0068000000000000005,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.1601,
+       "stateAt": 0.04155,
+       "posNow": 0.1489,
+       "landPanels": 0.5702,
+       "freeRect": 5.85585,
+       "mlPanels": 0.2395,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 13.839500000000001,
+       "setProgram": 0,
+       "updateMatrixWorld": 0.9259999999999999,
+       "intersectsObject": 0.056749999999999995,
+       "onPointerMove": 0,
+       "dispatchEvent": 0.015550000000000001
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        16.9454
+       ],
+       [
+        "groundPatch",
+        0.18380000000000002
+       ],
+       [
+        "(anonymous)",
+        0.1621
+       ],
+       [
+        "seatPrep",
+        0.1007
+       ],
+       [
+        "pass",
+        0.0862
+       ],
+       [
+        "settleBlock",
+        0.05925
+       ],
+       [
+        "drawOnU",
+        0.0453
+       ],
+       [
+        "placeStandards",
+        0.0341
+       ]
+      ]
+     }
+    },
+    "overview-held": {
+     "rounds": 2,
+     "loopP50": 15.55,
+     "loopP50r": "14.00-17.10",
+     "loopMean": 21.996000000000002,
+     "cpu": 14.0435,
+     "cpur": "12.92-15.16",
+     "wait": 8.182,
+     "gpu": 2.67,
+     "flush": 0,
+     "calls": 832,
+     "tris": 2523605,
+     "clock": "570.0-570.0 570.0-570.0",
+     "mls": "(before 8C)",
+     "steps": {
+      "updateVisibility": {
+       "p50": 2.55,
+       "range": "2.40-2.70",
+       "mean": 3.0395000000000003
+      },
+      "mlLayout": {
+       "p50": 0.55,
+       "range": "0.50-0.60",
+       "mean": 0.6715
+      },
+      "renderFrame": {
+       "p50": 12.8,
+       "range": "11.30-14.30",
+       "mean": 18.767
+      },
+      "three.render": {
+       "p50": 10.600000000000001,
+       "range": "9.30-11.90",
+       "mean": 15.4535
+      },
+      "renderFX": {
+       "p50": 10.600000000000001,
+       "range": "9.30-11.90",
+       "mean": 15.5015
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "placeLights": {
+       "p50": 1.5,
+       "range": "1.40-1.60",
+       "mean": 2.539
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.003
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.135
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.019000000000000003
+      },
+      "tickClock": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "followStep": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0005
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 29.020049999999998,
+      "runr": "28.23-29.81",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 17.4291,
+        "msr": "16.04-18.82",
+        "share": 0.59975
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 4.5659,
+        "msr": "4.55-4.58",
+        "share": 0.15745
+       },
+       "WebGL calls (native)": {
+        "ms": 3.8482499999999997,
+        "msr": "3.62-4.08",
+        "share": 0.1329
+       },
+       "map layer (ml*)": {
+        "ms": 0.67615,
+        "msr": "0.65-0.70",
+        "share": 0.0233
+       },
+       "native/builtin (other)": {
+        "ms": 0.6633,
+        "msr": "0.62-0.71",
+        "share": 0.0229
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.8976999999999999,
+        "msr": "0.54-1.26",
+        "share": 0.0313
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.16405,
+        "msr": "0.10-0.22",
+        "share": 0.0056
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.2032,
+        "msr": "0.14-0.26",
+        "share": 0.007049999999999999
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.09935,
+        "msr": "0.07-0.13",
+        "share": 0.0034000000000000002
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.19325,
+        "msr": "0.12-0.27",
+        "share": 0.006750000000000001
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.0912,
+        "msr": "0.06-0.12",
+        "share": 0.0031
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.06755,
+        "msr": "0.03-0.10",
+        "share": 0.0023
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.07325000000000001,
+        "msr": "0.05-0.10",
+        "share": 0.0025
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.030699999999999998,
+        "msr": "0.01-0.05",
+        "share": 0.0010500000000000002
+       },
+       "app (other)": {
+        "ms": 0.00665,
+        "msr": "0.01-0.01",
+        "share": 0.00025
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.00655,
+        "msr": "0.01-0.01",
+        "share": 0.00025
+       },
+       "timeline/DOM UI (tl*, caption*, fitCaption, syncDock, syncInert)": {
+        "ms": 0.00055,
+        "msr": "0.00-0.00",
+        "share": 0
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.0011,
+        "msr": "0.00-0.00",
+        "share": 0
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.00225,
+        "msr": "0.00-0.00",
+        "share": 0.0001
+       }
+      },
+      "top": [
+       [
+        "freeRect app:10472",
+        4.4871
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.77385
+       ],
+       [
+        "Pt three:6",
+        2.6304499999999997
+       ],
+       [
+        "renderBufferDirect three:6",
+        2.1666
+       ],
+       [
+        "(anonymous) three:6",
+        1.405
+       ],
+       [
+        "vertexAttribPointer native:0",
+        1.042
+       ],
+       [
+        "setup three:6",
+        0.8185
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.6378
+       ],
+       [
+        "bindVertexArray native:0",
+        0.6184
+       ],
+       [
+        "Ct three:6",
+        0.61555
+       ],
+       [
+        "bindBuffer native:0",
+        0.56115
+       ],
+       [
+        "uniformMatrix4fv native:0",
+        0.49785
+       ],
+       [
+        "It three:6",
+        0.4878
+       ],
+       [
+        "worldPerPx app:10422",
+        0.457
+       ],
+       [
+        "At three:6",
+        0.43574999999999997
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.36045
+       ],
+       [
+        "querySelector native:0",
+        0.3508
+       ],
+       [
+        "Cr.upload three:6",
+        0.33915
+       ],
+       [
+        "Oi three:6",
+        0.31784999999999997
+       ],
+       [
+        "useProgram native:0",
+        0.3074
+       ],
+       [
+        "e three:6",
+        0.2995
+       ],
+       [
+        "Er.setValue three:6",
+        0.29355
+       ],
+       [
+        "setMode three:6",
+        0.2468
+       ],
+       [
+        "activeTexture native:0",
+        0.2193
+       ],
+       [
+        "M three:6",
+        0.21835
+       ]
+      ],
+      "incl": {
+       "loop": 28.927799999999998,
+       "syncFollow": 0.031149999999999997,
+       "openingWatch": 0,
+       "paintDevStats": 0.00165,
+       "frameState": 0,
+       "_runTween": 0,
+       "tickClock": 0,
+       "followStep": 0.0005,
+       "dwellAdvance": 0,
+       "openingPlayWatch": 0,
+       "setProg": 0.0201,
+       "updateVisibility": 3.7129499999999998,
+       "syncViewOffset": 0.1698,
+       "renderFrame": 24.94235,
+       "applyLight": 0,
+       "placeLights": 2.7268999999999997,
+       "applyAtmo": 0.00055,
+       "domeFollow": 0,
+       "renderFrameNow": 22.1846,
+       "arrowCap": 0,
+       "mlLayout": 0.86995,
+       "mlCollect": 0.4662,
+       "mlStabBegin": 0,
+       "renderFX": 21.26795,
+       "renderStandard": 0,
+       "gdepthPass": 0,
+       "render": 21.15275,
+       "gaitStep": 0,
+       "poseBlock": 0.0923,
+       "kitLodFrame": 0,
+       "kitLod": 0,
+       "kitLodSet": 0,
+       "layoutFigs": 0,
+       "placeStandards": 0,
+       "outlinePlace": 0,
+       "confPlace": 0.0643,
+       "smokePlace": 2.15,
+       "cullTest": 0,
+       "cullRefresh": 0,
+       "cullStale": 0,
+       "drawOnArrows": 0,
+       "skelUpdate": 0,
+       "routeScope": 0,
+       "knowAtClock": 0.00055,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.13505,
+       "stateAt": 0.02775,
+       "posNow": 0.16505,
+       "landPanels": 0.4294,
+       "freeRect": 4.4933,
+       "mlPanels": 0.19755,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 18.02725,
+       "setProgram": 0,
+       "updateMatrixWorld": 1.10205,
+       "intersectsObject": 0.057050000000000003,
+       "onPointerMove": 0,
+       "dispatchEvent": 0
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        21.115450000000003
+       ],
+       [
+        "pass",
+        0.08695
+       ],
+       [
+        "worldPerPx",
+        0.0383
+       ],
+       [
+        "settleBlock",
+        0.01395
+       ],
+       [
+        "tri",
+        0.01235
+       ],
+       [
+        "(anonymous)",
+        0.005050000000000001
+       ],
+       [
+        "placeLights",
+        0.0032
+       ],
+       [
+        "poseBlock",
+        0.0022
+       ]
+      ]
+     }
+    },
+    "overview-route": {
+     "rounds": 2,
+     "loopP50": 17.15,
+     "loopP50r": "16.10-18.20",
+     "loopMean": 25.1995,
+     "cpu": 15.6025,
+     "cpur": "15.00-16.21",
+     "wait": 9.192,
+     "gpu": 3.294,
+     "flush": 0.25,
+     "calls": 832,
+     "tris": 2523605,
+     "clock": "570.0-570.0 570.0-570.0",
+     "mls": "(before 8C)",
+     "steps": {
+      "updateVisibility": {
+       "p50": 2.3499999999999996,
+       "range": "2.30-2.40",
+       "mean": 3.093
+      },
+      "mlLayout": {
+       "p50": 0.7,
+       "range": "0.70-0.70",
+       "mean": 1.1175
+      },
+      "renderFrame": {
+       "p50": 14.45,
+       "range": "13.60-15.30",
+       "mean": 21.9145
+      },
+      "three.render": {
+       "p50": 10.55,
+       "range": "9.70-11.40",
+       "mean": 15.1385
+      },
+      "renderFX": {
+       "p50": 10.55,
+       "range": "9.70-11.40",
+       "mean": 15.2275
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "placeLights": {
+       "p50": 3.15,
+       "range": "3.00-3.30",
+       "mean": 5.5375
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.127
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.019
+      },
+      "tickClock": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "followStep": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0005
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 31.5463,
+      "runr": "30.18-32.91",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 15.9071,
+        "msr": "15.79-16.02",
+        "share": 0.50505
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 8.0526,
+        "msr": "6.15-9.96",
+        "share": 0.25315
+       },
+       "WebGL calls (native)": {
+        "ms": 4.19885,
+        "msr": "3.62-4.78",
+        "share": 0.13415
+       },
+       "map layer (ml*)": {
+        "ms": 1.1047500000000001,
+        "msr": "1.06-1.15",
+        "share": 0.03515
+       },
+       "native/builtin (other)": {
+        "ms": 0.70555,
+        "msr": "0.64-0.77",
+        "share": 0.0225
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.62425,
+        "msr": "0.60-0.65",
+        "share": 0.0198
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.19440000000000002,
+        "msr": "0.17-0.22",
+        "share": 0.00615
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.12109999999999999,
+        "msr": "0.08-0.16",
+        "share": 0.0039
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.13829999999999998,
+        "msr": "0.13-0.14",
+        "share": 0.004399999999999999
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.10519999999999999,
+        "msr": "0.09-0.12",
+        "share": 0.0033499999999999997
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.0993,
+        "msr": "0.09-0.11",
+        "share": 0.0032
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.12035,
+        "msr": "0.11-0.13",
+        "share": 0.0038000000000000004
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.08035,
+        "msr": "0.06-0.10",
+        "share": 0.00255
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.058399999999999994,
+        "msr": "0.05-0.07",
+        "share": 0.00185
+       },
+       "app (other)": {
+        "ms": 0.01795,
+        "msr": "0.02-0.02",
+        "share": 0.0006000000000000001
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.009850000000000001,
+        "msr": "0.01-0.01",
+        "share": 0.00030000000000000003
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.0055,
+        "msr": "0.01-0.01",
+        "share": 0.0002
+       },
+       "timeline/DOM UI (tl*, caption*, fitCaption, syncDock, syncInert)": {
+        "ms": 0.00145,
+        "msr": "0.00-0.00",
+        "share": 0.00005
+       },
+       "skeleton/routes (skel*, route*)": {
+        "ms": 0.0011,
+        "msr": "0.00-0.00",
+        "share": 0
+       }
+      },
+      "top": [
+       [
+        "freeRect app:10472",
+        7.97825
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.7718999999999996
+       ],
+       [
+        "Pt three:6",
+        1.94935
+       ],
+       [
+        "vertexAttribPointer native:0",
+        1.3136999999999999
+       ],
+       [
+        "(anonymous) three:6",
+        1.07
+       ],
+       [
+        "setup three:6",
+        1.03925
+       ],
+       [
+        "renderBufferDirect three:6",
+        1.01345
+       ],
+       [
+        "At three:6",
+        0.8226
+       ],
+       [
+        "bindBuffer native:0",
+        0.7535499999999999
+       ],
+       [
+        "getParameters three:6",
+        0.62195
+       ],
+       [
+        "bindVertexArray native:0",
+        0.54085
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.4879
+       ],
+       [
+        "uniformMatrix4fv native:0",
+        0.47050000000000003
+       ],
+       [
+        "It three:6",
+        0.45785
+       ],
+       [
+        "querySelector native:0",
+        0.45775
+       ],
+       [
+        "Cr.upload three:6",
+        0.41925
+       ],
+       [
+        "Oi three:6",
+        0.39749999999999996
+       ],
+       [
+        "e three:6",
+        0.35214999999999996
+       ],
+       [
+        "mlLayout app:10833",
+        0.34145
+       ],
+       [
+        "M three:6",
+        0.32175
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.31689999999999996
+       ],
+       [
+        "get three:6",
+        0.29100000000000004
+       ],
+       [
+        "activeTexture native:0",
+        0.26615
+       ],
+       [
+        "Ct three:6",
+        0.26465
+       ],
+       [
+        "compose three:6",
+        0.24775
+       ]
+      ],
+      "incl": {
+       "loop": 31.4797,
+       "syncFollow": 0.025,
+       "openingWatch": 0.0007,
+       "paintDevStats": 0.00035,
+       "frameState": 0.001,
+       "_runTween": 0,
+       "tickClock": 0,
+       "followStep": 0.0013,
+       "dwellAdvance": 0,
+       "openingPlayWatch": 0,
+       "setProg": 0.0179,
+       "updateVisibility": 3.3676500000000003,
+       "syncViewOffset": 0.22454999999999997,
+       "renderFrame": 27.7973,
+       "applyLight": 0.00035,
+       "placeLights": 6.470599999999999,
+       "applyAtmo": 0.00105,
+       "domeFollow": 0.0004,
+       "renderFrameNow": 21.31625,
+       "arrowCap": 0,
+       "mlLayout": 1.195,
+       "mlCollect": 0.3878,
+       "mlStabBegin": 0,
+       "renderFX": 20.0514,
+       "renderStandard": 0,
+       "gdepthPass": 0,
+       "render": 19.94885,
+       "gaitStep": 0,
+       "poseBlock": 0.1011,
+       "kitLodFrame": 0,
+       "kitLod": 0,
+       "kitLodSet": 0,
+       "layoutFigs": 0,
+       "placeStandards": 0,
+       "outlinePlace": 0,
+       "confPlace": 0.08660000000000001,
+       "smokePlace": 2.21305,
+       "cullTest": 0,
+       "cullRefresh": 0,
+       "cullStale": 0,
+       "drawOnArrows": 0,
+       "skelUpdate": 0.0007,
+       "routeScope": 0,
+       "knowAtClock": 0,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.0553,
+       "stateAt": 0.02995,
+       "posNow": 0.15605,
+       "landPanels": 0.53955,
+       "freeRect": 7.9815000000000005,
+       "mlPanels": 0.362,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 16.7937,
+       "setProgram": 0,
+       "updateMatrixWorld": 0.9198,
+       "intersectsObject": 0.03735,
+       "onPointerMove": 0,
+       "dispatchEvent": 0
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        19.90045
+       ],
+       [
+        "pass",
+        0.10905000000000001
+       ],
+       [
+        "tri",
+        0.027549999999999998
+       ],
+       [
+        "worldPerPx",
+        0.02725
+       ],
+       [
+        "shadowReceivers",
+        0.011949999999999999
+       ],
+       [
+        "settleBlock",
+        0.00965
+       ],
+       [
+        "updateVisibility",
+        0.0076
+       ],
+       [
+        "(none)",
+        0.0055
+       ]
+      ]
+     }
+    },
+    "overview-drag": {
+     "rounds": 2,
+     "loopP50": 17.05,
+     "loopP50r": "17.00-17.10",
+     "loopMean": 22.688000000000002,
+     "cpu": 15.906,
+     "cpur": "15.82-15.99",
+     "wait": 7.283,
+     "gpu": 2.9219999999999997,
+     "flush": 0.25,
+     "calls": 832,
+     "tris": 2523605,
+     "clock": "570.0-570.0 570.0-570.0",
+     "mls": "(before 8C)",
+     "steps": {
+      "updateVisibility": {
+       "p50": 2.3499999999999996,
+       "range": "2.30-2.40",
+       "mean": 3.3129999999999997
+      },
+      "mlLayout": {
+       "p50": 0.7,
+       "range": "0.70-0.70",
+       "mean": 0.884
+      },
+      "renderFrame": {
+       "p50": 14.4,
+       "range": "14.40-14.40",
+       "mean": 19.1845
+      },
+      "three.render": {
+       "p50": 10.2,
+       "range": "10.10-10.30",
+       "mean": 13.921
+      },
+      "renderFX": {
+       "p50": 10.3,
+       "range": "10.20-10.40",
+       "mean": 13.988
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.002
+      },
+      "placeLights": {
+       "p50": 3.2,
+       "range": "3.20-3.20",
+       "mean": 4.274
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.003
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.1395
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0175
+      },
+      "tickClock": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0005
+      },
+      "followStep": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.002
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 24.89315,
+      "runr": "24.26-25.53",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 13.6187,
+        "msr": "13.07-14.17",
+        "share": 0.548
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 5.22045,
+        "msr": "5.04-5.40",
+        "share": 0.20965
+       },
+       "WebGL calls (native)": {
+        "ms": 3.03495,
+        "msr": "2.43-3.64",
+        "share": 0.12140000000000001
+       },
+       "map layer (ml*)": {
+        "ms": 0.8404,
+        "msr": "0.82-0.86",
+        "share": 0.03375
+       },
+       "native/builtin (other)": {
+        "ms": 0.67665,
+        "msr": "0.59-0.76",
+        "share": 0.02715
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.60235,
+        "msr": "0.46-0.74",
+        "share": 0.024050000000000002
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.1216,
+        "msr": "0.08-0.16",
+        "share": 0.0049
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.19215,
+        "msr": "0.16-0.23",
+        "share": 0.0076500000000000005
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.1356,
+        "msr": "0.10-0.17",
+        "share": 0.00545
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.1044,
+        "msr": "0.07-0.13",
+        "share": 0.0042
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.0943,
+        "msr": "0.07-0.12",
+        "share": 0.0038
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.0882,
+        "msr": "0.07-0.11",
+        "share": 0.00355
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.0708,
+        "msr": "0.04-0.11",
+        "share": 0.0028
+       },
+       "timeline/DOM UI (tl*, caption*, fitCaption, syncDock, syncInert)": {
+        "ms": 0.016999999999999998,
+        "msr": "0.00-0.03",
+        "share": 0.0007
+       },
+       "app (other)": {
+        "ms": 0.0186,
+        "msr": "0.02-0.02",
+        "share": 0.00075
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.0364,
+        "msr": "0.02-0.06",
+        "share": 0.0014500000000000001
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.0123,
+        "msr": "0.01-0.01",
+        "share": 0.0005
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.00635,
+        "msr": "0.00-0.01",
+        "share": 0.00025
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.0017499999999999998,
+        "msr": "0.00-0.00",
+        "share": 0.0001
+       }
+      },
+      "top": [
+       [
+        "freeRect app:10472",
+        2.67955
+       ],
+       [
+        "viewport app:7010",
+        2.45805
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.2636
+       ],
+       [
+        "(anonymous) three:6",
+        1.9851999999999999
+       ],
+       [
+        "Pt three:6",
+        1.66865
+       ],
+       [
+        "vertexAttribPointer native:0",
+        0.9370499999999999
+       ],
+       [
+        "renderBufferDirect three:6",
+        0.8284
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.6856
+       ],
+       [
+        "setup three:6",
+        0.63105
+       ],
+       [
+        "bindBuffer native:0",
+        0.569
+       ],
+       [
+        "It three:6",
+        0.41425
+       ],
+       [
+        "bindVertexArray native:0",
+        0.41164999999999996
+       ],
+       [
+        "querySelector native:0",
+        0.40405
+       ],
+       [
+        "Ct three:6",
+        0.35765
+       ],
+       [
+        "At three:6",
+        0.35505
+       ],
+       [
+        "uniformMatrix4fv native:0",
+        0.3274
+       ],
+       [
+        "Oi three:6",
+        0.2859
+       ],
+       [
+        "e three:6",
+        0.28035
+       ],
+       [
+        "worldPerPx app:10422",
+        0.25825
+       ],
+       [
+        "mlLayout app:10833",
+        0.25665000000000004
+       ],
+       [
+        "Cr.upload three:6",
+        0.25075000000000003
+       ],
+       [
+        "get three:6",
+        0.23564999999999997
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.2202
+       ],
+       [
+        "M three:6",
+        0.22015
+       ],
+       [
+        "Cr.seqWithValue three:6",
+        0.19395
+       ]
+      ],
+      "incl": {
+       "loop": 24.758650000000003,
+       "syncFollow": 0.01605,
+       "openingWatch": 0.0007,
+       "paintDevStats": 0.0011,
+       "frameState": 0.0003,
+       "_runTween": 0,
+       "tickClock": 0.0007,
+       "followStep": 0.0004,
+       "dwellAdvance": 0,
+       "openingPlayWatch": 0,
+       "setProg": 0.0138,
+       "updateVisibility": 2.9850000000000003,
+       "syncViewOffset": 0.15805000000000002,
+       "renderFrame": 21.557949999999998,
+       "applyLight": 0.0007,
+       "placeLights": 3.87505,
+       "applyAtmo": 0.0017499999999999998,
+       "domeFollow": 0,
+       "renderFrameNow": 17.6738,
+       "arrowCap": 0,
+       "mlLayout": 1.01785,
+       "mlCollect": 0.3792,
+       "mlStabBegin": 0,
+       "renderFX": 16.61005,
+       "renderStandard": 0,
+       "gdepthPass": 0,
+       "render": 16.55055,
+       "gaitStep": 0,
+       "poseBlock": 0.1051,
+       "kitLodFrame": 0,
+       "kitLod": 0,
+       "kitLodSet": 0,
+       "layoutFigs": 0,
+       "placeStandards": 0,
+       "outlinePlace": 0,
+       "confPlace": 0.0718,
+       "smokePlace": 1.8143500000000001,
+       "cullTest": 0,
+       "cullRefresh": 0,
+       "cullStale": 0,
+       "drawOnArrows": 0,
+       "skelUpdate": 0,
+       "routeScope": 0,
+       "knowAtClock": 0.00035,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.03935,
+       "stateAt": 0.0283,
+       "posNow": 0.1551,
+       "landPanels": 0.3652,
+       "freeRect": 5.1455,
+       "mlPanels": 0,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 13.990950000000002,
+       "setProgram": 0,
+       "updateMatrixWorld": 0.9330999999999999,
+       "intersectsObject": 0.0306,
+       "onPointerMove": 0,
+       "dispatchEvent": 0.0673
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        16.52095
+       ],
+       [
+        "pass",
+        0.0598
+       ],
+       [
+        "tri",
+        0.022949999999999998
+       ],
+       [
+        "worldPerPx",
+        0.017
+       ],
+       [
+        "settleBlock",
+        0.0083
+       ],
+       [
+        "shadowReceivers",
+        0.00635
+       ],
+       [
+        "(anonymous)",
+        0.006
+       ],
+       [
+        "placeLights",
+        0.0051
+       ]
+      ]
+     }
+    },
+    "ph8-drag": {
+     "rounds": 2,
+     "loopP50": 18.4,
+     "loopP50r": "18.10-18.70",
+     "loopMean": 24.822,
+     "cpu": 17.2875,
+     "cpur": "16.72-17.85",
+     "wait": 7.5375,
+     "gpu": 3.2545,
+     "flush": 0.35,
+     "calls": 809,
+     "tris": 2501183,
+     "clock": "880.0-880.0 880.0-880.0",
+     "mls": "(before 8C)",
+     "steps": {
+      "updateVisibility": {
+       "p50": 3.2,
+       "range": "3.10-3.30",
+       "mean": 4.0015
+      },
+      "mlLayout": {
+       "p50": 0.7,
+       "range": "0.70-0.70",
+       "mean": 0.99
+      },
+      "renderFrame": {
+       "p50": 14.899999999999999,
+       "range": "14.70-15.10",
+       "mean": 20.576999999999998
+      },
+      "three.render": {
+       "p50": 10.4,
+       "range": "10.30-10.50",
+       "mean": 14.6265
+      },
+      "renderFX": {
+       "p50": 10.5,
+       "range": "10.30-10.70",
+       "mean": 14.778500000000001
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "placeLights": {
+       "p50": 3.25,
+       "range": "3.20-3.30",
+       "mean": 4.768
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.002
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.1915
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0165
+      },
+      "tickClock": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "followStep": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 32.17955,
+      "runr": "23.80-40.56",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 18.43965,
+        "msr": "13.33-23.55",
+        "share": 0.57035
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 6.9425,
+        "msr": "4.99-8.89",
+        "share": 0.2145
+       },
+       "WebGL calls (native)": {
+        "ms": 2.7769500000000003,
+        "msr": "2.22-3.33",
+        "share": 0.08775
+       },
+       "map layer (ml*)": {
+        "ms": 1.0855,
+        "msr": "0.89-1.28",
+        "share": 0.0345
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.8327,
+        "msr": "0.56-1.10",
+        "share": 0.0254
+       },
+       "native/builtin (other)": {
+        "ms": 0.88205,
+        "msr": "0.69-1.08",
+        "share": 0.0277
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.3254,
+        "msr": "0.28-0.38",
+        "share": 0.01045
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.1759,
+        "msr": "0.06-0.29",
+        "share": 0.0049
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.1684,
+        "msr": "0.15-0.19",
+        "share": 0.0058
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.09029999999999999,
+        "msr": "0.05-0.13",
+        "share": 0.00265
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.13829999999999998,
+        "msr": "0.11-0.16",
+        "share": 0.00485
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.099,
+        "msr": "0.08-0.12",
+        "share": 0.0035
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.07064999999999999,
+        "msr": "0.07-0.07",
+        "share": 0.0023499999999999997
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.07525,
+        "msr": "0.05-0.10",
+        "share": 0.0027
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.05515,
+        "msr": "0.05-0.06",
+        "share": 0.0018999999999999998
+       },
+       "app (other)": {
+        "ms": 0.01705,
+        "msr": "0.01-0.02",
+        "share": 0.0006
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.0036,
+        "msr": "0.00-0.01",
+        "share": 0.00015000000000000001
+       },
+       "timeline/DOM UI (tl*, caption*, fitCaption, syncDock, syncInert)": {
+        "ms": 0.00075,
+        "msr": "0.00-0.00",
+        "share": 0
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.00035,
+        "msr": "0.00-0.00",
+        "share": 0
+       }
+      },
+      "top": [
+       [
+        "viewport app:7010",
+        4.3559
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.83425
+       ],
+       [
+        "freeRect app:10472",
+        2.46225
+       ],
+       [
+        "(anonymous) three:6",
+        2.23405
+       ],
+       [
+        "Pt three:6",
+        2.0921000000000003
+       ],
+       [
+        "It three:6",
+        2.03085
+       ],
+       [
+        "renderBufferDirect three:6",
+        0.98985
+       ],
+       [
+        "setup three:6",
+        0.9816
+       ],
+       [
+        "z three:6",
+        0.90235
+       ],
+       [
+        "bindBuffer native:0",
+        0.75835
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.7027
+       ],
+       [
+        "vertexAttribPointer native:0",
+        0.62835
+       ],
+       [
+        "At three:6",
+        0.5551
+       ],
+       [
+        "mlLayout app:10833",
+        0.51735
+       ],
+       [
+        "worldPerPx app:10422",
+        0.4353
+       ],
+       [
+        "querySelector native:0",
+        0.42984999999999995
+       ],
+       [
+        "Oi three:6",
+        0.35714999999999997
+       ],
+       [
+        "bufferSubData native:0",
+        0.35175
+       ],
+       [
+        "bindVertexArray native:0",
+        0.2919
+       ],
+       [
+        "uniformMatrix4fv native:0",
+        0.2808
+       ],
+       [
+        "Cr.upload three:6",
+        0.27585
+       ],
+       [
+        "update three:6",
+        0.2659
+       ],
+       [
+        "M three:6",
+        0.26170000000000004
+       ],
+       [
+        "get three:6",
+        0.25139999999999996
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.24835
+       ]
+      ],
+      "incl": {
+       "loop": 32.07165,
+       "syncFollow": 0.00995,
+       "openingWatch": 0,
+       "paintDevStats": 0.00105,
+       "frameState": 0,
+       "_runTween": 0,
+       "tickClock": 0,
+       "followStep": 0,
+       "dwellAdvance": 0,
+       "openingPlayWatch": 0.00035,
+       "setProg": 0.0083,
+       "updateVisibility": 4.17715,
+       "syncViewOffset": 0.19905,
+       "renderFrame": 27.650199999999998,
+       "applyLight": 0.0008500000000000001,
+       "placeLights": 5.3241000000000005,
+       "applyAtmo": 0.0018,
+       "domeFollow": 0,
+       "renderFrameNow": 22.313899999999997,
+       "arrowCap": 0,
+       "mlLayout": 1.3435000000000001,
+       "mlCollect": 0.2881,
+       "mlStabBegin": 0,
+       "renderFX": 20.88975,
+       "renderStandard": 0,
+       "gdepthPass": 0,
+       "render": 20.8276,
+       "gaitStep": 0,
+       "poseBlock": 0.055499999999999994,
+       "kitLodFrame": 0,
+       "kitLod": 0,
+       "kitLodSet": 0,
+       "layoutFigs": 0.47785,
+       "placeStandards": 0.06405,
+       "outlinePlace": 0,
+       "confPlace": 0.2591,
+       "smokePlace": 2.06105,
+       "cullTest": 0,
+       "cullRefresh": 0,
+       "cullStale": 0,
+       "drawOnArrows": 0,
+       "skelUpdate": 0,
+       "routeScope": 0,
+       "knowAtClock": 0.00035,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.1275,
+       "stateAt": 0.0371,
+       "posNow": 0.09565,
+       "landPanels": 0.40614999999999996,
+       "freeRect": 6.82275,
+       "mlPanels": 0,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 17.6727,
+       "setProgram": 0,
+       "updateMatrixWorld": 0.9290499999999999,
+       "intersectsObject": 0.0358,
+       "onPointerMove": 0,
+       "dispatchEvent": 0.0394
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        20.644199999999998
+       ],
+       [
+        "pass",
+        0.20915
+       ],
+       [
+        "groundPatch",
+        0.11560000000000001
+       ],
+       [
+        "(anonymous)",
+        0.07735
+       ],
+       [
+        "seatPrep",
+        0.0506
+       ],
+       [
+        "seatLocal",
+        0.0438
+       ],
+       [
+        "placeStandards",
+        0.0218
+       ],
+       [
+        "worldPerPx",
+        0.02035
+       ]
+      ]
+     }
+    }
+   }
+  },
+  "now": {
+   "md5": "f10fe585c46aea576f436ed51ac46f83",
+   "bytes": 2810630,
+   "boot": {
+    "domReady": 80394.5,
+    "firstFrame": 22053,
+    "bootGone": 80396,
+    "quiet": 84536.5,
+    "longest": 56337,
+    "longMs": 80590,
+    "ranges": {
+     "firstFrame": "21060.00-23046.00",
+     "bootGone": "69209.00-91583.00",
+     "quiet": "74726.00-94347.00"
+    }
+   },
+   "motions": {
+    "play-half": {
+     "rounds": 2,
+     "loopP50": 29.1,
+     "loopP50r": "28.40-29.80",
+     "loopMean": 43.105500000000006,
+     "cpu": 23.2835,
+     "cpur": "22.70-23.87",
+     "wait": 20.281,
+     "gpu": 5.0085,
+     "flush": 0,
+     "calls": 805,
+     "tris": 2243919,
+     "clock": "513.1-550.6 513.1-550.6",
+     "mls": "1656/1656/0/0",
+     "steps": {
+      "updateVisibility": {
+       "p50": 4.5,
+       "range": "4.40-4.60",
+       "mean": 7.373
+      },
+      "mlLayout": {
+       "p50": 1.45,
+       "range": "1.40-1.50",
+       "mean": 2.5380000000000003
+      },
+      "renderFrame": {
+       "p50": 23,
+       "range": "22.40-23.60",
+       "mean": 34.486999999999995
+      },
+      "three.render": {
+       "p50": 16.35,
+       "range": "15.90-16.80",
+       "mean": 24.41
+      },
+      "renderFX": {
+       "p50": 16.95,
+       "range": "16.50-17.40",
+       "mean": 25.522
+      },
+      "gdepthPass": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.243
+      },
+      "arrowCap": {
+       "p50": 0.15000000000000002,
+       "range": "0.10-0.20",
+       "mean": 0.2955
+      },
+      "applyLight": {
+       "p50": 0.05,
+       "range": "0.00-0.10",
+       "mean": 0.0755
+      },
+      "placeLights": {
+       "p50": 3.45,
+       "range": "3.40-3.50",
+       "mean": 6.0515
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.014499999999999999
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.27049999999999996
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "tickClock": {
+       "p50": 0.5,
+       "range": "0.50-0.50",
+       "mean": 0.5814999999999999
+      },
+      "followStep": {
+       "p50": 0.3,
+       "range": "0.30-0.30",
+       "mean": 0.346
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "kitLodFrame": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.005
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 38.0053,
+      "runr": "35.88-40.14",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 18.2609,
+        "msr": "17.51-19.01",
+        "share": 0.48085
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 6.6554,
+        "msr": "6.01-7.30",
+        "share": 0.17470000000000002
+       },
+       "WebGL calls (native)": {
+        "ms": 4.95005,
+        "msr": "4.45-5.45",
+        "share": 0.12995
+       },
+       "map layer (ml*)": {
+        "ms": 1.96185,
+        "msr": "1.94-1.98",
+        "share": 0.05175
+       },
+       "native/builtin (other)": {
+        "ms": 0.9429,
+        "msr": "0.84-1.04",
+        "share": 0.02475
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.8106,
+        "msr": "0.78-0.85",
+        "share": 0.02135
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.74295,
+        "msr": "0.65-0.83",
+        "share": 0.0195
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.5387500000000001,
+        "msr": "0.51-0.57",
+        "share": 0.0142
+       },
+       "outlines (outline*)": {
+        "ms": 0.3593,
+        "msr": "0.23-0.48",
+        "share": 0.009649999999999999
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.4579,
+        "msr": "0.44-0.47",
+        "share": 0.0121
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.44855,
+        "msr": "0.43-0.47",
+        "share": 0.01185
+       },
+       "culling (cull*)": {
+        "ms": 0.4653,
+        "msr": "0.44-0.49",
+        "share": 0.01225
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.43365,
+        "msr": "0.43-0.44",
+        "share": 0.01145
+       },
+       "arrows (arrow*, capPts, ribbon*, drawOn*)": {
+        "ms": 0.18105,
+        "msr": "0.16-0.20",
+        "share": 0.0048000000000000004
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.24054999999999999,
+        "msr": "0.18-0.30",
+        "share": 0.00625
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.16105,
+        "msr": "0.16-0.17",
+        "share": 0.00425
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.11315,
+        "msr": "0.08-0.15",
+        "share": 0.0030499999999999998
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.1528,
+        "msr": "0.13-0.18",
+        "share": 0.004
+       },
+       "kit level of detail (kitLod*)": {
+        "ms": 0.03585,
+        "msr": "0.04-0.04",
+        "share": 0.00095
+       },
+       "app (other)": {
+        "ms": 0.07654999999999999,
+        "msr": "0.02-0.14",
+        "share": 0.00195
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.00845,
+        "msr": "0.01-0.01",
+        "share": 0.00019999999999999998
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.00505,
+        "msr": "0.00-0.01",
+        "share": 0.00015000000000000001
+       },
+       "timeline/DOM UI (tl*, caption*, fitCaption, syncDock, syncInert)": {
+        "ms": 0.00195,
+        "msr": "0.00-0.00",
+        "share": 0.00005
+       },
+       "skeleton/routes (skel*, route*)": {
+        "ms": 0.0009,
+        "msr": "0.00-0.00",
+        "share": 0
+       }
+      },
+      "top": [
+       [
+        "freeRect app:12503",
+        6.5251
+       ],
+       [
+        "(anonymous) three:6",
+        2.8125
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.23365
+       ],
+       [
+        "Pt three:6",
+        1.8064
+       ],
+       [
+        "bindBuffer native:0",
+        1.25285
+       ],
+       [
+        "vertexAttribPointer native:0",
+        1.22045
+       ],
+       [
+        "setup three:6",
+        1.1670500000000001
+       ],
+       [
+        "renderBufferDirect three:6",
+        1.10585
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.7531
+       ],
+       [
+        "renderFX app:11289",
+        0.70065
+       ],
+       [
+        "It three:6",
+        0.6860999999999999
+       ],
+       [
+        "mlLayout app:13005",
+        0.64855
+       ],
+       [
+        "At three:6",
+        0.61295
+       ],
+       [
+        "bindVertexArray native:0",
+        0.59175
+       ],
+       [
+        "querySelector native:0",
+        0.5256
+       ],
+       [
+        "bufferSubData native:0",
+        0.4715
+       ],
+       [
+        "Cr.upload three:6",
+        0.46535000000000004
+       ],
+       [
+        "M three:6",
+        0.4099
+       ],
+       [
+        "worldPerPx app:12453",
+        0.40445
+       ],
+       [
+        "groundPatch app:9680",
+        0.3914
+       ],
+       [
+        "update three:6",
+        0.38475000000000004
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.37855
+       ],
+       [
+        "refreshMaterialUniforms three:6",
+        0.3651
+       ],
+       [
+        "viewH app:12452",
+        0.33755
+       ],
+       [
+        "Oi three:6",
+        0.33435
+       ]
+      ],
+      "incl": {
+       "loop": 37.9672,
+       "syncFollow": 0.0001,
+       "openingWatch": 0.00015,
+       "paintDevStats": 0,
+       "frameState": 0.00035,
+       "_runTween": 0.0006000000000000001,
+       "tickClock": 0.49744999999999995,
+       "followStep": 0.3244,
+       "dwellAdvance": 0.00085,
+       "openingPlayWatch": 0.00025,
+       "setProg": 0.014450000000000001,
+       "updateVisibility": 5.7249,
+       "syncViewOffset": 0.3154,
+       "renderFrame": 31.057,
+       "applyLight": 0.0497,
+       "placeLights": 4.94765,
+       "applyAtmo": 0.00055,
+       "domeFollow": 0.0019500000000000001,
+       "renderFrameNow": 26.096,
+       "arrowCap": 0.23355,
+       "mlLayout": 2.049,
+       "mlCollect": 0.7183999999999999,
+       "mlStabBegin": 0.0114,
+       "renderFX": 23.7164,
+       "renderStandard": 0,
+       "gdepthPass": 0.42174999999999996,
+       "render": 22.9183,
+       "gaitStep": 0.0524,
+       "poseBlock": 0.0945,
+       "kitLodFrame": 0.007050000000000001,
+       "kitLod": 0.048100000000000004,
+       "kitLodSet": 0.0001,
+       "layoutFigs": 0.8263,
+       "placeStandards": 0.06385,
+       "outlinePlace": 0.8426499999999999,
+       "confPlace": 0,
+       "smokePlace": 2.30675,
+       "cullTest": 0.48095,
+       "cullRefresh": 0.3196,
+       "cullStale": 0.015,
+       "drawOnArrows": 0.0731,
+       "skelUpdate": 0.00055,
+       "routeScope": 0,
+       "knowAtClock": 0.0063,
+       "faceClock": 0.0008,
+       "groundYFast": 0.00035,
+       "groundY": 0.35295,
+       "stateAt": 0.0654,
+       "posNow": 0.14425,
+       "landPanels": 0.80245,
+       "freeRect": 6.5324,
+       "mlPanels": 0.39404999999999996,
+       "toastRelayout": 0,
+       "placeToast": 0.00025,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 18.23105,
+       "setProgram": 0,
+       "updateMatrixWorld": 1.2599,
+       "intersectsObject": 0.07139999999999999,
+       "onPointerMove": 0,
+       "dispatchEvent": 0.00025
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        21.88185
+       ],
+       [
+        "gdepthPass",
+        0.41285
+       ],
+       [
+        "(anonymous)",
+        0.22165
+       ],
+       [
+        "groundPatch",
+        0.12240000000000001
+       ],
+       [
+        "pass",
+        0.096
+       ],
+       [
+        "worldPerPx",
+        0.0937
+       ],
+       [
+        "F.intersectsObject",
+        0.0841
+       ],
+       [
+        "seatPrep",
+        0.06975
+       ]
+      ]
+     }
+    },
+    "overview-held": {
+     "rounds": 2,
+     "loopP50": 16.799999999999997,
+     "loopP50r": "16.40-17.20",
+     "loopMean": 23.451,
+     "cpu": 15.3385,
+     "cpur": "15.14-15.54",
+     "wait": 10.048,
+     "gpu": 2.69,
+     "flush": 0,
+     "calls": 837,
+     "tris": 1978147,
+     "clock": "570.0-570.0 570.0-570.0",
+     "mls": "252/0/252/0",
+     "steps": {
+      "updateVisibility": {
+       "p50": 2.6,
+       "range": "2.50-2.70",
+       "mean": 3.479
+      },
+      "mlLayout": {
+       "p50": 0.6499999999999999,
+       "range": "0.60-0.70",
+       "mean": 1.0314999999999999
+      },
+      "renderFrame": {
+       "p50": 13.8,
+       "range": "13.60-14.00",
+       "mean": 19.2655
+      },
+      "three.render": {
+       "p50": 11.35,
+       "range": "11.20-11.50",
+       "mean": 16.0915
+      },
+      "renderFX": {
+       "p50": 11.4,
+       "range": "11.30-11.50",
+       "mean": 16.19
+      },
+      "gdepthPass": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.017
+      },
+      "arrowCap": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.015
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "placeLights": {
+       "p50": 1.4,
+       "range": "1.40-1.40",
+       "mean": 1.9969999999999999
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0035
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.573
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "tickClock": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0
+      },
+      "followStep": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0075
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0
+      },
+      "kitLodFrame": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0055
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 30.647550000000003,
+      "runr": "24.12-37.18",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 19.54495,
+        "msr": "14.96-24.13",
+        "share": 0.6347
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 3.8558,
+        "msr": "3.26-4.45",
+        "share": 0.1275
+       },
+       "WebGL calls (native)": {
+        "ms": 3.9564500000000002,
+        "msr": "3.12-4.79",
+        "share": 0.12919999999999998
+       },
+       "map layer (ml*)": {
+        "ms": 0.9224,
+        "msr": "0.91-0.93",
+        "share": 0.0314
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.7059,
+        "msr": "0.58-0.84",
+        "share": 0.0232
+       },
+       "native/builtin (other)": {
+        "ms": 0.5505,
+        "msr": "0.44-0.66",
+        "share": 0.018000000000000002
+       },
+       "outlines (outline*)": {
+        "ms": 0.17554999999999998,
+        "msr": "0.15-0.20",
+        "share": 0.00585
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.13195,
+        "msr": "0.12-0.14",
+        "share": 0.0046
+       },
+       "culling (cull*)": {
+        "ms": 0.18705,
+        "msr": "0.10-0.27",
+        "share": 0.00575
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.14,
+        "msr": "0.09-0.19",
+        "share": 0.0044
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.11069999999999999,
+        "msr": "0.09-0.13",
+        "share": 0.0036
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.0965,
+        "msr": "0.06-0.14",
+        "share": 0.003
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.029750000000000002,
+        "msr": "0.01-0.05",
+        "share": 0.00115
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.05345,
+        "msr": "0.04-0.06",
+        "share": 0.0017499999999999998
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.07585,
+        "msr": "0.03-0.12",
+        "share": 0.0023
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.0224,
+        "msr": "0.02-0.03",
+        "share": 0.0007999999999999999
+       },
+       "kit level of detail (kitLod*)": {
+        "ms": 0.03135,
+        "msr": "0.02-0.04",
+        "share": 0.001
+       },
+       "arrows (arrow*, capPts, ribbon*, drawOn*)": {
+        "ms": 0.010100000000000001,
+        "msr": "0.01-0.01",
+        "share": 0.00035
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.0056500000000000005,
+        "msr": "0.00-0.01",
+        "share": 0.00025
+       },
+       "app (other)": {
+        "ms": 0.037450000000000004,
+        "msr": "0.01-0.07",
+        "share": 0.0011
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.0022,
+        "msr": "0.00-0.00",
+        "share": 0.0001
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.00165,
+        "msr": "0.00-0.00",
+        "share": 0.00005
+       }
+      },
+      "top": [
+       [
+        "freeRect app:12503",
+        3.7969
+       ],
+       [
+        "renderBufferDirect three:6",
+        2.65245
+       ],
+       [
+        "(anonymous) three:6",
+        2.2362
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.1185
+       ],
+       [
+        "Pt three:6",
+        1.8703
+       ],
+       [
+        "vertexAttribPointer native:0",
+        1.2935
+       ],
+       [
+        "setup three:6",
+        1.13855
+       ],
+       [
+        "bindBuffer native:0",
+        0.90175
+       ],
+       [
+        "updateMatrix three:6",
+        0.72475
+       ],
+       [
+        "It three:6",
+        0.71385
+       ],
+       [
+        "At three:6",
+        0.679
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.53435
+       ],
+       [
+        "bindVertexArray native:0",
+        0.5101
+       ],
+       [
+        "e three:6",
+        0.45335000000000003
+       ],
+       [
+        "Cr.upload three:6",
+        0.44625000000000004
+       ],
+       [
+        "M three:6",
+        0.38639999999999997
+       ],
+       [
+        "get three:6",
+        0.3564
+       ],
+       [
+        "Oi three:6",
+        0.35025
+       ],
+       [
+        "Er.setValue three:6",
+        0.34850000000000003
+       ],
+       [
+        "update three:6",
+        0.34065
+       ],
+       [
+        "querySelector native:0",
+        0.32405
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.31484999999999996
+       ],
+       [
+        "worldPerPx app:12453",
+        0.3021
+       ],
+       [
+        "Ct three:6",
+        0.2892
+       ],
+       [
+        "refreshMaterialUniforms three:6",
+        0.28205
+       ]
+      ],
+      "incl": {
+       "loop": 30.5996,
+       "syncFollow": 0.00055,
+       "openingWatch": 0,
+       "paintDevStats": 0,
+       "frameState": 0,
+       "_runTween": 0,
+       "tickClock": 0,
+       "followStep": 0,
+       "dwellAdvance": 0,
+       "openingPlayWatch": 0,
+       "setProg": 0.0224,
+       "updateVisibility": 3.2488,
+       "syncViewOffset": 0.18495,
+       "renderFrame": 27.12115,
+       "applyLight": 0,
+       "placeLights": 2.2615999999999996,
+       "applyAtmo": 0.028650000000000002,
+       "domeFollow": 0,
+       "renderFrameNow": 24.818199999999997,
+       "arrowCap": 0.0118,
+       "mlLayout": 1.1198000000000001,
+       "mlCollect": 0.41805000000000003,
+       "mlStabBegin": 0.00655,
+       "renderFX": 23.61305,
+       "renderStandard": 0,
+       "gdepthPass": 0.0089,
+       "render": 23.5435,
+       "gaitStep": 0.04375,
+       "poseBlock": 0.0518,
+       "kitLodFrame": 0.0017,
+       "kitLod": 0.0374,
+       "kitLodSet": 0,
+       "layoutFigs": 0,
+       "placeStandards": 0,
+       "outlinePlace": 0.15460000000000002,
+       "confPlace": 0,
+       "smokePlace": 1.8626,
+       "cullTest": 0.18705,
+       "cullRefresh": 0,
+       "cullStale": 0.008,
+       "drawOnArrows": 0,
+       "skelUpdate": 0,
+       "routeScope": 0,
+       "knowAtClock": 0.00165,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.07815,
+       "stateAt": 0.02585,
+       "posNow": 0.10155,
+       "landPanels": 0.3796,
+       "freeRect": 3.7991,
+       "mlPanels": 0.23454999999999998,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 19.156,
+       "setProgram": 0,
+       "updateMatrixWorld": 1.5997,
+       "intersectsObject": 0.05085,
+       "onPointerMove": 0,
+       "dispatchEvent": 0
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        23.2317
+       ],
+       [
+        "pass",
+        0.08365
+       ],
+       [
+        "F.intersectsObject",
+        0.0678
+       ],
+       [
+        "worldPerPx",
+        0.054150000000000004
+       ],
+       [
+        "tri",
+        0.050100000000000006
+       ],
+       [
+        "settleBlock",
+        0.0163
+       ],
+       [
+        "lin",
+        0.0096
+       ],
+       [
+        "(anonymous)",
+        0.0074
+       ]
+      ]
+     }
+    },
+    "overview-route": {
+     "rounds": 2,
+     "loopP50": 23.200000000000003,
+     "loopP50r": "22.80-23.60",
+     "loopMean": 33.436499999999995,
+     "cpu": 20.12,
+     "cpur": "19.80-20.44",
+     "wait": 12.721499999999999,
+     "gpu": 4.2575,
+     "flush": 0,
+     "calls": 839,
+     "tris": 2125259,
+     "clock": "570.0-570.0 570.0-570.0",
+     "mls": "396/0/396/0",
+     "steps": {
+      "updateVisibility": {
+       "p50": 3,
+       "range": "3.00-3.00",
+       "mean": 3.9044999999999996
+      },
+      "mlLayout": {
+       "p50": 1,
+       "range": "1.00-1.00",
+       "mean": 1.313
+      },
+      "renderFrame": {
+       "p50": 20.05,
+       "range": "19.60-20.50",
+       "mean": 29.345
+      },
+      "three.render": {
+       "p50": 14.45,
+       "range": "14.10-14.80",
+       "mean": 21.293
+      },
+      "renderFX": {
+       "p50": 14.899999999999999,
+       "range": "14.60-15.20",
+       "mean": 22.0435
+      },
+      "gdepthPass": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.2555
+      },
+      "arrowCap": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.18
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "placeLights": {
+       "p50": 3.4,
+       "range": "3.40-3.40",
+       "mean": 5.7445
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.002
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.14250000000000002
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "tickClock": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0005
+      },
+      "followStep": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.002
+      },
+      "kitLodFrame": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.004
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 35.86765,
+      "runr": "24.25-47.49",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 19.9466,
+        "msr": "12.55-27.35",
+        "share": 0.54665
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 6.28705,
+        "msr": "4.42-8.15",
+        "share": 0.17704999999999999
+       },
+       "WebGL calls (native)": {
+        "ms": 4.7161,
+        "msr": "3.72-5.72",
+        "share": 0.13685
+       },
+       "map layer (ml*)": {
+        "ms": 1.2339,
+        "msr": "0.87-1.59",
+        "share": 0.03485
+       },
+       "native/builtin (other)": {
+        "ms": 0.89945,
+        "msr": "0.55-1.25",
+        "share": 0.02445
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.77375,
+        "msr": "0.48-1.06",
+        "share": 0.021150000000000002
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.51325,
+        "msr": "0.46-0.56",
+        "share": 0.0155
+       },
+       "outlines (outline*)": {
+        "ms": 0.22985,
+        "msr": "0.21-0.25",
+        "share": 0.007350000000000001
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.23175,
+        "msr": "0.19-0.28",
+        "share": 0.0068
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.14415,
+        "msr": "0.13-0.15",
+        "share": 0.0044
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.18525,
+        "msr": "0.13-0.24",
+        "share": 0.00515
+       },
+       "arrows (arrow*, capPts, ribbon*, drawOn*)": {
+        "ms": 0.09745000000000001,
+        "msr": "0.09-0.11",
+        "share": 0.00315
+       },
+       "culling (cull*)": {
+        "ms": 0.13355,
+        "msr": "0.09-0.17",
+        "share": 0.00375
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.10494999999999999,
+        "msr": "0.08-0.13",
+        "share": 0.003
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.0632,
+        "msr": "0.06-0.07",
+        "share": 0.002
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.17420000000000002,
+        "msr": "0.05-0.29",
+        "share": 0.0042
+       },
+       "kit level of detail (kitLod*)": {
+        "ms": 0.0375,
+        "msr": "0.03-0.04",
+        "share": 0.0012
+       },
+       "app (other)": {
+        "ms": 0.0796,
+        "msr": "0.03-0.13",
+        "share": 0.002
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.00605,
+        "msr": "0.01-0.01",
+        "share": 0.00015000000000000001
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.0036,
+        "msr": "0.00-0.01",
+        "share": 0.0001
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.00245,
+        "msr": "0.00-0.00",
+        "share": 0.0001
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.0029,
+        "msr": "0.00-0.00",
+        "share": 0.0001
+       },
+       "skeleton/routes (skel*, route*)": {
+        "ms": 0.00035,
+        "msr": "0.00-0.00",
+        "share": 0
+       },
+       "timeline/DOM UI (tl*, caption*, fitCaption, syncDock, syncInert)": {
+        "ms": 0.0007,
+        "msr": "0.00-0.00",
+        "share": 0
+       }
+      },
+      "top": [
+       [
+        "freeRect app:12503",
+        6.1884999999999994
+       ],
+       [
+        "(anonymous) three:6",
+        3.7733999999999996
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.4708
+       ],
+       [
+        "Pt three:6",
+        1.73885
+       ],
+       [
+        "vertexAttribPointer native:0",
+        1.7126000000000001
+       ],
+       [
+        "renderBufferDirect three:6",
+        1.5081
+       ],
+       [
+        "setup three:6",
+        1.18585
+       ],
+       [
+        "bindBuffer native:0",
+        1.0482
+       ],
+       [
+        "At three:6",
+        0.8818
+       ],
+       [
+        "It three:6",
+        0.7883
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.6099
+       ],
+       [
+        "querySelector native:0",
+        0.6052
+       ],
+       [
+        "bindVertexArray native:0",
+        0.58875
+       ],
+       [
+        "Cr.upload three:6",
+        0.51655
+       ],
+       [
+        "refreshMaterialUniforms three:6",
+        0.5011
+       ],
+       [
+        "update three:6",
+        0.4938
+       ],
+       [
+        "renderFX app:11289",
+        0.4811
+       ],
+       [
+        "e three:6",
+        0.4464
+       ],
+       [
+        "mlLayout app:13005",
+        0.39249999999999996
+       ],
+       [
+        "worldPerPx app:12453",
+        0.3699
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.36585
+       ],
+       [
+        "get three:6",
+        0.3609
+       ],
+       [
+        "Oi three:6",
+        0.34925
+       ],
+       [
+        "uniformMatrix4fv native:0",
+        0.32535000000000003
+       ],
+       [
+        "M three:6",
+        0.30575
+       ]
+      ],
+      "incl": {
+       "loop": 35.75005,
+       "syncFollow": 0.00035,
+       "openingWatch": 0,
+       "paintDevStats": 0.0007,
+       "frameState": 0,
+       "_runTween": 0,
+       "tickClock": 0.00065,
+       "followStep": 0.00035,
+       "dwellAdvance": 0,
+       "openingPlayWatch": 0,
+       "setProg": 0.0208,
+       "updateVisibility": 3.5807,
+       "syncViewOffset": 0.30015000000000003,
+       "renderFrame": 31.8042,
+       "applyLight": 0.00035,
+       "placeLights": 4.7875,
+       "applyAtmo": 0.0018,
+       "domeFollow": 0.0004,
+       "renderFrameNow": 27.005650000000003,
+       "arrowCap": 0.16410000000000002,
+       "mlLayout": 1.54195,
+       "mlCollect": 0.4498,
+       "mlStabBegin": 0.0087,
+       "renderFX": 25.226999999999997,
+       "renderStandard": 0,
+       "gdepthPass": 0.66105,
+       "render": 24.6886,
+       "gaitStep": 0.042499999999999996,
+       "poseBlock": 0.06369999999999999,
+       "kitLodFrame": 0.0018,
+       "kitLod": 0.044950000000000004,
+       "kitLodSet": 0,
+       "layoutFigs": 0,
+       "placeStandards": 0,
+       "outlinePlace": 0.21264999999999998,
+       "confPlace": 0,
+       "smokePlace": 2.0092,
+       "cullTest": 0.13355,
+       "cullRefresh": 0,
+       "cullStale": 0.0308,
+       "drawOnArrows": 0,
+       "skelUpdate": 0,
+       "routeScope": 0,
+       "knowAtClock": 0.00105,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.18405,
+       "stateAt": 0.0251,
+       "posNow": 0.14175,
+       "landPanels": 0.45530000000000004,
+       "freeRect": 6.1933,
+       "mlPanels": 0.3301,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 20.801199999999998,
+       "setProgram": 0,
+       "updateMatrixWorld": 1.0994000000000002,
+       "intersectsObject": 0.031599999999999996,
+       "onPointerMove": 0,
+       "dispatchEvent": 0
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        23.797900000000002
+       ],
+       [
+        "gdepthPass",
+        0.6543
+       ],
+       [
+        "pass",
+        0.06275
+       ],
+       [
+        "worldPerPx",
+        0.045200000000000004
+       ],
+       [
+        "F.intersectsObject",
+        0.0447
+       ],
+       [
+        "tri",
+        0.020999999999999998
+       ],
+       [
+        "placeLights",
+        0.01675
+       ],
+       [
+        "settleBlock",
+        0.0106
+       ]
+      ]
+     }
+    },
+    "overview-drag": {
+     "rounds": 2,
+     "loopP50": 21.25,
+     "loopP50r": "20.50-22.00",
+     "loopMean": 34.697,
+     "cpu": 18.3695,
+     "cpur": "18.21-18.52",
+     "wait": 17.4725,
+     "gpu": 3.2895000000000003,
+     "flush": 0,
+     "calls": 839,
+     "tris": 2125259,
+     "clock": "570.0-570.0 570.0-570.0",
+     "mls": "396/396/0/0",
+     "steps": {
+      "updateVisibility": {
+       "p50": 2.75,
+       "range": "2.70-2.80",
+       "mean": 4.236000000000001
+      },
+      "mlLayout": {
+       "p50": 0.8,
+       "range": "0.80-0.80",
+       "mean": 1.897
+      },
+      "renderFrame": {
+       "p50": 17.95,
+       "range": "17.00-18.90",
+       "mean": 30.1265
+      },
+      "three.render": {
+       "p50": 12.6,
+       "range": "12.00-13.20",
+       "mean": 21.7325
+      },
+      "renderFX": {
+       "p50": 13,
+       "range": "12.40-13.60",
+       "mean": 22.272
+      },
+      "gdepthPass": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.16999999999999998
+      },
+      "arrowCap": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.2095
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "placeLights": {
+       "p50": 3.2,
+       "range": "3.10-3.30",
+       "mean": 5.702
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.2935
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "tickClock": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0005
+      },
+      "followStep": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0005
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "kitLodFrame": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.003
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 33.6357,
+      "runr": "30.53-36.74",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 18.51695,
+        "msr": "15.99-21.04",
+        "share": 0.5483
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 5.980449999999999,
+        "msr": "5.40-6.56",
+        "share": 0.1777
+       },
+       "WebGL calls (native)": {
+        "ms": 4.19735,
+        "msr": "4.10-4.29",
+        "share": 0.1256
+       },
+       "native/builtin (other)": {
+        "ms": 1.0241,
+        "msr": "0.80-1.25",
+        "share": 0.030100000000000002
+       },
+       "map layer (ml*)": {
+        "ms": 1.0105,
+        "msr": "0.93-1.09",
+        "share": 0.03055
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.7469,
+        "msr": "0.66-0.83",
+        "share": 0.022150000000000003
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.5398499999999999,
+        "msr": "0.34-0.74",
+        "share": 0.01675
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.24895,
+        "msr": "0.23-0.27",
+        "share": 0.0074
+       },
+       "outlines (outline*)": {
+        "ms": 0.2134,
+        "msr": "0.21-0.22",
+        "share": 0.00635
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.146,
+        "msr": "0.10-0.19",
+        "share": 0.00425
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.31425000000000003,
+        "msr": "0.17-0.46",
+        "share": 0.0098
+       },
+       "arrows (arrow*, capPts, ribbon*, drawOn*)": {
+        "ms": 0.11905,
+        "msr": "0.10-0.14",
+        "share": 0.0035
+       },
+       "culling (cull*)": {
+        "ms": 0.1622,
+        "msr": "0.13-0.19",
+        "share": 0.0049499999999999995
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.1495,
+        "msr": "0.12-0.18",
+        "share": 0.00455
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.07995,
+        "msr": "0.05-0.11",
+        "share": 0.0023499999999999997
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.09245,
+        "msr": "0.08-0.11",
+        "share": 0.0028
+       },
+       "kit level of detail (kitLod*)": {
+        "ms": 0.0293,
+        "msr": "0.02-0.03",
+        "share": 0.0008500000000000001
+       },
+       "app (other)": {
+        "ms": 0.04865,
+        "msr": "0.02-0.08",
+        "share": 0.00155
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.005149999999999999,
+        "msr": "0.00-0.01",
+        "share": 0.00015
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.0063,
+        "msr": "0.01-0.01",
+        "share": 0.00015000000000000001
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.0025,
+        "msr": "0.00-0.00",
+        "share": 0.00005
+       },
+       "skeleton/routes (skel*, route*)": {
+        "ms": 0.00035,
+        "msr": "0.00-0.00",
+        "share": 0
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.0015,
+        "msr": "0.00-0.00",
+        "share": 0.00005
+       }
+      },
+      "top": [
+       [
+        "freeRect app:12503",
+        5.8399
+       ],
+       [
+        "(anonymous) three:6",
+        2.7378
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.4920999999999998
+       ],
+       [
+        "Pt three:6",
+        2.3205
+       ],
+       [
+        "vertexAttribPointer native:0",
+        1.345
+       ],
+       [
+        "renderBufferDirect three:6",
+        1.07535
+       ],
+       [
+        "setup three:6",
+        1.0166
+       ],
+       [
+        "bindBuffer native:0",
+        0.9563999999999999
+       ],
+       [
+        "bindVertexArray native:0",
+        0.7395499999999999
+       ],
+       [
+        "It three:6",
+        0.7197
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.6258
+       ],
+       [
+        "At three:6",
+        0.62395
+       ],
+       [
+        "querySelector native:0",
+        0.6031500000000001
+       ],
+       [
+        "e three:6",
+        0.5768
+       ],
+       [
+        "renderFX app:11289",
+        0.50805
+       ],
+       [
+        "Oi three:6",
+        0.48855000000000004
+       ],
+       [
+        "Cr.upload three:6",
+        0.4535
+       ],
+       [
+        "worldPerPx app:12453",
+        0.44425000000000003
+       ],
+       [
+        "refreshMaterialUniforms three:6",
+        0.4044
+       ],
+       [
+        "uniformMatrix4fv native:0",
+        0.3831
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.3712
+       ],
+       [
+        "M three:6",
+        0.3597
+       ],
+       [
+        "mlLayout app:13005",
+        0.3224
+       ],
+       [
+        "get three:6",
+        0.3155
+       ],
+       [
+        "update three:6",
+        0.2904
+       ]
+      ],
+      "incl": {
+       "loop": 33.503949999999996,
+       "syncFollow": 0,
+       "openingWatch": 0,
+       "paintDevStats": 0,
+       "frameState": 0,
+       "_runTween": 0,
+       "tickClock": 0.00035,
+       "followStep": 0,
+       "dwellAdvance": 0,
+       "openingPlayWatch": 0,
+       "setProg": 0.0237,
+       "updateVisibility": 3.78465,
+       "syncViewOffset": 0.26575,
+       "renderFrame": 29.408549999999998,
+       "applyLight": 0.00035,
+       "placeLights": 4.5291999999999994,
+       "applyAtmo": 0.0007,
+       "domeFollow": 0,
+       "renderFrameNow": 24.84405,
+       "arrowCap": 0.18030000000000002,
+       "mlLayout": 1.1931500000000002,
+       "mlCollect": 0.4167,
+       "mlStabBegin": 0.00825,
+       "renderFX": 23.2852,
+       "renderStandard": 0,
+       "gdepthPass": 0.3235,
+       "render": 22.716700000000003,
+       "gaitStep": 0.043550000000000005,
+       "poseBlock": 0.10824999999999999,
+       "kitLodFrame": 0.0031999999999999997,
+       "kitLod": 0.05525,
+       "kitLodSet": 0,
+       "layoutFigs": 0,
+       "placeStandards": 0,
+       "outlinePlace": 0.2373,
+       "confPlace": 0,
+       "smokePlace": 2.0237,
+       "cullTest": 0.1622,
+       "cullRefresh": 0,
+       "cullStale": 0.01545,
+       "drawOnArrows": 0,
+       "skelUpdate": 0.00035,
+       "routeScope": 0,
+       "knowAtClock": 0.0011,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.19805,
+       "stateAt": 0.02375,
+       "posNow": 0.10944999999999999,
+       "landPanels": 0.6093999999999999,
+       "freeRect": 5.8461,
+       "mlPanels": 0,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 19.32645,
+       "setProgram": 0,
+       "updateMatrixWorld": 0.9944500000000001,
+       "intersectsObject": 0.03005,
+       "onPointerMove": 0,
+       "dispatchEvent": 0.083
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        22.1814
+       ],
+       [
+        "gdepthPass",
+        0.3134
+       ],
+       [
+        "worldPerPx",
+        0.04825
+       ],
+       [
+        "F.intersectsObject",
+        0.0434
+       ],
+       [
+        "pass",
+        0.0428
+       ],
+       [
+        "tri",
+        0.03375
+       ],
+       [
+        "kitLod",
+        0.027
+       ],
+       [
+        "poseBlock",
+        0.0138
+       ]
+      ]
+     }
+    },
+    "ph8-drag": {
+     "rounds": 2,
+     "loopP50": 21.7,
+     "loopP50r": "19.90-23.50",
+     "loopMean": 35.637,
+     "cpu": 18.62,
+     "cpur": "17.75-19.49",
+     "wait": 16.46,
+     "gpu": 3.8845,
+     "flush": 0,
+     "calls": 820,
+     "tris": 2112941,
+     "clock": "880.0-880.0 880.0-880.0",
+     "mls": "396/396/0/0",
+     "steps": {
+      "updateVisibility": {
+       "p50": 2.9,
+       "range": "2.80-3.00",
+       "mean": 3.913
+      },
+      "mlLayout": {
+       "p50": 0.8,
+       "range": "0.80-0.80",
+       "mean": 1.3170000000000002
+      },
+      "renderFrame": {
+       "p50": 18.4,
+       "range": "16.70-20.10",
+       "mean": 31.524
+      },
+      "three.render": {
+       "p50": 13.45,
+       "range": "11.90-15.00",
+       "mean": 23.308999999999997
+      },
+      "renderFX": {
+       "p50": 13.9,
+       "range": "12.30-15.50",
+       "mean": 24.207
+      },
+      "gdepthPass": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.3395
+      },
+      "arrowCap": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.124
+      },
+      "applyLight": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.001
+      },
+      "placeLights": {
+       "p50": 3.1500000000000004,
+       "range": "3.10-3.20",
+       "mean": 5.8065
+      },
+      "applyAtmo": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0015
+      },
+      "syncViewOffset": {
+       "p50": 0.1,
+       "range": "0.10-0.10",
+       "mean": 0.1645
+      },
+      "syncFollow": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.002
+      },
+      "tickClock": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0005
+      },
+      "followStep": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0005
+      },
+      "frameState": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0
+      },
+      "kitLodFrame": {
+       "p50": 0,
+       "range": "0.00-0.00",
+       "mean": 0.0035
+      }
+     },
+     "err": [],
+     "prof": {
+      "rounds": 2,
+      "run": 29.839399999999998,
+      "runr": "28.66-31.02",
+      "cats": {
+       "three.js (JS)": {
+        "ms": 16.36775,
+        "msr": "15.47-17.26",
+        "share": 0.5482
+       },
+       "panels and free rectangle (freeRect, landPanels, panelRects)": {
+        "ms": 5.27685,
+        "msr": "4.88-5.67",
+        "share": 0.1766
+       },
+       "WebGL calls (native)": {
+        "ms": 4.0654,
+        "msr": "3.67-4.46",
+        "share": 0.13695000000000002
+       },
+       "map layer (ml*)": {
+        "ms": 1.0996,
+        "msr": "0.95-1.25",
+        "share": 0.036699999999999997
+       },
+       "native/builtin (other)": {
+        "ms": 0.7839499999999999,
+        "msr": "0.73-0.84",
+        "share": 0.0262
+       },
+       "updateVisibility (other, inline)": {
+        "ms": 0.5810500000000001,
+        "msr": "0.57-0.59",
+        "share": 0.0195
+       },
+       "render path (renderFrame*, renderFX, renderStandard, gdepth*, pass)": {
+        "ms": 0.45835000000000004,
+        "msr": "0.39-0.53",
+        "share": 0.015300000000000001
+       },
+       "outlines (outline*)": {
+        "ms": 0.21350000000000002,
+        "msr": "0.20-0.22",
+        "share": 0.0072
+       },
+       "ground queries (groundY*, height*, displayHeight)": {
+        "ms": 0.2048,
+        "msr": "0.19-0.22",
+        "share": 0.00685
+       },
+       "smoke and dust (smoke*, dust*)": {
+        "ms": 0.14605,
+        "msr": "0.14-0.15",
+        "share": 0.0049
+       },
+       "gait/anim (gait*, anim*, faceClock, poseBlock)": {
+        "ms": 0.09855,
+        "msr": "0.07-0.13",
+        "share": 0.0033499999999999997
+       },
+       "culling (cull*)": {
+        "ms": 0.1013,
+        "msr": "0.08-0.12",
+        "share": 0.0034
+       },
+       "formation model (stateAt, posNow, legPath, ...)": {
+        "ms": 0.10139999999999999,
+        "msr": "0.07-0.13",
+        "share": 0.00335
+       },
+       "clock/Follow/camera (tickClock, followStep, syncFollow, syncViewOffset, tween, orbit, clamp*)": {
+        "ms": 0.06545000000000001,
+        "msr": "0.06-0.07",
+        "share": 0.0021999999999999997
+       },
+       "arrows (arrow*, capPts, ribbon*, drawOn*)": {
+        "ms": 0.06075,
+        "msr": "0.05-0.07",
+        "share": 0.002
+       },
+       "app (other)": {
+        "ms": 0.08435000000000001,
+        "msr": "0.06-0.11",
+        "share": 0.0028
+       },
+       "light (applyLight, placeLights, lightAt, shadow*)": {
+        "ms": 0.061,
+        "msr": "0.06-0.06",
+        "share": 0.0020499999999999997
+       },
+       "kit level of detail (kitLod*)": {
+        "ms": 0.041999999999999996,
+        "msr": "0.03-0.05",
+        "share": 0.0014
+       },
+       "figures' layout (layoutFigs, placeStandards, showBattalions, seat)": {
+        "ms": 0.016,
+        "msr": "0.01-0.02",
+        "share": 0.00055
+       },
+       "atmosphere (atmo*, applyAtmo, fog*, domeFollow)": {
+        "ms": 0.0046,
+        "msr": "0.00-0.00",
+        "share": 0.00015000000000000001
+       },
+       "eyes/knowledge (know*, eyes*, readHidden, drawnKnow)": {
+        "ms": 0.00145,
+        "msr": "0.00-0.00",
+        "share": 0.00005
+       },
+       "confidence (conf*, groundPatch)": {
+        "ms": 0.0027,
+        "msr": "0.00-0.00",
+        "share": 0.0001
+       },
+       "skeleton/routes (skel*, route*)": {
+        "ms": 0.00115,
+        "msr": "0.00-0.00",
+        "share": 0.00005
+       },
+       "timeline/DOM UI (tl*, caption*, fitCaption, syncDock, syncInert)": {
+        "ms": 0.0014,
+        "msr": "0.00-0.00",
+        "share": 0
+       }
+      },
+      "top": [
+       [
+        "freeRect app:12503",
+        5.18635
+       ],
+       [
+        "getProgramCacheKey three:6",
+        2.3388
+       ],
+       [
+        "(anonymous) three:6",
+        2.1974
+       ],
+       [
+        "Pt three:6",
+        1.4760499999999999
+       ],
+       [
+        "vertexAttribPointer native:0",
+        1.2529
+       ],
+       [
+        "renderBufferDirect three:6",
+        1.05765
+       ],
+       [
+        "setup three:6",
+        0.9797499999999999
+       ],
+       [
+        "bindBuffer native:0",
+        0.9475
+       ],
+       [
+        "It three:6",
+        0.8051
+       ],
+       [
+        "Cr.upload three:6",
+        0.6141
+       ],
+       [
+        "bindVertexArray native:0",
+        0.61075
+       ],
+       [
+        "At three:6",
+        0.6031
+       ],
+       [
+        "updateMatrixWorld three:6",
+        0.5346
+       ],
+       [
+        "querySelector native:0",
+        0.52305
+       ],
+       [
+        "get three:6",
+        0.5204
+       ],
+       [
+        "mlLayout app:13005",
+        0.4855
+       ],
+       [
+        "renderFX app:11289",
+        0.4229
+       ],
+       [
+        "update three:6",
+        0.39925
+       ],
+       [
+        "M three:6",
+        0.38285
+       ],
+       [
+        "worldPerPx app:12453",
+        0.37255000000000005
+       ],
+       [
+        "Oi three:6",
+        0.32715
+       ],
+       [
+        "uniformMatrix4fv native:0",
+        0.31420000000000003
+       ],
+       [
+        "e three:6",
+        0.29090000000000005
+       ],
+       [
+        "multiplyMatrices three:6",
+        0.27535
+       ],
+       [
+        "useProgram native:0",
+        0.27485
+       ]
+      ],
+      "incl": {
+       "loop": 29.7299,
+       "syncFollow": 0,
+       "openingWatch": 0,
+       "paintDevStats": 0.00035,
+       "frameState": 0.0004,
+       "_runTween": 0,
+       "tickClock": 0,
+       "followStep": 0.00035,
+       "dwellAdvance": 0,
+       "openingPlayWatch": 0,
+       "setProg": 0.01225,
+       "updateVisibility": 3.1788499999999997,
+       "syncViewOffset": 0.16025,
+       "renderFrame": 26.358150000000002,
+       "applyLight": 0.00035,
+       "placeLights": 4.0641,
+       "applyAtmo": 0.0018,
+       "domeFollow": 0,
+       "renderFrameNow": 22.2855,
+       "arrowCap": 0.0965,
+       "mlLayout": 1.20245,
+       "mlCollect": 0.24355,
+       "mlStabBegin": 0.0131,
+       "renderFX": 20.8896,
+       "renderStandard": 0,
+       "gdepthPass": 0.25805,
+       "render": 20.39045,
+       "gaitStep": 0.03415,
+       "poseBlock": 0.0791,
+       "kitLodFrame": 0.00555,
+       "kitLod": 0.049,
+       "kitLodSet": 0,
+       "layoutFigs": 0,
+       "placeStandards": 0,
+       "outlinePlace": 0.2009,
+       "confPlace": 0,
+       "smokePlace": 1.7499500000000001,
+       "cullTest": 0.1013,
+       "cullRefresh": 0,
+       "cullStale": 0.01195,
+       "drawOnArrows": 0,
+       "skelUpdate": 0.00115,
+       "routeScope": 0,
+       "knowAtClock": 0,
+       "faceClock": 0,
+       "groundYFast": 0,
+       "groundY": 0.14634999999999998,
+       "stateAt": 0.0307,
+       "posNow": 0.059250000000000004,
+       "landPanels": 0.36575,
+       "freeRect": 5.18885,
+       "mlPanels": 0,
+       "toastRelayout": 0,
+       "placeToast": 0,
+       "projectObject": 0,
+       "renderObjects": 0,
+       "renderObject": 0,
+       "renderBufferDirect": 17.02065,
+       "setProgram": 0,
+       "updateMatrixWorld": 0.92765,
+       "intersectsObject": 0.03515,
+       "onPointerMove": 0,
+       "dispatchEvent": 0.0436
+      },
+      "threeBy": [
+       [
+        "renderFX",
+        19.9892
+       ],
+       [
+        "gdepthPass",
+        0.2479
+       ],
+       [
+        "worldPerPx",
+        0.06695
+       ],
+       [
+        "F.intersectsObject",
+        0.0414
+       ],
+       [
+        "tri",
+        0.022699999999999998
+       ],
+       [
+        "poseBlock",
+        0.014499999999999999
+       ],
+       [
+        "pass",
+        0.01415
+       ],
+       [
+        "placeLights",
+        0.0139
+       ]
+      ]
+     }
+    }
+   }
+  }
+ },
+ "motions": [
+  "play-half",
+  "overview-held",
+  "overview-route",
+  "overview-drag",
+  "ph8-drag"
+ ],
+ "ref": "L3"
+}

@@ -1,0 +1,737 @@
+6:var RM_MQ = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+7:var RM = !!(RM_MQ && RM_MQ.matches);
+9:var HARNESS = /[?&]harness=1\b/.test(location.search);
+23:var OVERLAYS = {
+123:function _runTween(now){
+129:function setTween(slot,fn){
+137:function stopTweens(){ tween=null; _tw.scene=null; _tw.cam=null; }
+148:function textOn(){ return layerOn.labels && !cleanView; }
+159:var LIGHT={
+197:var SUN_DAY=(function(){
+226:function sunWorldDir(az,alt,out){
+232:function drawnAltitude(alt){ return Math.atan(DISPLAY.factor*Math.tan(alt*Math.PI/180))*180/Math.PI; }
+243:var LIGHT_RIG={hemiSky:0xA9BBCC, hemiGround:0x3E3A30, fill:0x9AA8B8, sun0:0xA5B2BE, bg0:0x121A22, fog0:0x3
+249:var LIGHT_FILL={predawn:0.16,dawn:0.22,dusk:0.16,staff:0.16}, LIGHT_FILL_DAY=0.52, LIGHT_SKY_LIFT={predawn
+254:var LIGHT_VIS={predawn:40,dawn:40,mist:50,sunburst:70,morning:100,midday:120,afternoon:100,late:70,dusk:50
+255:var LIGHT_BY_ALT={
+260:var NIGHT_DIR=new THREE.Vector3(LIGHT.predawn.p[0],LIGHT.predawn.p[1],LIGHT.predawn.p[2]).normalize();
+261:function lightRow(L,k){ return {i:L.i,c:new THREE.Color(L.c),hemi:L.hemi+(LIGHT_SKY_LIFT[k]!==undefined?LI
+264:function mixRow(a,b,e){ return {i:a.i+(b.i-a.i)*e,c:a.c.clone().lerp(b.c,e),hemi:a.hemi+(b.hemi-a.hemi)*e,
+269:function lightAt(t){
+283:var LIGHT_NOW=null, _lightKey="", _envQ=32;
+285:function applyLight(force){
+316:var SHADOW_FIT={D:400,margin:520,biasUnits:0.576,key:"",ext:0,pts:[],R:0,minG:null};
+318:function groundMinY(){ var s=displayScale(); if(SHADOW_FIT.minG&&SHADOW_FIT.minG[0]===s) return SHADOW_FIT
+320:function shadowReceivers(){
+337:function placeLights(){
+379:var ATMO={HS:400, M0:200, EDGE:6, FOG_EASE:20, FOG_SINK:20, FOG_VIS_KM:0.2, CAP:0.55,
+388:function atmoSigma(km){ return 3.912/km*GEOREF.M_PER_WORLD/1000; }
+390:function fogAmount(t){
+394:function fogTop(a){ return ATMO.FOG_TOP-ATMO.FOG_SINK*(1-Math.min(1,a/0.9)); }
+395:function fogCap(a){ return ATMO.CAP*smoothstep(0,0.9,a); }
+398:function atmoUniforms(sh){ var U=ATMO.u; for(var k in U) sh.uniforms[k]=U[k]; }
+434:function atmoAt(e,p,focus){
+449:function domeFollow(){ if(world&&world.dome&&landCam&&mode!=="staff") world.dome.position.copy(landCam.pos
+450:function applyAtmo(){
+461:function paintSky(c0,c1,c2){
+478:function refreshEnvironment(){
+503:function buildSunDisc(){
+523:var FONTS={FAMILIES:["Austerlitz Sans","Austerlitz Serif"],TIMEOUT:3000,state:null,ready:null};
+524:function fontFamilyOf(f){ return String(f.family).replace(/["']/g,""); }
+525:function fontFaces(){ var o=[];
+530:function fontsReady(ms){
+547:function relayoutAfterFonts(){
+553:function liftBoot(){
+566:function bootFailed(){ return typeof AUS_BOOT!=="undefined"&&!!AUS_BOOT&&!!AUS_BOOT.failed; }
+567:var GL={lost:false};
+568:function bindContextLoss(cv){
+585:function glRestored(){
+592:function rmChange(e){
+597:function endTweens(){ var n=0; if(tween) mlReset("tween ended at once"); while(tween&&n<4){ tween(performa
+602:function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1:2); }
+606:var BOOTMS={};
+607:function bootMark(k,t0){ BOOTMS[k]=Math.round((performance.now()-t0)*10)/10; }
+608:function boot(){
+613:function init(){
+691:function stateAt(id,ph){
+705:function leavesOf(id,out){
+712:function posOf(id,ph){ return posNow(id); }
+713:function aggStrength(id){
+719:function aggStatus(id,ph){
+736:function trackedDescendants(id,out){
+741:function activeAt(id,t){ return !!FORMATIONS[id].track && !notYetAt(id,t) && !goneAt(id,t); }
+742:function ownStrengthAt(id,t){
+749:function sideOnFieldAt(side,t){
+763:var GRADE_RANK={A:0,B:1,C:2};
+764:function worseGrade(a,b){ return (GRADE_RANK[a]||0)>=(GRADE_RANK[b]||0)?a:b; }
+765:function confAt(id,t){
+776:function liveConf(id,ph){
+781:function aggConf(id,ph){
+788:function aggInterp(id,ph){
+802:var GEO={}, _smokeTex=null, _dustTex=null;
+805:var SPRITE_COL={smoke:0xA9A69E, dust:0xC6BCA6, pad:0x2A2620};
+810:function initBlockGeo(){
+821:function flagGeo(){
+826:function srnd(i){ var v=Math.sin(i*127.1+i*i*0.017)*43758.5453; return v-Math.floor(v); }
+827:function imesh(geo,colour,count){
+833:function subUnits(f){
+863:var KIT={
+899:function kitSettled(v,k){ return !!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B")&&v[k]&&v[k]!=="
+902:function kitDress(dress){
+916:function kitGeneric(nation){
+924:function kitAllocate(parts,n){
+932:function kitBlock(id){
+938:function kitLead(parts){ var b=null; (parts||[]).forEach(function(p){ if(!b||p.share>b.share) b=p; }); ret
+944:var FIG=null, KIT_GEO={}, _kitShapes=null, KIT_ALL=[], GEAR_ALL=[];   /* since 8E: every figure geometry a
+945:function kitBox(w,h,d){ return new THREE.BoxGeometry(w,h,d); }
+946:function kitPart(geo,p,s,rot,col,part){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot||[0,0,0],col:col,part:par
+981:var ANIM={
+994:function animRot(y,z,oy,oz,a,o){ var c=Math.cos(a), s=Math.sin(a), qy=y-oy, qz=z-oz; o[0]=oy+qy*c-qz*s; o[
+1002:function animChord(sa,sb,z){ return z>=0?sa*z:sb*z; }
+1003:function animManRoot(f,kL,kR,sa,sb,kn){ var M=ANIM.MAN, g=-1e9, k=kn===undefined?1:kn; if(sb===undefined)
+1009:function animHorseF(ph,amp,trot,out){ var H=ANIM.HORSE, t=Math.max(0,Math.min(1,trot||0)), a=amp*(H.AW+(H
+1013:function animHorseRoot(F,sf,sh){ var H=ANIM.HORSE, g=-1e9;
+1020:function animAt(k,x,y,z,ph,amp,out,o){
+1041:function animPoses(k,x,y,z,n,cb,out){
+1051:function animRootBound(fig){ var M=ANIM.MAN, H=ANIM.HORSE, S=Math.sqrt(ANIM.SLOPE*ANIM.SLOPE+1), e=Math.m
+1059:function animEnv(g){
+1080:function animDefine(def){
+1087:function kitMerge(parts,def){
+1111:function kitShapes(){
+1125:function kitHat(h,y){
+1142:function kitFootFixed(leg,head,gunner){
+1152:function kitRiderFixed(leg,head,cuir){
+1160:function kitHorse(col){
+1185:function kitTaper(w0,d0,w1,d1,h){   /* a box whose bottom is w0 x d0 and top w1 x d1, h high, centred (12
+1189:function kitFootFixedR(leg,head,gunner){
+1200:function kitFootCoatR(){ var P=kitPart, T=kitTaper;
+1203:function kitRiderFixedR(leg,head,cuir,driver){
+1212:function kitRiderCoatR(){ var P=kitPart, T=kitTaper;
+1215:function kitHorseR(col){
+1226:function kitGeo(kind,o,rich){
+1240:function kitRiderFixedD(leg,head){ var G=kitShapes(), M=KIT.mat, P=kitPart, B=kitBox;
+1247:function kitWrap(g,ph,sl,gear){
+1251:function kitPh(i){ var x=Math.sin(i*12.9898+78.233)*43758.5453; return x-Math.floor(x); }
+1252:function figKit(){
+1274:function kitGeos(){ figKit(); return KIT_ALL.slice(); }
+1275:function gearGeos(){ return GEAR_ALL.slice(); }
+1290:function kitArtScale(){ return KIT.art.headTop/KIT.art.stature; }
+1291:function kitArtR(which){ var w=ORDNANCE.fr.wheels; return (which==="gun"?w.gun_m:w.limber_m)/2*kitArtScal
+1294:function kitWheel(x,r,n,k){ var P=kitPart, B=kitBox, col=KIT.gear.wheel, out=[], rim=new THREE.TorusGeome
+1298:function kitDisc(x,r,n,k){ return kitPart(new THREE.CylinderGeometry(r,r,0.10,n),[x,r,0],null,[0,0,Math.P
+1300:function kitGunParts(rich,coffret){ var P=kitPart, B=kitBox, G=KIT.gear, rG=kitArtR("gun"), out=[], tl=2.
+1314:function kitLimberParts(rich,coffret){ var P=kitPart, B=kitBox, G=KIT.gear, rL=kitArtR("limber"), out=[];
+1324:function kitArtPitch(){ var rG=kitArtR("gun"), rL=kitArtR("limber"), tl=2.05, pin=rL+0.02, lo=0, hi=1.2;
+1328:var ART_GEO={};
+1329:function artGeo(kind,o,rich){ var key=kind+"|"+(o.coffret?1:0)+"|"+(o.limbered?1:0)+"|"+(rich?"r":"s"); i
+1337:function artDrivers(id,nation){ var a=id, n=0; while(a&&n++<8){ var hit=(nation==="fr"&&ORDNANCE.fr&&ORDN
+1345:var ART_AT={gun:2.0, limber:-3.0, lim:0.2, PIN:-0.42,
+1349:function makeBlock(f,id){
+1724:function kitStdRule(carry){
+1743:var STD_RATIO=1.6, STD_POLE=5.2, MAN_FOOT=1.635;
+1745:function figureTop(mounted){
+1751:function stdOk(v){ return !!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B")); }
+1753:function apCm(v){ var m=v&&/(\d+(?:\.\d+)?)\s*cm\b/.exec(v.en||v.v||""); return m?+m[1]:null; }
+1754:function kitStdShape(carry,nation,mounted){
+1777:function flagTexture(key){
+1802:function stdCount(ud){
+1813:function placeStandards(g,sw,tilt){
+1849:function animGLSL(){
+1884:function animHook(sh){
+1895:function animKey(){ return "ANIM "+ANIM.ver; }
+1897:function animMesh(m){
+1931:var CULL={on:true, meshes:[], geo:new WeakMap(), tmp:new Float32Array(1024), frame:{tests:0, culled:0, re
+1934:function cullGeo(g){
+1943:function cullRefresh(m,cl){
+1962:function cullStale(o,cl){
+1968:function cullTest(fr,o,cl){
+1980:function cullBlock(g,id){
+1986:function setCull(on){ CULL.on=!!on; CULL.meshes.forEach(function(m){ m.frustumCulled=CULL.on; }); request
+1987:function cullFrameStart(){ var F=CULL.frame; F.tests=0; F.culled=0; F.refresh=0; F.inst=0; F.ms=0; }
+1990:function softWindow(x,n){
+1999:function spriteFloor(x,z,half){
+2006:function smokeTexture(){
+2029:var PAD_GEO=(function(){ var g=new THREE.PlaneGeometry(1,1); g.rotateX(-Math.PI/2); return g; })();
+2045:var CONF={OP:{A:0.62,B:0.55,C:0.45}, OP_TRUE:0.85, DIM:0.45, LIFT:0.25, CAP:0.25, TEX:128, tex:{}, shown:
+2050:function confTexture(g){
+2064:function makeConfMark(){
+2071:function confSize(g,W0,D0){ return g==="A"?[W0,D0]:g==="B"?[2*W0,D0]:[2*W0,2*W0]; }
+2076:function confPlace(m,g,x,z,yaw,W0,D0,hex,op,cap){
+2102:function groundPatch(m,U,x,z,yaw,w,d,lift){
+2147:var OUTLINE={LINE:1.7, CASE:3.4, SEL_LINE:2.2, SEL_CASE:4.4, GRADE:{A:1.7,B:1.4,C:1.1}, OP:0.95, CASE_OP:
+2150:var OUTLINE_VS="varying vec2 vUv;\nvoid main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4
+2151:var OUTLINE_FS=["uniform vec2 uSize; uniform vec2 uIn; uniform float uDisc; uniform float uLine; uniform 
+2168:function makeOutline(){
+2181:function outlineReach(x,z){
+2186:function outlinePlace(m,g,x,z,yaw,W0,D0,col,edge,line,cas,k){
+2205:var CONF_ON={land:false, paper:true};
+2206:function confKey(){ return mode==="staff"?"paper":"land"; }
+2207:function syncConfButton(){ var b=document.querySelector('.layer-btn[data-l="confidence"]'); if(b) b.setAt
+2219:var SKEL={PX:9, RING:0.72, LIFT:0.4, MARK_LIFT:0.35, OP:0.9, LINE_OP:0.8, Q:1.12, TEX:64, day:false,
+2222:function skelTexture(g,timed){
+2235:function skelScope(){
+2252:function skelDrape(pts,lift,out){
+2265:function skelClear(){
+2269:function skelBuild(sc){
+2287:function skelPlaceMarks(){
+2300:function skelUpdate(){
+2307:function skelAnchorText(id,an,cf,timed){
+2311:function skelNear(cx,cy,r){
+2327:var ROUTES={W:1.6, LIFT:0.3, OP:0.30, DASH:4, DUTY:0.6, grp:null, key:"", mesh:{}, scope:null, axis0:null
+2329:function routeDistMap(p,pts){ var d=1e9; for(var i=1;i<pts.length;i++){ var a=pts[i-1], b=pts[i], vx=b[0]
+2331:function routeAxis0(){
+2340:function routeScope(){
+2351:function routeClipTri(P,T){
+2362:function routeDrapePoly(Q,lift,out){
+2372:function routeBuild(sd,ci){
+2388:function routeClear(){ if(ROUTES.grp){ scene.remove(ROUTES.grp); } ROUTES.grp=null; }
+2389:function routeDropCache(){ routeClear(); Object.keys(ROUTES.mesh).forEach(function(k){ var m=ROUTES.mesh[
+2390:function routeUpdate(){
+2402:function routeDeviation(id){
+2420:var DT={W:240, H:160, PAD:14, FOOT:14, MERGE:8, R:{A:4.2,B:3.8,C:2.6}};
+2422:function dtFrame(pts){
+2430:function dtNum(v){ return (Math.round(v*100)/100).toString(); }
+2432:function dayTrackModel(id){
+2460:function dayTrackEl(id){
+2510:function isTrueScale(){ return DISPLAY.factor===1; }
+2511:function landscapeVisible(){ return mode!=="staff" && !isTrueScale() && !EYE.on; }   /* Stage 5E: not at 
+2512:function syncLandscapeLayers(){
+2529:function setDisplayFactor(f){
+2535:function setDrawnFlat(on){ return DISPLAY.flat===on ? 0 : redrawGround(function(){ DISPLAY.flat=on; }); }
+2536:function redrawGround(change){
+2565:var EXAG_SLOW_MS=100, EXAG_MEASURED_MS=215;
+2566:function bindExaggeration(){
+2575:function fmtFactor(f){ return f===1?"1":(Math.round(f*100)/100).toString(); }
+2576:function paintExaggeration(){
+2598:function padTexture(){
+2610:function dustTexture(){
+2627:var SHAPE={
+2637:var SKIRMISH={attacking:1,advancing:1,engaged:1,charging:1,counterattack:1,pursuing:1};
+2638:var LOOSE={broken:1,encircled:1,repulsed:1,retreating:1};
+2639:function shapeFor(st){ return SHAPE[st]||[1,1]; }
+2640:function buildFormations(){
+2693:function buildFeatureGlyphs(){
+2700:function updateTrail(rec,id){
+2714:function hexNum(h){ return parseInt(String(h).replace("#",""),16); }
+2715:function sideCol(sd){ var S=TOKENS.sym.side[sd];
+2717:var SIDE_COL={ fr:sideCol("fr"), al:sideCol("al") };
+2723:function ovAdd(o){ curOv.add(o); }
+2724:function disposeGroup(g){
+2730:function groundPts(mapPts,lift){
+2736:function dashRuns(n,duty){ var r=[]; for(var i=0;i<n;i++) r.push([i/n,i/n+duty/n]); return r; }
+2739:function arrowPts(a){
+2756:var CHEVRON_NOTCH=0.38;
+2757:function drapeMesh(v,idx,col,op,lift,order,mats,kind,ground,hook){
+2769:function drapeTri(A,B,C,n,lift,v,idx){   /* a flat triangle split n x n, every vertex draped */
+2777:function drapedRibbon(mapPts,o,add,mats){
+2838:var ARROW_CAP={PX:16, Q:1.1, OP:0.62, M:0.97}, CAPPED=[], CAP={key:null, n:0, relaid:0};
+2840:var ARROW_EDGE_OP=1;
+2841:function capQuant(k){ return !(k<1)?1:Math.pow(ARROW_CAP.Q,Math.floor(Math.log(Math.max(k,1e-6))/Math.log
+2844:function capPts(R){
+2856:function capFactors(R){
+2871:function capAt(K,u){ var n=K.length-1, x=Math.max(0,Math.min(n,u*n)), i=Math.floor(x), j=Math.min(n,i+1);
+2876:function capRows(R,uEnd){
+2884:function ribbonRelayout(R,K){
+2903:function arrowCap(){
+2927:var GDEPTH={rt:null, scene:null, field:null, apron:null, key:null, n:0, ms:0, tris:0,
+2929:function groundDepthHook(sh){
+2952:var BORDER={IN:1/1.34, TUCK:0.02, U:{value:1}};
+2953:function borderShaftHook(sh){ groundDepthHook(sh); sh.uniforms.uBorder=BORDER.U;
+2957:function borderHeadHook(sh){ groundDepthHook(sh); sh.uniforms.uBorder=BORDER.U;
+2963:function headInside(Hf,headW,x,z){
+2969:function gdepthPass(w,h){
+3001:function shaftEnd(lay,curve,L,uEnd,u){
+3016:function ribbonHead(curve,u,headL,headW,sc,ly,type){
+3026:function overlayMesh(m){ ovAdd(m); }
+3027:function buildArrow(a){
+3046:function haltFrontage(id){
+3051:function buildHalt(a,pts){
+3059:function buildLine(l){
+3075:function buildBoundary(b){
+3081:function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
+3084:function buildObjective(o){
+3098:function retireOld(){
+3101:function rebuildOverlays(ph,instant){
+3125:var DRAWON=[];
+3128:function arrowProgress(a,t){
+3144:function drawOnU(r,P,q){
+3153:function drawOnArrows(){
+3166:var DRAWON_GHOST=0.4;
+3167:function drawOnRibbon(pts,w,col,S,g){
+3174:function drawOnApply(d){
+3180:function applyOverlayOpacity(){
+3194:var TRANS_MS=2600;
+3195:var T_MIN=PHASES[0].t0, T_MAX=PHASES[PHASES.length-1].t1;
+3198:var KM_PER_MAP=GEOREF.KM_PER_MAP;   /* one map unit on the ground: from geo.js, the only scale */
+3200:function easeInOut(k){ return k<0.5 ? 4*k*k*k : 1-Math.pow(-2*k+2,3)/2; }
+3201:function clamp01(x){ return x<0?0:(x>1?1:x); }
+3202:function clampT(t){ return Math.max(T_MIN,Math.min(T_MAX,t)); }
+3203:function phaseAt(t){
+3207:function fmtClock(t){
+3235:function anchorList(id){
+3279:function legPath(a,b){
+3289:function pointOnPath(pp,u){
+3299:function legWindow(a,b){
+3305:function legAt(id,t){
+3321:function posAtClock(id,t){
+3327:function notYetAt(id,t){
+3331:function goneAt(id,t){
+3336:function headingAt(id,t){
+3347:function marchRate(id,t){
+3357:function posNow(id){
+3369:var SPEED_CEIL={inf:5.0, guard:5.0, art:4.5, cav:12.0, mixed:8.0, hq:12.0};
+3374:var TACTICAL_RATE={inf:3.0, guard:3.0, cav:6.0, mixed:4.0},
+3378:function wetAt(mx,my){
+3384:function nearSettlement(mx,my){
+3391:function crossingProblem(pp,ice){
+3401:function auditMovement(){
+3438:function setupArc(fromPos,fromTgt,toPos,toTgt){
+3446:function applyArc(a,e,bulge){
+3460:function startPhaseTransition(ph,instant,moveCam){
+3482:function setClock(t,opts){
+3503:function setPhase(n,instant){
+3519:var LAYER_WORLD=0, LAYER_LABEL=1;
+3520:var FX={on:false, built:false, scale:1, rtScene:null, rtA:null, rtB:null, rtC:null, rtD:null, rtFinal:nul
+3526:function asLabel(o){ if(o&&o.layers) o.layers.set(LAYER_LABEL); return o; }
+3527:function fsQuad(mat){
+3533:function makeRT(w,h,half){
+3544:function initFX(){
+3690:function disposeFX(){
+3695:function sizeFX(){
+3705:function pass(mat,target){
+3711:function renderFX(){
+3772:function setFXEnabled(on){
+3787:function renderStandard(){
+3796:function renderFrame(){
+3802:function renderFrameNow(){
+3821:var DEV={state:"active",frames:0,skipped:0,tUpdate:0,tWorld:0,tPost:0,tLabels:0,tLayer:0,
+3823:function devMark(){ var r=renderer.info.render; return {calls:r.calls,triangles:r.triangles,points:r.poin
+3825:function kfmt(n){ return n>=1e6?(n/1e6).toFixed(2)+"M":(n>=1e3?(n/1e3).toFixed(1)+"k":String(n)); }
+3826:function paintDevStats(now){
+3850:function applyGrade(g){
+3859:function lerpGrade(a,b,e){
+3872:function evWindow(e){ return Array.isArray(e.t)?e.t:[e.t,e.t]; }
+3876:function evClock(e){ return evWindow(e)[0]; }
+3877:function evTimeText(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" to "+fmtClo
+3880:function evTimeShown(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" - "+fmtClo
+3886:function evNoteParts(e,L){ var w=evWindow(e), n=[];
+3889:function evNote(e){ var n=evNoteParts(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; }
+3890:function evTag(e){ var n=evNoteParts(e,LABELS.event.tag); return n.length?'<small class="evn">'+esc(n.joi
+3893:function evMapText(e){ var n=evNoteParts(e,LABELS.event.map); return e.n+(n.length?" ("+n.join("; ")+")":
+3894:function evWeight(e,t){
+3901:function liveEvents(t){
+3910:function actOf(ph){
+3914:function eventGlyph(side,kind){
+3935:var PLATEAU_LAST=6;
+3936:function buildPlateauRing(){
+3951:function updatePlateauRing(){
+3960:function buildSelRing(){
+3974:function updateSelRing(){
+3990:function buildEventLayer(){
+4004:function updateEventLayer(){
+4018:function cleanViewHidesEvents(){ return presentation==="map"; }
+4026:var SYM_MAX_PX=64, SYM_FADE=[4,12];
+4027:function symbolSizes(){
+4051:var PLATEAU_POLY=[[250,226],[262,200],[298,183],[336,187],[356,222],[358,272],[326,302],[300,318],[266,30
+4052:function onPlateau(mp){
+4061:function plateauStrength(side){
+4072:var PBERG_NORTHING=GEOREF.GT.pratzeberg?GEOREF.northingKm(GEOREF.GT.pratzeberg.map[0],GEOREF.GT.pratzeber
+4073:var SEP_KM=1.45;   /* how close to the line a French formation must stand to separate the two groups */
+4074:function sideCentroid(side,which){
+4092:function centreSeparation(){
+4119:var EYE_OBSERVER_M=3.0, EYE_TARGET_M=2.5, LOS_CLEAR_M=0.5;
+4120:function hasLOS(aMap,bMap,eyeA,eyeB){
+4134:function knowledgeOf(id){
+4159:function familyOf(id){
+4171:function setHighlight(set){
+4175:function chapterById(cid){
+4183:function momentOf(m){
+4189:function chapterClock(c){ return momentOf(c.at).t; }
+4190:function chapterCam(c){ return c.cam||PHASES[momentOf(c.at).ph].cam; }
+4191:function stopClock(st){ return st.t!==undefined?st.t:momentOf(st.at).t; }
+4192:function stopCam(st){ if(st.cam) return st.cam; var c=st.chapter?chapterById(st.chapter):null; return c?c
+4193:function setChapter(cid){
+4209:function paintChapters(){
+4214:function paintChapterText(){
+4235:var SRC_LABEL={doc:"DOCUMENTED",inf:"THIS MAP'S READING",anec:"ANECDOTE"};
+4236:function srcKind(k){ return SRC_LABEL.hasOwnProperty(k)?k:"inf"; }
+4237:function paintCommand(){
+4257:function setCommandView(v){
+4279:var EYES={min:"", vs:null, vsAt:0, VS_MS:500, VS_MOVE:1,
+4285:function eyesShort(v){ return "Eyes: "+EYES.SHORT[v]; }
+4286:function eyesName(v){ return eyesShort(v)+". Whose eyes? "+EYES.LABEL[v]+" (press to change)"; }
+4288:function knowAtClock(){ var k=commandView+"|"+Math.floor(clock+1e-9); if(EYES.min!==k){ EYES.min=k; knowK
+4291:function drawnKnow(id){
+4302:function aggReading(id){
+4315:function readPos(id){
+4325:function readHidden(id){
+4330:function readUnknown(){ return LABELS.reading.unknown.replace("%r",EYES.LABEL[commandView]).replace("%c",
+4335:function pillReading(id){
+4344:function knowReason(id){
+4352:function eyesSync(){
+4364:function eyesCycle(){ setCommandView(commandView==="none"?"fr":commandView==="fr"?"al":"none"); }
+4371:function eyesViewshed(force){
+4396:var EYE={on:false, NEAR:0.05, NEAR0:1, LIFT:0.02, CLEAR_R:8, pos:new THREE.Vector3(), _d:new THREE.Vector
+4399:function eyeOwnNear(id,f,wx,wz){ return EYE.on&&sideOfNation(f.nation)===commandView&&Math.hypot(wx-EYE.p
+4400:function eyeHeight(){ return GEOREF.unitsFromM(EYE_OBSERVER_M)*displayScale(); }
+4401:function eyePlace(){ var p=commandView==="none"?null:posNow(EYES.HQ[commandView]); if(!p) return false;
+4403:function eyeEnter(){
+4415:function eyeLeave(){
+4423:function eyeFollow(){
+4431:function eyeCaption(){
+4447:function clearPlan(){
+4456:function planRibbon(pts,colour,edge,w0,w1,headW,headL,chevron){
+4503:function planStaging(area,colour,edge){
+4523:function planObjective(obj,colour){
+4539:function planLabel(text,anchor){ planText.push({text:text,pos:anchor.pos,acl:anchor.acl,r:anchor.r||0}); 
+4541:function buildPlanLinks(){
+4561:function updatePlanLinks(){
+4579:function setPlan(side){
+4609:function paintPlanText(){
+4633:function clearOverlays(){
+4640:var TOURCV=null;
+4641:function readingAside(){ if(TOURCV===null&&commandView!=="none"){ TOURCV=commandView; setCommandView("non
+4643:function readingBack(){ if(TOURCV!==null){ var v=TOURCV; TOURCV=null; setCommandView(v); return LABELS.ey
+4645:var TOUR_APPLYING=false;
+4646:function startTour(){
+4653:function exitTour(){
+4664:function tourGo(d){
+4671:function applyTour(){
+4710:var OPENING={stops:[0,5,6,7], on:false, k:-1, applying:false, tourWords:null, SPEED:4, play:null};
+4711:function openingSay(s){ var lv=document.getElementById("live-phase"); if(lv) lv.textContent=s; }
+4712:function openingFill(s,k){ return s.replace("%k",String(k+1)).replace("%n",String(OPENING.stops.length));
+4713:function openingBar(on){   /* the bar's two words that differ: the opening's from LABELS, or the tour's o
+4720:function openingStart(){
+4729:function openingApply(k){
+4742:function openingWatch(){ if(OPENING.on&&freeCam) openingEnd("camera"); }   /* every animation frame (loop
+4743:function openingGo(d){
+4761:function openingStretch(k){   /* k: the step it plays to */
+4775:function openingPlayWatch(){
+4783:function openingHead(){
+4788:function openingArrive(){ var P=OPENING.play; if(!P) return; openingApply(P.to); }
+4789:function openingHalt(){   /* the stretch stopped, the visitor's speed put back */
+4793:function openingEnd(how){
+4823:function setMode(m){
+4863:function buildAnalysisLabels(){
+4874:function viewH(){ return renderer.domElement.clientHeight||window.innerHeight; }
+4875:function worldPerPx(p){
+4881:function pxPerWorld(atPos){ return 1/worldPerPx(atPos); }
+4884:function distAtWpp(w){ return w*viewH()/(2*Math.tan(THREE.MathUtils.degToRad(landCam.fov/2))); }
+4885:function mapWppAt(d){ return 2*d*Math.tan(THREE.MathUtils.degToRad(landCam.fov/2))/viewH(); }
+4886:function viewDist(){ return camera.isOrthographicCamera ? distAtWpp(worldPerPx(null)) : camera.position.d
+4887:function viewDistTo(p){ return camera.isOrthographicCamera ? distAtWpp(worldPerPx(p)) : camera.position.d
+4897:var MAPCAM=(function(){
+4984:function mapSchedule(step,ms){
+4988:var ECH_RANK={army:0,corps:1,div:2,bde:3};
+5014:var ML={root:null, lines:null, items:{}, frame:0, hover:null, hoverDrop:null, focus:null,
+5017:var ML_FULL_DIST=70;   /* a counter nearer the eye than this (world units; about 4.4 km) is drawn full (s
+5018:var ML_PAD=2;          /* px kept clear between placed items, and from panels and symbols */
+5019:var ML_RINGS=[28,44,64,88,116,148], ML_RINGS_KEEP=[190,240,300,380];
+5023:function mlInit(){
+5048:function mlShortName(it){
+5056:function mlItem(key,cls){
+5075:function mlContent(it,ck,html,plate){
+5080:function mlAria(it,label){
+5087:function mlName(it,label){
+5092:function mlCollect(){
+5176:function plateauText(spoken){
+5182:var ML_PANELS=[".rail",".dispatch",".legend",".drawer",".timebar",".tools","#viewmode","#tourbar","#first
+5183:function mlPanels(){
+5195:function mlMaxG(){
+5204:function mlOccluded(A,maxG){
+5217:function mlObstacles(VW,VH){
+5233:function mlHits(x0,y0,x1,y1,L){
+5237:function mlFree(x0,y0,w,h,VW,VH,panels,obst){
+5248:function mlCands(it){
+5255:function mlPlaceItem(it,VW,VH,panels,obst,local){
+5291:function mlWrapPlace(it,VW,VH,panels,obst){
+5298:function mlTake(it,x0,y0,lead){ it.rect=[x0,y0,x0+it.w,y0+it.h]; it.lead=lead; it.state="on"; ML.taken.pu
+5300:function mlNear(r,x,y){ return [Math.max(r[0],Math.min(x,r[2])),Math.max(r[1],Math.min(y,r[3]))]; }
+5301:function mlLine(s,a,b,C){
+5339:var MLS={EVERY:333, PASSES:2, BAND:0.08, FADE_MS:180, JUMP_MIN:5, JUMP_VIEW:0.6, JUMP_DEG:40, FAR:1.5,
+5342:function mlMotionSource(now){ return !!(tween||playing||now-lastInput<INPUT_HOLD_MS||now<panelMoveUntil);
+5344:function mlReset(why){ if(!MLS.pend) MLS.pend=why||"reset"; MLS.bandD=null; MLS.band={}; }
+5346:function mlBand(d){
+5351:function mlBandAt(k,d){
+5357:function mlViewNow(VW,VH){
+5364:function mlJump(a,b){
+5374:function mlStabBegin(now,VW,VH){
+5391:function mlKeep(d,w0,w1){ return w0===w1||d>=0?d:(d+w0<=0?d+w0-w1:d+(w0-w1)/2); }
+5393:function mlHoldTry(it,VW,VH,panels,obst){
+5403:function mlUntake(it){ ML.taken.pop(); if(it.mode==="place") ML.taken.pop(); it.state=""; }
+5405:function mlFar(it){
+5418:function mlFarRatio(it,pre){ var dt=landCam.position.distanceTo(orbitTarget); if(!(dt>=1)) return 0; var 
+5419:function mlFarPlate(it,may){
+5425:function mlAlign(d,w,fw){ return d>=0?0:(d+w<=0?w-fw:(w-fw)/2); }
+5427:function mlLayout(){
+5580:function paintLegend(){
+5619:function legendHint(land){
+5624:function mlLegendFit(VW,VH){
+5644:function groundAt(cx,cy){
+5664:function mlOnMap(id){
+5672:function pickFormation(cx,cy){
+5684:function mlHit(cx,cy){
+5689:function mlNearAnchor(cx,cy,r2,dropped){
+5696:function mlDroppedNow(fid){
+5701:function mlAnchorWithin(fid,cx,cy,r2){
+5706:function mlHoverAt(cx,cy){
+5726:function anchorOf(id,ph){ var A=anchorList(id); for(var i=0;i<A.length;i++) if(A[i].ph===ph) return A[i];
+5730:var MAJOR_FEATURES={pratzen:1,vinohrady:1,pratzeberg:1,santon:1,zuran:1,goldbach:1,
+5740:function faceClock(id,t){
+5746:function posAtT(id,t){
+5753:function enemyFacing(id){
+5776:var WHEEL={cav:0.085, mixed:0.062, inf:0.050, guard:0.050, art:0.028, hq:0.10};
+5812:var GAIT={STRIDE:{man:6.6, horse:16, team:12}, ROLL:2, FULL:3.2, NONE:4.8, KMH:1, TROT_KMH:8, EASE:0.22, 
+5820:function clockRate(){
+5827:function gaitDist(id,t){ var f=FORMATIONS[id]; return gaitDistOf(id,f&&f.track?legAt(id,t):null); }
+5828:function gaitDistOf(id,L){
+5835:function gaitLeg(id,t){ return gaitLegOf(legAt(id,t)); }
+5836:function gaitLegOf(L,out){
+5843:function gaitRoll(D,out){
+5850:function gaitStep(rec,id){
+5880:function gaitFastest(rec,G){ var f=0;
+5896:var KLOD={IN:17.6, OUT:14.5, H:1.635, M:0.6, k:0, n:0};
+5899:function kitLodFrame(){
+5906:function kitLod(rec){
+5920:function kitLodSet(u,rich){
+5930:var SEAT_STATS={blocks:0, slopes:0, want:0};   /* Stage 8, 8E: slopes, the seatings that took the slopes;
+5931:function settleBlock(rec){
+5953:function poseBlock(rec,id,st){
+6021:var FIGHTING={attacking:1,engaged:1,charging:1,counterattack:1,repulsed:1,encircled:1,broken:1};
+6030:var SMOKE={PUFFS:3, RESIDUE:0.25, OP:0.32, CAP:0.25, ev:null, want:[], share:0, capped:0};
+6031:function smokeEvents(id){
+6037:function smokeAmount(id,t){
+6042:function smokeWant(rec,id,f,p,dimmed){
+6057:function smokeShareOf(list,fr){
+6067:function smokePut(L,lim){
+6072:function smokePlace(){
+6085:function updateVisibility(){
+6228:function pickAt(cx,cy){
+6251:var PANEL={opener:null};
+6252:function select(kind,id){
+6271:var CAM_CLEAR=1.8, CAM_R=1.6, CAM={clamps:0,violations:0};
+6272:function camGround(x,z){
+6281:function formationTop(x,z){
+6292:function camFloor(x,z){ if(EYE.on) return groundY(x,z)+eyeHeight()-1e-6; return camGround(x,z)+CAM_CLEAR;
+6293:function clampCamera(){
+6301:function orbitPlace(){
+6309:function glide(toPos,toTgt,ms,bulge){
+6324:function flyTo(v){   /* v is an authored preset: re-framed to the drawn ground (presetFrame) */
+6333:var VANTAGE={
+6349:var VOFF={x:0,y:0,tx:0,ty:0,key:"",W:0,H:0};
+6353:function landPanels(){
+6359:function landFreeRect(){ return MAPCAM.freeRect(null,landPanels()); }
+6360:function freeCentre(){ var fr=landFreeRect(); return [(fr[0]+fr[2])/2,(fr[1]+fr[3])/2]; }
+6361:function syncViewOffset(instant){
+6386:function actionExtent(){
+6395:function isOverview(v){ var P=VANTAGE.plan; for(var i=0;i<6;i++) if(Math.abs(v[i]-P[i])>1e-9) return fals
+6396:function presetFrame(v){ var c=reframe(v); return isOverview(v)?fitOverview(c):portraitFrame(c,portraitK(
+6406:var PORTRAIT_FIT={t:0.25, kMax:3}, _pk={key:null,k:1};
+6407:function portraitK(){
+6414:function portraitFrame(c,k){ return k>1?[c[3]+(c[0]-c[3])*k,c[4]+(c[1]-c[4])*k,c[5]+(c[2]-c[5])*k,c[3],c[
+6415:function fitOverview(c){
+6447:function syncFollow(){
+6457:function setFollow(on){
+6473:var LANDCAM=(function(){
+6543:var LABELS={
+6615:function applyLabels(){
+6645:var ARROWS=["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"];
+6646:var KEYS=[
+6705:function keyText(r){ return typeof r.text==="function"?r.text():r.text; }
+6706:function presLine(k){ var L=LABELS.presentation[k]; return L.label+" ("+L.title.charAt(0).toLowerCase()+L
+6708:function keyRow(e,scope){
+6714:var KEYS_DRY=null;   /* the self-test's dry run: the rows reached are recorded, not run */
+6719:var SHORTCUTS={on:true};
+6720:function charKey(k){ return typeof k==="string"&&k.length===1&&k!==" "; }
+6721:function shortcutMuted(e){ return !SHORTCUTS.on&&charKey(e.key); }
+6723:function mapKey(e){
+6735:var HELP_GROUPS=["Time","View and ground","Layers and panels","The map, when it has focus (Tab to it)","T
+6736:function buildHelp(){
+6752:var SHEETS={help:{tab:["help-close","help-keys","help-body"],from:null}, modal:{tab:["modal-close","modal
+6753:function sheetIsOpen(id){ var e=document.getElementById(id); if(!e) return false; return id==="help"?!e.h
+6754:function sheetTop(){ return sheetIsOpen("help")?"help":(sheetIsOpen("modal")?"modal":null); }
+6755:function sheetOpened(id){ var S=SHEETS[id]; S.from=focusedEl(); syncInert(); focusTo([S.tab[0]]); }
+6756:function sheetClosed(id){
+6761:function sheetTab(id,back){
+6772:function setPanels(open){
+6780:function syncInert(){
+6790:function helpOpen(){ return sheetIsOpen("help"); }
+6792:function paintShortcuts(){
+6798:function setShortcuts(on){ SHORTCUTS.on=!!on; if(helpOpen()) buildHelp(); else paintShortcuts(); }
+6799:function setHelp(open){
+6807:function closeSources(){
+6811:function bindHelp(){
+6821:function bindSheetKeys(){
+6831:function onWindowKey(e){
+6854:function bindCanvas(){
+6909:function el(tag,cls,html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.i
+6910:function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt
+6912:function buildUI(){
+7135:function hexOf(n){ return "#"+("000000"+n.toString(16)).slice(-6).toUpperCase(); }
+7136:var COLOUR_KEY={
+7148:function paintKey(){
+7181:function frButtons(){ var fr=document.getElementById("firstrun"); if(!fr||!fr.querySelectorAll) return []
+7183:function frHasFocus(){ var fr=document.getElementById("firstrun"), a=document.activeElement; return !!(fr
+7184:function focusId(id){ var e=document.getElementById(id); if(e&&e.focus) e.focus({preventScroll:true}); }
+7189:function shown(e){
+7198:function focusTo(list){
+7205:function focusedEl(){ var a=document.activeElement; return a&&a!==document.body&&a!==document.documentEle
+7206:function openFirstRun(){
+7217:function frameFirstView(){
+7227:function closeFirst(how){
+7243:function drawerShown(){ var d=document.getElementById("drawer"); return !!d&&!!d.classList&&d.classList.c
+7244:function syncSelChip(){
+7260:function shortCommander(f){
+7266:function buildOOB(){
+7306:function paintOOB(){
+7315:function centreOnMap(mp,radius){
+7325:function focusOn(id){
+7336:function plateauDay(){
+7342:function plateauFlatFor(onH,t){
+7347:var SEP_NOTE="Derived from the plotted formations: a French formation stands across the line joining the 
+7348:var FLAT_NOTE="The reconstruction plots formations, not losses. A holding that does not change does not m
+7352:function paintSituation(){
+7383:function capTitle(cap){ var t=[]; if(!cap.children) return cap.textContent||"";
+7394:function fitCaption(){
+7420:function tlPc(t){ return 100*(t-T_MIN)/(T_MAX-T_MIN); }
+7421:function tlText(t){ var ph=phaseAt(t); return fmtClock(t)+", "+PHASES[ph].label+", "+actOf(ph).n; }
+7422:function rovingGroup(host,sel){
+7438:var TIP={el:null, on:null, hideT:0, hover:null, focus:null, goneHover:null, goneFocus:null, press:null, p
+7439:function tipShow(t){
+7446:function tipHide(now){ clearTimeout(TIP.hideT); var tp=TIP.el; if(!tp) return;
+7453:function tipSync(now){
+7457:function bindTimeTips(){
+7478:function buildTimeline(){
+7543:function buildActs(){
+7559:function paintActs(){
+7568:var SPINE=null;
+7569:function buildSpine(){
+7577:function eventTimes(){
+7582:function onScreen(mp,margin){
+7589:function goToEventAt(t){
+7596:function jumpEvent(dir){
+7607:function paintTimeline(){
+7643:function paintChanges(phIdx){
+7667:function paintDispatch(ph){
+7689:function waitingFor(id,t){
+7695:function textPhase(id,t){ return waitingFor(id,t)?phaseAt(t)-1:phaseAt(t); }
+7696:function liveStatus(id,ph){
+7709:function timingNow(id){
+7717:var TIMING_TEXT={A:"Timing dated in a cited source.",
+7720:function drawerKey(){
+7730:var CONF_INTERP="The formation is between two plotted anchors: this position is interpolated, and graded 
+7731:var CONF_TEXT={A:"Position documented in the sources.",
+7735:function paintDrawer(){ _drawerKey=drawerKey(); paintDrawerBody(); syncSelChip(); }
+7737:function paintDrawerBody(){
+7768:function row(k,v){ return '<div class="kv"><dt>'+esc(k)+'</dt><dd>'+v+'</dd></div>'; }
+7770:function outcomeOf(id){
+7782:function explicitClaim(id){
+7787:function claimOf(id,cf){
+7791:function compactCard(id){
+7835:var DRESS_UNIT={bn:["battalion","battalions"],sqn:["squadron","squadrons"],regt:["regiment","regiments"],
+7837:function apShort(k){ var S=APPEARANCE_SOURCES[k]; return S?String(S.au).split(" (")[0]+" "+S.d:k; }
+7838:function apCite(c){ var S=APPEARANCE_SOURCES[c.src]||{}; return String(S.au||c.src).split(" (")[0]+", "+(
+7840:function apText(t){ return String(t).replace(/\b[a-z][a-z_]*\d[a-z0-9_]*\b/g,function(k){ return APPEARAN
+7842:function apGrades(){ return ["A","B","C"].map(function(g){ return g+" "+APPEARANCE_GRADE[g]; }).join("; "
+7843:function apClaim(c){ return esc(apText(c.en||c.v))+' <span class="hh">('+esc(c.gr)+", "+esc(c.lab)+"; "+e
+7844:function apValue(v){
+7851:function dressSection(id){
+7900:function phaseSpan(ph){ var c=PHASES[ph].clock; return /^\d/.test(c)?c:c.charAt(0).toLowerCase()+c.slice(
+7901:function derivedTag(){ return '<span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</s
+7902:function posRow(id,card){
+7917:function marchRow(id){
+7931:function dossierFormation(id){
+8084:var LAYER_TAG={record:"record",recon:"reconstruction",derived:"derived"};
+8086:function statusPill(st){ var t=STATUS[st].tone, ic=TOKENS.sym.status[t];
+8088:function claimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(CLAIM
+8092:var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed", i
+8098:function posClaimOf(id,cf){
+8104:function posClaimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(PO
+8109:function stmtClaim(ref){
+8117:function claimTag(ref){ var c=stmtClaim(ref); if(_claimRefs&&_claimRefs.indexOf(ref)<0) _claimRefs.push(r
+8119:function claimRefsStart(){ var prev=_claimRefs; _claimRefs=[]; return prev; }
+8120:function claimRefsEnd(prev){ var r=_claimRefs||[]; _claimRefs=prev; return r; }
+8124:function srcButton(refs,head){ var d=el("div",head?"dact src-head":"dact"), b=el("button","t",esc(LABELS.
+8127:function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+field; }
+8128:function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return 
+8129:function sect(title,html,isDl,layer){
+8135:function nextChange(id,ph){
+8143:function nearestFeature(p){
+8156:var FEATURE_GT={pratzeberg:"pratzeberg",vinohrady:"vinohrady",santon:"santon",zuran:"zuran",telnitz:"teln
+8167:function chateauBearing8h(){
+8174:function farmsteadsText(P){
+8179:function buildingsSection(ft){
+8199:function dossierFeature(id){
+8266:function placeNearby(ft){
+8274:function syncViewBadge(){
+8284:function dossierEvent(eid){
+8339:function dossierAnalysis(name){
+8374:function updateRose(){
+8383:function updateScaleBar(){
+8411:function arrivalRuleText(b){
+8417:function derivedArrivals(){
+8425:function troopNotes(){
+8446:function artilleryNotes(){
+8468:function castleSizeText(){
+8474:function buildingNotes(){
+8509:function gaitNotes(){
+8528:function standardNotes(){
+8559:function arrowNotes(){
+8571:function lightNotes(){
+8590:function geoText(p){
+8600:function excerpt(t){ t=String(t||""); var w=t.split(/\s+/).slice(0,6).join(" "); return w.length<t.length
+8601:function refLabel(ref){ var m;
+8628:function claimWorks(E){
+8635:function claimDetail(E){
+8643:function dossierClaims(refs){ var h='<h3 id="claims-here">'+esc(LABELS.dossier.here)+'</h3>';
+8648:function claimsIndex(){
+8675:function openSources(o){
+8739:function placeToast(t){
+8761:var TOAST={raf:0, placed:0};
+8762:function toastSeen(t){ return !!t&&!!t.classList&&(t.classList.contains("on")||(typeof getComputedStyle==
+8763:function toastRelayout(slide){
+8771:function flash(msg){
+8777:function setProg(f){
+8781:function stopPlay(){
+8788:function togglePlay(){
+8797:function setSpeed(x){
+8805:function paintSpeedBtn(){
+8810:function speedNext(){
+8814:function tickClock(dtMs){
+8829:var DWELL={on:true, HOLD:1.5, EASE:0.5, starts:null, next:0, st:null, expect:null};
+8830:function dwellStarts(){
+8834:function dwellReach(i,v){ var S=dwellStarts(), d=v*DWELL.EASE/2;
+8836:function dwellReset(){ var S=dwellStarts(), i=0; while(i<S.length&&S[i]<=clock+1e-9) i++; DWELL.next=i; D
+8839:function dwellSet(on){ DWELL.on=!!on; var b=document.getElementById("dwell"); if(b&&b.setAttribute) b.set
+8840:function dwellEvents(){ if(!DWELL.st) return null; var E=DWELL.st.E; return EVENTS.filter(function(e){ re
+8842:function dwellAdvance(dt,v){
+8877:function dwellDayLength(t0,x){
+8896:var FOLLOW={TAU:1.5, CAP:150, K:2.4, D0:130, DMIN:230, DMAX:300, T:null, dist:0, dir:null, ev:null};
+8897:function followGoal(){
+8906:function followActive(){ return playing&&!freeCam&&mode!=="staff"&&!_tw.cam; }
+8907:function followStep(dtMs){
+8930:var PRESENT={
+8935:function setPresentation(m){
+8970:var DOCK_MIN=1080, docked=null, tabNow="now", tabChosen=false, PHASE_SAID=0;
+8971:function syncDock(){
+8986:function selectTab(t,focus){
+9000:function syncViewmode(){
+9017:var PHONE_Q="(max-width:720px) and (min-height:431px)", PHONE=false;
+9018:function syncPhone(){
+9027:function dsheetOpen(){ return document.body.classList.contains("dsheet-open"); }
+9028:function setDSheet(open){
+9034:function menuOpen(){ return document.body.classList.contains("menu-open"); }
+9036:function setMenu(open,keep){
+9046:function bindPhone(){
+9061:function syncVis(){
+9070:function setDispatchVisible(on){ hideDispatch=!on; syncVis(); }
+9071:function showEverything(){
+9078:function syncTimebarHeight(){
+9095:var AMBIENT_MS=90, INPUT_HOLD_MS=450;
+9098:var AMBIENT_TEST=false;
+9099:function requestRender(n){ needFrames=Math.max(needFrames,n||2); }
+9100:function ease(r){ return 1-Math.pow(1-r,FK); }
+9101:function ambientNow(){
+9112:function frameState(now){
+9117:function loop(){
+9154:var AUSTERLITZ_DEBUG=(function(){

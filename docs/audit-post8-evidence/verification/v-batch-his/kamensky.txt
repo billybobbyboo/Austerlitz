@@ -1,0 +1,23 @@
+07:50 kamensky null onPlateau - | sthilaire [205.79,230.58] onPlateau false | lang [243.25,344.5] | plateau al 19300 fr 0
+07:59 kamensky null onPlateau - | sthilaire [205.98,230.96] onPlateau false | lang [235.82,349.45] | plateau al 19300 fr 0
+08:00 kamensky [259,316] onPlateau false | sthilaire [206,231] onPlateau false | lang [235,350] | plateau al 19300 fr 0
+08:05 kamensky [260.11,314] onPlateau false | sthilaire [206,231] onPlateau false | lang [235.4,349.53] | plateau al 19300 fr 0
+08:10 kamensky [261.22,312] onPlateau false | sthilaire [206,231] onPlateau false | lang [235.8,349.07] | plateau al 19300 fr 0
+08:15 kamensky [262.33,310] onPlateau false | sthilaire [206,231] onPlateau false | lang [236.2,348.6] | plateau al 19300 fr 0
+08:20 kamensky [263.44,308] onPlateau false | sthilaire [206,231] onPlateau false | lang [236.6,348.13] | plateau al 19300 fr 0
+08:25 kamensky [264.56,306] onPlateau false | sthilaire [206,231] onPlateau false | lang [237,347.67] | plateau al 19300 fr 0
+08:29 kamensky [265.44,304.4] onPlateau true | sthilaire [206,231] onPlateau false | lang [237.32,347.29] | plateau al 23550 fr 0
+08:30 kamensky [265.67,304] onPlateau true | sthilaire [206,231] onPlateau false | lang [237.4,347.2] | plateau al 23550 fr 0
+08:35 kamensky [266.78,302] onPlateau true | sthilaire [206,231] onPlateau false | lang [237.8,346.73] | plateau al 23550 fr 0
+08:40 kamensky [267.89,300] onPlateau true | sthilaire [206,231] onPlateau false | lang [238.2,346.27] | plateau al 23550 fr 0
+08:44 kamensky [268.78,298.4] onPlateau true | sthilaire [206,231] onPlateau false | lang [238.52,345.89] | plateau al 23550 fr 0
+08:45 kamensky [269,298] onPlateau true | sthilaire [206,231] onPlateau false | lang [238.6,345.8] | plateau al 23550 fr 0
+09:00 kamensky [272.33,295] onPlateau true | sthilaire [238.07,248.43] onPlateau false | lang [239.8,344.4] | plateau al 23550 fr 0
+09:15 kamensky [275.67,292] onPlateau true | sthilaire [267,275] onPlateau true | lang [241,343] | plateau al 18150 fr 13300
+09:30 kamensky [279,289] onPlateau true | sthilaire [283,287] onPlateau true | lang [242.2,341.6] | plateau al 18150 fr 13300
+09:45 kamensky [282,286.5] onPlateau true | sthilaire [284,285.75] onPlateau true | lang [243.4,340.2] | plateau al 18150 fr 13300
+plateau al changes at 08:29 19300 -> 23550
+kamensky 08:00->08:44 true bearing deg 46.5 dist km 0.636
+lang 08:00->08:44 true bearing deg 58.0 dist km 0.171
+kamensky@2 to Pratzeberg GT km 1.190 08:44 0.600
+anchorList kamensky [{"ph":2,"arr":480,"p":[259,316]},{"ph":3,"arr":525,"p":[269,298]},{"ph":4,"arr":570,"p":[279,289]},{"ph":5,"arr":630,"p":[291,279]},{"ph":6,"arr":675,"p":[305,279]},{"ph":7,"arr":765,"p":[371,254]},{"ph":8,"arr":870,"p":[397,221]}]

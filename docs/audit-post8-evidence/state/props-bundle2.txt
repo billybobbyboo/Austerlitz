@@ -1,0 +1,44 @@
+loaded the bundle in 581 s; init errors 0; warnings 0
+
+=== C1 a marching formation's card and full dossier while the clock moves inside its leg
+  53 legs of 30+ minutes inside one phase and 1+ km; using the five longest
+  gqg card, leg 12:00-12:40 (4.8 km, phase 6): painted at 12:03 "Zuran mound"; repaints while the clock moved to 12:37: 0; the dossier now shows the clock of 12:03 and "Zuran mound"; 12:08: model "1.0 km south-east of Zuran mound"; 12:20: model "Girzikowitz"; 12:37: model "Stare Vinohrady"
+  gqg full dossier, leg 12:00-12:40 (4.8 km, phase 6): painted at 12:03 "Zuran mound"; repaints while the clock moved to 12:37: 0; the dossier now shows the clock of 12:03 and "Zuran mound"; 12:08: model "1.0 km south-east of Zuran mound"; 12:20: model "Girzikowitz"; 12:37: model "Stare Vinohrady"
+  gqg card, leg 12:45-14:30 (4.0 km, phase 7): painted at 12:48 "0.6 km north-east of Pratzen Heights"; repaints while the clock moved to 14:27: 0; the dossier now shows the clock of 12:48 and "0.6 km north-east of Pratzen Heights"; 12:53: model "Pratzen Heights"; 13:37: model "Pratzeberg"; 14:27: model "Chapel of St Anthony"
+  gqg full dossier, leg 12:45-14:30 (4.0 km, phase 7): painted at 12:48 "0.6 km north-east of Pratzen Heights"; repaints while the clock moved to 14:27: 0; the dossier now shows the clock of 12:48 and "0.6 km north-east of Pratzen Heights"; 12:53: model "Pratzen Heights"; 13:37: model "Pratzeberg"; 14:27: model "Chapel of St Anthony"
+  guard_cav card, leg 10:30-11:15 (3.6 km, phase 5): painted at 10:33 "0.8 km north-west of Girzikowitz"; repaints while the clock moved to 11:12: 0; the dossier now shows the clock of 10:33 and "0.8 km north-west of Girzikowitz"; 10:38: model "Girzikowitz"; 10:52: model "0.8 km south of Girzikowitz"; 11:12: model "1.0 km west of Stare Vinohrady"
+  guard_cav full dossier, leg 10:30-11:15 (3.6 km, phase 5): painted at 10:33 "0.8 km north-west of Girzikowitz"; repaints while the clock moved to 11:12: 0; the dossier now shows the clock of 10:33 and "0.8 km north-west of Girzikowitz"; 10:38: model "Girzikowitz"; 10:52: model "0.8 km south of Girzikowitz"; 11:12: model "1.0 km west of Stare Vinohrady"
+  vandamme card, leg 13:24-14:30 (3.3 km, phase 7): painted at 13:27 "Pratzen village"; repaints while the clock moved to 14:27: 0; the dossier now shows the clock of 13:27 and "Pratzen village"; 13:32: model "0.5 km south-east of Pratzen village"; 13:57: model "Pratzeberg"; 14:27: model "0.7 km north-west of Chapel of St Anthony"
+  vandamme full dossier, leg 13:24-14:30 (3.3 km, phase 7): painted at 13:27 "Pratzen village"; repaints while the clock moved to 14:27: 0; the dossier now shows the clock of 13:27 and "Pratzen village"; 13:32: model "0.5 km south-east of Pratzen village"; 13:57: model "Pratzeberg"; 14:27: model "0.7 km north-west of Chapel of St Anthony"
+  bag card, leg 09:30-10:30 (2.8 km, phase 4): painted at 09:33 "0.6 km west of Posoritz post house"; repaints while the clock moved to 10:27: 0; the dossier now shows the clock of 09:33 and "0.6 km west of Posoritz post house"; 09:38: model "0.8 km west of Posoritz post house"; 10:00: model "1.4 km east of Brünn–Olmütz highway"; 10:27: model "Brünn–Olmütz highway"
+  bag full dossier, leg 09:30-10:30 (2.8 km, phase 4): painted at 09:33 "0.6 km west of Posoritz post house"; repaints while the clock moved to 10:27: 0; the dossier now shows the clock of 09:33 and "0.6 km west of Posoritz post house"; 09:38: model "0.8 km west of Posoritz post house"; 10:00: model "1.4 km east of Brünn–Olmütz highway"; 10:27: model "Brünn–Olmütz highway"
+(2.1 s)
+
+=== C2 a standing formation's full dossier (its "Position at HH:MM" row and day-track caption) while the clock moves within a phase
+  gqg standing from 04:05: dossier painted at 04:05; repaints while the clock moved to 04:45: 0 (its rows "Position at 04:05" and the day-track's "at 04:05" stand while the timeline reads 04:45)
+(0.2 s)
+
+=== C3 a place's dossier, "Formations nearby now", within a phase
+  reading none: 240 place-phases; the list shown differs from the model at the phase's last minute in 86
+    pratzen 07:01->07:59: shows [milo,lich] (repaints 0), the model [ahq,milo,kollo]
+    pratzen 09:31->10:29: shows [ahq,milo,kollo] (repaints 0), the model [kamensky,kollo]
+    pratzen 10:31->11:14: shows [kamensky,kollo] (repaints 0), the model [sthilaire,kamensky]
+    pratzen 11:16->12:44: shows [sthilaire,kamensky] (repaints 0), the model [gqg,sthilaire,drouet,guard_cav]
+    pratzen 12:46->14:29: shows [gqg,sthilaire,drouet,guard_cav] (repaints 0), the model [guard_inf,guard_cav]
+    vinohrady 04:01->06:59: shows [milo] (repaints 0), the model [ahq,milo,kollo,lich]
+  reading fr: 240 place-phases; the list shown differs from the model at the phase's last minute in 0
+(26.2 s)
+
+=== C4 an aggregate's card while its formations march
+  49 aggregate-phases whose card keeps a midpoint the model has left (no repaint)
+    c_iv phase 1: card "Midpoint Goldbach stream" kept at 07:58, the model's midpoint "0.5 km north-east of Goldbach stream"
+    c_iv phase 2: card "Midpoint 0.5 km north-east of Goldbach stream" kept at 08:43, the model's midpoint "0.8 km north-east of Goldbach stream"
+    c_iv phase 3: card "Midpoint 0.9 km north-east of Goldbach stream" kept at 09:28, the model's midpoint "0.8 km north-west of Pratzeberg"
+    c_iv phase 4: card "Midpoint 0.7 km north of Pratzeberg" kept at 10:28, the model's midpoint "0.8 km north of Pratzeberg"
+    c_iv phase 5: card "Midpoint 0.8 km north of Pratzeberg" kept at 11:13, the model's midpoint "0.8 km south-west of Pratzen village"
+    c_iv phase 8: card "Midpoint 1.3 km west of Chapel of St Anthony" kept at 16:58, the model's midpoint "1.0 km west of Augezd"
+    c_iii phase 1: card "Midpoint 2.6 km west of Menitz mere" kept at 07:58, the model's midpoint "1.7 km north-west of Menitz mere"
+    c_iii phase 2: card "Midpoint 1.6 km north-west of Menitz mere" kept at 08:43, the model's midpoint "1.3 km north of Menitz mere"
+(2.0 s)
+
+warnings 0; errors 0; total 611 s

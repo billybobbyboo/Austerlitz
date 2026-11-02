@@ -1,0 +1,98 @@
+{
+ "tag": "leaks",
+ "started": "2026-11-02T06:10:12.212Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "plan: timing notes and claim notes with an internal reference",
+   "t": 116.1,
+   "timing": [],
+   "claims": [
+    "EVENTS[#counter-march].dispute",
+    "FORMATIONS.legrand.staff",
+    "FORMATIONS.rg_cav.strengthNote",
+    "FORMATIONS.rg_inf.commander",
+    "FORMATIONS.rg_inf.strengthNote"
+   ]
+  },
+  {
+   "step": "dossiers at a clock inside each move's window: the 'Dated by' row as drawn",
+   "t": 116.1,
+   "rows": []
+  },
+  {
+   "step": "'How this is sourced' sheets of the dossiers whose claims carry an internal reference: the head as drawn",
+   "t": 655.2,
+   "sheets": [
+    {
+     "id": "legrand",
+     "hits": [
+      "register"
+     ],
+     "ctx": [
+      "a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed). Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point f",
+      "most 1.2 minutes at 1× (4.8 at four times speed). Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Be",
+      "register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps it"
+     ]
+    },
+    {
+     "id": "rg_cav",
+     "hits": [
+      "register"
+     ],
+     "ctx": [
+      "a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed). Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point f",
+      "most 1.2 minutes at 1× (4.8 at four times speed). Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Be",
+      "register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps it"
+     ]
+    },
+    {
+     "id": "rg_inf",
+     "hits": [
+      "register"
+     ],
+     "ctx": [
+      "a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed). Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point f",
+      "most 1.2 minutes at 1× (4.8 at four times speed). Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Be",
+      "register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps it"
+     ]
+    },
+    {
+     "event": "counter-march",
+     "hits": [
+      "register"
+     ],
+     "ctx": [
+      " only toward eight М. И. Кутузов, p. 230: Miloradovich sets out at eight The start of the window is this map's reckoning. Ermolov's before-dawn march is in the register (read partly on the text layer), where his place in the march is not se"
+     ]
+    }
+   ]
+  },
+  {
+   "step": "the whole sources sheet ('Accuracy and sources'): internal references as drawn",
+   "t": 655.4,
+   "chars": 89703,
+   "hits": 10,
+   "ctx": [
+    "t redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed). Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany,",
+    "1× (4.8 at four times speed). Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, w",
+    "ch it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps its historic",
+    " infantry's colours is an open question; the Russian cavalry's and the Guard's patterns were not settled by the sources read. Height, owner decision 106: the staff's top, with its finial, over the man's height to his hat's top. Ru",
+    "ский, pp. 144-145; (the regiment's history; author not read), p. 54; C. Duffy, pp. 184-185) The strength is Duffy's rows, read on the page (S5.7); Smith's, cited, not read. Schönhals's four squadron strengths are the dress table's",
+    "onymous ('gesammelt von einem Militär'), pp. 118-119; C. Duffy, pp. 184-185) The strength and Duffy's 6,730 are his rows, read on the page (S5.7); Smith's, cited, not read. IV Corps (France), its figures (О. В. Соколов, t. II, pp.",
+    "laire's right. Legrand's Division (France), its composition (О. В. Соколов, t. II, pp. 186-187) The situation of 28 October is a reading of roadmap step 6B (docs/stage6-evidence/readings-composition.md); Duffy and Smith are cited,",
+    "grand's Division (France), its composition (О. В. Соколов, t. II, pp. 186-187) The situation of 28 October is a reading of roadmap step 6B (docs/stage6-evidence/readings-composition.md); Duffy and Smith are cited, not read. Phase ",
+    ". И. Кутузов, p. 230: Miloradovich sets out at eight The start of the window is this map's reckoning. Ermolov's before-dawn march is in the register (read partly on the text layer), where his place in the march is not settled and ",
+    "ry that fought; its strength note gives Maliutin's title and his separate column, and Sokolov's brigade commander. Duffy's order of battle (S5.7) lists Maliutin as the whole reserve's lieutenant-general of infantry, which names no"
+   ]
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/leaks-friant-dated-by.jpg"
+ ],
+ "console": [],
+ "ok": true,
+ "ended": "2026-11-02T06:21:07.571Z",
+ "seconds": 655
+}

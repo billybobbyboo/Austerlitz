@@ -1,0 +1,5994 @@
+{
+ "tag": "zoom",
+ "started": "2026-11-02T06:07:58.499Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "1280x720-at1: first screen (the card)",
+   "t": 127.5,
+   "boot": 74937,
+   "phone": {
+    "on": false,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": true
+   },
+   "card": {
+    "box": [
+     520,
+     396,
+     540,
+     215
+    ],
+    "sh": 213,
+    "ch": 213,
+    "overflowY": "visible"
+   },
+   "reach": [
+    "#play: on screen 100,633,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.al) 14,696,1252,24",
+    "#helpbtn: on screen 969,633,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: not shown 0,0,0,0",
+    "#layersbtn: on screen 1189,20,69,28",
+    "#tourbtn: on screen 1095,20,89,28",
+    "#openingbtn: not shown 0,0,0,0",
+    "#srcbtn: on screen 18,591,125,24",
+    "#eyesbtn: on screen 854,635,105,28",
+    "#follow: on screen 253,633,58,32",
+    "#speedbtn: not shown 0,0,0,0",
+    ".vm-btn: on screen 554,15,58,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: on screen 545,558,123,34",
+    "#fr-close: on screen 675,558,146,34",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "scroll": {
+    "iw": 1280,
+    "ih": 720,
+    "docSW": 1280,
+    "docSH": 720,
+    "bodySW": 1280,
+    "bodySH": 720,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 1280,
+     "h": 720,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 98,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "span.cap-ph",
+      "dir": "x",
+      "sw": 142,
+      "cw": 13,
+      "text": "Dispositions in the dark"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "Olmütz road"
+     }
+    ],
+    "clippedN": 5,
+    "beyondViewport": [
+     {
+      "el": "div#now.tabpane",
+      "box": [
+       18,
+       137,
+       259,
+       1947
+      ],
+      "text": "derived on the heights: Allied ≈ 38,700 Friant's d"
+     },
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       20,
+       480,
+       255,
+       249
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     }
+    ],
+    "beyondN": 2
+   },
+   "panels": {
+    "boxes": [
+     ".rail 0,0,300,629",
+     ".timebar 0,630,1280,91",
+     ".tools 940,20,318,82",
+     "#viewmode 553,14,175,34",
+     "#firstrun 520,396,540,215",
+     ".dispatch 18,137,259,1947"
+    ],
+    "overlaps": [
+     ".timebar x .dispatch: 23440 px2"
+    ]
+   },
+   "targets": {
+    "n": 66,
+    "fail": 35,
+    "small": [
+     {
+      "el": "button.step",
+      "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+      "w": 268.3,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "07:00 - 08:00, Telnitz: The Allied left opens the battle (The Allied Advance)",
+      "w": 89.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:00 - 08:45, Sokolnitz: Sokolnitz, the castle and the pheasantry (The Allied Advance)",
+      "w": 67.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pratzen Strike)",
+      "w": 67.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "09:30 - 10:30, Pratzeberg: The crisis on the Pratzeberg (The Pratzen Strike)",
+      "w": 89.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "10:30 - 11:15, Olmütz road: The northern battle decided (The Army Divided)",
+      "w": 67.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "11:15 - 12:45, The Guard: The Russian Guard at Stare Vinohrady (The Army Divided)",
+      "w": 134.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "12:45 - 14:30, The wheel: The centre turns south (The Collapse)",
+      "w": 156.5,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "14:30 - 17:00, The ponds: Augezd, the ponds and the ice (The Collapse)",
+      "w": 223.6,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "After dark, Reckoning: The reckoning (The Collapse)",
+      "w": 89.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     }
+    ]
+   },
+   "narr": {
+    "lede": true,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": true,
+    "events": false,
+    "dispatchDisplay": "block",
+    "dispatchIn": "div#now.tabpane",
+    "nowTab": true,
+    "docked": true,
+    "railHidden": false,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "small": {
+    "texts": 95,
+    "under12": 42,
+    "by": {
+     "11.5px other": {
+      "n": 10,
+      "ex": [
+       "button.vm-btn: Study",
+       "button.vm-btn: Watch",
+       "button.vm-btn: Clean",
+       "button#tourbtn.t: Guided tour",
+       "button#layersbtn.t: Layers…",
+       "button.t.van-btn: Field"
+      ]
+     },
+     "11.5px panel": {
+      "n": 6,
+      "ex": [
+       "button#tab-now.tab-btn: Now",
+       "button#tab-oob.tab-btn: Order of battle",
+       "button#tab-analysis.tab-btn: Analysis",
+       "button#tab-command.tab-btn: Command",
+       "button#tab-plans.tab-btn: Plans",
+       "button#srcbtn: Accuracy and sources"
+      ]
+     },
+     "10.5px panel": {
+      "n": 1,
+      "ex": [
+       "small: derived"
+      ]
+     },
+     "10.5px other": {
+      "n": 1,
+      "ex": [
+       "div.tlabel: Vantage"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 12,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#prev.t.tb-icon: ◄",
+       "button#play.t.tb-play: Play",
+       "button#next.t.tb-icon: ►",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 11,
+      "ex": [
+       "small: 2 Dec 1805",
+       "small.evn: interval",
+       "span#sb-label: 2 km",
+       "b: 04",
+       "b: 06",
+       "b: 08"
+      ]
+     },
+     "11.5px map": {
+      "n": 1,
+      "ex": [
+       "div.ml-item.mlt: Austerlitz"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "caption": {
+    "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+    "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "sw": 456,
+    "cw": 456
+   }
+  },
+  {
+   "step": "1280x720-at1: Esc (real key), the screen to explore",
+   "t": 196.7,
+   "fi": {
+    "el": "button#play.t.tb-play",
+    "text": "Play",
+    "aria": null,
+    "role": null,
+    "box": [
+     100,
+     633,
+     58,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "reach": [
+    "#play: on screen 100,633,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.al) 14,696,1252,24",
+    "#helpbtn: on screen 969,633,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: not shown 0,0,0,0",
+    "#layersbtn: on screen 1189,20,69,28",
+    "#tourbtn: on screen 1095,20,89,28",
+    "#openingbtn: on screen 964,20,126,28",
+    "#srcbtn: on screen 18,591,125,24",
+    "#eyesbtn: on screen 854,635,105,28",
+    "#follow: on screen 253,633,58,32",
+    "#speedbtn: not shown 0,0,0,0",
+    ".vm-btn: on screen 554,15,58,32",
+    "#lg-toggle: on screen 1180,580,71,26",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "timebar": {
+    "top": 630,
+    "h": 91,
+    "frac": 0.13
+   },
+   "unobstructed": 0.6291,
+   "scroll": {
+    "iw": 1280,
+    "ih": 720,
+    "docSW": 1280,
+    "docSH": 720,
+    "bodySW": 1280,
+    "bodySH": 720,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 1280,
+     "h": 720,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 98,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "span.cap-ph",
+      "dir": "x",
+      "sw": 142,
+      "cw": 13,
+      "text": "Dispositions in the dark"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "Olmütz road"
+     }
+    ],
+    "clippedN": 5,
+    "beyondViewport": [
+     {
+      "el": "div#now.tabpane",
+      "box": [
+       18,
+       137,
+       259,
+       1947
+      ],
+      "text": "derived on the heights: Allied ≈ 38,700 Friant's d"
+     },
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       20,
+       480,
+       255,
+       249
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     }
+    ],
+    "beyondN": 2
+   },
+   "panels": {
+    "boxes": [
+     ".rail 0,0,300,629",
+     ".timebar 0,630,1280,91",
+     ".tools 940,20,318,82",
+     "#viewmode 553,14,175,34",
+     ".legend 1169,573,93,42",
+     ".dispatch 18,137,259,1947"
+    ],
+    "overlaps": [
+     ".timebar x .dispatch: 23440 px2"
+    ]
+   },
+   "targets": {
+    "n": 66,
+    "fail": 35,
+    "small": [
+     {
+      "el": "button.step",
+      "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+      "w": 268.3,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "07:00 - 08:00, Telnitz: The Allied left opens the battle (The Allied Advance)",
+      "w": 89.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:00 - 08:45, Sokolnitz: Sokolnitz, the castle and the pheasantry (The Allied Advance)",
+      "w": 67.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pratzen Strike)",
+      "w": 67.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "09:30 - 10:30, Pratzeberg: The crisis on the Pratzeberg (The Pratzen Strike)",
+      "w": 89.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "10:30 - 11:15, Olmütz road: The northern battle decided (The Army Divided)",
+      "w": 67.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "11:15 - 12:45, The Guard: The Russian Guard at Stare Vinohrady (The Army Divided)",
+      "w": 134.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "12:45 - 14:30, The wheel: The centre turns south (The Collapse)",
+      "w": 156.5,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "14:30 - 17:00, The ponds: Augezd, the ponds and the ice (The Collapse)",
+      "w": 223.6,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "After dark, Reckoning: The reckoning (The Collapse)",
+      "w": 89.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     }
+    ]
+   },
+   "narr": {
+    "lede": true,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": true,
+    "events": false,
+    "dispatchDisplay": "block",
+    "dispatchIn": "div#now.tabpane",
+    "nowTab": true,
+    "docked": true,
+    "railHidden": false,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "small": {
+    "texts": 100,
+    "under12": 45,
+    "by": {
+     "11.5px other": {
+      "n": 12,
+      "ex": [
+       "button.vm-btn: Study",
+       "button.vm-btn: Watch",
+       "button.vm-btn: Clean",
+       "button#openingbtn.t: Begin the opening",
+       "button#tourbtn.t: Guided tour",
+       "button#layersbtn.t: Layers…"
+      ]
+     },
+     "11.5px panel": {
+      "n": 6,
+      "ex": [
+       "button#tab-now.tab-btn: Now",
+       "button#tab-oob.tab-btn: Order of battle",
+       "button#tab-analysis.tab-btn: Analysis",
+       "button#tab-command.tab-btn: Command",
+       "button#tab-plans.tab-btn: Plans",
+       "button#srcbtn: Accuracy and sources"
+      ]
+     },
+     "10.5px panel": {
+      "n": 1,
+      "ex": [
+       "small: derived"
+      ]
+     },
+     "10.5px other": {
+      "n": 1,
+      "ex": [
+       "div.tlabel: Vantage"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 12,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#prev.t.tb-icon: ◄",
+       "button#play.t.tb-play: Play",
+       "button#next.t.tb-icon: ►",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 11,
+      "ex": [
+       "small: 2 Dec 1805",
+       "small.evn: interval",
+       "span#sb-label: 2 km",
+       "b: 04",
+       "b: 06",
+       "b: 08"
+      ]
+     },
+     "11.5px map": {
+      "n": 2,
+      "ex": [
+       "div.ml-item.mlt: Satschan mere",
+       "div.ml-item.mlt: Austerlitz"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "caption": {
+    "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+    "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "sw": 456,
+    "cw": 456
+   }
+  },
+  {
+   "step": "1280x720-at1: '?' (real key): the overlay",
+   "t": 259.5,
+   "fi": {
+    "el": "button#help-close",
+    "text": "×",
+    "aria": "Close (Esc)",
+    "role": null,
+    "box": [
+     961,
+     78,
+     24,
+     24
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "sheet": {
+    "box": [
+     280,
+     65,
+     720,
+     590
+    ],
+    "body": [
+     311,
+     233,
+     658,
+     1461
+    ],
+    "bodySH": 1461,
+    "bodyCH": 1461,
+    "overflowY": "visible",
+    "sheetSH": 1658,
+    "sheetCH": 588,
+    "sheetOY": "auto"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 98,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "span.cap-ph",
+      "dir": "x",
+      "sw": 142,
+      "cw": 13,
+      "text": "Dispositions in the dark"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "Olmütz road"
+     }
+    ],
+    "clippedN": 5,
+    "beyondViewport": [
+     {
+      "el": "div#now.tabpane",
+      "box": [
+       18,
+       137,
+       259,
+       1947
+      ],
+      "text": "derived on the heights: Allied ≈ 38,700 Friant's d"
+     },
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       20,
+       480,
+       255,
+       249
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     },
+     {
+      "el": "div.hp-row",
+      "box": [
+       311,
+       709,
+       658,
+       34
+      ],
+      "text": "M The ground: Landscape, Paper map, Landscape with"
+     },
+     {
+      "el": "kbd",
+      "box": [
+       311,
+       714,
+       132,
+       23
+      ],
+      "text": "M"
+     },
+     {
+      "el": "b",
+      "box": [
+       311,
+       714,
+       24,
+       21
+      ],
+      "text": "M"
+     },
+     {
+      "el": "span",
+      "box": [
+       459,
+       714,
+       510,
+       23
+      ],
+      "text": "The ground: Landscape, Paper map, Landscape with c"
+     }
+    ],
+    "beyondN": 6
+   }
+  },
+  {
+   "step": "1280x720-at1: the Panels opened by real clicks",
+   "t": 304.9,
+   "srcbtn": {
+    "x": 80.5,
+    "y": 603,
+    "w": 125,
+    "h": 24,
+    "vis": true
+   },
+   "fi": {
+    "el": "button#play.t.tb-play",
+    "text": "Play",
+    "aria": null,
+    "role": null,
+    "box": [
+     100,
+     633,
+     58,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "reach": [
+    "#play: on screen 100,633,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.al) 14,696,1252,24",
+    "#helpbtn: on screen 969,633,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: not shown 0,0,0,0",
+    "#layersbtn: on screen 1189,20,69,28",
+    "#tourbtn: on screen 1095,20,89,28",
+    "#openingbtn: on screen 964,20,126,28",
+    "#srcbtn: on screen 18,591,125,24",
+    "#eyesbtn: on screen 854,635,105,28",
+    "#follow: on screen 253,633,58,32",
+    "#speedbtn: not shown 0,0,0,0",
+    ".vm-btn: on screen 554,15,58,32",
+    "#lg-toggle: on screen 1180,580,71,26",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 98,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "span.cap-ph",
+      "dir": "x",
+      "sw": 142,
+      "cw": 13,
+      "text": "Dispositions in the dark"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "Olmütz road"
+     }
+    ],
+    "clippedN": 5,
+    "beyondViewport": [
+     {
+      "el": "div#now.tabpane",
+      "box": [
+       18,
+       137,
+       259,
+       1947
+      ],
+      "text": "derived on the heights: Allied ≈ 38,700 Friant's d"
+     },
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       20,
+       480,
+       255,
+       249
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     }
+    ],
+    "beyondN": 2
+   },
+   "panels": {
+    "boxes": [
+     ".rail 0,0,300,629",
+     ".timebar 0,630,1280,91",
+     ".tools 940,20,318,82",
+     "#viewmode 553,14,175,34",
+     ".legend 1169,573,93,42",
+     ".dispatch 18,137,259,1947"
+    ],
+    "overlaps": [
+     ".timebar x .dispatch: 23440 px2"
+    ]
+   },
+   "rail": {
+    "box": [
+     0,
+     0,
+     300,
+     629
+    ],
+    "scrollH": 1947,
+    "clientH": 435,
+    "oy": "auto"
+   }
+  },
+  {
+   "step": "1280x720-at1: 'Accuracy and sources' (real click)",
+   "t": 351.3,
+   "fi": {
+    "el": "button#modal-close",
+    "text": "×",
+    "aria": "Close (Esc)",
+    "role": null,
+    "box": [
+     911,
+     78,
+     24,
+     24
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": false,
+    "ring": {
+     "os": "none",
+     "ow": "0px",
+     "oc": "rgb(155, 163, 169)",
+     "oo": "0px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "sheet": {
+    "box": [
+     330,
+     65,
+     620,
+     590
+    ],
+    "bodySH": 32797,
+    "bodyCH": 32797,
+    "bodyOY": "visible",
+    "closeBox": [
+     911,
+     78,
+     24,
+     24
+    ]
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 98,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "span.cap-ph",
+      "dir": "x",
+      "sw": 142,
+      "cw": 13,
+      "text": "Dispositions in the dark"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "Olmütz road"
+     }
+    ],
+    "clippedN": 5,
+    "beyondViewport": [
+     {
+      "el": "div#now.tabpane",
+      "box": [
+       18,
+       137,
+       259,
+       1947
+      ],
+      "text": "derived on the heights: Allied ≈ 38,700 Friant's d"
+     },
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       20,
+       480,
+       255,
+       249
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     },
+     {
+      "el": "p",
+      "box": [
+       361,
+       667,
+       558,
+       139
+      ],
+      "text": "Villages are placed from the Czech municipality re"
+     }
+    ],
+    "beyondN": 3
+   }
+  },
+  {
+   "step": "1280x720-at1: in the sheet, Tab then PageDown and ArrowDown (real keys): what scrolls",
+   "t": 353.3,
+   "before": {
+    "sheet": 0,
+    "body": 0,
+    "focus": "div#modal-body"
+   },
+   "after": {
+    "sheet": 0,
+    "body": 0,
+    "focus": "div#modal-body"
+   }
+  },
+  {
+   "step": "1280x720-at1: a formation clicked (real mouse; map layer read to aim): Fifth Column (cavalry)",
+   "t": {
+    "x": 677.5,
+    "y": 280.5,
+    "id": "lich",
+    "name": "Fifth Column (cavalry)",
+    "key": "n:lich",
+    "w": 175,
+    "h": 17
+   },
+   "fi": {
+    "el": "body",
+    "body": true
+   },
+   "state": {
+    "clock": 240,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": "f:lich",
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.81056897498914,
+      523.4056219747215,
+      64.6053547798281
+     ],
+     "tgt": [
+      -38.81056897498914,
+      0.5040337598517189,
+      3.981092981088011
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "drawer": {
+    "on": true,
+    "box": [
+     0,
+     0,
+     300,
+     629
+    ],
+    "sh": 629,
+    "ch": 629,
+    "oy": "visible",
+    "bodySH": 594,
+    "bodyCH": 594,
+    "bodyOY": "auto"
+   },
+   "selchip": null,
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 98,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "span.cap-ph",
+      "dir": "x",
+      "sw": 142,
+      "cw": 13,
+      "text": "Dispositions in the dark"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 60,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.sr-only",
+      "dir": "x",
+      "sw": 36,
+      "cw": 1,
+      "text": "Claim:"
+     },
+     {
+      "el": "span.sr-only",
+      "dir": "x",
+      "sw": 36,
+      "cw": 1,
+      "text": "Claim:"
+     }
+    ],
+    "clippedN": 7,
+    "beyondViewport": [
+     {
+      "el": "div#now.tabpane",
+      "box": [
+       18,
+       137,
+       259,
+       1947
+      ],
+      "text": "derived on the heights: Allied ≈ 38,700 Friant's d"
+     },
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       20,
+       480,
+       255,
+       249
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     }
+    ],
+    "beyondN": 2
+   },
+   "panels": {
+    "boxes": [
+     ".rail 0,0,300,629",
+     ".drawer 0,0,300,629",
+     ".timebar 0,630,1280,91",
+     ".tools 940,20,318,82",
+     "#viewmode 553,14,175,34",
+     ".legend 1169,573,93,42",
+     ".dispatch 18,137,259,1947"
+    ],
+    "overlaps": [
+     ".rail x .drawer: 188700 px2",
+     ".drawer x .dispatch: 127468 px2",
+     ".timebar x .dispatch: 23440 px2"
+    ]
+   },
+   "reach": [
+    "#play: on screen 100,633,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.al) 14,696,1252,24",
+    "#helpbtn: on screen 969,633,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: not shown 0,0,0,0",
+    "#layersbtn: on screen 1189,20,69,28",
+    "#tourbtn: on screen 1095,20,89,28",
+    "#openingbtn: on screen 964,20,126,28",
+    "#srcbtn: on screen (covered at 3/3 points by div#drawer-body,div#drawer-body) 18,591,125,24",
+    "#eyesbtn: on screen 854,635,105,28",
+    "#follow: on screen 253,633,58,32",
+    "#speedbtn: not shown 0,0,0,0",
+    ".vm-btn: on screen 554,15,58,32",
+    "#lg-toggle: on screen 1180,580,71,26",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ]
+  },
+  {
+   "step": "800x450-at2: first screen (the card)",
+   "t": 508.3,
+   "boot": 41669,
+   "phone": {
+    "on": false,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   },
+   "card": {
+    "box": [
+     130,
+     126,
+     540,
+     215
+    ],
+    "sh": 213,
+    "ch": 213,
+    "overflowY": "visible"
+   },
+   "reach": [
+    "#play: on screen 100,363,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.al) 14,426,772,24",
+    "#helpbtn: on screen 595,363,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: not shown 0,0,0,0",
+    "#layersbtn: on screen 717,56,69,28",
+    "#tourbtn: on screen 623,56,89,28",
+    "#openingbtn: not shown 0,0,0,0",
+    "#srcbtn: not shown -257,321,125,24",
+    "#eyesbtn: on screen 480,365,105,28",
+    "#follow: on screen 253,363,58,32",
+    "#speedbtn: not shown 0,0,0,0",
+    ".vm-btn: on screen 314,15,58,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: on screen 155,288,123,34",
+    "#fr-close: on screen 285,288,146,34",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "scroll": {
+    "iw": 800,
+    "ih": 450,
+    "docSW": 800,
+    "docSH": 450,
+    "bodySW": 800,
+    "bodySH": 450,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 800,
+     "h": 450,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 65,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 95,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 95,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 122,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 34,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 48,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 48,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 10,
+    "beyondViewport": [],
+    "beyondN": 0
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,360,800,91",
+     ".tools 468,56,318,63",
+     "#viewmode 313,14,175,34",
+     "#firstrun 130,126,540,215"
+    ],
+    "overlaps": []
+   },
+   "targets": {
+    "n": 60,
+    "fail": 35,
+    "small": [
+     {
+      "el": "button.step",
+      "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+      "w": 165.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "07:00 - 08:00, Telnitz: The Allied left opens the battle (The Allied Advance)",
+      "w": 55.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:00 - 08:45, Sokolnitz: Sokolnitz, the castle and the pheasantry (The Allied Advance)",
+      "w": 41.3,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pratzen Strike)",
+      "w": 41.3,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "09:30 - 10:30, Pratzeberg: The crisis on the Pratzeberg (The Pratzen Strike)",
+      "w": 55.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "10:30 - 11:15, Olmütz road: The northern battle decided (The Army Divided)",
+      "w": 41.3,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "11:15 - 12:45, The Guard: The Russian Guard at Stare Vinohrady (The Army Divided)",
+      "w": 82.7,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "12:45 - 14:30, The wheel: The centre turns south (The Collapse)",
+      "w": 96.5,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "14:30 - 17:00, The ponds: Augezd, the ponds and the ice (The Collapse)",
+      "w": 137.8,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "After dark, Reckoning: The reckoning (The Collapse)",
+      "w": 55.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     }
+    ]
+   },
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": false,
+    "events": false,
+    "dispatchDisplay": "none",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark"
+   },
+   "small": {
+    "texts": 57,
+    "under12": 31,
+    "by": {
+     "11.5px other": {
+      "n": 10,
+      "ex": [
+       "button.vm-btn: Study",
+       "button.vm-btn: Watch",
+       "button.vm-btn: Clean",
+       "button#tourbtn.t: Guided tour",
+       "button#layersbtn.t: Layers…",
+       "button.t.van-btn: Field"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 12,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#prev.t.tb-icon: ◄",
+       "button#play.t.tb-play: Play",
+       "button#next.t.tb-icon: ►",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 9,
+      "ex": [
+       "small: 2 Dec 1805",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10",
+       "b: 12"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "caption": {
+    "text": "THE DECEPTION · Dispositions in the dark",
+    "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "sw": 82,
+    "cw": 82
+   }
+  },
+  {
+   "step": "800x450-at2: Esc (real key), the screen to explore",
+   "t": 526.6,
+   "fi": {
+    "el": "button#play.t.tb-play",
+    "text": "Play",
+    "aria": null,
+    "role": null,
+    "box": [
+     100,
+     363,
+     58,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "reach": [
+    "#play: on screen 100,363,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.al) 14,426,772,24",
+    "#helpbtn: on screen 595,363,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: on screen 726,56,60,28",
+    "#layersbtn: on screen 652,56,69,28",
+    "#tourbtn: on screen 558,56,89,28",
+    "#openingbtn: on screen 427,56,126,28",
+    "#srcbtn: not shown -257,321,125,24",
+    "#eyesbtn: on screen 480,365,105,28",
+    "#follow: on screen 253,363,58,32",
+    "#speedbtn: not shown 0,0,0,0",
+    ".vm-btn: on screen 314,15,58,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "timebar": {
+    "top": 360,
+    "h": 91,
+    "frac": 0.2
+   },
+   "unobstructed": 0.4337,
+   "scroll": {
+    "iw": 800,
+    "ih": 450,
+    "docSW": 800,
+    "docSH": 450,
+    "bodySW": 800,
+    "bodySH": 450,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 800,
+     "h": 450,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 65,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 95,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 95,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 122,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 34,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 48,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 48,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 10,
+    "beyondViewport": [
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       36,
+       390,
+       401,
+       152
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     }
+    ],
+    "beyondN": 1
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,360,800,91",
+     ".tools 427,56,359,63",
+     "#viewmode 313,14,175,34",
+     ".dispatch 16,108,440,239"
+    ],
+    "overlaps": [
+     ".tools x .dispatch: 319 px2"
+    ]
+   },
+   "targets": {
+    "n": 60,
+    "fail": 35,
+    "small": [
+     {
+      "el": "button.step",
+      "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+      "w": 165.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "07:00 - 08:00, Telnitz: The Allied left opens the battle (The Allied Advance)",
+      "w": 55.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:00 - 08:45, Sokolnitz: Sokolnitz, the castle and the pheasantry (The Allied Advance)",
+      "w": 41.3,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pratzen Strike)",
+      "w": 41.3,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "09:30 - 10:30, Pratzeberg: The crisis on the Pratzeberg (The Pratzen Strike)",
+      "w": 55.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "10:30 - 11:15, Olmütz road: The northern battle decided (The Army Divided)",
+      "w": 41.3,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "11:15 - 12:45, The Guard: The Russian Guard at Stare Vinohrady (The Army Divided)",
+      "w": 82.7,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "12:45 - 14:30, The wheel: The centre turns south (The Collapse)",
+      "w": 96.5,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "14:30 - 17:00, The ponds: Augezd, the ponds and the ice (The Collapse)",
+      "w": 137.8,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "After dark, Reckoning: The reckoning (The Collapse)",
+      "w": 55.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     }
+    ]
+   },
+   "narr": {
+    "lede": true,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": true,
+    "events": false,
+    "dispatchDisplay": "block",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark"
+   },
+   "small": {
+    "texts": 75,
+    "under12": 35,
+    "by": {
+     "11.5px other": {
+      "n": 12,
+      "ex": [
+       "button.vm-btn: Study",
+       "button.vm-btn: Watch",
+       "button.vm-btn: Clean",
+       "button#openingbtn.t: Begin the opening",
+       "button#tourbtn.t: Guided tour",
+       "button#layersbtn.t: Layers…"
+      ]
+     },
+     "10.5px other": {
+      "n": 1,
+      "ex": [
+       "small: derived"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 12,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#prev.t.tb-icon: ◄",
+       "button#play.t.tb-play: Play",
+       "button#next.t.tb-icon: ►",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 9,
+      "ex": [
+       "small: 2 Dec 1805",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10",
+       "b: 12"
+      ]
+     },
+     "11.5px map": {
+      "n": 1,
+      "ex": [
+       "div.ml-item.mlt: Litava river"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "caption": {
+    "text": "THE DECEPTION · Dispositions in the dark",
+    "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "sw": 82,
+    "cw": 82
+   }
+  },
+  {
+   "step": "800x450-at2: '?' (real key): the overlay",
+   "t": 540.8,
+   "fi": {
+    "el": "button#help-close",
+    "text": "×",
+    "aria": "Close (Esc)",
+    "role": null,
+    "box": [
+     721,
+     54,
+     24,
+     24
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "sheet": {
+    "box": [
+     40,
+     41,
+     720,
+     369
+    ],
+    "body": [
+     71,
+     209,
+     658,
+     1461
+    ],
+    "bodySH": 1461,
+    "bodyCH": 1461,
+    "overflowY": "visible",
+    "sheetSH": 1658,
+    "sheetCH": 367,
+    "sheetOY": "auto"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 65,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 95,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 95,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 122,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 34,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 48,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 48,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 10,
+    "beyondViewport": [
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       36,
+       390,
+       401,
+       152
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     },
+     {
+      "el": "div.hp-row",
+      "box": [
+       71,
+       385,
+       658,
+       84
+      ],
+      "text": "←→ In the opening's bar: the step before or after "
+     },
+     {
+      "el": "kbd",
+      "box": [
+       71,
+       390,
+       132,
+       73
+      ],
+      "text": "←→"
+     },
+     {
+      "el": "span",
+      "box": [
+       219,
+       390,
+       510,
+       73
+      ],
+      "text": "In the opening's bar: the step before or after (En"
+     }
+    ],
+    "beyondN": 4
+   }
+  },
+  {
+   "step": "800x450-at2: the Panels opened by real clicks",
+   "t": 553.8,
+   "srcbtn": {
+    "x": 80.5,
+    "y": 333,
+    "w": 125,
+    "h": 24,
+    "vis": true
+   },
+   "fi": {
+    "el": "button#tab-oob.tab-btn",
+    "text": "Order of battle",
+    "aria": null,
+    "role": "tab",
+    "box": [
+     18,
+     73,
+     80,
+     47
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": false,
+    "ring": {
+     "os": "none",
+     "ow": "0px",
+     "oc": "rgb(231, 223, 204)",
+     "oo": "0px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": "0"
+   },
+   "reach": [
+    "#play: on screen 100,363,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.al) 14,426,772,24",
+    "#helpbtn: on screen 595,363,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: on screen 726,56,60,28",
+    "#layersbtn: on screen 652,56,69,28",
+    "#tourbtn: on screen 558,56,89,28",
+    "#openingbtn: on screen 427,56,126,28",
+    "#srcbtn: on screen 18,321,125,24",
+    "#eyesbtn: on screen 480,365,105,28",
+    "#follow: on screen 253,363,58,32",
+    "#speedbtn: not shown 0,0,0,0",
+    ".vm-btn: on screen 314,15,58,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 65,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 95,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 95,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 122,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 34,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 48,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 48,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 10,
+    "beyondViewport": [
+     {
+      "el": "button.oob-row.sub",
+      "box": [
+       18,
+       421,
+       231,
+       45
+      ],
+      "text": "French guns on the heights Corps and Guard artille"
+     },
+     {
+      "el": "span.oob-name",
+      "box": [
+       36,
+       426,
+       188,
+       35
+      ],
+      "text": "French guns on the heights Corps and Guard artille"
+     },
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       306,
+       390,
+       381,
+       174
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     }
+    ],
+    "beyondN": 3
+   },
+   "panels": {
+    "boxes": [
+     ".rail 0,0,272,359",
+     ".timebar 0,360,800,91",
+     ".tools 427,56,359,63",
+     "#viewmode 313,14,175,34",
+     ".dispatch 286,108,420,239"
+    ],
+    "overlaps": [
+     ".tools x .dispatch: 3069 px2"
+    ]
+   },
+   "rail": {
+    "box": [
+     0,
+     0,
+     272,
+     359
+    ],
+    "scrollH": 2081,
+    "clientH": 165,
+    "oy": "auto"
+   }
+  },
+  {
+   "step": "800x450-at2: 'Accuracy and sources' (real click)",
+   "t": 579.4,
+   "fi": {
+    "el": "button#modal-close",
+    "text": "×",
+    "aria": "Close (Esc)",
+    "role": null,
+    "box": [
+     671,
+     54,
+     24,
+     24
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": false,
+    "ring": {
+     "os": "none",
+     "ow": "0px",
+     "oc": "rgb(155, 163, 169)",
+     "oo": "0px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "sheet": {
+    "box": [
+     90,
+     41,
+     620,
+     369
+    ],
+    "bodySH": 32797,
+    "bodyCH": 32797,
+    "bodyOY": "visible",
+    "closeBox": [
+     671,
+     54,
+     24,
+     24
+    ]
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 65,
+      "text": "THE DECEPTION"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 95,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 95,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 122,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 34,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 48,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 34,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 48,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 10,
+    "beyondViewport": [
+     {
+      "el": "button.oob-row.sub",
+      "box": [
+       18,
+       421,
+       231,
+       45
+      ],
+      "text": "French guns on the heights Corps and Guard artille"
+     },
+     {
+      "el": "span.oob-name",
+      "box": [
+       36,
+       426,
+       188,
+       35
+      ],
+      "text": "French guns on the heights Corps and Guard artille"
+     },
+     {
+      "el": "p#d-lede.lede",
+      "box": [
+       306,
+       390,
+       381,
+       174
+      ],
+      "text": "Napoleon has deliberately given up the Pratzen pla"
+     },
+     {
+      "el": "p",
+      "box": [
+       121,
+       363,
+       558,
+       93
+      ],
+      "text": "Strengths are the hardest figures of all. The Alli"
+     }
+    ],
+    "beyondN": 4
+   }
+  },
+  {
+   "step": "800x450-at2: in the sheet, Tab then PageDown and ArrowDown (real keys): what scrolls",
+   "t": 580.7,
+   "before": {
+    "sheet": 0,
+    "body": 0,
+    "focus": "div#modal-body"
+   },
+   "after": {
+    "sheet": 0,
+    "body": 0,
+    "focus": "div#modal-body"
+   }
+  },
+  {
+   "step": "800x450-at2: no formation placed to click",
+   "t": 582.4
+  },
+  {
+   "step": "400x225-at4: first screen (the card)",
+   "t": 642.6,
+   "boot": 41403,
+   "phone": {
+    "on": false,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   },
+   "card": {
+    "box": [
+     16,
+     -112,
+     368,
+     228
+    ],
+    "sh": 226,
+    "ch": 226,
+    "overflowY": "visible"
+   },
+   "reach": [
+    "#play: on screen 59,138,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.fr) 14,201,372,24",
+    "#helpbtn: PARTLY off screen 370,138,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: not shown 0,0,0,0",
+    "#layersbtn: not shown 0,0,0,0",
+    "#tourbtn: not shown 0,0,0,0",
+    "#openingbtn: not shown 0,0,0,0",
+    "#srcbtn: not shown -257,156,125,24",
+    "#eyesbtn: not shown 0,0,0,0",
+    "#follow: on screen 171,138,58,32",
+    "#speedbtn: on screen 306,139,44,29",
+    ".vm-btn: on screen (covered at 3/3 points by p#fr-key,p#fr-key) 116,11,56,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: on screen 37,66,123,34",
+    "#fr-close: on screen 167,66,146,34",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "scroll": {
+    "iw": 400,
+    "ih": 225,
+    "docSW": 400,
+    "docSH": 225,
+    "bodySW": 400,
+    "bodySH": 225,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 400,
+     "h": 225,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 78,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 45,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 45,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 58,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 20,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 13,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 13,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 20,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 13,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 33,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 40,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 59,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 20,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "small.evn",
+      "box": [
+       394,
+       147,
+       54,
+       14
+      ],
+      "text": "interval"
+     },
+     {
+      "el": "button#helpbtn.t.tb-help",
+      "box": [
+       370,
+       138,
+       32,
+       32
+      ],
+      "text": "?"
+     },
+     {
+      "el": "div#firstrun",
+      "box": [
+       16,
+       -112,
+       368,
+       228
+      ],
+      "text": "The Battle of Austerlitz French formations are mar"
+     },
+     {
+      "el": "p#fr-key",
+      "box": [
+       37,
+       -65,
+       326,
+       115
+      ],
+      "text": "French formations are marked in blue and the Allie"
+     }
+    ],
+    "beyondN": 4
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,135,400,91",
+     "#viewmode 115,10,171,34",
+     "#firstrun 16,-112,368,228"
+    ],
+    "overlaps": [
+     "#viewmode x #firstrun: 5814 px2"
+    ]
+   },
+   "targets": {
+    "n": 47,
+    "fail": 35,
+    "small": [
+     {
+      "el": "button.step",
+      "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+      "w": 84,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "07:00 - 08:00, Telnitz: The Allied left opens the battle (The Allied Advance)",
+      "w": 26.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:00 - 08:45, Sokolnitz: Sokolnitz, the castle and the pheasantry (The Allied Advance)",
+      "w": 19.9,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pratzen Strike)",
+      "w": 19.9,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "09:30 - 10:30, Pratzeberg: The crisis on the Pratzeberg (The Pratzen Strike)",
+      "w": 26.6,
+      "h": 16,
+      "spacing": "fails (circle meets the circle of button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "10:30 - 11:15, Olmütz road: The northern battle decided (The Army Divided)",
+      "w": 19.9,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "11:15 - 12:45, The Guard: The Russian Guard at Stare Vinohrady (The Army Divided)",
+      "w": 39.8,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "12:45 - 14:30, The wheel: The centre turns south (The Collapse)",
+      "w": 46.5,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "14:30 - 17:00, The ponds: Augezd, the ponds and the ice (The Collapse)",
+      "w": 66.4,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "After dark, Reckoning: The reckoning (The Collapse)",
+      "w": 26.6,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     }
+    ]
+   },
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": false,
+    "events": false,
+    "dispatchDisplay": "none",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "small": {
+    "texts": 41,
+    "under12": 18,
+    "by": {
+     "11.5px other": {
+      "n": 3,
+      "ex": [
+       "button.vm-btn: Study",
+       "button.vm-btn: Watch",
+       "button.vm-btn: Clean"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 5,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#play.t.tb-play: Play",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow",
+       "button#helpbtn.t.tb-help: ?"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 10,
+      "ex": [
+       "small: 2 Dec 1805",
+       "small.evn: interval",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "caption": {
+    "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+    "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "sw": 34,
+    "cw": 0
+   }
+  },
+  {
+   "step": "400x225-at4: Esc (real key), the screen to explore",
+   "t": 655.3,
+   "fi": {
+    "el": "button#play.t.tb-play",
+    "text": "Play",
+    "aria": null,
+    "role": null,
+    "box": [
+     59,
+     138,
+     58,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "reach": [
+    "#play: on screen 59,138,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.fr) 14,201,372,24",
+    "#helpbtn: PARTLY off screen 370,138,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: on screen (covered at 3/3 points by div.tb-top,div.tb-top) 326,122,60,28",
+    "#layersbtn: on screen 317,89,69,28",
+    "#tourbtn: on screen 223,89,89,28",
+    "#openingbtn: on screen 260,56,126,28",
+    "#srcbtn: not shown -257,156,125,24",
+    "#eyesbtn: not shown 0,0,0,0",
+    "#follow: on screen 171,138,58,32",
+    "#speedbtn: on screen 306,139,44,29",
+    ".vm-btn: on screen 116,11,56,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "timebar": {
+    "top": 135,
+    "h": 91,
+    "frac": 0.4
+   },
+   "unobstructed": 0.3653,
+   "scroll": {
+    "iw": 400,
+    "ih": 225,
+    "docSW": 400,
+    "docSH": 225,
+    "bodySW": 400,
+    "bodySH": 225,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 400,
+     "h": 225,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 78,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 45,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 45,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 58,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 20,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 13,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 13,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 20,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 13,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 33,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 40,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 59,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 20,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "small.evn",
+      "box": [
+       394,
+       147,
+       54,
+       14
+      ],
+      "text": "interval"
+     },
+     {
+      "el": "button#helpbtn.t.tb-help",
+      "box": [
+       370,
+       138,
+       32,
+       32
+      ],
+      "text": "?"
+     }
+    ],
+    "beyondN": 2
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,135,400,91",
+     ".tools 178,56,208,162",
+     "#viewmode 115,10,171,34"
+    ],
+    "overlaps": [
+     ".timebar x .tools: 17368 px2"
+    ]
+   },
+   "targets": {
+    "n": 54,
+    "fail": 35,
+    "small": [
+     {
+      "el": "button.step",
+      "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+      "w": 84,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "07:00 - 08:00, Telnitz: The Allied left opens the battle (The Allied Advance)",
+      "w": 26.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:00 - 08:45, Sokolnitz: Sokolnitz, the castle and the pheasantry (The Allied Advance)",
+      "w": 19.9,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pratzen Strike)",
+      "w": 19.9,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "09:30 - 10:30, Pratzeberg: The crisis on the Pratzeberg (The Pratzen Strike)",
+      "w": 26.6,
+      "h": 16,
+      "spacing": "fails (circle meets the circle of button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "10:30 - 11:15, Olmütz road: The northern battle decided (The Army Divided)",
+      "w": 19.9,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.step",
+      "name": "11:15 - 12:45, The Guard: The Russian Guard at Stare Vinohrady (The Army Divided)",
+      "w": 39.8,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.step",
+      "name": "12:45 - 14:30, The wheel: The centre turns south (The Collapse)",
+      "w": 46.5,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.step",
+      "name": "14:30 - 17:00, The ponds: Augezd, the ponds and the ice (The Collapse)",
+      "w": 66.4,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.step",
+      "name": "After dark, Reckoning: The reckoning (The Collapse)",
+      "w": 26.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     }
+    ]
+   },
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": false,
+    "events": false,
+    "dispatchDisplay": "none",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "small": {
+    "texts": 51,
+    "under12": 27,
+    "by": {
+     "11.5px other": {
+      "n": 12,
+      "ex": [
+       "button.vm-btn: Study",
+       "button.vm-btn: Watch",
+       "button.vm-btn: Clean",
+       "button#openingbtn.t: Begin the opening",
+       "button#tourbtn.t: Guided tour",
+       "button#layersbtn.t: Layers…"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 5,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#play.t.tb-play: Play",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow",
+       "button#helpbtn.t.tb-help: ?"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 10,
+      "ex": [
+       "small: 2 Dec 1805",
+       "small.evn: interval",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "caption": {
+    "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+    "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "sw": 34,
+    "cw": 0
+   }
+  },
+  {
+   "step": "400x225-at4: '?' (real key): the overlay",
+   "t": 661.6,
+   "fi": {
+    "el": "button#help-close",
+    "text": "×",
+    "aria": "Close (Esc)",
+    "role": null,
+    "box": [
+     337,
+     33,
+     24,
+     24
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "sheet": {
+    "box": [
+     24,
+     20,
+     352,
+     185
+    ],
+    "body": [
+     55,
+     222,
+     290,
+     2680
+    ],
+    "bodySH": 2680,
+    "bodyCH": 2680,
+    "overflowY": "visible",
+    "sheetSH": 2910,
+    "sheetCH": 183,
+    "sheetOY": "auto"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 78,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 45,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 45,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 58,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 20,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 13,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 13,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 20,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 13,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 33,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 40,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 59,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 20,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "small.evn",
+      "box": [
+       394,
+       147,
+       54,
+       14
+      ],
+      "text": "interval"
+     },
+     {
+      "el": "button#helpbtn.t.tb-help",
+      "box": [
+       370,
+       138,
+       32,
+       32
+      ],
+      "text": "?"
+     },
+     {
+      "el": "h3",
+      "box": [
+       55,
+       222,
+       290,
+       20
+      ],
+      "text": "Time"
+     }
+    ],
+    "beyondN": 3
+   }
+  },
+  {
+   "step": "400x225-at4: the Panels opened by real clicks",
+   "t": 674.7,
+   "srcbtn": {
+    "x": -194.22000122070312,
+    "y": 167.84375,
+    "w": 125,
+    "h": 24,
+    "vis": false
+   },
+   "fi": {
+    "el": "body",
+    "body": true
+   },
+   "reach": [
+    "#play: on screen 59,138,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.fr) 14,201,372,24",
+    "#helpbtn: PARTLY off screen 370,138,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: on screen (covered at 3/3 points by div.tb-top,div.tb-top) 326,122,60,28",
+    "#layersbtn: on screen 317,89,69,28",
+    "#tourbtn: on screen 223,89,89,28",
+    "#openingbtn: on screen 260,56,126,28",
+    "#srcbtn: not shown -257,156,125,24",
+    "#eyesbtn: not shown 0,0,0,0",
+    "#follow: on screen 171,138,58,32",
+    "#speedbtn: on screen 306,139,44,29",
+    ".vm-btn: on screen 116,11,56,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 78,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 45,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 45,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 58,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 20,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 13,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 13,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 20,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 13,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 33,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 40,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 59,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 20,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "small.evn",
+      "box": [
+       394,
+       147,
+       54,
+       14
+      ],
+      "text": "interval"
+     },
+     {
+      "el": "button#helpbtn.t.tb-help",
+      "box": [
+       370,
+       138,
+       32,
+       32
+      ],
+      "text": "?"
+     }
+    ],
+    "beyondN": 2
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,135,400,91",
+     ".tools 178,56,208,162",
+     "#viewmode 115,10,171,34"
+    ],
+    "overlaps": [
+     ".timebar x .tools: 17368 px2"
+    ]
+   },
+   "rail": {
+    "box": [
+     -275,
+     0,
+     272,
+     134
+    ],
+    "scrollH": 2081,
+    "clientH": 0,
+    "oy": "auto"
+   }
+  },
+  {
+   "step": "400x225-at4: no formation placed to click",
+   "t": 675.9
+  },
+  {
+   "step": "320x256-at4: first screen (the card)",
+   "t": 720.4,
+   "boot": 30522,
+   "phone": {
+    "on": false,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   },
+   "card": {
+    "box": [
+     16,
+     -140,
+     288,
+     287
+    ],
+    "sh": 285,
+    "ch": 285,
+    "overflowY": "visible"
+   },
+   "reach": [
+    "#play: on screen 59,169,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.fr) 14,232,292,24",
+    "#helpbtn: OFF screen 370,169,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: not shown 0,0,0,0",
+    "#layersbtn: not shown 0,0,0,0",
+    "#tourbtn: not shown 0,0,0,0",
+    "#openingbtn: not shown 0,0,0,0",
+    "#srcbtn: not shown -257,156,125,24",
+    "#eyesbtn: not shown 0,0,0,0",
+    "#follow: on screen 171,169,58,32",
+    "#speedbtn: PARTLY off screen 306,170,44,29",
+    ".vm-btn: on screen (covered at 3/3 points by p#fr-key,p#fr-key) 76,11,56,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: on screen 37,85,110,46",
+    "#fr-close: on screen 154,85,129,46",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "scroll": {
+    "iw": 320,
+    "ih": 256,
+    "docSW": 320,
+    "docSH": 256,
+    "bodySW": 320,
+    "bodySH": 256,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 320,
+     "h": 256,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 61,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 35,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 35,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 45,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 14,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 9,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 14,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 24,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 30,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 45,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 14,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "button#speedbtn.t.tb-speed",
+      "box": [
+       306,
+       170,
+       44,
+       29
+      ],
+      "text": "½×"
+     },
+     {
+      "el": "div#firstrun",
+      "box": [
+       16,
+       -140,
+       288,
+       287
+      ],
+      "text": "The Battle of Austerlitz French formations are mar"
+     },
+     {
+      "el": "p#fr-key",
+      "box": [
+       37,
+       -93,
+       246,
+       162
+      ],
+      "text": "French formations are marked in blue and the Allie"
+     }
+    ],
+    "beyondN": 3
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,166,320,91",
+     "#viewmode 75,10,171,34",
+     "#firstrun 16,-140,288,287"
+    ],
+    "overlaps": [
+     "#viewmode x #firstrun: 5814 px2"
+    ]
+   },
+   "targets": {
+    "n": 46,
+    "fail": 35,
+    "small": [
+     {
+      "el": "button.step",
+      "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+      "w": 84,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "07:00 - 08:00, Telnitz: The Allied left opens the battle (The Allied Advance)",
+      "w": 20.8,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:00 - 08:45, Sokolnitz: Sokolnitz, the castle and the pheasantry (The Allied Advance)",
+      "w": 15.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pratzen Strike)",
+      "w": 15.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "09:30 - 10:30, Pratzeberg: The crisis on the Pratzeberg (The Pratzen Strike)",
+      "w": 20.8,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "10:30 - 11:15, Olmütz road: The northern battle decided (The Army Divided)",
+      "w": 15.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "11:15 - 12:45, The Guard: The Russian Guard at Stare Vinohrady (The Army Divided)",
+      "w": 31.3,
+      "h": 16,
+      "spacing": "fails (circle meets the circle of button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "12:45 - 14:30, The wheel: The centre turns south (The Collapse)",
+      "w": 36.5,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "14:30 - 17:00, The ponds: Augezd, the ponds and the ice (The Collapse)",
+      "w": 52.1,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "After dark, Reckoning: The reckoning (The Collapse)",
+      "w": 20.8,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets the circle of button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     }
+    ]
+   },
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": false,
+    "events": false,
+    "dispatchDisplay": "none",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "small": {
+    "texts": 37,
+    "under12": 16,
+    "by": {
+     "11.5px other": {
+      "n": 3,
+      "ex": [
+       "button.vm-btn: Study",
+       "button.vm-btn: Watch",
+       "button.vm-btn: Clean"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 4,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#play.t.tb-play: Play",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 9,
+      "ex": [
+       "small: 2 Dec 1805",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10",
+       "b: 12"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "caption": {
+    "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+    "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "sw": 34,
+    "cw": 0
+   }
+  },
+  {
+   "step": "320x256-at4: Esc (real key), the screen to explore",
+   "t": 731.1,
+   "fi": {
+    "el": "button#play.t.tb-play",
+    "text": "Play",
+    "aria": null,
+    "role": null,
+    "box": [
+     59,
+     169,
+     58,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "reach": [
+    "#play: on screen 59,169,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.fr) 14,232,292,24",
+    "#helpbtn: OFF screen 370,169,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: on screen 246,122,60,28",
+    "#layersbtn: on screen 237,89,69,28",
+    "#tourbtn: on screen 143,89,89,28",
+    "#openingbtn: on screen 180,56,126,28",
+    "#srcbtn: not shown -257,156,125,24",
+    "#eyesbtn: not shown 0,0,0,0",
+    "#follow: on screen 171,169,58,32",
+    "#speedbtn: PARTLY off screen 306,170,44,29",
+    ".vm-btn: on screen 76,11,56,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "timebar": {
+    "top": 166,
+    "h": 91,
+    "frac": 0.35
+   },
+   "unobstructed": 0.3506,
+   "scroll": {
+    "iw": 320,
+    "ih": 256,
+    "docSW": 320,
+    "docSH": 256,
+    "bodySW": 320,
+    "bodySH": 256,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 320,
+     "h": 256,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 61,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 35,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 35,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 45,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 14,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 9,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 14,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 24,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 30,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 45,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 14,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "button#speedbtn.t.tb-speed",
+      "box": [
+       306,
+       170,
+       44,
+       29
+      ],
+      "text": "½×"
+     }
+    ],
+    "beyondN": 1
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,166,320,91",
+     ".tools 140,56,166,195",
+     "#viewmode 75,10,171,34"
+    ],
+    "overlaps": [
+     ".timebar x .tools: 14226 px2"
+    ]
+   },
+   "targets": {
+    "n": 53,
+    "fail": 35,
+    "small": [
+     {
+      "el": "button.step",
+      "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+      "w": 84,
+      "h": 16,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.step",
+      "name": "07:00 - 08:00, Telnitz: The Allied left opens the battle (The Allied Advance)",
+      "w": 20.8,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:00 - 08:45, Sokolnitz: Sokolnitz, the castle and the pheasantry (The Allied Advance)",
+      "w": 15.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pratzen Strike)",
+      "w": 15.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "09:30 - 10:30, Pratzeberg: The crisis on the Pratzeberg (The Pratzen Strike)",
+      "w": 20.8,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "10:30 - 11:15, Olmütz road: The northern battle decided (The Army Divided)",
+      "w": 15.6,
+      "h": 16,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.step",
+      "name": "11:15 - 12:45, The Guard: The Russian Guard at Stare Vinohrady (The Army Divided)",
+      "w": 31.3,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.step",
+      "name": "12:45 - 14:30, The wheel: The centre turns south (The Collapse)",
+      "w": 36.5,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.step",
+      "name": "14:30 - 17:00, The ponds: Augezd, the ponds and the ice (The Collapse)",
+      "w": 52.1,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.step",
+      "name": "After dark, Reckoning: The reckoning (The Collapse)",
+      "w": 20.8,
+      "h": 16,
+      "spacing": "fails (circle meets button.t.van-btn)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets the circle of button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets button.step)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets button.step)"
+     }
+    ]
+   },
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": false,
+    "events": false,
+    "dispatchDisplay": "none",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "small": {
+    "texts": 47,
+    "under12": 25,
+    "by": {
+     "11.5px other": {
+      "n": 12,
+      "ex": [
+       "button.vm-btn: Study",
+       "button.vm-btn: Watch",
+       "button.vm-btn: Clean",
+       "button#openingbtn.t: Begin the opening",
+       "button#tourbtn.t: Guided tour",
+       "button#layersbtn.t: Layers…"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 4,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#play.t.tb-play: Play",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 9,
+      "ex": [
+       "small: 2 Dec 1805",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10",
+       "b: 12"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "caption": {
+    "text": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+    "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "sw": 34,
+    "cw": 0
+   }
+  },
+  {
+   "step": "320x256-at4: '?' (real key): the overlay",
+   "t": 740.1,
+   "fi": {
+    "el": "button#help-close",
+    "text": "×",
+    "aria": "Close (Esc)",
+    "role": null,
+    "box": [
+     257,
+     36,
+     24,
+     24
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "sheet": {
+    "box": [
+     24,
+     23,
+     272,
+     210
+    ],
+    "body": [
+     55,
+     258,
+     210,
+     4742
+    ],
+    "bodySH": 4742,
+    "bodyCH": 4742,
+    "overflowY": "visible",
+    "sheetSH": 5005,
+    "sheetCH": 208,
+    "sheetOY": "auto"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 61,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 35,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 35,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 45,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 14,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 9,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 14,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 24,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 30,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 45,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 14,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "button#speedbtn.t.tb-speed",
+      "box": [
+       306,
+       170,
+       44,
+       29
+      ],
+      "text": "½×"
+     }
+    ],
+    "beyondN": 1
+   }
+  },
+  {
+   "step": "320x256-at4: the Panels opened by real clicks",
+   "t": 748.5,
+   "srcbtn": {
+    "x": 80.5,
+    "y": 167.84375,
+    "w": 125,
+    "h": 24,
+    "vis": true
+   },
+   "fi": {
+    "el": "button#tab-oob.tab-btn",
+    "text": "Order of battle",
+    "aria": null,
+    "role": "tab",
+    "box": [
+     18,
+     73,
+     80,
+     47
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": false,
+    "ring": {
+     "os": "none",
+     "ow": "0px",
+     "oc": "rgb(231, 223, 204)",
+     "oo": "0px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": "0"
+   },
+   "reach": [
+    "#play: on screen 59,169,58,32",
+    "#timerail: on screen (covered at 1/3 points by button.ev-mark.fr) 14,232,292,24",
+    "#helpbtn: OFF screen 370,169,32,32",
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: on screen 246,122,60,28",
+    "#layersbtn: on screen 237,89,69,28",
+    "#tourbtn: on screen 143,89,89,28",
+    "#openingbtn: on screen 180,56,126,28",
+    "#srcbtn: on screen (covered at 3/3 points by div.tb-ctrl,div.tb-ctrl) 18,156,125,24",
+    "#eyesbtn: not shown 0,0,0,0",
+    "#follow: on screen 171,169,58,32",
+    "#speedbtn: PARTLY off screen 306,170,44,29",
+    ".vm-btn: on screen 212,11,56,32",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#dgrip: not shown 0,0,0,0",
+    "#fr-tour: not shown 0,0,0,0",
+    "#fr-close: not shown 0,0,0,0",
+    "#restore: not shown 0,0,0,0"
+   ],
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 61,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 35,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 35,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 45,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 14,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 9,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 14,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 24,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 30,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 45,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 14,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "div#viewmode",
+      "box": [
+       211,
+       10,
+       171,
+       34
+      ],
+      "text": "Study Watch Clean"
+     },
+     {
+      "el": "button.vm-btn",
+      "box": [
+       268,
+       11,
+       58,
+       32
+      ],
+      "text": "Watch"
+     },
+     {
+      "el": "button.oob-row",
+      "box": [
+       18,
+       226,
+       231,
+       45
+      ],
+      "text": "IV Corps Nicolas Soult 23,600"
+     },
+     {
+      "el": "span.oob-name",
+      "box": [
+       38,
+       231,
+       156,
+       35
+      ],
+      "text": "IV Corps Nicolas Soult"
+     },
+     {
+      "el": "button#speedbtn.t.tb-speed",
+      "box": [
+       306,
+       170,
+       44,
+       29
+      ],
+      "text": "½×"
+     }
+    ],
+    "beyondN": 5
+   },
+   "panels": {
+    "boxes": [
+     ".rail 0,0,272,165",
+     ".timebar 0,166,320,91",
+     ".tools 140,56,166,195",
+     "#viewmode 211,10,171,34"
+    ],
+    "overlaps": [
+     ".rail x .tools: 14431 px2",
+     ".rail x #viewmode: 2091 px2",
+     ".timebar x .tools: 14226 px2"
+    ]
+   },
+   "rail": {
+    "box": [
+     0,
+     0,
+     272,
+     165
+    ],
+    "scrollH": 2081,
+    "clientH": 0,
+    "oy": "auto"
+   }
+  },
+  {
+   "step": "320x256-at4: 'Accuracy and sources' (real click)",
+   "t": 757.1,
+   "fi": {
+    "el": "body",
+    "body": true
+   },
+   "sheet": {
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "bodySH": 0,
+    "bodyCH": 0,
+    "bodyOY": "visible",
+    "closeBox": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 103,
+      "cw": 61,
+      "text": "The Deception"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 135,
+      "cw": 35,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 35,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 125,
+      "cw": 45,
+      "text": "The Army Divided"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 40,
+      "cw": 14,
+      "text": "Telnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 55,
+      "cw": 9,
+      "text": "Sokolnitz"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 14,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 9,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 65,
+      "cw": 24,
+      "text": "The Guard"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 64,
+      "cw": 30,
+      "text": "The wheel"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 66,
+      "cw": 45,
+      "text": "The ponds"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 14,
+      "text": "Reckoning"
+     }
+    ],
+    "clippedN": 14,
+    "beyondViewport": [
+     {
+      "el": "div#viewmode",
+      "box": [
+       211,
+       10,
+       171,
+       34
+      ],
+      "text": "Study Watch Clean"
+     },
+     {
+      "el": "button.vm-btn",
+      "box": [
+       268,
+       11,
+       58,
+       32
+      ],
+      "text": "Watch"
+     },
+     {
+      "el": "button.oob-row",
+      "box": [
+       18,
+       226,
+       231,
+       45
+      ],
+      "text": "IV Corps Nicolas Soult 23,600"
+     },
+     {
+      "el": "span.oob-name",
+      "box": [
+       38,
+       231,
+       156,
+       35
+      ],
+      "text": "IV Corps Nicolas Soult"
+     },
+     {
+      "el": "button#speedbtn.t.tb-speed",
+      "box": [
+       306,
+       170,
+       44,
+       29
+      ],
+      "text": "½×"
+     }
+    ],
+    "beyondN": 5
+   }
+  },
+  {
+   "step": "320x256-at4: in the sheet, Tab then PageDown and ArrowDown (real keys): what scrolls",
+   "t": 758.5,
+   "before": {
+    "sheet": 0,
+    "body": 0,
+    "focus": "button#prevEv.t.tb-icon"
+   },
+   "after": {
+    "sheet": 0,
+    "body": 0,
+    "focus": "button#prevEv.t.tb-icon"
+   }
+  },
+  {
+   "step": "320x256-at4: no formation placed to click",
+   "t": 760.1
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/zoom-1280x720-at1-1-first.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-1280x720-at1-2-explore.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-1280x720-at1-3-help.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-1280x720-at1-4-panels.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-1280x720-at1-5-sources.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-1280x720-at1-6-dossier.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-800x450-at2-1-first.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-800x450-at2-2-explore.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-800x450-at2-3-help.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-800x450-at2-4-panels.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-800x450-at2-5-sources.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-400x225-at4-1-first.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-400x225-at4-2-explore.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-400x225-at4-3-help.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-400x225-at4-4-panels.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-320x256-at4-1-first.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-320x256-at4-2-explore.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-320x256-at4-3-help.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-320x256-at4-4-panels.jpg",
+  "docs/audit-post8-evidence/a11y/zoom-320x256-at4-5-sources.jpg"
+ ],
+ "console": [],
+ "ok": true,
+ "ended": "2026-11-02T06:20:38.602Z",
+ "seconds": 760
+}

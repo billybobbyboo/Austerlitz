@@ -1,0 +1,407 @@
+{
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "browser": "Chromium 141.0.7390.37 headless shell, SwiftShader",
+ "page": "visitor phone page 390x844 (A.openPhone, harness:false)",
+ "steps": [
+  {
+   "what": "open phone 390x844",
+   "bootS": 55
+  },
+  {
+   "what": "V-M1 hit map after Explore (real tap) and the clock set to 09:30 (set-up)",
+   "phone": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   },
+   "clock": 570,
+   "hitmap": {
+    "top4": {
+     "rail": [
+      8,
+      820,
+      374,
+      24
+     ],
+     "y": 824,
+     "px": 374,
+     "share": {
+      "rail": 0.23,
+      "marker": 0.77,
+      "other": 0
+     },
+     "markersHit": 20,
+     "markersTotal": 25,
+     "railSegs": [
+      [
+       28,
+       73
+      ],
+      [
+       315,
+       327
+      ],
+      [
+       355,
+       381
+      ]
+     ],
+     "otherSegs": []
+    },
+    "middle": {
+     "rail": [
+      8,
+      820,
+      374,
+      24
+     ],
+     "y": 832,
+     "px": 374,
+     "share": {
+      "rail": 0.358,
+      "marker": 0.642,
+      "other": 0
+     },
+     "markersHit": 20,
+     "markersTotal": 25,
+     "railSegs": [
+      [
+       23,
+       78
+      ],
+      [
+       96,
+       105
+      ],
+      [
+       170,
+       172
+      ],
+      [
+       256,
+       265
+      ],
+      [
+       310,
+       332
+      ],
+      [
+       350,
+       381
+      ]
+     ],
+     "otherSegs": []
+    },
+    "foot4": {
+     "rail": [
+      8,
+      820,
+      374,
+      24
+     ],
+     "y": 840,
+     "px": 374,
+     "share": {
+      "rail": 0.955,
+      "marker": 0.045,
+      "other": 0
+     },
+     "markersHit": 17,
+     "markersTotal": 25,
+     "railSegs": [
+      [
+       8,
+       13
+      ],
+      [
+       15,
+       86
+      ],
+      [
+       88,
+       113
+      ],
+      [
+       115,
+       133
+      ],
+      [
+       135,
+       140
+      ],
+      [
+       142,
+       153
+      ],
+      [
+       155,
+       160
+      ],
+      [
+       162,
+       180
+      ],
+      [
+       182,
+       193
+      ],
+      [
+       195,
+       200
+      ],
+      [
+       202,
+       211
+      ],
+      [
+       213,
+       233
+      ],
+      [
+       235,
+       246
+      ],
+      [
+       248,
+       273
+      ],
+      [
+       275,
+       287
+      ],
+      [
+       289,
+       300
+      ],
+      [
+       302,
+       340
+      ],
+      [
+       342,
+       381
+      ]
+     ],
+     "otherSegs": []
+    }
+   }
+  },
+  {
+   "what": "V-M1 real touch drag 60 px right from the rail (widest rail segment 23-78) at y 832",
+   "x0": 51.5,
+   "before": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   },
+   "after": {
+    "clock": 472.46,
+    "clockText": "07:52",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   }
+  },
+  {
+   "what": "V-M1 real touch drag 60 px right starting on a marker's hit area (08:25 to 08:45, Napoleon releases Soult against the heights (an interv) at x 121.5, y 832",
+   "before": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   },
+   "after": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   }
+  },
+  {
+   "what": "V-M1 real touch drag 60 px right from the same x, 4 px above the rail's foot (y 840)",
+   "before": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   },
+   "after": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   }
+  },
+  {
+   "what": "V-M1 real tap (touchscreen.tap) on the same marker point",
+   "before": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   },
+   "after": {
+    "clock": 505,
+    "clockText": "08:25",
+    "selection": "e:decision",
+    "drawerOpen": true,
+    "drawerTitle": "Napoleon releases Soult against the heights"
+   },
+   "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/phone-rail-tap-marker.jpg"
+  },
+  {
+   "what": "V-M1 real touch drag 60 px LEFT starting on another marker's hit area (12:30, Davout resumes the offensive (the hour is disputed)) at x 233.5",
+   "before": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   },
+   "after": {
+    "clock": 570,
+    "clockText": "09:30",
+    "selection": null,
+    "drawerOpen": false,
+    "drawerTitle": ""
+   }
+  },
+  {
+   "what": "V-M2/V-M3 phone: the key and the rose after Explore; the Menu's buttons; the Layers panel's text; the paper map entered by real taps",
+   "explore": {
+    "legendDisplay": "none",
+    "roseDisplay": "block",
+    "roseBox": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "roseShown": false
+   },
+   "menuButtons": [
+    "Study",
+    "Watch",
+    "Clean",
+    "#openingbtn Begin the opening",
+    "#tourbtn Guided tour",
+    "#layersbtn Layers…",
+    "#panelsbtn Panels",
+    "Field",
+    "Zuran",
+    "Pratzen",
+    "Allied",
+    "Overview"
+   ],
+   "layersText": [
+    "Layers",
+    "×",
+    "How the ground is drawn",
+    "Landscape",
+    "Paper map",
+    "Landscape with counters",
+    "What is drawn",
+    "Formation counters",
+    "Military symbols with commander and strength",
+    "Movement",
+    "Attack arrows and defensive lines for this hour",
+    "Historical events",
+    "Markers for what happened, and where",
+    "Names",
+    "Villages, terrain and formation names",
+    "Route marched",
+    "The ground each formation has covered",
+    "Position confidence",
+    "Each formation's position grade: outlined on the landscape, filled on the paper map; A its footprint, B its frontage doubled, C a zone",
+    "Evidence skeleton",
+    "The plotted positions (filled A, ring B, open ring C) and the lines interpolated between them: the selected formation, else this phase",
+    "Skeleton: whole day",
+    "Every formation's plotted positions and lines over the whole day",
+    "Ordered routes",
+    "Each plan column's line of march, dashed: what was ordered, not what was marched",
+    "Reading the ground",
+    "Contours",
+    "Height lines at a fixed interval",
+    "Terrain study",
+    "Named ridges, valleys, escarpments and defiles",
+    "Going",
+    "Where guns and formed cavalry could and could not pass",
+    "Relief",
+    "How tall the ground is drawn; 1× is true scale",
+    "1× true",
+    "4×",
+    "10.33×",
+    "Playing",
+    "Pause briefly at events",
+    "While playing, the clock stops for a moment at each event"
+   ],
+   "paper": {
+    "mode": "staff",
+    "leg": {
+     "legendDisplay": "none",
+     "roseDisplay": "block",
+     "roseBox": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "roseShown": false
+    },
+    "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/phone-paper.jpg"
+   }
+  },
+  {
+   "what": "V-M2: the sources sheet reached by real taps (Menu, Panels, Accuracy and sources): which encodings it explains",
+   "src": {
+    "open": true,
+    "chars": 89713,
+    "h3": [
+     "Three layers",
+     "Confidence grades",
+     "Basis",
+     "How the ground and the symbols are drawn",
+     "Arrivals the map derives",
+     "How the arrows are drawn",
+     "How the troops are drawn",
+     "How the standards are drawn",
+     "How the guns are drawn",
+     "How the troops move",
+     "How the villages are drawn",
+     "The works read here (for the appearance table and the statements' claims)",
+     "The statements' claims",
+     "How the light is drawn"
+    ],
+    "hits": {
+     "Confidence grades": "separation test are marked derived wherever they are shown. Confidence grades A: Position documented in the sources. B: Sector documented; the frontage shown is an approximation. C",
+     "grade's letter": "at the weaker grade. Each name and counter also carries its grade's letter. The evidence skeleton (a layer, off at first) draws each formation's plotted positions, the anchors the ",
+     "soft frontage": "ground under it: A as its modelled footprint, crisp; B as a soft frontage, twice the footprint's width and fading at its ends; C as a diffuse zone whose radius is the formation's o",
+     "diffuse zone": " twice the footprint's width and fading at its ends; C as a diffuse zone whose radius is the formation's own frontage. These are drawn sizes, not measured errors: the sources grade",
+     "evidence skeleton": " Each name and counter also carries its grade's letter. The evidence skeleton (a layer, off at first) draws each formation's plotted positions, the anchors the clock moves between,",
+     "dashed": "layer, off at first) draw each plan column's line of march, dashed and faint, as the two plans set them out: intentions, not what was marched. A formation's dossier then gives the ",
+     "How the arrows are drawn": "f the Right (11:15 - 11:40): tactical rate, a design value. How the arrows are drawn An arrow drawn for a phase shows the movement the model makes during that phase. 19 of the 37 a",
+     "interpretive": "odelled positions; they move with the model. The others are interpretive and marked as such in the data: 4 ordered routes (dashed), 3 that point at a place or objective rather than",
+     "reported": " groups north and south of the plateau. When it stops being reported the geometry no longer holds, which is not the same as the Allied army having reunited. Three layers Historica",
+     "status": null,
+     "echelon": null,
+     "XXX": null,
+     "glyph": null,
+     "viewshed": null,
+     "blue": "804 model (a white lozenge, the corners alternately red and blue; which colour lies at the staff's top is not sourced, drawn blue; the eagle on the staff where its size is read) an"
+    }
+   }
+  }
+ ],
+ "errors": [],
+ "seconds": 885
+}

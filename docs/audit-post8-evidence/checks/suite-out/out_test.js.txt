@@ -1,0 +1,40 @@
+formations: 40 | phases: 10 | features: 24
+
+-- relief (m) --
+Pratzeberg                     324
+Stare Vinohrady                294
+col south of Stare Vinohrady   272
+Santon                         296
+Zuran                          290
+Bosenitz                       258
+Pratzen                        245
+Kobelnitz                      210
+Sokolnitz                      210
+Telnitz                        196
+Augezd                         190
+Blasowitz                      246
+Krzenowitz                     216
+Austerlitz                     227
+
+-- counters on the field by phase --
+ 0 04:00 - 07:00  fr:18 allied:12
+ 1 07:00 - 08:00  fr:18 allied:12
+ 2 08:00 - 08:45  fr:18 allied:13
+ 3 08:45 - 09:30  fr:18 allied:13
+ 4 09:30 - 10:30  fr:18 allied:13
+ 5 10:30 - 11:15  fr:18 allied:13
+ 6 11:15 - 12:45  fr:18 allied:13
+ 7 12:45 - 14:30  fr:19 allied:13
+ 8 14:30 - 17:00  fr:19 allied:13
+ 9 After dark     fr:19 allied:12
+events validated: 25 (1 naming no formation, acknowledged: end)
+
+phases: 10 | chapters: 10 | command entries: 18
+appearance checks: 704/704 pass (49 dress classes, 92 sources, 32 leaf formations, 24 colours entries)
+guard: the 29 declarations of the five data files and app.js's 7 data declarations are in check:data's lists (139 names)
+statement claims: 704 narrative statements, 148 with a claim of their own, 75 by class (disputed 65, interpretation 12, attributed 63, derived 2, uncertain 6, interpretation by class 75), 481 unchecked; 334 readings in the registers; the inventory current
+
+ERRORS: 0
+warnings: 1 (1 acknowledged)
+  ~ constantine: declared 10500 vs children 7330  [acknowledged: owner decision 213 (b), 21 October 2026: the corps keeps Duffy's heading (10,530, as 10,500), its two drawn formations his rows without the reserve's grenadier regiment (4,430 and 2,900); the 3,170 between them is that regiment's 2,300 'in reserve' (not drawn), the pioneers' 100 and 800 in none of his rows (1977, pp. 184-185, register entry S5.7): a gap explained by the source, not a detachment counted twice (the error rule above still holds: the children never exceed the parent)]
+order of battle checks: 42/42 pass

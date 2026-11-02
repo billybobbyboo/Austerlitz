@@ -1,0 +1,75 @@
+{
+ "id": "santon-guns-1300",
+ "group": "troops",
+ "note": "The Santon's battery and detachment at 13:00, close.",
+ "spec": {
+  "t": 780,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": "santon",
+   "dir": [
+    -0.4,
+    0.35,
+    0.85
+   ],
+   "r": 16
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "13:00",
+  "t": 780,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -65.384,
+   13.093,
+   -67.934
+  ],
+  "target": [
+   -59,
+   3.338,
+   -81.5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 17.89,
+  "sunAlt": 17.71,
+  "sunGeo": 17.66,
+  "sunAz": 194.6,
+  "mist": 0
+ },
+ "ms": 25592,
+ "timing": {
+  "apply": 135,
+  "settle": 682,
+  "settle2": 95,
+  "shot": 24224
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

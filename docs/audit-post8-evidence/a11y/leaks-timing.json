@@ -1,0 +1,156 @@
+{
+ "tag": "leaks-timing",
+ "started": "2026-11-02T06:33:44.004Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "plan: timing notes and claim notes with an internal reference",
+   "t": 121,
+   "timing": [
+    {
+     "id": "gqg",
+     "k": "6",
+     "clock": 730,
+     "why": "tm.note"
+    },
+    {
+     "id": "friant",
+     "k": "1",
+     "clock": 420,
+     "why": "tm.note"
+    },
+    {
+     "id": "friant",
+     "k": "3",
+     "clock": 560,
+     "why": "tm.note"
+    },
+    {
+     "id": "bourcier",
+     "k": "3",
+     "clock": 310,
+     "why": "tm.note"
+    },
+    {
+     "id": "c_gren",
+     "k": "7",
+     "clock": 790,
+     "why": "tm.note"
+    },
+    {
+     "id": "lang",
+     "k": "1",
+     "clock": 430,
+     "why": "tm.note"
+    },
+    {
+     "id": "prz",
+     "k": "1",
+     "clock": 430,
+     "why": "tm.note"
+    }
+   ],
+   "claims": [
+    "EVENTS[#counter-march].dispute",
+    "FORMATIONS.legrand.staff",
+    "FORMATIONS.rg_cav.strengthNote",
+    "FORMATIONS.rg_inf.commander",
+    "FORMATIONS.rg_inf.strengthNote"
+   ]
+  },
+  {
+   "step": "dossiers at a clock inside each move's window: the 'Dated by' row as drawn",
+   "t": 622.6,
+   "rows": [
+    {
+     "id": "gqg",
+     "k": "6",
+     "clock": "12:10",
+     "shown": true,
+     "hits": [
+      "moveMin"
+     ],
+     "datedBy": "Dated by “Napoleon moves forward from the Zuran to Stare Vinohrady.”; “About noon, for Stare Vinohrady” dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows the existing 40-minute march (moveMin) Its day derived 5 km N Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated, the dot where it is at 12:10. The formation’s plotted day: anchors graded A/B/C as in the data; the lines between them are this reconstruction’s interpolation, not a recorded route. What it was doing 10:30 - 11:15 Releases Soult against the heights; a memoir anecdote, as Thiébault tells it, has him wait a further quarter of an hour "
+    },
+    {
+     "id": "friant",
+     "k": "1",
+     "clock": "07:00",
+     "shown": true,
+     "hits": [
+      "8e",
+      "roadmap",
+      "question 1"
+     ],
+     "datedBy": "Dated by “Davout's reports send the division on from Raigern at 05:00”; “Friant's leading brigade comes up to the Goldbach near Telnitz: about nine in Stutterheim” the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127), about six in Sokolov; the leading brigade up to the Goldbach near Telnitz about nine in Stutterheim (1806, p. 52) and the Moniteur's remarks (Materialien 1806, pp. 109-110), attacking about nine in Schönhals: the anchor, short of the stream, is reached then. Until roadmap step 4b the map moved the division from 04:00 and had the brigade at the Goldbach c. 08:00 (question 177) Its day"
+    },
+    {
+     "id": "friant",
+     "k": "3",
+     "clock": "09:20",
+     "shown": true,
+     "hits": [
+      "8e",
+      "roadmap",
+      "phase-2",
+      "question 1"
+     ],
+     "datedBy": "Dated by “Friant's leading troops retake Telnitz, then lose it again in the fog: Davout's report has the village in French hands at 09:30.” Telnitz in French hands at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again. Until roadmap step 4b this anchor was the phase-2 entry, reached at 08:30 on this map (question 177) Its day derived 3 km N Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated, the dashed line its ordered route, the dot where it is at 09:20. The formation’s plotted day: anchors graded A/B/C as in the data; the lines between them are this reconstruction’s interpolation, not a recorded "
+    },
+    {
+     "id": "bourcier",
+     "k": "3",
+     "clock": "05:10",
+     "shown": true,
+     "hits": [
+      "8e",
+      "roadmap",
+      "question 2"
+     ],
+     "datedBy": "Dated by “Davout's reports send the division on from Raigern at 05:00”; “Up from Raigern with Friant's division” Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place. Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2) Its day derived 3 km N Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated, the do"
+    },
+    {
+     "id": "c_gren",
+     "k": "7",
+     "clock": "13:10",
+     "shown": true,
+     "hits": [
+      "8e",
+      "roadmap",
+      "question 1"
+     ],
+     "datedBy": "Dated by “Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau”; “Soult and Davout launch the converging assault on the Allied left.” the wheel names the grenadier division in support. Ségur and Mikhailovsky-Danilevsky set the grenadiers moving toward the lakes about one; the arrival is derived. Until roadmap step 4b the map dated the arrival at 14:00, its own, which forced the next leg toward the ceiling (question 181) Its day derived 5 km N Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated, the dashed line its ordered route, the dot where it is at 13:10. The formation’s plo"
+    },
+    {
+     "id": "lang",
+     "k": "1",
+     "clock": "07:10",
+     "shown": true,
+     "hits": [
+      "roadmap",
+      "question 1"
+     ],
+     "datedBy": "Dated by “the disposition ordered all the columns to march at 07:00”; “the II and III Columns at 07:30”; “the II Column coming down at 08:00” the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past seven (1873, p. 160), Buxhowden's report the II Column come down at eight (Kutuzov, documents, 1951, pp. 241-242), Mikhailovsky-Danilevsky the first three columns between seven and eight (1844, p. 177): grade B, the map's choice among them; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176) Its day derived 1 km N Plotted positions (filled A, ring B, small ring C; a tick: "
+    },
+    {
+     "id": "prz",
+     "k": "1",
+     "clock": "07:10",
+     "shown": true,
+     "hits": [
+      "roadmap",
+      "question 1"
+     ],
+     "datedBy": "Dated by “the disposition ordered all the columns to march at 07:00”; “as did the III Column in Przybyszewski's report”; “the II and III Columns at 07:30” the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176) Its day derived 1 km N Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated, the dashed line its ordered route, the dot where it is at 07:10"
+    }
+   ]
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/leaks-timing-dated-by-last-dossier.jpg"
+ ],
+ "ok": true,
+ "ended": "2026-11-02T06:45:46.880Z",
+ "seconds": 723
+}

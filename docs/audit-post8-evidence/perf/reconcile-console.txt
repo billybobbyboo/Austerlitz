@@ -1,0 +1,109 @@
+rows 349 desktop 165 phone 184
+text reproduced by format(): desk-D1:true/true/23 desk-D2:true/true/23 desk-fx:true/true/30 desk-cull:true/true/59 desk-gait:true/true/30 phone-R1:true/true/47 phone-R2:true/true/47 phone-fx:true/true/30 phone-cull:true/true/30 phone-gait:true/true/30
+row summary {"rows":349,"longPctMismatch":[],"percentileOrderViolations":[],"longVsPercentileInconsistent":[],"drawnNotFrames":["desk-D1#0 (0/376)","desk-D2#0 (0/374)","desk-fx#0 (0/375)","desk-cull#0 (0/375)","desk-gait#0 (0/373)","phone-R1#0 (0/156)","phone-R2#0 (0/156)","phone-fx#0 (0/155)","phone-cull#0 (0/156)","phone-gait#0 (0/156)"],"spanVsWindow":{"min":0.045,"max":0.202,"worst":["desk-gait play-half warm-up: 0.202 s","desk-D1 play-half played: 0.197 s","desk-D2 play-half played: 0.197 s","desk-cull pratzen-low-10x warm-up: 0.194 s","desk-D1 play-4x played: 0.189 s","desk-D2 play-4x played: 0.183 s"]},"hidden":0}
+block settings {"blocks":284,"notAsIntended":[]}
+verdicts desk-fx pratzen-low-4x not shown same true; desk-cull pratzen-low-4x not shown same true; desk-cull pratzen-low-10x not shown same true; desk-gait play-half not shown same true; phone-fx pratzen-low-4x not shown same true; phone-cull pratzen-low-4x not shown same true; phone-gait play-half not shown same true
+[verified] §24 intro: every desktop report names the build 2,810,630 bytes, SHA-256 bf27887c...db07
+      -> desk-D1: 2810630 bf27887c; desk-D2: 2810630 bf27887c; desk-fx: 2810630 bf27887c; desk-cull: 2810630 bf27887c; desk-gait: 2810630 bf27887c
+[verified] §24 intro: Chrome 156, RTX 4070 (ANGLE D3D11), 32 cores, 32 GB, 2560x1440, refresh 6.9 ms, page 2560x1305 at density 1, e
+      -> all five
+[verified] §24 intro: starts D1 07:01, D2 07:08, fx 07:11, cull 07:16, gait 07:25 UTC
+      -> 07:01, 07:08, 07:11, 07:16, 07:25
+[verified] §24 intro: 165 rows of 165
+      -> 165 segments; every row reproduced by format(): true
+[partly] §24 intro: L3: same desktop, same page size, the wrapper page, build 2,218,404 bytes (md5 c9d29c14...)
+      -> L3: Chrome/155.0.0.0 (D1/D2: Chrome/156.0.0.0), 2218404 bytes sha256 0c64a52d; started 2026-10-22T07:45:59.806Z
+      note: the GPU, screen, viewport, density, effects scale and wrapper match; the browser does not: L3 ran Chrome 155, D1/D2 Chrome 156 (not stated in §24)
+[verified] §24.1: every median 6.9 ms as in L3 but the two Play segments, 7.0 against 6.9
+      -> non-Play p50 now 6.9 (L3 6.9); Play now 7 (L3 6.9)
+[verified] §24.1: the largest long-frame share 0.2% (one frame of 34.7 ms in D2's pratzen-low-10x held; D1 none)
+      -> max longPct 0.2 at desk-D2 pratzen-low-10x held (1 of 514, max 34.7); D1 long total 0
+[partly] §24.1: across the five reports nine frames over 25 ms in all, the longest 41.6 ms, none in a decisive orbit
+      -> long (after each segment's first 0.5 s) 9; longest after 0.5 s 41.6 ms (desk-cull pratzen-low-4x cull B BA 1.4, desk-gait play-half gait A BA 2.5); in the first 0.5 s (warm column, not counted) 4 segments over 25 ms, the longest 76.5 ms (desk-cull pratzen-low-4x warm-up); long frames in the decisive views' bracket/warm-up blocks: desk-cull pratzen-low-4x cull B BA 1.4 1
+      note: true of the counted intervals (each segment after its first 0.5 s); the excluded first 0.5 s holds longer frames (warm column) and the statement 'in all' does not say so
+[partly] §24.1: 8.3 desktop: the heaviest frame 839 draw calls (the Overview's orbit) and 2,289,649 triangles (Play at 4x), ag
+      -> max over the segments' MEDIAN calls 839 (desk-D1 overview orbit, desk-D2 overview orbit), median tris 2289649 (desk-D1 play-4x played, desk-D2 play-4x played); over every measured row incl. culling-off B blocks: calls 839, tris 2289649
+      note: the numbers are right as segment medians; 'the heaviest frame' is not measured by the route (no per-frame maximum is kept)
+[verified] §24.1: against L3: the Overview 2,523,605 to 1,978,147 held and 2,125,343 in orbit (-21.6%, -15.8%); the low view at 
+      -> D1: -21.6%, -15.8%, -30.9%, -8.3% (L3 orbit tris 2523605 = its held); D2: overview held 1978147, orbit 2125343, low 4x held 1714213, play-4x 2289649
+      note: D1's figures; the held comparison mixes frames: since 8B a held view reuses the ground's depth (147,088 triangles fewer), L3's held drew it; the orbit (-15.8%) is the like-for-like one
+[verified] §24.1: the low views fewer calls (761 to 592 held at 4x); the Overview's calls 832 to 837-839 (+0.8%)
+      -> L3 761 -> D1 592/D2 592; Overview L3 832 -> D1 837/839, D2 837/839
+[partly] §24.1: no 4x frame of the route rose by more than 10% in triangles or calls against L3 (the largest rise +0.8% in cal
+      -> 4x, the build's own segments: largest rise in calls 1.4% (D1 ph8-overview orbit, D1 play-half played, D2 ph8-overview orbit, D2 play-half played), in triangles 0.3% (D1 paper held, D1 paper pan, D2 paper held, D2 paper pan); 4x diagnostics (figures hidden, effects off): calls up to 5.7% (D1 pratzen-low-4x orbit -figures), triangles up to -15.5%; outside the condition (1x, 10.33x): calls up to 1.2%, triangles up to 64.1% (D1 pratzen-low-1x orbit, D2 pratzen-low-1x orbit)
+      note: holds as worded (4x); the 1x view's moving frame rose 64.1% in triangles (231,985 to 380,601: the ground's depth pass of 8B drawn while the eye moves), outside the condition
+[verified] §24.1: the gait bracket's two sides the same frame (802 calls each; triangles within 68); script median 7.2-7.4 ms wi
+      -> calls A 802 B 802; tris spread 68; js50 A 7.2-7.4 (median 7.2) B 7.2-7.3 (median 7.2); gpu50 A 4.5-4.6 B 4.5-4.6
+      note: the numbers hold; the reading 'the gait adds none' (§24.1, CPU) over-reads them: block B runs gaitStep's checks and the shader hook at amplitude 0, and the blocks' js50 resolve 0.1 ms with a 0.2 ms spread
+[verified] §24.1: js50 L3 to D1/D2: Overview orbit 4.8 to 5.8/5.9 (+1.0/+1.1), orbit -effects 4.0 to 5.1/5.1 (+1.1), Play half 6
+      -> overview orbit: 4.8 -> 5.8/5.9 (1/1.1); overview orbit -effects: 4 -> 5.1/5.1 (1.1/1.1); play-half played: 6.1 -> 7.6/7.6 (1.5/1.5); play-4x played: 6 -> 6.9/7 (0.9/1); others -0.2 to 0.9
+      note: L3 ran Chrome 155, D1/D2 Chrome 156: the rise is Stage 8's and the browser's together, not separable from these runs
+[verified] §24.1: culling removes about 0.9 ms (5.1-5.2 ms with culling, 6.0-6.1 without, both low views)
+      -> pratzen-low-4x: A 5.1-5.2 B 6-6.1 (medians 5.1/6.1); pratzen-low-10x: A 5.1-5.2 B 6-6.1 (medians 5.2/6)
+[verified] §24.2: L3 Play 139-140 fps with p95 at 7.1; now 120-124 with p95 13.9
+      -> L3 fps 139-139.7 p95 7.1; D1/D2 fps 124.3, 120.8, 123, 120.2 p95 13.9
+[partly] §24.2: about one frame in five or six held for two refreshes
+      -> if every interval is one or two refreshes (6.94/13.9 ms): share of frames held two = 144/fps-1 = 15.8, 19.2, 17.1, 19.8% (one in 6.3, 5.2, 5.8, 5.1); the missed-refresh share 1-fps/144 = 13.7, 16.1, 14.6, 16.5%; p90 13.9 and max 20.9 (three refreshes occur)
+      note: an estimate under a one-or-two-refresh assumption, consistent with p50 7.0/p90 13.9; not a count
+[verified] §24.2: the script's p95 8.4-9.0 ms in Play (L3 6.6-6.8), GPU median 4.5-4.6
+      -> js95 8.9, 8.4, 9, 8.5 (L3 6.8, 6.6); js50 6.9, 7.6, 7, 7.6 (L3 6, 6.1); gpu50 4.6, 4.5, 4.6, 4.5
+      note: js50 itself (6.9-7.6 ms) is at or above the 6.94 ms refresh in Play, which supports 'limited by the script' more directly than js95
+[verified] §24.2: the three brackets 'not shown', each 12 comparisons of 12 'neither'
+      -> desk-fx pratzen-low-4x: 0/0/12/0; desk-cull pratzen-low-4x: 0/0/12/0; desk-cull pratzen-low-10x: 0/0/12/0; desk-gait play-half: 0/0/12/0
+[verified] §24.2: every block's median interval 6.9 ms (7.0 in Play)
+      -> orbit blocks p50 6.9; Play blocks 7
+[verified] §24.2: effects off saves about 0.5 ms of script (4.6-4.7 against 5.1-5.2); 5-10 calls fewer; the same triangles withi
+      -> js50 A 5.1-5.2 B 4.6-4.7; calls A 597-600 B 590-592; triangles take two orbit states on each side, A 1872779/1875699, B 1872772/1875692 (A-B 7, 7)
+[verified] §24.2: culling at 4x 597-600 calls and 1,872,779-1,875,699 triangles against 784-786 and 2,208,415 (-24%, -15%); at 1
+      -> 4x A calls 597-600 tris 1872779-1875699; B calls 784-786 tris 2208415 (-23.8%, -15.2%); 10x A calls 624-625 tris 1898129-1899015; B calls 786-787 tris 2209633-2209643
+[partly] §24.2: the GPU's medians fall near 2.2-2.6 or near 3.8-4.6 ms in blocks of either side alike
+      -> bracket blocks' gpu50: {"4":6,"4.1":16,"2.2":7,"2.6":14,"2.3":8,"3.8":7,"3.7":1,"3.9":6,"2.9":2,"4.2":9,"2.8":2,"3.3":1,"2.4":5,"4.5":22,"4.6":6}
+      note: inference about GPU clock states is the record's own; the values are bimodal as stated (see histogram)
+[verified] §24.2: the first report fetched 1,219,603 bytes, DOM ready 5.9 s; the others from cache (2.6-2.8 s)
+      -> desk-D1 1219603 B, 5934 ms; desk-D2 0 B, 2703 ms; desk-fx 300 B, 2782 ms; desk-cull 0 B, 2616 ms; desk-gait 300 B, 2823 ms
+      note: two of the four cached loads transferred 300 bytes (a revalidation, the body from the cache)
+[verified] §25 intro: every phone report names 2,810,630 bytes, SHA-256 bf27887c...db07
+      -> 2810630 bf27887c; 2810630 bf27887c; 2810630 bf27887c; 2810630 bf27887c; 2810630 bf27887c
+[verified] §25 intro: Safari 26.6.1, viewport 402x714, density 3, lowTier, drawn at density 1
+      -> all five
+      note: 'the sun casting no shadow' is not recorded by the route (it reads renderer.shadowMap.enabled, true on every phone report); it follows from app.js:646 (sun.castShadow=!lowTier)
+[verified] §25 intro: starts R1 07:50, R2 08:00, fx 08:10, cull 08:22, gait 08:35
+      -> 07:50, 08:00, 08:10, 08:22, 08:35
+[verified] §25 intro: 184 rows of 184
+      -> 184; every row reproduced by format(): true
+[verified] §25.1: Overview As: fps median 40.8 (27.2-42.8), p50 24 ms (23-37), long median 18.1% (9.6-100), 24 of 24 dropping
+      -> n 24; fps median 40.8 (route's nearest-rank 40.9), range 27.2-42.8, pooled 39.4; p50 median 24 (23-37); long median 18.15 (nearest-rank 19.6) range 9.6-100; 24 of 24
+      note: the long median is 18.15 (printed 18.1)
+[verified] §25.1: Play As: fps median 43.3 (42.8-43.8), p50 23 (22-23), long median 8.6% (5.3-14.2), 24 of 24 dropping
+      -> n 24; fps median 43.349999999999994 (nearest-rank 43.4), range 42.8-43.8, pooled 43.3; p50 23 (22-23); long median 8.6 range 5.3-14.2; 24 of 24
+      note: the fps median is 43.349999999999994 (printed 43.3)
+[verified] §25.1: the warm-ups: Overview 49.5 and 49.9, 6.8% and 5.4% long; Play 45.2 and 45.7, 2.6% and 2.0% long
+      -> Overview 49.5 fps, 6.8% long, calls 532, tris 1308987; 49.9 fps, 5.4% long, calls 532, tris 1308987 | Play 45.2 fps, 2.6% long, calls 428, tris 1203643; 45.7 fps, 2% long, calls 428, tris 1203479
+      note: the warm-ups are not the blocks' content: Play's warm-up plays 45 s from 08:30 (its end clock not recorded; the blocks 6 s each from 08:30), its median frame 428 calls/1203643, 428 calls/1203479 against the As' 517 calls/1363585-1364239; the Overview's warm-up orbits 2.5 turns, each block the first 120 degrees
+[verified] §25.1: figures hidden: Overview 48.5 (47.4-54.4); Play 59.2 (58.5-59.6), 0% long
+      -> Overview 47.4, 48.8, 48.2, 54.4 (median 48.5); Play 58.5, 59.1, 59.3, 59.6 (median 59.2), long 0, 0, 0, 0
+[verified] §25.1: the low view at 4x (the brackets' A blocks): 60.0 and 59.8 fps, 17 ms, 0% (at most 0.3%), 0 of 28; warm-up 60,
+      -> fx A median 60, cull A median 59.8; p50 17; long max 0.3; blocks 28; warm-ups 60/0, 59.9/0
+[verified] §25.1: in each run the Overview fell for two blocks to 27.2-32.0 fps (p50 34-37 ms, 66-100% long) and recovered (R1 a
+      -> R1 density1Pass 1 27.5 fps p50 37 long 100%; R1 A 1 27.5 fps p50 37 long 100%; R2 A 1 27.2 fps p50 37 long 100%; R2 A 1 32 fps p50 34 long 65.9%
+      note: numbers as stated; 'the phone's own state' is an attribution: in these blocks js50 is 17-18 ms against 6-7 ms elsewhere (a CPU-side event), and they recover within one or two blocks
+[verified] §25.1: section 14.1's rule: both runs stand, both test both kinds, no candidate cures, rule 4; the reference cures Pl
+      -> VERDICT: rule 4: nothing is built | figures (reference)      ph8-overview  run 1 cures false gain 1.375 |  | figures (reference)      ph8-overview  run 2 cures false gain 1.431 |  | figures (reference)      play-half     run 1 cures true  gain 1.353 |  | figures (reference)      play-half     run 2 cures true  gain 1.353 | 
+[partly] §25.1: 8.3 phone: heaviest frame 1,364,901 triangles (Play) against 1.62 million; the Overview 1,309,505 (P5's 1,469,
+      -> max of the phone segments' MEDIAN tris 1364901 (play-half gait B BA 1.0); the Overview As' median tris 1309393-1309505; P5 ph8-overview held 1469251, orbit 1469185
+      note: numbers right as medians; 'heaviest frame' is not measured; the CI census's phone maximum (1,288,561, phone-390-first) is below what the phone drew at the median in Play (1.36 M) and phase 8's Overview (1.31 M)
+[verified] §25.1: draw calls against P5's: Overview 532 vs 525 (+1.3%), Play 517 vs 508 (+1.8%), low view at 4x 211 vs 442 (cull
+      -> Overview As 532 vs P5 525 (1.3%); Play As 517 vs P5 508 (1.8%); low 4x cull A 211 vs P5 orbit 442; cull B 446-448
+      note: P5's Play covered 08:30-09:10.6 in 12 s (its recorded clock), the blocks 6 s each from 08:30 (their end clock not recorded): the medians are of different stretches of the clock
+[verified] §25.1: across routes against P5: Overview orbit 47 fps, 2.7% long -> 40.8, 18.1%; Play half 53, 1.6% -> 43.3, 8.6%; m
+      -> P5 ph8 orbit 47/2.7%/p50 22; P5 play-half 53/1.6%/p50 17
+      note: the record labels it across routes; also across clock windows and the phone's state; P5's own segments were not 'held' at 60 (47 fps, p50 22 ms; 53 fps, p95 24 ms)
+[verified] §25.1: P3/P4's density1Pass: Overview 29.4 fps and 86.2% long; Play 40.0 and 38.7%; their As 21.0 and 27.1, 100% long
+      -> Overview d1p 26.1/100, 33.6/72.3, 25.5/100, 32.7/72.1 (medians 29.400000000000002/86.15); Play d1p 40.1/38.8, 39.5/43, 39.8/38.6, 40.2/34.5 (medians 39.95/38.7); As medians 21 / 27.1, long 100
+      note: numbers right; the inference drawn from them (Stage 8's build the better, by culling and fewer triangles) rests on a session whose As ran 21-27 fps (100% long) and on a proxy configuration (the stale shadow map still sampled); in phase 8's Overview culling saves nothing (532 calls against about 525) and 11% fewer triangles cannot by themselves give +39% fps: the phone's state dominates this reading
+[verified] §25.2: culling: not shown, 7 of 12 faster, none slower; 59.8 fps median (59.3-60) with, 54.1 (52.8-60) without; 211 c
+      -> faster 7, slower 0; A fps 59.3-60 median 59.8; B fps 52.8-60 median 54.1; tris A 857312-857416 B 1312293-1312608 (-52.8% calls, -34.7% tris)
+[verified] §25.2: effects: not shown, 4 of 12 effects-on faster, none slower; 5 of 14 effects-off blocks at 35-47 fps (19-95% lo
+      -> faster 4; slow B blocks fx B AB 1.5: 39.7 fps, 57.7%, js50 11; fx B AB 2.5: 35.2 fps, 94.9%, js50 12; fx B BA 2.2: 35.2 fps, 95.4%, js50 12; fx B BA 2.4: 46.5 fps, 19.2%, js50 5; fx B BA 2.6: 38.6 fps, 68.4%, js50 12; A fps 58.4-60
+[verified] §25.2: gait: not shown, 12 of 12 neither; 43.0 fps with the gait, 43.3 at rest; p50 23 in every block; the same calls
+      -> neither 12; A median 43.05 (42.6-43.3), B median 43.3 (43-43.4); p50 23; calls A 517 B 517; tris A 1363585-1364249 B 1363623-1364901; js50 A 7-8 B 8; long A 7.5-15.1 B 6.6-11.7

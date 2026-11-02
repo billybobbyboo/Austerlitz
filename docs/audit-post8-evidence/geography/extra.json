@@ -1,0 +1,1332 @@
+{
+ "tool": "tools/audit-post8/geography/extra.js",
+ "root": "/tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/geography-iso",
+ "profiles": {
+  "pratzeberg-augezd": {
+   "from": [
+    285,
+    289
+   ],
+   "to": [
+    297,
+    372
+   ],
+   "lengthKm": 2.65,
+   "rows": [
+    {
+     "k": 0,
+     "map": [
+      285,
+      289
+     ],
+     "dem": 326,
+     "model": 324.1
+    },
+    {
+     "k": 1,
+     "map": [
+      285.8,
+      294.5
+     ],
+     "dem": 330,
+     "model": 320.4
+    },
+    {
+     "k": 2,
+     "map": [
+      286.6,
+      300.1
+     ],
+     "dem": 327,
+     "model": 298.6
+    },
+    {
+     "k": 3,
+     "map": [
+      287.4,
+      305.6
+     ],
+     "dem": 313,
+     "model": 270.2
+    },
+    {
+     "k": 4,
+     "map": [
+      288.2,
+      311.1
+     ],
+     "dem": 310,
+     "model": 254.7
+    },
+    {
+     "k": 5,
+     "map": [
+      289,
+      316.7
+     ],
+     "dem": 311,
+     "model": 240.8
+    },
+    {
+     "k": 6,
+     "map": [
+      289.8,
+      322.2
+     ],
+     "dem": 312,
+     "model": 230.2
+    },
+    {
+     "k": 7,
+     "map": [
+      290.6,
+      327.7
+     ],
+     "dem": 292,
+     "model": 223.3
+    },
+    {
+     "k": 8,
+     "map": [
+      291.4,
+      333.3
+     ],
+     "dem": 266,
+     "model": 217.9
+    },
+    {
+     "k": 9,
+     "map": [
+      292.2,
+      338.8
+     ],
+     "dem": 254,
+     "model": 212.5
+    },
+    {
+     "k": 10,
+     "map": [
+      293,
+      344.3
+     ],
+     "dem": 248,
+     "model": 207.3
+    },
+    {
+     "k": 11,
+     "map": [
+      293.8,
+      349.9
+     ],
+     "dem": 244,
+     "model": 202
+    },
+    {
+     "k": 12,
+     "map": [
+      294.6,
+      355.4
+     ],
+     "dem": 244,
+     "model": 196.9
+    },
+    {
+     "k": 13,
+     "map": [
+      295.4,
+      360.9
+     ],
+     "dem": 229,
+     "model": 192.8
+    },
+    {
+     "k": 14,
+     "map": [
+      296.2,
+      366.5
+     ],
+     "dem": 199,
+     "model": 190.2
+    },
+    {
+     "k": 15,
+     "map": [
+      297,
+      372
+     ],
+     "dem": 194,
+     "model": 189.8
+    }
+   ],
+   "meanModelMinusDem": -39.2,
+   "worst": -81.8,
+   "over238Dem": 13,
+   "over238Model": 6,
+   "n": 16
+  },
+  "pratzeberg-hostieradek": {
+   "from": [
+    285,
+    289
+   ],
+   "to": [
+    342,
+    309
+   ],
+   "lengthKm": 1.91,
+   "rows": [
+    {
+     "k": 0,
+     "map": [
+      285,
+      289
+     ],
+     "dem": 326,
+     "model": 324.1
+    },
+    {
+     "k": 1,
+     "map": [
+      288.8,
+      290.3
+     ],
+     "dem": 325,
+     "model": 319.3
+    },
+    {
+     "k": 2,
+     "map": [
+      292.6,
+      291.7
+     ],
+     "dem": 320,
+     "model": 307.4
+    },
+    {
+     "k": 3,
+     "map": [
+      296.4,
+      293
+     ],
+     "dem": 314,
+     "model": 283.4
+    },
+    {
+     "k": 4,
+     "map": [
+      300.2,
+      294.3
+     ],
+     "dem": 310,
+     "model": 258.3
+    },
+    {
+     "k": 5,
+     "map": [
+      304,
+      295.7
+     ],
+     "dem": 291,
+     "model": 243.1
+    },
+    {
+     "k": 6,
+     "map": [
+      307.8,
+      297
+     ],
+     "dem": 268,
+     "model": 236.1
+    },
+    {
+     "k": 7,
+     "map": [
+      311.6,
+      298.3
+     ],
+     "dem": 263,
+     "model": 230.4
+    },
+    {
+     "k": 8,
+     "map": [
+      315.4,
+      299.7
+     ],
+     "dem": 245,
+     "model": 225.8
+    },
+    {
+     "k": 9,
+     "map": [
+      319.2,
+      301
+     ],
+     "dem": 235,
+     "model": 222.1
+    },
+    {
+     "k": 10,
+     "map": [
+      323,
+      302.3
+     ],
+     "dem": 228,
+     "model": 218.7
+    },
+    {
+     "k": 11,
+     "map": [
+      326.8,
+      303.7
+     ],
+     "dem": 222,
+     "model": 215.1
+    },
+    {
+     "k": 12,
+     "map": [
+      330.6,
+      305
+     ],
+     "dem": 217,
+     "model": 211.3
+    },
+    {
+     "k": 13,
+     "map": [
+      334.4,
+      306.3
+     ],
+     "dem": 214,
+     "model": 207.4
+    },
+    {
+     "k": 14,
+     "map": [
+      338.2,
+      307.7
+     ],
+     "dem": 210,
+     "model": 203.6
+    },
+    {
+     "k": 15,
+     "map": [
+      342,
+      309
+     ],
+     "dem": 203,
+     "model": 200.1
+    }
+   ],
+   "meanModelMinusDem": -17.8,
+   "worst": -51.7,
+   "over238Dem": 9,
+   "over238Model": 6,
+   "n": 16
+  },
+  "pratzen-augezd": {
+   "from": [
+    276,
+    243
+   ],
+   "to": [
+    297,
+    372
+   ],
+   "lengthKm": 4.13,
+   "rows": [
+    {
+     "k": 0,
+     "map": [
+      276,
+      243
+     ],
+     "dem": 250,
+     "model": 245.1
+    },
+    {
+     "k": 1,
+     "map": [
+      277.4,
+      251.6
+     ],
+     "dem": 242,
+     "model": 248.9
+    },
+    {
+     "k": 2,
+     "map": [
+      278.8,
+      260.2
+     ],
+     "dem": 259,
+     "model": 253.3
+    },
+    {
+     "k": 3,
+     "map": [
+      280.2,
+      268.8
+     ],
+     "dem": 275,
+     "model": 260.4
+    },
+    {
+     "k": 4,
+     "map": [
+      281.6,
+      277.4
+     ],
+     "dem": 291,
+     "model": 293.5
+    },
+    {
+     "k": 5,
+     "map": [
+      283,
+      286
+     ],
+     "dem": 317,
+     "model": 324.6
+    },
+    {
+     "k": 6,
+     "map": [
+      284.4,
+      294.6
+     ],
+     "dem": 327,
+     "model": 321.9
+    },
+    {
+     "k": 7,
+     "map": [
+      285.8,
+      303.2
+     ],
+     "dem": 313,
+     "model": 284.3
+    },
+    {
+     "k": 8,
+     "map": [
+      287.2,
+      311.8
+     ],
+     "dem": 308,
+     "model": 254.3
+    },
+    {
+     "k": 9,
+     "map": [
+      288.6,
+      320.4
+     ],
+     "dem": 310,
+     "model": 233.7
+    },
+    {
+     "k": 10,
+     "map": [
+      290,
+      329
+     ],
+     "dem": 292,
+     "model": 222.4
+    },
+    {
+     "k": 11,
+     "map": [
+      291.4,
+      337.6
+     ],
+     "dem": 257,
+     "model": 214.1
+    },
+    {
+     "k": 12,
+     "map": [
+      292.8,
+      346.2
+     ],
+     "dem": 248,
+     "model": 205.9
+    },
+    {
+     "k": 13,
+     "map": [
+      294.2,
+      354.8
+     ],
+     "dem": 244,
+     "model": 197.7
+    },
+    {
+     "k": 14,
+     "map": [
+      295.6,
+      363.4
+     ],
+     "dem": 209,
+     "model": 191.5
+    },
+    {
+     "k": 15,
+     "map": [
+      297,
+      372
+     ],
+     "dem": 194,
+     "model": 189.8
+    }
+   ],
+   "meanModelMinusDem": -24.7,
+   "worst": -76.3,
+   "over238Dem": 14,
+   "over238Model": 9,
+   "n": 16
+  },
+  "sokolnitz-hostieradek": {
+   "from": [
+    208,
+    365
+   ],
+   "to": [
+    342,
+    309
+   ],
+   "lengthKm": 4.59,
+   "rows": [
+    {
+     "k": 0,
+     "map": [
+      208,
+      365
+     ],
+     "dem": 206,
+     "model": 210.6
+    },
+    {
+     "k": 1,
+     "map": [
+      216.9,
+      361.3
+     ],
+     "dem": 202,
+     "model": 205.1
+    },
+    {
+     "k": 2,
+     "map": [
+      225.9,
+      357.5
+     ],
+     "dem": 199,
+     "model": 207.1
+    },
+    {
+     "k": 3,
+     "map": [
+      234.8,
+      353.8
+     ],
+     "dem": 204,
+     "model": 212.5
+    },
+    {
+     "k": 4,
+     "map": [
+      243.7,
+      350.1
+     ],
+     "dem": 220,
+     "model": 217.4
+    },
+    {
+     "k": 5,
+     "map": [
+      252.7,
+      346.3
+     ],
+     "dem": 224,
+     "model": 218.8
+    },
+    {
+     "k": 6,
+     "map": [
+      261.6,
+      342.6
+     ],
+     "dem": 230,
+     "model": 218.5
+    },
+    {
+     "k": 7,
+     "map": [
+      270.5,
+      338.9
+     ],
+     "dem": 249,
+     "model": 217.8
+    },
+    {
+     "k": 8,
+     "map": [
+      279.5,
+      335.1
+     ],
+     "dem": 265,
+     "model": 218.6
+    },
+    {
+     "k": 9,
+     "map": [
+      288.4,
+      331.4
+     ],
+     "dem": 275,
+     "model": 220.9
+    },
+    {
+     "k": 10,
+     "map": [
+      297.3,
+      327.7
+     ],
+     "dem": 298,
+     "model": 218.9
+    },
+    {
+     "k": 11,
+     "map": [
+      306.3,
+      323.9
+     ],
+     "dem": 297,
+     "model": 215.4
+    },
+    {
+     "k": 12,
+     "map": [
+      315.2,
+      320.2
+     ],
+     "dem": 263,
+     "model": 212.8
+    },
+    {
+     "k": 13,
+     "map": [
+      324.1,
+      316.5
+     ],
+     "dem": 248,
+     "model": 207.7
+    },
+    {
+     "k": 14,
+     "map": [
+      333.1,
+      312.7
+     ],
+     "dem": 225,
+     "model": 202.6
+    },
+    {
+     "k": 15,
+     "map": [
+      342,
+      309
+     ],
+     "dem": 203,
+     "model": 200.1
+    }
+   ],
+   "meanModelMinusDem": -25.2,
+   "worst": -81.6,
+   "over238Dem": 7,
+   "over238Model": 0,
+   "n": 16
+  }
+ },
+ "southernBox": {
+  "box": "map x 270-330, y 295-350 (plateau.json's southernPlateau: model mean 228.1 m, surveyed 273.4 m)",
+  "formations": [
+   {
+    "id": "buxhowden",
+    "name": "Left Wing Command",
+    "nation": "ru",
+    "arm": "hq",
+    "from": "04:00",
+    "to": "08:20",
+    "samples": 27,
+    "modelM": [
+     215,
+     218
+    ]
+   },
+   {
+    "id": "dok",
+    "name": "First Column",
+    "nation": "ru",
+    "arm": "inf",
+    "from": "04:00",
+    "to": "07:10",
+    "samples": 20,
+    "modelM": [
+     214,
+     219
+    ]
+   },
+   {
+    "id": "lang",
+    "name": "Second Column",
+    "nation": "ru",
+    "arm": "inf",
+    "from": "04:00",
+    "to": "07:10",
+    "samples": 20,
+    "modelM": [
+     239,
+     256
+    ]
+   },
+   {
+    "id": "kamensky",
+    "name": "Kamensky's Brigade",
+    "nation": "ru",
+    "arm": "inf",
+    "from": "08:50",
+    "to": "09:00",
+    "samples": 2,
+    "modelM": [
+     274,
+     288
+    ]
+   },
+   {
+    "id": "sthilaire",
+    "name": "Saint-Hilaire's Division",
+    "nation": "fr",
+    "arm": "inf",
+    "from": "13:30",
+    "to": "14:00",
+    "samples": 4,
+    "modelM": [
+     229,
+     309
+    ]
+   },
+   {
+    "id": "gqg",
+    "name": "Imperial Headquarters",
+    "nation": "fr",
+    "arm": "hq",
+    "from": "13:50",
+    "to": "14:20",
+    "samples": 4,
+    "modelM": [
+     209,
+     242
+    ]
+   },
+   {
+    "id": "heightguns",
+    "name": "French guns on the heights",
+    "nation": "fr",
+    "arm": "art",
+    "from": "14:00",
+    "to": "14:20",
+    "samples": 3,
+    "modelM": [
+     215,
+     270
+    ]
+   },
+   {
+    "id": "vandamme",
+    "name": "Vandamme's Division",
+    "nation": "fr",
+    "arm": "inf",
+    "from": "14:00",
+    "to": "14:50",
+    "samples": 6,
+    "modelM": [
+     215,
+     299
+    ]
+   }
+  ]
+ },
+ "chapelSight": {
+  "note": "eye 3 m above the ground at each end's own ground; the target the ground at the mere's centre (the model's pond bed under the drawn ice; today's drained bed); GLO-90 is a surface model sampled every 300 m (houses and trees smoothed)",
+  "gtChapel": {
+   "map": [
+    291.31,
+    354.05
+   ],
+   "modelM": 200.5,
+   "demM": 242.5,
+   "model": {
+    "eyeM": 203.5,
+    "targetM": 163.9,
+    "distanceM": 2240,
+    "visible": false,
+    "marginM": -22.8,
+    "obstruction": {
+     "f": 0.55,
+     "map": [
+      278.5,
+      390.9
+     ],
+     "h": 194.3
+    }
+   },
+   "survey": {
+    "eyeM": 245.5,
+    "targetM": 188.9,
+    "distanceM": 2240,
+    "visible": true,
+    "marginM": 0.2,
+    "obstruction": {
+     "f": 0.995,
+     "map": [
+      268.1,
+      420.7
+     ],
+     "h": 188.9
+    }
+   }
+  },
+  "gqg8": {
+   "map": [
+    294,
+    352
+   ],
+   "modelM": 200,
+   "demM": 240.2,
+   "model": {
+    "eyeM": 203,
+    "targetM": 163.9,
+    "distanceM": 2330,
+    "visible": false,
+    "marginM": -22.4,
+    "obstruction": {
+     "f": 0.565,
+     "map": [
+      279.3,
+      391
+     ],
+     "h": 193.6
+    }
+   },
+   "survey": {
+    "eyeM": 243.2,
+    "targetM": 188.9,
+    "distanceM": 2330,
+    "visible": false,
+    "marginM": -2.1,
+    "obstruction": {
+     "f": 0.035,
+     "map": [
+      293.1,
+      354.4
+     ],
+     "h": 241.4
+    }
+   }
+  }
+ },
+ "banks": {
+  "note": "today's Goldbach = OSM's Roketnice (relation 13723335) to its mouth on the Říčka, then the Říčka (relation 7052180); regulated modern channels, not 1805's (at Sokolnitz 8J found the 1825 bed within about 10 m of today's)",
+  "roketniceMouthMap": [
+   202.6,
+   225.3
+  ],
+  "rows": [
+   {
+    "kind": "village",
+    "id": "Girzikowitz",
+    "p": [
+     233,
+     162
+    ],
+    "drawn": {
+     "m": 172,
+     "bank": "west"
+    },
+    "today": {
+     "m": 170,
+     "bank": "east"
+    },
+    "swap": true
+   },
+   {
+    "kind": "village",
+    "id": "Puntowitz",
+    "p": [
+     213,
+     222
+    ],
+    "drawn": {
+     "m": 45,
+     "bank": "east"
+    },
+    "today": {
+     "m": 238,
+     "bank": "east"
+    },
+    "swap": false
+   },
+   {
+    "kind": "village",
+    "id": "Kobelnitz",
+    "p": [
+     205,
+     277
+    ],
+    "drawn": {
+     "m": 79,
+     "bank": "west"
+    },
+    "today": {
+     "m": 91,
+     "bank": "east"
+    },
+    "swap": true
+   },
+   {
+    "kind": "village",
+    "id": "Sokolnitz",
+    "p": [
+     208,
+     365
+    ],
+    "drawn": {
+     "m": 207,
+     "bank": "west"
+    },
+    "today": {
+     "m": 206,
+     "bank": "west"
+    },
+    "swap": false
+   },
+   {
+    "kind": "anchor",
+    "id": "sthilaire@0",
+    "nation": "fr",
+    "arm": "inf",
+    "p": [
+     201,
+     221
+    ],
+    "grade": null,
+    "drawn": {
+     "m": 336,
+     "bank": "west"
+    },
+    "today": {
+     "m": 94,
+     "bank": "west"
+    },
+    "swap": false,
+    "act": "Standing in fog behind Puntowitz, hidden from the plateau"
+   },
+   {
+    "kind": "anchor",
+    "id": "sthilaire@2",
+    "nation": "fr",
+    "arm": "inf",
+    "p": [
+     206,
+     231
+    ],
+    "grade": null,
+    "drawn": {
+     "m": 146,
+     "bank": "west"
+    },
+    "today": {
+     "m": 62,
+     "bank": "east"
+    },
+    "swap": true,
+    "act": "Crosses the Goldbach and forms for the attack"
+   },
+   {
+    "kind": "anchor",
+    "id": "vandamme@0",
+    "nation": "fr",
+    "arm": "inf",
+    "p": [
+     217,
+     171
+    ],
+    "grade": null,
+    "drawn": {
+     "m": 503,
+     "bank": "west"
+    },
+    "today": {
+     "m": 240,
+     "bank": "west"
+    },
+    "swap": false,
+    "act": "Concealed in the valley behind Girzikowitz"
+   },
+   {
+    "kind": "anchor",
+    "id": "vandamme@2",
+    "nation": "fr",
+    "arm": "inf",
+    "p": [
+     221,
+     182
+    ],
+    "grade": null,
+    "drawn": {
+     "m": 238,
+     "bank": "west"
+    },
+    "today": {
+     "m": 125,
+     "bank": "west"
+    },
+    "swap": false,
+    "act": "Crosses the Goldbach"
+   },
+   {
+    "kind": "anchor",
+    "id": "dhautpoul@5",
+    "nation": "fr",
+    "arm": "cav",
+    "p": [
+     265,
+     155
+    ],
+    "grade": null,
+    "drawn": {
+     "m": 745,
+     "bank": "east"
+    },
+    "today": {
+     "m": 1199,
+     "bank": "east"
+    },
+    "swap": false,
+    "act": "Supports Nansouty against the Allied cavalry"
+   },
+   {
+    "kind": "anchor",
+    "id": "rivaud@3",
+    "nation": "fr",
+    "arm": "inf",
+    "p": [
+     243,
+     179
+    ],
+    "grade": null,
+    "drawn": {
+     "m": 346,
+     "bank": "east"
+    },
+    "today": {
+     "m": 576,
+     "bank": "east"
+    },
+    "swap": false,
+    "act": "Crosses the brook by Girzikowitz with Soult's attack, toward the heights by Blasowitz (Stutterheim); Mikhailovsky-Danilevsky has part of the"
+   },
+   {
+    "kind": "anchor",
+    "id": "drouet@3",
+    "nation": "fr",
+    "arm": "inf",
+    "p": [
+     232,
+     194
+    ],
+    "grade": null,
+    "drawn": {
+     "m": 239,
+     "bank": "east"
+    },
+    "today": {
+     "m": 256,
+     "bank": "east"
+    },
+    "swap": false,
+    "act": ""
+   },
+   {
+    "kind": "anchor",
+    "id": "prz@8",
+    "nation": "ru",
+    "arm": "inf",
+    "p": [
+     227,
+     309
+    ],
+    "grade": null,
+    "drawn": {
+     "m": 481,
+     "bank": "east"
+    },
+    "today": {
+     "m": 480,
+     "bank": "east"
+    },
+    "swap": false,
+    "act": "Attempts to break out north toward Kobelnitz; the column disintegrates"
+   }
+  ],
+  "swaps": [
+   "Girzikowitz",
+   "Kobelnitz",
+   "sthilaire@2"
+  ]
+ },
+ "brooks": {
+  "brooks0": {
+   "drawn": [
+    [
+     275,
+     147
+    ],
+    [
+     256,
+     185
+    ],
+    [
+     225,
+     236
+    ]
+   ],
+   "osmWaterways": 30,
+   "medianM": 208,
+   "maxM": 675,
+   "within150m": 0.43,
+   "nearest": {
+    "Romza (stream, way 401910245)": 3,
+    "(unnamed) (stream, way 1196513589)": 5,
+    "(unnamed) (stream, way 185482968)": 3,
+    "(unnamed) (stream, way 185482967)": 1,
+    "(unnamed) (stream, way 81924935)": 11,
+    "Jiříkovický potok (stream, way 103031549)": 11,
+    "Roketnice (stream, way 474303165)": 4,
+    "Pracký potok (stream, way 81919407)": 4
+   }
+  },
+  "brooks2": {
+   "drawn": [
+    [
+     277,
+     318
+    ],
+    [
+     251,
+     341
+    ],
+    [
+     214.8,
+     365.2
+    ]
+   ],
+   "osmWaterways": 5,
+   "medianM": 772,
+   "maxM": 1828,
+   "within150m": 0.1,
+   "nearest": {
+    "(unnamed) (stream, way 81935339)": 35,
+    "Říčka (stream, way 102596825)": 7
+   }
+  }
+ },
+ "highway": {
+  "osmWays": 18,
+  "samples": 166,
+  "medianM": 3,
+  "p95M": 7,
+  "maxM": 16,
+  "worst": [
+   {
+    "p": [
+     226.2,
+     102.1
+    ],
+    "m": 16
+   },
+   {
+    "p": [
+     226.9,
+     101.6
+    ],
+    "m": 15
+   },
+   {
+    "p": [
+     225.5,
+     102.7
+    ],
+    "m": 14
+   },
+   {
+    "p": [
+     227.6,
+     101
+    ],
+    "m": 12
+   },
+   {
+    "p": [
+     224.7,
+     103.2
+    ],
+    "m": 9
+   }
+  ],
+  "santonToDrawnM": 465,
+  "santonToOsmM": 461,
+  "holubitzToDrawnM": 722,
+  "holubitzToOsmM": 724,
+  "postToDrawnM": 26,
+  "postToOsmM": 21
+ },
+ "chapel": {
+  "osm": {
+   "name": "svatý Antonín Paduánský",
+   "lat": 49.1089746,
+   "lon": 16.7568495,
+   "map": [
+    290.86,
+    357.42
+   ]
+  },
+  "gtToOsm": {
+   "m": 108,
+   "az": 205
+  },
+  "atOsm": {
+   "modelM": 198.2,
+   "demM": 240
+  },
+  "atGt": {
+   "modelM": 200.5,
+   "demM": 242.1
+  },
+  "gridMaxDem": 249,
+  "villageAugezd": {
+   "modelM": 189.9,
+   "sourcedM": 195
+  }
+ },
+ "garden": {
+  "osmAreaHa": 16.91,
+  "drawnAreaHa": 16.96,
+  "hausdorffM": 3,
+  "drawnVertices": 10,
+  "osmVertices": 28,
+  "realChateauInGarden": true,
+  "realChateauToGardenEdgeM": 97,
+  "drawnChateauInGarden": true,
+  "drawnChateauToGardenEdgeM": 48,
+  "gardenXRange": [
+   480.7,
+   505.5
+  ],
+  "realChateauMap": [
+   501.52,
+   122.68
+  ],
+  "drawnChateauMap": [
+   494.41,
+   123.26
+  ]
+ },
+ "srtmCrossCheck": {
+  "source": "OpenTopoData srtm30m (SRTM 1 arc-second, 2000), raw/opentopodata-srtm30m-check.json; added by hand from the response (no script: six points)",
+  "rows": [
+   {
+    "set": "pratzeberg-augezd",
+    "k": 4,
+    "map": [
+     288.2,
+     311.1
+    ],
+    "srtm": 307,
+    "glo90": 310,
+    "model": 254.7,
+    "srtmMinusGlo90": -3,
+    "modelMinusSrtm": -52.3
+   },
+   {
+    "set": "pratzeberg-augezd",
+    "k": 5,
+    "map": [
+     289,
+     316.7
+    ],
+    "srtm": 309,
+    "glo90": 311,
+    "model": 240.8,
+    "srtmMinusGlo90": -2,
+    "modelMinusSrtm": -68.2
+   },
+   {
+    "set": "pratzeberg-augezd",
+    "k": 6,
+    "map": [
+     289.8,
+     322.2
+    ],
+    "srtm": 311,
+    "glo90": 312,
+    "model": 230.2,
+    "srtmMinusGlo90": -1,
+    "modelMinusSrtm": -80.8
+   },
+   {
+    "set": "sokolnitz-hostieradek",
+    "k": 9,
+    "map": [
+     288.4,
+     331.4
+    ],
+    "srtm": 268,
+    "glo90": 275,
+    "model": 220.9,
+    "srtmMinusGlo90": -7,
+    "modelMinusSrtm": -47.1
+   },
+   {
+    "set": "sokolnitz-hostieradek",
+    "k": 10,
+    "map": [
+     297.3,
+     327.7
+    ],
+    "srtm": 292,
+    "glo90": 298,
+    "model": 218.9,
+    "srtmMinusGlo90": -6,
+    "modelMinusSrtm": -73.1
+   },
+   {
+    "set": "pratzen-augezd",
+    "k": 8,
+    "map": [
+     287.2,
+     311.8
+    ],
+    "srtm": 308,
+    "glo90": 308,
+    "model": 254.3,
+    "srtmMinusGlo90": 0,
+    "modelMinusSrtm": -53.7
+   }
+  ]
+ }
+}

@@ -1,0 +1,2487 @@
+{
+ "name": "s14-glide-input",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-02T06:33:22.848Z",
+ "opts": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1280,
+    720
+   ],
+   "o": {},
+   "bootMs": 98348
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 98768,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 14,
+     "dropped": 17
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.41,
+      64.61
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 68
+  },
+  {
+   "page": 0,
+   "label": "vantage glide + drag: frames until no tween; start the glide (real click or key); 10 frames",
+   "at": 98847,
+   "ret": {
+    "pos": [
+     -43.26,
+     512.1,
+     86.83
+    ],
+    "tgt": [
+     -37.08,
+     0.72,
+     3.66
+    ],
+    "freeCam": false,
+    "twCam": true,
+    "vantage": "zuran"
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "zuran",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[Zuran]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 14,
+     "dropped": 17
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -43.26,
+      512.1,
+      86.83
+     ],
+     "tgt": [
+      -37.08,
+      0.72,
+      3.66
+     ]
+    }
+   },
+   "log": [],
+   "ms": 16835
+  },
+  {
+   "page": 0,
+   "label": "vantage glide + drag: the visitor's input mid-glide (real), then the camera at its end",
+   "at": 115682,
+   "ret": {
+    "pos": [
+     -75.66,
+     467.88,
+     142.71
+    ],
+    "tgt": [
+     -31.64,
+     0.47,
+     2.37
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 13
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -75.66,
+      467.88,
+      142.71
+     ],
+     "tgt": [
+      -31.64,
+      0.47,
+      2.37
+     ]
+    }
+   },
+   "log": [],
+   "ms": 30598
+  },
+  {
+   "page": 0,
+   "label": "vantage glide + wheel: frames until no tween; start the glide (real click or key); 10 frames",
+   "at": 147742,
+   "ret": {
+    "pos": [
+     -89.45,
+     25.42,
+     -44.31
+    ],
+    "tgt": [
+     7.55,
+     6.65,
+     -5.29
+    ],
+    "freeCam": false,
+    "twCam": true,
+    "vantage": "plateau"
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plateau",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[Pratzen]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 60,
+     "placed": 12,
+     "dropped": 5
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -89.45,
+      25.42,
+      -44.31
+     ],
+     "tgt": [
+      7.55,
+      6.65,
+      -5.29
+     ]
+    }
+   },
+   "log": [],
+   "ms": 3185
+  },
+  {
+   "page": 0,
+   "label": "vantage glide + wheel: the visitor's input mid-glide (real), then the camera at its end",
+   "at": 150927,
+   "ret": {
+    "pos": [
+     -95.97,
+     25.82,
+     -33.21
+    ],
+    "tgt": [
+     5.82,
+     6.76,
+     -5.64
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[Pratzen]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 65,
+     "placed": 10,
+     "dropped": 8
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -95.97,
+      25.82,
+      -33.21
+     ],
+     "tgt": [
+      5.82,
+      6.76,
+      -5.64
+     ]
+    }
+   },
+   "log": [],
+   "ms": 23565
+  },
+  {
+   "page": 0,
+   "label": "phase glide (PageDown) + drag: frames until no tween; start the glide (real click or key); 10 frames",
+   "at": 175287,
+   "ret": {
+    "pos": [
+     23,
+     27.13,
+     55
+    ],
+    "tgt": [
+     -31,
+     9.08,
+     -13
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 26,
+     "dropped": 9
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      23,
+      27.13,
+      55
+     ],
+     "tgt": [
+      -31,
+      9.08,
+      -13
+     ]
+    }
+   },
+   "log": [],
+   "ms": 741
+  },
+  {
+   "page": 0,
+   "label": "phase glide (PageDown) + drag: the visitor's input mid-glide (real), then the camera at its end",
+   "at": 176029,
+   "ret": {
+    "pos": [
+     -4.02,
+     27.13,
+     45.65
+    ],
+    "tgt": [
+     -82.58,
+     0.87,
+     -53.28
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 13,
+     "dropped": 16
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -4.02,
+      27.13,
+      45.65
+     ],
+     "tgt": [
+      -82.58,
+      0.87,
+      -53.28
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2154
+  },
+  {
+   "page": 0,
+   "label": "dossier centring + drag: frames until no tween; start the glide (real click or key); 10 frames",
+   "at": 179169,
+   "ret": {
+    "pos": [
+     -10.07,
+     29.52,
+     55.03
+    ],
+    "tgt": [
+     -81.79,
+     0.73,
+     -48.11
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:legrand",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "3e Div., IV Corps · FranceLegrand's DivisionGen. de division Claude Legrand",
+     "len": 1659,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#drawer-back",
+    "focusVisible": false,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 20,
+     "dropped": 8
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -10.07,
+      29.52,
+      55.03
+     ],
+     "tgt": [
+      -81.79,
+      0.73,
+      -48.11
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1135
+  },
+  {
+   "page": 0,
+   "label": "dossier centring + drag: the visitor's input mid-glide (real), then the camera at its end",
+   "at": 180304,
+   "ret": {
+    "pos": [
+     -30.4,
+     36.63,
+     80.21
+    ],
+    "tgt": [
+     -79.06,
+     0.5,
+     -31.49
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:legrand",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "3e Div., IV Corps · FranceLegrand's DivisionGen. de division Claude Legrand",
+     "len": 1659,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 15,
+     "dropped": 9
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -30.4,
+      36.63,
+      80.21
+     ],
+     "tgt": [
+      -79.06,
+      0.5,
+      -31.49
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1956
+  },
+  {
+   "page": 0,
+   "label": "vantage glide + map arrow keys: frames until no tween; start the glide (real click or key); 10 frames",
+   "at": 183006,
+   "ret": {
+    "pos": [
+     -108.32,
+     52.75,
+     118.11
+    ],
+    "tgt": [
+     -63.07,
+     -2.11,
+     62.6
+    ],
+    "freeCam": false,
+    "twCam": true,
+    "vantage": "allied"
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "allied",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": "3e Div., IV Corps · FranceLegrand's DivisionGen. de division Claude Legrand",
+     "len": 1659,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[Allied]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 13,
+     "dropped": 5
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -108.32,
+      52.75,
+      118.11
+     ],
+     "tgt": [
+      -63.07,
+      -2.11,
+      62.6
+     ]
+    }
+   },
+   "log": [],
+   "ms": 303
+  },
+  {
+   "page": 0,
+   "label": "vantage glide + map arrow keys: the visitor's input mid-glide (real), then the camera at its end",
+   "at": 183310,
+   "ret": {
+    "pos": [
+     -96.34,
+     56.52,
+     131.29
+    ],
+    "tgt": [
+     -59.68,
+     -1.7,
+     58.09
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": "3e Div., IV Corps · FranceLegrand's DivisionGen. de division Claude Legrand",
+     "len": 1659,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#maplayer",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 12,
+     "dropped": 9
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -96.34,
+      56.52,
+      131.29
+     ],
+     "tgt": [
+      -59.68,
+      -1.7,
+      58.09
+     ]
+    }
+   },
+   "log": [],
+   "ms": 72
+  }
+ ],
+ "checks": [
+  {
+   "id": "held-vantage-glide-drag",
+   "ok": false,
+   "expected": "a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+   "observed": {
+    "glideRunningAtInput": true,
+    "movedAfterInput": 525.481,
+    "atRelease": {
+     "pos": [
+      -75.66,
+      467.88,
+      142.71
+     ],
+     "tgt": [
+      -31.64,
+      0.47,
+      2.37
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    "end": {
+     "pos": [
+      -83,
+      25.08,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.56,
+      -5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    "freeCamAtEnd": true,
+    "glideSlotAtRelease": true
+   }
+  },
+  {
+   "id": "held-vantage-glide-wheel",
+   "ok": false,
+   "expected": "a wheel during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+   "observed": {
+    "glideRunningAtInput": true,
+    "movedAfterInput": 185.658,
+    "atRelease": {
+     "pos": [
+      -95.97,
+      25.82,
+      -33.21
+     ],
+     "tgt": [
+      5.82,
+      6.76,
+      -5.64
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    "end": {
+     "pos": [
+      23,
+      27.13,
+      55
+     ],
+     "tgt": [
+      -31,
+      9.08,
+      -13
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    "freeCamAtEnd": true,
+    "glideSlotAtRelease": true
+   }
+  },
+  {
+   "id": "held-phase-glide-PageDown-drag",
+   "ok": false,
+   "expected": "a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+   "observed": {
+    "glideRunningAtInput": false,
+    "movedAfterInput": 0,
+    "atRelease": {
+     "pos": [
+      -4.02,
+      27.13,
+      45.65
+     ],
+     "tgt": [
+      -82.58,
+      0.87,
+      -53.28
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    "end": {
+     "pos": [
+      -4.02,
+      27.13,
+      45.65
+     ],
+     "tgt": [
+      -82.58,
+      0.87,
+      -53.28
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    "freeCamAtEnd": true,
+    "glideSlotAtRelease": false
+   }
+  },
+  {
+   "id": "held-dossier-centring-drag",
+   "ok": false,
+   "expected": "a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+   "observed": {
+    "glideRunningAtInput": true,
+    "movedAfterInput": 185.878,
+    "atRelease": {
+     "pos": [
+      -30.4,
+      36.63,
+      80.21
+     ],
+     "tgt": [
+      -79.06,
+      0.5,
+      -31.49
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    "end": {
+     "pos": [
+      -111.79,
+      51.02,
+      112.65
+     ],
+     "tgt": [
+      -64.5,
+      -2.28,
+      64.5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    "freeCamAtEnd": true,
+    "glideSlotAtRelease": true
+   }
+  },
+  {
+   "id": "held-vantage-glide-map-arrow-keys",
+   "ok": false,
+   "expected": "a map arrow keys during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off)",
+   "observed": {
+    "glideRunningAtInput": true,
+    "movedAfterInput": 335.424,
+    "atRelease": {
+     "pos": [
+      -96.34,
+      56.52,
+      131.29
+     ],
+     "tgt": [
+      -59.68,
+      -1.7,
+      58.09
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    "end": {
+     "pos": [
+      135,
+      45.31,
+      -22
+     ],
+     "tgt": [
+      -25,
+      2.49,
+      12
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    "freeCamAtEnd": true,
+    "glideSlotAtRelease": true
+   }
+  }
+ ],
+ "shots": [],
+ "notes": [],
+ "cases": [
+  {
+   "label": "vantage glide + drag",
+   "mid": {
+    "pos": [
+     -43.26,
+     512.1,
+     86.83
+    ],
+    "tgt": [
+     -37.08,
+     0.72,
+     3.66
+    ],
+    "freeCam": false,
+    "twCam": true,
+    "vantage": "zuran"
+   },
+   "atRelease": {
+    "pos": [
+     -75.66,
+     467.88,
+     142.71
+    ],
+    "tgt": [
+     -31.64,
+     0.47,
+     2.37
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "after": [
+    {
+     "pos": [
+      -231.76,
+      188.81,
+      69.5
+     ],
+     "tgt": [
+      -9.41,
+      4.23,
+      -1.54
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -83.15,
+      25.14,
+      -53
+     ],
+     "tgt": [
+      8.99,
+      6.56,
+      -5
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -83,
+      25.08,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.56,
+      -5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -83,
+      25.08,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.56,
+      -5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -83,
+      25.08,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.56,
+      -5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    }
+   ],
+   "end": {
+    "pos": [
+     -83,
+     25.08,
+     -53
+    ],
+    "tgt": [
+     9,
+     6.56,
+     -5
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "movedAfterInput": 525.481
+  },
+  {
+   "label": "vantage glide + wheel",
+   "mid": {
+    "pos": [
+     -89.45,
+     25.42,
+     -44.31
+    ],
+    "tgt": [
+     7.55,
+     6.65,
+     -5.29
+    ],
+    "freeCam": false,
+    "twCam": true,
+    "vantage": "plateau"
+   },
+   "atRelease": {
+    "pos": [
+     -95.97,
+     25.82,
+     -33.21
+    ],
+    "tgt": [
+     5.82,
+     6.76,
+     -5.64
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "after": [
+    {
+     "pos": [
+      -89.73,
+      28.27,
+      62.25
+     ],
+     "tgt": [
+      -8.6,
+      7.67,
+      -8.52
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    {
+     "pos": [
+      22.48,
+      27.15,
+      55.87
+     ],
+     "tgt": [
+      -30.82,
+      9.07,
+      -12.96
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    {
+     "pos": [
+      23,
+      27.13,
+      55
+     ],
+     "tgt": [
+      -31,
+      9.08,
+      -13
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      23,
+      27.13,
+      55
+     ],
+     "tgt": [
+      -31,
+      9.08,
+      -13
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      23,
+      27.13,
+      55
+     ],
+     "tgt": [
+      -31,
+      9.08,
+      -13
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    }
+   ],
+   "end": {
+    "pos": [
+     23,
+     27.13,
+     55
+    ],
+    "tgt": [
+     -31,
+     9.08,
+     -13
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "movedAfterInput": 185.658
+  },
+  {
+   "label": "phase glide (PageDown) + drag",
+   "mid": {
+    "pos": [
+     23,
+     27.13,
+     55
+    ],
+    "tgt": [
+     -31,
+     9.08,
+     -13
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "atRelease": {
+    "pos": [
+     -4.02,
+     27.13,
+     45.65
+    ],
+    "tgt": [
+     -82.58,
+     0.87,
+     -53.28
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "after": [
+    {
+     "pos": [
+      -4.02,
+      27.13,
+      45.65
+     ],
+     "tgt": [
+      -82.58,
+      0.87,
+      -53.28
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -4.02,
+      27.13,
+      45.65
+     ],
+     "tgt": [
+      -82.58,
+      0.87,
+      -53.28
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -4.02,
+      27.13,
+      45.65
+     ],
+     "tgt": [
+      -82.58,
+      0.87,
+      -53.28
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -4.02,
+      27.13,
+      45.65
+     ],
+     "tgt": [
+      -82.58,
+      0.87,
+      -53.28
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -4.02,
+      27.13,
+      45.65
+     ],
+     "tgt": [
+      -82.58,
+      0.87,
+      -53.28
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    }
+   ],
+   "end": {
+    "pos": [
+     -4.02,
+     27.13,
+     45.65
+    ],
+    "tgt": [
+     -82.58,
+     0.87,
+     -53.28
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "movedAfterInput": 0
+  },
+  {
+   "label": "dossier centring + drag",
+   "mid": {
+    "pos": [
+     -10.07,
+     29.52,
+     55.03
+    ],
+    "tgt": [
+     -81.79,
+     0.73,
+     -48.11
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "atRelease": {
+    "pos": [
+     -30.4,
+     36.63,
+     80.21
+    ],
+    "tgt": [
+     -79.06,
+     0.5,
+     -31.49
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "after": [
+    {
+     "pos": [
+      -100.79,
+      52.65,
+      116.09
+     ],
+     "tgt": [
+      -69.94,
+      -1.33,
+      29.04
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -111.79,
+      51.02,
+      112.65
+     ],
+     "tgt": [
+      -64.5,
+      -2.28,
+      64.5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -111.79,
+      51.02,
+      112.65
+     ],
+     "tgt": [
+      -64.5,
+      -2.28,
+      64.5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -111.79,
+      51.02,
+      112.65
+     ],
+     "tgt": [
+      -64.5,
+      -2.28,
+      64.5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      -111.79,
+      51.02,
+      112.65
+     ],
+     "tgt": [
+      -64.5,
+      -2.28,
+      64.5
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    }
+   ],
+   "end": {
+    "pos": [
+     -111.79,
+     51.02,
+     112.65
+    ],
+    "tgt": [
+     -64.5,
+     -2.28,
+     64.5
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "movedAfterInput": 185.878
+  },
+  {
+   "label": "vantage glide + map arrow keys",
+   "mid": {
+    "pos": [
+     -108.32,
+     52.75,
+     118.11
+    ],
+    "tgt": [
+     -63.07,
+     -2.11,
+     62.6
+    ],
+    "freeCam": false,
+    "twCam": true,
+    "vantage": "allied"
+   },
+   "atRelease": {
+    "pos": [
+     -96.34,
+     56.52,
+     131.29
+    ],
+    "tgt": [
+     -59.68,
+     -1.7,
+     58.09
+    ],
+    "freeCam": true,
+    "twCam": true,
+    "vantage": null
+   },
+   "after": [
+    {
+     "pos": [
+      39.37,
+      63.16,
+      141.51
+     ],
+     "tgt": [
+      -42.38,
+      0.39,
+      35.1
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    {
+     "pos": [
+      135.01,
+      45.36,
+      -21.54
+     ],
+     "tgt": [
+      -25.04,
+      2.48,
+      12.05
+     ],
+     "freeCam": true,
+     "twCam": true,
+     "vantage": null
+    },
+    {
+     "pos": [
+      135,
+      45.31,
+      -22
+     ],
+     "tgt": [
+      -25,
+      2.49,
+      12
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      135,
+      45.31,
+      -22
+     ],
+     "tgt": [
+      -25,
+      2.49,
+      12
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    },
+    {
+     "pos": [
+      135,
+      45.31,
+      -22
+     ],
+     "tgt": [
+      -25,
+      2.49,
+      12
+     ],
+     "freeCam": true,
+     "twCam": false,
+     "vantage": null
+    }
+   ],
+   "end": {
+    "pos": [
+     135,
+     45.31,
+     -22
+    ],
+    "tgt": [
+     -25,
+     2.49,
+     12
+    ],
+    "freeCam": true,
+    "twCam": false,
+    "vantage": null
+   },
+   "movedAfterInput": 335.424
+  }
+ ],
+ "ms": 185775,
+ "ended": "2026-11-02T06:36:28.623Z"
+}

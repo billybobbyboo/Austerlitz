@@ -1,0 +1,191 @@
+{
+ "shot": "clean-field",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 570,
+  "presentation": "map",
+  "mode": "terrain",
+  "cam": [
+   -195,
+   92,
+   156,
+   -33,
+   4,
+   -2
+  ]
+ },
+ "steps": [],
+ "state": {
+  "clock": 570,
+  "presentation": "map",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -195,
+    94.10852215492369,
+    156
+   ],
+   "tgt": [
+    -33,
+    3.724891828834621,
+    -2
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -195,
+    94.10852215492369,
+    156
+   ],
+   "tgt": [
+    -33,
+    3.724891828834621,
+    -2
+   ]
+  },
+  "aimErr": 0,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 0,
+  "placed": 0,
+  "dropped": 0,
+  "droppedIds": [],
+  "occluded": 0,
+  "offscreen": 0,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · derived on the heights: Allied ≈ 18,150 · derived centre separation detected · Friant retakes Telnitz, then loses it again",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The crisis on the Pratzeberg",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 18,150",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "Friant retakes Telnitz, then loses it again",
+    "shown": true,
+    "cut": false
+   }
+  ],
+  "box": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "1 km",
+ "bodyClass": "docked pm-map rail-hidden",
+ "textContrast": {
+  "texts": 0,
+  "min": null,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": []
+ },
+ "items": [],
+ "ms": 206485,
+ "msSettle": 129317,
+ "msShot": 76166,
+ "msMeasure": 1002,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

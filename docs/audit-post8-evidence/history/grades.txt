@@ -1,0 +1,229 @@
+anchors with a position: 180; graded A: 88; grade carried forward (not declared): 90, of which A: 44
+
+== anchors whose A is carried forward from an earlier entry ==
+gqg@7 [307,227] A inherited from @6, moved 0.64 km, status observing, act: Orders the centre to wheel south onto Buxhowden's rear
+sthilaire@2 [206,231] A inherited from @0, moved 0.35 km, status forming, act: Crosses the Goldbach and forms for the attack
+sthilaire@5 [287,282] A inherited from @4, moved 0.20 km, status holding, act: Consolidating on the summit with Levasseur's brigade attached
+sthilaire@6 [288,272] A inherited from @4, moved 0.32 km, status holding, act: Faces east while Vandamme is attacked to the north
+vandamme@2 [221,182] A inherited from @0, moved 0.37 km, status forming, act: Crosses the Goldbach
+vandamme@4 [309,207] A inherited from @3, moved 0.86 km, status holding, act: Consolidates on the Old Vineyards, facing east
+vandamme@7 [289,243] A inherited from @6, moved 1.19 km, status advancing, act: Turns south with Saint-Hilaire toward the Allied rear
+vandamme@9 [287,365] A inherited from @8, moved 0.78 km, status pursuing, act: Holds the Augezd defile
+legrand@2 [206,366] A inherited from @1, moved 0.44 km, status engaged, act: Fights for Sokolnitz village and the castle wall
+friant@5 [200,398] A inherited from @3, moved 0.14 km, status engaged, act: Holds against Dokhturov and Kienmayer with a fraction of their strength
+friant@8 [214,410] A inherited from @7, moved 0.71 km, status attacking, no act of its own
+friant@9 [222,412] A inherited from @7, moved 0.26 km, status holding, no act of its own
+caffarelli@6 [321,120] A inherited from @5, moved 0.79 km, status advancing, no act of its own
+caffarelli@7 [347,114] A inherited from @5, moved 0.84 km, status advancing, no act of its own
+caffarelli@8 [392,105] A inherited from @5, moved 1.45 km, status pursuing, no act of its own
+caffarelli@9 [423,96] A inherited from @5, moved 1.02 km, status holding, no act of its own
+kellermann@6 [312,131] A inherited from @5, moved 0.89 km, status advancing, no act of its own
+kellermann@7 [343,127] A inherited from @5, moved 0.99 km, status pursuing, no act of its own
+kellermann@9 [383,118] A inherited from @5, moved 1.30 km, status holding, no act of its own
+nansouty@6 [307,142] A inherited from @5, moved 0.96 km, status advancing, no act of its own
+nansouty@7 [339,139] A inherited from @5, moved 1.02 km, status pursuing, no act of its own
+nansouty@9 [376,128] A inherited from @5, moved 1.22 km, status holding, no act of its own
+guard_cav@7 [303,226] A inherited from @6, moved 0.70 km, status holding, no act of its own
+guard_cav@9 [301,237] A inherited from @6, moved 0.35 km, status holding, no act of its own
+kienmayer@2 [222,402] A inherited from @1, moved 0.46 km, status engaged, no act of its own
+kienmayer@9 [269,436] A inherited from @8, moved 2.05 km, status retreating, act: Falls back across the frozen Satschan mere under artillery fire
+dok@7 [226,404] A inherited from @2, moved 0.29 km, status engaged, act: Attacked from the west by Friant and from the rear off the heights
+dok@9 [265,429] A inherited from @8, moved 1.43 km, status retreating, act: Part of the column breaks south over the ice rather than queue for the defile
+lang@1 [268,328] A inherited from @0, moved 0.96 km, status advancing, no act of its own
+kamensky@5 [291,279] A inherited from @4, moved 0.49 km, status engaged, act: Fights on the crest alongside Jurczek's Austrians
+prz@1 [266,296] A inherited from @0, moved 0.88 km, status advancing, no act of its own
+kollo@3 [324,233] A inherited from @2, moved 0.13 km, status surprised, no act of its own
+lich@3 [317,191] A inherited from @2, moved 0.73 km, status march, no act of its own
+lich@6 [341,152] A inherited from @5, moved 1.36 km, status repulsed, no act of its own
+lich@7 [387,145] A inherited from @5, moved 1.47 km, status withdrawing, no act of its own
+lich@8 [437,129] A inherited from @5, moved 1.66 km, status retreating, no act of its own
+lich@9 [469,110] A inherited from @5, moved 1.18 km, status retreating, no act of its own
+rg_inf@5 [378,196] A inherited from @0, moved 1.12 km, status advancing, no act of its own
+rg_inf@7 [397,196] A inherited from @6, moved 2.21 km, status repulsed, act: Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete
+rg_inf@8 [447,178] A inherited from @6, moved 1.68 km, status retreating, no act of its own
+rg_inf@9 [475,144] A inherited from @6, moved 1.39 km, status retreating, no act of its own
+rg_cav@7 [406,188] A inherited from @6, moved 2.69 km, status repulsed, no act of its own
+rg_cav@8 [452,164] A inherited from @6, moved 1.64 km, status retreating, no act of its own
+rg_cav@9 [481,132] A inherited from @6, moved 1.36 km, status retreating, no act of its own
+
+== all anchors ==
+gqg@0 B moved - st observing; act claim attributed
+gqg@6 A moved 4.77 km st (carried); act claim unchecked
+gqg@7 A (inherited from @6) moved 0.64 km st (carried); act claim unchecked
+gqg@8 B moved 3.97 km st (carried); act claim attributed
+heightguns@7 C moved - st holding; act claim unchecked
+heightguns@8 B moved 2.37 km st attacking; act claim attributed
+heightguns@9 B (inherited from @8) moved - st holding; act claim unchecked
+sthilaire@0 A moved - st concealed; act claim unchecked
+sthilaire@2 A (inherited from @0) moved 0.35 km st forming; act claim unchecked
+sthilaire@3 A moved 2.38 km st attacking; act claim unchecked
+sthilaire@4 A moved 0.63 km st engaged; act claim attributed
+sthilaire@5 A (inherited from @4) moved 0.20 km st holding; act claim unchecked
+sthilaire@6 A (inherited from @4) moved 0.32 km st holding; act claim unchecked
+sthilaire@7 A moved 1.65 km st advancing; act claim unchecked
+sthilaire@8 B moved 1.78 km st attacking; act claim unchecked
+sthilaire@9 B (inherited from @8) moved 1.34 km st pursuing; act claim unchecked
+vandamme@0 A moved - st concealed; act claim unchecked
+vandamme@2 A (inherited from @0) moved 0.37 km st forming; act claim unchecked
+vandamme@3 A moved 2.11 km st attacking; act claim unchecked
+vandamme@4 A (inherited from @3) moved 0.86 km st holding; act claim unchecked
+vandamme@6 A moved 0.41 km st engaged; act claim unchecked
+vandamme@7 A (inherited from @6) moved 1.19 km st advancing; act claim unchecked
+vandamme@8 A moved 3.34 km st attacking; act claim unchecked
+vandamme@9 A (inherited from @8) moved 0.78 km st pursuing; act claim unchecked
+legrand@0 A moved - st holding; act claim unchecked
+legrand@1 A moved 2.12 km st engaged; act claim unchecked
+legrand@2 A (inherited from @1) moved 0.44 km st engaged; act claim unchecked
+legrand@4 B moved 1.49 km st supporting; act claim attributed
+legrand@7 B (inherited from @4) moved 1.60 km st attacking; act claim unchecked
+legrand@8 B (inherited from @4) moved 0.52 km st attacking; act claim unchecked
+legrand@9 B (inherited from @4) moved 0.40 km st holding; no act
+friant@0 B moved - st march; act claim attributed
+friant@1 B (inherited from @0) moved 5.20 km st march; act claim unchecked
+friant@3 A moved 1.01 km st counterattack; act claim attributed
+friant@5 A (inherited from @3) moved 0.14 km st engaged; act claim unchecked
+friant@7 A moved 0.28 km st attacking; act claim unchecked
+friant@8 A (inherited from @7) moved 0.71 km st attacking; no act
+friant@9 A (inherited from @7) moved 0.26 km st holding; no act
+bourcier@0 C moved - st march; no act
+bourcier@3 C (inherited from @0) moved 5.56 km st holding; act claim attributed
+bourcier@7 C (inherited from @0) moved 0.55 km st advancing; no act
+bourcier@8 C (inherited from @0) moved 1.80 km st pursuing; act claim unchecked
+bourcier@9 C (inherited from @0) moved 1.51 km st pursuing; no act
+caffarelli@0 A moved - st holding; act claim unchecked
+caffarelli@5 A moved 1.78 km st attacking; act claim unchecked
+caffarelli@6 A (inherited from @5) moved 0.79 km st advancing; no act
+caffarelli@7 A (inherited from @5) moved 0.84 km st advancing; no act
+caffarelli@8 A (inherited from @5) moved 1.45 km st pursuing; no act
+caffarelli@9 A (inherited from @5) moved 1.02 km st holding; no act
+suchet@0 B moved - st holding; act claim attributed
+suchet@5 C moved 0.76 km st attacking; act claim unchecked
+suchet@6 C (inherited from @5) moved 0.82 km st advancing; no act
+suchet@7 C (inherited from @5) moved 0.68 km st advancing; no act
+suchet@8 C (inherited from @5) moved 1.58 km st pursuing; no act
+suchet@9 B moved 0.57 km st holding; no act
+santon@0 A moved - st fortifying; act claim unchecked
+kellermann@0 B moved - st holding; act claim unchecked
+kellermann@5 A moved 1.33 km st engaged; act claim unchecked
+kellermann@6 A (inherited from @5) moved 0.89 km st advancing; no act
+kellermann@7 A (inherited from @5) moved 0.99 km st pursuing; no act
+kellermann@9 A (inherited from @5) moved 1.30 km st holding; no act
+nansouty@0 B moved - st reserve; no act
+nansouty@5 A moved 1.85 km st charging; act claim unchecked
+nansouty@6 A (inherited from @5) moved 0.96 km st advancing; no act
+nansouty@7 A (inherited from @5) moved 1.02 km st pursuing; no act
+nansouty@9 A (inherited from @5) moved 1.22 km st holding; no act
+dhautpoul@0 B moved - st reserve; no act
+dhautpoul@5 B moved 2.04 km st charging; act claim unchecked
+dhautpoul@7 B (inherited from @5) moved 2.12 km st pursuing; no act
+dhautpoul@9 B (inherited from @5) moved 1.08 km st holding; no act
+walther@0 C moved - st reserve; no act
+walther@5 C moved 2.09 km st advancing; no act
+walther@7 C (inherited from @5) moved 2.10 km st pursuing; no act
+walther@9 C (inherited from @5) moved 0.79 km st holding; no act
+rivaud@0 B moved - st reserve; act claim attributed
+rivaud@3 B (inherited from @0) moved 1.77 km st advancing; act claim disputed
+rivaud@6 B (inherited from @0) moved 1.30 km st supporting; act claim disputed
+rivaud@7 B (inherited from @0) moved 1.25 km st holding; no act
+rivaud@9 B (inherited from @0) moved 0.81 km st holding; no act
+drouet@0 B moved - st reserve; act claim disputed
+drouet@3 B (inherited from @0) moved 1.76 km st advancing; no act
+drouet@6 B moved 1.87 km st engaged; act claim disputed
+drouet@7 B (inherited from @6) moved 0.81 km st holding; act claim disputed
+drouet@9 B (inherited from @6) moved 0.63 km st holding; no act
+guard_inf@0 B moved - st reserve; act claim unchecked
+guard_inf@6 B (inherited from @0) moved 3.46 km st advancing; act claim disputed
+guard_inf@7 B (inherited from @0) moved 0.76 km st supporting; no act
+guard_inf@9 B (inherited from @0) moved 0.56 km st holding; no act
+guard_cav@0 B moved - st reserve; no act
+guard_cav@6 A moved 3.28 km st charging; act claim disputed
+guard_cav@7 A (inherited from @6) moved 0.70 km st holding; no act
+guard_cav@9 A (inherited from @6) moved 0.35 km st holding; no act
+c_gren@0 B moved - st reserve; act claim unchecked
+c_gren@6 B (inherited from @0) moved 3.29 km st advancing; act claim unchecked
+c_gren@7 B (inherited from @0) moved 1.44 km st advancing; act claim unchecked
+c_gren@8 B (inherited from @0) moved 2.47 km st attacking; act claim disputed
+c_gren@9 B (inherited from @0) moved 0.57 km st holding; no act
+ahq@0 B moved - st observing; act claim unchecked
+ahq@3 A moved 3.87 km st surprised; act claim unchecked
+ahq@4 B moved 0.35 km st engaged; act claim unchecked
+ahq@6 B (inherited from @4) moved 3.23 km st withdrawing; act claim unchecked
+ahq@8 B (inherited from @4) moved 1.84 km st withdrawing; no act
+ahq@9 B (inherited from @4) moved 1.56 km st withdrawing; no act
+buxhowden@0 C moved - st forming; no act
+buxhowden@2 C moved 1.24 km st attacking; act claim unchecked
+buxhowden@7 C (inherited from @2) moved 0.98 km st engaged; act claim unchecked
+buxhowden@8 B moved 1.19 km st withdrawing; act claim unchecked
+buxhowden@9 B (inherited from @8) moved 2.00 km st retreating; no act
+kienmayer@0 A moved - st forming; act claim unchecked
+kienmayer@1 A moved 1.99 km st attacking; act claim unchecked
+kienmayer@2 A (inherited from @1) moved 0.46 km st engaged; no act
+kienmayer@7 B moved 0.64 km st holding; act claim unchecked
+kienmayer@8 A moved 1.85 km st retreating; act claim unchecked
+kienmayer@9 A (inherited from @8) moved 2.05 km st retreating; act claim unchecked
+dok@0 A moved - st forming; act claim unchecked
+dok@1 A moved 1.61 km st advancing; act claim attributed
+dok@2 A moved 1.16 km st attacking; act claim unchecked
+dok@7 A (inherited from @2) moved 0.29 km st engaged; act claim unchecked
+dok@8 A moved 1.47 km st retreating; act claim unchecked
+dok@9 A (inherited from @8) moved 1.43 km st retreating; act claim unchecked
+lang@0 A moved - st forming; act claim unchecked
+lang@1 A (inherited from @0) moved 0.96 km st advancing; no act
+lang@2 A moved 1.25 km st attacking; act claim unchecked
+lang@4 C moved 0.58 km st engaged; act claim disputed
+lang@7 C (inherited from @4) moved 0.80 km st engaged; act claim unchecked
+lang@8 C (inherited from @4) moved 0.92 km st retreating; no act
+lang@9 C (inherited from @4) moved 0.98 km st retreating; no act
+kamensky@2 B moved - st march; act claim unchecked
+kamensky@3 A moved 0.65 km st countermarch; act claim disputed
+kamensky@4 A moved 0.43 km st counterattack; act claim unchecked
+kamensky@5 A (inherited from @4) moved 0.49 km st engaged; act claim unchecked
+kamensky@6 B moved 0.44 km st broken; act claim unchecked
+kamensky@7 C moved 2.23 km st retreating; act claim unchecked
+kamensky@8 C moved 1.33 km st retreating; no act
+prz@0 A moved - st forming; no act
+prz@1 A (inherited from @0) moved 0.88 km st advancing; no act
+prz@2 B moved 2.15 km st attacking; act claim unchecked
+prz@4 B (inherited from @2) moved - st engaged; no act
+prz@7 B moved - st encircled; act claim unchecked
+prz@8 A moved 1.08 km st broken; act claim unchecked
+milo@0 A moved - st forming; act claim unchecked
+milo@2 A moved 0.86 km st delayed; act claim unchecked
+milo@3 A moved 0.29 km st surprised; act claim unchecked
+milo@4 B moved 0.79 km st counterattack; act claim unchecked
+milo@6 B (inherited from @4) moved 2.44 km st withdrawing; no act
+milo@8 B (inherited from @4) moved 1.84 km st retreating; no act
+milo@9 B (inherited from @4) moved 1.56 km st retreating; no act
+kollo@0 A moved - st forming; no act
+kollo@2 A moved 0.95 km st delayed; act claim unchecked
+kollo@3 A (inherited from @2) moved 0.13 km st surprised; no act
+kollo@4 B moved 1.56 km st counterattack; act claim unchecked
+kollo@5 B moved 1.22 km st engaged; act claim disputed
+kollo@6 B moved 1.80 km st withdrawing; act claim unchecked
+kollo@8 B (inherited from @6) moved 3.89 km st retreating; no act
+kollo@9 B (inherited from @6) moved 1.56 km st retreating; no act
+lich@0 B moved - st forming; act claim unchecked
+lich@2 A moved 1.17 km st countermarch; act claim unchecked
+lich@3 A (inherited from @2) moved 0.73 km st march; no act
+lich@5 A moved 1.26 km st charging; act claim unchecked
+lich@6 A (inherited from @5) moved 1.36 km st repulsed; no act
+lich@7 A (inherited from @5) moved 1.47 km st withdrawing; no act
+lich@8 A (inherited from @5) moved 1.66 km st retreating; no act
+lich@9 A (inherited from @5) moved 1.18 km st retreating; no act
+bag@0 B moved - st holding; act claim attributed
+bag@5 B moved 2.85 km st attacking; act claim attributed
+bag@6 C moved 1.23 km st holding; act claim unchecked
+bag@7 C (inherited from @6) moved 0.69 km st withdrawing; no act
+bag@8 B moved 2.29 km st retreating; act claim attributed
+bag@9 C moved 1.19 km st retreating; no act
+rg_inf@0 A moved - st reserve; act claim unchecked
+rg_inf@5 A (inherited from @0) moved 1.12 km st advancing; no act
+rg_inf@6 A moved 1.61 km st counterattack; act claim attributed
+rg_inf@7 A (inherited from @6) moved 2.21 km st repulsed; act claim attributed
+rg_inf@8 A (inherited from @6) moved 1.68 km st retreating; no act
+rg_inf@9 A (inherited from @6) moved 1.39 km st retreating; no act
+rg_cav@0 A moved - st reserve; no act
+rg_cav@6 A moved 3.23 km st charging; act claim disputed
+rg_cav@7 A (inherited from @6) moved 2.69 km st repulsed; no act
+rg_cav@8 A (inherited from @6) moved 1.64 km st retreating; no act
+rg_cav@9 A (inherited from @6) moved 1.36 km st retreating; no act

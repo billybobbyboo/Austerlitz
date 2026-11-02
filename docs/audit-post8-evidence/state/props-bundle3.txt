@@ -1,0 +1,14 @@
+loaded the bundle in 797 s; init errors 0; warnings 0
+
+=== D1 two phase steps half a second apart, the clock stopped
+  07:00 then 08:00 0.5 s later: the 07:00 phase's 36 overlay materials had faded in to 0.00 (largest opacity 0.00); leaving, they are drawn at 0.90, then fade out over 1.09 s
+  08:00 then 08:45 0.5 s later: the 08:00 phase's 41 overlay materials had faded in to 0.00 (largest opacity 0.00); leaving, they are drawn at 0.90, then fade out over 1.09 s
+  08:45 then 09:30 0.5 s later: the 08:45 phase's 20 overlay materials had faded in to 0.00 (largest opacity 0.00); leaving, they are drawn at 0.90, then fade out over 1.09 s
+  09:30 then 10:30 0.5 s later: the 09:30 phase's 48 overlay materials had faded in to 0.00 (largest opacity 0.00); leaving, they are drawn at 0.90, then fade out over 1.09 s
+(3.5 s)
+
+=== D2 a theme chosen while the clock plays: the camera after its glide
+  theme "plan" (its moment 04:00) chosen while playing: 1.7 s later (the glide's 1.6 s over) playing true, clock 04:08, the target 7.0 units from the theme's authored target; 3.7 s: clock 04:15, 63.0 units; 7.7 s: clock 04:28, 76.3 units (freeCam false, Follow following)
+(2.4 s)
+
+warnings 0; errors 0; total 803 s

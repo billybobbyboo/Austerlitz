@@ -1,0 +1,459 @@
+{
+ "html": "/tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/perf-attribution/build-f10fe585.html",
+ "vp": [
+  2560,
+  1305
+ ],
+ "boot": {
+  "firstFrame": 8602,
+  "bootGone": 21243,
+  "stub": {
+   "at": 8602,
+   "stubbed": [
+    "drawElements",
+    "drawArrays",
+    "drawElementsInstanced",
+    "drawArraysInstanced",
+    "drawRangeElements",
+    "clear",
+    "blitFramebuffer"
+   ],
+   "webgl2": true,
+   "drainMs": 276.7,
+   "drain2": 0.6
+  }
+ },
+ "openS": 27.162,
+ "runs": [
+  {
+   "label": "A1",
+   "err": null,
+   "clock": [
+    510.77361111111117,
+    512.4402777777774
+   ],
+   "per": {
+    "frames": 48,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 318,
+    "gpByPerFrame": {
+     "MeshStandardMaterial": 103,
+     "MeshStandardMaterial+anim": 215,
+     "SpriteMaterial": 0.04
+    }
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.5,
+    "bindBuffer": 3434.7,
+    "useProgram": 501,
+    "total": 13514,
+    "uniform": 1974.4
+   },
+   "ms": {
+    "loop": 28.6,
+    "threeRender": 16,
+    "renderFX": 16.5
+   },
+   "cpuMsPerFrame": 29.698,
+   "load": [
+    [
+     1.77,
+     0.82,
+     0.44
+    ],
+    [
+     1.77,
+     0.82,
+     0.44
+    ]
+   ]
+  },
+  {
+   "label": "B1",
+   "err": null,
+   "clock": [
+    513.2138888888883,
+    514.8805555555525
+   ],
+   "per": {
+    "frames": 48,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 0,
+    "gpByPerFrame": {}
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.3,
+    "bindBuffer": 3431.8,
+    "useProgram": 501,
+    "total": 13513.4,
+    "uniform": 1975.6
+   },
+   "ms": {
+    "loop": 21,
+    "threeRender": 9.6,
+    "renderFX": 10.4
+   },
+   "cpuMsPerFrame": 22.393,
+   "load": [
+    [
+     1.77,
+     0.82,
+     0.44
+    ],
+    [
+     1.62,
+     0.81,
+     0.44
+    ]
+   ]
+  },
+  {
+   "label": "A2",
+   "err": null,
+   "clock": [
+    515.6541666666634,
+    517.3208333333276
+   ],
+   "per": {
+    "frames": 48,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 318,
+    "gpByPerFrame": {
+     "MeshStandardMaterial": 103,
+     "MeshStandardMaterial+anim": 215
+    }
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.3,
+    "bindBuffer": 3429.1,
+    "useProgram": 501,
+    "total": 13501.1,
+    "uniform": 1977.4
+   },
+   "ms": {
+    "loop": 23.1,
+    "threeRender": 11.9,
+    "renderFX": 12.4
+   },
+   "cpuMsPerFrame": 23.097,
+   "load": [
+    [
+     1.62,
+     0.81,
+     0.44
+    ],
+    [
+     1.62,
+     0.81,
+     0.44
+    ]
+   ]
+  },
+  {
+   "label": "B2",
+   "err": null,
+   "clock": [
+    518.0944444444385,
+    519.7611111111028
+   ],
+   "per": {
+    "frames": 48,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 0,
+    "gpByPerFrame": {}
+   },
+   "gl": {
+    "vertexAttribPointer": 4846,
+    "bindBuffer": 3427,
+    "useProgram": 501,
+    "total": 13507.4,
+    "uniform": 1980.5
+   },
+   "ms": {
+    "loop": 20.7,
+    "threeRender": 9.3,
+    "renderFX": 10.2
+   },
+   "cpuMsPerFrame": 22.445,
+   "load": [
+    [
+     1.62,
+     0.81,
+     0.44
+    ],
+    [
+     1.62,
+     0.81,
+     0.44
+    ]
+   ]
+  },
+  {
+   "label": "A3",
+   "err": null,
+   "clock": [
+    520.5347222222136,
+    522.2013888888779
+   ],
+   "per": {
+    "frames": 48,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 318,
+    "gpByPerFrame": {
+     "MeshStandardMaterial": 103,
+     "MeshStandardMaterial+anim": 215
+    }
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.1,
+    "bindBuffer": 3435,
+    "useProgram": 501,
+    "total": 13521.3,
+    "uniform": 1987
+   },
+   "ms": {
+    "loop": 33,
+    "threeRender": 18.3,
+    "renderFX": 19
+   },
+   "cpuMsPerFrame": 33.121,
+   "load": [
+    [
+     1.62,
+     0.81,
+     0.44
+    ],
+    [
+     1.66,
+     0.83,
+     0.45
+    ]
+   ]
+  },
+  {
+   "label": "B3",
+   "err": null,
+   "clock": [
+    522.9749999999888,
+    524.4826527777699
+   ],
+   "per": {
+    "frames": 48,
+    "draws": 802,
+    "inst": 581,
+    "instShadow": 276,
+    "instMain": 305,
+    "kitInst": 430,
+    "kitInstShadow": 215,
+    "extraVAP": 1290,
+    "instVAP": 4846,
+    "instBind": 3103,
+    "gp": 0,
+    "gpByPerFrame": {}
+   },
+   "gl": {
+    "vertexAttribPointer": 4846.1,
+    "bindBuffer": 3419.5,
+    "useProgram": 501,
+    "total": 13494.2,
+    "uniform": 1981.6
+   },
+   "ms": {
+    "loop": 22.5,
+    "threeRender": 10.3,
+    "renderFX": 10.9
+   },
+   "cpuMsPerFrame": 24.382,
+   "load": [
+    [
+     1.66,
+     0.83,
+     0.45
+    ],
+    [
+     1.66,
+     0.83,
+     0.45
+    ]
+   ]
+  },
+  {
+   "label": "A4",
+   "err": null,
+   "clock": [
+    524.967060562025,
+    525
+   ],
+   "per": {
+    "frames": 48,
+    "draws": 833,
+    "inst": 597,
+    "instShadow": 284,
+    "instMain": 313,
+    "kitInst": 446,
+    "kitInstShadow": 223,
+    "extraVAP": 1338,
+    "instVAP": 4994,
+    "instBind": 3203,
+    "gp": 326,
+    "gpByPerFrame": {
+     "MeshStandardMaterial": 103,
+     "MeshStandardMaterial+anim": 221.83,
+     "MeshDepthMaterial+anim": 0.17,
+     "SpriteMaterial": 0.23,
+     "MeshBasicMaterial": 0.25
+    }
+   },
+   "gl": {
+    "vertexAttribPointer": 4973.1,
+    "bindBuffer": 3344,
+    "useProgram": 514.7,
+    "total": 13399.1,
+    "uniform": 1933.5
+   },
+   "ms": {
+    "loop": 21.6,
+    "threeRender": 11.4,
+    "renderFX": 12.1
+   },
+   "cpuMsPerFrame": 22.783,
+   "load": [
+    [
+     1.66,
+     0.83,
+     0.45
+    ],
+    [
+     1.66,
+     0.83,
+     0.45
+    ]
+   ]
+  },
+  {
+   "label": "B4",
+   "err": null,
+   "clock": [
+    525.7736111111109,
+    527.4402777777751
+   ],
+   "per": {
+    "frames": 48,
+    "draws": 801,
+    "inst": 589,
+    "instShadow": 280,
+    "instMain": 309,
+    "kitInst": 438,
+    "kitInstShadow": 219,
+    "extraVAP": 1314,
+    "instVAP": 4920,
+    "instBind": 3153,
+    "gp": 0,
+    "gpByPerFrame": {
+     "SpriteMaterial": 0.02
+    }
+   },
+   "gl": {
+    "vertexAttribPointer": 4921.5,
+    "bindBuffer": 3674,
+    "useProgram": 505.4,
+    "total": 14229.5,
+    "uniform": 2178.6
+   },
+   "ms": {
+    "loop": 23.1,
+    "threeRender": 10.8,
+    "renderFX": 11.2
+   },
+   "cpuMsPerFrame": 24.985,
+   "load": [
+    [
+     1.66,
+     0.83,
+     0.45
+    ],
+    [
+     1.92,
+     0.89,
+     0.47
+    ]
+   ]
+  }
+ ],
+ "setup": {
+  "clock": 510,
+  "mode": "terrain",
+  "presentation": "watch",
+  "follow": true,
+  "fx": true,
+  "fxScale": 1.3,
+  "lowTier": false,
+  "shadow": true,
+  "factor": 4,
+  "px": 1,
+  "playing": false,
+  "vw": 2560,
+  "vh": 1305,
+  "cull": true
+ },
+ "install": {
+  "ownWrapped": 538,
+  "materialsSeen": 948,
+  "lights": [
+   "HemisphereLight layers=1",
+   "DirectionalLight layers=1",
+   "DirectionalLight(shadow) layers=1"
+  ],
+  "fx": true,
+  "renderFX": "function",
+  "labelLayer": 1
+ },
+ "lights_B1": 3,
+ "lights_A2": 3,
+ "lights_B2": 3,
+ "lights_A3": 3,
+ "lights_B3": 3,
+ "lights_A4": 3,
+ "lights_B4": 3,
+ "log": []
+}

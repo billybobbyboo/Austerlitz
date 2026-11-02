@@ -1,0 +1,425 @@
+[
+ {
+  "id": "C-01",
+  "c4_refs": "CL-PERF-12, CL-PERF-04",
+  "missing_in_c4": [
+   "CL-PERF-05",
+   "CL-PERF-08",
+   "CL-PERF-09",
+   "CL-PERF-11"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-02",
+  "c4_refs": "CL-PERF-06, CL-PERF-01, CL-PERF-03",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-03",
+  "c4_refs": "CL-PERF-02; question 278",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-04",
+  "c4_refs": "CL-PERF-07, CL-PERF-11",
+  "missing_in_c4": [
+   "CL-PERF-10"
+  ],
+  "extra_in_c4": [
+   "CL-PERF-11"
+  ]
+ },
+ {
+  "id": "C-05",
+  "c4_refs": "CL-PERF-10",
+  "missing_in_c4": [],
+  "extra_in_c4": [
+   "CL-PERF-10"
+  ]
+ },
+ {
+  "id": "C-06",
+  "c4_refs": "CL-MAP-01, CL-MAP-02, CL-TEST-02; question 274",
+  "missing_in_c4": [
+   "CL-MAP-14"
+  ],
+  "extra_in_c4": [
+   "CL-MAP-02"
+  ]
+ },
+ {
+  "id": "C-07",
+  "c4_refs": "CL-MAP-01, CL-MAP-07, CL-MAP-17",
+  "missing_in_c4": [
+   "CL-MAP-02"
+  ],
+  "extra_in_c4": [
+   "CL-MAP-17"
+  ]
+ },
+ {
+  "id": "C-08",
+  "c4_refs": "CL-TEST-14 (decision 267 (a), not re-required)",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-09",
+  "c4_refs": "CL-VIS-01 (outside the check's scope)",
+  "missing_in_c4": [
+   "CL-TEST-08"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-10",
+  "c4_refs": "none (accepted, confirmed visually)",
+  "missing_in_c4": [
+   "CL-VIS-05"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-11",
+  "c4_refs": "question 280",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-12",
+  "c4_refs": "question 281",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-13",
+  "c4_refs": "CL-HIS-04 (the III Column's neighbour); accepted",
+  "missing_in_c4": [
+   "CL-VIS-04"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-14",
+  "c4_refs": "none",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-15",
+  "c4_refs": "question 282",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-16",
+  "c4_refs": "CL-VIS-02 (trees on the mere beside it); accepted",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-17",
+  "c4_refs": "CL-VIS-06; question 282",
+  "missing_in_c4": [
+   "CL-GEO-01"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-18",
+  "c4_refs": "CL-MAP-18",
+  "missing_in_c4": [
+   "CL-MAP-11"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-19",
+  "c4_refs": "CL-MAP-15",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-20",
+  "c4_refs": "none (kept by decision 92)",
+  "missing_in_c4": [
+   "CL-SIM-06"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-21",
+  "c4_refs": "CL-VIS-08",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-22",
+  "c4_refs": "CL-GEO-05",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-23",
+  "c4_refs": "none (below the map's unit)",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-24",
+  "c4_refs": "none",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-25",
+  "c4_refs": "CL-PERF-02",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-26",
+  "c4_refs": "CL-HIS-04, CL-GEO-08, CL-GEO-10",
+  "missing_in_c4": [],
+  "extra_in_c4": [
+   "CL-GEO-10"
+  ]
+ },
+ {
+  "id": "C-27",
+  "c4_refs": "CL-GEO-10",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-28",
+  "c4_refs": "none (settled, not adopted)",
+  "missing_in_c4": [
+   "CL-MAP-01",
+   "CL-MAP-14",
+   "CL-TEST-02"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-29",
+  "c4_refs": "none",
+  "missing_in_c4": [
+   "CL-UX-08"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-30",
+  "c4_refs": "none",
+  "missing_in_c4": [
+   "CL-GEO-10"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-31",
+  "c4_refs": "CL-GEO-10",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-32",
+  "c4_refs": "CL-GEO-10, CL-GEO-04",
+  "missing_in_c4": [],
+  "extra_in_c4": [
+   "CL-GEO-04"
+  ]
+ },
+ {
+  "id": "C-33",
+  "c4_refs": "CL-GEO-02",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-34",
+  "c4_refs": "CL-GEO-06",
+  "missing_in_c4": [
+   "CL-HIS-10",
+   "CL-TEST-04"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-35",
+  "c4_refs": "question 282",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-36",
+  "c4_refs": "CL-HIS-17",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-37",
+  "c4_refs": "none (moot in the drawing)",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-38",
+  "c4_refs": "CL-GEO-07, CL-HIS-14",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-39",
+  "c4_refs": "CL-SRC-03, CL-SRC-04",
+  "missing_in_c4": [
+   "CL-GEO-06",
+   "CL-GEO-10",
+   "CL-HIS-14",
+   "CL-SRC-01"
+  ],
+  "extra_in_c4": [
+   "CL-SRC-04"
+  ]
+ },
+ {
+  "id": "C-40",
+  "c4_refs": "CL-HIS-08",
+  "missing_in_c4": [
+   "CL-HIS-11"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-41",
+  "c4_refs": "CL-HIS-09",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-42",
+  "c4_refs": "none",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-43",
+  "c4_refs": "none (done)",
+  "missing_in_c4": [
+   "CL-MAP-08",
+   "CL-MAP-10"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-44",
+  "c4_refs": "CL-MAP-01, CL-MAP-17",
+  "missing_in_c4": [
+   "CL-MAP-02",
+   "CL-MAP-07",
+   "CL-MAP-14",
+   "CL-TEST-02"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-45",
+  "c4_refs": "CL-VIS-03, CL-VIS-04; questions 280, 281",
+  "missing_in_c4": [
+   "CL-HIS-05",
+   "CL-VIS-01"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-46",
+  "c4_refs": "CL-VIS-01, CL-VIS-02, CL-VIS-05",
+  "missing_in_c4": [],
+  "extra_in_c4": [
+   "CL-VIS-02"
+  ]
+ },
+ {
+  "id": "C-47",
+  "c4_refs": "CL-VIS-04, CL-VIS-06",
+  "missing_in_c4": [
+   "CL-GEO-05",
+   "CL-GEO-08"
+  ],
+  "extra_in_c4": [
+   "CL-VIS-06"
+  ]
+ },
+ {
+  "id": "C-48",
+  "c4_refs": "CL-TEST-12",
+  "missing_in_c4": [
+   "CL-HIS-12"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-49",
+  "c4_refs": "CL-TEST-13",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-50",
+  "c4_refs": "CL-SRC-01; question 271",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-51",
+  "c4_refs": "CL-HIS-15",
+  "missing_in_c4": [
+   "CL-HIS-06"
+  ],
+  "extra_in_c4": [
+   "CL-HIS-15"
+  ]
+ },
+ {
+  "id": "C-52",
+  "c4_refs": "CL-UX-05",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-53",
+  "c4_refs": "CL-HIS-16",
+  "missing_in_c4": [
+   "CL-HIS-15"
+  ],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-54",
+  "c4_refs": "CL-REC-05",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-55",
+  "c4_refs": "CL-REC-05",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-56",
+  "c4_refs": "none (unchanged)",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ },
+ {
+  "id": "C-57",
+  "c4_refs": "CL-UX-06",
+  "missing_in_c4": [],
+  "extra_in_c4": []
+ }
+]

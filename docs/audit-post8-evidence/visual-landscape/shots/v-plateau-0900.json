@@ -1,0 +1,74 @@
+{
+ "id": "v-plateau-0900",
+ "group": "vantage",
+ "note": "The Pratzen vantage at 0900.",
+ "spec": {
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "cam": [
+   23,
+   26,
+   55,
+   -31,
+   10,
+   -13
+  ]
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "09:00",
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   23,
+   27.126,
+   55
+  ],
+  "target": [
+   -31,
+   9.079,
+   -13
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 88.69,
+  "sunAlt": 8.54,
+  "sunGeo": 8.43,
+  "sunAz": 138.5,
+  "mist": 0.276
+ },
+ "ms": 19832,
+ "timing": {
+  "apply": 20,
+  "settle": 177,
+  "settle2": 199,
+  "shot": 18978
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

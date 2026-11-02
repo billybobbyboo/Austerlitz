@@ -1,0 +1,58 @@
+# GitHub Pages copies of the tools page (fetched 2026-11-02 06:56 UTC, the responses' date headers; curl through the session proxy; passive GET without parameters)
+https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html
+HTTP/2 200 
+server: GitHub.com
+content-type: text/html; charset=utf-8
+last-modified: Sun, 01 Nov 2026 10:57:39 GMT
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6ae71b23-1803"
+expires: Mon, 02 Nov 2026 07:06:05 GMT
+cache-control: max-age=600
+x-proxy-cache: MISS
+x-github-request-id: 5874:23D329:61BE1C:6C0F26:6AE83405
+x-github-edge-region: iad
+accept-ranges: bytes
+age: 0
+date: Mon, 02 Nov 2026 06:56:06 GMT
+via: 1.1 varnish
+x-served-by: cache-iad-khef600092-IAD
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1793602566.964223,VS0,VE43
+vary: Accept-Encoding
+x-fastly-request-id: a8fbcbea83a9e55378e435ddb4e6d0141fffc7c9
+content-length: 6147
+
+https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-route.js
+HTTP/2 200 
+server: GitHub.com
+content-type: application/javascript; charset=utf-8
+last-modified: Sun, 01 Nov 2026 10:57:39 GMT
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6ae71b23-8d49"
+expires: Mon, 02 Nov 2026 07:06:06 GMT
+cache-control: max-age=600
+x-proxy-cache: MISS
+x-github-request-id: 1450:B78B3:60B83F:6B085B:6AE83406
+x-github-edge-region: iad
+accept-ranges: bytes
+age: 0
+date: Mon, 02 Nov 2026 06:56:06 GMT
+via: 1.1 varnish
+x-served-by: cache-iad-khef600059-IAD
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1793602566.362940,VS0,VE30
+vary: Accept-Encoding
+x-fastly-request-id: 7f53a0c455e3e60c5f2b462fa2b9cc61f225a080
+content-length: 36169
+
+# md5 (live vs repository)
+3f57a5bf8135326d51099d87144d0e83  perf-run.live.html
+c1323fa79e59ff143e709eca00b6e643  perf-route.live.js
+3f57a5bf8135326d51099d87144d0e83  tools/step6/perf-run.html
+c1323fa79e59ff143e709eca00b6e643  tools/step6/perf-route.js
+
+# no content-security-policy, x-frame-options or frame-ancestors header in either response: /tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/robustness/perf-run.headers.txt:0 /tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/robustness/perf-route.headers.txt:0 

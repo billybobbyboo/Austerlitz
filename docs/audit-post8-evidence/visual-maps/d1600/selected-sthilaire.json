@@ -1,0 +1,695 @@
+{
+ "shot": "selected-sthilaire",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "select": [
+   "f",
+   "sthilaire"
+  ],
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    -0.55,
+    0.62,
+    0.56
+   ],
+   "r": 86
+  }
+ },
+ "steps": [],
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": "f:sthilaire",
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -75.78817943252815,
+    67.95948122924739,
+    66.64796451311958
+   ],
+   "tgt": [
+    -28.5,
+    5.182661349189747,
+    18.5
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -75.78817943252815,
+    67.95948122924739,
+    66.64796451311958
+   ],
+   "tgt": [
+    -28.5,
+    5.182661349189747,
+    18.5
+   ]
+  },
+  "aimErr": 0,
+  "paperFocus": null,
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": true,
+   "rail": true
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 65,
+  "placed": 24,
+  "dropped": 4,
+  "droppedIds": [
+   "t:vinohrady",
+   "t:pratzeberg",
+   "t:augezd",
+   "t:kobelnitz"
+  ],
+  "occluded": 0,
+  "offscreen": 27,
+  "underPanel": 10,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The crisis on the Pratzeberg",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "Friant retakes Telnitz, then loses it again",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 18,150",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   821,
+   748,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": [
+   "figures: dress as sourced (source and grade in the dossier), else the nation's symbol colo",
+   "standards: painted where the pattern is sourced (French eagles, Austrian colours), else pl",
+   "marching figures step: a visual convention for symbols under compressed time, not their fo",
+   "beside a name: its side, French or Allied",
+   "French formation, outlined on the ground",
+   "Allied formation, outlined on the ground",
+   "the selection, outlined",
+   "A: position documented (outlined round its footprint)",
+   "B: sector documented, frontage approximate (round its frontage doubled)",
+   "C: reconstructed, position indicative (a ring of its frontage's radius)",
+   "French movement",
+   "Allied movement",
+   "meres: pond outlines schematic",
+   "vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not establishe",
+   "valley fog: the narrative's; depth (238 m) and lifting modelled; drawn see-through",
+   "position approximate (B, C) · reported only (?)B?",
+   "grade sizes are drawn, not measured errors",
+   "plotted position, A",
+   "interpolated between plotted positions: not a recorded route · a tick: an explicit time",
+   "ordered routes (dashed): the columns' lines of march in the two plans, as the plans set th",
+   "contour interval≈ 9 m",
+   "relief drawn 4× vertically (1× is true scale)",
+   "symbols: figures and standards about 45–70× life, buildings and trees about 10–15×"
+  ]
+ },
+ "scaleBar": "500 m",
+ "bodyClass": "docked pm-study drawer-open",
+ "textContrast": {
+  "texts": 32,
+  "min": 7.84,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:ahq",
+    "plate": "full",
+    "ratio": 1.213,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.21
+   },
+   {
+    "id": "n:lich",
+    "plate": "full",
+    "ratio": 1.457,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.78
+   },
+   {
+    "id": "n:sthilaire",
+    "plate": "full",
+    "ratio": 0.954,
+    "prot": true,
+    "px": 12.5,
+    "contrast": 14.31
+   },
+   {
+    "id": "n:vandamme",
+    "plate": "full",
+    "ratio": 1.321,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.04
+   },
+   {
+    "id": "n:kellermann",
+    "plate": "far",
+    "ratio": 1.582,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 8.68
+   },
+   {
+    "id": "n:nansouty",
+    "plate": "far",
+    "ratio": 1.519,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 11.02
+   },
+   {
+    "id": "n:dhautpoul",
+    "plate": "full",
+    "ratio": 1.461,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.83
+   },
+   {
+    "id": "n:rivaud",
+    "plate": "full",
+    "ratio": 1.333,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 14.04
+   },
+   {
+    "id": "n:drouet",
+    "plate": "full",
+    "ratio": 1.255,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.67
+   },
+   {
+    "id": "n:milo",
+    "plate": "full",
+    "ratio": 1.234,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.48
+   },
+   {
+    "id": "n:kollo",
+    "plate": "full",
+    "ratio": 1.17,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 13.68
+   },
+   {
+    "id": "n:kamensky",
+    "plate": "full",
+    "ratio": 0.938,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.94
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:ahq",
+   "cat": "name",
+   "state": "on",
+   "text": "Allied HeadquartersB",
+   "box": [
+    733,
+    160,
+    159,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "on",
+   "text": "Fifth Column (cavalry)",
+   "box": [
+    555,
+    38,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "p:plateau",
+   "cat": "plateau",
+   "state": "on",
+   "text": "THE PRATZEN · derived: Allied ≈ 18,150 French ≈ ",
+   "box": [
+    487,
+    133,
+    331,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen Heights",
+   "box": [
+    872,
+    236,
+    100,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "on",
+   "text": "Goldbach stream",
+   "box": [
+    361,
+    750,
+    108,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:augezd",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Augezd",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:French hold the crest",
+   "cat": "overlay",
+   "state": "on",
+   "text": "French hold the crest",
+   "box": [
+    697,
+    183,
+    126,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Kamensky turns about (disputed)",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Kamensky turns about (disputed)",
+   "box": [
+    848,
+    536,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Jurczek's Austrians",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Jurczek's Austrians",
+   "box": [
+    610,
+    274,
+    116,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Levasseur up the Goldbach",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Levasseur up the Goldbach",
+   "box": [
+    641,
+    761,
+    163,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Caffarelli",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Caffarelli",
+   "box": [
+    304,
+    49,
+    62,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Pratzeberg",
+   "cat": "objective",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    1001,
+    387,
+    70,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:sthilaire",
+   "cat": "name",
+   "state": "on",
+   "text": "Saint-Hilaire",
+   "box": [
+    950,
+    337,
+    94,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "n:vandamme",
+   "cat": "name",
+   "state": "on",
+   "text": "Vandamme",
+   "box": [
+    689,
+    78,
+    86,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kellermann",
+   "cat": "name",
+   "state": "on",
+   "text": "Kellermann's Light CavalryB",
+   "box": [
+    321,
+    84,
+    197,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:nansouty",
+   "cat": "name",
+   "state": "on",
+   "text": "Nansouty's CuirassiersB",
+   "box": [
+    351,
+    111,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:dhautpoul",
+   "cat": "name",
+   "state": "on",
+   "text": "d'Hautpoul's CuirassiersB",
+   "box": [
+    327,
+    167,
+    183,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:rivaud",
+   "cat": "name",
+   "state": "on",
+   "text": "RivaudB",
+   "box": [
+    323,
+    197,
+    85,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:drouet",
+   "cat": "name",
+   "state": "on",
+   "text": "Drouet d'ErlonB",
+   "box": [
+    304,
+    269,
+    129,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:milo",
+   "cat": "name",
+   "state": "on",
+   "text": "Miloradovich's RussiansB",
+   "box": [
+    784,
+    110,
+    180,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kollo",
+   "cat": "name",
+   "state": "on",
+   "text": "Kollowrat's AustriansB",
+   "box": [
+    846,
+    204,
+    164,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kamensky",
+   "cat": "name",
+   "state": "on",
+   "text": "Kamensky",
+   "box": [
+    856,
+    394,
+    81,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:kobelnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Kobelnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzenv",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen village",
+   "box": [
+    721,
+    320,
+    94,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:blasowitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Blasowitz",
+   "box": [
+    507,
+    59,
+    60,
+    15
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:chapel",
+   "cat": "place",
+   "state": "on",
+   "text": "Chapel of St Anthony",
+   "box": [
+    1398,
+    719,
+    129,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 155405,
+ "msSettle": 3384,
+ "msShot": 149018,
+ "msMeasure": 3003,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

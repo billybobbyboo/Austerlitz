@@ -1,0 +1,1102 @@
+{
+ "what": "visitor's page, prolonged use",
+ "started": "2026-11-02T10:43:09.673Z",
+ "blocks": {
+  "growth": {
+   "before": {
+    "label": "before growth",
+    "t": "2026-11-02T10:44:47.061Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 380,
+     "Nodes": 1708,
+     "LayoutCount": 21,
+     "RecalcStyleCount": 24,
+     "LayoutDuration": 0.009,
+     "RecalcStyleDuration": 0.003,
+     "ScriptDuration": 0.245,
+     "TaskDuration": 0.854,
+     "JSHeapUsedSize": 15344424,
+     "JSHeapTotalSize": 16031744,
+     "heapUsed": 15344424,
+     "backingStorage": 83631061,
+     "embedderHeap": 2613792
+    },
+    "page": {
+     "geometries": 379,
+     "textures": 30,
+     "programs": 35,
+     "calls": 748,
+     "triangles": 1929775,
+     "frames": 15,
+     "skipped": 0,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 480,
+      "listeners": 367,
+      "max": 1
+     },
+     "tex": {
+      "n": 44,
+      "listeners": 16,
+      "max": 1
+     },
+     "mat": {
+      "n": 969,
+      "listeners": 639,
+      "max": 1
+     },
+     "dom": 814,
+     "mlItems": 31,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 103000000,
+     "counts": {
+      "raf": 8,
+      "rafCb": 7,
+      "to": 0,
+      "toCb": 0,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {},
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   },
+   "presentations": "skipped (RB_SKIP_PRES): measured in visitor.json",
+   "reliefOrder": "1,10.32642489706367,4,1,10.32642489706367,4,1,10.32642489706367,4,1,10.32642489706367,4",
+   "reliefSeen": "4,4,4,4,4,4,4,4,4,4,4,4",
+   "afterRelief": {
+    "label": "after 12 relief switches",
+    "t": "2026-11-02T10:47:03.387Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 393,
+     "Nodes": 1726,
+     "LayoutCount": 70,
+     "RecalcStyleCount": 134,
+     "LayoutDuration": 0.028,
+     "RecalcStyleDuration": 0.023,
+     "ScriptDuration": 1.043,
+     "TaskDuration": 2.456,
+     "JSHeapUsedSize": 16277364,
+     "JSHeapTotalSize": 17379328,
+     "heapUsed": 16277364,
+     "backingStorage": 83631070,
+     "embedderHeap": 2791872
+    },
+    "page": {
+     "geometries": 379,
+     "textures": 30,
+     "programs": 35,
+     "calls": 748,
+     "triangles": 1929775,
+     "frames": 40,
+     "skipped": 0,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 480,
+      "listeners": 367,
+      "max": 1
+     },
+     "tex": {
+      "n": 44,
+      "listeners": 16,
+      "max": 1
+     },
+     "mat": {
+      "n": 969,
+      "listeners": 639,
+      "max": 1
+     },
+     "dom": 814,
+     "mlItems": 31,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 103000000,
+     "counts": {
+      "raf": 33,
+      "rafCb": 32,
+      "to": 0,
+      "toCb": 0,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {},
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   },
+   "modeSeen": "staff,terrain,staff,terrain,staff,terrain,staff,terrain,staff,terrain",
+   "afterPaper": {
+    "label": "after 10 paper map/landscape switches",
+    "t": "2026-11-02T10:49:41.088Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 449,
+     "Nodes": 2034,
+     "LayoutCount": 297,
+     "RecalcStyleCount": 433,
+     "LayoutDuration": 0.083,
+     "RecalcStyleDuration": 0.201,
+     "ScriptDuration": 58.353,
+     "TaskDuration": 60.822,
+     "JSHeapUsedSize": 17229964,
+     "JSHeapTotalSize": 18165760,
+     "heapUsed": 17229964,
+     "backingStorage": 89517057,
+     "embedderHeap": 3260624
+    },
+    "page": {
+     "geometries": 414,
+     "textures": 34,
+     "programs": 42,
+     "calls": 726,
+     "triangles": 2096877,
+     "frames": 86,
+     "skipped": 5,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 510,
+      "listeners": 402,
+      "max": 1
+     },
+     "tex": {
+      "n": 47,
+      "listeners": 20,
+      "max": 1
+     },
+     "mat": {
+      "n": 999,
+      "listeners": 674,
+      "max": 1
+     },
+     "dom": 1057,
+     "mlItems": 45,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 103000000,
+     "counts": {
+      "raf": 84,
+      "rafCb": 83,
+      "to": 0,
+      "toCb": 0,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {},
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   },
+   "dossiers": {
+    "ok": 29,
+    "of": 30,
+    "list": [
+     {
+      "i": 0,
+      "id": "gqg",
+      "selected": "t:santon",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 1,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 2,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 3,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 4,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 5,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 6,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 7,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 8,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 9,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 10,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 11,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 12,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 13,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 14,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 15,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 16,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 17,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 18,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 19,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 20,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 21,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 22,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 23,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 24,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 25,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 26,
+      "id": "lich",
+      "selected": "f:lich",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 27,
+      "id": "bag",
+      "selected": "f:bag",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 28,
+      "id": "gqg",
+      "selected": "f:gqg",
+      "drawer": true,
+      "afterEsc": null
+     },
+     {
+      "i": 29,
+      "id": "ahq",
+      "selected": "f:ahq",
+      "drawer": true,
+      "afterEsc": null
+     }
+    ]
+   },
+   "afterDossiers": {
+    "label": "after 30 dossiers opened and closed",
+    "t": "2026-11-02T11:12:03.236Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 449,
+     "Nodes": 2031,
+     "LayoutCount": 475,
+     "RecalcStyleCount": 716,
+     "LayoutDuration": 0.191,
+     "RecalcStyleDuration": 0.298,
+     "ScriptDuration": 61.563,
+     "TaskDuration": 69.21,
+     "JSHeapUsedSize": 17598436,
+     "JSHeapTotalSize": 18690048,
+     "heapUsed": 17598436,
+     "backingStorage": 89538077,
+     "embedderHeap": 3337416
+    },
+    "page": {
+     "geometries": 415,
+     "textures": 34,
+     "programs": 42,
+     "calls": 724,
+     "triangles": 1949789,
+     "frames": 155,
+     "skipped": 5,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 510,
+      "listeners": 403,
+      "max": 1
+     },
+     "tex": {
+      "n": 47,
+      "listeners": 20,
+      "max": 1
+     },
+     "mat": {
+      "n": 999,
+      "listeners": 675,
+      "max": 1
+     },
+     "dom": 1054,
+     "mlItems": 45,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 109000000,
+     "counts": {
+      "raf": 153,
+      "rafCb": 152,
+      "to": 30,
+      "toCb": 30,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {
+       "anon@360": 30
+      },
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   },
+   "errors": 0
+  },
+  "storm": {
+   "before": [
+    {
+     "vp": [
+      1600,
+      900
+     ],
+     "body": "docked pm-study",
+     "rects": {
+      ".timebar": "0,810,1600,91",
+      ".rail": "0,0,300,809",
+      ".dispatch": "18,137,259,1947",
+      "#maplayer": "0,0,1600,900",
+      "canvas": "0,0,1600,900",
+      ".legend": "1489,753,93,42",
+      "#viewmode": "713,14,175,34",
+      "#play": "100,813,58,32",
+      "#speedbtn": "hidden",
+      ".speeds": "1331,814,149,30",
+      "#tb-cap": "388,821,776,15",
+      "#layersbtn": "1509,20,69,28",
+      "#menubtn": "hidden",
+      "#drawer": "hidden",
+      "#phlist": "hidden",
+      "#toast": "931,26,38,18"
+     },
+     "buffer": [
+      1600,
+      900
+     ],
+     "pxRatio": 1,
+     "aspect": 1.77778,
+     "aspectWant": 1.77778,
+     "phone": false,
+     "fx": [
+      2080,
+      1170
+     ],
+     "mlShown": 30
+    },
+    {
+     "vp": [
+      700,
+      900
+     ],
+     "body": "pm-study rail-hidden",
+     "rects": {
+      ".timebar": "0,800,700,100",
+      ".rail": "0,260,700,540",
+      ".dispatch": "0,648,700,152",
+      "#maplayer": "0,0,700,900",
+      "canvas": "0,0,700,900",
+      ".legend": "hidden",
+      "#viewmode": "0,0,0,0",
+      "#play": "90,811,58,32",
+      "#speedbtn": "644,805,48,44",
+      ".speeds": "hidden",
+      "#tb-cap": "8,849,684,15",
+      "#layersbtn": "0,0,0,0",
+      "#menubtn": "630,10,60,44",
+      "#drawer": "hidden",
+      "#phlist": "hidden",
+      "#toast": "331,26,38,18"
+     },
+     "buffer": [
+      700,
+      900
+     ],
+     "pxRatio": 1,
+     "aspect": 0.77778,
+     "aspectWant": 0.77778,
+     "phone": true,
+     "fx": [
+      910,
+      1170
+     ],
+     "mlShown": 30
+    },
+    {
+     "vp": [
+      390,
+      844
+     ],
+     "body": "pm-study rail-hidden",
+     "rects": {
+      ".timebar": "0,744,390,100",
+      ".rail": "0,238,390,506",
+      ".dispatch": "0,573,390,171",
+      "#maplayer": "0,0,390,844",
+      "canvas": "0,0,700,900",
+      ".legend": "hidden",
+      "#viewmode": "0,0,0,0",
+      "#play": "90,755,58,32",
+      "#speedbtn": "334,749,48,44",
+      ".speeds": "hidden",
+      "#tb-cap": "8,793,374,15",
+      "#layersbtn": "0,0,0,0",
+      "#menubtn": "320,10,60,44",
+      "#drawer": "hidden",
+      "#phlist": "hidden",
+      "#toast": "176,26,38,18"
+     },
+     "buffer": [
+      700,
+      900
+     ],
+     "pxRatio": 1,
+     "aspect": 0.77778,
+     "aspectWant": 0.46209,
+     "phone": true,
+     "fx": [
+      910,
+      1170
+     ],
+     "mlShown": 30
+    },
+    {
+     "vp": [
+      844,
+      390
+     ],
+     "body": "pm-study rail-hidden",
+     "rects": {
+      ".timebar": "0,300,844,91",
+      ".rail": "hidden",
+      ".dispatch": "hidden",
+      "#maplayer": "0,0,844,390",
+      "canvas": "0,0,844,390",
+      ".legend": "hidden",
+      "#viewmode": "335,14,175,34",
+      "#play": "59,303,58,32",
+      "#speedbtn": "306,304,44,29",
+      ".speeds": "hidden",
+      "#tb-cap": "360,311,428,15",
+      "#layersbtn": "696,56,69,28",
+      "#menubtn": "hidden",
+      "#drawer": "hidden",
+      "#phlist": "hidden",
+      "#toast": "403,26,38,18"
+     },
+     "buffer": [
+      844,
+      390
+     ],
+     "pxRatio": 1,
+     "aspect": 2.1641,
+     "aspectWant": 2.1641,
+     "phone": false,
+     "fx": [
+      1097,
+      507
+     ],
+     "mlShown": 30
+    }
+   ],
+   "snapBefore": {
+    "label": "before the storm",
+    "t": "2026-11-02T11:14:57.615Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 449,
+     "Nodes": 2043,
+     "LayoutCount": 495,
+     "RecalcStyleCount": 752,
+     "LayoutDuration": 0.216,
+     "RecalcStyleDuration": 0.342,
+     "ScriptDuration": 103.511,
+     "TaskDuration": 112.829,
+     "JSHeapUsedSize": 17621568,
+     "JSHeapTotalSize": 18690048,
+     "heapUsed": 17621568,
+     "backingStorage": 91287539,
+     "embedderHeap": 3160696
+    },
+    "page": {
+     "geometries": 418,
+     "textures": 34,
+     "programs": 42,
+     "calls": 726,
+     "triangles": 2071733,
+     "frames": 164,
+     "skipped": 5,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 510,
+      "listeners": 403,
+      "max": 1
+     },
+     "tex": {
+      "n": 47,
+      "listeners": 20,
+      "max": 1
+     },
+     "mat": {
+      "n": 999,
+      "listeners": 675,
+      "max": 1
+     },
+     "dom": 1068,
+     "mlItems": 45,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 109000000,
+     "counts": {
+      "raf": 162,
+      "rafCb": 161,
+      "to": 30,
+      "toCb": 30,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {
+       "anon@360": 30
+      },
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   },
+   "stormSeconds": 9.2,
+   "settleAfterStorm": 55911,
+   "atStormEnd": {
+    "vp": [
+     844,
+     390
+    ],
+    "body": "pm-study rail-hidden",
+    "rects": {
+     ".timebar": "0,300,844,91",
+     ".rail": "hidden",
+     ".dispatch": "hidden",
+     "#maplayer": "0,0,844,390",
+     "canvas": "0,0,844,390",
+     ".legend": "hidden",
+     "#viewmode": "335,14,175,34",
+     "#play": "59,303,58,32",
+     "#speedbtn": "306,304,44,29",
+     ".speeds": "hidden",
+     "#tb-cap": "360,311,428,15",
+     "#layersbtn": "696,56,69,28",
+     "#menubtn": "hidden",
+     "#drawer": "hidden",
+     "#phlist": "hidden",
+     "#toast": "403,26,38,18"
+    },
+    "buffer": [
+     844,
+     390
+    ],
+    "pxRatio": 1,
+    "aspect": 2.1641,
+    "aspectWant": 2.1641,
+    "phone": false,
+    "fx": [
+     1097,
+     507
+    ],
+    "mlShown": 30
+   },
+   "after": [
+    {
+     "vp": [
+      1600,
+      900
+     ],
+     "body": "docked pm-study",
+     "rects": {
+      ".timebar": "0,810,1600,91",
+      ".rail": "-301,0,300,809",
+      ".dispatch": "-283,137,259,1947",
+      "#maplayer": "0,0,1600,900",
+      "canvas": "0,0,1600,900",
+      ".legend": "1489,753,93,42",
+      "#viewmode": "713,14,175,34",
+      "#play": "100,813,58,32",
+      "#speedbtn": "hidden",
+      ".speeds": "1331,814,149,30",
+      "#tb-cap": "388,821,776,15",
+      "#layersbtn": "1509,20,69,28",
+      "#menubtn": "hidden",
+      "#drawer": "hidden",
+      "#phlist": "hidden",
+      "#toast": "931,26,38,18"
+     },
+     "buffer": [
+      1600,
+      900
+     ],
+     "pxRatio": 1,
+     "aspect": 1.77778,
+     "aspectWant": 1.77778,
+     "phone": false,
+     "fx": [
+      2080,
+      1170
+     ],
+     "mlShown": 30
+    },
+    {
+     "vp": [
+      700,
+      900
+     ],
+     "body": "pm-study rail-hidden",
+     "rects": {
+      ".timebar": "0,800,700,100",
+      ".rail": "0,260,700,540",
+      ".dispatch": "0,648,700,152",
+      "#maplayer": "0,0,700,900",
+      "canvas": "0,0,700,900",
+      ".legend": "hidden",
+      "#viewmode": "0,0,0,0",
+      "#play": "90,811,58,32",
+      "#speedbtn": "644,805,48,44",
+      ".speeds": "hidden",
+      "#tb-cap": "8,849,684,15",
+      "#layersbtn": "0,0,0,0",
+      "#menubtn": "630,10,60,44",
+      "#drawer": "hidden",
+      "#phlist": "hidden",
+      "#toast": "331,26,38,18"
+     },
+     "buffer": [
+      700,
+      900
+     ],
+     "pxRatio": 1,
+     "aspect": 0.77778,
+     "aspectWant": 0.77778,
+     "phone": true,
+     "fx": [
+      910,
+      1170
+     ],
+     "mlShown": 30
+    },
+    {
+     "vp": [
+      390,
+      844
+     ],
+     "body": "pm-study rail-hidden",
+     "rects": {
+      ".timebar": "0,744,390,100",
+      ".rail": "0,238,390,506",
+      ".dispatch": "0,573,390,171",
+      "#maplayer": "0,0,390,844",
+      "canvas": "0,0,700,900",
+      ".legend": "hidden",
+      "#viewmode": "0,0,0,0",
+      "#play": "90,755,58,32",
+      "#speedbtn": "334,749,48,44",
+      ".speeds": "hidden",
+      "#tb-cap": "8,793,374,15",
+      "#layersbtn": "0,0,0,0",
+      "#menubtn": "320,10,60,44",
+      "#drawer": "hidden",
+      "#phlist": "hidden",
+      "#toast": "176,26,38,18"
+     },
+     "buffer": [
+      700,
+      900
+     ],
+     "pxRatio": 1,
+     "aspect": 0.77778,
+     "aspectWant": 0.46209,
+     "phone": true,
+     "fx": [
+      910,
+      1170
+     ],
+     "mlShown": 30
+    },
+    {
+     "vp": [
+      844,
+      390
+     ],
+     "body": "pm-study rail-hidden",
+     "rects": {
+      ".timebar": "0,300,844,91",
+      ".rail": "hidden",
+      ".dispatch": "hidden",
+      "#maplayer": "0,0,844,390",
+      "canvas": "0,0,844,390",
+      ".legend": "hidden",
+      "#viewmode": "335,14,175,34",
+      "#play": "59,303,58,32",
+      "#speedbtn": "306,304,44,29",
+      ".speeds": "hidden",
+      "#tb-cap": "360,311,428,15",
+      "#layersbtn": "696,56,69,28",
+      "#menubtn": "hidden",
+      "#drawer": "hidden",
+      "#phlist": "hidden",
+      "#toast": "403,26,38,18"
+     },
+     "buffer": [
+      844,
+      390
+     ],
+     "pxRatio": 1,
+     "aspect": 2.1641,
+     "aspectWant": 2.1641,
+     "phone": false,
+     "fx": [
+      1097,
+      507
+     ],
+     "mlShown": 30
+    }
+   ],
+   "diffs": [
+    {
+     "size": "1600x900",
+     "key": ".rail",
+     "before": "0,0,300,809",
+     "after": "-301,0,300,809"
+    },
+    {
+     "size": "1600x900",
+     "key": ".dispatch",
+     "before": "18,137,259,1947",
+     "after": "-283,137,259,1947"
+    },
+    {
+     "size": "390x844",
+     "key": "aspect vs viewport",
+     "before": 0.46209,
+     "after": 0.77778
+    }
+   ],
+   "errorsDuring": 0,
+   "logDuring": [],
+   "snapAfter": {
+    "label": "after the storm and the four sizes",
+    "t": "2026-11-02T11:18:24.500Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 449,
+     "Nodes": 2043,
+     "LayoutCount": 719,
+     "RecalcStyleCount": 900,
+     "LayoutDuration": 1.369,
+     "RecalcStyleDuration": 1.273,
+     "ScriptDuration": 130.221,
+     "TaskDuration": 144.856,
+     "JSHeapUsedSize": 17611912,
+     "JSHeapTotalSize": 18690048,
+     "heapUsed": 17611912,
+     "backingStorage": 91287236,
+     "embedderHeap": 3177512
+    },
+    "page": {
+     "geometries": 418,
+     "textures": 34,
+     "programs": 42,
+     "calls": 726,
+     "triangles": 2071733,
+     "frames": 178,
+     "skipped": 5,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 510,
+      "listeners": 403,
+      "max": 1
+     },
+     "tex": {
+      "n": 47,
+      "listeners": 20,
+      "max": 1
+     },
+     "mat": {
+      "n": 999,
+      "listeners": 675,
+      "max": 1
+     },
+     "dom": 1068,
+     "mlItems": 45,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 109000000,
+     "counts": {
+      "raf": 176,
+      "rafCb": 175,
+      "to": 30,
+      "toCb": 30,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {
+       "anon@360": 30
+      },
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   }
+  }
+ },
+ "firstRunAtLoad": true,
+ "firstRunAfterEsc": false,
+ "settleBoot": 48400,
+ "boot": {
+  "label": "boot (card closed)",
+  "t": "2026-11-02T10:44:46.373Z",
+  "cdp": {
+   "Documents": 1,
+   "Frames": 1,
+   "JSEventListeners": 380,
+   "Nodes": 1708,
+   "LayoutCount": 21,
+   "RecalcStyleCount": 24,
+   "LayoutDuration": 0.009,
+   "RecalcStyleDuration": 0.003,
+   "ScriptDuration": 0.245,
+   "TaskDuration": 0.719,
+   "JSHeapUsedSize": 15327572,
+   "JSHeapTotalSize": 16031744,
+   "heapUsed": 15327572,
+   "backingStorage": 83631061,
+   "embedderHeap": 2609792
+  },
+  "page": {
+   "geometries": 379,
+   "textures": 30,
+   "programs": 35,
+   "calls": 748,
+   "triangles": 1929775,
+   "frames": 15,
+   "skipped": 0,
+   "devState": "active",
+   "lost": false,
+   "built": 206,
+   "depth": 206,
+   "geo": {
+    "n": 480,
+    "listeners": 367,
+    "max": 1
+   },
+   "tex": {
+    "n": 44,
+    "listeners": 16,
+    "max": 1
+   },
+   "mat": {
+    "n": 969,
+    "listeners": 639,
+    "max": 1
+   },
+   "dom": 814,
+   "mlItems": 31,
+   "clock": 240,
+   "playing": false,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "speed": 0.5,
+   "fx": true,
+   "heap": 103000000,
+   "counts": {
+    "raf": 8,
+    "rafCb": 7,
+    "to": 0,
+    "toCb": 0,
+    "iv": 0,
+    "ivCb": 0,
+    "toBy": {},
+    "ivBy": {}
+   }
+  },
+  "log": 0
+ },
+ "log": {},
+ "finished": "2026-11-02T11:18:24.508Z"
+}

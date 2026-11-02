@@ -1,0 +1,854 @@
+{
+ "tag": "mapfocus",
+ "started": "2026-11-02T06:18:46.088Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "map layer stops: at 120 ms and after frames",
+   "t": 977.9,
+   "n": 18,
+   "invisibleAt120": 7,
+   "invisibleAfterFrames": 0,
+   "rows": [
+    {
+     "at120ms": {
+      "name": "Event, 04:00 to 04:45: Friant's division at Raiger",
+      "box": [
+       364,
+       748,
+       300,
+       17
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Event, 04:00 to 04:45: Friant's division at Raiger",
+      "box": [
+       454,
+       740,
+       300,
+       17
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Imperial Headquarters, French, army, observing, po",
+      "box": [
+       746,
+       218,
+       171,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Imperial Headquarters, French, army, observing, po",
+      "box": [
+       746,
+       218,
+       171,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Allied Headquarters, Allied, Russian, army, observ",
+      "box": [
+       1149,
+       326,
+       159,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Allied Headquarters, Allied, Russian, army, observ",
+      "box": [
+       1149,
+       326,
+       159,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Left Wing Command, Allied, Russian, corps, about 4",
+      "box": [
+       952,
+       522,
+       163,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Left Wing Command, Allied, Russian, corps, about 4",
+      "box": [
+       952,
+       522,
+       163,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Advance Guard of the Right, Allied, Russian, corps",
+      "box": [
+       969,
+       146,
+       201,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Advance Guard of the Right, Allied, Russian, corps",
+      "box": [
+       969,
+       146,
+       201,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Fifth Column (cavalry), Allied, Russian, corps, ab",
+      "box": [
+       953,
+       443,
+       175,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Fifth Column (cavalry), Allied, Russian, corps, ab",
+      "box": [
+       953,
+       443,
+       175,
+       17
+      ],
+      "opacity": 1,
+      "display": "flex",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Pratzen Heights",
+      "box": [
+       0,
+       0,
+       100,
+       16
+      ],
+      "opacity": 0,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 1,
+       "by": ".rail"
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Pratzen Heights",
+      "box": [
+       953,
+       387,
+       100,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": true,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Stare Vinohrady",
+      "box": [
+       0,
+       0,
+       100,
+       16
+      ],
+      "opacity": 0,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 1,
+       "by": ".rail"
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Stare Vinohrady",
+      "box": [
+       968,
+       326,
+       100,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": true,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Pratzeberg",
+      "box": [
+       0,
+       0,
+       74,
+       16
+      ],
+      "opacity": 0,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 1,
+       "by": ".rail"
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Pratzeberg",
+      "box": [
+       943,
+       441,
+       74,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": true,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: The Santon",
+      "box": [
+       900,
+       186,
+       74,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Place: The Santon",
+      "box": [
+       900,
+       186,
+       74,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Zuran mound",
+      "box": [
+       0,
+       0,
+       86,
+       16
+      ],
+      "opacity": 0,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 1,
+       "by": ".rail"
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Zuran mound",
+      "box": [
+       788,
+       231,
+       86,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": true,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Goldbach stream",
+      "box": [
+       0,
+       0,
+       108,
+       16
+      ],
+      "opacity": 0,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 1,
+       "by": ".rail"
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Goldbach stream",
+      "box": [
+       810,
+       422,
+       108,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": true,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Litava river",
+      "box": [
+       1194,
+       364,
+       70,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Litava river",
+      "box": [
+       1194,
+       364,
+       70,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Telnitz",
+      "box": [
+       0,
+       0,
+       47,
+       16
+      ],
+      "opacity": 0,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 1,
+       "by": ".rail"
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Telnitz",
+      "box": [
+       855,
+       608,
+       47,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": true,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Sokolnitz",
+      "box": [
+       0,
+       0,
+       62,
+       16
+      ],
+      "opacity": 0,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 1,
+       "by": ".rail"
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Sokolnitz",
+      "box": [
+       842,
+       548,
+       62,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": true,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Augezd",
+      "box": [
+       1003,
+       576,
+       55,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Augezd",
+      "box": [
+       1003,
+       576,
+       55,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Satschan mere",
+      "box": [
+       963,
+       644,
+       95,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Satschan mere",
+      "box": [
+       963,
+       644,
+       95,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    },
+    {
+     "at120ms": {
+      "name": "Place: Austerlitz",
+      "box": [
+       1284,
+       242,
+       63,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     },
+     "afterFrames": {
+      "name": "Place: Austerlitz",
+      "box": [
+       1284,
+       242,
+       63,
+       16
+      ],
+      "opacity": 1,
+      "display": "block",
+      "forced": false,
+      "cover": {
+       "how": "panels",
+       "frac": 0,
+       "by": null
+      }
+     }
+    }
+   ]
+  },
+  {
+   "step": "Layers by keyboard: Enter on its button (focused by script), then Tab x7",
+   "t": 1185.6,
+   "open": {
+    "hidden": false,
+    "expanded": "true",
+    "focus": "button#layersbtn.t"
+   },
+   "seq": [
+    "button.t.van-btn 'Field'",
+    "button.t.van-btn 'Zuran'",
+    "button.t.van-btn 'Pratzen'",
+    "button.t.van-btn 'Allied'",
+    "button.t.van-btn 'Overview'",
+    "button#layerclose '×' [IN THE PANEL]",
+    "button.mode-btn 'Landscape' [IN THE PANEL]"
+   ]
+  },
+  {
+   "step": "a .t button's ring after a real Tab: at 120 ms and at 1.2 s",
+   "t": 1297.2,
+   "at120": "layersbtn solid 0px rgb(155, 163, 169) transition all 0.18s",
+   "at1200": "layersbtn solid 0px rgb(155, 163, 169)"
+  },
+  {
+   "step": "the legend's toggle (focused by script): Enter, frames, Enter, frames (real keys)",
+   "t": 1377.2,
+   "lg": [
+    {
+     "expanded": "true",
+     "name": "N Key",
+     "cls": "legend",
+     "open": true
+    },
+    {
+     "expanded": "false",
+     "name": "N Key",
+     "cls": "legend collapsed",
+     "open": false
+    }
+   ]
+  },
+  {
+   "step": "sources sheet: keyboard scrolling (real keys; focus on its text region by Tab, then on the sheet itself by script); a wheel for comparison",
+   "t": 1467.3,
+   "geo": {
+    "sheetSH": 32858,
+    "sheetCH": 736,
+    "oy": "auto",
+    "focus": "div#modal-body"
+   },
+   "regionFocused": [
+    {
+     "key": "PageDown",
+     "before": 0,
+     "after": 0,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "ArrowDown",
+     "before": 0,
+     "after": 0,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "Space",
+     "before": 0,
+     "after": 0,
+     "focus": "div#modal-body"
+    },
+    {
+     "key": "End",
+     "before": 0,
+     "after": 0,
+     "focus": "div#modal-body"
+    }
+   ],
+   "sheetFocused": [
+    {
+     "key": "PageDown",
+     "before": 0,
+     "after": 684,
+     "focus": "div.sheet"
+    },
+    {
+     "key": "ArrowDown",
+     "before": 684,
+     "after": 684,
+     "focus": "div.sheet"
+    },
+    {
+     "key": "Space",
+     "before": 684,
+     "after": 684,
+     "focus": "div.sheet"
+    },
+    {
+     "key": "End",
+     "before": 684,
+     "after": 32122,
+     "focus": "div.sheet"
+    }
+   ],
+   "wheelScrollTop": 0
+  },
+  {
+   "step": "the ? overlay: keyboard scrolling with focus on its list region (two real Tabs)",
+   "t": 1494,
+   "geo": {
+    "sheetSH": 1658,
+    "sheetCH": 736,
+    "oy": "auto",
+    "focus": "div#help-body"
+   },
+   "res": [
+    {
+     "key": "PageDown",
+     "before": 0,
+     "after": 0,
+     "focus": "div#help-body"
+    },
+    {
+     "key": "ArrowDown",
+     "before": 0,
+     "after": 0,
+     "focus": "div#help-body"
+    },
+    {
+     "key": "Space",
+     "before": 0,
+     "after": 644,
+     "focus": "div#help-body"
+    },
+    {
+     "key": "End",
+     "before": 644,
+     "after": 644,
+     "focus": "div#help-body"
+    }
+   ]
+  },
+  {
+   "step": "a formation's map item (focused by script), Enter (real key): the dossier and the focus",
+   "t": 1496.4,
+   "item": "Imperial Headquarters, French, army, observing, position grade B",
+   "fi": {
+    "el": "div.ml-item.mlt",
+    "text": "Imperial Headquarters B",
+    "aria": "Imperial Headquarters, French, army, observing, position grade B",
+    "role": "button",
+    "box": [
+     746,
+     218,
+     171,
+     17
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "3px",
+     "bs": "rgb(16, 23, 32) 0px 0px 0px 7px"
+    },
+    "covered": {
+     "how": "panels",
+     "frac": 0,
+     "by": null
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": true,
+    "tabindex": "0"
+   },
+   "sel": "f:gqg",
+   "drawer": true
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/mapfocus-last-map-stop.jpg",
+  "docs/audit-post8-evidence/a11y/mapfocus-layers-open.jpg",
+  "docs/audit-post8-evidence/a11y/mapfocus-ring-layersbtn.jpg"
+ ],
+ "ok": true,
+ "ended": "2026-11-02T06:43:42.494Z",
+ "seconds": 1496
+}

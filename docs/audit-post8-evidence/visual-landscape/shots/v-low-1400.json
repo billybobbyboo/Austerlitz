@@ -1,0 +1,78 @@
+{
+ "id": "v-low-1400",
+ "group": "vantage",
+ "note": "The low Pratzen view (cases.js pratzen-low) at 1400.",
+ "spec": {
+  "t": 840,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    285,
+    289
+   ],
+   "dir": [
+    -1,
+    0.13,
+    0.18
+   ],
+   "r": 70
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "14:00",
+  "t": 840,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -95.836,
+   21.932,
+   31.8
+  ],
+  "target": [
+   -27.5,
+   5.127,
+   19.5
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 71.44,
+  "sunAlt": 14.1,
+  "sunGeo": 14.04,
+  "sunAz": 208.6,
+  "mist": 0
+ },
+ "ms": 11313,
+ "timing": {
+  "apply": 21,
+  "settle": 163,
+  "settle2": 75,
+  "shot": 10602
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

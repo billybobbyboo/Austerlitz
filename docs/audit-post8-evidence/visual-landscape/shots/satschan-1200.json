@@ -1,0 +1,78 @@
+{
+ "id": "satschan-1200",
+ "group": "landmarks",
+ "note": "Satschan village at 12:00: five farmsteads of seven drawn (decision 261 (a)).",
+ "spec": {
+  "t": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    262.4,
+    443.7
+   ],
+   "dir": [
+    -0.45,
+    0.55,
+    0.7
+   ],
+   "r": 28
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "12:00",
+  "t": 720,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -51.432,
+   12.241,
+   116.499
+  ],
+  "target": [
+   -38.8,
+   -3.711,
+   96.85
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 28.29,
+  "sunAlt": 18.96,
+  "sunGeo": 18.91,
+  "sunAz": 180,
+  "mist": 0
+ },
+ "ms": 33055,
+ "timing": {
+  "apply": 67,
+  "settle": 141,
+  "settle2": 129,
+  "shot": 32256
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

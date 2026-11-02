@@ -1,0 +1,493 @@
+{
+ "shot": "paper",
+ "viewport": [
+  844,
+  390
+ ],
+ "device": "density 3, touch, isMobile, iPhone UA (tools/audit-post8/lib.js openPhone)",
+ "page": "harness page (?harness=1)",
+ "build": "md5 f10fe585c46aea576f436ed51ac46f83",
+ "steps": [
+  "real tap #layersbtn",
+  "real tap .mode-btn[data-m=\"staff\"]",
+  "real tap #layerclose"
+ ],
+ "note": "the paper map entered by its taps (decision 238)",
+ "state": {
+  "clock": 240,
+  "presentation": "study",
+  "mode": "staff",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": false,
+  "tween": false,
+  "cam": {
+   "kind": "map",
+   "x": 378.67506046219273,
+   "z": -51.96768641223197,
+   "wpp": 1.4837091799668085
+  },
+  "applied": null,
+  "aimErr": null,
+  "paperFocus": null,
+  "layers": {
+   "confidence": true,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   844,
+   390
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "read": {
+  "layer": {
+   "items": 40,
+   "placed": 18,
+   "dropped": 22,
+   "droppedIds": [
+    "c:lich",
+    "c:c_iii",
+    "c:c_gren",
+    "p:plateau",
+    "o:Soult's assault · Legrand",
+    "o:I Column → Telnitz",
+    "o:II Column → Sokolnitz",
+    "o:III Column → the castle",
+    "o:IV Column → Kobelnitz",
+    "o:V Column counter-marches north",
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:satschan",
+    "t:austerlitz"
+   ],
+   "underPanel": 0
+  },
+  "drawn": [
+   {
+    "id": "e:raigern",
+    "text": "Friant's division at Raigern since the n",
+    "box": [
+     41,
+     204,
+     300,
+     17
+    ]
+   },
+   {
+    "id": "o:French line on the Goldbach",
+    "text": "French line on the Goldbach",
+    "box": [
+     148,
+     184,
+     167,
+     17
+    ]
+   },
+   {
+    "id": "o:Allied columns on the plateau",
+    "text": "Allied columns on the plateau",
+    "box": [
+     7,
+     114,
+     179,
+     17
+    ]
+   },
+   {
+    "id": "o:V Corps · IV Corps",
+    "text": "V Corps · IV Corps",
+    "box": [
+     3,
+     135,
+     116,
+     17
+    ]
+   },
+   {
+    "id": "o:Telnitz",
+    "text": "Telnitz",
+    "box": [
+     61,
+     169,
+     48,
+     17
+    ]
+   },
+   {
+    "id": "o:Sokolnitz",
+    "text": "Sokolnitz",
+    "box": [
+     17,
+     232,
+     63,
+     17
+    ]
+   },
+   {
+    "id": "o:Kobelnitz",
+    "text": "Kobelnitz",
+    "box": [
+     25,
+     73,
+     64,
+     17
+    ]
+   },
+   {
+    "id": "c:gqg",
+    "text": "XXXXFRBImperial Headquarters",
+    "box": [
+     102,
+     51,
+     216,
+     53
+    ]
+   },
+   {
+    "id": "c:ahq",
+    "text": "XXXXRUBAllied Headquarters",
+    "box": [
+     188,
+     116,
+     202,
+     53
+    ]
+   },
+   {
+    "id": "c:bag",
+    "text": "XXXRUBAdvance Guard of the Right",
+    "box": [
+     393,
+     126,
+     246,
+     46
+    ]
+   },
+   {
+    "id": "c:c_iv",
+    "text": "XXXFRBIV Corps",
+    "box": [
+     355,
+     190,
+     134,
+     46
+    ]
+   },
+   {
+    "id": "c:c_v",
+    "text": "XXXFRBV Corps",
+    "box": [
+     512,
+     6,
+     131,
+     46
+    ]
+   },
+   {
+    "id": "c:c_cav",
+    "text": "XXXFRCCavalry Reserve",
+    "box": [
+     492,
+     232,
+     181,
+     46
+    ]
+   },
+   {
+    "id": "c:c_i",
+    "text": "XXXFRBI Corps",
+    "box": [
+     321,
+     64,
+     125,
+     46
+    ]
+   },
+   {
+    "id": "c:c_gd",
+    "text": "XXXFRBImperial Guard",
+    "box": [
+     45,
+     3,
+     170,
+     46
+    ]
+   },
+   {
+    "id": "c:col4",
+    "text": "XXXATFourth Column",
+    "box": [
+     299,
+     245,
+     168,
+     46
+    ]
+   },
+   {
+    "id": "c:constantine",
+    "text": "XXXRURussian Imperial Guard",
+    "box": [
+     492,
+     176,
+     219,
+     46
+    ]
+   },
+   {
+    "id": "c:buxhowden",
+    "text": "XXXRUCLeft Wing Command",
+    "box": [
+     83,
+     232,
+     204,
+     53
+    ]
+   }
+  ],
+  "caption": {
+   "title": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+   "box": [
+    360,
+    311,
+    304,
+    15
+   ],
+   "parts": [
+    {
+     "cls": "act",
+     "text": "THE DECEPTION",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "cap-ph",
+     "text": "Dispositions in the dark",
+     "shown": true,
+     "cut": true
+    },
+    {
+     "cls": "sep",
+     "text": "·",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "ev",
+     "text": "intervalFriant's division at Raigern since the night",
+     "shown": true,
+     "cut": false
+    },
+    {
+     "cls": "sep der-sep",
+     "text": "·",
+     "shown": false,
+     "cut": false
+    },
+    {
+     "cls": "der",
+     "text": "derived on the heights: Allied ≈ 38,700",
+     "shown": false,
+     "cut": false
+    }
+   ]
+  },
+  "panels": {
+   ".timebar": {
+    "shown": true,
+    "box": [
+     0,
+     300,
+     844,
+     91
+    ]
+   },
+   ".rail": {
+    "shown": false,
+    "box": [
+     -275,
+     0,
+     272,
+     299
+    ]
+   },
+   ".dispatch": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tools": {
+    "shown": true,
+    "box": [
+     471,
+     56,
+     359,
+     63
+    ]
+   },
+   "#viewmode": {
+    "shown": true,
+    "box": [
+     335,
+     14,
+     175,
+     34
+    ]
+   },
+   "#firstrun": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".drawer": {
+    "shown": false,
+    "box": [
+     844,
+     0,
+     360,
+     299
+    ]
+   },
+   "#layerpop": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#selchip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#menubtn": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#dgrip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#phlist": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#tltip": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   ".legend": {
+    "shown": false,
+    "box": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "#scalebar": {
+    "shown": true,
+    "box": [
+     716,
+     308,
+     114,
+     21
+    ]
+   }
+  },
+  "body": "rail-hidden pm-study mode-staff",
+  "clock": 240,
+  "cam": {
+   "pos": [
+    -230,
+    136.55,
+    211
+   ],
+   "tgt": [
+    -28,
+    -1,
+    1
+   ]
+  },
+  "map": {
+   "x": 378.68,
+   "z": -51.97,
+   "wpp": 1.4837
+  },
+  "focus": "layersbtn"
+ },
+ "textContrast": {
+  "texts": 49,
+  "min": 5.38,
+  "belowAA": []
+ }
+}

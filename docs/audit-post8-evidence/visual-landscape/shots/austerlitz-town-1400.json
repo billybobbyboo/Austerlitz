@@ -1,0 +1,78 @@
+{
+ "id": "austerlitz-town-1400",
+ "group": "landmarks",
+ "note": "Austerlitz from the west-north-west at 14:00, 80 units off: the town, the château's symbol, the garden.",
+ "spec": {
+  "t": 840,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    500,
+    126
+   ],
+   "dir": [
+    -0.55,
+    0.62,
+    0.56
+   ],
+   "r": 80
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "14:00",
+  "t": 840,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   36.011,
+   50.358,
+   -17.211
+  ],
+  "target": [
+   80,
+   -0.632,
+   -62
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 80.88,
+  "sunAlt": 14.1,
+  "sunGeo": 14.04,
+  "sunAz": 208.6,
+  "mist": 0
+ },
+ "ms": 15859,
+ "timing": {
+  "apply": 130,
+  "settle": 404,
+  "settle2": 25,
+  "shot": 14831
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

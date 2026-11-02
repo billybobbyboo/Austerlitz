@@ -1,0 +1,78 @@
+{
+ "id": "sok-castle-1000",
+ "group": "landmarks",
+ "note": "The Sokolnitz castle's site at 10:00, the III Column holding it (stills-8j 'sokolnitz-castle').",
+ "spec": {
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    212.9,
+    344.3
+   ],
+   "dir": [
+    -0.55,
+    0.42,
+    0.72
+   ],
+   "r": 26
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "10:00",
+  "t": 600,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -77.869,
+   7.795,
+   65.895
+  ],
+  "target": [
+   -63.55,
+   -1.64,
+   47.15
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 25.41,
+  "sunAlt": 14.13,
+  "sunGeo": 14.06,
+  "sunAz": 151.4,
+  "mist": 0.05
+ },
+ "ms": 269667,
+ "timing": {
+  "apply": 310,
+  "settle": 2387,
+  "settle2": 101343,
+  "shot": 165110
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

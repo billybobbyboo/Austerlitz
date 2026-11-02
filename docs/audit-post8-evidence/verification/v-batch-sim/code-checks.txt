@@ -1,0 +1,252 @@
+== state#1 setChapter (no stopPlay)
+function setChapter(cid){
+  var c=chapterById(cid);
+  if(!c){ chapter=null; setHighlight(null); paintChapters(); paintChapterText(); paintTimeline(); return; }
+  chapter=cid;
+  var set={};
+  c.forms.forEach(function(k){
+    var fam=familyOf(k);
+    if(fam) Object.keys(fam).forEach(function(q){ set[q]=true; });
+  });
+  setHighlight(set);
+  freeCam=false;
+  setClock(chapterClock(c),{force:true,camera:false});
+  flyTo(chapterCam(c));
+  paintChapters();
+  paintChapterText();
+}
+== state#1 applyTour (stopPlay)
+function applyTour(){
+  var st=TOUR[tourStep], say=!OPENING.on;
+  if(say) TOUR_APPLYING=true;
+  stopPlay();
+== state#1 the comment: themes stop the clock
+   dwell. Scrubbing, the keys, the phase and act buttons, the tour and the themes stop the clock, and never dwell. It is time,
+== state#1 followActive
+function followActive(){ return playing&&!freeCam&&mode!=="staff"&&!_tw.cam; }
+== state#2/interaction#3 rebuildOverlays fade reset
+  if(instant){ retireOld(); ovFadeIn=1; ovFadeOut=0; }
+  else { ovFadeIn=0; ovFadeOut=1; }
+== state#2/interaction#3 applyOverlayOpacity
+function applyOverlayOpacity(){
+  var base=layerOn.arrows?0.95:0;
+  var i, paper=(mode==="staff");   /* Stage 8, 8B (decision 241): a movement arrow's fill at ARROW_CAP.OP in the perspective presentations; on the paper map as before (paperK) */
+  BORDER.U.value=paper?0:1;   /* and its casing a border there only: on the paper map under the whole fill, as before 8B (0.3.1 item 4) */
+  for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn*(overlayMats[i].userData.op||1)*(paper&&overlayMats[i].userData.paperK||1);
+  for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut*(oldMats[i].userData.op||1)*(paper&&oldMats[i].userData.paperK||1);
+}
+== state#2 scene tween fade
+  setTween("scene",function(now){
+    var k=Math.min(1,(now-t0)/dur);
+    ovFadeOut=1-clamp01(k/0.42);
+    ovFadeIn=clamp01((k-0.34)/0.66);
+    if(k>=1){ retireOld(); ovFadeIn=1; ovFadeOut=0; return true; }
+    return false;
+== state#3 loop: idle return before lastFrame
+  var now=performance.now(), state=frameState(now);
+  paintDevStats(now);
+  if(state==="idle"||state==="waiting"){ DEV.skipped++; if(state==="idle") DEV.state="idle"; return; }
+  DEV.state=state; lastAmbient=now;
+  if(needFrames>0) needFrames--;
+  settling=false;
+  var dt=lastFrame?Math.min(120,now-lastFrame):16;
+  lastFrame=now;
+  FK=Math.max(0.25,Math.min(7.2,dt/16.667));
+== state#3 input listeners (keydown -> lastInput)
+  ["pointerdown","pointerup","wheel","keydown","click"].forEach(function(ev){
+    window.addEventListener(ev,function(){ lastInput=performance.now(); requestRender(2); },{capture:true,passive:true}); });
+  window.addEventListener("pointermove",function(e){ if(e.buttons){ lastInput=performance.now(); requestRender(1); } },{capture:true,passive:true});
+== state#3 togglePlay
+function togglePlay(){
+  if(playing){ stopPlay(); return; }
+  if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true});
+  playing=true; dwellReset(); FOLLOW.T=null; FOLLOW.ev=null;
+  var b=document.getElementById("play");
+  if(b){ b.textContent="Pause"; b.setAttribute("aria-pressed","true"); }
+  paintExaggeration();
+  openingHead();   /* Stage 7D */
+== state#4 knowledgeOf cache
+var knowCache={}, knowKey="";
+function knowledgeOf(id){
+  if(commandView==="none") return "all";
+  var f=FORMATIONS[id];
+  if(!f) return "all";
+  var side=(f.nation==="fr")?"fr":"al";
+  if(side===commandView) return "own";
+  var key=commandView+"|"+curPhase;
+  if(knowKey!==key){ knowKey=key; knowCache={}; }
+  if(knowCache[id]) return knowCache[id];
+  var r="seen", ov=KNOW_OVERRIDE[commandView] && KNOW_OVERRIDE[commandView][id];
+  if(ov){
+    for(var i=ov.length-1;i>=0;i--) if(curPhase>=ov[i][0]){ r=ov[i][1]; break; }
+  } else {
+    var hq=posNow(commandView==="fr"?"gqg":"ahq"), p=posNow(id);
+    if(!hq||!p) r="unknown";
+    else if(!hasLOS(hq,p)) r="unknown";
+    else if(PHASES[curPhase].mist>0.5 && hAt(p[0],p[1])<-0.8) r="uncertain";
+  }
+  knowCache[id]=r;
+== state#4 knowAtClock
+function knowAtClock(){ var k=commandView+"|"+Math.floor(clock+1e-9); if(EYES.min!==k){ EYES.min=k; knowKey=""; } }
+== state#5 jumpEvent margin
+function jumpEvent(dir){
+  stopPlay();
+  var ts=eventTimes(), t=clock;
+  if(dir>0){
+    for(var i=0;i<ts.length;i++) if(ts[i]>t+1.5){ goToEventAt(ts[i]); return; }
+    goToEventAt(T_MAX);
+  } else {
+    for(var j=ts.length-1;j>=0;j--) if(ts[j]<t-1.5){ goToEventAt(ts[j]); return; }
+    goToEventAt(T_MIN);
+  }
+}
+== state#6 rail pointer handlers
+  var dragging=false;
+  function toClock(clientX){ var r=rail.getBoundingClientRect(); return T_MIN+Math.max(0,Math.min(1,(clientX-r.left)/(r.width||1)))*(T_MAX-T_MIN); }
+  rail.addEventListener("pointerdown",function(e){ dragging=true; stopPlay(); if(rail.setPointerCapture) rail.setPointerCapture(e.pointerId); setClock(toClock(e.clientX)); });
+  rail.addEventListener("pointermove",function(e){ if(dragging) setClock(toClock(e.clientX)); });
+  window.addEventListener("pointerup",function(){ dragging=false; });
+== state#6 rail touch-action
+.timerail{position:absolute;left:0;right:0;top:31px;height:24px;cursor:pointer;touch-action:none}   /* a 24 px target (WCAG 2.5.8; roadmap step 3, A-3) */
+== state#7 lowTier once
+  lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
+             /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");
+== state#7 groundDetail/shadow by lowTier
+  sun.castShadow=!lowTier;   /* roadmap step 6, decision 236 (with pxRatio above): no shadow map on a low tier (a phone, a tablet, a small window) */
+  var shadowPx = lowTier ? 1024 : (renderer.capabilities.maxTextureSize>=8192 ? 4096 : 2048);
+  sun.shadow.mapSize.set(shadowPx,shadowPx);
+  sun.shadow.radius=1.5;
+  var s=sun.shadow.camera;
+  s.left=-118; s.right=118; s.top=108; s.bottom=-108; s.near=20; s.far=660;
+  sun.shadow.bias=-0.0009;
+  sun.shadow.normalBias=0.35;
+  scene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);
+
+  world=buildWorld(scene); bootMark("world",tb); if(typeof WORLDMS!=="undefined") BOOTMS.worldParts=WORLDMS;
+  groundDetail(!lowTier);   /* Stage 8, 8F (decision 247 (a)): the near ground's detail, not on a low tier (decision 236: the phone's frame as P5 measured it) */
+== state#7 onResize
+  function onResize(){
+    requestRender(3);
+    mlReset("window");   /* Stage 8, 8C (MLS) */
+    syncDock();
+    syncPhone();   /* roadmap step 6 item 3 */
+    landCam.aspect=window.innerWidth/window.innerHeight;
+    landCam.updateProjectionMatrix();
+    renderer.setPixelRatio(pxRatio());   /* roadmap step 3 (SW-10): a window moved to a screen of another density */
+    fitCaption();   /* roadmap step 3 (decision 159): the caption's room changed */
+    renderer.setSize(window.innerWidth,window.innerHeight);
+    sizeFX();
+    syncViewOffset(true);   /* Stage 3D: the focus at the new free rectangle's centre at once */
+    /* the paper map: the field framed anew if that is what it shows, else the plan keeps its centre and scale */
+    if(mode==="staff"){ if(MAPCAM.framed()) MAPCAM.frameField(true); else MAPCAM.apply(); }
+    toastRelayout();   /* Stage 8, 8I: the phase's message placed again in the new window */
+  }
+== interaction#1 tipShow placement
+function tipShow(t){
+  var tp=TIP.el||(TIP.el=document.getElementById("tltip")); if(!tp||!t||!t.dataset||!t.dataset.tip) return;
+  clearTimeout(TIP.hideT); TIP.on=t; tp.textContent=t.dataset.tip; tp.hidden=false;
+  var r=t.getBoundingClientRect(), w=tp.offsetWidth, h=tp.offsetHeight, x=r.left+r.width/2-w/2;
+  x=Math.max(8,Math.min(window.innerWidth-w-8,x));
+  tp.style.left=Math.round(x)+"px"; tp.style.top=Math.round(Math.max(8,r.top-h-8))+"px";
+}
+== interaction#1 tip hoverable
+  /* a click (a mouse's, a tap's or Enter's and Space's on the focused element) dismisses the tip it shows: the hover's if it is hovered, the
+     focus's if it has the focus; a tap's click, which no hover goes with, leaves a later mouse hover its tip */
+== interaction#1 #tltip css
+#tltip{position:fixed;left:0;top:0;z-index:62;max-width:min(380px,calc(100vw - 16px));padding:5px 9px;
+  font-family:var(--sans);font-size:var(--t-ui);line-height:1.4;color:var(--text-hi);background:rgba(var(--scrim-rgb),.96);
+  border:1px solid var(--line-2);border-radius:2px;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+#tltip[hidden]{display:none}
+== interaction#2 rail and markers siblings
+    <div class="tb-acts" id="acts" role="group" aria-label="Acts"></div>
+    <div class="tb-track" id="phases" role="group" aria-label="Phases"></div>
+    <div class="timerail" id="timerail" role="slider" aria-label="Battle clock"
+         tabindex="0" aria-valuemin="240" aria-valuemax="1080" aria-valuenow="240" aria-valuetext="04:00">
+      <div class="rail-ticks" id="railticks"></div>
+      <div class="spinemark" id="spinemark" hidden aria-hidden="true"></div>
+      <div class="playhead" id="playhead"></div>
+    </div>
+    <div class="evmarks" id="evmarks" role="group" aria-label="Events"></div>
+  </div>
+== interaction#2 marker css
+.evmarks{position:absolute;left:0;right:0;top:31px;height:24px;pointer-events:none;z-index:2}
+.ev-mark{position:absolute;top:2px;width:8px;height:8px;margin:0;padding:0;border:0;transform:translateX(-50%) rotate(45deg);
+  opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease}
+.ev-mark::after{content:"";position:absolute;inset:-6px;display:block}
+.ev-mark:hover{transform:translateX(-50%) rotate(45deg) scale(1.5);opacity:1}
+.ev-mark:focus-visible{outline:2px solid var(--accent);outline-offset:3px;opacity:1}
+.ev-mark.fr{background:var(--side-fr)}
+.ev-mark.al{background:var(--side-al)}
+.ev-mark.dec{background:var(--ink);border:2px solid var(--side-al);width:10px;height:10px;top:1px}
+.ev-mark.dec.fr{border-color:var(--side-fr)}
+.ev-mark.on{opacity:1;box-shadow:0 0 0 2px var(--accent)}
+/* Stage 4D: the event the playing clock dwells on: its marker lit, its name in the caption (docs/STAGE4_SPEC.md section D.3) */
+.ev-mark.dw{opacity:1;transform:translateX(-50%) rotate(45deg) scale(1.5);box-shadow:0 0 0 2px var(--accent)}
+== interaction#2 playhead pointer-events none
+.playhead{position:absolute;top:-31px;width:2px;height:55px;background:var(--accent);
+  box-shadow:0 0 6px rgba(var(--accent-rgb),.7);pointer-events:none;transform:translateX(-1px);z-index:3}
+== interaction#4 readHidden
+function readHidden(id){
+  if(commandView==="none"||!posNow(id)) return false;
+  var f=FORMATIONS[id]; if(!f) return false;
+  return f.track?drawnKnow(id)==="unknown":!aggReading(id).p;
+}
+== interaction#4 compact card rows
+  if(s2&&s2.act) body+=row("Doing now", esc(s2.act)+claimTag(trackRef(id,s2.actPhase,"act")));
+  if(wt&&f.track[wt.ph].act) body+=row("From "+esc(fmtClock(wt.w[0])), esc(f.track[wt.ph].act)+claimTag(trackRef(id,wt.ph,"act")));
+== interaction#4 8A's review
+Reviewed and kept, because they disclose no position the reading does not have: an act's and an objective's text (orders, not places), the march
+row (a leg's length and duration), the Timing row, the ordered route's distance, the plotted positions list of the full dossier (the record of
+== interaction#5 paintSituation key
+  var key=[act.id,curPhase,top?top.id:"-",Math.round(onH/1000),cut?1:0,
+           flatFor>=60?1:0,playing?1:0,dw?dw.map(function(e){ return e.id; }).join(","):"-",derFirst?1:0].join("|");
+  if(key===_sitKey) return;
+== interaction#5 stopPlay
+function stopPlay(){
+  playing=false; dwellReset(); FOLLOW.T=null;
+  var b=document.getElementById("play");
+  if(b){ b.textContent="Play"; b.setAttribute("aria-pressed","false"); }
+  paintExaggeration();
+  openingHead();   /* Stage 7D */
+}
+== interaction#6 sheetOpened
+function sheetOpened(id){ var S=SHEETS[id]; S.from=focusedEl(); syncInert(); focusTo([S.tab[0]]); }
+== interaction#6 canvas pointermove
+  el.addEventListener("pointermove",function(e){
+    if(e.pointerType==="touch"&&touch[e.pointerId]){ touch[e.pointerId]=[e.clientX,e.clientY];
+      if(pinch&&nTouch()===2){ var p=pinchState();
+        LANDCAM.zoomAt(p.mx,p.my,pinch.d/p.d); LANDCAM.orbit(-(p.ang-pinch.ang)/0.005,0); pinch=p; return; } }
+    if(!drag){ if(e.pointerType!=="touch") mlHoverAt(e.clientX,e.clientY); return; }
+    if(e.pointerId!==drag.id) return;
+    var dx=e.clientX-drag.lx, dy=e.clientY-drag.ly;
+    drag.moved+=Math.abs(dx)+Math.abs(dy); drag.lx=e.clientX; drag.ly=e.clientY;
+    if(drag.moved>4){ freeCam=true; curVantage=null; }
+    if(drag.kind==="map"){ MAPCAM.pan(dx,dy); return; }   /* the paper map pans; it never orbits */
+    if(drag.kind==="orbit"){ LANDCAM.orbit(dx,dy); return; }
+    if(!drag.started){ drag.started=true; LANDCAM.panStart(drag.x0,drag.y0); }
+    LANDCAM.panTo(e.clientX,e.clientY);
+  });
+== origin: counts in archive/step5c-45f8f662.html (pre-Stage 8) and archive/stage8e-f3c3f3af.html
+/home/user/Austerlitz/archive/step5c-45f8f662.html
+  outgoing 0.9*ovFadeOut: 1
+  jump margin 1.5: 1
+  knowAtClock per minute: 1
+  Doing now row: 1; readHidden: 0
+  tip above element: 1
+  marker hit inset: 1
+  rail pointerup only: 1
+  lowTier at start: 1
+  caption key with playing,dw: 1
+  sheetOpened (no drag end): 1
+/home/user/Austerlitz/archive/stage8e-f3c3f3af.html
+  outgoing 0.9*ovFadeOut: 1
+  jump margin 1.5: 1
+  knowAtClock per minute: 1
+  Doing now row: 1; readHidden: 1
+  tip above element: 1
+  marker hit inset: 1
+  rail pointerup only: 1
+  lowTier at start: 1
+  caption key with playing,dw: 1
+  sheetOpened (no drag end): 1
+  stage4d setChapter stopPlay count: 0

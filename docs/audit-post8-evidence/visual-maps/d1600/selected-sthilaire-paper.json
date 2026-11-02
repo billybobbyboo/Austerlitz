@@ -1,0 +1,437 @@
+{
+ "shot": "selected-sthilaire-paper",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "select": [
+   "f",
+   "sthilaire"
+  ],
+  "aim": {
+   "map": "sthilaire",
+   "dir": [
+    -0.55,
+    0.62,
+    0.56
+   ],
+   "r": 86
+  }
+ },
+ "steps": [],
+ "state": {
+  "clock": 570,
+  "presentation": "study",
+  "mode": "staff",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": "f:sthilaire",
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "map",
+   "x": -37.108433664658556,
+   "z": 22.67591185968013,
+   "wpp": 0.06394488328261842
+  },
+  "applied": {
+   "kind": "map",
+   "x": -37.108433664658556,
+   "z": 22.67591185968013,
+   "wpp": 0.06394488328261842
+  },
+  "aimErr": null,
+  "paperFocus": 0,
+  "layers": {
+   "confidence": true,
+   "routes": true,
+   "skeleton": true
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": true,
+   "rail": true
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 64,
+  "placed": 16,
+  "dropped": 1,
+  "droppedIds": [
+   "t:pratzeberg"
+  ],
+  "occluded": 0,
+  "offscreen": 46,
+  "underPanel": 1,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again · derived on the heights: Allied ≈ 18,150 · derived centre separation detected",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "The crisis on the Pratzeberg",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "Friant retakes Telnitz, then loses it again",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 18,150",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": false,
+    "cut": false
+   },
+   {
+    "cls": "cut der",
+    "text": "derived centre separation detected",
+    "shown": false,
+    "cut": false
+   }
+  ],
+  "box": [
+   390,
+   821,
+   739,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": [
+   "counters: French",
+   "counters: Russian",
+   "counters: Austrian",
+   "French movement",
+   "Allied movement",
+   "wood (its extent in the model)",
+   "village (its extent in the model)",
+   "meres: pond outlines schematic",
+   "vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not establishe",
+   "position approximate (B, C) · reported only (?)B?",
+   "A: position documented (its footprint)",
+   "B: sector documented, frontage approximate",
+   "C: reconstructed, position indicative",
+   "grade sizes are drawn, not measured errors",
+   "plotted position, A",
+   "plotted position, B",
+   "interpolated between plotted positions: not a recorded route · a tick: an explicit time",
+   "ordered routes (dashed): the columns' lines of march in the two plans, as the plans set th",
+   "contour interval≈ 9 m",
+   "paper map: the ground drawn flat, in plan; hillshade exaggerated 6× (1× is true scale)",
+   "villages and woods at their extent in the model; counters and names at symbol scale"
+  ]
+ },
+ "scaleBar": "500 m",
+ "bodyClass": "docked pm-study mode-staff drawer-open",
+ "textContrast": {
+  "texts": 40,
+  "min": 4.84,
+  "belowAA": []
+ },
+ "farNames": null,
+ "items": [
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen Heights",
+   "box": [
+    1186,
+    181,
+    100,
+    16
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzeberg",
+   "box": null,
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "on",
+   "text": "Goldbach stream",
+   "box": [
+    376,
+    124,
+    108,
+    16
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "c:sthilaire",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRSaint-HilaireHeavily engaged≈6,600 · Louis V",
+   "box": [
+    799,
+    352,
+    299,
+    52
+   ],
+   "plate": "",
+   "keep": true
+  },
+  {
+   "id": "c:ahq",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXXXRUBAllied Headquarters",
+   "box": [
+    1117,
+    110,
+    203,
+    53
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:lang",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXRUCSecond Column",
+   "box": [
+    491,
+    693,
+    177,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:prz",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXRUBThird Column",
+   "box": [
+    302,
+    649,
+    163,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:milo",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXRUBMiloradovich's Russians",
+   "box": [
+    1339,
+    147,
+    226,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:kollo",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXATBKollowrat's Austrians",
+   "box": [
+    1209,
+    200,
+    208,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "o:Kamensky turns about (disputed)",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Kamensky turns about (disputed)",
+   "box": [
+    737,
+    586,
+    201,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "o:Jurczek's Austrians",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Jurczek's Austrians",
+   "box": [
+    954,
+    27,
+    116,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "o:Levasseur up the Goldbach",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Levasseur up the Goldbach",
+   "box": [
+    419,
+    339,
+    163,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "o:Pratzeberg",
+   "cat": "objective",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    991,
+    439,
+    70,
+    17
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "t:kobelnitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Kobelnitz",
+   "box": [
+    396,
+    163,
+    64,
+    16
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzenv",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzen village",
+   "box": [
+    952,
+    60,
+    94,
+    16
+   ],
+   "plate": "rgba(246, 241, 229, 0.95)",
+   "keep": false
+  },
+  {
+   "id": "c:legrand",
+   "cat": "counter",
+   "state": "on",
+   "text": "XXFRBLegrand",
+   "box": [
+    332,
+    477,
+    132,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  },
+  {
+   "id": "c:kamensky",
+   "cat": "counter",
+   "state": "on",
+   "text": "XRUKamensky's Brigade",
+   "box": [
+    733,
+    277,
+    205,
+    46
+   ],
+   "plate": "",
+   "keep": false
+  }
+ ],
+ "ms": 114147,
+ "msSettle": 2343,
+ "msShot": 109992,
+ "msMeasure": 1812,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

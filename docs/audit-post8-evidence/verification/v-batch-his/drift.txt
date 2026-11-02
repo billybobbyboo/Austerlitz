@@ -1,0 +1,4 @@
+formation-minutes with the row "Marching" under 1 km/h: 14021 ; of them with status reserve/concealed/holding/forming: 5443
+  e.g. sthilaire 04:01 Concealed Marching 0.4 km 240 min 0.09 km/h
+  e.g. vandamme 04:01 Concealed Marching 0.4 km 240 min 0.09 km/h
+rg_cav 07:37 {"km":3.2255611287368047,"min":435,"kmh":0.44490498327404204,"moving":true,"ice":false} status In reserve

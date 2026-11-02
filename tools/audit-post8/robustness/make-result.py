@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+"""Final audit after Stage 8, area "robustness": writes docs/audit-post8-evidence/robustness/result.json from the evidence files beside it.
+python3 -I tools/audit-post8/robustness/make-result.py
+The findings' words are this script's; every number is read from an evidence file when the file exists (else the finding says it is pending)."""
+import json, os
+EV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "docs", "audit-post8-evidence", "robustness")
+EV = os.path.normpath(EV)
+def load(n):
+    p = os.path.join(EV, n)
+    return json.load(open(p)) if os.path.exists(p) else None
+E = "docs/audit-post8-evidence/robustness/"
+ctx = load("ctx-cycles.json"); cerr = load("ctx-error.json"); mir = load("mirror-check.json"); mrot = load("mutate-rot.json")
+gs = load("visitor-growth-storm.json"); vis = load("visitor.json"); rel = load("relief.json"); pap = load("paper-series.json"); day = load("visitor-day.json")
+R = json.load(open(os.path.join(EV, "runtime-summary.json"))) if os.path.exists(os.path.join(EV, "runtime-summary.json")) else {}
+
+def mb(x): return round(x / 1e6, 2)
+heaps = [mb(s["cdp"]["JSHeapUsedSize"]) for s in ctx["steps"]]
+geoL = [s["page"]["geo"]["listeners"] for s in ctx["steps"]]
+
+findings = []
+def F(**k): findings.append(k)
+
+F(title="The device route's ?src= runs a visitor-supplied URL in the public site's origin (DOM XSS on GitHub Pages)",
+  category="confirmed-defect", severity="S1", priority="P1", subsystem="tools/step6/perf-run.html (published by GitHub Pages)",
+  user_impact="Anyone can send a link to https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=javascript:... that runs the sender's script in the origin https://billybobbyboo.github.io (every Pages site of that account shares it): arbitrary content or script under the owner's address (phishing, defacement), and the origin's storage. Bounded: the map itself stores nothing and the origin holds no credentials; the S1 class follows the audit's rule for a real, reachable security exposure.",
+  status="open", origin="inherited",
+  refs=["tools/step6/perf-run.html:40", "tools/step6/perf-run.html:44", E+"pages-tools-headers.txt", E+"perfrun-src.json", "tools/audit-post8/robustness/perfrun-src.js"],
+  evidence="perf-run.html:40 reads src=q.get(\"src\") unchecked and :44 sets the frame's src to it. Pages serves the page (HTTP 200, md5 3f57a5bf... equal to the repository's, pages-tools-headers.txt). On a byte-identical local copy served over HTTP on 127.0.0.1 in Chromium 141, ?src=javascript:parent.document.title='RBX '+parent.location.origin;void 0 set the page's title to 'RBX http://127.0.0.1:<port>' (script in the page's origin, reaching the parent); a data: URL could not reach the parent; the control loaded the default path (perfrun-src.json). ?route=, ?quick= and ?only= are only compared or split (perf-route.js:92, :220). The live site was not attacked.",
+  expected="The route frames only a build on its own host: a relative same-origin http(s) path.",
+  observed="Any URL, javascript: included, is assigned to the frame's src.",
+  remedy="Accept src only when new URL(src, location.href) has location's origin and an http(s) protocol (else keep the default and say so in #msg); or publish only the product on Pages (a Pages workflow with an explicit artifact), which also takes the seven archived builds without integrity off the origin. A tool change, not a data or build change.",
+  repro="node tools/audit-post8/robustness/perfrun-src.js (local copy; never the live site)",
+  validation="perfrun-src.js again: the javascript: case leaves the title 'Frame-time route' and the frame on the default; ?src=../../austerlitz-command-map.html still runs the route.",
+  effort="minutes", risk="none for the product; the owner's device runs use the default src",
+  cause_verified="yes: the assignment executes the javascript: URL in the parent's origin (measured)",
+  dependencies="none")
+
+F(title="A context loss while the clock plays can throw an uncaught TypeError from three r128 (\"reading 'trim'\")",
+  category="confirmed-defect", severity="S3", priority="P3", subsystem="app.js loop / context-loss handling (three r128)",
+  user_impact="On a real GPU reset or a mobile browser dropping the context mid-play, the console shows an uncaught exception from the frame loop; frames resume after the restore and nothing visible breaks. The context checks never lose the context while playing, so the path is untested.",
+  status="open", origin="inherited",
+  refs=["app.js:567-571", "app.js:9117-9120", "node_modules/three/src/renderers/webgl/WebGLProgram.js:736-738", "node_modules/three/src/renderers/WebGLRenderer.js:600-608", "node_modules/three/src/renderers/WebGLRenderer.js:1002", E+"ctx-error.json", E+"ctx-cycles.json"],
+  evidence="ctx-error.json: 1 page error in 3 losses while playing (TypeError: Cannot read properties of null (reading 'trim') at new WebGLProgram < acquireProgram < renderBufferDirect), 0 in the paused control; ctx-cycles.json: 2 in 3 playing cycles, 0 in 5 idle. r128 calls .trim() on getProgramInfoLog/getShaderInfoLog, null on a lost context; three's guard (_isContextLost) and the app's (GL.lost) are both set by the webglcontextlost event, which is dispatched after the context is already lost, so a frame that compiles a program in between throws.",
+  expected="No uncaught error on a context loss.",
+  observed="One uncaught TypeError in one or two of three losses while playing.",
+  remedy="In loop() skip the frame also when renderer.getContext().isContextLost() (synchronous), as for GL.lost; optionally add a playing case to check:contrast's context cases.",
+  repro="node tools/audit-post8/robustness/ctx-error.js",
+  validation="ctx-error.js: 0 page errors over its three playing cycles (repeat a few times: the window is a race).",
+  effort="one line", risk="low", cause_verified="yes (three's source and the stack)", dependencies="none")
+
+F(title="Each context restore keeps about 2.6-4 MB of heap and one more dispose listener per geometry and texture (three r128)",
+  category="confirmed-defect", severity="S3", priority="P4", subsystem="three r128 restore path (inherited by the app)",
+  user_impact="A page that loses and regains its context many times (a phone backgrounding the tab under memory pressure) grows by about 3 MB per loss; nothing else degrades in the cycles measured.",
+  status="open", origin="inherited",
+  refs=[E+"ctx-cycles.json", "node_modules/three/src/renderers/WebGLRenderer.js:266-288", "node_modules/three/src/renderers/webgl/WebGLGeometries.js:56", "node_modules/three/src/renderers/webgl/WebGLTextures.js:481"],
+  evidence="After forced GC (two HeapProfiler.collectGarbage), JSHeapUsedSize %s MB at the control step, then %s after the five idle restores and %s after the three playing ones; dispose listeners on the scene's geometries %s -> %s (the most on one geometry 1 -> 9), textures 18 -> 162; materials' unchanged; CDP DOM listeners 566/579, nodes 1,859-1,927 and programs 31-35 not growing. initGLContext() makes new WebGLGeometries/WebGLTextures whose dispose closures are added again to every object used; EventDispatcher drops only an identical function." % (heaps[1], ", ".join(map(str, heaps[2:7])), ", ".join(map(str, heaps[7:10])), geoL[1], geoL[9]),
+  expected="A restore leaves the heap where it was.",
+  observed="+2.56 to +2.76 MB per idle restore, +3.6 to +4.0 MB per playing restore, retained.",
+  remedy="Accept and record (rare event; three.js stays r128 unless agreed, CLAUDE.md). An app-side cure would reach into three's internals.",
+  repro="node tools/audit-post8/robustness/ctx-cycles.js", effort="n/a (record)", cause_verified="yes (source read; counts rise by exactly one per restore)")
+
+F(title="The gait's GLSL hook and its JavaScript mirror are equal today, but no test holds them together",
+  category="optional-improvement", severity="S4", priority="P3", subsystem="app.js ANIM: animGLSL / animAt (8D-8F)",
+  user_impact="None today. Every check of the gait's arithmetic (contact with the ground, the culling envelope, the bounds) reads animAt; an edit to one copy only would leave those checks green while the drawn figures differ.",
+  status="open", origin="optional-improvement",
+  refs=["app.js:1020", "app.js:1849", "app.js:12819-12850", "app.js:12858-12905", "runtime-test.js:1263-1448", E+"mirror-check.json", "tools/audit-post8/robustness/mirror-check.js"],
+  evidence="Transform feedback on a WebGL2 context of the page's own, ANIM.decl and ANIM.body exactly as the kit materials compile them, 25,600 vertices over 400 uniform sets (amps 0-1.4, every part, slopes, trot and knee beyond their clamps): largest difference %s units (a man ~1.8 units; displacements up to 1.42), SwiftShader's sin/cos error over 0-4 pi %s; undefined parts 0. ANIM.body===animGLSL(): %s. The GPU hook is checked only to move the figures and return to rest (app.js:12819-12850); no suite compiles it against animAt." % (mir["maxDiff"], mir["trigFloor"]["sinMaxErr"], mir["bodyIsCurrent"]),
+  expected="The two copies held equal by a check.", observed="Equal within GPU trig precision; unguarded.",
+  remedy="Add mirror-check.js's comparison (transform feedback, a tolerance of about 2e-3) to the self-test's 8E block.",
+  repro="node tools/audit-post8/robustness/mirror-check.js", effort="small", cause_verified="yes")
+
+F(title="Assurance tools CI never runs have started to rot: 5 of Stage 8's 189 mutations no longer apply; check:visual runs only on dispatch",
+  category="optional-improvement", severity="S4", priority="P4", subsystem="tools/, .github/workflows/checks.yml",
+  user_impact="None to visitors. The evidence that Stage 8's checks can fail is a snapshot: for five checks it can no longer be reproduced as recorded.",
+  status="open", origin="optional-improvement",
+  refs=[E+"ci-reach.json", E+"tools-rot.json", E+"mutate-rot.json", ".github/workflows/checks.yml"],
+  evidence="CI runs 24 of 248 tools files on every push; check:visual and its live blocks only on workflow_dispatch with inputs.visual. The 224 others all parse and their requires resolve (tools-rot.json). Read without running, %d of %d mutations in tools/stage8/mutate-*.js still find the code they break; not: 8D 'stale', 8F 'treetris', css-8F 'woods8e', css-8G 'shape' and 'tilt' (changed since by 8E's prerequisite, 8H and 8J)." % (mrot["total"]["applies"], mrot["total"]["mutations"]),
+  expected="Mutation evidence reproducible.", observed="97% applicable; 5 stale.",
+  remedy="Refresh the five mutations' search strings; optionally run the css-test mutations (node only) in CI.", effort="small")
+
+F(title="Seven archived builds on the same Pages origin load three.js without integrity",
+  category="probable-problem", severity="S4", priority="P4", subsystem="archive/ (published by Pages)",
+  user_impact="Only on a cdnjs compromise: a tampered three.js would run in the owner's origin through those pages, which the product's SRI otherwise prevents.",
+  status="open", origin="inherited",
+  refs=["archive/correction-pass-672aff9f.html", "archive/stage0-c09c4b23.html", "archive/stage2c-68ac7721.html", "archive/spine-6b2cccd4.html", "archive/stage4d-9b13adbf.html", "archive/stage6b-7fc0f6c3.html", "archive/step2-af98f586.html"],
+  evidence="grep of each archive's script tag: 7 of 19 without integrity (the builds before roadmap step 3's SW-1); Pages publishes archive/ with the rest of the branch.",
+  expected="No page on the origin trusts a CDN copy unchecked.", observed="7 frozen pages do.",
+  remedy="Publish only the product on Pages (the remedy of the ?src= finding); the archives stay frozen in git.", effort="small")
+
+F(title="The project has no licence",
+  category="optional-improvement", severity="S4", priority="P4", subsystem="repository",
+  user_impact="Visitors and contributors have no stated right to reuse the code or the dataset; third-party parts are licensed correctly.",
+  status="open", origin="inherited", refs=["package.json"],
+  evidence="No LICENSE or COPYING file in git ls-files; package.json private:true with no license field. The fonts' licences are embedded in full in the build; three.js is not redistributed (MIT notice not owed); the textures are CC0 from Poly Haven, named at assets.js:1-2.",
+  expected="An owner decision recorded.", observed="None.", remedy="The owner chooses a licence (code and data may differ) or states all rights reserved.", effort="minutes")
+
+F(title="The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes",
+  category="probable-problem", severity="S3", priority="P3", subsystem="CLAUDE.md, CHANGELOG.md, docs/",
+  user_impact="Maintainers (human or agent) cannot follow 'Read CHANGELOG.md (current state)' as written (about 320k tokens); CLAUDE.md costs about 33k tokens in every session, much of it history; decisions are found by search rather than read.",
+  status="open", origin="inherited",
+  refs=["CLAUDE.md", "CHANGELOG.md", "docs/STAGE8_SPEC.md"],
+  evidence="Measured 2026-11-02: CLAUDE.md 130,902 bytes, 745 lines (its 'Current state' about 35 KB); CHANGELOG.md 1,283,488 bytes, 9,387 lines; docs/STAGE8_SPEC.md 665,797 bytes; the branch 2,478 files, 342.9 MB (docs/ 294.5 MB, archive/ 38.4 MB), all published by Pages.",
+  expected="An entry point that fits a session with room to work.", observed="130 KB of rules and history; a 1.28 MB log to read first.",
+  remedy="Move CLAUDE.md's stage-by-stage history to a linked file and keep its rules and current state; give CHANGELOG.md a current-state head and split it by stage.", effort="an afternoon (records only)")
+
+F(title="The in-app self-test (611,017 bytes) ships to every visitor",
+  category="optional-improvement", severity="S4", priority="P4", subsystem="app.js:9154-14253 (AUSTERLITZ_DEBUG)",
+  user_impact="21.7% of the 2,810,630-byte page is test code every visitor downloads and parses; cost not timed here (perf area).",
+  status="open", origin="optional-improvement", refs=["app.js:9154-14253", E+"static-scan.json"],
+  evidence="static-scan.json deadCode.selfTestIIFE: 611,017 bytes of app.js's 1,300,537 (47.0%).",
+  expected="n/a (design: decision 132 runs it in the shipped page)", observed="as stated",
+  remedy="Keep (the harness needs it in the build); or wrap its body in a function built on first call to spare the parse.", effort="small")
+
+F(title="Small dead code: gaitDist is never called though the gait's comment and CLAUDE.md name it",
+  category="optional-improvement", severity="S4", priority="P4", subsystem="app.js, world.js",
+  user_impact="None; misleads a reader about how the gait's phase is computed.", status="open", origin="optional-improvement",
+  refs=["app.js:5827", "app.js:5780", "world.js:1703", "app.js:712", "tools/visual/data-invariance.js:26"],
+  evidence="Of 791 top-level functions, gaitDist (app.js:5827) has no reference but the comment at app.js:5780; v8Near (world.js:1703) only a comment and the generated _world_mod.js; posOf (app.js:712) is test-only and held by check:data's model list.",
+  expected="Named functions in use.", observed="99 bytes dead.", remedy="Remove gaitDist and v8Near, or name gaitDistOf in the comment.", effort="minutes")
+
+F(title="esc() leaves quotes, and double-quoted attributes take its output",
+  category="optional-improvement", severity="S4", priority="P4", subsystem="app.js:6910",
+  user_impact="None today: no string in the dataset or LABELS holds a double quote, '<' or '&'. A future data edit with a double quote in a name would break an attribute (aria-label, title).",
+  status="open", origin="inherited", refs=["app.js:6910", "app.js:2496", "app.js:8117-8118", E+"dataset-chars.json", E+"sink-judgement.json"],
+  evidence="esc escapes & < > only; app.js:2496 aria-label=\"'+esc(f.name)+'...\"; the day-track's aria-label=\"'+esc(lab)+'\"; dataset-chars.json: 0 such characters in data.js, analysis.js, appearance.js, geo.js and LABELS; narrative.js's refs with \" go to a single-quoted data-ref.",
+  expected="Attribute text escaped for quotes.", observed="Relies on the data.", remedy="Escape \" and ' in esc() (a no-op on today's text), or a test that no data string holds them.", effort="minutes")
+
+F(title="The single file needs cdnjs: offline, or where cdnjs is blocked, the map cannot start",
+  category="accepted-compromise", severity="S3", priority="P4", subsystem="shell.html three.js tag (decision 133 (a))",
+  user_impact="Offline or behind a filter that blocks cdnjs.cloudflare.com, a visitor sees the failure dialog: 'The map cannot start ... could not be loaded from cdnjs.cloudflare.com ... The map needs a network connection that can reach that address.'",
+  status="accepted", origin="accepted-compromise", refs=["shell.html:26-28", "shell.html:437", "docs/FINAL_AUDIT.md:835", "docs/FINAL_AUDIT.md:880"],
+  evidence="Decision 133 (a) keeps three.js on cdnjs with integrity and crossorigin and a plain failure message; check:contrast's three.js-aborted case holds the dialog (lead-verified).",
+  expected="As decided.", observed="As decided.", remedy="None required; inlining three.js (option (b), about 600 KB) would make the file work offline.")
+
+F(title="The frame loop requests an animation frame at the display's rate while nothing is drawn",
+  category="optional-improvement", severity="S4", priority="P4", subsystem="app.js:9117-9125",
+  user_impact="An idle page wakes the main thread about 57 times a second (measured under SwiftShader); no frame is drawn and no timer runs. Battery cost on a phone not measured.",
+  status="open", origin="optional-improvement", refs=["app.js:9117-9125", E+"visitor.json"],
+  evidence="visitor.json idle.at0400: 120 s at 04:00, 0 frames drawn, 6,825 animation-frame callbacks, 0 timers or intervals fired, CDP TaskDuration +1.135 s, no layout.",
+  expected="n/a (design: idle frames touch nothing, 8H)", observed="as stated",
+  remedy="Optional: stop requesting frames when idle and restart on input, a tween, Play or a panel's transition.", effort="small, with care")
+
+for f in R.get("findings", []):
+    findings.append(f)
+
+order = {"S1": 0, "S2": 1, "S3": 2, "S4": 3}
+findings.sort(key=lambda f: (order[f["severity"]], f["priority"]))
+for i, f in enumerate(findings):
+    f["id"] = "R-%d" % (i + 1)
+
+res = {
+ "area": "robustness",
+ "scope_summary": R.get("scope_summary", "Security (sinks, outside input, the published tools pages, advisories), licences, the cdnjs dependence, maintainability (dead code, mirrored logic, global state, documentation, the tools CI never runs) and runtime robustness in the pinned Chromium 141 on SwiftShader (context loss and restore cycles; a visitor's page idle, under presentation, relief, paper-map and dossier switching, a played day and a resize storm). Audited build f10fe585... (2,810,630 bytes)."),
+ "coverage": R.get("coverage", []),
+ "findings": findings,
+ "experiments": R.get("experiments", []),
+ "not_checked": R.get("not_checked", []),
+ "strengths": R.get("strengths", []),
+ "ledger": R.get("ledger", []),
+}
+json.dump(res, open(os.path.join(EV, "result.json"), "w"), indent=1, ensure_ascii=False)
+print("findings", len(findings), [(f["id"], f["severity"], f["title"][:60]) for f in findings])

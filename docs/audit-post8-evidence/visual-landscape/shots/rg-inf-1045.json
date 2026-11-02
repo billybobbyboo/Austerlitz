@@ -1,0 +1,75 @@
+{
+ "id": "rg-inf-1045",
+ "group": "troops",
+ "note": "The Russian Guard infantry at 10:45 (standards).",
+ "spec": {
+  "t": 645,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": "rg_inf",
+   "dir": [
+    0.6,
+    0.35,
+    0.72
+   ],
+   "r": 24
+  }
+ },
+ "after": null,
+ "afterResult": null,
+ "readBack": {
+  "clock": "10:45",
+  "t": 645,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   24.894,
+   10.508,
+   -10.061
+  ],
+  "target": [
+   10.5,
+   0.119,
+   -27.333
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 24.77,
+  "sunAlt": 17.03,
+  "sunGeo": 16.98,
+  "sunAz": 161.8,
+  "mist": 0.008
+ },
+ "ms": 28484,
+ "timing": {
+  "apply": 33,
+  "settle": 920,
+  "settle2": 94,
+  "shot": 26984
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

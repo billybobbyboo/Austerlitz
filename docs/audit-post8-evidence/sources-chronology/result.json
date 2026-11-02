@@ -1,0 +1,376 @@
+{
+ "area": "sources-chronology",
+ "scope_summary": "Source-verification ledger for the timings, events and places of build f10fe585 (origin/main 43e3e5b): 20 of the most consequential timed or placed claims (the fog and the Pratzen release and climb; Dokhturov's descent and the columns' departure; Telnitz at 07:00; Friant's 05:00 march, his ~09:00 arrival and Telnitz retaken at 09:30; Sokolnitz; Kamensky's turn, its hour and the face-about; the Pratzeberg at 11:00; Blasowitz, the Guard's attack and eagle, Rapp's charge; Bagration by the Posoritz post house (8K); the Satschan ice and its dead; the Sokolnitz castle and pheasantry (8J); the end), each traced to where and how it is shown (pill, timing grade, claim word), to its cited sources and register entries, and to the source text itself, read by this audit on the archive.org text layers of 19 period works (72 extractions re-run by quotes.sh, 0 misses) and on three page images. Result: 14 verified, 5 partly, 1 contradicted; three findings (one new counter-source, two labelling defects that extend the history area's findings). Evidence: docs/audit-post8-evidence/sources-chronology/ (README.md, ledger.md/json, quotes-textlayer.txt, pages/); scripts: tools/audit-post8/sources-chronology/.",
+ "coverage": [
+  {
+   "item": "Ledger of 20 consequential timed or placed claims",
+   "method": "display read from app.js/data.js/analysis.js code paths and narrative.js claims (stmts.js); sources read on archive.org text layers (srcgrep.py, quotes.sh) and three page images",
+   "result": "14 verified, 5 partly, 1 contradicted (L12); 0 rows inaccessible as a whole (sub-claims resting on Sokolov 2006 inaccessible)",
+   "evidence": "docs/audit-post8-evidence/sources-chronology/ledger.md; docs/audit-post8-evidence/sources-chronology/quotes-textlayer.txt"
+  },
+  {
+   "item": "Timed anchors (25 with tm: A 2, B 12, C 11)",
+   "method": "tm.note sources re-read",
+   "result": "5 checked directly (sthilaire@3, vandamme@3, dok@1, friant@1, friant@3: all as stated), 2 through the ice's hour (kienmayer@8, dok@8); 18 not checked",
+   "evidence": "docs/audit-post8-evidence/sources-chronology/coverage.json; ledger L03, L04, L06-L08, L18"
+  },
+  {
+   "item": "Events (25; pills 5 Fact, 9 Estimate, 11 Disputed)",
+   "method": "each event's why/dispute sides re-read in the source",
+   "result": "16 of 25 in the ledger; sides accurate; 'soult' (Fact) has a disputed hour (finding 2); face-about's 'no account read' contradicted (finding 3); not checked: counter-march, pratzen-village, kursk (M-D's 1,600 verified only), hq-forward, buxhowden-blind, davout-resumes (M-D's 13:00 verified only), wheel, sokolnitz-falls (Przybyszewski's until 16:00 and Thiebault's ~15:00 verified only), augezd",
+   "evidence": "docs/audit-post8-evidence/sources-chronology/statements-key.txt"
+  },
+  {
+   "item": "Phase lines with a clock (26 of 32)",
+   "method": "as events",
+   "result": "13 checked (PHASES[1] 0-1, [2] 0-1, [3] 0,1,3,4, [4] 1,3, [8] 1-2, plus [0] 2's one o'clock and 07:30 verified in the Correspondance pp. 443, 450)",
+   "evidence": "docs/audit-post8-evidence/sources-chronology/statements-key.txt"
+  },
+  {
+   "item": "Shown as disputed? (the ice, the Guard, Kamensky, the end, Telnitz, Sokolnitz, the columns' departure)",
+   "method": "pill, dispute section, claim tag and place dossier compared with the sources",
+   "result": "disagreements kept and accurately attributed; the ice's toll kept in full in the Satschan dossier (data.js:749); pills inconsistent where history already found and for 'soult' (finding 2)",
+   "evidence": "docs/audit-post8-evidence/sources-chronology/ledger.md L18, L15, L10-L11, L20"
+  },
+  {
+   "item": "check:chronology (REVIEW 75 moves, 75 cites, 37 allowances)",
+   "method": "counts read from tools/stage2/chronology.js; not re-run (passed in this audit's required checks)",
+   "result": "not audited row by row",
+   "evidence": "docs/audit-post8-evidence/checks/"
+  }
+ ],
+ "findings": [
+  {
+   "title": "A January 1806 letter by Buxhowden naming Langeron as having sent Kamensky back is missing from the Kamensky dispute and the registers",
+   "category": "unresolved-historical",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "historical data: analysis.js EVENTS[#kamensky].why, narrative.js sides, docs/step4-evidence/readings.md C1",
+   "user_impact": "The 'who turned the brigade' dispute shows the 'Langeron sent it' side as Schönhals's alone (an official history published 1873); a contemporary document by Langeron's superior supports it. The disagreement is kept, so only the weight of one side is understated.",
+   "status": "open",
+   "origin": "inherited",
+   "refs": [
+    "analysis.js:296-298",
+    "data.js:521",
+    "docs/step4-evidence/readings.md:281-291",
+    "docs/step4-evidence/readings.md:509-519",
+    "docs/audit-post8-evidence/sources-chronology/pages/kutuzov1951-p262-n290-buxhowden-letter-kamensky.png"
+   ],
+   "evidence": "Kutuzov documents t. II (1951) no. 250, '1806 г. января 21. — ПИСЬМО Ф. Ф. БУКСГЕВДЕНА М. И. КУТУЗОВУ', p. 262 (archive.org 20250102_20250102_1833 page n290), read on the page image: 'Не должно ли приписать в вину графа Ланжерона, что он пошел на деревню Сокольниц? [...] А притом генерал-майора графа Каменского 1-го с полком его и другими рассеянными несколькими командами послав назад, тем храброго сего генерала с его отрядом подвергал крайней опасности' ('and moreover, by sending Major-General Count Kamensky 1st back with his regiment and several scattered detachments, he exposed this brave general and his detachment to extreme danger'). No hit for 'Dubno|no. 250|послав назад|kutuzov1951 pp. 260-262' in the step-4 and step-2 registers or narrative.js. Ledger L10.",
+   "expected": "CLAUDE.md: 'Where sources disagree, keep the disagreement. Prefer primary and specialist sources': a dated 1806 document in an edition the project reads, bearing on a named dispute, registered and weighed.",
+   "observed": "EVENTS[#kamensky].why names five sides (Mikhailovsky-Danilevsky, Schönhals, Kutuzov's official and private relations, Stutterheim); the step-4 cluster read pp. 241-242, 255-258 and 265-270 of the same volume but not no. 250 (pp. 260-262).",
+   "remedy": "Register the reading (page image n290; grade by the register's rule: a letter of January 1806 by the left wing's commander, at second hand for the II Column; label fact; disputed) and add it to the 'Langeron sent the brigade' side of EVENTS[#kamensky].why's narrative.js entry; a data task under CLAUDE.md's rule (check:data reference moves).",
+   "effort": "S",
+   "risk": "low",
+   "judgement_kind": "source-evidence",
+   "cause_hypothesis": "Step 4's C1 cluster read the Kutuzov documents by targeted pages (the relations and reports) and did not page through no. 250, Buxhowden's answer to Kutuzov's letter of 16 January.",
+   "validation": "Re-read p. 262 on the image; test.js's narrative checks (registered reading, sides from two sources) pass with the new side.",
+   "prior_refs": []
+  },
+  {
+   "title": "The Pratzen climb ('Saint-Hilaire and Vandamme climb the slope', 08:45-09:15) is labelled 'Fact' although the accounts read put it from about 08:00 to about 09:00",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "event labelling: analysis.js EVENTS[#soult].claim, app.js dossierEvent",
+   "user_impact": "In the dossier of the day's central event the visitor sees 'Fact', 'Timing C', 'Interval, not a timestamp' and 'Attested in the standard accounts of the battle. Shown as an interval rather than a timestamp: ... an hour this map does not fix to the minute'; nothing there says that Ségur has the divisions appear at eight while Stutterheim and Schönhals put the French advance about nine, though Saint-Hilaire's dossier and the release event say so.",
+   "status": "open",
+   "origin": "inherited",
+   "refs": [
+    "analysis.js:284-286",
+    "data.js:16-21",
+    "data.js:192",
+    "data.js:210",
+    "data.js:77",
+    "app.js:8296-8302",
+    "app.js:8328-8329",
+    "docs/audit-post8-evidence/history/result.json"
+   ],
+   "evidence": "EVENTS[#soult] claim:'fact', t:[525,555], no dispute field (analysis.js:284-286). CLAIM.disputed (data.js:20): 'its hour ... is disputed: the accounts read disagree with each other or with this map's timing'. sthilaire@3's timing note (data.js:192): 'inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals)'. Read: Ségur t. II pp. 466-467 'les divisions Vandamme et Saint[-]Hilaire, s'élançant hors du brouillard qui les env[el]oppait, apparurent soudainement. Il était huit heures.'; Stutterheim (Hamburg 1806) pp. 60-61 'Es war ungef[ä]hr 9 Uhr'; Schönhals p. 160 'es mochte 9 Uhr Früh [s]ein [...] gab er den Befehl z[u]m Angriff'. Ledger L02-L03.",
+   "expected": "Pill 'Disputed' and a 'When it happened: disputed' section naming the sides (app.js:8308 renders it from EVENTS[].dispute), as EVENTS[#decision] already words them.",
+   "observed": "Pill 'Fact' with the CLAIM.fact note; the disagreement appears only in the formation dossiers' timing notes and the release event.",
+   "remedy": "Set EVENTS[#soult].claim to 'disputed' and add a dispute string from sthilaire@3's timing note (Ségur eight; Thiébault's aide at 08:30; Stutterheim and Schönhals about nine; the map's 08:45 its choice) with its narrative.js entry; a data task (check:data reference moves). Merge with the history area's 'Three events whose own texts say the hour is disputed are not labelled disputed' as a fourth instance.",
+   "effort": "S",
+   "risk": "low",
+   "judgement_kind": "labelling-rule",
+   "cause_hypothesis": "Decision 201 (b) relabelled the events whose texts named a disputed hour; the climb's dispute lives in the anchors' timing notes and the release event, not in its own text, so it was not caught.",
+   "validation": "Event dossier shows 'Disputed' with sides; runtime-test's claims-on-screen checks pass.",
+   "prior_refs": [
+    "docs/audit-post8-evidence/history/result.json: Three events whose own texts say the hour is disputed are not labelled disputed"
+   ]
+  },
+  {
+   "title": "The face-about's 'no account read gives the order' is contradicted by the project's own reading of Schönhals p. 162 and by Stutterheim pp. 63-64",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "historical labelling: analysis.js EVENTS[#face-about].why and its narrative.js note, data.js PHASES[#3].events[3]",
+   "user_impact": "The visitor is told twice that Kutuzov's order is this map's own reading which no account gives; two accounts the project read attribute the 4th Column's turn against the French to an order (Kutuzov's in Schönhals, the Emperor's in Stutterheim). The event is attested and disputed (by whom), so neither the 'Fact' pill nor the 'This map's reading' tag is right; this decides the remedy of the history area's face-about finding.",
+   "status": "open",
+   "origin": "inherited",
+   "refs": [
+    "analysis.js:292-294",
+    "data.js:80",
+    "docs/step4-evidence/readings.md:292-302",
+    "docs/step4-evidence/readings.md:801-808",
+    "docs/audit-post8-evidence/sources-chronology/pages/schoenhals1873-p162-n166-kutuzov-orders-jurczek.png"
+   ],
+   "evidence": "Schönhals, Der Krieg 1805 in Deutschland (1873) p. 162 (archive.org derkriegindeuts00schgoog page n166), read on the page image: 'Kutusow befahl den österreichischen Brigaden Jurschek und Rottermund, die Höhe zu nehmen.' The step-4 register's C1.20 holds the same sentence, read on the image. Stutterheim (Hamburg 1806) pp. 63-64 (text layer): 'Der Russ[i]sche Kaiser, welcher [während die]ses mörderischen Gefechtes bey seiner Infanterie von der [4]ten Colonne geblieben war, [...] befahl [s]einen Bataillonen vorzurücken, und zu versuchen den Feind in der Flanke zu nehmen. Der General Kollowrath erhielt Befehl, den Feind auf dem linken Flügel aufzuhalten'. The map: EVENTS[#face-about].why 'That he ordered the column to face about is this map's reading' (claim interpretation; narrative.js note 'No account read has Kutuzov order the 4th Column to face about'); PHASES[#3].events[3] 'in this map's reading, which no account read gives, nor its hour'. Ledger L12.",
+   "expected": "The statement's claim matches the readings: an order to the 4th Column's Austrian brigades in Schönhals (Kutuzov), to its Russian battalions in Stutterheim (the Emperor); the hour the map's.",
+   "observed": "Claim 'interpretation' and 'no account read gives'; pill 'Fact'.",
+   "remedy": "Reword EVENTS[#face-about].why and PHASES[#3].events[3] to name the sides (Schönhals: Kutuzov ordered Jurczek's and Rottermund's brigades to take the height; Stutterheim: the Emperor ordered the battalions forward and Kollowrath was ordered to hold the left; Mikhailovsky-Danilevsky: Kutuzov rode to the 4th Column's left wing), claim 'disputed' with sides and pill 'disputed'; consider naming the event for what the sources attest ('The 4th Column turns against the French on the plateau'). A data task; merge with the history area's face-about finding.",
+   "effort": "S",
+   "risk": "low",
+   "judgement_kind": "source-evidence",
+   "cause_hypothesis": "The face-about was weighed against the Kamensky accounts (Mikhailovsky-Danilevsky, Kutuzov's relations) only; the Schönhals sentence was registered for Jurczek's attack and the Pratzen fight's length (C1.20), and Stutterheim's for Jurczek's attack, not for who ordered the column.",
+   "validation": "Re-read Schönhals p. 162 and Stutterheim pp. 63-64; test.js's narrative checks pass with 'disputed' sides from two sources.",
+   "prior_refs": [
+    "docs/audit-post8-evidence/history/result.json: The face-about event is labelled Fact beside its own why claimed This map's reading"
+   ]
+  }
+ ],
+ "experiments": [
+  {
+   "command": "python3 -I tools/audit-post8/sources-chronology/srcgrep.py <archive.org _djvu.txt> '<regex>' [ctx] [max] over 19 period texts; re-run for every quotation by tools/audit-post8/sources-chronology/quotes.sh",
+   "environment": "local text files fetched from archive.org by an earlier attempt into the scratchpad (fetch-texts.sh documents the URLs)",
+   "evidence_path": "docs/audit-post8-evidence/sources-chronology/quotes-textlayer.txt",
+   "outcome": "72 extractions, 0 misses; all 20 ledger rows' quotations located",
+   "limitations": "OCR text layer: Fraktur and Cyrillic OCR damaged in places (corrections bracketed); a negative OCR search is not conclusive"
+  },
+  {
+   "command": "curl https://archive.org/download/20250102_20250102_1833/page/n289.jpg, .../n290.jpg; https://archive.org/download/derkriegindeuts00schgoog/page/n166.jpg; crops viewed",
+   "environment": "agent proxy, archive.org BookReader images",
+   "evidence_path": "docs/audit-post8-evidence/sources-chronology/pages/",
+   "outcome": "Buxhowden's letter (p. 262) and Schönhals p. 162 confirmed on the image",
+   "limitations": "only these three pages read on images"
+  },
+  {
+   "command": "node tools/audit-post8/sources-chronology/stmts.js <isolated copy> '<ref regex>'; node tools/audit-post8/sources-chronology/coverage.js <isolated copy>",
+   "environment": "isolated repo copy (scratchpad sources-chronology-iso, data files md5-identical to the repository)",
+   "evidence_path": "docs/audit-post8-evidence/sources-chronology/statements-key.txt; docs/audit-post8-evidence/sources-chronology/coverage.json",
+   "outcome": "claims and readings of about 45 statements; 185 anchors, 25 timed, 25 events, 26 clocked phase lines",
+   "limitations": "static: labels read from the code, not rendered"
+  },
+  {
+   "command": "grep -c -i 'faisander|fasaner|Fasangarten|pheasantr|фазан' over the 19 text layers (quotes.sh tail)",
+   "environment": "local",
+   "evidence_path": "docs/audit-post8-evidence/sources-chronology/quotes-textlayer.txt",
+   "outcome": "0 hits in every text",
+   "limitations": "OCR negative"
+  },
+  {
+   "command": "python3 -I tools/audit-post8/sources-chronology/make-ledger.py; python3 -I tools/audit-post8/sources-chronology/make-result.py",
+   "environment": "local",
+   "evidence_path": "docs/audit-post8-evidence/sources-chronology/ledger.json; docs/audit-post8-evidence/sources-chronology/result.json",
+   "outcome": "ledger 20 rows (14 verified, 5 partly, 1 contradicted)",
+   "limitations": ""
+  }
+ ],
+ "not_checked": [
+  "Mikhailovsky-Danilevsky's 1844 Russian edition (only the 1846 French translation read; it says 'à huit heures' where the register reads 'въ 8-мъ часу')",
+  "Copyrighted modern works: Sokolov 2006 (Suchet's drain report, the 16:30 end, the 115 km march), Duffy 1977, Goetz 2005: inaccessible",
+  "Kutuzov's private relation (no. 252, p. 265) and Buxhowden's report's 'II Column at eight' not re-read; the Allied report's 'quiet from 15:00' (Materialien pp. 118-119) not re-read",
+  "Mikhailovsky-Danilevsky's 'last shots between five and six' and Thiébault's 'three hours' on the plateau not located on the text layers",
+  "The other Blasowitz attackers (Stutterheim p. 68, Thiébault p. 462, Sokolov p. 49, the Chevalier Guard's history, Marbot) not re-read",
+  "All quotations but three pages rest on the OCR text layer (the registers' own readings were on page images)",
+  "9 of 25 events, 13 of 26 clocked phase lines and 18 of 25 timed anchors outside the ledger; check:chronology's 75 REVIEW rows not audited one by one",
+  "Geography of the castle, pheasantry, post house and highway (geography area) and forces (sources-oob area)",
+  "Gallica, HathiTrust, Google Books not tried (archive.org scans sufficed); no browser run"
+ ],
+ "carried_status": [
+  {
+   "item": "history: face-about labelled Fact beside 'This map's reading'",
+   "status": "confirmed and refined",
+   "evidence": "Schönhals p. 162 and Stutterheim pp. 63-64 attest an order (by Kutuzov, by the Emperor): 'disputed' is the fitting label (finding 3)"
+  },
+  {
+   "item": "history: three events with disputed hours not labelled disputed",
+   "status": "confirmed; a fourth instance",
+   "evidence": "the decision event's sides verified (L02); the climb event 'soult' also (finding 2); the ice's hour dispute in PHASES[#8].events[1] verified (L18)"
+  },
+  {
+   "item": "history: Kamensky's turn drawn from 08:00",
+   "status": "consistent",
+   "evidence": "no account read gives the hour (L11); Thiébault p. 504 bounds it (the brigade still on the heights at 08:30)"
+  },
+  {
+   "item": "history: the Russian Guard's approach and Blasowitz",
+   "status": "reinforced",
+   "evidence": "Stutterheim p. 56, Schönhals pp. 163-164, Mikhailovsky-Danilevsky pp. 256-257 put the Guard's jägers in the village (L14)"
+  },
+  {
+   "item": "geography: 'walled castle' and 'pheasantry enclosure' stated as fact",
+   "status": "reinforced",
+   "evidence": "the castle is in four accounts; 'walled' and a pheasantry in none of 19 period texts (L19)"
+  }
+ ],
+ "ledger": [
+  {
+   "claim": "L01: Fog filled the Goldbach valley at dawn; Soult's two assault divisions stood in it, invisible from the heights, and climbed out of it into sunlight.",
+   "where_shown": "data.js:53 PHASES[#0].lede (Now tab, 04:00; narrative.js: unchecked, 'Not yet checked'); analysis.js:284-286 EVENTS[#soult].why (event do...",
+   "cited_source": "Thiébault t. III p. 457, Stutterheim 1806 pp. 60-61, Schönhals 1873 pp. 159-161 (narrative.js EVENTS[#soult...",
+   "verification": "verified",
+   "method": "text layer of the four scans, located with srcgrep.py (quotes.sh L01)",
+   "notes": "Thiébault p. 457: \"voulant mettre à profit un brouillard qui couvrait les vallées et empêchait de voir nos troupes qui s[']y t...\". Four accounts support it, Ségur's sun on the heights first supporting PHASES[#3].lede..."
+  },
+  {
+   "claim": "L02: Napoleon releases Soult: twenty minutes at most (Thiébault) or ten (Ségur) to crown the plateau, a further quarter of an hour, the signal on an aid...",
+   "where_shown": "analysis.js:280-282 EVENTS[#decision] (08:25-08:45; pill 'Estimate', 'Timing B'; why claimed 'disputed', five sides); data.js:71 PHASES[#...",
+   "cited_source": "thieb.p456-458.twenty-minutes, segur1873.p466.dix-minutes, thiebault3_1894.p504.half-past-eight (C1.c6), st...",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L02)",
+   "notes": "Thiébault p. 457: \"sur la réponse qu'il fallait au plus vingt minutes [...] « Eh bien, nous attendrons e[n]core un quart d'heu...\". Every attribution exact. The 'Estimate' pill against an hour the event calls disputed..."
+  },
+  {
+   "claim": "L03: Saint-Hilaire's and Vandamme's climb begins c. 08:45, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thié...",
+   "where_shown": "data.js:192-193 sthilaire@3 and data.js:210-211 vandamme@3 (formation dossier: Timing 'grade C · app narrative, unsourced', 'Dated by' wi...",
+   "cited_source": "the tm.note names Ségur, Thiébault, Stutterheim and Schönhals (same readings as L02)",
+   "verification": "partly",
+   "method": "text layer (quotes.sh L02)",
+   "notes": "Ségur pp. 466-467: \"les divisions Vandamme et Saint[-]Hilaire, s'élançant hors du brouillard qui les env[el]oppait, apparurent...\". The range stated in the timing note is exact; 08:45 is the map's choice and is labell..."
+  },
+  {
+   "claim": "L04: Dokhturov's I Column leaves its camp at seven, as the disposition ordered (timing grade A; Buxhowden's and Kutuzov's reports); the columns' departu...",
+   "where_shown": "data.js:489-490 dok@1 (dossier: Timing 'grade A · source'; act tagged 'As a source tells it'); analysis.js:249-252 EVENTS[#columns-move]...",
+   "cited_source": "kutuzov1951 pp. 241-242 (Buxhowden's report, C1.24), pp. 255-258 (Kutuzov's relation no. 247, C1.25), mater...",
+   "verification": "verified",
+   "method": "text layer (Russian OCR of the 1951 edition; quotes.sh L04)",
+   "notes": "М. И. Кутузов. Сборник документов т. II Buxhowden's report, pp. 241-242: \"Полки сей 1-й колонны, при которой я н[аходился], из лагеря выступили поутру в 7 часов\". Grade A is supported by two 1806 documents of the comm..."
+  },
+  {
+   "claim": "L05: Kienmayer attacks Telnitz at 07:00 (disputed): Savary's Russians debouching on Legrand about seven and attacking soon after; Schönhals's left wing...",
+   "where_shown": "analysis.js:259-262 EVENTS[#telnitz] (about 07:00, 'Disputed', 'Timing B'); data.js:63 PHASES[#1].events[0] (c. 07:00, 'attributed': the...",
+   "cited_source": "savary1828.p204-207 (C1.29), schoenhals1873.p157-159.departure (C1.17), stut1806de.p49-52.telnitz (C1.4), d...",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L05)",
+   "notes": "Savary pp. 204-205: \"ils commençaient à déboucher sur le général Legrand [...] Il était à peu près sept heures du matin [...] le...\". Each side exact. Kutuzov's relation p. 256 (the I Column 'около 8 часов утра' forci..."
+  },
+  {
+   "claim": "L06: Friant's division left Raigern at 05:00 (Davout's report of 2 December) or between 05:30 and 06:00 (his report of 26 December), after thirty-six le...",
+   "where_shown": "data.js:252-253 friant@1 (dossier Timing 'grade B · source'); analysis.js:264-266 EVENTS[#raigern] (04:00-04:45, 'Estimate'; why claimed...",
+   "cited_source": "davout1885 no. 123 pp. 192-193 and no. 127 pp. 202-204 (C1.32, C1.33), sokolov2006, thiers1847",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L06); Sokolov 2006 not accessible (copyright)",
+   "notes": "Correspondance du maréchal Davout t. I no. 123 (2 Dec 1805), pp. 192-193: \"ce ma[t]in, à cinq heures, la division [p. 193] [F]riant s'est mise en marche de ses positions [d]e Rayge[r...\". Napoleon's order of 1 Decembe..."
+  },
+  {
+   "claim": "L07: Friant's leading brigade reaches the Goldbach near Telnitz about 09:00: Stutterheim, the Moniteur's remarks of 1806, Schönhals; after Telnitz had f...",
+   "where_shown": "analysis.js:267-269 EVENTS[#davout] (08:45-09:15, 'Fact'); data.js:252 friant@1 arrival 09:00 (B); data.js:78 PHASES[#3].events[1] (c. 09...",
+   "cited_source": "stut.p52.davout-nine, mat.p109-110.moniteur-neuf, schoenhals1873 pp. 159-160, md1844.p178-179.davout-telnit...",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L07); Mikhailovsky-Danilevsky in the 1846 French transl...",
+   "notes": "Stutterheim p. 52: \"Gegen 9 Uhr erhielt der Feind eine [Verst]ärkung von 4000 Mann vom Corps des Marschall Davoust, welche von...\". 'Fact' fits: the accounts agree on about nine."
+  },
+  {
+   "claim": "L08: Heudelet's brigade retakes Telnitz, in French hands at 09:30 (Davout's report of 26 December, timing grade A), then loses it when a French regiment...",
+   "where_shown": "data.js:254-255 friant@3 (Timing 'grade A · source'); analysis.js:276-278 EVENTS[#telnitz-retaken] (about 09:30, 'Fact', 'Timing A'); dat...",
+   "cited_source": "davout1885 no. 127 pp. 202-204 (C1.33; narrative.js davout1885.no127.p202-204)",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L08); the register's reading was on the page image (n26...",
+   "notes": "Correspondance du maréchal Davout t. I no. 127, pp. 203-204: \"le général Heudelet [...] s'y précipita à la t[ê]te de ses troupes [...] à neuf heures et demie le village...\". The day's one A-graded event hour: a report..."
+  },
+  {
+   "claim": "L09: Langeron and Przybyszewski attack Sokolnitz at 08:00 (disputed): Przybyszewski's report has his column in action from eight; Davout's has Sokolnitz...",
+   "where_shown": "analysis.js:271-274 EVENTS[#sokolnitz] (about 08:00, 'Disputed'); data.js:70 PHASES[#2].events[0] (c. 08:00, unchecked)",
+   "cited_source": "kutuzov1951 pp. 269-270 (C1.27), pp. 241-242 (C1.24), davout1885 no. 127, md1844 p. 179 (C1.c4), schoenhals...",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L09); Buxhowden's 'II Column at eight' not re-read",
+   "notes": "М. И. Кутузов. Сборник документов т. II Przybyszewski's report, p. 270: \"от осьми часов утра и до четырех часов пополудни беспрерывно\". Four of the five sides re-read and exact."
+  },
+  {
+   "claim": "L10: Who turned Kamensky's brigade against the French on the plateau (disputed): Kamensky on his own (Mikhailovsky-Danilevsky, citing Langeron's report)...",
+   "where_shown": "analysis.js:296-298 EVENTS[#kamensky].why (09:45, 'Disputed'; tag 'The sources disagree'); data.js:521 kamensky@3 act ('disputed'; Mikhai...",
+   "cited_source": "md1844.p186-187.kamensky (C1.10), schoenhals1873.p161.kamensky-langeron (C1.19), kutuzov1951.p255-258.relat...",
+   "verification": "verified",
+   "method": "text layer for four sides (the private relation not re-read); Buxhowden's let...",
+   "notes": "Mikhailovsky-Danilevsky p. 241: \"Kamenski pr[é]vint La[n]geron, arrêta ses troupes[,] les mit en position verticalement vis-[à-]vis du fl[a]...\". The five sides are stated accurately. Not registered and not shown: Bux..."
+  },
+  {
+   "claim": "L11: No account read gives the hour of Kamensky's turn, only a sequence (after the French began to climb, before or with Jurczek's attack); the event is...",
+   "where_shown": "analysis.js:299 EVENTS[#kamensky].dispute ('uncertain', 'Not established'); data.js:88 PHASES[#4].events[1] (c. 09:45, 'uncertain')",
+   "cited_source": "stut1806de.p63.kamensky (C1.6), md1844.p186-187 (C1.10), schoenhals1873.p161 (C1.19), kutuzov1951 pp. 257-258",
+   "verification": "verified",
+   "method": "text layer: no clock hour near the turn in Stutterheim pp. 60-65, Schönhals p...",
+   "notes": "Thiébault p. 504: \"alors que la brigade Kamenski, les régiments Fanagorski et Riajski et la quatrième colonne qui devait suivr...\". Thiébault adds a bound (the brigade still on the heights at the aide's 08:30 report)...."
+  },
+  {
+   "claim": "L12: Kutuzov orders the 4th Column to face about (09:15): 'That he ordered the column to face about is this map's reading'; the phase line: 'in this map...",
+   "where_shown": "analysis.js:292-294 EVENTS[#face-about] (about 09:15, pill 'Fact'; why claimed 'interpretation', narrative.js note 'No account read has K...",
+   "cited_source": "md1844.p186-187 (C1.10), kutuzov1951.p255-258.relation (C1.25), kutuzov1951.p265.private-relation (C1.c1);...",
+   "verification": "contradicted",
+   "method": "text layer; Schönhals p. 162 also on the page image (pages/schoenhals1873-p16...",
+   "notes": "Schönhals p. 162 (leaf n166): \"Kutusow befahl den österreichischen Brigaden Jurschek und Rottermund, die Höhe zu nehmen.\". Contradicted in part: an account read (Schönhals, register C1.20) has Kutuzov order the 4th Co..."
+  },
+  {
+   "claim": "L13: The Pratzeberg is firmly French at 11:00 (Ségur's 'towards eleven'); Stutterheim and Schönhals have the plateau fight last about two hours from abo...",
+   "where_shown": "analysis.js:305-308 EVENTS[#pratzeberg] (about 11:00, 'Disputed'); data.js:75 PHASES[#3].lede ('until about 11:00', unchecked)",
+   "cited_source": "segur1873 p. 467, stutterheim1806de, schoenhals1873.p162-163.two-hours (C1.20), thiebault3_1894",
+   "verification": "partly",
+   "method": "text layer (quotes.sh L13); Thiébault's 'three hours' not located on the text...",
+   "notes": "Ségur p. 467: \"Vers onze heures tout avait réussi selon les prévisions de l'Empereur. Le centre russe était percé\". "
+  },
+  {
+   "claim": "L14: The French take Blasowitz from the Russian Guard (11:15): the Guard's jägers held the village in Stutterheim, Schönhals and Mikhailovsky-Danilevsky...",
+   "where_shown": "analysis.js:310-312 EVENTS[#blasowitz] (about 11:15, 'Estimate'; why claimed 'disputed')",
+   "cited_source": "stutterheim1806de.p56.reserve-blasowitz, schoenhals1873.p164.guard-blasowitz, md1846.p256-257.blasowitz-gua...",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L14)",
+   "notes": "Stutterheim p. 56: \"verließ zur bestimmten Stunde die Anhöhen vor Austerlitz, um auf die Anhöhen bey Blasowitz und Krug vorzurü...\". Three accounts put the Guard on the heights by Blasowitz and Krug with its jägers in..."
+  },
+  {
+   "claim": "L15: The Russian Guard takes the eagle of the 4th Line, 'the only trophy of the day' in an Allied official report first printed in the Materialien (1806...",
+   "where_shown": "analysis.js:314-316 EVENTS[#guard-attack] (11:00-13:00, 'Estimate'; why 'attributed')",
+   "cited_source": "materialien1806.p118-119.einzige-trophaee, rapp1823.p60-62.une-heure (C1.14), segur1873.p467-469.une-heure...",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L15)",
+   "notes": "Materialien zu der Geschichte der Schlacht bei Austerlitz p. 118: \"bei welcher Gelegenheit die beiden Escadrons einen Adler (die einzige Trophäe des Tags) des [4]ten Linien-R...\". The 'Estimate' pill against the hour..."
+  },
+  {
+   "claim": "L16: Rapp's counter-charge breaks the Chevalier Guard and Prince Repnin is taken (the 30th Bulletin); when it went in is disputed (before one by the nar...",
+   "where_shown": "analysis.js:318-321 EVENTS[#guard-broken] (11:15-13:15, 'Disputed')",
+   "cited_source": "corr11.9541.p452.rapp-repnin (C1.16), corr11.9541.p451.guard-one (C1.15), rapp1823.p60-62.une-heure, segur1...",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L16)",
+   "notes": "Correspondance de Napoléon Ier t. XI no. 9541 (30th Bulletin), p. 452: \"C'est ce dernier qui, en chargeant à la tête des grenadiers de la Garde, a pris le prince Repnine, commanda...\". "
+  },
+  {
+   "claim": "L17: Bagration's Advance Guard at dawn astride the Olmütz highway by the Posoritz post house, from which Stutterheim has him advance; Krug and Holubitz...",
+   "where_shown": "data.js:604 bag@0 (formation dossier, 04:00; act 'attributed', note: the placing is the map's); FEATURES posthouse (8K)",
+   "cited_source": "Stutterheim (C6.10, A), Schönhals (C6.12, B); docs/stage8-evidence/8k/register.md A5; docs/stage8-evidence/...",
+   "verification": "partly",
+   "method": "text layer (quotes.sh L17; the German OCR is damaged in places, gaps restored...",
+   "notes": "Stutterheim pp. 58-59: \"Dieser General war endlich von dem Pesorsitzer Posthause vorgerückt, um [dem] linken Flügel des Marschall L...\". The attribution is exact. Stutterheim's 'endlich' (at last) places the advance f..."
+  },
+  {
+   "claim": "L18: French artillery fires on the ice of the Satschan mere (15:00); the 30th Bulletin's twenty thousand drowned against Schönhals's sixty to at most a...",
+   "where_shown": "analysis.js:350-352 EVENTS[#ice] (about 15:00, pill 'Fact'; why claimed 'disputed'); data.js:119, 122 PHASES[#8].lede and events[1] (c. 1...",
+   "cited_source": "materialien1806.p121.zusatz15 (the Bulletin quoted), schoen.p169-170.tellnitz-pfarrer, schoenhals1873.p169....",
+   "verification": "verified",
+   "method": "text layer (quotes.sh L18); the Bulletin read in the Correspondance rather th...",
+   "notes": "Correspondance de Napoléon Ier t. XI no. 9541, pp. 451-452: \"L'Empereur s'y porta avec vingt pièces de canon. Ce corps fut chassé de position en position, et l'on vit u...\". Shown as disputed: yes, in the why's tag, t..."
+  },
+  {
+   "claim": "L19: Sokolnitz 'its walled castle and the pheasantry enclosure beyond'; 'Przybyszewski goes for the castle and pheasantry' (c. 08:00); the castle at its...",
+   "where_shown": "data.js:67-68 PHASES[#2].title and lede (unchecked); data.js:70 PHASES[#2].events[0] (c. 08:00, unchecked); data.js:536 prz@2 act; data.j...",
+   "cited_source": "no reading cited for 'walled' or 'pheasantry' in narrative.js; the castle's site: docs/stage8-evidence/8h/g...",
+   "verification": "partly",
+   "method": "text layer: the castle in four accounts; negative search of the 19 period tex...",
+   "notes": "Schönhals p. 157: \"die dritte an dem Schlosse von Sokolnitz vorüber rücken\". The castle is in the accounts; 'walled' and a pheasantry are in none of the 1805-1806 texts read. Geography's finding ('walled castle' and '..."
+  },
+  {
+   "claim": "L20: Organised resistance ends at 16:30 (disputed): the Bulletin's victory decided at one; Thiébault's firing over about half an hour after three; Mikha...",
+   "where_shown": "analysis.js:354-357 EVENTS[#end] (about 16:30, 'Disputed'); data.js:123 PHASES[#8].events[2] (c. 16:30, 'disputed')",
+   "cited_source": "corr11.9541.p451.instant, thieb.p465-466.three-pm, md1844.p205-206.dusk, schoenhals1873.p165-166.bagration,...",
+   "verification": "partly",
+   "method": "text layer (quotes.sh L16, L18, L20); Mikhailovsky-Danilevsky's 'between five...",
+   "notes": "Correspondance de Napoléon Ier t. XI no. 9541, p. 451: \"A une heure après midi la victoire était décidée.\". 16:30 is the map's reckoning after Sokolov's, as labelled."
+  }
+ ],
+ "strengths": [
+  "Every attribution the 20 rows' texts make that could be read was accurate, including the hours in Buxhowden's, Kutuzov's and Przybyszewski's Russian reports and Davout's two reports",
+  "Disagreements are kept and their sides are stated exactly (the columns' departure, Telnitz, Sokolnitz, Kamensky, the Guard, Rapp's charge, the end)",
+  "The ice's toll is kept in full in the Satschan dossier (the Bulletin's 20,000, Marbot, Thiébault's 3,000-4,000, Lejeune, Stutterheim, Schönhals's 60-100, Suchet via Sokolov) and the map labels its 'encirclement' reading as interpretation",
+  "The day's one A-graded event hour (Telnitz at 09:30) rests on a report dated 26 December 1805 quoted exactly; Dokhturov's A-graded 07:00 on two 1806 documents",
+  "Timing grades are candid: the climb's 08:45 is graded C 'app narrative, unsourced' with the sources' range in its note"
+ ]
+}

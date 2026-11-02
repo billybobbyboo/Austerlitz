@@ -1,0 +1,769 @@
+{
+ "note": "Read with gh api on 2026-11-02 by the area tests of the final audit after Stage 8 (read-only). rules: the rules that apply to main; ruleset: the repository rulesets; prHeads: each PR head commit check runs; mainMerges: main merge commits check runs.",
+ "rules": [
+  {
+   "type": "deletion",
+   "ruleset_source_type": "Repository",
+   "ruleset_source": "billybobbyboo/Austerlitz",
+   "ruleset_id": 24036909
+  },
+  {
+   "type": "non_fast_forward",
+   "ruleset_source_type": "Repository",
+   "ruleset_source": "billybobbyboo/Austerlitz",
+   "ruleset_id": 24036909
+  },
+  {
+   "type": "pull_request",
+   "parameters": {
+    "required_approving_review_count": 0,
+    "dismiss_stale_reviews_on_push": false,
+    "required_reviewers": [],
+    "require_code_owner_review": false,
+    "require_last_push_approval": false,
+    "required_review_thread_resolution": false,
+    "require_extra_approval_for_unattributed_changes": true,
+    "allowed_merge_methods": [
+     "merge",
+     "squash",
+     "rebase"
+    ]
+   },
+   "ruleset_source_type": "Repository",
+   "ruleset_source": "billybobbyboo/Austerlitz",
+   "ruleset_id": 24036909
+  },
+  {
+   "type": "required_status_checks",
+   "parameters": {
+    "strict_required_status_checks_policy": true,
+    "do_not_enforce_on_create": false,
+    "required_status_checks": [
+     {
+      "context": "checks",
+      "integration_id": 15368
+     }
+    ]
+   },
+   "ruleset_source_type": "Repository",
+   "ruleset_source": "billybobbyboo/Austerlitz",
+   "ruleset_id": 24036909
+  }
+ ],
+ "rulesets": [
+  {
+   "id": 24036909,
+   "name": "protect main.",
+   "target": "branch",
+   "source_type": "Repository",
+   "source": "billybobbyboo/Austerlitz",
+   "enforcement": "active",
+   "node_id": "RRS_lACqUmVwb3NpdG9yec5SjbHLzgFuxi0",
+   "_links": {
+    "self": {
+     "href": "https://api.github.com/repos/billybobbyboo/Austerlitz/rulesets/24036909"
+    },
+    "html": {
+     "href": "https://github.com/billybobbyboo/Austerlitz/rules/24036909"
+    }
+   },
+   "created_at": "2026-09-26T09:06:15.033Z",
+   "updated_at": "2026-09-26T09:07:18.516Z"
+  }
+ ],
+ "prHeads": {
+  "70": {
+   "pr": {
+    "base": "main",
+    "merge_commit": "94d6e4660b82fb68273b975a7eee69c63916d188",
+    "merged_at": "2026-10-27T22:09:56Z",
+    "sha": "47a5a9847ca62defee15157cba6a532edbd09b2a"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-10-28T01:05:08Z",
+     "conclusion": "success",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-27T21:15:49Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-27T21:43:59Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-27T21:12:17Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-27T21:05:10Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-27T21:22:46Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-27T21:12:07Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-27T21:44:12Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-27T21:12:12Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-27T21:05:08Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-27T21:24:21Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-27T21:24:24Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    }
+   ]
+  },
+  "71": {
+   "pr": {
+    "base": "main",
+    "merge_commit": "51d4a15b2e9169748cbb99704ff9fd7d3905412b",
+    "merged_at": "2026-10-28T22:35:01Z",
+    "sha": "fc75e8a9a1cd143970568714548c76ba6718d2ec"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-10-28T13:51:50Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-28T13:58:59Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-28T14:17:57Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-28T14:10:22Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-28T13:51:45Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-28T13:57:40Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-28T14:28:24Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-28T14:10:20Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    }
+   ]
+  },
+  "72": {
+   "pr": {
+    "base": "main",
+    "merge_commit": "636cc5ddba6c146ecabff01e6d7c86738add0e4b",
+    "merged_at": "2026-10-29T22:12:17Z",
+    "sha": "dddd4e4738d2e5121bcbe9738c8db5e8fb26f0b4"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-10-29T12:16:45Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-29T15:35:14Z",
+     "conclusion": "success",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-29T12:12:17Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-29T12:48:49Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-29T12:06:28Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-29T12:47:07Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-29T12:13:42Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-29T12:24:26Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-29T12:06:24Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-29T12:50:18Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-29T12:12:09Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-29T12:24:52Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    }
+   ]
+  },
+  "73": {
+   "pr": {
+    "base": "main",
+    "merge_commit": "b7fb67ab8c25a55915dea3da64ab4d79fe00ef51",
+    "merged_at": "2026-10-30T07:52:24Z",
+    "sha": "b227607cbc4902709127c5273243d97c07074667"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-10-30T07:07:28Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T07:51:04Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T07:14:35Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-30T07:21:41Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T07:07:24Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T07:24:10Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T07:11:17Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-30T07:43:05Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    }
+   ]
+  },
+  "74": {
+   "pr": {
+    "base": "main",
+    "merge_commit": "72c7e1b58de93acc60f674aebac8c5370f9d85cf",
+    "merged_at": "2026-10-30T22:37:03Z",
+    "sha": "9d7a9663e257fa2bf7db74f69dff5c6143f53812"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-10-30T11:50:19Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T11:37:10Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-30T15:47:02Z",
+     "conclusion": "success",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T11:58:18Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T11:33:02Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T11:50:14Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T12:20:03Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T11:40:06Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-30T11:32:23Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T11:46:57Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T12:19:12Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T11:39:20Z",
+     "conclusion": "success",
+     "name": "checks"
+    }
+   ]
+  },
+  "75": {
+   "pr": {
+    "base": "claude/tender-einstein-gwrsij",
+    "merge_commit": "c7de7a29092edefc9eb180dd467abaee6b42dd95",
+    "merged_at": "2026-10-30T22:37:17Z",
+    "sha": "0ed98b991ca85f5d1c90bc78d41b667cb8cff8db"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-10-30T14:43:40Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T14:35:05Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-30T14:33:49Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-30T14:42:49Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T15:14:36Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T16:30:10Z",
+     "conclusion": "failure",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T15:13:42Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T14:26:12Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T14:39:57Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T14:25:47Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T15:04:07Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T14:32:57Z",
+     "conclusion": "success",
+     "name": "checks"
+    }
+   ]
+  },
+  "76": {
+   "pr": {
+    "base": "claude/tender-einstein-gwrsij-sokolnitz",
+    "merge_commit": "c706c969f9e2c649f1a8265c188d0b35872dd6aa",
+    "merged_at": "2026-10-30T22:37:36Z",
+    "sha": "c3e2f51ca35e5311cbdbb2886fa3765b538a8246"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-10-30T19:59:12Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T20:23:02Z",
+     "conclusion": "failure",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T20:13:23Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T20:06:27Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-30T19:59:10Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-30T20:15:07Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-30T20:44:31Z",
+     "conclusion": "failure",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-30T20:03:43Z",
+     "conclusion": "success",
+     "name": "checks"
+    }
+   ]
+  },
+  "77": {
+   "pr": {
+    "base": "main",
+    "merge_commit": "141f890790bfae5164c040de09aa123bdcbd957c",
+    "merged_at": "2026-10-31T07:55:37Z",
+    "sha": "ec911c957986b91b952d61867f168566cc2a71c9"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-10-31T06:18:34Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-31T06:25:57Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-31T06:34:52Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-10-31T07:05:10Z",
+     "conclusion": "failure",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-31T06:18:31Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-10-31T06:25:47Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-10-31T07:05:30Z",
+     "conclusion": "failure",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-10-31T06:34:46Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    }
+   ]
+  },
+  "78": {
+   "pr": {
+    "base": "main",
+    "merge_commit": "c2adefed5db091d420b95cf2f84ff633279ec2e6",
+    "merged_at": "2026-11-01T06:55:08Z",
+    "sha": "902c10805fc6dd7f02d583af1c5f09f7a5fd523a"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-11-01T06:06:38Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-11-01T06:14:53Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-11-01T06:54:51Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-11-01T06:10:43Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-11-01T06:06:36Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-11-01T06:10:40Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-11-01T06:52:59Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-11-01T06:22:49Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    }
+   ]
+  },
+  "79": {
+   "pr": {
+    "base": "main",
+    "merge_commit": "43e3e5bcc5ab0cbbcb604a22a5b8c29f801649c8",
+    "merged_at": "2026-11-01T10:56:22Z",
+    "sha": "909923c453ccfefd253e52ff0e7fde70d2f70ea7"
+   },
+   "checkRuns": [
+    {
+     "completed_at": "2026-11-01T09:14:58Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-11-01T09:54:54Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-11-01T09:22:10Z",
+     "conclusion": "success",
+     "name": "checks"
+    },
+    {
+     "completed_at": "2026-11-01T09:31:22Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-11-01T09:14:55Z",
+     "conclusion": "skipped",
+     "name": "visual"
+    },
+    {
+     "completed_at": "2026-11-01T09:31:37Z",
+     "conclusion": "success",
+     "name": "browser (contrast)"
+    },
+    {
+     "completed_at": "2026-11-01T10:02:02Z",
+     "conclusion": "success",
+     "name": "browser (selftest)"
+    },
+    {
+     "completed_at": "2026-11-01T09:21:12Z",
+     "conclusion": "success",
+     "name": "checks"
+    }
+   ]
+  }
+ },
+ "mainMerges": {
+  "141f890790bfae5164c040de09aa123bdcbd957c": [
+   {
+    "completed_at": "2026-10-31T07:57:18Z",
+    "conclusion": "success",
+    "name": "deploy"
+   },
+   {
+    "completed_at": "2026-10-31T07:56:34Z",
+    "conclusion": "success",
+    "name": "report-build-status"
+   },
+   {
+    "completed_at": "2026-10-31T07:55:40Z",
+    "conclusion": "skipped",
+    "name": "visual"
+   },
+   {
+    "completed_at": "2026-10-31T07:56:28Z",
+    "conclusion": "success",
+    "name": "build"
+   },
+   {
+    "completed_at": "2026-10-31T08:04:28Z",
+    "conclusion": "success",
+    "name": "browser (contrast)"
+   },
+   {
+    "completed_at": "2026-10-31T08:44:41Z",
+    "conclusion": "failure",
+    "name": "browser (selftest)"
+   },
+   {
+    "completed_at": "2026-10-31T08:01:18Z",
+    "conclusion": "success",
+    "name": "checks"
+   }
+  ],
+  "c2adefed5db091d420b95cf2f84ff633279ec2e6": [
+   {
+    "completed_at": "2026-11-01T06:56:16Z",
+    "conclusion": "success",
+    "name": "report-build-status"
+   },
+   {
+    "completed_at": "2026-11-01T06:56:38Z",
+    "conclusion": "success",
+    "name": "deploy"
+   },
+   {
+    "completed_at": "2026-11-01T06:56:10Z",
+    "conclusion": "success",
+    "name": "build"
+   },
+   {
+    "completed_at": "2026-11-01T06:55:11Z",
+    "conclusion": "skipped",
+    "name": "visual"
+   },
+   {
+    "completed_at": "2026-11-01T07:09:16Z",
+    "conclusion": "success",
+    "name": "browser (contrast)"
+   },
+   {
+    "completed_at": "2026-11-01T07:19:30Z",
+    "conclusion": "success",
+    "name": "browser (selftest)"
+   },
+   {
+    "completed_at": "2026-11-01T06:59:11Z",
+    "conclusion": "success",
+    "name": "checks"
+   }
+  ],
+  "43e3e5bcc5ab0cbbcb604a22a5b8c29f801649c8": [
+   {
+    "completed_at": "2026-11-01T10:57:47Z",
+    "conclusion": "success",
+    "name": "deploy"
+   },
+   {
+    "completed_at": "2026-11-01T10:57:33Z",
+    "conclusion": "success",
+    "name": "report-build-status"
+   },
+   {
+    "completed_at": "2026-11-01T10:57:25Z",
+    "conclusion": "success",
+    "name": "build"
+   },
+   {
+    "completed_at": "2026-11-01T10:56:25Z",
+    "conclusion": "skipped",
+    "name": "visual"
+   },
+   {
+    "completed_at": "2026-11-01T11:36:13Z",
+    "conclusion": "success",
+    "name": "browser (selftest)"
+   },
+   {
+    "completed_at": "2026-11-01T11:01:12Z",
+    "conclusion": "success",
+    "name": "checks"
+   },
+   {
+    "completed_at": "2026-11-01T11:12:46Z",
+    "conclusion": "success",
+    "name": "browser (contrast)"
+   }
+  ]
+ }
+}

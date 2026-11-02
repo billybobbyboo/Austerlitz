@@ -1,0 +1,99 @@
+[
+ {
+  "run": "hybrid-1200",
+  "frame": 265,
+  "file": "docs/audit-post8-evidence/visibility/stills/hybrid-1200-f265.jpg",
+  "plain": "docs/audit-post8-evidence/visibility/stills/hybrid-1200-f265-plain.jpg",
+  "clock": 754.1666666666847,
+  "speed": 0.5,
+  "glLost": false,
+  "ctxLost": false,
+  "calls": 846,
+  "hidden": [
+   {
+    "id": "gqg",
+    "x": 754.1760288407681,
+    "y": 402.1693500614599,
+    "held": true
+   },
+   {
+    "id": "kellermann",
+    "x": 655.0230853671678,
+    "y": 369.1514859930496,
+    "held": true
+   },
+   {
+    "id": "dhautpoul",
+    "x": 689.9748497091238,
+    "y": 378.70938434221046,
+    "held": true
+   },
+   {
+    "id": "rivaud",
+    "x": 793.0530109854164,
+    "y": 378.5436940473351,
+    "held": true
+   },
+   {
+    "id": "guard_inf",
+    "x": 781.0144139236136,
+    "y": 416.2547369686248,
+    "held": true
+   },
+   {
+    "id": "guard_cav",
+    "x": 834.0026475727311,
+    "y": 401.71537501367686,
+    "held": true
+   },
+   {
+    "id": "c_gren",
+    "x": 782.4333667733673,
+    "y": 434.37032860700396,
+    "held": true
+   },
+   {
+    "id": "milo",
+    "x": 921.02306319239,
+    "y": 355.6537497861552,
+    "held": true
+   },
+   {
+    "id": "rg_inf",
+    "x": 845.7535494219966,
+    "y": 358.6982712158201,
+    "held": true
+   },
+   {
+    "id": "rg_cav",
+    "x": 835.6140001843075,
+    "y": 355.9312878261538,
+    "held": true
+   }
+  ],
+  "drawn": [
+   "sthilaire",
+   "vandamme",
+   "legrand",
+   "friant",
+   "bourcier",
+   "caffarelli",
+   "suchet",
+   "nansouty",
+   "walther",
+   "drouet",
+   "ahq",
+   "kienmayer",
+   "dok",
+   "lang",
+   "prz",
+   "kollo",
+   "lich",
+   "bag"
+  ],
+  "occluded": [],
+  "playing": true,
+  "moving": true,
+  "pass": false
+ }
+]

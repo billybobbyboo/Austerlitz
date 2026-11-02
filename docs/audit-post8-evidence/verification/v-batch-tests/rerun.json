@@ -1,0 +1,144 @@
+[
+ {
+  "id": "M25",
+  "title": "the model's march-rate ceiling for infantry loosened (SPEED_CEIL.inf 5.0 becomes 6.0)",
+  "suites": {
+   "audit": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 2.977,
+    "lines": [
+     "=== MARCH RATE VIOLATIONS (0) ===",
+     "=== TERRAIN VIOLATIONS (0) ==="
+    ]
+   },
+   "sim": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 3.823,
+    "lines": [
+     "  25 events checked against formation positions (true distance, 1 km default): 0 disagreements"
+    ]
+   },
+   "chron": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 14.829,
+    "lines": []
+   },
+   "redteam": {
+    "exit": 1,
+    "verdict": "FAILED",
+    "seconds": 11.815,
+    "lines": [
+     "findings: 2",
+     "  ✗ warning: not acknowledged in KNOWN_WARN: movement: cavalry mean rate 0.83 is not above infantry 1.36",
+     "  ✗ warning: acknowledged but no longer raised (remove it from KNOWN_WARN): movement: cavalry mean rate 0.83 is not above infantry 1.35"
+    ]
+   }
+  },
+  "restored": true
+ },
+ {
+  "id": "M31",
+  "title": "an overlay objective placed off the map in y (phase 0's Telnitz objective at y 608; the frame is 500 deep)",
+  "suites": {
+   "test": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 11.744,
+    "lines": []
+   },
+   "binding": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 8.021,
+    "lines": []
+   }
+  },
+  "restored": true
+ },
+ {
+  "id": "M27",
+  "title": "a village moved about 0.28 km (Kobelnitz, 9 map units east)",
+  "suites": {
+   "geo": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 3.706,
+    "lines": []
+   }
+  },
+  "restored": true
+ },
+ {
+  "id": "M29",
+  "title": "presentation code overrides a guarded datum at start-up (init() moves sthilaire@5 0.4 km), the data file unchanged",
+  "suites": {
+   "data": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 7.772,
+    "lines": [
+     "Rendering and interface declarations changed (1): init",
+     "All 139 DATA declarations are byte-identical to the original build."
+    ]
+   }
+  },
+  "buildMd5After": "f10fe585c46aea576f436ed51ac46f83",
+  "restored": true
+ },
+ {
+  "id": "M13",
+  "title": "an interface colour typed into style.css outside the tokens (#sc-clear:hover color:#ff00aa)",
+  "suites": {
+   "css": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 26.659,
+    "lines": []
+   }
+  },
+  "restored": true
+ },
+ {
+  "id": "M08",
+  "title": "the \"derived\" tag removed from a formation's march row (the dossier's Marching / Next move reading)",
+  "suites": {
+   "css": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 22.818,
+    "lines": []
+   }
+  },
+  "restored": true
+ },
+ {
+  "id": "M17",
+  "title": "a strength changed without its note (Saint-Hilaire 6,600 becomes 8,600; the note still says about 6,600)",
+  "suites": {
+   "test": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 9.558,
+    "lines": []
+   },
+   "redteam": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 6.445,
+    "lines": []
+   },
+   "sim": {
+    "exit": 0,
+    "verdict": "passed",
+    "seconds": 3.148,
+    "lines": [
+     "  25 events checked against formation positions (true distance, 1 km default): 0 disagreements"
+    ]
+   }
+  },
+  "restored": true
+ }
+]

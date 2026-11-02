@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Austerlitz command map | Austerlitz</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Austerlitz command map" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Austerlitz" />
+<meta property="og:description" content="Austerlitz" />
+<link rel="canonical" href="https://billybobbyboo.github.io/Austerlitz/" />
+<meta property="og:url" content="https://billybobbyboo.github.io/Austerlitz/" />
+<meta property="og:site_name" content="Austerlitz" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Austerlitz command map" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Austerlitz","headline":"Austerlitz command map","name":"Austerlitz","url":"https://billybobbyboo.github.io/Austerlitz/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Austerlitz/assets/css/style.css?v=43e3e5bcc5ab0cbbcb604a22a5b8c29f801649c8">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Austerlitz/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://billybobbyboo.github.io/Austerlitz/">Austerlitz</a></h1>
+      
+
+      <h1 id="austerlitz-command-map">Austerlitz command map</h1>
+
+<p>A historically grounded, interactive reconstruction of the Battle of Austerlitz (2 December 1805), delivered as
+one self-contained HTML file: open <code class="language-plaintext highlighter-rouge">austerlitz-command-map.html</code> in a browser.</p>
+
+<h2 id="working-on-it">Working on it</h2>
+<p>Edit the sources, then <code class="language-plaintext highlighter-rouge">npm run build</code> (or <code class="language-plaintext highlighter-rouge">python3 build.py</code>; on Windows <code class="language-plaintext highlighter-rouge">py build.py</code>). Never edit the built HTML by hand.</p>
+<ul>
+  <li>Presentation and software: <code class="language-plaintext highlighter-rouge">app.js</code>, <code class="language-plaintext highlighter-rouge">world.js</code>, <code class="language-plaintext highlighter-rouge">symbols.js</code>, <code class="language-plaintext highlighter-rouge">shell.html</code>, <code class="language-plaintext highlighter-rouge">style.css</code>, and <code class="language-plaintext highlighter-rouge">tokens.js</code> (the one source of interface and
+symbology colours and type; <code class="language-plaintext highlighter-rouge">python3 build.py --tokens</code> writes its copy into <code class="language-plaintext highlighter-rouge">style.css</code>).</li>
+  <li>Historical and geographic data, guarded by <code class="language-plaintext highlighter-rouge">npm run check:data</code> and changed only by a data task, with its evidence recorded in
+<code class="language-plaintext highlighter-rouge">CHANGELOG.md</code>: <code class="language-plaintext highlighter-rouge">geo.js</code>, <code class="language-plaintext highlighter-rouge">data.js</code>, <code class="language-plaintext highlighter-rouge">appearance.js</code>, <code class="language-plaintext highlighter-rouge">analysis.js</code>, <code class="language-plaintext highlighter-rouge">narrative.js</code> (and seven declarations in <code class="language-plaintext highlighter-rouge">app.js</code>, listed in <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>).</li>
+  <li>Generated, never edited by hand: <code class="language-plaintext highlighter-rouge">assets.js</code> (the embedded ground textures) and <code class="language-plaintext highlighter-rouge">fonts.css</code> (the embedded type, from
+<code class="language-plaintext highlighter-rouge">tools/fonts/build-fonts.py</code>).</li>
+</ul>
+
+<p>Rules for Claude Code: <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>. State and history: <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code>. The plan: <code class="language-plaintext highlighter-rouge">docs/ROADMAP.md</code> (after the final audit,
+<code class="language-plaintext highlighter-rouge">docs/FINAL_AUDIT.md</code>; the original roadmap was <code class="language-plaintext highlighter-rouge">docs/VISUAL_AUDIT.md</code>). Completed set-up tasks: <code class="language-plaintext highlighter-rouge">docs/HANDOFF.md</code>. The visual harness:
+<code class="language-plaintext highlighter-rouge">tools/visual/README.md</code>.</p>
+
+<h2 id="checks">Checks</h2>
+<p>The scripts are in <code class="language-plaintext highlighter-rouge">package.json</code>; <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>’s “Checks” section says, stage by stage, what each one holds the build to. Never run two
+browser checks at once, or a page probe beside <code class="language-plaintext highlighter-rouge">check:visual</code>: their timing limits assume the machine is not shared.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>command</th>
+      <th>what it proves</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm install</code>, then <code class="language-plaintext highlighter-rouge">npx playwright install chromium</code></td>
+      <td>one-time setup</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run build</code></td>
+      <td><code class="language-plaintext highlighter-rouge">python3 build.py</code>: joins the sources into <code class="language-plaintext highlighter-rouge">austerlitz-command-map.html</code> (committed; CI fails if it differs from a fresh build) and <code class="language-plaintext highlighter-rouge">bundle.js</code> (for the tests, not committed)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm test</code></td>
+      <td>the regression suite (<code class="language-plaintext highlighter-rouge">tools/run-all.sh</code>): nine suites (<code class="language-plaintext highlighter-rouge">css-test.js</code> the stylesheet, the type and the colour literals; <code class="language-plaintext highlighter-rouge">test.js</code> data, order of battle, appearance and the per-statement claims; <code class="language-plaintext highlighter-rouge">geo-test.js</code> geography; <code class="language-plaintext highlighter-rouge">terrain-test.js</code> the ground and the meres; <code class="language-plaintext highlighter-rouge">audit.js</code> the tracks against the ground (continuity and coverage are printed only); <code class="language-plaintext highlighter-rouge">sim-test.js</code> the whole day run: continuity, activation, events against positions; <code class="language-plaintext highlighter-rouge">redteam.js</code> the overclaim scan and the retired claims; <code class="language-plaintext highlighter-rouge">runtime-test.js</code> the runtime against real three.js r128 materials; <code class="language-plaintext highlighter-rouge">binding-test.js</code> the arrows bound to the tracks) and the height guard; any error, any warning not acknowledged by its exact text or any runtime warning fails it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run check:data</code></td>
+      <td>the historical, geographic and model declarations are byte-identical to the reference build (<code class="language-plaintext highlighter-rouge">archive/step5c-45f8f662.html</code>, since PR #58, decision 213 (b)); a data task that changes one lists it in <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code> and moves the reference</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run check:chronology</code></td>
+      <td>every live timed statement cited or allowed by name (four classes excluded by path, each with its reason), no move early or late but the named conflicts, the explicit times’ evidence, the arrival rules, the movement audit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run check:contrast</code></td>
+      <td>every visible text in 35 interface states meets WCAG AA and the 10.5 px floor, drawn in the embedded faces; and the six start-up cases (<code class="language-plaintext highlighter-rouge">tools/visual/boot-check.js</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run check:selftest</code></td>
+      <td>the in-app self-test (242 checks, held to <code class="language-plaintext highlighter-rouge">tools/visual/selftest-manifest.json</code>) on one page, with the slider, key and live checks (about 15 minutes; CI runs it)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run check:visual</code></td>
+      <td>30 fixed views held to their thresholds, every page’s console, the live checks and the self-test (about 100 minutes; on demand)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run check:report</code></td>
+      <td>a finished <code class="language-plaintext highlighter-rouge">check:visual</code> report judged again without rendering</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run check:remeasure</code></td>
+      <td>decision 141’s one re-measure tool (<code class="language-plaintext highlighter-rouge">tools/visual/remeasure.js</code>); it never edits a limit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run check:baseline</code></td>
+      <td>the build is exactly the last recorded one (<code class="language-plaintext highlighter-rouge">CHANGELOG.md</code> names it); a task that changes the build moves it</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Line endings are LF (<code class="language-plaintext highlighter-rouge">.gitattributes</code>); <code class="language-plaintext highlighter-rouge">build.py</code> writes LF on every platform.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

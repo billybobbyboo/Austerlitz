@@ -1,0 +1,827 @@
+{
+ "area": "perf",
+ "scope_summary": "I checked the raw device evidence for Stage 8 without a browser or a device. Inputs: the ten reports in docs/stage8-evidence/device (5 desktop, 5 iPhone), the earlier runs L1-L3 and P1-P5/P5a/P5b, the route code (tools/step6/perf-route.js, perf-run.html, phone-rule.js) and its git history, and the records (STAGE8_SPEC sections 8.3, 8.5, 20.12, 21.9, 22.5, 24, 25; STEP6_SPEC sections 2-3 and 11-16; CHANGELOG; ROADMAP). I also compared against the census JSON files (8i/8j/8k/8l).\n\nVerified:\n- All 10 reports measured the audited build: 2,810,630 bytes, SHA-256 bf27887c...db07. The historical builds were confirmed by hash against git. P5's build is Stage 8's own starting build (c4793156).\n- 349 rows (165 desktop + 184 phone). The route's own format() regenerates every .txt byte for byte from its .json.\n- Where a value can be recomputed it matches: longPct 349 of 349, percentile order, long count against the percentiles, implied spans.\n- Bracket verdicts and phone-rule recompute identically.\n- No hidden segment and no note in any report.\n- 51 numeric claims checked: 41 verified, 10 partly, 0 contradicted.\n\nMain problems found:\n- The long-frame share (> max(1.5R, 25 ms), as a share of delivered frames) is not a dropped-frame measure. On the 144 Hz desktop it cannot see 1-2 missed refreshes. On the phone it is unstable: 5.3-14.2% at a constant 43 fps.\n- \"After the phone warms\" has no temperature evidence. Play's 24 blocks are flat at 42.8-43.8 fps, and the warm-up comparisons mix in different content and view.\n- The desktop before/after also spans a browser update (Chrome 155 to 156) that section 24 does not mention.\n- The \"heaviest frame\" figures in the records are segment medians, and the census maxima are below what the route drew in Play.\n- The two phone readings are not equally strong.\n- The gait bracket is inconclusive at the route's resolution, and hiding the figures removes all of their cost at once, so neither points to one bottleneck. Several smaller record inaccuracies.",
+ "coverage": [
+  {
+   "item": "(1) Build identity of each report",
+   "method": "Read build.bytes and sha256 from each JSON. git show <merge>:austerlitz-command-map.html | md5sum/sha256sum for the historical builds (route-history.sh).",
+   "result": "All 10 Stage 8 reports: 2,810,630 B, bf27887c...db07, the same as c2adefe and the working tree (md5 f10fe585). L3 = a8afeec (md5 c9d29c14, sha 0c64a52d). P3/P4 = f8d0949 (695e1f94). P5 = b04e150 (136e1e98, md5 c4793156 = Stage 8's starting build). L1/L2 pasted in the console: build 'not read', bodyBytes 2,218,404 agree.",
+   "evidence": "docs/audit-post8-evidence/perf/reconcile.md section 1; route-history.txt"
+  },
+  {
+   "item": "(1) Device, browser and settings, per report and per block",
+   "method": "Device fields of every JSON. The phone route's 'set' and the brackets' 'setOn' checked against each candidate (284 blocks). App code read: app.js:602 (pxRatio), 621-625, 646 (sun.castShadow).",
+   "result": "Desktop: Chrome 156/Win, RTX 4070 ANGLE D3D11, 2560x1305 at density 1, fx on at 1.3, not lowTier, R 6.9, threshold 25 ms. Phone: Safari 26.6.1, 402x714 at dpr 3 drawn at 1, lowTier, fx on at 1.0, no GPU timer, R 17, threshold 25.5 ms. All 284 block switches as intended. The ordinary route records neither culling nor gait state per segment (culling on can be inferred from the counts). Effects state is recorded once per run and per bracket block only. sun.castShadow is not recorded (shadowMap.enabled is true on the phone, but no light casts a shadow).",
+   "evidence": "reconcile.md sections 1 and 3; reconcile.json blockSettings",
+   "untested": "The flags' effects are inferred from the code and the equal counts, not observed."
+  },
+  {
+   "item": "(1) Visible-page status, throttling, rAF stalls",
+   "method": "Read perf-route.js:144-153, 204, 226, 231-232, 335, 355; perf-run.html:55; the hidden flags and notes of all rows.",
+   "result": "The route records document.visibilityState once, a per-segment hidden flag and a start note. All 349 rows have hidden false; no report has a note. Not recorded: throttling after the idle refresh check (only a 30 Hz cap is flagged), refresh after the start, thermal state, battery or charging, whether the wake lock was granted, and when a stall occurred (only max and the first 0.5 s 'warm'). Longest counted intervals: desktop 41.6 ms; phone 329 ms (phone-fx 'fx B AB 1.1'). First-0.5 s maxima: desktop 76.5 ms, phone 48 ms.",
+   "evidence": "reconcile.md sections 1, 3 and 5; rows.csv"
+  },
+  {
+   "item": "(2) Every row re-derived and compared with the printed text and STAGE8_SPEC sections 24-25",
+   "method": "reconcile.js: row counts; format() of perf-route.js regenerates each .txt from its .json; longPct recomputed; percentile order; long count against nearest-rank percentiles at longMs; implied span = frames/fps against the sampling window; drawn = frames.",
+   "result": "165 + 184 = 349 rows. 10 of 10 texts reproduced byte for byte; each JSON line equals its .json. longPct 349/349. Percentiles ordered in every row. Long count consistent in every row. Implied spans exceed the window by 0.045-0.202 s, as the +100 ms timeout and timer latency predict. drawn = frames in every non-idle row.",
+   "evidence": "reconcile.md sections 2-3; rows.csv; reconcile-console.txt",
+   "untested": "fps, percentiles, max and the long count cannot be recomputed from raw data: the route keeps summaries only (perf-route.js:160-171)."
+  },
+  {
+   "item": "(3) Exact definitions of long frame, fps and p50",
+   "method": "Read perf-route.js:86, 115, 133-143, 157-171, 227-233.",
+   "result": "long = interval > max(1.5*R, 25) ms, strict; R = nearest-rank median of a 3 s idle sample with the app's loop paused, measured once (16.7 ms assumed if fewer than 20 intervals); counted intervals start at t >= 0.5 s. longPct = 100*long/frames, per segment, as a share of delivered intervals. fps = frames/(sum dt/1000), i.e. 1000/mean interval. p50 = sorted[min(n-1, floor(0.5(n-1)+0.5))]: nearest rank, no interpolation, upper middle value for even n. calls/tris = median drawn frame. js50 = loop() wall time. Desktop threshold 25 ms (the floor, 3.6 refreshes); phone 25.5 ms (1.5 refreshes).",
+   "evidence": "README.md section 3"
+  },
+  {
+   "item": "(4) Desktop Play against L3",
+   "method": "Segment by segment, L3/L1/L2 against D1/D2 (reconcile.md section 6); route code identity and clock windows compared.",
+   "result": "D1 124.3/120.8 fps, D2 123.0/120.2, against L3 139.0/139.7 (L1 138.9/139.3, L2 139.6/141.2): -10.6% to -14.0%. Like for like: route code, clock windows (510 to about 622 at 4x, 510 to 551 at half speed), GPU, page, density, effects, wrapper. Not like for like: Chrome 155 vs 156, and the build (L3 = c9d29c14, step 6 item 3 Part B, not Stage 8's start). js50 6.0-6.1 to 6.9-7.6 ms, at or above the 6.94 ms frame. Missed refreshes 13.7-16.5%.",
+   "evidence": "reconcile.md section 6; route-history.txt"
+  },
+  {
+   "item": "(4) Phone baseline medians",
+   "method": "Standard and nearest-rank medians of the per-block fps and long% over the A blocks (reconcile.js phoneRow).",
+   "result": "Median over the 24 A blocks per kind (R1+R2, 2 rounds x 6 As; candidates and the 45 s warm-up excluded), each block's own fps. Overview: 40.8 fps (nearest-rank 40.9; pooled 39.4), long 18.15% (printed 18.1; nearest-rank 19.6). Play: 43.35 fps (printed 43.3; pooled 43.3), long 8.6%. 24/24 As over 5% in both kinds.",
+   "evidence": "reconcile.md section 7"
+  },
+  {
+   "item": "(5) Historical comparisons and thermal claims",
+   "method": "Protocol, settings, build and session compared for L3, P5 and P3/P4; records grepped for warming and thermal wording; the phone's blocks laid out in order.",
+   "result": "L3: browser changed, unrecorded. P5: same phone and settings, Stage 8's starting build, but a different route, session and clock window; Play 53 to 43.35 fps; one session. P3/P4: As at medians of 21.0/27.1 fps, a proxy configuration; the Overview's +39% is not explained by culling or by 11% fewer triangles. Thermal wording at STAGE8_SPEC:5609, 5657, 5672, 5679, 1263; CHANGELOG:11, 25; ROADMAP:575; no temperature evidence. Play is flat at 42.8-43.8 fps across both runs.",
+   "evidence": "README.md section 5; reconcile.md sections 7-8"
+  },
+  {
+   "item": "(6) No-op controls against effective interventions",
+   "method": "Code: app.js:602, 646, 1849-1853, 5850-5878; perf-route.js:266-282 and 82. Counts compared across blocks.",
+   "result": "No-ops on this build: figShadow, shadowPass, density1, density1Pass (lowTier already draws at density 1 with no shadow map; equal counts). Effective: figures (Overview 532 to 231 calls, 1.31 to 0.68 M tris; Play 517 to 229, 1.36 to 0.74 M), culling (211 vs 446-448), effects (render path switched). Gait: block B sets amplitude 0 but keeps gaitStep's checks and the shader hook; vsync-quantized intervals; js50 within 0.1-0.2 ms. Inconclusive, not zero.",
+   "evidence": "README.md section 6"
+  },
+  {
+   "item": "(7) Census against records and the route",
+   "method": "census-8l.json against census-8k.json case by case; the maxima of census-8i/8j/8k against STAGE8_SPEC 5117-5125 and 5372-5375; route segments paired with census cases.",
+   "result": "All maxima equal the records. 8L cases are identical to 8K. 2,188,177 (culling-off frame) is in no committed evidence file. Route against census: Overview held/still -0.14%, orbit/complete -0.12%. Census maxima are below the route's Play medians (desktop 2,289,649 vs 2,151,193; phone 1,364,249 vs 1,288,561).",
+   "evidence": "reconcile.md section 9; ledger.json"
+  },
+  {
+   "item": "Route code identity across runs",
+   "method": "git log/show of tools/step6/perf-route.js at a8afeec, f8d0949, b04e150 and c2adefe; the shared functions and declarations compared.",
+   "result": "The ordinary route's measurement code is identical for L3 and D1/D2. The phone route is identical for P3/P4 and R1/R2. The VERSION string was not bumped across 4 later edits, all outside the shared measurement code.",
+   "evidence": "docs/audit-post8-evidence/perf/route-history.txt"
+  },
+  {
+   "item": "(8) Measurements that would resolve the uncertainties",
+   "method": "Derived from the findings.",
+   "result": "Listed (not prerequisites): an integrated-GPU laptop run; a same-browser CPU profile of Play on L3's build and this one; two ordinary-route phone runs or a Safari Web Inspector session; a long continuous Play run to test 'warming'; route additions (histogram, per-frame max counts, clock windows, per-block flags, refresh re-measure).",
+   "evidence": "README.md section 8"
+  }
+ ],
+ "findings": [
+  {
+   "title": "The long-frame share, the device acceptance metric, is not a dropped-frame measure and is unstable at the phone's operating point",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "Device performance evidence: the tools/step6/perf-route.js metric and its use in STAGE8_SPEC sections 8.5, 14.1, 24-25 and decision 269 (a)'s carried text",
+   "user_impact": "Readers of the records (the owner, the final audit) see 'Play 8.6% long, Overview 18.1% long' and may read 80-90% of frames as on time. In fact more than half of the phone's Play frames exceed one 60 Hz refresh (p50 23 ms), and 28%/32% of refreshes bring no new frame. On the 144 Hz desktop, Play reads 0% long while 13.7-16.5% of refreshes bring no new frame.",
+   "status": "confirmed",
+   "origin": "inherited (metric defined in step 6; reused by Stage 8's section 8.5 rule and sections 24-25)",
+   "refs": [
+    "tools/step6/perf-route.js:157-159",
+    "tools/step6/perf-route.js:160-171",
+    "tools/step6/phone-rule.js:18",
+    "docs/STAGE8_SPEC.md:1257-1260",
+    "docs/STAGE8_SPEC.md:5614-5618",
+    "docs/STAGE8_SPEC.md:5656-5658",
+    "docs/STAGE8_SPEC.md:5672-5673",
+    "docs/STEP6_SPEC.md:179",
+    "CHANGELOG.md:11",
+    "CHANGELOG.md:25",
+    "docs/audit-post8-evidence/perf/reconcile.md (sections 6-7)"
+   ],
+   "evidence": "Definition: long = interval > max(1.5R, 25 ms), counted per delivered interval, per segment (perf-route.js:157-167).\nDesktop: R 6.94 ms, so the threshold is the 25 ms floor (3.6 refreshes). D1/D2 Play: 120.2-124.3 fps, p90 13.9 ms, long 0%.\nPhone: R 17 ms, threshold 25.5 ms. The 24 Play A blocks: 42.8-43.8 fps, p50 23 (one 22), p95 26-27, max 27-31, long 5.3-14.2%.\nMissed refreshes (1 - fps x R): phone Overview 32%, Play 27.8%; desktop Play 13.7-16.5%.",
+   "expected": "A device acceptance measure that rises with missed refreshes and is comparable across refresh rates, and records that say what the share counts.",
+   "observed": "It is a share of delivered intervals above a floored threshold. It is blind to 1-2 missed refreshes at 144 Hz. At the phone's 23 ms operating point it varies 5.3-14.2% at constant fps; its 25.5 ms threshold sits in the tail of a single distribution.",
+   "remedy": "Records: report the missed-refresh share (1 - fps x R) beside longPct, and call longPct 'the share of frames longer than 25.5 ms', not a drop rate.\nRoute, for future runs: add the share of intervals above R and above 1.5R without the floor, plus a 1 ms histogram.\nThe section 8.5 rule itself was adopted by decision 250 (b); changing it is the owner's call.",
+   "effort": "0.5-1 h (records); 2-4 h (route change and a local run)",
+   "risk": "low",
+   "validation": "On future reports, the new columns from the histogram must reproduce the route's fps; reconcile.js re-run."
+  },
+  {
+   "title": "'After the phone warms' is asserted without temperature or throttling evidence, and the reports contradict a warming trend for Play",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "Stage 8 device records (STAGE8_SPEC section 25, CHANGELOG, ROADMAP, decision 269 (a)'s carried text)",
+   "user_impact": "The final audit's performance item reads as if a cool phone would do better. The data show the phone draws Play at about 43 fps from its first block after the warm-up to its last, in both runs. A visitor meets about 43 fps in Play, not only once the phone is hot.",
+   "status": "confirmed (no thermal evidence exists; Play's series is flat); the cause of the Overview's dips is unverified",
+   "origin": "new-regression (Stage 8 records, 1 Nov 2026)",
+   "refs": [
+    "docs/STAGE8_SPEC.md:5609",
+    "docs/STAGE8_SPEC.md:5657",
+    "docs/STAGE8_SPEC.md:5672",
+    "docs/STAGE8_SPEC.md:5679",
+    "docs/STAGE8_SPEC.md:1263",
+    "CHANGELOG.md:11",
+    "CHANGELOG.md:25",
+    "docs/ROADMAP.md:575",
+    "tools/step6/perf-route.js:284-295",
+    "tools/step6/perf-route.js:196-205",
+    "docs/audit-post8-evidence/perf/reconcile.md (section 7)"
+   ],
+   "evidence": "No report records temperature or throttling, and a page cannot read them (perf-route.js:196-205).\nPlay: all 24 A blocks run at 42.8-43.8 fps (R1 about 07:54-07:57, R2 about 08:04-08:06). The faster Play warm-ups (45.2/45.7 fps) drew lighter content: median 428 calls and 1,203,643 triangles, against 517 and about 1,364,000 in the As (45 s of Play from 08:30 against 6 s blocks from 08:30).\nOverview: the warm-up (49.5/49.9 fps) has the same counts but is one continuous 2.5-turn orbit, while each block samples the first 120 degrees after the view is applied again. The slow blocks (27.2-32.0 fps) have js50 17-18 ms against 6-7 elsewhere and recover within 1-2 blocks. There is no monotonic decline: R2's second round is its steadiest (40.9-42.5).",
+   "expected": "Thermal attributions made only with evidence, and steady-state rates reported as the build's on that device.",
+   "observed": "'As it warms' is marked as inference at 5609. 'After warming' and 'after the phone warms' appear unmarked at 5657, 5672 and 5679, and CHANGELOG.md:25 states it as fact.",
+   "remedy": "Reword to 'in the blocks after the 45 s warm-up (the steady state)'. Note that Play's series is flat and that the warm-ups drew different content, and keep 'whether the phone throttled is unknown'. Records only; decision 269 (a) stands.",
+   "effort": "0.5-1 h",
+   "cause_hypothesis": "Overview dips: a transient CPU-side slowdown (core scheduling or frequency, or a page-side task). Warm-up rate: content (Play) and the orbit's arc plus the per-block view re-application (Overview).",
+   "cause_verified": "no",
+   "validation": "A continuous 5-minute Play run on a rested, unplugged phone, summarised every 10 s, would show whether the frame rate declines."
+  },
+  {
+   "title": "The desktop before/after spans a browser update (Chrome 155 to 156) that section 24 does not record; the accepted CPU excess cannot be attributed to Stage 8 alone",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "Stage 8 device records (section 24.1's CPU line; decision 268 (a)'s carried item)",
+   "user_impact": "The final audit could attribute the +1.0 to +1.5 ms js50 rise, and Play's drop from 139-140 to 120-124 fps at 144 Hz, entirely to Stage 8's code. Part of it may be the browser.",
+   "status": "confirmed",
+   "origin": "new-regression (Stage 8 record)",
+   "refs": [
+    "docs/STAGE8_SPEC.md:5527-5540",
+    "docs/STAGE8_SPEC.md:5558-5563",
+    "docs/step6-evidence/perf-L3-desktop.json (device.ua Chrome/155.0.0.0)",
+    "docs/stage8-evidence/device/desk-D1.json (device.ua Chrome/156.0.0.0)",
+    "docs/stage8-evidence/device/desk-D2.json",
+    "docs/audit-post8-evidence/perf/route-history.txt",
+    "docs/audit-post8-evidence/perf/reconcile.md (section 6)"
+   ],
+   "evidence": "Browser: L3 Chrome/155 (as were L1 and L2); D1/D2 Chrome/156.\nOtherwise the same: identical route measurement code, the same played clock windows (510 to 621.9/622.4 and 510 to 550.9/551), and the same GPU, page, density and effects.\njs50, L3 to D1/D2:\n- Overview orbit 4.8 to 5.8/5.9\n- Overview orbit with effects off 4.0 to 5.1\n- Play at half speed 6.1 to 7.6\n- Play at 4x 6.0 to 6.9/7.0\n- the 4x views with the figures hidden +0.5 to +0.6\n- the culled low views -0.2 to +0.2\n- the light views +0.1 to +0.3",
+   "expected": "A like-for-like before/after (decision 250 (b): 'repeated, comparable device runs'), or the confound named.",
+   "observed": "Section 24 describes 'the same desktop as step 6's L1-L3: Chrome 156' and says 'these runs cannot say which part of Stage 8 added it', presupposing that Stage 8 added all of it.",
+   "remedy": "Add one sentence to section 24 naming Chrome 155 to 156. If attribution is wanted, profile both builds on one browser version (not a prerequisite; decision 268 (a) stands).",
+   "effort": "0.25 h (record); 1-3 h (optional profile)"
+  },
+  {
+   "title": "The 'heaviest frame' figures in sections 24-25 are segment medians, and the census maxima are below what the route drew in Play and in phase 8's Overview",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "Budget evidence: perf-route.js counts; census-8i.js maxima; STAGE8_SPEC sections 21.9, 22.5, 24.1, 25.1",
+   "user_impact": "Budget headroom is overstated. The census gives 23.2% (desktop) and 20.5% (phone); at the route's Play medians it is 18.2% and 15.8%, and the per-frame maximum is recorded nowhere. The budgets still hold at the medians.",
+   "status": "confirmed",
+   "origin": "inherited (median counts since step 6) / new-regression (the census maxima used as Stage 8's 'settled baseline')",
+   "refs": [
+    "tools/step6/perf-route.js:170",
+    "docs/STAGE8_SPEC.md:5548-5551",
+    "docs/STAGE8_SPEC.md:5626-5628",
+    "docs/STAGE8_SPEC.md:5117-5125",
+    "docs/STAGE8_SPEC.md:5372-5375",
+    "docs/stage8-evidence/8l/census/census-8l.json",
+    "docs/audit-post8-evidence/perf/reconcile.md (section 9)"
+   ],
+   "evidence": "The route records calls and triangles as pct(...,0.5) over drawn frames, i.e. the median (perf-route.js:170).\nDesktop: Play at 4x median 2,289,649 triangles, against the census's complete-frame maximum 2,151,193 (narrow-1024).\nPhone: Play median 1,364,249 for the build's own blocks (1,364,901 in a gait-at-rest block), against the census's phone maximum 1,288,561 (phone-390-first); phase 8's Overview median 1,309,505.\nWhere the views coincide, route and census agree within 0.14%.",
+   "expected": "'Heaviest frame' measured as a per-frame maximum, or worded as the heaviest segment median; census maxima that cover the heaviest views the build draws.",
+   "observed": "Medians are called 'the heaviest frame', and no census case plays the clock or shows phase 8's Overview on a phone.",
+   "remedy": "Records: say 'the heaviest segment median'. Route: record per-frame max calls and triangles. Optionally add a Play-under-Follow case and a phone phase-8 Overview case to the census; adding cases is a check change and the owner's call.",
+   "effort": "0.25 h (records); 1-2 h (route); 2-4 h (census cases)"
+  },
+  {
+   "title": "The two phone readings are not equally strong: P5 (Stage 8's own starting build) points to a Play slowdown from 53 to 43 fps; the P3/P4 proxy is dominated by device state",
+   "category": "accepted-compromise",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "Phone acceptance (STAGE8_SPEC section 25.1; decision 269 (a))",
+   "user_impact": "On the owner's iPhone 17 Pro, Play at half speed and phase 8's Overview draw at about 43 and 41 fps on a page paced at 60 Hz, which is visible judder. Across Stage 8, Play probably slowed (inference). Decision 269 (a) accepted this as measured.",
+   "status": "inferred",
+   "origin": "accepted-compromise",
+   "refs": [
+    "docs/STAGE8_SPEC.md:5630-5640",
+    "docs/STAGE8_SPEC.md:5669-5673",
+    "docs/step6-evidence/perf-P5-iphone.json",
+    "docs/step6-evidence/perf-P3-iphone.json",
+    "docs/step6-evidence/perf-P4-iphone.json",
+    "docs/STEP6_SPEC.md:1283-1291",
+    "docs/audit-post8-evidence/perf/route-history.txt"
+   ],
+   "evidence": "P5's build (b04e150) is md5 c4793156, Stage 8's starting build, which section 24 names.\nP5 Play at half speed: 53 fps, p50 17, 1.6% long, 508 calls, 1,464,345 triangles, clock 510 to 550.6. This build's Play As: 43.35 fps (24 blocks within 42.8-43.8), p50 23, 517 calls, about 1.36 M triangles: -18%. Overview orbit 47 to 40.8 fps (-13%). The desktop moves the same way.\nCaveats: P5 is one session, and on the earlier build Play at half speed varied 27.6-40.2 fps across P1/P2/P5a/P5b.\nP3/P4: As at medians of 21.0/27.1 fps, all 100% long; density1Pass Overview blocks 25.5-33.6 fps. In the Overview culling saves nothing (532 vs about 525 calls) and triangles are only 11% fewer, yet fps is 39% higher.",
+   "expected": "n/a (accepted by decision 269 (a))",
+   "observed": "Section 25.1 and decision 269 (a) record the two readings as equal alternatives.",
+   "remedy": "Nothing is required by decision 269 (a). For the final audit's weighing: treat the P5 reading as the stronger, and state that it is a single session. The measurement that would settle it is decision 269's option (b), two ordinary-route phone runs; this is listed, not asked for.",
+   "effort": "n/a (about 10-15 min of owner time if ever run)",
+   "dependencies": "Decision 269 (a) (not re-litigated)"
+  },
+  {
+   "title": "No integrated-GPU run: performance on the machine decision 138 and section 8.3 name is unknown",
+   "category": "untested",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "Device acceptance",
+   "user_impact": "Unknown for the most common laptop class. On the desktop, Play is script-bound (js50 7.6 ms median, 8.4-9.0 ms p95). On a CPU half as fast, Play's 95th percentile would approach a 60 Hz frame (inference).",
+   "status": "unverified",
+   "origin": "accepted-compromise (decisions 235 and 250 (b); the integrated-GPU condition was retained and not triggered: the largest 4x rise against L3 is +1.4% in calls)",
+   "refs": [
+    "docs/STAGE8_SPEC.md:1236",
+    "docs/STAGE8_SPEC.md:5552-5554",
+    "docs/STEP6_SPEC.md:978-982",
+    "docs/stage8-evidence/device/desk-D1.json (play-half js50 7.6, js95 8.4)"
+   ],
+   "evidence": "No integrated-GPU report exists in docs/stage8-evidence/device or docs/step6-evidence.",
+   "expected": "One ordinary-route run on an integrated-GPU laptop, as the step 6 protocol and section 8.3's budget row intended.",
+   "observed": "Desktop RTX 4070 and iPhone only.",
+   "remedy": "Not a prerequisite: one owner run of the ordinary route, twice, on an integrated-GPU laptop.",
+   "effort": "About 15 min of owner time plus 1 h of analysis"
+  },
+  {
+   "title": "Over-readings in the records: 'the figures and standards are what a phone's frame waits on' and 'the gait adds none'",
+   "category": "probable-problem",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "Stage 8 device records (sections 24.1 and 25.1; decision 269's 'the figures their cost')",
+   "user_impact": "A later performance task could target the wrong resource (the gait shader, or GPU vertex load) on the strength of a reference that removes calls, triangles, script and animation together.",
+   "status": "confirmed",
+   "origin": "new-regression (Stage 8 records)",
+   "refs": [
+    "docs/STAGE8_SPEC.md:5562",
+    "docs/STAGE8_SPEC.md:5623-5624",
+    "docs/STAGE8_SPEC.md:5672-5673",
+    "docs/STAGE8_SPEC.md:5679",
+    "tools/step6/perf-route.js:187-194",
+    "tools/step6/perf-route.js:82",
+    "app.js:1852",
+    "app.js:5850-5869"
+   ],
+   "evidence": "Figures hidden, on the phone:\n- Play: 517 to 229 calls, 1.36 to 0.74 M triangles, js50 7-8 to 5-6, 43 to 59 fps.\n- Overview: 532 to 231 calls, 1.31 to 0.68 M triangles, 47.4-54.4 fps, still up to 11.1% long.\nGait bracket: block B sets amplitude 0, but gaitStep's per-frame checks and the vertex hook (attributes, branch test) remain.\n- Desktop: js50 7.2-7.4 (gait) vs 7.2-7.3 (at rest), median 7.2 both; p50 7.0 in every block (vsync-quantized). The GPU timer (gpu50 4.5-4.6 on both sides) is the better evidence of no vertex cost.\n- Phone: 43.05 vs 43.3 fps.",
+   "expected": "'Hiding the figures (their calls, vertices, script and animation together) restores Play to 59 fps; the Overview still drops without them.' 'The gait's marginal cost is below the bracket's resolution.'",
+   "observed": "Stated as a single cause ('what a phone's frame waits on') and as a null cost ('adds none').",
+   "remedy": "Reword the two sentences (records only).",
+   "effort": "0.25 h"
+  },
+  {
+   "title": "Small numeric and wording inaccuracies in sections 24-25",
+   "category": "confirmed-defect",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "Stage 8 device records",
+   "user_impact": "Minor: a reader who checks the numbers finds small mismatches.",
+   "status": "confirmed",
+   "origin": "new-regression (records)",
+   "refs": [
+    "docs/STAGE8_SPEC.md:5553",
+    "docs/STAGE8_SPEC.md:5546-5547",
+    "docs/STAGE8_SPEC.md:5626",
+    "docs/STAGE8_SPEC.md:5614-5618",
+    "docs/stage8-evidence/device/README.md:5"
+   ],
+   "evidence": "1. Largest rise in calls against L3 among the build's own 4x segments is +1.4% (ph8-overview orbit 809 to 820; play-half 794 to 805), not +0.8%.\n2. The 9 long frames are counted only after each segment's first 0.5 s; 4 segments hold frames over 25 ms in that first 0.5 s (desk-cull warm-up 76.5 ms).\n3. The phone's 'heaviest frame' 1,364,901 is a gait-at-rest B block's median; the build's own maximum is 1,364,249.\n4. Standard medians 43.35 and 18.15 are printed 43.3 and 18.1; the cull warm-up's 59.9 is printed 60.\n5. 'Checked by script': no checking script was committed.",
+   "expected": "Numbers as computed from the reports.",
+   "observed": "As listed.",
+   "remedy": "Correct in the records, and commit a checking script (tools/audit-post8/perf/reconcile.js can serve).",
+   "effort": "0.25-0.5 h"
+  },
+  {
+   "title": "Instrument limits of the device route: no raw intervals, median counts, flags rather than effects, no clock for played blocks, one refresh measurement",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "tools/step6/perf-route.js",
+   "user_impact": "Future device runs cannot be re-derived or attributed beyond their summaries. This audit could recompute no percentile and could not test the 'warming' hypothesis.",
+   "status": "confirmed",
+   "origin": "inherited (step 6), with Stage 8 additions (the brackets)",
+   "refs": [
+    "tools/step6/perf-route.js:160-171",
+    "tools/step6/perf-route.js:170",
+    "tools/step6/perf-route.js:277-282",
+    "tools/step6/perf-route.js:289-295",
+    "tools/step6/perf-route.js:313-317",
+    "tools/step6/perf-route.js:227-235",
+    "tools/step6/perf-run.html:55"
+   ],
+   "evidence": "Each segment keeps summaries only. Calls and triangles are medians. drawing() reads shadowMap.autoUpdate, castShadow, visible and the pixel ratio, not sun.castShadow, so 'shadow pass off' is shown on lowTier where no shadow map exists. The phone and bracket played blocks have no clockFrom/clockTo. The refresh is measured once at the start. The wake lock result is not kept.",
+   "expected": "Reports that can be re-derived and attributed.",
+   "observed": "As listed.",
+   "remedy": "Add a 1 ms interval histogram and per-frame max calls and triangles per segment; clockFrom/clockTo for every played block; FX.on, CULL.on and sun.castShadow per block; a refresh re-measure at the end; the wake lock result. Bump VERSION and check with tools/step6/perf-local.js.",
+   "effort": "2-4 h"
+  },
+  {
+   "title": "A 329 ms frame in the phone's first effects-off block: counted, unexplained, and not in section 25.2",
+   "category": "untested",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "Effects toggle on the phone (setFXEnabled) / device records",
+   "user_impact": "A phone visitor who turns Visual effects off may see a one-off hitch of about a third of a second (inference from one occurrence).",
+   "status": "confirmed (data); cause unverified",
+   "origin": "unknown (first observed on the Stage 8 build; the fx bracket did not exist before)",
+   "refs": [
+    "docs/stage8-evidence/device/phone-fx.txt:11",
+    "docs/stage8-evidence/device/phone-fx.json (segments[3])",
+    "docs/STAGE8_SPEC.md:5647-5650"
+   ],
+   "evidence": "Block 'fx B AB 1.1': 318 frames, 56.7 fps, p50 17, max 329 ms, long 1 (0.3%), warm 24. The stall therefore fell after the block's first 0.5 s, at least 0.8 s after the toggle. No later B block shows it (max 17-36). The desktop's first B block has max 7.2.",
+   "expected": "No multi-hundred-millisecond stall when toggling effects, or a recorded reason.",
+   "observed": "One 329 ms interval.",
+   "remedy": "Diagnose in the browser phase: in a lowTier page, count renderer.info.programs and time frames around the first setFXEnabled(false). If it is a program compile, precompile the effects-off path.",
+   "effort": "1-2 h (diagnosis)",
+   "cause_hypothesis": "A first-use program compile or allocation on the effects-off path, or a GC pause.",
+   "cause_verified": "no"
+  },
+  {
+   "title": "Section 8.5's acceptance rule is weak at both refresh rates, and the per-PR before/after was replaced by one end-of-stage comparison",
+   "category": "accepted-compromise",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "Device acceptance protocol",
+   "user_impact": "The rule 'held' on the desktop while Play fell 11-14% in fps. Across routes on the phone, its median clause 'held' with a 6 ms (35%) rise in Play's median. Regressions within Stage 8 cannot be attributed to a PR.",
+   "status": "confirmed",
+   "origin": "accepted-compromise (decision 250 (b) adopted section 8.5's rule; section 24 records that section 20.12's 8G/8H pair was not run; decisions 268 (a) and 269 (a) accept as measured)",
+   "refs": [
+    "docs/STAGE8_SPEC.md:1257-1260",
+    "docs/STAGE8_SPEC.md:4663-4679",
+    "docs/STAGE8_SPEC.md:5536-5540",
+    "docs/STAGE8_SPEC.md:5544-5547",
+    "docs/STAGE8_SPEC.md:5633-5636"
+   ],
+   "evidence": "Median clause: one refresh is 6.9 ms at 144 Hz (allowing 144 to about 72 fps) and 17 ms at 60 Hz (allowing 60 to 30 fps). Long clause floor: 25 ms.\nDesktop Play 139.0-139.7 to 120.2-124.3 fps: the rule holds.\nPhone across routes: Play p50 17 to 23 ms: the median clause holds.",
+   "expected": "n/a (owner-accepted)",
+   "observed": "As stated.",
+   "remedy": "None required. If the owner revisits it, a missed-refresh clause (for example, 1 - fps x R rising by more than 5 points) would catch both cases.",
+   "effort": "n/a"
+  }
+ ],
+ "experiments": [
+  {
+   "command": "node tools/audit-post8/perf/reconcile.js",
+   "outcome": "349 rows (165 + 184). 10/10 reports' text regenerated byte for byte by perf-route.js format(). longPct 349/349; no percentile-order or consistency violations; implied spans +0.045 to +0.202 s; 284 block switches as intended; bracket verdicts identical. 42 claims: 35 verified, 7 partly, 0 contradicted.",
+   "environment": "Node 22 in /home/user/Austerlitz. Reads the committed reports and loads perf-route.js unchanged; writes only docs/audit-post8-evidence/perf/.",
+   "evidence_path": "docs/audit-post8-evidence/perf/reconcile.md, reconcile.json, rows.csv, reconcile-console.txt",
+   "limitations": "The reports keep only per-segment summaries, so consistency is checkable but raw frame times are not recomputable."
+  },
+  {
+   "command": "node tools/step6/phone-rule.js docs/stage8-evidence/device/phone-R1.json docs/stage8-evidence/device/phone-R2.json (run inside reconcile.js)",
+   "outcome": "Both runs stand and both test both kinds. No candidate cures; verdict rule 4: nothing is built. The figures reference cures Play in both runs (gain 1.353) but not the Overview (1.375, 1.431).",
+   "environment": "Node 22; read-only script",
+   "evidence_path": "docs/audit-post8-evidence/perf/reconcile.md section 10",
+   "limitations": "Four of the five candidates are no-ops on this build."
+  },
+  {
+   "command": "bash tools/audit-post8/perf/route-history.sh",
+   "outcome": "The ordinary route's measurement code is identical between L3's run (a8afeec, route at bb6bbb4) and D1/D2's (c2adefe). The phone route is identical between P3/P4 (9e04718) and R1/R2. Build hashes confirmed: a8afeec c9d29c14/0c64a52d; f8d0949 fffc4fda/695e1f94; b04e150 c4793156/136e1e98; c2adefe f10fe585/bf27887c. No device-report checking script is committed.",
+   "environment": "git (read-only) in /home/user/Austerlitz",
+   "evidence_path": "docs/audit-post8-evidence/perf/route-history.txt",
+   "limitations": "Code identity is checked by text comparison of functions and declarations."
+  },
+  {
+   "command": "node tools/audit-post8/perf/ledger.js",
+   "outcome": "51 numeric claims: 41 verified, 10 partly, 0 contradicted.",
+   "environment": "Node 22",
+   "evidence_path": "docs/audit-post8-evidence/perf/ledger.json",
+   "limitations": "Claims are checked against the reports' summaries."
+  },
+  {
+   "command": "node -e (compare census-8l.json with census-8k.json after.cases; read after.maxima of census-8i, 8j, 8k and 8l)",
+   "outcome": "8L cases are identical to 8K. All maxima in sections 21.9 and 22.5 equal the JSON. The number 2,188,177 is not found in docs/ or tools/ outside STAGE8_SPEC.md.",
+   "environment": "Node 22",
+   "evidence_path": "docs/audit-post8-evidence/perf/reconcile.md section 9; ledger.json",
+   "limitations": "The census is CI's (Chromium 141 SwiftShader); counts only."
+  }
+ ],
+ "not_checked": [
+  "Any measurement on a device or in a browser (this phase has none).",
+  "GPU time on the phone: Safari offers no timer query.",
+  "Raw frame intervals behind any fps, percentile, max or long count: the route keeps summaries only, so they cannot be independently recomputed.",
+  "Temperature, throttling, background load, charging state and whether the wake lock was granted: not recorded by the route and not readable by a page.",
+  "What the owner observed during the runs (notifications, dimming): the owner's words were removed from the pasted reports.",
+  "Behavioural differences between Chrome 155 and 156, and the GPU driver version: not in the reports.",
+  "The culling-off frame of 2,188,177 triangles in section 22.5: no committed evidence file holds it.",
+  "Whether the phone's 23 ms Play frame is GPU-, compositor- or script-bound: no GPU timer, and js50 (7-8 ms) covers only part of it.",
+  "The clock windows of the phone route's and the brackets' played blocks: not recorded.",
+  "The device model ('iPhone 17 Pro') and iOS version: the owner's word; the user agent's OS token is frozen at 18_7.",
+  "The per-frame maximum draw calls and triangles on either device: not recorded."
+ ],
+ "ledger": [
+  {
+   "claim": "every desktop report names the build 2,810,630 bytes, SHA-256 bf27887c...db07",
+   "where_shown": "§24 intro (STAGE8_SPEC.md:5527-5540)",
+   "verification": "verified",
+   "method": "reconcile.js: build.bytes/sha256 of each JSON",
+   "notes": ""
+  },
+  {
+   "claim": "Chrome 156, RTX 4070, 32 cores, 32 GB, 2560x1440, refresh 6.9 ms, page 2560x1305 at density 1, effects 1.3, not lowTier, wrapper",
+   "where_shown": "§24 intro (STAGE8_SPEC.md:5527-5540)",
+   "verification": "verified",
+   "method": "reconcile.js: device fields",
+   "notes": ""
+  },
+  {
+   "claim": "starts D1 07:01, D2 07:08, fx 07:11, cull 07:16, gait 07:25 UTC",
+   "where_shown": "§24 intro",
+   "verification": "verified",
+   "method": "reconcile.js: started",
+   "notes": ""
+  },
+  {
+   "claim": "165 rows of 165",
+   "where_shown": "§24 intro (STAGE8_SPEC.md:5534)",
+   "verification": "verified",
+   "method": "segments counted; format() regenerates each .txt",
+   "notes": ""
+  },
+  {
+   "claim": "L3: the same desktop, page size and wrapper; build 2,218,404 B (md5 c9d29c14)",
+   "where_shown": "§24 intro (STAGE8_SPEC.md:5536-5540)",
+   "verification": "partly",
+   "method": "L3 device fields against D1/D2; git hash",
+   "notes": "The browser differs: L3 Chrome 155, D1/D2 Chrome 156 (unrecorded). Build confirmed (a8afeec)."
+  },
+  {
+   "claim": "every median 6.9 ms as in L3 but the two Play segments, 7.0 against 6.9",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5544-5546)",
+   "verification": "verified",
+   "method": "segment p50, D1/D2 against L3",
+   "notes": ""
+  },
+  {
+   "claim": "largest long-frame share 0.2% (one 34.7 ms frame, D2 pratzen-low-10x held; D1 none)",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5546)",
+   "verification": "verified",
+   "method": "rows",
+   "notes": ""
+  },
+  {
+   "claim": "nine frames over 25 ms in all, longest 41.6 ms, none in a decisive orbit",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5546-5547)",
+   "verification": "partly",
+   "method": "sum of long; max of max; max of warm",
+   "notes": "True after each segment's first 0.5 s. Four segments have frames over 25 ms in their first 0.5 s (desk-cull warm-up 76.5 ms)."
+  },
+  {
+   "claim": "8.3 desktop: the heaviest frame 839 calls (Overview orbit) and 2,289,649 tris (Play 4x)",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5548-5549)",
+   "verification": "partly",
+   "method": "maximum of the per-segment medians (perf-route.js:170)",
+   "notes": "The numbers are right, but they are segment medians; no per-frame maximum is recorded."
+  },
+  {
+   "claim": "against L3: Overview 2,523,605 to 1,978,147 held, 2,125,343 orbit (-21.6%, -15.8%); low view 4x -30.9%; Play 4x -8.3%",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5549-5551)",
+   "verification": "verified",
+   "method": "segment median tris, D1 against L3",
+   "notes": "The held comparison mixes frames: since 8B a held view reuses the ground's depth pass (147,088 tris). The orbit is like for like."
+  },
+  {
+   "claim": "low views 761 to 592 calls held at 4x; Overview 832 to 837-839 (+0.8%)",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5550-5551)",
+   "verification": "verified",
+   "method": "segment median calls",
+   "notes": ""
+  },
+  {
+   "claim": "no 4x frame rose more than 10% against L3 (largest rise +0.8% in calls)",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5552-5554)",
+   "verification": "partly",
+   "method": "every D1/D2 segment against the same L3 segment",
+   "notes": "The 10% condition holds. The largest rise among the build's own 4x segments is +1.4% (ph8 orbit, Play at half speed). Diagnostic -figures segments rise up to +5.7%; the 1x view +64% in tris, outside the condition."
+  },
+  {
+   "claim": "gait bracket: 802 calls each side, tris within 68, js50 7.2-7.4 with gait vs 7.2-7.3 at rest, GPU 4.5-4.6",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5555-5557)",
+   "verification": "verified",
+   "method": "desk-gait blocks",
+   "notes": "'The gait adds none' (5562) over-reads this."
+  },
+  {
+   "claim": "js50 L3 to D: Overview orbit 4.8 to 5.8/5.9, -effects 4.0 to 5.1, Play half 6.1 to 7.6, Play 4x 6.0 to 6.9/7.0; others -0.2 to +0.9",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5558-5561)",
+   "verification": "verified",
+   "method": "segment js50",
+   "notes": "The Chrome 155/156 confound is not separable from these runs."
+  },
+  {
+   "claim": "culling saves about 0.9 ms (5.1-5.2 with, 6.0-6.1 without, both low views)",
+   "where_shown": "§24.1 (STAGE8_SPEC.md:5562-5563)",
+   "verification": "verified",
+   "method": "desk-cull js50",
+   "notes": ""
+  },
+  {
+   "claim": "L3 Play 139-140 fps, p95 7.1; now 120-124, p95 13.9",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5567-5568)",
+   "verification": "verified",
+   "method": "played segments",
+   "notes": ""
+  },
+  {
+   "claim": "about one frame in five or six held for two refreshes",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5568)",
+   "verification": "partly",
+   "method": "derived from fps assuming 1-2 refresh intervals",
+   "notes": "Gives 15.8-19.8% of frames (1 in 5.1-6.3); missed refreshes 13.7-16.5%. An estimate, not a count."
+  },
+  {
+   "claim": "script p95 8.4-9.0 ms in Play (L3 6.6-6.8); GPU median 4.5-4.6",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5568-5570)",
+   "verification": "verified",
+   "method": "played segments",
+   "notes": "js50 (6.9-7.6 ms) already reaches the 6.94 ms frame."
+  },
+  {
+   "claim": "the three brackets 'not shown', each 12 of 12 'neither'",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5571)",
+   "verification": "verified",
+   "method": "bracketVerdict() re-run",
+   "notes": ""
+  },
+  {
+   "claim": "every bracket block's median 6.9 ms (7.0 in Play)",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5572)",
+   "verification": "verified",
+   "method": "bracket blocks",
+   "notes": ""
+  },
+  {
+   "claim": "effects off saves about 0.5 ms of script; 5-10 calls fewer; triangles the same within 10",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5573)",
+   "verification": "verified",
+   "method": "desk-fx blocks (the two orbit states compared)",
+   "notes": ""
+  },
+  {
+   "claim": "culling: 4x 597-600 calls and 1.873-1.876 M tris vs 784-786 and 2,208,415; 10.33x 624-625 vs 786-787",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5573-5575)",
+   "verification": "verified",
+   "method": "desk-cull blocks",
+   "notes": ""
+  },
+  {
+   "claim": "GPU medians near 2.2-2.6 or 3.8-4.6 ms on either side",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5575-5576)",
+   "verification": "partly",
+   "method": "gpu50 histogram",
+   "notes": "The values are bimodal as stated; the clock-state explanation is the record's own inference."
+  },
+  {
+   "claim": "first load 1,219,603 B, DOM ready 5.9 s; others from cache (2.6-2.8 s)",
+   "where_shown": "§24.2 (STAGE8_SPEC.md:5577-5578)",
+   "verification": "verified",
+   "method": "device.load",
+   "notes": "Two of the cached loads transferred 300 B (a revalidation)."
+  },
+  {
+   "claim": "every phone report names 2,810,630 B, bf27887c...db07",
+   "where_shown": "§25 intro (STAGE8_SPEC.md:5602-5603)",
+   "verification": "verified",
+   "method": "build fields",
+   "notes": ""
+  },
+  {
+   "claim": "Safari 26.6.1, 402x714, density 3, lowTier, drawn at 1, sun casting no shadow",
+   "where_shown": "§25 intro (STAGE8_SPEC.md:5599-5601)",
+   "verification": "verified",
+   "method": "device fields; app.js:646",
+   "notes": "sun.castShadow is not recorded by the route; it follows from the code."
+  },
+  {
+   "claim": "starts R1 07:50, R2 08:00, fx 08:10, cull 08:22, gait 08:35",
+   "where_shown": "§25 intro",
+   "verification": "verified",
+   "method": "started",
+   "notes": ""
+  },
+  {
+   "claim": "184 rows of 184",
+   "where_shown": "§25 intro (STAGE8_SPEC.md:5604)",
+   "verification": "verified",
+   "method": "count; format()",
+   "notes": ""
+  },
+  {
+   "claim": "Overview As: 40.8 fps (27.2-42.8), p50 24 (23-37), long 18.1% (9.6-100), 24 of 24",
+   "where_shown": "§25.1 table (STAGE8_SPEC.md:5616)",
+   "verification": "verified",
+   "method": "median over the 24 A blocks of R1+R2 (warm-up excluded)",
+   "notes": "The long median is 18.15."
+  },
+  {
+   "claim": "Play As: 43.3 fps (42.8-43.8), p50 23 (22-23), long 8.6% (5.3-14.2), 24 of 24",
+   "where_shown": "§25.1 table (STAGE8_SPEC.md:5617)",
+   "verification": "verified",
+   "method": "as above",
+   "notes": "The fps median is 43.35."
+  },
+  {
+   "claim": "warm-ups: Overview 49.5/49.9 fps, 6.8%/5.4%; Play 45.2/45.7, 2.6%/2.0%",
+   "where_shown": "§25.1 table",
+   "verification": "verified",
+   "method": "warm-up segments",
+   "notes": "Play's warm-up content is lighter (428 vs 517 calls; 1.20 vs 1.36 M tris)."
+  },
+  {
+   "claim": "figures hidden: Overview 48.5 (47.4-54.4); Play 59.2 (58.5-59.6), 0% long",
+   "where_shown": "§25.1 table",
+   "verification": "verified",
+   "method": "figures blocks",
+   "notes": ""
+  },
+  {
+   "claim": "low view at 4x (brackets' A blocks): 60.0/59.8 fps, 17 ms, 0% (at most 0.3%), 0 of 28; warm-up 60",
+   "where_shown": "§25.1 table (STAGE8_SPEC.md:5618)",
+   "verification": "verified",
+   "method": "phone-fx and phone-cull A blocks",
+   "notes": "The cull warm-up is 59.9 fps."
+  },
+  {
+   "claim": "Overview fell for two blocks per run to 27.2-32.0 fps (p50 34-37, 66-100% long) and recovered",
+   "where_shown": "§25.1 (STAGE8_SPEC.md:5620-5621)",
+   "verification": "verified",
+   "method": "Overview blocks under 33 fps",
+   "notes": "js50 is 17-18 ms in those blocks; the cause is attributed, not shown."
+  },
+  {
+   "claim": "rule 4; the reference cures Play (gain 1.353); the Overview gains 1.38/1.43 without curing",
+   "where_shown": "§25.1 (STAGE8_SPEC.md:5621-5624)",
+   "verification": "verified",
+   "method": "phone-rule.js over R1/R2",
+   "notes": "The gains are 1.375 and 1.431."
+  },
+  {
+   "claim": "8.3 phone: heaviest frame 1,364,901 tris (Play); Overview 1,309,505 (P5 1,469,251, -10.9%)",
+   "where_shown": "§25.1 (STAGE8_SPEC.md:5626-5627)",
+   "verification": "partly",
+   "method": "per-segment medians",
+   "notes": "These are medians; 1,364,901 is from a gait-at-rest block. The census phone maximum (1,288,561) is below them."
+  },
+  {
+   "claim": "calls against P5: Overview 532 vs 525 (+1.3%), Play 517 vs 508 (+1.8%), low view 211 vs 442 (culling off 446-448)",
+   "where_shown": "§25.1 (STAGE8_SPEC.md:5627-5628)",
+   "verification": "verified",
+   "method": "medians",
+   "notes": "Different clock windows for Play."
+  },
+  {
+   "claim": "across routes against P5: Overview 47 fps/2.7% to 40.8/18.1%; Play 53/1.6% to 43.3/8.6%; medians 22 to 24 and 17 to 23 ms",
+   "where_shown": "§25.1 (STAGE8_SPEC.md:5633-5636)",
+   "verification": "verified",
+   "method": "P5 segments",
+   "notes": "Not like for like (route, session, clock window), as the record states."
+  },
+  {
+   "claim": "P3/P4 density1Pass: Overview 29.4 fps/86.2%; Play 40.0/38.7%; their As 21.0 and 27.1, 100% long",
+   "where_shown": "§25.1 (STAGE8_SPEC.md:5637-5640)",
+   "verification": "verified",
+   "method": "medians over P3+P4 blocks",
+   "notes": "The numbers are right; the 'better build' inference is dominated by device state."
+  },
+  {
+   "claim": "culling: 7 of 12 faster, none slower; 59.8 fps (59.3-60) with, 54.1 (52.8-60) without; -53% calls, -35% tris",
+   "where_shown": "§25.2 (STAGE8_SPEC.md:5644-5646)",
+   "verification": "verified",
+   "method": "phone-cull blocks",
+   "notes": ""
+  },
+  {
+   "claim": "effects: 4 of 12 on faster, none slower; 5 of 14 off blocks at 35-47 fps (19-95% long, js50 11-12 in four); on blocks 58.4-60",
+   "where_shown": "§25.2 (STAGE8_SPEC.md:5647-5650)",
+   "verification": "verified",
+   "method": "phone-fx blocks",
+   "notes": "Also a 329 ms frame in the first off block."
+  },
+  {
+   "claim": "gait: 12 of 12 neither; 43.0 fps with, 43.3 at rest; p50 23 everywhere; the same calls and tris",
+   "where_shown": "§25.2 (STAGE8_SPEC.md:5651-5652)",
+   "verification": "verified",
+   "method": "phone-gait blocks",
+   "notes": "The A median is 43.05; tris within 0.1%."
+  },
+  {
+   "claim": "§21.9 census table (8I, 8J, 8K complete and still-eye maxima, desktop and phone)",
+   "where_shown": "§21.9 (STAGE8_SPEC.md:5117-5125)",
+   "verification": "verified",
+   "method": "after.maxima of census-8i/8j/8k.json",
+   "notes": ""
+  },
+  {
+   "claim": "§22.5 maxima 864 calls / 2,151,193 tris; phone 1,288,561; headroom 4% / 23.2% / 20.5%; still eye 862 / 2,004,105 / 1,141,473",
+   "where_shown": "§22.5 (STAGE8_SPEC.md:5372-5375)",
+   "verification": "verified",
+   "method": "census-8l.json (identical to 8k)",
+   "notes": ""
+  },
+  {
+   "claim": "low Pratzen complete frame 17.8% fewer tris with culling (1,798,057 of 2,188,177)",
+   "where_shown": "§22.5 (STAGE8_SPEC.md:5375)",
+   "verification": "partly",
+   "method": "census-8l; repository search",
+   "notes": "2,188,177 has no committed evidence file."
+  },
+  {
+   "claim": "census maxima as the build's heaviest frames (headroom 23.2% / 20.5%)",
+   "where_shown": "§21.9, §22.5",
+   "verification": "partly",
+   "method": "route medians against census maxima",
+   "notes": "The route drew more: Play 2,289,649 (desktop) and 1,364,249 (phone); headroom 18.2% and 15.8%."
+  },
+  {
+   "claim": "349 rows (165 + 184), each table row agreeing with its JSON, checked by script",
+   "where_shown": "docs/stage8-evidence/device/README.md:5, :20",
+   "verification": "verified",
+   "method": "format() regeneration",
+   "notes": "The original checking script was not committed."
+  },
+  {
+   "claim": "CHANGELOG: at most 1,364,901 tris against 1.62 M; calls within 1.8% of P5's; low view 52% fewer",
+   "where_shown": "CHANGELOG.md:28",
+   "verification": "verified",
+   "method": "phone medians",
+   "notes": ""
+  },
+  {
+   "claim": "after warming, Overview about 41 fps and Play about 43, with 9-18% long",
+   "where_shown": "ROADMAP.md:575-576; STAGE8_SPEC.md:5656-5658",
+   "verification": "partly",
+   "method": "A-block medians",
+   "notes": "The numbers are right; 'after warming' is unsupported."
+  },
+  {
+   "claim": "build identities: L3 c9d29c14; P3/P4 695e1f94; P5 c4793156 (Stage 8's start)",
+   "where_shown": "§24 intro; STEP6_SPEC.md:997-999, 1224-1225, 1275-1276",
+   "verification": "verified",
+   "method": "git show and hash (route-history.txt)",
+   "notes": ""
+  },
+  {
+   "claim": "the route of §2 unchanged between L3 and D1/D2",
+   "where_shown": "§8.5 (STAGE8_SPEC.md:1257); §24 intro",
+   "verification": "verified",
+   "method": "git text comparison of the measurement code",
+   "notes": "VERSION not bumped across 4 later edits, all outside the shared code."
+  },
+  {
+   "claim": "warmed phone medians about 40.8 / 43.35 fps and long shares about 18.15% / 8.6% (the task's figures)",
+   "where_shown": "audit brief; §25.1",
+   "verification": "verified",
+   "method": "standard median over the 24 A blocks per kind",
+   "notes": "Nearest-rank medians are 40.9 / 43.4 fps and 19.6% / 8.6%; pooled 39.4 / 43.3 fps."
+  },
+  {
+   "claim": "desktop Play about 120-124 fps against L3's 139-140 (the task's figures)",
+   "where_shown": "audit brief; §24.2",
+   "verification": "verified",
+   "method": "played segments",
+   "notes": "Same route code, clock windows and settings; browser and build differ."
+  }
+ ],
+ "notes_for_browser_phase": [
+  {
+   "hypothesis": "Stage 8's per-frame work in the 4x landscape (the map layer stabiliser, culling refresh, kit LOD, gait checks, outlines) explains most of the +0.9 to +1.5 ms js50 rise in Play and the Overview. Some of the rise is the browser update (Chrome 155 to 156).",
+   "repro": "In the container, with one Chromium, load L3's build (git show a8afeec:austerlitz-command-map.html) and f10fe585. Run 12 s of Play at half speed from 08:30 at the Field vantage under Follow, with a CDP CPU profile of loop() (or tools/step6/perf-local.js --only play-half for counts). Compare self time by function between the builds.",
+   "expected": "A function-level breakdown of the per-frame script difference.",
+   "why": "Decision 268 (a) carried the excess; section 24 could not attribute it, and its before/after also changed the browser."
+  },
+  {
+   "hypothesis": "The phone's Overview dips (js50 17-18 ms against 6) are device-side, not caused by a periodic task in the page.",
+   "repro": "lowTier device in the container (402x714, dpr 3, Safari UA). Repeat the phone route's ph8-overview blocks (apply the view, wait 300 ms, orbit 6 s, 22 blocks), logging loop() time per frame and noting the map layer's 333 ms passes and GC events.",
+   "expected": "If per-frame loop() times are flat or periodic only at small amplitude, the dips are device scheduling or frequency effects.",
+   "why": "The records attribute the dips to the phone 'warming' without evidence."
+  },
+  {
+   "hypothesis": "The 329 ms frame in the phone's first effects-off block is a one-off program compile or allocation on the effects-off path.",
+   "repro": "lowTier page, pratzen-low-4x at 09:50 orbiting. Record renderer.info.programs.length and frame times for 6 s before and after the first setFXEnabled(false), then a second toggle.",
+   "expected": "A jump in program count and a long frame on the first toggle only.",
+   "why": "A possible visible hitch for phone visitors, not mentioned in section 25.2."
+  },
+  {
+   "hypothesis": "Play under Follow (08:30 to about 10:20 at 4x) and phase 8's Overview at 402x714 lowTier draw heavier frames than any census case.",
+   "repro": "Record renderer.info calls and triangles every frame along the route's play-4x segment (1600x900 and 2560x1305) and along the phone's ph8 orbit and play-half. Report the per-frame maxima against the census's 2,151,193 and 1,288,561.",
+   "expected": "Desktop maximum above 2,289,649 (the median); phone above 1,364,249; both likely within 2.8 M and 1.62 M.",
+   "why": "The census maxima are used as the settled budget baseline, but the route's medians already exceed them."
+  },
+  {
+   "hypothesis": "Effects off is slower on the phone because the frame then draws to the antialiased default framebuffer, or because WebGL calls block on that path (js50 doubles to 11-12 ms in the slow blocks).",
+   "repro": "In the container, compare per-frame draw calls, render targets and loop() wall time with effects on and off at lowTier, and look for synchronous calls (readPixels, finish) on the off path.",
+   "expected": "Extra passes or sync points on the off path if the page causes it; otherwise a device-only effect.",
+   "why": "Step 6 and Stage 8 both observed it; the cause was never examined."
+  }
+ ],
+ "prior_findings": [
+  {
+   "id": "P-1 (docs/FINAL_AUDIT.md:663-670)",
+   "status": "carried with decision 230's note. New device evidence: on the phone, hiding the figures (their calls, vertices, script and animation together) raises Play from 43 to 59 fps and the Overview from about 42 to 47-54 fps (still dropping). On the desktop the GPU is not the limit (gpu50 4.5 ms against a 6.94 ms frame) and Play is script-bound.",
+   "prior_severity": "minor",
+   "refs": "docs/FINAL_AUDIT.md:663-670; docs/stage8-evidence/device/phone-R1.json, phone-R2.json; desk-D1.json",
+   "verified_against_code": "tools/step6/perf-route.js:187-194 (figuresHidden sets each kit mesh's material.visible)"
+  }
+ ],
+ "carried": [
+  {
+   "id": "§22.6 real-device performance (as carried in §23.4, §24.3, §25.4)",
+   "item": "Real-device performance: desktop recorded and decided (268 (a)); phone recorded and decided (269 (a)); effects off slower on the phone in a bracketed run; integrated GPU unmeasured",
+   "source_section": "docs/STAGE8_SPEC.md:5675-5680",
+   "current_status": "Numbers verified: 51 claims, 41 verified, 10 partly, 0 contradicted; every report reproduced from its JSON. Record issues: the long-frame share's meaning; 'warming' unsupported; Chrome 155/156 unrecorded; medians called 'heaviest frame'; the two phone readings unequal. Integrated GPU untested.",
+   "decision": "Decisions 268 (a) and 269 (a) stand (not re-litigated); their carried text should drop the thermal wording.",
+   "existing_evidence": "docs/stage8-evidence/device/; docs/audit-post8-evidence/perf/",
+   "needs_browser": "Not for the device numbers. A container CPU profile could attribute Play's script time (see notes_for_browser_phase)."
+  }
+ ]
+}
