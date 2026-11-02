@@ -3445,6 +3445,27 @@ What no check here can show:
 - **A screen reader.** Only the accessibility tree and focus order were read; no screen reader session was held.
 - **The owner's machines.** None was available to the session.
 
+### D.2a The thresholds' history
+
+`docs/audit-post8-evidence/tests/thresholds-history.md` covers every non-merge commit that touched `tools/visual/thresholds.js` (68) or
+`tools/visual/boot-check.js` (10). The history was read from a partial bare clone of `origin/main` (644 commits), because the working clone
+is shallow. Each revision is compared with its parent, key by key.
+
+**Totals.** 467 limits were added, 48 tightened, 36 loosened, 30 removed and 17 changed.
+
+**Every loosening traces to a decision or brief.** Each one goes back to an owner decision or an owner brief recorded beside the value and in
+`CHANGELOG.md` (62, 141 (a), 146, 164, 199 (b), 212 (b), 214, 232 (a), 256 (a), the 8J/8K briefs, the conditional authorisation for
+`plans-overview`, 267 (a)). No limit was loosened silently.
+
+Three points matter for this audit:
+- The 8J and 8K re-baselines of `MOTION.VIS` were made by the implementer under a general rule in the owner's brief. Decision 267 (a) kept
+  them. The largest raised Play's longest-hidden ceiling from 3,100 to 4,033 ms, which is the benchmark's whole window (`CL-TEST-02`).
+- `JUMPS` 248 and `POPS` 998 are exactly the build's own counts. They are pins, not quality bars (`CL-TEST-14`).
+- `CTX_DELETES` keeps 248 where the case has measured 193 since 8C (`CL-TEST-17`).
+
+**The in-app self-test's own limits are unchanged.** All 253 literal comparisons present before Stage 8 are still present and unchanged.
+None of the 131 checks with a literal name in both versions changed its condition.
+
 ### D.3 The areas' experiments
 
 Every experiment the areas ran (105), with its command, environment, outcome, evidence and limitations, is in the companion file, section L.2.
@@ -3589,6 +3610,37 @@ positions. It is geographically coherent in its frame, and robust in operation. 
 grade it shows, nor geographically exact in its relief. It is not yet usable as a map below desktop widths or under assistive settings. The
 owner's acceptances (decisions 239-269) are honoured and verified as implemented. They are not, and were never claimed to be, proof that
 every path is good. Section A gives the verdict this supports.
+
+### F.1 The device evidence, reconciled
+
+The perf area regenerated all ten Stage 8 device reports from their JSON with the route's own `format()`, and checked all 349 rows and
+every numeric claim of `docs/STAGE8_SPEC.md` sections 24-25. Evidence: `docs/audit-post8-evidence/perf/` (`reconcile.md`, `rows.csv`,
+`ledger.json`; 53 record claims, 43 verified, 10 partly, none contradicted). The verifier re-derived the medians (`CL-PERF-*`).
+
+- **The build.** Every report names 2,810,630 bytes and SHA-256 `bf27887c...db07`, the audited build.
+- **Desktop Play** (RTX 4070, Chrome 156, 144 Hz).
+  - D1: 124.3 fps at 4x, 120.8 at half speed. D2: 123.0 and 120.2. Step 6's L3 run: 139.0 and 139.7. That is 10.6-14.0% slower.
+  - Like for like: the route's code, the clock window, the GPU, screen, density and wrapper.
+  - Not like for like: the browser (L3 ran on Chrome 155, unrecorded in section 24) and the build (L3's is step 6 item 3 Part B's, not
+    Stage 8's starting build).
+  - The CPU-attribution area reproduced the rise on one fixed browser at the device's ratio and located it between L3 and 8E (`CL-PERF-12`).
+    Decision 268 (a) accepted it. It is not re-required here.
+- **The phone** (iPhone 17 Pro, Safari 26).
+  - Over the 24 A blocks of runs R1 and R2 per kind, standard median: Overview 40.8 fps, Play 43.35 (printed 43.3).
+  - Long-frame shares over the same blocks: 18.15% and 8.6%.
+  - Decision 269 (a) accepted them as measured. It is not re-required here.
+- **What "long frame" means.** The route counts an interval between the route's own animation-frame callbacks as long when it exceeds
+  `max(1.5 x R, 25 ms)`, where R is the refresh measured once per run. It reports the count as a share of delivered frames, per segment,
+  after the first 0.5 s. On the 144 Hz desktop the 25 ms floor is 3.6 refreshes, so doubled frames never count. On the 60 Hz phone the
+  threshold is 25.5 ms, so intervals of 17-25.5 ms never count. A long-frame share is therefore not a dropped-frame percentage. Beside the
+  phone's 8.6% and 18.15%, 28% and 32% of 60 Hz refreshes bring no new frame (`CL-PERF-03`).
+- **What the evidence does not support.**
+  - "After the phone warms": no report records temperature or throttling, and Play's 24 A blocks hold 42.8-43.8 fps through both runs
+    (`CL-PERF-01`).
+  - Any claim for an integrated GPU or a weaker machine: none was measured, and the RTX desktop's GPU was never the limit
+    (`CL-PERF-02`).
+  - The phone's P5 run (Stage 8's starting build, 53 fps in Play) against this build's 43.35 fps points to a slowdown across Stage 8, but it
+    is one session on another route (`CL-PERF-06`).
 
 ## G. Prioritized roadmap
 

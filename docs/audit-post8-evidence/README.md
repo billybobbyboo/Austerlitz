@@ -51,7 +51,7 @@ structured result. The register cites findings by their order in that file. An a
 
 ## Interruptions
 
-The account's usage limit stopped the audit three times, at about 01:30, 13:00 and later UTC on 2 November 2026. Each area or verifier that
+The account's usage limit stopped the audit three times on 2 November 2026; the limit reset at 05:30, 10:30 and 15:30 UTC. Each area or verifier that
 stopped was finished from its saved evidence in a later attempt, with its partial work reused. Its README or verification report says what
 was redone. Where an agent stopped before writing up results it had saved, the audit lead summarised the saved files and marked it so (for
 example `robustness/README.md` section B2).

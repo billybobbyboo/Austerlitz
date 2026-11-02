@@ -37,3 +37,24 @@ What no check here can show:
 - **A real phone.** Chromium's touch emulation does not have Safari's gestures, its toolbar, or its pinch on a page that sets `user-scalable`.
 - **A screen reader.** Only the accessibility tree and focus order were read; no screen reader session was held.
 - **The owner's machines.** None was available to the session.
+
+### D.2a The thresholds' history
+
+`docs/audit-post8-evidence/tests/thresholds-history.md` covers every non-merge commit that touched `tools/visual/thresholds.js` (68) or
+`tools/visual/boot-check.js` (10). The history was read from a partial bare clone of `origin/main` (644 commits), because the working clone
+is shallow. Each revision is compared with its parent, key by key.
+
+**Totals.** 467 limits were added, 48 tightened, 36 loosened, 30 removed and 17 changed.
+
+**Every loosening traces to a decision or brief.** Each one goes back to an owner decision or an owner brief recorded beside the value and in
+`CHANGELOG.md` (62, 141 (a), 146, 164, 199 (b), 212 (b), 214, 232 (a), 256 (a), the 8J/8K briefs, the conditional authorisation for
+`plans-overview`, 267 (a)). No limit was loosened silently.
+
+Three points matter for this audit:
+- The 8J and 8K re-baselines of `MOTION.VIS` were made by the implementer under a general rule in the owner's brief. Decision 267 (a) kept
+  them. The largest raised Play's longest-hidden ceiling from 3,100 to 4,033 ms, which is the benchmark's whole window (`CL-TEST-02`).
+- `JUMPS` 248 and `POPS` 998 are exactly the build's own counts. They are pins, not quality bars (`CL-TEST-14`).
+- `CTX_DELETES` keeps 248 where the case has measured 193 since 8C (`CL-TEST-17`).
+
+**The in-app self-test's own limits are unchanged.** All 253 literal comparisons present before Stage 8 are still present and unchanged.
+None of the 131 checks with a literal name in both versions changed its condition.
