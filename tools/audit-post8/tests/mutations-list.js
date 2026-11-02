@@ -135,5 +135,18 @@ module.exports=[
   claim:"test.js overlays: \"objective off map\" (test.js:96 reads the objective's x only)",
   edits:[{file:"app.js", find:'obj:[[212,408,"Telnitz"],[208,365,"Sokolnitz"],[205,277,"Kobelnitz"]]},', replace:'obj:[[212,608,"Telnitz"],[208,365,"Sokolnitz"],[205,277,"Kobelnitz"]]},'}],
   run:["test","redteam","binding","sim","data"], expect:"missed"}
+ /* added when the area was finished (2 November 2026): the chronology extractor's word-form hours (tools/stage2/chronology.js timesIn reads
+    HH:MM, "a quarter to/past", "half past", "N o'clock", "noon"; not "at seven", "about nine", "past two") */
+ ,{id:"M32", title:"a word-form hour retimed in an unchecked timing note (dok@1: \"the departure at seven\" becomes \"at nine\"; the anchor's dep stays 07:00)",
+  claim:"check:chronology: \"every timed statement in data.js and analysis.js is cited by a REVIEW row or allowed by name\" (its extractor reads clock-shaped hours only, CLAUDE.md: handed on); test.js: the inventory current (a change detector: the statement is unchecked, no claim hash). Predicted: check:chronology misses, test.js fails on the stale inventory only",
+  edits:[{file:"data.js", find:"note:\"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Buxhowden's and Kutuzov's reports give it", replace:"note:\"the departure at nine as the disposition ordered (Materialien 1806 pp. 101-106) and as Buxhowden's and Kutuzov's reports give it"}],
+  run:["chron","test","redteam","sim","data"], expect:"caught"}
+ /* M07 as first written swapped in a reading that is partly on the text layer, so test.js's image rule failed it, not its relevance: M33
+    swaps in a reading of the same source read on a page image, on another matter (Bagration at p. 198), the locator left at pp. 178-179 */
+ ,{id:"M33", title:"a claim's reading swapped for a page-image reading of the same source on another matter (bourcier@3 act: Davout at Telnitz becomes Bagration, p. 198)",
+  claim:"test.js checks a reading's register entry, its source and its page-image status (test.js:438-446), not that it bears on the statement or that its pages agree with the claim's locator; the inventory carries each claim's readings (a change detector)",
+  edits:[{file:"narrative.js", find:'{src:"mikhailovsky1844", at:"pp. 178-179", rd:"md1844.p178-179.davout-telnitz"}],\n    note:"Mikhailovsky-Danilevsky has Davout come from Raigern',
+          replace:'{src:"mikhailovsky1844", at:"pp. 178-179", rd:"md1844.p198.bagration"}],\n    note:"Mikhailovsky-Danilevsky has Davout come from Raigern'}],
+  run:["test","redteam","chron","data"], expect:"caught"}
 ];
 module.exports.FAST=FAST;

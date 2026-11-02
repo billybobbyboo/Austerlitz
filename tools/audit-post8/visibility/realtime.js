@@ -49,11 +49,18 @@ const OBS=function(nogl){
   await p.waitForTimeout(3000);   /* the page draws its frames and goes idle */
   await p.evaluate(OBS,NOGL);
   const s0=await A.state(p);
-  await p.click("#play");   /* real input: Play */
+  /* the Play/Pause button's centre, read once at rest (it does not move): the Pause below is a real mouse click there. The first attempt's
+     p.click("#play") for the Pause timed out (30 s) waiting for the button to be "stable" while software WebGL held the page's frames
+     seconds apart; a click at the button's place is the same input without the actionability wait */
+  const pb=await p.evaluate(()=>{ var r=document.getElementById("play").getBoundingClientRect(); return [r.left+r.width/2, r.top+r.height/2]; });
+  await p.mouse.click(pb[0],pb[1]);   /* real input: Play (a mouse click at the button's centre: under software WebGL the page's frames are too far
+                                         apart for p.click's stability wait, which timed out on the Play press too in the second attempt) */
+  await p.waitForFunction(()=>playing,null,{timeout:120000,polling:200});
   const w0=Date.now(); let last=null;
   while(Date.now()-w0<CAP*1000){ await p.waitForTimeout(2000); last=await p.evaluate(()=>({t:clock, n:window.__rt.n, playing:playing}));
     if(last.t>=TO||!last.playing) break; }
-  await p.click("#play");   /* real input: Pause */
+  await p.mouse.click(pb[0],pb[1]);   /* real input: Pause (a mouse click at the button's centre) */
+  await p.waitForFunction(()=>!playing,null,{timeout:120000,polling:200});
   const playWall=Date.now()-w0;
   await p.waitForTimeout(4000);
   const R=await p.evaluate(()=>{ var R=window.__rt, I={}; R.keys.forEach(function(k){ var r=R.it[k]; I[k]={cat:r.cat, fid:r.fid, codes:r.c.join("")}; });

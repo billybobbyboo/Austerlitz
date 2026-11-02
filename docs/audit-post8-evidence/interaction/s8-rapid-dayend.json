@@ -1,0 +1,1814 @@
+{
+ "name": "s8-rapid-dayend",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-02T06:10:36.419Z",
+ "opts": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1280,
+    720
+   ],
+   "o": {},
+   "bootMs": 96743
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 97469,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 14,
+     "dropped": 17
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.41,
+      64.61
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 131
+  },
+  {
+   "page": 0,
+   "label": "double-click Play (real dblclick); 30 frames",
+   "at": 97600,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 22,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.41,
+      64.61
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 20653
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; Home; 20 PageDowns in a row; settle",
+   "at": 118253,
+   "s": {
+    "clock": 1080,
+    "clockText": "18:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 21,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 9,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · The reckoning",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "After dark. The Collapse: The reckoning.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 18,
+     "placed": 17,
+     "dropped": 1
+    },
+    "overlays": 17,
+    "drawon": [],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The reckoning",
+    "cam": {
+     "pos": [
+      -220,
+      160.92,
+      206
+     ],
+     "tgt": [
+      -28,
+      -1.09,
+      6
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1981
+  },
+  {
+   "page": 0,
+   "label": "Home; 20 PageDowns with 15 frames between each; settle",
+   "at": 120249,
+   "s": {
+    "clock": 1080,
+    "clockText": "18:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 21,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 9,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · The reckoning",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "After dark. The Collapse: The reckoning.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 18,
+     "placed": 17,
+     "dropped": 1
+    },
+    "overlays": 17,
+    "drawon": [],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The reckoning",
+    "cam": {
+     "pos": [
+      -220,
+      160.92,
+      206
+     ],
+     "tgt": [
+      -28,
+      -1.09,
+      6
+     ]
+    }
+   },
+   "log": [],
+   "ms": 11405
+  },
+  {
+   "page": 0,
+   "label": "Home; click Play; click ½× 1× 2× 4× five times in a row; 30 frames",
+   "at": 131659,
+   "ret": [
+    [
+     244.8,
+     "-",
+     4,
+     1
+    ],
+    [
+     246.1333,
+     "-",
+     4,
+     1
+    ],
+    [
+     247.4667,
+     "-",
+     4,
+     1
+    ],
+    [
+     248.7437,
+     "in",
+     4,
+     1
+    ],
+    [
+     249.9022,
+     "in",
+     4,
+     1
+    ],
+    [
+     250.9422,
+     "in",
+     4,
+     1
+    ],
+    [
+     251.8637,
+     "in",
+     4,
+     1
+    ],
+    [
+     252.6666,
+     "in",
+     4,
+     1
+    ],
+    [
+     253.3511,
+     "in",
+     4,
+     1
+    ],
+    [
+     253.917,
+     "in",
+     4,
+     1
+    ],
+    [
+     254.3644,
+     "in",
+     4,
+     1
+    ],
+    [
+     254.6933,
+     "in",
+     4,
+     1
+    ],
+    [
+     254.9037,
+     "in",
+     4,
+     1
+    ],
+    [
+     254.9955,
+     "in",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ],
+    [
+     255,
+     "hold",
+     4,
+     1
+    ]
+   ],
+   "s": {
+    "clock": 255,
+    "clockText": "04:15",
+    "playing": true,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@255",
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[4×]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 14,
+     "dropped": 17
+    },
+    "overlays": 63,
+    "drawon": [
+     0.063
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -241.54,
+      170.44,
+      227.2
+     ],
+     "tgt": [
+      -28,
+      -0.98,
+      4.86
+     ]
+    }
+   },
+   "log": [],
+   "ms": 15334
+  },
+  {
+   "page": 0,
+   "label": "frames until the clock stops (the day's end at 4×)",
+   "at": 146993,
+   "ret": 1768,
+   "s": {
+    "clock": 1080,
+    "clockText": "18:00",
+    "playing": false,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 21,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 9,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · The reckoning",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "After dark. The Collapse: The reckoning.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[4×]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 38,
+     "placed": 21,
+     "dropped": 12
+    },
+    "overlays": 17,
+    "drawon": [],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The reckoning",
+    "cam": {
+     "pos": [
+      -196.67,
+      142.83,
+      111.59
+     ],
+     "tgt": [
+      -26.27,
+      -3.18,
+      61.15
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s8-rapid-dayend-day-end-dom.jpg",
+   "log": [],
+   "ms": 21184
+  },
+  {
+   "page": 0,
+   "label": "click Play again at 18:00; 30 frames",
+   "at": 168178,
+   "s": {
+    "clock": 255,
+    "clockText": "04:15",
+    "playing": true,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@255",
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 56,
+     "placed": 18,
+     "dropped": 33
+    },
+    "overlays": 63,
+    "drawon": [
+     0.063
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -231.14,
+      159.74,
+      135.23
+     ],
+     "tgt": [
+      -26.66,
+      -2.59,
+      47.46
+     ]
+    }
+   },
+   "log": [],
+   "ms": 777
+  },
+  {
+   "page": 0,
+   "label": "Home during Play",
+   "at": 168955,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 56,
+     "placed": 18,
+     "dropped": 33
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -231.14,
+      159.74,
+      135.23
+     ],
+     "tgt": [
+      -26.66,
+      -2.59,
+      47.46
+     ]
+    }
+   },
+   "log": [],
+   "ms": 11
+  },
+  {
+   "page": 0,
+   "label": "the sequence (Home, ½×, Play, 100 frames, 2, 3, 1, PageDown x3, Play, 50 frames, 4×, 50 frames, Pause; settle)",
+   "at": 168966,
+   "s": {
+    "clock": 540,
+    "clockText": "09:00",
+    "playing": false,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 7,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village · derived on the heights: Allied ≈ 23,550",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 62,
+     "placed": 33,
+     "dropped": 11
+    },
+    "overlays": 20,
+    "drawon": [
+     0.5,
+     0.518,
+     0
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -184.59,
+      52.73,
+      46.05
+     ],
+     "tgt": [
+      -21.55,
+      0.57,
+      3.41
+     ]
+    }
+   },
+   "log": [],
+   "ms": 10519
+  },
+  {
+   "page": 0,
+   "label": "the same sequence again",
+   "at": 179489,
+   "s": {
+    "clock": 540,
+    "clockText": "09:00",
+    "playing": false,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 7,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village · derived on the heights: Allied ≈ 23,550",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 62,
+     "placed": 33,
+     "dropped": 11
+    },
+    "overlays": 20,
+    "drawon": [
+     0.5,
+     0.518,
+     0
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -184.59,
+      52.73,
+      46.05
+     ],
+     "tgt": [
+      -21.55,
+      0.57,
+      3.41
+     ]
+    }
+   },
+   "log": [],
+   "ms": 9548
+  }
+ ],
+ "checks": [
+  {
+   "id": "dblclick-play",
+   "ok": true,
+   "expected": "after a double-click the Play button says what the clock does (two presses: paused again)",
+   "observed": {
+    "playing": false,
+    "btn": "Play/false",
+    "clock": 240
+   }
+  },
+  {
+   "id": "pagedown-fast-slow",
+   "ok": false,
+   "expected": "20 PageDowns end at 18:00 whether pressed in a row or slowly, with the same frame state",
+   "observed": {
+    "fast": {
+     "clock": 1080,
+     "phase": 9,
+     "toast": {
+      "text": "The sun of Austerlitz, as memoirs call it",
+      "on": true,
+      "op": 0,
+      "box": [
+       650,
+       55,
+       931,
+       89
+      ],
+      "timer": true
+     },
+     "livePhase": "After dark. The Collapse: The reckoning.",
+     "caption": "THE COLLAPSE · The reckoning"
+    },
+    "slow": {
+     "clock": 1080,
+     "phase": 9,
+     "toast": {
+      "text": "The sun of Austerlitz, as memoirs call it",
+      "on": false,
+      "op": 0,
+      "box": [
+       650,
+       55,
+       931,
+       89
+      ],
+      "timer": true
+     },
+     "livePhase": "After dark. The Collapse: The reckoning.",
+     "caption": "THE COLLAPSE · The reckoning"
+    },
+    "differs": [
+     "units"
+    ],
+    "detail": [
+     {
+      "k": "units",
+      "n": 1,
+      "first": [
+       {
+        "id": "prz",
+        "a": "0,-25,4.49,16,-1.12,1.25,0,0",
+        "b": "0,-56.5,-0.87,29.5,0.52,1.25,0,0"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "speed-rapid",
+   "ok": true,
+   "expected": "after twenty speed presses the last (4×) stands, pressed, and the clock runs at it",
+   "observed": {
+    "speed": 4,
+    "pressed": "4",
+    "rate": 10.55,
+    "dwell": [
+     "-",
+     "in",
+     "hold"
+    ]
+   }
+  },
+  {
+   "id": "day-end",
+   "ok": true,
+   "expected": "Play runs to 18:00 and stops there, the button says Play",
+   "observed": {
+    "clock": 1080,
+    "playing": false,
+    "btn": "Play/false",
+    "caption": "THE COLLAPSE · The reckoning",
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "focus": "button.t[4×]"
+   }
+  },
+  {
+   "id": "play-after-end",
+   "ok": true,
+   "expected": "Play at the day's end starts from 04:00 again",
+   "observed": {
+    "clock": 255,
+    "playing": true
+   }
+  },
+  {
+   "id": "home-play",
+   "ok": true,
+   "expected": "Home during Play: stopped at 04:00",
+   "observed": {
+    "clock": 240,
+    "playing": false
+   }
+  },
+  {
+   "id": "same-twice",
+   "ok": true,
+   "expected": "the same sequence twice gives the same state and frame",
+   "observed": {
+    "stateDiffers": [],
+    "frameDiffers": [],
+    "detail": [],
+    "mlDiffers": 0
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s8-rapid-dayend-day-end-dom.jpg"
+ ],
+ "notes": [],
+ "listeners": {
+  "live": 792,
+  "removed": 0,
+  "onDetached": 1,
+  "total": 793,
+  "addCalls": 793,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 1,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 19,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 2,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip click": 1,
+   "#railclose click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 134,
+   "div.ml-item blur": 134,
+   "div.ml-item keydown": 134,
+   "div.ml-item click": 134
+  },
+  "timeouts": 0,
+  "timeoutsBy": {},
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 1,
+  "tSet": 14,
+  "tFired": 10,
+  "tCleared": 4,
+  "rSet": 98,
+  "rFired": 98,
+  "rCancel": 0
+ },
+ "ms": 189077,
+ "ended": "2026-11-02T06:13:45.496Z"
+}

@@ -9,8 +9,10 @@ const V=require("./vis-lib.js");
 const ROOT=path.resolve(__dirname,"..","..","..");
 const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; };
 const OUTD=path.resolve(opt("--out")||path.join(ROOT,"docs","audit-post8-evidence","visibility")), DIR=path.resolve(opt("--dir")||path.join(OUTD,"runs"));
-const ORDER=["bench-hybrid","bench-land","bench-paper","hybrid-0830","hybrid-1200","hybrid-4x-day","land-0900","land-4x-day","paper-0900","phone-0900","hybrid-fr-0900","hybrid-al-0900",
-  "hybrid-fixed-0830","hybrid-watch-0830","land-watch-0900","hybrid-sel-0900","hybrid-hover-0900","hybrid-0900-1h","hybrid-0900-slow"];
+const ORDER=["bench-hybrid","bench-land","bench-paper","hybrid-0830","hybrid-0830-60","hybrid-1200","hybrid-4x-day","land-0900","land-4x-day","paper-0900","phone-0900","phone-land-0900","hybrid-fr-0900","hybrid-al-0900",
+  "hybrid-fixed-0830","hybrid-watch-0830","land-watch-0900","hybrid-sel-0900","hybrid-hover-0900","hybrid-0900-1h","hybrid-0900-157","hybrid-0900-slow"];
+/* the events and the formations each names (analysis.js EVENTS[].forms), read in node from the sources as the page loads them */
+const EVENTS=(()=>{ const vm=require("vm"), ctx={console}; vm.createContext(ctx); ["data.js","analysis.js"].forEach(f=>vm.runInContext(fs.readFileSync(path.join(ROOT,f),"utf8"),ctx,{filename:f})); return vm.runInContext("EVENTS",ctx).map(e=>({id:e.id, t:e.t, n:e.n, forms:(e.forms||[]).slice()})); })();
 const hhmm=t=>t==null?"-":String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.floor(t%60)).padStart(2,"0");
 const pct=x=>x==null?"-":(100*x).toFixed(1)+"%";
 const HID=new Set(["h","H","d","D"]);
@@ -46,12 +48,45 @@ function analyseRun(k,raw){
   const starved=S.formations.filter(f=>f.play.inView>=0.1*S.playFrames&&(f.play.share<0.5||f.play.longestMs>=5000)).sort((a,b)=>a.play.share-b.play.share)
     .map(f=>({id:f.id, name:f.name, ech:f.ech, arm:f.arm, nation:f.nation, base:f.base, share:f.play.share, inView:f.play.inView, longestMs:f.play.longestMs, longestClockMin:f.play.longestClockMin,
       longestFrom:hhmm(f.play.longestFrom), episodes:f.play.episodes, staticShare:f.play.staticShare, staticLongestMs:f.play.staticLongestMs, starvedVsStatic:f.play.starvedVsStatic, roomShare:f.play.hiddenLayout?+(f.play.hiddenWithRoom/f.play.hiddenLayout).toFixed(3):null, before:f.before, after:f.after, fresh:f.fresh, strip:f.strip5}));
+  /* the formations a live event names (EVENTS[].forms), over the play frames its label is drawn (live events are never dropped: decision 39):
+     per event and named formation, the frames in view, drawn, hidden by the layout, the longest hidden stretch inside the event's frames */
+  const evForms=EVENTS.filter(e=>e.forms.length&&raw.items["e:"+e.id]).map(e=>{ const ec=raw.items["e:"+e.id].codes, idx=[]; for(let i=p0;i<=p1;i++) if(ec[i]==="#") idx.push(i);
+    if(!idx.length) return null;
+    const rows=e.forms.map(fid=>{ const fc=fcodes[fid]; if(!fc) return {id:fid, absentFromLayer:true};
+      let inV=0, dr=0, hid=0, occ=0, off=0, abs=0, run=0, best=0, bestFrom=null, s0=null, prev=-2, sEl=0, sOn=0;
+      idx.forEach(i=>{ const c=fc.codes[i]; if(i!==prev+1) run=0; prev=i; const sc=fc.stat[i]; if(sc==="#"||sc==="-"){ sEl++; if(sc==="#") sOn++; }
+        if(c==="#"){ inV++; dr++; run=0; } else if(HID.has(c)){ inV++; hid++; if(!run) s0=i; run++; if(run>best){ best=run; bestFrom=F[s0].t; } } else { run=0; if(c==="t"){ inV++; occ++; } else if(c===".") abs++; else off++; } });
+      return {id:fid, inView:inV, drawn:dr, hidden:hid, occluded:occ, offscreen:off, absent:abs, share:inV?+(dr/inV).toFixed(3):null, freshLayoutShare:sEl?+(sOn/sEl).toFixed(3):null, longestHiddenFrames:best, longestHiddenMs:Math.round(best*fm), longestFrom:bestFrom}; });
+    return {id:e.id, n:e.n, t:e.t, liveFrames:idx.length, clockFrom:F[idx[0]].t, clockTo:F[idx[idx.length-1]].t, forms:rows}; }).filter(Boolean);
+  const evTot=(()=>{ let v=0, d=0; evForms.forEach(e=>e.forms.forEach(r=>{ if(r.inView){ v+=r.inView; d+=r.drawn; } })); return {inView:v, drawn:d, share:v?+(d/v).toFixed(3):null}; })();
+  const evWorst=[].concat(...evForms.map(e=>e.forms.filter(r=>r.inView>=10&&r.share<0.5).map(r=>({event:e.id, id:r.id, share:r.share, inView:r.inView, longestHiddenMs:r.longestHiddenMs, longestFrom:hhmm(r.longestFrom)})))).sort((a,b)=>a.share-b.share);
+  /* the priority against the layout in motion, frame by frame: frames in which a formation is hidden that the fresh layout would draw while a place
+     name (the lowest priority but the terrain-study names) is drawn that the fresh layout would not; co-occurrence only, not the same boxes */
+  const tKeys=Object.keys(raw.items).filter(x=>x.startsWith("t:")), fKeys=Object.keys(fcodes);
+  let invFrames=0, starvedFrames=0; for(let i=p0;i<=p1;i++){ const st=fKeys.some(fid=>{ const fc=fcodes[fid]; return HID.has(fc.codes[i])&&fc.stat[i]==="#"; }); if(!st) continue; starvedFrames++;
+    if(tKeys.some(x=>raw.items[x].codes[i]==="#"&&raw.items[x].stat[i]==="-")) invFrames++; }
+  const inversion={framesWithAStarvedFormation:starvedFrames, ofThemWithAnExtraPlace:invFrames, playFrames:p1-p0+1};
+  /* of the formation-frames hidden by the layout, those in which the full search would have placed the formation in that frame's own room (tried
+     against the frame's final boxes, panels and symbols, and undone): the stabiliser's delay, not crowding */
+  const hidRoom=(()=>{ const h=S.formations.reduce((a,f)=>a+f.play.hiddenLayout,0), r=S.formations.reduce((a,f)=>a+f.play.hiddenWithRoom,0); return {hidden:h, withRoom:r, share:h?+(r/h).toFixed(3):null}; })();
+  /* at rest: the formations hidden by the layout before Play (a seek's fresh layout), after it (the layout at rest after motion, "persist", at the
+     last of the rest frames) and in a fresh view at the same clock and eye (mlReset, one frame); persistOnly: hidden at rest after Play but drawn
+     by the fresh view (the kept places' cost), freshOnly: drawn at rest after Play but hidden by the fresh view */
+  const hidAt=f=>x=>x&&"hHdD".includes(x);
+  const restSum={hiddenBefore:S.formations.filter(f=>hidAt()(f.before)).map(f=>f.id), hiddenAfter:S.formations.filter(f=>hidAt()(f.after)).map(f=>f.id),
+    hiddenFresh:S.formations.filter(f=>hidAt()(f.fresh)).map(f=>f.id)};
+  restSum.persistOnly=restSum.hiddenAfter.filter(id=>{ const f=S.formations.find(x=>x.id===id); return f.fresh==="#"; });
+  restSum.freshOnly=S.formations.filter(f=>f.after==="#"&&hidAt()(f.fresh)).map(f=>f.id);
+  /* the 90-frame windows of this run's play, each judged as the benchmark judges its run */
+  const W90=S.playFrames>=180?windows(raw,90):null;
+  const windowsSum=W90?{n:W90.length, shareMin:Math.min(...W90.map(w=>w.share)), shareMedian:W90.map(w=>w.share).sort((a,b)=>a-b)[Math.floor(W90.length/2)], shareMax:Math.max(...W90.map(w=>w.share)),
+    wholeWindowHidden:W90.filter(w=>w.longestMs>=Math.round(90*fm)-1).length, over3000:W90.filter(w=>w.longestMs>=3000).length}:null;
   /* the frames re-placement passes ran in, and the frames counted moving */
   return {run:k, view:raw.spec.name, viewport:raw.viewport, presentation:raw.presentation, mode:raw.mode, reading:raw.opts.reading||"none", follow:raw.opts.follow!==false, select:raw.opts.select||null,
     speed:raw.opts.speed, frameMs:+fm.toFixed(3), clockFrom:S.clockFrom, clockTo:S.clockTo, frames:S.frames, playFrames:S.playFrames, passes:S.passes, dwellFrames:S.dwellFrames, wallMs:raw.wallMs, quirk:raw.quirk,
     total:Object.assign({},S.total,{share:S.total.inView?+(S.total.drawn/S.total.inView).toFixed(3):null}),
     playTotal:(()=>{ const d=S.formations.reduce((s,f)=>s+f.play.drawn,0), v=S.formations.reduce((s,f)=>s+f.play.inView,0); return {drawn:d, inView:v, share:v?+(d/v).toFixed(3):null}; })(),
-    checks, starved, formations:S.formations, other:S.other};
+    checks, starved, evForms, evTot, evWorst, inversion, hidRoom, restSum, windows90:W90, windowsSum, formations:S.formations, other:S.other};
 }
 /* the benchmark against longer playback: the 90-frame windows of the long hybrid run from 08:30, each judged as the benchmark judges its run
    (drawn formation-frames of those in view; the longest disappearance inside the window, capped at the window) */
@@ -64,6 +99,9 @@ function windows(raw,w){
 }
 /* two records of the same formations compared: per formation the share drawn and the longest disappearance over the play frames in a clock range */
 function compareRT(rt,dr,clockRange){
+  /* the clock range both records cover while playing (the real-time run with the draw reached only 09:17 on this loaded machine) */
+  { const pr=rt.frames.filter(f=>f.play), pd=dr.frames.filter(f=>f.ph==="play");
+    if(pr.length&&pd.length) clockRange=[Math.max(clockRange[0],pr[0].t,pd[0].t),Math.min(clockRange[1],pr[pr.length-1].t,pd[pd.length-1].t)]; }
   const sel=(F,ph)=>F.map((f,i)=>i).filter(i=>(ph?F[i].play:F[i].ph==="play")&&F[i].t>=clockRange[0]-1e-6&&F[i].t<=clockRange[1]+1e-6);
   const Ir=sel(rt.frames,true), Id=sel(dr.frames,false);
   const st=(codes,idx,fm,F)=>{ let on=0, inv=0, run=0, best=0, bestMin=0, s0=null, eps=0; idx.forEach(i=>{ const c=codes[i]; if(c==="#"||c==="t"){ if(c==="#") on++; inv++; run=0; } else if(HID.has(c)){ inv++; if(!run){ eps++; s0=i; } run++; if(run>best){ best=run; bestMin=F[i].t-F[Math.max(0,s0-1)].t; } } else run=0; });
@@ -72,8 +110,11 @@ function compareRT(rt,dr,clockRange){
   const rows=fids.map(fid=>{ const kr=rt.items["c:"+fid]?"c:"+fid:"n:"+fid, kd=dr.items["c:"+fid]?"c:"+fid:"n:"+fid;
     const a=rt.items[kr]?st(rt.items[kr].codes,Ir,null,rt.frames):null, b=dr.items[kd]?st(dr.items[kd].codes,Id,null,dr.frames):null; return {id:fid, real:a, driver:b}; });
   /* frame for frame where the clocks coincide (to 0.01 min) */
-  let pairs=0, same=0, diffF=0; const dIdx=new Map(); Id.forEach(i=>dIdx.set(dr.frames[i].t.toFixed(2),i));
-  Ir.forEach(i=>{ const j=dIdx.get(rt.frames[i].t.toFixed(2)); if(j===undefined) return; pairs++; let all=true;
+  /* the k-th frame at a clock value paired with the other record's k-th at it (a dwell holds the clock at its event's minute for many frames;
+     pairing each with the last of them, as the first version did, made 39 false differences at 09:15) */
+  let pairs=0, same=0, diffF=0; const dIdx=new Map(), occ=new Map(), occR=new Map();
+  Id.forEach(i=>{ const t=dr.frames[i].t.toFixed(2), n=occ.get(t)||0; occ.set(t,n+1); dIdx.set(t+"#"+n,i); });
+  Ir.forEach(i=>{ const t=rt.frames[i].t.toFixed(2), n=occR.get(t)||0; occR.set(t,n+1); const j=dIdx.get(t+"#"+n); if(j===undefined) return; pairs++; let all=true;
     fids.forEach(fid=>{ const kr=rt.items["c:"+fid]?"c:"+fid:"n:"+fid, kd=dr.items["c:"+fid]?"c:"+fid:"n:"+fid; const a=rt.items[kr]?rt.items[kr].codes[i]:".", b=dr.items[kd]?dr.items[kd].codes[j]:".";
       const n=x=>HID.has(x)?"x":x; if(n(a)!==n(b)){ all=false; diffF++; } }); if(all) same++; });
   const tot=L=>{ const v=L.reduce((s,r)=>s+(r?r.inView:0),0), d=L.reduce((s,r)=>s+(r?r.drawn:0),0); return {inView:v, drawn:d, share:v?+(d/v).toFixed(3):null, longestFrames:Math.max(0,...L.map(r=>r?r.longestFrames:0))}; };
@@ -100,6 +141,9 @@ function compareRT(rt,dr,clockRange){
   if(rt&&ds) R.realtime.gl=Object.assign({against:"hybrid-0900-slow (driver, frames 1,000 ms apart)"},compareRT(rt,ds,[540,600]));
   if(rtn&&d1) R.realtime.nogl=Object.assign({against:"hybrid-0900-1h (driver, 30 frames a second)"},compareRT(rtn,d1,[540,600]));
   if(rt&&d1) R.realtime.glVs30=Object.assign({against:"hybrid-0900-1h (driver, 30 frames a second)"},compareRT(rt,d1,[540,600]));
+  const d157=load("hybrid-0900-157");
+  if(rtn&&d157) R.realtime.noglMatched=Object.assign({against:"hybrid-0900-157 (driver, frames 157 ms apart: the no-draw real-time run's median)"},compareRT(rtn,d157,[540,600]));
+  if(ds&&d1) R.realtime.driverSlowVs30=Object.assign({against:"hybrid-0900-1h (driver, 30 frames a second); 'real' here is the driver at 1,000 ms frames"},compareRT(Object.assign({},ds,{frames:ds.frames.map(f=>Object.assign({},f,{play:f.ph==="play",rt:0}))}),d1,[540,600]));
   /* ---- the readable tables ---- */
   md.push("# Visibility over long playback: the tables","","Made by `tools/audit-post8/visibility/analyse.js` from `runs/` (`long-play.js`, `realtime.js`). Build "+R.build+" (md5 "+R.md5+"), Chromium "+(R.chromium||"-")+".",
     "Codes per frame: drawn, hidden by the layout (held or dropped; with or without room for the full search), behind the ground, off the screen or under a panel, not in the layer. Times in ms are the driver's clock (30 frames a second unless said); clock minutes are the battle's.","");
@@ -123,7 +167,8 @@ function compareRT(rt,dr,clockRange){
   /* across the runs: each formation's share drawn while in view and its longest disappearance by the layout (clock minutes; ms) */
   const longRuns=Object.keys(runs).filter(k=>!/^bench-|-slow$|-1h$/.test(k));
   const allF=[...new Set([].concat(...longRuns.map(k=>runs[k].formations.map(f=>f.id))))];
-  R.across={runs:longRuns, rows:allF.map(id=>{ const o={id}; longRuns.forEach(k=>{ const f=runs[k].formations.find(x=>x.id===id); o[k]=f&&f.play.inView?{share:f.play.share, longestMs:f.play.longestMs, longestClockMin:f.play.longestClockMin, inView:f.play.inView}:null; }); return o; })};
+  R.across={runs:longRuns, rows:allF.map(id=>{ const o={id}; longRuns.forEach(k=>{ const f=runs[k].formations.find(x=>x.id===id); o[k]=f&&f.play.inView?{inView:f.play.inView, drawn:f.play.drawn, share:f.play.share, longestMs:f.play.longestMs, longestClockMin:f.play.longestClockMin, longestFrom:f.play.longestFrom, episodes:f.play.episodes,
+    staticShare:f.play.staticShare, before:f.before, after:f.after, fresh:f.fresh}:null; }); return o; })};
   const worstOf=row=>Math.min(...longRuns.map(k=>row[k]&&row[k].inView>=50?row[k].share:1));
   md.push("","## Across the runs: each formation (play frames; share drawn while in view / longest hidden by the layout in clock minutes)","","| formation | "+longRuns.join(" | ")+" |","|---|"+longRuns.map(()=>"---").join("|")+"|");
   R.across.rows.slice().sort((a,b)=>worstOf(a)-worstOf(b)).forEach(row=>md.push("| "+row.id+" | "+longRuns.map(k=>row[k]?pct(row[k].share)+" / "+row[k].longestClockMin+" ("+row[k].longestMs+" ms)":"-").join(" | ")+" |"));

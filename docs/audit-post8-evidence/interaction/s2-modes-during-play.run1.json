@@ -1,0 +1,2551 @@
+{
+ "name": "s2-modes-during-play",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-02T01:41:50.145Z",
+ "opts": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1280,
+    720
+   ],
+   "o": {},
+   "bootMs": 153287
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card",
+   "at": 155026,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 14,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.41,
+      64.61
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 32
+  },
+  {
+   "page": 0,
+   "label": "click Play; 300 frames (10 s)",
+   "at": 155058,
+   "s": {
+    "clock": 280.433,
+    "clockText": "04:40",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 23,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0.168
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -276.41,
+      126.82,
+      252.92
+     ],
+     "tgt": [
+      -87.82,
+      -0.06,
+      56.81
+     ]
+    }
+   },
+   "log": [],
+   "ms": 16239
+  },
+  {
+   "page": 0,
+   "label": "key 2 (Watch) during Play; 90 frames",
+   "at": 171297,
+   "s": {
+    "clock": 295.433,
+    "clockText": "04:55",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      621,
+      26,
+      659,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 23,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0.231
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -268.3,
+      126.66,
+      245.32
+     ],
+     "tgt": [
+      -79.69,
+      0.18,
+      49.24
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s2-modes-during-play-watch-playing.jpg",
+   "log": [],
+   "ms": 86160
+  },
+  {
+   "page": 0,
+   "label": "key 3 (Clean) during Play; 60 frames",
+   "at": 257458,
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "map",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 plotted strength unchanged · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "capVisible": false,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      621,
+      26,
+      659,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": true
+    },
+    "focus": "#restore",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 0,
+     "placed": 0,
+     "dropped": 0
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -245.89,
+      123.3,
+      224.16
+     ],
+     "tgt": [
+      -59.87,
+      -1.41,
+      30.77
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2360
+  },
+  {
+   "page": 0,
+   "label": "Space in Clean (pause from the keyboard)",
+   "at": 259819,
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 0,
+     "placed": 0,
+     "dropped": 0
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -245.89,
+      123.3,
+      224.16
+     ],
+     "tgt": [
+      -59.87,
+      -1.41,
+      30.77
+     ]
+    }
+   },
+   "log": [],
+   "ms": 159
+  },
+  {
+   "page": 0,
+   "label": "Space again (play)",
+   "at": 259979,
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 0,
+     "placed": 0,
+     "dropped": 0
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -245.89,
+      123.3,
+      224.16
+     ],
+     "tgt": [
+      -59.87,
+      -1.41,
+      30.77
+     ]
+    }
+   },
+   "log": [],
+   "ms": 27
+  },
+  {
+   "page": 0,
+   "label": "key 1 (Study) during Play; 60 frames",
+   "at": 260006,
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 55,
+     "placed": 40,
+     "dropped": 13
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -245.89,
+      123.3,
+      224.16
+     ],
+     "tgt": [
+      -59.87,
+      -1.41,
+      30.77
+     ]
+    }
+   },
+   "log": [],
+   "ms": 429
+  },
+  {
+   "page": 0,
+   "label": "key M (paper map) during Play; 90 frames",
+   "at": 260435,
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 40,
+     "placed": 28,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 0,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "map": [
+      18.33,
+      9.57,
+      0.7311
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s2-modes-during-play-paper-playing-dom.jpg",
+   "log": [],
+   "ms": 7070
+  },
+  {
+   "page": 0,
+   "label": "key M (landscape with counters) during Play; 120 frames",
+   "at": 267505,
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "hybrid",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 40,
+     "placed": 23,
+     "dropped": 16
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2761
+  },
+  {
+   "page": 0,
+   "label": "key M (landscape) during Play; 120 frames",
+   "at": 270267,
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 20,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1431
+  },
+  {
+   "page": 0,
+   "label": "click Layers; read the relief buttons; click 1× true (disabled while playing)",
+   "at": 271698,
+   "ret": [
+    {
+     "x": "1",
+     "disabled": false,
+     "title": "",
+     "pressed": "false"
+    },
+    {
+     "x": "4",
+     "disabled": false,
+     "title": "",
+     "pressed": "true"
+    },
+    {
+     "x": "10.32642489706367",
+     "disabled": false,
+     "title": "",
+     "pressed": "false"
+    }
+   ],
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 20,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 121
+  },
+  {
+   "page": 0,
+   "label": "Esc (Layers closed); click Pause; click Layers; click 1× true; Esc; 30 frames",
+   "at": 271819,
+   "error": "clickEl: .exag-btn[data-x=\"1\"] is covered by null",
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": true,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 20,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "log": [],
+   "ms": 18
+  },
+  {
+   "page": 0,
+   "label": "click Play at 1×; 120 frames (Follow at true scale)",
+   "at": 271842,
+   "s": {
+    "clock": 305.433,
+    "clockText": "05:05",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 20,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.273
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s2-modes-during-play-1x-playing-dom.jpg",
+   "log": [],
+   "ms": 2335
+  },
+  {
+   "page": 0,
+   "label": "click Pause; click the Zuran vantage; 10 frames (mid-glide); Layers; 10.33×; Esc",
+   "at": 274177,
+   "error": "clickEl: .exag-btn[data-x=\"10.32642489706367\"] is covered by null",
+   "s": {
+    "clock": 307.433,
+    "clockText": "05:07",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "zuran",
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": true,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 18,
+     "dropped": 13
+    },
+    "overlays": 63,
+    "drawon": [
+     0.281
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": true,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -236.77,
+      130.85,
+      199.81
+     ],
+     "tgt": [
+      -26.66,
+      -0.35,
+      0.78
+     ]
+    }
+   },
+   "log": [],
+   "ms": 427
+  },
+  {
+   "page": 0,
+   "label": "click Play; 90 frames",
+   "at": 274604,
+   "s": {
+    "clock": 307.433,
+    "clockText": "05:07",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "zuran",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 60,
+     "placed": 15,
+     "dropped": 2
+    },
+    "overlays": 63,
+    "drawon": [
+     0.281
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -83,
+      25.08,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.56,
+      -5
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2228
+  },
+  {
+   "page": 0,
+   "label": "keys 2 3 1 3 2 1 2 3 2 1 in a row during Play; 30 frames",
+   "at": 276832,
+   "s": {
+    "clock": 307.433,
+    "clockText": "05:07",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "zuran",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 60,
+     "placed": 15,
+     "dropped": 2
+    },
+    "overlays": 63,
+    "drawon": [
+     0.281
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -83,
+      25.08,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.56,
+      -5
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s2-modes-during-play-after-rapid-switches-dom.jpg",
+   "log": [],
+   "ms": 3266
+  }
+ ],
+ "checks": [
+  {
+   "id": "watch-keeps-play",
+   "ok": true,
+   "expected": "Watch during Play: still playing, Follow still on, the clock moving",
+   "observed": {
+    "playing": true,
+    "clock": 295.433,
+    "from": 280.433,
+    "follow": "true",
+    "freeCam": false
+   }
+  },
+  {
+   "id": "watch-caption",
+   "ok": true,
+   "expected": "Watch shows the caption with its derived reading",
+   "observed": {
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 38,700 · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "visible": true
+   }
+  },
+  {
+   "id": "clean-keeps-play",
+   "ok": true,
+   "expected": "Clean during Play: still playing (the timeline hidden)",
+   "observed": {
+    "playing": true,
+    "clock": 305.433,
+    "restore": true,
+    "focus": "#restore",
+    "focusVisible": true
+   }
+  },
+  {
+   "id": "clean-space",
+   "ok": false,
+   "expected": "Space pauses in Clean (focus on a hidden control would press it instead)",
+   "observed": {
+    "playing": true,
+    "focus": "#play",
+    "focusVisible": true
+   }
+  },
+  {
+   "id": "study-back",
+   "ok": false,
+   "expected": "Study again during Play: playing, the rail shown",
+   "observed": {
+    "playing": false,
+    "rail": true,
+    "dispatch": true
+   }
+  },
+  {
+   "id": "paper-keeps-play",
+   "ok": false,
+   "expected": "the paper map during Play: still playing, the plan camera",
+   "observed": {
+    "playing": false,
+    "mode": "staff",
+    "cam": {
+     "map": [
+      18.33,
+      9.57,
+      0.7311
+     ]
+    },
+    "ml": {
+     "items": 40,
+     "placed": 28,
+     "dropped": 12
+    }
+   }
+  },
+  {
+   "id": "hybrid-follow",
+   "ok": false,
+   "expected": "Landscape with counters during Play: playing, Follow on",
+   "observed": {
+    "playing": false,
+    "mode": "hybrid",
+    "freeCam": false,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    }
+   }
+  },
+  {
+   "id": "land-follow",
+   "ok": false,
+   "expected": "the landscape again: playing, Follow on and following (no camera tween left)",
+   "observed": {
+    "playing": false,
+    "mode": "terrain",
+    "freeCam": false,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    }
+   }
+  },
+  {
+   "id": "relief-disabled-in-play",
+   "ok": false,
+   "expected": "while playing the relief buttons are disabled with a reason, and a click changes nothing",
+   "observed": {
+    "factor": 4,
+    "buttons": [
+     {
+      "x": "1",
+      "disabled": false,
+      "title": "",
+      "pressed": "false"
+     },
+     {
+      "x": "4",
+      "disabled": false,
+      "title": "",
+      "pressed": "true"
+     },
+     {
+      "x": "10.32642489706367",
+      "disabled": false,
+      "title": "",
+      "pressed": "false"
+     }
+    ]
+   }
+  },
+  {
+   "id": "relief-1x",
+   "ok": false,
+   "expected": "paused: 1× applied, the camera never under the ground",
+   "observed": {
+    "factor": 4,
+    "figureError": {
+     "worst": 3.092334051046919e-7,
+     "where": "prz",
+     "violations": 0
+    }
+   }
+  },
+  {
+   "id": "1x-follow",
+   "ok": false,
+   "expected": "at 1× Play follows",
+   "observed": {
+    "playing": false,
+    "freeCam": false,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "cam": {
+     "pos": [
+      -230,
+      134.78,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.61,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "id": "relief-mid-glide",
+   "ok": false,
+   "expected": "a relief change mid-glide stops the glide and both tween slots",
+   "observed": {
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "factor": 4,
+    "vantage": "zuran"
+   }
+  },
+  {
+   "id": "follow-after-relief",
+   "ok": false,
+   "expected": "Play after it: Follow takes up (S-7)",
+   "observed": {
+    "playing": false,
+    "freeCam": false,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "cam": {
+     "pos": [
+      -83,
+      25.08,
+      -53
+     ],
+     "tgt": [
+      9,
+      6.56,
+      -5
+     ]
+    }
+   }
+  },
+  {
+   "id": "rapid-switches",
+   "ok": false,
+   "expected": "after ten switches ending on Study: playing, the rail shown and not inert, focus on a visible control",
+   "observed": {
+    "playing": false,
+    "presentation": "study",
+    "rail": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    }
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s2-modes-during-play-watch-playing.jpg",
+  "docs/audit-post8-evidence/interaction/s2-modes-during-play-paper-playing-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s2-modes-during-play-1x-playing-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s2-modes-during-play-after-rapid-switches-dom.jpg"
+ ],
+ "notes": [],
+ "listeners": {
+  "live": 588,
+  "removed": 0,
+  "onDetached": 1,
+  "total": 589,
+  "addCalls": 589,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 1,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 19,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 2,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip click": 1,
+   "#railclose click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 83,
+   "div.ml-item blur": 83,
+   "div.ml-item keydown": 83,
+   "div.ml-item click": 83
+  },
+  "timeouts": 0,
+  "timeoutsBy": {},
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 1,
+  "tSet": 15,
+  "tFired": 8,
+  "tCleared": 7,
+  "rSet": 10,
+  "rFired": 10,
+  "rCancel": 0
+ },
+ "ms": 280449,
+ "ended": "2026-11-02T01:46:30.594Z"
+}

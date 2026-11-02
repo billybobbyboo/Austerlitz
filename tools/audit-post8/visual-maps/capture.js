@@ -133,9 +133,9 @@ async function step(page,s){
     tiles.push({png:jpg,cap:sh.n+"  "+(st.clock!=null?String(Math.floor(st.clock/60)).padStart(2,"0")+":"+String(st.clock%60).padStart(2,"0"):"")+" "+st.presentation+"/"+st.mode+"  drop "+(rd.layer?rd.layer.dropped:"?")+"  AA-min "+(tc&&tc.min)});
     console.log(set,sh.n,"done in",((Date.now()-t1)/1000).toFixed(1),"s (settle",((tS-t1)/1000).toFixed(1),"shot",((tM-tS)/1000).toFixed(1),"measure",((Date.now()-tM)/1000).toFixed(1),"); dropped",rd.layer&&rd.layer.dropped,"text min",tc&&tc.min,"belowAA",tc&&tc.belowAA&&tc.belowAA.length);
   }catch(e){ console.log(set,sh.n,"SHOT FAILED",String(e.message).slice(0,200)); } }
-  if(tiles.length>1){ const tw=SET.vp[0]>=1280?640:512, th=Math.round(tw*SET.vp[1]/SET.vp[0]);
+  if(tiles.length>1&&!only.length){ const tw=SET.vp[0]>=1280?640:512, th=Math.round(tw*SET.vp[1]/SET.vp[0]);
     for(let i=0;i<tiles.length;i+=12){ await A.sheet(page,tiles.slice(i,i+12),3,tw,th,set+" ("+SET.vp.join("x")+"), sheet "+(i/12+1),path.join(dir,"sheet-"+(i/12+1)+".jpg")); } }
-  fs.writeFileSync(path.join(dir,"errors.json"),JSON.stringify(A.errors(page),null,1));
+  fs.writeFileSync(path.join(dir,only.length?"errors-"+only.join("+")+".json":"errors.json"),JSON.stringify(A.errors(page),null,1));
   await b.close();
   console.log(set,"all done in",((Date.now()-t0)/1000).toFixed(0),"s");
 })().catch(e=>{ console.error("FAILED",e); process.exit(1); });

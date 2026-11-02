@@ -1,0 +1,23 @@
+{
+ "old": "archive/step5c-45f8f662.html",
+ "new": "app.js",
+ "literalNames": {
+  "old": 135,
+  "new": 186
+ },
+ "dynamicNames": {
+  "old": 9,
+  "new": 22
+ },
+ "kept": 131,
+ "onlyOld": [
+  "spatial confidence: every grade's mark is draped, each vertex at its lift above the drawn ground and no point of it under the ground (section A.5)",
+  "identity: every formation drawn as figures in the free rectangle carries a side cue on screen, in Study, Watch and Clean, with Position confidence on and off (decision 107)",
+  "legend: the rows are what is drawn: the nation colours as the counters' only where counters are drawn; the figures' and the standards' rows where figures are; the footprint rows under decision 107's footprint",
+  "spatial confidence: every formation on the field is drawn at its position grade (confAt: between anchors the weaker one's), A as its footprint, B as its frontage doubled and C as a zone of its frontage's radius, in its side's colour (section A.5; decisions 86-88)"
+ ],
+ "onlyNew": 55,
+ "conditionChanged": 0,
+ "numbersChanged": 0,
+ "changed": []
+}

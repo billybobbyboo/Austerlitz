@@ -1,0 +1,554 @@
+{
+ "area": "tests (the regression suite, the browser checks' judging code, the thresholds and their history, the in-app self-test's frame and manifest, CI, and negative controls)",
+ "scope_summary": "The regression suite as npm test runs it (tools/run-all.sh: the build, the height guard, nine suites), check:data, check:chronology, the browser checks' judging code (tools/visual/thresholds.js, harness.js, measure.js, boot-check.js) read statically, the in-app self-test's frame and manifest, CI (.github/workflows/checks.yml and the repository's ruleset through the GitHub API), the limits' history from a full clone, and 33 negative controls (mutations of application behaviour or data) run on isolated copies of the audited tree at 43e3e5b (build md5 f10fe585c46aea576f436ed51ac46f83). Nothing in the application, its data, thresholds, tests, archive or build was changed; every copy was restored byte for byte and every rebuild gave the audited md5.",
+ "coverage": [
+  {
+   "item": "the regression suite on an isolated copy (baseline)",
+   "method": "AUSTERLITZ_SUITE_OUT=... nice -n 19 sh tools/run-all.sh; check:data; check:chronology",
+   "result": "ALL 9 SUITES PASSED (and the height guard); 139 DATA declarations identical; chronology 0 errors",
+   "evidence": "docs/audit-post8-evidence/tests/baseline-isolated-copy.txt"
+  },
+  {
+   "item": "negative controls (mutation testing of the node suites, check:data, check:chronology)",
+   "method": "node tools/audit-post8/tests/mutate.js <copy> <out.json> [ids], one isolated copy per batch, every suite at nice 19 with a 1,800 s timeout (3,600 s for the batches restarted for runtime-test.js), judged as run-all.sh judges; merged by mutations-table.js",
+   "result": "33 controls: 30 failed some check, 26 some check other than check:data, 19 a semantic check; missed by everything: M13, M29, M30; caught only by check:data: M16, M17, M27, M31; inconclusive: none; predictions wrong: M05, M07, M18; every copy restored: true",
+   "evidence": "docs/audit-post8-evidence/tests/mutations.json; README.md section 3"
+  },
+  {
+   "item": "assertion strength and vacuous passes in the harness's judging code",
+   "method": "read thresholds.js check(), requirements(), checkSelfTest(), judgeReport(); measure.js figures()",
+   "result": "T-5's 'every measure required' holds for the layer, docking, timeline, smoke, census and ground reader; the figure and standard checks are gated on a non-zero count (TS-5); a crashed self-test block fails by its catch and by the manifest",
+   "evidence": "tools/visual/thresholds.js:429-430, 663-695, 976-988",
+   "untested": "no browser run in this phase"
+  },
+  {
+   "item": "skipped branches in the node suites",
+   "method": "read the suites' early returns and existence gates; M28",
+   "result": "sim-test.js:72-80 skips an event whose named formations are not plotted in its window and reports it 'not tested', but redteam.js section 1 fails such an event (M28: 'names heightguns, which is not on the field at 07:00'); test.js:400 skips a missing register file, after which every claim citing it fails (not vacuous); css-test.js:122 skips its HTML check when no build exists (the suite runs after the build in run-all.sh); runtime-test.js:782 fails when no march row or midpoint was seen (non-vacuous)",
+   "evidence": "sim-test.js:72-80; test.js:400; css-test.js:122; runtime-test.js:782; mutations.json M28"
+  },
+  {
+   "item": "the in-app self-test's frame and manifest",
+   "method": "read app.js:11236-11260 and the per-block catches (12932, 13520, 13748, 13941, 14227); selftest-diff.js over step5c-45f8f662 and today's app.js",
+   "result": "each block's throw is a failing check; 317 names held exactly; no kept literal tolerance changed across Stage 8 (131 kept names, 253 literal comparisons kept); the conditions are not pinned (TS-16)",
+   "evidence": "docs/audit-post8-evidence/tests/selftest-diff.json and thresholds-history.md",
+   "untested": "the 317 checks were not read one by one"
+  },
+  {
+   "item": "tolerance history and owner approvals",
+   "method": "threshold-history.js over every commit touching thresholds.js (68) and boot-check.js (10) in a full clone",
+   "result": "36 loosenings in thresholds.js and 1 in boot-check.js, each traced to an owner decision or brief; two re-baselines (8J, 8K MOTION.VIS) under a general brief, later kept by decision 267 (a) (TS-14)",
+   "evidence": "docs/audit-post8-evidence/tests/thresholds-history.md"
+  },
+  {
+   "item": "fixture independence",
+   "method": "read tools/fresh.js, runtime-test.js:172-177, runtime-test.js:545, the gait checks, the movement checks",
+   "result": "the suites regenerate what they read from the live sources and runtime-test.js refuses a stale bundle; the plateau rule is written in the test; the movement checks and several self-test checks read their bound from the code under test (TS-8); the gait checks verify the JavaScript mirror, not the shader (TS-6)",
+   "evidence": "tools/fresh.js:1-34; runtime-test.js:545; audit.js:45; app.js:13430"
+  },
+  {
+   "item": "user-visible quality versus implementation stability",
+   "method": "classification of the checks by what they compare",
+   "result": "absolute bars: map text at AA as rendered and its 10.5 px floor, no overlap, the camera floor, figures on the ground, the smoke's quarter, the census budget, the phone's zero-limits, the toast's 0 px, the focus ring; regression baselines: DROP_LIMIT, UNOBSTRUCTED, MOTION totals and VIS, CTX_DELETES (TS-14, TS-15); implementation pins: css-test.js's 434 source regexes (9 behaviour checks), check:data's byte identity, the inventory's freshness, chronology's L9 hashes, KNOWN_WARN's exact texts, the manifest's names (TS-7, TS-17)",
+   "evidence": "css-test.js:197; thresholds.js"
+  },
+  {
+   "item": "CI coverage",
+   "method": "checks.yml read; GitHub API: the ruleset, the check runs of PRs #70-#79 and of main's merges 141f890, c2adefe, 43e3e5b, the dispatched runs",
+   "result": "only 'checks' is a required status; the browser checks are not; check:visual on dispatch only; main red on check:selftest from 141f890 to c2adefe (TS-1)",
+   "evidence": ".github/workflows/checks.yml:45-76; ruleset 24036909"
+  },
+  {
+   "item": "the narrative inventory's reach",
+   "method": "inventory-reach.js (lang-scan's records against statements.js's classes)",
+   "result": "704 statements; 115 guarded prose strings outside every class, 41 of them shown to visitors and not named in the exclusion note (TS-12)",
+   "evidence": "docs/audit-post8-evidence/tests/inventory-reach.json"
+  },
+  {
+   "item": "check:chronology's reach over word-form hours",
+   "method": "node tools/audit-post8/tests/word-hours.js (statements.js's statements against timesIn's patterns); M32",
+   "result": "45 statements (13 with no clock-shaped hour besides); 33 hashed by their claims, 12 unchecked (TS-13)",
+   "evidence": "tools/stage2/chronology.js:96-109"
+  }
+ ],
+ "findings": [
+  {
+   "id": "TS-1",
+   "title": "TS-1: The merge gate requires only the node job: check:selftest and check:contrast are not required checks, check:visual gates nothing, and main carried a failing self-test for a day",
+   "category": "probable-problem",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "CI (.github/workflows/checks.yml; the repository ruleset on main)",
+   "user_impact": "A build whose in-app self-test (317 checks of what a visitor is shown) or contrast states fail can be merged into main and deployed. It happened once in Stage 8: 141f890 (PR #77) was merged and deployed with its self-test failing (the known one-line benchmark excess of question 267), and main stayed red until c2adefe the next day.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "docs/audit-post8-evidence/tests/ci-gate.json",
+    ".github/workflows/checks.yml:45-65",
+    ".github/workflows/checks.yml:75-76",
+    "ruleset 24036909 'protect main.' (GET repos/billybobbyboo/Austerlitz/rules/branches/main)",
+    "fd6e537 (2026-10-07, decision 132: the browser jobs added)",
+    "PR #77 head ec911c9 and merge 141f890",
+    "c2adefe (PR #78)",
+    "dispatch run 41259079904"
+   ],
+   "evidence": "The repository's only ruleset on main ('protect main.', id 24036909, created 2026-09-26 09:06 UTC, enforcement active) requires a pull request and one status check, context 'checks' (the node job: build, the committed HTML against a fresh build, npm test, check:data, check:chronology; checks.yml:22-40). The browser jobs 'browser (contrast)' and 'browser (selftest)' were added on 2026-10-07 (fd6e537, decision 132) and were never added to the required checks; the job 'visual' runs only on a dispatch with 'visual' ticked (checks.yml:75-76). Check runs read through the GitHub API: PR #77's head ec911c9 has 'browser (selftest)' failure; its merge 141f890 (2026-10-31 07:55 UTC) has 'browser (selftest)' failure (completed 08:44:41) and the Pages jobs 'build' and 'deploy' success; main's next merge c2adefe (2026-11-01 06:55, decision 267 (a)) has it success. 'visual' was skipped on the heads of PRs #71, #73 and #76-#79, passed on #70, #72 and #74, and failed on #75 (8J, merged into its stacked branch, not main); the last dispatched run before the audit (41259079904 on d3f7026, 2026-11-01) passed all four jobs.",
+   "expected": "Decision 132 put check:contrast and the self-test on every push; a merge into main (and the deployment that follows) waits for them, or a merge over a red browser check is an owner decision recorded as one.",
+   "observed": "Neither browser check gates a merge. The one merge over a red self-test (#77) was made knowingly (CLAUDE.md: 'every required check passes but that one line in check:selftest and check:visual') and was held by the owner's judgement, not by the gate. check:visual's 39 cases (drop limits, unobstructed shares, map text at AA as rendered, census and culling equivalence, the cull motion block, far plates, light, fog, horizon, the phone cases) are required for no merge.",
+   "remedy": "Add 'browser (contrast)' and 'browser (selftest)' to the ruleset's required status checks (a settings change; no code). Keep check:visual on demand (decision 132's cost: two to six hours a run), but record in CHANGELOG.md the dispatched run that measured each merged build, or require it on pull requests that touch app.js, world.js, style.css, tokens.js or tools/visual/.",
+   "effort": "minutes (a ruleset setting)",
+   "validation": "a draft PR with one self-test check made to fail shows the merge blocked",
+   "cause_hypothesis": "the ruleset was written on 2026-09-26, eleven days before the browser jobs existed, and was not revisited",
+   "cause_verified": "dates verified (ruleset created_at, fd6e537); the intent not verified"
+  },
+  {
+   "id": "TS-2",
+   "title": "TS-2: Historical values a data task may change are held only by change detectors that the task itself resets: a strength, a later anchor's grade, a position, a village, the order of battle's hierarchy and a claim's reading fail no check of the property",
+   "category": "untested",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "node suites (test.js, geo-test.js, sim-test.js, audit.js, redteam.js); check:data",
+   "user_impact": "A wrong figure, grade or place entered during a data task (the only time such values change) reaches the visitor with every automated check green; only the reviewer's reading of the CHANGELOG's list of changed declarations stands between it and the map.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "tools/visual/data-invariance.js:69-86",
+    "test.js:66-74 (D-3: sums, 30% warning)",
+    "test.js:495-505 (OOB pins: 13 strengths)",
+    "geo-test.js:83",
+    "test.js:425-446 (claims: register, source, page-image status; no locator or relevance check)",
+    "docs/audit-post8-evidence/tests/mutations.json M03 M07 M16 M17 M18 M27 M33"
+   ],
+   "evidence": "M16: failed data (data identity); M17: failed data (data identity); M18: failed redteam (known-warning text), data (data identity); M27: failed data (data identity); M33: failed test (inventory), data (data identity); M03: failed test, redteam, data (data identity). (M07, which swapped in a reading made partly on the text layer, failed test.js's page-image rule, not a relevance check; M33 swaps in a page-image reading of the same source on another matter and fails only the inventory's freshness.) check:data (data-invariance.js:69-86) fails on any byte of a guarded declaration, and CLAUDE.md requires a data task to move its reference to the task's own build. test.js's strength checks are sums against the parent (test.js:72-74: an error only when the children exceed the parent, a warning beyond 30%) and 13 pinned strengths (test.js:495-505; Saint-Hilaire's is not among them, nor are the other leaf formations'); the grade rule D-2 covers the first positioned anchor only; the claim check verifies that a reading id is registered, of the source named and read on page images, not that it bears on the statement.",
+   "expected": "The properties the project ranks first (historical and data integrity) have checks that fail on a plausible slip inside a data task: a strength that disagrees with its own note, a grade raised without a reading, a place moved off its sourced site.",
+   "observed": "None failed a check of the property itself: M16, M17 and M27 failed check:data alone; M18 failed redteam.js only through an acknowledged warning's text (the infantry mean rate's second decimal moved); M33 failed test.js only on the inventory's freshness; M03 failed the strength sums only because the moved division does not fit under its new corps' declared strength. Within a data task check:data's reference is the task's own build and the inventory and the acknowledgements are regenerated by the task, so none of these would fail anywhere.",
+   "remedy": "Add data-integrity checks that hold between data tasks and within them: (1) every strength's note carries the number shown or names it as this map's working figure (M17: note 'about 6,600', value 8,600); (2) every anchor grade A or B names its reading (a reading id per graded anchor, checked like STATEMENT_CLAIMS); (3) pin every leaf formation's strength and every village and anchor position to its CHANGELOG-recorded value with a tolerance of tens of metres, regenerated only by the data task's own command, so that a data task's diff of the pins is the review list; (4) for a claim's reading, keep the human check but list the readings each claim's statement cites in the sources sheet's index (already shown) and in the data task's CHANGELOG entry.",
+   "effort": "days",
+   "dependencies": "owner agreement on which values are pinned"
+  },
+  {
+   "id": "TS-3",
+   "title": "TS-3: Presentation code can rewrite a guarded datum at run time and every check passes, check:data included",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "check:data (tools/visual/data-invariance.js); runtime-test.js; the self-test",
+   "user_impact": "A display-side override (CLAUDE.md: 'Never fix a data problem by changing only the display') would move a formation on screen away from its declared, sourced anchor with no failing check; the dossier, the map and the day-track would all show the overridden value.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "tools/visual/data-invariance.js:79",
+    "tools/visual/data-invariance.js:86",
+    "app.js:613 (init)",
+    "docs/audit-post8-evidence/tests/mutations.json M29",
+    "docs/audit-post8-evidence/tests/m29-check-data.txt"
+   ],
+   "evidence": "M29: every suite run passed (runtime, css, test, redteam, sim, audit, chron, data). The mutation sets FORMATIONS.sthilaire.track[5].p to a point 0.4 km south as init()'s first statement. data-invariance.js compares the declarations' source text: a changed rendering or interface declaration is listed ('Rendering and interface declarations changed', :79) and the exit code counts DATA declarations only (:86).",
+   "expected": "A check that the guarded declarations are not written after load: the data the visitor is shown is the data declared.",
+   "observed": "check:data printed 'Rendering and interface declarations changed (1): init' and 'All 139 DATA declarations are byte-identical to the original build' and exited 0 (docs/audit-post8-evidence/tests/m29-check-data.txt); runtime-test.js, css-test.js, test.js, redteam.js, sim-test.js, audit.js and check:chronology passed (sim-test.js, audit.js and check:chronology read the declarations through their own module, not the running app).",
+   "remedy": "In runtime-test.js (and the self-test), deep-freeze or hash every guarded declaration of check:data's DATA list before init() and compare after init and after the dry runs; fail on any difference.",
+   "effort": "hours",
+   "validation": "M29 fails runtime-test.js"
+  },
+  {
+   "id": "TS-4",
+   "title": "TS-4: No check reads the formation dossier's strength against the data",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "runtime-test.js; the self-test; app.js dossierFormation",
+   "user_impact": "The full dossier's 'Approximate strength' is the figure a visitor reads; a display error there (here 25% too high) is materially misleading and passes every check.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:7975-7976",
+    "app.js:7809",
+    "app.js:9634-9637",
+    "runtime-test.js (dossiers: 40 formations, 24 features, 9 terrain lines)",
+    "docs/audit-post8-evidence/tests/mutations.json M30"
+   ],
+   "evidence": "M30: every suite run passed (runtime, css, test, redteam, data). The mutation multiplies the full dossier's strength (app.js:7975) by 1.25; the compact card's row (app.js:7809) is left as it was. runtime-test.js opens 40 formation dossiers and checks their other rows (the position pill, the claims' tags, the derived tags), not the strength. In the self-test (read, not run: no browser in this phase) the map layer's naming check accepts any 'about N' in a formation's accessible name by its pattern (app.js:9634-9637), and no check reads the dossier's strength row (no match for 'Approximate strength' or a strength comparison in AUSTERLITZ_DEBUG).",
+   "expected": "Every figure the dossier shows (strength, guns, the army total) equals the data's, or its derived value (aggStrength) for an aggregate.",
+   "observed": "Every suite run passed.",
+   "remedy": "In runtime-test.js, for every formation, parse the dossier's and the compact card's strength and guns and compare them with FORMATIONS (or aggStrength for an aggregate).",
+   "effort": "hours",
+   "validation": "M30 fails runtime-test.js"
+  },
+  {
+   "id": "TS-5",
+   "title": "TS-5: The harness's figure-on-ground and standard-foot checks pass when nothing is measured",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "check:visual (tools/visual/thresholds.js check(), requirements(); measure.js figures())",
+   "user_impact": "If a refactor stopped listing the kit's geometries (kitGeos) or the poles, every case would report no figure and no standard and the 'a figure is N units off the drawn ground' check would pass silently in all 39 cases.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "tools/visual/thresholds.js:429-430",
+    "tools/visual/thresholds.js:663-695",
+    "tools/visual/measure.js:428-460"
+   ],
+   "evidence": "thresholds.js:429 tests 'm.figures.count&&m.figures.maxErr>0.02' and :430 'm.standards.count&&...'; requirements() (thresholds.js:663-695), written under decision 131 (T-5: 'every measure the case's kind calls for is required: a build or a report without it fails, where before step 1 a missing measure skipped its check without a word'), requires the layer, the docking, the timeline, the smoke, the census and the ground reader's self-check, but no figure or standard count. measure.js:430-445 counts only instanced meshes whose geometry is in the app's kitGeos(). The gate is in the restored Stage 0 file (4156ee7); on this build the counts are about 6,000 per landscape case (docs/stage8-evidence/8l/report-two-cases.json), so the gap is latent.",
+   "expected": "A landscape case in which figures are drawn requires figures.count > 0 (and standards.count > 0 where standards are drawn), as T-5 requires every other measure.",
+   "observed": "The check is skipped when the count is 0.",
+   "remedy": "In requirements(), for a landscape case, need(m.figures.count>0) and need(m.standards.count>0) where the case shows figures; keep the 0.02 bound.",
+   "effort": "minutes",
+   "validation": "the browser candidate in docs/audit-post8-evidence/tests/browser-candidates.json (kitWrap without its push) then fails the case"
+  },
+  {
+   "id": "TS-6",
+   "title": "TS-6: The gait's drawn shader and its JavaScript mirror are never compared: the feet-on-ground, contact and culling-envelope checks verify the mirror",
+   "category": "untested",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "the in-app self-test (8E/8F gait checks); runtime-test.js; css-test.js",
+   "user_impact": "A change to the vertex hook's arithmetic (animGLSL) that is not made in animAt would leave every gait check green while the figures drawn float, sink or swing differently from what the checks measure; the culling envelope computed from the mirror could then also be too small.",
+   "status": "inferred",
+   "origin": "inherited",
+   "refs": [
+    "app.js:1020 (animAt)",
+    "app.js:1849 (animGLSL)",
+    "app.js:12905",
+    "app.js:13430",
+    "runtime-test.js:1418-1448",
+    "css-test.js:484",
+    "css-test.js:587"
+   ],
+   "evidence": "The self-test's 'the gait on the ground' check (app.js:13430-13501) and the culling envelope check (app.js:12905) place vertices with animAt, 'the hook's arithmetic in JavaScript' (app.js:1017-1020); runtime-test.js's contact check (runtime-test.js:1418-1448) does the same. No check reads a posed vertex back from the GPU (or evaluates animGLSL) and compares it with animAt; css-test.js pins the hook's table and parts by source text (css-test.js:484, 587). The browser candidate (docs/audit-post8-evidence/tests/browser-candidates.json: the thigh swing scaled in the GLSL only) was not run: no browser in this phase.",
+   "expected": "At least one check compares the drawn pose (a rendered silhouette or a transform-feedback-free readback of a posed instance) with animAt, so that the mirror is held to the shader.",
+   "observed": "The gait checks are internally consistent with the mirror only.",
+   "remedy": "Add a self-test check that renders one posed instance at two phases into a small target and compares its lowest drawn pixel row and silhouette with animAt's projection (within a pixel), at both levels of detail.",
+   "effort": "a day",
+   "validation": "the GLSL-only swing change then fails it"
+  },
+  {
+   "id": "TS-7",
+   "title": "TS-7: css-test.js holds source text, not behaviour: its march-row pin passed a march row stripped of its 'derived' tag",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P4",
+   "subsystem": "css-test.js",
+   "user_impact": "None on this build: runtime-test.js caught the stripped tag. The weakness is that css-test.js's 434 regular expressions over the source are counted as guards of behaviours they only partly see.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "css-test.js:380",
+    "css-test.js:197",
+    "runtime-test.js:756-783",
+    "app.js:7917-7930 (marchRow; the visitor's path 7927-7929)",
+    "docs/audit-post8-evidence/tests/mutations.json M08 M14"
+   ],
+   "evidence": "M08: failed runtime. css-test.js:380 fails only when 'derivedTag()' is absent from marchRow's whole source; the mutation removed it from the visitor's path (the 'Marching' / 'Next move' return) and left it on the readHidden path, so the pin held. runtime-test.js:756-783 renders every march row at every half hour and caught it ('the march row untagged', 720 rows). css-test.js has 434 '.test(' calls, most over app.js's or style.css's text, against 9 behaviour checks (css-test.js:197). In M14 css-test.js's failure came from a pin on the boundary's drawn options ('the bounds are not tested against the ground'), binding-test.js's from the dash rule itself.",
+   "expected": "A check named for a behaviour (the march row tagged) tests the behaviour, or says that it pins text.",
+   "observed": "The pin passes any refactor that keeps one occurrence of the token, and fails refactors that keep the behaviour.",
+   "remedy": "Where a behavioural check exists (runtime-test.js D-6 here), drop or relabel the source pin as a text pin; where it does not, write the behaviour check in runtime-test.js.",
+   "effort": "hours per pin"
+  },
+  {
+   "id": "TS-8",
+   "title": "TS-8: Checks take their bounds from the code under test: a 20% looser infantry march-rate ceiling passes every movement check, and the self-test checks decided values against the code's own constants",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "audit.js, sim-test.js, check:chronology, redteam.js; the in-app self-test",
+   "user_impact": "A model limit that keeps the march believable (SPEED_CEIL) or a decided presentation value (the arrow cap of decision 241) can change with the code that it is meant to restrain, and the behavioural checks follow it.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:3369 (SPEED_CEIL)",
+    "audit.js:45",
+    "sim-test.js:40",
+    "tools/stage2/chronology.js:627",
+    "redteam.js:108",
+    "redteam.js:348",
+    "app.js:2838 (ARROW_CAP)",
+    "app.js:10915-10916",
+    "css-test.js:391",
+    "tools/visual/selftest-manifest.json",
+    "docs/audit-post8-evidence/tests/mutations.json M25"
+   ],
+   "evidence": "M25: failed redteam (known-warning text), data (data identity). audit.js:45, sim-test.js:40 and chronology.js:627 read SPEED_CEIL from the code under test, so raising it raises their bound; redteam.js failed only because an acknowledged warning's text carries the infantry mean rate (redteam.js:108, acknowledged at :348 as 1.35; it became 1.36). In the browser layer the arrow check's condition is 'S.maxPx<=ARROW_CAP.PX+0.5' with ARROW_CAP.PX in its name (app.js:10915-10916); the decided 16 px is held by css-test.js's source pin (css-test.js:391) and by the manifest, whose names (288 of 317 carry digits) change when an interpolated constant changes.",
+   "expected": "The decided or sourced value is written in the test (as runtime-test.js:545 writes the plateau rule, 'not read from PLATEAU_LAST') or pinned by a check that names the decision.",
+   "observed": "For SPEED_CEIL no check outside check:data holds the value; for the browser constants the value is held by text pins and names, and the self-test verifies only that the code does what its constant says.",
+   "remedy": "Write the ceilings into audit.js (or a test-owned table checked against SPEED_CEIL with its decision reference) and fail on a difference; list the decided constants the self-test reads in one test-owned table with their decision numbers, checked by css-test.js against the code.",
+   "effort": "hours"
+  },
+  {
+   "id": "TS-9",
+   "title": "TS-9: Interface colours typed into style.css are read by no check",
+   "category": "untested",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "css-test.js (palette); check:contrast",
+   "user_impact": "A colour outside the tokens (for example a low-contrast hover colour) can enter style.css with every check green; check:contrast reads visible text in its 45 states, not :hover, :focus or :active rules.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "css-test.js:275",
+    "css-test.js:858",
+    "style.css:573",
+    "style.css:757-758",
+    "docs/audit-post8-evidence/tests/mutations.json M13"
+   ],
+   "evidence": "M13: every suite run passed (css, build, redteam). The palette rule reads world.js, app.js and symbols.js (css-test.js:275); in style.css only the day-track inset's rules are scanned for a colour (css-test.js:858). Today style.css carries 14 colour literals outside its generated tokens block: black or near-black shadows and a vignette (for example style.css:573), and the developer readout's (style.css:757-758); none is a visitor's interface colour, so the rule CLAUDE.md states for tokens.js holds today by review, not by a check.",
+   "expected": "CLAUDE.md: tokens.js is 'the only source of interface and symbology colours'; a colour literal in style.css outside the tokens block fails unless it is a shadow or the developer readout, named.",
+   "observed": "M13's #ff00aa hover colour passed css-test.js, the build and redteam.js.",
+   "remedy": "Extend the palette rule to style.css after the tokens block, with a short named allow-list (the shadows' black alphas, the vignette, #devstats).",
+   "effort": "hours",
+   "validation": "M13 then fails css-test.js"
+  },
+  {
+   "id": "TS-10",
+   "title": "TS-10: test.js's 'objective off map' reads the objective's x only",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P4",
+   "subsystem": "test.js (overlays)",
+   "user_impact": "An overlay objective placed off the field's depth (y beyond the frame) would draw off the map or at its edge with the check green.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "test.js:96",
+    "docs/audit-post8-evidence/tests/mutations.json M31"
+   ],
+   "evidence": "M31: failed data (data identity). test.js:96: '(o.obj||[]).forEach(p=>{ if(p[0]<0||p[0]>MAPF.w) errs.push(\"phase \"+i+\": objective off map\"); })': y is not tested, while the arrows', lines' and bounds' points use offMap(p) on both axes (test.js:93).",
+   "expected": "The objective's point tested with offMap(p), as the other overlay points are.",
+   "observed": "Phase 0's Telnitz objective at y 608 (the frame is 500 deep) passed.",
+   "remedy": "Use offMap([p[0],p[1]]) at test.js:96.",
+   "effort": "minutes",
+   "validation": "M31 then fails test.js"
+  },
+  {
+   "id": "TS-11",
+   "title": "TS-11: geo-test.js holds the surveyed villages to 0.5 km of ground truth while the worst is 20 m",
+   "category": "optional-improvement",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "geo-test.js",
+   "user_impact": "A village can be moved up to about 480 m (24 times today's worst error) by a slip in a data task with geo-test.js green; the geographic corrections of 8J and 8K are protected only by check:data.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "geo-test.js:81-83",
+    "geo-test.js:88-89",
+    "docs/audit-post8-evidence/tests/baseline-isolated-copy.txt",
+    "docs/audit-post8-evidence/tests/mutations.json M27"
+   ],
+   "evidence": "M27: failed data (data identity). geo-test.js:83 'every surveyed village within 0.5 km of ground truth' (worst on this build Blasowitz, 20 m; the feature markers likewise 0.5 km, worst 20 m, geo-test.js:89).",
+   "expected": "After the correction passes, a tolerance near the measured worst (for example 0.1 km), loosened only by a data task with its reason.",
+   "observed": "Kobelnitz moved 0.28 km east passed geo-test.js.",
+   "remedy": "Tighten both to 0.1 km (or to each place's own recorded tolerance) and record the change in CHANGELOG.md.",
+   "effort": "minutes"
+  },
+  {
+   "id": "TS-12",
+   "title": "TS-12: The statement inventory is a whitelist with no completeness check: timing bases and plan labels a visitor reads are outside it and outside its own exclusion note",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "tools/step4/statements.js; test.js (claims); narrative.js",
+   "user_impact": "19 timing bases shown in every timed dossier ('grade B · app narrative, unsourced') and 22 plan labels drawn on the map or listed in the Plans tab ('Soult concealed in the Goldbach valley', 'The bait - Legrand, then Davout') carry no claim and are not counted as unchecked; a new narrative field added to the data would be outside the inventory silently.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "tools/step4/statements.js:9-11",
+    "tools/step4/statements.js:15-40",
+    "app.js:7989",
+    "app.js:4521",
+    "app.js:4536",
+    "app.js:4625",
+    "docs/audit-post8-evidence/tests/inventory-reach.json"
+   ],
+   "evidence": "inventory-reach.js: 704 inventoried statements; 765 prose-like guarded strings in data.js and analysis.js, 115 of them matching no class. Most are what statements.js's note excludes (names, tm.ev quotations, tolWhy, CLAIM's apparatus), but 19 FORMATIONS.*.track[n].tm.basis strings (rendered in the dossier's Timing row, app.js:7989), 8 PLANS.*.staging[n].n and 2 PLANS.*.objectives[n].n labels (drawn as map labels by planLabel, app.js:4521, 4536) and 12 PLANS.*.cols[n].n (the Plans tab's row labels, app.js:4625) are statements or labels with a claim in them and are not named in the exclusion note. No check asserts that every guarded prose path matches a class or an exclusion.",
+   "expected": "Every visitor-facing narrative string is inventoried or excluded by a named rule, and a test fails on a guarded prose path that is neither.",
+   "observed": "The inventory's reach is whatever its 24 patterns (21 classes) match.",
+   "remedy": "Add an exclusion table to statements.js (pattern, reason) and a test.js check that every guarded prose record of data.js and analysis.js matches a class or an exclusion; decide whether tm.basis and the plan labels are statements (then inventory them) or apparatus (then exclude them by name).",
+   "effort": "hours"
+  },
+  {
+   "id": "TS-13",
+   "title": "TS-13: check:chronology judges clock-shaped hours only; 45 inventoried statements give hours in words it does not read",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "check:chronology (tools/stage2/chronology.js timesIn)",
+   "user_impact": "A retimed 'about nine' or 'at seven' is not compared with the movement model; for 33 statements the claim's hash forces a review of the reword, for 12 unchecked ones only the inventory's freshness fails, which regenerating the inventory clears.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "tools/stage2/chronology.js:96-109",
+    "tools/audit-post8/tests/word-hours.js",
+    "CLAUDE.md (check:chronology: 'its extractor reads only clock-shaped hours (a bare \"about eight\" goes unjudged; handed on)')",
+    "docs/audit-post8-evidence/tests/mutations.json M32"
+   ],
+   "evidence": "M32: failed test (inventory), data (data identity). timesIn (chronology.js:98-109) reads 'HH:MM', ranges, 'after HH:MM', 'a quarter to/past', 'half past', 'N o'clock' and 'noon'/'midday'; it does not read 'at seven', 'about nine', 'past two', 'after three', 'toward eight'. tools/audit-post8/tests/word-hours.js over tools/step4/statements.js's 704 statements finds 45 with such a word-form hour (13 with no clock-shaped hour besides); 33 have a claim of their own (hashed), 12 are unchecked (timing notes, SOURCE_NOTE.body).",
+   "expected": "Every timed statement judged, as check:chronology's L-rules claim, or the word forms listed as unjudged by name.",
+   "observed": "Recorded in CLAUDE.md as handed on (its check:chronology paragraph since roadmap step 4); still open. M32 retimed an unchecked timing note from seven to nine and check:chronology passed.",
+   "remedy": "Extend timesIn to 'at|about|by|before|after|past|toward|near <number word>' (the day runs 04:00-18:00, so the hour maps as hr() already does) and review the new cites; or list the word-form statements in ALLOW_TIMED with reasons.",
+   "effort": "hours to a day (the new cites need review)"
+  },
+  {
+   "id": "TS-14",
+   "title": "TS-14: The motion benchmark's ceilings and visibility baselines equal the build's own counts: they detect change, not quality; Play now accepts a formation hidden for 4,033 ms",
+   "category": "accepted-compromise",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "check:selftest and check:visual (thresholds.js MOTION)",
+   "user_impact": "The label layer's stability in motion is held to 'no worse than the build of 8K', not to a stated level; in the Play run a formation's name may stay hidden for four seconds (was 3,100 ms before 8K).",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "tools/visual/thresholds.js:251-270",
+    "tools/visual/thresholds.js:274-296",
+    "tools/visual/thresholds.js:308",
+    "docs/audit-post8-evidence/tests/thresholds-history.md",
+    "docs/audit-post8-evidence/checks/check-selftest.txt:324-339"
+   ],
+   "evidence": "MOTION={JUMPS:248, POPS:998, FLICKER:10, LOD:130, ...} (thresholds.js:270): JUMPS and POPS are 8K's build's own totals (decision 267 (a)), LOD 130 its own, FLICKER 10 against 9 measured; decision 257 (b) calls them 'ceilings of this benchmark, not a guarantee of what a device shows'. The VIS floors were re-baselined in 8J and 8K under the owner's brief of 30 October 2026 (thresholds.js:274-296), hybrid-play's longest-hidden ceiling 3,100 to 4,033 ms (+30%, thresholds.js:289, 308), and kept by decision 267 (a), which names Play's 4,033 ms as a final-audit item. The audit's own check:selftest run measured, over the 16, jumps 248, pops 998, level-of-detail switches 130 and flickers 9 (docs/audit-post8-evidence/checks/check-selftest.txt:324-339): three of the four totals exactly at their ceilings, one more jump or pop fails.",
+   "expected": "Accepted by the owner as benchmark pins; the final audit to judge the 4,033 ms on screen.",
+   "observed": "As accepted; no absolute level of label stability is asserted anywhere.",
+   "remedy": "Keep the pins; add one absolute bar the owner can accept (for example: no formation hidden by the layout for more than 2 s in any driven run, protected items never), and judge Play's 4,033 ms case on screen in the final report.",
+   "effort": "hours (once the bar is decided)",
+   "dependencies": "an owner decision on an absolute bar"
+  },
+  {
+   "id": "TS-15",
+   "title": "TS-15: CTX_DELETES allows 248 context warnings where the case has measured 193 since 8C",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "check:contrast (tools/visual/boot-check.js)",
+   "user_impact": "None directly; 55 more 'does not belong to this context' warnings (geometries disposed across a context loss) would pass unseen.",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "tools/visual/boot-check.js:30",
+    "docs/audit-post8-evidence/checks/check-contrast.txt:13"
+   ],
+   "evidence": "boot-check.js:30 CTX_DELETES=248 (decision 212 (b), the count measured then); since 8C waits for the step's first frame the case gives 193 (CLAUDE.md; this audit's check:contrast: '193 “does not belong to this context” warnings (at most 248)').",
+   "expected": "A regression bound near the measured count once the measure changed.",
+   "observed": "The bound kept at the older, higher count.",
+   "remedy": "Re-baseline to 193 (or a small margin) with an owner decision, as decision 212 (b) set it.",
+   "effort": "minutes"
+  },
+  {
+   "id": "TS-16",
+   "title": "TS-16: The self-test manifest holds names and a count, not conditions",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "check:selftest (thresholds.js checkSelfTest; selftest-manifest.json)",
+   "user_impact": "A self-test check weakened under an unchanged name (a tolerance widened, a branch skipped) passes the manifest; only review would see it.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "tools/visual/thresholds.js:976-988",
+    "tools/visual/selftest-manifest.json",
+    "tools/visual/check-report.js:20",
+    "docs/audit-post8-evidence/tests/selftest-diff.json"
+   ],
+   "evidence": "checkSelfTest fails a missing, added, renamed or duplicated check and any failing one (thresholds.js:976-988); the manifest (317 names) is written by check-report.js --write-manifest from a passing run. selftest-diff.js over the last pre-Stage-8 build (step5c-45f8f662) and today's app.js: 131 checks with a literal name in both, none with a changed condition; 253 literal comparisons before Stage 8, all still present. So no literal tolerance of a kept check was loosened in Stage 8; a weakening by logic would not show in that comparison.",
+   "expected": "The manifest, or a companion, records each check's condition (or a hash of its source) so that a changed condition is listed for review.",
+   "observed": "Names only.",
+   "remedy": "Write a hash of each ck() call's condition source into the manifest beside its name (check-report.js --write-manifest), and list changed hashes in the harness's report.",
+   "effort": "hours"
+  },
+  {
+   "id": "TS-17",
+   "title": "TS-17: Several 'caught' results come from change detectors that a mechanical regeneration clears: the suites' semantic coverage is narrower than their failure count",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "test.js (inventory freshness), redteam.js and test.js (KNOWN_WARN exact texts), check:chronology L9, check:data",
+   "user_impact": "None directly; a reader counting failing suites overstates what is checked. Regenerating the inventory (node tools/step4/inventory.js), rewriting an acknowledged warning's text or --rehash --write clears these failures without any statement of truth being checked.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "test.js:464-470",
+    "redteam.js:347-356",
+    "tools/stage2/chronology.js:680-700",
+    "docs/audit-post8-evidence/tests/mutations.json"
+   ],
+   "evidence": "Of 33 negative controls, 30 failed some check, 26 some check other than check:data, and 19 a semantic check (mutations-table.js's reading of each failing suite's lines). Caught only by change detectors or review triggers: M04 (test: claim hash+inventory, data: data identity); M05 (test: inventory, data: data identity); M10 (test: inventory, data: data identity); M16 (data: data identity); M17 (data: data identity); M18 (redteam: known-warning text, data: data identity); M25 (redteam: known-warning text, data: data identity); M27 (data: data identity); M31 (data: data identity); M32 (test: inventory, data: data identity); M33 (test: inventory, data: data identity). M01's, M18's and M25's redteam.js failures came from the acknowledged warning 'cavalry mean rate 0.83 is not above infantry 1.35' (redteam.js:348), whose text carries a number every timing change moves.",
+   "expected": "Each control's catch attributed to the check that holds the property.",
+   "observed": "See section 3's mechanism column.",
+   "remedy": "Report change-detector failures separately in tools/run-all.sh's summary ('changed: the inventory', 'changed: an acknowledged warning') from property failures, so that a reviewer sees which kind failed.",
+   "effort": "hours"
+  },
+  {
+   "id": "TS-18",
+   "title": "TS-18: Wall-clock limits make the suites load-sensitive: runtime-test.js's 30 s font watchdog fired under load in this audit, and run-all.sh kills a suite at 600 s",
+   "category": "probable-problem",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "runtime-test.js (the font dry runs' watchdog); tools/run-all.sh (per-suite timeout); the in-app self-test (the pan move's median); check:visual (LAYER_MS)",
+   "user_impact": "A loaded runner can fail a correct build (a flake), or a slow regression can hide on a fast one.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:11320-11325",
+    "tools/visual/thresholds.js:155",
+    "tools/visual/thresholds.js:482",
+    "runtime-test.js:1652",
+    "tools/run-all.sh:35",
+    "docs/FINAL_AUDIT.md T-7",
+    "docs/audit-post8-evidence/checks/summary.txt",
+    "docs/audit-post8-evidence/tests/mutations.json M23"
+   ],
+   "evidence": "runtime-test.js:1652 fails the suite if its asynchronous font dry runs have not finished 30 s (wall clock) after the watchdog is set; in this audit's M23 run (runtime-test.js at nice 19 beside other areas' browsers, 1,403 s for the whole suite) it fired ('E FONTS: the dry runs did not finish within 30 s') beside the mutation's genuine failure; in the other six runtime-test.js runs (693-1,545 s) it did not. tools/run-all.sh:35 kills each suite at 600 s: runtime-test.js took 693-1,545 s in this audit's loaded runs, so npm test on such a machine would fail without a defect (CI's runners are not shared; the audit's own npm test took 402 s in all, checks/summary.txt). The self-test's landscape-controls check requires a pan move's median at most 2 ms (app.js:11322) and check:visual each case's layer pass under 8 ms (thresholds.js:155, 482); the audit's own check:selftest passed on this shared machine (5,422 s, checks/summary.txt).",
+   "expected": "Timing budgets measured as CPU time or guarded against load, or reported as such.",
+   "observed": "One spurious failure line seen (the font watchdog, M23's run); the browser budgets held under load; not exercised further.",
+   "remedy": "Measure the font dry runs' watchdog in the dry runs' own steps (or raise it with a reason) and let run-all.sh's timeout be set by an environment variable for loaded machines; report the browser budgets' margins in the harness's report and run the browser candidate (the same build with and without a CPU load) once.",
+   "effort": "an hour"
+  }
+ ],
+ "experiments": [
+  {
+   "command": "node tools/audit-post8/tests/mutate.js <scratchpad>/tests-iso{7,8,9,11,12,13,14,15} <scratchpad>/tests-work2/mutations-b{1..9}.json <ids> (TMPDIR in the scratchpad; every suite at nice 19; MUTATE_TIMEOUT_S 1800, and 3600 for the batches restarted for runtime-test.js)",
+   "outcome": "the 31 remaining controls (M02-M23, M25-M33) run on 2 November 2026 between 05:41 and 06:41 UTC in nine batches at load averages of 7 to 38 on 4 cores (other audit areas' browsers at nice -8); b1 and b3 were stopped after their M02 and M23 and b2 inside M17, each copy then discarded, and M03, M17-M18 and M29-M30 re-run on fresh copies with the longer timeout; no suite reached its timeout",
+   "environment": "isolated copies of iso-template (the tracked tree at 43e3e5b; docs/ and node_modules/ symlinked, read only)",
+   "evidence_path": "docs/audit-post8-evidence/tests/mutations.json",
+   "limitations": "runtime-test.js took 693-1,545 s (12-26 minutes) a run under the load; a suite killed by the timeout would be recorded inconclusive, never caught"
+  },
+  {
+   "command": "in a spare isolated copy (<scratchpad>/tests-iso10): M29 applied by hand, python3 build.py, node tools/visual/data-invariance.js archive/stage8k-f10fe585.html austerlitz-command-map.html; then app.js copied back and the build remade",
+   "outcome": "exit 0; 'Rendering and interface declarations changed (1): init'; 'All 139 DATA declarations are byte-identical to the original build'; the copy restored (build md5 f10fe585c46aea576f436ed51ac46f83)",
+   "evidence_path": "docs/audit-post8-evidence/tests/m29-check-data.txt",
+   "limitations": "the same copy also served to time geo-test.js, binding-test.js and audit.js unmutated (about 1 s each)"
+  },
+  {
+   "command": "node tools/audit-post8/tests/mutations-table.js docs/audit-post8-evidence/tests/mutations.json <earlier and new records>",
+   "outcome": "the merged record and section 3's table, each failing suite's mechanism read from its lines",
+   "evidence_path": "docs/audit-post8-evidence/tests/mutations.json",
+   "limitations": "the mechanism is read from the first eight recorded lines of each failing suite"
+  },
+  {
+   "command": "gh api repos/billybobbyboo/Austerlitz/rules/branches/main; gh api repos/billybobbyboo/Austerlitz/rulesets; gh api repos/.../commits/<sha>/check-runs for PRs #70-#79 and main's merges",
+   "outcome": "one required status check ('checks'); browser (selftest) failed on PR #77's head and on its merge 141f890, success again on c2adefe",
+   "evidence_path": "README.md section 4, TS-1",
+   "limitations": "read-only API; the owner's merge intent read from CLAUDE.md"
+  },
+  {
+   "command": "node tools/audit-post8/tests/word-hours.js . (statements.js's statements against timesIn's patterns)",
+   "outcome": "45 statements with word-form hours the extractor does not read (13 with no clock-shaped hour besides; 33 with a hashed claim of their own, 12 unchecked)",
+   "evidence_path": "README.md TS-13",
+   "limitations": "the word-form pattern is the audit's own (about/at/by/before/after/past/toward/near + a number word)"
+  },
+  {
+   "command": "node <scratchpad>/tests-work2/vacuity.js (self-test conditions with no positive count term)",
+   "outcome": "63 of 168 literal-named ck() conditions are of the form 'no bad item'; the sampled ones iterate fixed, non-empty data (the 24 places, the textures), so the heuristic proves nothing alone and no finding rests on it",
+   "evidence_path": "(scratch)",
+   "limitations": "heuristic; not a finding"
+  }
+ ],
+ "not_checked": [
+  "The browser checks were not run by this area: check:contrast, check:selftest, check:visual, check:report and the start-up cases were read statically; the browser candidates (docs/audit-post8-evidence/tests/browser-candidates.json: the arrow cap's constant, the derived tag in the self-test, a hover colour's contrast, a lowered text token, figures unlisted, the presentation override and the dossier strength in the browser, the band removed from MLS, animEnv returning 0, the GLSL-only gait change, the timing budgets under load) are listed for a browser phase. The audit's runner passed check:contrast (6,926 text elements, 45 states, 8 of 8 start-up cases) and check:selftest (317 checks, 5,422 s).",
+  "The in-app self-test's 317 checks were not read one by one; a check weakened by logic under an unchanged name, with no literal moved, would not be found by the literal comparison.",
+  "Named constants the self-test reads from app.js were not traced through history.",
+  "Mutations of the test tooling itself (statements.js dropping a class, lang-scan.js skipping a file, run-all.sh's FAILS pattern) were not run.",
+  "Timing-sensitive checks were not exercised under controlled load.",
+  "CI runs before PR #70 were not inspected; the 27 most recent dispatched check:visual runs were listed (9 passed, 13 failed, 5 cancelled, most during development), not read.",
+  "Whether the owner intends the browser checks to be non-required (TS-1) was not asked; the facts are the ruleset's and the check runs'."
+ ]
+}

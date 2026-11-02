@@ -1,0 +1,454 @@
+{
+ "regions": [
+  {
+   "shot": "v-low-1630",
+   "box": [
+    1000,
+    350,
+    1300,
+    480
+   ],
+   "what": "the brook toward Augezd, 16:30",
+   "pixels_ge245": 236,
+   "max": 255
+  },
+  {
+   "shot": "inf-east-0900",
+   "box": [
+    1050,
+    120,
+    1250,
+    170
+   ],
+   "what": "the Goldbach by Puntowitz, 09:00",
+   "pixels_ge245": 32,
+   "max": 255
+  },
+  {
+   "shot": "sok-castle-1500-close",
+   "box": [
+    450,
+    220,
+    560,
+    320
+   ],
+   "what": "the Goldbach behind the castle, 15:00",
+   "pixels_ge245": 41,
+   "max": 255
+  },
+  {
+   "shot": "ice-mid-1500",
+   "box": [
+    600,
+    120,
+    950,
+    420
+   ],
+   "what": "the Litava channel south of the mere, 15:00 (toward the sun)",
+   "pixels_ge245": 0,
+   "max": 236
+  }
+ ],
+ "frames": [
+  {
+   "shot": "x-ice-dok-1640",
+   "share_ge245_pct": 0.7086
+  },
+  {
+   "shot": "pratzeberg-1000-east",
+   "share_ge245_pct": 0.0284
+  },
+  {
+   "shot": "v-plateau-1000",
+   "share_ge245_pct": 0.0262
+  },
+  {
+   "shot": "v-low-1630",
+   "share_ge245_pct": 0.0216
+  },
+  {
+   "shot": "ice-mid-1500",
+   "share_ge245_pct": 0.0103
+  },
+  {
+   "shot": "v-zuran-0800",
+   "share_ge245_pct": 0.0097
+  },
+  {
+   "shot": "l-field-0900",
+   "share_ge245_pct": 0.006
+  },
+  {
+   "shot": "v-allied-0900",
+   "share_ge245_pct": 0.0053
+  },
+  {
+   "shot": "f-field-1x-1000",
+   "share_ge245_pct": 0.0046
+  },
+  {
+   "shot": "f-field-10x-1000",
+   "share_ge245_pct": 0.0045
+  },
+  {
+   "shot": "v-allied-1630",
+   "share_ge245_pct": 0.0045
+  },
+  {
+   "shot": "v-field-0900",
+   "share_ge245_pct": 0.0043
+  },
+  {
+   "shot": "v-field-1000",
+   "share_ge245_pct": 0.0043
+  },
+  {
+   "shot": "ice-low-1500",
+   "share_ge245_pct": 0.004
+  },
+  {
+   "shot": "x-ice-dok-1640-low",
+   "share_ge245_pct": 0.0039
+  },
+  {
+   "shot": "v-low-1400",
+   "share_ge245_pct": 0.0038
+  },
+  {
+   "shot": "v-allied-0600",
+   "share_ge245_pct": 0.0037
+  },
+  {
+   "shot": "v-field-0800",
+   "share_ge245_pct": 0.0037
+  },
+  {
+   "shot": "v-field-0600",
+   "share_ge245_pct": 0.0036
+  },
+  {
+   "shot": "v-low-1500",
+   "share_ge245_pct": 0.0036
+  },
+  {
+   "shot": "v-plateau-0900",
+   "share_ge245_pct": 0.0036
+  },
+  {
+   "shot": "v-allied-1200",
+   "share_ge245_pct": 0.0035
+  },
+  {
+   "shot": "l-low-1500",
+   "share_ge245_pct": 0.0032
+  },
+  {
+   "shot": "sok-castle-1500-close",
+   "share_ge245_pct": 0.0032
+  },
+  {
+   "shot": "v-plateau-0600",
+   "share_ge245_pct": 0.0032
+  },
+  {
+   "shot": "f-low-10x-1500",
+   "share_ge245_pct": 0.0031
+  },
+  {
+   "shot": "f-low-1x-1500",
+   "share_ge245_pct": 0.003
+  },
+  {
+   "shot": "v-plateau-0800",
+   "share_ge245_pct": 0.003
+  },
+  {
+   "shot": "inf-east-0900",
+   "share_ge245_pct": 0.0029
+  },
+  {
+   "shot": "v-field-1630",
+   "share_ge245_pct": 0.0027
+  },
+  {
+   "shot": "v-zuran-1500",
+   "share_ge245_pct": 0.0025
+  },
+  {
+   "shot": "v-field-1500",
+   "share_ge245_pct": 0.0024
+  },
+  {
+   "shot": "v-low-1200",
+   "share_ge245_pct": 0.0024
+  },
+  {
+   "shot": "v-field-1400",
+   "share_ge245_pct": 0.0023
+  },
+  {
+   "shot": "v-plateau-1400",
+   "share_ge245_pct": 0.0023
+  },
+  {
+   "shot": "v-field-1200",
+   "share_ge245_pct": 0.0022
+  },
+  {
+   "shot": "v-plateau-1200",
+   "share_ge245_pct": 0.0021
+  },
+  {
+   "shot": "f-low-1x-0900",
+   "share_ge245_pct": 0.0018
+  },
+  {
+   "shot": "v-zuran-1000",
+   "share_ge245_pct": 0.0017
+  },
+  {
+   "shot": "v-low-1000",
+   "share_ge245_pct": 0.0016
+  },
+  {
+   "shot": "pratzeberg-0930",
+   "share_ge245_pct": 0.0014
+  },
+  {
+   "shot": "v-low-0900",
+   "share_ge245_pct": 0.0014
+  },
+  {
+   "shot": "slope-10x-0900",
+   "share_ge245_pct": 0.0011
+  },
+  {
+   "shot": "v-plan-1200",
+   "share_ge245_pct": 0.0011
+  },
+  {
+   "shot": "telnitz-0930-wide",
+   "share_ge245_pct": 0.001
+  },
+  {
+   "shot": "v-plateau-1500",
+   "share_ge245_pct": 0.001
+  },
+  {
+   "shot": "v-low-0800",
+   "share_ge245_pct": 0.0009
+  },
+  {
+   "shot": "v-plan-1000",
+   "share_ge245_pct": 0.0009
+  },
+  {
+   "shot": "v-zuran-0600",
+   "share_ge245_pct": 0.0009
+  },
+  {
+   "shot": "v-plan-0600",
+   "share_ge245_pct": 0.0008
+  },
+  {
+   "shot": "v-plan-0800",
+   "share_ge245_pct": 0.0008
+  },
+  {
+   "shot": "ice-low8h-1200",
+   "share_ge245_pct": 0.0007
+  },
+  {
+   "shot": "v-plan-1400",
+   "share_ge245_pct": 0.0007
+  },
+  {
+   "shot": "v-plateau-1630",
+   "share_ge245_pct": 0.0007
+  },
+  {
+   "shot": "sok-pheasantry-1000",
+   "share_ge245_pct": 0.0006
+  },
+  {
+   "shot": "v-low-0600",
+   "share_ge245_pct": 0.0006
+  },
+  {
+   "shot": "v-plan-0900",
+   "share_ge245_pct": 0.0006
+  },
+  {
+   "shot": "v-plan-1630",
+   "share_ge245_pct": 0.0006
+  },
+  {
+   "shot": "bat-chapel-1500",
+   "share_ge245_pct": 0.0005
+  },
+  {
+   "shot": "f-low-10x-0900",
+   "share_ge245_pct": 0.0005
+  },
+  {
+   "shot": "ice-high-1500",
+   "share_ge245_pct": 0.0005
+  },
+  {
+   "shot": "santon-1000",
+   "share_ge245_pct": 0.0005
+  },
+  {
+   "shot": "v-plan-1500",
+   "share_ge245_pct": 0.0005
+  },
+  {
+   "shot": "f-santon-10x-1000",
+   "share_ge245_pct": 0.0004
+  },
+  {
+   "shot": "l-plan-1200",
+   "share_ge245_pct": 0.0004
+  },
+  {
+   "shot": "cav-close-1055",
+   "share_ge245_pct": 0.0003
+  },
+  {
+   "shot": "ice-low8h-1630",
+   "share_ge245_pct": 0.0003
+  },
+  {
+   "shot": "f-sok-1x-1000",
+   "share_ge245_pct": 0.0002
+  },
+  {
+   "shot": "kollo-0920",
+   "share_ge245_pct": 0.0002
+  },
+  {
+   "shot": "sok-brook-0820",
+   "share_ge245_pct": 0.0002
+  },
+  {
+   "shot": "posthouse-1000-wide",
+   "share_ge245_pct": 0.0001
+  },
+  {
+   "shot": "sok-castle-1500-clean",
+   "share_ge245_pct": 0.0001
+  },
+  {
+   "shot": "telnitz-0800",
+   "share_ge245_pct": 0.0001
+  },
+  {
+   "shot": "x-face-kamensky-1010",
+   "share_ge245_pct": 0.0001
+  },
+  {
+   "shot": "x-face-kienmayer-0900",
+   "share_ge245_pct": 0.0001
+  },
+  {
+   "shot": "austerlitz-garden-1400",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "austerlitz-town-1400",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "bat-deployed-1320",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "bat-limbered-1410",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "f-sok-10x-1000",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "ice-low8h-0900",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "ice-low8h-1500",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "ice-sun-1400",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "inf-close-0920",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "l-sok-1000",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "posthouse-1500",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "pratzen-church-0900",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "rg-inf-1045",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "santon-1300-close",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "santon-guns-1300",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "satschan-1200",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "slope-10x-0900-r8",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "slope-4x-0900-r10",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "sok-castle-1000",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "sok-village-1200-west",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "stanthony-1300",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "x-face-dok-1350",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "x-face-prz-0910",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "x-face-sthilaire-0950",
+   "share_ge245_pct": 0.0
+  },
+  {
+   "shot": "x-ice-bux-1620",
+   "share_ge245_pct": 0.0
+  }
+ ]
+}

@@ -1,0 +1,227 @@
+#!/usr/bin/env python3
+"""Final audit after Stage 8: writes docs/FINAL_AUDIT_POST_STAGE8.md.
+
+Audit tooling only: reads, never writes, the application's sources. Inputs:
+  docs/audit-post8-evidence/<area>/result.json    each area's structured result (findings, coverage, experiments, not_checked, ...)
+  docs/audit-post8-evidence/register.json         the consolidated register: one entry per audit finding (CL-<AREA>-NN), the area
+                                                  findings it rests on, the auditor's overrides and the adversarial verification
+  docs/audit-post8-evidence/report-parts/*.md     the hand-written parts (verdict, quality, roadmap, merge structure, owner questions)
+Run: python3 tools/audit-post8/report.py   (prints the counts; fails on a dangling reference or an unplaced area finding)
+"""
+import json, os, re, sys
+from collections import Counter, OrderedDict
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+EV = os.path.join(ROOT, "docs", "audit-post8-evidence")
+PARTS = os.path.join(EV, "report-parts")
+OUT = os.path.join(ROOT, "docs", "FINAL_AUDIT_POST_STAGE8.md")
+
+KIND = {"confirmed-defect": "confirmed defect", "probable-problem": "probable problem", "accepted-compromise": "accepted compromise",
+        "optional-improvement": "optional improvement", "unresolved-historical": "unresolved historical question", "untested": "untested area"}
+SEV_ORDER = {"S1": 0, "S2": 1, "S3": 2, "S4": 3}
+PRI_ORDER = {"P1": 0, "P2": 1, "P3": 2, "P4": 3}
+
+
+def esc(s):
+    """one table cell: no pipes or newlines"""
+    if s is None:
+        return ""
+    if isinstance(s, (list, tuple)):
+        s = "; ".join(str(x) for x in s)
+    s = str(s).replace("\r", " ").replace("\n", " ").replace("|", "\\|")
+    return re.sub(r"\s{2,}", " ", s).strip()
+
+
+def part(name, required=True):
+    p = os.path.join(PARTS, name)
+    if not os.path.exists(p):
+        if required:
+            sys.exit("missing part " + p)
+        return ""
+    return open(p, encoding="utf-8").read().rstrip() + "\n"
+
+
+def load_areas():
+    areas = OrderedDict()
+    for d in sorted(os.listdir(EV)):
+        f = os.path.join(EV, d, "result.json")
+        if os.path.isfile(f):
+            areas[d] = json.load(open(f, encoding="utf-8"))
+    return areas
+
+
+def main():
+    areas = load_areas()
+    reg = json.load(open(os.path.join(EV, "register.json"), encoding="utf-8"))
+    entries = reg["findings"]
+    placed = Counter()
+    ids = set()
+    rows = []
+    for e in entries:
+        if e["id"] in ids:
+            sys.exit("duplicate id " + e["id"])
+        ids.add(e["id"])
+        srcs = e.get("from", [])
+        if not srcs and not e.get("own"):
+            sys.exit("entry without source " + e["id"])
+        base = {}
+        for a, i in srcs:
+            if a not in areas or i >= len(areas[a]["findings"]):
+                sys.exit("dangling %s -> %s#%s" % (e["id"], a, i))
+            placed[(a, i)] += 1
+        for a, i in e.get("also", []):
+            if a not in areas or i >= len(areas[a]["findings"]):
+                sys.exit("dangling also %s -> %s#%s" % (e["id"], a, i))
+            placed[(a, i)] += 1
+        if srcs:
+            a, i = srcs[0]
+            base = dict(areas[a]["findings"][i])
+        base.update(e.get("own") or {})
+        base.update(e.get("override") or {})
+        base["_id"] = e["id"]
+        base["_from"] = srcs
+        base["_also"] = e.get("also", [])
+        base["_verify"] = e.get("verify") or {}
+        base["_note"] = e.get("note", "")
+        rows.append(base)
+    for a, i in (tuple(x) for x in reg.get("set_aside", [])):
+        placed[(a, i)] += 1
+    unplaced = [(a, i, areas[a]["findings"][i].get("title", "")[:80]) for a in areas for i in range(len(areas[a]["findings"])) if placed[(a, i)] == 0]
+    if unplaced:
+        for u in unplaced:
+            print("UNPLACED", u)
+        sys.exit("%d area findings not placed in register.json" % len(unplaced))
+
+    def key(r):
+        return (SEV_ORDER.get(r.get("severity"), 9), PRI_ORDER.get(r.get("priority"), 9), r["_id"])
+
+    out = []
+    out.append(part("00-head.md"))
+    out.append(part("A-verdict.md"))
+
+    # B: the register
+    out.append("## B. Findings register\n")
+    out.append(part("B-intro.md"))
+    sev = Counter(r.get("severity") for r in rows)
+    kind = Counter(r.get("category") for r in rows)
+    ver = Counter((r["_verify"].get("verdict") or "not re-verified") for r in rows)
+    out.append("Counts: %d findings; by severity %s; by kind %s; by adversarial verification %s.\n" % (
+        len(rows), ", ".join("%s %d" % (k, sev[k]) for k in ("S1", "S2", "S3", "S4")),
+        ", ".join("%s %d" % (KIND.get(k, k), v) for k, v in kind.most_common()),
+        ", ".join("%s %d" % (k, v) for k, v in ver.most_common())))
+    out.append("### B.1 Index (most severe first)\n")
+    out.append("| ID | sev | pri | kind | status | verification | title |\n|---|---|---|---|---|---|---|")
+    for r in sorted(rows, key=key):
+        out.append("| [%s](#%s) | %s | %s | %s | %s | %s | %s |" % (r["_id"], r["_id"].lower(), r.get("severity", ""), r.get("priority", ""),
+                   KIND.get(r.get("category"), r.get("category", "")), esc(r.get("status")), esc(r["_verify"].get("verdict", "")), esc(r.get("title"))))
+    out.append("")
+    out.append("### B.2 The findings in full\n")
+    groups = OrderedDict()
+    for r in rows:
+        groups.setdefault(r["_id"].rsplit("-", 1)[0], []).append(r)
+    gnames = reg.get("groups", {})
+    for g, rs in groups.items():
+        out.append("#### %s: %s\n" % (g, gnames.get(g, g)))
+        for r in sorted(rs, key=lambda r: r["_id"]):
+            out.append('<a id="%s"></a>\n' % r["_id"].lower())
+            out.append("**%s · %s · %s · %s.** %s\n" % (r["_id"], r.get("severity", ""), r.get("priority", ""), KIND.get(r.get("category"), r.get("category", "")), esc(r.get("title"))))
+            v = r["_verify"]
+            vtxt = ("%s%s" % (v.get("verdict", ""), (": " + v["note"]) if v.get("note") else "")) if v else "not re-verified (see B intro)"
+            src = ", ".join("%s #%d" % (a, i + 1) for a, i in r["_from"])
+            if r["_also"]:
+                src += "; also reported as " + ", ".join("%s #%d" % (a, i + 1) for a, i in r["_also"])
+            fields = [
+                ("Subsystem", r.get("subsystem")), ("User impact", r.get("user_impact")),
+                ("Status / origin", "%s / %s" % (esc(r.get("status")), esc(r.get("origin")))),
+                ("Expected", r.get("expected")), ("Observed", r.get("observed")),
+                ("Evidence", r.get("evidence")), ("Reproduction", r.get("repro")), ("References", r.get("refs")),
+                ("Cause (hypothesis)", r.get("cause_hypothesis")), ("Cause verified", r.get("cause_verified")),
+                ("Remedy", r.get("remedy")), ("Effort", r.get("effort")), ("Dependencies", r.get("dependencies")),
+                ("Risk of the remedy", r.get("risk")), ("Validation", r.get("validation")), ("Prior records", r.get("prior_refs")),
+                ("Adversarial verification", vtxt), ("Auditor's note", r["_note"]), ("Area finding", src),
+            ]
+            out.append("| field | |\n|---|---|")
+            for k, val in fields:
+                if val not in (None, "", []):
+                    out.append("| %s | %s |" % (k, esc(val)))
+            out.append("")
+
+    # C: coverage
+    out.append("## C. Coverage matrix\n")
+    out.append(part("C-intro.md"))
+    out.append("### C.2 What each area examined, by method\n")
+    out.append("| area | item | method | result | evidence |\n|---|---|---|---|---|")
+    for a, r in areas.items():
+        for c in r.get("coverage", []):
+            if isinstance(c, dict):
+                out.append("| %s | %s | %s | %s | %s |" % (a, esc(c.get("item")), esc(c.get("method")), esc(c.get("result")), esc(c.get("evidence"))))
+            else:
+                out.append("| %s | %s | | | |" % (a, esc(c)))
+    out.append("")
+    out.append("### C.3 What was not checked, by area\n")
+    for a, r in areas.items():
+        nc = r.get("not_checked") or []
+        if nc:
+            out.append("- **%s**: %s" % (a, " · ".join(esc(x) for x in nc)))
+    out.append("")
+
+    # D: tests and experiments
+    out.append("## D. Test and experiment ledger\n")
+    out.append(part("D-intro.md"))
+    out.append("### D.3 The areas' experiments\n")
+    out.append("| area | command | environment | outcome | evidence | limitations |\n|---|---|---|---|---|---|")
+    for a, r in areas.items():
+        for x in r.get("experiments", []):
+            if isinstance(x, dict):
+                out.append("| %s | %s | %s | %s | %s | %s |" % (a, esc(x.get("command")), esc(x.get("environment")), esc(x.get("outcome")), esc(x.get("evidence_path") or x.get("evidence")), esc(x.get("limitations"))))
+            else:
+                out.append("| %s | %s | | | | |" % (a, esc(x)))
+    out.append("")
+
+    out.append(part("E-ledger.md"))
+    out.append("### E.9 The areas' verification ledgers in full\n")
+    out.append("Each row is one claim the area checked: the claim, where a visitor meets it, the source it cites, how it was checked and the verdict. "
+               "The claim records (history, forces, timings and places, geography) come first, then the records' own claims (device evidence, visibility).\n")
+    order = ["sources-oob", "sources-chronology", "history", "geography", "records", "perf", "visibility"]
+    for a in order + [x for x in areas if x not in order]:
+        L = areas.get(a, {}).get("ledger")
+        if not isinstance(L, list) or not L:
+            continue
+        out.append("#### Ledger: %s (%d rows)\n" % (a, len(L)))
+        out.append("| # | claim | where shown | cited source | verdict | method | notes |\n|---|---|---|---|---|---|---|")
+        for n, x in enumerate(L, 1):
+            if not isinstance(x, dict):
+                out.append("| %d | %s | | | | | |" % (n, esc(x)))
+                continue
+            out.append("| %d | %s | %s | %s | %s | %s | %s |" % (n, esc(x.get("claim")), esc(x.get("where_shown") or x.get("map_label")),
+                       esc(x.get("cited_source") or x.get("source")), esc(x.get("verification") or x.get("verdict")), esc(x.get("method")), esc(x.get("notes"))))
+        out.append("")
+    out.append(part("F-quality.md"))
+    out.append(part("G-roadmap.md"))
+    out.append(part("H-merge.md"))
+    out.append(part("I-owner.md"))
+    out.append(part("J-response.md"))
+    out.append(part("Z-appendix.md", required=False))
+    txt = "\n".join(out).rstrip() + "\n"
+    # anchors used in parts must exist
+    for m in set(re.findall(r"\]\(#(cl-[a-z0-9-]+)\)", txt)):
+        if m.upper() not in ids:
+            sys.exit("link to unknown finding " + m)
+    open(OUT, "w", encoding="utf-8").write(txt)
+    # the merge table (section H.2): this audit's half of the combined register's columns
+    import csv
+    with open(os.path.join(EV, "register-export.csv"), "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(["CL", "title", "subsystem", "severity_CL", "priority_CL", "kind", "status", "origin", "verification", "evidence",
+                    "reproduction", "references", "owner_decision", "work_package", "area_source", "build_md5"])
+        for r in sorted(rows, key=key):
+            w.writerow([r["_id"], esc(r.get("title")), esc(r.get("subsystem")), r.get("severity", ""), r.get("priority", ""),
+                        KIND.get(r.get("category"), r.get("category", "")), esc(r.get("status")), esc(r.get("origin")),
+                        esc(r["_verify"].get("verdict", "")), esc(r.get("evidence")), esc(r.get("repro")), esc(r.get("refs")),
+                        esc(r.get("owner_decision", "")), esc(r.get("work_package", "")),
+                        "; ".join("%s #%d" % (a, i + 1) for a, i in r["_from"]), "f10fe585c46aea576f436ed51ac46f83"])
+    print("wrote %s: %d findings (%s), %d bytes" % (os.path.relpath(OUT, ROOT), len(rows), dict(sev), len(txt.encode("utf-8"))))
+
+
+if __name__ == "__main__":
+    main()

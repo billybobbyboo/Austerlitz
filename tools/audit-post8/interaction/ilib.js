@@ -193,7 +193,7 @@ async function finishOpen(page,o){
 }
 async function openV(browser,vp,o){
   o=o||{};
-  const ctx=await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1,reducedMotion:o.rm?"reduce":"no-preference"});
+  const ctx=await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:o.dpr||1,hasTouch:!!o.touch,reducedMotion:o.rm?"reduce":"no-preference"});   /* o.dpr, o.touch: added in the second session (a retina laptop; a touchscreen laptop) */
   const page=track(await ctx.newPage());
   if(o.instr!==false) await page.addInitScript(INSTR);
   return finishOpen(page,o);
@@ -244,16 +244,39 @@ async function drawShot(page,name,q){ await page.evaluate(()=>window.__drv.drawF
    compositor starves under load) */
 async function clickEl(page,sel,o){
   o=o||{};
-  const r=await page.evaluate(([s,i])=>{ const L=typeof s==="string"?document.querySelectorAll(s):null; const e=L?L[i||0]:null; if(!e) return {err:"no element "+s};
-    const b=e.getBoundingClientRect(); if(!(b.width>0&&b.height>0)) return {err:"not laid out "+s};
-    const x=b.left+b.width/2, y=b.top+b.height/2, h=document.elementFromPoint(x,y);
-    return {x:x,y:y,hit:!!(h&&(h===e||e.contains(h))),top:h?(h.id?"#"+h.id:h.tagName+"."+String(h.className).split(" ")[0]):null}; },[sel,o.index||0]);
-  if(r.err) throw new Error("clickEl: "+r.err);
-  if(!r.hit&&!o.force) throw new Error("clickEl: "+sel+" is covered by "+r.top);
+  /* (fixed in the second session, after the first run: a control at the foot of a scrolled panel, the Layers panel's "Pause briefly at
+     events", lay outside the window, and a dossier still sliding in (its CSS transition) had no settled box: the element is now scrolled into
+     view in its own scrolling panel (block "nearest": what a visitor's wheel over the panel does; o.noScroll to skip it), and its box read
+     until it holds still and is the element a pointer there would hit, for up to o.waitMs (2.5 s)) */
+  const t0=Date.now(); let r=null, prev=null, finished=0;
+  for(;;){
+    r=await page.evaluate(([s,i,ns])=>{ const L=typeof s==="string"?document.querySelectorAll(s):null; const e=L?L[i||0]:null; if(!e) return {err:"no element "+s};
+      if(!ns&&e.scrollIntoView) e.scrollIntoView({block:"nearest",inline:"nearest"});
+      const b=e.getBoundingClientRect(); if(!(b.width>0&&b.height>0)) return {err:"not laid out "+s};
+      const x=b.left+b.width/2, y=b.top+b.height/2, h=document.elementFromPoint(x,y);
+      return {x:x,y:y,box:[b.left,b.top,b.width,b.height].map(v=>Math.round(v*10)/10).join(","),hit:!!(h&&(h===e||e.contains(h))),top:h?(h.id?"#"+h.id:h.tagName+"."+String(h.className).split(" ")[0]):null}; },[sel,o.index||0,!!o.noScroll]);
+    const settled=!r.err&&prev&&!prev.err&&prev.box===r.box;
+    if(settled&&(r.hit||o.force)) break;
+    if(Date.now()-t0>(o.waitMs||2500)){ if(r.err) throw new Error("clickEl: "+r.err); if(!r.hit&&!o.force) throw new Error("clickEl: "+sel+" is covered by "+r.top); break; }
+    if(!r.err&&!r.hit) finished+=await finishTransitions(page);   /* a panel still sliding (see finishTransitions) */
+    prev=r; await domSettle(page,prev.err?150:100);
+  }
   if(o.tap) await page.touchscreen.tap(r.x,r.y); else if(o.dbl) await page.mouse.dblclick(r.x,r.y); else await page.mouse.click(r.x,r.y);
+  r.waitedMs=Date.now()-t0; if(finished) r.finishedTransitions=finished;
   return r;
 }
 const tapEl=(page,sel,o)=>clickEl(page,sel,Object.assign({},o||{},{tap:true}));
 async function focusEl(page,sel){ return page.evaluate(s=>{ const e=document.querySelector(s); if(e) e.focus(); return document.activeElement===e; },sel); }
+/* (second session) the page's running CSS transitions finished at once (CSSTransition.finish(): the end state each was already moving to).
+   Measured here (scratchpad probe-close.js, probe-css.js): in this environment a composited transition (the dossier's slide, 0.32 s) does not
+   start until the compositor draws a frame, and with the panels' backdrop-filter blur over the canvas under software rendering one composite
+   took 23.7 s at 1280 x 720 (the first screenshot after the click), so a panel reads as still off screen for many seconds; a blank page's
+   identical transition ends within 0.8 s. A visitor's browser composites in milliseconds, so finishing them is the set-up a visitor's 0.32 s
+   gives; the app's state (its classes, its inert flags) is not touched. Returns how many were finished. */
+const finishTransitions=page=>page.evaluate(()=>{ let n=0; document.getAnimations().forEach(a=>{ try{ if(typeof CSSTransition!=="undefined"&&a instanceof CSSTransition&&a.playState!=="finished"){ a.finish(); n++; } }catch(e){} }); return n; });
+/* (second session) real animation frames for ms milliseconds of wall clock, the WebGL draw still skipped: with the app's own loop stopped by the
+   driver nothing asks the browser for frames, so its rendering steps (the resize event, the CSS transitions' values as the main thread reads
+   them) can wait; a callback other than the app's loop goes to the real requestAnimationFrame (DRV.start) */
+const domSettle=(page,ms)=>page.evaluate(ms=>new Promise(res=>{ const t0=Date.now(); (function f(){ if(Date.now()-t0>=ms) res(true); else requestAnimationFrame(f); })(); }),ms||400);
 function log(...a){ console.log(new Date().toISOString().slice(11,19),...a); }
-module.exports={tapEl,trace,clickEl,focusEl,A,ROOT,EV,INSTR,SNAP,DRV,F,play,until,drawShot,openV,openP,snap,fp,fpDiff,counts,shot,wait,idle,frames,loopN,inject,log,MEASURE};
+module.exports={finishTransitions,domSettle,tapEl,trace,clickEl,focusEl,A,ROOT,EV,INSTR,SNAP,DRV,F,play,until,drawShot,openV,openP,snap,fp,fpDiff,counts,shot,wait,idle,frames,loopN,inject,log,MEASURE};

@@ -1,0 +1,223 @@
+{
+ "tag": "kbd-1600x900",
+ "started": "2026-11-02T05:53:57.656Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "at load (the card open)",
+   "t": 117.5,
+   "fi": {
+    "el": "button#fr-tour.t.fr-primary",
+    "text": "Begin (two min)",
+    "aria": null,
+    "role": null,
+    "box": [
+     705,
+     738,
+     123,
+     34
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "ax": {
+    "role": "button",
+    "name": "Begin (two min)",
+    "desc": "Begin the opening: four stops of the guided tour in its own words, the clock played between them; Next moves on, Esc skips it",
+    "ignored": false,
+    "props": {
+     "invalid": "false",
+     "focusable": true,
+     "focused": true
+    }
+   }
+  },
+  {
+   "step": "Tab x6 inside the card",
+   "t": 118.5,
+   "stops": [
+    "button#fr-close.t",
+    "button#fr-tour.t.fr-primary",
+    "button#fr-close.t",
+    "button#fr-tour.t.fr-primary",
+    "button#fr-close.t",
+    "button#fr-tour.t.fr-primary"
+   ]
+  },
+  {
+   "step": "Esc: the card closed",
+   "t": 120,
+   "fi": {
+    "el": "button#play.t.tb-play",
+    "text": "Play",
+    "aria": null,
+    "role": null,
+    "box": [
+     100,
+     813,
+     58,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "0px",
+     "oc": "rgb(155, 163, 169)",
+     "oo": "0px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "ax": {
+    "role": "button",
+    "name": "Play",
+    "ignored": false,
+    "props": {
+     "invalid": "false",
+     "focusable": true,
+     "focused": true,
+     "pressed": "false"
+    }
+   },
+   "state": {
+    "clock": 240,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.81470930746164,
+      490.683105364721,
+      61.010668780199154
+     ],
+     "tgt": [
+      -38.81470930746164,
+      0.5158591190135614,
+      4.1815672220749605
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   }
+  },
+  {
+   "step": "accessibility tree (compacted; saved)",
+   "t": 120.1,
+   "nodes": 115,
+   "roles": {
+    "RootWebArea": 1,
+    "group": 5,
+    "button": 79,
+    "navigation": 1,
+    "heading": 3,
+    "paragraph": 2,
+    "tablist": 1,
+    "tab": 5,
+    "tabpanel": 1,
+    "list": 2,
+    "listitem": 10,
+    "region": 1,
+    "image": 2,
+    "slider": 1,
+    "main": 1
+   },
+   "headings": [
+    "h1 Austerlitz",
+    "h2 Dispositions in the dark",
+    "h3 WHAT CHANGED AT 04:00"
+   ],
+   "landmarks": [
+    "navigation 'Army and map controls'",
+    "region 'Timeline'",
+    "main ''"
+   ],
+   "live": [],
+   "unnamed": [],
+   "imgsNoName": 0,
+   "imgs": [
+    "Scale: 2 km, at the centre of the view (in perspective, nearer ground is larger ",
+    "The Pratzen plateau, a derived reading: Allied about 38,700"
+   ],
+   "dupIds": []
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/kbd-1600x900-ring-001.jpg",
+  "docs/audit-post8-evidence/a11y/kbd-1600x900-ring-010.jpg",
+  "docs/audit-post8-evidence/a11y/kbd-1600x900-ring-011.jpg",
+  "docs/audit-post8-evidence/a11y/kbd-1600x900-ring-012.jpg",
+  "FAILED ring-013: page.screenshot: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n"
+ ],
+ "error": "keyboard.press: Target page, context or browser has been closed\n    at /home/user/Austerlitz/tools/audit-post8/a11y/kbd.js:40:22\n    at async Object.run (/home/user/Austerlitz/tools/audit-post8/a11y/alib.js:208:47)",
+ "ended": "2026-11-02T06:03:40.536Z",
+ "seconds": 583
+}

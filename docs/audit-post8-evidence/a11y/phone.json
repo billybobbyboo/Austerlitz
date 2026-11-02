@@ -1,0 +1,1769 @@
+{
+ "tag": "phone",
+ "started": "2026-11-02T06:20:54.755Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "first screen (the card)",
+   "t": 70.8,
+   "boot": 47556,
+   "state": {
+    "clock": 240,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": true,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.78637482991597,
+      863.446158539436,
+      102.85287214830299
+     ],
+     "tgt": [
+      -38.78637482991597,
+      0.4293705875066232,
+      2.79627092794793
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "groundLayout": true
+   },
+   "card": "The Battle of Austerlitz French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle. Begin (two min) Explore on my own",
+   "fi": {
+    "el": "button#fr-tour.t.fr-primary",
+    "text": "Begin (two min)",
+    "aria": null,
+    "role": null,
+    "box": [
+     16,
+     676,
+     123,
+     34
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": false,
+    "events": false,
+    "dispatchDisplay": "none",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "scroll": {
+    "iw": 390,
+    "ih": 844,
+    "docSW": 390,
+    "docSH": 844,
+    "bodySW": 390,
+    "bodySH": 844,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 390,
+     "h": 844,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 415,
+      "cw": 1,
+      "text": "04:00 - 07:00. The Deception: Dispositions in the dark."
+     },
+     {
+      "el": "span.evt",
+      "dir": "x",
+      "sw": 250,
+      "cw": 233,
+      "text": "Friant's division at Raigern since the night"
+     }
+    ],
+    "clippedN": 2,
+    "beyondViewport": [],
+    "beyondN": 0
+   },
+   "small": {
+    "texts": 49,
+    "under12": 16,
+    "by": {
+     "11.5px timeline": {
+      "n": 5,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#play.t.tb-play: Play",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow",
+       "button#helpbtn.t.tb-help: ?"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 9,
+      "ex": [
+       "small.evn: interval",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10",
+       "b: 12"
+      ]
+     },
+     "11.5px map": {
+      "n": 2,
+      "ex": [
+       "div.ml-item.mlt: Litava river",
+       "div.ml-item.mlt: Austerlitz"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "targets": {
+    "n": 35,
+    "fail": 25,
+    "failing": [
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "13:00 to 14:00, The French centre turns south (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "14:00, Sokolnitz falls; Przybyszewski's column is surrounded (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "14:30, Vandamme takes the height above the Augezd defile (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "15:00, French artillery fires on the ice of the Satschan mere",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "16:30, Organised resistance ends (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     }
+    ],
+    "undersizedPassing": 0
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,723,390,121",
+     "#firstrun 0,497,390,226",
+     "#menubtn 320,10,60,44"
+    ],
+    "overlaps": []
+   }
+  },
+  {
+   "step": "tap 'Begin (two min)': the opening, step 1",
+   "t": 111.2,
+   "bar": "Opening, step 1 of 4 The battlefield Ten kilometres of open Moravian farmland. The French army, marked in blue, is to the west; to the east are the Russians and the Austrians, marked in amber. Between them runs the Goldbach, a small stream in a marshy bottom, and behind it stands the Pratzen plateau, the high ground in the centre of the field. Back Next Skip",
+   "fi": {
+    "el": "button#tour-next.t",
+    "text": "Next",
+    "aria": null,
+    "role": null,
+    "box": [
+     82,
+     673,
+     48,
+     28
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 260,
+      "cw": 1,
+      "text": "Step 1 of 4: The battlefield, 04:00."
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 108,
+      "cw": 49,
+      "text": "THE DECEPTION"
+     }
+    ],
+    "clippedN": 2,
+    "beyondViewport": [],
+    "beyondN": 0
+   },
+   "tourbar": {
+    "box": [
+     10,
+     486,
+     370,
+     227
+    ],
+    "xSH": 134,
+    "xCH": 134,
+    "xOY": "visible"
+   }
+  },
+  {
+   "step": "tap Skip: the screen to explore",
+   "t": 138.2,
+   "state": {
+    "clock": 240,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.78637482991597,
+      863.446158539436,
+      102.8528721483027
+     ],
+     "tgt": [
+      -38.78637482991597,
+      0.42937058750662316,
+      2.79627092794793
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "groundLayout": true
+   },
+   "dsheetHead": "derived on the heights: Allied ≈ 38,700 Friant's division at Raigern since the night (an interval, not a timestamp) 04:00 - 07:00 Dispositions in the dark",
+   "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night",
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": true,
+    "events": false,
+    "dispatchDisplay": "block",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "scroll": {
+    "iw": 390,
+    "ih": 844,
+    "docSW": 390,
+    "docSH": 844,
+    "bodySW": 390,
+    "bodySH": 844,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 1,
+     "w": 390,
+     "h": 844,
+     "x": 0,
+     "y": 0
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 418,
+      "cw": 1,
+      "text": "The opening has ended. Play runs the day from 04:00."
+     },
+     {
+      "el": "span.evt",
+      "dir": "x",
+      "sw": 250,
+      "cw": 233,
+      "text": "Friant's division at Raigern since the night"
+     }
+    ],
+    "clippedN": 2,
+    "beyondViewport": [],
+    "beyondN": 0
+   },
+   "small": {
+    "texts": 52,
+    "under12": 17,
+    "by": {
+     "10.5px other": {
+      "n": 1,
+      "ex": [
+       "small: derived"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 5,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#play.t.tb-play: Play",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow",
+       "button#helpbtn.t.tb-help: ?"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 9,
+      "ex": [
+       "small.evn: interval",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10",
+       "b: 12"
+      ]
+     },
+     "11.5px map": {
+      "n": 2,
+      "ex": [
+       "div.ml-item.mlt: Litava river",
+       "div.ml-item.mlt: Austerlitz"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "targets": {
+    "n": 34,
+    "fail": 25,
+    "failing": [
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "13:00 to 14:00, The French centre turns south (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "14:00, Sokolnitz falls; Przybyszewski's column is surrounded (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "14:30, Vandamme takes the height above the Augezd defile (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "15:00, French artillery fires on the ice of the Satschan mere",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "16:30, Organised resistance ends (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     }
+    ],
+    "undersizedPassing": 0
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,723,390,121",
+     ".dispatch 0,552,390,171",
+     "#menubtn 320,10,60,44"
+    ],
+    "overlaps": []
+   }
+  },
+  {
+   "step": "tap the dispatch sheet's grip",
+   "t": 156.7,
+   "sheet": {
+    "on": true,
+    "menu": false,
+    "sheet": true,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   },
+   "grip": {
+    "expanded": "true",
+    "label": "The phase text in full",
+    "box": [
+     14,
+     202,
+     362,
+     28
+    ]
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 418,
+      "cw": 1,
+      "text": "The opening has ended. Play runs the day from 04:00."
+     },
+     {
+      "el": "span.evt",
+      "dir": "x",
+      "sw": 250,
+      "cw": 233,
+      "text": "Friant's division at Raigern since the night"
+     }
+    ],
+    "clippedN": 2,
+    "beyondViewport": [
+     {
+      "el": "li",
+      "box": [
+       14,
+       781,
+       362,
+       200
+      ],
+      "text": "c. 04:00 The disposition orders the Allied columns"
+     },
+     {
+      "el": "b",
+      "box": [
+       14,
+       786,
+       82,
+       189
+      ],
+      "text": "c. 04:00"
+     },
+     {
+      "el": "span",
+      "box": [
+       106,
+       786,
+       270,
+       189
+      ],
+      "text": "The disposition orders the Allied columns to march"
+     }
+    ],
+    "beyondN": 3
+   },
+   "phlist": [
+    "04:00 - 07:00Deployment 362x44",
+    "07:00 - 08:00Telnitz 362x44",
+    "08:00 - 08:45Sokolnitz 362x44",
+    "08:45 - 09:30The Pratzen 362x44",
+    "09:30 - 10:30Pratzeberg 362x44",
+    "10:30 - 11:15Olmütz road 362x44",
+    "11:15 - 12:45The Guard 362x44",
+    "12:45 - 14:30The wheel 362x44",
+    "14:30 - 17:00The ponds 362x44",
+    "after darkReckoning 362x44"
+   ]
+  },
+  {
+   "step": "drag up 300 px from the grip (CDP touch)",
+   "t": 184.9,
+   "before": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 1,
+    "sy": 0,
+    "sx": 0
+   },
+   "after": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 1,
+    "sy": 0,
+    "sx": 0
+   },
+   "sheet": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  {
+   "step": "horizontal drag 200 px on the time rail (CDP touch)",
+   "t": 196.7,
+   "rail": {
+    "x": 195,
+    "y": 832,
+    "w": 374,
+    "h": 24,
+    "vis": true
+   },
+   "before": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 1,
+    "sy": 0,
+    "sx": 0
+   },
+   "after": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 1,
+    "sy": 0,
+    "sx": 0
+   },
+   "clockMoved": false,
+   "cameraMoved": false
+  },
+  {
+   "step": "vertical drag up 250 px starting on the timeline's top edge (CDP touch)",
+   "t": 209.5,
+   "tb": {
+    "top": 723,
+    "h": 121,
+    "cap": [
+     8,
+     782.5,
+     328,
+     15
+    ]
+   },
+   "before": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 1,
+    "sy": 0,
+    "sx": 0
+   },
+   "after": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 1,
+    "sy": 0,
+    "sx": 0
+   },
+   "cameraMoved": false,
+   "clockMoved": false
+  },
+  {
+   "step": "pinch out: one finger on the timeline, one on the map (CDP touch)",
+   "t": 239.4,
+   "before": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 1,
+    "sy": 0,
+    "sx": 0
+   },
+   "after": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 5,
+    "sy": 0,
+    "sx": 0
+   },
+   "cameraMoved": false,
+   "clockMoved": false,
+   "scroll": {
+    "iw": 390,
+    "ih": 844,
+    "docSW": 390,
+    "docSH": 844,
+    "bodySW": 390,
+    "bodySH": 844,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 5,
+     "w": 78,
+     "h": 169,
+     "x": 194,
+     "y": 377
+    },
+    "bodyOverflow": "hidden/hidden"
+   }
+  },
+  {
+   "step": "pinch out on the map alone (CDP touch)",
+   "t": 258.3,
+   "before": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 5,
+    "sy": 0,
+    "sx": 0
+   },
+   "after": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "tx": -38.79,
+    "tz": 2.8,
+    "clock": 240,
+    "mode": "terrain",
+    "vv": 5,
+    "sy": 0,
+    "sx": 0
+   },
+   "cameraMoved": false,
+   "scroll": {
+    "iw": 390,
+    "ih": 844,
+    "docSW": 390,
+    "docSH": 844,
+    "bodySW": 390,
+    "bodySH": 844,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 5,
+     "w": 78,
+     "h": 169,
+     "x": 196,
+     "y": 378
+    },
+    "bodyOverflow": "hidden/hidden"
+   }
+  },
+  {
+   "step": "tap Menu",
+   "t": 293.7,
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   },
+   "menu": [],
+   "menubtn": "false",
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": true,
+    "events": false,
+    "dispatchDisplay": "block",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "scroll": {
+    "iw": 390,
+    "ih": 844,
+    "docSW": 390,
+    "docSH": 844,
+    "bodySW": 390,
+    "bodySH": 844,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 5,
+     "w": 78,
+     "h": 169,
+     "x": 196,
+     "y": 378
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 418,
+      "cw": 1,
+      "text": "The opening has ended. Play runs the day from 04:00."
+     },
+     {
+      "el": "span.evt",
+      "dir": "x",
+      "sw": 250,
+      "cw": 233,
+      "text": "Friant's division at Raigern since the night"
+     }
+    ],
+    "clippedN": 2,
+    "beyondViewport": [],
+    "beyondN": 0
+   },
+   "small": {
+    "texts": 51,
+    "under12": 16,
+    "by": {
+     "10.5px other": {
+      "n": 1,
+      "ex": [
+       "small: derived"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 5,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#play.t.tb-play: Play",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow",
+       "button#helpbtn.t.tb-help: ?"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 9,
+      "ex": [
+       "small.evn: interval",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10",
+       "b: 12"
+      ]
+     },
+     "11.5px map": {
+      "n": 1,
+      "ex": [
+       "div.ml-item.mlt: Litava river"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "targets": {
+    "n": 34,
+    "fail": 25,
+    "failing": [
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "13:00 to 14:00, The French centre turns south (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "14:00, Sokolnitz falls; Przybyszewski's column is surrounded (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "14:30, Vandamme takes the height above the Augezd defile (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "15:00, French artillery fires on the ice of the Satschan mere",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "16:30, Organised resistance ends (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     }
+    ],
+    "undersizedPassing": 0
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,723,390,121",
+     ".dispatch 0,552,390,171",
+     "#menubtn 320,10,60,44"
+    ],
+    "overlaps": []
+   }
+  },
+  {
+   "step": "tap a formation (map layer read to aim): Fifth Column (cavalry)",
+   "t": {
+    "x": 259.5,
+    "y": 434.5,
+    "id": "lich",
+    "name": "Fifth Column (cavalry)",
+    "key": "n:lich",
+    "w": 175,
+    "h": 17
+   },
+   "state": {
+    "clock": 240,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.78637482991597,
+      863.446158539436,
+      102.8528721483027
+     ],
+     "tgt": [
+      -38.78637482991597,
+      0.42937058750662316,
+      2.79627092794793
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "groundLayout": true
+   },
+   "drawer": {
+    "on": false,
+    "box": [
+     0,
+     844,
+     390,
+     464
+    ],
+    "sh": 463,
+    "ch": 463,
+    "oy": "visible"
+   },
+   "selchip": null,
+   "narr": {
+    "lede": false,
+    "ledeText": "Napoleon has deliberately given up the Pratzen plateau and l",
+    "situation": true,
+    "events": false,
+    "dispatchDisplay": "block",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night"
+   },
+   "scroll": {
+    "iw": 390,
+    "ih": 844,
+    "docSW": 390,
+    "docSH": 844,
+    "bodySW": 390,
+    "bodySH": 844,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 5,
+     "w": 78,
+     "h": 169,
+     "x": 196,
+     "y": 378
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 418,
+      "cw": 1,
+      "text": "The opening has ended. Play runs the day from 04:00."
+     },
+     {
+      "el": "span.evt",
+      "dir": "x",
+      "sw": 250,
+      "cw": 233,
+      "text": "Friant's division at Raigern since the night"
+     }
+    ],
+    "clippedN": 2,
+    "beyondViewport": [],
+    "beyondN": 0
+   },
+   "small": {
+    "texts": 51,
+    "under12": 16,
+    "by": {
+     "10.5px other": {
+      "n": 1,
+      "ex": [
+       "small: derived"
+      ]
+     },
+     "11.5px timeline": {
+      "n": 5,
+      "ex": [
+       "button#prevEv.t.tb-icon: │◄",
+       "button#play.t.tb-play: Play",
+       "button#nextEv.t.tb-icon: ►│",
+       "button#follow.t.tb-follow: Follow",
+       "button#helpbtn.t.tb-help: ?"
+      ]
+     },
+     "10.5px timeline": {
+      "n": 9,
+      "ex": [
+       "small.evn: interval",
+       "b: 04",
+       "b: 06",
+       "b: 08",
+       "b: 10",
+       "b: 12"
+      ]
+     },
+     "11.5px map": {
+      "n": 1,
+      "ex": [
+       "div.ml-item.mlt: Litava river"
+      ]
+     }
+    },
+    "underFloor": []
+   },
+   "targets": {
+    "n": 34,
+    "fail": 25,
+    "failing": [
+     {
+      "el": "button.ev-mark.fr",
+      "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "08:00, Langeron and Przybyszewski attack Sokolnitz (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "08:25 to 08:45, Napoleon releases Soult against the heights (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:00, Thiébault's brigade clears Pratzen village",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "09:15, Kutuzov orders the 4th Column to face about",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "09:30, Friant retakes Telnitz, then loses it again",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "09:45, Kamensky turns his brigade about and drives the French off the crest (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "10:30, Langeron's reinforcements arrive as the crest is lost",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15, The French take Blasowitz from the Russian Guard",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.al",
+      "name": "11:40 to 12:40, Buxhowden does not yet know the centre is gone (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.dec",
+      "name": "12:00 to 12:40, Napoleon moves forward to Stare Vinohrady (an interval, not a timestamp)",
+      "w": 14.1,
+      "h": 14.1,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "12:30, Davout resumes the offensive (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "13:00 to 14:00, The French centre turns south (an interval, not a timestamp)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "14:00, Sokolnitz falls; Przybyszewski's column is surrounded (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "14:30, Vandamme takes the height above the Augezd defile (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "15:00, French artillery fires on the ice of the Satschan mere",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     },
+     {
+      "el": "button.ev-mark.fr",
+      "name": "16:30, Organised resistance ends (the hour is disputed)",
+      "w": 11.3,
+      "h": 11.3,
+      "spacing": "fails (circle meets div#timerail.timerail)"
+     }
+    ],
+    "undersizedPassing": 0
+   },
+   "panels": {
+    "boxes": [
+     ".timebar 0,723,390,121",
+     ".dispatch 0,552,390,171",
+     "#menubtn 320,10,60,44"
+    ],
+    "overlaps": []
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/phone-01-first.jpg",
+  "docs/audit-post8-evidence/a11y/phone-02-opening-1.jpg",
+  "docs/audit-post8-evidence/a11y/phone-03-explore.jpg",
+  "docs/audit-post8-evidence/a11y/phone-04-sheet-open.jpg",
+  "docs/audit-post8-evidence/a11y/phone-05-after-drags.jpg",
+  "docs/audit-post8-evidence/a11y/phone-06-after-pinch.jpg",
+  "docs/audit-post8-evidence/a11y/phone-07-menu.jpg",
+  "docs/audit-post8-evidence/a11y/phone-08-dossier.jpg",
+  "FAILED 10-landscape: page.screenshot: Target page, context or browser has been closed"
+ ],
+ "error": "page.evaluate: Target page, context or browser has been closed\n    at Object.state (/home/user/Austerlitz/tools/audit-post8/lib.js:43:24)\n    at st (/home/user/Austerlitz/tools/audit-post8/a11y/phone.js:14:20)\n    at /home/user/Austerlitz/tools/audit-post8/a11y/phone.js:88:71\n    at async Object.run (/home/user/Austerlitz/tools/audit-post8/a11y/alib.js:213:47)",
+ "ended": "2026-11-02T06:26:29.764Z",
+ "seconds": 335
+}

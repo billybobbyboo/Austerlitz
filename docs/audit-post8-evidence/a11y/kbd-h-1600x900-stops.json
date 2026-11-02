@@ -1,0 +1,1216 @@
+[
+ {
+  "i": 1,
+  "el": "button#next.t.tb-icon",
+  "role": "button",
+  "name": "Forward ten minutes",
+  "box": [
+   163,
+   813,
+   36,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 2,
+  "el": "button#nextEv.t.tb-icon",
+  "role": "button",
+  "name": "Next event",
+  "box": [
+   204,
+   813,
+   40,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 3,
+  "el": "button#follow.t.tb-follow",
+  "role": "button",
+  "name": "Follow",
+  "box": [
+   253,
+   813,
+   58,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(16, 23, 32)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 4,
+  "el": "button#eyesbtn.t.tb-eyes",
+  "role": "button",
+  "name": "Eyes: everyone. Whose eyes? Everyone (press to change)",
+  "box": [
+   1174,
+   815,
+   105,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 5,
+  "el": "button#helpbtn.t.tb-help",
+  "role": "button",
+  "name": "Keys and controls (?)",
+  "box": [
+   1289,
+   813,
+   32,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 6,
+  "el": "button.t.spd-btn",
+  "role": "button",
+  "name": "½×",
+  "box": [
+   1331,
+   814,
+   36,
+   30
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(16, 23, 32)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 7,
+  "el": "button.t.spd-btn",
+  "role": "button",
+  "name": "1×",
+  "box": [
+   1372,
+   814,
+   31,
+   30
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 8,
+  "el": "button.t.spd-btn",
+  "role": "button",
+  "name": "2×",
+  "box": [
+   1408,
+   814,
+   33,
+   30
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 9,
+  "el": "button.t.spd-btn",
+  "role": "button",
+  "name": "4×",
+  "box": [
+   1446,
+   814,
+   34,
+   30
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 10,
+  "el": "button.act-btn",
+  "role": "button",
+  "name": "The Deception, 04:00 to 07:00: Napoleon has given up the plateau and left his right thin. ",
+  "box": [
+   14,
+   845,
+   337,
+   15
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200)",
+  "covered": {
+   "how": "panels",
+   "frac": 0.77,
+   "by": ".dispatch"
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 11,
+  "el": "button.step",
+  "role": "button",
+  "name": "04:00 - 07:00, Deployment: Dispositions in the dark (The Deception)",
+  "box": [
+   14,
+   860,
+   337,
+   16
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 12,
+  "el": "div#timerail.timerail",
+  "role": "slider",
+  "name": "Battle clock",
+  "box": [
+   14,
+   876,
+   1572,
+   24
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 2,
+   "by": [
+    "button.ev-mark.al"
+   ]
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 13,
+  "el": "button.ev-mark.fr",
+  "role": "button",
+  "name": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp",
+  "box": [
+   8,
+   876,
+   11,
+   11
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 14,
+  "el": "div#maplayer",
+  "role": "group",
+  "name": "The map: arrow keys pan, Shift and the arrow keys turn and tilt, plus and minus zoom; Tab ",
+  "box": [
+   0,
+   0,
+   1600,
+   900
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200)",
+  "covered": {
+   "how": "panels",
+   "frac": 0.17,
+   "by": ".rail"
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 15,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Event, 04:00 to 04:45: Friant's division at Raigern since the night (interval), an interva",
+  "box": [
+   364,
+   748,
+   300,
+   17
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 16,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Imperial Headquarters, French, army, observing, position grade B",
+  "box": [
+   746,
+   246,
+   171,
+   17
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 17,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Allied Headquarters, Allied, Russian, army, observing, position grade B",
+  "box": [
+   1149,
+   354,
+   159,
+   17
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 18,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Left Wing Command, Allied, Russian, corps, about 40,000, forming up, position grade C",
+  "box": [
+   952,
+   550,
+   163,
+   17
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 19,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Advance Guard of the Right, Allied, Russian, corps, about 13,700, holding, position grade ",
+  "box": [
+   969,
+   174,
+   201,
+   17
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 20,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Fifth Column (cavalry), Allied, Russian, corps, about 5,400, forming up, position grade B",
+  "box": [
+   953,
+   471,
+   175,
+   17
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 21,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Place: Pratzen Heights",
+  "box": [
+   0,
+   0,
+   100,
+   16
+  ],
+  "vis": false,
+  "opacity": 0,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": null,
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 22,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Place: Stare Vinohrady",
+  "box": [
+   0,
+   0,
+   100,
+   16
+  ],
+  "vis": false,
+  "opacity": 0,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": null,
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 23,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Place: Pratzeberg",
+  "box": [
+   0,
+   0,
+   74,
+   16
+  ],
+  "vis": false,
+  "opacity": 0,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": null,
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 24,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Place: The Santon",
+  "box": [
+   900,
+   214,
+   74,
+   16
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 25,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Place: Zuran mound",
+  "box": [
+   0,
+   0,
+   86,
+   16
+  ],
+  "vis": false,
+  "opacity": 0,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": null,
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 26,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Place: Goldbach stream",
+  "box": [
+   0,
+   0,
+   108,
+   16
+  ],
+  "vis": false,
+  "opacity": 0,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": null,
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 27,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Place: Litava river",
+  "box": [
+   1194,
+   392,
+   70,
+   16
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 28,
+  "el": "div.ml-item.mlt",
+  "role": "button",
+  "name": "Place: Austerlitz",
+  "box": [
+   1284,
+   270,
+   63,
+   16
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200) +shadow",
+  "covered": {
+   "how": "panels",
+   "frac": 0,
+   "by": null
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": true
+ },
+ {
+  "i": 29,
+  "el": "body",
+  "role": null,
+  "name": null
+ },
+ {
+  "i": 30,
+  "el": "button.vm-btn",
+  "role": "button",
+  "name": "Study",
+  "box": [
+   714,
+   15,
+   58,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(16, 23, 32)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 31,
+  "el": "button.vm-btn",
+  "role": "button",
+  "name": "Watch",
+  "box": [
+   772,
+   15,
+   60,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 32,
+  "el": "button.vm-btn",
+  "role": "button",
+  "name": "Clean",
+  "box": [
+   832,
+   15,
+   55,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 33,
+  "el": "button#tab-now.tab-btn",
+  "role": "tab",
+  "name": "Now",
+  "box": [
+   18,
+   73,
+   33,
+   47
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 34,
+  "el": "div.railscroll",
+  "role": "generic",
+  "name": "Now",
+  "box": [
+   18,
+   137,
+   263,
+   615
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 35,
+  "el": "button#srcbtn",
+  "role": "button",
+  "name": "Accuracy and sources",
+  "box": [
+   18,
+   771,
+   125,
+   24
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 36,
+  "el": "button#openingbtn.t",
+  "role": "button",
+  "name": "Begin the opening",
+  "box": [
+   1284,
+   20,
+   126,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 37,
+  "el": "button#tourbtn.t",
+  "role": "button",
+  "name": "Guided tour",
+  "box": [
+   1415,
+   20,
+   89,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 38,
+  "el": "button#layersbtn.t",
+  "role": "button",
+  "name": "Layers…",
+  "box": [
+   1509,
+   20,
+   69,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 39,
+  "el": "button.t.van-btn",
+  "role": "button",
+  "name": "Field",
+  "box": [
+   1260,
+   78,
+   50,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 40,
+  "el": "button.t.van-btn",
+  "role": "button",
+  "name": "Zuran",
+  "box": [
+   1315,
+   78,
+   55,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 41,
+  "el": "button.t.van-btn",
+  "role": "button",
+  "name": "Pratzen",
+  "box": [
+   1375,
+   78,
+   66,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 42,
+  "el": "button.t.van-btn",
+  "role": "button",
+  "name": "Allied",
+  "box": [
+   1446,
+   78,
+   54,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 43,
+  "el": "button.t.van-btn",
+  "role": "button",
+  "name": "Overview",
+  "box": [
+   1505,
+   78,
+   73,
+   28
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(16, 23, 32)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 44,
+  "el": "button#lg-toggle.lg-head",
+  "role": "button",
+  "name": "Key +",
+  "box": [
+   1500,
+   760,
+   71,
+   26
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 2px rgb(239, 228, 200)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 45,
+  "el": "button#prevEv.t.tb-icon",
+  "role": "button",
+  "name": "Previous event",
+  "box": [
+   14,
+   813,
+   40,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 46,
+  "el": "button#prev.t.tb-icon",
+  "role": "button",
+  "name": "Back ten minutes",
+  "box": [
+   59,
+   813,
+   36,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ },
+ {
+  "i": 47,
+  "el": "button#play.t.tb-play",
+  "role": "button",
+  "name": "Play",
+  "box": [
+   100,
+   813,
+   58,
+   32
+  ],
+  "vis": true,
+  "opacity": 1,
+  "onScreen": true,
+  "fullOn": true,
+  "fv": true,
+  "ring": "solid 0px rgb(155, 163, 169)",
+  "covered": {
+   "how": "hit",
+   "tot": 3,
+   "hit": 3,
+   "by": []
+  },
+  "inert": null,
+  "ariaHidden": null,
+  "inMap": false
+ }
+]

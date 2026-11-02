@@ -14,6 +14,8 @@ const CLIP=process.argv[2]||"counters-pan", VP=(process.argv[3]||"1600x900").spl
 const CLIPS={
   "counters-pan":{view:{t:570, presentation:"study", mode:"hybrid", cam:[-195,92,156,-33,4,-2]}, kind:"pan", n:60, amt:8, rest:30, every:6, fps:5,
     note:"Landscape with counters from the Field vantage at 09:30 (Study), a left-button drag of 8 px a frame for 60 frames (2 s at 30 fps), then 30 frames at rest; the layer logged every frame, every 6th frame captured (the clip at 5 fps = the visitor's speed)."},
+  "counters-pan10":{view:{t:570, presentation:"study", mode:"hybrid", cam:[-195,92,156,-33,4,-2]}, kind:"pan", n:45, amt:6, rest:15, every:3, fps:10,
+    note:"Landscape with counters from the Field vantage at 09:30 (Study), a left-button drag of 6 px a frame for 45 frames (1.5 s at 30 fps, 270 px), then 15 frames (0.5 s) at rest; the layer logged every frame, every 3rd frame captured (the clip at 10 fps = the visitor's speed; 21 frames, 2.1 s). Shortened from 120 frames after a first attempt took about 80 s per captured frame under this machine's load (software WebGL)."},
   "watch-play":{view:{t:540, presentation:"watch", mode:"terrain", cam:[-195,92,156,-33,4,-2]}, kind:"play", from:540, amt:0.5, n:180, rest:12, every:12, fps:2.5,
     note:"Watch on the landscape from 09:00, Play at 1/2x with Follow on (the app's own togglePlay; freeCam off as the motion block's Play runs), 180 frames (6 s at 30 fps) then 12 at rest; the layer logged every frame, every 12th frame captured (the clip at 2.5 fps = the visitor's speed)."}
 };

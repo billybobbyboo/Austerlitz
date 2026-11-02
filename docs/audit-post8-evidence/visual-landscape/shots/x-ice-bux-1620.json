@@ -1,0 +1,87 @@
+{
+ "id": "x-ice-bux-1620",
+ "group": "extra",
+ "note": "Buxhowden's headquarters (the marquee) on the ice at 16:20.",
+ "spec": {
+  "t": 980,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": "buxhowden",
+   "dir": [
+    -0.5,
+    0.35,
+    0.79
+   ],
+   "r": 12
+  }
+ },
+ "after": "var id='buxhowden', r=units[id], f=FORMATIONS[id], p=posNow(id), D=180/Math.PI; function ad(a,b){ var d=(a-b)%(2*Math.PI); if(d>Math.PI) d-=2*Math.PI; if(d<-Math.PI) d+=2*Math.PI; return +(d*D).toFixed(1); } var near=null, nd=1e9; Object.keys(units).forEach(function(k){ var g=FORMATIONS[k]; if(!g||g.arm==='hq'||!units[k].block||(g.nation==='fr')===(f.nation==='fr')) return; var q=posNow(k); if(!q) return; var d=Math.hypot(q[0]-p[0],q[1]-p[1])*KM_PER_MAP; if(d<nd){ nd=d; near={id:k,q:q}; } }); var a=W(p[0],p[1]), b=near?W(near.q[0],near.q[1]):null, br=b?Math.atan2(b[0]-a[0],b[1]-a[1]):null, hd=headingAt(id,clock), mr=f.track?marchRate(id,clock):null; return {id:id, yaw:+((r.yaw||0)*D).toFixed(1), heading:hd===null?null:+(hd*D).toFixed(1), rule:enemyFacing(id)===null?null:+(enemyFacing(id)*D).toFixed(1), moving:!!(mr&&mr.moving), kmh:mr?+mr.kmh.toFixed(2):null, status:liveStatus(id,phaseAt(clock)), near:near?near.id:null, nearKm:near?+nd.toFixed(3):null, bearingNear:br===null?null:+(br*D).toFixed(1), yawMinusBearing:br===null?null:ad(r.yaw||0,br)};",
+ "afterResult": {
+  "id": "buxhowden",
+  "yaw": -23.2,
+  "heading": -23.2,
+  "rule": -135,
+  "moving": true,
+  "kmh": 0.8,
+  "status": "withdrawing",
+  "near": "bourcier",
+  "nearKm": 1.182,
+  "bearingNear": -176,
+  "yawMinusBearing": 152.8
+ },
+ "readBack": {
+  "clock": "16:20",
+  "t": 980,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "lowTier": false,
+  "eye": [
+   -32.681,
+   -0.738,
+   91.228
+  ],
+  "target": [
+   -26.671,
+   -5.014,
+   81.732
+  ],
+  "fov": 37,
+  "selection": null,
+  "commandView": "none",
+  "eyeOn": false,
+  "layers": {
+   "symbols": true,
+   "arrows": true,
+   "labels": true,
+   "trails": true,
+   "contours": true,
+   "analysis": false,
+   "events": true,
+   "confidence": false,
+   "skeleton": false,
+   "routes": false
+  },
+  "cleanView": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "fx": true,
+  "dist": 12.02,
+  "sunAlt": -1.53,
+  "sunGeo": -1.53,
+  "sunAz": 237.2,
+  "mist": 0.22
+ },
+ "ms": 106033,
+ "timing": {
+  "apply": 48,
+  "settle": 264,
+  "settle2": 101,
+  "shot": 105137
+ },
+ "page": "harness page (?harness=1), 1600x900, deviceScaleFactor 1, Chromium 141.0.7390.37 headless shell, ANGLE/SwiftShader (software WebGL)",
+ "errors": []
+}

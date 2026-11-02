@@ -1,0 +1,715 @@
+{
+ "shot": "wall-0900",
+ "set": "d1600",
+ "viewport": [
+  1600,
+  900
+ ],
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "page": "harness page (?harness=1), first-run card closed by a real Esc",
+ "spec": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "t": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "aim": {
+   "map": [
+    230,
+    250
+   ],
+   "dir": [
+    -0.97,
+    0.1,
+    0.21
+   ],
+   "r": 60
+  }
+ },
+ "steps": [],
+ "state": {
+  "clock": 540,
+  "presentation": "watch",
+  "mode": "terrain",
+  "factor": 4,
+  "defaultFactor": 4,
+  "exag": 10.32642489706367,
+  "selection": null,
+  "commandView": "none",
+  "plan": null,
+  "eye": false,
+  "tour": -1,
+  "opening": false,
+  "openingPlay": false,
+  "firstRun": false,
+  "playing": false,
+  "freeCam": true,
+  "tween": false,
+  "cam": {
+   "kind": "land",
+   "pos": [
+    -113.34604790842874,
+    4.968570573160822,
+    12.631618619350554
+   ],
+   "tgt": [
+    -55,
+    -0.14566601050962874,
+    0
+   ]
+  },
+  "applied": {
+   "kind": "land",
+   "pos": [
+    -113.34604790842874,
+    4.968570573160822,
+    12.631618619350554
+   ],
+   "tgt": [
+    -55,
+    -0.14566601050962874,
+    0
+   ]
+  },
+  "aimErr": 0,
+  "paperFocus": null,
+  "layers": {
+   "confidence": false,
+   "routes": false,
+   "skeleton": false
+  },
+  "confNone": false,
+  "skelDay": false,
+  "viewport": [
+   1600,
+   900
+  ],
+  "phone": {
+   "on": false,
+   "menu": false,
+   "sheet": false,
+   "layers": false,
+   "drawer": false,
+   "rail": false
+  },
+  "groundLayout": true
+ },
+ "layer": {
+  "items": 64,
+  "placed": 24,
+  "dropped": 8,
+  "droppedIds": [
+   "t:pratzen",
+   "t:vinohrady",
+   "t:austerlitz",
+   "t:kobelnitz",
+   "t:pratzenv",
+   "t:blasowitz",
+   "t:posthouse",
+   "t:rausnitz"
+  ],
+  "occluded": 1,
+  "offscreen": 31,
+  "underPanel": 0,
+  "keepMissing": []
+ },
+ "caption": {
+  "title": "THE PRATZEN STRIKE · Soult storms the heights · derived on the heights: Allied ≈ 23,550 · interval Friant's leading brigade reaches the Goldbach",
+  "visible": [
+   {
+    "cls": "act",
+    "text": "THE PRATZEN STRIKE",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "cap-ph",
+    "text": "Soult storms the heights",
+    "shown": true,
+    "cut": true
+   },
+   {
+    "cls": "sep der-sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "der",
+    "text": "derived on the heights: Allied ≈ 23,550",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "sep",
+    "text": "·",
+    "shown": true,
+    "cut": false
+   },
+   {
+    "cls": "ev",
+    "text": "intervalFriant's leading brigade reaches the Goldbach",
+    "shown": true,
+    "cut": false
+   }
+  ],
+  "box": [
+   389,
+   821,
+   590,
+   15
+  ]
+ },
+ "legend": {
+  "expanded": "false",
+  "rows": []
+ },
+ "scaleBar": "250 m",
+ "bodyClass": "docked rail-hidden pm-watch",
+ "textContrast": {
+  "texts": 31,
+  "min": 7.13,
+  "belowAA": []
+ },
+ "farNames": {
+  "far": 1.5,
+  "names": [
+   {
+    "id": "n:ahq",
+    "plate": "far",
+    "ratio": 1.558,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.16
+   },
+   {
+    "id": "n:lich",
+    "plate": "far",
+    "ratio": 1.836,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.16
+   },
+   {
+    "id": "n:bag",
+    "plate": "far",
+    "ratio": 2.66,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.36
+   },
+   {
+    "id": "n:sthilaire",
+    "plate": "full",
+    "ratio": 1.065,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.49
+   },
+   {
+    "id": "n:vandamme",
+    "plate": "full",
+    "ratio": 1.371,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.53
+   },
+   {
+    "id": "n:kellermann",
+    "plate": "far",
+    "ratio": 1.786,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.27
+   },
+   {
+    "id": "n:nansouty",
+    "plate": "far",
+    "ratio": 1.665,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.39
+   },
+   {
+    "id": "n:dhautpoul",
+    "plate": "far",
+    "ratio": 1.532,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 8
+   },
+   {
+    "id": "n:kamensky",
+    "plate": "full",
+    "ratio": 1.339,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 12.53
+   },
+   {
+    "id": "n:milo",
+    "plate": "far",
+    "ratio": 1.577,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.16
+   },
+   {
+    "id": "n:kollo",
+    "plate": "far",
+    "ratio": 1.748,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.16
+   },
+   {
+    "id": "n:rg_inf",
+    "plate": "far",
+    "ratio": 2.367,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.05
+   },
+   {
+    "id": "n:rg_cav",
+    "plate": "far",
+    "ratio": 2.12,
+    "prot": false,
+    "px": 12.5,
+    "contrast": 7.68
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "n:ahq",
+   "cat": "name",
+   "state": "on",
+   "text": "Allied HeadquartersB",
+   "box": [
+    740,
+    211,
+    159,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:lich",
+   "cat": "name",
+   "state": "on",
+   "text": "Fifth Column (cavalry)",
+   "box": [
+    442,
+    223,
+    154,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:bag",
+   "cat": "name",
+   "state": "on",
+   "text": "Advance Guard of the RightB",
+   "box": [
+    43,
+    241,
+    201,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "p:plateau",
+   "cat": "plateau",
+   "state": "on",
+   "text": "THE PRATZEN · derived: Allied ≈ 23,550",
+   "box": [
+    294,
+    285,
+    242,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzen",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen Heights",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:vinohrady",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Stare Vinohrady",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzeberg",
+   "cat": "place",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    1173,
+    164,
+    74,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:goldbach",
+   "cat": "place",
+   "state": "on",
+   "text": "Goldbach stream",
+   "box": [
+    1061,
+    394,
+    108,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:litava",
+   "cat": "place",
+   "state": "occluded",
+   "text": "Litava river",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:austerlitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Austerlitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:sthilaire",
+   "cat": "name",
+   "state": "on",
+   "text": "Saint-Hilaire",
+   "box": [
+    706,
+    233,
+    94,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:vandamme",
+   "cat": "name",
+   "state": "on",
+   "text": "Vandamme",
+   "box": [
+    265,
+    253,
+    86,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:kellermann",
+   "cat": "name",
+   "state": "on",
+   "text": "Kellermann's Light CavalryB",
+   "box": [
+    53,
+    268,
+    197,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:nansouty",
+   "cat": "name",
+   "state": "on",
+   "text": "Nansouty's CuirassiersB",
+   "box": [
+    16,
+    213,
+    171,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:dhautpoul",
+   "cat": "name",
+   "state": "on",
+   "text": "d'Hautpoul's CuirassiersB",
+   "box": [
+    3,
+    292,
+    183,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:kamensky",
+   "cat": "name",
+   "state": "on",
+   "text": "Kamensky",
+   "box": [
+    1277,
+    193,
+    81,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "n:milo",
+   "cat": "name",
+   "state": "on",
+   "text": "Miloradovich's RussiansB",
+   "box": [
+    723,
+    166,
+    180,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:kollo",
+   "cat": "name",
+   "state": "on",
+   "text": "Kollowrat's AustriansB",
+   "box": [
+    778,
+    190,
+    164,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:rg_inf",
+   "cat": "name",
+   "state": "on",
+   "text": "Guard Infantry",
+   "box": [
+    659,
+    263,
+    107,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "n:rg_cav",
+   "cat": "name",
+   "state": "on",
+   "text": "Guard Cavalry",
+   "box": [
+    595,
+    303,
+    107,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.64)",
+   "keep": false
+  },
+  {
+   "id": "e:soult",
+   "cat": "event",
+   "state": "on",
+   "text": "Saint-Hilaire and Vandamme climb the slope (inte",
+   "box": [
+    810,
+    233,
+    317,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "e:pratzen-village",
+   "cat": "event",
+   "state": "on",
+   "text": "Thiébault's brigade clears Pratzen village",
+   "box": [
+    704,
+    336,
+    239,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": true
+  },
+  {
+   "id": "o:Saint-Hilaire",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Saint-Hilaire",
+   "box": [
+    778,
+    358,
+    81,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Vandamme",
+   "cat": "overlay",
+   "state": "on",
+   "text": "Vandamme",
+   "box": [
+    261,
+    321,
+    73,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Pratzeberg",
+   "cat": "objective",
+   "state": "on",
+   "text": "Pratzeberg",
+   "box": [
+    1243,
+    228,
+    70,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "o:Stare Vinohrady",
+   "cat": "objective",
+   "state": "on",
+   "text": "Stare Vinohrady",
+   "box": [
+    501,
+    264,
+    101,
+    17
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:kobelnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Kobelnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:pratzenv",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Pratzen village",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:puntowitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Puntowitz",
+   "box": [
+    425,
+    371,
+    66,
+    16
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:blasowitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Blasowitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:krzenowitz",
+   "cat": "place",
+   "state": "on",
+   "text": "Krzenowitz",
+   "box": [
+    708,
+    297,
+    67,
+    15
+   ],
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:posthouse",
+   "cat": "place",
+   "state": "dropped",
+   "text": "Posoritz post house",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  },
+  {
+   "id": "t:rausnitz",
+   "cat": "place",
+   "state": "dropped",
+   "text": "To Rausnitz",
+   "box": null,
+   "plate": "rgba(10, 14, 18, 0.88)",
+   "keep": false
+  }
+ ],
+ "ms": 112580,
+ "msSettle": 1707,
+ "msShot": 110150,
+ "msMeasure": 723,
+ "jpeg": "ffmpeg -q:v 4 from the PNG screenshot of the same frame"
+}

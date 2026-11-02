@@ -59,9 +59,12 @@ run("s3-selection-reading",{viewport:[1600,900],page:"visitor"},async c=>{
     c.check("gone-selection",kg.block!==true,"a formation that has left the field is not drawn; its card (if kept) says it has left",{formation:g.id,clock:s.clock,selection:s.selection,after:kg});
   }
   /* the eye level with a selection */
-  await c.step(p,"click Pause; click the Command tab; choose Napoleon's headquarters; click the eye level",async q=>{ if(await H.ev(q,()=>playing)) await H.click(q,"#play"); await H.click(q,"#tab-command"); await H.click(q,'.cmd-btn[data-cv="fr"]'); await H.click(q,"#eyego"); await H.frames(q,60); },{shot:"eye-level-selected"});
+  /* (second session: the first run clicked the Command tab, which the open dossier covers in the docked layout (the dossier takes the rail's
+     column, 3B): the reading is chosen by the timeline's Eyes button and the eye level by the vantage bar's "Eye level", which appears once a
+     headquarters is chosen; the selection stays) */
+  await c.step(p,"Pause (by state); click the Eyes button (Napoleon's headquarters); click the vantage bar's 'Eye level'; 60 frames",async q=>{ await H.setPlay(q,false); await H.click(q,"#eyesbtn"); const cv=await H.ev(q,()=>commandView); await H.click(q,'.van-btn[data-v="eye"]'); await H.frames(q,60); return {cv}; },{shot:"eye-level-selected"});
   s=c.last().s; c.check("eye-with-selection",s.eye===true,"the eye level entered with a selection",{eye:s.eye,selection:s.selection,eyecap:s.panels.eyecap,drawer:s.drawer});
-  await c.step(p,"click Play; 120 frames at the eye level",async q=>{ await H.click(q,"#play"); await H.frames(q,120); });
+  await c.step(p,"Play (by state); 120 frames at the eye level",async q=>{ await H.setPlay(q,true); await H.frames(q,120); });
   s=c.last().s; c.check("eye-play",s.eye===true&&s.playing,"Play at the eye level keeps the eye (Follow does not move it)",{eye:s.eye,playing:s.playing,freeCam:s.freeCam,cam:s.cam});
   await c.step(p,"Esc; Esc; Esc",async q=>{ await H.esc(q); await H.esc(q); await H.esc(q); await H.frames(q,60); });
   s=c.last().s; c.check("esc-after-eye",s.selection===null,"Esc clears the selection; the eye level and the reading as left",{eye:s.eye,commandView:s.commandView,selection:s.selection,playing:s.playing});

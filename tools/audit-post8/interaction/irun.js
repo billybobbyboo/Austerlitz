@@ -7,7 +7,7 @@ const fs=require("fs"), path=require("path"), crypto=require("crypto");
 const I=require("./ilib.js");
 const HTML=path.resolve(process.env.AUSTERLITZ_HTML||path.join(I.ROOT,"austerlitz-command-map.html"));
 const BUILD=(()=>{ const b=fs.readFileSync(HTML); return {file:path.relative(I.ROOT,HTML), bytes:b.length, md5:crypto.createHash("md5").update(b).digest("hex")}; })();
-const KEEP=["clock","clockText","playing","speed","speedPressed","speedBtn","dwellOn","dwellSt","dwellNext","presentation","mode","factor","selection","commandView","TOURCV",
+const KEEP=["clock","clockText","playing","speed","speedPressed","speedBtn","dwellOn","dwellBtn","dwellSt","dwellNext","presentation","mode","factor","selection","commandView","TOURCV",
   "eye","tourStep","opening","openingK","openingPlay","firstRun","freeCam","curVantage","followBtn","playBtn","curPhase","chapter","plan","caption","capVisible","toast","livePhase",
   "selchip","drawer","panels","focus","focusVisible","inertKids","ml","overlays","drawon","smoke","blocks","tween","layers","viewport","phone","phaseTitle"];
 function compact(s){ const o={}; KEEP.forEach(k=>{ if(s[k]!==undefined) o[k]=s[k]; }); if(typeof o.clock==="number") o.clock=+o.clock.toFixed(3);
@@ -48,7 +48,23 @@ const H={
   click:(p,sel,o)=>I.clickEl(p,sel,o),
   /* the time rail: the x of a clock minute on it */
   railX:(p,t)=>p.evaluate(t=>{ const r=document.getElementById("timerail").getBoundingClientRect(); return {x:r.left+(t-T_MIN)/(T_MAX-T_MIN)*r.width, y:r.top+r.height/2}; },t),
-  async dragRail(p,t0,t1,steps){ const a=await H.railX(p,t0), z=await H.railX(p,t1); await p.mouse.move(a.x,a.y); await p.mouse.down(); for(let i=1;i<=(steps||6);i++) await p.mouse.move(a.x+(z.x-a.x)*i/(steps||6),a.y); await p.mouse.up(); },
+  /* (fixed in the second session: the first run pressed the rail's centre line at the clock's own minute, which an event marker's enlarged
+     hit area covers when the clock stands at an event start (style.css .ev-mark::after inset -6px; .ev-mark.dw scale 1.5), so the press went
+     to the marker: the press now starts at the nearest point of the rail at that minute that the rail itself would take (scanned down the
+     rail, then sideways), and the step reports what covered the centre line) */
+  railStart:(p,t)=>p.evaluate(t=>{ const rail=document.getElementById("timerail"), r=rail.getBoundingClientRect(), x0=r.left+(t-T_MIN)/(T_MAX-T_MIN)*r.width, yc=r.top+r.height/2;
+    const nm=h=>h?(h.id?"#"+h.id:h.tagName.toLowerCase()+"."+String(h.className).split(" ")[0]):null, own=h=>!!(h&&(h===rail||rail.contains(h)));
+    const atCentre=nm(document.elementFromPoint(x0,yc));
+    for(const dx of [0,2,-2,4,-4,6,-6,8,-8,10,-10,12,-12,14,-14,16,-16]) for(const fy of [0.5,0.75,0.9,0.25,0.1]){ const x=x0+dx, y=r.top+r.height*fy; if(own(document.elementFromPoint(x,y))) return {x,y,dx,fy,atCentre}; }
+    return {x:x0,y:yc,dx:0,fy:0.5,atCentre,covered:true}; },t),
+  async dragRail(p,t0,t1,steps){ const a=await H.railStart(p,t0), z=await H.railX(p,t1); await p.mouse.move(a.x,a.y); await p.mouse.down(); for(let i=1;i<=(steps||6);i++) await p.mouse.move(a.x+(z.x-a.x)*i/(steps||6),a.y); await p.mouse.up(); return a; },
+  /* Play or Pause by a real click on the Play button, pressed only when the clock's state differs from the one wanted (added in the second
+     session: the first run of s2 pressed it blindly after a Space had already changed the state, and every check after it read a paused
+     clock); in Clean, where the button is hidden, Space with no button focused (the window's "play" row) */
+  async setPlay(p,want){ const st=await p.evaluate(()=>{ const b=document.getElementById("play"), r=b.getBoundingClientRect(); return {playing:playing, shown:r.width>0&&r.height>0&&getComputedStyle(b).visibility!=="hidden"}; });
+    if(st.playing===want) return {pressed:false};
+    if(st.shown){ await I.clickEl(p,"#play"); return {pressed:"click"}; }
+    await p.evaluate(()=>{ if(document.activeElement) document.activeElement.blur(); }); await p.keyboard.press(" "); return {pressed:"space"}; },
   /* set up: focus an element as a visitor's Tab would leave it (programmatic focus; the keys that follow are real) */
   focus:(p,sel)=>I.focusEl(p,sel),
   frames:(p,n)=>I.play(p,n),

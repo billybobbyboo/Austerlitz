@@ -1,0 +1,418 @@
+{
+ "tag": "phone2",
+ "started": "2026-11-02T06:26:38.692Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "1. one finger dragged 108 px on the map (CDP touch)",
+   "t": 159.8,
+   "before": {
+    "x": -38.79,
+    "y": 863.45,
+    "z": 102.85,
+    "clock": 240,
+    "vv": 1
+   },
+   "after": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 240,
+    "vv": 1
+   },
+   "cameraMoved": true,
+   "clockMoved": false,
+   "vv": [
+    1,
+    1
+   ]
+  },
+  {
+   "step": "2. a tap on the time rail at 30% of its width (page.touchscreen)",
+   "t": 166.3,
+   "rail": {
+    "x": 195,
+    "y": 832,
+    "w": 374,
+    "h": 24,
+    "vis": true
+   },
+   "before": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 240,
+    "vv": 1
+   },
+   "after": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 505,
+    "vv": 1
+   },
+   "at": "button.ev-mark.dec",
+   "cameraMoved": false,
+   "clockMoved": true,
+   "vv": [
+    1,
+    1
+   ]
+  },
+  {
+   "step": "3. a finger dragged along the time rail, 50% of its width (CDP touch)",
+   "t": 314.2,
+   "before": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 505,
+    "vv": 1
+   },
+   "after": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 505,
+    "vv": 1
+   },
+   "cameraMoved": false,
+   "clockMoved": false,
+   "vv": [
+    1,
+    1
+   ]
+  },
+  {
+   "step": "4. a pinch out on the map alone (CDP touch)",
+   "t": 430.9,
+   "before": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 505,
+    "vv": 1
+   },
+   "after": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 505,
+    "vv": 3.259
+   },
+   "cameraMoved": false,
+   "clockMoved": false,
+   "vv": [
+    1,
+    3.259
+   ]
+  },
+  {
+   "step": "5. a pinch out with one finger starting on the timeline, one on the map (CDP touch)",
+   "t": 508.3,
+   "tb": {
+    "top": 723,
+    "h": 121
+   },
+   "before": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 505,
+    "vv": 3.259
+   },
+   "after": {
+    "x": -100.26,
+    "y": 863.45,
+    "z": 61.71,
+    "clock": 505,
+    "vv": 3.918
+   },
+   "scroll": {
+    "iw": 390,
+    "ih": 844,
+    "docSW": 390,
+    "docSH": 844,
+    "bodySW": 390,
+    "bodySH": 844,
+    "hscroll": false,
+    "vscroll": false,
+    "scrollX": 0,
+    "scrollY": 0,
+    "vv": {
+     "scale": 3.918,
+     "w": 100,
+     "h": 215,
+     "x": 44,
+     "y": 95
+    },
+    "bodyOverflow": "hidden/hidden"
+   },
+   "cameraMoved": false,
+   "clockMoved": false,
+   "vv": [
+    3.259,
+    3.918
+   ]
+  },
+  {
+   "step": "set-up: the page scale put back to 1 (CDP Emulation.setPageScaleFactor)",
+   "t": 543.2,
+   "vv": 1
+  },
+  {
+   "step": "the Menu (tap)",
+   "t": 573.2,
+   "state": {
+    "on": true,
+    "menu": true,
+    "sheet": false,
+    "layers": false,
+    "drawer": true,
+    "rail": false
+   },
+   "items": [
+    "Study 116x44",
+    "Watch 116x44",
+    "Clean 115x44",
+    "Begin the opening 132x44",
+    "Guided tour 94x44",
+    "Layers… 74x44",
+    "Panels 62x44",
+    "Field 51x44",
+    "Zuran 56x44",
+    "Pratzen 68x44",
+    "Allied 56x44",
+    "Overview 80x44"
+   ],
+   "targets": {
+    "n": 51,
+    "failing": []
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 581,
+      "cw": 1,
+      "text": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and"
+     },
+     {
+      "el": "span.evt",
+      "dir": "x",
+      "sw": 267,
+      "cw": 233,
+      "text": "Napoleon releases Soult against the heights"
+     },
+     {
+      "el": "span.sr-only",
+      "dir": "x",
+      "sw": 34,
+      "cw": 1,
+      "text": "Claim:"
+     }
+    ],
+    "clippedN": 3,
+    "beyondViewport": [],
+    "beyondN": 0
+   }
+  },
+  {
+   "step": "held landscape (844 x 390): the phase text's place and the screen",
+   "t": 608.1,
+   "state": {
+    "on": false,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": true,
+    "rail": false
+   },
+   "narr": {
+    "lede": false,
+    "ledeText": "Langeron and Przybyszewski attack Sokolnitz village, its wal",
+    "situation": false,
+    "events": false,
+    "dispatchDisplay": "none",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": true,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · interval Napoleon releases Soult against the heights"
+   },
+   "targets": {
+    "n": 56,
+    "failing": []
+   },
+   "cut": {
+    "clipped": [
+     {
+      "el": "div#live-phase.sr-only",
+      "dir": "x",
+      "sw": 581,
+      "cw": 1,
+      "text": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and"
+     },
+     {
+      "el": "span.act",
+      "dir": "x",
+      "sw": 146,
+      "cw": 65,
+      "text": "THE ALLIED ADVANCE"
+     },
+     {
+      "el": "span.evt",
+      "dir": "x",
+      "sw": 267,
+      "cw": 265,
+      "text": "Napoleon releases Soult against the heights"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 133,
+      "cw": 100,
+      "text": "The Allied Advance"
+     },
+     {
+      "el": "button.act-btn",
+      "dir": "x",
+      "sw": 129,
+      "cw": 100,
+      "text": "The Pratzen Strike"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 37,
+      "text": "The Pratzen"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 68,
+      "cw": 51,
+      "text": "Pratzeberg"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 74,
+      "cw": 37,
+      "text": "Olmütz road"
+     },
+     {
+      "el": "span.step-l",
+      "dir": "x",
+      "sw": 63,
+      "cw": 51,
+      "text": "Reckoning"
+     },
+     {
+      "el": "div#maplayer",
+      "dir": "y",
+      "sh": 608,
+      "ch": 390,
+      "text": "THE PRATZEN · derived: Allied ≈ 19,300 II Column → Sokolnitz"
+     }
+    ],
+    "clippedN": 10,
+    "beyondViewport": [
+     {
+      "el": "div.sect",
+      "box": [
+       507,
+       249,
+       315,
+       274
+      ],
+      "text": "Why it matters Asked how long his troops needed to"
+     },
+     {
+      "el": "p.ev-why",
+      "box": [
+       507,
+       277,
+       315,
+       246
+      ],
+      "text": "Asked how long his troops needed to crown the plat"
+     }
+    ],
+    "beyondN": 2
+   },
+   "panels": {
+    "boxes": [
+     ".drawer 484,0,360,299",
+     ".timebar 0,300,844,91",
+     ".tools 111,56,359,63",
+     "#viewmode 155,14,175,34"
+    ],
+    "overlaps": []
+   },
+   "reach": [
+    "#menubtn: not shown 0,0,0,0",
+    "#panelsbtn: shown 410,56,60,28",
+    "#helpbtn: shown 798,303,32,32",
+    "#eyesbtn: not shown 0,0,0,0",
+    "#speedbtn: shown 309,304,44,29",
+    "#lg-toggle: not shown 0,0,0,0",
+    "#srcbtn: not shown -257,261,125,24",
+    "#dgrip: not shown 0,0,0,0"
+   ]
+  },
+  {
+   "step": "held landscape: Panels (tap)",
+   "t": 634.4,
+   "state": {
+    "on": false,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": true,
+    "rail": true
+   },
+   "narr": {
+    "lede": false,
+    "ledeText": "Langeron and Przybyszewski attack Sokolnitz village, its wal",
+    "situation": false,
+    "events": false,
+    "dispatchDisplay": "none",
+    "dispatchIn": "body",
+    "nowTab": false,
+    "docked": false,
+    "railHidden": false,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · interval Napoleon releases Soult against the heights"
+   },
+   "rail": {
+    "box": [
+     0,
+     0,
+     272,
+     299
+    ],
+    "scrollH": 2081,
+    "clientH": 105,
+    "tabs": [
+     "Order of battle",
+     "Analysis",
+     "Command",
+     "Plans"
+    ]
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/phone2-05-after-timeline-pinch.jpg",
+  "docs/audit-post8-evidence/a11y/phone2-06-menu.jpg",
+  "docs/audit-post8-evidence/a11y/phone2-09-landscape.jpg",
+  "docs/audit-post8-evidence/a11y/phone2-10-landscape-panels.jpg"
+ ],
+ "console": [],
+ "ok": true,
+ "ended": "2026-11-02T06:37:13.132Z",
+ "seconds": 634
+}

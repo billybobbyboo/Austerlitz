@@ -1,0 +1,641 @@
+{
+ "name": "glide",
+ "vp": [
+  960,
+  540
+ ],
+ "frameMs": 100,
+ "fps": 10,
+ "setup": "closeFirst(null); stopPlay(); setPresentation('watch'); setClock(600,{instant:true,force:true,camera:false}); AUSTERLITZ_DEBUG.placeCamera(VANTAGE.field.slice()); syncViewOffset(true); AUSTERLITZ_DEBUG.settle(30,true);",
+ "start": "flyTo(VANTAGE.plateau); return {tween:!!tween};",
+ "each": "",
+ "startResult": {
+  "tween": true
+ },
+ "frames": [
+  {
+   "i": 0,
+   "each": null,
+   "ms": 7308,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -194.74,
+    94.05,
+    156.19
+   ],
+   "target": [
+    -33,
+    3.73,
+    -2.01
+   ],
+   "cull": {
+    "culled": 0
+   },
+   "calls": 551,
+   "tris": 1195429
+  },
+  {
+   "i": 1,
+   "each": null,
+   "ms": 1504,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -192.92,
+    93.66,
+    157.52
+   ],
+   "target": [
+    -32.98,
+    3.77,
+    -2.09
+   ],
+   "cull": {
+    "culled": 0
+   },
+   "calls": 553,
+   "tris": 1342169
+  },
+  {
+   "i": 2,
+   "each": null,
+   "ms": 1434,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -187.9,
+    92.58,
+    161.01
+   ],
+   "target": [
+    -32.95,
+    3.87,
+    -2.29
+   ],
+   "cull": {
+    "culled": 0
+   },
+   "calls": 553,
+   "tris": 1341479
+  },
+  {
+   "i": 3,
+   "each": null,
+   "ms": 1480,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -177.79,
+    90.44,
+    167.26
+   ],
+   "target": [
+    -32.88,
+    4.06,
+    -2.69
+   ],
+   "cull": {
+    "culled": 0
+   },
+   "calls": 553,
+   "tris": 1338159
+  },
+  {
+   "i": 4,
+   "each": null,
+   "ms": 1440,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -160.27,
+    86.81,
+    175.82
+   ],
+   "target": [
+    -32.76,
+    4.38,
+    -3.34
+   ],
+   "cull": {
+    "culled": 0
+   },
+   "calls": 553,
+   "tris": 1333747
+  },
+  {
+   "i": 5,
+   "each": null,
+   "ms": 1412,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -132.62,
+    81.06,
+    184.13
+   ],
+   "target": [
+    -32.58,
+    4.85,
+    -4.32
+   ],
+   "cull": {
+    "culled": 0
+   },
+   "calls": 553,
+   "tris": 1327191
+  },
+  {
+   "i": 6,
+   "each": null,
+   "ms": 1361,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -92.82,
+    72.4,
+    185.9
+   ],
+   "target": [
+    -32.33,
+    5.52,
+    -5.68
+   ],
+   "cull": {
+    "culled": 0
+   },
+   "calls": 553,
+   "tris": 1326611
+  },
+  {
+   "i": 7,
+   "each": null,
+   "ms": 1489,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -43.29,
+    60.06,
+    170.36
+   ],
+   "target": [
+    -32,
+    6.4,
+    -7.5
+   ],
+   "cull": {
+    "culled": 0
+   },
+   "calls": 553,
+   "tris": 1335051
+  },
+  {
+   "i": 8,
+   "each": null,
+   "ms": 1479,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    -4.97,
+    47.73,
+    138.18
+   ],
+   "target": [
+    -31.67,
+    7.29,
+    -9.32
+   ],
+   "cull": {
+    "culled": 7
+   },
+   "calls": 541,
+   "tris": 1331259
+  },
+  {
+   "i": 9,
+   "each": null,
+   "ms": 1260,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    13.31,
+    39.17,
+    107.7
+   ],
+   "target": [
+    -31.42,
+    7.95,
+    -10.68
+   ],
+   "cull": {
+    "culled": 45
+   },
+   "calls": 487,
+   "tris": 1277927
+  },
+  {
+   "i": 10,
+   "each": null,
+   "ms": 1315,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    20.5,
+    33.65,
+    84.93
+   ],
+   "target": [
+    -31.24,
+    8.43,
+    -11.66
+   ],
+   "cull": {
+    "culled": 49
+   },
+   "calls": 480,
+   "tris": 1250909
+  },
+  {
+   "i": 11,
+   "each": null,
+   "ms": 1509,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    22.71,
+    30.31,
+    69.98
+   ],
+   "target": [
+    -31.13,
+    8.74,
+    -12.31
+   ],
+   "cull": {
+    "culled": 56
+   },
+   "calls": 461,
+   "tris": 1248223
+  },
+  {
+   "i": 12,
+   "each": null,
+   "ms": 1302,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    23.12,
+    28.43,
+    61.21
+   ],
+   "target": [
+    -31.05,
+    8.94,
+    -12.71
+   ],
+   "cull": {
+    "culled": 67
+   },
+   "calls": 445,
+   "tris": 1195365
+  },
+  {
+   "i": 13,
+   "each": null,
+   "ms": 1177,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    23.07,
+    27.51,
+    56.82
+   ],
+   "target": [
+    -31.02,
+    9.04,
+    -12.91
+   ],
+   "cull": {
+    "culled": 72
+   },
+   "calls": 439,
+   "tris": 1186041
+  },
+  {
+   "i": 14,
+   "each": null,
+   "ms": 1230,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": true,
+   "eye": [
+    23.01,
+    27.17,
+    55.23
+   ],
+   "target": [
+    -31,
+    9.07,
+    -12.99
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 435,
+   "tris": 1151029
+  },
+  {
+   "i": 15,
+   "each": null,
+   "ms": 1241,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 435,
+   "tris": 1151029
+  },
+  {
+   "i": 16,
+   "each": null,
+   "ms": 1133,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 17,
+   "each": null,
+   "ms": 47,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 18,
+   "each": null,
+   "ms": 54,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 19,
+   "each": null,
+   "ms": 53,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 20,
+   "each": null,
+   "ms": 45,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 21,
+   "each": null,
+   "ms": 73,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 22,
+   "each": null,
+   "ms": 47,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 23,
+   "each": null,
+   "ms": 45,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 24,
+   "each": null,
+   "ms": 58,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  },
+  {
+   "i": 25,
+   "each": null,
+   "ms": 49,
+   "clock": "10:00",
+   "t": 600,
+   "playing": false,
+   "tween": false,
+   "eye": [
+    23,
+    27.13,
+    55
+   ],
+   "target": [
+    -31,
+    9.08,
+    -13
+   ],
+   "cull": {
+    "culled": 76
+   },
+   "calls": 433,
+   "tris": 1003941
+  }
+ ]
+}

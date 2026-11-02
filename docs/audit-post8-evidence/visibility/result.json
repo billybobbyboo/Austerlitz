@@ -1,0 +1,362 @@
+{
+ "area": "visibility",
+ "scope_summary": "Formation counters and names (and events, places, objective labels) during long Play on the audited build (f10fe585...), the carried item of docs/STAGE8_SPEC.md sections 22.3, 23.2 and 23.4. 21 runs on the deterministic motion driver (tools/visual/motion.js, the WebGL draw skipped; vis-lib.js codes every map-layer item every frame and computes in each frame the layout a fresh view would give): the three benchmark Play runs replicated (exactly MOTION.VIS), Landscape with counters at 1600x900 over 08:30-11:30 and 12:00-15:00 at 1/2x, the whole day at 4x, at 60 fps, Follow off, Watch, both headquarters' readings, a selection, one hour at three pacings; the Landscape and the paper map over 09:00-12:00 and the day; the phone (390x844) with counters and in its default Landscape. Two real-time runs on a visitor's page with Play and Pause by real clicks (with and without the WebGL draw), each compared with the driver at matched pacing and at 30 fps. Stills drawn with WebGL while Play runs. Detail: README.md, tables.md/json, items.json, runs/.",
+ "coverage": [
+  {
+   "item": "Instrument validated against the benchmark",
+   "method": "the three benchmark Play runs replicated on the driver (motion.js RUN's Play set-up; 1 frame at rest, 90 playing at 1/2x from 09:00, 30 at rest)",
+   "result": "identical to tools/visual/thresholds.js MOTION.VIS: hybrid-play 2,033/3,388 drawn, longest 4,033 ms; land-play 2,667/3,146, 667 ms; paper-play 1,581/1,694, 667 ms; Nansouty's room in 50 of 121 frames as section 22.3",
+   "evidence": "docs/audit-post8-evidence/visibility/runs/sum-bench-hybrid.json, sum-bench-land.json, sum-bench-paper.json"
+  },
+  {
+   "item": "Landscape with counters (hybrid), long Play, 1600x900",
+   "method": "driver runs: 08:30-11:30 and 12:00-15:00 at 1/2x, 04:00-18:00 at 4x, 08:30-11:30 at 60 fps, Follow off, Watch, French and Allied readings (09:00-12:00), Nansouty selected and 09:00-10:00 at 30 fps, 157 ms and 1,000 ms frames",
+   "result": "64-77% of formation-frames in view drawn (a fresh layout in the same frames 73-89%); d'Hautpoul 9.8%, Russian Guard cavalry 15.8%, Walther 16.2%, French Guard cavalry 16.5%, Miloradovich 17.5%, Kellermann 36.6%, Nansouty 46.5% over 08:30-11:30; longest gaps 12-28 s on the driver's clock (Miloradovich 27,667 ms, 09:15-10:55)",
+   "evidence": "docs/audit-post8-evidence/visibility/tables.md (sections per run), items.json, README.md tables A and B"
+  },
+  {
+   "item": "Landscape (default presentation), long Play",
+   "method": "driver: 09:00-12:00 at 1/2x in Study and Watch, the whole day at 4x",
+   "result": "89.4% / 89.3% / 83.1% drawn (fresh 99.9%); no formation under 50%; longest gap 1,667 ms (2,533 ms at 4x); 98-99% of hidden name-frames had room (the stabiliser's re-admission); mean episode 0.59 s, about one per name every 5.7 s",
+   "evidence": "docs/audit-post8-evidence/visibility/tables.md land-0900, land-watch-0900, land-4x-day"
+  },
+  {
+   "item": "Paper map, long Play",
+   "method": "driver: the framed paper map 09:00-12:00 at 1/2x",
+   "result": "93.2% drawn (fresh 100%), longest gap 667 ms; corps counters 93.6%",
+   "evidence": "docs/audit-post8-evidence/visibility/tables.md paper-0900"
+  },
+  {
+   "item": "Phone 390x844",
+   "method": "driver: Landscape with counters and the default Landscape, 09:00-12:00 at 1/2x",
+   "result": "with counters 51.7% (fresh 60.1%), corps counters 47.5%, Liechtenstein never drawn in view (longest gap 25,067 ms = 90 clock min); Landscape 79.6% (fresh 98.6%), longest 2,333 ms",
+   "evidence": "docs/audit-post8-evidence/visibility/tables.md phone-0900, phone-land-0900"
+  },
+  {
+   "item": "Highest-priority items",
+   "method": "per run: protected items' hidden frames, live events, army and corps counters",
+   "result": "protected items hidden 0 frames in all 21 runs; live events drawn 100%; army headquarters 83-98% with gaps <=0.7 s at 1600x900; army+corps 81.8-96.4% (hybrid long runs)",
+   "evidence": "docs/audit-post8-evidence/visibility/README.md table F; tables.md 'Priority checks'"
+  },
+  {
+   "item": "Formations named by live events (EVENTS[].forms) while the event's label is drawn",
+   "method": "per event and named formation over the frames its label is drawn; with the fresh layout's share in the same frames",
+   "result": "hybrid 53.8-66.2% (Landscape 75.2-80.2%, paper 96.7%, phone with counters 40.2%); Guard cavalry clash: French Guard cavalry 0.0/10.8/4.2%, Russian 1.5/16.0/4.2% (fresh 0-16%); face-about: Miloradovich 0.0-40.0% (fresh 33-84% in five runs); hq-forward: Imperial HQ 77.7% (fresh 100%)",
+   "evidence": "docs/audit-post8-evidence/visibility/README.md table C; tables.json runs.*.evForms"
+  },
+  {
+   "item": "At rest before and after Play",
+   "method": "the frame at rest after the seek, the 30th frame at rest after Play (persist), and a fresh view at the same clock and eye",
+   "result": "hybrid: 0-10 formations hidden at rest after Play, 1-8 hidden by a fresh view, 0-3 per run hidden only because of the kept places; Landscape, paper, phone Landscape: 0",
+   "evidence": "docs/audit-post8-evidence/visibility/tables.json runs.*.restSum"
+  },
+  {
+   "item": "Does the 90-frame benchmark represent longer playback",
+   "method": "each long run cut into 90-play-frame windows judged as the benchmark judges its run",
+   "result": "share: the benchmark's 57.1% at the low end of the long run's windows (55.2-74.6%, median 68.4%); longest gap: the benchmark's 4,033 ms is its whole 121-frame window (saturated); a formation hidden for a whole window in 6/14 to 17/17 windows of the hybrid runs, 0 in Landscape, paper and phone Landscape",
+   "evidence": "docs/audit-post8-evidence/visibility/README.md table D"
+  },
+  {
+   "item": "Real time against the driver",
+   "method": "realtime.js on a visitor's page (first-run card closed by Escape, Play and Pause by real mouse clicks), every layout pass observed: with the WebGL draw and without; compared over the common clock range with the driver at matched pacing and at 30 fps",
+   "result": "with the draw (46 frames 15-35 s apart under machine load, 09:00-09:17.6): identical to the driver at 1,000 ms frames frame for frame (873/1,288 drawn in both; 0 of 1,288 formation cells and 0 of 2,300 item cells differ); without the draw (157 ms median frames): 65.8% against 67.0% (driver at 157 ms) and 64.4% (30 fps), the same starved set, individual formations up to ~30 points apart (path dependence); 60 fps three hours 67.1% against 67.6% at 30 fps, the same 27,667 ms gap",
+   "evidence": "docs/audit-post8-evidence/visibility/runs/realtime.json, runs/realtime-nogl.json, README.md table E"
+  },
+  {
+   "item": "Places and objective labels",
+   "method": "per run, play frames, with the fresh layout's share",
+   "result": "objectives 71-82% in motion (fresh 77-100%); places 9-39%, more in motion than fresh (14.1% vs 9.5% in the 08:30 run)",
+   "evidence": "docs/audit-post8-evidence/visibility/README.md table F"
+  },
+  {
+   "item": "Stills of the layout in motion",
+   "method": "stills.js: a run played on the driver to a frame, that frame's successor drawn with WebGL while Play runs, annotated (dashed rings at hidden formations) and plain",
+   "result": "hybrid-0830 f450 (09:15: 7 counters hidden, the live event naming Miloradovich drawn); hybrid-1200 f265 (12:34: 10 hidden under the three protected event labels at Stare Vinohrady; its WebGL canvas black under machine load, the DOM map layer valid); phone-0900 f1196 (11:19: 6 corps counters hidden under the event labels); each hidden list equal to its long run's frame; stills/sheet.jpg",
+   "evidence": "docs/audit-post8-evidence/visibility/stills/"
+  }
+ ],
+ "findings": [
+  {
+   "title": "Landscape with counters: during Play the same five to eight formations' counters are hidden most of the time, up to 28 s (100 clock minutes) at a stretch; the benchmark's 4,033 ms is only its window",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "map layer in motion (app.js mlCollect priorities; the MLS stabiliser, implementation PR 8C)",
+   "user_impact": "A visitor following the morning at 1/2x in Landscape with counters (52 s of playback) sees the four divisions of Murat's Cavalry Reserve, both Guard cavalries and Miloradovich unlabelled most of the time; Miloradovich's counter vanishes at 09:15 and stays hidden for 28 s of playback. The figures and outlines remain, unidentified; each counter is reachable by hover or keyboard (decision 39).",
+   "status": "confirmed",
+   "origin": "new-regression",
+   "refs": [
+    "app.js:5114",
+    "app.js:5126",
+    "app.js:5339",
+    "app.js:5342",
+    "app.js:5383-5386",
+    "app.js:5474",
+    "app.js:5477-5482",
+    "docs/STAGE8_SPEC.md 22.3, 23.2, 23.4",
+    "tools/visual/thresholds.js:251-269"
+   ],
+   "evidence": "docs/audit-post8-evidence/visibility/tables.md (hybrid-0830, hybrid-1200, hybrid-4x-day, hybrid-0830-60, hybrid-fixed-0830, hybrid-watch-0830, hybrid-fr-0900, hybrid-al-0900); items.json; runs/raw-hybrid-*.json; stills/hybrid-0830-f450.jpg",
+   "expected": "Each formation in view labelled most of the time during Play with short, bounded gaps, as the default Landscape achieves (83-89% drawn, gaps <=2.5 s).",
+   "observed": "Formation-frames drawn 64-77% (a fresh layout in the same frames 73-89%). Over 08:30-11:30 at 1/2x, Follow on: d'Hautpoul 9.8%, Russian Guard cavalry 15.8%, Walther 16.2%, French Guard cavalry 16.5%, Miloradovich 17.5%, Kellermann 36.6%, Nansouty 46.5%; longest gaps Miloradovich 27,667 ms (99.8 clock min from 09:15), Russian Guard cavalry 17,667 ms, Walther 15,333 ms, French Guard cavalry 13,233 ms, d'Hautpoul 12,667 ms, Kellermann 12,333 ms. 12:00-15:00: d'Hautpoul 15,300 ms (60 min). Follow off: d'Hautpoul 6.9%, 21,967 ms. 60 fps: 67.1%, the same 27,667 ms gap.",
+   "repro": "node tools/audit-post8/visibility/long-play.js --runs hybrid-0830 (tools/visual/motion.js VIEWS.hybrid: 1600x900, Study, Landscape with counters, the Field vantage; seek 08:30, Follow on, 1/2x, eight frames at rest, Play to 11:30, 30 frames at rest); node tools/audit-post8/visibility/analyse.js",
+   "cause_hypothesis": "Crowding on the French left (the Santon, Murat's divisions, the Imperial Headquarters, Lannes) and on the Stare Vinohrady heights, decided by a priority rule that ranks divisions by strength (cavalry last), plus the stabiliser's hold strategy for the whole of Play (Play is a motion source even with a still camera): an item not drawn needs room at two successive 333 ms passes, held places are kept.",
+   "cause_verified": "partly: a fresh layout in the same frames starves d'Hautpoul (3.8%), the Russian and French Guard cavalries (10.4%, 20.8%) and Walther (26.1%) nearly as much (crowding + priority, inherited), while Miloradovich (fresh 47.9%) and Kellermann (42.1%) lose mainly to the stabiliser; 26-56% of the hidden formation-frames had room in that very frame.",
+   "remedy": "Treat it with V-2's priority change, then let a held item that a fresh layout would place ahead of a kept lower-priority item take its room at a pass (section 22.3's 'kept first while moving' variant met the ceilings but failed seven runs' visibility baselines); re-measure the 16 motions and the long runs; an owner decision on decision 240 (a)'s order and the MOTION.VIS baselines.",
+   "effort": "1-3 days (code change, re-measurement, owner decision)",
+   "dependencies": "owner decision (decision 240 (a), MOTION.VIS baselines)",
+   "risk": "room given to one formation is taken from another (a selection shows it: Saint-Hilaire 80.6% to 51.1% when Nansouty is selected)",
+   "validation": "the long runs here re-run: no formation under 50% over 08:30-11:30; gaps bounded in clock minutes; the 16 motions within their ceilings",
+   "prior_refs": [
+    "docs/STAGE8_SPEC.md 22.3 'Play's longer hidden interval'",
+    "docs/STAGE8_SPEC.md 23.2 'What it does not show'"
+   ],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "The formations a live event names are hidden while their event's label is drawn (the Guard cavalry clash 0-16%; Miloradovich at the face-about 0-40%)",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "map layer priorities (app.js mlCollect)",
+   "user_impact": "The visitor reads 'Rapp's counter-charge breaks the Chevalier Guard' or 'Kutuzov orders the 4th Column to face about' on the map while the counters of the formations it names are absent; a counter that vanishes as its event begins reads as the formation leaving.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:5126",
+    "app.js:5144",
+    "app.js:5476",
+    "analysis.js:248 (EVENTS[].forms)"
+   ],
+   "evidence": "docs/audit-post8-evidence/visibility/README.md table C; tables.json runs.*.evForms (with freshLayoutShare); stills/",
+   "expected": "While an event is live, the formations it names labelled, as the event label itself is (decision 39 protects the label).",
+   "observed": "Landscape with counters, share of the named formations' in-view frames drawn while the event's label is drawn: guard-broken (11:15-13:15) French Guard cavalry 0.0% / 10.8% / 4.2% (08:30, 12:00 and 4x-day runs), Russian Guard cavalry 1.5% / 16.0% / 4.2%; guard-attack Russian Guard cavalry 3.7-12.2%, Russian Guard infantry 8.3-34.6%; face-about Miloradovich 0.0-40.0%; blasowitz Russian Guard infantry 0.0-24.0%; hq-forward Imperial Headquarters 77.7%. All named formations: 53.8-66.2% (Landscape 75.2-80.2%, paper map 96.7%, phone with counters 40.2%). The event labels themselves 100%.",
+   "repro": "as V-1; analyse.js's evForms over runs/raw-hybrid-0830.json, raw-hybrid-1200.json, raw-hybrid-4x-day.json",
+   "cause_hypothesis": "mlCollect gives a counter pri 3 + rank (echelon, strength) with no term for live events; live events' labels are protected and placed first, on the ground where their formations fight.",
+   "cause_verified": "yes for the rule (app.js:5126, 5144, 5476); for the Guard cavalries a fresh layout also fails (0-16%), so no stabiliser change alone would show them; for Miloradovich, the Imperial Headquarters, Rivaud and Caffarelli the fresh layout would draw them (33-100%) and the stabiliser hides them.",
+   "remedy": "Raise every formation a live event names (and its collected parent) to the selected family's priority (pri 1) or protect it while the event is live; measure on the 16 motions and the long runs (an owner decision if MOTION.VIS moves).",
+   "effort": "0.5-2 days",
+   "dependencies": "owner decision if MOTION.VIS baselines move",
+   "risk": "more protected items crowd others out near the action",
+   "validation": "each named formation drawn >=80% of its event's frames in the long runs",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "No check can see long gaps: the motion benchmark's longest-hidden measure saturates at its own 121-frame window, and the one check that plays the whole day counts drops, not how long a formation stays hidden",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "test suite (check:visual / check:selftest motion block)",
+   "user_impact": "None directly; a regression that hides formations for longer stays invisible to the safeguard decision 257 (b) relies on.",
+   "status": "confirmed",
+   "origin": "new-regression",
+   "refs": [
+    "tools/visual/motion.js:187-191 (MOTIONS: hybrid-play 90 frames)",
+    "tools/visual/thresholds.js:307 (VIS hybrid-play [2033,3388,4033])",
+    "app.js:10045-10048 (the self-test's day at 1/2x: one mlLayout every ten clock minutes, dropped items <= 19)"
+   ],
+   "evidence": "docs/audit-post8-evidence/visibility/runs/sum-bench-hybrid.json (Nansouty, Walther, Miloradovich hidden in 121 of 121 frames); README.md table D",
+   "expected": "A visibility safeguard able to see the gaps a visitor meets in normal playback.",
+   "observed": "28 formations x 121 frames = the baseline's 3,388; 121 x 33.3 ms = 4,033 ms, the most the measure can report. The long runs' gaps are 12-28 s; in the hybrid runs a formation is hidden for a whole 90-frame window in 6/14 to 17/17 windows. The benchmark's one Play run per presentation starts from a seek at 09:00. The self-test's 4D pacing check plays the whole day at 1/2x but samples one layout pass every ten clock minutes and counts the items dropped (at most 19), in its own state: it cannot see a formation hidden for an hour.",
+   "repro": "node tools/audit-post8/visibility/long-play.js --runs bench-hybrid; compare thresholds.js MOTION.VIS['hybrid-play']",
+   "cause_hypothesis": "the motion block was designed for short motions (60-90 frames) and its Play run inherits that length; the day-long check predates the stabiliser and counts drops per sample",
+   "cause_verified": "yes (motion.js MOTIONS; app.js:10045-10048)",
+   "remedy": "Add a long Play run (08:30-11:30 at 1/2x on the driver without the draw, about 1-3 minutes) to the motion block, judged per formation on the share drawn and the longest gap in clock minutes.",
+   "effort": "0.5-1 day",
+   "dependencies": "owner decision on the new limits",
+   "risk": "CI time (small without the draw)",
+   "validation": "the new run fails on this build until V-1/V-2 are addressed, or its limits are set at this build's values by the owner",
+   "prior_refs": [
+    "docs/STAGE8_SPEC.md 23.2"
+   ],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "Phone in Landscape with counters: half the formation-frames drawn; Liechtenstein's Fifth Column never drawn from 09:00 to 12:00",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "map layer on the phone layout",
+   "user_impact": "A phone visitor who switches to Landscape with counters loses half the counters during Play; the phone's default Landscape is fine (79.6%, gaps <=2.3 s).",
+   "status": "confirmed",
+   "origin": "new-regression",
+   "refs": [
+    "app.js:5126",
+    "app.js:5474"
+   ],
+   "evidence": "docs/audit-post8-evidence/visibility/tables.md phone-0900, phone-land-0900",
+   "expected": "as V-1",
+   "observed": "390x844, 09:00-12:00, 1/2x: 51.7% drawn (fresh 60.1%); corps counters 47.5%: Liechtenstein 0.0% (longest 25,067 ms = 90 clock min), the Cavalry Reserve 13.1%, the Russian Imperial Guard 21.4%; 19.1% of hidden frames had room (mostly crowding).",
+   "repro": "node tools/audit-post8/visibility/long-play.js --runs phone-0900 (motion.js VIEWS.phone, a desktop context at 390x844 as the motion block's)",
+   "cause_hypothesis": "crowding at the phone's framing plus the priority rule (V-1)",
+   "cause_verified": "partly (fresh layout 60.1%)",
+   "remedy": "as V-1; or fewer counters at the phone's framing",
+   "effort": "0.5-2 days",
+   "dependencies": "V-1/V-2",
+   "risk": "as V-1",
+   "validation": "phone-0900 re-run",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "At rest after Play the kept places leave up to three formations hidden that a fresh view would draw, until the next discontinuity",
+   "category": "accepted-compromise",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "map layer at rest (MLS persist)",
+   "user_impact": "A visitor who pauses to read sees up to three formations unlabelled that a fresh view of the same moment would label; most formations hidden at rest are hidden by crowding anyway.",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "app.js:5474",
+    "app.js:5485-5489",
+    "docs/STAGE8_SPEC.md section 15 (decision 240 (a))"
+   ],
+   "evidence": "docs/audit-post8-evidence/visibility/tables.json runs.*.restSum",
+   "expected": "decision 240 (a): at rest the kept places first",
+   "observed": "hybrid runs: 0-10 hidden after Play, 1-8 by a fresh view; hidden only because of the kept places: bench Vandamme, Kellermann, Russian Guard infantry; 08:30-11:30 Drouet; French reading Kellermann, Walther, Rivaud; Follow off Saint-Hilaire, Rivaud; 0-1 in the others; Landscape, paper map, phone Landscape 0. Nansouty, Walther and Miloradovich after the benchmark are hidden by the fresh view too.",
+   "repro": "any hybrid run; restSum in tables.json",
+   "remedy": "a fresh layout once the view has rested for a few passes (would trade a reshuffle at rest)",
+   "effort": "0.5 day",
+   "dependencies": "owner decision (240 (a))",
+   "risk": "labels moving at rest",
+   "validation": "persistOnly empty in the runs",
+   "prior_refs": [
+    "docs/STAGE8_SPEC.md 22.3"
+   ],
+   "judgement_kind": "measured"
+  },
+  {
+   "title": "The Landscape's formation names blink during Play: 10.6% of in-view frames hidden in 0.6 s episodes, about one per name every 6 s",
+   "category": "accepted-compromise",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "map layer in motion (MLS two-pass re-admission)",
+   "user_impact": "Visible blinking of names during Play in the default view; every name comes back within 0.7 s (2.5 s at worst).",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "app.js:5339",
+    "app.js:5481",
+    "docs/STAGE8_SPEC.md 23 (decision 267 (a))"
+   ],
+   "evidence": "docs/audit-post8-evidence/visibility/tables.md land-0900, land-4x-day",
+   "expected": "pops within the benchmark's accepted totals (decision 267 (a))",
+   "observed": "09:00-12:00 at 1/2x: 89.4% drawn, a fresh layout 99.9%; 4,087 hidden name-frames in 230 episodes over 26 names in 50.3 s; 98.9% of them had room (the two-pass rule, not crowding).",
+   "repro": "node tools/audit-post8/visibility/long-play.js --runs land-0900",
+   "remedy": "none required; a shorter re-admission for an item whose room has been free at one pass would halve it",
+   "effort": "0.5 day",
+   "dependencies": "owner decision",
+   "risk": "more jumps",
+   "validation": "land-0900 re-run",
+   "prior_refs": [],
+   "judgement_kind": "measured"
+  }
+ ],
+ "experiments": [
+  {
+   "command": "node tools/audit-post8/visibility/long-play.js --runs bench-hybrid,bench-land,bench-paper,hybrid-0830,hybrid-1200,hybrid-4x-day,land-0900,land-4x-day,paper-0900,phone-0900,hybrid-fr-0900,hybrid-al-0900,hybrid-fixed-0830,hybrid-watch-0830,land-watch-0900,hybrid-sel-0900,hybrid-0900-slow",
+   "environment": "first session (01:09-02:07 UTC); Chromium 141 headless shell, SwiftShader; the driver (gl:false)",
+   "outcome": "17 runs; the three benchmark replications identical to MOTION.VIS",
+   "evidence_path": "docs/audit-post8-evidence/visibility/runs/",
+   "limitations": "driver pacing (30 fps unless said); not device timings"
+  },
+  {
+   "command": "node tools/audit-post8/visibility/long-play.js --runs hybrid-0900-1h,hybrid-0900-157; --runs phone-land-0900; --runs hybrid-0830-60",
+   "environment": "this session; machine shared (load 16-34); the driver's counts do not depend on it",
+   "outcome": "hybrid-0900-1h 64.4% (Miloradovich hidden the whole hour); 157 ms frames 67.0%; phone Landscape 79.6%; 60 fps 67.1% with the same 27,667 ms gap",
+   "evidence_path": "docs/audit-post8-evidence/visibility/runs/",
+   "limitations": "as above"
+  },
+  {
+   "command": "node tools/audit-post8/visibility/realtime.js --nogl --to 600",
+   "environment": "visitor's page, real Escape and real clicks, renderer.render stubbed; frames 89/157/234 ms (p10/median/p90)",
+   "outcome": "65.8% drawn 09:00-10:00 against 67.0% (driver at 157 ms) and 64.4% (30 fps); same starved set",
+   "evidence_path": "docs/audit-post8-evidence/visibility/runs/realtime-nogl.json",
+   "limitations": "instrumented page (no WebGL draw); this machine's CPU pace"
+  },
+  {
+   "command": "node tools/audit-post8/visibility/realtime.js --to 600 (after replacing p.click('#play') by mouse clicks at the button's centre: the first two attempts timed out in Playwright's actionability wait)",
+   "environment": "visitor's page with the WebGL draw; frames 15-35 s apart under machine load; reached 09:17.6 in the 1,200 s cap",
+   "outcome": "identical to the driver at 1,000 ms frames frame for frame (46 frames; 0 differences in 1,288 formation cells and 2,300 item cells)",
+   "evidence_path": "docs/audit-post8-evidence/visibility/runs/realtime.json",
+   "limitations": "17.6 clock minutes only; pathological pacing (each frame a pass, Play's 120 ms cap)"
+  },
+  {
+   "command": "node tools/audit-post8/visibility/stills.js --run hybrid-0830 --frames 449 --plain (first session); --run hybrid-1200 --frames 264 --plain; --run phone-0900 --frames 1195 --plain; python3 -I tools/audit-post8/visibility/sheet.py",
+   "environment": "a fresh browser per still (a lost WebGL context blackened the first session's later stills)",
+   "outcome": "hybrid-0830 f450 (09:15: 7 counters hidden, the live event naming Miloradovich drawn); hybrid-1200 f265 (12:34: 10 hidden under the three protected event labels at Stare Vinohrady; its WebGL canvas black under machine load, the DOM map layer valid); phone-0900 f1196 (11:19: 6 corps counters hidden under the event labels); each hidden list equal to its long run's frame; stills/sheet.jpg",
+   "evidence_path": "docs/audit-post8-evidence/visibility/stills/",
+   "limitations": "single frames; the annotation is the audit's"
+  },
+  {
+   "command": "node tools/audit-post8/visibility/analyse.js; node tools/audit-post8/visibility/readme-tables.js; node tools/audit-post8/visibility/keynums.js",
+   "environment": "node only",
+   "outcome": "tables.json, tables.md, items.json and the README's tables",
+   "evidence_path": "docs/audit-post8-evidence/visibility/tables.md",
+   "limitations": "co-occurrence of kept places and starved formations is not geometric"
+  }
+ ],
+ "not_checked": [
+  "Device timings: all runs are on software WebGL or the driver; the 60 fps driver run stands in for a 60 Hz display",
+  "The hover run (a still pointer on a moving formation during Play; runs.js hybrid-hover-0900) was not run: whether a visitor can keep a moving formation's counter by pointing at it during Play is unmeasured",
+  "Keyboard reach to hidden counters during Play and screen-reader announcements",
+  "The low Pratzen view, the eye level, the Overview and the opening's played stretches over long playback; 1x and 2x speeds; 1x and 10.33x relief; the 1280x720 and 1024-wide layouts",
+  "V-2's remedy (raising event-named formations) was not prototyped; its cost to other items is unknown",
+  "Geometric overlap of kept place names with starved formations' candidate places (only co-occurrence was counted)",
+  "The real-time run with the WebGL draw covers 09:00-09:17.6 only (machine load); no real-time run of the three-hour stretch",
+  "No video clip; stills are single frames"
+ ],
+ "carried_status": [
+  {
+   "item": "counters hidden during playback (4,033 ms; dropped at rest)",
+   "status": "confirmed, open, and understated by the benchmark",
+   "evidence": "The 4,033 ms is the benchmark's whole 121-frame window (Nansouty, Walther, Miloradovich hidden in 121 of 121 frames). Over 08:30-11:30 Walther's and Miloradovich's counters and four more (d'Hautpoul, both Guard cavalries, Kellermann) are hidden 12-28 s at a stretch (Miloradovich 27,667 ms, 09:15-10:55); Nansouty's gaps are shorter (2.3-3.7 s) but he is drawn in only 36-61% of his frames in view; real time with the draw reproduces the driver frame for frame. Dropped at rest: Nansouty, Walther and Miloradovich are dropped by crowding at 09:14 in that view (a fresh view drops them too); the kept places add 0-3 formations per run (V-5). Findings V-1, V-2, V-3."
+  },
+  {
+   "item": "visibility over longer playback",
+   "status": "measured: acceptable in the default Landscape (83-89% drawn, gaps <=2.5 s), the paper map (93.2%, <=0.7 s) and the phone's Landscape (79.6%, <=2.3 s); not acceptable in Landscape with counters (64-77%, five to eight formations under 50%, gaps 12-28 s; event-named formations 54-66%) or that view on a phone (51.7%); beyond what the 90-frame benchmark can see",
+   "evidence": "README.md tables A-F; tables.md; items.json; findings V-1 to V-6"
+  }
+ ],
+ "ledger": [
+  {
+   "claim": "Play's longest hidden formation 4,033 ms: Nansouty, Walther and Miloradovich hidden for the whole run, 121 frames",
+   "cited_source": "docs/STAGE8_SPEC.md 22.3; thresholds.js VIS hybrid-play",
+   "verification": "reproduced exactly; and shown to be the window's length (saturated)",
+   "method": "bench-hybrid replication"
+  },
+  {
+   "claim": "While it plays the full search has room for them between passes (Nansouty's in 50 of the 121 frames)",
+   "cited_source": "docs/STAGE8_SPEC.md 22.3",
+   "verification": "reproduced (50 of 121)",
+   "method": "vis-lib room test"
+  },
+  {
+   "claim": "All three are dropped at rest in that view at 09:00 and again after the motion (the static layout has no room for them)",
+   "cited_source": "docs/STAGE8_SPEC.md 22.3",
+   "verification": "confirmed: the fresh view at the run's end also hides them",
+   "method": "restSum"
+  },
+  {
+   "claim": "The 16 motions' counts repeat run for run on any machine; ceilings of this benchmark, not a guarantee of what a device shows",
+   "cited_source": "thresholds.js:251-269 (decision 257 (b))",
+   "verification": "consistent: at matched pacing the app's loop equals the driver frame for frame; with jittered real pacing totals agree within 1-2 points but individual formations diverge by up to ~30 points",
+   "method": "realtime.js against the driver"
+  },
+  {
+   "claim": "Each of the three stays reachable by hover and keyboard (decision 39)",
+   "cited_source": "docs/STAGE8_SPEC.md 22.3",
+   "verification": "not re-checked during Play (the self-test checks it at rest)",
+   "method": "code read (app.js mlHoverAt) only"
+  }
+ ],
+ "strengths": [
+  "The instrument reproduces the benchmark exactly, and the app's own loop in real time (with the WebGL draw, real clicks) equals the driver frame for frame at matched pacing: the motion driver is a faithful instrument",
+  "Protected items were never hidden: 0 frames in 21 runs (live events in every run, the selection and its family in the selection run; no hover was exercised); every live event label drawn 100%",
+  "The default Landscape and the paper map keep every formation labelled most of the time over long playback (83-93%) with gaps of at most 2.5 s and no formation systematically starved",
+  "The army headquarters' counters stay drawn 83-98% with gaps of at most 0.7 s at 1600x900",
+  "The 30 fps benchmark pacing is representative of a 60 Hz display (67.1% against 67.6% over three hours, the same longest gap)"
+ ]
+}

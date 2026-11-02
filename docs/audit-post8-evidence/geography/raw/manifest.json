@@ -512,6 +512,55 @@
    "sha256": "715663fb8806ff94c8c3d47a7d1379c5f7aee1f09d2189abda9d223a8781f2b8",
    "time": "2026-11-02T01:12:02.677Z",
    "error": null
+  },
+  {
+   "file": "osm-ways-highway430.json",
+   "url": "https://api.openstreetmap.org/api/0.6/map?bbox=16.762,49.180,16.832,49.196",
+   "status": "200",
+   "bytes": 8596486,
+   "sha256": "fb76727da36d586e3996ea078bdecaa67c784df51da0a413e9e4a975cbb2b7a7",
+   "time": "2026-11-02T06:46:21.256Z",
+   "error": null,
+   "note": "the full response (8.6 MB) kept in the session scratch only; this file holds the 18 ways tagged ref=430 extracted by tools/audit-post8/geography/osm-ways.py (python3 -I). An Overpass query (overpass-api.de) for the same failed: connection reset by the proxy"
+  },
+  {
+   "file": "nominatim-stanthony.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&q=kaple%20sv.%20Anton%C3%ADna%2C%20%C3%9Ajezd%20u%20Brna&limit=5",
+   "status": "200",
+   "bytes": 556,
+   "sha256": "f58629e9a7d1552b1280d7c7d6df60c2751ba44a1116fb7c4106de44865a8efb",
+   "time": "2026-11-02T06:52:34.338Z",
+   "error": null,
+   "note": null
+  },
+  {
+   "file": "nominatim-kaple-ujezd.json",
+   "url": "https://nominatim.openstreetmap.org/search?format=jsonv2&q=kaple&viewbox=16.740,49.120,16.780,49.098&bounded=1&limit=10",
+   "status": "200",
+   "bytes": 1617,
+   "sha256": "e3c2a0539e7f0dc759ec3402e9826c9d8196f020662e55c81648b203be17a026",
+   "time": "2026-11-02T06:52:34.338Z",
+   "error": null,
+   "note": null
+  },
+  {
+   "file": "osm-ways-garden27326751.json",
+   "url": "https://api.openstreetmap.org/api/0.6/way/27326751/full",
+   "status": "200",
+   "bytes": 5900,
+   "sha256": null,
+   "time": "2026-11-02T06:52:34.338Z",
+   "error": null,
+   "note": "the XML response (5,900 bytes) parsed by tools/audit-post8/geography/osm-ways.py (python3 -I) and not kept; this file holds the way (Zámecká zahrada, leisure=park) with its node coordinates"
+  },
+  {
+   "file": "opentopodata-srtm30m-check.json",
+   "url": "https://api.opentopodata.org/v1/srtm30m?locations=49.121757,16.761763|49.120188,16.761375|49.118618,16.760988|49.116242,16.759213|49.116494,16.763396|49.121661,16.761263",
+   "status": "200",
+   "bytes": 916,
+   "sha256": "657874386246a7a52edee123dc7ef562df6502aa91701301bd5789ab7b30693b",
+   "time": "2026-11-02T06:56:11.670Z",
+   "error": null
   }
  ]
 }

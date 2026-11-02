@@ -1,0 +1,2205 @@
+{
+ "name": "s6-panels-while-dragging",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 2810630,
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-02T05:59:06.716Z",
+ "opts": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1600,
+    900
+   ],
+   "o": {},
+   "bootMs": 94496
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 95868,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.68,
+      61.01
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.18
+     ]
+    }
+   },
+   "log": [],
+   "ms": 211
+  },
+  {
+   "page": 0,
+   "label": "press on the map; move 60 px (button held); key ?; move 60 px; Esc; move 60 px; release; 5 frames",
+   "at": 96103,
+   "ret": {
+    "c1": "{\"kind\":\"land\",\"pos\":[-60.83265119008318,490.683105364721,60.970950676149066],\"tgt\":[-60.83265119008318,0.5158591190135614,4.141849118024872]}",
+    "help": true,
+    "c2": "{\"kind\":\"land\",\"pos\":[-82.84829680957645,490.683105364721,60.74748751754501],\"tgt\":[-82.84829680957645,0.5158591190135614,3.9183859594208172]}",
+    "helpAfterEsc": false,
+    "c3": "{\"kind\":\"land\",\"pos\":[-104.86330510433979,490.683105364721,60.63165186602792],\"tgt\":[-104.86330510433979,0.5158591190135614,3.8025503079037293]}",
+    "c4": "{\"kind\":\"land\",\"pos\":[-104.86330510433979,490.683105364721,60.63165186602792],\"tgt\":[-104.86330510433979,0.2807502513800396,3.775240069748641]}",
+    "c5": "{\"kind\":\"land\",\"pos\":[-104.86330510433979,490.683105364721,60.63165186602792],\"tgt\":[-104.86330510433979,0.2807502513800396,3.775240069748641]}"
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 24,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -104.86,
+      490.68,
+      60.63
+     ],
+     "tgt": [
+      -104.86,
+      0.28,
+      3.78
+     ]
+    }
+   },
+   "log": [],
+   "ms": 58134
+  },
+  {
+   "page": 0,
+   "label": "click 'Accuracy and sources'; wheel x3 over the sheet's body and x3 over its scrim; Esc",
+   "at": 154238,
+   "ret": {
+    "moved": false,
+    "scrolled": 0,
+    "openDuringWheel": true
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#srcbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 24,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -104.86,
+      490.68,
+      60.63
+     ],
+     "tgt": [
+      -104.86,
+      0.28,
+      3.78
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1836
+  },
+  {
+   "page": 0,
+   "label": "click a formation's name (its card opens); drag the map 80 px with the card open",
+   "at": 156076,
+   "ret": {
+    "sel": "gqg",
+    "moved": true
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2158,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 24,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -75.59,
+      490.68,
+      60.63
+     ],
+     "tgt": [
+      -75.59,
+      -0.49,
+      3.69
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1263
+  },
+  {
+   "page": 0,
+   "label": "wheel x3 over the card",
+   "at": 157339,
+   "ret": {
+    "moved": false
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2158,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 24,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -75.59,
+      490.68,
+      60.63
+     ],
+     "tgt": [
+      -75.59,
+      -0.49,
+      3.69
+     ]
+    }
+   },
+   "log": [],
+   "ms": 688
+  },
+  {
+   "page": 0,
+   "label": "press on the map; move 60 px; Esc (button held); move 60 px; release; move without a button",
+   "at": 158028,
+   "ret": {
+    "selAfterEsc": null,
+    "c1": "{\"kind\":\"land\",\"pos\":[-97.65380568400444,490.683105364721,60.63165186602793],\"tgt\":[-97.65380568400444,-0.48991453744146446,3.6858669423839387]}",
+    "c2": "{\"kind\":\"land\",\"pos\":[-119.7131442023241,490.683105364721,60.631651866028804],\"tgt\":[-119.7131442023241,-0.48991453744146446,3.6858669423848127]}",
+    "c3": "{\"kind\":\"land\",\"pos\":[-119.7131442023241,490.683105364721,60.631651866028804],\"tgt\":[-119.7131442023241,0.564415695175997,3.8080779742583744]}",
+    "c4": "{\"kind\":\"land\",\"pos\":[-119.7131442023241,490.683105364721,60.631651866028804],\"tgt\":[-119.7131442023241,0.564415695175997,3.8080779742583744]}"
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2158,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 24,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -119.71,
+      490.68,
+      60.63
+     ],
+     "tgt": [
+      -119.71,
+      0.56,
+      3.81
+     ]
+    }
+   },
+   "log": [],
+   "ms": 544
+  },
+  {
+   "page": 0,
+   "label": "click Layers; drag the map 80 px; 3 frames",
+   "at": 158572,
+   "ret": {
+    "moved": true
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 23,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -119.71,
+      490.68,
+      31.29
+     ],
+     "tgt": [
+      -119.71,
+      0.21,
+      -25.58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 727
+  },
+  {
+   "page": 0,
+   "label": "Esc",
+   "at": 159299,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 23,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -119.71,
+      490.68,
+      31.29
+     ],
+     "tgt": [
+      -119.71,
+      0.21,
+      -25.58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 8
+  },
+  {
+   "page": 0,
+   "label": "click the Key's head (legend open); wheel over the legend; wheel over the map",
+   "at": 159307,
+   "ret": {
+    "legend": true,
+    "overLegend": false,
+    "overMap": true
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": true,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#lg-toggle",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 15,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -105.57,
+      369.43,
+      17.23
+     ],
+     "tgt": [
+      -105.57,
+      0.24,
+      -25.57
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2036
+  },
+  {
+   "page": 0,
+   "label": "click the Key's head (legend closed)",
+   "at": 161343,
+   "ret": {
+    "x": 1535.5,
+    "y": 195.078125,
+    "box": "1500,182.1,71,26",
+    "hit": true,
+    "top": "SPAN.lg-name",
+    "waitedMs": 151
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#lg-toggle",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 15,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -105.57,
+      369.43,
+      17.23
+     ],
+     "tgt": [
+      -105.57,
+      0.24,
+      -25.57
+     ]
+    }
+   },
+   "log": [],
+   "ms": 174
+  },
+  {
+   "page": 0,
+   "label": "click Follow (on); click Play; 60 frames",
+   "at": 161518,
+   "s": {
+    "clock": 250,
+    "clockText": "04:09",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 20,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.042
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -237.27,
+      134.1,
+      217.45
+     ],
+     "tgt": [
+      -38.4,
+      0.8,
+      10.7
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1546
+  },
+  {
+   "page": 0,
+   "label": "drag the map 100 px during Play; release; 90 frames",
+   "at": 163065,
+   "ret": {
+    "a": "{\"kind\":\"land\",\"pos\":[-237.26903510560146,134.09671993182363,217.44500936927338],\"tgt\":[-38.40412315281789,0.800876581874772,10.704259319349859]}",
+    "b": "{\"kind\":\"land\",\"pos\":[-271.91407679519557,134.09671993182363,217.21528142847038],\"tgt\":[-68.98889421807078,-1.9206090453982294,6.253457957203068]}",
+    "d": "{\"kind\":\"land\",\"pos\":[-271.91407679519557,134.09671993182363,217.21528142847038],\"tgt\":[-68.98889421807078,-1.9206090453982294,6.253457957203068]}"
+   },
+   "s": {
+    "clock": 255.868,
+    "clockText": "04:15",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "out@255",
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 21,
+     "dropped": 10
+    },
+    "overlays": 63,
+    "drawon": [
+     0.066
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -271.91,
+      134.1,
+      217.22
+     ],
+     "tgt": [
+      -68.99,
+      -1.92,
+      6.25
+     ]
+    }
+   },
+   "log": [],
+   "ms": 3850
+  },
+  {
+   "page": 0,
+   "label": "click Follow during Play; 120 frames",
+   "at": 166915,
+   "s": {
+    "clock": 275.833,
+    "clockText": "04:35",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#follow",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 21,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.149
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -265.6,
+      128.18,
+      243.08
+     ],
+     "tgt": [
+      -74.29,
+      -0.05,
+      44.19
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2125
+  },
+  {
+   "page": 0,
+   "label": "wheel during Play; 30 frames; click Pause",
+   "at": 169040,
+   "s": {
+    "clock": 280.833,
+    "clockText": "04:40",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 38,700",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 56,
+     "placed": 44,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0.17
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -248.39,
+      116.64,
+      225.18
+     ],
+     "tgt": [
+      -74.29,
+      -0.05,
+      44.19
+     ]
+    }
+   },
+   "log": [],
+   "ms": 565
+  }
+ ],
+ "checks": [
+  {
+   "id": "help-mid-drag",
+   "ok": false,
+   "expected": "? mid-drag: the map does not move under the overlay; after release a move with no button pans nothing (no drag left held)",
+   "observed": {
+    "helpOpened": true,
+    "movedUnderOverlay": true,
+    "movedAfterEscHeld": true,
+    "movedAfterRelease": false,
+    "focus": "body"
+   }
+  },
+  {
+   "id": "sheet-wheel",
+   "ok": true,
+   "expected": "the wheel over the sources sheet and its scrim does not zoom the map behind",
+   "observed": {
+    "moved": false,
+    "scrolled": 0,
+    "openDuringWheel": true
+   }
+  },
+  {
+   "id": "drag-with-card",
+   "ok": true,
+   "expected": "a drag with the card open pans and keeps the card",
+   "observed": {
+    "ret": {
+     "sel": "gqg",
+     "moved": true
+    },
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2158,
+     "inert": false
+    }
+   }
+  },
+  {
+   "id": "wheel-over-card",
+   "ok": true,
+   "expected": "the wheel over the card does not zoom the map",
+   "observed": {
+    "moved": false
+   }
+  },
+  {
+   "id": "esc-mid-drag",
+   "ok": true,
+   "expected": "Esc mid-drag clears the selection; the drag goes on until the release; nothing after",
+   "observed": {
+    "selAfterEsc": null,
+    "pannedAfterEsc": true,
+    "movedAfterRelease": false
+   }
+  },
+  {
+   "id": "layers-drag",
+   "ok": true,
+   "expected": "a drag pans with the Layers panel open",
+   "observed": {
+    "ret": {
+     "moved": true
+    },
+    "layersOpen": false
+   }
+  },
+  {
+   "id": "legend-wheel",
+   "ok": true,
+   "expected": "with the legend open, the wheel over it zooms nothing and over the map zooms",
+   "observed": {
+    "legend": true,
+    "overLegend": false,
+    "overMap": true
+   }
+  },
+  {
+   "id": "follow-on-playing",
+   "ok": true,
+   "expected": "playing with Follow on",
+   "observed": {
+    "freeCam": false,
+    "playing": true
+   }
+  },
+  {
+   "id": "drag-turns-follow-off",
+   "ok": true,
+   "expected": "a drag during Play turns Follow off; the eye stays where the visitor left it while the clock plays on",
+   "observed": {
+    "freeCam": true,
+    "follow": "false",
+    "playing": true,
+    "camMovedAfterRelease": false
+   }
+  },
+  {
+   "id": "follow-again",
+   "ok": true,
+   "expected": "Follow pressed again: on, the glide done, following",
+   "observed": {
+    "freeCam": false,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "cam": {
+     "pos": [
+      -265.6,
+      128.18,
+      243.08
+     ],
+     "tgt": [
+      -74.29,
+      -0.05,
+      44.19
+     ]
+    }
+   }
+  },
+  {
+   "id": "wheel-follow-off",
+   "ok": true,
+   "expected": "the wheel turns Follow off",
+   "observed": {
+    "freeCam": true
+   }
+  }
+ ],
+ "shots": [],
+ "notes": [
+  "a formation's name to click: {\"k\":\"n:gqg\",\"x\":1011.8910701191558,\"y\":227.33413913950073}"
+ ],
+ "layersAfterDrag": false,
+ "listeners": {
+  "live": 480,
+  "removed": 0,
+  "onDetached": 4,
+  "total": 484,
+  "addCalls": 484,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 1,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 19,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 2,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip click": 1,
+   "#railclose click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 56,
+   "div.ml-item blur": 56,
+   "div.ml-item keydown": 56,
+   "div.ml-item click": 56
+  },
+  "timeouts": 0,
+  "timeoutsBy": {},
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 1,
+  "tSet": 7,
+  "tFired": 5,
+  "tCleared": 2,
+  "rSet": 7,
+  "rFired": 7,
+  "rCancel": 0
+ },
+ "ms": 169609,
+ "ended": "2026-11-02T06:01:56.325Z"
+}

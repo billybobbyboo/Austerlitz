@@ -77,4 +77,4 @@ app.js` (the last build before Stage 8 against today's source) and a scan of bot
 with a literal find 253 distinct such comparisons before Stage 8, every one still present today (none removed or altered), and 218 new ones; of the 131 checks with a literal name
 in both, none changed its condition text. So no pre-existing self-test tolerance written as a literal was loosened during Stage 8. Limits held
 in named constants that the self-test reads from the code under test (for example `ARROW_CAP.PX`, `SYM_MAX_PX`, `CAM_CLEAR`) are pinned only by
-`css-test.js`'s source-text checks, not by the self-test (see `README.md`, finding T-8).
+`css-test.js`'s source-text checks, not by the self-test (see `README.md`, finding TS-8, which also shows the node suites' march-rate checks reading `SPEED_CEIL` from the code under test: M25).

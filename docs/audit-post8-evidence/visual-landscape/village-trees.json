@@ -1,0 +1,35 @@
+{
+ "about": "villages' trees (woodsPlan) inside the meres' water class (coverClass: pond > 0.5)",
+ "total": 184,
+ "onWater": 3,
+ "byVillage": {
+  "Telnitz": 1,
+  "Satschan": 2
+ },
+ "wet": [
+  {
+   "village": "Telnitz",
+   "x": -52.898,
+   "z": 80.281,
+   "pondS": 0.593,
+   "pondM": 0,
+   "water": true
+  },
+  {
+   "village": "Satschan",
+   "x": -36.515,
+   "z": 92.515,
+   "pondS": 0.873,
+   "pondM": 0,
+   "water": true
+  },
+  {
+   "village": "Satschan",
+   "x": -35.162,
+   "z": 91.871,
+   "pondS": 0.967,
+   "pondM": 0,
+   "water": true
+  }
+ ]
+}

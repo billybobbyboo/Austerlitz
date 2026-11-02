@@ -1,0 +1,2579 @@
+{
+ "discs": [
+  {
+   "name": "Satschan",
+   "cx": -36,
+   "cz": 85.5,
+   "rx": 28,
+   "rz": 10.5,
+   "y": -4.14
+  },
+  {
+   "name": "Menitz",
+   "cx": -76.5,
+   "cz": 103.5,
+   "rx": 23,
+   "rz": 9,
+   "y": -3.031
+  }
+ ],
+ "trees": {
+  "totals": {
+   "broad:wood": 357,
+   "broad:village": 184,
+   "broad:garden": 12,
+   "conifer:wood": 229,
+   "scrub:edge": 205,
+   "scrub:stream": 222
+  },
+  "onIce": [
+   {
+    "mesh": "broad",
+    "kind": "village",
+    "mere": "Satschan",
+    "x": -35.16,
+    "z": 91.87,
+    "r": 0.608,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "broad",
+    "kind": "village",
+    "mere": "Satschan",
+    "x": -36.51,
+    "z": 92.52,
+    "r": 0.668,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "broad",
+    "kind": "village",
+    "mere": "Satschan",
+    "x": -44.5,
+    "z": 93.58,
+    "r": 0.827,
+    "water": false,
+    "ground": -4.448,
+    "base": -4.438
+   },
+   {
+    "mesh": "broad",
+    "kind": "village",
+    "mere": "Satschan",
+    "x": -52.9,
+    "z": 80.28,
+    "r": 0.782,
+    "water": true,
+    "ground": -4.97,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -57.36,
+    "z": 85.35,
+    "r": 0.763,
+    "water": true,
+    "ground": -4.817,
+    "base": -4.823
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -33.15,
+    "z": 79.85,
+    "r": 0.548,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -45.59,
+    "z": 79.34,
+    "r": 0.68,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -54.51,
+    "z": 79,
+    "r": 0.906,
+    "water": false,
+    "ground": -4.292,
+    "base": -4.3
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -34.67,
+    "z": 78.69,
+    "r": 0.65,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -51.97,
+    "z": 78.95,
+    "r": 0.845,
+    "water": false,
+    "ground": -4.546,
+    "base": -4.554
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -35.05,
+    "z": 77.92,
+    "r": 0.723,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -34.78,
+    "z": 78.68,
+    "r": 0.651,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -36.35,
+    "z": 86.15,
+    "r": 0.064,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -26.05,
+    "z": 75.84,
+    "r": 0.987,
+    "water": false,
+    "ground": -3.901,
+    "base": -3.875
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -27.53,
+    "z": 79.27,
+    "r": 0.666,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -38.86,
+    "z": 87.21,
+    "r": 0.192,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -29.53,
+    "z": 87.28,
+    "r": 0.287,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -34.6,
+    "z": 77.52,
+    "r": 0.762,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -26.73,
+    "z": 78.96,
+    "r": 0.706,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -30.21,
+    "z": 89.75,
+    "r": 0.455,
+    "water": true,
+    "ground": -5.014,
+    "base": -5.014
+   },
+   {
+    "mesh": "scrub",
+    "kind": "stream",
+    "mere": "Satschan",
+    "x": -33.11,
+    "z": 77.44,
+    "r": 0.775,
+    "water": true,
+    "ground": -4.996,
+    "base": -5.014
+   }
+  ],
+  "onIceCount": 21,
+  "onWaterClass": 17
+ },
+ "under": [
+  {
+   "mere": "Satschan",
+   "samples": 1247,
+   "depthMean": 0.266,
+   "depthMax": 0.874,
+   "depthMin": -1.798,
+   "groundBelowIceShare": 0.691
+  },
+  {
+   "mere": "Menitz",
+   "samples": 1247,
+   "depthMean": 0.598,
+   "depthMax": 1.142,
+   "depthMin": -1.049,
+   "groundBelowIceShare": 0.775
+  }
+ ],
+ "kitArt": {
+  "stature": 1.6,
+  "headTop": 1.415
+ },
+ "formations": [
+  {
+   "t": "06:10",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 1.016,
+   "iceMinusGround": -0.714,
+   "status": "forming"
+  },
+  {
+   "t": "06:20",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.958,
+   "iceMinusGround": -0.258,
+   "status": "forming"
+  },
+  {
+   "t": "06:30",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.921,
+   "iceMinusGround": 0.11,
+   "status": "forming"
+  },
+  {
+   "t": "06:40",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.982,
+   "iceMinusGround": -0.294,
+   "status": "forming"
+  },
+  {
+   "t": "15:20",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 1.04,
+   "iceMinusGround": -0.18,
+   "status": "attacking"
+  },
+  {
+   "t": "15:30",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 1.029,
+   "iceMinusGround": -0.151,
+   "status": "attacking"
+  },
+  {
+   "t": "15:40",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 1.018,
+   "iceMinusGround": -0.122,
+   "status": "attacking"
+  },
+  {
+   "t": "15:50",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 1.006,
+   "iceMinusGround": -0.093,
+   "status": "attacking"
+  },
+  {
+   "t": "15:50",
+   "id": "buxhowden",
+   "arm": "hq",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 1.013,
+   "iceMinusGround": -0.557,
+   "status": "withdrawing"
+  },
+  {
+   "t": "15:50",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.966,
+   "iceMinusGround": -0.234,
+   "status": "retreating"
+  },
+  {
+   "t": "16:00",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 0.995,
+   "iceMinusGround": -0.047,
+   "status": "attacking"
+  },
+  {
+   "t": "16:00",
+   "id": "buxhowden",
+   "arm": "hq",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.83,
+   "iceMinusGround": 0.375,
+   "status": "withdrawing"
+  },
+  {
+   "t": "16:00",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.736,
+   "iceMinusGround": 0.837,
+   "status": "retreating"
+  },
+  {
+   "t": "16:10",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 0.983,
+   "iceMinusGround": -0.005,
+   "status": "attacking"
+  },
+  {
+   "t": "16:10",
+   "id": "buxhowden",
+   "arm": "hq",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.654,
+   "iceMinusGround": 0.874,
+   "status": "withdrawing"
+  },
+  {
+   "t": "16:10",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.511,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "16:20",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 0.972,
+   "iceMinusGround": 0.033,
+   "status": "attacking"
+  },
+  {
+   "t": "16:20",
+   "id": "buxhowden",
+   "arm": "hq",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.49,
+   "iceMinusGround": 0.874,
+   "status": "withdrawing"
+  },
+  {
+   "t": "16:20",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.3,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "16:20",
+   "id": "dok",
+   "arm": "inf",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.816,
+   "iceMinusGround": 0.765,
+   "status": "retreating"
+  },
+  {
+   "t": "16:30",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 0.961,
+   "iceMinusGround": 0.073,
+   "status": "attacking"
+  },
+  {
+   "t": "16:30",
+   "id": "buxhowden",
+   "arm": "hq",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.35,
+   "iceMinusGround": 0.874,
+   "status": "withdrawing"
+  },
+  {
+   "t": "16:30",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.173,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "16:30",
+   "id": "dok",
+   "arm": "inf",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.516,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "16:40",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 0.949,
+   "iceMinusGround": 0.125,
+   "status": "attacking"
+  },
+  {
+   "t": "16:40",
+   "id": "buxhowden",
+   "arm": "hq",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.274,
+   "iceMinusGround": 0.874,
+   "status": "withdrawing"
+  },
+  {
+   "t": "16:40",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.282,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "16:40",
+   "id": "dok",
+   "arm": "inf",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.217,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "16:50",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 0.938,
+   "iceMinusGround": 0.177,
+   "status": "attacking"
+  },
+  {
+   "t": "16:50",
+   "id": "buxhowden",
+   "arm": "hq",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.313,
+   "iceMinusGround": 0.874,
+   "status": "withdrawing"
+  },
+  {
+   "t": "16:50",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.49,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "16:50",
+   "id": "dok",
+   "arm": "inf",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.087,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "17:00",
+   "id": "friant",
+   "arm": "inf",
+   "nation": "fr",
+   "mere": "Satschan",
+   "r": 0.927,
+   "iceMinusGround": 0.225,
+   "status": "holding"
+  },
+  {
+   "t": "17:00",
+   "id": "buxhowden",
+   "arm": "hq",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.437,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "17:00",
+   "id": "kienmayer",
+   "arm": "mixed",
+   "nation": "at",
+   "mere": "Satschan",
+   "r": 0.715,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  },
+  {
+   "t": "17:00",
+   "id": "dok",
+   "arm": "inf",
+   "nation": "ru",
+   "mere": "Satschan",
+   "r": 0.385,
+   "iceMinusGround": 0.874,
+   "status": "retreating"
+  }
+ ],
+ "formationsInside": [
+  {
+   "id": "kienmayer",
+   "mere": "Satschan",
+   "first": "06:20",
+   "last": "17:00",
+   "n": 11,
+   "maxDepth": 0.874
+  },
+  {
+   "id": "friant",
+   "mere": "Satschan",
+   "first": "16:00",
+   "last": "17:00",
+   "n": 7,
+   "maxDepth": 0.225
+  },
+  {
+   "id": "buxhowden",
+   "mere": "Satschan",
+   "first": "16:00",
+   "last": "17:00",
+   "n": 7,
+   "maxDepth": 0.874
+  },
+  {
+   "id": "dok",
+   "mere": "Satschan",
+   "first": "16:20",
+   "last": "17:00",
+   "n": 5,
+   "maxDepth": 0.874
+  }
+ ],
+ "buildings": {
+  "Satschan": [
+   {
+    "part": "church",
+    "village": "Satschan",
+    "a": 1.95,
+    "b": 1.25,
+    "h": null,
+    "x": -35.11,
+    "z": 98.12,
+    "scale": 1
+   },
+   {
+    "part": "long range",
+    "village": "Satschan",
+    "a": 1.355,
+    "b": 0.553,
+    "h": 0.975,
+    "x": -38.08,
+    "z": 100.73,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Satschan",
+    "a": 0.308,
+    "b": 0.485,
+    "h": 0.975,
+    "x": -38.19,
+    "z": 99.52,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Satschan",
+    "a": 1.3,
+    "b": 0.507,
+    "h": 0.958,
+    "x": -42.94,
+    "z": 96.95,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Satschan",
+    "a": 0.447,
+    "b": 0.539,
+    "h": 0.958,
+    "x": -41.75,
+    "z": 96.71,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Satschan",
+    "a": 1.017,
+    "b": 0.467,
+    "h": 1.038,
+    "x": -39.42,
+    "z": 101.8,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Satschan",
+    "a": 1.013,
+    "b": 0.488,
+    "h": 1.017,
+    "x": -43.79,
+    "z": 98.41,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Satschan",
+    "a": 0.907,
+    "b": 0.493,
+    "h": 0.975,
+    "x": -35.64,
+    "z": 100.86,
+    "scale": null
+   }
+  ],
+  "Sokolnitz": [
+   {
+    "part": "castle north range",
+    "village": "Sokolnitz",
+    "a": 0.76,
+    "b": 0.12,
+    "h": 1.15,
+    "x": -63.69,
+    "z": 46.71,
+    "scale": 0.2
+   },
+   {
+    "part": "castle south range",
+    "village": "Sokolnitz",
+    "a": 0.76,
+    "b": 0.12,
+    "h": 1.15,
+    "x": -63.41,
+    "z": 47.59,
+    "scale": 0.2
+   },
+   {
+    "part": "castle west range",
+    "village": "Sokolnitz",
+    "a": 0.32,
+    "b": 0.135,
+    "h": 1.15,
+    "x": -64.15,
+    "z": 47.34,
+    "scale": 0.2
+   },
+   {
+    "part": "castle east range",
+    "village": "Sokolnitz",
+    "a": 0.32,
+    "b": 0.23,
+    "h": 2.05,
+    "x": -63.04,
+    "z": 46.99,
+    "scale": 0.2
+   },
+   {
+    "part": "farm north range",
+    "village": "Sokolnitz",
+    "a": 0.6,
+    "b": 0.1,
+    "h": 0.95,
+    "x": -63.33,
+    "z": 48.13,
+    "scale": 0.2
+   },
+   {
+    "part": "farm west range",
+    "village": "Sokolnitz",
+    "a": 0.36,
+    "b": 0.1,
+    "h": 0.95,
+    "x": -63.69,
+    "z": 48.72,
+    "scale": 0.2
+   },
+   {
+    "part": "farm south range",
+    "village": "Sokolnitz",
+    "a": 0.54,
+    "b": 0.1,
+    "h": 0.95,
+    "x": -63.09,
+    "z": 49.02,
+    "scale": 0.2
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.168,
+    "b": 0.559,
+    "h": 0.951,
+    "x": -68.22,
+    "z": 58.14,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.355,
+    "b": 0.54,
+    "h": 0.951,
+    "x": -67.59,
+    "z": 59.05,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.179,
+    "b": 0.539,
+    "h": 0.977,
+    "x": -68.23,
+    "z": 60.13,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.33,
+    "b": 0.493,
+    "h": 0.977,
+    "x": -67.54,
+    "z": 61,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.244,
+    "b": 0.538,
+    "h": 0.974,
+    "x": -68.28,
+    "z": 62.91,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.391,
+    "b": 0.503,
+    "h": 0.974,
+    "x": -67.57,
+    "z": 61.96,
+    "scale": null
+   },
+   {
+    "part": "rear building",
+    "village": "Sokolnitz",
+    "a": 0.281,
+    "b": 0.511,
+    "h": 0.831,
+    "x": -69.34,
+    "z": 61.94,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.19,
+    "b": 0.528,
+    "h": 0.961,
+    "x": -68.09,
+    "z": 64.34,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.411,
+    "b": 0.502,
+    "h": 0.961,
+    "x": -67.29,
+    "z": 65.19,
+    "scale": null
+   },
+   {
+    "part": "rear building",
+    "village": "Sokolnitz",
+    "a": 0.301,
+    "b": 0.454,
+    "h": 0.898,
+    "x": -68.89,
+    "z": 65.46,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.187,
+    "b": 0.51,
+    "h": 1.071,
+    "x": -68.1,
+    "z": 55.98,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.396,
+    "b": 0.502,
+    "h": 1.071,
+    "x": -67.47,
+    "z": 56.92,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.304,
+    "b": 0.551,
+    "h": 0.953,
+    "x": -68.11,
+    "z": 54,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.366,
+    "b": 0.537,
+    "h": 0.953,
+    "x": -67.4,
+    "z": 54.96,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.243,
+    "b": 0.529,
+    "h": 0.994,
+    "x": -67.93,
+    "z": 51.82,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.463,
+    "b": 0.523,
+    "h": 0.994,
+    "x": -67.26,
+    "z": 52.85,
+    "scale": null
+   },
+   {
+    "part": "rear building",
+    "village": "Sokolnitz",
+    "a": 0.353,
+    "b": 0.484,
+    "h": 0.848,
+    "x": -68.86,
+    "z": 52.83,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 0.89,
+    "b": 0.458,
+    "h": 1.051,
+    "x": -63.83,
+    "z": 52.58,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.311,
+    "b": 0.531,
+    "h": 0.969,
+    "x": -63.3,
+    "z": 50.75,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.341,
+    "b": 0.536,
+    "h": 0.969,
+    "x": -64.13,
+    "z": 51.58,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.245,
+    "b": 0.518,
+    "h": 0.953,
+    "x": -60.16,
+    "z": 59.53,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.43,
+    "b": 0.482,
+    "h": 0.953,
+    "x": -61.08,
+    "z": 60.32,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 1.392,
+    "b": 0.504,
+    "h": 0.992,
+    "x": -60.41,
+    "z": 62,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.433,
+    "b": 0.538,
+    "h": 0.992,
+    "x": -61.4,
+    "z": 62.79,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 0.902,
+    "b": 0.466,
+    "h": 1.034,
+    "x": -61.23,
+    "z": 64.05,
+    "scale": null
+   },
+   {
+    "part": "long range",
+    "village": "Sokolnitz",
+    "a": 0.92,
+    "b": 0.499,
+    "h": 1.056,
+    "x": -59.33,
+    "z": 57.85,
+    "scale": null
+   },
+   {
+    "part": "street range",
+    "village": "Sokolnitz",
+    "a": 0.259,
+    "b": 0.467,
+    "h": 1.056,
+    "x": -58.96,
+    "z": 57.05,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.72,
+    "z": 57.61,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.73,
+    "z": 57.82,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.74,
+    "z": 58.04,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.74,
+    "z": 58.26,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.75,
+    "z": 58.48,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.76,
+    "z": 58.69,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.8,
+    "z": 58.91,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.87,
+    "z": 59.12,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.93,
+    "z": 59.33,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.99,
+    "z": 59.53,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.05,
+    "z": 59.74,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.11,
+    "z": 59.95,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.16,
+    "z": 60.16,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.22,
+    "z": 60.37,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.28,
+    "z": 60.58,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.34,
+    "z": 60.79,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.43,
+    "z": 60.99,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.53,
+    "z": 61.18,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.63,
+    "z": 61.38,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -59.71,
+    "z": 63.02,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -59.87,
+    "z": 63.16,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -60.03,
+    "z": 63.31,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -61.93,
+    "z": 64.77,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -62.12,
+    "z": 64.88,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -68.06,
+    "z": 65.62,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -69.71,
+    "z": 65.02,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -69.9,
+    "z": 64.92,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.111,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.09,
+    "z": 64.8,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.26,
+    "z": 64.66,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.43,
+    "z": 64.53,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.61,
+    "z": 64.39,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.78,
+    "z": 64.26,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.95,
+    "z": 64.13,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.13,
+    "z": 64,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.3,
+    "z": 63.87,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.47,
+    "z": 63.74,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.65,
+    "z": 63.61,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.83,
+    "z": 63.48,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72,
+    "z": 63.35,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.16,
+    "z": 63.19,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.31,
+    "z": 63.03,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.45,
+    "z": 62.86,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.57,
+    "z": 62.68,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.68,
+    "z": 62.49,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.79,
+    "z": 62.3,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.9,
+    "z": 62.11,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.01,
+    "z": 61.92,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.12,
+    "z": 61.74,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.23,
+    "z": 61.55,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.34,
+    "z": 61.36,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.45,
+    "z": 61.17,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.56,
+    "z": 60.98,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.65,
+    "z": 60.79,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.72,
+    "z": 60.58,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.79,
+    "z": 60.37,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.86,
+    "z": 60.17,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.93,
+    "z": 59.96,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.01,
+    "z": 59.76,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.08,
+    "z": 59.55,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.15,
+    "z": 59.34,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.22,
+    "z": 59.13,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.111,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.28,
+    "z": 58.92,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.32,
+    "z": 58.71,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.34,
+    "z": 58.49,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.34,
+    "z": 58.27,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.35,
+    "z": 58.05,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.35,
+    "z": 57.83,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.36,
+    "z": 57.61,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.37,
+    "z": 57.39,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.37,
+    "z": 57.17,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.38,
+    "z": 56.95,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.38,
+    "z": 56.73,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.111,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.35,
+    "z": 56.51,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.3,
+    "z": 56.3,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.25,
+    "z": 56.08,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.19,
+    "z": 55.87,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.14,
+    "z": 55.66,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.08,
+    "z": 55.45,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -74.02,
+    "z": 55.24,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.96,
+    "z": 55.03,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.9,
+    "z": 54.82,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.83,
+    "z": 54.61,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.73,
+    "z": 54.42,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.63,
+    "z": 54.22,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.52,
+    "z": 54.03,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.42,
+    "z": 53.84,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.32,
+    "z": 53.65,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.22,
+    "z": 53.46,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.12,
+    "z": 53.26,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -73.02,
+    "z": 53.07,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.92,
+    "z": 52.87,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.111,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.82,
+    "z": 52.68,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.71,
+    "z": 52.49,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.58,
+    "z": 52.32,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.44,
+    "z": 52.15,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.29,
+    "z": 51.98,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -72.14,
+    "z": 51.82,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.98,
+    "z": 51.67,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.81,
+    "z": 51.54,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.63,
+    "z": 51.41,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.46,
+    "z": 51.27,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.29,
+    "z": 51.14,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -71.12,
+    "z": 51,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.96,
+    "z": 50.86,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.8,
+    "z": 50.71,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.111,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.63,
+    "z": 50.56,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.47,
+    "z": 50.42,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.29,
+    "z": 50.3,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -70.1,
+    "z": 50.17,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -69.91,
+    "z": 50.07,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -69.71,
+    "z": 49.98,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -69.5,
+    "z": 49.91,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -69.29,
+    "z": 49.84,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -68.26,
+    "z": 49.49,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -68.05,
+    "z": 49.42,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -67.84,
+    "z": 49.37,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -67.62,
+    "z": 49.33,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -67.41,
+    "z": 49.32,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -67.19,
+    "z": 49.3,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -66.97,
+    "z": 49.28,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -66.76,
+    "z": 49.26,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -66.54,
+    "z": 49.24,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -64.38,
+    "z": 49.37,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -64.17,
+    "z": 49.4,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -63.95,
+    "z": 49.43,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -63.73,
+    "z": 49.46,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -63.52,
+    "z": 49.52,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -63.32,
+    "z": 49.6,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -63.11,
+    "z": 49.68,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -62.91,
+    "z": 49.76,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -62.71,
+    "z": 49.84,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -62.51,
+    "z": 49.93,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -62.31,
+    "z": 50.01,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.111,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -59.15,
+    "z": 52.66,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -59.05,
+    "z": 52.85,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.94,
+    "z": 53.05,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.84,
+    "z": 53.24,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.74,
+    "z": 53.44,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -58.65,
+    "z": 53.63,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.108,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.89,
+    "z": 55.89,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.84,
+    "z": 56.1,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.79,
+    "z": 56.31,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.11,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.73,
+    "z": 56.52,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.7,
+    "z": 56.74,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.7,
+    "z": 56.96,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.71,
+    "z": 57.17,
+    "scale": null
+   },
+   {
+    "part": "fence",
+    "village": "Sokolnitz",
+    "a": 0.109,
+    "b": 0.05,
+    "h": 0.3,
+    "x": -57.72,
+    "z": 57.39,
+    "scale": null
+   }
+  ]
+ }
+}

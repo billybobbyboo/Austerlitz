@@ -1,0 +1,25 @@
+{
+ "focus": "body",
+ "keys": [
+  {
+   "key": "PageDown",
+   "before": 63,
+   "after": 628
+  },
+  {
+   "key": "ArrowDown",
+   "before": 628,
+   "after": 668
+  },
+  {
+   "key": "Space",
+   "before": 668,
+   "after": 1233
+  },
+  {
+   "key": "End",
+   "before": 1233,
+   "after": 11925
+  }
+ ]
+}

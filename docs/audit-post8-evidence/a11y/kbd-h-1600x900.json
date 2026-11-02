@@ -1,0 +1,887 @@
+{
+ "tag": "kbd-h-1600x900",
+ "started": "2026-11-02T06:08:57.997Z",
+ "build": "austerlitz-command-map.html",
+ "env": "Chromium 141.0.7390.37 headless shell (CI's pin), ANGLE on SwiftShader (software WebGL); desktop emulation, no assistive technology",
+ "steps": [
+  {
+   "step": "at load (harness page)",
+   "t": 92.8,
+   "fi": {
+    "el": "button#fr-tour.t.fr-primary",
+    "text": "Begin (two min)",
+    "aria": null,
+    "role": null,
+    "box": [
+     705,
+     738,
+     123,
+     34
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(239, 228, 200)",
+     "oo": "2px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "ax": {
+    "role": "button",
+    "name": "Begin (two min)",
+    "desc": "Begin the opening: four stops of the guided tour in its own words, the clock played between them; Next moves on, Esc skips it",
+    "ignored": false,
+    "props": {
+     "invalid": "false",
+     "focusable": true,
+     "focused": true
+    }
+   },
+   "card": true
+  },
+  {
+   "step": "Tab x6 inside the card",
+   "t": 93.9,
+   "stops": [
+    "button#fr-close.t",
+    "button#fr-tour.t.fr-primary",
+    "button#fr-close.t",
+    "button#fr-tour.t.fr-primary",
+    "button#fr-close.t",
+    "button#fr-tour.t.fr-primary"
+   ]
+  },
+  {
+   "step": "Esc: the card closed",
+   "t": 95.5,
+   "fi": {
+    "el": "button#play.t.tb-play",
+    "text": "Play",
+    "aria": null,
+    "role": null,
+    "box": [
+     100,
+     813,
+     58,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "0px",
+     "oc": "rgb(155, 163, 169)",
+     "oo": "0px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "ax": {
+    "role": "button",
+    "name": "Play",
+    "ignored": false,
+    "props": {
+     "invalid": "false",
+     "focusable": true,
+     "focused": true,
+     "pressed": "false"
+    }
+   },
+   "state": {
+    "clock": 240,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.81470930746164,
+      490.683105364721,
+      61.010668780199154
+     ],
+     "tgt": [
+      -38.81470930746164,
+      0.5158591190135614,
+      4.1815672220749605
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   }
+  },
+  {
+   "step": "accessibility tree (compacted; saved)",
+   "t": 95.6,
+   "nodes": 115,
+   "roles": {
+    "RootWebArea": 1,
+    "group": 5,
+    "button": 79,
+    "navigation": 1,
+    "heading": 3,
+    "paragraph": 2,
+    "tablist": 1,
+    "tab": 5,
+    "tabpanel": 1,
+    "list": 2,
+    "listitem": 10,
+    "region": 1,
+    "image": 2,
+    "slider": 1,
+    "main": 1
+   },
+   "headings": [
+    "h1 Austerlitz",
+    "h2 Dispositions in the dark",
+    "h3 WHAT CHANGED AT 04:00"
+   ],
+   "landmarks": [
+    "navigation 'Army and map controls'",
+    "region 'Timeline'",
+    "main ''"
+   ],
+   "live": [],
+   "unnamed": [],
+   "imgsNoName": 0,
+   "imgs": [
+    "Scale: 2 km, at the centre of the view (in perspective, nearer ground is larger ",
+    "The Pratzen plateau, a derived reading: Allied about 38,700"
+   ],
+   "dupIds": []
+  },
+  {
+   "step": "the Tab cycle from Play back to Play",
+   "t": 102,
+   "n": 47,
+   "returned": true,
+   "problems": 7,
+   "problemStops": [
+    {
+     "i": 10,
+     "el": "button.act-btn",
+     "role": "button",
+     "name": "The Deception, 04:00 to 07:00: Napoleon has given up the plateau and left his right thin. ",
+     "box": [
+      14,
+      845,
+      337,
+      15
+     ],
+     "vis": true,
+     "opacity": 1,
+     "onScreen": true,
+     "fullOn": true,
+     "fv": true,
+     "ring": "solid 2px rgb(239, 228, 200)",
+     "covered": {
+      "how": "panels",
+      "frac": 0.77,
+      "by": ".dispatch"
+     },
+     "inert": null,
+     "ariaHidden": null,
+     "inMap": false
+    },
+    {
+     "i": 21,
+     "el": "div.ml-item.mlt",
+     "role": "button",
+     "name": "Place: Pratzen Heights",
+     "box": [
+      0,
+      0,
+      100,
+      16
+     ],
+     "vis": false,
+     "opacity": 0,
+     "onScreen": true,
+     "fullOn": true,
+     "fv": true,
+     "ring": "solid 2px rgb(239, 228, 200) +shadow",
+     "covered": null,
+     "inert": null,
+     "ariaHidden": null,
+     "inMap": true
+    },
+    {
+     "i": 22,
+     "el": "div.ml-item.mlt",
+     "role": "button",
+     "name": "Place: Stare Vinohrady",
+     "box": [
+      0,
+      0,
+      100,
+      16
+     ],
+     "vis": false,
+     "opacity": 0,
+     "onScreen": true,
+     "fullOn": true,
+     "fv": true,
+     "ring": "solid 2px rgb(239, 228, 200) +shadow",
+     "covered": null,
+     "inert": null,
+     "ariaHidden": null,
+     "inMap": true
+    },
+    {
+     "i": 23,
+     "el": "div.ml-item.mlt",
+     "role": "button",
+     "name": "Place: Pratzeberg",
+     "box": [
+      0,
+      0,
+      74,
+      16
+     ],
+     "vis": false,
+     "opacity": 0,
+     "onScreen": true,
+     "fullOn": true,
+     "fv": true,
+     "ring": "solid 2px rgb(239, 228, 200) +shadow",
+     "covered": null,
+     "inert": null,
+     "ariaHidden": null,
+     "inMap": true
+    },
+    {
+     "i": 25,
+     "el": "div.ml-item.mlt",
+     "role": "button",
+     "name": "Place: Zuran mound",
+     "box": [
+      0,
+      0,
+      86,
+      16
+     ],
+     "vis": false,
+     "opacity": 0,
+     "onScreen": true,
+     "fullOn": true,
+     "fv": true,
+     "ring": "solid 2px rgb(239, 228, 200) +shadow",
+     "covered": null,
+     "inert": null,
+     "ariaHidden": null,
+     "inMap": true
+    },
+    {
+     "i": 26,
+     "el": "div.ml-item.mlt",
+     "role": "button",
+     "name": "Place: Goldbach stream",
+     "box": [
+      0,
+      0,
+      108,
+      16
+     ],
+     "vis": false,
+     "opacity": 0,
+     "onScreen": true,
+     "fullOn": true,
+     "fv": true,
+     "ring": "solid 2px rgb(239, 228, 200) +shadow",
+     "covered": null,
+     "inert": null,
+     "ariaHidden": null,
+     "inMap": true
+    },
+    {
+     "i": 29,
+     "el": "body",
+     "role": null,
+     "name": null
+    }
+   ],
+   "order": [
+    "1 button#next.t.tb-icon | button | Forward ten minutes",
+    "2 button#nextEv.t.tb-icon | button | Next event",
+    "3 button#follow.t.tb-follow | button | Follow",
+    "4 button#eyesbtn.t.tb-eyes | button | Eyes: everyone. Whose eyes? Everyone (press to cha",
+    "5 button#helpbtn.t.tb-help | button | Keys and controls (?)",
+    "6 button.t.spd-btn | button | ½×",
+    "7 button.t.spd-btn | button | 1×",
+    "8 button.t.spd-btn | button | 2×",
+    "9 button.t.spd-btn | button | 4×",
+    "10 button.act-btn | button | The Deception, 04:00 to 07:00: Napoleon has given ",
+    "11 button.step | button | 04:00 - 07:00, Deployment: Dispositions in the dar",
+    "12 div#timerail.timerail | slider | Battle clock",
+    "13 button.ev-mark.fr | button | 04:00 to 04:45, Friant's division at Raigern since",
+    "14 div#maplayer | group | The map: arrow keys pan, Shift and the arrow keys ",
+    "15 div.ml-item.mlt | button | Event, 04:00 to 04:45: Friant's division at Raiger",
+    "16 div.ml-item.mlt | button | Imperial Headquarters, French, army, observing, po",
+    "17 div.ml-item.mlt | button | Allied Headquarters, Allied, Russian, army, observ",
+    "18 div.ml-item.mlt | button | Left Wing Command, Allied, Russian, corps, about 4",
+    "19 div.ml-item.mlt | button | Advance Guard of the Right, Allied, Russian, corps",
+    "20 div.ml-item.mlt | button | Fifth Column (cavalry), Allied, Russian, corps, ab",
+    "21 div.ml-item.mlt | button | Place: Pratzen Heights",
+    "22 div.ml-item.mlt | button | Place: Stare Vinohrady",
+    "23 div.ml-item.mlt | button | Place: Pratzeberg",
+    "24 div.ml-item.mlt | button | Place: The Santon",
+    "25 div.ml-item.mlt | button | Place: Zuran mound",
+    "26 div.ml-item.mlt | button | Place: Goldbach stream",
+    "27 div.ml-item.mlt | button | Place: Litava river",
+    "28 div.ml-item.mlt | button | Place: Austerlitz",
+    "29 body | null | ",
+    "30 button.vm-btn | button | Study",
+    "31 button.vm-btn | button | Watch",
+    "32 button.vm-btn | button | Clean",
+    "33 button#tab-now.tab-btn | tab | Now",
+    "34 div.railscroll | generic | Now",
+    "35 button#srcbtn | button | Accuracy and sources",
+    "36 button#openingbtn.t | button | Begin the opening",
+    "37 button#tourbtn.t | button | Guided tour",
+    "38 button#layersbtn.t | button | Layers…",
+    "39 button.t.van-btn | button | Field",
+    "40 button.t.van-btn | button | Zuran",
+    "41 button.t.van-btn | button | Pratzen",
+    "42 button.t.van-btn | button | Allied",
+    "43 button.t.van-btn | button | Overview",
+    "44 button#lg-toggle.lg-head | button | Key +",
+    "45 button#prevEv.t.tb-icon | button | Previous event",
+    "46 button#prev.t.tb-icon | button | Back ten minutes",
+    "47 button#play.t.tb-play | button | Play"
+   ]
+  },
+  {
+   "step": "Layers: open, Tab, Esc (set-up: #layersbtn focused by script; then real keys Enter, Tab, Tab, Escape)",
+   "t": 104.9,
+   "set": "#layersbtn",
+   "ok": true,
+   "seq": [
+    {
+     "key": "Enter",
+     "el": "button#layersbtn.t",
+     "role": "button",
+     "name": "Layers…",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Tab",
+     "el": "button.t.van-btn",
+     "role": "button",
+     "name": "Field",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Tab",
+     "el": "button.t.van-btn",
+     "role": "button",
+     "name": "Zuran",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Escape",
+     "el": "button.t.van-btn",
+     "role": "button",
+     "name": "Zuran",
+     "vis": true,
+     "onScreen": true
+    }
+   ],
+   "after": {
+    "pop": false,
+    "expanded": "false"
+   }
+  },
+  {
+   "step": "Guided tour: start, Tab, Esc (set-up: #tourbtn focused by script; then real keys Enter, Tab, Escape)",
+   "t": 107.9,
+   "set": "#tourbtn",
+   "ok": true,
+   "seq": [
+    {
+     "key": "Enter",
+     "el": "button#tour-next.t",
+     "role": "button",
+     "name": "Next",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Tab",
+     "el": "button#tour-exit.t",
+     "role": "button",
+     "name": "Leave the tour",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Escape",
+     "el": "button#tourbtn.t",
+     "role": "button",
+     "name": "Guided tour",
+     "vis": true,
+     "onScreen": true
+    }
+   ],
+   "after": {
+    "tour": -1,
+    "bar": false
+   }
+  },
+  {
+   "step": "A map item: Enter, then Esc (set-up: [data-a11y-pick=\"1\"] focused by script; then real keys Enter, Escape)",
+   "t": 110.1,
+   "set": "[data-a11y-pick=\"1\"]",
+   "ok": true,
+   "seq": [
+    {
+     "key": "Enter",
+     "el": "div.ml-item.mlt",
+     "role": "button",
+     "name": "Event, 04:00 to 04:45: Friant's division at Raigern since the night (interval), ",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Escape",
+     "el": "div.ml-item.mlt",
+     "role": "button",
+     "name": "Event, 04:00 to 04:45: Friant's division at Raigern since the night (interval), ",
+     "vis": true,
+     "onScreen": true
+    }
+   ],
+   "after": {
+    "sel": null,
+    "drawer": false
+   }
+  },
+  {
+   "step": "the map item used",
+   "t": 110.2,
+   "label": "Event, 04:00 to 04:45: Friant's division at Raigern since the night (interval), an interval, not a timestamp"
+  },
+  {
+   "step": "Whose eyes? button: Enter x3 (set-up: #eyesbtn focused by script; then real keys Enter, Enter, Enter)",
+   "t": 234.5,
+   "set": "#eyesbtn",
+   "ok": true,
+   "seq": [
+    {
+     "key": "Enter",
+     "el": "button#eyesbtn.t.tb-eyes",
+     "role": "button",
+     "name": "Eyes: Napoleon's HQ. Whose eyes? Napoleon's headquarters (press to change)",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Enter",
+     "el": "button#eyesbtn.t.tb-eyes",
+     "role": "button",
+     "name": "Eyes: Allied HQ. Whose eyes? Allied headquarters (press to change)",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Enter",
+     "el": "button#eyesbtn.t.tb-eyes",
+     "role": "button",
+     "name": "Eyes: everyone. Whose eyes? Everyone (press to change)",
+     "vis": true,
+     "onScreen": true
+    }
+   ],
+   "after": {
+    "cv": "none",
+    "label": "Eyes: everyone. Whose eyes? Everyone (press to change)",
+    "text": "Eyes: everyone"
+   }
+  },
+  {
+   "step": "The legend's toggle: Enter x2 (set-up: #lg-toggle focused by script; then real keys Enter, Enter)",
+   "t": 237.6,
+   "set": "#lg-toggle",
+   "ok": true,
+   "seq": [
+    {
+     "key": "Enter",
+     "el": "button#lg-toggle.lg-head",
+     "role": "button",
+     "name": "Key −",
+     "vis": true,
+     "onScreen": true
+    },
+    {
+     "key": "Enter",
+     "el": "button#lg-toggle.lg-head",
+     "role": "button",
+     "name": "Key −",
+     "vis": true,
+     "onScreen": true
+    }
+   ],
+   "after": {
+    "expanded": "true",
+    "cls": "legend"
+   }
+  },
+  {
+   "step": "Watch by key 2 with focus in the rail (set-up: #srcbtn focused by script; then real keys 2)",
+   "t": 238.1,
+   "set": "#srcbtn",
+   "ok": true,
+   "seq": [
+    {
+     "key": "2",
+     "el": "button#play.t.tb-play",
+     "role": "button",
+     "name": "Play",
+     "vis": true,
+     "onScreen": true
+    }
+   ],
+   "after": {
+    "pres": "watch",
+    "active": {
+     "el": "button#play.t.tb-play",
+     "text": "Play",
+     "aria": null,
+     "role": null,
+     "box": [
+      100,
+      812,
+      58,
+      32
+     ],
+     "vis": true,
+     "opacity": 1,
+     "onScreen": true,
+     "fullOn": true,
+     "fv": true,
+     "ring": {
+      "os": "solid",
+      "ow": "0px",
+      "oc": "rgb(155, 163, 169)",
+      "oo": "0px",
+      "bs": "none"
+     },
+     "covered": {
+      "how": "hit",
+      "tot": 3,
+      "hit": 3,
+      "by": []
+     },
+     "inert": null,
+     "ariaHidden": null,
+     "inMap": false,
+     "tabindex": null
+    }
+   }
+  },
+  {
+   "step": "Watch: the Tab cycle (first 40)",
+   "t": 379.2,
+   "stops": [
+    "button#next.t.tb-icon",
+    "button#nextEv.t.tb-icon",
+    "button#follow.t.tb-follow",
+    "button#eyesbtn.t.tb-eyes",
+    "button#helpbtn.t.tb-help",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button.t.spd-btn",
+    "button.t.spd-btn",
+    "button.t.spd-btn",
+    "button.t.spd-btn",
+    "button.act-btn",
+    "button.step",
+    "div#timerail.timerail",
+    "button.ev-mark.fr",
+    "div#maplayer",
+    "div.ml-item.mlt",
+    "div.ml-item.mlt",
+    "div.ml-item.mlt",
+    "div.ml-item.mlt",
+    "div.ml-item.mlt",
+    "div.ml-item.mlt [NOT SHOWN]",
+    "div.ml-item.mlt [NOT SHOWN]",
+    "div.ml-item.mlt [NOT SHOWN]",
+    "div.ml-item.mlt",
+    "div.ml-item.mlt [NOT SHOWN]",
+    "div.ml-item.mlt [NOT SHOWN]",
+    "div.ml-item.mlt",
+    "div.ml-item.mlt [NOT SHOWN]",
+    "div.ml-item.mlt [NOT SHOWN]",
+    "div.ml-item.mlt [NOT SHOWN]",
+    "div.ml-item.mlt",
+    "div.ml-item.mlt",
+    "body [NOT SHOWN]",
+    "button#prevEv.t.tb-icon",
+    "button#prev.t.tb-icon",
+    "button#play.t.tb-play",
+    "button#next.t.tb-icon"
+   ]
+  },
+  {
+   "step": "Clean (key 3): the Tab stops (first 30)",
+   "t": 552.5,
+   "pres": "map",
+   "stops": [
+    "div#maplayer",
+    "body [NOT SHOWN]",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button#restore",
+    "div#maplayer",
+    "body [NOT SHOWN]",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button#restore",
+    "div#maplayer",
+    "body [NOT SHOWN]",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button#restore",
+    "div#maplayer",
+    "body [NOT SHOWN]",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button#restore",
+    "div#maplayer",
+    "body [NOT SHOWN]",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button.vm-btn",
+    "button#restore"
+   ],
+   "restore": "Show interface"
+  },
+  {
+   "step": "Esc from Clean",
+   "t": 554.1,
+   "fi": {
+    "el": "button#play.t.tb-play",
+    "text": "Play",
+    "aria": null,
+    "role": null,
+    "box": [
+     100,
+     813,
+     58,
+     32
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "0px",
+     "oc": "rgb(155, 163, 169)",
+     "oo": "0px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "hit",
+     "tot": 3,
+     "hit": 3,
+     "by": []
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": false,
+    "tabindex": null
+   },
+   "ax": {
+    "role": "button",
+    "name": "Play",
+    "ignored": false,
+    "props": {
+     "invalid": "false",
+     "focusable": true,
+     "focused": true,
+     "pressed": "false"
+    }
+   },
+   "pres": "study"
+  },
+  {
+   "step": "paper map (key M); set-up: the map layer focused by script",
+   "t": 558,
+   "fi": {
+    "el": "div#maplayer",
+    "text": "THE PRATZEN · derived: Allied ≈ 38,700French line on the GoldbachAllie",
+    "aria": "The paper map, north up: arrow keys pan, plus and minus zoom; Tab reaches its formations, events and places",
+    "role": "group",
+    "box": [
+     0,
+     0,
+     1600,
+     900
+    ],
+    "vis": true,
+    "opacity": 1,
+    "onScreen": true,
+    "fullOn": true,
+    "fv": true,
+    "ring": {
+     "os": "solid",
+     "ow": "2px",
+     "oc": "rgb(78, 63, 30)",
+     "oo": "-3px",
+     "bs": "none"
+    },
+    "covered": {
+     "how": "panels",
+     "frac": 0.17,
+     "by": ".rail"
+    },
+    "inert": null,
+    "ariaHidden": null,
+    "inMap": true,
+    "tabindex": "0"
+   },
+   "ax": {
+    "role": "group",
+    "name": "The paper map, north up: arrow keys pan, plus and minus zoom; Tab reaches its formations, events and places",
+    "ignored": false,
+    "props": {
+     "focusable": true,
+     "focused": true
+    }
+   }
+  },
+  {
+   "step": "on the map layer: ArrowRight, + (real keys)",
+   "t": 558.9,
+   "before": null,
+   "after": null,
+   "clock": 240,
+   "state": {
+    "clock": 240,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": true,
+    "tween": false,
+    "cam": {
+     "kind": "map",
+     "x": 71.35340695644896,
+     "z": -9.609773620355545,
+     "wpp": 0.4434823043417274
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/a11y/kbd-h-1600x900-watch.jpg",
+  "docs/audit-post8-evidence/a11y/kbd-h-1600x900-clean.jpg"
+ ],
+ "console": [],
+ "ok": true,
+ "ended": "2026-11-02T06:18:16.876Z",
+ "seconds": 559
+}
