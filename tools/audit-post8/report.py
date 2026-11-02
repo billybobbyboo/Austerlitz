@@ -241,7 +241,7 @@ def main():
     # the merge table (section H.2): this audit's half of the combined register's columns
     import csv
     with open(os.path.join(EV, "register-export.csv"), "w", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")
         w.writerow(["CL", "title", "subsystem", "severity_CL", "priority_CL", "kind", "status", "origin", "verification", "evidence",
                     "reproduction", "references", "owner_decision", "work_package", "area_source", "build_md5"])
         for r in sorted(rows, key=key):

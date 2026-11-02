@@ -1,7 +1,153 @@
 {
  "what": "visitor's page, prolonged use",
  "started": "2026-11-02T10:43:09.673Z",
- "blocks": {},
+ "blocks": {
+  "growth": {
+   "before": {
+    "label": "before growth",
+    "t": "2026-11-02T10:44:47.061Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 380,
+     "Nodes": 1708,
+     "LayoutCount": 21,
+     "RecalcStyleCount": 24,
+     "LayoutDuration": 0.009,
+     "RecalcStyleDuration": 0.003,
+     "ScriptDuration": 0.245,
+     "TaskDuration": 0.854,
+     "JSHeapUsedSize": 15344424,
+     "JSHeapTotalSize": 16031744,
+     "heapUsed": 15344424,
+     "backingStorage": 83631061,
+     "embedderHeap": 2613792
+    },
+    "page": {
+     "geometries": 379,
+     "textures": 30,
+     "programs": 35,
+     "calls": 748,
+     "triangles": 1929775,
+     "frames": 15,
+     "skipped": 0,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 480,
+      "listeners": 367,
+      "max": 1
+     },
+     "tex": {
+      "n": 44,
+      "listeners": 16,
+      "max": 1
+     },
+     "mat": {
+      "n": 969,
+      "listeners": 639,
+      "max": 1
+     },
+     "dom": 814,
+     "mlItems": 31,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 103000000,
+     "counts": {
+      "raf": 8,
+      "rafCb": 7,
+      "to": 0,
+      "toCb": 0,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {},
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   },
+   "presentations": "skipped (RB_SKIP_PRES): measured in visitor.json",
+   "reliefOrder": "1,10.32642489706367,4,1,10.32642489706367,4,1,10.32642489706367,4,1,10.32642489706367,4",
+   "reliefSeen": "4,4,4,4,4,4,4,4,4,4,4,4",
+   "afterRelief": {
+    "label": "after 12 relief switches",
+    "t": "2026-11-02T10:47:03.387Z",
+    "cdp": {
+     "Documents": 1,
+     "Frames": 1,
+     "JSEventListeners": 393,
+     "Nodes": 1726,
+     "LayoutCount": 70,
+     "RecalcStyleCount": 134,
+     "LayoutDuration": 0.028,
+     "RecalcStyleDuration": 0.023,
+     "ScriptDuration": 1.043,
+     "TaskDuration": 2.456,
+     "JSHeapUsedSize": 16277364,
+     "JSHeapTotalSize": 17379328,
+     "heapUsed": 16277364,
+     "backingStorage": 83631070,
+     "embedderHeap": 2791872
+    },
+    "page": {
+     "geometries": 379,
+     "textures": 30,
+     "programs": 35,
+     "calls": 748,
+     "triangles": 1929775,
+     "frames": 40,
+     "skipped": 0,
+     "devState": "active",
+     "lost": false,
+     "built": 206,
+     "depth": 206,
+     "geo": {
+      "n": 480,
+      "listeners": 367,
+      "max": 1
+     },
+     "tex": {
+      "n": 44,
+      "listeners": 16,
+      "max": 1
+     },
+     "mat": {
+      "n": 969,
+      "listeners": 639,
+      "max": 1
+     },
+     "dom": 814,
+     "mlItems": 31,
+     "clock": 240,
+     "playing": false,
+     "presentation": "study",
+     "mode": "terrain",
+     "factor": 4,
+     "speed": 0.5,
+     "fx": true,
+     "heap": 103000000,
+     "counts": {
+      "raf": 33,
+      "rafCb": 32,
+      "to": 0,
+      "toCb": 0,
+      "iv": 0,
+      "ivCb": 0,
+      "toBy": {},
+      "ivBy": {}
+     }
+    },
+    "log": 0
+   }
+  }
+ },
  "firstRunAtLoad": true,
  "firstRunAfterEsc": false,
  "settleBoot": 48400,

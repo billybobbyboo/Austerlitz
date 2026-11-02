@@ -49,6 +49,22 @@
    "lost": false,
    "label": "playing 3",
    "newPageErrors": 0
+  },
+  {
+   "during": {
+    "lostFlag": true,
+    "isContextLost": true,
+    "framesAfterLossCall": 0,
+    "clockAdvanced": 0
+   },
+   "firstFrameAfterRestoreMs": 2174,
+   "framesIn5s": 1,
+   "clockIn5s": 0,
+   "playing": false,
+   "notice": "",
+   "lost": false,
+   "label": "paused (control)",
+   "newPageErrors": 0
   }
  ],
  "errors": [
@@ -57,5 +73,6 @@
    "message": "Cannot read properties of null (reading 'trim')",
    "stack": "TypeError: Cannot read properties of null (reading 'trim')\n    at new Jr (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:275361)\n    at Object.acquireProgram (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:282928)\n    at Pt (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:346658)\n    at It (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:348981)\n    at ws.renderBufferDirect (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:342875)\n    at Ct (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:346047)\n    at Rt (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js:6:345695)"
   }
- ]
+ ],
+ "finished": "2026-11-02T10:47:04.611Z"
 }
