@@ -7,20 +7,23 @@ Nothing in the application, data, tests, thresholds, archive or build was change
 ## Method
 
 - **My own probes, not the area's.** A loader of my own (`tools/audit-post8/verification/v-repro-his/load.js`) follows `sim-test.js`'s loading
-  order in an isolated copy made from the audit's template (`scratchpad/v-repro-his-iso`, its application files checked md5-identical to HEAD;
+  order in an isolated copy made from the audit's template (`/tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/v-repro-his-iso`, its application files checked md5-identical to HEAD;
   `tools/mk-world-mod.js` and `tools/mk-helpers.js` run there only); `waitingFor` and `textPhase` (the card's status rule) are taken from the live
   `app.js` by name. The probes compute positions with the model's own `posAtClock` and everything else (velocity, distances, angles, overlaps)
   themselves: `f0-motion.js`, `f0-guards.js`, `f1-f3.js f1|f3`, `f4-grades.js`. Outputs: `docs/audit-post8-evidence/verification/v-repro-his/*.txt`.
-- **The page.** `browser.js`: one harness page at 1600 x 900 (Chromium 141, SwiftShader). Real input where a visitor's path is the claim: the
+- **The page.** `browser.js`: a harness page (run 1 at 1600 x 900, run 2 at 1280 x 720; Chromium 141, SwiftShader). Real input where a visitor's path is the claim: the
   first-run card's primary action and the opening bar's Next by real clicks (as `tools/visual/harness.js` reaches `opening-2`), Esc by a real key,
   the face-about marker by a real mouse press at its box. Other states set through the harness's own case driver (`window.__aus.apply` ->
   `AUSTERLITZ_DEBUG.applyCase`: clock, selection, camera), stated here as set-up, not as input. Read from the page: the drawer's DOM text and
   pills, the blocks' instance matrices (each figure's world position), the block quaternion, `BLDG`'s castle parts, the map layer's texts.
-  Output: `v-repro-his/browser.json` and the JPEGs beside it.
+  Output: `v-repro-his/browser-run1.json`, `browser-run2.json` and the JPEGs beside them.
 - **Sources.** For #3 I re-read the three page images the register cites (downloaded fresh from archive.org into their own directories and
   read as images): Materialien 1806 p. 106 (n115), p. 118 (n127), Stutterheim 1806 p. 56 (n59).
 
-BROWSER_SECTION
+**Runs.** Run 1 (`v-repro-his/browser-run1.json`, 1600 x 900): the opening's step 2 and the 08:44 close-up; it stopped at a screenshot that
+timed out after 180 s (the machine's load average was 30-40 on 4 cores, shared with other agents): an environment failure, not the
+application's (no console warning or error was logged). Run 2 (`browser-run2.json`, 1280 x 720, the card closed by a real Esc, the opening
+skipped, two screenshots only) completed every step with no console message (`errors: []`).
 
 ## history #0: offensive status while walking away (verdict below)
 
@@ -53,7 +56,17 @@ barred without a dated statement (data.js:140-142). Only the presentation rule (
 own validation ("zero offensive-status samples moving away"). Related, not a duplicate: visual-landscape #2 (the same facing rule, for drifts
 under 1 km/h and stale facings).
 
-F0_BROWSER
+**In the page** (run 2, set up by the case driver at the clock named, the formation selected): the block's yaw equals `headingAt` (difference
+0.0000 rad) in all four cases, and its forward axis (the block quaternion applied to +z) points:
+- rg_inf at 12:00: compass 92 deg, Vandamme at 261 deg, 169 deg off him, 2.11 km away, moving 1.48 km/h; the card reads "Counter-attacking |
+  Position: interpolated | Position A · interpolated ... Doing now | Attacks Vandamme and overthrows the first two French columns with the
+  bayonet ... Where | 1.6 km east of Stare Vinohrady"; the map layer draws the phase-6 arrow's label "Russian Imperial Guard".
+- rg_cav at 12:00: 89 deg, 166 deg off Vandamme (2.20 km), 1.79 km/h, "Charging", "Doing now | The Guard cavalry takes the eagle of the 4th Line ...".
+- lich at 11:00: 85 deg, 133 deg off Kellermann (1.01 km), 1.82 km/h, "Charging", "Doing now | Charges with Uvarov's Russians against Kellermann".
+- milo at 10:30: 86 deg, 150 deg off Saint-Hilaire (2.73 km), 1.39 km/h, "Counter-attacking | Position: estimated | Position B · interpolated".
+
+**Verdict: CONFIRMED** (S2, P2, confirmed-defect, inherited, as stated). Not seen: the gait playing (only paused states were read; that the
+gait plays on these legs rests on the code, GAIT.KMH = 1).
 
 ## history #1: Legrand through the castle and the III Column
 
@@ -70,7 +83,18 @@ Context the finding leaves out: both acts put the two formations in contact at t
 castle grounds"), so proximity there is not itself wrong; what is wrong is the leg carrying Legrand through the column and out 0.65 km beyond it
 (north, behind the Allied attackers) by 09:30 while "engaged".
 
-F1_BROWSER
+**In the page.** The blocks' figures (every instanced mesh's instances, world positions) and their convex hulls:
+- 08:44: 147 of Legrand's 174 figures inside the III Column's hull, 127 of its 213 inside Legrand's, nearest figures 3.4 m apart; 2 of Legrand's
+  figures inside the castle's or farm's ranges (`BLDG`, `v8BoxPt`).
+- 08:45: 133/174 and 126/211, 2.4 m; 3 figures inside the ranges (run 1 at the opening's own step: 127/174 and 149/207, 2.2 m).
+- 08:51: 111/174 and 101/211, 1.8 m; 7 figures inside the ranges. `f1-sokolnitz-0851.jpg`: French and Russian figures and standards intermingled
+  among the buildings.
+- The opening's step 2, reached by real clicks (run 1: OPENING.k 1, tour stop 5, clock 08:45, 1600 x 900): the two blocks project at screen
+  [1532,822] and [1506,810], the castle at [1540,823], in the bottom-right corner under the time bar (which begins at y about 810), their labels
+  "Third Column B" and "Legrand B" at the right edge (`f1-opening-step2-0845.jpg`). So the blocks do stand in one another at the opening's
+  08:45 moment, but the opening's own frame barely shows it; the phase-2 camera and Play through 08:30-09:10 do.
+
+**Verdict: CONFIRMED** (S2, P2, confirmed-defect, new-regression of 8J, as stated; the numbers' small corrections above do not change it).
 
 ## history #2: the face-about event's "Fact"
 
@@ -85,7 +109,15 @@ Origin: claim "fact" since Stage 0 (archive/stage0: `cf:"A", claim:"fact"`), cf 
 reading" added with decision 201 (b) (archive/step4b-e257d09b.html), which labelled the why and the phase line but left the pill
 (docs/step4-evidence/questions.md:240-255): inherited, and not an owner decision to keep "Fact".
 
-F2_BROWSER
+**In the page** (run 2): the marker found by its accessible name "09:15, Kutuzov orders the 4th Column to face about" (no note; its tip the
+same) and pressed by a real mouse press at its centre (483.5, 702). The drawer: pills "Fact", "Timing C"; the why followed by the tag
+"Claim: This map's reading" (`data-claim="interpretation"`); the footer "Attested in the standard accounts of the battle."; the map layer's label
+"Kutuzov orders the 4th Column to face about" (aria "Event, 09:15: Kutuzov orders the 4th Column to face about"), no qualifier
+(`f2-face-about-dossier.jpg`).
+
+**Verdict: CONFIRMED** (S2, P2, confirmed-defect, inherited). Correction of a reference only: the phase line is data.js:80, and it does carry
+"in this map's reading". The remedy (claim "recon", one word, a data task) is feasible and conflicts with no decision; it adds "reconstruction"
+to the marker's name, the map label and the caption tag through `evNoteParts`, so the 09:15 views' drop limits must be measured.
 
 ## history #3: the Russian Guard's approach and Blasowitz
 
@@ -119,7 +151,17 @@ the A grades are questionable because the Guard's place 07:00-11:00 is disputed 
 takes. Origin: rg_inf's track is unchanged since Stage 0 (archive/stage0:1551-1556): inherited. rg_cav's undated creep to phase 6 is listed under
 decision 45 (docs/STAGE2_SPEC.md:1249-1250), its timing accepted; its route is not.
 
-F3_BROWSER
+**In the page** (run 2, 11:15): the nearest Allied formations to Blasowitz as in node (lich 1.43, rg_cav 1.54, rg_inf 1.78 km); the map layer draws
+"The French take Blasowitz from the Russian Guard" (aria "Event, 11:15: The French take Blasowitz from the Russian Guard"), no note.
+
+**Verdict: WEAKENED.** Real: the event names the Guard as Blasowitz's defender while no Allied formation stands within 1.43 km and the Guard
+never comes within 1.5 km of Blasowitz or Krug all day; the plan tab and the plan theme ("behind Krzenowitz", unchecked) contradict the role text
+("behind Blasowitz and Kruh", attributed to the disposition) on the same disposition; the Guard's place 07:00-11:00 is disputed in the register and
+the map's A grades and texts do not say which side it takes. Overstated: "contradicts the project's own A-graded readings". The register also
+holds the official report (C1.3, C6.22, B, fact: "the ordered height of Krzenowitz", attacked from Pratzen), which the map's geography follows;
+C6.c6 is labelled disputed; the 04:00 A anchors precede the disposition's daybreak and match Stutterheim's starting point. Severity S2 and
+priority P2 kept (the event's name on Play's path; the plan text a quick fix); the re-plot needs the source agents and an owner choice between
+the readings (part unresolved-historical).
 
 ## history #4: carried-forward A grades
 
@@ -145,12 +187,30 @@ register itself notes as "not re-plotted", register.md:235), and 21 carried As s
 a reading is not established (no per-anchor source check here or in the finding): a probable problem, not a confirmed defect per anchor.
 Origin: inherited (caffarelli @5-@9 unchanged since archive/stage0:1245-1250).
 
-F4_BROWSER
+**In the page** (run 2, Caffarelli selected): 14:00 "Advancing | Position: interpolated | Position A · interpolated"; 14:30 (the arrival at @8, a carried
+A) "Pursuing | Position: documented | Position A"; 17:30 (at @9, 4.10 km from the declared A) "Holding | Position: documented | Position A". The
+compact card prints no grade text (`p.conf` absent); the full dossier's text follows `posClaimOf` (code above).
+
+**Verdict: WEAKENED.** Counts exact (180, 88, 90, 44); the inconsistency with 8K's practice real; the user impact overstated in its words (the
+pursuits read "Position: interpolated" with "Position A · interpolated"; "documented" only at the arrivals and from 17:00 at the last anchors);
+that the carried As overclaim is probable, not established per anchor, because data.js documents carrying as the convention. Corrected:
+category probable-problem, priority P3 (a per-anchor source review, 1-2 days, is not a quick fix); severity S2 kept (the A is shown on Play's
+path and at the day's end state: the ghost pill, the paper map's default grade marks, the day-track and the skeleton).
 
 ## Verdicts (summary)
 
-VERDICT_TABLE
+| finding | verdict | severity / priority | category | origin |
+|---|---|---|---|---|
+| history #0 offensive status while walking away | CONFIRMED | S2 / P2 | confirmed-defect | inherited (8E's gait animates it) |
+| history #1 Legrand through the castle and the III Column | CONFIRMED | S2 / P2 | confirmed-defect | new-regression (8J) |
+| history #2 face-about "Fact" | CONFIRMED | S2 / P2 | confirmed-defect | inherited (step 4b) |
+| history #3 the Guard and Blasowitz | WEAKENED | S2 / P2 | confirmed-defect (internal contradictions), the Guard's place unresolved-historical | inherited |
+| history #4 carried A grades | WEAKENED | S2 / P3 (was P2) | probable-problem (was confirmed-defect) | inherited |
 
 ## Not done
 
-NOT_DONE
+- The gait was not watched playing (paused states only); that it animates these legs rests on the code (GAIT.KMH, gaitStep).
+- No per-anchor source check of the 44 carried As (the source agents' work); only the three page images #3 rests on were re-read.
+- The opening was reached at 1600 x 900 only; run 1 ended at a screenshot timeout (environment load), so the remaining steps were re-run at
+  1280 x 720 without the opening and without the #0 and #3 screenshots.
+- No device: SwiftShader on a shared machine; no timing is claimed.

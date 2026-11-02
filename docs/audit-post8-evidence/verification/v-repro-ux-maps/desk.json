@@ -1108,6 +1108,345 @@
   {
    "what": "V-M5 capture 1600x900",
    "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/paper-entered-1600x900.jpg"
+  },
+  {
+   "what": "V-M5: the paper map entered by real clicks at 1280x720 (09:30, Study, everyone)",
+   "clicks": [
+    {
+     "sel": "#layersbtn",
+     "at": [
+      1224,
+      34
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": ".mode-btn[data-m=\"staff\"]",
+     "at": [
+      1115,
+      194
+     ],
+     "hitTestOk": true
+    },
+    {
+     "sel": "#layerclose",
+     "at": [
+      1231,
+      120
+     ],
+     "hitTestOk": true
+    }
+   ],
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "staff",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "map",
+     "x": 18.329361853118293,
+     "z": 9.573079866242802,
+     "wpp": 0.7311030741865433
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": true,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "n": 36,
+   "byCat": {
+    "counter": {
+     "on": 14
+    },
+    "event": {
+     "on": 1
+    },
+    "plateau": {
+     "on": 1
+    },
+    "overlay": {
+     "on": 7
+    },
+    "objective": {
+     "on": 1
+    },
+    "place": {
+     "dropped": 12
+    }
+   },
+   "places": [
+    {
+     "id": "t:pratzen",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzen Heights"
+    },
+    {
+     "id": "t:vinohrady",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Stare Vinohrady"
+    },
+    {
+     "id": "t:pratzeberg",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzeberg"
+    },
+    {
+     "id": "t:santon",
+     "cat": "place",
+     "state": "dropped",
+     "text": "The Santon"
+    },
+    {
+     "id": "t:zuran",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Zuran mound"
+    },
+    {
+     "id": "t:goldbach",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Goldbach stream"
+    },
+    {
+     "id": "t:litava",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Litava river"
+    },
+    {
+     "id": "t:telnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Telnitz"
+    },
+    {
+     "id": "t:sokolnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Sokolnitz"
+    },
+    {
+     "id": "t:augezd",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Augezd"
+    },
+    {
+     "id": "t:satschan",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Satschan mere"
+    },
+    {
+     "id": "t:austerlitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Austerlitz"
+    }
+   ]
+  },
+  {
+   "what": "V-M5 capture 1280x720",
+   "shot": "docs/audit-post8-evidence/verification/v-repro-ux-maps/paper-entered-1280x720.jpg"
+  },
+  {
+   "what": "V-M5: Landscape with counters at the Overview (real clicks) 1280x720",
+   "click": {
+    "sel": ".van-btn[data-v=\"plan\"]",
+    "at": [
+     1222,
+     88
+    ],
+    "hitTestOk": true
+   },
+   "state": {
+    "clock": 570,
+    "presentation": "study",
+    "mode": "hybrid",
+    "factor": 4,
+    "defaultFactor": 4,
+    "exag": 10.32642489706367,
+    "selection": null,
+    "commandView": "none",
+    "plan": null,
+    "eye": false,
+    "tour": -1,
+    "opening": false,
+    "openingPlay": false,
+    "firstRun": false,
+    "playing": false,
+    "freeCam": false,
+    "tween": false,
+    "cam": {
+     "kind": "land",
+     "pos": [
+      -38.803697300522686,
+      588.8430689966025,
+      71.86021366781839
+     ],
+     "tgt": [
+      -38.803697300522686,
+      0.4834133409556127,
+      3.6468622453176494
+     ]
+    },
+    "applied": null,
+    "aimErr": null,
+    "paperFocus": null,
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "confNone": false,
+    "skelDay": false,
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "groundLayout": true
+   },
+   "n": 36,
+   "byCat": {
+    "counter": {
+     "on": 13,
+     "dropped": 1
+    },
+    "event": {
+     "on": 1
+    },
+    "plateau": {
+     "dropped": 1
+    },
+    "overlay": {
+     "on": 5,
+     "dropped": 2
+    },
+    "objective": {
+     "on": 1
+    },
+    "place": {
+     "dropped": 12
+    }
+   },
+   "places": [
+    {
+     "id": "t:pratzen",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzen Heights"
+    },
+    {
+     "id": "t:vinohrady",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Stare Vinohrady"
+    },
+    {
+     "id": "t:pratzeberg",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Pratzeberg"
+    },
+    {
+     "id": "t:santon",
+     "cat": "place",
+     "state": "dropped",
+     "text": "The Santon"
+    },
+    {
+     "id": "t:zuran",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Zuran mound"
+    },
+    {
+     "id": "t:goldbach",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Goldbach stream"
+    },
+    {
+     "id": "t:litava",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Litava river"
+    },
+    {
+     "id": "t:telnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Telnitz"
+    },
+    {
+     "id": "t:sokolnitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Sokolnitz"
+    },
+    {
+     "id": "t:augezd",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Augezd"
+    },
+    {
+     "id": "t:satschan",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Satschan mere"
+    },
+    {
+     "id": "t:austerlitz",
+     "cat": "place",
+     "state": "dropped",
+     "text": "Austerlitz"
+    }
+   ]
   }
  ]
 }

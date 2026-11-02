@@ -1,0 +1,118 @@
+{
+ "what": "the renderer and camera after window resizes, a visitor's page",
+ "started": "2026-11-02T11:30:07.468Z",
+ "steps": [
+  {
+   "win": [
+    1600,
+    900
+   ],
+   "buffer": [
+    1600,
+    900
+   ],
+   "canvasCss": [
+    1600,
+    900
+   ],
+   "aspect": 1.7778,
+   "aspectWant": 1.7778,
+   "phone": false,
+   "body": "docked pm-study",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": false,
+    "display": "flex",
+    "visibility": "visible",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+   },
+   "dispatch": {
+    "rect": [
+     18,
+     137,
+     259,
+     1947
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [],
+   "step": 0,
+   "to": "1600x900",
+   "settleMs": 2317,
+   "agree": true,
+   "railOff": false
+  },
+  {
+   "win": [
+    700,
+    900
+   ],
+   "buffer": [
+    700,
+    900
+   ],
+   "canvasCss": [
+    700,
+    900
+   ],
+   "aspect": 0.7778,
+   "aspectWant": 0.7778,
+   "phone": true,
+   "body": "pm-study rail-hidden",
+   "presentation": "study",
+   "rail": {
+    "rect": [
+     0,
+     260,
+     700,
+     540
+    ],
+    "cls": "rail",
+    "hidden": false,
+    "inert": true,
+    "display": "flex",
+    "visibility": "visible",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+   },
+   "dispatch": {
+    "rect": [
+     0,
+     648,
+     700,
+     152
+    ],
+    "cls": "dispatch",
+    "hidden": false,
+    "inert": false,
+    "display": "block",
+    "visibility": "visible",
+    "transform": "none"
+   },
+   "resizeEvents": [
+    [
+     700,
+     900
+    ]
+   ],
+   "step": 1,
+   "to": "700x900",
+   "settleMs": 39204,
+   "agree": true,
+   "railOff": false
+  }
+ ],
+ "settleBoot": -1
+}

@@ -61,11 +61,13 @@ const MEASURE=function(){
   await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG&&AUSTERLITZ_DEBUG.settle) AUSTERLITZ_DEBUG.settle(30); if(typeof closeFirst==="function") closeFirst(null); });
   const res={label:LABEL, build:path.basename(html), md5, chromium:b.version(), runs:[]};
   const spec=(t,r,dir)=>({vp:[1600,900], presentation:"watch", mode:"terrain", t, aim:{map:"dok", dir:dir||[0.55,0.45,0.70], r:r||16}});
-  const settle=async()=>{ await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG&&AUSTERLITZ_DEBUG.settle) AUSTERLITZ_DEBUG.settle(3,true); }); await A.frames(page,3); };
+  /* settle(n,true): the app's updateVisibility n times without a render (app.js:9170), which poses and seats the blocks; --fast draws no frame */
+  const settle=async()=>{ await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG&&AUSTERLITZ_DEBUG.settle) AUSTERLITZ_DEBUG.settle(3,true); }); if(!has("--fast")) await A.frames(page,3); };
   for(const f of FACTORS){
     await page.evaluate(f=>{ if(typeof setDisplayFactor==="function") setDisplayFactor(f); },f);
     for(const t of CLOCKS){
-      await page.evaluate(s=>window.__aus.apply(s),spec(t)); await settle();
+      const sp=spec(t); if(f!==4) sp.factor=f;   /* __aus.apply sets the case's factor (4 unless given) */
+      await page.evaluate(s=>window.__aus.apply(s),sp); await settle();
       const r=await page.evaluate(MEASURE); r.factorAsked=f; r.clockAsked=t; res.runs.push(r);
       const fm=Object.keys(r.forms).map(id=>{ const q=r.forms[id]; return id+": "+q.inside+" inside, "+q.sunk+" sunk (>=half "+q.sunkHalf+"), max "+q.maxDepth+" u, mean share under "+q.meanFrac+", max "+q.maxFrac+", seat "+q.seatMax; }).join(" | ");
       console.log("factor",f,"t",t,"discs",JSON.stringify(r.discs.map(d=>d.name+" y "+d.y))," bed",JSON.stringify(r.bed),"\n   ",fm||"(none inside)");

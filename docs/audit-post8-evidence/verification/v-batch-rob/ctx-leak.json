@@ -1,0 +1,63 @@
+{
+ "what": "three r128 alone: dispose listeners and heap across lose/restore cycles",
+ "browser": "141.0.7390.37",
+ "when": "2026-11-02T11:32:45.313Z",
+ "rows": [
+  {
+   "label": "before any loss",
+   "heapMB": 5.504,
+   "geoListeners": 400,
+   "geoMax": 1,
+   "texListeners": 40,
+   "texMax": 1
+  },
+  {
+   "label": "after restore 1",
+   "heapMB": 7.192,
+   "geoListeners": 800,
+   "geoMax": 2,
+   "texListeners": 80,
+   "texMax": 2
+  },
+  {
+   "label": "after restore 2",
+   "heapMB": 8.86,
+   "geoListeners": 1200,
+   "geoMax": 3,
+   "texListeners": 120,
+   "texMax": 3
+  },
+  {
+   "label": "after restore 3",
+   "heapMB": 10.464,
+   "geoListeners": 1600,
+   "geoMax": 4,
+   "texListeners": 160,
+   "texMax": 4
+  },
+  {
+   "label": "after restore 4",
+   "heapMB": 12.095,
+   "geoListeners": 2000,
+   "geoMax": 5,
+   "texListeners": 200,
+   "texMax": 5
+  },
+  {
+   "label": "after restore 5",
+   "heapMB": 13.693,
+   "geoListeners": 2400,
+   "geoMax": 6,
+   "texListeners": 240,
+   "texMax": 6
+  },
+  {
+   "label": "after restore 6",
+   "heapMB": 15.286,
+   "geoListeners": 2800,
+   "geoMax": 7,
+   "texListeners": 280,
+   "texMax": 7
+  }
+ ]
+}

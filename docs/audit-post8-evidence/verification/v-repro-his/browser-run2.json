@@ -325,6 +325,21 @@
     "Position A"
    ],
    "confText": []
-  }
- }
+  },
+  "f4_caffarelli_1050": {
+   "clock": 1050,
+   "conf": {
+    "cf": "A",
+    "interp": false
+   },
+   "pills": [
+    "Holding",
+    "Position: documented",
+    "Position A"
+   ],
+   "confText": []
+  },
+  "errors": []
+ },
+ "finished": "2026-11-02T11:33:03.666Z"
 }

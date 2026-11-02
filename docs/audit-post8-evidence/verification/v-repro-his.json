@@ -1,0 +1,65 @@
+{
+ "label": "v-repro-his",
+ "verdicts": [
+  {
+   "area": "history",
+   "index": 0,
+   "verdict": "CONFIRMED",
+   "method": "Own node probe on an isolated copy (tools/audit-post8/verification/v-repro-his/f0-motion.js, f0-guards.js: positions from the model's posAtClock, velocity, distances and angles computed independently, displayed status via stateAt(textPhase)) plus the page (tools/audit-post8/verification/v-repro-his/browser.js run 2: state set by the case driver, block quaternion, yaw vs headingAt, drawer text, map-layer label read); code read at app.js:3235-3277, 691-704, 6001-6002, 7689-7700, 5812/5863; data.js:564-565, 593-594, 633-634, 643-644; OVERLAYS app.js:79; archive/stage0 for origin.",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-his/f0-motion.txt: rg_inf 11:20-12:40 'Counter-attacking' 1.48 km/h toward 92 deg, Vandamme 1.16->3.09 km, 160-172 deg off (17/18 samples); rg_cav 11:15-12:40 'Charging' 1.79 km/h, 18/18; lich 10:35-11:10 'Charging' 1.82 km/h, 8/9; milo 09:30-11:10 'Counter-attacking' 1.22-1.39 km/h, 21/21. f0-guards.txt: rg_cav never nearer the French Guard cavalry than 1.19 km (11:15). browser-run2.json: at 12:00 rg_inf yaw = headingAt (0.0000 rad), forward compass 92 deg, 169 deg off Vandamme (2.11 km), card 'Counter-attacking ... Doing now | Attacks Vandamme and overthrows the first two French columns ... Where | 1.6 km east of Stare Vinohrady', arrow label 'Russian Imperial Guard' drawn; rg_cav 89 deg/166 deg 'Charging'; lich 85 deg/133 deg off Kellermann 'Charging'; milo 86 deg/150 deg 'Counter-attacking'. Tracks, legWindow and facing rule identical in archive/stage0-c09c4b23.html:1551-1556, 4962-4966, 6402.",
+   "notes": "Matches the finding's numbers. No owner decision covers the status/facing mismatch (decision 45, docs/STAGE2_SPEC.md:1117, keeps undated legs' timing; decision 46 covers dated departures only). Remedy caveat: moveMin holds on rg_inf@7, rg_cav@7, lich@6, milo@6 only shorten the mismatch (the hold ends inside the same phase, whose offensive status still shows during the walk); a tm arrival after the phase start needs a dated statement (data.js:140-142); only the presentation rule or new anchors meet the finding's own validation. Related to visual-landscape #2 (same facing rule, slow drifts), not a duplicate. Not watched: the gait playing (code only)."
+  },
+  {
+   "area": "history",
+   "index": 1,
+   "verdict": "CONFIRMED",
+   "method": "Own node probe (tools/audit-post8/verification/v-repro-his/f1-f3.js f1: 0.25-min samples of posAtClock; 8H's prz anchors read from archive/stage8h-24e29da7.html) and the page (tools/audit-post8/verification/v-repro-his/browser.js: the opening's step 2 reached by real clicks on #fr-tour and #tour-next as harness.js does; the blocks' instance positions, convex hulls and BLDG castle ranges at 08:44, 08:45, 08:51).",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-his/f1.txt: closest legrand-prz 37 m at 08:51 (530.75 min); closest to LANDMARK_SITES.castle 4 m at 08:44 (25 m at 08:45); with 8H's prz@2 [238,332]/@4 [233,344] the closest approach was 620 m (09:04). Legrand's anchors identical in stage8h:2146-2149, stage8j:2149-2152 and the build; 8H's castle at W(226,355) (stage8h:6547-6548). browser-run2.json: 08:44 147/174 Legrand figures inside the III Column's hull, 127/213 the reverse, nearest figures 3.4 m; 08:51 111/174, 101/211, 1.8 m, 7 Legrand figures inside the castle/farm ranges; f1-sokolnitz-0851.jpg shows the two sides' figures intermingled. browser-run1.json: at the opening's step 2 (OPENING.k 1, 08:45, 1600x900) 127/174 and 149/207, 2.2 m; the blocks project at [1532,822]/[1506,810], under the time bar's top edge, labels at the right edge (f1-opening-step2-0845.jpg).",
+   "notes": "Small corrections that do not change the finding: the minimum to the castle is 4 m at 08:44; before 8J the leg passed 0.62 km (not about 0.67) from the III Column. In the opening's own 08:45 frame the overlap sits in the bottom-right corner under the time bar, so it is barely visible there; the phase-2 camera (target map [228,342]) and Play through 08:30-09:10 show it. Context: both acts put the two in contact at the castle wall (data.js:227, 536), so proximity there is expected; the defect is the leg carrying Legrand through the column and 0.65 km beyond it while 'engaged'."
+  },
+  {
+   "area": "history",
+   "index": 2,
+   "verdict": "CONFIRMED",
+   "method": "Code and data read at HEAD (analysis.js:292-294, narrative.js:24, 42-45, data.js:16, 80, app.js:3886-3893, 8297-8305, 8328); the page: the 09:15 marker found by its accessible name and pressed by a real mouse press, the drawer and map layer read; archives for origin.",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-his/browser-run2.json f2_marker/f2_dossier: marker aria '09:15, Kutuzov orders the 4th Column to face about' (no note), pressed at (483.5,702); drawer pills 'Fact', 'Timing C'; the why's tag 'Claim: This map's reading' (data-claim interpretation); footer 'Attested in the standard accounts of the battle.'; map label 'Kutuzov orders the 4th Column to face about', no qualifier; f2-face-about-dossier.jpg. claim 'fact' since archive/stage0 (cf A then), the why's 'this map's reading' added with decision 201 (b) (archive/step4b-e257d09b.html), which left the pill (docs/step4-evidence/questions.md:240-255).",
+   "notes": "Reference correction only: the phase line is data.js:80 (not :79) and it does say 'in this map's reading'. The one-word remedy (claim recon) conflicts with no decision; it adds 'reconstruction' to the marker, label and caption via evNoteParts, so the 09:15 views' drop limits need measuring."
+  },
+  {
+   "area": "history",
+   "index": 3,
+   "verdict": "WEAKENED",
+   "method": "Own node probe (tools/audit-post8/verification/v-repro-his/f1-f3.js f3: every non-hq Allied formation's distance to Blasowitz and Krug, the Guard's closest approach over the day); the page at 11:15 (map label, distances); statements' claims via tools/step4/statements.js and narrative.js; the three cited page images re-read from fresh archive.org downloads: Materialien 1806 p. 106 (n115) and p. 118 (n127), Stutterheim 1806 p. 56 (n59).",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-his/f3.txt: at 11:15 nearest Allied lich 1.43, rg_cav 1.54, rg_inf 1.78 km; rg_inf never nearer Blasowitz than 1.78 km nor Krug than 1.75 km all day, rg_cav 1.54/1.57 km; rg_inf@0/rg_cav@0 0.20/0.27 km from Krzenowitz, A. browser-run2.json f3_1115: same distances; label 'The French take Blasowitz from the Russian Guard', no note. PLANS.al.cols[7].ord (analysis.js:186) and ANALYSIS[#plan].text (analysis.js:15) 'behind Krzenowitz', unchecked; constantine.role (data.js:624) 'behind Blasowitz and Kruh', attributed (narrative.js:113-115). Page images: p. 106 'besetzt bei Tages-Anbruche die Position hinter Blasowitz und Kruh' (an order); Stutterheim p. 56 'verließ zur bestimmten Stunde die Anhöhen vor Austerlitz, um auf die Anhöhen bey Blasowitz und Krug vorzurücken ... ließ eilig das Dorf Blasowitz durch das Jäger-Bataillon der Garde besetzen' (register C6.c6: grade A, label disputed); p. 118 'Kaum waren die Garden auf der anbefohlnen Anhöhe von Krzenowitz aufmarschirt', attacked 'aus dem Dorfe Pratzen', withdrawing 'auf die Anhöhen hinter Krzenowitz und Birnbaum' (register C1.3 and C6.22: B, fact; readings.md:102-110, 3114-3123), not cited by the finding.",
+   "corrected": {
+    "title": "The Russian Guard's plotted approach takes one side of a divided register without saying so; nobody holds Blasowitz when it falls 'from the Russian Guard'; the plan text contradicts the role text",
+    "observed": "The register is divided: the disposition (C6.21, A, an order) and Stutterheim (C6.c6, A, labelled disputed) put the Guard on the Blasowitz-Krug heights with its jägers in Blasowitz; the official Allied report printed in 1806 (C1.3/C6.22, B, fact) puts it on 'the ordered height of Krzenowitz', attacked from Pratzen. The map's geography follows the report (dawn by Krzenowitz, graded A; rg_inf@5's carried A at 10:30 3.0 km from Blasowitz; the fight between Pratzen and Krzenowitz), its Blasowitz event follows Stutterheim (no Allied formation within 1.43 km at 11:15, the Guard 1.54-1.78 km away and never nearer than 1.5 km all day), and its plan tab and plan theme ('behind Krzenowitz', unchecked) contradict its own role text ('behind Blasowitz and Kruh', attributed to the disposition). The 04:00 A anchors precede the disposition's daybreak and match Stutterheim's starting point, so they contradict no reading; the A grades are questionable because the 07:00-11:00 place is disputed and no note says which side the map takes.",
+    "severity": "S2",
+    "priority": "P2",
+    "category": "confirmed-defect (the internal contradictions); the Guard's place 07:00-11:00 unresolved-historical"
+   },
+   "notes": "Origin inherited (rg_inf's track unchanged since archive/stage0:1551-1556); rg_cav's undated creep to phase 6 is listed under decision 45 (docs/STAGE2_SPEC.md:1249-1250: timing accepted, route not). Remedy feasible but must choose between the readings with the source agents; rewording the plan text and qualifying the event's name are quick."
+  },
+  {
+   "area": "history",
+   "index": 4,
+   "verdict": "WEAKENED",
+   "method": "Own node probe (tools/audit-post8/verification/v-repro-his/f4-grades.js: every positioned anchor's own or carried cf, its distance from the anchor that declared the grade, its act and the act's claim, and per minute the pill key confAt/posClaimOf gives); code read (data.js:136-138, app.js:2444-2445, 7731-7733, 7805, 8098-8103); the page: Caffarelli's card at 14:00, 14:30, 17:30; the 8K register read (register.md:10-12, 103-112, 235).",
+   "evidence": "docs/audit-post8-evidence/verification/v-repro-his/f4-grades.txt: 180 positioned anchors, 88 A (44 declared, 44 carried), 90 carried: the finding's counts exactly; 21 carried As 1 km or more from the declaring anchor (up to 5.60 km, lich@9), 29 with no act; caffarelli @6-@9 legs 0.79-1.45 km, no act. Minutes at a carried-A anchor shown 'documented': caffarelli 64, kellermann 63, nansouty 63, lich 65, rg_inf 64, rg_cav 63 (arrival minutes and 17:00-18:00). browser-run2.json: caffarelli 14:00 'Advancing | Position: interpolated | Position A · interpolated'; 14:30 'Pursuing | Position: documented | Position A'; 17:30 'Holding | Position: documented | Position A'.",
+   "corrected": {
+    "observed": "44 of 88 A grades are carried from an earlier entry under data.js's own convention ('values carry forward until changed', data.js:136), 21 of them 1-5.6 km from the anchor that declared the A, 29 with no act; 8K regraded Suchet's parallel unsourced pursuit anchors to C and noted Caffarelli's as not re-plotted, so the dataset applies two practices side by side. A visitor sees the A throughout ('Position A · interpolated' on the card, the paper map's default grade marks, the day-track and skeleton marks); 'Position: documented' and 'Position documented in the sources.' only at the arrivals and from 17:00 at the last anchors (about an hour a formation), not during Caffarelli's 11:15-17:00 pursuit, which reads 'Position: interpolated'. Whether each carried A lacks a reading is not established.",
+    "severity": "S2",
+    "priority": "P3",
+    "category": "probable-problem"
+   },
+   "notes": "The 8K rule is stated for its own anchors ('The rule applied here', register.md:10-12) and decision 260 (a) scoped that review; no owner decision covers the rest. Origin inherited (caffarelli @5-@9 unchanged since archive/stage0:1245-1250). P3 because the remedy is a per-anchor source review (1-2 days), not a quick fix. Independently consistent with docs/audit-post8-evidence/verification/v-premise-a-grades.txt."
+  }
+ ],
+ "not_done": [
+  "The gait was not watched playing on the Guard's eastward legs (paused states only); it rests on the code (GAIT.KMH = 1, gaitStep).",
+  "No per-anchor source check of the 44 carried A grades (the source agents' work); only the three page images history #3 rests on were re-read.",
+  "The opening was reached only at 1600 x 900. Run 1 stopped at a screenshot timeout (180 s, load average 30-40 on 4 shared cores: an environment failure, no console message); the remaining steps were re-run at 1280 x 720 without the opening and without the #0 and #3 screenshots.",
+  "No device; SwiftShader only; no timing is claimed."
+ ],
+ "extra_issues": []
+}
