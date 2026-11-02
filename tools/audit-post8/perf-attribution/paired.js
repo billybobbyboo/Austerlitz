@@ -10,6 +10,7 @@
 "use strict";
 const fs=require("fs"), path=require("path"), zlib=require("zlib"), cp=require("child_process");
 const P=require("./pa-lib.js");
+const MD_IN=P.MD.inPage;
 const [outFile,rawdir,...specs]=process.argv.slice(2);
 if(!outFile||!rawdir||specs.length<2){ console.error("usage: node paired.js <out.json> <rawdir> <label=html> <label=html> ..."); process.exit(2); }
 fs.mkdirSync(rawdir,{recursive:true});
@@ -71,4 +72,3 @@ function blockRec(r,n){
   fs.writeFileSync(outFile,JSON.stringify(out));
   log("wrote "+outFile);
 })().catch(e=>{ console.error(e); process.exit(1); });
-const MD_IN=P.MD.inPage;
