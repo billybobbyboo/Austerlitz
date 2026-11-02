@@ -3,7 +3,8 @@
    Measurement code only: nothing here writes a source file or changes the application; each shot's state is set through the
    harness's own entry point (window.__aus.apply -> AUSTERLITZ_DEBUG.applyCase: the clock, presentation, ground, display factor,
    selection, "Whose eyes?", and the camera placed by placeCamera, which re-frames a preset to the drawn ground and fits the Overview),
-   then AUSTERLITZ_DEBUG.settle(90) + 450 ms + settle(2) as tools/stage2/page.js applyCase does, then an optional `after` script
+   then AUSTERLITZ_DEBUG.settle(90, noRender) + 450 ms + settle(2) (tools/stage2/page.js applyCase's sequence, its first frame not drawn: one
+   software-WebGL frame a shot), then an optional `after` script
    (named per shot, recorded in its JSON), then a JPEG of the whole viewport.
    Page: the harness's (?harness=1: drift and smoke motion off, CSS transitions off), the app's loop held after boot, Chromium 141 headless shell, ANGLE/SwiftShader.
    usage: node capture.js <shots.json> <outdir> [--only id,id] [--force]
@@ -53,7 +54,7 @@ const READ=function(id){
     try{
       const tm={}; let tq=Date.now();
       await page.evaluate(sp=>window.__aus.apply(sp),spec); tm.apply=Date.now()-tq; tq=Date.now();
-      await page.evaluate(n=>AUSTERLITZ_DEBUG.settle(n),s.settle||90); tm.settle=Date.now()-tq; await page.waitForTimeout(450); tq=Date.now();
+      await page.evaluate(n=>AUSTERLITZ_DEBUG.settle(n,true),s.settle||90); tm.settle=Date.now()-tq; await page.waitForTimeout(450); tq=Date.now();   /* settled without drawing; the one frame is drawn next */
       await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); tm.settle2=Date.now()-tq;
       let afterRes=null;
       if(s.after){ afterRes=await page.evaluate(new Function("return (function(){"+s.after+"})()")); await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); }
