@@ -1,0 +1,1340 @@
+{
+ "generated": "2026-11-02T07:03:25.416Z",
+ "files": [
+  "app.js",
+  "world.js",
+  "symbols.js",
+  "shell.html@392",
+  "shell.html@438",
+  "tools/step6/perf-run.html@38"
+ ],
+ "sinks": {
+  "summary": {
+   "total": 57,
+   "byFile": {
+    "app.js": 57
+   },
+   "clears": 13,
+   "withNonEscapedOther": 31,
+   "escInAttr": []
+  },
+  "list": [
+   {
+    "file": "app.js",
+    "line": 572,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "n.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 575,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "n.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 2463,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(R.noDay.replace(\"%c\",fmtClock(clock)).replace(\"%r\",hr))",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "f0.innerHTML='<figcaption class=\"dt-key\">'+esc(R.noDay.replace(\"%c\",fmtClock(clock)).replace(\"%r\",hr))+'</figcaption>'"
+   },
+   {
+    "file": "app.js",
+    "line": 2496,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "P.ground.field",
+      "cls": "member:P.ground.field",
+      "inAttr": true
+     },
+     {
+      "part": "DT.W",
+      "cls": "member:DT.W",
+      "inAttr": true
+     },
+     {
+      "part": "DT.H",
+      "cls": "member:DT.H",
+      "inAttr": true
+     },
+     {
+      "part": "ink",
+      "cls": "ident:ink",
+      "inAttr": true
+     },
+     {
+      "part": "name",
+      "cls": "ident:name",
+      "inAttr": true
+     },
+     {
+      "part": "M.bar.km",
+      "cls": "member:M.bar.km",
+      "inAttr": true
+     },
+     {
+      "part": "g",
+      "cls": "ident:g",
+      "inAttr": false
+     },
+     {
+      "part": "leaf?'Plotted positions (filled A, ring B, small ring C; a tick: an explicit tim",
+      "cls": "cond:literal|esc|literal|cond:safe",
+      "inAttr": false
+     }
+    ],
+    "src": "fig.innerHTML='<div class=\"dt-map\" style=\"background:'+P.ground.field+'\"><svg viewBox=\"0 0 '+DT.W+' '+DT.H+'\" style=\"color:'+ink+'\" role=\"group\" aria-label=\"'+n"
+   },
+   {
+    "file": "app.js",
+    "line": 2568,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "DISPLAY.settings.map(function(x){\n    return '<button class=\"t exag-btn\" type=\"b",
+      "cls": "built:DISPLAY.settings.map(function(x){\n    re",
+      "inAttr": false
+     }
+    ],
+    "src": "set.innerHTML=DISPLAY.settings.map(function(x){\n    return '<button class=\"t exag-btn\" type=\"button\" data-x=\"'+x+'\" aria-pressed=\"false\">'+fmtFactor(x)+'\\u00d7'"
+   },
+   {
+    "file": "app.js",
+    "line": 4217,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(LABELS.names.themePick)",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "host.innerHTML='<p class=\"muted\">'+esc(LABELS.names.themePick)+' The map will move to that hour, highlight the formations and ground involved, and dim everythin"
+   },
+   {
+    "file": "app.js",
+    "line": 4223,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(c.n)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(fmtClock(chapterClock(c)))",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(c.text)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "feats",
+      "cls": "ident:feats",
+      "inAttr": false
+     }
+    ],
+    "src": "host.innerHTML='<h2>'+esc(c.n)+' <span class=\"hh\">'+esc(fmtClock(chapterClock(c)))+'</span></h2>'+   /* Stage 8, 8H (A-6): an h2 under the rail's h1 (an h3 unti"
+   },
+   {
+    "file": "app.js",
+    "line": 4241,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [],
+    "src": "host.innerHTML='<p class=\"muted\">Choose a headquarters. Enemy formations it could not see are removed from the map; formations known only by report are drawn as"
+   },
+   {
+    "file": "app.js",
+    "line": 4255,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "h",
+      "cls": "ident:h",
+      "inAttr": false
+     }
+    ],
+    "src": "host.innerHTML=h"
+   },
+   {
+    "file": "app.js",
+    "line": 4354,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "iconSVG(TOKENS.sym.layer.derived)",
+      "cls": "call:iconSVG",
+      "inAttr": false
+     }
+    ],
+    "src": "tg.innerHTML=iconSVG(TOKENS.sym.layer.derived)+\"derived\""
+   },
+   {
+    "file": "app.js",
+    "line": 4433,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "b.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 4440,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "h",
+      "cls": "ident:h",
+      "inAttr": false
+     }
+    ],
+    "src": "b.innerHTML=h"
+   },
+   {
+    "file": "app.js",
+    "line": 4613,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [],
+    "src": "host.innerHTML='<p class=\"muted\">Choose a plan. The intended lines of march are drawn across the whole field in heavy arrows, independent of the clock, so you c"
+   },
+   {
+    "file": "app.js",
+    "line": 4617,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "sides.map(function(sd){\n    var P=PLANS[sd];\n    return '<div class=\"planblock p",
+      "cls": "built:sides.map(function(sd){\n    var P=PLANS[",
+      "inAttr": false
+     }
+    ],
+    "src": "host.innerHTML = sides.map(function(sd){\n    var P=PLANS[sd];\n    return '<div class=\"planblock plan-'+sd+'\">'+\n      '<h2>'+esc(P.name)+'</h2>'+   /* Stage 8, "
+   },
+   {
+    "file": "app.js",
+    "line": 5026,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [],
+    "src": "ML.root.innerHTML='<svg class=\"ml-lines\" aria-hidden=\"true\" focusable=\"false\"></svg>'"
+   },
+   {
+    "file": "app.js",
+    "line": 5077,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "html",
+      "cls": "ident:html",
+      "inAttr": false
+     }
+    ],
+    "src": "it.el.innerHTML=html"
+   },
+   {
+    "file": "app.js",
+    "line": 5557,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "svg",
+      "cls": "ident:svg",
+      "inAttr": false
+     }
+    ],
+    "src": "ML.lines.innerHTML=svg"
+   },
+   {
+    "file": "app.js",
+    "line": 6743,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "html",
+      "cls": "ident:html",
+      "inAttr": false
+     }
+    ],
+    "src": "host.innerHTML=html"
+   },
+   {
+    "file": "app.js",
+    "line": 6909,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "html",
+      "cls": "ident:html",
+      "inAttr": false
+     }
+    ],
+    "src": "e.innerHTML=html"
+   },
+   {
+    "file": "app.js",
+    "line": 6943,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(fmtClock(chapterClock(c)))",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(c.n)",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "b.innerHTML='<em>'+esc(fmtClock(chapterClock(c)))+'</em><span>'+esc(c.n)+'</span>'"
+   },
+   {
+    "file": "app.js",
+    "line": 7159,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "TOKENS.sym.going.map(function(g){\n    var lab=g.label+(GT[g.key]!==undefined?\" (",
+      "cls": "built:TOKENS.sym.going.map(function(g){\n    va",
+      "inAttr": false
+     }
+    ],
+    "src": "gk.innerHTML=TOKENS.sym.going.map(function(g){\n    var lab=g.label+(GT[g.key]!==undefined?\" (true slope over \"+GT[g.key].toFixed(2)+\"\\u00b0, provisional)\":\"\");\n"
+   },
+   {
+    "file": "app.js",
+    "line": 7168,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "sw(\"side-fr\")",
+      "cls": "call:sw",
+      "inAttr": false
+     },
+     {
+      "part": "K[\"side-fr\"].word",
+      "cls": "member:K[\"side-fr\"].word",
+      "inAttr": false
+     },
+     {
+      "part": "sw(\"side-al\")",
+      "cls": "call:sw",
+      "inAttr": false
+     },
+     {
+      "part": "K[\"side-al\"].word",
+      "cls": "member:K[\"side-al\"].word",
+      "inAttr": false
+     }
+    ],
+    "src": "p.innerHTML=\"French formations are marked in \"+sw(\"side-fr\")+K[\"side-fr\"].word+\" and the Allies in \"+sw(\"side-al\")+K[\"side-al\"].word+\n    \": on their names, the"
+   },
+   {
+    "file": "app.js",
+    "line": 7268,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "host.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7278,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "NATION[f.nation].fill",
+      "cls": "member:NATION[f.nation].fill",
+      "inAttr": true
+     },
+     {
+      "part": "esc(f.name)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(shortCommander(f))",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "aggStrength(id)?aggStrength(id).toLocaleString(\"en-GB\"):\"—\"",
+      "cls": "cond:call:toLocaleString",
+      "inAttr": false
+     }
+    ],
+    "src": "row.innerHTML='<span class=\"oob-dot\" style=\"background:'+NATION[f.nation].fill+'\"></span>'+\n        '<span class=\"oob-name\">'+esc(f.name)+'<em>'+esc(shortComman"
+   },
+   {
+    "file": "app.js",
+    "line": 7287,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(cf.name)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(shortCommander(cf))",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "cf.strength?cf.strength.toLocaleString(\"en-GB\"):\"—\"",
+      "cls": "cond:call:toLocaleString",
+      "inAttr": false
+     }
+    ],
+    "src": "r2.innerHTML='<span class=\"oob-name\">'+esc(cf.name)+'<em>'+esc(shortCommander(cf))+'</em></span>'+\n          '<span class=\"oob-str\">'+(cf.strength?cf.strength.t"
+   },
+   {
+    "file": "app.js",
+    "line": 7295,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(gf.name)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(shortCommander(gf))",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "gf.strength?gf.strength.toLocaleString(\"en-GB\"):\"—\"",
+      "cls": "cond:call:toLocaleString",
+      "inAttr": false
+     }
+    ],
+    "src": "r3.innerHTML='<span class=\"oob-name\">'+esc(gf.name)+'<em>'+esc(shortCommander(gf))+'</em></span>'+   /* its commander, as the rows above (roadmap step 5; step 2"
+   },
+   {
+    "file": "app.js",
+    "line": 7379,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "c",
+      "cls": "ident:c",
+      "inAttr": false
+     }
+    ],
+    "src": "cap.innerHTML=c"
+   },
+   {
+    "file": "app.js",
+    "line": 7380,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "der",
+      "cls": "ident:der",
+      "inAttr": false
+     },
+     {
+      "part": "cutH",
+      "cls": "ident:cutH",
+      "inAttr": false
+     },
+     {
+      "part": "top?'<span class=\"ev\">'+esc(top.n+evNote(top))+'</span>':''",
+      "cls": "cond:safe",
+      "inAttr": false
+     },
+     {
+      "part": "esc(top?top.why:act.line)",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "host.innerHTML=der+cutH+(top?'<span class=\"ev\">'+esc(top.n+evNote(top))+'</span>':'')+'<span class=\"why\">'+esc(top?top.why:act.line)+'</span>'"
+   },
+   {
+    "file": "app.js",
+    "line": 7481,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "tl.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7493,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "pl.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7497,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(phaseSpan(i))",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(p.label)",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "b.innerHTML='<b>'+esc(phaseSpan(i))+'</b><span>'+esc(p.label)+'</span>'"
+   },
+   {
+    "file": "app.js",
+    "line": 7507,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "html",
+      "cls": "ident:html",
+      "inAttr": false
+     }
+    ],
+    "src": "ticks.innerHTML=html"
+   },
+   {
+    "file": "app.js",
+    "line": 7508,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "evh.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7546,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "host.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7657,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "host.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7660,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(PHASES[phIdx].clock.split(\" \")[0])",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "items.map(function(it){\n      return '<li><i style=\"background:'+NATION[FORMATIO",
+      "cls": "built:items.map(function(it){\n      return '<l",
+      "inAttr": false
+     }
+    ],
+    "src": "host.innerHTML='<h3>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(\" \")[0])+'</h3><ul>'+   /* Stage 8, 8H (A-6): an h3 under the dispatch's h2 (an h4 until 8H,"
+   },
+   {
+    "file": "app.js",
+    "line": 7672,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "ev.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7743,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "body.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7744,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "body.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7759,
+    "kind": "innerHTML",
+    "emptyClear": true,
+    "parts": [],
+    "src": "body.innerHTML=\"\""
+   },
+   {
+    "file": "app.js",
+    "line": 7798,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "nat.fill",
+      "cls": "member:nat.fill",
+      "inAttr": true
+     },
+     {
+      "part": "esc(f.desig||\"\")",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(nat.name)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(f.name)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(f.commander||\"\")",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "head.innerHTML='<div class=\"dh-bar\" style=\"background:'+nat.fill+'\"></div><div class=\"dh-tx\">'+\n    '<p class=\"dh-sub\">'+esc(f.desig||\"\")+' &middot; '+esc(nat.n"
+   },
+   {
+    "file": "app.js",
+    "line": 7940,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "nat.fill",
+      "cls": "member:nat.fill",
+      "inAttr": true
+     },
+     {
+      "part": "esc(f.desig||\"\")",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(nat.name)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(f.name)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(f.commander||\"\")",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "head.innerHTML=\n    '<div class=\"dh-bar\" style=\"background:'+nat.fill+'\"></div>'+\n    '<div class=\"dh-tx\"><p class=\"dh-sub\">'+esc(f.desig||\"\")+' &middot; '+esc("
+   },
+   {
+    "file": "app.js",
+    "line": 8036,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [],
+    "src": "se.innerHTML='<h3>Historical event</h3>'"
+   },
+   {
+    "file": "app.js",
+    "line": 8131,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(title)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "layer?' <span class=\"ltag '+layer+'\">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYE",
+      "cls": "cond:ident:layer|call:iconSVG|esc",
+      "inAttr": false
+     },
+     {
+      "part": "isDl?'<dl class=\"kvs\">'+html+'</dl>':html",
+      "cls": "cond:ident:html|ident:html",
+      "inAttr": false
+     }
+    ],
+    "src": "d.innerHTML='<h3>'+esc(title)+(layer?' <span class=\"ltag '+layer+'\">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+\n    (isDl?'<"
+   },
+   {
+    "file": "app.js",
+    "line": 8206,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(kindName)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(ft.name)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(ft.sub||\"\")",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "head.innerHTML='<div class=\"dh-bar\" style=\"background:var(--text-muted)\"></div><div class=\"dh-tx\">'+\n    '<p class=\"dh-sub\">'+esc(kindName)+'</p><h2>'+esc(ft.na"
+   },
+   {
+    "file": "app.js",
+    "line": 8222,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "ft.why.map(function(x,i){return '<li>'+esc(x)+claimTag(\"FEATURES[#\"+ft.id+\"].why",
+      "cls": "built:ft.why.map(function(x,i){return '<li>'+e",
+      "inAttr": false
+     }
+    ],
+    "src": "s.innerHTML='<h3>Operational importance</h3><ul class=\"bul\">'+\n      ft.why.map(function(x,i){return '<li>'+esc(x)+claimTag(\"FEATURES[#\"+ft.id+\"].why[\"+i+\"]\")+'"
+   },
+   {
+    "file": "app.js",
+    "line": 8228,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(ft.story)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "claimTag(\"FEATURES[#\"+ft.id+\"].story\")",
+      "cls": "call:claimTag",
+      "inAttr": false
+     }
+    ],
+    "src": "s2.innerHTML='<h3>What happened here</h3><p class=\"prose\">'+esc(ft.story)+claimTag(\"FEATURES[#\"+ft.id+\"].story\")+'</p>'"
+   },
+   {
+    "file": "app.js",
+    "line": 8235,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [],
+    "src": "s3.innerHTML='<h3>Formations nearby now</h3>'"
+   },
+   {
+    "file": "app.js",
+    "line": 8294,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "col",
+      "cls": "ident:col",
+      "inAttr": true
+     },
+     {
+      "part": "esc(KIND[e.kind]||e.kind)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "e.side===\"fr\"?\"French\":\"Allied\"",
+      "cls": "literal",
+      "inAttr": false
+     },
+     {
+      "part": "esc(e.n)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc((exact?(\"about \"+fmtClock(w[0])):(fmtClock(w[0])+\" - \"+fmtClock(w[1])))+(e.c",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "head.innerHTML='<div class=\"dh-bar\" style=\"background:'+col+'\"></div><div class=\"dh-tx\">'+\n    '<p class=\"dh-sub\">'+esc(KIND[e.kind]||e.kind)+' &middot; '+\n    "
+   },
+   {
+    "file": "app.js",
+    "line": 8305,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(e.why)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "claimTag(\"EVENTS[#\"+e.id+\"].why\")",
+      "cls": "call:claimTag",
+      "inAttr": false
+     }
+    ],
+    "src": "s2.innerHTML='<h3>Why it matters</h3><p class=\"ev-why\">'+esc(e.why)+claimTag(\"EVENTS[#\"+e.id+\"].why\")+'</p>'"
+   },
+   {
+    "file": "app.js",
+    "line": 8308,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(e.dispute)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "claimTag(\"EVENTS[#\"+e.id+\"].dispute\")",
+      "cls": "call:claimTag",
+      "inAttr": false
+     }
+    ],
+    "src": "sD.innerHTML='<h3>When it happened: disputed</h3><p class=\"ev-why\">'+esc(e.dispute)+claimTag(\"EVENTS[#\"+e.id+\"].dispute\")+'</p>'"
+   },
+   {
+    "file": "app.js",
+    "line": 8311,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [],
+    "src": "s3.innerHTML='<h3>Formations concerned</h3>'"
+   },
+   {
+    "file": "app.js",
+    "line": 8325,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(LABELS.event.sameStart)",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "sS.innerHTML='<h3>'+esc(LABELS.event.sameStart)+'</h3>'"
+   },
+   {
+    "file": "app.js",
+    "line": 8347,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "col",
+      "cls": "ident:col",
+      "inAttr": true
+     },
+     {
+      "part": "esc(tl.n)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(kind)",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "head.innerHTML='<div class=\"dh-bar\" style=\"background:'+col+'\"></div><div class=\"dh-tx\">'+\n    '<p class=\"dh-sub\">Terrain analysis</p><h2>'+esc(tl.n)+'</h2>'+\n "
+   },
+   {
+    "file": "app.js",
+    "line": 8360,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(tl.note)",
+      "cls": "esc",
+      "inAttr": false
+     }
+    ],
+    "src": "s2.innerHTML='<h3>Why it matters</h3><p class=\"prose\">'+esc(tl.note)+'</p>'"
+   },
+   {
+    "file": "app.js",
+    "line": 8376,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "geoText(\"{CONTOUR_M}\")",
+      "cls": "call:geoText",
+      "inAttr": false
+     }
+    ],
+    "src": "cv.innerHTML=\"&asymp; \"+geoText(\"{CONTOUR_M}\")+\" m\""
+   },
+   {
+    "file": "app.js",
+    "line": 8679,
+    "kind": "innerHTML",
+    "emptyClear": false,
+    "parts": [
+     {
+      "part": "esc(SOURCE_NOTE.title)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "refs?dossierClaims(refs):''",
+      "cls": "cond:call:dossierClaims",
+      "inAttr": false
+     },
+     {
+      "part": "SOURCE_NOTE.body.map(function(p){return '<p>'+esc(geoText(p))+'</p>';}).join('')",
+      "cls": "built:SOURCE_NOTE.body.map(function(p){return ",
+      "inAttr": false
+     },
+     {
+      "part": "SOURCE_NOTE.layers.map(function(l){\n      return '<div class=\"kv\"><dt>'+esc(l[0]",
+      "cls": "built:SOURCE_NOTE.layers.map(function(l){\n    ",
+      "inAttr": false
+     },
+     {
+      "part": "esc(CONF_TEXT.A)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(CONF_TEXT.B)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(CONF_TEXT.C)",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(\"On the map each formation's grade is drawn on the ground under it: A as its",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(\"The evidence skeleton (a layer, off at first) draws each formation's plotte",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(\"The ordered routes (a layer, off at first) draw each plan column's line of ",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')",
+      "cls": "built:SOURCE_NOTE.refs.map(function(r){return ",
+      "inAttr": false
+     },
+     {
+      "part": "esc(isTrueScale()?\"The relief is drawn at true scale (1\\u00d7). Formations are d",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(\"Symbols stand on the ground at two named scales: figures and standards abou",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(\"The French standards and every mounted standard stand at a provisional 1.6 ",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(\"The going layer's slope classes (hard for guns over \"+GOING_TRUE_DEG[0].toF",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "esc(\"Where a move's start is dated and its arrival is not, the map derives the a",
+      "cls": "esc",
+      "inAttr": false
+     },
+     {
+      "part": "derivedArrivals().map(function(r){ var f=FORMATIONS[r.id];\n      return '<li>'+e",
+      "cls": "built:derivedArrivals().map(function(r){ var f",
+      "inAttr": false
+     },
+     {
+      "part": "arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')",
+      "cls": "built:arrowNotes().map(function(t){ return '<l",
+      "inAttr": false
+     },
+     {
+      "part": "troopNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')",
+      "cls": "built:troopNotes().map(function(t){ return '<l",
+      "inAttr": false
+     },
+     {
+      "part": "standardNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')",
+      "cls": "built:standardNotes().map(function(t){ return ",
+      "inAttr": false
+     },
+     {
+      "part": "artilleryNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')",
+      "cls": "built:artilleryNotes().map(function(t){ return",
+      "inAttr": false
+     },
+     {
+      "part": "gaitNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')",
+      "cls": "built:gaitNotes().map(function(t){ return '<li",
+      "inAttr": false
+     },
+     {
+      "part": "buildingNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')",
+      "cls": "built:buildingNotes().map(function(t){ return ",
+      "inAttr": false
+     },
+     {
+      "part": "Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];\n  ",
+      "cls": "built:Object.keys(APPEARANCE_SOURCES).map(func",
+      "inAttr": false
+     },
+     {
+      "part": "claimsIndex()",
+      "cls": "call:claimsIndex",
+      "inAttr": false
+     },
+     {
+      "part": "lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')",
+      "cls": "built:lightNotes().map(function(t){ return '<l",
+      "inAttr": false
+     }
+    ],
+    "src": "b.innerHTML='<h2>'+esc(SOURCE_NOTE.title)+'</h2>'+(refs?dossierClaims(refs):'')+\n    SOURCE_NOTE.body.map(function(p){return '<p>'+esc(geoText(p))+'</p>';}).joi"
+   }
+  ]
+ },
+ "externalSources": [
+  {
+   "file": "app.js",
+   "line": 9,
+   "source": "location.search",
+   "context": "no grain animation) */ var HARNESS = /[?&]harness=1\\b/.test(location.search); /* ---------------- per-phase map overlays ---------------- Historical interpretation data. E"
+  },
+  {
+   "file": "app.js",
+   "line": 573,
+   "source": "location.reload",
+   "context": "ntent=LABELS.reload; b.addEventListener(\"click\",function(){ location.reload(); }); n.appendChild(b); }); cv.addEventListener(\"webglcontextrestored\",function(){ GL.lost=false"
+  },
+  {
+   "file": "app.js",
+   "line": 3824,
+   "source": "location.search",
+   "context": "nts:r.points,lines:r.lines}; } var devOn=/[?&]stats\\b/.test(location.search), _devT=0, _devSeat=0; function kfmt(n){ return n>=1e6?(n/1e6).toFixed(2)+\"M\":(n>=1e3?(n/1e3).toFix"
+  },
+  {
+   "file": "shell.html",
+   "line": 432,
+   "source": "location.reload",
+   "context": "); el(\"boot-reload\").addEventListener(\"click\",function(){ location.reload(); }); B.timer=setTimeout(function(){ if(!B.done&&!B.failed){ var s=el(\"boot-status\"); if(s) s.te"
+  },
+  {
+   "file": "tools/step6/perf-run.html",
+   "line": 40,
+   "source": "new URLSearchParams",
+   "context": " (function(){ var q=new URLSearchParams(location.search), src=q.get(\"src\")||\"../../austerlitz-command-map.html\", phone=q.get(\"route\")===\"phone\", cull=q.get("
+  },
+  {
+   "file": "tools/step6/perf-run.html",
+   "line": 40,
+   "source": "location.search",
+   "context": " (function(){ var q=new URLSearchParams(location.search), src=q.get(\"src\")||\"../../austerlitz-command-map.html\", phone=q.get(\"route\")===\"phone\", cull=q.get"
+  }
+ ],
+ "deadCode": {
+  "topLevelFunctions": 791,
+  "live": 788,
+  "testOrToolOnly": [
+   {
+    "name": "v8Near",
+    "inStrings": 0,
+    "file": "world.js",
+    "line": 1703,
+    "bytes": 110
+   },
+   {
+    "name": "posOf",
+    "inStrings": 0,
+    "file": "app.js",
+    "line": 712,
+    "bytes": 43
+   }
+  ],
+  "dead": [
+   {
+    "name": "gaitDist",
+    "inStrings": 0,
+    "file": "app.js",
+    "line": 5827,
+    "bytes": 99
+   }
+  ],
+  "deadBytes": 99,
+  "testOnlyBytes": 153,
+  "selfTestIIFE": {
+   "bytes": 611017,
+   "lines": [
+    9154,
+    14253
+   ]
+  },
+  "appBytes": 1300537
+ },
+ "globals": {
+  "appTopLevelBindings": {
+   "var": 310,
+   "let": 0,
+   "const": 0
+  },
+  "appTopLevelFunctions": 620,
+  "reassignedFromFunctions": 101,
+  "mostWritten": [
+   {
+    "name": "freeCam",
+    "line": 115,
+    "reassignedBy": 16,
+    "mutatedBy": 0
+   },
+   {
+    "name": "ML",
+    "line": 5014,
+    "reassignedBy": 0,
+    "mutatedBy": 11
+   },
+   {
+    "name": "curVantage",
+    "line": 6446,
+    "reassignedBy": 9,
+    "mutatedBy": 0
+   },
+   {
+    "name": "settling",
+    "line": 9094,
+    "reassignedBy": 8,
+    "mutatedBy": 0
+   },
+   {
+    "name": "renderer",
+    "line": 108,
+    "reassignedBy": 1,
+    "mutatedBy": 5
+   },
+   {
+    "name": "SKEL",
+    "line": 2219,
+    "reassignedBy": 0,
+    "mutatedBy": 6
+   },
+   {
+    "name": "FX",
+    "line": 3520,
+    "reassignedBy": 0,
+    "mutatedBy": 6
+   },
+   {
+    "name": "OPENING",
+    "line": 4710,
+    "reassignedBy": 0,
+    "mutatedBy": 6
+   },
+   {
+    "name": "hideDispatch",
+    "line": 8928,
+    "reassignedBy": 6,
+    "mutatedBy": 0
+   },
+   {
+    "name": "scene",
+    "line": 108,
+    "reassignedBy": 1,
+    "mutatedBy": 4
+   },
+   {
+    "name": "tourStep",
+    "line": 144,
+    "reassignedBy": 5,
+    "mutatedBy": 0
+   },
+   {
+    "name": "MLS",
+    "line": 5339,
+    "reassignedBy": 0,
+    "mutatedBy": 5
+   },
+   {
+    "name": "DWELL",
+    "line": 8829,
+    "reassignedBy": 0,
+    "mutatedBy": 5
+   },
+   {
+    "name": "sun",
+    "line": 108,
+    "reassignedBy": 1,
+    "mutatedBy": 3
+   },
+   {
+    "name": "world",
+    "line": 108,
+    "reassignedBy": 1,
+    "mutatedBy": 3
+   },
+   {
+    "name": "landCam",
+    "line": 112,
+    "reassignedBy": 1,
+    "mutatedBy": 3
+   },
+   {
+    "name": "sunDisc",
+    "line": 458,
+    "reassignedBy": 1,
+    "mutatedBy": 3
+   },
+   {
+    "name": "ROUTES",
+    "line": 2327,
+    "reassignedBy": 0,
+    "mutatedBy": 4
+   },
+   {
+    "name": "GDEPTH",
+    "line": 2927,
+    "reassignedBy": 0,
+    "mutatedBy": 4
+   },
+   {
+    "name": "DEV",
+    "line": 3821,
+    "reassignedBy": 0,
+    "mutatedBy": 4
+   },
+   {
+    "name": "planLinks",
+    "line": 4540,
+    "reassignedBy": 2,
+    "mutatedBy": 2
+   },
+   {
+    "name": "tween",
+    "line": 114,
+    "reassignedBy": 3,
+    "mutatedBy": 0
+   },
+   {
+    "name": "_tw",
+    "line": 122,
+    "reassignedBy": 0,
+    "mutatedBy": 3
+   },
+   {
+    "name": "planSide",
+    "line": 145,
+    "reassignedBy": 3,
+    "mutatedBy": 0
+   },
+   {
+    "name": "SHADOW_FIT",
+    "line": 316,
+    "reassignedBy": 0,
+    "mutatedBy": 3
+   }
+  ]
+ },
+ "mirrors": {
+  "animGLSL_animAt": {
+   "decl": [
+    "app.js:1020",
+    "app.js:1849"
+   ],
+   "suites": [
+    "css-test.js:587",
+    "runtime-test.js:1265",
+    "runtime-test.js:1418",
+    "runtime-test.js:1439",
+    "runtime-test.js:1442",
+    "runtime-test.js:1447",
+    "runtime-test.js:1448"
+   ],
+   "selftest": 5
+  },
+  "groundY_groundYFast": {
+   "decl": [
+    "world.js:500",
+    "world.js:526"
+   ],
+   "suites": [
+    "css-test.js:563",
+    "css-test.js:567",
+    "css-test.js:568",
+    "runtime-test.js:1415",
+    "runtime-test.js:1430",
+    "runtime-test.js:1432",
+    "runtime-test.js:1434",
+    "runtime-test.js:1453"
+   ]
+  }
+ }
+}

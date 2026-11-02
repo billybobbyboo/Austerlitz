@@ -1,0 +1,662 @@
+{
+ "area": "visual-maps",
+ "scope_summary": "Cartographic usability of the audited build (austerlitz-command-map.html, 2,810,630 bytes, md5 f10fe585c46aea576f436ed51ac46f83; Chromium 141 headless shell, SwiftShader software WebGL, the harness page unless stated). 74 harness-page captures with read-backs (the map layer's drawn and dropped items, the caption's parts, the legend's rows, the text contrast as rendered, the far names' plates) at 1600x900, 1280x720, 1024x768 and two phone sizes (390x844 and 844x390, density 3, touch, real taps), 71 of them by an interrupted first attempt (reused) and 3 added here; 3 visitor-page captures at 1280x720 (first attempt); a phone probe of the timeline's rail under a finger and of 'Whose eyes?' by the phone's own route (4 captures, this pass); one 2.1 s clip at 10 fps (a pan in Landscape with counters, the layer logged at 30 fps, this pass); inspected as 8 contact sheets, 13 crops of this pass and 1 of the first attempt and about 20 full-size images, with the code behind each observation read. Technical, historical and aesthetic judgements are kept apart. Nothing in the application, data, tests, thresholds, archive or build was changed.",
+ "coverage": [
+  {
+   "item": "Hierarchy and clutter",
+   "method": "Contact sheets A-E and G at three desktop sizes; drawn and dropped items per view from each capture's JSON (summary.json)",
+   "result": "Landscape Study at the Field vantage legible (43 items drawn, 5 dropped at 1600; no overlaps). Clutter problems: the Plans view (about 40 serif labels, three plan labels dropped at 1280, V-M11), the low views' wall of names (accepted, V-M14), duplicate formation names from arrow labels (V-M9). Landscape with counters at the Field vantage drops 6 of 28 counters at rest (Vandamme, Miloradovich, the Russian Guard cavalry, Nansouty, Walther, d'Hautpoul at 09:30), the visibility area's subject.",
+   "evidence": "docs/audit-post8-evidence/visual-maps/sheets/A-E, summary.json, d1600/counters-field.json",
+   "untested": ""
+  },
+  {
+   "item": "Label and counter overlap and readability",
+   "method": "The harness's own text-contrast measure on a PNG of each frame (2,486 text measurements in 74 captures); visual inspection of crops",
+   "result": "No overlapping labels seen; every measured map and interface text at AA or better as rendered (least 4.84:1, the paper map with a selection); type sizes uniform (formation names 12.5 px). Leader lines cross one another in dense views (Field vantage with counters).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/summary.json, crops/counters-field-nw-2x.jpg",
+   "untested": ""
+  },
+  {
+   "item": "Selection prominence",
+   "method": "Saint-Hilaire selected on the landscape at 1600, 1280, 1024 (default layers at 1280 and 1024), on the paper map and in Landscape with counters (IV Corps)",
+   "result": "Paper map and counters: strong (every counter outside the family dimmed to 34%, the selected counter full with status and commander). Landscape: weak (V-M10).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/d1280/selected-sthilaire.jpg, d1024/selected-sthilaire.jpg, crops/sel-paper-map.jpg",
+   "untested": ""
+  },
+  {
+   "item": "The legend",
+   "method": "Legend opened by a real click on the paper map and both landscape modes; rows read back; shell.html rows and app.js paintLegend conditions read",
+   "result": "Contextual and correct for what it lists, but absent below 1080 px, below 430 px of height and in Watch and Clean (V-M2), and it omits several drawn encodings (V-M8); 9 of its 17 landscape rows are caveats rather than symbol keys (an integrity choice consistent with the priorities).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/crops/paper-key-2x.jpg, d1600/land-field-key.jpg, d1600/counters-field-key.json",
+   "untested": ""
+  },
+  {
+   "item": "Whether a first-time visitor would understand the symbols",
+   "method": "Each encoding on screen checked against the first-run card, the legend, the '?' overlay and the full counter's words",
+   "result": "Side colours: explained (first-run card, legend). Outlines and grade extents: explained in the legend and the phone's Layers panel. Badge B/C/?: one legend row ('position approximate (B, C) · reported only (?)'), no word on A or on B against C. Not explained anywhere on screen: counters' status icons (explained only on hover or close-up, in words), echelon marks, arm glyphs, dashed axis arrows (phase 0), the event glyphs and the objective marker. The 'derived' tag: hover tooltip and the sources sheet only (no touch).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/crops/counters-field-nw-2x.jpg, d1600/paper-pratzen.jpg",
+   "untested": ""
+  },
+  {
+   "item": "The paper map's cartographic quality",
+   "method": "Paper map as entered at 1600/1280/1024, three zoomed views, selection, layers, the Allied/French readings; items and scale bar read back",
+   "result": "Scale bar present and short-labelled (5 km entered, 250 m close), the harness holds it to 1%. North: only the 26 px rose in the legend's toggle (V-M3). Symbology: villages and woods at model extent, hillshade and contours (the hillshade soft and blotchy close up), the sheet drawn as the rotated map frame on grey (honest north-up, but with no north arrow it reads as a tilted sheet). Typography: sans counters, serif labels, consistent. No place name at the entered framing (V-M5); arrows uncapped close up (V-M17, accepted); an event glyph that reads as a north arrow (V-M15).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/sheets/A-paper.jpg, d1600/paper-entered.json, d1280/paper-entered.json, d1024/paper-entered.json",
+   "untested": ""
+  },
+  {
+   "item": "The Plans view and the Littawa's name",
+   "method": "plans-overview at 1600 and 1280, plans-tab at 1600; dropped items read back",
+   "result": "At 1600, 13 items dropped (the case's limit 13): 'The concealed centre', the Allied headquarters' name and 11 place names, the Littawa's (t:litava) among them. At 1280, 17 dropped: the Littawa, three plan labels ('Soult concealed in the Goldbach valley', 'The second axis', 'Stare Vinohrady'), Liechtenstein's name and the Pratzeberg objective. Crowding V-M11.",
+   "evidence": "docs/audit-post8-evidence/visual-maps/d1600/plans-overview.json, d1280/plans-overview.json",
+   "untested": ""
+  },
+  {
+   "item": "Watch at 14:20 and 14:40",
+   "method": "Phase-8 Overview camera in Watch at 1600 and 1280; caption parts read back",
+   "result": "At 1600: 14:20 shows 'centre separation detected', 14:40 shows no derived reading, as section 22.4 states. At 1280: 14:20 shows the reading but the act is 'T.', the phase title empty and the event given way (V-M6).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/d1600/watch-1420.json, d1600/watch-1440.json, d1280/watch-1420.json, crops/watch-1420-1440.jpg",
+   "untested": ""
+  },
+  {
+   "item": "The low views' wall of formation names and the far plate",
+   "method": "thresholds.js FAR_LOW (horizon-east) at 09:00 and 12:00 at 1600 and 1280, with counters; far plates read back",
+   "result": "Wall present: at 12:00 at 1280x720, 31 labels (19 formation names, 16 of them far) stacked in the top 47% of the view (y 41-340 px) over a distant cluster, the lower half empty field. Decision 263 (a) applied: far names on the lighter plate at 6.96-7.30:1, near and protected names on the full plate at 12.5:1, one size. With counters, no formation names (14 counters, 5 occluded).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/d1280/wall-1200.jpg/.json, d1600/wall-1200.json, d1600/wall-0900.json, d1600/wall-1200-counters.json",
+   "untested": ""
+  },
+  {
+   "item": "'Whose eyes?' C zones and '?' marks",
+   "method": "Both readings at the Overview (landscape, counters, paper) and at the eye level; the phone's route probed",
+   "result": "'?' badges on reported formations' names and counters (e.g. Kienmayer's Advance Guard and the First Column from the Zuran at 08:30); C zones drawn. Arrows, arrow labels and the plateau count of formations the reading does not know remain drawn (V-M4). On the phone no indicator once the Panels close (V-M7).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/crops/reading-leak-arrows-pair.jpg, d1600/eyes-al-counters.json, phone-390x844/eyes-al-route.jpg",
+   "untested": ""
+  },
+  {
+   "item": "The eye level",
+   "method": "eye-zuran at 1600 with and without the arrows layer; pixel difference; colours sampled",
+   "result": "The eye 3 m above the Zuran at 08:30 under Napoleon's reading; labels at AA (least 7.41:1). The large saturated blue sheets in the middle distance are the observer's own side drawn as filled graded marks (decision 91; app.js:6133-6156), unexplained on screen in Watch (no key, V-M2). The caption box states the model reading.",
+   "evidence": "docs/audit-post8-evidence/visual-maps/d1600/eye-zuran.jpg, crops/eye-zuran-diff.png, crops/eye-zuran-blue-1.5x.jpg",
+   "untested": ""
+  },
+  {
+   "item": "The caption and timeline at 1280 px and below",
+   "method": "Visitor page at 1280x720 (card open, Explore, next event); Watch at 1280 and 1024; caption parts and widths read back; fitCaption, capTitle and style.css read",
+   "result": "Readings never drawn cut (decision 159 holds), but the act and phase titles shrink to nothing or one letter with orphan separators ('· ·') even at 1600 in Watch, and in Watch at 1280x720 the derived readings and the event give way entirely (V-M6). In Study what the caption loses is whole on the track and in the Now tab.",
+   "evidence": "docs/audit-post8-evidence/visual-maps/crops/caption-rows.jpg, visitor-1280x720/*.json, d1280/watch-1200.json",
+   "untested": ""
+  },
+  {
+   "item": "The phone layouts (panels, menus, timeline, gestures)",
+   "method": "390x844 and 844x390: first card, Explore, dispatch sheet, Menu, Layers, counters, paper map, Watch, a dossier, by real taps; real touch drags on the map and the rail; the rail's hit map",
+   "result": "Menu, Layers, dispatch sheet and dossier sheet work and do not overlap; a one-finger drag pans the map; Watch keeps its switch in the control row. Defects: rail scrubbing from markers (V-M1), no key and no compass (V-M2, V-M3), no reading indicator (V-M7). Held landscape leaves a map band of about 180 px between the tools and a 110 px timeline.",
+   "evidence": "docs/audit-post8-evidence/visual-maps/phone-390x844/sheet.jpg, phone-844x390/sheet.jpg, phone-390x844/rail-probe.json, sheets/H-phone-probe.jpg",
+   "untested": ""
+  },
+  {
+   "item": "A motion clip (a pan in the counters view)",
+   "method": "clips.js counters-pan10: the app's own loop at 30 fps on the motion driver, a 270 px left-drag in Landscape with counters from the Field vantage at 09:30, every driver frame's layer logged, 21 frames captured (10 fps)",
+   "result": "During the drag the stabiliser holds up to 23 items in place hidden ('held') and keeps the rest; 433 ms after release every division counter is replaced by corps counters at once (13 drawn and 7 held division counters out, 8 corps counters in; V-M12). No overlap, no console message.",
+   "evidence": "docs/audit-post8-evidence/visual-maps/clips/counters-pan10.mp4, clips/counters-pan10-sheet-1.jpg, -sheet-2.jpg, clips/counters-pan10-timelines.md",
+   "untested": ""
+  },
+  {
+   "item": "The layout between 720 and 1079 px with a selection",
+   "method": "1024x768 landscape with Saint-Hilaire selected (default layers)",
+   "result": "The dispatch card (16-456 px) and the dossier (665-1024 px) leave a 209 px strip of map (V-M13).",
+   "evidence": "docs/audit-post8-evidence/visual-maps/d1024/selected-sthilaire.jpg",
+   "untested": ""
+  }
+ ],
+ "findings": [
+  {
+   "title": "V-M1: On a phone, two thirds of the timeline's rail belong to event markers: a finger's drag there does nothing and a tap jumps to an event",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "timeline / phone layout",
+   "user_impact": "On a phone the rail is the clock's slider. A visitor who puts a finger on the middle of the rail to scrub lands on an event marker's hit area about two times in three: the drag is ignored, and a plain tap instead jumps the clock to that event and opens its dossier over the map. Scrubbing works only from the remaining gaps or from the rail's bottom 4 px.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "style.css:344",
+    "style.css:379-382",
+    "style.css:794",
+    "app.js:7529-7531",
+    "docs/audit-post8-evidence/visual-maps/phone-390x844/rail-probe.json",
+    "docs/audit-post8-evidence/visual-maps/phone-390x844/rail-tap-marker.jpg"
+   ],
+   "evidence": "rail-probe.js on the phone page (390x844, density 3, touch): document.elementFromPoint along the rail's middle line (y 832) reaches an event marker over 65.8% of the rail's 374 px (20 of 25 markers), the rail over 34.2%; 4 px above its foot 9.4% and 90.6%. A real CDP touch drag of 80 px starting on the rail (x 51) moved the clock 09:30 to 08:36 and followed the finger; the same drag starting on a marker's hit area (x 121, 'Napoleon releases Soult against the heights') left the clock at 09:30 with nothing selected; a real tap there set 08:25, selected e:decision and opened its dossier. At 1280 and 1600 the markers take 28.5% and 22.7% of the middle line (a mouse can aim).",
+   "expected": "A drag that starts anywhere on the rail scrubs the clock (the rail is the slider, decision 53/3C); a marker's tap target need not swallow the rail's drags.",
+   "observed": "The marker buttons (8 px diamonds with a 6 px ::after hit area, pointer-events:auto) sit over the rail's middle; the rail's pointerdown handler (app.js:7529) never sees a touch that starts on one; markers are 2.5.8's essential exception (decision 167), so their density on a 374 px rail is not checked.",
+   "remedy": "Let a pointer that starts on a marker and moves more than a few px hand the gesture to the rail (or let the rail own pointerdown and resolve a tap near a marker to that marker); alternatively move the markers to a strip above the rail on phones. Add a phone touch-drag check to the harness's phone block.",
+   "effort": "0.5-2 days",
+   "repro": "node tools/audit-post8/visual-maps/rail-probe.js",
+   "judgement_kind": "technical (interaction)",
+   "cause_hypothesis": "Marker hit areas overlap the rail's centre line and capture touch pointers",
+   "cause_verified": "yes: hit map and the two drags"
+  },
+  {
+   "title": "V-M2: No symbol key at all below 1080 px wide, below 430 px tall, or in Watch and Clean",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "legend / layout",
+   "user_impact": "On every phone, small tablet and 1024 px laptop, and in Watch and Clean at any size, a visitor has no way to learn what the B/C/? badges, status icons, echelon marks, dashed arrows, outlines, grade extents, event glyphs or the eye level's blue sheets mean; only the first-run card's two colours remain.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "style.css:575-584",
+    "style.css:619-624",
+    "style.css:414-427",
+    "shell.html:206-269",
+    "tools/visual/phone-measure.js:85-87",
+    "docs/STAGE3_SPEC.md:694-695",
+    "docs/audit-post8-evidence/visual-maps/d1024/land-field.jpg",
+    "docs/audit-post8-evidence/visual-maps/phone-390x844/sheet.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1600/eye-zuran.jpg"
+   ],
+   "evidence": "The legend is the only key (shell.html:206); it is display:none under @media (max-width:1079.98px) (style.css:584) and (max-height:430px) (style.css:624), and in body.pm-watch and body.pm-map (style.css:415, 422). No Key button in the 1024 and phone captures; the '?' overlay lists keys and controls only. Stage 3 recorded the hiding (STAGE3_SPEC.md:694) and moved only the control hints; the phone reach check's features (phone-measure.js:85-87) do not include the key. The phone Layers panel's one-line layer descriptions explain the grades (A footprint, B frontage doubled, C a zone) but no other encoding.",
+   "expected": "Every presentation that draws encodings offers their key within one press (the legend's own rule: 'one row per encoding on screen', STAGE2_SPEC F.2).",
+   "observed": "The key is unreachable in those layouts and presentations.",
+   "remedy": "Offer the legend's rows in the phone Menu (or the Layers sheet) and as a collapsed Key button in Watch and below 1080 px; add the key to phone-measure's reach features.",
+   "effort": "1-3 days",
+   "judgement_kind": "cartographic usability",
+   "cause_verified": "yes (CSS read; captures)"
+  },
+  {
+   "title": "V-M3: The only north indicator is the rose inside the legend's toggle, so phones, layouts below 1080 px, Watch and Clean show no compass",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "map furniture / orientation",
+   "user_impact": "The landscape camera orbits freely and two vantages (Allied, Zuran) do not face north; the narrative uses compass directions throughout ('in the north', 'the French right'). In Watch (including the eye level), in Clean, at 1024 px and on every phone the visitor cannot tell which way north lies; below 1080 px the north-up paper map has no north arrow either, and its sheet, the rotated map frame, reads as a tilted sheet.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "shell.html:209-217",
+    "app.js:8371-8380",
+    "style.css:584",
+    "style.css:624",
+    "style.css:415-427",
+    "docs/audit-post8-evidence/visual-maps/d1024/paper-entered.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1600/eye-zuran.jpg",
+    "docs/audit-post8-evidence/visual-maps/phone-390x844/paper.jpg"
+   ],
+   "evidence": "The rose (#rose-needle, rotated to true north by updateRose) is an SVG inside the legend's toggle button (shell.html:209-217); no other compass exists in shell.html or app.js. The legend is hidden in the layouts and presentations of V-M2. No compass in the d1024, phone, Watch, Clean or eye-level captures.",
+   "expected": "A north indicator on every map view, independent of the key.",
+   "observed": "North is shown only in Study at 1080 px and wider.",
+   "remedy": "Draw the rose as its own small control (e.g. beside the scale bar) in every presentation and layout, outside the legend.",
+   "effort": "0.5-1.5 days",
+   "judgement_kind": "cartographic",
+   "cause_verified": "yes"
+  },
+  {
+   "title": "V-M4: 'Whose eyes?' still draws the movement arrows, arrow labels and plateau count of formations the reading does not know",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "Whose eyes? / overlays",
+   "user_impact": "Under the Allied headquarters' reading at 09:30 the map omits Suchet's and Caffarelli's divisions (unknown to it) but draws their derived arrows, drawn on to their current place, with their names: a visitor exploring what the Allies knew is told where Lannes's divisions were going. The plateau label's French figure is computed over every formation, known or not.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:3101-3116",
+    "app.js:3027-3041",
+    "app.js:4061-4071",
+    "app.js:4325-4329",
+    "docs/STAGE5_SPEC.md:526-531",
+    "docs/audit-post8-evidence/visual-maps/crops/reading-leak-arrows-pair.jpg",
+    "docs/audit-post8-evidence/visual-maps/crops/reading-leak-arrows-pair.json",
+    "docs/audit-post8-evidence/visual-maps/d1600/eyes-al-counters.json"
+   ],
+   "evidence": "eyes-al-counters (1600x900, 09:30, Study, Landscape with counters, Field vantage, reading 'al'): no c:suchet or c:caffarelli item, while o:Suchet and o:Caffarelli are drawn with their arrows (OVERLAYS[4] arrows leg ['suchet',0,5], ['caffarelli',0,5]). rebuildOverlays builds every arrow of the phase and drawOnArrows draws each to its formation's place with no reading test; readHidden is applied only in the dossier, the march rows and the places' lists (decision 251's scope). plateauStrength sums every formation on the plateau, so the plateau label reads 'French ≈ 13,300' under the Allied reading as under everyone.",
+   "expected": "'Not known: not drawn' (STAGE5_SPEC D.5 item 1), for every drawing of a formation, its movement arrow and label included; the map's own derived readings either follow the reading or say they do not.",
+   "observed": "Arrows, labels and the plateau count ignore the reading.",
+   "remedy": "Skip (or ghost) arrows and arrow labels bound by a.leg or a.of to a formation readHidden reports; mark the plateau and centre readings 'everyone's' under a reading or compute them over known formations; add a self-test check under both readings every 10 minutes.",
+   "effort": "0.5-2 days",
+   "judgement_kind": "simulation integrity",
+   "cause_verified": "yes (code read; capture)"
+  },
+  {
+   "title": "V-M5: The paper map as entered draws none of the 12 place names at 1600, 1280 and 1024 px",
+   "category": "confirmed-defect",
+   "severity": "S2",
+   "priority": "P2",
+   "subsystem": "paper map / map layer priority",
+   "user_impact": "The north-up paper map is the reference view, and the narrative names Telnitz, Sokolnitz, Pratzen, the Santon, the Goldbach and the Zuran throughout; entered, the map shows counters with long leader lines, arrows and event labels but not one village, stream or hill name. The visitor must zoom in or hover to find them. Landscape with counters at the Overview draws none of them at 1280 either.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:4998-5001",
+    "docs/audit-post8-evidence/visual-maps/d1600/paper-entered.json",
+    "docs/audit-post8-evidence/visual-maps/d1280/paper-entered.json",
+    "docs/audit-post8-evidence/visual-maps/d1024/paper-entered.json",
+    "docs/audit-post8-evidence/visual-maps/d1280/counters-overview.json",
+    "docs/audit-post8-evidence/visual-maps/d1600/paper-entered.jpg"
+   ],
+   "evidence": "Each capture's layer read-back: places on 0, dropped 12 (t:pratzen, vinohrady, pratzeberg, santon, zuran, goldbach, litava, telnitz, sokolnitz, augezd, satschan, austerlitz) at 1600x900, 1280x720 and 1024x768 (09:30, Study, paper:'frame'); also with a reading. The layer's priority puts place names below counters, events, the plateau reading, movement and plan labels and formation names (app.js:4998-5001); the drop limits accept these counts, so no check fails. 'Pratzeberg' appears only as an objective label.",
+   "expected": "A reference map's entry view names its principal places (a judgement; no decision asks for zero names).",
+   "observed": "All place names dropped at the entry framing.",
+   "remedy": "On the paper map draw village and terrain names as base-map lettering beneath the layer (not competing for its slots), or raise place names above overlay labels there; re-measure the paper cases' drop limits and the motion baselines on the owner's word.",
+   "effort": "1-3 days (plus re-baselining)",
+   "judgement_kind": "cartographic usability",
+   "cause_verified": "yes (priority order read; read-backs)"
+  },
+  {
+   "title": "V-M6: The caption shrinks the act and phase to a letter or nothing with orphan separators, and in Watch at 1280 px its readings and event give way entirely",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "timeline caption",
+   "user_impact": "Visible broken text on common screens: 'THE DECEPT... · D. · interval Friant's division at Raigern since the ni...' on the first screen at 1280x720, '· · derived on the heights...' in Watch at 1600x900, 'T. · · derived centre separation detected' in Watch at 1280. In Watch at 1280x720 (no rail, no Now tab) the caption at 12:00 shows only 'THE ARMY DIVID... · The Russian Guard...': both derived readings and the live event are hidden, available only in a hover tooltip (no touch).",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:7383-7420",
+    "style.css:357-373",
+    "tools/visual/cases.js:56-108",
+    "docs/audit-post8-evidence/visual-maps/crops/caption-rows.jpg",
+    "docs/audit-post8-evidence/visual-maps/visitor-1280x720/first-screen.json",
+    "docs/audit-post8-evidence/visual-maps/visitor-1280x720/next-event-1.json",
+    "docs/audit-post8-evidence/visual-maps/d1280/watch-1200.json",
+    "docs/audit-post8-evidence/visual-maps/d1280/watch-1420.json"
+   ],
+   "evidence": "Caption read-backs: at 1280x720 Study the act 98 px cut, the phase title 13 px ('D.'); at 04:15 both 0 px wide but displayed, their separators shown; Watch 1280 at 12:00: caption box 270 px, only act and phase shown, both readings and the event fit-off; Watch 1600 at 12:00: act and phase at zero width, the second reading given way. fitCaption gives readings and events way whole but never the act or phase, which only shrink (flex-shrink 1000/100, min-width 0), so their separators stay. Every desktop Watch case in tools/visual/cases.js is 1600x900, so Watch's caption below 1600 is unmeasured.",
+   "expected": "Decision 159: readings never cut; what gives way is whole elsewhere. In Watch the readings and the event are the caption's purpose (Stage 3C).",
+   "observed": "Fragments and orphan dots; in Watch at 1280 the readings and the event are on no visible element.",
+   "remedy": "Let the act and phase give way whole with their separators (fit-off) below a minimum width, before the readings and the event in Watch (both are whole on the track); add a 1280x720 Watch case or a fitCaption check at 1280 and 1024.",
+   "effort": "0.5-1 day",
+   "judgement_kind": "technical / UX",
+   "cause_verified": "yes (code read; read-backs)"
+  },
+  {
+   "title": "V-M7: On a phone a 'Whose eyes?' reading leaves no sign on screen once the Panels close",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P2",
+   "subsystem": "Whose eyes? / phone layout",
+   "user_impact": "Below 720 px the timeline's 'Eyes:' button is hidden; after choosing a headquarters in the Command tab and closing the Panels, the map silently omits the formations the reading does not know, with no label that it is a model reading.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "style.css:769-772",
+    "style.css:851-852",
+    "docs/STAGE5_SPEC.md:549-553",
+    "docs/audit-post8-evidence/visual-maps/phone-390x844/eyes-al-route.jpg",
+    "docs/audit-post8-evidence/visual-maps/phone-390x844/rail-probe.json"
+   ],
+   "evidence": "rail-probe.js: Menu, Panels, Command, 'Allied headquarters', the rail closed, all by real taps; commandView 'al'; the capture shows the control row 'Play | Follow 09:30 ½×' and the caption with no reading indicator; #eyesbtn display:none in both phone media blocks.",
+   "expected": "'Labelled as a model reading, everywhere it is drawn' (STAGE5_SPEC D.5 item 4).",
+   "observed": "No label or indicator on the phone's map.",
+   "remedy": "Show a compact 'Eyes: Allied HQ' chip (or the derived tag) in the phone's control row while a reading is on.",
+   "effort": "0.5 day",
+   "judgement_kind": "technical / integrity",
+   "cause_verified": "yes"
+  },
+  {
+   "title": "V-M8: The legend omits several encodings it draws, against its own one-row-per-encoding rule",
+   "category": "confirmed-defect",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "legend",
+   "user_impact": "Even where the key is shown, a visitor finds no row for the dashed axis arrows of phase 0, the event glyphs (five kinds), the objective marker, the place diamond, the counters' status icons, echelon marks and arm glyphs, or the arrow widths by kind; the 'capture' event glyph (a ring with a cross) and the objective marker look alike.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "shell.html:219-269",
+    "app.js:5577-5606",
+    "app.js:3034",
+    "app.js:3914-3927",
+    "symbols.js:8-24",
+    "docs/STAGE2_SPEC.md:520-526",
+    "docs/audit-post8-evidence/visual-maps/crops/paper-key-2x.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1600/land-field-key.jpg"
+   ],
+   "evidence": "The rows in shell.html and paintLegend's conditions (app.js:5589-5606) cover nations, figures, standards, the gait, side marks, footprints, outlines, grades, arrows (solid), halts, boundaries, plan staging, wood, village, meres, vineyard, fog, the badge, skeleton, routes, analysis, contours, scales. buildArrow dashes kind 'axis' (app.js:3034; four in phase 0); eventGlyph draws capture/decision/arrival/collapse/default (app.js:3914-3927); STATUS icons ring/square/forward/caution/down/cross (symbols.js:8-24, tokens.js:100-107).",
+   "expected": "'One row per encoding actually on screen' (STAGE2_SPEC F.2; app.js:5577).",
+   "observed": "Seven encodings without a row.",
+   "remedy": "Add contextual rows for axis arrows, event glyph kinds, the objective marker and places, and a counter anatomy row (echelon, arm, status icon, badge).",
+   "effort": "1-2 days",
+   "judgement_kind": "cartographic",
+   "cause_verified": "yes"
+  },
+  {
+   "title": "V-M9: Arrow labels repeat formation names in the same plate style as the formations' own names",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "map layer / overlays",
+   "user_impact": "At the Field vantage at 09:30 'Suchet' and 'Caffarelli' each appear twice on the landscape (the name with its side square and badge, and the arrow's label without), and in the counters view as a counter and a serif label with separate leader lines; 'Bagration' labels the Advance Guard of the Right's arrow beside that formation's own counter. A first-time visitor reads two formations of one name.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:3040",
+    "app.js:3081",
+    "docs/audit-post8-evidence/visual-maps/d1600/land-field.jpg",
+    "docs/audit-post8-evidence/visual-maps/crops/counters-field-nw-2x.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1600/land-field.json"
+   ],
+   "evidence": "land-field.json: both n:suchet ('Suchet B') and o:Suchet, n:caffarelli and o:Caffarelli drawn; counters-field.json: c:suchet, c:caffarelli with o:Suchet, o:Caffarelli; the arrow labels are the OVERLAYS labels (buildArrow adds a.label).",
+   "expected": "One visible name per formation, or arrow labels styled so they read as the arrow's (movement) label.",
+   "observed": "Duplicates differing only by the side square.",
+   "remedy": "Drop an arrow's label while its formation's own name or counter is drawn, or style arrow labels distinctly (italic, an arrow glyph, the side's colour).",
+   "effort": "1-2 days",
+   "judgement_kind": "cartographic",
+   "cause_verified": "yes"
+  },
+  {
+   "title": "V-M10: On the landscape the selection is barely distinguished on the map",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "selection",
+   "user_impact": "Selecting a formation opens its dossier, but on the landscape its name keeps the same plate as every other name and its ground cues (a 1 px cream ring at 62% and a 2.2 px cream outline partly under the figures) are the same cream as the plateau outline, leader lines and trails; a visitor has to search for which formation is selected. The paper map and the counters view dim everything else and are clear.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:3959-3988",
+    "app.js:2147",
+    "app.js:3946",
+    "tokens.js:30",
+    "tokens.js:69",
+    "docs/audit-post8-evidence/visual-maps/d1280/selected-sthilaire.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1024/selected-sthilaire.jpg",
+    "docs/audit-post8-evidence/visual-maps/crops/sel-paper-map.jpg"
+   ],
+   "evidence": "selRing: THREE.Line in theme accent #EFE4C8 at 0.62; OUTLINE.SEL_LINE 2.2 px in the same accent; plateauRing: THREE.Line in annotation #E3D9BE at 0.5. In the 1280 capture (default layers) the selection ellipse and the plateau octagon read alike; the name 'Saint-Hilaire' is drawn like its neighbours.",
+   "expected": "The selection the most prominent item on the map (STAGE2_SPEC F.1 puts it first in priority).",
+   "observed": "Weak cue on the default presentation.",
+   "remedy": "Give the selected name an accent edge or inverted plate and dim the other names slightly, as the counters do; draw the ring thicker or in a colour no other annotation uses.",
+   "effort": "0.5-1.5 days",
+   "judgement_kind": "aesthetic / cartographic",
+   "cause_verified": "yes"
+  },
+  {
+   "title": "V-M11: The Plans view mixes about 40 serif labels of the plans and the current phase, and at 1280 px drops plan labels",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "Plans view",
+   "user_impact": "Opened from the Plans tab at the Overview, both plans' labels and the 09:30 phase's own labels share one plate style with no side mark, so the visitor cannot tell French intentions from Allied, or plan from event; at 1280x720 the labels cover most of the plan arrows and three plan labels themselves are dropped.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "docs/audit-post8-evidence/visual-maps/d1600/plans-overview.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1600/plans-tab.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1280/plans-overview.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1280/plans-overview.json",
+    "docs/STAGE8_SPEC.md:5315-5330"
+   ],
+   "evidence": "1600: 29 plan labels and 15 other items drawn, 13 dropped; 1280: 40 drawn, 17 dropped, among them pl:Soult concealed in the Goldbach valley, pl:The second axis, pl:Stare Vinohrady. Plan labels carry no side square ('The bait', 'The pivot' beside '1st Column', 'Envelop toward Brünn').",
+   "expected": "A plan view that reads as the plan.",
+   "observed": "Plan and present interleaved; plan labels lost at a laptop size.",
+   "remedy": "While the Plans tab shows a plan, dim or hide the current phase's arrows and labels and give plan labels their side's mark; consider the plans at 04:00 by default.",
+   "effort": "1-3 days",
+   "judgement_kind": "cartographic",
+   "cause_verified": "yes"
+  },
+  {
+   "title": "V-M12: In Landscape with counters the Field vantage sits 3% inside the corps threshold, so a short pan ends with every division counter replaced",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "map layer in motion / aggregation",
+   "user_impact": "After a 270 px pan from the Field vantage, 433 ms after release, the 13 division counters drawn (and 7 more held hidden) leave the map together and 8 corps counters fade in (the layer's drawn items 26 to 23): the map the visitor was reading changes level without their asking.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:6093",
+    "app.js:5346-5350",
+    "app.js:6333-6339",
+    "docs/audit-post8-evidence/visual-maps/clips/counters-pan10.json",
+    "docs/audit-post8-evidence/visual-maps/clips/counters-pan10-frame57.jpg",
+    "docs/audit-post8-evidence/visual-maps/clips/counters-pan10-frame60.jpg",
+    "docs/audit-post8-evidence/visual-maps/clips/counters-pan10-timelines.md"
+   ],
+   "evidence": "Clip log: frames 0-58 division counters (frame 58: 18 counters drawn, 7 held) (c:sthilaire, c:vandamme ... on or held), frame 59 corps counters (c:c_iv, c:c_v, c:c_i, c:c_gd, c:c_cav, c:col4, c:constantine, c:buxhowden). wantCorps = dist>250 with dist held by mlBand while the view moves and released at rest; VANTAGE.field's eye-target distance is 242.8 units. That the pan raised the distance above 250 is inferred (the camera's distance was not logged).",
+   "expected": "An aggregation level that does not flip on an incidental pan from a preset (hysteresis, or presets clear of the threshold).",
+   "observed": "The swap at rest after a small pan (8C defers it to rest by design, decision 240 (a)).",
+   "remedy": "Add hysteresis to wantCorps (e.g. corps above 265, divisions below 235) or move the Field preset clear of 250; re-measure the motion block's counts on the owner's word.",
+   "effort": "0.5-2 days",
+   "judgement_kind": "technical / UX",
+   "cause_hypothesis": "The pan changed the eye-target distance across 250",
+   "cause_verified": "partly (swap observed; distance inferred)"
+  },
+  {
+   "title": "V-M13: Between 720 and 1079 px a selection leaves a 209 px strip of map between the dispatch card and the dossier",
+   "category": "probable-problem",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "layout (undocked)",
+   "user_impact": "At 1024x768 (tablet landscape, small laptops), selecting a formation opens the dossier on the right while the dispatch card stays on the left: about a fifth of the width is left for the map, under the top controls.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "style.css:575-582",
+    "docs/audit-post8-evidence/visual-maps/d1024/selected-sthilaire.jpg"
+   ],
+   "evidence": "d1024/selected-sthilaire.jpg: card x 16-456, dossier x 665-1024; the card gives way to the dossier only when the rail is shown (style.css:581) or below 720 px.",
+   "expected": "The map keeps a usable area when a formation is selected.",
+   "observed": "209 px wide map strip.",
+   "remedy": "Let the dispatch card give way to an open dossier below 1080 px as on the phone, or collapse it to its head.",
+   "effort": "0.5-1 day",
+   "judgement_kind": "UX"
+  },
+  {
+   "title": "V-M14: The low views' wall of formation names remains (decision 255 left it open)",
+   "category": "accepted-compromise",
+   "severity": "S3",
+   "priority": "P3",
+   "subsystem": "map layer / far names",
+   "user_impact": "Looking east over the Goldbach at 12:00, 31 labels stand in the top half of the view over a distant cluster, their leader lines converging; the scene the visitor looks at is behind the text. 263 (a)'s lighter plate makes far names a step quieter but the wall's footprint is unchanged.",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "docs/STAGE8_SPEC.md:2507-2513",
+    "docs/STAGE8_SPEC.md:4812-4837",
+    "docs/audit-post8-evidence/visual-maps/d1280/wall-1200.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1280/wall-1200.json"
+   ],
+   "evidence": "d1280/wall-1200: 31 drawn items in y 41-340 of 720 px, 19 names (16 far at 7.06-7.30:1, 3 full at 12.5:1), 3 events, 3 arrow labels, 4 places, the plateau reading; label area 8.5% of the view.",
+   "expected": "Decision 255: not marked resolved; option (d) a separate prototype.",
+   "observed": "As the decision describes.",
+   "remedy": "Owner's choice: e.g. collapse far names into their corps' or column's name beyond the far step, or a count badge.",
+   "effort": "2-5 days",
+   "judgement_kind": "cartographic / aesthetic"
+  },
+  {
+   "title": "V-M15: The default event glyph reads as a north arrow on the paper map, and the 'capture' glyph as the objective marker",
+   "category": "probable-problem",
+   "severity": "S4",
+   "priority": "P3",
+   "subsystem": "symbols / event glyphs",
+   "user_impact": "A pale ring with an up-pointing arrow, always pointing up the screen, sits on the north-up paper map (paper-pratzen, top centre) where a reader expects a north arrow; the ring-and-cross 'capture' glyph mimics the objective crosshair.",
+   "status": "confirmed",
+   "origin": "inherited",
+   "refs": [
+    "app.js:3914-3927",
+    "docs/audit-post8-evidence/visual-maps/d1600/paper-pratzen.jpg"
+   ],
+   "evidence": "eventGlyph: default kind draws a vertical shaft with a head inside a ring; 'capture' draws a ring with a full cross.",
+   "expected": "Glyphs that cannot be mistaken for map furniture or another symbol.",
+   "observed": "Look-alikes.",
+   "remedy": "Point the default glyph along its event's direction or use a distinct shape; give capture and objective different forms.",
+   "effort": "0.5 day",
+   "judgement_kind": "cartographic"
+  },
+  {
+   "title": "V-M16: The Littawa's name is dropped in the Plans view (section 22.4), and at 1280 px too",
+   "category": "accepted-compromise",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "Plans view",
+   "user_impact": "The river south of the plateau is unnamed in the Plans view; it can be focused by keyboard.",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "docs/STAGE8_SPEC.md:5317-5330",
+    "docs/audit-post8-evidence/visual-maps/d1600/plans-overview.json",
+    "docs/audit-post8-evidence/visual-maps/d1280/plans-overview.json"
+   ],
+   "evidence": "t:litava dropped at 1600 (13 dropped, the limit 13) and at 1280 (17 dropped).",
+   "expected": "As section 22.4 accepted.",
+   "observed": "As accepted.",
+   "remedy": "Follows V-M5 or V-M11 if adopted.",
+   "effort": "none separately",
+   "judgement_kind": "cartographic"
+  },
+  {
+   "title": "V-M17: Paper-map arrows grow without a cap when zoomed in",
+   "category": "accepted-compromise",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "paper map / arrows",
+   "user_impact": "At the 250 m scale the movement arrows are 60-80 px wide and cover the formations' marks, the hillshade and the objective (paper-pratzen, paper-sokolnitz).",
+   "status": "confirmed",
+   "origin": "accepted-compromise",
+   "refs": [
+    "docs/STAGE8_SPEC.md:1874-1890",
+    "docs/audit-post8-evidence/visual-maps/d1600/paper-pratzen.jpg",
+    "docs/audit-post8-evidence/visual-maps/d1600/paper-sokolnitz.jpg"
+   ],
+   "evidence": "Decision 241 (a)'s scope: 'On the paper map nothing is capped'.",
+   "expected": "As decided.",
+   "observed": "As decided.",
+   "remedy": "Optional: a screen-space cap on the paper map too.",
+   "effort": "1-2 days",
+   "judgement_kind": "aesthetic"
+  },
+  {
+   "title": "V-M18: 'Litava river' (modern Czech) stands among the 1805 German forms (Sokolnitz, Telnitz, Augezd, Satschan)",
+   "category": "optional-improvement",
+   "severity": "S4",
+   "priority": "P4",
+   "subsystem": "place names (data)",
+   "user_impact": "Inconsistent place-name convention on the map; section 22.4 and the stream's own ribbon (world.js) call it the Littawa.",
+   "status": "confirmed",
+   "origin": "optional-improvement",
+   "refs": [
+    "data.js:692-693",
+    "world.js:1622"
+   ],
+   "evidence": "FEATURES litava name 'Litava river', sub 'Also Littawa'; the ribbon is named 'Littawa' in world.js.",
+   "expected": "One naming convention (decision 205: one name per thing).",
+   "observed": "Mixed.",
+   "remedy": "A data task if the owner wants it (data.js is guarded).",
+   "effort": "0.5 day with the data task's records",
+   "judgement_kind": "typographic / records"
+  }
+ ],
+ "experiments": [
+  {
+   "command": "node tools/audit-post8/visual-maps/capture.js d1600|d1280|d1024 [shots]  (first attempt, several partial runs)",
+   "environment": "Chromium 141.0.7390.37 headless shell, SwiftShader; harness page; machine load 20-27",
+   "outcome": "45 captures with JSON (d1600 32, d1280 8, d1024 5); 0 console messages (d*/errors.json)",
+   "evidence_path": "docs/audit-post8-evidence/visual-maps/d1600, d1280, d1024",
+   "limitations": "Layers turned on by one shot stayed on for later shots of the same run: 9 of the 1600 captures have confidence, skeleton and routes on without asking for them (selected-sthilaire, selected-sthilaire-paper, selected-soult-counters, pratzen-low, wall-1200, wall-1200-counters, wall-0900-arrows-on, eyes-al-overview, eye-zuran-noarrows; their JSON 'layers' says so); judgements on default views use the 1280/1024 captures and the visual-landscape area's v-low shots"
+  },
+  {
+   "command": "node tools/audit-post8/visual-maps/phone.js 390x844 | 844x390  (first attempt)",
+   "environment": "phone context density 3, touch, iPhone UA; real taps and CDP touch drags",
+   "outcome": "14 and 12 captures; 'Whose eyes?' skipped (no button below 720 px); the rail drag started on a marker (no clock change)",
+   "evidence_path": "docs/audit-post8-evidence/visual-maps/phone-390x844, phone-844x390",
+   "limitations": "the clock moved to 05:29/04:00 after the phase tap for the later shots"
+  },
+  {
+   "command": "node tools/audit-post8/visual-maps/visitor.js 1280x720  (first attempt, interrupted after 3 shots)",
+   "environment": "visitor page (no ?harness=1), transitions kept",
+   "outcome": "first screen with the card, Explore, one event step; caption parts read back",
+   "evidence_path": "docs/audit-post8-evidence/visual-maps/visitor-1280x720",
+   "limitations": "the kids' 'ellipsized' flags are unreliable for inline elements; the screenshot is the evidence"
+  },
+  {
+   "command": "node tools/audit-post8/visual-maps/capture.js d1600 clean-field,wall-0900,land-field-key",
+   "environment": "as above; load about 25",
+   "outcome": "3 captures, 0 console messages (d1600/errors-clean-field+wall-0900+land-field-key.json); 682 s",
+   "evidence_path": "docs/audit-post8-evidence/visual-maps/d1600"
+  },
+  {
+   "command": "node tools/audit-post8/visual-maps/rail-probe.js",
+   "environment": "phone page 390x844 then resized to 1280x720 and 1600x900",
+   "outcome": "rail hit map 65.8% markers (phone), 28.5% (1280), 22.7% (1600); drag from rail scrubs, drag from marker does nothing, tap on marker jumps and opens the dossier; 'Whose eyes?' reached in 4 taps; 0 console messages; 190 s",
+   "evidence_path": "docs/audit-post8-evidence/visual-maps/phone-390x844/rail-probe.json"
+  },
+  {
+   "command": "node tools/audit-post8/visual-maps/clips.js counters-pan10 1600x900; python3 -I tools/audit-post8/visual-maps/clip-report.py ...",
+   "environment": "motion driver (tools/visual/motion.js), the app's loop at 30 fps, WebGL drawn",
+   "outcome": "61 frames logged, 21 captured, mp4+gif, two sheets; corps swap at frame 59; 0 console messages; 345 s",
+   "evidence_path": "docs/audit-post8-evidence/visual-maps/clips/",
+   "limitations": "a first 120-frame attempt was stopped after 2 frames (about 80 s per captured frame under load) and shortened"
+  },
+  {
+   "command": "python3 -I tools/audit-post8/visual-maps/sheet.py ... (8 sheets); in-line PIL crops",
+   "environment": "local",
+   "outcome": "sheets A-H and crops",
+   "evidence_path": "docs/audit-post8-evidence/visual-maps/sheets/, crops/"
+  }
+ ],
+ "not_checked": [
+  "Real devices (iPhone Safari, Android, tablets), real fingers and device GPUs: software WebGL and synthetic touch only",
+  "The visitor page's drift and smoke in motion beyond the three visitor captures; reduced motion",
+  "Other viewports: 1366x768, 1920x1080 and larger, 360 and 430 px phones, tablet portrait 768x1024, browser zoom",
+  "Play in motion (the visibility area measured it); orbit and zoom clips; the opening and the tour views (the a11y area)",
+  "The 39 harness cases themselves and check:visual (run separately by the audit)",
+  "The day-track inset, the sources sheet and the dossiers' text (other areas)",
+  "Screen readers and keyboard focus order (the a11y area)",
+  "Why each of the six counters is dropped at rest in the counters view beyond the priority order (the visibility area)",
+  "The eye level's blue marks under the Allied reading and at other clocks; the 1x and 10.33x factors' maps",
+  "Whether the plateau label's 13,300 includes Vandamme under the Allied reading (the function's lack of a reading test is read from the code; the composition was not computed)"
+ ],
+ "strengths": [
+  "No overlapping labels in any of the 74 captures, and every measured text at AA or better as rendered (least 4.84:1; 2,486 measurements)",
+  "One type size for battle text (12.5 px) and a consistent split: sans for counters, serif for labels, diamonds for places, side squares for names",
+  "The paper map's and the counters' selection: everything outside the family dimmed, the selected counter full with its status in words and its commander",
+  "Close up, counters switch to full form and spell out their status ('Heavily engaged', 'Counter-attacking') with strength and commander",
+  "Watch's caption follows the model exactly at 1600 (centre separation at 14:20, none at 14:40), as section 22.4 states",
+  "Decision 263 (a) applied as specified: far names on the lighter plate at 6.96-7.30:1, near and protected names on the full plate, one size",
+  "The phone's Menu, Layers, dispatch sheet and dossier sheet open and close by real taps without overlapping; a one-finger drag pans the map",
+  "Clean presents the battlefield alone with figures, outlines and arrows and a single 'Show interface' control",
+  "The integrity labelling on the map itself: 'derived' in the plateau label, '(disputed)' and '(hour disputed)' on arrow and event labels, '?' badges for reported formations",
+  "Zero console warnings or errors in every run"
+ ],
+ "carried_status": [
+  {
+   "item": "the Littawa's name in the Plans view",
+   "status": "still dropped; accepted (section 22.4, the case's limit 13)",
+   "evidence": "d1600/plans-overview.json: 13 dropped, t:litava among them; d1280/plans-overview.json: 17 dropped, t:litava and three plan labels among them (V-M16, V-M11)"
+  },
+  {
+   "item": "the low views' wall of names",
+   "status": "present and open as decision 255 left it; decision 263 (a)'s far plate applied and measured",
+   "evidence": "d1280/wall-1200: 31 labels in the top 47% of the view, 19 formation names, 16 far at 7.06-7.30:1 against 12.5:1 near; label area 8.5% (V-M14)"
+  }
+ ],
+ "ledger": [
+  {
+   "claim": "At 14:40 the Watch caption shows no derived reading; at 14:20 it shows the centre separation (STAGE8_SPEC 22.4)",
+   "verification": "confirmed at 1600x900",
+   "method": "caption read-back d1600/watch-1420.json, watch-1440.json"
+  },
+  {
+   "claim": "Far names drawn on the lighter plate at AA (21.3)",
+   "verification": "confirmed",
+   "method": "farNames read-back in d1280/wall-1200.json, d1600/wall-1200.json, d1600/wall-0900.json (least 6.96:1)"
+  },
+  {
+   "claim": "No map text below AA (21.3, 22.4)",
+   "verification": "confirmed in 74 captures",
+   "method": "window.__aus.textContrast on each frame's PNG"
+  },
+  {
+   "claim": "Decision 159: no reading drawn cut",
+   "verification": "confirmed; but readings give way entirely in Watch at 1280",
+   "method": "caption read-backs (V-M6)"
+  },
+  {
+   "claim": "Decision 251: no place of an unknown formation drawn under a reading",
+   "verification": "holds for its listed surfaces; not for arrows, arrow labels or the plateau count",
+   "method": "code read and capture (V-M4)"
+  }
+ ]
+}

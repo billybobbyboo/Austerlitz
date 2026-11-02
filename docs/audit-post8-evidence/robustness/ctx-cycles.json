@@ -1,0 +1,1092 @@
+{
+ "what": "context lost and restored: 5 idle, 3 playing; harness page 1366x768",
+ "started": "2026-11-02T07:06:55.792Z",
+ "build": "austerlitz-command-map.html",
+ "steps": [
+  {
+   "label": "boot",
+   "t": "2026-11-02T07:08:23.963Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 382,
+    "Nodes": 1711,
+    "LayoutCount": 22,
+    "RecalcStyleCount": 25,
+    "LayoutDuration": 0.004,
+    "RecalcStyleDuration": 0.015,
+    "ScriptDuration": 0.306,
+    "TaskDuration": 0.628,
+    "JSHeapUsedSize": 15376128,
+    "JSHeapTotalSize": 15769600
+   },
+   "page": {
+    "geometries": 379,
+    "textures": 30,
+    "programs": 35,
+    "calls": 748,
+    "triangles": 1929775,
+    "frames": 15,
+    "skipped": 1,
+    "devState": "idle",
+    "lost": false,
+    "built": 206,
+    "depth": 206,
+    "geo": {
+     "n": 480,
+     "listeners": 367,
+     "max": 1
+    },
+    "tex": {
+     "n": 44,
+     "listeners": 16,
+     "max": 1
+    },
+    "mat": {
+     "n": 969,
+     "listeners": 639,
+     "max": 1
+    },
+    "dom": 815,
+    "mlItems": 31,
+    "clock": 240,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 10,
+     "rafCb": 9,
+     "to": 0,
+     "toCb": 0,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {},
+     "ivBy": {}
+    }
+   },
+   "log": 0
+  },
+  {
+   "label": "control clock step (no loss yet)",
+   "t": "2026-11-02T07:10:03.903Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 566,
+    "Nodes": 1859,
+    "LayoutCount": 65,
+    "RecalcStyleCount": 69,
+    "LayoutDuration": 0.014,
+    "RecalcStyleDuration": 0.021,
+    "ScriptDuration": 6.721,
+    "TaskDuration": 7.412,
+    "JSHeapUsedSize": 15732928,
+    "JSHeapTotalSize": 16293888
+   },
+   "page": {
+    "geometries": 490,
+    "textures": 32,
+    "programs": 35,
+    "calls": 654,
+    "triangles": 1915201,
+    "frames": 29,
+    "skipped": 2,
+    "devState": "idle",
+    "lost": false,
+    "built": 223,
+    "depth": 223,
+    "geo": {
+     "n": 439,
+     "listeners": 348,
+     "max": 1
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 18,
+     "max": 1
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 664,
+     "max": 1
+    },
+    "dom": 899,
+    "mlItems": 77,
+    "clock": 525,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 25,
+     "rafCb": 24,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "step": {
+    "phase": 3,
+    "clock": 525,
+    "firstFrameMs": 10752,
+    "settledMs": 88519,
+    "frames": 14,
+    "belongWarnings": 0,
+    "allWarnings": 0
+   }
+  },
+  {
+   "label": "idle cycle 1",
+   "t": "2026-11-02T07:10:20.227Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 566,
+    "Nodes": 1859,
+    "LayoutCount": 70,
+    "RecalcStyleCount": 74,
+    "LayoutDuration": 0.015,
+    "RecalcStyleDuration": 0.022,
+    "ScriptDuration": 8.8,
+    "TaskDuration": 21.656,
+    "JSHeapUsedSize": 18293848,
+    "JSHeapTotalSize": 19177472
+   },
+   "page": {
+    "geometries": 310,
+    "textures": 31,
+    "programs": 33,
+    "calls": 654,
+    "triangles": 1915201,
+    "frames": 32,
+    "skipped": 65,
+    "devState": "idle",
+    "lost": false,
+    "built": 404,
+    "depth": 408,
+    "geo": {
+     "n": 439,
+     "listeners": 646,
+     "max": 2
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 35,
+     "max": 2
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 664,
+     "max": 1
+    },
+    "dom": 899,
+    "mlItems": 77,
+    "clock": 525,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 91,
+     "rafCb": 90,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "cycle": {
+    "lost": {
+     "lost": true,
+     "notice": "The 3D view has stopped: the browser lost its graphics conte",
+     "button": true,
+     "framesWhileLost": 0,
+     "clockWhileLost": 0
+    },
+    "firstFrameAfterRestoreMs": 2066,
+    "after": {
+     "settledMs": 601
+    },
+    "noticeAfter": "",
+    "lostAfter": false,
+    "clock": 525,
+    "belongWarnings": 0,
+    "allWarnings": 0
+   }
+  },
+  {
+   "label": "idle cycle 2",
+   "t": "2026-11-02T07:10:44.479Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 566,
+    "Nodes": 1859,
+    "LayoutCount": 75,
+    "RecalcStyleCount": 79,
+    "LayoutDuration": 0.016,
+    "RecalcStyleDuration": 0.023,
+    "ScriptDuration": 10.741,
+    "TaskDuration": 37.918,
+    "JSHeapUsedSize": 20977388,
+    "JSHeapTotalSize": 22323200
+   },
+   "page": {
+    "geometries": 310,
+    "textures": 31,
+    "programs": 33,
+    "calls": 654,
+    "triangles": 1915201,
+    "frames": 35,
+    "skipped": 129,
+    "devState": "idle",
+    "lost": false,
+    "built": 585,
+    "depth": 593,
+    "geo": {
+     "n": 439,
+     "listeners": 944,
+     "max": 3
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 52,
+     "max": 3
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 664,
+     "max": 1
+    },
+    "dom": 899,
+    "mlItems": 77,
+    "clock": 525,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 158,
+     "rafCb": 157,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "cycle": {
+    "lost": {
+     "lost": true,
+     "notice": "The 3D view has stopped: the browser lost its graphics conte",
+     "button": true,
+     "framesWhileLost": 0,
+     "clockWhileLost": 0
+    },
+    "firstFrameAfterRestoreMs": 1898,
+    "after": {
+     "settledMs": 6534
+    },
+    "noticeAfter": "",
+    "lostAfter": false,
+    "clock": 525,
+    "belongWarnings": 0,
+    "allWarnings": 0
+   }
+  },
+  {
+   "label": "idle cycle 3",
+   "t": "2026-11-02T07:11:01.760Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 566,
+    "Nodes": 1859,
+    "LayoutCount": 80,
+    "RecalcStyleCount": 84,
+    "LayoutDuration": 0.017,
+    "RecalcStyleDuration": 0.023,
+    "ScriptDuration": 12.692,
+    "TaskDuration": 47.01,
+    "JSHeapUsedSize": 23652156,
+    "JSHeapTotalSize": 24682496
+   },
+   "page": {
+    "geometries": 310,
+    "textures": 31,
+    "programs": 33,
+    "calls": 654,
+    "triangles": 1915201,
+    "frames": 38,
+    "skipped": 193,
+    "devState": "idle",
+    "lost": false,
+    "built": 766,
+    "depth": 778,
+    "geo": {
+     "n": 439,
+     "listeners": 1242,
+     "max": 4
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 69,
+     "max": 4
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 664,
+     "max": 1
+    },
+    "dom": 899,
+    "mlItems": 77,
+    "clock": 525,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 225,
+     "rafCb": 224,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "cycle": {
+    "lost": {
+     "lost": true,
+     "notice": "The 3D view has stopped: the browser lost its graphics conte",
+     "button": true,
+     "framesWhileLost": 0,
+     "clockWhileLost": 0
+    },
+    "firstFrameAfterRestoreMs": 1950,
+    "after": {
+     "settledMs": 6726
+    },
+    "noticeAfter": "",
+    "lostAfter": false,
+    "clock": 525,
+    "belongWarnings": 0,
+    "allWarnings": 0
+   }
+  },
+  {
+   "label": "idle cycle 4",
+   "t": "2026-11-02T07:11:27.075Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 566,
+    "Nodes": 1859,
+    "LayoutCount": 85,
+    "RecalcStyleCount": 89,
+    "LayoutDuration": 0.018,
+    "RecalcStyleDuration": 0.024,
+    "ScriptDuration": 14.884,
+    "TaskDuration": 60.093,
+    "JSHeapUsedSize": 26410856,
+    "JSHeapTotalSize": 27566080
+   },
+   "page": {
+    "geometries": 310,
+    "textures": 31,
+    "programs": 33,
+    "calls": 654,
+    "triangles": 1915201,
+    "frames": 41,
+    "skipped": 257,
+    "devState": "idle",
+    "lost": false,
+    "built": 947,
+    "depth": 963,
+    "geo": {
+     "n": 439,
+     "listeners": 1540,
+     "max": 5
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 86,
+     "max": 5
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 664,
+     "max": 1
+    },
+    "dom": 899,
+    "mlItems": 77,
+    "clock": 525,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 292,
+     "rafCb": 291,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "cycle": {
+    "lost": {
+     "lost": true,
+     "notice": "The 3D view has stopped: the browser lost its graphics conte",
+     "button": true,
+     "framesWhileLost": 0,
+     "clockWhileLost": 0
+    },
+    "firstFrameAfterRestoreMs": 2141,
+    "after": {
+     "settledMs": 10805
+    },
+    "noticeAfter": "",
+    "lostAfter": false,
+    "clock": 525,
+    "belongWarnings": 0,
+    "allWarnings": 0
+   }
+  },
+  {
+   "label": "idle cycle 5",
+   "t": "2026-11-02T07:11:44.529Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 566,
+    "Nodes": 1859,
+    "LayoutCount": 90,
+    "RecalcStyleCount": 94,
+    "LayoutDuration": 0.027,
+    "RecalcStyleDuration": 0.024,
+    "ScriptDuration": 16.846,
+    "TaskDuration": 75.576,
+    "JSHeapUsedSize": 29133472,
+    "JSHeapTotalSize": 30187520
+   },
+   "page": {
+    "geometries": 310,
+    "textures": 31,
+    "programs": 33,
+    "calls": 654,
+    "triangles": 1915201,
+    "frames": 44,
+    "skipped": 320,
+    "devState": "idle",
+    "lost": false,
+    "built": 1128,
+    "depth": 1148,
+    "geo": {
+     "n": 439,
+     "listeners": 1838,
+     "max": 6
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 103,
+     "max": 6
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 664,
+     "max": 1
+    },
+    "dom": 899,
+    "mlItems": 77,
+    "clock": 525,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": true,
+    "heap": 103000000,
+    "counts": {
+     "raf": 358,
+     "rafCb": 357,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 0,
+   "cycle": {
+    "lost": {
+     "lost": true,
+     "notice": "The 3D view has stopped: the browser lost its graphics conte",
+     "button": true,
+     "framesWhileLost": 0,
+     "clockWhileLost": 0
+    },
+    "firstFrameAfterRestoreMs": 1916,
+    "after": {
+     "settledMs": 602
+    },
+    "noticeAfter": "",
+    "lostAfter": false,
+    "clock": 525,
+    "belongWarnings": 0,
+    "allWarnings": 0
+   }
+  },
+  {
+   "label": "playing cycle 1",
+   "t": "2026-11-02T07:12:19.241Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 579,
+    "Nodes": 1880,
+    "LayoutCount": 122,
+    "RecalcStyleCount": 136,
+    "LayoutDuration": 0.036,
+    "RecalcStyleDuration": 0.032,
+    "ScriptDuration": 19.73,
+    "TaskDuration": 102.453,
+    "JSHeapUsedSize": 33115488,
+    "JSHeapTotalSize": 34680832
+   },
+   "page": {
+    "geometries": 386,
+    "textures": 27,
+    "programs": 31,
+    "calls": 729,
+    "triangles": 2202616,
+    "frames": 47,
+    "skipped": 377,
+    "devState": "active",
+    "lost": false,
+    "built": 1325,
+    "depth": 1373,
+    "geo": {
+     "n": 439,
+     "listeners": 1990,
+     "max": 7
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 122,
+     "max": 7
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 685,
+     "max": 1
+    },
+    "dom": 914,
+    "mlItems": 77,
+    "clock": 527.2230000000029,
+    "playing": true,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": false,
+    "heap": 103000000,
+    "counts": {
+     "raf": 419,
+     "rafCb": 418,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 258,
+   "cycle": {
+    "lost": {
+     "lost": true,
+     "notice": "The 3D view has stopped: the browser lost its graphics conte",
+     "button": true,
+     "framesWhileLost": 0,
+     "clockWhileLost": 0.6
+    },
+    "firstFrameAfterRestoreMs": 2784,
+    "after": {
+     "playing": true,
+     "framesIn4s": 1,
+     "clockAdvancedIn4s": 0.42
+    },
+    "noticeAfter": "",
+    "lostAfter": false,
+    "clock": 527.2230000000029,
+    "belongWarnings": 256,
+    "allWarnings": 258
+   }
+  },
+  {
+   "label": "playing cycle 2",
+   "t": "2026-11-02T07:12:53.188Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 579,
+    "Nodes": 1894,
+    "LayoutCount": 143,
+    "RecalcStyleCount": 165,
+    "LayoutDuration": 0.043,
+    "RecalcStyleDuration": 0.04,
+    "ScriptDuration": 22.179,
+    "TaskDuration": 131.021,
+    "JSHeapUsedSize": 36672496,
+    "JSHeapTotalSize": 38088704
+   },
+   "page": {
+    "geometries": 400,
+    "textures": 28,
+    "programs": 31,
+    "calls": 778,
+    "triangles": 2206654,
+    "frames": 50,
+    "skipped": 436,
+    "devState": "active",
+    "lost": false,
+    "built": 1539,
+    "depth": 1593,
+    "geo": {
+     "n": 439,
+     "listeners": 1961,
+     "max": 8
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 142,
+     "max": 8
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 694,
+     "max": 1
+    },
+    "dom": 928,
+    "mlItems": 77,
+    "clock": 529.403000000003,
+    "playing": true,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": false,
+    "heap": 103000000,
+    "counts": {
+     "raf": 482,
+     "rafCb": 481,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 335,
+   "cycle": {
+    "lost": {
+     "lost": true,
+     "notice": "The 3D view has stopped: the browser lost its graphics conte",
+     "button": true,
+     "framesWhileLost": 0,
+     "clockWhileLost": 0.6
+    },
+    "firstFrameAfterRestoreMs": 2406,
+    "after": {
+     "playing": true,
+     "framesIn4s": 1,
+     "clockAdvancedIn4s": 0.38
+    },
+    "noticeAfter": "",
+    "lostAfter": false,
+    "clock": 529.403000000003,
+    "belongWarnings": 76,
+    "allWarnings": 77
+   }
+  },
+  {
+   "label": "playing cycle 3",
+   "t": "2026-11-02T07:13:29.498Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 579,
+    "Nodes": 1909,
+    "LayoutCount": 165,
+    "RecalcStyleCount": 195,
+    "LayoutDuration": 0.051,
+    "RecalcStyleDuration": 0.049,
+    "ScriptDuration": 24.64,
+    "TaskDuration": 161.923,
+    "JSHeapUsedSize": 40370428,
+    "JSHeapTotalSize": 41758720
+   },
+   "page": {
+    "geometries": 399,
+    "textures": 28,
+    "programs": 31,
+    "calls": 794,
+    "triangles": 2180140,
+    "frames": 54,
+    "skipped": 494,
+    "devState": "active",
+    "lost": false,
+    "built": 1762,
+    "depth": 1812,
+    "geo": {
+     "n": 439,
+     "listeners": 1869,
+     "max": 9
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 162,
+     "max": 9
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 697,
+     "max": 1
+    },
+    "dom": 943,
+    "mlItems": 77,
+    "clock": 531.503000000003,
+    "playing": true,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": false,
+    "heap": 103000000,
+    "counts": {
+     "raf": 544,
+     "rafCb": 543,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 393,
+   "cycle": {
+    "lost": {
+     "lost": true,
+     "notice": "The 3D view has stopped: the browser lost its graphics conte",
+     "button": true,
+     "framesWhileLost": 0,
+     "clockWhileLost": 0.6
+    },
+    "firstFrameAfterRestoreMs": 2403,
+    "after": {
+     "playing": true,
+     "framesIn4s": 1,
+     "clockAdvancedIn4s": 0.3
+    },
+    "noticeAfter": "",
+    "lostAfter": false,
+    "clock": 531.503000000003,
+    "belongWarnings": 58,
+    "allWarnings": 58
+   }
+  },
+  {
+   "label": "paused after the cycles",
+   "t": "2026-11-02T07:13:59.861Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 579,
+    "Nodes": 1927,
+    "LayoutCount": 172,
+    "RecalcStyleCount": 203,
+    "LayoutDuration": 0.053,
+    "RecalcStyleDuration": 0.051,
+    "ScriptDuration": 24.786,
+    "TaskDuration": 162.4,
+    "JSHeapUsedSize": 40439300,
+    "JSHeapTotalSize": 41758720
+   },
+   "page": {
+    "geometries": 399,
+    "textures": 28,
+    "programs": 31,
+    "calls": 792,
+    "triangles": 2033052,
+    "frames": 59,
+    "skipped": 495,
+    "devState": "idle",
+    "lost": false,
+    "built": 1762,
+    "depth": 1812,
+    "geo": {
+     "n": 439,
+     "listeners": 1869,
+     "max": 9
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 162,
+     "max": 9
+    },
+    "mat": {
+     "n": 927,
+     "listeners": 697,
+     "max": 1
+    },
+    "dom": 961,
+    "mlItems": 77,
+    "clock": 531.503000000003,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": false,
+    "heap": 103000000,
+    "counts": {
+     "raf": 550,
+     "rafCb": 549,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 393
+  },
+  {
+   "label": "clock step 1 after 8 restores",
+   "t": "2026-11-02T07:14:53.198Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 599,
+    "Nodes": 1897,
+    "LayoutCount": 198,
+    "RecalcStyleCount": 230,
+    "LayoutDuration": 0.061,
+    "RecalcStyleDuration": 0.056,
+    "ScriptDuration": 34.07,
+    "TaskDuration": 171.996,
+    "JSHeapUsedSize": 40780672,
+    "JSHeapTotalSize": 41758720
+   },
+   "page": {
+    "geometries": 465,
+    "textures": 28,
+    "programs": 33,
+    "calls": 501,
+    "triangles": 1486606,
+    "frames": 73,
+    "skipped": 496,
+    "devState": "idle",
+    "lost": false,
+    "built": 1772,
+    "depth": 1822,
+    "geo": {
+     "n": 431,
+     "listeners": 1878,
+     "max": 9
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 146,
+     "max": 9
+    },
+    "mat": {
+     "n": 919,
+     "listeners": 741,
+     "max": 1
+    },
+    "dom": 926,
+    "mlItems": 82,
+    "clock": 630,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": false,
+    "heap": 103000000,
+    "counts": {
+     "raf": 565,
+     "rafCb": 564,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 592,
+   "step": {
+    "phase": 5,
+    "clock": 630,
+    "firstFrameMs": 11935,
+    "settledMs": 40719,
+    "frames": 14,
+    "belongWarnings": 198,
+    "allWarnings": 199
+   }
+  },
+  {
+   "label": "clock step 2 after 8 restores",
+   "t": "2026-11-02T07:15:54.832Z",
+   "cdp": {
+    "Documents": 1,
+    "Frames": 1,
+    "JSEventListeners": 635,
+    "Nodes": 1922,
+    "LayoutCount": 253,
+    "RecalcStyleCount": 286,
+    "LayoutDuration": 0.072,
+    "RecalcStyleDuration": 0.065,
+    "ScriptDuration": 43.352,
+    "TaskDuration": 181.542,
+    "JSHeapUsedSize": 41255276,
+    "JSHeapTotalSize": 43069440
+   },
+   "page": {
+    "geometries": 505,
+    "textures": 31,
+    "programs": 34,
+    "calls": 795,
+    "triangles": 2056666,
+    "frames": 87,
+    "skipped": 497,
+    "devState": "idle",
+    "lost": false,
+    "built": 1780,
+    "depth": 1830,
+    "geo": {
+     "n": 460,
+     "listeners": 1820,
+     "max": 9
+    },
+    "tex": {
+     "n": 43,
+     "listeners": 149,
+     "max": 9
+    },
+    "mat": {
+     "n": 948,
+     "listeners": 789,
+     "max": 1
+    },
+    "dom": 949,
+    "mlItems": 91,
+    "clock": 480,
+    "playing": false,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "speed": 0.5,
+    "fx": false,
+    "heap": 103000000,
+    "counts": {
+     "raf": 580,
+     "rafCb": 579,
+     "to": 1,
+     "toCb": 1,
+     "iv": 0,
+     "ivCb": 0,
+     "toBy": {
+      "anon@3400": 1
+     },
+     "ivBy": {}
+    }
+   },
+   "log": 592,
+   "step": {
+    "phase": 2,
+    "clock": 480,
+    "firstFrameMs": 12004,
+    "settledMs": 48956,
+    "frames": 14,
+    "belongWarnings": 0,
+    "allWarnings": 0
+   }
+  }
+ ],
+ "firstRunClosed": true,
+ "settleBoot": 53566,
+ "playingBeforeCycle6": true,
+ "playingBeforeCycle7": true,
+ "playingBeforeCycle8": true,
+ "settleAfterPause": 29624,
+ "log": {
+  "pageerror: Cannot read properties of null (reading 'trim')": 2,
+  "warning: WebGL: INVALID_OPERATION: delete: object does not belong to this context": 442,
+  "warning: WebGL: INVALID_OPERATION: deleteVertexArray: object does not belong to this context": 146,
+  "warning: WebGL: too many errors, no more errors will be reported to the console for this context.": 2
+ },
+ "finished": "2026-11-02T07:15:54.836Z"
+}

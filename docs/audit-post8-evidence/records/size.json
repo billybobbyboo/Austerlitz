@@ -1,0 +1,4287 @@
+{
+ "html": {
+  "bytes": 2810630
+ },
+ "files": [
+  {
+   "file": "assets.js",
+   "bytes": 666201,
+   "commentBytes": 198,
+   "commentShare": 0
+  },
+  {
+   "file": "tokens.js",
+   "bytes": 7070,
+   "commentBytes": 2140,
+   "commentShare": 0.303
+  },
+  {
+   "file": "geo.js",
+   "bytes": 9554,
+   "commentBytes": 2592,
+   "commentShare": 0.271
+  },
+  {
+   "file": "data.js",
+   "bytes": 107929,
+   "commentBytes": 5264,
+   "commentShare": 0.049
+  },
+  {
+   "file": "appearance.js",
+   "bytes": 188561,
+   "commentBytes": 10394,
+   "commentShare": 0.055
+  },
+  {
+   "file": "analysis.js",
+   "bytes": 47651,
+   "commentBytes": 4200,
+   "commentShare": 0.088
+  },
+  {
+   "file": "narrative.js",
+   "bytes": 78345,
+   "commentBytes": 2032,
+   "commentShare": 0.026
+  },
+  {
+   "file": "world.js",
+   "bytes": 200777,
+   "commentBytes": 71637,
+   "commentShare": 0.357
+  },
+  {
+   "file": "symbols.js",
+   "bytes": 7414,
+   "commentBytes": 2440,
+   "commentShare": 0.329
+  },
+  {
+   "file": "app.js",
+   "bytes": 1300743,
+   "commentBytes": 336951,
+   "commentShare": 0.259
+  }
+ ],
+ "css": {
+  "bytes": 66595
+ },
+ "shell": {
+  "bytes": 33138
+ },
+ "appTop": [
+  {
+   "name": "AUSTERLITZ_DEBUG",
+   "bytes": 611113,
+   "line": 9154
+  },
+  {
+   "name": "makeBlock",
+   "bytes": 29636,
+   "line": 1349
+  },
+  {
+   "name": "buildUI",
+   "bytes": 15645,
+   "line": 6912
+  },
+  {
+   "name": "mlLayout",
+   "bytes": 12395,
+   "line": 5427
+  },
+  {
+   "name": "dossierFormation",
+   "bytes": 9936,
+   "line": 7931
+  },
+  {
+   "name": "updateVisibility",
+   "bytes": 9309,
+   "line": 6085
+  },
+  {
+   "name": "initFX",
+   "bytes": 8113,
+   "line": 3544
+  },
+  {
+   "name": "LABELS",
+   "bytes": 7988,
+   "line": 6543
+  },
+  {
+   "name": "KEYS",
+   "bytes": 7545,
+   "line": 6646
+  },
+  {
+   "name": "openSources",
+   "bytes": 6796,
+   "line": 8675
+  },
+  {
+   "name": "MAPCAM",
+   "bytes": 6791,
+   "line": 4897
+  },
+  {
+   "name": "OVERLAYS",
+   "bytes": 6662,
+   "line": 23
+  },
+  {
+   "name": "dayTrackEl",
+   "bytes": 6446,
+   "line": 2460
+  },
+  {
+   "name": "mlCollect",
+   "bytes": 6396,
+   "line": 5092
+  },
+  {
+   "name": "buildingNotes",
+   "bytes": 5518,
+   "line": 8474
+  },
+  {
+   "name": "buildTimeline",
+   "bytes": 5182,
+   "line": 7478
+  },
+  {
+   "name": "standardNotes",
+   "bytes": 4580,
+   "line": 8528
+  },
+  {
+   "name": "LANDCAM",
+   "bytes": 4486,
+   "line": 6473
+  },
+  {
+   "name": "drapedRibbon",
+   "bytes": 4388,
+   "line": 2777
+  },
+  {
+   "name": "poseBlock",
+   "bytes": 4227,
+   "line": 5953
+  },
+  {
+   "name": "dressSection",
+   "bytes": 4222,
+   "line": 7851
+  },
+  {
+   "name": "init",
+   "bytes": 3941,
+   "line": 613
+  },
+  {
+   "name": "KIT",
+   "bytes": 3780,
+   "line": 863
+  },
+  {
+   "name": "bindCanvas",
+   "bytes": 3582,
+   "line": 6854
+  },
+  {
+   "name": "dossierEvent",
+   "bytes": 3536,
+   "line": 8284
+  },
+  {
+   "name": "dossierFeature",
+   "bytes": 3442,
+   "line": 8199
+  },
+  {
+   "name": "animGLSL",
+   "bytes": 3423,
+   "line": 1849
+  },
+  {
+   "name": "paintLegend",
+   "bytes": 3286,
+   "line": 5580
+  },
+  {
+   "name": "paintTimeline",
+   "bytes": 3060,
+   "line": 7607
+  },
+  {
+   "name": "troopNotes",
+   "bytes": 2914,
+   "line": 8425
+  },
+  {
+   "name": "paintSituation",
+   "bytes": 2740,
+   "line": 7352
+  },
+  {
+   "name": "lightNotes",
+   "bytes": 2696,
+   "line": 8571
+  },
+  {
+   "name": "gaitStep",
+   "bytes": 2683,
+   "line": 5850
+  },
+  {
+   "name": "refLabel",
+   "bytes": 2675,
+   "line": 8601
+  },
+  {
+   "name": "compactCard",
+   "bytes": 2632,
+   "line": 7791
+  },
+  {
+   "name": "claimsIndex",
+   "bytes": 2615,
+   "line": 8648
+  },
+  {
+   "name": "paintDrawerBody",
+   "bytes": 2538,
+   "line": 7737
+  },
+  {
+   "name": "renderFX",
+   "bytes": 2501,
+   "line": 3711
+  },
+  {
+   "name": "expr@400",
+   "bytes": 2472,
+   "line": 400
+  },
+  {
+   "name": "applyLabels",
+   "bytes": 2453,
+   "line": 6615
+  },
+  {
+   "name": "placeLights",
+   "bytes": 2434,
+   "line": 337
+  },
+  {
+   "name": "LIGHT",
+   "bytes": 2428,
+   "line": 159
+  },
+  {
+   "name": "planRibbon",
+   "bytes": 2422,
+   "line": 4456
+  },
+  {
+   "name": "setMode",
+   "bytes": 2370,
+   "line": 4823
+  },
+  {
+   "name": "gdepthPass",
+   "bytes": 2344,
+   "line": 2969
+  },
+  {
+   "name": "artilleryNotes",
+   "bytes": 2297,
+   "line": 8446
+  },
+  {
+   "name": "mlPlaceItem",
+   "bytes": 2271,
+   "line": 5255
+  },
+  {
+   "name": "buildingsSection",
+   "bytes": 2270,
+   "line": 8179
+  },
+  {
+   "name": "buildFormations",
+   "bytes": 2233,
+   "line": 2640
+  },
+  {
+   "name": "bindTimeTips",
+   "bytes": 2230,
+   "line": 7457
+  },
+  {
+   "name": "dayTrackModel",
+   "bytes": 2170,
+   "line": 2432
+  },
+  {
+   "name": "paintKey",
+   "bytes": 2161,
+   "line": 7148
+  },
+  {
+   "name": "buildOOB",
+   "bytes": 2129,
+   "line": 7266
+  },
+  {
+   "name": "anchorList",
+   "bytes": 2062,
+   "line": 3235
+  },
+  {
+   "name": "groundPatch",
+   "bytes": 2014,
+   "line": 2102
+  },
+  {
+   "name": "dwellAdvance",
+   "bytes": 1973,
+   "line": 8842
+  },
+  {
+   "name": "paintDevStats",
+   "bytes": 1953,
+   "line": 3826
+  },
+  {
+   "name": "loop",
+   "bytes": 1941,
+   "line": 9117
+  },
+  {
+   "name": "mlHoverAt",
+   "bytes": 1911,
+   "line": 5706
+  },
+  {
+   "name": "fitOverview",
+   "bytes": 1906,
+   "line": 6415
+  },
+  {
+   "name": "dossierAnalysis",
+   "bytes": 1896,
+   "line": 8339
+  },
+  {
+   "name": "SUN_DAY",
+   "bytes": 1876,
+   "line": 197
+  },
+  {
+   "name": "flagTexture",
+   "bytes": 1795,
+   "line": 1777
+  },
+  {
+   "name": "auditMovement",
+   "bytes": 1784,
+   "line": 3401
+  },
+  {
+   "name": "setPresentation",
+   "bytes": 1720,
+   "line": 8935
+  },
+  {
+   "name": "paintExaggeration",
+   "bytes": 1706,
+   "line": 2576
+  },
+  {
+   "name": "fitCaption",
+   "bytes": 1686,
+   "line": 7394
+  },
+  {
+   "name": "posRow",
+   "bytes": 1614,
+   "line": 7902
+  },
+  {
+   "name": "updateScaleBar",
+   "bytes": 1575,
+   "line": 8383
+  },
+  {
+   "name": "mlInit",
+   "bytes": 1552,
+   "line": 5023
+  },
+  {
+   "name": "applyLight",
+   "bytes": 1528,
+   "line": 285
+  },
+  {
+   "name": "cullRefresh",
+   "bytes": 1465,
+   "line": 1943
+  },
+  {
+   "name": "mlLegendFit",
+   "bytes": 1461,
+   "line": 5624
+  },
+  {
+   "name": "kitStdShape",
+   "bytes": 1425,
+   "line": 1754
+  },
+  {
+   "name": "mlObstacles",
+   "bytes": 1423,
+   "line": 5217
+  },
+  {
+   "name": "routeBuild",
+   "bytes": 1414,
+   "line": 2372
+  },
+  {
+   "name": "ANIM",
+   "bytes": 1405,
+   "line": 981
+  },
+  {
+   "name": "buildArrow",
+   "bytes": 1403,
+   "line": 3027
+  },
+  {
+   "name": "marchRow",
+   "bytes": 1355,
+   "line": 7917
+  },
+  {
+   "name": "redrawGround",
+   "bytes": 1338,
+   "line": 2536
+  },
+  {
+   "name": "outlinePlace",
+   "bytes": 1336,
+   "line": 2186
+  },
+  {
+   "name": "kitGunParts",
+   "bytes": 1316,
+   "line": 1300
+  },
+  {
+   "name": "OUTLINE_FS",
+   "bytes": 1298,
+   "line": 2151
+  },
+  {
+   "name": "kitHat",
+   "bytes": 1297,
+   "line": 1125
+  },
+  {
+   "name": "ribbonRelayout",
+   "bytes": 1297,
+   "line": 2884
+  },
+  {
+   "name": "placeStandards",
+   "bytes": 1288,
+   "line": 1813
+  },
+  {
+   "name": "onWindowKey",
+   "bytes": 1285,
+   "line": 6831
+  },
+  {
+   "name": "kitMerge",
+   "bytes": 1275,
+   "line": 1087
+  },
+  {
+   "name": "pickAt",
+   "bytes": 1271,
+   "line": 6228
+  },
+  {
+   "name": "followStep",
+   "bytes": 1262,
+   "line": 8907
+  },
+  {
+   "name": "refreshEnvironment",
+   "bytes": 1258,
+   "line": 478
+  },
+  {
+   "name": "smokeTexture",
+   "bytes": 1258,
+   "line": 2006
+  },
+  {
+   "name": "animAt",
+   "bytes": 1244,
+   "line": 1020
+  },
+  {
+   "name": "syncViewOffset",
+   "bytes": 1235,
+   "line": 6361
+  },
+  {
+   "name": "paintCommand",
+   "bytes": 1231,
+   "line": 4237
+  },
+  {
+   "name": "kitFootFixedR",
+   "bytes": 1230,
+   "line": 1189
+  },
+  {
+   "name": "buildLine",
+   "bytes": 1213,
+   "line": 3059
+  },
+  {
+   "name": "COLOUR_KEY",
+   "bytes": 1212,
+   "line": 7136
+  },
+  {
+   "name": "bindPhone",
+   "bytes": 1209,
+   "line": 9046
+  },
+  {
+   "name": "capFactors",
+   "bytes": 1190,
+   "line": 2856
+  },
+  {
+   "name": "eyeCaption",
+   "bytes": 1190,
+   "line": 4431
+  },
+  {
+   "name": "arrowNotes",
+   "bytes": 1185,
+   "line": 8559
+  },
+  {
+   "name": "applyTour",
+   "bytes": 1184,
+   "line": 4671
+  },
+  {
+   "name": "skelBuild",
+   "bytes": 1174,
+   "line": 2269
+  },
+  {
+   "name": "setPlan",
+   "bytes": 1161,
+   "line": 4579
+  },
+  {
+   "name": "syncDock",
+   "bytes": 1155,
+   "line": 8971
+  },
+  {
+   "name": "confPlace",
+   "bytes": 1153,
+   "line": 2076
+  },
+  {
+   "name": "startPhaseTransition",
+   "bytes": 1153,
+   "line": 3460
+  },
+  {
+   "name": "paintChanges",
+   "bytes": 1148,
+   "line": 7643
+  },
+  {
+   "name": "paintPlanText",
+   "bytes": 1142,
+   "line": 4609
+  },
+  {
+   "name": "fontsReady",
+   "bytes": 1137,
+   "line": 530
+  },
+  {
+   "name": "animEnv",
+   "bytes": 1124,
+   "line": 1059
+  },
+  {
+   "name": "planStaging",
+   "bytes": 1124,
+   "line": 4503
+  },
+  {
+   "name": "kitLod",
+   "bytes": 1119,
+   "line": 5906
+  },
+  {
+   "name": "shadowReceivers",
+   "bytes": 1113,
+   "line": 320
+  },
+  {
+   "name": "renderFrameNow",
+   "bytes": 1108,
+   "line": 3802
+  },
+  {
+   "name": "figKit",
+   "bytes": 1093,
+   "line": 1252
+  },
+  {
+   "name": "gaitNotes",
+   "bytes": 1090,
+   "line": 8509
+  },
+  {
+   "name": "mlStabBegin",
+   "bytes": 1074,
+   "line": 5374
+  },
+  {
+   "name": "symbolSizes",
+   "bytes": 1046,
+   "line": 4027
+  },
+  {
+   "name": "lightAt",
+   "bytes": 1045,
+   "line": 269
+  },
+  {
+   "name": "mlItem",
+   "bytes": 1045,
+   "line": 5056
+  },
+  {
+   "name": "kitShapes",
+   "bytes": 1040,
+   "line": 1111
+  },
+  {
+   "name": "setClock",
+   "bytes": 1038,
+   "line": 3482
+  },
+  {
+   "name": "openingEnd",
+   "bytes": 1034,
+   "line": 4793
+  },
+  {
+   "name": "settleBlock",
+   "bytes": 1021,
+   "line": 5931
+  },
+  {
+   "name": "smokePlace",
+   "bytes": 1021,
+   "line": 6072
+  },
+  {
+   "name": "paintDispatch",
+   "bytes": 1016,
+   "line": 7667
+  },
+  {
+   "name": "updatePlanLinks",
+   "bytes": 1015,
+   "line": 4561
+  },
+  {
+   "name": "placeToast",
+   "bytes": 1010,
+   "line": 8739
+  },
+  {
+   "name": "kitGeo",
+   "bytes": 992,
+   "line": 1226
+  },
+  {
+   "name": "syncInert",
+   "bytes": 990,
+   "line": 6780
+  },
+  {
+   "name": "groundDepthHook",
+   "bytes": 974,
+   "line": 2929
+  },
+  {
+   "name": "kitDress",
+   "bytes": 951,
+   "line": 902
+  },
+  {
+   "name": "drapeMesh",
+   "bytes": 943,
+   "line": 2757
+  },
+  {
+   "name": "paintChapterText",
+   "bytes": 942,
+   "line": 4214
+  },
+  {
+   "name": "skelScope",
+   "bytes": 933,
+   "line": 2235
+  },
+  {
+   "name": "eventGlyph",
+   "bytes": 925,
+   "line": 3914
+  },
+  {
+   "name": "shaftEnd",
+   "bytes": 916,
+   "line": 3001
+  },
+  {
+   "name": "syncSelChip",
+   "bytes": 912,
+   "line": 7244
+  },
+  {
+   "name": "groundAt",
+   "bytes": 909,
+   "line": 5644
+  },
+  {
+   "name": "buildObjective",
+   "bytes": 905,
+   "line": 3084
+  },
+  {
+   "name": "atmoAt",
+   "bytes": 884,
+   "line": 434
+  },
+  {
+   "name": "skelPlaceMarks",
+   "bytes": 881,
+   "line": 2287
+  },
+  {
+   "name": "kitLimberParts",
+   "bytes": 873,
+   "line": 1314
+  },
+  {
+   "name": "planObjective",
+   "bytes": 872,
+   "line": 4523
+  },
+  {
+   "name": "routeDrapePoly",
+   "bytes": 864,
+   "line": 2362
+  },
+  {
+   "name": "eyesViewshed",
+   "bytes": 860,
+   "line": 4371
+  },
+  {
+   "name": "drawerKey",
+   "bytes": 857,
+   "line": 7720
+  },
+  {
+   "name": "syncFollow",
+   "bytes": 839,
+   "line": 6447
+  },
+  {
+   "name": "bindHelp",
+   "bytes": 838,
+   "line": 6811
+  },
+  {
+   "name": "kitHorse",
+   "bytes": 836,
+   "line": 1160
+  },
+  {
+   "name": "buildPlanLinks",
+   "bytes": 829,
+   "line": 4541
+  },
+  {
+   "name": "buildActs",
+   "bytes": 829,
+   "line": 7543
+  },
+  {
+   "name": "eyesSync",
+   "bytes": 813,
+   "line": 4352
+  },
+  {
+   "name": "updateSelRing",
+   "bytes": 811,
+   "line": 3974
+  },
+  {
+   "name": "kitHorseR",
+   "bytes": 810,
+   "line": 1215
+  },
+  {
+   "name": "smokeWant",
+   "bytes": 806,
+   "line": 6042
+  },
+  {
+   "name": "drawOnU",
+   "bytes": 805,
+   "line": 3144
+  },
+  {
+   "name": "buildPlateauRing",
+   "bytes": 804,
+   "line": 3936
+  },
+  {
+   "name": "closeFirst",
+   "bytes": 804,
+   "line": 7227
+  },
+  {
+   "name": "skelDrape",
+   "bytes": 799,
+   "line": 2252
+  },
+  {
+   "name": "openingStretch",
+   "bytes": 796,
+   "line": 4761
+  },
+  {
+   "name": "arrowProgress",
+   "bytes": 787,
+   "line": 3128
+  },
+  {
+   "name": "kitRiderFixedR",
+   "bytes": 783,
+   "line": 1203
+  },
+  {
+   "name": "arrowCap",
+   "bytes": 782,
+   "line": 2903
+  },
+  {
+   "name": "glide",
+   "bytes": 780,
+   "line": 6309
+  },
+  {
+   "name": "mlHoldTry",
+   "bytes": 772,
+   "line": 5393
+  },
+  {
+   "name": "enemyFacing",
+   "bytes": 769,
+   "line": 5753
+  },
+  {
+   "name": "GAIT",
+   "bytes": 766,
+   "line": 5812
+  },
+  {
+   "name": "skelTexture",
+   "bytes": 755,
+   "line": 2222
+  },
+  {
+   "name": "kitStdRule",
+   "bytes": 754,
+   "line": 1724
+  },
+  {
+   "name": "knowledgeOf",
+   "bytes": 751,
+   "line": 4134
+  },
+  {
+   "name": "shown",
+   "bytes": 740,
+   "line": 7189
+  },
+  {
+   "name": "aggReading",
+   "bytes": 739,
+   "line": 4302
+  },
+  {
+   "name": "padTexture",
+   "bytes": 737,
+   "line": 2598
+  },
+  {
+   "name": "paintSky",
+   "bytes": 717,
+   "line": 461
+  },
+  {
+   "name": "confTexture",
+   "bytes": 717,
+   "line": 2050
+  },
+  {
+   "name": "routeUpdate",
+   "bytes": 713,
+   "line": 2390
+  },
+  {
+   "name": "select",
+   "bytes": 704,
+   "line": 6252
+  },
+  {
+   "name": "flyTo",
+   "bytes": 702,
+   "line": 6324
+  },
+  {
+   "name": "bindContextLoss",
+   "bytes": 685,
+   "line": 568
+  },
+  {
+   "name": "selectTab",
+   "bytes": 679,
+   "line": 8986
+  },
+  {
+   "name": "bindSheetKeys",
+   "bytes": 676,
+   "line": 6821
+  },
+  {
+   "name": "artGeo",
+   "bytes": 674,
+   "line": 1329
+  },
+  {
+   "name": "animPoses",
+   "bytes": 673,
+   "line": 1041
+  },
+  {
+   "name": "openingApply",
+   "bytes": 671,
+   "line": 4729
+  },
+  {
+   "name": "kitFootFixed",
+   "bytes": 670,
+   "line": 1142
+  },
+  {
+   "name": "setPanels",
+   "bytes": 670,
+   "line": 6772
+  },
+  {
+   "name": "syncViewmode",
+   "bytes": 669,
+   "line": 9000
+  },
+  {
+   "name": "setMenu",
+   "bytes": 669,
+   "line": 9036
+  },
+  {
+   "name": "ATMO",
+   "bytes": 668,
+   "line": 379
+  },
+  {
+   "name": "applyOverlayOpacity",
+   "bytes": 667,
+   "line": 3180
+  },
+  {
+   "name": "buildEventLayer",
+   "bytes": 666,
+   "line": 3990
+  },
+  {
+   "name": "buildHalt",
+   "bytes": 664,
+   "line": 3051
+  },
+  {
+   "name": "followGoal",
+   "bytes": 661,
+   "line": 8897
+  },
+  {
+   "name": "dtFrame",
+   "bytes": 654,
+   "line": 2422
+  },
+  {
+   "name": "buildHelp",
+   "bytes": 646,
+   "line": 6736
+  },
+  {
+   "name": "ribbonHead",
+   "bytes": 645,
+   "line": 3016
+  },
+  {
+   "name": "pickFormation",
+   "bytes": 641,
+   "line": 5672
+  },
+  {
+   "name": "smokeShareOf",
+   "bytes": 638,
+   "line": 6057
+  },
+  {
+   "name": "makeOutline",
+   "bytes": 635,
+   "line": 2168
+  },
+  {
+   "name": "routeScope",
+   "bytes": 628,
+   "line": 2340
+  },
+  {
+   "name": "routeClipTri",
+   "bytes": 617,
+   "line": 2351
+  },
+  {
+   "name": "eyeEnter",
+   "bytes": 614,
+   "line": 4403
+  },
+  {
+   "name": "mlJump",
+   "bytes": 607,
+   "line": 5364
+  },
+  {
+   "name": "syncLandscapeLayers",
+   "bytes": 603,
+   "line": 2512
+  },
+  {
+   "name": "LIGHT_RIG",
+   "bytes": 601,
+   "line": 243
+  },
+  {
+   "name": "dustTexture",
+   "bytes": 601,
+   "line": 2610
+  },
+  {
+   "name": "updateTrail",
+   "bytes": 587,
+   "line": 2700
+  },
+  {
+   "name": "rovingGroup",
+   "bytes": 587,
+   "line": 7422
+  },
+  {
+   "name": "actionExtent",
+   "bytes": 586,
+   "line": 6386
+  },
+  {
+   "name": "centreSeparation",
+   "bytes": 579,
+   "line": 4092
+  },
+  {
+   "name": "mlOccluded",
+   "bytes": 575,
+   "line": 5204
+  },
+  {
+   "name": "animHook",
+   "bytes": 573,
+   "line": 1884
+  },
+  {
+   "name": "kitRiderFixed",
+   "bytes": 566,
+   "line": 1152
+  },
+  {
+   "name": "legAt",
+   "bytes": 566,
+   "line": 3305
+  },
+  {
+   "name": "mlCands",
+   "bytes": 555,
+   "line": 5248
+  },
+  {
+   "name": "SHAPE",
+   "bytes": 549,
+   "line": 2627
+  },
+  {
+   "name": "drawOnRibbon",
+   "bytes": 546,
+   "line": 3167
+  },
+  {
+   "name": "mapKey",
+   "bytes": 544,
+   "line": 6723
+  },
+  {
+   "name": "cullGeo",
+   "bytes": 540,
+   "line": 1934
+  },
+  {
+   "name": "mlPanels",
+   "bytes": 540,
+   "line": 5183
+  },
+  {
+   "name": "castleSizeText",
+   "bytes": 534,
+   "line": 8468
+  },
+  {
+   "name": "capRows",
+   "bytes": 530,
+   "line": 2876
+  },
+  {
+   "name": "hasLOS",
+   "bytes": 529,
+   "line": 4120
+  },
+  {
+   "name": "animManRoot",
+   "bytes": 526,
+   "line": 1003
+  },
+  {
+   "name": "formationTop",
+   "bytes": 526,
+   "line": 6281
+  },
+  {
+   "name": "drawOnApply",
+   "bytes": 520,
+   "line": 3174
+  },
+  {
+   "name": "portraitK",
+   "bytes": 519,
+   "line": 6407
+  },
+  {
+   "name": "syncVis",
+   "bytes": 519,
+   "line": 9061
+  },
+  {
+   "name": "updateRose",
+   "bytes": 518,
+   "line": 8374
+  },
+  {
+   "name": "rebuildOverlays",
+   "bytes": 513,
+   "line": 3101
+  },
+  {
+   "name": "exitTour",
+   "bytes": 512,
+   "line": 4653
+  },
+  {
+   "name": "mixRow",
+   "bytes": 509,
+   "line": 264
+  },
+  {
+   "name": "borderHeadHook",
+   "bytes": 509,
+   "line": 2957
+  },
+  {
+   "name": "EYES",
+   "bytes": 507,
+   "line": 4279
+  },
+  {
+   "name": "animMesh",
+   "bytes": 506,
+   "line": 1897
+  },
+  {
+   "name": "setCommandView",
+   "bytes": 503,
+   "line": 4257
+  },
+  {
+   "name": "openingBar",
+   "bytes": 496,
+   "line": 4713
+  },
+  {
+   "name": "kitAllocate",
+   "bytes": 494,
+   "line": 924
+  },
+  {
+   "name": "bindExaggeration",
+   "bytes": 490,
+   "line": 2566
+  },
+  {
+   "name": "claimDetail",
+   "bytes": 490,
+   "line": 8635
+  },
+  {
+   "name": "buildSunDisc",
+   "bytes": 489,
+   "line": 503
+  },
+  {
+   "name": "updateEventLayer",
+   "bytes": 489,
+   "line": 4004
+  },
+  {
+   "name": "syncPhone",
+   "bytes": 488,
+   "line": 9018
+  },
+  {
+   "name": "sideCentroid",
+   "bytes": 482,
+   "line": 4074
+  },
+  {
+   "name": "applyAtmo",
+   "bytes": 477,
+   "line": 450
+  },
+  {
+   "name": "setChapter",
+   "bytes": 477,
+   "line": 4193
+  },
+  {
+   "name": "buildSelRing",
+   "bytes": 471,
+   "line": 3960
+  },
+  {
+   "name": "drapeTri",
+   "bytes": 470,
+   "line": 2769
+  },
+  {
+   "name": "pillReading",
+   "bytes": 469,
+   "line": 4335
+  },
+  {
+   "name": "sizeFX",
+   "bytes": 468,
+   "line": 3695
+  },
+  {
+   "name": "openFirstRun",
+   "bytes": 468,
+   "line": 7206
+  },
+  {
+   "name": "confAt",
+   "bytes": 467,
+   "line": 765
+  },
+  {
+   "name": "mlShortName",
+   "bytes": 465,
+   "line": 5048
+  },
+  {
+   "name": "buildSpine",
+   "bytes": 465,
+   "line": 7569
+  },
+  {
+   "name": "stmtClaim",
+   "bytes": 459,
+   "line": 8109
+  },
+  {
+   "name": "setFXEnabled",
+   "bytes": 458,
+   "line": 3772
+  },
+  {
+   "name": "toastRelayout",
+   "bytes": 456,
+   "line": 8763
+  },
+  {
+   "name": "mlWrapPlace",
+   "bytes": 454,
+   "line": 5291
+  },
+  {
+   "name": "tipShow",
+   "bytes": 450,
+   "line": 7439
+  },
+  {
+   "name": "skelNear",
+   "bytes": 443,
+   "line": 2311
+  },
+  {
+   "name": "routeAxis0",
+   "bytes": 442,
+   "line": 2331
+  },
+  {
+   "name": "tickClock",
+   "bytes": 441,
+   "line": 8814
+  },
+  {
+   "name": "liveStatus",
+   "bytes": 436,
+   "line": 7696
+  },
+  {
+   "name": "makeRT",
+   "bytes": 435,
+   "line": 3533
+  },
+  {
+   "name": "liftBoot",
+   "bytes": 434,
+   "line": 553
+  },
+  {
+   "name": "mlFar",
+   "bytes": 421,
+   "line": 5405
+  },
+  {
+   "name": "skelUpdate",
+   "bytes": 418,
+   "line": 2300
+  },
+  {
+   "name": "frameFirstView",
+   "bytes": 418,
+   "line": 7217
+  },
+  {
+   "name": "mlViewNow",
+   "bytes": 415,
+   "line": 5357
+  },
+  {
+   "name": "kitLodFrame",
+   "bytes": 415,
+   "line": 5899
+  },
+  {
+   "name": "kitWheel",
+   "bytes": 412,
+   "line": 1294
+  },
+  {
+   "name": "dossierClaims",
+   "bytes": 412,
+   "line": 8643
+  },
+  {
+   "name": "crossingProblem",
+   "bytes": 406,
+   "line": 3391
+  },
+  {
+   "name": "borderShaftHook",
+   "bytes": 405,
+   "line": 2953
+  },
+  {
+   "name": "stateAt",
+   "bytes": 404,
+   "line": 691
+  },
+  {
+   "name": "openingPlayWatch",
+   "bytes": 402,
+   "line": 4775
+  },
+  {
+   "name": "srcButton",
+   "bytes": 401,
+   "line": 8124
+  },
+  {
+   "name": "headInside",
+   "bytes": 400,
+   "line": 2963
+  },
+  {
+   "name": "chateauBearing8h",
+   "bytes": 399,
+   "line": 8167
+  },
+  {
+   "name": "lightRow",
+   "bytes": 397,
+   "line": 261
+  },
+  {
+   "name": "geoText",
+   "bytes": 395,
+   "line": 8590
+  },
+  {
+   "name": "nearestFeature",
+   "bytes": 394,
+   "line": 8143
+  },
+  {
+   "name": "capPts",
+   "bytes": 391,
+   "line": 2844
+  },
+  {
+   "name": "updatePlateauRing",
+   "bytes": 390,
+   "line": 3951
+  },
+  {
+   "name": "stdCount",
+   "bytes": 389,
+   "line": 1802
+  },
+  {
+   "name": "capTitle",
+   "bytes": 389,
+   "line": 7383
+  },
+  {
+   "name": "farmsteadsText",
+   "bytes": 389,
+   "line": 8174
+  },
+  {
+   "name": "momentOf",
+   "bytes": 388,
+   "line": 4183
+  },
+  {
+   "name": "openingGo",
+   "bytes": 387,
+   "line": 4743
+  },
+  {
+   "name": "plateauText",
+   "bytes": 387,
+   "line": 5176
+  },
+  {
+   "name": "ANIM.decl",
+   "bytes": 380,
+   "line": 1879
+  },
+  {
+   "name": "applyArc",
+   "bytes": 380,
+   "line": 3446
+  },
+  {
+   "name": "kitFootCoatR",
+   "bytes": 379,
+   "line": 1200
+  },
+  {
+   "name": "drawOnArrows",
+   "bytes": 378,
+   "line": 3153
+  },
+  {
+   "name": "outcomeOf",
+   "bytes": 372,
+   "line": 7770
+  },
+  {
+   "name": "headingAt",
+   "bytes": 371,
+   "line": 3336
+  },
+  {
+   "name": "setHelp",
+   "bytes": 371,
+   "line": 6799
+  },
+  {
+   "name": "landPanels",
+   "bytes": 370,
+   "line": 6353
+  },
+  {
+   "name": "buildBoundary",
+   "bytes": 368,
+   "line": 3075
+  },
+  {
+   "name": "paintShortcuts",
+   "bytes": 366,
+   "line": 6792
+  },
+  {
+   "name": "animRootBound",
+   "bytes": 364,
+   "line": 1051
+  },
+  {
+   "name": "eyeFollow",
+   "bytes": 361,
+   "line": 4423
+  },
+  {
+   "name": "paintOOB",
+   "bytes": 361,
+   "line": 7306
+  },
+  {
+   "name": "setupArc",
+   "bytes": 359,
+   "line": 3438
+  },
+  {
+   "name": "routeDeviation",
+   "bytes": 357,
+   "line": 2402
+  },
+  {
+   "name": "gaitLegOf",
+   "bytes": 355,
+   "line": 5836
+  },
+  {
+   "name": "OUTLINE",
+   "bytes": 352,
+   "line": 2147
+  },
+  {
+   "name": "FEATURE_GT",
+   "bytes": 352,
+   "line": 8156
+  },
+  {
+   "name": "ambientNow",
+   "bytes": 352,
+   "line": 9101
+  },
+  {
+   "name": "aggStatus",
+   "bytes": 351,
+   "line": 719
+  },
+  {
+   "name": "wetAt",
+   "bytes": 350,
+   "line": 3378
+  },
+  {
+   "name": "paintActs",
+   "bytes": 348,
+   "line": 7559
+  },
+  {
+   "name": "posNow",
+   "bytes": 346,
+   "line": 3357
+  },
+  {
+   "name": "togglePlay",
+   "bytes": 346,
+   "line": 8788
+  },
+  {
+   "name": "kitTaper",
+   "bytes": 344,
+   "line": 1185
+  },
+  {
+   "name": "smokeEvents",
+   "bytes": 343,
+   "line": 6031
+  },
+  {
+   "name": "renderStandard",
+   "bytes": 340,
+   "line": 3787
+  },
+  {
+   "name": "renderFrame",
+   "bytes": 340,
+   "line": 3796
+  },
+  {
+   "name": "setDSheet",
+   "bytes": 340,
+   "line": 9028
+  },
+  {
+   "name": "figureTop",
+   "bytes": 338,
+   "line": 1745
+  },
+  {
+   "name": "kitGeneric",
+   "bytes": 336,
+   "line": 916
+  },
+  {
+   "name": "disposeFX",
+   "bytes": 335,
+   "line": 3690
+  },
+  {
+   "name": "ART_AT",
+   "bytes": 334,
+   "line": 1345
+  },
+  {
+   "name": "centreOnMap",
+   "bytes": 334,
+   "line": 7315
+  },
+  {
+   "name": "syncViewBadge",
+   "bytes": 334,
+   "line": 8274
+  },
+  {
+   "name": "kitWrap",
+   "bytes": 333,
+   "line": 1247
+  },
+  {
+   "name": "MLS",
+   "bytes": 333,
+   "line": 5339
+  },
+  {
+   "name": "gaitDistOf",
+   "bytes": 333,
+   "line": 5828
+  },
+  {
+   "name": "claimWorks",
+   "bytes": 331,
+   "line": 8628
+  },
+  {
+   "name": "applyGrade",
+   "bytes": 329,
+   "line": 3850
+  },
+  {
+   "name": "kitRiderCoatR",
+   "bytes": 328,
+   "line": 1212
+  },
+  {
+   "name": "worldPerPx",
+   "bytes": 327,
+   "line": 4875
+  },
+  {
+   "name": "eyeLeave",
+   "bytes": 325,
+   "line": 4415
+  },
+  {
+   "name": "mlNearAnchor",
+   "bytes": 320,
+   "line": 5689
+  },
+  {
+   "name": "pointOnPath",
+   "bytes": 319,
+   "line": 3289
+  },
+  {
+   "name": "posAtT",
+   "bytes": 314,
+   "line": 5746
+  },
+  {
+   "name": "setDisplayFactor",
+   "bytes": 313,
+   "line": 2529
+  },
+  {
+   "name": "initBlockGeo",
+   "bytes": 312,
+   "line": 810
+  },
+  {
+   "name": "shortCommander",
+   "bytes": 312,
+   "line": 7260
+  },
+  {
+   "name": "legPath",
+   "bytes": 311,
+   "line": 3279
+  },
+  {
+   "name": "jumpEvent",
+   "bytes": 311,
+   "line": 7596
+  },
+  {
+   "name": "flash",
+   "bytes": 309,
+   "line": 8771
+  },
+  {
+   "name": "animDefine",
+   "bytes": 308,
+   "line": 1080
+  },
+  {
+   "name": "kitRiderFixedD",
+   "bytes": 308,
+   "line": 1240
+  },
+  {
+   "name": "gaitFastest",
+   "bytes": 307,
+   "line": 5880
+  },
+  {
+   "name": "clampCamera",
+   "bytes": 306,
+   "line": 6293
+  },
+  {
+   "name": "nextChange",
+   "bytes": 304,
+   "line": 8135
+  },
+  {
+   "name": "TIMING_TEXT",
+   "bytes": 302,
+   "line": 7717
+  },
+  {
+   "name": "familyOf",
+   "bytes": 301,
+   "line": 4159
+  },
+  {
+   "name": "ML",
+   "bytes": 296,
+   "line": 5014
+  },
+  {
+   "name": "camGround",
+   "bytes": 296,
+   "line": 6272
+  },
+  {
+   "name": "makeConfMark",
+   "bytes": 295,
+   "line": 2064
+  },
+  {
+   "name": "plateauStrength",
+   "bytes": 295,
+   "line": 4061
+  },
+  {
+   "name": "softWindow",
+   "bytes": 291,
+   "line": 1990
+  },
+  {
+   "name": "cullBlock",
+   "bytes": 290,
+   "line": 1980
+  },
+  {
+   "name": "marchRate",
+   "bytes": 288,
+   "line": 3347
+  },
+  {
+   "name": "sheetTab",
+   "bytes": 288,
+   "line": 6761
+  },
+  {
+   "name": "goToEventAt",
+   "bytes": 285,
+   "line": 7589
+  },
+  {
+   "name": "artDrivers",
+   "bytes": 284,
+   "line": 1337
+  },
+  {
+   "name": "mlLine",
+   "bytes": 283,
+   "line": 5301
+  },
+  {
+   "name": "focusTo",
+   "bytes": 283,
+   "line": 7198
+  },
+  {
+   "name": "routeDistMap",
+   "bytes": 281,
+   "line": 2329
+  },
+  {
+   "name": "mlOnMap",
+   "bytes": 277,
+   "line": 5664
+  },
+  {
+   "name": "knowReason",
+   "bytes": 276,
+   "line": 4344
+  },
+  {
+   "name": "sect",
+   "bytes": 276,
+   "line": 8129
+  },
+  {
+   "name": "cullStale",
+   "bytes": 275,
+   "line": 1962
+  },
+  {
+   "name": "mlContent",
+   "bytes": 275,
+   "line": 5075
+  },
+  {
+   "name": "outlineReach",
+   "bytes": 274,
+   "line": 2181
+  },
+  {
+   "name": "claimTag",
+   "bytes": 274,
+   "line": 8117
+  },
+  {
+   "name": "kitBlock",
+   "bytes": 273,
+   "line": 932
+  },
+  {
+   "name": "spriteFloor",
+   "bytes": 273,
+   "line": 1999
+  },
+  {
+   "name": "cullTest",
+   "bytes": 270,
+   "line": 1968
+  },
+  {
+   "name": "sunWorldDir",
+   "bytes": 267,
+   "line": 226
+  },
+  {
+   "name": "animHorseRoot",
+   "bytes": 267,
+   "line": 1013
+  },
+  {
+   "name": "arrowPts",
+   "bytes": 265,
+   "line": 2739
+  },
+  {
+   "name": "expr@1976",
+   "bytes": 261,
+   "line": 1976
+  },
+  {
+   "name": "onPlateau",
+   "bytes": 261,
+   "line": 4052
+  },
+  {
+   "name": "boot",
+   "bytes": 259,
+   "line": 608
+  },
+  {
+   "name": "flagGeo",
+   "bytes": 259,
+   "line": 821
+  },
+  {
+   "name": "fsQuad",
+   "bytes": 259,
+   "line": 3527
+  },
+  {
+   "name": "onScreen",
+   "bytes": 258,
+   "line": 7582
+  },
+  {
+   "name": "mapSchedule",
+   "bytes": 256,
+   "line": 4984
+  },
+  {
+   "name": "_kd,_ks,_kF,_kM,_kB,_kMb,_kC,_kP,_kQ,_kU",
+   "bytes": 255,
+   "line": 5897
+  },
+  {
+   "name": "apValue",
+   "bytes": 251,
+   "line": 7844
+  },
+  {
+   "name": "syncTimebarHeight",
+   "bytes": 251,
+   "line": 9078
+  },
+  {
+   "name": "mlFarPlate",
+   "bytes": 250,
+   "line": 5419
+  },
+  {
+   "name": "keyRow",
+   "bytes": 250,
+   "line": 6708
+  },
+  {
+   "name": "paintSpeedBtn",
+   "bytes": 249,
+   "line": 8805
+  },
+  {
+   "name": "gaitRoll",
+   "bytes": 246,
+   "line": 5843
+  },
+  {
+   "name": "clockRate",
+   "bytes": 244,
+   "line": 5820
+  },
+  {
+   "name": "arrivalRuleText",
+   "bytes": 242,
+   "line": 8411
+  },
+  {
+   "name": "ownStrengthAt",
+   "bytes": 241,
+   "line": 742
+  },
+  {
+   "name": "stopPlay",
+   "bytes": 239,
+   "line": 8781
+  },
+  {
+   "name": "kitArtPitch",
+   "bytes": 238,
+   "line": 1324
+  },
+  {
+   "name": "mlAria",
+   "bytes": 238,
+   "line": 5080
+  },
+  {
+   "name": "openingHead",
+   "bytes": 236,
+   "line": 4783
+  },
+  {
+   "name": "mlFree",
+   "bytes": 236,
+   "line": 5237
+  },
+  {
+   "name": "derivedArrivals",
+   "bytes": 235,
+   "line": 8417
+  },
+  {
+   "name": "frameState",
+   "bytes": 232,
+   "line": 9112
+  },
+  {
+   "name": "groundMinY",
+   "bytes": 228,
+   "line": 318
+  },
+  {
+   "name": "GDEPTH",
+   "bytes": 228,
+   "line": 2927
+  },
+  {
+   "name": "openingStart",
+   "bytes": 228,
+   "line": 4720
+  },
+  {
+   "name": "mlMaxG",
+   "bytes": 228,
+   "line": 5195
+  },
+  {
+   "name": "smokePut",
+   "bytes": 228,
+   "line": 6067
+  },
+  {
+   "name": "_stQ,_stZ,_stP,_stO,_stS,_stM,_stAx,_stG",
+   "bytes": 227,
+   "line": 1811
+  },
+  {
+   "name": "DEV",
+   "bytes": 227,
+   "line": 3821
+  },
+  {
+   "name": "sideOnFieldAt",
+   "bytes": 226,
+   "line": 749
+  },
+  {
+   "name": "DRESS_UNIT",
+   "bytes": 226,
+   "line": 7835
+  },
+  {
+   "name": "animHorseF",
+   "bytes": 224,
+   "line": 1009
+  },
+  {
+   "name": "smokeAmount",
+   "bytes": 224,
+   "line": 6037
+  },
+  {
+   "name": "fontFaces",
+   "bytes": 223,
+   "line": 525
+  },
+  {
+   "name": "skelClear",
+   "bytes": 223,
+   "line": 2265
+  },
+  {
+   "name": "FX",
+   "bytes": 223,
+   "line": 3520
+  },
+  {
+   "name": "lerpGrade",
+   "bytes": 223,
+   "line": 3859
+  },
+  {
+   "name": "timingNow",
+   "bytes": 221,
+   "line": 7709
+  },
+  {
+   "name": "liveConf",
+   "bytes": 220,
+   "line": 776
+  },
+  {
+   "name": "addOverlayLabel",
+   "bytes": 220,
+   "line": 3081
+  },
+  {
+   "name": "placeNearby",
+   "bytes": 220,
+   "line": 8266
+  },
+  {
+   "name": "buildFeatureGlyphs",
+   "bytes": 219,
+   "line": 2693
+  },
+  {
+   "name": "sheetClosed",
+   "bytes": 219,
+   "line": 6756
+  },
+  {
+   "name": "legWindow",
+   "bytes": 218,
+   "line": 3299
+  },
+  {
+   "name": "CONF_TEXT",
+   "bytes": 218,
+   "line": 7731
+  },
+  {
+   "name": "mlAnchorWithin",
+   "bytes": 217,
+   "line": 5701
+  },
+  {
+   "name": "subUnits",
+   "bytes": 216,
+   "line": 833
+  },
+  {
+   "name": "liveEvents",
+   "bytes": 216,
+   "line": 3901
+  },
+  {
+   "name": "legendHint",
+   "bytes": 215,
+   "line": 5619
+  },
+  {
+   "name": "LIGHT_BY_ALT",
+   "bytes": 213,
+   "line": 255
+  },
+  {
+   "name": "aggConf",
+   "bytes": 210,
+   "line": 781
+  },
+  {
+   "name": "mlBand",
+   "bytes": 210,
+   "line": 5346
+  },
+  {
+   "name": "frButtons",
+   "bytes": 210,
+   "line": 7181
+  },
+  {
+   "name": "dwellStarts",
+   "bytes": 210,
+   "line": 8830
+  },
+  {
+   "name": "orbitPlace",
+   "bytes": 209,
+   "line": 6301
+  },
+  {
+   "name": "waitingFor",
+   "bytes": 208,
+   "line": 7689
+  },
+  {
+   "name": "SKEL",
+   "bytes": 207,
+   "line": 2219
+  },
+  {
+   "name": "dwellDayLength",
+   "bytes": 207,
+   "line": 8877
+  },
+  {
+   "name": "_runTween",
+   "bytes": 204,
+   "line": 123
+  },
+  {
+   "name": "readPos",
+   "bytes": 204,
+   "line": 4315
+  },
+  {
+   "name": "drawnKnow",
+   "bytes": 203,
+   "line": 4291
+  },
+  {
+   "name": "plateauDay",
+   "bytes": 203,
+   "line": 7336
+  },
+  {
+   "name": "haltFrontage",
+   "bytes": 202,
+   "line": 3046
+  },
+  {
+   "name": "tipHide",
+   "bytes": 202,
+   "line": 7446
+  },
+  {
+   "name": "sideCol",
+   "bytes": 199,
+   "line": 2715
+  },
+  {
+   "name": "faceClock",
+   "bytes": 199,
+   "line": 5740
+  },
+  {
+   "name": "drawerShown",
+   "bytes": 199,
+   "line": 7243
+  },
+  {
+   "name": "TACTICAL_RATE,BATTLE_ORDER",
+   "bytes": 196,
+   "line": 3374
+  },
+  {
+   "name": "relayoutAfterFonts",
+   "bytes": 195,
+   "line": 547
+  },
+  {
+   "name": "eyePlace",
+   "bytes": 195,
+   "line": 4401
+  },
+  {
+   "name": "mlFarRatio",
+   "bytes": 194,
+   "line": 5418
+  },
+  {
+   "name": "kitLodSet",
+   "bytes": 194,
+   "line": 5920
+  },
+  {
+   "name": "SEP_NOTE",
+   "bytes": 194,
+   "line": 7347
+  },
+  {
+   "name": "evNoteParts",
+   "bytes": 192,
+   "line": 3886
+  },
+  {
+   "name": "buildAnalysisLabels",
+   "bytes": 192,
+   "line": 4863
+  },
+  {
+   "name": "setSpeed",
+   "bytes": 191,
+   "line": 8797
+  },
+  {
+   "name": "speedNext",
+   "bytes": 190,
+   "line": 8810
+  },
+  {
+   "name": "disposeGroup",
+   "bytes": 189,
+   "line": 2724
+  },
+  {
+   "name": "mlBandAt",
+   "bytes": 189,
+   "line": 5351
+  },
+  {
+   "name": "posClaimOf",
+   "bytes": 189,
+   "line": 8098
+  },
+  {
+   "name": "trackedDescendants",
+   "bytes": 188,
+   "line": 736
+  },
+  {
+   "name": "closeSources",
+   "bytes": 188,
+   "line": 6807
+  },
+  {
+   "name": "readHidden",
+   "bytes": 187,
+   "line": 4325
+  },
+  {
+   "name": "explicitClaim",
+   "bytes": 187,
+   "line": 7782
+  },
+  {
+   "name": "mlDroppedNow",
+   "bytes": 186,
+   "line": 5696
+  },
+  {
+   "name": "nearSettlement",
+   "bytes": 184,
+   "line": 3384
+  },
+  {
+   "name": "skelAnchorText",
+   "bytes": 182,
+   "line": 2307
+  },
+  {
+   "name": "aggStrength",
+   "bytes": 181,
+   "line": 713
+  },
+  {
+   "name": "mlHit",
+   "bytes": 181,
+   "line": 5684
+  },
+  {
+   "name": "setTween",
+   "bytes": 179,
+   "line": 129
+  },
+  {
+   "name": "leavesOf",
+   "bytes": 179,
+   "line": 705
+  },
+  {
+   "name": "evWeight",
+   "bytes": 178,
+   "line": 3894
+  },
+  {
+   "name": "tipSync",
+   "bytes": 175,
+   "line": 7453
+  },
+  {
+   "name": "aggInterp",
+   "bytes": 174,
+   "line": 788
+  },
+  {
+   "name": "routeDropCache",
+   "bytes": 174,
+   "line": 2389
+  },
+  {
+   "name": "mlHits",
+   "bytes": 174,
+   "line": 5233
+  },
+  {
+   "name": "openingHalt",
+   "bytes": 173,
+   "line": 4789
+  },
+  {
+   "name": "VANTAGE",
+   "bytes": 170,
+   "line": 6333
+  },
+  {
+   "name": "apClaim",
+   "bytes": 169,
+   "line": 7843
+  },
+  {
+   "name": "_sfR,_sfU,_sfF,_sfP,_sfRay,_sfUp",
+   "bytes": 167,
+   "line": 317
+  },
+  {
+   "name": "paintChapters",
+   "bytes": 167,
+   "line": 4209
+  },
+  {
+   "name": "ML_PANELS",
+   "bytes": 167,
+   "line": 5182
+  },
+  {
+   "name": "clearPlan",
+   "bytes": 165,
+   "line": 4447
+  },
+  {
+   "name": "dwellReach",
+   "bytes": 165,
+   "line": 8834
+  },
+  {
+   "name": "statusPill",
+   "bytes": 164,
+   "line": 8086
+  },
+  {
+   "name": "toastSeen",
+   "bytes": 164,
+   "line": 8762
+  },
+  {
+   "name": "dwellSet",
+   "bytes": 164,
+   "line": 8839
+  },
+  {
+   "name": "rmChange",
+   "bytes": 163,
+   "line": 592
+  },
+  {
+   "name": "CULL",
+   "bytes": 162,
+   "line": 1931
+  },
+  {
+   "name": "syncConfButton",
+   "bytes": 160,
+   "line": 2207
+  },
+  {
+   "name": "fogAmount",
+   "bytes": 158,
+   "line": 390
+  },
+  {
+   "name": "groundPts",
+   "bytes": 158,
+   "line": 2730
+  },
+  {
+   "name": "pass",
+   "bytes": 158,
+   "line": 3705
+  },
+  {
+   "name": "mlName",
+   "bytes": 157,
+   "line": 5087
+  },
+  {
+   "name": "sheetIsOpen",
+   "bytes": 157,
+   "line": 6753
+  },
+  {
+   "name": "posAtClock",
+   "bytes": 156,
+   "line": 3321
+  },
+  {
+   "name": "readingBack",
+   "bytes": 155,
+   "line": 4643
+  },
+  {
+   "name": "tourGo",
+   "bytes": 155,
+   "line": 4664
+  },
+  {
+   "name": "plateauFlatFor",
+   "bytes": 154,
+   "line": 7342
+  },
+  {
+   "name": "imesh",
+   "bytes": 151,
+   "line": 827
+  },
+  {
+   "name": "stopCam",
+   "bytes": 151,
+   "line": 4192
+  },
+  {
+   "name": "MAJOR_FEATURES",
+   "bytes": 151,
+   "line": 5730
+  },
+  {
+   "name": "HELP_GROUPS",
+   "bytes": 151,
+   "line": 6735
+  },
+  {
+   "name": "goneAt",
+   "bytes": 150,
+   "line": 3331
+  },
+  {
+   "name": "setPhase",
+   "bytes": 150,
+   "line": 3503
+  },
+  {
+   "name": "layerOn",
+   "bytes": 149,
+   "line": 138
+  },
+  {
+   "name": "posClaimPill",
+   "bytes": 147,
+   "line": 8104
+  },
+  {
+   "name": "CONF",
+   "bytes": 146,
+   "line": 2045
+  },
+  {
+   "name": "FLAT_NOTE",
+   "bytes": 142,
+   "line": 7348
+  },
+  {
+   "name": "frHasFocus",
+   "bytes": 141,
+   "line": 7183
+  },
+  {
+   "name": "CONF_INTERP",
+   "bytes": 140,
+   "line": 7730
+  },
+  {
+   "name": "setFollow",
+   "bytes": 139,
+   "line": 6457
+  },
+  {
+   "name": "dwellReset",
+   "bytes": 139,
+   "line": 8836
+  },
+  {
+   "name": "eyeOwnNear",
+   "bytes": 138,
+   "line": 4399
+  },
+  {
+   "name": "apText",
+   "bytes": 138,
+   "line": 7840
+  },
+  {
+   "name": "POS_CLAIM",
+   "bytes": 137,
+   "line": 8092
+  },
+  {
+   "name": "apCite",
+   "bytes": 136,
+   "line": 7838
+  },
+  {
+   "name": "LIGHT_FILL,LIGHT_FILL_DAY,LIGHT_SKY_LIFT",
+   "bytes": 135,
+   "line": 249
+  },
+  {
+   "name": "capAt",
+   "bytes": 135,
+   "line": 2871
+  },
+  {
+   "name": "dwellEvents",
+   "bytes": 135,
+   "line": 8840
+  },
+  {
+   "name": "animRot",
+   "bytes": 134,
+   "line": 994
+  },
+  {
+   "name": "mlTake",
+   "bytes": 132,
+   "line": 5298
+  },
+  {
+   "name": "el",
+   "bytes": 131,
+   "line": 6909
+  },
+  {
+   "name": "endTweens",
+   "bytes": 130,
+   "line": 597
+  },
+  {
+   "name": "kitDisc",
+   "bytes": 130,
+   "line": 1298
+  },
+  {
+   "name": "evTag",
+   "bytes": 130,
+   "line": 3890
+  },
+  {
+   "name": "viewDist",
+   "bytes": 130,
+   "line": 4886
+  },
+  {
+   "name": "setProg",
+   "bytes": 130,
+   "line": 8777
+  },
+  {
+   "name": "claimPill",
+   "bytes": 129,
+   "line": 8088
+  },
+  {
+   "name": "capQuant",
+   "bytes": 128,
+   "line": 2841
+  },
+  {
+   "name": "PRESENT",
+   "bytes": 128,
+   "line": 8930
+  },
+  {
+   "name": "kitLead",
+   "bytes": 127,
+   "line": 938
+  },
+  {
+   "name": "presLine",
+   "bytes": 127,
+   "line": 6706
+  },
+  {
+   "name": "showEverything",
+   "bytes": 127,
+   "line": 9071
+  },
+  {
+   "name": "devMark",
+   "bytes": 125,
+   "line": 3823
+  },
+  {
+   "name": "chapterById",
+   "bytes": 125,
+   "line": 4175
+  },
+  {
+   "name": "SHEETS",
+   "bytes": 125,
+   "line": 6752
+  },
+  {
+   "name": "OUTLINE_VS",
+   "bytes": 124,
+   "line": 2150
+  },
+  {
+   "name": "readUnknown",
+   "bytes": 124,
+   "line": 4330
+  },
+  {
+   "name": "actOf",
+   "bytes": 122,
+   "line": 3910
+  },
+  {
+   "name": "startTour",
+   "bytes": 122,
+   "line": 4646
+  },
+  {
+   "name": "isOverview",
+   "bytes": 122,
+   "line": 6395
+  },
+  {
+   "name": "excerpt",
+   "bytes": 121,
+   "line": 8600
+  },
+  {
+   "name": "ROUTES",
+   "bytes": 120,
+   "line": 2327
+  },
+  {
+   "name": "viewDistTo",
+   "bytes": 120,
+   "line": 4887
+  },
+  {
+   "name": "anchorOf",
+   "bytes": 120,
+   "line": 5726
+  },
+  {
+   "name": "objPhaseOf",
+   "bytes": 120,
+   "line": 8128
+  },
+  {
+   "name": "PLATEAU_POLY",
+   "bytes": 119,
+   "line": 4051
+  },
+  {
+   "name": "focusedEl",
+   "bytes": 119,
+   "line": 7205
+  },
+  {
+   "name": "LIGHT_VIS",
+   "bytes": 118,
+   "line": 254
+  },
+  {
+   "name": "kitSettled",
+   "bytes": 118,
+   "line": 899
+  },
+  {
+   "name": "fmtClock",
+   "bytes": 118,
+   "line": 3207
+  },
+  {
+   "name": "portraitFrame",
+   "bytes": 118,
+   "line": 6414
+  },
+  {
+   "name": "setCull",
+   "bytes": 117,
+   "line": 1986
+  },
+  {
+   "name": "PBERG_NORTHING",
+   "bytes": 117,
+   "line": 4072
+  },
+  {
+   "name": "evTimeText",
+   "bytes": 116,
+   "line": 3877
+  },
+  {
+   "name": "evTimeShown",
+   "bytes": 116,
+   "line": 3880
+  },
+  {
+   "name": "domeFollow",
+   "bytes": 115,
+   "line": 449
+  },
+  {
+   "name": "knowAtClock",
+   "bytes": 115,
+   "line": 4288
+  },
+  {
+   "name": "_up,_nrm,_qt,_qy",
+   "bytes": 115,
+   "line": 5925
+  },
+  {
+   "name": "TIP",
+   "bytes": 114,
+   "line": 7438
+  },
+  {
+   "name": "readingAside",
+   "bytes": 113,
+   "line": 4641
+  },
+  {
+   "name": "derivedTag",
+   "bytes": 113,
+   "line": 7901
+  },
+  {
+   "name": "kitPart",
+   "bytes": 111,
+   "line": 946
+  },
+  {
+   "name": "kitArtR",
+   "bytes": 111,
+   "line": 1291
+  },
+  {
+   "name": "evMapText",
+   "bytes": 111,
+   "line": 3893
+  },
+  {
+   "name": "esc",
+   "bytes": 111,
+   "line": 6910
+  },
+  {
+   "name": "retireOld",
+   "bytes": 110,
+   "line": 3098
+  },
+  {
+   "name": "notYetAt",
+   "bytes": 110,
+   "line": 3327
+  },
+  {
+   "name": "EYE",
+   "bytes": 110,
+   "line": 4396
+  },
+  {
+   "name": "presetFrame",
+   "bytes": 110,
+   "line": 6396
+  },
+  {
+   "name": "phaseSpan",
+   "bytes": 110,
+   "line": 7900
+  },
+  {
+   "name": "apGrades",
+   "bytes": 109,
+   "line": 7842
+  },
+  {
+   "name": "openingFill",
+   "bytes": 107,
+   "line": 4712
+  },
+  {
+   "name": "mlMotionSource",
+   "bytes": 107,
+   "line": 5342
+  },
+  {
+   "name": "camFloor",
+   "bytes": 107,
+   "line": 6292
+  },
+  {
+   "name": "planLabel",
+   "bytes": 106,
+   "line": 4539
+  },
+  {
+   "name": "glRestored",
+   "bytes": 105,
+   "line": 585
+  },
+  {
+   "name": "setDrawnFlat",
+   "bytes": 105,
+   "line": 2535
+  },
+  {
+   "name": "eventTimes",
+   "bytes": 105,
+   "line": 7577
+  },
+  {
+   "name": "focusId",
+   "bytes": 104,
+   "line": 7184
+  },
+  {
+   "name": "drawnAltitude",
+   "bytes": 102,
+   "line": 232
+  },
+  {
+   "name": "NIGHT_DIR",
+   "bytes": 102,
+   "line": 260
+  },
+  {
+   "name": "phaseAt",
+   "bytes": 102,
+   "line": 3203
+  },
+  {
+   "name": "cullFrameStart",
+   "bytes": 100,
+   "line": 1987
+  },
+  {
+   "name": "FOLLOW",
+   "bytes": 100,
+   "line": 8896
+  },
+  {
+   "name": "PAD_GEO",
+   "bytes": 99,
+   "line": 2029
+  },
+  {
+   "name": "kfmt",
+   "bytes": 99,
+   "line": 3825
+  },
+  {
+   "name": "mlNear",
+   "bytes": 99,
+   "line": 5300
+  },
+  {
+   "name": "gaitDist",
+   "bytes": 99,
+   "line": 5827
+  },
+  {
+   "name": "sheetOpened",
+   "bytes": 99,
+   "line": 6755
+  },
+  {
+   "name": "tlText",
+   "bytes": 99,
+   "line": 7421
+  },
+  {
+   "name": "apShort",
+   "bytes": 99,
+   "line": 7837
+  },
+  {
+   "name": "evNote",
+   "bytes": 98,
+   "line": 3889
+  },
+  {
+   "name": "OPENING",
+   "bytes": 98,
+   "line": 4710
+  },
+  {
+   "name": "setShortcuts",
+   "bytes": 98,
+   "line": 6798
+  },
+  {
+   "name": "eyesCycle",
+   "bytes": 97,
+   "line": 4364
+  },
+  {
+   "name": "eyesName",
+   "bytes": 96,
+   "line": 4286
+  },
+  {
+   "name": "openingSay",
+   "bytes": 96,
+   "line": 4711
+  },
+  {
+   "name": "distAtWpp",
+   "bytes": 96,
+   "line": 4884
+  },
+  {
+   "name": "FIGHTING",
+   "bytes": 96,
+   "line": 6021
+  },
+  {
+   "name": "FONTS",
+   "bytes": 95,
+   "line": 523
+  },
+  {
+   "name": "apCm",
+   "bytes": 95,
+   "line": 1753
+  },
+  {
+   "name": "dashRuns",
+   "bytes": 95,
+   "line": 2736
+  },
+  {
+   "name": "IfStatement",
+   "bytes": 94,
+   "line": 399
+  },
+  {
+   "name": "RM_MQ",
+   "bytes": 93,
+   "line": 6
+  },
+  {
+   "name": "bootFailed",
+   "bytes": 93,
+   "line": 566
+  },
+  {
+   "name": "activeAt",
+   "bytes": 93,
+   "line": 741
+  },
+  {
+   "name": "clearOverlays",
+   "bytes": 93,
+   "line": 4633
+  },
+  {
+   "name": "mapWppAt",
+   "bytes": 93,
+   "line": 4885
+  },
+  {
+   "name": "sheetTop",
+   "bytes": 93,
+   "line": 6754
+  },
+  {
+   "name": "mlUntake",
+   "bytes": 91,
+   "line": 5403
+  },
+  {
+   "name": "mlReset",
+   "bytes": 90,
+   "line": 5344
+  },
+  {
+   "name": "SMOKE",
+   "bytes": 90,
+   "line": 6030
+  },
+  {
+   "name": "srnd",
+   "bytes": 89,
+   "line": 826
+  },
+  {
+   "name": "kitPh",
+   "bytes": 89,
+   "line": 1251
+  },
+  {
+   "name": "freeCentre",
+   "bytes": 89,
+   "line": 6360
+  },
+  {
+   "name": "ARROW_CAP,CAPPED,CAP",
+   "bytes": 88,
+   "line": 2838
+  },
+  {
+   "name": "stdOk",
+   "bytes": 87,
+   "line": 1751
+  },
+  {
+   "name": "SKIRMISH",
+   "bytes": 87,
+   "line": 2637
+  },
+  {
+   "name": "row",
+   "bytes": 86,
+   "line": 7768
+  },
+  {
+   "name": "claimOf",
+   "bytes": 86,
+   "line": 7787
+  },
+  {
+   "name": "routeClear",
+   "bytes": 85,
+   "line": 2388
+  },
+  {
+   "name": "SHADOW_FIT",
+   "bytes": 84,
+   "line": 316
+  },
+  {
+   "name": "trackRef",
+   "bytes": 84,
+   "line": 8127
+  },
+  {
+   "name": "ANIM.U",
+   "bytes": 83,
+   "line": 1883
+  },
+  {
+   "name": "confSize",
+   "bytes": 83,
+   "line": 2071
+  },
+  {
+   "name": "ovText,ovMarkers,ovHeads,planText,planMarkers,planHeads",
+   "bytes": 83,
+   "line": 5021
+  },
+  {
+   "name": "paintDrawer",
+   "bytes": 83,
+   "line": 7735
+  },
+  {
+   "name": "DWELL",
+   "bytes": 83,
+   "line": 8829
+  },
+  {
+   "name": "landscapeVisible",
+   "bytes": 82,
+   "line": 2511
+  },
+  {
+   "name": "openingArrive",
+   "bytes": 82,
+   "line": 4788
+  },
+  {
+   "name": "hexOf",
+   "bytes": 82,
+   "line": 7135
+  },
+  {
+   "name": "_mlV,_mlW,_mlR",
+   "bytes": 81,
+   "line": 5022
+  },
+  {
+   "name": "mlKeep",
+   "bytes": 81,
+   "line": 5391
+  },
+  {
+   "name": "_sp,_cv,_ct",
+   "bytes": 80,
+   "line": 3437
+  },
+  {
+   "name": "eyeHeight",
+   "bytes": 80,
+   "line": 4400
+  },
+  {
+   "name": "viewH",
+   "bytes": 80,
+   "line": 4874
+  },
+  {
+   "name": "focusOn",
+   "bytes": 80,
+   "line": 7325
+  },
+  {
+   "name": "dsheetOpen",
+   "bytes": 80,
+   "line": 9027
+  },
+  {
+   "name": "atmoUniforms",
+   "bytes": 79,
+   "line": 398
+  },
+  {
+   "name": "pxRatio",
+   "bytes": 79,
+   "line": 602
+  },
+  {
+   "name": "WHEEL",
+   "bytes": 79,
+   "line": 5776
+  },
+  {
+   "name": "claimRefsEnd",
+   "bytes": 79,
+   "line": 8120
+  },
+  {
+   "name": "fogTop",
+   "bytes": 78,
+   "line": 394
+  },
+  {
+   "name": "bootMark",
+   "bytes": 78,
+   "line": 607
+  },
+  {
+   "name": "worseGrade",
+   "bytes": 78,
+   "line": 764
+  },
+  {
+   "name": "followActive",
+   "bytes": 78,
+   "line": 8906
+  },
+  {
+   "name": "fmtFactor",
+   "bytes": 77,
+   "line": 2575
+  },
+  {
+   "name": "claimRefsStart",
+   "bytes": 77,
+   "line": 8119
+  },
+  {
+   "name": "setHighlight",
+   "bytes": 76,
+   "line": 4171
+  },
+  {
+   "name": "textPhase",
+   "bytes": 76,
+   "line": 7695
+  },
+  {
+   "name": "DOCK_MIN,docked,tabNow,tabChosen,PHASE_SAID",
+   "bytes": 76,
+   "line": 8970
+  },
+  {
+   "name": "menuOpen",
+   "bytes": 76,
+   "line": 9034
+  },
+  {
+   "name": "SPEED_CEIL",
+   "bytes": 75,
+   "line": 3369
+  },
+  {
+   "name": "asLabel",
+   "bytes": 75,
+   "line": 3526
+  },
+  {
+   "name": "_skyNow",
+   "bytes": 74,
+   "line": 459
+  },
+  {
+   "name": "SRC_LABEL",
+   "bytes": 74,
+   "line": 4235
+  },
+  {
+   "name": "easeInOut",
+   "bytes": 73,
+   "line": 3200
+  },
+  {
+   "name": "stopClock",
+   "bytes": 73,
+   "line": 4191
+  },
+  {
+   "name": "keyText",
+   "bytes": 73,
+   "line": 6705
+  },
+  {
+   "name": "charKey",
+   "bytes": 73,
+   "line": 6720
+  },
+  {
+   "name": "LAYER_TAG",
+   "bytes": 73,
+   "line": 8084
+  },
+  {
+   "name": "fontFamilyOf",
+   "bytes": 72,
+   "line": 524
+  },
+  {
+   "name": "openingWatch",
+   "bytes": 72,
+   "line": 4742
+  },
+  {
+   "name": "DT",
+   "bytes": 71,
+   "line": 2420
+  },
+  {
+   "name": "chapterCam",
+   "bytes": 70,
+   "line": 4190
+  },
+  {
+   "name": "orbitTarget,sph",
+   "bytes": 69,
+   "line": 113
+  },
+  {
+   "name": "landFreeRect",
+   "bytes": 69,
+   "line": 6359
+  },
+  {
+   "name": "hexNum",
+   "bytes": 68,
+   "line": 2714
+  },
+  {
+   "name": "ML_RINGS,ML_RINGS_KEEP",
+   "bytes": 68,
+   "line": 5019
+  },
+  {
+   "name": "PHONE_Q,PHONE",
+   "bytes": 68,
+   "line": 9017
+  },
+  {
+   "name": "FIG,KIT_GEO,_kitShapes,KIT_ALL,GEAR_ALL",
+   "bytes": 67,
+   "line": 944
+  },
+  {
+   "name": "devOn,_devT,_devSeat",
+   "bytes": 67,
+   "line": 3824
+  },
+  {
+   "name": "needFrames,lastInput,lastAmbient,settling,FK",
+   "bytes": 67,
+   "line": 9094
+  },
+  {
+   "name": "stopTweens",
+   "bytes": 66,
+   "line": 137
+  },
+  {
+   "name": "atmoSigma",
+   "bytes": 66,
+   "line": 388
+  },
+  {
+   "name": "srcKind",
+   "bytes": 66,
+   "line": 4236
+  },
+  {
+   "name": "shortcutMuted",
+   "bytes": 66,
+   "line": 6721
+  },
+  {
+   "name": "requestRender",
+   "bytes": 66,
+   "line": 9099
+  },
+  {
+   "name": "kitArtScale",
+   "bytes": 65,
+   "line": 1290
+  },
+  {
+   "name": "mlAlign",
+   "bytes": 65,
+   "line": 5425
+  },
+  {
+   "name": "_rose,_rA,_rB",
+   "bytes": 65,
+   "line": 8373
+  },
+  {
+   "name": "evWindow",
+   "bytes": 64,
+   "line": 3872
+  },
+  {
+   "name": "dtNum",
+   "bytes": 63,
+   "line": 2430
+  },
+  {
+   "name": "clampT",
+   "bytes": 63,
+   "line": 3202
+  },
+  {
+   "name": "cleanViewHidesEvents",
+   "bytes": 63,
+   "line": 4018
+  },
+  {
+   "name": "setDispatchVisible",
+   "bytes": 63,
+   "line": 9070
+  },
+  {
+   "name": "kitBox",
+   "bytes": 62,
+   "line": 945
+  },
+  {
+   "name": "_gradeNow",
+   "bytes": 61,
+   "line": 460
+  },
+  {
+   "name": "SPRITE_COL",
+   "bytes": 61,
+   "line": 805
+  },
+  {
+   "name": "_gv,_gr,_glo",
+   "bytes": 60,
+   "line": 5847
+  },
+  {
+   "name": "ARROWS",
+   "bytes": 60,
+   "line": 6645
+  },
+  {
+   "name": "confKey",
+   "bytes": 59,
+   "line": 2206
+  },
+  {
+   "name": "fogCap",
+   "bytes": 58,
+   "line": 395
+  },
+  {
+   "name": "sunDir,fillLight",
+   "bytes": 58,
+   "line": 514
+  },
+  {
+   "name": "EYE_OBSERVER_M,EYE_TARGET_M,LOS_CLEAR_M",
+   "bytes": 58,
+   "line": 4119
+  },
+  {
+   "name": "_evTicks,EV_BAR",
+   "bytes": 58,
+   "line": 5732
+  },
+  {
+   "name": "CAM_CLEAR,CAM_R,CAM",
+   "bytes": 58,
+   "line": 6271
+  },
+  {
+   "name": "textOn",
+   "bytes": 57,
+   "line": 148
+  },
+  {
+   "name": "LOOSE",
+   "bytes": 57,
+   "line": 2638
+  },
+  {
+   "name": "T_MIN,T_MAX",
+   "bytes": 57,
+   "line": 3195
+  },
+  {
+   "name": "pxPerWorld",
+   "bytes": 57,
+   "line": 4881
+  },
+  {
+   "name": "gaitLeg",
+   "bytes": 56,
+   "line": 5835
+  },
+  {
+   "name": "kitGeos",
+   "bytes": 55,
+   "line": 1274
+  },
+  {
+   "name": "_olN,_olD",
+   "bytes": 55,
+   "line": 2180
+  },
+  {
+   "name": "eyesShort",
+   "bytes": 55,
+   "line": 4285
+  },
+  {
+   "name": "_mlE,_mlD",
+   "bytes": 55,
+   "line": 5356
+  },
+  {
+   "name": "KLOD",
+   "bytes": 55,
+   "line": 5896
+  },
+  {
+   "name": "_smV,_smC",
+   "bytes": 55,
+   "line": 6056
+  },
+  {
+   "name": "tlPc",
+   "bytes": 55,
+   "line": 7420
+  },
+  {
+   "name": "HARNESS",
+   "bytes": 54,
+   "line": 9
+  },
+  {
+   "name": "PORTRAIT_FIT,_pk",
+   "bytes": 54,
+   "line": 6406
+  },
+  {
+   "name": "animChord",
+   "bytes": 53,
+   "line": 1002
+  },
+  {
+   "name": "isTrueScale",
+   "bytes": 52,
+   "line": 2510
+  },
+  {
+   "name": "SIDE_COL",
+   "bytes": 52,
+   "line": 2717
+  },
+  {
+   "name": "chapterClock",
+   "bytes": 52,
+   "line": 4189
+  },
+  {
+   "name": "helpOpen",
+   "bytes": 50,
+   "line": 6790
+  },
+  {
+   "name": "shapeFor",
+   "bytes": 49,
+   "line": 2639
+  },
+  {
+   "name": "STD_RATIO,STD_POLE,MAN_FOOT",
+   "bytes": 48,
+   "line": 1743
+  },
+  {
+   "name": "_cullS",
+   "bytes": 48,
+   "line": 1932
+  },
+  {
+   "name": "gearGeos",
+   "bytes": 47,
+   "line": 1275
+  },
+  {
+   "name": "BORDER",
+   "bytes": 47,
+   "line": 2952
+  },
+  {
+   "name": "skyCanvas,skyCtx,sunDisc",
+   "bytes": 46,
+   "line": 458
+  },
+  {
+   "name": "animKey",
+   "bytes": 46,
+   "line": 1895
+  },
+  {
+   "name": "clamp01",
+   "bytes": 46,
+   "line": 3201
+  },
+  {
+   "name": "ease",
+   "bytes": 46,
+   "line": 9100
+  },
+  {
+   "name": "playing,speed,MIN_PER_SEC",
+   "bytes": 45,
+   "line": 3197
+  },
+  {
+   "name": "evClock",
+   "bytes": 45,
+   "line": 3876
+  },
+  {
+   "name": "presentation,hideDispatch",
+   "bytes": 45,
+   "line": 8928
+  },
+  {
+   "name": "SEAT_STATS",
+   "bytes": 44,
+   "line": 5930
+  },
+  {
+   "name": "VOFF",
+   "bytes": 44,
+   "line": 6349
+  },
+  {
+   "name": "LIGHT_NOW,_lightKey,_envQ",
+   "bytes": 43,
+   "line": 283
+  },
+  {
+   "name": "posOf",
+   "bytes": 43,
+   "line": 712
+  },
+  {
+   "name": "EXAG_SLOW_MS,EXAG_MEASURED_MS",
+   "bytes": 43,
+   "line": 2565
+  },
+  {
+   "name": "ATMO.FOG_TOP",
+   "bytes": 42,
+   "line": 385
+  },
+  {
+   "name": "GEO,_smokeTex,_dustTex",
+   "bytes": 42,
+   "line": 802
+  },
+  {
+   "name": "ECH_RANK",
+   "bytes": 42,
+   "line": 4988
+  },
+  {
+   "name": "scene,camera,renderer,sun,hemi,world",
+   "bytes": 41,
+   "line": 108
+  },
+  {
+   "name": "overlayRoot,curOv,oldOv",
+   "bytes": 40,
+   "line": 2719
+  },
+  {
+   "name": "pmrem,envRT,_envKey",
+   "bytes": 39,
+   "line": 477
+  },
+  {
+   "name": "CONF_ON",
+   "bytes": 37,
+   "line": 2205
+  },
+  {
+   "name": "AMBIENT_MS,INPUT_HOLD_MS",
+   "bytes": 37,
+   "line": 9095
+  },
+  {
+   "name": "RM",
+   "bytes": 36,
+   "line": 7
+  },
+  {
+   "name": "overlayMesh",
+   "bytes": 36,
+   "line": 3026
+  },
+  {
+   "name": "ATMO.u.uAtmoC.value.x",
+   "bytes": 35,
+   "line": 386
+  },
+  {
+   "name": "eventGroup,eventMarks",
+   "bytes": 35,
+   "line": 3871
+  },
+  {
+   "name": "SYM_MAX_PX,SYM_FADE",
+   "bytes": 35,
+   "line": 4026
+  },
+  {
+   "name": "faceCache,_efT,_efV",
+   "bytes": 35,
+   "line": 5739
+  },
+  {
+   "name": "selection,freeCam",
+   "bytes": 34,
+   "line": 115
+  },
+  {
+   "name": "ovAdd",
+   "bytes": 34,
+   "line": 2723
+  },
+  {
+   "name": "KM_PER_MAP",
+   "bytes": 33,
+   "line": 3198
+  },
+  {
+   "name": "LAYER_WORLD,LAYER_LABEL",
+   "bytes": 33,
+   "line": 3519
+  },
+  {
+   "name": "landCam,paperCam",
+   "bytes": 32,
+   "line": 112
+  },
+  {
+   "name": "mode,tween",
+   "bytes": 31,
+   "line": 114
+  },
+  {
+   "name": "overlayMats,oldMats",
+   "bytes": 31,
+   "line": 2720
+  },
+  {
+   "name": "_tw",
+   "bytes": 30,
+   "line": 122
+  },
+  {
+   "name": "_capM",
+   "bytes": 30,
+   "line": 2855
+  },
+  {
+   "name": "_gRay",
+   "bytes": 30,
+   "line": 5643
+  },
+  {
+   "name": "GRADE_RANK",
+   "bytes": 29,
+   "line": 763
+  },
+  {
+   "name": "_sfR",
+   "bytes": 29,
+   "line": 1998
+  },
+  {
+   "name": "_cfV",
+   "bytes": 29,
+   "line": 2131
+  },
+  {
+   "name": "_skV",
+   "bytes": 29,
+   "line": 2284
+  },
+  {
+   "name": "knowCache,knowKey",
+   "bytes": 29,
+   "line": 4133
+  },
+  {
+   "name": "_pv2",
+   "bytes": 29,
+   "line": 7581
+  },
+  {
+   "name": "ovFadeIn,ovFadeOut",
+   "bytes": 28,
+   "line": 2721
+  },
+  {
+   "name": "clock,curPhase",
+   "bytes": 28,
+   "line": 3196
+  },
+  {
+   "name": "_pv",
+   "bytes": 28,
+   "line": 4873
+  },
+  {
+   "name": "_ov",
+   "bytes": 28,
+   "line": 6299
+  },
+  {
+   "name": "TOAST",
+   "bytes": 28,
+   "line": 8761
+  },
+  {
+   "name": "_anT,_anU",
+   "bytes": 27,
+   "line": 995
+  },
+  {
+   "name": "v3",
+   "bytes": 27,
+   "line": 6227
+  },
+  {
+   "name": "dossierExpanded",
+   "bytes": 26,
+   "line": 7790
+  },
+  {
+   "name": "TOUR_APPLYING",
+   "bytes": 24,
+   "line": 4645
+  },
+  {
+   "name": "PANEL",
+   "bytes": 24,
+   "line": 6251
+  },
+  {
+   "name": "SHORTCUTS",
+   "bytes": 24,
+   "line": 6719
+  },
+  {
+   "name": "commandView",
+   "bytes": 23,
+   "line": 142
+  },
+  {
+   "name": "_apO,_apS",
+   "bytes": 23,
+   "line": 1040
+  },
+  {
+   "name": "CHEVRON_NOTCH",
+   "bytes": 23,
+   "line": 2756
+  },
+  {
+   "name": "firstRunOpen",
+   "bytes": 23,
+   "line": 7180
+  },
+  {
+   "name": "_claimClassRe",
+   "bytes": 23,
+   "line": 8108
+  },
+  {
+   "name": "AMBIENT_TEST",
+   "bytes": 23,
+   "line": 9098
+  },
+  {
+   "name": "terrainLabels",
+   "bytes": 21,
+   "line": 140
+  },
+  {
+   "name": "ANIM.body",
+   "bytes": 21,
+   "line": 1882
+  },
+  {
+   "name": "DRAWON_GHOST",
+   "bytes": 21,
+   "line": 3166
+  },
+  {
+   "name": "plateauRing",
+   "bytes": 21,
+   "line": 3932
+  },
+  {
+   "name": "setLayerPop",
+   "bytes": 21,
+   "line": 8929
+  },
+  {
+   "name": "panelMoveUntil",
+   "bytes": 21,
+   "line": 9111
+  },
+  {
+   "name": "cleanView",
+   "bytes": 20,
+   "line": 147
+  },
+  {
+   "name": "GL",
+   "bytes": 20,
+   "line": 567
+  },
+  {
+   "name": "ARROW_EDGE_OP",
+   "bytes": 20,
+   "line": 2840
+  },
+  {
+   "name": "ML_FULL_DIST",
+   "bytes": 20,
+   "line": 5017
+  },
+  {
+   "name": "curVantage",
+   "bytes": 20,
+   "line": 6446
+  },
+  {
+   "name": "_claimRefs",
+   "bytes": 20,
+   "line": 8116
+  },
+  {
+   "name": "highlight",
+   "bytes": 19,
+   "line": 141
+  },
+  {
+   "name": "planGroup",
+   "bytes": 19,
+   "line": 146
+  },
+  {
+   "name": "placeLabels",
+   "bytes": 19,
+   "line": 152
+  },
+  {
+   "name": "_anF",
+   "bytes": 19,
+   "line": 1016
+  },
+  {
+   "name": "PLATEAU_LAST",
+   "bytes": 19,
+   "line": 3935
+  },
+  {
+   "name": "planLinks",
+   "bytes": 19,
+   "line": 4540
+  },
+  {
+   "name": "_drawerClear",
+   "bytes": 19,
+   "line": 7736
+  },
+  {
+   "name": "goingOn",
+   "bytes": 18,
+   "line": 139
+  },
+  {
+   "name": "planSide",
+   "bytes": 18,
+   "line": 145
+  },
+  {
+   "name": "aggregates",
+   "bytes": 18,
+   "line": 151
+  },
+  {
+   "name": "TRANS_MS",
+   "bytes": 18,
+   "line": 3194
+  },
+  {
+   "name": "lowTier",
+   "bytes": 18,
+   "line": 3518
+  },
+  {
+   "name": "KEYS_DRY",
+   "bytes": 18,
+   "line": 6714
+  },
+  {
+   "name": "_drawerKey",
+   "bytes": 18,
+   "line": 7729
+  },
+  {
+   "name": "_srcRefs",
+   "bytes": 18,
+   "line": 8674
+  },
+  {
+   "name": "chapter",
+   "bytes": 17,
+   "line": 143
+  },
+  {
+   "name": "_kitDress",
+   "bytes": 17,
+   "line": 900
+  },
+  {
+   "name": "_padTex",
+   "bytes": 17,
+   "line": 2028
+  },
+  {
+   "name": "selRing",
+   "bytes": 17,
+   "line": 3959
+  },
+  {
+   "name": "lodEch",
+   "bytes": 17,
+   "line": 5728
+  },
+  {
+   "name": "_actExt",
+   "bytes": 17,
+   "line": 6385
+  },
+  {
+   "name": "tourStep",
+   "bytes": 16,
+   "line": 144
+  },
+  {
+   "name": "_flagTex",
+   "bytes": 16,
+   "line": 1776
+  },
+  {
+   "name": "camArc",
+   "bytes": 16,
+   "line": 3436
+  },
+  {
+   "name": "SEP_KM",
+   "bytes": 16,
+   "line": 4073
+  },
+  {
+   "name": "TOURCV",
+   "bytes": 16,
+   "line": 4640
+  },
+  {
+   "name": "_plDay",
+   "bytes": 16,
+   "line": 7335
+  },
+  {
+   "name": "lastFrame",
+   "bytes": 16,
+   "line": 9086
+  },
+  {
+   "name": "ART_GEO",
+   "bytes": 15,
+   "line": 1328
+  },
+  {
+   "name": "_figTop",
+   "bytes": 15,
+   "line": 1744
+  },
+  {
+   "name": "_sitKey",
+   "bytes": 15,
+   "line": 7330
+  },
+  {
+   "name": "SPINE",
+   "bytes": 15,
+   "line": 7568
+  },
+  {
+   "name": "_tbEl",
+   "bytes": 15,
+   "line": 9077
+  },
+  {
+   "name": "BOOTMS",
+   "bytes": 14,
+   "line": 606
+  },
+  {
+   "name": "DRAWON",
+   "bytes": 14,
+   "line": 3125
+  },
+  {
+   "name": "_lgKey",
+   "bytes": 14,
+   "line": 5579
+  },
+  {
+   "name": "units",
+   "bytes": 13,
+   "line": 150
+  },
+  {
+   "name": "ML_PAD",
+   "bytes": 13,
+   "line": 5018
+  },
+  {
+   "name": "smokeT",
+   "bytes": 13,
+   "line": 5729
+  },
+  {
+   "name": "expr@14255",
+   "bytes": 7,
+   "line": 14255
+  }
+ ],
+ "assets": [
+  {
+   "key": "mud.diff",
+   "mime": "image/jpeg",
+   "bytes": 113675
+  },
+  {
+   "key": "mud.nor",
+   "mime": "image/jpeg",
+   "bytes": 84759
+  },
+  {
+   "key": "grass.diff",
+   "mime": "image/jpeg",
+   "bytes": 96923
+  },
+  {
+   "key": "grass.nor",
+   "mime": "image/jpeg",
+   "bytes": 159815
+  },
+  {
+   "key": "litter.diff",
+   "mime": "image/jpeg",
+   "bytes": 86859
+  },
+  {
+   "key": "litter.nor",
+   "mime": "image/jpeg",
+   "bytes": 123879
+  }
+ ],
+ "fonts": {
+  "bytes": 96643
+ },
+ "selfTest": {
+  "name": "AUSTERLITZ_DEBUG",
+  "bytes": 611113,
+  "shareOfHtml": 0.217,
+  "line": 9154
+ },
+ "sumOfParts": 2810630
+}
