@@ -1,0 +1,705 @@
+[
+ {
+  "id": "C-01",
+  "status_class": "accepted",
+  "status": "accepted as measured (decision 268 (a)); not attributed",
+  "cl": [
+   "CL-PERF-04",
+   "CL-PERF-05",
+   "CL-PERF-08",
+   "CL-PERF-09",
+   "CL-PERF-11",
+   "CL-PERF-12"
+  ],
+  "question": "",
+  "verdict": "stale",
+  "note": "says 'perf-attribution area has left no result (... is empty)' and 'not attributed'; perf-attribution/result.json now exists and CL-PERF-12 attributes the excess (A-verdict.md, F-quality.md F.1). Status should read: accepted (268 (a)); attributed by this audit (CL-PERF-12)",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-02",
+  "status_class": "accepted",
+  "status": "accepted as measured (decision 269 (a))",
+  "cl": [
+   "CL-PERF-01",
+   "CL-PERF-03",
+   "CL-PERF-06"
+  ],
+  "question": "Q278",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-03",
+  "status_class": "not-measured",
+  "status": "not measured",
+  "cl": [
+   "CL-PERF-02"
+  ],
+  "question": "Q278",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-04",
+  "status_class": "recorded",
+  "status": "recorded; \"not shown\" by the rule on both devices",
+  "cl": [
+   "CL-PERF-07",
+   "CL-PERF-10"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-05",
+  "status_class": "open",
+  "status": "open; undecided",
+  "cl": [],
+  "question": "",
+  "verdict": "gap closed by this audit (code read)",
+  "note": "the record says the Layers panel was not checked; app.js:6684 (KEYS row 'f') is the only visitor path to the effects (setFXEnabled, app.js:3772); no Layers row, no text claims effects off is faster; a phone visitor without a keyboard cannot switch them. No defect; still undecided by the owner, with no question in section I",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-06",
+  "status_class": "open",
+  "status": "open; confirmed, and understated by the benchmark",
+  "cl": [
+   "CL-MAP-01",
+   "CL-MAP-14",
+   "CL-TEST-02"
+  ],
+  "question": "Q274",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-07",
+  "status_class": "open",
+  "status": "measured in this audit: acceptable in three presentations, not in Landscape with counters",
+  "cl": [
+   "CL-MAP-01",
+   "CL-MAP-02",
+   "CL-MAP-07"
+  ],
+  "question": "Q274",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-08",
+  "status_class": "accepted",
+  "status": "settled (decision 267 (a); not re-required)",
+  "cl": [
+   "CL-TEST-14"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-09",
+  "status_class": "provisional",
+  "status": "provisional, unchanged (the device runs it waited on are recorded; the decision not revisited)",
+  "cl": [
+   "CL-VIS-01",
+   "CL-TEST-08"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-10",
+  "status_class": "accepted",
+  "status": "accepted, unchanged",
+  "cl": [
+   "CL-VIS-05"
+  ],
+  "question": "",
+  "verdict": "supported; severity text stale",
+  "note": "cites visual-landscape finding 5 as S4/P3; the register now has CL-VIS-05 at S4/P4",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-11",
+  "status_class": "open",
+  "status": "unchanged; the owner's reconsideration open",
+  "cl": [],
+  "question": "Q280",
+  "verdict": "supported",
+  "note": "uniform facings (colour); CL-VIS-03 is the blocks' orientation, a different sense of \"facing\" (corrected after comparing with resolution.py CARRIED_REFS)",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-12",
+  "status_class": "open",
+  "status": "unchanged; the owner has not decided",
+  "cl": [],
+  "question": "Q281",
+  "verdict": "supported; no cross-reference",
+  "note": "no CL entry (none needed); the record should cite question 281",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-13",
+  "status_class": "accepted",
+  "status": "accepted, confirmed",
+  "cl": [
+   "CL-HIS-04",
+   "CL-VIS-04"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "the castle's size itself is the set-aside geography #11 (decision 266 (a))",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-14",
+  "status_class": "open",
+  "status": "present",
+  "cl": [],
+  "question": "",
+  "verdict": "miss: no register entry",
+  "note": "status 'present' rests on records/castle-site.json (class 'track' at the site, 13 of 16 points at 25 m); no CL finding, no owner question, not in section G: register it (S4) or record why it needs none",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-15",
+  "status_class": "open",
+  "status": "unchanged; not decided",
+  "cl": [],
+  "question": "Q282",
+  "verdict": "supported; no cross-reference",
+  "note": "the record should cite question 282 (its option (b) for the garden)",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-16",
+  "status_class": "accepted",
+  "status": "accepted, confirmed",
+  "cl": [
+   "CL-VIS-02"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-17",
+  "status_class": "open",
+  "status": "unchanged; not decided",
+  "cl": [
+   "CL-VIS-06",
+   "CL-GEO-01"
+  ],
+  "question": "Q282",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-18",
+  "status_class": "accepted",
+  "status": "accepted; still dropped",
+  "cl": [
+   "CL-MAP-18",
+   "CL-MAP-11"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-19",
+  "status_class": "open",
+  "status": "the plate built (8I); the wall present and open",
+  "cl": [
+   "CL-MAP-15"
+  ],
+  "question": "",
+  "verdict": "supported; no owner question",
+  "note": "status 'open' (decision 255 left it open) but section I puts no question; WP-08 says 'reconsidered where decisions left them open'",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-20",
+  "status_class": "accepted",
+  "status": "kept by decision 92 (explained)",
+  "cl": [
+   "CL-SIM-06"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-21",
+  "status_class": "open",
+  "status": "open; confirmed",
+  "cl": [
+   "CL-VIS-08"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-22",
+  "status_class": "open",
+  "status": "open; confirmed",
+  "cl": [
+   "CL-GEO-05"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-23",
+  "status_class": "accepted",
+  "status": "recorded; no action needed",
+  "cl": [],
+  "question": "",
+  "verdict": "supported",
+  "note": "no CL needed (recorded, no action)",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-24",
+  "status_class": "recorded",
+  "status": "unchanged (not recoverable)",
+  "cl": [],
+  "question": "",
+  "verdict": "supported",
+  "note": "records only; not recoverable",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-25",
+  "status_class": "not-measured",
+  "status": "partly measured since",
+  "cl": [
+   "CL-PERF-02"
+  ],
+  "question": "Q278",
+  "verdict": "supported; partly untested",
+  "note": "memory on a device and the crowns' hook's own cost have no CL or untested entry",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-26",
+  "status_class": "done-with-residuals",
+  "status": "done (8J), with residuals",
+  "cl": [
+   "CL-GEO-08",
+   "CL-HIS-04"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-27",
+  "status_class": "done-with-residuals",
+  "status": "done (8K), with residuals",
+  "cl": [
+   "CL-GEO-10"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-28",
+  "status_class": "accepted",
+  "status": "settled (not adopted)",
+  "cl": [
+   "CL-MAP-01",
+   "CL-MAP-14",
+   "CL-TEST-02"
+  ],
+  "question": "Q274",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-29",
+  "status_class": "accepted",
+  "status": "accepted; labelled",
+  "cl": [
+   "CL-UX-08"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-30",
+  "status_class": "provisional",
+  "status": "provisional, unchanged",
+  "cl": [
+   "CL-GEO-10"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-31",
+  "status_class": "open",
+  "status": "open",
+  "cl": [
+   "CL-GEO-10"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "parser missed the bare '(finding 10)'",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-32",
+  "status_class": "open",
+  "status": "open; not visible to a visitor",
+  "cl": [
+   "CL-GEO-10"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-33",
+  "status_class": "open",
+  "status": "open in the records; stated as settled on screen",
+  "cl": [
+   "CL-GEO-02"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-34",
+  "status_class": "open",
+  "status": "open in the records; drawn and told as settled",
+  "cl": [
+   "CL-GEO-06",
+   "CL-HIS-10",
+   "CL-TEST-04"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-35",
+  "status_class": "open",
+  "status": "open and visible",
+  "cl": [],
+  "question": "",
+  "verdict": "supported",
+  "note": "open and visible; no CL needed",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-36",
+  "status_class": "open",
+  "status": "open and visible",
+  "cl": [
+   "CL-HIS-17"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-37",
+  "status_class": "open",
+  "status": "open; not visible (moot in the drawing)",
+  "cl": [],
+  "question": "",
+  "verdict": "supported",
+  "note": "moot in the drawing; no CL needed",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-38",
+  "status_class": "open",
+  "status": "open; its stated reason inaccurate",
+  "cl": [
+   "CL-GEO-07",
+   "CL-HIS-14"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-39",
+  "status_class": "open",
+  "status": "kept open in the data, with exceptions",
+  "cl": [
+   "CL-SRC-03",
+   "CL-SRC-01",
+   "CL-HIS-14",
+   "CL-GEO-06",
+   "CL-GEO-10"
+  ],
+  "question": "Q271",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-40",
+  "status_class": "open",
+  "status": "open; larger than recorded",
+  "cl": [
+   "CL-HIS-08",
+   "CL-HIS-11"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-41",
+  "status_class": "open",
+  "status": "open; the records' numbers high",
+  "cl": [
+   "CL-HIS-09"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-42",
+  "status_class": "recorded",
+  "status": "recorded",
+  "cl": [],
+  "question": "",
+  "verdict": "unsupported: not examined",
+  "note": "the record's own evidence is 'Not re-examined in this audit'; no area examined the woods' re-plan where a wood changed (8J): report it as untested or check it",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-43",
+  "status_class": "done-with-residuals",
+  "status": "done (8B): outlines; \"Position confidence\" off at first on the landscape",
+  "cl": [
+   "CL-MAP-08",
+   "CL-MAP-10"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-44",
+  "status_class": "done-with-residuals",
+  "status": "done (8C), with residuals",
+  "cl": [
+   "CL-MAP-01",
+   "CL-MAP-02",
+   "CL-MAP-07",
+   "CL-MAP-14",
+   "CL-MAP-17",
+   "CL-TEST-02"
+  ],
+  "question": "Q274",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-45",
+  "status_class": "done-with-residuals",
+  "status": "done (8E), with residuals",
+  "cl": [
+   "CL-HIS-05",
+   "CL-VIS-01",
+   "CL-VIS-03",
+   "CL-VIS-04"
+  ],
+  "question": "Q280 Q281",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-46",
+  "status_class": "done-with-residuals",
+  "status": "done (8F), with residuals",
+  "cl": [
+   "CL-VIS-01",
+   "CL-VIS-05"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "parser missed the bare 'finding 5'",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-47",
+  "status_class": "done-with-residuals",
+  "status": "done (8G, 8J), with residuals",
+  "cl": [
+   "CL-VIS-04",
+   "CL-GEO-05",
+   "CL-GEO-08"
+  ],
+  "question": "Q282",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-48",
+  "status_class": "done-with-residuals",
+  "status": "partly (481 of 704 unchecked)",
+  "cl": [
+   "CL-HIS-12",
+   "CL-TEST-12"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-49",
+  "status_class": "open",
+  "status": "open",
+  "cl": [
+   "CL-TEST-13"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-50",
+  "status_class": "open",
+  "status": "open (Duffy's two pages read since, decision 213 (b))",
+  "cl": [
+   "CL-SRC-01"
+  ],
+  "question": "Q271",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-51",
+  "status_class": "open",
+  "status": "mostly open; one settled",
+  "cl": [
+   "CL-HIS-06"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-52",
+  "status_class": "open",
+  "status": "open",
+  "cl": [
+   "CL-UX-05"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-53",
+  "status_class": "open",
+  "status": "open, each confirmed in code",
+  "cl": [
+   "CL-HIS-16",
+   "CL-HIS-15"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "the unaccented forms are in CL-HIS-15",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-54",
+  "status_class": "accepted",
+  "status": "accepted by decision 175; no results exist",
+  "cl": [
+   "CL-REC-05"
+  ],
+  "question": "",
+  "verdict": "miss: CL not cited",
+  "note": "the record cites a11y findings 1-13 but not CL-REC-05, the register's entry for this very item",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-55",
+  "status_class": "accepted",
+  "status": "accepted by decision 189; no results exist",
+  "cl": [
+   "CL-REC-05"
+  ],
+  "question": "",
+  "verdict": "miss: CL not cited",
+  "note": "CL-REC-05 is the register's entry for decision 189's missing results; the record cites none",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-56",
+  "status_class": "open",
+  "status": "unchanged",
+  "cl": [],
+  "question": "",
+  "verdict": "miss: no register entry",
+  "note": "italics synthesized (fonts.css: three faces, font-style normal) and Safari's metric overrides untested; no CL, no untested entry, not in C.3",
+  "cl_in_record": []
+ },
+ {
+  "id": "C-57",
+  "status_class": "open",
+  "status": "unchanged for the suite",
+  "cl": [
+   "CL-UX-06"
+  ],
+  "question": "",
+  "verdict": "supported",
+  "note": "",
+  "cl_in_record": []
+ }
+]

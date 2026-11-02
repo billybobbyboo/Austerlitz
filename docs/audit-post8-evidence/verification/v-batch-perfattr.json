@@ -1,0 +1,45 @@
+{
+ "label": "v-batch-perfattr",
+ "verdicts": [
+  {
+   "area": "perf-attribution",
+   "index": 0,
+   "verdict": "WEAKENED",
+   "method": "code reading (three r128 three.js:10682-10684, 10857-10914; app.js:1108, 1243-1249, 1896-1902; git log -S for origin) + new per-draw probe on both builds (probe.js: every renderBufferDirect classified by instancing, pass and active attributes) + re-reading summary.md/paired.md profile deltas",
+   "evidence": "Per frame in play-half (2560x1305, now): 430 kit instanced draws (215 main, 215 shadow), each binding aPart/aPh/aSl: 1,290 = 3 x 430 extra vertexAttribPointer and bindBuffer, measured (L3: 0); paired.md now-L3 +1,353 VAP / +1,332 bindBuffer; every VAP of a frame is instanced re-binding (model 4,846 = GL 4,846; L3 3,493 = 3,493). Time: setup+bindBuffer+vertexAttribPointer(+bindVertexArray) rise +1.53 (+1.72) of +9.69 ms profiled Play (16-18%), +1.18 (+1.51) of +8.74 drag, +0.84 (+0.89) of +4.32 route; app subsystems ~+3.1 (32%); ~+2.7 ms three.js JS growth unattributed. docs/audit-post8-evidence/verification/v-batch-perfattr/probe-now*.json, probe-L3.json, summary.txt",
+   "notes": "Mechanism and counts confirmed exactly (430 kit draws, not 'about 450'). 'Mostly' holds for the GL-call growth (81% of +3,175 calls), not for the time. Ref app.js:12866 is the self-test's hLeg, not production. Remedy: packing aPh into aSl (both per instance) is feasible (-860 calls a frame); aPart has no spare component (colour.a would enable r128 vertexAlphas). Severity/priority/category/origin agreed (decision 268 (a)).",
+   "corrected": {
+    "title": "Decision 268 (a)'s excess: the +30% GL calls a frame are 8D/8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's app work about 20-32%; about a third of the rise (three.js JS) unattributed",
+    "observed": "Per draw in play-half: 430 kit instanced draws a frame (215 main, 215 shadow) x 3 attributes = 1,290 of the +1,353 vertexAttribPointer and +1,332 bindBuffer; their profile functions +1.53-1.72 of +9.69 ms (Play), +1.18-1.51 of +8.74 (drag), +0.84-0.89 of +4.32 (route)"
+   }
+  },
+  {
+   "area": "perf-attribution",
+   "index": 1,
+   "verdict": "CONFIRMED",
+   "method": "code reading (app.js:4925-4943, 6359, 321, 347, 6075, 6364-6365, 4959; git log -S) + re-reading paired.md call counts and pages/page-*.json profile aggregates (self, inclusive, callers)",
+   "evidence": "52,160 cells and 52,323 arrays a call at 2560x1305; landFreeRect 3 a frame in the four moving motions and 2 in overview-held, L3 and now alike; freeRect self 3.80-6.53 ms profiled now; in L3 round-1 drags freeRect self is 0 and the inlined viewport (vp < freeRect < placeLights|landFreeRect|smokePlace) carries exactly freeRect's inclusive 4.92 and 8.71 ms, so freeRect is the largest app function in every profile",
+   "notes": "Precision: 2 calls a frame while the eye is still (placeLights' key holds, shadowReceivers skipped). Device impact by uniform scaling ~1.0-1.3 ms a frame: comparable to, not clearly more than, decision 268's +1.1/+1.5 ms (inference). Memo key should use exact, not rounded, rectangles; syncViewOffset's VOFF.key already forms it each frame. Inherited (calls present before Stage 8, L3 counts equal). S4/P2 optional-improvement agreed."
+  },
+  {
+   "area": "perf-attribution",
+   "index": 2,
+   "verdict": "CONFIRMED",
+   "method": "code reading (three.js:18186-18215, 18075-18083, 17954-17966, 17877, 13791-13814, 14116-14119; app.js:3714-3719, 3757-3761) + new A/B probe on both builds counting getProgram (customProgramCacheKey) calls per frame with the lights as built (A) and also on LAYER_LABEL (B, page-local)",
+   "evidence": "A: 313 getProgram a frame in L3 (all MeshStandardMaterial), 318 now (103 MeshStandard + 215 kit materials with the anim hook), in every A run; B: 0 a frame in all 7 B runs, both builds. Cause: renderFX's label pass (camera.layers LAYER_LABEL) sees none of the three layer-0 lights, so r128's shared render state's lights hash changes and state.version is bumped twice a frame, and every lit material drawn in the world pass re-derives its program (cache hit). Desktop bound: effects-off orbit (no label pass) 4.0 vs 4.8 ms L3, 5.1 vs 5.8/5.9 now (STAGE8_SPEC.md:5559-5560): at most ~0.7-0.8 ms a frame. docs/audit-post8-evidence/verification/v-batch-perfattr/",
+   "notes": "Inherited (L3 313/frame; label pass predates Stage 8). Container A-B timing noisy (loop median 4.5 ms over 13 pairs, range -4.1 to +14.4). Remedy: lights on both layers plus renderer.shadowMap.autoUpdate=false around the label pass (else the label pass re-renders and clears sun.shadow.map, which the self-test reads, app.js:13238); label objects are unlit sprites; pixels not tested.",
+   "corrected": {
+    "title": "three r128 re-derives every lit material's program (getParameters, getProgramCacheKey, uniform wiring) every frame because renderFX's label pass sees no lights and bumps the lights state version (313 a frame in L3, 318 now; 0 with the lights also on the label layer)",
+    "category": "optional-improvement",
+    "priority": "P3",
+    "observed": "318 getProgram calls a frame (every MeshStandardMaterial in the world pass), 0 with the lights also enabling LAYER_LABEL; desktop cost bounded at about 0.7-0.8 ms a frame by the effects-off orbit"
+   }
+  }
+ ],
+ "not_done": [
+  "The remedies (attribute packing, freeRect memo, lights on the label layer) were not built or pixel-compared, and no device timing was taken",
+  "8D's build not measured; the minified three.js '(anonymous)' growth in finding 0 not identified (the area's CPU profiles were not kept)",
+  "The exact size of finding 2's saving: the container A/B timing is noisy; only a desktop upper bound from the effects-off segment is given"
+ ],
+ "extra_issues": []
+}

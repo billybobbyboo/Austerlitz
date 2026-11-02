@@ -29,7 +29,7 @@ geography, state, tests, robustness, the device evidence, CPU attribution, visib
 and first use, and the records. Each sub-agent wrote its evidence, a README and a structured result to `docs/audit-post8-evidence/<area>/`.
 The account's usage limit stopped most areas at about 01:30 UTC. Each interrupted area was finished from its saved evidence after the reset;
 its README says what was redone. The auditor read every area's result, merged duplicates and assigned the identifiers in `register.json`. Each
-S1 and S2 finding then went to a separate skeptic, and the rest in batches, to try to refute it (section B's introduction). The auditor
+S1 and S2 finding then went to a separate skeptic, and the rest in batches, to try to refute it (section B's introduction). A completeness critic last read the report against the brief; its corrections are applied and its three findings registered. The auditor
 reproduced some findings personally. Those are named in the findings' "Auditor's note".
 
 What no check here can show:

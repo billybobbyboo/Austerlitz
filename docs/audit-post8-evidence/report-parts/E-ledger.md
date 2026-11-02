@@ -38,11 +38,11 @@ prints what the map says. It does not mean the map's reading of the battle is th
   - formations with an offensive status walk away from the enemy (`CL-HIS-05`);
   - the Russian Guard's plotted approach contradicts the register's A readings, and nobody holds Blasowitz when it falls (`CL-HIS-03`);
   - Caffarelli is not where the records say (`CL-HIS-09`);
-  - the earlier fix G-3, Miloradovich at dawn, does not hold.
+  - Miloradovich at dawn, the prior audit's G-3, was never taken up: an open prior finding (`CL-REC-06`), not a failed fix.
 
-  Eleven of the earlier audit's history fixes hold (H-1, H-2, H-3, H-4, H-12, H-13, H-14, H-18, D-3, D-4, S-5).
+  Eleven of the earlier audit's history fixes hold (H-1, H-2, H-3, H-4, H-12, H-13, H-14, H-18, D-3, D-4, S-5). Of its 75 findings, 64 are resolved, 6 partly (H-19's spellings among them), 2 accepted by decision, 2 superseded and 1 open (`records/prior-findings.md`).
 - **Geography.** The frame is sound: one scale authority, a similarity transform of true geography, the 17-degree rotation from true north
-  disclosed, the villages from the Czech municipality register, the 8J and 8K corrections where their sources put them. Three claims are
+  disclosed, the villages from the Czech municipality register, the 8J and 8K corrections in the data where their sources put them. In the drawing, though, the Pratzen church stands 161 m from its read site (`CL-GEO-08`) and Legrand's leg crosses the re-plotted castle (`CL-HIS-04`). Three claims are
   contradicted:
   - the relief is not fitted to surveyed elevations where a visitor reads it most (`CL-GEO-01`);
   - Krug lies 1.67 km from where the 1836-52 survey puts it, while the visitor is told no source fixes it (`CL-GEO-07`);

@@ -177,21 +177,6 @@ def main():
     # C: coverage
     out.append("## C. Coverage matrix\n")
     out.append(part("C-intro.md"))
-    # C.4 (placed before C.2 in the text): the carried issues
-    cf = os.path.join(EV, "records", "carried.json")
-    if os.path.exists(cf):
-        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-        from resolution import CARRIED_REFS
-        C = json.load(open(cf, encoding="utf-8"))["register"]
-        out.append("### C.4 The carried issues, one by one\n")
-        out.append("Every item carried to this audit (`docs/STAGE8_SPEC.md` 20.13, 20.14, 21.9, 22.6, 23.4, 24.3, 25.4, and `docs/ROADMAP.md`'s handed-on "
-                   "notes), as the records area registered it (`docs/audit-post8-evidence/records/carried.md`, %d items), with its governing decision, its status "
-                   "now and this audit's findings or questions on it. A status says what the evidence shows; an accepted item stays accepted unless a "
-                   "finding says what new evidence bears on it.\n" % len(C))
-        out.append("| id | item | decision | status now | this audit |\n|---|---|---|---|---|")
-        for x in C:
-            out.append("| %s | %s | %s | %s | %s |" % (x.get("id"), esc(x.get("item")), esc(x.get("decision")), esc(x.get("status")), esc(CARRIED_REFS.get(x.get("id"), ""))))
-        out.append("")
     out.append("### C.2 What each area examined, by method\n")
     out.append("The per-area coverage tables (%d rows) are in the companion file `docs/FINAL_AUDIT_POST_STAGE8_LEDGERS.md`, section L.1.\n" % sum(len(r.get("coverage", [])) for r in areas.values()))
     comp.append("## L.1 What each area examined, by method\n")
@@ -210,6 +195,21 @@ def main():
             out.append("- **%s**: %s" % (a, " · ".join(esc(x) for x in nc)))
     out.append("")
 
+    # C.4: the carried issues
+    cf = os.path.join(EV, "records", "carried.json")
+    if os.path.exists(cf):
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from resolution import CARRIED_REFS, CARRIED_STATUS
+        C = json.load(open(cf, encoding="utf-8"))["register"]
+        out.append("### C.4 The carried issues, one by one\n")
+        out.append("Every item carried to this audit (`docs/STAGE8_SPEC.md` 20.13, 20.14, 21.9, 22.6, 23.4, 24.3, 25.4, and `docs/ROADMAP.md`'s handed-on "
+                   "notes), as the records area registered it (`docs/audit-post8-evidence/records/carried.md`, %d items), with its governing decision, its status "
+                   "now and this audit's findings or questions on it. A status says what the evidence shows; an accepted item stays accepted unless a "
+                   "finding says what new evidence bears on it.\n" % len(C))
+        out.append("| id | item | decision | status now | this audit |\n|---|---|---|---|---|")
+        for x in C:
+            out.append("| %s | %s | %s | %s | %s |" % (x.get("id"), esc(x.get("item")), esc(x.get("decision")), esc(CARRIED_STATUS.get(x.get("id"), x.get("status"))), esc(CARRIED_REFS.get(x.get("id"), ""))))
+        out.append("")
     # D: tests and experiments
     out.append("## D. Test and experiment ledger\n")
     out.append(part("D-intro.md"))

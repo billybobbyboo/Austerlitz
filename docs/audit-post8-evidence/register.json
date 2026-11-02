@@ -280,7 +280,7 @@
     "note": " [lenses: WEAKENED (batch)]"
    },
    "override": {
-    "title": "Krug and Bellowitz are drawn at their legacy places with the open question only in SOURCE_NOTE (Krug's place is CL-GEO-07), and the Russian Guard cavalry's commander is shown without a claim tag (the note behind it is CL-SRC-03)",
+    "title": "Bellowitz is drawn at its legacy place with the open question only in SOURCE_NOTE, and the Russian Guard cavalry's commander is shown without a claim tag (Krug's place, drawn the same way, is CL-GEO-07; the note behind the commander is CL-SRC-03)",
     "severity": "S4",
     "priority": "P4",
     "work_package": "WP-01"
@@ -625,7 +625,7 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Krug's place is also named in CL-HIS-14, which defers to this entry for it.",
    "verify": {
     "verdict": "CONFIRMED",
     "note": " [lenses: CONFIRMED (batch)]"
@@ -1218,6 +1218,20 @@
    },
    "override": {
     "work_package": "WP-06"
+   }
+  },
+  {
+   "id": "CL-UX-21",
+   "from": [
+    [
+     "completeness",
+     1
+    ]
+   ],
+   "also": [],
+   "note": "Found by the completeness critic; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-09"
    }
   },
   {
@@ -2160,6 +2174,20 @@
    }
   },
   {
+   "id": "CL-TEST-21",
+   "from": [
+    [
+     "completeness",
+     0
+    ]
+   ],
+   "also": [],
+   "note": "Found by the completeness critic; not given a separate skeptic. Section C.1 lists these parts as outside the audit's coverage.",
+   "override": {
+    "work_package": "WP-11"
+   }
+  },
+  {
    "id": "CL-REC-01",
    "from": [
     [
@@ -2521,6 +2549,20 @@
    }
   },
   {
+   "id": "CL-ROB-13",
+   "from": [
+    [
+     "completeness",
+     2
+    ]
+   ],
+   "also": [],
+   "note": "Found by the completeness critic; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-13"
+   }
+  },
+  {
    "id": "CL-PERF-01",
    "from": [
     [
@@ -2727,8 +2769,14 @@
     ]
    ],
    "also": [],
-   "note": "Refines CL-PERF-04: the excess reproduces on one fixed browser, so the unrecorded Chrome update does not explain it.",
+   "note": "Refines CL-PERF-04: the excess reproduces on one fixed browser, so the unrecorded Chrome update does not explain it. Verifier: the mechanism and counts confirmed exactly (430 kit draws, not about 450); 'mostly' holds for the GL-call growth (81% of +3,175 calls), not for the time. Remedy: packing aPh into aSl (both per instance) is feasible (-860 calls a frame); aPart has no spare component.",
+   "verify": {
+    "verdict": "WEAKENED",
+    "note": "The mechanism holds; its share of the time was overstated ('mostly'): corrected to the measured shares. [lenses: WEAKENED (batch)]"
+   },
    "override": {
+    "title": "Decision 268 (a)'s desktop script excess: the +30% GL calls a frame are 8D's and 8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's own per-frame app work about 20-32%; about a third (three.js JavaScript) unattributed",
+    "observed": "Per frame in Play at half speed: 430 instanced kit draws (215 main, 215 shadow) x 3 attributes = 1,290 of the +1,353 vertexAttribPointer and +1,332 bindBuffer calls; their functions +1.53-1.72 ms of the +9.69 ms profiled rise (Play), +1.18-1.51 of +8.74 (drag); reproduced on one fixed browser (Chromium 141 for both builds) at the device's ratio (+22-23% here, +25% on the desktop), so the Chrome 155 to 156 update is not needed to explain it; located between step 6's L3 build and 8E.",
     "work_package": "WP-12"
    }
   },
@@ -2741,7 +2789,11 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "Verifier: 2 calls a frame while the eye is still; by uniform scaling about 1.0-1.3 ms a frame on the desktop, comparable to decision 268's +1.1/+1.5 ms (inference); the memo key should use exact rectangles (syncViewOffset's VOFF.key already forms it).",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
     "work_package": "WP-12"
    }
@@ -2756,8 +2808,72 @@
    ],
    "also": [],
    "note": "",
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": " [lenses: CONFIRMED (batch)]"
+   },
    "override": {
+    "title": "three r128 re-derives every lit material's program each frame (getParameters, getProgramCacheKey, uniform wiring) because the label pass sees no lights and bumps the lights' state version (313 a frame in L3, 318 now; 0 with the lights also on the label layer)",
+    "category": "optional-improvement",
+    "priority": "P3",
+    "observed": "318 getProgram calls a frame (every MeshStandardMaterial of the world pass), 0 with the lights also enabling the label layer; the desktop cost bounded at about 0.7-0.8 ms a frame by the effects-off orbit.",
     "work_package": "WP-12"
+   }
+  },
+  {
+   "id": "CL-GEO-11",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "The Sokolnitz castle's site falls on the drawn track class: the quadrangle stands on a track's surface (13 of 16 points within 25 m are 'track')",
+    "category": "confirmed-defect",
+    "severity": "S4",
+    "priority": "P4",
+    "subsystem": "landmarks against the land cover (world.js LANDMARK_SITES, drawnCover)",
+    "user_impact": "Close up, the castle and its farm stand on a track's colour and texture rather than on ground of their own.",
+    "status": "confirmed (records area's script)",
+    "origin": "new-regression (8J's site)",
+    "refs": [
+     "world.js:162",
+     "docs/STAGE8_SPEC.md:5109"
+    ],
+    "evidence": "docs/audit-post8-evidence/records/castle-site.json (tools/audit-post8/records/castle-site.js): drawnCover at LANDMARK_SITES.castle is 'track'; at 25 m 13 of 16 points 'track', 3 'meadow'; carried item C-14",
+    "expected": "A landmark's footprint on ground the cover classes give to buildings or open ground, not a road surface.",
+    "observed": "The site and most of its 25 m ring are classed 'track'.",
+    "remedy": "Give the castle's footprint its own cover (or route the track round it) in the land-cover data, a data task with the drawing re-measured.",
+    "effort": "hours"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-04"
+   }
+  },
+  {
+   "id": "CL-UX-22",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "Safari's handling of the embedded faces' metric overrides is untested, and every italic is synthesized (no italic face is embedded)",
+    "category": "untested",
+    "severity": "S4",
+    "priority": "P4",
+    "subsystem": "type (fonts.css, tokens.js)",
+    "user_impact": "On Safari, line heights and text widths may differ from the measured layouts; italics are the browser's slanted roman.",
+    "status": "untested",
+    "origin": "inherited (roadmap step 1)",
+    "refs": [
+     "fonts.css",
+     "docs/ROADMAP.md:41-43"
+    ],
+    "evidence": "docs/audit-post8-evidence/records/carried.md C-56: fonts.css holds three faces, all font-style normal; the Safari inference untested (the iPhone runs measured frames, not text metrics)",
+    "expected": "Text measured on the browsers visitors use, or the limit stated.",
+    "observed": "No Safari text measurement exists.",
+    "remedy": "Measure the layouts' text boxes on Safari once (the owner's iPhone), or embed an italic face if italics matter.",
+    "effort": "hours"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-09"
    }
   }
  ],

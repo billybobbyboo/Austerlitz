@@ -99,6 +99,7 @@ MAP = [
     ("CL-UX-18", "a11y", 12, [], "Overlaps CL-MAP-06 on the phone caption's orphan separators."),
     ("CL-UX-19", "interaction", 6, [], ""),
     ("CL-UX-20", "interaction", 7, [], ""),
+    ("CL-UX-21", "completeness", 1, [], "Found by the completeness critic; not given a separate skeptic."),
     # map layer, labels, furniture, paper map
     ("CL-MAP-01", "visibility", 0, [], ""),
     ("CL-MAP-02", "visibility", 1, [], ""),
@@ -151,6 +152,7 @@ MAP = [
     ("CL-TEST-18", "tests", 15, [], ""),
     ("CL-TEST-19", "tests", 16, [], ""),
     ("CL-TEST-20", "tests", 17, [], ""),
+    ("CL-TEST-21", "completeness", 0, [], "Found by the completeness critic; not given a separate skeptic. Section C.1 lists these parts as outside the audit's coverage."),
     # records
     ("CL-REC-01", "records", 1, [], "Related, not the same surface: CL-UX-11 (the app's own first screen)."),
     ("CL-REC-02", "records", 0, [], ""),
@@ -172,6 +174,7 @@ MAP = [
     ("CL-ROB-10", "robustness", 10, [], ""),
     ("CL-ROB-11", "robustness", 11, [], ""),
     ("CL-ROB-12", "robustness", 12, [], ""),
+    ("CL-ROB-13", "completeness", 2, [], "Found by the completeness critic; not given a separate skeptic."),
     # performance and the device evidence
     ("CL-PERF-01", "perf", 1, [], ""),
     ("CL-PERF-02", "perf", 5, [], ""),
@@ -193,7 +196,7 @@ SET_ASIDE = [("geography", 10), ("sources-oob", 8)]
 # the auditor's resolution of the verification: tools/audit-post8/resolution.py
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from resolution import OVERRIDE, VERDICT, NOTES, WP
+from resolution import OVERRIDE, VERDICT, NOTES, WP, OWN
 WP_OF = {i: w for w, ids in WP.items() for i in ids}
 # the auditor's own checks (read or reproduced personally, independently of the areas and the verifiers): id -> text
 AUDITOR = {
@@ -259,6 +262,12 @@ def main():
         if cid in OVERRIDE:
             e["override"] = dict(OVERRIDE[cid])
         e.setdefault("override", {})["work_package"] = WP_OF.get(cid, "")
+        entries.append(e)
+    for cid, own in OWN:
+        e = {"id": cid, "from": [], "also": [], "own": own, "note": " ".join(x for x in (AUDITOR.get(cid, ""), NOTES.get(cid, ""), "Registered by the auditor from the evidence named; not given a separate skeptic.") if x),
+             "override": dict(OVERRIDE.get(cid, {}), work_package=WP_OF.get(cid, ""))}
+        if cid in VERDICT:
+            e["verify"] = VERDICT[cid]
         entries.append(e)
     ids = [e["id"] for e in entries]
     miss = [i for i in ids if i not in WP_OF]

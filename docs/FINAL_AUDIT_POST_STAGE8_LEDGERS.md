@@ -18,6 +18,47 @@ The companion of `docs/FINAL_AUDIT_POST_STAGE8.md`: the tables too long for the 
 | a11y | (8) zoom and reflow (1.4.4, 1.4.10) | zoom.js: 800x450@2, 400x225@4, 320x256@4 by real keys and clicks | 200% passes; 400% and 320 px fail (A11Y-01) | docs/audit-post8-evidence/a11y/zoom.json and its screenshots |
 | a11y | (9) phone portrait and landscape, gestures near the timeline, the grip | phone.js, phone2.js with CDP touch | A11Y-04 (rail), A11Y-05 (pinch), A11Y-13 (grip, caption), A11Y-01 (landscape phase text) | docs/audit-post8-evidence/a11y/phone.json, phone2.json |
 | a11y | (10) forced-colors: active | fc.js: computed styles and crops under Chromium's emulation | A11Y-06 | docs/audit-post8-evidence/a11y/fc.json, fc-*.jpg |
+| completeness | req (1) baseline and subsystem inventory | read 00-head.md, C-intro.md C.0; wc -l of the 16 files at 43e3e5b | holds (C.0's line counts all exact); gap: the records read are listed only in records/README.md and baseline/README.md, not in the report | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (2) whole application, kinds apart, 'owner acceptance is not a technical pass' | read 00-head.md, B-intro.md | holds; gap: the parts of section (c) appear nowhere as untested | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (3) historical and geographic integrity, ledgers | E.1 counts recomputed from the four ledgers' verdicts; claims-count.json | holds exactly (42: 14/17/7/2/2; 26: 10/4/12; 29: 17/5/3/4; 20: 14/5/1; claims 148/75/481 of 704) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (4) simulation and state | state/README.md:49, interaction/README.md s1-s14 | holds (766 checks, 215,072 samples, 14 scenarios) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (5) visual quality from rendered output and motion | visual-landscape, visual-maps, visibility READMEs | holds for stills and label motion; gap: smoke judged by no area (all captures with smoke motion off, visual-landscape/README.md:14,121) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (6) interaction, accessibility, first use, emulation distinguished | 00-head.md, D.2, a11y and interaction READMEs | holds; gaps: reduced motion's camera inconclusive (a11y/README.md:106-107); the opening's played stretches cut short (interaction/README.md:216) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (7) performance | F.1 against perf/README.md; tools/step6/perf-route.js:159 | holds (120-124 vs 139-140; 40.8/43.35; 18.15%/8.6%; long frame max(1.5R, 25 ms); like-for-like stated; no thermal claim; no generalisation) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (8) every carried issue given a status | records/carried.json; report.py:180-193 C.4 and resolution.py:189 CARRIED_REFS (added about 15:50 UTC) | holds since C.4 was added, with gaps: C-01's printed status stale ('not attributed' beside CL-PERF-12); 23 rows lack a CL their own evidence names (c4-compare.json); C-14, C-56 no register entry; C-42 not examined; carried.json cites no CL (57 of 57) | docs/audit-post8-evidence/completeness/c4-compare.json |
+| completeness | req (9) tests and evidence quality | D.1 rows against checks/*.txt; D.4 against tests/mutations.json | holds (chronology 70/66/4, 155, 118 by 73 of 75, 37; contrast 8 start-up cases, 193 of 248; selftest 317/317; report pass; mutations 33/30/3, 11 change-detector-only) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (10) robustness, security, dependencies, maintainability | robustness/result.json and README.md | findings present; gap: robustness/result.json has empty coverage, experiments and not_checked, so L.1, L.2 and C.3 have no robustness row and its README's 'Not checked' (the archive tiles' terms, README.md:53-54) reaches no section | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (11) deliverables A-J | report-parts sizes; report.py:46 placeholders | holds (A and J filled during the session) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | req (12) every conclusion connected to evidence | the statements below | mostly; the corrections below | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: C-intro.md:35 '(C.4)' | checked against report.py | holds since about 15:50 UTC (report.py:180-193); C.4 is printed before C.2, so the order reads C.0, C.1, C.4, C.2, C.3 | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: C-intro.md C.1 counts (766, 215,072, 14 scenarios, 100 + 74 captures, 21 runs, 349 rows, 42/29/26 claims, 33/30/3) | checked against the areas' READMEs and results | holds | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: C.1 visual row's 'what remains outside' | checked against visual-landscape/README.md:14,121, interaction/README.md:216 | correction: add smoke not judged, the opening's played stretches not run in real time, the claims index and the Dress and village dossier sections examined by no area | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: D-intro.md D.1 rows | checked against checks/check-*.txt | holds | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: D.2, A-verdict.md, J-response.md 'every finding went to a skeptic' / 'each verified adversarially' | checked against register.json at 15:58 UTC | correction: CL-PERF-12, -13, -14 have no verdict (146 entries: 114 CONFIRMED, 29 WEAKENED, 3 none) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: E-ledger.md E.1 counts and the claims' 148/75/481 | checked against the ledgers and records/claims-count.json | holds | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: E-ledger.md:41 'the earlier fix G-3 ... does not hold' | checked against records/README.md:16,61, history/result.json:62, CL-REC-06 | correction: G-3 was never taken up (an open prior finding, not a failed fix); history also found H-7 and H-19 partial, which E.2 omits | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: E.2 geography 'the 8J and 8K corrections where their sources put them'; F row 1 'the 8J and 8K re-plots sit where their sources put them' | checked against CL-GEO-08, CL-HIS-04 | correction: the data do; the drawn Pratzen church stands 161 m from its read site (CL-GEO-08) and Legrand's re-plotted leg crosses the castle (CL-HIS-04) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: F row 2 'Every change since the last audit is recorded' | checked against CL-REC-03, CL-PERF-04, CL-REC-04 | correction: not established; supported narrower: every data change is listed in CHANGELOG.md with check:data's reference moved (139/139) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: F row 4 'Seeks by four paths give identical states' | checked against CL-SIM-06 | correction: identical positions and statuses; the reading depends on the path (CL-SIM-06) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: F rows 5 and robustness, A-verdict 'Prolonged use grows nothing' / 'No growth in prolonged use' | checked against CL-ROB-04 | correction: except across context restores (2.6-4 MB of heap and a dispose listener per geometry and texture kept each time) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: F cartographic row and A-verdict.md:37 'No key below 1080 px' | checked against register.json CL-MAP-03 (WEAKENED title) | correction: no key between 720 and 1079 px or on a phone held upright; Watch, Clean and a phone held landscape hide it by decision | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: F records row 'The carried register is complete enough to answer every item (57 items, C.4)' | checked against carried.json, C.4 | correction: it answers every item, but C-01's status is stale, C-14 and C-56 have no register entry, C-42 rests on no examination, 23 rows lack a CL their own evidence names | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: F-quality.md:26 and A-verdict 'decisions 239-269 ... verified as implemented' / 'implemented as the owner decided' | grep of the areas' READMEs and results for each decision 239-266 | correction: no per-decision ledger; most decisions are examined by content, 252-254, 256 and 258 only through the passing checks and the records; say so or add a ledger | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: G-roadmap.md WP-12 'CL-PERF-01 to -11' | checked against register.json work_package | correction: the register puts CL-PERF-12, -13, -14 in WP-12 too (G.2 and the generated G.3 disagree) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: G 'before calling the map finished' contains every P1 | checked against register.json | holds (CL-ROB-01, CL-SRC-01, CL-GEO-01 are the only P1); WP-00 to WP-14's lists match the register's work_package except WP-12 | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: H-merge.md H.4 what is handed to the merge | checked against records/ | correction: add the carried register (57, with CL ids) and the prior audit's 75 findings' status (records/prior-findings.json), neither handed over nor summarised in the report | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: I-owner.md Q272 'where nothing in the data places the formation' | checked against CL-HIS-02's verification (WEAKENED) | correction: the data place it; what is missing is a reading of its own for that place (44 unreviewed carried grades, not wrong ones) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: I-owner.md Q271 'Six figures' | checked against sources-oob finding 1's evidence | holds counted by figure (seven statements; 4,300 in c_iii and the theme) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: I-owner.md Q274 'Decision 267 (a) accepted ... its 4,033 ms' | checked against docs/STAGE8_SPEC.md:5037,5307 | holds in substance: 267 (a) kept the 4,033 ms baseline set in 8K; 'kept' is exact | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: I-owner.md Q280-Q283 | checked against C-11, C-12, C-15, C-17, CL-ROB-09 | holds | docs/audit-post8-evidence/completeness/README.md |
+| completeness | report claim: B-intro.md:4 set-aside results 'reported in section C' | checked against C-intro.md and report.py | correction: no section C row reports geography #11 or sources-oob #9; B names them itself | docs/audit-post8-evidence/completeness/README.md |
+| completeness | register: CL-REC-07 | id sequence of register.json | missing from the numbering with no record of withdrawal; no entry carries REFUTED or DUPLICATE though B describes both | docs/audit-post8-evidence/completeness/README.md |
+| completeness | register: Krug's place | CL-GEO-07 vs CL-HIS-14 | graded twice: S3/P3 WP-04 and S4/P4 WP-01; CL-HIS-14 cross-references, CL-GEO-07 has no note back; one severity for Krug, or drop Krug from CL-HIS-14 | docs/audit-post8-evidence/completeness/README.md |
+| completeness | register: other overlaps (CL-HIS-04/-10/CL-VIS-04, CL-HIS-10/CL-TEST-04, CL-SRC-03/CL-HIS-14, CL-UX-03's merge) | notes and from/also lists | consistent: each cross-referenced or its merge noted | docs/audit-post8-evidence/completeness/README.md |
+| completeness | unexamined parts: tour, Plans, Clean, day-track, eye level, Command, Order of battle, Watch caption, phone Layers and Menu | grep of every area's README and result | covered (sampled to measured) | docs/audit-post8-evidence/completeness/README.md |
+| completeness | unexamined parts: reduced motion across sequences | code read app.js:556, 592-596, 5869, 9102, 9139 | partial in a11y; no defect found by code: ambient frames, fades, the gait and tweens stop under RM; smoke's sway uses the wall clock but draws only with another frame | docs/audit-post8-evidence/completeness/README.md |
+| completeness | unexamined parts: claims index, smoke, the opening's played stretches, the Dress and village dossier sections, the woods' re-plan | grep of every area's README and result | no area: findings 1 and 2 | docs/audit-post8-evidence/completeness/README.md |
+| completeness | carried C-05 (effects off on the phone; what the Layers panel says) | code read app.js:6684, 3772 | closed: the F key is the only visitor path; no Layers row and no claim of speed; no defect | docs/audit-post8-evidence/completeness/README.md |
 | geography | GEOREF the only scale authority | literal search for 31.6x, 0.0316, 15.82, 63.19/63.2, 6.12, 243.1, 10.33, 0.0632 in app.js, world.js, symbols.js, data.js, analysis.js, appearance.js, narrative.js, tokens.js, shell.html; geo.js read whole | no second scale constant; only '10.33' as self-test label strings. geo-test.js:73-74 checks only the legacy 0.019x and 26.1, narrower than this search | README section 2 |
 | geography | frame and orientation | places.js: round trip, similarity fit of the 16 drawn villages to Wikidata P625 | round trip exact; fit scale 0.99981 of GEOREF's, rotation -0.043 deg, rms 11.7 m (worst 21 m); 17.42 deg frame rotation disclosed (data.js:798) | places.json |
 | geography | GT points vs modern coordinates | places.js against Wikidata, cs.wikipedia, Nominatim (Vincenty) | 16 villages 10.7-11.1 m at 218-221 deg to Wikidata (one vector; 8H's 13.5 m at 35 deg vs ZABAGED); summits 20-47 m; drawn VILLAGES 4-20 m from GT | places.json |
@@ -164,6 +205,11 @@ The companion of `docs/FINAL_AUDIT_POST_STAGE8.md`: the tables too long for the 
 | a11y | node tools/audit-post8/a11y/sheetkeys.js | its own browser with --disable-smooth-scrolling; harness page; the control page first | with --disable-smooth-scrolling both sheets scroll from their text regions by PageDown, ArrowDown, Space, End and Home: the earlier zero readings were smooth-scroll animations starved of frames | docs/audit-post8-evidence/a11y/sheetkeys.json |  |
 | a11y | node tools/audit-post8/a11y/jargon.js | node, no page | lang-scan's visitor strings: anchor 15, leg 7, interpolat 11, internal references 69 (most in data never drawn) | docs/audit-post8-evidence/a11y/jargon.json |  |
 | a11y | node tools/audit-post8/a11y/leaks.js; node tools/audit-post8/a11y/leaks.js timing | harness page; clock and selection set by script | the sources sheet as drawn: 6 internal references in context; the seven full dossiers' 'Dated by' rows as drawn: every one carries an internal reference | docs/audit-post8-evidence/a11y/leaks.json, leaks-timing.json | the first timing pass read the compact card (no 'Dated by' row); the second opens the full dossier |
+| completeness | python3 tools/audit-post8/completeness/dump.py reg\|areas\|map\|cov\|nc | the container, python 3.13, reads only | 146 register entries; every area finding placed (0 UNPLACED); robustness/result.json has 0 coverage, 0 experiments, 0 not_checked rows | tools/audit-post8/completeness/dump.py | register.json was being regenerated during the session; dumps are of 15:20-15:58 UTC |
+| completeness | python3 tools/audit-post8/completeness/carried_xref.py | same | the carried items' own area references mapped to CL ids; cl_in_record empty for 57 of 57 | docs/audit-post8-evidence/completeness/carried-xref.json | regex parse; two bare 'finding N' references missed and corrected by hand in the crosswalk; C-25's 'findings 1-8' over-read |
+| completeness | python3 tools/audit-post8/completeness/carried_crosswalk.py | same; imports tools/audit-post8/resolution.py CARRIED_REFS | 45 supported, 12 with a gap or miss; 23 C.4 rows lack a CL the item's own evidence names | docs/audit-post8-evidence/completeness/carried-crosswalk.json, c4-compare.json | the curated CL lists are this critic's judgement of 'applies'; C.4 was being written at the time |
+| completeness | for f in shell.html ... app.js; git show 43e3e5b:$f \| wc -l | git | C.0's 16 line counts all exact | README.md (a) | none |
+| completeness | grep of every area's README.md and result.json for the candidate parts and for decisions 239-266 | ripgrep/grep | claims index, smoke, played stretches, Dress and village dossiers: no area; decisions 252-254, 256, 258 named by no area's examination | README.md (c), (d) | a part examined without its name would be missed by a keyword search |
 | geography | node tools/audit-post8/geography/places.js <iso> | node 22, isolated copy (first session) | frame exact; fit rms 11.7 m; GT 11 m NE of Wikidata | docs/audit-post8-evidence/geography/places.json |  |
 | geography | node tools/audit-post8/geography/dem.js --request \| --analyse <iso>; plateau.js <iso> | Open-Meteo elevation API (GLO-90), first session | 24 GT points, 936 + 897 grid points, profiles of the Goldbach, Ricka, Roketnice; southern box -45 m | dem.json, plateau.json |  |
 | geography | node tools/audit-post8/geography/waterways.js; crossings.js; buildings.js <iso> | first session | as findings | waterways.json, crossings.json, buildings.json |  |
@@ -521,7 +567,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-GEO-08](#cl-geo-08) | S4 | P4 | confirmed defect | 0.5-1 day | The Pratzen church is drawn 161 m from its read site while the sources sheet says it is drawn at its own site |
 | [CL-GEO-09](#cl-geo-09) | S4 | P4 | confirmed defect | under 1 hour | The sources sheet reads 'Terrain relief is exaggerated about 1 times' at 1x |
 | [CL-GEO-10](#cl-geo-10) | S4 | P4 | unresolved historical question | under 0.5 day | Two carried geographic questions are not visible to a visitor: the Goldbach's channel north of the castle and the highway's course in 1805 |
-| [CL-HIS-14](#cl-his-14) | S4 | P4 | unresolved historical question | 1-4 h | Krug and Bellowitz are drawn at their legacy places with the open question only in SOURCE_NOTE (Krug's place is CL-GEO-07), and the Russian Guard cavalry's commander is shown without a claim tag (the note behind it is CL-SRC-03) |
+| [CL-HIS-14](#cl-his-14) | S4 | P4 | unresolved historical question | 1-4 h | Bellowitz is drawn at its legacy place with the open question only in SOURCE_NOTE, and the Russian Guard cavalry's commander is shown without a claim tag (Krug's place, drawn the same way, is CL-GEO-07; the note behind the commander is CL-SRC-03) |
 | [CL-HIS-15](#cl-his-15) | S4 | P4 | confirmed defect | 2-4 h | Smaller internal inconsistencies in texts and fields |
 
 **WP-02** (7 findings: S2 1, S3 4, S4 2)
@@ -554,7 +600,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-HIS-16](#cl-his-16) | S4 | P4 | accepted compromise | 0.5 h | Accepted: the Russian Guard corps shown at 10,500 above its drawn 7,330 |
 | [CL-HIS-17](#cl-his-17) | S4 | P4 | accepted compromise |  | Accepted: Bagration drawn toward Rausnitz at nightfall while his role says toward Austerlitz |
 
-**WP-04** (5 findings: S2 1, S3 4)
+**WP-04** (6 findings: S2 1, S3 4, S4 1)
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
@@ -563,6 +609,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-GEO-04](#cl-geo-04) | S3 | P3 | probable problem | 2-5 days | Between Girzikowitz and Sokolnitz the drawn Goldbach departs up to about 300 m from today's channel and puts Girzikowitz and Kobelnitz on the opposite bank |
 | [CL-GEO-05](#cl-geo-05) | S3 | P3 | confirmed defect | 1-2 days | Sokolnitz, Telnitz and Kobelnitz are drawn standing in marsh: marsh ellipses cover their centres and the cover classifier ranks marsh above village |
 | [CL-GEO-07](#cl-geo-07) | S3 | P3 | unresolved historical question | note 0.5 day; data task 1-2 days | Krug is drawn 1.67 km south of where the 1836-52 survey and today's map put it, and the visitor is told no source read fixes it |
+| [CL-GEO-11](#cl-geo-11) | S4 | P4 | confirmed defect | hours | The Sokolnitz castle's site falls on the drawn track class: the quadrangle stands on a track's surface (13 of 16 points within 25 m are 'track') |
 
 **WP-05** (10 findings: S2 2, S3 4, S4 4)
 
@@ -622,7 +669,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-MAP-19](#cl-map-19) | S4 | P4 | accepted compromise | 1-2 days | Paper-map arrows grow without a cap when zoomed in |
 | [CL-MAP-20](#cl-map-20) | S4 | P4 | optional improvement | 0.5 day with the data task's records | The map's place names mix German period forms with Czech forms (Stare Vinohrady, Zuran, Litava) under no stated convention |
 
-**WP-09** (13 findings: S2 1, S3 6, S4 6)
+**WP-09** (15 findings: S2 1, S3 6, S4 8)
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
@@ -639,6 +686,8 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-UX-16](#cl-ux-16) | S4 | P4 | optional improvement | 1-2 h | Visitor-facing jargon and overloaded letters: 'anchors', 'Plotted leg', 'interpolated', 'G.Q.G.', and three different A/B/C scales (position, timing, appearance) shown side by side ('Position B · Timing B') |
 | [CL-UX-17](#cl-ux-17) | S4 | P4 | optional improvement | hours, with the visual limits re-measured | Small type: 42-47% of visible texts on the main screens are 10.5-11.5 px (controls, tabs, timeline labels, tags), all at or above the project's 10.5 px floor |
 | [CL-UX-18](#cl-ux-18) | S4 | P4 | optional improvement | 1-3 h | Polish: the phone caption shows two orphan separators when the act and phase shrink to 0 px; at 800 x 450 with the Panels open the vantage row overlaps the dispatch card's top edge by about 10 px; the dispatch sheet's grip looks like a drag handle but only a tap works |
+| [CL-UX-21](#cl-ux-21) | S4 | P4 | optional improvement |  | The claims index counts every claimed kind but not the unchecked: 481 of 704 statements are 'Every other statement', with no number |
+| [CL-UX-22](#cl-ux-22) | S4 | P4 | untested area | hours | Safari's handling of the embedded faces' metric overrides is untested, and every italic is synthesized (no italic face is embedded) |
 
 **WP-10** (9 findings: S2 1, S3 3, S4 5)
 
@@ -654,7 +703,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-VIS-08](#cl-vis-08) | S4 | P4 | confirmed defect | 2-5 days | Deciduous crowns near the eye show large faceted shards |
 | [CL-VIS-09](#cl-vis-09) | S4 | P4 | optional improvement | hours | The low tier is decided once at start: a desktop page opened in a small window keeps density 1, no shadows and no near detail when enlarged |
 
-**WP-11** (19 findings: S3 11, S4 8)
+**WP-11** (20 findings: S3 11, S4 9)
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
@@ -669,6 +718,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-TEST-12](#cl-test-12) | S3 | P3 | probable problem | hours | The statement inventory is a whitelist with no completeness check: timing bases and plan labels a visitor reads are outside it and outside its own exclusion note |
 | [CL-TEST-13](#cl-test-13) | S3 | P3 | probable problem | hours to a day (the new cites need review) | check:chronology judges clock-shaped hours only; 45 inventoried statements give hours in words it does not read |
 | [CL-TEST-16](#cl-test-16) | S3 | P4 | confirmed defect | minutes | test.js's 'objective off map' reads the objective's x only |
+| [CL-TEST-21](#cl-test-21) | S4 | P3 | untested area |  | Parts of the application no area examined: smoke, the opening's played stretches in real time, reduced motion across sequences with frames drawn, the sources sheet's claims index, the dossier's Dress section and the village dossiers, and the woods' re-plan where a wood changed |
 | [CL-ROB-07](#cl-rob-07) | S4 | P4 | optional improvement | small | Assurance tools CI never runs have started to rot: 5 of Stage 8's 189 mutations no longer apply; check:visual runs only on dispatch |
 | [CL-TEST-07](#cl-test-07) | S4 | P4 | optional improvement | minutes | The harness's figure-on-ground and standard-foot checks pass when nothing is measured |
 | [CL-TEST-09](#cl-test-09) | S4 | P4 | confirmed defect | hours | Checks take their bounds from the code under test: a 20% looser infantry march-rate ceiling passes every movement check, and the self-test checks decided values against the code's own constants |
@@ -688,16 +738,16 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-PERF-04](#cl-perf-04) | S3 | P3 | probable problem | 0.25 h (record); 1-3 h (optional profile) | The desktop before/after spans a browser update (Chrome 155 to 156) that section 24 does not record; the accepted CPU excess cannot be attributed to Stage 8 alone |
 | [CL-PERF-05](#cl-perf-05) | S3 | P3 | probable problem | 0.25 h (records); 1-2 h (route); 2-4 h (census cases) | The 'heaviest frame' figures in sections 24-25 are segment medians, and the census maxima are below what the route drew in Play and in phase 8's Overview |
 | [CL-PERF-06](#cl-perf-06) | S3 | P3 | accepted compromise | n/a (about 10-15 min of owner time if ever run) | The two phone readings are not equally strong: P5 (Stage 8's own starting build) points to a Play slowdown from 53 to 43 fps; the P3/P4 proxy is dominated by device state |
-| [CL-PERF-12](#cl-perf-12) | S3 | P4 | accepted compromise |  | Decision 268 (a)'s desktop script excess is mostly three.js re-binding 8D/8E's three extra kit attributes on every instanced draw, plus Stage 8's own per-frame app work |
+| [CL-PERF-12](#cl-perf-12) | S3 | P4 | accepted compromise |  | Decision 268 (a)'s desktop script excess: the +30% GL calls a frame are 8D's and 8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's own per-frame app work about 20-32%; about a third (three.js JavaScript) unattributed |
 | [CL-PERF-13](#cl-perf-13) | S4 | P2 | optional improvement |  | freeRect, the free-rectangle search, runs three times a frame over the whole viewport and is the largest app function in every profile (inherited) |
 | [CL-PERF-07](#cl-perf-07) | S4 | P3 | optional improvement | 2-4 h | Instrument limits of the device route: no raw intervals, median counts, flags rather than effects, no clock for played blocks, one refresh measurement |
+| [CL-PERF-14](#cl-perf-14) | S4 | P3 | optional improvement |  | three r128 re-derives every lit material's program each frame (getParameters, getProgramCacheKey, uniform wiring) because the label pass sees no lights and bumps the lights' state version (313 a frame in L3, 318 now; 0 with the lights also on the label layer) |
 | [CL-PERF-08](#cl-perf-08) | S4 | P4 | probable problem | 0.25 h | Over-readings in the records: 'the figures and standards are what a phone's frame waits on' and 'the gait adds none' |
 | [CL-PERF-09](#cl-perf-09) | S4 | P4 | confirmed defect | 0.25-0.5 h | Small numeric and wording inaccuracies in sections 24-25 |
 | [CL-PERF-10](#cl-perf-10) | S4 | P4 | untested area | 1-2 h (diagnosis) | A 329 ms frame in the phone's first effects-off block: counted, unexplained, and not in section 25.2 |
 | [CL-PERF-11](#cl-perf-11) | S4 | P4 | accepted compromise | n/a | Section 8.5's acceptance rule is weak at both refresh rates, and the per-PR before/after was replaced by one end-of-stage comparison |
-| [CL-PERF-14](#cl-perf-14) | S4 | P4 | untested area |  | three r128 recomputes getProgramCacheKey every frame (2.1-2.8 ms profiled self a frame, both builds); cause not investigated |
 
-**WP-13** (8 findings: S3 3, S4 5)
+**WP-13** (9 findings: S3 3, S4 6)
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
@@ -705,6 +755,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-REC-03](#cl-rec-03) | S3 | P2 | confirmed defect |  | Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred) |
 | [CL-ROB-03](#cl-rob-03) | S3 | P3 | probable problem | an afternoon (records only) | The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes |
 | [CL-REC-01](#cl-rec-01) | S4 | P3 | optional improvement |  | The published site's root page is the developer README: no link to the map and nothing for a visitor on evidence and reconstruction |
+| [CL-ROB-13](#cl-rob-13) | S4 | P3 | untested area |  | The terms of use of about 460 third-party archive images that Pages publishes (the Moravian Land Archive's cadastre tiles and 8G's cadastre sheets) were not checked, and the gap reaches no section of the report |
 | [CL-REC-04](#cl-rec-04) | S4 | P4 | confirmed defect |  | The carried checklist misstates three of its own items (the records' view of other areas' findings) |
 | [CL-REC-08](#cl-rec-08) | S4 | P4 | confirmed defect |  | CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and "Current state (October 2026)" |
 | [CL-ROB-08](#cl-rob-08) | S4 | P4 | optional improvement | minutes | The project has no licence |

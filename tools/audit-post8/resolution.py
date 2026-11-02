@@ -29,10 +29,6 @@ OVERRIDE = {
     "CL-HIS-03": {
         "title": "The Russian Guard's plotted approach takes one side of a divided register without saying so: its morning positions are graded A though the project's readings contest them (the disposition and Stutterheim against the official report's 'ordered height of Krzenowitz'); the plan text misstates the disposition; nobody is drawn at Blasowitz when it falls 'from the Russian Guard'",
     },
-    "CL-HIS-14": {
-        "title": "Krug and Bellowitz are drawn at their legacy places with the open question only in SOURCE_NOTE (Krug's place is CL-GEO-07), and the Russian Guard cavalry's commander is shown without a claim tag (the note behind it is CL-SRC-03)",
-        "severity": "S4", "priority": "P4",
-    },
     # sources
     "CL-SRC-01": {"priority": "P1"},
     "CL-SRC-02": {
@@ -90,6 +86,19 @@ OVERRIDE = {
     'CL-UX-03': {"observed": "On a phone (390 x 844): markers take 64.2% of the rail's middle line (the area measured 65.8%) and 4.5% 4 px above its foot (9.4%); a finger's drag that starts on a marker does not scrub, and a tap jumps to the event; a real touch drag from (121.5, 840), where elementFromPoint returns the rail, did not scrub either (run twice), so the rail's bottom 4 px is no reliable escape. On a desktop, at an event start the marker's hit area covers the playhead: a drag that starts there goes to the marker and the rail never sees it; markers take 24-34% of the desktop rail."},
     'CL-TEST-13': {"observed": "41 inventoried statements (31 own-claim, 10 unchecked) carry 59 word-form hours timesIn does not read; the 45/33/12 count includes 4 statements whose only matches are 'half past N' or quantities."},
     'CL-HIS-04': {"observed": "Legrand's marker crosses the III Column at the castle 08:40-09:00 (37 m at 08:51) and stands 0.4-0.77 km beyond it at 09:15-09:30 with phase 2's act; contact at the castle wall is recorded by both acts, the pass-through is not. Whether the opening's 08:45 frame shows it is not established (history/README.md:112; castle about 30 degrees off the stop's camera axis)."},
+    "CL-PERF-12": {
+        "title": "Decision 268 (a)'s desktop script excess: the +30% GL calls a frame are 8D's and 8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's own per-frame app work about 20-32%; about a third (three.js JavaScript) unattributed",
+        "observed": "Per frame in Play at half speed: 430 instanced kit draws (215 main, 215 shadow) x 3 attributes = 1,290 of the +1,353 vertexAttribPointer and +1,332 bindBuffer calls; their functions +1.53-1.72 ms of the +9.69 ms profiled rise (Play), +1.18-1.51 of +8.74 (drag); reproduced on one fixed browser (Chromium 141 for both builds) at the device's ratio (+22-23% here, +25% on the desktop), so the Chrome 155 to 156 update is not needed to explain it; located between step 6's L3 build and 8E.",
+    },
+    "CL-PERF-14": {
+        "title": "three r128 re-derives every lit material's program each frame (getParameters, getProgramCacheKey, uniform wiring) because the label pass sees no lights and bumps the lights' state version (313 a frame in L3, 318 now; 0 with the lights also on the label layer)",
+        "category": "optional-improvement", "priority": "P3",
+        "observed": "318 getProgram calls a frame (every MeshStandardMaterial of the world pass), 0 with the lights also enabling the label layer; the desktop cost bounded at about 0.7-0.8 ms a frame by the effects-off orbit.",
+    },
+    "CL-HIS-14": {
+        "title": "Bellowitz is drawn at its legacy place with the open question only in SOURCE_NOTE, and the Russian Guard cavalry's commander is shown without a claim tag (Krug's place, drawn the same way, is CL-GEO-07; the note behind the commander is CL-SRC-03)",
+        "severity": "S4", "priority": "P4",
+    },
     # map layer and furniture
     "CL-MAP-02": {"severity": "S3", "priority": "P3", "category": "probable-problem"},
     "CL-MAP-03": {
@@ -122,6 +131,7 @@ OVERRIDE = {
 }
 
 VERDICT = {
+    "CL-PERF-12": {"verdict": "WEAKENED", "note": "The mechanism holds; its share of the time was overstated ('mostly'): corrected to the measured shares."},
     "CL-UX-06": {"verdict": "WEAKENED", "note": "Verifier: the emulation honours touch-action:none for a CDP pinch and no element of the map layer takes pointer events, so the area's runs show no fault in the map's pinch; what remains is untested: a real device's pinch on the map."},
     "CL-UX-18": {"verdict": "WEAKENED", "note": "Verifier: the speed-group item (1/2x shown pressed during the opening's 4x) is contradicted by the code and dropped; the other three stand as polish."},
     "CL-UX-03": {"verdict": "CONFIRMED", "note": "Reproduction lens: confirmed (markers take 64.2% of the rail's middle line; a real touch drag at the rail's foot did not scrub either). The premise lens's 'duplicate' referred to this merge itself; it asked that the merged entry keep S2/P2, as it does."},
@@ -136,6 +146,9 @@ VERDICT = {
 }
 
 NOTES = {
+    "CL-PERF-12": "Verifier: the mechanism and counts confirmed exactly (430 kit draws, not about 450); 'mostly' holds for the GL-call growth (81% of +3,175 calls), not for the time. Remedy: packing aPh into aSl (both per instance) is feasible (-860 calls a frame); aPart has no spare component.",
+    "CL-PERF-13": "Verifier: 2 calls a frame while the eye is still; by uniform scaling about 1.0-1.3 ms a frame on the desktop, comparable to decision 268's +1.1/+1.5 ms (inference); the memo key should use exact rectangles (syncViewOffset's VOFF.key already forms it).",
+    "CL-GEO-07": "Krug's place is also named in CL-HIS-14, which defers to this entry for it.",
     "CL-UX-17": "Verifier: the share is 42-50% over the desktop states and 33% on the phone; nothing under the 10.5 px floor.",
     "CL-UX-11": "Verifier: accepted compromise is right (decisions 114, 49 and 108 chose the stops, the closed key and the card's words); the finding brings a comprehension argument, not new evidence against their premises: owner question 276.",
     "CL-TEST-02": "Verifier: wider than stated: the hybrid-glide (2,533 ms, 76 frames) and hybrid-orbit with a selection (3,033 ms, 91 frames) baselines are also at their windows, so three of MOTION.VIS's 'longest' baselines cannot fail.",
@@ -172,16 +185,16 @@ WP = {
     "WP-01": ["CL-HIS-01", "CL-HIS-06", "CL-HIS-12", "CL-HIS-14", "CL-HIS-15", "CL-GEO-02", "CL-GEO-06", "CL-GEO-08", "CL-GEO-09", "CL-GEO-10", "CL-SRC-03", "CL-SRC-09"],
     "WP-02": ["CL-SRC-01", "CL-SRC-02", "CL-SRC-04", "CL-SRC-05", "CL-SRC-06", "CL-SRC-07", "CL-SRC-08"],
     "WP-03": ["CL-HIS-02", "CL-HIS-03", "CL-HIS-04", "CL-HIS-05", "CL-HIS-07", "CL-HIS-08", "CL-HIS-09", "CL-HIS-10", "CL-HIS-11", "CL-HIS-13", "CL-REC-06", "CL-HIS-16", "CL-HIS-17"],
-    "WP-04": ["CL-GEO-01", "CL-GEO-03", "CL-GEO-04", "CL-GEO-05", "CL-GEO-07"],
+    "WP-04": ["CL-GEO-01", "CL-GEO-03", "CL-GEO-04", "CL-GEO-05", "CL-GEO-07", "CL-GEO-11"],
     "WP-05": ["CL-SIM-01", "CL-SIM-02", "CL-SIM-05", "CL-UX-07", "CL-SIM-03", "CL-SIM-04", "CL-SIM-06", "CL-SIM-07", "CL-SIM-08", "CL-UX-14"],
     "WP-06": ["CL-UX-02", "CL-UX-03", "CL-UX-04", "CL-UX-13", "CL-UX-19", "CL-UX-20"],
     "WP-07": ["CL-MAP-01", "CL-MAP-02", "CL-MAP-07", "CL-MAP-12", "CL-MAP-14", "CL-MAP-17", "CL-TEST-02", "CL-TEST-14"],
     "WP-08": ["CL-MAP-03", "CL-MAP-04", "CL-MAP-05", "CL-MAP-06", "CL-MAP-08", "CL-MAP-09", "CL-MAP-10", "CL-MAP-11", "CL-MAP-13", "CL-MAP-15", "CL-MAP-16", "CL-MAP-18", "CL-MAP-19", "CL-MAP-20"],
-    "WP-09": ["CL-UX-01", "CL-UX-05", "CL-UX-06", "CL-UX-08", "CL-UX-09", "CL-UX-10", "CL-UX-11", "CL-UX-12", "CL-UX-15", "CL-UX-16", "CL-UX-17", "CL-UX-18", "CL-REC-05"],
+    "WP-09": ["CL-UX-01", "CL-UX-05", "CL-UX-06", "CL-UX-08", "CL-UX-09", "CL-UX-10", "CL-UX-11", "CL-UX-12", "CL-UX-15", "CL-UX-16", "CL-UX-17", "CL-UX-18", "CL-REC-05", "CL-UX-21", "CL-UX-22"],
     "WP-10": ["CL-VIS-01", "CL-VIS-02", "CL-VIS-03", "CL-VIS-04", "CL-VIS-05", "CL-VIS-06", "CL-VIS-07", "CL-VIS-08", "CL-VIS-09"],
-    "WP-11": ["CL-TEST-01", "CL-TEST-03", "CL-TEST-04", "CL-TEST-05", "CL-TEST-06", "CL-TEST-07", "CL-TEST-08", "CL-TEST-09", "CL-TEST-10", "CL-TEST-11", "CL-TEST-12", "CL-TEST-13", "CL-TEST-15", "CL-TEST-16", "CL-TEST-17", "CL-TEST-18", "CL-TEST-19", "CL-TEST-20", "CL-ROB-07"],
+    "WP-11": ["CL-TEST-01", "CL-TEST-03", "CL-TEST-04", "CL-TEST-05", "CL-TEST-06", "CL-TEST-07", "CL-TEST-08", "CL-TEST-09", "CL-TEST-10", "CL-TEST-11", "CL-TEST-12", "CL-TEST-13", "CL-TEST-15", "CL-TEST-16", "CL-TEST-17", "CL-TEST-18", "CL-TEST-19", "CL-TEST-20", "CL-ROB-07", "CL-TEST-21"],
     "WP-12": ["CL-PERF-01", "CL-PERF-02", "CL-PERF-03", "CL-PERF-04", "CL-PERF-05", "CL-PERF-06", "CL-PERF-07", "CL-PERF-08", "CL-PERF-09", "CL-PERF-10", "CL-PERF-11", "CL-PERF-12", "CL-PERF-13", "CL-PERF-14"],
-    "WP-13": ["CL-REC-01", "CL-REC-02", "CL-REC-03", "CL-REC-04", "CL-REC-08", "CL-ROB-03", "CL-ROB-08", "CL-ROB-09"],
+    "WP-13": ["CL-REC-01", "CL-REC-02", "CL-REC-03", "CL-REC-04", "CL-REC-08", "CL-ROB-03", "CL-ROB-08", "CL-ROB-09", "CL-ROB-13"],
     "WP-14": ["CL-ROB-02", "CL-ROB-04", "CL-ROB-05", "CL-ROB-10", "CL-ROB-11", "CL-ROB-12"],
 }
 
@@ -201,3 +214,30 @@ CARRIED_REFS = {
     "C-49": "CL-TEST-13", "C-50": "CL-SRC-01; question 271", "C-51": "CL-HIS-15", "C-52": "CL-UX-05", "C-53": "CL-HIS-16", "C-54": "CL-REC-05",
     "C-55": "CL-REC-05", "C-56": "none (unchanged)", "C-57": "CL-UX-06",
 }
+
+_CARRIED_MORE = {'C-01': ['CL-PERF-05', 'CL-PERF-08', 'CL-PERF-09', 'CL-PERF-11'], 'C-04': ['CL-PERF-10'], 'C-06': ['CL-MAP-14'], 'C-07': ['CL-MAP-02'], 'C-09': ['CL-TEST-08'], 'C-10': ['CL-VIS-05'], 'C-13': ['CL-VIS-04'], 'C-17': ['CL-GEO-01'], 'C-18': ['CL-MAP-11'], 'C-20': ['CL-SIM-06'], 'C-28': ['CL-MAP-01', 'CL-MAP-14', 'CL-TEST-02'], 'C-29': ['CL-UX-08'], 'C-30': ['CL-GEO-10'], 'C-34': ['CL-HIS-10', 'CL-TEST-04'], 'C-39': ['CL-GEO-06', 'CL-GEO-10', 'CL-HIS-14', 'CL-SRC-01'], 'C-40': ['CL-HIS-11'], 'C-43': ['CL-MAP-08', 'CL-MAP-10'], 'C-44': ['CL-MAP-02', 'CL-MAP-07', 'CL-MAP-14', 'CL-TEST-02'], 'C-45': ['CL-HIS-05', 'CL-VIS-01'], 'C-47': ['CL-GEO-05', 'CL-GEO-08'], 'C-48': ['CL-HIS-12'], 'C-51': ['CL-HIS-06'], 'C-53': ['CL-HIS-15'], 'C-14': ['CL-GEO-11'], 'C-56': ['CL-UX-22'], 'C-42': ['CL-TEST-21 (not examined)'], 'C-19': ['question 284']}
+for _k, _v in _CARRIED_MORE.items():
+    _cur = CARRIED_REFS.get(_k, "")
+    _cur = "" if _cur.startswith("none") else _cur
+    CARRIED_REFS[_k] = ", ".join(x for x in ([_cur] if _cur else []) + _v)
+# the status shown where this audit's evidence supersedes the records' (section C.4)
+CARRIED_STATUS = {"C-01": "accepted as measured (decision 268 (a)); attributed by this audit (CL-PERF-12)",
+                  "C-05": "open; the F key is the only visitor path to effects off and nothing claims it is faster (completeness critic, code read)"}
+
+# entries registered from evidence that no area made a finding of (section B intro says so)
+OWN = [
+    ("CL-GEO-11", {"title": "The Sokolnitz castle's site falls on the drawn track class: the quadrangle stands on a track's surface (13 of 16 points within 25 m are 'track')",
+        "category": "confirmed-defect", "severity": "S4", "priority": "P4", "subsystem": "landmarks against the land cover (world.js LANDMARK_SITES, drawnCover)",
+        "user_impact": "Close up, the castle and its farm stand on a track's colour and texture rather than on ground of their own.",
+        "status": "confirmed (records area's script)", "origin": "new-regression (8J's site)",
+        "refs": ["world.js:162", "docs/STAGE8_SPEC.md:5109"], "evidence": "docs/audit-post8-evidence/records/castle-site.json (tools/audit-post8/records/castle-site.js): drawnCover at LANDMARK_SITES.castle is 'track'; at 25 m 13 of 16 points 'track', 3 'meadow'; carried item C-14",
+        "expected": "A landmark's footprint on ground the cover classes give to buildings or open ground, not a road surface.", "observed": "The site and most of its 25 m ring are classed 'track'.",
+        "remedy": "Give the castle's footprint its own cover (or route the track round it) in the land-cover data, a data task with the drawing re-measured.", "effort": "hours"}),
+    ("CL-UX-22", {"title": "Safari's handling of the embedded faces' metric overrides is untested, and every italic is synthesized (no italic face is embedded)",
+        "category": "untested", "severity": "S4", "priority": "P4", "subsystem": "type (fonts.css, tokens.js)",
+        "user_impact": "On Safari, line heights and text widths may differ from the measured layouts; italics are the browser's slanted roman.",
+        "status": "untested", "origin": "inherited (roadmap step 1)", "refs": ["fonts.css", "docs/ROADMAP.md:41-43"],
+        "evidence": "docs/audit-post8-evidence/records/carried.md C-56: fonts.css holds three faces, all font-style normal; the Safari inference untested (the iPhone runs measured frames, not text metrics)",
+        "expected": "Text measured on the browsers visitors use, or the limit stated.", "observed": "No Safari text measurement exists.",
+        "remedy": "Measure the layouts' text boxes on Safari once (the owner's iPhone), or embed an italic face if italics matter.", "effort": "hours"}),
+]

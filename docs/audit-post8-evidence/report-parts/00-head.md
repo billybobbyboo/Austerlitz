@@ -28,6 +28,11 @@ software rendering, so **no time measured in this audit is a device's**. Every f
 device reports. A phone here is Chromium's emulation (density 3, touch, an iPhone's user agent), not a real mobile browser; section C says where
 that matters.
 
+**The records read.** `CLAUDE.md`, `README.md` and `CHANGELOG.md`. In `docs/`: `ROADMAP.md`, `STAGE8_SPEC.md` (every section and
+decision 239-269), `FINAL_AUDIT.md` (the prior audit and decisions 125-141), `STEP6_SPEC.md` and the earlier stage specifications' decision
+records. The evidence registers: `docs/step2-evidence/`, `docs/step4-evidence/`, `docs/stage6-evidence/` and `docs/stage8-evidence/`
+(device reports, 8G-8L). Each area README lists what it read.
+
 ## How to read the findings
 
 - **Severity.** **S1** critical: materially misleading on a primary path; a crash or an unusable state on a primary path; a real, reachable

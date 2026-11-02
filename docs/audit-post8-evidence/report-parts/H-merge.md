@@ -53,6 +53,8 @@ from a table, not from prose.
 - The coverage matrix, section C, with each area's "not checked" list kept.
 - The ledgers. Experiments are in section D. Historical and source verification is in section E, with the full ledgers in
   `docs/audit-post8-evidence/sources-oob/ledger.md`, `sources-chronology/` and `geography/`.
+- The carried register (`docs/audit-post8-evidence/records/carried.md`, 57 items, each cross-referenced to this audit's findings in C.4).
+- The prior audit's 75 findings with their status now (`records/prior-findings.md` and `.json`).
 - The owner questions, numbered from 270 (section I), so they do not collide with the project's decisions.
 - The roadmap's work packages (section G), each listing its `CL-` findings, so the other audits' findings can be attached to the same
   packages or to new ones.

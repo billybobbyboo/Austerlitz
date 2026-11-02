@@ -16,7 +16,7 @@ decisive check: the cited lines at `HEAD`, the cited evidence, or a short re-run
 - **REFUTED**: the finding failed and was withdrawn, or rewritten where a smaller claim survived.
 - **DUPLICATE**: merged into the finding named.
 
-Where lenses disagreed, the more adverse verdict stands until the auditor resolves it, and the entry says how. The verifiers' reports are in
+Where lenses disagreed, the more adverse verdict stands until the auditor resolves it, and the entry says how. No finding was refuted. The one duplicate verdict concerned a merge already made (`CL-UX-03`). `CL-REC-07` was merged into `CL-ROB-09`, the same issue, and its number is not reused. The completeness critic's three findings (`CL-TEST-21`, `CL-UX-21`, `CL-ROB-13`) and two carried items registered from the records area's evidence (`CL-GEO-11`, `CL-UX-22`) were not given a separate skeptic. Their entries say so. The verifiers' reports are in
 `docs/audit-post8-evidence/verification/`, one `.md` and one `.json` per batch.
 
 The fields follow the brief: subsystem, user impact, status and origin, expected and observed behaviour, evidence, reproduction, references,

@@ -39,13 +39,14 @@ Stage 8 device report names it (2,810,630 bytes, md5 `f10fe585...`, SHA-256 `bf2
 
 **The evidence the acceptances rest on.** Decisions 267 (a), 268 (a) and 269 (a) are respected and not reopened:
 - *The desktop CPU excess* (268 (a)) is now attributed. It reproduces on one browser at the device's ratio, so it is not the unrecorded
-  Chrome update. It comes mostly from three.js re-binding the kit's three Stage 8 attributes on every instanced draw (`CL-PERF-12`).
+  Chrome update. Its +30% GL calls are three.js re-binding the kit's three Stage 8 attributes on every instanced draw. That re-binding is
+  13-21% of the script rise and Stage 8's own per-frame work 20-32%; about a third is unattributed (`CL-PERF-12`).
 - *The phone* (269 (a)). Its "after the phone warms" has no temperature evidence behind it (`CL-PERF-01`). Its long-frame share counts
   delivered frames, not missed refreshes: beside 8.6% and 18.15% long, 28-32% of 60 Hz refreshes bring no new frame (`CL-PERF-03`).
 - *Not measured.* No integrated-GPU run exists (`CL-PERF-02`). Nothing measured on the RTX desktop speaks for a weaker machine.
 
-**The register.** {{N}} findings. By severity: {{SEV}}. By kind: {{KIND}}. Every finding went to a skeptic told to refute it; each S1 and S2
-to two, one reproducing and one attacking its premise. Verification: {{VER}}. Where a skeptic weakened a finding, its correction is applied,
+**The register.** {{N}} findings. By severity: {{SEV}}. By kind: {{KIND}}. Every area finding went to a skeptic told to refute it; each S1 and S2
+to two, one reproducing and one attacking its premise. Five entries registered last, from the completeness critic and the records' evidence, did not. Verification: {{VER}}. Where a skeptic weakened a finding, its correction is applied,
 and the entry shows both the area's claim and the correction. Weakened findings were mostly the severities of map furniture and of the test
 gate, and origins.
 
@@ -58,8 +59,8 @@ gate, and origins.
 - **WP-06**, the camera and the rail (1-2 days).
 
 They contain every P1 finding ({{P1}}) and most of the S2s. The larger data tasks follow: the tracks and grades (WP-03) and the relief's
-refit (WP-04). Then legibility, accessibility and the picture (WP-07 to WP-10), with tests and records alongside. Fourteen owner questions
-(270-283, section I) decide what the audit cannot.
+refit (WP-04). Then legibility, accessibility and the picture (WP-07 to WP-10), with tests and records alongside. Fifteen owner questions
+(270-284, section I) decide what the audit cannot.
 
 **The audit's own limits.**
 - No device timing comes from here (software WebGL).

@@ -5,7 +5,7 @@
    (2) every material's customProgramCacheKey call (three r128 getParameters calls it once per getProgram, three.js:13219), by material type;
    conditions: A as built; B every light's layers also enabling layer 1 (LAYER_LABEL, app.js:3519), so that renderFX's label pass (app.js:3757-3760)
    sees the same lights as the world pass; A again. Observation only: B is a page-local counterfactual, nothing written to a source file.
-   Usage: node probe.js <html> <out.json> [w h]  */
+   Usage: node probe.js <html> <out.json> [w h]   env PROBE_REPS (A/B pairs, default 2), PROBE_N (frames a run, default 24)  */
 "use strict";
 const fs=require("fs");
 const P=require("../../perf-attribution/pa-lib.js");
@@ -63,10 +63,8 @@ function summ(F){ const keys=["draws","inst","instShadow","instMain","kitInst","
       cpuMsPerFrame:+(r.cpu.runMs/n).toFixed(3), load:r.load});
     console.log(label, JSON.stringify(out.runs[out.runs.length-1]));
   };
-  await run("A1",null,24);
-  await run("B1",true,24);
-  await run("A2",false,24);
-  await run("B2",true,24);
+  const reps=+(process.env.PROBE_REPS||2), n=+(process.env.PROBE_N||24);
+  for(let i=1;i<=reps;i++){ await run("A"+i,i===1?null:false,n); await run("B"+i,true,n); }
   await page.evaluate(LIGHTS,false);
   out.log=page._log.slice(0,10);
   fs.writeFileSync(outF,JSON.stringify(out,null,1));

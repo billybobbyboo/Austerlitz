@@ -25,7 +25,7 @@ owner photographed pp. 184-185 before (register S5.7).
 *Recommended: (a), with (b) for any figure the pages do not settle.*
 
 **Question 272: the grading rule for anchors without a reading of their own** (`CL-HIS-02`). 44 of 88 A grades are carried from an earlier
-anchor. A visitor reads "Position documented in the sources" where nothing in the data places the formation. 8K regraded Suchet's
+anchor. A visitor reads "Position documented in the sources" where no reading of its own places the formation there. The 44 are unreviewed grades, not grades shown to be wrong. 8K regraded Suchet's
 pursuit by "B if a reading places it, C if none" but scoped that rule to its own anchors.
 - (a) 8K's rule for every anchor, applied by a data task reviewing the 44.
 - (b) Keep the carried grades, and make the grade's text say when it is carried from an earlier anchor. This tells the truth about the
@@ -126,3 +126,12 @@ when it was 12.8% of the file. It is now 21.7% (611,017 bytes, 277,502 more in S
 - (b) Build a visitor file without it and a test file with it, both single files, the visitor file the one published.
 
 *Recommended: (a) unless the transfer size matters to the owner's visitors; (b) is a build change with its own checks to adapt.*
+
+**Question 284: the low views' wall of formation names** (decision 255 (a), (d); `CL-MAP-15`). Decision 255 left the wall of names in the
+low views open, and decision 263 (a)'s lighter far plate is applied and measured. The wall remains: in the low Pratzen view the formation
+names stand in rows over the troops. Decision 255 (d) prototyped thinning them and measured it, but did not adopt it.
+- (a) Thin the far names in the low views, by priority and distance, with the motion block re-measured on the owner's word.
+- (b) As decided.
+
+*Recommended: (b) until WP-07's map-layer change is made, then re-measure: the same priority rule governs both.*
+
