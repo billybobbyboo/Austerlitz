@@ -1,0 +1,822 @@
+{
+  "auditSourceCommit": "43e3e5bcc5ab0cbbcb604a22a5b8c29f801649c8",
+  "reports": [
+    {
+      "name": "desk-D1.json",
+      "rows": 23,
+      "version": "step6-perf-route 3",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": null,
+      "device": {
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "cores": 32,
+        "memoryGB": 32,
+        "dpr": 1,
+        "screen": [
+          2560,
+          1440
+        ],
+        "viewport": [
+          2560,
+          1305
+        ],
+        "inFrame": true,
+        "glVendor": "Google Inc. (NVIDIA)",
+        "glRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          2560,
+          1305
+        ],
+        "gpuTimer": true,
+        "lowTier": false,
+        "fx": true,
+        "fxScale": 1.3,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 5934,
+          "loadMs": 5936,
+          "transferBytes": 1219603,
+          "bodyBytes": 2810630
+        }
+      },
+      "longMs": 25
+    },
+    {
+      "name": "desk-D2.json",
+      "rows": 23,
+      "version": "step6-perf-route 3",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": null,
+      "device": {
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "cores": 32,
+        "memoryGB": 32,
+        "dpr": 1,
+        "screen": [
+          2560,
+          1440
+        ],
+        "viewport": [
+          2560,
+          1305
+        ],
+        "inFrame": true,
+        "glVendor": "Google Inc. (NVIDIA)",
+        "glRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          2560,
+          1305
+        ],
+        "gpuTimer": true,
+        "lowTier": false,
+        "fx": true,
+        "fxScale": 1.3,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 2703,
+          "loadMs": 2839,
+          "transferBytes": 0,
+          "bodyBytes": 2810630
+        }
+      },
+      "longMs": 25
+    },
+    {
+      "name": "desk-cull.json",
+      "rows": 59,
+      "version": "stage8-cull-route 1",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": {
+        "pratzen-low-4x": {
+          "faster": 0,
+          "slower": 0,
+          "neither": 12,
+          "missing": 0,
+          "comparisons": [
+            "ABABABA round 1 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 1 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 1 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 5: 6.9 / 6.9 / 6.9 ms: neither"
+          ],
+          "verdict": "not shown"
+        },
+        "pratzen-low-10x": {
+          "faster": 0,
+          "slower": 0,
+          "neither": 12,
+          "missing": 0,
+          "comparisons": [
+            "ABABABA round 1 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 1 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 1 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 5: 6.9 / 6.9 / 6.9 ms: neither"
+          ],
+          "verdict": "not shown"
+        }
+      },
+      "device": {
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "cores": 32,
+        "memoryGB": 32,
+        "dpr": 1,
+        "screen": [
+          2560,
+          1440
+        ],
+        "viewport": [
+          2560,
+          1305
+        ],
+        "inFrame": true,
+        "glVendor": "Google Inc. (NVIDIA)",
+        "glRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          2560,
+          1305
+        ],
+        "gpuTimer": true,
+        "lowTier": false,
+        "fx": true,
+        "fxScale": 1.3,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 2616,
+          "loadMs": 2703,
+          "transferBytes": 0,
+          "bodyBytes": 2810630
+        }
+      },
+      "longMs": 25
+    },
+    {
+      "name": "desk-fx.json",
+      "rows": 30,
+      "version": "stage8-fx-route 1",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": {
+        "pratzen-low-4x": {
+          "faster": 0,
+          "slower": 0,
+          "neither": 12,
+          "missing": 0,
+          "comparisons": [
+            "ABABABA round 1 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 1 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 1 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "ABABABA round 2 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 1 block 5: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 1: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 3: 6.9 / 6.9 / 6.9 ms: neither",
+            "BABABAB round 2 block 5: 6.9 / 6.9 / 6.9 ms: neither"
+          ],
+          "verdict": "not shown"
+        }
+      },
+      "device": {
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "cores": 32,
+        "memoryGB": 32,
+        "dpr": 1,
+        "screen": [
+          2560,
+          1440
+        ],
+        "viewport": [
+          2560,
+          1305
+        ],
+        "inFrame": true,
+        "glVendor": "Google Inc. (NVIDIA)",
+        "glRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          2560,
+          1305
+        ],
+        "gpuTimer": true,
+        "lowTier": false,
+        "fx": true,
+        "fxScale": 1.3,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 2782,
+          "loadMs": 2868,
+          "transferBytes": 300,
+          "bodyBytes": 2810630
+        }
+      },
+      "longMs": 25
+    },
+    {
+      "name": "desk-gait.json",
+      "rows": 30,
+      "version": "stage8-gait-route 1",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": {
+        "play-half": {
+          "faster": 0,
+          "slower": 0,
+          "neither": 12,
+          "missing": 0,
+          "comparisons": [
+            "ABABABA round 1 block 1: 7 / 7 / 7 ms: neither",
+            "ABABABA round 1 block 3: 7 / 7 / 7 ms: neither",
+            "ABABABA round 1 block 5: 7 / 7 / 7 ms: neither",
+            "ABABABA round 2 block 1: 7 / 7 / 7 ms: neither",
+            "ABABABA round 2 block 3: 7 / 7 / 7 ms: neither",
+            "ABABABA round 2 block 5: 7 / 7 / 7 ms: neither",
+            "BABABAB round 1 block 1: 7 / 7 / 7 ms: neither",
+            "BABABAB round 1 block 3: 7 / 7 / 7 ms: neither",
+            "BABABAB round 1 block 5: 7 / 7 / 7 ms: neither",
+            "BABABAB round 2 block 1: 7 / 7 / 7 ms: neither",
+            "BABABAB round 2 block 3: 7 / 7 / 7 ms: neither",
+            "BABABAB round 2 block 5: 7 / 7 / 7 ms: neither"
+          ],
+          "verdict": "not shown"
+        }
+      },
+      "device": {
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "cores": 32,
+        "memoryGB": 32,
+        "dpr": 1,
+        "screen": [
+          2560,
+          1440
+        ],
+        "viewport": [
+          2560,
+          1305
+        ],
+        "inFrame": true,
+        "glVendor": "Google Inc. (NVIDIA)",
+        "glRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          2560,
+          1305
+        ],
+        "gpuTimer": true,
+        "lowTier": false,
+        "fx": true,
+        "fxScale": 1.3,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 2823,
+          "loadMs": 2932,
+          "transferBytes": 300,
+          "bodyBytes": 2810630
+        }
+      },
+      "longMs": 25
+    },
+    {
+      "name": "phone-R1.json",
+      "rows": 47,
+      "version": "step6-phone-route 1",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": null,
+      "device": {
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1",
+        "platform": "iPhone",
+        "cores": 4,
+        "memoryGB": null,
+        "dpr": 3,
+        "screen": [
+          402,
+          874
+        ],
+        "viewport": [
+          402,
+          714
+        ],
+        "inFrame": true,
+        "glVendor": "Apple Inc.",
+        "glRenderer": "Apple GPU",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          402,
+          714
+        ],
+        "gpuTimer": false,
+        "lowTier": true,
+        "fx": true,
+        "fxScale": 1,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 5217,
+          "loadMs": 5310,
+          "transferBytes": 1220332,
+          "bodyBytes": 2810630
+        }
+      },
+      "longMs": 25.5
+    },
+    {
+      "name": "phone-R2.json",
+      "rows": 47,
+      "version": "step6-phone-route 1",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": null,
+      "device": {
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1",
+        "platform": "iPhone",
+        "cores": 4,
+        "memoryGB": null,
+        "dpr": 3,
+        "screen": [
+          402,
+          874
+        ],
+        "viewport": [
+          402,
+          714
+        ],
+        "inFrame": true,
+        "glVendor": "Apple Inc.",
+        "glRenderer": "Apple GPU",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          402,
+          714
+        ],
+        "gpuTimer": false,
+        "lowTier": true,
+        "fx": true,
+        "fxScale": 1,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 5251,
+          "loadMs": 5333,
+          "transferBytes": 1220323,
+          "bodyBytes": 2810630
+        }
+      },
+      "longMs": 25.5
+    },
+    {
+      "name": "phone-cull.json",
+      "rows": 30,
+      "version": "stage8-cull-route 1",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": {
+        "pratzen-low-4x": {
+          "faster": 7,
+          "slower": 0,
+          "neither": 5,
+          "missing": 0,
+          "comparisons": [
+            "ABABABA round 1 block 1: 17 / 18 / 17 ms: faster",
+            "ABABABA round 1 block 3: 17 / 18 / 17 ms: faster",
+            "ABABABA round 1 block 5: 17 / 18 / 17 ms: faster",
+            "ABABABA round 2 block 1: 17 / 19 / 17 ms: faster",
+            "ABABABA round 2 block 3: 17 / 18 / 17 ms: faster",
+            "ABABABA round 2 block 5: 17 / 19 / 17 ms: faster",
+            "BABABAB round 1 block 1: 17 / 17 / 17 ms: neither",
+            "BABABAB round 1 block 3: 17 / 17 / 19 ms: neither",
+            "BABABAB round 1 block 5: 19 / 17 / 17 ms: neither",
+            "BABABAB round 2 block 1: 17 / 17 / 17 ms: neither",
+            "BABABAB round 2 block 3: 17 / 17 / 19 ms: neither",
+            "BABABAB round 2 block 5: 19 / 17 / 19 ms: faster"
+          ],
+          "verdict": "not shown"
+        }
+      },
+      "device": {
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1",
+        "platform": "iPhone",
+        "cores": 4,
+        "memoryGB": null,
+        "dpr": 3,
+        "screen": [
+          402,
+          874
+        ],
+        "viewport": [
+          402,
+          714
+        ],
+        "inFrame": true,
+        "glVendor": "Apple Inc.",
+        "glRenderer": "Apple GPU",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          402,
+          714
+        ],
+        "gpuTimer": false,
+        "lowTier": true,
+        "fx": true,
+        "fxScale": 1,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 1989,
+          "loadMs": 2055,
+          "transferBytes": 0,
+          "bodyBytes": null
+        }
+      },
+      "longMs": 25.5
+    },
+    {
+      "name": "phone-fx.json",
+      "rows": 30,
+      "version": "stage8-fx-route 1",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": {
+        "pratzen-low-4x": {
+          "faster": 4,
+          "slower": 0,
+          "neither": 8,
+          "missing": 0,
+          "comparisons": [
+            "ABABABA round 1 block 1: 17 / 17 / 17 ms: neither",
+            "ABABABA round 1 block 3: 17 / 17 / 17 ms: neither",
+            "ABABABA round 1 block 5: 17 / 26 / 17 ms: faster",
+            "ABABABA round 2 block 1: 17 / 17 / 17 ms: neither",
+            "ABABABA round 2 block 3: 17 / 17 / 17 ms: neither",
+            "ABABABA round 2 block 5: 17 / 28 / 17 ms: faster",
+            "BABABAB round 1 block 1: 17 / 17 / 17 ms: neither",
+            "BABABAB round 1 block 3: 17 / 17 / 17 ms: neither",
+            "BABABAB round 1 block 5: 17 / 17 / 17 ms: neither",
+            "BABABAB round 2 block 1: 17 / 17 / 28 ms: neither",
+            "BABABAB round 2 block 3: 28 / 17 / 21 ms: faster",
+            "BABABAB round 2 block 5: 21 / 17 / 26 ms: faster"
+          ],
+          "verdict": "not shown"
+        }
+      },
+      "device": {
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1",
+        "platform": "iPhone",
+        "cores": 4,
+        "memoryGB": null,
+        "dpr": 3,
+        "screen": [
+          402,
+          874
+        ],
+        "viewport": [
+          402,
+          714
+        ],
+        "inFrame": true,
+        "glVendor": "Apple Inc.",
+        "glRenderer": "Apple GPU",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          402,
+          714
+        ],
+        "gpuTimer": false,
+        "lowTier": true,
+        "fx": true,
+        "fxScale": 1,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 1997,
+          "loadMs": 2055,
+          "transferBytes": 0,
+          "bodyBytes": null
+        }
+      },
+      "longMs": 25.5
+    },
+    {
+      "name": "phone-gait.json",
+      "rows": 30,
+      "version": "stage8-gait-route 1",
+      "build": {
+        "bytes": 2810630,
+        "sha256": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07"
+      },
+      "visible": true,
+      "tableMatches": true,
+      "bracket": {
+        "play-half": {
+          "faster": 0,
+          "slower": 0,
+          "neither": 12,
+          "missing": 0,
+          "comparisons": [
+            "ABABABA round 1 block 1: 23 / 23 / 23 ms: neither",
+            "ABABABA round 1 block 3: 23 / 23 / 23 ms: neither",
+            "ABABABA round 1 block 5: 23 / 23 / 23 ms: neither",
+            "ABABABA round 2 block 1: 23 / 23 / 23 ms: neither",
+            "ABABABA round 2 block 3: 23 / 23 / 23 ms: neither",
+            "ABABABA round 2 block 5: 23 / 23 / 23 ms: neither",
+            "BABABAB round 1 block 1: 23 / 23 / 23 ms: neither",
+            "BABABAB round 1 block 3: 23 / 23 / 23 ms: neither",
+            "BABABAB round 1 block 5: 23 / 23 / 23 ms: neither",
+            "BABABAB round 2 block 1: 23 / 23 / 23 ms: neither",
+            "BABABAB round 2 block 3: 23 / 23 / 23 ms: neither",
+            "BABABAB round 2 block 5: 23 / 23 / 23 ms: neither"
+          ],
+          "verdict": "not shown"
+        }
+      },
+      "device": {
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1",
+        "platform": "iPhone",
+        "cores": 4,
+        "memoryGB": null,
+        "dpr": 3,
+        "screen": [
+          402,
+          874
+        ],
+        "viewport": [
+          402,
+          714
+        ],
+        "inFrame": true,
+        "glVendor": "Apple Inc.",
+        "glRenderer": "Apple GPU",
+        "webgl2": true,
+        "maxTexture": 16384,
+        "pixelRatio": 1,
+        "buffer": [
+          402,
+          714
+        ],
+        "gpuTimer": false,
+        "lowTier": true,
+        "fx": true,
+        "fxScale": 1,
+        "shadowMap": true,
+        "reducedMotion": false,
+        "visibility": "visible",
+        "version": "step6-perf-route 3",
+        "load": {
+          "domReadyMs": 2338,
+          "loadMs": 2410,
+          "transferBytes": 0,
+          "bodyBytes": null
+        }
+      },
+      "longMs": 25.5
+    }
+  ],
+  "totalRows": 349,
+  "phone": {
+    "ph8-overview": {
+      "blocks": 24,
+      "medianFps": 40.8,
+      "fpsRange": [
+        27.2,
+        42.8
+      ],
+      "medianLongPct": 18.15,
+      "allOver5pct": true,
+      "weightedLongPct": 24.608416682392903
+    },
+    "play-half": {
+      "blocks": 24,
+      "medianFps": 43.349999999999994,
+      "fpsRange": [
+        42.8,
+        43.8
+      ],
+      "medianLongPct": 8.6,
+      "allOver5pct": true,
+      "weightedLongPct": 8.781577590651315
+    }
+  },
+  "desktopPlay": [
+    {
+      "file": "desk-D1.json",
+      "id": "play-4x",
+      "kind": "played",
+      "frames": 1453,
+      "drawn": 1453,
+      "fps": 124.3,
+      "p50": 7,
+      "p90": 13.9,
+      "p95": 13.9,
+      "p99": 14,
+      "max": 20.9,
+      "long": 0,
+      "longPct": 0,
+      "warmMax": 13.9,
+      "js50": 6.9,
+      "js95": 8.9,
+      "gpu50": 4.6,
+      "gpu95": 5.4,
+      "gpuN": 1453,
+      "calls": 833,
+      "tris": 2289649,
+      "hidden": false,
+      "note": "Play at 4x under Follow from 08:30, Watch",
+      "clockFrom": 510,
+      "clockTo": 622.4,
+      "follow": true
+    },
+    {
+      "file": "desk-D1.json",
+      "id": "play-half",
+      "kind": "played",
+      "frames": 1413,
+      "drawn": 1413,
+      "fps": 120.8,
+      "p50": 7,
+      "p90": 13.9,
+      "p95": 13.9,
+      "p99": 14,
+      "max": 20.9,
+      "long": 0,
+      "longPct": 0,
+      "warmMax": 14,
+      "js50": 7.6,
+      "js95": 8.4,
+      "gpu50": 4.5,
+      "gpu95": 5.2,
+      "gpuN": 1413,
+      "calls": 805,
+      "tris": 2244119,
+      "hidden": false,
+      "note": "Play at 0.5x under Follow from 08:30, Watch",
+      "clockFrom": 510,
+      "clockTo": 551,
+      "follow": true
+    },
+    {
+      "file": "desk-D2.json",
+      "id": "play-4x",
+      "kind": "played",
+      "frames": 1437,
+      "drawn": 1437,
+      "fps": 123,
+      "p50": 7,
+      "p90": 13.9,
+      "p95": 13.9,
+      "p99": 14,
+      "max": 20.8,
+      "long": 0,
+      "longPct": 0,
+      "warmMax": 14,
+      "js50": 7,
+      "js95": 9,
+      "gpu50": 4.6,
+      "gpu95": 5.6,
+      "gpuN": 1438,
+      "calls": 833,
+      "tris": 2289649,
+      "hidden": false,
+      "note": "Play at 4x under Follow from 08:30, Watch",
+      "clockFrom": 510,
+      "clockTo": 622.7,
+      "follow": true
+    },
+    {
+      "file": "desk-D2.json",
+      "id": "play-half",
+      "kind": "played",
+      "frames": 1406,
+      "drawn": 1406,
+      "fps": 120.2,
+      "p50": 7,
+      "p90": 13.9,
+      "p95": 13.9,
+      "p99": 14,
+      "max": 20.9,
+      "long": 0,
+      "longPct": 0,
+      "warmMax": 14,
+      "js50": 7.6,
+      "js95": 8.5,
+      "gpu50": 4.5,
+      "gpu95": 5.1,
+      "gpuN": 1406,
+      "calls": 805,
+      "tris": 2244119,
+      "hidden": false,
+      "note": "Play at 0.5x under Follow from 08:30, Watch",
+      "clockFrom": 510,
+      "clockTo": 551,
+      "follow": true
+    }
+  ],
+  "notes": [
+    "Tables/header/settings/verdicts checked by regenerating with current formatter; embedded JSON compared structurally.",
+    "Frame interval arrays and temperatures were not recorded; percentiles cannot be recomputed from individual frames.",
+    "Long threshold uses max(1.5*measured refresh,25) strictly exceeded; recorded rounded threshold is 25/25.5 ms."
+  ]
+}

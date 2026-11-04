@@ -73,3 +73,12 @@ refit (WP-04). Then legibility, accessibility and the picture (WP-07 to WP-10), 
 - No screen reader was used.
 - The source verification is a consequence-chosen sample, not the whole text.
 - Three usage-limit interruptions stopped areas mid-way. Each was finished from its saved evidence, and its README says what was redone.
+
+**Addendum (4 November 2026): ChatGPT's audit.** ChatGPT audited the same build independently. Section K compares the two audits:
+- *Already here.* Six of its 11 findings are in this register. Its continuous playback run lengthens `CL-MAP-01`'s worst gap to 36.6 s.
+- *Added.* Seven are new: `CL-SRC-10`, `CL-VIS-10`, `CL-VIS-11`, `CL-PERF-15`, `CL-PERF-16`, `CL-REC-09` and `CL-REC-10`. Two of them were
+  reproduced here.
+- *Found only here.* This audit's S1 and its integrity findings are not in ChatGPT's register.
+
+The finalized roadmap, with an effort level for each pass, is `docs/ROADMAP_FINAL_AUDIT.md`.
+

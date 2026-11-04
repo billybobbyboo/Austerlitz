@@ -63,3 +63,4 @@ records. The evidence registers: `docs/step2-evidence/`, `docs/step4-evidence/`,
 - H. Structure for combining the three audits
 - I. Owner decisions
 - J. Summary
+- K. Comparison with ChatGPT's audit (added 4 November 2026)

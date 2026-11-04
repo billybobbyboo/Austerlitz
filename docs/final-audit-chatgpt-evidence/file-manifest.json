@@ -1,0 +1,735 @@
+{
+  "source_commit": "43e3e5bcc5ab0cbbcb604a22a5b8c29f801649c8",
+  "files": [
+    {
+      "path": "docs/final-audit-chatgpt-evidence/README.md",
+      "bytes": 3402,
+      "sha256": "9218bac144102d2add5564386f578b60c5e1cfbc00e2d14bbec39077945d8e34"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/artillery-moving-current.jpg",
+      "bytes": 299888,
+      "sha256": "1afd5081800b886b11984ea72c725fc3ba1f4dee53daefc6bd357cc1af99e8de"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/baseline.log",
+      "bytes": 435,
+      "sha256": "6049b1ef673e0f418ee6d1f484a13c5ef97da0501b067a61e778312f2c2c03ca"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/browser-audit.js",
+      "bytes": 4948,
+      "sha256": "51bd8bc458b21a3be1d5c87c1c00005da8fa96fd6d4130f2f0b5b9d45a36e7a4"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/browser-audit.json",
+      "bytes": 16327,
+      "sha256": "6729a1f1f5b43ca6d5a835517264c474db9bfefd407c0b2b938d1db85e89dc0b"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/browser-audit.log",
+      "bytes": 141,
+      "sha256": "9d85cbc005e5698dad1ef77ba1c6356c3c3b0232631c16f99fb8683d8078ac1f"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/browser-resume.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/castle-current.jpg",
+      "bytes": 229629,
+      "sha256": "3bf7211434534e528311ee6730d9a24aa311e70df1c2f16ecf7d681bea7d06b4"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/chronology.log",
+      "bytes": 1595,
+      "sha256": "3acac3b41891fcffdbb951bda78dd6a21d678319b7c784e4ad53159839ec8fef"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/close-sokolnitz.png",
+      "bytes": 1607247,
+      "sha256": "21a833328e099e0821313492cc207df6d686298bd6d15e3fe97f72fb45ba0c21"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/eye-zuran-1x.png",
+      "bytes": 1390456,
+      "sha256": "476a0ed48fb74ea36cc1c0b72abf8751328683a255c223b625593bfd02817e91"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/eye-zuran.png",
+      "bytes": 1385962,
+      "sha256": "159f38b3643c7e09118d12136e82c3a2291926809f38fe325c0abe770d880bb1"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/first-run-laptop.png",
+      "bytes": 1007146,
+      "sha256": "345b0910b0363c6b9000190b26ec1aeb9280b108cb7b5c793b712883b5383617"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/first-run.png",
+      "bytes": 1483542,
+      "sha256": "b64bd90a0ad36250e93a87ba4f2c2adbd840a5d8e91486901a6dcadca1720a5f"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/hybrid-dimmed.png",
+      "bytes": 2038990,
+      "sha256": "c1699b60f2a3ad7050bfb6ef494907af6944c6137fbbb100e10fbfea398760ec"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/narrow-1024.png",
+      "bytes": 777929,
+      "sha256": "3a627aa06a6ffe8b0749b94c06020aca7826d742760394883c429c643f64b513"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/opening-1-laptop.png",
+      "bytes": 791442,
+      "sha256": "ced2563959ddcf70c0f865f41f7c1398a65d6dff05a872ee75175f7958c914b2"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/opening-1.png",
+      "bytes": 1358921,
+      "sha256": "bdf64218f569775485acf9733a97d84bb4e6f9d9043501427e7f438683000a6d"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/opening-2.png",
+      "bytes": 1305716,
+      "sha256": "b51f9418d2327c400570031892568678aed9f18b0fd472d5958d1670112ef2a7"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/opening-3.png",
+      "bytes": 1496466,
+      "sha256": "d24f22425331b0bcee5f0501678f3f6949d1bcfe7f67a0548656729f9de6df84"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/opening-4.png",
+      "bytes": 1590423,
+      "sha256": "43a2ac20296731cf2f6f6fa778f1ba619d953b34beb6ac3025e99862c1088109"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/opening-end.png",
+      "bytes": 1570963,
+      "sha256": "437e4f720096e0309890700e052e54028b72f168b0c7e9398fef7feba6518031"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/overview-field.png",
+      "bytes": 1660703,
+      "sha256": "df533591b141894a557773a02fb5bc1eee52bda05aca64b127b0a2760094cde4"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/overview-plan.png",
+      "bytes": 1944931,
+      "sha256": "87a185c4a42cc4d12611f55aa931ec984578a917f6b8baf35c7f6e1803943e4c"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/paper-close.png",
+      "bytes": 1193407,
+      "sha256": "e801b960f802595dd55380fb553b6cf2a037a95e087a2b848b157eebe2cc6c5a"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/paper-drawer.png",
+      "bytes": 1244424,
+      "sha256": "742ab41442be7e7858690fbaf366d42b28f02e0ec9fc3db9609f42294b795c5a"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/paper-laptop.png",
+      "bytes": 758540,
+      "sha256": "9263a3feb4bc8e50357f9a619d3d207efcfbbe5e18e2c4f4884038c2d8d9500b"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/paper-north-up.png",
+      "bytes": 1229184,
+      "sha256": "6bff77aaccac16379962db10c7ca0f131fc8c26f6e8f8197bf9b1a5a0d80f00e"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/ph8-overview-study.png",
+      "bytes": 1734873,
+      "sha256": "1b1014c1a2eb2d745eab0df66e2a6a4870bc1b30721ea57e078a5636c576d685"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/ph8-overview-watch.png",
+      "bytes": 1977628,
+      "sha256": "d9fbc2a6fbcf109d5091a47361bef2a22ea39f551ff34aaada944935cd1c5915"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-360-explore.png",
+      "bytes": 304257,
+      "sha256": "0e8cf45d6ad26f6242a2895f2bf7d93603c60cac969e6689f29b4323cdbb341e"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-390-dossier.png",
+      "bytes": 191242,
+      "sha256": "c8a04f0fbdf7366e50d17b993a8a003cb61193a52c1a990ba824ea7646fe448d"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-390-explore.png",
+      "bytes": 353469,
+      "sha256": "de3a2f456a51e4b002082837bfc3aef36460242524f8d30bb473384f7adcd36d"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-390-first.png",
+      "bytes": 325433,
+      "sha256": "1fe76696fc575f7036e186dc1e692cd13c2dc1ce91114f3a68a5978ab41c1dbf"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-390-layers.png",
+      "bytes": 179026,
+      "sha256": "2ac6bbf7a9ca71e1b0346f272db4654f8e8e0caee33202544cf038f7ba622150"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-390-paper.png",
+      "bytes": 266162,
+      "sha256": "a70339dec7f5b4a78cb7b974b73c2d3b2e8c0bcb2699869d8ccaed6b32c3cb4f"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-390-watch.png",
+      "bytes": 410365,
+      "sha256": "6de439a25a75fc0a2a9a03a586e419c036fecb00c3fcb2561da0f4a3e11e4b26"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-402x714-explore.png",
+      "bytes": 283595,
+      "sha256": "965051ac1c993fe12ebe48fdd25b6012a74cbe771ec8f48e1bd1924ecdefb6da"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-430-explore.png",
+      "bytes": 436435,
+      "sha256": "ff1c422e850a4974552a3e51754ab235cfd1760a5b5d6225ba0b1d610ec97d7e"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/phone-844x390-explore.png",
+      "bytes": 353756,
+      "sha256": "b2d2ae386f75695fd67e07c03ef2366c3beeeca305eb08cb2e7999553936c909"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/plans-overview.png",
+      "bytes": 1728214,
+      "sha256": "c9b0ffda92bb13d36c82fc0b767030c6d1f61be5f52a76e3e6ab991eb4b79a47"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/pratzen-low-10x.png",
+      "bytes": 1670833,
+      "sha256": "c03084a54e29610f8a7f2a7105d910f4012a2818ec54c1d3adabe951081a935b"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/pratzen-low-1x.png",
+      "bytes": 1776945,
+      "sha256": "e957a01645d5c68e82dbf9698e43739f14ea5686fff6b45249225c30ce726500"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/pratzen-low.png",
+      "bytes": 1886135,
+      "sha256": "3c75815cdca964f325f03d6dc4a8b1cae2275c4d86da22127cbcd81b2fa58788"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/pratzen-orbit-min.png",
+      "bytes": 2052967,
+      "sha256": "bed32d458beb639427ed8808641a30d4615586ff83500c5a8a881083ef2ae782"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/report.json",
+      "bytes": 1069874,
+      "sha256": "9e2074bf71b8c064fae82510edad4a753dc4edd64491ba9047e2b97ea7c61350"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/selected-formation.png",
+      "bytes": 1797717,
+      "sha256": "eb5cc925f18c92306e57803fda70a16048ba78940fa104cd1fac88a679275a60"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/staff-paper.png",
+      "bytes": 1319056,
+      "sha256": "3d3ae3b57f3f3c0b817f07502ed66924022f8fd5a350981650d77cc4e5d9caf6"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full/watch-selected.png",
+      "bytes": 2076564,
+      "sha256": "0781bb6959542406ca49b51ab52d4d5cc1e5215f23976e66ce5975d7230fde20"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-full-check-report.log",
+      "bytes": 4209,
+      "sha256": "400adfc19a8a94011854ec63073d2ae33137b0e16aca636f082b13ed07d4e2a7"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-live-extract.json",
+      "bytes": 45307,
+      "sha256": "d0399efe892a10496eaa1936f707bfed7c4169966573db80277dcab59ce2f189"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-pr78/report.json",
+      "bytes": 208446,
+      "sha256": "2a459b4dafcc25151af118b302f3efe23b6d18334ef3bfdd5a0d1ebddc83c3e2"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-pr78-check-report.log",
+      "bytes": 525,
+      "sha256": "bfd3f7f96df8dfbcb259d1b9c1aaea0ef999d4886f0857c9b2d1ee9d1e2c24b9"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ci-summary.json",
+      "bytes": 535,
+      "sha256": "53167444b109bfde7891ea72b8240d35ee2a9becd37ee375055960a49bd98711"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/close-sokolnitz.jpg",
+      "bytes": 189011,
+      "sha256": "50a4a1e20ccb848992ac610b0d4096b0ced38c1a41dc38a41859ff78ed6b796a"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/contact-current/contact.json",
+      "bytes": 167180,
+      "sha256": "d6320c387eb0b2b1faab3111b56c9f3ba3e71fb573a86c9e073c16ffe4f75f36"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/contact-current.log",
+      "bytes": 9707,
+      "sha256": "d2d6d1fb292fcb48000f5592e7aa448b5d2c7a1a4e998ed2f66c8bf2fea310e2"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/contrast-ci.log",
+      "bytes": 37756,
+      "sha256": "6148c3c81612d26932f45bb866a0d695543a00604505ee21c5e94df3371ffae3"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/data.log",
+      "bytes": 1099,
+      "sha256": "391598b4058e97b67eee516b01e65eb931b4fd452f4af174c45e602d33a7cbfa"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/deployed-build.json",
+      "bytes": 1220,
+      "sha256": "57f7a1802cb6b77bf457ff6366f39d167d64f47be1cd1ea830e8842c0209aa75"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/device-audit.js",
+      "bytes": 3311,
+      "sha256": "b17cad550c27a4046501b7ef60f958becc89535843f1a534e37fecb457d115fe"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/device-audit.json",
+      "bytes": 24031,
+      "sha256": "2d62b4c4cacc39ba1ce5967ff7ed87d8644aba389b174c1a7007a3cfb88a246f"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/device-audit.log",
+      "bytes": 1013,
+      "sha256": "a5392be296b47acf665c573ef1f1c4e464b967dd70cb470f63d94421c0feedeb"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/explore-desktop.png",
+      "bytes": 1585654,
+      "sha256": "d155338f751f8f1eaf3a8f38eb3af591120f66c1f943f2429142a8eec7c1dc77"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/extended-playback.js",
+      "bytes": 1590,
+      "sha256": "32c1739c2a49e3b70ba104868a36ae7acc9f8f59ef3e281a9e197447dc27bda0"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/extended-playback.json",
+      "bytes": 61698,
+      "sha256": "26643c746b13bbbcb1d5ec9f083b494b6ebd4b7d2277416d88b03d08a8135dab"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/extended-playback.log",
+      "bytes": 367,
+      "sha256": "5a31063935ca7f25c10d06a43e24f8710778d1debc994a6eaba338fb3ca71d74"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/final-main.json",
+      "bytes": 12157,
+      "sha256": "b99ff0461e155a892c0565c739fcac5f8249c0e9306950f388b30c3bbd359775"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/findings.json",
+      "bytes": 28041,
+      "sha256": "d4191200c96b2a1898187a25f6a8a67c986e296a5548fd1fdd82209db8c4f46d"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/first-desktop.png",
+      "bytes": 1483395,
+      "sha256": "8c5e06eb2fc6728c9fbfe22d1a51365230557a879b9abea18917a8e3ba6415ae"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/full_ci_0.json",
+      "bytes": 3807,
+      "sha256": "d299e81e4cfa322486fbd90aea4bce4d2f911eb6da98ecd1115988c8ee04efb5"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/full_ci_1.json",
+      "bytes": 27657,
+      "sha256": "bb1ed7f6a9a60530c86b34c093fb70ecba09eadd9a4545d823b567c243fb707d"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/garden-current.jpg",
+      "bytes": 207714,
+      "sha256": "db207a60f32c49c8d3daef8067741f0a62df8aa93a9e09b4cb9b9f9e666642a3"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/historical-source-ledger.csv",
+      "bytes": 1366,
+      "sha256": "4fef09f90be90fd2067c0c078ce5f360ef45b8e6322b733d8b1d7cdd8c0c9067"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/hybrid-dimmed.jpg",
+      "bytes": 281520,
+      "sha256": "6807c059044a6b919da66689dd0e6f4bbf01ee492db54ddaed8f53d519761ea1"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-current/ice-8h-audit.json",
+      "bytes": 2190,
+      "sha256": "ef1504435e5d7b9eb20a0c709c097edf8479f2d434052d81186f0142536c5798"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-current/ice-above-1500-audit-sheet.jpg",
+      "bytes": 66529,
+      "sha256": "1008abef6fc223fcb285934424e5660a0f29f1d7f6349a5257ba8e56edbaa5df"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-current/ice-above-1500-clear0.20.jpg",
+      "bytes": 174883,
+      "sha256": "54b591fa4524203010e7ad26271a756850a345f86098848ae35cf16e77498c20"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-current/ice-low-1500-audit-sheet.jpg",
+      "bytes": 72001,
+      "sha256": "eef19c89b6a1ffe9249d857259eb82785db5b91dbbad407e61ce84759cd3c5fd"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-current/ice-low-1500-clear0.20.jpg",
+      "bytes": 174607,
+      "sha256": "7ad7ff1ee0a2a7721a021487dc023ed0c182d49fb9fbc8320f5be0c5b35671af"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-current/ice-oblique-1500-audit-sheet.jpg",
+      "bytes": 67541,
+      "sha256": "cea07f55e6792ca039dcd3615c338a6af25d49def2091665dbd059d29fa3bb6c"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-current/ice-oblique-1500-clear0.20.jpg",
+      "bytes": 170439,
+      "sha256": "260d3eca0617498136ec40a48225be6bb24af4df54c74d2b8a92b41a035915f9"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-current.log",
+      "bytes": 792,
+      "sha256": "4bb04eb50448449014291d98095a1f490277d17bb0eb9cd422c24301209ee2af"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/ice-low-current.jpg",
+      "bytes": 204557,
+      "sha256": "d6171093a3c8285b3c1846d5f3bdde13aa8c3e465e131493ff2eead3c41a5bbb"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/infantry-current.jpg",
+      "bytes": 264157,
+      "sha256": "0f835cfd92b835d72ee5d5f2db07230143289db403fcd814142b382ee797b841"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/infantry-motion.gif",
+      "bytes": 987088,
+      "sha256": "75c217a1c4c10c66948f8cf704e618f3d7cf35cf0556b4a8906a5129a9cef669"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/infantry-motion.mp4",
+      "bytes": 602854,
+      "sha256": "237cb82b61fa305e49b9e86e587e0700528f401c9356228ddb684de9d3038236"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/main_ci.json",
+      "bytes": 164279,
+      "sha256": "35e14acb1d3870c90286dd14593e001c859636485d40e0cfef5c95fceb16d1ca"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/main_jobs.json",
+      "bytes": 22571,
+      "sha256": "67deb555b38fa2e82001e30712e4574c5ad459c968ca2a4e194821363c7eecb3"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/merge-ledger.csv",
+      "bytes": 2408,
+      "sha256": "6e3025914c9ea2e7b4209ae36a6757b8e3f288f0ef2879a5f13422b59c8ebb9d"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/model-audit.js",
+      "bytes": 3026,
+      "sha256": "65f44e64edcc0bc90160a59022fbe2a8d976c4775c37d630b74353fd4a43609a"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/model-audit.json",
+      "bytes": 2453,
+      "sha256": "e48be9948af519a4b349a61942845baa2f14fd516282a25937d1ec09a88d299e"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/model-audit.log",
+      "bytes": 2454,
+      "sha256": "23d2bf027eef9b8529aa29983da9fa9cc58d6565bd7dc85149cb6eaf3d314d50"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-filmstrip.jpg",
+      "bytes": 248070,
+      "sha256": "31354760658b804e0c099bdd0f77e2a6088d014b799abe0ed9314151513940f1"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00000.jpg",
+      "bytes": 220967,
+      "sha256": "e4333783d79cd8b007b3b222e4c59d61ef932194df4f38b7f54ce37b69061cb8"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00001.jpg",
+      "bytes": 222588,
+      "sha256": "c7c2d0e5866e1ee5992ef505b229cbf79ea0066ee731f09444c34ca9f5ac2304"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00002.jpg",
+      "bytes": 222957,
+      "sha256": "cadb84f2033b8f3c2db491d105f8e35bfabd15dfddceba411590aa2fea0a3433"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00003.jpg",
+      "bytes": 223814,
+      "sha256": "b44af7943c66a5a329e7eb0da876293f5c6f35dfe3638cc70c8ca87f057d5978"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00004.jpg",
+      "bytes": 224875,
+      "sha256": "8c1446a9878ce02a405ddcaa1688e969b9fb6f2046365f47ec0a93bc6ad3257a"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00005.jpg",
+      "bytes": 225802,
+      "sha256": "4ff1c5afa01e668dce2acd3bf80fa1c31758a33bd3c6183e961a5f1a4ebbeafa"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00006.jpg",
+      "bytes": 227868,
+      "sha256": "31a7b087bfdc6d09bf10780a654fa9c2dc00e0275408f6cae025e6b8f882b640"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00007.jpg",
+      "bytes": 228377,
+      "sha256": "d7fec0f84840a608c287ed7aca662f0e0c25617846cb3584cac6358fc6981b82"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00008.jpg",
+      "bytes": 229452,
+      "sha256": "393810902ae5bf93499316483750727b3a6b3062284507a534c2fcb1b78f5dd6"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00009.jpg",
+      "bytes": 229750,
+      "sha256": "3ae15f9bea4422dd0f9a4422b9e2fab891ef475ad7d1c76af875cf6593e3fd3c"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00010.jpg",
+      "bytes": 227902,
+      "sha256": "3e3d84a49114c4f29cd93da5038bc6e431a28d8fb847b4870201f30b1b908c02"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/f00011.jpg",
+      "bytes": 227257,
+      "sha256": "25a70e38a2237542309e433ff3db241746777f571f05cb5e5668e129125adc04"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/motion-frames/palette.png",
+      "bytes": 461,
+      "sha256": "1ba156f82cc2c487d6fa556f8f130e517b45c143f92cb587957ab9d87be357d0"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/mutate-8l.log",
+      "bytes": 828,
+      "sha256": "f09b8a21426261f0e907030cc6355c9b2c548acc0169559db7a735b4586b32b8"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/mutations.json",
+      "bytes": 4914,
+      "sha256": "22c710a0918938c549fbcf0e6d62107cac32e1128d1b8cd514a5bf57a75aa6c5"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/mutations.log",
+      "bytes": 2577,
+      "sha256": "62d87bafae73233bc3340af13027b052adef50109274a7fc592cfba086312eb4"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/narrative-coverage.csv",
+      "bytes": 185826,
+      "sha256": "6c1b55f6aff6c40c299e8e88e3c8729d0ffb287220d6767e909d76df019fc841"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/narrative-inventory.json",
+      "bytes": 337043,
+      "sha256": "36821643d22716efddc8f033109ef3f6f6940ad0de6d2ea634fd769712dd785a"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/npm-audit.json",
+      "bytes": 457,
+      "sha256": "4f0b3f939868c9c1563ed3153ce0cd807a5f5a3acc0bf8b34c7bd3258dd2945c"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/npm-test.log",
+      "bytes": 6686,
+      "sha256": "1be8c6f40dd685f653db3b7a2e2ae8e588c726f8c6ad0b01cb1bc78cb73aea15"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/overview-field.jpg",
+      "bytes": 265421,
+      "sha256": "ed872eae46f23d7993c8ad872360a545816956604cf71ec3d4310c94a738b440"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/paper-north-up.jpg",
+      "bytes": 205030,
+      "sha256": "efdf623491bbf6096ce3eef8a1aa461f30ed3b90662e1874ab17010ef1c8134b"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/phone-portrait.jpg",
+      "bytes": 363517,
+      "sha256": "d4c5c012ef9e7858826088662ee35f3b3ae6980851b4bdd014eb5e172326bbad"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/phone-rotated-menu.jpg",
+      "bytes": 365682,
+      "sha256": "aecbea1005fcd033d32d43f12d9e2f6652721a6e4705cad32a61657f39dcc050"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/phone-rule.log",
+      "bytes": 3661,
+      "sha256": "12fbb155cd308196db4388d614f4081e81be6b25288c366fbf8bf3c0da62f801"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/plans-overview.jpg",
+      "bytes": 261168,
+      "sha256": "cb659c69511ad5c9920ff1fc83b07d00b9812d5c1ef6dd8e5b8ab86510e5570e"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/pratzen-low.jpg",
+      "bytes": 240801,
+      "sha256": "543db99929951c9ba40c015bb53509ffe7c8af4a7bf339d0bf7f7557e2fa726c"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/report-negative-controls.json",
+      "bytes": 2918,
+      "sha256": "b68bf2a3205f6110f0b58a82083e8af18074f59834d6667b4567a72cf8a70479"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/setup-package-lock.json",
+      "bytes": 2459,
+      "sha256": "6b7c9d3de3489ef864bf3f805e563e87bc30011f61ceef36ecad1b9c68287288"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/sources/disposition-p106.jpg",
+      "bytes": 405296,
+      "sha256": "f3fc2006e0ea4f64db4b3178a751144d632978de66317ce918c92502f1aa99d0"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/sources/fetch-manifest.json",
+      "bytes": 750,
+      "sha256": "a2273fd47631e249ae1eb26eadce71c2d4b4e1fc9b056f5f88925e4f1332313d"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/sources/rapp-p60.jpg",
+      "bytes": 1081968,
+      "sha256": "768794bb658de905f21b816108048d7c849ce2c034b81c7d2ff9dfe4f548b4ae"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/sources/sokolnitz-1825-refetch.json",
+      "bytes": 811,
+      "sha256": "843c97459bf1fe792f95fad9ec9c259553e29c542b7e8c65ef22abe7edac497a"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/sources/sokolnitz-1825-stored-composite.jpg",
+      "bytes": 755039,
+      "sha256": "d79da44b6c9d0fe71a56e38297bc1eac8ba3b4dbd15cab1f1d93e55d5010d8e3"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/sources/sokolnitz-1825-tile.jpg",
+      "bytes": 7127,
+      "sha256": "04abd997d96c5d1fc7b64fe96ce44916c7d210151f440cc40208f883bc0d9a9e"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/sources/thiebault-p466.jpg",
+      "bytes": 457087,
+      "sha256": "87dde59ba50731d2344f8202f6d76f601cd60a3b451db6e128febda46d0a29cb"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/build.out",
+      "bytes": 15,
+      "sha256": "032b1fc5a8734e837e32c209da5506a357ad4d784994c657f2eb31de680b50ec"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_audit.js.txt",
+      "bytes": 555,
+      "sha256": "d336acfad624eb27a8932c6605899b3c334482f223e6ad865ada4969f5e7f482"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_binding-test.js.txt",
+      "bytes": 676,
+      "sha256": "7bae50f140f35c2767df4ad721ac79cddf7c659bfb373a00d26bb118354d04f3"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_css-test.js.txt",
+      "bytes": 7178,
+      "sha256": "f817331917252ebcc52635f577fb9efbc5532247d7d19478534d4242b078a2f9"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_geo-test.js.txt",
+      "bytes": 5535,
+      "sha256": "cb48f6f4454de733741d177b2be33895b9557e61014952719ecd0d59c7f1e21d"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_height-guard.txt",
+      "bytes": 21141,
+      "sha256": "53c3a11a24a23daefb7be0614d1401aac5862a24d063e485006eea92cf5c3808"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_redteam.js.txt",
+      "bytes": 2951,
+      "sha256": "a19092eeac34a1aaff4a2b80cc3ebd8a47cbf4a7b5628bdd64da35f26b5fdcef"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_runtime-test.js.txt",
+      "bytes": 10638,
+      "sha256": "13b0c2b1194d19425bb613809b5c6d16feeb45c4fdb940cc3f272d1558a90656"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_sim-test.js.txt",
+      "bytes": 2088,
+      "sha256": "2c6e0db9c292a974a89d0949002ec44ab0c69b78cfa7b57f271e14bec3714e5c"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_terrain-test.js.txt",
+      "bytes": 3778,
+      "sha256": "73c92321973ae5d76473c4abf39857300010f31c369118d8ea7e03d504eebbc5"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/suites/out_test.js.txt",
+      "bytes": 2148,
+      "sha256": "c4a7dc136424fe749b1773c551d71dae29199c91eb5f67b5d4760729f87a70ab"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/trace-and-visual.js",
+      "bytes": 4067,
+      "sha256": "1e75f952cb7a1bb7854d542b54bf80f1d4bc272ce9c18545df40443ac51d0815"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/trace-and-visual.json",
+      "bytes": 151336,
+      "sha256": "7bea923fbf9cd1f8f301b0b719b3f6a28ab199723d0efa03e42944041ddba62c"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/trace-and-visual.log",
+      "bytes": 875,
+      "sha256": "7b84d0bdedb2a7500ee56a4f6e978ebbbc0cfec75faefe5d30429b3842203a3f"
+    },
+    {
+      "path": "docs/final-audit-chatgpt-evidence/unresolved-questions.csv",
+      "bytes": 5569,
+      "sha256": "1c8af39dc343827f49d51a43639bf6893b2a98752148c4ca71c0a623a11aabd4"
+    },
+    {
+      "path": "docs/FINAL_AUDIT_POST_STAGE8_CHATGPT.md",
+      "bytes": 73075,
+      "sha256": "3260788fd518f2e457f2ae94cadbe1e37958677c29d81fbd80bcba160228587d"
+    }
+  ]
+}

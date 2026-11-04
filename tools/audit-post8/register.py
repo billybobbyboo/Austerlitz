@@ -196,7 +196,7 @@ SET_ASIDE = [("geography", 10), ("sources-oob", 8)]
 # the auditor's resolution of the verification: tools/audit-post8/resolution.py
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from resolution import OVERRIDE, VERDICT, NOTES, WP, OWN
+from resolution import OVERRIDE, VERDICT, NOTES, WP, OWN, CG
 WP_OF = {i: w for w, ids in WP.items() for i in ids}
 # the auditor's own checks (read or reproduced personally, independently of the areas and the verifiers): id -> text
 AUDITOR = {
@@ -269,6 +269,9 @@ def main():
         if cid in VERDICT:
             e["verify"] = VERDICT[cid]
         entries.append(e)
+    for e in entries:
+        if e["id"] in CG:
+            e.setdefault("override", {})["other_audits"] = "ChatGPT " + CG[e["id"]]
     ids = [e["id"] for e in entries]
     miss = [i for i in ids if i not in WP_OF]
     extra = [i for i in WP_OF if i not in ids]

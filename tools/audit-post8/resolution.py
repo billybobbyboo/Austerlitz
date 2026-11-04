@@ -294,3 +294,130 @@ OVERRIDE['CL-UX-03'] = dict({"title": "Event markers' hit areas take presses mea
 OVERRIDE['CL-REC-03'] = dict({"observed": "Wider than stated in CHANGELOG: four older heads are also unrevised: :1698 (PR #58, 'for review'; merged 7437dcc), :1650 (#59 draft; a107472), :1574 (#60 draft; a8afeec), :1339 (#64 draft; d86835e). Narrower in ROADMAP: :548 does record #74's merge into main (72c7e1b) and #75/#76 into their stacked branches; it lacks #73, #77, #78 and #79.", "origin": "mixed: inherited (R-2 recurred from PR #58) and new-regression (#64, #73-#79)"}, **OVERRIDE.get('CL-REC-03', {}))
 OVERRIDE['CL-MAP-03'] = dict({"title": "No symbol key at all between 720 and 1079 px wide or on a phone held upright, so the integrity encodings (the B and C grades, '?', the dashed intended routes) go unexplained there; Watch, Clean and a phone held landscape hide it by recorded design or decision", "user_impact": "On phones held upright, small tablets and 1024 px laptops (below 1080 px wide, over 430 px tall) a visitor has no way to learn what the B/C/? badges, status icons, echelon marks, dashed arrows, outlines, grade extents, event glyphs or the eye level's blue sheets mean; only the first-run card's two colours remain. In Watch and Clean the key is two presses away (1, then Key) by 2D's recorded choice; at 430 px tall or less it is hidden under decision 226 (a)."}, **OVERRIDE.get('CL-MAP-03', {}))
 OVERRIDE['CL-REC-04'] = dict({"severity": "S4", "priority": "P4", "title": "The carried checklist misstates two of its own items: kienmayer@7's contradiction of its own act since Stage 0 filed as an 8J offset, and Caffarelli's separation given as 2.5-2.9 km where the build draws 2.13-2.64 km", "user_impact": "A reader of the checklist takes Kienmayer's error for 8J's small offset and Caffarelli's separation as larger than drawn; the 4,033 ms item is stated with its limit.", "observed": "Two of three items misstated: kienmayer@7's contradiction of its own act since Stage 0 filed as an 8J offset (understated); Caffarelli's separation given as 2.5-2.9 km where the build draws 2.13-2.64 km (overstated). The 4,033 ms item is stated with its limit. The substance is carried by CL-HIS-08, CL-HIS-09, CL-MAP-01 and CL-TEST-02."}, **OVERRIDE.get('CL-REC-04', {}))
+
+# --- 4 November 2026: merged with ChatGPT's audit (docs/FINAL_AUDIT_POST_STAGE8_CHATGPT.md, findings CG-F01 to CG-F11) ---
+# CL id -> how ChatGPT's finding relates to it ("same issue", "adds evidence", "new from ChatGPT")
+CG = {
+    "CL-MAP-01": "CG-F01 (same issue; ChatGPT measured a longer continuous gap)",
+    "CL-SRC-10": "CG-F02 (new from ChatGPT)",
+    "CL-GEO-10": "CG-F03 (the unresolved geographic questions; ChatGPT's research queue is WP-15)",
+    "CL-HIS-07": "CG-F03 (the named conflict kamensky@3/@4)",
+    "CL-HIS-08": "CG-F03 (the Kienmayer offset)",
+    "CL-HIS-09": "CG-F03 (the Caffarelli/Bagration separation)",
+    "CL-GEO-07": "CG-F03 (Krug)",
+    "CL-VIS-10": "CG-F04 (new from ChatGPT)",
+    "CL-VIS-11": "CG-F05 (new from ChatGPT, corroborated by this audit's captures)",
+    "CL-MAP-18": "CG-F05 (its Littawa part)",
+    "CL-VIS-06": "CG-F05 (its omitted-landmark part)",
+    "CL-PERF-15": "CG-F06 (new as a register entry; the figures-hidden lever is in both audits' evidence)",
+    "CL-PERF-03": "CG-F06 (the long-frame definition: same reading)",
+    "CL-PERF-12": "CG-F07 (same issue; ChatGPT did not attribute it, this audit did in part)",
+    "CL-PERF-04": "CG-F07 (the L3 comparison's limits: same reading)",
+    "CL-PERF-16": "CG-F08 (new from ChatGPT; reproduced here)",
+    "CL-REC-02": "CG-F09 (its README part: same issue)",
+    "CL-REC-09": "CG-F09 (its build-log part: new from ChatGPT; reproduced here)",
+    "CL-REC-10": "CG-F10 (new from ChatGPT)",
+    "CL-REC-05": "CG-F11 (same issue)",
+}
+OWN += [
+    ("CL-SRC-10", {"title": "Source verification is incomplete: 481 of 704 inventoried statements carry no claim, and no pass has yet prioritised the prominent ones (the opening, the tour, the phase ledes, the Command explanations, the headline strengths)",
+        "category": "untested", "severity": "S3", "priority": "P2", "subsystem": "historical narrative and order of battle (narrative.js, data.js, analysis.js)",
+        "user_impact": "The map can be shared as a qualified reconstruction, but its narrative cannot be described as source-verified; an unchecked statement is not shown wrong, but nothing stands behind it beyond the project's narrative.",
+        "status": "confirmed coverage gap (inventory recomputed by both audits)", "origin": "inherited (disclosed scope boundary since roadmap step 4)",
+        "refs": ["docs/step4-evidence/inventory.json", "narrative.js STATEMENT_CLAIMS, CLAIM_BY_CLASS", "data.js SOURCE_NOTE"],
+        "evidence": "docs/step4-evidence/inventory.json (byClaim: unchecked 481, interpretation by class 75, attributed 63, disputed 65, interpretation 12, uncertain 6, derived 2); ChatGPT's CG-F02 and docs/final-audit-chatgpt-evidence/narrative-coverage.csv; this audit's E.1 coverage statement",
+        "expected": "Prominent claims a visitor reads first carry a claim with a registered reading; the rest keep an accurate qualification.",
+        "observed": "481 of 704 statements are unchecked; neither the opening's, the tour's and the phase ledes' statements nor the headline strengths have been triaged as a group. ChatGPT's three fresh primary-page samples (Rapp 1823 p. 60, Materialien 1806 p. 106, Thiebault III p. 466) support the statements around them; this audit's 62 traced claims found the contradictions in CL-SRC-01, CL-HIS-01 and CL-HIS-06.",
+        "remedy": "WP-15: triage the unchecked statements by prominence (the opening, the tour, the phase ledes, the Command explanations, the headline strengths first), then source them in batches of 10-20 claims as guarded data tasks, keeping disagreements and marking unsupported precision.",
+        "effort": "1-3 research days per batch of 10-20 claims; the whole remainder cannot be sized before the triage",
+        "judgement_kind": "coverage"}),
+    ("CL-VIS-10", {"title": "The original every-foot-on-the-ground criterion remains unmet: at 4x a few dozen of 39,136 sampled poses per kit are off their resting seat (worst 0.8 px simple, 4.8 px rich), and at 10.33x the rich kit's worst reaches about 12 px for men and 10 px for horses",
+        "category": "accepted-compromise", "severity": "S3", "priority": "P3", "subsystem": "figure gait and terrain seating (app.js ANIM, animAt, animChord, layoutFigs)",
+        "user_impact": "Rare close views show a planted foot or hoof above or below the ground; larger at the 10.33x relief.",
+        "status": "measured by ChatGPT on the audited build (md5 f10fe585, Chromium 141); not re-run by this audit", "origin": "accepted-compromise (decision 265 (a), provisional)",
+        "refs": ["tools/stage8/contact-8f.js", "docs/STAGE8_SPEC.md 18.2, 20.10, 22.6"],
+        "evidence": "docs/final-audit-chatgpt-evidence/contact-current/contact.json and contact-current.log (ChatGPT's CG-F04); this audit's C.4 item C-09 (not re-measured here)",
+        "expected": "Decision 265 (a)'s chord model with its sampled bounds; the original criterion allowed no residual.",
+        "observed": "Per ChatGPT: at 4x, 25 of 39,136 men's poses beyond 0.03 units for each kit, worst 0.825 px (simple) and 4.818 px (rich); rich horses 29 of 7,704 beyond, worst 3.227 px; at 10.33x the rich kit's worst 12.089 px (men) and 10.357 px (horses), each against the instance's own resting seat.",
+        "remedy": "Keep the bounded convention; if close views justify it, measure a near-only foot-profile solution within the animation budget before adopting it (WP-10, optional).",
+        "effort": "2-5 days for a measured near-only prototype; none if kept"}),
+    ("CL-VIS-11", {"title": "Landmark roles are not communicated at symbolic scale: the Sokolnitz castle reads smaller than the farmhouses and the III Column's figures hide it entirely at 10:00; the Austerlitz garden is not discernible at the Overview and has no paper-map sign",
+        "category": "probable-problem", "severity": "S3", "priority": "P3", "subsystem": "buildings, gardens and the cartographic hierarchy (world.js LANDMARK_SITES, GARDENS, castlePlan8g)",
+        "user_impact": "The castle central to the Sokolnitz narrative is hard to identify among troops and fog; the garden is clear only close up.",
+        "status": "confirmed by both audits' captures", "origin": "inherited, within decisions 261 (a) and 266 (a)",
+        "refs": ["world.js:162 LANDMARK_SITES", "world.js:169 GARDENS", "docs/STAGE8_SPEC.md 21.7, 22.2"],
+        "evidence": "docs/audit-post8-evidence/visual-landscape/README.md (carried status: close up the castle reads smaller than the farmhouses; at 10:00 the III Column's figures hide it); docs/final-audit-chatgpt-evidence/castle-current.jpg, garden-current.jpg (ChatGPT's CG-F05)",
+        "expected": "A visitor can identify the landmark's role while its supported site and the accepted scale stay intact.",
+        "observed": "As the title; the castle's site and size are as decided (266 (a)), the garden's rows a convention.",
+        "remedy": "Prototype a restrained landmark cue (an outline or a callout on selection or hover, a paper-map garden sign) with no relocation and no growth of the castle; measure legibility among troops and fog (WP-08).",
+        "effort": "1-3 days"}),
+    ("CL-PERF-15", {"title": "Accepted: the warmed phone's Overview and Play run at about 41 and 43 fps, never 60; hiding the figures and standards raises Play to about 59 fps, so their combined workload is the lever for any optimisation",
+        "category": "accepted-compromise", "severity": "S3", "priority": "P3", "subsystem": "phone rendering and frame pacing",
+        "user_impact": "Longer phone sessions feel less fluid in the Overview and Play; the low Pratzen view stays near 60 fps.",
+        "status": "confirmed in the owner's device reports", "origin": "accepted-compromise (decision 269 (a))",
+        "refs": ["docs/stage8-evidence/device/phone-R1.json", "docs/stage8-evidence/device/phone-R2.json", "tools/step6/perf-route.js"],
+        "evidence": "docs/audit-post8-evidence/perf/README.md (prior finding P-1: hiding the figures raises Play from 43 to 59 fps); ChatGPT's CG-F06 (frame-weighted long shares 24.61% and 8.78% beside the block medians 18.15% and 8.6%)",
+        "expected": "The accepted result stated as measured, not as smooth 60 fps.",
+        "observed": "Median block fps 40.8 (Overview) and 43.35 (Play); every A block above 5% long; figures hidden, Play about 59 fps.",
+        "remedy": "Keep the acceptance; if optimising, profile the figure and standard workload on the phone first (WP-16), with matched builds and protocols.",
+        "effort": "1-3 days attribution, then 2-5 days for a justified optimisation"}),
+    ("CL-PERF-16", {"title": "The phone intervention rule accepts empty measurement sets: two empty reports both 'stand', both kinds are 'tested', every candidate 'cures' with gain NaN, and the rule recommends figShadow (exit 0)",
+        "category": "confirmed-defect", "severity": "S3", "priority": "P2", "subsystem": "device evidence tooling (tools/step6/phone-rule.js)",
+        "user_impact": "None for visitors; a malformed or incomplete future report could produce a build recommendation with no measurement behind it.",
+        "status": "confirmed (reproduced here)", "origin": "inherited (decision 236's rule tool, roadmap step 6)",
+        "refs": ["tools/step6/phone-rule.js:25-35", "tools/step6/phone-rule.js:39-45"],
+        "evidence": "docs/audit-post8-evidence/chatgpt-comparison/phone-rule-empty.txt (reproduced by this audit: 'VERDICT: rule 2: figShadow cures every kind both runs test', exit 0); the real R1/R2 reports still give rule 4; ChatGPT's CG-F08",
+        "expected": "Absent blocks, incomplete rounds and non-finite measures rejected with a non-zero exit.",
+        "observed": "As.length 0 makes '0 >= 0' true, and Array.every over no blocks is true.",
+        "remedy": "Validate the expected kinds, rounds, block counts and finite positive measures before applying the rule; reject missingness explicitly; keep R1/R2's verdict unchanged (WP-13).",
+        "effort": "2-6 hours"}),
+    ("CL-REC-09", {"title": "build.py prints the build's character count as 'bytes' (2,801,357) where the file is 2,810,630 bytes",
+        "category": "confirmed-defect", "severity": "S4", "priority": "P4", "subsystem": "build (build.py)",
+        "user_impact": "None for visitors; a contributor reading the build log gets the wrong size (check:baseline uses the right one).",
+        "status": "confirmed (reproduced here)", "origin": "inherited", "refs": ["build.py:53"],
+        "evidence": "docs/audit-post8-evidence/chatgpt-comparison/build-bytes.txt; ChatGPT's CG-F09",
+        "expected": "A 'bytes' label reports UTF-8 bytes.", "observed": "print('bytes:', len(out)) counts the Python string's characters.",
+        "remedy": "Print len(out.encode('utf-8')), or label the value characters (WP-13).", "effort": "minutes"}),
+    ("CL-REC-10", {"title": "The carried low-sun glare figure (43.5% at 15:00) is not a current measurement: on the audited build and CI's browser the same probe gives 5.90%",
+        "category": "probable-problem", "severity": "S4", "priority": "P4", "subsystem": "the records' measurements (docs/STAGE8_SPEC.md 20.10; the carried item C-10)",
+        "user_impact": "None for visitors; the records overstate what is currently measured (the bright sheen is still visible).",
+        "status": "measured by ChatGPT on the audited build (md5 f10fe585, Chromium 141); not re-run by this audit", "origin": "new-regression (records since 8H)",
+        "refs": ["tools/stage8/ice-8h.js", "docs/STAGE8_SPEC.md 20.10", "docs/stage8-evidence/8h/ice/ice-8h-clear.json"],
+        "evidence": "docs/final-audit-chatgpt-evidence/ice-current/ice-8h-audit.json (md5 f10fe585, Chromium 141.0.7390.37; low 15:00 glare15 5.90%); the old 43.5% came from build e8fed44b on Chromium 153 (ChatGPT's CG-F10)",
+        "expected": "Each numerical proxy tied to its build, browser and view.",
+        "observed": "The records carry 43.5% without its build and browser; the current probe gives 5.90%; the cause of the difference is not established.",
+        "remedy": "Annotate the old figure with its build and browser and record the current one, keeping the historical result (WP-13); the appearance itself stays decision 264 (a).",
+        "effort": "an hour"}),
+]
+# work packages for the new entries and the finalized roadmap's two new packages (WP-15, WP-16)
+WP["WP-15"] = ["CL-SRC-10"]
+WP["WP-16"] = []
+for _cid in ["CL-PERF-12", "CL-PERF-13", "CL-PERF-14", "CL-PERF-15"]:
+    for _w, _l in WP.items():
+        if _cid in _l and _w != "WP-16":
+            _l.remove(_cid)
+    WP["WP-16"].append(_cid)
+WP["WP-13"] += ["CL-PERF-16", "CL-REC-09", "CL-REC-10"]
+WP["WP-10"] += ["CL-VIS-10"]
+WP["WP-08"] += ["CL-VIS-11"]
+# CG-F01's longer measurement folded into the merged finding
+OVERRIDE["CL-MAP-01"] = dict(OVERRIDE.get("CL-MAP-01", {}), title="Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28-37 s at a stretch (36.6 s for the French Guard cavalry, about 11:02-13:15, in ChatGPT's continuous run); the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window")
+NOTES["CL-MAP-01"] = (NOTES.get("CL-MAP-01", "") + " ChatGPT (CG-F01) ran 3,600 frames from 09:00 in one piece and found the French Guard cavalry placement-hidden for 36.633 s on the driver's clock (battle minutes 661.8-794.8), the Russian Guard cavalry 28.2 s and Miloradovich 24.6 s; a selected formation stayed drawn in every sample and the paper map's longest gap was 667 ms. This audit's runs were split at 11:30 and 12:00, so a gap spanning that boundary was cut. ChatGPT's 4x run's 82.5 s maximum includes the clock resting at 18:00 and is not a playback gap.").strip()
+NOTES["CL-PERF-12"] = (NOTES.get("CL-PERF-12", "") + " ChatGPT (CG-F07) found no subsystem attribution in the device reports; this audit's attribution came from the in-container profile (perf-attribution), so the two readings are compatible.").strip()
+NOTES["CL-REC-05"] = (NOTES.get("CL-REC-05", "") + " ChatGPT (CG-F11) reports the same gap: the session's 24 result cells are blank.").strip()
+VERDICT.update({
+    "CL-PERF-16": {"verdict": "CONFIRMED", "note": "Reproduced by this audit on 4 November 2026 (docs/audit-post8-evidence/chatgpt-comparison/phone-rule-empty.txt): two empty reports give rule 2, figShadow, exit 0."},
+    "CL-REC-09": {"verdict": "CONFIRMED", "note": "Reproduced by this audit (chatgpt-comparison/build-bytes.txt): build.py prints 2,801,357, the character count; the file is 2,810,630 bytes."},
+    "CL-SRC-10": {"verdict": "CONFIRMED", "note": "Both audits recomputed the inventory: 481 of 704 unchecked (docs/step4-evidence/inventory.json, kept current by test.js)."},
+    "CL-VIS-11": {"verdict": "CONFIRMED", "note": "Both audits' captures show it (this audit's visual-landscape carried status; ChatGPT's castle-current.jpg and garden-current.jpg)."},
+    "CL-PERF-15": {"verdict": "CONFIRMED", "note": "The medians and the figures-hidden reference were recomputed by this audit's perf area from the device reports; the frame-weighted shares (24.61%, 8.78%) are ChatGPT's."},
+    "CL-VIS-10": {"verdict": "PLAUSIBLE", "note": "ChatGPT's measurement on the audited build (md5 f10fe585, Chromium 141); its tool is the project's own contact-8f.js; not re-run by this audit."},
+    "CL-REC-10": {"verdict": "PLAUSIBLE", "note": "ChatGPT's measurement on the audited build (md5 f10fe585, Chromium 141) with the project's ice-8h.js; not re-run by this audit."},
+})
+for _k, _add in {"C-02": "CL-PERF-15", "C-09": "CL-VIS-10", "C-10": "CL-REC-10", "C-13": "CL-VIS-11", "C-15": "CL-VIS-11", "C-48": "CL-SRC-10",
+                 "C-31": "WP-15", "C-32": "WP-15", "C-33": "WP-15", "C-34": "WP-15", "C-35": "WP-15", "C-36": "WP-15", "C-37": "WP-15", "C-38": "WP-15", "C-39": "WP-15"}.items():
+    _cur = CARRIED_REFS.get(_k, "")
+    _cur = "" if _cur.startswith("none") else _cur
+    CARRIED_REFS[_k] = ", ".join(x for x in ([_cur] if _cur else []) + [_add])
+CARRIED_STATUS["C-10"] = "accepted (decision 264 (a)); the carried 43.5% is not a current measurement: 5.90% on the audited build and CI's browser (ChatGPT's CG-F10, CL-REC-10)"
+CARRIED_STATUS["C-09"] = "provisional (decision 265 (a)); re-measured by ChatGPT on the audited build: the original criterion still unmet (CL-VIS-10)"

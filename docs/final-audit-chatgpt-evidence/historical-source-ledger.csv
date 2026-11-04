@@ -1,0 +1,8 @@
+id,source,method,checked_scope,limitation,evidence
+HS01,Rapp 1823 p60,fresh primary page,Timing sentence precedes centre action in the memoir,"Supports retaining a dispute, not definitive event dating",sources/rapp-p60.jpg
+HS02,Materialien 1806 p106,fresh primary page,Order calls all five columns to move at seven,Order does not establish actual simultaneous departure,sources/disposition-p106.jpg
+HS03,Thiebault III p466,fresh primary page,Memoir attributes ice fire to 24 Guard guns and claims mass drowning,Attribution checked; numbers drowned not corroborated,sources/thiebault-p466.jpg
+HS04,MZA Sokolnitz 1825 A04E,stored primary-map tile/composite inspected; fresh fetch HTTP 403,Period castle and pheasantry context,1825 evidence; not definitive 1805 geography,sources/sokolnitz-1825-refetch.json
+HS05,Official Slavkov park history,institutional text read online,Park was modified in nineteenth century and restored in twentieth,Does not fix exact 1805 planting,https://www.zamek-slavkov.cz/o-zamku/park-a-sochy/
+HS06,Suchet drained-pond report,secondary chain only,Map attributes Sokolov quotation honestly,Original French report not independently checked,data.js SOURCE_NOTE.refs
+HS07,Full narrative inventory,mechanically recomputed,704 statements with claim classification retained,No whole-corpus historical certification,narrative-coverage.csv

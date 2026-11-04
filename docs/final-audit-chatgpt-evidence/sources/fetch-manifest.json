@@ -1,0 +1,23 @@
+[
+  {
+    "file": "rapp-p60.jpg",
+    "url": "https://archive.org/download/mmoiresdugnralr00rappgoog/page/n79_w1600.jpg",
+    "bytes": 1081968,
+    "sha256": "768794bb658de905f21b816108048d7c849ce2c034b81c7d2ff9dfe4f548b4ae",
+    "type": "image/jpeg"
+  },
+  {
+    "file": "disposition-p106.jpg",
+    "url": "https://archive.org/download/10807964bsb/page/n115.jpg",
+    "bytes": 405296,
+    "sha256": "f3fc2006e0ea4f64db4b3178a751144d632978de66317ce918c92502f1aa99d0",
+    "type": "image/jpeg"
+  },
+  {
+    "file": "thiebault-p466.jpg",
+    "url": "https://archive.org/download/mmoires03thieuoft/page/n477_w1600.jpg",
+    "bytes": 457087,
+    "sha256": "87dde59ba50731d2344f8202f6d76f601cd60a3b451db6e128febda46d0a29cb",
+    "type": "image/jpeg"
+  }
+]

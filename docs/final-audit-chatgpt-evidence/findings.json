@@ -1,0 +1,333 @@
+[
+  {
+    "id": "CG-F01",
+    "title": "Ordinary hybrid counters can remain hidden for a substantial part of the battle",
+    "severity": "S2 major",
+    "priority": "P1",
+    "status": "confirmed",
+    "classification": "inherited issue; extended beyond the existing short benchmark",
+    "subsystem": "map label placement and playback",
+    "impact": "A visitor following the overall battle can lose an important formation's identity while the formation remains eligible for placement. Selection and the paper map provide effective workarounds.",
+    "references": [
+      "app.js:5092 mlCollect (priority and protected items)",
+      "app.js:5427 mlLayout (placement and retained positions)",
+      "tools/visual/motion.js:187 MOTIONS (90-frame Play)",
+      "docs/STAGE8_SPEC.md sections 22.3, 22.6, 23.4"
+    ],
+    "evidence": [
+      "extended-playback.json",
+      "trace-and-visual.json",
+      "ci-full/report.json"
+    ],
+    "reproduction": "Run extended-playback.js and trace-and-visual.js from the repository root. The hybrid Field view is 1600 x 900, Study, 4x relief, omniscient, no selection. Seek to 09:00 and play at half speed for 3600 frames on the driver's 30 Hz clock.",
+    "expected": "The default presentation should allow a visitor to keep identifying important formations through sustained playback. The current short benchmark is expected to remain reproducible; it is not an adequate long-duration visibility requirement.",
+    "observed": "The French Guard cavalry counter is placement-hidden for 1099 consecutive active-play frames, 36.633 seconds on the driver's clock, from battle minute 661.833 to 794.833 (about 11:02 to 13:15). Russian Guard cavalry: 28.233 seconds. Miloradovich: 24.633 active-play seconds. In the separate extended selected run, Saint-Hilaire is on in all 3691 samples. Paper-map longest placement-hidden episode is 667 ms. No protected-item hiding was recorded in the four extended runs.",
+    "cause": "The symptom and the fixed priority/protected-item mechanism are verified. Retention of higher-priority placements and competition for limited room are consistent with the recorded earlier cause; no isolated mutation in this audit proves which individual placement rule accounts for every long episode.",
+    "remedy": "Prototype bounded changes to ordinary-item prioritization or retention, judged by per-formation exposure over extended playback. Keep selection, hover, focus and family protection. Do not move historical positions or simply loosen the accepted motion ceilings.",
+    "validation": "Repeat the four extended runs; separate active playback from post-end rest, report each formation's visible share and longest placement-hidden episode, and retain all existing 39 views, protected-item checks, real-input comparisons and accepted motion safeguards. Record any necessary tradeoff explicitly.",
+    "dependencies": "Agree the user-visible outcome after measuring candidate layouts; decision 267(a) remains the current baseline.",
+    "risk": "medium: changes can move layouts throughout the app",
+    "effort": "3-8 engineering days including prototypes and the full visual check"
+  },
+  {
+    "id": "CG-F02",
+    "title": "Historical source verification is substantial but incomplete",
+    "severity": "S2 major confidence limitation",
+    "priority": "P1 for prominent claims; P2 for the remaining corpus",
+    "status": "confirmed coverage gap; unchecked claims are not established errors",
+    "classification": "inherited, explicitly disclosed scope boundary",
+    "subsystem": "historical narrative and order of battle",
+    "impact": "The map can be shared as a qualified reconstruction, but its entire narrative cannot be described as independently source-verified.",
+    "references": [
+      "tools/step4/inventory.js:16 inventory",
+      "docs/step4-evidence/inventory.md",
+      "narrative.js STATEMENT_CLAIMS and CLAIM_BY_CLASS",
+      "data.js:791 SOURCE_NOTE"
+    ],
+    "evidence": [
+      "model-audit.json",
+      "sources/fetch-manifest.json",
+      "sources/rapp-p60.jpg",
+      "sources/disposition-p106.jpg",
+      "sources/thiebault-p466.jpg"
+    ],
+    "reproduction": "Run model-audit.js or node tools/step4/inventory.js --check; inspect the claim counts and the unchecked rows. Trace a statement's ref to its claim and reading rather than treating its presence in check:data as verification.",
+    "expected": "Claims presented as historically checked should have inspectable claim-specific support; remaining claims should retain a visible and accurate qualification.",
+    "observed": "The live inventory has 704 statements: 481 unchecked, 75 interpretations by class, 63 attributed, 65 disputed, 6 uncertain, 2 derived and 12 interpretations with their own entries. Working strength figures citing Duffy and Smith remain explicitly described as not read. Fresh primary-page samples support the recorded Rapp timing conflict, the 07:00 order and Thi\u00e9bault's account, not the truth of every statement around them.",
+    "cause": "The sourcing work deliberately covered selected claims and clusters rather than the complete inventory. Test guards hold the registered text and citations current; they cannot supply missing historical research.",
+    "remedy": "Prioritize the opening, tour, phase ledes, command explanations and consequential strengths in small source batches. Mark unsupported precision honestly. Retain disagreements; do not demand one artificial historical answer.",
+    "validation": "For each changed claim, preserve the source page or precise locator, explain what it supports and does not support, update the claim hash, and rerun data and chronology checks through an authorized data task.",
+    "dependencies": "Access to the relevant publications and primary accounts; some questions may remain unresolved.",
+    "risk": "medium for data changes, low for an evidence-only ledger",
+    "effort": "1-3 research days per focused cluster of roughly 10-20 substantive claims; the full remainder cannot be reliably sized before triage"
+  },
+  {
+    "id": "CG-F03",
+    "title": "Several consequential chronology and location questions remain unresolved",
+    "severity": "S2 potential historical impact",
+    "priority": "P2; escalate only when contrary evidence establishes an error",
+    "status": "unresolved historical questions, not newly proven geographic defects",
+    "classification": "inherited and disclosed",
+    "subsystem": "chronology, tracks and geography",
+    "impact": "Precise hours, opposing formations' relative positions and some terrain relationships remain less certain than the smooth animation can suggest.",
+    "references": [
+      "data.js:799 SOURCE_NOTE.body[5]",
+      "tools/stage2/chronology.js CONFLICTS",
+      "docs/STAGE8_SPEC.md sections 21.9 and 22.6",
+      "docs/stage8-evidence/8j/register.md",
+      "docs/stage8-evidence/8k/register.md"
+    ],
+    "evidence": [
+      "chronology.log",
+      "sources/rapp-p60.jpg",
+      "sources/sokolnitz-1825-refetch.json"
+    ],
+    "reproduction": "Run check:chronology, inspect bag@6, guard_cav@6, kamensky@3 and kamensky@4, and follow the 8J/8K register entries for dependent anchors and later-map inferences.",
+    "expected": "Disputed timings and inferred sites should remain qualified wherever their interpretation is consequential. A later map should not silently become an 1805 survey.",
+    "observed": "The checker reports 66 consistent moves and four named early conflicts among 70 moves with timed statements. Highway/post-house sites in 1805, the Goldbach's two channels north of the castle, walls, marshiness, garden planting, Bagration at dawn and late in the day, Sch\u00f6nhals's height and Krug remain open. The named Kienmayer/Langeron offsets and the 2.5-2.9 km Caffarelli/Bagration separation have not been historically resolved by this audit.",
+    "cause": "Sources disagree or do not locate the reconstruction precisely; some dependent tracks retain inherited choreography. The existence of the disagreements is verified, the correct replacement coordinates or times are not.",
+    "remedy": "Keep a research queue ranked by interpretive impact. Check contextual disclosure at the relevant dossier/event; authorize a narrowly scoped data correction only after better evidence exists.",
+    "validation": "A proposed correction must show its sources, uncertainty, affected formations and derived readings, then pass movement, chronology, geography, data and visual checks. Do not resolve this by label placement.",
+    "dependencies": "Period maps or account comparisons; no owner device run is needed to complete this audit.",
+    "risk": "high if coordinates are guessed, medium for evidence-led corrections",
+    "effort": "1-5 research days per tractable question; some questions may have no recoverable resolution"
+  },
+  {
+    "id": "CG-F04",
+    "title": "The original universal ground-contact criterion remains unmet",
+    "severity": "S3 minor at default view; S2 visual impact in some close exaggerated views",
+    "priority": "P2 optional bounded improvement",
+    "status": "confirmed sampled residual",
+    "classification": "accepted provisionally under decision 265(a)",
+    "subsystem": "figure gait and terrain seating",
+    "impact": "Rare close views show a planted foot or hoof above or below its expected resting contact. The effect is larger at the 10.33x relief setting.",
+    "references": [
+      "app.js ANIM, animAt, animChord, GAIT and layoutFigs",
+      "tools/stage8/contact-8f.js",
+      "docs/STAGE8_SPEC.md sections 18.2, 20.10 and 22.6"
+    ],
+    "evidence": [
+      "contact-current/contact.json",
+      "contact-current.log",
+      "infantry-current.jpg",
+      "motion-filmstrip.jpg"
+    ],
+    "reproduction": "Run contact-8f.js with both --before and --after pointing to the current HTML, --no-stills and a separate output directory. Both sides should identify f10fe585, demonstrating a same-build diagnostic, not a before/after repair.",
+    "expected": "The original every-foot-on-ground criterion would allow no residual. The accepted chord model instead has explicit sampled bounds; it is not equivalent to the original criterion.",
+    "observed": "At 4x, the drawn-sole samples have 25 of 39136 men's poses beyond the tool's 0.03-unit tolerance for each kit; simple/rich worst projected errors are 0.825/4.818 px. Rich horses have 29 of 7704 beyond, worst 3.227 px. At 10.33x, rich drawn-sole worst errors reach 12.089 px for men and 10.357 px for horses. These are differences against each sampled instance's resting seat; they are not exhaustive absolute clearance measurements of every vertex.",
+    "cause": "The two-chord approximation and static seating do not reproduce each foot's exact terrain profile. The diagnostic confirms the residual, not an all-pose/all-instance bound.",
+    "remedy": "Keep the bounded convention for ordinary use. If close-view finish justifies further work, measure a near-only foot-profile solution within the existing animation budget before adopting it.",
+    "validation": "Compare the same instances and phases, both kits and factors, recording absolute rest seating separately from gait-induced changes; check animation budget, pauses, seeks, reduced motion and culling.",
+    "dependencies": "Current decision 265(a); no increase in the animation budget is authorized by this report.",
+    "risk": "medium",
+    "effort": "2-5 engineering days for a measured near-only prototype; no work required if retained as an explicit limitation"
+  },
+  {
+    "id": "CG-F05",
+    "title": "Landmark significance is not consistently communicated at symbolic scale",
+    "severity": "S3 minor to S2 educational impact at Sokolnitz",
+    "priority": "P2",
+    "status": "confirmed visibility/scale compromise; no new site error established",
+    "classification": "inherited, partly accepted by decisions 261(a) and 266(a)",
+    "subsystem": "buildings, gardens and cartographic hierarchy",
+    "impact": "The castle central to the Sokolnitz narrative can be harder to identify than ordinary houses, especially beneath III Column and fog. The Austerlitz garden is clearer close up than at Overview scale.",
+    "references": [
+      "world.js:162 LANDMARK_SITES",
+      "world.js:169 GARDENS",
+      "world.js:1812 castlePlan8g",
+      "appearance.js BUILDINGS.sokolnitz and BUILDINGS.austerlitz",
+      "docs/STAGE8_SPEC.md sections 21.7, 22.2, 22.4 and 22.6"
+    ],
+    "evidence": [
+      "castle-current.jpg",
+      "garden-current.jpg",
+      "plans-overview.jpg",
+      "ci-full/plans-overview.png"
+    ],
+    "reproduction": "Inspect the castle at [212.9,344.3] around 08:20 and later; inspect Austerlitz close and at Overview; open Plans at Overview and focus the Littawa name through the map layer.",
+    "expected": "A visitor should be able to identify the landmark's role while its supported site and the accepted symbolic-scale choices remain intact.",
+    "observed": "The castle remains about 96 by 73 m as accepted, small relative to the enlarged village houses; the carried III Column overlap remains a meaningful presentation constraint. The garden has tree rows close up but no dedicated paper-map garden sign; the Littawa name is the accepted thirteenth dropped item in Plans. Satschan remains five drawn farmsteads of seven; the three named omitted landmarks remain explicitly notDrawn.",
+    "cause": "Multiple symbolic scales compete at geographically constrained sites. Layout competition drops a tertiary river name. The precise 08:00-14:10 overlap interval is inherited evidence, not re-swept minute by minute here.",
+    "remedy": "Prototype a restrained landmark cue or selected-site outline/callout, with no historical relocation and no unapproved growth of the castle. Consider a garden sign only if it adds comprehension at actual map scale.",
+    "validation": "Compare the castle and garden at representative clocks and factors, with formations present; preserve supported sites, existing labels, keyboard reach and visual/performance budgets.",
+    "dependencies": "Keep decisions 259(a), 261(a), 266(a) and 267(a).",
+    "risk": "low to medium for presentation-only work",
+    "effort": "1-3 engineering days; reconstructing omitted buildings would require a separate evidence task"
+  },
+  {
+    "id": "CG-F06",
+    "title": "Warmed phone Overview and Play do not sustain 60 fps",
+    "severity": "S2 performance limitation",
+    "priority": "P2 accepted improvement opportunity",
+    "status": "confirmed in owner-device reports",
+    "classification": "accepted under decision 269(a)",
+    "subsystem": "phone rendering and frame pacing",
+    "impact": "Longer phone sessions can feel less fluid in Overview and Play even though geometry budgets pass. Low Pratzen remains substantially smoother in the recorded route.",
+    "references": [
+      "docs/stage8-evidence/device/phone-R1.json",
+      "docs/stage8-evidence/device/phone-R2.json",
+      "tools/step6/perf-route.js:159 longMs",
+      "docs/STAGE8_SPEC.md sections 25.1-25.4"
+    ],
+    "evidence": [
+      "device-audit.json",
+      "device-audit.log",
+      "phone-rule.log"
+    ],
+    "reproduction": "Recalculate the two reports' 24 baseline A blocks per kind with device-audit.js. No new owner run is required.",
+    "expected": "Distinguish the accepted measured result from an unconditional smooth-60-fps claim or a controlled pre/post regression.",
+    "observed": "Median block fps is 40.8 Overview and 43.35 Play; median block long-frame shares are 18.15% and 8.6%. Every A block is above 5% long. The low view's baseline is approximately 60 fps. Figure-hidden Play is approximately 59 fps. Frame-weighted long shares differ from median block percentages (24.61% and 8.78%).",
+    "cause": "Hiding figures and standards improves Play, implicating their combined workload. The evidence does not isolate animation, GPU fill, geometry, JavaScript or temperature. Four ordinary phone candidates are effective no-ops on current lowTier; gait's bracket is inconclusive, and effects-off is not a demonstrated cure.",
+    "remedy": "Retain acceptance. If optimizing, profile a focused change to the measured figure/standard workload, preserving source fidelity and the current lowTier settings; do not request the rejected repeat ordinary route as a prerequisite.",
+    "validation": "Use matching build identities and protocols for a future optimization; retain raw per-block data, visibility and actual interventions. A software renderer cannot supply owner-device timing.",
+    "dependencies": "Decision 269(a) is settled. The P5 route is unlike R1/R2; an integrated GPU remains unmeasured.",
+    "risk": "medium",
+    "effort": "1-3 days attribution, then 2-5 days for a justified targeted optimization; accepted limitation needs no work now"
+  },
+  {
+    "id": "CG-F07",
+    "title": "Desktop Play exceeds the prior CPU allowance and misses some 144 Hz refreshes",
+    "severity": "S3 minor performance limitation",
+    "priority": "P2 accepted improvement opportunity",
+    "status": "confirmed report comparison; subsystem attribution unverified",
+    "classification": "accepted under decision 268(a)",
+    "subsystem": "desktop per-frame JavaScript and pacing",
+    "impact": "The recorded RTX desktop runs Play at approximately 120-124 fps rather than the prior 139-140 fps. This is visible on a high-refresh display despite almost no intervals exceeding the route's long-frame threshold.",
+    "references": [
+      "docs/stage8-evidence/device/desk-D1.json",
+      "docs/stage8-evidence/device/desk-D2.json",
+      "docs/step6-evidence/perf-L3-desktop.json",
+      "docs/STAGE8_SPEC.md section 24"
+    ],
+    "evidence": [
+      "device-audit.json",
+      "device-audit.log"
+    ],
+    "reproduction": "Compare matching segment ids/kinds with L3. D1/D2 Play-half js50 is 7.6 ms against 6.1 ms; Overview orbit rises by up to 1.1 ms.",
+    "expected": "Report the accepted excess without relabelling it as a technical pass against the original plus-1-ms CPU line.",
+    "observed": "Half-speed Play is 120.8/120.2 fps and 4x Play 124.3/123.0. Play p95 intervals are 13.9 ms, about two 144 Hz refresh intervals. Desktop long-frame cutoff is strictly above 25 ms; a 13.9-ms interval is therefore not counted long.",
+    "cause": "The js95 work exceeds the 6.9-ms refresh window and is consistent with CPU pressure. These route reports do not attribute the added work to an individual Stage 8 subsystem. L3 is the nearest earlier measured build, not Stage 8's exact starting build.",
+    "remedy": "Keep acceptance. Profile matching Play/orbit routes before choosing a narrowly scoped optimization; do not remove visual fidelity solely to lower a test number.",
+    "validation": "Distinguish CPU attribution from actual device pacing, compare identical settings, and retain current geometry and visibility safeguards.",
+    "dependencies": "Decision 268(a) is settled; no new owner run is required for this audit.",
+    "risk": "medium",
+    "effort": "1-3 days focused attribution; implementation depends on the measured cause"
+  },
+  {
+    "id": "CG-F08",
+    "title": "The phone intervention rule accepts empty measurement sets",
+    "severity": "S2 diagnostic correctness",
+    "priority": "P1 before using it for future acceptance decisions",
+    "status": "confirmed by isolated negative control",
+    "classification": "inherited tool defect; existing complete reports remain valid",
+    "subsystem": "performance evidence validation",
+    "impact": "A malformed or incomplete future report can produce a positive intervention recommendation without any measurement supporting it.",
+    "references": [
+      "tools/step6/phone-rule.js:20 run validation",
+      "tools/step6/phone-rule.js tests/candidate blocks and final tested.every rule"
+    ],
+    "evidence": [
+      "model-audit.json",
+      "model-audit.log",
+      "phone-rule.log"
+    ],
+    "reproduction": "Run model-audit.js. It creates two temporary JSON reports with refreshMs 17, notes [] and segments [], runs the existing phone rule, records the result, then removes the temporary files.",
+    "expected": "Reject absent baseline/candidate blocks, incomplete rounds and invalid numerical measurements with a non-zero result.",
+    "observed": "Both empty reports are called stands; both kinds are called tested; empty candidate block sets have cures true and gain NaN; exit code is 0 and rule 2 recommends figShadow. The real R1/R2 reports contain their required blocks and still produce rule 4: nothing is built.",
+    "cause": "As.length is zero, so 0 >= As.length/2 passes, and Array.every on empty candidate lists is true. The tool has no mandatory block/schema completeness gate.",
+    "remedy": "Validate the expected kind/candidate/round structure, exact required block counts and finite positive measurements before applying the rule; reject missingness explicitly.",
+    "validation": "Require empty reports, one missing A, one missing candidate, a missing round, duplicate blocks, disjoint tested kinds, hidden blocks and non-finite fields to reject; keep R1/R2's real verdict unchanged.",
+    "dependencies": "No application, historical data or owner acceptance change is needed.",
+    "risk": "low",
+    "effort": "2-6 engineering hours"
+  },
+  {
+    "id": "CG-F09",
+    "title": "Developer-facing records and the build-size log have drifted",
+    "severity": "S3 minor",
+    "priority": "P3 quick fix",
+    "status": "confirmed",
+    "classification": "inherited documentation/tool-output defects",
+    "subsystem": "build and maintenance documentation",
+    "impact": "A new contributor can read obsolete test counts, the wrong data reference and understated build bytes despite the authoritative checks being current.",
+    "references": [
+      "README.md Checks table",
+      "tools/visual/README.md Requirements/Scripts/Timing",
+      "build.py final print statement",
+      "package.json current scripts"
+    ],
+    "evidence": [
+      "baseline.log",
+      "ci-summary.json",
+      "ci-full-check-report.log"
+    ],
+    "reproduction": "Compare README's 242 self-tests, 30 views and archive/step5c reference with the actual 317 checks, 39 views and stage8k reference; compare build.py's printed bytes with the actual file byte length.",
+    "expected": "Current operational documentation should match package.json and the measured product; a bytes label should report UTF-8 bytes.",
+    "observed": "README says audit.js continuity/coverage only print, although audit.js now asserts them. Several counts/timing descriptions are old. build.py prints bytes: 2801357 by counting Python characters, while the committed UTF-8 file is 2810630 bytes. The actual baseline guard uses the correct byte count and passes.",
+    "cause": "Historical records were kept while overview instructions and a character-counting log were not reconciled.",
+    "remedy": "Update the current quick-start/check tables and either encode the string for its byte count or label the value characters. Preserve historical audit records as history.",
+    "validation": "Check documented commands against package.json and one build; the generated HTML and its hashes must remain unchanged.",
+    "dependencies": "None.",
+    "risk": "low",
+    "effort": "1-3 engineering hours"
+  },
+  {
+    "id": "CG-F10",
+    "title": "Low-sun ice remains a visual compromise; the old glare percentage is not a current measurement",
+    "severity": "S3 visual judgement",
+    "priority": "P3 optional polish",
+    "status": "appearance confirmed; changed probe result; cause of difference unverified",
+    "classification": "accepted under decision 264(a)",
+    "subsystem": "ice material and visual evidence provenance",
+    "impact": "Oblique low-sun ice can look conspicuously bright. Carrying the old 43.5% number forward without its build and browser would overstate what this audit measured.",
+    "references": [
+      "world.js ICE and WATER_GLSL",
+      "tools/stage8/ice-8h.js",
+      "docs/STAGE8_SPEC.md section 20.10",
+      "docs/stage8-evidence/8h/ice/ice-8h-clear.json"
+    ],
+    "evidence": [
+      "ice-current/ice-8h-audit.json",
+      "ice-current.log",
+      "ice-current/ice-low-1500-clear0.20.jpg"
+    ],
+    "reproduction": "Run ice-8h.js on current HTML with --clear 0.20 and a separate output directory. This creates an identical-value temporary copy and leaves the app unchanged.",
+    "expected": "Judge the current appearance visually and tie each numerical proxy to its measured build, renderer and view.",
+    "observed": "The current Chromium 141 probe reports 5.90% glare15 in its low 15:00 view and 0% raw white samples; the old 43.5% came from e8fed44b and Chromium 153. This is the tool's projected polar-grid luminance ratio in an off-screen render, not a percentage of all visible screen pixels. The bright sheen is still apparent in the current capture.",
+    "cause": "The glossy/grazing material terms are present. Both the build and browser differ from the earlier measurement; this audit did not isolate the reason for the numerical change and does not claim the issue was fixed.",
+    "remedy": "Keep the accepted appearance unless a matched visual comparison shows a useful restrained change without removing the desired sheen. Annotate the old evidence rather than replacing its historical result.",
+    "validation": "Use the same build/browser/view and both morning and afternoon comparisons, keeping water outlines and levels unchanged.",
+    "dependencies": "Decision 264(a) remains settled.",
+    "risk": "low to medium",
+    "effort": "0.5-2 days if pursued; no work required now"
+  },
+  {
+    "id": "CG-F11",
+    "title": "Screen-reader acceptance lacks an inspectable current result record",
+    "severity": "S2 potential access impact; no failure established",
+    "priority": "P2 evidence gap",
+    "status": "unverified in actual assistive technology",
+    "classification": "inherited acceptance-record limitation",
+    "subsystem": "accessibility assurance",
+    "impact": "The DOM, keyboard and contrast checks support accessibility, but cannot establish what VoiceOver or NVDA actually announces through the present experience.",
+    "references": [
+      "docs/step3-evidence/sr-session.md:3 acceptance on owner's word",
+      "shell.html dialog, region, slider and tab semantics",
+      "app.js SHEETS, syncInert, focusTo"
+    ],
+    "evidence": [
+      "contrast-ci.log",
+      "ci-full/report.json",
+      "browser-audit.json"
+    ],
+    "reproduction": "Inspect the screen-reader session record: its 24 result cells remain blank and it explicitly records no versions, speech or item-by-item outcomes. Review the current keyboard/contrast evidence separately.",
+    "expected": "Any claim of verified assistive-technology behavior should identify the tested browser/reader versions and observed outcomes.",
+    "observed": "Current CI checks 6926 text elements in 45 states at AA and the 10.5 px floor, 8 boot/context cases pass, and keyboard/focus/reduced-motion blocks pass. The owner accepted the earlier reader session, but the repository contains no reproducible speech/results ledger. This audit had no NVDA or VoiceOver access.",
+    "cause": "The acceptance was recorded as an owner declaration rather than a technical result table.",
+    "remedy": "Keep acceptance intact and describe assurance honestly. When a tester is available, record a focused reader journey and any actual failures; do not invent failures or make another owner-device session a prerequisite for this audit.",
+    "validation": "Capture the reader/browser versions, mode, focus, dialog boundary, timeline announcements and selection behavior with actual observed results.",
+    "dependencies": "An available assistive-technology tester; optional for completing this audit.",
+    "risk": "low for recording; any repair depends on a reproduced issue",
+    "effort": "1-3 hours for a focused recorded session, repairs unknown"
+  }
+]

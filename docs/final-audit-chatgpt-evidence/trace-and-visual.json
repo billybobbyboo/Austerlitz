@@ -1,0 +1,5978 @@
+{
+  "chromium": "141.0.7390.37",
+  "trace": {
+    "note": "Only uninterrupted placement-hidden episodes while the app reports playing; excludes off-screen, behind terrain and the end/rest samples.",
+    "frames": 3691,
+    "episodes": [
+      {
+        "key": "c:guard_cav",
+        "startFrame": 1031,
+        "endFrame": 2129,
+        "seconds": 36.63333333333333,
+        "startClock": 661.8333333333089,
+        "endClock": 794.8333333332779,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 1123,
+        "endFrame": 1969,
+        "seconds": 28.233333333333334,
+        "startClock": 675,
+        "endClock": 778.1666666666163,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 1,
+        "endFrame": 739,
+        "seconds": 24.633333333333333,
+        "startClock": 540.1666666666666,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 1250,
+        "endFrame": 1929,
+        "seconds": 22.666666666666668,
+        "startClock": 688.3333333333044,
+        "endClock": 771.4999999999511,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 380,
+        "endFrame": 829,
+        "seconds": 15,
+        "startClock": 583.3333333333237,
+        "endClock": 638.1666666666462,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 270,
+        "endFrame": 649,
+        "seconds": 12.666666666666666,
+        "startClock": 570,
+        "endClock": 618.1666666666492,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 1280,
+        "endFrame": 1639,
+        "seconds": 12,
+        "startClock": 693.3333333333032,
+        "endClock": 733.1666666666277,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 330,
+        "endFrame": 679,
+        "seconds": 11.666666666666666,
+        "startClock": 574.9999999999923,
+        "endClock": 623.1666666666481,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 845,
+        "endFrame": 1189,
+        "seconds": 11.5,
+        "startClock": 640.8333333333122,
+        "endClock": 678.16666666664,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 310,
+        "endFrame": 619,
+        "seconds": 10.333333333333334,
+        "startClock": 571.6666666666597,
+        "endClock": 613.1666666666504,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 280,
+        "endFrame": 569,
+        "seconds": 9.666666666666666,
+        "startClock": 570,
+        "endClock": 604.8333333333189,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 1650,
+        "endFrame": 1909,
+        "seconds": 8.666666666666666,
+        "startClock": 734.9999999999607,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 1670,
+        "endFrame": 1909,
+        "seconds": 8,
+        "startClock": 738.3333333332932,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 820,
+        "endFrame": 1049,
+        "seconds": 7.666666666666667,
+        "startClock": 636.6666666666465,
+        "endClock": 664.8333333333082,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 1670,
+        "endFrame": 1889,
+        "seconds": 7.333333333333333,
+        "startClock": 738.3333333332932,
+        "endClock": 764.833333333286,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 410,
+        "endFrame": 629,
+        "seconds": 7.333333333333333,
+        "startClock": 585,
+        "endClock": 614.8333333333167,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 2305,
+        "endFrame": 2499,
+        "seconds": 6.5,
+        "startClock": 824.1666666666046,
+        "endClock": 846.4999999999316,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 20,
+        "endFrame": 209,
+        "seconds": 6.333333333333333,
+        "startClock": 543.3333333333326,
+        "endClock": 564.8333333333278,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1470,
+        "endFrame": 1659,
+        "seconds": 6.333333333333333,
+        "startClock": 714.9999999999665,
+        "endClock": 736.4999999999603,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 20,
+        "endFrame": 209,
+        "seconds": 6.333333333333333,
+        "startClock": 543.3333333333326,
+        "endClock": 564.8333333333278,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 1454,
+        "endFrame": 1639,
+        "seconds": 6.2,
+        "startClock": 712.3333333333004,
+        "endClock": 733.1666666666277,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 1440,
+        "endFrame": 1599,
+        "seconds": 5.333333333333333,
+        "startClock": 709.9999999999676,
+        "endClock": 726.4999999999626,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 1110,
+        "endFrame": 1269,
+        "seconds": 5.333333333333333,
+        "startClock": 674.6874999999865,
+        "endClock": 691.4999999999703,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 1025,
+        "endFrame": 1179,
+        "seconds": 5.166666666666667,
+        "startClock": 660.8680555555353,
+        "endClock": 676.4999999999737,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 1280,
+        "endFrame": 1429,
+        "seconds": 5,
+        "startClock": 693.3333333333032,
+        "endClock": 708.1666666666347,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1441,
+        "endFrame": 1589,
+        "seconds": 4.966666666666667,
+        "startClock": 710.1666666666342,
+        "endClock": 724.8333333332963,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 140,
+        "endFrame": 279,
+        "seconds": 4.666666666666667,
+        "startClock": 555,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 790,
+        "endFrame": 929,
+        "seconds": 4.666666666666667,
+        "startClock": 631.6666666666476,
+        "endClock": 654.833333333309,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 1040,
+        "endFrame": 1179,
+        "seconds": 4.666666666666667,
+        "startClock": 663.3333333333086,
+        "endClock": 676.4999999999737,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 220,
+        "endFrame": 359,
+        "seconds": 4.666666666666667,
+        "startClock": 566.6666666666607,
+        "endClock": 579.8333333333245,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 2027,
+        "endFrame": 2159,
+        "seconds": 4.433333333333334,
+        "startClock": 780,
+        "endClock": 799.8333333332768,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 630,
+        "endFrame": 759,
+        "seconds": 4.333333333333333,
+        "startClock": 614.9999999999833,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 80,
+        "endFrame": 209,
+        "seconds": 4.333333333333333,
+        "startClock": 553.3333333333303,
+        "endClock": 564.8333333333278,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1,
+        "endFrame": 129,
+        "seconds": 4.3,
+        "startClock": 540.1666666666666,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 555,
+        "endFrame": 679,
+        "seconds": 4.166666666666667,
+        "startClock": 602.4999999999861,
+        "endClock": 623.1666666666481,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 2019,
+        "endFrame": 2139,
+        "seconds": 4.033333333333333,
+        "startClock": 780,
+        "endClock": 796.4999999999442,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 770,
+        "endFrame": 879,
+        "seconds": 3.6666666666666665,
+        "startClock": 630,
+        "endClock": 646.4999999999776,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1220,
+        "endFrame": 1329,
+        "seconds": 3.6666666666666665,
+        "startClock": 683.3333333333055,
+        "endClock": 700,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1,
+        "endFrame": 109,
+        "seconds": 3.6333333333333333,
+        "startClock": 540.1666666666666,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 2188,
+        "endFrame": 2289,
+        "seconds": 3.4,
+        "startClock": 804.666666666609,
+        "endClock": 821.4999999999385,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 2050,
+        "endFrame": 2149,
+        "seconds": 3.3333333333333335,
+        "startClock": 781.6666666666142,
+        "endClock": 798.1666666666105,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 840,
+        "endFrame": 939,
+        "seconds": 3.3333333333333335,
+        "startClock": 639.9999999999791,
+        "endClock": 656.4999999999753,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 1333,
+        "endFrame": 1429,
+        "seconds": 3.2333333333333334,
+        "startClock": 700,
+        "endClock": 708.1666666666347,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 2508,
+        "endFrame": 2599,
+        "seconds": 3.066666666666667,
+        "startClock": 847.9999999999312,
+        "endClock": 863.1666666665944,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2710,
+        "endFrame": 2799,
+        "seconds": 3,
+        "startClock": 871.6666666665913,
+        "endClock": 886.4999999999212,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 2230,
+        "endFrame": 2319,
+        "seconds": 3,
+        "startClock": 811.6666666666074,
+        "endClock": 826.4999999999374,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 188,
+        "endFrame": 269,
+        "seconds": 2.7333333333333334,
+        "startClock": 561.3333333333286,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 28,
+        "endFrame": 109,
+        "seconds": 2.7333333333333334,
+        "startClock": 544.6666666666656,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1600,
+        "endFrame": 1679,
+        "seconds": 2.6666666666666665,
+        "startClock": 726.6666666666292,
+        "endClock": 739.8333333332929,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 290,
+        "endFrame": 369,
+        "seconds": 2.6666666666666665,
+        "startClock": 570,
+        "endClock": 581.4999999999908,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1060,
+        "endFrame": 1139,
+        "seconds": 2.6666666666666665,
+        "startClock": 666.6666666666412,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 1190,
+        "endFrame": 1269,
+        "seconds": 2.6666666666666665,
+        "startClock": 678.3333333333067,
+        "endClock": 691.4999999999703,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2480,
+        "endFrame": 2559,
+        "seconds": 2.6666666666666665,
+        "startClock": 843.3333333332656,
+        "endClock": 856.4999999999293,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 85,
+        "endFrame": 159,
+        "seconds": 2.5,
+        "startClock": 554.1319444444418,
+        "endClock": 556.4999999999964,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2056,
+        "endFrame": 2129,
+        "seconds": 2.466666666666667,
+        "startClock": 782.666666666614,
+        "endClock": 794.8333333332779,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 960,
+        "endFrame": 1029,
+        "seconds": 2.3333333333333335,
+        "startClock": 659.6874999999875,
+        "endClock": 661.4999999999757,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1730,
+        "endFrame": 1799,
+        "seconds": 2.3333333333333335,
+        "startClock": 748.333333333291,
+        "endClock": 750.2347222222031,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 1070,
+        "endFrame": 1139,
+        "seconds": 2.3333333333333335,
+        "startClock": 668.3333333333075,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 1,
+        "endFrame": 69,
+        "seconds": 2.3,
+        "startClock": 540.1666666666666,
+        "endClock": 551.4999999999974,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 1972,
+        "endFrame": 2039,
+        "seconds": 2.2666666666666666,
+        "startClock": 778.6666666666162,
+        "endClock": 780.2347222221996,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 744,
+        "endFrame": 809,
+        "seconds": 2.2,
+        "startClock": 630,
+        "endClock": 634.8333333333136,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 175,
+        "endFrame": 239,
+        "seconds": 2.1666666666666665,
+        "startClock": 559.1666666666624,
+        "endClock": 569.5986111111074,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 278,
+        "endFrame": 339,
+        "seconds": 2.066666666666667,
+        "startClock": 570,
+        "endClock": 576.4999999999919,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 1958,
+        "endFrame": 2019,
+        "seconds": 2.066666666666667,
+        "startClock": 776.3333333332833,
+        "endClock": 780,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1870,
+        "endFrame": 1929,
+        "seconds": 2,
+        "startClock": 761.66666666662,
+        "endClock": 771.4999999999511,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1080,
+        "endFrame": 1139,
+        "seconds": 2,
+        "startClock": 669.9999999999737,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 2240,
+        "endFrame": 2299,
+        "seconds": 2,
+        "startClock": 813.3333333332737,
+        "endClock": 823.1666666666048,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 230,
+        "endFrame": 289,
+        "seconds": 2,
+        "startClock": 568.333333333327,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1110,
+        "endFrame": 1169,
+        "seconds": 2,
+        "startClock": 674.6874999999865,
+        "endClock": 675.2347222222108,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 680,
+        "endFrame": 739,
+        "seconds": 2,
+        "startClock": 623.3333333333147,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 1060,
+        "endFrame": 1119,
+        "seconds": 2,
+        "startClock": 666.6666666666412,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 301,
+        "endFrame": 359,
+        "seconds": 1.9666666666666666,
+        "startClock": 570.401388888885,
+        "endClock": 579.8333333333245,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1148,
+        "endFrame": 1199,
+        "seconds": 1.7333333333333334,
+        "startClock": 675,
+        "endClock": 679.8333333333063,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2000,
+        "endFrame": 2049,
+        "seconds": 1.6666666666666667,
+        "startClock": 780,
+        "endClock": 781.4999999999476,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 690,
+        "endFrame": 739,
+        "seconds": 1.6666666666666667,
+        "startClock": 624.999999999981,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 690,
+        "endFrame": 739,
+        "seconds": 1.6666666666666667,
+        "startClock": 624.999999999981,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 170,
+        "endFrame": 219,
+        "seconds": 1.6666666666666667,
+        "startClock": 558.3333333333293,
+        "endClock": 566.4999999999941,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 880,
+        "endFrame": 929,
+        "seconds": 1.6666666666666667,
+        "startClock": 646.6666666666442,
+        "endClock": 654.833333333309,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 270,
+        "endFrame": 319,
+        "seconds": 1.6666666666666667,
+        "startClock": 570,
+        "endClock": 573.1666666666594,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 900,
+        "endFrame": 949,
+        "seconds": 1.6666666666666667,
+        "startClock": 649.9999999999768,
+        "endClock": 658.1666666666416,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1572,
+        "endFrame": 1619,
+        "seconds": 1.6,
+        "startClock": 721.9999999999636,
+        "endClock": 729.8333333332952,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1784,
+        "endFrame": 1829,
+        "seconds": 1.5333333333333334,
+        "startClock": 750,
+        "endClock": 754.8333333332882,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 2370,
+        "endFrame": 2414,
+        "seconds": 1.5,
+        "startClock": 834.9999999999354,
+        "endClock": 840,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 150,
+        "endFrame": 189,
+        "seconds": 1.3333333333333333,
+        "startClock": 555.3124999999983,
+        "endClock": 561.4999999999952,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 210,
+        "endFrame": 249,
+        "seconds": 1.3333333333333333,
+        "startClock": 564.9999999999944,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 430,
+        "endFrame": 469,
+        "seconds": 1.3333333333333333,
+        "startClock": 585,
+        "endClock": 588.166666666656,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1830,
+        "endFrame": 1869,
+        "seconds": 1.3333333333333333,
+        "startClock": 754.9999999999549,
+        "endClock": 761.4999999999534,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1770,
+        "endFrame": 1809,
+        "seconds": 1.3333333333333333,
+        "startClock": 750,
+        "endClock": 751.4999999999557,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 990,
+        "endFrame": 1029,
+        "seconds": 1.3333333333333333,
+        "startClock": 660,
+        "endClock": 661.4999999999757,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 1991,
+        "endFrame": 2029,
+        "seconds": 1.3,
+        "startClock": 780,
+        "endClock": 780,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1793,
+        "endFrame": 1829,
+        "seconds": 1.2333333333333334,
+        "startClock": 750.0013888888874,
+        "endClock": 754.8333333332882,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2023,
+        "endFrame": 2059,
+        "seconds": 1.2333333333333334,
+        "startClock": 780,
+        "endClock": 783.1666666666139,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1273,
+        "endFrame": 1309,
+        "seconds": 1.2333333333333334,
+        "startClock": 692.1666666666368,
+        "endClock": 698.1666666666355,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 3448,
+        "endFrame": 3479,
+        "seconds": 1.0666666666666667,
+        "startClock": 984.666666666568,
+        "endClock": 989.5986111110564,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 1130,
+        "endFrame": 1159,
+        "seconds": 1,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 3280,
+        "endFrame": 3309,
+        "seconds": 1,
+        "startClock": 956.6666666665707,
+        "endClock": 961.4999999999029,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1200,
+        "endFrame": 1229,
+        "seconds": 1,
+        "startClock": 679.9999999999729,
+        "endClock": 684.8333333333052,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 2000,
+        "endFrame": 2029,
+        "seconds": 1,
+        "startClock": 780,
+        "endClock": 780,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 2140,
+        "endFrame": 2169,
+        "seconds": 1,
+        "startClock": 796.6666666666108,
+        "endClock": 801.499999999943,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 1940,
+        "endFrame": 1969,
+        "seconds": 1,
+        "startClock": 773.333333333284,
+        "endClock": 778.1666666666163,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 2170,
+        "endFrame": 2199,
+        "seconds": 1,
+        "startClock": 801.6666666666097,
+        "endClock": 806.4999999999419,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1590,
+        "endFrame": 1619,
+        "seconds": 1,
+        "startClock": 724.9999999999629,
+        "endClock": 729.8333333332952,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 1940,
+        "endFrame": 1969,
+        "seconds": 1,
+        "startClock": 773.333333333284,
+        "endClock": 778.1666666666163,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 370,
+        "endFrame": 399,
+        "seconds": 1,
+        "startClock": 581.6666666666574,
+        "endClock": 585,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2181,
+        "endFrame": 2209,
+        "seconds": 0.9666666666666667,
+        "startClock": 803.4999999999426,
+        "endClock": 808.1666666666082,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 2451,
+        "endFrame": 2478,
+        "seconds": 0.9333333333333333,
+        "startClock": 840,
+        "endClock": 842.9999999999324,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1134,
+        "endFrame": 1159,
+        "seconds": 0.8666666666666667,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 2350,
+        "endFrame": 2375,
+        "seconds": 0.8666666666666667,
+        "startClock": 831.6666666666029,
+        "endClock": 835.8333333332686,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 605,
+        "endFrame": 629,
+        "seconds": 0.8333333333333334,
+        "startClock": 610.8333333333176,
+        "endClock": 614.8333333333167,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 955,
+        "endFrame": 979,
+        "seconds": 0.8333333333333334,
+        "startClock": 659.1319444444235,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 2427,
+        "endFrame": 2449,
+        "seconds": 0.7666666666666667,
+        "startClock": 840,
+        "endClock": 840,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2147,
+        "endFrame": 2169,
+        "seconds": 0.7666666666666667,
+        "startClock": 797.8333333332772,
+        "endClock": 801.499999999943,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 1928,
+        "endFrame": 1949,
+        "seconds": 0.7333333333333333,
+        "startClock": 771.3333333332845,
+        "endClock": 774.8333333332837,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 170,
+        "endFrame": 189,
+        "seconds": 0.6666666666666666,
+        "startClock": 558.3333333333293,
+        "endClock": 561.4999999999952,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 510,
+        "endFrame": 529,
+        "seconds": 0.6666666666666666,
+        "startClock": 594.9999999999878,
+        "endClock": 598.1666666666538,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1160,
+        "endFrame": 1179,
+        "seconds": 0.6666666666666666,
+        "startClock": 675,
+        "endClock": 676.4999999999737,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1250,
+        "endFrame": 1269,
+        "seconds": 0.6666666666666666,
+        "startClock": 688.3333333333044,
+        "endClock": 691.4999999999703,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1340,
+        "endFrame": 1359,
+        "seconds": 0.6666666666666666,
+        "startClock": 700,
+        "endClock": 700,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1850,
+        "endFrame": 1869,
+        "seconds": 0.6666666666666666,
+        "startClock": 758.3333333332874,
+        "endClock": 761.4999999999534,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2100,
+        "endFrame": 2119,
+        "seconds": 0.6666666666666666,
+        "startClock": 789.9999999999457,
+        "endClock": 793.1666666666116,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2290,
+        "endFrame": 2309,
+        "seconds": 0.6666666666666666,
+        "startClock": 821.6666666666051,
+        "endClock": 824.8333333332711,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2330,
+        "endFrame": 2349,
+        "seconds": 0.6666666666666666,
+        "startClock": 828.3333333332703,
+        "endClock": 831.4999999999362,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2630,
+        "endFrame": 2649,
+        "seconds": 0.6666666666666666,
+        "startClock": 868.3333333332599,
+        "endClock": 870,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 80,
+        "endFrame": 99,
+        "seconds": 0.6666666666666666,
+        "startClock": 553.3333333333303,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 510,
+        "endFrame": 529,
+        "seconds": 0.6666666666666666,
+        "startClock": 594.9999999999878,
+        "endClock": 598.1666666666538,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 740,
+        "endFrame": 759,
+        "seconds": 0.6666666666666666,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 770,
+        "endFrame": 789,
+        "seconds": 0.6666666666666666,
+        "startClock": 630,
+        "endClock": 631.499999999981,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 950,
+        "endFrame": 969,
+        "seconds": 0.6666666666666666,
+        "startClock": 658.3333333333082,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 990,
+        "endFrame": 1009,
+        "seconds": 0.6666666666666666,
+        "startClock": 660,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 1020,
+        "endFrame": 1039,
+        "seconds": 0.6666666666666666,
+        "startClock": 660.3124999999878,
+        "endClock": 663.166666666642,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 1200,
+        "endFrame": 1219,
+        "seconds": 0.6666666666666666,
+        "startClock": 679.9999999999729,
+        "endClock": 683.1666666666389,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 1230,
+        "endFrame": 1249,
+        "seconds": 0.6666666666666666,
+        "startClock": 684.9999999999718,
+        "endClock": 688.1666666666378,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 1650,
+        "endFrame": 1669,
+        "seconds": 0.6666666666666666,
+        "startClock": 734.9999999999607,
+        "endClock": 738.1666666666266,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 1780,
+        "endFrame": 1799,
+        "seconds": 0.6666666666666666,
+        "startClock": 750,
+        "endClock": 750.2347222222031,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 2310,
+        "endFrame": 2329,
+        "seconds": 0.6666666666666666,
+        "startClock": 824.9999999999377,
+        "endClock": 828.1666666666036,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 3040,
+        "endFrame": 3059,
+        "seconds": 0.6666666666666666,
+        "startClock": 916.6666666665798,
+        "endClock": 919.8333333332457,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 30,
+        "endFrame": 49,
+        "seconds": 0.6666666666666666,
+        "startClock": 544.9999999999989,
+        "endClock": 548.1666666666648,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 220,
+        "endFrame": 239,
+        "seconds": 0.6666666666666666,
+        "startClock": 566.6666666666607,
+        "endClock": 569.5986111111074,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 250,
+        "endFrame": 269,
+        "seconds": 0.6666666666666666,
+        "startClock": 570,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 290,
+        "endFrame": 309,
+        "seconds": 0.6666666666666666,
+        "startClock": 570,
+        "endClock": 571.4999999999931,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2050,
+        "endFrame": 2069,
+        "seconds": 0.6666666666666666,
+        "startClock": 781.6666666666142,
+        "endClock": 784.8333333332802,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2780,
+        "endFrame": 2799,
+        "seconds": 0.6666666666666666,
+        "startClock": 883.3333333332553,
+        "endClock": 886.4999999999212,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 40,
+        "endFrame": 59,
+        "seconds": 0.6666666666666666,
+        "startClock": 546.6666666666652,
+        "endClock": 549.8333333333311,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 240,
+        "endFrame": 259,
+        "seconds": 0.6666666666666666,
+        "startClock": 569.6874999999968,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1070,
+        "endFrame": 1089,
+        "seconds": 0.6666666666666666,
+        "startClock": 668.3333333333075,
+        "endClock": 671.4999999999734,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1480,
+        "endFrame": 1499,
+        "seconds": 0.6666666666666666,
+        "startClock": 716.6666666666328,
+        "endClock": 719.5986111110915,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1680,
+        "endFrame": 1699,
+        "seconds": 0.6666666666666666,
+        "startClock": 739.9999999999595,
+        "endClock": 743.1666666666255,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1940,
+        "endFrame": 1959,
+        "seconds": 0.6666666666666666,
+        "startClock": 773.333333333284,
+        "endClock": 776.49999999995,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 2000,
+        "endFrame": 2019,
+        "seconds": 0.6666666666666666,
+        "startClock": 780,
+        "endClock": 780,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 2640,
+        "endFrame": 2659,
+        "seconds": 0.6666666666666666,
+        "startClock": 869.6874999999632,
+        "endClock": 870,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 2960,
+        "endFrame": 2979,
+        "seconds": 0.6666666666666666,
+        "startClock": 903.3333333332495,
+        "endClock": 906.4999999999154,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 180,
+        "endFrame": 199,
+        "seconds": 0.6666666666666666,
+        "startClock": 559.9999999999956,
+        "endClock": 563.1666666666615,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 210,
+        "endFrame": 229,
+        "seconds": 0.6666666666666666,
+        "startClock": 564.9999999999944,
+        "endClock": 568.1666666666604,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 240,
+        "endFrame": 259,
+        "seconds": 0.6666666666666666,
+        "startClock": 569.6874999999968,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 780,
+        "endFrame": 799,
+        "seconds": 0.6666666666666666,
+        "startClock": 630.3124999999905,
+        "endClock": 633.1666666666473,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 880,
+        "endFrame": 899,
+        "seconds": 0.6666666666666666,
+        "startClock": 646.6666666666442,
+        "endClock": 649.8333333333102,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 960,
+        "endFrame": 979,
+        "seconds": 0.6666666666666666,
+        "startClock": 659.6874999999875,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 1080,
+        "endFrame": 1099,
+        "seconds": 0.6666666666666666,
+        "startClock": 669.9999999999737,
+        "endClock": 673.1666666666397,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 1700,
+        "endFrame": 1719,
+        "seconds": 0.6666666666666666,
+        "startClock": 743.3333333332921,
+        "endClock": 746.499999999958,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 1770,
+        "endFrame": 1789,
+        "seconds": 0.6666666666666666,
+        "startClock": 750,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 1910,
+        "endFrame": 1929,
+        "seconds": 0.6666666666666666,
+        "startClock": 768.3333333332852,
+        "endClock": 771.4999999999511,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 1940,
+        "endFrame": 1959,
+        "seconds": 0.6666666666666666,
+        "startClock": 773.333333333284,
+        "endClock": 776.49999999995,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2120,
+        "endFrame": 2139,
+        "seconds": 0.6666666666666666,
+        "startClock": 793.3333333332782,
+        "endClock": 796.4999999999442,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2170,
+        "endFrame": 2189,
+        "seconds": 0.6666666666666666,
+        "startClock": 801.6666666666097,
+        "endClock": 804.8333333332756,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2500,
+        "endFrame": 2519,
+        "seconds": 0.6666666666666666,
+        "startClock": 846.6666666665982,
+        "endClock": 849.8333333332641,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 3040,
+        "endFrame": 3059,
+        "seconds": 0.6666666666666666,
+        "startClock": 916.6666666665798,
+        "endClock": 919.8333333332457,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 3090,
+        "endFrame": 3109,
+        "seconds": 0.6666666666666666,
+        "startClock": 924.9999999999112,
+        "endClock": 928.1666666665772,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 3200,
+        "endFrame": 3219,
+        "seconds": 0.6666666666666666,
+        "startClock": 943.3333333332404,
+        "endClock": 946.4999999999063,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 100,
+        "endFrame": 119,
+        "seconds": 0.6666666666666666,
+        "startClock": 555,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 130,
+        "endFrame": 149,
+        "seconds": 0.6666666666666666,
+        "startClock": 555,
+        "endClock": 555.2347222222207,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 210,
+        "endFrame": 229,
+        "seconds": 0.6666666666666666,
+        "startClock": 564.9999999999944,
+        "endClock": 568.1666666666604,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 290,
+        "endFrame": 309,
+        "seconds": 0.6666666666666666,
+        "startClock": 570,
+        "endClock": 571.4999999999931,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 410,
+        "endFrame": 429,
+        "seconds": 0.6666666666666666,
+        "startClock": 585,
+        "endClock": 585,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 1080,
+        "endFrame": 1099,
+        "seconds": 0.6666666666666666,
+        "startClock": 669.9999999999737,
+        "endClock": 673.1666666666397,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 1200,
+        "endFrame": 1219,
+        "seconds": 0.6666666666666666,
+        "startClock": 679.9999999999729,
+        "endClock": 683.1666666666389,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 1300,
+        "endFrame": 1319,
+        "seconds": 0.6666666666666666,
+        "startClock": 696.6666666666358,
+        "endClock": 699.5986111110934,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 1680,
+        "endFrame": 1699,
+        "seconds": 0.6666666666666666,
+        "startClock": 739.9999999999595,
+        "endClock": 743.1666666666255,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 1730,
+        "endFrame": 1749,
+        "seconds": 0.6666666666666666,
+        "startClock": 748.333333333291,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 1790,
+        "endFrame": 1809,
+        "seconds": 0.6666666666666666,
+        "startClock": 750,
+        "endClock": 751.4999999999557,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 20,
+        "endFrame": 39,
+        "seconds": 0.6666666666666666,
+        "startClock": 543.3333333333326,
+        "endClock": 546.4999999999985,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 120,
+        "endFrame": 139,
+        "seconds": 0.6666666666666666,
+        "startClock": 555,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 150,
+        "endFrame": 169,
+        "seconds": 0.6666666666666666,
+        "startClock": 555.3124999999983,
+        "endClock": 558.1666666666626,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 230,
+        "endFrame": 249,
+        "seconds": 0.6666666666666666,
+        "startClock": 568.333333333327,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 310,
+        "endFrame": 329,
+        "seconds": 0.6666666666666666,
+        "startClock": 571.6666666666597,
+        "endClock": 574.8333333333256,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 430,
+        "endFrame": 449,
+        "seconds": 0.6666666666666666,
+        "startClock": 585,
+        "endClock": 585.2347222222179,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 680,
+        "endFrame": 699,
+        "seconds": 0.6666666666666666,
+        "startClock": 623.3333333333147,
+        "endClock": 626.4999999999807,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 930,
+        "endFrame": 949,
+        "seconds": 0.6666666666666666,
+        "startClock": 654.9999999999757,
+        "endClock": 658.1666666666416,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 960,
+        "endFrame": 979,
+        "seconds": 0.6666666666666666,
+        "startClock": 659.6874999999875,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 1190,
+        "endFrame": 1209,
+        "seconds": 0.6666666666666666,
+        "startClock": 678.3333333333067,
+        "endClock": 681.4999999999726,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 1220,
+        "endFrame": 1239,
+        "seconds": 0.6666666666666666,
+        "startClock": 683.3333333333055,
+        "endClock": 686.4999999999715,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 1320,
+        "endFrame": 1339,
+        "seconds": 0.6666666666666666,
+        "startClock": 699.6874999999844,
+        "endClock": 700,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 1810,
+        "endFrame": 1829,
+        "seconds": 0.6666666666666666,
+        "startClock": 751.6666666666223,
+        "endClock": 754.8333333332882,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 2180,
+        "endFrame": 2199,
+        "seconds": 0.6666666666666666,
+        "startClock": 803.333333333276,
+        "endClock": 806.4999999999419,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 270,
+        "endFrame": 289,
+        "seconds": 0.6666666666666666,
+        "startClock": 570,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1340,
+        "endFrame": 1359,
+        "seconds": 0.6666666666666666,
+        "startClock": 700,
+        "endClock": 700,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1710,
+        "endFrame": 1729,
+        "seconds": 0.6666666666666666,
+        "startClock": 744.9999999999584,
+        "endClock": 748.1666666666243,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1980,
+        "endFrame": 1999,
+        "seconds": 0.6666666666666666,
+        "startClock": 779.6874999999746,
+        "endClock": 780,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 2320,
+        "endFrame": 2339,
+        "seconds": 0.6666666666666666,
+        "startClock": 826.666666666604,
+        "endClock": 829.8333333332699,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 120,
+        "endFrame": 139,
+        "seconds": 0.6666666666666666,
+        "startClock": 555,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 500,
+        "endFrame": 519,
+        "seconds": 0.6666666666666666,
+        "startClock": 593.3333333333215,
+        "endClock": 596.4999999999875,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 770,
+        "endFrame": 789,
+        "seconds": 0.6666666666666666,
+        "startClock": 630,
+        "endClock": 631.499999999981,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 800,
+        "endFrame": 819,
+        "seconds": 0.6666666666666666,
+        "startClock": 633.3333333333139,
+        "endClock": 636.4999999999799,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 990,
+        "endFrame": 1009,
+        "seconds": 0.6666666666666666,
+        "startClock": 660,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1690,
+        "endFrame": 1709,
+        "seconds": 0.6666666666666666,
+        "startClock": 741.6666666666258,
+        "endClock": 744.8333333332918,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1750,
+        "endFrame": 1769,
+        "seconds": 0.6666666666666666,
+        "startClock": 750,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1890,
+        "endFrame": 1909,
+        "seconds": 0.6666666666666666,
+        "startClock": 764.9999999999526,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1930,
+        "endFrame": 1949,
+        "seconds": 0.6666666666666666,
+        "startClock": 771.6666666666177,
+        "endClock": 774.8333333332837,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 1960,
+        "endFrame": 1979,
+        "seconds": 0.6666666666666666,
+        "startClock": 776.6666666666166,
+        "endClock": 779.5986111110824,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 2200,
+        "endFrame": 2219,
+        "seconds": 0.6666666666666666,
+        "startClock": 806.6666666666085,
+        "endClock": 809.8333333332745,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 2300,
+        "endFrame": 2319,
+        "seconds": 0.6666666666666666,
+        "startClock": 823.3333333332714,
+        "endClock": 826.4999999999374,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 2340,
+        "endFrame": 2359,
+        "seconds": 0.6666666666666666,
+        "startClock": 829.9999999999366,
+        "endClock": 833.1666666666025,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 2370,
+        "endFrame": 2389,
+        "seconds": 0.6666666666666666,
+        "startClock": 834.9999999999354,
+        "endClock": 838.1666666666014,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 2460,
+        "endFrame": 2479,
+        "seconds": 0.6666666666666666,
+        "startClock": 840.3124999999665,
+        "endClock": 843.166666666599,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 140,
+        "endFrame": 159,
+        "seconds": 0.6666666666666666,
+        "startClock": 555,
+        "endClock": 556.4999999999964,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 790,
+        "endFrame": 809,
+        "seconds": 0.6666666666666666,
+        "startClock": 631.6666666666476,
+        "endClock": 634.8333333333136,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 820,
+        "endFrame": 839,
+        "seconds": 0.6666666666666666,
+        "startClock": 636.6666666666465,
+        "endClock": 639.8333333333125,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1150,
+        "endFrame": 1169,
+        "seconds": 0.6666666666666666,
+        "startClock": 675,
+        "endClock": 675.2347222222108,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1200,
+        "endFrame": 1219,
+        "seconds": 0.6666666666666666,
+        "startClock": 679.9999999999729,
+        "endClock": 683.1666666666389,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1230,
+        "endFrame": 1249,
+        "seconds": 0.6666666666666666,
+        "startClock": 684.9999999999718,
+        "endClock": 688.1666666666378,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1290,
+        "endFrame": 1309,
+        "seconds": 0.6666666666666666,
+        "startClock": 694.9999999999695,
+        "endClock": 698.1666666666355,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1660,
+        "endFrame": 1679,
+        "seconds": 0.6666666666666666,
+        "startClock": 736.666666666627,
+        "endClock": 739.8333333332929,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1710,
+        "endFrame": 1729,
+        "seconds": 0.6666666666666666,
+        "startClock": 744.9999999999584,
+        "endClock": 748.1666666666243,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1830,
+        "endFrame": 1849,
+        "seconds": 0.6666666666666666,
+        "startClock": 754.9999999999549,
+        "endClock": 758.1666666666208,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1870,
+        "endFrame": 1889,
+        "seconds": 0.6666666666666666,
+        "startClock": 761.66666666662,
+        "endClock": 764.833333333286,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1910,
+        "endFrame": 1929,
+        "seconds": 0.6666666666666666,
+        "startClock": 768.3333333332852,
+        "endClock": 771.4999999999511,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1940,
+        "endFrame": 1959,
+        "seconds": 0.6666666666666666,
+        "startClock": 773.333333333284,
+        "endClock": 776.49999999995,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1980,
+        "endFrame": 1999,
+        "seconds": 0.6666666666666666,
+        "startClock": 779.6874999999746,
+        "endClock": 780,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 2140,
+        "endFrame": 2159,
+        "seconds": 0.6666666666666666,
+        "startClock": 796.6666666666108,
+        "endClock": 799.8333333332768,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 2180,
+        "endFrame": 2199,
+        "seconds": 0.6666666666666666,
+        "startClock": 803.333333333276,
+        "endClock": 806.4999999999419,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 2220,
+        "endFrame": 2239,
+        "seconds": 0.6666666666666666,
+        "startClock": 809.9999999999411,
+        "endClock": 813.1666666666071,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 20,
+        "endFrame": 39,
+        "seconds": 0.6666666666666666,
+        "startClock": 543.3333333333326,
+        "endClock": 546.4999999999985,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 70,
+        "endFrame": 89,
+        "seconds": 0.6666666666666666,
+        "startClock": 551.666666666664,
+        "endClock": 554.5986111111093,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 100,
+        "endFrame": 119,
+        "seconds": 0.6666666666666666,
+        "startClock": 555,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 130,
+        "endFrame": 149,
+        "seconds": 0.6666666666666666,
+        "startClock": 555,
+        "endClock": 555.2347222222207,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 190,
+        "endFrame": 209,
+        "seconds": 0.6666666666666666,
+        "startClock": 561.6666666666619,
+        "endClock": 564.8333333333278,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 290,
+        "endFrame": 309,
+        "seconds": 0.6666666666666666,
+        "startClock": 570,
+        "endClock": 571.4999999999931,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 880,
+        "endFrame": 899,
+        "seconds": 0.6666666666666666,
+        "startClock": 646.6666666666442,
+        "endClock": 649.8333333333102,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1020,
+        "endFrame": 1039,
+        "seconds": 0.6666666666666666,
+        "startClock": 660.3124999999878,
+        "endClock": 663.166666666642,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1080,
+        "endFrame": 1099,
+        "seconds": 0.6666666666666666,
+        "startClock": 669.9999999999737,
+        "endClock": 673.1666666666397,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1200,
+        "endFrame": 1219,
+        "seconds": 0.6666666666666666,
+        "startClock": 679.9999999999729,
+        "endClock": 683.1666666666389,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1340,
+        "endFrame": 1359,
+        "seconds": 0.6666666666666666,
+        "startClock": 700,
+        "endClock": 700,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1400,
+        "endFrame": 1419,
+        "seconds": 0.6666666666666666,
+        "startClock": 703.3333333333024,
+        "endClock": 706.4999999999684,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1660,
+        "endFrame": 1679,
+        "seconds": 0.6666666666666666,
+        "startClock": 736.666666666627,
+        "endClock": 739.8333333332929,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1690,
+        "endFrame": 1709,
+        "seconds": 0.6666666666666666,
+        "startClock": 741.6666666666258,
+        "endClock": 744.8333333332918,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1810,
+        "endFrame": 1829,
+        "seconds": 0.6666666666666666,
+        "startClock": 751.6666666666223,
+        "endClock": 754.8333333332882,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1850,
+        "endFrame": 1869,
+        "seconds": 0.6666666666666666,
+        "startClock": 758.3333333332874,
+        "endClock": 761.4999999999534,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1910,
+        "endFrame": 1929,
+        "seconds": 0.6666666666666666,
+        "startClock": 768.3333333332852,
+        "endClock": 771.4999999999511,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1940,
+        "endFrame": 1959,
+        "seconds": 0.6666666666666666,
+        "startClock": 773.333333333284,
+        "endClock": 776.49999999995,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 110,
+        "endFrame": 129,
+        "seconds": 0.6666666666666666,
+        "startClock": 555,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 220,
+        "endFrame": 239,
+        "seconds": 0.6666666666666666,
+        "startClock": 566.6666666666607,
+        "endClock": 569.5986111111074,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 360,
+        "endFrame": 379,
+        "seconds": 0.6666666666666666,
+        "startClock": 579.9999999999911,
+        "endClock": 583.1666666666571,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 390,
+        "endFrame": 409,
+        "seconds": 0.6666666666666666,
+        "startClock": 584.6874999999951,
+        "endClock": 585,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 970,
+        "endFrame": 989,
+        "seconds": 0.6666666666666666,
+        "startClock": 660,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1020,
+        "endFrame": 1039,
+        "seconds": 0.6666666666666666,
+        "startClock": 660.3124999999878,
+        "endClock": 663.166666666642,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1080,
+        "endFrame": 1099,
+        "seconds": 0.6666666666666666,
+        "startClock": 669.9999999999737,
+        "endClock": 673.1666666666397,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1110,
+        "endFrame": 1129,
+        "seconds": 0.6666666666666666,
+        "startClock": 674.6874999999865,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1180,
+        "endFrame": 1199,
+        "seconds": 0.6666666666666666,
+        "startClock": 676.6666666666404,
+        "endClock": 679.8333333333063,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1260,
+        "endFrame": 1279,
+        "seconds": 0.6666666666666666,
+        "startClock": 689.9999999999707,
+        "endClock": 693.1666666666366,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1320,
+        "endFrame": 1339,
+        "seconds": 0.6666666666666666,
+        "startClock": 699.6874999999844,
+        "endClock": 700,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1730,
+        "endFrame": 1749,
+        "seconds": 0.6666666666666666,
+        "startClock": 748.333333333291,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1760,
+        "endFrame": 1779,
+        "seconds": 0.6666666666666666,
+        "startClock": 750,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1830,
+        "endFrame": 1849,
+        "seconds": 0.6666666666666666,
+        "startClock": 754.9999999999549,
+        "endClock": 758.1666666666208,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 800,
+        "endFrame": 819,
+        "seconds": 0.6666666666666666,
+        "startClock": 633.3333333333139,
+        "endClock": 636.4999999999799,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 970,
+        "endFrame": 989,
+        "seconds": 0.6666666666666666,
+        "startClock": 660,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 1920,
+        "endFrame": 1939,
+        "seconds": 0.6666666666666666,
+        "startClock": 769.9999999999515,
+        "endClock": 773.1666666666174,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2240,
+        "endFrame": 2259,
+        "seconds": 0.6666666666666666,
+        "startClock": 813.3333333332737,
+        "endClock": 816.4999999999396,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2450,
+        "endFrame": 2469,
+        "seconds": 0.6666666666666666,
+        "startClock": 840,
+        "endClock": 841.4999999999327,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 3430,
+        "endFrame": 3449,
+        "seconds": 0.6666666666666666,
+        "startClock": 981.6666666665666,
+        "endClock": 984.8333333332347,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 170,
+        "endFrame": 189,
+        "seconds": 0.6666666666666666,
+        "startClock": 558.3333333333293,
+        "endClock": 561.4999999999952,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 240,
+        "endFrame": 259,
+        "seconds": 0.6666666666666666,
+        "startClock": 569.6874999999968,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 660,
+        "endFrame": 679,
+        "seconds": 0.6666666666666666,
+        "startClock": 619.9999999999822,
+        "endClock": 623.1666666666481,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 2330,
+        "endFrame": 2349,
+        "seconds": 0.6666666666666666,
+        "startClock": 828.3333333332703,
+        "endClock": 831.4999999999362,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 2380,
+        "endFrame": 2399,
+        "seconds": 0.6666666666666666,
+        "startClock": 836.6666666666017,
+        "endClock": 839.598611111074,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 2490,
+        "endFrame": 2509,
+        "seconds": 0.6666666666666666,
+        "startClock": 844.9999999999319,
+        "endClock": 848.1666666665978,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 2890,
+        "endFrame": 2909,
+        "seconds": 0.6666666666666666,
+        "startClock": 900,
+        "endClock": 900,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 3470,
+        "endFrame": 3489,
+        "seconds": 0.6666666666666666,
+        "startClock": 988.3333333332363,
+        "endClock": 990,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 160,
+        "endFrame": 179,
+        "seconds": 0.6666666666666666,
+        "startClock": 556.666666666663,
+        "endClock": 559.8333333333289,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 1170,
+        "endFrame": 1189,
+        "seconds": 0.6666666666666666,
+        "startClock": 675.3124999999868,
+        "endClock": 678.16666666664,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 1420,
+        "endFrame": 1439,
+        "seconds": 0.6666666666666666,
+        "startClock": 706.666666666635,
+        "endClock": 709.833333333301,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2220,
+        "endFrame": 2239,
+        "seconds": 0.6666666666666666,
+        "startClock": 809.9999999999411,
+        "endClock": 813.1666666666071,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2310,
+        "endFrame": 2329,
+        "seconds": 0.6666666666666666,
+        "startClock": 824.9999999999377,
+        "endClock": 828.1666666666036,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2350,
+        "endFrame": 2369,
+        "seconds": 0.6666666666666666,
+        "startClock": 831.6666666666029,
+        "endClock": 834.8333333332688,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2690,
+        "endFrame": 2709,
+        "seconds": 0.6666666666666666,
+        "startClock": 870,
+        "endClock": 871.4999999999246,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2800,
+        "endFrame": 2819,
+        "seconds": 0.6666666666666666,
+        "startClock": 886.6666666665878,
+        "endClock": 889.8333333332538,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2830,
+        "endFrame": 2849,
+        "seconds": 0.6666666666666666,
+        "startClock": 891.6666666665867,
+        "endClock": 894.8333333332527,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2860,
+        "endFrame": 2879,
+        "seconds": 0.6666666666666666,
+        "startClock": 896.6666666665856,
+        "endClock": 899.5986111110648,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 3070,
+        "endFrame": 3089,
+        "seconds": 0.6666666666666666,
+        "startClock": 921.6666666665786,
+        "endClock": 924.8333333332446,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 3260,
+        "endFrame": 3279,
+        "seconds": 0.6666666666666666,
+        "startClock": 953.3333333332381,
+        "endClock": 956.499999999904,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 220,
+        "endFrame": 239,
+        "seconds": 0.6666666666666666,
+        "startClock": 566.6666666666607,
+        "endClock": 569.5986111111074,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1710,
+        "endFrame": 1729,
+        "seconds": 0.6666666666666666,
+        "startClock": 744.9999999999584,
+        "endClock": 748.1666666666243,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 2140,
+        "endFrame": 2159,
+        "seconds": 0.6666666666666666,
+        "startClock": 796.6666666666108,
+        "endClock": 799.8333333332768,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 2170,
+        "endFrame": 2189,
+        "seconds": 0.6666666666666666,
+        "startClock": 801.6666666666097,
+        "endClock": 804.8333333332756,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2760,
+        "endFrame": 2779,
+        "seconds": 0.6666666666666666,
+        "startClock": 879.9999999999227,
+        "endClock": 883.1666666665886,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1140,
+        "endFrame": 1159,
+        "seconds": 0.6666666666666666,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 2610,
+        "endFrame": 2629,
+        "seconds": 0.6666666666666666,
+        "startClock": 864.9999999999274,
+        "endClock": 868.1666666665933,
+        "keep": false
+      },
+      {
+        "key": "c:prz",
+        "startFrame": 10,
+        "endFrame": 29,
+        "seconds": 0.6666666666666666,
+        "startClock": 541.6666666666663,
+        "endClock": 544.8333333333322,
+        "keep": false
+      },
+      {
+        "key": "c:prz",
+        "startFrame": 1710,
+        "endFrame": 1729,
+        "seconds": 0.6666666666666666,
+        "startClock": 744.9999999999584,
+        "endClock": 748.1666666666243,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2290,
+        "endFrame": 2309,
+        "seconds": 0.6666666666666666,
+        "startClock": 821.6666666666051,
+        "endClock": 824.8333333332711,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2350,
+        "endFrame": 2369,
+        "seconds": 0.6666666666666666,
+        "startClock": 831.6666666666029,
+        "endClock": 834.8333333332688,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2520,
+        "endFrame": 2539,
+        "seconds": 0.6666666666666666,
+        "startClock": 849.9999999999308,
+        "endClock": 853.1666666665967,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2610,
+        "endFrame": 2629,
+        "seconds": 0.6666666666666666,
+        "startClock": 864.9999999999274,
+        "endClock": 868.1666666665933,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2700,
+        "endFrame": 2719,
+        "seconds": 0.6666666666666666,
+        "startClock": 870.3124999999625,
+        "endClock": 873.1666666665909,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 950,
+        "endFrame": 969,
+        "seconds": 0.6666666666666666,
+        "startClock": 658.3333333333082,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1160,
+        "endFrame": 1179,
+        "seconds": 0.6666666666666666,
+        "startClock": 675,
+        "endClock": 676.4999999999737,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1300,
+        "endFrame": 1319,
+        "seconds": 0.6666666666666666,
+        "startClock": 696.6666666666358,
+        "endClock": 699.5986111110934,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1630,
+        "endFrame": 1649,
+        "seconds": 0.6666666666666666,
+        "startClock": 731.6666666666281,
+        "endClock": 734.833333333294,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1710,
+        "endFrame": 1729,
+        "seconds": 0.6666666666666666,
+        "startClock": 744.9999999999584,
+        "endClock": 748.1666666666243,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1920,
+        "endFrame": 1939,
+        "seconds": 0.6666666666666666,
+        "startClock": 769.9999999999515,
+        "endClock": 773.1666666666174,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 2610,
+        "endFrame": 2629,
+        "seconds": 0.6666666666666666,
+        "startClock": 864.9999999999274,
+        "endClock": 868.1666666665933,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 370,
+        "endFrame": 389,
+        "seconds": 0.6666666666666666,
+        "startClock": 581.6666666666574,
+        "endClock": 584.5986111111056,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 1660,
+        "endFrame": 1679,
+        "seconds": 0.6666666666666666,
+        "startClock": 736.666666666627,
+        "endClock": 739.8333333332929,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 970,
+        "endFrame": 989,
+        "seconds": 0.6666666666666666,
+        "startClock": 660,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 1040,
+        "endFrame": 1059,
+        "seconds": 0.6666666666666666,
+        "startClock": 663.3333333333086,
+        "endClock": 666.4999999999745,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 2310,
+        "endFrame": 2329,
+        "seconds": 0.6666666666666666,
+        "startClock": 824.9999999999377,
+        "endClock": 828.1666666666036,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 2510,
+        "endFrame": 2529,
+        "seconds": 0.6666666666666666,
+        "startClock": 848.3333333332645,
+        "endClock": 851.4999999999304,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 2540,
+        "endFrame": 2559,
+        "seconds": 0.6666666666666666,
+        "startClock": 853.3333333332633,
+        "endClock": 856.4999999999293,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 2330,
+        "endFrame": 2349,
+        "seconds": 0.6666666666666666,
+        "startClock": 828.3333333332703,
+        "endClock": 831.4999999999362,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1121,
+        "endFrame": 1139,
+        "seconds": 0.6333333333333333,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2461,
+        "endFrame": 2479,
+        "seconds": 0.6333333333333333,
+        "startClock": 840.4013888888509,
+        "endClock": 843.166666666599,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2561,
+        "endFrame": 2579,
+        "seconds": 0.6333333333333333,
+        "startClock": 856.8333333332625,
+        "endClock": 859.8333333332619,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 881,
+        "endFrame": 899,
+        "seconds": 0.6333333333333333,
+        "startClock": 646.8333333333109,
+        "endClock": 649.8333333333102,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 1891,
+        "endFrame": 1909,
+        "seconds": 0.6333333333333333,
+        "startClock": 765.1666666666192,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 2561,
+        "endFrame": 2579,
+        "seconds": 0.6333333333333333,
+        "startClock": 856.8333333332625,
+        "endClock": 859.8333333332619,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2121,
+        "endFrame": 2139,
+        "seconds": 0.6333333333333333,
+        "startClock": 793.4999999999449,
+        "endClock": 796.4999999999442,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2621,
+        "endFrame": 2639,
+        "seconds": 0.6333333333333333,
+        "startClock": 866.8333333332603,
+        "endClock": 869.5986111110694,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1,
+        "endFrame": 19,
+        "seconds": 0.6333333333333333,
+        "startClock": 540.1666666666666,
+        "endClock": 543.166666666666,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 871,
+        "endFrame": 889,
+        "seconds": 0.6333333333333333,
+        "startClock": 645.1666666666446,
+        "endClock": 648.1666666666439,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 1051,
+        "endFrame": 1069,
+        "seconds": 0.6333333333333333,
+        "startClock": 665.1666666666415,
+        "endClock": 668.1666666666408,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 611,
+        "endFrame": 629,
+        "seconds": 0.6333333333333333,
+        "startClock": 611.8333333333173,
+        "endClock": 614.8333333333167,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 1121,
+        "endFrame": 1139,
+        "seconds": 0.6333333333333333,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 1891,
+        "endFrame": 1909,
+        "seconds": 0.6333333333333333,
+        "startClock": 765.1666666666192,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 1,
+        "endFrame": 19,
+        "seconds": 0.6333333333333333,
+        "startClock": 540.1666666666666,
+        "endClock": 543.166666666666,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 2081,
+        "endFrame": 2099,
+        "seconds": 0.6333333333333333,
+        "startClock": 786.8333333332797,
+        "endClock": 789.833333333279,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 2241,
+        "endFrame": 2259,
+        "seconds": 0.6333333333333333,
+        "startClock": 813.4999999999403,
+        "endClock": 816.4999999999396,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 771,
+        "endFrame": 789,
+        "seconds": 0.6333333333333333,
+        "startClock": 630,
+        "endClock": 631.499999999981,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 141,
+        "endFrame": 159,
+        "seconds": 0.6333333333333333,
+        "startClock": 555,
+        "endClock": 556.4999999999964,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 821,
+        "endFrame": 839,
+        "seconds": 0.6333333333333333,
+        "startClock": 636.8333333333131,
+        "endClock": 639.8333333333125,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 1891,
+        "endFrame": 1909,
+        "seconds": 0.6333333333333333,
+        "startClock": 765.1666666666192,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 241,
+        "endFrame": 259,
+        "seconds": 0.6333333333333333,
+        "startClock": 569.7652777777749,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 1271,
+        "endFrame": 1289,
+        "seconds": 0.6333333333333333,
+        "startClock": 691.8333333333036,
+        "endClock": 694.8333333333029,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2191,
+        "endFrame": 2209,
+        "seconds": 0.6333333333333333,
+        "startClock": 805.1666666666089,
+        "endClock": 808.1666666666082,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1,
+        "endFrame": 19,
+        "seconds": 0.6333333333333333,
+        "startClock": 540.1666666666666,
+        "endClock": 543.166666666666,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1661,
+        "endFrame": 1679,
+        "seconds": 0.6333333333333333,
+        "startClock": 736.8333333332936,
+        "endClock": 739.8333333332929,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 2691,
+        "endFrame": 2709,
+        "seconds": 0.6333333333333333,
+        "startClock": 870,
+        "endClock": 871.4999999999246,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 2721,
+        "endFrame": 2739,
+        "seconds": 0.6333333333333333,
+        "startClock": 873.4999999999242,
+        "endClock": 876.4999999999235,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 2751,
+        "endFrame": 2769,
+        "seconds": 0.6333333333333333,
+        "startClock": 878.499999999923,
+        "endClock": 881.4999999999224,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 1121,
+        "endFrame": 1139,
+        "seconds": 0.6333333333333333,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 1661,
+        "endFrame": 1679,
+        "seconds": 0.6333333333333333,
+        "startClock": 736.8333333332936,
+        "endClock": 739.8333333332929,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 1921,
+        "endFrame": 1939,
+        "seconds": 0.6333333333333333,
+        "startClock": 770.1666666666181,
+        "endClock": 773.1666666666174,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2721,
+        "endFrame": 2739,
+        "seconds": 0.6333333333333333,
+        "startClock": 873.4999999999242,
+        "endClock": 876.4999999999235,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 591,
+        "endFrame": 609,
+        "seconds": 0.6333333333333333,
+        "startClock": 608.4999999999848,
+        "endClock": 611.4999999999841,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1241,
+        "endFrame": 1259,
+        "seconds": 0.6333333333333333,
+        "startClock": 686.8333333333047,
+        "endClock": 689.833333333304,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1921,
+        "endFrame": 1939,
+        "seconds": 0.6333333333333333,
+        "startClock": 770.1666666666181,
+        "endClock": 773.1666666666174,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 2481,
+        "endFrame": 2499,
+        "seconds": 0.6333333333333333,
+        "startClock": 843.4999999999322,
+        "endClock": 846.4999999999316,
+        "keep": false
+      },
+      {
+        "key": "c:prz",
+        "startFrame": 1921,
+        "endFrame": 1939,
+        "seconds": 0.6333333333333333,
+        "startClock": 770.1666666666181,
+        "endClock": 773.1666666666174,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2241,
+        "endFrame": 2259,
+        "seconds": 0.6333333333333333,
+        "startClock": 813.4999999999403,
+        "endClock": 816.4999999999396,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2391,
+        "endFrame": 2409,
+        "seconds": 0.6333333333333333,
+        "startClock": 838.4999999999346,
+        "endClock": 840,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2491,
+        "endFrame": 2509,
+        "seconds": 0.6333333333333333,
+        "startClock": 845.1666666665985,
+        "endClock": 848.1666666665978,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1891,
+        "endFrame": 1909,
+        "seconds": 0.6333333333333333,
+        "startClock": 765.1666666666192,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 2391,
+        "endFrame": 2409,
+        "seconds": 0.6333333333333333,
+        "startClock": 838.4999999999346,
+        "endClock": 840,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 1,
+        "endFrame": 19,
+        "seconds": 0.6333333333333333,
+        "startClock": 540.1666666666666,
+        "endClock": 543.166666666666,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 941,
+        "endFrame": 959,
+        "seconds": 0.6333333333333333,
+        "startClock": 656.8333333333086,
+        "endClock": 659.598611111097,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 1771,
+        "endFrame": 1789,
+        "seconds": 0.6333333333333333,
+        "startClock": 750,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 1891,
+        "endFrame": 1909,
+        "seconds": 0.6333333333333333,
+        "startClock": 765.1666666666192,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 41,
+        "endFrame": 59,
+        "seconds": 0.6333333333333333,
+        "startClock": 546.8333333333318,
+        "endClock": 549.8333333333311,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 811,
+        "endFrame": 829,
+        "seconds": 0.6333333333333333,
+        "startClock": 635.1666666666468,
+        "endClock": 638.1666666666462,
+        "keep": false
+      },
+      {
+        "key": "c:rg_cav",
+        "startFrame": 2391,
+        "endFrame": 2409,
+        "seconds": 0.6333333333333333,
+        "startClock": 838.4999999999346,
+        "endClock": 840,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 22,
+        "endFrame": 39,
+        "seconds": 0.6,
+        "startClock": 543.6666666666658,
+        "endClock": 546.4999999999985,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 3242,
+        "endFrame": 3259,
+        "seconds": 0.6,
+        "startClock": 950.3333333332388,
+        "endClock": 953.1666666665715,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 3262,
+        "endFrame": 3279,
+        "seconds": 0.6,
+        "startClock": 953.6666666665714,
+        "endClock": 956.499999999904,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 2592,
+        "endFrame": 2609,
+        "seconds": 0.6,
+        "startClock": 861.999999999928,
+        "endClock": 864.8333333332607,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2292,
+        "endFrame": 2309,
+        "seconds": 0.6,
+        "startClock": 821.9999999999384,
+        "endClock": 824.8333333332711,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 92,
+        "endFrame": 109,
+        "seconds": 0.6,
+        "startClock": 554.8319444444433,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 12,
+        "endFrame": 29,
+        "seconds": 0.6,
+        "startClock": 541.9999999999995,
+        "endClock": 544.8333333333322,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 52,
+        "endFrame": 69,
+        "seconds": 0.6,
+        "startClock": 548.6666666666647,
+        "endClock": 551.4999999999974,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 82,
+        "endFrame": 99,
+        "seconds": 0.6,
+        "startClock": 553.6666666666636,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1932,
+        "endFrame": 1949,
+        "seconds": 0.6,
+        "startClock": 771.999999999951,
+        "endClock": 774.8333333332837,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 2282,
+        "endFrame": 2299,
+        "seconds": 0.6,
+        "startClock": 820.3333333332721,
+        "endClock": 823.1666666666048,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 762,
+        "endFrame": 779,
+        "seconds": 0.6,
+        "startClock": 630,
+        "endClock": 630.234722222214,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 2352,
+        "endFrame": 2369,
+        "seconds": 0.6,
+        "startClock": 831.9999999999361,
+        "endClock": 834.8333333332688,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 152,
+        "endFrame": 169,
+        "seconds": 0.6,
+        "startClock": 555.5013888888866,
+        "endClock": 558.1666666666626,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 3442,
+        "endFrame": 3459,
+        "seconds": 0.6,
+        "startClock": 983.6666666665675,
+        "endClock": 986.4999999999021,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2392,
+        "endFrame": 2409,
+        "seconds": 0.6,
+        "startClock": 838.6666666666013,
+        "endClock": 840,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 942,
+        "endFrame": 959,
+        "seconds": 0.6,
+        "startClock": 656.9999999999752,
+        "endClock": 659.598611111097,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 62,
+        "endFrame": 79,
+        "seconds": 0.6,
+        "startClock": 550.333333333331,
+        "endClock": 553.1666666666637,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2782,
+        "endFrame": 2799,
+        "seconds": 0.6,
+        "startClock": 883.6666666665885,
+        "endClock": 886.4999999999212,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 232,
+        "endFrame": 249,
+        "seconds": 0.6,
+        "startClock": 568.6666666666603,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 2122,
+        "endFrame": 2139,
+        "seconds": 0.6,
+        "startClock": 793.6666666666115,
+        "endClock": 796.4999999999442,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 492,
+        "endFrame": 509,
+        "seconds": 0.6,
+        "startClock": 591.9999999999885,
+        "endClock": 594.8333333333212,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1042,
+        "endFrame": 1059,
+        "seconds": 0.6,
+        "startClock": 663.6666666666418,
+        "endClock": 666.4999999999745,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1852,
+        "endFrame": 1869,
+        "seconds": 0.6,
+        "startClock": 758.6666666666207,
+        "endClock": 761.4999999999534,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1182,
+        "endFrame": 1199,
+        "seconds": 0.6,
+        "startClock": 676.9999999999736,
+        "endClock": 679.8333333333063,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1962,
+        "endFrame": 1979,
+        "seconds": 0.6,
+        "startClock": 776.9999999999499,
+        "endClock": 779.5986111110824,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 912,
+        "endFrame": 929,
+        "seconds": 0.6,
+        "startClock": 651.9999999999764,
+        "endClock": 654.833333333309,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 1912,
+        "endFrame": 1929,
+        "seconds": 0.6,
+        "startClock": 768.6666666666184,
+        "endClock": 771.4999999999511,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 752,
+        "endFrame": 769,
+        "seconds": 0.6,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 1853,
+        "endFrame": 1869,
+        "seconds": 0.5666666666666667,
+        "startClock": 758.8333333332873,
+        "endClock": 761.4999999999534,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 73,
+        "endFrame": 89,
+        "seconds": 0.5666666666666667,
+        "startClock": 552.1666666666639,
+        "endClock": 554.5986111111093,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1273,
+        "endFrame": 1289,
+        "seconds": 0.5666666666666667,
+        "startClock": 692.1666666666368,
+        "endClock": 694.8333333333029,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 3033,
+        "endFrame": 3049,
+        "seconds": 0.5666666666666667,
+        "startClock": 915.4999999999134,
+        "endClock": 918.1666666665794,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 613,
+        "endFrame": 629,
+        "seconds": 0.5666666666666667,
+        "startClock": 612.1666666666506,
+        "endClock": 614.8333333333167,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 2103,
+        "endFrame": 2119,
+        "seconds": 0.5666666666666667,
+        "startClock": 790.4999999999455,
+        "endClock": 793.1666666666116,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2223,
+        "endFrame": 2239,
+        "seconds": 0.5666666666666667,
+        "startClock": 810.499999999941,
+        "endClock": 813.1666666666071,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 1733,
+        "endFrame": 1749,
+        "seconds": 0.5666666666666667,
+        "startClock": 748.8319444444033,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1173,
+        "endFrame": 1189,
+        "seconds": 0.5666666666666667,
+        "startClock": 675.6124999999817,
+        "endClock": 678.16666666664,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 2023,
+        "endFrame": 2039,
+        "seconds": 0.5666666666666667,
+        "startClock": 780,
+        "endClock": 780.2347222221996,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 2333,
+        "endFrame": 2349,
+        "seconds": 0.5666666666666667,
+        "startClock": 828.8333333332702,
+        "endClock": 831.4999999999362,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 813,
+        "endFrame": 829,
+        "seconds": 0.5666666666666667,
+        "startClock": 635.4999999999801,
+        "endClock": 638.1666666666462,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 483,
+        "endFrame": 499,
+        "seconds": 0.5666666666666667,
+        "startClock": 590.4999999999889,
+        "endClock": 593.1666666666549,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 593,
+        "endFrame": 609,
+        "seconds": 0.5666666666666667,
+        "startClock": 608.833333333318,
+        "endClock": 611.4999999999841,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 743,
+        "endFrame": 759,
+        "seconds": 0.5666666666666667,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2093,
+        "endFrame": 2109,
+        "seconds": 0.5666666666666667,
+        "startClock": 788.8333333332793,
+        "endClock": 791.4999999999453,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 3,
+        "endFrame": 19,
+        "seconds": 0.5666666666666667,
+        "startClock": 540.4999999999999,
+        "endClock": 543.166666666666,
+        "keep": false
+      },
+      {
+        "key": "c:ahq",
+        "startFrame": 63,
+        "endFrame": 79,
+        "seconds": 0.5666666666666667,
+        "startClock": 550.4999999999976,
+        "endClock": 553.1666666666637,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 2783,
+        "endFrame": 2799,
+        "seconds": 0.5666666666666667,
+        "startClock": 883.8333333332552,
+        "endClock": 886.4999999999212,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2983,
+        "endFrame": 2999,
+        "seconds": 0.5666666666666667,
+        "startClock": 907.1666666665819,
+        "endClock": 909.833333333248,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1393,
+        "endFrame": 1409,
+        "seconds": 0.5666666666666667,
+        "startClock": 702.166666666636,
+        "endClock": 704.8333333333021,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2633,
+        "endFrame": 2649,
+        "seconds": 0.5666666666666667,
+        "startClock": 868.8319444443733,
+        "endClock": 870,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1743,
+        "endFrame": 1759,
+        "seconds": 0.5666666666666667,
+        "startClock": 749.8874999999872,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 2433,
+        "endFrame": 2449,
+        "seconds": 0.5666666666666667,
+        "startClock": 840,
+        "endClock": 840,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 1173,
+        "endFrame": 1189,
+        "seconds": 0.5666666666666667,
+        "startClock": 675.6124999999817,
+        "endClock": 678.16666666664,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 1644,
+        "endFrame": 1659,
+        "seconds": 0.5333333333333333,
+        "startClock": 733.9999999999609,
+        "endClock": 736.4999999999603,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 1694,
+        "endFrame": 1709,
+        "seconds": 0.5333333333333333,
+        "startClock": 742.3333333332923,
+        "endClock": 744.8333333332918,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 1814,
+        "endFrame": 1829,
+        "seconds": 0.5333333333333333,
+        "startClock": 752.3333333332888,
+        "endClock": 754.8333333332882,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 2834,
+        "endFrame": 2849,
+        "seconds": 0.5333333333333333,
+        "startClock": 892.3333333332532,
+        "endClock": 894.8333333332527,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 4,
+        "endFrame": 19,
+        "seconds": 0.5333333333333333,
+        "startClock": 540.6666666666665,
+        "endClock": 543.166666666666,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1064,
+        "endFrame": 1079,
+        "seconds": 0.5333333333333333,
+        "startClock": 667.3333333333077,
+        "endClock": 669.8333333333071,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1934,
+        "endFrame": 1949,
+        "seconds": 0.5333333333333333,
+        "startClock": 772.3333333332843,
+        "endClock": 774.8333333332837,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2354,
+        "endFrame": 2369,
+        "seconds": 0.5333333333333333,
+        "startClock": 832.3333333332694,
+        "endClock": 834.8333333332688,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 674,
+        "endFrame": 689,
+        "seconds": 0.5333333333333333,
+        "startClock": 622.333333333315,
+        "endClock": 624.8333333333144,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 3434,
+        "endFrame": 3449,
+        "seconds": 0.5333333333333333,
+        "startClock": 982.3333333332336,
+        "endClock": 984.8333333332347,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 194,
+        "endFrame": 209,
+        "seconds": 0.5333333333333333,
+        "startClock": 562.3333333333284,
+        "endClock": 564.8333333333278,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1274,
+        "endFrame": 1289,
+        "seconds": 0.5333333333333333,
+        "startClock": 692.3333333333035,
+        "endClock": 694.8333333333029,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 2264,
+        "endFrame": 2279,
+        "seconds": 0.5333333333333333,
+        "startClock": 817.3333333332728,
+        "endClock": 819.8333333332722,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 1314,
+        "endFrame": 1329,
+        "seconds": 0.5333333333333333,
+        "startClock": 698.9874999999719,
+        "endClock": 700,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2664,
+        "endFrame": 2679,
+        "seconds": 0.5333333333333333,
+        "startClock": 870,
+        "endClock": 870,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2834,
+        "endFrame": 2849,
+        "seconds": 0.5333333333333333,
+        "startClock": 892.3333333332532,
+        "endClock": 894.8333333332527,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 1134,
+        "endFrame": 1149,
+        "seconds": 0.5333333333333333,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 1274,
+        "endFrame": 1289,
+        "seconds": 0.5333333333333333,
+        "startClock": 692.3333333333035,
+        "endClock": 694.8333333333029,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 644,
+        "endFrame": 659,
+        "seconds": 0.5333333333333333,
+        "startClock": 617.3333333333161,
+        "endClock": 619.8333333333155,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 2354,
+        "endFrame": 2369,
+        "seconds": 0.5333333333333333,
+        "startClock": 832.3333333332694,
+        "endClock": 834.8333333332688,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 2924,
+        "endFrame": 2939,
+        "seconds": 0.5333333333333333,
+        "startClock": 900,
+        "endClock": 900.2347222221862,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 954,
+        "endFrame": 969,
+        "seconds": 0.5333333333333333,
+        "startClock": 658.9874999999773,
+        "endClock": 660,
+        "keep": false
+      },
+      {
+        "key": "c:ahq",
+        "startFrame": 2594,
+        "endFrame": 2609,
+        "seconds": 0.5333333333333333,
+        "startClock": 862.3333333332613,
+        "endClock": 864.8333333332607,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1904,
+        "endFrame": 1919,
+        "seconds": 0.5333333333333333,
+        "startClock": 767.3333333332854,
+        "endClock": 769.8333333332848,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 1694,
+        "endFrame": 1709,
+        "seconds": 0.5333333333333333,
+        "startClock": 742.3333333332923,
+        "endClock": 744.8333333332918,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2594,
+        "endFrame": 2609,
+        "seconds": 0.5333333333333333,
+        "startClock": 862.3333333332613,
+        "endClock": 864.8333333332607,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2844,
+        "endFrame": 2859,
+        "seconds": 0.5333333333333333,
+        "startClock": 893.9999999999195,
+        "endClock": 896.4999999999189,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 3024,
+        "endFrame": 3039,
+        "seconds": 0.5333333333333333,
+        "startClock": 913.9999999999137,
+        "endClock": 916.4999999999131,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 64,
+        "endFrame": 79,
+        "seconds": 0.5333333333333333,
+        "startClock": 550.6666666666642,
+        "endClock": 553.1666666666637,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1274,
+        "endFrame": 1289,
+        "seconds": 0.5333333333333333,
+        "startClock": 692.3333333333035,
+        "endClock": 694.8333333333029,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1694,
+        "endFrame": 1709,
+        "seconds": 0.5333333333333333,
+        "startClock": 742.3333333332923,
+        "endClock": 744.8333333332918,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1734,
+        "endFrame": 1749,
+        "seconds": 0.5333333333333333,
+        "startClock": 748.9874999999618,
+        "endClock": 750,
+        "keep": false
+      },
+      {
+        "key": "c:prz",
+        "startFrame": 34,
+        "endFrame": 49,
+        "seconds": 0.5333333333333333,
+        "startClock": 545.6666666666654,
+        "endClock": 548.1666666666648,
+        "keep": false
+      },
+      {
+        "key": "c:prz",
+        "startFrame": 1904,
+        "endFrame": 1919,
+        "seconds": 0.5333333333333333,
+        "startClock": 767.3333333332854,
+        "endClock": 769.8333333332848,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 914,
+        "endFrame": 929,
+        "seconds": 0.5333333333333333,
+        "startClock": 652.3333333333096,
+        "endClock": 654.833333333309,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1064,
+        "endFrame": 1079,
+        "seconds": 0.5333333333333333,
+        "startClock": 667.3333333333077,
+        "endClock": 669.8333333333071,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1274,
+        "endFrame": 1289,
+        "seconds": 0.5333333333333333,
+        "startClock": 692.3333333333035,
+        "endClock": 694.8333333333029,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 2574,
+        "endFrame": 2589,
+        "seconds": 0.5333333333333333,
+        "startClock": 858.9999999999287,
+        "endClock": 861.4999999999281,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 194,
+        "endFrame": 209,
+        "seconds": 0.5333333333333333,
+        "startClock": 562.3333333333284,
+        "endClock": 564.8333333333278,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 344,
+        "endFrame": 359,
+        "seconds": 0.5333333333333333,
+        "startClock": 577.3333333333251,
+        "endClock": 579.8333333333245,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 914,
+        "endFrame": 929,
+        "seconds": 0.5333333333333333,
+        "startClock": 652.3333333333096,
+        "endClock": 654.833333333309,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 934,
+        "endFrame": 949,
+        "seconds": 0.5333333333333333,
+        "startClock": 655.6666666666422,
+        "endClock": 658.1666666666416,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1064,
+        "endFrame": 1079,
+        "seconds": 0.5333333333333333,
+        "startClock": 667.3333333333077,
+        "endClock": 669.8333333333071,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1214,
+        "endFrame": 1229,
+        "seconds": 0.5333333333333333,
+        "startClock": 682.3333333333057,
+        "endClock": 684.8333333333052,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1454,
+        "endFrame": 1469,
+        "seconds": 0.5333333333333333,
+        "startClock": 712.3333333333004,
+        "endClock": 714.8333333332998,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1794,
+        "endFrame": 1809,
+        "seconds": 0.5333333333333333,
+        "startClock": 750.0124999999956,
+        "endClock": 751.4999999999557,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 664,
+        "endFrame": 679,
+        "seconds": 0.5333333333333333,
+        "startClock": 620.6666666666487,
+        "endClock": 623.1666666666481,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 1065,
+        "endFrame": 1079,
+        "seconds": 0.5,
+        "startClock": 667.4999999999743,
+        "endClock": 669.8333333333071,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 3115,
+        "endFrame": 3129,
+        "seconds": 0.5,
+        "startClock": 929.1666666665769,
+        "endClock": 931.4999999999097,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 5,
+        "endFrame": 19,
+        "seconds": 0.5,
+        "startClock": 540.8333333333331,
+        "endClock": 543.166666666666,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2155,
+        "endFrame": 2169,
+        "seconds": 0.5,
+        "startClock": 799.1666666666102,
+        "endClock": 801.499999999943,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2335,
+        "endFrame": 2349,
+        "seconds": 0.5,
+        "startClock": 829.1666666666034,
+        "endClock": 831.4999999999362,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 755,
+        "endFrame": 769,
+        "seconds": 0.5,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 485,
+        "endFrame": 499,
+        "seconds": 0.5,
+        "startClock": 590.8333333333221,
+        "endClock": 593.1666666666549,
+        "keep": false
+      },
+      {
+        "key": "c:dhautpoul",
+        "startFrame": 2560,
+        "endFrame": 2574,
+        "seconds": 0.5,
+        "startClock": 856.6666666665959,
+        "endClock": 858.9999999999287,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1495,
+        "endFrame": 1509,
+        "seconds": 0.5,
+        "startClock": 719.1319444444157,
+        "endClock": 720,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 85,
+        "endFrame": 99,
+        "seconds": 0.5,
+        "startClock": 554.1319444444418,
+        "endClock": 555,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 635,
+        "endFrame": 649,
+        "seconds": 0.5,
+        "startClock": 615.8333333333164,
+        "endClock": 618.1666666666492,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 945,
+        "endFrame": 959,
+        "seconds": 0.5,
+        "startClock": 657.4999999999751,
+        "endClock": 659.598611111097,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2115,
+        "endFrame": 2129,
+        "seconds": 0.5,
+        "startClock": 792.4999999999451,
+        "endClock": 794.8333333332779,
+        "keep": false
+      },
+      {
+        "key": "c:guard_cav",
+        "startFrame": 215,
+        "endFrame": 229,
+        "seconds": 0.5,
+        "startClock": 565.8333333333276,
+        "endClock": 568.1666666666604,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 3295,
+        "endFrame": 3309,
+        "seconds": 0.5,
+        "startClock": 959.1666666665701,
+        "endClock": 961.4999999999029,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 765,
+        "endFrame": 779,
+        "seconds": 0.5,
+        "startClock": 630,
+        "endClock": 630.234722222214,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1105,
+        "endFrame": 1119,
+        "seconds": 0.5,
+        "startClock": 674.131944444422,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1125,
+        "endFrame": 1139,
+        "seconds": 0.5,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 1895,
+        "endFrame": 1909,
+        "seconds": 0.5,
+        "startClock": 765.8333333332857,
+        "endClock": 768.1666666666185,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 15,
+        "endFrame": 29,
+        "seconds": 0.5,
+        "startClock": 542.4999999999994,
+        "endClock": 544.8333333333322,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1985,
+        "endFrame": 1999,
+        "seconds": 0.5,
+        "startClock": 779.9652777777693,
+        "endClock": 780,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 2035,
+        "endFrame": 2049,
+        "seconds": 0.5,
+        "startClock": 780.0347222222135,
+        "endClock": 781.4999999999476,
+        "keep": false
+      },
+      {
+        "key": "c:prz",
+        "startFrame": 1785,
+        "endFrame": 1799,
+        "seconds": 0.5,
+        "startClock": 750,
+        "endClock": 750.2347222222031,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 2505,
+        "endFrame": 2519,
+        "seconds": 0.5,
+        "startClock": 847.4999999999313,
+        "endClock": 849.8333333332641,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 1225,
+        "endFrame": 1239,
+        "seconds": 0.5,
+        "startClock": 684.1666666666387,
+        "endClock": 686.4999999999715,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 46,
+        "endFrame": 59,
+        "seconds": 0.4666666666666667,
+        "startClock": 547.6666666666649,
+        "endClock": 549.8333333333311,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2206,
+        "endFrame": 2219,
+        "seconds": 0.4666666666666667,
+        "startClock": 807.6666666666083,
+        "endClock": 809.8333333332745,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 2276,
+        "endFrame": 2289,
+        "seconds": 0.4666666666666667,
+        "startClock": 819.3333333332723,
+        "endClock": 821.4999999999385,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 2346,
+        "endFrame": 2359,
+        "seconds": 0.4666666666666667,
+        "startClock": 830.9999999999363,
+        "endClock": 833.1666666666025,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1096,
+        "endFrame": 1109,
+        "seconds": 0.4666666666666667,
+        "startClock": 672.6666666666398,
+        "endClock": 674.5986111110958,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1416,
+        "endFrame": 1429,
+        "seconds": 0.4666666666666667,
+        "startClock": 705.9999999999685,
+        "endClock": 708.1666666666347,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 906,
+        "endFrame": 919,
+        "seconds": 0.4666666666666667,
+        "startClock": 650.9999999999766,
+        "endClock": 653.1666666666428,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 56,
+        "endFrame": 69,
+        "seconds": 0.4666666666666667,
+        "startClock": 549.3333333333312,
+        "endClock": 551.4999999999974,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 176,
+        "endFrame": 189,
+        "seconds": 0.4666666666666667,
+        "startClock": 559.333333333329,
+        "endClock": 561.4999999999952,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1056,
+        "endFrame": 1069,
+        "seconds": 0.4666666666666667,
+        "startClock": 665.9999999999746,
+        "endClock": 668.1666666666408,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 3416,
+        "endFrame": 3429,
+        "seconds": 0.4666666666666667,
+        "startClock": 979.3333333332322,
+        "endClock": 981.4999999998998,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 776,
+        "endFrame": 789,
+        "seconds": 0.4666666666666667,
+        "startClock": 630.0680555555512,
+        "endClock": 631.499999999981,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 926,
+        "endFrame": 939,
+        "seconds": 0.4666666666666667,
+        "startClock": 654.3333333333092,
+        "endClock": 656.4999999999753,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2366,
+        "endFrame": 2379,
+        "seconds": 0.4666666666666667,
+        "startClock": 834.3333333332689,
+        "endClock": 836.4999999999351,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 3456,
+        "endFrame": 3469,
+        "seconds": 0.4666666666666667,
+        "startClock": 985.9999999999019,
+        "endClock": 988.1666666665695,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 1436,
+        "endFrame": 1449,
+        "seconds": 0.4666666666666667,
+        "startClock": 709.3333333333011,
+        "endClock": 711.4999999999673,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 2586,
+        "endFrame": 2599,
+        "seconds": 0.4666666666666667,
+        "startClock": 860.9999999999283,
+        "endClock": 863.1666666665944,
+        "keep": false
+      },
+      {
+        "key": "c:prz",
+        "startFrame": 1876,
+        "endFrame": 1889,
+        "seconds": 0.4666666666666667,
+        "startClock": 762.6666666666198,
+        "endClock": 764.833333333286,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1006,
+        "endFrame": 1019,
+        "seconds": 0.4666666666666667,
+        "startClock": 660,
+        "endClock": 660.2347222222116,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 2686,
+        "endFrame": 2699,
+        "seconds": 0.4666666666666667,
+        "startClock": 870,
+        "endClock": 870.2347222221897,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 6,
+        "endFrame": 19,
+        "seconds": 0.4666666666666667,
+        "startClock": 540.9999999999998,
+        "endClock": 543.166666666666,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1036,
+        "endFrame": 1049,
+        "seconds": 0.4666666666666667,
+        "startClock": 662.6666666666421,
+        "endClock": 664.8333333333082,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1286,
+        "endFrame": 1299,
+        "seconds": 0.4666666666666667,
+        "startClock": 694.333333333303,
+        "endClock": 696.4999999999692,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 2336,
+        "endFrame": 2349,
+        "seconds": 0.4666666666666667,
+        "startClock": 829.33333333327,
+        "endClock": 831.4999999999362,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 636,
+        "endFrame": 649,
+        "seconds": 0.4666666666666667,
+        "startClock": 615.9999999999831,
+        "endClock": 618.1666666666492,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 2166,
+        "endFrame": 2179,
+        "seconds": 0.4666666666666667,
+        "startClock": 800.9999999999432,
+        "endClock": 803.1666666666093,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 2446,
+        "endFrame": 2459,
+        "seconds": 0.4666666666666667,
+        "startClock": 840,
+        "endClock": 840.2347222221932,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 1677,
+        "endFrame": 1689,
+        "seconds": 0.43333333333333335,
+        "startClock": 739.4999999999596,
+        "endClock": 741.4999999999592,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 2087,
+        "endFrame": 2099,
+        "seconds": 0.43333333333333335,
+        "startClock": 787.8333333332795,
+        "endClock": 789.833333333279,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2547,
+        "endFrame": 2559,
+        "seconds": 0.43333333333333335,
+        "startClock": 854.4999999999297,
+        "endClock": 856.4999999999293,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 3367,
+        "endFrame": 3379,
+        "seconds": 0.43333333333333335,
+        "startClock": 971.1666666665674,
+        "endClock": 973.1666666665669,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2367,
+        "endFrame": 2379,
+        "seconds": 0.43333333333333335,
+        "startClock": 834.4999999999355,
+        "endClock": 836.4999999999351,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2867,
+        "endFrame": 2879,
+        "seconds": 0.43333333333333335,
+        "startClock": 897.833333333252,
+        "endClock": 899.5986111110648,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 857,
+        "endFrame": 869,
+        "seconds": 0.43333333333333335,
+        "startClock": 642.8333333333118,
+        "endClock": 644.8333333333113,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 2207,
+        "endFrame": 2219,
+        "seconds": 0.43333333333333335,
+        "startClock": 807.8333333332749,
+        "endClock": 809.8333333332745,
+        "keep": false
+      },
+      {
+        "key": "c:kellermann",
+        "startFrame": 747,
+        "endFrame": 759,
+        "seconds": 0.43333333333333335,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 747,
+        "endFrame": 759,
+        "seconds": 0.43333333333333335,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 897,
+        "endFrame": 909,
+        "seconds": 0.43333333333333335,
+        "startClock": 649.4999999999769,
+        "endClock": 651.4999999999765,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 2087,
+        "endFrame": 2099,
+        "seconds": 0.43333333333333335,
+        "startClock": 787.8333333332795,
+        "endClock": 789.833333333279,
+        "keep": false
+      },
+      {
+        "key": "c:walther",
+        "startFrame": 1037,
+        "endFrame": 1049,
+        "seconds": 0.43333333333333335,
+        "startClock": 662.8333333333087,
+        "endClock": 664.8333333333082,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 267,
+        "endFrame": 279,
+        "seconds": 0.43333333333333335,
+        "startClock": 570,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1637,
+        "endFrame": 1649,
+        "seconds": 0.43333333333333335,
+        "startClock": 732.8333333332945,
+        "endClock": 734.833333333294,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1877,
+        "endFrame": 1889,
+        "seconds": 0.43333333333333335,
+        "startClock": 762.8333333332864,
+        "endClock": 764.833333333286,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 667,
+        "endFrame": 679,
+        "seconds": 0.43333333333333335,
+        "startClock": 621.1666666666486,
+        "endClock": 623.1666666666481,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 2077,
+        "endFrame": 2089,
+        "seconds": 0.43333333333333335,
+        "startClock": 786.1666666666132,
+        "endClock": 788.1666666666127,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2637,
+        "endFrame": 2649,
+        "seconds": 0.43333333333333335,
+        "startClock": 869.3874999999484,
+        "endClock": 870,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1467,
+        "endFrame": 1479,
+        "seconds": 0.43333333333333335,
+        "startClock": 714.4999999999666,
+        "endClock": 716.4999999999661,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2817,
+        "endFrame": 2829,
+        "seconds": 0.43333333333333335,
+        "startClock": 889.4999999999205,
+        "endClock": 891.4999999999201,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 407,
+        "endFrame": 419,
+        "seconds": 0.43333333333333335,
+        "startClock": 585,
+        "endClock": 585,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 2477,
+        "endFrame": 2489,
+        "seconds": 0.43333333333333335,
+        "startClock": 842.8333333332657,
+        "endClock": 844.8333333332653,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 237,
+        "endFrame": 249,
+        "seconds": 0.43333333333333335,
+        "startClock": 569.3874999999955,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 687,
+        "endFrame": 699,
+        "seconds": 0.43333333333333335,
+        "startClock": 624.4999999999811,
+        "endClock": 626.4999999999807,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 1717,
+        "endFrame": 1729,
+        "seconds": 0.43333333333333335,
+        "startClock": 746.1666666666248,
+        "endClock": 748.1666666666243,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 278,
+        "endFrame": 289,
+        "seconds": 0.4,
+        "startClock": 570,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 1308,
+        "endFrame": 1319,
+        "seconds": 0.4,
+        "startClock": 697.9999999999688,
+        "endClock": 699.5986111110934,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 2678,
+        "endFrame": 2689,
+        "seconds": 0.4,
+        "startClock": 870,
+        "endClock": 870,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 28,
+        "endFrame": 39,
+        "seconds": 0.4,
+        "startClock": 544.6666666666656,
+        "endClock": 546.4999999999985,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 58,
+        "endFrame": 69,
+        "seconds": 0.4,
+        "startClock": 549.6666666666645,
+        "endClock": 551.4999999999974,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 928,
+        "endFrame": 939,
+        "seconds": 0.4,
+        "startClock": 654.6666666666424,
+        "endClock": 656.4999999999753,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 2438,
+        "endFrame": 2449,
+        "seconds": 0.4,
+        "startClock": 840,
+        "endClock": 840,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 2678,
+        "endFrame": 2689,
+        "seconds": 0.4,
+        "startClock": 870,
+        "endClock": 870,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 168,
+        "endFrame": 179,
+        "seconds": 0.4,
+        "startClock": 557.999999999996,
+        "endClock": 559.8333333333289,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 2298,
+        "endFrame": 2309,
+        "seconds": 0.4,
+        "startClock": 822.9999999999382,
+        "endClock": 824.8333333332711,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 278,
+        "endFrame": 289,
+        "seconds": 0.4,
+        "startClock": 570,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 788,
+        "endFrame": 799,
+        "seconds": 0.4,
+        "startClock": 631.3333333333144,
+        "endClock": 633.1666666666473,
+        "keep": false
+      },
+      {
+        "key": "c:rivaud",
+        "startFrame": 2838,
+        "endFrame": 2849,
+        "seconds": 0.4,
+        "startClock": 892.9999999999197,
+        "endClock": 894.8333333332527,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 1148,
+        "endFrame": 1159,
+        "seconds": 0.4,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 258,
+        "endFrame": 269,
+        "seconds": 0.4,
+        "startClock": 570,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:guard_inf",
+        "startFrame": 728,
+        "endFrame": 739,
+        "seconds": 0.4,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2568,
+        "endFrame": 2579,
+        "seconds": 0.4,
+        "startClock": 857.999999999929,
+        "endClock": 859.8333333332619,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 788,
+        "endFrame": 799,
+        "seconds": 0.4,
+        "startClock": 631.3333333333144,
+        "endClock": 633.1666666666473,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 868,
+        "endFrame": 879,
+        "seconds": 0.4,
+        "startClock": 644.6666666666447,
+        "endClock": 646.4999999999776,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1145,
+        "endFrame": 1156,
+        "seconds": 0.4,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2678,
+        "endFrame": 2689,
+        "seconds": 0.4,
+        "startClock": 870,
+        "endClock": 870,
+        "keep": false
+      },
+      {
+        "key": "c:lang",
+        "startFrame": 278,
+        "endFrame": 289,
+        "seconds": 0.4,
+        "startClock": 570,
+        "endClock": 570,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 748,
+        "endFrame": 759,
+        "seconds": 0.4,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 758,
+        "endFrame": 769,
+        "seconds": 0.4,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 1148,
+        "endFrame": 1159,
+        "seconds": 0.4,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 678,
+        "endFrame": 689,
+        "seconds": 0.4,
+        "startClock": 622.9999999999815,
+        "endClock": 624.8333333333144,
+        "keep": false
+      },
+      {
+        "key": "c:rg_inf",
+        "startFrame": 2188,
+        "endFrame": 2199,
+        "seconds": 0.4,
+        "startClock": 804.666666666609,
+        "endClock": 806.4999999999419,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 359,
+        "endFrame": 369,
+        "seconds": 0.36666666666666664,
+        "startClock": 579.8333333333245,
+        "endClock": 581.4999999999908,
+        "keep": false
+      },
+      {
+        "key": "c:gqg",
+        "startFrame": 1719,
+        "endFrame": 1729,
+        "seconds": 0.36666666666666664,
+        "startClock": 746.499999999958,
+        "endClock": 748.1666666666243,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 3059,
+        "endFrame": 3069,
+        "seconds": 0.36666666666666664,
+        "startClock": 919.8333333332457,
+        "endClock": 921.499999999912,
+        "keep": false
+      },
+      {
+        "key": "c:sthilaire",
+        "startFrame": 3429,
+        "endFrame": 3439,
+        "seconds": 0.36666666666666664,
+        "startClock": 981.4999999998998,
+        "endClock": 983.1666666665673,
+        "keep": false
+      },
+      {
+        "key": "c:vandamme",
+        "startFrame": 2839,
+        "endFrame": 2849,
+        "seconds": 0.36666666666666664,
+        "startClock": 893.1666666665864,
+        "endClock": 894.8333333332527,
+        "keep": false
+      },
+      {
+        "key": "c:legrand",
+        "startFrame": 2949,
+        "endFrame": 2959,
+        "seconds": 0.36666666666666664,
+        "startClock": 901.4999999999166,
+        "endClock": 903.1666666665828,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 939,
+        "endFrame": 949,
+        "seconds": 0.36666666666666664,
+        "startClock": 656.4999999999753,
+        "endClock": 658.1666666666416,
+        "keep": false
+      },
+      {
+        "key": "c:bourcier",
+        "startFrame": 309,
+        "endFrame": 319,
+        "seconds": 0.36666666666666664,
+        "startClock": 571.4999999999931,
+        "endClock": 573.1666666666594,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 29,
+        "endFrame": 39,
+        "seconds": 0.36666666666666664,
+        "startClock": 544.8333333333322,
+        "endClock": 546.4999999999985,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 379,
+        "endFrame": 389,
+        "seconds": 0.36666666666666664,
+        "startClock": 583.1666666666571,
+        "endClock": 584.5986111111056,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 759,
+        "endFrame": 769,
+        "seconds": 0.36666666666666664,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:suchet",
+        "startFrame": 2229,
+        "endFrame": 2239,
+        "seconds": 0.36666666666666664,
+        "startClock": 811.4999999999408,
+        "endClock": 813.1666666666071,
+        "keep": false
+      },
+      {
+        "key": "c:nansouty",
+        "startFrame": 2039,
+        "endFrame": 2049,
+        "seconds": 0.36666666666666664,
+        "startClock": 780.2347222221996,
+        "endClock": 781.4999999999476,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 689,
+        "endFrame": 699,
+        "seconds": 0.36666666666666664,
+        "startClock": 624.8333333333144,
+        "endClock": 626.4999999999807,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 939,
+        "endFrame": 949,
+        "seconds": 0.36666666666666664,
+        "startClock": 656.4999999999753,
+        "endClock": 658.1666666666416,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 1029,
+        "endFrame": 1039,
+        "seconds": 0.36666666666666664,
+        "startClock": 661.4999999999757,
+        "endClock": 663.166666666642,
+        "keep": false
+      },
+      {
+        "key": "c:c_gren",
+        "startFrame": 2269,
+        "endFrame": 2279,
+        "seconds": 0.36666666666666664,
+        "startClock": 818.1666666666059,
+        "endClock": 819.8333333332722,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 819,
+        "endFrame": 829,
+        "seconds": 0.36666666666666664,
+        "startClock": 636.4999999999799,
+        "endClock": 638.1666666666462,
+        "keep": false
+      },
+      {
+        "key": "c:kienmayer",
+        "startFrame": 1939,
+        "endFrame": 1949,
+        "seconds": 0.36666666666666664,
+        "startClock": 773.1666666666174,
+        "endClock": 774.8333333332837,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 2699,
+        "endFrame": 2709,
+        "seconds": 0.36666666666666664,
+        "startClock": 870.2347222221897,
+        "endClock": 871.4999999999246,
+        "keep": false
+      },
+      {
+        "key": "c:prz",
+        "startFrame": 209,
+        "endFrame": 219,
+        "seconds": 0.36666666666666664,
+        "startClock": 564.8333333333278,
+        "endClock": 566.4999999999941,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2809,
+        "endFrame": 2819,
+        "seconds": 0.36666666666666664,
+        "startClock": 888.1666666665875,
+        "endClock": 889.8333333332538,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 209,
+        "endFrame": 219,
+        "seconds": 0.36666666666666664,
+        "startClock": 564.8333333333278,
+        "endClock": 566.4999999999941,
+        "keep": false
+      },
+      {
+        "key": "c:kollo",
+        "startFrame": 1099,
+        "endFrame": 1109,
+        "seconds": 0.36666666666666664,
+        "startClock": 673.1666666666397,
+        "endClock": 674.5986111110958,
+        "keep": false
+      },
+      {
+        "key": "c:lich",
+        "startFrame": 729,
+        "endFrame": 739,
+        "seconds": 0.36666666666666664,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 1280,
+        "endFrame": 1289,
+        "seconds": 0.3333333333333333,
+        "startClock": 693.3333333333032,
+        "endClock": 694.8333333333029,
+        "keep": false
+      },
+      {
+        "key": "c:friant",
+        "startFrame": 1122,
+        "endFrame": 1129,
+        "seconds": 0.26666666666666666,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:ahq",
+        "startFrame": 2612,
+        "endFrame": 2619,
+        "seconds": 0.26666666666666666,
+        "startClock": 865.3333333332606,
+        "endClock": 866.499999999927,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 739,
+        "endFrame": 746,
+        "seconds": 0.26666666666666666,
+        "startClock": 630,
+        "endClock": 630,
+        "keep": false
+      },
+      {
+        "key": "c:drouet",
+        "startFrame": 2873,
+        "endFrame": 2879,
+        "seconds": 0.23333333333333334,
+        "startClock": 898.8319444443656,
+        "endClock": 899.5986111110648,
+        "keep": false
+      },
+      {
+        "key": "c:caffarelli",
+        "startFrame": 2318,
+        "endFrame": 2322,
+        "seconds": 0.16666666666666666,
+        "startClock": 826.3333333332707,
+        "endClock": 826.9999999999372,
+        "keep": false
+      },
+      {
+        "key": "c:dok",
+        "startFrame": 1141,
+        "endFrame": 1145,
+        "seconds": 0.16666666666666666,
+        "startClock": 675,
+        "endClock": 675,
+        "keep": false
+      },
+      {
+        "key": "c:bag",
+        "startFrame": 2187,
+        "endFrame": 2189,
+        "seconds": 0.1,
+        "startClock": 804.4999999999424,
+        "endClock": 804.8333333332756,
+        "keep": false
+      },
+      {
+        "key": "c:milo",
+        "startFrame": 2825,
+        "endFrame": 2826,
+        "seconds": 0.06666666666666667,
+        "startClock": 890.8333333332536,
+        "endClock": 890.9999999999202,
+        "keep": false
+      }
+    ]
+  },
+  "screens": [
+    {
+      "name": "ice-low-current",
+      "spec": {
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 900,
+        "presentation": "watch",
+        "mode": "terrain",
+        "aim": {
+          "map": [
+            262,
+            428
+          ],
+          "dir": [
+            0.25,
+            0.22,
+            0.94
+          ],
+          "r": 46
+        },
+        "note": "The Satschan mere and the Augezd causeway from the north, low, 15:00.",
+        "name": "ice-low"
+      },
+      "state": {
+        "clock": 900,
+        "presentation": "watch",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -27.468243946073088,
+            0.21766477310041976,
+            132.3594027627652
+          ],
+          "tgt": [
+            -39,
+            -5.01440004876837,
+            89
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -27.468243946073088,
+            0.21766477310041976,
+            132.3594027627652
+          ],
+          "tgt": [
+            -39,
+            -5.01440004876837,
+            89
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": false
+        },
+        "groundLayout": true
+      }
+    },
+    {
+      "name": "infantry-current",
+      "spec": {
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 545,
+        "presentation": "watch",
+        "mode": "terrain",
+        "aim": {
+          "map": "sthilaire",
+          "dir": [
+            -0.62,
+            0.34,
+            0.7
+          ],
+          "r": 24
+        },
+        "note": "Saint-Hilaire's division (French line infantry, 1re Div. IV Corps) on the plateau at 09:20, close.",
+        "name": "inf-close"
+      },
+      "state": {
+        "clock": 545,
+        "presentation": "watch",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -61.099795076325805,
+            10.626710806845036,
+            20.52713616702633
+          ],
+          "tgt": [
+            -46.14483238526873,
+            0.31121204410143205,
+            3.6425008706715687
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -61.099795076325805,
+            10.626710806845036,
+            20.52713616702633
+          ],
+          "tgt": [
+            -46.14483238526873,
+            0.31121204410143205,
+            3.6425008706715687
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": false
+        },
+        "groundLayout": true
+      }
+    },
+    {
+      "name": "artillery-moving-current",
+      "spec": {
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 850,
+        "presentation": "watch",
+        "mode": "terrain",
+        "aim": {
+          "map": "heightguns",
+          "dir": [
+            -0.7,
+            0.34,
+            0.62
+          ],
+          "r": 20
+        },
+        "note": "The same guns hitched up and on the move toward the height above Augezd (the leg 13:45-14:30), 14:10, close.",
+        "name": "bat-limbered"
+      },
+      "state": {
+        "clock": 850,
+        "presentation": "watch",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -42.959418302517854,
+            6.7733331219303,
+            49.51802446476977
+          ],
+          "tgt": [
+            -28.888888888888886,
+            -0.9302398441029232,
+            37.05555555555554
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -42.959418302517854,
+            6.7733331219303,
+            49.51802446476977
+          ],
+          "tgt": [
+            -28.888888888888886,
+            -0.9302398441029232,
+            37.05555555555554
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": false
+        },
+        "groundLayout": true
+      }
+    },
+    {
+      "name": "castle-current",
+      "spec": {
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 500,
+        "presentation": "watch",
+        "mode": "terrain",
+        "aim": {
+          "map": [
+            212.9,
+            344.3
+          ],
+          "dir": [
+            -0.62,
+            0.34,
+            0.7
+          ],
+          "r": 28
+        },
+        "note": "Sokolnitz castle and the village, 08:20, close.",
+        "name": "village-sokolnitz"
+      },
+      "state": {
+        "clock": 500,
+        "presentation": "watch",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -80.99745647289993,
+            6.302205911574896,
+            66.84874117908056
+          ],
+          "tgt": [
+            -63.55,
+            -1.6403482602150161,
+            47.150000000000006
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -80.99745647289993,
+            6.302205911574896,
+            66.84874117908056
+          ],
+          "tgt": [
+            -63.55,
+            -1.6403482602150161,
+            47.150000000000006
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": false
+        },
+        "groundLayout": true
+      }
+    },
+    {
+      "name": "garden-current",
+      "spec": {
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 720,
+        "presentation": "watch",
+        "mode": "terrain",
+        "aim": {
+          "map": [
+            496,
+            125
+          ],
+          "dir": [
+            -0.4,
+            0.8,
+            0.5
+          ],
+          "r": 65
+        },
+        "note": "Both meres from above the defile, 15:00.",
+        "name": "ice-high"
+      },
+      "state": {
+        "clock": 720,
+        "presentation": "watch",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            52.62659810333814,
+            52.446702273446036,
+            -30.783247629172674
+          ],
+          "tgt": [
+            78,
+            -0.31155924882541175,
+            -62.5
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            52.62659810333814,
+            52.446702273446036,
+            -30.783247629172674
+          ],
+          "tgt": [
+            78,
+            -0.31155924882541175,
+            -62.5
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": false
+        },
+        "groundLayout": true
+      }
+    }
+  ],
+  "memory": [
+    {
+      "cycle": 0,
+      "geometry": 637,
+      "textures": 37,
+      "programs": 35,
+      "dom": 1410,
+      "heap": 109000000
+    },
+    {
+      "cycle": 1,
+      "geometry": 637,
+      "textures": 37,
+      "programs": 35,
+      "dom": 1410,
+      "heap": 109000000
+    },
+    {
+      "cycle": 2,
+      "geometry": 637,
+      "textures": 37,
+      "programs": 35,
+      "dom": 1410,
+      "heap": 109000000
+    },
+    {
+      "cycle": 3,
+      "geometry": 637,
+      "textures": 37,
+      "programs": 35,
+      "dom": 1410,
+      "heap": 109000000
+    }
+  ],
+  "motion": {
+    "frames": 12,
+    "fps": 10,
+    "startClock": 545,
+    "endClock": 551.433333333328,
+    "driver": "30 Hz app loop, screenshot every third rendered frame",
+    "viewport": [
+      1600,
+      900
+    ]
+  }
+}

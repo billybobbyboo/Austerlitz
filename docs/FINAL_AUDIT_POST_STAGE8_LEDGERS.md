@@ -641,7 +641,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
-| [CL-MAP-01](#cl-map-01) | S2 | P2 | confirmed defect | 1-3 days (code change, re-measurement, owner decision) | Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28 s (about 100 clock minutes) at a stretch; the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window |
+| [CL-MAP-01](#cl-map-01) | S2 | P2 | confirmed defect | 1-3 days (code change, re-measurement, owner decision) | Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28-37 s at a stretch (36.6 s for the French Guard cavalry, about 11:02-13:15, in ChatGPT's continuous run); the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window |
 | [CL-TEST-02](#cl-test-02) | S3 | P2 | confirmed defect | 0.5-1 day | No check can see long gaps: the motion benchmark's longest-hidden measure saturates at its own 121-frame window, and the one check that plays the whole day counts drops, not how long a formation stays hidden |
 | [CL-MAP-02](#cl-map-02) | S3 | P3 | probable problem | 0.5-2 days | The formations a live event names are hidden while their event's label is drawn (the Guard cavalry clash 0-16%; Miloradovich at the face-about 0-40%) |
 | [CL-MAP-07](#cl-map-07) | S3 | P3 | confirmed defect | 0.5-2 days | Phone in Landscape with counters: half the formation-frames drawn; Liechtenstein's Fifth Column never drawn from 09:00 to 12:00 |
@@ -650,7 +650,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-MAP-14](#cl-map-14) | S4 | P4 | accepted compromise | 0.5 day | At rest after Play the kept places leave up to three formations hidden that a fresh view would draw, until the next discontinuity |
 | [CL-MAP-17](#cl-map-17) | S4 | P4 | accepted compromise | 0.5 day | The Landscape's formation names blink during Play: 10.6% of in-view frames hidden in 0.6 s episodes, about one per name every 6 s |
 
-**WP-08** (14 findings: S2 1, S3 9, S4 4)
+**WP-08** (15 findings: S2 1, S3 10, S4 4)
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
@@ -664,6 +664,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-MAP-11](#cl-map-11) | S3 | P3 | probable problem | 1-3 days | The Plans view mixes about 40 serif labels of the plans and the current phase, and at 1280 px drops plan labels |
 | [CL-MAP-13](#cl-map-13) | S3 | P3 | probable problem | 0.5-1 day | Between 720 and 1079 px a selection leaves a 209 px strip of map between the dispatch card and the dossier |
 | [CL-MAP-15](#cl-map-15) | S3 | P3 | accepted compromise | 2-5 days | The low views' wall of formation names remains (decision 255 left it open) |
+| [CL-VIS-11](#cl-vis-11) | S3 | P3 | probable problem | 1-3 days | Landmark roles are not communicated at symbolic scale: the Sokolnitz castle reads smaller than the farmhouses and the III Column's figures hide it entirely at 10:00; the Austerlitz garden is not discernible at the Overview and has no paper-map sign |
 | [CL-MAP-16](#cl-map-16) | S4 | P3 | probable problem | 0.5 day | The default event glyph reads as a north arrow on the paper map, and the 'capture' glyph as the objective marker |
 | [CL-MAP-18](#cl-map-18) | S4 | P4 | accepted compromise | none separately | The Littawa's name is dropped in the Plans view (section 22.4), and at 1280 px too |
 | [CL-MAP-19](#cl-map-19) | S4 | P4 | accepted compromise | 1-2 days | Paper-map arrows grow without a cap when zoomed in |
@@ -689,7 +690,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-UX-21](#cl-ux-21) | S4 | P4 | optional improvement |  | The claims index counts every claimed kind but not the unchecked: 481 of 704 statements are 'Every other statement', with no number |
 | [CL-UX-22](#cl-ux-22) | S4 | P4 | untested area | hours | Safari's handling of the embedded faces' metric overrides is untested, and every italic is synthesized (no italic face is embedded) |
 
-**WP-10** (9 findings: S2 1, S3 3, S4 5)
+**WP-10** (10 findings: S2 1, S3 4, S4 5)
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
@@ -697,6 +698,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-VIS-02](#cl-vis-02) | S3 | P3 | confirmed defect | 0.5-1 day | Trees and bushes stand on the frozen Satschan mere |
 | [CL-VIS-03](#cl-vis-03) | S3 | P3 | probable problem | 0.5-2 days | Blocks face along slow drifts and keep stale facings, so some face away from an adjacent enemy |
 | [CL-VIS-04](#cl-vis-04) | S3 | P3 | confirmed defect | 1-3 days | Formation blocks interpenetrate buildings and each other |
+| [CL-VIS-10](#cl-vis-10) | S3 | P3 | accepted compromise | 2-5 days for a measured near-only prototype; none if kept | The original every-foot-on-the-ground criterion remains unmet: at 4x a few dozen of 39,136 sampled poses per kit are off their resting seat (worst 0.8 px simple, 4.8 px rich), and at 10.33x the rich kit's worst reaches about 12 px for men and 10 px for horses |
 | [CL-VIS-05](#cl-vis-05) | S4 | P4 | probable problem | 0.25-0.5 day | Streams saturate to white in grazing and low-sun views |
 | [CL-VIS-06](#cl-vis-06) | S4 | P4 | unresolved historical question | 0.25-1 day | Omitted chapels invite a misreading: Bosenitz's church appears to crown the Santon; St Anthony's name stands beside Augezd's church |
 | [CL-VIS-07](#cl-vis-07) | S4 | P4 | optional improvement | 0.5 day | Headquarters drawn as a pitched camp at every status |
@@ -728,7 +730,7 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-TEST-19](#cl-test-19) | S4 | P4 | optional improvement | hours | Several 'caught' results come from change detectors that a mechanical regeneration clears: the suites' semantic coverage is narrower than their failure count |
 | [CL-TEST-20](#cl-test-20) | S4 | P4 | probable problem | an hour | Wall-clock limits make the suites load-sensitive: runtime-test.js's 30 s font watchdog fired under load in this audit, and run-all.sh kills a suite at 600 s |
 
-**WP-12** (14 findings: S3 7, S4 7)
+**WP-12** (11 findings: S3 6, S4 5)
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
@@ -738,19 +740,17 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-PERF-04](#cl-perf-04) | S3 | P3 | probable problem | 0.25 h (record); 1-3 h (optional profile) | The desktop before/after spans a browser update (Chrome 155 to 156) that section 24 does not record; the accepted CPU excess cannot be attributed to Stage 8 alone |
 | [CL-PERF-05](#cl-perf-05) | S3 | P3 | probable problem | 0.25 h (records); 1-2 h (route); 2-4 h (census cases) | The 'heaviest frame' figures in sections 24-25 are segment medians, and the census maxima are below what the route drew in Play and in phase 8's Overview |
 | [CL-PERF-06](#cl-perf-06) | S3 | P3 | accepted compromise | n/a (about 10-15 min of owner time if ever run) | The two phone readings are not equally strong: P5 (Stage 8's own starting build) points to a Play slowdown from 53 to 43 fps; the P3/P4 proxy is dominated by device state |
-| [CL-PERF-12](#cl-perf-12) | S3 | P4 | accepted compromise |  | Decision 268 (a)'s desktop script excess: the +30% GL calls a frame are 8D's and 8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's own per-frame app work about 20-32%; about a third (three.js JavaScript) unattributed |
-| [CL-PERF-13](#cl-perf-13) | S4 | P2 | optional improvement |  | freeRect, the free-rectangle search, runs three times a frame over the whole viewport and is the largest app function in every profile (inherited) |
 | [CL-PERF-07](#cl-perf-07) | S4 | P3 | optional improvement | 2-4 h | Instrument limits of the device route: no raw intervals, median counts, flags rather than effects, no clock for played blocks, one refresh measurement |
-| [CL-PERF-14](#cl-perf-14) | S4 | P3 | optional improvement |  | three r128 re-derives every lit material's program each frame (getParameters, getProgramCacheKey, uniform wiring) because the label pass sees no lights and bumps the lights' state version (313 a frame in L3, 318 now; 0 with the lights also on the label layer) |
 | [CL-PERF-08](#cl-perf-08) | S4 | P4 | probable problem | 0.25 h | Over-readings in the records: 'the figures and standards are what a phone's frame waits on' and 'the gait adds none' |
 | [CL-PERF-09](#cl-perf-09) | S4 | P4 | confirmed defect | 0.25-0.5 h | Small numeric and wording inaccuracies in sections 24-25 |
 | [CL-PERF-10](#cl-perf-10) | S4 | P4 | untested area | 1-2 h (diagnosis) | A 329 ms frame in the phone's first effects-off block: counted, unexplained, and not in section 25.2 |
 | [CL-PERF-11](#cl-perf-11) | S4 | P4 | accepted compromise | n/a | Section 8.5's acceptance rule is weak at both refresh rates, and the per-PR before/after was replaced by one end-of-stage comparison |
 
-**WP-13** (9 findings: S3 3, S4 6)
+**WP-13** (12 findings: S3 4, S4 8)
 
 | ID | sev | pri | kind | effort | title |
 |---|---|---|---|---|---|
+| [CL-PERF-16](#cl-perf-16) | S3 | P2 | confirmed defect | 2-6 hours | The phone intervention rule accepts empty measurement sets: two empty reports both 'stand', both kinds are 'tested', every candidate 'cures' with gain NaN, and the rule recommends figShadow (exit 0) |
 | [CL-REC-02](#cl-rec-02) | S3 | P2 | confirmed defect |  | README.md describes the checks wrongly again and calls the file self-contained (the prior audit's R-1 recurred) |
 | [CL-REC-03](#cl-rec-03) | S3 | P2 | confirmed defect |  | Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred) |
 | [CL-ROB-03](#cl-rob-03) | S3 | P3 | probable problem | an afternoon (records only) | The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes |
@@ -758,6 +758,8 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-ROB-13](#cl-rob-13) | S4 | P3 | untested area |  | The terms of use of about 460 third-party archive images that Pages publishes (the Moravian Land Archive's cadastre tiles and 8G's cadastre sheets) were not checked; before this entry the gap was recorded only in the robustness README |
 | [CL-REC-04](#cl-rec-04) | S4 | P4 | confirmed defect |  | The carried checklist misstates two of its own items: kienmayer@7's contradiction of its own act since Stage 0 filed as an 8J offset, and Caffarelli's separation given as 2.5-2.9 km where the build draws 2.13-2.64 km |
 | [CL-REC-08](#cl-rec-08) | S4 | P4 | confirmed defect |  | CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and "Current state (October 2026)" |
+| [CL-REC-09](#cl-rec-09) | S4 | P4 | confirmed defect | minutes | build.py prints the build's character count as 'bytes' (2,801,357) where the file is 2,810,630 bytes |
+| [CL-REC-10](#cl-rec-10) | S4 | P4 | probable problem | an hour | The carried low-sun glare figure (43.5% at 15:00) is not a current measurement: on the audited build and CI's browser the same probe gives 5.90% |
 | [CL-ROB-08](#cl-rob-08) | S4 | P4 | optional improvement | minutes | The project has no licence |
 | [CL-ROB-09](#cl-rob-09) | S4 | P4 | accepted compromise |  | Decision 140's premise has moved: the self-test is 21.7% of the file (12.8% when decided), +277,502 bytes in Stage 8 |
 
@@ -771,3 +773,18 @@ Each row is one claim the area checked: the claim, where a visitor meets it, the
 | [CL-ROB-10](#cl-rob-10) | S4 | P4 | optional improvement | minutes | Small dead code: gaitDist is never called though the gait's comment and CLAUDE.md name it |
 | [CL-ROB-11](#cl-rob-11) | S4 | P4 | optional improvement | minutes | esc() leaves quotes, and double-quoted attributes take its output |
 | [CL-ROB-12](#cl-rob-12) | S4 | P4 | optional improvement | small, with care | The frame loop requests an animation frame at the display's rate while nothing is drawn |
+
+**WP-15** (1 findings: S3 1)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-SRC-10](#cl-src-10) | S3 | P2 | untested area | 1-3 research days per batch of 10-20 claims; the whole remainder cannot be sized before the triage | Source verification is incomplete: 481 of 704 inventoried statements carry no claim, and no pass has yet prioritised the prominent ones (the opening, the tour, the phase ledes, the Command explanations, the headline strengths) |
+
+**WP-16** (4 findings: S3 2, S4 2)
+
+| ID | sev | pri | kind | effort | title |
+|---|---|---|---|---|---|
+| [CL-PERF-15](#cl-perf-15) | S3 | P3 | accepted compromise | 1-3 days attribution, then 2-5 days for a justified optimisation | Accepted: the warmed phone's Overview and Play run at about 41 and 43 fps, never 60; hiding the figures and standards raises Play to about 59 fps, so their combined workload is the lever for any optimisation |
+| [CL-PERF-12](#cl-perf-12) | S3 | P4 | accepted compromise |  | Decision 268 (a)'s desktop script excess: the +30% GL calls a frame are 8D's and 8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's own per-frame app work about 20-32%; about a third (three.js JavaScript) unattributed |
+| [CL-PERF-13](#cl-perf-13) | S4 | P2 | optional improvement |  | freeRect, the free-rectangle search, runs three times a frame over the whole viewport and is the largest app function in every profile (inherited) |
+| [CL-PERF-14](#cl-perf-14) | S4 | P3 | optional improvement |  | three r128 re-derives every lit material's program each frame (getParameters, getProgramCacheKey, uniform wiring) because the label pass sees no lights and bumps the lights' state version (313 a frame in L3, 318 now; 0 with the lights also on the label layer) |

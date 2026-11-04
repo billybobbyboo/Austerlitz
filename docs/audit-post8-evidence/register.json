@@ -154,7 +154,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-03"
+    "work_package": "WP-03",
+    "other_audits": "ChatGPT CG-F03 (the named conflict kamensky@3/@4)"
    }
   },
   {
@@ -172,7 +173,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-03"
+    "work_package": "WP-03",
+    "other_audits": "ChatGPT CG-F03 (the Kienmayer offset)"
    }
   },
   {
@@ -190,7 +192,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-03"
+    "work_package": "WP-03",
+    "other_audits": "ChatGPT CG-F03 (the Caffarelli/Bagration separation)"
    }
   },
   {
@@ -633,7 +636,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-04"
+    "work_package": "WP-04",
+    "other_audits": "ChatGPT CG-F03 (Krug)"
    }
   },
   {
@@ -687,7 +691,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-01"
+    "work_package": "WP-01",
+    "other_audits": "ChatGPT CG-F03 (the unresolved geographic questions; ChatGPT's research queue is WP-15)"
    }
   },
   {
@@ -1248,16 +1253,17 @@
     ]
    ],
    "also": [],
-   "note": "",
+   "note": "ChatGPT (CG-F01) ran 3,600 frames from 09:00 in one piece and found the French Guard cavalry placement-hidden for 36.633 s on the driver's clock (battle minutes 661.8-794.8), the Russian Guard cavalry 28.2 s and Miloradovich 24.6 s; a selected formation stayed drawn in every sample and the paper map's longest gap was 667 ms. This audit's runs were split at 11:30 and 12:00, so a gap spanning that boundary was cut. ChatGPT's 4x run's 82.5 s maximum includes the clock resting at 18:00 and is not a playback gap.",
    "verify": {
     "verdict": "WEAKENED",
     "note": "Both lenses: real and reproduced in Landscape with counters; the origin as stated was wrong (the cavalry's starvation is inherited, worse before Stage 8 for d'Hautpoul and the Russian Guard cavalry; Stage 8 lowered the totals and lengthened the gaps): corrected. Not an accepted compromise: section 23.2 leaves longer playback to this audit. S2 kept. [lenses: WEAKENED (premise); WEAKENED (repro)]"
    },
    "override": {
-    "title": "Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28 s (about 100 clock minutes) at a stretch; the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window",
+    "title": "Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28-37 s at a stretch (36.6 s for the French Guard cavalry, about 11:02-13:15, in ChatGPT's continuous run); the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window",
     "origin": "inherited, aggravated in Stage 8 (8C's hold through Play and the later data and layout)",
     "observed": "Reproduced by the verifier: 67.5% (08:30-11:30) and 72.3% (12:00-15:00) of in-view formation-frames drawn, against 78.4% and 85.6% on the pre-Stage-8 build; d'Hautpoul 9.8% (pre-Stage-8 5.4%), the Russian Guard cavalry 15.7% (8.1%), the French Guard cavalry 16.2% (23.8%), Walther 15.9% (39.0%); Miloradovich's longest gap 27.7 s, about three times the pre-Stage-8 build's; every number within 0.4 points or 70 ms of the area's but one (12:00-15:00's longest gap is the French Guard cavalry's 18.0 s, not d'Hautpoul's 15.3 s).",
-    "work_package": "WP-07"
+    "work_package": "WP-07",
+    "other_audits": "ChatGPT CG-F01 (same issue; ChatGPT measured a longer continuous gap)"
    }
   },
   {
@@ -1580,7 +1586,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-08"
+    "work_package": "WP-08",
+    "other_audits": "ChatGPT CG-F05 (its Littawa part)"
    }
   },
   {
@@ -1739,7 +1746,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-10"
+    "work_package": "WP-10",
+    "other_audits": "ChatGPT CG-F05 (its omitted-landmark part)"
    }
   },
   {
@@ -2233,7 +2241,8 @@
    },
    "override": {
     "origin": "mixed: inherited (step 6 item 3 made the states and views stale) and new-regression (Stage 8 PRs 8A-8K moved the reference, the counts and the times)",
-    "work_package": "WP-13"
+    "work_package": "WP-13",
+    "other_audits": "ChatGPT CG-F09 (its README part: same issue)"
    }
   },
   {
@@ -2288,7 +2297,7 @@
     ]
    ],
    "also": [],
-   "note": "Verifier: docs/stage6-evidence/second-reading.md still says the human second reading 'stays open for the owner' after decision 189.",
+   "note": "Verifier: docs/stage6-evidence/second-reading.md still says the human second reading 'stays open for the owner' after decision 189. ChatGPT (CG-F11) reports the same gap: the session's 24 result cells are blank.",
    "verify": {
     "verdict": "WEAKENED",
     "note": "Verifier: both attestations are labelled; what is untested is any screen reader on the current build; S3/P3. [lenses: WEAKENED (batch)]"
@@ -2300,7 +2309,8 @@
     "observed": "Both attestations are labelled as such (CLAUDE.md, docs/ROADMAP.md, docs/step3-evidence/sr-session.md). Untested: any screen reader on the current build, including 8H's A-6 changes; one stale line in docs/stage6-evidence/second-reading.md.",
     "user_impact": "No screen-reader result exists for any build, Stage 8's landmark and heading changes (8H, A-6) included, and the A grades of the drawn coats rest on machine readings only; the records label both as attestations without results.",
     "remedy": "Run the 24-item screen-reader script once on the final build and read the 15 quotes once; meanwhile correct docs/stage6-evidence/second-reading.md's stale 'stays open for the owner' (no application change).",
-    "work_package": "WP-09"
+    "work_package": "WP-09",
+    "other_audits": "ChatGPT CG-F11 (same issue)"
    }
   },
   {
@@ -2629,7 +2639,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-12"
+    "work_package": "WP-12",
+    "other_audits": "ChatGPT CG-F06 (the long-frame definition: same reading)"
    }
   },
   {
@@ -2647,7 +2658,8 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-12"
+    "work_package": "WP-12",
+    "other_audits": "ChatGPT CG-F07 (the L3 comparison's limits: same reading)"
    }
   },
   {
@@ -2787,7 +2799,7 @@
     ]
    ],
    "also": [],
-   "note": "Refines CL-PERF-04: the excess reproduces on one fixed browser, so the unrecorded Chrome update does not explain it. Verifier: the mechanism and counts confirmed exactly (430 kit draws, not about 450); 'mostly' holds for the GL-call growth (81% of +3,175 calls), not for the time. Remedy: packing aPh into aSl (both per instance) is feasible (-860 calls a frame); aPart has no spare component.",
+   "note": "Refines CL-PERF-04: the excess reproduces on one fixed browser, so the unrecorded Chrome update does not explain it. Verifier: the mechanism and counts confirmed exactly (430 kit draws, not about 450); 'mostly' holds for the GL-call growth (81% of +3,175 calls), not for the time. Remedy: packing aPh into aSl (both per instance) is feasible (-860 calls a frame); aPart has no spare component. ChatGPT (CG-F07) found no subsystem attribution in the device reports; this audit's attribution came from the in-container profile (perf-attribution), so the two readings are compatible.",
    "verify": {
     "verdict": "WEAKENED",
     "note": "The mechanism holds; its share of the time was overstated ('mostly'): corrected to the measured shares. [lenses: WEAKENED (batch)]"
@@ -2795,7 +2807,8 @@
    "override": {
     "title": "Decision 268 (a)'s desktop script excess: the +30% GL calls a frame are 8D's and 8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's own per-frame app work about 20-32%; about a third (three.js JavaScript) unattributed",
     "observed": "Per frame in Play at half speed: 430 instanced kit draws (215 main, 215 shadow) x 3 attributes = 1,290 of the +1,353 vertexAttribPointer and +1,332 bindBuffer calls; their functions +1.53-1.72 ms of the +9.69 ms profiled rise (Play), +1.18-1.51 of +8.74 (drag); reproduced on one fixed browser (Chromium 141 for both builds) at the device's ratio (+22-23% here, +25% on the desktop), so the Chrome 155 to 156 update is not needed to explain it; located between step 6's L3 build and 8E.",
-    "work_package": "WP-12"
+    "work_package": "WP-16",
+    "other_audits": "ChatGPT CG-F07 (same issue; ChatGPT did not attribute it, this audit did in part)"
    }
   },
   {
@@ -2813,7 +2826,7 @@
     "note": " [lenses: CONFIRMED (batch)]"
    },
    "override": {
-    "work_package": "WP-12"
+    "work_package": "WP-16"
    }
   },
   {
@@ -2835,7 +2848,7 @@
     "category": "optional-improvement",
     "priority": "P3",
     "observed": "318 getProgram calls a frame (every MeshStandardMaterial of the world pass), 0 with the lights also enabling the label layer; the desktop cost bounded at about 0.7-0.8 ms a frame by the effects-off orbit.",
-    "work_package": "WP-12"
+    "work_package": "WP-16"
    }
   },
   {
@@ -2892,6 +2905,241 @@
    "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
    "override": {
     "work_package": "WP-09"
+   }
+  },
+  {
+   "id": "CL-SRC-10",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "Source verification is incomplete: 481 of 704 inventoried statements carry no claim, and no pass has yet prioritised the prominent ones (the opening, the tour, the phase ledes, the Command explanations, the headline strengths)",
+    "category": "untested",
+    "severity": "S3",
+    "priority": "P2",
+    "subsystem": "historical narrative and order of battle (narrative.js, data.js, analysis.js)",
+    "user_impact": "The map can be shared as a qualified reconstruction, but its narrative cannot be described as source-verified; an unchecked statement is not shown wrong, but nothing stands behind it beyond the project's narrative.",
+    "status": "confirmed coverage gap (inventory recomputed by both audits)",
+    "origin": "inherited (disclosed scope boundary since roadmap step 4)",
+    "refs": [
+     "docs/step4-evidence/inventory.json",
+     "narrative.js STATEMENT_CLAIMS, CLAIM_BY_CLASS",
+     "data.js SOURCE_NOTE"
+    ],
+    "evidence": "docs/step4-evidence/inventory.json (byClaim: unchecked 481, interpretation by class 75, attributed 63, disputed 65, interpretation 12, uncertain 6, derived 2); ChatGPT's CG-F02 and docs/final-audit-chatgpt-evidence/narrative-coverage.csv; this audit's E.1 coverage statement",
+    "expected": "Prominent claims a visitor reads first carry a claim with a registered reading; the rest keep an accurate qualification.",
+    "observed": "481 of 704 statements are unchecked; neither the opening's, the tour's and the phase ledes' statements nor the headline strengths have been triaged as a group. ChatGPT's three fresh primary-page samples (Rapp 1823 p. 60, Materialien 1806 p. 106, Thiebault III p. 466) support the statements around them; this audit's 62 traced claims found the contradictions in CL-SRC-01, CL-HIS-01 and CL-HIS-06.",
+    "remedy": "WP-15: triage the unchecked statements by prominence (the opening, the tour, the phase ledes, the Command explanations, the headline strengths first), then source them in batches of 10-20 claims as guarded data tasks, keeping disagreements and marking unsupported precision.",
+    "effort": "1-3 research days per batch of 10-20 claims; the whole remainder cannot be sized before the triage",
+    "judgement_kind": "coverage"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-15",
+    "other_audits": "ChatGPT CG-F02 (new from ChatGPT)"
+   },
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": "Both audits recomputed the inventory: 481 of 704 unchecked (docs/step4-evidence/inventory.json, kept current by test.js)."
+   }
+  },
+  {
+   "id": "CL-VIS-10",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "The original every-foot-on-the-ground criterion remains unmet: at 4x a few dozen of 39,136 sampled poses per kit are off their resting seat (worst 0.8 px simple, 4.8 px rich), and at 10.33x the rich kit's worst reaches about 12 px for men and 10 px for horses",
+    "category": "accepted-compromise",
+    "severity": "S3",
+    "priority": "P3",
+    "subsystem": "figure gait and terrain seating (app.js ANIM, animAt, animChord, layoutFigs)",
+    "user_impact": "Rare close views show a planted foot or hoof above or below the ground; larger at the 10.33x relief.",
+    "status": "measured by ChatGPT on the audited build (md5 f10fe585, Chromium 141); not re-run by this audit",
+    "origin": "accepted-compromise (decision 265 (a), provisional)",
+    "refs": [
+     "tools/stage8/contact-8f.js",
+     "docs/STAGE8_SPEC.md 18.2, 20.10, 22.6"
+    ],
+    "evidence": "docs/final-audit-chatgpt-evidence/contact-current/contact.json and contact-current.log (ChatGPT's CG-F04); this audit's C.4 item C-09 (not re-measured here)",
+    "expected": "Decision 265 (a)'s chord model with its sampled bounds; the original criterion allowed no residual.",
+    "observed": "Per ChatGPT: at 4x, 25 of 39,136 men's poses beyond 0.03 units for each kit, worst 0.825 px (simple) and 4.818 px (rich); rich horses 29 of 7,704 beyond, worst 3.227 px; at 10.33x the rich kit's worst 12.089 px (men) and 10.357 px (horses), each against the instance's own resting seat.",
+    "remedy": "Keep the bounded convention; if close views justify it, measure a near-only foot-profile solution within the animation budget before adopting it (WP-10, optional).",
+    "effort": "2-5 days for a measured near-only prototype; none if kept"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-10",
+    "other_audits": "ChatGPT CG-F04 (new from ChatGPT)"
+   },
+   "verify": {
+    "verdict": "PLAUSIBLE",
+    "note": "ChatGPT's measurement on the audited build (md5 f10fe585, Chromium 141); its tool is the project's own contact-8f.js; not re-run by this audit."
+   }
+  },
+  {
+   "id": "CL-VIS-11",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "Landmark roles are not communicated at symbolic scale: the Sokolnitz castle reads smaller than the farmhouses and the III Column's figures hide it entirely at 10:00; the Austerlitz garden is not discernible at the Overview and has no paper-map sign",
+    "category": "probable-problem",
+    "severity": "S3",
+    "priority": "P3",
+    "subsystem": "buildings, gardens and the cartographic hierarchy (world.js LANDMARK_SITES, GARDENS, castlePlan8g)",
+    "user_impact": "The castle central to the Sokolnitz narrative is hard to identify among troops and fog; the garden is clear only close up.",
+    "status": "confirmed by both audits' captures",
+    "origin": "inherited, within decisions 261 (a) and 266 (a)",
+    "refs": [
+     "world.js:162 LANDMARK_SITES",
+     "world.js:169 GARDENS",
+     "docs/STAGE8_SPEC.md 21.7, 22.2"
+    ],
+    "evidence": "docs/audit-post8-evidence/visual-landscape/README.md (carried status: close up the castle reads smaller than the farmhouses; at 10:00 the III Column's figures hide it); docs/final-audit-chatgpt-evidence/castle-current.jpg, garden-current.jpg (ChatGPT's CG-F05)",
+    "expected": "A visitor can identify the landmark's role while its supported site and the accepted scale stay intact.",
+    "observed": "As the title; the castle's site and size are as decided (266 (a)), the garden's rows a convention.",
+    "remedy": "Prototype a restrained landmark cue (an outline or a callout on selection or hover, a paper-map garden sign) with no relocation and no growth of the castle; measure legibility among troops and fog (WP-08).",
+    "effort": "1-3 days"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-08",
+    "other_audits": "ChatGPT CG-F05 (new from ChatGPT, corroborated by this audit's captures)"
+   },
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": "Both audits' captures show it (this audit's visual-landscape carried status; ChatGPT's castle-current.jpg and garden-current.jpg)."
+   }
+  },
+  {
+   "id": "CL-PERF-15",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "Accepted: the warmed phone's Overview and Play run at about 41 and 43 fps, never 60; hiding the figures and standards raises Play to about 59 fps, so their combined workload is the lever for any optimisation",
+    "category": "accepted-compromise",
+    "severity": "S3",
+    "priority": "P3",
+    "subsystem": "phone rendering and frame pacing",
+    "user_impact": "Longer phone sessions feel less fluid in the Overview and Play; the low Pratzen view stays near 60 fps.",
+    "status": "confirmed in the owner's device reports",
+    "origin": "accepted-compromise (decision 269 (a))",
+    "refs": [
+     "docs/stage8-evidence/device/phone-R1.json",
+     "docs/stage8-evidence/device/phone-R2.json",
+     "tools/step6/perf-route.js"
+    ],
+    "evidence": "docs/audit-post8-evidence/perf/README.md (prior finding P-1: hiding the figures raises Play from 43 to 59 fps); ChatGPT's CG-F06 (frame-weighted long shares 24.61% and 8.78% beside the block medians 18.15% and 8.6%)",
+    "expected": "The accepted result stated as measured, not as smooth 60 fps.",
+    "observed": "Median block fps 40.8 (Overview) and 43.35 (Play); every A block above 5% long; figures hidden, Play about 59 fps.",
+    "remedy": "Keep the acceptance; if optimising, profile the figure and standard workload on the phone first (WP-16), with matched builds and protocols.",
+    "effort": "1-3 days attribution, then 2-5 days for a justified optimisation"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-16",
+    "other_audits": "ChatGPT CG-F06 (new as a register entry; the figures-hidden lever is in both audits' evidence)"
+   },
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": "The medians and the figures-hidden reference were recomputed by this audit's perf area from the device reports; the frame-weighted shares (24.61%, 8.78%) are ChatGPT's."
+   }
+  },
+  {
+   "id": "CL-PERF-16",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "The phone intervention rule accepts empty measurement sets: two empty reports both 'stand', both kinds are 'tested', every candidate 'cures' with gain NaN, and the rule recommends figShadow (exit 0)",
+    "category": "confirmed-defect",
+    "severity": "S3",
+    "priority": "P2",
+    "subsystem": "device evidence tooling (tools/step6/phone-rule.js)",
+    "user_impact": "None for visitors; a malformed or incomplete future report could produce a build recommendation with no measurement behind it.",
+    "status": "confirmed (reproduced here)",
+    "origin": "inherited (decision 236's rule tool, roadmap step 6)",
+    "refs": [
+     "tools/step6/phone-rule.js:25-35",
+     "tools/step6/phone-rule.js:39-45"
+    ],
+    "evidence": "docs/audit-post8-evidence/chatgpt-comparison/phone-rule-empty.txt (reproduced by this audit: 'VERDICT: rule 2: figShadow cures every kind both runs test', exit 0); the real R1/R2 reports still give rule 4; ChatGPT's CG-F08",
+    "expected": "Absent blocks, incomplete rounds and non-finite measures rejected with a non-zero exit.",
+    "observed": "As.length 0 makes '0 >= 0' true, and Array.every over no blocks is true.",
+    "remedy": "Validate the expected kinds, rounds, block counts and finite positive measures before applying the rule; reject missingness explicitly; keep R1/R2's verdict unchanged (WP-13).",
+    "effort": "2-6 hours"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-13",
+    "other_audits": "ChatGPT CG-F08 (new from ChatGPT; reproduced here)"
+   },
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": "Reproduced by this audit on 4 November 2026 (docs/audit-post8-evidence/chatgpt-comparison/phone-rule-empty.txt): two empty reports give rule 2, figShadow, exit 0."
+   }
+  },
+  {
+   "id": "CL-REC-09",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "build.py prints the build's character count as 'bytes' (2,801,357) where the file is 2,810,630 bytes",
+    "category": "confirmed-defect",
+    "severity": "S4",
+    "priority": "P4",
+    "subsystem": "build (build.py)",
+    "user_impact": "None for visitors; a contributor reading the build log gets the wrong size (check:baseline uses the right one).",
+    "status": "confirmed (reproduced here)",
+    "origin": "inherited",
+    "refs": [
+     "build.py:53"
+    ],
+    "evidence": "docs/audit-post8-evidence/chatgpt-comparison/build-bytes.txt; ChatGPT's CG-F09",
+    "expected": "A 'bytes' label reports UTF-8 bytes.",
+    "observed": "print('bytes:', len(out)) counts the Python string's characters.",
+    "remedy": "Print len(out.encode('utf-8')), or label the value characters (WP-13).",
+    "effort": "minutes"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-13",
+    "other_audits": "ChatGPT CG-F09 (its build-log part: new from ChatGPT; reproduced here)"
+   },
+   "verify": {
+    "verdict": "CONFIRMED",
+    "note": "Reproduced by this audit (chatgpt-comparison/build-bytes.txt): build.py prints 2,801,357, the character count; the file is 2,810,630 bytes."
+   }
+  },
+  {
+   "id": "CL-REC-10",
+   "from": [],
+   "also": [],
+   "own": {
+    "title": "The carried low-sun glare figure (43.5% at 15:00) is not a current measurement: on the audited build and CI's browser the same probe gives 5.90%",
+    "category": "probable-problem",
+    "severity": "S4",
+    "priority": "P4",
+    "subsystem": "the records' measurements (docs/STAGE8_SPEC.md 20.10; the carried item C-10)",
+    "user_impact": "None for visitors; the records overstate what is currently measured (the bright sheen is still visible).",
+    "status": "measured by ChatGPT on the audited build (md5 f10fe585, Chromium 141); not re-run by this audit",
+    "origin": "new-regression (records since 8H)",
+    "refs": [
+     "tools/stage8/ice-8h.js",
+     "docs/STAGE8_SPEC.md 20.10",
+     "docs/stage8-evidence/8h/ice/ice-8h-clear.json"
+    ],
+    "evidence": "docs/final-audit-chatgpt-evidence/ice-current/ice-8h-audit.json (md5 f10fe585, Chromium 141.0.7390.37; low 15:00 glare15 5.90%); the old 43.5% came from build e8fed44b on Chromium 153 (ChatGPT's CG-F10)",
+    "expected": "Each numerical proxy tied to its build, browser and view.",
+    "observed": "The records carry 43.5% without its build and browser; the current probe gives 5.90%; the cause of the difference is not established.",
+    "remedy": "Annotate the old figure with its build and browser and record the current one, keeping the historical result (WP-13); the appearance itself stays decision 264 (a).",
+    "effort": "an hour"
+   },
+   "note": "Registered by the auditor from the evidence named; not given a separate skeptic.",
+   "override": {
+    "work_package": "WP-13",
+    "other_audits": "ChatGPT CG-F10 (new from ChatGPT)"
+   },
+   "verify": {
+    "verdict": "PLAUSIBLE",
+    "note": "ChatGPT's measurement on the audited build (md5 f10fe585, Chromium 141) with the project's ice-8h.js; not re-run by this audit."
    }
   }
  ],

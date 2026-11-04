@@ -1,0 +1,32 @@
+# Reproduced by Claude on 4 November 2026 (ChatGPT's CG-F08): two empty phone reports, tools/step6/phone-rule.js at 3c34d5b
+$ cat empty1.json
+{"refreshMs":17,"notes":[],"segments":[]}
+$ node tools/step6/phone-rule.js empty1.json empty2.json
+empty1.json: stands (refresh 17 ms, 0 notes)
+empty2.json: stands (refresh 17 ms, 0 notes)
+tests (both runs): {"ph8-overview":[true,true],"play-half":[true,true]} -> kinds both runs test: ph8-overview, play-half
+figShadow                ph8-overview  run 1 cures true  gain NaN | 
+figShadow                ph8-overview  run 2 cures true  gain NaN | 
+figShadow                play-half     run 1 cures true  gain NaN | 
+figShadow                play-half     run 2 cures true  gain NaN | 
+shadowPass               ph8-overview  run 1 cures true  gain NaN | 
+shadowPass               ph8-overview  run 2 cures true  gain NaN | 
+shadowPass               play-half     run 1 cures true  gain NaN | 
+shadowPass               play-half     run 2 cures true  gain NaN | 
+density1                 ph8-overview  run 1 cures true  gain NaN | 
+density1                 ph8-overview  run 2 cures true  gain NaN | 
+density1                 play-half     run 1 cures true  gain NaN | 
+density1                 play-half     run 2 cures true  gain NaN | 
+density1Pass             ph8-overview  run 1 cures true  gain NaN | 
+density1Pass             ph8-overview  run 2 cures true  gain NaN | 
+density1Pass             play-half     run 1 cures true  gain NaN | 
+density1Pass             play-half     run 2 cures true  gain NaN | 
+figures (reference)      ph8-overview  run 1 cures true  gain NaN | 
+figures (reference)      ph8-overview  run 2 cures true  gain NaN | 
+figures (reference)      play-half     run 1 cures true  gain NaN | 
+figures (reference)      play-half     run 2 cures true  gain NaN | 
+VERDICT: rule 2: figShadow cures every kind both runs test: built for lowTier
+exit=0
+
+$ node tools/step6/phone-rule.js docs/stage8-evidence/device/phone-R1.json docs/stage8-evidence/device/phone-R2.json | tail -1
+VERDICT: rule 4: nothing is built

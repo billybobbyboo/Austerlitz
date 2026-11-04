@@ -17,7 +17,13 @@ Three rules carry over from the project:
 
 Effort is a range for one competent session, including its re-measurement. A package can be split into pull requests along its findings.
 
-### G.2 The packages
+**The finalized roadmap is `docs/ROADMAP_FINAL_AUDIT.md` (4 November 2026).** It merges ChatGPT's audit (section K), orders the
+packages in seven stages, and gives each pass its days and the recommended Claude Code effort level. It adds two packages to those below:
+WP-15, the historical research queue (`CL-SRC-10`, ChatGPT's CG-F02 and CG-F03), and WP-16, targeted performance (`CL-PERF-12` to `-15`,
+moved there from WP-12). It also adds ChatGPT's items to WP-08, WP-10 and WP-13. The table below is the roadmap as this audit first wrote
+it, kept for its rationale; where they differ, the finalized roadmap governs.
+
+### G.2 The packages (as first written)
 
 | package | what it does | findings | effort | depends on | done when |
 |---|---|---|---|---|---|

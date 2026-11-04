@@ -1,0 +1,22 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Action completed."
+    }
+  ],
+  "structuredContent": {
+    "content": "{\"total_count\":2,\"artifacts\":[{\"id\":13067821452,\"node_id\":\"MDg6QXJ0aWZhY3QxMzA2NzgyMTQ1Mg==\",\"name\":\"visual-report\",\"size_in_bytes\":47055490,\"url\":\"https://api.github.com/repos/billybobbyboo/Austerlitz/actions/artifacts/13067821452\",\"archive_download_url\":\"https://api.github.com/repos/billybobbyboo/Austerlitz/actions/artifacts/13067821452/zip\",\"expired\":false,\"digest\":\"sha256:df050758914f71c390707bbc0b0a7ce5c71d9ee96323bbadfef1afd14153262e\",\"created_at\":\"2026-11-01T03:01:14Z\",\"updated_at\":\"2026-11-01T03:01:14Z\",\"expires_at\":\"2027-01-30T00:58:24Z\",\"workflow_run\":{\"id\":41259079904,\"repository_id\":1385017803,\"head_repository_id\":1385017803,\"head_branch\":\"claude/optimistic-cori-p5dh4e\",\"head_sha\":\"d3f70266e275541fbcd0f1b15e8257896a500423\"}},{\"id\":13065462754,\"node_id\":\"MDg6QXJ0aWZhY3QxMzA2NTQ2Mjc1NA==\",\"name\":\"selftest-report\",\"size_in_bytes\":37252,\"url\":\"https://api.github.com/repos/billybobbyboo/Austerlitz/actions/artifacts/13065462754\",\"archive_download_url\":\"https://api.github.com/repos/billybobbyboo/Austerlitz/actions/artifacts/13065462754/zip\",\"expired\":false,\"digest\":\"sha256:359cb7e0f252d7d42aa278c56927304ca6c4cd37514a7a6c15e4b8a829cd3e62\",\"created_at\":\"2026-11-01T01:38:03Z\",\"updated_at\":\"2026-11-01T01:38:03Z\",\"expires_at\":\"2027-01-30T00:58:24Z\",\"workflow_run\":{\"id\":41259079904,\"repository_id\":1385017803,\"head_repository_id\":1385017803,\"head_branch\":\"claude/optimistic-cori-p5dh4e\",\"head_sha\":\"d3f70266e275541fbcd0f1b15e8257896a500423\"}}]}",
+    "title": "artifacts",
+    "modified_date": null,
+    "url": "https://api.github.com/repos/billybobbyboo/Austerlitz/actions/runs/41259079904/artifacts",
+    "display_url": "https://api.github.com/repos/billybobbyboo/Austerlitz/actions/runs/41259079904/artifacts",
+    "display_title": "artifacts",
+    "structuredContent": {
+      "title": "artifacts",
+      "content": "{\"total_count\":2,\"artifacts\":[{\"id\":13067821452,\"node_id\":\"MDg6QXJ0aWZhY3QxMzA2NzgyMTQ1Mg==\",\"name\":\"visual-report\",\"size_in_bytes\":47055490,\"url\":\"https://api.github.com/repos/billybobbyboo/Austerlitz/actions/artifacts/13067821452\",\"archive_download_url\":\"https://api.github.com/repos/billybobbyboo/Austerlitz/actions/artifacts/13067821452/zip\",\"expired\":false,\"digest\":\"sha256:df050758914f71c390707bbc0b0a7ce5c71d9ee96323bbadfef1afd14153262e\",\"created_at\":\"2026-11-01T03:01:14Z\",\"updated_at\":\"2026-11-01T03:01:14Z\",\"expires_at\":\"2027-01-30T00:58:24Z\",\"workflow_run\":{\"id\":41259079904,\"repository_id\":1385017803,\"head_repository_id\":1385017803,\"head_branch\":\"claude/optimistic-cori-p5dh4e\",\"head_sha\":\"d3f70266e275541fbcd0f1b15e8257896a500423\"}},{\"id\":13065462754,\"node_id\":\"MDg6QXJ0aWZhY3QxMzA2NTQ2Mjc1NA==\",\"name\":\"selftest-report\",\"size_in_bytes\":37252,\"url\":\"https://api.github.com/repos/billybobbyboo/Austerlitz/actions/artifacts/13065462754\",\"archive_download_url\":\"https://api.github.com/repos/billybobbyboo/Austerlitz/actions/artifacts/13065462754/zip\",\"expired\":false,\"digest\":\"sha256:359cb7e0f252d7d42aa278c56927304ca6c4cd37514a7a6c15e4b8a829cd3e62\",\"created_at\":\"2026-11-01T01:38:03Z\",\"updated_at\":\"2026-11-01T01:38:03Z\",\"expires_at\":\"2027-01-30T00:58:24Z\",\"workflow_run\":{\"id\":41259079904,\"repository_id\":1385017803,\"head_repository_id\":1385017803,\"head_branch\":\"claude/optimistic-cori-p5dh4e\",\"head_sha\":\"d3f70266e275541fbcd0f1b15e8257896a500423\"}}]}",
+      "display_url": "https://api.github.com/repos/billybobbyboo/Austerlitz/actions/runs/41259079904/artifacts"
+    }
+  },
+  "isError": false
+}

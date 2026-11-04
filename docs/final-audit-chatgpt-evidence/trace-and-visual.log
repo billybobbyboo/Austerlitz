@@ -1,0 +1,43 @@
+trace worst [
+  {
+    key: 'c:guard_cav',
+    startFrame: 1031,
+    endFrame: 2129,
+    seconds: 36.63333333333333,
+    startClock: 661.8333333333089,
+    endClock: 794.8333333332779,
+    keep: false
+  },
+  {
+    key: 'c:rg_cav',
+    startFrame: 1123,
+    endFrame: 1969,
+    seconds: 28.233333333333334,
+    startClock: 675,
+    endClock: 778.1666666666163,
+    keep: false
+  },
+  {
+    key: 'c:milo',
+    startFrame: 1,
+    endFrame: 739,
+    seconds: 24.633333333333333,
+    startClock: 540.1666666666666,
+    endClock: 630,
+    keep: false
+  },
+  {
+    key: 'c:dhautpoul',
+    startFrame: 1250,
+    endFrame: 1929,
+    seconds: 22.666666666666668,
+    startClock: 688.3333333333044,
+    endClock: 771.4999999999511,
+    keep: false
+  }
+]
+captured ice-low-current
+captured infantry-current
+captured artillery-moving-current
+captured castle-current
+captured garden-current

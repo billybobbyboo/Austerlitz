@@ -1,0 +1,37 @@
+embedded type: 3 faces, 205 distinct glyphs a visitor can be shown, 0 errors
+top-level rules: 366 | custom properties: 34
+CSS ERRORS: 0
+behaviour checks: 9/9 pass
+names: the presentations, the ground and the layers as decision 50 names them
+light: no shadow toe, no baked hillshade on the landscape, the light from the computed sun and its table
+atmosphere: the fog chunks and applyAtmo, no recession, no mist sheets, the fog's top the knowledge model's, its legend row
+pacing: half speed by default, its button pressed; the dwell's toggle on; no phase glide while playing
+palette: 0 colour literals outside the tables (244 read in world.js, app.js, symbols.js; 38 white and 5 alpha-mask black and 4 GLSL luma weights exempt); the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens
+kit: 14 cloth colours, all classes of appearance.js and none below decision 84's black; 65 settled coat and legwear values drawn; 9 headgear shapes; cuirasses for fr_cuirassier, at_cuirassier; 2 standard paintings for 7 colours entries, their 6 colours words of their claims
+typed data and derived tags: the troops' and the standards' notes and the Dress type no measure or grade definition, the light no minutes; the place and march rows tagged by posRow and marchRow; paintSituation keeps no clock
+arrows and glyphs (decision 241): the cap 16 px, the fill 0.62 and the casing a border on the movement arrows and their drawn-on parts (the border in the perspective presentations only), the glyphs at 64 px, every overlay ribbon and tick tested against the ground
+map layer in motion (decision 240 (a)): the pass every 333 ms, two passes with room, the band 8% on every switch and released at rest, fades 180 ms off under reduced motion and in a fresh view, the motion from the app's state, the never-dropped and the focus by the full search and at full opacity at once, every discontinuity a fresh view, the remnants under the live items without the pointer; the far step at 1.5 on the small names only, t-micro
+culling and the hooks (decisions 249 (a), 244 (a), 250 (b)): every block's instanced meshes culled by their own bounds, refreshed by version, count, geometry, its attributes and the animation's definition (the envelope read again at each refresh), the shared geometries' bounds untouched, nothing hidden, r128's test for the rest; culling switched only by the self-test, the gait's uniforms written by gaitStep alone (the knee by kitLodSet) and the self-test; the hook after begin_vertex on the kit's material and its depth material, inert at amplitude 0; lowTier as decision 236
+the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)): the level of detail 17.6 in, 14.5 out, in view, a block's meshes together, kitLod allocating nothing; the wheels at ORDNANCE's heights, one carriage colour for every army, the drivers only where a claim's corps holds the battery, the switch at once; the gait's phase the track's distance over its stride, its amplitude the clock rate's rule for a formation's meshes together, none under 1 km/h or reduced motion, eased, no wall clock, the wheels within a spoke's interval, the hook's parts the legs, the arm, the root and the wheels; the standards' drape still
+water, woods and the near ground (decisions 246 (a), 247 (a)): the water's colours in WATER_COL, the paper map's water 8E's materials, the meres' outlines, levels and ring 4E's, the ice writing no depth, the band without an offset and after its ice, nothing animated; TREE8F, the crowns opaque on both faces, 8E's jitter and conifers; GDETAIL on the natural ground only, faded, anchored, a grey ratio, off under lowTier; the self-test's bounds
+a block at rest (8G's verification; 8H's pause): its shape, tilt and heading take their targets exactly within the threshold that stops asking for frames; eased only while the clock moves on under Play, held while it stands, the clock's at a seek
+the ground's atlas (8G's prerequisite 1): both atlases uploaded as painted, the photographs' normals turned to the patterns' convention, the painters shared with the self-test, the debug outputs behind uDebug and off as built, the self-test's check present
+the buildings (decision 248 (a)): VILL8G, BLD8G and CHAPEL8G as built; the rear buildings, the fences, the churches and the chapel read from BUILDINGS, CHURCHES and CHAPELS; the roofs a share, never the walls'; no wall but Telnitz's churchyard's; the plan seeded; the ground read exactly, laid again with it; shown with the landscape; FARMS8G
+confidence marks: no dash, the side's token colour; off at first on the landscape, on at first on the paper map; the outlines no dash, in the side's tokens, the selection's in the accent
+evidence skeleton: no dash, the annotation token's colour, off by default with the whole day off
+Whose eyes: one control, labelled a model reading, the eye's vantage hidden until a headquarters is chosen, its button's name beginning with its words (decision 173)
+ordered routes: off by default, named, the side's token colour, the legend's dash sample
+day-track: the tokens' colours, the legs solid and only the ordered route dashed
+first run: a modal dialog described by its key, the primary and the stay from LABELS, buttons at least 24 px, the docked dispatch shown under it
+opening: 15 words in LABELS with no figure, clock, name or quotation; the tour's stops 1, 6, 7, 8; the clock played between them at 4x, Play still at half speed; begun by the card's primary; the bar a named region; Esc skips; one message a step
+start-up: three.js from cdnjs r128 with its sha512 and crossorigin, the guard before it, the failure dialog, boot() reporting and rethrowing, the loop stopped on a failure, the context-loss notice
+shortcuts switch: a toggle button in the overlay outside its list, on by default, nothing stored, its words in LABELS, a typed character muted when off
+dossier hidden when closed: hidden after its slide, shown at once, inert while closed, above the timeline undocked (decision 165)
+the Panels button: a disclosure of the rail below 1080 px, its words from LABELS, aria-expanded kept by syncInert (decision 164)
+the derived readings at 720 px and below: kept in the dispatch card (decision 174)
+layout seams: the narrow layout below 1080 px only, the density set on resize, no @media declaration shadowed by a later base rule
+reduced motion: every transition and animation off in the stylesheet under the preference; the app follows it live
+map focus ring: on its own plate, at 3:1 or more in both themes (question 172)
+the phone layout: below 720 px the compact timeline, the phases listed, the sheets and the Menu, their words from LABELS; held landscape the phone's timeline (decisions 223-226)
+roads and streams: wound facing up, drawn on both faces, at half the widths they were built with in both presentations (decision 253)
+the phase's message under a layout's change and the far names' plate (8I): placed again by every layout's change while seen, its 3.4 s untouched; the far plate 0.64 by sym.plate's rule, the far step's test, names alone, the protected ones on the full plate (decision 263)

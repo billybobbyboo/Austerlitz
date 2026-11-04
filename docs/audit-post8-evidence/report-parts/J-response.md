@@ -17,3 +17,4 @@
   order, the paper map's lettering, the first-run card, the merge gate, the device runs, a licence, facings, the artillery's crews, the
   chapels and the garden, the shipped self-test, and the low views' wall of names.
 - **Limits.** No device timing here. An emulated phone, not Safari. No screen reader. A sampled source check.
+- **Merged with ChatGPT's audit (4 November):** 7 of its 11 findings added, 6 already here; the finalized roadmap with effort levels is `docs/ROADMAP_FINAL_AUDIT.md` (section K).

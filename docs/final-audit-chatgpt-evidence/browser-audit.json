@@ -1,0 +1,729 @@
+{
+  "commit": "43e3e5bcc5ab0cbbcb604a22a5b8c29f801649c8",
+  "build": "bf27887c177ec68efbaedfe29e9d7826cf89c66ca7390b17e3cda8acf708db07",
+  "screens": [
+    {
+      "name": "overview-field",
+      "spec": {
+        "name": "overview-field",
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 570,
+        "presentation": "study",
+        "mode": "terrain",
+        "cam": [
+          -195,
+          92,
+          156,
+          -33,
+          4,
+          -2
+        ],
+        "note": "Full battlefield from the west at 09:30 (Field vantage)."
+      },
+      "state": {
+        "clock": 570,
+        "presentation": "study",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -195,
+            94.10852215492369,
+            156
+          ],
+          "tgt": [
+            -33,
+            3.724891828834621,
+            -2
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -195,
+            94.10852215492369,
+            156
+          ],
+          "tgt": [
+            -33,
+            3.724891828834621,
+            -2
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": true
+        },
+        "groundLayout": true
+      },
+      "layer": {
+        "stats": {
+          "items": 48,
+          "placed": 43,
+          "leaders": 20,
+          "dropped": 5,
+          "held": 0,
+          "occluded": 0,
+          "offscreen": 0,
+          "underPanel": 0,
+          "keepMissing": [],
+          "dropped_": [
+            "t:pratzen",
+            "t:vinohrady",
+            "t:pratzeberg",
+            "t:santon",
+            "t:telnitz"
+          ],
+          "ms": 1.2999999999301508,
+          "nodes": 161
+        }
+      }
+    },
+    {
+      "name": "pratzen-low",
+      "spec": {
+        "name": "pratzen-low",
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 590,
+        "presentation": "watch",
+        "mode": "terrain",
+        "aim": {
+          "map": [
+            285,
+            289
+          ],
+          "dir": [
+            -1,
+            0.13,
+            0.18
+          ],
+          "r": 70
+        },
+        "note": "Low angle from the Goldbach up the west face of the Pratzeberg, 09:50."
+      },
+      "state": {
+        "clock": 590,
+        "presentation": "watch",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -95.83578749992927,
+            21.93190503150153,
+            31.800441749987268
+          ],
+          "tgt": [
+            -27.5,
+            5.127268917350943,
+            19.5
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -95.83578749992927,
+            21.93190503150153,
+            31.800441749987268
+          ],
+          "tgt": [
+            -27.5,
+            5.127268917350943,
+            19.5
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": false
+        },
+        "groundLayout": true
+      },
+      "layer": {
+        "stats": {
+          "items": 65,
+          "placed": 24,
+          "leaders": 4,
+          "dropped": 4,
+          "held": 0,
+          "occluded": 0,
+          "offscreen": 37,
+          "underPanel": 0,
+          "keepMissing": [],
+          "dropped_": [
+            "t:vinohrady",
+            "t:pratzeberg",
+            "t:litava",
+            "t:krzenowitz"
+          ],
+          "ms": 0.7999999999301508,
+          "nodes": 66
+        }
+      }
+    },
+    {
+      "name": "close-sokolnitz",
+      "spec": {
+        "name": "close-sokolnitz",
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 500,
+        "presentation": "watch",
+        "mode": "terrain",
+        "aim": {
+          "map": [
+            210,
+            362
+          ],
+          "dir": [
+            -0.62,
+            0.46,
+            0.64
+          ],
+          "r": 58
+        },
+        "note": "Close view of Sokolnitz and the lower Goldbach, 08:20."
+      },
+      "state": {
+        "clock": 500,
+        "presentation": "watch",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -100.85973292573678,
+            22.682293598424998,
+            93.01649850398636
+          ],
+          "tgt": [
+            -65,
+            -2.1118310893715084,
+            56
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -100.85973292573678,
+            22.682293598424998,
+            93.01649850398636
+          ],
+          "tgt": [
+            -65,
+            -2.1118310893715084,
+            56
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": false
+        },
+        "groundLayout": true
+      },
+      "layer": {
+        "stats": {
+          "items": 63,
+          "placed": 19,
+          "leaders": 0,
+          "dropped": 2,
+          "held": 0,
+          "occluded": 0,
+          "offscreen": 42,
+          "underPanel": 0,
+          "keepMissing": [],
+          "dropped_": [
+            "t:sokolnitz",
+            "t:kobelnitz"
+          ],
+          "ms": 1.400000000023283,
+          "nodes": 43
+        }
+      }
+    },
+    {
+      "name": "paper-north-up",
+      "spec": {
+        "name": "paper-north-up",
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 570,
+        "presentation": "study",
+        "mode": "staff",
+        "paper": "frame",
+        "cam": [
+          -27,
+          272,
+          41,
+          -27,
+          0,
+          9
+        ],
+        "note": "The paper map as entered: north up, the whole field framed clear of the panels, Study, 09:30."
+      },
+      "state": {
+        "clock": 570,
+        "presentation": "study",
+        "mode": "staff",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "map",
+          "x": 14.230056491427284,
+          "z": 8.316548732995047,
+          "wpp": 0.5543528804271592
+        },
+        "applied": {
+          "kind": "map",
+          "x": 14.230056491427284,
+          "z": 8.316548732995047,
+          "wpp": 0.5543528804271592
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": true,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": true
+        },
+        "groundLayout": true
+      },
+      "layer": {
+        "stats": {
+          "items": 36,
+          "placed": 24,
+          "leaders": 23,
+          "dropped": 12,
+          "held": 0,
+          "occluded": 0,
+          "offscreen": 0,
+          "underPanel": 0,
+          "keepMissing": [],
+          "dropped_": [
+            "t:pratzen",
+            "t:vinohrady",
+            "t:pratzeberg",
+            "t:santon",
+            "t:zuran",
+            "t:goldbach",
+            "t:litava",
+            "t:telnitz",
+            "t:sokolnitz",
+            "t:augezd",
+            "t:satschan",
+            "t:austerlitz"
+          ],
+          "ms": 1,
+          "nodes": 334
+        }
+      }
+    },
+    {
+      "name": "plans-overview",
+      "spec": {
+        "name": "plans-overview",
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 570,
+        "presentation": "study",
+        "mode": "terrain",
+        "plan": "both",
+        "cam": [
+          -27,
+          272,
+          41,
+          -27,
+          0,
+          9
+        ],
+        "note": "The Plans overlay with both plans (chosen in the Plans tab; the rail back on its Now tab), at the Overview vantage, Study, 09:30."
+      },
+      "state": {
+        "clock": 570,
+        "presentation": "study",
+        "mode": "terrain",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": null,
+        "commandView": "none",
+        "plan": "both",
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -38.80919175604274,
+            535.3040295026483,
+            65.91846663184778
+          ],
+          "tgt": [
+            -38.80919175604274,
+            0.5001794500326806,
+            3.914278181685546
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -38.80919175604274,
+            535.3040295026483,
+            65.91846663184778
+          ],
+          "tgt": [
+            -38.80919175604274,
+            0.5001794500326806,
+            3.914278181685546
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": false,
+          "rail": true
+        },
+        "groundLayout": true
+      },
+      "layer": {
+        "stats": {
+          "items": 57,
+          "placed": 44,
+          "leaders": 31,
+          "dropped": 13,
+          "held": 0,
+          "occluded": 0,
+          "offscreen": 0,
+          "underPanel": 0,
+          "keepMissing": [],
+          "dropped_": [
+            "pl:The concealed centre",
+            "n:ahq",
+            "t:pratzen",
+            "t:vinohrady",
+            "t:pratzeberg",
+            "t:santon",
+            "t:zuran",
+            "t:goldbach",
+            "t:litava",
+            "t:telnitz",
+            "t:sokolnitz",
+            "t:augezd",
+            "t:satschan"
+          ],
+          "ms": 1.5,
+          "nodes": 162
+        }
+      }
+    },
+    {
+      "name": "hybrid-dimmed",
+      "spec": {
+        "name": "hybrid-dimmed",
+        "viewport": [
+          1600,
+          900
+        ],
+        "t": 600,
+        "presentation": "watch",
+        "mode": "hybrid",
+        "select": [
+          "f",
+          "c_iv"
+        ],
+        "aim": {
+          "map": [
+            285,
+            289
+          ],
+          "dir": [
+            -0.7,
+            0.45,
+            0.55
+          ],
+          "r": 95
+        },
+        "note": "Hybrid mode with a corps highlighted, so most blocks are drawn at the dimmed scale."
+      },
+      "state": {
+        "clock": 600,
+        "presentation": "watch",
+        "mode": "hybrid",
+        "factor": 4,
+        "defaultFactor": 4,
+        "exag": 10.32642489706367,
+        "selection": "f:c_iv",
+        "commandView": "none",
+        "plan": null,
+        "eye": false,
+        "tour": -1,
+        "opening": false,
+        "openingPlay": false,
+        "firstRun": false,
+        "playing": false,
+        "freeCam": true,
+        "tween": false,
+        "cam": {
+          "kind": "land",
+          "pos": [
+            -94.16687604657237,
+            56.98669700202368,
+            71.88111689373544
+          ],
+          "tgt": [
+            -27.5,
+            5.127268917350943,
+            19.5
+          ]
+        },
+        "applied": {
+          "kind": "land",
+          "pos": [
+            -94.16687604657237,
+            56.98669700202368,
+            71.88111689373544
+          ],
+          "tgt": [
+            -27.5,
+            5.127268917350943,
+            19.5
+          ]
+        },
+        "aimErr": null,
+        "paperFocus": null,
+        "layers": {
+          "confidence": false,
+          "routes": false,
+          "skeleton": false
+        },
+        "confNone": false,
+        "skelDay": false,
+        "viewport": [
+          1600,
+          900
+        ],
+        "phone": {
+          "on": false,
+          "menu": false,
+          "sheet": false,
+          "layers": false,
+          "drawer": true,
+          "rail": false
+        },
+        "groundLayout": true
+      },
+      "layer": {
+        "stats": {
+          "items": 63,
+          "placed": 31,
+          "leaders": 15,
+          "dropped": 9,
+          "held": 0,
+          "occluded": 0,
+          "offscreen": 23,
+          "underPanel": 0,
+          "keepMissing": [],
+          "dropped_": [
+            "c:rg_inf",
+            "c:kellermann",
+            "t:pratzen",
+            "t:vinohrady",
+            "t:pratzeberg",
+            "t:kobelnitz",
+            "t:girzikowitz",
+            "t:blasowitz",
+            "t:krzenowitz"
+          ],
+          "ms": 6.400000000023283,
+          "nodes": 403
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "checks": [
+    {
+      "name": "real Play enters playing state (short sample remained in initial dwell; does not prove clock advance)",
+      "value": {
+        "playing": true,
+        "clock": 240,
+        "speed": 0.5
+      }
+    },
+    {
+      "name": "real Space pauses",
+      "value": {
+        "playing": false,
+        "clock": 240,
+        "speed": 0.5
+      }
+    },
+    {
+      "name": "sources modal Escape/focus",
+      "value": {
+        "focus": "srcbtn",
+        "open": false
+      }
+    },
+    {
+      "name": "phone rotate while menu open",
+      "value": {
+        "width": 844,
+        "height": 390,
+        "scroll": 844,
+        "focus": "play",
+        "phone": false
+      }
+    }
+  ],
+  "extended": [],
+  "chromium": "141.0.7390.37"
+}
