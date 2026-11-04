@@ -1,0 +1,12 @@
+chatgpt_id,title,claude_id,owner_id,agreement_status,evidence_needed_to_resolve_disagreement,combined_disposition
+CG-F01,Ordinary hybrid counters can remain hidden for a substantial part of the battle,CL-MAP-01,,agree: same issue,none: ChatGPT's continuous run measured a longer gap (36.6 s) than this audit's split runs (28 s); both are the same mechanism,merged into CL-MAP-01; WP-07
+CG-F02,Historical source verification is substantial but incomplete,CL-SRC-10,,"agree on the fact; severity differs (CG S2, CL S3: an unchecked claim is not shown wrong)",none,added as CL-SRC-10; WP-15
+CG-F03,Several consequential chronology and location questions remain unresolved,CL-GEO-10; CL-HIS-07; CL-HIS-08; CL-HIS-09; CL-GEO-07; report E.3,,agree,none,"WP-15 (research queue), WP-03 and WP-01 for any evidence-led correction"
+CG-F04,The original universal ground-contact criterion remains unmet,CL-VIS-10,,agree (not re-measured by Claude),Claude did not re-run contact-8f.js,added as CL-VIS-10; WP-10 (optional)
+CG-F05,Landmark significance is not consistently communicated at symbolic scale,CL-VIS-11; CL-MAP-18; CL-VIS-06,,agree,none,"added as CL-VIS-11 (castle and garden); Littawa and chapels already CL-MAP-18, CL-VIS-06; WP-08, WP-10"
+CG-F06,Warmed phone Overview and Play do not sustain 60 fps,CL-PERF-15; CL-PERF-03; CL-PERF-06,,agree,none,added as CL-PERF-15; WP-16 and WP-12
+CG-F07,Desktop Play exceeds the prior CPU allowance and misses some 144 Hz refreshes,CL-PERF-12; CL-PERF-04,,agree on the measurement; attribution differs (CG: none proven from the device reports; CL: partly attributed by in-container profiles),compatible: different evidence (device reports vs profiles),WP-16
+CG-F08,The phone intervention rule accepts empty measurement sets,CL-PERF-16,,"agree (reproduced by Claude); severity differs (CG S2, CL S3: tooling, no visitor impact)",none,added as CL-PERF-16; WP-13
+CG-F09,Developer-facing records and the build-size log have drifted,CL-REC-02; CL-REC-09,,agree (build log reproduced by Claude),none,README part merged into CL-REC-02; build log added as CL-REC-09; WP-13
+CG-F10,Low-sun ice remains a visual compromise; the old glare percentage is not a current measurement,CL-REC-10,,agree; Claude's carried register had kept the old 43.5%,Claude did not re-run ice-8h.js,added as CL-REC-10; WP-13 (the appearance stays decision 264 (a))
+CG-F11,Screen-reader acceptance lacks an inspectable current result record,CL-REC-05,,agree: same issue,none,merged into CL-REC-05; WP-09

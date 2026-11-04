@@ -1,0 +1,58 @@
+{
+  "reports": 10,
+  "rows": 349,
+  "phone": {
+    "ph8-overview": {
+      "blocks": 24,
+      "medianFps": 40.8,
+      "fpsRange": [
+        27.2,
+        42.8
+      ],
+      "medianLongPct": 18.15,
+      "allOver5pct": true,
+      "weightedLongPct": 24.608416682392903
+    },
+    "play-half": {
+      "blocks": 24,
+      "medianFps": 43.349999999999994,
+      "fpsRange": [
+        42.8,
+        43.8
+      ],
+      "medianLongPct": 8.6,
+      "allOver5pct": true,
+      "weightedLongPct": 8.781577590651315
+    }
+  },
+  "desktopPlay": [
+    {
+      "id": "play-4x",
+      "kind": "played",
+      "fps": 124.3,
+      "p95": 13.9,
+      "js50": 6.9
+    },
+    {
+      "id": "play-half",
+      "kind": "played",
+      "fps": 120.8,
+      "p95": 13.9,
+      "js50": 7.6
+    },
+    {
+      "id": "play-4x",
+      "kind": "played",
+      "fps": 123,
+      "p95": 13.9,
+      "js50": 7
+    },
+    {
+      "id": "play-half",
+      "kind": "played",
+      "fps": 120.2,
+      "p95": 13.9,
+      "js50": 7.6
+    }
+  ]
+}

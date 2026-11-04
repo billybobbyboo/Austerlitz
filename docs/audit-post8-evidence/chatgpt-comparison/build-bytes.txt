@@ -1,0 +1,8 @@
+# Reproduced by Claude on 4 November 2026 (ChatGPT's CG-F09, the byte count)
+$ python3 build.py (its last line)
+bytes: 2801357
+$ python3: characters and bytes of the committed file
+characters 2801357
+bytes 2810630
+$ grep -n bytes build.py
+53:print("bytes:",len(out))

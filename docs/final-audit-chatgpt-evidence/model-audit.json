@@ -1,0 +1,31 @@
+{
+  "formations": 32,
+  "clocks": 3410,
+  "positions": 108874,
+  "reverseNavigationChecked": true,
+  "strengthChecks": 6820,
+  "inverseMaxDegrees": 0,
+  "failures": [],
+  "narrative": {
+    "statements": 704,
+    "byClaim": {
+      "interpretation (by class)": 75,
+      "unchecked": 481,
+      "attributed": 63,
+      "disputed": 65,
+      "uncertain": 6,
+      "derived": 2,
+      "interpretation": 12
+    }
+  },
+  "negativeControl": {
+    "name": "two empty phone reports",
+    "exit": 0,
+    "stdout": "/tmp/austerlitz-negative-gGvNsL/empty.json: stands (refresh 17 ms, 0 notes)\n/tmp/austerlitz-negative-gGvNsL/empty.json: stands (refresh 17 ms, 0 notes)\ntests (both runs): {\"ph8-overview\":[true,true],\"play-half\":[true,true]} -> kinds both runs test: ph8-overview, play-half\nfigShadow                ph8-overview  run 1 cures true  gain NaN | \nfigShadow                ph8-overview  run 2 cures true  gain NaN | \nfigShadow                play-half     run 1 cures true  gain NaN | \nfigShadow                play-half     run 2 cures true  gain NaN | \nshadowPass               ph8-overview  run 1 cures true  gain NaN | \nshadowPass               ph8-overview  run 2 cures true  gain NaN | \nshadowPass               play-half     run 1 cures true  gain NaN | \nshadowPass               play-half     run 2 cures true  gain NaN | \ndensity1                 ph8-overview  run 1 cures true  gain NaN | \ndensity1                 ph8-overview  run 2 cures true  gain NaN | \ndensity1                 play-half     run 1 cures true  gain NaN | \ndensity1                 play-half     run 2 cures true  gain NaN | \ndensity1Pass             ph8-overview  run 1 cures true  gain NaN | \ndensity1Pass             ph8-overview  run 2 cures true  gain NaN | \ndensity1Pass             play-half     run 1 cures true  gain NaN | \ndensity1Pass             play-half     run 2 cures true  gain NaN | \nfigures (reference)      ph8-overview  run 1 cures true  gain NaN | \nfigures (reference)      ph8-overview  run 2 cures true  gain NaN | \nfigures (reference)      play-half     run 1 cures true  gain NaN | \nfigures (reference)      play-half     run 2 cures true  gain NaN | \nVERDICT: rule 2: figShadow cures every kind both runs test: built for lowTier\n",
+    "stderr": "",
+    "expected": "reject missing mandatory blocks",
+    "observed": [
+      "VERDICT: rule 2: figShadow cures every kind both runs test: built for lowTier"
+    ]
+  }
+}

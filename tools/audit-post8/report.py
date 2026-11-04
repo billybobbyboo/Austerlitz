@@ -166,7 +166,7 @@ def main():
                 ("Cause (hypothesis)", r.get("cause_hypothesis")), ("Cause verified", r.get("cause_verified")),
                 ("Remedy", r.get("remedy")), ("Effort", r.get("effort")), ("Dependencies", r.get("dependencies")),
                 ("Risk of the remedy", r.get("risk")), ("Validation", r.get("validation")), ("Prior records", r.get("prior_refs")),
-                ("Adversarial verification", vtxt), ("Auditor's note", r["_note"]), ("Area finding", src),
+                ("Adversarial verification", vtxt), ("Auditor's note", r["_note"]), ("Other audits", r.get("other_audits")), ("Area finding", src),
             ]
             out.append("| field | |\n|---|---|")
             for k, val in fields:
@@ -285,6 +285,7 @@ def main():
     out.append(part("H-merge.md"))
     out.append(part("I-owner.md"))
     out.append(part("J-response.md"))
+    out.append(part("K-compare.md"))
     out.append(part("Z-appendix.md", required=False))
     txt = "\n".join(out).rstrip() + "\n"
     # anchors used in parts must exist
@@ -300,12 +301,12 @@ def main():
     with open(os.path.join(EV, "register-export.csv"), "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh, lineterminator="\n")
         w.writerow(["CL", "title", "subsystem", "severity_CL", "priority_CL", "kind", "status", "origin", "verification", "evidence",
-                    "reproduction", "references", "owner_decision", "work_package", "area_source", "build_md5"])
+                    "reproduction", "references", "owner_decision", "work_package", "chatgpt", "area_source", "build_md5"])
         for r in sorted(rows, key=key):
             w.writerow([r["_id"], esc(r.get("title")), esc(r.get("subsystem")), r.get("severity", ""), r.get("priority", ""),
                         KIND.get(r.get("category"), r.get("category", "")), esc(r.get("status")), esc(r.get("origin")),
                         esc(r["_verify"].get("verdict", "")), esc(r.get("evidence")), esc(r.get("repro")), esc(r.get("refs")),
-                        esc(r.get("owner_decision", "")), esc(r.get("work_package", "")),
+                        esc(r.get("owner_decision", "")), esc(r.get("work_package", "")), esc(r.get("other_audits", "")),
                         "; ".join("%s #%d" % (a, i + 1) for a, i in r["_from"]), "f10fe585c46aea576f436ed51ac46f83"])
     print("wrote %s: %d findings (%s), %d bytes" % (os.path.relpath(OUT, ROOT), len(rows), dict(sev), len(txt.encode("utf-8"))))
 

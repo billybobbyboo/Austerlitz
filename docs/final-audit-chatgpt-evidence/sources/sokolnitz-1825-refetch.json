@@ -1,0 +1,16 @@
+{
+  "url": "https://www.mza.cz/indikacniskici/data/obrazky/MOR246318250/Img/Normal/A04E-A2-B1-B1.jpg",
+  "fresh_fetch_result": "HTTP 403 Forbidden; unavailable from this environment",
+  "method_used": "read stored repository tile and composite; validate tile hash against stored original fetch manifest",
+  "stored_bytes": 7127,
+  "stored_sha256": "04abd997d96c5d1fc7b64fe96ce44916c7d210151f440cc40208f883bc0d9a9e",
+  "matches_stored_manifest_sha256": true,
+  "original_reference": {
+    "url": "https://www.mza.cz/indikacniskici/data/obrazky/MOR246318250/Img/Normal/A04E-A2-B1-B1.jpg",
+    "file": "mza/MOR246318250/Normal/A04E-A2-B1-B1.jpg",
+    "status": 200,
+    "bytes": 7127,
+    "sha256": "04abd997d96c5d1fc7b64fe96ce44916c7d210151f440cc40208f883bc0d9a9e",
+    "fetched": "2026-10-29T23:18:39.155Z"
+  }
+}

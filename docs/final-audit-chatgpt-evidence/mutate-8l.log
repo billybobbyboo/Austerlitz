@@ -1,0 +1,18 @@
+node:internal/errors:543
+      throw error;
+      ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.readFileSync (node:fs:481:14)
+    at Object.<anonymous> (/workspace/scratch/896daf5546ff/repo/tools/stage8/mutate-8l.js:15:23)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+
+Node.js v24.22.1

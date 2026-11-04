@@ -1,0 +1,4 @@
+report docs/final-audit-chatgpt-evidence/ci-pr78/report.json: austerlitz-command-map.html  md5 f10fe585c46aea576f436ed51ac46f83  cases 0  mode {"test":true,"legacy":false,"selftestOnly":true,"only":null}  env {"platform":"linux","arch":"x64","chromium":"141.0.7390.37","playwright":"1.56.0","executable":"playwright"}
+in-app self-test (843366 ms): 317 of 317 pass; the manifest has 317 checks
+console messages judged: 0
+all checks pass for this report (a --selftest-only run: the self-test, the slider, Play and the 3E keys)

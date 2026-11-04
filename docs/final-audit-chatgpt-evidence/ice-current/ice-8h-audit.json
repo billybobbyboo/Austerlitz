@@ -1,0 +1,117 @@
+{
+ "tool": "tools/stage8/ice-8h.js",
+ "build": "austerlitz-command-map.html",
+ "md5": "f10fe585c46aea576f436ed51ac46f83",
+ "chromium": "141.0.7390.37",
+ "variants": {
+  "clear 0.20": {
+   "views": {
+    "above": {
+     "09:00": {
+      "shore": 0.976,
+      "margin": 1.139,
+      "clear": 1.1,
+      "field": 72.4,
+      "samples": 3264,
+      "glare15": 0.18,
+      "white": 0,
+      "p95": 1.226,
+      "max": 2.023
+     },
+     "12:00": {
+      "shore": 0.986,
+      "margin": 1.149,
+      "clear": 1.097,
+      "field": 72.7,
+      "samples": 3264,
+      "glare15": 0.03,
+      "white": 0,
+      "p95": 1.238,
+      "max": 1.565
+     },
+     "15:00": {
+      "shore": 0.985,
+      "margin": 1.137,
+      "clear": 1.097,
+      "field": 57.9,
+      "samples": 3264,
+      "glare15": 0,
+      "white": 0,
+      "p95": 1.244,
+      "max": 1.381
+     }
+    },
+    "oblique": {
+     "09:00": {
+      "shore": 0.992,
+      "margin": 1.039,
+      "clear": 1.13,
+      "field": 71.2,
+      "samples": 3264,
+      "glare15": 0,
+      "white": 0,
+      "p95": 1.177,
+      "max": 1.321
+     },
+     "12:00": {
+      "shore": 1.007,
+      "margin": 1.06,
+      "clear": 1.141,
+      "field": 71.8,
+      "samples": 3264,
+      "glare15": 0.21,
+      "white": 0,
+      "p95": 1.195,
+      "max": 2.13
+     },
+     "15:00": {
+      "shore": 0.938,
+      "margin": 1.011,
+      "clear": 1.061,
+      "field": 60,
+      "samples": 3264,
+      "glare15": 0.06,
+      "white": 0,
+      "p95": 1.144,
+      "max": 1.83
+     }
+    },
+    "low": {
+     "09:00": {
+      "shore": 1.021,
+      "margin": 1.105,
+      "clear": 1.14,
+      "field": 70.1,
+      "samples": 3255,
+      "glare15": 0.25,
+      "white": 0,
+      "p95": 1.335,
+      "max": 1.903
+     },
+     "12:00": {
+      "shore": 1.013,
+      "margin": 1.112,
+      "clear": 1.157,
+      "field": 72,
+      "samples": 3255,
+      "glare15": 0.34,
+      "white": 0,
+      "p95": 1.326,
+      "max": 2.18
+     },
+     "15:00": {
+      "shore": 1.085,
+      "margin": 1.182,
+      "clear": 1.162,
+      "field": 51.4,
+      "samples": 3255,
+      "glare15": 5.9,
+      "white": 0,
+      "p95": 1.513,
+      "max": 2.801
+     }
+    }
+   }
+  }
+ }
+}

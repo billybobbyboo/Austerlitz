@@ -1,0 +1,18 @@
+{
+  "workflow_run": 41259079904,
+  "test_commit": "d3f70266e275541fbcd0f1b15e8257896a500423",
+  "audited_main": "43e3e5bcc5ab0cbbcb604a22a5b8c29f801649c8",
+  "code_and_checks_diff": "empty: git diff d3f70266 HEAD -- *.js *.css *.html *.py package.json .github",
+  "cases": 39,
+  "md5": "f10fe585c46aea576f436ed51ac46f83",
+  "env": {
+    "platform": "linux",
+    "arch": "x64",
+    "chromium": "141.0.7390.37",
+    "playwright": "1.56.0",
+    "executable": "playwright"
+  },
+  "skipped": [],
+  "recorded_failures": [],
+  "console": []
+}

@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> check:data
+> node tools/visual/data-invariance.js archive/stage8k-f10fe585.html austerlitz-command-map.html
+
+original stage8k-f10fe585.html: 1121 top-level statements;  patched austerlitz-command-map.html: 1121
+
+DATA (must be byte-identical):
+  identical historical datasets: 27 declarations, 1,003,182 bytes
+  identical geography and relief model: 49 declarations, 20,487 bytes
+  identical movement, strength and confidence model: 35 declarations, 11,168 bytes
+  identical historical appearance model (Stage 6B): 1 declarations, 630 bytes
+  identical derived readings, sight and knowledge: 17 declarations, 5,056 bytes
+  identical data in app.js (roadmap step 2, D-5): 7 declarations, 3,097 bytes
+  identical narrative claims (roadmap step 4): 3 declarations, 76,285 bytes
+
+Rendering and interface declarations changed (0): 
+Added (0): 
+Removed (0): none
+
+Outside the script: CSS identical; markup identical; closing identical
+
+All 139 DATA declarations are byte-identical to the original build.

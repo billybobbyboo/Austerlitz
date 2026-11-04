@@ -1,0 +1,13 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> check:chronology
+> node tools/stage2/chronology.js --check
+
+chronology: 70 moves with a timed statement: 66 consistent, 4 early, 0 late; unresolved conflicts (decision 42, allowed by name): bag@6 early, guard_cav@6 early, kamensky@3 early, kamensky@4 early; explicit times 25
+timed statements: 155 (data.js and analysis.js; 138 timed strings and comments, 86 read, 52 excluded by class: 39 tm, 9 phase clocks, 1 tolWhy, 3 analysis.js comments)
+  cited 118 by 73 of 75 REVIEW rows (208 cites), allow-listed 37 (ALLOW_TIMED, 37 entries)
+derived arrivals: gqg@6 12:00-12:40 moveMin (named in MOVEMIN_DERIVED); sthilaire@3 08:45-09:15 ceiling (flagged: the tactical rate does not fit before the next anchor); vandamme@3 08:45-09:14 ceiling (flagged: the tactical rate does not fit before the next anchor); vandamme@7 13:00-13:24 tactical; rivaud@3 08:45-09:25 tactical; drouet@3 08:45-09:26 tactical; c_gren@7 13:00-13:29 tactical; dok@1 07:00-07:33 tactical; lang@1 07:00-07:20 tactical; prz@1 07:00-07:18 tactical; bag@6 11:15-11:40 tactical
+forced dated legs: kollo@5; at 80% of the ceiling or more: 4 (sthilaire@3 99.3%, vandamme@3 99.1%, guard_inf@6 80.4%, kollo@5 97.3%), each named
+movement audit (auditMovement: rate, crossings, explicit times): 0 findings
+still open (a dating question, waiting on the sources): the ceiling-flagged legs sthilaire@3, vandamme@3; the dated legs forced near the ceiling kollo@5; the unresolved conflicts bag@6, guard_cav@6, kamensky@3, kamensky@4
+errors: 0

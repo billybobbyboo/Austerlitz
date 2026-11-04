@@ -63,6 +63,7 @@ records. The evidence registers: `docs/step2-evidence/`, `docs/step4-evidence/`,
 - H. Structure for combining the three audits
 - I. Owner decisions
 - J. Summary
+- K. Comparison with ChatGPT's audit (added 4 November 2026)
 
 ## A. Executive verdict
 
@@ -80,9 +81,9 @@ Stage 8 device report names it (2,810,630 bytes, md5 `f10fe585...`, SHA-256 `bf2
 - *The picture and access.* The light, atmosphere and palette are coherent through the day. Keyboard paths and dialogs are sound, except that panels opened
   from the keyboard do not take the focus (`CL-UX-10`); contrast is AA throughout.
 - *Stage 8.* Its work (8A-8L) is implemented as the owner decided, as far as examined (most decisions by content; 252-254, 256 and 258 only
-  through the passing checks and the records, C.1), with residuals (`CL-HIS-04`, `CL-GEO-08`). Of this audit's 151
-  findings, 18 are new in Stage 8 or later, 6 mixed and 108 inherited from before it; the rest give no origin:
-  16 name an owner's acceptance instead, two say "optional improvement" and one "unknown".
+  through the passing checks and the records, C.1), with residuals (`CL-HIS-04`, `CL-GEO-08`). Of this audit's 158
+  findings, 19 are new in Stage 8 or later, 6 mixed and 112 inherited from before it; the rest give no origin:
+  18 name an owner's acceptance instead, two say "optional improvement" and one "unknown".
 
 **What is not yet good enough.** By its own standard (`CLAUDE.md`: historical integrity first) the map is not yet finished:
 - **One critical exposure (S1), not in the map itself.** The published device-route page puts any URL given in `?src=` into its frame, and a
@@ -113,8 +114,8 @@ Stage 8 device report names it (2,810,630 bytes, md5 `f10fe585...`, SHA-256 `bf2
   delivered frames, not missed refreshes: beside 8.6% and 18.15% long, 28-32% of 60 Hz refreshes bring no new frame (`CL-PERF-03`).
 - *Not measured.* No integrated-GPU run exists (`CL-PERF-02`). Nothing measured on the RTX desktop speaks for a weaker machine.
 
-**The register.** 151 findings. By severity: S1 1, S2 15, S3 71, S4 64. By kind: 59 confirmed defects, 34 probable problems, 25 optional improvements, 14 accepted compromises, 11 untested areas, 8 unresolved historical questions. Every finding but five went to a skeptic told to refute it; each S1 and S2
-to two, one reproducing and one attacking its premise. The five, registered last (the completeness critic's three area findings and two carried items from the records' evidence), did not. Verification: confirmed 116, weakened 30, not re-verified 5. Where a skeptic weakened a finding, its correction is applied
+**The register.** 158 findings. By severity: S1 1, S2 15, S3 76, S4 66. By kind: 61 confirmed defects, 36 probable problems, 25 optional improvements, 16 accepted compromises, 12 untested areas, 8 unresolved historical questions. Every finding but five went to a skeptic told to refute it; each S1 and S2
+to two, one reproducing and one attacking its premise. The five, registered last (the completeness critic's three area findings and two carried items from the records' evidence), did not. Verification: confirmed 121, weakened 30, not re-verified 5, plausible 2. Where a skeptic weakened a finding, its correction is applied
 to the entry's fields; the area's original claim stays in its `result.json` and the verifier's in `verification/`, and the verification row
 says what changed where the auditor recorded it. Weakened findings were mostly the severities of map furniture and of the tests, origins,
 and the wording of six history and source findings, two of them cited above (`CL-HIS-02`, now unreviewed rather than wrong grades;
@@ -139,6 +140,14 @@ refit (WP-04). Then legibility, accessibility and the picture (WP-07 to WP-10), 
 - No screen reader was used.
 - The source verification is a consequence-chosen sample, not the whole text.
 - Three usage-limit interruptions stopped areas mid-way. Each was finished from its saved evidence, and its README says what was redone.
+
+**Addendum (4 November 2026): ChatGPT's audit.** ChatGPT audited the same build independently. Section K compares the two audits:
+- *Already here.* Six of its 11 findings are in this register. Its continuous playback run lengthens `CL-MAP-01`'s worst gap to 36.6 s.
+- *Added.* Seven are new: `CL-SRC-10`, `CL-VIS-10`, `CL-VIS-11`, `CL-PERF-15`, `CL-PERF-16`, `CL-REC-09` and `CL-REC-10`. Two of them were
+  reproduced here.
+- *Found only here.* This audit's S1 and its integrity findings are not in ChatGPT's register.
+
+The finalized roadmap, with an effort level for each pass, is `docs/ROADMAP_FINAL_AUDIT.md`.
 
 ## B. Findings register
 
@@ -167,7 +176,7 @@ The fields follow the brief: subsystem, user impact, status and origin, expected
 cause (hypothesis, and whether verified), remedy, effort, dependencies, risk of the remedy, validation, prior records and verification. A
 field the area did not fill is omitted, never invented.
 
-Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed defect 59, probable problem 34, optional improvement 25, accepted compromise 14, untested area 11, unresolved historical question 8; by adversarial verification CONFIRMED 116, WEAKENED 30, not re-verified 5.
+Counts: 158 findings; by severity S1 1, S2 15, S3 76, S4 66; by kind confirmed defect 61, probable problem 36, optional improvement 25, accepted compromise 16, untested area 12, unresolved historical question 8; by adversarial verification CONFIRMED 121, WEAKENED 30, not re-verified 5, PLAUSIBLE 2.
 
 ### B.1 Index (most severe first)
 
@@ -180,7 +189,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | [CL-HIS-03](#cl-his-03) | S2 | P2 | confirmed defect | confirmed | WEAKENED | The Russian Guard's plotted approach takes one side of a divided register without saying so: its morning positions are graded A though the project's readings contest them (the disposition and Stutterheim against the official report's 'ordered height of Krzenowitz'); the plan text misstates the disposition; nobody is drawn at Blasowitz when it falls 'from the Russian Guard' |
 | [CL-HIS-04](#cl-his-04) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | New in 8J: Legrand's division marker walks through the Sokolnitz castle and the III Column holding it |
 | [CL-HIS-05](#cl-his-05) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | Russian Guard, Liechtenstein and Miloradovich drawn walking away from the enemy while shown Counter-attacking/Charging |
-| [CL-MAP-01](#cl-map-01) | S2 | P2 | confirmed defect | confirmed | WEAKENED | Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28 s (about 100 clock minutes) at a stretch; the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window |
+| [CL-MAP-01](#cl-map-01) | S2 | P2 | confirmed defect | confirmed | WEAKENED | Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28-37 s at a stretch (36.6 s for the French Guard cavalry, about 11:02-13:15, in ChatGPT's continuous run); the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window |
 | [CL-MAP-03](#cl-map-03) | S2 | P2 | confirmed defect | confirmed | WEAKENED | No symbol key at all between 720 and 1079 px wide or on a phone held upright, so the integrity encodings (the B and C grades, '?', the dashed intended routes) go unexplained there; Watch, Clean and a phone held landscape hide it by recorded design or decision |
 | [CL-SIM-01](#cl-sim-01) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | The open dossier goes stale while the clock moves within a phase: 'Position at 12:03' still shown at 12:37, a place's 'Formations nearby now' wrong in 86 of 240 place-phases |
 | [CL-SIM-02](#cl-sim-02) | S2 | P2 | confirmed defect | confirmed | CONFIRMED | 'Whose eyes?' still draws the movement arrows, arrow labels and plateau count of formations the reading does not know |
@@ -195,10 +204,12 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | [CL-MAP-06](#cl-map-06) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | The caption shrinks the act and phase to a letter or nothing with orphan separators, and in Watch at 1280 px its readings and event give way entirely |
 | [CL-PERF-01](#cl-perf-01) | S3 | P2 | probable problem | confirmed (no thermal evidence exists; Play's series is flat); the cause of the Overview's dips is unverified | CONFIRMED | 'After the phone warms' is asserted without temperature or throttling evidence, and the reports contradict a warming trend for Play |
 | [CL-PERF-02](#cl-perf-02) | S3 | P2 | untested area | unverified | CONFIRMED | No integrated-GPU run: performance on the machine decision 138 and section 8.3 name is unknown |
+| [CL-PERF-16](#cl-perf-16) | S3 | P2 | confirmed defect | confirmed (reproduced here) | CONFIRMED | The phone intervention rule accepts empty measurement sets: two empty reports both 'stand', both kinds are 'tested', every candidate 'cures' with gain NaN, and the rule recommends figShadow (exit 0) |
 | [CL-REC-02](#cl-rec-02) | S3 | P2 | confirmed defect | open | CONFIRMED | README.md describes the checks wrongly again and calls the file self-contained (the prior audit's R-1 recurred) |
 | [CL-REC-03](#cl-rec-03) | S3 | P2 | confirmed defect | open | CONFIRMED | Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred) |
 | [CL-SIM-03](#cl-sim-03) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | A theme chosen while the clock plays does not stop it: the clock runs on and Follow takes the camera from the theme's view within seconds |
 | [CL-SIM-04](#cl-sim-04) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | The overlays' fade draws the outgoing phase's arrows when it should not: with the Movement layer off every phase change flashes them at about 0.87 opacity, and a phase change that interrupts a fade pops them back to 0.9 (stepping through phases quickly flashes each skipped phase's arrows) |
+| [CL-SRC-10](#cl-src-10) | S3 | P2 | untested area | confirmed coverage gap (inventory recomputed by both audits) | CONFIRMED | Source verification is incomplete: 481 of 704 inventoried statements carry no claim, and no pass has yet prioritised the prominent ones (the opening, the tour, the phase ledes, the Command explanations, the headline strengths) |
 | [CL-TEST-02](#cl-test-02) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | No check can see long gaps: the motion benchmark's longest-hidden measure saturates at its own 121-frame window, and the one check that plays the whole day counts drops, not how long a formation stays hidden |
 | [CL-UX-04](#cl-ux-04) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | The timeline's tooltip covers the control row and swallows a press on Play reached from the timeline |
 | [CL-UX-05](#cl-ux-05) | S3 | P2 | confirmed defect | confirmed | CONFIRMED | Internal project references are shown to visitors: 'owner decision 106', register ids '(S5.7)', 'roadmap step 6B (docs/stage6-evidence/readings-composition.md)', 'the register (read partly on the text layer)', and in the full dossier's 'Dated by' rows 'Until roadmap step 4b ... (question 177)', '(moveMin)' |
@@ -229,6 +240,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | [CL-PERF-04](#cl-perf-04) | S3 | P3 | probable problem | confirmed | CONFIRMED | The desktop before/after spans a browser update (Chrome 155 to 156) that section 24 does not record; the accepted CPU excess cannot be attributed to Stage 8 alone |
 | [CL-PERF-05](#cl-perf-05) | S3 | P3 | probable problem | confirmed | CONFIRMED | The 'heaviest frame' figures in sections 24-25 are segment medians, and the census maxima are below what the route drew in Play and in phase 8's Overview |
 | [CL-PERF-06](#cl-perf-06) | S3 | P3 | accepted compromise | inferred | CONFIRMED | The two phone readings are not equally strong: P5 (Stage 8's own starting build) points to a Play slowdown from 53 to 43 fps; the P3/P4 proxy is dominated by device state |
+| [CL-PERF-15](#cl-perf-15) | S3 | P3 | accepted compromise | confirmed in the owner's device reports | CONFIRMED | Accepted: the warmed phone's Overview and Play run at about 41 and 43 fps, never 60; hiding the figures and standards raises Play to about 59 fps, so their combined workload is the lever for any optimisation |
 | [CL-REC-05](#cl-rec-05) | S3 | P3 | untested area | accepted by decisions 175 and 189 | WEAKENED | Two items "recorded complete on the owner's word" carry no results: the screen-reader session (decision 175) and the human second reading (decision 189) |
 | [CL-ROB-02](#cl-rob-02) | S3 | P3 | confirmed defect | open | CONFIRMED | A context loss while the clock plays can throw an uncaught TypeError from three r128 ("reading 'trim'") |
 | [CL-ROB-03](#cl-rob-03) | S3 | P3 | probable problem | open | CONFIRMED | The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes |
@@ -256,6 +268,8 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | [CL-VIS-02](#cl-vis-02) | S3 | P3 | confirmed defect | confirmed | WEAKENED | Trees and bushes stand on the frozen Satschan mere |
 | [CL-VIS-03](#cl-vis-03) | S3 | P3 | probable problem | confirmed | CONFIRMED | Blocks face along slow drifts and keep stale facings, so some face away from an adjacent enemy |
 | [CL-VIS-04](#cl-vis-04) | S3 | P3 | confirmed defect | confirmed | CONFIRMED | Formation blocks interpenetrate buildings and each other |
+| [CL-VIS-10](#cl-vis-10) | S3 | P3 | accepted compromise | measured by ChatGPT on the audited build (md5 f10fe585, Chromium 141); not re-run by this audit | PLAUSIBLE | The original every-foot-on-the-ground criterion remains unmet: at 4x a few dozen of 39,136 sampled poses per kit are off their resting seat (worst 0.8 px simple, 4.8 px rich), and at 10.33x the rich kit's worst reaches about 12 px for men and 10 px for horses |
+| [CL-VIS-11](#cl-vis-11) | S3 | P3 | probable problem | confirmed by both audits' captures | CONFIRMED | Landmark roles are not communicated at symbolic scale: the Sokolnitz castle reads smaller than the farmhouses and the III Column's figures hide it entirely at 10:00; the Austerlitz garden is not discernible at the Overview and has no paper-map sign |
 | [CL-PERF-12](#cl-perf-12) | S3 | P4 | accepted compromise | attributed | WEAKENED | Decision 268 (a)'s desktop script excess: the +30% GL calls a frame are 8D's and 8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's own per-frame app work about 20-32%; about a third (three.js JavaScript) unattributed |
 | [CL-ROB-04](#cl-rob-04) | S3 | P4 | confirmed defect | open | CONFIRMED | Each context restore keeps about 2.6-4 MB of heap and one more dispose listener per geometry and texture (three r128) |
 | [CL-ROB-05](#cl-rob-05) | S3 | P4 | accepted compromise | accepted | CONFIRMED | The single file needs cdnjs: offline, or where cdnjs is blocked, the map cannot start |
@@ -292,6 +306,8 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | [CL-PERF-11](#cl-perf-11) | S4 | P4 | accepted compromise | confirmed | CONFIRMED | Section 8.5's acceptance rule is weak at both refresh rates, and the per-PR before/after was replaced by one end-of-stage comparison |
 | [CL-REC-04](#cl-rec-04) | S4 | P4 | confirmed defect | open | WEAKENED | The carried checklist misstates two of its own items: kienmayer@7's contradiction of its own act since Stage 0 filed as an 8J offset, and Caffarelli's separation given as 2.5-2.9 km where the build draws 2.13-2.64 km |
 | [CL-REC-08](#cl-rec-08) | S4 | P4 | confirmed defect | open | CONFIRMED | CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and "Current state (October 2026)" |
+| [CL-REC-09](#cl-rec-09) | S4 | P4 | confirmed defect | confirmed (reproduced here) | CONFIRMED | build.py prints the build's character count as 'bytes' (2,801,357) where the file is 2,810,630 bytes |
+| [CL-REC-10](#cl-rec-10) | S4 | P4 | probable problem | measured by ChatGPT on the audited build (md5 f10fe585, Chromium 141); not re-run by this audit | PLAUSIBLE | The carried low-sun glare figure (43.5% at 15:00) is not a current measurement: on the audited build and CI's browser the same probe gives 5.90% |
 | [CL-ROB-06](#cl-rob-06) | S4 | P4 | probable problem | open | CONFIRMED | Seven archived builds on the same Pages origin load three.js without integrity |
 | [CL-ROB-07](#cl-rob-07) | S4 | P4 | optional improvement | open | CONFIRMED | Assurance tools CI never runs have started to rot: 5 of Stage 8's 189 mutations no longer apply; check:visual runs only on dispatch |
 | [CL-ROB-08](#cl-rob-08) | S4 | P4 | optional improvement | open | CONFIRMED | The project has no licence |
@@ -503,6 +519,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Validation | plateau-day probe; check:chronology. |
 | Prior records | H-1; decision 42; CONFLICTS kamensky@3 |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
+| Other audits | ChatGPT CG-F03 (the named conflict kamensky@3/@4) |
 | Area finding | history #7 |
 
 <a id="cl-his-08"></a>
@@ -527,6 +544,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Validation | legs-water.js side list. |
 | Prior records | 8J carried item |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
+| Other audits | ChatGPT CG-F03 (the Kienmayer offset) |
 | Area finding | history #8 |
 
 <a id="cl-his-09"></a>
@@ -552,6 +570,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Validation | caffarelli.js |
 | Prior records | 8K carried item |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
+| Other audits | ChatGPT CG-F03 (the Caffarelli/Bagration separation) |
 | Area finding | history #9 |
 
 <a id="cl-his-10"></a>
@@ -915,6 +934,25 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | sources-chronology #1 |
 
+<a id="cl-src-10"></a>
+
+**CL-SRC-10 · S3 · P2 · untested area.** Source verification is incomplete: 481 of 704 inventoried statements carry no claim, and no pass has yet prioritised the prominent ones (the opening, the tour, the phase ledes, the Command explanations, the headline strengths)
+
+| field | |
+|---|---|
+| Subsystem | historical narrative and order of battle (narrative.js, data.js, analysis.js) |
+| User impact | The map can be shared as a qualified reconstruction, but its narrative cannot be described as source-verified; an unchecked statement is not shown wrong, but nothing stands behind it beyond the project's narrative. |
+| Status / origin | confirmed coverage gap (inventory recomputed by both audits) / inherited (disclosed scope boundary since roadmap step 4) |
+| Expected | Prominent claims a visitor reads first carry a claim with a registered reading; the rest keep an accurate qualification. |
+| Observed | 481 of 704 statements are unchecked; neither the opening's, the tour's and the phase ledes' statements nor the headline strengths have been triaged as a group. ChatGPT's three fresh primary-page samples (Rapp 1823 p. 60, Materialien 1806 p. 106, Thiebault III p. 466) support the statements around them; this audit's 62 traced claims found the contradictions in CL-SRC-01, CL-HIS-01 and CL-HIS-06. |
+| Evidence | docs/step4-evidence/inventory.json (byClaim: unchecked 481, interpretation by class 75, attributed 63, disputed 65, interpretation 12, uncertain 6, derived 2); ChatGPT's CG-F02 and docs/final-audit-chatgpt-evidence/narrative-coverage.csv; this audit's E.1 coverage statement |
+| References | docs/step4-evidence/inventory.json; narrative.js STATEMENT_CLAIMS, CLAIM_BY_CLASS; data.js SOURCE_NOTE |
+| Remedy | WP-15: triage the unchecked statements by prominence (the opening, the tour, the phase ledes, the Command explanations, the headline strengths first), then source them in batches of 10-20 claims as guarded data tasks, keeping disagreements and marking unsupported precision. |
+| Effort | 1-3 research days per batch of 10-20 claims; the whole remainder cannot be sized before the triage |
+| Adversarial verification | CONFIRMED: Both audits recomputed the inventory: 481 of 704 unchecked (docs/step4-evidence/inventory.json, kept current by test.js). |
+| Auditor's note | Registered by the auditor from the evidence named; not given a separate skeptic. |
+| Other audits | ChatGPT CG-F02 (new from ChatGPT) |
+
 #### CL-GEO: geography: relief, water, settlements and landmarks
 
 <a id="cl-geo-01"></a>
@@ -1049,6 +1087,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Prior records | history: open questions drawn or shown without qualification: Krug and Bellowitz |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Auditor's note | Krug's place is also named in CL-HIS-14, which defers to this entry for it. |
+| Other audits | ChatGPT CG-F03 (Krug) |
 | Area finding | geography #7 |
 
 <a id="cl-geo-08"></a>
@@ -1104,6 +1143,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Effort | under 0.5 day |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Auditor's note | Verifier: docs/STAGE8_SPEC.md 21.9 says its unresolved questions are kept open in the sources sheet; four are not in SOURCE_NOTE.body[5]. |
+| Other audits | ChatGPT CG-F03 (the unresolved geographic questions; ChatGPT's research queue is WP-15) |
 | Area finding | geography #10 |
 
 <a id="cl-geo-11"></a>
@@ -1752,7 +1792,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 
 <a id="cl-map-01"></a>
 
-**CL-MAP-01 · S2 · P2 · confirmed defect.** Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28 s (about 100 clock minutes) at a stretch; the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window
+**CL-MAP-01 · S2 · P2 · confirmed defect.** Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28-37 s at a stretch (36.6 s for the French Guard cavalry, about 11:02-13:15, in ChatGPT's continuous run); the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window
 
 | field | |
 |---|---|
@@ -1773,6 +1813,8 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Validation | the long runs here re-run: no formation under 50% over 08:30-11:30; gaps bounded in clock minutes; the 16 motions within their ceilings |
 | Prior records | docs/STAGE8_SPEC.md 22.3 'Play's longer hidden interval'; docs/STAGE8_SPEC.md 23.2 'What it does not show' |
 | Adversarial verification | WEAKENED: Both lenses: real and reproduced in Landscape with counters; the origin as stated was wrong (the cavalry's starvation is inherited, worse before Stage 8 for d'Hautpoul and the Russian Guard cavalry; Stage 8 lowered the totals and lengthened the gaps): corrected. Not an accepted compromise: section 23.2 leaves longer playback to this audit. S2 kept. [lenses: WEAKENED (premise); WEAKENED (repro)] |
+| Auditor's note | ChatGPT (CG-F01) ran 3,600 frames from 09:00 in one piece and found the French Guard cavalry placement-hidden for 36.633 s on the driver's clock (battle minutes 661.8-794.8), the Russian Guard cavalry 28.2 s and Miloradovich 24.6 s; a selected formation stayed drawn in every sample and the paper map's longest gap was 667 ms. This audit's runs were split at 11:30 and 12:00, so a gap spanning that boundary was cut. ChatGPT's 4x run's 82.5 s maximum includes the clock resting at 18:00 and is not a playback gap. |
+| Other audits | ChatGPT CG-F01 (same issue; ChatGPT measured a longer continuous gap) |
 | Area finding | visibility #1 |
 
 <a id="cl-map-02"></a>
@@ -2114,6 +2156,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Remedy | Follows V-M5 or V-M11 if adopted. |
 | Effort | none separately |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
+| Other audits | ChatGPT CG-F05 (its Littawa part) |
 | Area finding | visual-maps #16 |
 
 <a id="cl-map-19"></a>
@@ -2274,6 +2317,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Effort | 0.25-1 day |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Auditor's note | Verifier: the sources sheet says 'Not drawn', but the Santon's and the chapel's place dossiers do not (buildingsSection returns nothing for a landmark): the dossier line is the cheap remedy. |
+| Other audits | ChatGPT CG-F05 (its omitted-landmark part) |
 | Area finding | visual-landscape #7 |
 
 <a id="cl-vis-07"></a>
@@ -2334,6 +2378,44 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Risk of the remedy | low |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | state #8 |
+
+<a id="cl-vis-10"></a>
+
+**CL-VIS-10 · S3 · P3 · accepted compromise.** The original every-foot-on-the-ground criterion remains unmet: at 4x a few dozen of 39,136 sampled poses per kit are off their resting seat (worst 0.8 px simple, 4.8 px rich), and at 10.33x the rich kit's worst reaches about 12 px for men and 10 px for horses
+
+| field | |
+|---|---|
+| Subsystem | figure gait and terrain seating (app.js ANIM, animAt, animChord, layoutFigs) |
+| User impact | Rare close views show a planted foot or hoof above or below the ground; larger at the 10.33x relief. |
+| Status / origin | measured by ChatGPT on the audited build (md5 f10fe585, Chromium 141); not re-run by this audit / accepted-compromise (decision 265 (a), provisional) |
+| Expected | Decision 265 (a)'s chord model with its sampled bounds; the original criterion allowed no residual. |
+| Observed | Per ChatGPT: at 4x, 25 of 39,136 men's poses beyond 0.03 units for each kit, worst 0.825 px (simple) and 4.818 px (rich); rich horses 29 of 7,704 beyond, worst 3.227 px; at 10.33x the rich kit's worst 12.089 px (men) and 10.357 px (horses), each against the instance's own resting seat. |
+| Evidence | docs/final-audit-chatgpt-evidence/contact-current/contact.json and contact-current.log (ChatGPT's CG-F04); this audit's C.4 item C-09 (not re-measured here) |
+| References | tools/stage8/contact-8f.js; docs/STAGE8_SPEC.md 18.2, 20.10, 22.6 |
+| Remedy | Keep the bounded convention; if close views justify it, measure a near-only foot-profile solution within the animation budget before adopting it (WP-10, optional). |
+| Effort | 2-5 days for a measured near-only prototype; none if kept |
+| Adversarial verification | PLAUSIBLE: ChatGPT's measurement on the audited build (md5 f10fe585, Chromium 141); its tool is the project's own contact-8f.js; not re-run by this audit. |
+| Auditor's note | Registered by the auditor from the evidence named; not given a separate skeptic. |
+| Other audits | ChatGPT CG-F04 (new from ChatGPT) |
+
+<a id="cl-vis-11"></a>
+
+**CL-VIS-11 · S3 · P3 · probable problem.** Landmark roles are not communicated at symbolic scale: the Sokolnitz castle reads smaller than the farmhouses and the III Column's figures hide it entirely at 10:00; the Austerlitz garden is not discernible at the Overview and has no paper-map sign
+
+| field | |
+|---|---|
+| Subsystem | buildings, gardens and the cartographic hierarchy (world.js LANDMARK_SITES, GARDENS, castlePlan8g) |
+| User impact | The castle central to the Sokolnitz narrative is hard to identify among troops and fog; the garden is clear only close up. |
+| Status / origin | confirmed by both audits' captures / inherited, within decisions 261 (a) and 266 (a) |
+| Expected | A visitor can identify the landmark's role while its supported site and the accepted scale stay intact. |
+| Observed | As the title; the castle's site and size are as decided (266 (a)), the garden's rows a convention. |
+| Evidence | docs/audit-post8-evidence/visual-landscape/README.md (carried status: close up the castle reads smaller than the farmhouses; at 10:00 the III Column's figures hide it); docs/final-audit-chatgpt-evidence/castle-current.jpg, garden-current.jpg (ChatGPT's CG-F05) |
+| References | world.js:162 LANDMARK_SITES; world.js:169 GARDENS; docs/STAGE8_SPEC.md 21.7, 22.2 |
+| Remedy | Prototype a restrained landmark cue (an outline or a callout on selection or hover, a paper-map garden sign) with no relocation and no growth of the castle; measure legibility among troops and fog (WP-08). |
+| Effort | 1-3 days |
+| Adversarial verification | CONFIRMED: Both audits' captures show it (this audit's visual-landscape carried status; ChatGPT's castle-current.jpg and garden-current.jpg). |
+| Auditor's note | Registered by the auditor from the evidence named; not given a separate skeptic. |
+| Other audits | ChatGPT CG-F05 (new from ChatGPT, corroborated by this audit's captures) |
 
 #### CL-TEST: tests, benchmarks and CI
 
@@ -2778,6 +2860,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Remedy | A records-only commit: point README's table at CLAUDE.md's Checks section instead of copying counts and times, or update them; write "one HTML file; three.js r128 is loaded from cdnjs with its integrity hash". |
 | Validation | python3 -I tools/audit-post8/records/doc-consistency.py then reads the corrected lines (its quotes would no longer be found). |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
+| Other audits | ChatGPT CG-F09 (its README part: same issue) |
 | Area finding | records #1 |
 
 <a id="cl-rec-03"></a>
@@ -2833,7 +2916,8 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Remedy | Run the 24-item screen-reader script once on the final build and read the 15 quotes once; meanwhile correct docs/stage6-evidence/second-reading.md's stale 'stays open for the owner' (no application change). |
 | Validation | The script's result column filled, or the label present. |
 | Adversarial verification | WEAKENED: Verifier: both attestations are labelled; what is untested is any screen reader on the current build; S3/P3. [lenses: WEAKENED (batch)] |
-| Auditor's note | Verifier: docs/stage6-evidence/second-reading.md still says the human second reading 'stays open for the owner' after decision 189. |
+| Auditor's note | Verifier: docs/stage6-evidence/second-reading.md still says the human second reading 'stays open for the owner' after decision 189. ChatGPT (CG-F11) reports the same gap: the session's 24 result cells are blank. |
+| Other audits | ChatGPT CG-F11 (same issue) |
 | Area finding | records #7 |
 
 <a id="cl-rec-06"></a>
@@ -2871,6 +2955,44 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Validation | node tools/audit-post8/records/claims-count.js |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | records #4 |
+
+<a id="cl-rec-09"></a>
+
+**CL-REC-09 · S4 · P4 · confirmed defect.** build.py prints the build's character count as 'bytes' (2,801,357) where the file is 2,810,630 bytes
+
+| field | |
+|---|---|
+| Subsystem | build (build.py) |
+| User impact | None for visitors; a contributor reading the build log gets the wrong size (check:baseline uses the right one). |
+| Status / origin | confirmed (reproduced here) / inherited |
+| Expected | A 'bytes' label reports UTF-8 bytes. |
+| Observed | print('bytes:', len(out)) counts the Python string's characters. |
+| Evidence | docs/audit-post8-evidence/chatgpt-comparison/build-bytes.txt; ChatGPT's CG-F09 |
+| References | build.py:53 |
+| Remedy | Print len(out.encode('utf-8')), or label the value characters (WP-13). |
+| Effort | minutes |
+| Adversarial verification | CONFIRMED: Reproduced by this audit (chatgpt-comparison/build-bytes.txt): build.py prints 2,801,357, the character count; the file is 2,810,630 bytes. |
+| Auditor's note | Registered by the auditor from the evidence named; not given a separate skeptic. |
+| Other audits | ChatGPT CG-F09 (its build-log part: new from ChatGPT; reproduced here) |
+
+<a id="cl-rec-10"></a>
+
+**CL-REC-10 · S4 · P4 · probable problem.** The carried low-sun glare figure (43.5% at 15:00) is not a current measurement: on the audited build and CI's browser the same probe gives 5.90%
+
+| field | |
+|---|---|
+| Subsystem | the records' measurements (docs/STAGE8_SPEC.md 20.10; the carried item C-10) |
+| User impact | None for visitors; the records overstate what is currently measured (the bright sheen is still visible). |
+| Status / origin | measured by ChatGPT on the audited build (md5 f10fe585, Chromium 141); not re-run by this audit / new-regression (records since 8H) |
+| Expected | Each numerical proxy tied to its build, browser and view. |
+| Observed | The records carry 43.5% without its build and browser; the current probe gives 5.90%; the cause of the difference is not established. |
+| Evidence | docs/final-audit-chatgpt-evidence/ice-current/ice-8h-audit.json (md5 f10fe585, Chromium 141.0.7390.37; low 15:00 glare15 5.90%); the old 43.5% came from build e8fed44b on Chromium 153 (ChatGPT's CG-F10) |
+| References | tools/stage8/ice-8h.js; docs/STAGE8_SPEC.md 20.10; docs/stage8-evidence/8h/ice/ice-8h-clear.json |
+| Remedy | Annotate the old figure with its build and browser and record the current one, keeping the historical result (WP-13); the appearance itself stays decision 264 (a). |
+| Effort | an hour |
+| Adversarial verification | PLAUSIBLE: ChatGPT's measurement on the audited build (md5 f10fe585, Chromium 141) with the project's ice-8h.js; not re-run by this audit. |
+| Auditor's note | Registered by the auditor from the evidence named; not given a separate skeptic. |
+| Other audits | ChatGPT CG-F10 (new from ChatGPT) |
 
 #### CL-ROB: robustness, security, dependencies and maintainability
 
@@ -3182,6 +3304,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Validation | On future reports, the new columns from the histogram must reproduce the route's fps; reconcile.js re-run. |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Auditor's note | Verifier: STAGE8_SPEC.md:1259 states the threshold max(1.5 R, 25 ms); STEP6_SPEC.md:179 and the perf-route.js:157 comment call it 'a missed refresh', which is wrong at 144 Hz. |
+| Other audits | ChatGPT CG-F06 (the long-frame definition: same reading) |
 | Area finding | perf #1 |
 
 <a id="cl-perf-04"></a>
@@ -3201,6 +3324,7 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Effort | 0.25 h (record); 1-3 h (optional profile) |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Auditor's note | The perf-attribution area (CL-PERF-12) reproduced the excess on one fixed browser (Chromium 141 for both builds) at the device's ratio and located it between step 6's build and 8E: the unrecorded browser update remains a records defect, but it is not needed to explain the excess. |
+| Other audits | ChatGPT CG-F07 (the L3 comparison's limits: same reading) |
 | Area finding | perf #3 |
 
 <a id="cl-perf-05"></a>
@@ -3350,7 +3474,8 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Remedy | None required (decision 268 (a)). If the margin is wanted back: measure packing the per-instance aPh and aSl into one attribute and aPart into a spare component of an existing one (GL counts and the device route's js50), and the inherited freeRect memo (next finding), which is larger and independent. |
 | Validation | two sessions, two rounds each, palindrome order; counts load-independent |
 | Adversarial verification | WEAKENED: The mechanism holds; its share of the time was overstated ('mostly'): corrected to the measured shares. [lenses: WEAKENED (batch)] |
-| Auditor's note | Refines CL-PERF-04: the excess reproduces on one fixed browser, so the unrecorded Chrome update does not explain it. Verifier: the mechanism and counts confirmed exactly (430 kit draws, not about 450); 'mostly' holds for the GL-call growth (81% of +3,175 calls), not for the time. Remedy: packing aPh into aSl (both per instance) is feasible (-860 calls a frame); aPart has no spare component. |
+| Auditor's note | Refines CL-PERF-04: the excess reproduces on one fixed browser, so the unrecorded Chrome update does not explain it. Verifier: the mechanism and counts confirmed exactly (430 kit draws, not about 450); 'mostly' holds for the GL-call growth (81% of +3,175 calls), not for the time. Remedy: packing aPh into aSl (both per instance) is feasible (-860 calls a frame); aPart has no spare component. ChatGPT (CG-F07) found no subsystem attribution in the device reports; this audit's attribution came from the in-container profile (perf-attribution), so the two readings are compatible. |
+| Other audits | ChatGPT CG-F07 (same issue; ChatGPT did not attribute it, this audit did in part) |
 | Area finding | perf-attribution #1 |
 
 <a id="cl-perf-13"></a>
@@ -3389,6 +3514,44 @@ Counts: 151 findings; by severity S1 1, S2 15, S3 71, S4 64; by kind confirmed d
 | Remedy | Find which needsProgramChange condition fires per frame (lights.state.version, a material.version bump, fog) before any change; optional. |
 | Adversarial verification | CONFIRMED: [lenses: CONFIRMED (batch)] |
 | Area finding | perf-attribution #3 |
+
+<a id="cl-perf-15"></a>
+
+**CL-PERF-15 · S3 · P3 · accepted compromise.** Accepted: the warmed phone's Overview and Play run at about 41 and 43 fps, never 60; hiding the figures and standards raises Play to about 59 fps, so their combined workload is the lever for any optimisation
+
+| field | |
+|---|---|
+| Subsystem | phone rendering and frame pacing |
+| User impact | Longer phone sessions feel less fluid in the Overview and Play; the low Pratzen view stays near 60 fps. |
+| Status / origin | confirmed in the owner's device reports / accepted-compromise (decision 269 (a)) |
+| Expected | The accepted result stated as measured, not as smooth 60 fps. |
+| Observed | Median block fps 40.8 (Overview) and 43.35 (Play); every A block above 5% long; figures hidden, Play about 59 fps. |
+| Evidence | docs/audit-post8-evidence/perf/README.md (prior finding P-1: hiding the figures raises Play from 43 to 59 fps); ChatGPT's CG-F06 (frame-weighted long shares 24.61% and 8.78% beside the block medians 18.15% and 8.6%) |
+| References | docs/stage8-evidence/device/phone-R1.json; docs/stage8-evidence/device/phone-R2.json; tools/step6/perf-route.js |
+| Remedy | Keep the acceptance; if optimising, profile the figure and standard workload on the phone first (WP-16), with matched builds and protocols. |
+| Effort | 1-3 days attribution, then 2-5 days for a justified optimisation |
+| Adversarial verification | CONFIRMED: The medians and the figures-hidden reference were recomputed by this audit's perf area from the device reports; the frame-weighted shares (24.61%, 8.78%) are ChatGPT's. |
+| Auditor's note | Registered by the auditor from the evidence named; not given a separate skeptic. |
+| Other audits | ChatGPT CG-F06 (new as a register entry; the figures-hidden lever is in both audits' evidence) |
+
+<a id="cl-perf-16"></a>
+
+**CL-PERF-16 · S3 · P2 · confirmed defect.** The phone intervention rule accepts empty measurement sets: two empty reports both 'stand', both kinds are 'tested', every candidate 'cures' with gain NaN, and the rule recommends figShadow (exit 0)
+
+| field | |
+|---|---|
+| Subsystem | device evidence tooling (tools/step6/phone-rule.js) |
+| User impact | None for visitors; a malformed or incomplete future report could produce a build recommendation with no measurement behind it. |
+| Status / origin | confirmed (reproduced here) / inherited (decision 236's rule tool, roadmap step 6) |
+| Expected | Absent blocks, incomplete rounds and non-finite measures rejected with a non-zero exit. |
+| Observed | As.length 0 makes '0 >= 0' true, and Array.every over no blocks is true. |
+| Evidence | docs/audit-post8-evidence/chatgpt-comparison/phone-rule-empty.txt (reproduced by this audit: 'VERDICT: rule 2: figShadow cures every kind both runs test', exit 0); the real R1/R2 reports still give rule 4; ChatGPT's CG-F08 |
+| References | tools/step6/phone-rule.js:25-35; tools/step6/phone-rule.js:39-45 |
+| Remedy | Validate the expected kinds, rounds, block counts and finite positive measures before applying the rule; reject missingness explicitly; keep R1/R2's verdict unchanged (WP-13). |
+| Effort | 2-6 hours |
+| Adversarial verification | CONFIRMED: Reproduced by this audit on 4 November 2026 (docs/audit-post8-evidence/chatgpt-comparison/phone-rule-empty.txt): two empty reports give rule 2, figShadow, exit 0. |
+| Auditor's note | Registered by the auditor from the evidence named; not given a separate skeptic. |
+| Other audits | ChatGPT CG-F08 (new from ChatGPT; reproduced here) |
 
 ## C. Coverage matrix
 
@@ -3467,20 +3630,20 @@ Every item carried to this audit (`docs/STAGE8_SPEC.md` 20.13, 20.14, 21.9, 22.6
 | id | item | decision | status now | this audit |
 |---|---|---|---|---|
 | C-01 | Desktop performance: section 8.3's CPU line exceeded in Play at half speed (+1.5 ms) and the Overview's orbit (+1.1 ms); Play at 144 Hz holds about one frame in five or six for two refreshes | 268 (a) | accepted as measured (decision 268 (a)); attributed by this audit (CL-PERF-12) | CL-PERF-12, CL-PERF-04, CL-PERF-05, CL-PERF-08, CL-PERF-09, CL-PERF-11 |
-| C-02 | Phone performance: section 8.3's phone budget met; section 8.5 not evaluable like for like; after warming phase 8's Overview about 41 frames a second (18.1% long) and Play at half speed about 43 (8.6% long) | 269 (a) | accepted as measured (decision 269 (a)) | CL-PERF-06, CL-PERF-01, CL-PERF-03 |
+| C-02 | Phone performance: section 8.3's phone budget met; section 8.5 not evaluable like for like; after warming phase 8's Overview about 41 frames a second (18.1% long) and Play at half speed about 43 (8.6% long) | 269 (a) | accepted as measured (decision 269 (a)) | CL-PERF-06, CL-PERF-01, CL-PERF-03, CL-PERF-15 |
 | C-03 | An integrated GPU never measured (section 8.3's integrated-GPU condition; the machine decision 138 named) | 235; 250 (b); 268 (a), 269 (a) | not measured | CL-PERF-02; question 278 |
 | C-04 | The inconclusive brackets: desktop culling, effects off and gait each 12 of 12 "neither"; phone culling 7 of 12 faster with it, effects 4 of 12 faster with them on, gait 12 of 12 "neither" | 250 (b) | recorded; "not shown" by the rule on both devices | CL-PERF-07, CL-PERF-11, CL-PERF-10 |
 | C-05 | Visual effects off not faster on the phone (5 of 14 effects-off blocks fell to 35-47 frames a second): a visitor who turns them off may get a slower map (inference; not decided) | none | open; the F key is the only visitor path to effects off and nothing claims it is faster (completeness critic, code read) | CL-PERF-10 |
 | C-06 | Counters hidden during playback: Play's longest hidden formation 4,033 ms; three counters dropped at rest in the hybrid view at 09:00 | 267 (a) (accepts the benchmark's totals, not the visibility) | open; confirmed, and understated by the benchmark | CL-MAP-01, CL-MAP-02, CL-TEST-02; question 274, CL-MAP-14 |
 | C-07 | Visibility over longer playback than the benchmark's runs, judged on the screen | 267 (a) | measured in this audit: acceptable in three presentations, not in Landscape with counters | CL-MAP-01, CL-MAP-07, CL-MAP-17, CL-MAP-02 |
 | C-08 | The motion block's 16 totals over their ceilings (248 jumps, 998 pops against 245 and 985) | 267 (a) | settled (decision 267 (a); not re-required) | CL-TEST-14 (decision 267 (a), not re-required) |
-| C-09 | The troops' contact with the ground: 8F's chords with their bounds and counts, the original criterion (every foot on the ground) not satisfied, the animation's 0.2 ms budget not raised | 265 (a), provisional | provisional, unchanged (the device runs it waited on are recorded; the decision not revisited) | CL-VIS-01 (outside the check's scope), CL-TEST-08 |
-| C-10 | The ice under a low sun: the low views' glare at 15:00, 43.5% of the ice | 264 (a) | accepted, unchanged | CL-VIS-05 |
+| C-09 | The troops' contact with the ground: 8F's chords with their bounds and counts, the original criterion (every foot on the ground) not satisfied, the animation's 0.2 ms budget not raised | 265 (a), provisional | provisional (decision 265 (a)); re-measured by ChatGPT on the audited build: the original criterion still unmet (CL-VIS-10) | CL-VIS-01 (outside the check's scope), CL-TEST-08, CL-VIS-10 |
+| C-10 | The ice under a low sun: the low views' glare at 15:00, 43.5% of the ice | 264 (a) | accepted (decision 264 (a)); the carried 43.5% is not a current measurement: 5.90% on the audited build and CI's browser (ChatGPT's CG-F10, CL-REC-10) | CL-VIS-05, CL-REC-10 |
 | C-11 | The troops' uniform facings (decision 245 (a): none drawn), to be reconsidered now that the troops can be judged | 245 (a); 104 | unchanged; the owner's reconsideration open | question 280 |
 | C-12 | Artillery: the drivers on the guns on the heights (an inference from IV Corps' letter) and the gunners beside moving pieces | 243 (a) | unchanged; the owner has not decided | question 281 |
-| C-13 | The Sokolnitz castle's prominence (about 96 by 73 m, reading smaller than the farmhouses beside it) and the III Column's figures over its symbol from 08:00 to 14:10 | 266 (a) | accepted, confirmed | CL-HIS-04 (the III Column's neighbour); accepted, CL-VIS-04 |
+| C-13 | The Sokolnitz castle's prominence (about 96 by 73 m, reading smaller than the farmhouses beside it) and the III Column's figures over its symbol from 08:00 to 14:10 | 266 (a) | accepted, confirmed | CL-HIS-04 (the III Column's neighbour); accepted, CL-VIS-04, CL-VIS-11 |
 | C-14 | The castle's site on the model's road class, a track passing it (8J) | none (recorded, not acted on) | present | CL-GEO-11 |
-| C-15 | The Austerlitz garden under the château's symbol at the Overview's scale, and no garden sign on the paper map | 259 (a) (built in 8J); none for the sign | unchanged; not decided | question 282 |
+| C-15 | The Austerlitz garden under the château's symbol at the Overview's scale, and no garden sign on the paper map | 259 (a) (built in 8J); none for the sign | unchanged; not decided | question 282, CL-VIS-11 |
 | C-16 | Satschan's farmsteads: five of seven drawn (the drawn mere's outline, decision 27, leaves no room) | 261 (a) | accepted, confirmed | CL-VIS-02 (trees on the mere beside it); accepted |
 | C-17 | The omitted landmark symbols (BUILDINGS.notDrawn: St Anthony's chapel, the Santon's chapel, the Sokolnitz granary) | none (8G's data task; the alternatives not decided) | unchanged; not decided | CL-VIS-06; question 282, CL-GEO-01 |
 | C-18 | The Littawa's name dropped in the Plans view at the Overview | 267 (8L's bounded repair: the limit 13 on the owner's authorisation) | accepted; still dropped | CL-MAP-18, CL-MAP-11 |
@@ -3496,15 +3659,15 @@ Every item carried to this audit (`docs/STAGE8_SPEC.md` 20.13, 20.14, 21.9, 22.6
 | C-28 | More places beside a counter's anchor in motion (decision 258 (b), question 262) | 258 (b) prototyped; 262 (a) (8C's placement kept) | settled (not adopted) | CL-MAP-01, CL-MAP-14, CL-TEST-02 |
 | C-29 | The conventions labelled as such: the farmsteads' plan and the roofs (8G), the garden's rows (8J), the far plate's alpha (8I), the gait under compressed time (8E), the ribbons' widths (8A), the derived arrivals' rates (design values, unsourced) | 244 (a), 248 (a), 253 (b), 259 (a), 263 (a); 46 and section M.13 for the rates | accepted; labelled | CL-UX-08 |
 | C-30 | The identifications this map makes and says it makes: Stutterheim's heights by Dwaroschna as the ground east of Bosenitz, Schönhals's height as the rise east of the post, the 1825 sketch's places carried back to 1805, the 1826-52 road and post carried back to 1805 | 259 (a), 260 (a) | provisional, unchanged | CL-GEO-10 |
-| C-31 | Historical question: the places in 1805 of the highway and the post (the First Military Survey not reached) | 260 (a) | open | CL-GEO-10 |
-| C-32 | Historical question: which of the 1825 sketch's two channels carried the Goldbach north of the Sokolnitz castle in 1805 | 259 (a) | open; not visible to a visitor | CL-GEO-10, CL-GEO-04 |
-| C-33 | Historical question: the castle's walls | 259 (a) | open in the records; stated as settled on screen | CL-GEO-02 |
-| C-34 | Historical question: whether the bottom by Sokolnitz was marshy in December 1805 | 259 (a) | open in the records; drawn and told as settled | CL-GEO-06, CL-HIS-10, CL-TEST-04 |
-| C-35 | Historical question: the garden's planting in 1805 | 259 (a) | open and visible | question 282 |
-| C-36 | Historical question: Bagration's exact line at dawn and where he stood at 17:00 (Rausnitz, or already toward Austerlitz) | 180 (c); 260 (a) | open and visible | CL-HIS-17 |
-| C-37 | Historical question: which side of the road Schönhals's height lay | 260 (a) | open; not visible (moot in the drawing) | none (moot in the drawing) |
-| C-38 | Historical question: Krug's place (the Second Survey's "Kruch" beside Holubitz, against the drawn Krug's warped legacy place) | none | open; its stated reason inaccurate | CL-GEO-07, CL-HIS-14 |
-| C-39 | SOURCE_NOTE's open questions as they stand (Russian infantry flags, the Grenz coats, the vines, the Russian Guard's attack, Bagration's line, the post, Krug and Bellowitz, Kologrivov's command, Blasowitz, the Zuran, Bernadotte's crossing, the chapel's guns, the drowned, the divisions' numbers, Gladkov, Uvarov, the disputed hours) | 105 (kept while the table does not settle them); 125 | kept open in the data, with exceptions | CL-SRC-03, CL-SRC-04, CL-GEO-06, CL-GEO-10, CL-HIS-14, CL-SRC-01 |
+| C-31 | Historical question: the places in 1805 of the highway and the post (the First Military Survey not reached) | 260 (a) | open | CL-GEO-10, WP-15 |
+| C-32 | Historical question: which of the 1825 sketch's two channels carried the Goldbach north of the Sokolnitz castle in 1805 | 259 (a) | open; not visible to a visitor | CL-GEO-10, CL-GEO-04, WP-15 |
+| C-33 | Historical question: the castle's walls | 259 (a) | open in the records; stated as settled on screen | CL-GEO-02, WP-15 |
+| C-34 | Historical question: whether the bottom by Sokolnitz was marshy in December 1805 | 259 (a) | open in the records; drawn and told as settled | CL-GEO-06, CL-HIS-10, CL-TEST-04, WP-15 |
+| C-35 | Historical question: the garden's planting in 1805 | 259 (a) | open and visible | question 282, WP-15 |
+| C-36 | Historical question: Bagration's exact line at dawn and where he stood at 17:00 (Rausnitz, or already toward Austerlitz) | 180 (c); 260 (a) | open and visible | CL-HIS-17, WP-15 |
+| C-37 | Historical question: which side of the road Schönhals's height lay | 260 (a) | open; not visible (moot in the drawing) | WP-15 |
+| C-38 | Historical question: Krug's place (the Second Survey's "Kruch" beside Holubitz, against the drawn Krug's warped legacy place) | none | open; its stated reason inaccurate | CL-GEO-07, CL-HIS-14, WP-15 |
+| C-39 | SOURCE_NOTE's open questions as they stand (Russian infantry flags, the Grenz coats, the vines, the Russian Guard's attack, Bagration's line, the post, Krug and Bellowitz, Kologrivov's command, Blasowitz, the Zuran, Bernadotte's crossing, the chapel's guns, the drowned, the divisions' numbers, Gladkov, Uvarov, the disputed hours) | 105 (kept while the table does not settle them); 125 | kept open in the data, with exceptions | CL-SRC-03, CL-SRC-04, CL-GEO-06, CL-GEO-10, CL-HIS-14, CL-SRC-01, WP-15 |
 | C-40 | kienmayer@7's and lang@2's offsets from the corrected brook (each on its own evidence, 8J) | none (recorded, not acted on) | open; larger than recorded | CL-HIS-08, CL-HIS-11 |
 | C-41 | Caffarelli's anchors 2.5-2.9 km south of Bagration's from 14:30 (8K) | none (recorded) | open; the records' numbers high | CL-HIS-09 |
 | C-42 | The woods' habits, turns and scrub drawn again where a wood changed (8J; presentation) | none | recorded | CL-TEST-21 (not examined) |
@@ -3513,7 +3676,7 @@ Every item carried to this audit (`docs/STAGE8_SPEC.md` 20.13, 20.14, 21.9, 22.6
 | C-45 | Owner's note L3: depth and detail in the troops; movement that does not look like floating | 242 (a), 243 (a), 244 (a), 245 (a) | done (8E), with residuals | CL-VIS-03, CL-VIS-04; questions 280, 281, CL-HIS-05, CL-VIS-01 |
 | C-46 | Owner's note L4: the ponds and water (the meres frozen) | 246 (a), 247 (a), 264 (a) | done (8F), with residuals | CL-VIS-01, CL-VIS-02, CL-VIS-05 |
 | C-47 | Owner's note L5: buildings and structures | 248 (a), 259 (a), 261 (a), 266 (a) | done (8G, 8J), with residuals | CL-VIS-04, CL-VIS-06, CL-GEO-05, CL-GEO-08 |
-| C-48 | Step 4 handed on: the claims' reach (statements without a claim) | 128 (b), 130, 187 | partly (481 of 704 unchecked) | CL-TEST-12, CL-HIS-12 |
+| C-48 | Step 4 handed on: the claims' reach (statements without a claim) | 128 (b), 130, 187 | partly (481 of 704 unchecked) | CL-TEST-12, CL-HIS-12, CL-SRC-10 |
 | C-49 | Step 4 handed on: the chronology's extractor reads only clock-shaped hours | none | open | CL-TEST-13 |
 | C-50 | Step 4 and PR #57 handed on: readings not made (Duffy 1977 beyond pp. 184-185, Smith 1998, the Russian Biographical Dictionary 1903, Suchet's report and the French losses through Sokolov only, the Szekler page by a machine reader, decision 136's human second reading) | 136, 189, 211 (b), 213 (b) | open (Duffy's two pages read since, decision 213 (b)) | CL-SRC-01; question 271 |
 | C-51 | Step 4 handed on: the records the reviews left (the guns above Augezd's further sources, TOUR[5].x, TOUR[6].x "With the plateau gone", Caffarelli's artillery, the Horse Guard eagle, the step-2 register's German key, the decision and guard-attack events' "The hour is disputed" without a dispute, Maliutin, the eye-level caption's attributions, the light notes) | 190; 210 (c) (Maliutin) | mostly open; one settled | CL-HIS-15, CL-HIS-06 |
@@ -3789,7 +3952,13 @@ Three rules carry over from the project:
 
 Effort is a range for one competent session, including its re-measurement. A package can be split into pull requests along its findings.
 
-### G.2 The packages
+**The finalized roadmap is `docs/ROADMAP_FINAL_AUDIT.md` (4 November 2026).** It merges ChatGPT's audit (section K), orders the
+packages in seven stages, and gives each pass its days and the recommended Claude Code effort level. It adds two packages to those below:
+WP-15, the historical research queue (`CL-SRC-10`, ChatGPT's CG-F02 and CG-F03), and WP-16, targeted performance (`CL-PERF-12` to `-15`,
+moved there from WP-12). It also adds ChatGPT's items to WP-08, WP-10 and WP-13. The table below is the roadmap as this audit first wrote
+it, kept for its rationale; where they differ, the finalized roadmap governs.
+
+### G.2 The packages (as first written)
 
 | package | what it does | findings | effort | depends on | done when |
 |---|---|---|---|---|---|
@@ -4033,11 +4202,91 @@ names stand in rows over the troops. Decision 255 (d) prototyped thinning them a
     hidden for long stretches of Play.
 - **The build and the checks.** One build everywhere (md5 `f10fe585...`). Every required check passes on it: here, and `check:visual` on
   CI's runner in this audit.
-- **The register.** 151 findings (S1 1, S2 15, S3 71, S4 64), every finding but five verified adversarially (confirmed 116, weakened 30, not re-verified 5; the five were registered last: the completeness critic's three area findings and two carried items from the records' evidence).
-- **Most findings are older than Stage 8:** 108 inherited, 18 new, 6 mixed; the rest give no origin: 16 name an owner's acceptance instead, two say "optional improvement" and one "unknown".
+- **The register.** 158 findings (S1 1, S2 15, S3 76, S4 66), every finding but five verified adversarially (confirmed 121, weakened 30, not re-verified 5, plausible 2; the five were registered last: the completeness critic's three area findings and two carried items from the records' evidence).
+- **Most findings are older than Stage 8:** 112 inherited, 19 new, 6 mixed; the rest give no origin: 18 name an owner's acceptance instead, two say "optional improvement" and one "unknown".
 - **Before calling it finished:** WP-00, WP-01, WP-02, WP-04's disclosure, WP-05 and WP-06, about 6-11 working days. They contain every P1
   (`CL-ROB-01`, `CL-GEO-01`, `CL-SRC-01`).
 - **Owner questions 270-284** decide what the audit cannot: what Pages publishes, Duffy's pages, the grading rule, the relief, the map layer's
   order, the paper map's lettering, the first-run card, the merge gate, the device runs, a licence, facings, the artillery's crews, the
   chapels and the garden, the shipped self-test, and the low views' wall of names.
 - **Limits.** No device timing here. An emulated phone, not Safari. No screen reader. A sampled source check.
+- **Merged with ChatGPT's audit (4 November):** 7 of its 11 findings added, 6 already here; the finalized roadmap with effort levels is `docs/ROADMAP_FINAL_AUDIT.md` (section K).
+
+## K. Comparison with ChatGPT's audit (added 4 November 2026)
+
+ChatGPT's independent audit (`docs/FINAL_AUDIT_POST_STAGE8_CHATGPT.md`, evidence in `docs/final-audit-chatgpt-evidence/`) audited the same
+build: `43e3e5b`, md5 `f10fe585...`, identical to Pages and to every device report. Its 11 findings (CG-F01 to CG-F11) are mapped here to
+this register. Its merge ledger, with the Claude column filled in, is `docs/audit-post8-evidence/chatgpt-comparison/merge-ledger-filled.csv`.
+The finalized roadmap from both is `docs/ROADMAP_FINAL_AUDIT.md`.
+
+### K.1 How each audit worked
+
+| | this audit (Claude) | ChatGPT's |
+|---|---|---|
+| required checks | run here: `npm test`, `check:baseline`, `check:data`, `check:chronology`, `check:contrast`, `check:selftest`, `check:report`. `check:visual` run fresh on CI (run 41394859313) | run locally: `npm test`, `check:baseline`, `check:data`, `check:chronology`. The earlier CI visual run (41259079904) and self-test artifact re-judged with the current judge. Contrast and boot read from current-head CI |
+| browser | Chromium 141 on SwiftShader, and Chromium's phone emulation | the same |
+| method | 16 areas, each finding attacked by a skeptic (two for S1/S2), then a completeness critic and an independent reviewer | targeted static review, new diagnostics (model sweep, extended playback, contact and ice probes, device recomputation), report negative controls |
+| sources | 62 force, time and place claims traced to the sources' text (Duffy's text layer, Sokolov, Schönhals, Stutterheim, the *Correspondance*, Davout), 26 internal-consistency claims, 29 geographic claims against open data | three fresh primary pages (Rapp 1823 p. 60, Materialien 1806 p. 106, Thiébault III p. 466), one stored 1825 tile, the official park history, the 704-statement inventory, a 35-item ledger of open questions |
+| register | 151 findings, from S1 to S4 | 11 findings, S2 and S3 |
+
+### K.2 Where the audits agree
+
+| ChatGPT | this register | relationship |
+|---|---|---|
+| CG-F01 counters hidden over long playback | `CL-MAP-01` (and `CL-TEST-02`) | same issue. ChatGPT's continuous 3,600-frame run measured a longer gap: the French Guard cavalry 36.6 s, about 11:02-13:15. This audit's runs were split at 11:30 and 12:00. Folded into `CL-MAP-01`. Both audits find that a selected formation stays drawn and the paper map stays reliable |
+| CG-F03 unresolved chronology and places | E.3, `CL-GEO-07`, `CL-GEO-10`, `CL-HIS-07`, `CL-HIS-08`, `CL-HIS-09` | same questions, kept open by both. ChatGPT's 35-item ledger is broader than E.3 and is taken into WP-15's research queue |
+| CG-F06 the phone's fluidity | `CL-PERF-03`, `CL-PERF-06`, new `CL-PERF-15` | the same reading of the long-frame definition and of the P5/P3/P4 comparisons |
+| CG-F07 the desktop CPU excess | `CL-PERF-12`, `CL-PERF-04` | the same measurement and the same L3 caveats. ChatGPT found no attribution in the device reports. This audit's in-container profiles attribute part of it. The readings are compatible |
+| CG-F09 records drift (the README) | `CL-REC-02` | same issue |
+| CG-F11 no screen-reader results | `CL-REC-05` | same issue |
+
+### K.3 Found only by ChatGPT, now in this register
+
+| ChatGPT | new entry | checked here |
+|---|---|---|
+| CG-F02 481 of 704 statements unchecked | `CL-SRC-10` (untested, S3, P2) | confirmed: the inventory recomputed. This audit had stated the count in E.1 but not registered it |
+| CG-F04 ground contact on the current build | `CL-VIS-10` (accepted compromise, 265 (a)) | plausible: ChatGPT's run of the project's `contact-8f.js` on the audited build. This audit had not re-measured it |
+| CG-F05 landmark roles at symbolic scale | `CL-VIS-11` (S3, P3) | confirmed: this audit's own captures show the castle hidden by the III Column at 10:00 |
+| CG-F06 the phone's figure workload as the lever | `CL-PERF-15` (accepted compromise, 269 (a)) | confirmed from the device reports (figures hidden, Play about 59 fps) |
+| CG-F08 the phone rule accepts empty reports | `CL-PERF-16` (S3, P2) | **reproduced here**: two empty reports give "rule 2: figShadow", exit 0 (`chatgpt-comparison/phone-rule-empty.txt`) |
+| CG-F09 `build.py` prints characters as bytes | `CL-REC-09` (S4) | **reproduced here**: 2,801,357 printed against 2,810,630 bytes (`chatgpt-comparison/build-bytes.txt`) |
+| CG-F10 the old glare figure is not current | `CL-REC-10` (S4) | plausible: ChatGPT's run of `ice-8h.js` on the audited build gives 5.90% against the carried 43.5% (another build, Chromium 153). This audit's carried register had repeated the old figure (C.4, C-10) |
+
+### K.4 Found only by this audit
+
+Of this register's 151 original entries, 138 have no counterpart in ChatGPT's register. The consequential ones:
+- **The S1.** The published `tools/step6/perf-run.html` runs a `javascript:` URL given in `?src=` in the site's origin (`CL-ROB-01`).
+  ChatGPT's section H found "no reachable injection exploit". It reviewed the application's DOM paths, not the published tools pages. This
+  audit reproduced the injection on a local copy, and two skeptics confirmed it.
+- **Integrity of what is told:**
+  - the figures attributed to Duffy that his text layer does not print (`CL-SRC-01`). ChatGPT noted the Duffy figures were "not read" but
+    did not search the text;
+  - the face-about's Fact label against its own text and Schönhals (`CL-HIS-01`);
+  - four events whose disputed hours are unlabelled (`CL-HIS-06`);
+  - the 44 carried A grades (`CL-HIS-02`);
+  - the Russian Guard's divided register (`CL-HIS-03`);
+  - Legrand through the III Column (`CL-HIS-04`);
+  - formations walking away while attacking (`CL-HIS-05`);
+  - the relief model's 30-80 m residuals behind "fitted to surveyed elevations" (`CL-GEO-01`).
+- **State and input:** the stale open dossier (`CL-SIM-01`), "Whose eyes?" drawing what the reading does not know (`CL-SIM-02`), the glide
+  undoing a pan (`CL-UX-02`), the phone's rail taken by event markers (`CL-UX-03`).
+- **Access and the map:** no reflow at 320 px and 400% (`CL-UX-01`), no key between 720 and 1079 px (`CL-MAP-03`), figures sunk into the
+  frozen mere (`CL-VIS-01`).
+- **Tests:** the 33 mutations, 3 caught by nothing and 11 only by change detectors (D.4); the merge gate (`CL-TEST-01`). ChatGPT's own
+  negative controls are on the report judge (15 + 5 mutations, all caught). They are complementary, not contradictory.
+
+### K.5 Where the judgements differ
+
+- **The verdict.** ChatGPT: "ready to share and use as a qualified historical reconstruction", but not "historically verified". This audit:
+  "not yet finished by its own standard". The two agree that the map must not be called verified. They differ because this audit found
+  specific statements the sources contradict, and a public exposure, that ChatGPT's samples did not reach. Sharing the map as a qualified
+  reconstruction is defensible once WP-00 is done (hours) and while WP-01, WP-02 and WP-04a are pending, with the integrity findings
+  disclosed.
+- **Severity.** ChatGPT grades confidence limitations and tooling as S2 (CG-F02, CG-F06, CG-F08, CG-F11). This audit grades by the
+  visitor's exposure, so untested areas, tools and accepted compromises are S3. The merged entries keep this audit's grade; the merge ledger
+  records both.
+- **Owner questions.** ChatGPT asks none, and recommends prototyping the counter work before putting a trade-off to the owner. This audit
+  puts 15 (270-284). Question 274's recommended option is the same order: measure, then decide. Questions 270-274 shape a pass; 275-284 have
+  default recommendations that stand without an answer.
+- **Measurements this audit had carried without re-running.** The low-sun glare (`CL-REC-10`) and the ground contact (`CL-VIS-10`). Both
+  now carry ChatGPT's current figures with their build and browser.
