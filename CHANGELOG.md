@@ -41,7 +41,7 @@ refit later in WP-04). `austerlitz-command-map.html` is now 2,810,950 bytes, md5
     CL-ROB-08 (the licence, owner question 279); CL-ROB-09 (the shipped self-test kept, question 283's default); CL-ROB-13 (the archive images'
     terms, not yet read).
 - **Verified here:** `npm test` (nine suites and the height guard) passes; `check:data` passes against the new reference; `check:chronology` reports
-  0 errors; `check:baseline` passes; `check:contrast` was still running here at the first commit, and CI's checks job runs it on the PR. `check:selftest` and the CI checks run on the PR; `check:visual` is
+  0 errors; `check:baseline` passes; `check:contrast` passes (every state at AA in the embedded faces, the start-up cases 8 of 8). `check:selftest` and the CI checks run on the PR; `check:visual` is
   dispatch only and was not run (the one data change is a sentence in the sources sheet).
 - **What remains uncertain:** the relief's errors are measured against today's elevation data, not the ground of 1805. The disclosure states the
   error's size; it does not correct it.
