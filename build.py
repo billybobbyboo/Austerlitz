@@ -50,4 +50,4 @@ for k in MARKERS:
 out=shell.replace('/*FONTS*/',fonts).replace('/*CSS*/',css).replace('/*JS*/',js)
 open('austerlitz-command-map.html','w',encoding='utf-8',newline='\n').write(out)
 open('bundle.js','w',encoding='utf-8',newline='\n').write(js)
-print("bytes:",len(out))
+print("bytes:",len(out.encode("utf-8")),"(characters:",str(len(out))+")")   # UTF-8 bytes, as check:baseline counts them (the final audit, CL-REC-09)

@@ -18,6 +18,27 @@ const runs=process.argv.slice(2).map(f=>({file:f, r:JSON.parse(fs.readFileSync(f
 if(runs.length!==2) throw new Error("two runs, please");
 const drops=s=>s.longPct>5;
 const median=a=>{ const s=a.slice().sort((x,y)=>x-y), m=s.length>>1; return s.length%2?s[m]:(s[m-1]+s[m])/2; };
+/* The final audit after Stage 8 (CL-PERF-16, ChatGPT's CG-F08): the rule read two empty reports as standing, testing both kinds and cured
+   by every candidate (gain NaN), and recommended figShadow with exit 0. A report is now refused unless it holds, for each kind, the
+   route's rounds in full: at least two rounds, every candidate (and the reference) once per round between two As, and finite positive
+   p50 and long% on every block; a refusal throws (exit 1) and names what is missing. */
+function complete(file,r){
+  const bad=[];
+  if(!(typeof r.refreshMs==="number"&&isFinite(r.refreshMs)&&r.refreshMs>0)) bad.push("refreshMs missing or not a positive number");
+  if(!Array.isArray(r.notes)) bad.push("notes is not a list");
+  if(!Array.isArray(r.segments)||!r.segments.length) bad.push("no segments");
+  else ["ph8-overview","play-half"].forEach(kind=>{
+    const B=r.segments.filter(s=>s.id===kind&&s.cand&&s.round);
+    const rounds=[...new Set(B.map(s=>s.round))];
+    if(rounds.length<2) bad.push(kind+": "+rounds.length+" round(s), at least 2 expected");
+    rounds.forEach(rd=>ORDER.concat([REF]).forEach(c=>{ const n=B.filter(s=>s.round===rd&&s.cand===c).length;
+      if(n!==1) bad.push(kind+" round "+rd+": "+n+" block(s) of "+c+", 1 expected"); }));
+    if(B.filter(s=>s.cand==="A").length<2) bad.push(kind+": fewer than two A blocks");
+    B.forEach(s=>{ if(!(isFinite(s.p50)&&s.p50>0&&isFinite(s.longPct)&&s.longPct>=0)) bad.push(kind+" "+s.cand+" round "+s.round+": p50 or long% not a finite measure"); });
+  });
+  if(bad.length) throw new Error(file+" is not a complete phone-route report: "+bad.join("; "));
+}
+runs.forEach(({file,r})=>complete(file,r));
 const out={stands:[], tests:{}, cand:{}};
 runs.forEach(({file,r},ri)=>{
   const stands=r.refreshMs!=null&&!r.notes.some(n=>/could not be measured/.test(n))&&!r.segments.some(s=>s.hidden);

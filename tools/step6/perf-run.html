@@ -37,11 +37,18 @@
 </div>
 <script>
 (function(){
-  var q=new URLSearchParams(location.search), src=q.get("src")||"../../austerlitz-command-map.html", phone=q.get("route")==="phone", cull=q.get("route")==="cull", fx=q.get("route")==="fx", gait=q.get("route")==="gait";
+  /* ?src= names the build to load: accepted only as a path on this page's own origin and protocol (http, https or file), never a
+     javascript:, data: or another site's URL (the final audit after Stage 8, CL-ROB-01: the frame's src took any URL, so a crafted
+     link ran script in the site's origin); anything else falls back to the default build and says so */
+  var DEF="../../austerlitz-command-map.html", q=new URLSearchParams(location.search), asked=q.get("src"), rejected=false;
+  function sameOrigin(v){ try{ var u=new URL(v,location.href); return /^(https?|file):$/.test(u.protocol)&&u.protocol===location.protocol&&u.origin===location.origin?u.href:null; }catch(e){ return null; } }
+  var src=asked?sameOrigin(asked):DEF; if(!src){ src=DEF; rejected=true; }
+  var phone=q.get("route")==="phone", cull=q.get("route")==="cull", fx=q.get("route")==="fx", gait=q.get("route")==="gait";
   var fr=document.getElementById("app"), msg=document.getElementById("msg"), go=document.getElementById("go"), panel=document.getElementById("panel");
   window.AUS_PERF_NO_AUTORUN=true;
   var s=document.createElement("script"); s.src="perf-route.js"; document.head.appendChild(s);
   fr.src=src;
+  if(rejected) msg.textContent="?src= was not a path on this site, so the default build is loaded. Loading the build…";
   function ready(){ var w=fr.contentWindow; try{ return !!(w&&w.AUSTERLITZ_DEBUG&&w.AUSTERLITZ_DEBUG.applyCase&&w.AUS_BOOT&&w.AUS_BOOT.done&&window.AUS_PERF); }catch(e){ return false; } }
   var t0=Date.now(), iv=setInterval(function(){
     if(ready()){ clearInterval(iv); msg.textContent="The build has started ("+Math.round((Date.now()-t0)/1000)+" s). Press Start."+(phone?" (The phone route: about seven minutes.)":""); go.disabled=false;

@@ -506,8 +506,8 @@ the roofs a design convention, the churches standing in 1805 by their villages, 
 Telnitz's churchyard wall, fences; the dossiers and the sources sheet naming the claims; the frame +9 draw calls and +31,740 triangles on every
 desktop landscape view (+1.5% to +1.8%). The geographic corrections its research proposed were identified, not made.
 
-**Implementation PR 8H** (30 October 2026; `docs/STAGE8_SPEC.md` §20; built on `claude/sharp-faraday-g2uy8o` from `main` at `636cc5d`, a draft
-pull request for review, not merged): the final integration, polish and verification pass. 8G's missing records written (§19; the evidence index
+**Implementation PR 8H** (30 October 2026; `docs/STAGE8_SPEC.md` §20; built on `claude/sharp-faraday-g2uy8o` from `main` at `636cc5d`, PR #73,
+merged by the owner, `b7fb67a`): the final integration, polish and verification pass. 8G's missing records written (§19; the evidence index
 saying what is original, what was added from CI's runs and what is reconstructed). The buildings' acceptance: the château held to an octant of
 its bearing (drawn at 255 degrees, 19 off; 8G's quarter-turn had admitted 86.5), the dossiers' farmsteads counted as drawn; Satschan's five of
 seven put to the owner. The geographic review made again from fresh fetches (8G's Table A reproduced; the 1825-52 maps read; the frame sound) and
@@ -532,7 +532,7 @@ ground kept provisionally pending the device runs and the final audit, the anima
 satisfied.
 
 **The follow-up 8I, 8J, 8K** (30 October 2026; `docs/STAGE8_SPEC.md` §21; three stacked draft pull requests from `main` at `b7fb67a`, for
-review, not merged): **8I** (`claude/tender-einstein-gwrsij`): the phase's message placed again whenever the layout changes while it shows (8H's
+review; PR #74 merged into `main`, `72c7e1b`, and PRs #75 and #76 into their stacked branches, brought into `main` by 8L): **8I** (`claude/tender-einstein-gwrsij`): the phase's message placed again whenever the layout changes while it shows (8H's
 build left it over a control in 4 of 8 changes; the phone's Menu among them), its 3.4 s untouched and nothing run while it is hidden; the far
 formation names on the lighter plate (decision 263 (a), at AA by sym.plate's rule, size and places unchanged, the protected on the full plate);
 the census reported in both frames (section 20.12's maxima were the frame with the ground's depth reused: the complete frame on 8H's run 864
@@ -544,8 +544,8 @@ drawn track and the drawn brook (their widths a display convention), stands clea
 (`CASTLE8J`), and put to the owner as **question 266** (§21.7: (a) keep it, recommended; (b) a middle size off its site; (c) the ribbons narrowed
 there; (d) 8G's size 461 m off across the track).
 
-**The integration pass, 8L** (31 October 2026; `docs/STAGE8_SPEC.md` §22; draft PR #77 into `main` from `claude/charming-dijkstra-srj84w`,
-not merged): PR #74 (8I) had reached `main` (`72c7e1b`), but PR #75 (8J) and PR #76 (8K) had been merged into their stacked feature branches
+**The integration pass, 8L** (31 October 2026; `docs/STAGE8_SPEC.md` §22; PR #77 into `main` from `claude/charming-dijkstra-srj84w`,
+merged by the owner, `141f890`): PR #74 (8I) had reached `main` (`72c7e1b`), but PR #75 (8J) and PR #76 (8K) had been merged into their stacked feature branches
 (`c7de7a2`, `c706c96`), not into `main`; both merged into the integration branch, its tree 8K's own and its build 8K's (`f10fe585...`). The
 owner's decisions of 31 October 2026: **266 (a)**, the Sokolnitz castle kept at its corrected site at about 96 by 73 m, the explanation of the
 symbol-scale compromise kept, its prominence and its obstruction by troop symbols on the final audit checklist; **267**, the bounded
