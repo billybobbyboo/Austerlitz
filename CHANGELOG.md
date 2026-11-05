@@ -129,6 +129,15 @@ the new sentence (CL-GEO-09), as strict: at 1x it requires "drawn at true scale 
   `thresholds.js`: nine runs worse, seven better or equal. The landscape's orbit loses most, 1,981 to 1,789 formation-frames, its longest hidden
   667 to 1,167 ms. That is left to WP-07 (the map layer in motion) and not settled here.
 - Unchanged: FLICKER, LOD, the real input's tolerance, its one-frame rule and every other baseline.
+- **The real input's visibility rule widened from one frame to two** (the owner, 5 November 2026: "Go with your recommendation", to
+  investigate for about two hours and otherwise widen it):
+  - *The failure:* on CI the paper map's zoom by real input drew 708 formation-frames against its twin's 723. The rule's one frame is 14 here
+    (1,232 in view over 88 frames).
+  - *What `tools/stage8/twin-8l.js` found:* on one page and in one configuration, the real runs drew 708, 723 or 736, varying from run to run.
+    The browser delivers real input a frame early or late against the driver's clock, and one frame's shift moves the drawn count by that
+    frame's own formations, 13 to 15.
+  - *Tried, not deterministic:* fixing the pointer's starting point, waiting for its move, and waiting for each wheel notch.
+  - *Changed:* `VIS_REAL_FRAMES` 1 to 2. `REAL_TOL` and the twins' baselines are unchanged, and the driver is unchanged.
 - **`narrow-1024`'s drop limit 8 to 9** (the owner, 5 November 2026: "Yes, raise narrow-1024 to 9"). CI's visual run drops 9 map items there:
   Bourcier's and d'Hautpoul's names and seven place names, with the new strengths re-ranking the counters. The same view's limit moved twice
   before for the same cause, decisions 199 and 214. Every other drop limit is unchanged.

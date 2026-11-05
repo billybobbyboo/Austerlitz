@@ -422,7 +422,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   248 and 998 since decision 267 (a), 1 November 2026, 8K's build's own counts; 245 and 985 until then), level-of-detail switches at most 130 and flickers at most 10 (since 8D's prerequisite, decision 257 (b): the deterministic benchmark's own
   counts on the pinned browser, not a device guarantee; were the owner's starting targets 300, 1,300 and 200, `docs/STAGE8_SPEC.md` §3.5, and 8B's
   130), and every driven run's formations' visibility at its baseline (`MOTION.VIS`, 22 runs: the formation-frames in view exactly, the drawn at
-  least, the longest disappearance by the layout at most; a real-input run within a frame of its twin), so that fewer jumps bought by hiding
+  least, the longest disappearance by the layout at most; a real-input run within a frame of its twin, two frames since the final audits' Stage 2 on the owner's word: real input's delivery jitters a frame against the driver), so that fewer jumps bought by hiding
   formations fail; in every run no overlap, no never-dropped item hidden in view, no remnant out of rule, nothing
   drawn or fading that the reading does not know, frames read as moving, idle at rest after the motion (Play aside); each real-input motion within
   6 (or 25%) of its twin driven in the page; its counts repeat run for run on any machine (245, 985, 130 and 10 over the 16, here and on CI,

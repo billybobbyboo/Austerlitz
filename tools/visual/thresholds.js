@@ -288,7 +288,14 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    [1520,2548,1833] and "paper-zoom+point" [726,1232,667] to [723,1232,667]. FLICKER, LOD, REAL_TOL, VIS_REAL_FRAMES and every other baseline
    unchanged. The landscape's orbit loses the most (192 formation-frames, its longest hidden 667 to 1,167 ms): an issue for WP-07, the map layer
    in motion, not settled by this re-baseline */
-const MOTION={JUMPS:251, POPS:1034, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:1, FRAME_MS:1000/30,
+/* the final audits' Stage 2 (the owner, 5 November 2026: "Go with your recommendation", to investigate for about two hours and otherwise widen the
+   rule by one frame): VIS_REAL_FRAMES 1 to 2. On the Stage 2 build the paper map's zoom by real input drew 708 formation-frames on the self-test's
+   page against its twin's 723, the rule's one frame 14 (1,232 in view over 88 frames, rounded up). tools/stage8/twin-8l.js found the real runs
+   drawing 708, 723 or 736 on one page and in one configuration, run to run: the browser delivers real input a frame early or late against the
+   driver's clock, and one frame's shift moves the formations drawn by that frame's own count (13 to 15), which can exceed the per-frame mean.
+   Fixing the pointer's start and waiting for its move and for each notch did not make it deterministic. Two frames hold the real input to its
+   twin within the jitter measured; REAL_TOL, every twin's baseline and the twins' rule otherwise unchanged */
+const MOTION={JUMPS:251, POPS:1034, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:2, FRAME_MS:1000/30,
   /* VIS[run key] = [drawn, in view, longest hidden ms]: the prerequisite's build (the 8C build with the protected items' fade fixed, section
      16.1), Chromium 141, check:selftest's block; a key is the motion's id, "+sel" with Saint-Hilaire's division selected, "+fr"/"+al" under a
      headquarters' reading, "+touch" for the finger's pan at 390 px (tools/visual/motion.js runKey) */
