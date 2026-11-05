@@ -44,6 +44,11 @@ DROP_LIMIT["narrow-1024"]=7;
    no room there; the low Pratzen view drops one fewer (5 -> 4, the same name drawn); every other case unchanged; measured on the full
    check:visual (CHANGELOG.md, decision 213 (b)) */
 DROP_LIMIT["narrow-1024"]=8;
+/* the final audits' Stage 2 (the owner's answer of 5 November 2026, "Yes, raise narrow-1024 to 9"): narrow-1024's limit 8 -> 9. On the Stage 2
+   build CI's visual run drops 9 items there: n:bourcier, n:dhautpoul and seven place names (t:pratzen, t:vinohrady, t:pratzeberg, t:goldbach,
+   t:telnitz, t:sokolnitz, t:austerlitz), the drawn strengths that follow the sources read (Bourcier 830 to 1,500, d'Hautpoul 1,300 to 1,100)
+   re-ranking the counters, as decisions 199 and 214 moved it before; every other drop limit unchanged */
+DROP_LIMIT["narrow-1024"]=9;
 /* Stage 5E (docs/STAGE5_SPEC.md section D.6): the eye-level views are new; their limits are what the 5E build drops there (place names on
    the horizon: Goldbach, Telnitz, Sokolnitz, Satschan, Kobelnitz, and at 1x Menitz), never raised (as decision 62 set the 3D framing's) */
 DROP_LIMIT["eye-zuran"]=5; DROP_LIMIT["eye-zuran-1x"]=6;

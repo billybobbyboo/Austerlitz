@@ -129,9 +129,9 @@ the new sentence (CL-GEO-09), as strict: at 1x it requires "drawn at true scale 
   `thresholds.js`: nine runs worse, seven better or equal. The landscape's orbit loses most, 1,981 to 1,789 formation-frames, its longest hidden
   667 to 1,167 ms. That is left to WP-07 (the map layer in motion) and not settled here.
 - Unchanged: FLICKER, LOD, the real input's tolerance, its one-frame rule and every other baseline.
-- **Not moved, put to the owner:** `narrow-1024`'s drop limit. CI's visual run drops 9 map items there against 8: Bourcier's and d'Hautpoul's
-  names and seven place names, with the new strengths re-ranking the counters. The same view's limit moved twice before for the same cause,
-  decisions 199 and 214.
+- **`narrow-1024`'s drop limit 8 to 9** (the owner, 5 November 2026: "Yes, raise narrow-1024 to 9"). CI's visual run drops 9 map items there:
+  Bourcier's and d'Hautpoul's names and seven place names, with the new strengths re-ranking the counters. The same view's limit moved twice
+  before for the same cause, decisions 199 and 214. Every other drop limit is unchanged.
 
 ### Verified
 

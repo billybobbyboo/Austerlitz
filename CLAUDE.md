@@ -247,7 +247,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   The drop limits of selected-formation (4) and narrow-1024 (6) are the 3C layer's in the 3D framing (owner decision 62); narrow-1024's is 7
   since roadmap step 4b, on the owner's word (decision 199: the retaken Telnitz's label at 09:30 takes Bourcier's name's room), and 8 since
   PR #58, on the owner's word (decision 214: with the Guard infantry at 4,430, decision 213 (b), its counter ranks lower and the place name
-  "Austerlitz" finds no room there).
+  "Austerlitz" finds no room there), and 9 since the final audits' Stage 2, on the owner's word (the drawn strengths that follow the sources read
+  re-rank the counters: Bourcier's and d'Hautpoul's names and seven place names dropped there).
   Since 3E: by real key presses, Space and Enter on a focused button press it, Ctrl+C does nothing, "?" opens the overlay and
   focus returns when Esc closes it; the self-test's key-table dry run, the overlay, the names and the symbols' largest size;
   `css-test.js` checks the names (no presentation "Map", no ground "Staff map").
