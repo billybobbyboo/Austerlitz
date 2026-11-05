@@ -125,7 +125,7 @@ the new sentence (CL-GEO-09), as strict: at 1x it requires "drawn at true scale 
     its baseline but two Play runs.
   - The drawn strengths that follow the sources read re-rank the counters and give the rest.
 - Over the 16 motions the formation-frames drawn are 32,188 of 45,888 (70.14%), were 32,431 (70.67%).
-- `thresholds.js` `MOTION`: `JUMPS` 248 to 251 and `POPS` 998 to 1,034. Sixteen visibility baselines are re-measured, each was and is in
+- `thresholds.js` `MOTION`: `JUMPS` 248 to 251 and `POPS` 998 to 1,034. Eighteen visibility baselines are re-measured (two twins, run only in `check:visual`'s full block, found by its run), each was and is in
   `thresholds.js`: nine runs worse, seven better or equal. The landscape's orbit loses most, 1,981 to 1,789 formation-frames, its longest hidden
   667 to 1,167 ms. That is left to WP-07 (the map layer in motion) and not settled here.
 - Unchanged: FLICKER, LOD, the real input's tolerance, its one-frame rule and every other baseline.

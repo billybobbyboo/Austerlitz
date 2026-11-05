@@ -418,7 +418,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   required) on a page of its own: the 16 motions of `label-motion.js` driven through the app's own input and frame (`tools/visual/motion.js`), the
   four real input can drive by real input (two on `check:selftest`'s page), two with Saint-Hilaire's division selected, three under a
   headquarters' reading and a finger's pan with the page 390 px wide, judged in `thresholds.js` `MOTION`: over the 16 jumps at most 251, pops at most
-  1,034 (since the final audits' Stage 2, 5 November 2026, on the owner's word, its build's own counts, with sixteen visibility baselines re-measured;
+  1,034 (since the final audits' Stage 2, 5 November 2026, on the owner's word, its build's own counts, with eighteen visibility baselines re-measured;
   248 and 998 since decision 267 (a), 1 November 2026, 8K's build's own counts; 245 and 985 until then), level-of-detail switches at most 130 and flickers at most 10 (since 8D's prerequisite, decision 257 (b): the deterministic benchmark's own
   counts on the pinned browser, not a device guarantee; were the owner's starting targets 300, 1,300 and 200, `docs/STAGE8_SPEC.md` §3.5, and 8B's
   130), and every driven run's formations' visibility at its baseline (`MOTION.VIS`, 22 runs: the formation-frames in view exactly, the drawn at

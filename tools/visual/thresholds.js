@@ -285,7 +285,7 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    "land-pan" [1868,2055,1133] to [1792,2055,1133], "land-zoom" [1641,2258,667] to [1741,2258,667], "land-orbit" [1981,2366,667] to
    [1789,2366,1167], "land-play" [2667,3146,667] to [2672,3146,667], "hybrid-orbit+sel" [1495,2548,3033] to [1496,2548,2033], "hybrid-pan+fr"
    [1370,1970,2467] to [1329,1970,2467], "hybrid-pan+al" [938,1276,2467] to [934,1276,1467], the twins "hybrid-orbit+point" [1537,2548,1900] to
-   [1520,2548,1833] and "paper-zoom+point" [726,1232,667] to [723,1232,667]. FLICKER, LOD, REAL_TOL, VIS_REAL_FRAMES and every other baseline
+   [1520,2548,1833] and "paper-zoom+point" [726,1232,667] to [723,1232,667], and the two twins that hover nothing and so equal their 16's runs, "hybrid-pan+point" [1427,2053,2467] to [1386,2053,2467] and "hybrid-zoom+point" [1342,2248,2133] to [1299,2248,2133] (run only in check:visual's full block, found by its run on c099534). FLICKER, LOD, REAL_TOL, VIS_REAL_FRAMES and every other baseline
    unchanged. The landscape's orbit loses the most (192 formation-frames, its longest hidden 667 to 1,167 ms): an issue for WP-07, the map layer
    in motion, not settled by this re-baseline */
 /* the final audits' Stage 2 (the owner, 5 November 2026: "Go with your recommendation", to investigate for about two hours and otherwise widen the
@@ -338,7 +338,7 @@ const MOTION={JUMPS:251, POPS:1034, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.
     "land-play":[2672,3146,667], "low-pan":[820,885,533], "low-orbit":[681,876,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1496,2548,2033],
     "paper-zoom+sel":[835,1232,667], "hybrid-pan+fr":[1329,1970,2467], "hybrid-pan+al":[934,1276,1467], "paper-play+al":[1171,1331,667],
     "phone-pan+touch":[275,698,1467],
-    "hybrid-pan+point":[1427,2053,2467], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1342,2248,2133], "paper-zoom+point":[723,1232,667]}};
+    "hybrid-pan+point":[1386,2053,2467], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1299,2248,2133], "paper-zoom+point":[723,1232,667]}};
 module.exports.MOTION=MOTION;
 /* decision 257 (b)'s visibility rule for one run (r: a run of live.motion with its track; base: VIS's entry, or for a run by real input its twin's
    measures as [drawn, in view, longest]); the words of each failure, empty when it holds */
