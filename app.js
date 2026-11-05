@@ -710,6 +710,10 @@ function leavesOf(id,out){
   return out;
 }
 function posOf(id,ph){ return posNow(id); }
+/* the final audits' WP-02 (CL-SRC-06): the headline strength says what it is wherever it is shown. A formation's own figure is this map's
+   working figure (its note, where there is one, names the figures the sources read give); a figure without its own is the sum of its
+   formations' (derived) */
+function strengthKind(f){ return f.strength?"this map's working figure":"derived: the sum of its formations"; }
 function aggStrength(id){
   var f=FORMATIONS[id];
   if(f.strength) return f.strength;
@@ -4234,6 +4238,7 @@ function paintChapterText(){
    reading by them), so they keep theirs */
 var SRC_LABEL={doc:"DOCUMENTED",inf:"THIS MAP'S READING",anec:"ANECDOTE"};
 function srcKind(k){ return SRC_LABEL.hasOwnProperty(k)?k:"inf"; }
+var CMD_READ=["fact","attributed","disputed"];   /* the claims under which a documented Command row keeps DOCUMENTED (WP-01, CL-HIS-12) */
 function paintCommand(){
   var host=document.getElementById("cmdbody");
   if(!host) return;
@@ -4241,16 +4246,20 @@ function paintCommand(){
     host.innerHTML='<p class="muted">Choose a headquarters. Enemy formations it could not see are removed from the map; formations known only by report are drawn as a diffuse zone without figures, their names and counters marked \u201c?\u201d.</p>';
     return;
   }
-  var side=commandView, book=COMMAND[side]||{}, items=null;
-  for(var i=curPhase;i>=0;i--){ if(book[i]){ items=book[i]; break; } }
+  var side=commandView, book=COMMAND[side]||{}, items=null, ph=-1;
+  for(var i=curPhase;i>=0;i--){ if(book[i]){ items=book[i]; ph=i; break; } }
   var who = side==="fr" ? "Imperial Headquarters, Napoleon" : "Allied Headquarters, Kutuzov and the Tsar";
   var KIND={saw:"Could see",knew:"Knew",didnt:"Did not know",ordered:"Ordered",expected:"Expected"};
   var h='<p class="cmdwho">'+esc(who)+' <span class="hh">'+esc(PHASES[curPhase].clock)+'</span></p>';
   if(!items) h+='<p class="muted">Nothing recorded for this hour.</p>';
-  else h+='<dl class="cmdlist">'+items.map(function(it){
-    return '<div class="cmdrow"><dt>'+esc(KIND[it[0]]||it[0])+
-      '</dt><dd>'+esc(it[2])+' <span class="src '+srcKind(it[1])+'">'+
-      iconSVG(TOKENS.sym.source[srcKind(it[1])])+SRC_LABEL[srcKind(it[1])]+'</span></dd></div>';
+  /* the final audits' WP-01 (CL-HIS-12): one label per statement across screens. A row of the documented kind is marked DOCUMENTED only
+     where its statement's claim rests on a reading (fact, attributed, disputed); otherwise it carries its claim's tag, as the dossiers
+     and the sources sheet's index show it ("Not yet checked" for most) */
+  else h+='<dl class="cmdlist">'+items.map(function(it,j){
+    var k=srcKind(it[1]), ref='COMMAND.'+side+'["'+ph+'"]['+j+']', cl=stmtClaim(ref).cl;
+    var tag=(k==="doc"&&CMD_READ.indexOf(cl)<0) ? claimTag(ref) :
+      ' <span class="src '+k+'">'+iconSVG(TOKENS.sym.source[k])+SRC_LABEL[k]+'</span>';
+    return '<div class="cmdrow"><dt>'+esc(KIND[it[0]]||it[0])+'</dt><dd>'+esc(it[2])+tag+'</dd></div>';
   }).join("")+'</dl>';
   host.innerHTML=h;
 }
@@ -7810,7 +7819,7 @@ function compactCard(id){
   var body='';
   if(f.army) body+=row("Army total", esc(f.army.men)+claimTag("FORMATIONS."+id+".army.men")+", "+f.army.guns+" guns <span class=\"hh\">("+esc(f.army.src)+")</span>"+claimTag("FORMATIONS."+id+".army.src"));
   else if(f.strengthRange) body+=row("Strength","&asymp; "+f.strengthRange[0].toLocaleString("en-GB")+"&ndash;"+f.strengthRange[1].toLocaleString("en-GB")+" men <span class=\"hh\">(working figure "+str.toLocaleString("en-GB")+")</span>"+(f.guns?", "+f.guns+" guns":""));
-  else if(str) body+=row("Strength","&asymp; "+str.toLocaleString("en-GB")+" men"+(f.guns?", "+f.guns+" guns":""));
+  else if(str) body+=row("Strength","&asymp; "+str.toLocaleString("en-GB")+" men"+(f.guns?", "+f.guns+" guns":"")+' <span class="hh">('+esc(strengthKind(f))+')</span>');
   if(f.parent){
     var pf=FORMATIONS[f.parent];
     body+=row("Under", esc(shortCommander(pf))+" &middot; "+esc(pf.name));
@@ -7967,13 +7976,13 @@ function dossierFormation(id){
   if(f.parent) who+=row("Higher formation",
     '<button class="linkb" data-goto="'+esc(f.parent)+'">'+esc(FORMATIONS[f.parent].name)+'</button>');
   who+=row("Arm", esc({inf:"Infantry",cav:"Cavalry",art:"Artillery",mixed:"Infantry and cavalry",
-                       hq:"Headquarters",guard:"Guard infantry"}[f.arm]||f.arm));
+                       hq:"Headquarters",guard:f.ech==="corps"?"Guard":"Guard infantry"}[f.arm]||f.arm));
   who+=row("Echelon", esc({army:"Army / headquarters",corps:"Corps or column",div:"Division",bde:"Brigade or detachment"}[f.ech]||f.ech));
   wrap.appendChild(sect("Who",who,true,"record"));
 
   /* HOW MANY */
   var str=f.strength||aggStrength(id);
-  var many = str ? row("Approximate strength","&asymp; "+str.toLocaleString("en-GB")+" men") : row("Strength","Not recorded");
+  var many = str ? row("Approximate strength","&asymp; "+str.toLocaleString("en-GB")+" men"+' <span class="hh">('+esc(strengthKind(f))+')</span>') : row("Strength","Not recorded");
   if(f.guns) many+=row("Guns", esc(String(f.guns)));
   if(f.strengthNote) many+=row("On the figures", esc(f.strengthNote)+claimTag("FORMATIONS."+id+".strengthNote"));
   wrap.appendChild(sect("How many",many,true,"record"));
@@ -8494,7 +8503,7 @@ function buildingNotes(){
     "Roofs: no source read names the roofing of the villages' houses, so the roofs are a convention: thatch, with about one farmstead in "+["","one","two","three","four","five","six","seven","eight","nine","ten"][Math.round(1/BLD8G.tile)]+" tiled. "+
       (ar?"The town of Austerlitz is drawn tiled ("+ar.en+": "+src(ar.src)+"), and so are the manors and the churches. ":"")+"A building's walls (masonry or timber on the sketches) never decide its roof.",
     "Churches stand where a source names one standing in 1805, each with its claim: "+chs.join("; ")+(chap.length?"; and a smaller chapel at "+chap.join("; "):"")+". None at "+Object.keys(B.noChurch||{}).join(", ")+
-      ", where this map drew one until now. Each stands by its village's point, moved off the roads and streams drawn through it, but where a source puts a church elsewhere and its site is read: Pratzen's, drawn at its own site outside the village.",
+      ", where this map drew one until now. Each stands by its village's point, moved off the roads and streams drawn through it, but where a source puts a church elsewhere and its site is read: Pratzen's, drawn beside its own site outside the village, moved about 160 m off the track this map draws past it (the track's course is not verified).",
     cas?"The Sokolnitz castle: "+cas.en+" ("+src(cas.src)+", and the sketch of "+S.mza_sokolnitz1825.d+"), its farm south of it, drawn at the castle's own site, west of the Goldbach as that sketch has it"+castleSizeText()+"; its pheasantry north of it, drawn to the sketch's outline. "+
       (ow&&ow.lab==="disputed"?"Its walled orchard is not drawn, the sources disagreeing: "+ow.sides.map(function(s){ return s.en+" ("+src(s.src)+")"; }).join("; ")+". ":"")+"No wall round its pheasantry is drawn.":null,
     B.austerlitz&&B.austerlitz.chateau&&B.austerlitz.church?"Austerlitz: the church as the church topography describes it ("+B.austerlitz.church.en+", "+src(B.austerlitz.church.src)+") and the château ("+
@@ -8589,7 +8598,8 @@ function lightNotes(){
 }
 function geoText(p){
   /* {EXAG} is the DISPLAY factor relative to true scale (decision 35), never GEOREF.EXAG, the model's own scale */
-  return String(p).replace(/\{EXAG\}/g,fmtFactor(DISPLAY.factor)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
+  /* the final audits' WP-01 (CL-GEO-09): at true scale the sources sheet does not say "exaggerated about 1 times" */
+  return String(p).replace(/is exaggerated about \{EXAG\} times/g,DISPLAY.factor===1?"is drawn at true scale (1\u00d7)":"$&").replace(/\{EXAG\}/g,fmtFactor(DISPLAY.factor)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
     .replace(/\{ROT\}/g,GEOREF.ROT_DEG.toFixed(0)).replace(/\{CONTOUR_M\}/g,(CONTOUR_INTERVAL*GEOREF.V_M_PER_UNIT).toFixed(0));
 }
 /* decision 187 (ii), roadmap step 4b part B: the index of the statements' claims in the sources sheet. Each claim word of CLAIM_WORDS

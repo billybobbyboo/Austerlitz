@@ -1,6 +1,6 @@
 /* ============================================================
    AUSTERLITZ — historical dataset
-   Map frame: x 0..680 (west->east, ~13 km), y 0..500 (north->south, ~10 km)
+   Map frame: x 0..680 (west->east, ~21.5 km), y 0..500 (north->south, ~15.8 km); GEOREF.KM_PER_MAP is the scale
    conf: A = well documented · B = sector documented, frontage approximate
          C = reconstructed from narrative, position conjectural
    ============================================================ */
@@ -65,7 +65,7 @@ var PHASES = [
   cam:[-167,62,162,-55,4,62], mist:0.98 },
 
 { id:2, t0:480, t1:525, clock:"08:00 - 08:45", label:"Sokolnitz", title:"Sokolnitz, the castle and the pheasantry",
-  lede:"Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. On the plateau the 4th Column, which was meant to replace the troops leaving the heights, is still standing still: Liechtenstein's cavalry has cut across its line of march. A gap opens between it and the 3rd Column.",
+  lede:"Langeron and Przybyszewski attack Sokolnitz village, its castle and the pheasantry beyond. On the plateau the 4th Column, which was meant to replace the troops leaving the heights, is still standing still: Liechtenstein's cavalry has cut across its line of march. A gap opens between it and the 3rd Column.",
   events:[
     ["c. 08:00","Langeron attacks Sokolnitz; Przybyszewski goes for the castle and pheasantry."],
     ["c. 08:30","Napoleon asks Soult how long he needs to reach the heights. Twenty minutes at most, Soult answers in Thiébault's memoirs (ten in Ségur's), and Napoleon waits a further quarter of an hour. The hour is disputed: about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in the Austrian accounts."]],
@@ -77,7 +77,7 @@ var PHASES = [
     ["c. 08:45","Soult's divisions advance. The mist lifts off the heights."],
     ["c. 09:00","Friant's leading brigade comes up to the Goldbach near Telnitz: about nine in Stutterheim and the Moniteur's remarks of 1806, attacking about nine in Schönhals, after Telnitz had fallen in Mikhailovsky-Danilevsky; Davout's report has word of the attack reach him on the march about eight and gives no hour for the brigade's arrival. The division had reached Raigern overnight: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers."],
     ["c. 09:00","Thiébault's brigade clears Pratzen village; the 10e Légère pushes on for the Pratzeberg."],
-    ["c. 09:15","Kutuzov orders the 4th Column to face about, in this map's reading, which no account read gives, nor its hour; part of the II Column is recalled up the slope."],
+    ["c. 09:15","Kutuzov orders the 4th Column to face about, in this map's reading: Schönhals has him order its Austrian brigades to take the height, other accounts give other orders, and none read gives the hour; part of the II Column is recalled up the slope."],
     ["c. 09:30","Friant's leading troops retake Telnitz, then lose it again in the fog: Davout's report has the village in French hands at 09:30."]],
   cam:[-136,46,31,-6,8,-3], mist:0.16, flash:"The sun of Austerlitz, as memoirs call it" },
 
@@ -149,9 +149,9 @@ gqg:{ ech:"army", nation:"fr", arm:"hq", desig:"G.Q.G.",
   name:"Imperial Headquarters", commander:"Emperor Napoleon I",
   staff:"Marshal Berthier, chief of staff. Gen. Songis commanding the artillery.",
   strength:null, parent:null,
-  army:{men:"about 73,000", guns:139, src:"Duffy 1977; Smith 1998"},
+  army:{men:"about 73,000", guns:139, src:"Duffy 1977, nominal; Sokolov 2006, 72,500"},
   role:"Direction of the army. Napoleon directed the battle from the height of his bivouac, taken here to be the Zuran, then from Stare Vinohrady, and in the last phase from the height above Augezd by the chapel of St Anthony.",
-  note:"Duffy (1977) and Smith (1998) give about 73,000 French of all arms with 139 guns - an army total, not the headquarters' own. Other accounts range from 65,000 to 75,000.",
+  note:"About 73,000 French of all arms with 139 guns: an army total, not the headquarters' own. Duffy (1977) gives a nominal 73,000-75,000 with 139 pieces and an effective force perhaps as low as 60,000 (read on his text layer); Sokolov estimates 72,500 for 2 December from the returns of 22 November; Schönhals reports the French giving 65,000, and Mikhailovsky-Danilevsky has up to 90,000. Smith (1998) is cited, not read.",
   track:{
     0:{p:[177,134],st:"observing",cf:"B",obj:"Hold the right; break the Allied centre once it has committed",act:"On the height of his bivouac, taken here to be the Zuran: 'la butte' of the orders of 1 December, 'the barrow by Schlapanitz' in Mikhailovsky-Danilevsky. The dispositions call his marshals to his bivouac for the morning's orders"},
     3:{st:"observing",act:"Releases Soult against the heights; a memoir anecdote, as Thiébault tells it, has him wait a further quarter of an hour first"},
@@ -188,7 +188,7 @@ sthilaire:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., IV Corps",
   role:"Right-hand assault division against the Pratzeberg; later the hinge of the wheel south.",
   track:{
     0:{p:[201,221],st:"concealed",cf:"A",obj:"Await the signal in the Goldbach valley",act:"Standing in fog behind Puntowitz, hidden from the plateau"},
-    2:{p:[206,231],st:"forming",act:"Crosses the Goldbach and forms for the attack"},
+    2:{p:[206,231],st:"forming",act:"Forms in the Goldbach valley for the attack"},
     3:{tm:{dep:525,gr:"C",basis:"app narrative, unsourced",ev:["Soult's divisions advance. The mist lifts off the heights.","At about 08:45 they climbed the western slope","Thiébault's brigade clears Pratzen village; the 10e Légère pushes on for the Pratzeberg."],note:"the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals), and passes Pratzen village c. 09:00; no source read dates its end, so the arrival is derived"},
        p:[267,275],st:"attacking",cf:"A",via:[[218,230]],obj:"Seize the Pratzeberg",act:"Climbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit"},
     4:{p:[283,287],st:"engaged",cf:"A",obj:"Hold the Pratzeberg",act:"Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiébault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried their part of the heights"},
@@ -206,7 +206,7 @@ vandamme:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., IV Corps",
   role:"Left-hand assault division against Stare Vinohrady; receives the Russian Guard counterattack.",
   track:{
     0:{p:[217,171],st:"concealed",cf:"A",obj:"Await the signal",act:"Concealed in the valley behind Girzikowitz"},
-    2:{p:[221,182],st:"forming",act:"Crosses the Goldbach"},
+    2:{p:[221,182],st:"forming",act:"Forms in the Goldbach valley"},
     3:{tm:{dep:525,gr:"C",basis:"app narrative, unsourced",ev:["Soult's divisions advance. The mist lifts off the heights.","At about 08:45 they climbed the western slope"],note:"the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals); no source read dates its end, so the arrival is derived"},
        p:[282,209],st:"attacking",cf:"A",via:[[232,173]],obj:"Seize Stare Vinohrady",act:"Climbs toward Stare Vinohrady, the 'old vineyards' (whether vines stood there in 1805 is not established)"},
     4:{p:[309,207],st:"holding",act:"Consolidates on the Old Vineyards, facing east"},
@@ -237,7 +237,7 @@ legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
 
 c_iii:{ ech:"corps", nation:"fr", arm:"inf", desig:"III Corps",
   name:"III Corps (detachment)", commander:"Marshal Louis-Nicolas Davout", parent:null,
-  strength:4300, strengthNote:"Duffy and Smith give 4,300 men present, including 830 cavalry, with 12 guns. Other accounts put Friant's division alone at about 6,400, so the figure is genuinely disputed", guns:12,
+  strength:4300, strengthNote:"4,300, this map's working figure: its two divisions as drawn, Friant about 3,470 and Bourcier about 830, with 12 guns. Sokolov, from the returns of 22 November, presumes 5,300 for the detachment on 2 December (Friant 7,037 and Bourcier 1,900 on 22 November) and writes that after the march Davout could have had no more than 3,500-4,000 of Friant's men and 1,200-1,500 of Bourcier's; Thiers has Friant's division reduced to 6,000 at most. Duffy's order of battle, read on its text layer only, prints Friant 3,800 with 9 guns and Bourcier 2,500 with 3. Smith (1998) is cited, not read", guns:12,
   role:"Holds the extreme right for most of the morning against forces several times its number: Thiers gives seven to eight thousand foot, with the 3e de Ligne, which this map has in IV Corps, and 2,800 horse against 35,000 Russians on the Goldbach, and Davout's report speaks of extremely strong columns. Derived from Thiers's figures, that is about 3.2 to 3.6 to one against foot and horse, 4.4 to 5 to one against the foot alone.",
   children:["friant","bourcier"],
   note:"Caffarelli's division, normally of III Corps, fought under Lannes on the opposite flank."},
@@ -245,7 +245,7 @@ c_iii:{ ech:"corps", nation:"fr", arm:"inf", desig:"III Corps",
 friant:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., III Corps",
   name:"Friant's Division", commander:"Gen. de division Louis Friant",
   staff:"Brigades: Kister · Lochet · Heudelet", parent:"c_iii",
-  strength:3470, strengthNote:"about 3,470 in Duffy and Smith; some accounts give as many as 6,400",
+  strength:3470, strengthNote:"about 3,470, this map's working figure: only part of the division reached the field. Sokolov has 7,037 under arms on 22 November, presumes 3,800 for 2 December and writes that Davout could have had no more than 3,500-4,000 of it after the march; Thiers has it reduced to 6,000 at most; Duffy's order of battle, read on its text layer only, prints 3,800 with 9 guns",
   role:"Arrives straight from the march and counterattacks without resting.",
   track:{
     0:{p:[26,495],st:"march",cf:"B",obj:"Reach the lower Goldbach",act:"At Raigern since the night of 1 December, 8 km south-west of Telnitz and just beyond the map edge, after about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers, a march whose figures vary between the sources"},
@@ -260,7 +260,7 @@ friant:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., III Corps",
 
 bourcier:{ ech:"div", nation:"fr", arm:"cav", desig:"4e Div. Dragons",
   name:"Bourcier's Dragoons", commander:"Gen. de division François Bourcier", parent:"c_iii",
-  strength:830, strengthNote:"about 830 sabres present. Only a fraction of the division reached the field",
+  strength:830, strengthNote:"about 830 sabres, this map's working figure: only a fraction of the division reached the field. Sokolov has 1,900 on 22 November, presumes 1,500 for 2 December and writes that Davout could have had no more than 1,200-1,500 of it; Duffy's order of battle, read on its text layer only, prints 2,500 with 3 guns",
   role:"Covers Davout's open southern flank and the Vienna road.",
   track:{
     0:{p:[22,489],st:"march",cf:"C"},
@@ -272,7 +272,7 @@ bourcier:{ ech:"div", nation:"fr", arm:"cav", desig:"4e Div. Dragons",
 
 c_v:{ ech:"corps", nation:"fr", arm:"inf", desig:"V Corps",
   name:"V Corps", commander:"Marshal Jean Lannes", parent:null,
-  strength:12700, strengthNote:"about 12,700 with 20 guns",
+  strength:12700, strengthNote:"about 12,700 with 20 guns, as Duffy's order of battle prints them (read on its text layer only); Sokolov presumes 13,800 for Lannes on 2 December (13,673 on 22 November)",
   role:"Holds and then advances along the Brünn–Olmütz highway; forbidden to press too hard early.",
   children:["caffarelli","suchet"]},
 
@@ -320,16 +320,16 @@ santon:{ ech:"bde", nation:"fr", arm:"inf", desig:"17e Légère with the Santon 
     5:{st:"holding",act:"Its battery enfilades Bagration's attacks along the road"},
     9:{st:"holding",act:"Held the hill from first light to last without being taken"}}},
 
-c_cav:{ ech:"corps", nation:"fr", arm:"cav", desig:"Reserve de Cavalerie",
+c_cav:{ ech:"corps", nation:"fr", arm:"cav", desig:"Réserve de cavalerie",
   name:"Cavalry Reserve", commander:"Marshal Joachim Murat", parent:null,
-  strength:7400, strengthNote:"7,400 sabres and 36 guns (Duffy 1977; Smith 1998). Beaumont's dragoons and Milhaud's light brigade are not plotted: the four plotted divisions account for 6,800 of the 7,400", guns:36,
+  strength:7400, strengthNote:"7,400 sabres, as Duffy's order of battle prints it (read on its text layer only), and 36 guns, cited from Duffy and Smith but not found in his text; Sokolov presumes 7,100 for 2 December (8,729 on 22 November). Beaumont's dragoons and Milhaud's light brigade are not plotted: the four plotted divisions account for 6,800 of the 7,400", guns:36,
   role:"Operates between Lannes and Soult; fights the cavalry battle in the north.",
   children:["kellermann","nansouty","dhautpoul","walther"],
   note:"Beaumont's dragoon division was also with the reserve but is not plotted separately, because no position for it can be given with confidence. Some orders of battle attribute Kellermann's light cavalry to I Corps rather than to Murat."},
 
 kellermann:{ ech:"div", nation:"fr", arm:"cav", desig:"Div. Cavalerie Légère",
   name:"Kellermann's Light Cavalry", commander:"Gen. de division François Étienne Kellermann", parent:"c_cav",
-  strength:2400,
+  strength:2400, strengthNote:"2,400, this map's working figure: Sokolov has 2,021 under arms on 22 November and presumes 1,500 for 2 December (t. II, p. 191)",
   track:{
     0:{p:[242,135],st:"holding",cf:"B",obj:"Screen the front between Lannes and Soult",act:"Forward of the infantry on the open ground"},
     5:{p:[284,134],st:"engaged",cf:"A",act:"First into the cavalry melee; falls back through the infantry to reform"},
@@ -339,7 +339,7 @@ kellermann:{ ech:"div", nation:"fr", arm:"cav", desig:"Div. Cavalerie Légère",
 
 nansouty:{ ech:"div", nation:"fr", arm:"cav", desig:"1re Div. Cuirassiers",
   name:"Nansouty's Cuirassiers", commander:"Gen. de division Étienne de Nansouty", parent:"c_cav",
-  strength:1600, strengthNote:"about 1,600: the six regiments listed by Duffy and Smith sum to about 1,580, with 92 gunners",
+  strength:1600, strengthNote:"about 1,600, this map's working figure: Sokolov has 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners, and presumes 1,300 for 2 December; the six regiments as listed from Duffy and Smith, not read, sum to about 1,580",
   track:{
     0:{p:[219,138],st:"reserve",cf:"B"},
     5:{p:[277,146],st:"charging",cf:"A",obj:"Break the Allied horse",act:"Charges Liechtenstein's and Uvarov's cavalry; the collision was said to be audible across the field"},
@@ -349,7 +349,7 @@ nansouty:{ ech:"div", nation:"fr", arm:"cav", desig:"1re Div. Cuirassiers",
 
 dhautpoul:{ ech:"div", nation:"fr", arm:"cav", desig:"2e Div. Cuirassiers",
   name:"d'Hautpoul's Cuirassiers", commander:"Gen. de division Jean-Joseph d'Hautpoul", parent:"c_cav",
-  strength:1300,
+  strength:1300, strengthNote:"1,300, this map's working figure: Sokolov has 1,136 under arms on 22 November and presumes 1,100 for 2 December (t. II, p. 190)",
   track:{
     0:{p:[201,146],st:"reserve",cf:"B"},
     5:{p:[265,155],st:"charging",cf:"B",act:"Supports Nansouty against the Allied cavalry"},
@@ -357,8 +357,8 @@ dhautpoul:{ ech:"div", nation:"fr", arm:"cav", desig:"2e Div. Cuirassiers",
     9:{p:[364,138],st:"holding"}}},
 
 walther:{ ech:"div", nation:"fr", arm:"cav", desig:"Div. Dragons",
-  name:"Walther's Dragoons", commander:"Gen. de division Frederic Walther", parent:"c_cav",
-  strength:1500,
+  name:"Walther's Dragoons", commander:"Gen. de division Frédéric Walther", parent:"c_cav",
+  strength:1500, strengthNote:"1,500, this map's working figure: Sokolov has 1,340 under arms on 22 November and presumes 1,200 for 2 December (t. II, p. 190)",
   track:{
     0:{p:[189,125],st:"reserve",cf:"C"},
     5:{p:[255,128],st:"advancing",cf:"C"},
@@ -367,14 +367,14 @@ walther:{ ech:"div", nation:"fr", arm:"cav", desig:"Div. Dragons",
 
 c_i:{ ech:"corps", nation:"fr", arm:"inf", desig:"I Corps",
   name:"I Corps", commander:"Marshal Jean-Baptiste Bernadotte", parent:null,
-  strength:13000, strengthNote:"about 11,000 to 13,000",
+  strength:13000, strengthNote:"about 11,000 to 13,000: 13,000 with 24 guns in Duffy's order of battle (read on its text layer only); Sokolov presumes 11,500 for 2 December (11,642 on 22 November)",
   role:"The centre, between Murat's cavalry and Soult, in the 30th Bulletin, Stutterheim, Schönhals and Marbot; no source read calls it the general reserve. Where it stood at dawn and how much of it fought are disputed; Drouet's memoir, as Sokolov quotes it, has his division called up at the crisis.",
   note:"No source read calls the corps the general reserve. The 30th Bulletin gives Bernadotte the command of the centre, with Rivaud's division on his left and Drouet's on his right (p. 449); Stutterheim (1806), an Austrian officer present at the battle, writes that the corps formed the centre of the French army (p. 41); Mikhailovsky-Danilevsky has Napoleon order Bernadotte and Soult together to seize the heights of Pratzen (1846, pp. 238-239); Marbot's memoirs have the centre formed by the troops of Soult and Bernadotte (vol. I, p. 260). Thiébault's memoirs count the 2nd division of I Corps, with the Guard and the reserve, among the troops that took no part in the fighting (vol. III, p. 466; the reserve is the grenadiers' on p. 504, in a boast he imputes to Napoleon). A note in the Materialien of 1806, by its lettering one of an unnamed French officer's (an attribution read on the text layer only), has half of the corps' battalions fire no cartridge and the other half take little part (p. 93); Savary has one of its divisions break the Russian Guard's infantry (1828, pp. 205-208).",
   children:["rivaud","drouet"]},
 
 rivaud:{ ech:"div", nation:"fr", arm:"inf", desig:"1re or 2e Div., I Corps",
   name:"Rivaud's Division", commander:"Gen. de division Olivier Rivaud", parent:"c_i",
-  strength:6000,
+  strength:6000, strengthNote:"6,000, this map's working figure: Sokolov has 5,216 under arms on 22 November (t. II, pp. 183-185)",
   note:"Its number in I Corps differs between two French returns of October 1805, neither of 2 December: the situation of 28 October numbers Rivaud's division the 2nd (Alombert and Colin, t. IV, p. 717); the force return of 26 October numbers its regiments (the 8e and 45e de ligne, the 54e detached, then under Pacthod) the 1st division, which this map reads as Rivaud's (an inference from its regiments and its brigade general). The two group the corps differently: on 26 October it also had an advance-guard division under Kellermann. Sokolov's order of battle built on the returns of 22 November has Rivaud the 1st and Drouet the 2nd (t. II, pp. 183-185). Thiébault's memoirs have I Corps' 1st division reinforce Lannes and its 2nd take no part; which of the two each is follows only from which fought, itself disputed.",
   track:{
     0:{p:[189,164],st:"reserve",cf:"B",obj:"Close up behind Vandamme",act:"Behind Girzikowitz on I Corps' left (Stutterheim; the 30th Bulletin for the left); the place drawn, west of the village, is this map's"},
@@ -386,7 +386,7 @@ rivaud:{ ech:"div", nation:"fr", arm:"inf", desig:"1re or 2e Div., I Corps",
 
 drouet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e or 1re Div., I Corps",
   name:"Drouet d'Erlon's Division", commander:"Gen. de division Jean-Baptiste Drouet d'Erlon", parent:"c_i",
-  strength:7000,
+  strength:7000, strengthNote:"7,000, this map's working figure: Sokolov has 6,318 under arms on 22 November (t. II, pp. 183-185)",
   note:"Its number in I Corps differs between two French returns of October 1805, neither of 2 December: the 2nd division in the force return of 26 October (the 94e and 95e de ligne with two hussar regiments; the 27e légère then in Kellermann's advance-guard division), the 1st in the situation of 28 October (the 27e légère, 94e and 95e; Alombert and Colin, t. IV, pp. 762 and 716-717). Sokolov's order of battle built on the returns of 22 November has it the 2nd (t. II, pp. 183-185). Thiébault's memoirs have I Corps' 1st division reinforce Lannes and its 2nd take no part; which of the two each is follows only from which fought, itself disputed.",
   track:{
     0:{p:[179,177],st:"reserve",cf:"B",act:"Where I Corps stood at dawn is disputed: in the second line behind Soult on 1 December (Savary), behind Girzikowitz (Stutterheim), in the Goldbach ravine with Soult's troops (Marbot), across the brook since the evening before (Mikhailovsky-Danilevsky); the place drawn is this map's"},
@@ -396,16 +396,16 @@ drouet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e or 1re Div., I Corps",
     7:{p:[313,217],st:"holding",act:"Takes Vandamme's place on the plateau as Vandamme wheels toward Augezd (Schönhals; Ségur has Bernadotte left on the plateau); Savary has one of Bernadotte's divisions, unnamed, break the Russian Guard infantry, then go back to its morning place"},
     9:{p:[329,205],st:"holding"}}},
 
-c_gd:{ ech:"corps", nation:"fr", arm:"guard", desig:"Garde Imperiale",
+c_gd:{ ech:"corps", nation:"fr", arm:"guard", desig:"Garde impériale",
   name:"Imperial Guard", commander:"Marshal Jean-Baptiste Bessières", parent:null,
   strength:5500, strengthNote:"about 5,500, Sokolov's estimate for 2 December from the returns of 22 November. No return read gives its guns on the day: the 30th Bulletin puts forty guns served by the Guard's gunners in the reserve, Schönhals forty with the grenadiers, and Sokolov has 24 guns of the Guard horse artillery fire at the meres",
   role:"Held in reserve with the Emperor and the grenadiers (the 30th Bulletin); its cavalry charges and breaks the Russian Guard, its artillery fires, and its infantry moves up onto the plateau, not engaged in the Bulletin and Schönhals; Coignet, in its ranks, has it break the Russian second line in the attack on the Pratzen, but not engaged against the Russian Guard.",
   children:["guard_inf","guard_cav"]},
 
 guard_inf:{ ech:"div", nation:"fr", arm:"guard", desig:"Infanterie de la Garde",
-  name:"Guard Infantry", commander:"Grenadiers and Chasseurs a Pied",
+  name:"Guard Infantry", commander:"Grenadiers and Chasseurs à pied",
   staff:"With the Grenadiers of the Italian Royal Guard", parent:"c_gd",
-  strength:3000,
+  strength:3000, strengthNote:"3,000, this map's working figure: Sokolov has the foot chasseurs 1,270, the foot grenadiers 1,346 and the Italian Royal Guard 693 under arms on 22 November, and presumes 5,500 for the whole Guard on 2 December (t. II, p. 193)",
   track:{
     0:{p:[187,149],st:"reserve",cf:"B",obj:"Remain in hand near the Zuran",act:"Formed in reserve around Napoleon's command post"},
     6:{p:[276,213],st:"advancing",via:[[225,163],[225,196]],moveMin:60,act:"Moves up onto the plateau behind the Guard cavalry; not engaged in the 30th Bulletin, Schönhals and Thiébault; Coignet, a grenadier of the foot Guard, claims it helped break the Russian second line in the attack on the Pratzen, but of the Russian Guard's attack writes that they thought their turn had come, and the enemy fell back"},
@@ -415,8 +415,8 @@ guard_inf:{ ech:"div", nation:"fr", arm:"guard", desig:"Infanterie de la Garde",
 
 guard_cav:{ ech:"div", nation:"fr", arm:"cav", desig:"Cavalerie de la Garde",
   name:"Guard Cavalry", commander:"Marshal Bessières; charge led by Gen. Rapp",
-  staff:"Horse Grenadiers, Chasseurs a Cheval, Mamelukes", parent:"c_gd",
-  strength:2500,
+  staff:"Horse Grenadiers, Chasseurs à cheval, Mamelukes", parent:"c_gd",
+  strength:2500, strengthNote:"2,500, this map's working figure: Sokolov has the horse chasseurs 376, the Mamelukes 48 and the horse grenadiers 599 under arms on 22 November (1,023 by addition), with the horse artillery's 298 (t. II, p. 193)",
   track:{
     0:{p:[201,154],st:"reserve",cf:"B"},
     6:{p:[289,209],st:"charging",cf:"A",via:[[230,161],[235,188]],moveMin:45,obj:"Break the Russian Guard",act:"Rapp's counter-charge shatters the Chevalier Guard; Prince Repnin taken prisoner (the hour is disputed: about 13:00 or after in Rapp's own memoirs, before one by the order of the Bulletin's narrative; the map draws it from 11:15)"},
@@ -441,20 +441,20 @@ ahq:{ ech:"army", nation:"ru", arm:"hq", desig:"Allied H.Q.",
   name:"Allied Headquarters", commander:"Gen. Mikhail Kutuzov (commander-in-chief in name)",
   staff:"Tsar Alexander I and Emperor Francis II (Francis I of Austria) present; plan by Gen. Franz von Weyrother",
   strength:null, parent:null,
-  army:{men:"about 85,400", guns:278, src:"Duffy 1977; Smith 1998"},
+  army:{men:"about 85,400", guns:278, src:"this map's working figure; Duffy 1977, 80,000-87,000 with 278 pieces"},
   role:"Russian and Soviet accounts hold that Kutuzov opposed the plan and was overruled by the Tsar; at the council itself he reportedly dozed rather than objecting. He rode with the 4th Column and was lightly wounded in the face.",
-  note:"Allied strength is variously given as 73,000–89,000 with 278–334 guns. Roughly 16,000 were Austrian.",
+  note:"Allied strength is variously given as 73,000–89,000 with 278–334 guns: Schönhals's table sums to 82,575, and Duffy gives 80,000-87,000 with 278 pieces (read on his text layer); the 30th Bulletin claims 105,000, 25,000 of them Austrian. Roughly 16,000 were Austrian, by Schönhals's table (derived).",
   track:{
     0:{p:[408,198],st:"observing",obj:"Execute Weyrother's dispositions",cf:"B",act:"Kutuzov's headquarters at Krzenowitz, where the dispositions were read overnight. The emperors join the 4th Column on the plateau about 08:30-09:00"},
     3:{p:[293,240],st:"surprised",cf:"A",act:"The Tsar has just ridden up and ordered the 4th Column forward (about 08:45; Russian Biographical Dictionary, 1903). Soult appears on the heights; in this map's reading, which no account read gives, Kutuzov orders the column to face about; part of the II Column is recalled"},
-    4:{p:[303,235],st:"engaged",cf:"B",act:"Kutuzov wounded in the cheek; orders Kamensky to retire"},
+    4:{p:[303,235],st:"engaged",cf:"B",act:"Kutuzov wounded in the cheek"},
     6:{p:[404,220],st:"withdrawing",act:"Headquarters falls back toward Krzenowitz"},
     8:{p:[454,190],st:"withdrawing"},
     9:{p:[480,148],st:"withdrawing"}}},
 
 buxhowden:{ ech:"corps", nation:"ru", arm:"hq", desig:"Left Wing",
   name:"Left Wing Command", commander:"Gen. Friedrich Wilhelm von Buxhowden", parent:null,
-  strength:40000, strengthNote:"Columns I–III with Kienmayer's advance guard: roughly 33,000–40,000",
+  strength:40000, strengthNote:"Columns I–III with Kienmayer's advance guard: roughly 38,000–40,000 (Schönhals's table 38,480, Sokolov's 39,520, both by addition)",
   role:"Commands the whole southern attack. Remained unaware of the collapse on the plateau until around noon; Langeron, a hostile witness, alleged that he was drunk.",
   children:["kienmayer","dok","lang","prz"],
   track:{
@@ -467,7 +467,7 @@ buxhowden:{ ech:"corps", nation:"ru", arm:"hq", desig:"Left Wing",
 kienmayer:{ ech:"div", nation:"at", arm:"mixed", desig:"Advance Guard, I Column",
   name:"Kienmayer's Advance Guard", commander:"Feldmarschall-Leutnant Michael von Kienmayer",
   staff:"Grenz infantry (Broder Nr. 7, 1st and 2nd Szekler Nr. 14 and 15) with chevau-legers, hussars and Cossacks", parent:"buxhowden",
-  strength:6340, strengthNote:"6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived). Duffy and Smith (cited, not read), as transcribed here, give 3,440 foot and 3,440 horse, which make 6,880", guns:12,
+  strength:6340, strengthNote:"6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived). Duffy's order of battle, read on its text layer only, gives 6,780 with 12 light pieces and calls it, like his other figures, over-optimistic and nominal; Smith (1998) is cited, not read", guns:12,
   role:"Opens the battle. The Allied extreme left.",
   track:{
     0:{p:[291,367],st:"forming",cf:"A",obj:"Take Telnitz and turn the French right",act:"Formed near Augezd before first light"},
@@ -482,7 +482,7 @@ kienmayer:{ ech:"div", nation:"at", arm:"mixed", desig:"Advance Guard, I Column"
 
 dok:{ ech:"div", nation:"ru", arm:"inf", desig:"I Column",
   name:"First Column", commander:"Lt.-Gen. Dmitry Dokhturov", parent:"buxhowden",
-  strength:13490, strengthNote:"13,240 infantry and 250 cavalry with 64 guns (Duffy/Smith); other returns range from 7,750 to 14,200", guns:64,
+  strength:13490, strengthNote:"13,490, this map's working figure (13,240 infantry and 250 cavalry, a transcription no source read prints), with 64 guns: Sokolov has 13,800 infantry and 200 Cossacks with 64 guns; Schönhals's table 12,730 in its recapitulation (13,730 on its own sum line); Duffy's order of battle, read on its text layer only, 13,650 with 40 light and 24 heavy pieces", guns:64,
   role:"Main weight of the attack on Telnitz.",
   track:{
     0:{p:[291,332],st:"forming",cf:"A",obj:"Follow Kienmayer through Telnitz and wheel north",act:"At the southern end of the Pratzen plateau"},
@@ -497,8 +497,8 @@ dok:{ ech:"div", nation:"ru", arm:"inf", desig:"I Column",
 
 lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
   name:"Second Column", commander:"Lt.-Gen. Louis de Langeron",
-  staff:"A French emigre in Russian service", parent:"buxhowden",
-  strength:11700, strengthNote:"about 9,900–12,000 with 30 guns",
+  staff:"A French émigré in Russian service", parent:"buxhowden",
+  strength:11700, strengthNote:"11,700 with 30 guns, as Duffy's order of battle prints them (read on its text layer only); Schönhals's table and Sokolov give 10,840 infantry, Sokolov with 300 cavalry and 30 guns. The figure includes Kamensky's brigade, drawn on its own",
   role:"Attacks Sokolnitz. Warned by Kamensky in Mikhailovsky-Danilevsky's account (citing Langeron's report), Langeron rode back and sent reinforcements up the slope toward him: the Kursk regiment, whose strength engaged and loss the accounts give differently; Schönhals instead has it left in reserve behind Sokolnitz.",
   children:["kamensky"],
   track:{
@@ -514,7 +514,7 @@ lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
 
 kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
   name:"Kamensky's Brigade", commander:"Maj.-Gen. Sergey Kamensky", parent:"lang",
-  strength:4250, strengthRange:[4000,4500], strengthNote:"the Fanagoria Grenadier and Ryazhsk Musketeer regiments, as Mikhailovsky-Danilevsky names them (1844, pp. 167, 179, 187-189, 198, 205, p. 187 citing Langeron's report to Kutuzov; its French translation of 1846 the same), who places the Ryazan regiment in Tolstoy's corps sent to Swedish Pomerania (1844, p. 257). The other reading, kept: Ryazan in the Materialien of 1806 (its list of the columns and its translation of Kutuzov's report; its translation of Stutterheim prints 'Rhiäsky') and as cited here from Duffy. Mikhailovsky-Danilevsky forms the brigade of these two regiments; Stutterheim (1806) and Thiébault have them reinforce it (disputed). About 2,000 each, with dragoons, Cossacks and pioneers attached (Duffy, via the Langeron column return)",
+  strength:4250, strengthRange:[4000,4500], strengthNote:"the Fanagoria Grenadier and Ryazhsk Musketeer regiments, as Mikhailovsky-Danilevsky names them (1844, pp. 167, 179, 187-189, 198, 205, p. 187 citing Langeron's report to Kutuzov; its French translation of 1846 the same), who places the Ryazan regiment in Tolstoy's corps sent to Swedish Pomerania (1844, p. 257). The other reading, kept: Ryazan in the Materialien of 1806 (its list of the columns and its translation of Kutuzov's report; its translation of Stutterheim prints 'Rhiäsky') and as cited here from Duffy. Mikhailovsky-Danilevsky forms the brigade of these two regiments; Stutterheim (1806) and Thiébault have them reinforce it (disputed). About 2,000 each, as Schönhals's table prints them (1873, p. 177), its brace taking in the Kursk regiment too; Sokolov gives each three battalions (t. II, p. 195); the dragoons, Cossacks and pioneers attached are as cited from Duffy, not read",
   role:"Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky, citing Langeron's report; sent by Langeron in Schönhals; ordered onto the ridge by Kutuzov in his official report; no order of his named in Kutuzov's private relation of March 1806.",
   track:{
     2:{p:[259,316],st:"march",cf:"B",obj:"Follow the II Column to Sokolnitz",act:"Marching at the rear of Langeron's column"},
@@ -527,18 +527,18 @@ kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
 
 prz:{ ech:"div", nation:"ru", arm:"inf", desig:"III Column",
   name:"Third Column", commander:"Lt.-Gen. Ignacy Przybyszewski", parent:"buxhowden",
-  strength:7700, strengthNote:"sources differ: 5,450 to 9,500, with 30 guns",
+  strength:7700, strengthNote:"7,700, this map's working figure, with 30 guns: Schönhals's table gives 8,570 with 500 horse, Sokolov 8,000 infantry with 30 guns, and Duffy's order of battle, read on its text layer only, 7,770",
   role:"Attacks the Sokolnitz castle and pheasantry; surrounded and destroyed as a formation.",
   track:{
     0:{p:[290,282],st:"forming",cf:"A",obj:"Take the Sokolnitz castle and pheasantry"},
     1:{tm:{dep:420,gr:"B",basis:"source",ev:["the disposition ordered all the columns to march at 07:00","as did the III Column in Przybyszewski's report","the II and III Columns at 07:30"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)"},
        p:[266,296],st:"advancing"},
-    2:{p:[215,341],st:"attacking",cf:"B",obj:"Take the castle and pheasantry",act:"Storms the walled castle grounds and the pheasant enclosure"},
+    2:{p:[215,341],st:"attacking",cf:"B",obj:"Take the castle and pheasantry",act:"Storms the castle grounds and the pheasantry"},
     4:{p:[215,341],st:"engaged"},
     7:{p:[215,341],st:"encircled",cf:"B",obj:"Break out toward Kobelnitz",act:"Cut off by Soult from the east and Davout from the west"},
     8:{p:[227,309],st:"broken",cf:"A",moveMin:20,act:"Attempts to break out north toward Kobelnitz; the column disintegrates"}   /* timing inferred: holds at Sokolnitz until it is surrounded (~14:00, the file's own event), then breaks out */
     /* Stage 8, the follow-up 8J (decision 259 (a)): phases 2, 4 and 7 re-plotted at the castle and the pheasantry as corrected (LANDMARK_SITES.castle,
-       WOODS[0]), where the acts put the column ("Storms the walled castle grounds and the pheasant enclosure", the objective arrow's words that the
+       WOODS[0]), where the acts put the column ("Storms the castle grounds and the pheasantry", until the final audits' WP-01 "the walled castle grounds and the pheasant enclosure"; the objective arrow's words that the
        model has the column there from phase 2 on, "Cut off by Soult from the east and Davout from the west"; Schönhals 1873, p. 160: its head "rückte
        in Sokolnitz ein"): one place for the three, the column holding at Sokolnitz until it is surrounded (the correction pass's inference), graded B: the
        sector documented, the frontage an approximation, the castle's and the pheasantry's sites in 1805 the 1825 sketch's carried back. Until 8J
@@ -548,7 +548,7 @@ prz:{ ech:"div", nation:"ru", arm:"inf", desig:"III Column",
 col4:{ ech:"corps", nation:"at", arm:"inf", desig:"IV Column",
   name:"Fourth Column", commander:"FZM Johann Kollowrat and Lt.-Gen. Mikhail Miloradovich", parent:null,
   strength:13900, strengthRange:[12000,23900], mixedNote:"Austrian and Russian: fifteen Austrian battalions and twelve Russian (Stutterheim 1806; Schönhals 1873), or fourteen Russian (WarHistory)",
-  strengthNote:"13,900 infantry with 52 light and 24 heavy guns (Duffy 1977; Smith 1998), used here. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler, and an older revision of the same order of battle)",
+  strengthNote:"13,900, this map's working figure, with 52 light and 24 heavy guns. Schönhals's table gives the column 16,115 in its recapitulation (the Russian wing 6,965, the Austrians 9,150; its own sum line 16,118), and Sokolov 15,900 infantry and 300 cavalry with 76 guns in 27 battalions; Duffy's order of battle, read on its text layer only, prints 23,900 with 52 light and 24 heavy pieces, and his rows add to about 16,065 (derived). Smith (1998) is cited, not read. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler)",
   role:"Should have replaced the troops leaving the plateau. Delayed, then caught in the open by Soult.",
   children:["milo","kollo"],
   note:"Its objective was Kobelnitz. Liechtenstein's cavalry, misplaced on the left, crossed its line of march riding north-west and held it up; Russian accounts put the delay chiefly on Kutuzov's reluctance to leave the heights."},
@@ -556,7 +556,7 @@ col4:{ ech:"corps", nation:"at", arm:"inf", desig:"IV Column",
 milo:{ ech:"div", nation:"ru", arm:"inf", desig:"Russian wing, IV Column",
   name:"Miloradovich's Russians", commander:"Lt.-Gen. Mikhail Miloradovich", parent:"col4",
   strength:4800, strengthRange:[4800,7000],
-  strengthNote:"Duffy and Smith imply about 4,800 (13,900 less the Austrian brigades' 9,100); Schönhals (1873) gives the Russian wing twelve battalions and 6,965 men, including two pioneer companies and two squadrons of Austrian dragoons (Smolensk's figures not printed), and Stutterheim (1806) twelve battalions; WarHistory has fourteen, which at 350-500 men would give 4,900-7,000. The earlier 10,000 had no source",
+  strengthNote:"4,800 is this map's working figure, its 13,900 for the column less the Austrian brigades' 9,100; Schönhals (1873) gives the Russian wing twelve battalions and 6,965 men, including two pioneer companies and two squadrons of Austrian dragoons (Smolensk's figures not printed), and Stutterheim (1806) twelve battalions; WarHistory has fourteen, which at 350-500 men would give 4,900-7,000. The earlier 10,000 had no source",
   track:{
     0:{p:[325,230],st:"forming",cf:"A",obj:"Advance on Kobelnitz",act:"Formed on the plateau near Pratzen village"},
     2:{p:[299,238],st:"delayed",cf:"A",obj:"Advance on Kobelnitz",act:"Held up while Liechtenstein's cavalry crosses its front from left to right"},
@@ -569,7 +569,7 @@ milo:{ ech:"div", nation:"ru", arm:"inf", desig:"Russian wing, IV Column",
 kollo:{ ech:"div", nation:"at", arm:"inf", desig:"Austrian wing, IV Column",
   name:"Kollowrat's Austrians", commander:"FZM Johann Karl Graf Kollowrat-Krakowsky",
   staff:"Brigades: Jurczek · Rottermund", parent:"col4",
-  strength:9100, strengthNote:"about 9,100 infantry",
+  strength:9100, strengthNote:"about 9,100 infantry, this map's working figure; the lines of Rottermund's and Jurczek's brigades in Schönhals's table make 9,150 (1873, p. 177)",
   track:{
     0:{p:[355,226],st:"forming",cf:"A",obj:"Follow the Russian wing toward Kobelnitz"},
     2:{p:[325,229],st:"delayed",cf:"A",act:"Waiting for Liechtenstein's cavalry to clear its front"},
@@ -598,7 +598,7 @@ lich:{ ech:"corps", nation:"ru", arm:"cav", desig:"V Column", mix:{nation:"at", 
 
 bag:{ ech:"corps", nation:"ru", arm:"inf", desig:"Advance Guard",
   name:"Advance Guard of the Right", commander:"Lt.-Gen. Prince Pyotr Bagration", parent:null,
-  strength:13700, strengthNote:"about 13,000 to 14,000 with 42 guns", guns:42,
+  strength:13700, strengthNote:"about 13,000 to 14,000 with 42 guns: 13,000 in Schönhals's table (1873, p. 178), 13,700 with 42 pieces in Duffy's order of battle (read on its text layer only)", guns:42,
   role:"Holds the Brünn–Olmütz highway. Driven back from Holubitz and Kruh, it re-forms on the height toward Rausnitz and withdraws toward Austerlitz in the evening (Stutterheim; Schönhals).",
   track:{
     0:{p:[352,64],st:"holding",obj:"Hold the highway and cover the Allied right",cf:"B",act:"Astride the Olmütz highway by the Posoritz post house, from which Stutterheim has him advance; his line reaches south toward Holubitz, held with Krug by Ulanius's jägers. The exact line is not established"},
@@ -637,7 +637,7 @@ rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
 
 rg_cav:{ ech:"div", nation:"ru", arm:"cav", desig:"Guard Cavalry",
   name:"Guard Cavalry", commander:"Lt.-Gen. Andrei Kologrivov", parent:"constantine",
-  strength:2900, strengthNote:"2,900 horse: Duffy's rows, the Chevalier Garde 800, the Gardes du Corps 1,000, the Life Guard Hussars 800 and the Life Guard Cossacks 300 (1977, p. 185), the same four as the Allied order of battle in Schönhals (1873, p. 178). Smith (1998) is cited, not read. Kologrivov's command on 2 December is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column. The first name 'Andrei' is cited, not read",
+  strength:2900, strengthNote:"2,900 horse: Duffy's rows, the Chevalier Garde 800, the Gardes du Corps 1,000, the Life Guard Hussars 800 and the Life Guard Cossacks 300 (1977, p. 185), the same four as the Allied order of battle in Schönhals (1873, p. 178). Smith (1998) is cited, not read. Kologrivov's command on 2 December is in Sokolov's order of battle, with no source on his page; Schönhals's table names a Lieutenant-General 'Kollowrizow' over the whole Guard (1873, p. 178), and Duffy's heading a Lieutenant-General of Cavalry Kologrivov among the reserve's generals; Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column. The first name 'Andrei' is cited, not read",
   track:{
     0:{p:[423,193],st:"reserve",cf:"A"},
     6:{p:[321,189],st:"charging",cf:"A",obj:"Break the French line on the plateau",act:"The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by Marbot). The Chevalier Guard's charge is then broken by Bessières and Rapp; Prince Repnin captured"},
@@ -683,7 +683,7 @@ var FEATURES = [
  story:"Mikhailovsky-Danilevsky has Napoleon, on the barrow by Schlapanitz with his marshals, see the heights being stripped of troops when the sun lit the hilltops, and give his final orders, the attack to begin half an hour after them; a memoir anecdote, as Thiébault tells it, has him wait a further quarter of an hour after Soult said he needed twenty minutes at most."},
 
 {id:"goldbach", p:[201,273], kind:"water", name:"Goldbach stream",
- sub:"Small stream in a marshy valley, the armies' dividing line",
+ sub:"Small stream in its valley, the armies' dividing line",
  facts:[["Course","North to south past Puntowitz, Kobelnitz, Sokolnitz and Telnitz"],["Obstacle value","Trivial for infantry, difficult for guns and horse in December mud"]],
  why:["Its valley held the fog that hid Soult's two divisions until they stepped onto the plateau",
       "Its villages hold the crossings for guns and formed cavalry; this map reads the southern battle as a fight for those crossings"],
@@ -703,9 +703,9 @@ var FEATURES = [
  story:"Mikhailovsky-Danilevsky has Kienmayer's Austrians twice break into the village and fail to hold it, then take it with Lewis once Dokhturov's column was up. According to Davout's report the 3e de Ligne left the village only after the finest resistance, Heudelet retook it, and superior forces took it again; according to Stutterheim the musket fire was very murderous. This map reads the flank as one Napoleon meant to give ground slowly; Marbot calls the thin right a trap, laid so that the Allies could take Telnitz easily."},
 
 {id:"sokolnitz", p:[208,365], kind:"village", name:"Sokolnitz",
- sub:"Village with a walled castle and a pheasantry enclosure",
+ sub:"Village with a castle and a pheasantry",
  facts:[["Attacked by","Langeron (village) and Przybyszewski (castle and pheasantry)"],["Defended by","Legrand, then Friant"],["Fell finally","Early afternoon, to the converging attack"]],
- why:["A walled castle and a pheasantry enclosure stand beside the village on the lower Goldbach; Davout reported the village taken and retaken several times"],
+ why:["A castle and a pheasantry stand beside the village on the lower Goldbach; Davout reported the village taken and retaken several times"],
  story:"Przybyszewski's column was surrounded here in the afternoon and tried to break out north toward Kobelnitz. It disintegrated and surrendered almost entire."},
 
 {id:"kobelnitz", p:[205,277], kind:"village", name:"Kobelnitz",
@@ -793,10 +793,10 @@ var SOURCE_NOTE = {
  body:[
   "Positions here are reconstructed from standard accounts of the battle. Village-level locations and the sequence of attacks follow the accounts; the hours are partly dated in the sources read, partly disputed between them, and mostly this map's own, as each move's timing grade, and each event's timing and dispute, say. Exact frontages, the spacing between formations and the precise placement of cavalry reserves are not — a Napoleonic corps occupied a shifting area of ground, not a point.",
   "Every formation marker therefore carries a confidence grade. A means the position is documented; B means the sector is documented but the frontage shown is an approximation; C means the position is reconstructed from the narrative and should be treated as indicative only.",
-  "Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle disagree substantially — Dokhturov's I Column is given as anything from 7,750 to 14,200 men. Where sources conflict, the dossier shows a working figure and the range.",
+  "Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle disagree substantially: the IV Column is about 16,100 in Schönhals's table and Sokolov's, but 23,900 in Duffy's. Where sources conflict, the dossier shows a working figure and the range.",
   "Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scale fitted to twelve surveyed elevations (the summits and several villages), which it meets within their tolerances. Between them the drawn ground departs from today's elevation data by up to about 80 m: the southern Pratzen plateau and St Anthony's knoll are drawn 40-80 m too low and Slapanice about 45 m too high, so read heights there as approximate. At true scale the Pratzen plateau reads as a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km. The relief setting cannot be changed while the battle plays, because redrawing the ground can take longer than a frame; the ground switch (Landscape, Paper map, Landscape with counters) can, and a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed).",
   "Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps its historical frame, which lies about {ROT} degrees off true north. The compass rose shows true north for the current view. Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as markers at its edge.",
-  "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; whether the Posoritz post house stood in 1805 where the maps of 1826-52 show the post; the positions of Krug and Bellowitz, which no source read fixes; Kologrivov's command on 2 December, which rests on Sokolov alone (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's; all three from 07:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; at 05:00 on the map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French hands at 09:30, then lost again, as in Davout's report), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Lejeune has Napoleon at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height.",
+  "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; whether the Posoritz post house stood in 1805 where the maps of 1826-52 show the post; the positions of Krug and Bellowitz, which no source read fixes; how wet the Goldbach's bottom was in December 1805 (the map draws marsh beside the lower brook from the land as recorded, not from an account of the day, which had the meres frozen); whether the Sokolnitz castle's grounds were walled and the pheasantry enclosed (neither is drawn); which of the two channels the cadastral sketch of 1825 draws north of the Sokolnitz castle carried the Goldbach in 1805 (the map draws today's, beside the avenue; the other lies about 110-150 m from it); whether the highway east of the Santon ran in 1805 where the cadastral sketches of 1826 and the survey of 1836-52 draw it, as the map draws it; Kologrivov's command of the Guard cavalry on 2 December, which Sokolov's order of battle gives, Schönhals's table only over the whole Guard and Duffy's heading only among the reserve's generals (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's; all three from 07:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; at 05:00 on the map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French hands at 09:30, then lost again, as in Davout's report), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Lejeune has Napoleon at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height.",
   "Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights is the sum of the strengths of formations whose plotted positions fall inside the plateau outline; because the reconstruction plots formations and not losses, a figure that does not change does not mean the fighting there has stopped. Centre separation is a spatial test, not a historical statistic: it reports whether a French formation stands across the line joining the Allied groups north and south of the plateau. When it stops being reported the geometry no longer holds, which is not the same as the Allied army having reunited."],
  layers:[
   ["Historical record","What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an event's dossier."],
