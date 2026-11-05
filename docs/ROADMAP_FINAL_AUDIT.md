@@ -46,6 +46,8 @@ Every pass keeps the project's rules (`CLAUDE.md`):
 
 ## The stages
 
+**Status (4 November 2026):** Stage 1 is built on `claude/inspiring-franklin-qt51w2` (a draft PR, for review). Four of WP-13's items are deferred with reasons: CL-ROB-03, -08, -09 and -13 (`CHANGELOG.md`).
+
 | stage | passes | days | the gate it closes |
 |---|---|---|---|
 | **1. Now** | WP-00, WP-04a, WP-13 | about 1-3 | no public exposure; no false statement about the relief; the evidence tools and records trustworthy before the next decision |

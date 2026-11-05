@@ -5683,3 +5683,18 @@ run (5 of 14 blocks slower); an integrated GPU unmeasured. Every other item unch
 measured on the owner's decisions 268 (a) and 269 (a), their excesses carried into the final audit rather than passed; an integrated GPU was not
 measured. No question of Stage 8 is open. The next step is the final combined audit, its checklist section 22.6 as carried in sections 23.4,
 24.3 and 25.4; nothing of it is begun here.
+
+## 26. Corrections from the final audits (4 November 2026)
+
+The final audits after Stage 8 (`docs/FINAL_AUDIT_POST_STAGE8.md`, `docs/FINAL_AUDIT_POST_STAGE8_CHATGPT.md`) found three statements of
+this specification's carried lists that do not hold as written. They are corrected here. The sections above are left as they were written.
+
+- **Kienmayer** (sections 21.9 and 22.6: "kienmayer@7's and lang@2's offsets from the corrected brook"). kienmayer@7's act, "Holding west of
+  the Goldbach", has contradicted its position since Stage 0. The anchor stands about 0.9 km east of the brook, and was 0.94 km east of
+  Stage 0's brook. It is not an 8J offset. 8J moved the brook about 40 m (`CL-HIS-08`, `CL-REC-04`).
+- **Caffarelli** (sections 21.9 and 22.6: "2.5-2.9 km south of Bagration's from 14:30"). The build draws 2.13 km at 14:30 rising to 2.64
+  km at 17:00 (`CL-HIS-09`, `CL-REC-04`).
+- **The ice under a low sun** (sections 20.10, 21.9 and 22.6: "the low views' glare at 15:00, 43.5% of the ice"). That figure was measured
+  on build `e8fed44b` in Chromium 153. On the audited build (md5 `f10fe585...`) in CI's Chromium 141, the same probe (`tools/stage8/ice-8h.js`,
+  `--clear 0.20`) gives 5.90% (ChatGPT's audit, CG-F10; `docs/final-audit-chatgpt-evidence/ice-current/`). The cause of the difference is
+  not established, and the bright sheen is still visible. Decision 264 (a) is unchanged (`CL-REC-10`).

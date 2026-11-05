@@ -7044,7 +7044,7 @@
    "file": "data.js",
    "line": 797,
    "label": null,
-   "text": "Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scale fitted to surveyed elevations. At true scale the Pratzen plateau reads as a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km. The relief setting cannot be changed while the battle plays, because redrawing the ground can take longer than a frame; the ground switch (Landscape, Paper map, Landscape with counters) can, and a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed).",
+   "text": "Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scale fitted to twelve surveyed elevations (the summits and several villages), which it meets within their tolerances. Between them the drawn ground departs from today's elevation data by up to about 80 m: the southern Pratzen plateau and St Anthony's knoll are drawn 40-80 m too low and Slapanice about 45 m too high, so read heights there as approximate. At true scale the Pratzen plateau reads as a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km. The relief setting cannot be changed while the battle plays, because redrawing the ground can take longer than a frame; the ground switch (Landscape, Paper map, Landscape with counters) can, and a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed).",
    "claim": "unchecked",
    "by": []
   },

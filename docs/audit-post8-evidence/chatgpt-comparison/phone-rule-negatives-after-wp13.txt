@@ -1,0 +1,10 @@
+ok   real R1, R2: VERDICT: rule 4: nothing is built
+ok   empty report: exit 1 (empty-report.json is not a complete phone-route report: no segments)
+ok   no refresh: exit 1 (no-refresh.json is not a complete phone-route report: refreshMs missing or not a positive num)
+ok   one A removed: exit 1 (play-half figShadow: not between two As)
+ok   one candidate removed: exit 1 (one-candidate-removed.json is not a complete phone-route report: ph8-overview round 1: 0 bloc)
+ok   a round removed: exit 1 (a-round-removed.json is not a complete phone-route report: play-half: 1 round(s), at least 2 )
+ok   a duplicate block: exit 1 (a-duplicate-block.json is not a complete phone-route report: play-half round 1: 2 block(s) of)
+ok   a non-finite p50: exit 1 (a-non-finite-p50.json is not a complete phone-route report: ph8-overview shadowPass round 1: )
+ok   a hidden segment: exit 1 (a-hidden-segment.json does not stand: run it again (rule))
+all controls refused; the real verdict unchanged

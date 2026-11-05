@@ -2,7 +2,7 @@
 # matches that build, the regression suite
 # (tools/run-all.sh exits non-zero if any suite fails), the data-invariance proof and the chronology regression.
 # Since roadmap step 1 (owner decision 132, docs/FINAL_AUDIT.md section 6.0): check:contrast and the one-page in-app self-test
-# (npm run check:selftest) run in a browser job on every push, in parallel with the checks job (each about 8-15 minutes of software
+# (npm run check:selftest) run in a browser job on every push, in parallel with the checks job (contrast about 15 minutes, the self-test about 20-45 minutes since Stage 8, of software
 # rendering on the runner); the full visual harness (npm run check:visual, 39 views and its live blocks, about three to four hours since
 # Stage 8's implementation PR 8E) runs only on demand: Actions,
 # "checks", "Run workflow", with "visual" ticked. The type is embedded in the file (decision 141), so the runner's fonts do not matter.

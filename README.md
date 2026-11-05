@@ -1,7 +1,13 @@
 # Austerlitz command map
 
 A historically grounded, interactive reconstruction of the Battle of Austerlitz (2 December 1805), delivered as
-one self-contained HTML file: open `austerlitz-command-map.html` in a browser.
+one HTML file that loads three.js r128 from cdnjs at start-up (everything else, the type and the textures, is embedded): open
+`austerlitz-command-map.html` in a browser.
+
+**[Open the map](austerlitz-command-map.html).** It is a reconstruction, not a record: positions, hours and strengths come from the sources
+where they can, and every statement says how far it is sourced (its claim word, and a position grade A, B or C). The dossiers'
+"How this is sourced" and the sheet "Accuracy and sources" show what rests on which reading, where the sources disagree, and what is this
+map's own reading.
 
 ## Working on it
 Edit the sources, then `npm run build` (or `python3 build.py`; on Windows `py build.py`). Never edit the built HTML by hand.
@@ -24,12 +30,12 @@ browser checks at once, or a page probe beside `check:visual`: their timing limi
 |---|---|
 | `npm install`, then `npx playwright install chromium` | one-time setup |
 | `npm run build` | `python3 build.py`: joins the sources into `austerlitz-command-map.html` (committed; CI fails if it differs from a fresh build) and `bundle.js` (for the tests, not committed) |
-| `npm test` | the regression suite (`tools/run-all.sh`): nine suites (`css-test.js` the stylesheet, the type and the colour literals; `test.js` data, order of battle, appearance and the per-statement claims; `geo-test.js` geography; `terrain-test.js` the ground and the meres; `audit.js` the tracks against the ground (continuity and coverage are printed only); `sim-test.js` the whole day run: continuity, activation, events against positions; `redteam.js` the overclaim scan and the retired claims; `runtime-test.js` the runtime against real three.js r128 materials; `binding-test.js` the arrows bound to the tracks) and the height guard; any error, any warning not acknowledged by its exact text or any runtime warning fails it |
-| `npm run check:data` | the historical, geographic and model declarations are byte-identical to the reference build (`archive/step5c-45f8f662.html`, since PR #58, decision 213 (b)); a data task that changes one lists it in `CHANGELOG.md` and moves the reference |
+| `npm test` | the regression suite (`tools/run-all.sh`): nine suites (`css-test.js` the stylesheet, the type and the colour literals; `test.js` data, order of battle, appearance and the per-statement claims; `geo-test.js` geography; `terrain-test.js` the ground and the meres; `audit.js` the tracks against the ground (it asserts their continuity and coverage); `sim-test.js` the whole day run: continuity, activation, events against positions; `redteam.js` the overclaim scan and the retired claims; `runtime-test.js` the runtime against real three.js r128 materials; `binding-test.js` the arrows bound to the tracks) and the height guard; any error, any warning not acknowledged by its exact text or any runtime warning fails it |
+| `npm run check:data` | the historical, geographic and model declarations are byte-identical to the reference build (`archive/postaudit1-a3cb40f8.html`, since the final audit's stage 1); a data task that changes one lists it in `CHANGELOG.md` and moves the reference |
 | `npm run check:chronology` | every live timed statement cited or allowed by name (four classes excluded by path, each with its reason), no move early or late but the named conflicts, the explicit times' evidence, the arrival rules, the movement audit |
-| `npm run check:contrast` | every visible text in 35 interface states meets WCAG AA and the 10.5 px floor, drawn in the embedded faces; and the six start-up cases (`tools/visual/boot-check.js`) |
-| `npm run check:selftest` | the in-app self-test (242 checks, held to `tools/visual/selftest-manifest.json`) on one page, with the slider, key and live checks (about 15 minutes; CI runs it) |
-| `npm run check:visual` | 30 fixed views held to their thresholds, every page's console, the live checks and the self-test (about 100 minutes; on demand) |
+| `npm run check:contrast` | every visible text in 45 interface states (10 of them as a phone) meets WCAG AA and the 10.5 px floor, drawn in the embedded faces; and the eight start-up cases (`tools/visual/boot-check.js`) |
+| `npm run check:selftest` | the in-app self-test (317 checks, held to `tools/visual/selftest-manifest.json`) on one page, with the slider, key, motion and live checks (about 20-45 minutes on CI; CI runs it on every push) |
+| `npm run check:visual` | 39 fixed views held to their thresholds, every page's console, the live checks and the self-test (about two to four hours; on demand) |
 | `npm run check:report` | a finished `check:visual` report judged again without rendering |
 | `npm run check:remeasure` | decision 141's one re-measure tool (`tools/visual/remeasure.js`); it never edits a limit |
 | `npm run check:baseline` | the build is exactly the last recorded one (`CHANGELOG.md` names it); a task that changes the build moves it |

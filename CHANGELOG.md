@@ -1,8 +1,54 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 1: WP-00, WP-04a, WP-13
+
+**Status: on `claude/inspiring-franklin-qt51w2` (a draft PR into `main`, for review, not merged).** Stage 1 of `docs/ROADMAP_FINAL_AUDIT.md`. Owner
+questions 270 and 273 are applied by their recommended defaults (270 (b): fix the page, leave the frozen archives as they are; 273: disclose now,
+refit later in WP-04). `austerlitz-command-map.html` is now 2,810,950 bytes, md5 `a3cb40f80d1792d7871ad3511250bff4` (was 2,810,630, `f10fe585...`).
+`check:data`'s reference and `check:baseline` both move to this build (`archive/postaudit1-a3cb40f8.html`).
+
+- **WP-00, the script injection in `tools/step6/perf-run.html` (CL-ROB-01, S1).** `?src=` was put into the frame as given, so a `javascript:` URL
+  ran in the site's origin. A value is now taken only when it resolves to the page's own origin and protocol (http, https or file). Anything else
+  loads the default build and says so on the page. Verified on a local copy served from 127.0.0.1, never against the live site
+  (`tools/audit-post8/robustness/perfrun-src-after.js`, `docs/audit-post8-evidence/robustness/perfrun-src-after-wp00.json`): the `javascript:` and
+  `data:` cases run no script and the frame loads the default build. A same-origin archive path is still accepted; `https://evil.example/`,
+  `//evil` and `data:` are refused. CL-ROB-06 (the same page frozen inside the archives) is left as it is under 270 (b).
+- **WP-04a, the relief's disclosure (CL-GEO-01, P1 by disclosure).** This is a data change: `SOURCE_NOTE.body[3]`, the only declaration changed.
+  - *Was:* "heights follow a separate vertical scale fitted to surveyed elevations."
+  - *Is:* "heights follow a separate vertical scale fitted to twelve surveyed elevations (the summits and several villages), which it meets within
+    their tolerances. Between them the drawn ground departs from today's elevation data by up to about 80 m: the southern Pratzen plateau and St
+    Anthony's knoll are drawn 40-80 m too low and Slapanice about 45 m too high, so read heights there as approximate."
+  - *Why:* the audit's elevation residuals (GLO-90 and SRTM, `docs/audit-post8-evidence/geography/dem.json`, `plateau.json`, `README.md`) show the
+    model 30-80 m off between its fit points, while the sources sheet told the visitor only that it was fitted. The twelve anchors and their
+    tolerances are `tools/relief-fit.js`'s. The relief itself is unchanged; its refit is WP-04.
+  - The narrative inventory is regenerated (`docs/step4-evidence/inventory.json`, the statement's hash). `check:data`: `SOURCE_NOTE` changed
+    against `archive/stage8k-f10fe585.html`, 138 identical; against the new reference, 139 of 139 identical.
+- **WP-13, records and evidence tools.**
+  - CL-PERF-16: `tools/step6/phone-rule.js` refuses an incomplete report before it applies the rule. It requires a refresh interval, the notes,
+    segments, at least two rounds per kind, one block per candidate and reference per round, at least two A blocks, and finite medians and
+    long-frame shares. `tools/step6/phone-rule-negatives.js` holds 8 negative controls and the real reports' verdict ("rule 4: nothing is built",
+    unchanged), all passing (`docs/audit-post8-evidence/chatgpt-comparison/phone-rule-negatives-after-wp13.txt`).
+  - CL-REC-09: `build.py` prints the file's size in bytes, with its characters beside them.
+  - CL-REC-01, CL-REC-02: `README.md` links the map, says what is reconstruction and what is evidence, and says that three.js loads from cdnjs.
+    It also corrects the check:data reference, the counts (45 contrast states, eight start-up cases, 317 self-test checks, 39 views) and the
+    durations.
+  - CL-REC-03, CL-REC-04, CL-REC-08: stale status lines say merged (here for #77-#79, `docs/ROADMAP.md` for #73-#77). `CLAUDE.md` gets its
+    current state, the narrative count after 8K, the reference and the baseline. The CI workflow's comment gets its timings.
+  - CL-REC-10 and the two record corrections: `docs/STAGE8_SPEC.md` section 26 (Kienmayer's position, which contradicted its act since Stage 0 and
+    is not 8J's offset; Caffarelli's drawn distances, 2.13-2.64 km; the glare figure, 43.5% on build `e8fed44b` in Chromium 153 against 5.90% on
+    `f10fe585` in Chromium 141).
+  - *Deferred, with reasons:* CL-ROB-03 (splitting `CLAUDE.md` restructures the owner's instruction file and needs the owner's word);
+    CL-ROB-08 (the licence, owner question 279); CL-ROB-09 (the shipped self-test kept, question 283's default); CL-ROB-13 (the archive images'
+    terms, not yet read).
+- **Verified here:** `npm test` (nine suites and the height guard) passes; `check:data` passes against the new reference; `check:chronology` reports
+  0 errors; `check:baseline` passes; `check:contrast` passes (every state at AA in the embedded faces, the start-up cases 8 of 8). `check:selftest` and the CI checks run on the PR; `check:visual` is
+  dispatch only and was not run (the one data change is a sentence in the sources sheet).
+- **What remains uncertain:** the relief's errors are measured against today's elevation data, not the ground of 1805. The disclosure states the
+  error's size; it does not correct it.
+
 ## 2026-11 · Stage 8, device acceptance: decision 269 (a), the phone accepted as measured
 
-**Status: records only, on `claude/optimistic-cori-p5dh4e` (draft PR #79 into `main`, with the two device records below; not merged).** The record is
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (PR #79 into `main`, with the two device records below; merged 1 November 2026, `43e3e5b`).** The record is
 `docs/STAGE8_SPEC.md` section 25.3-25.4. No application source, data, threshold or build changed: `austerlitz-command-map.html` 2,810,630 bytes, md5
 `f10fe585c46aea576f436ed51ac46f83`.
 
@@ -15,7 +61,7 @@
 
 ## 2026-11 · Stage 8, device acceptance: the phone runs recorded; decision 268 (a); question 269
 
-**Status: records only, on `claude/optimistic-cori-p5dh4e` (draft PR #79 into `main`, with the desktop's record below; not merged).** The record is
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (PR #79 into `main`, with the desktop's record below; merged 1 November 2026, `43e3e5b`).** The record is
 `docs/STAGE8_SPEC.md` sections 24.3 and 25, the reports `docs/stage8-evidence/device/phone-*`. No application source, data, threshold or build
 changed: `austerlitz-command-map.html` 2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83`.
 
@@ -36,8 +82,8 @@ changed: `austerlitz-command-map.html` 2,810,630 bytes, md5 `f10fe585c46aea576f4
 
 ## 2026-11 · Stage 8, device acceptance: the desktop runs recorded (the phone's pending); question 268
 
-**Status: records only, on `claude/optimistic-cori-p5dh4e` (restarted from `main` at `c2adefe`, PR #78's merge; a draft pull request into
-`main`, for review; not merged).** The record is `docs/STAGE8_SPEC.md` section 24, the reports `docs/stage8-evidence/device/`. No application
+**Status: records only, on `claude/optimistic-cori-p5dh4e` (restarted from `main` at `c2adefe`, PR #78's merge; a pull request into
+`main`, PR #79; merged 1 November 2026, `43e3e5b`).** The record is `docs/STAGE8_SPEC.md` section 24, the reports `docs/stage8-evidence/device/`. No application
 source, data, threshold or build changed: `austerlitz-command-map.html` 2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83` (SHA-256
 `bf27887c...db07`, the hash every report names).
 
@@ -55,7 +101,7 @@ source, data, threshold or build changed: `austerlitz-command-map.html` 2,810,63
 
 ## 2026-11 · Stage 8, the benchmark closure: decision 267 (a), the motion block's ceilings at 248 jumps and 998 pops
 
-**Status: built on `claude/optimistic-cori-p5dh4e` (a draft pull request into `main`, for review; not merged), from `main` at
+**Status: built on `claude/optimistic-cori-p5dh4e` (PR #78 into `main`; merged 1 November 2026, `c2adefe`), from `main` at
 `141f8907` (PR #77's merge of 8L; nothing newer on `main`, 1 November 2026).** The record is `docs/STAGE8_SPEC.md` section 23. The build is
 8K's own, unchanged: `austerlitz-command-map.html` **2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83`** (`check:baseline` unchanged;
 `check:data`'s reference unchanged, `archive/stage8k-f10fe585.html`). No application source, data file, archive or build changed: one line of
@@ -83,7 +129,7 @@ the harness's thresholds and the records did.
 
 ## 2026-10 · Stage 8, the integration pass (8L): 8J and 8K brought into `main`; decision 266 (a); question 267's check lines
 
-**Status: built on `claude/charming-dijkstra-srj84w` (a draft pull request into `main`, for review; not merged), from `main` at
+**Status: built on `claude/charming-dijkstra-srj84w` (PR #77 into `main`; merged 31 October 2026, `141f890`), from `main` at
 `72c7e1b58de93acc60f674aebac8c5370f9d85cf` (PR #74's merge of 8I; nothing newer on `main`, 31 October 2026).** The record is
 `docs/STAGE8_SPEC.md` section 22, the evidence `docs/stage8-evidence/8l/` (its README lists each file and the tool that made it). The build is 8K's
 own, unchanged: `austerlitz-command-map.html` **2,810,630 bytes, md5 `f10fe585c46aea576f436ed51ac46f83`** (`check:baseline` unchanged;
