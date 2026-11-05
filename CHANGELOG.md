@@ -1,8 +1,172 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 2: WP-01 and WP-02 (what a visitor is told)
+
+**Status: on `claude/inspiring-franklin-qt51w2` (a draft PR into `main`, for review, not merged).** Stage 2 of `docs/ROADMAP_FINAL_AUDIT.md`. This is a
+data task: twelve declarations change (below), each with its evidence. `check:data`'s reference and `check:baseline` move to this build
+(`archive/postaudit2-e7d6924f.html`). `austerlitz-command-map.html` is now 2,832,552 bytes, md5 `e7d6924f0b66ae948ca856ccd90c98ec` (was 2,810,950, `a3cb40f8...`).
+
+No position, track, timing or grade changes. Fourteen drawn strengths change, on the owner's word of 5 November 2026 ("for drawn strengths
+following sources lets go with your recommendation"): each formation the audit found drawn against the sources read now draws what they print
+(below). Question 271 (a) is answered: the owner photographed Duffy's pp. 179-185, read as register entry S6.8. Every new reading is registered in `docs/step4-evidence/readings.md` section S6, read on the
+page image here. S6.7, Duffy's text layer, is superseded for his order of battle by S6.8, his pages read on the owner's photographs, which are not committed because the book is in copyright. Sokolov's page images are kept in `docs/final-stage2-evidence/pages/`.
+
+### What changed, and why
+
+- **The face-about (CL-HIS-01).**
+  - *Was:* the event `face-about` was labelled a fact, and its why said "no account read gives the order".
+  - *Is:* it is labelled a reconstruction, and its why is disputed with five sides. Schönhals (p. 162, C1.20) has Kutuzov order the Austrian
+    brigades of Jurczek and Rottermund to take the height. Stutterheim (pp. 63-64, C2.18) has Kollowrath ordered to hold the enemy and
+    send the same brigades forward. The other three sides were already cited: Mikhailovsky-Danilevsky, Kutuzov's report and his private
+    relation. That the whole column faced about, and its hour, stay this map's reading.
+  - *Also:* `PHASES[3].events[3]` and `COMMAND.al[3][1]` are reworded the same way.
+- **Four events' disputed hours (CL-HIS-06).** `decision`, `soult` (the climb), `guard-attack` and `ice` were labelled estimate, fact,
+  estimate and fact. Each is now `disputed`, with a dispute that names the hours of its sides:
+  - `decision`: Ségur's 08:00 for the divisions appearing; Thiébault's 08:30 for the aide's report; about 09:00 in Stutterheim and Schönhals.
+  - `soult`: the same three sides, against the map's 08:45-09:15.
+  - `guard-attack`: Rapp's and Ségur's about 13:00; Schönhals's about 12:00.
+  - `ice`: Schönhals's 14:30 at the Satschan dam; Thiébault's end of the firing about 15:30.
+
+  The hours moved out of the whys into the disputes. Every side rests on a reading already registered.
+- **Kamensky (CL-SRC-09).** Buxhowden's letter to Kutuzov of 21 January 1806 (Kutuzov documents no. 250, p. 262, read on the page image,
+  S6.1, grade B) has Langeron send Kamensky back. It is added to the "Langeron sent the brigade" side of the four statements that carry it;
+  the event's why names it.
+- **The Command tab (CL-HIS-12).**
+  - A row of the documented kind shows DOCUMENTED only where its statement's claim is fact, attributed or disputed. Otherwise it shows its
+    claim's tag, mostly "Not yet checked", as the dossiers and the sources sheet's index do (presentation, `paintCommand`).
+  - Blasowitz's fall moved from the Allied 10:30 row to the 11:15 phase, when the map has it fall.
+  - The Kamensky row is now an "Ordered" row, not "Could see".
+- **Kologrivov (CL-SRC-03, CL-HIS-14).**
+  - Schönhals's table (p. 178, S6.2) names a Lt.-Gen. "Kollowrizow" over the whole Guard.
+  - The Guard cavalry's note and the sources sheet's open question no longer say his command "rests on Sokolov alone".
+  - The commander carries a claim, attributed to Sokolov, Schönhals and Duffy's heading.
+- **Open questions told as settled (CL-GEO-02, CL-GEO-06, CL-GEO-10).**
+  - "Walled" and "enclosure" are gone from the 08:00 dispatch, Sokolnitz's feature and the III Column's act.
+  - "Marshy" is gone from the opening's first step and the Goldbach's feature.
+  - The Goldbach bottom's terrain line says its wetness in 1805 is open.
+  - Four questions join the sources sheet's open questions: the bottom's wetness, the castle's walls and the pheasantry's enclosure,
+    which of 1825's two channels north of the castle carried the brook, and the highway's 1805 course east of the Santon.
+- **Smaller fixes (CL-GEO-08, CL-GEO-09, CL-HIS-15).**
+  - The sources sheet says the Pratzen church is drawn about 160 m from its site, moved off the unverified track drawn past it (presentation).
+  - At 1x the relief sentence reads "drawn at true scale (1×)" (presentation).
+  - Saint-Hilaire's and Vandamme's phase-2 acts "form in the Goldbach valley" rather than "cross" it while they are plotted west of the stream.
+  - Kutuzov's 09:30 act no longer orders Kamensky to retire, which the map has at 11:15.
+  - The Guard corps' arm reads "Guard", not "Guard infantry".
+  - Accents: Garde impériale, Réserve de cavalerie, Frédéric Walther, Chasseurs à pied and à cheval, émigré.
+  - The data header's frame size is corrected.
+- **The force figures (CL-SRC-01, -02, -04, -05, -07, -08).**
+  - *Figures credited to Duffy that his text does not print.* No note now credits a work with a figure it does not print. Each names
+    what the sources read give:
+    - Sokolov's returns of 22 November and his estimates for 2 December, read on the page (S6.4-S6.6, C5.8, C5.9);
+    - Schönhals's table (S6.2, S6.3);
+    - Thiers's 6,000 at most for Friant;
+    - Duffy's own figures, cited by page (S6.8). His French figures are "nominal establishments", his Allied ones "again v. approximate",
+      and his appendix is "compiled from a variety of sometimes contradictory sources".
+  - *What Duffy's pages corrected in the audit and here:*
+    - Kienmayer: Duffy heads him 6,780, but his rows make 3,440 foot and 3,440 horse, 6,880. The map's earlier note was right, the audit's
+      CL-SRC-01 wrong on this one figure, and the note now says so.
+    - The IV Column's rows add to exactly 16,065 (6,625 Russians, 9,440 Austrians).
+    - Dokhturov's rows make 13,050 infantry with 250 Cossacks and 240 pioneers, not the 13,240 infantry the map had.
+    - Kamensky's brigade in Duffy is the Ryazan and Fanagoria regiments with 200 dragoons, 100 Cossacks and 150 pioneers (4,450). Duffy puts
+      the Kursk regiment in Olsuvev's brigade; Schönhals braces it into Kamensky's.
+    - Duffy gives Nansouty's regiments no strengths, so the "about 1,580" once credited to him is not his.
+    - He names the 17e Légère on the Santon without its strength or guns.
+    - He gives the Cavalry Reserve no guns.
+    - He does name Gladkov's brigade ("Lt.-Gens. Essen II, Gladkov", p. 184), so the Fifth Column's note and the open questions now say the
+      name rests on Duffy alone.
+
+    Each changed note says what the map drew until now. Each carries a claim, disputed where the sources' figures differ.
+  - *The drawn strengths, adopted from the sources read (the owner's word). The rule:*
+    - where the map's figure had no source and a source read on the page gives one for the formation, the map draws it: Sokolov's
+      estimate for 2 December, else Schönhals's table;
+    - where Sokolov gives only a return of 22 November, the map draws no more than that return, since a strength could only have fallen
+      by 2 December.
+  - *The changes, was and is:*
+    - the III Corps detachment 4,300 to 5,300, its divisions Friant 3,470 to 3,800 and Bourcier 830 to 1,500;
+    - the IV Column 13,900 to 16,115, its wings Miloradovich 4,800 to 6,965 and Kollowrath 9,100 to 9,150 (Schönhals);
+    - the Cavalry Reserve 7,400 to 7,100, its divisions Kellermann 2,400 to 1,500, Nansouty 1,600 to 1,300, d'Hautpoul 1,300 to 1,100 and
+      Walther 1,500 to 1,200;
+    - I Corps 13,000 to 11,500, its divisions Rivaud 6,000 to 5,200 and Drouet 7,000 to 6,300;
+    - the French Guard cavalry 2,500 to 1,000. Its return is 1,023; it was drawn at about 2.4 times that against the Russian Guard
+      cavalry's 2,900.
+
+    The French Guard infantry's 3,000 is within its return and kept.
+  - *What follows from them:*
+    - the plateau reading is 40,915 at 04:00, was 38,700, and 21,515 before the attack, was 19,300;
+    - tour stop 4 now reads "about 41,000" and "about 21,500";
+    - the self-test's recorded reading is 40,915;
+    - the weakness theme says 5,300;
+    - Friant's composition note says 3,800;
+    - `test.js`'s order-of-battle values are the new figures, each was and is in its comment;
+    - `redteam.js` acknowledges two new gaps, each with its reason: the reserve's unplotted Beaumont, Milhaud and Treillard (2,000), and the
+      Guard's artillery, train, sailors and staff (1,072 on 22 November).
+  - *Bare figures:* the seven formations that showed one have notes.
+  - *Ranges corrected:* the sources sheet's illustration of disagreement is now the IV Column, about 16,100 in Schönhals and Sokolov against
+    23,900 in Duffy; "7,750 to 14,200", which no source read gives, is gone. Buxhowden's "33,000-40,000" is now 38,000-40,000, the sums of
+    Schönhals's and Sokolov's columns. The army totals' notes name the figures read; their totals are unchanged, 85,400 now labelled this
+    map's working figure.
+  - *Headline strengths (CL-SRC-06):* the compact card and the dossier say "this map's working figure" or "derived: the sum of its formations"
+    beside them (presentation, `strengthKind`).
+
+### Changed declarations (check:data, against `archive/postaudit1-a3cb40f8.html`)
+
+PHASES, FORMATIONS, FEATURES, SOURCE_NOTE, ANALYSIS, COMMAND, EVENTS, TOUR, COMPOSITION, TERRAIN_LINES, STATEMENT_CLAIMS, and the derived
+reading `liveEvents`; 127 identical. `liveEvents` gains a tie-break: at equal weight the event that starts later leads. At 09:15 the face-about
+(now a reconstruction) and the climb's end weighed the same, and the climb led the caption by its place in `EVENTS` alone, so the face-about's
+"reconstruction" tag was never shown at its own start; the self-test's events check found it. The self-test's 1x relief check is rewritten for
+the new sentence (CL-GEO-09), as strict: at 1x it requires "drawn at true scale (1×)" and fails on the old "exaggerated about 1 times".
+
+### The motion benchmark re-baselined (the owner's word, 5 November 2026: "go with your recommendations for all relating to motion numbers")
+
+- The self-test's motion block failed on this build: jumps 251 over 248, pops 1,034 over 998, and twelve runs drawing fewer formations than
+  their baselines.
+- Measured in two steps with `tools/stage8/motion-8h.js` (Chromium 141):
+  - The first Stage 2 commit's build, with the events relabelled and no strength changed, gives 250 and 1,002, and every run's visibility at
+    its baseline but two Play runs.
+  - The drawn strengths that follow the sources read re-rank the counters and give the rest.
+- Over the 16 motions the formation-frames drawn are 32,188 of 45,888 (70.14%), were 32,431 (70.67%).
+- `thresholds.js` `MOTION`: `JUMPS` 248 to 251 and `POPS` 998 to 1,034. Eighteen visibility baselines are re-measured (two twins, run only in `check:visual`'s full block, found by its run), each was and is in
+  `thresholds.js`: nine runs worse, seven better or equal. The landscape's orbit loses most, 1,981 to 1,789 formation-frames, its longest hidden
+  667 to 1,167 ms. That is left to WP-07 (the map layer in motion) and not settled here.
+- Unchanged: FLICKER, LOD, the real input's tolerance, its one-frame rule and every other baseline.
+- **The real input's visibility rule widened from one frame to two** (the owner, 5 November 2026: "Go with your recommendation", to
+  investigate for about two hours and otherwise widen it):
+  - *The failure:* on CI the paper map's zoom by real input drew 708 formation-frames against its twin's 723. The rule's one frame is 14 here
+    (1,232 in view over 88 frames).
+  - *What `tools/stage8/twin-8l.js` found:* on one page and in one configuration, the real runs drew 708, 723 or 736, varying from run to run.
+    The browser delivers real input a frame early or late against the driver's clock, and one frame's shift moves the drawn count by that
+    frame's own formations, 13 to 15.
+  - *Tried, not deterministic:* fixing the pointer's starting point, waiting for its move, and waiting for each wheel notch.
+  - *Changed:* `VIS_REAL_FRAMES` 1 to 2. `REAL_TOL` and the twins' baselines are unchanged, and the driver is unchanged.
+- **`narrow-1024`'s drop limit 8 to 9** (the owner, 5 November 2026: "Yes, raise narrow-1024 to 9"). CI's visual run drops 9 map items there:
+  Bourcier's and d'Hautpoul's names and seven place names, with the new strengths re-ranking the counters. The same view's limit moved twice
+  before for the same cause, decisions 199 and 214. Every other drop limit is unchanged.
+
+### Verified
+
+- `npm test`: the nine suites and the height guard pass (`test.js` holds every new claim to its readings, the inventory regenerated).
+- `check:chronology`: 0 errors. The disputes' hours are cited by their rows or allowed by name with a reason, the reviewed texts rehashed
+  (29 changed or new, 3 gone) and the REVIEW locators rewritten (75 of 75 current).
+- `check:data`: 11 changed against the old reference; against the new one, 139 of 139 identical.
+- `check:baseline`: passes.
+- `check:contrast` passed on the first commit's build (every state at AA, the start-up cases 8 of 8); it and `check:selftest` run again on the final build, here and on CI.
+
+### Not done, and why
+
+- **Duffy's narrative pages** (the army totals: a nominal 73,000-75,000 French, 80,000-87,000 Allies) are still read on his text layer only, and the two notes say so.
+- **Strengths not flagged by the audit** are unchanged. Among them are the I-III Columns, Bagration, Liechtenstein and Kienmayer, each
+  within the range its sources give, and the army totals.
+- **Left to later passes:**
+  - Bellowitz's label qualifier (WP-08) and Krug (WP-04b).
+  - milo@0's place and grade, and the Chevalier Guard at 04:00 (WP-03).
+  - The Guard infantry's commander field, which holds a composition (it needs a reading).
+  - A movement-audit rule for stream crossings, and the self-test's 5-unit tolerance for read sites (WP-11).
+  - The remaining CL-SRC-08 credits: the 30th Bulletin for decision 202 (b), Fieffé's locator and Viskovatov's pp. 229-230.
+- **Uncertain:** Sokolov's 2 December figures are his estimates from the returns of 22 November (no return of the morning exists, C5.8), and Schönhals's table is undated. The adopted figures are the best read, not the day's.
+
 ## 2026-11 · Final audits' roadmap, Stage 1: WP-00, WP-04a, WP-13
 
-**Status: on `claude/inspiring-franklin-qt51w2` (a draft PR into `main`, for review, not merged).** Stage 1 of `docs/ROADMAP_FINAL_AUDIT.md`. Owner
+**Status: merged into `main` (#82, `0195176`).** Stage 1 of `docs/ROADMAP_FINAL_AUDIT.md`. Owner
 questions 270 and 273 are applied by their recommended defaults (270 (b): fix the page, leave the frozen archives as they are; 273: disclose now,
 refit later in WP-04). `austerlitz-command-map.html` is now 2,810,950 bytes, md5 `a3cb40f80d1792d7871ad3511250bff4` (was 2,810,630, `f10fe585...`).
 `check:data`'s reference and `check:baseline` both move to this build (`archive/postaudit1-a3cb40f8.html`).

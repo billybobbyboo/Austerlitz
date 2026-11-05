@@ -44,6 +44,11 @@ DROP_LIMIT["narrow-1024"]=7;
    no room there; the low Pratzen view drops one fewer (5 -> 4, the same name drawn); every other case unchanged; measured on the full
    check:visual (CHANGELOG.md, decision 213 (b)) */
 DROP_LIMIT["narrow-1024"]=8;
+/* the final audits' Stage 2 (the owner's answer of 5 November 2026, "Yes, raise narrow-1024 to 9"): narrow-1024's limit 8 -> 9. On the Stage 2
+   build CI's visual run drops 9 items there: n:bourcier, n:dhautpoul and seven place names (t:pratzen, t:vinohrady, t:pratzeberg, t:goldbach,
+   t:telnitz, t:sokolnitz, t:austerlitz), the drawn strengths that follow the sources read (Bourcier 830 to 1,500, d'Hautpoul 1,300 to 1,100)
+   re-ranking the counters, as decisions 199 and 214 moved it before; every other drop limit unchanged */
+DROP_LIMIT["narrow-1024"]=9;
 /* Stage 5E (docs/STAGE5_SPEC.md section D.6): the eye-level views are new; their limits are what the 5E build drops there (place names on
    the horizon: Goldbach, Telnitz, Sokolnitz, Satschan, Kobelnitz, and at 1x Menitz), never raised (as decision 62 set the 3D framing's) */
 DROP_LIMIT["eye-zuran"]=5; DROP_LIMIT["eye-zuran-1x"]=6;
@@ -267,7 +272,30 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    every run's visibility at its baseline. This accepts the current benchmark's results; it does not show that every label-visibility issue is
    resolved (Play's longest hidden formation, 4,033 ms, stays on the final audit checklist). FLICKER, LOD, REAL_TOL, VIS_REAL_FRAMES, every VIS
    baseline, the twins' rules and the protected-item rules are unchanged */
-const MOTION={JUMPS:248, POPS:998, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:1, FRAME_MS:1000/30,
+/* the final audits' Stage 2 (WP-01 and WP-02, a data task; the owner's word of 5 November 2026: "go with your recommendations for all relating
+   to motion numbers"): the ceilings and the visibility baselines re-baselined at the Stage 2 build's own counts (e7d6924f..., tools/stage8/motion-8h.js
+   --selftest on a page of its own, Chromium 141), as decision 267 (a) did for 8K. JUMPS 248 to 251 and POPS 998 to 1,034 (+3, +36). Measured in two
+   steps: the first Stage 2 commit's build (69691981, the events relabelled and their map labels lengthened, no strength changed) gives 250 and
+   1,002 with every run's visibility at its baseline but hybrid-play (2,024 of 3,388) and paper-play (1,554 of 1,694); the drawn strengths that
+   follow the sources read (fourteen formations, among them the IV Column 13,900 to 16,115, the III Corps detachment 4,300 to 5,300 and the French
+   Guard cavalry 2,500 to 1,000) re-rank the counters and give the rest. Over the 16 the formation-frames drawn are 32,188 of 45,888 (70.14%), were
+   32,431 (70.67%). Each changed baseline, was and is: "hybrid-pan" [1427,2053,2467] to [1386,2053,2467], "hybrid-zoom" [1342,2248,2133] to
+   [1299,2248,2133], "hybrid-orbit" [1537,2548,1900] to [1520,2548,1833], "hybrid-glide" [1152,1795,2533] to [1161,1795,1700], "hybrid-play"
+   [2033,3388,4033] to [2119,3388,4033], "paper-zoom" [795,1232,667] to [804,1232,667], "paper-play" [1581,1694,667] to [1545,1694,667],
+   "land-pan" [1868,2055,1133] to [1792,2055,1133], "land-zoom" [1641,2258,667] to [1741,2258,667], "land-orbit" [1981,2366,667] to
+   [1789,2366,1167], "land-play" [2667,3146,667] to [2672,3146,667], "hybrid-orbit+sel" [1495,2548,3033] to [1496,2548,2033], "hybrid-pan+fr"
+   [1370,1970,2467] to [1329,1970,2467], "hybrid-pan+al" [938,1276,2467] to [934,1276,1467], the twins "hybrid-orbit+point" [1537,2548,1900] to
+   [1520,2548,1833] and "paper-zoom+point" [726,1232,667] to [723,1232,667], and the two twins that hover nothing and so equal their 16's runs, "hybrid-pan+point" [1427,2053,2467] to [1386,2053,2467] and "hybrid-zoom+point" [1342,2248,2133] to [1299,2248,2133] (run only in check:visual's full block, found by its run on c099534). FLICKER, LOD, REAL_TOL, VIS_REAL_FRAMES and every other baseline
+   unchanged. The landscape's orbit loses the most (192 formation-frames, its longest hidden 667 to 1,167 ms): an issue for WP-07, the map layer
+   in motion, not settled by this re-baseline */
+/* the final audits' Stage 2 (the owner, 5 November 2026: "Go with your recommendation", to investigate for about two hours and otherwise widen the
+   rule by one frame): VIS_REAL_FRAMES 1 to 2. On the Stage 2 build the paper map's zoom by real input drew 708 formation-frames on the self-test's
+   page against its twin's 723, the rule's one frame 14 (1,232 in view over 88 frames, rounded up). tools/stage8/twin-8l.js found the real runs
+   drawing 708, 723 or 736 on one page and in one configuration, run to run: the browser delivers real input a frame early or late against the
+   driver's clock, and one frame's shift moves the formations drawn by that frame's own count (13 to 15), which can exceed the per-frame mean.
+   Fixing the pointer's start and waiting for its move and for each notch did not make it deterministic. Two frames hold the real input to its
+   twin within the jitter measured; REAL_TOL, every twin's baseline and the twins' rule otherwise unchanged */
+const MOTION={JUMPS:251, POPS:1034, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:2, FRAME_MS:1000/30,
   /* VIS[run key] = [drawn, in view, longest hidden ms]: the prerequisite's build (the 8C build with the protected items' fade fixed, section
      16.1), Chromium 141, check:selftest's block; a key is the motion's id, "+sel" with Saint-Hilaire's division selected, "+fr"/"+al" under a
      headquarters' reading, "+touch" for the finger's pan at 390 px (tools/visual/motion.js runKey) */
@@ -304,13 +332,13 @@ const MOTION={JUMPS:248, POPS:998, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.2
      (held by the judge above), "paper-zoom+point" hovers the Russian Imperial Guard's counter, which the layer protects (decision 39), and equals
      its run by real input frame for frame where that run follows it on the self-test's page (28 jumps, 126 pops, 726 of 1,232 formation-frames
      drawn). No existing baseline moved, and the 16's ceilings not moved */
-  VIS:{"hybrid-pan":[1427,2053,2467], "hybrid-zoom":[1342,2248,2133], "hybrid-orbit":[1537,2548,1900], "hybrid-glide":[1152,1795,2533],
-    "hybrid-play":[2033,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[795,1232,667], "paper-glide":[554,822,633],
-    "paper-play":[1581,1694,667], "land-pan":[1868,2055,1133], "land-zoom":[1641,2258,667], "land-orbit":[1981,2366,667],
-    "land-play":[2667,3146,667], "low-pan":[820,885,533], "low-orbit":[681,876,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1495,2548,3033],
-    "paper-zoom+sel":[835,1232,667], "hybrid-pan+fr":[1370,1970,2467], "hybrid-pan+al":[938,1276,2467], "paper-play+al":[1171,1331,667],
+  VIS:{"hybrid-pan":[1386,2053,2467], "hybrid-zoom":[1299,2248,2133], "hybrid-orbit":[1520,2548,1833], "hybrid-glide":[1161,1795,1700],
+    "hybrid-play":[2119,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[804,1232,667], "paper-glide":[554,822,633],
+    "paper-play":[1545,1694,667], "land-pan":[1792,2055,1133], "land-zoom":[1741,2258,667], "land-orbit":[1789,2366,1167],
+    "land-play":[2672,3146,667], "low-pan":[820,885,533], "low-orbit":[681,876,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1496,2548,2033],
+    "paper-zoom+sel":[835,1232,667], "hybrid-pan+fr":[1329,1970,2467], "hybrid-pan+al":[934,1276,1467], "paper-play+al":[1171,1331,667],
     "phone-pan+touch":[275,698,1467],
-    "hybrid-pan+point":[1427,2053,2467], "hybrid-orbit+point":[1537,2548,1900], "hybrid-zoom+point":[1342,2248,2133], "paper-zoom+point":[726,1232,667]}};
+    "hybrid-pan+point":[1386,2053,2467], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1299,2248,2133], "paper-zoom+point":[723,1232,667]}};
 module.exports.MOTION=MOTION;
 /* decision 257 (b)'s visibility rule for one run (r: a run of live.motion with its track; base: VIS's entry, or for a run by real input its twin's
    measures as [drawn, in view, longest]); the words of each failure, empty when it holds */

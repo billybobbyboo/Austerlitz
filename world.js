@@ -186,7 +186,7 @@ var TERRAIN_LINES=[
  {t:"scarp", n:"Western escarpment", p:[[273,188],[259,233],[245,280],[248,324],[258,349]],
   note:"The face Soult's divisions climbed. At true scale the plateau is a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km; on the morning of the battle it was the fog in the valley at its foot that hid his divisions."},
  {t:"valley", n:"Goldbach bottom", p:[[240,160],[213,222],[203,277],[214.8,365],[212,408],[239,413]],   /* 8J: by Sokolnitz on the corrected bed ([206,365] until 8J) */
-  note:"Marshy in December: a small obstacle to infantry, a serious one to guns and formed cavalry, which cross it at the villages."},
+  note:"Drawn marshy beside the lower brook; how wet it was in December 1805 is an open question (the meres were frozen). The villages hold the crossings for guns and formed cavalry."},
  {t:"valley", n:"Litava bottom", p:[[511,138],[351,313],[297,372],[262,444]],
   note:"Frames the south-east of the field and funnels the Allied retreat toward the meres."},
  {t:"defile", n:"Augezd defile", p:[[297,372],[280,408],[262,444]],

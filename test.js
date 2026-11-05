@@ -492,16 +492,19 @@ warn.forEach(e=>{ const k=KNOWN_WARN.find(x=>x.w===e); console.log("  ~ "+e+(k?"
 /* --- order of battle: figures that were corrected against the published returns.
    Pinned so a failed patch can never silently revert them again. --- */
 /* corrected in the 2026-09 geographic and historical pass (Duffy 1977; Smith 1998 unless noted);
-   kienmayer's strength Schönhals's 6,340 since roadmap step 4b (1873, p. 177; decision 184), 6,800 until then */
+   kienmayer's strength Schönhals's 6,340 since roadmap step 4b (1873, p. 177; decision 184), 6,800 until then; since the final audits'
+   Stage 2 (WP-02, the owner's word of 5 November 2026) the figures the sources read print: c_iii 5,300, friant 3,800, bourcier 1,500 and
+   nansouty 1,300 (Sokolov's estimates, register S6.4, S6.5), col4 16,115 and milo 6,965 (Schönhals's table, S6.3); 4,300, 3,470, 830, 1,600,
+   13,900 and 4,800 until then, credited to Duffy and Smith, whose text layer prints none of them (S6.7) */
 const OOB=[
  ["kienmayer","arm","mixed"],["kienmayer","strength",6340],["kienmayer","guns",12],
- ["c_iii","strength",4300],["c_iii","guns",12],["friant","strength",3470],["bourcier","strength",830],
+ ["c_iii","strength",5300],["c_iii","guns",12],["friant","strength",3800],["bourcier","strength",1500],
  ["dok","strength",13490],["dok","guns",64],["bag","guns",42],
  ["lich","strength",5400],["lich","guns",24],["lich","nation","ru"],
  ["constantine","strength",10500],["constantine","guns",40],
  ["rg_inf","strength",4430],["rg_cav","strength",2900],   /* decision 213 (b): Duffy's rows (1977, pp. 184-185); 6,730 and 3,700 until then */
  ["c_gren","guns",undefined],["c_cav","guns",36],["gqg","guns",undefined],
- ["col4","strength",13900],["milo","strength",4800],["kamensky","strength",4250],["nansouty","strength",1600],
+ ["col4","strength",16115],["milo","strength",6965],["kamensky","strength",4250],["nansouty","strength",1300],
  ["santon","arm","inf"],["santon","battery",18],["santon","parent","suchet"],["buxhowden","arm","hq"]
 ];
 

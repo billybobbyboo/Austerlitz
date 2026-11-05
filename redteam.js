@@ -359,7 +359,17 @@ const KNOWN_WARN=[
    why:"owner decision 213 (b), 21 October 2026: the corps keeps Duffy's heading (10,530, as 10,500) and its two drawn formations his rows "+
        "without the reserve's grenadier regiment (4,430 and 2,900); the gap is that regiment's 2,300 'in reserve' (not drawn), the pioneers' 100 "+
        "and 800 in none of his rows (1977, pp. 184-185, register entry S5.7); the same warning as test.js's at its own 25% (test.js KNOWN_WARN)",
-   see:"CHANGELOG.md, decision 213 (b); docs/step5-evidence/questions.md, question 213"}];
+   see:"CHANGELOG.md, decision 213 (b); docs/step5-evidence/questions.md, question 213"},
+  {w:"command: c_cav declares 7100 but its children sum to 5100",
+   why:"the final audits' Stage 2 (WP-02, the owner's word of 5 November 2026): the reserve keeps Sokolov's estimate for 2 December, 7,100 "+
+       "(t. II, p. 193), and its four plotted divisions his estimates (1,500, 1,300, 1,100, 1,200; pp. 189-191); the gap is Beaumont's dragoons "+
+       "(1,300), Milhaud's brigade (400) and Treillard's (300), which this map does not plot (the corps' note says so); 7,400 and 6,800 until then",
+   see:"CHANGELOG.md, the final audits' Stage 2; docs/step4-evidence/readings.md S6.5"},
+  {w:"command: c_gd declares 5500 but its children sum to 4000",
+   why:"the final audits' Stage 2 (WP-02, the owner's word of 5 November 2026): the Guard keeps Sokolov's estimate for 2 December, 5,500 "+
+       "(t. II, p. 193); its two drawn formations are the foot, 3,000, and the horse at its return of 22 November, 1,000 (1,023); the gap is the "+
+       "Guard's horse artillery, train, sailors and staff (1,072 on 22 November), not drawn as formations; the horse 2,500 until then",
+   see:"CHANGELOG.md, the final audits' Stage 2; docs/step4-evidence/readings.md C5.8"}];
 { const uw=[...new Set(W_)];
   uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>fail("warning",`not acknowledged in KNOWN_WARN: ${w}`));
   KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>fail("warning",`acknowledged but no longer raised (remove it from KNOWN_WARN): ${k.w}`));

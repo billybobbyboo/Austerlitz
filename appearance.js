@@ -544,7 +544,7 @@ var COMPOSITION = {
       {dress:"fr_light", n:3, unit:"bn", v:"Tirailleurs du Pô (1 bataillon) ; 26e légère (2 bataillons)", src:"alombert4_1908", at:"p. 729", gr:"B", lab:"fact", q:"Tirailleurs du Pô (1 bataillon) ; 26e légère (2 bataillons)",
         note:"the Tirailleurs du Pô wore 'Celui d'un bataillon d'infanterie légère' (fieffe2_1854, t. II, pp. 28-29)"},
       {dress:"fr_gen_inf", n:1, unit:"bn", v:"Tirailleurs corses (1 bataillon)", src:"alombert4_1908", at:"p. 729", gr:"B", lab:"fact", q:"Tirailleurs corses (1 bataillon)"}]},
-  friant: {note:"this reconstruction gives about 3,470 present (Duffy, Smith): only part of the division reached the field; its classes are the division's",
+  friant: {note:"this reconstruction gives about 3,800 present, Sokolov's estimate: only part of the division reached the field; its classes are the division's",
     parts:[
       {dress:"fr_line", n:8, unit:"bn", v:"33e de ligne (2 bataillons) 48e de ligne (2 bataillons) ; 108e de ligne (2 bataillons) ; 111e de ligne (2 bataillons)", src:"alombert4_1908", at:"p. 724", gr:"B", lab:"fact", q:"108e de ligne (2 bataillons) ; 111e de ligne (2 bataillons)"},
       {dress:"fr_light", n:2, unit:"bn", v:"15e légère (2 bataillons)", src:"alombert4_1908", at:"p. 724", gr:"B", lab:"fact", q:"15e légère (2 bataillons)"}]},
