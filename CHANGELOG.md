@@ -4,10 +4,11 @@
 
 **Status: on `claude/inspiring-franklin-qt51w2` (a draft PR into `main`, for review, not merged).** Stage 2 of `docs/ROADMAP_FINAL_AUDIT.md`. This is a
 data task: eleven declarations change (below), each with its evidence. `check:data`'s reference and `check:baseline` move to this build
-(`archive/postaudit2-6a6d968a.html`). `austerlitz-command-map.html` is now 2,829,190 bytes, md5 `6a6d968a422ec65a38de6b030e25a97f` (was 2,810,950, `a3cb40f8...`).
+(`archive/postaudit2-a1572194.html`). `austerlitz-command-map.html` is now 2,831,380 bytes, md5 `a1572194a8b5c572cb0aa42a85694cb6` (was 2,810,950, `a3cb40f8...`).
 
-No position, track, timing, strength figure or grade changes. The drawn strengths stay this map's working figures until the owner decides
-question 271 and the figures question below. Every new reading is registered in `docs/step4-evidence/readings.md` section S6, read on the
+No position, track, timing or grade changes. Fourteen drawn strengths change, on the owner's word of 5 November 2026 ("for drawn strengths
+following sources lets go with your recommendation"): each formation the audit found drawn against the sources read now draws what they print
+(below). Question 271 (Duffy's pages) stays open. Every new reading is registered in `docs/step4-evidence/readings.md` section S6, read on the
 page image here except S6.7, which is Duffy's text layer. Sokolov's page images are kept in `docs/final-stage2-evidence/pages/`.
 
 ### What changed, and why
@@ -53,21 +54,44 @@ page image here except S6.7, which is Duffy's text layer. Sokolov's page images 
   - The Guard corps' arm reads "Guard", not "Guard infantry".
   - Accents: Garde impériale, Réserve de cavalerie, Frédéric Walther, Chasseurs à pied and à cheval, émigré.
   - The data header's frame size is corrected.
-- **The force figures (CL-SRC-01, -02, -04, -05, -07, -08; question 271 (b) in the interim).**
-  - *Figures credited to Duffy that his text does not print.* Every note that credited Duffy (and Smith) with such a figure now calls it
-    this map's working figure. It names what the sources read print:
+- **The force figures (CL-SRC-01, -02, -04, -05, -07, -08).**
+  - *Figures credited to Duffy that his text does not print.* No note now credits a work with a figure it does not print. Each names
+    what the sources read give:
     - Sokolov's returns of 22 November and his estimates for 2 December, read on the page (S6.4-S6.6, C5.8, C5.9);
     - Schönhals's table (S6.2, S6.3);
     - Thiers's 6,000 at most for Friant;
     - Duffy's own figures, as his text layer prints them (S6.7, said so wherever they are quoted).
-  - *Notes reworded:* the III Corps detachment, Friant, Bourcier, the I-IV Columns, Kollowrath's Austrians, Miloradovich's wing, Kienmayer,
-    Kamensky (Schönhals's 2,000 each), Nansouty, the Cavalry Reserve, I and V Corps, Bagration, Buxhowden, both army totals, the
-    weakness theme and Friant's composition note.
-  - *Seven bare figures given notes:* Kellermann, d'Hautpoul, Walther, Rivaud, Drouet, the Guard infantry, the Guard cavalry.
+
+    Each changed note says what the map drew until now. Each carries a claim, disputed where the sources' figures differ.
+  - *The drawn strengths, adopted from the sources read (the owner's word). The rule:*
+    - where the map's figure had no source and a source read on the page gives one for the formation, the map draws it: Sokolov's
+      estimate for 2 December, else Schönhals's table;
+    - where Sokolov gives only a return of 22 November, the map draws no more than that return, since a strength could only have fallen
+      by 2 December.
+  - *The changes, was and is:*
+    - the III Corps detachment 4,300 to 5,300, its divisions Friant 3,470 to 3,800 and Bourcier 830 to 1,500;
+    - the IV Column 13,900 to 16,115, its wings Miloradovich 4,800 to 6,965 and Kollowrath 9,100 to 9,150 (Schönhals);
+    - the Cavalry Reserve 7,400 to 7,100, its divisions Kellermann 2,400 to 1,500, Nansouty 1,600 to 1,300, d'Hautpoul 1,300 to 1,100 and
+      Walther 1,500 to 1,200;
+    - I Corps 13,000 to 11,500, its divisions Rivaud 6,000 to 5,200 and Drouet 7,000 to 6,300;
+    - the French Guard cavalry 2,500 to 1,000. Its return is 1,023; it was drawn at about 2.4 times that against the Russian Guard
+      cavalry's 2,900.
+
+    The French Guard infantry's 3,000 is within its return and kept.
+  - *What follows from them:*
+    - the plateau reading is 40,915 at 04:00, was 38,700, and 21,515 before the attack, was 19,300;
+    - tour stop 4 now reads "about 41,000" and "about 21,500";
+    - the self-test's recorded reading is 40,915;
+    - the weakness theme says 5,300;
+    - Friant's composition note says 3,800;
+    - `test.js`'s order-of-battle values are the new figures, each was and is in its comment;
+    - `redteam.js` acknowledges two new gaps, each with its reason: the reserve's unplotted Beaumont, Milhaud and Treillard (2,000), and the
+      Guard's artillery, train, sailors and staff (1,072 on 22 November).
+  - *Bare figures:* the seven formations that showed one have notes.
   - *Ranges corrected:* the sources sheet's illustration of disagreement is now the IV Column, about 16,100 in Schönhals and Sokolov against
     23,900 in Duffy; "7,750 to 14,200", which no source read gives, is gone. Buxhowden's "33,000-40,000" is now 38,000-40,000, the sums of
-    Schönhals's and Sokolov's columns.
-  - *Claims:* each note carries one, disputed where the sources' figures differ.
+    Schönhals's and Sokolov's columns. The army totals' notes name the figures read; their totals are unchanged, 85,400 now labelled this
+    map's working figure.
   - *Headline strengths (CL-SRC-06):* the compact card and the dossier say "this map's working figure" or "derived: the sum of its formations"
     beside them (presentation, `strengthKind`).
 
@@ -88,22 +112,15 @@ PHASES, FORMATIONS, FEATURES, SOURCE_NOTE, ANALYSIS, COMMAND, EVENTS, TOUR, COMP
 
 - **Duffy's pages (question 271 (a)).** His order of battle is a lending item. The figures are corrected against his text layer only, and
   the notes say so. The owner's photographs of the order-of-battle pages beyond pp. 184-185 are needed to read them on the page.
-- **The working figures themselves (a new owner question).** The read sources put these formations elsewhere than the map draws them:
-  - the IV Column at about 16,100, drawn 13,900;
-  - Miloradovich's wing at 6,965, drawn 4,800;
-  - Bourcier at 1,200-1,500, drawn 830;
-  - the detachment at 5,300, drawn 4,300;
-  - six cavalry and I Corps divisions below their 22 November returns' drawn figures, the French Guard cavalry at 1,023 against 2,500.
-
-  Changing them moves the plateau reading, tour stop 4's figures and map-layer drop limits, which move only on the owner's word. They
-  are labelled, not changed.
+- **Strengths not flagged by the audit** are unchanged. Among them are the I-III Columns, Bagration, Liechtenstein and Kienmayer, each
+  within the range its sources give, and the army totals.
 - **Left to later passes:**
   - Bellowitz's label qualifier (WP-08) and Krug (WP-04b).
   - milo@0's place and grade, and the Chevalier Guard at 04:00 (WP-03).
   - The Guard infantry's commander field, which holds a composition (it needs a reading).
   - A movement-audit rule for stream crossings, and the self-test's 5-unit tolerance for read sites (WP-11).
   - The remaining CL-SRC-08 credits: the 30th Bulletin for decision 202 (b), Fieffé's locator and Viskovatov's pp. 229-230.
-- **Uncertain:** the working figures are the map's, as before; what changed is that they now say so.
+- **Uncertain:** Sokolov's 2 December figures are his estimates from the returns of 22 November (no return of the morning exists, C5.8), and Schönhals's table is undated. The adopted figures are the best read, not the day's.
 
 ## 2026-11 · Final audits' roadmap, Stage 1: WP-00, WP-04a, WP-13
 

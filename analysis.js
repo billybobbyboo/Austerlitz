@@ -22,7 +22,7 @@ var ANALYSIS = [
 { id:"weakness", n:"The apparent weakness on the right", at:"ev:telnitz", moments:["ev:raigern","ev:davout","ev:telnitz"], cam:[-160,58,157,-56,4,59],
   forms:["legrand","friant","bourcier","c_iii"],
   feats:["telnitz","sokolnitz","goldbach","viennaroad"],
-  text:"Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men on this map's working figure (5,300 in Sokolov's estimate), reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed roughly 38,000 to 40,000. The weakness was real, not simulated, which is what made it convincing."},
+  text:"Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 5,300 men in Sokolov's estimate, reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed roughly 38,000 to 40,000. The weakness was real, not simulated, which is what made it convincing."},
 
 { id:"commitment", n:"The commitment of the Allied left", at:"ph:1", moments:["ev:telnitz","ev:sokolnitz","ev:telnitz-retaken"],
   forms:["buxhowden","kienmayer","dok","lang","prz"],
@@ -379,7 +379,7 @@ var TOUR = [
 {n:"The French deception", at:"ph:0", chapter:"deception",
  x:"Napoleon gave up the plateau on 1 December and camped behind the Goldbach, leaving his right so thin that a single division held five kilometres of stream. The weakness was real, which is what made it convincing."},
 {n:"The Allied advance", at:"ph:1", t:445, chapter:"commitment",
- x:"From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:25, half of it gone before a shot is fired at the plateau."},
+ x:"From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 41,000 at 04:00 to about 21,500 by 07:25, about half of it gone before a shot is fired at the plateau."},
 {n:"Why the Pratzen matters", at:"ph:2", feature:"pratzen", cam:[-136,46,31,-6,8,-3],
  x:"In this model's terrain an observer on the Pratzeberg summit can see about 73 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope."},
 {n:"The French strike", at:"ev:soult", chapter:"pratzen",

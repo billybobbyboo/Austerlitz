@@ -11367,7 +11367,7 @@ var AUSTERLITZ_DEBUG=(function(){
          each army's total from its headquarters' army.men (data.js gqg, ahq; as sim-test.js reads them); the plateau at 04:00 re-derived from
          FORMATIONS (strengths, phase-0 anchors) and PLATEAU_POLY without plateauStrength, ownStrengthAt, posNow or onPlateau (a winding-number
          test, onPlateau's is even-odd), and the tour's own figure for it ("about 39,000 at 04:00", the stop with the plateau outline). The
-         recorded reading stays as the reference a data task moves and records (CHANGELOG.md, the plateau statistic: 38,700) */
+         recorded reading stays as the reference a data task moves and records (CHANGELOG.md, the plateau statistic: 40,915 since the final audits' Stage 2, 38,700 until then) */
       function armyMen(side){ var v=[]; Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id]; if(f.ech==='army'&&f.army&&(sideOfNation(f.nation)==='fr')===(side==='fr')) v.push(+String(f.army.men).replace(/[^\d]/g,'')); });
         return v.length===1&&v[0]>0?v[0]:NaN; }
       function plateau04FromData(){
@@ -11379,7 +11379,7 @@ var AUSTERLITZ_DEBUG=(function(){
         var tot=0; Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id]; if(sideOfNation(f.nation)==='fr'||!f.track||f.arm==='hq'||!on04(id)) return;
           var s=f.strength||0; under(id,[]).forEach(function(k){ if(on04(k)) s-=FORMATIONS[k].strength||0; }); if(s>0&&inside(first(f).p)) tot+=s; });
         return tot; }
-      var AL=armyMen('al'), FR=armyMen('fr'), p04d=plateau04FromData(), PLATEAU_04_RECORDED=38700;
+      var AL=armyMen('al'), FR=armyMen('fr'), p04d=plateau04FromData(), PLATEAU_04_RECORDED=40915;   /* the final audits' Stage 2: the IV Column at Schönhals's 16,115 (38,700 until then) */
       var stop4=TOUR.filter(function(s){ return /plateau outline/.test(s.x); })[0], q4=stop4&&/about ([\d,]+) at 04:00/.exec(stop4.x), tour04=q4?+q4[1].replace(/,/g,''):NaN;
       keepClock=clock; clock=T_MIN;   /* model readings: the same at every display factor */
       var p04=plateauStrength("al");
@@ -11388,7 +11388,7 @@ var AUSTERLITZ_DEBUG=(function(){
       var aud=auditMovement();
       ck("derived readings unchanged: the plateau at 04:00, both army totals, the movement audit",
         AL>0&&FR>0&&p04>0&&p04===p04d&&p04===PLATEAU_04_RECORDED&&Math.abs(p04-tour04)<=500&&!over.length&&!aud.length,
-        "Allied on the plateau at 04:00 = "+p04.toLocaleString("en-GB")+" (from the data alone "+p04d.toLocaleString("en-GB")+"; recorded 38,700; the tour's \u201cabout "+(isNaN(tour04)?"?":tour04.toLocaleString("en-GB"))+"\u201d); "+
+        "Allied on the plateau at 04:00 = "+p04.toLocaleString("en-GB")+" (from the data alone "+p04d.toLocaleString("en-GB")+"; recorded "+PLATEAU_04_RECORDED.toLocaleString("en-GB")+"; the tour's \u201cabout "+(isNaN(tour04)?"?":tour04.toLocaleString("en-GB"))+"\u201d); "+
         (over.length?"totals exceed an army at "+over.join(","):"totals within the data's armies, "+AL.toLocaleString("en-GB")+" Allied and "+FR.toLocaleString("en-GB")+" French, at "+nMom+" moments")+"; movement audit "+aud.length+" findings");
 
 

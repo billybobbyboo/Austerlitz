@@ -25,8 +25,8 @@
  },
  "byClaim": {
   "interpretation (by class)": 75,
-  "unchecked": 471,
-  "attributed": 73,
+  "unchecked": 468,
+  "attributed": 76,
   "disputed": 78,
   "uncertain": 6,
   "derived": 2,
@@ -2086,7 +2086,7 @@
    "file": "data.js",
    "line": 240,
    "label": null,
-   "text": "4,300, this map's working figure: its two divisions as drawn, Friant about 3,470 and Bourcier about 830, with 12 guns. Sokolov, from the returns of 22 November, presumes 5,300 for the detachment on 2 December (Friant 7,037 and Bourcier 1,900 on 22 November) and writes that after the march Davout could have had no more than 3,500-4,000 of Friant's men and 1,200-1,500 of Bourcier's; Thiers has Friant's division reduced to 6,000 at most. Duffy's order of battle, read on its text layer only, prints Friant 3,800 with 9 guns and Bourcier 2,500 with 3. Smith (1998) is cited, not read",
+   "text": "5,300, Sokolov's estimate for 2 December from the returns of 22 November (Friant 7,037 and Bourcier 1,900 on 22 November, presumed 3,800 and 1,500), with 12 guns; he writes that after the march Davout could have had no more than 3,500-4,000 of Friant's men and 1,200-1,500 of Bourcier's. Thiers has Friant's division reduced to 6,000 at most. Duffy's order of battle, read on its text layer only, prints Friant 3,800 with 9 guns and Bourcier 2,500 with 3. Smith (1998) is cited, not read. Until the final audits' Stage 2 this map drew 4,300 (Friant 3,470, Bourcier 830), credited to Duffy and Smith, who do not print it",
    "claim": "disputed",
    "by": [
     {
@@ -2176,7 +2176,7 @@
    "file": "data.js",
    "line": 248,
    "label": null,
-   "text": "about 3,470, this map's working figure: only part of the division reached the field. Sokolov has 7,037 under arms on 22 November, presumes 3,800 for 2 December and writes that Davout could have had no more than 3,500-4,000 of it after the march; Thiers has it reduced to 6,000 at most; Duffy's order of battle, read on its text layer only, prints 3,800 with 9 guns",
+   "text": "3,800, Sokolov's estimate for 2 December: 7,037 under arms on 22 November, and after the march no more than 3,500-4,000 at Davout's disposal; only part of the division reached the field. Thiers has it reduced to 6,000 at most; Duffy's order of battle, read on its text layer only, prints 3,800 with 9 guns. Until the final audits' Stage 2 this map drew 3,470",
    "claim": "disputed",
    "by": [
     {
@@ -2367,7 +2367,7 @@
    "file": "data.js",
    "line": 263,
    "label": null,
-   "text": "about 830 sabres, this map's working figure: only a fraction of the division reached the field. Sokolov has 1,900 on 22 November, presumes 1,500 for 2 December and writes that Davout could have had no more than 1,200-1,500 of it; Duffy's order of battle, read on its text layer only, prints 2,500 with 3 guns",
+   "text": "1,500 sabres, Sokolov's estimate for 2 December: 1,900 on 22 November, and no more than 1,200-1,500 at Davout's disposal after the march; only part of the division reached the field. Duffy's order of battle, read on its text layer only, prints 2,500 with 3 guns. Until the final audits' Stage 2 this map drew 830, which no source read gives",
    "claim": "disputed",
    "by": [
     {
@@ -2793,9 +2793,25 @@
    "file": "data.js",
    "line": 325,
    "label": null,
-   "text": "7,400 sabres, as Duffy's order of battle prints it (read on its text layer only), and 36 guns, cited from Duffy and Smith but not found in his text; Sokolov presumes 7,100 for 2 December (8,729 on 22 November). Beaumont's dragoons and Milhaud's light brigade are not plotted: the four plotted divisions account for 6,800 of the 7,400",
-   "claim": "unchecked",
-   "by": []
+   "text": "7,100 sabres, Sokolov's estimate for 2 December (8,729 on 22 November); 7,400 in Duffy's order of battle, read on its text layer only, and 36 guns, cited from Duffy and Smith but not found in his text. Beaumont's dragoons and Milhaud's light brigade are not plotted: the four plotted divisions account for 5,100 of the 7,100 (Sokolov presumes 1,300 for Beaumont's, 400 for Milhaud's and 300 for Treillard's brigade). Until the final audits' Stage 2 this map drew 7,400",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "sokolov2006",
+     "at": "t. II, p. 193",
+     "rd": "sokolov2006.p193.guard-totals-source"
+    },
+    {
+     "src": "sokolov2006",
+     "at": "t. II, pp. 189-191",
+     "rd": "sokolov2006.p190-191.cavalry"
+    },
+    {
+     "src": "duffy1977",
+     "at": "order of battle",
+     "rd": "duffy1977.textlayer.oob"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.c_cav.role",
@@ -2843,7 +2859,7 @@
    "file": "data.js",
    "line": 332,
    "label": null,
-   "text": "2,400, this map's working figure: Sokolov has 2,021 under arms on 22 November and presumes 1,500 for 2 December (t. II, p. 191)",
+   "text": "1,500, Sokolov's estimate for 2 December: 2,021 under arms on 22 November (t. II, p. 191). Until the final audits' Stage 2 this map drew 2,400, above the return",
    "claim": "attributed",
    "by": [
     {
@@ -2909,7 +2925,7 @@
    "file": "data.js",
    "line": 342,
    "label": null,
-   "text": "about 1,600, this map's working figure: Sokolov has 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners, and presumes 1,300 for 2 December; the six regiments as listed from Duffy and Smith, not read, sum to about 1,580",
+   "text": "1,300, Sokolov's estimate for 2 December: 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners (t. II, p. 189). The six regiments as listed from Duffy and Smith, not read, sum to about 1,580. Until the final audits' Stage 2 this map drew about 1,600, above the return",
    "claim": "attributed",
    "by": [
     {
@@ -2965,7 +2981,7 @@
    "file": "data.js",
    "line": 352,
    "label": null,
-   "text": "1,300, this map's working figure: Sokolov has 1,136 under arms on 22 November and presumes 1,100 for 2 December (t. II, p. 190)",
+   "text": "1,100, Sokolov's estimate for 2 December: 1,136 under arms on 22 November (t. II, p. 190). Until the final audits' Stage 2 this map drew 1,300, above the return",
    "claim": "attributed",
    "by": [
     {
@@ -3011,7 +3027,7 @@
    "file": "data.js",
    "line": 361,
    "label": null,
-   "text": "1,500, this map's working figure: Sokolov has 1,340 under arms on 22 November and presumes 1,200 for 2 December (t. II, p. 190)",
+   "text": "1,200, Sokolov's estimate for 2 December: 1,340 under arms on 22 November (t. II, p. 190). Until the final audits' Stage 2 this map drew 1,500, above the return",
    "claim": "attributed",
    "by": [
     {
@@ -3047,9 +3063,20 @@
    "file": "data.js",
    "line": 370,
    "label": null,
-   "text": "about 11,000 to 13,000: 13,000 with 24 guns in Duffy's order of battle (read on its text layer only); Sokolov presumes 11,500 for 2 December (11,642 on 22 November)",
-   "claim": "unchecked",
-   "by": []
+   "text": "11,500, Sokolov's estimate for 2 December (11,642 on 22 November); 13,000 with 24 guns in Duffy's order of battle, read on its text layer only. Until the final audits' Stage 2 this map drew 13,000",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "sokolov2006",
+     "at": "t. II, p. 193",
+     "rd": "sokolov2006.p193.guard-totals-source"
+    },
+    {
+     "src": "duffy1977",
+     "at": "order of battle",
+     "rd": "duffy1977.textlayer.oob"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.c_i.role",
@@ -3144,7 +3171,7 @@
    "file": "data.js",
    "line": 377,
    "label": null,
-   "text": "6,000, this map's working figure: Sokolov has 5,216 under arms on 22 November (t. II, pp. 183-185)",
+   "text": "5,200, this map's working figure at Sokolov's return of 22 November, 5,216 under arms (t. II, pp. 183-185): a strength that could only have fallen by 2 December. Until the final audits' Stage 2 this map drew 6,000, above the return",
    "claim": "attributed",
    "by": [
     {
@@ -3282,7 +3309,7 @@
    "file": "data.js",
    "line": 389,
    "label": null,
-   "text": "7,000, this map's working figure: Sokolov has 6,318 under arms on 22 November (t. II, pp. 183-185)",
+   "text": "6,300, this map's working figure at Sokolov's return of 22 November, 6,318 under arms (t. II, pp. 183-185): a strength that could only have fallen by 2 December. Until the final audits' Stage 2 this map drew 7,000, above the return",
    "claim": "attributed",
    "by": [
     {
@@ -3544,7 +3571,7 @@
    "file": "data.js",
    "line": 408,
    "label": null,
-   "text": "3,000, this map's working figure: Sokolov has the foot chasseurs 1,270, the foot grenadiers 1,346 and the Italian Royal Guard 693 under arms on 22 November, and presumes 5,500 for the whole Guard on 2 December (t. II, p. 193)",
+   "text": "3,000, this map's working figure, below Sokolov's return of 22 November: the foot chasseurs 1,270, the foot grenadiers 1,346 and the Italian Royal Guard 693 under arms (3,309 by addition), and 5,500 presumed for the whole Guard on 2 December (t. II, p. 193)",
    "claim": "attributed",
    "by": [
     {
@@ -3661,7 +3688,7 @@
    "file": "data.js",
    "line": 419,
    "label": null,
-   "text": "2,500, this map's working figure: Sokolov has the horse chasseurs 376, the Mamelukes 48 and the horse grenadiers 599 under arms on 22 November (1,023 by addition), with the horse artillery's 298 (t. II, p. 193)",
+   "text": "1,000, this map's working figure at Sokolov's return of 22 November: the horse chasseurs 376, the Mamelukes 48 and the horse grenadiers 599 under arms (1,023 by addition), with the horse artillery's 298 (t. II, p. 193): a strength that could only have fallen by 2 December. Until the final audits' Stage 2 this map drew 2,500, about 2.4 times the return",
    "claim": "attributed",
    "by": [
     {
@@ -4984,7 +5011,7 @@
    "file": "data.js",
    "line": 551,
    "label": null,
-   "text": "13,900, this map's working figure, with 52 light and 24 heavy guns. Schönhals's table gives the column 16,115 in its recapitulation (the Russian wing 6,965, the Austrians 9,150; its own sum line 16,118), and Sokolov 15,900 infantry and 300 cavalry with 76 guns in 27 battalions; Duffy's order of battle, read on its text layer only, prints 23,900 with 52 light and 24 heavy pieces, and his rows add to about 16,065 (derived). Smith (1998) is cited, not read. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler)",
+   "text": "16,115, the recapitulation of Schönhals's table (1873, p. 178; the Russian wing 6,965, the Austrians 9,150, p. 177, whose own sum line prints 16,118), with 52 light and 24 heavy guns; Sokolov gives 15,900 infantry and 300 cavalry with 76 guns in 27 battalions. Duffy's order of battle, read on its text layer only, prints 23,900 with 52 light and 24 heavy pieces, and his rows add to about 16,065 (derived). Smith (1998) is cited, not read. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler). Until the final audits' Stage 2 this map drew 13,900, credited to Duffy and Smith, who do not print it",
    "claim": "disputed",
    "by": [
     {
@@ -5053,9 +5080,15 @@
    "file": "data.js",
    "line": 559,
    "label": null,
-   "text": "4,800 is this map's working figure, its 13,900 for the column less the Austrian brigades' 9,100; Schönhals (1873) gives the Russian wing twelve battalions and 6,965 men, including two pioneer companies and two squadrons of Austrian dragoons (Smolensk's figures not printed), and Stutterheim (1806) twelve battalions; WarHistory has fourteen, which at 350-500 men would give 4,900-7,000. The earlier 10,000 had no source",
-   "claim": "unchecked",
-   "by": []
+   "text": "6,965 is Schönhals's table (1873, p. 177): until the final audits' Stage 2 this map drew 4,800, its 13,900 for the column less the Austrian brigades' 9,100; Schönhals (1873) gives the Russian wing twelve battalions and 6,965 men, including two pioneer companies and two squadrons of Austrian dragoons (Smolensk's figures not printed), and Stutterheim (1806) twelve battalions; WarHistory has fourteen, which at 350-500 men would give 4,900-7,000. The earlier 10,000 had no source",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "schoenhals1873",
+     "at": "p. 177",
+     "rd": "schoenhals1873.p177.iv-column"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.milo.track[\"0\"].obj",
@@ -5153,7 +5186,7 @@
    "file": "data.js",
    "line": 572,
    "label": null,
-   "text": "about 9,100 infantry, this map's working figure; the lines of Rottermund's and Jurczek's brigades in Schönhals's table make 9,150 (1873, p. 177)",
+   "text": "9,150 infantry, the lines of Rottermund's and Jurczek's brigades in Schönhals's table (1873, p. 177); until the final audits' Stage 2 this map drew about 9,100",
    "claim": "attributed",
    "by": [
     {
@@ -7603,7 +7636,7 @@
    "file": "analysis.js",
    "line": 25,
    "label": null,
-   "text": "Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men on this map's working figure (5,300 in Sokolov's estimate), reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed roughly 38,000 to 40,000. The weakness was real, not simulated, which is what made it convincing.",
+   "text": "Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 5,300 men in Sokolov's estimate, reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed roughly 38,000 to 40,000. The weakness was real, not simulated, which is what made it convincing.",
    "claim": "unchecked",
    "by": []
   },
@@ -10291,7 +10324,7 @@
    "file": "analysis.js",
    "line": 382,
    "label": null,
-   "text": "From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:25, half of it gone before a shot is fired at the plateau.",
+   "text": "From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 41,000 at 04:00 to about 21,500 by 07:25, about half of it gone before a shot is fired at the plateau.",
    "claim": "derived",
    "by": [
     {

@@ -36,10 +36,10 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 
 | claim | statements |
 |---|---|
-| unchecked | 471 |
+| unchecked | 468 |
 | disputed | 78 |
+| attributed | 76 |
 | interpretation (by class) | 75 |
-| attributed | 73 |
 | interpretation | 11 |
 | uncertain | 6 |
 | derived | 2 |
@@ -154,17 +154,17 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.legrand.role` | data.js:223 | The bait. Two brigades in Sokolov's order of battle cover roughly five kilometres of the lower Goldbach alone. | unchecked |  |
 | `FORMATIONS.c_iii.desig` | data.js:238 | III Corps | unchecked |  |
 | `FORMATIONS.c_iii.commander` | data.js:239 | Marshal Louis-Nicolas Davout | unchecked |  |
-| `FORMATIONS.c_iii.strengthNote` | data.js:240 | 4,300, this map's working figure: its two divisions as drawn, Friant about 3,470 and Bourcier about 830, with 12 guns. Sokolov, from the re… | disputed | sokolov2006.p188-189.davout (5,300 presumed; Friant 3,500-4,000 and Bourcier 1,200-1,500 after the march); thiers1845.p310.seven-eight-thousand (Friant reduced to 6,000 at most); duffy1977.textlayer.oob (Friant 3,800 with 9 guns, Bourcier 2,500 with 3) |
+| `FORMATIONS.c_iii.strengthNote` | data.js:240 | 5,300, Sokolov's estimate for 2 December from the returns of 22 November (Friant 7,037 and Bourcier 1,900 on 22 November, presumed 3,800 an… | disputed | sokolov2006.p188-189.davout (5,300 presumed; Friant 3,500-4,000 and Bourcier 1,200-1,500 after the march); thiers1845.p310.seven-eight-thousand (Friant reduced to 6,000 at most); duffy1977.textlayer.oob (Friant 3,800 with 9 guns, Bourcier 2,500 with 3) |
 | `FORMATIONS.c_iii.role` | data.js:241 | Holds the extreme right for most of the morning against forces several times its number: Thiers gives seven to eight thousand foot, with th… | derived | thiers1845.p310.seven-eight-thousand; davout1885.no123.p192-193.plus-belle-resistance |
 | `FORMATIONS.c_iii.note` | data.js:243 | Caffarelli's division, normally of III Corps, fought under Lannes on the opposite flank. | unchecked |  |
 | `FORMATIONS.friant.desig` | data.js:245 | 2e Div., III Corps | unchecked |  |
 | `FORMATIONS.friant.commander` | data.js:246 | Gen. de division Louis Friant | unchecked |  |
 | `FORMATIONS.friant.staff` | data.js:247 | Brigades: Kister · Lochet · Heudelet | unchecked |  |
-| `FORMATIONS.friant.strengthNote` | data.js:248 | about 3,470, this map's working figure: only part of the division reached the field. Sokolov has 7,037 under arms on 22 November, presumes … | disputed | sokolov2006.p188-189.davout (3,800 presumed, no more than 3,500-4,000); thiers1845.p310.seven-eight-thousand (6,000 at most); duffy1977.textlayer.oob (3,800 with 9 guns) |
+| `FORMATIONS.friant.strengthNote` | data.js:248 | 3,800, Sokolov's estimate for 2 December: 7,037 under arms on 22 November, and after the march no more than 3,500-4,000 at Davout's disposa… | disputed | sokolov2006.p188-189.davout (3,800 presumed, no more than 3,500-4,000); thiers1845.p310.seven-eight-thousand (6,000 at most); duffy1977.textlayer.oob (3,800 with 9 guns) |
 | `FORMATIONS.friant.role` | data.js:249 | Arrives straight from the march and counterattacks without resting. | unchecked |  |
 | `FORMATIONS.bourcier.desig` | data.js:261 | 4e Div. Dragons | unchecked |  |
 | `FORMATIONS.bourcier.commander` | data.js:262 | Gen. de division François Bourcier | unchecked |  |
-| `FORMATIONS.bourcier.strengthNote` | data.js:263 | about 830 sabres, this map's working figure: only a fraction of the division reached the field. Sokolov has 1,900 on 22 November, presumes … | disputed | sokolov2006.p188-189.davout (1,500 presumed, no more than 1,200-1,500); duffy1977.textlayer.oob (2,500 with 3 guns) |
+| `FORMATIONS.bourcier.strengthNote` | data.js:263 | 1,500 sabres, Sokolov's estimate for 2 December: 1,900 on 22 November, and no more than 1,200-1,500 at Davout's disposal after the march; o… | disputed | sokolov2006.p188-189.davout (1,500 presumed, no more than 1,200-1,500); duffy1977.textlayer.oob (2,500 with 3 guns) |
 | `FORMATIONS.bourcier.role` | data.js:264 | Covers Davout's open southern flank and the Vienna road. | unchecked |  |
 | `FORMATIONS.c_v.desig` | data.js:273 | V Corps | unchecked |  |
 | `FORMATIONS.c_v.commander` | data.js:274 | Marshal Jean Lannes | unchecked |  |
@@ -185,33 +185,33 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.santon.role` | data.js:316 | The anchor of the French left. Its slopes were scarped and the crest entrenched before the battle; which face was scarped is not establishe… | unchecked |  |
 | `FORMATIONS.c_cav.desig` | data.js:323 | Réserve de cavalerie | unchecked |  |
 | `FORMATIONS.c_cav.commander` | data.js:324 | Marshal Joachim Murat | unchecked |  |
-| `FORMATIONS.c_cav.strengthNote` | data.js:325 | 7,400 sabres, as Duffy's order of battle prints it (read on its text layer only), and 36 guns, cited from Duffy and Smith but not found in … | unchecked |  |
+| `FORMATIONS.c_cav.strengthNote` | data.js:325 | 7,100 sabres, Sokolov's estimate for 2 December (8,729 on 22 November); 7,400 in Duffy's order of battle, read on its text layer only, and … | attributed | sokolov2006.p193.guard-totals-source; sokolov2006.p190-191.cavalry; duffy1977.textlayer.oob |
 | `FORMATIONS.c_cav.role` | data.js:326 | Operates between Lannes and Soult; fights the cavalry battle in the north. | unchecked |  |
 | `FORMATIONS.c_cav.note` | data.js:328 | Beaumont's dragoon division was also with the reserve but is not plotted separately, because no position for it can be given with confidenc… | unchecked |  |
 | `FORMATIONS.kellermann.desig` | data.js:330 | Div. Cavalerie Légère | unchecked |  |
 | `FORMATIONS.kellermann.commander` | data.js:331 | Gen. de division François Étienne Kellermann | unchecked |  |
-| `FORMATIONS.kellermann.strengthNote` | data.js:332 | 2,400, this map's working figure: Sokolov has 2,021 under arms on 22 November and presumes 1,500 for 2 December (t. II, p. 191) | attributed | sokolov2006.p190-191.cavalry |
+| `FORMATIONS.kellermann.strengthNote` | data.js:332 | 1,500, Sokolov's estimate for 2 December: 2,021 under arms on 22 November (t. II, p. 191). Until the final audits' Stage 2 this map drew 2,… | attributed | sokolov2006.p190-191.cavalry |
 | `FORMATIONS.nansouty.desig` | data.js:340 | 1re Div. Cuirassiers | unchecked |  |
 | `FORMATIONS.nansouty.commander` | data.js:341 | Gen. de division Étienne de Nansouty | unchecked |  |
-| `FORMATIONS.nansouty.strengthNote` | data.js:342 | about 1,600, this map's working figure: Sokolov has 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners, and presumes 1,… | attributed | sokolov2006.p190-191.cavalry |
+| `FORMATIONS.nansouty.strengthNote` | data.js:342 | 1,300, Sokolov's estimate for 2 December: 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners (t. II, p. 189). The six r… | attributed | sokolov2006.p190-191.cavalry |
 | `FORMATIONS.dhautpoul.desig` | data.js:350 | 2e Div. Cuirassiers | unchecked |  |
 | `FORMATIONS.dhautpoul.commander` | data.js:351 | Gen. de division Jean-Joseph d'Hautpoul | unchecked |  |
-| `FORMATIONS.dhautpoul.strengthNote` | data.js:352 | 1,300, this map's working figure: Sokolov has 1,136 under arms on 22 November and presumes 1,100 for 2 December (t. II, p. 190) | attributed | sokolov2006.p190-191.cavalry |
+| `FORMATIONS.dhautpoul.strengthNote` | data.js:352 | 1,100, Sokolov's estimate for 2 December: 1,136 under arms on 22 November (t. II, p. 190). Until the final audits' Stage 2 this map drew 1,… | attributed | sokolov2006.p190-191.cavalry |
 | `FORMATIONS.walther.desig` | data.js:359 | Div. Dragons | unchecked |  |
 | `FORMATIONS.walther.commander` | data.js:360 | Gen. de division Frédéric Walther | unchecked |  |
-| `FORMATIONS.walther.strengthNote` | data.js:361 | 1,500, this map's working figure: Sokolov has 1,340 under arms on 22 November and presumes 1,200 for 2 December (t. II, p. 190) | attributed | sokolov2006.p190-191.cavalry |
+| `FORMATIONS.walther.strengthNote` | data.js:361 | 1,200, Sokolov's estimate for 2 December: 1,340 under arms on 22 November (t. II, p. 190). Until the final audits' Stage 2 this map drew 1,… | attributed | sokolov2006.p190-191.cavalry |
 | `FORMATIONS.c_i.desig` | data.js:368 | I Corps | unchecked |  |
 | `FORMATIONS.c_i.commander` | data.js:369 | Marshal Jean-Baptiste Bernadotte | unchecked |  |
-| `FORMATIONS.c_i.strengthNote` | data.js:370 | about 11,000 to 13,000: 13,000 with 24 guns in Duffy's order of battle (read on its text layer only); Sokolov presumes 11,500 for 2 Decembe… | unchecked |  |
+| `FORMATIONS.c_i.strengthNote` | data.js:370 | 11,500, Sokolov's estimate for 2 December (11,642 on 22 November); 13,000 with 24 guns in Duffy's order of battle, read on its text layer o… | attributed | sokolov2006.p193.guard-totals-source; duffy1977.textlayer.oob |
 | `FORMATIONS.c_i.role` | data.js:371 | The centre, between Murat's cavalry and Soult, in the 30th Bulletin, Stutterheim, Schönhals and Marbot; no source read calls it the general… | disputed | corr11_1863.p449.centre (the centre); stut.p41.centre (the centre); marbot1891.p260.centre-ravine (the centre, with Soult's troops); schoenhals1873.p158.line (the centre, forward of Schlapanitz); savary1828.p200-201.placement (in the second line behind Soult); mikhailovsky1844.p172.night-move (across the brook since the evening before); sokolov2006.p53.guard-drouet; thiebault3_1894.p466.second-reading |
 | `FORMATIONS.c_i.note` | data.js:372 | No source read calls the corps the general reserve. The 30th Bulletin gives Bernadotte the command of the centre, with Rivaud's division on… | unchecked |  |
 | `FORMATIONS.rivaud.desig` | data.js:375 | 1re or 2e Div., I Corps | unchecked |  |
 | `FORMATIONS.rivaud.commander` | data.js:376 | Gen. de division Olivier Rivaud | unchecked |  |
-| `FORMATIONS.rivaud.strengthNote` | data.js:377 | 6,000, this map's working figure: Sokolov has 5,216 under arms on 22 November (t. II, pp. 183-185) | attributed | sokolov2006.p183-185.v-and-i-corps |
+| `FORMATIONS.rivaud.strengthNote` | data.js:377 | 5,200, this map's working figure at Sokolov's return of 22 November, 5,216 under arms (t. II, pp. 183-185): a strength that could only have… | attributed | sokolov2006.p183-185.v-and-i-corps |
 | `FORMATIONS.rivaud.note` | data.js:378 | Its number in I Corps differs between two French returns of October 1805, neither of 2 December: the situation of 28 October numbers Rivaud… | unchecked |  |
 | `FORMATIONS.drouet.desig` | data.js:387 | 2e or 1re Div., I Corps | unchecked |  |
 | `FORMATIONS.drouet.commander` | data.js:388 | Gen. de division Jean-Baptiste Drouet d'Erlon | unchecked |  |
-| `FORMATIONS.drouet.strengthNote` | data.js:389 | 7,000, this map's working figure: Sokolov has 6,318 under arms on 22 November (t. II, pp. 183-185) | attributed | sokolov2006.p183-185.v-and-i-corps |
+| `FORMATIONS.drouet.strengthNote` | data.js:389 | 6,300, this map's working figure at Sokolov's return of 22 November, 6,318 under arms (t. II, pp. 183-185): a strength that could only have… | attributed | sokolov2006.p183-185.v-and-i-corps |
 | `FORMATIONS.drouet.note` | data.js:390 | Its number in I Corps differs between two French returns of October 1805, neither of 2 December: the 2nd division in the force return of 26… | unchecked |  |
 | `FORMATIONS.c_gd.desig` | data.js:399 | Garde impériale | unchecked |  |
 | `FORMATIONS.c_gd.commander` | data.js:400 | Marshal Jean-Baptiste Bessières | unchecked |  |
@@ -220,11 +220,11 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.guard_inf.desig` | data.js:405 | Infanterie de la Garde | unchecked |  |
 | `FORMATIONS.guard_inf.commander` | data.js:406 | Grenadiers and Chasseurs à pied | unchecked |  |
 | `FORMATIONS.guard_inf.staff` | data.js:407 | With the Grenadiers of the Italian Royal Guard | unchecked |  |
-| `FORMATIONS.guard_inf.strengthNote` | data.js:408 | 3,000, this map's working figure: Sokolov has the foot chasseurs 1,270, the foot grenadiers 1,346 and the Italian Royal Guard 693 under arm… | attributed | sokolov2006.p193.guard-totals-source |
+| `FORMATIONS.guard_inf.strengthNote` | data.js:408 | 3,000, this map's working figure, below Sokolov's return of 22 November: the foot chasseurs 1,270, the foot grenadiers 1,346 and the Italia… | attributed | sokolov2006.p193.guard-totals-source |
 | `FORMATIONS.guard_cav.desig` | data.js:416 | Cavalerie de la Garde | unchecked |  |
 | `FORMATIONS.guard_cav.commander` | data.js:417 | Marshal Bessières; charge led by Gen. Rapp | unchecked |  |
 | `FORMATIONS.guard_cav.staff` | data.js:418 | Horse Grenadiers, Chasseurs à cheval, Mamelukes | unchecked |  |
-| `FORMATIONS.guard_cav.strengthNote` | data.js:419 | 2,500, this map's working figure: Sokolov has the horse chasseurs 376, the Mamelukes 48 and the horse grenadiers 599 under arms on 22 Novem… | attributed | sokolov2006.p193.guard-totals-source |
+| `FORMATIONS.guard_cav.strengthNote` | data.js:419 | 1,000, this map's working figure at Sokolov's return of 22 November: the horse chasseurs 376, the Mamelukes 48 and the horse grenadiers 599… | attributed | sokolov2006.p193.guard-totals-source |
 | `FORMATIONS.c_gren.desig` | data.js:426 | Div. de Grenadiers | unchecked |  |
 | `FORMATIONS.c_gren.commander` | data.js:427 | Gen. de division Nicolas Oudinot | unchecked |  |
 | `FORMATIONS.c_gren.staff` | data.js:428 | Oudinot was convalescent; effective command fell to Gen. Duroc | unchecked |  |
@@ -266,16 +266,16 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.col4.desig` | data.js:548 | IV Column | unchecked |  |
 | `FORMATIONS.col4.commander` | data.js:549 | FZM Johann Kollowrat and Lt.-Gen. Mikhail Miloradovich | unchecked |  |
 | `FORMATIONS.col4.mixedNote` | data.js:550 | Austrian and Russian: fifteen Austrian battalions and twelve Russian (Stutterheim 1806; Schönhals 1873), or fourteen Russian (WarHistory) | unchecked |  |
-| `FORMATIONS.col4.strengthNote` | data.js:551 | 13,900, this map's working figure, with 52 light and 24 heavy guns. Schönhals's table gives the column 16,115 in its recapitulation (the Ru… | disputed | schoenhals1873.p177.iv-column (16,115); sokolov2006.p195-197.columns (15,900 infantry and 300 cavalry with 76 guns); duffy1977.textlayer.oob (23,900 with 52 light and 24 heavy pieces) |
+| `FORMATIONS.col4.strengthNote` | data.js:551 | 16,115, the recapitulation of Schönhals's table (1873, p. 178; the Russian wing 6,965, the Austrians 9,150, p. 177, whose own sum line prin… | disputed | schoenhals1873.p177.iv-column (16,115); sokolov2006.p195-197.columns (15,900 infantry and 300 cavalry with 76 guns); duffy1977.textlayer.oob (23,900 with 52 light and 24 heavy pieces) |
 | `FORMATIONS.col4.role` | data.js:552 | Should have replaced the troops leaving the plateau. Delayed, then caught in the open by Soult. | unchecked |  |
 | `FORMATIONS.col4.note` | data.js:554 | Its objective was Kobelnitz. Liechtenstein's cavalry, misplaced on the left, crossed its line of march riding north-west and held it up; Ru… | unchecked |  |
 | `FORMATIONS.milo.desig` | data.js:556 | Russian wing, IV Column | unchecked |  |
 | `FORMATIONS.milo.commander` | data.js:557 | Lt.-Gen. Mikhail Miloradovich | unchecked |  |
-| `FORMATIONS.milo.strengthNote` | data.js:559 | 4,800 is this map's working figure, its 13,900 for the column less the Austrian brigades' 9,100; Schönhals (1873) gives the Russian wing tw… | unchecked |  |
+| `FORMATIONS.milo.strengthNote` | data.js:559 | 6,965 is Schönhals's table (1873, p. 177): until the final audits' Stage 2 this map drew 4,800, its 13,900 for the column less the Austrian… | attributed | schoenhals1873.p177.iv-column |
 | `FORMATIONS.kollo.desig` | data.js:569 | Austrian wing, IV Column | unchecked |  |
 | `FORMATIONS.kollo.commander` | data.js:570 | FZM Johann Karl Graf Kollowrat-Krakowsky | unchecked |  |
 | `FORMATIONS.kollo.staff` | data.js:571 | Brigades: Jurczek · Rottermund | unchecked |  |
-| `FORMATIONS.kollo.strengthNote` | data.js:572 | about 9,100 infantry, this map's working figure; the lines of Rottermund's and Jurczek's brigades in Schönhals's table make 9,150 (1873, p.… | attributed | schoenhals1873.p177.iv-column |
+| `FORMATIONS.kollo.strengthNote` | data.js:572 | 9,150 infantry, the lines of Rottermund's and Jurczek's brigades in Schönhals's table (1873, p. 177); until the final audits' Stage 2 this … | attributed | schoenhals1873.p177.iv-column |
 | `FORMATIONS.lich.desig` | data.js:584 | V Column | unchecked |  |
 | `FORMATIONS.lich.commander` | data.js:585 | FML Prince Johann von Liechtenstein | unchecked |  |
 | `FORMATIONS.lich.staff` | data.js:586 | Mixed, mostly Russian: the Austrian cuirassier brigades of Caramelli and Weber (about 1,100; Schönhals 1873; Duffy 1977; Smith 1998) and th… | disputed | schoenhals1873.p178.lich-bagration-recap (Penitsky under Uvarov); sokolov2006.p197-198.v-column (Gizhitsky under Uvarov) |
@@ -664,7 +664,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 |---|---|---|---|---|
 | `ANALYSIS[#plan].text` | analysis.js:15 | Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road … | unchecked |  |
 | `ANALYSIS[#deception].text` | analysis.js:20 | Napoleon abandoned the Pratzen plateau on 1 December and camped his army west of it, behind the Goldbach. He asked for an armistice intervi… | interpretation | corr11.p441.proclamation; corr11.p448.cette-idee; marbot.p259.trap |
-| `ANALYSIS[#weakness].text` | analysis.js:25 | Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men on t… | unchecked |  |
+| `ANALYSIS[#weakness].text` | analysis.js:25 | Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 5,300 men in S… | unchecked |  |
 | `ANALYSIS[#commitment].text` | analysis.js:30 | Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves i… | unchecked |  |
 | `ANALYSIS[#pratzen].text` | analysis.js:35 | Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the wes… | disputed | mat1806.p101-106.disposition (every column ordered off at seven); stut.p60-61.nine-pratzen (the 4th Column ordered off only toward eight); schoenhals1873.p159-161.nine (the 4th Column half an hour after the first three); md1844.p181.ninth-hour (held up at the set hour by the cavalry, then by Kutuzov standing still); schoenhals1873.p157-159.departure; schoenhals1873.p160.halb-acht; kutuzov1951.p230.miloradovich-eight; stut.p66.two-hours; thieb.p469.trois-heures |
 | `ANALYSIS[#cut].text` | analysis.js:40 | With the plateau taken, the Allied army was in two halves that could no longer support one another. Buxhowden's columns, roughly 38,000 to … | unchecked |  |
