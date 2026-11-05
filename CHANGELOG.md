@@ -116,6 +116,23 @@ reading `liveEvents`; 127 identical. `liveEvents` gains a tie-break: at equal we
 "reconstruction" tag was never shown at its own start; the self-test's events check found it. The self-test's 1x relief check is rewritten for
 the new sentence (CL-GEO-09), as strict: at 1x it requires "drawn at true scale (1×)" and fails on the old "exaggerated about 1 times".
 
+### The motion benchmark re-baselined (the owner's word, 5 November 2026: "go with your recommendations for all relating to motion numbers")
+
+- The self-test's motion block failed on this build: jumps 251 over 248, pops 1,034 over 998, and twelve runs drawing fewer formations than
+  their baselines.
+- Measured in two steps with `tools/stage8/motion-8h.js` (Chromium 141):
+  - The first Stage 2 commit's build, with the events relabelled and no strength changed, gives 250 and 1,002, and every run's visibility at
+    its baseline but two Play runs.
+  - The drawn strengths that follow the sources read re-rank the counters and give the rest.
+- Over the 16 motions the formation-frames drawn are 32,188 of 45,888 (70.14%), were 32,431 (70.67%).
+- `thresholds.js` `MOTION`: `JUMPS` 248 to 251 and `POPS` 998 to 1,034. Sixteen visibility baselines are re-measured, each was and is in
+  `thresholds.js`: nine runs worse, seven better or equal. The landscape's orbit loses most, 1,981 to 1,789 formation-frames, its longest hidden
+  667 to 1,167 ms. That is left to WP-07 (the map layer in motion) and not settled here.
+- Unchanged: FLICKER, LOD, the real input's tolerance, its one-frame rule and every other baseline.
+- **Not moved, put to the owner:** `narrow-1024`'s drop limit. CI's visual run drops 9 map items there against 8: Bourcier's and d'Hautpoul's
+  names and seven place names, with the new strengths re-ranking the counters. The same view's limit moved twice before for the same cause,
+  decisions 199 and 214.
+
 ### Verified
 
 - `npm test`: the nine suites and the height guard pass (`test.js` holds every new claim to its readings, the inventory regenerated).
