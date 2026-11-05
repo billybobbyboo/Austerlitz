@@ -3,8 +3,8 @@
 ## 2026-11 · Final audits' roadmap, Stage 2: WP-01 and WP-02 (what a visitor is told)
 
 **Status: on `claude/inspiring-franklin-qt51w2` (a draft PR into `main`, for review, not merged).** Stage 2 of `docs/ROADMAP_FINAL_AUDIT.md`. This is a
-data task: eleven declarations change (below), each with its evidence. `check:data`'s reference and `check:baseline` move to this build
-(`archive/postaudit2-8005e5e0.html`). `austerlitz-command-map.html` is now 2,831,886 bytes, md5 `8005e5e0e9dd6a92711229ef774db931` (was 2,810,950, `a3cb40f8...`).
+data task: twelve declarations change (below), each with its evidence. `check:data`'s reference and `check:baseline` move to this build
+(`archive/postaudit2-e7d6924f.html`). `austerlitz-command-map.html` is now 2,832,552 bytes, md5 `e7d6924f0b66ae948ca856ccd90c98ec` (was 2,810,950, `a3cb40f8...`).
 
 No position, track, timing or grade changes. Fourteen drawn strengths change, on the owner's word of 5 November 2026 ("for drawn strengths
 following sources lets go with your recommendation"): each formation the audit found drawn against the sources read now draws what they print
@@ -110,7 +110,11 @@ page image here. S6.7, Duffy's text layer, is superseded for his order of battle
 
 ### Changed declarations (check:data, against `archive/postaudit1-a3cb40f8.html`)
 
-PHASES, FORMATIONS, FEATURES, SOURCE_NOTE, ANALYSIS, COMMAND, EVENTS, TOUR, COMPOSITION, TERRAIN_LINES, STATEMENT_CLAIMS; 128 identical.
+PHASES, FORMATIONS, FEATURES, SOURCE_NOTE, ANALYSIS, COMMAND, EVENTS, TOUR, COMPOSITION, TERRAIN_LINES, STATEMENT_CLAIMS, and the derived
+reading `liveEvents`; 127 identical. `liveEvents` gains a tie-break: at equal weight the event that starts later leads. At 09:15 the face-about
+(now a reconstruction) and the climb's end weighed the same, and the climb led the caption by its place in `EVENTS` alone, so the face-about's
+"reconstruction" tag was never shown at its own start; the self-test's events check found it. The self-test's 1x relief check is rewritten for
+the new sentence (CL-GEO-09), as strict: at 1x it requires "drawn at true scale (1×)" and fails on the old "exaggerated about 1 times".
 
 ### Verified
 

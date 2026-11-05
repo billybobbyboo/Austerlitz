@@ -3908,7 +3908,9 @@ function liveEvents(t){
     var w=evWeight(EVENTS[i],t);
     if(w>0.02) out.push({e:EVENTS[i],w:w});
   }
-  out.sort(function(a,b){ return b.w-a.w; });
+  /* the final audits' Stage 2: at equal weight the event that starts later leads, so that at an event's start the caption names it and not
+     the event whose window ends there (09:15: the face-about, not the climb, which held the lead by its place in EVENTS alone) */
+  out.sort(function(a,b){ return (b.w-a.w)||(evWindow(b.e)[0]-evWindow(a.e)[0]); });
   return out;
 }
 function actOf(ph){
@@ -9824,7 +9826,10 @@ var AUSTERLITZ_DEBUG=(function(){
       F.map(function(f){ return fmtFactor(f)+"\u00d7: \""+B[f].legend+"\""; }).join("; "));
     var stale=[], model=GEOREF.EXAG.toFixed(0);
     F.forEach(function(f){ var o=B[f];
-      if(o.sources.indexOf("exaggerated about "+fmtFactor(f)+" times")<0) stale.push(fmtFactor(f)+"\u00d7 sources sheet does not state it");
+      /* since the final audits' WP-01 (CL-GEO-09) the sheet says "drawn at true scale (1\u00d7)" at 1x, "exaggerated about F times" otherwise;
+         at 1x neither the old "exaggerated about 1 times" nor its absence passes */
+      if(f===1?(o.sources.indexOf("drawn at true scale (1\u00d7)")<0||o.sources.indexOf("exaggerated about 1 times")>=0)
+              :o.sources.indexOf("exaggerated about "+fmtFactor(f)+" times")<0) stale.push(fmtFactor(f)+"\u00d7 sources sheet does not state it");
       if(o.dossier.indexOf("drawn "+fmtFactor(f)+"\u00d7 vertically")<0) stale.push(fmtFactor(f)+"\u00d7 place dossier does not state it");
       if(f!==GEOREF.EXAG){ if(o.sources.indexOf("about "+model+" times")>=0) stale.push(fmtFactor(f)+"\u00d7 sources sheet states "+model);
         if(o.dossier.indexOf(" "+model+"\u00d7")>=0) stale.push(fmtFactor(f)+"\u00d7 dossier states "+model+"\u00d7");
