@@ -154,21 +154,21 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.legrand.role` | data.js:223 | The bait. Two brigades in Sokolov's order of battle cover roughly five kilometres of the lower Goldbach alone. | unchecked |  |
 | `FORMATIONS.c_iii.desig` | data.js:238 | III Corps | unchecked |  |
 | `FORMATIONS.c_iii.commander` | data.js:239 | Marshal Louis-Nicolas Davout | unchecked |  |
-| `FORMATIONS.c_iii.strengthNote` | data.js:240 | 5,300, Sokolov's estimate for 2 December from the returns of 22 November (Friant 7,037 and Bourcier 1,900 on 22 November, presumed 3,800 an… | disputed | sokolov2006.p188-189.davout (5,300 presumed; Friant 3,500-4,000 and Bourcier 1,200-1,500 after the march); thiers1845.p310.seven-eight-thousand (Friant reduced to 6,000 at most); duffy1977.textlayer.oob (Friant 3,800 with 9 guns, Bourcier 2,500 with 3) |
+| `FORMATIONS.c_iii.strengthNote` | data.js:240 | 5,300, Sokolov's estimate for 2 December from the returns of 22 November (Friant 7,037 and Bourcier 1,900 on 22 November, presumed 3,800 an… | disputed | sokolov2006.p188-189.davout (5,300 presumed; Friant 3,500-4,000 and Bourcier 1,200-1,500 after the march); thiers1845.p310.seven-eight-thousand (Friant reduced to 6,000 at most); duffy1977.p179-185.oob (Friant 3,800 with 9 guns, Bourcier 2,500 with 3, by nominal establishment) |
 | `FORMATIONS.c_iii.role` | data.js:241 | Holds the extreme right for most of the morning against forces several times its number: Thiers gives seven to eight thousand foot, with th… | derived | thiers1845.p310.seven-eight-thousand; davout1885.no123.p192-193.plus-belle-resistance |
 | `FORMATIONS.c_iii.note` | data.js:243 | Caffarelli's division, normally of III Corps, fought under Lannes on the opposite flank. | unchecked |  |
 | `FORMATIONS.friant.desig` | data.js:245 | 2e Div., III Corps | unchecked |  |
 | `FORMATIONS.friant.commander` | data.js:246 | Gen. de division Louis Friant | unchecked |  |
 | `FORMATIONS.friant.staff` | data.js:247 | Brigades: Kister · Lochet · Heudelet | unchecked |  |
-| `FORMATIONS.friant.strengthNote` | data.js:248 | 3,800, Sokolov's estimate for 2 December: 7,037 under arms on 22 November, and after the march no more than 3,500-4,000 at Davout's disposa… | disputed | sokolov2006.p188-189.davout (3,800 presumed, no more than 3,500-4,000); thiers1845.p310.seven-eight-thousand (6,000 at most); duffy1977.textlayer.oob (3,800 with 9 guns) |
+| `FORMATIONS.friant.strengthNote` | data.js:248 | 3,800, Sokolov's estimate for 2 December: 7,037 under arms on 22 November, and after the march no more than 3,500-4,000 at Davout's disposa… | disputed | sokolov2006.p188-189.davout (3,800 presumed, no more than 3,500-4,000); thiers1845.p310.seven-eight-thousand (6,000 at most); duffy1977.p179-185.oob (3,800 with 9 guns) |
 | `FORMATIONS.friant.role` | data.js:249 | Arrives straight from the march and counterattacks without resting. | unchecked |  |
 | `FORMATIONS.bourcier.desig` | data.js:261 | 4e Div. Dragons | unchecked |  |
 | `FORMATIONS.bourcier.commander` | data.js:262 | Gen. de division François Bourcier | unchecked |  |
-| `FORMATIONS.bourcier.strengthNote` | data.js:263 | 1,500 sabres, Sokolov's estimate for 2 December: 1,900 on 22 November, and no more than 1,200-1,500 at Davout's disposal after the march; o… | disputed | sokolov2006.p188-189.davout (1,500 presumed, no more than 1,200-1,500); duffy1977.textlayer.oob (2,500 with 3 guns) |
+| `FORMATIONS.bourcier.strengthNote` | data.js:263 | 1,500 sabres, Sokolov's estimate for 2 December: 1,900 on 22 November, and no more than 1,200-1,500 at Davout's disposal after the march; o… | disputed | sokolov2006.p188-189.davout (1,500 presumed, no more than 1,200-1,500); duffy1977.p179-185.oob (2,500 with 3 guns) |
 | `FORMATIONS.bourcier.role` | data.js:264 | Covers Davout's open southern flank and the Vienna road. | unchecked |  |
 | `FORMATIONS.c_v.desig` | data.js:273 | V Corps | unchecked |  |
 | `FORMATIONS.c_v.commander` | data.js:274 | Marshal Jean Lannes | unchecked |  |
-| `FORMATIONS.c_v.strengthNote` | data.js:275 | about 12,700 with 20 guns, as Duffy's order of battle prints them (read on its text layer only); Sokolov presumes 13,800 for Lannes on 2 De… | unchecked |  |
+| `FORMATIONS.c_v.strengthNote` | data.js:275 | about 12,700 with 20 guns, as Duffy's order of battle prints them (1977, p. 181); Sokolov presumes 13,800 for Lannes on 2 December (13,673 … | unchecked |  |
 | `FORMATIONS.c_v.role` | data.js:276 | Holds and then advances along the Brünn–Olmütz highway; forbidden to press too hard early. | unchecked |  |
 | `FORMATIONS.caffarelli.desig` | data.js:279 | 1re Div., III Corps, with V Corps | unchecked |  |
 | `FORMATIONS.caffarelli.commander` | data.js:280 | Gen. de division Marie-François de Caffarelli du Falga | unchecked |  |
@@ -181,11 +181,11 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.suchet.strengthNote` | data.js:296 | about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French sit… | unchecked |  |
 | `FORMATIONS.santon.desig` | data.js:313 | 17e Légère with the Santon battery | unchecked |  |
 | `FORMATIONS.santon.commander` | data.js:314 | Gen. de brigade Michel Claparède | unchecked |  |
-| `FORMATIONS.santon.strengthNote` | data.js:315 | about 1,600 infantry of the 17e Légère with 18 guns (Duffy/Smith; Tvarožná municipal history). Stutterheim (1806), an officer of the Allied… | unchecked |  |
+| `FORMATIONS.santon.strengthNote` | data.js:315 | about 1,600 infantry of the 17e Légère with 18 guns, this map's working figure (Tvarožná municipal history); Duffy's order of battle names … | unchecked |  |
 | `FORMATIONS.santon.role` | data.js:316 | The anchor of the French left. Its slopes were scarped and the crest entrenched before the battle; which face was scarped is not establishe… | unchecked |  |
 | `FORMATIONS.c_cav.desig` | data.js:323 | Réserve de cavalerie | unchecked |  |
 | `FORMATIONS.c_cav.commander` | data.js:324 | Marshal Joachim Murat | unchecked |  |
-| `FORMATIONS.c_cav.strengthNote` | data.js:325 | 7,100 sabres, Sokolov's estimate for 2 December (8,729 on 22 November); 7,400 in Duffy's order of battle, read on its text layer only, and … | attributed | sokolov2006.p193.guard-totals-source; sokolov2006.p190-191.cavalry; duffy1977.textlayer.oob |
+| `FORMATIONS.c_cav.strengthNote` | data.js:325 | 7,100 sabres, Sokolov's estimate for 2 December (8,729 on 22 November); 7,400 in Duffy's order of battle (1977, p. 181), which gives the re… | attributed | sokolov2006.p193.guard-totals-source; sokolov2006.p190-191.cavalry; duffy1977.p179-185.oob |
 | `FORMATIONS.c_cav.role` | data.js:326 | Operates between Lannes and Soult; fights the cavalry battle in the north. | unchecked |  |
 | `FORMATIONS.c_cav.note` | data.js:328 | Beaumont's dragoon division was also with the reserve but is not plotted separately, because no position for it can be given with confidenc… | unchecked |  |
 | `FORMATIONS.kellermann.desig` | data.js:330 | Div. Cavalerie Légère | unchecked |  |
@@ -193,7 +193,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.kellermann.strengthNote` | data.js:332 | 1,500, Sokolov's estimate for 2 December: 2,021 under arms on 22 November (t. II, p. 191). Until the final audits' Stage 2 this map drew 2,… | attributed | sokolov2006.p190-191.cavalry |
 | `FORMATIONS.nansouty.desig` | data.js:340 | 1re Div. Cuirassiers | unchecked |  |
 | `FORMATIONS.nansouty.commander` | data.js:341 | Gen. de division Étienne de Nansouty | unchecked |  |
-| `FORMATIONS.nansouty.strengthNote` | data.js:342 | 1,300, Sokolov's estimate for 2 December: 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners (t. II, p. 189). The six r… | attributed | sokolov2006.p190-191.cavalry |
+| `FORMATIONS.nansouty.strengthNote` | data.js:342 | 1,300, Sokolov's estimate for 2 December: 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners (t. II, p. 189). Duffy's o… | attributed | sokolov2006.p190-191.cavalry |
 | `FORMATIONS.dhautpoul.desig` | data.js:350 | 2e Div. Cuirassiers | unchecked |  |
 | `FORMATIONS.dhautpoul.commander` | data.js:351 | Gen. de division Jean-Joseph d'Hautpoul | unchecked |  |
 | `FORMATIONS.dhautpoul.strengthNote` | data.js:352 | 1,100, Sokolov's estimate for 2 December: 1,136 under arms on 22 November (t. II, p. 190). Until the final audits' Stage 2 this map drew 1,… | attributed | sokolov2006.p190-191.cavalry |
@@ -202,7 +202,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.walther.strengthNote` | data.js:361 | 1,200, Sokolov's estimate for 2 December: 1,340 under arms on 22 November (t. II, p. 190). Until the final audits' Stage 2 this map drew 1,… | attributed | sokolov2006.p190-191.cavalry |
 | `FORMATIONS.c_i.desig` | data.js:368 | I Corps | unchecked |  |
 | `FORMATIONS.c_i.commander` | data.js:369 | Marshal Jean-Baptiste Bernadotte | unchecked |  |
-| `FORMATIONS.c_i.strengthNote` | data.js:370 | 11,500, Sokolov's estimate for 2 December (11,642 on 22 November); 13,000 with 24 guns in Duffy's order of battle, read on its text layer o… | attributed | sokolov2006.p193.guard-totals-source; duffy1977.textlayer.oob |
+| `FORMATIONS.c_i.strengthNote` | data.js:370 | 11,500, Sokolov's estimate for 2 December (11,642 on 22 November); 13,000 with 24 guns in Duffy's order of battle (1977, p. 179). Until the… | attributed | sokolov2006.p193.guard-totals-source; duffy1977.p179-185.oob |
 | `FORMATIONS.c_i.role` | data.js:371 | The centre, between Murat's cavalry and Soult, in the 30th Bulletin, Stutterheim, Schönhals and Marbot; no source read calls it the general… | disputed | corr11_1863.p449.centre (the centre); stut.p41.centre (the centre); marbot1891.p260.centre-ravine (the centre, with Soult's troops); schoenhals1873.p158.line (the centre, forward of Schlapanitz); savary1828.p200-201.placement (in the second line behind Soult); mikhailovsky1844.p172.night-move (across the brook since the evening before); sokolov2006.p53.guard-drouet; thiebault3_1894.p466.second-reading |
 | `FORMATIONS.c_i.note` | data.js:372 | No source read calls the corps the general reserve. The 30th Bulletin gives Bernadotte the command of the centre, with Rivaud's division on… | unchecked |  |
 | `FORMATIONS.rivaud.desig` | data.js:375 | 1re or 2e Div., I Corps | unchecked |  |
@@ -244,16 +244,16 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.kienmayer.desig` | data.js:467 | Advance Guard, I Column | unchecked |  |
 | `FORMATIONS.kienmayer.commander` | data.js:468 | Feldmarschall-Leutnant Michael von Kienmayer | unchecked |  |
 | `FORMATIONS.kienmayer.staff` | data.js:469 | Grenz infantry (Broder Nr. 7, 1st and 2nd Szekler Nr. 14 and 15) with chevau-legers, hussars and Cossacks | unchecked |  |
-| `FORMATIONS.kienmayer.strengthNote` | data.js:470 | 6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total line prints 2,440 horses), with two ca… | disputed | schoenhals1873.p177.kienmayer (6,340 (its total line prints 2,440 horses)); sokolov2006.p194.kienmayer (6,380, with 12 guns); duffy1977.textlayer.oob (6,780 with 12 light pieces, nominal) |
+| `FORMATIONS.kienmayer.strengthNote` | data.js:470 | 6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total line prints 2,440 horses), with two ca… | disputed | schoenhals1873.p177.kienmayer (6,340 (its total line prints 2,440 horses)); sokolov2006.p194.kienmayer (6,380, with 12 guns); duffy1977.p179-185.oob (6,780 in its heading, its rows 3,440 foot and 3,440 horse) |
 | `FORMATIONS.kienmayer.role` | data.js:471 | Opens the battle. The Allied extreme left. | unchecked |  |
 | `FORMATIONS.dok.desig` | data.js:483 | I Column | unchecked |  |
 | `FORMATIONS.dok.commander` | data.js:484 | Lt.-Gen. Dmitry Dokhturov | unchecked |  |
-| `FORMATIONS.dok.strengthNote` | data.js:485 | 13,490, this map's working figure (13,240 infantry and 250 cavalry, a transcription no source read prints), with 64 guns: Sokolov has 13,80… | disputed | sokolov2006.p195-197.columns (13,800 infantry and 200 Cossacks with 64 guns); schoenhals1873.p177.iv-column (12,730 (13,730 on its sum line)); duffy1977.textlayer.oob (13,650 with 64 pieces) |
+| `FORMATIONS.dok.strengthNote` | data.js:485 | 13,490, this map's working figure (13,240 infantry and 250 cavalry, a transcription no source read prints), with 64 guns: Sokolov has 13,80… | disputed | sokolov2006.p195-197.columns (13,800 infantry and 200 Cossacks with 64 guns); schoenhals1873.p177.iv-column (12,730 (13,730 on its sum line)); duffy1977.p179-185.oob (13,650 with 64 pieces) |
 | `FORMATIONS.dok.role` | data.js:486 | Main weight of the attack on Telnitz. | unchecked |  |
 | `FORMATIONS.lang.desig` | data.js:498 | II Column | unchecked |  |
 | `FORMATIONS.lang.commander` | data.js:499 | Lt.-Gen. Louis de Langeron | unchecked |  |
 | `FORMATIONS.lang.staff` | data.js:500 | A French émigré in Russian service | unchecked |  |
-| `FORMATIONS.lang.strengthNote` | data.js:501 | 11,700 with 30 guns, as Duffy's order of battle prints them (read on its text layer only); Schönhals's table and Sokolov give 10,840 infant… | disputed | duffy1977.textlayer.oob (11,700 with 30 light pieces); schoenhals1873.p177.iv-column (10,840); sokolov2006.p195-197.columns (10,840 infantry and 300 cavalry with 30 guns) |
+| `FORMATIONS.lang.strengthNote` | data.js:501 | 11,700 with 30 guns, as Duffy's order of battle prints them (1977, p. 183); Schönhals's table and Sokolov give 10,840 infantry, Sokolov wit… | disputed | duffy1977.p179-185.oob (11,700 with 30 light pieces); schoenhals1873.p177.iv-column (10,840); sokolov2006.p195-197.columns (10,840 infantry and 300 cavalry with 30 guns) |
 | `FORMATIONS.lang.role` | data.js:502 | Attacks Sokolnitz. Warned by Kamensky in Mikhailovsky-Danilevsky's account (citing Langeron's report), Langeron rode back and sent reinforc… | disputed | md1844.p188-189.kamensky-kursk (up to 1,600 men lost); sokolov2006.p62.kursk-two-battalions (two battalions); md1844.p186-187.kamensky~C1.10; schoenhals1873.p167.chapel-kamensky-kursk (left in reserve behind Sokolnitz) |
 | `FORMATIONS.kamensky.desig` | data.js:515 | Brigade, II Column | unchecked |  |
 | `FORMATIONS.kamensky.commander` | data.js:516 | Maj.-Gen. Sergey Kamensky | unchecked |  |
@@ -261,12 +261,12 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.kamensky.role` | data.js:518 | Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky, citing L… | disputed | md1844.p186-187.kamensky~C1.10 (Kamensky on his own judgement); schoenhals1873.p161.kamensky-langeron (Langeron sent the brigade); kutuzov1951.p262.buxhowden-letter (Langeron sent the brigade); kutuzov1951.p255-258.relation (Kutuzov ordered it (his official report)); kutuzov1951.p265.private-relation (no order of Kutuzov's (his private relation)) |
 | `FORMATIONS.prz.desig` | data.js:528 | III Column | unchecked |  |
 | `FORMATIONS.prz.commander` | data.js:529 | Lt.-Gen. Ignacy Przybyszewski | unchecked |  |
-| `FORMATIONS.prz.strengthNote` | data.js:530 | 7,700, this map's working figure, with 30 guns: Schönhals's table gives 8,570 with 500 horse, Sokolov 8,000 infantry with 30 guns, and Duff… | disputed | schoenhals1873.p177.iv-column (8,570 with 500 horse); sokolov2006.p195-197.columns (8,000 infantry with 30 guns); duffy1977.textlayer.oob (7,770) |
+| `FORMATIONS.prz.strengthNote` | data.js:530 | 7,700, this map's working figure, with 30 guns: Schönhals's table gives 8,570 with 500 horse, Sokolov 8,000 infantry with 30 guns, and Duff… | disputed | schoenhals1873.p177.iv-column (8,570 with 500 horse); sokolov2006.p195-197.columns (8,000 infantry with 30 guns); duffy1977.p179-185.oob (7,770) |
 | `FORMATIONS.prz.role` | data.js:531 | Attacks the Sokolnitz castle and pheasantry; surrounded and destroyed as a formation. | unchecked |  |
 | `FORMATIONS.col4.desig` | data.js:548 | IV Column | unchecked |  |
 | `FORMATIONS.col4.commander` | data.js:549 | FZM Johann Kollowrat and Lt.-Gen. Mikhail Miloradovich | unchecked |  |
 | `FORMATIONS.col4.mixedNote` | data.js:550 | Austrian and Russian: fifteen Austrian battalions and twelve Russian (Stutterheim 1806; Schönhals 1873), or fourteen Russian (WarHistory) | unchecked |  |
-| `FORMATIONS.col4.strengthNote` | data.js:551 | 16,115, the recapitulation of Schönhals's table (1873, p. 178; the Russian wing 6,965, the Austrians 9,150, p. 177, whose own sum line prin… | disputed | schoenhals1873.p177.iv-column (16,115); sokolov2006.p195-197.columns (15,900 infantry and 300 cavalry with 76 guns); duffy1977.textlayer.oob (23,900 with 52 light and 24 heavy pieces) |
+| `FORMATIONS.col4.strengthNote` | data.js:551 | 16,115, the recapitulation of Schönhals's table (1873, p. 178; the Russian wing 6,965, the Austrians 9,150, p. 177, whose own sum line prin… | disputed | schoenhals1873.p177.iv-column (16,115); sokolov2006.p195-197.columns (15,900 infantry and 300 cavalry with 76 guns); duffy1977.p179-185.oob (23,900 with 52 light and 24 heavy pieces) |
 | `FORMATIONS.col4.role` | data.js:552 | Should have replaced the troops leaving the plateau. Delayed, then caught in the open by Soult. | unchecked |  |
 | `FORMATIONS.col4.note` | data.js:554 | Its objective was Kobelnitz. Liechtenstein's cavalry, misplaced on the left, crossed its line of march riding north-west and held it up; Ru… | unchecked |  |
 | `FORMATIONS.milo.desig` | data.js:556 | Russian wing, IV Column | unchecked |  |
@@ -278,12 +278,12 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.kollo.strengthNote` | data.js:572 | 9,150 infantry, the lines of Rottermund's and Jurczek's brigades in Schönhals's table (1873, p. 177); until the final audits' Stage 2 this … | attributed | schoenhals1873.p177.iv-column |
 | `FORMATIONS.lich.desig` | data.js:584 | V Column | unchecked |  |
 | `FORMATIONS.lich.commander` | data.js:585 | FML Prince Johann von Liechtenstein | unchecked |  |
-| `FORMATIONS.lich.staff` | data.js:586 | Mixed, mostly Russian: the Austrian cuirassier brigades of Caramelli and Weber (about 1,100; Schönhals 1873; Duffy 1977; Smith 1998) and th… | disputed | schoenhals1873.p178.lich-bagration-recap (Penitsky under Uvarov); sokolov2006.p197-198.v-column (Gizhitsky under Uvarov) |
+| `FORMATIONS.lich.staff` | data.js:586 | Mixed, mostly Russian: the Austrian cuirassier brigades of Caramelli and Weber (about 1,100; Schönhals 1873; Duffy 1977; Smith 1998) and th… | disputed | schoenhals1873.p178.lich-bagration-recap (Penitsky under Uvarov); sokolov2006.p197-198.v-column (Gizhitsky under Uvarov); duffy1977.p179-185.oob |
 | `FORMATIONS.lich.strengthNote` | data.js:587 | 5,400 is this map's working figure, inside the range read: 5,600 in 69 squadrons, the Austrians 1,100 (Schönhals, undated); 4,600 with 24 g… | disputed | schoenhals1873.p178.lich-bagration-recap (5,600); sokolov2006.p197-198.v-column (4,600 with 24 guns); stutterheim1806de.p25-27.march-27nov |
 | `FORMATIONS.lich.role` | data.js:588 | Deployed on the wrong flank overnight; its counter-march across the 4th Column's front contributed to that column's late start. | unchecked |  |
 | `FORMATIONS.bag.desig` | data.js:599 | Advance Guard | unchecked |  |
 | `FORMATIONS.bag.commander` | data.js:600 | Lt.-Gen. Prince Pyotr Bagration | unchecked |  |
-| `FORMATIONS.bag.strengthNote` | data.js:601 | about 13,000 to 14,000 with 42 guns: 13,000 in Schönhals's table (1873, p. 178), 13,700 with 42 pieces in Duffy's order of battle (read on … | unchecked |  |
+| `FORMATIONS.bag.strengthNote` | data.js:601 | about 13,000 to 14,000 with 42 guns: 13,000 in Schönhals's table (1873, p. 178), 13,700 with 42 pieces in Duffy's order of battle (1977, p.… | unchecked |  |
 | `FORMATIONS.bag.role` | data.js:602 | Holds the Brünn–Olmütz highway. Driven back from Holubitz and Kruh, it re-forms on the height toward Rausnitz and withdraws toward Austerli… | attributed | schoenhals1873.p166.posthaus-suchet; schoenhals1873.p165-166.bagration; stutterheim1806de.p71.bagration-posorsitz |
 | `FORMATIONS.constantine.desig` | data.js:621 | Imperial Guard | unchecked |  |
 | `FORMATIONS.constantine.commander` | data.js:622 | Grand Duke Constantine Pavlovich | unchecked |  |

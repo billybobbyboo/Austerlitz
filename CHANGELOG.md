@@ -4,12 +4,12 @@
 
 **Status: on `claude/inspiring-franklin-qt51w2` (a draft PR into `main`, for review, not merged).** Stage 2 of `docs/ROADMAP_FINAL_AUDIT.md`. This is a
 data task: eleven declarations change (below), each with its evidence. `check:data`'s reference and `check:baseline` move to this build
-(`archive/postaudit2-a1572194.html`). `austerlitz-command-map.html` is now 2,831,380 bytes, md5 `a1572194a8b5c572cb0aa42a85694cb6` (was 2,810,950, `a3cb40f8...`).
+(`archive/postaudit2-8005e5e0.html`). `austerlitz-command-map.html` is now 2,831,886 bytes, md5 `8005e5e0e9dd6a92711229ef774db931` (was 2,810,950, `a3cb40f8...`).
 
 No position, track, timing or grade changes. Fourteen drawn strengths change, on the owner's word of 5 November 2026 ("for drawn strengths
 following sources lets go with your recommendation"): each formation the audit found drawn against the sources read now draws what they print
-(below). Question 271 (Duffy's pages) stays open. Every new reading is registered in `docs/step4-evidence/readings.md` section S6, read on the
-page image here except S6.7, which is Duffy's text layer. Sokolov's page images are kept in `docs/final-stage2-evidence/pages/`.
+(below). Question 271 (a) is answered: the owner photographed Duffy's pp. 179-185, read as register entry S6.8. Every new reading is registered in `docs/step4-evidence/readings.md` section S6, read on the
+page image here. S6.7, Duffy's text layer, is superseded for his order of battle by S6.8, his pages read on the owner's photographs, which are not committed because the book is in copyright. Sokolov's page images are kept in `docs/final-stage2-evidence/pages/`.
 
 ### What changed, and why
 
@@ -60,7 +60,20 @@ page image here except S6.7, which is Duffy's text layer. Sokolov's page images 
     - Sokolov's returns of 22 November and his estimates for 2 December, read on the page (S6.4-S6.6, C5.8, C5.9);
     - Schönhals's table (S6.2, S6.3);
     - Thiers's 6,000 at most for Friant;
-    - Duffy's own figures, as his text layer prints them (S6.7, said so wherever they are quoted).
+    - Duffy's own figures, cited by page (S6.8). His French figures are "nominal establishments", his Allied ones "again v. approximate",
+      and his appendix is "compiled from a variety of sometimes contradictory sources".
+  - *What Duffy's pages corrected in the audit and here:*
+    - Kienmayer: Duffy heads him 6,780, but his rows make 3,440 foot and 3,440 horse, 6,880. The map's earlier note was right, the audit's
+      CL-SRC-01 wrong on this one figure, and the note now says so.
+    - The IV Column's rows add to exactly 16,065 (6,625 Russians, 9,440 Austrians).
+    - Dokhturov's rows make 13,050 infantry with 250 Cossacks and 240 pioneers, not the 13,240 infantry the map had.
+    - Kamensky's brigade in Duffy is the Ryazan and Fanagoria regiments with 200 dragoons, 100 Cossacks and 150 pioneers (4,450). Duffy puts
+      the Kursk regiment in Olsuvev's brigade; Schönhals braces it into Kamensky's.
+    - Duffy gives Nansouty's regiments no strengths, so the "about 1,580" once credited to him is not his.
+    - He names the 17e Légère on the Santon without its strength or guns.
+    - He gives the Cavalry Reserve no guns.
+    - He does name Gladkov's brigade ("Lt.-Gens. Essen II, Gladkov", p. 184), so the Fifth Column's note and the open questions now say the
+      name rests on Duffy alone.
 
     Each changed note says what the map drew until now. Each carries a claim, disputed where the sources' figures differ.
   - *The drawn strengths, adopted from the sources read (the owner's word). The rule:*
@@ -106,12 +119,11 @@ PHASES, FORMATIONS, FEATURES, SOURCE_NOTE, ANALYSIS, COMMAND, EVENTS, TOUR, COMP
   (29 changed or new, 3 gone) and the REVIEW locators rewritten (75 of 75 current).
 - `check:data`: 11 changed against the old reference; against the new one, 139 of 139 identical.
 - `check:baseline`: passes.
-- CONTRAST_SELFTEST
+- `check:contrast` passed on the first commit's build (every state at AA, the start-up cases 8 of 8); it and `check:selftest` run again on the final build, here and on CI.
 
 ### Not done, and why
 
-- **Duffy's pages (question 271 (a)).** His order of battle is a lending item. The figures are corrected against his text layer only, and
-  the notes say so. The owner's photographs of the order-of-battle pages beyond pp. 184-185 are needed to read them on the page.
+- **Duffy's narrative pages** (the army totals: a nominal 73,000-75,000 French, 80,000-87,000 Allies) are still read on his text layer only, and the two notes say so.
 - **Strengths not flagged by the audit** are unchanged. Among them are the I-III Columns, Bagration, Liechtenstein and Kienmayer, each
   within the range its sources give, and the army totals.
 - **Left to later passes:**

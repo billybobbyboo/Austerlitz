@@ -2086,7 +2086,7 @@
    "file": "data.js",
    "line": 240,
    "label": null,
-   "text": "5,300, Sokolov's estimate for 2 December from the returns of 22 November (Friant 7,037 and Bourcier 1,900 on 22 November, presumed 3,800 and 1,500), with 12 guns; he writes that after the march Davout could have had no more than 3,500-4,000 of Friant's men and 1,200-1,500 of Bourcier's. Thiers has Friant's division reduced to 6,000 at most. Duffy's order of battle, read on its text layer only, prints Friant 3,800 with 9 guns and Bourcier 2,500 with 3. Smith (1998) is cited, not read. Until the final audits' Stage 2 this map drew 4,300 (Friant 3,470, Bourcier 830), credited to Duffy and Smith, who do not print it",
+   "text": "5,300, Sokolov's estimate for 2 December from the returns of 22 November (Friant 7,037 and Bourcier 1,900 on 22 November, presumed 3,800 and 1,500), with 12 guns; he writes that after the march Davout could have had no more than 3,500-4,000 of Friant's men and 1,200-1,500 of Bourcier's. Thiers has Friant's division reduced to 6,000 at most. Duffy's order of battle, which gives the French their nominal establishments, prints Friant 3,800 with 9 guns and Bourcier 2,500 with 3 (1977, p. 180). Smith (1998) is cited, not read. Until the final audits' Stage 2 this map drew 4,300 (Friant 3,470, Bourcier 830), credited to Duffy and Smith, who do not print it",
    "claim": "disputed",
    "by": [
     {
@@ -2103,9 +2103,9 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob",
-     "side": "Friant 3,800 with 9 guns, Bourcier 2,500 with 3"
+     "at": "p. 180",
+     "rd": "duffy1977.p179-185.oob",
+     "side": "Friant 3,800 with 9 guns, Bourcier 2,500 with 3, by nominal establishment"
     }
    ]
   },
@@ -2176,7 +2176,7 @@
    "file": "data.js",
    "line": 248,
    "label": null,
-   "text": "3,800, Sokolov's estimate for 2 December: 7,037 under arms on 22 November, and after the march no more than 3,500-4,000 at Davout's disposal; only part of the division reached the field. Thiers has it reduced to 6,000 at most; Duffy's order of battle, read on its text layer only, prints 3,800 with 9 guns. Until the final audits' Stage 2 this map drew 3,470",
+   "text": "3,800, Sokolov's estimate for 2 December: 7,037 under arms on 22 November, and after the march no more than 3,500-4,000 at Davout's disposal; only part of the division reached the field. Thiers has it reduced to 6,000 at most; Duffy's order of battle, by nominal establishment, prints 3,800 with 9 guns (1977, p. 180). Until the final audits' Stage 2 this map drew 3,470",
    "claim": "disputed",
    "by": [
     {
@@ -2193,8 +2193,8 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob",
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob",
      "side": "3,800 with 9 guns"
     }
    ]
@@ -2367,7 +2367,7 @@
    "file": "data.js",
    "line": 263,
    "label": null,
-   "text": "1,500 sabres, Sokolov's estimate for 2 December: 1,900 on 22 November, and no more than 1,200-1,500 at Davout's disposal after the march; only part of the division reached the field. Duffy's order of battle, read on its text layer only, prints 2,500 with 3 guns. Until the final audits' Stage 2 this map drew 830, which no source read gives",
+   "text": "1,500 sabres, Sokolov's estimate for 2 December: 1,900 on 22 November, and no more than 1,200-1,500 at Davout's disposal after the march; only part of the division reached the field. Duffy's order of battle, by nominal establishment, prints 2,500 with 3 guns (1977, p. 180). Until the final audits' Stage 2 this map drew 830, which no source read gives",
    "claim": "disputed",
    "by": [
     {
@@ -2378,8 +2378,8 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob",
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob",
      "side": "2,500 with 3 guns"
     }
    ]
@@ -2466,7 +2466,7 @@
    "file": "data.js",
    "line": 275,
    "label": null,
-   "text": "about 12,700 with 20 guns, as Duffy's order of battle prints them (read on its text layer only); Sokolov presumes 13,800 for Lannes on 2 December (13,673 on 22 November)",
+   "text": "about 12,700 with 20 guns, as Duffy's order of battle prints them (1977, p. 181); Sokolov presumes 13,800 for Lannes on 2 December (13,673 on 22 November)",
    "claim": "unchecked",
    "by": []
   },
@@ -2713,7 +2713,7 @@
    "file": "data.js",
    "line": 315,
    "label": null,
-   "text": "about 1,600 infantry of the 17e Légère with 18 guns (Duffy/Smith; Tvarožná municipal history). Stutterheim (1806), an officer of the Allied army present on the day, names the 27th; the Materialien of 1806 keep his 27th in their translation but give the 17th light infantry in an editor's note (Zusatz 6, pp. 100-101), which the French situation of 28 October lists in Suchet's division (Alombert and Colin, t. IV, p. 732)",
+   "text": "about 1,600 infantry of the 17e Légère with 18 guns, this map's working figure (Tvarožná municipal history); Duffy's order of battle names the 17e Légère on the Santon without its strength or guns (1977, p. 181), and Sokolov gives its 18 guns, taken from the Austrian arsenals (t. II, p. 184). Stutterheim (1806), an officer of the Allied army present on the day, names the 27th; the Materialien of 1806 keep his 27th in their translation but give the 17th light infantry in an editor's note (Zusatz 6, pp. 100-101), which the French situation of 28 October lists in Suchet's division (Alombert and Colin, t. IV, p. 732)",
    "claim": "unchecked",
    "by": []
   },
@@ -2793,7 +2793,7 @@
    "file": "data.js",
    "line": 325,
    "label": null,
-   "text": "7,100 sabres, Sokolov's estimate for 2 December (8,729 on 22 November); 7,400 in Duffy's order of battle, read on its text layer only, and 36 guns, cited from Duffy and Smith but not found in his text. Beaumont's dragoons and Milhaud's light brigade are not plotted: the four plotted divisions account for 5,100 of the 7,100 (Sokolov presumes 1,300 for Beaumont's, 400 for Milhaud's and 300 for Treillard's brigade). Until the final audits' Stage 2 this map drew 7,400",
+   "text": "7,100 sabres, Sokolov's estimate for 2 December (8,729 on 22 November); 7,400 in Duffy's order of battle (1977, p. 181), which gives the reserve no guns; its 36 guns are cited from Duffy and Smith but are not on Duffy's page. Beaumont's dragoons and Milhaud's light brigade are not plotted: the four plotted divisions account for 5,100 of the 7,100 (Sokolov presumes 1,300 for Beaumont's, 400 for Milhaud's and 300 for Treillard's brigade). Until the final audits' Stage 2 this map drew 7,400",
    "claim": "attributed",
    "by": [
     {
@@ -2808,8 +2808,8 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob"
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob"
     }
    ]
   },
@@ -2925,7 +2925,7 @@
    "file": "data.js",
    "line": 342,
    "label": null,
-   "text": "1,300, Sokolov's estimate for 2 December: 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners (t. II, p. 189). The six regiments as listed from Duffy and Smith, not read, sum to about 1,580. Until the final audits' Stage 2 this map drew about 1,600, above the return",
+   "text": "1,300, Sokolov's estimate for 2 December: 1,496 on 22 November, the six regiments 1,387 (derived) and 92 gunners (t. II, p. 189). Duffy's order of battle lists the six regiments without their strengths (1977, p. 181), so the sum of about 1,580 once credited to Duffy and Smith is not his. Until the final audits' Stage 2 this map drew about 1,600, above the return",
    "claim": "attributed",
    "by": [
     {
@@ -3063,7 +3063,7 @@
    "file": "data.js",
    "line": 370,
    "label": null,
-   "text": "11,500, Sokolov's estimate for 2 December (11,642 on 22 November); 13,000 with 24 guns in Duffy's order of battle, read on its text layer only. Until the final audits' Stage 2 this map drew 13,000",
+   "text": "11,500, Sokolov's estimate for 2 December (11,642 on 22 November); 13,000 with 24 guns in Duffy's order of battle (1977, p. 179). Until the final audits' Stage 2 this map drew 13,000",
    "claim": "attributed",
    "by": [
     {
@@ -3073,8 +3073,8 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob"
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob"
     }
    ]
   },
@@ -4160,7 +4160,7 @@
    "file": "data.js",
    "line": 470,
    "label": null,
-   "text": "6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived). Duffy's order of battle, read on its text layer only, gives 6,780 with 12 light pieces and calls it, like his other figures, over-optimistic and nominal; Smith (1998) is cited, not read",
+   "text": "6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived). Duffy's order of battle heads it 6,780 with 12 light pieces, but its rows make 3,440 foot (with 340 pioneers) and 3,440 horse, 6,880 (1977, p. 182; the sum derived); his narrative calls the figure, like the others, over-optimistic and nominal (read on its text layer). Smith (1998) is cited, not read",
    "claim": "disputed",
    "by": [
     {
@@ -4177,9 +4177,9 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob",
-     "side": "6,780 with 12 light pieces, nominal"
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob",
+     "side": "6,780 in its heading, its rows 3,440 foot and 3,440 horse"
     }
    ]
   },
@@ -4309,7 +4309,7 @@
    "file": "data.js",
    "line": 485,
    "label": null,
-   "text": "13,490, this map's working figure (13,240 infantry and 250 cavalry, a transcription no source read prints), with 64 guns: Sokolov has 13,800 infantry and 200 Cossacks with 64 guns; Schönhals's table 12,730 in its recapitulation (13,730 on its own sum line); Duffy's order of battle, read on its text layer only, 13,650 with 40 light and 24 heavy pieces",
+   "text": "13,490, this map's working figure (13,240 infantry and 250 cavalry, a transcription no source read prints), with 64 guns: Sokolov has 13,800 infantry and 200 Cossacks with 64 guns; Schönhals's table 12,730 in its recapitulation (13,730 on its own sum line); Duffy's order of battle 13,650 with 40 light and 24 heavy pieces, its rows making 13,050 infantry with 250 Cossacks and 240 pioneers (1977, pp. 182-183; the sums derived)",
    "claim": "disputed",
    "by": [
     {
@@ -4326,8 +4326,8 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob",
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob",
      "side": "13,650 with 64 pieces"
     }
    ]
@@ -4494,13 +4494,13 @@
    "file": "data.js",
    "line": 501,
    "label": null,
-   "text": "11,700 with 30 guns, as Duffy's order of battle prints them (read on its text layer only); Schönhals's table and Sokolov give 10,840 infantry, Sokolov with 300 cavalry and 30 guns. The figure includes Kamensky's brigade, drawn on its own",
+   "text": "11,700 with 30 guns, as Duffy's order of battle prints them (1977, p. 183); Schönhals's table and Sokolov give 10,840 infantry, Sokolov with 300 cavalry and 30 guns. The figure includes Kamensky's brigade, drawn on its own",
    "claim": "disputed",
    "by": [
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob",
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob",
      "side": "11,700 with 30 light pieces"
     },
     {
@@ -4676,7 +4676,7 @@
    "file": "data.js",
    "line": 517,
    "label": null,
-   "text": "the Fanagoria Grenadier and Ryazhsk Musketeer regiments, as Mikhailovsky-Danilevsky names them (1844, pp. 167, 179, 187-189, 198, 205, p. 187 citing Langeron's report to Kutuzov; its French translation of 1846 the same), who places the Ryazan regiment in Tolstoy's corps sent to Swedish Pomerania (1844, p. 257). The other reading, kept: Ryazan in the Materialien of 1806 (its list of the columns and its translation of Kutuzov's report; its translation of Stutterheim prints 'Rhiäsky') and as cited here from Duffy. Mikhailovsky-Danilevsky forms the brigade of these two regiments; Stutterheim (1806) and Thiébault have them reinforce it (disputed). About 2,000 each, as Schönhals's table prints them (1873, p. 177), its brace taking in the Kursk regiment too; Sokolov gives each three battalions (t. II, p. 195); the dragoons, Cossacks and pioneers attached are as cited from Duffy, not read",
+   "text": "the Fanagoria Grenadier and Ryazhsk Musketeer regiments, as Mikhailovsky-Danilevsky names them (1844, pp. 167, 179, 187-189, 198, 205, p. 187 citing Langeron's report to Kutuzov; its French translation of 1846 the same), who places the Ryazan regiment in Tolstoy's corps sent to Swedish Pomerania (1844, p. 257). The other reading, kept: Ryazan in the Materialien of 1806 (its list of the columns and its translation of Kutuzov's report; its translation of Stutterheim prints 'Rhiäsky') and in Duffy's order of battle (1977, p. 183). Mikhailovsky-Danilevsky forms the brigade of these two regiments; Stutterheim (1806) and Thiébault have them reinforce it (disputed). About 2,000 each, as Schönhals's table prints them (1873, p. 177), its brace taking in the Kursk regiment too; Sokolov gives each three battalions (t. II, p. 195); Duffy's rows add 200 dragoons, 100 Cossacks and 150 pioneers, 4,450 in all (1977, p. 183; the sum derived), and keep the Kursk regiment in Olsuvev's brigade",
    "claim": "unchecked",
    "by": []
   },
@@ -4862,7 +4862,7 @@
    "file": "data.js",
    "line": 530,
    "label": null,
-   "text": "7,700, this map's working figure, with 30 guns: Schönhals's table gives 8,570 with 500 horse, Sokolov 8,000 infantry with 30 guns, and Duffy's order of battle, read on its text layer only, 7,770",
+   "text": "7,700, this map's working figure, with 30 guns: Schönhals's table gives 8,570 with 500 horse, Sokolov 8,000 infantry with 30 guns, and Duffy's order of battle 7,770 (1977, p. 183)",
    "claim": "disputed",
    "by": [
     {
@@ -4879,8 +4879,8 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob",
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob",
      "side": "7,770"
     }
    ]
@@ -5011,7 +5011,7 @@
    "file": "data.js",
    "line": 551,
    "label": null,
-   "text": "16,115, the recapitulation of Schönhals's table (1873, p. 178; the Russian wing 6,965, the Austrians 9,150, p. 177, whose own sum line prints 16,118), with 52 light and 24 heavy guns; Sokolov gives 15,900 infantry and 300 cavalry with 76 guns in 27 battalions. Duffy's order of battle, read on its text layer only, prints 23,900 with 52 light and 24 heavy pieces, and his rows add to about 16,065 (derived). Smith (1998) is cited, not read. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler). Until the final audits' Stage 2 this map drew 13,900, credited to Duffy and Smith, who do not print it",
+   "text": "16,115, the recapitulation of Schönhals's table (1873, p. 178; the Russian wing 6,965, the Austrians 9,150, p. 177, whose own sum line prints 16,118), with 52 light and 24 heavy guns; Sokolov gives 15,900 infantry and 300 cavalry with 76 guns in 27 battalions. Duffy's order of battle heads it 23,900 with 52 light and 24 heavy pieces, but its rows make 16,065, the Russians 6,625 and the Austrians 9,440 (1977, pp. 183-184; the sums derived). Smith (1998) is cited, not read. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler). Until the final audits' Stage 2 this map drew 13,900, credited to Duffy and Smith, who do not print it",
    "claim": "disputed",
    "by": [
     {
@@ -5028,8 +5028,8 @@
     },
     {
      "src": "duffy1977",
-     "at": "order of battle",
-     "rd": "duffy1977.textlayer.oob",
+     "at": "pp. 179-185",
+     "rd": "duffy1977.p179-185.oob",
      "side": "23,900 with 52 light and 24 heavy pieces"
     }
    ]
@@ -5305,7 +5305,7 @@
    "file": "data.js",
    "line": 586,
    "label": null,
-   "text": "Mixed, mostly Russian: the Austrian cuirassier brigades of Caramelli and Weber (about 1,100; Schönhals 1873; Duffy 1977; Smith 1998) and the Russian brigades of Shepelev, under Lt.-Gen. Essen, and Penitsky, under Lt.-Gen. Uvarov (Schönhals 1873); Mikhailovsky-Danilevsky has Uvarov's three regiments sent to Bagration's left the evening before (disputed). Duffy and Smith are cited here for a brigade of Gladkov, not checked against them: no Gladkov is found in the text layers of Schönhals, Stutterheim, the Materialien, Mikhailovsky-Danilevsky, Sokolov and the other works read, nor on the Fifth Column's pages read on their images, so that name is unconfirmed. Uvarov's brigadier is Penitsky in Schönhals and Gizhitsky in Sokolov",
+   "text": "Mixed, mostly Russian: the Austrian cuirassier brigades of Caramelli and Weber (about 1,100; Schönhals 1873; Duffy 1977; Smith 1998) and the Russian brigades of Shepelev, under Lt.-Gen. Essen, and Penitsky, under Lt.-Gen. Uvarov (Schönhals 1873); Mikhailovsky-Danilevsky has Uvarov's three regiments sent to Bagration's left the evening before (disputed). Duffy's order of battle heads one Russian brigade 'Lt.-Gens. Essen II, Gladkov' (1977, p. 184); no Gladkov is found in the text layers of Schönhals, Stutterheim, the Materialien, Mikhailovsky-Danilevsky, Sokolov and the other works read, nor on the Fifth Column's pages read on their images, so the name rests on Duffy alone. Uvarov's brigadier is Penitsky in Schönhals and Gizhitsky in Sokolov",
    "claim": "disputed",
    "by": [
     {
@@ -5319,6 +5319,11 @@
      "at": "t. II, pp. 197-198",
      "rd": "sokolov2006.p197-198.v-column",
      "side": "Gizhitsky under Uvarov"
+    },
+    {
+     "src": "duffy1977",
+     "at": "p. 184",
+     "rd": "duffy1977.p179-185.oob"
     }
    ]
   },
@@ -5446,7 +5451,7 @@
    "file": "data.js",
    "line": 601,
    "label": null,
-   "text": "about 13,000 to 14,000 with 42 guns: 13,000 in Schönhals's table (1873, p. 178), 13,700 with 42 pieces in Duffy's order of battle (read on its text layer only)",
+   "text": "about 13,000 to 14,000 with 42 guns: 13,000 in Schönhals's table (1873, p. 178), 13,700 with 42 pieces in Duffy's order of battle (1977, p. 184)",
    "claim": "unchecked",
    "by": []
   },
@@ -7406,7 +7411,7 @@
    "file": "data.js",
    "line": 799,
    "label": null,
-   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; whether the Posoritz post house stood in 1805 where the maps of 1826-52 show the post; the positions of Krug and Bellowitz, which no source read fixes; how wet the Goldbach's bottom was in December 1805 (the map draws marsh beside the lower brook from the land as recorded, not from an account of the day, which had the meres frozen); whether the Sokolnitz castle's grounds were walled and the pheasantry enclosed (neither is drawn); which of the two channels the cadastral sketch of 1825 draws north of the Sokolnitz castle carried the Goldbach in 1805 (the map draws today's, beside the avenue; the other lies about 110-150 m from it); whether the highway east of the Santon ran in 1805 where the cadastral sketches of 1826 and the survey of 1836-52 draw it, as the map draws it; Kologrivov's command of the Guard cavalry on 2 December, which Sokolov's order of battle gives, Schönhals's table only over the whole Guard and Duffy's heading only among the reserve's generals (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's; all three from 07:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; at 05:00 on the map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French hands at 09:30, then lost again, as in Davout's report), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Lejeune has Napoleon at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height.",
+   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; whether the Posoritz post house stood in 1805 where the maps of 1826-52 show the post; the positions of Krug and Bellowitz, which no source read fixes; how wet the Goldbach's bottom was in December 1805 (the map draws marsh beside the lower brook from the land as recorded, not from an account of the day, which had the meres frozen); whether the Sokolnitz castle's grounds were walled and the pheasantry enclosed (neither is drawn); which of the two channels the cadastral sketch of 1825 draws north of the Sokolnitz castle carried the Goldbach in 1805 (the map draws today's, beside the avenue; the other lies about 110-150 m from it); whether the highway east of the Santon ran in 1805 where the cadastral sketches of 1826 and the survey of 1836-52 draw it, as the map draws it; Kologrivov's command of the Guard cavalry on 2 December, which Sokolov's order of battle gives, Schönhals's table only over the whole Guard and Duffy's heading only among the reserve's generals (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov, which Duffy's order of battle names and no other source read does; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's; all three from 07:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; at 05:00 on the map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French hands at 09:30, then lost again, as in Davout's report), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Lejeune has Napoleon at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height.",
    "claim": "unchecked",
    "by": []
   },
