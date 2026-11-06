@@ -378,7 +378,8 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
 /* the event markers: one keyboard group over the rail (app.js buildTimeline) */
 .evmarks{position:absolute;left:0;right:0;top:31px;height:24px;pointer-events:none;z-index:2}
 .ev-mark{position:absolute;top:2px;width:8px;height:8px;margin:0;padding:0;border:0;transform:translateX(-50%) rotate(45deg);
-  opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease}
+  opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease;
+  touch-action:none}   /* the final audits' WP-06 (CL-UX-03): a finger's drag from a marker is the rail's (app.js buildTimeline), not the browser's pan */
 .ev-mark::after{content:"";position:absolute;inset:-6px;display:block}
 .ev-mark:hover{transform:translateX(-50%) rotate(45deg) scale(1.5);opacity:1}
 .ev-mark:focus-visible{outline:2px solid var(--accent);outline-offset:3px;opacity:1}
@@ -770,6 +771,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .tb-top{flex-wrap:wrap;column-gap:6px;row-gap:0;padding:4px 8px 0}
   .tb-ctrl{order:1;gap:4px}
   #prev,#next,#eyesbtn,.speeds{display:none}
+  /* the final audits' WP-05 (CL-UX-07): under a headquarters' reading its button stays, at the head of the caption's row (as the paper map's scale
+     bar), the caption giving it room (its parts give way, decision 159) */
+  body.reading-on #eyesbtn{display:inline-block;order:4;min-height:36px}
+  body.reading-on .tb-cap{flex-basis:0;min-width:0}
   .tb-icon{min-width:44px;min-height:44px}
   .tb-play{min-width:60px;min-height:44px}
   .tb-follow{min-height:44px;margin-left:0}
@@ -850,6 +855,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
    the harness measures it in phone-844x390-explore only */
 @media (max-height:430px){
   #prev,#next,#eyesbtn,.speeds{display:none}
+  body.reading-on #eyesbtn{display:inline-block}   /* WP-05 (CL-UX-07): kept under a headquarters' reading, as in portrait */
   #speedbtn{display:inline-block;min-width:44px;font-size:var(--t-ui)}
   body.firstrun-on .tools{display:none}
   body:has(#layerpop:not([hidden])) .tools{visibility:hidden}
