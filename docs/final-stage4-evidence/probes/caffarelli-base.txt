@@ -1,0 +1,25 @@
+highway (ROADS[0]) name: Brunn-Olmutz highway, points [[30,154],[142,128],[224,103.8],[232,97.7],[256,87.3],[336,66.5],[358,57.6],[364,54.3],[382,41.6],[412,15.3],[414,12.2],[422,4.7],[432,-8]]
+11:15 caffarelli [321,120] advancing cf A obj "Advance on Blasowitz"; to bag 2.49 km; to the highway 1.52 km; suchet to bag 0.68 km; caffarelli's nearest enemy lich 1.19 km
+11:30 caffarelli [325,119] advancing cf A obj "Advance on Blasowitz"; to bag 1.94 km; to the highway 1.52 km; suchet to bag 0.24 km; caffarelli's nearest enemy lich 1.25 km
+11:45 caffarelli [330,118] advancing cf A obj "Advance on Blasowitz"; to bag 1.61 km; to the highway 1.52 km; suchet to bag 0.51 km; caffarelli's nearest enemy lich 1.31 km
+12:00 caffarelli [334,117] advancing cf A obj "Advance on Blasowitz"; to bag 1.61 km; to the highway 1.53 km; suchet to bag 0.55 km; caffarelli's nearest enemy lich 1.37 km
+12:15 caffarelli [338,116] advancing cf A obj "Advance on Blasowitz"; to bag 1.61 km; to the highway 1.53 km; suchet to bag 0.60 km; caffarelli's nearest enemy lich 1.45 km
+12:30 caffarelli [343,115] advancing cf A obj "Advance on Blasowitz"; to bag 1.61 km; to the highway 1.54 km; suchet to bag 0.64 km; caffarelli's nearest enemy lich 1.52 km
+12:45 caffarelli [347,114] advancing cf A obj "Push Bagration off the highway"; to bag 1.61 km; to the highway 1.54 km; suchet to bag 0.69 km; caffarelli's nearest enemy lich 1.60 km
+13:00 caffarelli [353,113] advancing cf A obj "Push Bagration off the highway"; to bag 1.66 km; to the highway 1.56 km; suchet to bag 0.79 km; caffarelli's nearest enemy lich 1.60 km
+13:15 caffarelli [360,111] advancing cf A obj "Push Bagration off the highway"; to bag 1.72 km; to the highway 1.60 km; suchet to bag 0.89 km; caffarelli's nearest enemy lich 1.60 km
+13:30 caffarelli [366,110] advancing cf A obj "Push Bagration off the highway"; to bag 1.79 km; to the highway 1.64 km; suchet to bag 0.99 km; caffarelli's nearest enemy lich 1.60 km
+13:45 caffarelli [373,109] advancing cf A obj "Push Bagration off the highway"; to bag 1.86 km; to the highway 1.68 km; suchet to bag 1.10 km; caffarelli's nearest enemy lich 1.60 km
+14:00 caffarelli [379,108] advancing cf A obj "Push Bagration off the highway"; to bag 1.95 km; to the highway 1.71 km; suchet to bag 1.20 km; caffarelli's nearest enemy lich 1.60 km
+14:15 caffarelli [386,106] advancing cf A obj "Push Bagration off the highway"; to bag 2.03 km; to the highway 1.77 km; suchet to bag 1.31 km; caffarelli's nearest enemy lich 1.61 km
+14:30 caffarelli [392,105] pursuing cf A obj "Push Bagration off the highway"; to bag 2.13 km; to the highway 1.83 km; suchet to bag 1.42 km; caffarelli's nearest enemy lich 1.61 km
+14:45 caffarelli [395,104] pursuing cf A obj "Push Bagration off the highway"; to bag 2.18 km; to the highway 1.86 km; suchet to bag 1.48 km; caffarelli's nearest enemy lich 1.60 km
+15:00 caffarelli [398,103] pursuing cf A obj "Push Bagration off the highway"; to bag 2.23 km; to the highway 1.89 km; suchet to bag 1.54 km; caffarelli's nearest enemy lich 1.59 km
+15:15 caffarelli [401,102] pursuing cf A obj "Push Bagration off the highway"; to bag 2.28 km; to the highway 1.92 km; suchet to bag 1.60 km; caffarelli's nearest enemy lich 1.58 km
+15:30 caffarelli [404,101] pursuing cf A obj "Push Bagration off the highway"; to bag 2.33 km; to the highway 1.95 km; suchet to bag 1.67 km; caffarelli's nearest enemy lich 1.57 km
+15:45 caffarelli [408,101] pursuing cf A obj "Push Bagration off the highway"; to bag 2.38 km; to the highway 1.99 km; suchet to bag 1.73 km; caffarelli's nearest enemy lich 1.56 km
+16:00 caffarelli [411,100] pursuing cf A obj "Push Bagration off the highway"; to bag 2.43 km; to the highway 2.02 km; suchet to bag 1.79 km; caffarelli's nearest enemy lich 1.55 km
+16:15 caffarelli [414,99] pursuing cf A obj "Push Bagration off the highway"; to bag 2.48 km; to the highway 2.05 km; suchet to bag 1.85 km; caffarelli's nearest enemy lich 1.54 km
+16:30 caffarelli [417,98] pursuing cf A obj "Push Bagration off the highway"; to bag 2.54 km; to the highway 2.08 km; suchet to bag 1.92 km; caffarelli's nearest enemy lich 1.53 km
+16:45 caffarelli [420,97] pursuing cf A obj "Push Bagration off the highway"; to bag 2.59 km; to the highway 2.12 km; suchet to bag 1.98 km; caffarelli's nearest enemy lich 1.53 km
+17:00 caffarelli [423,96] holding cf A obj "Push Bagration off the highway"; to bag 2.64 km; to the highway 2.15 km; suchet to bag 2.04 km; caffarelli's nearest enemy lich 1.52 km

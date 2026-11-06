@@ -345,7 +345,7 @@ Object.keys(units).forEach(id=>{
    where that is recorded ({w, why, see}); an acknowledged warning that is no longer raised is a finding too, until its entry is removed.
    This block stays after every warn() and before the report. */
 const KNOWN_WARN=[
-  {w:"movement: cavalry mean rate 1.12 is not above infantry 1.46",
+  {w:"movement: cavalry mean rate 1.12 is not above infantry 1.47",
    why:"a model property kept on purpose since the chronology data task: the dated moves are shorter and faster, and the cavalry's slow "+
        "legs are the undated creeping moves of decision 45; a warning, not a finding, and not changed. The infantry mean was 1.23 until "+
        "roadmap step 2 dated drouet@3's departure at Soult's advance (08:45, H-2): its leg no longer creeps from 04:00, so it is faster; "+

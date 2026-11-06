@@ -1,0 +1,29 @@
+04:00 Al 40915 Fr 0
+07:05 Al 29215 Fr 0
+07:21 Al 21515 Fr 0
+08:51 Al 25765 Fr 0
+09:05 Al 20365 Fr 0
+09:06 Al 20365 Fr 6600
+09:07 Al 20365 Fr 13300
+10:05 Al 23265 Fr 13300
+10:23 Al 23265 Fr 19600
+11:04 Al 27695 Fr 19600
+11:05 Al 27695 Fr 20600
+11:07 Al 27695 Fr 23600
+11:14 Al 27695 Fr 29300
+11:31 Al 27695 Fr 34500
+11:35 Al 18545 Fr 34500
+11:42 Al 11580 Fr 34500
+12:27 Al 7330 Fr 34500
+12:51 Al 4430 Fr 34500
+12:54 Al 0 Fr 34500
+13:47 Al 0 Fr 28800
+13:48 Al 0 Fr 22200
+14:07 Al 0 Fr 15500
+16:51 Al 0 Fr 10300
+08:10 kamensky [ '259.0', '316.0' ] onPlateau false heading null lang [ '214', '367' ] sthilaire [ '206', '231' ]
+08:20 kamensky [ '259.0', '316.0' ] onPlateau false heading null lang [ '214', '367' ] sthilaire [ '206', '231' ]
+08:30 kamensky [ '259.0', '316.0' ] onPlateau false heading null lang [ '214', '367' ] sthilaire [ '206', '231' ]
+08:40 kamensky [ '259.0', '316.0' ] onPlateau false heading null lang [ '214', '367' ] sthilaire [ '206', '231' ]
+08:44 kamensky [ '259.0', '316.0' ] onPlateau false heading null lang [ '214', '367' ] sthilaire [ '206', '231' ]
+08:45 kamensky [ '259.0', '316.0' ] onPlateau false heading null lang [ '214', '367' ] sthilaire [ '206', '231' ]

@@ -1,0 +1,19 @@
+11:15 | rg_inf 327,194 counterattack hdg null | rg_cav 321,189 charging hdg null | kollo 331,200 withdrawing hdg null | vandamme 296,206 engaged hdg null | guard_cav 289,209 charging hdg null | drouet 290,206 engaged hdg null | gqg 177,134 observing hdg null | kamensky 305,279 broken hdg null
+11:30 | rg_inf 339,194 counterattack hdg 88 | rg_cav 335,189 charging hdg 91 | kollo 340,200 withdrawing hdg 92 | vandamme 296,206 engaged hdg null | guard_cav 291,212 charging hdg 39 | drouet 294,208 engaged hdg 64 | gqg 177,134 observing hdg null | kamensky 316,275 broken hdg 111
+11:45 | rg_inf 350,195 counterattack hdg 88 | rg_cav 349,189 charging hdg 91 | kollo 350,199 withdrawing hdg 92 | vandamme 296,206 engaged hdg null | guard_cav 294,215 charging hdg 39 | drouet 298,210 engaged hdg 64 | gqg 177,134 observing hdg null | kamensky 327,271 broken hdg 111
+12:00 | rg_inf 362,195 counterattack hdg 88 | rg_cav 364,189 charging hdg 91 | kollo 359,199 withdrawing hdg 92 | vandamme 296,206 engaged hdg null | guard_cav 296,218 charging hdg 39 | drouet 302,212 engaged hdg 64 | gqg 177,134 observing hdg null | kamensky 338,267 broken hdg 111
+12:15 | rg_inf 374,195 counterattack hdg 88 | rg_cav 378,188 charging hdg 91 | kollo 369,199 withdrawing hdg 92 | vandamme 296,206 engaged hdg null | guard_cav 298,220 charging hdg 39 | drouet 305,213 engaged hdg 64 | gqg 227,160 observing hdg 62 | kamensky 349,262 broken hdg 111
+12:30 | rg_inf 385,196 counterattack hdg 88 | rg_cav 392,188 charging hdg 91 | kollo 378,198 withdrawing hdg 92 | vandamme 296,206 engaged hdg null | guard_cav 301,223 charging hdg 39 | drouet 309,215 engaged hdg 64 | gqg 276,188 observing hdg 60 | kamensky 360,258 broken hdg 111
+12:40 | rg_inf 393,196 counterattack hdg 88 | rg_cav 401,188 charging hdg 91 | kollo 385,198 withdrawing hdg 92 | vandamme 296,206 engaged hdg null | guard_cav 302,225 charging hdg 39 | drouet 312,216 engaged hdg 64 | gqg 309,207 observing hdg null | kamensky 367,255 broken hdg 111
+12:45 | rg_inf 397,196 repulsed hdg null | rg_cav 406,188 repulsed hdg null | kollo 388,198 withdrawing hdg 92 | vandamme 296,206 advancing hdg null | guard_cav 303,226 holding hdg null | drouet 313,217 holding hdg null | gqg 307,227 observing hdg null | kamensky 371,254 retreating hdg null
+rg_inf anchor ph 0 arr 04:00 w null
+rg_inf anchor ph 5 arr 10:30 w 04:00-10:30
+rg_inf anchor ph 6 arr 11:15 w 10:30-11:15
+rg_inf anchor ph 7 arr 12:45 w 11:15-12:45
+rg_inf anchor ph 8 arr 14:30 w 12:45-14:30
+rg_inf anchor ph 9 arr 17:00 w 14:30-17:00
+rg_cav anchor ph 0 arr 04:00 w null
+rg_cav anchor ph 6 arr 11:15 w 04:00-11:15
+rg_cav anchor ph 7 arr 12:45 w 11:15-12:45
+rg_cav anchor ph 8 arr 14:30 w 12:45-14:30
+rg_cav anchor ph 9 arr 17:00 w 14:30-17:00

@@ -161,7 +161,8 @@ eval(fs.readFileSync('_state.js','utf8'));
    (c) CL-HIS-10: no leg crosses the drawn Litava more than 0.5 km from a village on its bank or a drawn road (LITAVA_OK names an exception with
        its reason; none), and no anchor stands within 30 m of its line away from such a village. */
 const MELEE=[
- {a:"legrand",b:"lang",from:"07:50",to:"08:25",refs:['FORMATIONS.legrand.track["2"].act','FORMATIONS.lang.track["2"].act'],why:"the fight for Sokolnitz village: Legrand's battalions in it, Langeron's column storming it"},
+ {a:"legrand",b:"lang",from:"07:50",to:"08:55",refs:['FORMATIONS.legrand.track["2"].act','FORMATIONS.lang.track["2"].act'],why:"the fight for Sokolnitz village: Legrand's battalions in it, Langeron's column storming it"},
+ {a:"friant",b:"lang",from:"10:00",to:"11:45",refs:['FORMATIONS.friant.track["5"].act','FORMATIONS.lang.track["2"].act'],why:"Lochet's and Kister's brigades take and retake Sokolnitz against Langeron's column"},
  {a:"sthilaire",b:"kamensky",from:"09:10",to:"11:15",refs:['FORMATIONS.sthilaire.track["4"].act','FORMATIONS.kamensky.track["4"].act'],why:"the fight for the Pratzeberg's crest: Saint-Hilaire fights off Kamensky's brigade"},
  {a:"sthilaire",b:"kollo",from:"10:05",to:"10:30",refs:['FORMATIONS.kollo.track["4"].act','FORMATIONS.sthilaire.track["4"].act'],why:"Jurczek's Austrians attack the summit Saint-Hilaire holds"},
  {a:"nansouty",b:"lich",from:"10:40",to:"11:30",refs:['FORMATIONS.lich.track["5"].act','PHASES[#5].lede'],why:"the cavalry collision: Liechtenstein's charge met by Nansouty's cuirassiers, and his repulse"},
@@ -214,6 +215,17 @@ const LITAVA_OK=[];
       if(atBank(x)||onRoad(x)||LITAVA_OK.some(o=>o.leg===id+"@"+b.ph)) continue;
       errs.push("Litava: "+id+"@"+b.ph+" crosses the drawn river at ["+x.map(v=>v.toFixed(1))+"], "+Math.round(Math.min(...banks.map(v=>Math.hypot(x[0]-v[1],x[1]-v[2])))*KM_PER_MAP*1000)+" m from a village on its bank, on no road (LITAVA_OK)"); } });
     A.forEach(b=>{ if(b.p===null||FORMATIONS[id].arm==="hq") return; if(dLine(b.p,LIT)*KM_PER_MAP<0.03&&!atBank(b.p)) errs.push("Litava: "+id+"@"+b.ph+" stands "+Math.round(dLine(b.p,LIT)*KM_PER_MAP*1000)+" m from the drawn river's line, at no village"); }); });
+  /* (d) CL-HIS-11: Sokolnitz village is drawn held as its place records it ("Defended by Legrand, then Friant", FEATURES[#sokolnitz]; the
+     readings of docs/step4-evidence/readings.md S7.55-S7.64): from phase 2 to the wheel one of the two divisions stands within 0.6 km of the
+     village's point at every quarter hour (until this stage none of either side within 0.79 km from 09:00 to 13:15) */
+  { const sk=FEATURES.find(f=>f.id==="sokolnitz"), out=[];
+    if(!sk||!/Legrand, then Friant/.test(JSON.stringify(sk))) errs.push("CL-HIS-11: Sokolnitz's place no longer records its defenders; review this rule");
+    /* "Legrand, then Friant": Legrand through phases 2 to 4, Friant (up from Telnitz, Davout's reports) from phase 5 to the wheel */
+    [["legrand",PHASES[2].t0,PHASES[5].t0-1],["friant",PHASES[5].t0,PHASES[7].t0]].forEach(([id,t0,t1])=>{ let worst=0, at=null;
+      for(let t=t0;t<=t1;t+=15){ clock=t; const p=posNow(id), d=p?Math.hypot(p[0]-sk.p[0],p[1]-sk.p[1])*KM_PER_MAP:9; if(d>worst){ worst=d; at=t; } }
+      out.push(id+" within "+worst.toFixed(2)+" km "+fmtClock(t0)+"-"+fmtClock(t1));
+      if(worst>0.6) errs.push("CL-HIS-11: Sokolnitz village drawn without "+id+" within 0.6 km at "+fmtClock(at)+" ("+worst.toFixed(2)+" km)"); });
+    console.log("CL-HIS-11: Sokolnitz village held as its place records it: "+out.join("; ")); }
   console.log("WP-03 (the final audits' Stage 4): "+nLegs+" legs from an offensive status into a retreat, each held (decision 285 (a)); "+nRun+" minutes moving into a retreat under an offensive status; "+
     nNear+" opposing pair-minutes within 0.5 km, "+MELEE.length+" recorded fights; "+nX+" Litava crossings of legs, "+banks.map(v=>v[0]).join(", ")+" on its bank"); }
 

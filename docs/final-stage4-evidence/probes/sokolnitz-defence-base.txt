@@ -1,0 +1,17 @@
+07:00 nearest French: legrand 0.45 km | nearest Allied: kienmayer 1.37 km
+07:30 nearest French: legrand 0.24 km | nearest Allied: kienmayer 1.29 km
+08:00 nearest French: legrand 0.07 km | nearest Allied: prz 0.79 km
+08:30 nearest French: legrand 0.45 km | nearest Allied: prz 0.79 km
+09:00 nearest French: legrand 0.95 km | nearest Allied: prz 0.79 km
+09:30 nearest French: friant 1.21 km | nearest Allied: prz 0.79 km
+10:00 nearest French: friant 1.14 km | nearest Allied: prz 0.79 km
+10:30 nearest French: friant 1.07 km | nearest Allied: prz 0.79 km
+11:00 nearest French: friant 1.01 km | nearest Allied: prz 0.79 km
+11:30 nearest French: friant 0.95 km | nearest Allied: prz 0.79 km
+12:00 nearest French: friant 0.89 km | nearest Allied: prz 0.79 km
+12:30 nearest French: friant 0.83 km | nearest Allied: prz 0.79 km
+13:00 nearest French: friant 0.88 km | nearest Allied: prz 0.79 km
+13:30 nearest French: legrand 0.70 km | nearest Allied: prz 0.79 km
+14:00 nearest French: legrand 0.25 km | nearest Allied: prz 0.79 km
+14:30 nearest French: legrand 0.37 km | nearest Allied: dok 1.36 km
+15:00 nearest French: legrand 0.75 km | nearest Allied: lang 1.67 km
