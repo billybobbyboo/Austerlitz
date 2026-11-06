@@ -1,0 +1,181 @@
+##### props-bundle2
+loaded the bundle in 180 s; init errors 0; warnings 0
+
+=== C1 a marching formation's card and full dossier while the clock moves inside its leg
+  53 legs of 30+ minutes inside one phase and 1+ km; using the five longest
+  gqg card, leg 12:00-12:40 (4.8 km, phase 6): painted at 12:03 "Zuran mound"; repaints while the clock moved to 12:37: 3; the dossier now shows the clock of 12:37 and "Stare Vinohrady"; 12:08: model "1.0 km south-east of Zuran mound"; 12:20: model "Girzikowitz"; 12:37: model "Stare Vinohrady"
+  gqg full dossier, leg 12:00-12:40 (4.8 km, phase 6): painted at 12:03 "Zuran mound"; repaints while the clock moved to 12:37: 3; the dossier now shows the clock of 12:37 and "Stare Vinohrady"; 12:08: model "1.0 km south-east of Zuran mound"; 12:20: model "Girzikowitz"; 12:37: model "Stare Vinohrady"
+  gqg card, leg 12:45-14:30 (4.0 km, phase 7): painted at 12:48 "0.6 km north-east of Pratzen Heights"; repaints while the clock moved to 14:27: 3; the dossier now shows the clock of 14:27 and "Chapel of St Anthony"; 12:53: model "Pratzen Heights"; 13:37: model "Pratzeberg"; 14:27: model "Chapel of St Anthony"
+  gqg full dossier, leg 12:45-14:30 (4.0 km, phase 7): painted at 12:48 "0.6 km north-east of Pratzen Heights"; repaints while the clock moved to 14:27: 3; the dossier now shows the clock of 14:27 and "Chapel of St Anthony"; 12:53: model "Pratzen Heights"; 13:37: model "Pratzeberg"; 14:27: model "Chapel of St Anthony"
+  guard_cav card, leg 10:30-11:15 (3.6 km, phase 5): painted at 10:33 "0.8 km north-west of Girzikowitz"; repaints while the clock moved to 11:12: 3; the dossier now shows the clock of 11:12 and "1.0 km west of Stare Vinohrady"; 10:38: model "Girzikowitz"; 10:52: model "0.8 km south of Girzikowitz"; 11:12: model "1.0 km west of Stare Vinohrady"
+  guard_cav full dossier, leg 10:30-11:15 (3.6 km, phase 5): painted at 10:33 "0.8 km north-west of Girzikowitz"; repaints while the clock moved to 11:12: 3; the dossier now shows the clock of 11:12 and "1.0 km west of Stare Vinohrady"; 10:38: model "Girzikowitz"; 10:52: model "0.8 km south of Girzikowitz"; 11:12: model "1.0 km west of Stare Vinohrady"
+  vandamme card, leg 13:24-14:30 (3.3 km, phase 7): painted at 13:27 "Pratzen village"; repaints while the clock moved to 14:27: 3; the dossier now shows the clock of 14:27 and "0.7 km north-west of Chapel of St Anthony"; 13:32: model "0.5 km south-east of Pratzen village"; 13:57: model "Pratzeberg"; 14:27: model "0.7 km north-west of Chapel of St Anthony"
+  vandamme full dossier, leg 13:24-14:30 (3.3 km, phase 7): painted at 13:27 "Pratzen village"; repaints while the clock moved to 14:27: 3; the dossier now shows the clock of 14:27 and "0.7 km north-west of Chapel of St Anthony"; 13:32: model "0.5 km south-east of Pratzen village"; 13:57: model "Pratzeberg"; 14:27: model "0.7 km north-west of Chapel of St Anthony"
+  bag card, leg 09:30-10:30 (2.8 km, phase 4): painted at 09:33 "0.6 km west of Posoritz post house"; repaints while the clock moved to 10:27: 3; the dossier now shows the clock of 10:27 and "Brünn–Olmütz highway"; 09:38: model "0.8 km west of Posoritz post house"; 10:00: model "1.4 km east of Brünn–Olmütz highway"; 10:27: model "Brünn–Olmütz highway"
+  bag full dossier, leg 09:30-10:30 (2.8 km, phase 4): painted at 09:33 "0.6 km west of Posoritz post house"; repaints while the clock moved to 10:27: 3; the dossier now shows the clock of 10:27 and "Brünn–Olmütz highway"; 09:38: model "0.8 km west of Posoritz post house"; 10:00: model "1.4 km east of Brünn–Olmütz highway"; 10:27: model "Brünn–Olmütz highway"
+(0.3 s)
+
+=== C2 a standing formation's full dossier (its "Position at HH:MM" row and day-track caption) while the clock moves within a phase
+  gqg standing from 04:05: dossier painted at 04:05; repaints while the clock moved to 04:45: 3 (its rows "Position at 04:45" and the day-track's "at 04:45" stand while the timeline reads 04:45)
+(0.0 s)
+
+=== C3 a place's dossier, "Formations nearby now", within a phase
+  reading none: 240 place-phases; the list shown differs from the model at the phase's last minute in 0
+  reading fr: 240 place-phases; the list shown differs from the model at the phase's last minute in 0
+(10.9 s)
+
+=== C4 an aggregate's card while its formations march
+  0 aggregate-phases whose card keeps a midpoint the model has left (no repaint)
+(0.7 s)
+
+warnings 0; errors 0; total 192 s
+##### props-bundle
+loaded the bundle in 182 s; init errors 0 ; warnings 0
+dwell starts (21): 04:00 04:15 07:00 08:00 08:25 08:45 09:00 09:15 09:30 09:45 10:30 11:00 11:15 11:40 12:00 12:30 13:00 14:00 14:30 15:00 16:30; HOLD 1.5 s, EASE 0.5 s; T_MIN 240 T_MAX 1080
+
+=== B1 Play over the whole day, the dwell on
+  0.5x: 12481 frames, 208.02 s real (dwellDayLength 208.00 s, diff 0.017 s); clock ends 1080 playing false; backwards 0; NaN 0; phase changes 9
+      holds 20 of 20 starts; missed none; repeated none; hold lengths 1.500-1.500 s; off-length or moving 0; largest rate change between frames 0.033 x the speed
+  1x: 7440 frames, 124.00 s real (dwellDayLength 124.00 s, diff 0.000 s); clock ends 1080 playing false; backwards 0; NaN 0; phase changes 9
+      holds 20 of 20 starts; missed none; repeated none; hold lengths 1.500-1.500 s; off-length or moving 0; largest rate change between frames 0.033 x the speed
+  2x: 4921 frames, 82.02 s real (dwellDayLength 82.00 s, diff 0.017 s); clock ends 1080 playing false; backwards 0; NaN 0; phase changes 9
+      holds 20 of 20 starts; missed none; repeated none; hold lengths 1.500-1.500 s; off-length or moving 0; largest rate change between frames 0.033 x the speed
+  4x: 3600 frames, 60.00 s real (dwellDayLength 60.00 s, diff 0.000 s); clock ends 1080 playing false; backwards 0; NaN 0; phase changes 9
+      holds 20 of 20 starts; missed none; repeated none; hold lengths 1.500-1.500 s; off-length or moving 0; largest rate change between frames 0.044 x the speed
+(10.6 s)
+
+=== B2 a change of speed inside a dwell
+  in 4x->0.5x at clock 626.7889 (tau 0.217 of 0.500 s): largest clock step after 0.0832 min (a frame at 0.5x is 0.0833, at 4x 0.6667); hold after the change 1.500 s; rate after the dwell 5.000 min/s (the new speed 5)
+  in 0.5x->4x at clock 629.5986 (tau 0.217 of 0.500 s): largest clock step after 0.5986 min (a frame at 4x is 0.6667, at 0.5x 0.0833); hold after the change 1.500 s; rate after the dwell 40.000 min/s (the new speed 40)
+  in 4x->1x at clock 626.7889 (tau 0.217 of 0.500 s): largest clock step after 0.1660 min (a frame at 1x is 0.1667, at 4x 0.6667); hold after the change 1.500 s; rate after the dwell 10.000 min/s (the new speed 10)
+  in 1x->4x at clock 629.1972 (tau 0.217 of 0.500 s): largest clock step after 0.6417 min (a frame at 4x is 0.6667, at 1x 0.1667); hold after the change 1.500 s; rate after the dwell 40.000 min/s (the new speed 40)
+  hold 4x->0.5x at clock 630.0000 (tau 0.600 of 1.500 s): largest clock step after 0.0832 min (a frame at 0.5x is 0.0833, at 4x 0.6667); hold after the change -; rate after the dwell 5.000 min/s (the new speed 5)
+  hold 0.5x->4x at clock 630.0000 (tau 0.600 of 1.500 s): largest clock step after 0.6167 min (a frame at 4x is 0.6667, at 0.5x 0.0833); hold after the change -; rate after the dwell 40.000 min/s (the new speed 40)
+  hold 4x->1x at clock 630.0000 (tau 0.600 of 1.500 s): largest clock step after 0.1660 min (a frame at 1x is 0.1667, at 4x 0.6667); hold after the change -; rate after the dwell 10.000 min/s (the new speed 10)
+  hold 1x->4x at clock 630.0000 (tau 0.600 of 1.500 s): largest clock step after 0.6556 min (a frame at 4x is 0.6667, at 1x 0.1667); hold after the change -; rate after the dwell 40.000 min/s (the new speed 40)
+  out 4x->0.5x at clock 631.8778 (tau 0.217 of 0.500 s): largest clock step after 0.0832 min (a frame at 0.5x is 0.0833, at 4x 0.6667); hold after the change -; rate after the dwell 5.000 min/s (the new speed 5)
+  out 0.5x->4x at clock 630.2347 (tau 0.217 of 0.500 s): largest clock step after 0.6653 min (a frame at 4x is 0.6667, at 0.5x 0.0833); hold after the change -; rate after the dwell 40.000 min/s (the new speed 40)
+  out 4x->1x at clock 631.8778 (tau 0.217 of 0.500 s): largest clock step after 0.1660 min (a frame at 1x is 0.1667, at 4x 0.6667); hold after the change -; rate after the dwell 10.000 min/s (the new speed 10)
+  out 1x->4x at clock 630.4694 (tau 0.217 of 0.500 s): largest clock step after 0.6639 min (a frame at 4x is 0.6667, at 1x 0.1667); hold after the change -; rate after the dwell 40.000 min/s (the new speed 40)
+(1.9 s)
+
+=== B3 pause and resume inside a dwell
+  paused in the in at 629.7278 (E 630): paused true; first rate after resume 4.617 min/s; hold at E after resume 1.500 s
+  paused in the hold at 630.0000 (E 630): paused true; first rate after resume 5.000 min/s; hold at E after resume 0.000 s
+  paused in the out at 630.3556 (E 630): paused true; first rate after resume 5.000 min/s; hold at E after resume 0.000 s
+(0.3 s)
+
+=== B4 a theme chosen while the clock plays
+  playing true at 300.83; theme "plan" chosen: clock 240.00 (its moment 240), playing after false; two seconds later the clock is 240.00, chapter still plan, freeCam false, Follow target none
+  for comparison: a tour stop (applyTour) and a phase button call stopPlay() first (app.js applyTour, buildTimeline)
+(0.1 s)
+
+=== B5 the overlays' fade at 4x across phase boundaries (dwell off and on)
+  dwell off: TRANS_MS 2600 ms; 9 phase changes, 6 with the incoming fade cut short, 0 with the outgoing group popping up by more than 0.2
+    04:00->07:00 4.50 s; outgoing fade-in had reached 1.00; its 63 materials' largest opacity 0.95 -> 0.90
+    07:00->08:00 1.50 s; outgoing fade-in had reached 0.36; its 36 materials' largest opacity 0.33 -> 0.32
+    08:00->08:45 1.13 s; outgoing fade-in had reached 0.15; its 41 materials' largest opacity 0.13 -> 0.13
+    08:45->09:30 1.12 s; outgoing fade-in had reached 0.14; its 20 materials' largest opacity 0.12 -> 0.12
+    09:30->10:30 1.50 s; outgoing fade-in had reached 0.36; its 48 materials' largest opacity 0.33 -> 0.32
+    10:30->11:15 1.13 s; outgoing fade-in had reached 0.15; its 12 materials' largest opacity 0.13 -> 0.13
+    11:15->12:45 2.25 s; outgoing fade-in had reached 0.80; its 32 materials' largest opacity 0.75 -> 0.72
+    12:45->14:30 2.63 s; outgoing fade-in had reached 1.00; its 40 materials' largest opacity 0.95 -> 0.90
+    14:30->17:00 3.75 s; outgoing fade-in had reached 1.00; its 29 materials' largest opacity 0.95 -> 0.90
+  dwell on: TRANS_MS 2600 ms; 9 phase changes, 0 with the incoming fade cut short, 0 with the outgoing group popping up by more than 0.2
+    04:00->07:00 6.63 s; outgoing fade-in had reached 1.00; its 63 materials' largest opacity 0.95 -> 0.90
+    07:00->08:00 3.50 s; outgoing fade-in had reached 1.00; its 36 materials' largest opacity 0.95 -> 0.90
+    08:00->08:45 5.07 s; outgoing fade-in had reached 1.00; its 41 materials' largest opacity 0.95 -> 0.90
+    08:45->09:30 6.75 s; outgoing fade-in had reached 1.00; its 20 materials' largest opacity 0.95 -> 0.90
+    09:30->10:30 5.30 s; outgoing fade-in had reached 1.00; its 48 materials' largest opacity 0.95 -> 0.90
+    10:30->11:15 4.95 s; outgoing fade-in had reached 1.00; its 12 materials' largest opacity 0.95 -> 0.90
+    11:15->12:45 9.93 s; outgoing fade-in had reached 1.00; its 32 materials' largest opacity 0.95 -> 0.90
+    12:45->14:30 6.87 s; outgoing fade-in had reached 1.00; its 40 materials' largest opacity 0.95 -> 0.90
+    14:30->17:00 9.52 s; outgoing fade-in had reached 1.00; its 29 materials' largest opacity 0.95 -> 0.90
+(1.9 s)
+
+=== B6 the reading within a clock minute
+  fr: 838 minutes, 0 formation-minutes whose reading at m+0.9 depends on the path
+  al: 838 minutes, 0 formation-minutes whose reading at m+0.9 depends on the path
+(44.1 s)
+
+=== B7 Play to the end, then Play again
+  ran to 1080 (T_MAX 1080) in 5 frames, playing false, phase 9; Play again: clock 240, phase 0, playing true
+  a frame later the clock is 240.667
+  from T_MAX-0.49: Play puts the clock at 240
+  from T_MAX-0.51: Play runs 1 frames to 1080, playing false
+(0.0 s)
+
+=== B8 the phone speed button
+  from 0.5: 0.5 -> 1 -> 2 -> 4 -> 0.5 -> 1
+  from a speed not among the buttons (3): 0.5
+(0.0 s)
+
+=== B9 the first frame after the page went idle
+  0.5x: the first frame after 30 s idle advances 0.600 clock min (dt held at 120 ms; a 60 Hz frame is 0.083); the second 0.083
+  4x: the first frame after 30 s idle advances 3.648 clock min (dt held at 120 ms; a 60 Hz frame is 0.667); the second 0.324
+(0.2 s)
+
+=== B10 overlays after many phase changes
+  overlay groups: 1 before, at most 2 during 300 random seeks, 1 after the tweens ended
+(2.7 s)
+
+=== B11 the clock at its edges
+  setClock(NaN) -> clock NaN, phase 0, posNow(sthilaire) [null,null]
+  setClock(Infinity) -> clock 1080, phase 9, posNow(sthilaire) [255,390]
+  setClock(-Infinity) -> clock 240, phase 0, posNow(sthilaire) [201,221]
+  setClock(140) -> clock 240, phase 0, posNow(sthilaire) [201,221]
+  setClock(1180) -> clock 1080, phase 9, posNow(sthilaire) [255,390]
+  toClock with a zero-width rail: 240, 660, 1080 (any x>left+1 gives T_MAX)
+(0.0 s)
+
+=== B12 seeks counted
+  a seek +1; Play's own advance +0; an event jump +1
+(0.0 s)
+
+=== B13 the opening's played stretches
+  step 1->2: from 04:00 to the stop at 08:45: stretch started true at 4x; 15.20 s; arrived at clock 525 (target 525); OPENING.k 1; speed now 0.5; playing false; outgoing overlay pops 0
+  step 2->3: from 08:45 to the stop at 11:00: stretch started true at 4x; 13.07 s; arrived at clock 660 (target 660); OPENING.k 2; speed now 0.5; playing false; outgoing overlay pops 0
+  step 3->4: from 11:00 to the stop at 14:30: stretch started true at 4x; 17.38 s; arrived at clock 870 (target 870); OPENING.k 3; speed now 0.5; playing false; outgoing overlay pops 0
+  after Skip: clock 240, opening on false, tourStep -1, speed 0.5
+(1.4 s)
+
+=== B14 plateauFlatFor at fractional clocks
+  29 fractional clocks where the look-back is negative (the minute's sample differs from the holding at the clock): 424.875: -0.125 (onH 29215, minute sample 40915); 508.375: -0.625 (onH 25765, minute sample 21515); 508.500: -0.500 (onH 25765, minute sample 21515); 508.625: -0.375 (onH 25765, minute sample 21515); 508.750: -0.250 (onH 25765, minute sample 21515); 508.875: -0.125 (onH 25765, minute sample 21515)
+(0.2 s)
+
+warnings during the checks: 0; errors 0
+total 246 s
+##### props-bundle3
+loaded the bundle in 181 s; init errors 0; warnings 0
+
+=== D1 two phase steps half a second apart, the clock stopped
+  07:00 then 08:00 0.5 s later: the 07:00 phase's 36 overlay materials had faded in to 0.00 (largest opacity 0.00); leaving, they are drawn at 0.00, then fade out over 1.09 s
+  08:00 then 08:45 0.5 s later: the 08:00 phase's 41 overlay materials had faded in to 0.00 (largest opacity 0.00); leaving, they are drawn at 0.00, then fade out over 1.09 s
+  08:45 then 09:30 0.5 s later: the 08:45 phase's 20 overlay materials had faded in to 0.00 (largest opacity 0.00); leaving, they are drawn at 0.00, then fade out over 1.09 s
+  09:30 then 10:30 0.5 s later: the 09:30 phase's 48 overlay materials had faded in to 0.00 (largest opacity 0.00); leaving, they are drawn at 0.00, then fade out over 1.09 s
+(0.3 s)
+
+=== D2 a theme chosen while the clock plays: the camera after its glide
+  theme "plan" (its moment 04:00) chosen while playing: 1.7 s later (the glide's 1.6 s over) playing false, clock 04:00, the target 0.0 units from the theme's authored target; 3.7 s: clock 04:00, 0.0 units; 7.7 s: clock 04:00, 0.0 units (freeCam false, Follow idle)
+(0.1 s)
+
+warnings 0; errors 0; total 181 s
+##### props-helpers
+day 04:00-18:00 (240-1080 min), 10 phases, 32 tracked formations, 25 events
+P6 phases contiguous, phaseAt at every boundary: OK; durations (min): 180, 60, 45, 45, 60, 45, 90, 105, 150, 60
+P7 anchors: 148 legs, arrivals non-decreasing and windows ordered: OK
+P1 continuity at critical times: 766 checks; presence changes 2; non-finite 0; discontinuities 0
+P2 sweep at 1/8 min: 215072 samples; NaN 0; outside the 680x500 map frame 0
+   at 04:00 30 on the field; at 18:00 31
+P3 plateau strength al: 10 changes over the day; flickers (undone within 5 min): 0
+P3 plateau strength fr: 11 changes over the day; flickers (undone within 5 min): 0
+P3 centre separation: 2 switches: ON at 09:03 (543.125); off at 14:26 (866.125)
+   flickers (undone within 5 min): 0
+   plateau holding (al) just before the end of phase 6 (12:45): 0; at phase 7's start: 0
+P4 event jumps: 21 distinct starts (25 events); forward from 04:00: 21 stops, missed 0, repeated 0; back from 18:00: 21 stops, missed 0
+   starts within 1.5 min of the first minute (never a forward stop): 04:00
+   from one minute before a start, a forward jump skips that start for 20 of 21 starts (the 1.5-minute margin): e.g. 04:15, 07:00, 08:00, 08:25, 08:45, 09:00
+P5 confAt on the field at 1/4 min: 104251 samples, 0 without a grade
+P8 aggregates (8) at every minute: 6728 samples, 0 inconsistent
+
+ALL PROPERTIES HOLD

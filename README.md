@@ -34,7 +34,7 @@ browser checks at once, or a page probe beside `check:visual`: their timing limi
 | `npm run check:data` | the historical, geographic and model declarations are byte-identical to the reference build (`archive/postaudit1-a3cb40f8.html`, since the final audit's stage 1); a data task that changes one lists it in `CHANGELOG.md` and moves the reference |
 | `npm run check:chronology` | every live timed statement cited or allowed by name (four classes excluded by path, each with its reason), no move early or late but the named conflicts, the explicit times' evidence, the arrival rules, the movement audit |
 | `npm run check:contrast` | every visible text in 45 interface states (10 of them as a phone) meets WCAG AA and the 10.5 px floor, drawn in the embedded faces; and the eight start-up cases (`tools/visual/boot-check.js`) |
-| `npm run check:selftest` | the in-app self-test (317 checks, held to `tools/visual/selftest-manifest.json`) on one page, with the slider, key, motion and live checks (about 20-45 minutes on CI; CI runs it on every push) |
+| `npm run check:selftest` | the in-app self-test (325 checks, held to `tools/visual/selftest-manifest.json`) on one page, with the slider, key, motion and live checks (about 20-45 minutes on CI; CI runs it on every push) |
 | `npm run check:visual` | 39 fixed views held to their thresholds, every page's console, the live checks and the self-test (about two to four hours; on demand) |
 | `npm run check:report` | a finished `check:visual` report judged again without rendering |
 | `npm run check:remeasure` | decision 141's one re-measure tool (`tools/visual/remeasure.js`); it never edits a limit |

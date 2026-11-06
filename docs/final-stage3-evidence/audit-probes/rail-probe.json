@@ -1,0 +1,645 @@
+{
+ "build": "austerlitz-command-map.html md5 f10fe585c46aea576f436ed51ac46f83",
+ "device": "density 3, touch, isMobile, iPhone UA (A.openPhone), 390x844, harness page",
+ "browser": "Chromium 141.0.7390.37 headless shell, SwiftShader",
+ "steps": [
+  {
+   "what": "real touch drag starting on the rail (the widest run the hit map gives the rail, 24-78 px) at y 832, 80 px to the right",
+   "x0": 51,
+   "before": {
+    "clock": 570,
+    "selection": null,
+    "drawer": false,
+    "drawerHead": ""
+   },
+   "after": {
+    "clock": 516.2566844919786,
+    "selection": null,
+    "drawer": false,
+    "drawerHead": ""
+   }
+  },
+  {
+   "what": "real touch drag starting on an event marker's hit area (08:25 to 08:45, Napoleon releases Soult against the heights (the hour is dispute) at x 121, y 832, 80 px to the right",
+   "x0": 121,
+   "before": {
+    "clock": 570,
+    "selection": null,
+    "drawer": false,
+    "drawerHead": ""
+   },
+   "after": {
+    "clock": 673.475935828877,
+    "selection": null,
+    "drawer": false,
+    "drawerHead": ""
+   }
+  },
+  {
+   "what": "capture after it",
+   "file": "rail-drag-from-marker.jpg"
+  },
+  {
+   "what": "real touchscreen tap on the same point",
+   "before": {
+    "clock": 570,
+    "selection": null,
+    "drawer": false,
+    "drawerHead": ""
+   },
+   "after": {
+    "clock": 505,
+    "selection": "e:decision",
+    "drawer": true,
+    "drawerHead": "Napoleon releases Soult against the heights"
+   }
+  },
+  {
+   "what": "capture after the tap",
+   "file": "rail-tap-marker.jpg"
+  },
+  {
+   "what": "Whose eyes, Allied headquarters, by the phone's own route",
+   "taps": [
+    "real tap #menubtn",
+    "real tap #panelsbtn",
+    "real tap #tab-command",
+    "real tap .cmd-btn[data-cv=\"al\"]",
+    "real tap #railclose"
+   ],
+   "state": "al",
+   "file": "eyes-al-route-rail.jpg"
+  },
+  {
+   "what": "the rail closed (real tap #railclose): the map under the Allied reading",
+   "taps": [
+    "real tap #railclose"
+   ],
+   "drawn": [
+    "n:ahq: Allied HeadquartersB",
+    "n:buxhowden: Left Wing CommandC",
+    "t:pratzen: Pratzen Heights",
+    "t:litava: Litava river",
+    "n:sthilaire: Saint-Hilaire",
+    "n:lang: Second ColumnC",
+    "n:prz: Third ColumnB",
+    "n:milo: Miloradovich's RussiansB",
+    "n:kollo: Kollowrat's AustriansB",
+    "n:rg_inf: Guard Infantry",
+    "o:Kamensky turns about (disputed): Kamensky turns about (disputed)",
+    "o:Levasseur up the Goldbach: Levasseur up the Goldbach",
+    "o:Pratzeberg: Pratzeberg",
+    "t:krzenowitz: Krzenowitz"
+   ],
+   "file": "eyes-al-route.jpg"
+  }
+ ],
+ "hitmap390": {
+  "viewport": [
+   390,
+   844
+  ],
+  "rail": [
+   8,
+   820,
+   374,
+   24
+  ],
+  "y": 832,
+  "share": {
+   "rail": 0.342,
+   "marker": 0.658,
+   "other": 0
+  },
+  "markersHit": 20,
+  "markers": 25,
+  "railRuns": [
+   [
+    24,
+    78
+   ],
+   [
+    97,
+    105
+   ],
+   [
+    171,
+    172
+   ],
+   [
+    257,
+    265
+   ],
+   [
+    311,
+    332
+   ],
+   [
+    351,
+    381
+   ]
+  ],
+  "otherRuns": []
+ },
+ "hitmap390foot": {
+  "viewport": [
+   390,
+   844
+  ],
+  "rail": [
+   8,
+   820,
+   374,
+   24
+  ],
+  "y": 840,
+  "share": {
+   "rail": 0.906,
+   "marker": 0.094,
+   "other": 0
+  },
+  "markersHit": 18,
+  "markers": 25,
+  "railRuns": [
+   [
+    9,
+    13
+   ],
+   [
+    16,
+    86
+   ],
+   [
+    89,
+    113
+   ],
+   [
+    116,
+    133
+   ],
+   [
+    136,
+    140
+   ],
+   [
+    143,
+    153
+   ],
+   [
+    156,
+    160
+   ],
+   [
+    163,
+    180
+   ],
+   [
+    183,
+    193
+   ],
+   [
+    196,
+    200
+   ],
+   [
+    203,
+    211
+   ],
+   [
+    214,
+    233
+   ],
+   [
+    236,
+    246
+   ],
+   [
+    249,
+    273
+   ],
+   [
+    276,
+    287
+   ],
+   [
+    290,
+    300
+   ],
+   [
+    303,
+    340
+   ],
+   [
+    343,
+    381
+   ]
+  ],
+  "otherRuns": []
+ },
+ "hitmap1280": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "rail": [
+   14,
+   696,
+   1252,
+   24
+  ],
+  "y": 708,
+  "share": {
+   "rail": 0.715,
+   "marker": 0.285,
+   "other": 0
+  },
+  "markersHit": 21,
+  "markers": 25,
+  "railRuns": [
+   [
+    23,
+    26
+   ],
+   [
+    45,
+    272
+   ],
+   [
+    291,
+    362
+   ],
+   [
+    381,
+    401
+   ],
+   [
+    416,
+    429
+   ],
+   [
+    448,
+    451
+   ],
+   [
+    470,
+    476
+   ],
+   [
+    491,
+    496
+   ],
+   [
+    515,
+    518
+   ],
+   [
+    537,
+    585
+   ],
+   [
+    604,
+    630
+   ],
+   [
+    649,
+    652
+   ],
+   [
+    671,
+    690
+   ],
+   [
+    709,
+    721
+   ],
+   [
+    736,
+    764
+   ],
+   [
+    783,
+    809
+   ],
+   [
+    828,
+    898
+   ],
+   [
+    917,
+    943
+   ],
+   [
+    962,
+    988
+   ],
+   [
+    1007,
+    1122
+   ],
+   [
+    1141,
+    1265
+   ]
+  ],
+  "otherRuns": []
+ },
+ "hitmap1280foot": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "rail": [
+   14,
+   696,
+   1252,
+   24
+  ],
+  "y": 716,
+  "share": {
+   "rail": 0.972,
+   "marker": 0.028,
+   "other": 0
+  },
+  "markersHit": 18,
+  "markers": 25,
+  "railRuns": [
+   [
+    15,
+    34
+   ],
+   [
+    37,
+    280
+   ],
+   [
+    283,
+    370
+   ],
+   [
+    373,
+    437
+   ],
+   [
+    440,
+    459
+   ],
+   [
+    462,
+    504
+   ],
+   [
+    507,
+    526
+   ],
+   [
+    529,
+    593
+   ],
+   [
+    596,
+    638
+   ],
+   [
+    641,
+    660
+   ],
+   [
+    663,
+    698
+   ],
+   [
+    701,
+    772
+   ],
+   [
+    775,
+    817
+   ],
+   [
+    820,
+    906
+   ],
+   [
+    909,
+    951
+   ],
+   [
+    954,
+    996
+   ],
+   [
+    999,
+    1130
+   ],
+   [
+    1133,
+    1265
+   ]
+  ],
+  "otherRuns": []
+ },
+ "hitmap1600": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "rail": [
+   14,
+   876,
+   1572,
+   24
+  ],
+  "y": 888,
+  "share": {
+   "rail": 0.773,
+   "marker": 0.227,
+   "other": 0
+  },
+  "markersHit": 21,
+  "markers": 25,
+  "railRuns": [
+   [
+    23,
+    32
+   ],
+   [
+    51,
+    341
+   ],
+   [
+    360,
+    453
+   ],
+   [
+    472,
+    502
+   ],
+   [
+    517,
+    537
+   ],
+   [
+    556,
+    565
+   ],
+   [
+    584,
+    596
+   ],
+   [
+    611,
+    622
+   ],
+   [
+    641,
+    650
+   ],
+   [
+    669,
+    734
+   ],
+   [
+    753,
+    790
+   ],
+   [
+    809,
+    818
+   ],
+   [
+    837,
+    865
+   ],
+   [
+    884,
+    904
+   ],
+   [
+    919,
+    958
+   ],
+   [
+    977,
+    1015
+   ],
+   [
+    1034,
+    1127
+   ],
+   [
+    1146,
+    1183
+   ],
+   [
+    1202,
+    1239
+   ],
+   [
+    1258,
+    1408
+   ],
+   [
+    1427,
+    1585
+   ]
+  ],
+  "otherRuns": []
+ },
+ "hitmap1600foot": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "rail": [
+   14,
+   876,
+   1572,
+   24
+  ],
+  "y": 896,
+  "share": {
+   "rail": 0.978,
+   "marker": 0.022,
+   "other": 0
+  },
+  "markersHit": 18,
+  "markers": 25,
+  "railRuns": [
+   [
+    15,
+    40
+   ],
+   [
+    43,
+    349
+   ],
+   [
+    352,
+    461
+   ],
+   [
+    464,
+    545
+   ],
+   [
+    548,
+    573
+   ],
+   [
+    576,
+    630
+   ],
+   [
+    633,
+    658
+   ],
+   [
+    661,
+    742
+   ],
+   [
+    745,
+    798
+   ],
+   [
+    801,
+    826
+   ],
+   [
+    829,
+    873
+   ],
+   [
+    876,
+    966
+   ],
+   [
+    969,
+    1023
+   ],
+   [
+    1026,
+    1135
+   ],
+   [
+    1138,
+    1191
+   ],
+   [
+    1194,
+    1247
+   ],
+   [
+    1250,
+    1416
+   ],
+   [
+    1419,
+    1585
+   ]
+  ],
+  "otherRuns": []
+ },
+ "errors": [],
+ "seconds": 158
+}
