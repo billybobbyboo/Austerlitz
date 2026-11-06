@@ -235,7 +235,7 @@ legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
        east of it; with the bed corrected the place stands at the stream's west bank (15 m from it) and the route on the west bank throughout: the act
        says where the anchor is. No source read gives this move */,
     8:{tm:{at:900,gr:"C",basis:"app narrative, unsourced",ev:["Several times between 07:00 and 15:00","Retakes Telnitz for good"],note:"Telnitz changed hands until about 15:00; taking it for good is the last change"},
-       p:[217,387],st:"attacking",via:[[206,372],[210,377]],act:"Retakes Telnitz for good"},
+       p:[217,387],cf:"C",st:"attacking",via:[[206,372],[210,377]],act:"Retakes Telnitz for good"},
     9:{p:[228,393],st:"holding"}}},
 
 c_iii:{ ech:"corps", nation:"fr", arm:"inf", desig:"III Corps",
