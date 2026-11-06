@@ -52,9 +52,11 @@ const names=["field","meadow","marsh","water","wood","village","vineyard","track
     G.__B.forEach(b=>{ if(b.R) rec.push([b.village,b.part||"",+b.R.x.toFixed(3),+b.R.z.toFixed(3)]); if(!b.R||b.landmark&&!(b.church||b.part==="chapel"||b.part==="church")) return;
       if(b.part==="fence"||b.part==="churchyard wall") return; const c=names[G.drawnCover(b.R.x,b.R.z)], q=o[b.village]=o[b.village]||{n:0}; q.n++; q[c]=(q[c]||0)+1; });
     return {o, rec}; };
-  const a=by(A), b=by(B), moved=a.rec.filter((r,i)=>JSON.stringify(r)!==JSON.stringify(b.rec[i])).length;
-  out.buildings={before:a.o, after:b.o, records:[a.rec.length,b.rec.length], recordsMoved:moved+Math.abs(a.rec.length-b.rec.length)};
-  console.log("(d) buildings' records "+a.rec.length+" -> "+b.rec.length+", "+out.buildings.recordsMoved+" moved or added");
+  const a=by(A), b=by(B), byV=R=>{ const o={}; R.forEach(r=>(o[r[0]]=o[r[0]]||[]).push(JSON.stringify(r))); return o; }, va=byV(a.rec), vb=byV(b.rec), mv={};
+  /* by village: the records of a village that differ from its own before (as a multiset), so that one village's re-plan does not count another's */
+  Object.keys(Object.assign({},va,vb)).forEach(v=>{ const x=(va[v]||[]).slice(), y=vb[v]||[]; let n=0; y.forEach(r=>{ const i=x.indexOf(r); if(i>=0) x.splice(i,1); else n++; }); n=Math.max(n,x.length); if(n) mv[v]=n; });
+  out.buildings={before:a.o, after:b.o, records:[a.rec.length,b.rec.length], recordsChangedByVillage:mv};
+  console.log("(d) buildings' records "+a.rec.length+" -> "+b.rec.length+"; records changed, by village: "+JSON.stringify(mv));
   Object.keys(b.o).forEach(v=>{ const x=a.o[v]||{}, y=b.o[v]; if(JSON.stringify(x)!==JSON.stringify(y)) console.log("    "+v+": "+JSON.stringify(x)+" -> "+JSON.stringify(y)); }); }
 /* (e) the height change over the frame */
 { let worst={d:0}, nch=0, n=0;

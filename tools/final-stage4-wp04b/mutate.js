@@ -25,7 +25,9 @@ const MUT=[
     '  "  if(A.y>0.45&&ml<0.4) return 2.0;",\n  "  if(A.w>0.55) return 5.0;",']]},
   {id:"N4", finding:"CL-GEO-11 (the castle's own ground taken out of coverClass and the ground shader)", runners:["terrain"], want:"the castle's own ground: 7 ranges (want 7),", edits:[["world.js",
     "  if(castleGround(mx,mz)) return 5;   /* WP-04b (CL-GEO-11): the castle's own ground (CASTLE_GROUND), before the brook's bed beside it */\n", ""],["world.js",
-    '  "  if(length((p-uCastle.xy)/uCastle.zw)<1.0) return 5.0;",   /* WP-04b (CL-GEO-11): the castle\'s own ground, as coverClass */\n', ""]]}
+    '  "  if(length((p-uCastle.xy)/uCastle.zw)<1.0) return 5.0;",   /* WP-04b (CL-GEO-11): the castle\'s own ground, as coverClass */\n', ""]]},
+  {id:"N5", finding:"CL-GEO-07 (Krug back at its warped legacy place, GT.krug kept)", runners:["geo"], want:"every surveyed village within 0.5 km of ground truth", edits:[["world.js",
+    '["Krug",318,94,5],', '["Krug",339,139,5],']]}
 ];
 const args=process.argv.slice(2), only=(args.indexOf("--only")>=0?args[args.indexOf("--only")+1].split(","):null), outF=args.indexOf("--out")>=0?args[args.indexOf("--out")+1]:null;
 function makeCopy(m){
