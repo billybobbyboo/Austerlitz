@@ -249,6 +249,33 @@ var CREST=M2W(CREST_M);
 var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
     ZURAN=W(177,134), SATS=W(268,421), MENI=W(187,457), SLAV=W(507,126), SCHLAP=W(163,177);
 
+/* The relief between the anchors (the final audits' Stage 4, WP-04b; CL-GEO-01, owner decision 273 (a), "disclose and refit, measured first"): six
+   terms for landforms the twelve surveyed anchors left out, which the audit measured 30-80 m below open elevation data over the southern Pratzen
+   plateau and St Anthony's knoll and about 45 m above it at Slapanice. Fitted (tools/relief-fit.js) to Copernicus GLO-90 through Open-Meteo:
+   the audit's 300 m grid within map x 240-360, y 260-380 (docs/audit-post8-evidence/geography/) and two 150 m grids fetched for WP-04b, the
+   southern plateau (x 250-350, y 275-375) and Slapanice (x 140-195, y 150-210), each with sigma 10 m; within 0.6 km of the Pratzeberg the lower of
+   GLO-90 and SRTM 30 m (OpenTopoData), sigma 3 m, both being surface models (docs/final-stage4-wp04b-evidence/dem/, every request and response
+   with its sha256); with the twelve sourced anchors held (sigma half their tolerance, the Pratzeberg 0.5 m), the Goldbach's sourced drop, the drawn
+   beds of the Litava, the Goldbach, BROOKS[1] and BROOKS[3] held at their heights (no reverse gradient added), and no ground within 1 km of the
+   Pratzeberg drawn above 324 + 2 m (an active set of 25 m lattice points). The geometry was searched (Nelder-Mead, the amplitudes by least squares
+   inside it; tools/final-stage4-wp04b/geometry/, its search c16 and its rounding c16r) and rounded; the amplitudes are the fit's for the rounded
+   geometry. Each a bump as bump() is (full within edge, nothing beyond 1), turned by rot (radians, world axes): its centre given in map units,
+   its radii in world units, h in world units before the 1.2. In the regional level, so that the land cover's local relief, on which its
+   thresholds were calibrated, is unchanged (0 of 112,271 points of a 1-unit grid change class). The tolerance lines it meets, held by
+   terrain-test.js against tools/relief-dem.json (tools/relief-tolerance.js): the southern box's mean within 10 m (-0.3 m; -45.3 before), each of
+   the four profiles' worst within 20 m (-14.1, +12.8, -14.6, +13.1 m; -81.8 to -51.7 before), Slapanice within 10 m (+4.9; +48.0), the knoll
+   within 10 m (+2.1; -41.8), the anchors within their tolerances, no false summit (+1.9 m of 2). Per term below: the DEM points of the three
+   grids inside its footprint, and their mean residual (model minus GLO-90) before WP-04b and after. Today's ground, not 1805's. */
+var RELIEF_DEM=[
+  {n:"the southern Pratzen plateau",  c:W(305.6,310.8), rx:29.5, rz:17.8, rot:-0.81, edge:0.76, h:6.09},   /* 337 points, -34.3 m before, -1.4 after; up to +44.7 m */
+  {n:"St Anthony's knoll above Augezd", c:W(291.9,358.7), rx:7.8, rz:5.3, rot:0,    edge:0.07, h:5.58},   /* 30 points, -23.9 before, -2.6 after; +41.0 m */
+  {n:"the spur toward Hostieradek",   c:W(303.0,325.2), rx:15.0, rz:7.1,  rot:0.38,  edge:0.34, h:5.77},   /* 74 points, -65.5 before, -3.3 after; +42.4 m */
+  {n:"the east flank to the Litava",  c:W(333.0,297.6), rx:12.0, rz:13.5, rot:0.58,  edge:0.38, h:-4.59},  /* 100 points, -20.5 before, -0.1 after; -33.7 m, trimming the plateau term where the ground falls to the Litava */
+  {n:"the Ricka's valley at Slapanice", c:W(171.8,192.7), rx:19.0, rz:8.1, rot:0.93, edge:0.27, h:-3.90},   /* 95 points, +21.3 before, +0.3 after; -28.6 m */
+  {n:"the saddle south-west of the Pratzeberg's top", c:W(282.8,297.8), rx:5.4, rz:19.7, rot:0.78, edge:0, h:-4.11}   /* 69 points, -15.4 before, -2.1 after; -30.2 m, trimming the plateau term */
+].map(function(t){ t.co=Math.cos(t.rot); t.si=Math.sin(t.rot); return t; });
+function tbump(x,z,t){ var dx=x-t.c[0], dz=z-t.c[1], u=(dx*t.co+dz*t.si)/t.rx, v=(-dx*t.si+dz*t.co)/t.rz; return t.h*(1-smoothstep(t.edge,1,Math.sqrt(u*u+v*v))); }
+
 /* The land's large-scale fall, fitted to surveyed elevations (tools/relief-fit.js): ground rising
    to the north, and the broad middle-Litava lowland along the Litava and the Rakovec. Kept apart
    from the local relief, because the floor, the land-cover thresholds and the pond levels are
@@ -256,7 +283,9 @@ var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
 function regionalH(x,z){
   var nk=GEOREF.mapToEN(x*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[0],z*GEOREF.MAP_PER_WORLD+GEOREF.WORLD_ORIGIN[1])[1];   /* true northing, km (W's inverse by GEOREF's own factor and origin since 8H, G-2) */
   var dv=Math.min(polyDist(x,z,LITAVA),polyDist(x,z,BROOKS[BROOKS.length-1]));
-  return 0.51*smoothstep(3.0,6.0,nk) + 0.37*nk - 3.16*Math.exp(-(dv*dv)/625);
+  var r=0.51*smoothstep(3.0,6.0,nk) + 0.37*nk - 3.16*Math.exp(-(dv*dv)/625);
+  for(var i=0;i<RELIEF_DEM.length;i++) r+=tbump(x,z,RELIEF_DEM[i]);   /* WP-04b: the relief between the anchors */
+  return r;
 }
 /* A pond's shoreline is level: within and just around each mere the regional level is held at
    the mere's own value, blending out beyond the rim. The legacy water levels (local relief)
@@ -282,11 +311,11 @@ function localHeight(x,z){
   h += bump(x,z,PRAT,50,60,1.13,0.48);                       /* the broad upland            */
   var dc=polyDist(x,z,CREST); h += 5.29*Math.exp(-(dc*dc)/64); /* the crest arc, ~0.5 km wide */
   h += bump(x,z,VINO,11,10,1.03,0.26);
-  h += bump(x,z,PBERG,10,9.5,5.45,0.26);
+  h += bump(x,z,PBERG,10,9.5,2.93,0.26);                     /* 5.45 until WP-04b, refitted with RELIEF_DEM */
   h += bump(x,z,SANTON,7.4,6.4,5.24,0.30);
   h += bump(x,z,ZURAN,6.6,5.8,5.45,0.36);
   h += bump(x,z,SLAV,13,11,2.58,0.40);                       /* the rise Austerlitz stands on (fitted) */
-  h += bump(x,z,SCHLAP,15,9,3.0,0.36);
+  h += bump(x,z,SCHLAP,15,9,0.22,0.36);                      /* 3.0 until WP-04b (never fitted), refitted with RELIEF_DEM */
   var dg=polyDist(x,z,GOLDBACH); h -= 3.3*Math.exp(-(dg*dg)/66);
   var dl=polyDist(x,z,LITAVA);   h -= 2.6*Math.exp(-(dl*dl)/88);
   for(var i=0;i<BROOKS.length;i++){

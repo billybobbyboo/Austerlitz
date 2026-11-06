@@ -18,7 +18,7 @@ const DATA={
     "BUILDINGS"],
   "geography and relief model":["W","M2W","UNITS_PER_KM","GOLDBACH_M","LITAVA_M","BROOKS_M","GOLDBACH,LITAVA,BROOKS","ROADS","WOODS","MARSH",
     "VINEYARD","VILLAGES","CHURCHES","CHAPELS","CREST_M","TERRAIN_LINES","hash2","vnoise","dist2","pnoise","segDist","polyDist","smoothstep","bump","ell",
-    "CREST","PRAT,VINO,PBERG,SANTON,ZURAN,SATS,MENI,SLAV,SCHLAP","regionalH","_RS,_RM","pondHold","regionalLevel","height","localHeight",
+    "CREST","PRAT,VINO,PBERG,SANTON,ZURAN,SATS,MENI,SLAV,SCHLAP","RELIEF_DEM","tbump","regionalH","_RS,_RM","pondHold","regionalLevel","height","localHeight",
     "coverClass","hAt","COV_NX,COV_NZ,COV_X0,COV_Z0,COV_DX,COV_DZ","covWood,covMarsh,covVill,covRoad,covWater,covVine,covWoodP","buildCover","covAt",
     "G_NX,G_NZ,G_X0,G_Z0,G_DX,G_DZ","gridH,gridCurv","buildGrid","gridAt","CONTOUR_INTERVAL,CONTOUR_INDEX",
     /* Stage 8, the follow-up 8J (decision 259 (a)): the landmarks' own sites, the château's garden, and the outlines a period map gives */
