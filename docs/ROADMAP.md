@@ -383,6 +383,14 @@ cannot be told from the toggle; a bracketed measure would say. The next owner de
 - **The probes' own limits:** Chromium only (no Safari, no WebKit installed here); taps, not fingers; software WebGL frame times decide
   nothing; the phone screenshots read at CSS scale (the interface contrast by computed styles, which does not depend on it).
 
+### G-3 (Miloradovich at dawn), taken up in the final audits' Stage 4
+
+The one finding of the prior audit (`docs/FINAL_AUDIT.md` G-3) no step had taken up (`docs/FINAL_AUDIT_POST_STAGE8.md` CL-REC-06) was taken up
+in the final audits' Stage 4 (WP-03, 6 November 2026): `milo@0` graded B (was A), its act "In two lines behind the III Column, which camped on
+the heights by Pratzen (Stutterheim; Schönhals); its distance from the village is this map's" (was "Formed on the plateau near Pratzen
+village", plotted 1.6 km from it), from Stutterheim p. 38 and Schönhals p. 154 (`docs/step4-evidence/readings.md` S7.20, S7.21); the point
+unchanged. `CHANGELOG.md`, Stage 4.
+
 ## Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)
 
 The owner asked for these to be noted for later. They are about appearance and motion (UI/UX), and together they would make a **Stage 8,

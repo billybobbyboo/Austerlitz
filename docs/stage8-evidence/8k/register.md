@@ -232,4 +232,4 @@ See section 21 of `docs/STAGE8_SPEC.md` and `docs/stage8-evidence/8k/` for the r
 - Bagration's exact line at dawn; what "the heights by Dwaroschna" were; which side of the road Schönhals's height lay; where Bagration stood at
   17:00 (Rausnitz, or already toward Austerlitz).
 - Krug's place (the Second Survey's "Kruch" beside Holubitz against the drawn Krug at [339,139]): a candidate data task, not decided.
-- Caffarelli's anchors (not on the road, not re-plotted) stand 2.5-2.9 km south of Bagration's from 14:30, as they stood from his old ones.
+- Caffarelli's anchors (not on the road, not re-plotted) stand 2.5-2.9 km south of Bagration's from 14:30, as they stood from his old ones [the final audits' Stage 4 (CL-HIS-09): measured, 2.1-2.6 km, 2.13 km at 14:30 and 2.64 km at 17:00].

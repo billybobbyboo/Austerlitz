@@ -1,5 +1,143 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 4 (main track, 1 of 2): WP-03, tracks, grades and internal consistency
+
+**Status: on `claude/compassionate-curie-igyzhl` (a draft PR into `main`, for review, not merged).** WP-03 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-HIS-02, -03, -04, -05, -07, -08, -09, -10, -11, -13 and CL-REC-06; the accepted CL-HIS-16 and -17 kept as they are. **A data task**: five
+data declarations change against `archive/postaudit2-e7d6924f.html` (FORMATIONS, ANALYSIS, PLANS, the movement model's `anchorList`, and
+STATEMENT_CLAIMS), each below; `check:data`'s reference moves to this build, `archive/stage4wp03-1bc31538.html`. `austerlitz-command-map.html`
+is now 2,887,267 bytes, md5 `1bc3153854d0375f6d526e2eade69654` (was 2,869,790, `6ec4abc2...`); `check:baseline` moves to it (`package.json`).
+WP-04b (the relief) is stacked on this branch; the alongside track, WP-15's first batch, is draft PR #85 (no data; its readings in their own
+register, `docs/wp15-evidence/readings.md`; this track's are section S7 of `docs/step4-evidence/readings.md`; none of its readings is folded in
+here).
+
+### The owner's decisions (6 November 2026; each the recommended option)
+
+- **272 (a), CL-HIS-02:** 8K's grading rule for every anchor: the 44 A grades carried forward from an earlier anchor reviewed one by one; A only
+  where a reading of its own documents the position then, B where a reading places the formation then relative to a named place, C where none
+  does; no grade kept because it was there.
+- **273 (a), CL-GEO-01:** the disclosure kept (Stage 1) and the relief refitted, measured first; for WP-04b (stacked on this branch).
+- **285 (a), CL-HIS-05 (new; the audit called it an owner decision on decision 45's scope):** "hold, then retreat": every undated leg from an
+  offensive status (attacking, charging, counter-attacking, advancing, pursuing) into a retreat status (repulsed, withdrawing, retreating,
+  broken) declares a hold: the formation stands at its attack place through its phase and departs as the retreat's phase opens, its arrival
+  derived at its arm's tactical rate (or the ceiling where that does not fit). Decision 45 (undated moves spread over their interval) narrowed for
+  these legs only.
+- **286 (a), CL-HIS-07 (new; "owner to choose"):** Kamensky turns as phase 3 opens, by the same declared hold, not from 08:00.
+
+### What changed, and why
+
+- **The declared hold (decisions 285 (a), 286 (a); `app.js` `anchorList`, data `hold:true`).** An anchor with `hold:true` and no `tm.dep`
+  departs as its own phase opens, exactly as a dated departure at the phase start would (the existing derived-arrival rule): a design rule,
+  dating nothing. Declared on the four legs the rule covers, exactly the audit's: Miloradovich @6 (withdraws 11:15-12:04, was walking away
+  09:30-11:15 under "Counter-attacking"), Liechtenstein @6 (11:15-11:29, was 10:30-11:15 under "Charging"), the Guard infantry @7 (12:45-13:30, was
+  11:15-12:45 under "Counter-attacking") and cavalry @7 (12:45-13:12, was 11:15-12:45 under "Charging"); and on Kamensky @3 (08:45-08:53 at the
+  ceiling, a countermarch not being battle order: named in `check:chronology`'s CEILING_FLAGGED with its reason; was 08:00-08:45). The disclosures
+  that said "in the 08:45 phase" (SOURCE_NOTE, the event's dispute, the arrow) now describe the drawing; the derived plateau reading no longer rises
+  at 08:29 with no French on the plateau. The named conflict (kamensky@3 early against the timeline's c. 09:45) stays named.
+- **The carried A grades (CL-HIS-02, decision 272 (a)).** All 44 now declare their own grade from the readings: 25 B and 19 C, none kept A (the
+  table, every anchor's was, proposed and is, its reason and readings: `docs/final-stage4-evidence/grades-review.md`). Where the lead's grade
+  differs from a researcher's proposal it is because the point was re-plotted or kept (kienmayer@7 C, rg_inf@5 C, below). Also re-graded on the
+  same review: milo@0 A to B (G-3), rg_inf@0 and rg_cav@0 A to B, rg_inf@6 and rg_cav@6 A to B (the place of the attack disputed), lang@2 A to B,
+  friant@7 A to B, friant@8 to B (re-plotted), bourcier@7 and @8 to B, milo@8 B to C, milo@9 B on a new basis, legrand@8 B (carried) to C (no reading
+  places the last retaking of Telnitz).
+- **The Russian Guard's divided register (CL-HIS-03).** The readings correct the audit on one point: the official report's "height of
+  Krzenowitz" is the afternoon's order, not the morning's place; every reading puts the camp on the height between Austerlitz and Krzenowitz, and
+  the disposition orders it at daybreak behind Blasowitz and Kruh (S7.42-S7.54, C6.21, C6.c6). rg_inf@0's objective and act (was "Remain in
+  reserve near Krzenowitz", "On the high ground near Allied headquarters") and rg_cav@0's new act say so (the Chevalier Guard a march behind, the
+  strength counting it from the start, this map's); rg_inf@5 (C) says where the Guard stood is divided (the heights by Blasowitz and Krug, its
+  jägers in Blasowitz, in Stutterheim, Schönhals and the official report; beyond the Walk-Mühle in Mikhailovsky-Danilevsky and Sokolov), that the
+  point drawn is this map's, and that the readings have Blasowitz fall before Liechtenstein's charge while this map draws it after. PLANS.al's
+  Guard order (was "The Imperial Guard to remain behind Krzenowitz, in hand.") is the disposition's; its staging label (was "Reserve behind
+  Krzenowitz") "Guard camp before Austerlitz"; ANALYSIS[#plan] (was "the Russian Guard stands in reserve behind Krzenowitz") the disposition's.
+  No Guard anchor moved.
+- **Legrand clear of the castle (CL-HIS-04).** legrand@4 [220,321] to [192,365], behind (west of) Sokolnitz, where Davout has the division
+  formed (S7.62); its leg from @2 no longer passes over the castle and through the III Column (37 m at 08:51); Levasseur's brigade alone went
+  up, by the Kobelnitz side (S7.58, S7.65, S7.66; no reading routes Legrand's troops through the castle); the act and its claim say so; legrand@7's
+  via [211,322] dropped.
+- **Kienmayer (CL-HIS-08).** The readings confirm the act's words, not the point: after Telnitz was retaken Kienmayer's cavalry stood beyond the
+  defile, west of the brook, until the French came down behind the column (S7.27, S7.28, S7.29); the point, 0.9 km east of the brook, is where
+  Schönhals then has Carneville's brigade face Vandamme (S7.33). The act says both, graded C. Moving the point west would need a hold outside
+  decision 285 (a) (the leg from it is not from an offensive status); left as handed on below.
+- **Caffarelli (CL-HIS-09).** No reading sends the division east toward Krzenowitz; from noon it attacks Bagration's left at Krug and Holubitz,
+  then follows him toward Rausnitz (S7.7, S7.11, C6.12, C6.13, C2.11, C2.29). @7's objective (was "Push Bagration off the highway") and new acts at
+  @7-@9 say so, and that the route drawn is this map's; @6 and @7 B, @8 and @9 C. The records' "2.5-2.9 km" from Bagration is corrected in the 8K
+  register and the 8K entry below (measured 2.13 km at 14:30, 2.64 km at 17:00).
+- **Interpolated legs through enemies and across the Litava (CL-HIS-10).** Bourcier's dragoons stay on Davout's right before Telnitz, covered
+  by a brook, as Davout's three reports keep them (S7.71-S7.73): @8 and @9 (were [253,393] and [297,374], "Pursues along the Telnitz to Augezd
+  track", which no reading gives) at @7's place; no longer drawn through Kienmayer (26 m) and Dokhturov (12 m). Miloradovich @8 (was [446,210], 19 m
+  from the drawn Litava, its legs crossing it twice) is halfway from Krzenowitz to Austerlitz (C), where his report takes the column into
+  Austerlitz and Mikhailovsky-Danilevsky has it at dusk (S7.24, S7.25, S7.35); its act says so.
+- **Sokolnitz held (CL-HIS-11).** Friant's @5, @7 and @8 at the village (were by Telnitz: [200,398] B, [204,390] A, [214,410]), where Davout's
+  reports have Lochet's and Kister's brigades take and retake it and the 48e hold it in the afternoon (S7.16-S7.18, S7.63, S7.64, C6.15); @5's
+  objective and act and new acts at @8 and @9 (@9's place disputed: Davout through Menitz to a league beyond, Mikhailovsky-Danilevsky at Telnitz;
+  drawn by Telnitz). Langeron's @2 and @4 at the village's brook crossing (were [235,350], A, 0.98 km across the brook, and [247,336]), as the
+  readings have Langeron himself and Olsufiev's brigade in the village (S7.56, S7.60): the II Column's arrow note ("the model has the column at the
+  village from 08:00") is now accurate. Until this stage no formation of either side stood within 0.79 km of the village from 09:00 to 13:15;
+  now Legrand within 0.51 km through phase 4 and Friant at it from 10:30.
+- **The march row on drift legs (CL-HIS-13; presentation).** A leg under the gait's 1 km/h floor is named "Plotted leg" with its note, not
+  "Marching" or "Next move" (`marchRow`, `LABELS.march`); 453 of 720 half-hourly march rows are such drifts.
+- **Miloradovich at dawn (CL-REC-06, G-3).** milo@0 B with the act "In two lines behind the III Column, which camped on the heights by Pratzen
+  (Stutterheim; Schönhals); its distance from the village is this map's" (was A, "Formed on the plateau near Pratzen village", plotted 1.6 km
+  from it); recorded in `docs/ROADMAP.md`.
+- **The claims.** Fifteen statements carry a claim from the readings: fourteen new (the reworded acts of Kienmayer @7, Caffarelli @7 and @8,
+  Miloradovich @0 and @8, Friant @5, @8 and @9, Bourcier @8 and @9, the Guard's @0 and its infantry's @5, and PLANS.al's Guard order; two of them
+  "disputed" with both sides) and legrand@4's rewritten with Davout's and Thiébault's readings added. Unchecked statements 468 to 463 (726 in the
+  inventory, regenerated).
+- **The readings.** Section S7 of `docs/step4-evidence/readings.md`: 75 new entries (S7.1-S7.75), each read on a page image downloaded
+  afresh by one of three source researchers (machine readers; the lead read S7.27 again on its image, the quotation exact), their images in
+  `docs/final-stage4-evidence/pages/` (64 images, 21.4 MB after recompression).
+
+### The checks added (each shown to fail without its fix)
+
+- `test.js`, decision 272 (a): no positioned anchor that moves carries an earlier anchor's A (44 until this stage, 0 now).
+- `sim-test.js`, a WP-03 block: (a) decision 285 (a), every undated leg from an offensive status into a retreat status declares a hold, and no
+  formation moves into a retreat under an offensive status (0 minutes; were 290 formation-minutes on the four legs); (b) opposing formations'
+  centres within 0.5 km only inside a recorded fight (`MELEE`: ten entries, each a pair, a window and the live statements that record the contact;
+  an entry no sample uses fails); (c) no leg crosses the drawn Litava more than 0.5 km from a village on its bank or off a drawn road, and no anchor
+  stands within 30 m of its line away from such a village; (d) Sokolnitz held as its place records it, Legrand through phase 4 and Friant from
+  phase 5 to the wheel within 0.6 km. The question-196 pin follows kienmayer@7's grade (C).
+- `runtime-test.js`: the march row of every formation at every half hour, a drift named "Plotted leg" and never "Marching".
+- **The negative controls** (`tools/final-stage4/mutate.js`; `docs/final-stage4-evidence/mutations.*`): the unmutated copy passes test.js,
+  sim-test.js, runtime-test.js and check:chronology, and each of eleven mutations (one per fix; the reworded texts by their claims) is caught by
+  its check: [MUTATIONS].
+
+### The audit's probes, before and after (`docs/final-stage4-evidence/probes/`)
+
+- **No offensive status on a retreating leg:** the four retreats and Kamensky's turn 0 minutes (motion-vs-status: rg_inf 85, rg_cav 85, milo 80,
+  lich 40 before). The probe's wider heuristic (any moving formation whose heading is over 120 degrees off its nearest enemy) still lists short
+  runs of advances whose nearest enemy is momentarily behind them (Caffarelli, Suchet, Nansouty 5-10 minutes, Vandamme, Legrand, the grenadiers)
+  and kollo@5's forced leg (decision 181 (a)); none is a retreat.
+- **No opposing legs within 0.5 km outside a recorded melee:** 0 (were 12 runs, the pass-throughs among them: Legrand through the III Column
+  37 m, Bourcier through Dokhturov 12 m and Kienmayer 26 m); the ten recorded fights are the sim-test's register.
+- **The grades:** 0 carried A (were 44). **Sokolnitz:** held throughout. **The Litava:** 2 leg crossings, both at Augezd; no anchor on the river.
+- **`check:chronology` unchanged in its verdicts:** 70 moves with a timed statement, 66 consistent, 4 early (the four named conflicts), 0 late,
+  0 errors, as on `main`; its lists change by kamensky@3 in CEILING_FLAGGED (above) and the movement audit's derived arrivals list the five held legs.
+
+### Verified
+
+[VERIFIED]
+
+### The baselines
+
+[BASELINES]
+
+### Not done, and why (handed on)
+
+- **Readings not acted on, beyond the findings' scope:** Liechtenstein @6-@8 drawn north toward Krug where the readings put the cavalry between
+  Blasowitz and Pratzen, then at the foot of the Pratzen height until nightfall (S7.31); Kienmayer @9 and Dokhturov @9 on the ice at 17:00 where
+  the readings have both across the dam by about 16:00 (S7.34); Dokhturov @7 east of the brook at Telnitz; the Guard cavalry @9 on the Pratzen while
+  gqg@8's act has Napoleon come to the chapel with it (S7.12, C4.13; Ségur disputes); the Guard cavalry @7 by Blasowitz in Schönhals and Stutterheim;
+  Saint-Hilaire @2 and Vandamme @2 west of the Goldbach while the order of 1 December and Thiébault put Soult's divisions beyond it; Vandamme @4
+  "Consolidates" while Schönhals and Stutterheim have it fighting Miloradovich; Legrand @2's fight at 08:00 while Davout has Sokolnitz "not yet
+  attacked"; the Russian Guard's blow on Vandamme at about one in Savary and Ségur against the map's 11:15; the Guard's place before its attack
+  (drawn on Mikhailovsky-Danilevsky's side, said so); Kienmayer @7's point (moving it west needs a hold decision 285 (a) does not cover); Bourcier
+  and Friant toward Menitz at nightfall (Davout; drawn by Telnitz, said so); the plan's Guard objective point (unchanged at Krzenowitz; Krug's place
+  is WP-04b's).
+- **Grades:** the carried B and C grades (46) were not reviewed (decision 272 (a)'s question named the 44 A); the researchers' proposals where not
+  taken are in `grades-review.md`.
+- **The Walk-Mühle's site, the hour of Blasowitz's fall and of the Sokolnitz castle's, who last retook Telnitz:** not established by the readings.
+- **The accepted compromises CL-HIS-16 and -17** are kept as they are.
+
 ## 2026-11 · Final audits' roadmap, Stage 3: WP-05 and WP-06 (the panels while the clock moves; the camera and the timeline under input)
 
 **Status: on `claude/stage-3-audit-panels-camera-owvd38` (a draft PR into `main`, for review, not merged).** Stage 3 of
@@ -602,7 +740,7 @@ checks), `check:visual` (run 41080693215, 4 h 11 min) on the motion block, `plan
 reading (question 267, above), its 37 other cases passing; this build's census in both frames 864 calls and 2,151,193 triangles on the
 desktop, 1,288,561 on the phone (section 21.9). Not verified: the device runs (pending). Unresolved (register section 5): the road's and the post's places in 1805; Bagration's exact line at dawn; what the
 heights by Dwaroschna were; which side of the road Schönhals's height lay; Krug's place (the Second Survey's "Kruch" beside Holubitz); Caffarelli's
-anchors 2.5-2.9 km south of Bagration's from 14:30 (not re-plotted).
+anchors 2.5-2.9 km south of Bagration's from 14:30 (not re-plotted) [the final audits' Stage 4 (CL-HIS-09): measured, 2.1-2.6 km, 2.13 km at 14:30 and 2.64 km at 17:00].
 
 ## 2026-10 · Stage 8, the follow-up 8J: the Sokolnitz group, the Pratzen church and the Austerlitz garden (decision 259 (a); a data task)
 
