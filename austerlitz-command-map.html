@@ -5360,8 +5360,11 @@ function coverClass(mx,mz,ml){
      where no such wood lies (woodP 0), the classes are as before */
   if(woodP>0.5) return 4;
   if(water>0.55&&ml<-2.6) return 3;
-  if(marsh>0.45&&ml<0.4) return 2;
+  /* the final audits' Stage 4, WP-04b (CL-GEO-05): inside a village's place (its cover above 0.55) the village before the marsh, so that Sokolnitz,
+     Telnitz and Kobelnitz stand on their own ground with the marsh beside them; until WP-04b the marsh came first and 21 of Sokolnitz's 27 buildings,
+     20 of Telnitz's 25 and 9 of Kobelnitz's 16 stood on it. The marsh's extent (MARSH, covMarsh), which the movement model reads (wetAt), is unchanged */
   if(vill>0.55) return 5;
+  if(marsh>0.45&&ml<0.4) return 2;
   if(wood>0.5) return 4;
   if(road>0.6) return 7;
   if(vine>0.55) return 6;
@@ -6161,8 +6164,8 @@ var GROUND_FRAG_HEAD=[
   "  if(gPond(uPondS,p)>0.5||gPond(uPondM,p)>0.5) return 3.0;",
   "  if(B.z>0.5) return 4.0;",
   "  if(A.x>0.55&&ml< -2.6) return 3.0;",
+  "  if(A.w>0.55) return 5.0;",   /* WP-04b (CL-GEO-05): the village before the marsh, as coverClass */
   "  if(A.y>0.45&&ml<0.4) return 2.0;",
-  "  if(A.w>0.55) return 5.0;",
   "  if(A.z>0.5) return 4.0;",
   "  if(B.x>0.6) return 7.0;",
   "  if(B.y>0.55) return 6.0;",
