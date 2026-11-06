@@ -1,0 +1,31 @@
+was: WP-03's check:selftest report (build 1bc31538, the lead's run; its motion counts are those tools/visual/thresholds.js MOTION holds since decision 287 (a), and its gait count the H_CASES of 288 (a)); is: WP-04b final (b1deeb38), this branch's run
+runs 26 26
+  jumps    all driven: was   307 is   333
+  pops     all driven: was  1713 is  1715
+  lod      all driven: was   166 is   166
+  flicker  all driven: was    15 is    12
+  runs differing:
+    hybrid-glide           was j15 p83 lod12 fl4 drawn 1153/1786 longest 1700 | is j13 p81 lod12 fl1 drawn 1172/1786 longest 1700
+    hybrid-orbit           was j9 p145 lod0 fl0 drawn 1564/2548 longest 1833 | is j9 p145 lod0 fl0 drawn 1520/2548 longest 1833
+    hybrid-orbit+point     was j9 p145 lod0 fl0 drawn 1564/2548 longest 1833 | is j9 p145 lod0 fl0 drawn 1520/2548 longest 1833
+    hybrid-orbit+real      was j9 p145 lod0 fl0 drawn 1564/2548 longest 1833 | is j9 p145 lod0 fl0 drawn 1520/2548 longest 1833
+    hybrid-orbit+sel       was j7 p143 lod0 fl2 drawn 1593/2548 longest 2033 | is j18 p133 lod0 fl1 drawn 1524/2548 longest 2100
+    hybrid-pan             was j4 p71 lod23 fl0 drawn 1359/2036 longest 2467 | is j7 p68 lod23 fl0 drawn 1368/2036 longest 2467
+    hybrid-pan+al          was j8 p42 lod13 fl0 drawn 948/1270 longest 1467 | is j10 p41 lod13 fl0 drawn 976/1270 longest 1467
+    hybrid-pan+fr          was j6 p66 lod23 fl0 drawn 1318/1959 longest 2467 | is j8 p65 lod23 fl0 drawn 1319/1959 longest 2467
+    hybrid-play            was j11 p99 lod2 fl0 drawn 2073/3388 longest 4033 | is j11 p99 lod2 fl0 drawn 2079/3388 longest 4033
+    hybrid-zoom            was j26 p107 lod24 fl1 drawn 1242/2203 longest 2133 | is j24 p116 lod24 fl1 drawn 1245/2203 longest 2133
+    land-orbit             was j32 p99 lod0 fl0 drawn 1749/2366 longest 1167 | is j31 p104 lod0 fl0 drawn 1753/2366 longest 667
+    land-pan               was j14 p48 lod2 fl0 drawn 1783/2038 longest 667 | is j17 p46 lod2 fl0 drawn 1800/2038 longest 667
+    land-play              was j17 p75 lod2 fl0 drawn 2615/3146 longest 667 | is j15 p77 lod2 fl1 drawn 2603/3146 longest 667
+    land-zoom              was j26 p68 lod30 fl0 drawn 1649/2207 longest 667 | is j31 p67 lod30 fl0 drawn 1655/2207 longest 667
+    low-orbit              was j14 p26 lod0 fl0 drawn 665/859 longest 633 | is j17 p30 lod0 fl0 drawn 649/859 longest 667
+    low-zoom               was j26 p22 lod4 fl0 drawn 457/590 longest 667 | is j30 p24 lod4 fl0 drawn 441/590 longest 667
+self-test: was 323 of 325 ok, is 323 of 325 ok
+  CHANGED: FAIL -> ok derived readings tagged: every formation's march row (Marching, Next move) and every aggregate's midpoint (the mean of its formations on the field, th
+  CHANGED: ok -> FAIL the artillery (decision 243 (a), ORDNANCE): the pieces' wheels at Gassendi's heights at the figures' scale, every wheel the same turned by one spoke's
+  still FAIL: the gait on the ground (decision 244 (a); 8F's prerequisite 2): each instance against itself at rest, both levels, at 4x and 10.33x, fresh and in moti
+  gait was WRONG cases: [('4x men drawn fresh rich', '25', '21', '24')]
+  gait was kept open (found, at most): [('28', '31'), ('25', '28'), ('1', '3'), ('0', '0'), ('29', '32'), ('29', '32'), ('2', '4'), ('0', '0'), ('21', '24'), ('14', '16'), ('1', '3'), ('0', '0'), ('20', '22'), ('11', '13'), ('0', '0'), ('0', '0'), ('29', '32'), ('27', '30'), ('1', '3'), ('0', '0'), ('29', '32'), ('29', '32'), ('0', '0'), ('0', '0'), ('21', '24'), ('9', '11'), ('0', '0'), ('0', '0'), ('14', '16'), ('4', '6'), ('0', '0'), ('0', '0')]
+  gait is WRONG cases: [('10.33x horses drawn fresh rich', '40', '28', '31'), ('10.33x horses drawn fresh simple', '38', '25', '28'), ('10.33x horses drawn motion rich', '13', '1', '3'), ('10.33x horses edges fresh rich', '38', '29', '32'), ('10.33x horses edges fresh simple', '38', '29', '32'), ('10.33x horses edges motion rich', '9', '2', '4')]
+  gait is kept open (found, at most): [('28', '31'), ('25', '28'), ('1', '3'), ('0', '0'), ('29', '32'), ('29', '32'), ('2', '4'), ('0', '0'), ('21', '24'), ('14', '16'), ('1', '3'), ('0', '0'), ('20', '22'), ('11', '13'), ('0', '0'), ('0', '0'), ('29', '32'), ('27', '30'), ('1', '3'), ('0', '0'), ('29', '32'), ('29', '32'), ('0', '0'), ('0', '0'), ('25', '28'), ('9', '11'), ('0', '0'), ('0', '0'), ('14', '16'), ('4', '6'), ('0', '0'), ('0', '0')]
