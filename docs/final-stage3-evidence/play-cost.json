@@ -1,0 +1,49 @@
+{
+ "what": "the clock's step per 60 Hz frame at 4x (0.644 clock minutes), 300 frames from 09:00, median of three passes, ms",
+ "builds": {
+  "postaudit2-e7d6924f.html": {
+   "no dossier": {
+    "msPerFrame": 0.315,
+    "repaints": 0,
+    "frames": 300
+   },
+   "Saint-Hilaire's card": {
+    "msPerFrame": 0.281,
+    "repaints": 3,
+    "frames": 300
+   },
+   "Saint-Hilaire's full dossier": {
+    "msPerFrame": 0.313,
+    "repaints": 3,
+    "frames": 300
+   },
+   "the IV Column's full dossier": {
+    "msPerFrame": 0.288,
+    "repaints": 3,
+    "frames": 300
+   }
+  },
+  "austerlitz-command-map.html": {
+   "no dossier": {
+    "msPerFrame": 0.292,
+    "repaints": 0,
+    "frames": 300
+   },
+   "Saint-Hilaire's card": {
+    "msPerFrame": 0.32,
+    "repaints": 20,
+    "frames": 300
+   },
+   "Saint-Hilaire's full dossier": {
+    "msPerFrame": 0.541,
+    "repaints": 20,
+    "frames": 300
+   },
+   "the IV Column's full dossier": {
+    "msPerFrame": 0.489,
+    "repaints": 20,
+    "frames": 300
+   }
+  }
+ }
+}

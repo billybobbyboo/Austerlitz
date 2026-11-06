@@ -46,7 +46,7 @@ Every pass keeps the project's rules (`CLAUDE.md`):
 
 ## The stages
 
-**Status (4 November 2026):** Stage 1 is built on `claude/inspiring-franklin-qt51w2` (a draft PR, for review). Four of WP-13's items are deferred with reasons: CL-ROB-03, -08, -09 and -13 (`CHANGELOG.md`).
+**Status (5 November 2026):** Stages 1 and 2 are merged (#82, #83). Four of WP-13's items are deferred with reasons: CL-ROB-03, -08, -09 and -13 (`CHANGELOG.md`). Stage 3 (WP-05, WP-06) is built on `claude/stage-3-audit-panels-camera-owvd38` (a draft PR, for review); what it leaves is listed in `CHANGELOG.md`.
 
 | stage | passes | days | the gate it closes |
 |---|---|---|---|

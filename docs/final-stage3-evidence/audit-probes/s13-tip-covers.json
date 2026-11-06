@@ -1,0 +1,1468 @@
+{
+ "name": "s13-tip-covers",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 2868902,
+  "md5": "7ce28d255e6651f1fba2fce527bdcdb1"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-05T22:57:42.044Z",
+ "opts": {
+  "viewports": [
+   [
+    1280,
+    720
+   ],
+   [
+    1600,
+    900
+   ]
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1280,
+    720
+   ],
+   "o": {},
+   "bootMs": 21026
+  },
+  {
+   "kind": "desk",
+   "size": [
+    1600,
+    900
+   ],
+   "o": {},
+   "bootMs": 22131
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 21164,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 14,
+     "dropped": 17
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.41,
+      64.61
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 26
+  },
+  {
+   "page": 0,
+   "label": "1280: the pointer from the map onto the event marker '07:00, Kienmayer attacks Telnitz (the ho' (real mouse, 6 steps)",
+   "at": 21196,
+   "ret": {
+    "shown": true,
+    "text": "07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)",
+    "box": [
+     92,
+     641,
+     472,
+     688
+    ],
+    "overlapping": [
+     "prev",
+     "play",
+     "next",
+     "nextEv",
+     "follow",
+     "The Deception",
+     "The Allied Adv",
+     "The Pratzen St",
+     "Deployment",
+     "Telnitz",
+     "Sokolnitz",
+     "The Pratzen"
+    ],
+    "centreCovered": [
+     "play",
+     "next",
+     "nextEv",
+     "follow",
+     "The Deception",
+     "The Allied Adv"
+    ]
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 14,
+     "dropped": 17
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.41,
+      64.61
+     ],
+     "tgt": [
+      -38.81,
+      0.5,
+      3.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 11719
+  },
+  {
+   "page": 0,
+   "label": "1280: the pointer from the marker to the Play button's centre (12 steps), then pressed and released there",
+   "at": 32916,
+   "ret": {
+    "before": false,
+    "at": "play",
+    "after": true,
+    "tipAfter": {
+     "shown": false
+    }
+   },
+   "s": {
+    "clock": 240.333,
+    "clockText": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 11,
+     "dropped": 19
+    },
+    "overlays": 63,
+    "drawon": [
+     0.001
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -56.53,
+      508.72,
+      80.04
+     ],
+     "tgt": [
+      -42.27,
+      0.56,
+      7.4
+     ]
+    }
+   },
+   "log": [],
+   "ms": 741
+  },
+  {
+   "page": 0,
+   "label": "1280: control: the pointer to empty ground first (300 ms), then to Play and pressed",
+   "at": 33658,
+   "ret": {
+    "before": false,
+    "after": true
+   },
+   "s": {
+    "clock": 240.667,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 11,
+     "dropped": 19
+    },
+    "overlays": 63,
+    "drawon": [
+     0.003
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -73.13,
+      493.87,
+      94.39
+     ],
+     "tgt": [
+      -45.64,
+      0.47,
+      10.74
+     ]
+    }
+   },
+   "log": [],
+   "ms": 899
+  },
+  {
+   "page": 1,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 56953,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.68,
+      61.01
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.18
+     ]
+    }
+   },
+   "log": [],
+   "ms": 25
+  },
+  {
+   "page": 1,
+   "label": "1600: the pointer from the map onto the event marker '07:00, Kienmayer attacks Telnitz (the ho' (real mouse, 6 steps)",
+   "at": 56982,
+   "ret": {
+    "shown": true,
+    "text": "07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)",
+    "box": [
+     161,
+     821,
+     541,
+     868
+    ],
+    "overlapping": [
+     "next",
+     "nextEv",
+     "follow",
+     "The Deception",
+     "The Allied Adv",
+     "Deployment",
+     "Telnitz",
+     "Sokolnitz"
+    ],
+    "centreCovered": [
+     "next",
+     "nextEv",
+     "follow",
+     "The Deception",
+     "The Allied Adv"
+    ]
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.68,
+      61.01
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.18
+     ]
+    }
+   },
+   "log": [],
+   "ms": 16010
+  },
+  {
+   "page": 1,
+   "label": "1600: the pointer from the marker to the Play button's centre (12 steps), then pressed and released there",
+   "at": 72992,
+   "ret": {
+    "before": false,
+    "at": "play",
+    "after": true,
+    "tipAfter": {
+     "shown": false
+    }
+   },
+   "s": {
+    "clock": 240.333,
+    "clockText": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/true",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 16,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0.001
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -54.79,
+      477.53,
+      74.92
+     ],
+     "tgt": [
+      -41.41,
+      0.57,
+      6.75
+     ]
+    }
+   },
+   "log": [],
+   "ms": 853
+  },
+  {
+   "page": 1,
+   "label": "1600: control: the pointer to empty ground first (300 ms), then to Play and pressed",
+   "at": 73845,
+   "ret": {
+    "before": false,
+    "after": true
+   },
+   "s": {
+    "clock": 240.667,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/false",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 14,
+     "dropped": 16
+    },
+    "overlays": 63,
+    "drawon": [
+     0.003
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -69.78,
+      464.26,
+      87.87
+     ],
+     "tgt": [
+      -43.94,
+      0.54,
+      9.25
+     ]
+    }
+   },
+   "log": [],
+   "ms": 987
+  }
+ ],
+ "checks": [
+  {
+   "id": "play-under-tip-1280",
+   "ok": true,
+   "expected": "a press on Play reached from a hovered marker toggles Play",
+   "observed": {
+    "marker": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+    "tipWhileHovering": {
+     "shown": true,
+     "text": "07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)",
+     "box": [
+      92,
+      641,
+      472,
+      688
+     ],
+     "overlapping": [
+      "prev",
+      "play",
+      "next",
+      "nextEv",
+      "follow",
+      "The Deception",
+      "The Allied Adv",
+      "The Pratzen St",
+      "Deployment",
+      "Telnitz",
+      "Sokolnitz",
+      "The Pratzen"
+     ],
+     "centreCovered": [
+      "play",
+      "next",
+      "nextEv",
+      "follow",
+      "The Deception",
+      "The Allied Adv"
+     ]
+    },
+    "underPointerAtPlay": "play",
+    "playingBefore": false,
+    "playingAfter": true,
+    "tipAfter": {
+     "shown": false
+    }
+   }
+  },
+  {
+   "id": "play-control-1280",
+   "ok": true,
+   "expected": "the same press after the pointer has left the timeline toggles Play",
+   "observed": {
+    "before": false,
+    "after": true
+   }
+  },
+  {
+   "id": "play-under-tip-1600",
+   "ok": true,
+   "expected": "a press on Play reached from a hovered marker toggles Play",
+   "observed": {
+    "marker": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+    "tipWhileHovering": {
+     "shown": true,
+     "text": "07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)",
+     "box": [
+      161,
+      821,
+      541,
+      868
+     ],
+     "overlapping": [
+      "next",
+      "nextEv",
+      "follow",
+      "The Deception",
+      "The Allied Adv",
+      "Deployment",
+      "Telnitz",
+      "Sokolnitz"
+     ],
+     "centreCovered": [
+      "next",
+      "nextEv",
+      "follow",
+      "The Deception",
+      "The Allied Adv"
+     ]
+    },
+    "underPointerAtPlay": "play",
+    "playingBefore": false,
+    "playingAfter": true,
+    "tipAfter": {
+     "shown": false
+    }
+   }
+  },
+  {
+   "id": "play-control-1600",
+   "ok": true,
+   "expected": "the same press after the pointer has left the timeline toggles Play",
+   "observed": {
+    "before": false,
+    "after": true
+   }
+  }
+ ],
+ "shots": [],
+ "notes": [],
+ "near1280": [
+  {
+   "i": 0,
+   "x": 8,
+   "label": "04:00 to 04:45, Friant's division at Raigern since"
+  },
+  {
+   "i": 1,
+   "x": 31,
+   "label": "04:15 to 08:00, Liechtenstein counter-marches acro"
+  },
+  {
+   "i": 2,
+   "x": 277,
+   "label": "07:00, Kienmayer attacks Telnitz (the hour is disp"
+  },
+  {
+   "i": 3,
+   "x": 277,
+   "label": "07:00 to 08:00, The Allied columns begin to leave "
+  },
+  {
+   "i": 4,
+   "x": 366,
+   "label": "08:00, Langeron and Przybyszewski attack Sokolnitz"
+  },
+  {
+   "i": 5,
+   "x": 402,
+   "label": "08:25 to 08:45, Napoleon releases Soult against th"
+  },
+  {
+   "i": 6,
+   "x": 433,
+   "label": "08:45 to 09:15, Friant's leading brigade reaches t"
+  },
+  {
+   "i": 7,
+   "x": 433,
+   "label": "08:45 to 09:15, Saint-Hilaire and Vandamme climb t"
+  },
+  {
+   "i": 8,
+   "x": 455,
+   "label": "09:00, Thiébault's brigade clears Pratzen village"
+  },
+  {
+   "i": 9,
+   "x": 476,
+   "label": "09:15, Kutuzov orders the 4th Column to face about"
+  },
+  {
+   "i": 10,
+   "x": 500,
+   "label": "09:30, Friant retakes Telnitz, then loses it again"
+  },
+  {
+   "i": 11,
+   "x": 523,
+   "label": "09:45, Kamensky turns his brigade about and drives"
+  }
+ ],
+ "case1280": {
+  "tip": {
+   "shown": true,
+   "text": "07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)",
+   "box": [
+    92,
+    641,
+    472,
+    688
+   ],
+   "overlapping": [
+    "prev",
+    "play",
+    "next",
+    "nextEv",
+    "follow",
+    "The Deception",
+    "The Allied Adv",
+    "The Pratzen St",
+    "Deployment",
+    "Telnitz",
+    "Sokolnitz",
+    "The Pratzen"
+   ],
+   "centreCovered": [
+    "play",
+    "next",
+    "nextEv",
+    "follow",
+    "The Deception",
+    "The Allied Adv"
+   ]
+  },
+  "r": {
+   "before": false,
+   "at": "play",
+   "after": true,
+   "tipAfter": {
+    "shown": false
+   }
+  }
+ },
+ "near1600": [
+  {
+   "i": 0,
+   "x": 8,
+   "label": "04:00 to 04:45, Friant's division at Raigern since"
+  },
+  {
+   "i": 1,
+   "x": 36,
+   "label": "04:15 to 08:00, Liechtenstein counter-marches acro"
+  },
+  {
+   "i": 2,
+   "x": 345,
+   "label": "07:00, Kienmayer attacks Telnitz (the hour is disp"
+  },
+  {
+   "i": 3,
+   "x": 345,
+   "label": "07:00 to 08:00, The Allied columns begin to leave "
+  },
+  {
+   "i": 4,
+   "x": 457,
+   "label": "08:00, Langeron and Przybyszewski attack Sokolnitz"
+  },
+  {
+   "i": 5,
+   "x": 503,
+   "label": "08:25 to 08:45, Napoleon releases Soult against th"
+  }
+ ],
+ "case1600": {
+  "tip": {
+   "shown": true,
+   "text": "07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)",
+   "box": [
+    161,
+    821,
+    541,
+    868
+   ],
+   "overlapping": [
+    "next",
+    "nextEv",
+    "follow",
+    "The Deception",
+    "The Allied Adv",
+    "Deployment",
+    "Telnitz",
+    "Sokolnitz"
+   ],
+   "centreCovered": [
+    "next",
+    "nextEv",
+    "follow",
+    "The Deception",
+    "The Allied Adv"
+   ]
+  },
+  "r": {
+   "before": false,
+   "at": "play",
+   "after": true,
+   "tipAfter": {
+    "shown": false
+   }
+  }
+ },
+ "ms": 74841,
+ "ended": "2026-11-05T22:58:56.885Z"
+}

@@ -1,0 +1,99 @@
+=== interaction/s14-glide-input.js
+22:57:38 s14-glide-input | vantage glide + drag: the visitor's input mid-glide (real), then the camera at its end | clock 04:00 play false study/terrain sel null focus body  
+22:57:38   ok  held-vantage-glide-drag | a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off) | {"glideRunningAtInput":true,"movedAfterInput":0,"atRelease":{"pos":[-113.09,512.1,58.31],"tgt":[-106.9,0.21,-24.94],"freeCam":true,"twCam":false,"vantage":null},"end":{"pos":[-113.09,512.1,58.31],"tgt":[-106.9,0.21,-24.94],"freeCam":true,"twCam":false,"vantage":null},"freeCamAtEnd":true,"glideSlotAtRelease":false}
+22:57:39 s14-glide-input | vantage glide + wheel: frames until no tween; start the glide (real click or key); 10 frames | clock 04:00 play false study/terrain sel null focus button.t[Pratzen]  
+22:57:39 s14-glide-input | vantage glide + wheel: the visitor's input mid-glide (real), then the camera at its end | clock 04:00 play false study/terrain sel null focus button.t[Pratzen]  
+22:57:39   ok  held-vantage-glide-wheel | a wheel during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off) | {"glideRunningAtInput":true,"movedAfterInput":0,"atRelease":{"pos":[-107.85,376.68,53.7],"tgt":[-104.15,0.24,-24.57],"freeCam":true,"twCam":false,"vantage":null},"end":{"pos":[-107.85,376.68,53.7],"tgt":[-104.15,0.24,-24.57],"freeCam":true,"twCam":false,"vantage":null},"freeCamAtEnd":true,"glideSlotAtRelease":false}
+22:57:39 s14-glide-input | phase glide (PageDown) + drag: frames until no tween; start the glide (real click or key); 10 frames | clock 07:00 play false study/terrain sel null focus #timerail  
+22:57:39 s14-glide-input | phase glide (PageDown) + drag: the visitor's input mid-glide (real), then the camera at its end | clock 07:00 play false study/terrain sel null focus body  
+22:57:40   NOT AS EXPECTED  held-phase-glide-PageDown-drag | a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off) | {"glideRunningAtInput":false,"movedAfterInput":0,"atRelease":{"pos":[-160.08,376.68,33.85],"tgt":[-156.39,0.67,-44.33],"freeCam":true,"twCam":false,"vantage":null},"end":{"pos":[-160.08,376.68,33.85],"tgt":[-156.39,0.67,-44.33],"freeCam":true,"twCam":false,"vantage":null},"freeCamAtEnd":true,"glideSlotAtRelease":false}
+22:57:40 s14-glide-input | dossier centring + drag: frames until no tween; start the glide (real click or key); 10 frames | clock 07:00 play false study/terrain sel f:legrand focus #drawer-back  
+22:57:40 s14-glide-input | dossier centring + drag: the visitor's input mid-glide (real), then the camera at its end | clock 07:00 play false study/terrain sel f:legrand focus body  
+22:57:40   ok  held-dossier-centring-drag | a drag during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off) | {"glideRunningAtInput":true,"movedAfterInput":0,"atRelease":{"pos":[-186.96,366.21,26.92],"tgt":[-180.02,1.42,-60.46],"freeCam":true,"twCam":false,"vantage":null},"end":{"pos":[-186.96,366.21,26.92],"tgt":[-180.02,1.42,-60.46],"freeCam":true,"twCam":false,"vantage":null},"freeCamAtEnd":true,"glideSlotAtRelease":false}
+22:57:41 s14-glide-input | vantage glide + map arrow keys: frames until no tween; start the glide (real click or key); 10 frames | clock 07:00 play false study/terrain sel null focus button.t[Allied]  
+22:57:41 s14-glide-input | vantage glide + map arrow keys: the visitor's input mid-glide (real), then the camera at its end | clock 07:00 play false study/terrain sel null focus #maplayer  
+22:57:41   ok  held-vantage-glide-map-arrow-keys | a map arrow keys during a glide takes the camera: once the input ends the eye stays where the visitor left it (Follow off) | {"glideRunningAtInput":true,"movedAfterInput":0,"atRelease":{"pos":[-181.21,360.19,41.52],"tgt":[-180,1.4,-59.64],"freeCam":true,"twCam":false,"vantage":null},"end":{"pos":[-181.21,360.19,41.52],"tgt":[-180,1.4,-59.64],"freeCam":true,"twCam":false,"vantage":null},"freeCamAtEnd":true,"glideSlotAtRelease":false}
+22:57:41 DONE s14-glide-input checks 5 not as expected 1 ms 37112
+=== interaction/s13-tip-covers.js
+22:58:03 s13-tip-covers | Esc closes the first-run card; 2 frames | clock 04:00 play false study/terrain sel null focus #play  
+22:58:14 s13-tip-covers | 1280: the pointer from the map onto the event marker '07:00, Kienmayer attacks Telnitz (the ho' (real mouse, 6 steps) | clock 04:00 play false study/terrain sel null focus #play  
+22:58:15 s13-tip-covers | 1280: the pointer from the marker to the Play button's centre (12 steps), then pressed and released there | clock 04:00 play true study/terrain sel null focus #play  
+22:58:15   ok  play-under-tip-1280 | a press on Play reached from a hovered marker toggles Play | {"marker":"07:00, Kienmayer attacks Telnitz (the hour is disputed)","tipWhileHovering":{"shown":true,"text":"07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)","box":[92,641,472,688],"overlapping":["prev","play","next","nextEv","follow","The Deception","The Allied Adv","The Pratzen St","Deployment","Telnitz","Sokolnitz","The Pratzen"],"centreCovered":["play","next
+22:58:16 s13-tip-covers | 1280: control: the pointer to empty ground first (300 ms), then to Play and pressed | clock 04:00 play false study/terrain sel null focus #play  
+22:58:16   ok  play-control-1280 | the same press after the pointer has left the timeline toggles Play | {"before":false,"after":true}
+22:58:39 s13-tip-covers | Esc closes the first-run card; 2 frames | clock 04:00 play false study/terrain sel null focus #play  
+22:58:55 s13-tip-covers | 1600: the pointer from the map onto the event marker '07:00, Kienmayer attacks Telnitz (the ho' (real mouse, 6 steps) | clock 04:00 play false study/terrain sel null focus #play  
+22:58:55 s13-tip-covers | 1600: the pointer from the marker to the Play button's centre (12 steps), then pressed and released there | clock 04:00 play true study/terrain sel null focus #play  
+22:58:55   ok  play-under-tip-1600 | a press on Play reached from a hovered marker toggles Play | {"marker":"07:00, Kienmayer attacks Telnitz (the hour is disputed)","tipWhileHovering":{"shown":true,"text":"07:00 - 08:00: The Allied columns begin to leave the plateau (the hour is disputed)","box":[161,821,541,868],"overlapping":["next","nextEv","follow","The Deception","The Allied Adv","Deployment","Telnitz","Sokolnitz"],"centreCovered":["next","nextEv","follow","The Deception","The Allied Adv
+22:58:56 s13-tip-covers | 1600: control: the pointer to empty ground first (300 ms), then to Play and pressed | clock 04:00 play false study/terrain sel null focus #play  
+22:58:56   ok  play-control-1600 | the same press after the pointer has left the timeline toggles Play | {"before":false,"after":true}
+22:58:57 DONE s13-tip-covers checks 4 not as expected 0 ms 74841
+=== interaction/s7-resize-rotate.js
+22:59:48 s7-resize-rotate | Esc | clock 11:15 play false study/terrain sel null focus #play  
+23:00:04 s7-resize-rotate | phone: tap the card's 'Explore on my own' | clock 04:00 play false study/terrain sel null focus #play  
+23:00:06 s7-resize-rotate | tap the Menu | clock 04:00 play false study/terrain sel null focus button.vm-btn[Study]  
+23:00:06   ok  phone-menu | the Menu open | {"on":true,"menu":true,"sheet":false,"layers":false,"drawer":false,"rail":false}
+23:00:09 s7-resize-rotate | turn the phone (844 x 390) | clock 04:00 play false study/terrain sel null focus body  
+23:00:09   ok  phone-turn-menu | turned: the landscape layout, the Menu closed, nothing off screen, focus visible | {"phone":{"on":false,"menu":false,"sheet":false,"layers":false,"drawer":false,"rail":false},"offscreen":[],"focus":"body","focusVisible":null}
+23:00:10 s7-resize-rotate | turn back (390 x 844) | clock 04:00 play false study/terrain sel null focus body  
+23:00:10   ok  phone-turn-back | turned back: the phone layout | {"phone":{"on":true,"menu":false,"sheet":false,"layers":false,"drawer":false,"rail":false},"offscreen":[],"focus":"body"}
+23:00:10 s7-resize-rotate | tap the dispatch sheet's grip (open) | clock 04:00 play false study/terrain sel null focus #dgrip  
+23:00:12 s7-resize-rotate | turn (844 x 390) and back (390 x 844) with the dispatch sheet open | clock 04:00 play false study/terrain sel null focus #play  
+23:00:12   ok  phone-sheet-turn | the dispatch sheet across a turn: nothing off screen | {"landscape":{"phone":{"on":false,"menu":false,"sheet":false,"layers":false,"drawer":false,"rail":false},"focus":"#play","focusVisible":true},"back":{"on":true,"menu":false,"sheet":false,"layers":false,"drawer":false,"rail":false},"offA":[],"offB":[]}
+23:00:12 s7-resize-rotate | tap a formation on the map (its sheet opens) | clock 04:00 play false study/terrain sel f:gqg focus body  
+23:00:14 s7-resize-rotate | turn (844 x 390) with the dossier open; then back | clock 04:00 play false study/terrain sel f:gqg focus body  
+23:00:14   ok  phone-dossier-turn | the dossier across a turn: kept, inside the window | {"landscape":{"drawer":{"on":true,"visible":true,"head":"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I","len":2177,"inert":false},"focus":"body","focusVisible":null,"sel":"f:gqg"},"back":{"drawer":{"on":true,"visible":true,"head":"G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I","len":2177,"inert":false},"sel":"f:gqg"},"offA":[],"offB":[]}
+23:00:14 DONE s7-resize-rotate checks 22 not as expected 2 ms 77053
+=== interaction/s6-panels-while-dragging.js
+23:01:03 s6-panels-while-dragging | click Layers; drag the map 80 px; 3 frames | clock 04:00 play false study/terrain sel null focus body  
+23:01:03   ok  layers-drag | a drag pans with the Layers panel open | {"ret":{"moved":true},"layersOpen":false}
+23:01:03 s6-panels-while-dragging | Esc | clock 04:00 play false study/terrain sel null focus body  
+23:01:04 s6-panels-while-dragging | click the Key's head (legend open); wheel over the legend; wheel over the map | clock 04:00 play false study/terrain sel null focus #lg-toggle  
+23:01:04   ok  legend-wheel | with the legend open, the wheel over it zooms nothing and over the map zooms | {"legend":true,"overLegend":false,"overMap":true}
+23:01:04 s6-panels-while-dragging | click the Key's head (legend closed) | clock 04:00 play false study/terrain sel null focus #lg-toggle  
+23:01:05 s6-panels-while-dragging | click Follow (on); click Play; 60 frames | clock 04:10 play true study/terrain sel null focus #play  
+23:01:05   ok  follow-on-playing | playing with Follow on | {"freeCam":false,"playing":true}
+23:01:05 s6-panels-while-dragging | drag the map 100 px during Play; release; 90 frames | clock 04:15 play true study/terrain sel null focus body  
+23:01:05   ok  drag-turns-follow-off | a drag during Play turns Follow off; the eye stays where the visitor left it while the clock plays on | {"freeCam":true,"follow":"false","playing":true,"camMovedAfterRelease":false}
+23:01:06 s6-panels-while-dragging | click Follow during Play; 120 frames | clock 04:35 play true study/terrain sel null focus #follow  
+23:01:06   ok  follow-again | Follow pressed again: on, the glide done, following | {"freeCam":false,"tween":{"any":false,"cam":false,"scene":false},"cam":{"pos":[-265.84,128.17,243.3],"tgt":[-74.59,-0.02,44.47]}}
+23:01:07 s6-panels-while-dragging | wheel during Play; 30 frames; click Pause | clock 04:40 play false study/terrain sel null focus #play  
+23:01:07   ok  wheel-follow-off | the wheel turns Follow off | {"freeCam":true}
+23:01:07 DONE s6-panels-while-dragging checks 11 not as expected 1 ms 52269
+=== visual-maps/rail-probe.js
+phone open 14 s
+hit map 390 {"rail":0.342,"marker":0.658,"other":0} foot {"rail":0.906,"marker":0.094,"other":0}
+[["real touch drag starting on the rail (the widest run the hit",570,516.2566844919786,null],["real touch drag starting on an event marker's hit area (08:2",570,673.475935828877,null],["capture after it",null,null,null],["real touchscreen tap on the same point",570,505,"e:decision"],["capture after the tap",null,null,null]]
+hit map 1280x720 {"rail":0.715,"marker":0.285,"other":0} foot {"rail":0.972,"marker":0.028,"other":0}
+hit map 1600x900 {"rail":0.773,"marker":0.227,"other":0} foot {"rail":0.978,"marker":0.022,"other":0}
+rail probe done 158 s
+=== interaction/s10-phone.js
+23:04:06 s10-phone | tap the card's 'Explore on my own'; 2 frames | clock 04:00 play false study/terrain sel null focus #play  
+23:04:06   ok  phone-layout | the phone layout | {"on":true,"menu":false,"sheet":false,"layers":false,"drawer":false,"rail":false}
+23:04:09 s10-phone | tap Play; 30 frames; tap the speed button 4 times with 30 frames between (½× 1× 2× 4× ½×) | clock 04:32 play true study/terrain sel null focus #speedbtn  
+23:04:09   ok  phone-speed-cycle | the speed button steps ½× 1× 2× 4× and round again, its label and name the speed | [{"speed":1,"label":"1×","aria":"Playback speed 1×"},{"speed":2,"label":"2×","aria":"Playback speed 2×"},{"speed":4,"label":"4×","aria":"Playback speed 4×"},{"speed":0.5,"label":"½×","aria":"Playback speed ½×"}]
+23:04:14 s10-phone | frames until a hold; tap the speed button (½× to 1×) in the hold | clock 07:15 play true study/terrain sel null focus #speedbtn  
+23:04:14   ok  phone-speed-hold | the speed tapped in a hold: the hold keeps its 1.5 s, no backward step | {"holdFramesAfterTap":39,"backSteps":0,"speed":1}
+23:04:16 s10-phone | tap the dispatch sheet's grip (open); tap the fifth phase in its list during Play | clock 09:30 play false study/terrain sel null focus body  
+23:04:16   ok  phone-phase-tap | a phase tapped during Play: stopped at its start, the sheet folded | {"clock":570,"expected":570,"playing":false,"sheet":false,"toast":{"text":"","on":false,"op":0,"box":[176,26,214,44],"timer":false}}
+23:04:16   ok  phone-toast-clear | the phase's message over no control | {"on":false}
+23:04:16 s10-phone | tap Play; 30 frames; tap the Menu; tap Watch in it; 30 frames | clock 09:45 play true watch/terrain sel null focus button.vm-btn[Watch]  
+23:04:16   ok  phone-watch-play | Watch from the Menu during Play: playing, the Menu closed | {"playing":true,"presentation":"watch","phone":{"on":true,"menu":false,"sheet":false,"layers":false,"drawer":false,"rail":false},"focus":"button.vm-btn[Watch]","focusVisible":true}
+23:04:17 s10-phone | a finger's drag on the map during Play; 60 frames | clock 09:53 play true watch/terrain sel null focus button.vm-btn[Watch]  
+23:04:17   ok  phone-drag-follow | a finger's pan during Play turns Follow off; the eye stays where the finger left it | {"ret":{"moved":true,"heldAfter":true},"freeCam":true,"playing":true}
+23:04:17 s10-phone | tap Pause | clock 09:53 play false watch/terrain sel null focus #play  
+23:04:17 DONE s10-phone checks 7 not as expected 0 ms 27504
+=== interaction/s10b-phone-drag.js
+23:04:33 s10b-phone-drag | tap 'Explore on my own'; 2 frames | clock 04:00 play false study/terrain sel null focus #play  
+23:04:33 s10b-phone-drag | paused: set up; the camera before | clock 04:00 play false study/terrain sel null focus #play  
+23:04:37 s10b-phone-drag | paused: a one-finger pan (60, 40 px); the camera at the lift and over 60 frames | clock 04:00 play false study/terrain sel null focus #play  
+23:04:37   ok  held-after-lift-paused | after the finger lifts (paused), the eye stays where it left it (Follow off) | {"moved":0,"panned":59.836,"lift":{"pos":[-79.958,863.446,59.402],"tgt":[-79.958,0.703,-40.623],"clock":240,"phase":0,"freeCam":true,"playing":false,"tween":false,"twCam":false,"twScene":false,"vantage":null,"off":null},"last":{"f":60,"pos":[-79.958,863.446,59.402],"tgt":[-79.958,0.703,-40.623],"clock":240,"phase":0,"freeCam":true,"playing":false,"tween":false,"twCam":false,"twScene":false,"vantag
+23:04:37 s10b-phone-drag | Play (by state) for the next case | clock 04:00 play true study/terrain sel null focus #play  
+23:04:37 s10b-phone-drag | playing: set up; the camera before | clock 04:04 play true study/terrain sel null focus #play  
+23:04:38 s10b-phone-drag | playing: a one-finger pan (60, 40 px); the camera at the lift and over 60 frames | clock 04:14 play true study/terrain sel null focus #play  
+23:04:38   ok  held-after-lift-playing | after the finger lifts (playing), the eye stays where it left it (Follow off) | {"moved":0,"panned":49.526,"lift":{"pos":[-121.124,863.446,31.773],"tgt":[-121.124,1.498,-68.159],"clock":246,"phase":0,"freeCam":true,"playing":true,"tween":false,"twCam":false,"twScene":false,"vantage":null,"off":null},"last":{"f":60,"pos":[-121.124,863.446,31.773],"tgt":[-121.124,1.498,-68.159],"clock":254.99,"phase":0,"freeCam":true,"playing":true,"tween":false,"twCam":false,"twScene":false,"v
+23:04:39 s10b-phone-drag | playing in Watch: set up; the camera before | clock 04:15 play true watch/terrain sel null focus button.vm-btn[Watch]  
+23:04:39 s10b-phone-drag | playing in Watch: a one-finger pan (60, 40 px); the camera at the lift and over 60 frames | clock 04:24 play true watch/terrain sel null focus button.vm-btn[Watch]  
+23:04:39   ok  held-after-lift-playing-in-Watch | after the finger lifts (playing in Watch), the eye stays where it left it (Follow off) | {"moved":0,"panned":49.515,"lift":{"pos":[-162.253,863.446,4.171],"tgt":[-162.253,1.776,-95.73],"clock":255.03,"phase":0,"freeCam":true,"playing":true,"tween":false,"twCam":false,"twScene":false,"vantage":null,"off":null},"last":{"f":60,"pos":[-162.253,863.446,4.171],"tgt":[-162.253,1.776,-95.73],"clock":264.17,"phase":0,"freeCam":true,"playing":true,"tween":false,"twCam":false,"twScene":false,"va
+23:04:39 s10b-phone-drag | Pause (by state) | clock 04:24 play false watch/terrain sel null focus #play  
+23:04:39 DONE s10b-phone-drag checks 3 not as expected 0 ms 21602

@@ -1,0 +1,823 @@
+[
+ {
+  "id": "M0",
+  "finding": "none (the unmutated copy)",
+  "rt": {
+   "errors": [],
+   "passed": 10
+  },
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [],
+  "byRunner": {
+   "rt": false,
+   "page": false
+  },
+  "caught": true,
+  "verdict": "passes",
+  "seconds": 241,
+  "note": "run again after the dossier repaint was limited during Play (DRAWER_PLAY_MS)"
+ },
+ {
+  "id": "M1",
+  "finding": "CL-SIM-03",
+  "rt": {
+   "errors": [
+    "WP-05/06, a theme stops the clock (CL-SIM-03): the theme plan left the clock playing"
+   ],
+   "passed": 9
+  },
+  "failed": [
+   "WP-05/06, a theme stops the clock (CL-SIM-03): the theme plan left the clock playing"
+  ],
+  "byRunner": {
+   "rt": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 205
+ },
+ {
+  "id": "M2",
+  "finding": "CL-SIM-07",
+  "rt": {
+   "errors": [
+    "WP-05/06, the first Play frame (CL-SIM-07): at 0.5x the first frame advanced 0.600 clock minutes, a frame's worth is 0.083"
+   ],
+   "passed": 9
+  },
+  "failed": [
+   "WP-05/06, the first Play frame (CL-SIM-07): at 0.5x the first frame advanced 0.600 clock minutes, a frame's worth is 0.083"
+  ],
+  "byRunner": {
+   "rt": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 206
+ },
+ {
+  "id": "M3",
+  "finding": "CL-SIM-08",
+  "rt": {
+   "errors": [
+    "WP-05/06, the caption after a pause in a dwell (CL-SIM-08): at 04:15 paused in the dwell the caption is \"THE DECEPTION&middot;Dispositions in the dark&middot;hour disputedLiechtenstein counter-ma\", after a seek \"THE DECEPTION&middot;Dispositions in the dar"
+   ],
+   "passed": 9
+  },
+  "failed": [
+   "WP-05/06, the caption after a pause in a dwell (CL-SIM-08): at 04:15 paused in the dwell the caption is \"THE DECEPTION&middot;Dispositions in the dark&middot;hour disputedLiechtenstein counter-ma\", after a seek \"THE DECEPTION&middot;Dispositions in the dar"
+  ],
+  "byRunner": {
+   "rt": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 208
+ },
+ {
+  "id": "M4",
+  "finding": "CL-UX-14",
+  "rt": {
+   "errors": [
+    "WP-05/06, the event keys' margin (CL-UX-14): next event from 1 min before 04:15 went to 07:00"
+   ],
+   "passed": 9
+  },
+  "failed": [
+   "WP-05/06, the event keys' margin (CL-UX-14): next event from 1 min before 04:15 went to 07:00"
+  ],
+  "byRunner": {
+   "rt": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 206
+ },
+ {
+  "id": "M5",
+  "finding": "CL-SIM-06",
+  "rt": {
+   "errors": [
+    "WP-05/06, the reading by the minute (CL-SIM-06): 21 minutes whose reading depends on the path: fr 05:43, fr 07:31, fr 07:55, fr 08:07, fr 08:46, fr 08:49"
+   ],
+   "passed": 9
+  },
+  "failed": [
+   "WP-05/06, the reading by the minute (CL-SIM-06): 21 minutes whose reading depends on the path: fr 05:43, fr 07:31, fr 07:55, fr 08:07, fr 08:46, fr 08:49"
+  ],
+  "byRunner": {
+   "rt": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 203
+ },
+ {
+  "id": "M6",
+  "finding": "CL-SIM-04",
+  "rt": {
+   "errors": [
+    "WP-05/06, the overlays' fade (CL-SIM-04): phase 2 stepped past at 0.00 of its fade drawn at 0.90"
+   ],
+   "passed": 9
+  },
+  "failed": [
+   "WP-05/06, the overlays' fade (CL-SIM-04): phase 2 stepped past at 0.00 of its fade drawn at 0.90"
+  ],
+  "byRunner": {
+   "rt": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 199
+ },
+ {
+  "id": "M7",
+  "finding": "CL-SIM-01",
+  "rt": {
+   "errors": [
+    "WP-05/06, dossiers follow the clock (CL-SIM-01): sthilaire: 0 repaints over 14 minutes"
+   ],
+   "passed": 9
+  },
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": false,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2; WRONG: f gqg false [object Object] at 12:08: not a fresh paint; f gqg false [object Object] at 12:12: not a fresh paint; f gqg false [object Object] at 12:17: not a fresh "
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "WP-05/06, dossiers follow the clock (CL-SIM-01): sthilaire: 0 repaints over 14 minutes",
+   "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus: 48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2; WRONG: f gqg false [object Object] at 12:08: not a fresh paint; f gqg false [object Object] at 12:12: not a fresh paint; f gqg false [object Object] at 12:17: not a fresh "
+  ],
+  "byRunner": {
+   "rt": true,
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 222,
+  "note": "run again after the dossier repaint was limited during Play (DRAWER_PLAY_MS)"
+ },
+ {
+  "id": "M7b",
+  "finding": "CL-SIM-01 (the section repaint)",
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": false,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 0 of 2; WRONG: gqg: the focused sources button replaced at 12:38; c_gd: the focused sources button replaced at 11:12"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases; after the input the camera moved at most 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus: 48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 0 of 2; WRONG: gqg: the focused sources button replaced at 12:38; c_gd: the focused sources button replaced at 11:12"
+  ],
+  "byRunner": {
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 30,
+  "note": "run again after the dossier repaint was limited during Play (DRAWER_PLAY_MS)"
+ },
+ {
+  "id": "M8",
+  "finding": "CL-SIM-05",
+  "rt": {
+   "errors": [
+    "WP-05/06, Doing now under a reading (CL-SIM-05): fr 04:00: ahq's card says what it does: <dt>Doing now</dt><dd>Kutuzov's headquarters at Krzenowitz, where the dispositions"
+   ],
+   "passed": 9
+  },
+  "failed": [
+   "WP-05/06, Doing now under a reading (CL-SIM-05): fr 04:00: ahq's card says what it does: <dt>Doing now</dt><dd>Kutuzov's headquarters at Krzenowitz, where the dispositions"
+  ],
+  "byRunner": {
+   "rt": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 203
+ },
+ {
+  "id": "M9",
+  "finding": "CL-SIM-02 (the arrows)",
+  "rt": {
+   "errors": [
+    "WP-05/06, arrows and derived readings under a reading (CL-SIM-02): fr 07:00: kienmayer's arrow drawn against the reading"
+   ],
+   "passed": 9
+  },
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": false,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels; WRONG: fr 07:00: kienmayer's arrow drawn, unknown to the reading; fr 07:00: the label Kienmayer laid out; fr 07:00: dok's arrow drawn, unknown to the reading; fr 07:00: the label I Column descends laid out; fr 07:10: kienmayer's ar"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "WP-05/06, arrows and derived readings under a reading (CL-SIM-02): fr 07:00: kienmayer's arrow drawn against the reading",
+   "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn: 56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels; WRONG: fr 07:00: kienmayer's arrow drawn, unknown to the reading; fr 07:00: the label Kienmayer laid out; fr 07:00: dok's arrow drawn, unknown to the reading; fr 07:00: the label I Column descends laid out; fr 07:10: kienmayer's ar"
+  ],
+  "byRunner": {
+   "rt": true,
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 222,
+  "note": "run again on its own: the first run of the whole set errored because the mutation itself left a comment unclosed (the page did not parse), so it tested nothing; the mutation was corrected in tools/final-stage3/mutate.js"
+ },
+ {
+  "id": "M9b",
+  "finding": "CL-SIM-02 (the derived readings)",
+  "rt": {
+   "errors": [
+    "WP-05/06, arrows and derived readings under a reading (CL-SIM-02): fr 04:00: the Now tab's Allied on the heights 40,915, the reading's 20065"
+   ],
+   "passed": 9
+  },
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": false,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels; WRONG: fr 04:00: the plateau label's Allied 40,915, the known formations' 20065; fr 04:10: the plateau label's Allied 40,915, the known formations' 20065; fr 04:20: the plateau label's Allied 40,915, the known formations' 20065; fr"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "WP-05/06, arrows and derived readings under a reading (CL-SIM-02): fr 04:00: the Now tab's Allied on the heights 40,915, the reading's 20065",
+   "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn: 56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels; WRONG: fr 04:00: the plateau label's Allied 40,915, the known formations' 20065; fr 04:10: the plateau label's Allied 40,915, the known formations' 20065; fr 04:20: the plateau label's Allied 40,915, the known formations' 20065; fr"
+  ],
+  "byRunner": {
+   "rt": true,
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 233
+ },
+ {
+  "id": "M10",
+  "finding": "CL-UX-07",
+  "rt": {
+   "errors": [
+    "WP-05/06, the reading on a phone (CL-UX-07): @media (max-width:720px) and (min-height:431px){ hides the reading's button under a reading"
+   ],
+   "passed": 9
+  },
+  "failed": [
+   "WP-05/06, the reading on a phone (CL-UX-07): @media (max-width:720px) and (min-height:431px){ hides the reading's button under a reading"
+  ],
+  "byRunner": {
+   "rt": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 195
+ },
+ {
+  "id": "M11",
+  "finding": "CL-UX-02",
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": false,
+     "detail": "12 cases, the most the camera moved after the input 712.054 units; WRONG: vantage + pan: moved 621.13 after the input; vantage + wheel: moved 655.67 after the input; vantage + key: moved 649.22 after the input; vantage + orbit: moved 604.66 after the input; centring + pan: moved 600.04 after the inp"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does: 12 cases, the most the camera moved after the input 712.054 units; WRONG: vantage + pan: moved 621.13 after the input; vantage + wheel: moved 655.67 after the input; vantage + key: moved 649.22 after the input; vantage + orbit: moved 604.66 after the input; centring + pan: moved 600.04 after the inp"
+  ],
+  "byRunner": {
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 35
+ },
+ {
+  "id": "M12",
+  "finding": "CL-UX-03",
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": false,
+     "detail": "4 drags and taps on 2 markers; WRONG: mouse drag from telnitz: the clock 07:00, the pointer's 07:50; mouse drag from telnitz: the event selected; touch drag from telnitz: the clock 07:00, the pointer's 07:50; touch drag from telnitz: the event selected; mouse drag from pratzeberg: the clock 11:00, t"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it: 4 drags and taps on 2 markers; WRONG: mouse drag from telnitz: the clock 07:00, the pointer's 07:50; mouse drag from telnitz: the event selected; touch drag from telnitz: the clock 07:00, the pointer's 07:50; touch drag from telnitz: the event selected; mouse drag from pratzeberg: the clock 11:00, t"
+  ],
+  "byRunner": {
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 34
+ },
+ {
+  "id": "M13",
+  "finding": "CL-UX-13",
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": false,
+     "detail": "WRONG: a right press: playing false, the clock 11:00; a move with no button held went on scrubbing (08:12 to 13:48); after a pointercancel the rail went on scrubbing; after a lostpointercapture the rail went on scrubbing"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture: WRONG: a right press: playing false, the clock 11:00; a move with no button held went on scrubbing (08:12 to 13:48); after a pointercancel the rail went on scrubbing; after a lostpointercapture the rail went on scrubbing"
+  ],
+  "byRunner": {
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 31
+ },
+ {
+  "id": "M14",
+  "finding": "CL-UX-04",
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": false,
+     "detail": "4 tips over a control, 4 kept over no control; WRONG: the tip of 04:00 - 04:45: Friant's divisi over prevEv: still shown; the tip of 04:15 - 08:00: Liechtenstein c over prevEv: still shown; the tip of 07:00 - 08:00: The Allied colu over play: still shown; the tip of 08:00: Langeron and Przybyszew ov"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays: 4 tips over a control, 4 kept over no control; WRONG: the tip of 04:00 - 04:45: Friant's divisi over prevEv: still shown; the tip of 04:15 - 08:00: Liechtenstein c over prevEv: still shown; the tip of 07:00 - 08:00: The Allied colu over play: still shown; the tip of 08:00: Langeron and Przybyszew ov"
+  ],
+  "byRunner": {
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 32
+ },
+ {
+  "id": "M15",
+  "finding": "CL-UX-19",
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": false,
+     "detail": "WRONG: the map panned 84.48 units under the sheet"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": true,
+     "detail": "Layers hidden at a resize, focused and blurred: Play focused"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it: WRONG: the map panned 84.48 units under the sheet"
+  ],
+  "byRunner": {
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 30
+ },
+ {
+  "id": "M16",
+  "finding": "CL-UX-20",
+  "page": {
+   "checks": [
+    {
+     "name": "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+     "ok": true,
+     "detail": "48 clocks along gqg's leg 12:00-12:40 (4.8 km), guard_cav's 10:30-11:15 and its corps's, and zuran's dossier; focus kept 2 of 2"
+    },
+    {
+     "name": "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+     "ok": true,
+     "detail": "56 arrow-clocks withheld (56 labels), 409 drawn, 159 plateau labels"
+    },
+    {
+     "name": "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+     "ok": true,
+     "detail": "12 cases, the most the camera moved after the input 0.000 units"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+     "ok": true,
+     "detail": "4 drags and taps on 2 markers"
+    },
+    {
+     "name": "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+     "ok": true,
+     "detail": "a right press, a missed release, a cancel and a lost capture"
+    },
+    {
+     "name": "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+     "ok": true,
+     "detail": "4 tips over a control, 4 kept over no control"
+    },
+    {
+     "name": "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+     "ok": true,
+     "detail": "the \"?\" sheet opened mid-pan"
+    },
+    {
+     "name": "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+     "ok": false,
+     "detail": "WRONG: still focused: the focus on layersbtn; blurred first: the focus on BODY"
+    }
+   ],
+   "pageErrors": []
+  },
+  "failed": [
+   "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already: WRONG: still focused: the focus on layersbtn; blurred first: the focus on BODY"
+  ],
+  "byRunner": {
+   "page": true
+  },
+  "caught": true,
+  "verdict": "caught",
+  "seconds": 30
+ }
+]

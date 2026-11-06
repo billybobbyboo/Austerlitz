@@ -1588,6 +1588,123 @@ try{
     if(GDETAIL.lum.length!==12||GDETAIL.lum.some(v=>!(v>0&&v<=1))) bad.push("the atlas cells' means "+GDETAIL.lum.join(","));
     if(bad.length) throw new Error("8F: "+bad.join("; "));
     console.log("water and the near ground (8F): "+world.water.length+" water meshes ("+Object.entries(kinds).map(e=>e[1]+" "+e[0]).join(", ")+") each with its presentation's materials both ways (the paper map's 8E's, unhooked); the near detail on at this tier, its 12 cells' means made ("+Math.min(...GDETAIL.lum).toFixed(3)+" to "+Math.max(...GDETAIL.lum).toFixed(3)+", of the procedural patterns: in this stub the photographs are painted after the dry runs) OK"); }
+
+  /* the final audits' Stage 3 (docs/ROADMAP_FINAL_AUDIT.md: WP-05, WP-06): the model-side rules of its fixes, each a dry run on the app's own
+     functions (the page-side ones, with the DOM and real events, are the self-test's wp56Checks). Each fails on the build before its fix
+     (tools/final-stage3/mutate.js: the fix taken out, this suite run on the copy) */
+  { const W5=[], wp=(name,fn)=>{ try{ const m=fn(); W5.push(name+": "+m); }catch(e){ errs.push("WP-05/06, "+name+": "+e.message); } };
+    const realNow=performance.now; let T=Date.now()+5e6; performance.now=()=>T;
+    try{
+    setCommandView("none"); select(null,null); stopPlay(); setMode("terrain");
+    /* CL-SIM-03: a theme chosen while the clock plays stops it */
+    wp("a theme stops the clock (CL-SIM-03)",()=>{ let n=0;
+      ANALYSIS.forEach(c=>{ setClock(300,{instant:true,force:true}); togglePlay(); setChapter(c.id); n++;
+        if(playing) throw new Error("the theme "+c.id+" left the clock playing"); tickClock(1000);
+        if(Math.abs(clock-chapterClock(c))>1e-9) throw new Error("the theme "+c.id+": the clock moved on to "+fmtClock(clock)); });
+      setChapter(null); stopPlay(); return n+" themes chosen while playing, each stopping the clock at its moment"; });
+    /* CL-SIM-07: the first drawn frame after idle frames advances one frame's worth */
+    wp("the first Play frame (CL-SIM-07)",()=>{ const out=[];
+      [0.5,4].forEach(x=>{ stopPlay(); setSpeed(x); setClock(500,{instant:true,force:true}); if(tween) tween(T+1e7); needFrames=0; lastInput=-1e9; settling=false; panelMoveUntil=0;
+        lastFrame=T-30000; let g=0; while(frameState(T)==="active"&&g++<400){ T+=16.667; if(tween) tween(T+1e7); loop(); }
+        if(frameState(T)==="active") throw new Error("the page did not go idle");
+        lastFrame=T-30000; for(let i=0;i<5;i++){ T+=16.667; loop(); }   /* frames not drawn (idle, or waiting for the ambient rate), the last drawn long ago */
+        togglePlay(); const c0=clock; T+=16.667; loop(); const d=clock-c0, want=MIN_PER_SEC*x*16.667/1000;
+        if(Math.abs(d-want)>want*0.05) throw new Error("at "+x+"x the first frame advanced "+d.toFixed(3)+" clock minutes, a frame's worth is "+want.toFixed(3));
+        out.push(x+"x "+d.toFixed(3)); stopPlay(); });
+      setSpeed(0.5); return "the first frame after idle advances "+out.join(", ")+" clock minutes (one 60 Hz frame's)"; });
+    /* CL-SIM-08: paused in a dwell's hold, the caption is the one a seek to the same clock gives */
+    wp("the caption after a pause in a dwell (CL-SIM-08)",()=>{ const cap=document.getElementById("tb-cap"); let n=0;
+      dwellStarts().slice(1,8).forEach(S=>{ stopPlay(); dwellSet(true); setSpeed(1); setClock(S-1.5,{instant:true,force:true}); togglePlay();
+        let g=0; while(playing&&!(DWELL.st&&Math.abs(clock-S)<1e-9)&&g++<2000) tickClock(50);
+        if(!DWELL.st) return; stopPlay(); const a=cap.innerHTML; _sitKey=""; setClock(clock,{instant:true}); paintSituation(); const b=cap.innerHTML; n++;
+        if(a!==b) throw new Error("at "+fmtClock(S)+" paused in the dwell the caption is \""+a.replace(/<[^>]+>/g,"").slice(0,90)+"\", after a seek \""+b.replace(/<[^>]+>/g,"").slice(0,90)+"\""); });
+      dwellSet(true); setSpeed(0.5); if(!n) throw new Error("no dwell's hold reached"); return n+" dwells paused in their hold: the caption the seek's"; });
+    /* CL-UX-14: "Next event" from just before a start goes to it */
+    wp("the event keys' margin (CL-UX-14)",()=>{ const ts=[...new Set(eventTimes())]; let n=0;
+      ts.forEach(S=>{ [1,0.3,0.01].forEach(d=>{ if(S-d<=T_MIN) return; setClock(S-d,{instant:true}); jumpEvent(1); n++;
+        if(Math.abs(clock-S)>1e-9) throw new Error("next event from "+d+" min before "+fmtClock(S)+" went to "+fmtClock(clock)); }); });
+      return n+" jumps from 1, 0.3 and 0.01 minutes before each of "+ts.length+" starts, each to that start"; });
+    /* CL-SIM-06: the reading at a minute is the same however the clock reached it */
+    wp("the reading by the minute (CL-SIM-06)",()=>{ const ids=Object.keys(FORMATIONS); let diffs=[], n=0;
+      ["fr","al"].forEach(cv=>{ setCommandView(cv);
+        for(let m=T_MIN+1;m<T_MAX-1;m+=3){ setClock(m+0.1,{instant:true}); ids.forEach(id=>drawnKnow(id)); setClock(m+0.9,{instant:true}); const a=ids.map(id=>drawnKnow(id)).join();
+          setClock(m-0.5,{instant:true}); ids.forEach(id=>drawnKnow(id)); setClock(m+0.9,{instant:true}); const b=ids.map(id=>drawnKnow(id)).join(); n++;
+          if(a!==b) diffs.push(cv+" "+fmtClock(m)); } });
+      setCommandView("none"); if(diffs.length) throw new Error(diffs.length+" minutes whose reading depends on the path: "+diffs.slice(0,6).join(", "));
+      return n+" minutes under both readings, the same by either path"; });
+    /* CL-SIM-04: the outgoing overlays fade from the opacity they had reached; none with the Movement layer off */
+    wp("the overlays' fade (CL-SIM-04)",()=>{ let n=0;
+      for(let ph=1;ph+2<PHASES.length;ph++){ setClock(PHASES[ph].t0+1,{instant:true,force:true}); if(tween) tween(T+1e7);
+        T+=10; setClock(PHASES[ph+1].t0+1); if(tween) tween(T+50);   /* the next phase's arrows barely in */
+        const reached=ovFadeIn; T+=10; setClock(PHASES[ph+2].t0+1); if(tween) tween(T+1); applyOverlayOpacity();
+        const top=Math.max(0,...oldMats.map(m=>m.opacity/((m.userData.op||1))));
+        if(top>0.9*reached+1e-6) throw new Error("phase "+(ph+1)+" stepped past at "+reached.toFixed(2)+" of its fade drawn at "+top.toFixed(2)); n++;
+        layerOn.arrows=false; T+=10; setClock(PHASES[ph].t0+1); applyOverlayOpacity(); const off=Math.max(0,...oldMats.map(m=>m.opacity), ...overlayMats.map(m=>m.opacity)); layerOn.arrows=true;
+        if(off>0) throw new Error("with the Movement layer off a phase change draws the overlays at "+off.toFixed(2)); }
+      if(tween) tween(T+1e7); return n+" phases stepped past mid-fade, each fading from what it had reached; none drawn with the layer off"; });
+    /* CL-SIM-01: an open dossier's key follows the clock: a formation's at each minute, a place's nearby list under every reading */
+    wp("dossiers follow the clock (CL-SIM-01)",()=>{ let n=0, P=0; const pdb=paintDrawerBody; paintDrawerBody=function(){ P++; return pdb.apply(this,arguments); };
+      try{ ["sthilaire","gqg","c_iv"].forEach(id=>{ [false,true].forEach(full=>{ setClock(720,{instant:true,force:true}); select("f",id); dossierExpanded=full; paintDrawer(); const p0=P;
+          for(let t=721;t<762;t+=3){ setClock(t); n++; if(_drawerKey!==drawerKey()) throw new Error(id+(full?" (full)":"")+" at "+fmtClock(t)+": the dossier's key not current"); }
+          if(P-p0<10) throw new Error(id+(full?" (full)":"")+": "+(P-p0)+" repaints over 14 minutes"); }); });
+        dossierExpanded=false; let moved=0;
+        FEATURES.forEach(ft=>{ setClock(721,{instant:true,force:true}); select("t",ft.id); const k0=_drawerKey;
+          for(let t=722;t<764;t+=2){ setClock(t); if(drawerKey()!==_drawerKey) throw new Error(ft.id+" at "+fmtClock(t)+": its nearby list not current"); } if(_drawerKey!==k0) moved++; });
+        if(!moved) throw new Error("no place's nearby list changed: the check is vacuous");
+        /* while Play advances the clock (opts.play), a full dossier is painted at most every DRAWER_PLAY_MS for a change of the minute alone,
+           and is current once the clock stops */
+        select("f","sthilaire"); dossierExpanded=true; setClock(540,{instant:true,force:true}); paintDrawer(); let p1=P, f1=0; const t1=T;
+        for(let i=0;i<120;i++){ T+=16.667; setClock(540+i*0.644,{play:true}); f1++; } const el=T-t1, most=Math.ceil(el/DRAWER_PLAY_MS)+1;
+        if(P-p1>most) throw new Error("while playing at 4x the full dossier painted "+(P-p1)+" times in "+Math.round(el)+" ms (at most "+most+")");
+        if(P-p1<2) throw new Error("while playing at 4x the full dossier painted "+(P-p1)+" times in "+Math.round(el)+" ms: it does not follow the clock");
+        playing=true; stopPlay(); if(_drawerKey!==drawerKey()) throw new Error("the clock stopped: the dossier not current");
+        dossierExpanded=false; select(null,null);
+        select(null,null); return n+" clocks with a dossier open, each repainted to the minute; "+FEATURES.length+" places' nearby lists current ("+moved+" changed)";
+      } finally { paintDrawerBody=pdb; select(null,null); dossierExpanded=false; } });
+    /* CL-SIM-05: under a reading that does not know a formation, its card's "Doing now" and "From" and the full dossier's now and next say the
+       reading's sentence, never its act */
+    wp("Doing now under a reading (CL-SIM-05)",()=>{ const mk=document.createElement; let made=[], nH=0, nK=0; const html=()=>made.map(x=>x.innerHTML||"").join("\n");
+      try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+        ["fr","al"].forEach(cv=>{ setCommandView(cv);
+          for(let t=T_MIN;t<=T_MAX;t+=20){ setClock(t,{instant:true,camera:false});
+            Object.keys(units).filter(id=>sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)).forEach(id=>{
+              const s2=stateAt(id,textPhase(id,clock)); if(!s2||!s2.act) return; const U=esc(readUnknown());
+              made=[]; compactCard(id); const hc=html(); made=[]; dossierFormation(id); const hf=html();
+              if(readHidden(id)){ nH++;
+                if(hc.indexOf("<dt>Doing now</dt><dd>"+U+"</dd>")<0) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s card says what it does: "+(hc.match(/<dt>Doing now<\/dt><dd>[^<]{0,60}/)||[""])[0]);
+                if(/<dt>From \d\d:\d\d<\/dt><dd>(?!Not known)/.test(hc)) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s card says what it does next");
+                if(hf.indexOf('<li class="now"><b>'+esc(PHASES[curPhase].clock)+'</b><span>'+U+'</span>')<0) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s dossier says what it does now");
+                if(hf.indexOf(esc(s2.act))>=0&&hf.indexOf('<li class="past">')<0) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s act in its dossier"); }
+              else { nK++; if(hc.indexOf("<dt>Doing now</dt><dd>"+esc(s2.act))<0) throw new Error(cv+" "+fmtClock(t)+": "+id+" known, but its act withheld"); } }); } });
+      } finally { document.createElement=mk; setCommandView("none"); }
+      if(!nH||!nK) throw new Error(nH+" hidden, "+nK+" known: a case never met");
+      return nH+" formation-clocks withheld (the card's Doing now and From, the dossier's now and next), "+nK+" known with their acts"; });
+    /* CL-SIM-02: the bound arrows follow the reading; the derived readings are the known formations' */
+    wp("arrows and derived readings under a reading (CL-SIM-02)",()=>{ let hid=0, n=0, pl=0;
+      ["fr","al","none"].forEach(cv=>{ setCommandView(cv);
+        for(let t=T_MIN;t<=T_MAX;t+=15){ setClock(t,{instant:true});
+          OVREAD.forEach(e=>{ const h=cv!=="none"&&readHidden(e.id); n++; if(h) hid++;
+            if(e.hid!==h) throw new Error(cv+" "+fmtClock(t)+": "+e.id+"'s arrow "+(h?"drawn":"withheld")+" against the reading");
+            if(h&&e.objs.some(o=>o.visible)) throw new Error(cv+" "+fmtClock(t)+": "+e.id+"'s arrow drawn, unknown to the reading");
+            if(h&&e.d&&e.d.r.layers.some(l=>l.shaft.visible)) throw new Error(cv+" "+fmtClock(t)+": "+e.id+"'s marched part drawn"); });
+          if(curPhase<=PLATEAU_LAST){ let want=0; Object.keys(units).forEach(id=>{ const f=FORMATIONS[id]; if(f.nation==="fr") return; const o=ownStrengthAt(id,clock), p=posNow(id); if(o&&p&&onPlateau(p)&&!readHidden(id)) want+=o; });
+            const sit=document.getElementById("situation").innerHTML, m=/on the heights: Allied &asymp; ([\d,]+)/.exec(sit); pl++;
+            if(want>0&&(!m||+m[1].replace(/,/g,"")!==want)) throw new Error(cv+" "+fmtClock(t)+": the Now tab's Allied on the heights "+(m?m[1]:"none")+", the reading's "+want); } } });
+      setCommandView("none"); if(!hid) throw new Error("no arrow withheld: the check is vacuous");
+      return n+" bound arrow-clocks, "+hid+" withheld by the reading; the Now tab's plateau reading the known formations' at "+pl+" clocks"; });
+    /* CL-UX-07: a reading marks the page (body.reading-on), and each phone layout shows the reading's button under it */
+    wp("the reading on a phone (CL-UX-07)",()=>{ const cl=document.body.classList, tg=cl.toggle, seen=[]; cl.toggle=(k,v)=>{ if(k==="reading-on") seen.push(v); };
+      try{ setCommandView("al"); setCommandView("fr"); setCommandView("none"); } finally { cl.toggle=tg; }
+      if(seen.join()!=="true,true,false") throw new Error("body.reading-on set "+seen.join());
+      /* every @media block that hides the button shows it under a reading */
+      const css=fs.readFileSync("style.css","utf8").replace(/\/\*[^]*?\*\//g,""), re=/@media[^{]*\{/g; let m, nb=0;
+      while((m=re.exec(css))){ let d=0, j=m.index+m[0].length-1, k=j; for(;k<css.length;k++){ if(css[k]==="{") d++; else if(css[k]==="}"){ d--; if(!d) break; } }
+        const blk=css.slice(j,k); if(!/#eyesbtn[^{]*\{display:none/.test(blk)) continue; nb++;
+        if(!/body\.reading-on #eyesbtn\{display:inline-block/.test(blk)) throw new Error(m[0]+" hides the reading's button under a reading"); }
+      if(nb<2) throw new Error(nb+" layouts hide the button: the check found too few");
+      return "body.reading-on with a headquarters' reading; both phone layouts show its button then"; });
+    } finally { performance.now=realNow; layerOn.arrows=true; stopPlay(); setSpeed(0.5); dwellSet(true); setCommandView("none"); select(null,null); }
+    W5.forEach(m=>console.log("WP-05/06: "+m+" OK")); }
 }catch(e){ errs.push("DRIVE: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n")); }
 
 /* the photograph is painted into the atlas when its image loads (a microtask in this stub): checked after the dry runs, before the report.

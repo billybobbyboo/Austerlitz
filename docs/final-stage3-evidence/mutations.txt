@@ -1,0 +1,51 @@
+M0 none (the unmutated copy): passes (262 s)
+M1 CL-SIM-03: caught (205 s)
+    WP-05/06, a theme stops the clock (CL-SIM-03): the theme plan left the clock playing
+M2 CL-SIM-07: caught (206 s)
+    WP-05/06, the first Play frame (CL-SIM-07): at 0.5x the first frame advanced 0.600 clock minutes, a frame's worth is 0.083
+M3 CL-SIM-08: caught (208 s)
+    WP-05/06, the caption after a pause in a dwell (CL-SIM-08): at 04:15 paused in the dwell the caption is "THE DECEPTION&middot;Dispositions in the dark&middot;hour disputedLiechtenstein counter-ma", af
+M4 CL-UX-14: caught (206 s)
+    WP-05/06, the event keys' margin (CL-UX-14): next event from 1 min before 04:15 went to 07:00
+M5 CL-SIM-06: caught (203 s)
+    WP-05/06, the reading by the minute (CL-SIM-06): 21 minutes whose reading depends on the path: fr 05:43, fr 07:31, fr 07:55, fr 08:07, fr 08:46, fr 08:49
+M6 CL-SIM-04: caught (199 s)
+    WP-05/06, the overlays' fade (CL-SIM-04): phase 2 stepped past at 0.00 of its fade drawn at 0.90
+M7 CL-SIM-01: caught (229 s)
+    WP-05/06, dossiers follow the clock (CL-SIM-01): sthilaire: 0 repaints over 14 minutes
+    dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a c
+M7b CL-SIM-01 (the section repaint): caught (31 s)
+    dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a c
+M8 CL-SIM-05: caught (203 s)
+    WP-05/06, Doing now under a reading (CL-SIM-05): fr 04:00: ahq's card says what it does: <dt>Doing now</dt><dd>Kutuzov's headquarters at Krzenowitz, where the dispositions
+M9 CL-SIM-02 (the arrows): caught (222 s) [run again on its own: the first run errored, the mutation leaving a comment unclosed; corrected]
+    WP-05/06, arrows and derived readings under a reading (CL-SIM-02): fr 07:00: kienmayer's arrow drawn against the reading
+    Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the platea
+M9b CL-SIM-02 (the derived readings): caught (233 s)
+    WP-05/06, arrows and derived readings under a reading (CL-SIM-02): fr 04:00: the Now tab's Allied on the heights 40,915, the reading's 20065
+    Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the platea
+M10 CL-UX-07: caught (195 s)
+    WP-05/06, the reading on a phone (CL-UX-07): @media (max-width:720px) and (min-height:431px){ hides the reading's button under a reading
+M11 CL-UX-02: caught (35 s)
+    camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does: 12 cases, the most the c
+M12 CL-UX-03: caught (34 s)
+    timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press 
+M13 CL-UX-13: caught (31 s)
+    timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture: WRONG: a right
+M14 CL-UX-04: caught (32 s)
+    timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays: 4 tips 
+M15 CL-UX-19: caught (30 s)
+    map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it: WRONG: the map panned 84.48 units under the sheet
+M16 CL-UX-20: caught (30 s)
+    focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already: WRONG: still focused: the focus on layersbtn;
+all 19 as expected (M0 passing, the 18 mutations caught; M9 after its correction)
+done
+
+run again after the dossier repaint was limited during Play (DRAWER_PLAY_MS), on that build:
+M0 none (the unmutated copy): passes (241 s)
+M7 CL-SIM-01: caught (222 s)
+    WP-05/06, dossiers follow the clock (CL-SIM-01): sthilaire: 0 repaints over 14 minutes
+    dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a c
+M7b CL-SIM-01 (the section repaint): caught (30 s)
+    dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a c
+all 3 as expected

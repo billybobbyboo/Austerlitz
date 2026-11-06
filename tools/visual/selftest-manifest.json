@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 697bbf34ec29fc4d05695dc8e1cd3c5e (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "697bbf34ec29fc4d05695dc8e1cd3c5e",
- "count": 317,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 6ec4abc2fa3831be78145cc87f82174d (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "6ec4abc2fa3831be78145cc87f82174d",
+ "count": 325,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -319,6 +319,14 @@
   "the buildings (8G): drawn on the landscape in Study, Watch and Clean and on the landscape with counters, none on the paper map or at the eye level; casting and receiving shadows",
   "the landmarks (8G): a church at each village of CHURCHES and a smaller chapel at each of CHAPELS, none elsewhere, each by its village's point or, where its site is read, its own site; Austerlitz's the temple, its tower no higher than its roof; the castle a closed quadrangle covering its own site, its east range the deepest and highest, its farm south of it, both at one size; the château within an octant of its bearing today from its church, in the town's place, no drawn road or stream between them; Telnitz's churchyard walled with one gate; fences only where BUILDINGS.fences names them; no other wall",
   "the dossiers (8G): each village's and the town's dossier names the claims its buildings rest on, with their grades and sources, and its conventions as such; the sources sheet every church's and chapel's claim and each village drawn short",
-  "the roofs (8G, a design convention): a rear building's its farmstead's (its walls never choose it), the town's and the landmarks' tile, the villages' tile at BLD8G.tile's share"
+  "the roofs (8G, a design convention): a rear building's its farmstead's (its walls never choose it), the town's and the landmarks' tile, the villages' tile at BLD8G.tile's share",
+  "dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+  "Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+  "camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+  "timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+  "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+  "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+  "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
+  "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already"
  ]
 }

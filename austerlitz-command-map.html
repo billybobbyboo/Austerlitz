@@ -384,7 +384,8 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
 /* the event markers: one keyboard group over the rail (app.js buildTimeline) */
 .evmarks{position:absolute;left:0;right:0;top:31px;height:24px;pointer-events:none;z-index:2}
 .ev-mark{position:absolute;top:2px;width:8px;height:8px;margin:0;padding:0;border:0;transform:translateX(-50%) rotate(45deg);
-  opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease}
+  opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease;
+  touch-action:none}   /* the final audits' WP-06 (CL-UX-03): a finger's drag from a marker is the rail's (app.js buildTimeline), not the browser's pan */
 .ev-mark::after{content:"";position:absolute;inset:-6px;display:block}
 .ev-mark:hover{transform:translateX(-50%) rotate(45deg) scale(1.5);opacity:1}
 .ev-mark:focus-visible{outline:2px solid var(--accent);outline-offset:3px;opacity:1}
@@ -776,6 +777,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .tb-top{flex-wrap:wrap;column-gap:6px;row-gap:0;padding:4px 8px 0}
   .tb-ctrl{order:1;gap:4px}
   #prev,#next,#eyesbtn,.speeds{display:none}
+  /* the final audits' WP-05 (CL-UX-07): under a headquarters' reading its button stays, at the head of the caption's row (as the paper map's scale
+     bar), the caption giving it room (its parts give way, decision 159) */
+  body.reading-on #eyesbtn{display:inline-block;order:4;min-height:36px}
+  body.reading-on .tb-cap{flex-basis:0;min-width:0}
   .tb-icon{min-width:44px;min-height:44px}
   .tb-play{min-width:60px;min-height:44px}
   .tb-follow{min-height:44px;margin-left:0}
@@ -856,6 +861,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
    the harness measures it in phone-844x390-explore only */
 @media (max-height:430px){
   #prev,#next,#eyesbtn,.speeds{display:none}
+  body.reading-on #eyesbtn{display:inline-block}   /* WP-05 (CL-UX-07): kept under a headquarters' reading, as in portrait */
   #speedbtn{display:inline-block;min-width:44px;font-size:var(--t-ui)}
   body.firstrun-on .tools{display:none}
   body:has(#layerpop:not([hidden])) .tools{visibility:hidden}
@@ -10381,6 +10387,9 @@ var SIDE_COL={ fr:sideCol("fr"), al:sideCol("al") };
 var overlayRoot, curOv=null, oldOv=null;
 var overlayMats=[], oldMats=[];
 var ovFadeIn=1, ovFadeOut=0;
+/* the final audits' WP-05 (CL-SIM-04): the outgoing group fades from the opacity it had reached (ovFrom, its fade-in at the change), so a phase
+   stepped past before its arrows came in never shows them, and an interrupted fade does not pop back to full */
+var ovFrom=1;
 
 function ovAdd(o){ curOv.add(o); }
 function disposeGroup(g){
@@ -10686,6 +10695,28 @@ function ribbonHead(curve,u,headL,headW,sc,ly,type){
   return {v:hv,idx:hi,tip:tip,base:[l,r],notch:nt};
 }
 function overlayMesh(m){ ovAdd(m); }
+/* the final audits' WP-05 (CL-SIM-02): under a headquarters' reading an arrow bound to a formation (a derived arrow's leg, a halt's column) that the
+   reading does not know (readHidden) is not drawn, nor its label: "not known: not drawn" (docs/STAGE5_SPEC.md D.5 item 1) for its movement too.
+   Until WP-05 they were drawn (at 09:30 under the Allied headquarters' reading Suchet's and Caffarelli's arrows, drawn on to their places, with
+   their names). OVREAD: each bound arrow's objects and label, built with the phase's group; ovReadSync shows or hides them with the reading at
+   the clock. Interpretive arrows that bind no formation (routes, objectives, groups, the unmodelled) are drawn as before */
+var OVREAD=[];
+function ovBound(id,n0,t0,d){
+  var tx=ovText.slice(t0); tx.forEach(function(t){ t.of=id; });
+  OVREAD.push({id:id,objs:curOv.children.slice(n0),txt:tx,d:d||null,hid:false,vis:null});
+}
+function ovReadSync(){
+  var ch=false;
+  for(var i=0;i<OVREAD.length;i++){ var e=OVREAD[i], h=commandView!=="none"&&readHidden(e.id); if(h===e.hid) continue; e.hid=h; ch=true;
+    if(h){ e.vis=e.objs.map(function(o){ return o.visible; }); e.objs.forEach(function(o){ o.visible=false; }); if(e.d) e.d.hid=true; }
+    else { e.objs.forEach(function(o,k){ o.visible=e.vis?e.vis[k]:true; }); if(e.d){ e.d.hid=false; drawOnApply(e.d); } } }
+  if(ch) requestRender(2);
+}
+function buildReadArrow(a){
+  var n0=curOv.children.length, t0=ovText.length, id=a.leg?a.leg[0]:a.of, d0=DRAWON.length;
+  buildArrow(a);
+  if(id&&(curOv.children.length>n0||ovText.length>t0)) ovBound(id,n0,t0,DRAWON.length>d0?DRAWON[DRAWON.length-1]:null);
+}
 function buildArrow(a){
   var pts=arrowPts(a);
   if(!pts||pts.length<2) return;
@@ -10761,20 +10792,22 @@ function retireOld(){
   if(oldOv){ overlayRoot.remove(oldOv); disposeGroup(oldOv); oldOv=null; oldMats=[]; }
 }
 function rebuildOverlays(ph,instant){
+  var reached=curOv?ovFadeIn:0;   /* WP-05 (CL-SIM-04): how far the group now current had come in */
   retireOld();
   oldOv=curOv; oldMats=overlayMats;
   curOv=new THREE.Group(); overlayRoot.add(curOv);
-  overlayMats=[]; ovText=[]; ovMarkers=[]; ovHeads=[]; DRAWON=[];
+  overlayMats=[]; ovText=[]; ovMarkers=[]; ovHeads=[]; DRAWON=[]; OVREAD=[];
   var o=OVERLAYS[ph];
   if(o){
     (o.lines||[]).forEach(buildLine);
     (o.bounds||[]).forEach(buildBoundary);
-    (o.arrows||[]).forEach(buildArrow);
+    (o.arrows||[]).forEach(buildReadArrow);   /* WP-05 (CL-SIM-02): each arrow with what binds it to a formation */
     (o.obj||[]).forEach(buildObjective);
   }
-  if(instant){ retireOld(); ovFadeIn=1; ovFadeOut=0; }
-  else { ovFadeIn=0; ovFadeOut=1; }
+  if(instant){ retireOld(); ovFadeIn=1; ovFadeOut=0; ovFrom=1; }
+  else { ovFadeIn=0; ovFadeOut=1; ovFrom=reached; }
   drawOnArrows();
+  ovReadSync();   /* WP-05 (CL-SIM-02) */
 }
 /* ---- Stage 4D: arrows that draw on with the clock (docs/STAGE4_SPEC.md section D.3, item 4) ----
    Only an arrow derived from an executed leg (a.leg; Stage 2C) is drawn on: its drawn length is the formation's progress along
@@ -10835,7 +10868,7 @@ function drawOnRibbon(pts,w,col,S,g){
 }
 function drawOnApply(d){
   var r=d.r, g=d.ghost, u=d.s, whole=u>=1, show=u>1e-6&&!whole;   /* whole: the arrow itself at full strength, exactly as before 4D */
-  r.layers.forEach(function(lay){ lay.shaft.visible=show; if(show) shaftEnd(lay,r.curve,r.len,lay.uT,u); });
+  r.layers.forEach(function(lay){ lay.shaft.visible=show&&!d.hid; if(show) shaftEnd(lay,r.curve,r.len,lay.uT,u); });   /* WP-05 (CL-SIM-02): not while the reading hides its formation */
   g.layers.forEach(function(lay){ [lay.shaft,lay.head].forEach(function(m){ if(m) m.material.userData.op=m.material.userData.op0*(whole?1:DRAWON_GHOST); }); });
   d.tip=show?[r.layers[r.layers.length-1].end.x,r.layers[r.layers.length-1].end.z]:null;
 }
@@ -10844,7 +10877,10 @@ function applyOverlayOpacity(){
   var i, paper=(mode==="staff");   /* Stage 8, 8B (decision 241): a movement arrow's fill at ARROW_CAP.OP in the perspective presentations; on the paper map as before (paperK) */
   BORDER.U.value=paper?0:1;   /* and its casing a border there only: on the paper map under the whole fill, as before 8B (0.3.1 item 4) */
   for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn*(overlayMats[i].userData.op||1)*(paper&&overlayMats[i].userData.paperK||1);
-  for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut*(oldMats[i].userData.op||1)*(paper&&oldMats[i].userData.paperK||1);
+  /* the outgoing group: from the opacity it had reached (ovFrom), and with the Movement layer off not drawn at all (WP-05, CL-SIM-04: until WP-05
+     drawn at 0.9 on every phase change whatever it had reached or the layer said) */
+  var obase=layerOn.arrows?0.9*ovFrom:0;
+  for(i=0;i<oldMats.length;i++) oldMats[i].opacity=obase*ovFadeOut*(oldMats[i].userData.op||1)*(paper&&oldMats[i].userData.paperK||1);
 }
 
 /* ============================================================
@@ -11157,9 +11193,14 @@ function setClock(t,opts){
     if(selection) paintDrawer();
     if(PHASES[ph].flash && !opts.instant) flash(PHASES[ph].flash);
   }
-  else if(selection&&(selection.kind==="f"||selection.kind==="t")&&drawerKey()!==_drawerKey) paintDrawer();   /* a delayed move begins or ends; Stage 8, 8A: or the reading withdraws a place */
+  else if(selection&&(selection.kind==="f"||selection.kind==="t")){ var dk=drawerKey();   /* a delayed move begins or ends; Stage 8, 8A: or the reading withdraws a place */
+    /* WP-05 (CL-SIM-01): and at each clock minute; while Play advances the clock, a change of the minute alone is painted at most every
+       DRAWER_PLAY_MS (at 4x a frame is 0.64 minutes: a full dossier rebuilt every frame cost 2 ms a frame, docs/final-stage3-evidence/play-cost.json);
+       every other change, a seek and the clock's stop (stopPlay) at once */
+    if(dk!==_drawerKey&&!(opts.play&&dk.slice(0,dk.lastIndexOf("|"))===_drawerKey.slice(0,_drawerKey.lastIndexOf("|"))&&performance.now()-_drawerAt<DRAWER_PLAY_MS)) paintDrawer(); }
   applyLight(false);   /* Stage 4B: the light is the clock's */
   drawOnArrows();      /* Stage 4D: derived arrows drawn to the clock */
+  ovReadSync();        /* WP-05 (CL-SIM-02): the arrows of formations the reading does not know at this minute */
   paintTimeline();
 }
 function setPhase(n,instant){
@@ -11864,6 +11905,8 @@ function setChapter(cid){
     if(fam) Object.keys(fam).forEach(function(q){ set[q]=true; });
   });
   setHighlight(set);
+  stopPlay();   /* the final audits' WP-05 (CL-SIM-03): a theme stops the clock, as the tour and the phase and act buttons do (the dwell's note,
+                   "the tour and the themes stop the clock"); until WP-05 Play ran on and Follow took the camera from the theme's view */
   freeCam=false;
   setClock(chapterClock(c),{force:true,camera:false});
   flyTo(chapterCam(c));
@@ -11926,12 +11969,14 @@ function paintCommand(){
 function setCommandView(v){
   commandView=v;
   mlReset("reading");   /* Stage 8, 8C: what the reading knows changes at once; no remnant of what it no longer knows (MLS) */
-  knowKey="";
+  knowKey=""; EYES.min=""; knowAtClock();   /* WP-05 (CL-SIM-06): the new reading at the minute's start */
   document.querySelectorAll(".cmd-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.cv===v ? "true":"false");
   });
   paintCommand();
   eyesSync();   /* Stage 5E */
+  ovReadSync();   /* WP-05 (CL-SIM-02) */
+  _sitKey=""; paintSituation();   /* WP-05 (CL-SIM-02): the caption's and the Now tab's derived readings are the reading's */
   if(selection&&drawerKey()!==_drawerKey) paintDrawer();   /* Stage 8, 8A (decision 251): an open dossier follows the reading */
 }
 
@@ -11954,7 +11999,13 @@ var EYES={min:"", vs:null, vsAt:0, VS_MS:500, VS_MOVE:1,
 function eyesShort(v){ return "Eyes: "+EYES.SHORT[v]; }
 function eyesName(v){ return eyesShort(v)+". Whose eyes? "+EYES.LABEL[v]+" (press to change)"; }
 /* decision 92: the cache of the guarded knowledgeOf, keyed by the phase, is cleared at each new minute of the clock */
-function knowAtClock(){ var k=commandView+"|"+Math.floor(clock+1e-9); if(EYES.min!==k){ EYES.min=k; knowKey=""; } }
+/* the final audits' WP-05 (CL-SIM-06): the minute's reading is the rule's at the minute's start, read for every formation when the minute is new
+   (the clock put back), so it is the same however the clock reached the minute; until WP-05 each formation's reading was taken at the instant it
+   was first asked, so 29 (Napoleon's headquarters) and 38 (Allied) formation-minutes depended on the path. knowledgeOf itself is unchanged */
+function knowAtClock(){ var m=Math.floor(clock+1e-9), k=commandView+"|"+m; if(EYES.min===k) return; EYES.min=k; knowKey="";
+  if(commandView==="none") return;
+  var keep=clock, kp=curPhase; clock=m; curPhase=phaseAt(m);   /* the phase the clock is in (setClock asks before it sets curPhase) */
+  try{ for(var id in FORMATIONS) knowledgeOf(id); } finally { clock=keep; curPhase=kp; } }
 /* what the drawing shows: the reading, and at the eye-level vantage a known enemy the eye has no line of sight to is drawn as
    reported (known, not seen from here) */
 function drawnKnow(id){
@@ -12022,6 +12073,9 @@ function eyesSync(){
   var v=commandView, tb=document.getElementById("eyesbtn"), vb=document.querySelector('.van-btn[data-v="eye"]'), go=document.getElementById("eyego"), tg=document.getElementById("eyes-tag");
   if(tg&&!tg.innerHTML) tg.innerHTML=iconSVG(TOKENS.sym.layer.derived)+"derived";
   if(go) go.hidden=(v==="none");
+  /* the final audits' WP-05 (CL-UX-07): while a headquarters' reading is on, the phone's timeline keeps its button (style.css: body.reading-on),
+     so the map that omits what the reading does not know says whose reading it is; until WP-05 it was hidden below 720 px wide */
+  if(document.body&&document.body.classList) document.body.classList.toggle("reading-on",v!=="none");
   /* decision 173 (WCAG 2.5.3): the name begins with the visible words; no aria-pressed (a three-way cycle is not a toggle: the name carries
      the state) */
   if(tb){ tb.textContent=eyesShort(v); tb.setAttribute("aria-label",eyesName(v)); tb.removeAttribute("aria-pressed"); fitCaption(); }   /* the caption's room changed with the button's words (the 146453d review) */
@@ -12823,6 +12877,7 @@ function mlCollect(){
   var seen={};
   function uniq(k){ var n=seen[k]||0; seen[k]=n+1; return n?k+"#"+n:k; }
   if(labels&&layerOn.arrows) ovText.forEach(function(t){
+    if(t.of&&readHidden(t.of)) return;   /* WP-05 (CL-SIM-02): an arrow's label goes with its arrow under a reading that does not know its formation */
     text(uniq("o:"+t.text),t.obj?"objective":"overlay","mlt-serif",t.text,LB.annotation,t.pos,{pri:t.obj?10:6,acl:t.acl,r:t.r,op:ovFadeIn});
   });
   if(planGroup) planText.forEach(function(t){ text(uniq("pl:"+t.text),"plan","mlt-serif",t.text,LB.annotation,t.pos,{pri:6,acl:t.acl,r:t.r}); });
@@ -12841,10 +12896,19 @@ function mlCollect(){
   });
   return out;
 }
+/* the final audits' WP-05 (CL-SIM-02): the map's derived readings under a headquarters' reading are the reading's: the guarded readings
+   (plateauStrength, centreSeparation, unchanged) taken over the formations the reading does not hide (readHidden), the units table narrowed for
+   the call and put back. Everyone's reading: the readings as before. Until WP-05 they counted every formation, known or not (under the Allied
+   reading 31,500 against 25,800 known; under Napoleon's 38,700 against 17,900) */
+function overKnown(fn){
+  if(commandView==="none") return fn();
+  var keep=units, K={}; Object.keys(units).forEach(function(id){ if(!readHidden(id)) K[id]=units[id]; });
+  units=K; try{ return fn(); } finally { units=keep; }
+}
 /* the label's words and, spoken, its accessible name: both say "derived" (owner decision 126) */
 function plateauText(spoken){
-  var al=plateauStrength("al"), fr=plateauStrength("fr");
-  if(spoken) return "The Pratzen plateau, a derived reading: Allied about "+al.toLocaleString("en-GB")+(fr>500?(", French about "+fr.toLocaleString("en-GB")):"");
+  var al=overKnown(function(){ return plateauStrength("al"); }), fr=overKnown(function(){ return plateauStrength("fr"); });
+  if(spoken) return "The Pratzen plateau, a derived reading"+(commandView!=="none"?" of the formations "+EYES.LABEL[commandView]+" knows":"")+": Allied about "+al.toLocaleString("en-GB")+(fr>500?(", French about "+fr.toLocaleString("en-GB")):"");
   return "THE PRATZEN  ·  derived: Allied ≈ "+al.toLocaleString("en-GB")+(fr>500?("   French ≈ "+fr.toLocaleString("en-GB")):"");
 }
 /* the interface panels over the map, read as rectangles once per pass */
@@ -14146,6 +14210,11 @@ var LANDCAM=(function(){
   function ray(sx,sy){ landCam.updateMatrixWorld(); return R.set(sx/vw()*2-1,-(sy/viewH())*2+1,0.5).unproject(landCam).sub(landCam.position).normalize(); }
   function screenOf(p){ landCam.updateMatrixWorld(); V.copy(p).project(landCam); return [(V.x*0.5+0.5)*vw(),(-V.y*0.5+0.5)*viewH()]; }
   function free(){ freeCam=true; curVantage=null; if(EYE.on) eyeLeave(); }   /* Stage 5E: any move leaves the eye for the floor */
+  /* the final audits' WP-06 (CL-UX-02): the visitor takes the camera: a running glide (a vantage, a centring, a phase's, a theme's or a tour stop's
+     camera, in the tween's camera slot) stops where it is, as the paper map's MAPCAM stops its glide on input; the scene's slot (the overlays'
+     fade) runs on. Called by the pan, the zoom, the orbit and the keys, not by free(), which the double-click's own focus glide also calls.
+     Until WP-06 the glide went on and put the camera back on its path every frame */
+  function take(){ if(_tw.cam&&tween===_runTween) setTween("cam",null); else if(_tw.cam) _tw.cam=null; camArc=null; }
   /* the target moved along its own view ray onto the drawn ground: the picture does not move */
   function anchor(){ var t=screenOf(orbitTarget), g=groundAt(t[0],t[1]);
     if(g){ orbitTarget.set(g[0],groundY(g[0],g[1]),g[1]); landCam.lookAt(orbitTarget); } }
@@ -14160,7 +14229,7 @@ var LANDCAM=(function(){
     if(r.y>-MIN_DEP){ var hl=Math.hypot(r.x,r.z)||1, c=Math.sqrt(1-MIN_DEP*MIN_DEP); r.set(r.x/hl*c,-MIN_DEP,r.z/hl*c); }
     var t=(grab.y-E.y)/r.y, dx=grab.x-(E.x+r.x*t), dz=grab.z-(E.z+r.z*t);
     dx=Math.max(-FX,Math.min(FX,orbitTarget.x+dx))-orbitTarget.x; dz=Math.max(-FZ,Math.min(FZ,orbitTarget.z+dz))-orbitTarget.z;
-    orbitTarget.x+=dx; orbitTarget.z+=dz; E.x+=dx; E.z+=dz;
+    take(); orbitTarget.x+=dx; orbitTarget.z+=dz; E.x+=dx; E.z+=dz;
     clampCamera(); landCam.lookAt(orbitTarget); free();
     var dm=performance.now()-a; stats.moves++; stats.ms+=dm; (stats.t||(stats.t=[])).push(dm); if(stats.t.length>512) stats.t.shift(); requestRender(2); return true;   /* Stage 8, 8H (T-7): each move's time kept, the last 512 */
   }
@@ -14169,7 +14238,7 @@ var LANDCAM=(function(){
     var g=groundAt(sx,sy), E=landCam.position, T=orbitTarget;
     var P=g?new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]):T.clone();
     var r0=E.distanceTo(T); if(r0<1e-6) return;
-    var kk=Math.max(24,Math.min(620,r0*k))/r0; free();
+    var kk=Math.max(24,Math.min(620,r0*k))/r0; take(); free();
     if(Math.abs(kk-1)<1e-9) return;
     var e=new THREE.Vector3();
     function eyeAt(q){ return e.copy(E).sub(P).multiplyScalar(q).add(P); }
@@ -14181,7 +14250,7 @@ var LANDCAM=(function(){
   function orbit(dx,dy){
     sph.setFromVector3(landCam.position.clone().sub(orbitTarget));
     sph.theta-=dx*0.005; sph.phi-=dy*0.005; sph.phi=Math.max(0.10,Math.min(Math.PI/2-0.03,sph.phi));
-    orbitPlace(); free(); requestRender(2);
+    take(); orbitPlace(); free(); requestRender(2);
   }
   function focusAt(sx,sy){
     var g=groundAt(sx,sy); if(!g) return false;
@@ -14196,12 +14265,12 @@ var LANDCAM=(function(){
       var dx=k==="ArrowLeft"?-15*A/0.005:k==="ArrowRight"?15*A/0.005:0, dy=k==="ArrowUp"?-5*A/0.005:k==="ArrowDown"?5*A/0.005:0;
       orbit(dx,dy); return true; }
     var m={ArrowLeft:[d,0],ArrowRight:[-d,0],ArrowUp:[0,d],ArrowDown:[0,-d]}[k];
-    if(m){ if(panStart(c[0],c[1])&&panTo(c[0]+m[0],c[1]+m[1])) panEnd(); else { grab=null; free(); } return true; }
+    if(m){ if(panStart(c[0],c[1])&&panTo(c[0]+m[0],c[1]+m[1])) panEnd(); else { grab=null; take(); free(); } return true; }
     if(k==="+"||k==="="){ zoomAt(c[0],c[1],1/1.25); return true; }
     if(k==="-"||k==="_"){ zoomAt(c[0],c[1],1.25); return true; }
     return false;
   }
-  return {panStart:panStart, panTo:panTo, panEnd:panEnd, zoomAt:zoomAt, orbit:orbit, focusAt:focusAt, key:key, anchor:anchor,
+  return {panStart:panStart, panTo:panTo, panEnd:panEnd, zoomAt:zoomAt, orbit:orbit, focusAt:focusAt, key:key, anchor:anchor, take:take,
     screenOf:screenOf, stats:stats, grabbing:function(){ return !!grab; }};
 })();
 
@@ -14421,7 +14490,7 @@ function buildHelp(){
 var SHEETS={help:{tab:["help-close","help-keys","help-body"],from:null}, modal:{tab:["modal-close","modal-body"],from:null}};
 function sheetIsOpen(id){ var e=document.getElementById(id); if(!e) return false; return id==="help"?!e.hidden:!!(e.classList&&e.classList.contains("on")); }
 function sheetTop(){ return sheetIsOpen("help")?"help":(sheetIsOpen("modal")?"modal":null); }
-function sheetOpened(id){ var S=SHEETS[id]; S.from=focusedEl(); syncInert(); focusTo([S.tab[0]]); }
+function sheetOpened(id){ var S=SHEETS[id]; canvasDragEnd(); S.from=focusedEl(); syncInert(); focusTo([S.tab[0]]); }   /* WP-06 (CL-UX-19): a drag ends */
 function sheetClosed(id){
   var S=SHEETS[id], f=S.from; S.from=null; syncInert();
   if(f&&focusTo([f])) return;
@@ -14520,8 +14589,14 @@ function onWindowKey(e){
    the wheel zooms toward the cursor; a double-click centres the ground under it; one finger pans and two pinch and twist.
    The paper map is unchanged (Stage 2E): any drag pans, the wheel zooms toward the cursor. A press that moves under 5 px is
    a click, and selects, as before. */
+/* the final audits' WP-06 (CL-UX-19): canvasDragEnd ends a drag or pinch in progress on the canvas (a pan ended as at its release, the pointer's
+   capture released); a modal sheet opening calls it (sheetOpened), so the map no longer pans under the "?" sheet until the button is let go */
+var canvasDragEnd=function(){};
 function bindCanvas(){
   var el=renderer.domElement, drag=null, touch={}, pinch=null;
+  canvasDragEnd=function(){ if(drag){ if(drag.kind==="pan"&&drag.started) LANDCAM.panEnd();
+      try{ if(el.hasPointerCapture&&drag.id!==undefined&&el.hasPointerCapture(drag.id)) el.releasePointerCapture(drag.id); }catch(x){}
+      drag=null; } touch={}; pinch=null; };
   el.addEventListener("contextmenu",function(e){ e.preventDefault(); });   /* the right button orbits; on the canvas only */
   function nTouch(){ return Object.keys(touch).length; }
   function pinchState(){ var k=Object.keys(touch), a=touch[k[0]], b=touch[k[1]];
@@ -14771,6 +14846,7 @@ function buildUI(){
   ["transitionrun","transitionstart"].forEach(function(ev){ document.addEventListener(ev,function(){ panelMoveUntil=performance.now()+450; }); });
   document.addEventListener("transitionend",function(){ requestRender(2); toastRelayout(true); });   /* Stage 8, 8I: a panel's slide ended, its controls where they stay (in the next frame) */
   function onResize(){
+    var fz=focusedEl()||resizeLost();   /* WP-06 (CL-UX-20): the control focused before the layout changes */
     requestRender(3);
     mlReset("window");   /* Stage 8, 8C (MLS) */
     syncDock();
@@ -14785,6 +14861,7 @@ function buildUI(){
     /* the paper map: the field framed anew if that is what it shows, else the plan keeps its centre and scale */
     if(mode==="staff"){ if(MAPCAM.framed()) MAPCAM.frameField(true); else MAPCAM.apply(); }
     toastRelayout();   /* Stage 8, 8I: the phase's message placed again in the new window */
+    resizeFocus(fz);
   }
   window.addEventListener("resize",onResize);
   window.addEventListener("orientationchange",function(){ toastRelayout(); });   /* Stage 8, 8I (a phone turned; the resize that follows places it too) */
@@ -14869,6 +14946,28 @@ function focusTo(list){
     if(!shown(e)||typeof e.focus!=="function") continue;
     e.focus({preventScroll:true}); if(document.activeElement===e) return e; }
   return null;
+}
+/* the final audits' WP-06 (CL-UX-20): SW-5's rule after a change of the window's size. A focused control the new layout hides (Layers, the tools
+   going behind the Menu below 720 px; the Menu itself above) hands the focus to a shown successor: the Menu on the phone layout, else Play, else
+   Restore. Where the browser has already moved the focus to the page (a hidden element loses it), the control it lost it from is the one asked
+   (FOCUS_LOST: set by a focus leaving for nowhere from a control no longer shown; cleared by any focus or a deliberate blur, a press on the map).
+   Until WP-06 the focus fell to the page and stayed there when the window widened again */
+var FOCUS_LOST=null;
+function resizeLost(){ return FOCUS_LOST&&!shown(FOCUS_LOST)?FOCUS_LOST:null; }
+function resizeFocus(was){
+  if(!was) return;
+  var a=focusedEl();
+  if(a&&a!==was) return;              /* the focus went elsewhere meanwhile */
+  if(a===was&&shown(was)) return;      /* still shown: it keeps it */
+  if(!a&&shown(was)) return;
+  focusTo(PHONE?["menubtn","play","restore"]:["play","restore"]);
+  FOCUS_LOST=null;
+  /* a focus the browser takes from a hidden element after this frame (its own style pass): handed on once more, as above */
+  if(typeof requestAnimationFrame==="function") requestAnimationFrame(function(){ if(!focusedEl()||!shown(focusedEl())) focusTo(PHONE?["menubtn","play","restore"]:["play","restore"]); });
+}
+if(typeof document!=="undefined"&&document.addEventListener){
+  document.addEventListener("focusin",function(){ FOCUS_LOST=null; });
+  document.addEventListener("focusout",function(e){ FOCUS_LOST=(!e.relatedTarget&&e.target&&e.target!==document.body&&!shown(e.target))?e.target:null; });
 }
 /* the focused element, when focus is on a control and not on the page */
 function focusedEl(){ var a=document.activeElement; return a&&a!==document.body&&a!==document.documentElement?a:null; }
@@ -15023,14 +15122,15 @@ function paintSituation(){
   if(!host&&!cap) return;
   var live=liveEvents(clock), top=live.length?live[0].e:null;
   var act=actOf(curPhase);
-  var onH=plateauStrength("al"), cut=centreSeparation();
-  /* D-6: from the model alone (plateauFlatFor); before 05:00 it cannot reach the hour, and it is asked only where the reading is shown */
-  var flatFor=(curPhase<=PLATEAU_LAST&&onH>0&&clock-T_MIN>=60)?plateauFlatFor(onH,clock):0;
+  var onH=overKnown(function(){ return plateauStrength("al"); }), cut=overKnown(centreSeparation);   /* WP-05 (CL-SIM-02): the reading's */
+  /* D-6: from the model alone (plateauFlatFor); before 05:00 it cannot reach the hour, and it is asked only where the reading is shown. WP-05:
+     not under Napoleon's headquarters' reading, whose count of the Allies is not the day's sampled holding */
+  var flatFor=(curPhase<=PLATEAU_LAST&&onH>0&&clock-T_MIN>=60&&commandView!=="fr")?plateauFlatFor(onH,clock):0;
   var dw=dwellEvents();   /* Stage 4D: during a dwell the caption names the event(s) the clock stopped for */
   /* roadmap step 3 (decision 159): where the caption shows the derived readings (Watch, and Study with the dispatch hidden: the tour, D), they
      stand before the event names, so the caption's room runs out on the phase's title and the names, never on a reading */
   var derFirst=presentation!=="study"||!!hideDispatch;
-  var key=[act.id,curPhase,top?top.id:"-",Math.round(onH/1000),cut?1:0,
+  var key=[act.id,curPhase,top?top.id:"-",Math.round(onH/1000),cut?1:0,commandView,
            flatFor>=60?1:0,playing?1:0,dw?dw.map(function(e){ return e.id; }).join(","):"-",derFirst?1:0].join("|");
   if(key===_sitKey) return;
   _sitKey=key;
@@ -15104,6 +15204,7 @@ function rovingGroup(host,sel){
    phases, event markers, acts and the theme's mark carry their words in data-tip, shown in one tooltip (#tltip) on hover and on keyboard
    focus, in the page's own type, at once; Esc hides it, and the pointer may move onto it (WCAG 1.4.13). The tip repeats the element's name
    (aria-label), so it is hidden from assistive technology. Until step 5 native title tooltips, shown after a delay and never on focus. */
+var RAIL_SLOP=6;   /* WP-06 (CL-UX-03): px a press on an event marker moves before it is the rail's drag (a design value) */
 var TIP={el:null, on:null, hideT:0, hover:null, focus:null, goneHover:null, goneFocus:null, press:null, pressT:0};
 function tipShow(t){
   var tp=TIP.el||(TIP.el=document.getElementById("tltip")); if(!tp||!t||!t.dataset||!t.dataset.tip) return;
@@ -15111,6 +15212,15 @@ function tipShow(t){
   var r=t.getBoundingClientRect(), w=tp.offsetWidth, h=tp.offsetHeight, x=r.left+r.width/2-w/2;
   x=Math.max(8,Math.min(window.innerWidth-w-8,x));
   tp.style.left=Math.round(x)+"px"; tp.style.top=Math.round(Math.max(8,r.top-h-8))+"px";
+}
+/* the control (a button, a slider, a link) under the tip at a screen point, else null */
+function tipControlAt(x,y){
+  var tp=TIP.el; if(!tp||typeof document.elementsFromPoint!=="function") return null;
+  var L=document.elementsFromPoint(x,y);
+  for(var i=0;i<L.length;i++){ var e=L[i]; if(e===tp||tp.contains(e)) continue;
+    var c=e.closest?e.closest("button,a[href],input,select,[role=slider]"):null; if(c&&!tp.contains(c)) return c;
+    if(e===document.body||e===document.documentElement) break; }
+  return null;
 }
 function tipHide(now){ clearTimeout(TIP.hideT); var tp=TIP.el; if(!tp) return;
   if(now){ tp.hidden=true; TIP.on=null; return; }
@@ -15141,6 +15251,14 @@ function bindTimeTips(){
   tb.addEventListener("click",function(e){ var t=tipOf(e); if(!t) return; if(TIP.hover===t) TIP.goneHover=t; if(TIP.focus===t) TIP.goneFocus=t; tipSync(true); },true);
   tp.addEventListener("pointerover",function(){ clearTimeout(TIP.hideT); });
   tp.addEventListener("pointerout",function(){ tipSync(false); });
+  /* the final audits' WP-06 (CL-UX-04): the tip yields to a control it covers. Shown above its element it can stand over the control row (Play,
+     the event steps, Follow); a pointer over it at a point where a control lies under it hides it at once, as a press on its element does, so
+     the press that follows reaches the control. The rest of the tip stays hoverable (WCAG 1.4.13). Until WP-06 the press went to the tip and
+     only dismissed it */
+  function tipYield(e){ if(tp.hidden) return; var c=tipControlAt(e.clientX,e.clientY); if(!c) return;
+    if(TIP.hover) TIP.goneHover=TIP.hover; tipHide(true); }
+  tp.addEventListener("pointermove",tipYield);
+  tp.addEventListener("pointerdown",tipYield);
   /* Esc hides a shown tip and does nothing else (the review of 22c77ac: it also ran the app's Esc); a second Esc is the app's */
   window.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!tp.hidden){ TIP.goneHover=TIP.hover; TIP.goneFocus=TIP.focus; tipHide(true); e.stopPropagation(); e.preventDefault(); } },{capture:true});
 }
@@ -15193,11 +15311,41 @@ function buildTimeline(){
       evh.appendChild(b); _evTicks.push({el:b,bar:o.bar||null,e:e,t:o.t}); });
     rovingGroup(evh,".ev-mark"); }
   if(!rail) return;
-  var dragging=false;
+  var dragging=false, dragId=null;
   function toClock(clientX){ var r=rail.getBoundingClientRect(); return T_MIN+Math.max(0,Math.min(1,(clientX-r.left)/(r.width||1)))*(T_MAX-T_MIN); }
-  rail.addEventListener("pointerdown",function(e){ dragging=true; stopPlay(); if(rail.setPointerCapture) rail.setPointerCapture(e.pointerId); setClock(toClock(e.clientX)); });
-  rail.addEventListener("pointermove",function(e){ if(dragging) setClock(toClock(e.clientX)); });
-  window.addEventListener("pointerup",function(){ dragging=false; });
+  /* the final audits' WP-06 (CL-UX-13): the rail seeks on the primary button (a mouse's left, a finger, a pen) only, drags while it is held, and
+     the drag ends on its release, a cancel or a lost capture; until WP-06 any button sought (a right press moved the clock and stopped Play) and
+     only a release on the window ended the drag */
+  function railBegin(e,capEl){ dragging=true; dragId=e.pointerId; stopPlay();
+    try{ if(capEl.setPointerCapture) capEl.setPointerCapture(e.pointerId); }catch(x){}   /* a pointer the browser no longer tracks cannot be captured */
+    setClock(toClock(e.clientX)); }
+  function railEnd(e){ if(!e||e.pointerId===undefined||dragId===null||e.pointerId===dragId){ dragging=false; dragId=null; } }
+  function railMove(e){ if(!dragging||(dragId!==null&&e.pointerId!==dragId)) return;
+    if(e.buttons!==undefined&&!(e.buttons&1)){ railEnd(); return; }   /* the release was missed (a context menu took it): no scrubbing on a hover */
+    setClock(toClock(e.clientX)); }
+  rail.addEventListener("pointerdown",function(e){ if(e.button!==0) return; railBegin(e,rail); });
+  rail.addEventListener("pointermove",railMove);
+  window.addEventListener("pointerup",railEnd);
+  window.addEventListener("pointercancel",railEnd);
+  rail.addEventListener("lostpointercapture",railEnd);
+  /* the final audits' WP-06 (CL-UX-03): a press that begins on an event marker and moves more than RAIL_SLOP px is the rail's drag, handed to it
+     (the pointer captured by the rail, the clock following it, the marker's click not made), so a drag scrubs wherever on the rail it starts: on
+     a phone the markers' hit areas took about two thirds of it, and on a desktop the marker standing on the playhead at an event's start. A
+     press that does not move is the marker's tap or click, as before */
+  if(evh){ var mk=null;
+    evh.addEventListener("pointerdown",function(e){ var m=e.target&&e.target.closest?e.target.closest(".ev-mark"):null;
+      mk=(m&&e.button===0)?{id:e.pointerId,x:e.clientX,y:e.clientY,m:m}:null; });
+    evh.addEventListener("pointermove",function(e){
+      if(dragging&&e.pointerId===dragId){ railMove(e); return; }   /* the drag's moves, where the capture did not move to the rail */
+      if(!mk||e.pointerId!==mk.id) return;
+      if(e.buttons!==undefined&&!(e.buttons&1)){ mk=null; return; }
+      if(Math.hypot(e.clientX-mk.x,e.clientY-mk.y)<RAIL_SLOP) return;
+      var m=mk.m; mk=null; m._dragged=Date.now(); railBegin(e,rail); });
+    evh.addEventListener("pointerup",function(e){ if(mk&&e.pointerId===mk.id) mk=null; });
+    evh.addEventListener("pointercancel",function(){ mk=null; });
+    /* the click a handed drag's release may still make on its marker (a mouse's, where the capture stayed on it) is not the marker's */
+    evh.addEventListener("click",function(e){ var m=e.target&&e.target.closest?e.target.closest(".ev-mark"):null;
+      if(m&&m._dragged&&Date.now()-m._dragged<1500){ m._dragged=0; e.stopPropagation(); e.preventDefault(); } },true); }
   rail.addEventListener("keydown",function(e){
     var t=null, ph=phaseAt(clock);
     if(e.key==="ArrowRight") t=clock+(e.shiftKey?60:10); else if(e.key==="ArrowLeft") t=clock-(e.shiftKey?60:10);
@@ -15266,7 +15414,9 @@ function jumpEvent(dir){
   stopPlay();
   var ts=eventTimes(), t=clock;
   if(dir>0){
-    for(var i=0;i<ts.length;i++) if(ts[i]>t+1.5){ goToEventAt(ts[i]); return; }
+    /* the final audits' WP-05 (CL-UX-14): the first start after the clock, however little ahead (a pause in a dwell's ease leaves the clock under
+       1.25 minutes before its start); until WP-05 the first more than 1.5 minutes ahead, which skipped it. Back keeps its margin */
+    for(var i=0;i<ts.length;i++) if(ts[i]>t+1e-6){ goToEventAt(ts[i]); return; }
     goToEventAt(T_MAX);
   } else {
     for(var j=ts.length-1;j>=0;j--) if(ts[j]<t-1.5){ goToEventAt(ts[j]); return; }
@@ -15386,14 +15536,19 @@ function timingNow(id){
 var TIMING_TEXT={A:"Timing dated in a cited source.",
                  B:"Timing approximate: the sources read differ on it, or this reconstruction's narrative gives it without a source.",
                  C:"Timing inferred from the narrative (a bound, a sequence or a range), applied to this move."};
+/* the final audits' WP-05 (CL-SIM-01): an open dossier follows the clock within a phase. A place's "Formations nearby now" under every reading
+   (until WP-05 only under a headquarters'); a formation's dossier at each clock minute, since its rows say the clock or "now" ("Position at
+   HH:MM", "Where", the midpoint, the day-track's dot, the timing's "Reached", the live event): its key holds the minute, and a repaint that
+   changes nothing is kept as it is (paintDrawerBody). Until WP-05 the key held only each formation's text phase, moving and hidden state, so
+   "Position at 12:03" stood at 12:37 */
 function drawerKey(){
-  if(selection&&selection.kind==="t"&&commandView!=="none"){   /* Stage 8, 8A: a place's "Formations nearby now" under a reading follows it */
+  if(selection&&selection.kind==="t"){   /* Stage 8, 8A: a place's "Formations nearby now" under a reading follows it; WP-05: under every reading */
     var ft=null; FEATURES.forEach(function(x){ if(x.id===selection.id) ft=x; }); return ft?"t|"+commandView+"|"+placeNearby(ft).join(","):""; }
   if(!selection||selection.kind!=="f") return "";
   /* Stage 8, implementation PR 8A (decision 251): and, under a reading, whether each of its formations is hidden by it (the reading follows the
      clock, decision 92: a formation may become known or unknown within a phase), so the dossier never keeps a place the reading has withdrawn */
   return leavesOf(selection.id,[]).map(function(k){ var L=legAt(k,clock); return textPhase(k,clock)+(L&&L.b&&L.u>0&&L.u<1?"m":"s")+(readHidden(k)?"h":""); }).join(",")+
-    "|"+commandView+(EYE.on?"e":"");
+    "|"+commandView+(EYE.on?"e":"")+"|"+Math.floor(clock+1e-9);
 }
 var _drawerKey="";
 var CONF_INTERP="The formation is between two plotted anchors: this position is interpolated, and graded no better than the weaker anchor.";
@@ -15401,7 +15556,8 @@ var CONF_TEXT={A:"Position documented in the sources.",
                B:"Sector documented; the frontage shown is an approximation.",
                C:"Reconstructed from the narrative — treat as indicative only."};
 
-function paintDrawer(){ _drawerKey=drawerKey(); paintDrawerBody(); syncSelChip(); }
+var DRAWER_PLAY_MS=250, _drawerAt=-1e9;   /* WP-05 (CL-SIM-01): a design value; the last paint's time */
+function paintDrawer(){ _drawerKey=drawerKey(); _drawerAt=performance.now(); paintDrawerBody(); syncSelChip(); }
 var _drawerClear=0;
 function paintDrawerBody(){
   _claimRefs=null;   /* a dossier that threw leaves no collection open (the review of 559802d) */
@@ -15425,6 +15581,9 @@ function paintDrawerBody(){
     selection.kind==="a"?dossierAnalysis(selection.id):dossierFeature(selection.id);
   /* the C7-C14 review's item 9: a repaint that changes nothing (the clock playing) keeps the dossier as it is, focus and scroll included */
   if(body.children.length===1&&body.firstChild.outerHTML===nn.outerHTML){ syncInert(); return; }
+  /* the final audits' WP-05 (CL-SIM-01): the same dossier repainted as the clock moves: only its sections that changed are replaced, so a control
+     focused in one that did not keeps the focus (no new element to announce each minute) and the place it is scrolled to */
+  if(body.children.length===1&&body.getAttribute("data-dossier")===dk&&drawerMorph(body.firstChild,nn)){ syncInert(); return; }
   body.innerHTML="";
   body.appendChild(nn);
   var sameDossier=body.getAttribute("data-dossier")===dk; body.setAttribute("data-dossier",dk);
@@ -15434,6 +15593,28 @@ function paintDrawerBody(){
     if(!(same&&focusTo([same]))){ var h=body.querySelector("h2,h3"); if(h){ h.setAttribute("tabindex","-1"); focusTo([h]); } } }
 }
 
+/* WP-05 (CL-SIM-01): o, the dossier shown, takes n's sections (its children, in order) where they differ; where one is the same, its elements take
+   n's own properties (srcButton's refs, the day-track's model), so what a kept control reads is the new paint's. False (nothing changed) when the
+   two are not the same dossier's shape: the caller then replaces it whole. A replaced section that held the focus hands it on as a rebuild does */
+function drawerMorph(o,n){
+  if(!o||!n||o.tagName!==n.tagName||o.className!==n.className||o.childNodes.length!==n.childNodes.length) return false;
+  var oc=[].slice.call(o.childNodes), nc=[].slice.call(n.childNodes), i, fa=focusedEl(), lost=null;
+  for(i=0;i<nc.length;i++){ if(oc[i].nodeType!==nc[i].nodeType||(oc[i].nodeType===1&&oc[i].tagName!==nc[i].tagName)) return false; }
+  for(i=0;i<nc.length;i++){ var a=oc[i], b=nc[i];
+    if(a.nodeType!==1){ if(a.nodeValue!==b.nodeValue) a.nodeValue=b.nodeValue; continue; }
+    if(a.outerHTML===b.outerHTML){ drawerProps(a,b); continue; }
+    if(fa&&a.contains(fa)){ var same=[].filter.call(a.querySelectorAll(fa.tagName),function(x){ return (x.textContent||"").trim()===(fa.textContent||"").trim(); });
+      lost=[fa.tagName,(fa.textContent||"").trim(),same.indexOf(fa),b]; }
+    o.replaceChild(b,a); }
+  if(lost){ var cands=[].filter.call(lost[3].querySelectorAll(lost[0]),function(x){ return (x.textContent||"").trim()===lost[1]; }), c=cands[Math.max(0,lost[2])]||cands[0];
+    if(!(c&&focusTo([c]))){ var h=o.querySelector("h2,h3"); if(h){ h.setAttribute("tabindex","-1"); focusTo([h]); } } }
+  return true;
+}
+function drawerProps(a,b){
+  Object.keys(b).forEach(function(k){ a[k]=b[k]; });
+  var A=a.querySelectorAll?a.querySelectorAll("*"):[], B=b.querySelectorAll?b.querySelectorAll("*"):[];
+  for(var j=0;j<B.length&&j<A.length;j++){ var ks=Object.keys(B[j]); for(var q=0;q<ks.length;q++) A[j][ks[q]]=B[j][ks[q]]; }
+}
 function row(k,v){ return '<div class="kv"><dt>'+esc(k)+'</dt><dd>'+v+'</dd></div>'; }
 
 function outcomeOf(id){
@@ -15484,8 +15665,12 @@ function compactCard(id){
     var pf=FORMATIONS[f.parent];
     body+=row("Under", esc(shortCommander(pf))+" &middot; "+esc(pf.name));
   }
-  if(s2&&s2.act) body+=row("Doing now", esc(s2.act)+claimTag(trackRef(id,s2.actPhase,"act")));
-  if(wt&&f.track[wt.ph].act) body+=row("From "+esc(fmtClock(wt.w[0])), esc(f.track[wt.ph].act)+claimTag(trackRef(id,wt.ph,"act")));
+  /* the final audits' WP-05 (CL-SIM-05; the audit's default): under a reading that does not know the formation, "Doing now" and "From HH:MM"
+     say the reading's sentence, as "Where" does: their texts say where it is and what it does now (until WP-05 they were shown, the place
+     withheld two rows below undone in prose) */
+  var hidAct=!!(f.track&&readHidden(id));
+  if(s2&&s2.act) body+=row("Doing now", hidAct?esc(readUnknown()):esc(s2.act)+claimTag(trackRef(id,s2.actPhase,"act")));
+  if(wt&&f.track[wt.ph].act) body+=row("From "+esc(fmtClock(wt.w[0])), hidAct?esc(readUnknown()):esc(f.track[wt.ph].act)+claimTag(trackRef(id,wt.ph,"act")));
   if(s2&&s2.obj) body+=row("Objective", esc(s2.obj)+claimTag(trackRef(id,objPhaseOf(id,textPhase(id,clock)),"obj")));
   body+=posRow(id,true);   /* roadmap step 2 (D-6): an aggregate's midpoint, tagged derived */
   wrap.appendChild(el("dl","kvs",body));
@@ -15680,14 +15865,15 @@ function dossierFormation(id){
     var prev=tp>0?stateAt(id,tp-1):null;
     var nx=wt?{i:curPhase,act:f.track[wt.ph].act||"Moves to its next position.",from:wt.w[0],ref:f.track[wt.ph].act?trackRef(id,wt.ph,"act"):null}:nextChange(id,curPhase);
     if(nx&&!wt&&nx.ref===undefined) nx.ref=f.track[nx.i]&&f.track[nx.i].act===nx.act?trackRef(id,nx.i,"act"):null;
+    var hidAct=readHidden(id);   /* WP-05 (CL-SIM-05): what it does now and next, as the card's rows, under a reading that does not know it */
     var h='<ol class="tl">';
     h+='<li class="past"><b>'+(prev&&prev.act?esc(PHASES[Math.max(0,tp-1)].clock):"—")+'</b><span>'+
         (prev&&prev.act?esc(prev.act)+claimTag(trackRef(id,prev.actPhase,"act")):"No earlier action recorded.")+'</span></li>';
-    h+='<li class="now"><b>'+esc(PHASES[curPhase].clock)+'</b><span>'+
+    h+='<li class="now"><b>'+esc(PHASES[curPhase].clock)+'</b><span>'+(hidAct?esc(readUnknown()):
         (s&&s.act?esc(s.act)+claimTag(trackRef(id,s.actPhase,"act")):"Position unchanged.")+
-        (s&&s.act&&s.actPhase<curPhase?' <i>(continuing from '+esc(PHASES[s.actPhase].clock)+')</i>':'')+'</span></li>';
+        (s&&s.act&&s.actPhase<curPhase?' <i>(continuing from '+esc(PHASES[s.actPhase].clock)+')</i>':''))+'</span></li>';
     h+='<li class="next"><b>'+(nx?(nx.from!==undefined?"From "+esc(fmtClock(nx.from)):esc(PHASES[nx.i].clock)):"—")+'</b><span>'+
-        (nx?esc(nx.act)+(nx.ref?claimTag(nx.ref):""):"No further change recorded in this reconstruction.")+'</span></li>';
+        (hidAct&&nx?esc(readUnknown()):nx?esc(nx.act)+(nx.ref?claimTag(nx.ref):""):"No further change recorded in this reconstruction.")+'</span></li>';
     h+='</ol>';
     wrap.appendChild(sect("What it was doing",h,false));   /* decision 187 (iv): its statements carry their claims; the section's "reconstruction" tag gone */
   }
@@ -15792,7 +15978,8 @@ function claimRefsEnd(prev){ var r=_claimRefs||[]; _claimRefs=prev; return r; }
    sources are one press from where the dossier opens; refs is filled when the dossier is built to its end, and read at the press */
 function srcButton(refs,head){ var d=el("div",head?"dact src-head":"dact"), b=el("button","t",esc(LABELS.dossier.sourced));
   /* the clock stopped first, as "Go to this moment" does: a repaint under the sheet would take this button, the sheet's way back (the review of 559802d) */
-  b.addEventListener("click",function(){ stopPlay(); openSources({refs:refs.slice()}); }); d.appendChild(b); return d; }
+  b._refs=refs;   /* WP-05 (CL-SIM-01): read at the press, so a button kept by drawerMorph opens the new paint's statements */
+  b.addEventListener("click",function(){ stopPlay(); openSources({refs:(b._refs||refs).slice()}); }); d.appendChild(b); return d; }
 function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+field; }
 function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
@@ -16452,6 +16639,9 @@ function stopPlay(){
   playing=false; dwellReset(); FOLLOW.T=null;
   var b=document.getElementById("play");
   if(b){ b.textContent="Play"; b.setAttribute("aria-pressed","false"); }
+  if(selection&&drawerKey()!==_drawerKey) paintDrawer();   /* WP-05 (CL-SIM-01): the dossier the clock's where it stops */
+  paintSituation();   /* the final audits' WP-05 (CL-SIM-08): paused in a dwell's hold, the caption is the clock's at once, as after a seek (its key holds
+                         playing and the dwell's events, both just changed); until WP-05 it named the dwell's events until the clock next moved */
   paintExaggeration();
   openingHead();   /* Stage 7D */
 }
@@ -16792,7 +16982,9 @@ function loop(){
   openingWatch();   /* Stage 7C: a pan, orbit or zoom took the camera (Follow off): the opening ends where it is */
   var now=performance.now(), state=frameState(now);
   paintDevStats(now);
-  if(state==="idle"||state==="waiting"){ DEV.skipped++; if(state==="idle") DEV.state="idle"; return; }
+  /* the final audits' WP-05 (CL-SIM-07): a frame not drawn still counts as the last frame, so the first drawn frame after the page went idle
+     advances one frame's worth (until WP-05 its dt was the 120 ms cap: 0.6 clock minutes at half speed, 3.6 at 4x, on Play from idle) */
+  if(state==="idle"||state==="waiting"){ DEV.skipped++; if(state==="idle") DEV.state="idle"; lastFrame=now; return; }
   DEV.state=state; lastAmbient=now;
   if(needFrames>0) needFrames--;
   settling=false;
@@ -16821,6 +17013,171 @@ function loop(){
    visual harness (tools/visual) calls it; it can also be run from the console at any time.
    applyCase() and settle() let the harness put the app into a fixed, fully settled state.
    ============================================================ */
+/* ============================================================
+   THE FINAL AUDITS' STAGE 3 (docs/ROADMAP_FINAL_AUDIT.md: WP-05, WP-06): the self-test's checks of their fixes, in the live page
+   (selfTest runs them; AUSTERLITZ_DEBUG.wp56() alone). Each reads the page as a visitor's input leaves it, with the app's own handlers
+   (synthetic pointer events dispatched where the browser would send them; the clock and the tweens advanced by their own functions). The
+   state is put back after. runtime-test.js holds the model-side rules (the clock, the reading, the fade, the caption, the event keys)
+   ============================================================ */
+function wp56Checks(){
+  var out=[], K={t:clock,cv:commandView,sel:selection,de:dossierExpanded,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,mode:mode,pres:presentation,sp:speed,fa:document.activeElement};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function endTw(){ var n=0; while(tween&&n<6){ tween(performance.now()+1e7); n++; } }
+  function pev(type,x,y,o){ o=o||{}; return new PointerEvent(type,{pointerId:o.id||41,isPrimary:true,pointerType:o.pt||"mouse",clientX:x,clientY:y,
+    button:o.button===undefined?0:o.button,buttons:o.buttons===undefined?1:o.buttons,bubbles:true,cancelable:true}); }
+  function camD(a){ return landCam.position.distanceTo(a.p)+orbitTarget.distanceTo(a.t); }
+  function camNow(){ return {p:landCam.position.clone(),t:orbitTarget.clone()}; }
+  if(playing) stopPlay(); if(mode==="staff") setMode("terrain"); if(presentation!=="study") setPresentation("study"); setCommandView("none"); select(null,null); endTw();
+  try{
+  /* CL-SIM-01: an open dossier, moved through by the clock inside one phase (the slider's setClock), is at every step what a fresh paint at that
+     clock gives: a marching formation's card and full dossier, its corps's, and a place's "Formations nearby now"; a control focused in a section
+     the clock does not change keeps the focus (the same element) */
+  guard("dossiers follow the clock (WP-05, CL-SIM-01)",function(){
+    var best=null, bestP=null;   /* the longest such leg (the audit's C1: Napoleon's headquarters, 12:00-12:40), and the longest of a formation in a corps */
+    Object.keys(units).forEach(function(id){ var A=anchorList(id);
+      for(var i=1;i<A.length;i++){ var a=A[i-1], b=A[i]; if(!a.p||!b.p||!b.w) continue; var w0=b.w[0], w1=b.w[1];
+        if(w1-w0<30||phaseAt(w0+1)!==phaseAt(w1-1)) continue; var km=legPath(a,b).len*KM_PER_MAP, L={id:id,w0:w0,w1:w1,km:km,p:a.p};
+        if(!best||km>best.km) best=L; if(FORMATIONS[id].parent&&(!bestP||km>bestP.km)) bestP=L; } });
+    if(!best||!bestP) throw new Error("no leg of 30 minutes inside one phase");
+    var body=document.getElementById("drawer-body"), n=0, bad=[], kept=0, nf=0, ft=null, fd=1e9;
+    FEATURES.forEach(function(f){ var d=Math.hypot(f.p[0]-best.p[0],f.p[1]-best.p[1]); if(d<fd){ fd=d; ft=f; } });
+    var cases=[["f",best.id,false,best],["f",best.id,true,best],["f",bestP.id,false,bestP],["f",FORMATIONS[bestP.id].parent,false,bestP],["f",FORMATIONS[bestP.id].parent,true,bestP],["t",ft.id,false,best]];
+    cases.forEach(function(c){ var L=c[3];
+      setClock(L.w0+2,{instant:true,force:true,camera:false}); select(null,null); select(c[0],c[1]); dossierExpanded=c[2]; paintDrawer();
+      function fresh(){ return (c[0]==="t"?dossierFeature(c[1]):c[2]?dossierFormation(c[1]):compactCard(c[1])).outerHTML; }
+      if(body.firstChild.outerHTML!==fresh()) bad.push(c.join(" ")+": differs from a fresh paint at once (the comparison is not sound)");
+      var ts=[]; for(var t=L.w0+4;t<L.w1-1;t+=Math.max(1,(L.w1-L.w0)/9)) ts.push(t);
+      ts.forEach(function(t){ setClock(t,{camera:false}); n++; if(body.firstChild.outerHTML!==fresh()) bad.push(c.join(" ")+" at "+fmtClock(t)+": not a fresh paint"); });
+      if(c[0]==="f"&&c[2]){ var h=body.querySelector(".src-head button"); if(h&&focusTo([h])){ nf++; setClock(clock+3,{camera:false}); if(document.activeElement===h) kept++; else bad.push(c[1]+": the focused sources button replaced at "+fmtClock(clock)); } }
+    });
+    select(null,null); dossierExpanded=false;
+    ck("dossiers (WP-05, CL-SIM-01): an open dossier follows the clock within a phase: a marching formation's card and full dossier, its corps's and a place's, each what a fresh paint at that clock gives; a control focused in a section the clock leaves alone keeps the focus",
+      !bad.length&&n>=40&&kept>=2&&kept===nf, n+" clocks along "+best.id+"'s leg "+fmtClock(best.w0)+"-"+fmtClock(best.w1)+" ("+best.km.toFixed(1)+" km), "+bestP.id+"'s "+fmtClock(bestP.w0)+"-"+fmtClock(bestP.w1)+" and its corps's, and "+ft.id+"'s dossier; focus kept "+kept+" of "+nf+(bad.length?"; WRONG: "+bad.slice(0,5).join("; "):""));
+  });
+  /* CL-SIM-02: under each headquarters' reading every 10 minutes, an arrow bound to a formation (its leg or its halt) is drawn exactly when the
+     reading does not hide the formation, and its label is laid out only then; the plateau label's counts are the known formations' */
+  guard("readings withhold arrows (WP-05, CL-SIM-02)",function(){
+    var bad=[], hidN=0, shownN=0, lab=0, pl=0;
+    ["fr","al","none"].forEach(function(cv){ setCommandView(cv);
+      for(var t=T_MIN;t<=T_MAX;t+=10){ setClock(t,{instant:true,camera:false}); updateVisibility(); mlLayout();
+        OVREAD.forEach(function(e){ var h=cv!=="none"&&readHidden(e.id), vis=e.objs.some(function(o){ return o.visible; });
+          if(h){ hidN++; if(vis) bad.push(cv+" "+fmtClock(t)+": "+e.id+"'s arrow drawn, unknown to the reading"); }
+          else { shownN++; if(!vis&&!(e.d&&!e.d.r)) bad.push(cv+" "+fmtClock(t)+": "+e.id+"'s arrow not drawn"); }
+          e.txt.forEach(function(x){ var it=ML.items["o:"+x.text], on=!!(it&&it.eFrame===ML.frame&&it.state==="on");
+            if(h&&on) bad.push(cv+" "+fmtClock(t)+": the label "+x.text+" laid out"); if(h) lab++; }); });
+        if(curPhase<=PLATEAU_LAST){ var m=/Allied ≈ ([\d,]+)/.exec(plateauText()), want=0;
+          Object.keys(units).forEach(function(id){ var f=FORMATIONS[id]; if(f.nation==="fr") return; var own=ownStrengthAt(id,clock), p=posNow(id); if(own&&p&&onPlateau(p)&&!(cv!=="none"&&readHidden(id))) want+=own; });
+          pl++; if(!m||+m[1].replace(/,/g,"")!==want) bad.push(cv+" "+fmtClock(t)+": the plateau label's Allied "+(m?m[1]:"none")+", the known formations' "+want); } } });
+    setCommandView("none");
+    ck("Whose eyes? (WP-05, CL-SIM-02): under each headquarters' reading every 10 minutes an arrow bound to a formation is drawn, and its label laid out, only while the reading knows the formation; the plateau label counts the formations the reading knows; under everyone's every arrow is drawn",
+      !bad.length&&hidN>0&&shownN>0&&pl>0, hidN+" arrow-clocks withheld ("+lab+" labels), "+shownN+" drawn, "+pl+" plateau labels"+(bad.length?"; WRONG: "+bad.slice(0,5).join("; "):""));
+  });
+  /* CL-UX-02: a glide (a vantage, a centring, a phase's camera) taken by a pan, a wheel, a key or an orbit 150 ms into it stops where the input
+     left it: run to its end, the camera moved under 0.05 units */
+  guard("input ends a glide (WP-06, CL-UX-02)",function(){
+    var bad=[], n=0, worst=0, fr=landFreeRect(), cx=(fr[0]+fr[2])/2, cy=(fr[1]+fr[3])/2;
+    var glides={vantage:function(){ flyTo(VANTAGE.zuran); }, centring:function(){ centreOnMap(posNow("legrand")||[260,300],86); },
+      phase:function(){ freeCam=false; setPhase(curPhase===4?5:4); }};
+    var inputs={pan:function(){ LANDCAM.panStart(cx,cy); LANDCAM.panTo(cx+40,cy+25); LANDCAM.panEnd(); }, wheel:function(){ LANDCAM.zoomAt(cx,cy,1.09); LANDCAM.zoomAt(cx,cy,1.09); },
+      key:function(){ LANDCAM.key({key:"ArrowLeft",shiftKey:false}); }, orbit:function(){ LANDCAM.orbit(40,0); }};
+    Object.keys(glides).forEach(function(g){ Object.keys(inputs).forEach(function(i){
+      endTw(); var v=presetFrame(VANTAGE.plan); landCam.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); landCam.lookAt(orbitTarget); freeCam=false;
+      var t0=performance.now(); glides[g](); if(!_tw.cam){ bad.push(g+": no glide began"); return; }
+      tween(t0+150); inputs[i](); var a=camNow(); if(tween) tween(t0+400); if(tween) tween(t0+1e6); endTw(); var d=camD(a); n++; worst=Math.max(worst,d);
+      if(d>=0.05) bad.push(g+" + "+i+": moved "+d.toFixed(2)+" after the input"); }); });
+    ck("camera (WP-06, CL-UX-02): a pan, a wheel, a key or an orbit during a glide (a vantage, a centring, a phase's camera) stops it where the input left it, as the paper map's does",
+      !bad.length&&n===12, n+" cases; after the input the camera moved at most "+worst.toFixed(3)+" units"+(bad.length?"; WRONG: "+bad.slice(0,6).join("; "):""));
+  });
+  /* CL-UX-03: a press on an event marker that moves is the rail's drag (the clock follows the pointer, the marker not taken), by mouse and by
+     finger, also from the marker standing on the playhead; a press that does not move is the marker's */
+  guard("markers hand drags to the rail (WP-06, CL-UX-03)",function(){
+    var rail=document.getElementById("timerail"), rr=rail.getBoundingClientRect(), bad=[], n=0;
+    function toC(x){ return T_MIN+Math.max(0,Math.min(1,(x-rr.left)/rr.width))*(T_MAX-T_MIN); }
+    var ticks=_evTicks.filter(function(o){ var r=o.el.getBoundingClientRect(); return r.width>0&&r.left>rr.left+60&&r.right<rr.right-120; });
+    if(!ticks.length) throw new Error("no marker on the rail");
+    [ticks[0],ticks[Math.floor(ticks.length/2)]].forEach(function(o){ ["mouse","touch"].forEach(function(pt){
+      select(null,null); setClock(o.t,{instant:true,camera:false});   /* the playhead under the marker */
+      var r=o.el.getBoundingClientRect(), x=r.left+r.width/2, y=r.top+r.height/2;
+      o.el.dispatchEvent(pev("pointerdown",x,y,{pt:pt})); o.el.dispatchEvent(pev("pointermove",x+3,y,{pt:pt})); o.el.dispatchEvent(pev("pointermove",x+40,y,{pt:pt})); o.el.dispatchEvent(pev("pointermove",x+80,y,{pt:pt}));
+      window.dispatchEvent(pev("pointerup",x+80,y,{pt:pt,buttons:0})); o.el.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true,clientX:x+80,clientY:y}));
+      n++; if(Math.abs(clock-toC(x+80))>0.05) bad.push(pt+" drag from "+o.e.id+": the clock "+fmtClock(clock)+", the pointer's "+fmtClock(toC(x+80)));
+      if(selection&&selection.kind==="e") bad.push(pt+" drag from "+o.e.id+": the event selected");
+      select(null,null); o.el.dispatchEvent(pev("pointerdown",x,y,{pt:pt})); window.dispatchEvent(pev("pointerup",x,y,{pt:pt,buttons:0})); o.el.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true,clientX:x,clientY:y}));
+      if(!(selection&&selection.kind==="e"&&selection.id===o.e.id)) bad.push(pt+" tap on "+o.e.id+": not selected"); }); });
+    select(null,null);
+    ck("timeline (WP-06, CL-UX-03): a drag that starts on an event marker scrubs the clock with the pointer, by mouse and by finger, also from the marker on the playhead, and does not take the event; a press that does not move still takes it",
+      !bad.length&&n===4, n+" drags and taps on 2 markers"+(bad.length?"; WRONG: "+bad.slice(0,6).join("; "):""));
+  });
+  /* CL-UX-13: the rail seeks on the primary button only (a right press neither moves the clock nor stops Play); a drag ends on a move with no
+     button held, a cancel or a lost capture */
+  guard("the rail's drag (WP-06, CL-UX-13)",function(){
+    var rail=document.getElementById("timerail"), rr=rail.getBoundingClientRect(), y=rr.top+rr.height/2, bad=[], x1=rr.left+rr.width*0.3, x2=rr.left+rr.width*0.5, x3=rr.left+rr.width*0.7;
+    setClock(600,{instant:true,camera:false}); togglePlay();
+    rail.dispatchEvent(pev("pointerdown",x1,y,{button:2,buttons:2})); rail.dispatchEvent(pev("pointermove",x2,y,{buttons:2})); window.dispatchEvent(pev("pointerup",x2,y,{button:2,buttons:0}));
+    if(!playing||Math.abs(clock-600)>1e-9) bad.push("a right press: playing "+playing+", the clock "+fmtClock(clock)); stopPlay();
+    rail.dispatchEvent(pev("pointerdown",x1,y)); var c1=clock; rail.dispatchEvent(pev("pointermove",x2,y,{buttons:0})); rail.dispatchEvent(pev("pointermove",x3,y));
+    if(Math.abs(clock-c1)>1e-9) bad.push("a move with no button held went on scrubbing ("+fmtClock(c1)+" to "+fmtClock(clock)+")");
+    window.dispatchEvent(pev("pointerup",x3,y,{buttons:0}));
+    ["pointercancel","lostpointercapture"].forEach(function(k){ rail.dispatchEvent(pev("pointerdown",x1,y)); var c=clock;
+      (k==="pointercancel"?window:rail).dispatchEvent(pev(k,x1,y,{buttons:0})); rail.dispatchEvent(pev("pointermove",x3,y));
+      if(Math.abs(clock-c)>1e-9) bad.push("after a "+k+" the rail went on scrubbing"); window.dispatchEvent(pev("pointerup",x3,y,{buttons:0})); });
+    ck("timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"a right press, a missed release, a cancel and a lost capture");
+  });
+  /* CL-UX-04: a tip shown over a control of the timebar yields to it: the pointer over the tip at the control's centre hides the tip, and the
+     control is then what is under the pointer; elsewhere over the tip it stays (WCAG 1.4.13) */
+  guard("tips yield to controls (WP-06, CL-UX-04)",function(){
+    var tp=document.getElementById("tltip"), ctl=[].filter.call(document.querySelectorAll(".timebar .tb-top button"),function(b){ return shown(b); }), cases=0, bad=[], stay=0;
+    var els=_evTicks.map(function(o){ return o.el; }).concat([].slice.call(document.querySelectorAll("#phases .step")));
+    els.forEach(function(t){ if(cases>=4) return; var r0=t.getBoundingClientRect(); if(!(r0.width>0)) return;
+      TIP.hover=t; TIP.goneHover=null; TIP.focus=null; tipSync(true); if(tp.hidden) return; var R=tp.getBoundingClientRect();
+      var c=ctl.filter(function(b){ var q=b.getBoundingClientRect(), x=q.left+q.width/2, y=q.top+q.height/2; return x>R.left+1&&x<R.right-1&&y>R.top+1&&y<R.bottom-1; })[0];
+      if(!c){ TIP.hover=null; tipSync(true); return; }
+      var q=c.getBoundingClientRect(), x=q.left+q.width/2, y=q.top+q.height/2, u0=document.elementFromPoint(x,y);
+      if(!(u0===tp||tp.contains(u0))){ TIP.hover=null; tipSync(true); return; }
+      cases++;
+      /* a point of the tip with no control under it: the tip stays there */
+      var free=null; for(var fx=R.left+3;fx<R.right-3&&!free;fx+=6) for(var fy=R.top+3;fy<R.bottom-3&&!free;fy+=4){ if(!tipControlAt(fx,fy)) free=[fx,fy]; }
+      if(free){ tp.dispatchEvent(pev("pointermove",free[0],free[1],{buttons:0})); if(tp.hidden) bad.push("the tip of "+(t.dataset.tip||"").slice(0,30)+" hid over no control"); else stay++; }
+      tp.dispatchEvent(pev("pointermove",x,y,{buttons:0}));
+      var u=document.elementFromPoint(x,y);
+      if(!tp.hidden||!(u===c||c.contains(u))) bad.push("the tip of "+(t.dataset.tip||"").slice(0,30)+" over "+(c.id||c.className)+": "+(tp.hidden?"hidden, but "+(u&&(u.id||u.className))+" under the pointer":"still shown"));
+      TIP.hover=null; TIP.goneHover=null; tipSync(true); });
+    ck("timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
+      !bad.length&&cases>0&&stay===cases, cases+" tips over a control, "+stay+" kept over no control"+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):""));
+  });
+  /* CL-UX-19: a drag on the map ends when a modal sheet opens: the "?" sheet opened mid-pan, the pointer's further moves pan nothing */
+  guard("a sheet ends a drag (WP-06, CL-UX-19)",function(){
+    var c=renderer.domElement, sp=c.setPointerCapture, fr=landFreeRect(), x=(fr[0]+fr[2])/2, y=(fr[1]+fr[3])/2, bad=[];
+    endTw(); freeCam=true; c.setPointerCapture=function(){};
+    try{ var a0=camNow(); c.dispatchEvent(pev("pointerdown",x,y)); c.dispatchEvent(pev("pointermove",x+30,y+10)); c.dispatchEvent(pev("pointermove",x+50,y+15));
+      if(camD(a0)<0.05) bad.push("the pan before the sheet moved nothing (the check is not sound)");
+      setHelp(true); var a1=camNow(); c.dispatchEvent(pev("pointermove",x+90,y+30)); c.dispatchEvent(pev("pointermove",x+130,y+45)); var d=camD(a1);
+      if(d>1e-6) bad.push("the map panned "+d.toFixed(2)+" units under the sheet");
+    } finally { setHelp(false); window.dispatchEvent(pev("pointerup",x+130,y+45,{buttons:0})); c.setPointerCapture=sp; }
+    ck("map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",!bad.length,bad.length?"WRONG: "+bad.join("; "):"the \"?\" sheet opened mid-pan");
+  });
+  /* CL-UX-20: a focused control the layout hides at a resize hands the focus to a shown successor (Play here), whether the browser has already
+     taken the focus from it or not */
+  guard("focus after a resize (WP-06, CL-UX-20)",function(){
+    var b=document.getElementById("layersbtn"), bad=[], n=0;
+    [false,true].forEach(function(blurFirst){ if(!focusTo([b])){ bad.push("Layers not focusable here"); return; }
+      b.style.display="none"; if(blurFirst) b.blur(); window.dispatchEvent(new Event("resize")); n++;
+      var a=document.activeElement; if(a!==document.getElementById("play")) bad.push((blurFirst?"blurred first":"still focused")+": the focus on "+(a&&(a.id||a.tagName)));
+      b.style.display=""; });
+    window.dispatchEvent(new Event("resize"));
+    ck("focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+      !bad.length&&n===2, bad.length?"WRONG: "+bad.join("; "):"Layers hidden at a resize, focused and blurred: Play focused");
+  });
+  } finally {
+    if(playing) stopPlay(); select(null,null); dossierExpanded=K.de; setCommandView(K.cv); setSpeed(K.sp);
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTw();
+    landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc;
+    if(K.sel) select(K.sel.kind,K.sel.id); requestRender(3);
+  }
+  return out;
+}
 var AUSTERLITZ_DEBUG=(function(){
   /* roadmap step 1 (T-1): the self-test reads an app canvas's pixels (a texture's mask, a cloth, a puff's edge) only through texData: the
      canvas copied once into a scratch canvas the test code owns ({willReadFrequently:true}, so its reads warn of nothing) and read back
@@ -21905,6 +22262,7 @@ var AUSTERLITZ_DEBUG=(function(){
       }
     })();
 
+    wp56Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 3 (WP-05, WP-06) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
@@ -21921,7 +22279,7 @@ var AUSTERLITZ_DEBUG=(function(){
             memory:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}};
   }
   return {groundY:groundY, camFloor:camFloor, settle:settle, applyCase:applyCase, placeCamera:placeCamera,
-          selfTest:selfTest, stats:stats, figureError:figureError,
+          selfTest:selfTest, stats:stats, figureError:figureError, wp56:wp56Checks,
           cover:{grid:coverGrid, truth:coverTruth, render:coverRender, error:coverError, paperTruth:paperTruth, checks:coverChecks, roads:roadDrape, woods:woodPlacement}};
 })();
 

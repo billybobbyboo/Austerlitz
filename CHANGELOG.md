@@ -1,8 +1,143 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 3: WP-05 and WP-06 (the panels while the clock moves; the camera and the timeline under input)
+
+**Status: on `claude/stage-3-audit-panels-camera-owvd38` (a draft PR into `main`, for review, not merged).** Stage 3 of
+`docs/ROADMAP_FINAL_AUDIT.md`: the fourteen findings of WP-05 (CL-SIM-01 to -08, CL-UX-07, CL-UX-14) and WP-06 (CL-UX-02, -03, -04, -13, -19,
+-20). Presentation and simulation only: no data file and no guarded declaration changes (`check:data`: 139 of 139 identical against
+`archive/postaudit2-e7d6924f.html`, the reference kept). The guarded readings (`knowledgeOf`, `plateauStrength`, `centreSeparation`, `posNow`)
+are unchanged; where a fix needed them it calls them. No threshold, drop limit or baseline moved. `austerlitz-command-map.html` is now
+2,869,790 bytes, md5 `6ec4abc2fa3831be78145cc87f82174d` (was 2,832,552, `e7d6924f...`); `check:baseline` moves to this build. The evidence is `docs/final-stage3-evidence/`
+(its README lists each file and the tool that made it).
+
+No owner question is needed for this stage: none of the fourteen is tied to a numbered question. CL-SIM-05's remedy left its wording to the owner;
+the audit's default is applied (the place rows' own sentence, below), and the owner can change it.
+
+### What changed, and why (WP-05: the panels while the clock moves)
+
+- **CL-SIM-01, the open dossier went stale within a phase.** `drawerKey` held each formation's text phase, moving and hidden state, not its
+  place or the clock, so "Position at 12:03" stood at 12:37 and a place's "Formations nearby now" was wrong in 86 of 240 place-phases.
+  - *Is:* a formation's dossier is repainted at each clock minute (its rows say the minute: "Position at", "Where", the midpoint, the
+    day-track's dot, "Reached", the live event). A place's nearby list is in the key under every reading (until now under a headquarters'
+    reading only).
+  - A repaint of the same dossier replaces only its sections that changed (`drawerMorph`): a control focused in an unchanged section keeps the
+    focus (the same element, nothing re-announced each minute) and the scroll stays. A kept element takes the new paint's own properties
+    (`srcButton` now reads its statements from the button, `_refs`, so a kept "How this is sourced" opens the current list). A repaint that
+    changes nothing is kept as before.
+  - *Cost while playing:* repainting a full dossier every frame at 4x cost 2.36 ms a frame against 0.32 before (this machine, the clock's step
+    timed, `docs/final-stage3-evidence/play-cost.json`). So while Play advances the clock, a change of the minute alone repaints at most every
+    `DRAWER_PLAY_MS` (250 ms, a design value); any other change, a seek and the clock's stop (`stopPlay`) repaint at once. Measured with the
+    page's clock advanced a 60 Hz frame a step: a full dossier 0.54 ms a frame (0.31 before), its card 0.32 (0.28), with no dossier 0.29 (0.32);
+    20 repaints in 5 s against 3.
+- **CL-SIM-02, "Whose eyes?" drew what the reading does not know.** Under a headquarters' reading the arrows and arrow labels of formations it
+  does not know were drawn (at 09:30 under the Allied reading Suchet's and Caffarelli's), and the plateau count and the caption's readings counted
+  every formation (under the Allied reading 31,500 against 25,800 known; under Napoleon's 38,700 against 17,900).
+  - *Is:* an arrow bound to a formation (a derived arrow's leg, the halt bar's column) is not drawn, nor its label, while the reading at the
+    clock does not know the formation (`OVREAD`, `ovReadSync`, at every clock change and reading change; the drawn-on part kept hidden too).
+    Interpretive arrows that bind no tracked formation (ordered routes, objectives, groups, the unmodelled) are drawn as before.
+  - The plateau label, the caption's and the Now tab's "on the heights" and centre-separation readings are the reading's: the guarded readings
+    themselves, run over the formations the reading does not hide (`overKnown`, the units table narrowed for the call). Under Napoleon's reading the
+    "plotted strength unchanged" note is not given (the day's sampled holding is everyone's). The plateau label's spoken name says whose reading it is.
+- **CL-SIM-03, a theme chosen while playing did not stop the clock.** `setChapter` now calls `stopPlay`, as the tour and the phase buttons do.
+- **CL-SIM-04, the overlays' fade popped.** The outgoing group was drawn at 0.9 whatever it had reached, and with the Movement layer off.
+  It now fades from the opacity it had reached (`ovFrom`), so a phase stepped past before its arrows came in never shows them, and with the
+  layer off it is not drawn.
+- **CL-SIM-05, "Doing now" under a reading.** Under a reading that does not know a formation, its card's "Doing now" and "From HH:MM" and the
+  full dossier's "now" and "next" entries say the reading's sentence ("Not known to … at …", `readUnknown`, as "Where" does). The audit's
+  default; the replacement wording was left to the owner. The earlier entry ("past") and the dossier's "Historical event" links are kept (below).
+- **CL-SIM-06, the reading depended on the path.** `knowAtClock` now reads every formation's reading at the minute's start when the minute is
+  new (the clock and the phase put back after), so a minute's reading is the same however the clock reached it (29 and 38 formation-minutes
+  differed). `knowledgeOf` is unchanged.
+- **CL-SIM-07, the first Play frame after idle.** A frame not drawn now counts as the last frame (`lastFrame=now` on idle and waiting frames),
+  so the first drawn frame advances one frame's worth (until now 0.6 clock minutes at half speed, 3.6 at 4x, the 120 ms cap).
+- **CL-SIM-08, the caption after a pause in a dwell.** `stopPlay` repaints the caption, so paused in a dwell's hold it is the clock's at once,
+  as after a seek.
+- **CL-UX-07, the reading on a phone.** Below 720 px wide (and on a phone held landscape) the timeline's "Eyes: …" button is kept while a
+  headquarters' reading is on (`body.reading-on`), at the head of the caption's row, the caption giving it room.
+- **CL-UX-14, the event keys' margin.** "Next event" goes to the first start after the clock however little ahead (until now more than
+  1.5 minutes ahead, which skipped a start the clock stood just before, 20 of 21 starts from a minute before). "Previous event" keeps its margin.
+
+### What changed, and why (WP-06: the camera and the timeline under input)
+
+- **CL-UX-02, input during a glide was undone.** A pan, a wheel, a key pan or an orbit on the landscape now stops a running glide (the tween's
+  camera slot) where it is (`LANDCAM.take`, called by those inputs, not by `free()`, which the double-click's own focus glide also calls); the
+  overlays' fade runs on. The paper map already did this.
+- **CL-UX-03, the event markers took the rail's presses.** A press that begins on an event marker and moves more than 6 px (`RAIL_SLOP`, a
+  design value) is handed to the rail: captured by it, the clock following the pointer, the marker's click not made. A press that does not
+  move is still the marker's. The markers take no browser pan (`touch-action:none`), so a finger's drag reaches the handler.
+- **CL-UX-04, the tip covered Play.** A tip over a control of the timebar yields to it: the pointer over the tip where a control lies under it
+  hides the tip at once, so the press reaches the control. Elsewhere the tip stays hoverable (WCAG 1.4.13). The tip's placement is unchanged.
+- **CL-UX-13, the rail's drag.** The rail seeks on the primary button only (a right or middle press no longer moves the clock or stops Play); a
+  drag ends on its release, a pointercancel, a lost capture, or a move with no button held.
+- **CL-UX-19, a sheet opened mid-drag.** A modal sheet opening ends a drag or pinch on the map (`canvasDragEnd`, from `sheetOpened`).
+- **CL-UX-20, focus after a resize.** A focused control the new layout hides hands the focus to a shown successor (the Menu on the phone layout,
+  else Play), also where the browser has already moved the focus to the page (`FOCUS_LOST`).
+
+### The checks added (each fails without its fix)
+
+- `runtime-test.js`, a WP-05/06 block of ten dry runs: themes while playing; the first frame after idle frames at 0.5x and 4x; the caption
+  paused in seven dwells' holds against a seek; "next event" from 1, 0.3 and 0.01 minutes before each of 21 starts; the reading at 560 minutes
+  by two paths; the fade over seven phases stepped past mid-fade and with the layer off; the dossier keys over 84 clocks and 24 places; "Doing
+  now" at 1,155 formation-clocks under both readings; the bound arrows and the Now tab's plateau reading under every reading every 15 minutes;
+  `body.reading-on` and both phone layouts' rule.
+- The self-test, eight checks (`wp56Checks`, also `AUSTERLITZ_DEBUG.wp56()`), with the app's own handlers and synthetic pointer events: the
+  dossiers against a fresh paint at 48 clocks with the focus kept; the arrows, labels and plateau label under each reading every 10 minutes;
+  12 glide-and-input cases; drags and taps from two markers by mouse and finger, the playhead under the marker; the rail's right press, missed
+  release, cancel and lost capture; four tips over a control; the "?" sheet mid-pan; Layers hidden at a resize. The manifest is regenerated:
+  317 to 325 checks, eight added (each name begins with its finding: "dossiers (WP-05, CL-SIM-01)", "Whose eyes? (WP-05, CL-SIM-02)", "camera (WP-06, CL-UX-02)", "timeline (WP-06, CL-UX-03)", "timeline (WP-06, CL-UX-13)", "timeline tips (WP-06, CL-UX-04)", "map input (WP-06, CL-UX-19)", "focus (WP-06, CL-UX-20)"), none removed.
+- **The negative controls** (`tools/final-stage3/mutate.js`, `docs/final-stage3-evidence/mutations.*`): each fix taken out of a copy of the
+  sources and the copy's checks run: the unmutated copy passes both runners, and each of the 18 mutations (one per fix, with two each for CL-SIM-01 and CL-SIM-02) is caught by
+  every runner it names, by the fix's own check. M9's first run errored (the mutation itself left a comment unclosed, so the page did not parse);
+  corrected, it is caught. M0, M7 and M7b were run again after the dossier's repaint was limited during Play, and were caught as before. The
+  first run of the eight self-test checks inside the whole self-test failed two of them, the dossiers' and the focus's: earlier checks left the
+  presentation in Watch, where the tools and the dossier are hidden. Each now sets Study first and puts the presentation back.
+- **The audit's own probes, run again on this build** (`docs/final-stage3-evidence/`):
+  - *State* (node, `tools/audit-post8/state/`): C1-C4 0 stale rows (were "Position at 12:03" at 12:37, 86 place-phases, 49 midpoints); B4 the
+    theme stops the clock; B5 0 pops at 4x with the dwell off (was 5 of 9 boundaries); D1 a stepped-past phase drawn at 0.00 (was 0.90); D2 the
+    camera 0.0 units from the theme's target at 7.7 s (was 76); B6 0 path-dependent formation-minutes (were 29 and 38).
+  - B9 still prints 0.600 and P4 still "skips 20 of 21": neither exercises the fixed path. B9 sets a stale `lastFrame` by hand and calls `loop()`
+    with no idle frame between (a page's idle frames now refresh it, which `runtime-test.js` drives), and P4 tests its own copy of the old rule,
+    not `jumpEvent`.
+  - *Real input* (Chromium, real mouse, touch and resizes): s14, the four glides that ran moved 0 units after the input (were 525, 186, 186 and
+    335). Its phase case starts no glide, as in the audit's own run (Follow already off), so the self-test drives the phase's glide instead.
+    s13: Play toggles under the tip at 1280 and 1600 (the press went to the tip). s7: focus on the Menu at 700 and 390 px and on Play at 1600 after
+    resizes (was the page). Its one failure, the rail over the dossier at 1600, is the audit's own, outside this stage. The phone (390 x 844, real
+    touch): a drag from the 08:25 marker scrubs 09:30 to 11:13 (it stayed at 09:30), a tap still opens the event, and the Allied reading's button
+    shows with the Panels closed (`eyes-al-route.jpg`).
+
+### Verified
+
+Here (Chromium 141.0.7390.37, the pinned browser), on the final build `6ec4abc2...`:
+- `npm test`: the nine suites and the height guard pass (`runtime-test.js` with its new block).
+- `check:data`: 139 of 139 data declarations identical against `archive/postaudit2-e7d6924f.html` (the reference kept).
+- `check:chronology`: 0 errors.
+- `check:selftest`: 325 of 325 checks, the manifest 325, STAGE0 all passed, 0 console messages; `check:report` clean on the report.
+  - The motion block's 16 motions: 251 jumps, 1,034 pops, 130 level-of-detail switches and 6 flickers. The first three are exactly Stage 2's
+    counts; flickers are within their ceiling of 10. Every run's visibility is at its baseline, the three under a headquarters' reading among them.
+  - The first full run failed two of the eight new checks (the state left by earlier checks, above), and the second only on the manifest before it
+    was regenerated.
+- `check:contrast`: 45 states (10 as a phone) reached, 7,035 text elements, 0 below AA, 0 under 10.5 px, every element in the embedded faces, 0 console messages; the start-up cases 8 of 8.
+- `check:baseline`: passes (`6ec4abc2...`, 2,869,790 bytes; moved in `package.json`).
+
+On CI (`57de2d0`): the push run, 42141920731, passes its checks job (`npm test`, `check:data`, `check:chronology`) and its contrast job; its
+self-test job and the dispatched run with `check:visual`, 42141930822 (`checks.yml`, `visual: true`, about three to four hours), were still
+running when this was written. Their results go on the PR.
+
+### Not done, and why
+
+- **Under a reading, three things still name what it does not know:** the full dossier's earlier act ("What it was doing", the past entry), the
+  dossier's "Historical event" links (event names, some of them places), and the interpretive arrows that bind no tracked formation (the Allied
+  plan's ordered routes, the objectives, the groups). They are not bound to a formation's present place; whether they should follow the reading
+  is a wording and interpretation question, handed to WP-09 or the owner.
+- **The phase glide by real input** is not exercised by the audit's s14 probe (it starts no glide there); the self-test covers it.
+- **The tip still stands over the control row** while no pointer is over a control; only its precedence changed. Moving it (CL-UX-04's other
+  remedy) would change the tips' live block's measures; not needed for the finding.
+- **A full dossier repaints every frame at 4x while open** (its rows say the minute); its cost is measured above, not optimised.
+- `check:visual` is dispatched on CI (below); its result is recorded in the PR.
+
 ## 2026-11 · Final audits' roadmap, Stage 2: WP-01 and WP-02 (what a visitor is told)
 
-**Status: on `claude/inspiring-franklin-qt51w2` (a draft PR into `main`, for review, not merged).** Stage 2 of `docs/ROADMAP_FINAL_AUDIT.md`. This is a
+**Status: merged into `main` (#83, `8076483`).** Stage 2 of `docs/ROADMAP_FINAL_AUDIT.md`. This is a
 data task: twelve declarations change (below), each with its evidence. `check:data`'s reference and `check:baseline` move to this build
 (`archive/postaudit2-e7d6924f.html`). `austerlitz-command-map.html` is now 2,832,552 bytes, md5 `e7d6924f0b66ae948ca856ccd90c98ec` (was 2,810,950, `a3cb40f8...`).
 
