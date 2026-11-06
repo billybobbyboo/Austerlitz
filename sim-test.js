@@ -142,7 +142,7 @@ if(centreSeparation()) errs.push("the army is reported cut in two before the bat
    is A); friant at the Goldbach (friant@1, B) at 09:00 before the leg to the retaking; kienmayer's minute at 14:30; and the rule itself for
    every leaf formation at every ten minutes of the day */
 eval(fs.readFileSync('_state.js','utf8'));
-{ const pin=[["gqg",675,"B"],["gqg",700,"B"],["gqg",719,"B"],["friant",540,"B"],["kienmayer",870,"B"]];
+{ const pin=[["gqg",675,"B"],["gqg",700,"B"],["gqg",719,"B"],["friant",540,"B"],["kienmayer",870,"C"]];   /* kienmayer@7 B until the final audits' Stage 4 (CL-HIS-08: its point this map's, C) */
   pin.forEach(([id,t,g])=>{ const c=confAt(id,t); if(!c||c.cf!==g||c.interp) errs.push("196: "+id+" at "+t+" graded "+JSON.stringify(c)+", want "+g+" at its anchor"); });
   let nW=0; Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].track).forEach(id=>{ for(let t=T_MIN;t<=T_MAX;t+=10){ const L=legAt(id,t);
     if(L&&L.b&&L.u<=0){ nW++; const sa=stateAt(id,L.a.ph), c=confAt(id,t); if(!c||c.cf!==sa.cf||c.interp) errs.push("196: "+id+" waiting at "+t+" graded "+JSON.stringify(c)+", its anchor's "+sa.cf); } } });
