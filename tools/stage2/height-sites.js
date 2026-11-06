@@ -117,6 +117,8 @@ const CLASS={
   /* Stage 8, implementation PR 8E (decision 244 (a)): the slopes of the drawn ground under each animated man's or horse's feet (chords ahead
      and behind, fore and hind), which the gait's hook plants the feet on */
   "app.js:makeBlock > slopes":"presentation",
+  /* the final audits' Stage 4, WP-04b: the limbered piece seated against its limber, its wheel's lowest point on the drawn ground */
+  "app.js:makeBlock > afterSeat":"presentation",
   /* Stage 8, implementation PR 8F's prerequisite 2: groundY's own arithmetic on the drawn ground's compact heights (outside the grid it is
      groundY), read by the slopes above */
   "world.js:groundYFast":"presentation",

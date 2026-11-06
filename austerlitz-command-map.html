@@ -9408,12 +9408,32 @@ function makeBlock(f,id){
     [gD,lD,gL,lL,hD,hL,dDc,dDf,dLc,dLf].forEach(function(m){ if(m){ m.instanceMatrix.needsUpdate=true; seatable(m,false,m.userData.kit.role!=="gear"); } });
     /* each piece seated on the ground under its own wheels and each limber under its own, so on uneven ground the trail's end and the pintle
        part: after every seating the limbered piece is turned about its axle until its trail's end lies on its limber's pintle's line (its
-       wheels stay on the ground where they stand); the deployed piece's trail rests where its seating puts it, as before 8E */
-    var rG=kitArtR("gun"), tp=kitArtPitch(), tend=[rG+(0.05-rG)*Math.cos(tp)+2.05*Math.sin(tp),(rG-0.05)*Math.sin(tp)+2.05*Math.cos(tp)], _a1=new THREE.Matrix4(), _a2=new THREE.Matrix4(), _a3=new THREE.Matrix4(), _av=new THREE.Vector3();
-    ud.afterSeat=function(){
-      for(var q=0;q<guns;q++){ lL.getMatrixAt(q,_a1); gL.getMatrixAt(q,_a2); _av.set(0,kitArtR("limber")+0.02,ART_AT.PIN).applyMatrix4(_a1).applyMatrix4(_a3.copy(_a2).invert());
-        var d=Math.atan2(tend[0]-rG,tend[1])-Math.atan2(_av.y-rG,_av.z);
-        _a2.multiply(_a3.makeTranslation(0,rG,0)).multiply(_a1.makeRotationX(d)).multiply(_a3.makeTranslation(0,-rG,0)); gL.setMatrixAt(q,_a2); }
+       wheels stay on the ground where they stand); the deployed piece's trail rests where its seating puts it, as before 8E.
+       The final audits' Stage 4, WP-04b: turned in pitch alone, the trail's end lay on the pintle's line but short of it or beyond it wherever
+       the ground between the two vehicles is not the block's plane, by up to 0.545 units on the refitted southern plateau (the heights'
+       battery at 14:07, 13.9% ground, 56% drawn at 4x), against the self-test's 0.12; there most of it across (the block tilts, so the drawn
+       ground's vertical leans in its frame and each vehicle seated at its own height stands aside of its designed line). Now the piece is
+       seated against its limber: after the turn, its axle is moved over the ground, in the world, by what still parts its trail's end from the
+       pintle, and set so that its wheel's lowest point (its radius below the axle along the block's up) is on the drawn ground there, the piece
+       turned about it again, until they meet within 0.002 units or twelve times (DESIGN: the hitched piece's place follows its limber's; the
+       limber, the team and the drivers stay where they are seated). Nothing allocated: the vectors are the block's */
+    var rG=kitArtR("gun"), tp=kitArtPitch(), tend=[rG+(0.05-rG)*Math.cos(tp)+2.05*Math.sin(tp),(rG-0.05)*Math.sin(tp)+2.05*Math.cos(tp)], _a1=new THREE.Matrix4(), _a2=new THREE.Matrix4(), _a3=new THREE.Matrix4(), _a4=new THREE.Matrix4(), _av=new THREE.Vector3(),
+        _ate=new THREE.Vector3(), _apn=new THREE.Vector3(), _apw=new THREE.Vector3(), _ax=new THREE.Vector3(), _axw=new THREE.Vector3(), _aup=new THREE.Vector3();
+    ud.afterSeat=function afterSeat(){
+      var rL=kitArtR("limber"), kr=rG*(g.scale.y||1); _aup.set(0,1,0).transformDirection(g.matrixWorld);
+      for(var q=0;q<guns;q++){ lL.getMatrixAt(q,_a1); gL.getMatrixAt(q,_a2); _apn.set(0,rL+0.02,ART_AT.PIN).applyMatrix4(_a1); _apw.copy(_apn).applyMatrix4(g.matrixWorld);
+        for(var it=0;it<12;it++){
+          _av.copy(_apn).applyMatrix4(_a3.copy(_a2).invert());   /* the pintle in the piece's own frame */
+          var d=Math.atan2(tend[0]-rG,tend[1])-Math.atan2(_av.y-rG,_av.z);
+          _a2.multiply(_a3.makeTranslation(0,rG,0)).multiply(_a4.makeRotationX(d)).multiply(_a3.makeTranslation(0,-rG,0));   /* turned about its axle */
+          _ate.set(0,tend[0],tend[1]).applyMatrix4(_a2).applyMatrix4(g.matrixWorld);   /* its trail's end, in the world */
+          var rx=_apw.x-_ate.x, rz=_apw.z-_ate.z;
+          if((rx*rx+rz*rz<4e-6&&Math.abs(_apw.y-_ate.y)<0.002)||it===11) break;
+          /* the axle moved by the residual over the ground, its wheel on the drawn ground there; the turn kept */
+          _ax.set(0,rG,0).applyMatrix4(_a2); _axw.copy(_ax).applyMatrix4(g.matrixWorld); _axw.x+=rx; _axw.z+=rz;
+          _axw.y=groundY(_axw.x-kr*_aup.x,_axw.z-kr*_aup.z)+kr*_aup.y; _axw.applyMatrix4(_inv);
+          _a2.setPosition(_a2.elements[12]+_axw.x-_ax.x,_a2.elements[13]+_axw.y-_ax.y,_a2.elements[14]+_axw.z-_ax.z); }
+        gL.setMatrixAt(q,_a2); }
       gL.instanceMatrix.needsUpdate=true; };
     /* the drivers' coats: the nation's symbol colour (no train dress in the table: generic, section 2.9) */
     if(nd) [dDc,dLc].forEach(function(m){ for(var i=0;i<m.count;i++){ cc.copy(lin(gen.coat)).multiplyScalar(0.86+0.28*srnd(i*5+1)); m.setColorAt(i,cc); } m.instanceColor.needsUpdate=true; });

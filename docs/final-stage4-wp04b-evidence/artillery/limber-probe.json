@@ -1,0 +1,101 @@
+{
+ "chromium": "141.0.7390.37",
+ "builds": [
+  {
+   "file": "pre-art.html",
+   "md5": "99c30b8e0bc66d2cbe81a441260cef29",
+   "clocks": [
+    {
+     "clock": "14:07",
+     "mid": true,
+     "limberedShown": true,
+     "trailToPintle": 0.5446,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "13:45",
+     "mid": false,
+     "limberedShown": false,
+     "trailToPintle": 0.1392,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "13:55",
+     "mid": false,
+     "limberedShown": true,
+     "trailToPintle": 0.1486,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "14:05",
+     "mid": false,
+     "limberedShown": true,
+     "trailToPintle": 0.2773,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "14:15",
+     "mid": false,
+     "limberedShown": true,
+     "trailToPintle": 0.3641,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "14:25",
+     "mid": false,
+     "limberedShown": true,
+     "trailToPintle": 0.1944,
+     "wheelGapMax": 0
+    }
+   ]
+  },
+  {
+   "file": "fix-art.html",
+   "md5": "a6861791e5e111e4468c476c11c07ad3",
+   "clocks": [
+    {
+     "clock": "14:07",
+     "mid": true,
+     "limberedShown": true,
+     "trailToPintle": 0.0017,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "13:45",
+     "mid": false,
+     "limberedShown": false,
+     "trailToPintle": 0.0017,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "13:55",
+     "mid": false,
+     "limberedShown": true,
+     "trailToPintle": 0.0008,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "14:05",
+     "mid": false,
+     "limberedShown": true,
+     "trailToPintle": 0.0016,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "14:15",
+     "mid": false,
+     "limberedShown": true,
+     "trailToPintle": 0.0003,
+     "wheelGapMax": 0
+    },
+    {
+     "clock": "14:25",
+     "mid": false,
+     "limberedShown": true,
+     "trailToPintle": 0.0013,
+     "wheelGapMax": 0
+    }
+   ]
+  }
+ ]
+}
