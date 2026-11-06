@@ -1,0 +1,148 @@
+# node tools/wp15/apply-proposals.js --suite   (2026-11-06T07:20Z, node v22.23.4)
+proposals: docs/wp15-evidence/proposals.json (22 statements: 16 claims on the statement as it stands, 6 corrections, 6 of them applied for the test)
+scratch directory: /tmp/wp15-verify-mFxQs7 (outside the repository)
+
+PASS  the register docs/wp15-evidence/readings.md
+  17 readings, each with its "read on" marker; 17 read on a page image, 0 on the text layer in whole or part
+
+PASS  baseline  (test.js exit 0, ERRORS: 0)
+  statement claims: 716 narrative statements, 173 with a claim of their own, 75 by class (disputed 78, attributed 76, derived 2, interpretation 11, uncertain 6, interpretation by class 75), 468 unchecked; 359 readings in the registers; the inventory current
+  redteam.js: exit 0, findings: 0
+
+PASS  A: claims  (test.js exit 0, ERRORS: 0)
+  statement claims: 716 narrative statements, 189 with a claim of their own, 75 by class (attributed 89, interpretation 13, derived 3, disputed 78, uncertain 6, interpretation by class 75), 452 unchecked; 359 readings in the registers; the inventory current
+  redteam.js: exit 0, findings: 0
+
+PASS  B: claims and corrections  (test.js exit 0, ERRORS: 0)
+  statement claims: 716 narrative statements, 195 with a claim of their own, 75 by class (attributed 94, interpretation 14, derived 3, disputed 78, uncertain 6, interpretation by class 75), 446 unchecked; 359 readings in the registers; the inventory current
+  redteam.js: exit 0, findings: 0
+
+PASS  B: the whole suite (tools/run-all.sh)
+  === height guard  exit=0; === css-test.js  exit=0; === test.js  exit=0; === geo-test.js  exit=0; === terrain-test.js  exit=0; === audit.js  exit=0; === MARCH RATE VIOLATIONS (0) ===; === TERRAIN VIOLATIONS (0) ===; === sim-test.js  exit=0; === redteam.js  exit=0; === runtime-test.js  exit=0; === binding-test.js  exit=0; ALL 9 SUITES PASSED (and the height guard)
+
+unchecked statements by tier:                before  A claims   B +corr
+  tier 1 (of 81)                                60        44        40
+  tier 2 (of 163)                              100       100       100
+  tier 3 (of 472)                              308       308       306
+  all                                          468       452       446
+unchecked statements by tier and class:
+  tier 1, command                               38        35        34
+  tier 1, formation                              8         1         0
+  tier 1, phase lede                             7         5         4
+  tier 1, tour                                   7         3         2
+  tier 2, event name                            25        25        25
+  tier 2, event why                              9         9         9
+  tier 2, phase line                            16        16        16
+  tier 2, place                                 23        23        23
+  tier 2, plan                                   8         8         8
+  tier 2, plan order                            13        13        13
+  tier 2, theme                                  6         6         6
+  tier 3, formation                            121       121       119
+  tier 3, method                                12        12        12
+  tier 3, place                                  5         5         5
+  tier 3, place fact                            38        38        38
+  tier 3, place why                             22        22        22
+  tier 3, timing note                           25        25        25
+  tier 3, track act                             85        85        85
+
+VERIFIED: every proposed claim passes the copy's test.js and redteam.js, as the statements stand and with the corrections applied, and the corrected copy passes the whole suite
+exit 0
+
+# negative control: node tools/wp15/apply-proposals.js --mutate hash   (must end NOT VERIFIED, exit 1)
+NEGATIVE CONTROL (--mutate hash): the hash of PHASES[#0].lede changed to 0d11d0633834
+PASS  the register docs/wp15-evidence/readings.md
+PASS  baseline  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 0, findings: 0
+FAIL  A: claims  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"]: the statement (its label and text) changed since its claim was written (h 0d11d0633834, now 2d11d0633834): review the claim
+FAIL  B: claims and corrections  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"]: the statement (its label and text) changed since its claim was written (h 0d11d0633834, now 2d11d0633834): review the claim
+NOT VERIFIED: A: claims; B: claims and corrections
+exit 1
+
+# negative control: node tools/wp15/apply-proposals.js --mutate reading   (must end NOT VERIFIED, exit 1)
+NEGATIVE CONTROL (--mutate reading): a reading id no register declares, on PHASES[#0].lede
+PASS  the register docs/wp15-evidence/readings.md
+PASS  baseline  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 0, findings: 0
+FAIL  A: claims  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"].by[0]: reading "wp15.not-a-reading" is not a heading of a register
+FAIL  B: claims and corrections  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"].by[0]: reading "wp15.not-a-reading" is not a heading of a register
+NOT VERIFIED: A: claims; B: claims and corrections
+exit 1
+
+# negative control: node tools/wp15/apply-proposals.js --mutate source   (must end NOT VERIFIED, exit 1)
+NEGATIVE CONTROL (--mutate source): a source not in APPEARANCE_SOURCES, on PHASES[#0].lede
+PASS  the register docs/wp15-evidence/readings.md
+PASS  baseline  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 0, findings: 0
+FAIL  A: claims  (test.js exit 1, ERRORS: 2)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"].by[0]: source "notasource1999" is not in APPEARANCE_SOURCES
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"].by[0]: reading marbot.p259.trap is of marbot1891, not notasource1999
+FAIL  B: claims and corrections  (test.js exit 1, ERRORS: 2)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"].by[0]: source "notasource1999" is not in APPEARANCE_SOURCES
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"].by[0]: reading marbot.p259.trap is of marbot1891, not notasource1999
+NOT VERIFIED: A: claims; B: claims and corrections
+exit 1
+
+# negative control: node tools/wp15/apply-proposals.js --mutate clock   (must end NOT VERIFIED, exit 1)
+NEGATIVE CONTROL (--mutate clock): a clock time in the note of PHASES[#0].lede
+PASS  the register docs/wp15-evidence/readings.md
+PASS  baseline  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 0, findings: 0
+FAIL  A: claims  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"]: a note that is empty or carries a clock time (the hours are the tracks' timings): "Marbot calls the thin right a trap; Stutterheim has the French draw their outposts back to the villages on the stream and the Allied headquarters at Krzenowitz; Mikhailovsky-Danilevsky has Weyrother explain the disposition to the column chiefs at Kutuzov's toward the middle of the night, before its Russian translation, and Sokolov has many commanders understand their routes poorly; the disposition sends four of its five columns against the French right by villages, not by a bearing, so south-west is this map's. Thiébault has the fog hide the French in the valleys. The columns left at 7:00."
+FAIL  B: claims and corrections  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["PHASES[#0].lede"]: a note that is empty or carries a clock time (the hours are the tracks' timings): "Marbot calls the thin right a trap; Stutterheim has the French draw their outposts back to the villages on the stream and the Allied headquarters at Krzenowitz; Mikhailovsky-Danilevsky has Weyrother explain the disposition to the column chiefs at Kutuzov's toward the middle of the night, before its Russian translation, and Sokolov has many commanders understand their routes poorly; the disposition sends four of its five columns against the French right by villages, not by a bearing, so south-west is this map's. Thiébault has the fog hide the French in the valleys. The columns left at 7:00."
+NOT VERIFIED: A: claims; B: claims and corrections
+exit 1
+
+# negative control: node tools/wp15/apply-proposals.js --mutate fact   (must end NOT VERIFIED, exit 1)
+NEGATIVE CONTROL (--mutate fact): TOUR[7].x claimed fact on Marbot's reading alone, which the register labels disputed
+PASS  the register docs/wp15-evidence/readings.md
+PASS  baseline  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 0, findings: 0
+FAIL  A: claims  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["TOUR[7].x"]: "fact" rests on no reading the register labels fact, read on a page image (a citation alone leaves a statement unchecked)
+FAIL  B: claims and corrections  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["TOUR[7].x"]: "fact" rests on no reading the register labels fact, read on a page image (a citation alone leaves a statement unchecked)
+NOT VERIFIED: A: claims; B: claims and corrections
+exit 1
+
+# negative control: node tools/wp15/apply-proposals.js --mutate correction   (must end NOT VERIFIED, exit 1)
+NEGATIVE CONTROL (--mutate correction): the correction of TOUR[6].x claimed with the uncorrected text's hash
+PASS  the register docs/wp15-evidence/readings.md
+PASS  baseline  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 0, findings: 0
+PASS  A: claims  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 0, findings: 0
+FAIL  B: claims and corrections  (test.js exit 1, ERRORS: 1)
+  redteam.js: exit 0, findings: 0
+  ! claims: STATEMENT_CLAIMS["TOUR[6].x"]: the statement (its label and text) changed since its claim was written (h 8ee1316d30e0, now 584083d01766): review the claim
+NOT VERIFIED: B: claims and corrections
+exit 1
+
+# negative control: node tools/wp15/apply-proposals.js --mutate language   (must end NOT VERIFIED, exit 1)
+NEGATIVE CONTROL (--mutate language): an unlabelled superlative in the note of PHASES[#0].lede (redteam.js's overclaim scan)
+PASS  the register docs/wp15-evidence/readings.md
+PASS  baseline  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 0, findings: 0
+FAIL  A: claims  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 1, findings: 1
+  ✗ language: STATEMENT_CLAIMS["PHASES[#0].lede"].note (narrative.js:38) gives an unlabelled superlative: "the bloodiest"
+FAIL  B: claims and corrections  (test.js exit 0, ERRORS: 0)
+  redteam.js: exit 1, findings: 1
+  ✗ language: STATEMENT_CLAIMS["PHASES[#0].lede"].note (narrative.js:38) gives an unlabelled superlative: "the bloodiest"
+NOT VERIFIED: A: claims; B: claims and corrections
+exit 1
