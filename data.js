@@ -157,7 +157,7 @@ gqg:{ ech:"army", nation:"fr", arm:"hq", desig:"G.Q.G.",
     3:{st:"observing",act:"Releases Soult against the heights; a memoir anecdote, as Thiébault tells it, has him wait a further quarter of an hour first"},
     6:{tm:{dep:720,gr:"B",basis:"app narrative, unsourced",ev:["Napoleon moves forward from the Zuran to Stare Vinohrady.","About noon, for Stare Vinohrady"],note:"dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows the existing 40-minute march (moveMin)"},
        p:[309,207],cf:"A",via:[[215,154],[236,165]],moveMin:40,act:"Moves forward from the Zuran to Stare Vinohrady"},
-    7:{p:[307,227],act:"Orders the centre to wheel south onto Buxhowden's rear"},
+    7:{p:[307,227],cf:"B",act:"Orders the centre to wheel south onto Buxhowden's rear"},
     8:{p:[294,352],cf:"B",act:"At the chapel of St Anthony above Augezd, having come from the Pratzen with the Guard cavalry and artillery (Schönhals; a French officer's note of 1806 has him come down to the chapel with the Guard cavalry); Mikhailovsky-Danilevsky has him place the Guard artillery on the Augezd heights in person"}}},
 
 c_iv:{ ech:"corps", nation:"fr", arm:"inf", desig:"IV Corps",
@@ -188,12 +188,12 @@ sthilaire:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., IV Corps",
   role:"Right-hand assault division against the Pratzeberg; later the hinge of the wheel south.",
   track:{
     0:{p:[201,221],st:"concealed",cf:"A",obj:"Await the signal in the Goldbach valley",act:"Standing in fog behind Puntowitz, hidden from the plateau"},
-    2:{p:[206,231],st:"forming",act:"Forms in the Goldbach valley for the attack"},
+    2:{p:[206,231],cf:"B",st:"forming",act:"Forms in the Goldbach valley for the attack"},
     3:{tm:{dep:525,gr:"C",basis:"app narrative, unsourced",ev:["Soult's divisions advance. The mist lifts off the heights.","At about 08:45 they climbed the western slope","Thiébault's brigade clears Pratzen village; the 10e Légère pushes on for the Pratzeberg."],note:"the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals), and passes Pratzen village c. 09:00; no source read dates its end, so the arrival is derived"},
        p:[267,275],st:"attacking",cf:"A",via:[[218,230]],obj:"Seize the Pratzeberg",act:"Climbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit"},
     4:{p:[283,287],st:"engaged",cf:"A",obj:"Hold the Pratzeberg",act:"Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiébault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried their part of the heights"},
-    5:{p:[287,282],st:"holding",act:"Consolidating on the summit with Levasseur's brigade attached"},
-    6:{p:[288,272],st:"holding",obj:"Cover the right of the plateau",act:"Faces east while Vandamme is attacked to the north"},
+    5:{p:[287,282],cf:"B",st:"holding",act:"Consolidating on the summit with Levasseur's brigade attached"},
+    6:{p:[288,272],cf:"B",st:"holding",obj:"Cover the right of the plateau",act:"Faces east while Vandamme is attacked to the north"},
     7:{tm:{dep:780,at:840,gr:"B",basis:"app narrative, unsourced",ev:["Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau","Soult and Davout launch the converging assault on the Allied left."],note:"the wheel is dated as a range, and the move is shown across all of it"},
        p:[285,324],st:"advancing",cf:"A",obj:"Take Buxhowden's columns in the rear",act:"Wheels south off the heights toward Sokolnitz and Telnitz"},
     8:{p:[236,352],st:"attacking",cf:"B",act:"Closes on Sokolnitz from the east while Davout presses from the west"},
@@ -206,15 +206,15 @@ vandamme:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., IV Corps",
   role:"Left-hand assault division against Stare Vinohrady; receives the Russian Guard counterattack.",
   track:{
     0:{p:[217,171],st:"concealed",cf:"A",obj:"Await the signal",act:"Concealed in the valley behind Girzikowitz"},
-    2:{p:[221,182],st:"forming",act:"Forms in the Goldbach valley"},
+    2:{p:[221,182],cf:"C",st:"forming",act:"Forms in the Goldbach valley"},
     3:{tm:{dep:525,gr:"C",basis:"app narrative, unsourced",ev:["Soult's divisions advance. The mist lifts off the heights.","At about 08:45 they climbed the western slope"],note:"the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals); no source read dates its end, so the arrival is derived"},
        p:[282,209],st:"attacking",cf:"A",via:[[232,173]],obj:"Seize Stare Vinohrady",act:"Climbs toward Stare Vinohrady, the 'old vineyards' (whether vines stood there in 1805 is not established)"},
-    4:{p:[309,207],st:"holding",act:"Consolidates on the Old Vineyards, facing east"},
+    4:{p:[309,207],cf:"B",st:"holding",act:"Consolidates on the Old Vineyards, facing east"},
     6:{p:[296,206],st:"engaged",cf:"A",obj:"Hold Stare Vinohrady",act:"Struck by the Russian Imperial Guard; two battalions broken, and the eagle of the 4th Line taken by the Guard cavalry"},
     7:{tm:{dep:780,gr:"B",basis:"app narrative, unsourced",ev:["Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau","Soult and Davout launch the converging assault on the Allied left."],note:"the wheel begins c. 13:00. Its end, c. 14:00, cannot be the arrival here: the next anchor, the height above Augezd c. 14:30, is 3.3 km on, 40 minutes at the ceiling; so the arrival is derived"},
-       p:[289,243],st:"advancing",obj:"Wheel south along the plateau",act:"Turns south with Saint-Hilaire toward the Allied rear"},
+       p:[289,243],cf:"B",st:"advancing",obj:"Wheel south along the plateau",act:"Turns south with Saint-Hilaire toward the Allied rear"},
     8:{p:[270,347],st:"attacking",cf:"A",obj:"Take the height above Augezd",act:"Seizes the ground commanding the causeway between the meres"},
-    9:{p:[287,365],st:"pursuing",act:"Holds the Augezd defile"}}},
+    9:{p:[287,365],cf:"B",st:"pursuing",act:"Holds the Augezd defile"}}},
 
 legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
   name:"Legrand's Division", commander:"Gen. de division Claude Legrand",
@@ -224,7 +224,7 @@ legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
   track:{
     0:{p:[208,312],st:"holding",cf:"A",obj:"Hold the lower Goldbach from Kobelnitz to Telnitz",act:"Strung out along the stream; skirmishing through the night"},
     1:{p:[211,379],st:"engaged",cf:"A",obj:"Hold Telnitz",act:"Contests Telnitz house by house against Kienmayer"},
-    2:{p:[206,366],st:"engaged",obj:"Hold Sokolnitz",act:"Fights for Sokolnitz village and the castle wall"},
+    2:{p:[206,366],cf:"B",st:"engaged",obj:"Hold Sokolnitz",act:"Fights for Sokolnitz village and the castle wall"},
     4:{p:[220,321],st:"supporting",cf:"B",act:"Levasseur's brigade marches up onto the Pratzeberg: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right"},
     7:{tm:{dep:780,at:840,gr:"C",basis:"app narrative, unsourced",ev:["Presses east to the stream at Sokolnitz as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"],note:"the act ties the move to the trap closing, dated 13:00-14:00"},
        p:[213,371],st:"attacking",via:[[211,322],[208,365]],act:"Presses east to the stream at Sokolnitz as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march.
@@ -253,10 +253,10 @@ friant:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., III Corps",
        p:[167,410],st:"march",act:"Marching from Raigern toward Telnitz"},
     3:{tm:{at:570,gr:"A",basis:"source",ev:["Friant's leading troops retake Telnitz, then lose it again in the fog: Davout's report has the village in French hands at 09:30."],note:"Telnitz in French hands at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again. Until roadmap step 4b this anchor was the phase-2 entry, reached at 08:30 on this map (question 177)"},
        p:[198,402],st:"counterattack",cf:"A",obj:"Retake Telnitz",act:"Heudelet's brigade retakes Telnitz, then loses it again: in Davout's report a French regiment, not recognising it in the fog, fired on it, and the Russians took the village again with fresh troops"},
-    5:{p:[200,398],st:"engaged",obj:"Hold the stream line",act:"Holds against Dokhturov and Kienmayer with a fraction of their strength"},
+    5:{p:[200,398],cf:"B",st:"engaged",obj:"Hold the stream line",act:"Holds against Dokhturov and Kienmayer with a fraction of their strength"},
     7:{p:[204,390],st:"attacking",cf:"A",obj:"Press east across the Goldbach",act:"Resumes the offensive at about 12:30 as the trap closes"},
-    8:{p:[214,410],st:"attacking"},
-    9:{p:[222,412],st:"holding"}}},
+    8:{p:[214,410],cf:"C",st:"attacking"},
+    9:{p:[222,412],cf:"B",st:"holding"}}},
 
 bourcier:{ ech:"div", nation:"fr", arm:"cav", desig:"4e Div. Dragons",
   name:"Bourcier's Dragoons", commander:"Gen. de division François Bourcier", parent:"c_iii",
@@ -285,10 +285,12 @@ caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., III Corps, with
     0:{p:[240,115],st:"holding",cf:"A",obj:"Hold south of the highway; do not press",act:"Formed on the right of V Corps, linking toward Bernadotte"},
     5:{tm:{dep:570,gr:"B",basis:"app narrative, unsourced",ev:["Lannes advances along the highway. Bagration counter-attacks."],note:"Lannes's advance is dated c. 09:30; before it the division holds"},
        p:[296,122],st:"attacking",cf:"A",obj:"Advance on Blasowitz",act:"Advances against Bagration's left as the northern battle opens"},
-    6:{p:[321,120],st:"advancing"},
-    7:{p:[347,114],st:"advancing",obj:"Push Bagration off the highway"},
-    8:{p:[392,105],st:"pursuing"},
-    9:{p:[423,96],st:"holding"}}},
+    6:{p:[321,120],cf:"B",st:"advancing"},
+    7:{p:[347,114],cf:"B",st:"advancing",obj:"Attack Bagration's left at Krug and Holubitz",act:"Back with Lannes, attacks Bagration's left; the jägers holding Krug and Holubitz are driven out (Stutterheim; Mikhailovsky-Danilevsky; Schönhals)"},
+    8:{p:[392,105],cf:"C",st:"pursuing",obj:"Follow Bagration toward Rausnitz",act:"Follows Bagration's withdrawal toward Rausnitz with Suchet (Schönhals; Mikhailovsky-Danilevsky); the Allied report has a French line from the Rausnitz post house southward. The route drawn, east toward Krzenowitz, is this map's: no reading gives it"},
+    9:{p:[423,96],cf:"C",st:"holding",act:"Its place at nightfall is this map's: no reading places the division then"}}},   /* the final audits' Stage 4 (CL-HIS-09):
+       until then @7's objective "Push Bagration off the highway", shown 12:45-17:00 while the division is drawn 1.5-2.2 km from the highway and moving
+       away, with no acts and an A carried from @5; the objectives and acts now the readings' (CHANGELOG.md, Stage 4), the route kept and said to be this map's */
 
 suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., V Corps",
   name:"Suchet's Division", commander:"Gen. de division Louis-Gabriel Suchet", parent:"c_v",
@@ -333,9 +335,9 @@ kellermann:{ ech:"div", nation:"fr", arm:"cav", desig:"Div. Cavalerie Légère",
   track:{
     0:{p:[242,135],st:"holding",cf:"B",obj:"Screen the front between Lannes and Soult",act:"Forward of the infantry on the open ground"},
     5:{p:[284,134],st:"engaged",cf:"A",act:"First into the cavalry melee; falls back through the infantry to reform"},
-    6:{p:[312,131],st:"advancing"},
-    7:{p:[343,127],st:"pursuing"},
-    9:{p:[383,118],st:"holding"}}},
+    6:{p:[312,131],cf:"B",st:"advancing"},
+    7:{p:[343,127],cf:"B",st:"pursuing"},
+    9:{p:[383,118],cf:"C",st:"holding"}}},
 
 nansouty:{ ech:"div", nation:"fr", arm:"cav", desig:"1re Div. Cuirassiers",
   name:"Nansouty's Cuirassiers", commander:"Gen. de division Étienne de Nansouty", parent:"c_cav",
@@ -343,9 +345,9 @@ nansouty:{ ech:"div", nation:"fr", arm:"cav", desig:"1re Div. Cuirassiers",
   track:{
     0:{p:[219,138],st:"reserve",cf:"B"},
     5:{p:[277,146],st:"charging",cf:"A",obj:"Break the Allied horse",act:"Charges Liechtenstein's and Uvarov's cavalry; the collision was said to be audible across the field"},
-    6:{p:[307,142],st:"advancing"},
-    7:{p:[339,139],st:"pursuing"},
-    9:{p:[376,128],st:"holding"}}},
+    6:{p:[307,142],cf:"C",st:"advancing"},
+    7:{p:[339,139],cf:"C",st:"pursuing"},
+    9:{p:[376,128],cf:"C",st:"holding"}}},
 
 dhautpoul:{ ech:"div", nation:"fr", arm:"cav", desig:"2e Div. Cuirassiers",
   name:"d'Hautpoul's Cuirassiers", commander:"Gen. de division Jean-Joseph d'Hautpoul", parent:"c_cav",
@@ -420,8 +422,8 @@ guard_cav:{ ech:"div", nation:"fr", arm:"cav", desig:"Cavalerie de la Garde",
   track:{
     0:{p:[201,154],st:"reserve",cf:"B"},
     6:{p:[289,209],st:"charging",cf:"A",via:[[230,161],[235,188]],moveMin:45,obj:"Break the Russian Guard",act:"Rapp's counter-charge shatters the Chevalier Guard; Prince Repnin taken prisoner (the hour is disputed: about 13:00 or after in Rapp's own memoirs, before one by the order of the Bulletin's narrative; the map draws it from 11:15)"},
-    7:{p:[303,226],st:"holding"},
-    9:{p:[301,237],st:"holding"}}},
+    7:{p:[303,226],cf:"B",st:"holding"},
+    9:{p:[301,237],cf:"C",st:"holding"}}},
 
 c_gren:{ ech:"div", nation:"fr", arm:"inf", desig:"Div. de Grenadiers",
   name:"Grenadier Division", commander:"Gen. de division Nicolas Oudinot",
@@ -473,7 +475,9 @@ kienmayer:{ ech:"div", nation:"at", arm:"mixed", desig:"Advance Guard, I Column"
     0:{p:[291,367],st:"forming",cf:"A",obj:"Take Telnitz and turn the French right",act:"Formed near Augezd before first light"},
     1:{p:[236,398],st:"attacking",cf:"A",via:[[272,378],[247,397],[228,409]],obj:"Take Telnitz",act:"Attacks Telnitz; the village changes hands several times"},
     2:{p:[222,402],cf:"B",st:"engaged"},
-    7:{p:[242,400],cf:"B",st:"holding",act:"Holding west of the Goldbach as the trap closes behind it"},
+    7:{p:[242,400],cf:"C",st:"holding",act:"Its cavalry formed beyond the Telnitz defile, west of the Goldbach, its battalions and guns in Telnitz (Stutterheim; Schönhals), until the French came down behind the column. The point drawn, between Telnitz and the Satschan mere, is where Schönhals has Carneville's brigade face Vandamme's descent: this map's"},   /* the final audits' Stage 4 (CL-HIS-08): until then "Holding west of the Goldbach as the trap closes
+       behind it" (B, since Stage 0), the act right by the readings and the point 0.9 km east of the drawn brook; the point kept (moving it west would need
+       a hold, which decision 285 (a) does not cover), the act saying both, graded C */
     8:{tm:{dep:870,at:900,gr:"C",basis:"app narrative, unsourced",ev:["Vandamme takes the height above Augezd; the causeway comes under fire.","French artillery fires on the ice of the Satschan mere."],note:"falls back under fire: not before the causeway is under fire, c. 14:30, and over the neck before the ice is fired on, c. 15:00; shown across that range"},
        p:[296,377],st:"retreating",cf:"A",via:[[247,397],[272,378]],obj:"Escape by the Augezd defile",
        act:"Falls back over the neck of land between the meres under artillery fire"},
@@ -560,13 +564,16 @@ milo:{ ech:"div", nation:"ru", arm:"inf", desig:"Russian wing, IV Column",
   strength:6965, strengthRange:[4800,7000],
   strengthNote:"6,965 is Schönhals's table (1873, p. 177): until the final audits' Stage 2 this map drew 4,800, its 13,900 for the column less the Austrian brigades' 9,100; Schönhals (1873) gives the Russian wing twelve battalions and 6,965 men, including two pioneer companies and two squadrons of Austrian dragoons (Smolensk's figures not printed), and Stutterheim (1806) twelve battalions; WarHistory has fourteen, which at 350-500 men would give 4,900-7,000. The earlier 10,000 had no source",
   track:{
-    0:{p:[325,230],st:"forming",cf:"A",obj:"Advance on Kobelnitz",act:"Formed on the plateau near Pratzen village"},
+    0:{p:[325,230],st:"forming",cf:"B",obj:"Advance on Kobelnitz",act:"In two lines behind the III Column, which camped on the heights by Pratzen (Stutterheim; Schönhals); its distance from the village is this map's"},   /* the final audits' Stage 4 (CL-REC-06, the prior audit's G-3): until then
+       A, "Formed on the plateau near Pratzen village", plotted 1.6 km from it; the readings give the sector, not the point */
     2:{p:[299,238],st:"delayed",cf:"A",obj:"Advance on Kobelnitz",act:"Held up while Liechtenstein's cavalry crosses its front from left to right"},
     3:{p:[290,237],st:"surprised",cf:"A",act:"Caught filing off the plateau as Soult appears on the crest"},
     4:{p:[315,237],st:"counterattack",cf:"B",act:"Rallied by Kutuzov for a counterattack up the southern slope"},
     6:{p:[392,232],st:"withdrawing",hold:true},   /* the final audits' Stage 4, owner decision 285 (a): the column holds through its counterattack and withdraws as phase 6 opens (a design rule, no hour read) */
-    8:{p:[446,210],st:"retreating"},
-    9:{p:[475,170],st:"retreating"}}},
+    8:{p:[461,161],cf:"C",st:"retreating",act:"Back across the brook, withdrawing on Austerlitz, where the Tsar orders Miloradovich to hold the town (his report; Mikhailovsky-Danilevsky). The point, halfway from Krzenowitz to Austerlitz, is this map's"},
+    9:{p:[475,170],cf:"B",st:"retreating"}}},   /* the final audits' Stage 4 (CL-HIS-10): @8 was [446,210] (B carried from @4), 19 m from the drawn Litava's
+       line, its legs crossing the river twice where no road or reading puts a crossing; his report takes the column into Austerlitz and
+       Mikhailovsky-Danilevsky has it between Austerlitz and Krzenowitz at dusk: the point now on that line, C; @9 B on that basis */
 
 kollo:{ ech:"div", nation:"at", arm:"inf", desig:"Austrian wing, IV Column",
   name:"Kollowrat's Austrians", commander:"FZM Johann Karl Graf Kollowrat-Krakowsky",
