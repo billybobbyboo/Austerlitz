@@ -1,0 +1,203 @@
+[
+ {
+  "id": "N0",
+  "finding": "none (the unmutated copy)",
+  "runs": {
+   "terrain": {
+    "status": 1,
+    "errors": [
+     "  tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE"
+    ]
+   },
+   "test": {
+    "status": 0,
+    "errors": []
+   },
+   "sim": {
+    "status": 0,
+    "errors": []
+   },
+   "rt": {
+    "status": 0,
+    "errors": []
+   },
+   "css": {
+    "status": 0,
+    "errors": []
+   },
+   "geo": {
+    "status": 0,
+    "errors": []
+   }
+  },
+  "caught": true,
+  "allowed": [
+   "  tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE"
+  ],
+  "verdict": "passes (but the 1 allowed line(s):   tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE)",
+  "failed": [
+   "  tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE"
+  ],
+  "seconds": 388
+ },
+ {
+  "id": "N1",
+  "finding": "CL-GEO-01 (the relief before WP-04b: no RELIEF_DEM, PBERG 5.45, SCHLAP 3.0)",
+  "runs": {
+   "terrain": {
+    "status": 1,
+    "errors": [
+     "  relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 228.1 m against GLO-90's 273.4 m, -45.3 m (limit 10)   <-- OUTSIDE",
+     "  relief tolerance: profile pratzeberg-augezd (16 points): worst model-GLO-90 -81.8 m, mean -39.2 m (limit 20)   <-- OUTSIDE",
+     "  relief tolerance: profile pratzeberg-hostieradek (16 points): worst model-GLO-90 -51.7 m, mean -17.8 m (limit 20)   <-- OUTSIDE",
+     "  relief tolerance: profile pratzen-augezd (16 points): worst model-GLO-90 -76.3 m, mean -24.7 m (limit 20)   <-- OUTSIDE",
+     "  relief tolerance: profile sokolnitz-hostieradek (16 points): worst model-GLO-90 -81.6 m, mean -25.2 m (limit 20)   <-- OUTSIDE",
+     "  relief tolerance: Slapanice (GT.schlapanitz): model 273.0 m against GLO-90's 225 m, +48.0 m (limit 10)   <-- OUTSIDE",
+     "  relief tolerance: St Anthony's knoll (the chapel's OSM point): model 198.2 m against GLO-90's 240.0 m, -41.8 m (limit 10)   <-- OUTSIDE",
+     "  relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances; 7 line(s) OUTSIDE"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 228.1 m against GLO-90's 273.4 m, -45.3 m (limit 10)   <-- OUTSIDE",
+   "  relief tolerance: profile pratzeberg-augezd (16 points): worst model-GLO-90 -81.8 m, mean -39.2 m (limit 20)   <-- OUTSIDE",
+   "  relief tolerance: profile pratzeberg-hostieradek (16 points): worst model-GLO-90 -51.7 m, mean -17.8 m (limit 20)   <-- OUTSIDE",
+   "  relief tolerance: profile pratzen-augezd (16 points): worst model-GLO-90 -76.3 m, mean -24.7 m (limit 20)   <-- OUTSIDE",
+   "  relief tolerance: profile sokolnitz-hostieradek (16 points): worst model-GLO-90 -81.6 m, mean -25.2 m (limit 20)   <-- OUTSIDE",
+   "  relief tolerance: Slapanice (GT.schlapanitz): model 273.0 m against GLO-90's 225 m, +48.0 m (limit 10)   <-- OUTSIDE",
+   "  relief tolerance: St Anthony's knoll (the chapel's OSM point): model 198.2 m against GLO-90's 240.0 m, -41.8 m (limit 10)   <-- OUTSIDE",
+   "  relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances; 7 line(s) OUTSIDE"
+  ],
+  "seconds": 31
+ },
+ {
+  "id": "N2",
+  "finding": "CL-GEO-01 (c16r's amplitudes, the fit without the summit held)",
+  "runs": {
+   "terrain": {
+    "status": 1,
+    "errors": [
+     "  tour stop 5 quotes 73% and under 3%; live readings 48.5% and 2.1%: DISAGREE",
+     "  relief tolerance: no false summit: the highest ground within 1 km of the Pratzeberg 326.4 m at map 290.0,286.6 (168 m from it), the surveyed summit 324 m (the model 323.2 m at its point), +2.4 m (limit +2)   <-- OUTSIDE",
+     "  relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances; 1 line(s) OUTSIDE"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  tour stop 5 quotes 73% and under 3%; live readings 48.5% and 2.1%: DISAGREE",
+   "  relief tolerance: no false summit: the highest ground within 1 km of the Pratzeberg 326.4 m at map 290.0,286.6 (168 m from it), the surveyed summit 324 m (the model 323.2 m at its point), +2.4 m (limit +2)   <-- OUTSIDE",
+   "  relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances; 1 line(s) OUTSIDE"
+  ],
+  "seconds": 32
+ },
+ {
+  "id": "N3",
+  "finding": "CL-GEO-05 (the marsh before the village, in coverClass and the ground shader)",
+  "runs": {
+   "terrain": {
+    "status": 1,
+    "errors": [
+     "  ! the village Sokolnitz's centre stands on the drawn marsh class",
+     "  ! 9 of Kobelnitz's 16 buildings stand on the drawn marsh class",
+     "  ! 21 of Sokolnitz's 27 buildings stand on the drawn marsh class",
+     "  ! 20 of Telnitz's 25 buildings stand on the drawn marsh class",
+     "  ! 2 of Satschan's 14 buildings stand on the drawn marsh class",
+     "  villages on their own ground: 376 buildings, 308 on the village class, 52 on marsh; Sokolnitz 4/27, Telnitz 2/25, Kobelnitz 3/16 on the village class  BROKEN",
+     "  tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  ! the village Sokolnitz's centre stands on the drawn marsh class",
+   "  ! 9 of Kobelnitz's 16 buildings stand on the drawn marsh class",
+   "  ! 21 of Sokolnitz's 27 buildings stand on the drawn marsh class",
+   "  ! 20 of Telnitz's 25 buildings stand on the drawn marsh class",
+   "  ! 2 of Satschan's 14 buildings stand on the drawn marsh class",
+   "  villages on their own ground: 376 buildings, 308 on the village class, 52 on marsh; Sokolnitz 4/27, Telnitz 2/25, Kobelnitz 3/16 on the village class  BROKEN",
+   "  tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE"
+  ],
+  "seconds": 36
+ },
+ {
+  "id": "N4",
+  "finding": "CL-GEO-11 (the castle's own ground taken out of coverClass and the ground shader)",
+  "runs": {
+   "terrain": {
+    "status": 1,
+    "errors": [
+     "  the castle's own ground: 7 ranges (want 7), 2 of 80 points on the village class; off it {\"the site: track\":1,\"25 m from the site: meadow\":3,\"25 m from the site: track\":13,\"castle north range: water\":3,\"castle north range: track\":6,\"castle south range: meadow\":3,\"castle south range: track\":6,\"castle west range: track\":9,\"castle east range: water\":3,\"castle east range: meadow\":4,\"castle east range",
+     "  tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  the castle's own ground: 7 ranges (want 7), 2 of 80 points on the village class; off it {\"the site: track\":1,\"25 m from the site: meadow\":3,\"25 m from the site: track\":13,\"castle north range: water\":3,\"castle north range: track\":6,\"castle south range: meadow\":3,\"castle south range: track\":6,\"castle west range: track\":9,\"castle east range: water\":3,\"castle east range: meadow\":4,\"castle east range",
+   "  tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE"
+  ],
+  "seconds": 36
+ },
+ {
+  "id": "N5",
+  "finding": "CL-GEO-07 (Krug back at its warped legacy place, GT.krug kept)",
+  "runs": {
+   "geo": {
+    "status": 1,
+    "errors": [
+     "  FAIL every surveyed village within 0.5 km of ground truth  (worst Krug 1580 m)",
+     "  ! every surveyed village within 0.5 km of ground truth: worst Krug 1580 m"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  FAIL every surveyed village within 0.5 km of ground truth  (worst Krug 1580 m)",
+   "  ! every surveyed village within 0.5 km of ground truth: worst Krug 1580 m"
+  ],
+  "seconds": 3
+ },
+ {
+  "id": "N6",
+  "finding": "CL-GEO-03, -04 (the streams' legend row taken out)",
+  "runs": {
+   "css": {
+    "status": 1,
+    "errors": [
+     "  ! shell.html has no legend row for the streams (data-lg=\"stream\")"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  ! shell.html has no legend row for the streams (data-lg=\"stream\")"
+  ],
+  "seconds": 6
+ },
+ {
+  "id": "N7",
+  "finding": "CL-GEO-03, -04 (the sources sheet's sentence on the streams taken out)",
+  "runs": {
+   "css": {
+    "status": 1,
+    "errors": [
+     "  ! SOURCE_NOTE does not say which streams are schematic"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  ! SOURCE_NOTE does not say which streams are schematic"
+  ],
+  "seconds": 6
+ }
+]
