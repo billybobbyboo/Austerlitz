@@ -1,52 +1,87 @@
-/* Fit the relief amplitudes to verified elevations (least squares, V_M_PER_UNIT fixed).
-   The height function is linear in its amplitudes (before the x1.2 and the pond clamp), so each
-   term's shape is evaluated at the anchors and the amplitudes solved for. */
+/* Fit the relief amplitudes to verified elevations (least squares, V_M_PER_UNIT and DATUM_M fixed: the fog's top, GEOREF.elevM(-0.8) = 238.2 m,
+   and the 10.33x setting, GEOREF.EXAG, keep their values).
+   The height function is linear in its amplitudes (before the x1.2 and the meres' clamp), so each fitted term's shape is evaluated at the
+   targets and the amplitudes solved for; every other term (the noise, the grooves, the meres, the other bumps, the regional fall) is held at
+   world.js's own value.
+   WP-04b (the final audits' Stage 4; CL-GEO-01, docs/FINAL_AUDIT_POST_STAGE8.md; owner decision 273 (a)): until it this script fitted eleven amplitudes at
+   the twelve anchors below alone, its CUR table no longer world.js's (its output was not world.js's amplitudes since the regional fall was
+   refitted); the relief between the anchors stood 30-80 m below open elevation data over the southern Pratzen plateau and the chapel knoll and
+   about 45 m above it at Slapanice. Now it fits PBERG's and SCHLAP's amplitudes and the six RELIEF_DEM terms' (world.js; their geometry fixed
+   as a Nelder-Mead search found it, each flank at least 3 world units wide, docs/final-stage4-wp04b-evidence/dem/) against:
+     A{}  the twelve sourced anchors, sigma half their tolerance (the Pratzeberg 0.5 m, so that it stays its 324 m and 25 m above the Santon,
+          geo-test.js; Stare Vinohrady 2 m, the col 3 m);
+     the sourced drop Kobylnice 211 -> Sokolnice 207 m at the GT points, 4 m +/- 1.5;
+     D    Copernicus GLO-90 (Open-Meteo), sigma 10 m: the audit's 300 m core grid within map x 240-360, y 260-380, the meres' beds left out
+          (docs/audit-post8-evidence/geography/dem-core-request.json, raw/openmeteo-core-*.json), and WP-04b's two 150 m grids, the southern
+          plateau (x 250-350, y 275-375) and Slapanice (x 140-195, y 150-210) (docs/final-stage4-wp04b-evidence/dem/req-vsouth.json, req-vslap.json, raw/);
+          within 19 map units (0.6 km) of the Pratzeberg the lower of GLO-90 and SRTM 30 m (OpenTopoData, raw/opentopodata-srtm30m-vsouth-*),
+          sigma 3 m: both are surface models, and there GLO-90 stands up to 16 m above SRTM (the Cairn of Peace's park);
+     the drawn beds held at their heights before WP-04b, sigma 0.75 m (the Litava whole, the Goldbach within x 150-300, y 150-420, BROOKS[1]
+          and BROOKS[3]), so that no reverse gradient is added;
+     a weak pull toward the amplitudes before WP-04b (PBERG 5.45, SCHLAP 3.0, the new terms 0);
+     the summit held: no ground within 1 km of the Pratzeberg above 324 + 2 m (below; without it the fit drew 326.4 m 168 m east of the summit
+          point, c16r as measured for the owner's decision, which fails tools/relief-tolerance.js's summit line by 0.4 m).
+   Run: node tools/mk-world-mod.js && node tools/relief-fit.js   (it says whether world.js carries the fitted amplitudes, to 0.01).
+   Held out (the validation, tools/audit-post8/geography/extra.js and plateau.js): the four plateau profiles, the southern box's mean, the
+   chapel's point, the frame's 600 m grid and fifteen named DEM anchors (docs/final-stage4-wp04b-evidence/dem/req-anchors.json, with SRTM 30 m beside them). */
+const fs=require('fs'), path=require('path');
 const M=require('../_world_mod.js'), G=require('../geo.js');
+const ROOT=path.join(__dirname,'..'), EV=path.join(ROOT,'docs','audit-post8-evidence','geography'), EV4=path.join(ROOT,'docs','final-stage4-wp04b-evidence','dem');
 const A={pratzeberg:[324,5],vinohrady:[294,6],santon:[296,6],zuran:[290,6],bosenitz:[257,8],kobelnitz:[211,5],sokolnitz:[207,5],pratzen:[245,12],vinocol:[273,10],
   augezd:[195,8],          /* Újezd u Brna 195 m (municipal infobox) */
   krzenowitz:[210,8],      /* Křenovice: 203-216 m at the village (turistika.cz; municipal range 210-250) */
   austerlitz:[218,18]};    /* Slavkov: built-up area 200-237 m (jmk.cz) - only the range is sourced */
-const pts=Object.keys(A).map(k=>({k,m:G.GT[k].map,w:M.W(G.GT[k].map[0],G.GT[k].map[1]),target:A[k][0],tol:A[k][1]}));
-/* term shapes, mirroring world.js height() */
-const bumpS=(x,z,c,rx,rz,edge)=>{ const d=Math.sqrt(((x-c[0])/rx)**2+((z-c[1])/rz)**2); return 1-M.smoothstep(edge,1,d); };
-const crest=[[309,193],[313,205],[323,231],[332,257],[309,273],[285,289],[281,302]].map(p=>M.W(p[0],p[1]));
-function polyD(x,z,pts){ let d=1e9; for(let i=0;i<pts.length-1;i++){ const a=pts[i],b=pts[i+1],vx=b[0]-a[0],vz=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*vx+(z-a[1])*vz)/(vx*vx+vz*vz))); d=Math.min(d,Math.hypot(x-a[0]-t*vx,z-a[1]-t*vz)); } return d; }
-const RIDGE_W=8.0;                                  /* world units: ~0.5 km either side of the crest line */
-const northKm=(x,z)=>G.northingKm(x*2+340,z*2+250);
-const TERMS={
-  prat:  (x,z)=>bumpS(x,z,M.PRAT,50,60,0.48),
-  ridge: (x,z)=>Math.exp(-(polyD(x,z,crest)**2)/(RIDGE_W*RIDGE_W)),
-  pberg: (x,z)=>bumpS(x,z,M.PBERG,10,9.5,0.26),
-  vino:  (x,z)=>bumpS(x,z,M.VINO,11,10,0.26),
-  santon:(x,z)=>bumpS(x,z,M.SANTON,7.4,6.4,0.30),
-  zuran: (x,z)=>bumpS(x,z,M.ZURAN,6.6,5.8,0.36),
-  north: (x,z)=>M.smoothstep(3.0,6.0,northKm(x,z)),
-  tiltN: (x,z)=>G.mapToEN(x*2+340,z*2+250)[1],      /* regional plane: the land falls toward the Svratka */
-  tiltE: (x,z)=>G.mapToEN(x*2+340,z*2+250)[0],
-  slav:  (x,z)=>bumpS(x,z,M.SLAV,13,11,0.40),   /* the rise the town of Austerlitz stands on (legacy; height now fitted) */
-  valley:(x,z)=>{ const d=Math.min(polyD(x,z,M.LITAVA),polyD(x,z,M.BROOKS[M.BROOKS.length-1])); return Math.exp(-(d*d)/(25*25)); }   /* the middle-Litava lowland: the Litava and its Rakovec, ~1.6 km either side */
-};
-const CUR={prat:2.55,ridge:5.28,pberg:5.12,vino:1.73,santon:5.18,zuran:4.97,north:1.21,tiltN:0.54,tiltE:-0.57,valley:0,slav:4.2};
-/* verify the decomposition reproduces the live height at the anchors */
-let maxErr=0; pts.forEach(p=>{ const live=M.height(p.w[0],p.w[1]); const rest=live/1.2-Object.keys(CUR).reduce((s,k)=>s+CUR[k]*TERMS[k](p.w[0],p.w[1]),0); p.rest=rest; });
-/* rest = everything not being fitted (noise, grooves, ponds, other bumps); check by recomposition */
-pts.forEach(p=>{ const recon=1.2*(p.rest+Object.keys(CUR).reduce((s,k)=>s+CUR[k]*TERMS[k](p.w[0],p.w[1]),0)); maxErr=Math.max(maxErr,Math.abs(recon-M.height(p.w[0],p.w[1]))); });
-/* solve: unknowns = amplitudes + datum, heights in metres = DATUM + V*1.2*(rest + sum a_k s_k) */
-const V=G.V_M_PER_UNIT, keys=Object.keys(TERMS), n=keys.length+1;
+const V=G.V_M_PER_UNIT;
+/* the fitted terms' shapes (amplitude 1), mirroring world.js */
+const TERMS={pberg:(x,z)=>M.bump(x,z,M.PBERG,10,9.5,1,0.26), schlap:(x,z)=>M.bump(x,z,M.SCHLAP,15,9,1,0.36)};
+M.RELIEF_DEM.forEach((t,i)=>{ const u=Object.assign({},t,{h:1}); TERMS['dem'+i]=(x,z)=>M.tbump(x,z,u); });
+const LIVE={pberg:2.93, schlap:0.22}; M.RELIEF_DEM.forEach((t,i)=>LIVE['dem'+i]=t.h);   /* world.js's amplitudes as written (checked below) */
+const PRIOR={pberg:5.45, schlap:3.0}; M.RELIEF_DEM.forEach((t,i)=>PRIOR['dem'+i]=0);   /* before WP-04b */
+const REG={pberg:0.35, schlap:0.02}; M.RELIEF_DEM.forEach((t,i)=>REG['dem'+i]=0.02);
+const keys=Object.keys(TERMS), n=keys.length;
+/* rest: the height without the fitted terms; the height before WP-04b is rest plus the prior amplitudes */
+const rest=(x,z)=>M.height(x,z)/1.2-keys.reduce((s,k)=>s+LIVE[k]*TERMS[k](x,z),0);
+const before=(x,z)=>1.2*(rest(x,z)+keys.reduce((s,k)=>s+PRIOR[k]*TERMS[k](x,z),0));
+const rd=f=>JSON.parse(fs.readFileSync(f,'utf8'));
+const T=[];
+const SIG={pratzeberg:0.5, vinohrady:2, vinocol:3};
+Object.keys(A).forEach(k=>T.push({k, map:G.GT[k].map, target:A[k][0], sigma:SIG[k]||A[k][1]/2, tol:A[k][1]}));
+const inMere=p=>{ const a=(p[0]-268)/62, b=(p[1]-421)/26, c=(p[0]-187)/52, d=(p[1]-457)/22; return a*a+b*b<1||c*c+d*d<1; };
+{ const req=rd(path.join(EV,'dem-core-request.json')), E=[]; for(let i=0;;i++){ const f=path.join(EV,'raw','openmeteo-core-'+i+'.json'); if(!fs.existsSync(f)) break; E.push(...rd(f).elevation); }
+  req.forEach((p,i)=>{ const q=p.map; if(inMere(q)||q[0]<240||q[0]>360||q[1]<260||q[1]>380) return; T.push({map:q, target:E[i], sigma:10}); }); }
+const PB=G.GT.pratzeberg.map;
+[['req-vsouth.json','openmeteo-vsouth',5,'opentopodata-srtm30m-vsouth'],['req-vslap.json','openmeteo-vslap',2,null]].forEach(([f,r,k,s])=>{ const P=rd(path.join(EV4,f)), E=[], S=[];
+  for(let i=0;i<k;i++){ E.push(...rd(path.join(EV4,'raw',r+'-'+i+'.json')).elevation); if(s) S.push(...rd(path.join(EV4,'raw',s+'-'+i+'.json')).results.map(q=>q.elevation)); }
+  if(E.length!==P.length||(s&&S.length!==P.length)) throw new Error(f+': '+E.length+' heights for '+P.length+' points');
+  P.forEach((p,i)=>{ if(inMere(p.map)) return; const near=s&&Math.hypot(p.map[0]-PB[0],p.map[1]-PB[1])<=19;
+    T.push({map:p.map, target:near?Math.min(E[i],S[i]):E[i], sigma:near?3:10}); }); });
+[[M.LITAVA_M,null],[M.GOLDBACH_M,[150,300,150,420]],[M.BROOKS_M[3],null],[M.BROOKS_M[1],null]].forEach(([L,box])=>{
+  for(let i=0;i<L.length-1;i++){ const a=L[i], b=L[i+1], d=Math.hypot(b[0]-a[0],b[1]-a[1]), m=Math.max(1,Math.ceil(d/2));
+    for(let s=0;s<=m;s++){ const p=[a[0]+(b[0]-a[0])*s/m, a[1]+(b[1]-a[1])*s/m]; if(box&&!(p[0]>=box[0]&&p[0]<=box[1]&&p[1]>=box[2]&&p[1]<=box[3])) continue;
+      const w=M.W(p[0],p[1]); T.push({map:p, target:G.elevM(before(w[0],w[1])), sigma:0.75}); } } });
+/* the rows: metres = DATUM + V*1.2*(rest + sum a_k s_k) */
 const rows=[], rhs=[];
-pts.forEach(p=>{ const r=keys.map(k=>V*1.2*TERMS[k](p.w[0],p.w[1])); r.push(1); rows.push(r.map(v=>v/p.tol)); rhs.push((p.target-V*1.2*p.rest)/p.tol); });
-/* the sourced drop along the Goldbach: Kobylnice 211 m -> Sokolnice 207 m, downstream (4 m +/- 1.5) */
-{ const a=pts.find(p=>p.k==='kobelnitz'), b=pts.find(p=>p.k==='sokolnitz'), tol=1.5;
-  const r=keys.map(k=>V*1.2*(TERMS[k](a.w[0],a.w[1])-TERMS[k](b.w[0],b.w[1]))); r.push(0);
-  rows.push(r.map(v=>v/tol)); rhs.push((4-V*1.2*(a.rest-b.rest))/tol); }
-/* weak regularisation toward the current amplitudes (keeps the landscape recognisable) */
-const REG={prat:0.08,ridge:0.08,tiltN:0.5,tiltE:50,valley:0.3};   /* tiltE held at zero: a plane made the Litava run uphill */   /* the broad dome and the crest ridge may trade height; the named summits stay near their old shape */
-const PRIOR=Object.assign({},CUR,{tiltE:0,valley:0});
-keys.forEach((k,i)=>{ const w=REG[k]!==undefined?REG[k]:0.35; const r=Array(n).fill(0); r[i]=w; rows.push(r); rhs.push(w*PRIOR[k]); });
+T.forEach(p=>{ const w=M.W(p.map[0],p.map[1]); p.w=w; rows.push(keys.map(k=>V*1.2*TERMS[k](w[0],w[1])/p.sigma)); rhs.push((p.target-G.elevM(1.2*rest(w[0],w[1])))/p.sigma); });
+{ const a=M.W(...G.GT.kobelnitz.map), b=M.W(...G.GT.sokolnitz.map), tol=1.5;
+  rows.push(keys.map(k=>V*1.2*(TERMS[k](a[0],a[1])-TERMS[k](b[0],b[1]))/tol)); rhs.push((4-V*1.2*(rest(a[0],a[1])-rest(b[0],b[1])))/tol); }
+keys.forEach((k,i)=>{ const r=Array(n).fill(0); r[i]=REG[k]; rows.push(r); rhs.push(REG[k]*PRIOR[k]); });
 function lsq(A,b){ const m=A[0].length, N=Array.from({length:m},()=>Array(m+1).fill(0)); A.forEach((r,ri)=>{ for(let i=0;i<m;i++){ for(let j=0;j<m;j++) N[i][j]+=r[i]*r[j]; N[i][m]+=r[i]*b[ri]; } });
   for(let i=0;i<m;i++){ let p=i; for(let r=i+1;r<m;r++) if(Math.abs(N[r][i])>Math.abs(N[p][i])) p=r; [N[i],N[p]]=[N[p],N[i]]; for(let r=0;r<m;r++) if(r!==i){ const f=N[r][i]/N[i][i]; for(let c=i;c<=m;c++) N[r][c]-=f*N[i][c]; } } return N.map((r,i)=>r[m]/r[i]); }
-const sol=lsq(rows,rhs); const amp={}; keys.forEach((k,i)=>amp[k]=+sol[i].toFixed(2)); const DATUM=+sol[keys.length].toFixed(1);
-console.log('decomposition check: max error '+maxErr.toExponential(2)+' units');
-console.log('fitted amplitudes '+JSON.stringify(amp)+'  DATUM_M '+DATUM+'  (V_M_PER_UNIT '+V+')');
-pts.forEach(p=>{ const h=1.2*(p.rest+keys.reduce((s,k)=>s+amp[k]*TERMS[k](p.w[0],p.w[1]),0)); const m=DATUM+V*h; console.log('  '+p.k.padEnd(11)+m.toFixed(0)+' m   target '+p.target+' ±'+p.tol+(Math.abs(m-p.target)>p.tol?'   <-- outside':'')); });
-module.exports={amp,DATUM,RIDGE_W};
+let sol=lsq(rows,rhs);
+/* the summit held (WP-04b's summit line, tools/relief-tolerance.js: no ground within 1 km of the Pratzeberg more than 2 m above its surveyed 324 m;
+   the amplitudes solved without it drew 326.4 m 168 m east of the summit point): every point of a 25 m lattice within 1 km of GT.pratzeberg that
+   the solution draws above CAP is added as a target at CAP, sigma 0.05 m, and the amplitudes solved again, until none is added (an active set;
+   CAP 0.5 m inside the line, so that the rounded amplitudes keep it) */
+const CAP=G.GT.pratzeberg.elev+2-0.5, CAPS=0.05, KMU=1/G.KM_PER_MAP, LST=0.025/G.KM_PER_MAP, LAT=[], ACT=new Set();
+for(let y=-KMU;y<=KMU+1e-9;y+=LST) for(let x=-KMU;x<=KMU+1e-9;x+=LST){ if(x*x+y*y>KMU*KMU) continue; const w=M.W(PB[0]+x,PB[1]+y);
+  LAT.push({s:keys.map(k=>V*1.2*TERMS[k](w[0],w[1])), r:G.elevM(1.2*rest(w[0],w[1]))}); }
+for(let it=0;it<30;it++){ let added=0; LAT.forEach((p,i)=>{ if(ACT.has(i)||p.r+p.s.reduce((t,v,j)=>t+v*sol[j],0)<=CAP) return; ACT.add(i); added++;
+    rows.push(p.s.map(v=>v/CAPS)); rhs.push((CAP-p.r)/CAPS); }); if(!added) break; sol=lsq(rows,rhs); }
+const amp={}; keys.forEach((k,i)=>amp[k]=+sol[i].toFixed(2));
+console.log('the summit held: '+ACT.size+' lattice points at '+CAP+' m');
+const name=k=>k.startsWith('dem')?'RELIEF_DEM['+k.slice(3)+'] ('+M.RELIEF_DEM[+k.slice(3)].n+')':k;
+console.log('targets: '+Object.keys(A).length+' sourced anchors, '+(T.length-Object.keys(A).length)+' DEM points and held beds; DATUM_M '+G.DATUM_M+', V_M_PER_UNIT '+V+' (fixed)');
+let off=0; keys.forEach(k=>{ const d=Math.abs(amp[k]-LIVE[k]); if(d>0.011) off++; console.log('  '+name(k).padEnd(48)+' fitted '+amp[k].toFixed(2).padStart(6)+'   world.js '+LIVE[k].toFixed(2).padStart(6)+(d>0.011?'   <-- world.js differs':'')); });
+console.log(off?'world.js does not carry the fitted amplitudes ('+off+')':'world.js carries the fitted amplitudes (to 0.01)');
+Object.keys(A).forEach(k=>{ const w=M.W(...G.GT[k].map), m=G.elevM(M.height(w[0],w[1])); console.log('  '+k.padEnd(11)+m.toFixed(0)+' m   target '+A[k][0]+' ±'+A[k][1]+(Math.abs(m-A[k][0])>A[k][1]?'   <-- outside':'')); });
+module.exports={amp};

@@ -91,6 +91,14 @@ const bedAt=k=>{ const p=P(k); let best=null; for(let i=0;i<GOLDBACH_M.length-1;
   return G.elevM(hAt(best.q[0],best.q[1])); };
 const down=bedAt('kobelnitz')>=bedAt('sokolnitz') && bedAt('sokolnitz')>=bedAt('telnitz');
 console.log("  the Goldbach falls downstream, its bed by Kobelnitz >= by Sokolnitz >= by Telnitz: "+(down?"OK":"BROKEN")+"  ("+['kobelnitz','sokolnitz','telnitz'].map(k=>bedAt(k).toFixed(1)).join(" > ")+" m; the villages' points "+['kobelnitz','sokolnitz','telnitz'].map(k=>mAt(k).toFixed(1)).join(", ")+" m)");
+/* the relief between the anchors (the final audits' Stage 4, WP-04b; CL-GEO-01's validation line, owner decision 273 (a)): the southern plateau's
+   mean, the four profiles' worst, Slapanice and St Anthony's knoll against open elevation data, the twelve sourced anchors at relief-fit.js's
+   tolerances, and no false summit by the Pratzeberg (tools/relief-tolerance.js, its values tools/relief-dem.json; nothing fetched). On the relief
+   before WP-04b seven of these lines fail (the southern box -45.3 m, the profiles' worst -51.7 to -81.8 m, Slapanice +48.0 m, the knoll -41.8 m) */
+let demBad=0;
+{ const RT=require('./tools/relief-tolerance.js').check((x,y)=>G.elevM(hAt(x,y)),JSON.parse(fs.readFileSync('tools/relief-dem.json','utf8')),G);
+  RT.rows.forEach(r=>{ if(!r.ok) demBad++; if(!r.ok||!/^anchor /.test(r.line)) console.log("  relief tolerance: "+r.text+(r.ok?"  OK":"   <-- OUTSIDE")); });
+  console.log("  relief tolerance: the twelve sourced anchors "+(RT.rows.filter(r=>/^anchor /.test(r.line)&&r.ok).length)+" of 12 within relief-fit.js's tolerances"+(demBad?"; "+demBad+" line(s) OUTSIDE":"")); }
 /* the meres: no edge of the ice, nor of its shore ice, may hang above the DRAWN ground (docs/STAGE4_SPEC.md section F.1; roadmap step 1,
    docs/FINAL_AUDIT.md T-2: until step 1 this block computed a level with its own copy of mereLevel's rule, on the model height, and
    compared it with the same model height, which holds by construction). Now every part is the live code's: the meres as buildWater
@@ -155,7 +163,7 @@ let floatBad=0;
   if(!nC){ console.log("  ! the mere check cannot fail: lifted a further 0.05, no surface floats"); floatBad++; }
   groundMesh=null;   /* the rest of the suite reads the model, as before */
 }
-if(reliefBad||!order.every(x=>x)||!down||floatBad) process.exitCode=1;
+if(reliefBad||!order.every(x=>x)||!down||floatBad||demBad) process.exitCode=1;
 console.log("  vertical exaggeration (derived): "+G.EXAG.toFixed(1)+"x");
 
 /* --- crop distribution: the field must actually contain all four holdings. Since roadmap step 5 (docs/FINAL_AUDIT.md T-9 (d)) counted on the
