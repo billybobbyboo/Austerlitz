@@ -1,0 +1,955 @@
+{
+ "base": "the tree at 9228a3f (WP-03, before WP-04b; its geo.js, data.js and world.js are 8b35682's)",
+ "cand": "WP-04b, final",
+ "cover": {
+  "points": 112271,
+  "changed": 453,
+  "moves": {
+   "field->village": 75,
+   "village->field": 36,
+   "village->track": 37,
+   "marsh->village": 301,
+   "water->village": 2,
+   "track->village": 1,
+   "meadow->village": 1
+  },
+  "before": {
+   "field": 94481,
+   "meadow": 6738,
+   "track": 2869,
+   "village": 2325,
+   "wood": 1291,
+   "water": 2553,
+   "vineyard": 211,
+   "marsh": 1803
+  },
+  "after": {
+   "field": 94442,
+   "meadow": 6737,
+   "track": 2905,
+   "village": 2632,
+   "wood": 1291,
+   "water": 2551,
+   "vineyard": 211,
+   "marsh": 1502
+  }
+ },
+ "streams": {
+  "Goldbach": {
+   "before": [
+    {
+     "fromMap": [
+      211,
+      231
+     ],
+     "toMap": [
+      208,
+      258
+     ],
+     "riseM": 1.5
+    },
+    {
+     "fromMap": [
+      208,
+      273
+     ],
+     "toMap": [
+      221,
+      347
+     ],
+     "riseM": 9.4
+    },
+    {
+     "fromMap": [
+      214,
+      369
+     ],
+     "toMap": [
+      214,
+      404
+     ],
+     "riseM": 3.7
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      211,
+      231
+     ],
+     "toMap": [
+      208,
+      258
+     ],
+     "riseM": 1.5
+    },
+    {
+     "fromMap": [
+      208,
+      273
+     ],
+     "toMap": [
+      221,
+      347
+     ],
+     "riseM": 9.4
+    },
+    {
+     "fromMap": [
+      214,
+      369
+     ],
+     "toMap": [
+      214,
+      404
+     ],
+     "riseM": 3.7
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "Litava": {
+   "before": [
+    {
+     "fromMap": [
+      538,
+      131
+     ],
+     "toMap": [
+      405,
+      253
+     ],
+     "riseM": 17.6
+    },
+    {
+     "fromMap": [
+      393,
+      267
+     ],
+     "toMap": [
+      335,
+      331
+     ],
+     "riseM": 6.5
+    },
+    {
+     "fromMap": [
+      314,
+      354
+     ],
+     "toMap": [
+      284,
+      398
+     ],
+     "riseM": 3.5
+    },
+    {
+     "fromMap": [
+      265,
+      437
+     ],
+     "toMap": [
+      210,
+      507
+     ],
+     "riseM": 20.9
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      538,
+      131
+     ],
+     "toMap": [
+      405,
+      253
+     ],
+     "riseM": 17.6
+    },
+    {
+     "fromMap": [
+      393,
+      267
+     ],
+     "toMap": [
+      333,
+      333
+     ],
+     "riseM": 6.5
+    },
+    {
+     "fromMap": [
+      314,
+      354
+     ],
+     "toMap": [
+      284,
+      398
+     ],
+     "riseM": 3.5
+    },
+    {
+     "fromMap": [
+      265,
+      437
+     ],
+     "toMap": [
+      210,
+      507
+     ],
+     "riseM": 20.9
+    }
+   ],
+   "bedChangeMaxM": 1,
+   "sameLine": true
+  },
+  "BROOKS[0]": {
+   "before": [
+    {
+     "fromMap": [
+      275,
+      147
+     ],
+     "toMap": [
+      263,
+      172
+     ],
+     "riseM": 1.4
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      275,
+      147
+     ],
+     "toMap": [
+      263,
+      172
+     ],
+     "riseM": 1.4
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "BROOKS[1]": {
+   "before": [
+    {
+     "fromMap": [
+      283,
+      237
+     ],
+     "toMap": [
+      239,
+      261
+     ],
+     "riseM": 4.8
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      283,
+      237
+     ],
+     "toMap": [
+      239,
+      261
+     ],
+     "riseM": 4.8
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "BROOKS[2]": {
+   "before": [],
+   "after": [],
+   "bedChangeMaxM": 46.5,
+   "sameLine": true
+  },
+  "BROOKS[3]": {
+   "before": [],
+   "after": [],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "BROOKS[4]": {
+   "before": [
+    {
+     "fromMap": [
+      404,
+      161
+     ],
+     "toMap": [
+      419,
+      199
+     ],
+     "riseM": 3.3
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      404,
+      161
+     ],
+     "toMap": [
+      419,
+      199
+     ],
+     "riseM": 3.3
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  }
+ },
+ "knowledge": {
+  "byView": {
+   "fr": {
+    "readings": 1185,
+    "changed": 56,
+    "moves": {
+     "unknown->seen": 18,
+     "seen->unknown": 38
+    }
+   },
+   "al": {
+    "readings": 1975,
+    "changed": 3,
+    "moves": {
+     "seen->unknown": 2,
+     "unknown->seen": 1
+    }
+   }
+  },
+  "changes": [
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "07:10",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "07:20",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "07:50",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "bag",
+    "t": "13:30",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "ahq",
+    "t": "13:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "13:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "13:50",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "ahq",
+    "t": "14:00",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "14:00",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "14:00",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "col4",
+    "t": "14:00",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "milo",
+    "t": "14:00",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "kollo",
+    "t": "14:00",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "14:10",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "14:20",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "14:20",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "14:30",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "14:30",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "14:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "kienmayer",
+    "t": "14:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "14:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "kienmayer",
+    "t": "14:50",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "14:50",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "14:50",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "kienmayer",
+    "t": "15:00",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "15:00",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "15:00",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "15:10",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "15:10",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "15:20",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "15:20",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "15:30",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "15:30",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "15:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "15:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "15:50",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "15:50",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "15:50",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "16:00",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "16:00",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "dok",
+    "t": "16:10",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "16:10",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "kienmayer",
+    "t": "16:20",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "16:20",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "16:30",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "kienmayer",
+    "t": "16:30",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "16:30",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "16:40",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "kienmayer",
+    "t": "16:40",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "16:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "16:50",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "kienmayer",
+    "t": "16:50",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "16:50",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "fr",
+    "id": "buxhowden",
+    "t": "17:00",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "kienmayer",
+    "t": "17:00",
+    "from": "unknown",
+    "to": "seen"
+   },
+   {
+    "view": "fr",
+    "id": "lang",
+    "t": "17:00",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "al",
+    "id": "c_i",
+    "t": "08:20",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "al",
+    "id": "gqg",
+    "t": "13:40",
+    "from": "seen",
+    "to": "unknown"
+   },
+   {
+    "view": "al",
+    "id": "gqg",
+    "t": "14:00",
+    "from": "unknown",
+    "to": "seen"
+   }
+  ],
+  "byFormation": {
+   "fr lang": 20,
+   "fr buxhowden": 13,
+   "fr bag": 1,
+   "fr ahq": 2,
+   "fr col4": 1,
+   "fr milo": 1,
+   "fr kollo": 1,
+   "fr kienmayer": 8,
+   "fr dok": 9,
+   "al c_i": 1,
+   "al gqg": 2
+  }
+ },
+ "buildings": {
+  "before": {
+   "Bosenitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Girzikowitz": {
+    "n": 17,
+    "village": 17
+   },
+   "Puntowitz": {
+    "n": 19,
+    "village": 14,
+    "water": 5
+   },
+   "Kobelnitz": {
+    "n": 16,
+    "marsh": 9,
+    "village": 3,
+    "water": 4
+   },
+   "Sokolnitz": {
+    "n": 27,
+    "marsh": 21,
+    "village": 4,
+    "water": 2
+   },
+   "Telnitz": {
+    "n": 25,
+    "marsh": 20,
+    "village": 2,
+    "water": 3
+   },
+   "Augezd": {
+    "n": 17,
+    "village": 17
+   },
+   "Blasowitz": {
+    "n": 21,
+    "village": 21
+   },
+   "Krug": {
+    "n": 12,
+    "village": 12
+   },
+   "Holubitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Pratzen": {
+    "n": 30,
+    "village": 30
+   },
+   "Bellowitz": {
+    "n": 12,
+    "village": 12
+   },
+   "Schlapanitz": {
+    "n": 18,
+    "village": 18
+   },
+   "Krzenowitz": {
+    "n": 22,
+    "village": 22
+   },
+   "Austerlitz": {
+    "n": 56,
+    "village": 56
+   },
+   "Menitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Satschan": {
+    "n": 14,
+    "village": 10,
+    "water": 2,
+    "marsh": 2
+   },
+   "Turas": {
+    "n": 10,
+    "village": 10
+   },
+   "Hostieradek": {
+    "n": 13,
+    "village": 13
+   },
+   "Posoritz post house": {
+    "n": 6,
+    "village": 6
+   }
+  },
+  "after": {
+   "Bosenitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Girzikowitz": {
+    "n": 17,
+    "village": 17
+   },
+   "Puntowitz": {
+    "n": 19,
+    "village": 14,
+    "water": 5
+   },
+   "Kobelnitz": {
+    "n": 16,
+    "village": 12,
+    "water": 4
+   },
+   "Sokolnitz": {
+    "n": 27,
+    "village": 25,
+    "water": 2
+   },
+   "Telnitz": {
+    "n": 25,
+    "village": 22,
+    "water": 3
+   },
+   "Augezd": {
+    "n": 17,
+    "village": 17
+   },
+   "Blasowitz": {
+    "n": 21,
+    "village": 21
+   },
+   "Krug": {
+    "n": 11,
+    "village": 11
+   },
+   "Holubitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Pratzen": {
+    "n": 30,
+    "village": 30
+   },
+   "Bellowitz": {
+    "n": 12,
+    "village": 12
+   },
+   "Schlapanitz": {
+    "n": 18,
+    "village": 18
+   },
+   "Krzenowitz": {
+    "n": 22,
+    "village": 22
+   },
+   "Austerlitz": {
+    "n": 56,
+    "village": 56
+   },
+   "Menitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Satschan": {
+    "n": 14,
+    "village": 12,
+    "water": 2
+   },
+   "Turas": {
+    "n": 10,
+    "village": 10
+   },
+   "Hostieradek": {
+    "n": 13,
+    "village": 13
+   },
+   "Posoritz post house": {
+    "n": 6,
+    "village": 6
+   }
+  },
+  "records": [
+   637,
+   636
+  ],
+  "recordsChangedByVillage": {
+   "Krug": 12
+  }
+ },
+ "frame": {
+  "points": 85591,
+  "movedOver05m": 2393,
+  "largestM": 87.1,
+  "at": [
+   296,
+   320
+  ]
+ }
+}
