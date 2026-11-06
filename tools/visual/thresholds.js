@@ -295,7 +295,14 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    driver's clock, and one frame's shift moves the formations drawn by that frame's own count (13 to 15), which can exceed the per-frame mean.
    Fixing the pointer's start and waiting for its move and for each notch did not make it deterministic. Two frames hold the real input to its
    twin within the jitter measured; REAL_TOL, every twin's baseline and the twins' rule otherwise unchanged */
-const MOTION={JUMPS:251, POPS:1034, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:2, FRAME_MS:1000/30,
+/* the final audits' Stage 4, WP-03 (owner decision 287 (a), 6 November 2026, under the owner's rule for geographic baselines): the 16's pops and
+   the visibility baselines re-baselined at the WP-03 build's own counts (check:selftest's block, Chromium 141). The cause is geographic: WP-03's
+   re-plotted and held formations (Friant, Langeron and Legrand at Sokolnitz, Bourcier before Telnitz, Miloradovich off the Litava; the declared
+   holds of decisions 285 (a) and 286 (a), which keep the Guard, Liechtenstein, Miloradovich and Kamensky at their attack places longer) change
+   which formations are in view and compete for the labels. POPS 1,034 to 1,035 (+1); jumps 229, level-of-detail switches 128 and flickers 9, within
+   JUMPS 251, LOD 130 and FLICKER 10, unchanged. Each changed baseline, was and is: "hybrid-pan" [1386,2053,2467] to [1359,2036,2467], "hybrid-zoom" [1299,2248,2133] to [1242,2203,2133], "hybrid-orbit" [1520,2548,1833] to [1564,2548,1833], "hybrid-glide" [1161,1795,1700] to [1153,1786,1700], "hybrid-play" [2119,3388,4033] to [2073,3388,4033], "paper-zoom" [804,1232,667] to [852,1232,667], "paper-glide" [554,822,633] to [551,822,667], "paper-play" [1545,1694,667] to [1564,1694,667], "land-pan" [1792,2055,1133] to [1783,2038,667], "land-zoom" [1741,2258,667] to [1649,2207,667], "land-orbit" [1789,2366,1167] to [1749,2366,1167], "land-play" [2672,3146,667] to [2615,3146,667], "low-pan" [820,885,533] to [806,861,533], "low-orbit" [681,876,633] to [665,859,633], "low-zoom" [505,633,633] to [457,590,667], "hybrid-orbit+sel" [1496,2548,2033] to [1593,2548,2033], "paper-zoom+sel" [835,1232,667] to [821,1232,667], "hybrid-pan+fr" [1329,1970,2467] to [1318,1959,2467], "hybrid-pan+al" [934,1276,1467] to [948,1270,1467], "phone-pan+touch" [275,698,1467] to [257,696,1367], "hybrid-pan+point" [1386,2053,2467] to [1359,2036,2467], "hybrid-orbit+point" [1520,2548,1833] to [1564,2548,1833], "hybrid-zoom+point" [1299,2248,2133] to [1242,2203,2133], "paper-zoom+point" [723,1232,667] to [852,1232,667]; the two twins that hover nothing equal their 16's runs.
+   WP-04b (the relief) re-measures on its own geography */
+const MOTION={JUMPS:251, POPS:1035, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:2, FRAME_MS:1000/30,
   /* VIS[run key] = [drawn, in view, longest hidden ms]: the prerequisite's build (the 8C build with the protected items' fade fixed, section
      16.1), Chromium 141, check:selftest's block; a key is the motion's id, "+sel" with Saint-Hilaire's division selected, "+fr"/"+al" under a
      headquarters' reading, "+touch" for the finger's pan at 390 px (tools/visual/motion.js runKey) */
@@ -332,13 +339,13 @@ const MOTION={JUMPS:251, POPS:1034, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.
      (held by the judge above), "paper-zoom+point" hovers the Russian Imperial Guard's counter, which the layer protects (decision 39), and equals
      its run by real input frame for frame where that run follows it on the self-test's page (28 jumps, 126 pops, 726 of 1,232 formation-frames
      drawn). No existing baseline moved, and the 16's ceilings not moved */
-  VIS:{"hybrid-pan":[1386,2053,2467], "hybrid-zoom":[1299,2248,2133], "hybrid-orbit":[1520,2548,1833], "hybrid-glide":[1161,1795,1700],
-    "hybrid-play":[2119,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[804,1232,667], "paper-glide":[554,822,633],
-    "paper-play":[1545,1694,667], "land-pan":[1792,2055,1133], "land-zoom":[1741,2258,667], "land-orbit":[1789,2366,1167],
-    "land-play":[2672,3146,667], "low-pan":[820,885,533], "low-orbit":[681,876,633], "low-zoom":[505,633,633], "hybrid-orbit+sel":[1496,2548,2033],
-    "paper-zoom+sel":[835,1232,667], "hybrid-pan+fr":[1329,1970,2467], "hybrid-pan+al":[934,1276,1467], "paper-play+al":[1171,1331,667],
-    "phone-pan+touch":[275,698,1467],
-    "hybrid-pan+point":[1386,2053,2467], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1299,2248,2133], "paper-zoom+point":[723,1232,667]}};
+  VIS:{"hybrid-pan":[1359,2036,2467], "hybrid-zoom":[1242,2203,2133], "hybrid-orbit":[1564,2548,1833], "hybrid-glide":[1153,1786,1700],
+    "hybrid-play":[2073,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[852,1232,667], "paper-glide":[551,822,667],
+    "paper-play":[1564,1694,667], "land-pan":[1783,2038,667], "land-zoom":[1649,2207,667], "land-orbit":[1749,2366,1167],
+    "land-play":[2615,3146,667], "low-pan":[806,861,533], "low-orbit":[665,859,633], "low-zoom":[457,590,667], "hybrid-orbit+sel":[1593,2548,2033],
+    "paper-zoom+sel":[821,1232,667], "hybrid-pan+fr":[1318,1959,2467], "hybrid-pan+al":[948,1270,1467], "paper-play+al":[1171,1331,667],
+    "phone-pan+touch":[257,696,1367],
+    "hybrid-pan+point":[1359,2036,2467], "hybrid-orbit+point":[1564,2548,1833], "hybrid-zoom+point":[1242,2203,2133], "paper-zoom+point":[852,1232,667]}};
 module.exports.MOTION=MOTION;
 /* decision 257 (b)'s visibility rule for one run (r: a run of live.motion with its track; base: VIS's entry, or for a run by real input its twin's
    measures as [drawn, in view, longest]); the words of each failure, empty when it holds */
