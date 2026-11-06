@@ -18,7 +18,11 @@ const MUT=[
   {id:"N2", finding:"CL-GEO-01 (c16r's amplitudes, the fit without the summit held)", runners:["terrain"], want:"relief tolerance: no false summit", edits:[["world.js",
     "edge:0.76, h:6.09}", "edge:0.76, h:6.15}"],["world.js","edge:0.07, h:5.58}","edge:0.07, h:5.56}"],["world.js","edge:0.34, h:5.77}","edge:0.34, h:5.69}"],
     ["world.js","edge:0.38, h:-4.59}","edge:0.38, h:-4.66}"],["world.js","edge:0, h:-4.11}","edge:0, h:-4.61}"],["world.js",
-    "h += bump(x,z,PBERG,10,9.5,2.93,0.26);", "h += bump(x,z,PBERG,10,9.5,3.26,0.26);"]]}
+    "h += bump(x,z,PBERG,10,9.5,2.93,0.26);", "h += bump(x,z,PBERG,10,9.5,3.26,0.26);"]]},
+  {id:"N3", finding:"CL-GEO-05 (the marsh before the village, in coverClass and the ground shader)", runners:["terrain"], want:"buildings stand on the drawn marsh class", edits:[["world.js",
+    "  if(vill>0.55) return 5;\n  if(marsh>0.45&&ml<0.4) return 2;\n", "  if(marsh>0.45&&ml<0.4) return 2;\n  if(vill>0.55) return 5;\n"],["world.js",
+    '  "  if(A.w>0.55) return 5.0;",   /* WP-04b (CL-GEO-05): the village before the marsh, as coverClass */\n  "  if(A.y>0.45&&ml<0.4) return 2.0;",',
+    '  "  if(A.y>0.45&&ml<0.4) return 2.0;",\n  "  if(A.w>0.55) return 5.0;",']]}
 ];
 const args=process.argv.slice(2), only=(args.indexOf("--only")>=0?args[args.indexOf("--only")+1].split(","):null), outF=args.indexOf("--out")>=0?args[args.indexOf("--out")+1]:null;
 function makeCopy(m){

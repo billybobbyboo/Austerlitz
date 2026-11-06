@@ -27,6 +27,20 @@ if(100*(cov[1]||0)/n>15){ console.log("  ! meadow covers "+(100*cov[1]/n).toFixe
 console.log("\n-- land cover --");
 Object.keys(cov).map(Number).sort((a,b)=>cov[b]-cov[a]).forEach(k=>
   console.log("  "+names[k].padEnd(12),(100*cov[k]/n).toFixed(1).padStart(5)+"%"));
+/* the villages on their own ground (the final audits' Stage 4, WP-04b; CL-GEO-05): no village's centre and no building the planner lays
+   (planBuildings8g, the buildings as tools/audit-post8/geography/buildings.js counts them) on the drawn marsh class (drawnCover). Until WP-04b
+   the marsh came before the village in coverClass: Sokolnitz's centre stood on marsh, and 21 of Sokolnitz's 27 buildings, 20 of Telnitz's 25,
+   9 of Kobelnitz's 16 and 2 of Satschan's 14 */
+{ eval(fs.readFileSync("appearance.js","utf8"));   /* the buildings' table (BUILDINGS, CHAPELS), as in the build's order */
+  buildCoverMl(); const wp=woodsPlan(), B=planBuildings8g(wp.broad.concat(wp.conif)), per={}; let bad=0;
+  VILLAGES.forEach(v=>{ const w=W(v[1],v[2]); if(drawnCover(w[0],w[1])===2){ bad++; console.log("  ! the village "+v[0]+"'s centre stands on the drawn marsh class"); } });
+  B.forEach(b=>{ if(!b.R||b.landmark&&!(b.church||b.part==="chapel"||b.part==="church")||b.part==="fence"||b.part==="churchyard wall") return;
+    const q=per[b.village]=per[b.village]||{n:0,marsh:0,village:0}; q.n++; const c=drawnCover(b.R.x,b.R.z); if(c===2) q.marsh++; if(c===5) q.village++; });
+  Object.keys(per).forEach(k=>{ if(per[k].marsh){ bad++; console.log("  ! "+per[k].marsh+" of "+k+"'s "+per[k].n+" buildings stand on the drawn marsh class"); } });
+  const tot=Object.values(per).reduce((a,q)=>({n:a.n+q.n,v:a.v+q.village,m:a.m+q.marsh}),{n:0,v:0,m:0});
+  console.log("  villages on their own ground: "+tot.n+" buildings, "+tot.v+" on the village class, "+tot.m+" on marsh; Sokolnitz "+per.Sokolnitz.village+"/"+per.Sokolnitz.n+
+    ", Telnitz "+per.Telnitz.village+"/"+per.Telnitz.n+", Kobelnitz "+per.Kobelnitz.village+"/"+per.Kobelnitz.n+" on the village class"+(bad?"  BROKEN":"  OK"));
+  if(bad) process.exitCode=1; }
 
 /* contours */
 t=Date.now();
