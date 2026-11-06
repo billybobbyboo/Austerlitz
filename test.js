@@ -409,7 +409,7 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   /* read on the text layer, alone or in part: the step-4 register says so on its quote line ("read on: page image", "page image, part on the
      text layer", or the text layer; every step-4 entry has the marker); the step-2 register's entries name the OCR or the text layer and
      never a page image. The review of 76e626b: a reading made partly on the text layer carries no "fact" or "attributed" claim either */
-  REG.forEach(r=>{ if(r.file==="docs/step4-evidence/readings.md"&&r.readOn===undefined) cerr.push("reading "+r.id+" ("+r.file+") has no \"read on\" marker on its quote line");
+  REG.forEach(r=>{ if((r.file==="docs/step4-evidence/readings.md"||r.file==="docs/wp15-evidence/readings.md")&&r.readOn===undefined) cerr.push("reading "+r.id+" ("+r.file+") has no \"read on\" marker on its quote line");
     r.ocrOnly=r.readOn!==undefined?(!/^page image/i.test(r.readOn)||/text layer|\bOCR\b/i.test(r.readOn)):(/\bOCR\b|text layer/i.test(r.text)&&!/page image|on (?:its|the) image|image n\d|\(image\)/i.test(r.text));
     if(!r.src) cerr.push("reading "+r.id+" ("+r.file+") has no source"); });
   /* a clock time in any form a note might use: 08:45, 8.30, 14h30, 1400 hours, nine o'clock, half past eight, a quarter to nine, noon,

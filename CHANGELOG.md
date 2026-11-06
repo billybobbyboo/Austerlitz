@@ -8,7 +8,7 @@ the prominent ones were never triaged) and the open questions (CG-F03). **This t
 and no build changes (`check:data` unchanged, 139 of 139 against `archive/postaudit2-e7d6924f.html`; `austerlitz-command-map.html` unchanged,
 2,869,790 bytes, md5 `6ec4abc2fa3831be78145cc87f82174d`; `check:baseline` unchanged). Every data change it finds is a *proposal* for a later
 data task (WP-01 or WP-03). The main track (WP-03, another session) adds its own readings as section S7 of `docs/step4-evidence/readings.md`
-and edits `narrative.js`; this track touches only `docs/wp15-evidence/`, `tools/wp15/`, `test.js`'s `regFiles` line and this file. The
+and edits `narrative.js`; this track touches only `docs/wp15-evidence/`, `tools/wp15/`, two lines of `test.js` (`regFiles`, and the "read on" marker's check extended to the new register) and this file. The
 evidence is `docs/wp15-evidence/` (its README lists each file and the tool that made it).
 
 ### What was done, and why
@@ -68,8 +68,8 @@ evidence is `docs/wp15-evidence/` (its README lists each file and the tool that 
   and S6.8 (the owner's photographs) register them. Every reader was a machine reader; nothing was read by a person.
 - **`test.js`'s `regFiles`** now lists the new register, so `test.js` validates its entries (each id unique across the three registers, each
   with a source) and a claim may cite them. `test.js`'s check that every entry carries a "read on" marker applies to the step-4 register by
-  name; every entry of the new register carries it (the verifier's run shows each read on a page image), but extending that check to the new
-  file is left to the lead, since this track may change only the `regFiles` line.
+  name; every entry of the new register carries it (the verifier's run shows each read on a page image). The lead then extended that check
+  to the new file (`test.js`, one condition): it passes, and with one entry's marker removed it fails (the negative control, run once).
 - **The verifier** (`tools/wp15/apply-proposals.js`; its runs in `apply-proposals.log`). It copies the sources outside the repository, applies
   the proposals to the copy's `narrative.js` (and any source entry to `appearance.js`; none here), regenerates the copy's inventory and runs its
   `test.js` and `redteam.js` (whose overclaim scan and retired phrases read the claims' notes, which a visitor is shown): as the copy stands,
