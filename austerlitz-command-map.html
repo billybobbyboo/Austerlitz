@@ -5179,6 +5179,16 @@ var CHAPELS=["Holubitz"];
    1826 sketch in its round churchyard 276 m south-south-west of the street's midpoint, where today's church stands (RÚIAN building 46052721; B),
    399 m at 193 degrees from the village's point, where the planner drew it until 8J */
 var LANDMARK_SITES={castle:[212.9,344.3], church:{Pratzen:[277.0,255.6]}};
+/* The final audits' Stage 4, WP-04b (CL-GEO-11): the castle's own ground. Its site (8J) lay on the drawn track class: the Kobelnitz-Sokolnitz
+   track runs 118 m west of it, and the cover raster's road band (covRoad above 0.6) reaches it, so the quadrangle and its farm stood on a track's
+   colour (13 of 16 points within 25 m of the site; of the drawn ranges' corners and centres 23 of 63 on track, 24 on marsh, 6 on water, 8 on
+   meadow, 2 on village). An ellipse about the castle and its farm as castlePlan8g draws them (their corners at most 1.27 times the box's
+   half-sides from its centre, and 0.15 units more): the village class, the ground the cover gives to buildings, before the track, the marsh, the
+   meadow and the brook's bed (whose cover band reached six of the castle ranges' points; the brook's ribbon is drawn as before), after a traced
+   wood and the meres (coverClass and the ground shader's gClass). c in map units, rx and rz in world units. Nothing else
+   reads it: the track (ROADS), its ribbon, the cover rasters and what the movement model reads of them are unchanged */
+var CASTLE_GROUND={c:[213.0,345.6], rx:1.4, rz:2.0};
+function castleGround(x,z){ if(!CASTLE_GROUND.w) CASTLE_GROUND.w=W(CASTLE_GROUND.c[0],CASTLE_GROUND.c[1]); var u=(x-CASTLE_GROUND.w[0])/CASTLE_GROUND.rx, v=(z-CASTLE_GROUND.w[1])/CASTLE_GROUND.rz; return u*u+v*v<1; }
 /* Stage 8, the follow-up 8J (decision 259 (a); proposal G6): the château's garden at Austerlitz, west of the château: Wolny (1836) "an den w. ein
    herrlicher ... Garten anstoßt", Prince Wenzel Kaunitz's creation (he died in 1794: the garden predates 1805, an inference); a formal garden of
    compartments with rows of trees on an east-west axis on the 1826 sketch and on the Second Military Survey (1836-52), its outline there today's
@@ -5359,6 +5369,7 @@ function coverClass(mx,mz,ml){
      (the Sokolnitz pheasantry, its brook along its avenue: the 1825 sketch's wood on both sides of it); a mere's water is the mere's. Elsewhere,
      where no such wood lies (woodP 0), the classes are as before */
   if(woodP>0.5) return 4;
+  if(castleGround(mx,mz)) return 5;   /* WP-04b (CL-GEO-11): the castle's own ground (CASTLE_GROUND), before the brook's bed beside it */
   if(water>0.55&&ml<-2.6) return 3;
   /* the final audits' Stage 4, WP-04b (CL-GEO-05): inside a village's place (its cover above 0.55) the village before the marsh, so that Sokolnitz,
      Telnitz and Kobelnitz stand on their own ground with the marsh beside them; until WP-04b the marsh came first and 21 of Sokolnitz's 27 buildings,
@@ -6146,7 +6157,7 @@ var GROUND_FRAG_HEAD=[
   "varying float vCover; varying vec4 vGnd; varying vec2 vWxz;",
   "uniform sampler2D uCovA; uniform sampler2D uCovB; uniform sampler2D uMl; uniform sampler2D uField; uniform sampler2D uVS;",
   "uniform vec4 uCovG; uniform vec2 uCovN; uniform vec4 uMlG; uniform vec2 uMlN; uniform vec4 uVSG; uniform vec2 uVSN; uniform vec4 uFieldG;",
-  "uniform vec4 uPondS; uniform vec4 uPondM; uniform vec3 uPal[8]; uniform float uMode; uniform float uVSOn; uniform float uDebug; uniform float uDebugCell;",
+  "uniform vec4 uPondS; uniform vec4 uPondM; uniform vec4 uCastle; uniform vec3 uPal[8]; uniform float uMode; uniform float uVSOn; uniform float uDebug; uniform float uDebugCell;",
   "uniform vec4 uDetail; uniform vec2 uDetailR; uniform vec2 uDetailC; uniform float uCellLum[12];",   /* Stage 8, 8F: the near detail (GDETAIL) */
   /* COVER_ML, four nodes along x to a texel (uMlT its size in texels): nodes i0 to i0+3 of row j, and coverMlAt */
   "uniform vec2 uMlT;",
@@ -6163,6 +6174,7 @@ var GROUND_FRAG_HEAD=[
   "float gClass(vec2 p,float ml,vec4 A,vec4 B){",
   "  if(gPond(uPondS,p)>0.5||gPond(uPondM,p)>0.5) return 3.0;",
   "  if(B.z>0.5) return 4.0;",
+  "  if(length((p-uCastle.xy)/uCastle.zw)<1.0) return 5.0;",   /* WP-04b (CL-GEO-11): the castle's own ground, as coverClass */
   "  if(A.x>0.55&&ml< -2.6) return 3.0;",
   "  if(A.w>0.55) return 5.0;",   /* WP-04b (CL-GEO-05): the village before the marsh, as coverClass */
   "  if(A.y>0.45&&ml<0.4) return 2.0;",
@@ -6297,6 +6309,7 @@ function groundUniforms(){
     uField:{value:T.field}, uFieldG:{value:new THREE.Vector4(64,16,128,32)},
     uVS:{value:T.vs}, uVSN:{value:new THREE.Vector2(G_NX,G_NZ)}, uVSG:{value:new THREE.Vector4(G_X0,G_Z0,G_DX,G_DZ)},
     uPondS:{value:new THREE.Vector4(SATS[0],SATS[1],28,10.5)}, uPondM:{value:new THREE.Vector4(MENI[0],MENI[1],23,9)},
+    uCastle:{value:(function(){ var w=W(CASTLE_GROUND.c[0],CASTLE_GROUND.c[1]); return new THREE.Vector4(w[0],w[1],CASTLE_GROUND.rx,CASTLE_GROUND.rz); })()},   /* WP-04b (CL-GEO-11) */
     uPal:{value:groundPal("natural")}, uMode:{value:1}, uVSOn:{value:0}, uDebug:{value:0}, uDebugCell:{value:0},
     uDetail:{value:new THREE.Vector4(GDETAIL.amount,GDETAIL.near,GDETAIL.far,GDETAIL.k)}, uDetailR:{value:new THREE.Vector2(Math.cos(GDETAIL.rot),Math.sin(GDETAIL.rot))},
     uDetailC:{value:new THREE.Vector2(GDETAIL.lo,GDETAIL.hi)}, uCellLum:{value:GDETAIL.lum}};

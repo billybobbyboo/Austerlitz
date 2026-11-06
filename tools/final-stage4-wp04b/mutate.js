@@ -22,7 +22,10 @@ const MUT=[
   {id:"N3", finding:"CL-GEO-05 (the marsh before the village, in coverClass and the ground shader)", runners:["terrain"], want:"buildings stand on the drawn marsh class", edits:[["world.js",
     "  if(vill>0.55) return 5;\n  if(marsh>0.45&&ml<0.4) return 2;\n", "  if(marsh>0.45&&ml<0.4) return 2;\n  if(vill>0.55) return 5;\n"],["world.js",
     '  "  if(A.w>0.55) return 5.0;",   /* WP-04b (CL-GEO-05): the village before the marsh, as coverClass */\n  "  if(A.y>0.45&&ml<0.4) return 2.0;",',
-    '  "  if(A.y>0.45&&ml<0.4) return 2.0;",\n  "  if(A.w>0.55) return 5.0;",']]}
+    '  "  if(A.y>0.45&&ml<0.4) return 2.0;",\n  "  if(A.w>0.55) return 5.0;",']]},
+  {id:"N4", finding:"CL-GEO-11 (the castle's own ground taken out of coverClass and the ground shader)", runners:["terrain"], want:"the castle's own ground: 7 ranges (want 7),", edits:[["world.js",
+    "  if(castleGround(mx,mz)) return 5;   /* WP-04b (CL-GEO-11): the castle's own ground (CASTLE_GROUND), before the brook's bed beside it */\n", ""],["world.js",
+    '  "  if(length((p-uCastle.xy)/uCastle.zw)<1.0) return 5.0;",   /* WP-04b (CL-GEO-11): the castle\'s own ground, as coverClass */\n', ""]]}
 ];
 const args=process.argv.slice(2), only=(args.indexOf("--only")>=0?args[args.indexOf("--only")+1].split(","):null), outF=args.indexOf("--out")>=0?args[args.indexOf("--out")+1]:null;
 function makeCopy(m){
