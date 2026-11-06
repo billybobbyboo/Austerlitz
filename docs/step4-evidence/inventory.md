@@ -375,7 +375,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.heightguns.track["7"].act` | data.js:178 | Unlimbers on the southern shoulder of the plateau as the centre wheels | unchecked |  |
 | `FORMATIONS.heightguns.track["8"].act` | data.js:181 | Artillery of IV Corps and of the Guard, brought onto the height above Augezd (Schönhals), fires down onto the causeway and the frozen mere;… | attributed | schoen.p168.artillery-iv-garde; md1844.p203-204.guard-artillery |
 | `FORMATIONS.heightguns.track["9"].act` | data.js:182 | Ceases fire at nightfall | unchecked |  |
-| `FORMATIONS.sthilaire.track["0"].act` | data.js:190 | Standing in fog behind Puntowitz, hidden from the plateau | unchecked |  |
+| `FORMATIONS.sthilaire.track["0"].act` | data.js:190 | Standing in fog behind Puntowitz, which hid it from the plateau | unchecked |  |
 | `FORMATIONS.sthilaire.track["2"].act` | data.js:191 | Forms in the Goldbach valley for the attack | unchecked |  |
 | `FORMATIONS.sthilaire.track["3"].act` | data.js:193 | Climbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit | unchecked |  |
 | `FORMATIONS.sthilaire.track["4"].act` | data.js:194 | Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiébault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet o… | attributed | thiebault3_1894.p475-476.pouzet |
@@ -384,7 +384,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.sthilaire.track["7"].act` | data.js:198 | Wheels south off the heights toward Sokolnitz and Telnitz | unchecked |  |
 | `FORMATIONS.sthilaire.track["8"].act` | data.js:199 | Closes on Sokolnitz from the east while Davout presses from the west | unchecked |  |
 | `FORMATIONS.sthilaire.track["9"].act` | data.js:200 | Holds the ground between Telnitz and Augezd | unchecked |  |
-| `FORMATIONS.vandamme.track["0"].act` | data.js:208 | Concealed in the valley behind Girzikowitz | unchecked |  |
+| `FORMATIONS.vandamme.track["0"].act` | data.js:208 | Concealed by the fog in the valley behind Girzikowitz | unchecked |  |
 | `FORMATIONS.vandamme.track["2"].act` | data.js:209 | Forms in the Goldbach valley | unchecked |  |
 | `FORMATIONS.vandamme.track["3"].act` | data.js:211 | Climbs toward Stare Vinohrady, the 'old vineyards' (whether vines stood there in 1805 is not established) | unchecked |  |
 | `FORMATIONS.vandamme.track["4"].act` | data.js:212 | Consolidates on the Old Vineyards, facing east | unchecked |  |
@@ -869,7 +869,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `TOUR[1].x` | analysis.js:378 | Weyrother's orders send four of the five Allied columns south-west, off the plateau, to turn the French right and cut the road to Vienna. T… | unchecked |  |
 | `TOUR[2].x` | analysis.js:380 | Napoleon gave up the plateau on 1 December and camped behind the Goldbach, leaving his right so thin that a single division held five kilom… | unchecked |  |
 | `TOUR[3].x` | analysis.js:382 | From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived … | derived | stut.p49.seven; mat1806.p101-106.disposition |
-| `TOUR[4].x` | analysis.js:384 | In this model's terrain an observer on the Pratzeberg summit can see about 73 per cent of the field, and one on the valley floor at Puntowi… | unchecked |  |
+| `TOUR[4].x` | analysis.js:384 | In this model's terrain an observer on the Pratzeberg summit can see about 47 per cent of the field, and one on the valley floor at Puntowi… | unchecked |  |
 | `TOUR[5].x` | analysis.js:386 | At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto a plateau the Allies are leaving. Two divisions, the Guard … | unchecked |  |
 | `TOUR[6].x` | analysis.js:388 | With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's columns are still attacking westwar… | unchecked |  |
 | `TOUR[7].x` | analysis.js:390 | The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. A way out for them is the neck of d… | unchecked |  |

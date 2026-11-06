@@ -203,8 +203,12 @@ var TERRAIN_LINES=[
   note:"Frames the south-east of the field and funnels the Allied retreat toward the meres."},
  {t:"defile", n:"Augezd defile", p:[[297,372],[280,408],[262,444]],
   note:"The neck of dry ground between the two meres. This map reads it as a way out for the Allied left in the afternoon."},
- {t:"dead", n:"Dead ground, Goldbach valley", p:[[221,192],[210,242],[201,281]],
-  note:"Dead ground as seen from the Pratzeberg in this model's terrain - a derived reading. On the morning of the battle it was the fog that hid Saint-Hilaire's and Vandamme's divisions forming here."}
+ /* the final audits' Stage 4, WP-04b (owner decision 289 (a)): renamed to what the refitted relief shows (tools/final-stage4-wp04b/sights.js): from the
+    Pratzeberg the Goldbach's bed is out of sight from the Sokolnitz castle (y 325.8) to the meres, and in sight above it but for 0.17 km at Puntowitz;
+    the line drawn along the bed's own vertices from the castle to Telnitz. Until WP-04b "Dead ground, Goldbach valley", [[221,192],[210,242],[201,281]],
+    whose 185 samples are 163 in sight of the summit on the refitted relief (0 before it) */
+ {t:"dead", n:"Dead ground, lower Goldbach", p:[[213.6,325.4],[212.2,327.4],[212.5,337.7],[217.4,338.9],[219.8,344.6],[221,349.4],[216.9,357.6],[214,367.8],[212.4,377.9],[214,410]],
+  note:"Dead ground as seen from the Pratzeberg in this model's terrain - a derived reading: the Goldbach's bottom from the Sokolnitz castle down to Telnitz, and on toward the meres, lies out of the summit's sight. Above it, where Saint-Hilaire's and Vandamme's divisions formed, the valley is in sight of the summit in this terrain; on the morning of the battle it was the fog that hid them."}
 ];
 
 /* ---------------- noise and relief ---------------- */

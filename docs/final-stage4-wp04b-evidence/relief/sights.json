@@ -1,0 +1,149 @@
+{
+ "after": {
+  "goldbachFromPratzeberg": {
+   "samples": 774,
+   "visible": 441,
+   "deadReaches": [
+    {
+     "from": [
+      209.8,
+      239.2
+     ],
+     "to": [
+      209.2,
+      244.2
+     ],
+     "km": 0.17
+    },
+    {
+     "from": [
+      213.3,
+      325.8
+     ],
+     "to": [
+      276,
+      415
+     ],
+     "km": 5.01
+    }
+   ]
+  },
+  "deadLines": [
+   {
+    "n": "Dead ground, lower Goldbach",
+    "samples": 188,
+    "visibleFromPratzeberg": 1
+   }
+  ],
+  "zuranEscarpment": {
+   "samples": 338,
+   "visible": 238
+  },
+  "chapelDefile": {
+   "from": [
+    291,
+    354
+   ],
+   "samples": 162,
+   "visible": 110
+  },
+  "chapelMeres": [
+   {
+    "n": "Satschan",
+    "cells": 1119,
+    "visible": 653,
+    "centre": [
+     268,
+     421
+    ]
+   },
+   {
+    "n": "Menitz",
+    "cells": 781,
+    "visible": 0,
+    "centre": [
+     187,
+     457
+    ]
+   }
+  ],
+  "chapelToSatschanCentre": {
+   "fromGT": {
+    "visible": true,
+    "marginM": 0.4
+   },
+   "fromFeature": {
+    "visible": true,
+    "marginM": 0.4
+   }
+  }
+ },
+ "before": {
+  "goldbachFromPratzeberg": {
+   "samples": 774,
+   "visible": 136,
+   "deadReaches": [
+    {
+     "from": [
+      233.1,
+      174.4
+     ],
+     "to": [
+      276,
+      415
+     ],
+     "km": 10.08
+    }
+   ]
+  },
+  "deadLines": [
+   {
+    "n": "Dead ground, Goldbach valley",
+    "samples": 185,
+    "visibleFromPratzeberg": 0
+   }
+  ],
+  "zuranEscarpment": {
+   "samples": 338,
+   "visible": 238
+  },
+  "chapelDefile": {
+   "from": [
+    291,
+    354
+   ],
+   "samples": 162,
+   "visible": 59
+  },
+  "chapelMeres": [
+   {
+    "n": "Satschan",
+    "cells": 1119,
+    "visible": 0,
+    "centre": [
+     268,
+     421
+    ]
+   },
+   {
+    "n": "Menitz",
+    "cells": 781,
+    "visible": 0,
+    "centre": [
+     187,
+     457
+    ]
+   }
+  ],
+  "chapelToSatschanCentre": {
+   "fromGT": {
+    "visible": false,
+    "marginM": -22.8
+   },
+   "fromFeature": {
+    "visible": false,
+    "marginM": -22.8
+   }
+  }
+ }
+}

@@ -17,84 +17,16 @@
    "girzikowitz": true
   },
   "deadLine": {
-   "samples": 21,
-   "visibleFromPratzeberg": 19,
+   "samples": 91,
+   "visibleFromPratzeberg": 2,
    "visibleAt": [
     [
-     221,
-     192
+     213.6,
+     325.4
     ],
     [
-     219.9,
-     197
-    ],
-    [
-     218.8,
-     202
-    ],
-    [
-     217.7,
-     207
-    ],
-    [
-     216.6,
-     212
-    ],
-    [
-     215.5,
-     217
-    ],
-    [
-     214.4,
-     222
-    ],
-    [
-     213.3,
-     227
-    ],
-    [
-     211.1,
-     237
-    ],
-    [
-     209.1,
-     245.9
-    ],
-    [
-     208.2,
-     249.8
-    ],
-    [
-     207.3,
-     253.7
-    ],
-    [
-     206.4,
-     257.6
-    ],
-    [
-     205.5,
-     261.5
-    ],
-    [
-     204.6,
-     265.4
-    ],
-    [
-     203.7,
-     269.3
-    ],
-    [
-     202.8,
-     273.2
-    ],
-    [
-     201.9,
-     277.1
-    ],
-    [
-     201,
-     281
+     213.5,
+     325.6
     ]
    ]
   },
@@ -105,7 +37,7 @@
      201,
      221
     ],
-    "act": "Standing in fog behind Puntowitz, hidden from the plateau",
+    "act": "Standing in fog behind Puntowitz, which hid it from the plateau",
     "fromPratzeberg": true,
     "fromVinohrady": true
    },
@@ -125,7 +57,7 @@
      217,
      171
     ],
-    "act": "Concealed in the valley behind Girzikowitz",
+    "act": "Concealed by the fog in the valley behind Girzikowitz",
     "fromPratzeberg": true,
     "fromVinohrady": true
    },
@@ -181,7 +113,7 @@
      201,
      221
     ],
-    "act": "Standing in fog behind Puntowitz, hidden from the plateau",
+    "act": "Standing in fog behind Puntowitz, which hid it from the plateau",
     "fromPratzeberg": false,
     "fromVinohrady": true
    },
@@ -201,7 +133,7 @@
      217,
      171
     ],
-    "act": "Concealed in the valley behind Girzikowitz",
+    "act": "Concealed by the fog in the valley behind Girzikowitz",
     "fromPratzeberg": true,
     "fromVinohrady": true
    },

@@ -7,8 +7,8 @@
 "use strict";
 const fs=require("fs"), path=require("path"), os=require("os"), cp=require("child_process");
 const ROOT=path.join(__dirname,"..","..");
-/* the failing line the unmutated tree is allowed while the owner decides tour stop 5 (WP-04b's report): terrain-test's quote check */
-const N0_ALLOWED=[/^  tour stop 5 quotes 73% and under 3%; live readings [\d.]+% and [\d.]+%: DISAGREE$/];
+/* the failing lines the unmutated tree is allowed (none) */
+const N0_ALLOWED=[];   /* empty since owner decision 289 (a): tour stop 5 quotes the live figures (until it, its quote check's DISAGREE line was allowed here while the owner decided) */
 const MUT=[
   {id:"N0", finding:"none (the unmutated copy)", edits:[], runners:["terrain","test","sim","rt","css","geo"], want:null},
   {id:"N1", finding:"CL-GEO-01 (the relief before WP-04b: no RELIEF_DEM, PBERG 5.45, SCHLAP 3.0)", runners:["terrain"], want:"relief tolerance: the southern Pratzen plateau", edits:[["world.js",
