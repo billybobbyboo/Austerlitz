@@ -472,12 +472,12 @@ kienmayer:{ ech:"div", nation:"at", arm:"mixed", desig:"Advance Guard, I Column"
   track:{
     0:{p:[291,367],st:"forming",cf:"A",obj:"Take Telnitz and turn the French right",act:"Formed near Augezd before first light"},
     1:{p:[236,398],st:"attacking",cf:"A",via:[[272,378],[247,397],[228,409]],obj:"Take Telnitz",act:"Attacks Telnitz; the village changes hands several times"},
-    2:{p:[222,402],st:"engaged"},
+    2:{p:[222,402],cf:"B",st:"engaged"},
     7:{p:[242,400],cf:"B",st:"holding",act:"Holding west of the Goldbach as the trap closes behind it"},
     8:{tm:{dep:870,at:900,gr:"C",basis:"app narrative, unsourced",ev:["Vandamme takes the height above Augezd; the causeway comes under fire.","French artillery fires on the ice of the Satschan mere."],note:"falls back under fire: not before the causeway is under fire, c. 14:30, and over the neck before the ice is fired on, c. 15:00; shown across that range"},
        p:[296,377],st:"retreating",cf:"A",via:[[247,397],[272,378]],obj:"Escape by the Augezd defile",
        act:"Falls back over the neck of land between the meres under artillery fire"},
-    9:{p:[269,436],st:"retreating",via:[[298,387]],ice:true,
+    9:{p:[269,436],cf:"C",st:"retreating",via:[[298,387]],ice:true,
        act:"Falls back across the frozen Satschan mere under artillery fire"}}},
 
 dok:{ ech:"div", nation:"ru", arm:"inf", desig:"I Column",
@@ -489,10 +489,10 @@ dok:{ ech:"div", nation:"ru", arm:"inf", desig:"I Column",
     1:{tm:{dep:420,gr:"A",basis:"source",ev:["Dokhturov's I Column leaves its camp as the disposition ordered"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Buxhowden's and Kutuzov's reports give it (Kutuzov, documents, 1951, pp. 241-242, 255-258); the arrival is derived"},
        p:[258,371],st:"advancing",cf:"A",act:"Leaves its camp at seven, as the disposition ordered, and descends toward the Goldbach (Buxhowden's and Kutuzov's reports)"},
     2:{p:[232,397],st:"attacking",cf:"A",obj:"Force the crossing at Telnitz",act:"Pushes into Telnitz behind Kienmayer"},
-    7:{p:[226,404],st:"engaged",act:"Attacked from the west by Friant and from the rear off the heights"},
+    7:{p:[226,404],cf:"B",st:"engaged",act:"Attacked from the west by Friant and from the rear off the heights"},
     8:{tm:{dep:870,at:900,gr:"C",basis:"app narrative, unsourced",ev:["Vandamme takes the height above Augezd; the causeway comes under fire.","French artillery fires on the ice of the Satschan mere."],note:"as Kienmayer: the retreat under fire runs from c. 14:30 to c. 15:00"},
        p:[268,384],st:"retreating",cf:"A",act:"Retreats south-east; part of the column crosses the frozen meres"},
-    9:{p:[265,429],st:"retreating",via:[[292,377]],ice:true,
+    9:{p:[265,429],cf:"C",st:"retreating",via:[[292,377]],ice:true,
        act:"Part of the column breaks south over the ice rather than queue for the defile"}}},
 
 lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
@@ -504,7 +504,7 @@ lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
   track:{
     0:{p:[291,308],st:"forming",cf:"A",obj:"Take Sokolnitz",act:"Formed on the plateau behind Dokhturov"},
     1:{tm:{dep:420,gr:"B",basis:"source",ev:["the disposition ordered all the columns to march at 07:00","the II and III Columns at 07:30","the II Column coming down at 08:00"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past seven (1873, p. 160), Buxhowden's report the II Column come down at eight (Kutuzov, documents, 1951, pp. 241-242), Mikhailovsky-Danilevsky the first three columns between seven and eight (1844, p. 177): grade B, the map's choice among them; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)"},
-       p:[268,328],st:"advancing"},
+       p:[268,328],cf:"C",st:"advancing"},
     2:{p:[235,350],st:"attacking",cf:"A",obj:"Take Sokolnitz village",act:"Storms Sokolnitz; Kamensky's brigade marches at the rear of the column"},
     4:{tm:{at:630,gr:"C",basis:"app narrative, unsourced",ev:["Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost."],note:"c. 10:30 on this map; no source read gives the hour (the Kursk regiment's episode in Mikhailovsky-Danilevsky, Langeron's journal and Schönhals)"},
        p:[247,336],st:"engaged",cf:"C",act:"Langeron rides back and sends reinforcements up the slope toward Kamensky. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there"},
@@ -522,7 +522,7 @@ kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
        climb (the act's own sequence; a declared hold, no hour read), arriving 08:53 at the march ceiling; until then the default rule had the
        brigade turn from 08:00, 45 minutes before the climb, while SOURCE_NOTE, the event's dispute and the arrow said "in the 08:45 phase" */
     4:{p:[279,289],st:"counterattack",cf:"A",obj:"Drive Saint-Hilaire off the crest",act:"Pushes the 10e Légère back off the summit before Thiébault stabilises the French line"},
-    5:{p:[291,279],st:"engaged",act:"Fights on the crest alongside Jurczek's Austrians"},
+    5:{p:[291,279],cf:"B",st:"engaged",act:"Fights on the crest alongside Jurczek's Austrians"},
     6:{p:[305,279],st:"broken",cf:"B",act:"Broken and ordered to retire by Kutuzov"},
     7:{p:[371,254],st:"retreating",cf:"C",act:"Ordered to retire by Kutuzov, it falls back east off the plateau behind the 4th Column. Its route after 11:15 is not documented: this track is a reconstruction"},
     8:{p:[397,221],st:"retreating",cf:"C"}}},
@@ -534,7 +534,7 @@ prz:{ ech:"div", nation:"ru", arm:"inf", desig:"III Column",
   track:{
     0:{p:[290,282],st:"forming",cf:"A",obj:"Take the Sokolnitz castle and pheasantry"},
     1:{tm:{dep:420,gr:"B",basis:"source",ev:["the disposition ordered all the columns to march at 07:00","as did the III Column in Przybyszewski's report","the II and III Columns at 07:30"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)"},
-       p:[266,296],st:"advancing"},
+       p:[266,296],cf:"C",st:"advancing"},
     2:{p:[215,341],st:"attacking",cf:"B",obj:"Take the castle and pheasantry",act:"Storms the castle grounds and the pheasantry"},
     4:{p:[215,341],st:"engaged"},
     7:{p:[215,341],st:"encircled",cf:"B",obj:"Break out toward Kobelnitz",act:"Cut off by Soult from the east and Davout from the west"},
@@ -575,7 +575,7 @@ kollo:{ ech:"div", nation:"at", arm:"inf", desig:"Austrian wing, IV Column",
   track:{
     0:{p:[355,226],st:"forming",cf:"A",obj:"Follow the Russian wing toward Kobelnitz"},
     2:{p:[325,229],st:"delayed",cf:"A",act:"Waiting for Liechtenstein's cavalry to clear its front"},
-    3:{p:[324,233],st:"surprised"},
+    3:{p:[324,233],cf:"C",st:"surprised"},
     4:{tm:{at:615,gr:"C",basis:"app narrative, unsourced",ev:["Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity."],note:"the attack on the summit, c. 10:15 on this map, is the arrival at this anchor; no source read gives the hour, and the sources tie the attack to Kamensky's"},
        p:[298,275],st:"counterattack",cf:"B",obj:"Retake the Pratzeberg",act:"Jurczek attacks the summit with Rottermund in support; the two sides briefly mistake each other's nationality"},
     5:{p:[332,257],st:"engaged",cf:"B",act:"Spread along the crest from the Pratzeberg to Stare Vinohrady: Jurczek on the summit, Rottermund on the Old Vineyards. The accounts differ: Schönhals has the Austrians and Kamensky climb the height in a second bayonet attack before Boyer's dragoons drive them off; Thiébault has them dispersed by his guns"},
@@ -591,12 +591,12 @@ lich:{ ech:"corps", nation:"ru", arm:"cav", desig:"V Column", mix:{nation:"at", 
   track:{
     0:{p:[296,243],st:"forming",cf:"B",obj:"Join the Allied right beyond Blasowitz",act:"Formed on the left by mistake; must ride north-west across the army's line of march"},
     2:{p:[319,214],st:"countermarch",cf:"A",obj:"Reach the right wing",act:"Crossing the front of the 4th Column and holding it up"},
-    3:{p:[317,191],st:"march"},
+    3:{p:[317,191],cf:"C",st:"march"},
     5:{p:[298,156],st:"charging",cf:"A",obj:"Break the French cavalry screen",act:"Charges with Uvarov's Russians against Kellermann; met by Nansouty's cuirassiers"},
-    6:{p:[341,152],st:"repulsed",hold:true},   /* decision 285 (a): holds through its charge, falls back as phase 6 opens */
-    7:{p:[387,145],st:"withdrawing"},
-    8:{p:[437,129],st:"retreating"},
-    9:{p:[469,110],st:"retreating"}}},
+    6:{p:[341,152],cf:"C",st:"repulsed",hold:true},   /* decision 285 (a): holds through its charge, falls back as phase 6 opens */
+    7:{p:[387,145],cf:"C",st:"withdrawing"},
+    8:{p:[437,129],cf:"C",st:"retreating"},
+    9:{p:[469,110],cf:"B",st:"retreating"}}},
 
 bag:{ ech:"corps", nation:"ru", arm:"inf", desig:"Advance Guard",
   name:"Advance Guard of the Right", commander:"Lt.-Gen. Prince Pyotr Bagration", parent:null,
@@ -635,9 +635,9 @@ rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
     6:{p:[327,194],st:"counterattack",cf:"A",obj:"Retake Stare Vinohrady",act:"Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a battalion of the 4th Line and one of the 24th Light and takes the 4th's eagle (Schönhals)"},
     /* the final audits' Stage 4, owner decision 285 (a) (CL-HIS-05): the Guard holds at its attack place through phase 6 and is driven off as
        phase 7 opens (a declared hold; no hour read); until then the default rule walked it east from 11:15 under "Counter-attacking" */
-    7:{p:[397,196],st:"repulsed",hold:true,act:"Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions break the Guard infantry"},
-    8:{p:[447,178],st:"retreating"},
-    9:{p:[475,144],st:"retreating"}}},
+    7:{p:[397,196],cf:"B",st:"repulsed",hold:true,act:"Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions break the Guard infantry"},
+    8:{p:[447,178],cf:"B",st:"retreating"},
+    9:{p:[475,144],cf:"B",st:"retreating"}}},
 
 rg_cav:{ ech:"div", nation:"ru", arm:"cav", desig:"Guard Cavalry",
   name:"Guard Cavalry", commander:"Lt.-Gen. Andrei Kologrivov", parent:"constantine",
@@ -645,9 +645,9 @@ rg_cav:{ ech:"div", nation:"ru", arm:"cav", desig:"Guard Cavalry",
   track:{
     0:{p:[423,193],st:"reserve",cf:"A"},
     6:{p:[321,189],st:"charging",cf:"A",obj:"Break the French line on the plateau",act:"The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by Marbot). The Chevalier Guard's charge is then broken by Bessières and Rapp; Prince Repnin captured"},
-    7:{p:[406,188],st:"repulsed",hold:true},   /* decision 285 (a), as the Guard infantry's @7 */
-    8:{p:[452,164],st:"retreating"},
-    9:{p:[481,132],st:"retreating"}}}
+    7:{p:[406,188],cf:"B",st:"repulsed",hold:true},   /* decision 285 (a), as the Guard infantry's @7 */
+    8:{p:[452,164],cf:"B",st:"retreating"},
+    9:{p:[481,132],cf:"B",st:"retreating"}}}
 };
 
 /* ---------------- terrain and settlement features ---------------- */
