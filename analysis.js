@@ -12,7 +12,7 @@ var ANALYSIS = [
 { id:"plan", n:"The Allied plan", at:"ph:0", moments:["ph:0"], cam:[-27,262,41,-27,0,9],
   forms:["kienmayer","dok","lang","prz","col4","milo","kollo","lich","bag","constantine"],
   feats:["pratzen","goldbach","telnitz","sokolnitz","kobelnitz"],
-  text:"Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road to Vienna. Bagration holds the highway in the north, Liechtenstein's cavalry links the two, and the Russian Guard stands in reserve behind Krzenowitz. The plan assumes the French will stand still while those four columns march across their front."},
+  text:"Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road to Vienna. Bagration holds the highway in the north, Liechtenstein's cavalry links the two, and the Russian Guard, the reserve, is to take post at daybreak behind Blasowitz and Kruh. The plan assumes the French will stand still while those four columns march across their front."},
 
 { id:"deception", n:"The French deception", at:"ph:0", moments:["ph:0"], cam:[-129,44,27,-7,8,-5],
   forms:["gqg","legrand","sthilaire","vandamme","c_gd","c_gren"],
@@ -163,7 +163,7 @@ al:{
   staging:[
    {n:"Columns I-III on the southern plateau", c:[288,308], rx:62, ry:70},
    {n:"IV Column at Pratzen", c:[327,231], rx:52, ry:44},
-   {n:"Reserve behind Krzenowitz", c:[417,198], rx:46, ry:38},
+   {n:"Guard camp before Austerlitz", c:[417,198], rx:46, ry:38},   /* the final audits' Stage 4 (CL-HIS-03): "Reserve behind Krzenowitz" until then; the readings put the Guard's camp on the height between Austerlitz and Krzenowitz (S7.42, S7.44, S7.46) */
    {n:"Bagration on the highway", c:[352,64], rx:70, ry:30}],
   objectives:[
    {n:"Telnitz", p:[212,408]},{n:"Sokolnitz", p:[208,365]},
@@ -184,7 +184,7 @@ al:{
    {n:"Advance Guard of the Right - Bagration", forms:["bag"], obj:[266,85], ord:"Hold the Olmütz highway, pin the French left, and link to Liechtenstein.",
     route:[[351,60],[309,74],[288,79],[266,85]]},   /* Stage 8, the follow-up 8K: on the highway as corrected, from Bagration's place at dawn
     to 1.2 km along it from the Santon's foot, as the correction pass's rule had it on its own road ([315,41] to [253,73] until 8K) */
-   {n:"Reserve - Constantine", forms:["rg_inf", "rg_cav"], obj:[404,198], ord:"The Imperial Guard to remain behind Krzenowitz, in hand.",
+   {n:"Reserve - Constantine", forms:["rg_inf", "rg_cav"], obj:[404,198], ord:"The Imperial Guard to occupy at daybreak the position behind Blasowitz and Kruh, in support of Liechtenstein's cavalry and of Bagration's left.",
     route:[[417,198],[380,195],[347,192]]}
   ]},
 fr:{

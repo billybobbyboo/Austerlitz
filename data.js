@@ -225,9 +225,12 @@ legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
     0:{p:[208,312],st:"holding",cf:"A",obj:"Hold the lower Goldbach from Kobelnitz to Telnitz",act:"Strung out along the stream; skirmishing through the night"},
     1:{p:[211,379],st:"engaged",cf:"A",obj:"Hold Telnitz",act:"Contests Telnitz house by house against Kienmayer"},
     2:{p:[206,366],cf:"B",st:"engaged",obj:"Hold Sokolnitz",act:"Fights for Sokolnitz village and the castle wall"},
-    4:{p:[220,321],st:"supporting",cf:"B",act:"Levasseur's brigade marches up onto the Pratzeberg: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right"},
+    4:{p:[192,365],st:"supporting",cf:"B",act:"Behind Sokolnitz, on the left of Davout's line (Davout's report); Levasseur's brigade marches up onto the Pratzeberg from the Kobelnitz side: Schönhals has Soult send it, held in reserve, to support Saint-Hilaire's right, and Thiébault has it hidden between Kobelnitz and his brigade"},   /* the final audits' Stage 4
+       (CL-HIS-04): the division's marker behind (west of) the village, 0.5 km west of its point, where Davout has the division formed; until then
+       [220,321], 0.7 km north of the castle, so that its leg from @2 passed over the castle and through the III Column storming it (37 m at the least).
+       No reading routes any of Legrand's troops through the castle; Levasseur's brigade alone went up, by the Kobelnitz side (S7.58, S7.62, S7.65, S7.66) */
     7:{tm:{dep:780,at:840,gr:"C",basis:"app narrative, unsourced",ev:["Presses east to the stream at Sokolnitz as the trap closes","Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau"],note:"the act ties the move to the trap closing, dated 13:00-14:00"},
-       p:[213,371],st:"attacking",via:[[211,322],[208,365]],act:"Presses east to the stream at Sokolnitz as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march.
+       p:[213,371],st:"attacking",via:[[208,365]],act:"Presses east to the stream at Sokolnitz as the trap closes"}   /* route inferred: the west-bank road through Sokolnitz, not a documented march.
        Stage 8, the follow-up 8J (decision 259 (a)): "across the stream" until 8J, when the drawn brook ran west of the village and this place stood
        east of it; with the bed corrected the place stands at the stream's west bank (15 m from it) and the route on the west bank throughout: the act
        says where the anchor is. No source read gives this move */,
@@ -253,10 +256,13 @@ friant:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., III Corps",
        p:[167,410],st:"march",act:"Marching from Raigern toward Telnitz"},
     3:{tm:{at:570,gr:"A",basis:"source",ev:["Friant's leading troops retake Telnitz, then lose it again in the fog: Davout's report has the village in French hands at 09:30."],note:"Telnitz in French hands at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again. Until roadmap step 4b this anchor was the phase-2 entry, reached at 08:30 on this map (question 177)"},
        p:[198,402],st:"counterattack",cf:"A",obj:"Retake Telnitz",act:"Heudelet's brigade retakes Telnitz, then loses it again: in Davout's report a French regiment, not recognising it in the fog, fired on it, and the Russians took the village again with fresh troops"},
-    5:{p:[200,398],cf:"B",st:"engaged",obj:"Hold the stream line",act:"Holds against Dokhturov and Kienmayer with a fraction of their strength"},
-    7:{p:[204,390],st:"attacking",cf:"A",obj:"Press east across the Goldbach",act:"Resumes the offensive at about 12:30 as the trap closes"},
-    8:{p:[214,410],cf:"C",st:"attacking"},
-    9:{p:[222,412],cf:"B",st:"holding"}}},
+    5:{p:[208,365],cf:"B",st:"engaged",obj:"Hold Sokolnitz",act:"Lochet's and Kister's brigades take and retake Sokolnitz against Langeron's and Przybyszewski's columns, Heudelet's brigade before Telnitz (Davout's reports)"},
+    7:{p:[208,365],st:"attacking",cf:"B",obj:"Press east across the Goldbach",act:"Resumes the offensive at about 12:30 as the trap closes"},
+    8:{p:[208,365],cf:"B",st:"attacking",act:"At Sokolnitz: the 48e holds nearly the whole village, the rest on the height before it, the Russians still in the castle and its park (Davout's notes)"},
+    9:{p:[222,412],cf:"B",st:"holding",act:"Where it stood at nightfall is disputed: Davout's report takes his divisions through Menitz to a league beyond on the Neuhof road, beyond this map's edge; Mikhailovsky-Danilevsky has Davout at Telnitz and Sokolnitz. Drawn by Telnitz"}}},
+    /* the final audits' Stage 4 (CL-HIS-11): @5, @7 and @8 at Sokolnitz, where Davout's reports have Lochet's and Kister's brigades take and
+       retake the village and the 48e hold it in the afternoon (docs/step4-evidence/readings.md S7.16-S7.18, S7.62-S7.64, C6.15); until then [200,398]
+       (B), [204,390] (A) and [214,410] (A carried), by Telnitz, so that no formation was drawn at Sokolnitz village from phase 2 to the wheel */
 
 bourcier:{ ech:"div", nation:"fr", arm:"cav", desig:"4e Div. Dragons",
   name:"Bourcier's Dragoons", commander:"Gen. de division François Bourcier", parent:"c_iii",
@@ -266,9 +272,12 @@ bourcier:{ ech:"div", nation:"fr", arm:"cav", desig:"4e Div. Dragons",
     0:{p:[22,489],st:"march",cf:"C"},
     3:{tm:{dep:300,gr:"B",basis:"source",ev:["Davout's reports send the division on from Raigern at 05:00","Up from Raigern with Friant's division"],note:"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place. Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)"},
        p:[184,420],st:"holding",obj:"Cover the right of the Goldbach line",act:"Up from Raigern with Friant's division, as Mikhailovsky-Danilevsky has Davout come; the screen south of Telnitz is this map's"},
-    7:{p:[201,416],st:"advancing"},
-    8:{p:[253,393],st:"pursuing",via:[[212,408],[247,397]],act:"Pursues along the Telnitz to Augezd track"},
-    9:{p:[297,374],st:"pursuing",via:[[273,378]]}}},
+    7:{p:[201,416],cf:"B",st:"advancing"},
+    8:{p:[201,416],cf:"B",st:"attacking",act:"On Davout's right before Telnitz, covered by a brook; its first line charges there, two regiments sent to a defile on Friant's left (Davout's reports)"},
+    9:{p:[201,416],cf:"C",st:"holding",act:"Its place at nightfall is this map's: Davout's report takes his divisions through Menitz to a league beyond, and Sokolov has Bourcier move on Menitz with Friant"}}},   /* the final
+       audits' Stage 4 (CL-HIS-10): Davout's three reports keep the division on his right before Telnitz (S7.71-S7.73); until then @8 [253,393] (via
+       Telnitz) and @9 [297,374] (by Augezd), "Pursues along the Telnitz to Augezd track", which no reading gives, drawn through Kienmayer's and
+       Dokhturov's retreating columns (26 m and 12 m) */
 
 c_v:{ ech:"corps", nation:"fr", arm:"inf", desig:"V Corps",
   name:"V Corps", commander:"Marshal Jean Lannes", parent:null,
@@ -289,7 +298,7 @@ caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., III Corps, with
     7:{p:[347,114],cf:"B",st:"advancing",obj:"Attack Bagration's left at Krug and Holubitz",act:"Back with Lannes, attacks Bagration's left; the jägers holding Krug and Holubitz are driven out (Stutterheim; Mikhailovsky-Danilevsky; Schönhals)"},
     8:{p:[392,105],cf:"C",st:"pursuing",obj:"Follow Bagration toward Rausnitz",act:"Follows Bagration's withdrawal toward Rausnitz with Suchet (Schönhals; Mikhailovsky-Danilevsky); the Allied report has a French line from the Rausnitz post house southward. The route drawn, east toward Krzenowitz, is this map's: no reading gives it"},
     9:{p:[423,96],cf:"C",st:"holding",act:"Its place at nightfall is this map's: no reading places the division then"}}},   /* the final audits' Stage 4 (CL-HIS-09):
-       until then @7's objective "Push Bagration off the highway", shown 12:45-17:00 while the division is drawn 1.5-2.2 km from the highway and moving
+       until then @7's objective "Push Bagration off the highway", shown from phase 7 to nightfall while the division is drawn 1.5-2.2 km from the highway and moving
        away, with no acts and an A carried from @5; the objectives and acts now the readings' (CHANGELOG.md, Stage 4), the route kept and said to be this map's */
 
 suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., V Corps",
@@ -509,7 +518,9 @@ lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
     0:{p:[291,308],st:"forming",cf:"A",obj:"Take Sokolnitz",act:"Formed on the plateau behind Dokhturov"},
     1:{tm:{dep:420,gr:"B",basis:"source",ev:["the disposition ordered all the columns to march at 07:00","the II and III Columns at 07:30","the II Column coming down at 08:00"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past seven (1873, p. 160), Buxhowden's report the II Column come down at eight (Kutuzov, documents, 1951, pp. 241-242), Mikhailovsky-Danilevsky the first three columns between seven and eight (1844, p. 177): grade B, the map's choice among them; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)"},
        p:[268,328],cf:"C",st:"advancing"},
-    2:{p:[235,350],st:"attacking",cf:"A",obj:"Take Sokolnitz village",act:"Storms Sokolnitz; Kamensky's brigade marches at the rear of the column"},
+    2:{p:[214,367],st:"attacking",cf:"B",obj:"Take Sokolnitz village",act:"Storms Sokolnitz; Kamensky's brigade marches at the rear of the column"},   /* the final audits' Stage 4 (CL-HIS-11): at the
+       village's brook crossing, the drawn Goldbach's nearest point to the village's, where the readings have Langeron himself and Olsufiev's brigade in
+       the village (S7.56, S7.60, C1.c4); until then [235,350] (A), 0.98 km east of the village across the brook */
     4:{tm:{at:630,gr:"C",basis:"app narrative, unsourced",ev:["Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost."],note:"c. 10:30 on this map; no source read gives the hour (the Kursk regiment's episode in Mikhailovsky-Danilevsky, Langeron's journal and Schönhals)"},
        p:[247,336],st:"engaged",cf:"C",act:"Langeron rides back and sends reinforcements up the slope toward Kamensky. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there"},
     7:{p:[233,357],st:"engaged",act:"Driven back toward Sokolnitz by Davout at about 12:30 (this map's reading; no account read gives it)"},
@@ -522,9 +533,9 @@ kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
   role:"Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky, citing Langeron's report; sent by Langeron in Schönhals; ordered onto the ridge by Kutuzov in his official report; no order of his named in Kutuzov's private relation of March 1806.",
   track:{
     2:{p:[259,316],st:"march",cf:"B",obj:"Follow the II Column to Sokolnitz",act:"Marching at the rear of Langeron's column"},
-    3:{p:[269,298],st:"countermarch",cf:"A",hold:true,obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)"},   /* the final audits' Stage 4, owner decision 286 (a) (CL-HIS-07): the turn begins as the 08:45 phase opens, on seeing the French
-       climb (the act's own sequence; a declared hold, no hour read), arriving 08:53 at the march ceiling; until then the default rule had the
-       brigade turn from 08:00, 45 minutes before the climb, while SOURCE_NOTE, the event's dispute and the arrow said "in the 08:45 phase" */
+    3:{p:[269,298],st:"countermarch",cf:"A",hold:true,obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)"},   /* the final audits' Stage 4, owner decision 286 (a) (CL-HIS-07): the turn begins as phase 3 opens, on seeing the French
+       climb (the act's own sequence; a declared hold, no hour read), arriving at the march ceiling; until then the default rule had the
+       brigade turn as phase 2 opened, a phase before the climb, while SOURCE_NOTE, the event's dispute and the arrow said it turned in phase 3 */
     4:{p:[279,289],st:"counterattack",cf:"A",obj:"Drive Saint-Hilaire off the crest",act:"Pushes the 10e Légère back off the summit before Thiébault stabilises the French line"},
     5:{p:[291,279],cf:"B",st:"engaged",act:"Fights on the crest alongside Jurczek's Austrians"},
     6:{p:[305,279],st:"broken",cf:"B",act:"Broken and ordered to retire by Kutuzov"},
@@ -637,11 +648,14 @@ rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
   name:"Guard Infantry", commander:"Not established on the day", parent:"constantine",
   strength:4430, strengthNote:"4,430: the seven battalions with the Tsesarevich in Duffy's order of battle, the Izmailovsky 1,000, the Semenovsky 1,400 and the Preobrazhensky 1,500, two battalions each, and the Guard jägers' one battalion 530 (1977, pp. 184-185). Duffy's 6,730 for the Guard infantry adds a Guard grenadier regiment of three battalions, 2,300, 'in reserve', which this map does not draw; Sokolov puts the Life Grenadiers in Maliutin's separate column. Smith (1998) is cited, not read. Who commanded it on 2 December is not established by the sources read. Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st, commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page",
   track:{
-    0:{p:[413,202],st:"reserve",cf:"A",obj:"Remain in reserve near Krzenowitz",act:"On the high ground near Allied headquarters"},
-    5:{p:[378,196],st:"advancing"},
-    6:{p:[327,194],st:"counterattack",cf:"A",obj:"Retake Stare Vinohrady",act:"Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a battalion of the 4th Line and one of the 24th Light and takes the 4th's eagle (Schönhals)"},
+    0:{p:[413,202],st:"reserve",cf:"B",obj:"Take post at daybreak behind Blasowitz and Kruh",act:"In camp on the height between Austerlitz and Krzenowitz (the official report; Stutterheim; Schönhals). The disposition orders it at daybreak to the position behind Blasowitz and Kruh, to support Liechtenstein's cavalry and Bagration's left"},
+    5:{p:[378,196],st:"advancing",cf:"C",act:"Where it stood is divided: on the heights by Blasowitz and Krug, its jägers in Blasowitz, in Stutterheim, Schönhals and the official report; across the brook at the Walk-Mühle and about a verst beyond, toward Blasowitz, in Mikhailovsky-Danilevsky and Sokolov. The point drawn is this map's. In the official report and Mikhailovsky-Danilevsky Blasowitz falls before Liechtenstein's uhlans charge; this map draws its fall after the charge"},
+    /* the final audits' Stage 4 (CL-HIS-03): the Guard's divided register made visible (S7.42-S7.54, C6.21, C6.c6). Until then @0 A, "Remain in
+       reserve near Krzenowitz", "On the high ground near Allied headquarters", and @5 A carried; @6 A. The readings put the camp on the height
+       between Austerlitz and Krzenowitz, and the official report's "height of Krzenowitz" is the afternoon's order, not the morning's place */
+    6:{p:[327,194],st:"counterattack",cf:"B",obj:"Retake Stare Vinohrady",act:"Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a battalion of the 4th Line and one of the 24th Light and takes the 4th's eagle (Schönhals)"},
     /* the final audits' Stage 4, owner decision 285 (a) (CL-HIS-05): the Guard holds at its attack place through phase 6 and is driven off as
-       phase 7 opens (a declared hold; no hour read); until then the default rule walked it east from 11:15 under "Counter-attacking" */
+       phase 7 opens (a declared hold; no hour read); until then the default rule walked it east from phase 6's start under "Counter-attacking" */
     7:{p:[397,196],cf:"B",st:"repulsed",hold:true,act:"Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions break the Guard infantry"},
     8:{p:[447,178],cf:"B",st:"retreating"},
     9:{p:[475,144],cf:"B",st:"retreating"}}},
@@ -650,8 +664,8 @@ rg_cav:{ ech:"div", nation:"ru", arm:"cav", desig:"Guard Cavalry",
   name:"Guard Cavalry", commander:"Lt.-Gen. Andrei Kologrivov", parent:"constantine",
   strength:2900, strengthNote:"2,900 horse: Duffy's rows, the Chevalier Garde 800, the Gardes du Corps 1,000, the Life Guard Hussars 800 and the Life Guard Cossacks 300 (1977, p. 185), the same four as the Allied order of battle in Schönhals (1873, p. 178). Smith (1998) is cited, not read. Kologrivov's command on 2 December is in Sokolov's order of battle, with no source on his page; Schönhals's table names a Lieutenant-General 'Kollowrizow' over the whole Guard (1873, p. 178), and Duffy's heading a Lieutenant-General of Cavalry Kologrivov among the reserve's generals; Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column. The first name 'Andrei' is cited, not read",
   track:{
-    0:{p:[423,193],st:"reserve",cf:"A"},
-    6:{p:[321,189],st:"charging",cf:"A",obj:"Break the French line on the plateau",act:"The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by Marbot). The Chevalier Guard's charge is then broken by Bessières and Rapp; Prince Repnin captured"},
+    0:{p:[423,193],st:"reserve",cf:"B",act:"In camp with the Guard infantry on the height between Austerlitz and Krzenowitz. The Chevalier Guard, with the Life Grenadiers in Maliutin's column, is a march behind and comes up only as the Guard falls back (the official report; Sokolov); the strength drawn counts it from the start: this map's"},
+    6:{p:[321,189],st:"charging",cf:"B",obj:"Break the French line on the plateau",act:"The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by Marbot). The Chevalier Guard's charge is then broken by Bessières and Rapp; Prince Repnin captured"},
     7:{p:[406,188],cf:"B",st:"repulsed",hold:true},   /* decision 285 (a), as the Guard infantry's @7 */
     8:{p:[452,164],cf:"B",st:"retreating"},
     9:{p:[481,132],cf:"B",st:"retreating"}}}

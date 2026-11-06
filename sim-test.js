@@ -160,7 +160,16 @@ eval(fs.readFileSync('_state.js','utf8'));
        so the register cannot outlive the drawing.
    (c) CL-HIS-10: no leg crosses the drawn Litava more than 0.5 km from a village on its bank or a drawn road (LITAVA_OK names an exception with
        its reason; none), and no anchor stands within 30 m of its line away from such a village. */
-const MELEE=[];
+const MELEE=[
+ {a:"legrand",b:"lang",from:"07:50",to:"08:25",refs:['FORMATIONS.legrand.track["2"].act','FORMATIONS.lang.track["2"].act'],why:"the fight for Sokolnitz village: Legrand's battalions in it, Langeron's column storming it"},
+ {a:"sthilaire",b:"kamensky",from:"09:10",to:"11:15",refs:['FORMATIONS.sthilaire.track["4"].act','FORMATIONS.kamensky.track["4"].act'],why:"the fight for the Pratzeberg's crest: Saint-Hilaire fights off Kamensky's brigade"},
+ {a:"sthilaire",b:"kollo",from:"10:05",to:"10:30",refs:['FORMATIONS.kollo.track["4"].act','FORMATIONS.sthilaire.track["4"].act'],why:"Jurczek's Austrians attack the summit Saint-Hilaire holds"},
+ {a:"nansouty",b:"lich",from:"10:40",to:"11:30",refs:['FORMATIONS.lich.track["5"].act','PHASES[#5].lede'],why:"the cavalry collision: Liechtenstein's charge met by Nansouty's cuirassiers, and his repulse"},
+ {a:"dhautpoul",b:"lich",from:"11:00",to:"11:20",refs:['PHASES[#5].lede'],why:"Murat answers Liechtenstein's and Uvarov's charge with Nansouty's and d'Hautpoul's cuirassiers"},
+ {a:"suchet",b:"bag",from:"11:15",to:"11:45",refs:['PHASES[#5].lede','FORMATIONS.bag.track["6"].act'],why:"Bagration falls back fighting; his line broken by Caffarelli's, Suchet's and d'Hautpoul's attacks"},
+ {a:"rivaud",b:"rg_cav",from:"12:20",to:"12:45",refs:['FORMATIONS.rivaud.track["6"].act','PHASES[#6].lede'],why:"near Blasowitz the Russian Guard runs into Rivaud's skirmishers"},
+ {a:"rivaud",b:"rg_inf",from:"12:30",to:"12:45",refs:['FORMATIONS.rivaud.track["6"].act','PHASES[#6].lede'],why:"near Blasowitz the Russian Guard runs into Rivaud's skirmishers"},
+ {a:"vandamme",b:"lang",from:"16:40",to:"18:00",refs:['FORMATIONS.vandamme.track["8"].act','FORMATIONS.vandamme.track["9"].act','PHASES[#8].lede'],why:"the Allied left's way out over the Augezd defile, which Vandamme holds and commands"}];
 const LITAVA_OK=[];
 { const OFF={attacking:1,charging:1,counterattack:1,advancing:1,pursuing:1}, BACK={repulsed:1,withdrawing:1,retreating:1,broken:1};
   const ids=Object.keys(units), stOf=(id,ph)=>stateAt(id,ph).st;
