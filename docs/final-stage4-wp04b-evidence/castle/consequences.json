@@ -1,0 +1,510 @@
+{
+ "base": "WP-04b step 2 (this branch before the castle ground)",
+ "cand": "WP-04b step 3 (the castle ground)",
+ "cover": {
+  "points": 112271,
+  "changed": 8,
+  "moves": {
+   "water->village": 2,
+   "track->village": 1,
+   "meadow->village": 1,
+   "marsh->village": 4
+  },
+  "before": {
+   "field": 94481,
+   "meadow": 6738,
+   "track": 2869,
+   "village": 2622,
+   "wood": 1291,
+   "water": 2553,
+   "vineyard": 211,
+   "marsh": 1506
+  },
+  "after": {
+   "field": 94481,
+   "meadow": 6737,
+   "track": 2868,
+   "village": 2630,
+   "wood": 1291,
+   "water": 2551,
+   "vineyard": 211,
+   "marsh": 1502
+  }
+ },
+ "streams": {
+  "Goldbach": {
+   "before": [
+    {
+     "fromMap": [
+      211,
+      231
+     ],
+     "toMap": [
+      208,
+      258
+     ],
+     "riseM": 1.5
+    },
+    {
+     "fromMap": [
+      208,
+      273
+     ],
+     "toMap": [
+      221,
+      347
+     ],
+     "riseM": 9.4
+    },
+    {
+     "fromMap": [
+      214,
+      369
+     ],
+     "toMap": [
+      214,
+      404
+     ],
+     "riseM": 3.7
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      211,
+      231
+     ],
+     "toMap": [
+      208,
+      258
+     ],
+     "riseM": 1.5
+    },
+    {
+     "fromMap": [
+      208,
+      273
+     ],
+     "toMap": [
+      221,
+      347
+     ],
+     "riseM": 9.4
+    },
+    {
+     "fromMap": [
+      214,
+      369
+     ],
+     "toMap": [
+      214,
+      404
+     ],
+     "riseM": 3.7
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "Litava": {
+   "before": [
+    {
+     "fromMap": [
+      538,
+      131
+     ],
+     "toMap": [
+      405,
+      253
+     ],
+     "riseM": 17.6
+    },
+    {
+     "fromMap": [
+      393,
+      267
+     ],
+     "toMap": [
+      333,
+      333
+     ],
+     "riseM": 6.5
+    },
+    {
+     "fromMap": [
+      314,
+      354
+     ],
+     "toMap": [
+      284,
+      398
+     ],
+     "riseM": 3.5
+    },
+    {
+     "fromMap": [
+      265,
+      437
+     ],
+     "toMap": [
+      210,
+      507
+     ],
+     "riseM": 20.9
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      538,
+      131
+     ],
+     "toMap": [
+      405,
+      253
+     ],
+     "riseM": 17.6
+    },
+    {
+     "fromMap": [
+      393,
+      267
+     ],
+     "toMap": [
+      333,
+      333
+     ],
+     "riseM": 6.5
+    },
+    {
+     "fromMap": [
+      314,
+      354
+     ],
+     "toMap": [
+      284,
+      398
+     ],
+     "riseM": 3.5
+    },
+    {
+     "fromMap": [
+      265,
+      437
+     ],
+     "toMap": [
+      210,
+      507
+     ],
+     "riseM": 20.9
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "BROOKS[0]": {
+   "before": [
+    {
+     "fromMap": [
+      275,
+      147
+     ],
+     "toMap": [
+      263,
+      172
+     ],
+     "riseM": 1.4
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      275,
+      147
+     ],
+     "toMap": [
+      263,
+      172
+     ],
+     "riseM": 1.4
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "BROOKS[1]": {
+   "before": [
+    {
+     "fromMap": [
+      283,
+      237
+     ],
+     "toMap": [
+      239,
+      261
+     ],
+     "riseM": 4.8
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      283,
+      237
+     ],
+     "toMap": [
+      239,
+      261
+     ],
+     "riseM": 4.8
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "BROOKS[2]": {
+   "before": [],
+   "after": [],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "BROOKS[3]": {
+   "before": [],
+   "after": [],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  },
+  "BROOKS[4]": {
+   "before": [
+    {
+     "fromMap": [
+      404,
+      161
+     ],
+     "toMap": [
+      419,
+      199
+     ],
+     "riseM": 3.3
+    }
+   ],
+   "after": [
+    {
+     "fromMap": [
+      404,
+      161
+     ],
+     "toMap": [
+      419,
+      199
+     ],
+     "riseM": 3.3
+    }
+   ],
+   "bedChangeMaxM": 0,
+   "sameLine": true
+  }
+ },
+ "knowledge": {
+  "byView": {
+   "fr": {
+    "readings": 1185,
+    "changed": 0,
+    "moves": {}
+   },
+   "al": {
+    "readings": 1975,
+    "changed": 0,
+    "moves": {}
+   }
+  },
+  "changes": [],
+  "byFormation": {}
+ },
+ "buildings": {
+  "before": {
+   "Bosenitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Girzikowitz": {
+    "n": 17,
+    "village": 17
+   },
+   "Puntowitz": {
+    "n": 19,
+    "village": 14,
+    "water": 5
+   },
+   "Kobelnitz": {
+    "n": 16,
+    "village": 12,
+    "water": 4
+   },
+   "Sokolnitz": {
+    "n": 27,
+    "village": 25,
+    "water": 2
+   },
+   "Telnitz": {
+    "n": 25,
+    "village": 22,
+    "water": 3
+   },
+   "Augezd": {
+    "n": 17,
+    "village": 17
+   },
+   "Blasowitz": {
+    "n": 21,
+    "village": 21
+   },
+   "Krug": {
+    "n": 12,
+    "village": 12
+   },
+   "Holubitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Pratzen": {
+    "n": 30,
+    "village": 30
+   },
+   "Bellowitz": {
+    "n": 12,
+    "village": 12
+   },
+   "Schlapanitz": {
+    "n": 18,
+    "village": 18
+   },
+   "Krzenowitz": {
+    "n": 22,
+    "village": 22
+   },
+   "Austerlitz": {
+    "n": 56,
+    "village": 56
+   },
+   "Menitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Satschan": {
+    "n": 14,
+    "village": 12,
+    "water": 2
+   },
+   "Turas": {
+    "n": 10,
+    "village": 10
+   },
+   "Hostieradek": {
+    "n": 13,
+    "village": 13
+   },
+   "Posoritz post house": {
+    "n": 6,
+    "village": 6
+   }
+  },
+  "after": {
+   "Bosenitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Girzikowitz": {
+    "n": 17,
+    "village": 17
+   },
+   "Puntowitz": {
+    "n": 19,
+    "village": 14,
+    "water": 5
+   },
+   "Kobelnitz": {
+    "n": 16,
+    "village": 12,
+    "water": 4
+   },
+   "Sokolnitz": {
+    "n": 27,
+    "village": 25,
+    "water": 2
+   },
+   "Telnitz": {
+    "n": 25,
+    "village": 22,
+    "water": 3
+   },
+   "Augezd": {
+    "n": 17,
+    "village": 17
+   },
+   "Blasowitz": {
+    "n": 21,
+    "village": 21
+   },
+   "Krug": {
+    "n": 12,
+    "village": 12
+   },
+   "Holubitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Pratzen": {
+    "n": 30,
+    "village": 30
+   },
+   "Bellowitz": {
+    "n": 12,
+    "village": 12
+   },
+   "Schlapanitz": {
+    "n": 18,
+    "village": 18
+   },
+   "Krzenowitz": {
+    "n": 22,
+    "village": 22
+   },
+   "Austerlitz": {
+    "n": 56,
+    "village": 56
+   },
+   "Menitz": {
+    "n": 14,
+    "village": 14
+   },
+   "Satschan": {
+    "n": 14,
+    "village": 12,
+    "water": 2
+   },
+   "Turas": {
+    "n": 10,
+    "village": 10
+   },
+   "Hostieradek": {
+    "n": 13,
+    "village": 13
+   },
+   "Posoritz post house": {
+    "n": 6,
+    "village": 6
+   }
+  },
+  "records": [
+   637,
+   637
+  ],
+  "recordsMoved": 0
+ },
+ "frame": {
+  "points": 85591,
+  "movedOver05m": 0,
+  "largestM": 0
+ }
+}

@@ -40,6 +40,17 @@ Object.keys(cov).map(Number).sort((a,b)=>cov[b]-cov[a]).forEach(k=>
   const tot=Object.values(per).reduce((a,q)=>({n:a.n+q.n,v:a.v+q.village,m:a.m+q.marsh}),{n:0,v:0,m:0});
   console.log("  villages on their own ground: "+tot.n+" buildings, "+tot.v+" on the village class, "+tot.m+" on marsh; Sokolnitz "+per.Sokolnitz.village+"/"+per.Sokolnitz.n+
     ", Telnitz "+per.Telnitz.village+"/"+per.Telnitz.n+", Kobelnitz "+per.Kobelnitz.village+"/"+per.Kobelnitz.n+" on the village class"+(bad?"  BROKEN":"  OK"));
+  /* the castle's own ground (WP-04b; CL-GEO-11): every corner and the centre of each castle and farm range castlePlan8g draws, and its site with
+     a ring of 16 points 25 m round it, on the drawn village class (CASTLE_GROUND). Until WP-04b the site and 13 of the ring's 16 points were
+     track, and of the ranges' 63 points 23 were track, 24 marsh, 6 water, 8 meadow and 2 village */
+  { const N=["field","meadow","marsh","water","wood","village","vineyard","track"], cas=B.filter(b=>b.village==="Sokolnitz"&&b.landmark&&b.R&&/^(castle|farm) /.test(b.part||""));
+    const s=W(LANDMARK_SITES.castle[0],LANDMARK_SITES.castle[1]), pts=[[s[0],s[1],"the site"]];
+    for(let a=0;a<16;a++) pts.push([s[0]+Math.cos(a/16*2*Math.PI)*25/GEOREF.M_PER_WORLD, s[1]+Math.sin(a/16*2*Math.PI)*25/GEOREF.M_PER_WORLD, "25 m from the site"]);
+    cas.forEach(b=>b.R.pts.concat([[b.R.x,b.R.z]]).forEach(p=>pts.push([p[0],p[1],b.part])));
+    const off={}; pts.forEach(p=>{ const c=drawnCover(p[0],p[1]); if(c!==5){ const k=p[2]+": "+N[c]; off[k]=(off[k]||0)+1; } });
+    const nOff=Object.values(off).reduce((a,b)=>a+b,0), ok=cas.length===7&&!nOff;
+    console.log("  the castle's own ground: "+cas.length+" ranges (want 7), "+(pts.length-nOff)+" of "+pts.length+" points on the village class"+(nOff?"; off it "+JSON.stringify(off):"")+(ok?"  OK":"  BROKEN"));
+    if(!ok) process.exitCode=1; }
   if(bad) process.exitCode=1; }
 
 /* contours */

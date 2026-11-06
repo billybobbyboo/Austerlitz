@@ -22,7 +22,9 @@ const DATA={
     "coverClass","hAt","COV_NX,COV_NZ,COV_X0,COV_Z0,COV_DX,COV_DZ","covWood,covMarsh,covVill,covRoad,covWater,covVine,covWoodP","buildCover","covAt",
     "G_NX,G_NZ,G_X0,G_Z0,G_DX,G_DZ","gridH,gridCurv","buildGrid","gridAt","CONTOUR_INTERVAL,CONTOUR_INDEX",
     /* Stage 8, the follow-up 8J (decision 259 (a)): the landmarks' own sites, the château's garden, and the outlines a period map gives */
-    "LANDMARK_SITES","GARDENS","polyWorld","inPolyW","polySd"],
+    "LANDMARK_SITES","GARDENS","polyWorld","inPolyW","polySd",
+    /* the final audits' Stage 4, WP-04b (CL-GEO-11): the castle's own ground */
+    "CASTLE_GROUND","castleGround"],
   "movement, strength and confidence model":["stateAt","leavesOf","posOf","aggStrength","aggStatus","trackedDescendants","activeAt","ownStrengthAt",
     "sideOnFieldAt","GRADE_RANK","worseGrade","confAt","liveConf","aggConf","aggInterp","T_MIN,T_MAX","KM_PER_MAP","phaseAt","anchorList",
     "legPath","pointOnPath","legWindow","legAt","posAtClock","notYetAt","goneAt","headingAt","marchRate","posNow","SPEED_CEIL","TACTICAL_RATE,BATTLE_ORDER","wetAt",
