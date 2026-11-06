@@ -23,6 +23,8 @@ here).
   derived at its arm's tactical rate (or the ceiling where that does not fit). Decision 45 (undated moves spread over their interval) narrowed for
   these legs only.
 - **286 (a), CL-HIS-07 (new; "owner to choose"):** Kamensky turns as phase 3 opens, by the same declared hold, not from 08:00.
+- **287 (a), 288 (a), 290 (a) (new; the owner's rule for geographic baselines):** the motion benchmark, the gait's kept-open count and three
+  phone limits re-baselined at this build's own counts (below).
 
 ### What changed, and why
 
@@ -144,8 +146,11 @@ its geographic baselines; its result goes on the pull request (#86).
   852 (it now hovers nothing, so it equals its 16's run).
 - **The gait on the ground (owner decision 288 (a)):** H_CASES["4|men|drawn|fresh|rich"] 21 to 25 (its bound, a tenth more with at least two,
   24 to 28): the WP-03 build's own count, its formations standing on other slopes; every other count, H_TOL and the proposed bounds unchanged.
-- **`check:visual`'s geographic baselines** (drop limits, the confidence share, the unobstructed baselines): measured on CI (above); any that
-  moves is put to the owner before it changes.
+- **`check:visual` (CI run 42190428768 on `8b35682`, before the re-baseline):** every view, every drop limit, the confidence shares and the
+  unobstructed baselines within their limits but three phone limits, besides the motion block and the gait's count (re-baselined above): phone-390-
+  watch's framing 8 of its 8 map items inside the free rectangle (floor 9), phone-844x390-explore's drops 4 (limit 3: the names Stare Vinohrady,
+  Austerlitz, Krzenowitz and Rausnitz) and its framing 8 of 11 (floor 10). **Owner decision 290 (a):** floor 9 to 8, limit 3 to 4 and floor 10 to 8
+  (`tools/visual/thresholds.js`, was and is); every other limit unchanged. `check:visual` re-dispatched on the final commit; its result on #86.
 
 ### Not done, and why (handed on)
 

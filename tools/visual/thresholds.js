@@ -197,6 +197,12 @@ PHONE.timeline["phone-390-watch"]=155;   /* Watch: the presentation switch in th
 PHONE.timeline["phone-844x390-explore"]=91;   /* held landscape: the layout above 720 px, one control row (90.5 px) */
 Object.assign(PHONE.framing,{"phone-402x714-explore":6,"phone-390-paper":11,"phone-390-first":17,"phone-390-explore":6,"phone-390-dossier":5,"phone-390-watch":9,"phone-390-layers":2,
   "phone-360-explore":4,"phone-430-explore":7,"phone-844x390-explore":10});
+/* the final audits' Stage 4, WP-03 (owner decision 290 (a), 6 November 2026, under the owner's rule for geographic baselines): CI's check:visual on
+   the WP-03 build (run 42190428768) put three phone limits past their values, WP-03's re-plotted and held formations changing what those views hold
+   and what competes for the labels: phone-390-watch's framing 8 of its 8 items inside the free rectangle (floor 9 to 8); phone-844x390-explore's
+   drops 4 (the names Stare Vinohrady, Austerlitz, Krzenowitz and Rausnitz; limit 3 to 4) and its framing 8 of 11 inside (floor 10 to 8). Every
+   other phone limit unchanged; WP-04b (the relief) re-measures */
+PHONE.framing["phone-390-watch"]=8; PHONE.framing["phone-844x390-explore"]=8; DROP_LIMIT["phone-844x390-explore"]=4;
 /* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
    each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
    event in the sheet and in its dossier). Held landscape, the track's act and phase names are cut where their band is narrower than the name
