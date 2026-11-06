@@ -134,12 +134,14 @@ var MARSH=[
 var VINEYARD={c:[313,205], rx:23, ry:16};
 
 /* ---------------- settlements ---------------- */
-var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the register and keep their warped legacy place. Turas is
-                    GEOREF.GT.turas since roadmap step 4b (owner decision 191; [89,372], its warped legacy place, until then).
+var VILLAGES=[   /* from GEOREF ground truth; Bellowitz is not in the register and keeps its warped legacy place. Turas is
+                    GEOREF.GT.turas since roadmap step 4b (owner decision 191; [89,372], its warped legacy place, until then). Krug is
+                    GEOREF.GT.krug since the final audits' Stage 4, WP-04b (CL-GEO-07: the Kruh tract beside Holubice, where the Second
+                    Military Survey labels "Kruch"; C for 1805), [339,139], its warped legacy place, 1.58 km south-south-east of it, until then.
                     Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as edge markers */
  ["Bosenitz",236,69,7],["Girzikowitz",233,162,9],["Puntowitz",213,222,8],
  ["Kobelnitz",205,277,9],["Sokolnitz",208,365,13],["Telnitz",212,408,12],
- ["Augezd",297,372,9],["Blasowitz",296,147,10],["Krug",339,139,5],
+ ["Augezd",297,372,9],["Blasowitz",296,147,10],["Krug",318,94,5],
  ["Holubitz",340,89,7],["Pratzen",276,243,11],["Bellowitz",164,113,7],
  ["Schlapanitz",163,177,9],["Krzenowitz",415,196,10],["Austerlitz",507,126,24],
  ["Menitz",181,489,7],["Satschan",262,444,7],["Turas",44,294,5],
