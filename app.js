@@ -13821,11 +13821,16 @@ var AUSTERLITZ_DEBUG=(function(){
            contactsole, its worst within 3.5 H_TOL): the number of cases is what such a change multiplies */
         /* the final audits' Stage 4, WP-03 (owner decision 288 (a)): "4|men|drawn|fresh|rich" 21 to 25, the WP-03 build's own count, its formations moved
            onto other slopes (Sokolnitz, Telnitz, the Krzenowitz-Austerlitz line); every other count, H_TOL and the proposed bounds unchanged */
+        /* the final audits' Stage 4, WP-04b (owner decision 292 (a), 6 November 2026): the six 10.33x horse cases at the WP-04b build's own counts,
+           measured on check:selftest's page after the artillery's seating against the limber (Chromium 141), the horses on the refitted relief's
+           steeper ground (the southern plateau raised by up to 57 m): "10.33|horses|edges|fresh|rich" 29 to 38, "10.33|horses|edges|fresh|simple"
+           29 to 38, "10.33|horses|edges|motion|rich" 2 to 9, "10.33|horses|drawn|fresh|rich" 28 to 40, "10.33|horses|drawn|fresh|simple" 25 to 38,
+           "10.33|horses|drawn|motion|rich" 1 to 13; every other count, H_TOL and the proposed bounds unchanged (no case beyond its bound) */
         var H_CASES={"4|men|edges|fresh|rich":14, "4|men|edges|fresh|simple":4, "4|men|drawn|fresh|rich":25, "4|men|drawn|fresh|simple":9,
           "4|horses|edges|fresh|rich":29, "4|horses|edges|fresh|simple":29, "4|horses|drawn|fresh|rich":29, "4|horses|drawn|fresh|simple":27, "4|horses|drawn|motion|rich":1,
           "10.33|men|edges|fresh|rich":20, "10.33|men|edges|fresh|simple":11, "10.33|men|drawn|fresh|rich":21, "10.33|men|drawn|fresh|simple":14, "10.33|men|drawn|motion|rich":1,
-          "10.33|horses|edges|fresh|rich":29, "10.33|horses|edges|fresh|simple":29, "10.33|horses|edges|motion|rich":2, "10.33|horses|drawn|fresh|rich":28,
-          "10.33|horses|drawn|fresh|simple":25, "10.33|horses|drawn|motion|rich":1};
+          "10.33|horses|edges|fresh|rich":38, "10.33|horses|edges|fresh|simple":38, "10.33|horses|edges|motion|rich":9, "10.33|horses|drawn|fresh|rich":40,
+          "10.33|horses|drawn|fresh|simple":38, "10.33|horses|drawn|motion|rich":13};
         function hSoles(g,horse){ var c=hSolC.get(g); if(c) return c; var P=g.attributes.position, K=g.attributes.aPart, seen={}, out=[];
           for(var i=0;i<P.count;i++){ var k=Math.round(K.array[i]); if(horse?(k<5||k>8):!(k===1||k===2||k===13||k===14)) continue; var y=P.array[i*3+1]; if(y>0.03) continue;
             var x=P.array[i*3], z=P.array[i*3+2], key=k+","+x.toFixed(4)+","+y.toFixed(4)+","+z.toFixed(4); if(seen[key]) continue; seen[key]=1; out.push([k,x,y,z]); }
