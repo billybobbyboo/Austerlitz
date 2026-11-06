@@ -396,7 +396,7 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   /* the registers' reading ids: a "### n `id`" heading; its source the entry's "**source**: `key`" line, else its section's "## n. `key`"
      heading (the step-2 register's form); any other "##" heading ends a section; its label the entry's "**label**: word"; read on the text
      layer alone when the entry names the OCR or the text layer and never a page image */
-  const REG=new Map(), regFiles=["docs/step2-evidence/readings.md","docs/step4-evidence/readings.md"];
+  const REG=new Map(), regFiles=["docs/step2-evidence/readings.md","docs/step4-evidence/readings.md","docs/wp15-evidence/readings.md"];   /* the third since WP-15's first batch (the final audits' Stage 4) */
   regFiles.forEach(f=>{ if(!fs.existsSync(f)) return; let sec=null, cur=null;
     fs.readFileSync(f,'utf8').split("\n").forEach(l=>{ let m;
       if(/^## /.test(l)){ m=/^## [\w.]+ `([\w.-]+)`/.exec(l); sec=m?m[1]:null; cur=null; }
