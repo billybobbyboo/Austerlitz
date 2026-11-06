@@ -197,6 +197,19 @@ checks.forEach(([sel,need,why])=>{
 console.log("behaviour checks:",checks.length-cerrs+"/"+checks.length+" pass");
 if(cerrs) process.exitCode=1;
 
+/* the final audits' Stage 4, WP-04b (CL-GEO-03, CL-GEO-04): the streams labelled schematic, as the meres are (decision 27): the legend's row in
+   shell.html, shown in every view (paintLegend's own table, stream:true), and the sources sheet's sentence (SOURCE_NOTE) */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), app=fs.readFileSync('app.js','utf8'), dj=fs.readFileSync('data.js','utf8'), serr=[];
+  const r=sh.match(/<div class="k" data-lg="stream"><span>([^<]*)<\/span><\/div>/);
+  if(!r) serr.push("shell.html has no legend row for the streams (data-lg=\"stream\")"); else if(!/schematic/.test(r[1])||!/Sokolnitz/.test(r[1])) serr.push("the streams' legend row does not say where they are schematic: "+r[1]);
+  const i=app.indexOf("function paintLegend()"), j=app.indexOf("var key=JSON.stringify(on);",i);
+  if(i<0||j<0||!/\bstream:true\b/.test(app.slice(i,j))) serr.push("paintLegend does not show the streams' row in every view (stream:true)");
+  if(!/Of the streams only the Goldbach's reach through Sokolnitz is traced from a period map[^"]*the rest are schematic/.test(dj)) serr.push("SOURCE_NOTE does not say which streams are schematic");
+  serr.forEach(e=>console.log("  ! "+e));
+  console.log("the streams labelled (WP-04b): "+(serr.length?serr.length+" wrong":"the legend's row in every view and the sources sheet's sentence"));
+  if(serr.length) process.exitCode=1;
+}
 /* Stage 3E (docs/STAGE3_SPEC.md sections E and H; owner decision 50): the names, a static check over shell.html and the label
    table in app.js. No presentation is labelled "Map" and no ground "Staff map", "Terrain" or "Hybrid"; the identifiers
    (data-vm, data-m) are unchanged. */

@@ -27,7 +27,11 @@ const MUT=[
     "  if(castleGround(mx,mz)) return 5;   /* WP-04b (CL-GEO-11): the castle's own ground (CASTLE_GROUND), before the brook's bed beside it */\n", ""],["world.js",
     '  "  if(length((p-uCastle.xy)/uCastle.zw)<1.0) return 5.0;",   /* WP-04b (CL-GEO-11): the castle\'s own ground, as coverClass */\n', ""]]},
   {id:"N5", finding:"CL-GEO-07 (Krug back at its warped legacy place, GT.krug kept)", runners:["geo"], want:"every surveyed village within 0.5 km of ground truth", edits:[["world.js",
-    '["Krug",318,94,5],', '["Krug",339,139,5],']]}
+    '["Krug",318,94,5],', '["Krug",339,139,5],']]},
+  {id:"N6", finding:"CL-GEO-03, -04 (the streams' legend row taken out)", runners:["css"], want:"shell.html has no legend row for the streams", edits:[["shell.html",
+    '    <div class="k" data-lg="stream"><span>streams: traced from a period map at Sokolnitz only, elsewhere schematic; the brooks at Bosenitz and Schlapanitz not drawn</span></div>\n', ""]]},
+  {id:"N7", finding:"CL-GEO-03, -04 (the sources sheet's sentence on the streams taken out)", runners:["css"], want:"SOURCE_NOTE does not say which streams are schematic", edits:[["data.js",
+    " Of the streams only the Goldbach's reach through Sokolnitz is traced from a period map", " The streams"]]}
 ];
 const args=process.argv.slice(2), only=(args.indexOf("--only")>=0?args[args.indexOf("--only")+1].split(","):null), outF=args.indexOf("--out")>=0?args[args.indexOf("--out")+1]:null;
 function makeCopy(m){
