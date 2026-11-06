@@ -2448,7 +2448,9 @@ kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
   role:"Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky, citing Langeron's report; sent by Langeron in Schönhals; ordered onto the ridge by Kutuzov in his official report; no order of his named in Kutuzov's private relation of March 1806.",
   track:{
     2:{p:[259,316],st:"march",cf:"B",obj:"Follow the II Column to Sokolnitz",act:"Marching at the rear of Langeron's column"},
-    3:{p:[269,298],st:"countermarch",cf:"A",obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)"},
+    3:{p:[269,298],st:"countermarch",cf:"A",hold:true,obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)"},   /* the final audits' Stage 4, owner decision 286 (a) (CL-HIS-07): the turn begins as the 08:45 phase opens, on seeing the French
+       climb (the act's own sequence; a declared hold, no hour read), arriving 08:53 at the march ceiling; until then the default rule had the
+       brigade turn from 08:00, 45 minutes before the climb, while SOURCE_NOTE, the event's dispute and the arrow said "in the 08:45 phase" */
     4:{p:[279,289],st:"counterattack",cf:"A",obj:"Drive Saint-Hilaire off the crest",act:"Pushes the 10e Légère back off the summit before Thiébault stabilises the French line"},
     5:{p:[291,279],st:"engaged",act:"Fights on the crest alongside Jurczek's Austrians"},
     6:{p:[305,279],st:"broken",cf:"B",act:"Broken and ordered to retire by Kutuzov"},
@@ -2492,7 +2494,7 @@ milo:{ ech:"div", nation:"ru", arm:"inf", desig:"Russian wing, IV Column",
     2:{p:[299,238],st:"delayed",cf:"A",obj:"Advance on Kobelnitz",act:"Held up while Liechtenstein's cavalry crosses its front from left to right"},
     3:{p:[290,237],st:"surprised",cf:"A",act:"Caught filing off the plateau as Soult appears on the crest"},
     4:{p:[315,237],st:"counterattack",cf:"B",act:"Rallied by Kutuzov for a counterattack up the southern slope"},
-    6:{p:[392,232],st:"withdrawing"},
+    6:{p:[392,232],st:"withdrawing",hold:true},   /* the final audits' Stage 4, owner decision 285 (a): the column holds through its counterattack and withdraws as phase 6 opens (a design rule, no hour read) */
     8:{p:[446,210],st:"retreating"},
     9:{p:[475,170],st:"retreating"}}},
 
@@ -2521,7 +2523,7 @@ lich:{ ech:"corps", nation:"ru", arm:"cav", desig:"V Column", mix:{nation:"at", 
     2:{p:[319,214],st:"countermarch",cf:"A",obj:"Reach the right wing",act:"Crossing the front of the 4th Column and holding it up"},
     3:{p:[317,191],st:"march"},
     5:{p:[298,156],st:"charging",cf:"A",obj:"Break the French cavalry screen",act:"Charges with Uvarov's Russians against Kellermann; met by Nansouty's cuirassiers"},
-    6:{p:[341,152],st:"repulsed"},
+    6:{p:[341,152],st:"repulsed",hold:true},   /* decision 285 (a): holds through its charge, falls back as phase 6 opens */
     7:{p:[387,145],st:"withdrawing"},
     8:{p:[437,129],st:"retreating"},
     9:{p:[469,110],st:"retreating"}}},
@@ -2561,7 +2563,9 @@ rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
     0:{p:[413,202],st:"reserve",cf:"A",obj:"Remain in reserve near Krzenowitz",act:"On the high ground near Allied headquarters"},
     5:{p:[378,196],st:"advancing"},
     6:{p:[327,194],st:"counterattack",cf:"A",obj:"Retake Stare Vinohrady",act:"Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a battalion of the 4th Line and one of the 24th Light and takes the 4th's eagle (Schönhals)"},
-    7:{p:[397,196],st:"repulsed",act:"Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions break the Guard infantry"},
+    /* the final audits' Stage 4, owner decision 285 (a) (CL-HIS-05): the Guard holds at its attack place through phase 6 and is driven off as
+       phase 7 opens (a declared hold; no hour read); until then the default rule walked it east from 11:15 under "Counter-attacking" */
+    7:{p:[397,196],st:"repulsed",hold:true,act:"Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions break the Guard infantry"},
     8:{p:[447,178],st:"retreating"},
     9:{p:[475,144],st:"retreating"}}},
 
@@ -2571,7 +2575,7 @@ rg_cav:{ ech:"div", nation:"ru", arm:"cav", desig:"Guard Cavalry",
   track:{
     0:{p:[423,193],st:"reserve",cf:"A"},
     6:{p:[321,189],st:"charging",cf:"A",obj:"Break the French line on the plateau",act:"The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by Marbot). The Chevalier Guard's charge is then broken by Bessières and Rapp; Prince Repnin captured"},
-    7:{p:[406,188],st:"repulsed"},
+    7:{p:[406,188],st:"repulsed",hold:true},   /* decision 285 (a), as the Guard infantry's @7 */
     8:{p:[452,164],st:"retreating"},
     9:{p:[481,132],st:"retreating"}}}
 };
@@ -10920,6 +10924,11 @@ function fmtClock(t){
    after the phase start and no arrival, the anchor is reached after moveMin, or once the leg has been marched at its
    arm's ceiling (SPEED_CEIL), whichever is later, rounded up to the minute: the least delay the dated departure and
    the ceiling allow (the arrival is then derived, a.arrDerived). Anchors without tm behave exactly as before.
+   THE DECLARED HOLD (the final audits' Stage 4; owner decisions 285 (a), 286 (a)). An anchor with hold:true and no tm.dep departs as its
+   own phase opens, exactly as a dated departure at PHASES[ph].t0 would, so its leg runs inside its own phase under its own status: a
+   retreat after an attack (285 (a): every undated leg from an offensive status into a retreat status declares it; sim-test.js holds the
+   rule) and Kamensky's turn on seeing the French (286 (a)). It narrows decision 45 (undated moves spread over their interval) for those
+   legs alone. Its arrival is derived by the rules below; the hold is a design rule and dates nothing.
    THE TACTICAL RATE (owner, 2C precondition; docs/STAGE2_SPEC.md section M.13, "(b) where it fits, otherwise (c),
    flagged"). A derived arrival (dated departure, no dated arrival) of a formation in battle order during the leg
    (BATTLE_ORDER: its status at the anchor's phase) is instead the one its arm's TACTICAL_RATE gives, rounded up to the
@@ -10937,9 +10946,12 @@ function anchorList(id){
   var out=[];
   Object.keys(f.track).map(Number).sort(function(a,b){return a-b;}).forEach(function(ph){
     var e=f.track[ph];
-    if("p" in e) out.push({ph:ph,p:e.p,via:e.via||null,moveMin:e.moveMin||null,ice:!!e.ice,tm:e.tm||null});
+    if("p" in e) out.push({ph:ph,p:e.p,via:e.via||null,moveMin:e.moveMin||null,ice:!!e.ice,tm:e.tm||null,hold:!!e.hold});
   });
-  function depOf(b){ var tm=b.tm||{}; return tm.dep==null?null:(Array.isArray(tm.dep)?tm.dep[0]:tm.dep); }
+  /* a declared hold (e.hold; the final audits' Stage 4, owner decisions 285 (a) and 286 (a)) departs as its own phase opens, as a dated
+     departure at the phase start would: the formation holds at the previous anchor through the phase before, then marches, its arrival
+     derived by the rule below. A design rule, not a dated statement: it carries no tm and no evidence of an hour */
+  function depOf(b){ var tm=b.tm||{}; if(tm.dep==null) return b.hold?PHASES[b.ph].t0:null; return Array.isArray(tm.dep)?tm.dep[0]:tm.dep; }
   function statusAt(ph){ var st=null; for(var k=0;k<=ph;k++) if(f.track[k]&&f.track[k].st) st=f.track[k].st; return st; }
   var ceil=SPEED_CEIL[f.arm]||5.0;
   for(var i=out.length-1;i>=0;i--){
@@ -14314,6 +14326,8 @@ var LABELS={
     noDay:"Its day is not shown: not known to %r at %c (a model reading).", noDays:"the days of %k of them are not shown: not known to %r at %c (a model reading)",
     /* Stage 8, implementation PR 8C: the march row of a formation the reading does not know (marchRow) */
     leg:"Plotted leg", legNote:"whether it moves now, and where, is not shown: not known to %r at %c (a model reading)"},
+  /* the final audits' Stage 4 (CL-HIS-13): the march row of a leg under the gait's floor */
+  march:{drift:"Plotted leg", driftNote:"under %k km/h over its time window: the plotted leg\u2019s length over its window, a drift between anchors, not a march"},
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -15778,6 +15792,11 @@ function marchRow(id){
   if(readHidden(id)) return row(LABELS.reading.leg,
     mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window; '+
     esc(LABELS.reading.legNote.replace("%r",EYES.LABEL[commandView]).replace("%c",fmtClock(clock)))+')</span>');
+  /* the final audits' Stage 4 (CL-HIS-13): a leg under the gait's floor (GAIT.KMH, 1 km/h; decision 244 (a)) is a drift between plotted
+     anchors, kept by decision 45, not a march: it is named as the plotted leg it is, not "Marching" beside "In reserve" or "Concealed" */
+  if(mr.kmh<GAIT.KMH) return row(LABELS.march.drift,
+    mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+(mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+
+    ' <span class="hh">('+esc(LABELS.march.driftNote.replace("%k",GAIT.KMH))+')</span>');
   return row(mr.moving?"Marching":"Next move",
     mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
     (mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window)</span>');

@@ -518,7 +518,9 @@ kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
   role:"Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky, citing Langeron's report; sent by Langeron in Schönhals; ordered onto the ridge by Kutuzov in his official report; no order of his named in Kutuzov's private relation of March 1806.",
   track:{
     2:{p:[259,316],st:"march",cf:"B",obj:"Follow the II Column to Sokolnitz",act:"Marching at the rear of Langeron's column"},
-    3:{p:[269,298],st:"countermarch",cf:"A",obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)"},
+    3:{p:[269,298],st:"countermarch",cf:"A",hold:true,obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)"},   /* the final audits' Stage 4, owner decision 286 (a) (CL-HIS-07): the turn begins as the 08:45 phase opens, on seeing the French
+       climb (the act's own sequence; a declared hold, no hour read), arriving 08:53 at the march ceiling; until then the default rule had the
+       brigade turn from 08:00, 45 minutes before the climb, while SOURCE_NOTE, the event's dispute and the arrow said "in the 08:45 phase" */
     4:{p:[279,289],st:"counterattack",cf:"A",obj:"Drive Saint-Hilaire off the crest",act:"Pushes the 10e Légère back off the summit before Thiébault stabilises the French line"},
     5:{p:[291,279],st:"engaged",act:"Fights on the crest alongside Jurczek's Austrians"},
     6:{p:[305,279],st:"broken",cf:"B",act:"Broken and ordered to retire by Kutuzov"},
@@ -562,7 +564,7 @@ milo:{ ech:"div", nation:"ru", arm:"inf", desig:"Russian wing, IV Column",
     2:{p:[299,238],st:"delayed",cf:"A",obj:"Advance on Kobelnitz",act:"Held up while Liechtenstein's cavalry crosses its front from left to right"},
     3:{p:[290,237],st:"surprised",cf:"A",act:"Caught filing off the plateau as Soult appears on the crest"},
     4:{p:[315,237],st:"counterattack",cf:"B",act:"Rallied by Kutuzov for a counterattack up the southern slope"},
-    6:{p:[392,232],st:"withdrawing"},
+    6:{p:[392,232],st:"withdrawing",hold:true},   /* the final audits' Stage 4, owner decision 285 (a): the column holds through its counterattack and withdraws as phase 6 opens (a design rule, no hour read) */
     8:{p:[446,210],st:"retreating"},
     9:{p:[475,170],st:"retreating"}}},
 
@@ -591,7 +593,7 @@ lich:{ ech:"corps", nation:"ru", arm:"cav", desig:"V Column", mix:{nation:"at", 
     2:{p:[319,214],st:"countermarch",cf:"A",obj:"Reach the right wing",act:"Crossing the front of the 4th Column and holding it up"},
     3:{p:[317,191],st:"march"},
     5:{p:[298,156],st:"charging",cf:"A",obj:"Break the French cavalry screen",act:"Charges with Uvarov's Russians against Kellermann; met by Nansouty's cuirassiers"},
-    6:{p:[341,152],st:"repulsed"},
+    6:{p:[341,152],st:"repulsed",hold:true},   /* decision 285 (a): holds through its charge, falls back as phase 6 opens */
     7:{p:[387,145],st:"withdrawing"},
     8:{p:[437,129],st:"retreating"},
     9:{p:[469,110],st:"retreating"}}},
@@ -631,7 +633,9 @@ rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
     0:{p:[413,202],st:"reserve",cf:"A",obj:"Remain in reserve near Krzenowitz",act:"On the high ground near Allied headquarters"},
     5:{p:[378,196],st:"advancing"},
     6:{p:[327,194],st:"counterattack",cf:"A",obj:"Retake Stare Vinohrady",act:"Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a battalion of the 4th Line and one of the 24th Light and takes the 4th's eagle (Schönhals)"},
-    7:{p:[397,196],st:"repulsed",act:"Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions break the Guard infantry"},
+    /* the final audits' Stage 4, owner decision 285 (a) (CL-HIS-05): the Guard holds at its attack place through phase 6 and is driven off as
+       phase 7 opens (a declared hold; no hour read); until then the default rule walked it east from 11:15 under "Counter-attacking" */
+    7:{p:[397,196],st:"repulsed",hold:true,act:"Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions break the Guard infantry"},
     8:{p:[447,178],st:"retreating"},
     9:{p:[475,144],st:"retreating"}}},
 
@@ -641,7 +645,7 @@ rg_cav:{ ech:"div", nation:"ru", arm:"cav", desig:"Guard Cavalry",
   track:{
     0:{p:[423,193],st:"reserve",cf:"A"},
     6:{p:[321,189],st:"charging",cf:"A",obj:"Break the French line on the plateau",act:"The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards by Marbot). The Chevalier Guard's charge is then broken by Bessières and Rapp; Prince Repnin captured"},
-    7:{p:[406,188],st:"repulsed"},
+    7:{p:[406,188],st:"repulsed",hold:true},   /* decision 285 (a), as the Guard infantry's @7 */
     8:{p:[452,164],st:"retreating"},
     9:{p:[481,132],st:"retreating"}}}
 };

@@ -755,12 +755,17 @@ try{
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag. At every half hour, every formation's march row
      (marchRow) tagged derived exactly where marchRate gives a leg; every aggregate's place (posRow) named its formations' midpoint, tagged,
      with the number of its formations on the field; none named a position, and no tracked formation named a midpoint */
-  { const bad=[]; let nM=0, nA=0;
+  { const bad=[]; let nM=0, nA=0, nDrift=0;
     for(let t=T_MIN;t<=T_MAX;t+=30){ setClock(t);
       Object.keys(FORMATIONS).forEach(id=>{ const f=FORMATIONS[id];
         if(f.track){ const mr=marchRate(id,clock), r=marchRow(id);
           if(!!mr!==!!r) bad.push(id+" at "+fmtClock(t)+": a march row "+(mr?"missing":"with no leg"));
-          if(r){ nM++; if(r.indexOf('<span class="ltag derived">')<0) bad.push(id+" at "+fmtClock(t)+": the march row untagged"); }
+          if(r){ nM++; if(r.indexOf('<span class="ltag derived">')<0) bad.push(id+" at "+fmtClock(t)+": the march row untagged");
+            /* the final audits' Stage 4 (CL-HIS-13): a leg under the gait's floor (GAIT.KMH) is named the plotted leg it is, never "Marching"
+               or "Next move" (63 drift legs were called "Marching" beside "In reserve" or "Concealed"); a leg at or over it keeps its word */
+            const drift=mr.kmh<GAIT.KMH, word=drift?LABELS.march.drift:(mr.moving?"Marching":"Next move");
+            if(drift) nDrift++;
+            if(r.indexOf("<dt>"+word+"</dt>")<0||(drift&&/<dt>(Marching|Next move)<\/dt>/.test(r))) bad.push(id+" at "+fmtClock(t)+": its march row "+(drift?"("+mr.kmh.toFixed(2)+" km/h, a drift) ":"")+"not \""+word+"\": "+r.slice(0,90)); }
           if(/<dt>Midpoint/.test(posRow(id,false)+posRow(id,true))) bad.push(id+" at "+fmtClock(t)+": a tracked formation named a midpoint");
           return; }
         const full=posRow(id,false), card=posRow(id,true), n=leavesOf(id,[]).filter(k=>!!posNow(k)).length;
@@ -779,8 +784,8 @@ try{
             bad.push(id+": with none of its formations on the field, a derived tag or no absent reading ("+card.slice(0,80)+")"); });
       } finally { posNow=realP; }
       if(!nO) bad.push("no aggregate to try off the field"); }
-    if(bad.length||!nM||!nA) throw new Error("derived tags: "+bad.slice(0,6).join("; ")+" ("+nM+" march rows, "+nA+" midpoints)");
-    console.log("derived tags: "+nM+" march rows tagged derived and "+nA+" aggregate midpoints tagged with their formations' number, at every half hour; no tag on an aggregate with none of its formations on the field OK"); }
+    if(bad.length||!nM||!nA||!nDrift) throw new Error("derived tags: "+bad.slice(0,6).join("; ")+" ("+nM+" march rows, "+nDrift+" of them drifts, "+nA+" midpoints)");
+    console.log("derived tags: "+nM+" march rows tagged derived ("+nDrift+" drifts under "+GAIT.KMH+" km/h named \""+LABELS.march.drift+"\", none \"Marching\") and "+nA+" aggregate midpoints tagged with their formations' number, at every half hour; no tag on an aggregate with none of its formations on the field OK"); }
 
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): "plotted strength unchanged" follows the clock alone. The plotted holding is sampled here once
      a minute up to phase 7, where the reading ends (plateauStrength, read by this test, not plateauDay); at every 7th minute the caption and
@@ -1095,7 +1100,8 @@ try{
               if(!btn) bad.push(at+": "+id+" known, but its dossier offers no centring");
               /* a formation the reading knows: its march row as before (the rule withholds only what the reading does not know) */
               const mr=marchRate(id,clock);
-              if(mr&&hf.indexOf("<dt>"+(mr.moving?"Marching":"Next move")+"</dt>")<0) bad.push(at+": "+id+" known, but its march row not "+(mr.moving?"Marching":"Next move"));
+              const mw=mr?(mr.kmh<GAIT.KMH?LABELS.march.drift:(mr.moving?"Marching":"Next move")):null;   /* the final audits' Stage 4: a drift its own word (CL-HIS-13) */
+              if(mr&&hf.indexOf("<dt>"+mw+"</dt>")<0) bad.push(at+": "+id+" known, but its march row not "+mw);
               if(mr&&mr.ice){ nKI++; if(hf.indexOf("over the frozen mere")<0) bad.push(at+": "+id+" known, but its leg over the frozen mere not said"); } } });
           Object.keys(FORMATIONS).filter(id=>!FORMATIONS[id].track&&sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)).forEach(id=>{ nAgg++;
             const A=aggReading(id); made=[]; dossierFormation(id); const hf=html(), MD=dayTrackModel(id);

@@ -3256,6 +3256,11 @@ function fmtClock(t){
    after the phase start and no arrival, the anchor is reached after moveMin, or once the leg has been marched at its
    arm's ceiling (SPEED_CEIL), whichever is later, rounded up to the minute: the least delay the dated departure and
    the ceiling allow (the arrival is then derived, a.arrDerived). Anchors without tm behave exactly as before.
+   THE DECLARED HOLD (the final audits' Stage 4; owner decisions 285 (a), 286 (a)). An anchor with hold:true and no tm.dep departs as its
+   own phase opens, exactly as a dated departure at PHASES[ph].t0 would, so its leg runs inside its own phase under its own status: a
+   retreat after an attack (285 (a): every undated leg from an offensive status into a retreat status declares it; sim-test.js holds the
+   rule) and Kamensky's turn on seeing the French (286 (a)). It narrows decision 45 (undated moves spread over their interval) for those
+   legs alone. Its arrival is derived by the rules below; the hold is a design rule and dates nothing.
    THE TACTICAL RATE (owner, 2C precondition; docs/STAGE2_SPEC.md section M.13, "(b) where it fits, otherwise (c),
    flagged"). A derived arrival (dated departure, no dated arrival) of a formation in battle order during the leg
    (BATTLE_ORDER: its status at the anchor's phase) is instead the one its arm's TACTICAL_RATE gives, rounded up to the
@@ -3273,9 +3278,12 @@ function anchorList(id){
   var out=[];
   Object.keys(f.track).map(Number).sort(function(a,b){return a-b;}).forEach(function(ph){
     var e=f.track[ph];
-    if("p" in e) out.push({ph:ph,p:e.p,via:e.via||null,moveMin:e.moveMin||null,ice:!!e.ice,tm:e.tm||null});
+    if("p" in e) out.push({ph:ph,p:e.p,via:e.via||null,moveMin:e.moveMin||null,ice:!!e.ice,tm:e.tm||null,hold:!!e.hold});
   });
-  function depOf(b){ var tm=b.tm||{}; return tm.dep==null?null:(Array.isArray(tm.dep)?tm.dep[0]:tm.dep); }
+  /* a declared hold (e.hold; the final audits' Stage 4, owner decisions 285 (a) and 286 (a)) departs as its own phase opens, as a dated
+     departure at the phase start would: the formation holds at the previous anchor through the phase before, then marches, its arrival
+     derived by the rule below. A design rule, not a dated statement: it carries no tm and no evidence of an hour */
+  function depOf(b){ var tm=b.tm||{}; if(tm.dep==null) return b.hold?PHASES[b.ph].t0:null; return Array.isArray(tm.dep)?tm.dep[0]:tm.dep; }
   function statusAt(ph){ var st=null; for(var k=0;k<=ph;k++) if(f.track[k]&&f.track[k].st) st=f.track[k].st; return st; }
   var ceil=SPEED_CEIL[f.arm]||5.0;
   for(var i=out.length-1;i>=0;i--){
@@ -6650,6 +6658,8 @@ var LABELS={
     noDay:"Its day is not shown: not known to %r at %c (a model reading).", noDays:"the days of %k of them are not shown: not known to %r at %c (a model reading)",
     /* Stage 8, implementation PR 8C: the march row of a formation the reading does not know (marchRow) */
     leg:"Plotted leg", legNote:"whether it moves now, and where, is not shown: not known to %r at %c (a model reading)"},
+  /* the final audits' Stage 4 (CL-HIS-13): the march row of a leg under the gait's floor */
+  march:{drift:"Plotted leg", driftNote:"under %k km/h over its time window: the plotted leg\u2019s length over its window, a drift between anchors, not a march"},
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -8114,6 +8124,11 @@ function marchRow(id){
   if(readHidden(id)) return row(LABELS.reading.leg,
     mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window; '+
     esc(LABELS.reading.legNote.replace("%r",EYES.LABEL[commandView]).replace("%c",fmtClock(clock)))+')</span>');
+  /* the final audits' Stage 4 (CL-HIS-13): a leg under the gait's floor (GAIT.KMH, 1 km/h; decision 244 (a)) is a drift between plotted
+     anchors, kept by decision 45, not a march: it is named as the plotted leg it is, not "Marching" beside "In reserve" or "Concealed" */
+  if(mr.kmh<GAIT.KMH) return row(LABELS.march.drift,
+    mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+(mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+
+    ' <span class="hh">('+esc(LABELS.march.driftNote.replace("%k",GAIT.KMH))+')</span>');
   return row(mr.moving?"Marching":"Next move",
     mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
     (mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window)</span>');

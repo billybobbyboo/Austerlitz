@@ -458,7 +458,11 @@ const CONFLICTS=["bag@6","guard_cav@6","kamensky@3","kamensky@4"];
    departure, which no source gave, was dropped (question 180 (b)), and bag@9 with it left NEAR_CEILING. The dated legs forced to 80% of
    the ceiling or more by a following default stay open too (FORCED_DATED, computed and asserted; c_gren@8 left it in step 4b, its
    preceding arrival no longer dated, question 181 (b)), and every other leg at 80% or more is named with its reason (NEAR_CEILING). Any other rule, a named leg moving off its rule, or an unnamed leg reaching 80% fails --check. */
-const CEILING_FLAGGED=["sthilaire@3","vandamme@3"];
+/* kamensky@3 joined it in the final audits' Stage 4 (owner decision 286 (a), CL-HIS-07): the brigade marches with the II Column until the
+   08:45 phase opens and then turns (a declared hold, data.js); its status there, countermarch, is not battle order (BATTLE_ORDER), so its
+   derived arrival is at the ceiling, 08:53, flagged; until then the default rule had it turn from 08:00, before the French climb its act
+   names. Its named conflict (CONFLICTS) is unchanged: the turn stays early against the timeline's c. 09:45 */
+const CEILING_FLAGGED=["sthilaire@3","vandamme@3","kamensky@3"];
 const FORCED_DATED=["kollo@5"];
 const MOVEMIN_DERIVED={
  "gqg@6":"a headquarters has no tactical rate (app.js TACTICAL_RATE); its own moveMin of 40 is slower than the ceiling's 23.8 minutes, so anchorList takes the moveMin. Decided in docs/STAGE2_SPEC.md section M.13 (the derived legs, :1340; the decided table, :1393: \"its own moveMin (headquarters: no tactical rate)\"); data.js's gqg@6 note says so"
