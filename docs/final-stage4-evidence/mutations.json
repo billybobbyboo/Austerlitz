@@ -1,0 +1,250 @@
+[
+ {
+  "id": "M0",
+  "finding": "none (the unmutated copy)",
+  "runs": {
+   "test": {
+    "status": 0,
+    "errors": []
+   },
+   "sim": {
+    "status": 0,
+    "errors": []
+   },
+   "rt": {
+    "status": 0,
+    "errors": []
+   },
+   "chron": {
+    "status": 0,
+    "errors": []
+   }
+  },
+  "caught": true,
+  "verdict": "passes",
+  "failed": [],
+  "seconds": 358
+ },
+ {
+  "id": "M1",
+  "finding": "CL-HIS-05 (decision 285 (a))",
+  "runs": {
+   "sim": {
+    "status": 1,
+    "errors": [
+     "285: rg_inf@7: a leg from counterattack into repulsed declares no hold (it walks away under the offensive status)",
+     "285: rg_inf moves on a leg into a retreat from 11:16 while shown Counter-attacking",
+     "MELEE[8] rivaud x rg_inf 12:30-12:45: no sample within 0.5 km uses it (remove it)"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "285: rg_inf@7: a leg from counterattack into repulsed declares no hold (it walks away under the offensive status)",
+   "285: rg_inf moves on a leg into a retreat from 11:16 while shown Counter-attacking",
+   "MELEE[8] rivaud x rg_inf 12:30-12:45: no sample within 0.5 km uses it (remove it)"
+  ],
+  "seconds": 4
+ },
+ {
+  "id": "M2",
+  "finding": "CL-HIS-07 (decision 286 (a))",
+  "runs": {
+   "chron": {
+    "status": 1,
+    "errors": [
+     "flagged leg kamensky@3 has no derived arrival"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "flagged leg kamensky@3 has no derived arrival"
+  ],
+  "seconds": 4
+ },
+ {
+  "id": "M3",
+  "finding": "CL-HIS-13",
+  "runs": {
+   "rt": {
+    "status": 1,
+    "errors": [
+     "DRIVE: derived tags: sthilaire at 04:30: its march row (0.09 km/h, a drift) not \"Plotted leg\": <div class=\"kv\"><dt>Marching</dt><dd>0.4 km in 240 min &middot; 0.1 km/h <span class=\"ltag; vandamme at 04:30: its march row (0.09 km/h, a drift) not \"Plotted leg\": <div class=\"kv\"><dt>Marching</dt><dd"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "DRIVE: derived tags: sthilaire at 04:30: its march row (0.09 km/h, a drift) not \"Plotted leg\": <div class=\"kv\"><dt>Marching</dt><dd>0.4 km in 240 min &middot; 0.1 km/h <span class=\"ltag; vandamme at 04:30: its march row (0.09 km/h, a drift) not \"Plotted leg\": <div class=\"kv\"><dt>Marching</dt><dd"
+  ],
+  "seconds": 248
+ },
+ {
+  "id": "M4",
+  "finding": "CL-HIS-04",
+  "runs": {
+   "sim": {
+    "status": 1,
+    "errors": [
+     "opposing formations legrand x prz within 0.5 km outside a recorded fight: 08:21-13:42, 37 m at the least (MELEE)",
+     "CL-HIS-11: Sokolnitz village drawn without legrand within 0.6 km at 09:30 (1.44 km)"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "opposing formations legrand x prz within 0.5 km outside a recorded fight: 08:21-13:42, 37 m at the least (MELEE)",
+   "CL-HIS-11: Sokolnitz village drawn without legrand within 0.6 km at 09:30 (1.44 km)"
+  ],
+  "seconds": 2
+ },
+ {
+  "id": "M5",
+  "finding": "CL-HIS-10 (Bourcier)",
+  "runs": {
+   "sim": {
+    "status": 1,
+    "errors": [
+     "opposing formations bourcier x dok within 0.5 km outside a recorded fight: 13:08-15:59, 12 m at the least (MELEE)",
+     "opposing formations bourcier x kienmayer within 0.5 km outside a recorded fight: 13:38-14:46, 26 m at the least (MELEE)",
+     "opposing formations bourcier x lang within 0.5 km outside a recorded fight: 14:29-18:00, 130 m at the least (MELEE)"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "opposing formations bourcier x dok within 0.5 km outside a recorded fight: 13:08-15:59, 12 m at the least (MELEE)",
+   "opposing formations bourcier x kienmayer within 0.5 km outside a recorded fight: 13:38-14:46, 26 m at the least (MELEE)",
+   "opposing formations bourcier x lang within 0.5 km outside a recorded fight: 14:29-18:00, 130 m at the least (MELEE)"
+  ],
+  "seconds": 2
+ },
+ {
+  "id": "M6",
+  "finding": "CL-HIS-10 (the Litava)",
+  "runs": {
+   "sim": {
+    "status": 1,
+    "errors": [
+     "Litava: milo@8 crosses the drawn river at [444.7,210.5], 3319 m from a village on its bank, on no road (LITAVA_OK)",
+     "Litava: milo@9 crosses the drawn river at [449.2,205.6], 3110 m from a village on its bank, on no road (LITAVA_OK)",
+     "Litava: milo@8 stands 19 m from the drawn river's line, at no village"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "Litava: milo@8 crosses the drawn river at [444.7,210.5], 3319 m from a village on its bank, on no road (LITAVA_OK)",
+   "Litava: milo@9 crosses the drawn river at [449.2,205.6], 3110 m from a village on its bank, on no road (LITAVA_OK)",
+   "Litava: milo@8 stands 19 m from the drawn river's line, at no village"
+  ],
+  "seconds": 2
+ },
+ {
+  "id": "M7",
+  "finding": "CL-HIS-02 (decision 272 (a))",
+  "runs": {
+   "test": {
+    "status": 1,
+    "errors": [
+     "caffarelli@6: moves 0.79 km and carries the A of an earlier anchor (decision 272 (a): declare its own grade)"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "caffarelli@6: moves 0.79 km and carries the A of an earlier anchor (decision 272 (a): declare its own grade)"
+  ],
+  "seconds": 4
+ },
+ {
+  "id": "M8",
+  "finding": "the fight register (CL-HIS-10)",
+  "runs": {
+   "sim": {
+    "status": 1,
+    "errors": [
+     "opposing formations sthilaire x kamensky within 0.5 km outside a recorded fight: 09:18-11:07, 13 m at the least (MELEE)",
+     "MELEE[2] sthilaire x kamensky 09:10-09:15: no sample within 0.5 km uses it (remove it)"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "opposing formations sthilaire x kamensky within 0.5 km outside a recorded fight: 09:18-11:07, 13 m at the least (MELEE)",
+   "MELEE[2] sthilaire x kamensky 09:10-09:15: no sample within 0.5 km uses it (remove it)"
+  ],
+  "seconds": 4
+ },
+ {
+  "id": "M9",
+  "finding": "CL-HIS-11",
+  "runs": {
+   "sim": {
+    "status": 1,
+    "errors": [
+     "opposing formations friant x dok within 0.5 km outside a recorded fight: 13:51-14:31, 424 m at the least (MELEE)",
+     "MELEE[1] friant x lang 10:00-11:45: no sample within 0.5 km uses it (remove it)",
+     "CL-HIS-11: Sokolnitz village drawn without friant within 0.6 km at 10:30 (1.07 km)"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "opposing formations friant x dok within 0.5 km outside a recorded fight: 13:51-14:31, 424 m at the least (MELEE)",
+   "MELEE[1] friant x lang 10:00-11:45: no sample within 0.5 km uses it (remove it)",
+   "CL-HIS-11: Sokolnitz village drawn without friant within 0.6 km at 10:30 (1.07 km)"
+  ],
+  "seconds": 4
+ },
+ {
+  "id": "M10",
+  "finding": "CL-HIS-08 (the act held by its claim)",
+  "runs": {
+   "test": {
+    "status": 1,
+    "errors": [
+     "claims: STATEMENT_CLAIMS[\"FORMATIONS.kienmayer.track[\\\"7\\\"].act\"]: the statement (its label and text) changed since its claim was written (h 180e678edea6, now d0b6e5e96613): review the claim",
+     "claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "claims: STATEMENT_CLAIMS[\"FORMATIONS.kienmayer.track[\\\"7\\\"].act\"]: the statement (its label and text) changed since its claim was written (h 180e678edea6, now d0b6e5e96613): review the claim",
+   "claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+  ],
+  "seconds": 4
+ },
+ {
+  "id": "M11",
+  "finding": "CL-HIS-03 (the divided register held by its claim)",
+  "runs": {
+   "test": {
+    "status": 1,
+    "errors": [
+     "claims: STATEMENT_CLAIMS[\"FORMATIONS.rg_inf.track[\\\"5\\\"].act\"]: the statement (its label and text) changed since its claim was written (h 7357bdf8e06f, now 86ce43d417ff): review the claim",
+     "claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "claims: STATEMENT_CLAIMS[\"FORMATIONS.rg_inf.track[\\\"5\\\"].act\"]: the statement (its label and text) changed since its claim was written (h 7357bdf8e06f, now 86ce43d417ff): review the claim",
+   "claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+  ],
+  "seconds": 4
+ }
+]

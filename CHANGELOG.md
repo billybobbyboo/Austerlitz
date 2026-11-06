@@ -99,7 +99,7 @@ here).
 - `runtime-test.js`: the march row of every formation at every half hour, a drift named "Plotted leg" and never "Marching".
 - **The negative controls** (`tools/final-stage4/mutate.js`; `docs/final-stage4-evidence/mutations.*`): the unmutated copy passes test.js,
   sim-test.js, runtime-test.js and check:chronology, and each of eleven mutations (one per fix; the reworded texts by their claims) is caught by
-  its check: [MUTATIONS].
+  its check: M1 (rg_inf@7's hold) by sim-test's rule 285, M2 (kamensky@3's hold) by check:chronology, M3 (the drift row) by runtime-test.js, M4 (Legrand's old place) by the fight register and the Sokolnitz rule, M5 (Bourcier's old route) and M8 (a fight's window narrowed) by the fight register, M6 (Miloradovich on the Litava) by the Litava rule, M7 (a carried A) by test.js's rule 272, M9 (Friant back by Telnitz) by the Sokolnitz rule, M10 and M11 (Kienmayer's and the Guard's acts reverted) by their claims' hashes; "all 12 as expected" (the unmutated copy 358 s, the runtime-test mutation 248 s, the others 2-4 s). A first run caught nine: M1's edit no longer matched once rg_inf@7 declared its grade, and M9 was not caught by a rule asking for Legrand or Friant (Legrand's new place alone kept the village within 0.6 km), so the rule became "Legrand, then Friant", as the place records it.
 
 ### The audit's probes, before and after (`docs/final-stage4-evidence/probes/`)
 
@@ -115,11 +115,37 @@ here).
 
 ### Verified
 
-[VERIFIED]
+Here (Chromium 141, the pinned browser), on the final build `af2965c6...`:
+- `npm test`: the nine suites and the height guard pass.
+- `check:data`: 139 of 139 identical against the new reference; against `archive/postaudit2-e7d6924f.html` the five declarations above changed.
+- `check:chronology`: 0 errors; its verdicts as on `main` (70 moves with a timed statement, 66 consistent, 4 early, the four named conflicts).
+- `check:baseline`: passes (`af2965c6...`, 2,888,060 bytes).
+- `check:contrast`: every text element at AA in the embedded faces in every state reached, the start-up cases 8 of 8 (on the build before the
+  self-test's march-row check changed; that check is not drawn).
+- `check:selftest`: the run on `f4bbc78c...` (the build before decisions 287 (a) and 288 (a)) failed exactly three checks: the motion block
+  (pops 1,035 over 1,034 and 17 runs' visibility), the gait's kept-open count (25 over 24) and the self-test's own march-row check, which still
+  read "Marching" for a drift (fixed: it now requires "Plotted leg" for a leg under the gait's floor, as strict). The run on the final build
+  crashed in a live block on a click's 30 s timeout while another session's browser harness ran on the same machine, with no check failed before
+  it; on CI the self-test job passed on the final commit (`9c06458`, the push run 42209348809 and the pull request's run 42209420448: checks,
+  contrast and self-test).
+- The negative controls: all twelve as expected (above).
+
+`check:visual` was dispatched on CI (run 42190428768, `checks.yml`, `visual: true`) on `8b35682`, the commit before the re-baseline, to measure
+its geographic baselines; its result goes on the pull request (#86).
 
 ### The baselines
 
-[BASELINES]
+- **The motion benchmark (owner decision 287 (a), 6 November 2026):** on the WP-03 build check:selftest's block gave jumps 229, pops 1,035, level-of-
+  detail switches 128 and flickers 9 over the 16 motions (ceilings 251, 1,034, 130, 10), and 24 runs' visibility differing from their
+  baselines (17 drawing fewer or with fewer in view, 7 more). Cause: the formations re-plotted and held. `POPS` 1,034 to 1,035 and the 24
+  baselines re-baselined at this build's own counts, each was and is in `tools/visual/thresholds.js`; JUMPS, LOD, FLICKER and the real input's
+  rule unchanged. The most changed: land-zoom 1,741 of 2,258 to 1,649 of 2,207, low-zoom 505 of 633 to 457 of 590 (its longest hidden 633 to 667 ms),
+  hybrid-zoom 1,299 of 2,248 to 1,242 of 2,203; the most improved hybrid-orbit+sel 1,496 to 1,593 and the paper map's zoom with its pointer 723 to
+  852 (it now hovers nothing, so it equals its 16's run).
+- **The gait on the ground (owner decision 288 (a)):** H_CASES["4|men|drawn|fresh|rich"] 21 to 25 (its bound, a tenth more with at least two,
+  24 to 28): the WP-03 build's own count, its formations standing on other slopes; every other count, H_TOL and the proposed bounds unchanged.
+- **`check:visual`'s geographic baselines** (drop limits, the confidence share, the unobstructed baselines): measured on CI (above); any that
+  moves is put to the owner before it changes.
 
 ### Not done, and why (handed on)
 
