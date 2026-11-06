@@ -5,8 +5,8 @@
 **Status: on `claude/compassionate-curie-igyzhl` (a draft PR into `main`, for review, not merged).** WP-03 of `docs/ROADMAP_FINAL_AUDIT.md`:
 CL-HIS-02, -03, -04, -05, -07, -08, -09, -10, -11, -13 and CL-REC-06; the accepted CL-HIS-16 and -17 kept as they are. **A data task**: five
 data declarations change against `archive/postaudit2-e7d6924f.html` (FORMATIONS, ANALYSIS, PLANS, the movement model's `anchorList`, and
-STATEMENT_CLAIMS), each below; `check:data`'s reference moves to this build, `archive/stage4wp03-1bc31538.html`. `austerlitz-command-map.html`
-is now 2,887,267 bytes, md5 `1bc3153854d0375f6d526e2eade69654` (was 2,869,790, `6ec4abc2...`); `check:baseline` moves to it (`package.json`).
+STATEMENT_CLAIMS), each below; `check:data`'s reference moves to this build, `archive/stage4wp03-f4bbc78c.html`. `austerlitz-command-map.html`
+is now 2887760 bytes, md5 `f4bbc78c7e3eb4be2495110bd6e948d5` (was 2,869,790, `6ec4abc2...`); `check:baseline` moves to it (`package.json`).
 WP-04b (the relief) is stacked on this branch; the alongside track, WP-15's first batch, is draft PR #85 (no data; its readings in their own
 register, `docs/wp15-evidence/readings.md`; this track's are section S7 of `docs/step4-evidence/readings.md`; none of its readings is folded in
 here).

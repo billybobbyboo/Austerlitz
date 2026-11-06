@@ -11459,8 +11459,11 @@ var AUSTERLITZ_DEBUG=(function(){
     function dt(r){ var e=r.querySelector("dt"); return e?e.textContent:""; }
     [T_MIN,480,600,780].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false});
       Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id], full=rowsOf(dossierFormation(id)), card=rowsOf(compactCard(id));
-        if(f.track){ var mr=marchRate(id,clock), m=full.filter(function(r){ return /^(Marching|Next move)$/.test(dt(r)); })[0];
-          if(mr){ nM++; if(!m||!m.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": the march row untagged"); }
+        /* the final audits' Stage 4 (CL-HIS-13): a leg under the gait's floor (GAIT.KMH) is named the plotted leg it is (LABELS.march.drift),
+           any other "Marching" or "Next move"; both tagged derived */
+        if(f.track){ var mr=marchRate(id,clock), m=full.filter(function(r){ var w=dt(r); return /^(Marching|Next move)$/.test(w)||w===LABELS.march.drift; })[0];
+          if(mr){ nM++; if(!m||!m.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": the march row untagged");
+            else if((mr.kmh<GAIT.KMH)!==(dt(m)===LABELS.march.drift)) bad.push(id+" at "+fmtClock(t)+": its march row \""+dt(m)+"\" at "+mr.kmh.toFixed(2)+" km/h (under "+GAIT.KMH+" km/h \""+LABELS.march.drift+"\", else Marching or Next move)"); }
           else if(m) bad.push(id+" at "+fmtClock(t)+": a march row with no leg");
           return; }
         if(full.concat(card).some(function(r){ return /^(Position at|Where)\b/.test(dt(r)); })) bad.push(id+" at "+fmtClock(t)+": an aggregate named as a position");
