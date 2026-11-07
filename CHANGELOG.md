@@ -5,10 +5,10 @@
 **Status: on `claude/compassionate-curie-igyzhl-relief`, stacked on WP-03 (`claude/compassionate-curie-igyzhl` at `eecb8b8`); a draft PR into
 WP-03's branch, for review, not merged.** WP-04b of `docs/ROADMAP_FINAL_AUDIT.md`: CL-GEO-01 (owner decision 273 (a), "disclose and refit,
 measured first"), CL-GEO-05, CL-GEO-11, CL-GEO-07, and CL-GEO-03 and -04 by their quick remedy; with the owner's decisions 289 (a), 291 (a),
-292 (a), 293 (a) and 294 (a) on what the refit moved. **A data task**: against WP-03's reference `archive/stage4wp03-af2965c6.html` nine data
+292 (a), 293 (a), 294 (a) and 295 (a) on what the refit moved. **A data task**: against WP-03's reference `archive/stage4wp03-af2965c6.html` nine data
 declarations change (GEOREF, FORMATIONS, SOURCE_NOTE, TOUR, VILLAGES, TERRAIN_LINES, regionalH, localHeight, coverClass) and four are added
 (RELIEF_DEM, tbump, CASTLE_GROUND, castleGround), each below; every other identical. `check:data`'s reference moves to this build,
-`archive/stage4wp04b-bbda94be.html`. `austerlitz-command-map.html` is now 2,902,962 bytes, md5 `bbda94be6f01c4fcd5f2cd2253ee64c6` (was 2,888,060,
+`archive/stage4wp04b-cdca9984.html`. `austerlitz-command-map.html` is now 2,903,749 bytes, md5 `cdca9984ed7663c84db458ad4724ce15` (was 2,888,060,
 `af2965c6...`); `check:baseline` moves to it (`package.json`). The records and evidence: `docs/final-stage4-wp04b-evidence/` (its README lists
 each file and the tool that made it). The DEM-derived grid (roadmap's 1-3 week path) was not needed: the fitted terms meet every tolerance line
 the measurement proposed (below), so nothing was built beyond them.
@@ -213,11 +213,22 @@ ground; the high ground south of the Pratzeberg above the fog's top 0.89 to 2.09
   passes as derived (with the old floor this case fails); the run's own recorded failure stands until `check:visual` runs again, re-dispatched on
   the final commit, its result on #87.
 
+- **The gait in motion, the simple kit (owner decision 295 (a), 7 November 2026, extending 293 (a); `app.js` `H_CASES`).** The re-dispatched
+  `check:visual` on `0d7212d` (run 42342261196) passed every limit, the phone floor of 294 (a) among them, but two gait cases: "4x men drawn
+  motion simple" and "10.33x men drawn motion simple", each 1 pose beyond H_TOL where none was kept open (WP-03: none). Both are Drouet's
+  division, figure #20, at 08:46 while playing; at 10.33x 0.0927 against H_TOL 0.0774 (its proposed bound 0.2711), where the previous
+  `check:visual` run and every self-test job measured it within (0.0742): the motion block's sample is not the same from run to run (4,188 to
+  4,304 poses judged in that case), and the refit lowered Drouet's ground there by 15 m and steepened it (3.6 to 4.8 degrees within 2 units,
+  `selftest/gait-ground.txt`). *Is:* both counts none to 1 (at most 3 each); H_TOL and every bound unchanged. In the same run "4x men drawn
+  motion rich" counted 24 against its allowance of 24 and "4x men edges motion rich" 21 against 22: within, but near their limits.
+- `check:visual` on the final commit: re-dispatched, its result on #87.
+
 ### Verified
 
-All on this branch's final tree (build `bbda94be...`), here, but `check:visual` (CI):
+All on this branch's final tree, here, but `check:visual` (CI); the self-test, contrast and the negative controls on build `bbda94be...`, which
+differs from the final `cdca9984...` only in the self-test's `H_CASES` (decision 295 (a)); the rest on `cdca9984...`:
 
-- `npm run build`: 2,902,962 bytes; the committed build is a fresh build's.
+- `npm run build`: 2,903,749 bytes; the committed build is a fresh build's.
 - `npm test`: the nine suites and the height guard, every suite passing: terrain-test (the relief's tolerance lines all within; the villages on
   their own ground, 376 buildings, 360 on the village class, 0 on marsh; the castle's own ground, 7 ranges, 80 of 80 points on the village class;
   tour stop 5 "47% and under 3%", live 46.8% and 2.1%; the lower Goldbach's dead ground 1 of 188 points in sight; the chapel's margin +0.4 m,
@@ -226,10 +237,10 @@ All on this branch's final tree (build `bbda94be...`), here, but `check:visual` 
   0), binding-test (400 checks), audit.js (0 violations).
 - `npm run check:data`: against WP-03's reference (`archive/stage4wp03-af2965c6.html`) the 13 declarations above, every other identical (the
   rendering declarations changed: `GROUND_FRAG_HEAD`, `groundUniforms`, `makeBlock`, `paintLegend`, `AUSTERLITZ_DEBUG`); against the new reference
-  `archive/stage4wp04b-bbda94be.html` all 143 data declarations identical.
+  `archive/stage4wp04b-cdca9984.html` all 143 data declarations identical.
 - `npm run check:chronology`: 0 errors; 70 moves with a timed statement, 66 consistent, 4 early (bag@6, guard_cav@6, kamensky@3, kamensky@4, the
   named conflicts), 0 late; the movement audit 0 findings: as on WP-03.
-- `npm run check:baseline`: passes on `bbda94be...`, 2,902,962 bytes.
+- `npm run check:baseline`: passes on `cdca9984...`, 2,903,749 bytes.
 - `npm run check:contrast`: every text element at AA in the embedded faces (7,175 elements, 120 pairs, 0 below AA, 0 below 10.5 px, 0 font
   failures), 45 of 45 states reached (10 as a phone), 0 console messages; the start-up cases 8 of 8 (the context loss 185 warnings, at most 248).
 - `npm run check:selftest` (`tools/visual/harness.js`, Chromium 141, one fresh 1366 x 768 page): the self-test 325 of 325, no STAGE0 failure (`selftest/selftest-final.json`): the

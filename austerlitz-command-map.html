@@ -21647,6 +21647,12 @@ var AUSTERLITZ_DEBUG=(function(){
           "4|horses|edges|motion|rich":3,
           "10.33|men|edges|fresh|rich":32, "10.33|men|edges|fresh|simple":19, "10.33|men|drawn|fresh|rich":33, "10.33|men|drawn|fresh|simple":23, "10.33|men|drawn|motion|rich":19,
           "10.33|men|edges|motion|rich":12,
+          /* the final audits' Stage 4, WP-04b (owner decision 295 (a), 7 November 2026, extending 293 (a)): the simple kit in motion at 4x and
+             10.33x, none to 1 each: CI's check:visual on 0d7212d found 1 pose beyond H_TOL in each (Drouet's division, #20, at 08:46 playing; at
+             10.33x 0.0927 against 0.0774, its proposed bound 0.2711), where every earlier run measured it within (0.0742): the motion block's
+             sample is not the same from run to run (4,188 to 4,304 poses judged), and the refit lowered Drouet's ground there by 15 m and
+             steepened it (3.6 to 4.8 degrees within 2 units, tools/final-stage4-wp04b/gait-ground.js); H_TOL and every bound unchanged */
+          "4|men|drawn|motion|simple":1, "10.33|men|drawn|motion|simple":1,
           "10.33|horses|edges|fresh|rich":38, "10.33|horses|edges|fresh|simple":38, "10.33|horses|edges|motion|rich":9, "10.33|horses|drawn|fresh|rich":40,
           "10.33|horses|drawn|fresh|simple":38, "10.33|horses|drawn|motion|rich":13};
         function hSoles(g,horse){ var c=hSolC.get(g); if(c) return c; var P=g.attributes.position, K=g.attributes.aPart, seen={}, out=[];
