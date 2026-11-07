@@ -1,0 +1,20 @@
+== before
+  shares (3 m eye): {"pratzeberg":73.4,"vinohrady":64.4,"santon":41.5,"zuran":38.4,"puntowitz":2.2,"sokolnitz":1.7,"augezd":4.8}
+  from the Pratzeberg: {"sokolnitz":false,"telnitz":false,"kobelnitz":false,"puntowitz":false,"girzikowitz":true}; the dead-ground line: 0 of 21 samples visible []
+  from Puntowitz: {"pratzeberg":false,"vinohrady":false}
+  sthilaire@0 [201,221]    from the Pratzeberg hidden, from Stare Vinohrady VISIBLE   (Standing in fog behind Puntowitz, which hid it from the plateau)
+  sthilaire@2 [206,231]    from the Pratzeberg hidden, from Stare Vinohrady hidden   (Forms in the Goldbach valley for the attack)
+  vandamme@0  [217,171]    from the Pratzeberg VISIBLE, from Stare Vinohrady VISIBLE   (Concealed by the fog in the valley behind Girzikowitz)
+  vandamme@2  [221,182]    from the Pratzeberg hidden, from Stare Vinohrady VISIBLE   (Forms in the Goldbach valley)
+  extent: south of the Pratzeberg above the fog top 0.89 km, above 260 m 0.59 km
+  profile x 285 (y:m every 0.5 km): 140:244 155.8:247 171.6:252 187.5:255 203.3:255 219.1:252 234.9:244 250.8:249 266.6:259 282.4:321 298.2:310 314.1:250 329.9:223 345.7:211 361.5:199 377.4:193 393.2:190
+== after
+  shares (3 m eye): {"pratzeberg":46.8,"vinohrady":61.1,"santon":42.1,"zuran":38.9,"puntowitz":2.1,"sokolnitz":1.8,"augezd":3.2}
+  from the Pratzeberg: {"sokolnitz":false,"telnitz":false,"kobelnitz":true,"puntowitz":true,"girzikowitz":true}; the dead-ground line: 2 of 91 samples visible [[213.6,325.4],[213.5,325.6]]
+  from Puntowitz: {"pratzeberg":true,"vinohrady":false}
+  sthilaire@0 [201,221]    from the Pratzeberg VISIBLE, from Stare Vinohrady VISIBLE   (Standing in fog behind Puntowitz, which hid it from the plateau)
+  sthilaire@2 [206,231]    from the Pratzeberg VISIBLE, from Stare Vinohrady hidden   (Forms in the Goldbach valley for the attack)
+  vandamme@0  [217,171]    from the Pratzeberg VISIBLE, from Stare Vinohrady VISIBLE   (Concealed by the fog in the valley behind Girzikowitz)
+  vandamme@2  [221,182]    from the Pratzeberg VISIBLE, from Stare Vinohrady VISIBLE   (Forms in the Goldbach valley)
+  extent: south of the Pratzeberg above the fog top 2.09 km, above 260 m 1.49 km
+  profile x 285 (y:m every 0.5 km): 140:244 155.8:247 171.6:252 187.5:255 203.3:255 219.1:252 234.9:244 250.8:249 266.6:259 282.4:303 298.2:313 314.1:309 329.9:269 345.7:256 361.5:221 377.4:193 393.2:190

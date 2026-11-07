@@ -381,7 +381,7 @@ var TOUR = [
 {n:"The Allied advance", at:"ph:1", t:445, chapter:"commitment",
  x:"From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 41,000 at 04:00 to about 21,500 by 07:25, about half of it gone before a shot is fired at the plateau."},
 {n:"Why the Pratzen matters", at:"ph:2", feature:"pratzen", cam:[-136,46,31,-6,8,-3],
- x:"In this model's terrain an observer on the Pratzeberg summit can see about 73 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope."},
+ x:"In this model's terrain an observer on the Pratzeberg summit can see about 47 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope."},
 {n:"The French strike", at:"ev:soult", chapter:"pratzen",
  x:"At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto a plateau the Allies are leaving. Two divisions, the Guard held back, against a column still filing off the heights."},
 {n:"The army divided", at:"ev:pratzeberg", chapter:"cut",

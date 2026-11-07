@@ -33,7 +33,9 @@ sequence between documented places. No grade was kept because it was there: ever
   legacy course kept to the road; beyond it the track ran through fields on the Second Survey). The "wood above Holubitz" (`WOODS`, c [353,55],
   rx 28, ry 13, 110 trees, legacy and unsourced): the corrected road and post run through it, and the Second Survey has fields there with the road
   between its tree rows; **not drawn**. Two finds from the same sheet are recorded, not acted on (outside decision 260): the Second Survey labels
-  "Kruch" immediately west of Holubitz, 0.7 km south of the road, where the dataset draws Krug 2.9 km away at [339,139] (its "warped legacy place"; no
+  "Kruch" immediately west of Holubitz, 0.7 km south of the road, where the dataset draws Krug 2.9 km away at [339,139] [the final audits' Stage 4, WP-04b
+  (CL-GEO-07): measured, 1.67 km from today's Kruh (Wikidata Q1790108) and 1.58 km from the Kruh tract's register point (C6.26); since WP-04b Krug is
+  drawn at that point, GEOREF.GT.krug] (its "warped legacy place"; no
   register read places it); and no wood stands anywhere between the post and Holubitz.
 
 ### 1.2 The Posoritz post house (`geo.js` `GT.posthouse`, `FEATURES[#posthouse]`, `VILLAGES`)

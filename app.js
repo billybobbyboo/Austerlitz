@@ -1604,12 +1604,32 @@ function makeBlock(f,id){
     [gD,lD,gL,lL,hD,hL,dDc,dDf,dLc,dLf].forEach(function(m){ if(m){ m.instanceMatrix.needsUpdate=true; seatable(m,false,m.userData.kit.role!=="gear"); } });
     /* each piece seated on the ground under its own wheels and each limber under its own, so on uneven ground the trail's end and the pintle
        part: after every seating the limbered piece is turned about its axle until its trail's end lies on its limber's pintle's line (its
-       wheels stay on the ground where they stand); the deployed piece's trail rests where its seating puts it, as before 8E */
-    var rG=kitArtR("gun"), tp=kitArtPitch(), tend=[rG+(0.05-rG)*Math.cos(tp)+2.05*Math.sin(tp),(rG-0.05)*Math.sin(tp)+2.05*Math.cos(tp)], _a1=new THREE.Matrix4(), _a2=new THREE.Matrix4(), _a3=new THREE.Matrix4(), _av=new THREE.Vector3();
-    ud.afterSeat=function(){
-      for(var q=0;q<guns;q++){ lL.getMatrixAt(q,_a1); gL.getMatrixAt(q,_a2); _av.set(0,kitArtR("limber")+0.02,ART_AT.PIN).applyMatrix4(_a1).applyMatrix4(_a3.copy(_a2).invert());
-        var d=Math.atan2(tend[0]-rG,tend[1])-Math.atan2(_av.y-rG,_av.z);
-        _a2.multiply(_a3.makeTranslation(0,rG,0)).multiply(_a1.makeRotationX(d)).multiply(_a3.makeTranslation(0,-rG,0)); gL.setMatrixAt(q,_a2); }
+       wheels stay on the ground where they stand); the deployed piece's trail rests where its seating puts it, as before 8E.
+       The final audits' Stage 4, WP-04b: turned in pitch alone, the trail's end lay on the pintle's line but short of it or beyond it wherever
+       the ground between the two vehicles is not the block's plane, by up to 0.545 units on the refitted southern plateau (the heights'
+       battery at 14:07, 13.9% ground, 56% drawn at 4x), against the self-test's 0.12; there most of it across (the block tilts, so the drawn
+       ground's vertical leans in its frame and each vehicle seated at its own height stands aside of its designed line). Now the piece is
+       seated against its limber: after the turn, its axle is moved over the ground, in the world, by what still parts its trail's end from the
+       pintle, and set so that its wheel's lowest point (its radius below the axle along the block's up) is on the drawn ground there, the piece
+       turned about it again, until they meet within 0.002 units or twelve times (DESIGN: the hitched piece's place follows its limber's; the
+       limber, the team and the drivers stay where they are seated). Nothing allocated: the vectors are the block's */
+    var rG=kitArtR("gun"), tp=kitArtPitch(), tend=[rG+(0.05-rG)*Math.cos(tp)+2.05*Math.sin(tp),(rG-0.05)*Math.sin(tp)+2.05*Math.cos(tp)], _a1=new THREE.Matrix4(), _a2=new THREE.Matrix4(), _a3=new THREE.Matrix4(), _a4=new THREE.Matrix4(), _av=new THREE.Vector3(),
+        _ate=new THREE.Vector3(), _apn=new THREE.Vector3(), _apw=new THREE.Vector3(), _ax=new THREE.Vector3(), _axw=new THREE.Vector3(), _aup=new THREE.Vector3();
+    ud.afterSeat=function afterSeat(){
+      var rL=kitArtR("limber"), kr=rG*(g.scale.y||1); _aup.set(0,1,0).transformDirection(g.matrixWorld);
+      for(var q=0;q<guns;q++){ lL.getMatrixAt(q,_a1); gL.getMatrixAt(q,_a2); _apn.set(0,rL+0.02,ART_AT.PIN).applyMatrix4(_a1); _apw.copy(_apn).applyMatrix4(g.matrixWorld);
+        for(var it=0;it<12;it++){
+          _av.copy(_apn).applyMatrix4(_a3.copy(_a2).invert());   /* the pintle in the piece's own frame */
+          var d=Math.atan2(tend[0]-rG,tend[1])-Math.atan2(_av.y-rG,_av.z);
+          _a2.multiply(_a3.makeTranslation(0,rG,0)).multiply(_a4.makeRotationX(d)).multiply(_a3.makeTranslation(0,-rG,0));   /* turned about its axle */
+          _ate.set(0,tend[0],tend[1]).applyMatrix4(_a2).applyMatrix4(g.matrixWorld);   /* its trail's end, in the world */
+          var rx=_apw.x-_ate.x, rz=_apw.z-_ate.z;
+          if((rx*rx+rz*rz<4e-6&&Math.abs(_apw.y-_ate.y)<0.002)||it===11) break;
+          /* the axle moved by the residual over the ground, its wheel on the drawn ground there; the turn kept */
+          _ax.set(0,rG,0).applyMatrix4(_a2); _axw.copy(_ax).applyMatrix4(g.matrixWorld); _axw.x+=rx; _axw.z+=rz;
+          _axw.y=groundY(_axw.x-kr*_aup.x,_axw.z-kr*_aup.z)+kr*_aup.y; _axw.applyMatrix4(_inv);
+          _a2.setPosition(_a2.elements[12]+_axw.x-_ax.x,_a2.elements[13]+_axw.y-_ax.y,_a2.elements[14]+_axw.z-_ax.z); }
+        gL.setMatrixAt(q,_a2); }
       gL.instanceMatrix.needsUpdate=true; };
     /* the drivers' coats: the nation's symbol colour (no train dress in the table: generic, section 2.9) */
     if(nd) [dDc,dLc].forEach(function(m){ for(var i=0;i<m.count;i++){ cc.copy(lin(gen.coat)).multiplyScalar(0.86+0.28*srnd(i*5+1)); m.setColorAt(i,cc); } m.instanceColor.needsUpdate=true; });
@@ -5670,6 +5690,7 @@ function paintLegend(){
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
           wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
           mere:true,   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
+          stream:true,   /* the final audits' Stage 4, WP-04b (CL-GEO-03, -04): the streams in every view, schematic but at Sokolnitz */
           vine:true,   /* roadmap step 2 (decision 135): the vineyard cover is drawn in every view; whether vines stood there in 1805 is open */
           fog:land&&fogCap(fogAmount(clock))>0.01,   /* Stage 4C: while the valley fog is drawn */
           /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes; the badge also on the landscape's names */
@@ -10055,6 +10076,7 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
         if(row("wood")!==(mode==="staff")||row("village")!==(mode==="staff")) R.ctx.push(s.n+": the paper map's wood and village rows");
         if(!row("mere")) R.ctx.push(s.n+": the meres' row (pond outlines schematic)");
+        if(!row("stream")) R.ctx.push(s.n+": the streams' row (courses schematic but at Sokolnitz)");   /* WP-04b (CL-GEO-03, -04) */
         if(!row("vine")) R.ctx.push(s.n+": the vineyard row (presumed)");   /* roadmap step 2 (decision 135) */
         if((getComputedStyle(document.getElementById("goingkey")).display!=="none")!==goingOn) R.ctx.push(s.n+": the going rows"); }
       if(s.layers){ setPlan(planSide); if(goingOn) toggle("#going"); if(layerOn.analysis) toggle('.layer-btn[data-l="analysis"]'); }
@@ -13799,11 +13821,36 @@ var AUSTERLITZ_DEBUG=(function(){
            contactsole, its worst within 3.5 H_TOL): the number of cases is what such a change multiplies */
         /* the final audits' Stage 4, WP-03 (owner decision 288 (a)): "4|men|drawn|fresh|rich" 21 to 25, the WP-03 build's own count, its formations moved
            onto other slopes (Sokolnitz, Telnitz, the Krzenowitz-Austerlitz line); every other count, H_TOL and the proposed bounds unchanged */
-        var H_CASES={"4|men|edges|fresh|rich":14, "4|men|edges|fresh|simple":4, "4|men|drawn|fresh|rich":25, "4|men|drawn|fresh|simple":9,
-          "4|horses|edges|fresh|rich":29, "4|horses|edges|fresh|simple":29, "4|horses|drawn|fresh|rich":29, "4|horses|drawn|fresh|simple":27, "4|horses|drawn|motion|rich":1,
-          "10.33|men|edges|fresh|rich":20, "10.33|men|edges|fresh|simple":11, "10.33|men|drawn|fresh|rich":21, "10.33|men|drawn|fresh|simple":14, "10.33|men|drawn|motion|rich":1,
-          "10.33|horses|edges|fresh|rich":29, "10.33|horses|edges|fresh|simple":29, "10.33|horses|edges|motion|rich":2, "10.33|horses|drawn|fresh|rich":28,
-          "10.33|horses|drawn|fresh|simple":25, "10.33|horses|drawn|motion|rich":1};
+        /* the final audits' Stage 4, WP-04b (owner decision 292 (a), 6 November 2026): the six 10.33x horse cases at the WP-04b build's own counts,
+           measured on check:selftest's page after the artillery's seating against the limber (Chromium 141), the horses on the refitted relief's
+           steeper ground (the southern plateau raised by up to 57 m): "10.33|horses|edges|fresh|rich" 29 to 38, "10.33|horses|edges|fresh|simple"
+           29 to 38, "10.33|horses|edges|motion|rich" 2 to 9, "10.33|horses|drawn|fresh|rich" 28 to 40, "10.33|horses|drawn|fresh|simple" 25 to 38,
+           "10.33|horses|drawn|motion|rich" 1 to 13; every other count, H_TOL and the proposed bounds unchanged (no case beyond its bound) */
+        /* the final audits' Stage 4, WP-04b (owner decision 293 (a), 7 November 2026, extending 292 (a): the verdict printed only its first six
+           failures, so 292 was put on the six 10.33x horse cases alone): the other 17 cases at the WP-04b build's own counts, measured on the same
+           page after the same fix. Their formations' places and the gait's code are WP-03's; the ground under them is the refit's (in motion
+           Saint-Hilaire, Vandamme and the headquarters on the southern plateau at 13:50-13:58, up to 64 m higher, Saint-Hilaire's steepest ground
+           within 0.25 km 5.8 to 9.4 degrees; fresh also Buxhowden, 1.7 to 9.9 degrees, and the grenadiers by Schlapanitz):
+           "4|horses|drawn|fresh|rich" 29 to 33, "4|horses|drawn|fresh|simple" 27 to 32, "4|horses|edges|fresh|rich" 29 to 35,
+           "4|horses|edges|fresh|simple" 29 to 35, "4|horses|edges|motion|rich" none to 3, "4|men|drawn|fresh|rich" 25 to 38, "4|men|drawn|fresh|simple"
+           9 to 19, "4|men|drawn|motion|rich" none to 21, "4|men|edges|fresh|rich" 14 to 29, "4|men|edges|fresh|simple" 4 to 13, "4|men|edges|motion|rich"
+           none to 20, "10.33|men|drawn|fresh|rich" 21 to 33, "10.33|men|drawn|fresh|simple" 14 to 23, "10.33|men|drawn|motion|rich" 1 to 19,
+           "10.33|men|edges|fresh|rich" 20 to 32, "10.33|men|edges|fresh|simple" 11 to 19, "10.33|men|edges|motion|rich" none to 12; every other count,
+           H_TOL and the proposed bounds unchanged (no case beyond its bound: the worst 0.2466 against 0.2711, the grenadiers at 09:05) */
+        var H_CASES={"4|men|edges|fresh|rich":29, "4|men|edges|fresh|simple":13, "4|men|drawn|fresh|rich":38, "4|men|drawn|fresh|simple":19,
+          "4|men|edges|motion|rich":20, "4|men|drawn|motion|rich":21,
+          "4|horses|edges|fresh|rich":35, "4|horses|edges|fresh|simple":35, "4|horses|drawn|fresh|rich":33, "4|horses|drawn|fresh|simple":32, "4|horses|drawn|motion|rich":1,
+          "4|horses|edges|motion|rich":3,
+          "10.33|men|edges|fresh|rich":32, "10.33|men|edges|fresh|simple":19, "10.33|men|drawn|fresh|rich":33, "10.33|men|drawn|fresh|simple":23, "10.33|men|drawn|motion|rich":19,
+          "10.33|men|edges|motion|rich":12,
+          /* the final audits' Stage 4, WP-04b (owner decision 295 (a), 7 November 2026, extending 293 (a)): the simple kit in motion at 4x and
+             10.33x, none to 1 each: CI's check:visual on 0d7212d found 1 pose beyond H_TOL in each (Drouet's division, #20, at 08:46 playing; at
+             10.33x 0.0927 against 0.0774, its proposed bound 0.2711), where every earlier run measured it within (0.0742): the motion block's
+             sample is not the same from run to run (4,188 to 4,304 poses judged), and the refit lowered Drouet's ground there by 15 m and
+             steepened it (3.6 to 4.8 degrees within 2 units, tools/final-stage4-wp04b/gait-ground.js); H_TOL and every bound unchanged */
+          "4|men|drawn|motion|simple":1, "10.33|men|drawn|motion|simple":1,
+          "10.33|horses|edges|fresh|rich":38, "10.33|horses|edges|fresh|simple":38, "10.33|horses|edges|motion|rich":9, "10.33|horses|drawn|fresh|rich":40,
+          "10.33|horses|drawn|fresh|simple":38, "10.33|horses|drawn|motion|rich":13};
         function hSoles(g,horse){ var c=hSolC.get(g); if(c) return c; var P=g.attributes.position, K=g.attributes.aPart, seen={}, out=[];
           for(var i=0;i<P.count;i++){ var k=Math.round(K.array[i]); if(horse?(k<5||k>8):!(k===1||k===2||k===13||k===14)) continue; var y=P.array[i*3+1]; if(y>0.03) continue;
             var x=P.array[i*3], z=P.array[i*3+2], key=k+","+x.toFixed(4)+","+y.toFixed(4)+","+z.toFixed(4); if(seen[key]) continue; seen[key]=1; out.push([k,x,y,z]); }
@@ -13885,7 +13932,7 @@ var AUSTERLITZ_DEBUG=(function(){
         hT.push("the slopes' lookup the drawn ground's at "+hLk+" points; in motion "+hFr+" frames; the level switched along the dolly "+JSON.stringify(hLod)+"; Saint-Hilaire's turn "+hTurn.toFixed(3)+" rad");
         if(!(hLod["4 sthilaire"]>0)) hBad.push("in motion the division's level never switched along the dolly"); if(!(hTurn>0.05)) hBad.push("in motion the division never turned");
         ck("the gait on the ground (decision 244 (a); 8F's prerequisite 2): each instance against itself at rest, both levels, at 4x and 10.33x, fresh and in motion (facets, a turn, the level switched, the pause), each kit's own soles planted on 8E's chords: the hook's edges and the soles the kit draws within 0.03 units (4x; in proportion to the relief at 10.33x) in every pose, but for the cases kept open, none beyond its proposed bound and no more of them than were found, every case beyond 0.03 counted with its pixels; the legacy seat and the lift reported; the slopes' lookup the drawn ground's at every factor; at 1x no figure",
-          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.slice(0,6).join("; "):""));
+          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG ("+hBad.length+" in all"+(hBad.length>6?", the first six":"")+"): "+hBad.slice(0,6).join("; "):""));   /* WP-04b: the number in all (decision 293 (a)'s cause) */
 
         /* (j) the step described as decision 244 asks (section 0.3.1, item 8): the legend's row wherever figures are drawn, and the sources sheet's
            notes, a visual convention for symbols under compressed time, never footsteps matched to the ground */

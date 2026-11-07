@@ -1,0 +1,20 @@
+(a) the worst poses' formations (centre: height, slope; the steepest within 2 units), <WP-03 at eecb8b8> -> <this branch, WP-04b>
+  c_gren 09:05 map [175,155]: height 247.7 -> 247.7 m; slope 0.62 -> 0.62 deg; steepest within 2 units 0.70 -> 0.70 deg
+  gqg 09:05 map [177,134]: height 289.6 -> 289.6 m; slope 0.52 -> 0.52 deg; steepest within 2 units 0.59 -> 0.59 deg
+  sthilaire 13:50 map [286,315]: height 246.2 -> 310.2 m; slope 4.87 -> 3.21 deg; steepest within 2 units 5.52 -> 6.91 deg
+  sthilaire 13:58 map [285,322]: height 231.3 -> 299.0 m; slope 2.86 -> 8.82 deg; steepest within 2 units 4.18 -> 10.62 deg
+  vandamme 13:52 map [281,287]: height 324.5 -> 307.0 m; slope 1.08 -> 4.75 deg; steepest within 2 units 7.82 -> 7.57 deg
+  gqg 13:57 map [298,313]: height 235.0 -> 293.1 m; slope 3.81 -> 9.34 deg; steepest within 2 units 4.52 -> 10.66 deg
+  drouet 08:46 map [181,177]: height 262.4 -> 247.8 m; slope 3.09 -> 0.50 deg; steepest within 2 units 3.64 -> 4.84 deg
+  rg_inf 10:54 map [351,195]: height 245.9 -> 245.9 m; slope 0.19 -> 0.19 deg; steepest within 2 units 0.32 -> 0.32 deg
+(b) the fresh states: the formations on ground changed
+  09:05: 31 placed, 3 on ground changed (the steepest within 0.25 km by 1 degree or more, or the centre by 5 m or more): c_gren 3.4->0.7 deg, +0 m; buxhowden 1.7->9.9 deg, +8 m; kamensky 10.7->10.8 deg, -7 m
+  10:40: 31 placed, 3 on ground changed (the steepest within 0.25 km by 1 degree or more, or the centre by 5 m or more): sthilaire 10.6->11.7 deg, -14 m; buxhowden 1.9->3.7 deg, +0 m; kamensky 10.2->11.6 deg, +8 m
+  13:50: 32 placed, 5 on ground changed (the steepest within 0.25 km by 1 degree or more, or the centre by 5 m or more): gqg 12.1->8.9 deg, +45 m; heightguns 10.7->10.8 deg, -16 m; sthilaire 5.8->9.4 deg, +64 m; vandamme 10.6->10.2 deg, -18 m; buxhowden 1.9->11.6 deg, +0 m
+(c) around the fresh cases' worst formations
+  c_gren 09:05 within 0.25 km: the largest height change 2.4 m; the steepest 3.37 -> 0.72 deg
+  c_gren 09:05 within 0.5 km: the largest height change 21.0 m; the steepest 14.49 -> 14.49 deg
+  c_gren 09:05 within 0.75 km: the largest height change 41.5 m; the steepest 13.97 -> 13.97 deg
+  gqg 09:05 within 0.25 km: the largest height change 0.0 m; the steepest 14.53 -> 14.53 deg
+  gqg 09:05 within 0.5 km: the largest height change 0.0 m; the steepest 14.53 -> 14.53 deg
+  gqg 09:05 within 0.75 km: the largest height change 0.0 m; the steepest 14.53 -> 14.53 deg

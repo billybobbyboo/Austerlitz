@@ -1,0 +1,152 @@
+[
+ {
+  "id": "sp_288_311",
+  "map": [
+   288,
+   311
+  ],
+  "lat": 49.12181,
+  "lon": 16.761698,
+  "note": "southern plateau 1 km south of the Pratzeberg (the audit's 307-311 m point)"
+ },
+ {
+  "id": "sp_297_328",
+  "map": [
+   297,
+   328
+  ],
+  "lat": 49.116432,
+  "lon": 16.763215,
+  "note": "southern plateau, its south-east (the audit's 292-298 m point)"
+ },
+ {
+  "id": "sp_290_300",
+  "map": [
+   290,
+   300
+  ],
+  "lat": 49.124624,
+  "lon": 16.763955,
+  "note": "southern plateau, 0.35 km south of the Pratzeberg"
+ },
+ {
+  "id": "sp_300_318",
+  "map": [
+   300,
+   318
+  ],
+  "lat": 49.118889,
+  "lon": 16.765756,
+  "note": "southern plateau, centre"
+ },
+ {
+  "id": "sp_280_322",
+  "map": [
+   280,
+   322
+  ],
+  "lat": 49.119507,
+  "lon": 16.756957,
+  "note": "southern plateau, west shoulder"
+ },
+ {
+  "id": "sp_312_330",
+  "map": [
+   312,
+   330
+  ],
+  "lat": 49.114612,
+  "lon": 16.769165,
+  "note": "the spur toward Hostieradek"
+ },
+ {
+  "id": "sp_320_320",
+  "map": [
+   320,
+   320
+  ],
+  "lat": 49.116644,
+  "lon": 16.773776,
+  "note": "southern plateau, east shoulder"
+ },
+ {
+  "id": "sp_305_340",
+  "map": [
+   305,
+   340
+  ],
+  "lat": 49.112495,
+  "lon": 16.764968,
+  "note": "southern plateau, its south edge"
+ },
+ {
+  "id": "sp_300_285",
+  "map": [
+   300,
+   285
+  ],
+  "lat": 49.127842,
+  "lon": 16.770043,
+  "note": "east of the Pratzeberg"
+ },
+ {
+  "id": "sp_315_300",
+  "map": [
+   315,
+   300
+  ],
+  "lat": 49.122496,
+  "lon": 16.774304,
+  "note": "east flank toward the Litava"
+ },
+ {
+  "id": "knoll_osm",
+  "map": [
+   290.855,
+   357.416
+  ],
+  "lat": 49.108975,
+  "lon": 16.75685,
+  "note": "St Anthony's chapel, OSM's place of worship (nominatim-kaple-ujezd.json: 49.1089746, 16.7568495)"
+ },
+ {
+  "id": "knoll_gt",
+  "map": [
+   291.307,
+   354.047
+  ],
+  "lat": 49.10985,
+  "lon": 16.757474,
+  "note": "GT.chapel (approximate, geo.js)"
+ },
+ {
+  "id": "slap_gt",
+  "map": [
+   163.212,
+   177.217
+  ],
+  "lat": 49.168729,
+  "lon": 16.727418,
+  "note": "GT.schlapanitz, Šlapanice (geo.js)"
+ },
+ {
+  "id": "slap_s",
+  "map": [
+   166,
+   190
+  ],
+  "lat": 49.165024,
+  "lon": 16.726911,
+  "note": "Šlapanice, the Říčka valley south of the town"
+ },
+ {
+  "id": "slap_n",
+  "map": [
+   160,
+   166
+  ],
+  "lat": 49.172046,
+  "lon": 16.727546,
+  "note": "Šlapanice, north of the town"
+ }
+]
