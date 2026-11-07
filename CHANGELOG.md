@@ -5,7 +5,7 @@
 **Status: on `claude/compassionate-curie-igyzhl-relief`, stacked on WP-03 (`claude/compassionate-curie-igyzhl` at `eecb8b8`); a draft PR into
 WP-03's branch, for review, not merged.** WP-04b of `docs/ROADMAP_FINAL_AUDIT.md`: CL-GEO-01 (owner decision 273 (a), "disclose and refit,
 measured first"), CL-GEO-05, CL-GEO-11, CL-GEO-07, and CL-GEO-03 and -04 by their quick remedy; with the owner's decisions 289 (a), 291 (a),
-292 (a) and 293 (a) on what the refit moved. **A data task**: against WP-03's reference `archive/stage4wp03-af2965c6.html` nine data
+292 (a), 293 (a) and 294 (a) on what the refit moved. **A data task**: against WP-03's reference `archive/stage4wp03-af2965c6.html` nine data
 declarations change (GEOREF, FORMATIONS, SOURCE_NOTE, TOUR, VILLAGES, TERRAIN_LINES, regionalH, localHeight, coverClass) and four are added
 (RELIEF_DEM, tbump, CASTLE_GROUND, castleGround), each below; every other identical. `check:data`'s reference moves to this build,
 `archive/stage4wp04b-bbda94be.html`. `austerlitz-command-map.html` is now 2,902,962 bytes, md5 `bbda94be6f01c4fcd5f2cd2253ee64c6` (was 2,888,060,
@@ -202,8 +202,16 @@ ground; the high ground south of the Pratzeberg above the fog's top 0.89 to 2.09
   The check does not list which instances moved past H_TOL; the places above are its worst poses' and the ground's change under each formation
   (`selftest/gait-cases-final.txt`, `selftest/gait-ground.txt`, `tools/final-stage4-wp04b/gait-ground.js`).
   The 4x case "horses drawn motion rich" (1 kept open, 2 found) is within its allowance and kept.
-- `check:visual` on CI: dispatched on `29028f3` (this build, `bbda94be`); its result goes on #87, and any geographic baseline it moves to the
-  owner with its was and is and its cause, before it is moved.
+- **`check:visual` on CI and one phone limit (owner decision 294 (a), 7 November 2026, under the owner's rule for geographic baselines;
+  `tools/visual/thresholds.js`).** The run on `29028f3` (this build, `bbda94be`; run 42319408950, 3 h 19 min) passed every case, drop limit,
+  unobstructed baseline, confidence share, live block and the self-test within it but one limit: `phone-390-first`'s framing, 16 of the map
+  layer's 18 placed items inside the free rectangle (WP-03's build 17; the floor 17). *Cause, measured* (the case run here on both builds and on
+  the build of the relief's refit alone, `28b4a85`, which gives 16 of 18 too): the refitted ground sets the fitted first view 1.7 units back,
+  the layer resolves its labels otherwise (Liechtenstein's "Fifth Column" placed, "Austerlitz" dropped, three more leaders), and the Kobelnitz
+  name takes its lower-left place, its box from x 10 against the free rectangle's 16; "IV Column → Kobelnitz", outside on WP-03 too, unchanged.
+  *Is:* the floor 17 to 16; every other limit unchanged. `check:report` on that run's report with the new floor: every one of the 39 cases
+  passes as derived (with the old floor this case fails); the run's own recorded failure stands until `check:visual` runs again, re-dispatched on
+  the final commit, its result on #87.
 
 ### Verified
 

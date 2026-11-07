@@ -203,6 +203,13 @@ Object.assign(PHONE.framing,{"phone-402x714-explore":6,"phone-390-paper":11,"pho
    drops 4 (the names Stare Vinohrady, Austerlitz, Krzenowitz and Rausnitz; limit 3 to 4) and its framing 8 of 11 inside (floor 10 to 8). Every
    other phone limit unchanged; WP-04b (the relief) re-measures */
 PHONE.framing["phone-390-watch"]=8; PHONE.framing["phone-844x390-explore"]=8; DROP_LIMIT["phone-844x390-explore"]=4;
+/* the final audits' Stage 4, WP-04b (owner decision 294 (a), 7 November 2026, under the owner's rule for geographic baselines): CI's check:visual on
+   the WP-04b build (run 42319408950, bbda94be) put one limit past its value: phone-390-first's framing 16 of its 18 items inside the free rectangle
+   (WP-03's build 17; floor 17 to 16). The cause, measured case by case here (the build of the relief's refit alone, 28b4a85, gives 16 of 18): the
+   refitted ground sets the fitted first view 1.7 units back, the layer resolves its labels otherwise (Liechtenstein's name placed, Austerlitz's
+   dropped, three more leaders) and the Kobelnitz name takes its lower-left place, x 10 against the free rectangle's 16; "IV Column -> Kobelnitz",
+   outside on WP-03 too, unchanged. Every other limit of the 39 cases held; none other moved */
+PHONE.framing["phone-390-first"]=16;
 /* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
    each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
    event in the sheet and in its dossier). Held landscape, the track's act and phase names are cut where their band is narrower than the name

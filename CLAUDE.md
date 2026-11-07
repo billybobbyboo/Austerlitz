@@ -770,5 +770,5 @@ status; Kienmayer, Kamensky, Caffarelli, Sokolnitz and Miloradovich at dawn reco
 count and three phone limits re-baselined at its own counts on the owner's word) is built on `claude/compassionate-curie-igyzhl` (draft PR #86, for
 review, not merged); WP-04b (the relief refitted between its anchors to GLO-90 and SRTM, within every tolerance line terrain-test holds; the villages off the marsh;
 the castle's own ground; Krug at the Kruh tract; the streams labelled schematic; owner decisions 289 (a), the texts follow the relief, 291 (a), 292 (a)
-and 293 (a), the motion block and the gait's kept-open counts at its own counts) is stacked on it, `claude/compassionate-curie-igyzhl-relief`
+and 293 (a), the motion block and the gait's kept-open counts at its own counts, and 294 (a), phone-390-first's framing floor 17 to 16) is stacked on it, `claude/compassionate-curie-igyzhl-relief`
 (draft PR #87 into WP-03's branch, for review, not merged). WP-15's first batch, alongside and changing no data, is draft PR #85.
