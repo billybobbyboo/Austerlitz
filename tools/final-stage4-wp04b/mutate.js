@@ -31,7 +31,9 @@ const MUT=[
   {id:"N6", finding:"CL-GEO-03, -04 (the streams' legend row taken out)", runners:["css"], want:"shell.html has no legend row for the streams", edits:[["shell.html",
     '    <div class="k" data-lg="stream"><span>streams: traced from a period map at Sokolnitz only, elsewhere schematic; the brooks at Bosenitz and Schlapanitz not drawn</span></div>\n', ""]]},
   {id:"N7", finding:"CL-GEO-03, -04 (the sources sheet's sentence on the streams taken out)", runners:["css"], want:"SOURCE_NOTE does not say which streams are schematic", edits:[["data.js",
-    " Of the streams only the Goldbach's reach through Sokolnitz is traced from a period map", " The streams"]]}
+    " Of the streams only the Goldbach's reach through Sokolnitz is traced from a period map", " The streams"]]},
+  {id:"N8", finding:"decision 289 (a) (tour stop 5 back at its old figure)", runners:["terrain"], want:"tour stop 5 quotes 73% and under 3%", edits:[["analysis.js",
+    "can see about 47 per cent of the field", "can see about 73 per cent of the field"]]}
 ];
 const args=process.argv.slice(2), only=(args.indexOf("--only")>=0?args[args.indexOf("--only")+1].split(","):null), outF=args.indexOf("--out")>=0?args[args.indexOf("--out")+1]:null;
 function makeCopy(m){

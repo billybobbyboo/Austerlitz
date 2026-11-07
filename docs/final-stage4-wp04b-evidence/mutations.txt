@@ -1,28 +1,30 @@
-N0 none (the unmutated copy): passes (but the 1 allowed line(s):   tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE) (388 s)
+N0 none (the unmutated copy): passes (384 s)
 N1 CL-GEO-01 (the relief before WP-04b: no RELIEF_DEM, PBERG 5.45, SCHLAP 3.0): caught (31 s)
       relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 228.1 m against GLO-90's 273.4 m, -45.3 m (limit 10)   <-- OUTSIDE
+      tour stop 5 quotes 47% and under 3%; live readings 73.4% and 2.2%: DISAGREE
       relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 228.1 m against GLO-90's 273.4 m, -45.3 m (limit 10)   <-- OUTSIDE
-      relief tolerance: profile pratzeberg-augezd (16 points): worst model-GLO-90 -81.8 m, mean -39.2 m (limit 20)   <-- OUTSIDE
-N2 CL-GEO-01 (c16r's amplitudes, the fit without the summit held): caught (32 s)
+N2 CL-GEO-01 (c16r's amplitudes, the fit without the summit held): caught (35 s)
       relief tolerance: no false summit: the highest ground within 1 km of the Pratzeberg 326.4 m at map 290.0,286.6 (168 m from it), the surveyed summit 324 m (the model 323.2 m at its point), +2.4 m (limit +2)   <-- OUTSID
-      tour stop 5 quotes 73% and under 3%; live readings 48.5% and 2.1%: DISAGREE
       relief tolerance: no false summit: the highest ground within 1 km of the Pratzeberg 326.4 m at map 290.0,286.6 (168 m from it), the surveyed summit 324 m (the model 323.2 m at its point), +2.4 m (limit +2)   <-- OUTSID
-N3 CL-GEO-05 (the marsh before the village, in coverClass and the ground shader): caught (36 s)
+      relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances; 1 line(s) OUTSIDE
+N3 CL-GEO-05 (the marsh before the village, in coverClass and the ground shader): caught (35 s)
       ! 9 of Kobelnitz's 16 buildings stand on the drawn marsh class
       ! 21 of Sokolnitz's 27 buildings stand on the drawn marsh class
       ! 20 of Telnitz's 25 buildings stand on the drawn marsh class
-N4 CL-GEO-11 (the castle's own ground taken out of coverClass and the ground shader): caught (36 s)
+N4 CL-GEO-11 (the castle's own ground taken out of coverClass and the ground shader): caught (34 s)
       the castle's own ground: 7 ranges (want 7), 2 of 80 points on the village class; off it {"the site: track":1,"25 m from the site: meadow":3,"25 m from the site: track":13,"castle north range: water":3,"castle north ran
       the castle's own ground: 7 ranges (want 7), 2 of 80 points on the village class; off it {"the site: track":1,"25 m from the site: meadow":3,"25 m from the site: track":13,"castle north range: water":3,"castle north ran
-      tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE
-N5 CL-GEO-07 (Krug back at its warped legacy place, GT.krug kept): caught (3 s)
+N5 CL-GEO-07 (Krug back at its warped legacy place, GT.krug kept): caught (2 s)
       FAIL every surveyed village within 0.5 km of ground truth  (worst Krug 1580 m)
       ! every surveyed village within 0.5 km of ground truth: worst Krug 1580 m
       FAIL every surveyed village within 0.5 km of ground truth  (worst Krug 1580 m)
-N6 CL-GEO-03, -04 (the streams' legend row taken out): caught (6 s)
+N6 CL-GEO-03, -04 (the streams' legend row taken out): caught (5 s)
       ! shell.html has no legend row for the streams (data-lg="stream")
       ! shell.html has no legend row for the streams (data-lg="stream")
-N7 CL-GEO-03, -04 (the sources sheet's sentence on the streams taken out): caught (6 s)
+N7 CL-GEO-03, -04 (the sources sheet's sentence on the streams taken out): caught (5 s)
       ! SOURCE_NOTE does not say which streams are schematic
       ! SOURCE_NOTE does not say which streams are schematic
-all 8 as expected
+N8 decision 289 (a) (tour stop 5 back at its old figure): caught (33 s)
+      tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE
+      tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE
+all 9 as expected
