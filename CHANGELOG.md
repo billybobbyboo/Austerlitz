@@ -133,7 +133,9 @@ Here (Chromium 141, the pinned browser), on the final build `af2965c6...`:
 - The negative controls: all twelve as expected (above).
 
 `check:visual` was dispatched on CI (run 42190428768, `checks.yml`, `visual: true`) on `8b35682`, the commit before the re-baseline, to measure
-its geographic baselines; its result goes on the pull request (#86).
+its geographic baselines (below), and again on the final commit `eecb8b8` (run 42304474803): **every job passed**, `check:visual` in 2 h 27 min
+(its 39 cases, the live blocks and the self-test within it), `check:selftest` 39 min, `check:contrast` 10 min, and the checks job (`npm test`,
+`check:data`, `check:chronology`).
 
 ### The baselines
 
@@ -150,7 +152,7 @@ its geographic baselines; its result goes on the pull request (#86).
   unobstructed baselines within their limits but three phone limits, besides the motion block and the gait's count (re-baselined above): phone-390-
   watch's framing 8 of its 8 map items inside the free rectangle (floor 9), phone-844x390-explore's drops 4 (limit 3: the names Stare Vinohrady,
   Austerlitz, Krzenowitz and Rausnitz) and its framing 8 of 11 (floor 10). **Owner decision 290 (a):** floor 9 to 8, limit 3 to 4 and floor 10 to 8
-  (`tools/visual/thresholds.js`, was and is); every other limit unchanged. `check:visual` re-dispatched on the final commit; its result on #86.
+  (`tools/visual/thresholds.js`, was and is); every other limit unchanged. `check:visual` on the final commit (run 42304474803) passes with them.
 
 ### Not done, and why (handed on)
 
