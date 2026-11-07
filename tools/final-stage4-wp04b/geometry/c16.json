@@ -1,0 +1,181 @@
+{
+ "free": [
+  "schlap",
+  "pberg",
+  "crest"
+ ],
+ "reg": {
+  "schlap": 0.02,
+  "crest": 0.08
+ },
+ "srcScale": 0.5,
+ "newTerms": [
+  {
+   "name": "south",
+   "c": [
+    305.52,
+    310.86
+   ],
+   "rx": 29.823,
+   "rz": 17.85,
+   "edge": 0.735,
+   "rot": -0.822,
+   "opt": [
+    "cx",
+    "cy",
+    "rx",
+    "rz",
+    "edge",
+    "rot"
+   ]
+  },
+  {
+   "name": "knoll",
+   "c": [
+    291.93,
+    358.8
+   ],
+   "rx": 7.642,
+   "rz": 5.376,
+   "edge": 0.063,
+   "rot": 0,
+   "opt": [
+    "cx",
+    "cy",
+    "rx",
+    "rz",
+    "edge"
+   ]
+  },
+  {
+   "name": "spur",
+   "c": [
+    303.1,
+    325.25
+   ],
+   "rx": 14.877,
+   "rz": 7.005,
+   "edge": 0.351,
+   "rot": 0.376,
+   "opt": [
+    "cx",
+    "cy",
+    "rx",
+    "rz",
+    "edge",
+    "rot"
+   ]
+  },
+  {
+   "name": "eflank",
+   "c": [
+    332.53,
+    297.46
+   ],
+   "rx": 11.976,
+   "rz": 13.327,
+   "edge": 0.391,
+   "rot": 0.557,
+   "opt": [
+    "cx",
+    "cy",
+    "rx",
+    "rz",
+    "edge",
+    "rot"
+   ]
+  },
+  {
+   "name": "ricka",
+   "c": [
+    171.77,
+    192.7
+   ],
+   "rx": 18.969,
+   "rz": 8.131,
+   "edge": 0.267,
+   "rot": 0.925,
+   "opt": [
+    "cx",
+    "cy",
+    "rx",
+    "rz",
+    "edge",
+    "rot"
+   ]
+  },
+  {
+   "name": "ssum",
+   "c": [
+    283.12,
+    297.58
+   ],
+   "rx": 5.461,
+   "rz": 19.335,
+   "edge": 0.001,
+   "rot": 0.776,
+   "opt": [
+    "cx",
+    "cy",
+    "rx",
+    "rz",
+    "edge",
+    "rot"
+   ]
+  }
+ ],
+ "sets": {
+  "anchors": null,
+  "core": 10,
+  "coreBox": [
+   240,
+   360,
+   260,
+   380
+  ],
+  "vsouth": 10,
+  "vslap": 10,
+  "hold": [
+   {
+    "line": "LITAVA",
+    "sigma": 0.75
+   },
+   {
+    "line": "GOLDBACH",
+    "sigma": 0.75,
+    "box": [
+     150,
+     300,
+     150,
+     420
+    ]
+   },
+   {
+    "line": "BROOKS",
+    "brook": 3,
+    "sigma": 0.75
+   },
+   {
+    "line": "BROOKS",
+    "brook": 1,
+    "sigma": 0.75
+   }
+  ],
+  "minSrtm": {
+   "c": [
+    285.3,
+    289.0
+   ],
+   "r": 19,
+   "sigma": 3
+  }
+ },
+ "iters": 2500,
+ "restarts": 4,
+ "srcSigma": {
+  "pratzeberg": 0.5,
+  "vinohrady": 2.0,
+  "vinocol": 3.0
+ },
+ "minBand": 3
+}

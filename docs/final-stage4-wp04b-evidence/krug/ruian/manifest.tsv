@@ -1,0 +1,8 @@
+file	status	bytes	sha256	fetched	url
+ruian-layers.json	200	18990	59e4f58dd660779afecf60ff294c9e06b059c4e67ce6677d8a5fe01b31d3d5ee	2026-11-06	https://ags.cuzk.cz/arcgis/rest/services/RUIAN/MapServer?f=json
+ruian-castobce-kruh.json	200	1848	aacc7e5940d11ff5fa35808ea3aa381105ecf3f5283fa6987dfdc84c0f542e69	2026-11-06	https://ags.cuzk.cz/arcgis/rest/services/RUIAN/MapServer/11/query?where=nazev%3D%27Kruh%27&outFields=*&returnGeometry=true&outSR=4326&f=json
+ruian-zsj-kruh.json	200	548	61f8086e238da5eb56fb413d5a6aad7bb661401783072a20b1ba8ee215007f67	2026-11-06	https://ags.cuzk.cz/arcgis/rest/services/RUIAN/MapServer/6/query?where=nazev%3D%27Kruh%27&outFields=kod,nazev,katastralniuzemi&returnGeometry=false&f=json
+ruian-obce.json	200	603	a1b2ab2cbfd7ab142dd070ab5b6710fbc7b4a8ef3acc13e13b57bc170ce75477	2026-11-06	https://ags.cuzk.cz/arcgis/rest/services/RUIAN/MapServer/12/query?where=kod+in+(561495,577243)+or+nazev%3D%27Holubice%27&outFields=kod,nazev,okres&returnGeometry=false&f=json
+ruian-castobce-holubice.json	200	593	1ac4a517c81075f3b20a250f06b7f94cd176c34156b2b2812397087c101afc9a	2026-11-06	https://ags.cuzk.cz/arcgis/rest/services/RUIAN/MapServer/11/query?where=obec%3D550825&outFields=kod,nazev,obec&returnGeometry=true&outSR=4326&f=json
+ruian-ku-holubice.json	200	492	b04d29ea1e69c64041ec050480b217e1820483a6757b230d2cd368945546de9b	2026-11-06	https://ags.cuzk.cz/arcgis/rest/services/RUIAN/MapServer/7/query?where=obec%3D550825&outFields=kod,nazev,obec&returnGeometry=false&f=json
+ruian-zsj-holubice.json	200	650	62b732564e6abd21a0028bfb4b28a93a51ac2ae43c19b905689562cf443459ac	2026-11-06	https://ags.cuzk.cz/arcgis/rest/services/RUIAN/MapServer/6/query?where=katastralniuzemi%3D777871&outFields=kod,nazev,katastralniuzemi&returnGeometry=false&f=json

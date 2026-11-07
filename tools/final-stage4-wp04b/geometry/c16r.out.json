@@ -1,0 +1,237 @@
+{
+ "config": {
+  "free": [
+   "schlap",
+   "pberg"
+  ],
+  "reg": {
+   "schlap": 0.02
+  },
+  "srcScale": 0.5,
+  "newTerms": [
+   {
+    "name": "south",
+    "c": [
+     305.6,
+     310.8
+    ],
+    "rx": 29.5,
+    "rz": 17.8,
+    "edge": 0.76,
+    "rot": -0.81,
+    "opt": [],
+    "where": "regional"
+   },
+   {
+    "name": "knoll",
+    "c": [
+     291.9,
+     358.7
+    ],
+    "rx": 7.8,
+    "rz": 5.3,
+    "edge": 0.07,
+    "rot": 0,
+    "opt": [],
+    "where": "regional"
+   },
+   {
+    "name": "spur",
+    "c": [
+     303,
+     325.2
+    ],
+    "rx": 15,
+    "rz": 7.1,
+    "edge": 0.34,
+    "rot": 0.38,
+    "opt": [],
+    "where": "regional"
+   },
+   {
+    "name": "eflank",
+    "c": [
+     333,
+     297.6
+    ],
+    "rx": 12,
+    "rz": 13.5,
+    "edge": 0.38,
+    "rot": 0.58,
+    "opt": [],
+    "where": "regional"
+   },
+   {
+    "name": "ricka",
+    "c": [
+     171.8,
+     192.7
+    ],
+    "rx": 19,
+    "rz": 8.1,
+    "edge": 0.27,
+    "rot": 0.93,
+    "opt": [],
+    "where": "regional"
+   },
+   {
+    "name": "ssum",
+    "c": [
+     282.8,
+     297.8
+    ],
+    "rx": 5.4,
+    "rz": 19.7,
+    "edge": 0,
+    "rot": 0.78,
+    "opt": [],
+    "where": "regional"
+   }
+  ],
+  "sets": {
+   "anchors": null,
+   "core": 10,
+   "coreBox": [
+    240,
+    360,
+    260,
+    380
+   ],
+   "vsouth": 10,
+   "vslap": 10,
+   "hold": [
+    {
+     "line": "LITAVA",
+     "sigma": 0.75
+    },
+    {
+     "line": "GOLDBACH",
+     "sigma": 0.75,
+     "box": [
+      150,
+      300,
+      150,
+      420
+     ]
+    },
+    {
+     "line": "BROOKS",
+     "brook": 3,
+     "sigma": 0.75
+    },
+    {
+     "line": "BROOKS",
+     "brook": 1,
+     "sigma": 0.75
+    }
+   ],
+   "minSrtm": {
+    "c": [
+     285.3,
+     289
+    ],
+    "r": 19,
+    "sigma": 3
+   }
+  },
+  "iters": 1,
+  "restarts": 1,
+  "srcSigma": {
+   "pratzeberg": 0.5,
+   "vinohrady": 2,
+   "vinocol": 3
+  },
+  "minBand": 3
+ },
+ "targets": {
+  "src": 12,
+  "dem": 0,
+  "core": 156,
+  "prof": 0
+ },
+ "sse": 877.0561387664519,
+ "amp": {
+  "schlap": 0.22211018130906954,
+  "pberg": 3.2557114241155167
+ },
+ "newTerms": [
+  {
+   "name": "south",
+   "c": [
+    305.6,
+    310.8
+   ],
+   "rx": 29.5,
+   "rz": 17.8,
+   "edge": 0.76,
+   "rot": -0.81,
+   "amp": 6.154,
+   "where": "regional"
+  },
+  {
+   "name": "knoll",
+   "c": [
+    291.9,
+    358.7
+   ],
+   "rx": 7.8,
+   "rz": 5.3,
+   "edge": 0.07,
+   "rot": 0,
+   "amp": 5.561,
+   "where": "regional"
+  },
+  {
+   "name": "spur",
+   "c": [
+    303,
+    325.2
+   ],
+   "rx": 15,
+   "rz": 7.1,
+   "edge": 0.34,
+   "rot": 0.38,
+   "amp": 5.687,
+   "where": "regional"
+  },
+  {
+   "name": "eflank",
+   "c": [
+    333,
+    297.6
+   ],
+   "rx": 12,
+   "rz": 13.5,
+   "edge": 0.38,
+   "rot": 0.58,
+   "amp": -4.659,
+   "where": "regional"
+  },
+  {
+   "name": "ricka",
+   "c": [
+    171.8,
+    192.7
+   ],
+   "rx": 19,
+   "rz": 8.1,
+   "edge": 0.27,
+   "rot": 0.93,
+   "amp": -3.899,
+   "where": "regional"
+  },
+  {
+   "name": "ssum",
+   "c": [
+    282.8,
+    297.8
+   ],
+   "rx": 5.4,
+   "rz": 19.7,
+   "edge": 0,
+   "rot": 0.78,
+   "amp": -4.613,
+   "where": "regional"
+  }
+ ]
+}

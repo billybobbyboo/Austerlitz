@@ -1,0 +1,163 @@
+{
+ "after": {
+  "shares": {
+   "pratzeberg": 46.8,
+   "vinohrady": 61.1,
+   "santon": 42.1,
+   "zuran": 38.9,
+   "puntowitz": 2.1,
+   "sokolnitz": 1.8,
+   "augezd": 3.2
+  },
+  "fromPratzeberg": {
+   "sokolnitz": false,
+   "telnitz": false,
+   "kobelnitz": true,
+   "puntowitz": true,
+   "girzikowitz": true
+  },
+  "deadLine": {
+   "samples": 91,
+   "visibleFromPratzeberg": 2,
+   "visibleAt": [
+    [
+     213.6,
+     325.4
+    ],
+    [
+     213.5,
+     325.6
+    ]
+   ]
+  },
+  "concealed": [
+   {
+    "id": "sthilaire@0",
+    "p": [
+     201,
+     221
+    ],
+    "act": "Standing in fog behind Puntowitz, which hid it from the plateau",
+    "fromPratzeberg": true,
+    "fromVinohrady": true
+   },
+   {
+    "id": "sthilaire@2",
+    "p": [
+     206,
+     231
+    ],
+    "act": "Forms in the Goldbach valley for the attack",
+    "fromPratzeberg": true,
+    "fromVinohrady": false
+   },
+   {
+    "id": "vandamme@0",
+    "p": [
+     217,
+     171
+    ],
+    "act": "Concealed by the fog in the valley behind Girzikowitz",
+    "fromPratzeberg": true,
+    "fromVinohrady": true
+   },
+   {
+    "id": "vandamme@2",
+    "p": [
+     221,
+     182
+    ],
+    "act": "Forms in the Goldbach valley",
+    "fromPratzeberg": true,
+    "fromVinohrady": true
+   }
+  ],
+  "fromPuntowitz": {
+   "pratzeberg": true,
+   "vinohrady": false
+  },
+  "extent": {
+   "line": "map x 285, y 140-400 (Blasowitz's latitude to the Litava's south of Augezd), every 0.1 km",
+   "fogTopM": 238.2,
+   "southOfPratzebergAbove238Km": 2.09,
+   "southOfPratzebergAbove260Km": 1.49,
+   "profileEvery500m": "140:244 155.8:247 171.6:252 187.5:255 203.3:255 219.1:252 234.9:244 250.8:249 266.6:259 282.4:303 298.2:313 314.1:309 329.9:269 345.7:256 361.5:221 377.4:193 393.2:190"
+  }
+ },
+ "before": {
+  "shares": {
+   "pratzeberg": 73.4,
+   "vinohrady": 64.4,
+   "santon": 41.5,
+   "zuran": 38.4,
+   "puntowitz": 2.2,
+   "sokolnitz": 1.7,
+   "augezd": 4.8
+  },
+  "fromPratzeberg": {
+   "sokolnitz": false,
+   "telnitz": false,
+   "kobelnitz": false,
+   "puntowitz": false,
+   "girzikowitz": true
+  },
+  "deadLine": {
+   "samples": 21,
+   "visibleFromPratzeberg": 0,
+   "visibleAt": []
+  },
+  "concealed": [
+   {
+    "id": "sthilaire@0",
+    "p": [
+     201,
+     221
+    ],
+    "act": "Standing in fog behind Puntowitz, which hid it from the plateau",
+    "fromPratzeberg": false,
+    "fromVinohrady": true
+   },
+   {
+    "id": "sthilaire@2",
+    "p": [
+     206,
+     231
+    ],
+    "act": "Forms in the Goldbach valley for the attack",
+    "fromPratzeberg": false,
+    "fromVinohrady": false
+   },
+   {
+    "id": "vandamme@0",
+    "p": [
+     217,
+     171
+    ],
+    "act": "Concealed by the fog in the valley behind Girzikowitz",
+    "fromPratzeberg": true,
+    "fromVinohrady": true
+   },
+   {
+    "id": "vandamme@2",
+    "p": [
+     221,
+     182
+    ],
+    "act": "Forms in the Goldbach valley",
+    "fromPratzeberg": false,
+    "fromVinohrady": true
+   }
+  ],
+  "fromPuntowitz": {
+   "pratzeberg": false,
+   "vinohrady": false
+  },
+  "extent": {
+   "line": "map x 285, y 140-400 (Blasowitz's latitude to the Litava's south of Augezd), every 0.1 km",
+   "fogTopM": 238.2,
+   "southOfPratzebergAbove238Km": 0.89,
+   "southOfPratzebergAbove260Km": 0.59,
+   "profileEvery500m": "140:244 155.8:247 171.6:252 187.5:255 203.3:255 219.1:252 234.9:244 250.8:249 266.6:259 282.4:321 298.2:310 314.1:250 329.9:223 345.7:211 361.5:199 377.4:193 393.2:190"
+  }
+ }
+}
