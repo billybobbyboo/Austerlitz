@@ -1,5 +1,130 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 4 (alongside track): WP-15's first batch
+
+**Status: on `claude/compassionate-curie-igyzhl-research` (a draft PR into `main`, for review, not merged).** The alongside track of Stage 4
+of `docs/ROADMAP_FINAL_AUDIT.md`: WP-15's first batch, for finding CL-SRC-10 (ChatGPT's CG-F02: most narrative statements carry no claim, and
+the prominent ones were never triaged) and the open questions (CG-F03). **This track changes no data**: no data file, no guarded declaration
+and no build changes (`check:data` unchanged, 139 of 139 against `archive/postaudit2-e7d6924f.html`; `austerlitz-command-map.html` unchanged,
+2,869,790 bytes, md5 `6ec4abc2fa3831be78145cc87f82174d`; `check:baseline` unchanged). Every data change it finds is a *proposal* for a later
+data task (WP-01 or WP-03). The main track (WP-03, another session) adds its own readings as section S7 of `docs/step4-evidence/readings.md`
+and edits `narrative.js`; this track touches only `docs/wp15-evidence/`, `tools/wp15/`, two lines of `test.js` (`regFiles`, and the "read on" marker's check extended to the new register) and this file. The
+evidence is `docs/wp15-evidence/` (its README lists each file and the tool that made it).
+
+### What was done, and why
+
+- **The triage** (`tools/wp15/triage.js`, its tiers in `tools/wp15/tiers.js`; `triage.md`, `triage.json`). Every one of the inventory's 716
+  statements gets a tier and a group, and every unchecked one a rank, deterministically from the inventory and the sources:
+  - *tier 1*, what a visitor reads first or in every phase: the first screen's lede (phase 0's, in the Now tab at 04:00 beside the first-run
+    card), the opening's four tour stops in its order (`OPENING.stops`), the rest of the tour, the phase ledes of phases 1-9, the headline
+    strengths (the army totals and their source lines, then the corps-level strength notes), the Command tab's rows;
+  - *tier 2*, what the timeline and the panels show beside them: phase lines, the events' names, whys and disputes, themes, places'
+    subtitles, plans, acts;
+  - *tier 3*, the rest.
+  - The counts: tier 1, 81 statements, 60 unchecked (38 Command rows, 8 headline strengths, 7 phase ledes, 7 tour stops); tier 2, 163 and
+    100; tier 3, 472 and 308; 468 unchecked in all.
+- **The first batch: 20 statements of tier 1** (`proposals.md`, `proposals.json`, written by `tools/wp15/make-proposals.js`, which computes each
+  statement's text, place and hash from the sources). Chosen for content a source can check: the first screen's lede, the opening's four
+  steps and one more tour stop, two phase ledes, eight headline strengths and four Command rows. Each proposed claim rests on readings made on
+  page images, here or in an earlier register (two text-layer readings are cited beside them and their notes say so: Duffy's narrative, S6.7,
+  and Czartoryski's page, partly, C5.25). `proposals.md` gives each reading's status: 17 new in S8, 16 registered and read again here, 11
+  registered and cited as their registers give them (Duffy's three among them: S6.7, and S5.7 and S6.8 on the owner's photographs). Outcomes:
+  - *a claim proposed for the statement as it stands* (16): `PHASES[#0].lede`, `TOUR[0].x`, `TOUR[1].x`, `TOUR[5].x`, `PHASES[#1].lede`,
+    `FORMATIONS.gqg.army.men` and `.army.src`, `FORMATIONS.c_v`, `bag` and `constantine.strengthNote`, `COMMAND.al["0"][3]`, `COMMAND.al["0"][4]`
+    and `COMMAND.fr["6"][1]` attributed; `TOUR[7].x` and `FORMATIONS.ahq.army.men` this map's reading (interpretation, with the readings that
+    bound them); `FORMATIONS.buxhowden.strengthNote` derived (its two sums checked against the sources' rows);
+  - *a correction proposed* (4; the statement stays unchecked as it stands, and the corrected text is given with the claim it would carry):
+    - `TOUR[6].x`, the opening's third step: "will not learn what has happened behind them until about noon" is not true of all Buxhowden's
+      columns. Mikhailovsky-Danilevsky has Langeron told by Kamensky's report, as he neared the Goldbach, that the French were climbing the
+      heights, and Kutuzov order Buxhowden to retire (S8.10, S8.11); no reading gives the hour Buxhowden himself learned it.
+    - `PHASES[#2].lede`: "the 4th Column, which was meant to replace the troops leaving the heights" is contradicted by the disposition, which
+      sends the 4th Column down after the others toward Kobelnitz (S8.6, S8.9); and no account read names the pheasantry (a search of sixteen
+      works' text layers; the map draws it from the cadastral sketch of 1825).
+    - `FORMATIONS.ahq.army.src`: its only figure is Duffy's, read on his text layer only; the totals read on page images (Schönhals's 82,575,
+      Sokolov's about 84,000) are added.
+    - `COMMAND.al["5"][1]`: a row of the documented kind ("ordered") for Bagration's withdrawal on Rausnitz, but Stutterheim (C6.11) gives the
+      withdrawal and an order only in the evening, to march to Austerlitz: the row becomes an inference.
+  - *found on the way* (2, tier 3, outside the batch): Caffarelli's "about 6,700" is above Sokolov's return of 22 November (6,498, presumed
+    6,500), and Suchet's "about 6,000" is not in a source read (Sokolov 6,827, presumed 7,000): each labelled this map's working figure in the
+    proposed text, with the alternative of drawing Sokolov's figures under the final audits' Stage 2 rule put to the owner (it re-ranks the
+    counters, and V Corps' 12,700 would then be exceeded by its divisions).
+  - *still unresolved*: none of the batch without an outcome. Two tier-1 statements were examined and left for the next batch with what the
+    readings show (`PHASES[#7].lede`, where the Guard's and the grenadiers' part is disputed; `COMMAND.al["2"][0]`, which cites a work not
+    read where Mikhailovsky-Danilevsky's earlier page is in the table).
+  - *outside the batch*, recorded for data tasks: the Santon's 1,600 against the 17e légère's 1,450 under arms on 22 November (S8.5); the army
+    cards' guns, 139 and 278, are Duffy's text layer's figures against Sokolov's 140 and 318 (330 after midday); `ANALYSIS[#cut].text` and
+    `COMMAND.al["7"][0]` repeat `TOUR[6].x`'s hour; the disposition also orders the whole army's retreat in the worst case on Niemtschan,
+    Hodjegitz and Herspitz (S8.7); nine more statements name the pheasantry.
+- **How the claims are chosen**: "attributed" where the substance is what the sources read say, as the project's sourced narrative statements
+  are claimed (none in the inventory is "fact"); "interpretation" where it is this map's reading with sources bounding it; "derived" for the
+  map's arithmetic. Notes say what is this map's (an hour, a bearing, a word) without a clock time.
+- **The readings**: 17 new, section S8 of a new register, `docs/wp15-evidence/readings.md` (S8.1-S8.17), in the step-4 register's format; every
+  one read on a freshly downloaded page image (Sokolov 2006 pp. 35, 36 twice, 183-184, 200; the Materialien of 1806 pp. 102-103 and 106;
+  Mikhailovsky-Danilevsky 1846 pp. 193, 216-217, 232-234, 243 and 253; Stutterheim 1806 pp. 16 and 27, 39-41 and 50-51; Alombert and Colin
+  t. IV p. 732; the 30th Bulletin pp. 447-448). Sixteen registered readings were read again on their page images (C1.1, C1.4, C1.9, C1.15,
+  C3.5, C3.6, C3.c2, C4.c2, C5.1, C5.2, C5.8, C5.9, C5.11, C6.4, C6.11 and the step-2 register's §4.5); each agrees with its entry (C5.9 transcribes
+  "доверенной" where the page prints "довренной"). The 37 page images are in `docs/wp15-evidence/pages/`. Every work cited is already in
+  `APPEARANCE_SOURCES`: no source entry is proposed. Duffy (1977) is in copyright and not readable here; his figures stand as S6.7 (text layer)
+  and S6.8 (the owner's photographs) register them. Every reader was a machine reader; nothing was read by a person.
+- **`test.js`'s `regFiles`** now lists the new register, so `test.js` validates its entries (each id unique across the three registers, each
+  with a source) and a claim may cite them. `test.js`'s check that every entry carries a "read on" marker applies to the step-4 register by
+  name; every entry of the new register carries it (the verifier's run shows each read on a page image). The lead then extended that check
+  to the new file (`test.js`, one condition): it passes, and with one entry's marker removed it fails (the negative control, run once).
+- **The verifier** (`tools/wp15/apply-proposals.js`; its runs in `apply-proposals.log`). It copies the sources outside the repository, applies
+  the proposals to the copy's `narrative.js` (and any source entry to `appearance.js`; none here), regenerates the copy's inventory and runs its
+  `test.js` and `redteam.js` (whose overclaim scan and retired phrases read the claims' notes, which a visitor is shown): as the copy stands,
+  with the 16 claims (run A), and with the six corrections applied for the test too (run B). All three pass (`test.js` ERRORS: 0, `redteam.js`
+  findings: 0). Unchecked statements, before, after A and after B: tier 1 **60, 44, 40** (tour 7, 3, 2; phase ledes 7, 5, 4; headline
+  strengths 8, 1, 0; Command rows 38, 35, 34); tier 2 100, 100, 100; tier 3 308, 308, 306; in all 468, 452, 446.
+  - *The whole suite on run B's copy* (`--suite`, `tools/run-all.sh`): its first run failed `redteam.js` on two of this batch's own notes ("the
+    worst", an unlabelled superlative, in TOUR[7]'s; "within the hour", a retired phrase, in TOUR[6]'s corrected claim). Both notes were
+    reworded, and `redteam.js` was added to the verifier's every run. The second run: see *Verified* below.
+  - **Negative controls** (`--mutate`): a changed hash, a reading id no register declares, a source not in `APPEARANCE_SOURCES`, a clock time in
+    a note, a "fact" resting on a reading labelled disputed, a correction's claim given the uncorrected text's hash, and an unlabelled
+    superlative in a note each make the copy's checks fail, by the check meant to catch it (7 of 7: the first six `test.js`, the last
+    `redteam.js`).
+- **The open questions** (`tools/wp15/open-questions.js`; `open-questions.md`): ChatGPT's 35, the audit's E.3 (10) and `SOURCE_NOTE`'s open
+  questions merged into 31 rows, with four questions this batch found (when Buxhowden learned of the centre; the left's way out against the
+  disposition's retreats; the armies' totals and guns; the Russian Guard's place, which is WP-03's), ranked by what a visitor is shown that
+  depends on each, whether the drawing takes a side, and the battle's argument (scores written out with their reasons; the statements matching
+  each counted from the inventory). First: the Russian Guard's attack and Rapp's charge, the columns' departure and the climb, the Allied
+  left's way out, Kamensky's turn. A reading already registered answers one in part: Stutterheim (A) and Sokolov have vineyards round Telnitz
+  (C6.4, S8.13, S8.3).
+
+### Bears on WP-03 (the main track)
+
+Listed in `proposals.md`, not pursued here: the Russian Guard's place (Stutterheim's evening of 1 December, S8.12, against the disposition's
+"behind Blasowitz and Kruh", S8.7, and Sokolov's "a little west of Austerlitz", S8.2); Legrand's brigades at dawn (Levasseur at Kobelnitz,
+Merle at Sokolnitz and Telnitz, S8.1) and the French driven from the Sokolnitz castle (S8.10); Kamensky's report to Langeron (S8.11); the
+disposition's retreats (S8.7, S8.9) for Liechtenstein's and the Guard's.
+
+### Verified
+
+Here, on the unchanged build `6ec4abc2...`:
+- `npm run build`: 2,869,790 bytes, md5 `6ec4abc2fa3831be78145cc87f82174d` (unchanged).
+- `npm test`: the nine suites and the height guard pass (`test.js` ERRORS: 0, with 359 readings in the registers, 17 of them this register's,
+  and the inventory current; `redteam.js` findings: 0; `runtime-test.js` console.warn unique: 0; `binding-test.js` 400 checks, 0 failed).
+- `check:data`: 139 of 139 data declarations byte-identical against `archive/postaudit2-e7d6924f.html` (the reference kept).
+- `check:chronology`: errors: 0.
+- `check:baseline`: passes (`6ec4abc2...`, 2,869,790 bytes; unchanged).
+- `check:contrast`: 45 states (10 as a phone) reached, 7,035 text elements, 0 below AA, 0 under 10.5 px, 0 font failures, 0 console
+  messages; the start-up cases 8 of 8 (its first attempt here stopped before any state: Playwright's Chromium was not installed in this
+  checkout; `npx playwright install chromium`, then the run above).
+- `node tools/wp15/apply-proposals.js --suite`: the register's 17 readings each with its marker, all read on a page image; the baseline,
+  run A and run B pass `test.js` (ERRORS: 0) and `redteam.js` (findings: 0); run B's copy passes the whole suite (the nine suites and the
+  height guard); VERIFIED. Its seven negative controls each end NOT VERIFIED (`apply-proposals.log`).
+- `make-proposals.js --check`, `triage.js --check`, `open-questions.js --check`: current.
+
+### Not done, and why
+
+- **No data changed**, by the track's rule: the claims and corrections wait for a data task, which moves `check:data`'s reference, records was
+  and is here, runs check:chronology (none of the corrected statements is among the 167 its L9 hashes, which carry a clock-shaped hour, and
+  none of the corrected texts adds one), and re-measures the opening's caption fit for TOUR[6].x.
+- **Tier 1 still has 40 unchecked statements after the batch** (34 Command rows, the phase ledes of phases 3, 4, 5 and 7, TOUR[2] and TOUR[4]):
+  the next batches. TOUR[4].x is the model's own viewshed and wants a derived claim computed from the model, not a reading.
+- **Duffy's pages** could not be read here; claims resting on them cite S5.7 and S6.8 (the owner's photographs).
+- **The human reading** (decision 136): every reading here is a machine reader's.
+
 ## 2026-11 · Final audits' roadmap, Stage 3: WP-05 and WP-06 (the panels while the clock moves; the camera and the timeline under input)
 
 **Status: on `claude/stage-3-audit-panels-camera-owvd38` (a draft PR into `main`, for review, not merged).** Stage 3 of
