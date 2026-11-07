@@ -142,12 +142,92 @@ if(centreSeparation()) errs.push("the army is reported cut in two before the bat
    is A); friant at the Goldbach (friant@1, B) at 09:00 before the leg to the retaking; kienmayer's minute at 14:30; and the rule itself for
    every leaf formation at every ten minutes of the day */
 eval(fs.readFileSync('_state.js','utf8'));
-{ const pin=[["gqg",675,"B"],["gqg",700,"B"],["gqg",719,"B"],["friant",540,"B"],["kienmayer",870,"B"]];
+{ const pin=[["gqg",675,"B"],["gqg",700,"B"],["gqg",719,"B"],["friant",540,"B"],["kienmayer",870,"C"]];   /* kienmayer@7 B until the final audits' Stage 4 (CL-HIS-08: its point this map's, C) */
   pin.forEach(([id,t,g])=>{ const c=confAt(id,t); if(!c||c.cf!==g||c.interp) errs.push("196: "+id+" at "+t+" graded "+JSON.stringify(c)+", want "+g+" at its anchor"); });
   let nW=0; Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].track).forEach(id=>{ for(let t=T_MIN;t<=T_MAX;t+=10){ const L=legAt(id,t);
     if(L&&L.b&&L.u<=0){ nW++; const sa=stateAt(id,L.a.ph), c=confAt(id,t); if(!c||c.cf!==sa.cf||c.interp) errs.push("196: "+id+" waiting at "+t+" graded "+JSON.stringify(c)+", its anchor's "+sa.cf); } } });
   if(!nW) errs.push("196: no formation waits at an anchor in the day (the rule is untested)");
   console.log("question 196: a waiting formation graded by its anchor ("+pin.length+" pins; the rule held at "+nW+" waiting samples)"); }
+
+/* ---- the final audits' Stage 4, WP-03 (docs/ROADMAP_FINAL_AUDIT.md; CL-HIS-04, -05, -10): three rules the movement audit (auditMovement:
+   rate, ponds and marsh) does not test ----
+   (a) Owner decision 285 (a), CL-HIS-05: an undated leg from an anchor whose status is offensive into one whose status is a retreat declares a
+       hold (data.js hold:true), or a dated departure at or after its phase start, so that the formation holds at its attack place and retreats
+       under the retreat's own status; and, read off the model every minute, no formation moves on a leg into a retreat-status anchor while the
+       status it is shown with is offensive.
+   (b) CL-HIS-04, CL-HIS-10: two opposing formations' drawn centres come within 0.5 km only inside a recorded fight (MELEE: the pair, a window,
+       and the statements that record the contact, each a live narrative statement of tools/step4/statements.js); an entry no sample uses fails,
+       so the register cannot outlive the drawing.
+   (c) CL-HIS-10: no leg crosses the drawn Litava more than 0.5 km from a village on its bank or a drawn road (LITAVA_OK names an exception with
+       its reason; none), and no anchor stands within 30 m of its line away from such a village. */
+const MELEE=[
+ {a:"legrand",b:"lang",from:"07:50",to:"08:55",refs:['FORMATIONS.legrand.track["2"].act','FORMATIONS.lang.track["2"].act'],why:"the fight for Sokolnitz village: Legrand's battalions in it, Langeron's column storming it"},
+ {a:"friant",b:"lang",from:"10:00",to:"11:45",refs:['FORMATIONS.friant.track["5"].act','FORMATIONS.lang.track["2"].act'],why:"Lochet's and Kister's brigades take and retake Sokolnitz against Langeron's column"},
+ {a:"sthilaire",b:"kamensky",from:"09:10",to:"11:15",refs:['FORMATIONS.sthilaire.track["4"].act','FORMATIONS.kamensky.track["4"].act'],why:"the fight for the Pratzeberg's crest: Saint-Hilaire fights off Kamensky's brigade"},
+ {a:"sthilaire",b:"kollo",from:"10:05",to:"10:30",refs:['FORMATIONS.kollo.track["4"].act','FORMATIONS.sthilaire.track["4"].act'],why:"Jurczek's Austrians attack the summit Saint-Hilaire holds"},
+ {a:"nansouty",b:"lich",from:"10:40",to:"11:30",refs:['FORMATIONS.lich.track["5"].act','PHASES[#5].lede'],why:"the cavalry collision: Liechtenstein's charge met by Nansouty's cuirassiers, and his repulse"},
+ {a:"dhautpoul",b:"lich",from:"11:00",to:"11:20",refs:['PHASES[#5].lede'],why:"Murat answers Liechtenstein's and Uvarov's charge with Nansouty's and d'Hautpoul's cuirassiers"},
+ {a:"suchet",b:"bag",from:"11:15",to:"11:45",refs:['PHASES[#5].lede','FORMATIONS.bag.track["6"].act'],why:"Bagration falls back fighting; his line broken by Caffarelli's, Suchet's and d'Hautpoul's attacks"},
+ {a:"rivaud",b:"rg_cav",from:"12:20",to:"12:45",refs:['FORMATIONS.rivaud.track["6"].act','PHASES[#6].lede'],why:"near Blasowitz the Russian Guard runs into Rivaud's skirmishers"},
+ {a:"rivaud",b:"rg_inf",from:"12:30",to:"12:45",refs:['FORMATIONS.rivaud.track["6"].act','PHASES[#6].lede'],why:"near Blasowitz the Russian Guard runs into Rivaud's skirmishers"},
+ {a:"vandamme",b:"lang",from:"16:40",to:"18:00",refs:['FORMATIONS.vandamme.track["8"].act','FORMATIONS.vandamme.track["9"].act','PHASES[#8].lede'],why:"the Allied left's way out over the Augezd defile, which Vandamme holds and commands"}];
+const LITAVA_OK=[];
+{ const OFF={attacking:1,charging:1,counterattack:1,advancing:1,pursuing:1}, BACK={repulsed:1,withdrawing:1,retreating:1,broken:1};
+  const ids=Object.keys(units), stOf=(id,ph)=>stateAt(id,ph).st;
+  /* (a) */
+  let nLegs=0, nRun=0; const moving={};
+  ids.forEach(id=>{ const A=anchorList(id); A.forEach((b,i)=>{ const a=A[i-1]; if(!a||!b.w||a.p===null||b.p===null) return;
+    if(OFF[stOf(id,a.ph)]&&BACK[stOf(id,b.ph)]){ nLegs++; const tm=b.tm||{}, dep=tm.dep==null?null:(Array.isArray(tm.dep)?tm.dep[0]:tm.dep);
+      if(!b.hold&&!(dep!==null&&dep>=PHASES[b.ph].t0)) errs.push("285: "+id+"@"+b.ph+": a leg from "+stOf(id,a.ph)+" into "+stOf(id,b.ph)+" declares no hold (it walks away under the offensive status)"); } }); });
+  for(let t=T_MIN;t<=T_MAX;t++){ clock=t; const ph=phaseAt(t);
+    ids.forEach(id=>{ const L=legAt(id,t); if(!L||!L.b||!(L.u>0&&L.u<1)) return;
+      if(BACK[stOf(id,L.b.ph)]&&OFF[stOf(id,ph)]){ nRun++; if(!moving[id]) moving[id]={t,st:stOf(id,ph)}; } }); }
+  Object.keys(moving).forEach(id=>errs.push("285: "+id+" moves on a leg into a retreat from "+fmtClock(moving[id].t)+" while shown "+STATUS[moving[id].st].label));
+  /* (b) */
+  const S=require('./tools/step4/statements.js').statements('.'), refs=new Set(S.map(x=>x.ref)), hm=x=>{ const m=/^(\d\d):(\d\d)$/.exec(x); return m?+m[1]*60+ +m[2]:NaN; };
+  MELEE.forEach((m,i)=>{ const at="MELEE["+i+"] "+m.a+" x "+m.b;
+    if(!FORMATIONS[m.a]||!FORMATIONS[m.b]||(FORMATIONS[m.a].nation==="fr")===(FORMATIONS[m.b].nation==="fr")) errs.push(at+": not two opposing formations");
+    if(!(hm(m.from)<=hm(m.to))) errs.push(at+": a bad window "+m.from+"-"+m.to);
+    if(!m.why) errs.push(at+": no reason");
+    if(!Array.isArray(m.refs)||!m.refs.length) errs.push(at+": records no contact (no statement)");
+    else m.refs.forEach(r=>{ if(!refs.has(r)) errs.push(at+": "+r+" is not a live narrative statement"); }); m.used=0; });
+  const tracked=ids.filter(id=>FORMATIONS[id].arm!=="hq"), fr=tracked.filter(i=>FORMATIONS[i].nation==="fr"), al=tracked.filter(i=>FORMATIONS[i].nation!=="fr");
+  const near={}; let nNear=0;
+  for(let t=T_MIN;t<=T_MAX;t++){ clock=t; const P={}; tracked.forEach(i=>P[i]=posNow(i));
+    fr.forEach(a=>{ if(!P[a]) return; al.forEach(b=>{ if(!P[b]) return; const km=Math.hypot(P[a][0]-P[b][0],P[a][1]-P[b][1])*KM_PER_MAP; if(km>=0.5) return; nNear++;
+      const m=MELEE.find(x=>((x.a===a&&x.b===b)||(x.a===b&&x.b===a))&&t>=hm(x.from)&&t<=hm(x.to));
+      if(m){ m.used++; return; }
+      const k=a+" x "+b; if(!near[k]) near[k]={t0:t,t1:t,km}; else { near[k].t1=t; near[k].km=Math.min(near[k].km,km); } }); }); }
+  Object.keys(near).forEach(k=>errs.push("opposing formations "+k+" within 0.5 km outside a recorded fight: "+fmtClock(near[k].t0)+"-"+fmtClock(near[k].t1)+", "+Math.round(near[k].km*1000)+" m at the least (MELEE)"));
+  MELEE.forEach((m,i)=>{ if(!m.used) errs.push("MELEE["+i+"] "+m.a+" x "+m.b+" "+m.from+"-"+m.to+": no sample within 0.5 km uses it (remove it)"); });
+  /* (c) the drawn Litava in map units (W is a uniform scale and shift) */
+  const w0=W(0,0), w1=W(1,0), k=1/(w1[0]-w0[0]), toMap=q=>[(q[0]-w0[0])*k,(q[1]-w0[1])*k];
+  const LIT=M.LITAVA.map(toMap), segX=(p,q,r,s)=>{ const d=(q[0]-p[0])*(s[1]-r[1])-(q[1]-p[1])*(s[0]-r[0]); if(Math.abs(d)<1e-12) return null;
+    const u=((r[0]-p[0])*(s[1]-r[1])-(r[1]-p[1])*(s[0]-r[0]))/d, v=((r[0]-p[0])*(q[1]-p[1])-(r[1]-p[1])*(q[0]-p[0]))/d;
+    return u>=0&&u<=1&&v>=0&&v<=1?[p[0]+u*(q[0]-p[0]),p[1]+u*(q[1]-p[1])]:null; };
+  const dSeg=(x,p,q)=>{ const vx=q[0]-p[0], vy=q[1]-p[1], t=Math.max(0,Math.min(1,((x[0]-p[0])*vx+(x[1]-p[1])*vy)/(vx*vx+vy*vy||1))); return Math.hypot(x[0]-p[0]-t*vx,x[1]-p[1]-t*vy); };
+  const dLine=(x,L)=>{ let d=1e9; for(let i=1;i<L.length;i++) d=Math.min(d,dSeg(x,L[i-1],L[i])); return d; };
+  const banks=M.VILLAGES.filter(v=>dLine([v[1],v[2]],LIT)*KM_PER_MAP<0.5), atBank=x=>banks.some(v=>Math.hypot(x[0]-v[1],x[1]-v[2])*KM_PER_MAP<0.5),
+        onRoad=x=>M.ROADS.some(r=>dLine(x,r.p)*KM_PER_MAP<0.15);
+  let nX=0;
+  ids.forEach(id=>{ const A=anchorList(id); A.forEach((b,i)=>{ const a=A[i-1]; if(!a||a.p===null||b.p===null) return; const P=legPath(a,b).pts;
+    for(let j=1;j<P.length;j++) for(let q=1;q<LIT.length;q++){ const x=segX(P[j-1],P[j],LIT[q-1],LIT[q]); if(!x) continue; nX++;
+      if(atBank(x)||onRoad(x)||LITAVA_OK.some(o=>o.leg===id+"@"+b.ph)) continue;
+      errs.push("Litava: "+id+"@"+b.ph+" crosses the drawn river at ["+x.map(v=>v.toFixed(1))+"], "+Math.round(Math.min(...banks.map(v=>Math.hypot(x[0]-v[1],x[1]-v[2])))*KM_PER_MAP*1000)+" m from a village on its bank, on no road (LITAVA_OK)"); } });
+    A.forEach(b=>{ if(b.p===null||FORMATIONS[id].arm==="hq") return; if(dLine(b.p,LIT)*KM_PER_MAP<0.03&&!atBank(b.p)) errs.push("Litava: "+id+"@"+b.ph+" stands "+Math.round(dLine(b.p,LIT)*KM_PER_MAP*1000)+" m from the drawn river's line, at no village"); }); });
+  /* (d) CL-HIS-11: Sokolnitz village is drawn held as its place records it ("Defended by Legrand, then Friant", FEATURES[#sokolnitz]; the
+     readings of docs/step4-evidence/readings.md S7.55-S7.64): from phase 2 to the wheel one of the two divisions stands within 0.6 km of the
+     village's point at every quarter hour (until this stage none of either side within 0.79 km from 09:00 to 13:15) */
+  { const sk=FEATURES.find(f=>f.id==="sokolnitz"), out=[];
+    if(!sk||!/Legrand, then Friant/.test(JSON.stringify(sk))) errs.push("CL-HIS-11: Sokolnitz's place no longer records its defenders; review this rule");
+    /* "Legrand, then Friant": Legrand through phases 2 to 4, Friant (up from Telnitz, Davout's reports) from phase 5 to the wheel */
+    [["legrand",PHASES[2].t0,PHASES[5].t0-1],["friant",PHASES[5].t0,PHASES[7].t0]].forEach(([id,t0,t1])=>{ let worst=0, at=null;
+      for(let t=t0;t<=t1;t+=15){ clock=t; const p=posNow(id), d=p?Math.hypot(p[0]-sk.p[0],p[1]-sk.p[1])*KM_PER_MAP:9; if(d>worst){ worst=d; at=t; } }
+      out.push(id+" within "+worst.toFixed(2)+" km "+fmtClock(t0)+"-"+fmtClock(t1));
+      if(worst>0.6) errs.push("CL-HIS-11: Sokolnitz village drawn without "+id+" within 0.6 km at "+fmtClock(at)+" ("+worst.toFixed(2)+" km)"); });
+    console.log("CL-HIS-11: Sokolnitz village held as its place records it: "+out.join("; ")); }
+  console.log("WP-03 (the final audits' Stage 4): "+nLegs+" legs from an offensive status into a retreat, each held (decision 285 (a)); "+nRun+" minutes moving into a retreat under an offensive status; "+
+    nNear+" opposing pair-minutes within 0.5 km, "+MELEE.length+" recorded fights; "+nX+" Litava crossings of legs, "+banks.map(v=>v[0]).join(", ")+" on its bank"); }
 
 const cutEver=series.some(s=>s.cut);
 if(!cutEver) warns.push("the derived reading never reports the Allied army as cut in two");
@@ -163,7 +243,7 @@ const KNOWN_WARN=[];
 
 const uniq=[...new Set(errs)];
 console.log("\nERRORS:",errs.length,uniq.length<errs.length?"("+uniq.length+" distinct)":"");
-uniq.slice(0,12).forEach(e=>console.log("  ! "+e));
+uniq.slice(0,40).forEach(e=>console.log("  ! "+e));
 console.log("warnings:",warns.length,"("+KNOWN_WARN.length+" acknowledged)");
 warns.forEach(w=>{ const k=KNOWN_WARN.find(x=>x.w===w); console.log("  ~ "+w+(k?"  [acknowledged: "+k.why+"]":"")); });
 process.exitCode=errs.length?1:0;

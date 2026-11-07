@@ -1,0 +1,12 @@
+milo "counterattack" offensive status, moving away: 09:50-11:05 (80 min sampled); e.g. 09:50 nearest enemy vandamme 1.18 km, heading 125 deg off it, 1.39 km/h
+kollo "counterattack" offensive status, moving away: 10:20-10:25 (10 min sampled); e.g. 10:20 nearest enemy sthilaire 0.85 km, heading 177 deg off it, 4.86 km/h
+lich "charging" offensive status, moving away: 10:35-11:10 (40 min sampled); e.g. 10:35 nearest enemy nansouty 0.78 km, heading 151 deg off it, 1.82 km/h
+suchet "attacking" offensive status, moving away: 11:10-11:10 (5 min sampled); e.g. 11:10 nearest enemy bag 0.63 km, heading 120 deg off it, 1.09 km/h
+rg_inf "counterattack" offensive status, moving away: 11:20-12:40 (85 min sampled); e.g. 11:20 nearest enemy vandamme 1.16 km, heading 160 deg off it, 1.48 km/h
+rg_cav "charging" offensive status, moving away: 11:20-12:40 (85 min sampled); e.g. 11:20 nearest enemy vandamme 1.08 km, heading 151 deg off it, 1.79 km/h
+legrand "attacking" offensive status, moving away: 13:35-13:55 (25 min sampled); e.g. 13:35 nearest enemy prz 0.28 km, heading 144 deg off it, 1.89 km/h
+bourcier "advancing" offensive status, moving away: 13:40-14:25 (35 min sampled); e.g. 13:40 nearest enemy dok 0.06 km, heading 169 deg off it, 1.04 km/h
+c_gren "advancing" offensive status, moving away: 14:25-14:25 (5 min sampled); e.g. 14:25 nearest enemy prz 1.05 km, heading 121 deg off it, 2.43 km/h
+bourcier "pursuing" offensive status, moving away: 14:35-16:55 (95 min sampled); e.g. 14:35 nearest enemy kienmayer 0.14 km, heading 175 deg off it, 0.62 km/h
+kienmayer "retreating" retreat status, moving toward the enemy: 14:35-14:35 (5 min sampled); e.g. 14:35 nearest enemy bourcier 0.14 km, heading 6 deg off it, 3.87 km/h
+dok "retreating" retreat status, moving toward the enemy: 14:40-14:50 (15 min sampled); e.g. 14:40 nearest enemy bourcier 0.53 km, heading 3 deg off it, 2.94 km/h

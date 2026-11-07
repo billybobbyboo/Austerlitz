@@ -57,6 +57,20 @@ ids.forEach(id=>{ const tr=FORMATIONS[id].track; if(!tr) return;
   if(!tr[k0].cf) errs.push(id+" ph"+k0+": the first positioned anchor declares no grade (D-2: stateAt would draw it at its default B)");
 });
 
+/* the final audits' Stage 4, owner decision 272 (a) (CL-HIS-02): 8K's grading rule for every anchor. A grade is carried forward to the later
+   anchors (stateAt), so an anchor that moves without declaring its own grade showed "Position documented in the sources" from an earlier
+   anchor's reading (44 A grades so carried until this stage). Every positioned anchor that stands elsewhere than the anchor before it, and
+   carries an A, declares it: A where a reading of its own documents the position then, B where a reading places it then relative to a named
+   place, C where none does (docs/stage8-evidence/8k/register.md; the review in CHANGELOG.md, Stage 4) */
+{ let nMoved=0, nCarried=0;
+  ids.forEach(id=>{ const tr=FORMATIONS[id].track; if(!tr) return; let g=null, prev=null;
+    Object.keys(tr).map(Number).sort((a,b)=>a-b).forEach(k=>{ const e=tr[k]; if(e.cf) g=e.cf;
+      if(!("p" in e)||!e.p){ if("p" in e) prev=null; return; }
+      const moved=prev&&(prev[0]!==e.p[0]||prev[1]!==e.p[1]);
+      if(moved){ nMoved++; if(!e.cf&&g==="A"&&++nCarried) errs.push(id+"@"+k+": moves "+(Math.hypot(e.p[0]-prev[0],e.p[1]-prev[1])*GEOREF.KM_PER_MAP).toFixed(2)+" km and carries the A of an earlier anchor (decision 272 (a): declare its own grade)"); }
+      prev=e.p; }); });
+  console.log("decision 272 (a): "+nMoved+" anchors that move, "+nCarried+" carrying an earlier anchor's A"); }
+
 // every formation resolves a position somewhere
 ids.forEach(id=>{
   let any=false;

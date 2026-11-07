@@ -1,0 +1,32 @@
+M0 none (the unmutated copy): passes (358 s)
+M1 CL-HIS-05 (decision 285 (a)): caught (4 s)
+    285: rg_inf@7: a leg from counterattack into repulsed declares no hold (it walks away under the offensive status)
+    285: rg_inf moves on a leg into a retreat from 11:16 while shown Counter-attacking
+M2 CL-HIS-07 (decision 286 (a)): caught (4 s)
+    flagged leg kamensky@3 has no derived arrival
+M3 CL-HIS-13: caught (248 s)
+    DRIVE: derived tags: sthilaire at 04:30: its march row (0.09 km/h, a drift) not "Plotted leg": <div class="kv"><dt>Marching</dt><dd>0.4 km in 240 min &middot; 0.1 km/h <span class="ltag; vandamme at 0
+M4 CL-HIS-04: caught (2 s)
+    opposing formations legrand x prz within 0.5 km outside a recorded fight: 08:21-13:42, 37 m at the least (MELEE)
+    CL-HIS-11: Sokolnitz village drawn without legrand within 0.6 km at 09:30 (1.44 km)
+M5 CL-HIS-10 (Bourcier): caught (2 s)
+    opposing formations bourcier x dok within 0.5 km outside a recorded fight: 13:08-15:59, 12 m at the least (MELEE)
+    opposing formations bourcier x kienmayer within 0.5 km outside a recorded fight: 13:38-14:46, 26 m at the least (MELEE)
+M6 CL-HIS-10 (the Litava): caught (2 s)
+    Litava: milo@8 crosses the drawn river at [444.7,210.5], 3319 m from a village on its bank, on no road (LITAVA_OK)
+    Litava: milo@9 crosses the drawn river at [449.2,205.6], 3110 m from a village on its bank, on no road (LITAVA_OK)
+M7 CL-HIS-02 (decision 272 (a)): caught (4 s)
+    caffarelli@6: moves 0.79 km and carries the A of an earlier anchor (decision 272 (a): declare its own grade)
+M8 the fight register (CL-HIS-10): caught (4 s)
+    opposing formations sthilaire x kamensky within 0.5 km outside a recorded fight: 09:18-11:07, 13 m at the least (MELEE)
+    MELEE[2] sthilaire x kamensky 09:10-09:15: no sample within 0.5 km uses it (remove it)
+M9 CL-HIS-11: caught (4 s)
+    opposing formations friant x dok within 0.5 km outside a recorded fight: 13:51-14:31, 424 m at the least (MELEE)
+    MELEE[1] friant x lang 10:00-11:45: no sample within 0.5 km uses it (remove it)
+M10 CL-HIS-08 (the act held by its claim): caught (4 s)
+    claims: STATEMENT_CLAIMS["FORMATIONS.kienmayer.track[\"7\"].act"]: the statement (its label and text) changed since its claim was written (h 180e678edea6, now d0b6e5e96613): review the claim
+    claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)
+M11 CL-HIS-03 (the divided register held by its claim): caught (4 s)
+    claims: STATEMENT_CLAIMS["FORMATIONS.rg_inf.track[\"5\"].act"]: the statement (its label and text) changed since its claim was written (h 7357bdf8e06f, now 86ce43d417ff): review the claim
+    claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)
+all 12 as expected

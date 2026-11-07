@@ -1,0 +1,6 @@
+bourcier x dok: 12 m at 14:54; bourcier pursuing moving; dok retreating moving
+sthilaire x kamensky: 13 m at 09:58; sthilaire engaged moving; kamensky counterattack moving
+bourcier x kienmayer: 26 m at 14:38; bourcier pursuing moving; kienmayer retreating moving
+legrand x prz: 37 m at 08:51; legrand engaged moving; prz attacking moving
+bourcier x lang: 130 m at 15:40; bourcier pursuing moving; lang retreating moving
+suchet x bag: 244 m at 11:30; suchet advancing moving; bag holding moving

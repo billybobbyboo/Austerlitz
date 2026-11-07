@@ -1,0 +1,27 @@
+08:00 legrand [ '206.0', '366.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 840 m | castle 720 m
+08:05 legrand [ '206.8', '363.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 757 m | castle 637 m
+08:10 legrand [ '207.6', '361.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 674 m | castle 554 m
+08:15 legrand [ '208.3', '358.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 592 m | castle 471 m
+08:20 legrand [ '209.1', '356.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 509 m | castle 389 m
+08:25 legrand [ '209.9', '353.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 427 m | castle 306 m
+08:30 legrand [ '210.7', '351.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 344 m | castle 223 m
+08:35 legrand [ '211.4', '348.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 262 m | castle 140 m
+08:40 legrand [ '212.2', '346.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 181 m | castle 58 m
+08:45 legrand [ '213.0', '343.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 101 m | castle 25 m
+08:50 legrand [ '213.8', '341.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 39 m | castle 108 m
+08:55 legrand [ '214.6', '338.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 80 m | castle 191 m
+09:00 legrand [ '215.3', '336.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 158 m | castle 273 m
+09:05 legrand [ '216.1', '333.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 240 m | castle 356 m
+09:10 legrand [ '216.9', '331.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 322 m | castle 439 m
+09:15 legrand [ '217.7', '328.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 404 m | castle 521 m
+09:20 legrand [ '218.4', '326.0' ] engaged | prz [ '215.0', '341.0' ] attacking | 486 m | castle 604 m
+09:25 legrand [ '219.2', '323.5' ] engaged | prz [ '215.0', '341.0' ] attacking | 569 m | castle 687 m
+09:30 legrand [ '220.0', '321.0' ] supporting | prz [ '215.0', '341.0' ] engaged | 651 m | castle 770 m
+09:35 legrand [ '220.0', '321.0' ] supporting | prz [ '215.0', '341.0' ] engaged | 651 m | castle 770 m
+legrand anchor 0 arr 04:00 w null
+legrand anchor 1 arr 07:00 w 04:00-07:00
+legrand anchor 2 arr 08:00 w 07:00-08:00
+legrand anchor 4 arr 09:30 w 08:00-09:30
+legrand anchor 7 arr 14:00 w 13:00-14:00
+legrand anchor 8 arr 15:00 w 14:00-15:00
+legrand anchor 9 arr 17:00 w 15:00-17:00
