@@ -33,7 +33,13 @@ const MUT=[
   {id:"N7", finding:"CL-GEO-03, -04 (the sources sheet's sentence on the streams taken out)", runners:["css"], want:"SOURCE_NOTE does not say which streams are schematic", edits:[["data.js",
     " Of the streams only the Goldbach's reach through Sokolnitz is traced from a period map", " The streams"]]},
   {id:"N8", finding:"decision 289 (a) (tour stop 5 back at its old figure)", runners:["terrain"], want:"tour stop 5 quotes 73% and under 3%", edits:[["analysis.js",
-    "can see about 47 per cent of the field", "can see about 73 per cent of the field"]]}
+    "can see about 47 per cent of the field", "can see about 73 per cent of the field"]]},
+  {id:"N9", finding:"decision 289 (a) (the dead-ground line back at its place before WP-04b)", runners:["terrain"], want:"the dead-ground line \"Dead ground, Goldbach valley\"", edits:[["world.js",
+    '{t:"dead", n:"Dead ground, lower Goldbach", p:[[213.6,325.4],[212.2,327.4],[212.5,337.7],[217.4,338.9],[219.8,344.6],[221,349.4],[216.9,357.6],[214,367.8],[212.4,377.9],[214,410]],',
+    '{t:"dead", n:"Dead ground, Goldbach valley", p:[[221,192],[210,242],[201,281]],']]},
+  {id:"N10", finding:"decision 289 (a) (the chapel's sentence back at its words before WP-04b)", runners:["terrain"], want:"SOURCE_NOTE says \"it does not show\"", edits:[["data.js",
+    "from the chapel of St Anthony the centre of the Satschan pond is only just in sight (from a 3 m eye, by about 0.4 m), although",
+    "from the chapel of St Anthony it does not show the centre of the Satschan pond, although"]]}
 ];
 const args=process.argv.slice(2), only=(args.indexOf("--only")>=0?args[args.indexOf("--only")+1].split(","):null), outF=args.indexOf("--out")>=0?args[args.indexOf("--out")+1]:null;
 function makeCopy(m){

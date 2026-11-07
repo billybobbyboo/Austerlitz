@@ -90,6 +90,27 @@ if(!(VS.pratzeberg>2*VS.puntowitz)) { console.log("  ! the plateau no longer see
   const ok=m && Math.abs(+m[1]-VS.pratzeberg)<=2 && VS.puntowitz<+m[2];
   console.log("  tour stop 5 quotes "+(m?m[1]+"% and under "+m[2]+"%":"?")+"; live readings "+VS.pratzeberg.toFixed(1)+"% and "+VS.puntowitz.toFixed(1)+"%: "+(ok?"agree":"DISAGREE"));
   if(!ok) process.exitCode=1; }
+/* the final audits' Stage 4, WP-04b (owner decision 289 (a), "the texts follow the relief"): the other two sight readings a visitor is told, held to
+   the live terrain as tour stop 5's are (tools/final-stage4-wp04b/sights.js measures them, before and after). (a) every "dead" terrain line ("Dead
+   ground as seen from the Pratzeberg in this model's terrain"): at most 2% of its points, every 0.5 map units along it, in sight of the Pratzeberg
+   (a 3 m eye; the lower Goldbach's line 1 of 188 on the refitted relief; the line before WP-04b, "Dead ground, Goldbach valley", 163 of 185 there,
+   0 of 21 on the relief before it). (b) SOURCE_NOTE's sentence on the chapel of St Anthony's view of the Satschan pond's centre agrees with the
+   sight line from the chapel's surveyed point (GT.chapel, a 3 m eye, 200 steps) to the mere's centre (SATS): "only just in sight" a margin from 0 to
+   1 m, "does not show" a margin below 0 (the refitted relief +0.4 m; before it -22.8 m) */
+{ const along=(L,st)=>{ const o=[]; for(let i=0;i<L.length-1;i++){ const a=L[i], b=L[i+1], k=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/st));
+      for(let s=0;s<k;s++) o.push([a[0]+(b[0]-a[0])*s/k, a[1]+(b[1]-a[1])*s/k]); } o.push(L[L.length-1]); return o; };
+  computeViewshed(P('pratzeberg'),3.0);
+  TERRAIN_LINES.filter(t=>t.t==="dead").forEach(t=>{ const pts=along(t.p,0.5), v=pts.filter(p=>{ const w=W(p[0],p[1]); return !!sampleVS(w[0],w[1]); }).length, ok=v<=0.02*pts.length;
+    console.log("  the dead-ground line \""+t.n+"\": "+v+" of its "+pts.length+" points in sight of the Pratzeberg (at most 2%): "+(ok?"agree":"DISAGREE"));
+    if(!ok) process.exitCode=1; });
+  clearViewshed();
+  const mp=[SATS[0]*G.MAP_PER_WORLD+G.WORLD_ORIGIN[0], SATS[1]*G.MAP_PER_WORLD+G.WORLD_ORIGIN[1]], from=P('chapel'), D=G.kmBetween(from,mp)*1000,
+        el=(x,y)=>G.elevM(hAt(x,y)), h0=el(from[0],from[1])+3, ht=el(mp[0],mp[1]); let worst=-Infinity;
+  for(let k=1;k<200;k++){ const f=k/200, a=(el(from[0]+(mp[0]-from[0])*f, from[1]+(mp[1]-from[1])*f)-h0)/(D*f); if(a>worst) worst=a; }
+  const margin=((ht-h0)/D-worst)*D, said=(SOURCE_NOTE.body.join(" ").match(/chapel of St Anthony (it does not show|the centre of the Satschan pond is only just in sight)/)||[])[1],
+        ok=said==="it does not show"?margin<0:said?margin>=0&&margin<=1:false;
+  console.log("  the chapel of St Anthony to the Satschan pond's centre: a margin of "+margin.toFixed(1)+" m; SOURCE_NOTE says \""+(said||"nothing found")+"\": "+(ok?"agree":"DISAGREE"));
+  if(!ok) process.exitCode=1; }
 
 /* relief in metres at ground-truth positions, against the verified elevations */
 console.log("\n-- relief (m, model | verified) --");
