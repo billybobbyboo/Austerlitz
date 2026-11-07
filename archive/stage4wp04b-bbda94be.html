@@ -21630,9 +21630,23 @@ var AUSTERLITZ_DEBUG=(function(){
            steeper ground (the southern plateau raised by up to 57 m): "10.33|horses|edges|fresh|rich" 29 to 38, "10.33|horses|edges|fresh|simple"
            29 to 38, "10.33|horses|edges|motion|rich" 2 to 9, "10.33|horses|drawn|fresh|rich" 28 to 40, "10.33|horses|drawn|fresh|simple" 25 to 38,
            "10.33|horses|drawn|motion|rich" 1 to 13; every other count, H_TOL and the proposed bounds unchanged (no case beyond its bound) */
-        var H_CASES={"4|men|edges|fresh|rich":14, "4|men|edges|fresh|simple":4, "4|men|drawn|fresh|rich":25, "4|men|drawn|fresh|simple":9,
-          "4|horses|edges|fresh|rich":29, "4|horses|edges|fresh|simple":29, "4|horses|drawn|fresh|rich":29, "4|horses|drawn|fresh|simple":27, "4|horses|drawn|motion|rich":1,
-          "10.33|men|edges|fresh|rich":20, "10.33|men|edges|fresh|simple":11, "10.33|men|drawn|fresh|rich":21, "10.33|men|drawn|fresh|simple":14, "10.33|men|drawn|motion|rich":1,
+        /* the final audits' Stage 4, WP-04b (owner decision 293 (a), 7 November 2026, extending 292 (a): the verdict printed only its first six
+           failures, so 292 was put on the six 10.33x horse cases alone): the other 17 cases at the WP-04b build's own counts, measured on the same
+           page after the same fix. Their formations' places and the gait's code are WP-03's; the ground under them is the refit's (in motion
+           Saint-Hilaire, Vandamme and the headquarters on the southern plateau at 13:50-13:58, up to 64 m higher, Saint-Hilaire's steepest ground
+           within 0.25 km 5.8 to 9.4 degrees; fresh also Buxhowden, 1.7 to 9.9 degrees, and the grenadiers by Schlapanitz):
+           "4|horses|drawn|fresh|rich" 29 to 33, "4|horses|drawn|fresh|simple" 27 to 32, "4|horses|edges|fresh|rich" 29 to 35,
+           "4|horses|edges|fresh|simple" 29 to 35, "4|horses|edges|motion|rich" none to 3, "4|men|drawn|fresh|rich" 25 to 38, "4|men|drawn|fresh|simple"
+           9 to 19, "4|men|drawn|motion|rich" none to 21, "4|men|edges|fresh|rich" 14 to 29, "4|men|edges|fresh|simple" 4 to 13, "4|men|edges|motion|rich"
+           none to 20, "10.33|men|drawn|fresh|rich" 21 to 33, "10.33|men|drawn|fresh|simple" 14 to 23, "10.33|men|drawn|motion|rich" 1 to 19,
+           "10.33|men|edges|fresh|rich" 20 to 32, "10.33|men|edges|fresh|simple" 11 to 19, "10.33|men|edges|motion|rich" none to 12; every other count,
+           H_TOL and the proposed bounds unchanged (no case beyond its bound: the worst 0.2466 against 0.2711, the grenadiers at 09:05) */
+        var H_CASES={"4|men|edges|fresh|rich":29, "4|men|edges|fresh|simple":13, "4|men|drawn|fresh|rich":38, "4|men|drawn|fresh|simple":19,
+          "4|men|edges|motion|rich":20, "4|men|drawn|motion|rich":21,
+          "4|horses|edges|fresh|rich":35, "4|horses|edges|fresh|simple":35, "4|horses|drawn|fresh|rich":33, "4|horses|drawn|fresh|simple":32, "4|horses|drawn|motion|rich":1,
+          "4|horses|edges|motion|rich":3,
+          "10.33|men|edges|fresh|rich":32, "10.33|men|edges|fresh|simple":19, "10.33|men|drawn|fresh|rich":33, "10.33|men|drawn|fresh|simple":23, "10.33|men|drawn|motion|rich":19,
+          "10.33|men|edges|motion|rich":12,
           "10.33|horses|edges|fresh|rich":38, "10.33|horses|edges|fresh|simple":38, "10.33|horses|edges|motion|rich":9, "10.33|horses|drawn|fresh|rich":40,
           "10.33|horses|drawn|fresh|simple":38, "10.33|horses|drawn|motion|rich":13};
         function hSoles(g,horse){ var c=hSolC.get(g); if(c) return c; var P=g.attributes.position, K=g.attributes.aPart, seen={}, out=[];
@@ -21716,7 +21730,7 @@ var AUSTERLITZ_DEBUG=(function(){
         hT.push("the slopes' lookup the drawn ground's at "+hLk+" points; in motion "+hFr+" frames; the level switched along the dolly "+JSON.stringify(hLod)+"; Saint-Hilaire's turn "+hTurn.toFixed(3)+" rad");
         if(!(hLod["4 sthilaire"]>0)) hBad.push("in motion the division's level never switched along the dolly"); if(!(hTurn>0.05)) hBad.push("in motion the division never turned");
         ck("the gait on the ground (decision 244 (a); 8F's prerequisite 2): each instance against itself at rest, both levels, at 4x and 10.33x, fresh and in motion (facets, a turn, the level switched, the pause), each kit's own soles planted on 8E's chords: the hook's edges and the soles the kit draws within 0.03 units (4x; in proportion to the relief at 10.33x) in every pose, but for the cases kept open, none beyond its proposed bound and no more of them than were found, every case beyond 0.03 counted with its pixels; the legacy seat and the lift reported; the slopes' lookup the drawn ground's at every factor; at 1x no figure",
-          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG: "+hBad.slice(0,6).join("; "):""));
+          !hBad.length, hT.join("; ")+(hBad.length?"; WRONG ("+hBad.length+" in all"+(hBad.length>6?", the first six":"")+"): "+hBad.slice(0,6).join("; "):""));   /* WP-04b: the number in all (decision 293 (a)'s cause) */
 
         /* (j) the step described as decision 244 asks (section 0.3.1, item 8): the legend's row wherever figures are drawn, and the sources sheet's
            notes, a visual convention for symbols under compressed time, never footsteps matched to the ground */
