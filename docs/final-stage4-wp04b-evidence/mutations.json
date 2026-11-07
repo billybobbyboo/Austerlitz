@@ -32,7 +32,7 @@
   "allowed": [],
   "verdict": "passes",
   "failed": [],
-  "seconds": 384
+  "seconds": 419
  },
  {
   "id": "N1",
@@ -42,6 +42,7 @@
     "status": 1,
     "errors": [
      "  tour stop 5 quotes 47% and under 3%; live readings 73.4% and 2.2%: DISAGREE",
+     "  the chapel of St Anthony to the Satschan pond's centre: a margin of -22.8 m; SOURCE_NOTE says \"the centre of the Satschan pond is only just in sight\": DISAGREE",
      "  relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 228.1 m against GLO-90's 273.4 m, -45.3 m (limit 10)   <-- OUTSIDE",
      "  relief tolerance: profile pratzeberg-augezd (16 points): worst model-GLO-90 -81.8 m, mean -39.2 m (limit 20)   <-- OUTSIDE",
      "  relief tolerance: profile pratzeberg-hostieradek (16 points): worst model-GLO-90 -51.7 m, mean -17.8 m (limit 20)   <-- OUTSIDE",
@@ -57,6 +58,7 @@
   "verdict": "caught",
   "failed": [
    "  tour stop 5 quotes 47% and under 3%; live readings 73.4% and 2.2%: DISAGREE",
+   "  the chapel of St Anthony to the Satschan pond's centre: a margin of -22.8 m; SOURCE_NOTE says \"the centre of the Satschan pond is only just in sight\": DISAGREE",
    "  relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 228.1 m against GLO-90's 273.4 m, -45.3 m (limit 10)   <-- OUTSIDE",
    "  relief tolerance: profile pratzeberg-augezd (16 points): worst model-GLO-90 -81.8 m, mean -39.2 m (limit 20)   <-- OUTSIDE",
    "  relief tolerance: profile pratzeberg-hostieradek (16 points): worst model-GLO-90 -51.7 m, mean -17.8 m (limit 20)   <-- OUTSIDE",
@@ -66,7 +68,7 @@
    "  relief tolerance: St Anthony's knoll (the chapel's OSM point): model 198.2 m against GLO-90's 240.0 m, -41.8 m (limit 10)   <-- OUTSIDE",
    "  relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances; 7 line(s) OUTSIDE"
   ],
-  "seconds": 31
+  "seconds": 34
  },
  {
   "id": "N2",
@@ -86,7 +88,7 @@
    "  relief tolerance: no false summit: the highest ground within 1 km of the Pratzeberg 326.4 m at map 290.0,286.6 (168 m from it), the surveyed summit 324 m (the model 323.2 m at its point), +2.4 m (limit +2)   <-- OUTSIDE",
    "  relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances; 1 line(s) OUTSIDE"
   ],
-  "seconds": 35
+  "seconds": 34
  },
  {
   "id": "N3",
@@ -114,7 +116,7 @@
    "  ! 2 of Satschan's 14 buildings stand on the drawn marsh class",
    "  villages on their own ground: 376 buildings, 308 on the village class, 52 on marsh; Sokolnitz 4/27, Telnitz 2/25, Kobelnitz 3/16 on the village class  BROKEN"
   ],
-  "seconds": 35
+  "seconds": 37
  },
  {
   "id": "N4",
@@ -132,7 +134,7 @@
   "failed": [
    "  the castle's own ground: 7 ranges (want 7), 2 of 80 points on the village class; off it {\"the site: track\":1,\"25 m from the site: meadow\":3,\"25 m from the site: track\":13,\"castle north range: water\":3,\"castle north range: track\":6,\"castle south range: meadow\":3,\"castle south range: track\":6,\"castle west range: track\":9,\"castle east range: water\":3,\"castle east range: meadow\":4,\"castle east range"
   ],
-  "seconds": 34
+  "seconds": 36
  },
  {
   "id": "N5",
@@ -188,7 +190,7 @@
   "failed": [
    "  ! SOURCE_NOTE does not say which streams are schematic"
   ],
-  "seconds": 5
+  "seconds": 4
  },
  {
   "id": "N8",
@@ -206,6 +208,42 @@
   "failed": [
    "  tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE"
   ],
-  "seconds": 33
+  "seconds": 37
+ },
+ {
+  "id": "N9",
+  "finding": "decision 289 (a) (the dead-ground line back at its place before WP-04b)",
+  "runs": {
+   "terrain": {
+    "status": 1,
+    "errors": [
+     "  the dead-ground line \"Dead ground, Goldbach valley\": 163 of its 185 points in sight of the Pratzeberg (at most 2%): DISAGREE"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  the dead-ground line \"Dead ground, Goldbach valley\": 163 of its 185 points in sight of the Pratzeberg (at most 2%): DISAGREE"
+  ],
+  "seconds": 35
+ },
+ {
+  "id": "N10",
+  "finding": "decision 289 (a) (the chapel's sentence back at its words before WP-04b)",
+  "runs": {
+   "terrain": {
+    "status": 1,
+    "errors": [
+     "  the chapel of St Anthony to the Satschan pond's centre: a margin of 0.4 m; SOURCE_NOTE says \"it does not show\": DISAGREE"
+    ]
+   }
+  },
+  "caught": true,
+  "verdict": "caught",
+  "failed": [
+   "  the chapel of St Anthony to the Satschan pond's centre: a margin of 0.4 m; SOURCE_NOTE says \"it does not show\": DISAGREE"
+  ],
+  "seconds": 35
  }
 ]

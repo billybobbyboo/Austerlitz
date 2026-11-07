@@ -1,17 +1,17 @@
-N0 none (the unmutated copy): passes (384 s)
-N1 CL-GEO-01 (the relief before WP-04b: no RELIEF_DEM, PBERG 5.45, SCHLAP 3.0): caught (31 s)
+N0 none (the unmutated copy): passes (419 s)
+N1 CL-GEO-01 (the relief before WP-04b: no RELIEF_DEM, PBERG 5.45, SCHLAP 3.0): caught (34 s)
       relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 228.1 m against GLO-90's 273.4 m, -45.3 m (limit 10)   <-- OUTSIDE
       tour stop 5 quotes 47% and under 3%; live readings 73.4% and 2.2%: DISAGREE
-      relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 228.1 m against GLO-90's 273.4 m, -45.3 m (limit 10)   <-- OUTSIDE
-N2 CL-GEO-01 (c16r's amplitudes, the fit without the summit held): caught (35 s)
+      the chapel of St Anthony to the Satschan pond's centre: a margin of -22.8 m; SOURCE_NOTE says "the centre of the Satschan pond is only just in sight": DISAGREE
+N2 CL-GEO-01 (c16r's amplitudes, the fit without the summit held): caught (34 s)
       relief tolerance: no false summit: the highest ground within 1 km of the Pratzeberg 326.4 m at map 290.0,286.6 (168 m from it), the surveyed summit 324 m (the model 323.2 m at its point), +2.4 m (limit +2)   <-- OUTSID
       relief tolerance: no false summit: the highest ground within 1 km of the Pratzeberg 326.4 m at map 290.0,286.6 (168 m from it), the surveyed summit 324 m (the model 323.2 m at its point), +2.4 m (limit +2)   <-- OUTSID
       relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances; 1 line(s) OUTSIDE
-N3 CL-GEO-05 (the marsh before the village, in coverClass and the ground shader): caught (35 s)
+N3 CL-GEO-05 (the marsh before the village, in coverClass and the ground shader): caught (37 s)
       ! 9 of Kobelnitz's 16 buildings stand on the drawn marsh class
       ! 21 of Sokolnitz's 27 buildings stand on the drawn marsh class
       ! 20 of Telnitz's 25 buildings stand on the drawn marsh class
-N4 CL-GEO-11 (the castle's own ground taken out of coverClass and the ground shader): caught (34 s)
+N4 CL-GEO-11 (the castle's own ground taken out of coverClass and the ground shader): caught (36 s)
       the castle's own ground: 7 ranges (want 7), 2 of 80 points on the village class; off it {"the site: track":1,"25 m from the site: meadow":3,"25 m from the site: track":13,"castle north range: water":3,"castle north ran
       the castle's own ground: 7 ranges (want 7), 2 of 80 points on the village class; off it {"the site: track":1,"25 m from the site: meadow":3,"25 m from the site: track":13,"castle north range: water":3,"castle north ran
 N5 CL-GEO-07 (Krug back at its warped legacy place, GT.krug kept): caught (2 s)
@@ -21,10 +21,16 @@ N5 CL-GEO-07 (Krug back at its warped legacy place, GT.krug kept): caught (2 s)
 N6 CL-GEO-03, -04 (the streams' legend row taken out): caught (5 s)
       ! shell.html has no legend row for the streams (data-lg="stream")
       ! shell.html has no legend row for the streams (data-lg="stream")
-N7 CL-GEO-03, -04 (the sources sheet's sentence on the streams taken out): caught (5 s)
+N7 CL-GEO-03, -04 (the sources sheet's sentence on the streams taken out): caught (4 s)
       ! SOURCE_NOTE does not say which streams are schematic
       ! SOURCE_NOTE does not say which streams are schematic
-N8 decision 289 (a) (tour stop 5 back at its old figure): caught (33 s)
+N8 decision 289 (a) (tour stop 5 back at its old figure): caught (37 s)
       tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE
       tour stop 5 quotes 73% and under 3%; live readings 46.8% and 2.1%: DISAGREE
-all 9 as expected
+N9 decision 289 (a) (the dead-ground line back at its place before WP-04b): caught (35 s)
+      the dead-ground line "Dead ground, Goldbach valley": 163 of its 185 points in sight of the Pratzeberg (at most 2%): DISAGREE
+      the dead-ground line "Dead ground, Goldbach valley": 163 of its 185 points in sight of the Pratzeberg (at most 2%): DISAGREE
+N10 decision 289 (a) (the chapel's sentence back at its words before WP-04b): caught (35 s)
+      the chapel of St Anthony to the Satschan pond's centre: a margin of 0.4 m; SOURCE_NOTE says "it does not show": DISAGREE
+      the chapel of St Anthony to the Satschan pond's centre: a margin of 0.4 m; SOURCE_NOTE says "it does not show": DISAGREE
+all 11 as expected
