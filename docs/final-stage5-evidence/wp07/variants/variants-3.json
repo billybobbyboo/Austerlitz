@@ -1,0 +1,5143 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "cdca9984ed7663c84db458ad4724ce15",
+ "full": false,
+ "variants": [
+  {
+   "name": "both",
+   "totals": {
+    "jumps": 235,
+    "pops": 1122,
+    "flicker": 64,
+    "lod": 128
+   },
+   "failures": [
+    "pops 1122 (limit 1049)",
+    "flickers 64 (limit 10)",
+    "hybrid-orbit: formations drawn in 1517 of 2548 formation-frames, the baseline 1520 of 2548 (fewer drawn)",
+    "paper-pan: formations drawn in 1254 of 1274 formation-frames, the baseline 1274 of 1274 (fewer drawn)",
+    "paper-pan: a formation hidden by the layout for 667 ms, the baseline's longest 0 ms",
+    "paper-zoom: formations drawn in 820 of 1232 formation-frames, the baseline 852 of 1232 (fewer drawn)",
+    "paper-glide: formations drawn in 548 of 822 formation-frames, the baseline 551 of 822 (fewer drawn)",
+    "paper-play: formations drawn in 1563 of 1694 formation-frames, the baseline 1564 of 1694 (fewer drawn)",
+    "land-orbit: formations drawn in 1706 of 2366 formation-frames, the baseline 1749 of 2366 (fewer drawn)",
+    "low-pan: formations drawn in 793 of 861 formation-frames, the baseline 806 of 861 (fewer drawn)",
+    "hybrid-orbit+point: formations drawn in 1517 of 2548 formation-frames, the baseline 1520 of 2548 (fewer drawn)",
+    "paper-zoom+point: formations drawn in 820 of 1232 formation-frames, the baseline 852 of 1232 (fewer drawn)",
+    "paper-play+al: formations drawn in 1158 of 1331 formation-frames, the baseline 1171 of 1331 (fewer drawn)"
+   ],
+   "drawn": 30150,
+   "drawnBaselines": 29679,
+   "runs": [
+    {
+     "key": "hybrid-pan",
+     "jumps": 7,
+     "pops": 68,
+     "flicker": 0,
+     "lod": 23,
+     "track": {
+      "on": 1374,
+      "inView": 2036,
+      "longestMs": 2467
+     }
+    },
+    {
+     "key": "hybrid-zoom",
+     "jumps": 24,
+     "pops": 115,
+     "flicker": 1,
+     "lod": 24,
+     "track": {
+      "on": 1248,
+      "inView": 2203,
+      "longestMs": 2133
+     }
+    },
+    {
+     "key": "hybrid-orbit",
+     "jumps": 9,
+     "pops": 137,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1517,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-glide",
+     "jumps": 14,
+     "pops": 80,
+     "flicker": 1,
+     "lod": 12,
+     "track": {
+      "on": 1181,
+      "inView": 1786,
+      "longestMs": 1700
+     }
+    },
+    {
+     "key": "hybrid-play",
+     "jumps": 9,
+     "pops": 142,
+     "flicker": 25,
+     "lod": 2,
+     "track": {
+      "on": 2237,
+      "inView": 3388,
+      "longestMs": 4033
+     }
+    },
+    {
+     "key": "paper-pan",
+     "jumps": 0,
+     "pops": 2,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1254,
+      "inView": 1274,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-zoom",
+     "jumps": 8,
+     "pops": 97,
+     "flicker": 3,
+     "lod": 0,
+     "track": {
+      "on": 820,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-glide",
+     "jumps": 10,
+     "pops": 43,
+     "flicker": 1,
+     "lod": 27,
+     "track": {
+      "on": 548,
+      "inView": 822,
+      "longestMs": 633
+     }
+    },
+    {
+     "key": "paper-play",
+     "jumps": 4,
+     "pops": 57,
+     "flicker": 7,
+     "lod": 2,
+     "track": {
+      "on": 1563,
+      "inView": 1694,
+      "longestMs": 333
+     }
+    },
+    {
+     "key": "land-pan",
+     "jumps": 16,
+     "pops": 46,
+     "flicker": 0,
+     "lod": 2,
+     "track": {
+      "on": 1801,
+      "inView": 2038,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-zoom",
+     "jumps": 31,
+     "pops": 67,
+     "flicker": 0,
+     "lod": 30,
+     "track": {
+      "on": 1658,
+      "inView": 2207,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-orbit",
+     "jumps": 33,
+     "pops": 110,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1706,
+      "inView": 2366,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-play",
+     "jumps": 22,
+     "pops": 94,
+     "flicker": 26,
+     "lod": 2,
+     "track": {
+      "on": 2923,
+      "inView": 3146,
+      "longestMs": 333
+     }
+    },
+    {
+     "key": "low-pan",
+     "jumps": 6,
+     "pops": 11,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 793,
+      "inView": 861,
+      "longestMs": 533
+     }
+    },
+    {
+     "key": "low-orbit",
+     "jumps": 14,
+     "pops": 31,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 651,
+      "inView": 859,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "low-zoom",
+     "jumps": 28,
+     "pops": 22,
+     "flicker": 0,
+     "lod": 4,
+     "track": {
+      "on": 457,
+      "inView": 590,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-orbit+point",
+     "jumps": 9,
+     "pops": 137,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1517,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-orbit+real",
+     "jumps": 9,
+     "pops": 137,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1517,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "paper-zoom+point",
+     "jumps": 8,
+     "pops": 97,
+     "flicker": 3,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 820,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-zoom+real",
+     "jumps": 8,
+     "pops": 97,
+     "flicker": 3,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 820,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-orbit+sel",
+     "jumps": 19,
+     "pops": 129,
+     "flicker": 1,
+     "lod": 0,
+     "track": {
+      "on": 1536,
+      "inView": 2548,
+      "longestMs": 2100
+     }
+    },
+    {
+     "key": "paper-zoom+sel",
+     "jumps": 28,
+     "pops": 94,
+     "flicker": 1,
+     "lod": 0,
+     "track": {
+      "on": 824,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-pan+fr",
+     "jumps": 8,
+     "pops": 65,
+     "flicker": 0,
+     "lod": 23,
+     "track": {
+      "on": 1319,
+      "inView": 1959,
+      "longestMs": 2467
+     }
+    },
+    {
+     "key": "hybrid-pan+al",
+     "jumps": 8,
+     "pops": 41,
+     "flicker": 0,
+     "lod": 13,
+     "track": {
+      "on": 986,
+      "inView": 1270,
+      "longestMs": 1467
+     }
+    },
+    {
+     "key": "paper-play+al",
+     "jumps": 7,
+     "pops": 57,
+     "flicker": 9,
+     "lod": 2,
+     "track": {
+      "on": 1158,
+      "inView": 1331,
+      "longestMs": 333
+     }
+    },
+    {
+     "key": "phone-pan+touch",
+     "jumps": 2,
+     "pops": 58,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 259,
+      "inView": 696,
+      "longestMs": 1367
+     }
+    }
+   ],
+   "long": {
+    "hybrid-0830": {
+     "clock": [
+      510.167,
+      690
+     ],
+     "playFrames": 1560,
+     "share": 0.713,
+     "drawn": 30768,
+     "inView": 43136,
+     "longestMs": 22333,
+     "longestMin": 81.26,
+     "under50": [
+      "dhautpoul 0.037 (66.26 min)",
+      "guard_cav 0.234 (69.67 min)",
+      "walther 0.254 (40 min)",
+      "rg_cav 0.264 (58.24 min)",
+      "kellermann 0.287 (81.26 min)",
+      "nansouty 0.315 (33.17 min)",
+      "guard_inf 0.344 (41.5 min)",
+      "kollo 0.499 (37.83 min)"
+     ],
+     "worst": [
+      "kellermann 22333ms/81.26min 0.287",
+      "guard_cav 18233ms/69.67min 0.234",
+      "dhautpoul 17333ms/66.26min 0.037",
+      "rg_cav 15567ms/58.24min 0.264",
+      "kollo 11567ms/37.83min 0.499",
+      "nansouty 10000ms/33.17min 0.315"
+     ],
+     "evNamed": {
+      "inView": 6322,
+      "drawn": 5734,
+      "share": 0.907,
+      "under80": [
+       {
+        "event": "face-about",
+        "id": "kollo",
+        "inView": 193,
+        "share": 0.031
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 197,
+        "share": 0.65
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 347,
+        "share": 0.781
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.992,
+       "longestMs": 167,
+       "longestMin": 0.83,
+       "inView": 1560
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.906,
+       "longestMs": 1333,
+       "longestMin": 6.67,
+       "inView": 1560
+      },
+      {
+       "id": "vandamme",
+       "share": 0.952,
+       "longestMs": 333,
+       "longestMin": 0.4,
+       "inView": 1560
+      },
+      {
+       "id": "legrand",
+       "share": 0.949,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1560
+      },
+      {
+       "id": "friant",
+       "share": 0.942,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1560
+      },
+      {
+       "id": "bourcier",
+       "share": 0.928,
+       "longestMs": 633,
+       "longestMin": 3.17,
+       "inView": 1400
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.924,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1560
+      },
+      {
+       "id": "suchet",
+       "share": 0.867,
+       "longestMs": 1200,
+       "longestMin": 4.5,
+       "inView": 1560
+      },
+      {
+       "id": "kellermann",
+       "share": 0.287,
+       "longestMs": 22333,
+       "longestMin": 81.26,
+       "inView": 1560
+      },
+      {
+       "id": "nansouty",
+       "share": 0.315,
+       "longestMs": 10000,
+       "longestMin": 33.17,
+       "inView": 1560
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.037,
+       "longestMs": 17333,
+       "longestMin": 66.26,
+       "inView": 1560
+      },
+      {
+       "id": "walther",
+       "share": 0.254,
+       "longestMs": 10000,
+       "longestMin": 40,
+       "inView": 1560
+      },
+      {
+       "id": "rivaud",
+       "share": 0.698,
+       "longestMs": 3300,
+       "longestMin": 15,
+       "inView": 1560
+      },
+      {
+       "id": "drouet",
+       "share": 0.853,
+       "longestMs": 2667,
+       "longestMin": 4.83,
+       "inView": 1560
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.344,
+       "longestMs": 10000,
+       "longestMin": 41.5,
+       "inView": 1560
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.234,
+       "longestMs": 18233,
+       "longestMin": 69.67,
+       "inView": 1560
+      },
+      {
+       "id": "c_gren",
+       "share": 0.883,
+       "longestMs": 1000,
+       "longestMin": 0.4,
+       "inView": 1560
+      },
+      {
+       "id": "ahq",
+       "share": 0.915,
+       "longestMs": 1333,
+       "longestMin": 6.43,
+       "inView": 1560
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.923,
+       "longestMs": 1333,
+       "longestMin": 6.67,
+       "inView": 1456
+      },
+      {
+       "id": "dok",
+       "share": 0.973,
+       "longestMs": 333,
+       "longestMin": 1.43,
+       "inView": 1445
+      },
+      {
+       "id": "lang",
+       "share": 0.981,
+       "longestMs": 300,
+       "longestMin": 1.5,
+       "inView": 1560
+      },
+      {
+       "id": "prz",
+       "share": 0.96,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1560
+      },
+      {
+       "id": "milo",
+       "share": 0.874,
+       "longestMs": 1333,
+       "longestMin": 1.83,
+       "inView": 1560
+      },
+      {
+       "id": "kollo",
+       "share": 0.499,
+       "longestMs": 11567,
+       "longestMin": 37.83,
+       "inView": 1560
+      },
+      {
+       "id": "lich",
+       "share": 0.824,
+       "longestMs": 6533,
+       "longestMin": 22.67,
+       "inView": 1560
+      },
+      {
+       "id": "bag",
+       "share": 0.907,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1395
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.563,
+       "longestMs": 6667,
+       "longestMin": 23.33,
+       "inView": 1560
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.264,
+       "longestMs": 15567,
+       "longestMin": 58.24,
+       "inView": 1560
+      }
+     ]
+    },
+    "hybrid-1200": {
+     "clock": [
+      720.167,
+      900
+     ],
+     "playFrames": 1328,
+     "share": 0.785,
+     "drawn": 24611,
+     "inView": 31339,
+     "longestMs": 12967,
+     "longestMin": 54.83,
+     "under50": [
+      "dhautpoul 0.329 (54.83 min)",
+      "milo 0.423 (23.5 min)",
+      "nansouty 0.499 (19.83 min)"
+     ],
+     "worst": [
+      "dhautpoul 12967ms/54.83min 0.329",
+      "kellermann 11300ms/46.5min 0.506",
+      "kollo 10000ms/40min 0.624",
+      "lich 8300ms/31.5min 0.641",
+      "rivaud 7833ms/29.67min 0.68",
+      "milo 6700ms/23.5min 0.423"
+     ],
+     "evNamed": {
+      "inView": 8525,
+      "drawn": 7424,
+      "share": 0.871,
+      "under80": [
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 565,
+        "share": 0.494
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 655,
+        "share": 0.563
+       },
+       {
+        "event": "ice",
+        "id": "kienmayer",
+        "inView": 55,
+        "share": 0.745
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.849,
+       "longestMs": 3333,
+       "longestMin": 6.67,
+       "inView": 1328
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.852,
+       "longestMs": 1067,
+       "longestMin": 1.5,
+       "inView": 1328
+      },
+      {
+       "id": "vandamme",
+       "share": 0.884,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1328
+      },
+      {
+       "id": "legrand",
+       "share": 0.915,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1328
+      },
+      {
+       "id": "friant",
+       "share": 0.861,
+       "longestMs": 733,
+       "longestMin": 3.67,
+       "inView": 1328
+      },
+      {
+       "id": "bourcier",
+       "share": 0.9,
+       "longestMs": 633,
+       "longestMin": 1.67,
+       "inView": 1328
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.793,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 762
+      },
+      {
+       "id": "suchet",
+       "share": 0.879,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 688
+      },
+      {
+       "id": "kellermann",
+       "share": 0.506,
+       "longestMs": 11300,
+       "longestMin": 46.5,
+       "inView": 814
+      },
+      {
+       "id": "nansouty",
+       "share": 0.499,
+       "longestMs": 3967,
+       "longestMin": 19.83,
+       "inView": 854
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.329,
+       "longestMs": 12967,
+       "longestMin": 54.83,
+       "inView": 1014
+      },
+      {
+       "id": "walther",
+       "share": 0.618,
+       "longestMs": 2333,
+       "longestMin": 1.9,
+       "inView": 816
+      },
+      {
+       "id": "rivaud",
+       "share": 0.68,
+       "longestMs": 7833,
+       "longestMin": 29.67,
+       "inView": 1289
+      },
+      {
+       "id": "drouet",
+       "share": 0.933,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1319
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.912,
+       "longestMs": 2000,
+       "longestMin": 10,
+       "inView": 1328
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.908,
+       "longestMs": 1000,
+       "longestMin": 5,
+       "inView": 1328
+      },
+      {
+       "id": "c_gren",
+       "share": 0.863,
+       "longestMs": 933,
+       "longestMin": 4.67,
+       "inView": 1328
+      },
+      {
+       "id": "ahq",
+       "share": 0.9,
+       "longestMs": 2333,
+       "longestMin": 11.67,
+       "inView": 1061
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.819,
+       "longestMs": 2000,
+       "longestMin": 10,
+       "inView": 1328
+      },
+      {
+       "id": "dok",
+       "share": 0.923,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1328
+      },
+      {
+       "id": "lang",
+       "share": 0.882,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1328
+      },
+      {
+       "id": "prz",
+       "share": 0.945,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1328
+      },
+      {
+       "id": "milo",
+       "share": 0.423,
+       "longestMs": 6700,
+       "longestMin": 23.5,
+       "inView": 930
+      },
+      {
+       "id": "kollo",
+       "share": 0.624,
+       "longestMs": 10000,
+       "longestMin": 40,
+       "inView": 1121
+      },
+      {
+       "id": "lich",
+       "share": 0.641,
+       "longestMs": 8300,
+       "longestMin": 31.5,
+       "inView": 794
+      },
+      {
+       "id": "bag",
+       "share": 0.862,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 629
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.706,
+       "longestMs": 2333,
+       "longestMin": 11.67,
+       "inView": 1038
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.529,
+       "longestMs": 4767,
+       "longestMin": 13.9,
+       "inView": 946
+      }
+     ]
+    },
+    "hybrid-0900-3600": {
+     "clock": [
+      540.167,
+      1000
+     ],
+     "playFrames": 3600,
+     "share": 0.772,
+     "drawn": 64843,
+     "inView": 83991,
+     "longestMs": 39967,
+     "longestMin": 139.83,
+     "under50": [
+      "dhautpoul 0.1 (139.83 min)",
+      "kellermann 0.255 (60.4 min)",
+      "walther 0.413 (59.76 min)",
+      "nansouty 0.437 (51.67 min)"
+     ],
+     "worst": [
+      "dhautpoul 39967ms/139.83min 0.1",
+      "guard_cav 17667ms/63.5min 0.685",
+      "kellermann 17000ms/60.4min 0.255",
+      "kollo 16667ms/63.33min 0.596",
+      "guard_inf 14767ms/53.83min 0.647",
+      "nansouty 14333ms/51.67min 0.437"
+     ],
+     "evNamed": {
+      "inView": 16010,
+      "drawn": 14372,
+      "share": 0.898,
+      "under80": [
+       {
+        "event": "face-about",
+        "id": "kollo",
+        "inView": 193,
+        "share": 0.052
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 1152,
+        "share": 0.742
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 1212,
+        "share": 0.75
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.944,
+       "longestMs": 1667,
+       "longestMin": 5.17,
+       "inView": 3600
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.913,
+       "longestMs": 1433,
+       "longestMin": 7.17,
+       "inView": 3600
+      },
+      {
+       "id": "vandamme",
+       "share": 0.933,
+       "longestMs": 333,
+       "longestMin": 0.4,
+       "inView": 3600
+      },
+      {
+       "id": "legrand",
+       "share": 0.941,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 3600
+      },
+      {
+       "id": "friant",
+       "share": 0.927,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 3600
+      },
+      {
+       "id": "bourcier",
+       "share": 0.924,
+       "longestMs": 867,
+       "longestMin": 4.33,
+       "inView": 3387
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.906,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 2322
+      },
+      {
+       "id": "suchet",
+       "share": 0.892,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 2248
+      },
+      {
+       "id": "kellermann",
+       "share": 0.255,
+       "longestMs": 17000,
+       "longestMin": 60.4,
+       "inView": 2374
+      },
+      {
+       "id": "nansouty",
+       "share": 0.437,
+       "longestMs": 14333,
+       "longestMin": 51.67,
+       "inView": 2414
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.1,
+       "longestMs": 39967,
+       "longestMin": 139.83,
+       "inView": 2574
+      },
+      {
+       "id": "walther",
+       "share": 0.413,
+       "longestMs": 14333,
+       "longestMin": 59.76,
+       "inView": 2376
+      },
+      {
+       "id": "rivaud",
+       "share": 0.707,
+       "longestMs": 6600,
+       "longestMin": 24.83,
+       "inView": 3008
+      },
+      {
+       "id": "drouet",
+       "share": 0.886,
+       "longestMs": 5200,
+       "longestMin": 16,
+       "inView": 3064
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.647,
+       "longestMs": 14767,
+       "longestMin": 53.83,
+       "inView": 3600
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.685,
+       "longestMs": 17667,
+       "longestMin": 63.5,
+       "inView": 3600
+      },
+      {
+       "id": "c_gren",
+       "share": 0.894,
+       "longestMs": 1000,
+       "longestMin": 5,
+       "inView": 3600
+      },
+      {
+       "id": "ahq",
+       "share": 0.869,
+       "longestMs": 5133,
+       "longestMin": 15.7,
+       "inView": 2621
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.77,
+       "longestMs": 12500,
+       "longestMin": 52.5,
+       "inView": 3484
+      },
+      {
+       "id": "dok",
+       "share": 0.955,
+       "longestMs": 333,
+       "longestMin": 1.43,
+       "inView": 3466
+      },
+      {
+       "id": "lang",
+       "share": 0.946,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 3600
+      },
+      {
+       "id": "prz",
+       "share": 0.96,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 3600
+      },
+      {
+       "id": "milo",
+       "share": 0.522,
+       "longestMs": 8333,
+       "longestMin": 31.67,
+       "inView": 2490
+      },
+      {
+       "id": "kollo",
+       "share": 0.596,
+       "longestMs": 16667,
+       "longestMin": 63.33,
+       "inView": 2681
+      },
+      {
+       "id": "lich",
+       "share": 0.878,
+       "longestMs": 2533,
+       "longestMin": 7.83,
+       "inView": 2354
+      },
+      {
+       "id": "bag",
+       "share": 0.916,
+       "longestMs": 333,
+       "longestMin": 0.24,
+       "inView": 2024
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.693,
+       "longestMs": 6000,
+       "longestMin": 20,
+       "inView": 2598
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.529,
+       "longestMs": 6000,
+       "longestMin": 30,
+       "inView": 2506
+      }
+     ]
+    },
+    "phone-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.493,
+     "drawn": 6824,
+     "inView": 13847,
+     "longestMs": 25033,
+     "longestMin": 90,
+     "under50": [
+      "lich 0 (90 min)",
+      "c_gren 0.05 (39.6 min)",
+      "c_cav 0.134 (28.17 min)",
+      "bag 0.173 (7.17 min)",
+      "constantine 0.256 (75 min)",
+      "ahq 0.479 (39.33 min)"
+     ],
+     "worst": [
+      "lich 25033ms/90min 0",
+      "constantine 20333ms/75min 0.256",
+      "ahq 11867ms/39.33min 0.479",
+      "c_gren 11333ms/39.6min 0.05",
+      "c_cav 7900ms/28.17min 0.134",
+      "buxhowden 7633ms/28.17min 0.511"
+     ],
+     "evNamed": {
+      "inView": 945,
+      "drawn": 331,
+      "share": 0.35,
+      "under80": [
+       {
+        "event": "face-about",
+        "id": "ahq",
+        "inView": 193,
+        "share": 0
+       },
+       {
+        "event": "buxhowden-blind",
+        "id": "buxhowden",
+        "inView": 157,
+        "share": 0.045
+       },
+       {
+        "event": "guard-attack",
+        "id": "constantine",
+        "inView": 595,
+        "share": 0.545
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "c_iv",
+       "share": 0.942,
+       "longestMs": 333,
+       "longestMin": 0.24,
+       "inView": 1508
+      },
+      {
+       "id": "c_iii",
+       "share": 0.796,
+       "longestMs": 4300,
+       "longestMin": 19.83,
+       "inView": 884
+      },
+      {
+       "id": "c_v",
+       "share": 0.72,
+       "longestMs": 600,
+       "longestMin": 3,
+       "inView": 246
+      },
+      {
+       "id": "c_cav",
+       "share": 0.134,
+       "longestMs": 7900,
+       "longestMin": 28.17,
+       "inView": 688
+      },
+      {
+       "id": "c_i",
+       "share": 0.7,
+       "longestMs": 3000,
+       "longestMin": 6.83,
+       "inView": 1253
+      },
+      {
+       "id": "c_gd",
+       "share": 0.854,
+       "longestMs": 900,
+       "longestMin": 4.5,
+       "inView": 765
+      },
+      {
+       "id": "col4",
+       "share": 0.518,
+       "longestMs": 4933,
+       "longestMin": 14.67,
+       "inView": 1508
+      },
+      {
+       "id": "constantine",
+       "share": 0.256,
+       "longestMs": 20333,
+       "longestMin": 75,
+       "inView": 1508
+      },
+      {
+       "id": "gqg",
+       "share": 0.685,
+       "longestMs": 4233,
+       "longestMin": 19.33,
+       "inView": 482
+      },
+      {
+       "id": "c_gren",
+       "share": 0.05,
+       "longestMs": 11333,
+       "longestMin": 39.6,
+       "inView": 776
+      },
+      {
+       "id": "ahq",
+       "share": 0.479,
+       "longestMs": 11867,
+       "longestMin": 39.33,
+       "inView": 1508
+      },
+      {
+       "id": "buxhowden",
+       "share": 0.511,
+       "longestMs": 7633,
+       "longestMin": 28.17,
+       "inView": 1238
+      },
+      {
+       "id": "lich",
+       "share": 0,
+       "longestMs": 25033,
+       "longestMin": 90,
+       "inView": 1431
+      },
+      {
+       "id": "bag",
+       "share": 0.173,
+       "longestMs": 1433,
+       "longestMin": 7.17,
+       "inView": 52
+      }
+     ]
+    },
+    "land-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.947,
+     "drawn": 36516,
+     "inView": 38564,
+     "longestMs": 1000,
+     "longestMin": 5,
+     "under50": [],
+     "worst": [
+      "guard_inf 1000ms/5min 0.881",
+      "sthilaire 333ms/0.4min 0.93",
+      "vandamme 333ms/1.67min 0.956",
+      "legrand 333ms/1.67min 0.973",
+      "friant 333ms/0.4min 0.95",
+      "bourcier 333ms/1.67min 0.966"
+     ],
+     "evNamed": {
+      "inView": 6493,
+      "drawn": 6223,
+      "share": 0.958,
+      "under80": [
+       {
+        "event": "pratzen-village",
+        "id": "sthilaire",
+        "inView": 86,
+        "share": 0.744
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "sthilaire",
+       "share": 0.93,
+       "longestMs": 333,
+       "longestMin": 0.4,
+       "inView": 1508
+      },
+      {
+       "id": "vandamme",
+       "share": 0.956,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "legrand",
+       "share": 0.973,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "friant",
+       "share": 0.95,
+       "longestMs": 333,
+       "longestMin": 0.4,
+       "inView": 1508
+      },
+      {
+       "id": "bourcier",
+       "share": 0.966,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1291
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.979,
+       "longestMs": 200,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "suchet",
+       "share": 0.977,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "kellermann",
+       "share": 0.928,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "nansouty",
+       "share": 0.86,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.944,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "walther",
+       "share": 0.848,
+       "longestMs": 333,
+       "longestMin": 1.43,
+       "inView": 1508
+      },
+      {
+       "id": "rivaud",
+       "share": 0.928,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "drouet",
+       "share": 0.928,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.881,
+       "longestMs": 1000,
+       "longestMin": 5,
+       "inView": 1508
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.98,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "c_gren",
+       "share": 0.975,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.965,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1387
+      },
+      {
+       "id": "dok",
+       "share": 0.974,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1370
+      },
+      {
+       "id": "lang",
+       "share": 0.985,
+       "longestMs": 267,
+       "longestMin": 1.33,
+       "inView": 1508
+      },
+      {
+       "id": "prz",
+       "share": 0.977,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "milo",
+       "share": 0.979,
+       "longestMs": 333,
+       "longestMin": 0.24,
+       "inView": 1508
+      },
+      {
+       "id": "kollo",
+       "share": 0.952,
+       "longestMs": 333,
+       "longestMin": 1.43,
+       "inView": 1508
+      },
+      {
+       "id": "lich",
+       "share": 0.908,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "bag",
+       "share": 0.96,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1340
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.985,
+       "longestMs": 333,
+       "longestMin": 1.43,
+       "inView": 1508
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.94,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      }
+     ]
+    },
+    "paper-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.952,
+     "drawn": 20102,
+     "inView": 21112,
+     "longestMs": 333,
+     "longestMin": 1.67,
+     "under50": [],
+     "worst": [
+      "c_iii 333ms/1.67min 0.948",
+      "c_v 333ms/1.67min 0.952",
+      "c_cav 333ms/1.67min 0.934",
+      "c_i 333ms/1.67min 0.933",
+      "c_gd 333ms/1.67min 0.94",
+      "col4 333ms/1.67min 0.952"
+     ],
+     "evNamed": {
+      "inView": 1078,
+      "drawn": 1034,
+      "share": 0.959,
+      "under80": []
+     },
+     "formations": [
+      {
+       "id": "c_iv",
+       "share": 0.969,
+       "longestMs": 300,
+       "longestMin": 1.5,
+       "inView": 1508
+      },
+      {
+       "id": "c_iii",
+       "share": 0.948,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "c_v",
+       "share": 0.952,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "c_cav",
+       "share": 0.934,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "c_i",
+       "share": 0.933,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "c_gd",
+       "share": 0.94,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "col4",
+       "share": 0.952,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "constantine",
+       "share": 0.963,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "gqg",
+       "share": 0.969,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "c_gren",
+       "share": 0.928,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "ahq",
+       "share": 0.961,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "buxhowden",
+       "share": 0.993,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "lich",
+       "share": 0.922,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "bag",
+       "share": 0.966,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      }
+     ]
+    },
+    "hybrid-4x-day": {
+     "clock": [
+      241.333,
+      1080
+     ],
+     "playFrames": 1800,
+     "share": 0.719,
+     "drawn": 30800,
+     "inView": 42815,
+     "longestMs": 22367,
+     "longestMin": 215.14,
+     "under50": [
+      "dhautpoul 0.141 (65 min)",
+      "kellermann 0.249 (61.92 min)",
+      "walther 0.394 (30 min)",
+      "nansouty 0.398 (60 min)",
+      "guard_cav 0.415 (215.14 min)"
+     ],
+     "worst": [
+      "guard_cav 22367ms/215.14min 0.415",
+      "guard_inf 10433ms/102.39min 0.647",
+      "dhautpoul 9000ms/65min 0.141",
+      "kollo 7667ms/78.67min 0.515",
+      "kellermann 7500ms/61.92min 0.249",
+      "rivaud 6333ms/63.21min 0.608"
+     ],
+     "evNamed": {
+      "inView": 8445,
+      "drawn": 7442,
+      "share": 0.881,
+      "under80": [
+       {
+        "event": "face-about",
+        "id": "kollo",
+        "inView": 75,
+        "share": 0
+       },
+       {
+        "event": "guard-broken",
+        "id": "guard_cav",
+        "inView": 402,
+        "share": 0.734
+       },
+       {
+        "event": "augezd",
+        "id": "vandamme",
+        "inView": 77,
+        "share": 0.753
+       },
+       {
+        "event": "sokolnitz-falls",
+        "id": "prz",
+        "inView": 76,
+        "share": 0.763
+       },
+       {
+        "event": "blasowitz",
+        "id": "rivaud",
+        "inView": 72,
+        "share": 0.778
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 402,
+        "share": 0.796
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.924,
+       "longestMs": 1400,
+       "longestMin": 1.34,
+       "inView": 1800
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.832,
+       "longestMs": 667,
+       "longestMin": 12.4,
+       "inView": 1633
+      },
+      {
+       "id": "vandamme",
+       "share": 0.855,
+       "longestMs": 667,
+       "longestMin": 2.6,
+       "inView": 1633
+      },
+      {
+       "id": "legrand",
+       "share": 0.863,
+       "longestMs": 333,
+       "longestMin": 3.68,
+       "inView": 1633
+      },
+      {
+       "id": "friant",
+       "share": 0.852,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1442
+      },
+      {
+       "id": "bourcier",
+       "share": 0.831,
+       "longestMs": 700,
+       "longestMin": 3.45,
+       "inView": 1398
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.822,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1250
+      },
+      {
+       "id": "suchet",
+       "share": 0.822,
+       "longestMs": 667,
+       "longestMin": 13.99,
+       "inView": 1170
+      },
+      {
+       "id": "kellermann",
+       "share": 0.249,
+       "longestMs": 7500,
+       "longestMin": 61.92,
+       "inView": 1283
+      },
+      {
+       "id": "nansouty",
+       "share": 0.398,
+       "longestMs": 5333,
+       "longestMin": 60,
+       "inView": 1311
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.141,
+       "longestMs": 9000,
+       "longestMin": 65,
+       "inView": 1331
+      },
+      {
+       "id": "walther",
+       "share": 0.394,
+       "longestMs": 5000,
+       "longestMin": 30,
+       "inView": 1274
+      },
+      {
+       "id": "rivaud",
+       "share": 0.608,
+       "longestMs": 6333,
+       "longestMin": 63.21,
+       "inView": 1501
+      },
+      {
+       "id": "drouet",
+       "share": 0.859,
+       "longestMs": 1633,
+       "longestMin": 12.4,
+       "inView": 1558
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.647,
+       "longestMs": 10433,
+       "longestMin": 102.39,
+       "inView": 1633
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.415,
+       "longestMs": 22367,
+       "longestMin": 215.14,
+       "inView": 1633
+      },
+      {
+       "id": "c_gren",
+       "share": 0.832,
+       "longestMs": 1000,
+       "longestMin": 0,
+       "inView": 1800
+      },
+      {
+       "id": "ahq",
+       "share": 0.791,
+       "longestMs": 1200,
+       "longestMin": 16.9,
+       "inView": 1561
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.834,
+       "longestMs": 1000,
+       "longestMin": 38.12,
+       "inView": 1623
+      },
+      {
+       "id": "dok",
+       "share": 0.891,
+       "longestMs": 333,
+       "longestMin": 3.68,
+       "inView": 1608
+      },
+      {
+       "id": "lang",
+       "share": 0.874,
+       "longestMs": 333,
+       "longestMin": 13.33,
+       "inView": 1633
+      },
+      {
+       "id": "prz",
+       "share": 0.893,
+       "longestMs": 333,
+       "longestMin": 13.33,
+       "inView": 1587
+      },
+      {
+       "id": "milo",
+       "share": 0.617,
+       "longestMs": 5333,
+       "longestMin": 54.05,
+       "inView": 1328
+      },
+      {
+       "id": "kollo",
+       "share": 0.515,
+       "longestMs": 7667,
+       "longestMin": 78.67,
+       "inView": 1403
+      },
+      {
+       "id": "lich",
+       "share": 0.816,
+       "longestMs": 1667,
+       "longestMin": 8.71,
+       "inView": 1441
+      },
+      {
+       "id": "bag",
+       "share": 0.867,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 1274
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.757,
+       "longestMs": 2700,
+       "longestMin": 24.22,
+       "inView": 1355
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.535,
+       "longestMs": 5000,
+       "longestMin": 30,
+       "inView": 1323
+      },
+      {
+       "id": "c_iv",
+       "share": 0.928,
+       "longestMs": 267,
+       "longestMin": 0,
+       "inView": 167
+      },
+      {
+       "id": "c_iii",
+       "share": 0.867,
+       "longestMs": 233,
+       "longestMin": 3.01,
+       "inView": 60
+      },
+      {
+       "id": "c_v",
+       "share": 0.772,
+       "longestMs": 333,
+       "longestMin": 13.33,
+       "inView": 167
+      },
+      {
+       "id": "c_cav",
+       "share": 0.832,
+       "longestMs": 333,
+       "longestMin": 3.01,
+       "inView": 167
+      },
+      {
+       "id": "c_i",
+       "share": 0.772,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 167
+      },
+      {
+       "id": "c_gd",
+       "share": 0.832,
+       "longestMs": 333,
+       "longestMin": 13.33,
+       "inView": 167
+      },
+      {
+       "id": "col4",
+       "share": 0.91,
+       "longestMs": 267,
+       "longestMin": 0,
+       "inView": 167
+      },
+      {
+       "id": "constantine",
+       "share": 0.713,
+       "longestMs": 1333,
+       "longestMin": 15.33,
+       "inView": 167
+      },
+      {
+       "id": "buxhowden",
+       "share": 0.844,
+       "longestMs": 333,
+       "longestMin": 13.33,
+       "inView": 167
+      }
+     ]
+    },
+    "hybrid-fr-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.715,
+     "drawn": 25939,
+     "inView": 36295,
+     "longestMs": 16333,
+     "longestMin": 60.4,
+     "under50": [
+      "dhautpoul 0.046 (50.4 min)",
+      "kellermann 0.29 (60.4 min)",
+      "nansouty 0.312 (26.67 min)",
+      "rg_cav 0.314 (28 min)",
+      "guard_inf 0.322 (51.83 min)",
+      "walther 0.339 (54.6 min)",
+      "guard_cav 0.428 (38.33 min)"
+     ],
+     "worst": [
+      "kellermann 16333ms/60.4min 0.29",
+      "guard_inf 14633ms/51.83min 0.322",
+      "dhautpoul 14000ms/50.4min 0.046",
+      "walther 13000ms/54.6min 0.339",
+      "guard_cav 11667ms/38.33min 0.428",
+      "rg_cav 7867ms/28min 0.314"
+     ],
+     "evNamed": {
+      "inView": 6130,
+      "drawn": 4720,
+      "share": 0.77,
+      "under80": [
+       {
+        "event": "face-about",
+        "id": "kollo",
+        "inView": 193,
+        "share": 0.052
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 445,
+        "share": 0.187
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 595,
+        "share": 0.38
+       },
+       {
+        "event": "blasowitz",
+        "id": "rg_inf",
+        "inView": 192,
+        "share": 0.448
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_inf",
+        "inView": 595,
+        "share": 0.714
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.987,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.952,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "vandamme",
+       "share": 0.956,
+       "longestMs": 333,
+       "longestMin": 0.4,
+       "inView": 1508
+      },
+      {
+       "id": "legrand",
+       "share": 0.954,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "friant",
+       "share": 0.92,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "bourcier",
+       "share": 0.921,
+       "longestMs": 1000,
+       "longestMin": 5,
+       "inView": 1295
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.922,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "suchet",
+       "share": 0.903,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "kellermann",
+       "share": 0.29,
+       "longestMs": 16333,
+       "longestMin": 60.4,
+       "inView": 1508
+      },
+      {
+       "id": "nansouty",
+       "share": 0.312,
+       "longestMs": 5333,
+       "longestMin": 26.67,
+       "inView": 1508
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.046,
+       "longestMs": 14000,
+       "longestMin": 50.4,
+       "inView": 1508
+      },
+      {
+       "id": "walther",
+       "share": 0.339,
+       "longestMs": 13000,
+       "longestMin": 54.6,
+       "inView": 1508
+      },
+      {
+       "id": "rivaud",
+       "share": 0.659,
+       "longestMs": 4000,
+       "longestMin": 10,
+       "inView": 1508
+      },
+      {
+       "id": "drouet",
+       "share": 0.852,
+       "longestMs": 1700,
+       "longestMin": 8,
+       "inView": 1508
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.322,
+       "longestMs": 14633,
+       "longestMin": 51.83,
+       "inView": 1508
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.428,
+       "longestMs": 11667,
+       "longestMin": 38.33,
+       "inView": 1508
+      },
+      {
+       "id": "c_gren",
+       "share": 0.916,
+       "longestMs": 767,
+       "longestMin": 2.33,
+       "inView": 1508
+      },
+      {
+       "id": "ahq",
+       "share": 0.856,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 521
+      },
+      {
+       "id": "dok",
+       "share": 0.983,
+       "longestMs": 267,
+       "longestMin": 1.33,
+       "inView": 467
+      },
+      {
+       "id": "prz",
+       "share": 0.985,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "milo",
+       "share": 0.795,
+       "longestMs": 2867,
+       "longestMin": 7.83,
+       "inView": 1229
+      },
+      {
+       "id": "kollo",
+       "share": 0.729,
+       "longestMs": 4200,
+       "longestMin": 11,
+       "inView": 827
+      },
+      {
+       "id": "lich",
+       "share": 0.814,
+       "longestMs": 6533,
+       "longestMin": 22.67,
+       "inView": 1508
+      },
+      {
+       "id": "bag",
+       "share": 0.931,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1343
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.775,
+       "longestMs": 5667,
+       "longestMin": 24.6,
+       "inView": 1508
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.314,
+       "longestMs": 7867,
+       "longestMin": 28,
+       "inView": 1508
+      },
+      {
+       "id": "lang",
+       "share": 0.96,
+       "longestMs": 300,
+       "longestMin": 1.5,
+       "inView": 453
+      }
+     ]
+    },
+    "hybrid-al-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.839,
+     "drawn": 22417,
+     "inView": 26704,
+     "longestMs": 14833,
+     "longestMin": 52.83,
+     "under50": [
+      "guard_inf 0.258 (23.83 min)",
+      "rg_cav 0.496 (45 min)"
+     ],
+     "worst": [
+      "kollo 14833ms/52.83min 0.527",
+      "rg_cav 11000ms/45min 0.496",
+      "milo 10867ms/43min 0.611",
+      "guard_inf 7033ms/23.83min 0.258",
+      "rg_inf 5000ms/15min 0.758",
+      "rivaud 3067ms/14min 0.822"
+     ],
+     "evNamed": {
+      "inView": 6249,
+      "drawn": 5571,
+      "share": 0.892,
+      "under80": [
+       {
+        "event": "face-about",
+        "id": "kollo",
+        "inView": 193,
+        "share": 0.052
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.99,
+       "longestMs": 133,
+       "longestMin": 0.63,
+       "inView": 521
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.924,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "vandamme",
+       "share": 0.905,
+       "longestMs": 1233,
+       "longestMin": 6.17,
+       "inView": 1508
+      },
+      {
+       "id": "friant",
+       "share": 0.914,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "bourcier",
+       "share": 0.9,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1295
+      },
+      {
+       "id": "rivaud",
+       "share": 0.822,
+       "longestMs": 3067,
+       "longestMin": 14,
+       "inView": 1508
+      },
+      {
+       "id": "drouet",
+       "share": 0.901,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "ahq",
+       "share": 0.905,
+       "longestMs": 1333,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.927,
+       "longestMs": 900,
+       "longestMin": 4.5,
+       "inView": 1392
+      },
+      {
+       "id": "dok",
+       "share": 0.978,
+       "longestMs": 300,
+       "longestMin": 0,
+       "inView": 1374
+      },
+      {
+       "id": "lang",
+       "share": 0.961,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "prz",
+       "share": 0.971,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "milo",
+       "share": 0.611,
+       "longestMs": 10867,
+       "longestMin": 43,
+       "inView": 1508
+      },
+      {
+       "id": "kollo",
+       "share": 0.527,
+       "longestMs": 14833,
+       "longestMin": 52.83,
+       "inView": 1508
+      },
+      {
+       "id": "lich",
+       "share": 0.916,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1508
+      },
+      {
+       "id": "bag",
+       "share": 0.94,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 1343
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.758,
+       "longestMs": 5000,
+       "longestMin": 15,
+       "inView": 1508
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.496,
+       "longestMs": 11000,
+       "longestMin": 45,
+       "inView": 1508
+      },
+      {
+       "id": "suchet",
+       "share": 0.833,
+       "longestMs": 200,
+       "longestMin": 1,
+       "inView": 36
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.737,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 38
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.95,
+       "longestMs": 333,
+       "longestMin": 1.67,
+       "inView": 319
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.258,
+       "longestMs": 7033,
+       "longestMin": 23.83,
+       "inView": 391
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.964,
+       "longestMs": 333,
+       "longestMin": 0,
+       "inView": 391
+      }
+     ]
+    }
+   },
+   "console": [],
+   "secs": 987
+  },
+  {
+   "name": "hysteresis",
+   "totals": {
+    "jumps": 240,
+    "pops": 1048,
+    "flicker": 7,
+    "lod": 105
+   },
+   "failures": [
+    "hybrid-pan: formation-frames in view 2189, the baseline's 2036 (the denominator must not change)",
+    "hybrid-pan: a formation hidden by the layout for 3033 ms, the baseline's longest 2467 ms",
+    "hybrid-pan+fr: formation-frames in view 2112, the baseline's 1959 (the denominator must not change)",
+    "hybrid-pan+fr: a formation hidden by the layout for 3033 ms, the baseline's longest 2467 ms",
+    "hybrid-pan+al: formation-frames in view 1321, the baseline's 1270 (the denominator must not change)"
+   ],
+   "drawn": 29942,
+   "drawnBaselines": 29679,
+   "runs": [
+    {
+     "key": "hybrid-pan",
+     "jumps": 7,
+     "pops": 67,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1436,
+      "inView": 2189,
+      "longestMs": 3033
+     }
+    },
+    {
+     "key": "hybrid-zoom",
+     "jumps": 24,
+     "pops": 116,
+     "flicker": 1,
+     "lod": 24,
+     "track": {
+      "on": 1245,
+      "inView": 2203,
+      "longestMs": 2133
+     }
+    },
+    {
+     "key": "hybrid-orbit",
+     "jumps": 9,
+     "pops": 145,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1520,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-glide",
+     "jumps": 13,
+     "pops": 81,
+     "flicker": 1,
+     "lod": 12,
+     "track": {
+      "on": 1172,
+      "inView": 1786,
+      "longestMs": 1700
+     }
+    },
+    {
+     "key": "hybrid-play",
+     "jumps": 11,
+     "pops": 99,
+     "flicker": 0,
+     "lod": 2,
+     "track": {
+      "on": 2079,
+      "inView": 3388,
+      "longestMs": 4033
+     }
+    },
+    {
+     "key": "paper-pan",
+     "jumps": 0,
+     "pops": 2,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1274,
+      "inView": 1274,
+      "longestMs": 0
+     }
+    },
+    {
+     "key": "paper-zoom",
+     "jumps": 13,
+     "pops": 98,
+     "flicker": 2,
+     "lod": 0,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-glide",
+     "jumps": 11,
+     "pops": 45,
+     "flicker": 1,
+     "lod": 27,
+     "track": {
+      "on": 551,
+      "inView": 822,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-play",
+     "jumps": 4,
+     "pops": 38,
+     "flicker": 1,
+     "lod": 2,
+     "track": {
+      "on": 1564,
+      "inView": 1694,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-pan",
+     "jumps": 17,
+     "pops": 46,
+     "flicker": 0,
+     "lod": 2,
+     "track": {
+      "on": 1800,
+      "inView": 2038,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-zoom",
+     "jumps": 31,
+     "pops": 67,
+     "flicker": 0,
+     "lod": 30,
+     "track": {
+      "on": 1655,
+      "inView": 2207,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-orbit",
+     "jumps": 31,
+     "pops": 104,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1753,
+      "inView": 2366,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-play",
+     "jumps": 15,
+     "pops": 77,
+     "flicker": 1,
+     "lod": 2,
+     "track": {
+      "on": 2603,
+      "inView": 3146,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "low-pan",
+     "jumps": 7,
+     "pops": 9,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 806,
+      "inView": 861,
+      "longestMs": 533
+     }
+    },
+    {
+     "key": "low-orbit",
+     "jumps": 17,
+     "pops": 30,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 649,
+      "inView": 859,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "low-zoom",
+     "jumps": 30,
+     "pops": 24,
+     "flicker": 0,
+     "lod": 4,
+     "track": {
+      "on": 441,
+      "inView": 590,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-orbit+point",
+     "jumps": 9,
+     "pops": 145,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1520,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-orbit+real",
+     "jumps": 9,
+     "pops": 145,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1520,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "paper-zoom+point",
+     "jumps": 13,
+     "pops": 98,
+     "flicker": 2,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-zoom+real",
+     "jumps": 13,
+     "pops": 98,
+     "flicker": 2,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-orbit+sel",
+     "jumps": 18,
+     "pops": 133,
+     "flicker": 1,
+     "lod": 0,
+     "track": {
+      "on": 1524,
+      "inView": 2548,
+      "longestMs": 2100
+     }
+    },
+    {
+     "key": "paper-zoom+sel",
+     "jumps": 28,
+     "pops": 92,
+     "flicker": 1,
+     "lod": 0,
+     "track": {
+      "on": 821,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-pan+fr",
+     "jumps": 8,
+     "pops": 64,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1387,
+      "inView": 2112,
+      "longestMs": 3033
+     }
+    },
+    {
+     "key": "hybrid-pan+al",
+     "jumps": 10,
+     "pops": 41,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1010,
+      "inView": 1321,
+      "longestMs": 1467
+     }
+    },
+    {
+     "key": "paper-play+al",
+     "jumps": 5,
+     "pops": 35,
+     "flicker": 1,
+     "lod": 2,
+     "track": {
+      "on": 1171,
+      "inView": 1331,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "phone-pan+touch",
+     "jumps": 2,
+     "pops": 57,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 257,
+      "inView": 696,
+      "longestMs": 1367
+     }
+    }
+   ],
+   "long": {
+    "hybrid-0830": {
+     "clock": [
+      510.167,
+      690
+     ],
+     "playFrames": 1560,
+     "share": 0.691,
+     "drawn": 29816,
+     "inView": 43136,
+     "longestMs": 20000,
+     "longestMin": 73.5,
+     "under50": [
+      "dhautpoul 0.077 (73.5 min)",
+      "guard_cav 0.146 (56.67 min)",
+      "rg_cav 0.205 (45 min)",
+      "kellermann 0.356 (30 min)",
+      "walther 0.41 (8.17 min)",
+      "nansouty 0.413 (20 min)",
+      "guard_inf 0.447 (17.1 min)"
+     ],
+     "worst": [
+      "dhautpoul 20000ms/73.5min 0.077",
+      "guard_cav 15333ms/56.67min 0.146",
+      "rg_cav 14333ms/45min 0.205",
+      "kellermann 9667ms/30min 0.356",
+      "guard_inf 5467ms/17.1min 0.447",
+      "milo 5033ms/15.17min 0.726"
+     ],
+     "evNamed": {
+      "inView": 6322,
+      "drawn": 3804,
+      "share": 0.602,
+      "under80": [
+       {
+        "event": "guard-broken",
+        "id": "guard_cav",
+        "inView": 197,
+        "share": 0.015
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 197,
+        "share": 0.03
+       },
+       {
+        "event": "blasowitz",
+        "id": "rg_inf",
+        "inView": 192,
+        "share": 0.052
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 347,
+        "share": 0.115
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_inf",
+        "inView": 347,
+        "share": 0.409
+       },
+       {
+        "event": "guard-broken",
+        "id": "drouet",
+        "inView": 197,
+        "share": 0.457
+       },
+       {
+        "event": "blasowitz",
+        "id": "rivaud",
+        "inView": 192,
+        "share": 0.484
+       },
+       {
+        "event": "soult",
+        "id": "sthilaire",
+        "inView": 493,
+        "share": 0.511
+       },
+       {
+        "event": "face-about",
+        "id": "milo",
+        "inView": 193,
+        "share": 0.58
+       },
+       {
+        "event": "decision",
+        "id": "sthilaire",
+        "inView": 236,
+        "share": 0.585
+       },
+       {
+        "event": "soult",
+        "id": "vandamme",
+        "inView": 493,
+        "share": 0.604
+       },
+       {
+        "event": "guard-attack",
+        "id": "vandamme",
+        "inView": 347,
+        "share": 0.62
+       },
+       {
+        "event": "decision",
+        "id": "vandamme",
+        "inView": 236,
+        "share": 0.64
+       },
+       {
+        "event": "pratzen-village",
+        "id": "sthilaire",
+        "inView": 193,
+        "share": 0.642
+       },
+       {
+        "event": "telnitz-retaken",
+        "id": "friant",
+        "inView": 193,
+        "share": 0.762
+       },
+       {
+        "event": "kamensky",
+        "id": "sthilaire",
+        "inView": 192,
+        "share": 0.786
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.978,
+       "longestMs": 400,
+       "longestMin": 0,
+       "inView": 1560
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.764,
+       "longestMs": 3333,
+       "longestMin": 8.17,
+       "inView": 1560
+      },
+      {
+       "id": "vandamme",
+       "share": 0.627,
+       "longestMs": 4000,
+       "longestMin": 10.23,
+       "inView": 1560
+      },
+      {
+       "id": "legrand",
+       "share": 0.897,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1560
+      },
+      {
+       "id": "friant",
+       "share": 0.828,
+       "longestMs": 1233,
+       "longestMin": 6.17,
+       "inView": 1560
+      },
+      {
+       "id": "bourcier",
+       "share": 0.871,
+       "longestMs": 1667,
+       "longestMin": 8.33,
+       "inView": 1400
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.829,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1560
+      },
+      {
+       "id": "suchet",
+       "share": 0.79,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1560
+      },
+      {
+       "id": "kellermann",
+       "share": 0.356,
+       "longestMs": 9667,
+       "longestMin": 30,
+       "inView": 1560
+      },
+      {
+       "id": "nansouty",
+       "share": 0.413,
+       "longestMs": 4000,
+       "longestMin": 20,
+       "inView": 1560
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.077,
+       "longestMs": 20000,
+       "longestMin": 73.5,
+       "inView": 1560
+      },
+      {
+       "id": "walther",
+       "share": 0.41,
+       "longestMs": 3000,
+       "longestMin": 8.17,
+       "inView": 1560
+      },
+      {
+       "id": "rivaud",
+       "share": 0.532,
+       "longestMs": 3333,
+       "longestMin": 6.67,
+       "inView": 1560
+      },
+      {
+       "id": "drouet",
+       "share": 0.687,
+       "longestMs": 1667,
+       "longestMin": 6.5,
+       "inView": 1560
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.447,
+       "longestMs": 5467,
+       "longestMin": 17.1,
+       "inView": 1560
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.146,
+       "longestMs": 15333,
+       "longestMin": 56.67,
+       "inView": 1560
+      },
+      {
+       "id": "c_gren",
+       "share": 0.783,
+       "longestMs": 2000,
+       "longestMin": 3.5,
+       "inView": 1560
+      },
+      {
+       "id": "ahq",
+       "share": 0.97,
+       "longestMs": 633,
+       "longestMin": 3.17,
+       "inView": 1560
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.914,
+       "longestMs": 1000,
+       "longestMin": 5,
+       "inView": 1456
+      },
+      {
+       "id": "dok",
+       "share": 0.975,
+       "longestMs": 633,
+       "longestMin": 0,
+       "inView": 1445
+      },
+      {
+       "id": "lang",
+       "share": 0.965,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1560
+      },
+      {
+       "id": "prz",
+       "share": 0.933,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1560
+      },
+      {
+       "id": "milo",
+       "share": 0.726,
+       "longestMs": 5033,
+       "longestMin": 15.17,
+       "inView": 1560
+      },
+      {
+       "id": "kollo",
+       "share": 0.871,
+       "longestMs": 1067,
+       "longestMin": 1.5,
+       "inView": 1560
+      },
+      {
+       "id": "lich",
+       "share": 0.866,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1560
+      },
+      {
+       "id": "bag",
+       "share": 0.844,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1395
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.721,
+       "longestMs": 4000,
+       "longestMin": 10,
+       "inView": 1560
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.205,
+       "longestMs": 14333,
+       "longestMin": 45,
+       "inView": 1560
+      }
+     ]
+    },
+    "hybrid-1200": {
+     "clock": [
+      720.167,
+      900
+     ],
+     "playFrames": 1328,
+     "share": 0.715,
+     "drawn": 22406,
+     "inView": 31339,
+     "longestMs": 12000,
+     "longestMin": 46.5,
+     "under50": [
+      "rg_cav 0.058 (40 min)",
+      "dhautpoul 0.327 (25 min)",
+      "rg_inf 0.343 (21.67 min)",
+      "kellermann 0.359 (25 min)",
+      "walther 0.418 (4.33 min)"
+     ],
+     "worst": [
+      "rg_cav 12000ms/40min 0.058",
+      "guard_cav 11300ms/46.5min 0.511",
+      "kellermann 7000ms/25min 0.359",
+      "dhautpoul 7000ms/25min 0.327",
+      "kienmayer 6533ms/22.67min 0.581",
+      "rg_inf 6333ms/21.67min 0.343"
+     ],
+     "evNamed": {
+      "inView": 8525,
+      "drawn": 5321,
+      "share": 0.624,
+      "under80": [
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 655,
+        "share": 0.038
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 565,
+        "share": 0.044
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_inf",
+        "inView": 565,
+        "share": 0.106
+       },
+       {
+        "event": "guard-broken",
+        "id": "guard_cav",
+        "inView": 655,
+        "share": 0.212
+       },
+       {
+        "event": "guard-broken",
+        "id": "drouet",
+        "inView": 655,
+        "share": 0.46
+       },
+       {
+        "event": "ice",
+        "id": "dok",
+        "inView": 55,
+        "share": 0.709
+       },
+       {
+        "event": "ice",
+        "id": "kienmayer",
+        "inView": 55,
+        "share": 0.709
+       },
+       {
+        "event": "augezd",
+        "id": "vandamme",
+        "inView": 192,
+        "share": 0.76
+       },
+       {
+        "event": "hq-forward",
+        "id": "gqg",
+        "inView": 385,
+        "share": 0.779
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.862,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1328
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.834,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1328
+      },
+      {
+       "id": "vandamme",
+       "share": 0.832,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1328
+      },
+      {
+       "id": "legrand",
+       "share": 0.858,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1328
+      },
+      {
+       "id": "friant",
+       "share": 0.866,
+       "longestMs": 1333,
+       "longestMin": 6.67,
+       "inView": 1328
+      },
+      {
+       "id": "bourcier",
+       "share": 0.885,
+       "longestMs": 1467,
+       "longestMin": 0.87,
+       "inView": 1328
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.819,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 762
+      },
+      {
+       "id": "suchet",
+       "share": 0.794,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 688
+      },
+      {
+       "id": "kellermann",
+       "share": 0.359,
+       "longestMs": 7000,
+       "longestMin": 25,
+       "inView": 814
+      },
+      {
+       "id": "nansouty",
+       "share": 0.546,
+       "longestMs": 1667,
+       "longestMin": 8.33,
+       "inView": 854
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.327,
+       "longestMs": 7000,
+       "longestMin": 25,
+       "inView": 1014
+      },
+      {
+       "id": "walther",
+       "share": 0.418,
+       "longestMs": 1500,
+       "longestMin": 4.33,
+       "inView": 816
+      },
+      {
+       "id": "rivaud",
+       "share": 0.678,
+       "longestMs": 6000,
+       "longestMin": 20,
+       "inView": 1289
+      },
+      {
+       "id": "drouet",
+       "share": 0.719,
+       "longestMs": 5667,
+       "longestMin": 18.33,
+       "inView": 1319
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.806,
+       "longestMs": 1967,
+       "longestMin": 9.83,
+       "inView": 1328
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.511,
+       "longestMs": 11300,
+       "longestMin": 46.5,
+       "inView": 1328
+      },
+      {
+       "id": "c_gren",
+       "share": 0.85,
+       "longestMs": 1333,
+       "longestMin": 6.43,
+       "inView": 1328
+      },
+      {
+       "id": "ahq",
+       "share": 0.942,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1061
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.581,
+       "longestMs": 6533,
+       "longestMin": 22.67,
+       "inView": 1328
+      },
+      {
+       "id": "dok",
+       "share": 0.867,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1328
+      },
+      {
+       "id": "lang",
+       "share": 0.88,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1328
+      },
+      {
+       "id": "prz",
+       "share": 0.918,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1328
+      },
+      {
+       "id": "milo",
+       "share": 0.549,
+       "longestMs": 3000,
+       "longestMin": 11.83,
+       "inView": 930
+      },
+      {
+       "id": "kollo",
+       "share": 0.759,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1121
+      },
+      {
+       "id": "lich",
+       "share": 0.836,
+       "longestMs": 667,
+       "longestMin": 0.24,
+       "inView": 794
+      },
+      {
+       "id": "bag",
+       "share": 0.857,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 629
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.343,
+       "longestMs": 6333,
+       "longestMin": 21.67,
+       "inView": 1038
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.058,
+       "longestMs": 12000,
+       "longestMin": 40,
+       "inView": 946
+      }
+     ]
+    },
+    "hybrid-0900-3600": {
+     "clock": [
+      540.167,
+      1000
+     ],
+     "playFrames": 3600,
+     "share": 0.73,
+     "drawn": 61316,
+     "inView": 83991,
+     "longestMs": 32333,
+     "longestMin": 112.07,
+     "under50": [
+      "rg_cav 0.185 (112.07 min)",
+      "dhautpoul 0.269 (58.5 min)",
+      "kellermann 0.328 (66.67 min)",
+      "nansouty 0.404 (38.33 min)",
+      "rg_inf 0.441 (91.67 min)",
+      "guard_cav 0.452 (74.17 min)"
+     ],
+     "worst": [
+      "rg_cav 32333ms/112.07min 0.185",
+      "rg_inf 24333ms/91.67min 0.441",
+      "guard_cav 20833ms/74.17min 0.452",
+      "kellermann 17333ms/66.67min 0.328",
+      "guard_inf 15333ms/56.67min 0.647",
+      "dhautpoul 15000ms/58.5min 0.269"
+     ],
+     "evNamed": {
+      "inView": 16010,
+      "drawn": 9163,
+      "share": 0.572,
+      "under80": [
+       {
+        "event": "face-about",
+        "id": "milo",
+        "inView": 193,
+        "share": 0
+       },
+       {
+        "event": "blasowitz",
+        "id": "rg_inf",
+        "inView": 192,
+        "share": 0.052
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 1212,
+        "share": 0.104
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 1152,
+        "share": 0.115
+       },
+       {
+        "event": "guard-broken",
+        "id": "guard_cav",
+        "inView": 1152,
+        "share": 0.135
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_inf",
+        "inView": 1212,
+        "share": 0.182
+       },
+       {
+        "event": "guard-broken",
+        "id": "drouet",
+        "inView": 1152,
+        "share": 0.348
+       },
+       {
+        "event": "soult",
+        "id": "vandamme",
+        "inView": 236,
+        "share": 0.369
+       },
+       {
+        "event": "blasowitz",
+        "id": "rivaud",
+        "inView": 192,
+        "share": 0.484
+       },
+       {
+        "event": "pratzen-village",
+        "id": "sthilaire",
+        "inView": 86,
+        "share": 0.605
+       },
+       {
+        "event": "davout",
+        "id": "friant",
+        "inView": 236,
+        "share": 0.674
+       },
+       {
+        "event": "soult",
+        "id": "sthilaire",
+        "inView": 236,
+        "share": 0.708
+       },
+       {
+        "event": "telnitz-retaken",
+        "id": "friant",
+        "inView": 193,
+        "share": 0.715
+       },
+       {
+        "event": "davout-resumes",
+        "id": "bourcier",
+        "inView": 192,
+        "share": 0.755
+       },
+       {
+        "event": "augezd",
+        "id": "vandamme",
+        "inView": 192,
+        "share": 0.76
+       },
+       {
+        "event": "kamensky",
+        "id": "sthilaire",
+        "inView": 192,
+        "share": 0.786
+       },
+       {
+        "event": "wheel",
+        "id": "c_gren",
+        "inView": 612,
+        "share": 0.788
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.942,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 3600
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.857,
+       "longestMs": 1333,
+       "longestMin": 5.17,
+       "inView": 3600
+      },
+      {
+       "id": "vandamme",
+       "share": 0.761,
+       "longestMs": 4000,
+       "longestMin": 10.23,
+       "inView": 3600
+      },
+      {
+       "id": "legrand",
+       "share": 0.914,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 3600
+      },
+      {
+       "id": "friant",
+       "share": 0.818,
+       "longestMs": 1233,
+       "longestMin": 6.17,
+       "inView": 3600
+      },
+      {
+       "id": "bourcier",
+       "share": 0.862,
+       "longestMs": 1667,
+       "longestMin": 8.33,
+       "inView": 3387
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.826,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 2322
+      },
+      {
+       "id": "suchet",
+       "share": 0.789,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 2248
+      },
+      {
+       "id": "kellermann",
+       "share": 0.328,
+       "longestMs": 17333,
+       "longestMin": 66.67,
+       "inView": 2374
+      },
+      {
+       "id": "nansouty",
+       "share": 0.404,
+       "longestMs": 11667,
+       "longestMin": 38.33,
+       "inView": 2414
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.269,
+       "longestMs": 15000,
+       "longestMin": 58.5,
+       "inView": 2574
+      },
+      {
+       "id": "walther",
+       "share": 0.54,
+       "longestMs": 6633,
+       "longestMin": 23.17,
+       "inView": 2376
+      },
+      {
+       "id": "rivaud",
+       "share": 0.608,
+       "longestMs": 6667,
+       "longestMin": 23.33,
+       "inView": 3008
+      },
+      {
+       "id": "drouet",
+       "share": 0.624,
+       "longestMs": 6333,
+       "longestMin": 21.67,
+       "inView": 3064
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.647,
+       "longestMs": 15333,
+       "longestMin": 56.67,
+       "inView": 3600
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.452,
+       "longestMs": 20833,
+       "longestMin": 74.17,
+       "inView": 3600
+      },
+      {
+       "id": "c_gren",
+       "share": 0.783,
+       "longestMs": 2000,
+       "longestMin": 3.5,
+       "inView": 3600
+      },
+      {
+       "id": "ahq",
+       "share": 0.986,
+       "longestMs": 533,
+       "longestMin": 2.67,
+       "inView": 2621
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.81,
+       "longestMs": 6533,
+       "longestMin": 22.67,
+       "inView": 3484
+      },
+      {
+       "id": "dok",
+       "share": 0.921,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 3466
+      },
+      {
+       "id": "lang",
+       "share": 0.956,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 3600
+      },
+      {
+       "id": "prz",
+       "share": 0.98,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 3600
+      },
+      {
+       "id": "milo",
+       "share": 0.696,
+       "longestMs": 11000,
+       "longestMin": 35,
+       "inView": 2490
+      },
+      {
+       "id": "kollo",
+       "share": 0.84,
+       "longestMs": 1067,
+       "longestMin": 1.5,
+       "inView": 2681
+      },
+      {
+       "id": "lich",
+       "share": 0.877,
+       "longestMs": 667,
+       "longestMin": 3.1,
+       "inView": 2354
+      },
+      {
+       "id": "bag",
+       "share": 0.876,
+       "longestMs": 633,
+       "longestMin": 3.17,
+       "inView": 2024
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.441,
+       "longestMs": 24333,
+       "longestMin": 91.67,
+       "inView": 2598
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.185,
+       "longestMs": 32333,
+       "longestMin": 112.07,
+       "inView": 2506
+      }
+     ]
+    },
+    "phone-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.495,
+     "drawn": 6852,
+     "inView": 13847,
+     "longestMs": 14667,
+     "longestMin": 56.5,
+     "under50": [
+      "c_gren 0.064 (45.4 min)",
+      "lich 0.075 (56.5 min)",
+      "c_cav 0.105 (28.17 min)",
+      "c_gd 0.157 (26.67 min)",
+      "constantine 0.248 (52.93 min)",
+      "bag 0.365 (5.5 min)",
+      "c_iii 0.436 (15 min)"
+     ],
+     "worst": [
+      "constantine 14667ms/52.93min 0.248",
+      "lich 14667ms/56.5min 0.075",
+      "c_gren 13300ms/45.4min 0.064",
+      "c_cav 7900ms/28.17min 0.105",
+      "c_gd 7633ms/26.67min 0.157",
+      "c_i 4600ms/14.39min 0.639"
+     ],
+     "evNamed": {
+      "inView": 945,
+      "drawn": 367,
+      "share": 0.388,
+      "under80": [
+       {
+        "event": "guard-attack",
+        "id": "constantine",
+        "inView": 595,
+        "share": 0.235
+       },
+       {
+        "event": "face-about",
+        "id": "ahq",
+        "inView": 193,
+        "share": 0.627
+       },
+       {
+        "event": "buxhowden-blind",
+        "id": "buxhowden",
+        "inView": 157,
+        "share": 0.675
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "c_iv",
+       "share": 0.803,
+       "longestMs": 1333,
+       "longestMin": 5.17,
+       "inView": 1508
+      },
+      {
+       "id": "c_iii",
+       "share": 0.436,
+       "longestMs": 4333,
+       "longestMin": 15,
+       "inView": 884
+      },
+      {
+       "id": "c_v",
+       "share": 0.537,
+       "longestMs": 667,
+       "longestMin": 0.4,
+       "inView": 246
+      },
+      {
+       "id": "c_cav",
+       "share": 0.105,
+       "longestMs": 7900,
+       "longestMin": 28.17,
+       "inView": 688
+      },
+      {
+       "id": "c_i",
+       "share": 0.639,
+       "longestMs": 4600,
+       "longestMin": 14.39,
+       "inView": 1253
+      },
+      {
+       "id": "c_gd",
+       "share": 0.157,
+       "longestMs": 7633,
+       "longestMin": 26.67,
+       "inView": 765
+      },
+      {
+       "id": "col4",
+       "share": 0.594,
+       "longestMs": 4333,
+       "longestMin": 19.83,
+       "inView": 1508
+      },
+      {
+       "id": "constantine",
+       "share": 0.248,
+       "longestMs": 14667,
+       "longestMin": 52.93,
+       "inView": 1508
+      },
+      {
+       "id": "gqg",
+       "share": 0.813,
+       "longestMs": 633,
+       "longestMin": 0.24,
+       "inView": 482
+      },
+      {
+       "id": "c_gren",
+       "share": 0.064,
+       "longestMs": 13300,
+       "longestMin": 45.4,
+       "inView": 776
+      },
+      {
+       "id": "ahq",
+       "share": 0.829,
+       "longestMs": 967,
+       "longestMin": 4.6,
+       "inView": 1508
+      },
+      {
+       "id": "buxhowden",
+       "share": 0.842,
+       "longestMs": 1333,
+       "longestMin": 5.17,
+       "inView": 1238
+      },
+      {
+       "id": "lich",
+       "share": 0.075,
+       "longestMs": 14667,
+       "longestMin": 56.5,
+       "inView": 1431
+      },
+      {
+       "id": "bag",
+       "share": 0.365,
+       "longestMs": 1100,
+       "longestMin": 5.5,
+       "inView": 52
+      }
+     ]
+    },
+    "land-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.868,
+     "drawn": 33463,
+     "inView": 38564,
+     "longestMs": 5967,
+     "longestMin": 20,
+     "under50": [],
+     "worst": [
+      "guard_cav 5967ms/20min 0.737",
+      "dhautpoul 3200ms/14.67min 0.629",
+      "rg_cav 1300ms/5.17min 0.74",
+      "rg_inf 933ms/4.67min 0.91",
+      "sthilaire 667ms/3.33min 0.842",
+      "vandamme 667ms/3.33min 0.858"
+     ],
+     "evNamed": {
+      "inView": 6493,
+      "drawn": 5122,
+      "share": 0.789,
+      "under80": [
+       {
+        "event": "guard-broken",
+        "id": "guard_cav",
+        "inView": 445,
+        "share": 0.38
+       },
+       {
+        "event": "pratzen-village",
+        "id": "sthilaire",
+        "inView": 86,
+        "share": 0.581
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 445,
+        "share": 0.652
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 595,
+        "share": 0.672
+       },
+       {
+        "event": "blasowitz",
+        "id": "rivaud",
+        "inView": 192,
+        "share": 0.74
+       },
+       {
+        "event": "guard-broken",
+        "id": "drouet",
+        "inView": 445,
+        "share": 0.746
+       },
+       {
+        "event": "soult",
+        "id": "vandamme",
+        "inView": 236,
+        "share": 0.75
+       },
+       {
+        "event": "davout",
+        "id": "friant",
+        "inView": 236,
+        "share": 0.767
+       },
+       {
+        "event": "telnitz-retaken",
+        "id": "friant",
+        "inView": 193,
+        "share": 0.767
+       },
+       {
+        "event": "soult",
+        "id": "sthilaire",
+        "inView": 236,
+        "share": 0.771
+       },
+       {
+        "event": "blasowitz",
+        "id": "rg_inf",
+        "inView": 192,
+        "share": 0.792
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "sthilaire",
+       "share": 0.842,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "vandamme",
+       "share": 0.858,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "legrand",
+       "share": 0.919,
+       "longestMs": 667,
+       "longestMin": 1.5,
+       "inView": 1508
+      },
+      {
+       "id": "friant",
+       "share": 0.873,
+       "longestMs": 667,
+       "longestMin": 0.4,
+       "inView": 1508
+      },
+      {
+       "id": "bourcier",
+       "share": 0.916,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1291
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.885,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "suchet",
+       "share": 0.939,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "kellermann",
+       "share": 0.81,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "nansouty",
+       "share": 0.847,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.629,
+       "longestMs": 3200,
+       "longestMin": 14.67,
+       "inView": 1508
+      },
+      {
+       "id": "walther",
+       "share": 0.859,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "rivaud",
+       "share": 0.778,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "drouet",
+       "share": 0.818,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.769,
+       "longestMs": 667,
+       "longestMin": 2.93,
+       "inView": 1508
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.737,
+       "longestMs": 5967,
+       "longestMin": 20,
+       "inView": 1508
+      },
+      {
+       "id": "c_gren",
+       "share": 0.914,
+       "longestMs": 667,
+       "longestMin": 0.24,
+       "inView": 1508
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.924,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1387
+      },
+      {
+       "id": "dok",
+       "share": 0.987,
+       "longestMs": 600,
+       "longestMin": 3,
+       "inView": 1370
+      },
+      {
+       "id": "lang",
+       "share": 0.981,
+       "longestMs": 533,
+       "longestMin": 2.67,
+       "inView": 1508
+      },
+      {
+       "id": "prz",
+       "share": 0.974,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "milo",
+       "share": 0.975,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "kollo",
+       "share": 0.879,
+       "longestMs": 667,
+       "longestMin": 1.5,
+       "inView": 1508
+      },
+      {
+       "id": "lich",
+       "share": 0.903,
+       "longestMs": 667,
+       "longestMin": 0.4,
+       "inView": 1508
+      },
+      {
+       "id": "bag",
+       "share": 0.923,
+       "longestMs": 667,
+       "longestMin": 3.1,
+       "inView": 1340
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.91,
+       "longestMs": 933,
+       "longestMin": 4.67,
+       "inView": 1508
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.74,
+       "longestMs": 1300,
+       "longestMin": 5.17,
+       "inView": 1508
+      }
+     ]
+    },
+    "paper-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.921,
+     "drawn": 19440,
+     "inView": 21112,
+     "longestMs": 667,
+     "longestMin": 3.33,
+     "under50": [],
+     "worst": [
+      "c_iv 667ms/3.33min 0.905",
+      "c_iii 667ms/1.83min 0.906",
+      "c_v 667ms/3.33min 0.94",
+      "c_cav 667ms/3.33min 0.906",
+      "c_i 667ms/3.33min 0.906",
+      "c_gd 667ms/3.33min 0.789"
+     ],
+     "evNamed": {
+      "inView": 1078,
+      "drawn": 1042,
+      "share": 0.967,
+      "under80": []
+     },
+     "formations": [
+      {
+       "id": "c_iv",
+       "share": 0.905,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "c_iii",
+       "share": 0.906,
+       "longestMs": 667,
+       "longestMin": 1.83,
+       "inView": 1508
+      },
+      {
+       "id": "c_v",
+       "share": 0.94,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "c_cav",
+       "share": 0.906,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "c_i",
+       "share": 0.906,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "c_gd",
+       "share": 0.789,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "col4",
+       "share": 0.955,
+       "longestMs": 667,
+       "longestMin": 1.83,
+       "inView": 1508
+      },
+      {
+       "id": "constantine",
+       "share": 0.896,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "gqg",
+       "share": 0.973,
+       "longestMs": 533,
+       "longestMin": 2.67,
+       "inView": 1508
+      },
+      {
+       "id": "c_gren",
+       "share": 0.912,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "ahq",
+       "share": 0.952,
+       "longestMs": 533,
+       "longestMin": 2.67,
+       "inView": 1508
+      },
+      {
+       "id": "buxhowden",
+       "share": 0.987,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "lich",
+       "share": 0.899,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "bag",
+       "share": 0.964,
+       "longestMs": 667,
+       "longestMin": 1.5,
+       "inView": 1508
+      }
+     ]
+    },
+    "hybrid-4x-day": {
+     "clock": [
+      241.333,
+      1080
+     ],
+     "playFrames": 1800,
+     "share": 0.766,
+     "drawn": 17721,
+     "inView": 23134,
+     "longestMs": 5000,
+     "longestMin": 59.46,
+     "under50": [
+      "dhautpoul 0 (15 min)",
+      "guard_cav 0 (15 min)",
+      "milo 0 (15 min)",
+      "kellermann 0.169 (15 min)",
+      "nansouty 0.203 (15 min)",
+      "lang 0.288 (0 min)",
+      "rg_inf 0.322 (0 min)",
+      "rg_cav 0.322 (0 min)",
+      "lich 0.458 (59.46 min)",
+      "prz 0.475 (0 min)",
+      "walther 0.492 (0 min)"
+     ],
+     "worst": [
+      "lich 5000ms/59.46min 0.458",
+      "c_gd 4333ms/38.71min 0.785",
+      "constantine 2333ms/15.85min 0.737",
+      "dhautpoul 1967ms/15min 0",
+      "guard_cav 1967ms/15min 0",
+      "milo 1967ms/15min 0"
+     ],
+     "evNamed": {
+      "inView": 1893,
+      "drawn": 1390,
+      "share": 0.734,
+      "under80": [
+       {
+        "event": "counter-march",
+        "id": "milo",
+        "inView": 54,
+        "share": 0
+       },
+       {
+        "event": "counter-march",
+        "id": "lich",
+        "inView": 361,
+        "share": 0.596
+       },
+       {
+        "event": "face-about",
+        "id": "ahq",
+        "inView": 75,
+        "share": 0.64
+       },
+       {
+        "event": "guard-attack",
+        "id": "constantine",
+        "inView": 459,
+        "share": 0.682
+       },
+       {
+        "event": "counter-march",
+        "id": "kollo",
+        "inView": 54,
+        "share": 0.741
+       },
+       {
+        "event": "decision",
+        "id": "c_iv",
+        "inView": 150,
+        "share": 0.767
+       },
+       {
+        "event": "hq-forward",
+        "id": "gqg",
+        "inView": 167,
+        "share": 0.784
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.893,
+       "longestMs": 667,
+       "longestMin": 0.71,
+       "inView": 1800
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.559,
+       "longestMs": 533,
+       "longestMin": 0.89,
+       "inView": 59
+      },
+      {
+       "id": "vandamme",
+       "share": 1,
+       "longestMs": 0,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "legrand",
+       "share": 0.576,
+       "longestMs": 500,
+       "longestMin": 0.49,
+       "inView": 59
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.61,
+       "longestMs": 433,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "suchet",
+       "share": 0.661,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "kellermann",
+       "share": 0.169,
+       "longestMs": 1633,
+       "longestMin": 15,
+       "inView": 59
+      },
+      {
+       "id": "nansouty",
+       "share": 0.203,
+       "longestMs": 967,
+       "longestMin": 15,
+       "inView": 59
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0,
+       "longestMs": 1967,
+       "longestMin": 15,
+       "inView": 59
+      },
+      {
+       "id": "walther",
+       "share": 0.492,
+       "longestMs": 1000,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "rivaud",
+       "share": 0.661,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "drouet",
+       "share": 0.695,
+       "longestMs": 600,
+       "longestMin": 2.04,
+       "inView": 59
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.593,
+       "longestMs": 800,
+       "longestMin": 8.33,
+       "inView": 59
+      },
+      {
+       "id": "guard_cav",
+       "share": 0,
+       "longestMs": 1967,
+       "longestMin": 15,
+       "inView": 59
+      },
+      {
+       "id": "c_gren",
+       "share": 0.754,
+       "longestMs": 1900,
+       "longestMin": 16.79,
+       "inView": 1800
+      },
+      {
+       "id": "ahq",
+       "share": 0.824,
+       "longestMs": 667,
+       "longestMin": 7.99,
+       "inView": 1560
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.661,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "dok",
+       "share": 0.661,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "lang",
+       "share": 0.288,
+       "longestMs": 567,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "prz",
+       "share": 0.475,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "milo",
+       "share": 0,
+       "longestMs": 1967,
+       "longestMin": 15,
+       "inView": 59
+      },
+      {
+       "id": "kollo",
+       "share": 0.763,
+       "longestMs": 467,
+       "longestMin": 8.33,
+       "inView": 59
+      },
+      {
+       "id": "lich",
+       "share": 0.458,
+       "longestMs": 5000,
+       "longestMin": 59.46,
+       "inView": 1440
+      },
+      {
+       "id": "bag",
+       "share": 0.844,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1274
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.322,
+       "longestMs": 1333,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.322,
+       "longestMs": 1333,
+       "longestMin": 0,
+       "inView": 59
+      },
+      {
+       "id": "c_iv",
+       "share": 0.776,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1741
+      },
+      {
+       "id": "c_iii",
+       "share": 0.819,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1513
+      },
+      {
+       "id": "c_v",
+       "share": 0.735,
+       "longestMs": 667,
+       "longestMin": 26.67,
+       "inView": 1334
+      },
+      {
+       "id": "c_cav",
+       "share": 0.631,
+       "longestMs": 1067,
+       "longestMin": 13.99,
+       "inView": 1411
+      },
+      {
+       "id": "c_i",
+       "share": 0.856,
+       "longestMs": 667,
+       "longestMin": 26.67,
+       "inView": 1638
+      },
+      {
+       "id": "c_gd",
+       "share": 0.785,
+       "longestMs": 4333,
+       "longestMin": 38.71,
+       "inView": 1741
+      },
+      {
+       "id": "col4",
+       "share": 0.877,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1460
+      },
+      {
+       "id": "constantine",
+       "share": 0.737,
+       "longestMs": 2333,
+       "longestMin": 15.85,
+       "inView": 1439
+      },
+      {
+       "id": "buxhowden",
+       "share": 0.915,
+       "longestMs": 600,
+       "longestMin": 5.88,
+       "inView": 1741
+      }
+     ]
+    },
+    "hybrid-fr-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.676,
+     "drawn": 24540,
+     "inView": 36295,
+     "longestMs": 16667,
+     "longestMin": 61.5,
+     "under50": [
+      "guard_cav 0.14 (61.5 min)",
+      "dhautpoul 0.173 (41.5 min)",
+      "rg_cav 0.203 (26.67 min)",
+      "kellermann 0.281 (28.17 min)",
+      "guard_inf 0.359 (41.17 min)",
+      "nansouty 0.393 (30.17 min)",
+      "walther 0.454 (19.83 min)"
+     ],
+     "worst": [
+      "guard_cav 16667ms/61.5min 0.14",
+      "dhautpoul 12000ms/41.5min 0.173",
+      "guard_inf 10500ms/41.17min 0.359",
+      "rg_cav 9333ms/26.67min 0.203",
+      "nansouty 8300ms/30.17min 0.393",
+      "kellermann 8000ms/28.17min 0.281"
+     ],
+     "evNamed": {
+      "inView": 6130,
+      "drawn": 3607,
+      "share": 0.588,
+      "under80": [
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 445,
+        "share": 0.025
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 595,
+        "share": 0.029
+       },
+       {
+        "event": "guard-broken",
+        "id": "guard_cav",
+        "inView": 445,
+        "share": 0.04
+       },
+       {
+        "event": "face-about",
+        "id": "milo",
+        "inView": 193,
+        "share": 0.062
+       },
+       {
+        "event": "soult",
+        "id": "vandamme",
+        "inView": 236,
+        "share": 0.458
+       },
+       {
+        "event": "blasowitz",
+        "id": "rivaud",
+        "inView": 192,
+        "share": 0.557
+       },
+       {
+        "event": "pratzen-village",
+        "id": "sthilaire",
+        "inView": 86,
+        "share": 0.686
+       },
+       {
+        "event": "davout",
+        "id": "friant",
+        "inView": 236,
+        "share": 0.712
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_inf",
+        "inView": 595,
+        "share": 0.713
+       },
+       {
+        "event": "soult",
+        "id": "sthilaire",
+        "inView": 236,
+        "share": 0.716
+       },
+       {
+        "event": "face-about",
+        "id": "kollo",
+        "inView": 193,
+        "share": 0.72
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.985,
+       "longestMs": 400,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.869,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "vandamme",
+       "share": 0.672,
+       "longestMs": 4000,
+       "longestMin": 10.23,
+       "inView": 1508
+      },
+      {
+       "id": "legrand",
+       "share": 0.859,
+       "longestMs": 667,
+       "longestMin": 3.1,
+       "inView": 1508
+      },
+      {
+       "id": "friant",
+       "share": 0.882,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "bourcier",
+       "share": 0.873,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1295
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.863,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "suchet",
+       "share": 0.811,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "kellermann",
+       "share": 0.281,
+       "longestMs": 8000,
+       "longestMin": 28.17,
+       "inView": 1508
+      },
+      {
+       "id": "nansouty",
+       "share": 0.393,
+       "longestMs": 8300,
+       "longestMin": 30.17,
+       "inView": 1508
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.173,
+       "longestMs": 12000,
+       "longestMin": 41.5,
+       "inView": 1508
+      },
+      {
+       "id": "walther",
+       "share": 0.454,
+       "longestMs": 5967,
+       "longestMin": 19.83,
+       "inView": 1508
+      },
+      {
+       "id": "rivaud",
+       "share": 0.612,
+       "longestMs": 3333,
+       "longestMin": 6.67,
+       "inView": 1508
+      },
+      {
+       "id": "drouet",
+       "share": 0.771,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.359,
+       "longestMs": 10500,
+       "longestMin": 41.17,
+       "inView": 1508
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.14,
+       "longestMs": 16667,
+       "longestMin": 61.5,
+       "inView": 1508
+      },
+      {
+       "id": "c_gren",
+       "share": 0.834,
+       "longestMs": 2000,
+       "longestMin": 3.5,
+       "inView": 1508
+      },
+      {
+       "id": "ahq",
+       "share": 0.979,
+       "longestMs": 367,
+       "longestMin": 1.83,
+       "inView": 521
+      },
+      {
+       "id": "dok",
+       "share": 0.961,
+       "longestMs": 600,
+       "longestMin": 3,
+       "inView": 467
+      },
+      {
+       "id": "prz",
+       "share": 0.952,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "milo",
+       "share": 0.689,
+       "longestMs": 5600,
+       "longestMin": 16.5,
+       "inView": 1229
+      },
+      {
+       "id": "kollo",
+       "share": 0.913,
+       "longestMs": 633,
+       "longestMin": 3.17,
+       "inView": 827
+      },
+      {
+       "id": "lich",
+       "share": 0.879,
+       "longestMs": 667,
+       "longestMin": 3.1,
+       "inView": 1508
+      },
+      {
+       "id": "bag",
+       "share": 0.873,
+       "longestMs": 633,
+       "longestMin": 3.17,
+       "inView": 1343
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.794,
+       "longestMs": 5033,
+       "longestMin": 20,
+       "inView": 1508
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.203,
+       "longestMs": 9333,
+       "longestMin": 26.67,
+       "inView": 1508
+      },
+      {
+       "id": "lang",
+       "share": 0.872,
+       "longestMs": 633,
+       "longestMin": 3.17,
+       "inView": 453
+      }
+     ]
+    },
+    "hybrid-al-0900": {
+     "clock": [
+      540.167,
+      720
+     ],
+     "playFrames": 1508,
+     "share": 0.785,
+     "drawn": 20969,
+     "inView": 26704,
+     "longestMs": 11000,
+     "longestMin": 35,
+     "under50": [
+      "guard_cav 0.153 (20.4 min)",
+      "rg_cav 0.257 (26.83 min)",
+      "dhautpoul 0.263 (1.83 min)"
+     ],
+     "worst": [
+      "milo 11000ms/35min 0.68",
+      "rg_cav 8000ms/26.83min 0.257",
+      "guard_cav 6300ms/20.4min 0.153",
+      "vandamme 4000ms/10.23min 0.642",
+      "rg_inf 4000ms/10min 0.638",
+      "drouet 2667ms/6.5min 0.676"
+     ],
+     "evNamed": {
+      "inView": 6249,
+      "drawn": 3439,
+      "share": 0.55,
+      "under80": [
+       {
+        "event": "face-about",
+        "id": "milo",
+        "inView": 193,
+        "share": 0
+       },
+       {
+        "event": "guard-broken",
+        "id": "rg_cav",
+        "inView": 445,
+        "share": 0.088
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_cav",
+        "inView": 595,
+        "share": 0.143
+       },
+       {
+        "event": "guard-broken",
+        "id": "guard_cav",
+        "inView": 391,
+        "share": 0.153
+       },
+       {
+        "event": "blasowitz",
+        "id": "rg_inf",
+        "inView": 192,
+        "share": 0.24
+       },
+       {
+        "event": "soult",
+        "id": "vandamme",
+        "inView": 236,
+        "share": 0.369
+       },
+       {
+        "event": "guard-attack",
+        "id": "rg_inf",
+        "inView": 595,
+        "share": 0.447
+       },
+       {
+        "event": "guard-broken",
+        "id": "drouet",
+        "inView": 445,
+        "share": 0.447
+       },
+       {
+        "event": "pratzen-village",
+        "id": "sthilaire",
+        "inView": 86,
+        "share": 0.605
+       },
+       {
+        "event": "soult",
+        "id": "sthilaire",
+        "inView": 236,
+        "share": 0.708
+       },
+       {
+        "event": "davout",
+        "id": "friant",
+        "inView": 236,
+        "share": 0.716
+       },
+       {
+        "event": "guard-attack",
+        "id": "vandamme",
+        "inView": 595,
+        "share": 0.771
+       },
+       {
+        "event": "telnitz-retaken",
+        "id": "friant",
+        "inView": 193,
+        "share": 0.782
+       },
+       {
+        "event": "blasowitz",
+        "id": "rivaud",
+        "inView": 192,
+        "share": 0.792
+       }
+      ]
+     },
+     "formations": [
+      {
+       "id": "gqg",
+       "share": 0.952,
+       "longestMs": 467,
+       "longestMin": 2.3,
+       "inView": 521
+      },
+      {
+       "id": "sthilaire",
+       "share": 0.869,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "vandamme",
+       "share": 0.642,
+       "longestMs": 4000,
+       "longestMin": 10.23,
+       "inView": 1508
+      },
+      {
+       "id": "friant",
+       "share": 0.866,
+       "longestMs": 667,
+       "longestMin": 0,
+       "inView": 1508
+      },
+      {
+       "id": "bourcier",
+       "share": 0.878,
+       "longestMs": 1600,
+       "longestMin": 8,
+       "inView": 1295
+      },
+      {
+       "id": "rivaud",
+       "share": 0.672,
+       "longestMs": 1667,
+       "longestMin": 0.24,
+       "inView": 1508
+      },
+      {
+       "id": "drouet",
+       "share": 0.676,
+       "longestMs": 2667,
+       "longestMin": 6.5,
+       "inView": 1508
+      },
+      {
+       "id": "ahq",
+       "share": 0.993,
+       "longestMs": 367,
+       "longestMin": 1.83,
+       "inView": 1508
+      },
+      {
+       "id": "kienmayer",
+       "share": 0.879,
+       "longestMs": 1233,
+       "longestMin": 6.17,
+       "inView": 1392
+      },
+      {
+       "id": "dok",
+       "share": 0.962,
+       "longestMs": 633,
+       "longestMin": 0,
+       "inView": 1374
+      },
+      {
+       "id": "lang",
+       "share": 0.992,
+       "longestMs": 400,
+       "longestMin": 2,
+       "inView": 1508
+      },
+      {
+       "id": "prz",
+       "share": 0.953,
+       "longestMs": 667,
+       "longestMin": 3.33,
+       "inView": 1508
+      },
+      {
+       "id": "milo",
+       "share": 0.68,
+       "longestMs": 11000,
+       "longestMin": 35,
+       "inView": 1508
+      },
+      {
+       "id": "kollo",
+       "share": 0.853,
+       "longestMs": 667,
+       "longestMin": 2.93,
+       "inView": 1508
+      },
+      {
+       "id": "lich",
+       "share": 0.847,
+       "longestMs": 667,
+       "longestMin": 3.1,
+       "inView": 1508
+      },
+      {
+       "id": "bag",
+       "share": 0.876,
+       "longestMs": 633,
+       "longestMin": 3.17,
+       "inView": 1343
+      },
+      {
+       "id": "rg_inf",
+       "share": 0.638,
+       "longestMs": 4000,
+       "longestMin": 10,
+       "inView": 1508
+      },
+      {
+       "id": "rg_cav",
+       "share": 0.257,
+       "longestMs": 8000,
+       "longestMin": 26.83,
+       "inView": 1508
+      },
+      {
+       "id": "suchet",
+       "share": 0.556,
+       "longestMs": 533,
+       "longestMin": 2.67,
+       "inView": 36
+      },
+      {
+       "id": "dhautpoul",
+       "share": 0.263,
+       "longestMs": 600,
+       "longestMin": 1.83,
+       "inView": 38
+      },
+      {
+       "id": "caffarelli",
+       "share": 0.862,
+       "longestMs": 667,
+       "longestMin": 1.5,
+       "inView": 319
+      },
+      {
+       "id": "guard_inf",
+       "share": 0.665,
+       "longestMs": 1333,
+       "longestMin": 6.43,
+       "inView": 391
+      },
+      {
+       "id": "guard_cav",
+       "share": 0.153,
+       "longestMs": 6300,
+       "longestMin": 20.4,
+       "inView": 391
+      }
+     ]
+    }
+   },
+   "console": [],
+   "secs": 968
+  }
+ ],
+ "chromium": "141.0.7390.37"
+}
