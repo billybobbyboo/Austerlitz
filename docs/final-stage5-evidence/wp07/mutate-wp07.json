@@ -1,0 +1,132 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "af5d09396cbccd35aff4f164cd3494ec",
+ "mutations": [
+  {
+   "name": "none",
+   "expectedToFail": [],
+   "failed": [],
+   "asExpected": true,
+   "lines": [],
+   "long": [
+    {
+     "id": "hybrid-long",
+     "longestMin": 18.33,
+     "evShare": 0.764
+    },
+    {
+     "id": "hybrid-3600",
+     "longestMin": 18.33,
+     "evShare": 0.784
+    },
+    {
+     "id": "phone-long",
+     "longestMin": 23.33,
+     "evShare": 0.249
+    }
+   ],
+   "pageErrors": [],
+   "secs": 172
+  },
+  {
+   "name": "no aging (the rise never reached)",
+   "expectedToFail": [
+    "gap"
+   ],
+   "failed": [
+    "gap"
+   ],
+   "asExpected": true,
+   "lines": [
+    "gap: hybrid-long kellermann 51.5 min, nansouty 41.67 min, dhautpoul 43.33 min, rg_cav 31.33 min",
+    "gap: hybrid-3600 kellermann 52.93 min, nansouty 33.17 min, dhautpoul 53.5 min, walther 48.17 min, guard_inf 66.67 min, guard_cav 56.5 min, milo 44.83 min, kollo 86.5 min, lich 36 min, rg_cav 34.6 min",
+    "gap: phone-long constantine 45.23 min, c_gren 45 min, ahq 32.83 min, lich 82 min"
+   ],
+   "long": [
+    {
+     "id": "hybrid-long",
+     "longestMin": 51.5,
+     "evShare": 0.821
+    },
+    {
+     "id": "hybrid-3600",
+     "longestMin": 86.5,
+     "evShare": 0.819
+    },
+    {
+     "id": "phone-long",
+     "longestMin": 82,
+     "evShare": 0.379
+    }
+   ],
+   "pageErrors": [],
+   "secs": 176
+  },
+  {
+   "name": "no event-named rise",
+   "expectedToFail": [
+    "event-named"
+   ],
+   "failed": [
+    "event-named"
+   ],
+   "asExpected": true,
+   "lines": [
+    "event-named: hybrid-long 0.645",
+    "event-named: hybrid-3600 0.665"
+   ],
+   "long": [
+    {
+     "id": "hybrid-long",
+     "longestMin": 18.33,
+     "evShare": 0.645
+    },
+    {
+     "id": "hybrid-3600",
+     "longestMin": 18.33,
+     "evShare": 0.665
+    },
+    {
+     "id": "phone-long",
+     "longestMin": 18.33,
+     "evShare": 0.29
+    }
+   ],
+   "pageErrors": [],
+   "secs": 177
+  },
+  {
+   "name": "no band (250 always)",
+   "expectedToFail": [
+    "band"
+   ],
+   "failed": [
+    "band"
+   ],
+   "asExpected": true,
+   "lines": [
+    "band: WRONG: after motion at 255 from the divisions the level flipped to the corps; after motion at 240 from the corps the level flipped to the divisions; fresh 255: corps; after motion from div 255: corps;"
+   ],
+   "long": [
+    {
+     "id": "hybrid-long",
+     "longestMin": 18.33,
+     "evShare": 0.764
+    },
+    {
+     "id": "hybrid-3600",
+     "longestMin": 18.33,
+     "evShare": 0.784
+    },
+    {
+     "id": "phone-long",
+     "longestMin": 23.33,
+     "evShare": 0.249
+    }
+   ],
+   "pageErrors": [],
+   "secs": 181
+  }
+ ],
+ "chromium": "141.0.7390.37"
+}
