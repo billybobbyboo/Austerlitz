@@ -1,5 +1,73 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 5 (2 of 3): WP-08's furniture (the caption, the key, north, the glyphs, the selection, the card)
+
+**Status: on `claude/jolly-carson-yz0yqo-furniture` (a draft PR into `main`, for review, not merged).** Part of WP-08 of
+`docs/ROADMAP_FINAL_AUDIT.md`: CL-MAP-03, -04, -06, -08, -10, -13 and -16. Presentation only: no data file and no guarded declaration changes
+(`check:data`: every data declaration identical to `archive/stage4wp04b-cdca9984.html`). The rest of WP-08 (CL-MAP-05, -09, -11, -15, -18, CL-VIS-11,
+owner questions 275, 282 and 284) is the third PR, stacked on WP-07's (the same priority rules). The owner's decisions of 8 November 2026 ("Your
+recommendations for all"): **296**, no Key button in Watch, the key reached through the "?" overlay instead (below); **297**, the place names as they
+are (CL-MAP-20, accepted: no single 1805 convention to break); **298**, decision 241 (a) kept (CL-MAP-19: the paper map's arrows uncapped, accepted).
+`austerlitz-command-map.html` is now BUILD_SIZE bytes, md5 `BUILD_MD5` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **CL-MAP-06, the caption (`app.js` `fitCaption`, `CAP_MIN`).** Decision 159 kept every derived reading whole, but the act and the phase only shrank:
+  at 1280 x 720 in Study the phase was "D." (13 px), at 04:15 both were 0 px wide with their separators drawn, and in Watch at 1280 px (a 270 px
+  caption) the act and the phase stood while both readings and the event gave way. *Is:* one ordered fill. The parts are laid in one at a time,
+  each kept only where nothing then overflows and no act, phase or event name is a fragment (cut narrower than `CAP_MIN`, 4 em); the separators are
+  tidied at each step (none first, last or beside another). Where the caption shows the readings (Watch; Study without the Now tab) the first
+  reading, the event, the second reading and "plotted strength unchanged" in decision 159's own order (a prefix, but for a first reading that cannot
+  stand whole at all, after which the event is still tried), then the act and the phase; elsewhere the event, the act, the phase. In Watch at 1600
+  px at 12:00 the second reading now gives way while the event stands whole (until WP-08 both readings stood and the event was cut to 59 px):
+  decision 159's own order.
+- **CL-MAP-16, the event glyphs (`app.js` `EVG`).** An attack's, an engagement's, a movement's or a withdrawal's glyph was an upright arrow in a ring,
+  which on the north-up paper map read as a north arrow; a capture's a ring with a full cross, the objective marker's form. *Is:* a burst of eight rays,
+  none upright or level; a capture a filled disc. The decision's, the arrival's and the collapse's as before. One table draws them on the map and in
+  the key. No recorded decision fixed the forms (Stage 1: they "differ by kind").
+- **CL-MAP-08, the key's rows (`shell.html`, `app.js` `paintLegend`, `paintKey`, `paintKeySamples`, `objGlyph`).** The key omitted encodings it draws,
+  against its one-row-per-encoding rule. *Is:* rows, each shown only while its encoding is on screen, for the dashed axis arrows (their words the
+  arrows' own `interp`), the objective marker, each kind of event glyph drawn (one row), the places' marker, and where counters are drawn the echelon
+  marks and each arm's mark (one row) and each status tone's icon with its statuses' labels from `STATUS`. The samples drawn by the map's own
+  drawers, in the theme's colour. The open key held below the tools and scrolling where taller (a named scroll region while it scrolls).
+- **CL-MAP-03, the key one press away (`app.js` `buildHelp`; decision 296).** The key was hidden below 1080 px wide, at 430 px tall or less (decision
+  226 (a)) and in Watch and Clean (2D: a Key button would have been a new panel there). *Is:* the "?" overlay, one press from the timeline's "?"
+  button in Study and Watch at every width and on a phone, opens with "The map key: what is drawn now", a copy of the key's rows for what is drawn.
+  No new panel, so no unobstructed baseline moves, and neither 2D's choice nor 226 (a) is overridden; Clean keeps no furniture.
+- **CL-MAP-04, north (`shell.html`, `style.css`).** The only north indicator was the rose inside the key's toggle, hidden with the key and below 700
+  px tall. *Is:* the rose in the timeline's row beside the scale bar, an image named "North arrow", turned to true north by `updateRose` as before;
+  shown in Study and Watch at every width and height.
+- **CL-MAP-10, the selection (`app.js`, `style.css` `.mln-sel`).** On the landscape the selected formation's name had the plate of every other and its
+  ring (1 px, 62% opaque) read like the plateau's outline. *Is:* the selected name's plate edged in the accent (a shadow: its box, place and contrast
+  as before), the ring 90% opaque. The outline's values (decision 239) unchanged.
+- **CL-MAP-13, the card below 1080 px (`style.css`).** With the rail hidden (as at load) the dispatch card stood beside an open dossier, a strip of map
+  of 209 px at 1024 px (184 px at 1000). *Is:* the card gives way to an open dossier at every width below 1080 px, as on a phone.
+
+### Checks added, each failing without its fix
+
+- **The narrow live block** (`tools/visual/harness.js`, judged by `thresholds.js` `checkLive`): the caption at `CAPTION.SIZES` (1600, 1280, 1024 px)
+  in Study and Watch at `CAPTION.CLOCKS` (04:15, 09:30, 12:00, 14:20), read by `measure.js` `captionParts` (no reading cut; no act, phase or event
+  name cut narrower than `CAPTION.MIN_PX`, 40 px, a bound below the app's own 4 em; something shown; no orphan separator; where the readings show,
+  the act and the phase never standing where the first part given way in decision 159's order would stand); and "dossier at 1000, rail hidden" (no
+  card beside the open dossier). Negative control, `main`'s build: the caption fails 19 of its 24 reads (`tools/final-stage5/caption-judge.js`), the
+  card read fails with the card standing 184 px from the dossier (`card-judge.js`); this build passes both.
+- **The self-test's WP-08 block** (`app.js` `wp08Checks`, five checks, the manifest 325 to 330): the event glyphs (read through the test's own
+  canvas), the key's rows against the scene at 04:15 and 09:30 with counters and on the landscape, the key in the "?" overlay in Study and Watch,
+  the rose outside the key on true north within 1 degree in three views, the selection's edge and ring. Negative controls
+  (`tools/final-stage5/mutate-wp08.js`): 10 of 10 as expected, each mutation failing its own check alone (the upright glyph, the capture's cross, the
+  axis row hidden, no status row, no key in the overlay, the rose hidden, the rose turned the wrong way, no edge, the ring at 0.62), the build
+  passing all.
+
+### Verified
+
+VERIFIED_PLACEHOLDER
+
+### What remains uncertain, and what is handed on
+
+- The caption's `CAP_MIN` (4 em), the key's sample strokes and the glyphs' forms are design values.
+- The rest of WP-08 is the stacked PR after WP-07's; CL-MAP-14 and CL-MAP-17 are WP-07's.
+- The three Stage 3 reading-scope items are not touched (handed to WP-09).
+
 ## 2026-11 · Final audits' roadmap, Stage 4 (main track, 2 of 2): WP-04b, the relief and the drawn geography
 
 **Status: on `claude/compassionate-curie-igyzhl-relief`, stacked on WP-03 (`claude/compassionate-curie-igyzhl` at `eecb8b8`); a draft PR into
