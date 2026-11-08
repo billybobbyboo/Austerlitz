@@ -1,0 +1,3 @@
+{"docked":false,"open":true,"rail":false,"card":true,"gap":184,"roses":[]}
+narrow layout: at 1000 px with the rail hidden the dispatch card stands beside the open dossier (CL-MAP-13): {"at":"dossier at 1000, rail hidden","docked":false,"open":true,"rail":false,"card":true,"gap":184,"roses":[]}
+narrow layout: at 1000 px no north shown but the timeline's, or more than one (CL-MAP-04): []

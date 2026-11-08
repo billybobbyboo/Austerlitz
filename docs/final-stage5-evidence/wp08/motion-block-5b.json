@@ -1,0 +1,341 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "4749fa00896757fcae77988a3195cb3d",
+ "full": false,
+ "variants": [
+  {
+   "name": "none",
+   "totals": {
+    "jumps": 240,
+    "pops": 1049,
+    "flicker": 7,
+    "lod": 128
+   },
+   "failures": [],
+   "drawn": 29772,
+   "drawnBaselines": 29679,
+   "runs": [
+    {
+     "key": "hybrid-pan",
+     "jumps": 7,
+     "pops": 68,
+     "flicker": 0,
+     "lod": 23,
+     "track": {
+      "on": 1368,
+      "inView": 2036,
+      "longestMs": 2467
+     }
+    },
+    {
+     "key": "hybrid-zoom",
+     "jumps": 24,
+     "pops": 116,
+     "flicker": 1,
+     "lod": 24,
+     "track": {
+      "on": 1245,
+      "inView": 2203,
+      "longestMs": 2133
+     }
+    },
+    {
+     "key": "hybrid-orbit",
+     "jumps": 9,
+     "pops": 145,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1520,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-glide",
+     "jumps": 13,
+     "pops": 81,
+     "flicker": 1,
+     "lod": 12,
+     "track": {
+      "on": 1172,
+      "inView": 1786,
+      "longestMs": 1700
+     }
+    },
+    {
+     "key": "hybrid-play",
+     "jumps": 11,
+     "pops": 99,
+     "flicker": 0,
+     "lod": 2,
+     "track": {
+      "on": 2079,
+      "inView": 3388,
+      "longestMs": 4033
+     }
+    },
+    {
+     "key": "paper-pan",
+     "jumps": 0,
+     "pops": 2,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1274,
+      "inView": 1274,
+      "longestMs": 0
+     }
+    },
+    {
+     "key": "paper-zoom",
+     "jumps": 13,
+     "pops": 98,
+     "flicker": 2,
+     "lod": 0,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-glide",
+     "jumps": 11,
+     "pops": 45,
+     "flicker": 1,
+     "lod": 27,
+     "track": {
+      "on": 551,
+      "inView": 822,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-play",
+     "jumps": 4,
+     "pops": 38,
+     "flicker": 1,
+     "lod": 2,
+     "track": {
+      "on": 1564,
+      "inView": 1694,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-pan",
+     "jumps": 17,
+     "pops": 46,
+     "flicker": 0,
+     "lod": 2,
+     "track": {
+      "on": 1800,
+      "inView": 2038,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-zoom",
+     "jumps": 31,
+     "pops": 67,
+     "flicker": 0,
+     "lod": 30,
+     "track": {
+      "on": 1655,
+      "inView": 2207,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-orbit",
+     "jumps": 31,
+     "pops": 104,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1753,
+      "inView": 2366,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-play",
+     "jumps": 15,
+     "pops": 77,
+     "flicker": 1,
+     "lod": 2,
+     "track": {
+      "on": 2603,
+      "inView": 3146,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "low-pan",
+     "jumps": 7,
+     "pops": 9,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 806,
+      "inView": 861,
+      "longestMs": 533
+     }
+    },
+    {
+     "key": "low-orbit",
+     "jumps": 17,
+     "pops": 30,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 649,
+      "inView": 859,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "low-zoom",
+     "jumps": 30,
+     "pops": 24,
+     "flicker": 0,
+     "lod": 4,
+     "track": {
+      "on": 441,
+      "inView": 590,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-orbit+point",
+     "jumps": 9,
+     "pops": 145,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1520,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-orbit+real",
+     "jumps": 9,
+     "pops": 145,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1520,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "paper-zoom+point",
+     "jumps": 13,
+     "pops": 98,
+     "flicker": 2,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-zoom+real",
+     "jumps": 13,
+     "pops": 98,
+     "flicker": 2,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-orbit+sel",
+     "jumps": 18,
+     "pops": 133,
+     "flicker": 1,
+     "lod": 0,
+     "track": {
+      "on": 1524,
+      "inView": 2548,
+      "longestMs": 2100
+     }
+    },
+    {
+     "key": "paper-zoom+sel",
+     "jumps": 28,
+     "pops": 92,
+     "flicker": 1,
+     "lod": 0,
+     "track": {
+      "on": 821,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-pan+fr",
+     "jumps": 8,
+     "pops": 65,
+     "flicker": 0,
+     "lod": 23,
+     "track": {
+      "on": 1319,
+      "inView": 1959,
+      "longestMs": 2467
+     }
+    },
+    {
+     "key": "hybrid-pan+al",
+     "jumps": 10,
+     "pops": 41,
+     "flicker": 0,
+     "lod": 13,
+     "track": {
+      "on": 976,
+      "inView": 1270,
+      "longestMs": 1467
+     }
+    },
+    {
+     "key": "paper-play+al",
+     "jumps": 5,
+     "pops": 35,
+     "flicker": 1,
+     "lod": 2,
+     "track": {
+      "on": 1171,
+      "inView": 1331,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "phone-pan+touch",
+     "jumps": 2,
+     "pops": 57,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 257,
+      "inView": 696,
+      "longestMs": 1367
+     }
+    }
+   ],
+   "long": {},
+   "console": [],
+   "secs": 354
+  }
+ ],
+ "chromium": "141.0.7390.37"
+}

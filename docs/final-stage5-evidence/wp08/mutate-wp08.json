@@ -1,0 +1,155 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "4749fa00896757fcae77988a3195cb3d",
+ "mutations": [
+  {
+   "name": "none",
+   "expectedToFail": [],
+   "failed": [],
+   "asExpected": true,
+   "details": [],
+   "pageErrors": []
+  },
+  {
+   "name": "the default glyph an upright arrow again",
+   "expectedToFail": [
+    "the event glyphs"
+   ],
+   "failed": [
+    "the event glyphs"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: attack: 251 px upright or level inside the ring; engagement: 251 px upright or level inside the ring; movement: 251 px upright or level inside the ring; withdrawal: 251 px upright or level inside the ring"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "the capture a ring and a full cross again",
+   "expectedToFail": [
+    "the event glyphs"
+   ],
+   "failed": [
+    "the event glyphs"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: capture: 64 px beyond its ring"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "the axis row never shown",
+   "expectedToFail": [
+    "the key's rows"
+   ],
+   "failed": [
+    "the key's rows"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: 04:15 hybrid: the axis row false, axis arrows 4"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "no status row",
+   "expectedToFail": [
+    "the key's rows"
+   ],
+   "failed": [
+    "the key's rows"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: 04:15 hybrid: the quiet status row false; 04:15 hybrid: the steady status row false; 09:30 hybrid: the quiet status row false; 09:30 hybrid: the steady status row false; 09:30 hybrid: the active status row false; 09:30 hybrid: the warn status row false"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "no key in the ? overlay",
+   "expectedToFail": [
+    "the key in the ? overlay"
+   ],
+   "failed": [
+    "the key in the ? overlay"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: study: no key in the overlay; watch: no key in the overlay"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "no rose in Watch",
+   "expectedToFail": [
+    "the north rose"
+   ],
+   "failed": [
+    "the north rose"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: watch terrain: 0 roses shown"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "two roses in Study",
+   "expectedToFail": [
+    "the north rose"
+   ],
+   "failed": [
+    "the north rose"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: study terrain: 2 roses shown; study staff: 2 roses shown"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "the roses turned the wrong way",
+   "expectedToFail": [
+    "the north rose"
+   ],
+   "failed": [
+    "the north rose"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: study terrain: the needle at 88.6, north at -88.6; watch terrain: the needle at 88.6, north at -88.6"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "no edge on the selected name",
+   "expectedToFail": [
+    "the selection on the landscape"
+   ],
+   "failed": [
+    "the selection on the landscape"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: the selected name not edged; the ring 0.90 (ahq)"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "the ring at 0.62 again",
+   "expectedToFail": [
+    "the selection on the landscape"
+   ],
+   "failed": [
+    "the selection on the landscape"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: the ring 0.62 (ahq)"
+   ],
+   "pageErrors": []
+  }
+ ],
+ "chromium": "141.0.7390.37"
+}

@@ -8,7 +8,7 @@
 owner questions 275, 282 and 284) is the third PR, stacked on WP-07's (the same priority rules). The owner's decisions of 8 November 2026 ("Your
 recommendations for all"): **296**, no Key button in Watch, the key reached through the "?" overlay instead (below); **297**, the place names as they
 are (CL-MAP-20, accepted: no single 1805 convention to break); **298**, decision 241 (a) kept (CL-MAP-19: the paper map's arrows uncapped, accepted).
-`austerlitz-command-map.html` is now BUILD_SIZE bytes, md5 `BUILD_MD5` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
+`austerlitz-command-map.html` is now 2,932,025 bytes, md5 `4749fa00896757fcae77988a3195cb3d` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
 
 ### What changed, and why
 
@@ -34,9 +34,10 @@ are (CL-MAP-20, accepted: no single 1805 convention to break); **298**, decision
   226 (a)) and in Watch and Clean (2D: a Key button would have been a new panel there). *Is:* the "?" overlay, one press from the timeline's "?"
   button in Study and Watch at every width and on a phone, opens with "The map key: what is drawn now", a copy of the key's rows for what is drawn.
   No new panel, so no unobstructed baseline moves, and neither 2D's choice nor 226 (a) is overridden; Clean keeps no furniture.
-- **CL-MAP-04, north (`shell.html`, `style.css`).** The only north indicator was the rose inside the key's toggle, hidden with the key and below 700
-  px tall. *Is:* the rose in the timeline's row beside the scale bar, an image named "North arrow", turned to true north by `updateRose` as before;
-  shown in Study and Watch at every width and height.
+- **CL-MAP-04, north (`shell.html`, `style.css`, `app.js` `updateRose`).** The only north indicator was the rose inside the key's toggle, hidden with
+  the key (below 1080 px, in Watch and Clean) and below 700 px tall. *Is:* a second rose in the timeline's row beside the scale bar, an image named
+  "North arrow", turned with the key's to true north, shown wherever the key's is not (in Watch, below 1080 px wide, at 700 px tall or less): one
+  north in Study and Watch at every width and height. The key's toggle as before (its rose kept), so no panel the layer keeps clear changes.
 - **CL-MAP-10, the selection (`app.js`, `style.css` `.mln-sel`).** On the landscape the selected formation's name had the plate of every other and its
   ring (1 px, 62% opaque) read like the plateau's outline. *Is:* the selected name's plate edged in the accent (a shadow: its box, place and contrast
   as before), the ring 90% opaque. The outline's values (decision 239) unchanged.
@@ -60,7 +61,30 @@ are (CL-MAP-20, accepted: no single 1805 convention to break); **298**, decision
 
 ### Verified
 
-VERIFIED_PLACEHOLDER
+All here, on this branch's final build `4749fa00...` (Chromium 141.0.7390.37, the pinned browser, software WebGL), but `check:visual` (CI):
+
+- `npm run build`: 2,932,025 bytes; the committed build is a fresh build's.
+- `npm test`: the nine suites and the height guard, every suite passing (binding-test 400 checks; css-test 0 errors; runtime-test console.warn
+  unique 0; redteam 0 findings).
+- `npm run check:data`: all 143 data declarations identical to `archive/stage4wp04b-cdca9984.html` (no data changes; the reference stays).
+- `npm run check:chronology`: 0 errors, as on `main`.
+- `npm run check:contrast`: 7,453 text elements, 120 text/background pairs, 0 below AA, 0 below 10.5 px, 0 font failures (671 characters in 15
+  computed fonts); 45 of 45 states reached (10 as a phone); 0 console messages; the start-up cases as before.
+- `npm run check:selftest`: the self-test's 330 checks pass, the five new among them, and every live block (the narrow block's caption and card
+  reads, the motion block, `toast`, `toastLayout`, `ring`, `tips`); its one failing line was the manifest's (330 checks against 325), so the
+  manifest is written from that run (`tools/visual/check-report.js --write-manifest`: 325 to 330, five added, none removed); CI's run judges it
+  clean. The motion block's 16 exactly `main`'s (240 jumps, 1,049 pops, 7 flickers, 128 level-of-detail switches; every visibility baseline
+  held: `docs/final-stage5-evidence/wp08/motion-block-5b.json`): no threshold, limit or baseline moves.
+- **Found and fixed on the way:** a first version took the rose out of the key's toggle; the toggle, a panel the layer keeps clear, grew 26 px
+  narrower and the motion block moved (pops 1,054 against 1,049, five formation-frames-in-view baselines, the paper map's zoom 849 drawn against
+  852). The key's rose was put back (its toggle as on `main`) and the timeline's rose shown only where the key's is not; the block then `main`'s.
+  A run of the self-test made while three browser jobs shared the machine timed out in the `toastLayout` block on a click that `main`'s build
+  failed the same way under that load; on an idle machine it passed.
+- The phone cases measured here (`narrow-1024`, `phone-390-explore`, `phone-390-watch`, `phone-844x390-explore`) within their drop limits and
+  unobstructed floors (7 of 9, 2 of 2, 2 of 2, 4 of 4 dropped; 0.5321, 0.6529, 0.8171, 0.6879 free); `check:visual` on CI judges all 39 cases.
+- The negative controls: `tools/final-stage5/mutate-wp08.js` 11 of 11 as expected (`mutate-wp08.json`); `caption-judge.js` 19 of 24 reads failing
+  on `main`'s build, 0 on this; `card-judge.js` failing on `main`'s (the card 184 px from the dossier, no north at 1000 px), passing on this.
+- Evidence: `docs/final-stage5-evidence/wp08/` (its README lists each file).
 
 ### What remains uncertain, and what is handed on
 

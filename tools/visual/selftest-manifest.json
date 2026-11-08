@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 6ec4abc2fa3831be78145cc87f82174d (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "6ec4abc2fa3831be78145cc87f82174d",
- "count": 325,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 4749fa00896757fcae77988a3195cb3d (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "4749fa00896757fcae77988a3195cb3d",
+ "count": 330,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -327,6 +327,11 @@
   "timeline (WP-06, CL-UX-13): the rail seeks on the primary button only, a right press leaving the clock and Play; its drag ends on a move with no button held, a cancel or a lost capture",
   "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
   "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
-  "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already"
+  "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
+  "the event glyphs (WP-08, CL-MAP-16): no upright or level stroke inside an attack's, an engagement's, a movement's or a withdrawal's ring; a capture's within its ring, the objective's cross past it",
+  "the key's rows (WP-08, CL-MAP-08): the dashed axis arrows (in their own words), the objectives, each kind of event glyph, the counters' echelon, arm and status rows, each shown exactly while drawn",
+  "the key in the ? overlay (WP-08, CL-MAP-03): one press from the timeline in Study and in Watch, the key's own rows for what is drawn, no copied id",
+  "the north rose (WP-08, CL-MAP-04): one rose shown in Study and Watch, on the landscape and the paper map (the key's where the key stands, else the timeline's), its needle on true north within 1 degree",
+  "the selection on the landscape (WP-08, CL-MAP-10): the selected name's plate edged in the accent, no other name's, the ring at least 0.85 opaque"
  ]
 }
