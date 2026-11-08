@@ -726,6 +726,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .ml-item.ml-fading{z-index:-1;pointer-events:none}
 .mlt-small.ml-far{font-size:var(--t-micro);line-height:14px}
 .mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
+.mlt-pl{display:flex;align-items:center;gap:5px}   /* WP-08 (CL-MAP-11): a plan label with its side's mark */
 .mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
 /* Stage 5B (section A.4 item 4): the name's position-grade badge in the landscape, the counter's badge inline (decision 4), at the
    name's own size: on a name it is read with the name, so the 12 px floor for what is needed to follow the battle (decision 16) */
@@ -8469,6 +8470,7 @@ function init(){
   buildFeatureGlyphs();
   buildAnalysisLabels();
   buildEventLayer();
+  buildLandmarkCue();   /* WP-08 (CL-VIS-11) */
   buildUI(); bootMark("ui",tb);
   mlInit();
 
@@ -10368,11 +10370,13 @@ function redrawGround(change){
   eventMarks.forEach(function(k){ keep(k.sp.position); keep(k.world); });
   terrainLabels.forEach(function(o){ keep(o.world); });
   if(plateauRing&&!plateauRing.userData.seatOff) seatGeometry(plateauRing);
+  [LMCUE.castle,LMCUE.garden].forEach(function(L){ if(L&&!L.userData.seatOff) seatGeometry(L); });   /* WP-08: the landmarks' outlines likewise */
   keep(orbitTarget); keep(landCam.position);
   change();
   rescaleWorld();
   hold.forEach(function(h){ h[0].y=displayHeight(h[0].x,h[0].z)+h[1]; });
   if(plateauRing) reseatGeometry(plateauRing);
+  [LMCUE.castle,LMCUE.garden].forEach(function(L){ if(L) reseatGeometry(L); });
   stopTweens(); camArc=null;   /* Stage 8, 8H (S-7): both slots stopped with the tween; until 8H the camera's slot was left set, and Follow (followActive) stayed idle */
   landCam.lookAt(orbitTarget); clampCamera();
   rebuildOverlays(curPhase,true);
@@ -11033,7 +11037,9 @@ function drawOnApply(d){
   d.tip=show?[r.layers[r.layers.length-1].end.x,r.layers[r.layers.length-1].end.z]:null;
 }
 function applyOverlayOpacity(){
-  var base=layerOn.arrows?0.95:0;
+  /* the final audits' Stage 5, WP-08 (CL-MAP-11): while the Plans tab shows a plan the current phase's arrows stand back (PLAN_DIM) and their labels
+     leave the layer (mlCollect), so that the plan reads as the plan; until WP-08 both plans' labels and the phase's shared one style and the room */
+  var base=layerOn.arrows?0.95*(planGroup?PLAN_DIM:1):0;
   var i, paper=(mode==="staff");   /* Stage 8, 8B (decision 241): a movement arrow's fill at ARROW_CAP.OP in the perspective presentations; on the paper map as before (paperK) */
   BORDER.U.value=paper?0:1;   /* and its casing a border there only: on the paper map under the whole fill, as before 8B (0.3.1 item 4) */
   for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn*(overlayMats[i].userData.op||1)*(paper&&overlayMats[i].userData.paperK||1);
@@ -11829,6 +11835,31 @@ function updatePlateauRing(){
   plateauRing.material.opacity += pro*ease(0.06);
   plateauRing.visible=plateauRing.material.opacity>0.01;
 }
+/* the final audits' Stage 5, WP-08 (CL-VIS-11; owner decision 282 (a)): a restrained cue for two landmarks the narrative leans on, at their sites,
+   neither moved nor grown (decisions 259 (a), 261 (a), 266 (a)): the castle and its farm at Sokolnitz (CASTLE_GROUND's ellipse, the ground its
+   buildings stand on) and the château's garden at Austerlitz (GARDENS, its traced outline), outlined on the drawn ground in the annotation colour:
+   always on the paper map (its sign: until WP-08 the garden had none there), and on the landscape while the castle's village or the garden's town is
+   selected (its dossier names them). Seated on the ground as the plateau's outline is (redrawGround) */
+var LMCUE={grp:null, castle:null, garden:null};
+function buildLandmarkCue(){
+  LMCUE.grp=new THREE.Group(); scene.add(LMCUE.grp);
+  function line(P){ var g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferAttribute(P,3));
+    var L=new THREE.Line(g,new THREE.LineBasicMaterial({color:lin(hexNum(TOKENS.sym.label.dark.annotation)),transparent:true,opacity:0.9,depthTest:false}));
+    L.renderOrder=16; L.visible=false; LMCUE.grp.add(L); return L; }
+  var cw=W(CASTLE_GROUND.c[0],CASTLE_GROUND.c[1]), P=[];
+  for(var a=0;a<=48;a++){ var t=a/48*Math.PI*2, x=cw[0]+CASTLE_GROUND.rx*Math.cos(t), z=cw[1]+CASTLE_GROUND.rz*Math.sin(t); P.push(x,displayHeight(x,z)+0.6,z); }
+  LMCUE.castle=line(P);
+  var G=GARDENS[0].poly.concat([GARDENS[0].poly[0]]), Q=[];
+  for(var i=0;i<G.length-1;i++) for(var k=0;k<4;k++){ var w=W(G[i][0]+(G[i+1][0]-G[i][0])*k/4, G[i][1]+(G[i+1][1]-G[i][1])*k/4); Q.push(w[0],displayHeight(w[0],w[1])+0.6,w[1]); }
+  var w0=W(G[0][0],G[0][1]); Q.push(w0[0],displayHeight(w0[0],w0[1])+0.6,w0[1]);
+  LMCUE.garden=line(Q);
+}
+function updateLandmarkCue(){
+  if(!LMCUE.grp) return;
+  var paper=mode==="staff", sel=selection&&selection.kind==="t"?selection.id:null, col=lin(hexNum(TOKENS.sym.label[paper?"paper":"dark"].annotation));
+  [[LMCUE.castle,"sokolnitz"],[LMCUE.garden,"austerlitz"]].forEach(function(q){ var L=q[0]; if(!L) return;
+    var on=presentation!=="map"&&(paper||sel===q[1]); if(L.visible!==on){ L.visible=on; requestRender(1); } L.material.color.copy(col); });
+}
 var selRing=null;
 function buildSelRing(){
   var pts=[];
@@ -12427,7 +12458,8 @@ function planObjective(obj,colour){
   planLabel(obj.n,{pos:sp.position.clone(),acl:3,r:3.1});
 }
 /* a plan label: annotation text, the map layer's; the ribbon carries the side */
-function planLabel(text,anchor){ planText.push({text:text,pos:anchor.pos,acl:anchor.acl,r:anchor.r||0}); }
+var planCurSide=null;   /* the side whose plan setPlan is drawing (WP-08, CL-MAP-11: its labels carry its mark) */
+function planLabel(text,anchor){ planText.push({text:text,pos:anchor.pos,acl:anchor.acl,r:anchor.r||0,side:planCurSide}); }
 var planLinks=null;
 function buildPlanLinks(){
   var sides = planSide==="both" ? ["al","fr"] : [planSide];
@@ -12475,6 +12507,7 @@ function setPlan(side){
     planGroup=new THREE.Group(); scene.add(planGroup);
     var sides = planSide==="both" ? ["al","fr"] : [planSide];
     sides.forEach(function(sd){
+      planCurSide=sd;
       var col  = hexNum(TOKENS.sym.side[sd].base);
       var edge = hexNum(TOKENS.sym.side[sd].edge);
       var chev = (sd==="al");
@@ -12488,9 +12521,11 @@ function setPlan(side){
       });
       (P.objectives||[]).forEach(function(o){ planObjective(o,col); });
     });
+    planCurSide=null;
     buildPlanLinks();
     if(!freeCam) flyTo(VANTAGE.plan);
   }
+  applyOverlayOpacity(); requestRender(2);   /* WP-08 (CL-MAP-11): the phase's arrows dimmed while a plan is shown, full again after */
   document.querySelectorAll(".plan-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.p===planSide ? "true":"false");
   });
@@ -13076,17 +13111,29 @@ function mlCollect(){
   /* movement, line, boundary, halt and objective labels, and the plans' */
   var seen={};
   function uniq(k){ var n=seen[k]||0; seen[k]=n+1; return n?k+"#"+n:k; }
-  if(labels&&layerOn.arrows) ovText.forEach(function(t){
+  if(labels&&layerOn.arrows&&!planGroup) ovText.forEach(function(t){   /* WP-08 (CL-MAP-11): not while a plan is shown */
     if(t.of&&readHidden(t.of)) return;   /* WP-05 (CL-SIM-02): an arrow's label goes with its arrow under a reading that does not know its formation */
-    text(uniq("o:"+t.text),t.obj?"objective":"overlay","mlt-serif",t.text,LB.annotation,t.pos,{pri:t.obj?10:6,acl:t.acl,r:t.r,op:ovFadeIn});
+    /* the final audits' Stage 5, WP-08 (CL-MAP-09): a bound arrow's label that only names its formation (its short name, or one word of its
+       commander's: "Suchet", "Bagration") is laid out after the formation names and withheld while its formation's own counter or name is drawn
+       (mlLayout), so that one name stands for one formation (decision 205); a label that tells the movement ("Saint-Hilaire wheels south") as before */
+    var dup=t.of&&!t.obj&&mlNameOnly(t.text,FORMATIONS[t.of]);
+    var it=text(uniq("o:"+t.text),t.obj?"objective":"overlay","mlt-serif",t.text,LB.annotation,t.pos,{pri:t.obj?10:dup?ML_DUP_PRI:6,acl:t.acl,r:t.r,op:ovFadeIn});
+    it.dupOf=dup?t.of:null;
   });
-  if(planGroup) planText.forEach(function(t){ text(uniq("pl:"+t.text),"plan","mlt-serif",t.text,LB.annotation,t.pos,{pri:6,acl:t.acl,r:t.r}); });
+  /* the plans' labels, each with its side's mark (WP-08, CL-MAP-11: until WP-08 none, so French and Allied intentions read alike) and named with it */
+  if(planGroup) planText.forEach(function(t){ var it=mlItem(uniq("pl:"+t.text),"mlt mlt-serif mlt-pl"), sd=t.side==="fr"||t.side==="al"?t.side:null;
+    mlContent(it,["pl",t.text,sd||"",PL].join("|"),(sd?'<i class="mln-mark" style="background:'+TOKENS.sym.side[sd].base+';border-color:'+TOKENS.sym.keyline+'"></i>':"")+esc(t.text),[PL,LB.annotation]);
+    it.world.copy(t.pos); add(it,{cat:"plan",pri:6,acl:t.acl,r:t.r,aria:(sd?LABELS.plans[sd]+", ":"")+t.text}); });
   /* place names: a marker at the place, the name beside it */
   placeLabels.forEach(function(o){ if(!o.show) return;
     var ft=o.ft, col=ft.kind==="water"?PC.water:ft.kind==="height"?PC.height:ft.kind==="road"?PC.road:PC.other;
-    var sel=isSel("t",ft.id), base=MAJOR_FEATURES[ft.id]?8:8.5;
-    text("t:"+ft.id,"place","mlt-small",ft.name,col,o.world,{pri:sel?0:base,base:base,keep:sel,mode:"place",mk:[col,PC.fill],
-      pick:{kind:"t",id:ft.id},aria:"Place: "+ft.name});
+    /* the final audits' Stage 5, WP-08 (CL-MAP-05; owner decision 275 (a)): on the paper map, the reference map, the principal places the narrative
+       names (MAJOR_FEATURES) laid out after the plateau's reading and before the arrows' and the plans' labels (5.5), so that the map as entered names
+       them; until WP-08 they came last (8) and none of the twelve was drawn as entered at 1600, 1280 or 1024 px */
+    var sel=isSel("t",ft.id), base=MAJOR_FEATURES[ft.id]?(paper?ML_PLACE_PAPER:8):8.5;
+    var pit=text("t:"+ft.id,"place","mlt-small",ft.name,col,o.world,{pri:sel?0:base,base:base,keep:sel,mode:"place",mk:[col,PC.fill],
+      pick:{kind:"t",id:ft.id},aria:"Place: "+ft.name+(PLACE_SIGN[ft.id]?", "+PLACE_SIGN[ft.id].say():"")});
+    pit.sign=PLACE_SIGN[ft.id]?PLACE_SIGN[ft.id].kind:null;
   });
   /* terrain-study labels */
   if(layerOn.analysis&&labels) terrainLabels.forEach(function(o){
@@ -13105,6 +13152,26 @@ function overKnown(fn){
   var keep=units, K={}; Object.keys(units).forEach(function(id){ if(!readHidden(id)) K[id]=units[id]; });
   units=K; try{ return fn(); } finally { units=keep; }
 }
+/* the final audits' Stage 5, WP-08 (owner decision 282 (a), 8 November 2026; CL-VIS-06): the two chapels the map does not draw as buildings
+   (BUILDINGS.notDrawn) marked by their place's own marker, its box as the diamond's (10 px), so that no layout changes: St Anthony's above Augezd, which
+   stood all day, its form not known, a chapel's cross; the Santon's, destroyed by the French during the battle at an hour no source read gives, a
+   site's sign (a cross in a ring), on the Santon's place, its exact spot on the hill not read (approximate). Their words are notDrawn's own */
+var PLACE_SIGN={
+  chapel:{kind:"chapel", say:function(){ return "its chapel marked by a cross, not drawn as a building: "+((BUILDINGS.notDrawn||{}).stAnthony||{}).en; }},
+  santon:{kind:"site", say:function(){ return "a chapel's site marked on it, approximate, not drawn as a building: "+((BUILDINGS.notDrawn||{}).santon||{}).en; }}
+};
+function mlPlaceMark(it){
+  var x=it.sx.toFixed(1), y=it.sy, c=it.mk[0], f=it.mk[1];
+  if(it.sign==="chapel") return '<path d="M'+x+' '+(y-5).toFixed(1)+'v10M'+(it.sx-3.5).toFixed(1)+' '+(y-1.8).toFixed(1)+'h7" fill="none" stroke="'+f+'" stroke-width="4"/>'+
+    '<path d="M'+x+' '+(y-5).toFixed(1)+'v10M'+(it.sx-3.5).toFixed(1)+' '+(y-1.8).toFixed(1)+'h7" fill="none" stroke="'+c+'" stroke-width="1.8"/>';
+  if(it.sign==="site") return '<circle cx="'+x+'" cy="'+y.toFixed(1)+'" r="4.6" fill="'+f+'" stroke="'+c+'" stroke-width="1.4"/>'+
+    '<path d="M'+x+' '+(y-3).toFixed(1)+'v6M'+(it.sx-2.2).toFixed(1)+' '+(y-1).toFixed(1)+'h4.4" fill="none" stroke="'+c+'" stroke-width="1.2"/>';
+  return '<path d="M'+x+' '+(y-5).toFixed(1)+'l5 5l-5 5l-5 -5z" fill="'+f+'" stroke="'+c+'" stroke-width="1.6"/>';
+}
+/* WP-08 (CL-MAP-09): does an arrow's label only name its formation? One word, its short name or a word of its commander's */
+function mlNameOnly(label,f){ if(!f||!label||/\s/.test(label)) return false;
+  return shortName(f)===label||(" "+(f.commander||"").replace(/[,;]/g," ")+" ").indexOf(" "+label+" ")>=0; }
+var ML_DUP_PRI=7.95, ML_PLACE_PAPER=5.5, PLAN_DIM=0.35;   /* WP-08: design values */   /* after the formation names (7 and their rank), before the places (8) */
 /* the label's words and, spoken, its accessible name: both say "derived" (owner decision 126) */
 function plateauText(spoken){
   var al=overKnown(function(){ return plateauStrength("al"); }), fr=overKnown(function(){ return plateauStrength("fr"); });
@@ -13408,6 +13475,9 @@ function mlLayout(){
   var strat=MLS.moving?"hold":MLS.fromMotion?"persist":"build";
   while(nk<order.length&&order[nk].keep) nk++;
   for(var ik=0;ik<nk;ik++){ var kt=order[ik]; kt.held=false; if(!(mlPlaceItem(kt,VW,VH,panels,obst)||mlWrapPlace(kt,VW,VH,panels,obst))) kt.state="dropped"; }
+  /* WP-08 (CL-MAP-09): an arrow's label that only names its formation, withheld while the formation's own counter or name is drawn in this pass */
+  function dupDrawn(it){ if(!it.dupOf) return false; var c=ML.items["c:"+it.dupOf], n=ML.items["n:"+it.dupOf];
+    return !!((c&&c.eFrame===ML.frame&&c.state==="on")||(n&&n.eFrame===ML.frame&&n.state==="on")); }
   function placeRest(it,s){
     if(s==="build"||it.el===foc) return mlPlaceItem(it,VW,VH,panels,obst);
     if(it.wasOn&&it.mem){ if(mlHoldTry(it,VW,VH,panels,obst)||mlPlaceItem(it,VW,VH,panels,obst,true)){ it.room2=0; return true; } it.held=true; return false; }
@@ -13419,13 +13489,14 @@ function mlLayout(){
     if(s==="persist"){   /* at rest after motion: every place that still fits is kept first, in priority order; then the others by the full search,
                             into the room left: nothing drawn moves to make room for another (no reshuffle) */
       var later=[];
-      for(var i=nk;i<order.length;i++){ var it=order[i]; it.held=false; if(it.el===foc||!mlHoldTry(it,VW,VH,panels,obst)) later.push(it); }
-      later.forEach(function(it){ if(!mlPlaceItem(it,VW,VH,panels,obst)) it.state="dropped"; });
+      for(var i=nk;i<order.length;i++){ var it=order[i]; it.held=false; if(dupDrawn(it)){ it.state="withheld"; continue; } if(it.el===foc||!mlHoldTry(it,VW,VH,panels,obst)) later.push(it); }
+      later.forEach(function(it){ if(dupDrawn(it)){ it.state="withheld"; return; } if(!mlPlaceItem(it,VW,VH,panels,obst)) it.state="dropped"; });
       return; }
-    for(var j=nk;j<order.length;j++){ var jt=order[j]; jt.held=false; if(!placeRest(jt,s)) jt.state="dropped"; }
+    for(var j=nk;j<order.length;j++){ var jt=order[j]; jt.held=false; if(dupDrawn(jt)){ jt.state="withheld"; jt.room2=0; continue; } if(!placeRest(jt,s)) jt.state="dropped"; }
   }
   runRest(strat);
   order.forEach(function(it){
+    if(it.state==="withheld"){ st.withheld=(st.withheld||0)+1; return; }   /* WP-08: neither placed nor dropped: its formation's name stands for it */
     if(it.state==="on"){ st.placed++; if(it.lead) st.leaders++; }
     else { st.dropped++; st.dropped_.push(it.key); if(it.held) st.held++; if(it.keep) st.keepMissing.push(it.key); }
   });
@@ -13478,7 +13549,7 @@ function mlLayout(){
         mlLine(s,g,it.lead?mlNear([x,y,x+it.w,y+it.h],g[0],g[1]):foot,C); }
       else if(it.lead) mlLine(s,[it.sx,it.sy],mlNear([x,y,x+dw,y+dh],it.sx,it.sy),C);
       if(it.lead) s.push('<circle cx="'+(it.mode==="counter"?g[0]:it.sx).toFixed(1)+'" cy="'+(it.mode==="counter"?g[1]:it.sy).toFixed(1)+'" r="2.2" fill="'+C.co+'" stroke="'+C.cs+'" stroke-width="1"/>');
-      if(it.mode==="place") s.push('<path d="M'+it.sx.toFixed(1)+' '+(it.sy-5).toFixed(1)+'l5 5l-5 5l-5 -5z" fill="'+it.mk[1]+'" stroke="'+it.mk[0]+'" stroke-width="1.6"/>');
+      if(it.mode==="place") s.push(mlPlaceMark(it));
     }
     else if(it.rem){ var rx=it.rem[0]+","+it.rem[1]; if(it.tx!==rx){ it.el.style.transform="translate("+it.rem[0]+"px,"+it.rem[1]+"px)"; it.tx=rx; } }   /* a remnant, where it was drawn */
     if(it.on!==on){ it.el.classList.toggle("on",on); it.on=on; }
@@ -14158,6 +14229,7 @@ function updateVisibility(){
   updateEventLayer();
   symbolSizes();   /* Stage 3E: event glyphs and objective markers capped on screen, faded near the eye */
   updateSelRing();
+  updateLandmarkCue();   /* WP-08 (CL-VIS-11) */
   updatePlanLinks();   /* the map layer lays out in the drawn frame (mlLayout), not here */
 }
 
@@ -14501,6 +14573,7 @@ var LABELS={
   glLost:"The 3D view has stopped: the browser lost its graphics context. It comes back if the browser restores it; if it does not, reload the page.",
   reload:"Reload",
   /* roadmap step 3 (decision 134 (a)): the single-key shortcuts switch in the "?" overlay; interface words, no claim */
+  plans:{fr:"The French plan", al:"The Allied plan"},   /* WP-08 (CL-MAP-11): a plan label's name begins with its side's plan */
   keys:{single:"Single-key shortcuts", on:"on", off:"off", offRow:"(off)",
     note:"Off, keys that type one character (letters, digits, punctuation, ?) do nothing; Space, the arrows, Esc, Tab and Enter still work, and + and \u2212 on the focused map. For this visit only; the ? button opens this list."},
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
@@ -16266,6 +16339,12 @@ function buildingsSection(ft){
   sec.appendChild(el("p","hh",esc("Their sizes, heights, colours and spacing are design values at their symbol scale; the sources sheet says how the villages are drawn.")));
   return sec;
 }
+function landmarkNotDrawn(ft){
+  var k={chapel:"stAnthony", santon:"santon"}[ft.id], N=typeof BUILDINGS!=="undefined"&&BUILDINGS.notDrawn&&k?BUILDINGS.notDrawn[k]:null; if(!N) return null;
+  var h=row(ft.id==="chapel"?"The chapel":"The Santon's chapel",esc(N.en)+' <span class="hh">&middot; not drawn as a building: '+(ft.id==="chapel"?"its place marked by a cross":"its site marked on the Santon's place, approximate")+'</span>')+
+    row("Why",esc(N.why.replace(/\s*Alternatives:.*$/,"")));
+  return sect("Not drawn here",h,true);
+}
 function dossierFeature(id){
   var ft=null; FEATURES.forEach(function(x){ if(x.id===id) ft=x; });
   var wrap=el("div","dossier");
@@ -16299,6 +16378,8 @@ function dossierFeature(id){
     wrap.appendChild(s2);
   }
   var bs=buildingsSection(ft); if(bs) wrap.appendChild(bs);   /* Stage 8, 8G */
+  /* WP-08 (decision 282 (a); CL-VIS-06): a place whose landmark the map does not draw says so, and why (BUILDINGS.notDrawn's words) */
+  var nd=landmarkNotDrawn(ft); if(nd) wrap.appendChild(nd);
   var here=placeNearby(ft);
   if(here.length){
     var s3=el("div","sect");

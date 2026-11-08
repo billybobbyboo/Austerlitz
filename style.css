@@ -720,6 +720,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .ml-item.ml-fading{z-index:-1;pointer-events:none}
 .mlt-small.ml-far{font-size:var(--t-micro);line-height:14px}
 .mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
+.mlt-pl{display:flex;align-items:center;gap:5px}   /* WP-08 (CL-MAP-11): a plan label with its side's mark */
 .mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
 /* Stage 5B (section A.4 item 4): the name's position-grade badge in the landscape, the counter's badge inline (decision 4), at the
    name's own size: on a name it is read with the name, so the 12 px floor for what is needed to follow the battle (decision 16) */
