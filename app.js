@@ -5323,8 +5323,8 @@ function mlCollect(){
   placeLabels.forEach(function(o){ if(!o.show) return;
     var ft=o.ft, col=ft.kind==="water"?PC.water:ft.kind==="height"?PC.height:ft.kind==="road"?PC.road:PC.other;
     /* the final audits' Stage 5, WP-08 (CL-MAP-05; owner decision 275 (a)): on the paper map, the reference map, the principal places the narrative
-       names (MAJOR_FEATURES) laid out after the plateau's reading and before the arrows' and the plans' labels (5.5), so that the map as entered names
-       them; until WP-08 they came last (8) and none of the twelve was drawn as entered at 1600, 1280 or 1024 px */
+       names (MAJOR_FEATURES) laid out before the formations' counters (ML_PLACE_PAPER), so that the map as entered names them; the counters find their
+       places round them by their leaders. Until WP-08 they came last (8) and none of the twelve was drawn as entered at 1600, 1280 or 1024 px */
     var sel=isSel("t",ft.id), base=MAJOR_FEATURES[ft.id]?(paper?ML_PLACE_PAPER:8):8.5;
     var pit=text("t:"+ft.id,"place","mlt-small",ft.name,col,o.world,{pri:sel?0:base,base:base,keep:sel,mode:"place",mk:[col,PC.fill],
       pick:{kind:"t",id:ft.id},aria:"Place: "+ft.name+(PLACE_SIGN[ft.id]?", "+PLACE_SIGN[ft.id].say():"")});
@@ -5366,7 +5366,8 @@ function mlPlaceMark(it){
 /* WP-08 (CL-MAP-09): does an arrow's label only name its formation? One word, its short name or a word of its commander's */
 function mlNameOnly(label,f){ if(!f||!label||/\s/.test(label)) return false;
   return shortName(f)===label||(" "+(f.commander||"").replace(/[,;]/g," ")+" ").indexOf(" "+label+" ")>=0; }
-var ML_DUP_PRI=7.95, ML_PLACE_PAPER=5.5, PLAN_DIM=0.35;   /* WP-08: design values */   /* after the formation names (7 and their rank), before the places (8) */
+var ML_DUP_PRI=7.95, ML_PLACE_PAPER=2.5, PLAN_DIM=0.35;   /* WP-08: design values (ML_PLACE_PAPER: at 5.5, after the plateau's reading, the counters still filled the
+   room and none of the twelve was drawn as entered; at 2.5, before the counters, 9 of 12 as entered at 1600 x 900 with every counter still drawn, measured) */   /* after the formation names (7 and their rank), before the places (8) */
 /* the label's words and, spoken, its accessible name: both say "derived" (owner decision 126) */
 function plateauText(spoken){
   var al=overKnown(function(){ return plateauStrength("al"); }), fr=overKnown(function(){ return plateauStrength("fr"); });
