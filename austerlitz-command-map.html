@@ -12945,7 +12945,7 @@ var CORPS_AT=250, CORPS_HYST=15;   /* units: the eye's distance at which the cor
      it (section F.3 measured rays against the mesh at 84-205 ms a pass); what is never dropped is not occluded.
    ============================================================ */
 var ML={root:null, lines:null, items:{}, frame:0, hover:null, hoverDrop:null, focus:null,
-        order:"", maxG:{}, stats:{items:0,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0},
+        order:"", maxG:{}, stats:{items:0,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,withheld:0,keepMissing:[],dropped_:[],ms:0,nodes:0},
         taken:[], svg:"", legendOpen:false, lgSize:null};   /* Stage 3B (decision 49): the legend opens closed to its head; the visitor's choice then holds */
 var ML_FULL_DIST=70;   /* a counter nearer the eye than this (world units; about 4.4 km) is drawn full (section F.1) */
 var ML_PAD=2;          /* px kept clear between placed items, and from panels and symbols */
@@ -13440,7 +13440,7 @@ function mlLayout(){
   mlLegendFit(VW,VH);
   mlPriPrep();   /* WP-07 (decision 299): the order's Play terms for this pass */
   var list=mlCollect(), panels=mlPanels();
-  var st={items:list.length,placed:0,leaders:0,dropped:0,held:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0};
+  var st={items:list.length,placed:0,leaders:0,dropped:0,held:0,occluded:0,offscreen:0,underPanel:0,withheld:0,keepMissing:[],dropped_:[],ms:0,nodes:0};   /* withheld: WP-08 (CL-MAP-09), an arrow's name-only label while its formation's own is in view */
   var elig=[], dirty=[];
   list.forEach(function(it){
     _mlV.copy(it.world).applyMatrix4(camera.matrixWorldInverse);
@@ -13506,7 +13506,7 @@ function mlLayout(){
   }
   runRest(strat);
   order.forEach(function(it){
-    if(it.state==="withheld"){ st.withheld=(st.withheld||0)+1; return; }   /* WP-08: neither placed nor dropped: its formation's name stands for it */
+    if(it.state==="withheld"){ st.withheld++; return; }   /* WP-08: neither placed nor dropped: its formation's name stands for it */
     if(it.state==="on"){ st.placed++; if(it.lead) st.leaders++; }
     else { st.dropped++; st.dropped_.push(it.key); if(it.held) st.held++; if(it.keep) st.keepMissing.push(it.key); }
   });
