@@ -782,7 +782,7 @@ and 293 (a), the motion block and the gait's kept-open counts at its own counts,
 Stage 5 (WP-07, WP-08; owner decisions 296-304 of 8 November 2026) is built as three draft PRs from `main`: **5a**, WP-07, the map layer in motion
 (`claude/jolly-carson-yz0yqo-layer`, draft PR #89: aging and the event-named rise during Play, decision 299 (D), its cost on the phone accepted as measured, decision 304 (a); the corps/division band, decisions
 300 and 301 (a); the long Play runs and their bar in the motion block, `MOTION.LONG`; five visibility baselines on the owner's word; presentation
-only); **5b**, WP-08's furniture (`claude/jolly-carson-yz0yqo-furniture`, draft PR #90); **5c**, WP-08's lettering and landmarks, stacked on 5a (`claude/jolly-carson-yz0yqo-lettering`, a draft PR into 5a's branch: an arrow's
+only); **5b**, WP-08's furniture (`claude/jolly-carson-yz0yqo-furniture`, draft PR #90); **5c**, WP-08's lettering and landmarks, stacked on 5a (`claude/jolly-carson-yz0yqo-lettering`, draft PR #91 into 5a's branch: an arrow's
 name-only label withheld while its formation is named, CL-MAP-09; the Plans view, CL-MAP-11; the chapels' marks, decision 282 (a), with `BUILDINGS`'
 two chapels amended, a data task, the `check:data` reference moved; the castle's and the garden's outlines, CL-VIS-11; the paper map's lettering as
 it is, decision 302 (b); the wall of names re-measured, decision 284 (b); the flicker ceiling 12, decision 303 (a)).

@@ -2,8 +2,8 @@
 
 ## 2026-11 · Final audits' roadmap, Stage 5 (3 of 3): WP-08's lettering and landmarks
 
-**Status: on `claude/jolly-carson-yz0yqo-lettering`, stacked on WP-07 (`claude/jolly-carson-yz0yqo-layer`, draft PR #89); a draft PR into WP-07's
-branch, for review, not merged.** The rest of WP-08 of `docs/ROADMAP_FINAL_AUDIT.md`: CL-MAP-05, -09, -11, -15, -18 and CL-VIS-11, with the owner's
+**Status: on `claude/jolly-carson-yz0yqo-lettering`, stacked on WP-07 (`claude/jolly-carson-yz0yqo-layer`, draft PR #89); draft PR #91 into
+WP-07's branch, for review, not merged.** The rest of WP-08 of `docs/ROADMAP_FINAL_AUDIT.md`: CL-MAP-05, -09, -11, -15, -18 and CL-VIS-11, with the owner's
 questions 275, 282 and 284; stacked on WP-07 because the same priority rules lay out both (its findings measured on WP-07's layer). The owner's
 decisions of 8 November 2026 ("Your recommendations for all"): **275 (a)**, measured, then **302 (b)** (below: the paper map's lettering as it is);
 **282** as recommended, (a) for the two chapels, (b) for the garden, whose restrained cue is CL-VIS-11's; **284 (b)**, the wall of names as decided,
