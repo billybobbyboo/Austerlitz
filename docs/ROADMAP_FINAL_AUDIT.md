@@ -46,7 +46,7 @@ Every pass keeps the project's rules (`CLAUDE.md`):
 
 ## The stages
 
-**Status (5 November 2026):** Stages 1 and 2 are merged (#82, #83). Four of WP-13's items are deferred with reasons: CL-ROB-03, -08, -09 and -13 (`CHANGELOG.md`). Stage 3 (WP-05, WP-06) is built on `claude/stage-3-audit-panels-camera-owvd38` (a draft PR, for review); what it leaves is listed in `CHANGELOG.md`.
+**Status (7 November 2026):** Stages 1 to 4 are merged: Stage 1 (#82), Stage 2 (#83), Stage 3 (#84), Stage 4's WP-03 (#86), WP-04b (#87) and WP-15's first batch (#85). Four of WP-13's items are deferred with reasons: CL-ROB-03, -08, -09 and -13 (`CHANGELOG.md`). What each stage leaves is listed in its `CHANGELOG.md` entry. Stage 5 (WP-07, WP-08) is next.
 
 | stage | passes | days | the gate it closes |
 |---|---|---|---|

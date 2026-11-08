@@ -116,8 +116,8 @@ All here, on this branch's final build `e5e17e64...` (Chromium 141.0.7390.37, th
 
 ## 2026-11 · Final audits' roadmap, Stage 4 (main track, 2 of 2): WP-04b, the relief and the drawn geography
 
-**Status: on `claude/compassionate-curie-igyzhl-relief`, stacked on WP-03 (`claude/compassionate-curie-igyzhl` at `eecb8b8`); a draft PR into
-WP-03's branch, for review, not merged.** WP-04b of `docs/ROADMAP_FINAL_AUDIT.md`: CL-GEO-01 (owner decision 273 (a), "disclose and refit,
+**Status: merged into `main` (#87, `c1222e3`), after WP-03 (#86) and with `main` merged in (`3950b07`); built on
+`claude/compassionate-curie-igyzhl-relief`, stacked on WP-03 (`claude/compassionate-curie-igyzhl` at `eecb8b8`).** WP-04b of `docs/ROADMAP_FINAL_AUDIT.md`: CL-GEO-01 (owner decision 273 (a), "disclose and refit,
 measured first"), CL-GEO-05, CL-GEO-11, CL-GEO-07, and CL-GEO-03 and -04 by their quick remedy; with the owner's decisions 289 (a), 291 (a),
 292 (a), 293 (a), 294 (a) and 295 (a) on what the refit moved. **A data task**: against WP-03's reference `archive/stage4wp03-af2965c6.html` nine data
 declarations change (GEOREF, FORMATIONS, SOURCE_NOTE, TOUR, VILLAGES, TERRAIN_LINES, regionalH, localHeight, coverClass) and four are added
@@ -335,7 +335,11 @@ ground; the high ground south of the Pratzeberg above the fog's top 0.89 to 2.09
   4,304 poses judged in that case), and the refit lowered Drouet's ground there by 15 m and steepened it (3.6 to 4.8 degrees within 2 units,
   `selftest/gait-ground.txt`). *Is:* both counts none to 1 (at most 3 each); H_TOL and every bound unchanged. In the same run "4x men drawn
   motion rich" counted 24 against its allowance of 24 and "4x men edges motion rich" 21 against 22: within, but near their limits.
-- `check:visual` on the final commit: re-dispatched, its result on #87.
+- **`check:visual` on the final commit passes** (run 42352158836, `checks.yml`, `visual: true`, dispatched on `10ad665`, this build
+  `cdca9984...`; 3 h 22 min, 07:39 to 11:01 UTC on 7 November 2026): every job of the run passes, the checks (`npm test`, `check:data`,
+  `check:chronology`), `check:contrast`, `check:selftest` and `check:visual` (its 39 cases, the live blocks and the self-test within it), so
+  decisions 294 (a) and 295 (a) hold on CI. The merge of `main` after it (`3950b07`: WP-03, #86, and WP-15's first batch, #85) changes no built
+  file; the build on `main` after #87 is `cdca9984...`, 2,903,749 bytes.
 
 ### Verified
 
@@ -389,7 +393,7 @@ differs from the final `cdca9984...` only in the self-test's `H_CASES` (decision
 
 ## 2026-11 · Final audits' roadmap, Stage 4 (main track, 1 of 2): WP-03, tracks, grades and internal consistency
 
-**Status: on `claude/compassionate-curie-igyzhl` (a draft PR into `main`, for review, not merged).** WP-03 of `docs/ROADMAP_FINAL_AUDIT.md`:
+**Status: merged into `main` (#86, `caeb127`); built on `claude/compassionate-curie-igyzhl`.** WP-03 of `docs/ROADMAP_FINAL_AUDIT.md`:
 CL-HIS-02, -03, -04, -05, -07, -08, -09, -10, -11, -13 and CL-REC-06; the accepted CL-HIS-16 and -17 kept as they are. **A data task**: five
 data declarations change against `archive/postaudit2-e7d6924f.html` (FORMATIONS, ANALYSIS, PLANS, the movement model's `anchorList`, and
 STATEMENT_CLAIMS), each below; `check:data`'s reference moves to this build, `archive/stage4wp03-af2965c6.html`. `austerlitz-command-map.html`
@@ -560,7 +564,7 @@ its geographic baselines (below), and again on the final commit `eecb8b8` (run 4
 
 ## 2026-11 · Final audits' roadmap, Stage 4 (alongside track): WP-15's first batch
 
-**Status: on `claude/compassionate-curie-igyzhl-research` (a draft PR into `main`, for review, not merged).** The alongside track of Stage 4
+**Status: merged into `main` (#85, `ca50cfe`); built on `claude/compassionate-curie-igyzhl-research`.** The alongside track of Stage 4
 of `docs/ROADMAP_FINAL_AUDIT.md`: WP-15's first batch, for finding CL-SRC-10 (ChatGPT's CG-F02: most narrative statements carry no claim, and
 the prominent ones were never triaged) and the open questions (CG-F03). **This track changes no data**: no data file, no guarded declaration
 and no build changes (`check:data` unchanged, 139 of 139 against `archive/postaudit2-e7d6924f.html`; `austerlitz-command-map.html` unchanged,
@@ -685,7 +689,7 @@ Here, on the unchanged build `6ec4abc2...`:
 
 ## 2026-11 · Final audits' roadmap, Stage 3: WP-05 and WP-06 (the panels while the clock moves; the camera and the timeline under input)
 
-**Status: on `claude/stage-3-audit-panels-camera-owvd38` (a draft PR into `main`, for review, not merged).** Stage 3 of
+**Status: merged into `main` (#84, `add185b`); built on `claude/stage-3-audit-panels-camera-owvd38`.** Stage 3 of
 `docs/ROADMAP_FINAL_AUDIT.md`: the fourteen findings of WP-05 (CL-SIM-01 to -08, CL-UX-07, CL-UX-14) and WP-06 (CL-UX-02, -03, -04, -13, -19,
 -20). Presentation and simulation only: no data file and no guarded declaration changes (`check:data`: 139 of 139 identical against
 `archive/postaudit2-e7d6924f.html`, the reference kept). The guarded readings (`knowledgeOf`, `plateauStrength`, `centreSeparation`, `posNow`)
