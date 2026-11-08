@@ -72,7 +72,7 @@ identical. `check:data`'s reference moves to this build, `archive/stage5wp08-572
 - The motion block's 16: 227 jumps, 959 pops, 12 flickers, 105 level-of-detail switches (WP-07's 249, 1,043, 9, 105; the
   ceilings 251, 1,049, 12 and 130), every run's visibility at or above its baseline (33,008 formation-frames drawn against the baselines' 32,534); 0
   failing lines (`docs/final-stage5-evidence/wp08c/motion-block-5c.json`, `tools/final-stage5/variants.js --only none`).
-- The map layer's drops in every case, against its limit: `check:visual` on CI (reported on the PR).
+- The map layer's drops in every case within its limit: `check:visual` on CI passed (run 42476667626, below); no limit moved.
 
 ### Checks added, each failing without its fix
 
@@ -110,7 +110,8 @@ On the final build (`572b0935...`, 2,935,062 bytes), Chromium 141, the pinned br
   the manifest written from that run, 326 to 330, 4 added, 0 removed. Its motion block's 16: 227 jumps, 959 pops, 12 flickers, 105 level-of-detail
   switches, as measured above; every run's line passing, the long Play runs' bar met.
 - `npm run check:baseline`: `572b0935f585ccda496938353f7e21f7`, 2,935,062 bytes.
-- `npm run check:visual`: dispatched on CI on the PR (`checks.yml`, `visual: true`), reported there.
+- `npm run check:visual` on CI (run 42476667626 on `da8a8a4`, build `572b0935...`, `checks.yml`, `visual: true`): passed, every job (`check:visual`
+  in 2 h 3 min, its 39 cases and live blocks; `npm test`, `check:data`, `check:chronology`, `check:contrast` and `check:selftest` on the same commit).
 
 ### What remains uncertain, and what is handed on
 
