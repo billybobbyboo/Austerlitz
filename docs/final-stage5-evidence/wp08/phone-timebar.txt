@@ -1,0 +1,25 @@
+tools/final-stage5/phone-timebar.js, Chromium 141.0.7390.37 (the pinned browser); the timebar's height and its items (left,top-in-timebar width)
+
+== main's build (cdca9984)
+360x800 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@304,5 w48  tb-cap@8,60 w298  helpbtn@312,49 w40
+390x844 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@334,5 w48  tb-cap@8,60 w328  helpbtn@342,49 w40
+402x714 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@346,5 w48  tb-cap@8,60 w340  helpbtn@354,49 w40
+430x932 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@374,5 w48  tb-cap@8,60 w368  helpbtn@382,49 w40
+844x390 timebar 91 px: tb-ctrl@14,3 w215  clockbox@239,3 w59  speedbtn@308,5 w44  tb-cap@362,12 w426  helpbtn@798,3 w32
+
+== this branch's first build (4749fa00, check:visual 42446137253: phone-360-explore failing)
+360x800 timebar 143 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@304,5 w48  tb-cap@40,53 w312  helpbtn@8,71 w40  rose@10,49 w22
+390x844 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@302,5 w48  tb-cap@8,60 w328  helpbtn@342,49 w40  rose@358,16 w22
+402x714 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@314,5 w48  tb-cap@8,60 w340  helpbtn@354,49 w40  rose@370,16 w22
+430x932 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@342,5 w48  tb-cap@8,60 w368  helpbtn@382,49 w40  rose@398,16 w22
+844x390 timebar 91 px: tb-ctrl@14,3 w215  clockbox@239,3 w59  speedbtn@308,5 w44  tb-cap@362,12 w390  helpbtn@762,3 w32  rose@806,8 w22
+
+== the fix (style.css, the phone's .tb-cap calc(100% - 80px); build 30d75a75)
+360x800 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@304,5 w48  tb-cap@40,60 w266  helpbtn@312,49 w40  rose@10,56 w22
+390x844 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@302,5 w48  tb-cap@8,60 w328  helpbtn@342,49 w40  rose@358,16 w22
+402x714 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@314,5 w48  tb-cap@8,60 w340  helpbtn@354,49 w40  rose@370,16 w22
+430x932 timebar 121 px: tb-ctrl@8,5 w218  clockbox@232,19 w48  speedbtn@342,5 w48  tb-cap@8,60 w368  helpbtn@382,49 w40  rose@398,16 w22
+844x390 timebar 91 px: tb-ctrl@14,3 w215  clockbox@239,3 w59  speedbtn@308,5 w44  tb-cap@362,12 w390  helpbtn@762,3 w32  rose@806,8 w22
+
+phone-360-explore on the fixed build, the harness alone on that case (harness.js --only), judged by thresholds.js check: no failure
+(timeline 121 px, unobstructed 0.625 against its baseline 0.625, 3 dropped of 3, no cut text, no overlap).

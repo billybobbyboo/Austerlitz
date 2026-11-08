@@ -812,7 +812,11 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .clockbox small{display:none}
   #clockread{font-size:var(--t-h3)}
   #speedbtn{display:inline-block;order:3;margin-left:auto;min-width:48px;min-height:44px;font-size:var(--t-ui)}
-  .tb-cap{order:5;flex:1 1 calc(100% - 48px)}
+  /* the caption's basis leaves the "?" button its 48 px and, since WP-08 (CL-MAP-04), the north rose its 28 px with its gap where the first row has no room for
+     it (at 360 px): the rose then at the head of the caption's row, the caption giving it room (its parts give way, decision 159), not a row of its own;
+     until the fix the rose took a row of its own there (the timeline 143 px against the phone's 121, check:visual's phone-360-explore). At 390 px and
+     wider the rose stands in the first row and the caption grows to its row as before */
+  .tb-cap{order:5;flex:1 1 calc(100% - 80px)}
   /* the paper map's scale bar (kept below 1080 px since decision 238's case) at the head of the caption's row, the caption giving it room
      (its parts give way, decision 159), not a row of its own */
   .tb-scale{order:4}

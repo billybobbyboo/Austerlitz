@@ -8,7 +8,7 @@
 owner questions 275, 282 and 284) is the third PR, stacked on WP-07's (the same priority rules). The owner's decisions of 8 November 2026 ("Your
 recommendations for all"): **296**, no Key button in Watch, the key reached through the "?" overlay instead (below); **297**, the place names as they
 are (CL-MAP-20, accepted: no single 1805 convention to break); **298**, decision 241 (a) kept (CL-MAP-19: the paper map's arrows uncapped, accepted).
-`austerlitz-command-map.html` is now 2,932,025 bytes, md5 `4749fa00896757fcae77988a3195cb3d` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
+`austerlitz-command-map.html` is now 2,932,581 bytes, md5 `30d75a75014e688c686927e0a17fa124` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
 
 ### What changed, and why
 
@@ -61,9 +61,9 @@ are (CL-MAP-20, accepted: no single 1805 convention to break); **298**, decision
 
 ### Verified
 
-All here, on this branch's final build `4749fa00...` (Chromium 141.0.7390.37, the pinned browser, software WebGL), but `check:visual` (CI):
+All here, on this branch's final build `30d75a75...` (Chromium 141.0.7390.37, the pinned browser, software WebGL), but `check:visual` (CI):
 
-- `npm run build`: 2,932,025 bytes; the committed build is a fresh build's.
+- `npm run build`: 2,932,581 bytes; the committed build is a fresh build's (`check:baseline` passes on it).
 - `npm test`: the nine suites and the height guard, every suite passing (binding-test 400 checks; css-test 0 errors; runtime-test console.warn
   unique 0; redteam 0 findings).
 - `npm run check:data`: all 143 data declarations identical to `archive/stage4wp04b-cdca9984.html` (no data changes; the reference stays).
@@ -74,12 +74,21 @@ All here, on this branch's final build `4749fa00...` (Chromium 141.0.7390.37, th
   reads, the motion block, `toast`, `toastLayout`, `ring`, `tips`); its one failing line was the manifest's (330 checks against 325), so the
   manifest is written from that run (`tools/visual/check-report.js --write-manifest`: 325 to 330, five added, none removed); CI's run judges it
   clean. The motion block's 16 exactly `main`'s (240 jumps, 1,049 pops, 7 flickers, 128 level-of-detail switches; every visibility baseline
-  held: `docs/final-stage5-evidence/wp08/motion-block-5b.json`): no threshold, limit or baseline moves.
+  held: `docs/final-stage5-evidence/wp08/motion-block-5b.json`): no threshold, limit or baseline moves. On the fixed build (`30d75a75...`, below) every
+  check above was run again: each passes, `check:contrast` with the same figures and `check:selftest` clean (all checks passed, the 16 as above).
 - **Found and fixed on the way:** a first version took the rose out of the key's toggle; the toggle, a panel the layer keeps clear, grew 26 px
   narrower and the motion block moved (pops 1,054 against 1,049, five formation-frames-in-view baselines, the paper map's zoom 849 drawn against
   852). The key's rose was put back (its toggle as on `main`) and the timeline's rose shown only where the key's is not; the block then `main`'s.
   A run of the self-test made while three browser jobs shared the machine timed out in the `toastLayout` block on a click that `main`'s build
   failed the same way under that load; on an idle machine it passed.
+- **Found by `check:visual` on CI and fixed (CL-MAP-04 on the narrowest phone).** The first build's run (42446137253 on `3650cf1`, build `4749fa00...`)
+  failed two lines, both `phone-360-explore`: the unobstructed map 59.5% against its baseline 62.5%, and the timeline 143 px against the phone's
+  ceiling of 121; every other case passed. The cause: at 360 px the first row of the phone's timeline has no room for the rose, which took a row of
+  its own (`tools/final-stage5/phone-timebar.js`, `docs/final-stage5-evidence/wp08/phone-timebar.txt`: the rose at the second row's head, the caption and the "?" button pushed down). *Is:* the caption's basis
+  leaves the rose its 28 px there (`style.css`, the phone's `.tb-cap` `calc(100% - 80px)`, was `calc(100% - 48px)`), so the rose stands at the head
+  of the caption's row, the caption giving it room (its parts give way, decision 159), as the paper map's scale bar does. At 360 px the timeline
+  is 121 px again and the case passes the harness's own judge (unobstructed 0.625, 3 dropped of 3, no cut text, no overlap); at 390, 402, 430 and
+  844 x 390 the timeline is laid out exactly as on the first build. No limit or baseline moved; the failing run is the fix's negative control.
 - The phone cases measured here (`narrow-1024`, `phone-390-explore`, `phone-390-watch`, `phone-844x390-explore`) within their drop limits and
   unobstructed floors (7 of 9, 2 of 2, 2 of 2, 4 of 4 dropped; 0.5321, 0.6529, 0.8171, 0.6879 free); `check:visual` on CI judges all 39 cases.
 - The negative controls: `tools/final-stage5/mutate-wp08.js` 11 of 11 as expected (`mutate-wp08.json`); `caption-judge.js` 19 of 24 reads failing

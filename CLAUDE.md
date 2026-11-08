@@ -476,7 +476,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   `derivedModel`: at 14:40 neither derived reading applies and the caption shows none; at 14:20, in the same view, the caption shows the centre
   separation; every other Watch case as before).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 5, WP-08's furniture (md5 `4749fa00...`, 2,932,025 bytes:
+- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 5, WP-08's furniture (md5 `30d75a75...`, 2,932,581 bytes:
   `CHANGELOG.md`; re-baselined from the build of the final audits' stage 4, WP-04b, md5 `cdca9984...`, 2,903,749 bytes: the relief
   and the drawn geography, `CHANGELOG.md`; re-baselined from the build of its WP-03, md5 `af2965c6...`, 2,888,060 bytes: the tracks,
   grades and internal consistency, `CHANGELOG.md`; re-baselined from the build of the final audits' stage 3, md5 `6ec4abc2...`, 2,869,790 bytes: WP-05 and WP-06,
