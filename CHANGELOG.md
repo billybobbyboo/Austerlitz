@@ -131,7 +131,8 @@ declaration changes (`check:data`: every data declaration identical to `archive/
 13 lines of the motion block and bounded no gap): aging and the event-named rise during Play; **300**, the corps/division band; **301 (a)** (put when
 the self-test found two checks of 8C holding decision 240 (a)'s "the true distance at rest", which the band cannot meet: CL-MAP-12's swap happens at
 rest), decision 240 (a) amended for the corps/division switch alone; the long-gap bar of 299 (D); five visibility baselines moved, as approved and
-measured again on the implementation. `austerlitz-command-map.html` is now 2,912,695 bytes,
+measured again on the implementation; and, after the build, **304 (a)** (below: the phone's event-named share accepted as measured, carried
+into WP-09's review). `austerlitz-command-map.html` is now 2,912,695 bytes,
 md5 `e5e17e648ac15d104df24858f73b67bd` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
 
 ### What changed, and why
@@ -179,7 +180,8 @@ md5 `e5e17e648ac15d104df24858f73b67bd` (was 2,903,749, `cdca9984...`); `check:ba
   - under Napoleon's reading: 61.5 to 16.7; 67.6% to 68.3%; under the Allied reading: 35 to 18.3; 78.5% to 77.9%
   - the Landscape 09:00-12:00: 20 to 3.3; 86.8% to 87.4%; the paper map: 3.3 to 3.3; 92.1% to 91.8%
 - The event-named formations' share while their event is live: 08:30-11:30 60.2% to 76.4%, 12:00-15:00 61.8% to 77.0%; on the phone with counters
-  38.8% to 24.9% (aging ranks the aged first, and the phone is crowded: a cost of decision 299 (D) put to the owner with the final numbers).
+  38.8% to 24.9% (aging ranks the aged first, and the phone is crowded: a cost of decision 299 (D), put to the owner with the final numbers as
+  question 304 and decided (a) on 8 November 2026, "Your recommendation": accepted as measured, carried into WP-09's review).
 - CL-MAP-14 (at rest after Play the kept places first) and CL-MAP-17 (the Landscape's names blink during Play, 10.6% of frames): kept as accepted
   (decisions 240 (a), 267 (a)); the Landscape's share 86.8% to 87.4%, its longest gap 20 to 3.3 battle minutes.
 - What no option does: no formation under 50% (the roadmap's done-when) is not met: there are more counters than room, and aging rotates them
@@ -229,6 +231,9 @@ All here, on this branch's final build `e5e17e64...` (Chromium 141.0.7390.37, th
 - The 15 and 15 minutes, the ranks 1.4 and 1.5 and the band of 15 units are design values chosen from the measured variants.
 - WP-08's lettering and landmarks (CL-MAP-05, -09, -11, -15, -18, CL-VIS-11; questions 275, 282, 284) are the stacked PR after this one; the wall of
   names (CL-MAP-15, decision 284 (b)) is re-measured there on this layer.
+- The phone's event-named share during Play (38.8% to 24.9% by the audit's tool; 30.9% on `check:selftest`'s page, not judged): accepted as
+  measured under decision 304 (a) and carried into WP-09's review; option (b), a phone rule that ranks the event-named before aging, not built
+  (a new design, to be measured first).
 - The three Stage 3 reading-scope items are not touched (handed to WP-09).
 
 ## 2026-11 · Final audits' roadmap, Stage 4 (main track, 2 of 2): WP-04b, the relief and the drawn geography
