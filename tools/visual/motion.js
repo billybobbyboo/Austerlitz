@@ -321,7 +321,7 @@ async function runBlock(mp,settle,o){
       ", formations drawn "+L.track.on+" of "+L.track.inView+" in view, longest hidden "+L.track.longestMs+" ms, layer "+L.msMed+"/"+L.msP95+" ms ("+L.secs+" s)"); }
   /* the long Play runs (LONG above): per formation in view, the share drawn while the clock played and its longest hidden by the layout in battle
      minutes; what the layer protects never hidden */
-  MV.long=[]; const ids=await mp.evaluate(()=>Object.keys(FORMATIONS));
+  MV.long=[]; const ids=await mp.evaluate(()=>Object.keys(FORMATIONS)), events=await mp.evaluate(()=>EVENTS.map(e=>({id:e.id, forms:e.forms||[]})));
   for(const [id,view,from,to,frames] of LONG){ const t0=Date.now(), V=VIEWS[view];
     if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]});
       await mp.waitForFunction(([w,h])=>window.innerWidth===w&&window.innerHeight===h&&Math.abs(landCam.aspect-w/h)<1e-9&&(typeof PHONE==="undefined"||PHONE===window.matchMedia(PHONE_Q).matches),[vp[0],vp[1]],{timeout:60000,polling:50});
@@ -333,11 +333,16 @@ async function runBlock(mp,settle,o){
     const r=await mp.evaluate(new Function("a","return ("+RUN.toString()+")(a);"),A);
     const M=measure(r.F,{restFrom:r.restFrom,track:ids}), F=r.F, pf=F.filter(x=>x.playing);
     const forms=Object.keys(M.track.by).map(k=>{ const R=M.track.by[k]; return {id:k, playInView:R.playInView, playShare:R.playShare, longestMin:R.longestMin, longestMs:R.longestMs}; }).filter(x=>x.playInView>0);
-    const L={id:id, view:view, from:from, to:to, frames:F.length, playFrames:pf.length, clockFrom:pf.length?pf[0].clock:null, clockTo:pf.length?pf[pf.length-1].clock:null,
+    /* the formations a live event names (EVENTS[].forms), over the frames Play ran with the event's label drawn: in view (drawn, behind the ground,
+       hidden by the layout) and drawn (the owner's decision 299 (D): their share; CL-MAP-02) */
+    let evIn=0, evOn=0; F.forEach(fr=>{ if(!fr.playing) return; const A=fr.items;
+      events.forEach(e=>{ const ei=A["e:"+e.id]; if(!ei||ei.st!=="on") return;
+        e.forms.forEach(fid=>{ const s=A["c:"+fid]||A["n:"+fid]; if(!s||s.st==="offscreen"||s.st==="panel") return; evIn++; if(s.st==="on") evOn++; }); }); });
+    const L={id:id, view:view, from:from, to:to, frames:F.length, playFrames:pf.length, evInView:evIn, evDrawn:evOn, evShare:evIn?+(evOn/evIn).toFixed(3):null, clockFrom:pf.length?pf[0].clock:null, clockTo:pf.length?pf[pf.length-1].clock:null,
       keepHidden:M.keepHidden, keepHiddenKeys:M.keepHiddenKeys, overlapFrames:M.overlapFrames, unknownDrawn:M.unknownDrawn, forms:forms, secs:+((Date.now()-t0)/1000).toFixed(1)};
     MV.long.push(L);
     const w=forms.slice().sort((a,b)=>b.longestMin-a.longestMin).slice(0,3).map(x=>x.id+" "+x.longestMin+" min ("+(100*x.playShare).toFixed(0)+"%)").join(", ");
-    log("long Play "+id.padEnd(14)+" "+L.playFrames+" frames, "+L.clockFrom+" to "+L.clockTo+"; longest hidden "+w+"; never-dropped hidden "+L.keepHidden+" ("+L.secs+" s)"); }
+    log("long Play "+id.padEnd(14)+" "+L.playFrames+" frames, "+L.clockFrom+" to "+L.clockTo+"; longest hidden "+w+"; the event-named drawn "+L.evDrawn+" of "+L.evInView+"; never-dropped hidden "+L.keepHidden+" ("+L.secs+" s)"); }
   return MV;
 }
 module.exports={inPage, measure, tracking, VIEWS, MOTIONS, EXTRA, LONG, RUN, REAL, SELFTEST_REAL, runReal, blockRuns, runKey, runBlock};
