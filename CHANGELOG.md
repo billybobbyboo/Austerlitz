@@ -67,7 +67,8 @@ md5 `e5e17e648ac15d104df24858f73b67bd` (was 2,903,749, `cdca9984...`); `check:ba
 ### Checks added, each failing without its fix
 
 - **The long Play runs' bar** (`thresholds.js` `MOTION.LONG`, judged in `checkLive`'s motion block in `check:selftest` and `check:visual`): on this build
-  the worst 18.3 battle minutes (08:30-11:30 and ChatGPT's run) and 23.3 (the phone), the event-named 76.4% and 78.4% on the desktop's runs.
+  the worst 18.3 battle minutes (08:30-11:30 and ChatGPT's run) and 23.3 (the phone), the event-named 76.4% and 78.4% on the desktop's runs, on
+  `check:visual`'s page (`docs/final-stage5-evidence/wp07/impl-1.json`); on `check:selftest`'s page 18.33, 18.33 and 18.18, 76.4% and 74.1% (below).
 - **The self-test's band check** (`app.js` `wp07Checks`, the manifest 325 to 326): at 255 units a view reached afresh at the corps level (250), after
   motion from the divisions kept, past 265 the corps, from the corps at 240 kept, at 230 the divisions, afresh at 245 the divisions.
 - **Decision 301 (a):** the two checks of 8C that held decision 240 (a)'s "the true distance at rest" (the band check and the rest check) amended
@@ -80,7 +81,25 @@ md5 `e5e17e648ac15d104df24858f73b67bd` (was 2,903,749, `cdca9984...`); `check:ba
 
 ### Verified
 
-VERIFIED_PLACEHOLDER
+All here, on this branch's final build `e5e17e64...` (Chromium 141.0.7390.37, the pinned browser, software WebGL), but `check:visual` (CI):
+
+- `npm run build`: 2,912,695 bytes; the committed build is a fresh build's (`check:baseline` passes on it).
+- `npm test`: the nine suites and the height guard, every suite passing (binding-test 400 checks; css-test 0 errors; runtime-test console.warn
+  unique 0; redteam 0 findings; sim-test and audit.js 0 violations).
+- `npm run check:data`: all 143 data declarations identical to `archive/stage4wp04b-cdca9984.html` (no data changes; the reference stays); CSS and
+  markup identical.
+- `npm run check:chronology`: 0 errors, as on `main` (the four named conflicts).
+- `npm run check:contrast`: 7,175 text elements, 120 text/background pairs, 0 below AA, 0 below 10.5 px, 0 font failures (671 characters in 15
+  computed fonts); 45 of 45 states reached (10 as a phone); 0 console messages; the eight start-up cases pass (the context loss's 185 warnings, at
+  most 248).
+- `npm run check:selftest`: the self-test's 326 checks pass, the band check and the two renamed checks of decision 301 (a) among them, and every live
+  block (the motion block with its long runs, `toast`, `toastLayout`, `ring`, `tips`, `narrow`, `shortcuts`, `rmLive`); its six failing lines were the
+  manifest's (326 checks against 325, three names added, two removed), so the manifest is written from that run (`tools/visual/check-report.js
+  --write-manifest`); CI's run judges it clean. The 16 on that run: 249 jumps, 1,043 pops, 9 flickers, 105 level-of-detail switches (ceilings
+  251, 1,049, 10, 130), every visibility baseline held; the long runs 18.33 (`hybrid-long`), 18.33 (`hybrid-3600`) and 18.18 (`phone-long`) battle
+  minutes at the longest, the event-named drawn in 76.4% and 74.1% of their frames on the desktop's two runs (4,833 of 6,322; 11,869 of 16,010) and
+  30.9% on the phone's (292 of 945, not judged: `MOTION.LONG.EV_RUNS` names the desktop's two, decision 299 (D)).
+- `check:visual` on CI (`checks.yml`, `visual: true`): dispatched on this branch; its result is reported on the PR.
 
 ### What remains uncertain, and what is handed on
 
