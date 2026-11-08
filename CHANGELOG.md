@@ -91,6 +91,9 @@ All here, on this branch's final build `30d75a75...` (Chromium 141.0.7390.37, th
   844 x 390 the timeline is laid out exactly as on the first build. No limit or baseline moved; the failing run is the fix's negative control.
 - The phone cases measured here (`narrow-1024`, `phone-390-explore`, `phone-390-watch`, `phone-844x390-explore`) within their drop limits and
   unobstructed floors (7 of 9, 2 of 2, 2 of 2, 4 of 4 dropped; 0.5321, 0.6529, 0.8171, 0.6879 free); `check:visual` on CI judges all 39 cases.
+- **`check:visual` on CI on the final build** (run 42467110570 on `d7859e3`, build `30d75a75...`, `checks.yml`, `visual: true`): passed, every job
+  (`check:visual` in 1 h 58 min; `phone-360-explore` within its timeline ceiling and unobstructed baseline again); the push's and the PR's runs
+  (`npm test`, `check:data`, `check:chronology`, `check:contrast`, `check:selftest`) passed on the same commit.
 - The negative controls: `tools/final-stage5/mutate-wp08.js` 11 of 11 as expected (`mutate-wp08.json`); `caption-judge.js` 19 of 24 reads failing
   on `main`'s build, 0 on this; `card-judge.js` failing on `main`'s (the card 184 px from the dossier, no north at 1000 px), passing on this.
 - Evidence: `docs/final-stage5-evidence/wp08/` (its README lists each file).
