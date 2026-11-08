@@ -5309,7 +5309,7 @@ function mlCollect(){
   if(labels&&layerOn.arrows&&!planGroup) ovText.forEach(function(t){   /* WP-08 (CL-MAP-11): not while a plan is shown */
     if(t.of&&readHidden(t.of)) return;   /* WP-05 (CL-SIM-02): an arrow's label goes with its arrow under a reading that does not know its formation */
     /* the final audits' Stage 5, WP-08 (CL-MAP-09): a bound arrow's label that only names its formation (its short name, or one word of its
-       commander's: "Suchet", "Bagration") is laid out after the formation names and withheld while its formation's own counter or name is drawn
+       commander's: "Suchet", "Bagration") is laid out after the formation names and withheld while its formation's own counter or name is in view
        (mlLayout), so that one name stands for one formation (decision 205); a label that tells the movement ("Saint-Hilaire wheels south") as before */
     var dup=t.of&&!t.obj&&mlNameOnly(t.text,FORMATIONS[t.of]);
     var it=text(uniq("o:"+t.text),t.obj?"objective":"overlay","mlt-serif",t.text,LB.annotation,t.pos,{pri:t.obj?10:dup?ML_DUP_PRI:6,acl:t.acl,r:t.r,op:ovFadeIn});
@@ -5366,8 +5366,9 @@ function mlPlaceMark(it){
 /* WP-08 (CL-MAP-09): does an arrow's label only name its formation? One word, its short name or a word of its commander's */
 function mlNameOnly(label,f){ if(!f||!label||/\s/.test(label)) return false;
   return shortName(f)===label||(" "+(f.commander||"").replace(/[,;]/g," ")+" ").indexOf(" "+label+" ")>=0; }
-var ML_DUP_PRI=7.95, ML_PLACE_PAPER=2.5, PLAN_DIM=0.35;   /* WP-08: design values (ML_PLACE_PAPER: at 5.5, after the plateau's reading, the counters still filled the
-   room and none of the twelve was drawn as entered; at 2.5, before the counters, 9 of 12 as entered at 1600 x 900 with every counter still drawn, measured) */   /* after the formation names (7 and their rank), before the places (8) */
+var ML_DUP_PRI=7.95, ML_PLACE_PAPER=8, PLAN_DIM=0.35;   /* WP-08: design values. ML_PLACE_PAPER: 8, the rank as before WP-08, pending the owner (question 302): at 5.5, after
+   the plateau's reading, the counters still filled the room and none of the twelve was drawn as entered; at 2.5, before the counters, 9 of 12 as entered at
+   1600 x 900 with every counter still drawn, but in motion the paper map's zoom drew 688 formation-frames against 852 and the 16's flickers rose to 14 */   /* after the formation names (7 and their rank), before the places (8) */
 /* the label's words and, spoken, its accessible name: both say "derived" (owner decision 126) */
 function plateauText(spoken){
   var al=overKnown(function(){ return plateauStrength("al"); }), fr=overKnown(function(){ return plateauStrength("fr"); });
@@ -5671,9 +5672,12 @@ function mlLayout(){
   var strat=MLS.moving?"hold":MLS.fromMotion?"persist":"build";
   while(nk<order.length&&order[nk].keep) nk++;
   for(var ik=0;ik<nk;ik++){ var kt=order[ik]; kt.held=false; if(!(mlPlaceItem(kt,VW,VH,panels,obst)||mlWrapPlace(kt,VW,VH,panels,obst))) kt.state="dropped"; }
-  /* WP-08 (CL-MAP-09): an arrow's label that only names its formation, withheld while the formation's own counter or name is drawn in this pass */
+  /* WP-08 (CL-MAP-09): an arrow's label that only names its formation, withheld while the formation's own counter or name is in view in this pass
+     (laid out, drawn or not: so that the label does not blink with a name the layout rotates; measured: tied to the name's drawn state it added
+     flickers in the Landscape's zoom and Play); drawn as before where the formation's own is out of view or not in the layer */
   function dupDrawn(it){ if(!it.dupOf) return false; var c=ML.items["c:"+it.dupOf], n=ML.items["n:"+it.dupOf];
-    return !!((c&&c.eFrame===ML.frame&&c.state==="on")||(n&&n.eFrame===ML.frame&&n.state==="on")); }
+    function inView(q){ return !!(q&&q.eFrame===ML.frame&&!q.occ&&q.state!=="offscreen"&&q.state!=="panel"&&q.state!=="occluded"); }
+    return inView(c)||inView(n); }
   function placeRest(it,s){
     if(s==="build"||it.el===foc) return mlPlaceItem(it,VW,VH,panels,obst);
     if(it.wasOn&&it.mem){ if(mlHoldTry(it,VW,VH,panels,obst)||mlPlaceItem(it,VW,VH,panels,obst,true)){ it.room2=0; return true; } it.held=true; return false; }
