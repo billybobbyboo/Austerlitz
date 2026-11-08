@@ -220,7 +220,8 @@ All here, on this branch's final build `e5e17e64...` (Chromium 141.0.7390.37, th
   251, 1,049, 10, 130), every visibility baseline held; the long runs 18.33 (`hybrid-long`), 18.33 (`hybrid-3600`) and 18.18 (`phone-long`) battle
   minutes at the longest, the event-named drawn in 76.4% and 74.1% of their frames on the desktop's two runs (4,833 of 6,322; 11,869 of 16,010) and
   30.9% on the phone's (292 of 945, not judged: `MOTION.LONG.EV_RUNS` names the desktop's two, decision 299 (D)).
-- `check:visual` on CI (`checks.yml`, `visual: true`): dispatched on this branch; its result is reported on the PR.
+- `check:visual` on CI (run 42459679475 on `84705e9`, build `e5e17e64...`, `checks.yml`, `visual: true`): passed, every job (`check:visual` in
+  4 h 9 min, its 39 cases and live blocks; `npm test`, `check:data`, `check:chronology`, `check:contrast` and `check:selftest` on the same commit).
 
 ### What remains uncertain, and what is handed on
 
