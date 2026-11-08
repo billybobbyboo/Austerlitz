@@ -362,13 +362,20 @@ const MOTION={JUMPS:251, POPS:1049, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.
      (held by the judge above), "paper-zoom+point" hovers the Russian Imperial Guard's counter, which the layer protects (decision 39), and equals
      its run by real input frame for frame where that run follows it on the self-test's page (28 jumps, 126 pops, 726 of 1,232 formation-frames
      drawn). No existing baseline moved, and the 16's ceilings not moved */
-  VIS:{"hybrid-pan":[1359,2036,2467], "hybrid-zoom":[1242,2203,2133], "hybrid-orbit":[1520,2548,1833], "hybrid-glide":[1153,1786,1700],
+  /* the final audits' Stage 5, WP-07 (the owner's decisions of 8 November 2026, measured on this pass's build before and after, check:visual's block
+     with its twins, Chromium 141; docs/final-stage5-evidence/wp07): decision 300, the corps/division band: after the Field vantage's pan the view keeps
+     its division counters (CL-MAP-12; the pan's level-of-detail switches 23 to 0), so more formations stay in view: "hybrid-pan" [1359,2036,2467] to
+     [1436,2189,3033], its twin "hybrid-pan+point" the same, "hybrid-pan+fr" [1318,1959,2467] to [1387,2112,3033], "hybrid-pan+al" [948,1270,1467] to
+     [1010,1321,1467]; decision 299 (D), the event-named rise during Play: on the paper map while it plays their counters take room from others,
+     "paper-play" [1564,1694,667] to [1533,1694,667]. Each as approved, measured again on the implementation; every other baseline and the 16's
+     ceilings unchanged (the 16: 249 jumps, 1,043 pops, 9 flickers, 105 switches) */
+  VIS:{"hybrid-pan":[1436,2189,3033], "hybrid-zoom":[1242,2203,2133], "hybrid-orbit":[1520,2548,1833], "hybrid-glide":[1153,1786,1700],
     "hybrid-play":[2073,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[852,1232,667], "paper-glide":[551,822,667],
-    "paper-play":[1564,1694,667], "land-pan":[1783,2038,667], "land-zoom":[1649,2207,667], "land-orbit":[1749,2366,1167],
+    "paper-play":[1533,1694,667], "land-pan":[1783,2038,667], "land-zoom":[1649,2207,667], "land-orbit":[1749,2366,1167],
     "land-play":[2603,3146,667], "low-pan":[806,861,533], "low-orbit":[649,859,667], "low-zoom":[441,590,667], "hybrid-orbit+sel":[1524,2548,2100],
-    "paper-zoom+sel":[821,1232,667], "hybrid-pan+fr":[1318,1959,2467], "hybrid-pan+al":[948,1270,1467], "paper-play+al":[1171,1331,667],
+    "paper-zoom+sel":[821,1232,667], "hybrid-pan+fr":[1387,2112,3033], "hybrid-pan+al":[1010,1321,1467], "paper-play+al":[1171,1331,667],
     "phone-pan+touch":[257,696,1367],
-    "hybrid-pan+point":[1359,2036,2467], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1242,2203,2133], "paper-zoom+point":[852,1232,667]}};
+    "hybrid-pan+point":[1436,2189,3033], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1242,2203,2133], "paper-zoom+point":[852,1232,667]}};
 /* the final audits' Stage 5, WP-07 (CL-TEST-02, CL-TEST-14; owner decision 299 (D), 8 November 2026): the long Play runs (tools/visual/motion.js
    LONG, runBlock's MV.long), judged by an absolute bar, not the build's own counts: in each run every formation in view for at least MIN_FRAMES of
    Play (2 s) hidden by the layout for at most GAP_MIN battle minutes (the measured worst under the rule 26.7, ChatGPT's 3,600 frames); in the runs

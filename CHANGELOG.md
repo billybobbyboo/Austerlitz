@@ -1,5 +1,74 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 5 (1 of 3): WP-07, the map layer in motion
+
+**Status: on `claude/jolly-carson-yz0yqo-layer` (draft PR #89 into `main`, for review, not merged).** WP-07 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-MAP-01, -02, -07 and -12, CL-TEST-02 and -14; CL-MAP-14 and -17 measured and kept as accepted. Presentation only: no data file and no guarded
+declaration changes (`check:data`: every data declaration identical to `archive/stage4wp04b-cdca9984.html`). The owner's decisions of 8 November
+2026 ("Your recommendations for all"), each put with its measured numbers: **299 (D)**, which settles question 274 (its option (a), measured, failed
+13 lines of the motion block and bounded no gap): aging and the event-named rise during Play; **300**, the corps/division band; the long-gap bar of
+299 (D); five visibility baselines moved, as approved and measured again on the implementation. `austerlitz-command-map.html` is now BUILD_SIZE bytes,
+md5 `BUILD_MD5` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **The measures first (CL-TEST-02; `tools/visual/motion.js`).** No check could see a long gap: the motion block's one Play run per presentation is
+  90 frames from a seek at 09:00, and its "longest hidden" can report no more than its own 121-frame window (4,033 ms), while a visitor playing the
+  morning in Landscape with counters met formations hidden for 12-28 s. *Is:* the driver's snapshot carries the battle clock and Play; the tracking
+  measures each formation's longest hidden by the layout in battle minutes and its share drawn while the clock played, and the share of the
+  formations a live event names; three long Play runs beside the 16 and apart from them (`LONG`, `runBlock`'s `MV.long`): the audit's morning
+  (08:30 to 11:30), ChatGPT's 3,600 frames in one piece from 09:00 (CG-F01) and a phone's morning (CL-MAP-07), on the driver's clock without the
+  draw (about 4 minutes in `check:selftest` and `check:visual`). On `main`'s build they reproduce the audit's numbers exactly: d'Hautpoul hidden
+  73.5 battle minutes and drawn 8% of the morning, the Russian Guard cavalry 112 minutes in ChatGPT's run, Liechtenstein 56.5 on the phone.
+- **The candidates measured (`tools/final-stage5/variants.js`; `docs/final-stage5-evidence/wp07/variants/`).** Each a patched copy of the build,
+  judged by the motion block as `check:selftest` runs it and measured on nine long runs. Question 274 (a)'s two rules: the event-named alone failed
+  13 lines; "fresh-first" (a fresh layout's items back at once at a pass) flickers 63 and the cavalry starved harder (d'Hautpoul 1.3%, 143 battle
+  minutes); both together 13 lines, 64 flickers, gaps to 215 minutes. The cause is crowding and a rank by strength that puts the cavalry last, which
+  a fresh layout shares. Aging at 15/15 kept every existing check; at 10/10, 6/10 and 12/15 it passed the pops ceiling (1,057, 1,081, 1,055).
+- **Decision 299 (D) (`app.js` `MLAGE`, `mlPriPrep`, `mlPriX`, `mlAgeAfter`).** During Play a formation in view whose counter or name the layout has
+  hidden for 15 battle minutes since last drawn rises to 1.4, after the highlighted family and before every other formation, until drawn for 15;
+  every formation a live event names (and its collected parents) at 1.5 while the clock plays. Aging accrues only while the clock plays, resets
+  where a formation leaves the view, and is cleared at a discontinuity, so a pan, a zoom, an orbit or a view reached without motion is laid out as
+  before. Decision 39 (the protected items) unchanged.
+- **Decision 300 (`app.js` `CORPS_AT`, `CORPS_HYST`, `updateVisibility`; CL-MAP-12).** A pan from the Field vantage (242.8 units, its target
+  re-seated at the pan's end) put its 13 division counters away for 8 corps counters at rest. *Is:* once the view has moved, the corps counters
+  above 265 units and the divisions below 235, the level kept between; a view reached afresh at 250 as before.
+- **The long-gap bar (decision 299 (D); `thresholds.js` `MOTION.LONG`, judged in `checkLive`).** An absolute bar, not the build's own counts: in each
+  long run every formation in view for 2 s of Play or more hidden by the layout for at most 30 battle minutes; in the desktop's two runs the formations
+  a live event names drawn in at least 70% of their frames while its label is drawn; nothing protected hidden, no overlap, nothing drawn the reading
+  does not know.
+- **Five visibility baselines (`MOTION.VIS`), as approved and measured again on the implementation, every other unchanged:** `hybrid-pan`
+  [1359, 2036, 2467] to [1436, 2189, 3033] and its twin `hybrid-pan+point` the same, `hybrid-pan+fr` [1318, 1959, 2467] to [1387, 2112, 3033],
+  `hybrid-pan+al` [948, 1270, 1467] to [1010, 1321, 1467] (decision 300: more formations stay in view after the pan); `paper-play` [1564, 1694, 667]
+  to [1533, 1694, 667] (decision 299 (D): the event-named counters take room on the paper map while it plays). The 16's ceilings unchanged.
+
+### Measured on this build (Chromium 141, the pinned browser)
+
+- The 16: 249 jumps, 1,043 pops, 9 flickers, 105 level-of-detail switches (ceilings 251, 1,049, 10, 130; `main`'s 240, 1,049, 7, 128).
+- The long runs, longest hidden by the layout (battle minutes) and share drawn, `main` to this: LONG_TABLE
+- The event-named formations' share while their event is live: 08:30-11:30 60.2% to 76.4%, 12:00-15:00 61.8% to 77.0%; on the phone with counters
+  38.8% to 24.9% (aging ranks the aged first, and the phone is crowded: a cost of decision 299 (D) put to the owner with the final numbers).
+- CL-MAP-14 (at rest after Play the kept places first) and CL-MAP-17 (the Landscape's names blink during Play, 10.6% of frames): kept as accepted
+  (decisions 240 (a), 267 (a)); the Landscape's share 86.8% to 87.4%, its longest gap 20 to 3.3 battle minutes.
+- What no option does: no formation under 50% (the roadmap's done-when) is not met: there are more counters than room, and aging rotates them
+  (d'Hautpoul 8% to 42%, several cavalry divisions 37-49%). The benchmark's own Play run keeps its 4,033 ms (its window; aging starts after 15
+  minutes): the long runs carry that measure now.
+
+### Checks added, each failing without its fix
+
+CHECKS_PLACEHOLDER
+
+### Verified
+
+VERIFIED_PLACEHOLDER
+
+### What remains uncertain, and what is handed on
+
+- The 15 and 15 minutes, the ranks 1.4 and 1.5 and the band of 15 units are design values chosen from the measured variants.
+- WP-08's lettering and landmarks (CL-MAP-05, -09, -11, -15, -18, CL-VIS-11; questions 275, 282, 284) are the stacked PR after this one; the wall of
+  names (CL-MAP-15, decision 284 (b)) is re-measured there on this layer.
+- The three Stage 3 reading-scope items are not touched (handed to WP-09).
+
 ## 2026-11 · Final audits' roadmap, Stage 4 (main track, 2 of 2): WP-04b, the relief and the drawn geography
 
 **Status: on `claude/compassionate-curie-igyzhl-relief`, stacked on WP-03 (`claude/compassionate-curie-igyzhl` at `eecb8b8`); a draft PR into
