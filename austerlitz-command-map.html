@@ -22061,9 +22061,16 @@ var AUSTERLITZ_DEBUG=(function(){
         /* at rest: the band released, so the level of detail is the true distance's (the same items in the layer, at the same step, as the view
            reached without motion); nothing fading, no frame asked for. The places persist (section 3.4): counted against the view reached without
            motion, not held to it */
-        var placed=ML.stats.placed, fad=MLS.stats.fading, need=needFrames, mv=MLS.moving, inL=inLayer();
-        mlReset("test"); updateVisibility(); mlLayout(); var fresh=ML.stats.placed, inF=inLayer();
-        R.rest.push(label+" "+placed+" placed ("+fresh+" reached directly)");
+        var placed=ML.stats.placed, fad=MLS.stats.fading, need=needFrames, mv=MLS.moving, inL=inLayer(), eR=lodEch, dR=viewDist();
+        /* the final audits' Stage 5, WP-07 (owner decision 301 (a), amending 240 (a) for this one switch): the corps/division level keeps its band at rest
+           after motion (decision 300: corps above 265 units, divisions below 235, the level kept between: bounds written here). Where it differs from the
+           level the true distance gives a view reached afresh (250), the distance must lie inside the band, and the layer is compared with a fresh view
+           laid out at the rest's level (every other switch the true distance's, as before) */
+        mlReset("test"); updateVisibility(); var eF=lodEch, keepAt=CORPS_AT, bandNote="";
+        if(eF!==eR){ if(!(dR>235&&dR<265)) R.restBad.push(label+": the corps/division level "+eR+" at rest at "+dR.toFixed(1)+" units, outside its band (235-265)");
+          CORPS_AT=eR==="corps"?-1:1e9; mlReset("test"); updateVisibility(); bandNote=", its "+eR+" kept inside the band at "+dR.toFixed(1)+" units"; }
+        mlLayout(); var fresh=ML.stats.placed, inF=inLayer(); CORPS_AT=keepAt;
+        R.rest.push(label+" "+placed+" placed ("+fresh+" reached directly"+bandNote+")");
         if(mv||fad||need>0||inL!==inF) R.restBad.push(label+": moving "+mv+", fading "+fad+", frames asked "+need+(inL!==inF?", the layer's items not the true distance's":""));
       }
       var c0=null, fx0=FX.on;
@@ -22086,7 +22093,7 @@ var AUSTERLITZ_DEBUG=(function(){
           R.frames+" frames in four motions (a pan and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play), "+R.moving+" of them moving, "+R.held+" item-frames held"+
           (R.overlaps.length?"; OVERLAP "+R.overlaps.slice(0,3).join(", "):"")+(R.keepHidden.length?"; NEVER-DROPPED HIDDEN "+R.keepHidden.slice(0,3).join(", "):"")+(R.moved.length?"; MOVED OFF ITS ANCHOR "+R.moved.slice(0,3).join(", "):"")+
           (R.appeared.length?"; APPEARED OUTSIDE A PASS "+R.appeared.slice(0,3).join(", "):"")+(R.early.length?"; BACK TOO SOON "+R.early.slice(0,3).join(", "):""));
-        ck("map layer in motion (decision 240): a leaving item fades out as itself, under the live items and taking no pointer, gone within "+MLS.FADE_MS+" ms; at rest after a motion nothing drawn moved to make room for another, the band released (the layer's items those of the view reached without motion), nothing fading, no frame asked for",
+        ck("map layer in motion (decision 240): a leaving item fades out as itself, under the live items and taking no pointer, gone within "+MLS.FADE_MS+" ms; at rest after a motion nothing drawn moved to make room for another, the band released (the layer's items those of the view reached without motion, but the corps/division level, which keeps its band: decision 301 (a)), nothing fading, no frame asked for",
           R.rem>0&&R.restKept>0&&!R.remBad.length&&!R.remLong.length&&!R.dup.length&&!R.restBad.length&&!R.reshuffled.length,
           R.rem+" remnant-frames"+(R.remBad.length?"; OUT OF RULE "+R.remBad.slice(0,3).join(", "):"")+(R.remLong.length?"; TOO LONG "+R.remLong.slice(0,3).join(", "):"")+(R.dup.length?"; A SECOND ELEMENT in "+R.dup.join(", "):"")+
           "; "+R.restKept+" items kept their places into the rest"+(R.reshuffled.length?"; MOVED THOUGH ITS PLACE WAS FREE "+R.reshuffled.slice(0,4).join(", "):"")+
@@ -22104,9 +22111,14 @@ var AUSTERLITZ_DEBUG=(function(){
         for(var bi=0;bi<12;bi++){ vk(); dolly(1.005); F(1); if(viewDist()>250&&viewDist()<d0*(1+MLS.BAND)-0.5&&lodEch!=="div") bandBad.push("switched at "+viewDist().toFixed(1)+" while moving"); }
         var dMid=viewDist(), eMid=lodEch; F(20); var eRest=lodEch;
         if(!(dMid>250)) bandBad.push("the zoom did not cross 250 ("+dMid.toFixed(1)+")");
-        if(eMid!=="div") bandBad.push("the divisions not kept while moving ("+eMid+")"); if(eRest!=="corps") bandBad.push("not the corps at rest ("+eRest+", "+viewDist().toFixed(1)+")");
-        ck("map layer (decision 240): the level-of-detail switches read a distance held inside the "+(100*MLS.BAND)+"% band while the view moves, the true distance at rest",
-          !bandBad.length&&e0==="div", "from "+d0.toFixed(1)+" units ("+e0+") out to "+dMid.toFixed(1)+" under a key's hold: "+eMid+"; at rest "+eRest+(bandBad.length?"; WRONG: "+bandBad.join("; "):""));
+        if(eMid!=="div") bandBad.push("the divisions not kept while moving ("+eMid+")");
+        /* decision 301 (a): at rest inside the corps/division band (below 265 units here) the divisions kept; carried on out past 265, the corps at rest */
+        if(!(dMid<265)) bandBad.push("the first stop not inside the band ("+dMid.toFixed(1)+")"); else if(eRest!=="div") bandBad.push("the divisions not kept at rest inside the band ("+eRest+", "+viewDist().toFixed(1)+")");
+        for(var bj=0;bj<40&&viewDist()<272;bj++){ vk(); dolly(1.005); F(1); }
+        var dFar=viewDist(); F(20); var eFar=lodEch;
+        if(!(dFar>265)) bandBad.push("the second move did not pass 265 ("+dFar.toFixed(1)+")"); else if(eFar!=="corps") bandBad.push("not the corps at rest past the band ("+eFar+", "+dFar.toFixed(1)+")");
+        ck("map layer (decision 240): the level-of-detail switches read a distance held inside the "+(100*MLS.BAND)+"% band while the view moves, the true distance at rest (the corps and divisions inside their band, decision 301 (a))",
+          !bandBad.length&&e0==="div", "from "+d0.toFixed(1)+" units ("+e0+") out to "+dMid.toFixed(1)+" under a key's hold: "+eMid+"; at rest "+eRest+"; on to "+dFar.toFixed(1)+": at rest "+eFar+(bandBad.length?"; WRONG: "+bandBad.join("; "):""));
         /* reduced motion: the hold and the band kept, no fade */
         var rmBad=[], rmHeld=0; RM=true;
         pap(); F(4); for(var ri=1;ri<=30;ri++){ if(ri%3===0) V.dispatchEvent(new WheelEvent("wheel",{deltaY:-100,clientX:c0[0],clientY:c0[1],bubbles:true,cancelable:true})); F(1);

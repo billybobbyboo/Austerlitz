@@ -6,9 +6,11 @@
 CL-MAP-01, -02, -07 and -12, CL-TEST-02 and -14; CL-MAP-14 and -17 measured and kept as accepted. Presentation only: no data file and no guarded
 declaration changes (`check:data`: every data declaration identical to `archive/stage4wp04b-cdca9984.html`). The owner's decisions of 8 November
 2026 ("Your recommendations for all"), each put with its measured numbers: **299 (D)**, which settles question 274 (its option (a), measured, failed
-13 lines of the motion block and bounded no gap): aging and the event-named rise during Play; **300**, the corps/division band; the long-gap bar of
-299 (D); five visibility baselines moved, as approved and measured again on the implementation. `austerlitz-command-map.html` is now BUILD_SIZE bytes,
-md5 `BUILD_MD5` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
+13 lines of the motion block and bounded no gap): aging and the event-named rise during Play; **300**, the corps/division band; **301 (a)** (put when
+the self-test found two checks of 8C holding decision 240 (a)'s "the true distance at rest", which the band cannot meet: CL-MAP-12's swap happens at
+rest), decision 240 (a) amended for the corps/division switch alone; the long-gap bar of 299 (D); five visibility baselines moved, as approved and
+measured again on the implementation. `austerlitz-command-map.html` is now 2,912,695 bytes,
+md5 `e5e17e648ac15d104df24858f73b67bd` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
 
 ### What changed, and why
 
@@ -30,9 +32,10 @@ md5 `BUILD_MD5` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
   every formation a live event names (and its collected parents) at 1.5 while the clock plays. Aging accrues only while the clock plays, resets
   where a formation leaves the view, and is cleared at a discontinuity, so a pan, a zoom, an orbit or a view reached without motion is laid out as
   before. Decision 39 (the protected items) unchanged.
-- **Decision 300 (`app.js` `CORPS_AT`, `CORPS_HYST`, `updateVisibility`; CL-MAP-12).** A pan from the Field vantage (242.8 units, its target
-  re-seated at the pan's end) put its 13 division counters away for 8 corps counters at rest. *Is:* once the view has moved, the corps counters
-  above 265 units and the divisions below 235, the level kept between; a view reached afresh at 250 as before.
+- **Decisions 300 and 301 (a) (`app.js` `CORPS_AT`, `CORPS_HYST`, `updateVisibility`; CL-MAP-12).** A pan from the Field vantage (242.8 units, its
+  target re-seated at the pan's end) put its 13 division counters away for 8 corps counters at rest. *Is:* once the view has moved, the corps counters
+  above 265 units and the divisions below 235, the level kept between, also at rest after the motion (decision 301 (a), amending 240 (a)'s "the true
+  distance at rest" for this switch alone); a view reached afresh, or with a discontinuity pending, at 250 as before.
 - **The long-gap bar (decision 299 (D); `thresholds.js` `MOTION.LONG`, judged in `checkLive`).** An absolute bar, not the build's own counts: in each
   long run every formation in view for 2 s of Play or more hidden by the layout for at most 30 battle minutes; in the desktop's two runs the formations
   a live event names drawn in at least 70% of their frames while its label is drawn; nothing protected hidden, no overlap, nothing drawn the reading
@@ -45,7 +48,14 @@ md5 `BUILD_MD5` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
 ### Measured on this build (Chromium 141, the pinned browser)
 
 - The 16: 249 jumps, 1,043 pops, 9 flickers, 105 level-of-detail switches (ceilings 251, 1,049, 10, 130; `main`'s 240, 1,049, 7, 128).
-- The long runs, longest hidden by the layout (battle minutes) and share drawn, `main` to this: LONG_TABLE
+- The long runs, longest hidden by the layout (battle minutes) and share drawn, `main` to this: (the audit's long-run tool, `tools/audit-post8/visibility`, the same frames)
+  - Landscape with counters 08:30-11:30: 73.5 to 18.3 battle minutes; 69.1% to 69.2%
+  - the same 12:00-15:00: 46.5 to 18.3; 71.1% to 72.8%
+  - ChatGPT's 3,600 frames from 09:00 (the motion block's `hybrid-3600`): 112.1 to 18.3
+  - the phone with counters 09:00-12:00: 56.5 to 23.3; 49.5% to 46.2%
+  - the day at 4x: 140.1 to 30.0; 64.1% to 74.1%
+  - under Napoleon's reading: 61.5 to 16.7; 67.6% to 68.3%; under the Allied reading: 35 to 18.3; 78.5% to 77.9%
+  - the Landscape 09:00-12:00: 20 to 3.3; 86.8% to 87.4%; the paper map: 3.3 to 3.3; 92.1% to 91.8%
 - The event-named formations' share while their event is live: 08:30-11:30 60.2% to 76.4%, 12:00-15:00 61.8% to 77.0%; on the phone with counters
   38.8% to 24.9% (aging ranks the aged first, and the phone is crowded: a cost of decision 299 (D) put to the owner with the final numbers).
 - CL-MAP-14 (at rest after Play the kept places first) and CL-MAP-17 (the Landscape's names blink during Play, 10.6% of frames): kept as accepted
@@ -56,7 +66,17 @@ md5 `BUILD_MD5` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
 
 ### Checks added, each failing without its fix
 
-CHECKS_PLACEHOLDER
+- **The long Play runs' bar** (`thresholds.js` `MOTION.LONG`, judged in `checkLive`'s motion block in `check:selftest` and `check:visual`): on this build
+  the worst 18.3 battle minutes (08:30-11:30 and ChatGPT's run) and 23.3 (the phone), the event-named 76.4% and 78.4% on the desktop's runs.
+- **The self-test's band check** (`app.js` `wp07Checks`, the manifest 325 to 326): at 255 units a view reached afresh at the corps level (250), after
+  motion from the divisions kept, past 265 the corps, from the corps at 240 kept, at 230 the divisions, afresh at 245 the divisions.
+- **Decision 301 (a):** the two checks of 8C that held decision 240 (a)'s "the true distance at rest" (the band check and the rest check) amended
+  for the corps/division switch alone: at rest after motion its level kept inside its band (235-265 units, written in the test) and, past 265, the
+  corps at rest; the rest compared with a fresh view laid out at the rest's level, every other switch the true distance's as before. Both renamed
+  (the manifest records it).
+- **Negative controls** (`tools/final-stage5/mutate-wp07.js`, `docs/final-stage5-evidence/wp07/mutate-wp07.json`): all as expected. Aging off: the
+  long runs' gaps 51.5, 86.5 and 82 battle minutes, the bar failing; the event-named rise off: 64.5% and 66.5%, the share's bar failing; the band
+  removed: the band check failing; the build: every line passing.
 
 ### Verified
 
