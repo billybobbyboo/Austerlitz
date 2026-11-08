@@ -773,7 +773,7 @@ review, not merged); WP-04b (the relief refitted between its anchors to GLO-90 a
 the castle's own ground; Krug at the Kruh tract; the streams labelled schematic; owner decisions 289 (a), the texts follow the relief, 291 (a), 292 (a)
 and 293 (a), the motion block and the gait's kept-open counts at its own counts, 294 (a), phone-390-first's framing floor 17 to 16, and 295 (a), two gait cases in motion) is stacked on it, `claude/compassionate-curie-igyzhl-relief`
 (draft PR #87 into WP-03's branch, for review, not merged). WP-15's first batch, alongside and changing no data, is draft PR #85.
-Stage 5 (WP-07, WP-08; owner decisions 296-303 of 8 November 2026) is built as three draft PRs from `main`: **5a**, WP-07, the map layer in motion
-(`claude/jolly-carson-yz0yqo-layer`, draft PR #89: aging and the event-named rise during Play, decision 299 (D); the corps/division band, decisions
+Stage 5 (WP-07, WP-08; owner decisions 296-304 of 8 November 2026) is built as three draft PRs from `main`: **5a**, WP-07, the map layer in motion
+(`claude/jolly-carson-yz0yqo-layer`, draft PR #89: aging and the event-named rise during Play, decision 299 (D), its cost on the phone accepted as measured, decision 304 (a); the corps/division band, decisions
 300 and 301 (a); the long Play runs and their bar in the motion block, `MOTION.LONG`; five visibility baselines on the owner's word; presentation
 only); **5b**, WP-08's furniture (`claude/jolly-carson-yz0yqo-furniture`, draft PR #90); **5c**, WP-08's lettering and landmarks, stacked on 5a.
