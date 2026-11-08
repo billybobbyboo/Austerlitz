@@ -207,7 +207,14 @@
   <!-- Stage 2D (decision 29): contextual (app.js paintLegend shows only the rows for what is drawn), compact, collapsible,
        and never over the dispatch (mlLegendFit keeps it closed where it would be) -->
   <button class="lg-head" id="lg-toggle" type="button" aria-expanded="true" aria-controls="lg-rows" title="Show or hide the key">
-<span class="lg-name">Key</span>
+    <svg class="rose" viewBox="0 0 60 60" aria-hidden="true">
+      <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
+      <g id="rose-needle"><!-- rotated to true north for the current view (app.js updateRose) -->
+      <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
+      <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
+      <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14">N</text>
+      </g>
+    </svg><span class="lg-name">Key</span>
   </button>
   <div class="lg-rows" id="lg-rows">
     <!-- Stage 6C (docs/STAGE6_SPEC.md section 4.3; decisions 97, 98, 107): the nation colours are the counters', shown where counters are drawn;
@@ -314,11 +321,11 @@
       <button class="t spd-btn" data-s="4" aria-pressed="false">4&times;</button>
     </div>
     <!-- the final audits' Stage 5, WP-08 (CL-MAP-04; question 296's recommendation (a)): the north rose in the timeline's row, beside the scale bar,
-         so that it shows in Study and Watch at every width and height; until WP-08 it was inside the key's toggle, hidden with the key below 1080 px,
-         in Watch and in Clean, and below 700 px tall. Rotated to true north by app.js updateRose -->
+         shown wherever the key's own rose is not (style.css: in Watch, below 1080 px wide and at 700 px tall or less, where until WP-08 no north was
+         shown), so that one north stands in Study and Watch at every width and height; rotated to true north by app.js updateRose -->
 <svg class="rose tb-rose" viewBox="0 0 60 60" role="img" aria-label="North arrow">
       <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
-      <g id="rose-needle"><!-- rotated to true north for the current view (app.js updateRose) -->
+      <g id="tb-rose-needle"><!-- rotated with the key's (app.js updateRose) -->
       <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
       <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
       <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14">N</text>

@@ -8685,15 +8685,16 @@ function dossierAnalysis(name){
 
 /* The rose points to true north as seen from the current camera: the map frame
    is rotated GEOREF.ROT_DEG from north, and the camera orbits freely. */
-var _rose=null, _rA=new THREE.Vector3(), _rB=new THREE.Vector3();
+var _rose=null, _rose2=null, _rA=new THREE.Vector3(), _rB=new THREE.Vector3();
 function updateRose(){
-  if(!_rose){ _rose=document.getElementById("rose-needle");
+  if(!_rose){ _rose=document.getElementById("rose-needle"); _rose2=document.getElementById("tb-rose-needle");   /* WP-08: the timeline's rose too */
     var cv=document.getElementById("contour-val"); if(cv) cv.innerHTML="&asymp; "+geoText("{CONTOUR_M}")+" m"; }
   if(!_rose||!camera) return;
   _rA.copy(orbitTarget); _rB.set(orbitTarget.x+GEOREF.NORTH[0]*20, orbitTarget.y, orbitTarget.z+GEOREF.NORTH[1]*20);
   _rA.project(camera); _rB.project(camera);
   var ang=Math.atan2(_rB.x-_rA.x, _rB.y-_rA.y)*180/Math.PI;
   _rose.setAttribute("transform","rotate("+ang.toFixed(1)+" 30 30)");
+  if(_rose2) _rose2.setAttribute("transform","rotate("+ang.toFixed(1)+" 30 30)");
 }
 function updateScaleBar(){
   var box=document.getElementById("scalebar");
@@ -9710,15 +9711,16 @@ function wp08Checks(){
   /* CL-MAP-04: a north indicator wherever the timeline stands, outside the key: shown in Study and Watch, on the landscape and the paper map, its
      needle turned to true north on the screen (north projected here from GEOREF.NORTH at the orbit target, within 1 degree) */
   guard("the north rose (WP-08, CL-MAP-04)",function(){
-    var bad=[], seen=[], nd=document.getElementById("rose-needle"), sv=nd&&nd.closest("svg");
+    var bad=[], seen=[], R=[["the key's","rose-needle"],["the timeline's","tb-rose-needle"]].map(function(q){ var nd=document.getElementById(q[1]); return {name:q[0],nd:nd,sv:nd&&nd.closest("svg")}; });
+    /* exactly one rose shown in each view (the key's where the key stands, else the timeline's), its needle on true north (GEOREF.NORTH projected here) */
     [["study","terrain"],["watch","terrain"],["study","staff"]].forEach(function(q){ at(570,q[1],q[0]); updateRose();
-      if(!sv||!shownEl(sv)){ bad.push(q.join(" ")+": no rose shown"); return; }
-      if(sv.closest(".legend")) bad.push(q.join(" ")+": the rose is inside the key");
+      var sh=R.filter(function(r){ return r.sv&&shownEl(r.sv); });
+      if(sh.length!==1){ bad.push(q.join(" ")+": "+sh.length+" roses shown"); return; }
       var A=orbitTarget.clone(), B=new THREE.Vector3(orbitTarget.x+GEOREF.NORTH[0]*20,orbitTarget.y,orbitTarget.z+GEOREF.NORTH[1]*20); camera.updateMatrixWorld(); A.project(camera); B.project(camera);
-      var want=Math.atan2(B.x-A.x,B.y-A.y)*180/Math.PI, m=/rotate\(([-0-9.]+)/.exec(nd.getAttribute("transform")||""), got=m?+m[1]:NaN;
+      var want=Math.atan2(B.x-A.x,B.y-A.y)*180/Math.PI, m=/rotate\(([-0-9.]+)/.exec(sh[0].nd.getAttribute("transform")||""), got=m?+m[1]:NaN;
       var d=Math.abs(((got-want)%360+540)%360-180); if(!(d<=1)) bad.push(q.join(" ")+": the needle at "+got+", north at "+want.toFixed(1));
-      seen.push(q.join(" ")+" "+(isFinite(got)?got.toFixed(1):got)+" deg"); });
-    ck("the north rose (WP-08, CL-MAP-04): shown outside the key in Study and Watch, on the landscape and the paper map, its needle on true north within 1 degree",
+      seen.push(q.join(" ")+" "+sh[0].name+" "+(isFinite(got)?got.toFixed(1):got)+" deg"); });
+    ck("the north rose (WP-08, CL-MAP-04): one rose shown in Study and Watch, on the landscape and the paper map (the key's where the key stands, else the timeline's), its needle on true north within 1 degree",
       !bad.length, bad.length?"WRONG: "+bad.join("; "):seen.join("; "));
   });
   /* CL-MAP-10: on the landscape the selected formation's name alone has the accent edge, and the ring under it stands at least 0.85 opaque */

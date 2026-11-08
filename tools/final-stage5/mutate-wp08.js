@@ -20,8 +20,9 @@ const M=[
   {name:"the axis row never shown", fails:[K], rep:[['  on.axis=axis.length>0;','  on.axis=false;']]},
   {name:"no status row", fails:[K], rep:[['on["arm-"+f.arm]=true; if(st) on["st-"+st.tone]=true;','on["arm-"+f.arm]=true;']]},
   {name:"no key in the ? overlay", fails:[H], rep:[['    if(K.length) html+=\'<h3>\'','    if(false) html+=\'<h3>\'']]},
-  {name:"the rose not shown", fails:[R], rep:[['.tb-rose{width:22px;','.tb-rose{display:none;width:22px;']]},
-  {name:"the rose turned the wrong way", fails:[R], rep:[['_rose.setAttribute("transform","rotate("+ang.toFixed(1)+" 30 30)");','_rose.setAttribute("transform","rotate("+(-ang).toFixed(1)+" 30 30)");']]},
+  {name:"no rose in Watch", fails:[R], rep:[['body.pm-watch .tb-rose{display:block}','body.pm-watch .tb-rose{display:none}']]},
+  {name:"two roses in Study", fails:[R], rep:[['.tb-rose{display:none;width:22px;','.tb-rose{display:block;width:22px;']]},
+  {name:"the roses turned the wrong way", fails:[R], rep:[['_rose.setAttribute("transform","rotate("+ang.toFixed(1)+" 30 30)");\n  if(_rose2) _rose2.setAttribute("transform","rotate("+ang.toFixed(1)+" 30 30)");','_rose.setAttribute("transform","rotate("+(-ang).toFixed(1)+" 30 30)");\n  if(_rose2) _rose2.setAttribute("transform","rotate("+(-ang).toFixed(1)+" 30 30)");']]},
   {name:"no edge on the selected name", fails:[S], rep:[['    if(it.selC!==sel){ it.el.classList.toggle("mln-sel",sel); it.selC=sel; }','']]},
   {name:"the ring at 0.62 again", fails:[S], rep:[['  var sro=0.9-selRing.material.opacity;','  var sro=0.62-selRing.material.opacity;']]}
 ];

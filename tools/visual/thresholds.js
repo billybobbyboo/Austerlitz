@@ -932,7 +932,9 @@ function checkLive(live,opts){
     const nd=by["dossier at 1000"]; if(!nd||nd.docked||!nd.open||!(nd.bottom<=nd.tbTop+0.5)) f.push("narrow layout: at 1000 px the open dossier reaches over the timeline: "+JSON.stringify(nd));
     /* the final audits' Stage 5, WP-08 (CL-MAP-13): the rail hidden at 1000 px, an open dossier, and no dispatch card standing beside it */
     if(!opts.legacy){ const nh=by["dossier at 1000, rail hidden"];
-      if(!nh||nh.docked||!nh.open||nh.rail||nh.card) f.push("narrow layout: at 1000 px with the rail hidden the dispatch card stands beside the open dossier (CL-MAP-13): "+JSON.stringify(nh)); }
+      if(!nh||nh.docked||!nh.open||nh.rail||nh.card) f.push("narrow layout: at 1000 px with the rail hidden the dispatch card stands beside the open dossier (CL-MAP-13): "+JSON.stringify(nh));
+      /* CL-MAP-04: at 1000 px, the key hidden, one north: the timeline's */
+      if(!nh||!Array.isArray(nh.roses)||nh.roses.length!==1||nh.roses[0]!=="tb-rose-needle") f.push("narrow layout: at 1000 px no north shown but the timeline's, or more than one (CL-MAP-04): "+JSON.stringify(nh&&nh.roses)); }
     /* the final audits' Stage 5, WP-08 (CL-MAP-06; CAPTION below): the caption at three widths, in Study and Watch, at four clocks */
     if(!opts.legacy){ const nc=by["caption"], C=(nc&&nc.caps)||[], want=CAPTION.SIZES.length*2*CAPTION.CLOCKS.length;
       if(C.length!==want) f.push("the caption (CL-MAP-06): "+C.length+" of its "+want+" reads made");

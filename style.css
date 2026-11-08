@@ -140,7 +140,8 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .skk-c{width:6px;height:6px;margin:0 6.5px;border:1px solid var(--text)}
 .legend .skk-l{width:20px;height:0;margin:0;border-radius:0;border-top:1px solid var(--text)}
 .rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
-.tb-rose{width:22px;height:22px;align-self:center;margin:0 2px}   /* WP-08 (CL-MAP-04): in the timeline's row */
+.tb-rose{display:none;width:22px;height:22px;align-self:center;margin:0 2px}   /* WP-08 (CL-MAP-04): in the timeline's row, where the key's rose is not */
+body.pm-watch .tb-rose{display:block}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
 .rose .rose-s{fill:var(--text-muted)}
@@ -591,6 +592,7 @@ body.mode-staff #vignette{display:none}
   .tlabel{display:none}
   .tools .grp{max-width:58vw}
   .tb-scale{display:none}
+  .tb-rose{display:block}   /* WP-08 (CL-MAP-04): the key hidden below 1080 px, its north here */
   /* roadmap step 6 (found by decision 238's phone case): the paper map keeps its scale bar at every width (Stage 2E: one scale across the view,
      its bar to 1%); hidden here only on the landscape, whose bar holds at the centre of the view alone */
   body.mode-staff .tb-scale{display:flex}
@@ -640,8 +642,10 @@ body.mode-staff #vignette{display:none}
   #layerpop{top:96px}
 }
 @media (max-height:700px){
+  .tb-rose{display:block}   /* WP-08 (CL-MAP-04): the key's rose hidden here (below), its north in the timeline */
   .dispatch p.lede{font-size:var(--t-prose);line-height:1.55}
   #d-changes{display:none}
+  .legend .rose{display:none}
   .legend{line-height:1.7}
 }
 

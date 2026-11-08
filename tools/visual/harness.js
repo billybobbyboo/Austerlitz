@@ -555,7 +555,9 @@ async function interact(page,it,vp){
       NR.push(Object.assign({at:"dossier at 1000, rail hidden"},await first.evaluate(()=>{ setPanels(false); select("f","sthilaire");
         const d=document.querySelector(".dispatch"), b=d.getBoundingClientRect(), dr=document.getElementById("drawer").getBoundingClientRect();
         const card=getComputedStyle(d).display!=="none"&&b.width>0;
-        const out={docked:docked, open:drawerShown(), rail:!document.body.classList.contains("rail-hidden"), card:card, gap:card?+(dr.left-b.right).toFixed(1):null};
+        /* and north (CL-MAP-04): the roses shown, the key's hidden with the key below 1080 px, the timeline's in its stead */
+        const roses=["rose-needle","tb-rose-needle"].filter(id=>{ const g=document.getElementById(id), v=g&&g.closest("svg"); if(!v) return false; const r=v.getBoundingClientRect(); for(let n=v;n&&n.nodeType===1;n=n.parentElement){ const c=getComputedStyle(n); if(c.display==="none"||c.visibility==="hidden") return false; } return r.width>0&&r.height>0; });
+        const out={docked:docked, open:drawerShown(), rail:!document.body.classList.contains("rail-hidden"), card:card, gap:card?+(dr.left-b.right).toFixed(1):null, roses:roses};
         select(null,null); setPanels(true); return out; })));
       await first.evaluate(()=>{ select(null,null); });
       await size(700,800);
