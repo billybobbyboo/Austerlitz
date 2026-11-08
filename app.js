@@ -3130,13 +3130,14 @@ function buildBoundary(b){
 function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
   ovText.push({text:text,pos:pos.clone(),acl:6});   /* the map layer's label, anchored on the drawn line (2D) */
 }
+/* the objective marker on its 128 px canvas: a ring and a cross reaching past it (drawn on the map and in the legend's sample, paintKey) */
+function objGlyph(c,col,lw){ c.strokeStyle=col; c.lineWidth=lw||7;
+  c.beginPath(); c.arc(64,64,40,0,Math.PI*2); c.stroke();
+  c.beginPath(); c.moveTo(64,14); c.lineTo(64,114); c.moveTo(14,64); c.lineTo(114,64); c.stroke(); }
 function buildObjective(o){
   var w=W(o[0],o[1]);
   var cv=document.createElement("canvas"); cv.width=cv.height=128;
-  var c=cv.getContext("2d");
-  c.strokeStyle=TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation; c.lineWidth=7;
-  c.beginPath(); c.arc(64,64,40,0,Math.PI*2); c.stroke();
-  c.beginPath(); c.moveTo(64,14); c.lineTo(64,114); c.moveTo(14,64); c.lineTo(114,64); c.stroke();
+  objGlyph(cv.getContext("2d"),TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation);
   var m=new THREE.SpriteMaterial({map:ctex(cv),transparent:true,opacity:0,depthTest:false,fog:false});
   var sp=new THREE.Sprite(m); sp.position.set(w[0],displayHeight(w[0],w[1])+3.0,w[1]);
   sp.scale.set(4.4,4.4,1); sp.renderOrder=21;
@@ -3987,14 +3988,20 @@ function eventGlyph(side,kind){
   x.strokeStyle=col; x.lineWidth=5;
   x.beginPath(); x.arc(64,64,38,0,Math.PI*2); x.stroke();
   x.lineWidth=3.5;
-  if(kind==="capture"){ x.beginPath(); x.moveTo(64,16); x.lineTo(64,112); x.moveTo(16,64); x.lineTo(112,64); x.stroke(); }
-  else if(kind==="decision"){ x.beginPath(); x.arc(64,64,14,0,Math.PI*2); x.stroke(); }
-  else if(kind==="arrival"){ x.beginPath(); x.moveTo(40,78); x.lineTo(64,40); x.lineTo(88,78); x.stroke(); }
-  else if(kind==="collapse"){ x.beginPath(); x.moveTo(40,40); x.lineTo(88,88); x.moveTo(88,40); x.lineTo(40,88); x.stroke(); }
-  else { x.beginPath(); x.moveTo(64,34); x.lineTo(64,94); x.stroke();
-         x.beginPath(); x.moveTo(48,52); x.lineTo(64,32); x.lineTo(80,52); x.stroke(); }
+  EVG[kind in EVG?kind:"other"](x,col);
   return ctex(cv);
 }
+/* the event glyphs' marks inside their ring, by kind (one table, drawn on the map's canvas and in the legend's samples, legendGlyph). The final
+   audits' Stage 5, WP-08 (CL-MAP-16): an attack, an engagement, a movement or a withdrawal is a burst of eight rays, none upright or level
+   (until WP-08 an upright arrow, which on the north-up paper map read as a north arrow); a capture a filled disc (until WP-08 a ring with a
+   full cross, the objective marker's form). Design values, on the 128 px canvas */
+var EVG={
+  capture:function(x,col){ x.fillStyle=col; x.beginPath(); x.arc(64,64,15,0,Math.PI*2); x.fill(); },
+  decision:function(x){ x.beginPath(); x.arc(64,64,14,0,Math.PI*2); x.stroke(); },
+  arrival:function(x){ x.beginPath(); x.moveTo(40,78); x.lineTo(64,40); x.lineTo(88,78); x.stroke(); },
+  collapse:function(x){ x.beginPath(); x.moveTo(40,40); x.lineTo(88,88); x.moveTo(88,40); x.lineTo(40,88); x.stroke(); },
+  other:function(x){ x.beginPath(); for(var k=0;k<8;k++){ var a=(k+0.5)*Math.PI/4; x.moveTo(64+12*Math.cos(a),64+12*Math.sin(a)); x.lineTo(64+27*Math.cos(a),64+27*Math.sin(a)); } x.stroke(); }
+};
 /* The decisive fact of the morning is a negative one: the plateau emptying.
    Empty ground shows nothing, so the plateau is surveyed on the map and the
    holding read off the plotted formations. */
@@ -4053,7 +4060,7 @@ function updateSelRing(){
   selRing.position.set(w[0],displayHeight(w[0],w[1])+0.7,w[1]);
   selRing.scale.set(r,1,r*0.82);
   selRing.visible=true;
-  var sro=0.62-selRing.material.opacity; if(Math.abs(sro)>0.004) settling=true;
+  var sro=0.9-selRing.material.opacity;   /* WP-08 (CL-MAP-10): 0.9, was 0.62, read beside the plateau's outline (0.5) */ if(Math.abs(sro)>0.004) settling=true;
   selRing.material.opacity += sro*ease(0.12);
 }
 function buildEventLayer(){
@@ -5224,6 +5231,9 @@ function mlCollect(){
     var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id), base=7+rank(f,S.strength);
     add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:base,base:base,keep:sel||hov||fo||inFam,fid:id,pick:{kind:"f",id:id},acl:2,
             aria:counterLabel(f,S)});
+    /* the final audits' Stage 5, WP-08 (CL-MAP-10): the selected formation's name stands out on the landscape by an accent edge round its plate (a
+       shadow: its box, its place and its words' contrast as before); until WP-08 it was drawn like every other name */
+    if(it.selC!==sel){ it.el.classList.toggle("mln-sel",sel); it.selC=sel; }
   });
   /* the moments of the battle: every live event's label is kept (decision 39) */
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn) return;
@@ -5703,11 +5713,25 @@ function paintLegend(){
              wherever the landscape draws names */
           figures:land&&!isTrueScale(), standards:land&&!isTrueScale(), sidemark:mode==="terrain"&&textOn(),
           gait:land&&!isTrueScale()};   /* Stage 8, 8E (decision 244 (a)): wherever figures are drawn, what their step is */
+  /* the final audits' Stage 5, WP-08 (CL-MAP-08): a row for every encoding drawn: the phase's dashed axis arrows (their words their own interp),
+     its objectives, each kind of event glyph drawn, the places' markers, and where counters are drawn their echelon marks, each arm's mark and
+     each status icon on screen */
+  var axis=A.filter(function(a){ return a.kind==="axis"; });
+  on.axis=axis.length>0; on.obj=layerOn.arrows&&(O.obj||[]).length>0;
+  var ax=document.getElementById("lg-axis"); if(ax&&axis[0]&&axis[0].interp) ax.textContent="dashed arrow: "+axis[0].interp.replace(/^route: /,"");
+  if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(k.sp&&k.sp.visible) on["ev-"+(k.e.kind in EVG?k.e.kind:"other")]=true; });
+  on.place=placeLabels.some(function(o){ return o.show; });
+  on.echelon=counters;
+  if(counters) [aggregates,units].forEach(function(T){ Object.keys(T).forEach(function(id){ var r=T[id]; if(!r.show||!r.p) return; var f=FORMATIONS[id], st=STATUS[liveStatus(id,curPhase)];
+    on["arm-"+f.arm]=true; if(st) on["st-"+st.tone]=true; }); });
   on.badge=on.badge||(mode==="terrain"&&textOn());
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
   _lgKey=key; ML.lgSize=null;
+  on.ev=["other","capture","decision","arrival","collapse"].some(function(k){ return on["ev-"+k]; });
+  paintKeySamples();   /* WP-08: in the theme's colour (returns at once while the theme is unchanged) */
   lg.querySelectorAll("[data-lg]").forEach(function(e){ e.hidden=!on[e.dataset.lg]; });
+  lg.querySelectorAll("[data-lgi]").forEach(function(e){ e.hidden=!on[e.dataset.lgi]; });   /* WP-08 (CL-MAP-08): the items of one row, those drawn */
   var hint=document.getElementById("lg-hint");   /* the controls of the view shown: the paper map pans, the landscape orbits */
   if(hint) hint.textContent=legendHint(land);
 }
@@ -5732,6 +5756,15 @@ function mlLegendFit(VW,VH){
     squeeze=right-ML.lgSize[0]<D.right+ML_PAD&&bottom-ML.lgSize[1]<D.bottom&&bottom>D.top;
   }
   var open=ML.legendOpen&&!squeeze;
+  /* the final audits' Stage 5, WP-08 (CL-MAP-08): with a row for every encoding the open key can stand taller than the room below the tools: its
+     rows held below them (8 px clear), scrolling where they are taller; a scroll region then a stop of its own, named (WCAG 2.1.1) */
+  if(open&&rows&&shown(lg)){ var tl=document.querySelector(".tools"), top=12, hd=tg.getBoundingClientRect(), Lb=lg.getBoundingClientRect().bottom;
+    if(shown(tl)){ var TR=tl.getBoundingClientRect(); if(TR.bottom>0&&TR.left<lg.getBoundingClientRect().right) top=Math.max(top,TR.bottom+8); }
+    var mx=Math.max(96,Math.floor(Lb-top-hd.height-16));
+    if(rows.dataset.mx!==String(mx)){ rows.style.maxHeight=mx+"px"; rows.dataset.mx=String(mx); ML.lgSize=null; }
+    var sc=rows.scrollHeight>rows.clientHeight+1;
+    if(sc!==(rows.getAttribute("tabindex")==="0")){ if(sc){ rows.setAttribute("tabindex","0"); rows.setAttribute("role","region"); rows.setAttribute("aria-label","Key, scrolling"); }
+      else { rows.removeAttribute("tabindex"); rows.removeAttribute("role"); rows.removeAttribute("aria-label"); } } }
   if(lg.classList.contains("collapsed")===open){ lg.classList.toggle("collapsed",!open); tg.setAttribute("aria-expanded",String(open)); }
   if(lg.classList.contains("squeezed")!==squeeze){ lg.classList.toggle("squeezed",squeeze);
     tg.title=squeeze?"No room for the key beside "+LABELS.names.phaseText+": hide it (D) or close the dossier":"Show or hide the key"; }
@@ -6659,7 +6692,7 @@ var LABELS={
   glLost:"The 3D view has stopped: the browser lost its graphics context. It comes back if the browser restores it; if it does not, reload the page.",
   reload:"Reload",
   /* roadmap step 3 (decision 134 (a)): the single-key shortcuts switch in the "?" overlay; interface words, no claim */
-  keys:{single:"Single-key shortcuts", on:"on", off:"off", offRow:"(off)",
+  keys:{single:"Single-key shortcuts", on:"on", off:"off", offRow:"(off)", mapKey:"The map key: what is drawn now",   /* WP-08 (CL-MAP-03) */
     note:"Off, keys that type one character (letters, digits, punctuation, ?) do nothing; Space, the arrows, Esc, Tab and Enter still work, and + and \u2212 on the focused map. For this visit only; the ? button opens this list."},
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
@@ -6841,6 +6874,16 @@ var HELP_GROUPS=["Time","View and ground","Layers and panels","The map, when it 
 function buildHelp(){
   var host=document.getElementById("help-body"); if(!host) return;
   var html="";
+  /* the final audits' Stage 5, WP-08 (CL-MAP-03): the map's key, its rows for what is drawn now (paintLegend's own choice, as the key panel shows
+     them), one press away wherever the timeline is shown (the "?" button: Study and Watch, every width, a phone): until WP-08 the key panel alone,
+     hidden below 1080 px wide, at 430 px tall or less (decision 226 (a)) and in Watch and Clean (2D: a Key button would have been a new panel
+     there). Copies without ids */
+  var lr=document.getElementById("lg-rows");
+  if(lr){ paintLegend(); var K=[];
+    [].forEach.call(lr.querySelectorAll(".k"),function(k){ if(k.hidden||k.closest("[hidden]")) return; var c=k.cloneNode(true); c.removeAttribute("id");
+      [].forEach.call(c.querySelectorAll("[id]"),function(x){ x.removeAttribute("id"); }); [].forEach.call(c.querySelectorAll("[hidden]"),function(x){ x.parentNode.removeChild(x); });
+      K.push(c.outerHTML); });
+    if(K.length) html+='<h3>'+esc(LABELS.keys.mapKey)+'</h3><div class="legend hp-key">'+K.join("")+'</div>'; }
   HELP_GROUPS.forEach(function(g){ var rows=KEYS.filter(function(r){ return r.group===g; }); if(!rows.length) return;
     html+='<h3>'+esc(g)+'</h3>';
     rows.forEach(function(r){ var off=!SHORTCUTS.on&&r.scope==="window"&&r.keys.length&&r.keys.every(charKey);
@@ -7262,7 +7305,14 @@ function paintKey(){
   document.querySelectorAll(".legend [data-key]").forEach(function(e){
     var k=COLOUR_KEY[e.dataset.key]; if(!k) return; if(e.classList.contains("olk")) e.style.borderColor=k.hex; else e.style.background=k.hex; });
   document.querySelectorAll(".legend .bnd").forEach(function(e){ e.style.borderTopColor=TOKENS.sym.label.dark.annotation; });
-  /* the paper map's woods and village footprints (Stage 2E): the colours world.js draws them in */
+  /* the final audits' Stage 5, WP-08 (CL-MAP-08): the samples drawn by the map's own drawers, in the annotation colour (the map draws the event
+     glyphs in the side's, which the arrows' rows give); the status rows' words from STATUS, by tone */
+  document.querySelectorAll(".legend .ar-dash").forEach(function(e){ var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background="repeating-linear-gradient(90deg,"+k.hex+" 0 6px,transparent 6px 10px)"; });
+  paintKeySamples();
+  document.querySelectorAll(".legend .stk").forEach(function(e){ var t=TOKENS.sym.status[e.dataset.tone]; e.innerHTML=t?iconSVG(t.icon):""; });
+  document.querySelectorAll(".legend .stw").forEach(function(e){ var tone=e.dataset.tone;
+    e.textContent="status: "+Object.keys(STATUS).filter(function(k){ return STATUS[k].tone===tone; }).map(function(k){ return STATUS[k].label; }).join(", "); });
+
   document.querySelectorAll(".legend .psym").forEach(function(e){ var t=TOKENS.sym.paperMap[e.dataset.sym];
     e.style.background=t.fill; e.style.borderColor=t.edge; });
   /* the going classes: the same table the going layer is drawn from (world.js makeGoingPalette) */
@@ -7281,6 +7331,22 @@ function paintKey(){
   p.innerHTML="French formations are marked in "+sw("side-fr")+K["side-fr"].word+" and the Allies in "+sw("side-al")+K["side-al"].word+
     ": on their names, their counters and the ground beneath them, and on the movement arrows. "+
     "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
+}
+/* the final audits' Stage 5, WP-08 (CL-MAP-08): the key's samples of the event glyphs, the objective, the place marker and the counter's arm marks,
+   drawn by the map's own drawers (EVG, objGlyph, armGlyphSVG) in the theme's text colour (the map draws the event glyphs in the side's colour, which
+   the arrows' rows give), their strokes heavier for 18 px (the map's at most 64 px, decision 57); as images, so that the "?" overlay's copy of the
+   rows (buildHelp) carries them. Painted again when the map changes between the landscape and the paper map (paintLegend) */
+var _kSamp=null;
+function paintKeySamples(){
+  var K=mode==="staff"?"paper":"dark"; if(_kSamp===K) return; _kSamp=K;
+  var col=TOKENS.theme[K].text, PC=TOKENS.sym.place[K];
+  document.querySelectorAll(".legend .gk").forEach(function(e){ var g=e.dataset.gk;
+    if(g==="place"){ e.innerHTML='<svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 4l5 5l-5 5l-5 -5z" fill="'+PC.fill+'" stroke="'+PC.other+'" stroke-width="1.6"/></svg>'; return; }
+    var cv=document.createElement("canvas"); cv.width=cv.height=128; var x=cv.getContext("2d");
+    if(g==="objective") objGlyph(x,col,12); else { x.strokeStyle=col; x.lineWidth=11; x.beginPath(); x.arc(64,64,38,0,Math.PI*2); x.stroke(); x.lineWidth=9; EVG[g](x,col); }
+    var im=new Image(); im.alt=""; im.width=18; im.height=18; im.src=cv.toDataURL(); e.innerHTML=""; e.appendChild(im); });
+  document.querySelectorAll(".legend .armk").forEach(function(e){ var a=e.dataset.arm;
+    e.innerHTML='<svg viewBox="0 0 40 '+(a==="hq"?40:28)+'" aria-hidden="true"><rect x="5" y="5" width="30" height="18" fill="none" stroke="'+col+'" stroke-width="1"/>'+armGlyphSVG(a,col)+'</svg>'; });   /* the counter's fill box, 30 x 18 at (5, 5) */
 }
 /* ---- the first view ----
    The whole field from above (the Overview vantage) at 04:00, the first-run card near the foot of the map, the legend held back
@@ -7526,27 +7592,48 @@ function capTitle(cap){ var t=[]; if(!cap.children) return cap.textContent||"";
    events' names shrink first (style.css); if the parts that do not shrink still overflow the caption's box, they give way whole, in this
    order: the plateau reading's "plotted strength unchanged", the second reading (the centre separation), then the events with their tags
    (an event's tag cut by its shrinking box counts as overflow); then, where even it cannot stand whole, the first reading;
-   in the box. What is hidden stays in the caption's title, and in the Now tab. Called after a paint and a resize */
+   in the box. What is hidden stays in the caption's title, and in the Now tab. Called after a paint and a resize.
+   The final audits' Stage 5, WP-08 (CL-MAP-06): the parts are laid in as one ordered fill, each kept only where nothing then overflows and no act
+   or phase is a fragment (cut narrower than CAP_MIN em: "D.", or nothing, at 1280 x 720 until WP-08), the separators tidied at each step (none
+   first, last or beside another: until WP-08 a part that shrank to nothing left its dots). The order: where the caption shows the readings
+   (Watch; Study without the Now tab) the first reading, the event, the second reading and "plotted strength unchanged" as decision 159 gives
+   them way (a prefix: once one is given way the later ones are too, but for a first reading that cannot stand whole at all, after which the event
+   is still tried), then the act and the phase (whole on the track: until WP-08 they stood while both readings and the event gave way, in Watch at
+   1280 px); elsewhere the event, then the act, then the phase (each tried) */
 function fitCaption(){
   var cap=document.getElementById("tb-cap"); if(!cap||!cap.querySelectorAll||typeof cap.getBoundingClientRect!=="function") return;
   var gone=cap.querySelectorAll(".fit-off"); for(var i=0;i<gone.length;i++) gone[i].classList.remove("fit-off");
-  function over(){ var cr=cap.getBoundingClientRect(), last=null, k=cap.children;
-    for(var j=k.length-1;j>=0;j--){ if(getComputedStyle(k[j]).display!=="none"){ last=k[j]; break; } }
+  var kids=[].slice.call(cap.children), seps=kids.filter(function(k){ return k.classList.contains("sep"); });
+  function shown(e){ return getComputedStyle(e).display!=="none"; }
+  function over(){ var cr=cap.getBoundingClientRect(), last=null;
+    for(var j=kids.length-1;j>=0;j--){ if(shown(kids[j])){ last=kids[j]; break; } }
     if(!last||!(cr.width>0)) return false;
     /* an event's tag cut by its own box (the box shrinks, the tag does not) counts as overflow too (the 146453d review) */
     if([].some.call(cap.querySelectorAll(".ev small.evn"),function(g){ return g.getClientRects().length>0&&g.getBoundingClientRect().right>g.parentNode.getBoundingClientRect().right+0.5; })) return true;   /* every tag, a dwell's second among them (the review of 7736731) */
     return last.getBoundingClientRect().right>cr.right+0.5; }
-  if(!over()) return;
-  function off(e){ if(e) e.classList.add("fit-off"); }
-  var D=[].filter.call(cap.querySelectorAll(".der"),function(d){ return getComputedStyle(d).display!=="none"; });
-  if(D.length) off(D[0].querySelector("em")); if(!over()) return;
-  for(var n=D.length-1;n>=1&&over();n--){ off(D[n]); off(D[n].previousElementSibling); }
-  if(!over()) return;
-  var ev=cap.querySelector(".ev"); if(ev){ off(ev); off(ev.previousElementSibling); }
-  /* last, a first reading that still cannot stand whole (the caption's box at 720 px and below is narrower than the plateau reading) gives way
-     whole too: never drawn cut (the review of c76f7cc) */
-  if(over()&&D.length){ off(D[0]); off(D[0].previousElementSibling); }
+  var act=cap.querySelector(".act"), ph=cap.querySelector(".cap-ph");
+  function frag(e){ if(!e||!shown(e)) return false; var fs=parseFloat(getComputedStyle(e).fontSize)||12.5;
+    return e.scrollWidth>e.clientWidth+1&&e.getBoundingClientRect().width<CAP_MIN*fs; }
+  function tidy(){ seps.forEach(function(s){ s.classList.remove("fit-off"); });
+    var V=kids.filter(shown);
+    for(var j=0;j<V.length;j++){ if(!V[j].classList.contains("sep")) continue;
+      if(j===0||j===V.length-1||V[j+1].classList.contains("sep")){ V[j].classList.add("fit-off"); V.splice(j,1); j--; } } }
+  /* an event's name likewise (its box shrinks to nothing, the name's own minimum notwithstanding: 7 px of "Friant retakes Telnitz" in Watch at 1280 px
+     until WP-08): the part of each name its box shows, where it is cut */
+  function fragEv(){ var ev=cap.querySelector(".ev"); if(!ev||!shown(ev)) return false; var er=ev.getBoundingClientRect();
+    return [].some.call(ev.querySelectorAll(".evt"),function(t){ var r=t.getBoundingClientRect(), fs=parseFloat(getComputedStyle(t).fontSize)||12.5;
+      var cut=t.scrollWidth>t.clientWidth+1||r.right>er.right+0.5; return cut&&Math.min(r.right,er.right)-r.left<CAP_MIN*fs; }); }
+  function bad(){ return over()||frag(act)||frag(ph)||fragEv(); }
+  tidy(); if(!bad()) return;
+  var D=[].filter.call(cap.querySelectorAll(".der"),function(d){ return shown(d); }), ev=cap.querySelector(".ev"), em=D.length?D[0].querySelector("em"):null;
+  function set(e,on){ if(e) e.classList.toggle("fit-off",!on); }
+  function tryOn(e){ if(!e) return true; set(e,true); tidy(); if(bad()){ set(e,false); tidy(); return false; } return true; }   /* an absent part gives nothing way */
+  [D[0],D[1],em,ev,act,ph].forEach(function(e){ set(e,false); }); tidy();
+  if(D.length){ if(tryOn(D[0])){ if(tryOn(ev)&&tryOn(D[1])) tryOn(em); } else tryOn(ev); }
+  else tryOn(ev);
+  tryOn(act); tryOn(ph);
 }
+var CAP_MIN=4;   /* em: the narrowest an act or a phase is drawn cut before it gives way whole (CL-MAP-06; a design value: about four letters and the ellipsis) */
 /* ---- Stage 3C: one timeline (docs/STAGE3_SPEC.md section D; owner decisions 53, 60) ----
    One axis, proportional to time from 04:00 to 18:00 (decision 53): the act bands, the phase ticks with their labels and the
    rail (hour ticks, the event markers, the playhead) are placed at their share of it. The current phase's label is always

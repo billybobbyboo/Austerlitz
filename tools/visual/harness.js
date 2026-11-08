@@ -551,6 +551,12 @@ async function interact(page,it,vp){
       await first.evaluate(()=>{ select("f","sthilaire"); });
       NR.push(Object.assign({at:"dossier at 1000"},await first.evaluate(()=>{ const d=document.getElementById("drawer").getBoundingClientRect(), t=document.querySelector(".timebar").getBoundingClientRect();
         return {docked:docked,open:drawerShown(),bottom:+d.bottom.toFixed(1),tbTop:+t.top.toFixed(1)}; })));
+      /* the final audits' Stage 5, WP-08 (CL-MAP-13): the rail hidden, as at load below 1080 px, the dossier open: the dispatch card gives way to it */
+      NR.push(Object.assign({at:"dossier at 1000, rail hidden"},await first.evaluate(()=>{ setPanels(false); select("f","sthilaire");
+        const d=document.querySelector(".dispatch"), b=d.getBoundingClientRect(), dr=document.getElementById("drawer").getBoundingClientRect();
+        const card=getComputedStyle(d).display!=="none"&&b.width>0;
+        const out={docked:docked, open:drawerShown(), rail:!document.body.classList.contains("rail-hidden"), card:card, gap:card?+(dr.left-b.right).toFixed(1):null};
+        select(null,null); setPanels(true); return out; })));
       await first.evaluate(()=>{ select(null,null); });
       await size(700,800);
       /* decision 174 (the owner's answer): at 700 px in Study at 05:00 (the plateau reading due), with the rail hidden, the dispatch card shows the
@@ -566,6 +572,12 @@ async function interact(page,it,vp){
           out.both={at:fmtClock(t),ok:[...c.querySelectorAll(".der")].every(x=>{ const s=getComputedStyle(x), q=x.getBoundingClientRect(); return s.display==="none"||(q.left>=c2.left-0.5&&q.right<=c2.right+0.5&&x.scrollWidth<=x.clientWidth+1); })}; }
         setPresentation("study"); setPanels(true); return out; });
       NR.push(Object.assign({at:"700",cap:capAt},await look()));
+      /* the final audits' Stage 5, WP-08 (CL-MAP-06): the caption at T.CAPTION's sizes, in Study and Watch at its clocks, by real resizes: every
+         part shown (the act, the phase, the event, each reading), its separators, which are given way, and whether the caption shows the readings
+         there (Watch; Study without the Now tab); judged by thresholds.js checkLive (CAPTION) */
+      const CAPS=[];
+      for(const [cw,ch] of T.CAPTION.SIZES){ await size(cw,ch); CAPS.push(...await first.evaluate(clocks=>window.__aus.captionParts(clocks),T.CAPTION.CLOCKS)); }
+      NR.push({at:"caption",caps:CAPS});
       await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
       LIVE.narrow=NR;
       /* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5; decisions 223-225): the phone layout on this page, narrowed to 390 x 844

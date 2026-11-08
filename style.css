@@ -140,10 +140,11 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .skk-c{width:6px;height:6px;margin:0 6.5px;border:1px solid var(--text)}
 .legend .skk-l{width:20px;height:0;margin:0;border-radius:0;border-top:1px solid var(--text)}
 .rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
+.tb-rose{width:22px;height:22px;align-self:center;margin:0 2px}   /* WP-08 (CL-MAP-04): in the timeline's row */
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
 .rose .rose-s{fill:var(--text-muted)}
-.legend .rose text{font-family:var(--serif)}   /* the rose's N, in the embedded serif (decision 141; it named Georgia in shell.html) */
+.rose text{font-family:var(--serif)}   /* the rose's N, in the embedded serif (decision 141; it named Georgia in shell.html) */
 
 /* ---------- drawer ---------- */
 /* undocked (below 1080 px) the dossier stops above the timeline, so Play and the slider stay uncovered (decision 165; WCAG 2.4.11) */
@@ -582,6 +583,9 @@ body.mode-staff #vignette{display:none}
      the card moves beside it, and gives way to an open dossier */
   body:not(.rail-hidden):not(.docked) .dispatch{left:calc(var(--rail) + 14px);width:min(420px,calc(100vw - var(--rail) - 28px))}
   body.drawer-open:not(.rail-hidden):not(.docked) .dispatch{display:none}
+  /* the final audits' Stage 5, WP-08 (CL-MAP-13): with the rail hidden too (as at load below 1080 px) the card gives way to an open dossier, as on a
+     phone: until WP-08 card and dossier left a strip of map about 209 px wide between them at 1024 px */
+  body.drawer-open:not(.docked) .dispatch{display:none}
   .legend{display:none}
   .tools{top:56px;right:14px;gap:5px}
   .tlabel{display:none}
@@ -638,7 +642,6 @@ body.mode-staff #vignette{display:none}
 @media (max-height:700px){
   .dispatch p.lede{font-size:var(--t-prose);line-height:1.55}
   #d-changes{display:none}
-  .legend .rose{display:none}
   .legend{line-height:1.7}
 }
 
@@ -680,6 +683,29 @@ body.firstrun-on #openingbtn{display:none}
 .legend .ar::after{content:"";position:absolute;right:-8px;top:-3px;width:9px;height:11px;background:inherit;
   clip-path:polygon(0 0,100% 50%,0 100%)}
 .legend .ar[data-key="arrow-al"]::after{clip-path:polygon(0 0,100% 50%,0 100%,38% 50%)}
+/* the final audits' Stage 5, WP-08 (CL-MAP-08): the samples of the event glyphs, the objective, the place marker, the counter's arm marks and
+   status icons, drawn by the map's own drawers (app.js paintKey) */
+/* the final audits' Stage 5, WP-08 (CL-MAP-10): the selected formation's name on the landscape, an accent edge round its plate (app.js mlCollect) */
+.mln.mln-sel{box-shadow:0 0 0 2px var(--accent)}
+.legend .lg-rows{overflow-y:auto;overscroll-behavior:contain}   /* WP-08: held below the tools by app.js mlLegendFit, scrolling where taller */
+.legend .kgrp{display:inline-flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:1px 9px}   /* one row, its items those drawn ([data-lgi]) */
+.legend .kgrp>span{display:inline-flex;align-items:center;gap:4px}
+.legend .kgrp>span[hidden]{display:none}
+.legend .gk{display:block;flex:0 0 auto;width:18px;height:18px;margin:0 1px}
+.legend .gk canvas,.legend .gk svg{display:block;width:18px;height:18px}
+.legend .armk{display:block;flex:0 0 auto;width:26px;height:18px}
+.legend .armk svg{display:block;width:26px;height:18px;overflow:visible}
+.legend .stk{display:block;flex:0 0 auto;width:12px;height:12px;margin:0 4px}
+.legend .stk svg{display:block;width:12px;height:12px;fill:var(--text);stroke:var(--text)}
+.legend .ar.ar-dash{width:26px;height:4px;border-radius:0}   /* its dashes painted in the arrow's colour (app.js paintKey) */
+.legend .ar.ar-dash::after{display:none}
+/* the final audits' Stage 5, WP-08 (CL-MAP-03): the key's rows as the "?" overlay shows them (app.js buildHelp: a copy in a .legend.hp-key, so that
+   every row's style applies), left-aligned in the sheet; the key panel's own box (fixed at the corner, hidden in Watch and below 1080 px) not */
+#help .legend.hp-key{display:block!important;position:static;right:auto;bottom:auto;z-index:auto;transform:none;max-width:none;background:none;border:0;
+  padding:0;backdrop-filter:none;text-align:left;margin:2px 0 10px}
+#help .hp-key .k{flex-direction:row-reverse;justify-content:flex-end}   /* the sample first, then its words, at the left */
+#help .hp-key .k span:first-child{text-align:left}
+#help .hp-key .kgrp{justify-content:flex-start}
 .legend .hlt{width:5px;height:15px;border-radius:1px;margin:0 7px}
 .legend .bnd{width:20px;height:0;border-top:2px solid}
 .legend .stg{width:20px;height:0;border-top:2px dashed var(--text-muted)}
@@ -786,6 +812,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   /* the paper map's scale bar (kept below 1080 px since decision 238's case) at the head of the caption's row, the caption giving it room
      (its parts give way, decision 159), not a row of its own */
   .tb-scale{order:4}
+  .tb-rose{order:4}
   body.mode-staff .tb-cap{flex-basis:0;min-width:0}
   .tb-help{order:6;min-width:40px;min-height:36px}
   .tb-vm{order:7}
