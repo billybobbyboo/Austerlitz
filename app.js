@@ -5322,10 +5322,11 @@ function mlCollect(){
   /* place names: a marker at the place, the name beside it */
   placeLabels.forEach(function(o){ if(!o.show) return;
     var ft=o.ft, col=ft.kind==="water"?PC.water:ft.kind==="height"?PC.height:ft.kind==="road"?PC.road:PC.other;
-    /* the final audits' Stage 5, WP-08 (CL-MAP-05; owner decision 275 (a)): on the paper map, the reference map, the principal places the narrative
-       names (MAJOR_FEATURES) laid out before the formations' counters (ML_PLACE_PAPER), so that the map as entered names them; the counters find their
-       places round them by their leaders. Until WP-08 they came last (8) and none of the twelve was drawn as entered at 1600, 1280 or 1024 px */
-    var sel=isSel("t",ft.id), base=MAJOR_FEATURES[ft.id]?(paper?ML_PLACE_PAPER:8):8.5;
+    /* the final audits' Stage 5, WP-08 (CL-MAP-05): the places' rank as before; owner decision 302 (b), 8 November 2026, after it was measured: on the paper
+       map at 5.5 (after the plateau's reading) none of the twelve principal places was drawn as entered; at 2.5 (before the counters) 9 of 12 were at
+       1600 x 900 with every counter drawn, but in motion the paper map's zoom drew 688 formation-frames against 852 and the 16's flickers rose to 14.
+       Lettering beneath the layer, not competing for its room, is left as a possible follow-up */
+    var sel=isSel("t",ft.id), base=MAJOR_FEATURES[ft.id]?8:8.5;
     var pit=text("t:"+ft.id,"place","mlt-small",ft.name,col,o.world,{pri:sel?0:base,base:base,keep:sel,mode:"place",mk:[col,PC.fill],
       pick:{kind:"t",id:ft.id},aria:"Place: "+ft.name+(PLACE_SIGN[ft.id]?", "+PLACE_SIGN[ft.id].say():"")});
     pit.sign=PLACE_SIGN[ft.id]?PLACE_SIGN[ft.id].kind:null;
@@ -5366,9 +5367,7 @@ function mlPlaceMark(it){
 /* WP-08 (CL-MAP-09): does an arrow's label only name its formation? One word, its short name or a word of its commander's */
 function mlNameOnly(label,f){ if(!f||!label||/\s/.test(label)) return false;
   return shortName(f)===label||(" "+(f.commander||"").replace(/[,;]/g," ")+" ").indexOf(" "+label+" ")>=0; }
-var ML_DUP_PRI=7.95, ML_PLACE_PAPER=8, PLAN_DIM=0.35;   /* WP-08: design values. ML_PLACE_PAPER: 8, the rank as before WP-08, pending the owner (question 302): at 5.5, after
-   the plateau's reading, the counters still filled the room and none of the twelve was drawn as entered; at 2.5, before the counters, 9 of 12 as entered at
-   1600 x 900 with every counter still drawn, but in motion the paper map's zoom drew 688 formation-frames against 852 and the 16's flickers rose to 14 */   /* after the formation names (7 and their rank), before the places (8) */
+var ML_DUP_PRI=7.95, PLAN_DIM=0.35;   /* WP-08: design values */   /* after the formation names (7 and their rank), before the places (8) */
 /* the label's words and, spoken, its accessible name: both say "derived" (owner decision 126) */
 function plateauText(spoken){
   var al=overKnown(function(){ return plateauStrength("al"); }), fr=overKnown(function(){ return plateauStrength("fr"); });
@@ -5812,6 +5811,9 @@ function paintLegend(){
              wherever the landscape draws names */
           figures:land&&!isTrueScale(), standards:land&&!isTrueScale(), sidemark:mode==="terrain"&&textOn(),
           gait:land&&!isTrueScale()};   /* Stage 8, 8E (decision 244 (a)): wherever figures are drawn, what their step is */
+  /* WP-08 (decision 282 (a); CL-VIS-11): the chapels' markers while their place is laid out, the landmarks' outlines while drawn */
+  on.chapel=placeLabels.some(function(o){ return o.show&&o.ft.id==="chapel"; }); on.chapelsite=placeLabels.some(function(o){ return o.show&&o.ft.id==="santon"; });
+  on.landmark=!!((LMCUE.castle&&LMCUE.castle.visible)||(LMCUE.garden&&LMCUE.garden.visible));
   on.badge=on.badge||(mode==="terrain"&&textOn());
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
@@ -7377,6 +7379,10 @@ function paintKey(){
   document.querySelectorAll(".legend [data-key]").forEach(function(e){
     var k=COLOUR_KEY[e.dataset.key]; if(!k) return; if(e.classList.contains("olk")) e.style.borderColor=k.hex; else e.style.background=k.hex; });
   document.querySelectorAll(".legend .bnd").forEach(function(e){ e.style.borderTopColor=TOKENS.sym.label.dark.annotation; });
+  /* WP-08 (decision 282 (a)): the chapels' rows in BUILDINGS.notDrawn's words */
+  var ND=typeof BUILDINGS!=="undefined"&&BUILDINGS.notDrawn||{}, lc=document.getElementById("lg-chapel"), ls=document.getElementById("lg-chapelsite");
+  if(lc&&ND.stAnthony) lc.textContent="a cross: "+ND.stAnthony.en+"; its place marked, not drawn as a building";
+  if(ls&&ND.santon) ls.textContent="a cross in a ring: "+ND.santon.en+"; its site marked, approximate";
   /* the paper map's woods and village footprints (Stage 2E): the colours world.js draws them in */
   document.querySelectorAll(".legend .psym").forEach(function(e){ var t=TOKENS.sym.paperMap[e.dataset.sym];
     e.style.background=t.fill; e.style.borderColor=t.edge; });
@@ -8542,7 +8548,7 @@ function buildingsSection(ft){
 function landmarkNotDrawn(ft){
   var k={chapel:"stAnthony", santon:"santon"}[ft.id], N=typeof BUILDINGS!=="undefined"&&BUILDINGS.notDrawn&&k?BUILDINGS.notDrawn[k]:null; if(!N) return null;
   var h=row(ft.id==="chapel"?"The chapel":"The Santon's chapel",esc(N.en)+' <span class="hh">&middot; not drawn as a building: '+(ft.id==="chapel"?"its place marked by a cross":"its site marked on the Santon's place, approximate")+'</span>')+
-    row("Why",esc(N.why.replace(/\s*Alternatives:.*$/,"")));
+    row("Why",esc(N.why.replace(/\s*\(the alternatives were[^)]*\)\s*$/,"")));
   return sect("Not drawn here",h,true);
 }
 function dossierFeature(id){
@@ -9703,6 +9709,78 @@ function wp07Checks(){
   }
   return out;
 }
+/* the final audits' Stage 5, WP-08's lettering and landmarks: the self-test's checks, each with its bound written here */
+function wp08cChecks(){
+  var out=[], K={t:clock,sel:selection,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,plan:planSide};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function endTw(){ var n=0; if(tween) mlReset("tween ended at once"); while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
+  function at(t,md,pres){ if(mode!==md) setMode(md); if(presentation!==pres) setPresentation(pres); setClock(t,{instant:true,force:true,camera:false}); endTw(); if(md!=="staff"){ flyTo(VANTAGE.field); endTw(); } AUSTERLITZ_DEBUG.settle(4,true); mlReset("self-test"); mlLayout(); }
+  function inView(q){ return !!(q&&q.eFrame===ML.frame&&!q.occ&&q.state!=="offscreen"&&q.state!=="panel"&&q.state!=="occluded"); }
+  if(playing) stopPlay(); setCommandView("none"); select(null,null); if(planSide) setPlan(planSide);
+  try{
+  /* CL-MAP-09: the arrows' labels that only name their formation (the test's own list, read from OVERLAYS by hand: five surnames and Bagration's) */
+  guard("arrow labels and names (WP-08, CL-MAP-09)",function(){
+    var ONLY={"Kienmayer":"kienmayer","Saint-Hilaire":"sthilaire","Vandamme":"vandamme","Caffarelli":"caffarelli","Suchet":"suchet","Bagration":"bag"}, bad=[], seen=[];
+    [[570,"hybrid"],[570,"terrain"],[660,"hybrid"],[660,"terrain"]].forEach(function(q){ at(q[0],q[1],"study");
+      for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.cat!=="overlay") continue; var lab=k.replace(/^o:/,"").replace(/#\d+$/,""), id=ONLY[lab];
+        if(id){ var own=inView(ML.items["c:"+id])||inView(ML.items["n:"+id]);
+          if(own&&it.state==="on") bad.push(fmtClock(q[0])+" "+q[1]+": \""+lab+"\" drawn beside its formation's own name");
+          if(!own&&it.state==="withheld") bad.push(fmtClock(q[0])+" "+q[1]+": \""+lab+"\" withheld with its formation out of view");
+          seen.push(fmtClock(q[0])+" "+q[1]+" "+lab+" "+it.state); }
+        else if(it.state==="withheld") bad.push(fmtClock(q[0])+" "+q[1]+": \""+lab+"\", which tells a movement, withheld"); } });
+    ck("arrow labels and names (WP-08, CL-MAP-09): an arrow's label that only names its formation not drawn while the formation's own name or counter is in view, drawn where it is not; a label that tells the movement never withheld",
+      !bad.length&&seen.length>0, bad.length?"WRONG: "+bad.slice(0,6).join("; "):seen.join("; "));
+  });
+  /* CL-MAP-11: a plan shown: none of the phase's arrow labels in the layer; each plan label its side's mark (the side's token) and named with its plan; the
+     phase's arrows at most 0.35 of their opacity (the bound here), and full again once the plan is cleared */
+  guard("the Plans view (WP-08, CL-MAP-11)",function(){
+    at(570,"terrain","study"); var full=overlayMats.map(function(m){ return m.opacity; }), bad=[];
+    setPlan("both"); endTw(); AUSTERLITZ_DEBUG.settle(4,true); mlLayout(); var pl=0;
+    for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame) continue;
+      if(it.cat==="overlay"||it.cat==="objective") bad.push("the phase's label "+k+" in the layer");
+      if(it.cat==="plan"){ pl++; var mk=it.el.querySelector(".mln-mark"), al=it.el.getAttribute("aria-label")||"";
+        var side=/^The French plan/.test(al)?"fr":/^The Allied plan/.test(al)?"al":null;
+        if(!mk||!side) bad.push(k+": no side's mark or name"); else if(mk.style.background.replace(/\s/g,"")!==hexToRgbCss(TOKENS.sym.side[side].base)) bad.push(k+": its mark not its side's colour"); } }
+    overlayMats.forEach(function(m,i){ if(full[i]>0.05&&m.opacity>full[i]*0.35+1e-6) bad.push("an arrow material at "+m.opacity.toFixed(3)+" of "+full[i].toFixed(3)); });
+    setPlan("both"); endTw(); AUSTERLITZ_DEBUG.settle(2,true);
+    overlayMats.forEach(function(m,i){ if(Math.abs(m.opacity-full[i])>1e-6) bad.push("an arrow material not restored ("+m.opacity.toFixed(3)+" against "+full[i].toFixed(3)+")"); });
+    ck("the Plans view (WP-08, CL-MAP-11): a plan shown, the phase's labels out of the layer and its arrows at most 0.35 of their opacity (restored after), each plan label its side's mark and named with its plan",
+      !bad.length&&pl>0, bad.length?"WRONG: "+bad.slice(0,6).join("; "):pl+" plan labels laid out, every one marked; the arrows dimmed and restored");
+  });
+  /* decision 282 (a): the chapels' markers (a cross for St Anthony's, a cross in a ring for the Santon's site; every other place its diamond) and their
+     places' dossiers saying what is not drawn, in notDrawn's words */
+  guard("the chapels (WP-08, decision 282 (a))",function(){
+    at(570,"staff","study"); MAPCAM.frameField(true); AUSTERLITZ_DEBUG.settle(4,true); mlLayout(); var bad=[], seen=[];
+    for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.mode!=="place") continue; var m=mlPlaceMark(it), id=k.replace(/^t:/,"");
+      var want=id==="chapel"?/v10/:id==="santon"?/<circle/:/l5 5l-5 5/; if(!want.test(m)) bad.push(id+": its marker not its sign"); else if(id==="chapel"||id==="santon") seen.push(id); }
+    [["chapel","stAnthony"],["santon","santon"],["sokolnitz",null]].forEach(function(q){ var d=dossierFeature(q[0]), t=d.textContent, N=q[1]&&BUILDINGS.notDrawn[q[1]];
+      if(N&&(t.indexOf("Not drawn here")<0||t.indexOf(N.en)<0)) bad.push(q[0]+": its dossier does not say what is not drawn");
+      if(!N&&t.indexOf("Not drawn here")>=0) bad.push(q[0]+": a dossier says a landmark is not drawn"); });
+    ck("the chapels (WP-08, decision 282 (a)): St Anthony's place marked by a cross and the Santon's by a chapel's site, every other place its diamond; the two places' dossiers say, in notDrawn's words, what is not drawn and why",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"markers checked for every place laid out ("+(seen.join(", ")||"neither chapel in view")+"); the dossiers' lines present");
+  });
+  /* CL-VIS-11: the castle's and the garden's outlines: both on the paper map; on the landscape only with their place selected; none in Clean */
+  guard("the landmarks' outlines (WP-08, CL-VIS-11)",function(){
+    var bad=[], st=[];
+    function look(n){ updateLandmarkCue(); var c=!!(LMCUE.castle&&LMCUE.castle.visible), g=!!(LMCUE.garden&&LMCUE.garden.visible); st.push(n+": "+(c?"castle ":"")+(g?"garden":"")); return [c,g]; }
+    at(570,"staff","study"); var a=look("paper map"); if(!a[0]||!a[1]) bad.push("the paper map without both outlines");
+    at(570,"terrain","study"); a=look("landscape"); if(a[0]||a[1]) bad.push("the landscape outlined with nothing selected");
+    select("t","sokolnitz"); a=look("Sokolnitz selected"); if(!a[0]||a[1]) bad.push("Sokolnitz selected: not the castle alone");
+    select("t","austerlitz"); a=look("Austerlitz selected"); if(a[0]||!a[1]) bad.push("Austerlitz selected: not the garden alone");
+    setPresentation("map"); a=look("Clean"); if(a[0]||a[1]) bad.push("an outline in Clean"); setPresentation("study"); select(null,null);
+    ck("the landmarks' outlines (WP-08, CL-VIS-11): the castle's and the garden's on the paper map; on the landscape each only with its place selected; none in Clean",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):st.join("; "));
+  });
+  } finally {
+    if(playing) stopPlay(); select(null,null); if(planSide!==K.plan){ if(planSide) setPlan(planSide); if(K.plan) setPlan(K.plan); }
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTw();
+    landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc;
+    if(K.sel) select(K.sel.kind,K.sel.id); requestRender(3);
+  }
+  return out;
+}
+function hexToRgbCss(h){ var n=parseInt(h.slice(1),16); return "rgb("+(n>>16&255)+","+(n>>8&255)+","+(n&255)+")"; }
 var AUSTERLITZ_DEBUG=(function(){
   /* roadmap step 1 (T-1): the self-test reads an app canvas's pixels (a texture's mask, a cloth, a puff's edge) only through texData: the
      canvas copied once into a scratch canvas the test code owns ({willReadFrequently:true}, so its reads warn of nothing) and read back
@@ -14820,6 +14898,7 @@ var AUSTERLITZ_DEBUG=(function(){
 
     wp56Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 3 (WP-05, WP-06) */
     wp07Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-07 */
+    wp08cChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08's lettering and landmarks */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
