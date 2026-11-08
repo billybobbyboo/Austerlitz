@@ -768,11 +768,11 @@ and the timeline under input) is merged (#84). Stage 4's main track (`CHANGELOG.
 owner decisions 272 (a), 285 (a)-288 (a) and 290 (a): the 44 carried A grades declared from readings on page images, register section S7; the
 Russian Guard's divided register; Legrand clear of the castle and the III Column; the declared hold, `hold:true`, no retreat leg under an offensive
 status; Kienmayer, Kamensky, Caffarelli, Sokolnitz and Miloradovich at dawn reconciled; sim-test's fight register `MELEE`; the motion block, a gait
-count and three phone limits re-baselined at its own counts on the owner's word) is built on `claude/compassionate-curie-igyzhl` (draft PR #86, for
-review, not merged); WP-04b (the relief refitted between its anchors to GLO-90 and SRTM, within every tolerance line terrain-test holds; the villages off the marsh;
+count and three phone limits re-baselined at its own counts on the owner's word) is merged (#86, `caeb127`); WP-04b (the relief refitted between its anchors to GLO-90 and SRTM, within every tolerance line terrain-test holds; the villages off the marsh;
 the castle's own ground; Krug at the Kruh tract; the streams labelled schematic; owner decisions 289 (a), the texts follow the relief, 291 (a), 292 (a)
-and 293 (a), the motion block and the gait's kept-open counts at its own counts, 294 (a), phone-390-first's framing floor 17 to 16, and 295 (a), two gait cases in motion) is stacked on it, `claude/compassionate-curie-igyzhl-relief`
-(draft PR #87 into WP-03's branch, for review, not merged). WP-15's first batch, alongside and changing no data, is draft PR #85.
+and 293 (a), the motion block and the gait's kept-open counts at its own counts, 294 (a), phone-390-first's framing floor 17 to 16, and 295 (a), two gait cases in motion)
+is merged (#87, `c1222e3`; its `check:visual` passing on `10ad665`, run 42352158836, 3 h 22 min). WP-15's first batch, alongside and changing no data,
+is merged (#85, `ca50cfe`). Stage 4 is done; its build is WP-04b's, `cdca9984...`.
 Stage 5 (WP-07, WP-08; the owner's decisions of 8 November 2026, "Your recommendations for all": 296-300, 275, 282, 284, and 274 settled by 299 (D))
 is built as three draft PRs: WP-07, the map layer during Play (`claude/jolly-carson-yz0yqo-layer`, #89: aging and the event-named rise in Play,
 decision 299 (D); the corps/division band, decision 300; the long Play runs judged by `thresholds.js` `MOTION.LONG`); WP-08's furniture
