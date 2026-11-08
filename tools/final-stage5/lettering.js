@@ -4,7 +4,7 @@
    CL-MAP-18) and the paper map as entered (CL-MAP-05, decision 302 (b)). The wall's shots (tools/audit-post8/visual-maps/capture.js FAR_LOW: looking east over the Goldbach in Watch, the
    Landscape at 09:00 and 12:00, Landscape with counters at 12:00, at 1600 x 900; the Landscape at 12:00 at 1280 x 720), applied the same way on the
    harness's page (window.__aus.apply, then AUSTERLITZ_DEBUG.settle as the audit's lib does), on each build given; for each shot the map layer's
-   drawn items by kind, the formation names by plate (far or full), the rows they stand in and the share of the view their boxes cover (their union
+   drawn items by kind, the formation names by plate (far or full: decision 263 (a)'s lighter plate, the item's farP), the rows they stand in and the share of the view their boxes cover (their union
    on a 4 px grid), with a JPEG of the frame; the Plans view at the Overview (both plans, the Landscape at 09:30, 1600 and 1280 px) and the paper map
    as entered (09:30, 1600, 1280 and 1024 px) likewise, with the items dropped.
    node tools/final-stage5/lettering.js <out-dir> <label>=<build.html> [<label>=<build.html> ...]
@@ -28,7 +28,7 @@ const SHOTS=[
 const READ=function(){
   mlLayout(); var D=[];
   for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.state!=="on"||!it.el) continue; var r=it.el.getBoundingClientRect();
-    D.push({id:k, cat:it.cat, mode:it.mode||null, far:it.el.classList.contains("ml-far"), text:(it.el.textContent||"").replace(/\s+/g," ").trim().slice(0,40),
+    D.push({id:k, cat:it.cat, mode:it.mode||null, far:!!it.farP, step:it.el.classList.contains("ml-far"), text:(it.el.textContent||"").replace(/\s+/g," ").trim().slice(0,40),
       box:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)]}); }
   return {items:D, stats:{items:ML.stats.items, placed:ML.stats.placed, dropped:ML.stats.dropped, droppedIds:(ML.stats.dropped_||[]).slice(), withheld:ML.stats.withheld||0}, clock:clock, presentation:presentation, mode:mode};
 };
