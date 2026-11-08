@@ -18,6 +18,7 @@
      panels and symbols, tried and undone) comes back at once by the full search, without waiting for a second pass with room: in priority
      order, so it takes the room of a lower-priority item whose held place it needs.
    - "both": the two together (question 274 (a)).
+   - "aging-MIN-HOLD" and "aging-...+event" (an alternative to 274 (a)'s rules, below): see agingDefs.
    - "hysteresis": the corps counters above 265 units and the division counters below 235 once the view has moved (CL-MAP-12), 250 for a view
      reached without motion (as before, so every fresh view is laid out as it was).
    node tools/final-stage5/variants.js [build.html] [--only a,b] [--long k1,k2|none] [--full] [--json out.json]
@@ -47,7 +48,30 @@ const FF_B=['  runRest(strat);',
   '    for(var iq=nk;iq<order.length;iq++){ var q=order[iq]; sv.push([q,q.rect,q.lead,q.state,q.ox,q.oy,q.mrect]); FRESH[q.key]=!!mlPlaceItem(q,VW,VH,panels,obst); }\n'+
   '    ML.taken=tk0; sv.forEach(function(s){ var q=s[0]; q.rect=s[1]; q.lead=s[2]; q.state=s[3]; q.ox=s[4]; q.oy=s[5]; q.mrect=s[6]; }); }\n  runRest(strat);'];
 const HYS=['  var wantCorps = dist>250;','  var wantCorps = (typeof MLS!=="undefined"&&!MLS.fresh&&(MLS.moving||MLS.fromMotion))?(lodEch==="corps"?dist>235:dist>265):dist>250;'];
-const VARIANTS=[{name:"none",rep:[]},{name:"event-named",rep:[EVN,EVN_C,EVN_N]},{name:"fresh-first",rep:[FF_A,FF_B]},{name:"both",rep:[EVN,EVN_C,EVN_N,FF_A,FF_B]},
+/* "aging" (not one of question 274 (a)'s rules; measured as an alternative): during Play a formation in view and hidden by the layout for more than
+   MIN battle minutes since it was last drawn rises to PRI (after the highlighted family, before every other formation) until it has been drawn for
+   HOLD battle minutes; the state kept per formation (AGEST), cleared at a discontinuity (a pending mlReset or a clock jump beyond MLS.JUMP_MIN) and
+   not accrued while the clock stands, so a pan, a zoom or a view reached without motion is laid out as before */
+const PRI_C=['add(it,{cat:"counter",mode:"counter",pri:sel?0:(hov||fo)?0.5:inFam?1:base,','add(it,{cat:"counter",mode:"counter",pri:sel?0:(hov||fo)?0.5:inFam?1:mlPriX(id,base),'];
+const PRI_N=['add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:base,','add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:mlPriX(id,base),'];
+function agingDefs(o){ return ['function mlCollect(){','var AGE={MIN:'+o.min+', HOLD:'+o.hold+', PRI:'+o.pri+', EV:'+(o.ev?1:0)+', EVPLAY:'+(o.evPlay?1:0)+'}, AGEST={}, AGEC=null, AGEN={};\n'+
+  'function mlPriPrep(){ if(MLS.pend||AGEC===null||Math.abs(clock-AGEC)>MLS.JUMP_MIN){ AGEST={}; } AGEC=clock; AGEN={};\n'+
+  '  if(AGE.EV&&(!AGE.EVPLAY||playing)&&eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(k.labelOn&&k.e.forms) k.e.forms.forEach(function(id){ for(var x=id,g=0;x&&FORMATIONS[x]&&g<6;x=FORMATIONS[x].parent,g++) AGEN[x]=1; }); }); }\n'+
+  'function mlPriX(id,base){ if(AGEN[id]) return 1.5; var a=AGEST[id]; return a&&a.boost?AGE.PRI:base; }\n'+
+  'function mlAgeAfter(order){ var seen={};\n'+
+  '  order.forEach(function(it){ if(!it.fid||!(it.cat==="counter"||it.cat==="name")) return; var id=it.fid; seen[id]=1; var a=AGEST[id]||(AGEST[id]={last:clock,boost:false,on:null});\n'+
+  '    if(it.state==="on"){ if(!a.boost) a.last=clock; else { if(a.on===null) a.on=clock; if(clock-a.on>=AGE.HOLD){ a.boost=false; a.last=clock; a.on=null; } } }\n'+
+  '    else if(!a.boost&&playing&&clock-a.last>=AGE.MIN){ a.boost=true; a.on=null; } });\n'+
+  '  for(var id in AGEST) if(!seen[id]){ AGEST[id].last=clock; if(!AGEST[id].boost) AGEST[id].on=null; } }\n'+
+  'function mlCollect(){']; }
+const AG_PREP=['var list=mlCollect(), panels=mlPanels();','mlPriPrep(); var list=mlCollect(), panels=mlPanels();'];
+const AG_AFTER=['  /* roadmap step 3 (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11): the item with the keyboard focus is always drawn.','  mlAgeAfter(order);\n  /* roadmap step 3 (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11): the item with the keyboard focus is always drawn.'];
+const aging=o=>[agingDefs(o),PRI_C,PRI_N,AG_PREP,AG_AFTER];
+const VARIANTS=[{name:"none",rep:[]},
+  {name:"aging-10-10",rep:aging({min:10,hold:10,pri:1.6})}, {name:"aging-6-10",rep:aging({min:6,hold:10,pri:1.6})}, {name:"aging-15-15",rep:aging({min:15,hold:15,pri:1.6})},
+  {name:"aging-10-10+event",rep:aging({min:10,hold:10,pri:1.6,ev:true})},
+  {name:"aging-15-15+event-play",rep:aging({min:15,hold:15,pri:1.6,ev:true,evPlay:true})}, {name:"aging-12-15",rep:aging({min:12,hold:15,pri:1.6})},
+  {name:"aging-15-15@1.4+event-play",rep:aging({min:15,hold:15,pri:1.4,ev:true,evPlay:true})},{name:"event-named",rep:[EVN,EVN_C,EVN_N]},{name:"fresh-first",rep:[FF_A,FF_B]},{name:"both",rep:[EVN,EVN_C,EVN_N,FF_A,FF_B]},
   {name:"hysteresis",rep:[HYS]},{name:"both+hysteresis",rep:[EVN,EVN_C,EVN_N,FF_A,FF_B,HYS]}];
 
 /* the formations a live event names, while its label is drawn (the audit's analyse.js evForms, in brief) */
