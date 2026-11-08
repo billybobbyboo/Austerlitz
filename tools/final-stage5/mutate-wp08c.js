@@ -13,6 +13,7 @@ const A="arrow labels and names", P="the Plans view", C="the chapels", O="the la
 const M=[
   {name:"none", rep:[], fails:[]},
   {name:"the name-only labels drawn beside their formations", fails:[A], rep:[['  function dupDrawn(it){ if(!it.dupOf) return false;','  function dupDrawn(it){ if(true) return false;']]},
+  {name:"a name-only label withheld with its formation out of view", fails:[A], rep:[['  function dupDrawn(it){ if(!it.dupOf) return false;','  function dupDrawn(it){ if(!it.dupOf) return false; return true;']]},
   {name:"a label that tells the movement withheld", fails:[A], rep:[['function mlNameOnly(label,f){ if(!f||!label||/\\s/.test(label)) return false;','function mlNameOnly(label,f){ if(!f||!label) return false; return true;']]},
   {name:"the phase's labels kept beside a plan", fails:[P], rep:[['  if(labels&&layerOn.arrows&&!planGroup) ovText.forEach(','  if(labels&&layerOn.arrows) ovText.forEach(']]},
   {name:"the plan labels without their mark", fails:[P], rep:[[`mlContent(it,["pl",t.text,sd||"",PL].join("|"),(sd?'<i class="mln-mark"`,`mlContent(it,["pl",t.text,sd||"",PL].join("|"),(false?'<i class="mln-mark"`]]},

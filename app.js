@@ -9729,6 +9729,19 @@ function wp08cChecks(){
           if(!own&&it.state==="withheld") bad.push(fmtClock(q[0])+" "+q[1]+": \""+lab+"\" withheld with its formation out of view");
           seen.push(fmtClock(q[0])+" "+q[1]+" "+lab+" "+it.state); }
         else if(it.state==="withheld") bad.push(fmtClock(q[0])+" "+q[1]+": \""+lab+"\", which tells a movement, withheld"); } });
+    /* views with such a label in them and its formation out of them (each label lies 6-23 units from its formation, so the views above have none; until the
+       negative control found it, the check could not see a label withheld there): the view's centre 25 units beyond the label, away from its formation, the
+       eye 50 units to its side and 55 above; at least one such label drawn, none withheld */
+    var outDrawn=0;
+    [[570,"hybrid"],[570,"terrain"]].forEach(function(q){ at(q[0],q[1],"study");
+      ovText.forEach(function(o){ var id=ONLY[o.text]; if(!id||o.of!==id||!units[id]||!units[id].block) return;
+        var lp=o.pos, fp=units[id].block.position, dx=lp.x-fp.x, dz=lp.z-fp.z, len=Math.hypot(dx,dz); if(len<1) return; dx/=len; dz/=len;
+        var tx=lp.x+dx*25, tz=lp.z+dz*25; AUSTERLITZ_DEBUG.placeCamera([tx-dz*50,lp.y+55,tz+dx*50,tx,lp.y,tz]); endTw(); AUSTERLITZ_DEBUG.settle(4,true); mlReset("self-test"); mlLayout();
+        var it=null; for(var k in ML.items){ if(ML.items[k].eFrame===ML.frame&&ML.items[k].cat==="overlay"&&k.replace(/^o:/,"").replace(/#\d+$/,"")===o.text) it=ML.items[k]; }
+        var own=inView(ML.items["c:"+id])||inView(ML.items["n:"+id]); if(!it||own) return;
+        if(it.state==="withheld") bad.push(fmtClock(q[0])+" "+q[1]+", its formation out of view: \""+o.text+"\" withheld");
+        else if(it.state==="on"){ outDrawn++; seen.push(fmtClock(q[0])+" "+q[1]+" "+o.text+" drawn, its formation out of view"); } }); });
+    if(!outDrawn) bad.push("no view had a name-only label in it with its formation out of it");
     ck("arrow labels and names (WP-08, CL-MAP-09): an arrow's label that only names its formation not drawn while the formation's own name or counter is in view, drawn where it is not; a label that tells the movement never withheld",
       !bad.length&&seen.length>0, bad.length?"WRONG: "+bad.slice(0,6).join("; "):seen.join("; "));
   });
@@ -9751,14 +9764,24 @@ function wp08cChecks(){
   /* decision 282 (a): the chapels' markers (a cross for St Anthony's, a cross in a ring for the Santon's site; every other place its diamond) and their
      places' dossiers saying what is not drawn, in notDrawn's words */
   guard("the chapels (WP-08, decision 282 (a))",function(){
-    at(570,"staff","study"); MAPCAM.frameField(true); AUSTERLITZ_DEBUG.settle(4,true); mlLayout(); var bad=[], seen=[];
-    for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.mode!=="place") continue; var m=mlPlaceMark(it), id=k.replace(/^t:/,"");
-      var want=id==="chapel"?/v10/:id==="santon"?/<circle/:/l5 5l-5 5/; if(!want.test(m)) bad.push(id+": its marker not its sign"); else if(id==="chapel"||id==="santon") seen.push(id); }
+    /* each chapel's place looked at close (a landmark's name is laid out within 210 units: updateVisibility), on the landscape and on the paper map; every
+       place laid out there checked, and each chapel's own required laid out (until its negative control found it, the check looked only at the paper map
+       as entered, where neither is laid out, and passed with nothing seen) */
+    var bad=[], seen={};
+    /* the views: each chapel's place laid out there on this build (measured: from 60 and 80 units St Anthony's on both maps at 09:30; the Santon's, crowded,
+       from 40 and 50 on the landscape at every clock tried, on the paper map from 90 and 110 at 12:00) */
+    [["chapel",[291,354],{terrain:[570,60,80],staff:[570,60,80]}],["santon",[222,87],{terrain:[570,40,50],staff:[720,90,110]}]].forEach(function(q){ ["terrain","staff"].forEach(function(md){
+      var v=q[2][md]; at(v[0],md,"study"); var w=W(q[1][0],q[1][1]), h=displayHeight(w[0],w[1]);
+      AUSTERLITZ_DEBUG.placeCamera([w[0]+v[1],h+v[2],w[1]+v[1],w[0],h,w[1]]); endTw(); AUSTERLITZ_DEBUG.settle(4,true); mlReset("self-test"); mlLayout();
+      for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.mode!=="place"||it.state!=="on") continue; var m=mlPlaceMark(it), id=k.replace(/^t:/,"");
+        var want=id==="chapel"?/v10/:id==="santon"?/<circle/:/l5 5l-5 5/; if(!want.test(m)) bad.push(md+": "+id+": its marker not its sign"); else if(id===q[0]) seen[id+" ("+md+")"]=1; }
+      if(!seen[q[0]+" ("+md+")"]) bad.push(md+": "+q[0]+"'s place not laid out where it is looked at close"); }); });
+    seen=Object.keys(seen);
     [["chapel","stAnthony"],["santon","santon"],["sokolnitz",null]].forEach(function(q){ var d=dossierFeature(q[0]), t=d.textContent, N=q[1]&&BUILDINGS.notDrawn[q[1]];
       if(N&&(t.indexOf("Not drawn here")<0||t.indexOf(N.en)<0)) bad.push(q[0]+": its dossier does not say what is not drawn");
       if(!N&&t.indexOf("Not drawn here")>=0) bad.push(q[0]+": a dossier says a landmark is not drawn"); });
     ck("the chapels (WP-08, decision 282 (a)): St Anthony's place marked by a cross and the Santon's by a chapel's site, every other place its diamond; the two places' dossiers say, in notDrawn's words, what is not drawn and why",
-      !bad.length, bad.length?"WRONG: "+bad.join("; "):"markers checked for every place laid out ("+(seen.join(", ")||"neither chapel in view")+"); the dossiers' lines present");
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"markers checked for every place laid out where each chapel is looked at close ("+seen.join(", ")+"); the dossiers' lines present");
   });
   /* CL-VIS-11: the castle's and the garden's outlines: both on the paper map; on the landscape only with their place selected; none in Clean */
   guard("the landmarks' outlines (WP-08, CL-VIS-11)",function(){
