@@ -1,0 +1,393 @@
+{
+ "build": "wp08c.html",
+ "md5": "a8587231cdd5dce909b4d0e458b50f37",
+ "full": true,
+ "variants": [
+  {
+   "name": "none",
+   "totals": {
+    "jumps": 227,
+    "pops": 959,
+    "flicker": 12,
+    "lod": 105
+   },
+   "failures": [],
+   "drawn": 33008,
+   "drawnBaselines": 32534,
+   "runs": [
+    {
+     "key": "hybrid-pan",
+     "jumps": 6,
+     "pops": 61,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1436,
+      "inView": 2189,
+      "longestMs": 3033
+     }
+    },
+    {
+     "key": "hybrid-zoom",
+     "jumps": 18,
+     "pops": 108,
+     "flicker": 1,
+     "lod": 24,
+     "track": {
+      "on": 1245,
+      "inView": 2203,
+      "longestMs": 2133
+     }
+    },
+    {
+     "key": "hybrid-orbit",
+     "jumps": 7,
+     "pops": 134,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1537,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-glide",
+     "jumps": 12,
+     "pops": 75,
+     "flicker": 1,
+     "lod": 12,
+     "track": {
+      "on": 1199,
+      "inView": 1786,
+      "longestMs": 1700
+     }
+    },
+    {
+     "key": "hybrid-play",
+     "jumps": 11,
+     "pops": 96,
+     "flicker": 0,
+     "lod": 2,
+     "track": {
+      "on": 2079,
+      "inView": 3388,
+      "longestMs": 4033
+     }
+    },
+    {
+     "key": "paper-pan",
+     "jumps": 0,
+     "pops": 0,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1274,
+      "inView": 1274,
+      "longestMs": 0
+     }
+    },
+    {
+     "key": "paper-zoom",
+     "jumps": 11,
+     "pops": 95,
+     "flicker": 2,
+     "lod": 0,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-glide",
+     "jumps": 8,
+     "pops": 45,
+     "flicker": 1,
+     "lod": 27,
+     "track": {
+      "on": 551,
+      "inView": 822,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-play",
+     "jumps": 3,
+     "pops": 38,
+     "flicker": 1,
+     "lod": 2,
+     "track": {
+      "on": 1533,
+      "inView": 1694,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-pan",
+     "jumps": 13,
+     "pops": 37,
+     "flicker": 0,
+     "lod": 2,
+     "track": {
+      "on": 1835,
+      "inView": 2038,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-zoom",
+     "jumps": 32,
+     "pops": 48,
+     "flicker": 1,
+     "lod": 30,
+     "track": {
+      "on": 1764,
+      "inView": 2207,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-orbit",
+     "jumps": 29,
+     "pops": 88,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1836,
+      "inView": 2366,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "land-play",
+     "jumps": 23,
+     "pops": 71,
+     "flicker": 5,
+     "lod": 2,
+     "track": {
+      "on": 2720,
+      "inView": 3146,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "low-pan",
+     "jumps": 7,
+     "pops": 9,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 806,
+      "inView": 861,
+      "longestMs": 533
+     }
+    },
+    {
+     "key": "low-orbit",
+     "jumps": 17,
+     "pops": 30,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 649,
+      "inView": 859,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "low-zoom",
+     "jumps": 30,
+     "pops": 24,
+     "flicker": 0,
+     "lod": 4,
+     "track": {
+      "on": 441,
+      "inView": 590,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-pan+point",
+     "jumps": 6,
+     "pops": 61,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1436,
+      "inView": 2189,
+      "longestMs": 3033
+     }
+    },
+    {
+     "key": "hybrid-pan+real",
+     "jumps": 6,
+     "pops": 61,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1436,
+      "inView": 2189,
+      "longestMs": 3033
+     }
+    },
+    {
+     "key": "hybrid-orbit+point",
+     "jumps": 7,
+     "pops": 134,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1537,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-orbit+real",
+     "jumps": 7,
+     "pops": 134,
+     "flicker": 0,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 1537,
+      "inView": 2548,
+      "longestMs": 1833
+     }
+    },
+    {
+     "key": "hybrid-zoom+point",
+     "jumps": 18,
+     "pops": 108,
+     "flicker": 1,
+     "lod": 24,
+     "hover": null,
+     "track": {
+      "on": 1245,
+      "inView": 2203,
+      "longestMs": 2133
+     }
+    },
+    {
+     "key": "hybrid-zoom+real",
+     "jumps": 18,
+     "pops": 108,
+     "flicker": 1,
+     "lod": 24,
+     "hover": null,
+     "track": {
+      "on": 1245,
+      "inView": 2203,
+      "longestMs": 2133
+     }
+    },
+    {
+     "key": "paper-zoom+point",
+     "jumps": 11,
+     "pops": 95,
+     "flicker": 2,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "paper-zoom+real",
+     "jumps": 11,
+     "pops": 95,
+     "flicker": 2,
+     "lod": 0,
+     "hover": null,
+     "track": {
+      "on": 852,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-orbit+sel",
+     "jumps": 15,
+     "pops": 121,
+     "flicker": 1,
+     "lod": 0,
+     "track": {
+      "on": 1524,
+      "inView": 2548,
+      "longestMs": 2100
+     }
+    },
+    {
+     "key": "paper-zoom+sel",
+     "jumps": 26,
+     "pops": 89,
+     "flicker": 1,
+     "lod": 0,
+     "track": {
+      "on": 821,
+      "inView": 1232,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "hybrid-pan+fr",
+     "jumps": 7,
+     "pops": 58,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1387,
+      "inView": 2112,
+      "longestMs": 3033
+     }
+    },
+    {
+     "key": "hybrid-pan+al",
+     "jumps": 9,
+     "pops": 41,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 1010,
+      "inView": 1321,
+      "longestMs": 1467
+     }
+    },
+    {
+     "key": "paper-play+al",
+     "jumps": 5,
+     "pops": 34,
+     "flicker": 1,
+     "lod": 2,
+     "track": {
+      "on": 1182,
+      "inView": 1331,
+      "longestMs": 667
+     }
+    },
+    {
+     "key": "phone-pan+touch",
+     "jumps": 1,
+     "pops": 56,
+     "flicker": 0,
+     "lod": 0,
+     "track": {
+      "on": 257,
+      "inView": 696,
+      "longestMs": 1367
+     }
+    }
+   ],
+   "long": {},
+   "console": [],
+   "secs": 610
+  }
+ ],
+ "chromium": "141.0.7390.37"
+}

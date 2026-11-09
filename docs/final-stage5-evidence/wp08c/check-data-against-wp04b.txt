@@ -1,0 +1,18 @@
+original stage4wp04b-cdca9984.html: 1144 top-level statements;  patched austerlitz-command-map.html: 1161
+
+DATA (must be byte-identical):
+  CHANGED historical datasets: 27 declarations, 1,021,882 bytes  changed: BUILDINGS
+  identical geography and relief model: 53 declarations, 24,119 bytes
+  identical movement, strength and confidence model: 35 declarations, 11,605 bytes
+  identical historical appearance model (Stage 6B): 1 declarations, 630 bytes
+  identical derived readings, sight and knowledge: 17 declarations, 5,366 bytes
+  identical data in app.js (roadmap step 2, D-5): 7 declarations, 3,097 bytes
+  identical narrative claims (roadmap step 4): 3 declarations, 94,275 bytes
+
+Rendering and interface declarations changed (15): init, redrawGround, applyOverlayOpacity, planLabel, setPlan, ML, mlCollect, mlLayout, paintLegend, updateVisibility, LABELS, paintKey, dossierFeature, AUSTERLITZ_DEBUG
+Added (17): LMCUE, buildLandmarkCue, updateLandmarkCue, planCurSide, CORPS_AT,CORPS_HYST, MLAGE, mlPriPrep, mlPriX, mlAgeAfter, PLACE_SIGN, mlPlaceMark, mlNameOnly, ML_DUP_PRI,PLAN_DIM, landmarkNotDrawn, wp07Checks, wp08cChecks, hexToRgbCss
+Removed (0): none
+
+Outside the script: CSS changed (+292 bytes; the original rules are edited); markup changed; closing identical
+
+DATA CHANGED: 1

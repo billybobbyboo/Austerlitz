@@ -680,6 +680,8 @@ body.firstrun-on #openingbtn{display:none}
 .legend .ar::after{content:"";position:absolute;right:-8px;top:-3px;width:9px;height:11px;background:inherit;
   clip-path:polygon(0 0,100% 50%,0 100%)}
 .legend .ar[data-key="arrow-al"]::after{clip-path:polygon(0 0,100% 50%,0 100%,38% 50%)}
+.legend .mk2{display:block;width:16px;height:16px;flex:0 0 auto}   /* WP-08 (decision 282 (a)): the chapels' marker samples */
+.legend .mk2 svg{display:block;width:16px;height:16px}
 .legend .hlt{width:5px;height:15px;border-radius:1px;margin:0 7px}
 .legend .bnd{width:20px;height:0;border-top:2px solid}
 .legend .stg{width:20px;height:0;border-top:2px dashed var(--text-muted)}
@@ -720,6 +722,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .ml-item.ml-fading{z-index:-1;pointer-events:none}
 .mlt-small.ml-far{font-size:var(--t-micro);line-height:14px}
 .mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
+.mlt-pl{display:flex;align-items:center;gap:5px}   /* WP-08 (CL-MAP-11): a plan label with its side's mark */
 .mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
 /* Stage 5B (section A.4 item 4): the name's position-grade badge in the landscape, the counter's badge inline (decision 4), at the
    name's own size: on a name it is read with the name, so the 12 px floor for what is needed to follow the battle (decision 16) */
