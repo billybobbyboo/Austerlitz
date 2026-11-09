@@ -2,6 +2,8 @@
 /* The final audits' Stage 6, WP-10 (CL-VIS-01): the gait-on-the-ground check's cases beyond H_TOL, listed with their formation, clock and error. A copy of
    the build is patched to record every case hRec judges beyond H_TOL (window.__hOver), and AUSTERLITZ_DEBUG.selfTest() run on a fresh page.
    node tools/final-stage6/gait-cases.js <build.html> <out.json>. Measurement only. */
+"use strict";
+const fs=require("fs"),path=require("path");
 const L=require(path.join(__dirname,"..","stage8","lib.js"));
 const A="function hRec(key,r,where,px){ var s=HS[key]||(HS[key]={a:[],w:0,where:\"\",rest:0,lift:[],px:0,pxWhere:\"\"}); var a=Math.abs(r[0]);";
 const B=A+" var _P=key.split(\"|\"), _T=_P[0]===\"4\"?0.03:0.03*GEOREF.EXAG/4; if(a>_T) (window.__hOver=window.__hOver||[]).push(key+\" \"+where.replace(/ \\(playing\\)| \\(paused\\)/,'')+\" \"+a.toFixed(3));";
