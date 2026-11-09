@@ -2,8 +2,9 @@
 
 ## 2026-11 · Final audits' roadmap, Stage 5 (2 of 3): WP-08's furniture (the caption, the key, north, the glyphs, the selection, the card)
 
-**Status: on `claude/jolly-carson-yz0yqo-furniture` (draft PR #90 into `main`, for review, not merged), reconciled with `main` after WP-07 (#89)
-and WP-08's lettering (#91, #92) were merged (below: the merged build is 2,963,994 bytes, md5 `3388b70b...`).** Part of WP-08 of
+**Status: merged into `main` (#90, `496086c`), reconciled with `main` after WP-07 (#89) and WP-08's lettering (#91, #92) were merged (below:
+the merged build is 2,963,994 bytes, md5 `3388b70b...`, `main`'s build); built on `claude/jolly-carson-yz0yqo-furniture`. `check:visual` on CI
+passed on the reconciled build (run 42556903824 on `ecfb91a`, 4 h 11 min; below).** Part of WP-08 of
 `docs/ROADMAP_FINAL_AUDIT.md`: CL-MAP-03, -04, -06, -08, -10, -13 and -16. Presentation only: no data file and no guarded declaration changes
 (`check:data`: every data declaration identical to `archive/stage4wp04b-cdca9984.html`). The rest of WP-08 (CL-MAP-05, -09, -11, -15, -18, CL-VIS-11,
 owner questions 275, 282 and 284) is the third PR, stacked on WP-07's (the same priority rules). The owner's decisions of 8 November 2026 ("Your
@@ -141,8 +142,8 @@ No threshold, drop limit or baseline moved. On the merged build (2,963,994 bytes
 - The rest of WP-08 is the stacked PR after WP-07's; CL-MAP-14 and CL-MAP-17 are WP-07's.
 ## 2026-11 · Final audits' roadmap, Stage 5 (3 of 3): WP-08's lettering and landmarks
 
-**Status: on `claude/jolly-carson-yz0yqo-lettering`, stacked on WP-07 (`claude/jolly-carson-yz0yqo-layer`, draft PR #89); draft PR #91 into
-WP-07's branch, for review, not merged.** The rest of WP-08 of `docs/ROADMAP_FINAL_AUDIT.md`: CL-MAP-05, -09, -11, -15, -18 and CL-VIS-11, with the owner's
+**Status: merged: PR #91 into WP-07's branch (`claude/jolly-carson-yz0yqo-layer`, `0c917db`), after WP-07's own merge into `main` (#89), and
+brought into `main` by #92 (`663ed6f`); built on `claude/jolly-carson-yz0yqo-lettering`, stacked on WP-07.** The rest of WP-08 of `docs/ROADMAP_FINAL_AUDIT.md`: CL-MAP-05, -09, -11, -15, -18 and CL-VIS-11, with the owner's
 questions 275, 282 and 284; stacked on WP-07 because the same priority rules lay out both (its findings measured on WP-07's layer). The owner's
 decisions of 8 November 2026 ("Your recommendations for all"): **275 (a)**, measured, then **302 (b)** (below: the paper map's lettering as it is);
 **282** as recommended, (a) for the two chapels, (b) for the garden, whose restrained cue is CL-VIS-11's; **284 (b)**, the wall of names as decided,
@@ -263,7 +264,8 @@ On the final build (`572b0935...`, 2,935,062 bytes), Chromium 141, the pinned br
 
 ## 2026-11 · Final audits' roadmap, Stage 5 (1 of 3): WP-07, the map layer in motion
 
-**Status: on `claude/jolly-carson-yz0yqo-layer` (draft PR #89 into `main`, for review, not merged).** WP-07 of `docs/ROADMAP_FINAL_AUDIT.md`:
+**Status: merged into `main` (#89, `d56764f`); built on `claude/jolly-carson-yz0yqo-layer`. WP-08's lettering, stacked on it, followed by #91
+and #92 (`663ed6f`), and WP-08's furniture by #90 (`496086c`).** WP-07 of `docs/ROADMAP_FINAL_AUDIT.md`:
 CL-MAP-01, -02, -07 and -12, CL-TEST-02 and -14; CL-MAP-14 and -17 measured and kept as accepted. Presentation only: no data file and no guarded
 declaration changes (`check:data`: every data declaration identical to `archive/stage4wp04b-cdca9984.html`). The owner's decisions of 8 November
 2026 ("Your recommendations for all"), each put with its measured numbers: **299 (D)**, which settles question 274 (its option (a), measured, failed
