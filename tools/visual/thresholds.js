@@ -325,7 +325,12 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    "hybrid-orbit" [1564,2548,1833] to [1520,2548,1833], "hybrid-orbit+point" [1564,2548,1833] to [1520,2548,1833], "hybrid-orbit+sel"
    [1593,2548,2033] to [1524,2548,2100], "land-play" [2615,3146,667] to [2603,3146,667], "low-orbit" [665,859,633] to [649,859,667], "low-zoom"
    [457,590,667] to [441,590,667]; no run's formation-frames in view changed; every other baseline kept (the runs above it not moved) */
-const MOTION={JUMPS:251, POPS:1049, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:2, FRAME_MS:1000/30,
+/* the final audits' Stage 5, WP-08's lettering (owner decision 303 (a), 8 November 2026): FLICKER 10 to 12. Measured on this pass's build against WP-07's
+   (check:visual's block, Chromium 141): with an arrow's label that only names its formation withheld while the formation is in view (CL-MAP-09), the
+   formation names get the room sooner and the layer's rotation in the Landscape (CL-MAP-17, accepted) blinks three of them once more (the Russian Guard
+   cavalry in "land-zoom", Rivaud and Liechtenstein in "land-play"): flickers 9 to 12, jumps 249 to 227, pops 1,043 to 959, every run's visibility at
+   or above its baseline (formation-frames drawn 33,008 against the baselines' 32,534). Every other ceiling unchanged */
+const MOTION={JUMPS:251, POPS:1049, FLICKER:12, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:2, FRAME_MS:1000/30,
   /* VIS[run key] = [drawn, in view, longest hidden ms]: the prerequisite's build (the 8C build with the protected items' fade fixed, section
      16.1), Chromium 141, check:selftest's block; a key is the motion's id, "+sel" with Saint-Hilaire's division selected, "+fr"/"+al" under a
      headquarters' reading, "+touch" for the finger's pan at 390 px (tools/visual/motion.js runKey) */

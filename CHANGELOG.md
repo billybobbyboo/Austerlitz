@@ -1,5 +1,127 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 5 (3 of 3): WP-08's lettering and landmarks
+
+**Status: on `claude/jolly-carson-yz0yqo-lettering`, stacked on WP-07 (`claude/jolly-carson-yz0yqo-layer`, draft PR #89); draft PR #91 into
+WP-07's branch, for review, not merged.** The rest of WP-08 of `docs/ROADMAP_FINAL_AUDIT.md`: CL-MAP-05, -09, -11, -15, -18 and CL-VIS-11, with the owner's
+questions 275, 282 and 284; stacked on WP-07 because the same priority rules lay out both (its findings measured on WP-07's layer). The owner's
+decisions of 8 November 2026 ("Your recommendations for all"): **275 (a)**, measured, then **302 (b)** (below: the paper map's lettering as it is);
+**282** as recommended, (a) for the two chapels, (b) for the garden, whose restrained cue is CL-VIS-11's; **284 (b)**, the wall of names as decided,
+re-measured on WP-07's layer; **303 (a)**, the motion block's flicker ceiling 10 to 12. **A small data task**: `BUILDINGS` (`appearance.js`) changes,
+the two chapels' `notDrawn.why` saying what the map now does in place of the alternatives put to the owner (below); every other data declaration
+identical. `check:data`'s reference moves to this build, `archive/stage5wp08-572b0935.html`. `austerlitz-command-map.html` is now 2,935,062 bytes, md5
+`572b0935f585ccda496938353f7e21f7` (WP-07's 2,912,695, `e5e17e64...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **CL-MAP-09, an arrow's label that only names its formation (`app.js` `mlNameOnly`, `ML_DUP_PRI`, `mlLayout`'s `dupDrawn`).** Six bound arrows'
+  labels are a formation's name alone ("Kienmayer", "Saint-Hilaire", "Vandamme", "Caffarelli", "Suchet", "Bagration"), drawn in the same serif plate
+  beside the formation's own name, so that each name stood twice. *Is:* such a label (one word, the formation's short name or a word of its
+  commander's) is withheld while the formation's own counter or name is in view in the pass, laid out or not, so that it does not blink with a name
+  the layer rotates (tied to the name's drawn state it added flickers in the Landscape's zoom and Play, measured); where the formation's own is out
+  of view it is drawn as before, ranked after the formation names (7.95) and before the places. A label that tells the movement ("Friant retakes
+  Telnitz", "Vandamme takes the height") is never withheld. A withheld label is neither placed nor dropped: a tally of its own, `ML.stats.withheld`,
+  so that it is not counted against the drop limits; `runtime-test.js`'s invariant that each item the layer collects is counted exactly once (Stage 2D)
+  now sums it too, as strict as before over one more state (on this branch's build before the tally it failed: 36 items in the paper map's phase 4
+  not each counted once), and `tools/visual/measure.js` records it in the harness's reports.
+- **CL-MAP-11, the Plans view (`app.js` `planLabel`, `setPlan`, `applyOverlayOpacity`, `mlCollect`, `PLAN_DIM`, `LABELS.plans`).** About 40 serif
+  labels of both plans and of the current phase shared one style and the room; at 1280 px plan labels were dropped. *Is:* while the Plans tab shows a
+  plan the current phase's arrow labels leave the layer and its arrows stand back to 0.35 of their opacity (full again once the plan is cleared); each
+  plan label carries its side's mark (the side's token, the formation names' 8 px square) and is named with its plan ("The French plan, ..."). The
+  plans' own drawing as before (decision 93).
+- **CL-MAP-18, the Littawa in the Plans view:** measured on the audit's shot (both plans at the Overview, the Landscape at 09:30): drawn at 1600 px and
+  dropped at 1280 px on `main`, WP-07 and this build alike; kept as accepted (section 22.4's decision). With the phase's labels out of the layer, at
+  1600 px no plan label is dropped (`main`: "The concealed centre"), 12 items dropped against 13; at 1280 px two plan labels dropped against three,
+  14 items against 17.
+- **CL-MAP-05, the paper map's lettering as entered (decisions 275 (a), 302 (b)).** Measured: the narrative's places ranked before the counters on the
+  paper map at 5.5 drew none of them as entered (the counters take the room first); at 2.5 the names stood as entered but the paper map's motion runs
+  lost formations (paper-zoom 852 to 688 formation-frames drawn, paper-pan a formation hidden 600 ms against 0, flickers 14), a trade the owner
+  declined: decision 302 (b), the paper map's lettering as it is (the names appear on zoom, within decisions 24 and 39); a base lettering drawn under
+  the layer is a possible follow-up, not built.
+- **Decision 282, the chapels (`app.js` `PLACE_SIGN`, `mlPlaceMark`, `landmarkNotDrawn`, `paintKey`; `shell.html`'s key rows).** St Anthony's chapel
+  above Augezd was a name on the ground only, and the Santon's chapel absent, so that Bosenitz's church seemed to crown the Santon. *Is:* the place
+  marker of St Anthony's place a chapel's cross in the diamond's box (10 px; no layout changes), the Santon's a chapel's site, a cross in a ring, on
+  the Santon's place (its exact spot on the hill not read: approximate); each named so to a screen reader; their places' dossiers say what is not
+  drawn and why, in `BUILDINGS.notDrawn`'s words ("Not drawn here"); the key's rows while each is laid out. No chapel is drawn as a building, so no
+  hour of the Santon chapel's destruction is fixed. The garden (b): as built, its cue CL-VIS-11's.
+- **CL-VIS-11, the castle and the garden (`app.js` `LMCUE`, `buildLandmarkCue`, `updateLandmarkCue`).** Neither landmark's role read at symbolic
+  scale: the castle smaller than the farmhouses beside it, the garden a few trees at the Overview and no sign on the paper map. *Is:* a restrained
+  outline on the drawn ground in the annotation colour, at their sites, neither moved nor grown (decisions 259 (a), 261 (a), 266 (a)): the castle and
+  its farm (`CASTLE_GROUND`'s ellipse, the ground its buildings stand on) and the garden (`GARDENS`' traced outline); always on the paper map, on the
+  landscape while Sokolnitz or Austerlitz is selected (their dossiers name them), none in Clean; seated on the ground at each factor as the plateau's
+  outline is; one key row while either is drawn. No new budget: two line strips of 49 and 53 points, one draw call each while shown.
+- **The data task (`appearance.js` `BUILDINGS.notDrawn.stAnthony.why`, `.santon.why`).** *Was:* each ended "Alternatives: ..." (put to the owner
+  in 8G). *Is:* each says what the map does (St Anthony's "Its place is marked by a chapel's cross on the map, and the chapel is not drawn as a
+  building"; the Santon's "Its site is marked on the Santon's place by a chapel's site sign, approximate (its spot on the hill is not read), and no
+  standing chapel is drawn, so that no hour of destruction is fixed"), the alternatives kept in brackets as the record of what was put. *Why:*
+  decision 282 (a) changed what the map draws; the sources sheet and the dossiers read these words. No reading, coordinate or claim changes; the
+  sources each cites are as before (wolnykt2_1858, Stutterheim 1806, ujezd2025; wolnykt3_1860, wolny1837).
+- **Decision 303 (a) (`thresholds.js` `MOTION.FLICKER` 10 to 12).** With CL-MAP-09's labels withheld the formation names get their room sooner, and
+  the Landscape's rotation (CL-MAP-17, accepted) blinks three of them once more (the Russian Guard cavalry in `land-zoom`, Rivaud and Liechtenstein
+  in `land-play`): flickers 9 to 12. A steadier rule (the in-view test above, in place of the name's drawn state) was measured first and gave 12 too.
+  Every other ceiling unchanged; every run's visibility at or above its baseline.
+- **Decision 284 (b), the low views' wall of names (CL-MAP-15), re-measured on WP-07's layer** (`tools/final-stage5/lettering.js`, the audit's own
+  shots): unchanged on `main`, WP-07 and this build: at 12:00, 31 items laid out, 19 of them
+  formation names (16 on decision 263 (a)'s far plate, 3 full), all in the view's upper half (y 97-375 of 900 px at 1600, 41-326 of 720 at 1280), their
+  boxes 3.8% and 5.9% of the view; at 09:00, 13 names (10 far); with counters, none (the counters stand for them). WP-07's rules change what is drawn
+  while the view moves or the clock plays, not a view reached at rest, so the wall stands as decided; thinning the far names by priority and distance
+  remains question 284's option (a), not taken.
+
+### Measured on this build (Chromium 141, the pinned browser)
+
+- The motion block's 16: 227 jumps, 959 pops, 12 flickers, 105 level-of-detail switches (WP-07's 249, 1,043, 9, 105; the
+  ceilings 251, 1,049, 12 and 130), every run's visibility at or above its baseline (33,008 formation-frames drawn against the baselines' 32,534); 0
+  failing lines (`docs/final-stage5-evidence/wp08c/motion-block-5c.json`, `tools/final-stage5/variants.js --only none`).
+- The map layer's drops in every case within its limit: `check:visual` on CI passed (run 42476667626, below); no limit moved.
+
+### Checks added, each failing without its fix
+
+- **The self-test's WP-08 lettering block** (`app.js` `wp08cChecks`, four checks, the manifest 326 to 330): the arrows' labels and names at 09:30
+  and 11:00 on the landscape and with counters (a name-only label never drawn beside its formation's own, drawn where it is not; a label that tells
+  the movement never withheld); the Plans view (none of the phase's labels in the layer, each plan label its side's mark in its token's colour and
+  named with its plan, the arrows at most 0.35 of their opacity and restored after); the chapels (St Anthony's cross, the Santon's site, every other
+  place its diamond; the two dossiers' lines in `notDrawn`'s words, and no other); the landmarks' outlines (both on the paper map, on the landscape
+  each only with its place selected, none in Clean). Negative controls (`tools/final-stage5/mutate-wp08c.js`,
+  `docs/final-stage5-evidence/wp08c/mutate-wp08c.json`): 11 of 11 as expected, each mutation failing its own check alone (the name-only
+  labels drawn beside their formations; a name-only label withheld with its formation out of view; a label that tells the movement withheld; the phase's
+  labels kept beside a plan; the plan labels without their mark; the phase's arrows not dimmed; St Anthony's place a diamond again; no line in the places'
+  dossiers; the outlines always on the landscape; no outline on the paper map), the build passing all. Their first run found two checks that could not
+  fail: the chapels' looked only at the paper map as entered, where neither chapel's place is laid out (now each chapel looked at close on both maps,
+  its place required laid out), and no view of the labels' check had a name-only label with its formation out of view (each lies 6-23 units from its
+  formation; now a view with the label at its edge, at least one such label required drawn).
+- **The layer's tallies** (`runtime-test.js`, Stage 2D's invariant, every mode and phase and the stabiliser while moving): each item the layer collects
+  counted exactly once, the withheld among them. On this branch's build before the tally (`a8587231...`) it failed (36 items in the paper map's phase 4
+  not each counted once); on this build it passes.
+- **`check:data`'s comparison with WP-04b's reference** (`docs/final-stage5-evidence/wp08c/check-data-against-wp04b.txt`): `BUILDINGS` the one data
+  declaration changed, every other identical; the reference then moved to this build.
+
+### Verified
+
+On the final build (`572b0935...`, 2,935,062 bytes), Chromium 141, the pinned browser:
+
+- `npm test`: all nine suites and the height guard pass (`runtime-test.js` errors 0, "console.warn unique" 0, the layer's tallies each item counted
+  once; `binding-test.js` 400 checks, 0 failed; `test.js` 0 errors, its one warning acknowledged; `redteam.js` 0 findings, `LANG_ALLOW` 2 entries).
+- `npm run check:data` against this build's reference, `archive/stage5wp08-572b0935.html`: all 143 data declarations byte-identical; against WP-04b's
+  reference, `BUILDINGS` the one data declaration changed (above).
+- `npm run check:chronology`: 0 errors (70 moves with a timed statement, 66 consistent, the four named conflicts early; the movement audit 0 findings).
+- `npm run check:contrast`: 45 states reached (10 as a phone), 7,190 text elements, 0 below AA, 0 under 10.5 px, 0 font failures, 0 console messages;
+  the boot cases 8 of 8 (the context's loss 189 warnings, at most 248).
+- `npm run check:selftest`: 330 checks, every one passing; the only failing lines the manifest's (330 against 326, the four checks above not in it), then
+  the manifest written from that run, 326 to 330, 4 added, 0 removed. Its motion block's 16: 227 jumps, 959 pops, 12 flickers, 105 level-of-detail
+  switches, as measured above; every run's line passing, the long Play runs' bar met.
+- `npm run check:baseline`: `572b0935f585ccda496938353f7e21f7`, 2,935,062 bytes.
+- `npm run check:visual` on CI (run 42476667626 on `da8a8a4`, build `572b0935...`, `checks.yml`, `visual: true`): passed, every job (`check:visual`
+  in 2 h 3 min, its 39 cases and live blocks; `npm test`, `check:data`, `check:chronology`, `check:contrast` and `check:selftest` on the same commit).
+
+### What remains uncertain, and what is handed on
+
+- Historical: where the Santon's chapel stood on the hill and at what hour it was destroyed are not read; St Anthony's form and state on the day
+  are not known (as `BUILDINGS.notDrawn` says). The marks are signs at the places, not the buildings.
+- Design values: `ML_DUP_PRI` 7.95, `PLAN_DIM` 0.35, the outlines' 0.9 opacity and 0.6-unit lift.
+- The paper map's lettering as entered (decision 302 (b)) and the wall of names (decision 284 (b)) are as decided; a base lettering under the layer
+  and thinning the far names remain open options.
+- The three Stage 3 reading-scope items are not touched (handed to WP-09).
+
 ## 2026-11 · Final audits' roadmap, Stage 5 (1 of 3): WP-07, the map layer in motion
 
 **Status: on `claude/jolly-carson-yz0yqo-layer` (draft PR #89 into `main`, for review, not merged).** WP-07 of `docs/ROADMAP_FINAL_AUDIT.md`:

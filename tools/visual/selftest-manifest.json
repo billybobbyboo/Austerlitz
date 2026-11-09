@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build e5e17e648ac15d104df24858f73b67bd (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "e5e17e648ac15d104df24858f73b67bd",
- "count": 326,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 572b0935f585ccda496938353f7e21f7 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "572b0935f585ccda496938353f7e21f7",
+ "count": 330,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -328,6 +328,10 @@
   "timeline tips (WP-06, CL-UX-04): a tip over a control of the timebar yields to it when the pointer comes over the control (the control then under the pointer); elsewhere over the tip it stays",
   "map input (WP-06, CL-UX-19): a modal sheet opened mid-drag ends the drag; the map does not pan under it",
   "focus (WP-06, CL-UX-20): a focused control the layout hides at a resize hands the focus to a shown successor, also where the browser has taken it already",
-  "the corps and divisions (WP-07, CL-MAP-12): once the view has moved the corps counters above 265 units and the divisions below 235, the level kept between; a view reached afresh at 250 as before"
+  "the corps and divisions (WP-07, CL-MAP-12): once the view has moved the corps counters above 265 units and the divisions below 235, the level kept between; a view reached afresh at 250 as before",
+  "arrow labels and names (WP-08, CL-MAP-09): an arrow's label that only names its formation not drawn while the formation's own name or counter is in view, drawn where it is not; a label that tells the movement never withheld",
+  "the Plans view (WP-08, CL-MAP-11): a plan shown, the phase's labels out of the layer and its arrows at most 0.35 of their opacity (restored after), each plan label its side's mark and named with its plan",
+  "the chapels (WP-08, decision 282 (a)): St Anthony's place marked by a cross and the Santon's by a chapel's site, every other place its diamond; the two places' dossiers say, in notDrawn's words, what is not drawn and why",
+  "the landmarks' outlines (WP-08, CL-VIS-11): the castle's and the garden's on the paper map; on the landscape each only with its place selected; none in Clean"
  ]
 }
