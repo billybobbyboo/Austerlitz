@@ -1,0 +1,543 @@
+[
+ {
+  "id": "hybrid-long",
+  "view": "hybrid",
+  "from": 510,
+  "to": 690,
+  "frames": 1591,
+  "playFrames": 1560,
+  "clockFrom": 510.16666666666663,
+  "clockTo": 689.9999999999753,
+  "keepHidden": 0,
+  "keepHiddenKeys": [],
+  "overlapFrames": 0,
+  "unknownDrawn": 0,
+  "forms": [
+   {
+    "id": "gqg",
+    "playInView": 1560,
+    "playShare": 0.978,
+    "longestMin": 1.83,
+    "longestMs": 400
+   },
+   {
+    "id": "sthilaire",
+    "playInView": 1560,
+    "playShare": 0.764,
+    "longestMin": 8.17,
+    "longestMs": 3333
+   },
+   {
+    "id": "vandamme",
+    "playInView": 1560,
+    "playShare": 0.627,
+    "longestMin": 10.23,
+    "longestMs": 4000
+   },
+   {
+    "id": "legrand",
+    "playInView": 1560,
+    "playShare": 0.897,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "friant",
+    "playInView": 1560,
+    "playShare": 0.828,
+    "longestMin": 6.17,
+    "longestMs": 1233
+   },
+   {
+    "id": "bourcier",
+    "playInView": 1400,
+    "playShare": 0.871,
+    "longestMin": 8.33,
+    "longestMs": 1667
+   },
+   {
+    "id": "caffarelli",
+    "playInView": 1560,
+    "playShare": 0.829,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "suchet",
+    "playInView": 1560,
+    "playShare": 0.79,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "kellermann",
+    "playInView": 1560,
+    "playShare": 0.356,
+    "longestMin": 30,
+    "longestMs": 9667
+   },
+   {
+    "id": "nansouty",
+    "playInView": 1560,
+    "playShare": 0.413,
+    "longestMin": 20,
+    "longestMs": 4000
+   },
+   {
+    "id": "dhautpoul",
+    "playInView": 1560,
+    "playShare": 0.077,
+    "longestMin": 73.5,
+    "longestMs": 20000
+   },
+   {
+    "id": "walther",
+    "playInView": 1560,
+    "playShare": 0.41,
+    "longestMin": 11.67,
+    "longestMs": 3000
+   },
+   {
+    "id": "rivaud",
+    "playInView": 1560,
+    "playShare": 0.532,
+    "longestMin": 11.5,
+    "longestMs": 3333
+   },
+   {
+    "id": "drouet",
+    "playInView": 1560,
+    "playShare": 0.687,
+    "longestMin": 7.83,
+    "longestMs": 1667
+   },
+   {
+    "id": "guard_inf",
+    "playInView": 1560,
+    "playShare": 0.447,
+    "longestMin": 17.1,
+    "longestMs": 5467
+   },
+   {
+    "id": "guard_cav",
+    "playInView": 1560,
+    "playShare": 0.146,
+    "longestMin": 56.67,
+    "longestMs": 15333
+   },
+   {
+    "id": "c_gren",
+    "playInView": 1560,
+    "playShare": 0.783,
+    "longestMin": 6.83,
+    "longestMs": 2000
+   },
+   {
+    "id": "ahq",
+    "playInView": 1560,
+    "playShare": 0.97,
+    "longestMin": 3.17,
+    "longestMs": 633
+   },
+   {
+    "id": "kienmayer",
+    "playInView": 1456,
+    "playShare": 0.914,
+    "longestMin": 5,
+    "longestMs": 1000
+   },
+   {
+    "id": "dok",
+    "playInView": 1445,
+    "playShare": 0.975,
+    "longestMin": 0,
+    "longestMs": 633
+   },
+   {
+    "id": "lang",
+    "playInView": 1560,
+    "playShare": 0.965,
+    "longestMin": 3.17,
+    "longestMs": 667
+   },
+   {
+    "id": "prz",
+    "playInView": 1560,
+    "playShare": 0.933,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "milo",
+    "playInView": 1560,
+    "playShare": 0.726,
+    "longestMin": 15.17,
+    "longestMs": 5033
+   },
+   {
+    "id": "kollo",
+    "playInView": 1560,
+    "playShare": 0.871,
+    "longestMin": 3.33,
+    "longestMs": 1067
+   },
+   {
+    "id": "lich",
+    "playInView": 1560,
+    "playShare": 0.866,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "bag",
+    "playInView": 1395,
+    "playShare": 0.844,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "rg_inf",
+    "playInView": 1560,
+    "playShare": 0.721,
+    "longestMin": 11.83,
+    "longestMs": 4000
+   },
+   {
+    "id": "rg_cav",
+    "playInView": 1560,
+    "playShare": 0.205,
+    "longestMin": 45,
+    "longestMs": 14333
+   }
+  ],
+  "secs": 77.8
+ },
+ {
+  "id": "hybrid-3600",
+  "view": "hybrid",
+  "from": 540,
+  "to": null,
+  "frames": 3631,
+  "playFrames": 3600,
+  "clockFrom": 540.1666666666667,
+  "clockTo": 1000.0000000001098,
+  "keepHidden": 0,
+  "keepHiddenKeys": [],
+  "overlapFrames": 0,
+  "unknownDrawn": 0,
+  "forms": [
+   {
+    "id": "gqg",
+    "playInView": 3600,
+    "playShare": 0.942,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "sthilaire",
+    "playInView": 3600,
+    "playShare": 0.857,
+    "longestMin": 5.17,
+    "longestMs": 1333
+   },
+   {
+    "id": "vandamme",
+    "playInView": 3600,
+    "playShare": 0.762,
+    "longestMin": 10.23,
+    "longestMs": 4000
+   },
+   {
+    "id": "legrand",
+    "playInView": 3600,
+    "playShare": 0.904,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "friant",
+    "playInView": 3600,
+    "playShare": 0.818,
+    "longestMin": 6.17,
+    "longestMs": 1233
+   },
+   {
+    "id": "bourcier",
+    "playInView": 3387,
+    "playShare": 0.874,
+    "longestMin": 8.33,
+    "longestMs": 1667
+   },
+   {
+    "id": "caffarelli",
+    "playInView": 2322,
+    "playShare": 0.825,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "suchet",
+    "playInView": 2248,
+    "playShare": 0.788,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "kellermann",
+    "playInView": 2374,
+    "playShare": 0.33,
+    "longestMin": 66.67,
+    "longestMs": 17333
+   },
+   {
+    "id": "nansouty",
+    "playInView": 2414,
+    "playShare": 0.409,
+    "longestMin": 38.33,
+    "longestMs": 11667
+   },
+   {
+    "id": "dhautpoul",
+    "playInView": 2574,
+    "playShare": 0.267,
+    "longestMin": 58.5,
+    "longestMs": 15000
+   },
+   {
+    "id": "walther",
+    "playInView": 2376,
+    "playShare": 0.543,
+    "longestMin": 23.17,
+    "longestMs": 6667
+   },
+   {
+    "id": "rivaud",
+    "playInView": 3008,
+    "playShare": 0.594,
+    "longestMin": 23.33,
+    "longestMs": 6667
+   },
+   {
+    "id": "drouet",
+    "playInView": 3064,
+    "playShare": 0.611,
+    "longestMin": 21.67,
+    "longestMs": 6333
+   },
+   {
+    "id": "guard_inf",
+    "playInView": 3600,
+    "playShare": 0.675,
+    "longestMin": 56.67,
+    "longestMs": 15333
+   },
+   {
+    "id": "guard_cav",
+    "playInView": 3600,
+    "playShare": 0.439,
+    "longestMin": 74.17,
+    "longestMs": 20833
+   },
+   {
+    "id": "c_gren",
+    "playInView": 3600,
+    "playShare": 0.793,
+    "longestMin": 8.33,
+    "longestMs": 2000
+   },
+   {
+    "id": "ahq",
+    "playInView": 2621,
+    "playShare": 0.986,
+    "longestMin": 2.67,
+    "longestMs": 533
+   },
+   {
+    "id": "kienmayer",
+    "playInView": 3484,
+    "playShare": 0.806,
+    "longestMin": 22.67,
+    "longestMs": 6533
+   },
+   {
+    "id": "dok",
+    "playInView": 3466,
+    "playShare": 0.921,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "lang",
+    "playInView": 3600,
+    "playShare": 0.955,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "prz",
+    "playInView": 3600,
+    "playShare": 0.98,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "milo",
+    "playInView": 2490,
+    "playShare": 0.692,
+    "longestMin": 35,
+    "longestMs": 11000
+   },
+   {
+    "id": "kollo",
+    "playInView": 2681,
+    "playShare": 0.839,
+    "longestMin": 3.33,
+    "longestMs": 1067
+   },
+   {
+    "id": "lich",
+    "playInView": 2354,
+    "playShare": 0.876,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "bag",
+    "playInView": 2024,
+    "playShare": 0.875,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "rg_inf",
+    "playInView": 2598,
+    "playShare": 0.446,
+    "longestMin": 91.67,
+    "longestMs": 24333
+   },
+   {
+    "id": "rg_cav",
+    "playInView": 2506,
+    "playShare": 0.185,
+    "longestMin": 112.07,
+    "longestMs": 32333
+   }
+  ],
+  "secs": 100.5
+ },
+ {
+  "id": "phone-long",
+  "view": "phone",
+  "from": 540,
+  "to": 720,
+  "frames": 1539,
+  "playFrames": 1508,
+  "clockFrom": 540.1666666666665,
+  "clockTo": 720,
+  "keepHidden": 0,
+  "keepHiddenKeys": [],
+  "overlapFrames": 0,
+  "unknownDrawn": 0,
+  "forms": [
+   {
+    "id": "c_iv",
+    "playInView": 1508,
+    "playShare": 0.803,
+    "longestMin": 5.17,
+    "longestMs": 1333
+   },
+   {
+    "id": "c_iii",
+    "playInView": 884,
+    "playShare": 0.436,
+    "longestMin": 19.83,
+    "longestMs": 4333
+   },
+   {
+    "id": "c_v",
+    "playInView": 246,
+    "playShare": 0.537,
+    "longestMin": 3.33,
+    "longestMs": 667
+   },
+   {
+    "id": "c_cav",
+    "playInView": 688,
+    "playShare": 0.105,
+    "longestMin": 28.17,
+    "longestMs": 8900
+   },
+   {
+    "id": "c_i",
+    "playInView": 1253,
+    "playShare": 0.639,
+    "longestMin": 14.39,
+    "longestMs": 4600
+   },
+   {
+    "id": "c_gd",
+    "playInView": 765,
+    "playShare": 0.157,
+    "longestMin": 26.67,
+    "longestMs": 7633
+   },
+   {
+    "id": "col4",
+    "playInView": 1508,
+    "playShare": 0.594,
+    "longestMin": 19.83,
+    "longestMs": 4333
+   },
+   {
+    "id": "constantine",
+    "playInView": 1508,
+    "playShare": 0.248,
+    "longestMin": 52.93,
+    "longestMs": 14667
+   },
+   {
+    "id": "gqg",
+    "playInView": 482,
+    "playShare": 0.813,
+    "longestMin": 2.67,
+    "longestMs": 633
+   },
+   {
+    "id": "c_gren",
+    "playInView": 776,
+    "playShare": 0.064,
+    "longestMin": 45.4,
+    "longestMs": 14300
+   },
+   {
+    "id": "ahq",
+    "playInView": 1508,
+    "playShare": 0.829,
+    "longestMin": 4.6,
+    "longestMs": 967
+   },
+   {
+    "id": "buxhowden",
+    "playInView": 1238,
+    "playShare": 0.842,
+    "longestMin": 5.17,
+    "longestMs": 1333
+   },
+   {
+    "id": "lich",
+    "playInView": 1431,
+    "playShare": 0.075,
+    "longestMin": 56.5,
+    "longestMs": 14667
+   },
+   {
+    "id": "bag",
+    "playInView": 52,
+    "playShare": 0.365,
+    "longestMin": 5.5,
+    "longestMs": 1100
+   }
+  ],
+  "secs": 38.9
+ }
+]

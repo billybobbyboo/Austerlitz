@@ -1,0 +1,15 @@
+bench-hybrid         frames 122 (play 90, 540.167->554.687), formations drawn 2079 of 3388, longest hidden 4033 ms, episodes 45, quirk 0, wall 1.2 s, run 28 s
+   worst: walther 3000ms/14.69min share 0; kellermann 2367ms/11.52min share 0.211; rg_cav 2367ms/11.52min share 0.211; milo 2033ms/9.85min share 0.322; nansouty 1633ms/8.17min share 0.244
+hybrid-0830          frames 1592 (play 1560, 510.167->690), formations drawn 30347 of 43914, longest hidden 20000 ms, episodes 374, quirk 0, wall 17.2 s, run 18 s
+   worst: dhautpoul 20000ms/73.5min share 0.077; guard_cav 15333ms/56.67min share 0.146; rg_cav 14333ms/45min share 0.205; kellermann 9667ms/30min share 0.356; guard_inf 5467ms/17.1min share 0.447
+hybrid-1200          frames 1360 (play 1328, 720.167->900), formations drawn 22701 of 31757, longest hidden 12000 ms, episodes 308, quirk 0, wall 14.9 s, run 16 s
+   worst: rg_cav 12000ms/40min share 0.058; rg_inf 11667ms/38.33min share 0.333; guard_cav 11300ms/46.5min share 0.48; dhautpoul 9333ms/36.67min share 0.318; kellermann 7000ms/25min share 0.361
+phone-0900           frames 1540 (play 1508, 540.167->720), formations drawn 6978 of 14159, longest hidden 14667 ms, episodes 131, quirk 0, wall 13.0 s, run 18 s
+   worst: constantine 14667ms/52.93min share 0.248; lich 14667ms/56.5min share 0.075; c_gren 13300ms/45.4min share 0.064; c_cav 7900ms/28.17min share 0.105; c_gd 7633ms/26.67min share 0.157
+land-0900            frames 1540 (play 1508, 540.167->720), formations drawn 34179 of 39370, longest hidden 6967 ms, episodes 276, quirk 0, wall 18.6 s, run 25 s
+   worst: guard_cav 5967ms/20min share 0.737; dhautpoul 3200ms/14.67min share 0.629; rg_cav 1300ms/5.17min share 0.74; rg_inf 933ms/4.67min share 0.91; sthilaire 667ms/3.33min share 0.842
+paper-0900           frames 1540 (play 1508, 540.167->720), formations drawn 19874 of 21546, longest hidden 667 ms, episodes 99, quirk 0, wall 7.7 s, run 9 s
+   worst: c_iv 667ms/3.33min share 0.905; c_iii 667ms/1.83min share 0.906; c_v 667ms/3.33min share 0.94; c_cav 667ms/3.33min share 0.906; c_i 667ms/3.33min share 0.906
+hybrid-4x-day        frames 1832 (play 1800, 241.333->1080), formations drawn 28034 of 43581, longest hidden 14033 ms, episodes 634, quirk 0, wall 20.9 s, run 22 s
+   worst: dhautpoul 14033ms/140.14min share 0.153; guard_cav 11333ms/132.84min share 0.261; rg_cav 8333ms/80.1min share 0.205; walther 7033ms/90.14min share 0.288; guard_inf 5800ms/63.29min share 0.647
+done in 146 s

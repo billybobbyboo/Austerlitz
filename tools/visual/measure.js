@@ -241,7 +241,7 @@
     var t=[]; for(var i=0;i<5;i++){ var a=performance.now(); mlLayout(); t.push(performance.now()-a); } t.sort(function(x,y){ return x-y; });
     var s=ML.stats, T=layerTexts();
     return {items:s.items,placed:s.placed,leaders:s.leaders,dropped:s.dropped,droppedIds:s.dropped_.slice(),occluded:s.occluded,offscreen:s.offscreen,
-            underPanel:s.underPanel,keepMissing:s.keepMissing.slice(),nodes:s.nodes,ms:+t[2].toFixed(2),
+            underPanel:s.underPanel,withheld:s.withheld||0,keepMissing:s.keepMissing.slice(),nodes:s.nodes,ms:+t[2].toFixed(2),
             texts:T.length,belowFloor:T.filter(function(x){ return x.px<x.floor; }).map(function(x){ return x.id+" "+x.px+"px<"+x.floor; }),
             minPx:T.length?Math.min.apply(null,T.map(function(x){ return x.px; })):null};
   }

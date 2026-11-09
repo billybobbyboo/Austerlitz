@@ -325,7 +325,12 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    "hybrid-orbit" [1564,2548,1833] to [1520,2548,1833], "hybrid-orbit+point" [1564,2548,1833] to [1520,2548,1833], "hybrid-orbit+sel"
    [1593,2548,2033] to [1524,2548,2100], "land-play" [2615,3146,667] to [2603,3146,667], "low-orbit" [665,859,633] to [649,859,667], "low-zoom"
    [457,590,667] to [441,590,667]; no run's formation-frames in view changed; every other baseline kept (the runs above it not moved) */
-const MOTION={JUMPS:251, POPS:1049, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:2, FRAME_MS:1000/30,
+/* the final audits' Stage 5, WP-08's lettering (owner decision 303 (a), 8 November 2026): FLICKER 10 to 12. Measured on this pass's build against WP-07's
+   (check:visual's block, Chromium 141): with an arrow's label that only names its formation withheld while the formation is in view (CL-MAP-09), the
+   formation names get the room sooner and the layer's rotation in the Landscape (CL-MAP-17, accepted) blinks three of them once more (the Russian Guard
+   cavalry in "land-zoom", Rivaud and Liechtenstein in "land-play"): flickers 9 to 12, jumps 249 to 227, pops 1,043 to 959, every run's visibility at
+   or above its baseline (formation-frames drawn 33,008 against the baselines' 32,534). Every other ceiling unchanged */
+const MOTION={JUMPS:251, POPS:1049, FLICKER:12, LOD:130, REAL_TOL:{abs:6, rel:0.25}, VIS_REAL_FRAMES:2, FRAME_MS:1000/30,
   /* VIS[run key] = [drawn, in view, longest hidden ms]: the prerequisite's build (the 8C build with the protected items' fade fixed, section
      16.1), Chromium 141, check:selftest's block; a key is the motion's id, "+sel" with Saint-Hilaire's division selected, "+fr"/"+al" under a
      headquarters' reading, "+touch" for the finger's pan at 390 px (tools/visual/motion.js runKey) */
@@ -362,13 +367,27 @@ const MOTION={JUMPS:251, POPS:1049, FLICKER:10, LOD:130, REAL_TOL:{abs:6, rel:0.
      (held by the judge above), "paper-zoom+point" hovers the Russian Imperial Guard's counter, which the layer protects (decision 39), and equals
      its run by real input frame for frame where that run follows it on the self-test's page (28 jumps, 126 pops, 726 of 1,232 formation-frames
      drawn). No existing baseline moved, and the 16's ceilings not moved */
-  VIS:{"hybrid-pan":[1359,2036,2467], "hybrid-zoom":[1242,2203,2133], "hybrid-orbit":[1520,2548,1833], "hybrid-glide":[1153,1786,1700],
+  /* the final audits' Stage 5, WP-07 (the owner's decisions of 8 November 2026, measured on this pass's build before and after, check:visual's block
+     with its twins, Chromium 141; docs/final-stage5-evidence/wp07): decision 300, the corps/division band: after the Field vantage's pan the view keeps
+     its division counters (CL-MAP-12; the pan's level-of-detail switches 23 to 0), so more formations stay in view: "hybrid-pan" [1359,2036,2467] to
+     [1436,2189,3033], its twin "hybrid-pan+point" the same, "hybrid-pan+fr" [1318,1959,2467] to [1387,2112,3033], "hybrid-pan+al" [948,1270,1467] to
+     [1010,1321,1467]; decision 299 (D), the event-named rise during Play: on the paper map while it plays their counters take room from others,
+     "paper-play" [1564,1694,667] to [1533,1694,667]. Each as approved, measured again on the implementation; every other baseline and the 16's
+     ceilings unchanged (the 16: 249 jumps, 1,043 pops, 9 flickers, 105 switches) */
+  VIS:{"hybrid-pan":[1436,2189,3033], "hybrid-zoom":[1242,2203,2133], "hybrid-orbit":[1520,2548,1833], "hybrid-glide":[1153,1786,1700],
     "hybrid-play":[2073,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[852,1232,667], "paper-glide":[551,822,667],
-    "paper-play":[1564,1694,667], "land-pan":[1783,2038,667], "land-zoom":[1649,2207,667], "land-orbit":[1749,2366,1167],
+    "paper-play":[1533,1694,667], "land-pan":[1783,2038,667], "land-zoom":[1649,2207,667], "land-orbit":[1749,2366,1167],
     "land-play":[2603,3146,667], "low-pan":[806,861,533], "low-orbit":[649,859,667], "low-zoom":[441,590,667], "hybrid-orbit+sel":[1524,2548,2100],
-    "paper-zoom+sel":[821,1232,667], "hybrid-pan+fr":[1318,1959,2467], "hybrid-pan+al":[948,1270,1467], "paper-play+al":[1171,1331,667],
+    "paper-zoom+sel":[821,1232,667], "hybrid-pan+fr":[1387,2112,3033], "hybrid-pan+al":[1010,1321,1467], "paper-play+al":[1171,1331,667],
     "phone-pan+touch":[257,696,1367],
-    "hybrid-pan+point":[1359,2036,2467], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1242,2203,2133], "paper-zoom+point":[852,1232,667]}};
+    "hybrid-pan+point":[1436,2189,3033], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1242,2203,2133], "paper-zoom+point":[852,1232,667]}};
+/* the final audits' Stage 5, WP-07 (CL-TEST-02, CL-TEST-14; owner decision 299 (D), 8 November 2026): the long Play runs (tools/visual/motion.js
+   LONG, runBlock's MV.long), judged by an absolute bar, not the build's own counts: in each run every formation in view for at least MIN_FRAMES of
+   Play (2 s) hidden by the layout for at most GAP_MIN battle minutes (the measured worst under the rule 26.7, ChatGPT's 3,600 frames); in the runs
+   EV_RUNS (the desktop's Landscape with counters) the formations a live event names drawn in at least EV_SHARE of their in-view frames while its
+   label is drawn (measured worst 72.1%); in every run nothing the layer protects hidden, no overlap, nothing drawn the reading does not know.
+   Until WP-07 no check could see a gap longer than the Play run's own 121 frames (4,033 ms) */
+MOTION.LONG={RUNS:["hybrid-long","hybrid-3600","phone-long"], GAP_MIN:30, MIN_FRAMES:60, EV_SHARE:0.70, EV_RUNS:["hybrid-long","hybrid-3600"]};
 module.exports.MOTION=MOTION;
 /* decision 257 (b)'s visibility rule for one run (r: a run of live.motion with its track; base: VIS's entry, or for a run by real input its twin's
    measures as [drawn, in view, longest]); the words of each failure, empty when it holds */
@@ -1016,6 +1035,16 @@ function checkLive(live,opts){
       if(p.hover===undefined) b.push(p.id+" with the pointer: what its pointer hovers not recorded");
       else if(p.hover===null){ const d=["jumps","pops","flicker","lod","overlapFrames","heldFrames"].filter(k=>p[k]!==s[k]).concat(["on","inView","longestMs"].filter(k=>!p.track||!s.track||p.track[k]!==s.track[k]).map(k=>"formations' "+k));
         if(d.length) b.push(p.id+" with the pointer hovering nothing differs from the 16's run in "+d.join(", ")); } });
+    /* the final audits' Stage 5, WP-07 (MOTION.LONG above): the long Play runs */
+    if(!legacy){ const LG=live.motion.long||[], ML=MOTION.LONG;
+      ML.RUNS.forEach(id=>{ if(!LG.some(r=>r.id===id)) b.push("the long Play run "+id+" not run (WP-07, CL-TEST-02)"); });
+      LG.forEach(r=>{ const over=(r.forms||[]).filter(x=>x.playInView>=ML.MIN_FRAMES&&x.longestMin>ML.GAP_MIN);
+        if(!(r.playFrames>0)) b.push("long Play "+r.id+": no frame played");
+        if(over.length) b.push("long Play "+r.id+": "+over.map(x=>x.id+" hidden by the layout for "+x.longestMin+" battle minutes").join(", ")+" (at most "+ML.GAP_MIN+")");
+        if(ML.EV_RUNS.includes(r.id)&&!(r.evShare>=ML.EV_SHARE)) b.push("long Play "+r.id+": the formations a live event names drawn in "+r.evDrawn+" of "+r.evInView+" frames ("+r.evShare+"; at least "+ML.EV_SHARE+")");
+        if(r.keepHidden) b.push("long Play "+r.id+": a never-dropped item hidden in view "+r.keepHidden+" times ("+(r.keepHiddenKeys||[]).join(", ")+")");
+        if(r.overlapFrames) b.push("long Play "+r.id+": "+r.overlapFrames+" frames with drawn items overlapping");
+        if(r.unknownDrawn) b.push("long Play "+r.id+": "+r.unknownDrawn+" item-frames drawn whose formation the reading does not know"); }); }
     if(b.length) f.push("the map layer in motion (decision 240 (a)): "+b.join("; ")+" "+JSON.stringify(T)); }
   if(so) return f;
   /* Stage 8, implementation PR 8D (CULLMOTION above) */
