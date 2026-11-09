@@ -241,6 +241,19 @@
     <div class="k" data-lg="arrow-al"><span>Allied movement</span><span class="ar" data-key="arrow-al"></span></div>
     <div class="k" data-lg="halt"><span>halt: a column stopped short of its objective</span><span class="hlt" data-key="arrow-al"></span></div>
     <div class="k" data-lg="bound"><span>boundary between commands</span><span class="bnd"></span></div>
+    <!-- the final audits' Stage 5, WP-08 (CL-MAP-08): every encoding the map draws has its row, shown while it is on screen; the axis row's words
+         are the axis arrows' own (app.js paintLegend), the samples drawn by the map's own drawers (paintKey), the status rows from STATUS -->
+    <div class="k" data-lg="axis"><span id="lg-axis">dashed arrow: an ordered route, not a movement made</span><span class="ar ar-dash" data-key="arrow-al"></span></div>
+    <div class="k" data-lg="obj"><span>ringed cross: an objective of the movements drawn</span><span class="gk" data-gk="objective"></span></div>
+    <div class="k" data-lg="ev"><span class="kgrp"><span>events:</span><span data-lgi="ev-other"><span class="gk" data-gk="other"></span>an attack, an engagement, a movement or a withdrawal</span><span data-lgi="ev-capture"><span class="gk" data-gk="capture"></span>a capture</span><span data-lgi="ev-decision"><span class="gk" data-gk="decision"></span>a decision</span><span data-lgi="ev-arrival"><span class="gk" data-gk="arrival"></span>an arrival</span><span data-lgi="ev-collapse"><span class="gk" data-gk="collapse"></span>a collapse</span></span></div>
+    <div class="k" data-lg="place"><span>a place named on the map, its marker on the place</span><span class="gk" data-gk="place"></span></div>
+    <div class="k" data-lg="echelon"><span class="kgrp"><span>a counter: above it X brigade, XX division, XXX corps, XXXX army; in it</span><span data-lgi="arm-inf"><span class="armk" data-arm="inf"></span>infantry</span><span data-lgi="arm-cav"><span class="armk" data-arm="cav"></span>cavalry</span><span data-lgi="arm-art"><span class="armk" data-arm="art"></span>artillery</span><span data-lgi="arm-guard"><span class="armk" data-arm="guard"></span>the Guard</span><span data-lgi="arm-mixed"><span class="armk" data-arm="mixed"></span>infantry and cavalry</span><span data-lgi="arm-hq"><span class="armk" data-arm="hq"></span>a headquarters</span></span></div>
+    <div class="k" data-lg="st-quiet"><span class="stw" data-tone="quiet"></span><span class="stk" data-tone="quiet"></span></div>
+    <div class="k" data-lg="st-steady"><span class="stw" data-tone="steady"></span><span class="stk" data-tone="steady"></span></div>
+    <div class="k" data-lg="st-active"><span class="stw" data-tone="active"></span><span class="stk" data-tone="active"></span></div>
+    <div class="k" data-lg="st-warn"><span class="stw" data-tone="warn"></span><span class="stk" data-tone="warn"></span></div>
+    <div class="k" data-lg="st-bad"><span class="stw" data-tone="bad"></span><span class="stk" data-tone="bad"></span></div>
+    <div class="k" data-lg="st-gone"><span class="stw" data-tone="gone"></span><span class="stk" data-tone="gone"></span></div>
     <div class="k" data-lg="plan"><span>dashed outline: a plan's staging area</span><span class="stg"></span></div>
     <div class="k" data-lg="wood"><span>wood (its extent in the model)</span><span class="sw psym" data-sym="wood"></span></div>
     <div class="k" data-lg="village"><span>village (its extent in the model)</span><span class="sw psym" data-sym="village"></span></div>
@@ -311,6 +324,17 @@
       <button class="t spd-btn" data-s="2" aria-pressed="false">2&times;</button>
       <button class="t spd-btn" data-s="4" aria-pressed="false">4&times;</button>
     </div>
+    <!-- the final audits' Stage 5, WP-08 (CL-MAP-04; question 296's recommendation (a)): the north rose in the timeline's row, beside the scale bar,
+         shown wherever the key's own rose is not (style.css: in Watch, below 1080 px wide and at 700 px tall or less, where until WP-08 no north was
+         shown), so that one north stands in Study and Watch at every width and height; rotated to true north by app.js updateRose -->
+<svg class="rose tb-rose" viewBox="0 0 60 60" role="img" aria-label="North arrow">
+      <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
+      <g id="tb-rose-needle"><!-- rotated with the key's (app.js updateRose) -->
+      <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
+      <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
+      <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14">N</text>
+      </g>
+    </svg>
     <div class="tb-scale" id="scalebar" role="img" aria-label="Scale">
       <i id="sb-fill"></i><span id="sb-label"></span>
     </div>
@@ -343,7 +367,7 @@
     <!-- roadmap step 3 (decision 134 (a); WCAG 2.1.4): the single-key shortcuts switch, outside the list buildHelp writes; words from LABELS.keys -->
     <button id="help-keys" type="button" class="lp-row" aria-pressed="true"><b>Single-key shortcuts</b><i aria-hidden="true">on</i></button>
     <p id="help-keys-d" class="help-note"></p>
-    <div id="help-body" tabindex="0" role="region" aria-label="The keys and controls, by group"></div>
+    <div id="help-body" tabindex="0" role="region" aria-label="The map key, then the keys and controls, by group"></div>
   </div>
 </div>
 <!-- roadmap step 3 (docs/FINAL_AUDIT.md SW-4, SW-6): both sheets modal by one mechanism (app.js SHEETS); a sheet takes the focus a click on its text

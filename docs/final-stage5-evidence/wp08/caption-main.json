@@ -1,0 +1,1111 @@
+{
+ "build": "austerlitz-command-map.html",
+ "reads": [
+  {
+   "w": 1600,
+   "h": 900,
+   "pres": "study",
+   "clock": "04:15",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 108.1,
+     "cut": false
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 142,
+     "cut": false
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 328,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1600,
+   "h": 900,
+   "pres": "study",
+   "clock": "09:30",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 144.3,
+     "cut": false
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 174,
+     "cut": false
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 245,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1600,
+   "h": 900,
+   "pres": "study",
+   "clock": "12:00",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 129,
+     "cut": false
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 231,
+     "cut": false
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 272,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1600,
+   "h": 900,
+   "pres": "study",
+   "clock": "14:20",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 101.5,
+     "cut": false
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 138,
+     "cut": false
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 323,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1600,
+   "h": 900,
+   "pres": "watch",
+   "clock": "04:15",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 199.3,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": true,
+     "off": false,
+     "w": 242.2,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1600,
+   "h": 900,
+   "pres": "watch",
+   "clock": "09:30",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 51.7,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": true,
+     "off": false,
+     "w": 245.2,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": true,
+     "off": false,
+     "w": 224.2,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1600,
+   "h": 900,
+   "pres": "watch",
+   "clock": "12:00",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": true,
+     "off": false,
+     "w": 239.2,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": true,
+     "off": false,
+     "w": 224.2,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1600,
+   "h": 900,
+   "pres": "watch",
+   "clock": "14:20",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 217.3,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": true,
+     "off": false,
+     "w": 224.2,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "pres": "study",
+   "clock": "04:15",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 323.4,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "pres": "study",
+   "clock": "09:30",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 133.3,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 41.9,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 244.8,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "pres": "study",
+   "clock": "12:00",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 89.1,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 271,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "pres": "study",
+   "clock": "14:20",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 4.5,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 319,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "pres": "watch",
+   "clock": "04:15",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 108.1,
+     "cut": false
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 142,
+     "cut": false
+    },
+    {
+     "kind": "event",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part",
+   "room": {
+    "kind": "reading",
+    "over": false,
+    "readingCut": false,
+    "names": []
+   }
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "pres": "watch",
+   "clock": "09:30",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 139.2,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 112.8,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part",
+   "room": {
+    "kind": "reading",
+    "over": false,
+    "readingCut": false,
+    "names": []
+   }
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "pres": "watch",
+   "clock": "12:00",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 123.3,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 129.7,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part",
+   "room": {
+    "kind": "reading",
+    "over": false,
+    "readingCut": false,
+    "names": []
+   }
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "pres": "watch",
+   "clock": "14:20",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 11.8,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": true,
+     "off": false,
+     "w": 224.2,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": {
+    "kind": "event",
+    "over": false,
+    "readingCut": false,
+    "names": [
+     {
+      "w": 0,
+      "cut": true
+     }
+    ]
+   }
+  },
+  {
+   "w": 1024,
+   "h": 768,
+   "pres": "study",
+   "clock": "04:15",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 173.4,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1024,
+   "h": 768,
+   "pres": "study",
+   "clock": "09:30",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 27,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 243,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1024,
+   "h": 768,
+   "pres": "study",
+   "clock": "12:00",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 210.1,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1024,
+   "h": 768,
+   "pres": "study",
+   "clock": "14:20",
+   "readings": false,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": true,
+     "off": false,
+     "w": 173.4,
+     "cut": true
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": false,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part,sep,part",
+   "room": null
+  },
+  {
+   "w": 1024,
+   "h": 768,
+   "pres": "watch",
+   "clock": "04:15",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 97.7,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 5.3,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part",
+   "room": {
+    "kind": "event",
+    "over": false,
+    "readingCut": false,
+    "names": [
+     {
+      "w": 22.4,
+      "cut": true
+     }
+    ]
+   }
+  },
+  {
+   "w": 1024,
+   "h": 768,
+   "pres": "watch",
+   "clock": "09:30",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 102,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part",
+   "room": {
+    "kind": "event",
+    "over": false,
+    "readingCut": false,
+    "names": [
+     {
+      "w": 119,
+      "cut": true
+     }
+    ]
+   }
+  },
+  {
+   "w": 1024,
+   "h": 768,
+   "pres": "watch",
+   "clock": "12:00",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 103,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 0,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part",
+   "room": {
+    "kind": "event",
+    "over": false,
+    "readingCut": false,
+    "names": [
+     {
+      "w": 59.1,
+      "cut": true
+     }
+    ]
+   }
+  },
+  {
+   "w": 1024,
+   "h": 768,
+   "pres": "watch",
+   "clock": "14:20",
+   "readings": true,
+   "parts": [
+    {
+     "kind": "act",
+     "shown": true,
+     "off": false,
+     "w": 92.1,
+     "cut": true
+    },
+    {
+     "kind": "phase",
+     "shown": true,
+     "off": false,
+     "w": 10.9,
+     "cut": true
+    },
+    {
+     "kind": "event",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    },
+    {
+     "kind": "reading",
+     "shown": false,
+     "off": true,
+     "w": 0,
+     "cut": false
+    }
+   ],
+   "seq": "part,sep,part",
+   "room": {
+    "kind": "event",
+    "over": false,
+    "readingCut": false,
+    "names": [
+     {
+      "w": 22.4,
+      "cut": true
+     }
+    ]
+   }
+  }
+ ],
+ "failures": [
+  "the caption (CL-MAP-06) at 1600x900 watch 04:15: the act drawn cut to 0 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":199.3,\"cut\":true},{\"kind\":\"reading\",\"shown\":true,\"off\":false,\"w\":242.2,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1600x900 watch 09:30: the act drawn cut to 0 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":51.7,\"cut\":true},{\"kind\":\"reading\",\"shown\":true,\"off\":false,\"w\":245.2,\"cut\":false},{\"kind\":\"reading\",\"shown\":true,\"off\":false,\"w\":224.2,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1600x900 watch 12:00: the act drawn cut to 0 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40); the event drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"reading\",\"shown\":true,\"off\":false,\"w\":239.2,\"cut\":false},{\"kind\":\"reading\",\"shown\":true,\"off\":false,\"w\":224.2,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1600x900 watch 14:20: the act drawn cut to 0 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":217.3,\"cut\":true},{\"kind\":\"reading\",\"shown\":true,\"off\":false,\"w\":224.2,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1280x720 study 04:15: the act drawn cut to 0 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":323.4,\"cut\":true},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1280x720 study 12:00: the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":89.1,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":271,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1280x720 study 14:20: the act drawn cut to 4.5 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":4.5,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":319,\"cut\":true},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1280x720 watch 04:15: the act or the phase shown where the reading given way would stand in their room (the caption shows the readings) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":108.1,\"cut\":false},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":142,\"cut\":false},{\"kind\":\"event\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1280x720 watch 09:30: the act or the phase shown where the reading given way would stand in their room (the caption shows the readings) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":139.2,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":112.8,\"cut\":true},{\"kind\":\"event\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1280x720 watch 12:00: the act or the phase shown where the reading given way would stand in their room (the caption shows the readings) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":123.3,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":129.7,\"cut\":true},{\"kind\":\"event\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1280x720 watch 14:20: the act drawn cut to 11.8 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":11.8,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":true,\"off\":false,\"w\":224.2,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1024x768 study 04:15: the act drawn cut to 0 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":173.4,\"cut\":true},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1024x768 study 09:30: the act drawn cut to 27 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":27,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":243,\"cut\":true},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1024x768 study 12:00: the act drawn cut to 0 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":210.1,\"cut\":true},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1024x768 study 14:20: the act drawn cut to 0 px (a fragment; at least 40); the phase drawn cut to 0 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":true,\"off\":false,\"w\":173.4,\"cut\":true},{\"kind\":\"reading\",\"shown\":false,\"off\":false,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1024x768 watch 04:15: the phase drawn cut to 5.3 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":97.7,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":5.3,\"cut\":true},{\"kind\":\"event\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1024x768 watch 09:30: the phase drawn cut to 0 px (a fragment; at least 40); the act or the phase shown where the event given way would stand in their room (the caption shows the readings) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":102,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1024x768 watch 12:00: the phase drawn cut to 0 px (a fragment; at least 40); the act or the phase shown where the event given way would stand in their room (the caption shows the readings) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":103,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":0,\"cut\":true},{\"kind\":\"event\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false}]",
+  "the caption (CL-MAP-06) at 1024x768 watch 14:20: the phase drawn cut to 10.9 px (a fragment; at least 40) [{\"kind\":\"act\",\"shown\":true,\"off\":false,\"w\":92.1,\"cut\":true},{\"kind\":\"phase\",\"shown\":true,\"off\":false,\"w\":10.9,\"cut\":true},{\"kind\":\"event\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false},{\"kind\":\"reading\",\"shown\":false,\"off\":true,\"w\":0,\"cut\":false}]"
+ ]
+}

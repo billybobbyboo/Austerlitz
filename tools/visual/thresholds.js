@@ -708,6 +708,14 @@ module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
    case but one named here with its reason. Empty: no case is exempt */
+/* the final audits' Stage 5, WP-08 (CL-MAP-06): the caption read by the narrow live block (harness.js) at these sizes, in Study and Watch, at these
+   clocks (04:15, 09:30, 12:00, 14:20: the first screen's, a dwell's, both readings', the separation's alone). In every read: no derived reading cut
+   (decision 159); no act, phase or event name drawn cut narrower than MIN_PX (a fragment: "D." at 1280 x 720 until WP-08; 40 px, three letters and
+   the ellipsis at 12.5 px, below the app's own CAP_MIN of 4 em, so that the bound is not the code's); something shown; no separator first, last or
+   beside another; and where the caption shows the readings, the act and the phase given way before a reading or the event: the first part given way
+   in decision 159's order (measure.js captionParts' room) would not stand in their room. Design bounds */
+const CAPTION={SIZES:[[1600,900],[1280,720],[1024,768]], CLOCKS:[255,570,720,860], MIN_PX:40};
+module.exports.CAPTION=CAPTION;
 const CAP_DERIVED_NONE=[], ROUTES_NONE=[];
 module.exports.CAP_DERIVED_NONE=CAP_DERIVED_NONE; module.exports.ROUTES_NONE=ROUTES_NONE;
 /* Stage 8, the integration pass (the owner's brief of 31 October 2026 on question 267; docs/STAGE8_SPEC.md section 22): a Watch case whose clock
@@ -940,7 +948,25 @@ function checkLive(live,opts){
       if(P.docked.shown) f.push("narrow layout: the Panels button shown at 1280 px (docked)"); }
     else if(live.shortcuts) f.push("narrow layout: the Panels button (decision 164) not reported");
     /* decision 165 (roadmap step 3): a build with the stop is one whose narrow block reports it */
-    const nd=by["dossier at 1000"]; if(!nd||nd.docked||!nd.open||!(nd.bottom<=nd.tbTop+0.5)) f.push("narrow layout: at 1000 px the open dossier reaches over the timeline: "+JSON.stringify(nd)); }
+    const nd=by["dossier at 1000"]; if(!nd||nd.docked||!nd.open||!(nd.bottom<=nd.tbTop+0.5)) f.push("narrow layout: at 1000 px the open dossier reaches over the timeline: "+JSON.stringify(nd));
+    /* the final audits' Stage 5, WP-08 (CL-MAP-13): the rail hidden at 1000 px, an open dossier, and no dispatch card standing beside it */
+    if(!opts.legacy){ const nh=by["dossier at 1000, rail hidden"];
+      if(!nh||nh.docked||!nh.open||nh.rail||nh.card) f.push("narrow layout: at 1000 px with the rail hidden the dispatch card stands beside the open dossier (CL-MAP-13): "+JSON.stringify(nh));
+      /* CL-MAP-04: at 1000 px, the key hidden, one north: the timeline's */
+      if(!nh||!Array.isArray(nh.roses)||nh.roses.length!==1||nh.roses[0]!=="tb-rose-needle") f.push("narrow layout: at 1000 px no north shown but the timeline's, or more than one (CL-MAP-04): "+JSON.stringify(nh&&nh.roses)); }
+    /* the final audits' Stage 5, WP-08 (CL-MAP-06; CAPTION below): the caption at three widths, in Study and Watch, at four clocks */
+    if(!opts.legacy){ const nc=by["caption"], C=(nc&&nc.caps)||[], want=CAPTION.SIZES.length*2*CAPTION.CLOCKS.length;
+      if(C.length!==want) f.push("the caption (CL-MAP-06): "+C.length+" of its "+want+" reads made");
+      C.forEach(r=>{ const at=r.w+"x"+r.h+" "+r.pres+" "+r.clock, sh=r.parts.filter(p=>p.shown), b=[];
+        sh.forEach(p=>{ if(p.kind==="reading"&&p.cut) b.push("a derived reading drawn cut (decision 159)");
+          else if(p.cut&&p.w<CAPTION.MIN_PX) b.push("the "+p.kind+" drawn cut to "+p.w+" px (a fragment; at least "+CAPTION.MIN_PX+")"); });
+        if(!sh.length) b.push("nothing shown");
+        const q=r.seq.split(",").filter(Boolean); q.forEach((x,i)=>{ if(x==="sep"&&(i===0||i===q.length-1||q[i+1]==="sep")) b.push("a separator "+(i===0?"first":i===q.length-1?"last":"beside another")); });
+        /* where the caption shows the readings, the act and the phase give way first: the first part given way in decision 159's order would not
+           stand in their room (whole, its names no fragment) */
+        const X=r.room; if(r.readings&&X&&!X.over&&!X.readingCut&&!X.names.some(n=>n.cut&&n.w<CAPTION.MIN_PX))
+          b.push("the act or the phase shown where the "+X.kind+" given way would stand in their room (the caption shows the readings)");
+        if(b.length) f.push("the caption (CL-MAP-06) at "+at+": "+[...new Set(b)].join("; ")+" "+JSON.stringify(r.parts)); }); } }
   if(req("rmLive","the reduced-motion preference turned on and off while the page is open (roadmap step 3, S-6)")){ const R=live.rmLive;
     const z=d=>String(d||"").split(",").every(x=>/^\s*0s\s*$/.test(x));
     if(!(R.on&&R.on.rm===true&&z(R.on.rail)&&R.off&&R.off.rm===false&&!z(R.off.rail))) f.push("reduced motion while the page is open: "+JSON.stringify(R)); }

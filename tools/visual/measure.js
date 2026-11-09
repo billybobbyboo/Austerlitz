@@ -683,8 +683,44 @@
     finally{ setCull(keep); }
   }
 
+  /* the final audits' Stage 5, WP-08 (CL-MAP-06): the caption's parts at each clock in Study and Watch, read as shown (judged by thresholds.js
+     checkLive's narrow block, CAPTION): each part (the act, the phase, each event's name, each reading) shown, given way (fit-off) or neither, the
+     width of it the caption shows, whether it is cut; the shown children's sequence (a separator or a part); whether the caption shows the
+     readings at this presentation (Watch; Study without the Now tab) */
+  function captionParts(clocks){ var out=[];
+    ["study","watch"].forEach(function(pres){ clocks.forEach(function(t){ setPresentation(pres); setClock(t,{instant:true,force:true,camera:false}); _sitKey=""; paintSituation();
+      var c=document.getElementById("tb-cap"), cr=c.getBoundingClientRect(), sh=function(e){ return getComputedStyle(e).display!=="none"; };
+      var part=function(e,kind){ var r=e.getBoundingClientRect(), box=e.closest(".ev"), b=box?box.getBoundingClientRect():r, off=!!e.closest(".fit-off");
+        return {kind:kind, shown:sh(e)&&!off&&!(box&&!sh(box)), off:off, w:+Math.max(0,Math.min(r.right,b.right,cr.right)-Math.max(r.left,cr.left)).toFixed(1),
+          cut:e.scrollWidth>e.clientWidth+1||r.right>cr.right+0.5||(!!box&&r.right>b.right+0.5)}; };
+      var P=[], act=c.querySelector(".act"), ph=c.querySelector(".cap-ph");
+      if(act) P.push(part(act,"act")); if(ph) P.push(part(ph,"phase"));
+      [].forEach.call(c.querySelectorAll(".ev .evt"),function(e){ P.push(part(e,"event")); });
+      [].forEach.call(c.querySelectorAll(".der"),function(e){ P.push(part(e,"reading")); });
+      var seq=[].filter.call(c.children,sh).map(function(k){ return k.classList.contains("sep")?"sep":"part"; });
+      /* where the act or the phase is shown: the first of the first reading, the event and the second reading given way (decision 159's order; the
+         first reading skipped where it cannot stand whole in the box alone), shown in their room (the act and the phase given way, the parts shown
+         kept, the separators as the parts need them), read and put back: whether it would end inside the box, any reading cut, its names' widths */
+      var room=null, kids=[].slice.call(c.children), act2=c.querySelector(".act"), ph2=c.querySelector(".cap-ph");
+      if([act2,ph2].some(function(e){ return e&&sh(e); })){
+        var all=[].slice.call(c.querySelectorAll("*")), keep=all.map(function(e){ return e.className; });
+        var D=[].slice.call(c.querySelectorAll(".der")), ev=c.querySelector(".ev");
+        var seps=function(){ kids.forEach(function(k){ if(k.classList.contains("sep")) k.classList.remove("fit-off"); }); var V=kids.filter(sh);
+          for(var j=0;j<V.length;j++){ if(!V[j].classList.contains("sep")) continue; if(j===0||j===V.length-1||V[j+1].classList.contains("sep")){ V[j].classList.add("fit-off"); V.splice(j,1); j--; } } };
+        var read=function(){ var last=null; for(var j=kids.length-1;j>=0;j--) if(sh(kids[j])){ last=kids[j]; break; }
+          var b=c.getBoundingClientRect(); return {over:!!last&&last.getBoundingClientRect().right>b.right+0.5, readingCut:D.some(function(d){ return sh(d)&&!d.closest(".fit-off")&&d.scrollWidth>d.clientWidth+1; }),
+            names:ev&&sh(ev)?[].map.call(ev.querySelectorAll(".evt"),function(e){ var r=e.getBoundingClientRect(), er=ev.getBoundingClientRect(); return {w:+Math.max(0,Math.min(r.right,er.right,b.right)-r.left).toFixed(1), cut:e.scrollWidth>e.clientWidth+1||r.right>er.right+0.5}; }):[]}; };
+        var restore=function(){ all.forEach(function(e,i){ e.className=keep[i]; }); };
+        var X=null, d0alone=null;
+        if(D[0]&&D[0].classList.contains("fit-off")){ kids.forEach(function(k){ k.classList.add("fit-off"); }); D[0].classList.remove("fit-off"); seps(); d0alone=read(); restore(); }
+        [[D[0],"reading"],[ev,"event"],[D[1],"reading"]].forEach(function(q){ if(X||!q[0]) return; if(!q[0].classList.contains("fit-off")) return;
+          if(q[0]===D[0]&&d0alone&&(d0alone.over||d0alone.readingCut)) return; X=q; });
+        if(X){ [act2,ph2].forEach(function(e){ if(e) e.classList.add("fit-off"); }); X[0].classList.remove("fit-off"); seps(); room=Object.assign({kind:X[1]},read()); restore(); } }
+      out.push({w:innerWidth, h:innerHeight, pres:presentation, clock:fmtClock(t), readings:presentation==="watch"||document.body.classList.contains("no-dispatch"), parts:P, seq:seq.join(","), room:room}); }); });
+    setPresentation("study"); return out; }
+
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures, census:census, cullEquiv:cullEquiv,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, farNames:farNames, layerTexts:layerTexts,
                 legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, derivedModel:derivedModel, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare,
-                state:state, features:features, camState:camState, readCanvas:readCanvas};
+                state:state, features:features, camState:camState, readCanvas:readCanvas, captionParts:captionParts};
 })();

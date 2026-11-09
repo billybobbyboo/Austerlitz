@@ -1,5 +1,144 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 5 (2 of 3): WP-08's furniture (the caption, the key, north, the glyphs, the selection, the card)
+
+**Status: on `claude/jolly-carson-yz0yqo-furniture` (draft PR #90 into `main`, for review, not merged), reconciled with `main` after WP-07 (#89)
+and WP-08's lettering (#91, #92) were merged (below: the merged build is 2,963,994 bytes, md5 `3388b70b...`).** Part of WP-08 of
+`docs/ROADMAP_FINAL_AUDIT.md`: CL-MAP-03, -04, -06, -08, -10, -13 and -16. Presentation only: no data file and no guarded declaration changes
+(`check:data`: every data declaration identical to `archive/stage4wp04b-cdca9984.html`). The rest of WP-08 (CL-MAP-05, -09, -11, -15, -18, CL-VIS-11,
+owner questions 275, 282 and 284) is the third PR, stacked on WP-07's (the same priority rules). The owner's decisions of 8 November 2026 ("Your
+recommendations for all"): **296**, no Key button in Watch, the key reached through the "?" overlay instead (below); **297**, the place names as they
+are (CL-MAP-20, accepted: no single 1805 convention to break); **298**, decision 241 (a) kept (CL-MAP-19: the paper map's arrows uncapped, accepted).
+`austerlitz-command-map.html` is now 2,932,581 bytes, md5 `30d75a75014e688c686927e0a17fa124` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **CL-MAP-06, the caption (`app.js` `fitCaption`, `CAP_MIN`).** Decision 159 kept every derived reading whole, but the act and the phase only shrank:
+  at 1280 x 720 in Study the phase was "D." (13 px), at 04:15 both were 0 px wide with their separators drawn, and in Watch at 1280 px (a 270 px
+  caption) the act and the phase stood while both readings and the event gave way. *Is:* one ordered fill. The parts are laid in one at a time,
+  each kept only where nothing then overflows and no act, phase or event name is a fragment (cut narrower than `CAP_MIN`, 4 em); the separators are
+  tidied at each step (none first, last or beside another). Where the caption shows the readings (Watch; Study without the Now tab) the first
+  reading, the event, the second reading and "plotted strength unchanged" in decision 159's own order (a prefix, but for a first reading that cannot
+  stand whole at all, after which the event is still tried), then the act and the phase; elsewhere the event, the act, the phase. In Watch at 1600
+  px at 12:00 the second reading now gives way while the event stands whole (until WP-08 both readings stood and the event was cut to 59 px):
+  decision 159's own order.
+- **CL-MAP-16, the event glyphs (`app.js` `EVG`).** An attack's, an engagement's, a movement's or a withdrawal's glyph was an upright arrow in a ring,
+  which on the north-up paper map read as a north arrow; a capture's a ring with a full cross, the objective marker's form. *Is:* a burst of eight rays,
+  none upright or level; a capture a filled disc. The decision's, the arrival's and the collapse's as before. One table draws them on the map and in
+  the key. No recorded decision fixed the forms (Stage 1: they "differ by kind").
+- **CL-MAP-08, the key's rows (`shell.html`, `app.js` `paintLegend`, `paintKey`, `paintKeySamples`, `objGlyph`).** The key omitted encodings it draws,
+  against its one-row-per-encoding rule. *Is:* rows, each shown only while its encoding is on screen, for the dashed axis arrows (their words the
+  arrows' own `interp`), the objective marker, each kind of event glyph drawn (one row), the places' marker, and where counters are drawn the echelon
+  marks and each arm's mark (one row) and each status tone's icon with its statuses' labels from `STATUS`. The samples drawn by the map's own
+  drawers, in the theme's colour. The open key held below the tools and scrolling where taller (a named scroll region while it scrolls).
+- **CL-MAP-03, the key one press away (`app.js` `buildHelp`; decision 296).** The key was hidden below 1080 px wide, at 430 px tall or less (decision
+  226 (a)) and in Watch and Clean (2D: a Key button would have been a new panel there). *Is:* the "?" overlay, one press from the timeline's "?"
+  button in Study and Watch at every width and on a phone, opens with "The map key: what is drawn now", a copy of the key's rows for what is drawn.
+  No new panel, so no unobstructed baseline moves, and neither 2D's choice nor 226 (a) is overridden; Clean keeps no furniture.
+- **CL-MAP-04, north (`shell.html`, `style.css`, `app.js` `updateRose`).** The only north indicator was the rose inside the key's toggle, hidden with
+  the key (below 1080 px, in Watch and Clean) and below 700 px tall. *Is:* a second rose in the timeline's row beside the scale bar, an image named
+  "North arrow", turned with the key's to true north, shown wherever the key's is not (in Watch, below 1080 px wide, at 700 px tall or less): one
+  north in Study and Watch at every width and height. The key's toggle as before (its rose kept), so no panel the layer keeps clear changes.
+- **CL-MAP-10, the selection (`app.js`, `style.css` `.mln-sel`).** On the landscape the selected formation's name had the plate of every other and its
+  ring (1 px, 62% opaque) read like the plateau's outline. *Is:* the selected name's plate edged in the accent (a shadow: its box, place and contrast
+  as before), the ring 90% opaque. The outline's values (decision 239) unchanged.
+- **CL-MAP-13, the card below 1080 px (`style.css`).** With the rail hidden (as at load) the dispatch card stood beside an open dossier, a strip of map
+  of 209 px at 1024 px (184 px at 1000). *Is:* the card gives way to an open dossier at every width below 1080 px, as on a phone.
+
+### Checks added, each failing without its fix
+
+- **The narrow live block** (`tools/visual/harness.js`, judged by `thresholds.js` `checkLive`): the caption at `CAPTION.SIZES` (1600, 1280, 1024 px)
+  in Study and Watch at `CAPTION.CLOCKS` (04:15, 09:30, 12:00, 14:20), read by `measure.js` `captionParts` (no reading cut; no act, phase or event
+  name cut narrower than `CAPTION.MIN_PX`, 40 px, a bound below the app's own 4 em; something shown; no orphan separator; where the readings show,
+  the act and the phase never standing where the first part given way in decision 159's order would stand); and "dossier at 1000, rail hidden" (no
+  card beside the open dossier). Negative control, `main`'s build: the caption fails 19 of its 24 reads (`tools/final-stage5/caption-judge.js`), the
+  card read fails with the card standing 184 px from the dossier (`card-judge.js`); this build passes both.
+- **The self-test's WP-08 block** (`app.js` `wp08Checks`, five checks, the manifest 325 to 330): the event glyphs (read through the test's own
+  canvas), the key's rows against the scene at 04:15 and 09:30 with counters and on the landscape, the key in the "?" overlay in Study and Watch,
+  the rose outside the key on true north within 1 degree in three views, the selection's edge and ring. Negative controls
+  (`tools/final-stage5/mutate-wp08.js`): 10 of 10 as expected, each mutation failing its own check alone (the upright glyph, the capture's cross, the
+  axis row hidden, no status row, no key in the overlay, the rose hidden, the rose turned the wrong way, no edge, the ring at 0.62), the build
+  passing all.
+
+### Verified
+
+All here, on this branch's final build `30d75a75...` (Chromium 141.0.7390.37, the pinned browser, software WebGL), but `check:visual` (CI):
+
+- `npm run build`: 2,932,581 bytes; the committed build is a fresh build's (`check:baseline` passes on it).
+- `npm test`: the nine suites and the height guard, every suite passing (binding-test 400 checks; css-test 0 errors; runtime-test console.warn
+  unique 0; redteam 0 findings).
+- `npm run check:data`: all 143 data declarations identical to `archive/stage4wp04b-cdca9984.html` (no data changes; the reference stays).
+- `npm run check:chronology`: 0 errors, as on `main`.
+- `npm run check:contrast`: 7,453 text elements, 120 text/background pairs, 0 below AA, 0 below 10.5 px, 0 font failures (671 characters in 15
+  computed fonts); 45 of 45 states reached (10 as a phone); 0 console messages; the start-up cases as before.
+- `npm run check:selftest`: the self-test's 330 checks pass, the five new among them, and every live block (the narrow block's caption and card
+  reads, the motion block, `toast`, `toastLayout`, `ring`, `tips`); its one failing line was the manifest's (330 checks against 325), so the
+  manifest is written from that run (`tools/visual/check-report.js --write-manifest`: 325 to 330, five added, none removed); CI's run judges it
+  clean. The motion block's 16 exactly `main`'s (240 jumps, 1,049 pops, 7 flickers, 128 level-of-detail switches; every visibility baseline
+  held: `docs/final-stage5-evidence/wp08/motion-block-5b.json`): no threshold, limit or baseline moves. On the fixed build (`30d75a75...`, below) every
+  check above was run again: each passes, `check:contrast` with the same figures and `check:selftest` clean (all checks passed, the 16 as above).
+- **Found and fixed on the way:** a first version took the rose out of the key's toggle; the toggle, a panel the layer keeps clear, grew 26 px
+  narrower and the motion block moved (pops 1,054 against 1,049, five formation-frames-in-view baselines, the paper map's zoom 849 drawn against
+  852). The key's rose was put back (its toggle as on `main`) and the timeline's rose shown only where the key's is not; the block then `main`'s.
+  A run of the self-test made while three browser jobs shared the machine timed out in the `toastLayout` block on a click that `main`'s build
+  failed the same way under that load; on an idle machine it passed.
+- **Found by `check:visual` on CI and fixed (CL-MAP-04 on the narrowest phone).** The first build's run (42446137253 on `3650cf1`, build `4749fa00...`)
+  failed two lines, both `phone-360-explore`: the unobstructed map 59.5% against its baseline 62.5%, and the timeline 143 px against the phone's
+  ceiling of 121; every other case passed. The cause: at 360 px the first row of the phone's timeline has no room for the rose, which took a row of
+  its own (`tools/final-stage5/phone-timebar.js`, `docs/final-stage5-evidence/wp08/phone-timebar.txt`: the rose at the second row's head, the caption and the "?" button pushed down). *Is:* the caption's basis
+  leaves the rose its 28 px there (`style.css`, the phone's `.tb-cap` `calc(100% - 80px)`, was `calc(100% - 48px)`), so the rose stands at the head
+  of the caption's row, the caption giving it room (its parts give way, decision 159), as the paper map's scale bar does. At 360 px the timeline
+  is 121 px again and the case passes the harness's own judge (unobstructed 0.625, 3 dropped of 3, no cut text, no overlap); at 390, 402, 430 and
+  844 x 390 the timeline is laid out exactly as on the first build. No limit or baseline moved; the failing run is the fix's negative control.
+- The phone cases measured here (`narrow-1024`, `phone-390-explore`, `phone-390-watch`, `phone-844x390-explore`) within their drop limits and
+  unobstructed floors (7 of 9, 2 of 2, 2 of 2, 4 of 4 dropped; 0.5321, 0.6529, 0.8171, 0.6879 free); `check:visual` on CI judges all 39 cases.
+- **`check:visual` on CI on the final build** (run 42467110570 on `d7859e3`, build `30d75a75...`, `checks.yml`, `visual: true`): passed, every job
+  (`check:visual` in 1 h 58 min; `phone-360-explore` within its timeline ceiling and unobstructed baseline again); the push's and the PR's runs
+  (`npm test`, `check:data`, `check:chronology`, `check:contrast`, `check:selftest`) passed on the same commit.
+- The negative controls: `tools/final-stage5/mutate-wp08.js` 11 of 11 as expected (`mutate-wp08.json`); `caption-judge.js` 19 of 24 reads failing
+  on `main`'s build, 0 on this; `card-judge.js` failing on `main`'s (the card 184 px from the dossier, no north at 1000 px), passing on this.
+- Evidence: `docs/final-stage5-evidence/wp08/` (its README lists each file).
+
+### Reconciled with WP-07 and WP-08's lettering (9 November 2026)
+
+`main` (`663ed6f`: WP-07, #89, and WP-08's lettering and landmarks, #91 brought in by #92) merged into this branch, no rebase. Seven files conflicted,
+each resolved by keeping both sides:
+- `app.js`: six places. The key's `on` rows: this PR's (CL-MAP-08: the axis arrows, the objectives, the event glyphs, the place marker, the
+  echelon, arm and status rows) and the lettering's (the chapels' markers, the landmarks' outline), both kept in `paintKey`; `LABELS`: the
+  lettering's `plans` beside this PR's `keys.mapKey`; the key's painting: this PR's samples and status words and the lettering's chapel rows in
+  `BUILDINGS.notDrawn`'s words; the self-test: `wp08Checks` beside `wp07Checks` and `wp08cChecks` (git had aligned their tails), each whole, with
+  `hexToRgbCss`, and run in that order (`wp07Checks`, `wp08cChecks`, `wp08Checks`).
+- `style.css`: this PR's key samples and the selection's edge beside the lettering's chapel samples (`.mk2`).
+- `shell.html` merged without conflict: the key's rows are both sets (this PR's axis, objective, events, place, echelon and six status rows; the
+  lettering's two chapel rows and the landmark outline row), each shown only while drawn, none duplicated (the rows' `data-lg` keys are exactly the
+  union of both sides; only the nations' three and the footprints' two repeat, as before).
+- `tools/visual/selftest-manifest.json`: not merged by hand; regenerated from `check:selftest` on the merged build, 330 to **335** (WP-07's 326,
+  the lettering's 4 and this PR's 5): the run's only failing lines the manifest's (its count and this PR's five names).
+- `package.json`: `check:data` against `archive/stage5wp08-572b0935.html` (this PR changes no data: all 143 declarations identical);
+  `check:baseline` to the merged build.
+- `CLAUDE.md`: both sides' lines; the current state (#89 and #91 merged, #92), the self-test 335, the baseline `3388b70b...`, the flicker
+  ceiling 12 (decision 303 (a)), and the stale "pops at most 1,034" corrected to 1,049, what `thresholds.js` has had since WP-04b (decision 291 (a)).
+- `CHANGELOG.md`: every entry kept, this one first; `austerlitz-command-map.html` rebuilt.
+
+No threshold, drop limit or baseline moved. On the merged build (2,963,994 bytes, md5 `3388b70b6e3387fa2041551f0b319a0a`; 5b alone 2,932,581,
+`30d75a75...`; `main` 2,935,062, `572b0935...`), Chromium 141:
+- `npm test`: all nine suites and the height guard pass. `check:data`: 143 of 143 identical to `archive/stage5wp08-572b0935.html`.
+  `check:chronology`: 0 errors. `check:baseline`: passes.
+- `check:selftest`: 335 checks, every one passing; the motion block's 16 at 227 jumps, 959 pops, 12 flickers and 105 level-of-detail switches
+  (the lettering's own build's counts exactly; ceilings 251, 1,049, 12, 130), every run's line and the long Play runs' bar passing.
+- `check:contrast`: 45 states reached (10 as a phone), 7,473 text elements, 0 below AA, 0 under 10.5 px, 0 font failures, 0 console messages;
+  the boot cases 8 of 8 (the context's loss 185 warnings, at most 248).
+- The negative controls on the merged build: this PR's `tools/final-stage5/mutate-wp08.js` 11 of 11 as expected and the lettering's
+  `mutate-wp08c.js` 11 of 11, each mutation failing its own check alone, the build passing all
+  (`docs/final-stage5-evidence/wp08/mutate-wp08-reconciled.json`, `docs/final-stage5-evidence/wp08c/mutate-wp08c-reconciled.json`).
+- `check:visual` on CI passed on the merge's commit (run 42556903824 on `ecfb91a`, build `3388b70b...`, `checks.yml`, `visual: true`; 4 h 11 min,
+  its 39 cases and live blocks), with `npm test`, `check:data`, `check:chronology`, `check:contrast` and `check:selftest` in the same run and in
+  the push's and the PR's runs on the same commit (42556897676, 42556902523).
+
+### What remains uncertain, and what is handed on
+
+- The caption's `CAP_MIN` (4 em), the key's sample strokes and the glyphs' forms are design values.
+- The rest of WP-08 is the stacked PR after WP-07's; CL-MAP-14 and CL-MAP-17 are WP-07's.
 ## 2026-11 · Final audits' roadmap, Stage 5 (3 of 3): WP-08's lettering and landmarks
 
 **Status: on `claude/jolly-carson-yz0yqo-lettering`, stacked on WP-07 (`claude/jolly-carson-yz0yqo-layer`, draft PR #89); draft PR #91 into

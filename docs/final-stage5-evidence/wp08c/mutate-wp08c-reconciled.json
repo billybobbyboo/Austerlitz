@@ -1,0 +1,155 @@
+{
+ "build": "austerlitz-command-map.html",
+ "md5": "3388b70b6e3387fa2041551f0b319a0a",
+ "mutations": [
+  {
+   "name": "none",
+   "expectedToFail": [],
+   "failed": [],
+   "asExpected": true,
+   "details": [],
+   "pageErrors": []
+  },
+  {
+   "name": "the name-only labels drawn beside their formations",
+   "expectedToFail": [
+    "arrow labels and names"
+   ],
+   "failed": [
+    "arrow labels and names"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: 09:30 hybrid: \"Caffarelli\" drawn beside its formation's own name; 09:30 hybrid: \"Suchet\" drawn beside its formation's own name; 09:30 hybrid: \"Bagration\" drawn beside its formation's own name; 09:30 terrain: \"Caffarelli\" drawn beside its formation's own name; 09:30 terrain: \"Suchet\" drawn bes"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "a name-only label withheld with its formation out of view",
+   "expectedToFail": [
+    "arrow labels and names"
+   ],
+   "failed": [
+    "arrow labels and names"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: 09:30 hybrid, its formation out of view: \"Caffarelli\" withheld; 09:30 hybrid, its formation out of view: \"Bagration\" withheld; 09:30 terrain, its formation out of view: \"Caffarelli\" withheld; 09:30 terrain, its formation out of view: \"Bagration\" withheld; no view had a name-only label in it w"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "a label that tells the movement withheld",
+   "expectedToFail": [
+    "arrow labels and names"
+   ],
+   "failed": [
+    "arrow labels and names"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: 11:00 hybrid: \"Nansouty's cuirassiers\", which tells a movement, withheld; 11:00 terrain: \"Nansouty's cuirassiers\", which tells a movement, withheld"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "the phase's labels kept beside a plan",
+   "expectedToFail": [
+    "the Plans view"
+   ],
+   "failed": [
+    "the Plans view"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: the phase's label o:French hold the crest in the layer; the phase's label o:Kamensky turns about (disputed) in the layer; the phase's label o:Jurczek's Austrians in the layer; the phase's label o:Levasseur up the Goldbach in the layer; the phase's label o:Caffarelli in the layer; the phase's "
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "the plan labels without their mark",
+   "expectedToFail": [
+    "the Plans view"
+   ],
+   "failed": [
+    "the Plans view"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: pl:Columns I-III on the southern plateau: no side's mark or name; pl:IV Column at Pratzen: no side's mark or name; pl:Guard camp before Austerlitz: no side's mark or name; pl:Bagration on the highway: no side's mark or name; pl:Advance Guard: no side's mark or name; pl:1st Column: no side's m"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "the phase's arrows not dimmed",
+   "expectedToFail": [
+    "the Plans view"
+   ],
+   "failed": [
+    "the Plans view"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: an arrow material at 0.475 of 0.475; an arrow material at 0.950 of 0.950; an arrow material at 0.950 of 0.950; an arrow material at 0.950 of 0.950; an arrow material at 0.950 of 0.950; an arrow material at 0.950 of 0.950"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "St Anthony's place a diamond again",
+   "expectedToFail": [
+    "the chapels"
+   ],
+   "failed": [
+    "the chapels"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: terrain: chapel: its marker not its sign; terrain: chapel's place not laid out where it is looked at close; staff: chapel: its marker not its sign; staff: chapel's place not laid out where it is looked at close"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "no line in the places' dossiers",
+   "expectedToFail": [
+    "the chapels"
+   ],
+   "failed": [
+    "the chapels"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: chapel: its dossier does not say what is not drawn; santon: its dossier does not say what is not drawn"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "the outlines always on the landscape",
+   "expectedToFail": [
+    "the landmarks' outlines"
+   ],
+   "failed": [
+    "the landmarks' outlines"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: the landscape outlined with nothing selected; Sokolnitz selected: not the castle alone; Austerlitz selected: not the garden alone"
+   ],
+   "pageErrors": []
+  },
+  {
+   "name": "no outline on the paper map",
+   "expectedToFail": [
+    "the landmarks' outlines"
+   ],
+   "failed": [
+    "the landmarks' outlines"
+   ],
+   "asExpected": true,
+   "details": [
+    "WRONG: the paper map without both outlines"
+   ],
+   "pageErrors": []
+  }
+ ],
+ "chromium": "141.0.7390.37"
+}

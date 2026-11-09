@@ -140,10 +140,12 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .skk-c{width:6px;height:6px;margin:0 6.5px;border:1px solid var(--text)}
 .legend .skk-l{width:20px;height:0;margin:0;border-radius:0;border-top:1px solid var(--text)}
 .rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
+.tb-rose{display:none;width:22px;height:22px;align-self:center;margin:0 2px}   /* WP-08 (CL-MAP-04): in the timeline's row, where the key's rose is not */
+body.pm-watch .tb-rose{display:block}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
 .rose .rose-s{fill:var(--text-muted)}
-.legend .rose text{font-family:var(--serif)}   /* the rose's N, in the embedded serif (decision 141; it named Georgia in shell.html) */
+.rose text{font-family:var(--serif)}   /* the rose's N, in the embedded serif (decision 141; it named Georgia in shell.html) */
 
 /* ---------- drawer ---------- */
 /* undocked (below 1080 px) the dossier stops above the timeline, so Play and the slider stay uncovered (decision 165; WCAG 2.4.11) */
@@ -582,11 +584,15 @@ body.mode-staff #vignette{display:none}
      the card moves beside it, and gives way to an open dossier */
   body:not(.rail-hidden):not(.docked) .dispatch{left:calc(var(--rail) + 14px);width:min(420px,calc(100vw - var(--rail) - 28px))}
   body.drawer-open:not(.rail-hidden):not(.docked) .dispatch{display:none}
+  /* the final audits' Stage 5, WP-08 (CL-MAP-13): with the rail hidden too (as at load below 1080 px) the card gives way to an open dossier, as on a
+     phone: until WP-08 card and dossier left a strip of map about 209 px wide between them at 1024 px */
+  body.drawer-open:not(.docked) .dispatch{display:none}
   .legend{display:none}
   .tools{top:56px;right:14px;gap:5px}
   .tlabel{display:none}
   .tools .grp{max-width:58vw}
   .tb-scale{display:none}
+  .tb-rose{display:block}   /* WP-08 (CL-MAP-04): the key hidden below 1080 px, its north here */
   /* roadmap step 6 (found by decision 238's phone case): the paper map keeps its scale bar at every width (Stage 2E: one scale across the view,
      its bar to 1%); hidden here only on the landscape, whose bar holds at the centre of the view alone */
   body.mode-staff .tb-scale{display:flex}
@@ -636,6 +642,7 @@ body.mode-staff #vignette{display:none}
   #layerpop{top:96px}
 }
 @media (max-height:700px){
+  .tb-rose{display:block}   /* WP-08 (CL-MAP-04): the key's rose hidden here (below), its north in the timeline */
   .dispatch p.lede{font-size:var(--t-prose);line-height:1.55}
   #d-changes{display:none}
   .legend .rose{display:none}
@@ -680,6 +687,29 @@ body.firstrun-on #openingbtn{display:none}
 .legend .ar::after{content:"";position:absolute;right:-8px;top:-3px;width:9px;height:11px;background:inherit;
   clip-path:polygon(0 0,100% 50%,0 100%)}
 .legend .ar[data-key="arrow-al"]::after{clip-path:polygon(0 0,100% 50%,0 100%,38% 50%)}
+/* the final audits' Stage 5, WP-08 (CL-MAP-08): the samples of the event glyphs, the objective, the place marker, the counter's arm marks and
+   status icons, drawn by the map's own drawers (app.js paintKey) */
+/* the final audits' Stage 5, WP-08 (CL-MAP-10): the selected formation's name on the landscape, an accent edge round its plate (app.js mlCollect) */
+.mln.mln-sel{box-shadow:0 0 0 2px var(--accent)}
+.legend .lg-rows{overflow-y:auto;overscroll-behavior:contain}   /* WP-08: held below the tools by app.js mlLegendFit, scrolling where taller */
+.legend .kgrp{display:inline-flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:1px 9px}   /* one row, its items those drawn ([data-lgi]) */
+.legend .kgrp>span{display:inline-flex;align-items:center;gap:4px}
+.legend .kgrp>span[hidden]{display:none}
+.legend .gk{display:block;flex:0 0 auto;width:18px;height:18px;margin:0 1px}
+.legend .gk canvas,.legend .gk svg{display:block;width:18px;height:18px}
+.legend .armk{display:block;flex:0 0 auto;width:26px;height:18px}
+.legend .armk svg{display:block;width:26px;height:18px;overflow:visible}
+.legend .stk{display:block;flex:0 0 auto;width:12px;height:12px;margin:0 4px}
+.legend .stk svg{display:block;width:12px;height:12px;fill:var(--text);stroke:var(--text)}
+.legend .ar.ar-dash{width:26px;height:4px;border-radius:0}   /* its dashes painted in the arrow's colour (app.js paintKey) */
+.legend .ar.ar-dash::after{display:none}
+/* the final audits' Stage 5, WP-08 (CL-MAP-03): the key's rows as the "?" overlay shows them (app.js buildHelp: a copy in a .legend.hp-key, so that
+   every row's style applies), left-aligned in the sheet; the key panel's own box (fixed at the corner, hidden in Watch and below 1080 px) not */
+#help .legend.hp-key{display:block!important;position:static;right:auto;bottom:auto;z-index:auto;transform:none;max-width:none;background:none;border:0;
+  padding:0;backdrop-filter:none;text-align:left;margin:2px 0 10px}
+#help .hp-key .k{flex-direction:row-reverse;justify-content:flex-end}   /* the sample first, then its words, at the left */
+#help .hp-key .k span:first-child{text-align:left}
+#help .hp-key .kgrp{justify-content:flex-start}
 .legend .mk2{display:block;width:16px;height:16px;flex:0 0 auto}   /* WP-08 (decision 282 (a)): the chapels' marker samples */
 .legend .mk2 svg{display:block;width:16px;height:16px}
 .legend .hlt{width:5px;height:15px;border-radius:1px;margin:0 7px}
@@ -785,10 +815,15 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .clockbox small{display:none}
   #clockread{font-size:var(--t-h3)}
   #speedbtn{display:inline-block;order:3;margin-left:auto;min-width:48px;min-height:44px;font-size:var(--t-ui)}
-  .tb-cap{order:5;flex:1 1 calc(100% - 48px)}
+  /* the caption's basis leaves the "?" button its 48 px and, since WP-08 (CL-MAP-04), the north rose its 28 px with its gap where the first row has no room for
+     it (at 360 px): the rose then at the head of the caption's row, the caption giving it room (its parts give way, decision 159), not a row of its own;
+     until the fix the rose took a row of its own there (the timeline 143 px against the phone's 121, check:visual's phone-360-explore). At 390 px and
+     wider the rose stands in the first row and the caption grows to its row as before */
+  .tb-cap{order:5;flex:1 1 calc(100% - 80px)}
   /* the paper map's scale bar (kept below 1080 px since decision 238's case) at the head of the caption's row, the caption giving it room
      (its parts give way, decision 159), not a row of its own */
   .tb-scale{order:4}
+  .tb-rose{order:4}
   body.mode-staff .tb-cap{flex-basis:0;min-width:0}
   .tb-help{order:6;min-width:40px;min-height:36px}
   .tb-vm{order:7}

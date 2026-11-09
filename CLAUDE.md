@@ -208,7 +208,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   and on the rich kit, the context lost and restored: the kit's programs compiled again with the hook, the block still rich at full swing, the
   frame and the sun's depth map drawn with the pose (each nearer the pose before the loss than the rest pose is).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
-  against `tools/visual/selftest-manifest.json` (330 since the final audits' Stage 5, WP-08's lettering: the arrows' labels and names, the Plans view, the
+  against `tools/visual/selftest-manifest.json` (335 since #90's reconciliation with WP-07 and WP-08's lettering: WP-08's furniture's five checks, `wp08Checks`, beside
+  the lettering's four; 330 since the final audits' Stage 5, WP-08's lettering: the arrows' labels and names, the Plans view, the
   chapels and the landmarks' outlines, `wp08cChecks`; 326 since the final audits' Stage 5, WP-07: the corps/division band, `wp07Checks`, and two of 8C's checks renamed for decision 301 (a); 325 since the final audits' Stage 3: the eight checks of WP-05's and WP-06's fixes, `wp56Checks`; 317 since the follow-up 8I: the far formation names' lighter plate in the low view, selected, focused, under a reading and on the paper map; the woods' check named "as pinned" since 8J, its counts the woods' data tasks', and the landmarks' check holding the castle covering its own site, at one size with its farm; 316 since Stage 8 implementation PR 8H: the blocks' pose at a pause, a seek and a resume, A-6 (one main
   landmark, the timeline a region, no heading level skipped, the 2 px ring), the crowns closing near the eye, and 8G's landmarks check renamed for the
   château's octant; 313 since implementation PR 8G: the buildings on the drawn ground at each factor and its block of eight; 302 since 8G's prerequisite 1,
@@ -429,7 +430,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   required) on a page of its own: the 16 motions of `label-motion.js` driven through the app's own input and frame (`tools/visual/motion.js`), the
   four real input can drive by real input (two on `check:selftest`'s page), two with Saint-Hilaire's division selected, three under a
   headquarters' reading and a finger's pan with the page 390 px wide, judged in `thresholds.js` `MOTION`: over the 16 jumps at most 251, pops at most
-  1,034 (since the final audits' Stage 2, 5 November 2026, on the owner's word, its build's own counts, with eighteen visibility baselines re-measured;
+  1,049 (since the final audits' Stage 4, WP-04b, decision 291 (a), 6 November 2026, the relief's geography; 1,035 since its WP-03, decision 287 (a), the tracks'
+  geography; 1,034 since the final audits' Stage 2, 5 November 2026, on the owner's word, its build's own counts, with eighteen visibility baselines re-measured;
   248 and 998 since decision 267 (a), 1 November 2026, 8K's build's own counts; 245 and 985 until then), level-of-detail switches at most 130 and flickers at most 12 (since the final audits' Stage 5, WP-08's lettering, on the owner's word, decision 303 (a):
   the Landscape's rotation blinks three formation names once more with the arrows' name-only labels withheld; 10 until then; since 8D's prerequisite, decision 257 (b): the deterministic benchmark's own
   counts on the pinned browser, not a device guarantee; were the owner's starting targets 300, 1,300 and 200, `docs/STAGE8_SPEC.md` §3.5, and 8B's
@@ -481,8 +483,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   `derivedModel`: at 14:40 neither derived reading applies and the caption shows none; at 14:20, in the same view, the caption shows the centre
   separation; every other Watch case as before).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 5, WP-08's lettering and landmarks (md5 `572b0935...`,
-  2,935,062 bytes, `CHANGELOG.md`; re-baselined from the build of its WP-07, md5 `e5e17e64...`, 2,912,695 bytes: the map layer
+- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 5, WP-08's furniture reconciled with WP-07 and WP-08's lettering
+  (md5 `3388b70b...`, 2,963,994 bytes, `CHANGELOG.md`; re-baselined from the build of WP-08's furniture alone, md5 `30d75a75...`, 2,932,581 bytes,
+  `CHANGELOG.md`, and from that of WP-08's lettering and landmarks, md5 `572b0935...`, 2,935,062 bytes, `CHANGELOG.md`; re-baselined from the build of its WP-07, md5 `e5e17e64...`, 2,912,695 bytes: the map layer
   in motion, `CHANGELOG.md`; re-baselined from the build of the final audits' stage 4, WP-04b, md5 `cdca9984...`, 2,903,749 bytes: the relief
   and the drawn geography, `CHANGELOG.md`; re-baselined from the build of its WP-03, md5 `af2965c6...`, 2,888,060 bytes: the tracks,
   grades and internal consistency, `CHANGELOG.md`; re-baselined from the build of the final audits' stage 3, md5 `6ec4abc2...`, 2,869,790 bytes: WP-05 and WP-06,
@@ -779,10 +782,13 @@ the castle's own ground; Krug at the Kruh tract; the streams labelled schematic;
 and 293 (a), the motion block and the gait's kept-open counts at its own counts, 294 (a), phone-390-first's framing floor 17 to 16, and 295 (a), two gait cases in motion)
 is merged (#87, `c1222e3`; its `check:visual` passing on `10ad665`, run 42352158836, 3 h 22 min). WP-15's first batch, alongside and changing no data,
 is merged (#85, `ca50cfe`). Stage 4 is done; its build is WP-04b's, `cdca9984...`.
-Stage 5 (WP-07, WP-08; owner decisions 296-304 of 8 November 2026) is built as three draft PRs from `main`: **5a**, WP-07, the map layer in motion
-(`claude/jolly-carson-yz0yqo-layer`, draft PR #89: aging and the event-named rise during Play, decision 299 (D), its cost on the phone accepted as measured, decision 304 (a); the corps/division band, decisions
-300 and 301 (a); the long Play runs and their bar in the motion block, `MOTION.LONG`; five visibility baselines on the owner's word; presentation
-only); **5b**, WP-08's furniture (`claude/jolly-carson-yz0yqo-furniture`, draft PR #90); **5c**, WP-08's lettering and landmarks, stacked on 5a (`claude/jolly-carson-yz0yqo-lettering`, draft PR #91 into 5a's branch: an arrow's
-name-only label withheld while its formation is named, CL-MAP-09; the Plans view, CL-MAP-11; the chapels' marks, decision 282 (a), with `BUILDINGS`'
-two chapels amended, a data task, the `check:data` reference moved; the castle's and the garden's outlines, CL-VIS-11; the paper map's lettering as
-it is, decision 302 (b); the wall of names re-measured, decision 284 (b); the flicker ceiling 12, decision 303 (a)).
+Stage 5 (WP-07, WP-08; owner decisions 296-304 of 8 November 2026) was built as three draft PRs from `main`: **5a**, WP-07, the map layer in motion
+(`claude/jolly-carson-yz0yqo-layer`, PR #89, merged, `d56764f`: aging and the event-named rise during Play, decision 299 (D), its cost on the phone
+accepted as measured, decision 304 (a); the corps/division band, decisions 300 and 301 (a); the long Play runs and their bar in the motion block,
+`MOTION.LONG`; five visibility baselines on the owner's word; presentation only); **5c**, WP-08's lettering and landmarks (`claude/jolly-carson-yz0yqo-lettering`,
+PR #91, merged into 5a's branch, `0c917db`, and brought into `main` by #92, `663ed6f`: an arrow's name-only label withheld while its formation is
+named, CL-MAP-09; the Plans view, CL-MAP-11; the chapels' marks, decision 282 (a), with `BUILDINGS`' two chapels amended, a data task, the
+`check:data` reference moved; the castle's and the garden's outlines, CL-VIS-11; the paper map's lettering as it is, decision 302 (b); the wall of
+names re-measured, decision 284 (b); the flicker ceiling 12, decision 303 (a)); and **5b**, WP-08's furniture (`claude/jolly-carson-yz0yqo-furniture`,
+draft PR #90, reconciled with `main` after #89 and #92: the caption's ordered fill, the event glyphs, the key's rows, the key in the "?" overlay,
+one north rose wherever the timeline stands, the selection's edge, the card giving way below 1080 px; decisions 296-298; the self-test 335 checks).

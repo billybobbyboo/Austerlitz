@@ -146,10 +146,12 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .skk-c{width:6px;height:6px;margin:0 6.5px;border:1px solid var(--text)}
 .legend .skk-l{width:20px;height:0;margin:0;border-radius:0;border-top:1px solid var(--text)}
 .rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
+.tb-rose{display:none;width:22px;height:22px;align-self:center;margin:0 2px}   /* WP-08 (CL-MAP-04): in the timeline's row, where the key's rose is not */
+body.pm-watch .tb-rose{display:block}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
 .rose .rose-s{fill:var(--text-muted)}
-.legend .rose text{font-family:var(--serif)}   /* the rose's N, in the embedded serif (decision 141; it named Georgia in shell.html) */
+.rose text{font-family:var(--serif)}   /* the rose's N, in the embedded serif (decision 141; it named Georgia in shell.html) */
 
 /* ---------- drawer ---------- */
 /* undocked (below 1080 px) the dossier stops above the timeline, so Play and the slider stay uncovered (decision 165; WCAG 2.4.11) */
@@ -588,11 +590,15 @@ body.mode-staff #vignette{display:none}
      the card moves beside it, and gives way to an open dossier */
   body:not(.rail-hidden):not(.docked) .dispatch{left:calc(var(--rail) + 14px);width:min(420px,calc(100vw - var(--rail) - 28px))}
   body.drawer-open:not(.rail-hidden):not(.docked) .dispatch{display:none}
+  /* the final audits' Stage 5, WP-08 (CL-MAP-13): with the rail hidden too (as at load below 1080 px) the card gives way to an open dossier, as on a
+     phone: until WP-08 card and dossier left a strip of map about 209 px wide between them at 1024 px */
+  body.drawer-open:not(.docked) .dispatch{display:none}
   .legend{display:none}
   .tools{top:56px;right:14px;gap:5px}
   .tlabel{display:none}
   .tools .grp{max-width:58vw}
   .tb-scale{display:none}
+  .tb-rose{display:block}   /* WP-08 (CL-MAP-04): the key hidden below 1080 px, its north here */
   /* roadmap step 6 (found by decision 238's phone case): the paper map keeps its scale bar at every width (Stage 2E: one scale across the view,
      its bar to 1%); hidden here only on the landscape, whose bar holds at the centre of the view alone */
   body.mode-staff .tb-scale{display:flex}
@@ -642,6 +648,7 @@ body.mode-staff #vignette{display:none}
   #layerpop{top:96px}
 }
 @media (max-height:700px){
+  .tb-rose{display:block}   /* WP-08 (CL-MAP-04): the key's rose hidden here (below), its north in the timeline */
   .dispatch p.lede{font-size:var(--t-prose);line-height:1.55}
   #d-changes{display:none}
   .legend .rose{display:none}
@@ -686,6 +693,29 @@ body.firstrun-on #openingbtn{display:none}
 .legend .ar::after{content:"";position:absolute;right:-8px;top:-3px;width:9px;height:11px;background:inherit;
   clip-path:polygon(0 0,100% 50%,0 100%)}
 .legend .ar[data-key="arrow-al"]::after{clip-path:polygon(0 0,100% 50%,0 100%,38% 50%)}
+/* the final audits' Stage 5, WP-08 (CL-MAP-08): the samples of the event glyphs, the objective, the place marker, the counter's arm marks and
+   status icons, drawn by the map's own drawers (app.js paintKey) */
+/* the final audits' Stage 5, WP-08 (CL-MAP-10): the selected formation's name on the landscape, an accent edge round its plate (app.js mlCollect) */
+.mln.mln-sel{box-shadow:0 0 0 2px var(--accent)}
+.legend .lg-rows{overflow-y:auto;overscroll-behavior:contain}   /* WP-08: held below the tools by app.js mlLegendFit, scrolling where taller */
+.legend .kgrp{display:inline-flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:1px 9px}   /* one row, its items those drawn ([data-lgi]) */
+.legend .kgrp>span{display:inline-flex;align-items:center;gap:4px}
+.legend .kgrp>span[hidden]{display:none}
+.legend .gk{display:block;flex:0 0 auto;width:18px;height:18px;margin:0 1px}
+.legend .gk canvas,.legend .gk svg{display:block;width:18px;height:18px}
+.legend .armk{display:block;flex:0 0 auto;width:26px;height:18px}
+.legend .armk svg{display:block;width:26px;height:18px;overflow:visible}
+.legend .stk{display:block;flex:0 0 auto;width:12px;height:12px;margin:0 4px}
+.legend .stk svg{display:block;width:12px;height:12px;fill:var(--text);stroke:var(--text)}
+.legend .ar.ar-dash{width:26px;height:4px;border-radius:0}   /* its dashes painted in the arrow's colour (app.js paintKey) */
+.legend .ar.ar-dash::after{display:none}
+/* the final audits' Stage 5, WP-08 (CL-MAP-03): the key's rows as the "?" overlay shows them (app.js buildHelp: a copy in a .legend.hp-key, so that
+   every row's style applies), left-aligned in the sheet; the key panel's own box (fixed at the corner, hidden in Watch and below 1080 px) not */
+#help .legend.hp-key{display:block!important;position:static;right:auto;bottom:auto;z-index:auto;transform:none;max-width:none;background:none;border:0;
+  padding:0;backdrop-filter:none;text-align:left;margin:2px 0 10px}
+#help .hp-key .k{flex-direction:row-reverse;justify-content:flex-end}   /* the sample first, then its words, at the left */
+#help .hp-key .k span:first-child{text-align:left}
+#help .hp-key .kgrp{justify-content:flex-start}
 .legend .mk2{display:block;width:16px;height:16px;flex:0 0 auto}   /* WP-08 (decision 282 (a)): the chapels' marker samples */
 .legend .mk2 svg{display:block;width:16px;height:16px}
 .legend .hlt{width:5px;height:15px;border-radius:1px;margin:0 7px}
@@ -791,10 +821,15 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .clockbox small{display:none}
   #clockread{font-size:var(--t-h3)}
   #speedbtn{display:inline-block;order:3;margin-left:auto;min-width:48px;min-height:44px;font-size:var(--t-ui)}
-  .tb-cap{order:5;flex:1 1 calc(100% - 48px)}
+  /* the caption's basis leaves the "?" button its 48 px and, since WP-08 (CL-MAP-04), the north rose its 28 px with its gap where the first row has no room for
+     it (at 360 px): the rose then at the head of the caption's row, the caption giving it room (its parts give way, decision 159), not a row of its own;
+     until the fix the rose took a row of its own there (the timeline 143 px against the phone's 121, check:visual's phone-360-explore). At 390 px and
+     wider the rose stands in the first row and the caption grows to its row as before */
+  .tb-cap{order:5;flex:1 1 calc(100% - 80px)}
   /* the paper map's scale bar (kept below 1080 px since decision 238's case) at the head of the caption's row, the caption giving it room
      (its parts give way, decision 159), not a row of its own */
   .tb-scale{order:4}
+  .tb-rose{order:4}
   body.mode-staff .tb-cap{flex-basis:0;min-width:0}
   .tb-help{order:6;min-width:40px;min-height:36px}
   .tb-vm{order:7}
@@ -1486,6 +1521,19 @@ $Id$
     <div class="k" data-lg="arrow-al"><span>Allied movement</span><span class="ar" data-key="arrow-al"></span></div>
     <div class="k" data-lg="halt"><span>halt: a column stopped short of its objective</span><span class="hlt" data-key="arrow-al"></span></div>
     <div class="k" data-lg="bound"><span>boundary between commands</span><span class="bnd"></span></div>
+    <!-- the final audits' Stage 5, WP-08 (CL-MAP-08): every encoding the map draws has its row, shown while it is on screen; the axis row's words
+         are the axis arrows' own (app.js paintLegend), the samples drawn by the map's own drawers (paintKey), the status rows from STATUS -->
+    <div class="k" data-lg="axis"><span id="lg-axis">dashed arrow: an ordered route, not a movement made</span><span class="ar ar-dash" data-key="arrow-al"></span></div>
+    <div class="k" data-lg="obj"><span>ringed cross: an objective of the movements drawn</span><span class="gk" data-gk="objective"></span></div>
+    <div class="k" data-lg="ev"><span class="kgrp"><span>events:</span><span data-lgi="ev-other"><span class="gk" data-gk="other"></span>an attack, an engagement, a movement or a withdrawal</span><span data-lgi="ev-capture"><span class="gk" data-gk="capture"></span>a capture</span><span data-lgi="ev-decision"><span class="gk" data-gk="decision"></span>a decision</span><span data-lgi="ev-arrival"><span class="gk" data-gk="arrival"></span>an arrival</span><span data-lgi="ev-collapse"><span class="gk" data-gk="collapse"></span>a collapse</span></span></div>
+    <div class="k" data-lg="place"><span>a place named on the map, its marker on the place</span><span class="gk" data-gk="place"></span></div>
+    <div class="k" data-lg="echelon"><span class="kgrp"><span>a counter: above it X brigade, XX division, XXX corps, XXXX army; in it</span><span data-lgi="arm-inf"><span class="armk" data-arm="inf"></span>infantry</span><span data-lgi="arm-cav"><span class="armk" data-arm="cav"></span>cavalry</span><span data-lgi="arm-art"><span class="armk" data-arm="art"></span>artillery</span><span data-lgi="arm-guard"><span class="armk" data-arm="guard"></span>the Guard</span><span data-lgi="arm-mixed"><span class="armk" data-arm="mixed"></span>infantry and cavalry</span><span data-lgi="arm-hq"><span class="armk" data-arm="hq"></span>a headquarters</span></span></div>
+    <div class="k" data-lg="st-quiet"><span class="stw" data-tone="quiet"></span><span class="stk" data-tone="quiet"></span></div>
+    <div class="k" data-lg="st-steady"><span class="stw" data-tone="steady"></span><span class="stk" data-tone="steady"></span></div>
+    <div class="k" data-lg="st-active"><span class="stw" data-tone="active"></span><span class="stk" data-tone="active"></span></div>
+    <div class="k" data-lg="st-warn"><span class="stw" data-tone="warn"></span><span class="stk" data-tone="warn"></span></div>
+    <div class="k" data-lg="st-bad"><span class="stw" data-tone="bad"></span><span class="stk" data-tone="bad"></span></div>
+    <div class="k" data-lg="st-gone"><span class="stw" data-tone="gone"></span><span class="stk" data-tone="gone"></span></div>
     <div class="k" data-lg="plan"><span>dashed outline: a plan's staging area</span><span class="stg"></span></div>
     <div class="k" data-lg="wood"><span>wood (its extent in the model)</span><span class="sw psym" data-sym="wood"></span></div>
     <div class="k" data-lg="village"><span>village (its extent in the model)</span><span class="sw psym" data-sym="village"></span></div>
@@ -1556,6 +1604,17 @@ $Id$
       <button class="t spd-btn" data-s="2" aria-pressed="false">2&times;</button>
       <button class="t spd-btn" data-s="4" aria-pressed="false">4&times;</button>
     </div>
+    <!-- the final audits' Stage 5, WP-08 (CL-MAP-04; question 296's recommendation (a)): the north rose in the timeline's row, beside the scale bar,
+         shown wherever the key's own rose is not (style.css: in Watch, below 1080 px wide and at 700 px tall or less, where until WP-08 no north was
+         shown), so that one north stands in Study and Watch at every width and height; rotated to true north by app.js updateRose -->
+<svg class="rose tb-rose" viewBox="0 0 60 60" role="img" aria-label="North arrow">
+      <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
+      <g id="tb-rose-needle"><!-- rotated with the key's (app.js updateRose) -->
+      <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
+      <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
+      <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14">N</text>
+      </g>
+    </svg>
     <div class="tb-scale" id="scalebar" role="img" aria-label="Scale">
       <i id="sb-fill"></i><span id="sb-label"></span>
     </div>
@@ -1588,7 +1647,7 @@ $Id$
     <!-- roadmap step 3 (decision 134 (a); WCAG 2.1.4): the single-key shortcuts switch, outside the list buildHelp writes; words from LABELS.keys -->
     <button id="help-keys" type="button" class="lp-row" aria-pressed="true"><b>Single-key shortcuts</b><i aria-hidden="true">on</i></button>
     <p id="help-keys-d" class="help-note"></p>
-    <div id="help-body" tabindex="0" role="region" aria-label="The keys and controls, by group"></div>
+    <div id="help-body" tabindex="0" role="region" aria-label="The map key, then the keys and controls, by group"></div>
   </div>
 </div>
 <!-- roadmap step 3 (docs/FINAL_AUDIT.md SW-4, SW-6): both sheets modal by one mechanism (app.js SHEETS); a sheet takes the focus a click on its text
@@ -10944,13 +11003,14 @@ function buildBoundary(b){
 function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
   ovText.push({text:text,pos:pos.clone(),acl:6});   /* the map layer's label, anchored on the drawn line (2D) */
 }
+/* the objective marker on its 128 px canvas: a ring and a cross reaching past it (drawn on the map and in the legend's sample, paintKey) */
+function objGlyph(c,col,lw){ c.strokeStyle=col; c.lineWidth=lw||7;
+  c.beginPath(); c.arc(64,64,40,0,Math.PI*2); c.stroke();
+  c.beginPath(); c.moveTo(64,14); c.lineTo(64,114); c.moveTo(14,64); c.lineTo(114,64); c.stroke(); }
 function buildObjective(o){
   var w=W(o[0],o[1]);
   var cv=document.createElement("canvas"); cv.width=cv.height=128;
-  var c=cv.getContext("2d");
-  c.strokeStyle=TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation; c.lineWidth=7;
-  c.beginPath(); c.arc(64,64,40,0,Math.PI*2); c.stroke();
-  c.beginPath(); c.moveTo(64,14); c.lineTo(64,114); c.moveTo(14,64); c.lineTo(114,64); c.stroke();
+  objGlyph(cv.getContext("2d"),TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation);
   var m=new THREE.SpriteMaterial({map:ctex(cv),transparent:true,opacity:0,depthTest:false,fog:false});
   var sp=new THREE.Sprite(m); sp.position.set(w[0],displayHeight(w[0],w[1])+3.0,w[1]);
   sp.scale.set(4.4,4.4,1); sp.renderOrder=21;
@@ -11803,14 +11863,20 @@ function eventGlyph(side,kind){
   x.strokeStyle=col; x.lineWidth=5;
   x.beginPath(); x.arc(64,64,38,0,Math.PI*2); x.stroke();
   x.lineWidth=3.5;
-  if(kind==="capture"){ x.beginPath(); x.moveTo(64,16); x.lineTo(64,112); x.moveTo(16,64); x.lineTo(112,64); x.stroke(); }
-  else if(kind==="decision"){ x.beginPath(); x.arc(64,64,14,0,Math.PI*2); x.stroke(); }
-  else if(kind==="arrival"){ x.beginPath(); x.moveTo(40,78); x.lineTo(64,40); x.lineTo(88,78); x.stroke(); }
-  else if(kind==="collapse"){ x.beginPath(); x.moveTo(40,40); x.lineTo(88,88); x.moveTo(88,40); x.lineTo(40,88); x.stroke(); }
-  else { x.beginPath(); x.moveTo(64,34); x.lineTo(64,94); x.stroke();
-         x.beginPath(); x.moveTo(48,52); x.lineTo(64,32); x.lineTo(80,52); x.stroke(); }
+  EVG[kind in EVG?kind:"other"](x,col);
   return ctex(cv);
 }
+/* the event glyphs' marks inside their ring, by kind (one table, drawn on the map's canvas and in the legend's samples, legendGlyph). The final
+   audits' Stage 5, WP-08 (CL-MAP-16): an attack, an engagement, a movement or a withdrawal is a burst of eight rays, none upright or level
+   (until WP-08 an upright arrow, which on the north-up paper map read as a north arrow); a capture a filled disc (until WP-08 a ring with a
+   full cross, the objective marker's form). Design values, on the 128 px canvas */
+var EVG={
+  capture:function(x,col){ x.fillStyle=col; x.beginPath(); x.arc(64,64,15,0,Math.PI*2); x.fill(); },
+  decision:function(x){ x.beginPath(); x.arc(64,64,14,0,Math.PI*2); x.stroke(); },
+  arrival:function(x){ x.beginPath(); x.moveTo(40,78); x.lineTo(64,40); x.lineTo(88,78); x.stroke(); },
+  collapse:function(x){ x.beginPath(); x.moveTo(40,40); x.lineTo(88,88); x.moveTo(88,40); x.lineTo(40,88); x.stroke(); },
+  other:function(x){ x.beginPath(); for(var k=0;k<8;k++){ var a=(k+0.5)*Math.PI/4; x.moveTo(64+12*Math.cos(a),64+12*Math.sin(a)); x.lineTo(64+27*Math.cos(a),64+27*Math.sin(a)); } x.stroke(); }
+};
 /* The decisive fact of the morning is a negative one: the plateau emptying.
    Empty ground shows nothing, so the plateau is surveyed on the map and the
    holding read off the plotted formations. */
@@ -11894,7 +11960,7 @@ function updateSelRing(){
   selRing.position.set(w[0],displayHeight(w[0],w[1])+0.7,w[1]);
   selRing.scale.set(r,1,r*0.82);
   selRing.visible=true;
-  var sro=0.62-selRing.material.opacity; if(Math.abs(sro)>0.004) settling=true;
+  var sro=0.9-selRing.material.opacity;   /* WP-08 (CL-MAP-10): 0.9, was 0.62, read beside the plateau's outline (0.5) */ if(Math.abs(sro)>0.004) settling=true;
   selRing.material.opacity += sro*ease(0.12);
 }
 function buildEventLayer(){
@@ -13101,6 +13167,9 @@ function mlCollect(){
     var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id), base=7+rank(f,S.strength);
     add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:mlPriX(id,base),base:base,keep:sel||hov||fo||inFam,fid:id,pick:{kind:"f",id:id},acl:2,
             aria:counterLabel(f,S)});
+    /* the final audits' Stage 5, WP-08 (CL-MAP-10): the selected formation's name stands out on the landscape by an accent edge round its plate (a
+       shadow: its box, its place and its words' contrast as before); until WP-08 it was drawn like every other name */
+    if(it.selC!==sel){ it.el.classList.toggle("mln-sel",sel); it.selC=sel; }
   });
   /* the moments of the battle: every live event's label is kept (decision 39) */
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn) return;
@@ -13622,6 +13691,17 @@ function paintLegend(){
              wherever the landscape draws names */
           figures:land&&!isTrueScale(), standards:land&&!isTrueScale(), sidemark:mode==="terrain"&&textOn(),
           gait:land&&!isTrueScale()};   /* Stage 8, 8E (decision 244 (a)): wherever figures are drawn, what their step is */
+  /* the final audits' Stage 5, WP-08 (CL-MAP-08): a row for every encoding drawn: the phase's dashed axis arrows (their words their own interp),
+     its objectives, each kind of event glyph drawn, the places' markers, and where counters are drawn their echelon marks, each arm's mark and
+     each status icon on screen */
+  var axis=A.filter(function(a){ return a.kind==="axis"; });
+  on.axis=axis.length>0; on.obj=layerOn.arrows&&(O.obj||[]).length>0;
+  var ax=document.getElementById("lg-axis"); if(ax&&axis[0]&&axis[0].interp) ax.textContent="dashed arrow: "+axis[0].interp.replace(/^route: /,"");
+  if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(k.sp&&k.sp.visible) on["ev-"+(k.e.kind in EVG?k.e.kind:"other")]=true; });
+  on.place=placeLabels.some(function(o){ return o.show; });
+  on.echelon=counters;
+  if(counters) [aggregates,units].forEach(function(T){ Object.keys(T).forEach(function(id){ var r=T[id]; if(!r.show||!r.p) return; var f=FORMATIONS[id], st=STATUS[liveStatus(id,curPhase)];
+    on["arm-"+f.arm]=true; if(st) on["st-"+st.tone]=true; }); });
   /* WP-08 (decision 282 (a); CL-VIS-11): the chapels' markers while their place is laid out, the landmarks' outlines while drawn */
   on.chapel=placeLabels.some(function(o){ return o.show&&o.ft.id==="chapel"; }); on.chapelsite=placeLabels.some(function(o){ return o.show&&o.ft.id==="santon"; });
   on.landmark=!!((LMCUE.castle&&LMCUE.castle.visible)||(LMCUE.garden&&LMCUE.garden.visible));
@@ -13629,7 +13709,10 @@ function paintLegend(){
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
   _lgKey=key; ML.lgSize=null;
+  on.ev=["other","capture","decision","arrival","collapse"].some(function(k){ return on["ev-"+k]; });
+  paintKeySamples();   /* WP-08: in the theme's colour (returns at once while the theme is unchanged) */
   lg.querySelectorAll("[data-lg]").forEach(function(e){ e.hidden=!on[e.dataset.lg]; });
+  lg.querySelectorAll("[data-lgi]").forEach(function(e){ e.hidden=!on[e.dataset.lgi]; });   /* WP-08 (CL-MAP-08): the items of one row, those drawn */
   var hint=document.getElementById("lg-hint");   /* the controls of the view shown: the paper map pans, the landscape orbits */
   if(hint) hint.textContent=legendHint(land);
 }
@@ -13654,6 +13737,15 @@ function mlLegendFit(VW,VH){
     squeeze=right-ML.lgSize[0]<D.right+ML_PAD&&bottom-ML.lgSize[1]<D.bottom&&bottom>D.top;
   }
   var open=ML.legendOpen&&!squeeze;
+  /* the final audits' Stage 5, WP-08 (CL-MAP-08): with a row for every encoding the open key can stand taller than the room below the tools: its
+     rows held below them (8 px clear), scrolling where they are taller; a scroll region then a stop of its own, named (WCAG 2.1.1) */
+  if(open&&rows&&shown(lg)){ var tl=document.querySelector(".tools"), top=12, hd=tg.getBoundingClientRect(), Lb=lg.getBoundingClientRect().bottom;
+    if(shown(tl)){ var TR=tl.getBoundingClientRect(); if(TR.bottom>0&&TR.left<lg.getBoundingClientRect().right) top=Math.max(top,TR.bottom+8); }
+    var mx=Math.max(96,Math.floor(Lb-top-hd.height-16));
+    if(rows.dataset.mx!==String(mx)){ rows.style.maxHeight=mx+"px"; rows.dataset.mx=String(mx); ML.lgSize=null; }
+    var sc=rows.scrollHeight>rows.clientHeight+1;
+    if(sc!==(rows.getAttribute("tabindex")==="0")){ if(sc){ rows.setAttribute("tabindex","0"); rows.setAttribute("role","region"); rows.setAttribute("aria-label","Key, scrolling"); }
+      else { rows.removeAttribute("tabindex"); rows.removeAttribute("role"); rows.removeAttribute("aria-label"); } } }
   if(lg.classList.contains("collapsed")===open){ lg.classList.toggle("collapsed",!open); tg.setAttribute("aria-expanded",String(open)); }
   if(lg.classList.contains("squeezed")!==squeeze){ lg.classList.toggle("squeezed",squeeze);
     tg.title=squeeze?"No room for the key beside "+LABELS.names.phaseText+": hide it (D) or close the dossier":"Show or hide the key"; }
@@ -14587,7 +14679,7 @@ var LABELS={
   reload:"Reload",
   /* roadmap step 3 (decision 134 (a)): the single-key shortcuts switch in the "?" overlay; interface words, no claim */
   plans:{fr:"The French plan", al:"The Allied plan"},   /* WP-08 (CL-MAP-11): a plan label's name begins with its side's plan */
-  keys:{single:"Single-key shortcuts", on:"on", off:"off", offRow:"(off)",
+  keys:{single:"Single-key shortcuts", on:"on", off:"off", offRow:"(off)", mapKey:"The map key: what is drawn now",   /* WP-08 (CL-MAP-03) */
     note:"Off, keys that type one character (letters, digits, punctuation, ?) do nothing; Space, the arrows, Esc, Tab and Enter still work, and + and \u2212 on the focused map. For this visit only; the ? button opens this list."},
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
@@ -14769,6 +14861,16 @@ var HELP_GROUPS=["Time","View and ground","Layers and panels","The map, when it 
 function buildHelp(){
   var host=document.getElementById("help-body"); if(!host) return;
   var html="";
+  /* the final audits' Stage 5, WP-08 (CL-MAP-03): the map's key, its rows for what is drawn now (paintLegend's own choice, as the key panel shows
+     them), one press away wherever the timeline is shown (the "?" button: Study and Watch, every width, a phone): until WP-08 the key panel alone,
+     hidden below 1080 px wide, at 430 px tall or less (decision 226 (a)) and in Watch and Clean (2D: a Key button would have been a new panel
+     there). Copies without ids */
+  var lr=document.getElementById("lg-rows");
+  if(lr){ paintLegend(); var K=[];
+    [].forEach.call(lr.querySelectorAll(".k"),function(k){ if(k.hidden||k.closest("[hidden]")) return; var c=k.cloneNode(true); c.removeAttribute("id");
+      [].forEach.call(c.querySelectorAll("[id]"),function(x){ x.removeAttribute("id"); }); [].forEach.call(c.querySelectorAll("[hidden]"),function(x){ x.parentNode.removeChild(x); });
+      K.push(c.outerHTML); });
+    if(K.length) html+='<h3>'+esc(LABELS.keys.mapKey)+'</h3><div class="legend hp-key">'+K.join("")+'</div>'; }
   HELP_GROUPS.forEach(function(g){ var rows=KEYS.filter(function(r){ return r.group===g; }); if(!rows.length) return;
     html+='<h3>'+esc(g)+'</h3>';
     rows.forEach(function(r){ var off=!SHORTCUTS.on&&r.scope==="window"&&r.keys.length&&r.keys.every(charKey);
@@ -15190,6 +15292,14 @@ function paintKey(){
   document.querySelectorAll(".legend [data-key]").forEach(function(e){
     var k=COLOUR_KEY[e.dataset.key]; if(!k) return; if(e.classList.contains("olk")) e.style.borderColor=k.hex; else e.style.background=k.hex; });
   document.querySelectorAll(".legend .bnd").forEach(function(e){ e.style.borderTopColor=TOKENS.sym.label.dark.annotation; });
+  /* the final audits' Stage 5, WP-08 (CL-MAP-08): the samples drawn by the map's own drawers, in the annotation colour (the map draws the event
+     glyphs in the side's, which the arrows' rows give); the status rows' words from STATUS, by tone */
+  document.querySelectorAll(".legend .ar-dash").forEach(function(e){ var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background="repeating-linear-gradient(90deg,"+k.hex+" 0 6px,transparent 6px 10px)"; });
+  paintKeySamples();
+  document.querySelectorAll(".legend .stk").forEach(function(e){ var t=TOKENS.sym.status[e.dataset.tone]; e.innerHTML=t?iconSVG(t.icon):""; });
+  document.querySelectorAll(".legend .stw").forEach(function(e){ var tone=e.dataset.tone;
+    e.textContent="status: "+Object.keys(STATUS).filter(function(k){ return STATUS[k].tone===tone; }).map(function(k){ return STATUS[k].label; }).join(", "); });
+
   /* WP-08 (decision 282 (a)): the chapels' rows in BUILDINGS.notDrawn's words */
   var ND=typeof BUILDINGS!=="undefined"&&BUILDINGS.notDrawn||{}, lc=document.getElementById("lg-chapel"), ls=document.getElementById("lg-chapelsite");
   if(lc&&ND.stAnthony) lc.textContent="a cross: "+ND.stAnthony.en+"; its place marked, not drawn as a building";
@@ -15213,6 +15323,22 @@ function paintKey(){
   p.innerHTML="French formations are marked in "+sw("side-fr")+K["side-fr"].word+" and the Allies in "+sw("side-al")+K["side-al"].word+
     ": on their names, their counters and the ground beneath them, and on the movement arrows. "+
     "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
+}
+/* the final audits' Stage 5, WP-08 (CL-MAP-08): the key's samples of the event glyphs, the objective, the place marker and the counter's arm marks,
+   drawn by the map's own drawers (EVG, objGlyph, armGlyphSVG) in the theme's text colour (the map draws the event glyphs in the side's colour, which
+   the arrows' rows give), their strokes heavier for 18 px (the map's at most 64 px, decision 57); as images, so that the "?" overlay's copy of the
+   rows (buildHelp) carries them. Painted again when the map changes between the landscape and the paper map (paintLegend) */
+var _kSamp=null;
+function paintKeySamples(){
+  var K=mode==="staff"?"paper":"dark"; if(_kSamp===K) return; _kSamp=K;
+  var col=TOKENS.theme[K].text, PC=TOKENS.sym.place[K];
+  document.querySelectorAll(".legend .gk").forEach(function(e){ var g=e.dataset.gk;
+    if(g==="place"){ e.innerHTML='<svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 4l5 5l-5 5l-5 -5z" fill="'+PC.fill+'" stroke="'+PC.other+'" stroke-width="1.6"/></svg>'; return; }
+    var cv=document.createElement("canvas"); cv.width=cv.height=128; var x=cv.getContext("2d");
+    if(g==="objective") objGlyph(x,col,12); else { x.strokeStyle=col; x.lineWidth=11; x.beginPath(); x.arc(64,64,38,0,Math.PI*2); x.stroke(); x.lineWidth=9; EVG[g](x,col); }
+    var im=new Image(); im.alt=""; im.width=18; im.height=18; im.src=cv.toDataURL(); e.innerHTML=""; e.appendChild(im); });
+  document.querySelectorAll(".legend .armk").forEach(function(e){ var a=e.dataset.arm;
+    e.innerHTML='<svg viewBox="0 0 40 '+(a==="hq"?40:28)+'" aria-hidden="true"><rect x="5" y="5" width="30" height="18" fill="none" stroke="'+col+'" stroke-width="1"/>'+armGlyphSVG(a,col)+'</svg>'; });   /* the counter's fill box, 30 x 18 at (5, 5) */
 }
 /* ---- the first view ----
    The whole field from above (the Overview vantage) at 04:00, the first-run card near the foot of the map, the legend held back
@@ -15458,27 +15584,48 @@ function capTitle(cap){ var t=[]; if(!cap.children) return cap.textContent||"";
    events' names shrink first (style.css); if the parts that do not shrink still overflow the caption's box, they give way whole, in this
    order: the plateau reading's "plotted strength unchanged", the second reading (the centre separation), then the events with their tags
    (an event's tag cut by its shrinking box counts as overflow); then, where even it cannot stand whole, the first reading;
-   in the box. What is hidden stays in the caption's title, and in the Now tab. Called after a paint and a resize */
+   in the box. What is hidden stays in the caption's title, and in the Now tab. Called after a paint and a resize.
+   The final audits' Stage 5, WP-08 (CL-MAP-06): the parts are laid in as one ordered fill, each kept only where nothing then overflows and no act
+   or phase is a fragment (cut narrower than CAP_MIN em: "D.", or nothing, at 1280 x 720 until WP-08), the separators tidied at each step (none
+   first, last or beside another: until WP-08 a part that shrank to nothing left its dots). The order: where the caption shows the readings
+   (Watch; Study without the Now tab) the first reading, the event, the second reading and "plotted strength unchanged" as decision 159 gives
+   them way (a prefix: once one is given way the later ones are too, but for a first reading that cannot stand whole at all, after which the event
+   is still tried), then the act and the phase (whole on the track: until WP-08 they stood while both readings and the event gave way, in Watch at
+   1280 px); elsewhere the event, then the act, then the phase (each tried) */
 function fitCaption(){
   var cap=document.getElementById("tb-cap"); if(!cap||!cap.querySelectorAll||typeof cap.getBoundingClientRect!=="function") return;
   var gone=cap.querySelectorAll(".fit-off"); for(var i=0;i<gone.length;i++) gone[i].classList.remove("fit-off");
-  function over(){ var cr=cap.getBoundingClientRect(), last=null, k=cap.children;
-    for(var j=k.length-1;j>=0;j--){ if(getComputedStyle(k[j]).display!=="none"){ last=k[j]; break; } }
+  var kids=[].slice.call(cap.children), seps=kids.filter(function(k){ return k.classList.contains("sep"); });
+  function shown(e){ return getComputedStyle(e).display!=="none"; }
+  function over(){ var cr=cap.getBoundingClientRect(), last=null;
+    for(var j=kids.length-1;j>=0;j--){ if(shown(kids[j])){ last=kids[j]; break; } }
     if(!last||!(cr.width>0)) return false;
     /* an event's tag cut by its own box (the box shrinks, the tag does not) counts as overflow too (the 146453d review) */
     if([].some.call(cap.querySelectorAll(".ev small.evn"),function(g){ return g.getClientRects().length>0&&g.getBoundingClientRect().right>g.parentNode.getBoundingClientRect().right+0.5; })) return true;   /* every tag, a dwell's second among them (the review of 7736731) */
     return last.getBoundingClientRect().right>cr.right+0.5; }
-  if(!over()) return;
-  function off(e){ if(e) e.classList.add("fit-off"); }
-  var D=[].filter.call(cap.querySelectorAll(".der"),function(d){ return getComputedStyle(d).display!=="none"; });
-  if(D.length) off(D[0].querySelector("em")); if(!over()) return;
-  for(var n=D.length-1;n>=1&&over();n--){ off(D[n]); off(D[n].previousElementSibling); }
-  if(!over()) return;
-  var ev=cap.querySelector(".ev"); if(ev){ off(ev); off(ev.previousElementSibling); }
-  /* last, a first reading that still cannot stand whole (the caption's box at 720 px and below is narrower than the plateau reading) gives way
-     whole too: never drawn cut (the review of c76f7cc) */
-  if(over()&&D.length){ off(D[0]); off(D[0].previousElementSibling); }
+  var act=cap.querySelector(".act"), ph=cap.querySelector(".cap-ph");
+  function frag(e){ if(!e||!shown(e)) return false; var fs=parseFloat(getComputedStyle(e).fontSize)||12.5;
+    return e.scrollWidth>e.clientWidth+1&&e.getBoundingClientRect().width<CAP_MIN*fs; }
+  function tidy(){ seps.forEach(function(s){ s.classList.remove("fit-off"); });
+    var V=kids.filter(shown);
+    for(var j=0;j<V.length;j++){ if(!V[j].classList.contains("sep")) continue;
+      if(j===0||j===V.length-1||V[j+1].classList.contains("sep")){ V[j].classList.add("fit-off"); V.splice(j,1); j--; } } }
+  /* an event's name likewise (its box shrinks to nothing, the name's own minimum notwithstanding: 7 px of "Friant retakes Telnitz" in Watch at 1280 px
+     until WP-08): the part of each name its box shows, where it is cut */
+  function fragEv(){ var ev=cap.querySelector(".ev"); if(!ev||!shown(ev)) return false; var er=ev.getBoundingClientRect();
+    return [].some.call(ev.querySelectorAll(".evt"),function(t){ var r=t.getBoundingClientRect(), fs=parseFloat(getComputedStyle(t).fontSize)||12.5;
+      var cut=t.scrollWidth>t.clientWidth+1||r.right>er.right+0.5; return cut&&Math.min(r.right,er.right)-r.left<CAP_MIN*fs; }); }
+  function bad(){ return over()||frag(act)||frag(ph)||fragEv(); }
+  tidy(); if(!bad()) return;
+  var D=[].filter.call(cap.querySelectorAll(".der"),function(d){ return shown(d); }), ev=cap.querySelector(".ev"), em=D.length?D[0].querySelector("em"):null;
+  function set(e,on){ if(e) e.classList.toggle("fit-off",!on); }
+  function tryOn(e){ if(!e) return true; set(e,true); tidy(); if(bad()){ set(e,false); tidy(); return false; } return true; }   /* an absent part gives nothing way */
+  [D[0],D[1],em,ev,act,ph].forEach(function(e){ set(e,false); }); tidy();
+  if(D.length){ if(tryOn(D[0])){ if(tryOn(ev)&&tryOn(D[1])) tryOn(em); } else tryOn(ev); }
+  else tryOn(ev);
+  tryOn(act); tryOn(ph);
 }
+var CAP_MIN=4;   /* em: the narrowest an act or a phase is drawn cut before it gives way whole (CL-MAP-06; a design value: about four letters and the ellipsis) */
 /* ---- Stage 3C: one timeline (docs/STAGE3_SPEC.md section D; owner decisions 53, 60) ----
    One axis, proportional to time from 04:00 to 18:00 (decision 53): the act bands, the phase ticks with their labels and the
    rail (hour ticks, the event markers, the playhead) are placed at their share of it. The current phase's label is always
@@ -16538,15 +16685,16 @@ function dossierAnalysis(name){
 
 /* The rose points to true north as seen from the current camera: the map frame
    is rotated GEOREF.ROT_DEG from north, and the camera orbits freely. */
-var _rose=null, _rA=new THREE.Vector3(), _rB=new THREE.Vector3();
+var _rose=null, _rose2=null, _rA=new THREE.Vector3(), _rB=new THREE.Vector3();
 function updateRose(){
-  if(!_rose){ _rose=document.getElementById("rose-needle");
+  if(!_rose){ _rose=document.getElementById("rose-needle"); _rose2=document.getElementById("tb-rose-needle");   /* WP-08: the timeline's rose too */
     var cv=document.getElementById("contour-val"); if(cv) cv.innerHTML="&asymp; "+geoText("{CONTOUR_M}")+" m"; }
   if(!_rose||!camera) return;
   _rA.copy(orbitTarget); _rB.set(orbitTarget.x+GEOREF.NORTH[0]*20, orbitTarget.y, orbitTarget.z+GEOREF.NORTH[1]*20);
   _rA.project(camera); _rB.project(camera);
   var ang=Math.atan2(_rB.x-_rA.x, _rB.y-_rA.y)*180/Math.PI;
   _rose.setAttribute("transform","rotate("+ang.toFixed(1)+" 30 30)");
+  if(_rose2) _rose2.setAttribute("transform","rotate("+ang.toFixed(1)+" 30 30)");
 }
 function updateScaleBar(){
   var box=document.getElementById("scalebar");
@@ -17484,6 +17632,113 @@ function wp56Checks(){
   });
   } finally {
     if(playing) stopPlay(); select(null,null); dossierExpanded=K.de; setCommandView(K.cv); setSpeed(K.sp);
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTw();
+    landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc;
+    if(K.sel) select(K.sel.kind,K.sel.id); requestRender(3);
+  }
+  return out;
+}
+/* the final audits' Stage 5, WP-08 (docs/ROADMAP_FINAL_AUDIT.md): the self-test's checks of the map's furniture, each with its bound written here
+   (not read from the code under test); the caption (CL-MAP-06) and the card below 1080 px (CL-MAP-13) are the harness's narrow block's */
+function wp08Checks(){
+  var out=[], K={t:clock,sel:selection,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,lg:ML.legendOpen};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function shownEl(e){ if(!e) return false; var cs=getComputedStyle(e), r=e.getBoundingClientRect(); return cs.display!=="none"&&cs.visibility!=="hidden"&&r.width>0&&r.height>0; }
+  function endTw(){ var n=0; if(tween) mlReset("tween ended at once"); while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
+  function settle(n,nr){ AUSTERLITZ_DEBUG.settle(n,nr); }
+  function at(t,md,pres){ if(mode!==md) setMode(md); if(presentation!==pres) setPresentation(pres); setClock(t,{instant:true,force:true,camera:false}); endTw(); settle(4,true); mlLayout(); }
+  if(playing) stopPlay(); setCommandView("none"); select(null,null);
+  try{
+  /* CL-MAP-16: each kind's glyph as the map draws it (eventGlyph's canvas, read through a canvas of the test's own): an attack's, an engagement's,
+     a movement's or a withdrawal's has no upright or level stroke inside its ring (it read as a north arrow); a capture's draws nothing beyond
+     its ring (it was the objective marker's form, a cross reaching past it), while the objective marker's cross does */
+  guard("the event glyphs (WP-08, CL-MAP-16)",function(){
+    var c=document.createElement("canvas"); c.width=c.height=128; var g=c.getContext("2d",{willReadFrequently:true}), bad=[];
+    function read(tex){ g.clearRect(0,0,128,128); g.drawImage(tex.image,0,0,128,128); return g.getImageData(0,0,128,128).data; }
+    function a(D,x,y){ return D[(y*128+x)*4+3]; }
+    function upright(D){ var n=0; for(var y=36;y<=92;y++) for(var x=62;x<=66;x++) if(a(D,x,y)>40&&Math.hypot(x-64,y-64)<32) n++;
+      for(var x2=36;x2<=92;x2++) for(var y2=62;y2<=66;y2++) if(a(D,x2,y2)>40&&Math.hypot(x2-64,y2-64)<32) n++; return n; }
+    function beyond(D){ var n=0; for(var y=0;y<128;y++) for(var x=0;x<128;x++) if(a(D,x,y)>40&&Math.hypot(x-63.5,y-63.5)>44) n++; return n; }
+    ["attack","engagement","movement","withdrawal"].forEach(function(k){ var D=read(eventGlyph("fr",k)), u=upright(D); if(u) bad.push(k+": "+u+" px upright or level inside the ring"); });
+    var Dc=read(eventGlyph("fr","capture")), bc=beyond(Dc); if(bc) bad.push("capture: "+bc+" px beyond its ring");
+    var oc=document.createElement("canvas"); oc.width=oc.height=128; objGlyph(oc.getContext("2d"),"#ffffff");
+    var Do=read({image:oc}), bo=beyond(Do); if(!(bo>50)) bad.push("the objective marker's cross does not reach past its ring ("+bo+" px)");
+    ck("the event glyphs (WP-08, CL-MAP-16): no upright or level stroke inside an attack's, an engagement's, a movement's or a withdrawal's ring; a capture's within its ring, the objective's cross past it",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"the burst clear of the axes; the capture within 44 px of the centre, the objective "+bo+" px beyond");
+  });
+  /* CL-MAP-08: the key's rows for what is drawn, read here from the scene: at 04:15 and 09:30 in Landscape with counters, then on the Landscape */
+  guard("the key's rows (WP-08, CL-MAP-08)",function(){
+    var bad=[], lg=document.querySelector(".legend"), seen=[];
+    function row(k){ var e=lg.querySelector('[data-lg="'+k+'"]'); return e?!e.hidden:null; }
+    function item(k){ var e=lg.querySelector('[data-lgi="'+k+'"]'); return e?(!e.hidden&&!e.closest("[hidden]")):null; }
+    function evKind(k){ return ({capture:"capture",decision:"decision",arrival:"arrival",collapse:"collapse"})[k]||"other"; }
+    [[255,"hybrid"],[570,"hybrid"],[570,"terrain"]].forEach(function(q){ at(q[0],q[1],"study"); paintLegend(); var nm=fmtClock(q[0])+" "+q[1];
+      var O=OVERLAYS[curPhase]||{}, A=layerOn.arrows?(O.arrows||[]):[], ax=A.filter(function(x){ return x.kind==="axis"; });
+      if(row("axis")!==(ax.length>0)) bad.push(nm+": the axis row "+row("axis")+", axis arrows "+ax.length);
+      var axT=document.getElementById("lg-axis"); if(ax.length&&(!axT||axT.textContent.indexOf(ax[0].interp.replace(/^route: /,""))<0)) bad.push(nm+": the axis row's words are not the arrows' own");
+      if(row("obj")!==(layerOn.arrows&&(O.obj||[]).length>0)) bad.push(nm+": the objective row "+row("obj"));
+      var kinds={}; eventMarks.forEach(function(k){ if(k.sp.visible&&eventGroup.visible) kinds[evKind(k.e.kind)]=1; });
+      ["other","capture","decision","arrival","collapse"].forEach(function(k){ if(item("ev-"+k)!==!!kinds[k]) bad.push(nm+": the "+k+" glyph's item "+item("ev-"+k)+", drawn "+!!kinds[k]); });
+      var arms={}, tones={}, anyC=false;
+      [aggregates,units].forEach(function(T){ Object.keys(T).forEach(function(id){ var r=T[id]; if(!r.show||!r.p) return; anyC=true; arms[FORMATIONS[id].arm]=1; var st=STATUS[liveStatus(id,curPhase)]; if(st) tones[st.tone]=1; }); });
+      if(row("echelon")!==anyC) bad.push(nm+": the counter row "+row("echelon")+", counters "+anyC);
+      ["inf","cav","art","guard","mixed","hq"].forEach(function(k){ if(item("arm-"+k)!==!!(anyC&&arms[k])) bad.push(nm+": the "+k+" mark's item "+item("arm-"+k)); });
+      ["quiet","steady","active","warn","bad","gone"].forEach(function(k){ if(row("st-"+k)!==!!(anyC&&tones[k])) bad.push(nm+": the "+k+" status row "+row("st-"+k)); });
+      seen.push(nm+": "+Object.keys(kinds).join("/")+" glyphs, "+Object.keys(arms).length+" arms, "+Object.keys(tones).length+" tones"+(ax.length?", the axis":"")); });
+    ck("the key's rows (WP-08, CL-MAP-08): the dashed axis arrows (in their own words), the objectives, each kind of event glyph, the counters' echelon, arm and status rows, each shown exactly while drawn",
+      !bad.length, bad.length?"WRONG: "+bad.slice(0,8).join("; "):seen.join("; "));
+  });
+  /* CL-MAP-03: the key one press away wherever the timeline stands: the "?" button opens it, its rows the key's own as shown, in Study and in Watch
+     (where the key panel is hidden, 2D) */
+  guard("the key in the ? overlay (WP-08, CL-MAP-03)",function(){
+    var bad=[], seen=[];
+    ["study","watch"].forEach(function(pres){ at(570,"hybrid",pres); paintLegend();
+      var hb=document.getElementById("helpbtn"); if(!shownEl(hb)){ bad.push(pres+": no ? button shown"); return; }
+      hb.click(); var h=document.getElementById("help"), hk=h&&h.querySelector(".hp-key");
+      /* each row's words as shown: its hidden items (a grouped row's kinds not drawn) left out */
+      function words(k){ var c=k.cloneNode(true); [].forEach.call(c.querySelectorAll("[hidden]"),function(x){ x.parentNode.removeChild(x); }); return c.textContent.replace(/\s+/g," ").trim(); }
+      var want=[].filter.call(document.querySelector(".legend").querySelectorAll("#lg-rows .k"),function(k){ return !k.hidden&&!k.closest("[hidden]"); }).map(words);
+      var got=hk?[].map.call(hk.querySelectorAll(".k"),words):[];
+      if(!helpOpen()) bad.push(pres+": the ? button opened nothing");
+      else if(!hk||!shownEl(hk)) bad.push(pres+": no key in the overlay");
+      else if(got.join("|")!==want.join("|")) bad.push(pres+": the overlay's rows ("+got.length+") are not the key's ("+want.length+")");
+      else if(hk.querySelector("[id]")) bad.push(pres+": a copied row keeps an id");
+      seen.push(pres+": "+got.length+" rows"); setHelp(false); });
+    ck("the key in the ? overlay (WP-08, CL-MAP-03): one press from the timeline in Study and in Watch, the key's own rows for what is drawn, no copied id",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):seen.join("; "));
+  });
+  /* CL-MAP-04: a north indicator wherever the timeline stands, outside the key: shown in Study and Watch, on the landscape and the paper map, its
+     needle turned to true north on the screen (north projected here from GEOREF.NORTH at the orbit target, within 1 degree) */
+  guard("the north rose (WP-08, CL-MAP-04)",function(){
+    var bad=[], seen=[], R=[["the key's","rose-needle"],["the timeline's","tb-rose-needle"]].map(function(q){ var nd=document.getElementById(q[1]); return {name:q[0],nd:nd,sv:nd&&nd.closest("svg")}; });
+    /* exactly one rose shown in each view (the key's where the key stands, else the timeline's), its needle on true north (GEOREF.NORTH projected here) */
+    [["study","terrain"],["watch","terrain"],["study","staff"]].forEach(function(q){ at(570,q[1],q[0]); updateRose();
+      var sh=R.filter(function(r){ return r.sv&&shownEl(r.sv); });
+      if(sh.length!==1){ bad.push(q.join(" ")+": "+sh.length+" roses shown"); return; }
+      var A=orbitTarget.clone(), B=new THREE.Vector3(orbitTarget.x+GEOREF.NORTH[0]*20,orbitTarget.y,orbitTarget.z+GEOREF.NORTH[1]*20); camera.updateMatrixWorld(); A.project(camera); B.project(camera);
+      var want=Math.atan2(B.x-A.x,B.y-A.y)*180/Math.PI, m=/rotate\(([-0-9.]+)/.exec(sh[0].nd.getAttribute("transform")||""), got=m?+m[1]:NaN;
+      var d=Math.abs(((got-want)%360+540)%360-180); if(!(d<=1)) bad.push(q.join(" ")+": the needle at "+got+", north at "+want.toFixed(1));
+      seen.push(q.join(" ")+" "+sh[0].name+" "+(isFinite(got)?got.toFixed(1):got)+" deg"); });
+    ck("the north rose (WP-08, CL-MAP-04): one rose shown in Study and Watch, on the landscape and the paper map (the key's where the key stands, else the timeline's), its needle on true north within 1 degree",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):seen.join("; "));
+  });
+  /* CL-MAP-10: on the landscape the selected formation's name alone has the accent edge, and the ring under it stands at least 0.85 opaque */
+  guard("the selection on the landscape (WP-08, CL-MAP-10)",function(){
+    at(570,"terrain","study"); var pick=null;
+    for(var k in ML.items){ var it=ML.items[k]; if(it.cat==="name"&&it.on&&it.fid){ pick=it.fid; break; } }
+    if(!pick){ ck("the selection on the landscape (WP-08, CL-MAP-10): the selected name's accent edge and the ring",false,"no name drawn to select"); return; }
+    select("f",pick); settle(40,true); mlLayout();
+    var acc=TOKENS.theme.dark.accent, rgb=[1,3,5].map(function(i){ return parseInt(acc.substr(i,2),16); }).join(", ");
+    var me=ML.items["n:"+pick], others=0, mine=!!(me&&me.on&&getComputedStyle(me.el).boxShadow.indexOf(rgb)>=0);
+    for(var k2 in ML.items){ var q=ML.items[k2]; if(q.cat==="name"&&q.on&&q.fid!==pick&&getComputedStyle(q.el).boxShadow.indexOf(rgb)>=0) others++; }
+    var op=selRing&&selRing.visible?selRing.material.opacity:0;
+    ck("the selection on the landscape (WP-08, CL-MAP-10): the selected name's plate edged in the accent, no other name's, the ring at least 0.85 opaque",
+      mine&&!others&&op>=0.85, (mine?"":"WRONG: the selected name not edged; ")+(others?"WRONG: "+others+" other names edged; ":"")+(op>=0.85?"":"WRONG: ")+"the ring "+op.toFixed(2)+" ("+pick+")");
+    select(null,null);
+  });
+  } finally {
+    if(playing) stopPlay(); if(helpOpen()) setHelp(false); select(null,null); ML.legendOpen=K.lg;
     if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTw();
     landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc;
     if(K.sel) select(K.sel.kind,K.sel.id); requestRender(3);
@@ -22745,6 +23000,7 @@ var AUSTERLITZ_DEBUG=(function(){
     wp56Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 3 (WP-05, WP-06) */
     wp07Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-07 */
     wp08cChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08's lettering and landmarks */
+    wp08Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08 */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
