@@ -618,8 +618,8 @@ function init(){
 
   try{ renderer=new THREE.WebGLRenderer({antialias:true}); }
   catch(e){ e.ausKind="webgl"; throw e; }   /* roadmap step 3 (SW-1): no WebGL; boot() shows the start-up guard's message */
-  lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
-             /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");
+  TIER_MOBILE=/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");   /* the final audits' Stage 6 (CL-VIS-09): kept for retier */
+  lowTier = (window.innerWidth*window.innerHeight < 900*700) || TIER_MOBILE;
   renderer.setPixelRatio(pxRatio());
   renderer.setSize(window.innerWidth,window.innerHeight);
   renderer.shadowMap.enabled=true;
@@ -1556,6 +1556,7 @@ function makeBlock(f,id){
       tents.setMatrixAt(t0,d.matrix);
     }
     body.add(tents); seatable(tents,false,true);
+    ud.camp=[marq,tents];   /* the final audits' Stage 6, WP-10 (CL-VIS-07): the pitched camp, drawn only while the headquarters is halted (poseBlock) */
     var esc=[], escR=[];
     for(var e=0;e<12;e++){
       var a=e/12*Math.PI*2, rr=3.6+srnd(e)*1.0;
@@ -3588,7 +3589,27 @@ function setPhase(n,instant){
    Map symbols live on layer 1 and are drawn afterwards, ungraded, so
    they stay legible; map text is the DOM map layer's (Stage 2D).
    ============================================================ */
-var lowTier=false;
+var lowTier=false, TIER_MOBILE=false;
+/* the final audits' Stage 6, WP-10 (CL-VIS-09): the tier was decided once, at the start, so a desktop page opened in a small window (under
+   900 x 700) kept density 1, no shadows and no near detail when the window was enlarged, until a reload. retier, on every resize: a page on the
+   low tier for its window alone (not a phone's or a tablet's agent) takes the full tier once its window is 900 x 700 or larger; it never goes
+   back down on a shrink (a picture that worsened mid-visit would be a surprise; a phone keeps the tier decision 236 gave it). applyTier sets
+   what init sets by the tier: the density, the sun's shadow and its map's size, the near detail and the effects' scale. A design choice */
+function applyTier(low){
+  lowTier=!!low;
+  renderer.setPixelRatio(pxRatio());
+  sun.castShadow=!lowTier;
+  var px=lowTier?1024:(renderer.capabilities.maxTextureSize>=8192?4096:2048);
+  if(sun.shadow.mapSize.x!==px){ sun.shadow.mapSize.set(px,px); if(sun.shadow.map){ sun.shadow.map.dispose(); sun.shadow.map=null; } }
+  groundDetail(!lowTier);
+  FX.scale=lowTier?1.0:1.3; sizeFX();
+  requestRender(3);
+}
+function retier(w,h){
+  w=w===undefined?window.innerWidth:w; h=h===undefined?window.innerHeight:h;
+  if(!lowTier||TIER_MOBILE||w*h<900*700) return false;
+  applyTier(false); return true;
+}
 var LAYER_WORLD=0, LAYER_LABEL=1;
 var FX={on:false, built:false, scale:1, rtScene:null, rtA:null, rtB:null, rtC:null, rtD:null, rtFinal:null, matFXAA:null,
         quadScene:null, quadCam:null, quad:null,
@@ -5992,10 +6013,15 @@ function posAtT(id,t){
   ls.forEach(function(k){ var p=(goneAt(k,t)||notYetAt(k,t))?null:posAtClock(k,t); if(p){ sx+=p[0]; sy+=p[1]; n++; } });
   return n?[sx/n,sy/n]:null;
 }
-function enemyFacing(id){
-  if(_efT[id]===clock) return _efV[id];
-  var tc=faceClock(id,clock), key=tc+"|"+id;
-  if(faceCache[key]!==undefined){ _efT[id]=clock; return (_efV[id]=faceCache[key]); }
+/* the final audits' Stage 6, WP-10 (CL-VIS-03): a halted block's facing was taken once, at its phase's start or its arrival (faceClock), so a block
+   kept facing an enemy that had since moved on, and some stood with their backs to an adjacent one. Now it is taken again every FACE.STEP clock
+   minutes after that, and turned when the nearest enemy's bearing has moved more than FACE.TURN from the facing held (a material change, not
+   every drift): a function of the clock alone (S-5), walked from faceClock in its steps, so a clock shows one facing however it was reached.
+   Design values */
+var FACE={STEP:10, TURN:Math.PI/4};
+function enemyBearing(id,tc){
+  var key=tc+"|"+id;
+  if(faceCache[key]!==undefined) return faceCache[key];
   var f=FORMATIONS[id], me=posAtT(id,tc), r=null;
   if(me){
     var best=null, bd=1e9;
@@ -6012,7 +6038,25 @@ function enemyFacing(id){
       r=Math.atan2(b[0]-a[0], b[1]-a[1]);
     }
   }
-  faceCache[key]=r; _efT[id]=clock; _efV[id]=r; return r;
+  faceCache[key]=r; return r;
+}
+/* the heading a block is posed to at the clock (poseBlock; the self-test's S-5 check): its leg's direction while it marches; its enemy's bearing
+   (enemyFacing) halted, or (the final audits' Stage 6, WP-10, CL-VIS-03) on a leg under the gait's floor (GAIT.KMH, 1 km/h), a drift between
+   plotted positions, not a march (decision 244 (a); the final audits' Stage 4, CL-HIS-13), where until Stage 6 it faced along the drift */
+function faceWant(id,mr){
+  var want=headingAt(id,clock);
+  if(mr===undefined) mr=FORMATIONS[id].track?marchRate(id,clock):null;
+  if(want!==null&&mr&&mr.kmh<GAIT.KMH){ var ef=enemyFacing(id); if(ef!==null) want=ef; }
+  return want===null?enemyFacing(id):want;
+}
+function enemyFacing(id){
+  if(_efT[id]===clock) return _efV[id];
+  var t0=faceClock(id,clock), r=enemyBearing(id,t0);
+  for(var t=t0+FACE.STEP;t<=clock;t+=FACE.STEP){ var b=enemyBearing(id,t); if(b===null) continue;
+    if(r===null){ r=b; continue; }
+    var d=b-r; while(d>Math.PI) d-=Math.PI*2; while(d<-Math.PI) d+=Math.PI*2;
+    if(Math.abs(d)>FACE.TURN) r=b; }
+  _efT[id]=clock; _efV[id]=r; return r;
 }
 /* Different arms carry different mass, so they wheel at different rates. */
 var WHEEL={cav:0.085, mixed:0.062, inf:0.050, guard:0.050, art:0.028, hq:0.10};
@@ -6239,9 +6283,11 @@ function poseBlock(rec,id,st){
     u.deployed.visible=!moving;
     u.limbered.visible=moving;
   }
+  /* the final audits' Stage 6, WP-10 (CL-VIS-07): a headquarters on the move is its riders alone; its marquee and tents stand only while it is
+     halted (until Stage 6 the camp was pitched at every status, among the moving guns and on the Satschan ice during the rout). A design value */
+  if(u.camp){ var cv=!moving; if(u.camp[0].visible!==cv){ u.camp[0].visible=cv; u.camp[1].visible=cv; } }
 
-  var want=headingAt(id,clock);
-  if(want===null) want=enemyFacing(id);
+  var want=faceWant(id,mr);
   if(want===null) return;
   var want0=want;
   /* a seek or the first pose: the clock's own heading at once, its turns kept (a loose body's sway eases in under Play); the clock standing:
@@ -7380,6 +7426,7 @@ function buildUI(){
     syncPhone();   /* roadmap step 6 item 3 */
     landCam.aspect=window.innerWidth/window.innerHeight;
     landCam.updateProjectionMatrix();
+    retier();   /* the final audits' Stage 6 (CL-VIS-09): a small window enlarged takes the full tier */
     renderer.setPixelRatio(pxRatio());   /* roadmap step 3 (SW-10): a window moved to a screen of another density */
     fitCaption();   /* roadmap step 3 (decision 159): the caption's room changed */
     renderer.setSize(window.innerWidth,window.innerHeight);
@@ -14230,7 +14277,7 @@ var AUSTERLITZ_DEBUG=(function(){
         var gBad=[], gN=0;
         PHASES.forEach(function(ph,pi){ [ph.t0+3,Math.round((ph.t0+ph.t1)/2),ph.t1-3].forEach(function(t){ var R=[];
           [ph.t0,ph.t1-1,t].forEach(function(t0){ setClock(t0,{instant:true,force:true,camera:false}); faceCache={}; _efT={}; Object.keys(units).forEach(function(id){ enemyFacing(id); });
-            setClock(t,{instant:true,camera:false}); var o={};   /* as scrubbing moves it, inside the phase: nothing cleared */ Object.keys(units).forEach(function(id){ var w=headingAt(id,clock); o[id]=w===null?enemyFacing(id):w; }); R.push(o); });
+            setClock(t,{instant:true,camera:false}); var o={};   /* as scrubbing moves it, inside the phase: nothing cleared */ Object.keys(units).forEach(function(id){ o[id]=faceWant(id); }); R.push(o); });
           Object.keys(R[0]).forEach(function(id){ gN++; if(R[0][id]!==R[1][id]||R[0][id]!==R[2][id]) gBad.push(fmtClock(t)+" "+id+": "+[R[0][id],R[1][id],R[2][id]].map(function(v){ return v===null?"none":v.toFixed(3); }).join(", ")); }); }); });
         ck("the facing (S-5; 8E): every formation's facing at a clock the same whether the clock was reached from its phase's start, its phase's end or directly (it was the facing at the first clock visited in the phase)",
           gN>0&&!gBad.length, gN+" facings at three clocks of each phase, each from three paths"+(gBad.length?"; WRONG: "+gBad.slice(0,5).join("; "):""));
