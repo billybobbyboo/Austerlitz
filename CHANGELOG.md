@@ -131,7 +131,9 @@ No threshold, drop limit or baseline moved. On the merged build (2,963,994 bytes
 - The negative controls on the merged build: this PR's `tools/final-stage5/mutate-wp08.js` 11 of 11 as expected and the lettering's
   `mutate-wp08c.js` 11 of 11, each mutation failing its own check alone, the build passing all
   (`docs/final-stage5-evidence/wp08/mutate-wp08-reconciled.json`, `docs/final-stage5-evidence/wp08c/mutate-wp08c-reconciled.json`).
-- `check:visual` on CI: dispatched on the merge's commit, reported on #90.
+- `check:visual` on CI passed on the merge's commit (run 42556903824 on `ecfb91a`, build `3388b70b...`, `checks.yml`, `visual: true`; 4 h 11 min,
+  its 39 cases and live blocks), with `npm test`, `check:data`, `check:chronology`, `check:contrast` and `check:selftest` in the same run and in
+  the push's and the PR's runs on the same commit (42556897676, 42556902523).
 
 ### What remains uncertain, and what is handed on
 
