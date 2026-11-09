@@ -494,7 +494,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 
 | ref | where | statement | claim | readings |
 |---|---|---|---|---|
-| `FORMATIONS.gqg.track["6"].tm.note` | data.js:158 | dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows the existing 40-minute march (moveMin) | unchecked |  |
+| `FORMATIONS.gqg.track["6"].tm.note` | data.js:158 | dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows 40 minutes later, this map's time for a headquarters'… | unchecked |  |
 | `FORMATIONS.sthilaire.track["3"].tm.note` | data.js:192 | the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, … | unchecked |  |
 | `FORMATIONS.sthilaire.track["7"].tm.note` | data.js:197 | the wheel is dated as a range, and the move is shown across all of it | unchecked |  |
 | `FORMATIONS.vandamme.track["3"].tm.note` | data.js:210 | the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, … | unchecked |  |
@@ -502,7 +502,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.legrand.track["7"].tm.note` | data.js:232 | the act ties the move to the trap closing, dated 13:00-14:00 | unchecked |  |
 | `FORMATIONS.legrand.track["8"].tm.note` | data.js:237 | Telnitz changed hands until about 15:00; taking it for good is the last change | unchecked |  |
 | `FORMATIONS.friant.track["1"].tm.note` | data.js:255 | the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December … | unchecked |  |
-| `FORMATIONS.friant.track["3"].tm.note` | data.js:257 | Telnitz in French hands at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again. Until roadmap step 4b this … | unchecked |  |
+| `FORMATIONS.friant.track["3"].tm.note` | data.js:257 | Telnitz in French hands at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again. | unchecked |  |
 | `FORMATIONS.bourcier.track["3"].tm.note` | data.js:273 | Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Da… | unchecked |  |
 | `FORMATIONS.caffarelli.track["5"].tm.note` | data.js:295 | Lannes's advance is dated c. 09:30; before it the division holds | unchecked |  |
 | `FORMATIONS.suchet.track["5"].tm.note` | data.js:311 | Lannes's advance is dated c. 09:30; before it the division holds | unchecked |  |

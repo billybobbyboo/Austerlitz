@@ -1180,7 +1180,7 @@
    "file": "data.js",
    "line": 158,
    "label": null,
-   "text": "dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows the existing 40-minute march (moveMin)",
+   "text": "dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows 40 minutes later, this map's time for a headquarters' move (a design value)",
    "claim": "unchecked",
    "by": []
   },
@@ -2256,7 +2256,7 @@
    "file": "data.js",
    "line": 255,
    "label": null,
-   "text": "the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127), about six in Sokolov; the leading brigade up to the Goldbach near Telnitz about nine in Stutterheim (1806, p. 52) and the Moniteur's remarks (Materialien 1806, pp. 109-110), attacking about nine in Schönhals: the anchor, short of the stream, is reached then. Until roadmap step 4b the map moved the division from 04:00 and had the brigade at the Goldbach c. 08:00 (question 177)",
+   "text": "the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127), about six in Sokolov; the leading brigade up to the Goldbach near Telnitz about nine in Stutterheim (1806, p. 52) and the Moniteur's remarks (Materialien 1806, pp. 109-110), attacking about nine in Schönhals: the anchor, short of the stream, is reached then.",
    "claim": "unchecked",
    "by": []
   },
@@ -2276,7 +2276,7 @@
    "file": "data.js",
    "line": 257,
    "label": null,
-   "text": "Telnitz in French hands at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again. Until roadmap step 4b this anchor was the phase-2 entry, reached at 08:30 on this map (question 177)",
+   "text": "Telnitz in French hands at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again.",
    "claim": "unchecked",
    "by": []
   },
@@ -2470,7 +2470,7 @@
    "file": "data.js",
    "line": 273,
    "label": null,
-   "text": "Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place. Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)",
+   "text": "Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place.",
    "claim": "unchecked",
    "by": []
   },
@@ -4050,7 +4050,7 @@
    "file": "data.js",
    "line": 445,
    "label": null,
-   "text": "the wheel names the grenadier division in support. Ségur and Mikhailovsky-Danilevsky set the grenadiers moving toward the lakes about one; the arrival is derived. Until roadmap step 4b the map dated the arrival at 14:00, its own, which forced the next leg toward the ceiling (question 181)",
+   "text": "the wheel names the grenadier division in support. Ségur and Mikhailovsky-Danilevsky set the grenadiers moving toward the lakes about one; the arrival is derived.",
    "claim": "unchecked",
    "by": []
   },
@@ -4772,7 +4772,7 @@
    "file": "data.js",
    "line": 519,
    "label": null,
-   "text": "the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past seven (1873, p. 160), Buxhowden's report the II Column come down at eight (Kutuzov, documents, 1951, pp. 241-242), Mikhailovsky-Danilevsky the first three columns between seven and eight (1844, p. 177): grade B, the map's choice among them; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)",
+   "text": "the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past seven (1873, p. 160), Buxhowden's report the II Column come down at eight (Kutuzov, documents, 1951, pp. 241-242), Mikhailovsky-Danilevsky the first three columns between seven and eight (1844, p. 177): grade B, the map's choice among them; the arrival is derived.",
    "claim": "unchecked",
    "by": []
   },
@@ -5106,7 +5106,7 @@
    "file": "data.js",
    "line": 553,
    "label": null,
-   "text": "the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)",
+   "text": "the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived.",
    "claim": "unchecked",
    "by": []
   },
