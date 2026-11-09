@@ -14347,11 +14347,18 @@ var AUSTERLITZ_DEBUG=(function(){
            none to 20, "10.33|men|drawn|fresh|rich" 21 to 33, "10.33|men|drawn|fresh|simple" 14 to 23, "10.33|men|drawn|motion|rich" 1 to 19,
            "10.33|men|edges|fresh|rich" 20 to 32, "10.33|men|edges|fresh|simple" 11 to 19, "10.33|men|edges|motion|rich" none to 12; every other count,
            H_TOL and the proposed bounds unchanged (no case beyond its bound: the worst 0.2466 against 0.2711, the grenadiers at 09:05) */
-        var H_CASES={"4|men|edges|fresh|rich":29, "4|men|edges|fresh|simple":13, "4|men|drawn|fresh|rich":38, "4|men|drawn|fresh|simple":19,
+        /* the final audits' Stage 6, WP-10 (CL-VIS-01; owner decision 314 (a), 9 November 2026): twelve fresh groups re-baselined at the counts
+           measured with the figures on the Satschan mere standing on its ice (iceTop), where until Stage 6 they were seated on the drawn bed under it,
+           sunk up to 0.875 units at 4x and 2.338 at 10.33x: the ice's waterline, where the flat ice meets the rising shore, is a crease the chords
+           cannot follow, as the ground's own creases. Was (on main) and is: 4x men edges rich 29 to 43, simple 13 to 22, drawn rich 38 to 50, simple
+           19 to 26; 4x horses edges 35 to 36 (both kits), drawn rich 33 to 34, simple 32 to 33; 10.33x men drawn rich 33 to 47, simple 23 to 34,
+           edges rich 32 to 37, simple 19 to 21. Every case added is Dokhturov's or Kienmayer's at the Satschan shore, each within its group's
+           proposed bound (tools/final-stage6/gait-cases.js; docs/final-stage6-evidence/wp10/gait-cases.json); H_TOL and every bound unchanged */
+        var H_CASES={"4|men|edges|fresh|rich":43, "4|men|edges|fresh|simple":22, "4|men|drawn|fresh|rich":50, "4|men|drawn|fresh|simple":26,
           "4|men|edges|motion|rich":20, "4|men|drawn|motion|rich":21,
-          "4|horses|edges|fresh|rich":35, "4|horses|edges|fresh|simple":35, "4|horses|drawn|fresh|rich":33, "4|horses|drawn|fresh|simple":32, "4|horses|drawn|motion|rich":1,
+          "4|horses|edges|fresh|rich":36, "4|horses|edges|fresh|simple":36, "4|horses|drawn|fresh|rich":34, "4|horses|drawn|fresh|simple":33, "4|horses|drawn|motion|rich":1,
           "4|horses|edges|motion|rich":3,
-          "10.33|men|edges|fresh|rich":32, "10.33|men|edges|fresh|simple":19, "10.33|men|drawn|fresh|rich":33, "10.33|men|drawn|fresh|simple":23, "10.33|men|drawn|motion|rich":19,
+          "10.33|men|edges|fresh|rich":37, "10.33|men|edges|fresh|simple":21, "10.33|men|drawn|fresh|rich":47, "10.33|men|drawn|fresh|simple":34, "10.33|men|drawn|motion|rich":19,
           "10.33|men|edges|motion|rich":12,
           /* the final audits' Stage 4, WP-04b (owner decision 295 (a), 7 November 2026, extending 293 (a)): the simple kit in motion at 4x and
              10.33x, none to 1 each: CI's check:visual on 0d7212d found 1 pose beyond H_TOL in each (Drouet's division, #20, at 08:46 playing; at
@@ -14834,7 +14841,9 @@ var AUSTERLITZ_DEBUG=(function(){
            the bank scrub kept clear of the buildings; 8K: the wood above Holubitz dropped): read on each build (tools/stage8/woods-bldg-8j.js;
            docs/stage8-evidence/8j/woods-bldg-8j.json, 8k/woods-bldg-8k.json); until 8J 8E's {wood:634, village:184, conifer:376, edge:354,
            stream:202}, in 8J {wood:409, village:184, conifer:287, edge:244, stream:229, garden:12}. The triangles a tree stay 8E's (KIT8E) */
-        var WOODS8E={wood:357, village:184, conifer:229, edge:205, stream:222, garden:12}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
+        /* the final audits' Stage 6, WP-10 (CL-VIS-02; owner decision 313, 9 November 2026): village 184 to 180 and stream 222 to 205, the four village trees
+           and seventeen bank bushes inside the Satschan mere's drawn disc no longer drawn (every other tree and bush as before) */
+        var WOODS8E={wood:357, village:180, conifer:229, edge:205, stream:205, garden:12}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
         var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0,garden:0};
         world.trees.children.forEach(function(im){ (im.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(im.material.side!==THREE.DoubleSide) dBad.push("a deciduous habit not drawn on both faces"); if(!im.castShadow) dBad.push("a deciduous habit casts no shadow"); });
         world.conifers.children.forEach(function(im){ K.conifer+=(im.userData.kinds||[]).length; });
