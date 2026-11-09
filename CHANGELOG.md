@@ -1,5 +1,13 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6: the owner's questions (records only)
+
+The owner decided Stage 6's questions on 9 November 2026 ("Your recommendations for all"): 276 (a), 280 (a), 281 (a) from
+`docs/FINAL_AUDIT_POST_STAGE8.md` section I, and 305-314, put while the stage was planned and built. Each, with what it asks and where it is
+applied, is in `docs/final-stage6-evidence/questions.md`. With them, CL-REC-05's records part: `docs/stage6-evidence/second-reading.md` no longer says
+the human second reading "stays open for the owner" (decision 189 recorded it complete on the owner's word; no item results were given, none is
+recorded). No source file and no build changes.
+
 ## 2026-11 · Final audits' roadmap, Stage 5 (2 of 3): WP-08's furniture (the caption, the key, north, the glyphs, the selection, the card)
 
 **Status: merged into `main` (#90, `496086c`), reconciled with `main` after WP-07 (#89) and WP-08's lettering (#91, #92) were merged (below:

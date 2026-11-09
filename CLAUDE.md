@@ -793,4 +793,5 @@ names re-measured, decision 284 (b); the flicker ceiling 12, decision 303 (a)); 
 PR #90, reconciled with `main` after #89 and #92, merged, `496086c`: the caption's ordered fill, the event glyphs, the key's rows, the key in the "?"
 overlay, one north rose wherever the timeline stands, the selection's edge, the card giving way below 1080 px; decisions 296-298; `check:visual` on
 CI passed on the reconciled build, run 42556903824 on `ecfb91a`, 4 h 11 min). Stage 5 is merged (#89, #90, #91, #92); `main`'s build is
-`3388b70b...` (2,963,994 bytes), its self-test 335 checks. Stage 6 (WP-09, WP-10, with WP-11's rule alongside) is next.
+`3388b70b...` (2,963,994 bytes), its self-test 335 checks. Stage 6 (WP-09, WP-10, with WP-11's rule alongside) is next; its owner questions (276, 280, 281 and 305-314) were decided as recommended on 9 November
+2026 ("Your recommendations for all"), recorded in `docs/final-stage6-evidence/questions.md`.
