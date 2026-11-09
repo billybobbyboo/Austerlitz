@@ -89,7 +89,7 @@ const inPage=function(){
       if(o.room&&(st==="dropped"||st==="held")){ if(!panels){ panels=mlPanels(); obst=mlObstacles(VW,VH); } r.room=roomFor(it,VW,VH,panels,obst); }
       out[it.key]=r; });
     var M=typeof MLS!=="undefined"?MLS:null;
-    return {items:out, t:T, frame:ML.frame, dropped:ML.stats.dropped, placed:ML.stats.placed, held:ML.stats.held||0, state:typeof DEV!=="undefined"?DEV.state:null,
+    return {items:out, t:T, clock:clock, playing:!!playing, frame:ML.frame, dropped:ML.stats.dropped, placed:ML.stats.placed, held:ML.stats.held||0, state:typeof DEV!=="undefined"?DEV.state:null,
       mls:M?{moving:M.moving, fresh:M.fresh, from:M.fromMotion, pass:M.pass, fade:M.fadeOn, fading:M.stats.fading, far:M.stats.far}:null,
       src:{tween:!!tween, playing:!!playing, hold:+(T-lastInput).toFixed(0), need:needFrames, settling:!!settling, panel:+(panelMoveUntil-T).toFixed(0)},
       remnants:(function(){ var n=0, bad=[]; for(var k in ML.items){ var it=ML.items[k], e=it.el; if(!e.classList.contains("ml-fading")) continue; n++;
@@ -146,18 +146,26 @@ function tracking(F,frameMs,ids){
   const want=new Set(ids);
   const side=s=>{ const cx=s.x+s.w/2-s.sx, cy=s.y+s.h/2-s.sy; return (Math.abs(cx)<6?"c":cx>0?"r":"l")+(Math.abs(cy)<6?"m":cy>0?"b":"t"); };
   fids.forEach(id=>{
-    const R={frames:F.length,on:0,offscreen:0,lod:0,terrain:0,placement:0,episodes:0,longest:0,lagMax:0,lagSum:0,lagN:0,jumps:0,sides:0,swaps:0}; let run=0, roomAt=-1, prev=null, prevF=-1;
+    const R={frames:F.length,on:0,offscreen:0,lod:0,terrain:0,placement:0,episodes:0,longest:0,lagMax:0,lagSum:0,lagN:0,jumps:0,sides:0,swaps:0,longestMin:0,playOn:0,playInView:0};
+    let run=0, roomAt=-1, prev=null, prevF=-1, c0=null;
+    /* the final audits' Stage 5, WP-07 (CL-TEST-02): an episode hidden by the layout measured on the battle clock too (from the frame before it to
+       its last; frames carrying the clock, motion.js snap), and the share drawn over the frames the clock played (in view: drawn, behind the
+       ground, hidden by the layout) */
+    const clk=f=>F[f]&&typeof F[f].clock==="number"?F[f].clock:null, endEp=f=>{ if(c0!==null&&clk(f)!==null) R.longestMin=Math.max(R.longestMin,+(clk(f)-c0).toFixed(2)); c0=null; };
     for(let f=0;f<F.length;f++){ const A=F[f].items, k=keyOf(A,id), s=k?A[k]:null;
-      if(!s){ R.lod++; run=0; roomAt=-1; prev=null; continue; }
-      if(s.st==="offscreen"||s.st==="panel"){ R.offscreen++; run=0; roomAt=-1; prev=null; continue; }
-      if(s.st==="occluded"){ R.terrain++; run=0; roomAt=-1; prev=null; continue; }
-      if(s.st==="on"){ R.on++;
+      const pl=!!(F[f].playing);
+      if(!s){ R.lod++; if(run) endEp(f-1); run=0; roomAt=-1; prev=null; continue; }
+      if(s.st==="offscreen"||s.st==="panel"){ R.offscreen++; if(run) endEp(f-1); run=0; roomAt=-1; prev=null; continue; }
+      if(s.st==="occluded"){ R.terrain++; if(pl) R.playInView++; if(run) endEp(f-1); run=0; roomAt=-1; prev=null; continue; }
+      if(pl) R.playInView++;
+      if(s.st==="on"){ R.on++; if(pl) R.playOn++; if(run) endEp(f-1);
         if(run>0){ if(roomAt>=0){ const lag=f-roomAt; R.lagMax=Math.max(R.lagMax,lag); R.lagSum+=lag; R.lagN++; } }
         run=0; roomAt=-1;
         if(prev&&prevF===f-1){ const dx=(s.x-s.sx)-(prev.x-prev.sx), dy=(s.y-s.sy)-(prev.y-prev.sy); if(Math.hypot(dx,dy)>3) R.jumps++; if(side(s)!==side(prev)) R.sides++; }
         prev=s; prevF=f; continue; }
       /* hidden by the layout: the delay counts from the frame since which the full search has had room for it in every frame */
-      R.placement++; if(!run) R.episodes++; run++; R.longest=Math.max(R.longest,run); if(!s.room) roomAt=-1; else if(roomAt<0) roomAt=f; prev=null; }
+      R.placement++; if(!run){ R.episodes++; c0=clk(f>0?f-1:f); } run++; R.longest=Math.max(R.longest,run); if(!s.room) roomAt=-1; else if(roomAt<0) roomAt=f; prev=null; }
+    if(run) endEp(F.length-1);
     /* swaps: with each drawn neighbour within 150 px, the boxes' order across the anchors' order, newly */
     for(let f=1;f<F.length;f++){ const A=F[f].items, P=F[f-1].items, k=keyOf(A,id), s=k?A[k]:null, k0=keyOf(P,id), s0=k0?P[k0]:null;
       if(!s||!s0||s.st!=="on"||s0.st!=="on") continue;
@@ -167,7 +175,7 @@ function tracking(F,frameMs,ids){
           return (Math.abs(v.sx-u.sx)>8&&ax!==bx)||(Math.abs(v.sy-u.sy)>8&&ay!==by); };
         if(inv(s,t)&&!inv(s0,t0)) R.swaps++; }); }
     const inViewF=R.on+R.terrain+R.placement;
-    R.visible=inViewF?+(R.on/inViewF).toFixed(3):null; R.longestMs=Math.round(R.longest*frameMs); R.lagMaxMs=Math.round(R.lagMax*frameMs); R.lagMeanMs=R.lagN?Math.round(R.lagSum/R.lagN*frameMs):0;
+    R.visible=inViewF?+(R.on/inViewF).toFixed(3):null; R.playShare=R.playInView?+(R.playOn/R.playInView).toFixed(3):null; R.longestMs=Math.round(R.longest*frameMs); R.lagMaxMs=Math.round(R.lagMax*frameMs); R.lagMeanMs=R.lagN?Math.round(R.lagSum/R.lagN*frameMs):0;
     if(want.has(id)) T.by[id]=R;
     const a=T.all; a.frames+=F.length; ["on","offscreen","lod","terrain","placement","episodes","jumps","sides","swaps","lagSum","lagN"].forEach(x=>a[x]+=R[x]);
     a.longest=Math.max(a.longest,R.longest); a.lagMax=Math.max(a.lagMax,R.lagMax);
@@ -220,6 +228,7 @@ const RUN=function(a){
     else if(kind==="orbit") D.move(c[0]+amt*i,c[1],2);
     else if(kind==="zoom"){ if(i%3===0) D.wheel(c[0],c[1],i<=n/2?-100:100); }   /* the wheel's own step (9% a notch) every third frame: 10 in, 10 out */
     D.frame(); F.push(D.snap(opt));
+    if(kind==="play"&&a.to&&(!playing||clock>=a.to-1e-9)) break;   /* the final audits' Stage 5, WP-07 (CL-TEST-02): a long Play run, until its clock */
   }
   if(kind==="pan") D.up(c[0]+amt*n,c[1],0);
   if(kind==="orbit") D.up(c[0]+amt*n,c[1],2);
@@ -273,12 +282,18 @@ function blockRuns(selftestOnly){
   return MOTIONS.map(m=>({m:m})).concat([].concat.apply([],RR.map(id=>{ const m=MOTIONS.find(x=>x[0]===id); return [{m:m,point:true},{m:m,real:true}]; })),
     [["hybrid-orbit","sthilaire"],["paper-zoom","sthilaire"]].map(s=>({m:MOTIONS.find(x=>x[0]===s[0]),sel:s[1]})), EXTRA.map(m=>({m:m,extra:m[5]})));
 }
+/* the final audits' Stage 5, WP-07 (CL-TEST-02; ChatGPT's CG-F01): the long Play runs, beside the 16 and apart from them (runBlock's MV.long, judged
+   by thresholds.js MOTION.LONG): the benchmark's one Play run per presentation is 90 frames from a seek at 09:00, and its "longest hidden" can
+   report no more than its own window (121 frames, 4,033 ms), while a visitor playing the morning met formations hidden for 12-28 s. Each run here
+   plays on the driver's clock, without the draw, from a seek, Follow on, at 1/2x: [id, view, from, to (battle minutes) or null, frames]:
+   the audit's morning (08:30 to 11:30), ChatGPT's 3,600 frames in one piece from 09:00, and a phone's morning (CL-MAP-07) */
+const LONG=[["hybrid-long","hybrid",510,690,null], ["hybrid-3600","hybrid",540,null,3600], ["phone-long","phone",540,720,null]];
 function runKey(r){ return r.id+(r.real?"+real":"")+(r.point?"+point":"")+(r.select?"+sel":"")+(r.reading?"+"+r.reading:"")+(r.touch?"+touch":""); }
 async function runBlock(mp,settle,o){
   o=o||{}; const MV={runs:[]}, log=o.log||function(){};
   let vp=null;
   await settle(mp); await mp.evaluate(()=>closeFirst(null));
-  for(const R of blockRuns(o.selftestOnly)){ const [id,view,kind,n,amt]=R.m, X=R.extra||{}, t0=Date.now(), V=VIEWS[view];
+  for(const R of (o.onlyLong?[]:blockRuns(o.selftestOnly))){   /* o.onlyLong: the long Play runs alone (the tools' measures; never the harness) */ const [id,view,kind,n,amt]=R.m, X=R.extra||{}, t0=Date.now(), V=VIEWS[view];
     if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]});   /* the phone layout below 720 px */
       /* the app's own resize handler run before the view is set up (it sets the phone layout, PHONE, the eye's aspect and the view offset):
          the resize event comes at a rendering step, and on a slow runner after the settle's wait, so a view set up before it was framed the
@@ -304,6 +319,30 @@ async function runBlock(mp,settle,o){
     log("motion "+(id+(R.real?" (real input)":"")+(R.point?" (its pointer)":"")+((R.real||R.point)?" hovering "+(L.hover||"nothing"):"")+(R.sel?" ("+R.sel+" selected)":"")+(X.reading?" (the "+X.reading+" reading)":"")+(X.touch?" (a finger, 390 px)":"")).padEnd(40)+" jumps "+L.jumps+" pops "+L.pops+" lod "+L.lod+" flicker "+L.flicker+
       " overlap "+L.overlapFrames+" keep hidden "+L.keepHidden+" remnants out of rule "+L.remnantBad+" moving "+L.moving+" of "+L.frames+" frames, ends "+L.end+
       ", formations drawn "+L.track.on+" of "+L.track.inView+" in view, longest hidden "+L.track.longestMs+" ms, layer "+L.msMed+"/"+L.msP95+" ms ("+L.secs+" s)"); }
+  /* the long Play runs (LONG above): per formation in view, the share drawn while the clock played and its longest hidden by the layout in battle
+     minutes; what the layer protects never hidden */
+  MV.long=[]; const ids=await mp.evaluate(()=>Object.keys(FORMATIONS)), events=await mp.evaluate(()=>EVENTS.map(e=>({id:e.id, forms:e.forms||[]})));
+  for(const [id,view,from,to,frames] of LONG){ const t0=Date.now(), V=VIEWS[view];
+    if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]});
+      await mp.waitForFunction(([w,h])=>window.innerWidth===w&&window.innerHeight===h&&Math.abs(landCam.aspect-w/h)<1e-9&&(typeof PHONE==="undefined"||PHONE===window.matchMedia(PHONE_Q).matches),[vp[0],vp[1]],{timeout:60000,polling:50});
+      await settle(mp); }
+    await mp.evaluate(()=>{ select(null,null); stopPlay(); });
+    await mp.evaluate(s=>window.__aus.apply(s),V); await mp.evaluate(()=>AUSTERLITZ_DEBUG.settle(90,true));
+    await mp.evaluate(inPage);
+    const A={kind:"play",n:frames||20000,amt:0.5,from:from,to:to,gl:false,room:false,select:null,rest:30,pre:8,reading:null,touch:false,point:false};
+    const r=await mp.evaluate(new Function("a","return ("+RUN.toString()+")(a);"),A);
+    const M=measure(r.F,{restFrom:r.restFrom,track:ids}), F=r.F, pf=F.filter(x=>x.playing);
+    const forms=Object.keys(M.track.by).map(k=>{ const R=M.track.by[k]; return {id:k, playInView:R.playInView, playShare:R.playShare, longestMin:R.longestMin, longestMs:R.longestMs}; }).filter(x=>x.playInView>0);
+    /* the formations a live event names (EVENTS[].forms), over the frames Play ran with the event's label drawn: in view (drawn, behind the ground,
+       hidden by the layout) and drawn (the owner's decision 299 (D): their share; CL-MAP-02) */
+    let evIn=0, evOn=0; F.forEach(fr=>{ if(!fr.playing) return; const A=fr.items;
+      events.forEach(e=>{ const ei=A["e:"+e.id]; if(!ei||ei.st!=="on") return;
+        e.forms.forEach(fid=>{ const s=A["c:"+fid]||A["n:"+fid]; if(!s||s.st==="offscreen"||s.st==="panel") return; evIn++; if(s.st==="on") evOn++; }); }); });
+    const L={id:id, view:view, from:from, to:to, frames:F.length, playFrames:pf.length, evInView:evIn, evDrawn:evOn, evShare:evIn?+(evOn/evIn).toFixed(3):null, clockFrom:pf.length?pf[0].clock:null, clockTo:pf.length?pf[pf.length-1].clock:null,
+      keepHidden:M.keepHidden, keepHiddenKeys:M.keepHiddenKeys, overlapFrames:M.overlapFrames, unknownDrawn:M.unknownDrawn, forms:forms, secs:+((Date.now()-t0)/1000).toFixed(1)};
+    MV.long.push(L);
+    const w=forms.slice().sort((a,b)=>b.longestMin-a.longestMin).slice(0,3).map(x=>x.id+" "+x.longestMin+" min ("+(100*x.playShare).toFixed(0)+"%)").join(", ");
+    log("long Play "+id.padEnd(14)+" "+L.playFrames+" frames, "+L.clockFrom+" to "+L.clockTo+"; longest hidden "+w+"; the event-named drawn "+L.evDrawn+" of "+L.evInView+"; never-dropped hidden "+L.keepHidden+" ("+L.secs+" s)"); }
   return MV;
 }
-module.exports={inPage, measure, tracking, VIEWS, MOTIONS, EXTRA, RUN, REAL, SELFTEST_REAL, runReal, blockRuns, runKey, runBlock};
+module.exports={inPage, measure, tracking, VIEWS, MOTIONS, EXTRA, LONG, RUN, REAL, SELFTEST_REAL, runReal, blockRuns, runKey, runBlock};

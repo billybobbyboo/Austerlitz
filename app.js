@@ -5073,6 +5073,7 @@ function mapSchedule(step,ms){
   setTween("cam",step);   /* Stage 3D: the camera slot; a phase change's fade runs on in its own */
 }
 var ECH_RANK={army:0,corps:1,div:2,bde:3};
+var CORPS_AT=250, CORPS_HYST=15;   /* units: the eye's distance at which the corps counters replace the divisions, and its band once the view has moved (WP-07, decision 300) */
 
 /* ============================================================
    THE MAP LAYER (Stage 2D; docs/STAGE2_SPEC.md sections E, F and H; owner decisions 24, 29, 38 and 39)
@@ -5176,6 +5177,37 @@ function mlName(it,label){
   it.el.setAttribute("role","img"); it.el.setAttribute("aria-label",label); it.aria=label;
 }
 /* the items this frame, from the level of detail updateVisibility decided (rec.show, rec.nameShow, o.show, k.labelOn) */
+/* ---- the final audits' Stage 5, WP-07 (CL-MAP-01, -02, -07; owner decision 299 (D), 8 November 2026, which settles question 274) ----
+   During Play the layer's order gains two terms, both measured on the motion block and the long Play runs before adoption
+   (tools/final-stage5/variants.js; docs/final-stage5-evidence/):
+   - aging: a formation in view whose counter or name the layout has hidden for MLAGE.MIN battle minutes since it was last drawn rises to MLAGE.PRI
+     (after the highlighted family, before every other formation) until it has been drawn for MLAGE.HOLD battle minutes. It accrues only while the
+     clock plays and resets where the formation leaves the view; its state is cleared at a discontinuity (a pending mlReset, or the clock moved
+     more than MLS.JUMP_MIN minutes since the last pass), so a pan, a zoom, an orbit or a view reached without motion is laid out as before.
+     Until WP-07 a formation crowded out by stronger ones was hidden for as long as the crowding lasted: d'Hautpoul for 73.5 battle minutes of the
+     morning in Landscape with counters, the Russian Guard cavalry for 112 in ChatGPT's 3,600 frames (CG-F01);
+   - the event-named: while the clock plays, every formation a live event names (EVENTS[].forms, while its label is drawn) and its collected
+     parents at MLAGE.EV, after the aged and before every other formation; not protected (decision 39 unchanged).
+   Design values, chosen from the measured variants (15 and 15 minutes kept every existing check of the motion block; 1.4 before 1.5 kept the
+   aged formations' bound while the event-named rise) */
+var MLAGE={MIN:15, HOLD:15, PRI:1.4, EV:1.5, st:{}, c:null, ev:{}};
+function mlPriPrep(){
+  if(MLS.pend||MLAGE.c===null||Math.abs(clock-MLAGE.c)>MLS.JUMP_MIN) MLAGE.st={};
+  MLAGE.c=clock; MLAGE.ev={};
+  if(playing&&eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn||!k.e.forms) return;
+    k.e.forms.forEach(function(id){ for(var x=id,g=0;x&&FORMATIONS[x]&&g<6;x=FORMATIONS[x].parent,g++) MLAGE.ev[x]=1; }); });
+}
+/* a formation's place in the order below the protected items: aged, event-named, else its base (rank by echelon and strength) */
+function mlPriX(id,base){ var a=MLAGE.st[id]; return a&&a.boost?MLAGE.PRI:MLAGE.ev[id]?MLAGE.EV:base; }
+/* after a pass: each formation item in view (not behind the ground) drawn or hidden by the layout; the others reset */
+function mlAgeAfter(order){
+  var seen={};
+  order.forEach(function(it){ if(!it.fid||!(it.cat==="counter"||it.cat==="name")) return; var id=it.fid; seen[id]=1;
+    var a=MLAGE.st[id]||(MLAGE.st[id]={last:clock,boost:false,on:null});
+    if(it.state==="on"){ if(!a.boost) a.last=clock; else { if(a.on===null) a.on=clock; if(clock-a.on>=MLAGE.HOLD){ a.boost=false; a.last=clock; a.on=null; } } }
+    else if(!a.boost&&playing&&clock-a.last>=MLAGE.MIN){ a.boost=true; a.on=null; } });
+  for(var id in MLAGE.st) if(!seen[id]){ MLAGE.st[id].last=clock; if(!MLAGE.st[id].boost) MLAGE.st[id].on=null; }
+}
 function mlCollect(){
   var out=[], paper=(mode==="staff"), labels=textOn(), K=paper?"paper":"dark";
   var PL=TOKENS.sym.plate[K], LB=TOKENS.sym.label[K], PC=TOKENS.sym.place[K];
@@ -5211,7 +5243,7 @@ function mlCollect(){
     it.world.set(w[0],gy+2.2,w[1]);
     it.gp=(it.gp||new THREE.Vector3()).set(w[0],gy+0.3,w[1]);
     var base=3+rank(f,S.strength);
-    add(it,{cat:"counter",mode:"counter",pri:sel?0:(hov||fo)?0.5:inFam?1:base,base:base,keep:sel||hov||fo||inFam,
+    add(it,{cat:"counter",mode:"counter",pri:sel?0:(hov||fo)?0.5:inFam?1:mlPriX(id,base),base:base,keep:sel||hov||fo||inFam,
             fid:id,pick:{kind:"f",id:id},ground:it.gp,acl:6,aria:counterLabel(f,o)});
   }
   Object.keys(aggregates).forEach(function(id){ var r=aggregates[id]; if(r.show&&r.p) counter(id,r); });
@@ -5222,7 +5254,7 @@ function mlCollect(){
     mlContent(it,["n",id,PL,S.cf,S.know].join("|"),nameHTML(f,false,S),[PL,LB.ink]);
     it.world.set(r.block.position.x,r.block.position.y+6.4,r.block.position.z);
     var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id), base=7+rank(f,S.strength);
-    add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:base,base:base,keep:sel||hov||fo||inFam,fid:id,pick:{kind:"f",id:id},acl:2,
+    add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:mlPriX(id,base),base:base,keep:sel||hov||fo||inFam,fid:id,pick:{kind:"f",id:id},acl:2,
             aria:counterLabel(f,S)});
   });
   /* the moments of the battle: every live event's label is kept (decision 39) */
@@ -5528,6 +5560,7 @@ function mlLayout(){
   var VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
   camera.updateMatrixWorld();
   mlLegendFit(VW,VH);
+  mlPriPrep();   /* WP-07 (decision 299): the order's Play terms for this pass */
   var list=mlCollect(), panels=mlPanels();
   var st={items:list.length,placed:0,leaders:0,dropped:0,held:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0};
   var elig=[], dirty=[];
@@ -5592,6 +5625,7 @@ function mlLayout(){
     if(it.state==="on"){ st.placed++; if(it.lead) st.leaders++; }
     else { st.dropped++; st.dropped_.push(it.key); if(it.held) st.held++; if(it.keep) st.keepMissing.push(it.key); }
   });
+  mlAgeAfter(order);   /* WP-07 (decision 299): aging's state from this pass */
   /* roadmap step 3 (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11): the item with the keyboard focus is always drawn. Laid out last, so that
      nothing else moves: dropped (no free room) or behind the ground, it is drawn over the others at its anchor, above it or below it as a panel
      allows, inside the screen, with a leader; the measures count the layout as it was (st) */
@@ -6188,7 +6222,11 @@ function updateVisibility(){
      which counts any camera path that bypassed clampCamera (CAM.violations) */
   var eyeQ=landCam.position, eyeAbove=eyeQ.y>=camFloor(eyeQ.x,eyeQ.z)-1e-6;
   var dist=mlBand(viewDist());   /* the paper map: the distance at which the landscape eye would show the ground at its scale; Stage 8, 8C: held inside the band while the view moves (MLS) */
-  var wantCorps = dist>250;
+  /* the final audits' Stage 5, WP-07 (CL-MAP-12; owner decision 300, 8 November 2026): once the view has moved, the corps counters above
+     CORPS_AT+CORPS_HYST and the divisions below CORPS_AT-CORPS_HYST, the level kept between; a view reached without motion (a pending
+     discontinuity, a fresh view) at CORPS_AT, as before. Until WP-07 a pan from the Field vantage (242.8 units, its target re-seated at the
+     pan's end) put 13 division counters away for 8 corps counters at rest */
+  var wantCorps = (typeof MLS!=="undefined"&&!MLS.pend&&!MLS.fresh&&(MLS.moving||MLS.fromMotion))?(lodEch==="corps"?dist>CORPS_AT-CORPS_HYST:dist>CORPS_AT+CORPS_HYST):dist>CORPS_AT;
   var showBde = dist<165;
   var showSym = layerOn.symbols && mode!=="terrain" && !cleanView;
   var showBlocks = mode!=="staff";
@@ -9547,6 +9585,36 @@ function wp56Checks(){
     if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTw();
     landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc;
     if(K.sel) select(K.sel.kind,K.sel.id); requestRender(3);
+  }
+  return out;
+}
+/* the final audits' Stage 5, WP-07: the self-test's check of the corps/division band (CL-MAP-12, decision 300); the order during Play (decision 299)
+   is judged by the motion block's long Play runs (thresholds.js MOTION.LONG) */
+function wp07Checks(){
+  var out=[], K={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,lod:lodEch};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  try{
+    if(playing) stopPlay(); select(null,null); setCommandView("none"); if(presentation!=="study") setPresentation("study"); if(mode!=="hybrid") setMode("hybrid");
+    setClock(570,{instant:true,force:true,camera:false}); while(tween) tween(performance.now()+1e7);
+    /* the eye on the Field vantage's line at a given distance from its target; the level the pass decides, the view reached afresh or through motion */
+    var dir=landCam.position.clone().sub(orbitTarget).normalize(), steps=[], bad=[];
+    function at(d){ landCam.position.copy(orbitTarget).addScaledVector(dir,d); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(); }
+    function pass(d,fresh,from){ at(d); MLS.bandD=null; MLS.band={}; if(fresh){ mlReset("self-test"); } else { MLS.pend=null; MLS.fresh=false; MLS.fromMotion=true; MLS.moving=false; }
+      if(from) lodEch=from; updateVisibility(); var got=lodEch; steps.push((fresh?"fresh ":"after motion ")+(from?"from "+from+" ":"")+d+": "+got); return got; }
+    var dist0=landCam.position.distanceTo(orbitTarget);
+    if(pass(255,true)!=="corps") bad.push("a view reached afresh at 255 not at the corps level (250, as before)");
+    if(pass(255,false,"div")!=="div") bad.push("after motion at 255 from the divisions the level flipped to the corps");
+    if(pass(270,false,"div")!=="corps") bad.push("after motion at 270 the corps level not reached");
+    if(pass(240,false,"corps")!=="corps") bad.push("after motion at 240 from the corps the level flipped to the divisions");
+    if(pass(230,false,"corps")!=="div") bad.push("after motion at 230 the divisions not reached");
+    if(pass(245,true)!=="div") bad.push("a view reached afresh at 245 not at the divisions (250, as before)");
+    ck("the corps and divisions (WP-07, CL-MAP-12): once the view has moved the corps counters above 265 units and the divisions below 235, the level kept between; a view reached afresh at 250 as before",
+      !bad.length, (bad.length?"WRONG: "+bad.join("; ")+"; ":"")+steps.join("; ")+" (the Field vantage's eye "+dist0.toFixed(1)+" units from its target)");
+  } catch(e){ ck("the corps and divisions (WP-07, CL-MAP-12): the check ran",false,"threw: "+e.message); }
+  finally {
+    lodEch=K.lod; mlReset("self-test");
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); while(tween) tween(performance.now()+1e7);
+    landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc; updateVisibility(); requestRender(3);
   }
   return out;
 }
@@ -14019,9 +14087,16 @@ var AUSTERLITZ_DEBUG=(function(){
         /* at rest: the band released, so the level of detail is the true distance's (the same items in the layer, at the same step, as the view
            reached without motion); nothing fading, no frame asked for. The places persist (section 3.4): counted against the view reached without
            motion, not held to it */
-        var placed=ML.stats.placed, fad=MLS.stats.fading, need=needFrames, mv=MLS.moving, inL=inLayer();
-        mlReset("test"); updateVisibility(); mlLayout(); var fresh=ML.stats.placed, inF=inLayer();
-        R.rest.push(label+" "+placed+" placed ("+fresh+" reached directly)");
+        var placed=ML.stats.placed, fad=MLS.stats.fading, need=needFrames, mv=MLS.moving, inL=inLayer(), eR=lodEch, dR=viewDist();
+        /* the final audits' Stage 5, WP-07 (owner decision 301 (a), amending 240 (a) for this one switch): the corps/division level keeps its band at rest
+           after motion (decision 300: corps above 265 units, divisions below 235, the level kept between: bounds written here). Where it differs from the
+           level the true distance gives a view reached afresh (250), the distance must lie inside the band, and the layer is compared with a fresh view
+           laid out at the rest's level (every other switch the true distance's, as before) */
+        mlReset("test"); updateVisibility(); var eF=lodEch, keepAt=CORPS_AT, bandNote="";
+        if(eF!==eR){ if(!(dR>235&&dR<265)) R.restBad.push(label+": the corps/division level "+eR+" at rest at "+dR.toFixed(1)+" units, outside its band (235-265)");
+          CORPS_AT=eR==="corps"?-1:1e9; mlReset("test"); updateVisibility(); bandNote=", its "+eR+" kept inside the band at "+dR.toFixed(1)+" units"; }
+        mlLayout(); var fresh=ML.stats.placed, inF=inLayer(); CORPS_AT=keepAt;
+        R.rest.push(label+" "+placed+" placed ("+fresh+" reached directly"+bandNote+")");
         if(mv||fad||need>0||inL!==inF) R.restBad.push(label+": moving "+mv+", fading "+fad+", frames asked "+need+(inL!==inF?", the layer's items not the true distance's":""));
       }
       var c0=null, fx0=FX.on;
@@ -14044,7 +14119,7 @@ var AUSTERLITZ_DEBUG=(function(){
           R.frames+" frames in four motions (a pan and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play), "+R.moving+" of them moving, "+R.held+" item-frames held"+
           (R.overlaps.length?"; OVERLAP "+R.overlaps.slice(0,3).join(", "):"")+(R.keepHidden.length?"; NEVER-DROPPED HIDDEN "+R.keepHidden.slice(0,3).join(", "):"")+(R.moved.length?"; MOVED OFF ITS ANCHOR "+R.moved.slice(0,3).join(", "):"")+
           (R.appeared.length?"; APPEARED OUTSIDE A PASS "+R.appeared.slice(0,3).join(", "):"")+(R.early.length?"; BACK TOO SOON "+R.early.slice(0,3).join(", "):""));
-        ck("map layer in motion (decision 240): a leaving item fades out as itself, under the live items and taking no pointer, gone within "+MLS.FADE_MS+" ms; at rest after a motion nothing drawn moved to make room for another, the band released (the layer's items those of the view reached without motion), nothing fading, no frame asked for",
+        ck("map layer in motion (decision 240): a leaving item fades out as itself, under the live items and taking no pointer, gone within "+MLS.FADE_MS+" ms; at rest after a motion nothing drawn moved to make room for another, the band released (the layer's items those of the view reached without motion, but the corps/division level, which keeps its band: decision 301 (a)), nothing fading, no frame asked for",
           R.rem>0&&R.restKept>0&&!R.remBad.length&&!R.remLong.length&&!R.dup.length&&!R.restBad.length&&!R.reshuffled.length,
           R.rem+" remnant-frames"+(R.remBad.length?"; OUT OF RULE "+R.remBad.slice(0,3).join(", "):"")+(R.remLong.length?"; TOO LONG "+R.remLong.slice(0,3).join(", "):"")+(R.dup.length?"; A SECOND ELEMENT in "+R.dup.join(", "):"")+
           "; "+R.restKept+" items kept their places into the rest"+(R.reshuffled.length?"; MOVED THOUGH ITS PLACE WAS FREE "+R.reshuffled.slice(0,4).join(", "):"")+
@@ -14062,9 +14137,14 @@ var AUSTERLITZ_DEBUG=(function(){
         for(var bi=0;bi<12;bi++){ vk(); dolly(1.005); F(1); if(viewDist()>250&&viewDist()<d0*(1+MLS.BAND)-0.5&&lodEch!=="div") bandBad.push("switched at "+viewDist().toFixed(1)+" while moving"); }
         var dMid=viewDist(), eMid=lodEch; F(20); var eRest=lodEch;
         if(!(dMid>250)) bandBad.push("the zoom did not cross 250 ("+dMid.toFixed(1)+")");
-        if(eMid!=="div") bandBad.push("the divisions not kept while moving ("+eMid+")"); if(eRest!=="corps") bandBad.push("not the corps at rest ("+eRest+", "+viewDist().toFixed(1)+")");
-        ck("map layer (decision 240): the level-of-detail switches read a distance held inside the "+(100*MLS.BAND)+"% band while the view moves, the true distance at rest",
-          !bandBad.length&&e0==="div", "from "+d0.toFixed(1)+" units ("+e0+") out to "+dMid.toFixed(1)+" under a key's hold: "+eMid+"; at rest "+eRest+(bandBad.length?"; WRONG: "+bandBad.join("; "):""));
+        if(eMid!=="div") bandBad.push("the divisions not kept while moving ("+eMid+")");
+        /* decision 301 (a): at rest inside the corps/division band (below 265 units here) the divisions kept; carried on out past 265, the corps at rest */
+        if(!(dMid<265)) bandBad.push("the first stop not inside the band ("+dMid.toFixed(1)+")"); else if(eRest!=="div") bandBad.push("the divisions not kept at rest inside the band ("+eRest+", "+viewDist().toFixed(1)+")");
+        for(var bj=0;bj<40&&viewDist()<272;bj++){ vk(); dolly(1.005); F(1); }
+        var dFar=viewDist(); F(20); var eFar=lodEch;
+        if(!(dFar>265)) bandBad.push("the second move did not pass 265 ("+dFar.toFixed(1)+")"); else if(eFar!=="corps") bandBad.push("not the corps at rest past the band ("+eFar+", "+dFar.toFixed(1)+")");
+        ck("map layer (decision 240): the level-of-detail switches read a distance held inside the "+(100*MLS.BAND)+"% band while the view moves, the true distance at rest (the corps and divisions inside their band, decision 301 (a))",
+          !bandBad.length&&e0==="div", "from "+d0.toFixed(1)+" units ("+e0+") out to "+dMid.toFixed(1)+" under a key's hold: "+eMid+"; at rest "+eRest+"; on to "+dFar.toFixed(1)+": at rest "+eFar+(bandBad.length?"; WRONG: "+bandBad.join("; "):""));
         /* reduced motion: the hold and the band kept, no fade */
         var rmBad=[], rmHeld=0; RM=true;
         pap(); F(4); for(var ri=1;ri<=30;ri++){ if(ri%3===0) V.dispatchEvent(new WheelEvent("wheel",{deltaY:-100,clientX:c0[0],clientY:c0[1],bubbles:true,cancelable:true})); F(1);
@@ -14666,6 +14746,7 @@ var AUSTERLITZ_DEBUG=(function(){
     })();
 
     wp56Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 3 (WP-05, WP-06) */
+    wp07Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-07 */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();

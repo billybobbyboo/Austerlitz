@@ -1,0 +1,19 @@
+hybrid-fr-0900       frames 1540 (play 1508, 540.167->720), formations drawn 25042 of 37011, longest hidden 16667 ms, episodes 310, quirk 0, wall 14.5 s, run 45 s
+   worst: guard_cav 16667ms/61.5min share 0.14; dhautpoul 12000ms/41.5min share 0.173; guard_inf 10500ms/41.17min share 0.359; rg_cav 9333ms/26.67min share 0.203; nansouty 8300ms/30.17min share 0.393
+hybrid-al-0900       frames 1540 (play 1508, 540.167->720), formations drawn 21437 of 27322, longest hidden 11000 ms, episodes 206, quirk 0, wall 20.0 s, run 21 s
+   worst: milo 11000ms/35min share 0.68; rg_cav 8000ms/26.83min share 0.257; guard_cav 6300ms/20.4min share 0.153; vandamme 4000ms/10.23min share 0.642; rg_inf 4000ms/10min share 0.638
+hybrid-watch-0830    frames 1592 (play 1560, 510.167->690), formations drawn 32382 of 44457, longest hidden 17667 ms, episodes 352, quirk 0, wall 28.4 s, run 29 s
+   worst: rg_cav 17667ms/54.83min share 0.234; dhautpoul 11000ms/45min share 0.12; guard_cav 10333ms/31.67min share 0.181; kellermann 7667ms/26.5min share 0.551; guard_inf 6367ms/21.83min share 0.701
+hybrid-fixed-0830    frames 1592 (play 1560, 510.167->690), formations drawn 32017 of 44548, longest hidden 23700 ms, episodes 219, quirk 0, wall 14.0 s, run 15 s
+   worst: kellermann 22700ms/83.5min share 0.153; dhautpoul 19833ms/69.17min share 0.023; guard_cav 17667ms/48.57min share 0.111; rg_cav 16367ms/60min share 0.175; nansouty 12333ms/41.67min share 0.344
+hybrid-0830-60       frames 3152 (play 3120, 510.083->690), formations drawn 60323 of 87052, longest hidden 20333 ms, episodes 367, quirk 0, wall 36.7 s, run 54 s
+   worst: dhautpoul 20333ms/74.73min share 0.087; guard_cav 15667ms/58.33min share 0.101; kellermann 12333ms/39.92min share 0.356; rg_cav 7417ms/23.83min share 0.211; guard_inf 5450ms/16.98min share 0.426
+land-4x-day          frames 1832 (play 1800, 241.333->1080), formations drawn 34819 of 42915, longest hidden 1133 ms, episodes 471, quirk 0, wall 17.2 s, run 18 s
+   worst: milo 1133ms/45.33min share 0.741; sthilaire 667ms/3.01min share 0.734; vandamme 667ms/10.84min share 0.809; legrand 667ms/12.4min share 0.893; friant 667ms/2.6min share 0.694
+bench-land           frames 122 (play 90, 540.167->554.687), formations drawn 2603 of 3146, longest hidden 667 ms, episodes 34, quirk 0, wall 1.0 s, run 1 s
+   worst: sthilaire 667ms/3.33min share 0.567; bourcier 667ms/3.33min share 0.778; kellermann 667ms/3.33min share 0.611; rivaud 667ms/3.33min share 0.633; drouet 667ms/3.33min share 0.611
+bench-paper          frames 122 (play 90, 540.167->554.687), formations drawn 1564 of 1694, longest hidden 667 ms, episodes 9, quirk 0, wall 0.5 s, run 1 s
+   worst: constantine 667ms/3.33min share 0.778; buxhowden 667ms/3.33min share 0.778; c_iv 533ms/2.67min share 0.822; ahq 533ms/2.67min share 0.822; c_i 500ms/2.5min share 0.6
+phone-land-0900      frames 1540 (play 1508, 540.167->720), formations drawn 3735 of 4793, longest hidden 1333 ms, episodes 60, quirk 0, wall 12.3 s, run 24 s
+   worst: lich 1333ms/6.67min share 0.746; gqg 667ms/0min share 0.644; ahq 667ms/3.33min share 0.816; buxhowden 667ms/3.33min share 0.822; bag 667ms/3.33min share 0.451
+done in 213 s

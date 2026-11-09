@@ -1,5 +1,119 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 5 (1 of 3): WP-07, the map layer in motion
+
+**Status: on `claude/jolly-carson-yz0yqo-layer` (draft PR #89 into `main`, for review, not merged).** WP-07 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-MAP-01, -02, -07 and -12, CL-TEST-02 and -14; CL-MAP-14 and -17 measured and kept as accepted. Presentation only: no data file and no guarded
+declaration changes (`check:data`: every data declaration identical to `archive/stage4wp04b-cdca9984.html`). The owner's decisions of 8 November
+2026 ("Your recommendations for all"), each put with its measured numbers: **299 (D)**, which settles question 274 (its option (a), measured, failed
+13 lines of the motion block and bounded no gap): aging and the event-named rise during Play; **300**, the corps/division band; **301 (a)** (put when
+the self-test found two checks of 8C holding decision 240 (a)'s "the true distance at rest", which the band cannot meet: CL-MAP-12's swap happens at
+rest), decision 240 (a) amended for the corps/division switch alone; the long-gap bar of 299 (D); five visibility baselines moved, as approved and
+measured again on the implementation; and, after the build, **304 (a)** (below: the phone's event-named share accepted as measured, carried
+into WP-09's review). `austerlitz-command-map.html` is now 2,912,695 bytes,
+md5 `e5e17e648ac15d104df24858f73b67bd` (was 2,903,749, `cdca9984...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **The measures first (CL-TEST-02; `tools/visual/motion.js`).** No check could see a long gap: the motion block's one Play run per presentation is
+  90 frames from a seek at 09:00, and its "longest hidden" can report no more than its own 121-frame window (4,033 ms), while a visitor playing the
+  morning in Landscape with counters met formations hidden for 12-28 s. *Is:* the driver's snapshot carries the battle clock and Play; the tracking
+  measures each formation's longest hidden by the layout in battle minutes and its share drawn while the clock played, and the share of the
+  formations a live event names; three long Play runs beside the 16 and apart from them (`LONG`, `runBlock`'s `MV.long`): the audit's morning
+  (08:30 to 11:30), ChatGPT's 3,600 frames in one piece from 09:00 (CG-F01) and a phone's morning (CL-MAP-07), on the driver's clock without the
+  draw (about 4 minutes in `check:selftest` and `check:visual`). On `main`'s build they reproduce the audit's numbers exactly: d'Hautpoul hidden
+  73.5 battle minutes and drawn 8% of the morning, the Russian Guard cavalry 112 minutes in ChatGPT's run, Liechtenstein 56.5 on the phone.
+- **The candidates measured (`tools/final-stage5/variants.js`; `docs/final-stage5-evidence/wp07/variants/`).** Each a patched copy of the build,
+  judged by the motion block as `check:selftest` runs it and measured on nine long runs. Question 274 (a)'s two rules: the event-named alone failed
+  13 lines; "fresh-first" (a fresh layout's items back at once at a pass) flickers 63 and the cavalry starved harder (d'Hautpoul 1.3%, 143 battle
+  minutes); both together 13 lines, 64 flickers, gaps to 215 minutes. The cause is crowding and a rank by strength that puts the cavalry last, which
+  a fresh layout shares. Aging at 15/15 kept every existing check; at 10/10, 6/10 and 12/15 it passed the pops ceiling (1,057, 1,081, 1,055).
+- **Decision 299 (D) (`app.js` `MLAGE`, `mlPriPrep`, `mlPriX`, `mlAgeAfter`).** During Play a formation in view whose counter or name the layout has
+  hidden for 15 battle minutes since last drawn rises to 1.4, after the highlighted family and before every other formation, until drawn for 15;
+  every formation a live event names (and its collected parents) at 1.5 while the clock plays. Aging accrues only while the clock plays, resets
+  where a formation leaves the view, and is cleared at a discontinuity, so a pan, a zoom, an orbit or a view reached without motion is laid out as
+  before. Decision 39 (the protected items) unchanged.
+- **Decisions 300 and 301 (a) (`app.js` `CORPS_AT`, `CORPS_HYST`, `updateVisibility`; CL-MAP-12).** A pan from the Field vantage (242.8 units, its
+  target re-seated at the pan's end) put its 13 division counters away for 8 corps counters at rest. *Is:* once the view has moved, the corps counters
+  above 265 units and the divisions below 235, the level kept between, also at rest after the motion (decision 301 (a), amending 240 (a)'s "the true
+  distance at rest" for this switch alone); a view reached afresh, or with a discontinuity pending, at 250 as before.
+- **The long-gap bar (decision 299 (D); `thresholds.js` `MOTION.LONG`, judged in `checkLive`).** An absolute bar, not the build's own counts: in each
+  long run every formation in view for 2 s of Play or more hidden by the layout for at most 30 battle minutes; in the desktop's two runs the formations
+  a live event names drawn in at least 70% of their frames while its label is drawn; nothing protected hidden, no overlap, nothing drawn the reading
+  does not know.
+- **Five visibility baselines (`MOTION.VIS`), as approved and measured again on the implementation, every other unchanged:** `hybrid-pan`
+  [1359, 2036, 2467] to [1436, 2189, 3033] and its twin `hybrid-pan+point` the same, `hybrid-pan+fr` [1318, 1959, 2467] to [1387, 2112, 3033],
+  `hybrid-pan+al` [948, 1270, 1467] to [1010, 1321, 1467] (decision 300: more formations stay in view after the pan); `paper-play` [1564, 1694, 667]
+  to [1533, 1694, 667] (decision 299 (D): the event-named counters take room on the paper map while it plays). The 16's ceilings unchanged.
+
+### Measured on this build (Chromium 141, the pinned browser)
+
+- The 16: 249 jumps, 1,043 pops, 9 flickers, 105 level-of-detail switches (ceilings 251, 1,049, 10, 130; `main`'s 240, 1,049, 7, 128).
+- The long runs, longest hidden by the layout (battle minutes) and share drawn, `main` to this: (the audit's long-run tool, `tools/audit-post8/visibility`, the same frames)
+  - Landscape with counters 08:30-11:30: 73.5 to 18.3 battle minutes; 69.1% to 69.2%
+  - the same 12:00-15:00: 46.5 to 18.3; 71.1% to 72.8%
+  - ChatGPT's 3,600 frames from 09:00 (the motion block's `hybrid-3600`): 112.1 to 18.3
+  - the phone with counters 09:00-12:00: 56.5 to 23.3; 49.5% to 46.2%
+  - the day at 4x: 140.1 to 30.0; 64.1% to 74.1%
+  - under Napoleon's reading: 61.5 to 16.7; 67.6% to 68.3%; under the Allied reading: 35 to 18.3; 78.5% to 77.9%
+  - the Landscape 09:00-12:00: 20 to 3.3; 86.8% to 87.4%; the paper map: 3.3 to 3.3; 92.1% to 91.8%
+- The event-named formations' share while their event is live: 08:30-11:30 60.2% to 76.4%, 12:00-15:00 61.8% to 77.0%; on the phone with counters
+  38.8% to 24.9% (aging ranks the aged first, and the phone is crowded: a cost of decision 299 (D), put to the owner with the final numbers as
+  question 304 and decided (a) on 8 November 2026, "Your recommendation": accepted as measured, carried into WP-09's review).
+- CL-MAP-14 (at rest after Play the kept places first) and CL-MAP-17 (the Landscape's names blink during Play, 10.6% of frames): kept as accepted
+  (decisions 240 (a), 267 (a)); the Landscape's share 86.8% to 87.4%, its longest gap 20 to 3.3 battle minutes.
+- What no option does: no formation under 50% (the roadmap's done-when) is not met: there are more counters than room, and aging rotates them
+  (d'Hautpoul 8% to 42%, several cavalry divisions 37-49%). The benchmark's own Play run keeps its 4,033 ms (its window; aging starts after 15
+  minutes): the long runs carry that measure now.
+
+### Checks added, each failing without its fix
+
+- **The long Play runs' bar** (`thresholds.js` `MOTION.LONG`, judged in `checkLive`'s motion block in `check:selftest` and `check:visual`): on this build
+  the worst 18.3 battle minutes (08:30-11:30 and ChatGPT's run) and 23.3 (the phone), the event-named 76.4% and 78.4% on the desktop's runs, on
+  `check:visual`'s page (`docs/final-stage5-evidence/wp07/impl-1.json`); on `check:selftest`'s page 18.33, 18.33 and 18.18, 76.4% and 74.1% (below).
+- **The self-test's band check** (`app.js` `wp07Checks`, the manifest 325 to 326): at 255 units a view reached afresh at the corps level (250), after
+  motion from the divisions kept, past 265 the corps, from the corps at 240 kept, at 230 the divisions, afresh at 245 the divisions.
+- **Decision 301 (a):** the two checks of 8C that held decision 240 (a)'s "the true distance at rest" (the band check and the rest check) amended
+  for the corps/division switch alone: at rest after motion its level kept inside its band (235-265 units, written in the test) and, past 265, the
+  corps at rest; the rest compared with a fresh view laid out at the rest's level, every other switch the true distance's as before. Both renamed
+  (the manifest records it).
+- **Negative controls** (`tools/final-stage5/mutate-wp07.js`, `docs/final-stage5-evidence/wp07/mutate-wp07.json`): all as expected. Aging off: the
+  long runs' gaps 51.5, 86.5 and 82 battle minutes, the bar failing; the event-named rise off: 64.5% and 66.5%, the share's bar failing; the band
+  removed: the band check failing; the build: every line passing.
+
+### Verified
+
+All here, on this branch's final build `e5e17e64...` (Chromium 141.0.7390.37, the pinned browser, software WebGL), but `check:visual` (CI):
+
+- `npm run build`: 2,912,695 bytes; the committed build is a fresh build's (`check:baseline` passes on it).
+- `npm test`: the nine suites and the height guard, every suite passing (binding-test 400 checks; css-test 0 errors; runtime-test console.warn
+  unique 0; redteam 0 findings; sim-test and audit.js 0 violations).
+- `npm run check:data`: all 143 data declarations identical to `archive/stage4wp04b-cdca9984.html` (no data changes; the reference stays); CSS and
+  markup identical.
+- `npm run check:chronology`: 0 errors, as on `main` (the four named conflicts).
+- `npm run check:contrast`: 7,175 text elements, 120 text/background pairs, 0 below AA, 0 below 10.5 px, 0 font failures (671 characters in 15
+  computed fonts); 45 of 45 states reached (10 as a phone); 0 console messages; the eight start-up cases pass (the context loss's 185 warnings, at
+  most 248).
+- `npm run check:selftest`: the self-test's 326 checks pass, the band check and the two renamed checks of decision 301 (a) among them, and every live
+  block (the motion block with its long runs, `toast`, `toastLayout`, `ring`, `tips`, `narrow`, `shortcuts`, `rmLive`); its six failing lines were the
+  manifest's (326 checks against 325, three names added, two removed), so the manifest is written from that run (`tools/visual/check-report.js
+  --write-manifest`); CI's run judges it clean. The 16 on that run: 249 jumps, 1,043 pops, 9 flickers, 105 level-of-detail switches (ceilings
+  251, 1,049, 10, 130), every visibility baseline held; the long runs 18.33 (`hybrid-long`), 18.33 (`hybrid-3600`) and 18.18 (`phone-long`) battle
+  minutes at the longest, the event-named drawn in 76.4% and 74.1% of their frames on the desktop's two runs (4,833 of 6,322; 11,869 of 16,010) and
+  30.9% on the phone's (292 of 945, not judged: `MOTION.LONG.EV_RUNS` names the desktop's two, decision 299 (D)).
+- `check:visual` on CI (run 42459679475 on `84705e9`, build `e5e17e64...`, `checks.yml`, `visual: true`): passed, every job (`check:visual` in
+  4 h 9 min, its 39 cases and live blocks; `npm test`, `check:data`, `check:chronology`, `check:contrast` and `check:selftest` on the same commit).
+
+### What remains uncertain, and what is handed on
+
+- The 15 and 15 minutes, the ranks 1.4 and 1.5 and the band of 15 units are design values chosen from the measured variants.
+- WP-08's lettering and landmarks (CL-MAP-05, -09, -11, -15, -18, CL-VIS-11; questions 275, 282, 284) are the stacked PR after this one; the wall of
+  names (CL-MAP-15, decision 284 (b)) is re-measured there on this layer.
+- The phone's event-named share during Play (38.8% to 24.9% by the audit's tool; 30.9% on `check:selftest`'s page, not judged): accepted as
+  measured under decision 304 (a) and carried into WP-09's review; option (b), a phone rule that ranks the event-named before aging, not built
+  (a new design, to be measured first).
+- The three Stage 3 reading-scope items are not touched (handed to WP-09).
+
 ## 2026-11 · Final audits' roadmap, Stage 4 (main track, 2 of 2): WP-04b, the relief and the drawn geography
 
 **Status: merged into `main` (#87, `c1222e3`), after WP-03 (#86) and with `main` merged in (`3950b07`); built on
