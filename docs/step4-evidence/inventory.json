@@ -1821,7 +1821,7 @@
    "file": "data.js",
    "line": 214,
    "label": null,
-   "text": "the wheel begins c. 13:00. Its end, c. 14:00, cannot be the arrival here: the next anchor, the height above Augezd c. 14:30, is 3.3 km on, 40 minutes at the ceiling; so the arrival is derived",
+   "text": "the wheel begins c. 13:00. Its end, c. 14:00, cannot be the arrival here: the next plotted position, the height above Augezd c. 14:30, is 3.3 km on, 40 minutes at the ceiling; so the arrival is derived",
    "claim": "unchecked",
    "by": []
   },
@@ -2256,7 +2256,7 @@
    "file": "data.js",
    "line": 255,
    "label": null,
-   "text": "the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127), about six in Sokolov; the leading brigade up to the Goldbach near Telnitz about nine in Stutterheim (1806, p. 52) and the Moniteur's remarks (Materialien 1806, pp. 109-110), attacking about nine in Schönhals: the anchor, short of the stream, is reached then.",
+   "text": "the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127), about six in Sokolov; the leading brigade up to the Goldbach near Telnitz about nine in Stutterheim (1806, p. 52) and the Moniteur's remarks (Materialien 1806, pp. 109-110), attacking about nine in Schönhals: the plotted position, short of the stream, is reached then.",
    "claim": "unchecked",
    "by": []
   },
@@ -5449,7 +5449,7 @@
    "file": "data.js",
    "line": 599,
    "label": null,
-   "text": "the attack on the summit, c. 10:15 on this map, is the arrival at this anchor; no source read gives the hour, and the sources tie the attack to Kamensky's",
+   "text": "the attack on the summit, c. 10:15 on this map, is the arrival at this plotted position; no source read gives the hour, and the sources tie the attack to Kamensky's",
    "claim": "unchecked",
    "by": []
   },
@@ -7750,7 +7750,7 @@
    "file": "data.js",
    "line": 830,
    "label": "Reconstruction",
-   "text": "How this map represents the record: a plotted position, a route between anchors, a frontage. Graded A, B or C for confidence; a formation's dossier names the grade as its position's: documented, estimated or reconstructed.",
+   "text": "How this map represents the record: a plotted position, a route between plotted positions, a frontage. Graded A, B or C for confidence; a formation's dossier names the grade as its position's: documented, estimated or reconstructed.",
    "claim": "unchecked",
    "by": []
   },

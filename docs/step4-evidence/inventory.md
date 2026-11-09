@@ -498,7 +498,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.sthilaire.track["3"].tm.note` | data.js:192 | the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, … | unchecked |  |
 | `FORMATIONS.sthilaire.track["7"].tm.note` | data.js:197 | the wheel is dated as a range, and the move is shown across all of it | unchecked |  |
 | `FORMATIONS.vandamme.track["3"].tm.note` | data.js:210 | the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, … | unchecked |  |
-| `FORMATIONS.vandamme.track["7"].tm.note` | data.js:214 | the wheel begins c. 13:00. Its end, c. 14:00, cannot be the arrival here: the next anchor, the height above Augezd c. 14:30, is 3.3 km on, … | unchecked |  |
+| `FORMATIONS.vandamme.track["7"].tm.note` | data.js:214 | the wheel begins c. 13:00. Its end, c. 14:00, cannot be the arrival here: the next plotted position, the height above Augezd c. 14:30, is 3… | unchecked |  |
 | `FORMATIONS.legrand.track["7"].tm.note` | data.js:232 | the act ties the move to the trap closing, dated 13:00-14:00 | unchecked |  |
 | `FORMATIONS.legrand.track["8"].tm.note` | data.js:237 | Telnitz changed hands until about 15:00; taking it for good is the last change | unchecked |  |
 | `FORMATIONS.friant.track["1"].tm.note` | data.js:255 | the departure from Raigern at five in Davout's report of 2 December (no. 123), between half past five and six in his report of 26 December … | unchecked |  |
@@ -516,7 +516,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.lang.track["1"].tm.note` | data.js:519 | the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past s… | unchecked |  |
 | `FORMATIONS.lang.track["4"].tm.note` | data.js:526 | c. 10:30 on this map; no source read gives the hour (the Kursk regiment's episode in Mikhailovsky-Danilevsky, Langeron's journal and Schönh… | unchecked |  |
 | `FORMATIONS.prz.track["1"].tm.note` | data.js:553 | the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents… | unchecked |  |
-| `FORMATIONS.kollo.track["4"].tm.note` | data.js:599 | the attack on the summit, c. 10:15 on this map, is the arrival at this anchor; no source read gives the hour, and the sources tie the attac… | unchecked |  |
+| `FORMATIONS.kollo.track["4"].tm.note` | data.js:599 | the attack on the summit, c. 10:15 on this map, is the arrival at this plotted position; no source read gives the hour, and the sources tie… | unchecked |  |
 | `FORMATIONS.bag.track["5"].tm.note` | data.js:627 | Bagration's counter-attack is dated c. 09:30; before it he holds | unchecked |  |
 | `FORMATIONS.bag.track["6"].tm.note` | data.js:629 | the falling back begins with Blasowitz's fall, c. 11:15 on this map; no source read gives either hour, and Schönhals has Bagration fight on… | unchecked |  |
 
@@ -659,7 +659,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `SOURCE_NOTE.body[5]` | data.js:826 | Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whet… | unchecked |  |
 | `SOURCE_NOTE.body[6]` | data.js:827 | Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights … | unchecked |  |
 | `SOURCE_NOTE.layers[0]` | data.js:829 | Historical record / What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an e… | unchecked |  |
-| `SOURCE_NOTE.layers[1]` | data.js:830 | Reconstruction / How this map represents the record: a plotted position, a route between anchors, a frontage. Graded A, B or C for confiden… | unchecked |  |
+| `SOURCE_NOTE.layers[1]` | data.js:830 | Reconstruction / How this map represents the record: a plotted position, a route between plotted positions, a frontage. Graded A, B or C fo… | unchecked |  |
 | `SOURCE_NOTE.layers[2]` | data.js:831 | Derived reading / What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source … | unchecked |  |
 | `SOURCE_NOTE.refs[0]` | data.js:832 | Order-of-battle figures are this map's working figures, many first taken from Duffy (1977) and Smith (1998), cited and not read; where a fo… | unchecked |  |
 | `SOURCE_NOTE.refs[1]` | data.js:833 | Narrative of the fight for the Pratzeberg draws on Thiébault's memoirs, with Schönhals and Mikhailovsky-Danilevsky where the statements nam… | unchecked |  |

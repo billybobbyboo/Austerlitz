@@ -579,7 +579,11 @@ try{
             if(P.length!==1) throw new Error(id+" ("+w+") at "+fmtClock(t)+": "+P.length+" claim pills, want one");
             const cl=P[0][1], txt=P[0][2].replace(/<svg[\s\S]*?<\/svg>/g,"");
             if(cl!==want) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill's class "+cl+", its key is "+want);
-            if(txt!==esc(POS_CLAIM[cl]||"")) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill reads \""+txt+"\", want POS_CLAIM's \""+POS_CLAIM[cl]+"\"");
+            /* the final audits' Stage 6 (decision 310): POS_CLAIM's words with the position's grade, "(B)" or "(B, interpolated)"; no bare grade pill */
+            const pre=esc(POS_CLAIM[cl]||"");
+            if(txt.slice(0,pre.length)!==pre||!/^ \([ABC](, interpolated)?\)$/.test(txt.slice(pre.length))) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill reads \""+txt+"\", want POS_CLAIM's \""+POS_CLAIM[cl]+"\" with its grade");
+            if(/<span class="pill ghost">(Position|Timing) [ABC]<\/span>/.test(h)) throw new Error(id+" ("+w+") at "+fmtClock(t)+": a bare grade pill (Position or Timing and a letter)");
+            const tp=h.match(/<span class="pill ghost">Timing[^<]*<\/span>/); if(tp&&!/^<span class="pill ghost">Timing: (dated|approximate|inferred) \([ABC]\)<\/span>$/.test(tp[0])) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the timing pill reads "+tp[0]);
             if(CL.indexOf(txt)>=0) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill carries CLAIM's words \""+txt+"\"");
             nP++; byCl[cl]=(byCl[cl]||0)+1; }); }); });
     } finally { document.createElement=mk; }

@@ -3329,7 +3329,7 @@ function anchorList(id){
           if(c && c.p===null) latest=PHASES[c.ph].t0;
           else if(c){ latest=c.arr-legPath(b,c).len*KM_PER_MAP/ceil*60; if(depOf(c)!==null) latest=Math.min(latest,depOf(c)); }
           if(tac<=latest){ b.arr=tac; b.arrRule="tactical"; }
-          else b.arrFlag="the tactical rate does not fit before the next anchor";
+          else b.arrFlag="the tactical rate does not fit before the next plotted position";
         }
       }
     }
@@ -6828,9 +6828,9 @@ var LABELS={
     known1:"the one of its %n formations on the field known to %r",
     noDay:"Its day is not shown: not known to %r at %c (a model reading).", noDays:"the days of %k of them are not shown: not known to %r at %c (a model reading)",
     /* Stage 8, implementation PR 8C: the march row of a formation the reading does not know (marchRow) */
-    leg:"Plotted leg", legNote:"whether it moves now, and where, is not shown: not known to %r at %c (a model reading)"},
+    leg:"Plotted march", legNote:"whether it moves now, and where, is not shown: not known to %r at %c (a model reading)"},
   /* the final audits' Stage 4 (CL-HIS-13): the march row of a leg under the gait's floor */
-  march:{drift:"Plotted leg", driftNote:"under %k km/h over its time window: the plotted leg\u2019s length over its window, a drift between anchors, not a march"},
+  march:{drift:"Plotted march", driftNote:"under %k km/h over its time window: the plotted march\u2019s length over its window, a drift between plotted positions rather than a formed march"},
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -8127,7 +8127,7 @@ function drawerKey(){
     "|"+commandView+(EYE.on?"e":"")+"|"+Math.floor(clock+1e-9);
 }
 var _drawerKey="";
-var CONF_INTERP="The formation is between two plotted anchors: this position is interpolated, and graded no better than the weaker anchor.";
+var CONF_INTERP="The formation is between two plotted positions: this position is interpolated, and graded no better than the weaker of the two.";
 var CONF_TEXT={A:"Position documented in the sources.",
                B:"Sector documented; the frontage shown is an approximation.",
                C:"Reconstructed from the narrative — treat as indicative only."};
@@ -8227,9 +8227,8 @@ function compactCard(id){
   wrap.appendChild(head);
   var pills='';
   if(st) pills+=statusPill(st);
-  pills+=posClaimPill(posClaimOf(id,cf));
-  pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
-  if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
+  pills+=posClaimPill(posClaimOf(id,cf),cf+(aggInterp(id,curPhase)?", interpolated":""));   /* the final audits' Stage 6 (decision 310): the grade with its scale */
+  if(tmg) pills+=timingPill(tmg.tm.gr);
   wrap.appendChild(el("div","pillrow",pills));
   var srcRefs=[]; wrap.appendChild(srcButton(srcRefs,true));   /* Stage 8, 8A (decision 251): the sources at the head */
   var str=f.strength||aggStrength(id);
@@ -8352,7 +8351,7 @@ function marchRow(id){
      Command "Not known" above "Marching ... over the frozen mere"). The leg's length, time and rate stay, as 8A's review kept them (no place),
      under a neutral name */
   if(readHidden(id)) return row(LABELS.reading.leg,
-    mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window; '+
+    mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h "+derivedTag()+' <span class="hh">(the plotted march\u2019s length over its time window; '+
     esc(LABELS.reading.legNote.replace("%r",EYES.LABEL[commandView]).replace("%c",fmtClock(clock)))+')</span>');
   /* the final audits' Stage 4 (CL-HIS-13): a leg under the gait's floor (GAIT.KMH, 1 km/h; decision 244 (a)) is a drift between plotted
      anchors, kept by decision 45, not a march: it is named as the plotted leg it is, not "Marching" beside "In reserve" or "Concealed" */
@@ -8361,7 +8360,7 @@ function marchRow(id){
     ' <span class="hh">('+esc(LABELS.march.driftNote.replace("%k",GAIT.KMH))+')</span>');
   return row(mr.moving?"Marching":"Next move",
     mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
-    (mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window)</span>');
+    (mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+' <span class="hh">(the plotted march\u2019s length over its time window)</span>');
 }
 function dossierFormation(id){
   var f=FORMATIONS[id], cr0=claimRefsStart();
@@ -8382,9 +8381,8 @@ function dossierFormation(id){
   var pills='';
   if(st) pills+=statusPill(st);
   var cl=claimOf(id,cf);
-  pills+=posClaimPill(posClaimOf(id,cf));
-  pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
-  if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
+  pills+=posClaimPill(posClaimOf(id,cf),cf+(aggInterp(id,curPhase)?", interpolated":""));   /* the final audits' Stage 6 (decision 310): the grade with its scale */
+  if(tmg) pills+=timingPill(tmg.tm.gr);
   if(commandView!=="none"){
     /* roadmap step 5 (docs/FINAL_AUDIT.md S-4; question 170 (c)): the reading as drawn (drawnKnow: at the eye level a known enemy the eye
        has no line of sight to is drawn reported only; a corps or column, its formations' reading, aggReading), with that reason; until
@@ -8436,7 +8434,7 @@ function dossierFormation(id){
   /* Stage 5G (section F.3): the formation's day as a small north-up map */
   var dtk=dayTrackEl(id);
   if(dtk){ var dsec=sect(f.track?"Its day":"Its formations\u2019 days","",false,"derived"); dsec.appendChild(dtk);
-    if(dtk._model.leaves.length){ var dnote=el("p","dt-note","The formation\u2019s plotted day: anchors graded A/B/C as in the data; the lines between them are this reconstruction\u2019s interpolation, not a recorded route.");
+    if(dtk._model.leaves.length){ var dnote=el("p","dt-note","The formation\u2019s plotted day: plotted positions graded A/B/C as in the data; the lines between them are this reconstruction\u2019s interpolation, not a recorded route.");
       dsec.appendChild(dnote); }   /* Stage 8, 8A: none under a reading that does not know it */
     wrap.appendChild(dsec); }
 
@@ -8537,7 +8535,12 @@ function posClaimOf(id,cf){
   var k=CLAIM_FROM_CONF[cf]||"est";
   return (k==="fact"&&aggInterp(id,curPhase))?"interp":k;
 }
-function posClaimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(POS_CLAIM[cl]||CLAIM[cl].label)+'</span>'; }
+/* the final audits' Stage 6, WP-09 (CL-UX-16; owner decision 310): three A/B/C scales (position, timing, appearance) were shown side by side as bare
+   letters ("Position: estimated", "Position B", "Timing B"); each grade is now named with its scale in one pill: the position's claim with its
+   grade ("Position: estimated (B)"), the timing's word from TIMING_TEXT, the grade texts a visitor is told, with its grade ("Timing: approximate (B)") */
+function posClaimPill(cl,grade){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc((POS_CLAIM[cl]||CLAIM[cl].label)+(grade?" ("+grade+")":""))+'</span>'; }
+function timingWord(gr){ var m=/^Timing (\w+)/.exec(TIMING_TEXT[gr]||""); return m?m[1]:""; }
+function timingPill(gr){ var w=timingWord(gr); return '<span class="pill ghost">'+esc("Timing"+(w?": "+w:"")+" ("+gr+")")+'</span>'; }
 /* decision 187 (roadmap step 4b part B): a narrative statement's claim, by its ref (tools/step4/statements.js's): its own STATEMENT_CLAIMS
    entry, else its class's (CLAIM_BY_CLASS, the framing statements, (iii)), else "unchecked"; and its tag, CLAIM_WORDS's word, the one
    vocabulary (i). The formation dossier's statements carry their tags, (iv); the sources sheet's index lists them, (ii) */
@@ -8743,7 +8746,7 @@ function dossierEvent(eid){
   wrap.appendChild(head);
   wrap.appendChild(el("div","pillrow",
     claimPill(e.claim)+
-    '<span class="pill ghost">Timing '+esc(e.cf)+'</span>'+
+    timingPill(e.cf)+   /* the final audits' Stage 6 (decision 310): the grade with its scale's word */
     (exact?'':'<span class="pill ghost">Interval, not a timestamp</span>')));
   var srcRefs=[]; wrap.appendChild(srcButton(srcRefs,true));   /* Stage 8, 8A (decision 251): the sources at the head */
   var s2=el("div","sect");
@@ -9137,7 +9140,7 @@ function openSources(o){
       "errors: the sources grade a position, they do not give its error. Between two plotted positions a formation is drawn at the weaker grade. "+
       "Each name and counter also carries its grade's letter.")+'</li>'+
     /* Stage 5D: the evidence skeleton */
-    '<li>'+esc("The evidence skeleton (a layer, off at first) draws each formation's plotted positions, the anchors the clock moves between, "+
+    '<li>'+esc("The evidence skeleton (a layer, off at first) draws each formation's plotted positions, the positions the clock moves between, "+
       "as small marks by grade (filled: A, ring: B, open ring: C; a tick where the position carries an explicit time), and the lines this "+
       "reconstruction interpolates between them. The lines are not recorded routes.")+'</li>'+
     /* Stage 5F: the ordered routes */
