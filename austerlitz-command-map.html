@@ -22270,7 +22270,7 @@ var AUSTERLITZ_DEBUG=(function(){
           else [[rich?13:1,-FXL],[rich?14:2,FXL]].forEach(function(q){ [rich?MA.HEEL:MA.HEEL0,rich?MA.TOE:MA.TOE0].forEach(function(z){ out.push([q[0],q[1],MA.FOOT,z]); }); });
           return out; }
         /* the points' offsets from the drawn ground posed at (ph, amp), through Mw */
-        function hOffs(pts,ph,amp,sl,knee,trot,out){ for(var j=0;j<pts.length;j++){ var q=pts[j]; animAt(q[0],q[1],q[2],q[3],ph,amp,hO,{slope:sl,knee:knee,trot:trot}); V.set(hO[0],hO[1],hO[2]).applyMatrix4(Mw); out[j]=V.y-groundY(V.x,V.z); } out.length=pts.length; return out; }
+        function hOffs(pts,ph,amp,sl,knee,trot,out){ for(var j=0;j<pts.length;j++){ var q=pts[j]; animAt(q[0],q[1],q[2],q[3],ph,amp,hO,{slope:sl,knee:knee,trot:trot}); V.set(hO[0],hO[1],hO[2]).applyMatrix4(Mw); out[j]=V.y-iceTop(groundY(V.x,V.z),V.x,V.z); } out.length=pts.length; return out; }
         /* [error, the raised point's lift over it, the largest resting offset] of a posed instance against its rest (r0: its rest offsets) */
         function hErr(pts,r0,ph,amp,sl,knee,trot){ hOffs(pts,ph,amp,sl,knee,trot,hP1); var e=1e9, mx=-1e9, rs=0;
           for(var j=0;j<pts.length;j++){ var d=hP1[j]-r0[j]; if(d<e) e=d; if(d>mx) mx=d; if(Math.abs(r0[j])>rs) rs=Math.abs(r0[j]); } return [e,mx-e,rs]; }
