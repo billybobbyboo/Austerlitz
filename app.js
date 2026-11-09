@@ -1455,7 +1455,7 @@ function makeBlock(f,id){
   function seatPrep(){ g.updateMatrixWorld(true); _inv.copy(g.matrixWorld).invert(); _gH=groundHeights(); }   /* 8F: the drawn ground's compact heights, for the slopes */
   function seatLocal(lx,lz,out){
     _wp.set(lx,0,lz).applyMatrix4(g.matrixWorld);
-    _wp.y=groundY(_wp.x,_wp.z);
+    _wp.y=iceTop(groundY(_wp.x,_wp.z),_wp.x,_wp.z);   /* the final audits' Stage 6 (CL-VIS-01): on a mere, its ice */
     return out.copy(_wp).applyMatrix4(_inv);
   }
   /* Stage 8, 8E: the slopes about the upright figure just seated (its world place _wp, on the drawn ground), facing the block's heading
@@ -1469,9 +1469,10 @@ function makeBlock(f,id){
      docs/STAGE8_SPEC.md section 18: the cases these chords leave, kept open with their proposed bounds) */
   var _qw=new THREE.Quaternion(), _fw=new THREE.Vector3(), _yS=0, _yC=1, _gH=null;
   function slopes(rs,rc,horse,out,o){ var fx=_yS*rc+_yC*rs, fz=_yC*rc-_yS*rs, k=g.scale.x||1, x=_wp.x, z=_wp.z, y=_wp.y, GH=_gH;
-    if(!horse){ var a=GAIT.REACH.man*k; out[o]=(groundYFast(GH,x+fx*a,z+fz*a)-y)/a; out[o+1]=(y-groundYFast(GH,x-fx*a,z-fz*a))/a; return; }
-    var H=ANIM.HORSE, f=(H.ZF+GAIT.REACH.horse)*k, h=(GAIT.REACH.horse-H.ZH)*k;
-    out[o]=(groundYFast(GH,x+fx*f,z+fz*f)-y)/f; out[o+1]=(y-groundYFast(GH,x-fx*h,z-fz*h))/h; }
+    /* the final audits' Stage 6 (CL-VIS-01): each chord's end on a mere's ice where the ice lies above the drawn ground (iceTop) */
+    if(!horse){ var a=GAIT.REACH.man*k, xa=x+fx*a, za=z+fz*a, xb=x-fx*a, zb=z-fz*a; out[o]=(iceTop(groundYFast(GH,xa,za),xa,za)-y)/a; out[o+1]=(y-iceTop(groundYFast(GH,xb,zb),xb,zb))/a; return; }
+    var H=ANIM.HORSE, f=(H.ZF+GAIT.REACH.horse)*k, h=(GAIT.REACH.horse-H.ZH)*k, xf=x+fx*f, zf=z+fz*f, xh=x-fx*h, zh=z-fz*h;
+    out[o]=(iceTop(groundYFast(GH,xf,zf),xf,zf)-y)/f; out[o+1]=(y-iceTop(groundYFast(GH,xh,zh),xh,zh))/h; }
   /* the block's rotation is tilt x yaw; this is the local rotation that undoes the tilt and keeps the yaw */
   function uprightQuat(){
     _nb.copy(_up0).applyQuaternion(g.quaternion).normalize();
@@ -1628,7 +1629,7 @@ function makeBlock(f,id){
           if((rx*rx+rz*rz<4e-6&&Math.abs(_apw.y-_ate.y)<0.002)||it===11) break;
           /* the axle moved by the residual over the ground, its wheel on the drawn ground there; the turn kept */
           _ax.set(0,rG,0).applyMatrix4(_a2); _axw.copy(_ax).applyMatrix4(g.matrixWorld); _axw.x+=rx; _axw.z+=rz;
-          _axw.y=groundY(_axw.x-kr*_aup.x,_axw.z-kr*_aup.z)+kr*_aup.y; _axw.applyMatrix4(_inv);
+          var wxq=_axw.x-kr*_aup.x, wzq=_axw.z-kr*_aup.z; _axw.y=iceTop(groundY(wxq,wzq),wxq,wzq)+kr*_aup.y; _axw.applyMatrix4(_inv);   /* on a mere, its ice (CL-VIS-01) */
           _a2.setPosition(_a2.elements[12]+_axw.x-_ax.x,_a2.elements[13]+_axw.y-_ax.y,_a2.elements[14]+_axw.z-_ax.z); }
         gL.setMatrixAt(q,_a2); }
       gL.instanceMatrix.needsUpdate=true; };
@@ -6173,8 +6174,9 @@ var SEAT_STATS={blocks:0, slopes:0, want:0};   /* Stage 8, 8E: slopes, the seati
 function settleBlock(rec){
   var b=rec.block, p=b.position, u=b.userData;
   var e=1.6;
-  var hx=(groundY(p.x+e,p.z)-groundY(p.x-e,p.z))/(2*e);
-  var hz=(groundY(p.x,p.z+e)-groundY(p.x,p.z-e))/(2*e);
+  /* the final audits' Stage 6 (CL-VIS-01): the surface a block stands on, a mere's ice where it lies above the drawn ground (iceTop) */
+  var hx=(iceTop(groundY(p.x+e,p.z),p.x+e,p.z)-iceTop(groundY(p.x-e,p.z),p.x-e,p.z))/(2*e);
+  var hz=(iceTop(groundY(p.x,p.z+e),p.x,p.z+e)-iceTop(groundY(p.x,p.z-e),p.x,p.z-e))/(2*e);
   _nrm.set(-hx,1,-hz).normalize();
   _qt.setFromUnitVectors(_up,_nrm);
   _qy.setFromAxisAngle(_up,rec.yaw||0);
@@ -6363,7 +6365,7 @@ function updateVisibility(){
     var p=posNow(id);
     if(p){
       var wq=W(p[0],p[1]);
-      rec.block.position.set(wq[0],groundY(wq[0],wq[1]),wq[1]);   /* settled below, after pose and scale */
+      rec.block.position.set(wq[0],iceTop(groundY(wq[0],wq[1]),wq[0],wq[1]),wq[1]);   /* settled below, after pose and scale; on a mere, its ice (CL-VIS-01) */
     }
     /* a parent is only folded away by its children if those children are
        divisions; a brigade detachment does not replace its parent */
@@ -9875,6 +9877,63 @@ function wp08Checks(){
   }
   return out;
 }
+/* the final audits' Stage 6, WP-10 (the rendered picture): the self-test's checks of the meres (CL-VIS-01, CL-VIS-02). Each reads the scene as drawn
+   and judges it against the ice's own discs (their meshes' places, radii and heights), not against iceTop or inMereDisc, the code under test */
+function wp10Checks(){
+  var out=[], K={t:clock,f:DISPLAY.factor,mode:mode,pres:presentation};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function shownUp(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
+  function discs(){ return world.water.filter(function(m){ return m.userData.mere; }).map(function(m){ var q=m.userData.mere; return {c:q[0],rx:q[1],rz:q[2],y:m.position.y,name:q[0]===SATS?"Satschan":"Menitz"}; }); }
+  function inside(d,x,z,r){ var dx=(x-d.c[0])/d.rx, dz=(z-d.c[1])/d.rz; return dx*dx+dz*dz<r*r; }
+  if(playing) stopPlay();
+  try{
+  if(mode!=="terrain") setMode("terrain"); if(presentation!=="study") setPresentation("study");
+  /* CL-VIS-01: at 4x and 10.33x, at three clocks with blocks on or by the Satschan mere (06:30, Kienmayer's riders on their phase-1 via; 12:00,
+     Dokhturov; 16:40, the ponds' phase), every instance of a block (its men, horses, pieces, limbers, wheels, tents and standards) whose place lies
+     inside a mere's drawn disc stands no lower than that disc's ice (0.01 units); and where the drawn ground lies under the ice all round a figure
+     (2.5 units, beyond a horse's reach), the gait's slopes about it (aSl, taken by the block's own layout) are level */
+  guard("the meres (WP-10, CL-VIS-01)",function(){
+    var m=new THREE.Matrix4(), v=new THREE.Vector3(), n=0, under=0, worst=0, at="", nSl=0, slBad=0, slWorst=0, perF=[], nMesh=0;
+    [4,10.33].forEach(function(F){ setDisplayFactor(F); var D=discs(), nF=0, uF=0;
+      [390,720,1000].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); updateVisibility();
+        Object.keys(units).forEach(function(id){ var b=units[id].block, u=b&&b.userData; if(!b||!shownUp(b)) return;
+          if(!D.some(function(d){ return inside(d,b.position.x,b.position.z,1.6); })) return;
+          if(u&&u.layout) u.layout(u.sw,u.sd,true);   /* the slopes taken, as the gait draws a block it animates */
+          b.updateMatrixWorld(true);
+          b.traverse(function(o){ if(o.isMesh&&!o.isInstancedMesh&&shownUp(o)&&o.geometry){   /* a block's own meshes (the headquarters' marquee): their lowest point */
+              if(!o.geometry.boundingBox) o.geometry.computeBoundingBox(); var bb=o.geometry.boundingBox.clone().applyMatrix4(o.matrixWorld), cx=(bb.min.x+bb.max.x)/2, cz=(bb.min.z+bb.max.z)/2;
+              D.forEach(function(d){ if(!inside(d,cx,cz,1)) return; n++; nF++; nMesh++; var dep=d.y-bb.min.y;
+                if(dep>0.05){ under++; uF++; if(dep>worst){ worst=dep; at=id+"'s "+(o.geometry===GEO.tent?"marquee":"mesh")+" at "+fmtClock(t)+", x"+F+" ("+d.name+")"; } } }); }
+            if(!o.isInstancedMesh||!shownUp(o)) return; var SA=o.geometry.attributes.aSl;
+            for(var i=0;i<o.count;i++){ o.getMatrixAt(i,m); v.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
+              D.forEach(function(d){ if(!inside(d,v.x,v.z,1)) return; n++; nF++; var dep=d.y-v.y;
+                if(dep>0.01){ under++; uF++; if(dep>worst){ worst=dep; at=id+" at "+fmtClock(t)+", x"+F+" ("+d.name+")"; } }
+                if(SA&&i*2+1<SA.array.length&&inside(d,v.x,v.z,0.8)){ var level=true;
+                  for(var k=0;k<8&&level;k++){ var a=k*Math.PI/4, x=v.x+2.5*Math.cos(a), z=v.z+2.5*Math.sin(a); if(!inside(d,x,z,1)||groundY(x,z)>d.y-0.01) level=false; }
+                  if(level){ nSl++; var s=Math.max(Math.abs(SA.array[i*2]),Math.abs(SA.array[i*2+1])); if(s>1e-4){ slBad++; slWorst=Math.max(slWorst,s); } } } }); } }); }); });
+      perF.push("x"+F+": "+nF+" inside, "+uF+" under");
+    });
+    ck("the meres (WP-10, CL-VIS-01): every man, horse, piece and tent inside a mere's drawn disc stands on its ice (a block's own mesh, the marquee, its lowest point), at 4x and 10.33x, and the gait's slopes on the ice are level",
+      n>1000&&nMesh>0&&!under&&nSl>100&&!slBad, n+" instances and meshes inside a disc ("+perF.join("; ")+"; "+nMesh+" a block's own mesh, its lowest point)"+(under?"; WRONG: "+under+" below the ice, up to "+worst.toFixed(3)+" units ("+at+")":"")+
+      "; "+nSl+" figures with the ice under them all round"+(slBad?", WRONG: "+slBad+" with a slope (up to "+slWorst.toFixed(4)+")":", their slopes level")+(n>1000&&nSl>100?"":"; too few to judge"));
+  });
+  /* CL-VIS-02: no tree or bush (the deciduous trees, the conifers, the scrub, by their instances' own matrices) inside a mere's drawn disc */
+  guard("the meres (WP-10, CL-VIS-02)",function(){
+    var D=discs(), m=new THREE.Matrix4(), v=new THREE.Vector3(), n=0, bad=[];
+    treeMesh.children.concat(coniferMesh.children,[scrubMesh]).forEach(function(im){ var kinds=im.userData.kinds||[];
+      for(var i=0;i<im.count;i++){ im.getMatrixAt(i,m); v.setFromMatrixPosition(m); n++;
+        D.forEach(function(d){ if(inside(d,v.x,v.z,1)) bad.push((kinds[i]||"?")+" on the "+d.name+" mere"); }); } });
+    ck("the meres (WP-10, CL-VIS-02): no tree or bush inside a mere's drawn disc",
+      n>1000&&!bad.length, n+" trees and bushes, "+(bad.length?"WRONG: "+bad.length+" on the ice ("+bad.slice(0,6).join(", ")+")":"none inside a disc"));
+  });
+  } finally {
+    if(DISPLAY.factor!==K.f) setDisplayFactor(K.f);
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres);
+    setClock(K.t,{instant:true,force:true,camera:false}); requestRender(3);
+  }
+  return out;
+}
 /* the final audits' Stage 5, WP-07: the self-test's check of the corps/division band (CL-MAP-12, decision 300); the order during Play (decision 299)
    is judged by the motion block's long Play runs (thresholds.js MOTION.LONG) */
 function wp07Checks(){
@@ -10348,7 +10407,8 @@ var AUSTERLITZ_DEBUG=(function(){
     return true;
   }
   function visibleUp(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
-  /* every visible man and horse (the figure kit), and the foot of every standard, against groundY */
+  /* every visible man and horse (the figure kit), and the foot of every standard, against groundY (since the final audits' Stage 6, CL-VIS-01:
+     against the surface drawn there, a mere's ice where it lies above the drawn ground, iceTop) */
   function figureError(){
     var geos=kitGeos(), m=new THREE.Matrix4(), p=new THREE.Vector3();   /* Stage 6C: every class's geometry */
     var worst=0, where="", n=0;
@@ -10359,13 +10419,13 @@ var AUSTERLITZ_DEBUG=(function(){
         if(!o.isInstancedMesh||geos.indexOf(o.geometry)<0||!visibleUp(o)) return;
         for(var i=0;i<o.count;i++){
           o.getMatrixAt(i,m); p.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
-          var e=Math.abs(p.y-groundY(p.x,p.z)); n++; if(e>worst){ worst=e; where=id; }
+          var e=Math.abs(p.y-iceTop(groundY(p.x,p.z),p.x,p.z)); n++; if(e>worst){ worst=e; where=id; }
         }
       });
       var u=b.userData;
       if(u&&u.poles&&visibleUp(u.poles)) for(var j=0;j<u.poles.count;j++){
         u.poles.getMatrixAt(j,m); p.set(0,-2.6,0).applyMatrix4(m).applyMatrix4(u.poles.matrixWorld);
-        var e2=Math.abs(p.y-groundY(p.x,p.z)); if(e2>worst){ worst=e2; where=id+" (standard)"; }
+        var e2=Math.abs(p.y-iceTop(groundY(p.x,p.z),p.x,p.z)); if(e2>worst){ worst=e2; where=id+" (standard)"; }
       }
     });
     return {worst:worst,where:where,n:n};
@@ -15131,6 +15191,7 @@ var AUSTERLITZ_DEBUG=(function(){
     wp07Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-07 */
     wp08cChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08's lettering and landmarks */
     wp08Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08 */
+    wp10Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the meres) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
