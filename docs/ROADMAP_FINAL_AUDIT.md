@@ -46,7 +46,7 @@ Every pass keeps the project's rules (`CLAUDE.md`):
 
 ## The stages
 
-**Status (7 November 2026):** Stages 1 to 4 are merged: Stage 1 (#82), Stage 2 (#83), Stage 3 (#84), Stage 4's WP-03 (#86), WP-04b (#87) and WP-15's first batch (#85). Four of WP-13's items are deferred with reasons: CL-ROB-03, -08, -09 and -13 (`CHANGELOG.md`). What each stage leaves is listed in its `CHANGELOG.md` entry. Stage 5 (WP-07, WP-08) is next.
+**Status (9 November 2026):** Stages 1 to 5 are merged: Stage 1 (#82), Stage 2 (#83), Stage 3 (#84), Stage 4's WP-03 (#86), WP-04b (#87) and WP-15's first batch (#85), Stage 5's WP-07 (#89), WP-08's lettering and landmarks (#91, brought into `main` by #92) and WP-08's furniture (#90). `main`'s build is `3388b70b...` (2,963,994 bytes), its self-test 335 checks. Four of WP-13's items are deferred with reasons: CL-ROB-03, -08, -09 and -13 (`CHANGELOG.md`). What each stage leaves is listed in its `CHANGELOG.md` entry. Stage 6 (WP-09, WP-10, with WP-11's rule alongside) is next.
 
 | stage | passes | days | the gate it closes |
 |---|---|---|---|
