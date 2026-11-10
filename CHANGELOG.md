@@ -1,5 +1,39 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6: what "Whose eyes?" withholds (owner decision 312 (a))
+
+**Status: on `claude/dreamy-johnson-uadkqa-reading` (draft PR into `main`, for review, not merged).** The three reading-scope items Stage 3 handed on
+(its CHANGELOG entry, "Not done"), placed by the plan in WP-09 but found to be decision 251 (a)'s reach (WP-05's area), put to the owner as question 312 and
+decided (a) on 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`). Presentation only: no data file and no guarded
+declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,965,080 bytes, md5
+`402d1b278679e836c313ca62210ccfff` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **The full dossier's earlier act (`dossierFormation`).** Under a headquarters' reading that does not know a formation, its "What it was doing" said what
+  it had done in the phase before (where it had been), while "now" and "next" said the reading's sentence since WP-05 (CL-SIM-05). *Is:* the earlier act
+  says the reading's sentence too ("Not known to ... at ..."); "No earlier action recorded" where there is none.
+- **Its "Historical event" links.** The names of the live events it is part of (some of them places) said where it was. *Is:* under such a reading the
+  section says the reading's sentence in place of its links (the links' buttons `linkb evlink`, so a check can find them).
+- **The arrows the reading does not filter.** The plans' ordered routes, the objectives and the groups' arrows bind no formation's present place and are
+  labelled interpretation; they stay drawn under every reading, and the sources sheet now says so (the list of layers: "\u201cWhose eyes?\u201d (a model
+  reading) hides the formations a headquarters does not know, their arrows and their places in the dossiers; the plans' routes, their objectives and the
+  groups' arrows are interpretation, bound to no formation's present place, and stay drawn under every reading").
+
+### Checks added, each failing without its fix
+
+- `runtime-test.js`, WP-05's "Doing now under a reading (CL-SIM-05)", extended: under each headquarters' reading every 20 minutes, a formation it does not
+  know has its full dossier's earlier act as the reading's sentence and no event link (652 formation-clocks, 51 of them in a live event), and the sources
+  sheet says what the reading does not filter. Negative controls, each on a copy with one fix put back and the suite run: the earlier act shown again
+  (fails at 07:00 under Napoleon's reading, Kutuzov's headquarters at Krzenowitz); the events' links shown again (fails at 07:00, Kienmayer's two). A first
+  version of the links' check could not see them (the suite's stub document does not write children into a parent's markup): found by its control, which
+  passed, and replaced by the count of the links' own buttons.
+
+### Verified
+
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:baseline`: passes.
+- `check:selftest`, `check:contrast` and `check:visual` (CI): __PENDING__
+
 ## 2026-11 · Final audits' roadmap, Stage 6: the owner's questions (records only)
 
 The owner decided Stage 6's questions on 9 November 2026 ("Your recommendations for all"): 276 (a), 280 (a), 281 (a) from

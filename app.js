@@ -8448,8 +8448,10 @@ function dossierFormation(id){
     if(nx&&!wt&&nx.ref===undefined) nx.ref=f.track[nx.i]&&f.track[nx.i].act===nx.act?trackRef(id,nx.i,"act"):null;
     var hidAct=readHidden(id);   /* WP-05 (CL-SIM-05): what it does now and next, as the card's rows, under a reading that does not know it */
     var h='<ol class="tl">';
+    /* the final audits' Stage 6 (decision 312 (a)): under a reading that does not know it, its earlier act too says the reading's sentence (until Stage 6 it
+       named where the formation had been; "now" and "next" say it since WP-05, CL-SIM-05) */
     h+='<li class="past"><b>'+(prev&&prev.act?esc(PHASES[Math.max(0,tp-1)].clock):"—")+'</b><span>'+
-        (prev&&prev.act?esc(prev.act)+claimTag(trackRef(id,prev.actPhase,"act")):"No earlier action recorded.")+'</span></li>';
+        (hidAct&&prev&&prev.act?esc(readUnknown()):prev&&prev.act?esc(prev.act)+claimTag(trackRef(id,prev.actPhase,"act")):"No earlier action recorded.")+'</span></li>';
     h+='<li class="now"><b>'+esc(PHASES[curPhase].clock)+'</b><span>'+(hidAct?esc(readUnknown()):
         (s&&s.act?esc(s.act)+claimTag(trackRef(id,s.actPhase,"act")):"Position unchanged.")+
         (s&&s.act&&s.actPhase<curPhase?' <i>(continuing from '+esc(PHASES[s.actPhase].clock)+')</i>':''))+'</span></li>';
@@ -8470,10 +8472,13 @@ function dossierFormation(id){
   if(mine.length){
     var se=el("div","sect");
     se.innerHTML='<h3>Historical event</h3>';
+    /* the final audits' Stage 6 (decision 312 (a)): under a reading that does not know it, the reading's sentence for its events' links (their names, some of
+       them places, said where it was) */
+    if(hidAct){ se.appendChild(el("p","prose",esc(readUnknown()))); wrap.appendChild(se); mine=[]; }
     var ule=el("ul","links");
     mine.slice(0,3).forEach(function(x){
       var li=el("li");
-      var b=el("button","linkb",esc(x.e.n+evNote(x.e)));   /* roadmap step 2 (H-15): with its note */
+      var b=el("button","linkb evlink",esc(x.e.n+evNote(x.e)));   /* roadmap step 2 (H-15): with its note; the final audits' Stage 6: evlink, so a check can find them */
       b.addEventListener("click",function(){ select("e",x.e.id); });
       li.appendChild(b); ule.appendChild(li);
     });
@@ -9142,7 +9147,10 @@ function openSources(o){
       "reconstruction interpolates between them. The lines are not recorded routes.")+'</li>'+
     /* Stage 5F: the ordered routes */
     '<li>'+esc("The ordered routes (a layer, off at first) draw each plan column's line of march, dashed and faint, as the two plans set them out: "+
-      "intentions, not what was marched. A formation's dossier then gives the largest distance of its executed track from its column's route, derived.")+'</li></ul>'+
+      "intentions, not what was marched. A formation's dossier then gives the largest distance of its executed track from its column's route, derived.")+'</li>'+
+    /* the final audits' Stage 6 (decision 312 (a)): what "Whose eyes?" does not filter */
+    '<li>'+esc("\u201cWhose eyes?\u201d (a model reading) hides the formations a headquarters does not know, their arrows and their places in the dossiers; "+
+      "the plans' routes, their objectives and the groups' arrows are interpretation, bound to no formation's present place, and stay drawn under every reading.")+'</li></ul>'+
     '<h3>Basis</h3><ul class="bul">'+SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ul>'+
     /* the display (decisions 19, 32, 35, 36): written by the app, so the guarded SOURCE_NOTE stays as it is */
     '<h3>How the ground and the symbols are drawn</h3><ul class="bul">'+
