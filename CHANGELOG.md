@@ -34,7 +34,7 @@ only: no data file and no guarded declaration changes (`check:data`: all 143 ide
   opens on the screen or scrolling in its own box, and no horizontal scroll; every text at AA) and a fourth in forced colours (`FC_STATES`: the pressed
   presentation, vantage, speed and phase each drawn in the theme's Highlight and its neighbour not; the event markers drawn, the two sides apart; the
   key's swatches apart; the layers' rows). Negative controls (`tools/final-stage6/contrast-states.js`, the states alone): on `main`'s build
-  __MAIN_STATES__; on this build without the `!important`, `fc-explore` is not reached (the pressed buttons keep the app's accent, not Highlight).
+  `reflow-explore`, `reflow-phase` (no "Phase text") and `reflow-panels` are not reached, nor any of the four forced-colours states (`docs/final-stage6-evidence/wp09/reflow-controls.txt`); on the branch's previous build, without the `!important`, `fc-explore` is not reached (the pressed buttons keep the app's accent, not Highlight).
 - `check:visual`: two cases (decision 306), `zoom-320x256-explore` and `zoom-400x225-explore`, a desktop's browser at 400% (`harness.js`
   `PHONE_DEVICES.zoom`: density 4, a mouse, the browser's own agent; reached by clicks), judged by the phone cases' measures: no press target under 24 px,
   no text cut, nothing off the screen, no panels overlapping, every feature on the screen or one control away but the phone's allowances (the sources,
