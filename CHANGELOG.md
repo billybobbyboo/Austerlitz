@@ -42,7 +42,8 @@ moves to it.
 - `check:selftest` (here, the pinned Chromium 141): 337 checks, every one passing; the manifest regenerated from this run, 335 to 337 (the two checks
   above). A first local run stopped at a harness click's 30 s timeout (the phase's message block) while three other browser jobs shared the machine's four
   cores; run again alone, it completed.
-- `check:contrast` and `check:visual` (CI): __CI__
+- On CI (run 42783059380 on `e2ce290`, `checks.yml`, `visual: true`; the build `c50e08bc...`, the branch's head's): passed, every job (`npm test`,
+  `check:data`, `check:chronology`, `check:selftest`, `check:contrast`, `check:visual`; the run 3 h 29 min).
 
 ### What remains uncertain, and what is handed on
 
