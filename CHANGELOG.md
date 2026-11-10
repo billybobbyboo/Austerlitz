@@ -47,7 +47,11 @@ only: no data file and no guarded declaration changes (`check:data`: all 143 ide
 
 ### Verified
 
-__VERIFIED__
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 movement findings, 0 errors).
+  `check:baseline`: passes.
+- `check:contrast` (here, the pinned Chromium 141): 9,119 text elements, 120 distinct pairs, 0 below AA, 0 under 10.5 px; 0 font failures; 57 states
+  of 57 reached (12 new: 8 at 320 x 256, 4 in forced colours); the 8 start-up cases pass.
+- `check:selftest` and `check:visual` (CI): __CI__
 
 ### Not verified here
 
