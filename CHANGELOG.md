@@ -53,6 +53,7 @@ __VERIFIED__
 
 - A real screen at 400% and a real Windows High Contrast theme: the cases emulate them (Chromium's density 4 and its forced-colours emulation). The
   screen-reader session's forced-colours items (F1-F4, `docs/final-stage6-evidence/sr-session.md`, WP-09's script PR) are for the owner.
+
 ## 2026-11 · CI: the jobs pinned to Ubuntu 24.04
 
 GitHub's `ubuntu-latest` image moved to Ubuntu 26.04 on 10 November 2026, and Playwright 1.56 (the project's pin, Chromium 141.0.7390.37,
