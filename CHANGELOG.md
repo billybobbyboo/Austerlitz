@@ -1,5 +1,51 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 2 of 3): names, focus, caveats and the first card (CL-UX-08, -10, -11, -12, -15, -18, -21)
+
+**Status: on `claude/dreamy-johnson-uadkqa-focus`, stacked on the reflow PR (WP-09, 1 of 3; a draft PR into its branch until it merges, then into
+`main`; for review, not merged).** Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
+`archive/stage5wp08-572b0935.html`). Owner decision applied: 276 (a), the first card's sentence (`docs/final-stage6-evidence/questions.md`).
+`austerlitz-command-map.html` is now __SIZE__ bytes, md5 `__MD5__` (was the reflow PR's 2,971,888, `646b1c4f...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **Names and structure (CL-UX-15).** *Was:* the rail a navigation landmark named "The rail" holding the narrative, its tablist "The rail"; the page's
+  one h1 inside the rail, so below 1080 px (the rail hidden) the page had none; the tools no region; the key's toggle read its "+" or "\u2212" into its
+  name; a section's layer tag inside its heading ("How many record"); Play a toggle button announced "Pause, toggle button, pressed". *Is:* the rail an
+  `<aside>` named "Panels", its tablist "Panels"; one h1 outside the rail at every width (visually hidden; the rail's brand kept as text, hidden from
+  the accessibility tree); the tools a region "Tools"; the key's sign drawn by CSS with an empty alternative (`content:"+" / ""`); the tag beside its
+  heading; Play named by its state, no pressed state.
+- **Focus (CL-UX-10).** *Was:* "Layers\u2026" opened by a key left the focus on its button (the panel six Tabs on); a formation's map item activated by
+  Enter opened the dossier with the focus left on the item. *Is:* a panel opened from the keyboard (a click of detail 0) takes the focus on its first
+  ground button; the dossier takes it on its heading; each closes back to its opener.
+- **Caveats as text (CL-UX-08).** *Was:* each derived reading's note, the vantages' "a preset view, not what he saw" and the relief control's reason
+  when disabled were tooltips only. *Is:* in the Now tab each derived reading is followed by its note as text; the pressed vantage's caveat is shown
+  under the vantages and announced once (a polite live region); the disabled relief control's row says why.
+- **The first card (CL-UX-11; decision 276 (a)).** *Is:* the card's key ends "It is a reconstruction from the sources, its certainty graded A to C: the
+  letter beside a name is its position's grade." followed by "Show the key", a button drawn as a link (at least 24 px high) that closes the card with
+  the key open and the focus on its toggle (`LABELS.card`).
+- **The phase text's hint (CL-UX-12).** *Was:* with the phase text hidden, the Now tab said "press D" also with the single-key shortcuts off, and
+  "guided tour" during the opening. *Is:* the hint names D only while the shortcuts are on, tells the opening from the tour, and is followed by a
+  "Show the phase text" button that shows it with the focus on its title (`LABELS.nowOff`, `paintNowOff`).
+- **The grip dragged (CL-UX-18, its last part).** *Was:* the dispatch sheet's grip, drawn as a drag handle, took only a tap. *Is:* a drag of 30 px or
+  more up opens the sheet and down closes it; a tap as before.
+- **The unchecked counted (CL-UX-21).** *Was:* the sources sheet's claims index counted each claimed kind but not the statements unchecked. *Is:* its last
+  row "Not yet checked: ... Every other statement (463 statements)." (`narrativeRefs`, every narrative statement's ref walked over the data as
+  `tools/step4/statements.js` reads them; `runtime-test.js` holds the two equal, ref for ref, and the count).
+
+### Checks added, each failing without its fix
+
+- The self-test's `wp09Checks` (5 checks): the names and structure; the phase text's hint; the focus by keyboard; the caveats as text; the first card
+  and its key. The timeline's Play check renamed for Play's state ("named by its state, Pause while playing, with no pressed state besides"). The
+  manifest regenerated from a run: __MANIFEST__.
+- Negative controls (`tools/final-stage6/mutate-wp09.js`: each fix put back on a copy, the block run alone, `run-block.js`): 9 of 9 fail, the build as it is passing
+  (`docs/final-stage6-evidence/wp09/mutate-wp09.json`).
+- `runtime-test.js`: `narrativeRefs` equal to `tools/step4/statements.js`'s refs, and the unchecked count.
+
+### Verified
+
+__VERIFIED__
+
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 1 of 3): reflow, short screens and forced colours (CL-UX-01, CL-UX-09, CL-UX-18)
 
 **Status: on `claude/dreamy-johnson-uadkqa-reflow` (draft PR into `main`, for review, not merged).** WP-09's reflow part. Presentation and the suite

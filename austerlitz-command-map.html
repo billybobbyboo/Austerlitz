@@ -638,7 +638,7 @@ body.mode-staff #vignette{display:none}
    the narrative, and the tour keeps priority while it is running. */
 @media (max-height:430px){
   .dispatch{display:none}
-  .tb-sit .why{display:none}
+  .tb-sit .why,.tb-sit .der-note{display:none}
   #tourbar{bottom:calc(var(--tb) + 8px);padding:11px 14px 9px}
   #tour-x{font-size:var(--t-prose);max-height:20vh;overflow-y:auto}
   .legend{display:none}
@@ -860,9 +860,9 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .dgrip{display:block;position:sticky;top:0;z-index:1;width:100%;height:28px;margin:0 0 2px;padding:0;border:0;cursor:pointer;
     background:rgb(var(--scrim-rgb))}
   .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
-  .dispatch p.lede,#d-changes,.dispatch .tb-sit .why{display:none}
+  .dispatch p.lede,#d-changes,.dispatch .tb-sit .why,.dispatch .der-note{display:none}   /* the derived readings' notes (CL-UX-08) as the sheet's .why: when it is opened */
   body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
-  body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .dispatch .tb-sit .why,body.dsheet-open .dispatch .der-note{display:block}
   body.dsheet-open .dispatch ol,body.dsheet-open #d-changes{display:block}
   body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
   .ph-item{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 6px;background:none;border:0;
@@ -934,7 +934,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     background:rgb(var(--scrim-rgb))}
   body.dsheet-open .dispatch .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
   body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
-  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes,body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes,body.dsheet-open .dispatch .tb-sit .why,body.dsheet-open .dispatch .der-note{display:block}
   body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
   #firstrun,body.rail-hidden #firstrun{max-height:calc(100vh - var(--tb) - 16px);overflow-y:auto}
   .tb-top{flex-wrap:wrap;row-gap:2px}
@@ -20793,10 +20793,11 @@ var AUSTERLITZ_DEBUG=(function(){
       [["role","dialog"],["aria-modal","true"],["aria-labelledby","fr-title"],["aria-describedby","fr-key"]].forEach(function(a){
         if(fr.getAttribute(a[0])!==a[1]) bad.push("the card's "+a[0]+" is "+fr.getAttribute(a[0])); });
       var B=frButtons().map(function(b){ return b.textContent; });
-      if(B.join("|")!==LABELS.firstRun.primary+"|"+LABELS.firstRun.stay) bad.push("the card's buttons are "+B.join(", "));
+      /* since the final audits' Stage 6 (decision 276 (a)): the key's "Show the key" in the card's sentence, before its two actions */
+      if(B.join("|")!==LABELS.card.key+"|"+LABELS.firstRun.primary+"|"+LABELS.firstRun.stay) bad.push("the card's buttons are "+B.join(", "));
       if(aid()!=="fr-tour") bad.push("focus on "+aid()+" when the card opens, not its primary action");
       key("Tab"); said.push(aid()); key("Tab"); said.push(aid()); key("Tab",true); said.push(aid());
-      if(said.join(",")!=="fr-close,fr-tour,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));
+      if(said.join(",")!=="fr-close,fr-grades,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));   /* the third button wraps to the first, kept inside */
       var der=[].filter.call(document.querySelectorAll("small"),function(e){ return /derived/.test(e.textContent)&&e.getBoundingClientRect().width>0&&!(e.closest&&e.closest("#maplayer")); }).length;
       if(docked){ var dp=document.querySelector(".dispatch"), rl=document.querySelector(".rail"), db=box(dp), cb=box(fr), rb=box(rl);
         if(tabNow!=="now") bad.push("the rail shows the "+tabNow+" tab under the card (decision 113)");

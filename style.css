@@ -632,7 +632,7 @@ body.mode-staff #vignette{display:none}
    the narrative, and the tour keeps priority while it is running. */
 @media (max-height:430px){
   .dispatch{display:none}
-  .tb-sit .why{display:none}
+  .tb-sit .why,.tb-sit .der-note{display:none}
   #tourbar{bottom:calc(var(--tb) + 8px);padding:11px 14px 9px}
   #tour-x{font-size:var(--t-prose);max-height:20vh;overflow-y:auto}
   .legend{display:none}
@@ -854,9 +854,9 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .dgrip{display:block;position:sticky;top:0;z-index:1;width:100%;height:28px;margin:0 0 2px;padding:0;border:0;cursor:pointer;
     background:rgb(var(--scrim-rgb))}
   .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
-  .dispatch p.lede,#d-changes,.dispatch .tb-sit .why{display:none}
+  .dispatch p.lede,#d-changes,.dispatch .tb-sit .why,.dispatch .der-note{display:none}   /* the derived readings' notes (CL-UX-08) as the sheet's .why: when it is opened */
   body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
-  body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .dispatch .tb-sit .why,body.dsheet-open .dispatch .der-note{display:block}
   body.dsheet-open .dispatch ol,body.dsheet-open #d-changes{display:block}
   body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
   .ph-item{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 6px;background:none;border:0;
@@ -928,7 +928,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     background:rgb(var(--scrim-rgb))}
   body.dsheet-open .dispatch .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
   body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
-  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes,body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes,body.dsheet-open .dispatch .tb-sit .why,body.dsheet-open .dispatch .der-note{display:block}
   body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
   #firstrun,body.rail-hidden #firstrun{max-height:calc(100vh - var(--tb) - 16px);overflow-y:auto}
   .tb-top{flex-wrap:wrap;row-gap:2px}

@@ -12848,10 +12848,11 @@ var AUSTERLITZ_DEBUG=(function(){
       [["role","dialog"],["aria-modal","true"],["aria-labelledby","fr-title"],["aria-describedby","fr-key"]].forEach(function(a){
         if(fr.getAttribute(a[0])!==a[1]) bad.push("the card's "+a[0]+" is "+fr.getAttribute(a[0])); });
       var B=frButtons().map(function(b){ return b.textContent; });
-      if(B.join("|")!==LABELS.firstRun.primary+"|"+LABELS.firstRun.stay) bad.push("the card's buttons are "+B.join(", "));
+      /* since the final audits' Stage 6 (decision 276 (a)): the key's "Show the key" in the card's sentence, before its two actions */
+      if(B.join("|")!==LABELS.card.key+"|"+LABELS.firstRun.primary+"|"+LABELS.firstRun.stay) bad.push("the card's buttons are "+B.join(", "));
       if(aid()!=="fr-tour") bad.push("focus on "+aid()+" when the card opens, not its primary action");
       key("Tab"); said.push(aid()); key("Tab"); said.push(aid()); key("Tab",true); said.push(aid());
-      if(said.join(",")!=="fr-close,fr-tour,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));
+      if(said.join(",")!=="fr-close,fr-grades,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));   /* the third button wraps to the first, kept inside */
       var der=[].filter.call(document.querySelectorAll("small"),function(e){ return /derived/.test(e.textContent)&&e.getBoundingClientRect().width>0&&!(e.closest&&e.closest("#maplayer")); }).length;
       if(docked){ var dp=document.querySelector(".dispatch"), rl=document.querySelector(".rail"), db=box(dp), cb=box(fr), rb=box(rl);
         if(tabNow!=="now") bad.push("the rail shows the "+tabNow+" tab under the card (decision 113)");
