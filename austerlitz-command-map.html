@@ -21269,7 +21269,9 @@ var AUSTERLITZ_DEBUG=(function(){
           select("f",id); var P=document.querySelectorAll("#drawer-body .pill[class*='claim-']"); n++;
           if(P.length!==1){ pbad.push(id+" at "+fmtClock(t)+": "+P.length+" claim pills"); return; }
           var cls=(P[0].className.match(/claim-(\w+)/)||[])[1], txt=P[0].textContent;
-          if(cls!==k||txt!==POS_CLAIM[k]) pbad.push(id+" at "+fmtClock(t)+": \u201c"+txt+"\u201d ("+cls+"), want \u201c"+POS_CLAIM[k]+"\u201d ("+k+")");
+          /* since the final audits' Stage 6 (decision 310): POS_CLAIM's words with the position's grade from confAt, "(B)" or "(B, interpolated)" */
+          var wantT=POS_CLAIM[k]+" ("+c.cf, okT=txt===wantT+")"||txt===wantT+", interpolated)";
+          if(cls!==k||!okT) pbad.push(id+" at "+fmtClock(t)+": \u201c"+txt+"\u201d ("+cls+"), want \u201c"+wantT+")\u201d ("+k+")");
           seen[k]=(seen[k]||0)+1; }); });
       select(null,null); setClock(keepC,{instant:true,force:true,camera:false}); setPresentation(pres); finishTween();
       ck("position pill: the dossier drawn says \u201cPosition: interpolated\u201d where the position is interpolated between documented anchors, else its grade's words (roadmap step 4; decision 128 (b), H-5)",
