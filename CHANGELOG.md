@@ -1,5 +1,79 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, part 3): the words a visitor is told (CL-UX-05, CL-UX-16)
+
+**Status: on `claude/dreamy-johnson-uadkqa-words` (draft PR into `main`, for review, not merged).** Part of WP-09 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-UX-05 (internal references shown to visitors) and CL-UX-16 (the modelling vocabulary and the overloaded A/B/C letters), with the owner's decision
+**310** of 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`: "anchors" becomes "plotted positions", "Plotted
+leg" becomes "Plotted march", each grade named with its scale). **A data task, words only**: no position, timing, grade, strength, source or reading
+changes, and no claim's kind; what a statement's words say is the same, said without the project's working language. Against
+`archive/stage5wp08-572b0935.html` five data declarations change, each below; the other 138 are identical. `check:data`'s reference moves to this build,
+`archive/stage6wp09w-45d29cc5.html`. `austerlitz-command-map.html` is now 2,964,260 bytes, md5 `45d29cc53f4a15918826bf761dbcd7e9` (was 2,963,994,
+`3388b70b...`); `check:baseline` moves to it. The history the notes carried (what the map did until roadmap step 4b) is kept here, below, as CL-UX-05's
+remedy asks.
+
+### What changed, and why (each declaration: what was, what is)
+
+- **`FORMATIONS`** (`data.js`), the tracks' timing notes, shown in the full dossier's "Dated by" row (the audit's `leaks-timing.json`):
+  - `gqg@6`: was "The arrival follows the existing 40-minute march (moveMin)"; is "The arrival follows 40 minutes later, this map's time for a
+    headquarters' move (a design value)" (the code's name out; `check:chronology`'s `MOVEMIN_DERIVED` names the same leg).
+  - `friant@1`: the sentence "Until roadmap step 4b the map moved the division from 04:00 and had the brigade at the Goldbach c. 08:00 (question
+    177)" dropped; "the anchor, short of the stream" is "the plotted position, short of the stream" (decision 310).
+  - `friant@3`: "Until roadmap step 4b this anchor was the phase-2 entry, reached at 08:30 on this map (question 177)" dropped.
+  - `bourcier@3`: "Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)" dropped.
+  - `lang@1`, `prz@1`: "Until roadmap step 4b the map moved the column from 04:00 (question 176)" dropped.
+  - `c_gren@7`: "Until roadmap step 4b the map dated the arrival at 14:00, its own, which forced the next leg toward the ceiling (question 181)" dropped.
+  - `vandamme@7`: "the next anchor, the height above Augezd" is "the next plotted position, ..."; `kollo@4`: "the arrival at this anchor" is "the
+    arrival at this plotted position" (decision 310). The military "anchor" (the Santon "the anchor of the French left", the shelf "to anchor the
+    Allied right") is kept: it is the period's word, not the model's.
+- **`SOURCE_NOTE`** (`data.js`), `layers[1][1]`: "a route between anchors" is "a route between plotted positions" (decision 310).
+- **`anchorList`** (`app.js`, the movement model): the flag's words, shown in the timing row ("flagged: ..."), "the tactical rate does not fit before
+  the next anchor" is "... before the next plotted position" (decision 310); the rule and every arrival unchanged (`check:chronology` 0 errors).
+- **`CONF_INTERP`** (`app.js`, a grade text a visitor is told): was "The formation is between two plotted anchors: this position is interpolated, and
+  graded no better than the weaker anchor."; is "The formation is between two plotted positions: this position is interpolated, and graded no better
+  than the weaker of the two." (decision 310).
+- **`STATEMENT_CLAIMS`** (`narrative.js`), five claim notes (shown in "How this is sourced" and the sources sheet's index; the audit's `leaks.json`),
+  each claim, its readings and its statement's hash unchanged:
+  - `EVENTS[#counter-march].dispute`: "is in the register (read partly on the text layer)" is "is in the sources read for this map (one of them read
+    partly from its scanned text, not the page image)".
+  - `FORMATIONS.legrand.staff`: "a reading of roadmap step 6B (docs/stage6-evidence/readings-composition.md)" is "this map's reading of the sources on
+    the army's composition".
+  - `FORMATIONS.rg_cav.strengthNote`, `FORMATIONS.rg_inf.strengthNote`: "read on the page (S5.7)" is "read on the page images"; `FORMATIONS.rg_inf.commander`:
+    "Duffy's order of battle (S5.7)" is "Duffy's order of battle". The register entry S5.7 is unchanged and still the reading cited.
+
+Presentation, not data (`app.js`):
+- `standardNotes` (the sources sheet): "Height, owner decision 106:" is "Height, as this map draws it:".
+- The labels and rows (decision 310): `LABELS.reading.leg` and `LABELS.march.drift` "Plotted leg" are "Plotted march"; the drift's note "a drift
+  between anchors, not a march" is "a drift between plotted positions rather than a formed march" (the row is now named "Plotted march", so "not a
+  march" would contradict it: a choice of words, said here); the march row's "the plotted leg's length" is "the plotted march's length"; the day-track's
+  "anchors graded A/B/C" is "plotted positions graded A/B/C"; the sources sheet's skeleton paragraph "the anchors the clock moves between" is "the
+  positions the clock moves between".
+- **The grades by their scale (`posClaimPill`, `timingPill`, `timingWord`).** The card and the dossier showed "Position: estimated", "Position B" and
+  "Timing B" side by side, three pills and two bare letters of different scales (the appearance grade a third). *Is:* one pill for the position, its
+  claim's words with its grade ("Position: estimated (B)", "(B, interpolated)" between plotted positions), and one for the timing, its grade text's own
+  word read from `TIMING_TEXT` ("Timing: dated (A)", "approximate (B)", "inferred (C)"); an event's dossier the same timing pill.
+
+`docs/step4-evidence/inventory.json` and `.md` regenerated (the timing notes are inventoried statements: 726, unchanged in number).
+
+### Checks added, each failing without its fix
+
+- `runtime-test.js`, the position pills (roadmap step 4's K2 check, extended): every card and dossier at five clocks, its claim pill POS_CLAIM's words
+  with the position's grade, no bare "Position X" or "Timing X" pill, the timing pill "Timing: dated|approximate|inferred (X)". Negative controls,
+  each on a copy with one fix put back and the suite run: the bare timing pill again, failed (the pill check); the claim pill without its grade, failed.
+- The internal references are held by `redteam.js`'s overclaim scan only for its own patterns; the audit's probe (`tools/audit-post8/a11y/leaks.js`)
+  is the measure (below).
+
+### Verified
+
+- `npm test`: all nine suites and the height guard pass. `check:data`: 143 of 143 identical to the new reference; against the old one exactly the five
+  above. `check:chronology`: 0 errors (L9's cited statements are not among those reworded). `check:baseline`: passes.
+- `check:contrast`, `check:selftest` and `check:visual` (CI): below.
+
+### What remains uncertain, and what is handed on
+
+- "Interpolated", "derived" and "the text layer" (two claim notes on Czartoryski and Davout's report) are kept: each is explained where it is shown
+  or names a reading method; not part of decision 310's words.
+
 ## 2026-11 · Final audits' roadmap, Stage 6: the owner's questions (records only)
 
 The owner decided Stage 6's questions on 9 November 2026 ("Your recommendations for all"): 276 (a), 280 (a), 281 (a) from
