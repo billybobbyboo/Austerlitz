@@ -8949,7 +8949,11 @@ function buildingNotes(){
       "neither at its own place, their distance the symbols'."+(B.austerlitz.garden?" Its garden ("+B.austerlitz.garden.en+", "+src(B.austerlitz.garden.src)+"): drawn at its outline on the 1826 and 1836-52 maps, as rows of trees west of the château as drawn, the rows a convention; no house of the town in it.":""):null,
     (cy?"Telnitz: "+cy.en+" (as "+src(cy.src)+" reports the parish's own record): its churchyard drawn walled. ":"")+(f0?"Fences round "+fences.join(" and ")+": "+f0.en+" ("+src(f0.src)+"); their course is not known, so they run along each village's edge, and the ditches are not drawn.":""),
     (function(){ var nd=Object.keys(B.notDrawn||{}).map(function(k){ return B.notDrawn[k].en; }).filter(Boolean); return nd.length?"Not drawn: "+nd.slice(0,-1).join(", ")+(nd.length>1?" and ":"")+nd[nd.length-1]+".":null; })(),
-    "Every size, height, colour and spacing of the buildings is a design value at their symbol scale."
+    "Every size, height, colour and spacing of the buildings is a design value at their symbol scale.",
+    /* the final audits' Stage 6, WP-10 (CL-VIS-04; owner decision 307, its fallback (c), measured: tools/final-stage6/occupy.js) */
+    "The formations are drawn as blocks of figures at their frontage, larger than the houses they stand among, so where a block stands in a village its "+
+      "figures pass through the buildings: the block marks where the formation was, not men inside the houses. Hiding the buildings under the blocks "+
+      "would take most of Sokolnitz and Telnitz off the map where they were fought over, so they are kept."
   ].filter(Boolean);
 }
 function gaitNotes(){
@@ -9872,6 +9876,52 @@ function wp08Checks(){
     if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTw();
     landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc;
     if(K.sel) select(K.sel.kind,K.sel.id); requestRender(3);
+  }
+  return out;
+}
+/* the final audits' Stage 6, WP-10 (part 3): the self-test's checks of the crowns near the eye (CL-VIS-08; decision 308) and of the blocks among the
+   buildings said in the sources sheet (CL-VIS-04; decision 307's fallback (c)). The crowns are judged on renders of the woods alone, with the twigs on and
+   off (TREE6.U.uTwig): near the eye they cover markedly less (the closed faces broken into twigs), beyond the near band the same pixels */
+function wp10gChecks(){
+  var out=[], K={t:clock,mode:mode,pres:presentation,f:DISPLAY.factor,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,v:curVantage};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  if(playing) stopPlay();
+  try{
+  if(mode!=="terrain") setMode("terrain"); if(presentation!=="watch") setPresentation("watch");
+  guard("the crowns near the eye (WP-10, CL-VIS-08)",function(){
+    var gl=renderer.getContext(), bad=[], T=[], hid=[], bg=scene.background, fog=scene.fog;
+    function grab(){ renderer.setRenderTarget(null); renderer.render(scene,camera); var w=gl.drawingBufferWidth, h=gl.drawingBufferHeight, b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
+    var E=null; function cover(b){ return diff(b,E); }   /* the crowns' pixels: those that differ from the same view drawn without the trees */
+    function diff(a,b){ var n=0; for(var i=0;i<a.length;i+=4) if(a[i]!==b[i]||a[i+1]!==b[i+1]||a[i+2]!==b[i+2]) n++; return n; }
+    function only(){ scene.children.forEach(function(o){ if(o!==treeMesh&&o.visible&&!o.isLight){ hid.push(o); o.visible=false; } }); scene.fog=null; treeMesh.visible=false; E=grab(); treeMesh.visible=true; }
+    function back(){ hid.forEach(function(o){ o.visible=true; }); hid=[]; scene.background=bg; scene.fog=fog; }
+    function aim(map,dir,r){ var w=W(map[0],map[1]), y=groundY(w[0],w[1]), d=new THREE.Vector3(dir[0],dir[1],dir[2]).normalize().multiplyScalar(r);
+      tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,y+d.y,w[1]+d.z); orbitTarget.set(w[0],y,w[1]); landCam.lookAt(orbitTarget); clampCamera(); landCam.updateMatrixWorld(); }
+    try{
+      /* near: a deciduous tree 7 units from the eye, at its crown's height (inside TREE8H's near band, 5 to 16), the eye's own view of it */
+      setClock(900,{instant:true,force:true,camera:false}); updateVisibility();
+      var M4=new THREE.Matrix4(), tp=new THREE.Vector3(), im0=treeMesh.children[0]; im0.getMatrixAt(Math.floor(im0.count/2),M4); tp.setFromMatrixPosition(M4);
+      tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(tp.x+7,tp.y+3.2,tp.z+0.5); orbitTarget.set(tp.x,tp.y+2.6,tp.z); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(); only();
+      TREE6.U.uTwig.value=0; var a=grab(); TREE6.U.uTwig.value=1; var b=grab(), ca=cover(a), cb=cover(b);
+      T.push("a tree 7 units off: the crowns cover "+cb+" px with the twigs, "+ca+" closed ("+(ca?(100*cb/ca).toFixed(0):"-")+"%)");
+      if(!(ca>2000)) bad.push("too few crown pixels near the eye to judge ("+ca+")"); else if(cb>0.8*ca) bad.push("near the eye the twigs cover "+(100*cb/ca).toFixed(0)+"% of the closed faces' pixels (at most 80%)");
+      back(); aim([285,289],[-0.3,0.9,0.3],230); updateVisibility(); only();
+      TREE6.U.uTwig.value=0; var c=grab(); TREE6.U.uTwig.value=1; var d=grab(), dd=diff(c,d), cc=cover(c);
+      T.push("the Overview: "+dd+" px differ of "+cc+" crown px");
+      if(!(cc>500)) bad.push("too few crown pixels far to judge ("+cc+")"); if(dd) bad.push("far from the eye "+dd+" px differ");
+    } finally { back(); TREE6.U.uTwig.value=1; }
+    ck("the crowns near the eye (WP-10, CL-VIS-08; decision 308): near the eye the faces broken into twigs (at most 80% of the closed faces' pixels), far from it the same pixels",
+      !bad.length, T.join("; ")+(bad.length?"; WRONG: "+bad.join("; "):""));
+  });
+  guard("the blocks among the buildings (WP-10, CL-VIS-04)",function(){
+    var t=buildingNotes().join(" ");
+    ck("the blocks among the buildings (WP-10, CL-VIS-04; decision 307 (c)): the sources sheet says the blocks are drawn at their frontage and pass through the houses",
+      /pass through the buildings/.test(t)&&/frontage/.test(t), /pass through the buildings/.test(t)?"said in “How the villages are drawn”":"WRONG: not said");
+  });
+  } finally {
+    if(DISPLAY.factor!==K.f) setDisplayFactor(K.f); if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres);
+    setClock(K.t,{instant:true,force:true,camera:false}); landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc; curVantage=K.v; requestRender(3);
   }
   return out;
 }
@@ -15131,6 +15181,7 @@ var AUSTERLITZ_DEBUG=(function(){
     wp07Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-07 */
     wp08cChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08's lettering and landmarks */
     wp08Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08 */
+    wp10gChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the crowns, the blocks among the buildings) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
