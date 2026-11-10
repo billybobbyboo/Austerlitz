@@ -1457,7 +1457,11 @@ var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02,
   tone:0.10,               /* the broad variation of tone, its whole span */
   sky:1.4,                 /* the sky's reflection added at a grazing view over the clear ice (its weight at the horizon) */
   band:[0.35,0.55]};       /* the shore band's opacity: up from its inner edge over 0.35 of its width, down to nothing at the shore from 0.55 */
-var STREAM={rough:0.30, env:0.40, tone:0.10, scale:1.3, sky:2.0};   /* since 8F: the landscape's streams (roughness, the environment's weight,
+/* the final audits' Stage 6, WP-10 (CL-VIS-05): rough 0.30 to 0.60. At 0.30 the low sun's specular glint saturated the streams toward white in the
+   grazing and low-sun views, the brightest thing in the frame (the brook by Sokolnitz at 15:00, p99 luminance 244 against its field's 177; Saint-Hilaire's
+   climb at 09:00, 240 against 209); the grazing sky term (sky) adds little (1 to 7 at p99), the post-processing about 20; at 0.60, the rimed ice's own
+   roughness, 185 and 179 (tools/final-stage6/streams.js, docs/final-stage6-evidence/wp10/streams.json). A design value */
+var STREAM={rough:0.60, env:0.40, tone:0.10, scale:1.3, sky:2.0};   /* since 8F: the landscape's streams (roughness, the environment's weight,
                                                                        a still variation of tone and its scale, the sky at a grazing view) */
 /* the noise the water's tones read: a value noise over the world plane, three octaves; a hash with no sine (stable at mediump) */
 var WATER_GLSL=["float wHash(vec2 p){ vec3 q=fract(vec3(p.xyx)*0.1031); q+=dot(q,q.yzx+33.33); return fract((q.x+q.y)*q.z); }",

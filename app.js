@@ -1556,7 +1556,7 @@ function makeBlock(f,id){
       tents.setMatrixAt(t0,d.matrix);
     }
     body.add(tents); seatable(tents,false,true);
-    ud.camp=[marq,tents];   /* the final audits' Stage 6, WP-10 (CL-VIS-07): the pitched camp, drawn only while the headquarters is halted (poseBlock) */
+    ud.camp=[marq,tents];   /* the final audits' Stage 6, WP-10 (CL-VIS-07): the pitched camp, struck while the headquarters moves (poseBlock) */
     var esc=[], escR=[];
     for(var e=0;e<12;e++){
       var a=e/12*Math.PI*2, rr=3.6+srnd(e)*1.0;
@@ -6283,8 +6283,8 @@ function poseBlock(rec,id,st){
     u.deployed.visible=!moving;
     u.limbered.visible=moving;
   }
-  /* the final audits' Stage 6, WP-10 (CL-VIS-07): a headquarters on the move is its riders alone; its marquee and tents stand only while it is
-     halted (until Stage 6 the camp was pitched at every status, among the moving guns and on the Satschan ice during the rout). A design value */
+  /* the final audits' Stage 6, WP-10 (CL-VIS-07): a headquarters on the move is its riders alone, a drift under 1 km/h too (Buxhowden's in the rout
+     at 0.8 km/h on the Satschan ice, the audit's case); its marquee and tents stand only while it is halted (until Stage 6 the camp was pitched at every status, among the moving guns and on the Satschan ice during the rout). A design value */
   if(u.camp){ var cv=!moving; if(u.camp[0].visible!==cv){ u.camp[0].visible=cv; u.camp[1].visible=cv; } }
 
   var want=faceWant(id,mr);
@@ -9919,6 +9919,90 @@ function wp08Checks(){
     if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTw();
     landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc;
     if(K.sel) select(K.sel.kind,K.sel.id); requestRender(3);
+  }
+  return out;
+}
+/* the final audits' Stage 6, WP-10 (the rendered picture): the self-test's checks of the facings (CL-VIS-03), the headquarters' camp (CL-VIS-07) and the
+   tier on a resize (CL-VIS-09). The facings are judged against the nearest enemy the check finds itself (each formation's place at the clock), not
+   against enemyFacing, the code under test */
+function wp10pChecks(){
+  var out=[], K={t:clock,mode:mode,pres:presentation,low:lowTier,mob:TIER_MOBILE};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function ad(a,b){ var d=(a-b)%(2*Math.PI); if(d>Math.PI) d-=2*Math.PI; if(d<-Math.PI) d+=2*Math.PI; return Math.abs(d)*180/Math.PI; }
+  if(playing) stopPlay();
+  try{
+  if(mode!=="terrain") setMode("terrain"); if(presentation!=="study") setPresentation("study");
+  /* CL-VIS-03: every 10 minutes 05:00-17:00, every drawn block (its yaw as posed at a seek) halted or on a leg under the gait's floor (1 km/h) with an
+     enemy within 1.5 km: none faces more than 90 degrees away from the nearest one (until Stage 6: 129 drifting blocks did, the audit's flag B);
+     and of the halted, at least 98% within 45 degrees of it (main 95.2%, 236 of 248; the facing re-taken in its phase, FACE) */
+  guard("the facings (WP-10, CL-VIS-03)",function(){
+    var nH=0, h45=0, away=[], nD=0;
+    for(var t=300;t<=1020;t+=10){ setClock(t,{instant:true,force:true,camera:false}); updateVisibility();
+      Object.keys(units).forEach(function(id){ var rec=units[id], f=FORMATIONS[id], b=rec.block; if(!b||!b.visible||f.arm==="hq"||rec.yaw===undefined) return;
+        var me=posNow(id); if(!me) return; var mr=f.track?marchRate(id,clock):null, halted=!(mr&&mr.moving), drift=!!(mr&&mr.moving&&mr.kmh<GAIT.KMH); if(!halted&&!drift) return;
+        var best=null, bd=1e9; Object.keys(units).forEach(function(k){ var g2=FORMATIONS[k]; if(g2.arm==="hq"||(g2.nation==="fr")===(f.nation==="fr")) return; var q=posNow(k); if(!q) return;
+          var dd=Math.hypot(q[0]-me[0],q[1]-me[1]); if(dd<bd){ bd=dd; best=q; } });
+        if(!best||bd*KM_PER_MAP>1.5) return; var a=W(me[0],me[1]), c=W(best[0],best[1]), brg=Math.atan2(c[0]-a[0],c[1]-a[1]), d=ad(rec.yaw,brg);
+        if(halted){ nH++; if(d<=45) h45++; } else nD++;
+        if(d>90) away.push(id+" at "+fmtClock(t)+" ("+(halted?"halted":"drifting")+", "+d.toFixed(0)+" deg, "+(bd*KM_PER_MAP).toFixed(2)+" km)"); });
+    }
+    var share=nH?h45/nH:0;
+    ck("the facings (WP-10, CL-VIS-03): no block halted or drifting under 1 km/h faces more than 90 degrees from the nearest enemy within 1.5 km, every 10 minutes 05:00-17:00, and of the halted at least 98% within 45 degrees",
+      nH>100&&nD>20&&!away.length&&share>=0.98, nH+" halted and "+nD+" drifting near an enemy; the halted within 45 degrees "+h45+" of "+nH+" ("+(100*share).toFixed(1)+"%)"+
+      (away.length?"; WRONG: "+away.length+" facing away ("+away.slice(0,5).join("; ")+")":"; none facing away"));
+  });
+  /* CL-VIS-07: at the same clocks every headquarters' marquee and tents drawn exactly while it is halted */
+  guard("the headquarters' camp (WP-10, CL-VIS-07)",function(){
+    var n=0, nm=0, bad=[];
+    for(var t=300;t<=1020;t+=10){ setClock(t,{instant:true,force:true,camera:false}); updateVisibility();
+      Object.keys(units).forEach(function(id){ var f=FORMATIONS[id], u=units[id].block&&units[id].block.userData; if(f.arm!=="hq"||!u||!u.body) return;
+        var marq=null, tents=null; u.body.children.forEach(function(o){ if(o.geometry===GEO.tent){ if(o.isInstancedMesh) tents=o; else marq=o; } });
+        if(!marq||!tents){ bad.push(id+": no camp found"); return; }
+        var mr=f.track?marchRate(id,clock):null, moving=!!(mr&&mr.moving); n++; if(moving) nm++;
+        if(marq.visible===moving||tents.visible===moving) bad.push(id+" at "+fmtClock(t)+" ("+(moving?"moving":"halted")+"): the camp "+(marq.visible?"pitched":"struck")); }); }
+    ck("the headquarters' camp (WP-10, CL-VIS-07): the marquee and the tents drawn while the headquarters is halted, its riders alone while it moves, every 10 minutes 05:00-17:00",
+      n>50&&nm>0&&!bad.length, n+" headquarters-clocks, "+nm+" of them moving"+(bad.length?"; WRONG: "+bad.slice(0,5).join("; "):""));
+  });
+  /* CL-VIS-05: in two of the audit's views toward a low sun (the brook by the Sokolnitz castle at 15:00, Saint-Hilaire's climb at 09:00, in Watch), the
+     frame drawn with the streams and without them: the streams' own pixels (those that differ) no brighter at their 99th percentile of luminance than the
+     field's 99th percentile plus 15 (as built at 0.30 the glint reached 244 against 177) */
+  guard("the streams' glint (WP-10, CL-VIS-05)",function(){
+    var gl=renderer.getContext(), keepC={pos:landCam.position.clone(), tgt:orbitTarget.clone(), fc:freeCam}, bad=[], T=[];
+    function grab(){ renderFrame(); var w=gl.drawingBufferWidth, h=gl.drawingBufferHeight, b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b); return b; }
+    function lum(b,i){ return 0.2126*b[i]+0.7152*b[i+1]+0.0722*b[i+2]; }
+    function p99(a){ if(!a.length) return 0; a.sort(function(x,y){ return x-y; }); return a[Math.min(a.length-1,Math.floor(0.99*a.length))]; }
+    var S=world.water.filter(function(m){ return m.userData.drape&&m.userData.drape.kind==="stream"; });
+    [{n:"the brook by the castle, 15:00",t:900,map:[212.9,344.3],dir:[-0.55,0.42,0.72],r:14},{n:"Saint-Hilaire's climb, 09:00",t:540,map:"sthilaire",dir:[0.7,0.35,0.2],r:26}].forEach(function(V){
+      if(presentation!=="watch") setPresentation("watch"); setClock(V.t,{instant:true,force:true,camera:false});
+      var m=typeof V.map==="string"?posNow(V.map):V.map, w=W(m[0],m[1]), y=groundY(w[0],w[1]), d=new THREE.Vector3(V.dir[0],V.dir[1],V.dir[2]).normalize().multiplyScalar(V.r);
+      tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,y+d.y,w[1]+d.z); orbitTarget.set(w[0],y,w[1]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true);
+      AUSTERLITZ_DEBUG.settle(6,true);
+      var A=grab(); S.forEach(function(o){ o.visible=false; }); var B=grab(); S.forEach(function(o){ o.visible=true; });
+      var st=[], fl=[]; for(var i=0;i<A.length;i+=4){ fl.push(lum(B,i)); if(Math.abs(A[i]-B[i])+Math.abs(A[i+1]-B[i+1])+Math.abs(A[i+2]-B[i+2])>12) st.push(lum(A,i)); }
+      var ps=p99(st), pf=p99(fl); T.push(V.n+": the streams' p99 "+ps.toFixed(0)+" ("+st.length+" px), the field's "+pf.toFixed(0));
+      if(st.length<500) bad.push(V.n+": too few stream pixels ("+st.length+")"); else if(ps>pf+15) bad.push(V.n+": the streams' p99 "+ps.toFixed(0)+" over the field's "+pf.toFixed(0)+" + 15"); });
+    landCam.position.copy(keepC.pos); orbitTarget.copy(keepC.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=keepC.fc;
+    ck("the streams' glint (WP-10, CL-VIS-05): toward a low sun the streams' own pixels no brighter (99th percentile of luminance) than the field's plus 15",
+      !bad.length, T.join("; ")+(bad.length?"; WRONG: "+bad.join("; "):""));
+  });
+  /* CL-VIS-09: a page on the low tier for its window alone takes the full tier on a resize to a large window (a real resize event, the app's own
+     handler); on a phone's or a tablet's agent it keeps the low tier; never down on a shrink */
+  guard("the tier on a resize (WP-10, CL-VIS-09)",function(){
+    var bad=[], st=function(){ return {low:lowTier, shadow:sun.castShadow, detail:groundMesh.material.userData.U.uDetail.value.x>0, px:renderer.getPixelRatio()}; };
+    if(window.innerWidth*window.innerHeight<900*700) bad.push("the self-test's window is under 900 x 700");
+    applyTier(true); TIER_MOBILE=false; window.dispatchEvent(new Event("resize")); var a=st();
+    if(a.low||!a.shadow||!a.detail) bad.push("a small window's page enlarged kept the low tier "+JSON.stringify(a));
+    applyTier(true); TIER_MOBILE=true; window.dispatchEvent(new Event("resize")); var b=st();
+    if(!b.low||b.shadow||b.detail) bad.push("a phone's page took the full tier on a resize "+JSON.stringify(b));
+    TIER_MOBILE=false; applyTier(false); if(retier(500,400)!==false||lowTier) bad.push("the full tier went down on a shrink");
+    ck("the tier on a resize (WP-10, CL-VIS-09): a page low for its window alone takes the full tier (density, shadow, near detail) when its window is enlarged, a phone's keeps the low tier, none goes down on a shrink",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"enlarged: "+JSON.stringify(a)+"; a phone's: "+JSON.stringify(b));
+  });
+  } finally {
+    TIER_MOBILE=K.mob; applyTier(K.low); window.dispatchEvent(new Event("resize"));
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres);
+    setClock(K.t,{instant:true,force:true,camera:false}); requestRender(3);
   }
   return out;
 }
@@ -15178,6 +15262,7 @@ var AUSTERLITZ_DEBUG=(function(){
     wp07Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-07 */
     wp08cChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08's lettering and landmarks */
     wp08Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08 */
+    wp10pChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the facings, the camp, the tier) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
