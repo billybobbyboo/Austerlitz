@@ -7334,6 +7334,10 @@ function buildUI(){
     if(window.ResizeObserver && _tbEl) new ResizeObserver(syncTimebarHeight).observe(_tbEl);
     window.addEventListener("resize",syncTimebarHeight);
     syncTimebarHeight();
+    _toolsEl=document.getElementById("tools");   /* CL-UX-18: the tools' lower edge, as they wrap or are shown and hidden */
+    if(window.ResizeObserver && _toolsEl) new ResizeObserver(syncToolsEdge).observe(_toolsEl);
+    window.addEventListener("resize",syncToolsEdge);
+    syncToolsEdge();
   })();
   if(window.innerWidth<1080) document.body.classList.add("rail-hidden");
   syncDock();
@@ -9535,6 +9539,16 @@ function showEverything(){
 }
 /* the time bar wraps at narrow widths, so its height is measured, never assumed */
 var _tbEl=null;
+/* the final audits' Stage 6, WP-09 (CL-UX-18): the tools' lower edge (0 where they are not shown), for the undocked dispatch card's height
+   (style.css: the card ends below it; at 800 x 450 with the Panels open the vantage row, wrapped to a third line, had lain over the card's top by
+   about 11 px) */
+var _toolsEl=null;
+function syncToolsEdge(){
+  if(!_toolsEl) _toolsEl=document.getElementById("tools");
+  if(!_toolsEl) return;
+  var r=_toolsEl.getBoundingClientRect(), b=(r.height>0&&r.width>0)?Math.round(r.bottom):0;
+  document.documentElement.style.setProperty("--tools-b",b+"px");
+}
 function syncTimebarHeight(){
   if(!_tbEl) _tbEl=document.querySelector(".timebar");
   if(!_tbEl) return;

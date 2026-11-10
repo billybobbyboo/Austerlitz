@@ -71,7 +71,7 @@ body.rail-hidden .rail{transform:translateX(-101%);visibility:hidden;transition:
 .dispatch{position:fixed;left:calc(var(--rail) + 14px);bottom:calc(var(--tb) + 14px);width:min(440px,calc(100vw - var(--rail) - 68px));
   z-index:18;background:rgba(var(--scrim-rgb),.90);border:1px solid var(--line);border-left:2px solid var(--accent);
   padding:15px 18px 12px;backdrop-filter:blur(9px);box-shadow:0 10px 34px rgba(0,0,0,.45);
-  transition:background .3s ease,color .3s ease;max-height:calc(100vh - var(--tb) - 150px);overflow-y:auto;overscroll-behavior:contain}
+  transition:background .3s ease,color .3s ease;max-height:min(calc(100vh - var(--tb) - 150px),calc(100vh - var(--tb) - 22px - var(--tools-b,0px)));overflow-y:auto;overscroll-behavior:contain}
 .dispatch .clock{font-size:var(--t-ui);color:var(--text-hi);letter-spacing:.07em;font-variant-numeric:tabular-nums;margin-bottom:5px}
 .dispatch h2{font-family:var(--serif);font-weight:400;font-size:var(--t-display);line-height:1.14;margin:0 0 8px;color:var(--text-hi)}
 .dispatch p.lede{font-family:var(--serif);font-size:var(--t-prose);line-height:1.62;margin:0 0 12px;color:var(--text-body);max-width:64ch}
@@ -635,7 +635,7 @@ body.mode-staff #vignette{display:none}
 /* Laptop-height screens: fewer rows in the timeline, and the card yields room */
 @media (max-height:820px){
   .tb-sit{padding-bottom:5px}
-  .dispatch{max-height:calc(100vh - var(--tb) - 120px)}
+  .dispatch{max-height:min(calc(100vh - var(--tb) - 120px),calc(100vh - var(--tb) - 22px - var(--tools-b,0px)))}   /* CL-UX-18: below the tools (app.js syncToolsEdge) */
   .dispatch ol{display:none}
   .dispatch h2{font-size:var(--t-h2)}
   .tools{gap:7px}
@@ -939,7 +939,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
    colours (Highlight, HighlightText: system colours, so the user's theme is kept), and the side colours, which are content (the nation), are kept
    with a CanvasText edge */
 @media (forced-colors: active){
-  [aria-pressed="true"],[aria-selected="true"],[aria-current="true"],.layer-btn[aria-pressed="true"]{forced-color-adjust:none;background:Highlight;color:HighlightText;border-color:HighlightText}
+  [aria-pressed="true"],[aria-selected="true"],[aria-current="true"],.layer-btn[aria-pressed="true"]{forced-color-adjust:none;background:Highlight!important;color:HighlightText!important;border-color:HighlightText!important}   /* over every control's own pressed colours (.vm-btn[aria-pressed] and the like are more specific) */
   .tab-btn[aria-selected="true"]{text-decoration:underline 2px}
   .ev-mark,.ev-bar,.mln-mark,.legend .sw,#firstrun .key-sw{forced-color-adjust:none;outline:1px solid CanvasText}
 }
@@ -978,7 +978,6 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .tb-icon{min-width:34px}
   .tb-play{min-width:52px}
   #speedbtn{min-width:40px}
-  .tb-trackwrap{height:30px}
   .rail,.drawer{top:0;height:auto;bottom:0;z-index:45}
   .drawer{z-index:46}
 }

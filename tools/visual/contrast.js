@@ -203,7 +203,10 @@ const RF_HELP="window.__rf={noH:function(){ return document.documentElement.scro
 const REFLOW_STATES=[
   ["reflow-explore", ()=>{ closeFirst(null); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); },
     ["closeFirst"], ()=>__rf.noH()&&!firstRunOpen&&__rf.on("#play")&&__rf.on("#helpbtn")&&__rf.on("#phasebtn")],
-  ["reflow-phase", ()=>{ document.getElementById("phasebtn").click(); }, ["setDSheet"], ()=>__rf.noH()&&dsheetOpen()&&__rf.on(".dispatch")&&__rf.on("#d-lede",10)],
+  /* the sheet scrolls in its own box (at 256 px its lede lies below the phase's head): scrolled to the lede, its top inside the sheet's visible part */
+  ["reflow-phase", ()=>{ document.getElementById("phasebtn").click(); var l=document.getElementById("d-lede"); if(l) l.scrollIntoView({block:"start"}); }, ["setDSheet"],
+    ()=>{ if(!(__rf.noH()&&dsheetOpen()&&__rf.on(".dispatch"))) return false; var d=document.querySelector(".dispatch"), l=document.getElementById("d-lede"); if(!l||!d.contains(l)) return false;
+      var a=d.getBoundingClientRect(), b=l.getBoundingClientRect(); return b.top>=a.top-1&&b.top<=Math.min(a.bottom,innerHeight)-10; }],
   ["reflow-panels", ()=>{ setDSheet(false); setPanels(true); }, ["setPanels"], ()=>__rf.noH()&&!document.body.classList.contains("rail-hidden")&&__rf.on(".railscroll")],
   ["reflow-sources", ()=>{ openSources(); }, ["openSources"], ()=>__rf.noH()&&__rf.on("#modal .sheet")],
   ["reflow-dossier", ()=>{ closeSources(); setPanels(false); select("f","sthilaire"); paintDrawer(); }, ["select"], ()=>__rf.noH()&&!!selection&&__rf.on("#drawer")],
@@ -215,19 +218,25 @@ const REFLOW_VP=[320,256], REFLOW_DPR=4;
    Not text contrast (the user's system colours draw the text): each pressed or selected state drawn otherwise than its group's unpressed one (the
    presentation, the vantage, the speed, the phase, the layers' rows), the event markers drawn (their background kept, the two sides apart), the key's
    and the card's side swatches apart */
+/* the theme's Highlight as the page resolves it, from a probe of the page's own */
+const FC_HL="(function(){ var e=document.createElement('i'); e.style.cssText='position:fixed;left:-9px;top:0;width:1px;height:1px;forced-color-adjust:none;background:Highlight';"+
+  " document.body.appendChild(e); var c=getComputedStyle(e).backgroundColor; e.remove(); return c; })()";
 const FC_STATES=[
-  ["fc-explore", ()=>{ closeFirst(null); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); }, ["closeFirst"],
-    ()=>{ if(!matchMedia("(forced-colors: active)").matches) return false;
-      var G=[[".vm-btn",'[aria-pressed="true"]'],[".van-btn",'[aria-pressed="true"]'],[".spd-btn",'[aria-pressed="true"]'],["#phases button",'[aria-current="true"]']];
-      return G.every(function(g){ var A=[].slice.call(document.querySelectorAll(g[0])), a=A.filter(function(e){ return e.matches(g[1]); })[0], z=A.filter(function(e){ return !e.matches(g[1]); })[0];
-        return a&&z&&getComputedStyle(a).backgroundColor!==getComputedStyle(z).backgroundColor; }); }],
+  /* the Field vantage pressed (the phase's own framing presses none) */
+  ["fc-explore", ()=>{ closeFirst(null); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); document.querySelector('.van-btn[data-v="field"]').click(); }, ["closeFirst"],
+    new Function("if(!matchMedia('(forced-colors: active)').matches) return false; var hl="+FC_HL+";"+
+      " var G=[['.vm-btn','[aria-pressed=\"true\"]'],['.van-btn','[aria-pressed=\"true\"]'],['.spd-btn','[aria-pressed=\"true\"]'],['#phases button','[aria-current=\"true\"]']];"+
+      " return G.every(function(g){ var A=[].slice.call(document.querySelectorAll(g[0])), a=A.filter(function(e){ return e.matches(g[1]); })[0], z=A.filter(function(e){ return !e.matches(g[1]); })[0];"+
+      " if(!a||!z) return false; [a,z].forEach(function(e){ e.style.transition='none'; });"+   /* each at its end value, not mid-transition */
+      " var ok=getComputedStyle(a).backgroundColor===hl&&getComputedStyle(z).backgroundColor!==hl; [a,z].forEach(function(e){ e.style.transition=''; }); return ok; });")],
   ["fc-markers", ()=>{}, [], ()=>{ var M=[].slice.call(document.querySelectorAll("#evmarks .ev-mark")); if(M.length<10) return false;
       var bgs=M.map(function(e){ return getComputedStyle(e).backgroundColor; }), fr=M.filter(function(e){ return e.classList.contains("fr")&&!e.classList.contains("dec"); })[0], al=M.filter(function(e){ return e.classList.contains("al")&&!e.classList.contains("dec"); })[0];
       return bgs.every(function(b){ return !/rgba\([^)]*, 0\)$/.test(b)&&b!=="transparent"; })&&!!fr&&!!al&&getComputedStyle(fr).backgroundColor!==getComputedStyle(al).backgroundColor; }],
   ["fc-key", ()=>{ ML.legendOpen=true; requestRender(2); }, [], ()=>{ var a=document.querySelector('.legend .sw[data-key="side-fr"]'), b=document.querySelector('.legend .sw[data-key="side-al"]');
       return !!a&&!!b&&getComputedStyle(a).backgroundColor!==getComputedStyle(b).backgroundColor; }],
-  ["fc-layers", ()=>{ setLayerPop(true); }, ["setLayerPop"], ()=>{ var a=document.querySelector('#layerpop .layer-btn[aria-pressed="true"]'), z=document.querySelector('#layerpop .layer-btn[aria-pressed="false"]');
-      return !!a&&!!z&&getComputedStyle(a).backgroundColor!==getComputedStyle(z).backgroundColor; }]
+  ["fc-layers", ()=>{ setLayerPop(true); }, ["setLayerPop"], new Function("var hl="+FC_HL+"; var a=document.querySelector('#layerpop .layer-btn[aria-pressed=\"true\"]'), z=document.querySelector('#layerpop .layer-btn[aria-pressed=\"false\"]');"+
+      " if(!a||!z) return false; [a,z].forEach(function(e){ e.style.transition='none'; });"+
+      " var ok=getComputedStyle(a).backgroundColor===hl&&getComputedStyle(z).backgroundColor!==hl; [a,z].forEach(function(e){ e.style.transition=''; }); return ok;")]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }
