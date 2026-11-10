@@ -84,7 +84,8 @@ Presentation, not data (`app.js`):
   105 level-of-detail switches and 12 flickers, `main`'s own counts.
 - `check:contrast`: 7,473 text elements, 0 below AA, 0 under 10.5 px, 0 font failures, 45 of 45 states, 0 console messages, the boot cases 8 of 8 (run on
   the build before the position-pill check's change, which is self-test code alone).
-- `check:visual` on CI: dispatched on this branch; its result goes on the PR.
+- `check:visual` on CI (run 42755772911 on `cce6543`, `checks.yml`, `visual: true`; the build `858db534...`, the branch's head's): passed, every job
+  (`npm test`, `check:data`, `check:chronology`, `check:selftest`, `check:contrast`, `check:visual`; the run 4 h 13 min).
 
 ### What remains uncertain, and what is handed on
 
