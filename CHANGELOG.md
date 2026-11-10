@@ -5,7 +5,7 @@
 **Status: on `claude/dreamy-johnson-uadkqa-focus`, stacked on the reflow PR (WP-09, 1 of 3; a draft PR into its branch until it merges, then into
 `main`; for review, not merged).** Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
 `archive/stage5wp08-572b0935.html`). Owner decision applied: 276 (a), the first card's sentence (`docs/final-stage6-evidence/questions.md`).
-`austerlitz-command-map.html` is now __SIZE__ bytes, md5 `__MD5__` (was the reflow PR's 2,971,888, `646b1c4f...`); `check:baseline` moves to it.
+`austerlitz-command-map.html` is now 2,992,468 bytes, md5 `19d7105fcfb262f80b08579417723d84` (was the reflow PR's 2,971,888, `646b1c4f...`); `check:baseline` moves to it.
 
 ### What changed, and why
 
@@ -37,14 +37,25 @@
 
 - The self-test's `wp09Checks` (5 checks): the names and structure; the phase text's hint; the focus by keyboard; the caveats as text; the first card
   and its key. The timeline's Play check renamed for Play's state ("named by its state, Pause while playing, with no pressed state besides"). The
-  manifest regenerated from a run: __MANIFEST__.
+  manifest regenerated from a run: 335 to 340 (the five `wp09Checks`; the timeline's check under its new name, the old one removed).
 - Negative controls (`tools/final-stage6/mutate-wp09.js`: each fix put back on a copy, the block run alone, `run-block.js`): 9 of 9 fail, the build as it is passing
   (`docs/final-stage6-evidence/wp09/mutate-wp09.json`).
 - `runtime-test.js`: `narrativeRefs` equal to `tools/step4/statements.js`'s refs, and the unchecked count.
 
+- **Found by the self-test and fixed.** (1) The first card's check expected its two buttons; decision 276 (a) put "Show the key" before them in the
+  card's sentence. The check now holds the three in document order and Tab, Tab, Shift+Tab from the primary action going to "Explore on my own", "Show
+  the key" (the wrap kept inside the card) and back. (2) The motion block's finger pan at 390 px drew formations in 249 of its 696 formation-frames, its
+  baseline 257 (`MOTION.VIS`, fewer drawn fails): the derived readings' notes (CL-UX-08) had grown the phone's closed sheet head, so the map's free
+  rectangle shrank. *Is:* the notes in the phone's sheet and the short screen's only when the sheet is opened, as its `.why` (they stay in the Now tab
+  and the undocked card). The motion block alone (`tools/stage8/motion-8h.js --selftest`) on the build before and after: 249 and 257 of 696, every
+  other run as before.
+
 ### Verified
 
-__VERIFIED__
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 errors). `check:baseline`:
+  passes.
+- `check:selftest` (here, the pinned Chromium 141, alone on the machine): 340 checks, every one passing; the manifest regenerated from this run.
+- `check:contrast` and `check:visual` (CI): __CI__
 
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 1 of 3): reflow, short screens and forced colours (CL-UX-01, CL-UX-09, CL-UX-18)
 

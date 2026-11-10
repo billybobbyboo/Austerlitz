@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 3388b70b6e3387fa2041551f0b319a0a (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "3388b70b6e3387fa2041551f0b319a0a",
- "count": 335,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 19d7105fcfb262f80b08579417723d84 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "19d7105fcfb262f80b08579417723d84",
+ "count": 340,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -217,7 +217,7 @@
   "timeline: the hour numerals clear of the event markers and of one another, inside the timebar",
   "timeline: the current phase's label is always whole (decision 53)",
   "timeline: the slider's keys (arrows 10 min, Shift 60, PageUp and PageDown the phase starts, Home, End), one step each, and its value exposed",
-  "timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play pressed while playing",
+  "timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play named Pause while playing, with no pressed state (WP-09, CL-UX-15)",
   "Watch: the presentation switch stands in the timeline's control row at full opacity; the caption carries the derived plateau reading (decision 60)",
   "spine: acts > phases > events built from the data; the chosen chapter's place marked on the axis",
   "spine: every theme and tour stop names its moments (phases or events); a theme opens on its principal moment and marks the others; stop 7 follows its theme (decision 52)",
@@ -337,6 +337,11 @@
   "the key's rows (WP-08, CL-MAP-08): the dashed axis arrows (in their own words), the objectives, each kind of event glyph, the counters' echelon, arm and status rows, each shown exactly while drawn",
   "the key in the ? overlay (WP-08, CL-MAP-03): one press from the timeline in Study and in Watch, the key's own rows for what is drawn, no copied id",
   "the north rose (WP-08, CL-MAP-04): one rose shown in Study and Watch, on the landscape and the paper map (the key's where the key stands, else the timeline's), its needle on true north within 1 degree",
-  "the selection on the landscape (WP-08, CL-MAP-10): the selected name's plate edged in the accent, no other name's, the ring at least 0.85 opaque"
+  "the selection on the landscape (WP-08, CL-MAP-10): the selected name's plate edged in the accent, no other name's, the ring at least 0.85 opaque",
+  "names and structure (WP-09, CL-UX-15): the rail the complementary region and tablist “Panels”, the tools a named region, one h1 outside the rail, the key's sign not in its name, no layer tag inside a heading, Play with no pressed state",
+  "the phase text's hint (WP-09, CL-UX-12): its key named only while the single-key shortcuts are on, the opening and the tour told apart, a button that shows the text",
+  "the focus to an opened panel (WP-09, CL-UX-10): Layers opened by a key takes it on a ground button, not by a pointer; a map item's Enter puts it on the dossier's heading, and back on the item when closed",
+  "the caveats shown (WP-09, CL-UX-08): each derived reading's note as text in the Now tab; the Zuran and Allied vantages' “not what he saw” under the vantages while pressed",
+  "the first card's reconstruction (WP-09, CL-UX-11; decision 276 (a)): the card says it is a reconstruction from the sources, graded A to C, and its key's button opens the key"
  ]
 }
