@@ -38,7 +38,7 @@
 - The self-test's `wp09Checks` (5 checks): the names and structure; the phase text's hint; the focus by keyboard; the caveats as text; the first card
   and its key. The timeline's Play check renamed for Play's state ("named by its state, Pause while playing, with no pressed state besides"). The
   manifest regenerated from a run: 335 to 340 (the five `wp09Checks`; the timeline's check under its new name, the old one removed).
-- Negative controls (`tools/final-stage6/mutate-wp09.js`: each fix put back on a copy, the block run alone, `run-block.js`): 9 of 9 fail, the build as it is passing
+- Negative controls (`tools/final-stage6/mutate-wp09.js`: each fix put back on a copy, the block run alone, `run-block.js`), on the final build `19d7105f...`: 9 of 9 fail their own checks, the build as it is passing
   (`docs/final-stage6-evidence/wp09/mutate-wp09.json`).
 - `runtime-test.js`: `narrativeRefs` equal to `tools/step4/statements.js`'s refs, and the unchecked count.
 
