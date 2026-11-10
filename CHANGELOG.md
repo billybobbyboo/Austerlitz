@@ -58,7 +58,8 @@ identical to `archive/stage5wp08-572b0935.html`). Every value below is a design 
 - `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 errors). `check:baseline`: passes.
 - `check:selftest` (here, the pinned Chromium 141): 339 checks, every one passing; the manifest regenerated from this run, 335 to 339 (the four
   `wp10pChecks` above). Its only failures before the regeneration were the manifest's own (the four checks not yet in it).
-- `check:contrast` and `check:visual` (CI): __CI__
+- On CI (run 42763709786 on `ce82be1`, `checks.yml`, `visual: true`; the build `f2e6cd04...`, the branch's head's): passed, every job (`check:visual` on
+  its second attempt, 4 h 15 min; its first had not started: the runner's apt lock held through the browser's three install tries).
 
 ### What remains uncertain, and what is handed on
 
