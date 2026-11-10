@@ -39,7 +39,7 @@ button{font:inherit;color:inherit}
 /* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): the hidden rail is hidden once it has slid away (and inert at once, app.js syncInert), so its tab,
    its order-of-battle rows and the Sources button are no tab stops while it is off screen */
 body.rail-hidden .rail{transform:translateX(-101%);visibility:hidden;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s linear .32s}
-.brand h1{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);line-height:1.1;margin:0;color:var(--text-hi)}
+.brand .brand-t{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);line-height:1.1;margin:0;color:var(--text-hi)}
 .brand p{font-size:var(--t-ui);color:var(--text-muted);margin:5px 0 0;letter-spacing:.02em}
 .modes{display:flex;margin:16px 0 4px;border:1px solid var(--line-2);border-radius:2px;overflow:hidden}
 .mode-btn{flex:1;background:none;border:0;border-right:1px solid var(--line);padding:7px 4px;font-size:var(--t-small);
@@ -187,6 +187,9 @@ dl.kvs{margin:0 0 16px;padding:0}
 .sect{margin:0 0 18px}
 .sect h3{font-size:var(--t-small);color:var(--text-muted);letter-spacing:.06em;margin:0 0 8px;
   border-bottom:1px solid var(--line);padding-bottom:5px;font-weight:400}
+/* the final audits' Stage 6, WP-09 (CL-UX-15): a section's layer tag beside its heading, not inside it (it was read as part of the heading: "How many record") */
+.sect-h{display:flex;align-items:baseline;gap:6px;margin:0 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+.sect-h h3{margin:0;border-bottom:0;padding-bottom:0}
 ul.bul{margin:0;padding-left:16px}
 ul.bul li{font-size:var(--t-prose);color:var(--text-body);line-height:1.55;margin-bottom:5px}
 p.prose{font-family:var(--serif);font-size:var(--t-prose);line-height:1.6;color:var(--text-body);margin:0}
@@ -577,7 +580,7 @@ body.pm-map #restore{display:block}
   border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px;vertical-align:1px}
 .dispatch::-webkit-scrollbar{width:6px}
 .dispatch::-webkit-scrollbar-thumb{background:rgba(var(--line-rgb),.18);border-radius:3px}
-.rail .brand h1{font-size:var(--t-h2)}
+.rail .brand .brand-t{font-size:var(--t-h2)}
 #vignette{position:fixed;inset:0;pointer-events:none;z-index:4;
   background:radial-gradient(ellipse 78% 70% at 50% 46%, rgba(0,0,0,0) 62%, rgba(5,8,11,.30) 100%)}
 body.mode-staff #vignette{display:none}
@@ -725,8 +728,8 @@ body.firstrun-on #openingbtn{display:none}
 .lg-head{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin:0 0 0 auto;background:none;border:0;padding:0;
   color:var(--text-muted);font-size:var(--t-small);line-height:1.3;cursor:pointer}
 .lg-head:hover{color:var(--text)}
-.lg-head::after{content:"\2212";display:inline-block;width:12px;text-align:center}
-.legend.collapsed .lg-head::after{content:"+"}
+.lg-head::after{content:"\2212" / "";display:inline-block;width:12px;text-align:center}
+.legend.collapsed .lg-head::after{content:"+" / ""}   /* the final audits' Stage 6 (CL-UX-15): the sign drawn, not read into the toggle's name */
 .legend.squeezed .lg-head{cursor:not-allowed}
 .lg-rows{margin-top:3px;max-width:274px}
 .legend.collapsed .lg-rows{position:absolute;right:0;bottom:0;width:max-content;visibility:hidden;pointer-events:none}
@@ -1353,17 +1356,20 @@ $Id$
   <noscript><p class="boot-line">This map needs JavaScript and WebGL.</p></noscript>
 </div>
 
-<nav class="rail" id="rail" aria-label="Army and map controls">
+<!-- the final audits' Stage 6, WP-09 (CL-UX-15): the page's one h1, outside the rail (hidden below 1080 px), so that every width has it; the rail's
+     brand line shows the same word, hidden from assistive technology -->
+<h1 class="sr-only">Austerlitz, 2 December 1805: a command map</h1>
+<aside class="rail" id="rail" aria-label="Panels">
   <div class="brand">
     <!-- roadmap step 6 item 3: below 720 px wide, where the rail is a sheet at the foot, it closes here as well as by the Panels button -->
     <button class="railclose" id="railclose" type="button">&times;</button>
-    <h1>Austerlitz</h1>
+    <p class="brand-t" aria-hidden="true">Austerlitz</p>
     <p>2 December 1805 &middot; Moravia</p>
   </div>
 
   <!-- Stage 3B (docs/STAGE3_SPEC.md section B.2; owner decisions 54, 55): the dispatch is the rail's first tab, "Now", at
        1080 px and wider; below that it stays a card (decision 58) and the Now tab is hidden (app.js syncDock) -->
-  <div class="tabs" role="tablist" aria-label="The rail">
+  <div class="tabs" role="tablist" aria-label="Panels">
     <button class="tab-btn" id="tab-now" data-t="now" role="tab" aria-controls="now" aria-selected="true" tabindex="0">Now</button>
     <button class="tab-btn" id="tab-oob" data-t="oob" role="tab" aria-controls="oob" aria-selected="false" tabindex="-1">Order of battle</button>
     <button class="tab-btn" id="tab-analysis" data-t="analysis" role="tab" aria-controls="analysis" aria-selected="false" tabindex="-1">Analysis</button>
@@ -1420,7 +1426,7 @@ $Id$
   <div class="railfoot">
     <button id="srcbtn" type="button">Accuracy and sources</button>
   </div>
-</nav>
+</aside>
 
 <!-- below 1080 px the dispatch card stands here, where it stood before Stage 3B (app.js syncDock) -->
 <div id="dispatch-home" hidden></div>
@@ -1431,7 +1437,7 @@ $Id$
 <!-- roadmap step 6 item 3 (decision 223): below 720 px wide the tools and, in Study, the presentation switch stand behind this button
      (app.js setMenu; style.css); elsewhere it is not shown -->
 <button class="t" id="menubtn" type="button" aria-expanded="false" aria-controls="tools">Menu</button>
-<div class="tools" id="tools">
+<div class="tools" id="tools" role="region" aria-label="Tools">
   <div class="tools-vm" id="tools-vm"><!-- below 720 px, in Study: the presentation switch (app.js syncViewmode) --></div>
   <div class="grp">
     <!-- Stage 7C: the opening again, for a later visit (hidden while the first-run card, whose primary action it is, stands open) -->
@@ -1623,7 +1629,7 @@ $Id$
     <div class="tb-ctrl">
       <button class="t tb-icon" id="prevEv" aria-label="Previous event" title="Previous event">&#9474;&#9668;</button>
       <button class="t tb-icon" id="prev" aria-label="Back ten minutes" title="Back ten minutes">&#9668;</button>
-      <button class="t tb-play" id="play" aria-pressed="false">Play</button>
+      <button class="t tb-play" id="play" type="button">Play</button>
       <button class="t tb-icon" id="next" aria-label="Forward ten minutes" title="Forward ten minutes">&#9658;</button>
       <button class="t tb-icon" id="nextEv" aria-label="Next event" title="Next event">&#9658;&#9474;</button>
       <button class="t tb-follow" id="follow" aria-pressed="true" title="Follow the action: while the clock plays, keep the live events in view; paused, each phase's view">Follow</button>
@@ -16478,7 +16484,7 @@ function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+fiel
 function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
-  d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
+  d.innerHTML=(layer?'<div class="sect-h"><h3>'+esc(title)+'</h3><span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span></div>':'<h3>'+esc(title)+'</h3>')+
     (isDl?'<dl class="kvs">'+html+'</dl>':html);
   return d;
 }
@@ -17168,7 +17174,7 @@ function setProg(f){
 function stopPlay(){
   playing=false; dwellReset(); FOLLOW.T=null;
   var b=document.getElementById("play");
-  if(b){ b.textContent="Play"; b.setAttribute("aria-pressed","false"); }
+  if(b) b.textContent="Play";   /* the final audits' Stage 6 (CL-UX-15): its name says the state; no pressed state besides ("Pause, toggle button, pressed") */
   if(selection&&drawerKey()!==_drawerKey) paintDrawer();   /* WP-05 (CL-SIM-01): the dossier the clock's where it stops */
   paintSituation();   /* the final audits' WP-05 (CL-SIM-08): paused in a dwell's hold, the caption is the clock's at once, as after a seek (its key holds
                          playing and the dwell's events, both just changed); until WP-05 it named the dwell's events until the clock next moved */
@@ -17180,7 +17186,7 @@ function togglePlay(){
   if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true});
   playing=true; dwellReset(); FOLLOW.T=null; FOLLOW.ev=null;
   var b=document.getElementById("play");
-  if(b){ b.textContent="Pause"; b.setAttribute("aria-pressed","true"); }
+  if(b) b.textContent="Pause";
   paintExaggeration();
   openingHead();   /* Stage 7D */
 }
@@ -20333,9 +20339,10 @@ var AUSTERLITZ_DEBUG=(function(){
       var mids=_evTicks.map(function(o){ return o.t; }); for(var k=1;k<mids.length;k++) if(mids[k]<mids[k-1]) grp.push("event markers not in time order");
       M[3].click(); if(!selection||selection.kind!=="e"||Math.abs(clock-_evTicks[3].t)>1e-6) grp.push("a marker's click did not select its event at its clock");
       select(null,null);
-      togglePlay(); var pp=document.getElementById("play").getAttribute("aria-pressed"); stopPlay(); var pp2=document.getElementById("play").getAttribute("aria-pressed");
-      if(pp!=="true"||pp2!=="false") grp.push("Play's aria-pressed "+pp+"/"+pp2);
-      ck("timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play pressed while playing",
+      /* since the final audits' Stage 6 (CL-UX-15): Play named by its state, Pause while playing, with no pressed state besides */
+      var PB=document.getElementById("play"); togglePlay(); var pp=PB.textContent+"/"+PB.hasAttribute("aria-pressed"); stopPlay(); var pp2=PB.textContent+"/"+PB.hasAttribute("aria-pressed");
+      if(pp!=="Pause/false"||pp2!=="Play/false") grp.push("Play's name and pressed state "+pp+", "+pp2);
+      ck("timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play named Pause while playing, with no pressed state (WP-09, CL-UX-15)",
         !grp.length, grp.length?grp.join("; "):M.length+" event markers in time order, each named; the clock unmoved by the groups' keys");
       /* Watch: the presentation switch in the control row at full opacity; the caption carries the derived readings */
       setClock(570,{instant:true,camera:false}); finishTween(); setPresentation("watch"); var vm=document.getElementById("viewmode"), d=document.querySelector("#tb-cap .der");
@@ -21397,7 +21404,7 @@ var AUSTERLITZ_DEBUG=(function(){
       function first(ff){ var m=/^\s*(?:"([^"]+)"|'([^']+)'|([^,]+))/.exec(ff||""); return m?(m[1]||m[2]||m[3]).trim():""; }
       var want={sans:first(TOKENS.type.sans),serif:first(TOKENS.type.serif)}, bad=[], seen=[];
       if(want.sans!=="Austerlitz Sans"||want.serif!=="Austerlitz Serif") bad.push("the tokens name "+want.sans+" and "+want.serif+" first");
-      [["body","sans"],["#tb-cap","sans"],[".tb-icon","sans"],[".brand h1","serif"],["#fr-title","serif"],["#maplayer .mln","serif"]].forEach(function(p){
+      [["body","sans"],["#tb-cap","sans"],[".tb-icon","sans"],[".brand .brand-t","serif"],["#fr-title","serif"],["#maplayer .mln","serif"]].forEach(function(p){
         var e=document.querySelector(p[0]); if(!e){ bad.push(p[0]+" is not in the page"); return; }
         var f=first(getComputedStyle(e).fontFamily); seen.push(p[0]+" "+f);
         if(f!==want[p[1]]) bad.push(p[0]+" is set in "+f+", not "+want[p[1]]); });

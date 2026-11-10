@@ -8567,7 +8567,7 @@ function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+fiel
 function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
-  d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
+  d.innerHTML=(layer?'<div class="sect-h"><h3>'+esc(title)+'</h3><span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span></div>':'<h3>'+esc(title)+'</h3>')+
     (isDl?'<dl class="kvs">'+html+'</dl>':html);
   return d;
 }
@@ -9257,7 +9257,7 @@ function setProg(f){
 function stopPlay(){
   playing=false; dwellReset(); FOLLOW.T=null;
   var b=document.getElementById("play");
-  if(b){ b.textContent="Play"; b.setAttribute("aria-pressed","false"); }
+  if(b) b.textContent="Play";   /* the final audits' Stage 6 (CL-UX-15): its name says the state; no pressed state besides ("Pause, toggle button, pressed") */
   if(selection&&drawerKey()!==_drawerKey) paintDrawer();   /* WP-05 (CL-SIM-01): the dossier the clock's where it stops */
   paintSituation();   /* the final audits' WP-05 (CL-SIM-08): paused in a dwell's hold, the caption is the clock's at once, as after a seek (its key holds
                          playing and the dwell's events, both just changed); until WP-05 it named the dwell's events until the clock next moved */
@@ -9269,7 +9269,7 @@ function togglePlay(){
   if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true});
   playing=true; dwellReset(); FOLLOW.T=null; FOLLOW.ev=null;
   var b=document.getElementById("play");
-  if(b){ b.textContent="Pause"; b.setAttribute("aria-pressed","true"); }
+  if(b) b.textContent="Pause";
   paintExaggeration();
   openingHead();   /* Stage 7D */
 }
@@ -12422,9 +12422,10 @@ var AUSTERLITZ_DEBUG=(function(){
       var mids=_evTicks.map(function(o){ return o.t; }); for(var k=1;k<mids.length;k++) if(mids[k]<mids[k-1]) grp.push("event markers not in time order");
       M[3].click(); if(!selection||selection.kind!=="e"||Math.abs(clock-_evTicks[3].t)>1e-6) grp.push("a marker's click did not select its event at its clock");
       select(null,null);
-      togglePlay(); var pp=document.getElementById("play").getAttribute("aria-pressed"); stopPlay(); var pp2=document.getElementById("play").getAttribute("aria-pressed");
-      if(pp!=="true"||pp2!=="false") grp.push("Play's aria-pressed "+pp+"/"+pp2);
-      ck("timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play pressed while playing",
+      /* since the final audits' Stage 6 (CL-UX-15): Play named by its state, Pause while playing, with no pressed state besides */
+      var PB=document.getElementById("play"); togglePlay(); var pp=PB.textContent+"/"+PB.hasAttribute("aria-pressed"); stopPlay(); var pp2=PB.textContent+"/"+PB.hasAttribute("aria-pressed");
+      if(pp!=="Pause/false"||pp2!=="Play/false") grp.push("Play's name and pressed state "+pp+", "+pp2);
+      ck("timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play named Pause while playing, with no pressed state (WP-09, CL-UX-15)",
         !grp.length, grp.length?grp.join("; "):M.length+" event markers in time order, each named; the clock unmoved by the groups' keys");
       /* Watch: the presentation switch in the control row at full opacity; the caption carries the derived readings */
       setClock(570,{instant:true,camera:false}); finishTween(); setPresentation("watch"); var vm=document.getElementById("viewmode"), d=document.querySelector("#tb-cap .der");
@@ -13486,7 +13487,7 @@ var AUSTERLITZ_DEBUG=(function(){
       function first(ff){ var m=/^\s*(?:"([^"]+)"|'([^']+)'|([^,]+))/.exec(ff||""); return m?(m[1]||m[2]||m[3]).trim():""; }
       var want={sans:first(TOKENS.type.sans),serif:first(TOKENS.type.serif)}, bad=[], seen=[];
       if(want.sans!=="Austerlitz Sans"||want.serif!=="Austerlitz Serif") bad.push("the tokens name "+want.sans+" and "+want.serif+" first");
-      [["body","sans"],["#tb-cap","sans"],[".tb-icon","sans"],[".brand h1","serif"],["#fr-title","serif"],["#maplayer .mln","serif"]].forEach(function(p){
+      [["body","sans"],["#tb-cap","sans"],[".tb-icon","sans"],[".brand .brand-t","serif"],["#fr-title","serif"],["#maplayer .mln","serif"]].forEach(function(p){
         var e=document.querySelector(p[0]); if(!e){ bad.push(p[0]+" is not in the page"); return; }
         var f=first(getComputedStyle(e).fontFamily); seen.push(p[0]+" "+f);
         if(f!==want[p[1]]) bad.push(p[0]+" is set in "+f+", not "+want[p[1]]); });

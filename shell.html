@@ -35,17 +35,20 @@
   <noscript><p class="boot-line">This map needs JavaScript and WebGL.</p></noscript>
 </div>
 
-<nav class="rail" id="rail" aria-label="Army and map controls">
+<!-- the final audits' Stage 6, WP-09 (CL-UX-15): the page's one h1, outside the rail (hidden below 1080 px), so that every width has it; the rail's
+     brand line shows the same word, hidden from assistive technology -->
+<h1 class="sr-only">Austerlitz, 2 December 1805: a command map</h1>
+<aside class="rail" id="rail" aria-label="Panels">
   <div class="brand">
     <!-- roadmap step 6 item 3: below 720 px wide, where the rail is a sheet at the foot, it closes here as well as by the Panels button -->
     <button class="railclose" id="railclose" type="button">&times;</button>
-    <h1>Austerlitz</h1>
+    <p class="brand-t" aria-hidden="true">Austerlitz</p>
     <p>2 December 1805 &middot; Moravia</p>
   </div>
 
   <!-- Stage 3B (docs/STAGE3_SPEC.md section B.2; owner decisions 54, 55): the dispatch is the rail's first tab, "Now", at
        1080 px and wider; below that it stays a card (decision 58) and the Now tab is hidden (app.js syncDock) -->
-  <div class="tabs" role="tablist" aria-label="The rail">
+  <div class="tabs" role="tablist" aria-label="Panels">
     <button class="tab-btn" id="tab-now" data-t="now" role="tab" aria-controls="now" aria-selected="true" tabindex="0">Now</button>
     <button class="tab-btn" id="tab-oob" data-t="oob" role="tab" aria-controls="oob" aria-selected="false" tabindex="-1">Order of battle</button>
     <button class="tab-btn" id="tab-analysis" data-t="analysis" role="tab" aria-controls="analysis" aria-selected="false" tabindex="-1">Analysis</button>
@@ -102,7 +105,7 @@
   <div class="railfoot">
     <button id="srcbtn" type="button">Accuracy and sources</button>
   </div>
-</nav>
+</aside>
 
 <!-- below 1080 px the dispatch card stands here, where it stood before Stage 3B (app.js syncDock) -->
 <div id="dispatch-home" hidden></div>
@@ -113,7 +116,7 @@
 <!-- roadmap step 6 item 3 (decision 223): below 720 px wide the tools and, in Study, the presentation switch stand behind this button
      (app.js setMenu; style.css); elsewhere it is not shown -->
 <button class="t" id="menubtn" type="button" aria-expanded="false" aria-controls="tools">Menu</button>
-<div class="tools" id="tools">
+<div class="tools" id="tools" role="region" aria-label="Tools">
   <div class="tools-vm" id="tools-vm"><!-- below 720 px, in Study: the presentation switch (app.js syncViewmode) --></div>
   <div class="grp">
     <!-- Stage 7C: the opening again, for a later visit (hidden while the first-run card, whose primary action it is, stands open) -->
@@ -305,7 +308,7 @@
     <div class="tb-ctrl">
       <button class="t tb-icon" id="prevEv" aria-label="Previous event" title="Previous event">&#9474;&#9668;</button>
       <button class="t tb-icon" id="prev" aria-label="Back ten minutes" title="Back ten minutes">&#9668;</button>
-      <button class="t tb-play" id="play" aria-pressed="false">Play</button>
+      <button class="t tb-play" id="play" type="button">Play</button>
       <button class="t tb-icon" id="next" aria-label="Forward ten minutes" title="Forward ten minutes">&#9658;</button>
       <button class="t tb-icon" id="nextEv" aria-label="Next event" title="Next event">&#9658;&#9474;</button>
       <button class="t tb-follow" id="follow" aria-pressed="true" title="Follow the action: while the clock plays, keep the live events in view; paused, each phase's view">Follow</button>
