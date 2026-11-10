@@ -192,6 +192,43 @@ const PHONE_STATES=[
   ["staff-phone", ()=>{ exitTour(); setMode("staff"); updateVisibility(); }, ["exitTour"], ()=>tourStep===-1&&mode==="staff"]
 ];
 const PHONE_DEVICE={vp:[390,844], dpr:3, ua:"Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1"};
+/* the final audits' Stage 6, WP-09 (CL-UX-01; WCAG 1.4.10, reflow): a third page at WCAG's reflow width, 320 x 256 CSS px at density 4 (a 1280 x 1024 screen at
+   400%), a desktop's (no touch, no phone agent): the first card, the screen after it, the phase text's sheet (decision 305 (a)), the Panels, the sources
+   sheet, a dossier, the keys overlay and the Layers panel. Each state reached only with what it opens on the screen (its box inside the viewport, or its
+   scrolling box at least 40 px tall where it is longer) and the page with no horizontal scroll; every text read at AA as on the other pages */
+const RF_HELP="window.__rf={noH:function(){ return document.documentElement.scrollWidth<=innerWidth+1&&document.body.scrollWidth<=innerWidth+1; },"+
+  "on:function(s,min){ var e=typeof s==='string'?document.querySelector(s):s; if(!e) return false; var r=e.getBoundingClientRect(), c=getComputedStyle(e);"+
+  " if(c.display==='none'||c.visibility==='hidden'||r.width<=0||r.height<=0) return false; if(r.left<-1||r.top<-1||r.right>innerWidth+1) return false;"+
+  " return r.bottom<=innerHeight+1||(e.scrollHeight>e.clientHeight&&Math.min(r.bottom,innerHeight)-Math.max(0,r.top)>=(min||40)); }};";
+const REFLOW_STATES=[
+  ["reflow-explore", ()=>{ closeFirst(null); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); },
+    ["closeFirst"], ()=>__rf.noH()&&!firstRunOpen&&__rf.on("#play")&&__rf.on("#helpbtn")&&__rf.on("#phasebtn")],
+  ["reflow-phase", ()=>{ document.getElementById("phasebtn").click(); }, ["setDSheet"], ()=>__rf.noH()&&dsheetOpen()&&__rf.on(".dispatch")&&__rf.on("#d-lede",10)],
+  ["reflow-panels", ()=>{ setDSheet(false); setPanels(true); }, ["setPanels"], ()=>__rf.noH()&&!document.body.classList.contains("rail-hidden")&&__rf.on(".railscroll")],
+  ["reflow-sources", ()=>{ openSources(); }, ["openSources"], ()=>__rf.noH()&&__rf.on("#modal .sheet")],
+  ["reflow-dossier", ()=>{ closeSources(); setPanels(false); select("f","sthilaire"); paintDrawer(); }, ["select"], ()=>__rf.noH()&&!!selection&&__rf.on("#drawer")],
+  ["reflow-help", ()=>{ select(null,null); setHelp(true); }, ["setHelp"], ()=>__rf.noH()&&__rf.on("#help .sheet")],
+  ["reflow-layers", ()=>{ setHelp(false); setLayerPop(true); }, ["setLayerPop"], ()=>__rf.noH()&&__rf.on("#layerpop")]
+];
+const REFLOW_VP=[320,256], REFLOW_DPR=4;
+/* the final audits' Stage 6, WP-09 (CL-UX-09; WCAG 1.4.1 and 1.4.11 in a forced-colours mode): a fourth page at 1600 x 900 with forced colours emulated.
+   Not text contrast (the user's system colours draw the text): each pressed or selected state drawn otherwise than its group's unpressed one (the
+   presentation, the vantage, the speed, the phase, the layers' rows), the event markers drawn (their background kept, the two sides apart), the key's
+   and the card's side swatches apart */
+const FC_STATES=[
+  ["fc-explore", ()=>{ closeFirst(null); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); }, ["closeFirst"],
+    ()=>{ if(!matchMedia("(forced-colors: active)").matches) return false;
+      var G=[[".vm-btn",'[aria-pressed="true"]'],[".van-btn",'[aria-pressed="true"]'],[".spd-btn",'[aria-pressed="true"]'],["#phases button",'[aria-current="true"]']];
+      return G.every(function(g){ var A=[].slice.call(document.querySelectorAll(g[0])), a=A.filter(function(e){ return e.matches(g[1]); })[0], z=A.filter(function(e){ return !e.matches(g[1]); })[0];
+        return a&&z&&getComputedStyle(a).backgroundColor!==getComputedStyle(z).backgroundColor; }); }],
+  ["fc-markers", ()=>{}, [], ()=>{ var M=[].slice.call(document.querySelectorAll("#evmarks .ev-mark")); if(M.length<10) return false;
+      var bgs=M.map(function(e){ return getComputedStyle(e).backgroundColor; }), fr=M.filter(function(e){ return e.classList.contains("fr")&&!e.classList.contains("dec"); })[0], al=M.filter(function(e){ return e.classList.contains("al")&&!e.classList.contains("dec"); })[0];
+      return bgs.every(function(b){ return !/rgba\([^)]*, 0\)$/.test(b)&&b!=="transparent"; })&&!!fr&&!!al&&getComputedStyle(fr).backgroundColor!==getComputedStyle(al).backgroundColor; }],
+  ["fc-key", ()=>{ ML.legendOpen=true; requestRender(2); }, [], ()=>{ var a=document.querySelector('.legend .sw[data-key="side-fr"]'), b=document.querySelector('.legend .sw[data-key="side-al"]');
+      return !!a&&!!b&&getComputedStyle(a).backgroundColor!==getComputedStyle(b).backgroundColor; }],
+  ["fc-layers", ()=>{ setLayerPop(true); }, ["setLayerPop"], ()=>{ var a=document.querySelector('#layerpop .layer-btn[aria-pressed="true"]'), z=document.querySelector('#layerpop .layer-btn[aria-pressed="false"]');
+      return !!a&&!!z&&getComputedStyle(a).backgroundColor!==getComputedStyle(z).backgroundColor; }]
+];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }
 function L(c){ return 0.2126*lin(c[0])+0.7152*lin(c[1])+0.0722*lin(c[2]); }
@@ -207,9 +244,9 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   const LOG=[]; let AT="load", page=null, PAGE="1600x900 contrast";
   const rec=(type,text)=>LOG.push({page:PAGE,at:AT,type:type,text:String(text).slice(0,400)});
   /* one page of states: the 1600 x 900 page, then (roadmap step 6 item 3) the phone's */
-  async function openP(vp,dev){
+  async function openP(vp,dev,o){ o=o||{};
     page=dev?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:dev.dpr,isMobile:true,hasTouch:true,userAgent:dev.ua})).newPage()
-      :await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1});
+      :await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:o.dpr||1,forcedColors:o.fc?"active":"none"});
     page.on("console",m=>{ const t=m.type(); if(t==="warning"||t==="error"||t==="assert") rec(t,m.text()); });
     page.on("pageerror",e=>rec("pageerror",e.message+" | "+String(e.stack||"").split("\n")[1]));
     page.on("crash",()=>rec("crash","the page crashed"));
@@ -266,7 +303,7 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   /* every state is drawn by AUSTERLITZ_DEBUG.settle before it is read (the map layer lays out in a frame) */
   if(!LEGACY&&(await missing(["AUSTERLITZ_DEBUG"])).length) stateFails.push("the build has no AUSTERLITZ_DEBUG: no state can be drawn before it is read (T-5)");
   const rows=[...await page.evaluate(COLLECT+'("first-run")')];
-  async function readStates(STATES){
+  async function readStates(STATES,noRows){
   for(const [name,fn,needs,reached] of STATES){ AT=name;
     const miss=await missing(needs);
     if(miss.length){ if(LEGACY){ skipped.push(name+" (the build has no "+miss.join(", ")+")"); continue; }
@@ -277,7 +314,7 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
     let ok=false; try{ ok=await page.evaluate(reached); }catch(e){ ok=false; }
     if(!ok){ const desc=String(reached).replace(/^\(\)=>/,"");
       if(LEGACY) skipped.push(name+" (not reached: "+desc+")"); else stateFails.push("state "+name+" not reached: "+desc+" is false (T-5)"); }
-    rows.push(...await page.evaluate(COLLECT+"("+JSON.stringify(name)+")")); }
+    if(!noRows) rows.push(...await page.evaluate(COLLECT+"("+JSON.stringify(name)+")")); }
   }
   await readStates(STATES);
   AT="font check";
@@ -293,6 +330,21 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
     AT="phone font check"; const FC2=await fontCheck(); FC2.fails.forEach(x=>fontFails.push(x)); FC.chars+=FC2.chars; FC.fonts+=FC2.fonts; }
   else if(!LEGACY) stateFails.push("the build has no phone layout (PHONE_Q): the phone's states cannot be read (roadmap step 6 item 3, T-5)");
   else skipped.push("the phone's states (the build has no phone layout)");
+  /* the final audits' Stage 6 (CL-UX-01, CL-UX-09): the reflow page and the forced-colours page (a build without the short screens' phase text, --legacy, skips them) */
+  let extraStates=0;
+  const hasReflow=/id="phasebtn"/.test(fs.readFileSync(html,"utf8"));
+  if(hasReflow){ await page.close(); PAGE="320x256 reflow contrast"; AT="reflow-first";
+    const fs3=await openP(REFLOW_VP,null,{dpr:REFLOW_DPR}); if(fs3!=="loaded") stateFails.push("the reflow page: the fonts are "+fs3+" after document.fonts.ready (decision 141)");
+    await page.evaluate(RF_HELP);
+    if(!(await page.evaluate(()=>firstRunOpen===true&&__rf.noH()&&__rf.on("#firstrun")))) stateFails.push("state reflow-first not reached: the first card not on the screen (inside it or scrolling), or the page scrolls sideways, at 320 x 256 (T-5; CL-UX-01)");
+    rows.push(...await page.evaluate(COLLECT+'("reflow-first")'));
+    await readStates(REFLOW_STATES); extraStates+=REFLOW_STATES.length+1;
+    AT="reflow font check"; const FC3=await fontCheck(); FC3.fails.forEach(x=>fontFails.push(x)); FC.chars+=FC3.chars; FC.fonts+=FC3.fonts;
+    await page.close(); PAGE="1600x900 forced colours"; AT="fc-first";
+    await openP([1600,900],null,{fc:true});
+    await readStates(FC_STATES,true); extraStates+=FC_STATES.length; }
+  else if(!LEGACY) stateFails.push("the build has no short screens' phase text (#phasebtn): the reflow and forced-colours states cannot be read (the final audits' Stage 6, T-5)");
+  else skipped.push("the reflow and forced-colours states (the build has neither)");
   await browser.close();
   const pairs=new Map(); let small=0;
   rows.forEach(r=>{
@@ -315,7 +367,7 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   /* T-1: the page's messages against CONSOLE_ALLOW (each entry named, with its reason) */
   const CJ=TH.judgeConsole(LOG), con=CJ.bad;
   if(fontsStatus!=="loaded") stateFails.push("the fonts are "+fontsStatus+" after document.fonts.ready (decision 141)");
-  console.log("states "+(STATES.length+1+phoneStates)+" ("+phoneStates+" at 390 x 844 as a phone): "+(STATES.length+1+phoneStates-stateFails.filter(x=>/^state /.test(x)).length-skipped.length)+" reached"+(skipped.length?", "+skipped.length+" skipped (--legacy): "+skipped.join("; "):"")+
+  console.log("states "+(STATES.length+1+phoneStates+extraStates)+" ("+phoneStates+" at 390 x 844 as a phone; "+extraStates+" at 320 x 256 and in forced colours): "+(STATES.length+1+phoneStates+extraStates-stateFails.filter(x=>/^state /.test(x)).length-skipped.length)+" reached"+(skipped.length?", "+skipped.length+" skipped (--legacy): "+skipped.join("; "):"")+
     "; console messages "+LOG.length+", failing "+con.length+(Object.keys(CJ.used).length?" (allowed by name in thresholds.js CONSOLE_ALLOW: "+Object.entries(CJ.used).map(([k,n])=>k+" "+n).join(", ")+")":""));
   stateFails.forEach(f=>console.log("  ! "+f));
   con.slice(0,40).forEach(e=>console.log("  ! "+TH.consoleLine(e)));

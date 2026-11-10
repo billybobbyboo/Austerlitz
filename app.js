@@ -9466,7 +9466,10 @@ function syncViewmode(){
    it or Esc closes. */
 /* the query: below 720 px wide and taller than 430 px (a phone held upright; a small phone held landscape, 667 x 375 or 640 x 360, keeps the
    layout above, as an 844 x 390 one does: the review's item 3) */
-var PHONE_Q="(max-width:720px) and (min-height:431px)", PHONE=false;
+/* the final audits' Stage 6, WP-09 (CL-UX-01; WCAG 1.4.10): also a desktop's window under 720 px wide at any height (a fine pointer: a desktop zoomed to
+   400%, 400 x 225 or 320 x 256), whose wrapped controls had covered the tools and the Panels button; a phone held landscape (a coarse pointer) keeps
+   the layout decision 226 (a) gave it */
+var PHONE_Q="(max-width:720px) and (min-height:431px), (max-width:720px) and (pointer:fine)", PHONE=false;
 function syncPhone(){
   var want=!!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(PHONE_Q).matches);
   if(!want&&dsheetOpen()&&!shortSheet()) setDSheet(false);   /* Stage 6 (CL-UX-01): the short screen's sheet closed where it no longer applies */
