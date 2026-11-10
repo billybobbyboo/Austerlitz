@@ -20,7 +20,7 @@ permissions:
   contents: read
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
@@ -43,7 +43,7 @@ jobs:
   # 779-1,189 s with them), whose step has taken 16-31 minutes, and one stalled install try takes ten minutes of the limit; since 8E (the
   # richer kit and the gait) the step has taken 19-38 minutes in eleven runs, the job at most 44
   browser:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     strategy:
       fail-fast: false
@@ -74,7 +74,7 @@ jobs:
   # about twelve minutes left (136 minutes on 8D's build); GitHub ends any job at 360
   visual:
     if: github.event_name == 'workflow_dispatch' && inputs.visual
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
