@@ -88,7 +88,8 @@ All here, on this branch's final build `250b0e32...` (Chromium 141.0.7390.37, th
   disc, against the drawn ground as before). Re-run here on `overview-field`, `pratzen-low-10x` and `phone-390-explore`: the figures' and the
   standards' largest error 0 (was 0.8746, 2.337, 0.8746), each case passing `check-report.js`. The failed run is the negative control: the same build
   judged by the measure without the ice. Every other measure of that run passed (the motion block, culling in motion, the census, the live blocks).
-- `check:visual` on CI, second run: __CI2__
+- `check:visual` on CI, second run (42770857135 on `1bb13f2`, `checks.yml`, `visual: true`; the build `250b0e32...`, the branch's head's): passed,
+  every job (the run 4 h 13 min; every case's figures and standards on the drawn ground or a mere's ice).
 
 ### What remains uncertain, and what is handed on
 
