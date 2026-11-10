@@ -9949,6 +9949,96 @@ function wp08Checks(){
   }
   return out;
 }
+/* the final audits' Stage 6, WP-09 (accessibility and first use): the self-test's checks of the names and structure (CL-UX-15), the phase text's hint
+   (CL-UX-12), the focus taken by a panel opened from the keyboard (CL-UX-10), the caveats shown (CL-UX-08) and the first card's sentence (CL-UX-11; decision
+   276 (a)). Each reads the page as drawn (the DOM, the computed styles, the focus); the reflow and forced colours are check:contrast's and check:visual's */
+function wp09Checks(){
+  var out=[], K={t:clock,sel:selection,pres:presentation,hide:hideDispatch,sc:SHORTCUTS.on,lg:ML.legendOpen,v:curVantage,fc:freeCam,pos:landCam.position.clone(),tgt:orbitTarget.clone(),act:document.activeElement};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function vis(e){ if(!e) return false; for(var n=e;n&&n.nodeType===1;n=n.parentElement){ if(n.hidden) return false; var c=getComputedStyle(n); if(c.display==="none"||c.visibility==="hidden") return false; } var r=e.getBoundingClientRect(); return r.width>0&&r.height>0; }
+  function finishTween(){ var n=0; if(tween) mlReset("tween ended at once"); while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
+  if(playing) stopPlay();
+  try{
+  if(presentation!=="study") setPresentation("study");
+  /* CL-UX-15: the rail a complementary region named "Panels", its tablist "Panels"; one h1, outside the rail; the key's toggle drawing its sign with
+     no text for its name; no layer tag inside a section's heading (a formation's full dossier); Play's pressed state not set */
+  guard("names and structure (WP-09, CL-UX-15)",function(){
+    var bad=[], rail=document.getElementById("rail"), tl=document.querySelector(".tabs[role=tablist]"), H1=document.querySelectorAll("h1");
+    if(!rail||rail.tagName!=="ASIDE"||rail.getAttribute("aria-label")!=="Panels") bad.push("the rail "+(rail?rail.tagName+" "+rail.getAttribute("aria-label"):"missing"));
+    if(!tl||tl.getAttribute("aria-label")!=="Panels") bad.push("the tablist named "+(tl&&tl.getAttribute("aria-label")));
+    if(H1.length!==1||rail.contains(H1[0])) bad.push(H1.length+" h1"+(H1.length===1?" inside the rail":""));
+    var tools=document.getElementById("tools"); if(!tools||tools.getAttribute("role")!=="region"||!tools.getAttribute("aria-label")) bad.push("the tools not a named region");
+    var af=getComputedStyle(document.getElementById("lg-toggle"),"::after").content; if(!/\/\s*""$/.test(af)) bad.push("the key's sign read into its name ("+af+")");
+    select("f","sthilaire"); dossierExpanded=true; paintDrawer();
+    var hs=[].slice.call(document.querySelectorAll("#drawer h3")), inH=hs.filter(function(h){ return h.querySelector(".ltag"); });
+    if(!hs.length) bad.push("no section heading in the full dossier"); if(inH.length) bad.push(inH.length+" headings carrying their tag ("+inH[0].textContent.trim()+")");
+    dossierExpanded=false; select(null,null);
+    var PB=document.getElementById("play"); togglePlay(); var pp=PB.textContent+"/"+PB.hasAttribute("aria-pressed"); stopPlay(); var pp2=PB.textContent+"/"+PB.hasAttribute("aria-pressed");
+    if(pp!=="Pause/false"||pp2!=="Play/false") bad.push("Play's name and pressed state "+pp+", "+pp2);
+    ck("names and structure (WP-09, CL-UX-15): the rail the complementary region and tablist “Panels”, the tools a named region, one h1 outside the rail, the key's sign not in its name, no layer tag inside a heading, Play with no pressed state",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):hs.length+" section headings in the full dossier, none with its tag");
+  });
+  /* CL-UX-12: the phase text hidden, the Now tab's hint names D only while the single-key shortcuts are on, tells the opening from the tour, and its
+     button shows the text */
+  guard("the phase text's hint (WP-09, CL-UX-12)",function(){
+    var bad=[], t=document.getElementById("now-off-t"), b=document.getElementById("now-show");
+    setDispatchVisible(false); setShortcuts(true); var a1=t.textContent; setShortcuts(false); var a2=t.textContent;
+    if(a1.indexOf("D")<0||/press D/i.test(a2)||/ D\b/.test(a2)) bad.push("the key named "+(a1.indexOf("D")<0?"not with the shortcuts on":"with them off")+": “"+a2+"”");
+    if(/guided tour/i.test(a2)) bad.push("the tour named outside it");
+    if(!b||!/Show the phase text/.test(b.textContent)) bad.push("no button to show it"); else { b.click(); if(hideDispatch) bad.push("its button left the text hidden"); }
+    setShortcuts(K.sc); setDispatchVisible(!K.hide);
+    ck("the phase text's hint (WP-09, CL-UX-12): its key named only while the single-key shortcuts are on, the opening and the tour told apart, a button that shows the text",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"with the shortcuts on “"+a1+"”; off “"+a2+"”; the button shows the text");
+  });
+  /* CL-UX-10: the Layers panel opened by a key (a click of detail 0) takes the focus on a ground button; a formation's map item activated by Enter
+     opens its dossier with the focus on its heading, and closing the dossier gives the focus back to the item */
+  guard("the focus to an opened panel (WP-09, CL-UX-10)",function(){
+    var bad=[], lb=document.getElementById("layersbtn"), pop=document.getElementById("layerpop");
+    lb.focus(); lb.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true,detail:0}));
+    var f1=document.activeElement; if(pop.hidden||!pop.contains(f1)||!f1.closest(".modes")) bad.push("Layers by a key: the focus on "+(f1&&(f1.id||f1.textContent.trim().slice(0,20))));
+    setLayerPop(false); if(document.activeElement!==lb) bad.push("Layers closed: the focus not back on its button");
+    lb.focus(); lb.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true,detail:1})); if(pop.contains(document.activeElement)) bad.push("Layers by a pointer took the focus"); setLayerPop(false);
+    AUSTERLITZ_DEBUG.settle(4,true); mlLayout();
+    var it=null; for(var k in ML.items){ var q=ML.items[k]; if(q.pick&&q.pick.kind==="f"&&q.focusable&&vis(q.el)){ it=q; break; } }
+    if(!it) bad.push("no formation's item to activate");
+    else { it.el.focus(); it.el.dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",bubbles:true,cancelable:true}));
+      var h=document.activeElement; if(!(h&&h.tagName==="H2"&&document.getElementById("drawer").contains(h))) bad.push("Enter on "+it.pick.id+"'s item: the focus on "+(h&&h.tagName));
+      select(null,null); if(document.activeElement!==it.el) bad.push("the dossier closed: the focus not back on the item"); }
+    ck("the focus to an opened panel (WP-09, CL-UX-10): Layers opened by a key takes it on a ground button, not by a pointer; a map item's Enter puts it on the dossier's heading, and back on the item when closed",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"Layers and "+(it&&it.pick.id)+"'s dossier");
+  });
+  /* CL-UX-08: in the Now tab each derived reading's note shown as text (09:00, the plateau reading); the Zuran vantage's caveat shown under the
+     vantages while it is pressed, none at the Field's */
+  guard("the caveats shown (WP-09, CL-UX-08)",function(){
+    var bad=[];
+    setClock(540,{instant:true,force:true,camera:false}); paintSituation();
+    var host=document.getElementById("situation"), dn=host?host.querySelectorAll(".der-note"):[];
+    if(!host||!host.querySelector(".der")||!dn.length||(dn[0].textContent||"")!==FLAT_NOTE) bad.push("the plateau reading's note not shown as text in the Now tab");
+    document.querySelector('.van-btn[data-v="zuran"]').click(); syncFollow(); var vn=document.getElementById("van-note"), z=vn.textContent, zs=vis(vn);
+    if(!zs||!/not what he saw/.test(z)) bad.push("the Zuran vantage's caveat not shown (“"+z+"”)");
+    document.querySelector('.van-btn[data-v="field"]').click(); syncFollow(); if(vis(vn)) bad.push("a caveat shown at the Field vantage");
+    finishTween();
+    ck("the caveats shown (WP-09, CL-UX-08): each derived reading's note as text in the Now tab; the Zuran and Allied vantages' “not what he saw” under the vantages while pressed",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"the plateau's note shown; at the Zuran “"+z+"”");
+  });
+  /* CL-UX-11 (decision 276 (a)): the first card says the map is a reconstruction graded A to C, and its "Show the key" closes the card with the key open */
+  guard("the first card's reconstruction (WP-09, CL-UX-11)",function(){
+    var bad=[]; document.getElementById("firstrun").hidden=false; openFirstRun(); var fk=document.getElementById("fr-key"), txt=(fk.textContent||"").replace(/\s+/g," "), gb=document.getElementById("fr-grades");
+    if(txt.indexOf("a reconstruction from the sources, its certainty graded A to C")<0) bad.push("the sentence missing: “"+txt.slice(-140)+"”");
+    if(!gb||!vis(gb)) bad.push("no Show the key"); else { ML.legendOpen=false; gb.click(); if(firstRunOpen) bad.push("the card stayed open"); if(!ML.legendOpen) bad.push("the key not opened"); }
+    if(firstRunOpen) closeFirst(null);
+    ck("the first card's reconstruction (WP-09, CL-UX-11; decision 276 (a)): the card says it is a reconstruction from the sources, graded A to C, and its key's button opens the key",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"“"+LABELS.card.recon+"”; the key opened");
+  });
+  } finally {
+    ML.legendOpen=K.lg; if(firstRunOpen) closeFirst(null); if(presentation!==K.pres) setPresentation(K.pres); setShortcuts(K.sc); setDispatchVisible(!K.hide);
+    select(K.sel?K.sel.kind:null,K.sel?K.sel.id:null); setClock(K.t,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc; curVantage=K.v; syncFollow();
+    if(K.act&&K.act.focus) K.act.focus(); requestRender(3);
+  }
+  return out;
+}
 /* the final audits' Stage 5, WP-07: the self-test's check of the corps/division band (CL-MAP-12, decision 300); the order during Play (decision 299)
    is judged by the motion block's long Play runs (thresholds.js MOTION.LONG) */
 function wp07Checks(){
@@ -15206,6 +15296,7 @@ var AUSTERLITZ_DEBUG=(function(){
     wp07Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-07 */
     wp08cChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08's lettering and landmarks */
     wp08Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08 */
+    wp09Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-09 (names, focus, caveats, the first card) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
