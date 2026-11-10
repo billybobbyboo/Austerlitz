@@ -5,7 +5,7 @@
 **Status: on `claude/dreamy-johnson-uadkqa-picture` (draft PR into `main`, for review, not merged).** Part of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
 CL-VIS-03, CL-VIS-05, CL-VIS-07 and CL-VIS-09. Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 data declarations
 identical to `archive/stage5wp08-572b0935.html`). Every value below is a design value, chosen from the measures. `austerlitz-command-map.html` is now
-__SIZE__ bytes, md5 `__MD5__` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+2,977,379 bytes, md5 `f2e6cd044855db6238e3f2e828e418a4` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
 
 ### What changed, and why
 
@@ -55,7 +55,10 @@ __SIZE__ bytes, md5 `__MD5__` (was 2,963,994, `3388b70b...`); `check:baseline` m
 
 ### Verified
 
-__VERIFIED__
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 errors). `check:baseline`: passes.
+- `check:selftest` (here, the pinned Chromium 141): 339 checks, every one passing; the manifest regenerated from this run, 335 to 339 (the four
+  `wp10pChecks` above). Its only failures before the regeneration were the manifest's own (the four checks not yet in it).
+- `check:contrast` and `check:visual` (CI): __CI__
 
 ### What remains uncertain, and what is handed on
 
