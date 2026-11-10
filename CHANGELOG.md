@@ -8,8 +8,9 @@ CL-UX-05 (internal references shown to visitors) and CL-UX-16 (the modelling voc
 leg" becomes "Plotted march", each grade named with its scale). **A data task, words only**: no position, timing, grade, strength, source or reading
 changes, and no claim's kind; what a statement's words say is the same, said without the project's working language. Against
 `archive/stage5wp08-572b0935.html` five data declarations change, each below; the other 138 are identical. `check:data`'s reference moves to this build,
-`archive/stage6wp09w-45d29cc5.html`. `austerlitz-command-map.html` is now 2,964,260 bytes, md5 `45d29cc53f4a15918826bf761dbcd7e9` (was 2,963,994,
-`3388b70b...`); `check:baseline` moves to it. The history the notes carried (what the map did until roadmap step 4b) is kept here, below, as CL-UX-05's
+`archive/stage6wp09w-45d29cc5.html` (the build with every data change; the final build differs from it in the self-test's position-pill check alone, its
+data declarations identical). `austerlitz-command-map.html` is now 2,964,486 bytes, md5 `858db534c73be222ebe140ec88321c32` (was 2,963,994, `3388b70b...`);
+`check:baseline` moves to it. The history the notes carried (what the map did until roadmap step 4b) is kept here, below, as CL-UX-05's
 remedy asks.
 
 ### What changed, and why (each declaration: what was, what is)
@@ -71,7 +72,12 @@ Presentation, not data (`app.js`):
 
 - `npm test`: all nine suites and the height guard pass. `check:data`: 143 of 143 identical to the new reference; against the old one exactly the five
   above. `check:chronology`: 0 errors (L9's cited statements are not among those reworded). `check:baseline`: passes.
-- `check:contrast`, `check:selftest` and `check:visual` (CI): below.
+- `check:selftest` (Chromium 141.0.7390.37, the pinned browser): every check passes, the manifest unchanged (335; the position-pill check held to decision
+  310's pill: until it was, its one failing line, "Position: estimated (B)" against "Position: estimated"); the motion block's 16 at 227 jumps, 959 pops,
+  105 level-of-detail switches and 12 flickers, `main`'s own counts.
+- `check:contrast`: 7,473 text elements, 0 below AA, 0 under 10.5 px, 0 font failures, 45 of 45 states, 0 console messages, the boot cases 8 of 8 (run on
+  the build before the position-pill check's change, which is self-test code alone).
+- `check:visual` on CI: dispatched on this branch; its result goes on the PR.
 
 ### What remains uncertain, and what is handed on
 
