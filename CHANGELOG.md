@@ -1,5 +1,49 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 3): the crowns near the eye, the blocks among the buildings
+
+**Status: on `claude/dreamy-johnson-uadkqa-crowns` (draft PR into `main`, for review, not merged).** The rest of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-VIS-08 (owner decision 308) and CL-VIS-04 (owner decision 307), each measured first; CL-VIS-10 not done (decision 309 (a), the bounded convention of
+decision 265 (a) kept). Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
+`archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now __SIZE__ bytes, md5 `__MD5__` (was 2,963,994, `3388b70b...`); `check:baseline`
+moves to it.
+
+### What changed, and why
+
+- **CL-VIS-08, the crowns' facets near the eye (`world.js` `TREE6`, `treeNear`; decision 308: prototyped, measured, adopted within the budget).** 8H closes a
+  deciduous crown's perforated faces as the eye nears (`TREE8H`, 5 to 16 units), and in the closest views the closed faces showed as large faceted shards.
+  *Is:* within the same nearness each face keeps only two thin strips through its centre (`TREE6.W`, 0.035 units wide, turned by the face's own hash), the
+  rest discarded, a face at a time as the eye nears (its hash under the nearness): an alpha test in the opaque pass, nothing sorted; nothing beyond the
+  near band; the sun's depth pass keeps the faces (soft shadows). Measured (`tools/final-stage6/crowns.js`; `docs/final-stage6-evidence/wp10/`): the draw
+  calls and triangles unchanged in the audit's three close views (465 and 1,539,061; 476 and 1,542,919; 392 and 1,401,987); the frame, the two states
+  alternated 15 times each in the closest view and by the castle, 9,114 against 9,346 ms and 7,442 against 7,740 ms (software WebGL, a comparison only:
+  about 3% faster, fewer fragments shaded); the pairs in `slope-10x-0900-r8--pair.jpg` and `sok-castle-1500-close--pair.jpg` (above as 8H drew them,
+  below with the twigs). A design value; decision 247 (a)'s opaque crowns kept beyond the near band, and `css-test.js`'s rule now holds the near hook's
+  alpha test as decision 308's.
+- **CL-VIS-04, blocks drawn through buildings (decision 307: (a) measured first, then its fallback (c)).** Measured (`tools/final-stage6/occupy.js`,
+  `occupy-main.json`; every 10 minutes 05:00-17:00 at 4x, each block's seated extent against every building's plan): every clock has a block on a
+  building, 512 of the 630 building parts lie under a block at some clock, and Legrand's block covers Sokolnitz and Telnitz at all 73 clocks (Langeron,
+  Przybyszewski, Friant and Dokhturov the next): the blocks are drawn at their frontage, larger than the houses. Hiding or fading the parts under them,
+  option (a), would take most of Sokolnitz and Telnitz off the map where they were fought over (geographic integrity before the picture), so (a) does not
+  measure well and its fallback (c) applies: the sources sheet's "How the villages are drawn" (`buildingNotes`) says so. Opposing blocks sharing ground stay
+  as the tracks draw them (a data question, CL-HIS-04).
+
+### Checks added, each failing without its fix (`tools/final-stage6/mutate-wp10g.js`, `mutate-wp10g.json`: 4 of 4 as expected)
+
+- `wp10gChecks`: "the crowns near the eye (WP-10, CL-VIS-08; decision 308)" (the woods drawn alone on the view drawn without them: a tree 7 units off
+  covers at most 80% of the closed faces' pixels, 75% here, 100% without the twigs; the Overview the same pixels, 0 differing); "the blocks among the
+  buildings (WP-10, CL-VIS-04; decision 307 (c))". Negative controls: the twigs off; the twigs at every distance; the sentence gone.
+- `css-test.js`: `TREE6`'s values and the near hook's alpha test.
+
+### Verified
+
+__VERIFIED__
+
+### What remains uncertain, and what is handed on
+
+- `TREE6.W` and the twigs' turn are design values. The blocks' size at their frontage is the map's symbol (Stage 8); a block among houses marks the
+  formation's place, not men inside them.
+
 ## 2026-11 · Final audits' roadmap, Stage 6: the owner's questions (records only)
 
 The owner decided Stage 6's questions on 9 November 2026 ("Your recommendations for all"): 276 (a), 280 (a), 281 (a) from
