@@ -4,7 +4,9 @@ Every quote of the appearance table that H-17 counted as read once (131 items: t
 standard's measures, `appearance.js`) read again, on its page images where they could be reached, on 14 October 2026, in roadmap step 4, by a second reader, in four batches
 (C8a1, C8a2, C8b1, C8b2), and every disagreement, every item the second reader could not reach and a spot check of the agreements read a third
 time by an adjudicator who downloaded the images afresh. **Both readers were machine readers.** This is a machine second reading, not the human
-second reading of the A-graded quotes that decision 136 asks for: that reading stays open for the owner (15 of the 131 items are graded A; owner question 189).
+second reading of the A-graded quotes that decision 136 asks for (15 of the 131 items are graded A; owner question 189). That human reading was recorded
+complete on the owner's word (decision 189, roadmap step 4b part B, 17 October 2026); no item results were given with it, so none is recorded here
+(the final audits' CL-REC-05: this sentence said "stays open for the owner" until the final audits' Stage 6).
 The Mikhailovsky-Danilevsky 1844 and Alombert page images, which the task put first, are the step-2 register's (`docs/step2-evidence/second-reading.md`).
 
 **Result.** 131 items: agreement 86 yes, 28 not reached, 17 minor. Adjudicated: 30 cannot verify, 11 record stands, 14 record needs correction.

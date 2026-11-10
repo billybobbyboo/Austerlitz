@@ -790,5 +790,8 @@ PR #91, merged into 5a's branch, `0c917db`, and brought into `main` by #92, `663
 named, CL-MAP-09; the Plans view, CL-MAP-11; the chapels' marks, decision 282 (a), with `BUILDINGS`' two chapels amended, a data task, the
 `check:data` reference moved; the castle's and the garden's outlines, CL-VIS-11; the paper map's lettering as it is, decision 302 (b); the wall of
 names re-measured, decision 284 (b); the flicker ceiling 12, decision 303 (a)); and **5b**, WP-08's furniture (`claude/jolly-carson-yz0yqo-furniture`,
-draft PR #90, reconciled with `main` after #89 and #92: the caption's ordered fill, the event glyphs, the key's rows, the key in the "?" overlay,
-one north rose wherever the timeline stands, the selection's edge, the card giving way below 1080 px; decisions 296-298; the self-test 335 checks).
+PR #90, reconciled with `main` after #89 and #92, merged, `496086c`: the caption's ordered fill, the event glyphs, the key's rows, the key in the "?"
+overlay, one north rose wherever the timeline stands, the selection's edge, the card giving way below 1080 px; decisions 296-298; `check:visual` on
+CI passed on the reconciled build, run 42556903824 on `ecfb91a`, 4 h 11 min). Stage 5 is merged (#89, #90, #91, #92); `main`'s build is
+`3388b70b...` (2,963,994 bytes), its self-test 335 checks. Stage 6 (WP-09, WP-10, with WP-11's rule alongside) is next; its owner questions (276, 280, 281 and 305-314) were decided as recommended on 9 November
+2026 ("Your recommendations for all"), recorded in `docs/final-stage6-evidence/questions.md`.
