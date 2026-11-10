@@ -235,6 +235,19 @@ PHONE.reachAllow["phone-390-watch"]={layers:{depth:2,reason:"Watch shows no tool
   panels:{depth:2,reason:"Study, then the Menu"},vantages:{depth:2,reason:"Study, then the Menu"},tour:{depth:2,reason:"Study, then the Menu"},
   phases:{depth:2,reason:"Study, then the dispatch sheet's grip"},sources:{depth:3,reason:"Study, the Menu, the Panels"},eyes:{depth:4,reason:"Study, the Menu, the Panels, the Command tab"}};
 PHONE.reachAllow["phone-844x390-explore"]={eyes:{depth:2,reason:"the Command tab, in the rail: the Panels, then the tab (as on any window under 1,080 px)"}};
+/* the final audits' Stage 6, WP-09 (CL-UX-01; decision 306, 9 November 2026: as measured on the reflow PR's build, as decisions 232 (a) and 237 (a) set
+   the phone cases'): a desktop's browser at 400% (harness.js PHONE_DEVICES.zoom), the phone layout by its pointer:fine query. Measured on the build
+   with the short window's timeline at the phone's 36 px track (a first run, with the track at 30 px, cut the hour numerals and left the clock's rail
+   6 px off the screen: fixed, not allowed): unobstructed 0.4531 and 0.3860 (rounded down to 0.1 point), drops 4 and 6, the timeline 141 px in both,
+   framing 1 of 3 and 0 of 3 items in the free rectangle (16 x 16 to 240 x 104 and to 320 x 72: the map keeps 88 and 56 px under the timeline's 141);
+   no press target under 24 px, no text cut, nothing off the screen, no panels overlapping; the phases one press away by "Phase text" (decision 305 (a)),
+   the sources and "Whose eyes?" as on a phone (TWO) */
+UNOBSTRUCTED["zoom-320x256-explore"]=[0.453,null]; UNOBSTRUCTED["zoom-400x225-explore"]=[0.386,null];
+DROP_LIMIT["zoom-320x256-explore"]=4; DROP_LIMIT["zoom-400x225-explore"]=6;
+PHONE.timeline["zoom-320x256-explore"]=141; PHONE.timeline["zoom-400x225-explore"]=141;
+PHONE.framing["zoom-320x256-explore"]=1; PHONE.framing["zoom-400x225-explore"]=0;
+PHONE.cutAllow["zoom-320x256-explore"]=[]; PHONE.cutAllow["zoom-400x225-explore"]=[];
+PHONE.reachAllow["zoom-320x256-explore"]=Object.assign({},TWO); PHONE.reachAllow["zoom-400x225-explore"]=Object.assign({},TWO);
 module.exports.PHONE=PHONE;
 /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the Stage 0 darkness limit, and the views the harness renders through the day without
    the shadow toe: [case, clock or null (the case's own), factor or null (the case's own)]. New */
@@ -804,7 +817,7 @@ function expectState(name,m,spec){
     want("the first-run card",s.firstRun,!!spec.fresh&&!(spec.phone&&spec.phone!=="first"));
     /* roadmap step 6 item 3 Part B (the review's item 5): a phone case stands in the phone state it measures: the phone layout on upright (not held
        landscape), the Menu and the dispatch sheet closed, the Layers panel open in its own case only, a dossier in its own only, the rail hidden */
-    if(spec.phone){ const P=s.phone, up=spec.viewport[0]<=720&&spec.viewport[1]>430;
+    if(spec.phone){ const P=s.phone, up=spec.viewport[0]<=720&&(spec.viewport[1]>430||spec.device==="zoom");   /* a zoomed desktop's narrow window at any height (app.js PHONE_Q, decision 306) */
       if(!P) f.push("state: the phone layout's state was not recorded (T-6)");
       else { want("the phone layout",P.on,up); want("the Menu",P.menu,false); want("the dispatch sheet opened whole",P.sheet,false);
         want("the Layers panel",P.layers,spec.phone==="layers"); want("a dossier",P.drawer,spec.phone==="dossier"); want("the rail",P.rail,false); } }
@@ -954,6 +967,9 @@ function checkLive(live,opts){
       if(!nh||nh.docked||!nh.open||nh.rail||nh.card) f.push("narrow layout: at 1000 px with the rail hidden the dispatch card stands beside the open dossier (CL-MAP-13): "+JSON.stringify(nh));
       /* CL-MAP-04: at 1000 px, the key hidden, one north: the timeline's */
       if(!nh||!Array.isArray(nh.roses)||nh.roses.length!==1||nh.roses[0]!=="tb-rose-needle") f.push("narrow layout: at 1000 px no north shown but the timeline's, or more than one (CL-MAP-04): "+JSON.stringify(nh&&nh.roses)); }
+    /* the final audits' Stage 6, WP-09 (CL-UX-18): at 800 x 450 with the Panels open, the tools and the dispatch card both shown, not overlapping */
+    if(!opts.legacy){ const n8=by["800x450 panels"];
+      if(!n8||n8.docked||!n8.rail||!n8.tools||!n8.card||n8.over) f.push("narrow layout: at 800 x 450 with the Panels open the tools and the dispatch card overlap or are not both shown (CL-UX-18): "+JSON.stringify(n8)); }
     /* the final audits' Stage 5, WP-08 (CL-MAP-06; CAPTION below): the caption at three widths, in Study and Watch, at four clocks */
     if(!opts.legacy){ const nc=by["caption"], C=(nc&&nc.caps)||[], want=CAPTION.SIZES.length*2*CAPTION.CLOCKS.length;
       if(C.length!==want) f.push("the caption (CL-MAP-06): "+C.length+" of its "+want+" reads made");
