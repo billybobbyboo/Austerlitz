@@ -1,5 +1,68 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 2): the facings, the camp, the streams' glint, the tier on a resize
+
+**Status: on `claude/dreamy-johnson-uadkqa-picture` (draft PR into `main`, for review, not merged).** Part of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-VIS-03, CL-VIS-05, CL-VIS-07 and CL-VIS-09. Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 data declarations
+identical to `archive/stage5wp08-572b0935.html`). Every value below is a design value, chosen from the measures. `austerlitz-command-map.html` is now
+__SIZE__ bytes, md5 `__MD5__` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **CL-VIS-03, blocks facing away from an adjacent enemy (`app.js` `faceWant`, `FACE`, `enemyBearing`, `enemyFacing`).** A block faced along its leg
+  whenever a leg was in progress, however slow, and a halted block's facing was taken once, at its phase's start or its arrival. 79.6% of the moving rows
+  were drifts under 1 km/h between plotted positions, and blocks drifted with their backs to an enemy 20-420 m off (Kamensky's brigade facing 175 degrees
+  from Saint-Hilaire at 10:10 as the event reads "Kamensky turns his brigade about"). *Is:* on a leg under the gait's floor (`GAIT.KMH`, 1 km/h: a drift,
+  not a march, decision 244 (a) and the final audits' Stage 4, CL-HIS-13) a block faces its enemy as a halted one does; a halted block's facing is taken
+  again every 10 clock minutes (`FACE.STEP`) and turned when the nearest enemy's bearing has moved more than 45 degrees (`FACE.TURN`) from the facing
+  held, walked from its phase's start, so the facing is still a function of the clock alone (S-5; the self-test's check (g) reads `faceWant`, what
+  `poseBlock` poses).
+- **CL-VIS-07, the headquarters' camp at every status (`app.js` `ud.camp`, `poseBlock`).** The marquee and its four tents stood among the moving guns
+  and on the Satschan ice in the rout. *Is:* struck while the headquarters moves (its riders alone), pitched while it is halted. A rule that struck the
+  camp only on a march at 1 km/h or more was tried and rejected: Buxhowden's headquarters in the rout drifts at 0.80 km/h, the audit's own case, and
+  would have kept its camp on the ice.
+- **CL-VIS-05, the streams saturating toward white (`world.js` `STREAM.rough` 0.30 to 0.60).** The cause established first (`tools/final-stage6/streams.js`,
+  `whites.py`; `docs/final-stage6-evidence/wp10/streams.json`; the audit's four views at 1600 x 900 in Watch, each drawn with one thing changed): the low
+  sun's specular glint at the stream material's roughness 0.30. The grazing sky term (`STREAM.sky`) adds 1 to 7 at the 99th percentile of the streams'
+  luminance (its first test did nothing: the material's program key is a constant, so it was recompiled under a key of its own), the environment's light
+  under 1, the post-processing about 20. The streams' p99 against their field's: the castle's brook at 15:00 244 against 177 (as built), 226 at 0.45,
+  215 at 0.50, 185 at 0.60; Saint-Hilaire's climb at 09:00 240 against 209, 215, 204, 179; the meres at 15:00 213 against 223, 200, 190, 170; the low
+  Pratzen view at 16:30 152 against 144, 169, 166, 149 (the mean tone kept within 7). At 0.60, the rimed ice's own roughness, the streams are no brighter
+  than their field. The audit's whites (pixels at 255) do not reproduce on `main`'s build (0 in every view; the relief's refit and Stage 5 moved the views
+  since its build), so the measure is the streams' own p99 against the field's.
+- **CL-VIS-09, the tier decided once (`app.js` `applyTier`, `retier`, `TIER_MOBILE`; `onResize`).** A desktop page opened in a window under 900 x 700 kept
+  density 1, no shadows and no near detail when enlarged. *Is:* on a resize, a page on the low tier for its window alone takes the full tier once its
+  window is 900 x 700 or more; a phone's or a tablet's agent keeps the low tier (decision 236), and nothing goes down on a shrink (a picture that worsened
+  mid-visit would surprise; the page that began large keeps what it had).
+
+### Measured
+
+- The facings (the audit's own tool, `tools/audit-post8/visual-landscape/facings.js`, every drawn block every 10 minutes 05:00-17:00, 2,051 rows;
+  `facings-main.json`, `facings-6f.json`): flag B (drifting under 1 km/h with an enemy within 1.5 km, the yaw more than 90 degrees off it) 129 to 0; C
+  (moving, fighting, more than 120 degrees off the nearest enemy) 70 to 4; D (halted, the facing more than 60 degrees off the nearest enemy now) 8 to 1;
+  the halted near an enemy within 45 degrees of it 236 of 248 to 247 of 248. The four C rows left (Kollowrat at 10:20, Caffarelli, Suchet and Nansouty
+  at 11:10) march at 1 km/h or more along their own legs: their facing is their tracks', a data question, not this rule's.
+- The camp: of 219 headquarters-clocks every 10 minutes, the camp struck in the 153 moving ones (the riders alone), pitched in the 66 halted.
+
+### Checks added, each failing without its fix (`tools/final-stage6/mutate-wp10p.js`, `mutate-wp10p.json`: 6 of 6 as expected)
+
+- `wp10pChecks`: "the facings (WP-10, CL-VIS-03)" (every 10 minutes 05:00-17:00, no block halted or drifting under 1 km/h facing more than 90 degrees from
+  the nearest enemy within 1.5 km, the nearest found by the check itself, and of the halted at least 98% within 45 degrees; 247 of 248 here, 95.2% on
+  `main`); "the headquarters' camp (WP-10, CL-VIS-07)"; "the streams' glint (WP-10, CL-VIS-05)" (two of the audit's views drawn with and without the
+  streams: the streams' p99 no more than the field's plus 15; 172 against 175 and 176 against 207 here, 244 against 177 on `main`); "the tier on a resize
+  (WP-10, CL-VIS-09)" (a real resize event through the app's handler). Negative controls: the drift facing back, the facing taken once a phase, the camp
+  at every status, the streams at 0.30, no `retier` on a resize: each failing its own check alone.
+
+### Verified
+
+__VERIFIED__
+
+### What remains uncertain, and what is handed on
+
+- `FACE.STEP` (10 minutes), `FACE.TURN` (45 degrees), the camp's rule and `STREAM.rough` 0.60 are design values. The facing remains a symbol's convention:
+  no source gives a formation's facing minute by minute.
+- The crowns' facets and blocks drawn inside buildings (CL-VIS-08, -04; decisions 307, 308) are the next PR.
+
 ## 2026-11 · Final audits' roadmap, Stage 6: the owner's questions (records only)
 
 The owner decided Stage 6's questions on 9 November 2026 ("Your recommendations for all"): 276 (a), 280 (a), 281 (a) from

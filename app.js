@@ -14318,7 +14318,8 @@ var AUSTERLITZ_DEBUG=(function(){
         var lBad=[], lT=[], lNow=performance.now, lOwn=Object.prototype.hasOwnProperty.call(performance,"now"), lRaf=window.requestAnimationFrame, lTm=lNow.call(performance), lDw=DWELL.on, lSp=speed, lRender=renderer.render;
         function LF(n){ for(var i=0;i<(n||1);i++){ lTm+=1000/30; requestRender(2); renderer.render=function(){}; try{ loop(); } finally { renderer.render=lRender; } } }
         function lClick(sel){ var b=document.querySelector(sel); if(!b) throw new Error("no "+sel); b.click(); }
-        function lPoses(){ var o={}; shown().forEach(function(id){ var r=units[id], b=r.block, u=b.userData; if(!u||!u.body) return; var w=headingAt(id,clock); if(w===null) w=enemyFacing(id);
+        /* since the final audits' Stage 6 (CL-VIS-03): a block's heading the one poseBlock poses it to (faceWant: its enemy's on a drift under 1 km/h) */
+        function lPoses(){ var o={}; shown().forEach(function(id){ var r=units[id], b=r.block, u=b.userData; if(!u||!u.body) return; var w=faceWant(id);
           var d=w===null?0:w-(r.yaw||0); while(d>Math.PI) d-=2*Math.PI; while(d<-Math.PI) d+=2*Math.PI;
           o[id]=[r.yaw||0,u.sw,u.sd,u.tilt||0,b.quaternion.x,b.quaternion.y,b.quaternion.z,b.quaternion.w,Math.abs(d),LOOSE[liveStatus(id,curPhase)]?1:0]; }); return o; }
         function lDiff(a,b){ var m=0; Object.keys(a).forEach(function(id){ if(!b[id]) return; for(var i=0;i<8;i++) m=Math.max(m,Math.abs(a[id][i]-b[id][i])); }); return m; }
