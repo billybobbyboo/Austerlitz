@@ -39,7 +39,11 @@ const MEASURE=fs.readFileSync(path.join(__dirname,"measure.js"),"utf8");
 const PHONE_MEASURE=fs.readFileSync(path.join(__dirname,"phone-measure.js"),"utf8");
 const PHONE_DEVICES={
   ios:{dpr:3, ua:"Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1"},
-  android:{dpr:3, ua:"Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36"}};
+  android:{dpr:3, ua:"Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36"},
+  /* the final audits' Stage 6, WP-09 (CL-UX-01; decision 306): a desktop's browser zoomed to 400% (density 4, a mouse, no touch, the
+     browser's own user agent): WCAG 1.4.10's reflow width, 320 x 256 (a 1280 x 1024 screen), and a 1600 x 900 screen, 400 x 225. Its presses are
+     clicks; its measures the phone cases' (phone-measure.js) */
+  zoom:{dpr:4, desktop:true}};
 const MANIFEST_PATH=path.join(__dirname,"selftest-manifest.json");
 const md5=f=>crypto.createHash("md5").update(fs.readFileSync(f)).digest("hex");
 const RUN=new Date().toISOString();
@@ -49,7 +53,8 @@ const LOG=[], SKIPPED=[], PAGES=[]; let AT="load", BUILD_FEATURES=null;
 async function openPage(browser,vp,label,device){
   const Dv=device?PHONE_DEVICES[device]:null;
   if(device&&!Dv) throw new Error("no phone device "+device);
-  const page=Dv?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:Dv.dpr,isMobile:true,hasTouch:true,userAgent:Dv.ua})).newPage()
+  const page=Dv&&Dv.desktop?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:Dv.dpr})).newPage()
+    :Dv?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:Dv.dpr,isMobile:true,hasTouch:true,userAgent:Dv.ua})).newPage()
     :await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1});
   label=label||vp.join("x");
   const rec=(type,text)=>LOG.push({page:label,at:AT,type:type,text:String(text).slice(0,400)});
@@ -177,7 +182,8 @@ async function interact(page,it,vp){
     /* roadmap step 6 item 3 Part B (decision 228 (a)): a phone case reached as a visitor reaches it, by real taps (through the Menu where the
        control stands behind it); the clock then set to the case's (the phase's view, as the app frames it) and the selection made by select() */
     if(c.phone&&c.phone!=="first"){
-      const tap=async sel=>{ await page.tap(sel,{timeout:180000}); await page.waitForTimeout(500); };
+      const byMouse=PHONE_DEVICES[c.device]&&PHONE_DEVICES[c.device].desktop;   /* the zoomed desktop: clicks (decision 306) */
+      const tap=async sel=>{ if(byMouse) await page.click(sel,{timeout:180000}); else await page.tap(sel,{timeout:180000}); await page.waitForTimeout(500); };
       const viaMenu=async sel=>{ if(!(await page.isVisible(sel))&&await page.isVisible("#menubtn")) await tap("#menubtn"); await tap(sel); };
       await tap("#fr-close");
       await page.evaluate(t=>{ setClock(t,{instant:true,force:true}); },c.t); await settle(page);
@@ -560,6 +566,14 @@ async function interact(page,it,vp){
         const out={docked:docked, open:drawerShown(), rail:!document.body.classList.contains("rail-hidden"), card:card, gap:card?+(dr.left-b.right).toFixed(1):null, roses:roses};
         select(null,null); setPanels(true); return out; })));
       await first.evaluate(()=>{ select(null,null); });
+      /* the final audits' Stage 6, WP-09 (CL-UX-18): at 800 x 450 in Study with the Panels open, the tools (their vantage row wrapped to a third
+         line) and the dispatch card do not overlap */
+      await size(800,450);
+      NR.push(Object.assign({at:"800x450 panels"},await first.evaluate(()=>{ setPanels(true); select(null,null);
+        const t=document.getElementById("tools"), d=document.querySelector(".dispatch"), a=t.getBoundingClientRect(), b=d.getBoundingClientRect();
+        const ts=getComputedStyle(t).display!=="none"&&a.width>0, ds=getComputedStyle(d).display!=="none"&&b.width>0;
+        return {docked:docked, rail:!document.body.classList.contains("rail-hidden"), tools:ts, card:ds, toolsBottom:+a.bottom.toFixed(1), cardTop:+b.top.toFixed(1),
+          over:ts&&ds&&Math.min(a.right,b.right)>Math.max(a.left,b.left)&&Math.min(a.bottom,b.bottom)>Math.max(a.top,b.top)}; })));
       await size(700,800);
       /* decision 174 (the owner's answer): at 700 px in Study at 05:00 (the plateau reading due), with the rail hidden, the dispatch card shows the
          reading whole inside it; the caption shows none cut */
