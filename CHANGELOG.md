@@ -51,7 +51,9 @@ only: no data file and no guarded declaration changes (`check:data`: all 143 ide
   `check:baseline`: passes.
 - `check:contrast` (here, the pinned Chromium 141): 9,119 text elements, 120 distinct pairs, 0 below AA, 0 under 10.5 px; 0 font failures; 57 states
   of 57 reached (12 new: 8 at 320 x 256, 4 in forced colours); the 8 start-up cases pass.
-- `check:selftest` and `check:visual` (CI): __CI__
+- On CI (run 42758980065 on `17bbcfb`, `checks.yml`, `visual: true`; the build `646b1c4f...`, the branch's head's): passed, every job: `npm test`,
+  `check:data`, `check:chronology`, `check:selftest` (335 checks, the manifest unchanged), `check:contrast` and `check:visual` (its 41 cases, the two zoom
+  cases within their limits; the run 3 h 42 min).
 
 ### Not verified here
 
