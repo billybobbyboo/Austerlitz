@@ -58,7 +58,9 @@
 
   <div class="railscroll">
     <div id="now" class="tabpane" role="tabpanel" aria-labelledby="tab-now">
-      <p class="now-off">The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.</p>
+      <!-- the final audits' Stage 6, WP-09 (CL-UX-12): the hint's words written by app.js paintNowOff (the D key named only while the single-key
+           shortcuts are on; the opening and the tour told apart) and a button that shows the text, for a pointer, a finger or a key -->
+      <div class="now-off"><p id="now-off-t">The phase text is hidden.</p><button class="t" id="now-show" type="button">Show the phase text</button></div>
       <section class="dispatch" id="dispatch">
         <!-- roadmap step 6 item 3 (decision 223): below 720 px wide the card is a sheet at the screen's foot, its head shown; the grip opens
              it whole, with the phases listed (decision 224 (a); app.js setDSheet, buildTimeline). Not shown elsewhere (style.css) -->
@@ -66,7 +68,7 @@
         <!-- Stage 3C: the situation's derived readings and the live event's reason (from the timebar's old second row) -->
         <div class="tb-sit" id="situation"></div>
         <div class="clock" id="d-clock"></div>
-        <h2 id="d-title"></h2>
+        <h2 id="d-title" tabindex="-1"></h2>
         <p class="lede" id="d-lede"></p>
         <ol id="d-events"></ol>
         <div id="d-changes"></div>
@@ -135,6 +137,8 @@
     <button class="t van-btn" data-v="plan" title="Operational overview from directly above">Overview</button>
     <button class="t van-btn" data-v="eye" hidden title="Eye level at the chosen headquarters (Whose eyes?)">Eye level</button>
   </div>
+  <!-- the final audits' Stage 6, WP-09 (CL-UX-08): a pressed vantage's caveat, shown (until Stage 6 only its button's tooltip said it); app.js syncFollow -->
+  <p class="van-note" id="van-note" aria-live="polite" hidden></p>
 </div>
 
 <div id="layerpop" hidden role="dialog" aria-label="Layers and ground">
@@ -403,7 +407,8 @@
   <h2 id="fr-title">The Battle of Austerlitz</h2>
   <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->
   <p id="fr-key">French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath
-     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.</p>
+     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.
+     It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.</p>
   <div class="fr-act">
     <button class="t fr-primary" id="fr-tour" type="button">Begin (two min)</button>
     <button class="t" id="fr-close" type="button">Explore on my own</button>

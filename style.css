@@ -90,6 +90,10 @@ body.docked .dispatch h2{font-size:var(--t-h2)}
 body.docked .dispatch ol{display:block}
 body.docked #d-changes{display:block}
 .now-off{display:none;font-size:var(--t-ui);color:var(--text-muted);line-height:1.5;margin:2px 0 10px}
+.now-off p{margin:0 0 6px}
+/* the final audits' Stage 6, WP-09 (CL-UX-08): the caveats shown as text, not in a tooltip alone */
+.van-note{max-width:260px;margin:2px 0 0;font-size:var(--t-small);color:var(--text-body);text-align:right;line-height:1.4}
+.der-note{display:block;margin:2px 0 6px;font-size:var(--t-small);color:var(--text-body);line-height:1.45}
 body.docked.no-dispatch .now-off{display:block}
 body.docked .drawer{left:0;right:auto;width:var(--rail);bottom:var(--tb);border-left:0;border-right:1px solid var(--line-2);
   transform:translateX(-101%)}
@@ -659,6 +663,8 @@ body.mode-staff #vignette{display:none}
 body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
 #firstrun h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);margin:0 0 8px;color:var(--text-hi)}
 #firstrun p{font-family:var(--serif);font-size:var(--t-prose);line-height:1.65;color:var(--text-body);margin:0 0 9px}
+/* the final audits' Stage 6 (decision 276 (a)): the card's "Show the key", a button drawn as a link in its sentence, at least 24 px high */
+#firstrun .fr-link{display:inline-block;min-height:24px;padding:0 2px;background:none;border:0;color:var(--text-hi);font:inherit;text-decoration:underline;cursor:pointer}
 #firstrun .key-sw{display:inline-block;width:11px;height:11px;border:1px solid rgba(0,0,0,.55);border-radius:1px;
   margin:0 5px 0 1px;vertical-align:-1px}
 #firstrun .fr-act .t{min-height:34px;padding:7px 14px;font-size:var(--t-ui)}

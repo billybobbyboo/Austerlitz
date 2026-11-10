@@ -2610,8 +2610,10 @@ function paintExaggeration(){
   /* the paper map has no relief setting (decision 19): the control is not offered there, and its row says why */
   var set=document.getElementById("exag-set"), desc=document.getElementById("exag-desc");
   if(set) set.hidden=paper;
+  /* the final audits' Stage 6 (CL-UX-08): while the setting is off for Play, its row says why (until Stage 6 the disabled buttons' tooltips alone) */
+  var off=playing&&EXAG_MEASURED_MS>EXAG_SLOW_MS;
   if(desc) desc.textContent=paper?"The paper map is drawn flat, with its own hillshade ("+fmtFactor(PAPER_HILLSHADE)+"\u00d7); the setting applies to the landscape"
-    :"How tall the ground is drawn; 1\u00d7 is true scale";
+    :off?"Pause to change the relief: a change takes about "+EXAG_MEASURED_MS+" ms":"How tall the ground is drawn; 1\u00d7 is true scale";
   var el=document.getElementById("exag-line"), sy=document.getElementById("exag-symbols");
   /* the paper map (Stage 2E, decisions 19 and 29): its hillshade's own factor; it draws no figure, building or tree */
   if(paper){ if(el) el.textContent="paper map: the ground drawn flat, in plan; hillshade exaggerated "+fmtFactor(PAPER_HILLSHADE)+"\u00d7 (1\u00d7 is true scale)";
@@ -5191,11 +5193,15 @@ function mlItem(key,cls){
       fid:null,pick:null,focusable:false,op:1,opS:1,rect:null,lead:false,state:"",eFrame:-1};
     e.addEventListener("focus",function(){ ML.focus=key; requestRender(2); });
     e.addEventListener("blur",function(){ if(ML.focus===key){ ML.focus=null; requestRender(2); } });
+    /* the final audits' Stage 6, WP-09 (CL-UX-10): the dossier it opens takes the focus on its heading (until Stage 6 the focus stayed on the item,
+       about 30 Tabs from the dossier, which stands before the map layer in the document); closed, it gives the focus back to the item (PANEL.opener) */
+    var open=function(){ select(it.pick.kind,it.pick.id); var dr=document.getElementById("drawer"), h=dr&&dr.classList.contains("on")?dr.querySelector("h2"):null;
+      if(h&&shown(h)){ h.tabIndex=-1; h.focus({preventScroll:true}); } };
     e.addEventListener("keydown",function(ev){
-      if((ev.key==="Enter"||ev.key===" ")&&it.pick){ ev.preventDefault(); ev.stopPropagation(); select(it.pick.kind,it.pick.id); }
+      if((ev.key==="Enter"||ev.key===" ")&&it.pick){ ev.preventDefault(); ev.stopPropagation(); open(); }
     });
     /* roadmap step 3 (A-2): a click alone (a screen reader's or speech input's activation; the pointer never reaches the layer) selects too */
-    e.addEventListener("click",function(){ if(it.pick) select(it.pick.kind,it.pick.id); });
+    e.addEventListener("click",function(){ if(it.pick) open(); });
   }
   it.frame=ML.frame;
   return it;
@@ -6700,6 +6706,12 @@ function syncFollow(){
   if(b&&b.getAttribute("aria-pressed")!==on) b.setAttribute("aria-pressed",on);
   var vs=syncFollow.vs||(syncFollow.vs=document.querySelectorAll(".van-btn"));   /* roadmap step 5 (SW-13): the static buttons found once, not every frame */
   for(var i=0;i<vs.length;i++){ var pr=String(vs[i].dataset.v===curVantage); if(vs[i].getAttribute("aria-pressed")!==pr) vs[i].setAttribute("aria-pressed",pr); }
+  /* the final audits' Stage 6 (CL-UX-08): the pressed vantage's caveat (its title's clause "a preset view, not what ... saw") shown under the buttons;
+     written only when the vantage changes (an idle frame touches nothing, 8H) */
+  if(syncFollow.lastV!==curVantage){ syncFollow.lastV=curVantage; var vn=document.getElementById("van-note"), pb=null;
+    for(var j=0;j<vs.length;j++) if(vs[j].dataset.v===curVantage) pb=vs[j];
+    var m=pb&&/: (a preset view, not what [^.]*)$/.exec(pb.title||"");
+    if(vn){ vn.textContent=m?pb.textContent+": "+m[1]+".":""; vn.hidden=!m; } }
 }
 function setFollow(on){
   if(on){ freeCam=false; flyTo(PHASES[curPhase].cam); }
@@ -6848,6 +6860,9 @@ var LABELS={
      meanwhile): the ten themes "themes" (the code's and the specifications' word; "moment" stays a phase's or an event's), the phase's own
      text "the phase text" (the Now tab's note; "dispatch" was the code's word on screen), the sources sheet "Accuracy and sources" (its
      button, its name; its heading is SOURCE_NOTE.title, data) */
+  card:{recon:"It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.", key:"Show the key"},   /* decision 276 (a) */
+  nowOff:{hidden:"The phase text is hidden.", opening:"The phase text is hidden during the opening: its words are in the opening's bar.",
+    tour:"The phase text is hidden during the guided tour: its words are in the tour's bar.", key:"Or press D.", show:"Show the phase text"},   /* the final audits' Stage 6 (CL-UX-12) */
   names:{themes:"The battle in ten themes", themePick:"Pick one of the ten themes above.", theme:"The theme", phaseText:"the phase text",
     sheet:"Accuracy and sources"},
   panels:{button:"Panels", title:"Show or hide the panels: the order of battle, analysis, command and plans tabs, and the sources (below 1080 px wide)"},
@@ -7062,7 +7077,7 @@ function paintShortcuts(){
   var nb=b.querySelector("b"), ni=b.querySelector("i"); if(nb) nb.textContent=L.single; if(ni) ni.textContent=SHORTCUTS.on?L.on:L.off;
   if(d) d.textContent=L.note;
 }
-function setShortcuts(on){ SHORTCUTS.on=!!on; if(helpOpen()) buildHelp(); else paintShortcuts(); }
+function setShortcuts(on){ SHORTCUTS.on=!!on; if(helpOpen()) buildHelp(); else paintShortcuts(); paintNowOff(); }
 function setHelp(open){
   var h=document.getElementById("help"); if(!h) return;
   if(open===helpOpen()) return;
@@ -7341,13 +7356,16 @@ function buildUI(){
   var db=document.getElementById("drawer-back"); if(db) db.addEventListener("click",function(){ select(null,null); });
 
   var pop=document.getElementById("layerpop"), popBtn=document.getElementById("layersbtn");
-  function setPop(open){
+  /* kb: opened from the keyboard (the button's activation by a key: a click of detail 0), when the panel takes the focus on its first control,
+     the ground's (the final audits' Stage 6, WP-09, CL-UX-10: until Stage 6 the focus stayed on the button, the panel six Tabs on) */
+  function setPop(open,kb){
     var a=focusedEl(), had=!open&&!!(a&&pop.contains(a));
     pop.hidden=!open;
     popBtn.setAttribute("aria-expanded",String(open));
     if(had) focusTo(["layersbtn","play","restore"]);   /* roadmap step 3 (SW-5): its x, Esc, Watch or Clean closed it with focus inside */
+    if(open&&kb) focusTo([].slice.call(pop.querySelectorAll(".modes button")).concat(["layerclose"]));
   }
-  popBtn.addEventListener("click",function(e){ e.stopPropagation(); setPop(pop.hidden); });
+  popBtn.addEventListener("click",function(e){ e.stopPropagation(); setPop(pop.hidden,e.detail===0); });
   document.getElementById("layerclose").addEventListener("click",function(){ setPop(false); });
   pop.addEventListener("click",function(e){ e.stopPropagation(); });
   document.addEventListener("click",function(){ if(!pop.hidden) setPop(false); });
@@ -7454,7 +7472,12 @@ function paintKey(){
      roadmap step 2 (decision 127 (b); docs/FINAL_AUDIT.md H-4): its verdict on the plateau labelled as this map's reading */
   p.innerHTML="French formations are marked in "+sw("side-fr")+K["side-fr"].word+" and the Allies in "+sw("side-al")+K["side-al"].word+
     ": on their names, their counters and the ground beneath them, and on the movement arrows. "+
-    "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
+    "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle."+" "+
+    /* the final audits' Stage 6, WP-09 (CL-UX-11; owner decision 276 (a)): the map said nowhere on its first screen that it is a reconstruction or what
+       the letters beside names are; one sentence, and the key's grade rows one press away (the button closes the card where it stands, the key open) */
+    esc(LABELS.card.recon)+' <button class="fr-link" id="fr-grades" type="button">'+esc(LABELS.card.key)+'</button>';
+  var gb=document.getElementById("fr-grades"); if(gb) gb.addEventListener("click",function(){ closeFirst("explore"); ML.legendOpen=true; requestRender(2);
+    var t=document.getElementById("lg-toggle"); if(t) focusTo([t,"play"]); });
 }
 /* the final audits' Stage 5, WP-08 (CL-MAP-08): the key's samples of the event glyphs, the objective, the place marker and the counter's arm marks,
    drawn by the map's own drawers (EVG, objGlyph, armGlyphSVG) in the theme's text colour (the map draws the event glyphs in the side's colour, which
@@ -7703,7 +7726,8 @@ function paintSituation(){
   var derH=(der?'<span class="sep der-sep">&middot;</span>'+der:"")+(cutH?'<span class="sep der-sep">&middot;</span>'+cutH:"");
   c+=derFirst?derH+evH:evH+derH;
   if(cap){ cap.innerHTML=c; cap.title=capTitle(cap); fitCaption(); }
-  if(host) host.innerHTML=der+cutH+(top?'<span class="ev">'+esc(top.n+evNote(top))+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
+  /* the final audits' Stage 6, WP-09 (CL-UX-08): in the Now tab each derived reading followed by its note as text (in the caption it stays its title) */
+  if(host) host.innerHTML=(der?der+'<span class="der-note">'+esc(FLAT_NOTE)+'</span>':"")+(cutH?cutH+'<span class="der-note">'+esc(SEP_NOTE)+'</span>':"")+(top?'<span class="ev">'+esc(top.n+evNote(top))+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
 }
 /* the caption's title (its whole text, also what fitCaption hides): the boxes' words joined with the spaces their margins draw (the 146453d review) */
 function capTitle(cap){ var t=[]; if(!cap.children) return cap.textContent||"";
@@ -9537,13 +9561,29 @@ function bindPhone(){
   /* a press outside the menu and its button closes it */
   window.addEventListener("pointerdown",function(e){ if(!menuOpen()) return; var t=e.target;
     if(t&&t.closest&&(t.closest("#tools")||t.closest("#menubtn"))) return; setMenu(false); },true);
-  if(g) g.addEventListener("click",function(){ setDSheet(!dsheetOpen()); });
+  /* the final audits' Stage 6, WP-09 (CL-UX-18): the grip, drawn as a drag handle, also takes a drag: up opens the sheet, down closes it (30 px or
+     more); a tap toggles it as before (the click a drag ends with is not taken as a tap) */
+  if(g){ var gy=null, gDrag=false;
+    g.addEventListener("pointerdown",function(e){ gy=e.clientY; gDrag=false; try{ g.setPointerCapture(e.pointerId); }catch(x){} });
+    g.addEventListener("pointerup",function(e){ if(gy===null) return; var dy=e.clientY-gy; gy=null;
+      if(Math.abs(dy)>=30){ gDrag=true; setDSheet(dy<0); } });
+    g.addEventListener("pointercancel",function(){ gy=null; });
+    g.addEventListener("click",function(){ if(gDrag){ gDrag=false; return; } setDSheet(!dsheetOpen()); }); }
   var pbt=document.getElementById("phasebtn"); if(pbt) pbt.addEventListener("click",function(){ setDSheet(!dsheetOpen()); if(dsheetOpen()){ var gg=document.getElementById("dgrip"); if(gg) focusTo([gg]); } });
   var rc=document.getElementById("railclose"); if(rc) rc.addEventListener("click",function(){ setPanels(false); });
+  var ns=document.getElementById("now-show"); if(ns) ns.addEventListener("click",function(){ setDispatchVisible(true); focusTo(["d-title","play"]); });   /* Stage 6 (CL-UX-12) */
   syncPhone();
+}
+/* the final audits' Stage 6, WP-09 (CL-UX-12): the Now tab's hint while the phase text is hidden: until Stage 6 one sentence told a visitor to
+   press D (a key that does nothing with the single-key shortcuts off, and none for a pointer or a finger) and called the opening the guided tour */
+function paintNowOff(){
+  var t=document.getElementById("now-off-t"), b=document.getElementById("now-show"); if(!t) return;
+  var L=LABELS.nowOff; t.textContent=(OPENING.on?L.opening:tourStep>=0?L.tour:L.hidden)+(SHORTCUTS.on?" "+L.key:"");
+  if(b) b.textContent=L.show;
 }
 function syncVis(){
   document.body.classList.toggle("no-dispatch",hideDispatch);
+  paintNowOff();
 
   syncTimebarHeight();
   /* roadmap step 3 (the 146453d review): the caption's order follows the presentation and the dispatch at once (paintSituation's key), and
