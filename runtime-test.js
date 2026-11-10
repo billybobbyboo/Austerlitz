@@ -691,6 +691,12 @@ try{
     Object.keys(STATEMENT_CLAIMS).forEach(r=>{ cnt[STATEMENT_CLAIMS[r].cl]=(cnt[STATEMENT_CLAIMS[r].cl]||0)+1; if(ix.indexOf('<li>'+esc(refLabel(r)||r))<0) bad.push("the index does not list "+r); });
     Object.keys(cnt).forEach(k=>{ if(ix.indexOf('<b>'+esc(CLAIM_WORDS[k].w)+'</b>: '+esc(CLAIM_WORDS[k].d)+' '+esc("("+cnt[k]+(cnt[k]===1?" statement":" statements")+")"))<0) bad.push("the index's count for "+k+" is not "+cnt[k]); });
     if(ix.indexOf('<b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>')<0) bad.push("the index does not name the unchecked");
+    /* the final audits' Stage 6 (CL-UX-21): the app's own list of statements (narrativeRefs) is statements.js's, ref for ref, and the index counts
+       the unchecked from it: neither a claim of its own nor its class's */
+    { const NR=narrativeRefs(), A=new Set(NR), B=new Set(ST.map(x=>x.ref)), onlyA=NR.filter(r=>!B.has(r)), onlyB=ST.map(x=>x.ref).filter(r=>!A.has(r));
+      if(onlyA.length||onlyB.length||NR.length!==A.size) bad.push("narrativeRefs is not statements.js's list: "+onlyA.length+" only in the app ("+onlyA.slice(0,3).join(", ")+"), "+onlyB.length+" only in statements.js ("+onlyB.slice(0,3).join(", ")+")"+(NR.length!==A.size?", duplicates":""));
+      const nUn=ST.filter(x=>!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,x.ref)&&!KC.some(([re])=>re.test(x.ref))).length;
+      if(ix.indexOf(esc("Every other statement ("+nUn+(nUn===1?" statement":" statements")+")."))<0) bad.push("the index does not count the unchecked as "+nUn); }
     /* each framing class named in the index with the number of its statements that take its claim (tools/step4/statements.js's classes) */
     Object.keys(CLAIM_BY_CLASS).forEach(k=>{ const n=ST.filter(s=>s.cls===k&&!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,s.ref)).length;
       if(ix.indexOf(esc(CLAIM_BY_CLASS[k].n+" ("+CLAIM_BY_CLASS[k].why+"; "+n+(n===1?" statement":" statements")+")"))<0) bad.push("the index's count for the class "+k+" is not "+n); });

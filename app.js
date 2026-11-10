@@ -9094,6 +9094,31 @@ function dossierClaims(refs){ var h='<h3 id="claims-here">'+esc(LABELS.dossier.h
         return '<li>'+esc(refLabel(r)||r)+': <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+claimDetail(E)+'</li>'; }).join('')+'</ul>'
       :'<p>'+esc(LABELS.dossier.none)+'</p>');
 }
+/* the final audits' Stage 6, WP-09 (CL-UX-21): every narrative statement's ref, walked over the data as tools/step4/statements.js reads them through the
+   overclaim scan (one per string a visitor reads as a statement; a pair, a timeline line, a place's fact, a Command row or a layer, one statement),
+   so that the index can count the statements not yet checked; runtime-test.js holds the two lists equal, ref for ref */
+function narrativeRefs(){
+  var R=[], S=function(ref,v){ if(typeof v==="string"&&v!=="") R.push(ref); },
+      P=function(ref,a,ix){ if(a&&ix.some(function(i){ return typeof a[i]==="string"&&a[i]!==""; })) R.push(ref); };
+  PHASES.forEach(function(Ph,i){ var h="PHASES[#"+(Ph.id!=null?Ph.id:i)+"]"; S(h+".title",Ph.title); S(h+".lede",Ph.lede); S(h+".flash",Ph.flash);
+    (Ph.events||[]).forEach(function(e,j){ P(h+".events["+j+"]",e,[0,1]); }); });
+  EVENTS.forEach(function(e){ var h="EVENTS[#"+e.id+"]"; S(h+".n",e.n); S(h+".why",e.why); S(h+".dispute",e.dispute); });
+  Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id], h="FORMATIONS."+id;
+    ["desig","commander","staff","role","note","strengthNote","mixedNote"].forEach(function(k){ S(h+"."+k,f[k]); });
+    if(f.army){ S(h+".army.men",f.army.men); S(h+".army.src",f.army.src); }
+    if(f.track) Object.keys(f.track).forEach(function(k){ var t=f.track[k]; if(!t) return; var th=h+'.track["'+k+'"]'; S(th+".act",t.act); S(th+".obj",t.obj); if(t.tm) S(th+".tm.note",t.tm.note); }); });
+  FEATURES.forEach(function(F){ var h="FEATURES[#"+F.id+"]"; S(h+".sub",F.sub); S(h+".story",F.story);
+    (F.why||[]).forEach(function(w,i){ S(h+".why["+i+"]",w); }); (F.facts||[]).forEach(function(a,i){ P(h+".facts["+i+"]",a,[0,1]); }); });
+  ANALYSIS.forEach(function(A){ S("ANALYSIS[#"+A.id+"].text",A.text); });
+  TOUR.forEach(function(T,i){ S("TOUR["+i+"].x",T.x); });
+  ACTS.forEach(function(A){ S("ACTS[#"+A.id+"].line",A.line); });
+  ["fr","al"].forEach(function(sd){ var C=COMMAND[sd]||{}; Object.keys(C).forEach(function(k){ (C[k]||[]).forEach(function(row,j){ P("COMMAND."+sd+'["'+k+'"]['+j+"]",row,[0,1,2]); }); });
+    var Pl=PLANS[sd]; if(Pl){ ["author","intent","cost"].forEach(function(k){ S("PLANS."+sd+"."+k,Pl[k]); });
+      (Pl.assumed||[]).forEach(function(a,i){ S("PLANS."+sd+".assumed["+i+"]",a); }); (Pl.cols||[]).forEach(function(c,i){ S("PLANS."+sd+".cols["+i+"].ord",c&&c.ord); }); } });
+  (SOURCE_NOTE.body||[]).forEach(function(b,i){ S("SOURCE_NOTE.body["+i+"]",b); }); (SOURCE_NOTE.refs||[]).forEach(function(b,i){ S("SOURCE_NOTE.refs["+i+"]",b); });
+  (SOURCE_NOTE.layers||[]).forEach(function(a,i){ P("SOURCE_NOTE.layers["+i+"]",a,[0,1]); });
+  return R;
+}
 function claimsIndex(){
   var K=["fact","attributed","disputed","derived","interpretation","uncertain","design"], by={}, cls={};
   Object.keys(STATEMENT_CLAIMS).forEach(function(r){ var c=STATEMENT_CLAIMS[r].cl; (by[c]=by[c]||[]).push(r); });
@@ -9117,7 +9142,9 @@ function claimsIndex(){
       h+='<ul class="bul">'+L.map(function(x){ return '<li>'+esc(x.t)+claimDetail(STATEMENT_CLAIMS[x.r])+'</li>'; }).join('')+'</ul>';   /* Stage 8, 8A: as recorded, with each side and the note */
     }
     h+='</li>'; });
-  h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>: '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';
+  /* the final audits' Stage 6 (CL-UX-21): the unchecked counted, as every claimed kind is (narrativeRefs: neither a claim of its own nor its class's) */
+  var nUn=narrativeRefs().filter(function(r){ return !Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,r)&&!classOf(r); }).length;
+  h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>: '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement ("+nUn+(nUn===1?" statement":" statements")+").")+'</li></ul>';
   return h;
 }
 var _srcRefs=null;
