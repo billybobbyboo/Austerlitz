@@ -80,7 +80,15 @@ All here, on this branch's final build `250b0e32...` (Chromium 141.0.7390.37, th
 - `npm run check:contrast`: 7,473 text elements, 0 below AA, 0 under 10.5 px, 0 font failures; 45 of 45 states (10 as a phone); 0 console
   messages; the boot cases 8 of 8.
 - The negative controls (`tools/final-stage6/mutate.js wp10m`): 5 of 5 as expected.
-- `check:visual` on CI: dispatched on this branch; its result goes on the PR.
+- `check:visual` on CI, first run (42737308150 on `7938e86`, build `250b0e32...`): failed, 48 failures in 24 cases, every one the harness's own
+  ground-contact measure (`tools/visual/measure.js` `figures`, `standards`): "a figure is 0.8746 units off the drawn ground (kienmayer floats 0.87)"
+  (2.337 at 10.33x), its standards' feet likewise. The measure read the drawn ground alone, the mere's bed, under the figures this PR stands on the
+  ice; the self-test's own figure check had learned the ice (`iceTop`), the harness's had not. *Is:* the measure reads a mere's ice where its disc lies
+  above the drawn ground (`onIce`, the app's `iceTop`: the drawn discs' own heights inside their own outlines; a build without it, or a point off every
+  disc, against the drawn ground as before). Re-run here on `overview-field`, `pratzen-low-10x` and `phone-390-explore`: the figures' and the
+  standards' largest error 0 (was 0.8746, 2.337, 0.8746), each case passing `check-report.js`. The failed run is the negative control: the same build
+  judged by the measure without the ice. Every other measure of that run passed (the motion block, culling in motion, the census, the live blocks).
+- `check:visual` on CI, second run: __CI2__
 
 ### What remains uncertain, and what is handed on
 
