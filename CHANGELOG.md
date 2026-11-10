@@ -60,8 +60,12 @@ Presentation, not data (`app.js`):
 - `runtime-test.js`, the position pills (roadmap step 4's K2 check, extended): every card and dossier at five clocks, its claim pill POS_CLAIM's words
   with the position's grade, no bare "Position X" or "Timing X" pill, the timing pill "Timing: dated|approximate|inferred (X)". Negative controls,
   each on a copy with one fix put back and the suite run: the bare timing pill again, failed (the pill check); the claim pill without its grade, failed.
-- The internal references are held by `redteam.js`'s overclaim scan only for its own patterns; the audit's probe (`tools/audit-post8/a11y/leaks.js`)
-  is the measure (below).
+- `runtime-test.js`, internal references (CL-UX-05): what a visitor is shown, read as drawn (every formation's full dossier at the day's start and
+  inside each of its 25 timed moves, its "Dated by" row, every event's dossier, the sources sheet with its index of claims, and the sheet opened from
+  each formation's dossier: 133 views), holds no roadmap step, owner question or decision by number, register entry, repository path or code name.
+  Negative controls: `main`'s `narrative.js` alone fails it (the sheet's "(S5.7)" and "roadmap step"), `main`'s `data.js` alone fails it (the dossiers'
+  "moveMin" and "roadmap step" in the moves' windows). The ten such words left in the data (`GEOREF`'s two notes, six of `DRESS`, `COLOURS_CARRIED`'s
+  headquarters note, two of `BUILDINGS`) are in notes no view draws, so the check reads the drawn text, not the strings.
 
 ### Verified
 
