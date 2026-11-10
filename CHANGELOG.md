@@ -32,7 +32,11 @@ declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b
 ### Verified
 
 - `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:baseline`: passes.
-- `check:selftest`, `check:contrast` and `check:visual` (CI): __PENDING__
+- On CI (run 42758127581 on `cd7e27e`, the pinned Chromium 141, the build `402d1b27...`): `npm test`, `check:data`, `check:chronology`, `check:selftest`
+  (42 min; 335 checks, the manifest unchanged: this PR adds no self-test check) and `check:contrast` pass. A local self-test run stopped at a harness
+  click's 30 s timeout (the phase's message block, Study to Watch at 1600 x 900) while three other browser jobs shared the machine's four cores; CI's
+  run is the verdict.
+- `check:visual` (CI): __CI__
 
 ## 2026-11 · CI: the jobs pinned to Ubuntu 24.04
 
