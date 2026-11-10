@@ -36,7 +36,8 @@ declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b
   (42 min; 335 checks, the manifest unchanged: this PR adds no self-test check) and `check:contrast` pass. A local self-test run stopped at a harness
   click's 30 s timeout (the phase's message block, Study to Watch at 1600 x 900) while three other browser jobs shared the machine's four cores; CI's
   run is the verdict.
-- `check:visual` (CI): __CI__
+- `check:visual` on CI (run 42756043037 on `7f5cf43`, `checks.yml`, `visual: true`; the build `402d1b27...`, the branch's head's): passed, every
+  job (the run 3 h 27 min).
 
 ## 2026-11 · CI: the jobs pinned to Ubuntu 24.04
 
