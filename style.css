@@ -799,7 +799,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
    presentation switch); the ten-minute steps, the four speeds and "Whose eyes?" leave it (the keys and the Command tab keep them). The track:
    no act row; the phases a band of their ticks with the current one marked, no press on them (decision 224 (a): the dispatch sheet lists them;
    the caption names the act and the phase); the rail and the event markers as above. */
-#speedbtn,#menubtn,.dgrip,.phlist,.tools-vm,.railclose{display:none}
+#speedbtn,#menubtn,.dgrip,.phlist,.tools-vm,.railclose,#phasebtn{display:none}
 @media (max-width:720px) and (min-height:431px){
   .tb-top{flex-wrap:wrap;column-gap:6px;row-gap:0;padding:4px 8px 0}
   .tb-ctrl{order:1;gap:4px}
@@ -897,7 +897,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   #speedbtn{display:inline-block;min-width:44px;font-size:var(--t-ui)}
   body.firstrun-on .tools{display:none}
   body:has(#layerpop:not([hidden])) .tools{visibility:hidden}
-  #layerpop{top:56px;max-height:calc(100vh - var(--tb) - 64px)}
+  #layerpop{top:56px;max-height:calc(100vh - 64px)}   /* the final audits' Stage 6 (CL-UX-01): over the timeline if need be (it had 70 px at 225 px tall), scrolling inside */
   body.drawer-open:not(.docked) #viewmode{left:calc((100vw - var(--draw))/2)}
   /* measured at 667 x 375 (the probe, Part B): the switch clear of the rail shown beside the map, the tools standing down while the tour's or
      the opening's bar stands (its own controls; "Leave the tour" gives them back), as under the first card */
@@ -905,6 +905,44 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   body:has(#tourbar:not([hidden])) .tools{display:none}
 }
 
+/* the final audits' Stage 6, WP-09 (CL-UX-01; WCAG 1.4.10, reflow): at 430 px tall or less, by size, not by device, so that a desktop zoomed to
+   400% (400 x 225 at 1600 x 900, 320 x 256 at 1280 x 1024) and a phone held landscape keep every function. The phase text opened as a sheet from the
+   timeline's "Phase text" button (owner decision 305 (a): until Stage 6 the card gave way here with no other way to its text; docked, the rail's Now
+   tab holds it); the first card scrolls inside the screen; the timeline's control row wraps rather than running off the screen; the tools, the
+   panels, the dossier and the Layers panel take the screen's height and scroll inside it (the rail had 0 px for its tabs' content at 225 px). The
+   phone held upright (min-height 431 px) and every taller window keep their layouts */
+@media (max-height:430px){
+  body:not(.docked) #phasebtn{display:inline-block;min-height:32px;font-size:var(--t-ui);padding:0 9px}
+  body:not(.docked).dsheet-open .dispatch{display:block;left:0;right:0;width:auto;top:0;bottom:var(--tb);max-height:none;overflow-y:auto;z-index:42;
+    padding:0 14px 10px;border:0;border-bottom:2px solid var(--accent)}
+  body.dsheet-open .dispatch .dgrip{display:block;position:sticky;top:0;z-index:1;width:100%;height:28px;margin:0 0 2px;padding:0;border:0;cursor:pointer;
+    background:rgb(var(--scrim-rgb))}
+  body.dsheet-open .dispatch .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
+  body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
+  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes,body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
+  #firstrun,body.rail-hidden #firstrun{max-height:calc(100vh - var(--tb) - 16px);overflow-y:auto}
+  .tb-top{flex-wrap:wrap;row-gap:2px}
+  .tools{max-height:calc(100vh - var(--tb) - 28px);overflow-y:auto}
+  .rail{bottom:0;z-index:45}
+  .brand p{display:none}
+  .railscroll{margin-top:8px;min-height:0}
+  .drawer{bottom:0;z-index:46}
+}
+@media (max-height:430px) and (max-width:720px){
+  .tb-acts{display:none}   /* as on the phone: the acts named in the caption, their buttons' names cut at this width */
+}
+/* the final audits' Stage 6, WP-09 (CL-UX-09; WCAG 1.4.1, 1.4.11 under forced colours): in a forced-colours mode (Windows High Contrast) the browser
+   replaces every background and border with the user's system colours, so the pressed and selected states drawn by a background alone vanished (the
+   layers' rows, the ground's, the presentation's, the speed's and the vantages' buttons, Follow, the current phase), 22 of 25 event markers vanished,
+   and the key's swatches and the side marks before names became identical white squares. Here the states are drawn in the user's own selection
+   colours (Highlight, HighlightText: system colours, so the user's theme is kept), and the side colours, which are content (the nation), are kept
+   with a CanvasText edge */
+@media (forced-colors: active){
+  [aria-pressed="true"],[aria-selected="true"],[aria-current="true"],.layer-btn[aria-pressed="true"]{forced-color-adjust:none;background:Highlight;color:HighlightText;border-color:HighlightText}
+  .tab-btn[aria-selected="true"]{text-decoration:underline 2px}
+  .ev-mark,.ev-bar,.mln-mark,.legend .sw,#firstrun .key-sw{forced-color-adjust:none;outline:1px solid CanvasText}
+}
 /* Stage 5E (docs/STAGE5_SPEC.md section D.5): "Whose eyes?", its caption, the timeline's button, the eye-level vantage's caption */
 .eyes-note{margin:8px 0 4px;color:var(--text-body);font-size:var(--t-small);line-height:1.45}
 .eyes-note .ltag{margin-right:4px;vertical-align:1px}

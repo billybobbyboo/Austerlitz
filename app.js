@@ -6855,7 +6855,8 @@ var LABELS={
      2026); "Playback speed" and "Phases" are the build's own names for the speeds' group and the phases' group */
   phone:{speed:"Playback speed", speedTitle:"Playback speed: each press the next of \u00bd\u00d7, 1\u00d7, 2\u00d7 and 4\u00d7",
     menu:"Menu", menuTitle:"The tools: the opening, the tour, layers, panels, the vantages and the presentation",
-    grip:"The phase text in full", phases:"Phases", closePanels:"Close the panels"},
+    grip:"The phase text in full", phases:"Phases", closePanels:"Close the panels",
+    phase:"Phase text", phaseTitle:"The phase text, the narrative of the phase at the clock, opened over the map"},   /* the final audits' Stage 6 (CL-UX-01, decision 305 (a)) */
   eyesBack:"Whose eyes? Back to %r (a model reading).",
   /* roadmap step 5 (question 172): a focused map item that leaves the map (the clock moved it off, or it ended) hands the focus on, and says so */
   mapLeft:"%n has left the view; the focus is on %m.", mapLeftLayer:"the map",   /* the review of 22c77ac: "the view" (the clock, a pan or a zoom) */
@@ -6879,6 +6880,7 @@ function applyLabels(){
   var spb=document.getElementById("speedbtn"); if(spb){ spb.title=LABELS.phone.speedTitle; paintSpeedBtn(); }   /* roadmap step 6 item 3 */
   var mnb=document.getElementById("menubtn"); if(mnb){ mnb.textContent=LABELS.phone.menu; mnb.title=LABELS.phone.menuTitle; }
   var dgb=document.getElementById("dgrip"); if(dgb){ dgb.setAttribute("aria-label",LABELS.phone.grip); dgb.title=LABELS.phone.grip; }
+  var phb=document.getElementById("phasebtn"); if(phb){ phb.textContent=LABELS.phone.phase; phb.title=LABELS.phone.phaseTitle; }
   var phl=document.getElementById("phlist"); if(phl) phl.setAttribute("aria-label",LABELS.phone.phases);
   var rcl=document.getElementById("railclose"); if(rcl){ rcl.setAttribute("aria-label",LABELS.phone.closePanels); rcl.title=LABELS.phone.closePanels; }
   /* roadmap step 5 (R-3): the names, from LABELS.names (shell.html carries the same words for a page whose bundle fails, SW-1) */
@@ -9467,6 +9469,7 @@ function syncViewmode(){
 var PHONE_Q="(max-width:720px) and (min-height:431px)", PHONE=false;
 function syncPhone(){
   var want=!!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(PHONE_Q).matches);
+  if(!want&&dsheetOpen()&&!shortSheet()) setDSheet(false);   /* Stage 6 (CL-UX-01): the short screen's sheet closed where it no longer applies */
   if(want===PHONE) return;
   PHONE=want;
   if(!want){ setMenu(false); setDSheet(false); }
@@ -9475,9 +9478,12 @@ function syncPhone(){
   if(inVm&&a!==focusedEl()) focusTo([a,"menubtn","play"]);   /* SW-5: the switch moved in the DOM drops the focus (the review's item 9) */
 }
 function dsheetOpen(){ return document.body.classList.contains("dsheet-open"); }
+/* the final audits' Stage 6, WP-09 (CL-UX-01; decision 305 (a)): the sheet also at 430 px tall or less, not docked, opened by the timeline's "Phase text" */
+var SHORT_Q="(max-height:430px)";
+function shortSheet(){ return !!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(SHORT_Q).matches)&&!(typeof docked!=="undefined"&&docked); }
 function setDSheet(open){
-  open=!!open&&PHONE;
-  var b=document.getElementById("dgrip"); document.body.classList.toggle("dsheet-open",open); if(b) b.setAttribute("aria-expanded",String(open));
+  open=!!open&&(PHONE||shortSheet());
+  var b=document.getElementById("dgrip"), pb=document.getElementById("phasebtn"); document.body.classList.toggle("dsheet-open",open); if(b) b.setAttribute("aria-expanded",String(open)); if(pb) pb.setAttribute("aria-expanded",String(open));
   toastRelayout();   /* Stage 8, 8I: the dispatch sheet raised or folded on a phone */
   if(typeof requestRender==="function") requestRender(2);
 }
@@ -9505,6 +9511,7 @@ function bindPhone(){
   window.addEventListener("pointerdown",function(e){ if(!menuOpen()) return; var t=e.target;
     if(t&&t.closest&&(t.closest("#tools")||t.closest("#menubtn"))) return; setMenu(false); },true);
   if(g) g.addEventListener("click",function(){ setDSheet(!dsheetOpen()); });
+  var pbt=document.getElementById("phasebtn"); if(pbt) pbt.addEventListener("click",function(){ setDSheet(!dsheetOpen()); if(dsheetOpen()){ var gg=document.getElementById("dgrip"); if(gg) focusTo([gg]); } });
   var rc=document.getElementById("railclose"); if(rc) rc.addEventListener("click",function(){ setPanels(false); });
   syncPhone();
 }

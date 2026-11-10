@@ -56,7 +56,7 @@
   <div class="railscroll">
     <div id="now" class="tabpane" role="tabpanel" aria-labelledby="tab-now">
       <p class="now-off">The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.</p>
-      <section class="dispatch">
+      <section class="dispatch" id="dispatch">
         <!-- roadmap step 6 item 3 (decision 223): below 720 px wide the card is a sheet at the screen's foot, its head shown; the grip opens
              it whole, with the phases listed (decision 224 (a); app.js setDSheet, buildTimeline). Not shown elsewhere (style.css) -->
         <button class="dgrip" id="dgrip" type="button" aria-expanded="false"><span aria-hidden="true"></span></button>
@@ -314,6 +314,9 @@
     <!-- roadmap step 6 item 3 (decision 225): below 720 px wide the four speeds as one button that steps through them (style.css; its words
          from LABELS.phone, app.js setSpeed) -->
     <button class="t tb-speed" id="speedbtn" type="button">&frac12;&times;</button>
+    <!-- the final audits' Stage 6, WP-09 (CL-UX-01; owner decision 305 (a)): at 430 px tall or less, where the dispatch card gives way, the phase text
+         opened as a sheet over the map (app.js setDSheet; its words from LABELS.phone). Not shown elsewhere (style.css) -->
+    <button class="t tb-phase" id="phasebtn" type="button" aria-expanded="false" aria-controls="dispatch">Phase text</button>
     <div class="tb-cap" id="tb-cap"></div>
     <button class="t tb-eyes" id="eyesbtn" type="button" aria-label="Eyes: everyone. Whose eyes? Everyone (press to change)" title="Whose eyes? Everyone, Napoleon's headquarters, the Allied headquarters (a model reading)">Eyes: everyone</button>
     <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>

@@ -805,7 +805,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
    presentation switch); the ten-minute steps, the four speeds and "Whose eyes?" leave it (the keys and the Command tab keep them). The track:
    no act row; the phases a band of their ticks with the current one marked, no press on them (decision 224 (a): the dispatch sheet lists them;
    the caption names the act and the phase); the rail and the event markers as above. */
-#speedbtn,#menubtn,.dgrip,.phlist,.tools-vm,.railclose{display:none}
+#speedbtn,#menubtn,.dgrip,.phlist,.tools-vm,.railclose,#phasebtn{display:none}
 @media (max-width:720px) and (min-height:431px){
   .tb-top{flex-wrap:wrap;column-gap:6px;row-gap:0;padding:4px 8px 0}
   .tb-ctrl{order:1;gap:4px}
@@ -903,7 +903,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   #speedbtn{display:inline-block;min-width:44px;font-size:var(--t-ui)}
   body.firstrun-on .tools{display:none}
   body:has(#layerpop:not([hidden])) .tools{visibility:hidden}
-  #layerpop{top:56px;max-height:calc(100vh - var(--tb) - 64px)}
+  #layerpop{top:56px;max-height:calc(100vh - 64px)}   /* the final audits' Stage 6 (CL-UX-01): over the timeline if need be (it had 70 px at 225 px tall), scrolling inside */
   body.drawer-open:not(.docked) #viewmode{left:calc((100vw - var(--draw))/2)}
   /* measured at 667 x 375 (the probe, Part B): the switch clear of the rail shown beside the map, the tools standing down while the tour's or
      the opening's bar stands (its own controls; "Leave the tour" gives them back), as under the first card */
@@ -911,6 +911,44 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   body:has(#tourbar:not([hidden])) .tools{display:none}
 }
 
+/* the final audits' Stage 6, WP-09 (CL-UX-01; WCAG 1.4.10, reflow): at 430 px tall or less, by size, not by device, so that a desktop zoomed to
+   400% (400 x 225 at 1600 x 900, 320 x 256 at 1280 x 1024) and a phone held landscape keep every function. The phase text opened as a sheet from the
+   timeline's "Phase text" button (owner decision 305 (a): until Stage 6 the card gave way here with no other way to its text; docked, the rail's Now
+   tab holds it); the first card scrolls inside the screen; the timeline's control row wraps rather than running off the screen; the tools, the
+   panels, the dossier and the Layers panel take the screen's height and scroll inside it (the rail had 0 px for its tabs' content at 225 px). The
+   phone held upright (min-height 431 px) and every taller window keep their layouts */
+@media (max-height:430px){
+  body:not(.docked) #phasebtn{display:inline-block;min-height:32px;font-size:var(--t-ui);padding:0 9px}
+  body:not(.docked).dsheet-open .dispatch{display:block;left:0;right:0;width:auto;top:0;bottom:var(--tb);max-height:none;overflow-y:auto;z-index:42;
+    padding:0 14px 10px;border:0;border-bottom:2px solid var(--accent)}
+  body.dsheet-open .dispatch .dgrip{display:block;position:sticky;top:0;z-index:1;width:100%;height:28px;margin:0 0 2px;padding:0;border:0;cursor:pointer;
+    background:rgb(var(--scrim-rgb))}
+  body.dsheet-open .dispatch .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
+  body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
+  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes,body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
+  #firstrun,body.rail-hidden #firstrun{max-height:calc(100vh - var(--tb) - 16px);overflow-y:auto}
+  .tb-top{flex-wrap:wrap;row-gap:2px}
+  .tools{max-height:calc(100vh - var(--tb) - 28px);overflow-y:auto}
+  .rail{bottom:0;z-index:45}
+  .brand p{display:none}
+  .railscroll{margin-top:8px;min-height:0}
+  .drawer{bottom:0;z-index:46}
+}
+@media (max-height:430px) and (max-width:720px){
+  .tb-acts{display:none}   /* as on the phone: the acts named in the caption, their buttons' names cut at this width */
+}
+/* the final audits' Stage 6, WP-09 (CL-UX-09; WCAG 1.4.1, 1.4.11 under forced colours): in a forced-colours mode (Windows High Contrast) the browser
+   replaces every background and border with the user's system colours, so the pressed and selected states drawn by a background alone vanished (the
+   layers' rows, the ground's, the presentation's, the speed's and the vantages' buttons, Follow, the current phase), 22 of 25 event markers vanished,
+   and the key's swatches and the side marks before names became identical white squares. Here the states are drawn in the user's own selection
+   colours (Highlight, HighlightText: system colours, so the user's theme is kept), and the side colours, which are content (the nation), are kept
+   with a CanvasText edge */
+@media (forced-colors: active){
+  [aria-pressed="true"],[aria-selected="true"],[aria-current="true"],.layer-btn[aria-pressed="true"]{forced-color-adjust:none;background:Highlight;color:HighlightText;border-color:HighlightText}
+  .tab-btn[aria-selected="true"]{text-decoration:underline 2px}
+  .ev-mark,.ev-bar,.mln-mark,.legend .sw,#firstrun .key-sw{forced-color-adjust:none;outline:1px solid CanvasText}
+}
 /* Stage 5E (docs/STAGE5_SPEC.md section D.5): "Whose eyes?", its caption, the timeline's button, the eye-level vantage's caption */
 .eyes-note{margin:8px 0 4px;color:var(--text-body);font-size:var(--t-small);line-height:1.45}
 .eyes-note .ltag{margin-right:4px;vertical-align:1px}
@@ -1336,7 +1374,7 @@ $Id$
   <div class="railscroll">
     <div id="now" class="tabpane" role="tabpanel" aria-labelledby="tab-now">
       <p class="now-off">The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.</p>
-      <section class="dispatch">
+      <section class="dispatch" id="dispatch">
         <!-- roadmap step 6 item 3 (decision 223): below 720 px wide the card is a sheet at the screen's foot, its head shown; the grip opens
              it whole, with the phases listed (decision 224 (a); app.js setDSheet, buildTimeline). Not shown elsewhere (style.css) -->
         <button class="dgrip" id="dgrip" type="button" aria-expanded="false"><span aria-hidden="true"></span></button>
@@ -1594,6 +1632,9 @@ $Id$
     <!-- roadmap step 6 item 3 (decision 225): below 720 px wide the four speeds as one button that steps through them (style.css; its words
          from LABELS.phone, app.js setSpeed) -->
     <button class="t tb-speed" id="speedbtn" type="button">&frac12;&times;</button>
+    <!-- the final audits' Stage 6, WP-09 (CL-UX-01; owner decision 305 (a)): at 430 px tall or less, where the dispatch card gives way, the phase text
+         opened as a sheet over the map (app.js setDSheet; its words from LABELS.phone). Not shown elsewhere (style.css) -->
+    <button class="t tb-phase" id="phasebtn" type="button" aria-expanded="false" aria-controls="dispatch">Phase text</button>
     <div class="tb-cap" id="tb-cap"></div>
     <button class="t tb-eyes" id="eyesbtn" type="button" aria-label="Eyes: everyone. Whose eyes? Everyone (press to change)" title="Whose eyes? Everyone, Napoleon's headquarters, the Allied headquarters (a model reading)">Eyes: everyone</button>
     <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
@@ -14725,7 +14766,8 @@ var LABELS={
      2026); "Playback speed" and "Phases" are the build's own names for the speeds' group and the phases' group */
   phone:{speed:"Playback speed", speedTitle:"Playback speed: each press the next of \u00bd\u00d7, 1\u00d7, 2\u00d7 and 4\u00d7",
     menu:"Menu", menuTitle:"The tools: the opening, the tour, layers, panels, the vantages and the presentation",
-    grip:"The phase text in full", phases:"Phases", closePanels:"Close the panels"},
+    grip:"The phase text in full", phases:"Phases", closePanels:"Close the panels",
+    phase:"Phase text", phaseTitle:"The phase text, the narrative of the phase at the clock, opened over the map"},   /* the final audits' Stage 6 (CL-UX-01, decision 305 (a)) */
   eyesBack:"Whose eyes? Back to %r (a model reading).",
   /* roadmap step 5 (question 172): a focused map item that leaves the map (the clock moved it off, or it ended) hands the focus on, and says so */
   mapLeft:"%n has left the view; the focus is on %m.", mapLeftLayer:"the map",   /* the review of 22c77ac: "the view" (the clock, a pan or a zoom) */
@@ -14749,6 +14791,7 @@ function applyLabels(){
   var spb=document.getElementById("speedbtn"); if(spb){ spb.title=LABELS.phone.speedTitle; paintSpeedBtn(); }   /* roadmap step 6 item 3 */
   var mnb=document.getElementById("menubtn"); if(mnb){ mnb.textContent=LABELS.phone.menu; mnb.title=LABELS.phone.menuTitle; }
   var dgb=document.getElementById("dgrip"); if(dgb){ dgb.setAttribute("aria-label",LABELS.phone.grip); dgb.title=LABELS.phone.grip; }
+  var phb=document.getElementById("phasebtn"); if(phb){ phb.textContent=LABELS.phone.phase; phb.title=LABELS.phone.phaseTitle; }
   var phl=document.getElementById("phlist"); if(phl) phl.setAttribute("aria-label",LABELS.phone.phases);
   var rcl=document.getElementById("railclose"); if(rcl){ rcl.setAttribute("aria-label",LABELS.phone.closePanels); rcl.title=LABELS.phone.closePanels; }
   /* roadmap step 5 (R-3): the names, from LABELS.names (shell.html carries the same words for a page whose bundle fails, SW-1) */
@@ -17337,6 +17380,7 @@ function syncViewmode(){
 var PHONE_Q="(max-width:720px) and (min-height:431px)", PHONE=false;
 function syncPhone(){
   var want=!!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(PHONE_Q).matches);
+  if(!want&&dsheetOpen()&&!shortSheet()) setDSheet(false);   /* Stage 6 (CL-UX-01): the short screen's sheet closed where it no longer applies */
   if(want===PHONE) return;
   PHONE=want;
   if(!want){ setMenu(false); setDSheet(false); }
@@ -17345,9 +17389,12 @@ function syncPhone(){
   if(inVm&&a!==focusedEl()) focusTo([a,"menubtn","play"]);   /* SW-5: the switch moved in the DOM drops the focus (the review's item 9) */
 }
 function dsheetOpen(){ return document.body.classList.contains("dsheet-open"); }
+/* the final audits' Stage 6, WP-09 (CL-UX-01; decision 305 (a)): the sheet also at 430 px tall or less, not docked, opened by the timeline's "Phase text" */
+var SHORT_Q="(max-height:430px)";
+function shortSheet(){ return !!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(SHORT_Q).matches)&&!(typeof docked!=="undefined"&&docked); }
 function setDSheet(open){
-  open=!!open&&PHONE;
-  var b=document.getElementById("dgrip"); document.body.classList.toggle("dsheet-open",open); if(b) b.setAttribute("aria-expanded",String(open));
+  open=!!open&&(PHONE||shortSheet());
+  var b=document.getElementById("dgrip"), pb=document.getElementById("phasebtn"); document.body.classList.toggle("dsheet-open",open); if(b) b.setAttribute("aria-expanded",String(open)); if(pb) pb.setAttribute("aria-expanded",String(open));
   toastRelayout();   /* Stage 8, 8I: the dispatch sheet raised or folded on a phone */
   if(typeof requestRender==="function") requestRender(2);
 }
@@ -17375,6 +17422,7 @@ function bindPhone(){
   window.addEventListener("pointerdown",function(e){ if(!menuOpen()) return; var t=e.target;
     if(t&&t.closest&&(t.closest("#tools")||t.closest("#menubtn"))) return; setMenu(false); },true);
   if(g) g.addEventListener("click",function(){ setDSheet(!dsheetOpen()); });
+  var pbt=document.getElementById("phasebtn"); if(pbt) pbt.addEventListener("click",function(){ setDSheet(!dsheetOpen()); if(dsheetOpen()){ var gg=document.getElementById("dgrip"); if(gg) focusTo([gg]); } });
   var rc=document.getElementById("railclose"); if(rc) rc.addEventListener("click",function(){ setPanels(false); });
   syncPhone();
 }
