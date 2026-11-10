@@ -6,6 +6,10 @@
 only: no data file and no guarded declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b0935.html`). Owner decisions applied:
 305 (a), the phase text from the timeline on short screens; 306, the two new `check:visual` cases' limits as measured (`docs/final-stage6-evidence/questions.md`).
 `austerlitz-command-map.html` is now 2,971,888 bytes, md5 `646b1c4f4869d76c5dddcf5c2e67ea5c` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+*Reconciled with `main` after PR #94 (WP-10's meres, `dc04a02`; merged in, not rebased):* no conflict but `package.json`'s baseline line; the
+merged build is 2,982,383 bytes, md5 `d3fdd0ff49dac05681792a570f62d222`, and `check:baseline` moves to it. The self-test's manifest is `main`'s (337: this PR
+adds no self-test check). On the merged build: `npm test`, `check:data` (143 identical) and `check:chronology` pass here; `check:selftest`,
+`check:contrast` and `check:visual` run again on CI (the results below are the unmerged build's).
 
 ### What changed, and why
 
@@ -67,6 +71,97 @@ the pinned browser every measured limit and baseline was taken on) does not inst
 ubuntu26.04-x64", so every browser job (`check:selftest`, `check:contrast`, `check:visual`) failed at its install step before any check ran
 (run 42733450089 on PR #94, all three tries in 3 seconds; the node job passed). *Is:* the three jobs of `.github/workflows/checks.yml` run on
 `ubuntu-24.04`, the image they ran on until now, so the pinned browser and every limit stay as measured. No source file and no build change.
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 1): the meres (figures on the ice, no trees on it)
+
+**Status: on `claude/dreamy-johnson-uadkqa-meres` (draft PR into `main`, for review, not merged).** Part of WP-10 of
+`docs/ROADMAP_FINAL_AUDIT.md`: CL-VIS-01 and CL-VIS-02; CL-VIS-06 re-verified (closed by WP-08's lettering, decision 282 (a)). Presentation only:
+no data file and no guarded declaration changes (`check:data`: all 143 data declarations identical to `archive/stage5wp08-572b0935.html`).
+The owner's decisions of 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`): **313**, the self-test's woods
+pinned at the counts measured; **314 (a)**, the gait check's kept-open counts at the counts measured. `austerlitz-command-map.html` is now 2,974,489 bytes, md5 `250b0e32f2ccce671463f0078453a17c`
+(was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **CL-VIS-01, figures sunk through the frozen mere (`world.js` `MERE_ICE`, `iceTop`; `app.js` `seatLocal`, `slopes`, `afterSeat`, `settleBlock`,
+  the blocks' places in `updateVisibility`, `figureError`).** The ice is a flat disc at its mere's level (`mereLevel`), and the drawn ground
+  under it lies up to 0.875 units below at 4x and 2.338 at 10.33x; every figure was seated on the drawn ground, so Kienmayer's riders on their
+  phase-1 via, Dokhturov's men and Buxhowden's camp in the ponds' phase were drawn cut at the thigh, horses legless: a visual claim of the
+  drowning story the narrative keeps disputed. *Is:* inside a mere's drawn disc, where its ice lies above the drawn ground, a man, a horse, a
+  piece's wheel, a block (its tilt and the marquee on it) and a standard stand on the ice's own level as drawn at the factor (`iceTop`); the
+  gait's two chords about a figure read the same surface. No position, track or level changes: a figure's place is the model's, its seat the
+  surface drawn there. `figureError` (the readout's seating check) judges against the same surface.
+- **CL-VIS-02, trees and bushes on the ice (`world.js` `inMereDisc`, `buildWoods`).** 21 stood inside the Satschan mere's drawn disc (4 village
+  trees, 17 bank bushes along the Littawa; none by Menitz). *Is:* a tree or a bush whose trunk is inside a mere's drawn disc is not drawn; its
+  draws are still taken from the sequence and every other keeps its variant, turn, size and colour, so every other tree and bush is drawn
+  exactly as before (measured, below), and nothing planned changes (the buildings are planned before the woods are drawn).
+- **CL-VIS-06** (the omitted chapels' misreading) was closed by WP-08's lettering (decision 282 (a): St Anthony's chapel's cross, the Santon's
+  chapel's site sign, the dossiers' "Not drawn here"); its checks (`wp08cChecks`) pass on this build.
+
+### Measured (`tools/final-stage6/meres.js`, every 10 minutes 05:00-17:00 at 1x, 4x and 10.33x; `docs/final-stage6-evidence/wp10/`)
+
+- The instances of the blocks inside a mere's drawn disc below its ice (more than 0.01 units): 4x 13,413 of 17,370 on `main`, 0 of 17,364 here; 10.33x
+  11,433 of 15,792, 0 of 15,758 (at 1x the formations are footprints, decision 34: none). `main`'s deepest 0.875 units at 4x and 2.338 at 10.33x
+  (Dokhturov at 11:20 and 12:20); the formations under the ice on `main` Kienmayer (05:20-17:00), Dokhturov (08:10-17:00), Buxhowden (15:30-17:00),
+  Legrand (16:30-17:00), Friant (16:50-17:00) and Saint-Hilaire (17:00), all by Satschan.
+- The trees and bushes: 1,209 drawn on `main`, 1,188 here; the 21 removed exactly those inside the disc (4 village trees, 17 bank bushes); every one
+  of the other 1,188 drawn with the same matrix and colour, compared instance by instance (`meres-6e.json`'s `compare`).
+
+### The owner's decisions, measured first
+
+- **313** (the self-test's woods, `WOODS8E`, and `css-test.js`'s copy of the pin): village 184 to 180, stream 222 to 205; every other count, and
+  every habit's triangles, unchanged.
+- **314 (a)** (the gait on the ground, `H_CASES`): with the figures on the ice, the check found more cases beyond `H_TOL` in twelve fresh groups. The
+  cases were listed on `main` and on this branch (`tools/final-stage6/gait-cases.js`, `gait-cases.json`): `main`'s counts are `H_CASES` exactly; 90
+  cases are added and 12 gone here, every one Dokhturov's (80) or Kienmayer's (10) at the Satschan shore, each within its group's proposed bound and
+  none larger than the worst elsewhere on the field (10.33x 0.170 against 0.247; 4x 0.050 against 0.096); every other formation identical. The
+  cause: the ice's waterline, where the flat ice meets the rising shore, is a crease the gait's two chords cannot follow (as the ground's own creases,
+  the cases already kept open); on `main` those men were judged against the bed they were drawn sunk into. Was and is: 4x men edges rich 29 to 43,
+  simple 13 to 22, drawn rich 38 to 50, simple 19 to 26; 4x horses edges 35 to 36 (both kits), drawn rich 33 to 34, simple 32 to 33; 10.33x men drawn
+  rich 33 to 47, simple 23 to 34, edges rich 32 to 37, simple 19 to 21. `H_TOL` and every bound unchanged. A smoothed waterline was not built:
+  rounding the crease either floats the figures over the ice or, on the steep shores, spreads it over too short a run to help.
+- The gait check's reference surface (`hOffs`): the offsets from the surface the figure stands on (`iceTop`), as `figureError` (on `main`: the drawn
+  ground, which under the ice is the bed the figures no longer stand on: 215 false cases in the first run).
+
+### Checks added, each failing without its fix (`tools/final-stage6/mutate.js wp10m`, `mutate-wp10m.json`)
+
+- `wp10Checks`, "the meres (WP-10, CL-VIS-01)": at 4x and 10.33x, at 06:30, 12:00 and 16:40, every instance of a block inside a mere's drawn disc no
+  lower than the disc's ice (its mesh's own height), a block's own meshes (the marquee) by their lowest point, and where the drawn ground lies under
+  the ice all round a figure (2.5 units) the gait's slopes level; judged against the discs, not `iceTop`. "the meres (WP-10, CL-VIS-02)": no tree or
+  bush inside a disc, by the instances' own matrices. Negative controls, each failing its own check alone, the build passing both: the men seated on
+  the bed again; the chords reading the bed; the block (its marquee) placed on the bed; the trees on the ice drawn again (5 of 5 as expected).
+- The self-test 335 to **337** checks (the two above), the manifest regenerated from the run (`check-report.js --write-manifest`).
+
+### Verified
+
+All here, on this branch's final build `250b0e32...` (Chromium 141.0.7390.37, the pinned browser, software WebGL), but `check:visual` (CI):
+
+- `npm test`: the nine suites and the height guard pass (the height guard classifies `wp10Checks`' ground reads as a test's).
+- `npm run check:data`: all 143 data declarations identical to `archive/stage5wp08-572b0935.html`. `check:chronology`: 0 errors.
+  `check:baseline`: passes on this build.
+- `npm run check:selftest`: 337 checks, every one passing (the two new among them); the run's only failing lines were the manifest's (337 against
+  335, the two names), so the manifest is written from it (`check-report.js --write-manifest`: added 2, removed 0). The motion block's 16 at 227
+  jumps, 959 pops, 105 level-of-detail switches and 12 flickers, `main`'s own counts exactly; every run's line and the long Play runs' bar passing.
+- `npm run check:contrast`: 7,473 text elements, 0 below AA, 0 under 10.5 px, 0 font failures; 45 of 45 states (10 as a phone); 0 console
+  messages; the boot cases 8 of 8.
+- The negative controls (`tools/final-stage6/mutate.js wp10m`): 5 of 5 as expected.
+- `check:visual` on CI, first run (42737308150 on `7938e86`, build `250b0e32...`): failed, 48 failures in 24 cases, every one the harness's own
+  ground-contact measure (`tools/visual/measure.js` `figures`, `standards`): "a figure is 0.8746 units off the drawn ground (kienmayer floats 0.87)"
+  (2.337 at 10.33x), its standards' feet likewise. The measure read the drawn ground alone, the mere's bed, under the figures this PR stands on the
+  ice; the self-test's own figure check had learned the ice (`iceTop`), the harness's had not. *Is:* the measure reads a mere's ice where its disc lies
+  above the drawn ground (`onIce`, the app's `iceTop`: the drawn discs' own heights inside their own outlines; a build without it, or a point off every
+  disc, against the drawn ground as before). Re-run here on `overview-field`, `pratzen-low-10x` and `phone-390-explore`: the figures' and the
+  standards' largest error 0 (was 0.8746, 2.337, 0.8746), each case passing `check-report.js`. The failed run is the negative control: the same build
+  judged by the measure without the ice. Every other measure of that run passed (the motion block, culling in motion, the census, the live blocks).
+- `check:visual` on CI, second run (42770857135 on `1bb13f2`, `checks.yml`, `visual: true`; the build `250b0e32...`, the merged head's): passed,
+  every job (the run 4 h 13 min; every case's figures and standards on the drawn ground or a mere's ice). PR #94 was merged (`dc04a02`) before the run
+  ended; this line is recorded with the reflow PR's reconciliation.
+
+### What remains uncertain, and what is handed on
+
+- The ice's outline and level are 4E's, schematic (decision 27); a figure inside the disc stands on the ice as drawn, whatever the mere's real extent
+  on the day. Nothing here says the ice held or broke: the drowning story stays disputed in the narrative (data.js, analysis.js).
+- The rest of WP-10 is the following PRs: the facings, the camp, the streams and the low tier (CL-VIS-03, -07, -05, -09); the crowns and the
+  buildings (CL-VIS-08, -04; decisions 307, 308).
 
 ## 2026-11 · Final audits' roadmap, Stage 6: the owner's questions (records only)
 
