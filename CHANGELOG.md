@@ -5,7 +5,7 @@
 **Status: on `claude/dreamy-johnson-uadkqa-crowns` (draft PR into `main`, for review, not merged).** The rest of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
 CL-VIS-08 (owner decision 308) and CL-VIS-04 (owner decision 307), each measured first; CL-VIS-10 not done (decision 309 (a), the bounded convention of
 decision 265 (a) kept). Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
-`archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now __SIZE__ bytes, md5 `__MD5__` (was 2,963,994, `3388b70b...`); `check:baseline`
+`archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,971,087 bytes, md5 `c50e08bc47a3f79727c4bb60e95283f1` (was 2,963,994, `3388b70b...`); `check:baseline`
 moves to it.
 
 ### What changed, and why
@@ -16,8 +16,9 @@ moves to it.
   rest discarded, a face at a time as the eye nears (its hash under the nearness): an alpha test in the opaque pass, nothing sorted; nothing beyond the
   near band; the sun's depth pass keeps the faces (soft shadows). Measured (`tools/final-stage6/crowns.js`; `docs/final-stage6-evidence/wp10/`): the draw
   calls and triangles unchanged in the audit's three close views (465 and 1,539,061; 476 and 1,542,919; 392 and 1,401,987); the frame, the two states
-  alternated 15 times each in the closest view and by the castle, 9,114 against 9,346 ms and 7,442 against 7,740 ms (software WebGL, a comparison only:
-  about 3% faster, fewer fragments shaded); the pairs in `slope-10x-0900-r8--pair.jpg` and `sok-castle-1500-close--pair.jpg` (above as 8H drew them,
+  alternated 15 times each in the closest view and by the castle, 9,114 against 9,346 ms and 7,442 against 7,740 ms (`crowns-timing.json`; software
+  WebGL, a comparison only: about 3% less, within what software rendering varies, so read as no slower, not as a gain); the single medians of nine frames
+  in `crowns.json` go both ways (10.4 to 6.8, 9.0 to 11.8 and 8.6 to 10.9 ms), the noise the alternated runs were made to average out; the pairs in `slope-10x-0900-r8--pair.jpg` and `sok-castle-1500-close--pair.jpg` (above as 8H drew them,
   below with the twigs). A design value; decision 247 (a)'s opaque crowns kept beyond the near band, and `css-test.js`'s rule now holds the near hook's
   alpha test as decision 308's.
 - **CL-VIS-04, blocks drawn through buildings (decision 307: (a) measured first, then its fallback (c)).** Measured (`tools/final-stage6/occupy.js`,
@@ -37,7 +38,11 @@ moves to it.
 
 ### Verified
 
-__VERIFIED__
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 errors). `check:baseline`: passes.
+- `check:selftest` (here, the pinned Chromium 141): 337 checks, every one passing; the manifest regenerated from this run, 335 to 337 (the two checks
+  above). A first local run stopped at a harness click's 30 s timeout (the phase's message block) while three other browser jobs shared the machine's four
+  cores; run again alone, it completed.
+- `check:contrast` and `check:visual` (CI): __CI__
 
 ### What remains uncertain, and what is handed on
 
