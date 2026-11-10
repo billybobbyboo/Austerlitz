@@ -6,6 +6,10 @@
 `main`; for review, not merged).** Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
 `archive/stage5wp08-572b0935.html`). Owner decision applied: 276 (a), the first card's sentence (`docs/final-stage6-evidence/questions.md`).
 `austerlitz-command-map.html` is now 2,992,468 bytes, md5 `19d7105fcfb262f80b08579417723d84` (was the reflow PR's 2,971,888, `646b1c4f...`); `check:baseline` moves to it.
+*Reconciled with the reflow PR's branch after it took `main` (PR #94, WP-10's meres; merged in, not rebased):* the self-test's two blocks kept side by
+side (`wp09Checks`, `wp10Checks`); the merged build is 3,002,963 bytes, md5 `df4b428b0a3f5124c4d8e0c1170952a5`, and `check:baseline` moves to it. On it, here:
+`npm test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (342 checks, every one passing) pass; the manifest regenerated from that run,
+337 (`main`'s) to 342. `check:contrast` and `check:visual` run again on CI.
 
 ### What changed, and why
 
@@ -32,6 +36,12 @@
 - **The unchecked counted (CL-UX-21).** *Was:* the sources sheet's claims index counted each claimed kind but not the statements unchecked. *Is:* its last
   row "Not yet checked: ... Every other statement (463 statements)." (`narrativeRefs`, every narrative statement's ref walked over the data as
   `tools/step4/statements.js` reads them; `runtime-test.js` holds the two equal, ref for ref, and the count).
+
+- **The first screens' limits (decision 315, the owner's word of 10 November 2026).** Decision 276 (a)'s sentence makes the first card about two lines
+  taller (it is inline in the key's paragraph; no spacing to give back). `check:visual` on CI (run 42778177074 on `65f1db8`, build `19d7105f...`) failed only
+  there: `first-run`'s unobstructed map 0.6076 against its 0.625 (at 1280 x 720 0.4788 against 0.506), `first-run-laptop`'s 0.5214 against 0.546 (0.4788),
+  `phone-390-first`'s 0.5356 against 0.591 and its framing 13 of 15 items against 16. *Is:* set at those measures, rounded down as before: [0.607, 0.478],
+  [0.521, 0.478], 0.535, 13 (`thresholds.js`, each with its was). CI's report judged again with them (`check-report.js`): the three cases pass.
 
 ### Checks added, each failing without its fix
 
