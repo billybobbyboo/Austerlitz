@@ -8,6 +8,11 @@ decided (a) on 9 November 2026 ("Your recommendations for all"; `docs/final-stag
 declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,965,080 bytes, md5
 `402d1b278679e836c313ca62210ccfff` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
 
+*Reconciled (11 November 2026; merged in, not rebased) with the crowns PR's branch, which holds `main` after PRs #94 and #98 and the focus, visitor-words,
+picture and crowns PRs:* conflicts in `CHANGELOG.md` and `package.json` only. The merged build is 3,025,956 bytes, md5 `dcc65319b445c119b005f7e5c25a29fc`,
+and `check:baseline` moves to it. On it, here: `npm test` (this PR's runtime-test block among them), `check:data` (143 identical), `check:chronology` and
+`check:selftest` (348 checks, every one passing, the manifest unchanged) pass. `check:contrast` and `check:visual` run again on CI.
+
 ### What changed, and why
 
 - **The full dossier's earlier act (`dossierFormation`).** Under a headquarters' reading that does not know a formation, its "What it was doing" said what
